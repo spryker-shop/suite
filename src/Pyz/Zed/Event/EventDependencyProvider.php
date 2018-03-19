@@ -15,6 +15,7 @@ use Spryker\Zed\CmsBlockProductStorage\Communication\Plugin\Event\Subscriber\Cms
 use Spryker\Zed\CmsBlockStorage\Communication\Plugin\Event\Subscriber\CmsBlockStorageEventSubscriber;
 use Spryker\Zed\CmsPageSearch\Communication\Plugin\Event\Subscriber\CmsPageSearchEventSubscriber;
 use Spryker\Zed\CmsStorage\Communication\Plugin\Event\Subscriber\CmsStorageEventSubscriber;
+use Spryker\Zed\CustomerAccessStorage\Communication\Plugin\Event\Subscriber\CustomerAccessStorageEventSubscriber;
 use Spryker\Zed\Event\EventDependencyProvider as SprykerEventDependencyProvider;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Event\Subscriber\GlossaryStorageEventSubscriber;
 use Spryker\Zed\NavigationStorage\Communication\Plugin\Event\Subscriber\NavigationStorageEventSubscriber;
@@ -77,6 +78,7 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new ProductLabelStorageEventSubscriber());
         $eventSubscriberCollection->add(new ProductSetStorageEventSubscriber());
         $eventSubscriberCollection->add(new ProductSearchConfigStorageEventSubscriber());
+        $eventSubscriberCollection->add(new CustomerAccessStorageEventSubscriber());
 
         /**
          * Search Events
