@@ -54,7 +54,7 @@ class DemoDataGeneratorConsole extends Console
     {
         $rows = [];
         $header = [];
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 1001; $i++) {
             $productAbstractTransfer = $this->generateProductAbstract();
             $row = $this->createProductAbstractRow($productAbstractTransfer);
             $header = array_keys($row);

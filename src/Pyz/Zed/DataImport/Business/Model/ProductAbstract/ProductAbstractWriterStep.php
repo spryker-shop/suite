@@ -28,7 +28,7 @@ use Spryker\Zed\Url\Dependency\UrlEvents;
  */
 class ProductAbstractWriterStep extends PublishAwareStep implements DataImportStepInterface
 {
-    const BULK_SIZE = 50000;
+    const BULK_SIZE = 100;
 
     const KEY_ABSTRACT_SKU = 'abstract_sku';
     const KEY_COLOR_CODE = 'color_code';
@@ -91,9 +91,6 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
 
         if (count(static::$objectCollection) >= static::BULK_SIZE || static::$lineNumber === $this->linesCount) {
             $bulkSize = count(static::$objectCollection);
-            //persist and flush entities
-            file_put_contents(APPLICATION_ROOT_DIR.'/tmp.log',$bulkSize.PHP_EOL, FILE_APPEND);
-            // TODO: remove this debug output
             dump('Importing of chunk: ' . $bulkSize);
             $this->persistAbstractProductEntities();
             $this->persistAbstractProductLocalizedAttributesEntities();

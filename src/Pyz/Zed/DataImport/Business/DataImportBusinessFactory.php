@@ -663,6 +663,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     protected function createProductAbstractImporter()
     {
         $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getProductAbstractDataImporterConfiguration());
+        $linesNumber = $this->createCsvReaderFromConfig($this->getConfig()->getProductAbstractDataImporterConfiguration()->getReaderConfiguration())->count();
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductAbstractWriterStep::BULK_SIZE);
         $dataSetStepBroker
@@ -679,7 +680,8 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
                 ProductAbstractWriterStep::KEY_META_KEYWORDS,
             ]))
             ->addStep(new ProductAbstractWriterStep(
-                $this->createProductRepository()
+                $this->createProductRepository(),
+                $linesNumber
             ));
 
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
