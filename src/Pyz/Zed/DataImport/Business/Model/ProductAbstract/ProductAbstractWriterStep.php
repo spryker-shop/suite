@@ -28,7 +28,7 @@ use Spryker\Zed\Url\Dependency\UrlEvents;
  */
 class ProductAbstractWriterStep extends PublishAwareStep implements DataImportStepInterface
 {
-    const BULK_SIZE = 100;
+    const BULK_SIZE = 100000;
 
     const KEY_ABSTRACT_SKU = 'abstract_sku';
     const KEY_COLOR_CODE = 'color_code';
@@ -561,11 +561,11 @@ SELECT 1;
         return $sql;
     }
 
-//    /**
-//     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-//     *
-//     * @return void
-//     */
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
 //    public function execute(DataSetInterface $dataSet)
 //    {
 //        $productAbstractEntity = $this->importProductAbstract($dataSet);
@@ -591,123 +591,123 @@ SELECT 1;
      *
      * @return void
      */
-//    protected function importProductAbstractLocalizedAttributes(DataSetInterface $dataSet, SpyProductAbstract $productAbstractEntity)
-//    {
-//        foreach ($dataSet[ProductLocalizedAttributesExtractorStep::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $localizedAttributes) {
-//            $productAbstractLocalizedAttributesEntity = SpyProductAbstractLocalizedAttributesQuery::create()
-//                ->filterByFkProductAbstract($productAbstractEntity->getIdProductAbstract())
-//                ->filterByFkLocale($idLocale)
-//                ->findOneOrCreate();
-//
-//            $productAbstractLocalizedAttributesEntity
-//                ->setName($localizedAttributes[static::KEY_NAME])
-//                ->setDescription($localizedAttributes[static::KEY_DESCRIPTION])
-//                ->setMetaTitle($localizedAttributes[static::KEY_META_TITLE])
-//                ->setMetaDescription($localizedAttributes[static::KEY_META_DESCRIPTION])
-//                ->setMetaKeywords($localizedAttributes[static::KEY_META_KEYWORDS])
-//                ->setAttributes(json_encode($localizedAttributes[static::KEY_ATTRIBUTES]));
-//
-//            if ($productAbstractLocalizedAttributesEntity->isNew() || $productAbstractLocalizedAttributesEntity->isModified()) {
-//                $productAbstractLocalizedAttributesEntity->save();
-//            }
-//        }
-//    }
+    protected function importProductAbstractLocalizedAttributes(DataSetInterface $dataSet, SpyProductAbstract $productAbstractEntity)
+    {
+        foreach ($dataSet[ProductLocalizedAttributesExtractorStep::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $localizedAttributes) {
+            $productAbstractLocalizedAttributesEntity = SpyProductAbstractLocalizedAttributesQuery::create()
+                ->filterByFkProductAbstract($productAbstractEntity->getIdProductAbstract())
+                ->filterByFkLocale($idLocale)
+                ->findOneOrCreate();
 
-//    /**
-//     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-//     * @param \Orm\Zed\Product\Persistence\SpyProductAbstract $productAbstractEntity
-//     *
-//     * @throws \Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException
-//     *
-//     * @return void
-//     */
-//    protected function importProductCategories(DataSetInterface $dataSet, SpyProductAbstract $productAbstractEntity)
-//    {
-//        $categoryKeys = $this->getCategoryKeys($dataSet[static::KEY_CATEGORY_KEY]);
-//        $categoryProductOrder = $this->getCategoryProductOrder($dataSet[static::KEY_CATEGORY_PRODUCT_ORDER]);
-//
-//        foreach ($categoryKeys as $index => $categoryKey) {
-//            if (!isset($dataSet[static::KEY_CATEGORY_KEYS][$categoryKey])) {
-//                throw new DataKeyNotFoundInDataSetException(sprintf(
-//                    'The category with key "%s" was not found in categoryKeys. Maybe there is a typo. Given Categories: "%s"',
-//                    $categoryKey,
-//                    implode(array_values($dataSet[static::KEY_CATEGORY_KEYS]))
-//                ));
-//            }
-//            $productOrder = null;
-//            if (count($categoryProductOrder) > 0 && isset($categoryProductOrder[$index])) {
-//                $productOrder = $categoryProductOrder[$index];
-//            }
-//
-//            $productCategoryEntity = SpyProductCategoryQuery::create()
-//                ->filterByFkProductAbstract($productAbstractEntity->getIdProductAbstract())
-//                ->filterByFkCategory($dataSet[static::KEY_CATEGORY_KEYS][$categoryKey])
-//                ->findOneOrCreate();
-//
-//            $productCategoryEntity
-//                ->setProductOrder($productOrder);
-//
-//            if ($productCategoryEntity->isNew() || $productCategoryEntity->isModified()) {
-//                $productCategoryEntity->save();
-//
-//                $this->addPublishEvents(ProductCategoryEvents::PRODUCT_CATEGORY_PUBLISH, $productAbstractEntity->getIdProductAbstract());
-//                $this->addPublishEvents(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $productAbstractEntity->getIdProductAbstract());
-//            }
-//        }
-//    }
+            $productAbstractLocalizedAttributesEntity
+                ->setName($localizedAttributes[static::KEY_NAME])
+                ->setDescription($localizedAttributes[static::KEY_DESCRIPTION])
+                ->setMetaTitle($localizedAttributes[static::KEY_META_TITLE])
+                ->setMetaDescription($localizedAttributes[static::KEY_META_DESCRIPTION])
+                ->setMetaKeywords($localizedAttributes[static::KEY_META_KEYWORDS])
+                ->setAttributes(json_encode($localizedAttributes[static::KEY_ATTRIBUTES]));
 
-//    /**
-//     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-//     * @param \Orm\Zed\Product\Persistence\SpyProductAbstract $productAbstractEntity
-//     *
-//     * @return void
-//     */
-//    protected function importProductUrls(DataSetInterface $dataSet, SpyProductAbstract $productAbstractEntity)
-//    {
-//        foreach ($dataSet[ProductLocalizedAttributesExtractorStep::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $localizedAttributes) {
-//            $abstractProductUrl = $localizedAttributes[static::KEY_URL];
-//
+            if ($productAbstractLocalizedAttributesEntity->isNew() || $productAbstractLocalizedAttributesEntity->isModified()) {
+                $productAbstractLocalizedAttributesEntity->save();
+            }
+        }
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     * @param \Orm\Zed\Product\Persistence\SpyProductAbstract $productAbstractEntity
+     *
+     * @throws \Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException
+     *
+     * @return void
+     */
+    protected function importProductCategories(DataSetInterface $dataSet, SpyProductAbstract $productAbstractEntity)
+    {
+        $categoryKeys = $this->getCategoryKeys($dataSet[static::KEY_CATEGORY_KEY]);
+        $categoryProductOrder = $this->getCategoryProductOrder($dataSet[static::KEY_CATEGORY_PRODUCT_ORDER]);
+
+        foreach ($categoryKeys as $index => $categoryKey) {
+            if (!isset($dataSet[static::KEY_CATEGORY_KEYS][$categoryKey])) {
+                throw new DataKeyNotFoundInDataSetException(sprintf(
+                    'The category with key "%s" was not found in categoryKeys. Maybe there is a typo. Given Categories: "%s"',
+                    $categoryKey,
+                    implode(array_values($dataSet[static::KEY_CATEGORY_KEYS]))
+                ));
+            }
+            $productOrder = null;
+            if (count($categoryProductOrder) > 0 && isset($categoryProductOrder[$index])) {
+                $productOrder = $categoryProductOrder[$index];
+            }
+
+            $productCategoryEntity = SpyProductCategoryQuery::create()
+                ->filterByFkProductAbstract($productAbstractEntity->getIdProductAbstract())
+                ->filterByFkCategory($dataSet[static::KEY_CATEGORY_KEYS][$categoryKey])
+                ->findOneOrCreate();
+
+            $productCategoryEntity
+                ->setProductOrder($productOrder);
+
+            if ($productCategoryEntity->isNew() || $productCategoryEntity->isModified()) {
+                $productCategoryEntity->save();
+
+                $this->addPublishEvents(ProductCategoryEvents::PRODUCT_CATEGORY_PUBLISH, $productAbstractEntity->getIdProductAbstract());
+                $this->addPublishEvents(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $productAbstractEntity->getIdProductAbstract());
+            }
+        }
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     * @param \Orm\Zed\Product\Persistence\SpyProductAbstract $productAbstractEntity
+     *
+     * @return void
+     */
+    protected function importProductUrls(DataSetInterface $dataSet, SpyProductAbstract $productAbstractEntity)
+    {
+        foreach ($dataSet[ProductLocalizedAttributesExtractorStep::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $localizedAttributes) {
+            $abstractProductUrl = $localizedAttributes[static::KEY_URL];
+
 //            $this->cleanupRedirectUrls($abstractProductUrl);
-//
-//            $urlEntity = SpyUrlQuery::create()
-//                ->filterByFkLocale($idLocale)
-//                ->filterByFkResourceProductAbstract($productAbstractEntity->getIdProductAbstract())
-//                ->findOneOrCreate();
-//
-//            $urlEntity->setUrl($abstractProductUrl);
-//
-//            if ($urlEntity->isNew() || $urlEntity->isModified()) {
-//                $urlEntity->save();
-//
-//                $this->addPublishEvents(UrlEvents::URL_PUBLISH, $urlEntity->getIdUrl());
-//            }
-//        }
-//    }
+
+            $urlEntity = SpyUrlQuery::create()
+                ->filterByFkLocale($idLocale)
+                ->filterByFkResourceProductAbstract($productAbstractEntity->getIdProductAbstract())
+                ->findOneOrCreate();
+
+            $urlEntity->setUrl($abstractProductUrl);
+
+            if ($urlEntity->isNew() || $urlEntity->isModified()) {
+                $urlEntity->save();
+
+                $this->addPublishEvents(UrlEvents::URL_PUBLISH, $urlEntity->getIdUrl());
+            }
+        }
+    }
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
      * @return \Orm\Zed\Product\Persistence\SpyProductAbstract
      */
-//    protected function importProductAbstract(DataSetInterface $dataSet)
-//    {
-//        $productAbstractEntity = SpyProductAbstractQuery::create()
-//            ->filterBySku($dataSet[static::KEY_ABSTRACT_SKU])
-//            ->findOneOrCreate();
-//
-//        $productAbstractEntity
-//            ->setColorCode($dataSet[static::KEY_COLOR_CODE])
-//            ->setFkTaxSet($dataSet[static::KEY_ID_TAX_SET])
-//            ->setAttributes(json_encode($dataSet[static::KEY_ATTRIBUTES]))
-//            ->setNewFrom($dataSet[static::KEY_NEW_FROM])
-//            ->setNewTo($dataSet[static::KEY_NEW_TO]);
-//
-//        if ($productAbstractEntity->isNew() || $productAbstractEntity->isModified()) {
-//            $productAbstractEntity->save();
-//        }
-//
-//        return $productAbstractEntity;
-//    }
+    protected function importProductAbstract(DataSetInterface $dataSet)
+    {
+        $productAbstractEntity = SpyProductAbstractQuery::create()
+            ->filterBySku($dataSet[static::KEY_ABSTRACT_SKU])
+            ->findOneOrCreate();
+
+        $productAbstractEntity
+            ->setColorCode($dataSet[static::KEY_COLOR_CODE])
+            ->setFkTaxSet($dataSet[static::KEY_ID_TAX_SET])
+            ->setAttributes(json_encode($dataSet[static::KEY_ATTRIBUTES]))
+            ->setNewFrom($dataSet[static::KEY_NEW_FROM])
+            ->setNewTo($dataSet[static::KEY_NEW_TO]);
+
+        if ($productAbstractEntity->isNew() || $productAbstractEntity->isModified()) {
+            $productAbstractEntity->save();
+        }
+
+        return $productAbstractEntity;
+    }
 
     protected function getCategoryKeys($categoryKeys)
     {
