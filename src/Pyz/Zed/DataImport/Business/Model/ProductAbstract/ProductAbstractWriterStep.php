@@ -229,10 +229,10 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
             $newTo
         ]);
 
-//        $result = $stmt->fetchAll();
-//        foreach ($result as $columns) {
-//            static::$affectedProductAbstract[$columns['sku']] = $columns['id_product_abstract'];
-//        }
+        $result = $stmt->fetchAll();
+        foreach ($result as $columns) {
+            $this->addPublishEvents(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $columns['id_product_abstract']);
+        }
         $time = sprintf('Product Abstract: %.4s', microtime(true) - $start);
         dump($time);
     }
@@ -291,6 +291,11 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
             $productOrder
         ]);
 
+        $result = $stmt->fetchAll();
+        foreach ($result as $columns) {
+            $this->addPublishEvents(ProductCategoryEvents::PRODUCT_CATEGORY_PUBLISH, $columns['id_product_abstract']);
+        }
+
         $time = sprintf('Product Category: %.4s', microtime(true) - $start);
         dump($time);
     }
@@ -314,6 +319,11 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
             $idLocale,
             $url
         ]);
+
+        $result = $stmt->fetchAll();
+        foreach ($result as $columns) {
+            $this->addPublishEvents(UrlEvents::URL_PUBLISH, $columns['id_url']);
+        }
 
         $time = sprintf('Product Url: %.4s', microtime(true) - $start);
         dump($time);
@@ -489,6 +499,7 @@ SELECT 1;
       product_order = records.productOrder
     FROM records
     WHERE records.id_product_abstract = spy_product_category.fk_product_abstract and spy_product_category.fk_category = records.fkCategory
+    RETURNING id_product_abstract
   ),
     inserted AS(
     INSERT INTO spy_product_category (
@@ -503,10 +514,10 @@ SELECT 1;
         productOrder,
         id_product_abstract
       FROM records
-      WHERE id_product_category is null
-    )
+      WHERE id_product_category is null     
+    ) RETURNING fk_product_abstract
   )
-SELECT 1;
+SELECT updated.id_product_abstract FROM updated UNION ALL SELECT inserted.fk_product_abstract FROM inserted;
 ";
 
         return $sql;
@@ -539,6 +550,7 @@ SELECT 1;
       url = records.url
     FROM records
     WHERE records.id_product_abstract = spy_url.fk_resource_product_abstract and spy_url.fk_locale = records.idLocale
+    RETURNING spy_url.id_url
   ),
     inserted AS(
     INSERT INTO spy_url (
@@ -554,9 +566,9 @@ SELECT 1;
         id_product_abstract
       FROM records
       WHERE id_url is null
-    )
+    ) RETURNING id_url
   )
-SELECT 1;
+SELECT updated.id_url FROM updated UNION ALL SELECT inserted.id_url FROM inserted;
 ";
         return $sql;
     }
@@ -667,7 +679,7 @@ SELECT 1;
         foreach ($dataSet[ProductLocalizedAttributesExtractorStep::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $localizedAttributes) {
             $abstractProductUrl = $localizedAttributes[static::KEY_URL];
 
-//            $this->cleanupRedirectUrls($abstractProductUrl);
+            $this->cleanupRedirectUrls($abstractProductUrl);
 
             $urlEntity = SpyUrlQuery::create()
                 ->filterByFkLocale($idLocale)
