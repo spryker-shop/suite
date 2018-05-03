@@ -14,7 +14,7 @@ class CustomerAccessConfig extends SprykerCustomerAccessConfig
     /**
      * @return array
      */
-    public function getContentTypes()
+    public function getContentTypes(): array
     {
         return [
             static::CONTENT_TYPE_PRICE,
