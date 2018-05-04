@@ -387,7 +387,11 @@ $config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION_DEFAULT] = [
 $config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION] = [
     EventConstants::EVENT_QUEUE => [
         QueueConfig::CONFIG_QUEUE_ADAPTER => RabbitMqAdapter::class,
-        QueueConfig::CONFIG_MAX_WORKER_NUMBER => 10,
+        QueueConfig::CONFIG_MAX_WORKER_NUMBER => 20,
+    ],
+    \Spryker\Shared\ProductStorage\ProductStorageConstants::PRODUCT_SYNC_STORAGE_QUEUE => [
+        QueueConfig::CONFIG_QUEUE_ADAPTER => RabbitMqAdapter::class,
+        QueueConfig::CONFIG_MAX_WORKER_NUMBER => 5,
     ],
 ];
 
