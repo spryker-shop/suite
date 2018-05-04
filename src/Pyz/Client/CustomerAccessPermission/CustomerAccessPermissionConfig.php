@@ -12,7 +12,4 @@ use Spryker\Client\CustomerAccessPermission\CustomerAccessPermissionConfig as Sp
 
 class CustomerAccessPermissionConfig extends SprykerCustomerAccessPermissionConfig
 {
-    protected const CONTENT_PERMISSION_PLUGIN = [
-        'price' => SeePricePermissionPlugin::KEY
-    ];
 }

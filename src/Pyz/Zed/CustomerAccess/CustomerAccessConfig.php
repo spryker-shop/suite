@@ -12,6 +12,8 @@ use Spryker\Zed\CustomerAccess\CustomerAccessConfig as SprykerCustomerAccessConf
 class CustomerAccessConfig extends SprykerCustomerAccessConfig
 {
     /**
+     * {@inheritdoc}
+     *
      * @return array
      */
     public function getContentTypes(): array
