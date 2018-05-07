@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\DataImport;
 
+use Pyz\Zed\DataImport\Communication\Plugin\DataImportBulkPdoWriterPlugin;
 use Spryker\Zed\CategoryDataImport\Communication\Plugin\CategoryDataImportPlugin;
 use Spryker\Zed\CompanyBusinessUnitDataImport\Communication\Plugin\CompanyBusinessUnitDataImportPlugin;
 use Spryker\Zed\CompanyDataImport\Communication\Plugin\CompanyDataImportPlugin;
@@ -147,6 +148,17 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
         return [
             new DataImportEventBehaviorPlugin(),
             new DataImportPublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
+     */
+    protected function getDataImportDefaultWriterPlugins(): array
+    {
+        return [
+//            new DataImportPropelWriterPlugin(), # In case we use propels and slow importers
+            new DataImportBulkPdoWriterPlugin(),
         ];
     }
 }

@@ -73,6 +73,7 @@ use Pyz\Zed\DataImport\DataImportDependencyProvider;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\ProductSearch\Code\KeyBuilder\FilterGlossaryKeyBuilder;
 use Spryker\Zed\DataImport\Business\DataImportBusinessFactory as SprykerDataImportBusinessFactory;
+use Spryker\Zed\DataImport\Business\Model\Writer\DataImportWriterCollection;
 use Spryker\Zed\Discount\DiscountConfig;
 
 /**
@@ -662,7 +663,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductAbstractImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getProductAbstractDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterWriterAwareFromConfig($this->getConfig()->getProductAbstractDataImporterConfiguration());
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductAbstractWriterStep::BULK_SIZE);
         $dataSetStepBroker
@@ -683,8 +684,17 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             ));
 
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
+        $dataImporter->setDataImportWriter($this->createProductAbstractDataImportWriters());
 
         return $dataImporter;
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\Writer\DataImportWriterInterface
+     */
+    protected function createProductAbstractDataImportWriters()
+    {
+        return new DataImportWriterCollection($this->getDefaultDataImportWriterPlugins());
     }
 
     /**
