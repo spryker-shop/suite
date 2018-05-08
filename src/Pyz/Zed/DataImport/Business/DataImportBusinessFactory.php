@@ -33,7 +33,7 @@ use Pyz\Zed\DataImport\Business\Model\Product\ProductLocalizedAttributesExtracto
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\AddCategoryKeysStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\AddProductAbstractSkusStep;
-use Pyz\Zed\DataImport\Business\Model\ProductAbstract\ProductAbstractWriterStep;
+use Pyz\Zed\DataImport\Business\Model\ProductAbstract\ProductAbstractHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\ProductAbstractStoreWriterStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAttributeKey\AddProductAttributeKeysStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAttributeKey\ProductAttributeKeyWriter;
@@ -69,6 +69,8 @@ use Pyz\Zed\DataImport\Business\Model\Store\StoreReader;
 use Pyz\Zed\DataImport\Business\Model\Store\StoreWriterStep;
 use Pyz\Zed\DataImport\Business\Model\Tax\TaxSetNameToIdTaxSetStep;
 use Pyz\Zed\DataImport\Business\Model\Tax\TaxWriterStep;
+use Pyz\Zed\DataImport\Communication\Plugin\ProductAbstract\ProductAbstractBulkPdoWriterPlugin;
+use Pyz\Zed\DataImport\Communication\Plugin\ProductAbstract\ProductAbstractPropelWriterPlugin;
 use Pyz\Zed\DataImport\DataImportDependencyProvider;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\ProductSearch\Code\KeyBuilder\FilterGlossaryKeyBuilder;
@@ -665,21 +667,21 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     {
         $dataImporter = $this->getCsvDataImporterWriterAwareFromConfig($this->getConfig()->getProductAbstractDataImporterConfiguration());
 
-        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductAbstractWriterStep::BULK_SIZE);
+        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductAbstractHydratorStep::BULK_SIZE);
         $dataSetStepBroker
             ->addStep($this->createAddLocalesStep())
             ->addStep($this->createAddCategoryKeysStep())
-            ->addStep($this->createTaxSetNameToIdTaxSetStep(ProductAbstractWriterStep::KEY_TAX_SET_NAME))
+            ->addStep($this->createTaxSetNameToIdTaxSetStep(ProductAbstractHydratorStep::KEY_TAX_SET_NAME))
             ->addStep($this->createAttributesExtractorStep())
             ->addStep($this->createProductLocalizedAttributesExtractorStep([
-                ProductAbstractWriterStep::KEY_NAME,
-                ProductAbstractWriterStep::KEY_URL,
-                ProductAbstractWriterStep::KEY_DESCRIPTION,
-                ProductAbstractWriterStep::KEY_META_TITLE,
-                ProductAbstractWriterStep::KEY_META_DESCRIPTION,
-                ProductAbstractWriterStep::KEY_META_KEYWORDS,
+                ProductAbstractHydratorStep::KEY_NAME,
+                ProductAbstractHydratorStep::KEY_URL,
+                ProductAbstractHydratorStep::KEY_DESCRIPTION,
+                ProductAbstractHydratorStep::KEY_META_TITLE,
+                ProductAbstractHydratorStep::KEY_META_DESCRIPTION,
+                ProductAbstractHydratorStep::KEY_META_KEYWORDS,
             ]))
-            ->addStep(new ProductAbstractWriterStep(
+            ->addStep(new ProductAbstractHydratorStep(
                 $this->createProductRepository()
             ));
 
@@ -694,7 +696,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductAbstractDataImportWriters()
     {
-        return new DataImportWriterCollection($this->getDefaultDataImportWriterPlugins());
+        return new DataImportWriterCollection([
+//            new ProductAbstractPropelWriterPlugin(),
+            new ProductAbstractBulkPdoWriterPlugin(),
+        ]);
     }
 
     /**

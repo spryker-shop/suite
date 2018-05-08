@@ -7,9 +7,9 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\ProductAbstract;
 
+use Generated\Shared\Transfer\SpyProductAbstractEntityTransfer;
+use Generated\Shared\Transfer\SpyProductAbstractLocalizedAttributesEntityTransfer;
 use Orm\Zed\Product\Persistence\SpyProductAbstract;
-use Orm\Zed\Product\Persistence\SpyProductAbstractLocalizedAttributesQuery;
-use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Orm\Zed\ProductCategory\Persistence\SpyProductCategoryQuery;
 use Orm\Zed\Url\Persistence\SpyUrlQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -25,10 +25,12 @@ use Spryker\Zed\Url\Dependency\UrlEvents;
 
 /**
  */
-class ProductAbstractWriterStep extends PublishAwareStep implements DataImportStepInterface
+class ProductAbstractHydratorStep extends PublishAwareStep implements DataImportStepInterface
 {
     const BULK_SIZE = 100;
 
+    const PRODUCT_ABSTRACT_TRANSFER = 'PRODUCT_ABSTRACT_TRANSFER';
+    const PRODUCT_ABSTRACT_LOCALIZED_TRANSFER = 'PRODUCT_ABSTRACT_LOCALIZED_TRANSFER';
     const KEY_ABSTRACT_SKU = 'abstract_sku';
     const KEY_COLOR_CODE = 'color_code';
     const KEY_ID_TAX_SET = 'idTaxSet';
@@ -57,6 +59,7 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
      */
     public function __construct(ProductRepository $productRepository)
     {
+        //TODO this needs to go to writer or somewhere else
         $this->productRepository = $productRepository;
     }
 
@@ -67,57 +70,47 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
      */
     public function execute(DataSetInterface $dataSet)
     {
-        $productAbstractEntity = $this->importProductAbstract($dataSet);
+        $this->importProductAbstract($dataSet);
 
-        $this->productRepository->addProductAbstract($productAbstractEntity);
-
-        $this->importProductAbstractLocalizedAttributes($dataSet, $productAbstractEntity);
-        $this->importProductCategories($dataSet, $productAbstractEntity);
-        $this->importProductUrls($dataSet, $productAbstractEntity);
-
-        $this->addPublishEvents(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $productAbstractEntity->getIdProductAbstract());
+        // TODO this needs to go to writer or somewhere else
+//        $this->productRepository->addProductAbstract($productAbstractEntity);
+        $this->importProductAbstractLocalizedAttributes($dataSet);
+        // TODO move the these like the ProductAbstract and Localized Attribute
+//        $this->importProductCategories($dataSet, $productAbstractEntity);
+//        $this->importProductUrls($dataSet, $productAbstractEntity);
+//
+//        $this->addPublishEvents(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $productAbstractEntity->getIdProductAbstract());
     }
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return \Orm\Zed\Product\Persistence\SpyProductAbstract
      */
     protected function importProductAbstract(DataSetInterface $dataSet)
     {
-        $productAbstractEntity = SpyProductAbstractQuery::create()
-            ->filterBySku($dataSet[static::KEY_ABSTRACT_SKU])
-            ->findOneOrCreate();
+        $productAbstractEntityTransfer = new SpyProductAbstractEntityTransfer();
+        $productAbstractEntityTransfer->setSku('"'. $dataSet[static::KEY_ABSTRACT_SKU]. '"');
 
-        $productAbstractEntity
-            ->setColorCode($dataSet[static::KEY_COLOR_CODE])
+        $productAbstractEntityTransfer
+            ->setColorCode('"'. $dataSet[static::KEY_COLOR_CODE]. '"')
             ->setFkTaxSet($dataSet[static::KEY_ID_TAX_SET])
             ->setAttributes(json_encode($dataSet[static::KEY_ATTRIBUTES]))
-            ->setNewFrom($dataSet[static::KEY_NEW_FROM])
-            ->setNewTo($dataSet[static::KEY_NEW_TO]);
+            ->setNewFrom('"'. $dataSet[static::KEY_NEW_FROM]. '"')
+            ->setNewTo('"'. $dataSet[static::KEY_NEW_TO]. '"');
 
-        if ($productAbstractEntity->isNew() || $productAbstractEntity->isModified()) {
-            $productAbstractEntity->save();
-        }
-
-        return $productAbstractEntity;
+        $dataSet[static::PRODUCT_ABSTRACT_TRANSFER] = $productAbstractEntityTransfer;
     }
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     * @param \Orm\Zed\Product\Persistence\SpyProductAbstract $productAbstractEntity
      *
      * @return void
      */
-    protected function importProductAbstractLocalizedAttributes(DataSetInterface $dataSet, SpyProductAbstract $productAbstractEntity)
+    protected function importProductAbstractLocalizedAttributes(DataSetInterface $dataSet)
     {
+        $localizedAttributeTransfer = [];
         foreach ($dataSet[ProductLocalizedAttributesExtractorStep::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $localizedAttributes) {
-            $productAbstractLocalizedAttributesEntity = SpyProductAbstractLocalizedAttributesQuery::create()
-                ->filterByFkProductAbstract($productAbstractEntity->getIdProductAbstract())
-                ->filterByFkLocale($idLocale)
-                ->findOneOrCreate();
-
-            $productAbstractLocalizedAttributesEntity
+            $productAbstractLocalizedAttributesEntityTransfer = new SpyProductAbstractLocalizedAttributesEntityTransfer();
+            $productAbstractLocalizedAttributesEntityTransfer
                 ->setName($localizedAttributes[static::KEY_NAME])
                 ->setDescription($localizedAttributes[static::KEY_DESCRIPTION])
                 ->setMetaTitle($localizedAttributes[static::KEY_META_TITLE])
@@ -125,10 +118,10 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
                 ->setMetaKeywords($localizedAttributes[static::KEY_META_KEYWORDS])
                 ->setAttributes(json_encode($localizedAttributes[static::KEY_ATTRIBUTES]));
 
-            if ($productAbstractLocalizedAttributesEntity->isNew() || $productAbstractLocalizedAttributesEntity->isModified()) {
-                $productAbstractLocalizedAttributesEntity->save();
-            }
+            $localizedAttributeTransfer[$idLocale] = $productAbstractLocalizedAttributesEntityTransfer;
         }
+
+        $dataSet[static::PRODUCT_ABSTRACT_LOCALIZED_TRANSFER] = $localizedAttributeTransfer;
     }
 
     /**
