@@ -17,15 +17,11 @@ use Pyz\Zed\DataImport\Business\Model\Product\ProductLocalizedAttributesExtracto
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
 use Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
-use Spryker\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
-use Spryker\Zed\Product\Dependency\ProductEvents;
-use Spryker\Zed\ProductCategory\Dependency\ProductCategoryEvents;
-use Spryker\Zed\Url\Dependency\UrlEvents;
 
 /**
  */
-class ProductAbstractHydratorStep extends PublishAwareStep implements DataImportStepInterface
+class ProductAbstractHydratorStep implements DataImportStepInterface
 {
     const BULK_SIZE = 100;
 
@@ -88,14 +84,14 @@ class ProductAbstractHydratorStep extends PublishAwareStep implements DataImport
     protected function importProductAbstract(DataSetInterface $dataSet)
     {
         $productAbstractEntityTransfer = new SpyProductAbstractEntityTransfer();
-        $productAbstractEntityTransfer->setSku('"'. $dataSet[static::KEY_ABSTRACT_SKU]. '"');
+        $productAbstractEntityTransfer->setSku($dataSet[static::KEY_ABSTRACT_SKU]);
 
         $productAbstractEntityTransfer
-            ->setColorCode('"'. $dataSet[static::KEY_COLOR_CODE]. '"')
+            ->setColorCode($dataSet[static::KEY_COLOR_CODE])
             ->setFkTaxSet($dataSet[static::KEY_ID_TAX_SET])
             ->setAttributes(json_encode($dataSet[static::KEY_ATTRIBUTES]))
-            ->setNewFrom('"'. $dataSet[static::KEY_NEW_FROM]. '"')
-            ->setNewTo('"'. $dataSet[static::KEY_NEW_TO]. '"');
+            ->setNewFrom($dataSet[static::KEY_NEW_FROM])
+            ->setNewTo($dataSet[static::KEY_NEW_TO]);
 
         $dataSet[static::PRODUCT_ABSTRACT_TRANSFER] = $productAbstractEntityTransfer;
     }
@@ -116,9 +112,13 @@ class ProductAbstractHydratorStep extends PublishAwareStep implements DataImport
                 ->setMetaTitle($localizedAttributes[static::KEY_META_TITLE])
                 ->setMetaDescription($localizedAttributes[static::KEY_META_DESCRIPTION])
                 ->setMetaKeywords($localizedAttributes[static::KEY_META_KEYWORDS])
+                ->setFkLocale($idLocale)
                 ->setAttributes(json_encode($localizedAttributes[static::KEY_ATTRIBUTES]));
 
-            $localizedAttributeTransfer[$idLocale] = $productAbstractLocalizedAttributesEntityTransfer;
+            $localizedAttributeTransfer[] = [
+                'abstract_sku' => $dataSet[static::KEY_ABSTRACT_SKU],
+                'localizedAttributeTransfer' => $productAbstractLocalizedAttributesEntityTransfer,
+            ];
         }
 
         $dataSet[static::PRODUCT_ABSTRACT_LOCALIZED_TRANSFER] = $localizedAttributeTransfer;
@@ -161,8 +161,9 @@ class ProductAbstractHydratorStep extends PublishAwareStep implements DataImport
             if ($productCategoryEntity->isNew() || $productCategoryEntity->isModified()) {
                 $productCategoryEntity->save();
 
-                $this->addPublishEvents(ProductCategoryEvents::PRODUCT_CATEGORY_PUBLISH, $productAbstractEntity->getIdProductAbstract());
-                $this->addPublishEvents(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $productAbstractEntity->getIdProductAbstract());
+                //TODO move these to writers
+//                $this->addPublishEvents(ProductCategoryEvents::PRODUCT_CATEGORY_PUBLISH, $productAbstractEntity->getIdProductAbstract());
+//                $this->addPublishEvents(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $productAbstractEntity->getIdProductAbstract());
             }
         }
     }
@@ -213,8 +214,8 @@ class ProductAbstractHydratorStep extends PublishAwareStep implements DataImport
 
             if ($urlEntity->isNew() || $urlEntity->isModified()) {
                 $urlEntity->save();
-
-                $this->addPublishEvents(UrlEvents::URL_PUBLISH, $urlEntity->getIdUrl());
+                //TODO move these to writers
+//                $this->addPublishEvents(UrlEvents::URL_PUBLISH, $urlEntity->getIdUrl());
             }
         }
     }

@@ -34,6 +34,8 @@ use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\AddCategoryKeysStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\AddProductAbstractSkusStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\ProductAbstractHydratorStep;
+use Pyz\Zed\DataImport\Business\Model\ProductAbstract\Writer\ProductAbstractBulkPdoWriter;
+use Pyz\Zed\DataImport\Business\Model\ProductAbstract\Writer\ProductAbstractPropelWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\ProductAbstractStoreWriterStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAttributeKey\AddProductAttributeKeysStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAttributeKey\ProductAttributeKeyWriter;
@@ -69,13 +71,16 @@ use Pyz\Zed\DataImport\Business\Model\Store\StoreReader;
 use Pyz\Zed\DataImport\Business\Model\Store\StoreWriterStep;
 use Pyz\Zed\DataImport\Business\Model\Tax\TaxSetNameToIdTaxSetStep;
 use Pyz\Zed\DataImport\Business\Model\Tax\TaxWriterStep;
-use Pyz\Zed\DataImport\Communication\Plugin\ProductAbstract\ProductAbstractBulkPdoWriterPlugin;
-use Pyz\Zed\DataImport\Communication\Plugin\ProductAbstract\ProductAbstractPropelWriterPlugin;
 use Pyz\Zed\DataImport\DataImportDependencyProvider;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\ProductSearch\Code\KeyBuilder\FilterGlossaryKeyBuilder;
 use Spryker\Zed\DataImport\Business\DataImportBusinessFactory as SprykerDataImportBusinessFactory;
 use Spryker\Zed\DataImport\Business\Model\Writer\DataImportWriterCollection;
+use Spryker\Zed\DataImport\Business\Model\Writer\FlushInterface;
+use Spryker\Zed\DataImport\Business\Model\Writer\WriterInterface;
+use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
+use Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface;
+use Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface;
 use Spryker\Zed\Discount\DiscountConfig;
 
 /**
@@ -137,6 +142,22 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         $dataImporterCollection->addDataImporterPlugins($this->getDataImporterPlugins());
 
         return $dataImporterCollection;
+    }
+
+    /**
+     * @return WriterInterface|FlushInterface
+     */
+    public function createProductAbstractBulkPdoWriter()
+    {
+        return new ProductAbstractBulkPdoWriter($this->getEventFacade());
+    }
+
+    /**
+     * @return WriterInterface|FlushInterface
+     */
+    public function createProductAbstractPropelWriter()
+    {
+        return new ProductAbstractPropelWriter($this->getEventFacade());
     }
 
     /**
@@ -696,10 +717,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductAbstractDataImportWriters()
     {
-        return new DataImportWriterCollection([
-//            new ProductAbstractPropelWriterPlugin(),
-            new ProductAbstractBulkPdoWriterPlugin(),
-        ]);
+        return new DataImportWriterCollection($this->getProductAbstractDataImportWriterPlugins());
     }
 
     /**
@@ -1121,10 +1139,18 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     }
 
     /**
-     * @return \Spryker\Zed\Event\Business\EventFacadeInterface
+     * @return DataImportToEventFacadeInterface
      */
     protected function getEventFacade()
     {
         return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_EVENT);
+    }
+
+    /**
+     * @return array
+     */
+    protected function getProductAbstractDataImportWriterPlugins()
+    {
+        return $this->getProvidedDependency(DataImportDependencyProvider::DATA_IMPORT_PRODUCT_ABSTRACT_WRITER_PLUGINS);
     }
 }

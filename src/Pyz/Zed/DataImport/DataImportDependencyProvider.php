@@ -7,7 +7,8 @@
 
 namespace Pyz\Zed\DataImport;
 
-use Pyz\Zed\DataImport\Communication\Plugin\DataImportBulkPdoWriterPlugin;
+use Pyz\Zed\DataImport\Communication\Plugin\ProductAbstract\ProductAbstractBulkPdoWriterPlugin;
+use Pyz\Zed\DataImport\Communication\Plugin\ProductAbstract\ProductAbstractPropelWriterPlugin;
 use Spryker\Zed\CategoryDataImport\Communication\Plugin\CategoryDataImportPlugin;
 use Spryker\Zed\CompanyBusinessUnitDataImport\Communication\Plugin\CompanyBusinessUnitDataImportPlugin;
 use Spryker\Zed\CompanyDataImport\Communication\Plugin\CompanyDataImportPlugin;
@@ -26,6 +27,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     const FACADE_PRODUCT_BUNDLE = 'product bundle facade';
     const FACADE_PRODUCT_RELATION = 'product relation facade';
     const FACADE_PRODUCT_SEARCH = 'product search facade';
+    const DATA_IMPORT_PRODUCT_ABSTRACT_WRITER_PLUGINS = 'DATA_IMPORT_PRODUCT_ABSTRACT_WRITER_PLUGINS';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -41,6 +43,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
         $container = $this->addProductBundleFacade($container);
         $container = $this->addProductRelationFacade($container);
         $container = $this->addProductSearchFacade($container);
+        $container = $this->addDataImportProductAbstractWriterPlugins($container);
 
         return $container;
     }
@@ -152,13 +155,27 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     }
 
     /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addDataImportProductAbstractWriterPlugins(Container $container): Container
+    {
+        $container[static::DATA_IMPORT_PRODUCT_ABSTRACT_WRITER_PLUGINS] = function () {
+            return $this->getDataImportProductAbstractWriterPlugins();
+        };
+
+        return $container;
+    }
+
+    /**
      * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
      */
-    protected function getDataImportDefaultWriterPlugins(): array
+    protected function getDataImportProductAbstractWriterPlugins(): array
     {
         return [
-//            new DataImportPropelWriterPlugin(), # In case we use propels and slow importers
-            new DataImportBulkPdoWriterPlugin(),
+            new ProductAbstractBulkPdoWriterPlugin(),
+//            new ProductAbstractPropelWriterPlugin(),
         ];
     }
 }
