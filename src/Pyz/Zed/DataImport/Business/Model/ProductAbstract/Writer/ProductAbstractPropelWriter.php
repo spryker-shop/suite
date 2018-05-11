@@ -13,12 +13,12 @@ use Orm\Zed\Product\Persistence\SpyProductAbstractLocalizedAttributesQuery;
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\ProductAbstractHydratorStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
+use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
 use Spryker\Zed\DataImport\Business\Model\Writer\FlushInterface;
-use Spryker\Zed\DataImport\Business\Model\Writer\PublishAwareWriter;
 use Spryker\Zed\DataImport\Business\Model\Writer\WriterInterface;
 use Spryker\Zed\Product\Dependency\ProductEvents;
 
-class ProductAbstractPropelWriter extends PublishAwareWriter implements WriterInterface, FlushInterface
+class ProductAbstractPropelWriter extends DataImporterPublisher implements WriterInterface, FlushInterface
 {
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
@@ -48,7 +48,7 @@ class ProductAbstractPropelWriter extends PublishAwareWriter implements WriterIn
         if ($productAbstractEntity->isNew() || $productAbstractEntity->isModified()) {
             $productAbstractEntity->save();
 
-            $this->addPublishEvents(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $productAbstractEntity->getIdProductAbstract());
+            $this->addEvent(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $productAbstractEntity->getIdProductAbstract());
         }
 
         return $productAbstractEntity;

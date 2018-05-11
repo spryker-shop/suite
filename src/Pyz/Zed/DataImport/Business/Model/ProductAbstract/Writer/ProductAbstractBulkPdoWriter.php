@@ -10,12 +10,12 @@ namespace Pyz\Zed\DataImport\Business\Model\ProductAbstract\Writer;
 use Propel\Runtime\Propel;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\ProductAbstractHydratorStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
+use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
 use Spryker\Zed\DataImport\Business\Model\Writer\FlushInterface;
-use Spryker\Zed\DataImport\Business\Model\Writer\PublishAwareWriter;
 use Spryker\Zed\DataImport\Business\Model\Writer\WriterInterface;
 use Spryker\Zed\Product\Dependency\ProductEvents;
 
-class ProductAbstractBulkPdoWriter extends PublishAwareWriter implements WriterInterface, FlushInterface
+class ProductAbstractBulkPdoWriter extends DataImporterPublisher implements WriterInterface, FlushInterface
 {
     const BULK_SIZE = 100;
 
@@ -30,6 +30,8 @@ class ProductAbstractBulkPdoWriter extends PublishAwareWriter implements WriterI
     protected static $productAbstractLocalizedAttributesCollection = [];
 
     /**
+     * //TODO refactor this
+     *
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
      * @return void
@@ -97,7 +99,7 @@ class ProductAbstractBulkPdoWriter extends PublishAwareWriter implements WriterI
 
         $result = $stmt->fetchAll();
         foreach ($result as $columns) {
-            $this->addPublishEvents(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $columns['id_product_abstract']);
+            $this->addEvent(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $columns['id_product_abstract']);
         }
     }
 
@@ -282,7 +284,7 @@ SELECT 1;
     }
 
     /**
-     * //TODO move this to abstract class
+     * //TODO move this to abstract class or trait
      *
      * @param array $values
      *
@@ -297,7 +299,7 @@ SELECT 1;
     }
 
     /**
-     * //TODO move this to abstract class
+     * //TODO move this to abstract class or trait
      *
      * @param array $values
      *
@@ -312,7 +314,7 @@ SELECT 1;
     }
 
     /**
-     * //TODO move this to abstract class
+     * //TODO move this to abstract class or trait
      *
      * @param array $values
      *
