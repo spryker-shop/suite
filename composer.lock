@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a74db7568b4526957f552b6023cc5c6d",
+    "content-hash": "96b0972ec0dc82261ad0e12a13331dbd",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -7861,6 +7861,50 @@
             "time": "2018-04-03T21:13:45+00:00"
         },
         {
+            "name": "spryker/company-business-unit-gui",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/company-business-unit-gui.git",
+                "reference": "5a48492620504b5774531575fc1c98cfc0675959"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/company-business-unit-gui/zipball/5a48492620504b5774531575fc1c98cfc0675959",
+                "reference": "5a48492620504b5774531575fc1c98cfc0675959",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/company": "^1.0.0",
+                "spryker/company-business-unit": "^1.0.0",
+                "spryker/gui": "^3.13.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CompanyBusinessUnitGui module",
+            "time": "2018-04-03T16:51:40+00:00"
+        },
+        {
             "name": "spryker/company-business-unit-gui-extension",
             "version": "1.0.0",
             "source": {
@@ -8264,6 +8308,64 @@
             "time": "2018-04-25T09:00:46+00:00"
         },
         {
+            "name": "spryker/company-supplier-gui",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/company-supplier-gui.git",
+                "reference": "0b6dcc083d67f720f9efacbf07378d34bb6db71e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/company-supplier-gui/zipball/0b6dcc083d67f720f9efacbf07378d34bb6db71e",
+                "reference": "0b6dcc083d67f720f9efacbf07378d34bb6db71e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/company-gui-extension": "^1.0.0",
+                "spryker/company-supplier": "^1.0.0",
+                "spryker/currency": "^3.0.0",
+                "spryker/gui": "^3.13.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/money": "^2.0.0",
+                "spryker/price-product": "^1.0.0",
+                "spryker/product": "^5.0.0 || ^6.0.0",
+                "spryker/product-management-extension": "^1.0.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/store": "^1.5.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/company": "*",
+                "spryker/company-gui": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/company": "If you want to use CompanyTableCompanyTypePlugin which used Company module entity map.",
+                "spryker/company-gui": "If you want to provide plugins to CompanyGui module",
+                "spryker/gui": "If you want to use CompanySupplierGui module plugins which used Gui transfer object."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CompanySupplierGui module",
+            "time": "2018-04-04T10:42:53+00:00"
+        },
+        {
             "name": "spryker/company-unit-address",
             "version": "1.3.0",
             "source": {
@@ -8583,6 +8685,54 @@
             ],
             "description": "CompanyUnitAddressLabelDataImport module",
             "time": "2018-03-29T05:15:24+00:00"
+        },
+        {
+            "name": "spryker/company-unit-address-label-gui",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/company-unit-address-label-gui.git",
+                "reference": "829d049e09b7517f296652ee8a895bfe00c41a6e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/company-unit-address-label-gui/zipball/829d049e09b7517f296652ee8a895bfe00c41a6e",
+                "reference": "829d049e09b7517f296652ee8a895bfe00c41a6e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/company-unit-address-gui-extension": "^1.0.0",
+                "spryker/company-unit-address-label": "^1.1.0",
+                "spryker/kernel": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/company-unit-address": "*",
+                "spryker/gui": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/company-unit-address": "If you want to use CompanyUnitAddressTableExpanderPlugin which used CompanyUnitAddress module entity map.",
+                "spryker/gui": "If you want to use CompanyUnitAddressTableExpanderPlugin which used Gui transfer object."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CompanyUnitAddressLabelGui module",
+            "time": "2018-04-04T10:42:53+00:00"
         },
         {
             "name": "spryker/company-user",
@@ -13842,6 +13992,49 @@
             ],
             "description": "ProductManagement module",
             "time": "2018-04-26T07:31:10+00:00"
+        },
+        {
+            "name": "spryker/product-management-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-management-extension.git",
+                "reference": "a3975f092d7dfb98c19fcf203ec29d90697a7788"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-management-extension/zipball/a3975f092d7dfb98c19fcf203ec29d90697a7788",
+                "reference": "a3975f092d7dfb98c19fcf203ec29d90697a7788",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/symfony": "^3.0.0",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/symfony": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductManagementExtension module",
+            "time": "2018-03-30T06:20:42+00:00"
         },
         {
             "name": "spryker/product-measurement-unit",
