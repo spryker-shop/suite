@@ -401,7 +401,7 @@ $config[EventConstants::LOGGER_ACTIVE] = false;
 $config[EventBehaviorConstants::EVENT_BEHAVIOR_TRIGGERING_ACTIVE] = true;
 
 // ---------- Customer
-$config[CustomerConstants::CUSTOMER_SECURED_PATTERN] = '(^/login_check$|^(/en|/de)?/customer|^(/en|/de)?/wishlist|^(/en|/de)?/shopping-list|^(/en|/de)?/company(?!/register)|^(/en|/de)?/multi-cart|^(/en|/de)?/shared-cart|^(/en|/de)?/cart(?!/add))';
+$config[CustomerConstants::CUSTOMER_SECURED_PATTERN] = '(^/login_check$|^(/en|/de)?/customer|^(/en|/de)?/wishlist|^(/en|/de)?/shopping-list|^(/en|/de)?/company(?!/register)|^(/en|/de)?/multi-cart|^(/en|/de)?/shared-cart|^(/en|/de)?/cart(?!/add)|^(/en|/de)?/checkout)';
 $config[CustomerConstants::CUSTOMER_ANONYMOUS_PATTERN] = '^/.*';
 
 // ---------- Taxes
