@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9e6224aea3307f0e8bb756a45f97609c",
+    "content-hash": "87bc83fbc2f0db364968108790927b0c",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -2053,11 +2053,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/core-2351-Hide-content-from-not-logged-in-user",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "a7247a575bf533636b8f0ccfd2ee1b8c32279a82"
+                "reference": "6edd04a4c9beaa6f4747210aaa8be5acc15414a0"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.0",
@@ -2182,6 +2182,7 @@
                 "spryker/oms-discount-connector": "*",
                 "spryker/payment": "*",
                 "spryker/payment-cart-connector": "*",
+                "spryker/payolution": "*",
                 "spryker/pimple": "*",
                 "spryker/price": "*",
                 "spryker/price-cart-connector": "*",
@@ -2301,8 +2302,7 @@
             "autoload": {
                 "files": [
                     "autoload.php",
-                    "Bundles/Config/src/Spryker/Shared/Config.php",
-                    "Bundles/Development/tests/dd.php"
+                    "Bundles/Config/src/Spryker/Shared/Config.php"
                 ]
             },
             "scripts": {
@@ -2314,15 +2314,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-05-16T09:27:22+00:00"
+            "time": "2018-05-11T09:41:54+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/core-2351-Hide-content-from-not-logged-in-user",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "a814171bc95e363fc08d965f6f2f851f216bdb8e"
+                "reference": "05f918d324493dc40822480cc5155e47b0cb49a6"
             },
             "require": {
                 "php": ">=7.1"
@@ -2395,7 +2395,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-05-08T12:01:03+00:00"
+            "time": "2018-05-15T07:55:48+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -5285,12 +5285,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/php-generator.git",
-                "reference": "c1f6b2163c5471c4d94cd94b93362f12bceef183"
+                "reference": "325bc12c5d3cc4912d046d1b792cb0031dc9a182"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/php-generator/zipball/c1f6b2163c5471c4d94cd94b93362f12bceef183",
-                "reference": "c1f6b2163c5471c4d94cd94b93362f12bceef183",
+                "url": "https://api.github.com/repos/nette/php-generator/zipball/325bc12c5d3cc4912d046d1b792cb0031dc9a182",
+                "reference": "325bc12c5d3cc4912d046d1b792cb0031dc9a182",
                 "shasum": ""
             },
             "require": {
