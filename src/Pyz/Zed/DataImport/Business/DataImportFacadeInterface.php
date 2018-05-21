@@ -14,16 +14,15 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
  */
 interface DataImportFacadeInterface
 {
-
     /**
-     * @param DataSetInterface $dataSet
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
      * @return void
      */
     public function writeProductAbstractDataSet(DataSetInterface $dataSet);
 
     /**
-     * @param DataSetInterface $dataSet
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
      * @return void
      */

@@ -76,11 +76,7 @@ use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\ProductSearch\Code\KeyBuilder\FilterGlossaryKeyBuilder;
 use Spryker\Zed\DataImport\Business\DataImportBusinessFactory as SprykerDataImportBusinessFactory;
 use Spryker\Zed\DataImport\Business\Model\Writer\DataImportWriterCollection;
-use Spryker\Zed\DataImport\Business\Model\Writer\FlushInterface;
-use Spryker\Zed\DataImport\Business\Model\Writer\WriterInterface;
 use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
-use Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface;
-use Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface;
 use Spryker\Zed\Discount\DiscountConfig;
 
 /**
@@ -145,7 +141,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     }
 
     /**
-     * @return WriterInterface|FlushInterface
+     * @return \Spryker\Zed\DataImport\Business\Model\Writer\WriterInterface|\Spryker\Zed\DataImport\Business\Model\Writer\FlushInterface
      */
     public function createProductAbstractBulkPdoWriter()
     {
@@ -153,11 +149,14 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     }
 
     /**
-     * @return WriterInterface|FlushInterface
+     * @return \Spryker\Zed\DataImport\Business\Model\Writer\WriterInterface|\Spryker\Zed\DataImport\Business\Model\Writer\FlushInterface
      */
     public function createProductAbstractPropelWriter()
     {
-        return new ProductAbstractPropelWriter($this->getEventFacade());
+        return new ProductAbstractPropelWriter(
+            $this->getEventFacade(),
+            $this->createProductRepository()
+        );
     }
 
     /**
@@ -684,7 +683,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     /**
      * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
      */
-    protected function createProductAbstractImporter()
+    public function createProductAbstractImporter()
     {
         $dataImporter = $this->getCsvDataImporterWriterAwareFromConfig($this->getConfig()->getProductAbstractDataImporterConfiguration());
 
@@ -702,9 +701,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
                 ProductAbstractHydratorStep::KEY_META_DESCRIPTION,
                 ProductAbstractHydratorStep::KEY_META_KEYWORDS,
             ]))
-            ->addStep(new ProductAbstractHydratorStep(
-                $this->createProductRepository()
-            ));
+            ->addStep(new ProductAbstractHydratorStep());
 
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
         $dataImporter->setDataImportWriter($this->createProductAbstractDataImportWriters());
@@ -1139,9 +1136,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     }
 
     /**
-     * @return DataImportToEventFacadeInterface
+     * @return \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface
      */
-    protected function getEventFacade()
+    protected function getEventFacade(): DataImportToEventFacadeInterface
     {
         return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_EVENT);
     }
@@ -1149,7 +1146,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     /**
      * @return array
      */
-    protected function getProductAbstractDataImportWriterPlugins()
+    protected function getProductAbstractDataImportWriterPlugins(): array
     {
         return $this->getProvidedDependency(DataImportDependencyProvider::DATA_IMPORT_PRODUCT_ABSTRACT_WRITER_PLUGINS);
     }

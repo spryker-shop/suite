@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * This file is part of the Spryker Suite.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Zed\DataImport\Business;
@@ -16,21 +16,21 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 class DataImportFacade extends SprykerDataImportFacade implements DataImportFacadeInterface
 {
     /**
-     * @param DataSetInterface $dataSet
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
      * @return void
      */
-    public function writeProductAbstractDataSet(DataSetInterface $dataSet)
+    public function writeProductAbstractDataSet(DataSetInterface $dataSet): void
     {
         $this->getFactory()->createProductAbstractPropelWriter()->write($dataSet);
     }
 
     /**
-     * @param DataSetInterface $dataSet
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
      * @return void
      */
-    public function writeProductAbstractPdoDataSet(DataSetInterface $dataSet)
+    public function writeProductAbstractPdoDataSet(DataSetInterface $dataSet): void
     {
         $this->getFactory()->createProductAbstractBulkPdoWriter()->write($dataSet);
     }
@@ -38,7 +38,7 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
     /**
      * @return void
      */
-    public function flushProductAbstractDataImporter()
+    public function flushProductAbstractDataImporter(): void
     {
         $this->getFactory()->createProductAbstractPropelWriter()->flush();
     }
@@ -46,7 +46,7 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
     /**
      * @return void
      */
-    public function flushProductAbstractPdoDataImporter()
+    public function flushProductAbstractPdoDataImporter(): void
     {
         $this->getFactory()->createProductAbstractBulkPdoWriter()->flush();
     }
