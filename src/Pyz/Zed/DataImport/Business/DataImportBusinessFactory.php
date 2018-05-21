@@ -36,7 +36,9 @@ use Pyz\Zed\DataImport\Business\Model\ProductAbstract\AddProductAbstractSkusStep
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\ProductAbstractHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\Writer\ProductAbstractBulkPdoWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\Writer\ProductAbstractPropelWriter;
-use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\ProductAbstractStoreWriterStep;
+use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\ProductAbstractStoreHydratorStep;
+use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\ProductAbstractStoreBulkPdoWriter;
+use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\ProductAbstractStorePropelWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductAttributeKey\AddProductAttributeKeysStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAttributeKey\ProductAttributeKeyWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductConcreteWriter;
@@ -76,6 +78,7 @@ use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\ProductSearch\Code\KeyBuilder\FilterGlossaryKeyBuilder;
 use Spryker\Zed\DataImport\Business\DataImportBusinessFactory as SprykerDataImportBusinessFactory;
 use Spryker\Zed\DataImport\Business\Model\Writer\DataImportWriterCollection;
+use Spryker\Zed\DataImport\Business\Model\Writer\DataImportWriterInterface;
 use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
 use Spryker\Zed\Discount\DiscountConfig;
 
@@ -156,6 +159,26 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         return new ProductAbstractPropelWriter(
             $this->getEventFacade(),
             $this->createProductRepository()
+        );
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\Writer\WriterInterface|\Spryker\Zed\DataImport\Business\Model\Writer\FlushInterface
+     */
+    public function createProductAbstractStoreBulkPdoWriter()
+    {
+        return new ProductAbstractStoreBulkPdoWriter(
+            $this->getEventFacade()
+        );
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\Writer\WriterInterface|\Spryker\Zed\DataImport\Business\Model\Writer\FlushInterface
+     */
+    public function createProductAbstractStorePropelWriter()
+    {
+        return new ProductAbstractStorePropelWriter(
+            $this->getEventFacade()
         );
     }
 
@@ -720,16 +743,25 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     /**
      * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
      */
-    protected function createProductAbstractStoreImporter()
+    public function createProductAbstractStoreImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getProductAbstractStoreDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterWriterAwareFromConfig($this->getConfig()->getProductAbstractStoreDataImporterConfiguration());
 
-        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductAbstractStoreWriterStep::BULK_SIZE);
-        $dataSetStepBroker->addStep(new ProductAbstractStoreWriterStep());
+        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductAbstractStoreHydratorStep::BULK_SIZE);
+        $dataSetStepBroker->addStep(new ProductAbstractStoreHydratorStep());
 
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
+        $dataImporter->setDataImportWriter($this->createProductAbstractStoreDataImportWriters());
 
         return $dataImporter;
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\Writer\DataImportWriterInterface
+     */
+    protected function createProductAbstractStoreDataImportWriters(): DataImportWriterInterface
+    {
+        return new DataImportWriterCollection($this->getProductAbstractStoreDataImportWriterPlugins());
     }
 
     /**
@@ -1149,5 +1181,13 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     protected function getProductAbstractDataImportWriterPlugins(): array
     {
         return $this->getProvidedDependency(DataImportDependencyProvider::DATA_IMPORT_PRODUCT_ABSTRACT_WRITER_PLUGINS);
+    }
+
+    /**
+     * @return array
+     */
+    protected function getProductAbstractStoreDataImportWriterPlugins(): array
+    {
+        return $this->getProvidedDependency(DataImportDependencyProvider::DATA_IMPORT_PRODUCT_ABSTRACT_STORE_WRITER_PLUGINS);
     }
 }

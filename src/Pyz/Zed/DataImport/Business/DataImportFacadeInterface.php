@@ -37,4 +37,28 @@ interface DataImportFacadeInterface
      * @return void
      */
     public function flushProductAbstractDataImporter();
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeProductAbstractStoreDataSet(DataSetInterface $dataSet): void;
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeProductAbstractStorePdoDataSet(DataSetInterface $dataSet): void;
+
+    /**
+     * @return void
+     */
+    public function flushProductAbstractStoreDataImporter(): void;
+
+    /**
+     * @return void
+     */
+    public function flushProductAbstractStorePdoDataImporter(): void;
 }

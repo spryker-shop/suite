@@ -5,23 +5,19 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\DataImport\Business\Model\ProductAbstractStore;
+namespace Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer;
 
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Orm\Zed\Product\Persistence\SpyProductAbstractStoreQuery;
 use Orm\Zed\Store\Persistence\SpyStoreQuery;
-use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
+use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\ProductAbstractStoreHydratorStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
+use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
+use Spryker\Zed\DataImport\Business\Model\Writer\FlushInterface;
+use Spryker\Zed\DataImport\Business\Model\Writer\WriterInterface;
 
-/**
- */
-class ProductAbstractStoreWriterStep implements DataImportStepInterface
+class ProductAbstractStorePropelWriter extends DataImporterPublisher implements WriterInterface, FlushInterface
 {
-    const BULK_SIZE = 100;
-
-    const KEY_PRODUCT_ABSTRACT_SKU = 'product_abstract_sku';
-    const KEY_STORE_NAME = 'store_name';
-
     /**
      * @var int[] Keys are SKUs, values are product abstract ids.
      */
@@ -37,11 +33,21 @@ class ProductAbstractStoreWriterStep implements DataImportStepInterface
      *
      * @return void
      */
-    public function execute(DataSetInterface $dataSet)
+    public function write(DataSetInterface $dataSet): void
+    {
+        $this->createOrUpdateProductAbstractStore($dataSet);
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    protected function createOrUpdateProductAbstractStore(DataSetInterface $dataSet): void
     {
         (new SpyProductAbstractStoreQuery())
-            ->filterByFkProductAbstract($this->getIdProductAbstractBySku($dataSet[static::KEY_PRODUCT_ABSTRACT_SKU]))
-            ->filterByFkStore($this->getIdStoreByName($dataSet[static::KEY_STORE_NAME]))
+            ->filterByFkProductAbstract($this->getIdProductAbstractBySku($dataSet[ProductAbstractStoreHydratorStep::KEY_PRODUCT_ABSTRACT_SKU]))
+            ->filterByFkStore($this->getIdStoreByName($dataSet[ProductAbstractStoreHydratorStep::KEY_STORE_NAME]))
             ->findOneOrCreate()
             ->save();
     }
@@ -51,7 +57,7 @@ class ProductAbstractStoreWriterStep implements DataImportStepInterface
      *
      * @return int
      */
-    protected function getIdProductAbstractBySku($productAbstractSku)
+    protected function getIdProductAbstractBySku($productAbstractSku): int
     {
         if (!isset(static::$idProductAbstractBuffer[$productAbstractSku])) {
             static::$idProductAbstractBuffer[$productAbstractSku] =
@@ -66,7 +72,7 @@ class ProductAbstractStoreWriterStep implements DataImportStepInterface
      *
      * @return int
      */
-    protected function getIdStoreByName($storeName)
+    protected function getIdStoreByName($storeName): int
     {
         if (!isset(static::$idStoreBuffer[$storeName])) {
             static::$idStoreBuffer[$storeName] =
@@ -74,5 +80,13 @@ class ProductAbstractStoreWriterStep implements DataImportStepInterface
         }
 
         return static::$idStoreBuffer[$storeName];
+    }
+
+    /**
+     * @return void
+     */
+    public function flush(): void
+    {
+        $this->triggerEvents();
     }
 }
