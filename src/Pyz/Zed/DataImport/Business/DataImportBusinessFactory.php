@@ -34,12 +34,15 @@ use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\AddCategoryKeysStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\AddProductAbstractSkusStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\ProductAbstractHydratorStep;
-use Pyz\Zed\DataImport\Business\Model\ProductAbstract\Writer\ProductAbstractBulkPdoWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\Writer\ProductAbstractPropelWriter;
+use Pyz\Zed\DataImport\Business\Model\ProductAbstract\Writer\ProductAbstractBulkPdoWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\ProductAbstractStoreWriterStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAttributeKey\AddProductAttributeKeysStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAttributeKey\ProductAttributeKeyWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductConcreteWriter;
+use Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\ProductConcretePropelWriter;
+use Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\ProductConcreteBulkPdoWriter;
+use Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductConcreteHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductGroup\ProductGroupWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\ProductImageWriterStep;
 use Pyz\Zed\DataImport\Business\Model\ProductLabel\Hook\ProductLabelAfterImportPublishHook;
@@ -158,6 +161,48 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     public function createProductAbstractPropelWriter()
     {
         return new ProductAbstractPropelWriter($this->getEventFacade());
+    }
+
+    /**
+     * @return WriterInterface|FlushInterface
+     */
+    public function createProductConcretePropelWriter()
+    {
+        return new ProductConcretePropelWriter($this->getEventFacade(), $this->createProductRepository());
+    }
+
+    /**
+     * @return WriterInterface|FlushInterface
+     */
+    public function createProductConcreteBulkPdoWriter()
+    {
+        return new ProductConcreteBulkPdoWriter($this->getEventFacade());
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
+     */
+    public function createProductConcreteImporter()
+    {
+        $dataImporter = $this->getCsvDataImporterWriterAwareFromConfig($this->getConfig()->getProductConcreteDataImporterConfiguration());
+
+        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductConcreteHydratorStep::BULK_SIZE);
+        $dataSetStepBroker
+            ->addStep($this->createAddLocalesStep())
+            ->addStep($this->createAttributesExtractorStep())
+            ->addStep($this->createProductLocalizedAttributesExtractorStep([
+                ProductConcreteHydratorStep::KEY_NAME,
+                ProductConcreteHydratorStep::KEY_DESCRIPTION,
+                ProductConcreteHydratorStep::KEY_IS_SEARCHABLE,
+            ]))
+            ->addStep(new ProductConcreteHydratorStep(
+                $this->createProductRepository()
+            ));
+
+        $dataImporter->addDataSetStepBroker($dataSetStepBroker);
+        $dataImporter->setDataImportWriter($this->createProductConcreteDataImportWriters());
+
+        return $dataImporter;
     }
 
     /**
@@ -736,28 +781,11 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     }
 
     /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
+     * @return \Spryker\Zed\DataImport\Business\Model\Writer\DataImportWriterInterface
      */
-    protected function createProductConcreteImporter()
+    protected function createProductConcreteDataImportWriters()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getProductConcreteDataImporterConfiguration());
-
-        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductConcreteWriter::BULK_SIZE);
-        $dataSetStepBroker
-            ->addStep($this->createAddLocalesStep())
-            ->addStep($this->createAttributesExtractorStep())
-            ->addStep($this->createProductLocalizedAttributesExtractorStep([
-                ProductConcreteWriter::KEY_NAME,
-                ProductConcreteWriter::KEY_DESCRIPTION,
-                ProductConcreteWriter::KEY_IS_SEARCHABLE,
-            ]))
-            ->addStep(new ProductConcreteWriter(
-                $this->createProductRepository()
-            ));
-
-        $dataImporter->addDataSetStepBroker($dataSetStepBroker);
-
-        return $dataImporter;
+        return new DataImportWriterCollection($this->getProductConcreteDataImportWriterPlugins());
     }
 
     /**
@@ -1152,5 +1180,13 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     protected function getProductAbstractDataImportWriterPlugins()
     {
         return $this->getProvidedDependency(DataImportDependencyProvider::DATA_IMPORT_PRODUCT_ABSTRACT_WRITER_PLUGINS);
+    }
+
+    /**
+     * @return array
+     */
+    protected function getProductConcreteDataImportWriterPlugins()
+    {
+        return $this->getProvidedDependency(DataImportDependencyProvider::DATA_IMPORT_PRODUCT_CONCRETE_WRITER_PLUGINS);
     }
 }

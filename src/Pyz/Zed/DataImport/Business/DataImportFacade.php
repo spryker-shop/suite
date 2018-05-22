@@ -50,4 +50,40 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
     {
         $this->getFactory()->createProductAbstractBulkPdoWriter()->flush();
     }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeProductConcreteDataSet(DataSetInterface $dataSet)
+    {
+        $this->getFactory()->createProductConcretePropelWriter()->write($dataSet);
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeProductConcretePdoDataSet(DataSetInterface $dataSet)
+    {
+        $this->getFactory()->createProductConcreteBulkPdoWriter()->write($dataSet);
+    }
+
+    /**
+     * @return void
+     */
+    public function flushProductConcreteDataImporter()
+    {
+        $this->getFactory()->createProductConcretePropelWriter()->flush();
+    }
+
+    /**
+     * @return void
+     */
+    public function flushProductConcretePdoDataImporter()
+    {
+        $this->getFactory()->createProductConcreteBulkPdoWriter()->flush();
+    }
 }
