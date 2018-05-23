@@ -45,19 +45,19 @@ class ProductConcreteGenerator
     public function createProductConcreteRow(ProductConcreteTransfer $ProductConcreteTransfer)
     {
         $row = [
-            'abstract_sku' => '001',//$ProductConcreteTransfer->getAbstractSku(),
+            'abstract_sku' => $ProductConcreteTransfer->getAbstractSku(),
             'old_sku' => '',
             'concrete_sku' => $ProductConcreteTransfer->getSku(),
-            'name.en_US' => '(EN) '. $ProductConcreteTransfer->getLocalizedAttributes()[0]->getName(),
+            'name.en_US' => '(EN) ' . $ProductConcreteTransfer->getLocalizedAttributes()[0]->getName(),
             'name.de_DE' => '(DE) ' . $ProductConcreteTransfer->getLocalizedAttributes()[0]->getName(),
         ];
         $row = array_merge($row, $this->generateAttributes());
         $row = array_merge($row, [
             'icecat_pdp_url' => null,
-            'description.en_US' => '(DE) ' . $ProductConcreteTransfer->getLocalizedAttributes()[0]->getDescription(),
+            'description.en_US' => '(EN) ' . $ProductConcreteTransfer->getLocalizedAttributes()[0]->getDescription(),
             'description.de_DE' => '(DE) ' . $ProductConcreteTransfer->getLocalizedAttributes()[0]->getDescription(),
-            'is_searchable.en_US' => 1,//$ProductConcreteTransfer->getLocalizedAttributes()[0]->getIsSearchable(),
-            'is_searchable.de_DE' => 1,//$ProductConcreteTransfer->getLocalizedAttributes()[0]->getIsSearchable(),
+            'is_searchable.en_US' => $ProductConcreteTransfer->getLocalizedAttributes()[0]->getIsSearchable(),
+            'is_searchable.de_DE' => $ProductConcreteTransfer->getLocalizedAttributes()[0]->getIsSearchable(),
             'icecat_license' => null,
             'bundled' => $ProductConcreteTransfer->getProductBundle(),
         ]);
