@@ -20,6 +20,9 @@ class CustomerAccessConfig extends SprykerCustomerAccessConfig
     {
         return [
             static::CONTENT_TYPE_PRICE,
+            static::CONTENT_TYPE_ORDER_PLACE_SUBMIT,
+            static::CONTENT_TYPE_ADD_TO_CART,
+            static::CONTENT_TYPE_WISHLIST,
         ];
     }
 }
