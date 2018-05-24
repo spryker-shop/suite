@@ -43,30 +43,25 @@ class ProductAbstractBulkPdoWriter extends DataImporterPublisher implements Writ
     protected static $productUrlCollection = [];
 
     /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
+     * @var array
      */
-    public function write(DataSetInterface $dataSet): void
-    {
-        $this->prepareCollections($dataSet);
-
-        if (count(static::$productAbstractCollection) >= ProductAbstractHydratorStep::BULK_SIZE) {
-            $this->writeEntities();
-        }
-    }
+    protected static $productAbstractUpdated = [];
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
      * @return void
      */
-    protected function prepareCollections(DataSetInterface $dataSet): void
+    public function write(DataSetInterface $dataSet): void
     {
         $this->prepareProductAbstractionCollection($dataSet);
         $this->prepareProductAbstractLocalizedAttributesCollection($dataSet);
         $this->prepareProductCategoryCollection($dataSet);
         $this->prepareProductUrlCollection($dataSet);
+
+        if (count(static::$productAbstractCollection) >= ProductAbstractHydratorStep::BULK_SIZE) {
+            $this->flush();
+        }
     }
 
     /**
@@ -126,25 +121,7 @@ class ProductAbstractBulkPdoWriter extends DataImporterPublisher implements Writ
     /**
      * @return void
      */
-    protected function writeEntities(): void
-    {
-        $abstractProductIds = $this->persistAbstractProductEntities();
-        $this->persistAbstractProductLocalizedAttributesEntities();
-        $this->persistAbstractProductCategoryEntities();
-        $this->persistAbstractProductUrlEntities();
-
-        foreach ($abstractProductIds as $abstractProductId) {
-            $this->addEvent(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $abstractProductId);
-        }
-
-        $this->triggerEvents();
-        $this->flushMemory();
-    }
-
-    /**
-     * @return array
-     */
-    protected function persistAbstractProductEntities(): array
+    protected function persistAbstractProductEntities(): void
     {
         $abstractSkus = $this->formatPostgresArrayString(array_column(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_SKU));
         $attributes = $this->formatPostgresArrayFromJson(array_column(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_ATTRIBUTES));
@@ -168,13 +145,9 @@ class ProductAbstractBulkPdoWriter extends DataImporterPublisher implements Writ
 
         $result = $stmt->fetchAll();
 
-        $abstractProductIds = [];
-
         foreach ($result as $columns) {
-            $abstractProductIds[] = $columns[ProductAbstractHydratorStep::KEY_ID_PRODUCT_ABSTRACT];
+            static::$productAbstractUpdated[] = $columns[ProductAbstractHydratorStep::KEY_ID_PRODUCT_ABSTRACT];
         }
-
-        return $abstractProductIds;
     }
 
     /**
@@ -512,7 +485,17 @@ SELECT updated.id_url,id_product_abstract FROM updated UNION ALL SELECT inserted
      */
     public function flush(): void
     {
-        $this->writeEntities();
+        $this->persistAbstractProductEntities();
+        $this->persistAbstractProductLocalizedAttributesEntities();
+        $this->persistAbstractProductCategoryEntities();
+        $this->persistAbstractProductUrlEntities();
+
+        foreach (static::$productAbstractUpdated as $abstractProductId) {
+            $this->addEvent(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $abstractProductId);
+        }
+
+        $this->triggerEvents();
+        $this->flushMemory();
     }
 
     /**
@@ -524,5 +507,6 @@ SELECT updated.id_url,id_product_abstract FROM updated UNION ALL SELECT inserted
         static::$productAbstractLocalizedAttributesCollection = [];
         static::$productCategoryCollection = [];
         static::$productUrlCollection = [];
+        static::$productAbstractUpdated = [];
     }
 }

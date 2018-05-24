@@ -18,7 +18,7 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class ProductAbstractHydratorStep implements DataImportStepInterface
 {
-    public const BULK_SIZE = 1000;
+    public const BULK_SIZE = 5000;
     public const PRODUCT_ABSTRACT_TRANSFER = 'PRODUCT_ABSTRACT_TRANSFER';
     public const PRODUCT_ABSTRACT_LOCALIZED_TRANSFER = 'PRODUCT_ABSTRACT_LOCALIZED_TRANSFER';
     public const PRODUCT_CATEGORY_TRANSFER = 'PRODUCT_CATEGORY_TRANSFER';
