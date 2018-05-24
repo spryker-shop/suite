@@ -47,6 +47,7 @@ abstract class AbstractWriterPluginTest extends Unit
     {
         return Stub::make(DataImportBusinessFactory::class, [
             'createProductAbstractDataImportWriters' => $this->createDataImportWriters(),
+            'createProductPriceDataImportWriters' => $this->createDataImportWriters(),
             'getConfig' => $this->getDataImportConfigStub(),
             'getPropelConnection' => $this->getPropelConnection(),
             'getStore' => $this->getStore(),
@@ -59,7 +60,8 @@ abstract class AbstractWriterPluginTest extends Unit
     public function getDataImportConfigStub()
     {
         return Stub::make(DataImportConfig::class, [
-            'getProductAbstractDataImporterConfiguration' => $this->getProductAbstractDataImporterConfiguration(),
+            'getProductAbstractDataImporterConfiguration' => $this->getDataImporterConfiguration(),
+            'getProductPriceDataImporterConfiguration' => $this->getDataImporterConfiguration(),
         ]);
     }
 
@@ -74,7 +76,7 @@ abstract class AbstractWriterPluginTest extends Unit
     /**
      * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
      */
-    public function getProductAbstractDataImporterConfiguration(): DataImporterConfigurationTransfer
+    public function getDataImporterConfiguration(): DataImporterConfigurationTransfer
     {
         $dataImporterReaderConfigurationTransfer = new DataImporterReaderConfigurationTransfer();
         $dataImporterReaderConfigurationTransfer->setFileName(codecept_data_dir() . $this->getDataImportCsvFile());
