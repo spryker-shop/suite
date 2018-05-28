@@ -42,8 +42,9 @@ class ProductAbstractBulkPdoWriter extends DataImporterPublisher implements Writ
         foreach ($dataSet[ProductAbstractHydratorStep::PRODUCT_ABSTRACT_LOCALIZED_TRANSFER] as $productAbstractLocalizedTransfer) {
             $localizedAttributeArray = $productAbstractLocalizedTransfer['localizedAttributeTransfer']->modifiedToArray();
             $localizedAttributeArray['abstract_sku'] = $productAbstractLocalizedTransfer['abstract_sku'];
-            $localizedAttributeArray['meta_description'] = str_replace('"','', $localizedAttributeArray['meta_description']);;
-            $localizedAttributeArray['description'] = str_replace('"','', $localizedAttributeArray['description']);
+            $localizedAttributeArray['meta_description'] = str_replace('"', '', $localizedAttributeArray['meta_description']);
+            ;
+            $localizedAttributeArray['description'] = str_replace('"', '', $localizedAttributeArray['description']);
             static::$productAbstractLocalizedAttributesCollection[] = $localizedAttributeArray;
         }
 
@@ -94,7 +95,7 @@ class ProductAbstractBulkPdoWriter extends DataImporterPublisher implements Writ
             $fkTaxSets,
             $colorCode,
             $newFrom,
-            $newTo
+            $newTo,
         ]);
 
         $result = $stmt->fetchAll();
@@ -129,7 +130,7 @@ class ProductAbstractBulkPdoWriter extends DataImporterPublisher implements Writ
             $metaDescription,
             $metaKeywords,
             $idLocale,
-            $attributes
+            $attributes,
         ]);
     }
 
@@ -294,7 +295,7 @@ SELECT 1;
     {
         return sprintf(
             '{%s}',
-            join(',', $values)
+            implode(',', $values)
         );
     }
 
@@ -309,7 +310,7 @@ SELECT 1;
     {
         return sprintf(
             '{"%s"}',
-            join('","', $values)
+            implode('","', $values)
         );
     }
 
@@ -324,7 +325,7 @@ SELECT 1;
     {
         return sprintf(
             '[%s]',
-            join(',', $values)
+            implode(',', $values)
         );
     }
 }

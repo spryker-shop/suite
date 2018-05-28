@@ -80,6 +80,8 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
      */
     protected function importProductAbstract(DataSetInterface $dataSet)
     {

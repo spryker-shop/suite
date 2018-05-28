@@ -7,8 +7,6 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\ProductAbstract\Writer;
 
-use Generated\Shared\Transfer\SpyProductAbstractEntityTransfer;
-use Generated\Shared\Transfer\SpyProductAbstractLocalizedAttributesEntityTransfer;
 use Orm\Zed\Product\Persistence\SpyProductAbstractLocalizedAttributesQuery;
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\ProductAbstractHydratorStep;
@@ -32,7 +30,7 @@ class ProductAbstractPropelWriter extends DataImporterPublisher implements Write
     }
 
     /**
-     * @param DataSetInterface $dataSet
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
      * @return \Orm\Zed\Product\Persistence\SpyProductAbstract
      */
@@ -55,7 +53,7 @@ class ProductAbstractPropelWriter extends DataImporterPublisher implements Write
     }
 
     /**
-     * @param DataSetInterface $dataSet
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      * @param int $idProductAbstract
      *
      * @return void
@@ -81,9 +79,9 @@ class ProductAbstractPropelWriter extends DataImporterPublisher implements Write
     }
 
     /**
-     * @param DataSetInterface $dataSet
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
-     * @return SpyProductAbstractEntityTransfer
+     * @return \Generated\Shared\Transfer\SpyProductAbstractEntityTransfer
      */
     protected function getProductAbstractTransfer(DataSetInterface $dataSet)
     {
@@ -91,9 +89,9 @@ class ProductAbstractPropelWriter extends DataImporterPublisher implements Write
     }
 
     /**
-     * @param DataSetInterface $dataSet
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
-     * @return SpyProductAbstractLocalizedAttributesEntityTransfer
+     * @return \Generated\Shared\Transfer\SpyProductAbstractLocalizedAttributesEntityTransfer
      */
     protected function getProductAbstractLocalizedTransfers(DataSetInterface $dataSet)
     {
