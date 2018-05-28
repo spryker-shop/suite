@@ -7,10 +7,6 @@
 
 namespace Pyz\Zed\DemoDataGenerator\Communication\Console;
 
-use Generated\Shared\DataBuilder\ProductAbstractBuilder;
-use Generated\Shared\Transfer\ProductAbstractTransfer;
-use League\Csv\Writer;
-use Nette\Utils\DateTime;
 use Spryker\Zed\Kernel\Communication\Console\Console;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -21,7 +17,6 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class DemoDataGeneratorConsole extends Console
 {
-
     const COMMAND_NAME = 'demo:data:generate';
     const DESCRIPTION = 'This will generate demo data in csv format';
     const ROWS_NUMBER_PARAMETER_DESCRIPTION = 'Amount of rows to be generated.';
@@ -74,15 +69,18 @@ class DemoDataGeneratorConsole extends Console
         switch ($demoDataType) {
             case static::PRODUCT_ABSTRACT_TYPE:
                 $this->getFacade()->createProductAbstractCsvDemoData($rowsNumber);
+                $this->getFacade()->createProductImageCsvDemoData($rowsNumber);
                 break;
 
             case static::PRODUCT_CONCRETE_TYPE:
                 $this->getFacade()->createProductConcreteCsvDemoData($rowsNumber);
+                $this->getFacade()->createProductImageCsvDemoData($rowsNumber);
                 break;
 
             default:
                 $this->getFacade()->createProductAbstractCsvDemoData($rowsNumber);
                 $this->getFacade()->createProductConcreteCsvDemoData($rowsNumber);
+                $this->getFacade()->createProductImageCsvDemoData($rowsNumber);
                 break;
         }
 

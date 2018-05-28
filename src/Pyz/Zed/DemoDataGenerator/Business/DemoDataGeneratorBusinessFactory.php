@@ -7,16 +7,13 @@
 
 namespace Pyz\Zed\DemoDataGenerator\Business;
 
-use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 use Pyz\Zed\DemoDataGenerator\Business\Model\ProductAbstractGenerator;
 use Pyz\Zed\DemoDataGenerator\Business\Model\ProductConcreteGenerator;
+use Pyz\Zed\DemoDataGenerator\Business\Model\ProductImageGenerator;
+use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 
-/**
- * @method \Pyz\Zed\DemoDataGenerator\DemoDataGeneratorConfig getConfig()
- */
 class DemoDataGeneratorBusinessFactory extends AbstractBusinessFactory
 {
-
     /**
      * @return \Pyz\Zed\DemoDataGenerator\Business\Model\ProductAbstractGenerator
      */
@@ -28,8 +25,16 @@ class DemoDataGeneratorBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \Pyz\Zed\DemoDataGenerator\Business\Model\ProductConcreteGenerator
      */
-    public function createConcreteProductDemoDataGenerator()
+    public function createProductConcreteDemoDataGenerator()
     {
         return new ProductConcreteGenerator();
+    }
+
+    /**
+     * @return \Pyz\Zed\DemoDataGenerator\Business\Model\ProductImageGenerator
+     */
+    public function createProductImageDemoDataGenerator()
+    {
+        return new ProductImageGenerator();
     }
 }

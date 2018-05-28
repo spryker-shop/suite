@@ -45,7 +45,7 @@ class ProductAbstractGenerator
     }
 
     /**
-     * @param ProductAbstractTransfer $productAbstractTransfer
+     * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
      *
      * @return array
      */
@@ -93,12 +93,12 @@ class ProductAbstractGenerator
         for ($i = 0; $i < 6; $i++) {
             $attributeIndex = $i + 1;
             $attributes = array_merge($attributes, [
-                'attribute_key_'. $attributeIndex => 'att_key_' . $attributeIndex,
+                'attribute_key_' . $attributeIndex => 'att_key_' . $attributeIndex,
                 'value_' . $attributeIndex => 'att_val_' . $attributeIndex,
-                'attribute_key_'.$attributeIndex.'.en_US' => null,
-                'value_'.$attributeIndex.'.en_US' => null,
-                'attribute_key_'.$attributeIndex.'.de_DE' => null,
-                'value_'.$attributeIndex.'.de_DE' => null,
+                'attribute_key_' . $attributeIndex . '.en_US' => null,
+                'value_' . $attributeIndex . '.en_US' => null,
+                'attribute_key_' . $attributeIndex . '.de_DE' => null,
+                'value_' . $attributeIndex . '.de_DE' => null,
             ]);
         }
 

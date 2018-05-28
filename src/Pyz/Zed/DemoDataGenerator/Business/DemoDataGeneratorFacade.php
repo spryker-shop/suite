@@ -31,6 +31,16 @@ class DemoDataGeneratorFacade extends AbstractFacade implements DemoDataGenerato
      */
     public function createProductConcreteCsvDemoData(int $rowsNumber): void
     {
-        $this->getFactory()->createConcreteProductDemoDataGenerator()->createProductConcreteCsvDemoData($rowsNumber);
+        $this->getFactory()->createProductConcreteDemoDataGenerator()->createProductConcreteCsvDemoData($rowsNumber);
+    }
+
+    /**
+     * @param int $rowsNumber
+     *
+     * @return void
+     */
+    public function createProductImageCsvDemoData(int $rowsNumber): void
+    {
+        $this->getFactory()->createProductImageDemoDataGenerator()->createProductImageCsvDemoData($rowsNumber);
     }
 }

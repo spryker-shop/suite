@@ -12,7 +12,6 @@ use Spryker\Zed\Kernel\Container;
 
 class DemoDataGeneratorDependencyProvider extends AbstractBundleDependencyProvider
 {
-
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
@@ -48,5 +47,4 @@ class DemoDataGeneratorDependencyProvider extends AbstractBundleDependencyProvid
 
         return $container;
     }
-
 }

@@ -23,4 +23,10 @@ interface DemoDataGeneratorFacadeInterface
      */
     public function createProductConcreteCsvDemoData(int $rowsNumber): void;
 
+    /**
+     * @param int $rowsNumber
+     *
+     * @return void
+     */
+    public function createProductImageCsvDemoData(int $rowsNumber): void;
 }
