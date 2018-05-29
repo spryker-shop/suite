@@ -7,36 +7,43 @@
 
 namespace Pyz\Zed\DemoDataGenerator\Communication\Console;
 
-use Generated\Shared\DataBuilder\ProductAbstractBuilder;
-use Generated\Shared\Transfer\ProductAbstractTransfer;
-use League\Csv\Writer;
-use Nette\Utils\DateTime;
+use Generated\Shared\Transfer\DemoDataGeneratorTransfer;
 use Spryker\Zed\Kernel\Communication\Console\Console;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * @method \Pyz\Zed\DemoDataGenerator\Business\DemoDataGeneratorFacade getFacade()
+ * @method \Pyz\Zed\DemoDataGenerator\Business\DemoDataGeneratorFacadeInterface getFacade()
  */
 class DemoDataGeneratorConsole extends Console
 {
+    protected const COMMAND_NAME = 'demo:data:generate';
+    protected const DESCRIPTION = 'This will generate demo data in csv format';
+    protected const ROWS_NUMBER_PARAMETER_DESCRIPTION = 'Amount of rows to be generated.';
+    protected const TYPE_PARAMETER_DESCRIPTION = 'Entity type for demo data generation.';
 
-    const COMMAND_NAME = 'demo:data:generate';
-    const DESCRIPTION = 'This will generate demo data in csv format';
-    const ROWS_NUMBER_PARAMETER_DESCRIPTION = 'Amount of rows to be generated.';
-    const TYPE_PARAMETER_DESCRIPTION = 'Entity type for demo data generation.';
-    const PRODUCT_CONCRETE_TYPE = 'productconcrete';
-    const PRODUCT_ABSTRACT_TYPE = 'productabstract';
-    const TYPE_PARAMETER_NAME = 'type';
-    const TYPE_PARAMETER_KEY = 't';
-    const ROWS_NUMBER_PARAMETER_NAME = 'rows-number';
-    const ROWS_NUMBER_PARAMETER_KEY = 'r';
+    protected const PRODUCT_CONCRETE_TYPE = 'product_concrete';
+    protected const PRODUCT_ABSTRACT_TYPE = 'product_abstract';
+    protected const PRODUCT_PRICE_TYPE = 'product_price';
+    protected const PRODUCT_ABSTRACT_STORE_TYPE = 'product_abstract_store';
+
+    protected const TYPE_PARAMETER_NAME = 'type';
+    protected const TYPE_PARAMETER_KEY = 't';
+    protected const ROWS_NUMBER_PARAMETER_NAME = 'rows-number';
+    protected const ROWS_NUMBER_PARAMETER_KEY = 'r';
+
+    protected const ERROR_MESSAGE = 'Entity type for demo data generation is required';
+
+    /**
+     * @var int
+     */
+    protected $exitCode = self::CODE_SUCCESS;
 
     /**
      * @return void
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this->setName(static::COMMAND_NAME)
             ->setDescription(static::DESCRIPTION)
@@ -49,7 +56,7 @@ class DemoDataGeneratorConsole extends Console
             ->addOption(
                 static::TYPE_PARAMETER_NAME,
                 static::TYPE_PARAMETER_KEY,
-                InputOption::VALUE_OPTIONAL,
+                InputOption::VALUE_REQUIRED,
                 static::TYPE_PARAMETER_DESCRIPTION
             );
     }
@@ -68,24 +75,46 @@ class DemoDataGeneratorConsole extends Console
             static::COMMAND_NAME
         ));
 
-        $demoDataType = strtolower($input->getOption(static::TYPE_PARAMETER_NAME));
-        $rowsNumber = (int)strtolower($input->getOption(static::ROWS_NUMBER_PARAMETER_NAME));
+        $demoDataGeneratorTransfer = $this->getArguments($input, $output);
 
-        switch ($demoDataType) {
-            case static::PRODUCT_ABSTRACT_TYPE:
-                $this->getFacade()->createProductAbstractCsvDemoData($rowsNumber);
-                break;
-
-            case static::PRODUCT_CONCRETE_TYPE:
-                $this->getFacade()->createProductConcreteCsvDemoData($rowsNumber);
-                break;
-
-            default:
-                $this->getFacade()->createProductAbstractCsvDemoData($rowsNumber);
-                $this->getFacade()->createProductConcreteCsvDemoData($rowsNumber);
-                break;
+        if ($this->hasError()) {
+            return $this->exitCode;
         }
 
+        $this->getFacade()
+            ->generate($demoDataGeneratorTransfer);
+
         return static::CODE_SUCCESS;
+    }
+
+    /**
+     * @param \Symfony\Component\Console\Input\InputInterface $input
+     * @param \Symfony\Component\Console\Output\OutputInterface $output
+     *
+     * @return \Generated\Shared\Transfer\DemoDataGeneratorTransfer
+     */
+    protected function getArguments(InputInterface $input, OutputInterface $output): DemoDataGeneratorTransfer
+    {
+        $demoDataGeneratorTransfer = new DemoDataGeneratorTransfer();
+
+        if ($input->getOption(static::TYPE_PARAMETER_NAME)) {
+            $demoDataGeneratorTransfer->setType($input->getOption(static::TYPE_PARAMETER_NAME));
+            $demoDataGeneratorTransfer->setRowNumber((int)strtolower($input->getOption(static::ROWS_NUMBER_PARAMETER_NAME)));
+
+            return $demoDataGeneratorTransfer;
+        }
+
+        $this->exitCode = static::CODE_ERROR;
+        $this->error(static::ERROR_MESSAGE);
+
+        return $demoDataGeneratorTransfer;
+    }
+
+    /**
+     * @return bool
+     */
+    protected function hasError(): bool
+    {
+        return $this->exitCode !== static::CODE_SUCCESS;
     }
 }

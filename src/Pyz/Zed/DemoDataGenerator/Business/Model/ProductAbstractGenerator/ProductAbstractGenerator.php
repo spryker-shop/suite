@@ -5,14 +5,14 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\DemoDataGenerator\Business\Model;
+namespace Pyz\Zed\DemoDataGenerator\Business\Model\ProductAbstractGenerator;
 
 use Generated\Shared\DataBuilder\ProductAbstractBuilder;
 use Generated\Shared\Transfer\ProductAbstractTransfer;
-use League\Csv\Writer;
 use Nette\Utils\DateTime;
+use Pyz\Zed\DemoDataGenerator\Business\Model\AbstractGenerator;
 
-class ProductAbstractGenerator
+class ProductAbstractGenerator extends AbstractGenerator implements ProductAbstractGeneratorInterface
 {
     /**
      * @param int $rowsNumber
@@ -23,17 +23,26 @@ class ProductAbstractGenerator
     {
         $rows = [];
         $header = [];
-        for ($i = 0; $i <= $rowsNumber; $i++) {
+
+        for ($i = 0; $i < $rowsNumber; $i++) {
             $productAbstractTransfer = $this->generateProductAbstract();
             $row = $this->createProductAbstractRow($productAbstractTransfer);
             $header = array_keys($row);
             $rows[] = array_values($row);
         }
 
-        $writer = Writer::createFromPath('data/import/icecat_biz_data/product_abstract.csv', 'w+');
-        $writer->setDelimiter(',');
-        $writer->insertOne($header);
-        $writer->insertAll($rows);
+        $this->writeCsv($header, $rows);
+    }
+
+    /**
+     * @param array $header
+     * @param array $rows
+     *
+     * @return void
+     */
+    protected function writeCsv(array $header, array $rows): void
+    {
+        $this->getFileManager()->write($this->getConfig()->getProductAbstractCsvPath(), $header, $rows);
     }
 
     /**
@@ -41,17 +50,18 @@ class ProductAbstractGenerator
      */
     protected function generateProductAbstract()
     {
-        return (new ProductAbstractBuilder())->withLocalizedAttributes()->build();
+        return (new ProductAbstractBuilder())
+            ->withLocalizedAttributes()
+            ->build();
     }
 
     /**
-     * @param ProductAbstractTransfer $productAbstractTransfer
+     * @param \Generated\Shared\Transfer\ProductAbstractTransfer $productAbstractTransfer
      *
      * @return array
      */
-    public function createProductAbstractRow(ProductAbstractTransfer $productAbstractTransfer)
+    protected function createProductAbstractRow(ProductAbstractTransfer $productAbstractTransfer)
     {
-        //TODO generate random category, taxSets,
         $row = [
             'category_key' => 'digital-cameras',
             'category_product_order' => 1,
@@ -62,7 +72,9 @@ class ProductAbstractGenerator
             'url.de_DE' => uniqid('/de/demo/url/'),
             'is_featured' => 0,
         ];
+
         $row = array_merge($row, $this->generateAttributes());
+
         $row = array_merge($row, [
             'color_code' => '#ffffff',
             'description.en_US' => $productAbstractTransfer->getLocalizedAttributes()[0]->getDescription(),
@@ -86,19 +98,19 @@ class ProductAbstractGenerator
     /**
      * @return array
      */
-    protected function generateAttributes()
+    protected function generateAttributes(): array
     {
-        //TODO generate random attribute keys and values
         $attributes = [];
+
         for ($i = 0; $i < 6; $i++) {
             $attributeIndex = $i + 1;
             $attributes = array_merge($attributes, [
-                'attribute_key_'. $attributeIndex => 'att_key_' . $attributeIndex,
+                'attribute_key_' . $attributeIndex => 'att_key_' . $attributeIndex,
                 'value_' . $attributeIndex => 'att_val_' . $attributeIndex,
-                'attribute_key_'.$attributeIndex.'.en_US' => null,
-                'value_'.$attributeIndex.'.en_US' => null,
-                'attribute_key_'.$attributeIndex.'.de_DE' => null,
-                'value_'.$attributeIndex.'.de_DE' => null,
+                'attribute_key_' . $attributeIndex . '.en_US' => null,
+                'value_' . $attributeIndex . '.en_US' => null,
+                'attribute_key_' . $attributeIndex . '.de_DE' => null,
+                'value_' . $attributeIndex . '.de_DE' => null,
             ]);
         }
 

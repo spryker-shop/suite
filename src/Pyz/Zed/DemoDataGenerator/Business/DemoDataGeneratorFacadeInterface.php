@@ -7,6 +7,8 @@
 
 namespace Pyz\Zed\DemoDataGenerator\Business;
 
+use Generated\Shared\Transfer\DemoDataGeneratorTransfer;
+
 interface DemoDataGeneratorFacadeInterface
 {
     /**
@@ -23,4 +25,20 @@ interface DemoDataGeneratorFacadeInterface
      */
     public function createProductConcreteCsvDemoData(int $rowsNumber): void;
 
+    /**
+     * @return void
+     */
+    public function createPriceProductCsvDemoData(): void;
+
+    /**
+     * @return void
+     */
+    public function createProductAbstractStoreCsvDemoData(): void;
+
+    /**
+     * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer $demoDataGeneratorTransfer
+     *
+     * @return void
+     */
+    public function generate(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void;
 }

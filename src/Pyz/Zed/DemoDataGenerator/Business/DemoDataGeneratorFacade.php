@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\DemoDataGenerator\Business;
 
+use Generated\Shared\Transfer\DemoDataGeneratorTransfer;
 use Spryker\Zed\Kernel\Business\AbstractFacade;
 
 /**
@@ -21,7 +22,9 @@ class DemoDataGeneratorFacade extends AbstractFacade implements DemoDataGenerato
      */
     public function createProductAbstractCsvDemoData(int $rowsNumber): void
     {
-        $this->getFactory()->createAbstractProductDemoDataGenerator()->createProductAbstractCsvDemoData($rowsNumber);
+        $this->getFactory()
+            ->createAbstractProductDemoDataGenerator()
+            ->createProductAbstractCsvDemoData($rowsNumber);
     }
 
     /**
@@ -31,6 +34,40 @@ class DemoDataGeneratorFacade extends AbstractFacade implements DemoDataGenerato
      */
     public function createProductConcreteCsvDemoData(int $rowsNumber): void
     {
-        $this->getFactory()->createConcreteProductDemoDataGenerator()->createProductConcreteCsvDemoData($rowsNumber);
+        $this->getFactory()
+            ->createConcreteProductDemoDataGenerator()
+            ->createProductConcreteCsvDemoData($rowsNumber);
+    }
+
+    /**
+     * @return void
+     */
+    public function createPriceProductCsvDemoData(): void
+    {
+        $this->getFactory()
+            ->createPriceProductDemoDataGenerator()
+            ->createPriceProductCsvDemoData();
+    }
+
+    /**
+     * @return void
+     */
+    public function createProductAbstractStoreCsvDemoData(): void
+    {
+        $this->getFactory()
+            ->createProductAbstractStoreDemoDataGenerator()
+            ->createProductAbstractStoreCsvDemoData();
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer $demoDataGeneratorTransfer
+     *
+     * @return void
+     */
+    public function generate(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void
+    {
+        $this->getFactory()
+            ->createDemoDataGenerator($demoDataGeneratorTransfer)
+            ->generate();
     }
 }
