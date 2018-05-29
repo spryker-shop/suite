@@ -63,7 +63,10 @@ use Pyz\Zed\DataImport\Business\Model\ProductSearchAttributeMap\ProductSearchAtt
 use Pyz\Zed\DataImport\Business\Model\ProductSet\ProductSetImageExtractorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductSet\ProductSetWriterStep;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\Hook\ProductStockAfterImportPublishHook;
+use Pyz\Zed\DataImport\Business\Model\ProductStock\ProductStockHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\ProductStockWriterStep;
+use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockBulkPdoWriter;
+use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockPropelWriter;
 use Pyz\Zed\DataImport\Business\Model\Shipment\ShipmentWriterStep;
 use Pyz\Zed\DataImport\Business\Model\ShipmentPrice\ShipmentPriceWriterStep;
 use Pyz\Zed\DataImport\Business\Model\Stock\StockWriterStep;
@@ -76,11 +79,6 @@ use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\ProductSearch\Code\KeyBuilder\FilterGlossaryKeyBuilder;
 use Spryker\Zed\DataImport\Business\DataImportBusinessFactory as SprykerDataImportBusinessFactory;
 use Spryker\Zed\DataImport\Business\Model\Writer\DataImportWriterCollection;
-use Spryker\Zed\DataImport\Business\Model\Writer\FlushInterface;
-use Spryker\Zed\DataImport\Business\Model\Writer\WriterInterface;
-use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
-use Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface;
-use Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface;
 use Spryker\Zed\Discount\DiscountConfig;
 
 /**
@@ -145,7 +143,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     }
 
     /**
-     * @return WriterInterface|FlushInterface
+     * @return \Spryker\Zed\DataImport\Business\Model\Writer\WriterInterface|\Spryker\Zed\DataImport\Business\Model\Writer\FlushInterface
      */
     public function createProductAbstractBulkPdoWriter()
     {
@@ -153,11 +151,37 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     }
 
     /**
-     * @return WriterInterface|FlushInterface
+     * @return \Spryker\Zed\DataImport\Business\Model\Writer\WriterInterface|\Spryker\Zed\DataImport\Business\Model\Writer\FlushInterface
      */
     public function createProductAbstractPropelWriter()
     {
         return new ProductAbstractPropelWriter($this->getEventFacade());
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\Writer\WriterInterface|\Spryker\Zed\DataImport\Business\Model\Writer\FlushInterface
+     */
+    public function createProductStockPropelWriter()
+    {
+        return new ProductStockPropelWriter(
+            $this->getEventFacade(),
+            $this->getAvailabilityFacade(),
+            $this->getProductBundleFacade(),
+            $this->createProductRepository()
+        );
+    }
+
+    /**
+     * @return \Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockBulkPdoWriter
+     */
+    public function createProductStockBulkPdoWriter()
+    {
+        return new ProductStockBulkPdoWriter(
+            $this->getEventFacade(),
+            $this->getAvailabilityFacade(),
+            $this->getProductBundleFacade(),
+            $this->createProductRepository()
+        );
     }
 
     /**
@@ -477,22 +501,26 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     /**
      * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
      */
-    protected function createProductStockImporter()
+    public function createProductStockImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getProductStockDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterWriterAwareFromConfig($this->getConfig()->getProductStockDataImporterConfiguration());
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductStockWriterStep::BULK_SIZE);
         $dataSetStepBroker
-            ->addStep(new ProductStockWriterStep(
-                $this->createProductRepository(),
-                $this->getAvailabilityFacade(),
-                $this->getProductBundleFacade()
-            ));
-
+            ->addStep(new ProductStockHydratorStep());
         $dataImporter->addDataSetStepBroker($dataSetStepBroker)
             ->addAfterImportHook($this->createProductStockAfterImportPublishHook());
+        $dataImporter->setDataImportWriter($this->createProductStockDataImportWriters());
 
         return $dataImporter;
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\Writer\DataImportWriterInterface
+     */
+    protected function createProductStockDataImportWriters()
+    {
+        return new DataImportWriterCollection($this->getProductStockDataImportWriterPlugins());
     }
 
     /**
@@ -1139,7 +1167,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     }
 
     /**
-     * @return DataImportToEventFacadeInterface
+     * @return \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface
      */
     protected function getEventFacade()
     {
@@ -1152,5 +1180,13 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     protected function getProductAbstractDataImportWriterPlugins()
     {
         return $this->getProvidedDependency(DataImportDependencyProvider::DATA_IMPORT_PRODUCT_ABSTRACT_WRITER_PLUGINS);
+    }
+
+    /**
+     * @return array
+     */
+    protected function getProductStockDataImportWriterPlugins()
+    {
+        return $this->getProvidedDependency(DataImportDependencyProvider::DATA_IMPORT_PRODUCT_STOCK_WRITER_PLUGINS);
     }
 }
