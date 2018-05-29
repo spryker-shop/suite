@@ -123,30 +123,32 @@ class ProductAbstractBulkPdoWriter extends DataImporterPublisher implements Writ
      */
     protected function persistAbstractProductEntities(): void
     {
-        $abstractSkus = $this->formatPostgresArrayString(array_column(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_SKU));
-        $attributes = $this->formatPostgresArrayFromJson(array_column(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_ATTRIBUTES));
-        $fkTaxSets = $this->formatPostgresArray(array_column(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_FK_TAX_SET));
-        $colorCode = $this->formatPostgresArrayString(array_column(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_COLOR_CODE));
-        $newFrom = $this->formatPostgresArrayString(array_column(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_NEW_FROM));
-        $newTo = $this->formatPostgresArrayString(array_column(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_NEW_TO));
+        if (!empty(static::$productAbstractCollection)) {
+            $abstractSkus = $this->formatPostgresArrayString(array_column(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_SKU));
+            $attributes = $this->formatPostgresArrayFromJson(array_column(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_ATTRIBUTES));
+            $fkTaxSets = $this->formatPostgresArray(array_column(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_FK_TAX_SET));
+            $colorCode = $this->formatPostgresArrayString(array_column(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_COLOR_CODE));
+            $newFrom = $this->formatPostgresArrayString(array_column(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_NEW_FROM));
+            $newTo = $this->formatPostgresArrayString(array_column(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_NEW_TO));
 
-        $sql = $this->createAbstractProductSQL();
+            $sql = $this->createAbstractProductSQL();
 
-        $con = Propel::getConnection();
-        $stmt = $con->prepare($sql);
-        $stmt->execute([
-            $abstractSkus,
-            $attributes,
-            $fkTaxSets,
-            $colorCode,
-            $newFrom,
-            $newTo,
-        ]);
+            $con = Propel::getConnection();
+            $stmt = $con->prepare($sql);
+            $stmt->execute([
+                $abstractSkus,
+                $attributes,
+                $fkTaxSets,
+                $colorCode,
+                $newFrom,
+                $newTo,
+            ]);
 
-        $result = $stmt->fetchAll();
+            $result = $stmt->fetchAll();
 
-        foreach ($result as $columns) {
-            static::$productAbstractUpdated[] = $columns[ProductAbstractHydratorStep::KEY_ID_PRODUCT_ABSTRACT];
+            foreach ($result as $columns) {
+                static::$productAbstractUpdated[] = $columns[ProductAbstractHydratorStep::KEY_ID_PRODUCT_ABSTRACT];
+            }
         }
     }
 
@@ -155,29 +157,31 @@ class ProductAbstractBulkPdoWriter extends DataImporterPublisher implements Writ
      */
     protected function persistAbstractProductLocalizedAttributesEntities(): void
     {
-        $abstractSkus = $this->formatPostgresArrayString(array_column(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_ABSTRACT_SKU));
-        $idLocale = $this->formatPostgresArray(array_column(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_FK_LOCALE));
-        $name = $this->formatPostgresArrayString(array_column(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_NAME));
-        $description = $this->formatPostgresArrayString(array_column(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_DESCRIPTION));
-        $metaTitle = $this->formatPostgresArrayString(array_column(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_META_TITLE));
-        $metaDescription = $this->formatPostgresArrayString(array_column(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_META_DESCRIPTION));
-        $metaKeywords = $this->formatPostgresArrayString(array_column(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_META_KEYWORDS));
-        $attributes = $this->formatPostgresArrayFromJson(array_column(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_ATTRIBUTES));
+        if (!empty(static::$productAbstractLocalizedAttributesCollection)) {
+            $abstractSkus = $this->formatPostgresArrayString(array_column(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_ABSTRACT_SKU));
+            $idLocale = $this->formatPostgresArray(array_column(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_FK_LOCALE));
+            $name = $this->formatPostgresArrayString(array_column(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_NAME));
+            $description = $this->formatPostgresArrayString(array_column(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_DESCRIPTION));
+            $metaTitle = $this->formatPostgresArrayString(array_column(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_META_TITLE));
+            $metaDescription = $this->formatPostgresArrayString(array_column(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_META_DESCRIPTION));
+            $metaKeywords = $this->formatPostgresArrayString(array_column(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_META_KEYWORDS));
+            $attributes = $this->formatPostgresArrayFromJson(array_column(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_ATTRIBUTES));
 
-        $sql = $this->createAbstractProductLocalizedAttributesSQL();
+            $sql = $this->createAbstractProductLocalizedAttributesSQL();
 
-        $con = Propel::getConnection();
-        $stmt = $con->prepare($sql);
-        $stmt->execute([
-            $abstractSkus,
-            $name,
-            $description,
-            $metaTitle,
-            $metaDescription,
-            $metaKeywords,
-            $idLocale,
-            $attributes,
-        ]);
+            $con = Propel::getConnection();
+            $stmt = $con->prepare($sql);
+            $stmt->execute([
+                $abstractSkus,
+                $name,
+                $description,
+                $metaTitle,
+                $metaDescription,
+                $metaKeywords,
+                $idLocale,
+                $attributes,
+            ]);
+        }
     }
 
     /**
@@ -187,25 +191,27 @@ class ProductAbstractBulkPdoWriter extends DataImporterPublisher implements Writ
      */
     protected function persistAbstractProductCategoryEntities(): void
     {
-        $abstractSkus = $this->formatPostgresArrayString(array_column(static::$productCategoryCollection, ProductAbstractHydratorStep::KEY_ABSTRACT_SKU));
-        $productOrder = $this->formatPostgresArrayString(array_column(static::$productCategoryCollection, ProductAbstractHydratorStep::KEY_PRODUCT_ORDER));
-        $idCategory = $this->formatPostgresArrayString(array_column(static::$productCategoryCollection, ProductAbstractHydratorStep::KEY_FK_CATEGORY));
+        if (!empty(static::$productCategoryCollection)) {
+            $abstractSkus = $this->formatPostgresArrayString(array_column(static::$productCategoryCollection, ProductAbstractHydratorStep::KEY_ABSTRACT_SKU));
+            $productOrder = $this->formatPostgresArrayString(array_column(static::$productCategoryCollection, ProductAbstractHydratorStep::KEY_PRODUCT_ORDER));
+            $idCategory = $this->formatPostgresArrayString(array_column(static::$productCategoryCollection, ProductAbstractHydratorStep::KEY_FK_CATEGORY));
 
-        $sql = $this->createAbstractProductCategoriesSQL();
+            $sql = $this->createAbstractProductCategoriesSQL();
 
-        $con = Propel::getConnection();
-        $stmt = $con->prepare($sql);
-        $stmt->execute([
-            $abstractSkus,
-            $productOrder,
-            $idCategory,
-        ]);
+            $con = Propel::getConnection();
+            $stmt = $con->prepare($sql);
+            $stmt->execute([
+                $abstractSkus,
+                $productOrder,
+                $idCategory,
+            ]);
 
-        $result = $stmt->fetchAll();
+            $result = $stmt->fetchAll();
 
-        foreach ($result as $columns) {
-            $this->addEvent(ProductCategoryEvents::PRODUCT_CATEGORY_PUBLISH, $columns[ProductAbstractHydratorStep::KEY_ID_PRODUCT_ABSTRACT]);
-            $this->addEvent(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $columns[ProductAbstractHydratorStep::KEY_ID_PRODUCT_ABSTRACT]);
+            foreach ($result as $columns) {
+                $this->addEvent(ProductCategoryEvents::PRODUCT_CATEGORY_PUBLISH, $columns[ProductAbstractHydratorStep::KEY_ID_PRODUCT_ABSTRACT]);
+                $this->addEvent(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $columns[ProductAbstractHydratorStep::KEY_ID_PRODUCT_ABSTRACT]);
+            }
         }
     }
 
@@ -214,25 +220,27 @@ class ProductAbstractBulkPdoWriter extends DataImporterPublisher implements Writ
      */
     protected function persistAbstractProductUrlEntities(): void
     {
-        $abstractSkus = $this->formatPostgresArrayString(array_column(static::$productUrlCollection, ProductAbstractHydratorStep::KEY_ABSTRACT_SKU));
-        $idLocale = $this->formatPostgresArray(array_column(static::$productUrlCollection, ProductAbstractHydratorStep::KEY_FK_LOCALE));
-        $url = $this->formatPostgresArrayString(array_column(static::$productUrlCollection, ProductAbstractHydratorStep::KEY_URL));
+        if (!empty(static::$productUrlCollection)) {
+            $abstractSkus = $this->formatPostgresArrayString(array_column(static::$productUrlCollection, ProductAbstractHydratorStep::KEY_ABSTRACT_SKU));
+            $idLocale = $this->formatPostgresArray(array_column(static::$productUrlCollection, ProductAbstractHydratorStep::KEY_FK_LOCALE));
+            $url = $this->formatPostgresArrayString(array_column(static::$productUrlCollection, ProductAbstractHydratorStep::KEY_URL));
 
-        $sql = $this->createAbstractProductUrlsSQL();
+            $sql = $this->createAbstractProductUrlsSQL();
 
-        $con = Propel::getConnection();
-        $stmt = $con->prepare($sql);
+            $con = Propel::getConnection();
+            $stmt = $con->prepare($sql);
 
-        $stmt->execute([
-            $abstractSkus,
-            $idLocale,
-            $url,
-        ]);
+            $stmt->execute([
+                $abstractSkus,
+                $idLocale,
+                $url,
+            ]);
 
-        $result = $stmt->fetchAll();
+            $result = $stmt->fetchAll();
 
-        foreach ($result as $columns) {
-            $this->addEvent(UrlEvents::URL_PUBLISH, $columns[ProductAbstractHydratorStep::KEY_ID_URL]);
+            foreach ($result as $columns) {
+                $this->addEvent(UrlEvents::URL_PUBLISH, $columns[ProductAbstractHydratorStep::KEY_ID_URL]);
+            }
         }
     }
 
