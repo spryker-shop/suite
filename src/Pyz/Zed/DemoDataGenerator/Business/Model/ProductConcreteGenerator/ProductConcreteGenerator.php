@@ -8,11 +8,18 @@
 namespace Pyz\Zed\DemoDataGenerator\Business\Model\ProductConcreteGenerator;
 
 use Generated\Shared\DataBuilder\ProductConcreteBuilder;
-use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Pyz\Zed\DemoDataGenerator\Business\Model\AbstractGenerator;
 
 class ProductConcreteGenerator extends AbstractGenerator implements ProductConcreteGeneratorInterface
 {
+    const MIN_PRODUCT_BUNDLE_COUNT = 1;
+    const MAX_PRODUCT_BUNDLE_COUNT = 5;
+
+    /**
+     * @var array
+     */
+    protected $rows = [];
+
     /**
      * @param int $rowsNumber
      *
@@ -20,17 +27,12 @@ class ProductConcreteGenerator extends AbstractGenerator implements ProductConcr
      */
     public function createProductConcreteCsvDemoData(int $rowsNumber): void
     {
-        $rows = [];
-        $header = [];
-
-        for ($i = 0; $i <= $rowsNumber; $i++) {
-            $productConcreteTransfer = $this->generateProductConcrete();
-            $row = $this->createProductConcreteRow($productConcreteTransfer);
-            $header = array_keys($row);
-            $rows[] = array_values($row);
+        for ($i = 1; $i <= $rowsNumber; $i++) {
+            $this->createProductConcreteRow($i);
         }
 
-        $this->writeCsv($header, $rows);
+        $header = array_keys($this->rows[0]);
+        $this->writeCsv($header, $this->rows);
     }
 
     /**
@@ -45,15 +47,19 @@ class ProductConcreteGenerator extends AbstractGenerator implements ProductConcr
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
+     * @param int $rowNumber
      *
-     * @return array
+     * @return void
      */
-    protected function createProductConcreteRow(ProductConcreteTransfer $productConcreteTransfer): array
+    protected function createProductConcreteRow(int $rowNumber): void
     {
+        $productConcreteTransfer = $this->generateProductConcrete();
+        $productAbstractSkus = $this->readProductAbstractFromCsv();
+        $productAbstractSku = $productAbstractSkus[$rowNumber] ?? '';
+
         $row = [
-            'abstract_sku' => $productConcreteTransfer->getAbstractSku(),
-            'old_sku' => '',
+            'abstract_sku' => $productAbstractSku,
+            'old_sku' => $this->getOldSku($productConcreteTransfer->getSku(), $rowNumber),
             'concrete_sku' => $productConcreteTransfer->getSku(),
             'name.en_US' => '(EN) ' . $productConcreteTransfer->getLocalizedAttributes()[0]->getName(),
             'name.de_DE' => '(DE) ' . $productConcreteTransfer->getLocalizedAttributes()[0]->getName(),
@@ -62,16 +68,72 @@ class ProductConcreteGenerator extends AbstractGenerator implements ProductConcr
         $row = array_merge($row, $this->generateAttributes());
 
         $row = array_merge($row, [
-            'icecat_pdp_url' => null,
+            'icecat_pdp_url' => '',
             'description.en_US' => '(EN) ' . $productConcreteTransfer->getLocalizedAttributes()[0]->getDescription(),
             'description.de_DE' => '(DE) ' . $productConcreteTransfer->getLocalizedAttributes()[0]->getDescription(),
             'is_searchable.en_US' => $productConcreteTransfer->getLocalizedAttributes()[0]->getIsSearchable(),
             'is_searchable.de_DE' => $productConcreteTransfer->getLocalizedAttributes()[0]->getIsSearchable(),
-            'icecat_license' => null,
-            'bundled' => $productConcreteTransfer->getProductBundle(),
+            'icecat_license' => '',
+            'bundled' => $this->getRandomBundledProduct(),
         ]);
 
-        return $row;
+        $this->rows[] = $row;
+    }
+
+    /**
+     * @param string $concreteSku
+     * @param int $rowNumber
+     *
+     * @return string
+     */
+    protected function getOldSku($concreteSku, $rowNumber): string
+    {
+        $prefix = '';
+
+        if ($rowNumber < 100) {
+            $prefix = '0';
+        }
+
+        if ($rowNumber < 10) {
+            $prefix = '00';
+        }
+
+        return $prefix . $rowNumber . '_' . $concreteSku;
+    }
+
+    /**
+     * @return string
+     */
+    protected function getRandomBundledProduct(): string
+    {
+        $withBundleProduct = rand(0, 1);
+
+        if (count($this->rows) && $withBundleProduct) {
+            $bundledProductCount = rand(static::MIN_PRODUCT_BUNDLE_COUNT, static::MAX_PRODUCT_BUNDLE_COUNT);
+
+            return $this->getRandomProductSku() . '/' . $bundledProductCount;
+        }
+
+        return '';
+    }
+
+    /**
+     * @return string
+     */
+    protected function getRandomProductSku(): string
+    {
+        $maxRowsIndex = max(array_keys($this->rows));
+        $randomIndex = rand(0, $maxRowsIndex);
+
+        return $this->rows[$randomIndex]['concrete_sku'];
+    }
+
+    /**
+     * @return array
+     */
+    protected function readProductAbstractFromCsv(): array
+    {
+        return $this->getFileManager()->readColumn($this->getConfig()->getProductAbstractCsvPath());
     }
 
     /**
