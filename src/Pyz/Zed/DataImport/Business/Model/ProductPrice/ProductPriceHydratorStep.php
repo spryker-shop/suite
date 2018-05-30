@@ -125,7 +125,7 @@ class ProductPriceHydratorStep implements DataImportStepInterface
         $priceTypeTransfer = new SpyPriceTypeEntityTransfer();
         $priceTypeTransfer
             ->setName($dataSet[static::KEY_PRICE_TYPE])
-            ->setPriceModeConfiguration(2);
+            ->setPriceModeConfiguration(static::KEY_DEFAULT_PRICE_MODE_CONFIGURATION);
 
         $dataSet[static::PRICE_TYPE_TRANSFER] = $priceTypeTransfer;
 
