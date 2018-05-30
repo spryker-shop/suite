@@ -8,7 +8,6 @@
 namespace Pyz\Zed\DemoDataGenerator\Business\Model\ProductConcreteGenerator;
 
 use Generated\Shared\DataBuilder\ProductConcreteBuilder;
-use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Pyz\Zed\DemoDataGenerator\Business\Model\AbstractGenerator;
 
 class ProductConcreteGenerator extends AbstractGenerator implements ProductConcreteGeneratorInterface
@@ -20,12 +19,11 @@ class ProductConcreteGenerator extends AbstractGenerator implements ProductConcr
      */
     public function createProductConcreteCsvDemoData(int $rowsNumber): void
     {
-        $rows = [];
         $header = [];
+        $rows = [];
 
         for ($i = 0; $i <= $rowsNumber; $i++) {
-            $productConcreteTransfer = $this->generateProductConcrete();
-            $row = $this->createProductConcreteRow($productConcreteTransfer);
+            $row = $this->createProductConcreteRow($i);
             $header = array_keys($row);
             $rows[] = array_values($row);
         }
@@ -45,14 +43,18 @@ class ProductConcreteGenerator extends AbstractGenerator implements ProductConcr
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
+     * @param int $rowNumber
      *
      * @return array
      */
-    protected function createProductConcreteRow(ProductConcreteTransfer $productConcreteTransfer): array
+    protected function createProductConcreteRow(int $rowNumber): array
     {
+        $productConcreteTransfer = $this->generateProductConcrete();
+        $productAbstractSkus = $this->readProductAbstractFromCsv();
+        $productAbstractSku = $productAbstractSkus[$rowNumber] ?? '';
+
         $row = [
-            'abstract_sku' => $productConcreteTransfer->getAbstractSku(),
+            'abstract_sku' => $productAbstractSku,
             'old_sku' => '',
             'concrete_sku' => $productConcreteTransfer->getSku(),
             'name.en_US' => '(EN) ' . $productConcreteTransfer->getLocalizedAttributes()[0]->getName(),
@@ -62,16 +64,24 @@ class ProductConcreteGenerator extends AbstractGenerator implements ProductConcr
         $row = array_merge($row, $this->generateAttributes());
 
         $row = array_merge($row, [
-            'icecat_pdp_url' => null,
+            'icecat_pdp_url' => '',
             'description.en_US' => '(EN) ' . $productConcreteTransfer->getLocalizedAttributes()[0]->getDescription(),
             'description.de_DE' => '(DE) ' . $productConcreteTransfer->getLocalizedAttributes()[0]->getDescription(),
             'is_searchable.en_US' => $productConcreteTransfer->getLocalizedAttributes()[0]->getIsSearchable(),
             'is_searchable.de_DE' => $productConcreteTransfer->getLocalizedAttributes()[0]->getIsSearchable(),
-            'icecat_license' => null,
-            'bundled' => $productConcreteTransfer->getProductBundle(),
+            'icecat_license' => '',
+            'bundled' => '',
         ]);
 
         return $row;
+    }
+
+    /**
+     * @return array
+     */
+    protected function readProductAbstractFromCsv(): array
+    {
+        return $this->getFileManager()->readColumn($this->getConfig()->getProductAbstractCsvPath());
     }
 
     /**

@@ -15,6 +15,7 @@ class DemoDataGeneratorConfig extends AbstractBundleConfig
     protected const PRODUCT_CONCRETE_CSV_PATH = 'data/import/icecat_biz_data/product_concrete.csv';
     protected const PRODUCT_ABSTRACT_STORE_CSV_PATH = 'data/import/icecat_biz_data/product_abstract_store.csv';
     protected const PRODUCT_PRICE_CSV_PATH = 'data/import/product_price.csv';
+    protected const PRODUCT_IMAGE_CSV_PATH = 'data/import/icecat_biz_data/product_image.csv';
 
     /**
      * @var array
@@ -59,5 +60,13 @@ class DemoDataGeneratorConfig extends AbstractBundleConfig
     public function getProductPriceDefaultTypes(): array
     {
         return static::$defaultPriceTypes;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProductImageCsvPath(): string
+    {
+        return static::PRODUCT_IMAGE_CSV_PATH;
     }
 }
