@@ -21,12 +21,6 @@ use Spryker\Shared\Kernel\Store;
 
 class ProductImageGenerator extends AbstractGenerator implements ProductImageGeneratorInterface
 {
-    const PRODUCT_CONCRETE_TRANSFER = 'PRODUCT_CONCRETE_TRANSFER';
-    const PRODUCT_ABSTRACT_TRANSFER = 'PRODUCT_ABSTRACT_TRANSFER';
-    const PRODUCT_IMAGE_TRANSFER = 'PRODUCT_IMAGE_TRANSFER';
-    const PRODUCT_IMAGE_SET_TRANSFER = 'PRODUCT_IMAGE_SET_TRANSFER';
-    const LOCALE_TRANSFER = 'LOCALE_TRANSFER';
-
     /**
      * @var \Spryker\Shared\Kernel\Store
      */

@@ -24,6 +24,7 @@ use Pyz\Zed\DemoDataGenerator\Business\Model\ProductConcreteGenerator\ProductCon
 use Pyz\Zed\DemoDataGenerator\Business\Model\ProductConcreteGenerator\ProductConcreteGeneratorInterface;
 use Pyz\Zed\DemoDataGenerator\Business\Model\ProductImageGenerator\ProductImageGenerator;
 use Pyz\Zed\DemoDataGenerator\Business\Model\ProductImageGenerator\ProductImageGeneratorInterface;
+use Pyz\Zed\DemoDataGenerator\Business\Model\StockProductGenerator\StockProductGenerator;
 use Pyz\Zed\DemoDataGenerator\DemoDataGeneratorDependencyProvider;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
@@ -88,6 +89,17 @@ class DemoDataGeneratorBusinessFactory extends AbstractBusinessFactory
             $this->createFileManager(),
             $this->getConfig(),
             $this->getStore()
+        );
+    }
+
+    /**
+     * @return \Pyz\Zed\DemoDataGenerator\Business\Model\StockProductGenerator\StockProductGenerator
+     */
+    public function createStockProductDemoDataGenerator(): StockProductGenerator
+    {
+        return new StockProductGenerator(
+            $this->createFileManager(),
+            $this->getConfig()
         );
     }
 

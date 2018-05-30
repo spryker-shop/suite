@@ -14,8 +14,10 @@ class DemoDataGeneratorConfig extends AbstractBundleConfig
     protected const PRODUCT_ABSTRACT_CSV_PATH = 'data/import/icecat_biz_data/product_abstract.csv';
     protected const PRODUCT_CONCRETE_CSV_PATH = 'data/import/icecat_biz_data/product_concrete.csv';
     protected const PRODUCT_ABSTRACT_STORE_CSV_PATH = 'data/import/icecat_biz_data/product_abstract_store.csv';
-    protected const PRODUCT_PRICE_CSV_PATH = 'data/import/product_price.csv';
     protected const PRODUCT_IMAGE_CSV_PATH = 'data/import/icecat_biz_data/product_image.csv';
+    protected const PRODUCT_PRICE_CSV_PATH = 'data/import/product_price.csv';
+    protected const PRODUCT_STOCK_CSV_PATH = 'data/import/product_stock.csv';
+    protected const STOCK_CSV_PATH = 'data/import/stock.csv';
 
     /**
      * @var array
@@ -68,5 +70,21 @@ class DemoDataGeneratorConfig extends AbstractBundleConfig
     public function getProductImageCsvPath(): string
     {
         return static::PRODUCT_IMAGE_CSV_PATH;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProductStockCsvPath(): string
+    {
+        return static::PRODUCT_STOCK_CSV_PATH;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStockCsvPath(): string
+    {
+        return static::STOCK_CSV_PATH;
     }
 }

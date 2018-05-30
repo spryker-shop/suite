@@ -41,6 +41,11 @@ interface DemoDataGeneratorFacadeInterface
     public function createProductImageCsvDemoData(): void;
 
     /**
+     * @return void
+     */
+    public function createStockProductCsvDemoData(): void;
+
+    /**
      * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer $demoDataGeneratorTransfer
      *
      * @return void

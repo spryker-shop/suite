@@ -12,6 +12,7 @@ use Pyz\Zed\DemoDataGenerator\Communication\Plugin\ProductAbstractCsvGeneratorPl
 use Pyz\Zed\DemoDataGenerator\Communication\Plugin\ProductAbstractStoreCsvGeneratorPlugin;
 use Pyz\Zed\DemoDataGenerator\Communication\Plugin\ProductConcreteCsvGeneratorPlugin;
 use Pyz\Zed\DemoDataGenerator\Communication\Plugin\ProductImageCsvGeneratorPlugin;
+use Pyz\Zed\DemoDataGenerator\Communication\Plugin\StockProductCsvGeneratorPlugin;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
@@ -88,6 +89,7 @@ class DemoDataGeneratorDependencyProvider extends AbstractBundleDependencyProvid
             new ProductAbstractStoreCsvGeneratorPlugin(),
             new PriceProductCsvGeneratorPlugin(),
             new ProductImageCsvGeneratorPlugin(),
+            new StockProductCsvGeneratorPlugin(),
         ];
     }
 }

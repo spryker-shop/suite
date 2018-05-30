@@ -70,6 +70,16 @@ class DemoDataGeneratorFacade extends AbstractFacade implements DemoDataGenerato
     }
 
     /**
+     * @return void
+     */
+    public function createStockProductCsvDemoData(): void
+    {
+        $this->getFactory()
+            ->createStockProductDemoDataGenerator()
+            ->createStockProductCsvDemoData();
+    }
+
+    /**
      * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer $demoDataGeneratorTransfer
      *
      * @return void
