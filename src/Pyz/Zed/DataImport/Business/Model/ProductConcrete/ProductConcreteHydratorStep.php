@@ -43,6 +43,7 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
     const KEY_PRODUCT_BUNDLE_TRANSFER = 'productBundleEntityTransfer';
     const KEY_PRODUCT_CONCRETE_LOCALIZED_TRANSFER = 'localizedAttributeTransfer';
     const KEY_PRODUCT_SEARCH_TRANSFER = 'productSearchEntityTransfer';
+    const KEY_PRODUCT_BUNDLE_SKU = 'bundledProductSku';
     const PRODUCT_CONCRETE_TRANSFER = 'PRODUCT_CONCRETE_TRANSFER';
     const PRODUCT_CONCRETE_LOCALIZED_TRANSFER = 'PRODUCT_CONCRETE_LOCALIZED_TRANSFER';
     const PRODUCT_BUNDLE_TRANSFER = 'PRODUCT_BUNDLE_TRANSFER';
@@ -67,7 +68,7 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
      *
      * @return void
      */
-    public function execute(DataSetInterface $dataSet)
+    public function execute(DataSetInterface $dataSet): void
     {
         $this->importProduct($dataSet);
         $this->importProductLocalizedAttributes($dataSet);
@@ -81,12 +82,10 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
      */
     protected function importProduct(DataSetInterface $dataSet): void
     {
-        $idAbstract = $this->productRepository->getIdProductAbstractByAbstractSku($dataSet[static::KEY_ABSTRACT_SKU]);
         $productEntityTransfer = new SpyProductEntityTransfer();
         $productEntityTransfer->setSku($dataSet[static::KEY_CONCRETE_SKU]);
         $productEntityTransfer
             ->setIsActive($dataSet[static::KEY_IS_ACTIVE] ?? true)
-            ->setFkProductAbstract($idAbstract)
             ->setAttributes(json_encode($dataSet[static::KEY_ATTRIBUTES]));
 
         $dataSet[static::PRODUCT_CONCRETE_TRANSFER] = $productEntityTransfer;
@@ -97,7 +96,7 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
      *
      * @return void
      */
-    protected function importProductLocalizedAttributes(DataSetInterface $dataSet)
+    protected function importProductLocalizedAttributes(DataSetInterface $dataSet): void
     {
         $localizedAttributeTransfer = [];
 
@@ -130,7 +129,7 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
      *
      * @return void
      */
-    protected function importBundles(DataSetInterface $dataSet)
+    protected function importBundles(DataSetInterface $dataSet): void
     {
         $productBundleTransfer = [];
 
@@ -140,14 +139,13 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
             foreach ($bundleProducts as $bundleProduct) {
                 $bundleProduct = trim($bundleProduct);
                 list($sku, $quantity) = explode('/', $bundleProduct);
-                $bundledProductId = $this->productRepository->getIdProductByConcreteSku($sku);
 
                 $productBundleEntityTransfer = new SpyProductBundleEntityTransfer();
                 $productBundleEntityTransfer->setQuantity($quantity);
-                $productBundleEntityTransfer->setFkBundledProduct($bundledProductId);
                 $productBundleTransfer[] = [
                     static::KEY_PRODUCT_BUNDLE_TRANSFER => $productBundleEntityTransfer,
-                    static::KEY_SKU => $dataSet[static::KEY_CONCRETE_SKU]
+                    static::KEY_SKU => $dataSet[static::KEY_CONCRETE_SKU],
+                    static::KEY_PRODUCT_BUNDLE_SKU => $sku,
                 ];
             }
         }

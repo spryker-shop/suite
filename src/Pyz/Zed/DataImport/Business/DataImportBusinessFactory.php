@@ -34,15 +34,14 @@ use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\AddCategoryKeysStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\AddProductAbstractSkusStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\ProductAbstractHydratorStep;
-use Pyz\Zed\DataImport\Business\Model\ProductAbstract\Writer\ProductAbstractPropelWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\Writer\ProductAbstractBulkPdoWriter;
+use Pyz\Zed\DataImport\Business\Model\ProductAbstract\Writer\ProductAbstractPropelWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\ProductAbstractStoreWriterStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAttributeKey\AddProductAttributeKeysStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAttributeKey\ProductAttributeKeyWriter;
-use Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductConcreteWriter;
-use Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\ProductConcretePropelWriter;
-use Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\ProductConcreteBulkPdoWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductConcreteHydratorStep;
+use Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\ProductConcreteBulkPdoWriter;
+use Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\ProductConcretePropelWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductGroup\ProductGroupWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\ProductImageWriterStep;
 use Pyz\Zed\DataImport\Business\Model\ProductLabel\Hook\ProductLabelAfterImportPublishHook;
@@ -79,11 +78,6 @@ use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\ProductSearch\Code\KeyBuilder\FilterGlossaryKeyBuilder;
 use Spryker\Zed\DataImport\Business\DataImportBusinessFactory as SprykerDataImportBusinessFactory;
 use Spryker\Zed\DataImport\Business\Model\Writer\DataImportWriterCollection;
-use Spryker\Zed\DataImport\Business\Model\Writer\FlushInterface;
-use Spryker\Zed\DataImport\Business\Model\Writer\WriterInterface;
-use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
-use Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface;
-use Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface;
 use Spryker\Zed\Discount\DiscountConfig;
 
 /**
@@ -148,7 +142,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     }
 
     /**
-     * @return WriterInterface|FlushInterface
+     * @return \Spryker\Zed\DataImport\Business\Model\Writer\WriterInterface|\Spryker\Zed\DataImport\Business\Model\Writer\FlushInterface
      */
     public function createProductAbstractBulkPdoWriter()
     {
@@ -156,7 +150,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     }
 
     /**
-     * @return WriterInterface|FlushInterface
+     * @return \Spryker\Zed\DataImport\Business\Model\Writer\WriterInterface|\Spryker\Zed\DataImport\Business\Model\Writer\FlushInterface
      */
     public function createProductAbstractPropelWriter()
     {
@@ -164,7 +158,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     }
 
     /**
-     * @return WriterInterface|FlushInterface
+     * @return \Spryker\Zed\DataImport\Business\Model\Writer\WriterInterface|\Spryker\Zed\DataImport\Business\Model\Writer\FlushInterface
      */
     public function createProductConcretePropelWriter()
     {
@@ -172,11 +166,11 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     }
 
     /**
-     * @return WriterInterface|FlushInterface
+     * @return \Spryker\Zed\DataImport\Business\Model\Writer\WriterInterface|\Spryker\Zed\DataImport\Business\Model\Writer\FlushInterface
      */
     public function createProductConcreteBulkPdoWriter()
     {
-        return new ProductConcreteBulkPdoWriter($this->getEventFacade());
+        return new ProductConcreteBulkPdoWriter($this->getEventFacade(), $this->createProductRepository());
     }
 
     /**
@@ -1167,7 +1161,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     }
 
     /**
-     * @return DataImportToEventFacadeInterface
+     * @return \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface
      */
     protected function getEventFacade()
     {

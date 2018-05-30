@@ -7,19 +7,21 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer;
 
+use Generated\Shared\Transfer\SpyProductEntityTransfer;
 use Generated\Shared\Transfer\SpyProductSearchEntityTransfer;
-use Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductConcreteHydratorStep;
-use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface;
+use Orm\Zed\Product\Persistence\SpyProduct;
 use Orm\Zed\Product\Persistence\SpyProductLocalizedAttributesQuery;
 use Orm\Zed\Product\Persistence\SpyProductQuery;
 use Orm\Zed\ProductBundle\Persistence\SpyProductBundleQuery;
 use Orm\Zed\ProductSearch\Persistence\SpyProductSearchQuery;
+use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface;
+use Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductConcreteHydratorStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
-use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
-use Spryker\Zed\Product\Dependency\ProductEvents;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
 use Spryker\Zed\DataImport\Business\Model\Writer\FlushInterface;
 use Spryker\Zed\DataImport\Business\Model\Writer\WriterInterface;
+use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
+use Spryker\Zed\Product\Dependency\ProductEvents;
 
 class ProductConcretePropelWriter extends DataImporterPublisher implements WriterInterface, FlushInterface
 {
@@ -73,9 +75,14 @@ class ProductConcretePropelWriter extends DataImporterPublisher implements Write
      *
      * @return \Orm\Zed\Product\Persistence\SpyProduct
      */
-    protected function createOrUpdateProductConcrete(DataSetInterface $dataSet)
+    protected function createOrUpdateProductConcrete(DataSetInterface $dataSet): SpyProduct
     {
+        $idAbstract = $this
+            ->productRepository
+            ->getIdProductAbstractByAbstractSku($dataSet[ProductConcreteHydratorStep::KEY_ABSTRACT_SKU]);
+
         $productConcreteEntityTransfer = $this->getProductConcreteTransfer($dataSet);
+        $productConcreteEntityTransfer->setFkProductAbstract($idAbstract);
 
         $productConcreteEntity = SpyProductQuery::create()
             ->filterBySku($productConcreteEntityTransfer->getSku())
@@ -92,18 +99,22 @@ class ProductConcretePropelWriter extends DataImporterPublisher implements Write
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     * @param $idProduct
+     * @param int $idProduct
      *
      * @return void
      */
-    protected function createOrUpdateBundles(DataSetInterface $dataSet, $idProduct)
+    protected function createOrUpdateBundles(DataSetInterface $dataSet, int $idProduct): void
     {
         $productBundleTransfers = $this->getProductConcreteBundleTransfers($dataSet);
 
         foreach ($productBundleTransfers as $productBundleTransfer) {
+            $bundledProductId = $this
+                ->productRepository
+                ->getIdProductByConcreteSku($dataSet[ProductConcreteHydratorStep::KEY_PRODUCT_BUNDLE_SKU]);
+
             $productBundleEntity = SpyProductBundleQuery::create()
                 ->filterByFkProduct($idProduct)
-                ->filterByFkBundledProduct($productBundleTransfer->getFkBundledProduct())
+                ->filterByFkBundledProduct($bundledProductId)
                 ->findOneOrCreate();
             $productBundleEntity->fromArray($productBundleTransfer->modifiedToArray());
 
@@ -167,11 +178,9 @@ class ProductConcretePropelWriter extends DataImporterPublisher implements Write
      *
      * @return array
      */
-    protected function getProductConcreteBundleTransfers(DataSetInterface $dataSet)
+    protected function getProductConcreteBundleTransfers(DataSetInterface $dataSet): array
     {
-        return $dataSet
-            [ProductConcreteHydratorStep::PRODUCT_BUNDLE_TRANSFER]
-            [ProductConcreteHydratorStep::KEY_PRODUCT_BUNDLE_TRANSFER] ?? [];
+        return $dataSet[ProductConcreteHydratorStep::PRODUCT_BUNDLE_TRANSFER][ProductConcreteHydratorStep::KEY_PRODUCT_BUNDLE_TRANSFER] ?? [];
     }
 
     /**
@@ -179,7 +188,7 @@ class ProductConcretePropelWriter extends DataImporterPublisher implements Write
      *
      * @return array
      */
-    protected function getProductConcreteLocalizedTransfers(DataSetInterface $dataSet)
+    protected function getProductConcreteLocalizedTransfers(DataSetInterface $dataSet): array
     {
         return $dataSet[ProductConcreteHydratorStep::PRODUCT_CONCRETE_LOCALIZED_TRANSFER] ?? [];
     }
@@ -189,7 +198,7 @@ class ProductConcretePropelWriter extends DataImporterPublisher implements Write
      *
      * @return \Generated\Shared\Transfer\SpyProductEntityTransfer
      */
-    protected function getProductConcreteTransfer(DataSetInterface $dataSet)
+    protected function getProductConcreteTransfer(DataSetInterface $dataSet): SpyProductEntityTransfer
     {
         return $dataSet[ProductConcreteHydratorStep::PRODUCT_CONCRETE_TRANSFER];
     }

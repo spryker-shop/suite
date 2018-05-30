@@ -8,12 +8,14 @@
 namespace Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer;
 
 use Propel\Runtime\Propel;
-use Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductConcreteHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\AbstractBulkPdoWriter\AbstractBulkPdoWriterTrait;
+use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface;
+use Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductConcreteHydratorStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
 use Spryker\Zed\DataImport\Business\Model\Writer\FlushInterface;
 use Spryker\Zed\DataImport\Business\Model\Writer\WriterInterface;
+use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
 use Spryker\Zed\Product\Dependency\ProductEvents;
 
 class ProductConcreteBulkPdoWriter extends DataImporterPublisher implements WriterInterface, FlushInterface
@@ -43,11 +45,30 @@ class ProductConcreteBulkPdoWriter extends DataImporterPublisher implements Writ
     protected static $productSearchCollection = [];
 
     /**
+     * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface
+     */
+    protected $productRepository;
+
+    /**
+     * ProductConcretePropelWriter constructor.
+     *
+     * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface $eventFacade
+     * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface $productRepository
+     */
+    public function __construct(
+        DataImportToEventFacadeInterface $eventFacade,
+        ProductRepositoryInterface $productRepository
+    ) {
+        parent::__construct($eventFacade);
+        $this->productRepository = $productRepository;
+    }
+
+    /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
      * @return void
      */
-    public function write(DataSetInterface $dataSet)
+    public function write(DataSetInterface $dataSet): void
     {
         $this->collectProductConcrete($dataSet);
         $this->collectProductConcreteLocalizedAttributes($dataSet);
@@ -61,7 +82,7 @@ class ProductConcreteBulkPdoWriter extends DataImporterPublisher implements Writ
     /**
      * @return void
      */
-    public function flush()
+    public function flush(): void
     {
         $this->writeEntities();
     }
@@ -69,7 +90,7 @@ class ProductConcreteBulkPdoWriter extends DataImporterPublisher implements Writ
     /**
      * @return void
      */
-    protected function writeEntities()
+    protected function writeEntities(): void
     {
         $this->persistConcreteProductEntities();
         $this->persistConcreteProductLocalizedAttributesEntities();
@@ -82,7 +103,7 @@ class ProductConcreteBulkPdoWriter extends DataImporterPublisher implements Writ
     /**
      * @return void
      */
-    protected function persistConcreteProductEntities()
+    protected function persistConcreteProductEntities(): void
     {
         $sku = $this->formatPostgresArrayString(
             array_column(static::$productConcreteCollection, ProductConcreteHydratorStep::KEY_SKU)
@@ -124,7 +145,7 @@ class ProductConcreteBulkPdoWriter extends DataImporterPublisher implements Writ
      *
      * @return void
      */
-    protected function addProductConcreteChangeEvent($result)
+    protected function addProductConcreteChangeEvent($result): void
     {
         foreach ($result as $columns) {
             $this->addEvent(
@@ -137,11 +158,12 @@ class ProductConcreteBulkPdoWriter extends DataImporterPublisher implements Writ
     /**
      * @return void
      */
-    protected function persistConcreteProductLocalizedAttributesEntities()
+    protected function persistConcreteProductLocalizedAttributesEntities(): void
     {
         if (!empty(static::$productLocalizedAttributesCollection)) {
             $spyProduct = array_column(
-                static::$productLocalizedAttributesCollection, ProductConcreteHydratorStep::KEY_SPY_PRODUCT
+                static::$productLocalizedAttributesCollection,
+                ProductConcreteHydratorStep::KEY_SPY_PRODUCT
             );
             $sku = $this->formatPostgresArrayString(
                 array_column($spyProduct, ProductConcreteHydratorStep::KEY_SKU)
@@ -180,7 +202,7 @@ class ProductConcreteBulkPdoWriter extends DataImporterPublisher implements Writ
     /**
      * @return void
      */
-    protected function persistConcreteProductSearchEntities()
+    protected function persistConcreteProductSearchEntities(): void
     {
         if (!empty(static::$productSearchCollection)) {
             $idLocale = $this->formatPostgresArray(
@@ -208,14 +230,14 @@ class ProductConcreteBulkPdoWriter extends DataImporterPublisher implements Writ
     /**
      * @return void
      */
-    protected function persistConcreteProductBundleEntities()
+    protected function persistConcreteProductBundleEntities(): void
     {
         if (!empty(static::$productBundleCollection)) {
-            $sku = $this->formatPostgresArray(
-                array_column(static::$productBundleCollection, ProductConcreteHydratorStep::KEY_SKU)
+            $bundledProductSku = $this->formatPostgresArrayString(
+                array_column(static::$productBundleCollection, ProductConcreteHydratorStep::KEY_PRODUCT_BUNDLE_SKU)
             );
-            $fkBundledProduct = $this->formatPostgresArray(
-                array_column(static::$productBundleCollection, ProductConcreteHydratorStep::KEY_FK_BUNDLED_PRODUCT)
+            $sku = $this->formatPostgresArrayString(
+                array_column(static::$productBundleCollection, ProductConcreteHydratorStep::KEY_SKU)
             );
             $quantity = $this->formatPostgresArray(
                 array_column(static::$productBundleCollection, ProductConcreteHydratorStep::KEY_QUANTITY)
@@ -226,7 +248,7 @@ class ProductConcreteBulkPdoWriter extends DataImporterPublisher implements Writ
             $con = Propel::getConnection();
             $stmt = $con->prepare($sql);
             $stmt->execute([
-                $fkBundledProduct,
+                $bundledProductSku,
                 $sku,
                 $quantity,
             ]);
@@ -236,7 +258,7 @@ class ProductConcreteBulkPdoWriter extends DataImporterPublisher implements Writ
     /**
      * @return string
      */
-    protected function createConcreteProductSQL()
+    protected function createConcreteProductSQL(): string
     {
         $sql = "WITH records AS (
     SELECT
@@ -305,7 +327,7 @@ SELECT updated.id_product,sku FROM updated UNION ALL SELECT inserted.id_product,
     /**
      * @return string
      */
-    protected function createConcreteProductLocalizedAttributesSQL()
+    protected function createConcreteProductLocalizedAttributesSQL(): string
     {
         $sql = "WITH records AS (
     SELECT
@@ -377,7 +399,7 @@ SELECT updated.id_product_attributes FROM updated UNION ALL SELECT inserted.id_p
     /**
      * @return string
      */
-    protected function createConcreteProductSearchSQL()
+    protected function createConcreteProductSearchSQL(): string
     {
         $sql = "WITH records AS (
     SELECT
@@ -428,23 +450,26 @@ SELECT updated.id_product_search FROM updated UNION ALL SELECT inserted.id_produ
     /**
      * @return string
      */
-    protected function createConcreteProductBundleSQL()
+    protected function createConcreteProductBundleSQL(): string
     {
         $sql = "WITH records AS (
     SELECT
       input.sku,
-      input.fk_bundled_product,
+      input.bundled_product_sku,
       input.quantity,
-      id_product,
+      spy_product1.id_product as id_product,
+      spy_product2.id_product as fk_bundled_product,
       id_product_bundle as idProductBundle
     FROM (
            SELECT
-             unnest(? :: INTEGER []) AS fk_bundled_product,
+             unnest(? :: VARCHAR []) AS bundled_product_sku,
              unnest(? :: VARCHAR []) AS sku,
              unnest(? :: INTEGER []) AS quantity
          ) input
-    INNER JOIN spy_product ON spy_product.sku = input.sku
-    LEFT JOIN spy_product_bundle ON (spy_product_bundle.fk_product = id_product and spy_product_bundle.fk_bundled_product = input.fk_bundled_product)
+      JOIN spy_product as spy_product1 ON spy_product1.sku = input.sku
+      JOIN spy_product as spy_product2 ON spy_product2.sku = input.bundled_product_sku
+      LEFT JOIN spy_product_bundle ON (spy_product_bundle.fk_product = spy_product1.id_product
+                                       and spy_product_bundle.fk_bundled_product = spy_product2.id_product)
 ),
     updated AS (
     UPDATE spy_product_bundle
@@ -486,9 +511,16 @@ SELECT updated.id_product_bundle FROM updated UNION ALL SELECT inserted.id_produ
      *
      * @return void
      */
-    protected function collectProductConcrete(DataSetInterface $dataSet)
+    protected function collectProductConcrete(DataSetInterface $dataSet): void
     {
-        static::$productConcreteCollection[] = $dataSet[ProductConcreteHydratorStep::PRODUCT_CONCRETE_TRANSFER]->modifiedToArray();
+        $idAbstract = $this
+            ->productRepository
+            ->getIdProductAbstractByAbstractSku($dataSet[ProductConcreteHydratorStep::KEY_ABSTRACT_SKU]);
+
+        $productConcreteTransfer = $dataSet[ProductConcreteHydratorStep::PRODUCT_CONCRETE_TRANSFER];
+        $productConcreteTransfer->setFkProductAbstract($idAbstract);
+
+        static::$productConcreteCollection[] = $productConcreteTransfer->modifiedToArray();
     }
 
     /**
@@ -496,12 +528,13 @@ SELECT updated.id_product_bundle FROM updated UNION ALL SELECT inserted.id_produ
      *
      * @return void
      */
-    protected function collectProductConcreteLocalizedAttributes(DataSetInterface $dataSet)
+    protected function collectProductConcreteLocalizedAttributes(DataSetInterface $dataSet): void
     {
         foreach ($dataSet[ProductConcreteHydratorStep::PRODUCT_CONCRETE_LOCALIZED_TRANSFER] as $productConcreteLocalizedTransfer) {
-            $localizedAttributeArray = $productConcreteLocalizedTransfer[ProductConcreteHydratorStep::KEY_PRODUCT_CONCRETE_LOCALIZED_TRANSFER]->modifiedToArray();
             $productSearchArray = $productConcreteLocalizedTransfer[ProductConcreteHydratorStep::KEY_PRODUCT_SEARCH_TRANSFER]->modifiedToArray();
             $productSearchArray[ProductConcreteHydratorStep::KEY_SKU] = $productConcreteLocalizedTransfer[ProductConcreteHydratorStep::KEY_SKU];
+
+            $localizedAttributeArray = $productConcreteLocalizedTransfer[ProductConcreteHydratorStep::KEY_PRODUCT_CONCRETE_LOCALIZED_TRANSFER]->modifiedToArray();
             $localizedAttributeArray[ProductConcreteHydratorStep::KEY_DESCRIPTION] = str_replace(
                 '"',
                 '',
@@ -518,11 +551,13 @@ SELECT updated.id_product_bundle FROM updated UNION ALL SELECT inserted.id_produ
      *
      * @return void
      */
-    protected function collectProductConcreteBundle(DataSetInterface $dataSet)
+    protected function collectProductConcreteBundle(DataSetInterface $dataSet): void
     {
         foreach ($dataSet[ProductConcreteHydratorStep::PRODUCT_BUNDLE_TRANSFER] as $productConcreteBundleTransfer) {
             $productConcreteBundleArray = $productConcreteBundleTransfer[ProductConcreteHydratorStep::KEY_PRODUCT_BUNDLE_TRANSFER]->modifiedToArray();
             $productConcreteBundleArray[ProductConcreteHydratorStep::KEY_SKU] = $productConcreteBundleTransfer[ProductConcreteHydratorStep::KEY_SKU];
+            $productConcreteBundleArray[ProductConcreteHydratorStep::KEY_PRODUCT_BUNDLE_SKU] = $productConcreteBundleTransfer[ProductConcreteHydratorStep::KEY_PRODUCT_BUNDLE_SKU];
+            
             static::$productBundleCollection[] = $productConcreteBundleArray;
         }
     }
@@ -530,7 +565,7 @@ SELECT updated.id_product_bundle FROM updated UNION ALL SELECT inserted.id_produ
     /**
      * @return void
      */
-    protected function flushMemory()
+    protected function flushMemory(): void
     {
         static::$productConcreteCollection = [];
         static::$productLocalizedAttributesCollection = [];
