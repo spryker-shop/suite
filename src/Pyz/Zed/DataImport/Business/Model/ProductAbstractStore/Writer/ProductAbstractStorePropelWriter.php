@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer;
 
+use Generated\Shared\Transfer\ProductAbstractStoreTransfer;
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Orm\Zed\Product\Persistence\SpyProductAbstractStoreQuery;
 use Orm\Zed\Store\Persistence\SpyStoreQuery;
@@ -45,9 +46,14 @@ class ProductAbstractStorePropelWriter extends DataImporterPublisher implements 
      */
     protected function createOrUpdateProductAbstractStore(DataSetInterface $dataSet): void
     {
+        $productAbstractStoreTransfer = $this->getProductAbstractStoreTransfers($dataSet);
+
+        $productAbstractEntity = $this->getIdProductAbstractBySku($productAbstractStoreTransfer->getProductAbstractSku());
+        $storeEntity = $this->getIdStoreByName($productAbstractStoreTransfer->getStoreName());
+
         (new SpyProductAbstractStoreQuery())
-            ->filterByFkProductAbstract($this->getIdProductAbstractBySku($dataSet[ProductAbstractStoreHydratorStep::KEY_PRODUCT_ABSTRACT_SKU]))
-            ->filterByFkStore($this->getIdStoreByName($dataSet[ProductAbstractStoreHydratorStep::KEY_STORE_NAME]))
+            ->filterByFkProductAbstract($productAbstractEntity)
+            ->filterByFkStore($storeEntity)
             ->findOneOrCreate()
             ->save();
     }
@@ -88,5 +94,15 @@ class ProductAbstractStorePropelWriter extends DataImporterPublisher implements 
     public function flush(): void
     {
         $this->triggerEvents();
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return \Generated\Shared\Transfer\ProductAbstractStoreTransfer
+     */
+    protected function getProductAbstractStoreTransfers(DataSetInterface $dataSet): ProductAbstractStoreTransfer
+    {
+        return $dataSet[ProductAbstractStoreHydratorStep::PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER];
     }
 }

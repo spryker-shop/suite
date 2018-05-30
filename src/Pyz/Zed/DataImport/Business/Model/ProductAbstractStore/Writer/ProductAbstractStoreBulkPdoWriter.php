@@ -31,7 +31,7 @@ class ProductAbstractStoreBulkPdoWriter extends DataImporterPublisher implements
      */
     public function write(DataSetInterface $dataSet): void
     {
-        static::$productAbstractStoreCollection[] = $dataSet->getArrayCopy();
+        $this->collectProductAbstractStoreCollection($dataSet);
 
         if (count(static::$productAbstractStoreCollection) >= ProductAbstractStoreHydratorStep::BULK_SIZE) {
             $this->writeEntities();
@@ -117,5 +117,15 @@ SELECT 1;";
     protected function flushMemory(): void
     {
         static::$productAbstractStoreCollection = [];
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    protected function collectProductAbstractStoreCollection(DataSetInterface $dataSet): void
+    {
+        static::$productAbstractStoreCollection[] = $dataSet[ProductAbstractStoreHydratorStep::PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER]->modifiedToArray();
     }
 }
