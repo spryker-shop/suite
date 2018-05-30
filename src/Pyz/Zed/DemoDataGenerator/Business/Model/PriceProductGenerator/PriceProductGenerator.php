@@ -41,9 +41,6 @@ class PriceProductGenerator extends AbstractGenerator implements PriceProductGen
     }
 
     /**
-
-    /**
-     *
      * @return void
      */
     public function createPriceProductCsvDemoData(): void
@@ -61,7 +58,9 @@ class PriceProductGenerator extends AbstractGenerator implements PriceProductGen
     protected function generateRowsForProductAbstract(): void
     {
         $productAbstractSkus = $this->getProductAbstractSkus();
-        $this->generateRows($productAbstractSkus);
+        foreach ($productAbstractSkus as $sku) {
+            $this->generateRowsForProductAbstractForPriceTypes($sku);
+        }
     }
 
     /**
@@ -70,18 +69,8 @@ class PriceProductGenerator extends AbstractGenerator implements PriceProductGen
     protected function generateRowsForProductConcrete(): void
     {
         $productConcreteSkus = $this->getProductConcreteSkus();
-        $this->generateRows($productConcreteSkus);
-    }
-
-    /**
-     * @param array $skus
-     *
-     * @return void
-     */
-    protected function generateRows(array $skus): void
-    {
-        foreach ($skus as $sku) {
-            $this->generateRowsForPriceTypes($sku);
+        foreach ($productConcreteSkus as $sku) {
+            $this->generateRowsForProductConcreteForPriceTypes($sku);
         }
     }
 
@@ -90,7 +79,7 @@ class PriceProductGenerator extends AbstractGenerator implements PriceProductGen
      *
      * @return void
      */
-    protected function generateRowsForPriceTypes(string $sku): void
+    protected function generateRowsForProductAbstractForPriceTypes(string $sku): void
     {
         $priceProductTransfer = $this->generatePriceProduct();
         $defaultPriceTypes = $this->getConfig()->getProductPriceDefaultTypes();
@@ -99,6 +88,26 @@ class PriceProductGenerator extends AbstractGenerator implements PriceProductGen
             $priceProductTransfer
                 ->setSkuProductAbstract($sku)
                 ->setSkuProduct('')
+                ->setPriceTypeName($priceType);
+            $row = $this->createPriceRow($priceProductTransfer);
+            $this->rows[] = $row;
+        }
+    }
+
+    /**
+     * @param string $sku
+     *
+     * @return void
+     */
+    protected function generateRowsForProductConcreteForPriceTypes(string $sku): void
+    {
+        $priceProductTransfer = $this->generatePriceProduct();
+        $defaultPriceTypes = $this->getConfig()->getProductPriceDefaultTypes();
+
+        foreach ($defaultPriceTypes as $priceType) {
+            $priceProductTransfer
+                ->setSkuProductAbstract('')
+                ->setSkuProduct($sku)
                 ->setPriceTypeName($priceType);
             $row = $this->createPriceRow($priceProductTransfer);
             $this->rows[] = $row;
