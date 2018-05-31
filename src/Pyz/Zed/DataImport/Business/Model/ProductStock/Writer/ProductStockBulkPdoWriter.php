@@ -66,7 +66,7 @@ class ProductStockBulkPdoWriter extends DataImporterPublisher implements WriterI
      *
      * @return void
      */
-    public function write(DataSetInterface $dataSet)
+    public function write(DataSetInterface $dataSet): void
     {
         $this->collectStock($dataSet);
         $this->collectStockProduct($dataSet);
@@ -85,7 +85,7 @@ class ProductStockBulkPdoWriter extends DataImporterPublisher implements WriterI
     /**
      * @return void
      */
-    public function flush()
+    public function flush(): void
     {
         $this->writeEntities();
     }
@@ -93,7 +93,7 @@ class ProductStockBulkPdoWriter extends DataImporterPublisher implements WriterI
     /**
      * @return void
      */
-    protected function writeEntities()
+    protected function writeEntities(): void
     {
         $this->persistStockEntities();
         $this->persistStockProductEntities();
@@ -104,7 +104,7 @@ class ProductStockBulkPdoWriter extends DataImporterPublisher implements WriterI
     /**
      * @return void
      */
-    protected function flushMemory()
+    protected function flushMemory(): void
     {
         static::$stockCollection = [];
         static::$stockProductCollection = [];
@@ -113,7 +113,7 @@ class ProductStockBulkPdoWriter extends DataImporterPublisher implements WriterI
     /**
      * @return void
      */
-    protected function persistStockEntities()
+    protected function persistStockEntities(): void
     {
         $name = $this->formatPostgresArrayString(
             array_unique(
@@ -132,7 +132,7 @@ class ProductStockBulkPdoWriter extends DataImporterPublisher implements WriterI
     /**
      * @return void
      */
-    protected function persistStockProductEntities()
+    protected function persistStockProductEntities(): void
     {
         $fkProduct = $this->formatPostgresArray(
             array_column(static::$stockProductCollection, ProductStockHydratorStep::KEY_FK_PRODUCT)
@@ -161,7 +161,7 @@ class ProductStockBulkPdoWriter extends DataImporterPublisher implements WriterI
     /**
      * @return string
      */
-    protected function createStockSQL()
+    protected function createStockSQL(): string
     {
         $sql = "WITH records AS (
     SELECT
@@ -202,7 +202,7 @@ SELECT updated.idStock FROM updated UNION ALL SELECT inserted.id_stock FROM inse
     /**
      * @return string
      */
-    protected function createStockProductSQL()
+    protected function createStockProductSQL(): string
     {
         $sql = "WITH records AS (
     SELECT
@@ -262,7 +262,7 @@ SELECT updated.idStockProduct FROM updated UNION ALL SELECT inserted.id_stock_pr
      *
      * @return void
      */
-    protected function collectStock(DataSetInterface $dataSet)
+    protected function collectStock(DataSetInterface $dataSet): void
     {
         static::$stockCollection[] = $dataSet[ProductStockHydratorStep::STOCK_ENTITY_TRANSFER]->modifiedToArray();
     }
@@ -272,7 +272,7 @@ SELECT updated.idStockProduct FROM updated UNION ALL SELECT inserted.id_stock_pr
      *
      * @return void
      */
-    protected function collectStockProduct(DataSetInterface $dataSet)
+    protected function collectStockProduct(DataSetInterface $dataSet): void
     {
         $sku = $dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU];
         $idProduct = $this->productRepository->getIdProductByConcreteSku($sku);

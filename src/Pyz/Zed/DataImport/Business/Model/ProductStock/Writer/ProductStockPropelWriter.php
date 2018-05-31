@@ -62,7 +62,7 @@ class ProductStockPropelWriter extends DataImporterPublisher implements WriterIn
      *
      * @return void
      */
-    public function write(DataSetInterface $dataSet)
+    public function write(DataSetInterface $dataSet): void
     {
         $stockEntity = $this->createOrUpdateStock($dataSet);
         $this->createOrUpdateProductStock($dataSet, $stockEntity);
@@ -78,7 +78,7 @@ class ProductStockPropelWriter extends DataImporterPublisher implements WriterIn
     /**
      * @return void
      */
-    public function flush()
+    public function flush(): void
     {
         $this->triggerEvents();
     }
@@ -106,7 +106,7 @@ class ProductStockPropelWriter extends DataImporterPublisher implements WriterIn
      *
      * @return void
      */
-    protected function createOrUpdateProductStock(DataSetInterface $dataSet, SpyStock $stockEntity)
+    protected function createOrUpdateProductStock(DataSetInterface $dataSet, SpyStock $stockEntity): void
     {
         $stockProductEntityTransfer = $dataSet[ProductStockHydratorStep::STOCK_PRODUCT_ENTITY_TRANSFER];
         $idProduct = $this->productRepository->getIdProductByConcreteSku($dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU]);

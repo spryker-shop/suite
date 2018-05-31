@@ -29,7 +29,7 @@ class ProductStockHydratorStep implements DataImportStepInterface
      *
      * @return void
      */
-    public function execute(DataSetInterface $dataSet)
+    public function execute(DataSetInterface $dataSet): void
     {
         $this->importStock($dataSet);
         $this->importStockProduct($dataSet);
@@ -40,7 +40,7 @@ class ProductStockHydratorStep implements DataImportStepInterface
      *
      * @return void
      */
-    protected function importStock(DataSetInterface $dataSet)
+    protected function importStock(DataSetInterface $dataSet): void
     {
         $stockEntityTransfer = new SpyStockEntityTransfer();
         $stockEntityTransfer->setName($dataSet[static::KEY_NAME]);
@@ -53,7 +53,7 @@ class ProductStockHydratorStep implements DataImportStepInterface
      *
      * @return void
      */
-    protected function importStockProduct(DataSetInterface $dataSet)
+    protected function importStockProduct(DataSetInterface $dataSet): void
     {
         $stockProductEntityTransfer = new SpyStockProductEntityTransfer();
         $stockProductEntityTransfer
