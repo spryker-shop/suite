@@ -65,7 +65,7 @@ class ProductConcretePropelWriter extends DataImporterPublisher implements Write
     /**
      * @return void
      */
-    public function flush()
+    public function flush(): void
     {
         $this->triggerEvents();
     }
@@ -161,7 +161,7 @@ class ProductConcretePropelWriter extends DataImporterPublisher implements Write
     protected function createOrUpdateProductConcreteSearchEntities(
         int $idProduct,
         SpyProductSearchEntityTransfer $productSearchEntityTransfer
-    ) {
+    ): void {
         $productSearchEntity = SpyProductSearchQuery::create()
             ->filterByFkProduct($idProduct)
             ->filterByFkLocale($productSearchEntityTransfer->getFkLocale())
