@@ -17,7 +17,7 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
  */
 class StockProductCsvGeneratorPlugin extends AbstractPlugin implements DemoDataGeneratorPluginInterface
 {
-    protected const PLUGIN_TYPE = 'stock_product';
+    protected const PLUGIN_TYPE = 'product_stock';
 
     /**
      * @return string
