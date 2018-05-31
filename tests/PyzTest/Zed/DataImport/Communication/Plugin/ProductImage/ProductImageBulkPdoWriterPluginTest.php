@@ -31,7 +31,7 @@ class ProductImageBulkPdoWriterPluginTest extends AbstractWriterPluginTest
      */
     public function testProductImagePropelWriterPlugin(): void
     {
-        $dataImportBusinessFactory = $this->getProductImageDataImportBusinessFactoryStub();
+        $dataImportBusinessFactory = $this->getDataImportBusinessFactoryStub();
         $dataImport = $dataImportBusinessFactory->createProductImageImporter();
         $dataImporterReportTransfer = $dataImport->import();
         $this->assertInstanceOf(DataImporterReportTransfer::class, $dataImporterReportTransfer);
