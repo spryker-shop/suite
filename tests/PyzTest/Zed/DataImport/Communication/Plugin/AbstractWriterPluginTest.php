@@ -47,20 +47,8 @@ abstract class AbstractWriterPluginTest extends Unit
     {
         return Stub::make(DataImportBusinessFactory::class, [
             'createProductAbstractDataImportWriters' => $this->createDataImportWriters(),
-            'getConfig' => $this->getDataImportConfigStub(),
-            'getPropelConnection' => $this->getPropelConnection(),
-            'getStore' => $this->getStore(),
-        ]);
-    }
-
-    /**
-     * @return object|\Pyz\Zed\DataImport\Business\DataImportBusinessFactory
-     */
-    protected function getProductStockDataImportBusinessFactoryStub()
-    {
-        return Stub::make(DataImportBusinessFactory::class, [
             'createProductStockDataImportWriters' => $this->createDataImportWriters(),
-            'getConfig' => $this->getProductStockDataImportConfigStub(),
+            'getConfig' => $this->getDataImportConfigStub(),
             'getPropelConnection' => $this->getPropelConnection(),
             'getStore' => $this->getStore(),
         ]);
@@ -72,17 +60,8 @@ abstract class AbstractWriterPluginTest extends Unit
     public function getDataImportConfigStub()
     {
         return Stub::make(DataImportConfig::class, [
-            'getProductAbstractDataImporterConfiguration' => $this->getProductAbstractDataImporterConfiguration(),
-        ]);
-    }
-
-    /**
-     * @return object|\Pyz\Zed\DataImport\DataImportConfig
-     */
-    public function getProductStockDataImportConfigStub()
-    {
-        return Stub::make(DataImportConfig::class, [
-            'getProductStockDataImporterConfiguration' => $this->getProductAbstractDataImporterConfiguration(),
+            'getProductAbstractDataImporterConfiguration' => $this->getDataImporterConfiguration(),
+            'getProductStockDataImporterConfiguration' => $this->getDataImporterConfiguration(),
         ]);
     }
 
@@ -97,7 +76,7 @@ abstract class AbstractWriterPluginTest extends Unit
     /**
      * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
      */
-    public function getProductAbstractDataImporterConfiguration(): DataImporterConfigurationTransfer
+    public function getDataImporterConfiguration(): DataImporterConfigurationTransfer
     {
         $dataImporterReaderConfigurationTransfer = new DataImporterReaderConfigurationTransfer();
         $dataImporterReaderConfigurationTransfer->setFileName(codecept_data_dir() . $this->getDataImportCsvFile());

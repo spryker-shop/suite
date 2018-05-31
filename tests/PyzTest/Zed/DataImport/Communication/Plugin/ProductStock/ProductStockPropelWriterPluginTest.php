@@ -29,9 +29,9 @@ class ProductStockPropelWriterPluginTest extends AbstractWriterPluginTest
     /**
      * @return void
      */
-    public function testProductStockStorePropelWriterPlugin(): void
+    public function testProductStockPropelWriterPlugin(): void
     {
-        $dataImportBusinessFactory = $this->getProductStockDataImportBusinessFactoryStub();
+        $dataImportBusinessFactory = $this->getDataImportBusinessFactoryStub();
         $dataImport = $dataImportBusinessFactory->createProductStockImporter();
         $dataImporterReportTransfer = $dataImport->import();
         $this->assertInstanceOf(DataImporterReportTransfer::class, $dataImporterReportTransfer);

@@ -14,6 +14,7 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class ProductStockHydratorStep implements DataImportStepInterface
 {
+    const BULK_SIZE = 100;
     const KEY_NAME = 'name';
     const KEY_CONCRETE_SKU = 'concrete_sku';
     const KEY_QUANTITY = 'quantity';
