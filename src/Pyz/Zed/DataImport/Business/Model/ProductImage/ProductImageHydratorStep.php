@@ -62,7 +62,7 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
      *
      * @return void
      */
-    public function execute(DataSetInterface $dataSet)
+    public function execute(DataSetInterface $dataSet): void
     {
         $this->importImageSet($dataSet);
         $this->importImage($dataSet);
@@ -74,7 +74,7 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
      *
      * @return void
      */
-    protected function importImageSet(DataSetInterface $dataSet)
+    protected function importImageSet(DataSetInterface $dataSet): void
     {
         $idLocale = $this->getIdLocaleByLocale($dataSet);
 
@@ -102,7 +102,7 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
      *
      * @return void
      */
-    protected function importImage(DataSetInterface $dataSet)
+    protected function importImage(DataSetInterface $dataSet): void
     {
         $imageEntityTransfer = new SpyProductImageEntityTransfer();
         $imageEntityTransfer->setExternalUrlLarge($dataSet[static::KEY_EXTERNAL_URL_LARGE]);
@@ -116,7 +116,7 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
      *
      * @return void
      */
-    protected function importImageToImageSetRelation(DataSetInterface $dataSet)
+    protected function importImageToImageSetRelation(DataSetInterface $dataSet): void
     {
         $imageToImageSetRelationEntityTransfer = new SpyProductImageSetToProductImageEntityTransfer();
         $imageToImageSetRelationEntityTransfer->setSortOrder(static::IMAGE_TO_IMAGE_SET_RELATION_ORDER);
@@ -129,7 +129,7 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
      *
      * @return int
      */
-    protected function getIdLocaleByLocale(DataSetInterface $dataSet)
+    protected function getIdLocaleByLocale(DataSetInterface $dataSet): int
     {
         $idLocale = null;
 

@@ -7,6 +7,9 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\ProductImage\Writer;
 
+use Generated\Shared\Transfer\SpyProductImageEntityTransfer;
+use Generated\Shared\Transfer\SpyProductImageSetEntityTransfer;
+use Generated\Shared\Transfer\SpyProductImageSetToProductImageEntityTransfer;
 use Orm\Zed\ProductImage\Persistence\SpyProductImage;
 use Orm\Zed\ProductImage\Persistence\SpyProductImageQuery;
 use Orm\Zed\ProductImage\Persistence\SpyProductImageSet;
@@ -27,7 +30,7 @@ class ProductImagePropelWriter extends DataImporterPublisher implements WriterIn
      *
      * @return void
      */
-    public function write(DataSetInterface $dataSet)
+    public function write(DataSetInterface $dataSet): void
     {
         $productProductImageSetEntity = $this->createOrUpdateProductImageSet($dataSet);
         $productProductImageEntity = $this->createOrUpdateProductImage($dataSet);
@@ -37,7 +40,7 @@ class ProductImagePropelWriter extends DataImporterPublisher implements WriterIn
     /**
      * @return void
      */
-    public function flush()
+    public function flush(): void
     {
         $this->triggerEvents();
     }
@@ -47,7 +50,7 @@ class ProductImagePropelWriter extends DataImporterPublisher implements WriterIn
      *
      * @return \Orm\Zed\ProductImage\Persistence\SpyProductImageSet
      */
-    protected function createOrUpdateProductImageSet(DataSetInterface $dataSet)
+    protected function createOrUpdateProductImageSet(DataSetInterface $dataSet): SpyProductImageSet
     {
         $productImageSetEntityTransfer = $this->getProductImageSetTransfer($dataSet);
         $idLocale = $productImageSetEntityTransfer->getFkLocale();
@@ -79,7 +82,7 @@ class ProductImagePropelWriter extends DataImporterPublisher implements WriterIn
      *
      * @return \Orm\Zed\ProductImage\Persistence\SpyProductImage
      */
-    protected function createOrUpdateProductImage(DataSetInterface $dataSet)
+    protected function createOrUpdateProductImage(DataSetInterface $dataSet): SpyProductImage
     {
         $productImageEntityTransfer = $this->getProductImageTransfer($dataSet);
         $productImageEntity = SpyProductImageQuery::create()
@@ -107,7 +110,7 @@ class ProductImagePropelWriter extends DataImporterPublisher implements WriterIn
         SpyProductImageSet $imageSetEntity,
         SpyProductImage $productImageEntity,
         DataSetInterface $dataSet
-    ) {
+    ): void {
         $productImageSetToProductImageEntity = SpyProductImageSetToProductImageQuery::create()
             ->filterByFkProductImageSet($imageSetEntity->getIdProductImageSet())
             ->filterByFkProductImage($productImageEntity->getIdProductImage())
@@ -126,7 +129,7 @@ class ProductImagePropelWriter extends DataImporterPublisher implements WriterIn
      *
      * @return \Generated\Shared\Transfer\SpyProductImageEntityTransfer
      */
-    protected function getProductImageTransfer(DataSetInterface $dataSet)
+    protected function getProductImageTransfer(DataSetInterface $dataSet): SpyProductImageEntityTransfer
     {
         return $dataSet[ProductImageHydratorStep::PRODUCT_IMAGE_TRANSFER];
     }
@@ -136,7 +139,7 @@ class ProductImagePropelWriter extends DataImporterPublisher implements WriterIn
      *
      * @return \Generated\Shared\Transfer\SpyProductImageSetEntityTransfer
      */
-    protected function getProductImageSetTransfer(DataSetInterface $dataSet)
+    protected function getProductImageSetTransfer(DataSetInterface $dataSet): SpyProductImageSetEntityTransfer
     {
         return $dataSet[ProductImageHydratorStep::PRODUCT_IMAGE_SET_TRANSFER];
     }
@@ -146,7 +149,7 @@ class ProductImagePropelWriter extends DataImporterPublisher implements WriterIn
      *
      * @return \Generated\Shared\Transfer\SpyProductImageSetToProductImageEntityTransfer
      */
-    protected function getProductImageToImageSetRelationTransfer(DataSetInterface $dataSet)
+    protected function getProductImageToImageSetRelationTransfer(DataSetInterface $dataSet): SpyProductImageSetToProductImageEntityTransfer
     {
         return $dataSet[ProductImageHydratorStep::PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER];
     }
@@ -156,7 +159,7 @@ class ProductImagePropelWriter extends DataImporterPublisher implements WriterIn
      *
      * @return void
      */
-    protected function addImagePublishEvents(SpyProductImageSet $productImageSetEntity)
+    protected function addImagePublishEvents(SpyProductImageSet $productImageSetEntity): void
     {
         if ($productImageSetEntity->getFkProductAbstract()) {
             $this->addEvent(

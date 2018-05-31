@@ -50,7 +50,7 @@ class ProductImageBulkPdoWriter extends DataImporterPublisher implements WriterI
      *
      * @return void
      */
-    public function write(DataSetInterface $dataSet)
+    public function write(DataSetInterface $dataSet): void
     {
         $this->collectProductSetImage($dataSet);
         $this->collectProductImage($dataSet);
@@ -64,7 +64,7 @@ class ProductImageBulkPdoWriter extends DataImporterPublisher implements WriterI
     /**
      * @return void
      */
-    public function flush()
+    public function flush(): void
     {
         $this->triggerEvents();
     }
@@ -72,7 +72,7 @@ class ProductImageBulkPdoWriter extends DataImporterPublisher implements WriterI
     /**
      * @return void
      */
-    protected function writeEntities()
+    protected function writeEntities(): void
     {
         $this->persistProductImageSetEntities();
         $this->persistProductImageEntities();
@@ -85,7 +85,7 @@ class ProductImageBulkPdoWriter extends DataImporterPublisher implements WriterI
     /**
      * @return void
      */
-    protected function persistProductImageEntities()
+    protected function persistProductImageEntities(): void
     {
         $externalUrlLarge = $this->formatPostgresArrayString(
             array_column(static::$productUniqueImageCollection, ProductImageHydratorStep::KEY_EXTERNAL_URL_LARGE)
@@ -106,7 +106,7 @@ class ProductImageBulkPdoWriter extends DataImporterPublisher implements WriterI
     /**
      * @return void
      */
-    protected function persistProductImageSetEntities()
+    protected function persistProductImageSetEntities(): void
     {
         $name = $this->formatPostgresArrayString(
             array_column(static::$productImageSetCollection, ProductImageHydratorStep::KEY_IMAGE_SET_DB_NAME_COLUMN)
@@ -143,7 +143,7 @@ class ProductImageBulkPdoWriter extends DataImporterPublisher implements WriterI
     /**
      * @return void
      */
-    protected function persistProductImageSetRelationEntities()
+    protected function persistProductImageSetRelationEntities(): void
     {
         $externalUrlLarge = $this->formatPostgresArray(
             array_column(static::$productImageCollection, ProductImageHydratorStep::KEY_EXTERNAL_URL_LARGE)
@@ -169,7 +169,7 @@ class ProductImageBulkPdoWriter extends DataImporterPublisher implements WriterI
     /**
      * @return string
      */
-    protected function createProductImageSetSQL()
+    protected function createProductImageSetSQL(): string
     {
         $sql = "WITH records AS (
     SELECT
@@ -242,7 +242,7 @@ SELECT updated.id_product_image_set FROM updated UNION ALL SELECT inserted.id_pr
     /**
      * @return string
      */
-    protected function createProductImageSQL()
+    protected function createProductImageSQL(): string
     {
         $sql = "WITH records AS (
     SELECT
@@ -291,7 +291,7 @@ SELECT updated.id_product_image FROM updated UNION ALL SELECT inserted.id_produc
     /**
      * @return string
      */
-    protected function createProductImageSetRelationSQL()
+    protected function createProductImageSetRelationSQL(): string
     {
         $sql = "WITH records AS (
     SELECT
@@ -347,7 +347,7 @@ UNION ALL SELECT inserted.id_product_image_set_to_product_image, inserted.sort_o
      *
      * @return void
      */
-    protected function addProductImageSetChangeEvent(array $insertedProductSetImage)
+    protected function addProductImageSetChangeEvent(array $insertedProductSetImage): void
     {
         foreach ($insertedProductSetImage as $productImageSet) {
             if ($productImageSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT]) {
@@ -371,7 +371,7 @@ UNION ALL SELECT inserted.id_product_image_set_to_product_image, inserted.sort_o
     /**
      * @return void
      */
-    protected function flushMemory()
+    protected function flushMemory(): void
     {
         static::$productImageSetCollection = [];
         static::$productImageCollection = [];
@@ -385,7 +385,7 @@ UNION ALL SELECT inserted.id_product_image_set_to_product_image, inserted.sort_o
      *
      * @return void
      */
-    protected function collectProductSetImage(DataSetInterface $dataSet)
+    protected function collectProductSetImage(DataSetInterface $dataSet): void
     {
         static::$productImageSetCollection[] = $dataSet[ProductImageHydratorStep::PRODUCT_IMAGE_SET_TRANSFER]->modifiedToArray();
     }
@@ -395,7 +395,7 @@ UNION ALL SELECT inserted.id_product_image_set_to_product_image, inserted.sort_o
      *
      * @return void
      */
-    protected function collectProductImage(DataSetInterface $dataSet)
+    protected function collectProductImage(DataSetInterface $dataSet): void
     {
         $productImage = $dataSet[ProductImageHydratorStep::PRODUCT_IMAGE_TRANSFER]->modifiedToArray();
         static::$productImageCollection[] = $productImage;
@@ -408,7 +408,7 @@ UNION ALL SELECT inserted.id_product_image_set_to_product_image, inserted.sort_o
      *
      * @return void
      */
-    protected function collectProductUniqueImage($productImage)
+    protected function collectProductUniqueImage($productImage): void
     {
         $uniqueExternalUrlLargeCollection = array_column(
             static::$productUniqueImageCollection,
@@ -425,7 +425,7 @@ UNION ALL SELECT inserted.id_product_image_set_to_product_image, inserted.sort_o
      *
      * @return void
      */
-    protected function collectProductImageToImageSetRelation(DataSetInterface $dataSet)
+    protected function collectProductImageToImageSetRelation(DataSetInterface $dataSet): void
     {
         static::$productImageToImageSetRelationCollection[] = $dataSet[ProductImageHydratorStep::PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER]->modifiedToArray();
     }
