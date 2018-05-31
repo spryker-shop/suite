@@ -8,12 +8,18 @@
 namespace Pyz\Zed\DemoDataGenerator\Business\Model\ProductConcreteGenerator;
 
 use Generated\Shared\DataBuilder\ProductConcreteBuilder;
+use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Pyz\Zed\DemoDataGenerator\Business\Model\AbstractGenerator;
 
 class ProductConcreteGenerator extends AbstractGenerator implements ProductConcreteGeneratorInterface
 {
     const MIN_PRODUCT_BUNDLE_COUNT = 1;
     const MAX_PRODUCT_BUNDLE_COUNT = 5;
+
+    /**
+     * @var array
+     */
+    protected $productAbstractSkus;
 
     /**
      * @var array
@@ -27,6 +33,8 @@ class ProductConcreteGenerator extends AbstractGenerator implements ProductConcr
      */
     public function createProductConcreteCsvDemoData(int $rowsNumber): void
     {
+        $this->productAbstractSkus = $this->readProductAbstractFromCsv();
+
         for ($i = 1; $i <= $rowsNumber; $i++) {
             $this->createProductConcreteRow($i);
         }
@@ -54,8 +62,8 @@ class ProductConcreteGenerator extends AbstractGenerator implements ProductConcr
     protected function createProductConcreteRow(int $rowNumber): void
     {
         $productConcreteTransfer = $this->generateProductConcrete();
-        $productAbstractSkus = $this->readProductAbstractFromCsv();
-        $productAbstractSku = $productAbstractSkus[$rowNumber] ?? '';
+        $productAbstractSkuIndex = $rowNumber - 1;
+        $productAbstractSku = $this->productAbstractSkus[$productAbstractSkuIndex] ?? '';
 
         $row = [
             'abstract_sku' => $productAbstractSku,
@@ -139,7 +147,7 @@ class ProductConcreteGenerator extends AbstractGenerator implements ProductConcr
     /**
      * @return \Generated\Shared\Transfer\ProductConcreteTransfer|\Spryker\Shared\Kernel\Transfer\AbstractTransfer
      */
-    protected function generateProductConcrete()
+    protected function generateProductConcrete(): ProductConcreteTransfer
     {
         return (new ProductConcreteBuilder())
             ->withLocalizedAttributes()
