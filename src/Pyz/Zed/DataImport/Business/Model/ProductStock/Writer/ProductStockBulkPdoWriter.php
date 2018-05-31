@@ -8,6 +8,7 @@
 namespace Pyz\Zed\DataImport\Business\Model\ProductStock\Writer;
 
 use Propel\Runtime\Propel;
+use Pyz\Zed\DataImport\Business\Model\AbstractBulkPdoWriter\AbstractBulkPdoWriterTrait;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\ProductStockHydratorStep;
 use Spryker\Zed\Availability\Business\AvailabilityFacadeInterface;
@@ -20,6 +21,8 @@ use Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface;
 
 class ProductStockBulkPdoWriter extends DataImporterPublisher implements WriterInterface, FlushInterface
 {
+    use AbstractBulkPdoWriterTrait;
+
     const BULK_SIZE = 100;
 
     protected static $stockCollection = [];
@@ -278,50 +281,5 @@ SELECT updated.idStockProduct FROM updated UNION ALL SELECT inserted.id_stock_pr
         $idProduct = $this->productRepository->getIdProductByConcreteSku($sku);
         $dataSet[ProductStockHydratorStep::STOCK_PRODUCT_ENTITY_TRANSFER]->setFkProduct($idProduct);
         static::$stockProductCollection[] = $dataSet[ProductStockHydratorStep::STOCK_PRODUCT_ENTITY_TRANSFER]->modifiedToArray();
-    }
-
-    /**
-     * //TODO move this to abstract class or trait
-     *
-     * @param array $values
-     *
-     * @return string
-     */
-    protected function formatPostgresArray(array $values)
-    {
-        return sprintf(
-            '{%s}',
-            implode(',', $values)
-        );
-    }
-
-    /**
-     * //TODO move this to abstract class or trait
-     *
-     * @param array $values
-     *
-     * @return string
-     */
-    protected function formatPostgresArrayString(array $values)
-    {
-        return sprintf(
-            '{"%s"}',
-            implode('","', $values)
-        );
-    }
-
-    /**
-     * //TODO move this to abstract class or trait
-     *
-     * @param array $values
-     *
-     * @return string
-     */
-    protected function formatPostgresArrayFromJson(array $values)
-    {
-        return sprintf(
-            '[%s]',
-            implode(',', $values)
-        );
     }
 }
