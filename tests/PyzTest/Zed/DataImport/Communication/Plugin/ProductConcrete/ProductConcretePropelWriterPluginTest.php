@@ -31,7 +31,7 @@ class ProductConcretePropelWriterPluginTest extends AbstractWriterPluginTest
      */
     public function testProductAbstractStorePropelWriterPlugin(): void
     {
-        $dataImportBusinessFactory = $this->getProductConcreteDataImportBusinessFactoryStub();
+        $dataImportBusinessFactory = $this->getDataImportBusinessFactoryStub();
         $dataImport = $dataImportBusinessFactory->createProductConcreteImporter();
         $dataImporterReportTransfer = $dataImport->import();
         $this->assertInstanceOf(DataImporterReportTransfer::class, $dataImporterReportTransfer);

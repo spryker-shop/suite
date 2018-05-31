@@ -31,7 +31,7 @@ class ProductConcreteBulkPdoWriterPluginTest extends AbstractWriterPluginTest
      */
     public function testProductConcreteStorePropelWriterPlugin(): void
     {
-        $dataImportBusinessFactory = $this->getProductConcreteDataImportBusinessFactoryStub();
+        $dataImportBusinessFactory = $this->getDataImportBusinessFactoryStub();
         $dataImport = $dataImportBusinessFactory->createProductConcreteImporter();
         $dataImporterReportTransfer = $dataImport->import();
         $this->assertInstanceOf(DataImporterReportTransfer::class, $dataImporterReportTransfer);
@@ -43,7 +43,7 @@ class ProductConcreteBulkPdoWriterPluginTest extends AbstractWriterPluginTest
     public function getDataImportWriterPlugins(): array
     {
         return [
-            //new ProductConcreteBulkPdoWriterPlugin(),
+            new ProductConcreteBulkPdoWriterPlugin(),
         ];
     }
 
