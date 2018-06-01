@@ -85,7 +85,6 @@ class ProductAbstractBulkPdoWriter extends DataImporterPublisher implements Writ
             $localizedAttributeArray = $productAbstractLocalizedTransfer['localizedAttributeTransfer']->modifiedToArray();
             $localizedAttributeArray['abstract_sku'] = $productAbstractLocalizedTransfer['abstract_sku'];
             $localizedAttributeArray['meta_description'] = str_replace('"', '', $localizedAttributeArray['meta_description']);
-            ;
             $localizedAttributeArray['description'] = str_replace('"', '', $localizedAttributeArray['description']);
             $localizedAttributeArray = $productAbstractLocalizedTransfer[ProductAbstractHydratorStep::KEY_PRODUCT_ABSTRACT_LOCALIZED_TRANSFER]->modifiedToArray();
             $localizedAttributeArray[ProductAbstractHydratorStep::KEY_ABSTRACT_SKU] = $productAbstractLocalizedTransfer[ProductAbstractHydratorStep::KEY_ABSTRACT_SKU];
@@ -197,18 +196,6 @@ class ProductAbstractBulkPdoWriter extends DataImporterPublisher implements Writ
                 $attributes,
             ]);
         }
-        $con = Propel::getConnection();
-        $stmt = $con->prepare($sql);
-        $stmt->execute([
-            $abstractSkus,
-            $name,
-            $description,
-            $metaTitle,
-            $metaDescription,
-            $metaKeywords,
-            $idLocale,
-            $attributes,
-        ]);
     }
 
     /**
