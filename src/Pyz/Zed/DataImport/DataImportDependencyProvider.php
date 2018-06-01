@@ -12,6 +12,7 @@ use Pyz\Zed\DataImport\Communication\Plugin\ProductAbstractStore\ProductAbstract
 use Pyz\Zed\DataImport\Communication\Plugin\ProductConcrete\ProductConcreteBulkPdoWriterPlugin;
 use Pyz\Zed\DataImport\Communication\Plugin\ProductImage\ProductImageBulkPdoWriterPlugin;
 use Pyz\Zed\DataImport\Communication\Plugin\ProductPrice\ProductPriceBulkPdoWriterPlugin;
+use Pyz\Zed\DataImport\Communication\Plugin\ProductStock\ProductStockBulkPdoWriterPlugin;
 use Spryker\Zed\CategoryDataImport\Communication\Plugin\CategoryDataImportPlugin;
 use Spryker\Zed\CompanyBusinessUnitDataImport\Communication\Plugin\CompanyBusinessUnitDataImportPlugin;
 use Spryker\Zed\CompanyDataImport\Communication\Plugin\CompanyDataImportPlugin;
@@ -35,6 +36,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     const DATA_IMPORT_PRODUCT_ABSTRACT_STORE_WRITER_PLUGINS = 'DATA_IMPORT_PRODUCT_ABSTRACT_STORE_WRITER_PLUGINS';
     const DATA_IMPORT_PRODUCT_PRICE_WRITER_PLUGINS = 'DATA_IMPORT_PRODUCT_PRICE_WRITER_PLUGINS';
     const DATA_IMPORT_PRODUCT_CONCRETE_WRITER_PLUGINS = 'DATA_IMPORT_PRODUCT_CONCRETE_WRITER_PLUGINS';
+    const DATA_IMPORT_PRODUCT_STOCK_WRITER_PLUGINS = 'DATA_IMPORT_PRODUCT_STOCK_WRITER_PLUGINS';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -55,6 +57,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
         $container = $this->addDataImportProductPriceWriterPlugins($container);
         $container = $this->addDataImportProductAbstractStoreWriterPlugins($container);
         $container = $this->addDataImportProductImageWriterPlugins($container);
+        $container = $this->addDataImportProductStockWriterPlugins($container);
 
         return $container;
     }
@@ -208,6 +211,20 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     }
 
     /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addDataImportProductStockWriterPlugins(Container $container): Container
+    {
+        $container[static::DATA_IMPORT_PRODUCT_STOCK_WRITER_PLUGINS] = function () {
+            return $this->getDataImportProductStockWriterPlugins();
+        };
+
+        return $container;
+    }
+
+    /**
      * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
      */
     protected function getDataImportProductAbstractWriterPlugins(): array
@@ -289,6 +306,17 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
         return [
             new ProductConcreteBulkPdoWriterPlugin(),
 //            new ProductConcretePropelWriterPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
+     */
+    protected function getDataImportProductStockWriterPlugins(): array
+    {
+        return [
+//            new ProductStockPropelWriterPlugin(),
+            new ProductStockBulkPdoWriterPlugin(),
         ];
     }
 }

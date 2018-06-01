@@ -36,6 +36,26 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
     }
 
     /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeProductStockDataSet(DataSetInterface $dataSet)
+    {
+        $this->getFactory()->createProductStockPropelWriter()->write($dataSet);
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeProductStockPdoDataSet(DataSetInterface $dataSet)
+    {
+        $this->getFactory()->createProductStockBulkPdoWriter()->write($dataSet);
+    }
+
+    /**
      * @return void
      */
     public function flushProductAbstractDataImporter(): void
@@ -193,5 +213,21 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
     public function flushProductConcretePdoDataImporter()
     {
         $this->getFactory()->createProductConcreteBulkPdoWriter()->flush();
+    }
+
+    /**
+     * @return void
+     */
+    public function flushProductStockDataImporter()
+    {
+        $this->getFactory()->createProductStockPropelWriter()->flush();
+    }
+
+    /**
+     * @return void
+     */
+    public function flushProductStockPdoDataImporter()
+    {
+        $this->getFactory()->createProductStockBulkPdoWriter()->flush();
     }
 }

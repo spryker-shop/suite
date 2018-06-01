@@ -71,7 +71,9 @@ use Pyz\Zed\DataImport\Business\Model\ProductSearchAttributeMap\ProductSearchAtt
 use Pyz\Zed\DataImport\Business\Model\ProductSet\ProductSetImageExtractorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductSet\ProductSetWriterStep;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\Hook\ProductStockAfterImportPublishHook;
-use Pyz\Zed\DataImport\Business\Model\ProductStock\ProductStockWriterStep;
+use Pyz\Zed\DataImport\Business\Model\ProductStock\ProductStockHydratorStep;
+use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockBulkPdoWriter;
+use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockPropelWriter;
 use Pyz\Zed\DataImport\Business\Model\Shipment\ShipmentWriterStep;
 use Pyz\Zed\DataImport\Business\Model\ShipmentPrice\ShipmentPriceWriterStep;
 use Pyz\Zed\DataImport\Business\Model\Stock\StockWriterStep;
@@ -263,6 +265,32 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     public function createProductImageBulkPdoWriter()
     {
         return new ProductImageBulkPdoWriter($this->getEventFacade());
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\Writer\WriterInterface|\Spryker\Zed\DataImport\Business\Model\Writer\FlushInterface
+     */
+    public function createProductStockPropelWriter()
+    {
+        return new ProductStockPropelWriter(
+            $this->getEventFacade(),
+            $this->getAvailabilityFacade(),
+            $this->getProductBundleFacade(),
+            $this->createProductRepository()
+        );
+    }
+
+    /**
+     * @return \Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockBulkPdoWriter
+     */
+    public function createProductStockBulkPdoWriter()
+    {
+        return new ProductStockBulkPdoWriter(
+            $this->getEventFacade(),
+            $this->getAvailabilityFacade(),
+            $this->getProductBundleFacade(),
+            $this->createProductRepository()
+        );
     }
 
     /**
@@ -591,22 +619,26 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     /**
      * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
      */
-    protected function createProductStockImporter()
+    public function createProductStockImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getProductStockDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterWriterAwareFromConfig($this->getConfig()->getProductStockDataImporterConfiguration());
 
-        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductStockWriterStep::BULK_SIZE);
+        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductStockHydratorStep::BULK_SIZE);
         $dataSetStepBroker
-            ->addStep(new ProductStockWriterStep(
-                $this->createProductRepository(),
-                $this->getAvailabilityFacade(),
-                $this->getProductBundleFacade()
-            ));
-
+            ->addStep(new ProductStockHydratorStep());
         $dataImporter->addDataSetStepBroker($dataSetStepBroker)
             ->addAfterImportHook($this->createProductStockAfterImportPublishHook());
+        $dataImporter->setDataImportWriter($this->createProductStockDataImportWriters());
 
         return $dataImporter;
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\Writer\DataImportWriterInterface
+     */
+    protected function createProductStockDataImportWriters()
+    {
+        return new DataImportWriterCollection($this->getProductStockDataImportWriterPlugins());
     }
 
     /**
@@ -1297,5 +1329,13 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     protected function getProductPriceDataImportWriterPlugins(): array
     {
         return $this->getProvidedDependency(DataImportDependencyProvider::DATA_IMPORT_PRODUCT_PRICE_WRITER_PLUGINS);
+    }
+
+    /**
+     * @return array
+     */
+    protected function getProductStockDataImportWriterPlugins()
+    {
+        return $this->getProvidedDependency(DataImportDependencyProvider::DATA_IMPORT_PRODUCT_STOCK_WRITER_PLUGINS);
     }
 }
