@@ -50,6 +50,7 @@ abstract class AbstractWriterPluginTest extends Unit
             'createProductAbstractStoreDataImportWriters' => $this->createDataImportWriters(),
             'createProductPriceDataImportWriters' => $this->createDataImportWriters(),
             'createProductConcreteDataImportWriters' => $this->createDataImportWriters(),
+            'createProductImageDataWriters' => $this->createDataImportWriters(),
             'getConfig' => $this->getDataImportConfigStub(),
             'getPropelConnection' => $this->getPropelConnection(),
             'getStore' => $this->getStore(),
@@ -66,6 +67,7 @@ abstract class AbstractWriterPluginTest extends Unit
             'getProductAbstractStoreDataImporterConfiguration' => $this->getDataImporterConfiguration(),
             'getProductPriceDataImporterConfiguration' => $this->getDataImporterConfiguration(),
             'getProductConcreteDataImporterConfiguration' => $this->getDataImporterConfiguration(),
+            'getProductImageDataImporterConfiguration' => $this->getDataImporterConfiguration(),
         ]);
     }
 

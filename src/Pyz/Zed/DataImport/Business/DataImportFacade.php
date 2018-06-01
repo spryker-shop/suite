@@ -56,6 +56,42 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
      *
      * @return void
      */
+    public function writeProductImageDataSet(DataSetInterface $dataSet)
+    {
+        $this->getFactory()->createProductImagePropelWriter()->write($dataSet);
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeProductImagePdoDataSet(DataSetInterface $dataSet)
+    {
+        $this->getFactory()->createProductImageBulkPdoWriter()->write($dataSet);
+    }
+
+    /**
+     * @return void
+     */
+    public function flushProductImageDataImporter()
+    {
+        $this->getFactory()->createProductImagePropelWriter()->flush();
+    }
+
+    /**
+     * @return void
+     */
+    public function flushProductImagePdoDataImporter()
+    {
+        $this->getFactory()->createProductImageBulkPdoWriter()->flush();
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
     public function writeProductAbstractStoreDataSet(DataSetInterface $dataSet): void
     {
         $this->getFactory()->createProductAbstractStorePropelWriter()->write($dataSet);

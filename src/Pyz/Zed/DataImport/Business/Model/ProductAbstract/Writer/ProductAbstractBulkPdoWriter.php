@@ -82,6 +82,11 @@ class ProductAbstractBulkPdoWriter extends DataImporterPublisher implements Writ
     protected function prepareProductAbstractLocalizedAttributesCollection(DataSetInterface $dataSet): void
     {
         foreach ($dataSet[ProductAbstractHydratorStep::PRODUCT_ABSTRACT_LOCALIZED_TRANSFER] as $productAbstractLocalizedTransfer) {
+            $localizedAttributeArray = $productAbstractLocalizedTransfer['localizedAttributeTransfer']->modifiedToArray();
+            $localizedAttributeArray['abstract_sku'] = $productAbstractLocalizedTransfer['abstract_sku'];
+            $localizedAttributeArray['meta_description'] = str_replace('"', '', $localizedAttributeArray['meta_description']);
+            ;
+            $localizedAttributeArray['description'] = str_replace('"', '', $localizedAttributeArray['description']);
             $localizedAttributeArray = $productAbstractLocalizedTransfer[ProductAbstractHydratorStep::KEY_PRODUCT_ABSTRACT_LOCALIZED_TRANSFER]->modifiedToArray();
             $localizedAttributeArray[ProductAbstractHydratorStep::KEY_ABSTRACT_SKU] = $productAbstractLocalizedTransfer[ProductAbstractHydratorStep::KEY_ABSTRACT_SKU];
             $localizedAttributeArray[ProductAbstractHydratorStep::KEY_META_DESCRIPTION] = str_replace('"', '', $localizedAttributeArray[ProductAbstractHydratorStep::KEY_META_DESCRIPTION]);
@@ -143,6 +148,16 @@ class ProductAbstractBulkPdoWriter extends DataImporterPublisher implements Writ
                 $newFrom,
                 $newTo,
             ]);
+            $con = Propel::getConnection();
+            $stmt = $con->prepare($sql);
+            $stmt->execute([
+                $abstractSkus,
+                $attributes,
+                $fkTaxSets,
+                $colorCode,
+                $newFrom,
+                $newTo,
+            ]);
 
             $result = $stmt->fetchAll();
 
@@ -182,11 +197,21 @@ class ProductAbstractBulkPdoWriter extends DataImporterPublisher implements Writ
                 $attributes,
             ]);
         }
+        $con = Propel::getConnection();
+        $stmt = $con->prepare($sql);
+        $stmt->execute([
+            $abstractSkus,
+            $name,
+            $description,
+            $metaTitle,
+            $metaDescription,
+            $metaKeywords,
+            $idLocale,
+            $attributes,
+        ]);
     }
 
     /**
-     * return void
-     *
      * @return void
      */
     protected function persistAbstractProductCategoryEntities(): void
@@ -390,9 +415,8 @@ SELECT 1;";
      */
     protected function createAbstractProductCategoriesSQL(): string
     {
-
         $sql = "WITH records AS (
-    SELECT 
+    SELECT
         input.abstract_sku,
         input.productOrder,
         input.IdCategory,
@@ -406,7 +430,7 @@ SELECT 1;";
      ) input
       INNER JOIN spy_product_abstract ON spy_product_abstract.sku = input.abstract_sku
       LEFT JOIN spy_product_category ON (spy_product_category.fk_product_abstract = id_product_abstract and spy_product_category.fk_category = input.IdCategory)
-), 
+),
     updated AS (
         UPDATE spy_product_category
         SET
