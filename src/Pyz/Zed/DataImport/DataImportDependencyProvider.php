@@ -8,7 +8,7 @@
 namespace Pyz\Zed\DataImport;
 
 use Pyz\Zed\DataImport\Communication\Plugin\ProductAbstract\ProductAbstractPropelWriterPlugin;
-use Pyz\Zed\DataImport\Communication\Plugin\ProductAbstractStore\ProductAbstractStorePropelWriterPlugin;
+use Pyz\Zed\DataImport\Communication\Plugin\ProductAbstractStore\ProductAbstractStoreBulkPdoWriterPlugin;
 use Pyz\Zed\DataImport\Communication\Plugin\ProductConcrete\ProductConcreteBulkPdoWriterPlugin;
 use Pyz\Zed\DataImport\Communication\Plugin\ProductImage\ProductImageBulkPdoWriterPlugin;
 use Pyz\Zed\DataImport\Communication\Plugin\ProductPrice\ProductPriceBulkPdoWriterPlugin;
@@ -257,8 +257,6 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
         return [
             new ProductImageBulkPdoWriterPlugin(),
 //            new ProductImagePropelWriterPlugin(),
-//            new ProductAbstractBulkPdoWriterPlugin(),
-            new ProductAbstractPropelWriterPlugin(),
         ];
     }
 
@@ -279,8 +277,8 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     protected function getDataImportProductAbstractStoreWriterPlugins(): array
     {
         return [
-//            new ProductAbstractStoreBulkPdoWriterPlugin(),
-            new ProductAbstractStorePropelWriterPlugin(),
+            new ProductAbstractStoreBulkPdoWriterPlugin(),
+//            new ProductAbstractStorePropelWriterPlugin(),
         ];
     }
 
