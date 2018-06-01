@@ -16,6 +16,10 @@ trait AbstractBulkPdoWriterTrait
      */
     protected function formatPostgresArray(array $values): string
     {
+        if (is_array($values) && empty($values)) {
+            return '{null}';
+        }
+
         return sprintf(
             '{%s}',
             implode(',', $values)
