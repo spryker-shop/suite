@@ -48,6 +48,7 @@ abstract class AbstractWriterPluginTest extends Unit
         return Stub::make(DataImportBusinessFactory::class, [
             'createProductAbstractDataImportWriters' => $this->createDataImportWriters(),
             'createProductAbstractStoreDataImportWriters' => $this->createDataImportWriters(),
+            'createProductPriceDataImportWriters' => $this->createDataImportWriters(),
             'getConfig' => $this->getDataImportConfigStub(),
             'getPropelConnection' => $this->getPropelConnection(),
             'getStore' => $this->getStore(),
@@ -61,6 +62,8 @@ abstract class AbstractWriterPluginTest extends Unit
     {
         return Stub::make(DataImportConfig::class, [
             'getProductAbstractDataImporterConfiguration' => $this->getDataImporterConfiguration(),
+            'getProductAbstractStoreDataImporterConfiguration' => $this->getDataImporterConfiguration(),
+            'getProductPriceDataImporterConfiguration' => $this->getDataImporterConfiguration(),
         ]);
     }
 
