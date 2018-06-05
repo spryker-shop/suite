@@ -192,7 +192,7 @@ class ProductImageBulkPdoWriter extends DataImporterPublisher implements WriterI
     protected function addProductImageSetChangeEvent(array $insertedProductSetImage): void
     {
         foreach ($insertedProductSetImage as $productImageSet) {
-            if (isset($productImageSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT])) {
+            if ($productImageSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT]) {
                 $this->addEvent(
                     ProductImageEvents::PRODUCT_IMAGE_PRODUCT_ABSTRACT_PUBLISH,
                     $productImageSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT]
@@ -201,7 +201,7 @@ class ProductImageBulkPdoWriter extends DataImporterPublisher implements WriterI
                     ProductEvents::PRODUCT_ABSTRACT_PUBLISH,
                     $productImageSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT]
                 );
-            } elseif (isset($productImageSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT])) {
+            } elseif ($productImageSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT]) {
                 $this->addEvent(
                     ProductImageEvents::PRODUCT_IMAGE_PRODUCT_CONCRETE_PUBLISH,
                     $productImageSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT]

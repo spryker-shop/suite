@@ -7,12 +7,6 @@
 
 namespace Pyz\Zed\DataImport;
 
-use Pyz\Zed\DataImport\Communication\Plugin\ProductAbstract\ProductAbstractPropelWriterPlugin;
-use Pyz\Zed\DataImport\Communication\Plugin\ProductAbstractStore\ProductAbstractStoreBulkPdoWriterPlugin;
-use Pyz\Zed\DataImport\Communication\Plugin\ProductConcrete\ProductConcreteBulkPdoWriterPlugin;
-use Pyz\Zed\DataImport\Communication\Plugin\ProductImage\ProductImageBulkPdoWriterPlugin;
-use Pyz\Zed\DataImport\Communication\Plugin\ProductPrice\ProductPriceBulkPdoWriterPlugin;
-use Pyz\Zed\DataImport\Communication\Plugin\ProductStock\ProductStockBulkPdoWriterPlugin;
 use Spryker\Zed\CategoryDataImport\Communication\Plugin\CategoryDataImportPlugin;
 use Spryker\Zed\CompanyBusinessUnitDataImport\Communication\Plugin\CompanyBusinessUnitDataImportPlugin;
 use Spryker\Zed\CompanyDataImport\Communication\Plugin\CompanyDataImportPlugin;
@@ -52,12 +46,6 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
         $container = $this->addProductBundleFacade($container);
         $container = $this->addProductRelationFacade($container);
         $container = $this->addProductSearchFacade($container);
-        $container = $this->addDataImportProductAbstractWriterPlugins($container);
-        $container = $this->addDataImportProductConcreteWriterPlugins($container);
-        $container = $this->addDataImportProductPriceWriterPlugins($container);
-        $container = $this->addDataImportProductAbstractStoreWriterPlugins($container);
-        $container = $this->addDataImportProductImageWriterPlugins($container);
-        $container = $this->addDataImportProductStockWriterPlugins($container);
 
         return $container;
     }
@@ -165,156 +153,6 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
         return [
             new DataImportEventBehaviorPlugin(),
             new DataImportPublisherPlugin(),
-        ];
-    }
-
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
-    protected function addDataImportProductAbstractWriterPlugins(Container $container): Container
-    {
-        $container[static::DATA_IMPORT_PRODUCT_ABSTRACT_WRITER_PLUGINS] = function () {
-            return $this->getDataImportProductAbstractWriterPlugins();
-        };
-
-        return $container;
-    }
-
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
-    protected function addDataImportProductAbstractStoreWriterPlugins(Container $container): Container
-    {
-        $container[static::DATA_IMPORT_PRODUCT_ABSTRACT_STORE_WRITER_PLUGINS] = function () {
-            return $this->getDataImportProductAbstractStoreWriterPlugins();
-        };
-
-        return $container;
-    }
-
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
-    protected function addDataImportProductPriceWriterPlugins(Container $container): Container
-    {
-        $container[static::DATA_IMPORT_PRODUCT_PRICE_WRITER_PLUGINS] = function () {
-            return $this->getDataImportProductPriceWriterPlugins();
-        };
-
-        return $container;
-    }
-
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
-    protected function addDataImportProductStockWriterPlugins(Container $container): Container
-    {
-        $container[static::DATA_IMPORT_PRODUCT_STOCK_WRITER_PLUGINS] = function () {
-            return $this->getDataImportProductStockWriterPlugins();
-        };
-
-        return $container;
-    }
-
-    /**
-     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
-     */
-    protected function getDataImportProductAbstractWriterPlugins(): array
-    {
-        return [
-//            new ProductAbstractBulkPdoWriterPlugin(),
-            new ProductAbstractPropelWriterPlugin(),
-        ];
-    }
-
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
-    protected function addDataImportProductImageWriterPlugins(Container $container): Container
-    {
-        $container[static::DATA_IMPORT_PRODUCT_IMAGE_WRITER_PLUGINS] = function () {
-            return $this->getDataImportProductImageWriterPlugins();
-        };
-
-        return $container;
-    }
-
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
-    protected function addDataImportProductConcreteWriterPlugins(Container $container): Container
-    {
-        $container[static::DATA_IMPORT_PRODUCT_CONCRETE_WRITER_PLUGINS] = function () {
-            return $this->getDataImportProductConcreteWriterPlugins();
-        };
-
-        return $container;
-    }
-
-    /**
-     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
-     */
-    protected function getDataImportProductImageWriterPlugins()
-    {
-        return [
-            new ProductImageBulkPdoWriterPlugin(),
-//            new ProductImagePropelWriterPlugin(),
-        ];
-    }
-
-    /**
-     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
-     */
-    protected function getDataImportProductPriceWriterPlugins(): array
-    {
-        return [
-            new ProductPriceBulkPdoWriterPlugin(),
-//            new ProductPricePropelWriterPlugin(),
-        ];
-    }
-
-    /**
-     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
-     */
-    protected function getDataImportProductAbstractStoreWriterPlugins(): array
-    {
-        return [
-            new ProductAbstractStoreBulkPdoWriterPlugin(),
-//            new ProductAbstractStorePropelWriterPlugin(),
-        ];
-    }
-
-    /**
-     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
-     */
-    protected function getDataImportProductConcreteWriterPlugins(): array
-    {
-        return [
-            new ProductConcreteBulkPdoWriterPlugin(),
-//            new ProductConcretePropelWriterPlugin(),
-        ];
-    }
-
-    /**
-     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
-     */
-    protected function getDataImportProductStockWriterPlugins(): array
-    {
-        return [
-            new ProductStockBulkPdoWriterPlugin(),
-//            new ProductStockPropelWriterPlugin(),
         ];
     }
 }

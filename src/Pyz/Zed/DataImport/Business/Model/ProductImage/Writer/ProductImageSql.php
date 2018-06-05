@@ -52,7 +52,7 @@ class ProductImageSql
       (records.fkProduct = spy_product_image_set.fk_product OR records.fkProduct is null) AND
       (records.fkProductAbstract = spy_product_image_set.fk_product_abstract OR records.fkProductAbstract is null) AND
       records.fkLocale = spy_product_image_set.fk_locale )
-    RETURNING id_product_image_set
+    RETURNING id_product_image_set, fk_product_abstract, fk_product
   ),
     inserted AS(
     INSERT INTO spy_product_image_set (
@@ -76,9 +76,9 @@ class ProductImageSql
         now()
       FROM records
       WHERE idProductImageSet is null AND (fkProduct is null OR fkProductAbstract is null OR fkLocale is null)
-    ) RETURNING id_product_image_set
+    ) RETURNING id_product_image_set, fk_product_abstract, fk_product
   )
-SELECT updated.id_product_image_set FROM updated UNION ALL SELECT inserted.id_product_image_set FROM inserted;";
+SELECT updated.id_product_image_set, updated.fk_product_abstract, updated.fk_product FROM updated UNION ALL SELECT inserted.id_product_image_set, inserted.fk_product_abstract, inserted.fk_product FROM inserted;";
         return $sql;
     }
 

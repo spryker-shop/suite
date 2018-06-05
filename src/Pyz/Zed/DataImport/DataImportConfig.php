@@ -7,6 +7,19 @@
 
 namespace Pyz\Zed\DataImport;
 
+use Pyz\Zed\DataImport\Communication\Plugin\ProductAbstract\ProductAbstractBulkPdoWriterPlugin;
+use Pyz\Zed\DataImport\Communication\Plugin\ProductAbstract\ProductAbstractPropelWriterPlugin;
+use Pyz\Zed\DataImport\Communication\Plugin\ProductAbstractStore\ProductAbstractStoreBulkPdoWriterPlugin;
+use Pyz\Zed\DataImport\Communication\Plugin\ProductAbstractStore\ProductAbstractStorePropelWriterPlugin;
+use Pyz\Zed\DataImport\Communication\Plugin\ProductConcrete\ProductConcreteBulkPdoWriterPlugin;
+use Pyz\Zed\DataImport\Communication\Plugin\ProductConcrete\ProductConcretePropelWriterPlugin;
+use Pyz\Zed\DataImport\Communication\Plugin\ProductImage\ProductImageBulkPdoWriterPlugin;
+use Pyz\Zed\DataImport\Communication\Plugin\ProductImage\ProductImagePropelWriterPlugin;
+use Pyz\Zed\DataImport\Communication\Plugin\ProductPrice\ProductPriceBulkPdoWriterPlugin;
+use Pyz\Zed\DataImport\Communication\Plugin\ProductPrice\ProductPricePropelWriterPlugin;
+use Pyz\Zed\DataImport\Communication\Plugin\ProductStock\ProductStockBulkPdoWriterPlugin;
+use Pyz\Zed\DataImport\Communication\Plugin\ProductStock\ProductStockPropelWriterPlugin;
+use Pyz\Zed\Propel\PropelConfig;
 use Spryker\Zed\DataImport\DataImportConfig as SprykerDataImportConfig;
 
 class DataImportConfig extends SprykerDataImportConfig
@@ -379,5 +392,150 @@ class DataImportConfig extends SprykerDataImportConfig
     public function getDiscountVoucherDataImporterConfiguration()
     {
         return $this->buildImporterConfiguration('discount_voucher.csv', static::IMPORT_TYPE_DISCOUNT_VOUCHER);
+    }
+
+    /**
+     * @return array
+     */
+    public function getDatabaseWriters()
+    {
+        return [
+            PropelConfig::DB_ENGINE_PGSQL => [
+                static::IMPORT_TYPE_PRODUCT_ABSTRACT => $this->getProductAbstractPostgreWriter(),
+                static::IMPORT_TYPE_PRODUCT_ABSTRACT_STORE => $this->getProductAbstractStorePostgreWriter(),
+                static::IMPORT_TYPE_PRODUCT_CONCRETE => $this->getProductConcretePostgreWriter(),
+                static::IMPORT_TYPE_PRODUCT_PRICE => $this->getProductPricePostgreWriter(),
+                static::IMPORT_TYPE_PRODUCT_STOCK => $this->getProductStockPostgreWriter(),
+                static::IMPORT_TYPE_PRODUCT_IMAGE => $this->getProductImagePostgreWriter(),
+            ],
+            PropelConfig::DB_ENGINE_MYSQL => [
+                static::IMPORT_TYPE_PRODUCT_ABSTRACT => $this->getProductAbstractMySqlWriter(),
+                static::IMPORT_TYPE_PRODUCT_ABSTRACT_STORE => $this->getProductAbstractStoreMySqlWriter(),
+                static::IMPORT_TYPE_PRODUCT_CONCRETE => $this->getProductConcreteMySqlWriter(),
+                static::IMPORT_TYPE_PRODUCT_PRICE => $this->getProductPriceMySqlWriter(),
+                static::IMPORT_TYPE_PRODUCT_STOCK => $this->getProductStockMySqlWriter(),
+                static::IMPORT_TYPE_PRODUCT_IMAGE => $this->getProductImageMySqlWriter(),
+            ],
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
+     */
+    protected function getProductAbstractPostgreWriter(): array
+    {
+        return [
+            new ProductAbstractBulkPdoWriterPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
+     */
+    protected function getProductAbstractMySqlWriter(): array
+    {
+        return [
+            new ProductAbstractPropelWriterPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
+     */
+    protected function getProductAbstractStorePostgreWriter(): array
+    {
+        return [
+            new ProductAbstractStoreBulkPdoWriterPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
+     */
+    protected function getProductAbstractStoreMySqlWriter(): array
+    {
+        return [
+            new ProductAbstractStorePropelWriterPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
+     */
+    protected function getProductConcretePostgreWriter(): array
+    {
+        return [
+            new ProductConcreteBulkPdoWriterPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
+     */
+    protected function getProductConcreteMySqlWriter(): array
+    {
+        return [
+            new ProductConcretePropelWriterPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
+     */
+    protected function getProductImagePostgreWriter()
+    {
+        return [
+            new ProductImageBulkPdoWriterPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
+     */
+    protected function getProductImageMySqlWriter()
+    {
+        return [
+            new ProductImagePropelWriterPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
+     */
+    protected function getProductPricePostgreWriter(): array
+    {
+        return [
+            new ProductPriceBulkPdoWriterPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
+     */
+    protected function getProductPriceMySqlWriter(): array
+    {
+        return [
+            new ProductPricePropelWriterPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
+     */
+    protected function getProductStockPostgreWriter(): array
+    {
+        return [
+            new ProductStockBulkPdoWriterPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
+     */
+    protected function getProductStockMySqlWriter(): array
+    {
+        return [
+            new ProductStockPropelWriterPlugin(),
+        ];
     }
 }

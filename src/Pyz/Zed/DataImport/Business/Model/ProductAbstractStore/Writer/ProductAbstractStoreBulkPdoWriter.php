@@ -62,10 +62,10 @@ class ProductAbstractStoreBulkPdoWriter extends DataImporterPublisher implements
     protected function persistAbstractProductStoreEntities(): void
     {
         $abstractSku = $this->formatPostgresArrayString(
-            array_column(static::$productAbstractStoreCollection, ProductAbstractStoreHydratorStep::KEY_PRODUCT_ABSTRACT_SKU)
+            $this->getCollectionDataByKey(static::$productAbstractStoreCollection, ProductAbstractStoreHydratorStep::KEY_PRODUCT_ABSTRACT_SKU)
         );
         $storeName = $this->formatPostgresArrayString(
-            array_column(static::$productAbstractStoreCollection, ProductAbstractStoreHydratorStep::KEY_STORE_NAME)
+            $this->getCollectionDataByKey(static::$productAbstractStoreCollection, ProductAbstractStoreHydratorStep::KEY_STORE_NAME)
         );
 
         $sql = $this->productAbstractStoreSql->createAbstractProductStoreSQL();

@@ -141,22 +141,22 @@ class ProductAbstractBulkPdoWriter extends DataImporterPublisher implements Writ
     {
         if (!empty(static::$productAbstractCollection)) {
             $abstractSkus = $this->formatPostgresArrayString(
-                array_column(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_SKU)
+                $this->getCollectionDataByKey(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_SKU)
             );
             $attributes = $this->formatPostgresArrayFromJson(
-                array_column(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_ATTRIBUTES)
+                $this->getCollectionDataByKey(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_ATTRIBUTES)
             );
             $fkTaxSets = $this->formatPostgresArray(
-                array_column(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_FK_TAX_SET)
+                $this->getCollectionDataByKey(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_FK_TAX_SET)
             );
             $colorCode = $this->formatPostgresArrayString(
-                array_column(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_COLOR_CODE)
+                $this->getCollectionDataByKey(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_COLOR_CODE)
             );
             $newFrom = $this->formatPostgresArrayString(
-                array_column(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_NEW_FROM)
+                $this->getCollectionDataByKey(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_NEW_FROM)
             );
             $newTo = $this->formatPostgresArrayString(
-                array_column(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_NEW_TO)
+                $this->getCollectionDataByKey(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_NEW_TO)
             );
 
             $sql = $this->productAbstractSql->createAbstractProductSQL();
@@ -185,28 +185,28 @@ class ProductAbstractBulkPdoWriter extends DataImporterPublisher implements Writ
     {
         if (!empty(static::$productAbstractLocalizedAttributesCollection)) {
             $abstractSkus = $this->formatPostgresArrayString(
-                array_column(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_ABSTRACT_SKU)
+                $this->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_ABSTRACT_SKU)
             );
             $idLocale = $this->formatPostgresArray(
-                array_column(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_FK_LOCALE)
+                $this->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_FK_LOCALE)
             );
             $name = $this->formatPostgresArrayString(
-                array_column(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_NAME)
+                $this->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_NAME)
             );
             $description = $this->formatPostgresArrayString(
-                array_column(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_DESCRIPTION)
+                $this->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_DESCRIPTION)
             );
             $metaTitle = $this->formatPostgresArrayString(
-                array_column(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_META_TITLE)
+                $this->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_META_TITLE)
             );
             $metaDescription = $this->formatPostgresArrayString(
-                array_column(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_META_DESCRIPTION)
+                $this->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_META_DESCRIPTION)
             );
             $metaKeywords = $this->formatPostgresArrayString(
-                array_column(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_META_KEYWORDS)
+                $this->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_META_KEYWORDS)
             );
             $attributes = $this->formatPostgresArrayFromJson(
-                array_column(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_ATTRIBUTES)
+                $this->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_ATTRIBUTES)
             );
 
             $sql = $this->productAbstractSql->createAbstractProductLocalizedAttributesSQL();
@@ -234,13 +234,13 @@ class ProductAbstractBulkPdoWriter extends DataImporterPublisher implements Writ
     {
         if (!empty(static::$productCategoryCollection)) {
             $abstractSkus = $this->formatPostgresArrayString(
-                array_column(static::$productCategoryCollection, ProductAbstractHydratorStep::KEY_ABSTRACT_SKU)
+                $this->getCollectionDataByKey(static::$productCategoryCollection, ProductAbstractHydratorStep::KEY_ABSTRACT_SKU)
             );
             $productOrder = $this->formatPostgresArrayString(
-                array_column(static::$productCategoryCollection, ProductAbstractHydratorStep::KEY_PRODUCT_ORDER)
+                $this->getCollectionDataByKey(static::$productCategoryCollection, ProductAbstractHydratorStep::KEY_PRODUCT_ORDER)
             );
             $idCategory = $this->formatPostgresArrayString(
-                array_column(static::$productCategoryCollection, ProductAbstractHydratorStep::KEY_FK_CATEGORY)
+                $this->getCollectionDataByKey(static::$productCategoryCollection, ProductAbstractHydratorStep::KEY_FK_CATEGORY)
             );
 
             $sql = $this->productAbstractSql->createAbstractProductCategoriesSQL();
@@ -266,13 +266,13 @@ class ProductAbstractBulkPdoWriter extends DataImporterPublisher implements Writ
     {
         if (!empty(static::$productUrlCollection)) {
             $abstractSkus = $this->formatPostgresArrayString(
-                array_column(static::$productUrlCollection, ProductAbstractHydratorStep::KEY_ABSTRACT_SKU)
+                $this->getCollectionDataByKey(static::$productUrlCollection, ProductAbstractHydratorStep::KEY_ABSTRACT_SKU)
             );
             $idLocale = $this->formatPostgresArray(
-                array_column(static::$productUrlCollection, ProductAbstractHydratorStep::KEY_FK_LOCALE)
+                $this->getCollectionDataByKey(static::$productUrlCollection, ProductAbstractHydratorStep::KEY_FK_LOCALE)
             );
             $url = $this->formatPostgresArrayString(
-                array_column(static::$productUrlCollection, ProductAbstractHydratorStep::KEY_URL)
+                $this->getCollectionDataByKey(static::$productUrlCollection, ProductAbstractHydratorStep::KEY_URL)
             );
 
             $sql = $this->productAbstractSql->createAbstractProductUrlsSQL();
