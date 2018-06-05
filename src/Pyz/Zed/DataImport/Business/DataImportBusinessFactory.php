@@ -46,10 +46,12 @@ use Pyz\Zed\DataImport\Business\Model\ProductAttributeKey\ProductAttributeKeyWri
 use Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductConcreteHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\ProductConcreteBulkPdoWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\ProductConcretePropelWriter;
+use Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\ProductConcreteSql;
 use Pyz\Zed\DataImport\Business\Model\ProductGroup\ProductGroupWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\ProductImageHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\ProductImageBulkPdoWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\ProductImagePropelWriter;
+use Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\ProductImageSql;
 use Pyz\Zed\DataImport\Business\Model\ProductLabel\Hook\ProductLabelAfterImportPublishHook;
 use Pyz\Zed\DataImport\Business\Model\ProductLabel\ProductLabelWriterStep;
 use Pyz\Zed\DataImport\Business\Model\ProductManagementAttribute\ProductManagementAttributeWriter;
@@ -77,6 +79,7 @@ use Pyz\Zed\DataImport\Business\Model\ProductStock\Hook\ProductStockAfterImportP
 use Pyz\Zed\DataImport\Business\Model\ProductStock\ProductStockHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockBulkPdoWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockPropelWriter;
+use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockSql;
 use Pyz\Zed\DataImport\Business\Model\Shipment\ShipmentWriterStep;
 use Pyz\Zed\DataImport\Business\Model\ShipmentPrice\ShipmentPriceWriterStep;
 use Pyz\Zed\DataImport\Business\Model\Stock\StockWriterStep;
@@ -234,6 +237,30 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     }
 
     /**
+     * @return \Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\ProductConcreteSql
+     */
+    public function createProductConcreteSql(): ProductConcreteSql
+    {
+        return new ProductConcreteSql();
+    }
+
+    /**
+     * @return \Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockSql
+     */
+    public function createProductStockSql(): ProductStockSql
+    {
+        return new ProductStockSql();
+    }
+
+    /**
+     * @return \Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\ProductImageSql
+     */
+    public function createProductImageSql(): ProductImageSql
+    {
+        return new ProductImageSql();
+    }
+
+    /**
      * @return \Spryker\Zed\DataImport\Business\Model\Writer\WriterInterface|\Spryker\Zed\DataImport\Business\Model\Writer\FlushInterface
      */
     public function createProductAbstractStorePropelWriter()
@@ -256,7 +283,11 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     public function createProductConcreteBulkPdoWriter()
     {
-        return new ProductConcreteBulkPdoWriter($this->getEventFacade(), $this->createProductRepository());
+        return new ProductConcreteBulkPdoWriter(
+            $this->getEventFacade(),
+            $this->createProductRepository(),
+            $this->createProductConcreteSql()
+        );
     }
 
     /**
@@ -298,7 +329,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     public function createProductImageBulkPdoWriter()
     {
-        return new ProductImageBulkPdoWriter($this->getEventFacade());
+        return new ProductImageBulkPdoWriter($this->getEventFacade(), $this->createProductImageSql());
     }
 
     /**
@@ -323,7 +354,8 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             $this->getEventFacade(),
             $this->getAvailabilityFacade(),
             $this->getProductBundleFacade(),
-            $this->createProductRepository()
+            $this->createProductRepository(),
+            $this->createProductStockSql()
         );
     }
 

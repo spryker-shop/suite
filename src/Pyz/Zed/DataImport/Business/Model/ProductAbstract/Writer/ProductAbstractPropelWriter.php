@@ -64,8 +64,7 @@ class ProductAbstractPropelWriter extends DataImporterPublisher implements Write
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-
+     *
      * @return \Orm\Zed\Product\Persistence\SpyProductAbstract
      */
     protected function createOrUpdateProductAbstract(DataSetInterface $dataSet): SpyProductAbstract
@@ -118,10 +117,8 @@ class ProductAbstractPropelWriter extends DataImporterPublisher implements Write
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      * @param int $idProductAbstract
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
      * @return void
-     * @return \Generated\Shared\Transfer\SpyProductAbstractEntityTransfer
      */
     protected function createOrUpdateProductCategories(DataSetInterface $dataSet, int $idProductAbstract): void
     {
@@ -148,10 +145,8 @@ class ProductAbstractPropelWriter extends DataImporterPublisher implements Write
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface|int $dataSet
      * @param int $idProductAbstract
      *
-     * @return \Generated\Shared\Transfer\SpyProductAbstractLocalizedAttributesEntityTransfer
      * @return void
      */
     protected function createOrUpdateProductUrls(DataSetInterface $dataSet, int $idProductAbstract): void

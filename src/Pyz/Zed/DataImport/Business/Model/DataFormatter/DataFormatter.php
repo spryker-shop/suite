@@ -61,4 +61,15 @@ trait DataFormatter
             implode(',', $values)
         );
     }
+
+    /**
+     * @param array $collection
+     * @param string $key
+     *
+     * @return array
+     */
+    protected function getCollectionDataByKey(array $collection, string $key)
+    {
+        return array_column($collection, $key);
+    }
 }

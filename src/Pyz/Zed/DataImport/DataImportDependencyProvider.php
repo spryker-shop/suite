@@ -250,6 +250,20 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     }
 
     /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addDataImportProductConcreteWriterPlugins(Container $container): Container
+    {
+        $container[static::DATA_IMPORT_PRODUCT_CONCRETE_WRITER_PLUGINS] = function () {
+            return $this->getDataImportProductConcreteWriterPlugins();
+        };
+
+        return $container;
+    }
+
+    /**
      * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
      */
     protected function getDataImportProductImageWriterPlugins()
@@ -283,20 +297,6 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     }
 
     /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
-    protected function addDataImportProductConcreteWriterPlugins(Container $container): Container
-    {
-        $container[static::DATA_IMPORT_PRODUCT_CONCRETE_WRITER_PLUGINS] = function () {
-            return $this->getDataImportProductConcreteWriterPlugins();
-        };
-
-        return $container;
-    }
-
-    /**
      * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
      */
     protected function getDataImportProductConcreteWriterPlugins(): array
@@ -313,8 +313,8 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     protected function getDataImportProductStockWriterPlugins(): array
     {
         return [
-//            new ProductStockPropelWriterPlugin(),
             new ProductStockBulkPdoWriterPlugin(),
+//            new ProductStockPropelWriterPlugin(),
         ];
     }
 }

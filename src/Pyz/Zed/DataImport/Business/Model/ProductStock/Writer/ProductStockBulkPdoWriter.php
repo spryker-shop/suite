@@ -7,10 +7,10 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\ProductStock\Writer;
 
-use Propel\Runtime\Propel;
 use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataFormatter;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\ProductStockHydratorStep;
+use Pyz\Zed\DataImport\Business\Model\PropelExecutor;
 use Spryker\Zed\Availability\Business\AvailabilityFacadeInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
@@ -45,23 +45,31 @@ class ProductStockBulkPdoWriter extends DataImporterPublisher implements WriterI
     protected $productBundleFacade;
 
     /**
+     * @var \Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockSql
+     */
+    protected $productStockSql;
+
+    /**
      * ProductStockBulkPdoWriter constructor.
      *
      * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface $eventFacade
      * @param \Spryker\Zed\Availability\Business\AvailabilityFacadeInterface $availabilityFacade
      * @param \Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface $productBundleFacade
      * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository $productRepository
+     * @param \Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockSql $productStockSql
      */
     public function __construct(
         DataImportToEventFacadeInterface $eventFacade,
         AvailabilityFacadeInterface $availabilityFacade,
         ProductBundleFacadeInterface $productBundleFacade,
-        ProductRepository $productRepository
+        ProductRepository $productRepository,
+        ProductStockSql $productStockSql
     ) {
         parent::__construct($eventFacade);
         $this->availabilityFacade = $availabilityFacade;
         $this->productBundleFacade = $productBundleFacade;
         $this->productRepository = $productRepository;
+        $this->productStockSql = $productStockSql;
     }
 
     /**
@@ -118,18 +126,15 @@ class ProductStockBulkPdoWriter extends DataImporterPublisher implements WriterI
      */
     protected function persistStockEntities(): void
     {
-        $name = $this->formatPostgresArrayString(
-            array_unique(
-                array_column(static::$stockCollection, ProductStockHydratorStep::KEY_NAME)
-            )
-        );
+        $names = $this->getCollectionDataByKey(static::$stockCollection, ProductStockHydratorStep::KEY_NAME);
+        $uniqueNames = array_unique($names);
+        $name = $this->formatPostgresArrayString($uniqueNames);
 
-        $sql = $this->createStockSQL();
-        $con = Propel::getConnection();
-        $stmt = $con->prepare($sql);
-        $stmt->execute([
+        $sql = $this->productStockSql->createStockSQL();
+        $parameters = [
             $name,
-        ]);
+        ];
+        PropelExecutor::execute($sql, $parameters);
     }
 
     /**
@@ -138,126 +143,26 @@ class ProductStockBulkPdoWriter extends DataImporterPublisher implements WriterI
     protected function persistStockProductEntities(): void
     {
         $fkProduct = $this->formatPostgresArray(
-            array_column(static::$stockProductCollection, ProductStockHydratorStep::KEY_FK_PRODUCT)
+            $this->getCollectionDataByKey(static::$stockProductCollection, ProductStockHydratorStep::KEY_FK_PRODUCT)
         );
         $stockName = $this->formatPostgresArray(
-            array_column(static::$stockCollection, ProductStockHydratorStep::KEY_NAME)
+            $this->getCollectionDataByKey(static::$stockCollection, ProductStockHydratorStep::KEY_NAME)
         );
         $quantity = $this->formatPostgresArray(
-            array_column(static::$stockProductCollection, ProductStockHydratorStep::KEY_QUANTITY)
+            $this->getCollectionDataByKey(static::$stockProductCollection, ProductStockHydratorStep::KEY_QUANTITY)
         );
         $isNeverOutOfStock = $this->formatPostgresArray(
-            array_column(static::$stockProductCollection, ProductStockHydratorStep::KEY_IS_NEVER_OUT_OF_STOCK)
+            $this->getCollectionDataByKey(static::$stockProductCollection, ProductStockHydratorStep::KEY_IS_NEVER_OUT_OF_STOCK)
         );
 
-        $sql = $this->createStockProductSQL();
-        $con = Propel::getConnection();
-        $stmt = $con->prepare($sql);
-        $stmt->execute([
+        $sql = $this->productStockSql->createStockProductSQL();
+        $parameters = [
             $fkProduct,
             $stockName,
             $quantity,
             $isNeverOutOfStock,
-        ]);
-    }
-
-    /**
-     * @return string
-     */
-    protected function createStockSQL(): string
-    {
-        $sql = "WITH records AS (
-    SELECT
-      input.name as inputName,
-      id_stock as idStock,
-      spy_stock.name as spyStockName
-    FROM (
-           SELECT
-             unnest(? :: VARCHAR []) AS name
-         ) input
-    LEFT JOIN spy_stock ON spy_stock.name = input.name
-),
-    updated AS (
-    UPDATE spy_stock
-    SET
-      name = records.inputName
-    FROM records
-    WHERE idStock is not null and spyStockName is null
-    RETURNING idStock
-  ),
-    inserted AS(
-    INSERT INTO spy_stock (
-      id_stock,
-      name
-    ) (
-      SELECT
-        nextval('spy_stock_pk_seq'),
-        inputName
-      FROM records
-      WHERE idStock is null AND inputName <> ''
-    ) RETURNING id_stock
-  )
-SELECT updated.idStock FROM updated UNION ALL SELECT inserted.id_stock FROM inserted;";
-
-        return $sql;
-    }
-
-    /**
-     * @return string
-     */
-    protected function createStockProductSQL(): string
-    {
-        $sql = "WITH records AS (
-    SELECT
-      input.fk_product,
-      input.stockName,
-      input.quantity,
-      input.is_never_out_of_stock,
-      id_stock_product as idStockProduct,
-      id_stock as fkStock
-    FROM (
-           SELECT
-             unnest(? :: INTEGER []) AS fk_product,
-             unnest(? :: VARCHAR []) AS stockName,
-             unnest(? :: INTEGER []) AS quantity,
-             unnest(? :: BOOLEAN []) AS is_never_out_of_stock
-         ) input
-      INNER JOIN spy_stock on spy_stock.name = stockName
-      LEFT JOIN spy_stock_product ON spy_stock_product.fk_product = input.fk_product
-                                     AND spy_stock_product.fk_stock = spy_stock.id_stock
-),
-    updated AS (
-    UPDATE spy_stock_product
-    SET
-      fk_product = records.fk_product,
-      fk_stock = records.fkStock,
-      quantity = records.quantity,
-      is_never_out_of_stock = records.is_never_out_of_stock
-    FROM records
-    WHERE spy_stock_product.fk_product = records.fk_product AND fk_stock = records.fkStock
-    RETURNING idStockProduct
-  ),
-    inserted AS(
-    INSERT INTO spy_stock_product (
-      id_stock_product,
-      fk_product,
-      fk_stock,
-      quantity,
-      is_never_out_of_stock
-    ) (
-      SELECT
-        nextval('spy_stock_product_pk_seq'),
-        fk_product,
-        fkStock,
-        quantity,
-        is_never_out_of_stock
-      FROM records
-      WHERE idStockProduct is null
-    ) RETURNING id_stock_product
-  )
-SELECT updated.idStockProduct FROM updated UNION ALL SELECT inserted.id_stock_product FROM inserted;";
-
-        return $sql;
+        ];
+        PropelExecutor::execute($sql, $parameters);
     }
 
     /**
