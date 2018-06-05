@@ -7,17 +7,35 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer;
 
-use Propel\Runtime\Propel;
-use Pyz\Zed\DataImport\Business\Model\AbstractBulkPdoWriter\AbstractBulkPdoWriterTrait;
+use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataFormatter;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\ProductAbstractStoreHydratorStep;
+use Pyz\Zed\DataImport\Business\Model\PropelExecutor;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
 use Spryker\Zed\DataImport\Business\Model\Writer\FlushInterface;
 use Spryker\Zed\DataImport\Business\Model\Writer\WriterInterface;
+use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
 
 class ProductAbstractStoreBulkPdoWriter extends DataImporterPublisher implements WriterInterface, FlushInterface
 {
-    use AbstractBulkPdoWriterTrait;
+    use DataFormatter;
+
+    /**
+     * @var \Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\ProductAbstractStoreSql
+     */
+    protected $productAbstractStoreSql;
+
+    /**
+     * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface $eventFacade
+     * @param \Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\ProductAbstractStoreSql $productAbstractStoreSql
+     */
+    public function __construct(
+        DataImportToEventFacadeInterface $eventFacade,
+        ProductAbstractStoreSql $productAbstractStoreSql
+    ) {
+        parent::__construct($eventFacade);
+        $this->productAbstractStoreSql = $productAbstractStoreSql;
+    }
 
     /**
      * @var array
@@ -43,54 +61,20 @@ class ProductAbstractStoreBulkPdoWriter extends DataImporterPublisher implements
      */
     protected function persistAbstractProductStoreEntities(): void
     {
-        $abstractSku = $this->formatPostgresArrayString(array_column(static::$productAbstractStoreCollection, ProductAbstractStoreHydratorStep::KEY_PRODUCT_ABSTRACT_SKU));
-        $storeName = $this->formatPostgresArrayString(array_column(static::$productAbstractStoreCollection, ProductAbstractStoreHydratorStep::KEY_STORE_NAME));
+        $abstractSku = $this->formatPostgresArrayString(
+            array_column(static::$productAbstractStoreCollection, ProductAbstractStoreHydratorStep::KEY_PRODUCT_ABSTRACT_SKU)
+        );
+        $storeName = $this->formatPostgresArrayString(
+            array_column(static::$productAbstractStoreCollection, ProductAbstractStoreHydratorStep::KEY_STORE_NAME)
+        );
 
-        $sql = $this->createAbstractProductStoreSQL();
-
-        $con = Propel::getConnection();
-        $stmt = $con->prepare($sql);
-        $stmt->execute([
+        $sql = $this->productAbstractStoreSql->createAbstractProductStoreSQL();
+        $parameters = [
             $abstractSku,
             $storeName,
-        ]);
-    }
+        ];
 
-    /**
-     * @return string
-     */
-    protected function createAbstractProductStoreSQL(): string
-    {
-        $sql = "WITH records AS (
-    SELECT
-      input.abstract_sku,
-      input.store_name,
-      id_product_abstract,
-      id_store
-    FROM (
-           SELECT
-             unnest(?::VARCHAR[]) AS abstract_sku,
-             unnest(?::VARCHAR[]) AS store_name
-         ) input
-         INNER JOIN spy_product_abstract ON spy_product_abstract.sku = input.abstract_sku
-         INNER JOIN spy_store ON spy_store.name = input.store_name
-),
-    inserted AS(
-        INSERT INTO spy_product_abstract_store (
-          id_product_abstract_store,
-          fk_product_abstract,
-          fk_store
-        ) (
-          SELECT
-            nextval('id_product_abstract_store_pk_seq'),
-            id_product_abstract,
-            id_store
-        FROM records
-    ) ON CONFLICT DO NOTHING
-)
-SELECT 1;";
-
-        return $sql;
+        PropelExecutor::execute($sql, $parameters);
     }
 
     /**

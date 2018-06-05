@@ -8,7 +8,7 @@
 namespace Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer;
 
 use Propel\Runtime\Propel;
-use Pyz\Zed\DataImport\Business\Model\AbstractBulkPdoWriter\AbstractBulkPdoWriterTrait;
+use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataFormatter;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface;
 use Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductConcreteHydratorStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
@@ -20,7 +20,7 @@ use Spryker\Zed\Product\Dependency\ProductEvents;
 
 class ProductConcreteBulkPdoWriter extends DataImporterPublisher implements WriterInterface, FlushInterface
 {
-    use AbstractBulkPdoWriterTrait;
+    use DataFormatter;
 
     const BULK_SIZE = 100;
 

@@ -8,7 +8,7 @@
 namespace Pyz\Zed\DataImport\Business\Model\ProductImage\Writer;
 
 use Propel\Runtime\Propel;
-use Pyz\Zed\DataImport\Business\Model\AbstractBulkPdoWriter\AbstractBulkPdoWriterTrait;
+use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataFormatter;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\ProductImageHydratorStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
@@ -19,7 +19,7 @@ use Spryker\Zed\ProductImage\Dependency\ProductImageEvents;
 
 class ProductImageBulkPdoWriter extends DataImporterPublisher implements WriterInterface, FlushInterface
 {
-    use AbstractBulkPdoWriterTrait;
+    use DataFormatter;
 
     const BULK_SIZE = 1000;
 

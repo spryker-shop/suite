@@ -8,7 +8,7 @@
 namespace Pyz\Zed\DataImport\Business\Model\ProductStock\Writer;
 
 use Propel\Runtime\Propel;
-use Pyz\Zed\DataImport\Business\Model\AbstractBulkPdoWriter\AbstractBulkPdoWriterTrait;
+use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataFormatter;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\ProductStockHydratorStep;
 use Spryker\Zed\Availability\Business\AvailabilityFacadeInterface;
@@ -21,7 +21,7 @@ use Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface;
 
 class ProductStockBulkPdoWriter extends DataImporterPublisher implements WriterInterface, FlushInterface
 {
-    use AbstractBulkPdoWriterTrait;
+    use DataFormatter;
 
     const BULK_SIZE = 100;
 
