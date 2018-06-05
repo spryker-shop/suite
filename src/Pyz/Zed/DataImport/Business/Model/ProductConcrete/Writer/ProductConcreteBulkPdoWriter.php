@@ -59,12 +59,12 @@ class ProductConcreteBulkPdoWriter extends DataImporterPublisher implements Writ
      *
      * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface $eventFacade
      * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface $productRepository
-     * @param \Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\ProductConcreteSql $productConcreteSql
+     * @param \Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\ProductConcreteSqlInterface $productConcreteSql
      */
     public function __construct(
         DataImportToEventFacadeInterface $eventFacade,
         ProductRepositoryInterface $productRepository,
-        ProductConcreteSql $productConcreteSql
+        ProductConcreteSqlInterface $productConcreteSql
     ) {
         parent::__construct($eventFacade);
         $this->productRepository = $productRepository;

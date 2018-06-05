@@ -58,9 +58,9 @@ class ProductImageBulkPdoWriter extends DataImporterPublisher implements WriterI
      * ProductImageBulkPdoWriter constructor.
      *
      * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface $eventFacade
-     * @param \Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\ProductImageSql $productImageSql
+     * @param \Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\ProductImageSqlInterface $productImageSql
      */
-    public function __construct(DataImportToEventFacadeInterface $eventFacade, ProductImageSql $productImageSql)
+    public function __construct(DataImportToEventFacadeInterface $eventFacade, ProductImageSqlInterface $productImageSql)
     {
         parent::__construct($eventFacade);
         $this->productImageSql = $productImageSql;

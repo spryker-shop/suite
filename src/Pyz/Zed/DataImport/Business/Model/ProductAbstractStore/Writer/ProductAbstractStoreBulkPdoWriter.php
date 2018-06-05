@@ -27,11 +27,11 @@ class ProductAbstractStoreBulkPdoWriter extends DataImporterPublisher implements
 
     /**
      * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface $eventFacade
-     * @param \Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\ProductAbstractStoreSql $productAbstractStoreSql
+     * @param \Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\ProductAbstractStoreSqlInterface $productAbstractStoreSql
      */
     public function __construct(
         DataImportToEventFacadeInterface $eventFacade,
-        ProductAbstractStoreSql $productAbstractStoreSql
+        ProductAbstractStoreSqlInterface $productAbstractStoreSql
     ) {
         parent::__construct($eventFacade);
         $this->productAbstractStoreSql = $productAbstractStoreSql;

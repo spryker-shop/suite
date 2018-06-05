@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\ProductImage\Writer;
 
-class ProductImageSql
+class ProductImageSql implements ProductImageSqlInterface
 {
     /**
      * @return string

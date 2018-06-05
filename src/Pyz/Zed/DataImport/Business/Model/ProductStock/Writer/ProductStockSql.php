@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\ProductStock\Writer;
 
-class ProductStockSql
+class ProductStockSql implements ProductStockSqlInterface
 {
     /**
      * @return string

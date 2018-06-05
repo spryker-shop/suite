@@ -8,7 +8,7 @@
 namespace Pyz\Zed\DataImport\Business\Model\ProductStock\Writer;
 
 use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataFormatter;
-use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
+use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\ProductStockHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\PropelExecutor;
 use Spryker\Zed\Availability\Business\AvailabilityFacadeInterface;
@@ -55,15 +55,15 @@ class ProductStockBulkPdoWriter extends DataImporterPublisher implements WriterI
      * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface $eventFacade
      * @param \Spryker\Zed\Availability\Business\AvailabilityFacadeInterface $availabilityFacade
      * @param \Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface $productBundleFacade
-     * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository $productRepository
-     * @param \Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockSql $productStockSql
+     * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface $productRepository
+     * @param \Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockSqlInterface $productStockSql
      */
     public function __construct(
         DataImportToEventFacadeInterface $eventFacade,
         AvailabilityFacadeInterface $availabilityFacade,
         ProductBundleFacadeInterface $productBundleFacade,
-        ProductRepository $productRepository,
-        ProductStockSql $productStockSql
+        ProductRepositoryInterface $productRepository,
+        ProductStockSqlInterface $productStockSql
     ) {
         parent::__construct($eventFacade);
         $this->availabilityFacade = $availabilityFacade;

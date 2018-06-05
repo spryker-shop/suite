@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer;
 
-class ProductConcreteSql
+class ProductConcreteSql implements ProductConcreteSqlInterface
 {
     /**
      * @return string
