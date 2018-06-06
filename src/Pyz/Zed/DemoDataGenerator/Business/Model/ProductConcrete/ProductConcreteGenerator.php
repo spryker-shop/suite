@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\DemoDataGenerator\Business\Model\ProductConcreteGenerator;
+namespace Pyz\Zed\DemoDataGenerator\Business\Model\ProductConcrete;
 
 use Generated\Shared\DataBuilder\ProductConcreteBuilder;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
@@ -34,10 +34,12 @@ class ProductConcreteGenerator extends AbstractGenerator implements ProductConcr
     public function createProductConcreteCsvDemoData(int $rowsNumber): void
     {
         $this->productAbstractSkus = $this->readProductAbstractFromCsv();
+        $i = 1;
 
-        for ($i = 1; $i <= $rowsNumber; $i++) {
+        do {
             $this->createProductConcreteRow($i);
-        }
+            $i++;
+        } while ($i <= $rowsNumber);
 
         $header = array_keys($this->rows[0]);
         $this->writeCsv($header, $this->rows);
@@ -160,8 +162,9 @@ class ProductConcreteGenerator extends AbstractGenerator implements ProductConcr
     protected function generateAttributes(): array
     {
         $attributes = [];
+        $i = 0;
 
-        for ($i = 0; $i < 2; $i++) {
+        do {
             $attributeIndex = $i + 1;
             $attributes = array_merge($attributes, [
                 'attribute_key_' . $attributeIndex => 'att_key_' . $attributeIndex,
@@ -171,7 +174,8 @@ class ProductConcreteGenerator extends AbstractGenerator implements ProductConcr
                 'attribute_key_' . $attributeIndex . '.de_DE' => null,
                 'value_' . $attributeIndex . '.de_DE' => null,
             ]);
-        }
+            $i++;
+        } while ($i < 2);
 
         return $attributes;
     }

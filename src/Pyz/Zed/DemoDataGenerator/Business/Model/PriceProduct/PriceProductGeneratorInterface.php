@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\DemoDataGenerator\Business\Model\ProductImageGenerator;
+namespace Pyz\Zed\DemoDataGenerator\Business\Model\PriceProduct;
 
-interface ProductImageGeneratorInterface
+interface PriceProductGeneratorInterface
 {
     /**
      * @return void
      */
-    public function createProductImageCsvDemoData(): void;
+    public function createPriceProductCsvDemoData(): void;
 }

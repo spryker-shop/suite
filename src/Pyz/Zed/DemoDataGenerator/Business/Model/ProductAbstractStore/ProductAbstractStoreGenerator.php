@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\DemoDataGenerator\Business\Model\ProductAbstractStoreGenerator;
+namespace Pyz\Zed\DemoDataGenerator\Business\Model\ProductAbstractStore;
 
 use Pyz\Zed\DemoDataGenerator\Business\Model\AbstractGenerator;
 use Pyz\Zed\DemoDataGenerator\Business\Model\FileManager\FileManagerInterface;

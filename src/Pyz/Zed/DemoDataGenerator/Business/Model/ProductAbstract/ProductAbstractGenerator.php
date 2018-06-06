@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\DemoDataGenerator\Business\Model\ProductAbstractGenerator;
+namespace Pyz\Zed\DemoDataGenerator\Business\Model\ProductAbstract;
 
 use Generated\Shared\DataBuilder\ProductAbstractBuilder;
 use Generated\Shared\Transfer\ProductAbstractTransfer;
@@ -22,14 +22,15 @@ class ProductAbstractGenerator extends AbstractGenerator implements ProductAbstr
     public function createProductAbstractCsvDemoData(int $rowsNumber): void
     {
         $rows = [];
-        $header = [];
+        $i = 0;
 
-        for ($i = 0; $i < $rowsNumber; $i++) {
+        do {
             $productAbstractTransfer = $this->generateProductAbstract();
             $row = $this->createProductAbstractRow($productAbstractTransfer);
             $header = array_keys($row);
             $rows[] = array_values($row);
-        }
+            $i++;
+        } while ($i < $rowsNumber);
 
         $this->writeCsv($header, $rows);
     }
@@ -101,8 +102,9 @@ class ProductAbstractGenerator extends AbstractGenerator implements ProductAbstr
     protected function generateAttributes(): array
     {
         $attributes = [];
+        $i = 0;
 
-        for ($i = 0; $i < 6; $i++) {
+        do {
             $attributeIndex = $i + 1;
             $attributes = array_merge($attributes, [
                 'attribute_key_' . $attributeIndex => 'att_key_' . $attributeIndex,
@@ -112,7 +114,8 @@ class ProductAbstractGenerator extends AbstractGenerator implements ProductAbstr
                 'attribute_key_' . $attributeIndex . '.de_DE' => null,
                 'value_' . $attributeIndex . '.de_DE' => null,
             ]);
-        }
+            $i++;
+        } while ($i < 6);
 
         return $attributes;
     }
