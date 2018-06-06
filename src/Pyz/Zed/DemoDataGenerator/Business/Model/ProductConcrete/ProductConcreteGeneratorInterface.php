@@ -7,12 +7,14 @@
 
 namespace Pyz\Zed\DemoDataGenerator\Business\Model\ProductConcrete;
 
+use Generated\Shared\Transfer\DemoDataGeneratorTransfer;
+
 interface ProductConcreteGeneratorInterface
 {
     /**
-     * @param int $rowsNumber
+     * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
      *
      * @return void
      */
-    public function createProductConcreteCsvDemoData(int $rowsNumber): void;
+    public function createProductConcreteCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void;
 }

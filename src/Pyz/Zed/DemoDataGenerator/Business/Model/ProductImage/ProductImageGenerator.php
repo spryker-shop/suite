@@ -10,6 +10,7 @@ namespace Pyz\Zed\DemoDataGenerator\Business\Model\ProductImage;
 use Generated\Shared\DataBuilder\ProductConcreteBuilder;
 use Generated\Shared\DataBuilder\ProductImageBuilder;
 use Generated\Shared\DataBuilder\ProductImageSetBuilder;
+use Generated\Shared\Transfer\DemoDataGeneratorTransfer;
 use Generated\Shared\Transfer\LocaleTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\ProductImageSetTransfer;
@@ -46,15 +47,19 @@ class ProductImageGenerator extends AbstractGenerator implements ProductImageGen
     }
 
     /**
+     * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
+     *
      * @return void
      */
-    public function createProductImageCsvDemoData(): void
+    public function createProductImageCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void
     {
+        $filePath = $demoDataGeneratorTransfer->getFilePath();
+
         $this->generateRowsForProductAbstract();
         $this->generateRowsForProductConcrete();
 
         $header = array_keys($this->rows[0]);
-        $this->writeCsv($header, $this->rows);
+        $this->writeCsv($filePath, $header, $this->rows);
     }
 
     /**
@@ -82,14 +87,16 @@ class ProductImageGenerator extends AbstractGenerator implements ProductImageGen
     }
 
     /**
+     * @param string|null $filePath
      * @param array $header
      * @param array $rows
      *
      * @return void
      */
-    protected function writeCsv(array $header, array $rows): void
+    protected function writeCsv(?string $filePath, array $header, array $rows): void
     {
-        $this->getFileManager()->write($this->getConfig()->getProductImageCsvPath(), $header, $rows);
+        $file = $filePath ? $filePath : $this->getConfig()->getProductImageCsvPath();
+        $this->fileManager->write($file, $header, $rows);
     }
 
     /**

@@ -16,67 +16,75 @@ use Spryker\Zed\Kernel\Business\AbstractFacade;
 class DemoDataGeneratorFacade extends AbstractFacade implements DemoDataGeneratorFacadeInterface
 {
     /**
-     * @param int $rowsNumber
+     * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
      *
      * @return void
      */
-    public function createProductAbstractCsvDemoData(int $rowsNumber): void
+    public function createProductAbstractCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void
     {
         $this->getFactory()
             ->createAbstractProductDemoDataGenerator()
-            ->createProductAbstractCsvDemoData($rowsNumber);
+            ->createProductAbstractCsvDemoData($demoDataGeneratorTransfer);
     }
 
     /**
-     * @param int $rowsNumber
+     * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
      *
      * @return void
      */
-    public function createProductConcreteCsvDemoData(int $rowsNumber): void
+    public function createProductConcreteCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void
     {
         $this->getFactory()
             ->createConcreteProductDemoDataGenerator()
-            ->createProductConcreteCsvDemoData($rowsNumber);
+            ->createProductConcreteCsvDemoData($demoDataGeneratorTransfer);
     }
 
     /**
+     * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
+     *
      * @return void
      */
-    public function createPriceProductCsvDemoData(): void
+    public function createPriceProductCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void
     {
         $this->getFactory()
             ->createPriceProductDemoDataGenerator()
-            ->createPriceProductCsvDemoData();
+            ->createPriceProductCsvDemoData($demoDataGeneratorTransfer);
     }
 
     /**
+     * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
+     *
      * @return void
      */
-    public function createProductAbstractStoreCsvDemoData(): void
+    public function createProductAbstractStoreCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void
     {
         $this->getFactory()
             ->createProductAbstractStoreDemoDataGenerator()
-            ->createProductAbstractStoreCsvDemoData();
+            ->createProductAbstractStoreCsvDemoData($demoDataGeneratorTransfer);
     }
 
     /**
+     * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
+     *
      * @return void
      */
-    public function createProductImageCsvDemoData(): void
+    public function createProductImageCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void
     {
         $this->getFactory()
             ->createProductImageDemoDataGenerator()
-            ->createProductImageCsvDemoData();
+            ->createProductImageCsvDemoData($demoDataGeneratorTransfer);
     }
 
     /**
+     * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
+     *
      * @return void
      */
-    public function createStockProductCsvDemoData(): void
+    public function createStockProductCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void
     {
         $this->getFactory()
             ->createStockProductDemoDataGenerator()
-            ->createStockProductCsvDemoData();
+            ->createStockProductCsvDemoData($demoDataGeneratorTransfer);
     }
 
     /**

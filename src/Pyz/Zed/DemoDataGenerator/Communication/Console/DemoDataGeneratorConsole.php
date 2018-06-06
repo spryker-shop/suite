@@ -34,6 +34,9 @@ class DemoDataGeneratorConsole extends Console
     protected const ROWS_NUMBER_PARAMETER_KEY = 'r';
 
     protected const ERROR_MESSAGE = 'Entity type for demo data generation is required';
+    protected const FILE_PARAMETER_NAME = 'filePath';
+    protected const FILE_PARAMETER_KEY = 'f';
+    protected const FILE_PARAMETER_DESCRIPTION = 'File path for demo data generation';
 
     /**
      * @var int
@@ -58,6 +61,11 @@ class DemoDataGeneratorConsole extends Console
                 static::TYPE_PARAMETER_KEY,
                 InputOption::VALUE_REQUIRED,
                 static::TYPE_PARAMETER_DESCRIPTION
+            )->addOption(
+                static::FILE_PARAMETER_NAME,
+                static::FILE_PARAMETER_KEY,
+                InputOption::VALUE_REQUIRED,
+                static::FILE_PARAMETER_DESCRIPTION
             );
     }
 
@@ -100,6 +108,7 @@ class DemoDataGeneratorConsole extends Console
         if ($input->getOption(static::TYPE_PARAMETER_NAME)) {
             $demoDataGeneratorTransfer->setType($input->getOption(static::TYPE_PARAMETER_NAME));
             $demoDataGeneratorTransfer->setRowNumber((int)strtolower($input->getOption(static::ROWS_NUMBER_PARAMETER_NAME)));
+            $demoDataGeneratorTransfer->setFilePath($input->getOption(static::FILE_PARAMETER_NAME));
 
             return $demoDataGeneratorTransfer;
         }

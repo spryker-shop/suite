@@ -8,6 +8,7 @@
 namespace Pyz\Zed\DemoDataGenerator\Business\Model\ProductAbstract;
 
 use Generated\Shared\DataBuilder\ProductAbstractBuilder;
+use Generated\Shared\Transfer\DemoDataGeneratorTransfer;
 use Generated\Shared\Transfer\ProductAbstractTransfer;
 use Nette\Utils\DateTime;
 use Pyz\Zed\DemoDataGenerator\Business\Model\AbstractGenerator;
@@ -15,14 +16,16 @@ use Pyz\Zed\DemoDataGenerator\Business\Model\AbstractGenerator;
 class ProductAbstractGenerator extends AbstractGenerator implements ProductAbstractGeneratorInterface
 {
     /**
-     * @param int $rowsNumber
+     * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
      *
      * @return void
      */
-    public function createProductAbstractCsvDemoData(int $rowsNumber): void
+    public function createProductAbstractCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void
     {
         $rows = [];
         $i = 0;
+        $rowsNumber = $demoDataGeneratorTransfer->getRowNumber();
+        $filePath = $demoDataGeneratorTransfer->getFilePath();
 
         do {
             $productAbstractTransfer = $this->generateProductAbstract();
@@ -32,18 +35,20 @@ class ProductAbstractGenerator extends AbstractGenerator implements ProductAbstr
             $i++;
         } while ($i < $rowsNumber);
 
-        $this->writeCsv($header, $rows);
+        $this->writeCsv($filePath, $header, $rows);
     }
 
     /**
+     * @param string|null $filePath
      * @param array $header
      * @param array $rows
      *
      * @return void
      */
-    protected function writeCsv(array $header, array $rows): void
+    protected function writeCsv(?string $filePath, array $header, array $rows): void
     {
-        $this->getFileManager()->write($this->getConfig()->getProductAbstractCsvPath(), $header, $rows);
+        $file = $filePath ? $filePath : $this->getConfig()->getProductAbstractCsvPath();
+        $this->fileManager->write($file, $header, $rows);
     }
 
     /**

@@ -7,12 +7,14 @@
 
 namespace Pyz\Zed\DemoDataGenerator\Business\Model\ProductAbstract;
 
+use Generated\Shared\Transfer\DemoDataGeneratorTransfer;
+
 interface ProductAbstractGeneratorInterface
 {
     /**
-     * @param int $rowsNumber
+     * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
      *
      * @return void
      */
-    public function createProductAbstractCsvDemoData(int $rowsNumber): void;
+    public function createProductAbstractCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void;
 }

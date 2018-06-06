@@ -8,6 +8,7 @@
 namespace Pyz\Zed\DemoDataGenerator\Business\Model\StockProduct;
 
 use Generated\Shared\DataBuilder\StockProductBuilder;
+use Generated\Shared\Transfer\DemoDataGeneratorTransfer;
 use Generated\Shared\Transfer\StockProductTransfer;
 use Pyz\Zed\DemoDataGenerator\Business\Model\AbstractGenerator;
 use Pyz\Zed\DemoDataGenerator\Business\Model\FileManager\FileManagerInterface;
@@ -34,14 +35,18 @@ class StockProductGenerator extends AbstractGenerator implements StockProductGen
     }
 
     /**
+     * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
+     *
      * @return void
      */
-    public function createStockProductCsvDemoData(): void
+    public function createStockProductCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void
     {
+        $filePath = $demoDataGeneratorTransfer->getFilePath();
+
         $this->generateRows();
 
         $header = array_keys($this->rows[0]);
-        $this->writeCsv($header, $this->rows);
+        $this->writeCsv($filePath, $header, $this->rows);
     }
 
     /**
@@ -63,14 +68,16 @@ class StockProductGenerator extends AbstractGenerator implements StockProductGen
     }
 
     /**
+     * @param string|null $filePath
      * @param array $header
      * @param array $rows
      *
      * @return void
      */
-    protected function writeCsv(array $header, array $rows): void
+    protected function writeCsv(?string $filePath, array $header, array $rows): void
     {
-        $this->getFileManager()->write($this->getConfig()->getProductStockCsvPath(), $header, $rows);
+        $file = $filePath ? $filePath : $this->getConfig()->getProductStockCsvPath();
+        $this->fileManager->write($file, $header, $rows);
     }
 
     /**

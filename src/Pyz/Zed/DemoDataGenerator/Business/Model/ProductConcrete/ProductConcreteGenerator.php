@@ -8,6 +8,7 @@
 namespace Pyz\Zed\DemoDataGenerator\Business\Model\ProductConcrete;
 
 use Generated\Shared\DataBuilder\ProductConcreteBuilder;
+use Generated\Shared\Transfer\DemoDataGeneratorTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Pyz\Zed\DemoDataGenerator\Business\Model\AbstractGenerator;
 
@@ -27,13 +28,15 @@ class ProductConcreteGenerator extends AbstractGenerator implements ProductConcr
     protected $rows = [];
 
     /**
-     * @param int $rowsNumber
+     * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
      *
      * @return void
      */
-    public function createProductConcreteCsvDemoData(int $rowsNumber): void
+    public function createProductConcreteCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void
     {
         $this->productAbstractSkus = $this->readProductAbstractFromCsv();
+        $rowsNumber = $demoDataGeneratorTransfer->getRowNumber();
+        $filePath = $demoDataGeneratorTransfer->getFilePath();
         $i = 1;
 
         do {
@@ -42,18 +45,20 @@ class ProductConcreteGenerator extends AbstractGenerator implements ProductConcr
         } while ($i <= $rowsNumber);
 
         $header = array_keys($this->rows[0]);
-        $this->writeCsv($header, $this->rows);
+        $this->writeCsv($filePath, $header, $this->rows);
     }
 
     /**
+     * @param string|null $filePath
      * @param array $header
      * @param array $rows
      *
      * @return void
      */
-    protected function writeCsv(array $header, array $rows): void
+    protected function writeCsv(?string $filePath, array $header, array $rows): void
     {
-        $this->getFileManager()->write($this->getConfig()->getProductConcreteCsvPath(), $header, $rows);
+        $file = $filePath ? $filePath : $this->getConfig()->getProductConcreteCsvPath();
+        $this->getFileManager()->write($file, $header, $rows);
     }
 
     /**
