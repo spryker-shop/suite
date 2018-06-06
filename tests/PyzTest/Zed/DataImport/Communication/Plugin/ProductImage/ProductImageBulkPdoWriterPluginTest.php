@@ -19,7 +19,7 @@ use PyzTest\Zed\DataImport\Communication\Plugin\AbstractWriterPluginTest;
  * @group Communication
  * @group Plugin
  * @group ProductImage
- * @group ProductImageBulkPdoAbstractWriterPluginTest
+ * @group ProductImageBulkPdoWriterPluginTest
  * Add your own group annotations below this line
  */
 class ProductImageBulkPdoWriterPluginTest extends AbstractWriterPluginTest
