@@ -20,6 +20,8 @@ use Pyz\Zed\DataImport\Communication\Plugin\ProductPrice\ProductPricePropelWrite
 use Pyz\Zed\DataImport\Communication\Plugin\ProductStock\ProductStockBulkPdoWriterPlugin;
 use Pyz\Zed\DataImport\Communication\Plugin\ProductStock\ProductStockPropelWriterPlugin;
 use Pyz\Zed\Propel\PropelConfig;
+use Spryker\Shared\Config\Config;
+use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Zed\DataImport\DataImportConfig as SprykerDataImportConfig;
 
 class DataImportConfig extends SprykerDataImportConfig
@@ -417,6 +419,14 @@ class DataImportConfig extends SprykerDataImportConfig
                 static::IMPORT_TYPE_PRODUCT_IMAGE => $this->getProductImageMySqlWriter(),
             ],
         ];
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrentDbEngine(): string
+    {
+        return Config::get(PropelConstants::ZED_DB_ENGINE);
     }
 
     /**

@@ -89,10 +89,8 @@ use Pyz\Zed\DataImport\Business\Model\Tax\TaxSetNameToIdTaxSetStep;
 use Pyz\Zed\DataImport\Business\Model\Tax\TaxWriterStep;
 use Pyz\Zed\DataImport\DataImportConfig;
 use Pyz\Zed\DataImport\DataImportDependencyProvider;
-use Spryker\Shared\Config\Config;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\ProductSearch\Code\KeyBuilder\FilterGlossaryKeyBuilder;
-use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Zed\DataImport\Business\DataImportBusinessFactory as SprykerDataImportBusinessFactory;
 use Spryker\Zed\DataImport\Business\Model\Writer\DataImportWriterCollection;
 use Spryker\Zed\DataImport\Business\Model\Writer\DataImportWriterInterface;
@@ -645,7 +643,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     protected function createProductPriceDataImportWriters()
     {
         $databaseWriters = $this->getConfig()->getDatabaseWriters();
-        $currentDbEngine = Config::get(PropelConstants::ZED_DB_ENGINE_PGSQL);
+        $currentDbEngine = $this->getConfig()->getCurrentDbEngine();
 
         return new DataImportWriterCollection($databaseWriters[$currentDbEngine][DataImportConfig::IMPORT_TYPE_PRODUCT_PRICE]);
     }
@@ -711,7 +709,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     protected function createProductStockDataImportWriters()
     {
         $databaseWriters = $this->getConfig()->getDatabaseWriters();
-        $currentDbEngine = Config::get(PropelConstants::ZED_DB_ENGINE_PGSQL);
+        $currentDbEngine = $this->getConfig()->getCurrentDbEngine();
 
         return new DataImportWriterCollection($databaseWriters[$currentDbEngine][DataImportConfig::IMPORT_TYPE_PRODUCT_STOCK]);
     }
@@ -766,7 +764,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     protected function createProductImageDataWriters()
     {
         $databaseWriters = $this->getConfig()->getDatabaseWriters();
-        $currentDbEngine = Config::get(PropelConstants::ZED_DB_ENGINE_PGSQL);
+        $currentDbEngine = $this->getConfig()->getCurrentDbEngine();
 
         return new DataImportWriterCollection($databaseWriters[$currentDbEngine][DataImportConfig::IMPORT_TYPE_PRODUCT_IMAGE]);
     }
@@ -957,7 +955,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     protected function createProductAbstractDataImportWriters()
     {
         $databaseWriters = $this->getConfig()->getDatabaseWriters();
-        $currentDbEngine = Config::get(PropelConstants::ZED_DB_ENGINE_PGSQL);
+        $currentDbEngine = $this->getConfig()->getCurrentDbEngine();
 
         return new DataImportWriterCollection($databaseWriters[$currentDbEngine][DataImportConfig::IMPORT_TYPE_PRODUCT_ABSTRACT]);
     }
@@ -984,7 +982,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     protected function createProductAbstractStoreDataImportWriters(): DataImportWriterInterface
     {
         $databaseWriters = $this->getConfig()->getDatabaseWriters();
-        $currentDbEngine = Config::get(PropelConstants::ZED_DB_ENGINE_PGSQL);
+        $currentDbEngine = $this->getConfig()->getCurrentDbEngine();
 
         return new DataImportWriterCollection($databaseWriters[$currentDbEngine][DataImportConfig::IMPORT_TYPE_PRODUCT_ABSTRACT_STORE]);
     }
@@ -995,7 +993,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     protected function createProductConcreteDataImportWriters()
     {
         $databaseWriters = $this->getConfig()->getDatabaseWriters();
-        $currentDbEngine = Config::get(PropelConstants::ZED_DB_ENGINE_PGSQL);
+        $currentDbEngine = $this->getConfig()->getCurrentDbEngine();
 
         return new DataImportWriterCollection($databaseWriters[$currentDbEngine][DataImportConfig::IMPORT_TYPE_PRODUCT_CONCRETE]);
     }
