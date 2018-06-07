@@ -22,7 +22,7 @@ class ProductConcreteBulkPdoWriter extends DataImporterPublisher implements Writ
 {
     use DataFormatter;
 
-    const BULK_SIZE = 100;
+    const BULK_SIZE = 5000;
 
     /**
      * @var array
