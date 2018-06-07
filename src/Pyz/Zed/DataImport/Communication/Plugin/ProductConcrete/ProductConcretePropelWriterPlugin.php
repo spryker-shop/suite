@@ -32,6 +32,6 @@ class ProductConcretePropelWriterPlugin extends AbstractPlugin implements DataIm
      */
     public function flush()
     {
-        $this->getFacade()->flushProductAbstractDataImporter();
+        $this->getFacade()->flushProductConcreteDataImporter();
     }
 }
