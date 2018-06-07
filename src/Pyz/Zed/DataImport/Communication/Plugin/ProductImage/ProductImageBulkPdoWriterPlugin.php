@@ -32,6 +32,6 @@ class ProductImageBulkPdoWriterPlugin extends AbstractPlugin implements DataImpo
      */
     public function flush()
     {
-        $this->getFacade()->flushProductImageDataImporter();
+        $this->getFacade()->flushProductImagePdoDataImporter();
     }
 }
