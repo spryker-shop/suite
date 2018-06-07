@@ -27,18 +27,6 @@ class ProductAbstractBulkPdoWriter extends DataImporterPublisher implements Writ
     protected $productAbstractSql;
 
     /**
-     * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface $eventFacade
-     * @param \Pyz\Zed\DataImport\Business\Model\ProductAbstract\Writer\ProductAbstractSqlInterface $productAbstractSql
-     */
-    public function __construct(
-        DataImportToEventFacadeInterface $eventFacade,
-        ProductAbstractSqlInterface $productAbstractSql
-    ) {
-        parent::__construct($eventFacade);
-        $this->productAbstractSql = $productAbstractSql;
-    }
-
-    /**
      * @var array
      */
     protected static $productAbstractCollection = [];
@@ -64,19 +52,38 @@ class ProductAbstractBulkPdoWriter extends DataImporterPublisher implements Writ
     protected static $productAbstractUpdated = [];
 
     /**
+     * @var bool
+     */
+    protected $isDuplicatedSku = false;
+
+    /**
+     * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface $eventFacade
+     * @param \Pyz\Zed\DataImport\Business\Model\ProductAbstract\Writer\ProductAbstractSqlInterface $productAbstractSql
+     */
+    public function __construct(
+        DataImportToEventFacadeInterface $eventFacade,
+        ProductAbstractSqlInterface $productAbstractSql
+    ) {
+        parent::__construct($eventFacade);
+        $this->productAbstractSql = $productAbstractSql;
+    }
+
+    /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
      * @return void
      */
     public function write(DataSetInterface $dataSet): void
     {
-        $this->prepareProductAbstractionCollection($dataSet);
-        $this->prepareProductAbstractLocalizedAttributesCollection($dataSet);
-        $this->prepareProductCategoryCollection($dataSet);
-        $this->prepareProductUrlCollection($dataSet);
+        if (!$this->isSkuAlreadyCollected($dataSet)) {
+            $this->prepareProductAbstractionCollection($dataSet);
+            $this->prepareProductAbstractLocalizedAttributesCollection($dataSet);
+            $this->prepareProductCategoryCollection($dataSet);
+            $this->prepareProductUrlCollection($dataSet);
 
-        if (count(static::$productAbstractCollection) >= ProductAbstractHydratorStep::BULK_SIZE) {
-            $this->flush();
+            if (count(static::$productAbstractCollection) >= ProductAbstractHydratorStep::BULK_SIZE) {
+                $this->flush();
+            }
         }
     }
 
@@ -88,6 +95,19 @@ class ProductAbstractBulkPdoWriter extends DataImporterPublisher implements Writ
     protected function prepareProductAbstractionCollection(DataSetInterface $dataSet): void
     {
         static::$productAbstractCollection[] = $dataSet[ProductAbstractHydratorStep::PRODUCT_ABSTRACT_TRANSFER]->modifiedToArray();
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return bool
+     */
+    protected function isSkuAlreadyCollected(DataSetInterface $dataSet)
+    {
+        $collectedSkus = array_column(static::$productAbstractCollection ,ProductAbstractHydratorStep::KEY_SKU);
+        $dataSetSku = $dataSet[ProductAbstractHydratorStep::PRODUCT_ABSTRACT_TRANSFER]->getSku();
+
+        return in_array($dataSetSku, $collectedSkus);
     }
 
     /**
