@@ -261,14 +261,29 @@ class ProductConcreteBulkPdoWriter extends DataImporterPublisher implements Writ
      */
     protected function collectProductConcrete(DataSetInterface $dataSet): void
     {
-        $idAbstract = $this
-            ->productRepository
-            ->getIdProductAbstractByAbstractSku($dataSet[ProductConcreteHydratorStep::KEY_ABSTRACT_SKU]);
+        if (!$this->isSkuAlreadyCollected($dataSet)) {
+            $idAbstract = $this
+                ->productRepository
+                ->getIdProductAbstractByAbstractSku($dataSet[ProductConcreteHydratorStep::KEY_ABSTRACT_SKU]);
 
-        $productConcreteTransfer = $dataSet[ProductConcreteHydratorStep::PRODUCT_CONCRETE_TRANSFER];
-        $productConcreteTransfer->setFkProductAbstract($idAbstract);
+            $productConcreteTransfer = $dataSet[ProductConcreteHydratorStep::PRODUCT_CONCRETE_TRANSFER];
+            $productConcreteTransfer->setFkProductAbstract($idAbstract);
 
-        static::$productConcreteCollection[] = $productConcreteTransfer->modifiedToArray();
+            static::$productConcreteCollection[] = $productConcreteTransfer->modifiedToArray();
+        }
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return bool
+     */
+    protected function isSkuAlreadyCollected(DataSetInterface $dataSet)
+    {
+        $collectedSkus = array_column(static::$productConcreteCollection ,ProductConcreteHydratorStep::KEY_SKU);
+        $dataSetSku = $dataSet[ProductConcreteHydratorStep::PRODUCT_CONCRETE_TRANSFER]->getSku();
+
+        return in_array($dataSetSku, $collectedSkus);
     }
 
     /**
