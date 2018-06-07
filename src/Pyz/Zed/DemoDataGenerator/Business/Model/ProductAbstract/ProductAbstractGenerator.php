@@ -5,9 +5,10 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\DemoDataGenerator\Business\Model\ProductAbstractGenerator;
+namespace Pyz\Zed\DemoDataGenerator\Business\Model\ProductAbstract;
 
 use Generated\Shared\DataBuilder\ProductAbstractBuilder;
+use Generated\Shared\Transfer\DemoDataGeneratorTransfer;
 use Generated\Shared\Transfer\ProductAbstractTransfer;
 use Nette\Utils\DateTime;
 use Pyz\Zed\DemoDataGenerator\Business\Model\AbstractGenerator;
@@ -15,34 +16,39 @@ use Pyz\Zed\DemoDataGenerator\Business\Model\AbstractGenerator;
 class ProductAbstractGenerator extends AbstractGenerator implements ProductAbstractGeneratorInterface
 {
     /**
-     * @param int $rowsNumber
+     * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
      *
      * @return void
      */
-    public function createProductAbstractCsvDemoData(int $rowsNumber): void
+    public function createProductAbstractCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void
     {
         $rows = [];
-        $header = [];
+        $i = 0;
+        $rowsNumber = $demoDataGeneratorTransfer->getRowNumber();
+        $filePath = $demoDataGeneratorTransfer->getFilePath();
 
-        for ($i = 0; $i < $rowsNumber; $i++) {
+        do {
             $productAbstractTransfer = $this->generateProductAbstract();
             $row = $this->createProductAbstractRow($productAbstractTransfer);
             $header = array_keys($row);
             $rows[] = array_values($row);
-        }
+            $i++;
+        } while ($i < $rowsNumber);
 
-        $this->writeCsv($header, $rows);
+        $this->writeCsv($filePath, $header, $rows);
     }
 
     /**
+     * @param string|null $filePath
      * @param array $header
      * @param array $rows
      *
      * @return void
      */
-    protected function writeCsv(array $header, array $rows): void
+    protected function writeCsv(?string $filePath, array $header, array $rows): void
     {
-        $this->getFileManager()->write($this->getConfig()->getProductAbstractCsvPath(), $header, $rows);
+        $file = $filePath ? $filePath : $this->getConfig()->getProductAbstractCsvPath();
+        $this->fileManager->write($file, $header, $rows);
     }
 
     /**
@@ -101,8 +107,9 @@ class ProductAbstractGenerator extends AbstractGenerator implements ProductAbstr
     protected function generateAttributes(): array
     {
         $attributes = [];
+        $i = 0;
 
-        for ($i = 0; $i < 6; $i++) {
+        do {
             $attributeIndex = $i + 1;
             $attributes = array_merge($attributes, [
                 'attribute_key_' . $attributeIndex => 'att_key_' . $attributeIndex,
@@ -112,7 +119,8 @@ class ProductAbstractGenerator extends AbstractGenerator implements ProductAbstr
                 'attribute_key_' . $attributeIndex . '.de_DE' => null,
                 'value_' . $attributeIndex . '.de_DE' => null,
             ]);
-        }
+            $i++;
+        } while ($i < 6);
 
         return $attributes;
     }

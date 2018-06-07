@@ -34,6 +34,6 @@ class ProductConcreteCsvGeneratorPlugin extends AbstractPlugin implements DemoDa
      */
     public function generateDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void
     {
-        $this->getFacade()->createProductConcreteCsvDemoData($demoDataGeneratorTransfer->getRowNumber());
+        $this->getFacade()->createProductConcreteCsvDemoData($demoDataGeneratorTransfer);
     }
 }

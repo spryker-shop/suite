@@ -5,8 +5,9 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\DemoDataGenerator\Business\Model\ProductAbstractStoreGenerator;
+namespace Pyz\Zed\DemoDataGenerator\Business\Model\ProductAbstractStore;
 
+use Generated\Shared\Transfer\DemoDataGeneratorTransfer;
 use Pyz\Zed\DemoDataGenerator\Business\Model\AbstractGenerator;
 use Pyz\Zed\DemoDataGenerator\Business\Model\FileManager\FileManagerInterface;
 use Pyz\Zed\DemoDataGenerator\DemoDataGeneratorConfig;
@@ -34,12 +35,15 @@ class ProductAbstractStoreGenerator extends AbstractGenerator implements Product
     }
 
     /**
+     * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
+     *
      * @return void
      */
-    public function createProductAbstractStoreCsvDemoData(): void
+    public function createProductAbstractStoreCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void
     {
         $productAbstractSkus = $this->readProductAbstractFromCsv();
         $stores = $this->store->getAllowedStores();
+        $filePath = $demoDataGeneratorTransfer->getFilePath();
 
         $rows = [];
         $header = [];
@@ -52,7 +56,7 @@ class ProductAbstractStoreGenerator extends AbstractGenerator implements Product
             }
         }
 
-        $this->writeCsv($header, $rows);
+        $this->writeCsv($filePath, $header, $rows);
     }
 
     /**
@@ -64,14 +68,16 @@ class ProductAbstractStoreGenerator extends AbstractGenerator implements Product
     }
 
     /**
+     * @param string|null $filePath
      * @param array $header
      * @param array $rows
      *
      * @return void
      */
-    protected function writeCsv(array $header, array $rows): void
+    protected function writeCsv(?string $filePath, array $header, array $rows): void
     {
-        $this->getFileManager()->write($this->getConfig()->getProductAbstractStoreCsvPath(), $header, $rows);
+        $file = $filePath ? $filePath : $this->getConfig()->getProductAbstractStoreCsvPath();
+        $this->fileManager->write($file, $header, $rows);
     }
 
     /**

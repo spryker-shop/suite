@@ -5,9 +5,10 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\DemoDataGenerator\Business\Model\PriceProductGenerator;
+namespace Pyz\Zed\DemoDataGenerator\Business\Model\PriceProduct;
 
 use Generated\Shared\DataBuilder\PriceProductBuilder;
+use Generated\Shared\Transfer\DemoDataGeneratorTransfer;
 use Generated\Shared\Transfer\PriceProductTransfer;
 use Pyz\Zed\DemoDataGenerator\Business\Model\AbstractGenerator;
 use Pyz\Zed\DemoDataGenerator\Business\Model\FileManager\FileManagerInterface;
@@ -41,15 +42,18 @@ class PriceProductGenerator extends AbstractGenerator implements PriceProductGen
     }
 
     /**
+     * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
+     *
      * @return void
      */
-    public function createPriceProductCsvDemoData(): void
+    public function createPriceProductCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void
     {
+        $filePath = $demoDataGeneratorTransfer->getFilePath();
         $this->generateRowsForProductAbstract();
         $this->generateRowsForProductConcrete();
 
         $header = array_keys($this->rows[0]);
-        $this->writeCsv($header, $this->rows);
+        $this->writeCsv($filePath, $header, $this->rows);
     }
 
     /**
@@ -131,14 +135,16 @@ class PriceProductGenerator extends AbstractGenerator implements PriceProductGen
     }
 
     /**
+     * @param string|null $filePath
      * @param array $header
      * @param array $rows
      *
      * @return void
      */
-    protected function writeCsv(array $header, array $rows): void
+    protected function writeCsv(?string $filePath, array $header, array $rows): void
     {
-        $this->fileManager->write($this->getConfig()->getProductPriceCsvPath(), $header, $rows);
+        $file = $filePath ? $filePath : $this->getConfig()->getProductPriceCsvPath();
+        $this->fileManager->write($file, $header, $rows);
     }
 
     /**

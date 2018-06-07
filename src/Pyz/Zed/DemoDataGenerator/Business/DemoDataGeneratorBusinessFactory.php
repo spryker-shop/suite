@@ -14,18 +14,18 @@ use Pyz\Zed\DemoDataGenerator\Business\Model\Generator\DemoDataGenerator;
 use Pyz\Zed\DemoDataGenerator\Business\Model\Generator\DemoDataGeneratorInterface;
 use Pyz\Zed\DemoDataGenerator\Business\Model\PluginResolver\PluginResolver;
 use Pyz\Zed\DemoDataGenerator\Business\Model\PluginResolver\PluginResolverInterface;
-use Pyz\Zed\DemoDataGenerator\Business\Model\PriceProductGenerator\PriceProductGenerator;
-use Pyz\Zed\DemoDataGenerator\Business\Model\PriceProductGenerator\PriceProductGeneratorInterface;
-use Pyz\Zed\DemoDataGenerator\Business\Model\ProductAbstractGenerator\ProductAbstractGenerator;
-use Pyz\Zed\DemoDataGenerator\Business\Model\ProductAbstractGenerator\ProductAbstractGeneratorInterface;
-use Pyz\Zed\DemoDataGenerator\Business\Model\ProductAbstractStoreGenerator\ProductAbstractStoreGenerator;
-use Pyz\Zed\DemoDataGenerator\Business\Model\ProductAbstractStoreGenerator\ProductAbstractStoreGeneratorInterface;
-use Pyz\Zed\DemoDataGenerator\Business\Model\ProductConcreteGenerator\ProductConcreteGenerator;
-use Pyz\Zed\DemoDataGenerator\Business\Model\ProductConcreteGenerator\ProductConcreteGeneratorInterface;
-use Pyz\Zed\DemoDataGenerator\Business\Model\ProductImageGenerator\ProductImageGenerator;
-use Pyz\Zed\DemoDataGenerator\Business\Model\ProductImageGenerator\ProductImageGeneratorInterface;
-use Pyz\Zed\DemoDataGenerator\Business\Model\StockProductGenerator\StockProductGenerator;
-use Pyz\Zed\DemoDataGenerator\Business\Model\StockProductGenerator\StockProductGeneratorInterface;
+use Pyz\Zed\DemoDataGenerator\Business\Model\PriceProduct\PriceProductGenerator;
+use Pyz\Zed\DemoDataGenerator\Business\Model\PriceProduct\PriceProductGeneratorInterface;
+use Pyz\Zed\DemoDataGenerator\Business\Model\ProductAbstract\ProductAbstractGenerator;
+use Pyz\Zed\DemoDataGenerator\Business\Model\ProductAbstract\ProductAbstractGeneratorInterface;
+use Pyz\Zed\DemoDataGenerator\Business\Model\ProductAbstractStore\ProductAbstractStoreGenerator;
+use Pyz\Zed\DemoDataGenerator\Business\Model\ProductAbstractStore\ProductAbstractStoreGeneratorInterface;
+use Pyz\Zed\DemoDataGenerator\Business\Model\ProductConcrete\ProductConcreteGenerator;
+use Pyz\Zed\DemoDataGenerator\Business\Model\ProductConcrete\ProductConcreteGeneratorInterface;
+use Pyz\Zed\DemoDataGenerator\Business\Model\ProductImage\ProductImageGenerator;
+use Pyz\Zed\DemoDataGenerator\Business\Model\ProductImage\ProductImageGeneratorInterface;
+use Pyz\Zed\DemoDataGenerator\Business\Model\StockProduct\StockProductGenerator;
+use Pyz\Zed\DemoDataGenerator\Business\Model\StockProduct\StockProductGeneratorInterface;
 use Pyz\Zed\DemoDataGenerator\DemoDataGeneratorDependencyProvider;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
@@ -36,7 +36,7 @@ use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 class DemoDataGeneratorBusinessFactory extends AbstractBusinessFactory
 {
     /**
-     * @return \Pyz\Zed\DemoDataGenerator\Business\Model\ProductAbstractGenerator\ProductAbstractGeneratorInterface
+     * @return \Pyz\Zed\DemoDataGenerator\Business\Model\ProductAbstract\ProductAbstractGeneratorInterface
      */
     public function createAbstractProductDemoDataGenerator(): ProductAbstractGeneratorInterface
     {
@@ -47,7 +47,7 @@ class DemoDataGeneratorBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Pyz\Zed\DemoDataGenerator\Business\Model\ProductConcreteGenerator\ProductConcreteGeneratorInterface
+     * @return \Pyz\Zed\DemoDataGenerator\Business\Model\ProductConcrete\ProductConcreteGeneratorInterface
      */
     public function createConcreteProductDemoDataGenerator(): ProductConcreteGeneratorInterface
     {
@@ -58,7 +58,7 @@ class DemoDataGeneratorBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Pyz\Zed\DemoDataGenerator\Business\Model\PriceProductGenerator\PriceProductGeneratorInterface
+     * @return \Pyz\Zed\DemoDataGenerator\Business\Model\PriceProduct\PriceProductGeneratorInterface
      */
     public function createPriceProductDemoDataGenerator(): PriceProductGeneratorInterface
     {
@@ -70,7 +70,7 @@ class DemoDataGeneratorBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Pyz\Zed\DemoDataGenerator\Business\Model\ProductAbstractStoreGenerator\ProductAbstractStoreGeneratorInterface
+     * @return \Pyz\Zed\DemoDataGenerator\Business\Model\ProductAbstractStore\ProductAbstractStoreGeneratorInterface
      */
     public function createProductAbstractStoreDemoDataGenerator(): ProductAbstractStoreGeneratorInterface
     {
@@ -82,7 +82,7 @@ class DemoDataGeneratorBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Pyz\Zed\DemoDataGenerator\Business\Model\ProductImageGenerator\ProductImageGeneratorInterface
+     * @return \Pyz\Zed\DemoDataGenerator\Business\Model\ProductImage\ProductImageGeneratorInterface
      */
     public function createProductImageDemoDataGenerator(): ProductImageGeneratorInterface
     {
@@ -94,7 +94,7 @@ class DemoDataGeneratorBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Pyz\Zed\DemoDataGenerator\Business\Model\StockProductGenerator\StockProductGeneratorInterface
+     * @return \Pyz\Zed\DemoDataGenerator\Business\Model\StockProduct\StockProductGeneratorInterface
      */
     public function createStockProductDemoDataGenerator(): StockProductGeneratorInterface
     {
