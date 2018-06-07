@@ -32,6 +32,6 @@ class ProductConcreteBulkPdoWriterPlugin extends AbstractPlugin implements DataI
      */
     public function flush(): void
     {
-        $this->getFacade()->flushProductAbstractDataImporter();
+        $this->getFacade()->flushProductConcretePdoDataImporter();
     }
 }
