@@ -280,7 +280,7 @@ class ProductConcreteBulkPdoWriter extends DataImporterPublisher implements Writ
      */
     protected function isSkuAlreadyCollected(DataSetInterface $dataSet)
     {
-        $collectedSkus = array_column(static::$productConcreteCollection ,ProductConcreteHydratorStep::KEY_SKU);
+        $collectedSkus = array_column(static::$productConcreteCollection, ProductConcreteHydratorStep::KEY_SKU);
         $dataSetSku = $dataSet[ProductConcreteHydratorStep::PRODUCT_CONCRETE_TRANSFER]->getSku();
 
         return in_array($dataSetSku, $collectedSkus);
