@@ -23,7 +23,7 @@ class ProductStockBulkPdoWriter extends DataImporterPublisher implements WriterI
 {
     use DataFormatter;
 
-    const BULK_SIZE = 100;
+    const BULK_SIZE = 5000;
 
     protected static $stockCollection = [];
 

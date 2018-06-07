@@ -22,7 +22,7 @@ class ProductImageBulkPdoWriter extends DataImporterPublisher implements WriterI
 {
     use DataFormatter;
 
-    const BULK_SIZE = 1000;
+    const BULK_SIZE = 5000;
 
     /**
      * @var array
