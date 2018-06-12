@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\DataImport\Business\Model\ProductImage\Writer;
+namespace Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\Sql;
 
 interface ProductImageSqlInterface
 {

@@ -7,9 +7,10 @@
 
 namespace Pyz\Zed\DataImport\Business\Model;
 
+use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Propel;
 
-class PropelExecutor
+class PropelExecutor implements PropelExecutorInterface
 {
     /**
      * @param string $sql
@@ -17,14 +18,20 @@ class PropelExecutor
      *
      * @return array|null
      */
-    public static function execute(string $sql, array $parameters)
+    public function execute(string $sql, array $parameters)
     {
-        $con = Propel::getConnection();
-        $stmt = $con->prepare($sql);
+        $connection = $this->getConnection();
+        $stmt = $connection->prepare($sql);
         $stmt->execute($parameters);
 
-        $result = $stmt->fetchAll();
+        return $stmt->fetchAll();
+    }
 
-        return $result;
+    /**
+     * @return \Propel\Runtime\Connection\ConnectionInterface
+     */
+    protected function getConnection(): ConnectionInterface
+    {
+        return Propel::getConnection();
     }
 }

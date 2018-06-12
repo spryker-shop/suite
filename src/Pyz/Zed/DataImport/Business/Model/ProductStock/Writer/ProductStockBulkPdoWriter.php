@@ -10,7 +10,8 @@ namespace Pyz\Zed\DataImport\Business\Model\ProductStock\Writer;
 use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataFormatter;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\ProductStockHydratorStep;
-use Pyz\Zed\DataImport\Business\Model\PropelExecutor;
+use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSqlInterface;
+use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
 use Spryker\Zed\Availability\Business\AvailabilityFacadeInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
@@ -45,9 +46,14 @@ class ProductStockBulkPdoWriter extends DataImporterPublisher implements WriterI
     protected $productBundleFacade;
 
     /**
-     * @var \Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockSql
+     * @var \Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSqlInterface
      */
     protected $productStockSql;
+
+    /**
+     * @var \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface
+     */
+    protected $propelExecutor;
 
     /**
      * ProductStockBulkPdoWriter constructor.
@@ -56,20 +62,23 @@ class ProductStockBulkPdoWriter extends DataImporterPublisher implements WriterI
      * @param \Spryker\Zed\Availability\Business\AvailabilityFacadeInterface $availabilityFacade
      * @param \Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface $productBundleFacade
      * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface $productRepository
-     * @param \Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockSqlInterface $productStockSql
+     * @param \Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSqlInterface $productStockSql
+     * @param \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface $propelExecutor
      */
     public function __construct(
         DataImportToEventFacadeInterface $eventFacade,
         AvailabilityFacadeInterface $availabilityFacade,
         ProductBundleFacadeInterface $productBundleFacade,
         ProductRepositoryInterface $productRepository,
-        ProductStockSqlInterface $productStockSql
+        ProductStockSqlInterface $productStockSql,
+        PropelExecutorInterface $propelExecutor
     ) {
         parent::__construct($eventFacade);
         $this->availabilityFacade = $availabilityFacade;
         $this->productBundleFacade = $productBundleFacade;
         $this->productRepository = $productRepository;
         $this->productStockSql = $productStockSql;
+        $this->propelExecutor = $propelExecutor;
     }
 
     /**
@@ -134,7 +143,7 @@ class ProductStockBulkPdoWriter extends DataImporterPublisher implements WriterI
         $parameters = [
             $name,
         ];
-        PropelExecutor::execute($sql, $parameters);
+        $this->propelExecutor->execute($sql, $parameters);
     }
 
     /**
@@ -162,7 +171,7 @@ class ProductStockBulkPdoWriter extends DataImporterPublisher implements WriterI
             $quantity,
             $isNeverOutOfStock,
         ];
-        PropelExecutor::execute($sql, $parameters);
+        $this->propelExecutor->execute($sql, $parameters);
     }
 
     /**
