@@ -16,6 +16,8 @@ use Spryker\Zed\Kernel\Business\AbstractFacade;
 class DemoDataGeneratorFacade extends AbstractFacade implements DemoDataGeneratorFacadeInterface
 {
     /**
+     * {@inheritdoc}
+     *
      * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
      *
      * @return void
@@ -28,6 +30,8 @@ class DemoDataGeneratorFacade extends AbstractFacade implements DemoDataGenerato
     }
 
     /**
+     * {@inheritdoc}
+     *
      * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
      *
      * @return void
@@ -40,6 +44,8 @@ class DemoDataGeneratorFacade extends AbstractFacade implements DemoDataGenerato
     }
 
     /**
+     * {@inheritdoc}
+     *
      * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
      *
      * @return void
@@ -52,6 +58,8 @@ class DemoDataGeneratorFacade extends AbstractFacade implements DemoDataGenerato
     }
 
     /**
+     * {@inheritdoc}
+     *
      * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
      *
      * @return void
@@ -64,6 +72,8 @@ class DemoDataGeneratorFacade extends AbstractFacade implements DemoDataGenerato
     }
 
     /**
+     * {@inheritdoc}
+     *
      * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
      *
      * @return void
@@ -76,6 +86,8 @@ class DemoDataGeneratorFacade extends AbstractFacade implements DemoDataGenerato
     }
 
     /**
+     * {@inheritdoc}
+     *
      * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
      *
      * @return void
@@ -88,14 +100,16 @@ class DemoDataGeneratorFacade extends AbstractFacade implements DemoDataGenerato
     }
 
     /**
-     * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer $demoDataGeneratorTransfer
+     * {@inheritdoc}
+     *
+     * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
      *
      * @return void
      */
     public function generate(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void
     {
-        $this->getFactory()
-            ->createDemoDataGenerator($demoDataGeneratorTransfer)
-            ->generate();
+        $demoDataGeneratorFactory = $this->getFactory();
+        $demoDataGeneratorFactory->createDemoDataGenerator()
+            ->generate($demoDataGeneratorTransfer, $demoDataGeneratorFactory->createProcessPluginResolver());
     }
 }

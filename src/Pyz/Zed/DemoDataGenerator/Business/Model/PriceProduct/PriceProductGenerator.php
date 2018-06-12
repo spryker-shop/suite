@@ -13,10 +13,12 @@ use Generated\Shared\Transfer\PriceProductTransfer;
 use Pyz\Zed\DemoDataGenerator\Business\Model\AbstractGenerator;
 use Pyz\Zed\DemoDataGenerator\Business\Model\FileManager\FileManagerInterface;
 use Pyz\Zed\DemoDataGenerator\DemoDataGeneratorConfig;
-use Spryker\Shared\Kernel\Store;
+use Spryker\Zed\Store\Business\StoreFacadeInterface;
 
 class PriceProductGenerator extends AbstractGenerator implements PriceProductGeneratorInterface
 {
+    const EMPTY_SKU = '';
+
     /**
      * @var array
      */
@@ -25,20 +27,20 @@ class PriceProductGenerator extends AbstractGenerator implements PriceProductGen
     /**
      * @var \Spryker\Shared\Kernel\Store
      */
-    protected $store;
+    protected $storeFacade;
 
     /**
      * @param \Pyz\Zed\DemoDataGenerator\Business\Model\FileManager\FileManagerInterface $fileManager
      * @param \Pyz\Zed\DemoDataGenerator\DemoDataGeneratorConfig $config
-     * @param \Spryker\Shared\Kernel\Store $store
+     * @param \Spryker\Zed\Store\Business\StoreFacadeInterface $storeFacade
      */
     public function __construct(
         FileManagerInterface $fileManager,
         DemoDataGeneratorConfig $config,
-        Store $store
+        StoreFacadeInterface $storeFacade
     ) {
         parent::__construct($fileManager, $config);
-        $this->store = $store;
+        $this->storeFacade = $storeFacade;
     }
 
     /**
@@ -53,7 +55,7 @@ class PriceProductGenerator extends AbstractGenerator implements PriceProductGen
         $this->generateRowsForProductConcrete();
 
         $header = array_keys($this->rows[0]);
-        $this->writeCsv($filePath, $header, $this->rows);
+        $this->writeCsv($header, $this->rows, $filePath);
     }
 
     /**
@@ -91,7 +93,7 @@ class PriceProductGenerator extends AbstractGenerator implements PriceProductGen
         foreach ($defaultPriceTypes as $priceType) {
             $priceProductTransfer
                 ->setSkuProductAbstract($sku)
-                ->setSkuProduct('')
+                ->setSkuProduct(static::EMPTY_SKU)
                 ->setPriceTypeName($priceType);
             $row = $this->createPriceRow($priceProductTransfer);
             $this->rows[] = $row;
@@ -110,7 +112,7 @@ class PriceProductGenerator extends AbstractGenerator implements PriceProductGen
 
         foreach ($defaultPriceTypes as $priceType) {
             $priceProductTransfer
-                ->setSkuProductAbstract('')
+                ->setSkuProductAbstract(static::EMPTY_SKU)
                 ->setSkuProduct($sku)
                 ->setPriceTypeName($priceType);
             $row = $this->createPriceRow($priceProductTransfer);
@@ -135,13 +137,13 @@ class PriceProductGenerator extends AbstractGenerator implements PriceProductGen
     }
 
     /**
-     * @param string|null $filePath
      * @param array $header
      * @param array $rows
+     * @param string|null $filePath
      *
      * @return void
      */
-    protected function writeCsv(?string $filePath, array $header, array $rows): void
+    protected function writeCsv(array $header, array $rows, ?string $filePath): void
     {
         $file = $filePath ? $filePath : $this->getConfig()->getProductPriceCsvPath();
         $this->fileManager->write($file, $header, $rows);
@@ -185,8 +187,8 @@ class PriceProductGenerator extends AbstractGenerator implements PriceProductGen
      */
     protected function getDefaultParameters(array $row): array
     {
-        $currency = $this->store->getDefaultCurrencyCode();
-        $defaultCountry = $this->store->getCurrentCountry();
+        $currency = $this->storeFacade->getCurrentStore()->getDefaultCurrencyIsoCode();
+        $defaultCountry = $this->storeFacade->getCurrentStore()->getName();
 
         return array_merge($row, [
             'currency' => $currency,

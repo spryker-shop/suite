@@ -11,13 +11,15 @@ use Spryker\Zed\Kernel\AbstractBundleConfig;
 
 class DemoDataGeneratorConfig extends AbstractBundleConfig
 {
-    protected const PRODUCT_ABSTRACT_CSV_PATH = 'data/import/icecat_biz_data/product_abstract.csv';
-    protected const PRODUCT_CONCRETE_CSV_PATH = 'data/import/icecat_biz_data/product_concrete.csv';
-    protected const PRODUCT_ABSTRACT_STORE_CSV_PATH = 'data/import/icecat_biz_data/product_abstract_store.csv';
-    protected const PRODUCT_IMAGE_CSV_PATH = 'data/import/icecat_biz_data/product_image.csv';
-    protected const PRODUCT_PRICE_CSV_PATH = 'data/import/product_price.csv';
-    protected const PRODUCT_STOCK_CSV_PATH = 'data/import/product_stock.csv';
-    protected const STOCK_CSV_PATH = 'data/import/stock.csv';
+    protected const ICE_CAT_BIZ_DATA_FOLDER_PATH = 'data/import/icecat_biz_data/';
+    protected const DATA_FOLDER_PATH = 'data/import/';
+    protected const PRODUCT_ABSTRACT_CSV_PATH = self::ICE_CAT_BIZ_DATA_FOLDER_PATH . 'product_abstract.csv';
+    protected const PRODUCT_CONCRETE_CSV_PATH = self::ICE_CAT_BIZ_DATA_FOLDER_PATH . 'product_concrete.csv';
+    protected const PRODUCT_ABSTRACT_STORE_CSV_PATH = self::ICE_CAT_BIZ_DATA_FOLDER_PATH . 'product_abstract_store.csv';
+    protected const PRODUCT_IMAGE_CSV_PATH = self::ICE_CAT_BIZ_DATA_FOLDER_PATH . 'product_image.csv';
+    protected const PRODUCT_PRICE_CSV_PATH = self::DATA_FOLDER_PATH . 'product_price.csv';
+    protected const PRODUCT_STOCK_CSV_PATH = self::DATA_FOLDER_PATH . 'product_stock.csv';
+    protected const STOCK_CSV_PATH = self::DATA_FOLDER_PATH . 'stock.csv';
 
     /**
      * @var array

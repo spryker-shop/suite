@@ -12,6 +12,11 @@ use Generated\Shared\Transfer\DemoDataGeneratorTransfer;
 interface ProductConcreteGeneratorInterface
 {
     /**
+     * Specification:
+     * - Generate product_concrete.csv file with demo data for product concrete importer.
+     *
+     * @api
+     *
      * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
      *
      * @return void

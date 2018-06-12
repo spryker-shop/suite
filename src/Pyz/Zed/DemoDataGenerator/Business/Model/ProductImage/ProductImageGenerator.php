@@ -18,14 +18,14 @@ use Generated\Shared\Transfer\ProductImageTransfer;
 use Pyz\Zed\DemoDataGenerator\Business\Model\AbstractGenerator;
 use Pyz\Zed\DemoDataGenerator\Business\Model\FileManager\FileManagerInterface;
 use Pyz\Zed\DemoDataGenerator\DemoDataGeneratorConfig;
-use Spryker\Shared\Kernel\Store;
+use Spryker\Zed\Store\Business\StoreFacadeInterface;
 
 class ProductImageGenerator extends AbstractGenerator implements ProductImageGeneratorInterface
 {
     /**
-     * @var \Spryker\Shared\Kernel\Store
+     * @var \Spryker\Zed\Store\Business\StoreFacadeInterface
      */
-    protected $store;
+    protected $storeFacade;
 
     /**
      * @var array
@@ -35,15 +35,15 @@ class ProductImageGenerator extends AbstractGenerator implements ProductImageGen
     /**
      * @param \Pyz\Zed\DemoDataGenerator\Business\Model\FileManager\FileManagerInterface $fileManager
      * @param \Pyz\Zed\DemoDataGenerator\DemoDataGeneratorConfig $config
-     * @param \Spryker\Shared\Kernel\Store $store
+     * @param \Spryker\Zed\Store\Business\StoreFacadeInterface $storeFacade
      */
     public function __construct(
         FileManagerInterface $fileManager,
         DemoDataGeneratorConfig $config,
-        Store $store
+        StoreFacadeInterface $storeFacade
     ) {
         parent::__construct($fileManager, $config);
-        $this->store = $store;
+        $this->storeFacade = $storeFacade;
     }
 
     /**
@@ -59,64 +59,7 @@ class ProductImageGenerator extends AbstractGenerator implements ProductImageGen
         $this->generateRowsForProductConcrete();
 
         $header = array_keys($this->rows[0]);
-        $this->writeCsv($filePath, $header, $this->rows);
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\ProductImageSetTransfer $productImageSetTransfer
-     * @param \Generated\Shared\Transfer\ProductImageTransfer $productImageTransfer
-     * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productTransfer
-     *
-     * @return array
-     */
-    public function createProductImageRow(
-        ProductImageSetTransfer $productImageSetTransfer,
-        ProductImageTransfer $productImageTransfer,
-        ProductConcreteTransfer $productTransfer
-    ): array {
-        $row = [
-            'image_set_name' => $productImageSetTransfer->getName(),
-            'external_url_large' => $productImageTransfer->getExternalUrlLarge(),
-            'external_url_small' => $productImageTransfer->getExternalUrlSmall(),
-            'locale' => $productImageSetTransfer->getLocale()->getLocaleName(),
-            'abstract_sku' => $productTransfer->getAbstractSku(),
-            'concrete_sku' => $productTransfer->getSku(),
-        ];
-
-        return $row;
-    }
-
-    /**
-     * @param string|null $filePath
-     * @param array $header
-     * @param array $rows
-     *
-     * @return void
-     */
-    protected function writeCsv(?string $filePath, array $header, array $rows): void
-    {
-        $file = $filePath ? $filePath : $this->getConfig()->getProductImageCsvPath();
-        $this->fileManager->write($file, $header, $rows);
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productTransfer
-     *
-     * @return void
-     */
-    protected function generateRowsForProductImagePerStore(ProductConcreteTransfer $productTransfer): void
-    {
-        $productImageTransfer = $this->generateProductImage();
-        $productImageSetTransfer = $this->generateProductImageSet();
-        $allowedLocales = $this->store->getLocales();
-
-        foreach ($allowedLocales as $allowedLocale) {
-            $locale = new LocaleTransfer();
-            $locale->setLocaleName($allowedLocale);
-            $productImageSetTransfer->setLocale($locale);
-            $row = $this->createProductImageRow($productImageSetTransfer, $productImageTransfer, $productTransfer);
-            $this->rows[] = $row;
-        }
+        $this->writeCsv($header, $this->rows, $filePath);
     }
 
     /**
@@ -150,27 +93,23 @@ class ProductImageGenerator extends AbstractGenerator implements ProductImageGen
     }
 
     /**
-     * @return \Generated\Shared\Transfer\ProductImageTransfer|\Spryker\Shared\Kernel\Transfer\AbstractTransfer
+     * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productTransfer
+     *
+     * @return void
      */
-    protected function generateProductImage(): ProductImageTransfer
+    protected function generateRowsForProductImagePerStore(ProductConcreteTransfer $productTransfer): void
     {
-        return (new ProductImageBuilder())->build();
-    }
+        $productImageTransfer = $this->generateProductImage();
+        $productImageSetTransfer = $this->generateProductImageSet();
+        $allowedLocales = $this->storeFacade->getCurrentStore()->getAvailableLocaleIsoCodes();
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductImageSetTransfer|\Spryker\Shared\Kernel\Transfer\AbstractTransfer
-     */
-    protected function generateProductImageSet(): ProductImageSetTransfer
-    {
-        return (new ProductImageSetBuilder())->build();
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer|\Spryker\Shared\Kernel\Transfer\AbstractTransfer
-     */
-    protected function generateProductConcrete(): ProductConcreteTransfer
-    {
-        return (new ProductConcreteBuilder())->build();
+        foreach ($allowedLocales as $allowedLocale) {
+            $locale = new LocaleTransfer();
+            $locale->setLocaleName($allowedLocale);
+            $productImageSetTransfer->setLocale($locale);
+            $row = $this->createProductImageRow($productImageSetTransfer, $productImageTransfer, $productTransfer);
+            $this->rows[] = $row;
+        }
     }
 
     /**
@@ -187,5 +126,66 @@ class ProductImageGenerator extends AbstractGenerator implements ProductImageGen
     protected function readProductConcreteFromCsv(): array
     {
         return $this->getFileManager()->readColumn($this->getConfig()->getProductConcreteCsvPath());
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\ProductConcreteTransfer|\Spryker\Shared\Kernel\Transfer\AbstractTransfer
+     */
+    protected function generateProductConcrete(): ProductConcreteTransfer
+    {
+        return (new ProductConcreteBuilder())->build();
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ProductImageSetTransfer $productImageSetTransfer
+     * @param \Generated\Shared\Transfer\ProductImageTransfer $productImageTransfer
+     * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productTransfer
+     *
+     * @return array
+     */
+    protected function createProductImageRow(
+        ProductImageSetTransfer $productImageSetTransfer,
+        ProductImageTransfer $productImageTransfer,
+        ProductConcreteTransfer $productTransfer
+    ): array {
+        $row = [
+            'image_set_name' => $productImageSetTransfer->getName(),
+            'external_url_large' => $productImageTransfer->getExternalUrlLarge(),
+            'external_url_small' => $productImageTransfer->getExternalUrlSmall(),
+            'locale' => $productImageSetTransfer->getLocale()->getLocaleName(),
+            'abstract_sku' => $productTransfer->getAbstractSku(),
+            'concrete_sku' => $productTransfer->getSku(),
+        ];
+
+        return $row;
+    }
+
+    /**
+     * @param array $header
+     * @param array $rows
+     * @param string|null $filePath
+     *
+     * @return void
+     */
+    protected function writeCsv(array $header, array $rows, ?string $filePath): void
+    {
+        $file = $filePath ? $filePath : $this->getConfig()->getProductImageCsvPath();
+        $this->fileManager->write($file, $header, $rows);
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\ProductImageTransfer|\Spryker\Shared\Kernel\Transfer\AbstractTransfer
+     */
+    protected function generateProductImage(): ProductImageTransfer
+    {
+        return (new ProductImageBuilder())->build();
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\ProductImageSetTransfer|\Spryker\Shared\Kernel\Transfer\AbstractTransfer
+     */
+    protected function generateProductImageSet(): ProductImageSetTransfer
+    {
+        return (new ProductImageSetBuilder())->build();
     }
 }

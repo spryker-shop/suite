@@ -12,6 +12,11 @@ use Generated\Shared\Transfer\DemoDataGeneratorTransfer;
 interface StockProductGeneratorInterface
 {
     /**
+     * Specification:
+     * - Generate stock_product.csv file with demo data for stock product importer.
+     *
+     * @api
+     *
      * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
      *
      * @return void

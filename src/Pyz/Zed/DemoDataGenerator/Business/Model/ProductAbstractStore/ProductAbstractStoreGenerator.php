@@ -11,27 +11,27 @@ use Generated\Shared\Transfer\DemoDataGeneratorTransfer;
 use Pyz\Zed\DemoDataGenerator\Business\Model\AbstractGenerator;
 use Pyz\Zed\DemoDataGenerator\Business\Model\FileManager\FileManagerInterface;
 use Pyz\Zed\DemoDataGenerator\DemoDataGeneratorConfig;
-use Spryker\Shared\Kernel\Store;
+use Spryker\Zed\Store\Business\StoreFacadeInterface;
 
 class ProductAbstractStoreGenerator extends AbstractGenerator implements ProductAbstractStoreGeneratorInterface
 {
     /**
-     * @var \Spryker\Shared\Kernel\Store
+     * @var \Spryker\Zed\Store\Business\StoreFacadeInterface
      */
-    protected $store;
+    protected $storeFacade;
 
     /**
      * @param \Pyz\Zed\DemoDataGenerator\Business\Model\FileManager\FileManagerInterface $fileManager
      * @param \Pyz\Zed\DemoDataGenerator\DemoDataGeneratorConfig $config
-     * @param \Spryker\Shared\Kernel\Store $store
+     * @param \Spryker\Zed\Store\Business\StoreFacadeInterface $storeFacade
      */
     public function __construct(
         FileManagerInterface $fileManager,
         DemoDataGeneratorConfig $config,
-        Store $store
+        StoreFacadeInterface $storeFacade
     ) {
         parent::__construct($fileManager, $config);
-        $this->store = $store;
+        $this->storeFacade = $storeFacade;
     }
 
     /**
@@ -42,21 +42,21 @@ class ProductAbstractStoreGenerator extends AbstractGenerator implements Product
     public function createProductAbstractStoreCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void
     {
         $productAbstractSkus = $this->readProductAbstractFromCsv();
-        $stores = $this->store->getAllowedStores();
+        $stores = $this->storeFacade->getAllStores();
         $filePath = $demoDataGeneratorTransfer->getFilePath();
 
         $rows = [];
-        $header = [];
+        $row = [];
 
         foreach ($productAbstractSkus as $sku) {
             foreach ($stores as $store) {
-                $row = $this->createProductAbstractStoreRow($sku, $store);
-                $header = array_keys($row);
+                $row = $this->createProductAbstractStoreRow($sku, $store->getName());
                 $rows[] = array_values($row);
             }
         }
 
-        $this->writeCsv($filePath, $header, $rows);
+        $header = array_keys($row);
+        $this->writeCsv($header, $rows, $filePath);
     }
 
     /**
@@ -68,13 +68,13 @@ class ProductAbstractStoreGenerator extends AbstractGenerator implements Product
     }
 
     /**
-     * @param string|null $filePath
      * @param array $header
      * @param array $rows
+     * @param string|null $filePath
      *
      * @return void
      */
-    protected function writeCsv(?string $filePath, array $header, array $rows): void
+    protected function writeCsv(array $header, array $rows, ?string $filePath): void
     {
         $file = $filePath ? $filePath : $this->getConfig()->getProductAbstractStoreCsvPath();
         $this->fileManager->write($file, $header, $rows);

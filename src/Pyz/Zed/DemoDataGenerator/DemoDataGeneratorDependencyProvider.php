@@ -13,13 +13,12 @@ use Pyz\Zed\DemoDataGenerator\Communication\Plugin\ProductAbstractStoreCsvGenera
 use Pyz\Zed\DemoDataGenerator\Communication\Plugin\ProductConcreteCsvGeneratorPlugin;
 use Pyz\Zed\DemoDataGenerator\Communication\Plugin\ProductImageCsvGeneratorPlugin;
 use Pyz\Zed\DemoDataGenerator\Communication\Plugin\StockProductCsvGeneratorPlugin;
-use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
 
 class DemoDataGeneratorDependencyProvider extends AbstractBundleDependencyProvider
 {
-    public const STORE = 'STORE';
+    public const STORE_FACADE = 'STORE_FACADE';
     public const SERVICE_UTIL_DATA_READER = 'SERVICE_UTIL_DATA_READER';
     public const DEMO_DATA_GENERATOR_PLUGINS = 'DEMO_DATA_GENERATOR_PLUGINS';
 
@@ -30,7 +29,7 @@ class DemoDataGeneratorDependencyProvider extends AbstractBundleDependencyProvid
      */
     public function provideBusinessLayerDependencies(Container $container)
     {
-        $container = $this->addStore($container);
+        $container = $this->addStoreFacade($container);
         $container = $this->addUtilDataReaderService($container);
         $container = $this->addConfigurationPluginsStack($container);
 
@@ -38,14 +37,14 @@ class DemoDataGeneratorDependencyProvider extends AbstractBundleDependencyProvid
     }
 
     /**
-     * @param \Spryker\Yves\Kernel\Container $container
+     * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return \Spryker\Yves\Kernel\Container
+     * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addStore(Container $container): Container
+    protected function addStoreFacade(Container $container): Container
     {
-        $container[static::STORE] = function () {
-            return Store::getInstance();
+        $container[static::STORE_FACADE] = function (Container $container) {
+            return $container->getLocator()->store()->facade();
         };
 
         return $container;
@@ -73,15 +72,15 @@ class DemoDataGeneratorDependencyProvider extends AbstractBundleDependencyProvid
     protected function addConfigurationPluginsStack($container): Container
     {
         $container[static::DEMO_DATA_GENERATOR_PLUGINS] = function () {
-            return $this->demoDataPluginStack();
+            return $this->getDemoDataPlugins();
         };
         return $container;
     }
 
     /**
-     * @return array
+     * @return \Pyz\Zed\DemoDataGenerator\Dependency\Plugin\DemoDataGeneratorPluginInterface[]
      */
-    public function demoDataPluginStack(): array
+    public function getDemoDataPlugins(): array
     {
         return [
             new ProductAbstractCsvGeneratorPlugin(),

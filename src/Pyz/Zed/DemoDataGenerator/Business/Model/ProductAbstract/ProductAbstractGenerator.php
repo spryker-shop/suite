@@ -30,22 +30,22 @@ class ProductAbstractGenerator extends AbstractGenerator implements ProductAbstr
         do {
             $productAbstractTransfer = $this->generateProductAbstract();
             $row = $this->createProductAbstractRow($productAbstractTransfer);
-            $header = array_keys($row);
             $rows[] = array_values($row);
             $i++;
         } while ($i < $rowsNumber);
 
-        $this->writeCsv($filePath, $header, $rows);
+        $header = array_keys($row);
+        $this->writeCsv($header, $rows, $filePath);
     }
 
     /**
-     * @param string|null $filePath
      * @param array $header
      * @param array $rows
+     * @param string|null $filePath
      *
      * @return void
      */
-    protected function writeCsv(?string $filePath, array $header, array $rows): void
+    protected function writeCsv(array $header, array $rows, ?string $filePath): void
     {
         $file = $filePath ? $filePath : $this->getConfig()->getProductAbstractCsvPath();
         $this->fileManager->write($file, $header, $rows);

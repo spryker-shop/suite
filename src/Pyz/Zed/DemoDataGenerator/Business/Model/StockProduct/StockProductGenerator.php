@@ -22,8 +22,6 @@ class StockProductGenerator extends AbstractGenerator implements StockProductGen
     protected $rows = [];
 
     /**
-     * StockProductGenerator constructor.
-     *
      * @param \Pyz\Zed\DemoDataGenerator\Business\Model\FileManager\FileManagerInterface $fileManager
      * @param \Pyz\Zed\DemoDataGenerator\DemoDataGeneratorConfig $config
      */
@@ -46,38 +44,7 @@ class StockProductGenerator extends AbstractGenerator implements StockProductGen
         $this->generateRows();
 
         $header = array_keys($this->rows[0]);
-        $this->writeCsv($filePath, $header, $this->rows);
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\StockProductTransfer $stockProductTransfer
-     *
-     * @return array
-     */
-    public function createStockProductRow(StockProductTransfer $stockProductTransfer): array
-    {
-        $row = [
-            'concrete_sku' => $stockProductTransfer->getSku(),
-            'name' => $this->getStockName(),
-            'quantity' => $stockProductTransfer->getQuantity(),
-            'is_never_out_of_stock' => $stockProductTransfer->getIsNeverOutOfStock(),
-            'is_bundle' => rand(0, 1),
-        ];
-
-        return $row;
-    }
-
-    /**
-     * @param string|null $filePath
-     * @param array $header
-     * @param array $rows
-     *
-     * @return void
-     */
-    protected function writeCsv(?string $filePath, array $header, array $rows): void
-    {
-        $file = $filePath ? $filePath : $this->getConfig()->getProductStockCsvPath();
-        $this->fileManager->write($file, $header, $rows);
+        $this->writeCsv($header, $this->rows, $filePath);
     }
 
     /**
@@ -96,19 +63,11 @@ class StockProductGenerator extends AbstractGenerator implements StockProductGen
     }
 
     /**
-     * @return string
+     * @return array
      */
-    protected function getStockName(): string
+    protected function readProductConcreteFromCsv(): array
     {
-        $stockNames = $this->readStockFromCsv();
-
-        $minIndex = min(array_keys($stockNames));
-        $maxIndex = max(array_keys($stockNames));
-
-        if ($maxIndex) {
-            $randomIndex = rand($minIndex, $maxIndex);
-            return $stockNames[$randomIndex];
-        }
+        return $this->getFileManager()->readColumn($this->getConfig()->getProductConcreteCsvPath());
     }
 
     /**
@@ -122,16 +81,55 @@ class StockProductGenerator extends AbstractGenerator implements StockProductGen
     /**
      * @return array
      */
-    protected function readProductConcreteFromCsv(): array
-    {
-        return $this->getFileManager()->readColumn($this->getConfig()->getProductConcreteCsvPath());
-    }
-
-    /**
-     * @return array
-     */
     protected function readStockFromCsv(): array
     {
         return $this->getFileManager()->readColumn($this->getConfig()->getStockCsvPath(), 1, 0);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\StockProductTransfer $stockProductTransfer
+     *
+     * @return array
+     */
+    protected function createStockProductRow(StockProductTransfer $stockProductTransfer): array
+    {
+        $row = [
+            'concrete_sku' => $stockProductTransfer->getSku(),
+            'name' => $this->getStockName(),
+            'quantity' => $stockProductTransfer->getQuantity(),
+            'is_never_out_of_stock' => $stockProductTransfer->getIsNeverOutOfStock(),
+            'is_bundle' => rand(0, 1),
+        ];
+
+        return $row;
+    }
+
+    /**
+     * @param array $header
+     * @param array $rows
+     * @param null|string $filePath
+     *
+     * @return void
+     */
+    protected function writeCsv(array $header, array $rows, ?string $filePath): void
+    {
+        $file = $filePath ? $filePath : $this->getConfig()->getProductStockCsvPath();
+        $this->fileManager->write($file, $header, $rows);
+    }
+
+    /**
+     * @return string
+     */
+    protected function getStockName(): string
+    {
+        $stockNames = $this->readStockFromCsv();
+
+        $minIndex = min(array_keys($stockNames));
+        $maxIndex = max(array_keys($stockNames));
+
+        if ($maxIndex) {
+            $randomIndex = rand($minIndex, $maxIndex);
+            return $stockNames[$randomIndex];
+        }
     }
 }

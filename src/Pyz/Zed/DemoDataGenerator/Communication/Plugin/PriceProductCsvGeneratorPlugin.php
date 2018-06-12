@@ -13,7 +13,6 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 
 /**
  * @method \Pyz\Zed\DemoDataGenerator\Business\DemoDataGeneratorFacadeInterface getFacade()
- * @method \Pyz\Zed\DemoDataGenerator\Communication\DemoDataGeneratorCommunicationFactory getFactory()
  */
 class PriceProductCsvGeneratorPlugin extends AbstractPlugin implements DemoDataGeneratorPluginInterface
 {

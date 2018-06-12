@@ -12,6 +12,10 @@ use League\Csv\Writer;
 
 class FileManager implements FileManagerInterface
 {
+    protected const READER_OPEN_MODE = 'r';
+    protected const WRITER_OPEN_MODE = 'w+';
+    protected const DELIMITER = ',';
+
     /**
      * @param string $path
      * @param int $offset
@@ -21,7 +25,7 @@ class FileManager implements FileManagerInterface
      */
     public function readColumn(string $path, int $offset = 1, int $index = 2): array
     {
-        $reader = Reader::createFromPath($path, 'r');
+        $reader = $this->getReaderFromPath($path);
         $reader->setOffset($offset);
 
         $content = [];
@@ -44,9 +48,29 @@ class FileManager implements FileManagerInterface
      */
     public function write(string $path, array $header, array $rows): void
     {
-        $writer = Writer::createFromPath($path, 'w+');
-        $writer->setDelimiter(',');
+        $writer = $this->getWriterFromPath($path);
+        $writer->setDelimiter(static::DELIMITER);
         $writer->insertOne($header);
         $writer->insertAll($rows);
+    }
+
+    /**
+     * @param string $path
+     *
+     * @return static
+     */
+    protected function getReaderFromPath($path)
+    {
+        return Reader::createFromPath($path, static::READER_OPEN_MODE);
+    }
+
+    /**
+     * @param string $path
+     *
+     * @return static
+     */
+    protected function getWriterFromPath($path)
+    {
+        return Writer::createFromPath($path, static::WRITER_OPEN_MODE);
     }
 }

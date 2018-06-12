@@ -13,37 +13,16 @@ use Pyz\Zed\DemoDataGenerator\Business\Model\PluginResolver\PluginResolverInterf
 class DemoDataGenerator implements DemoDataGeneratorInterface
 {
     /**
-     * @var \Generated\Shared\Transfer\DemoDataGeneratorTransfer
-     */
-    protected $demoDataGeneratorTransfer;
-
-    /**
-     * @var \Pyz\Zed\DemoDataGenerator\Business\Model\PluginResolver\PluginResolverInterface
-     */
-    protected $pluginResolver;
-
-    /**
-     * DemoDataGenerator constructor.
-     *
      * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
      * @param \Pyz\Zed\DemoDataGenerator\Business\Model\PluginResolver\PluginResolverInterface $pluginResolver
-     */
-    public function __construct(
-        DemoDataGeneratorTransfer $demoDataGeneratorTransfer,
-        PluginResolverInterface $pluginResolver
-    ) {
-        $this->demoDataGeneratorTransfer = $demoDataGeneratorTransfer;
-        $this->pluginResolver = $pluginResolver;
-    }
-
-    /**
+     *
      * @return void
      */
-    public function generate(): void
-    {
-        $processPlugin = $this->pluginResolver
-            ->getPluginByType($this->demoDataGeneratorTransfer->getType());
-
-        $processPlugin->generateDemoData($this->demoDataGeneratorTransfer);
+    public function generate(
+        DemoDataGeneratorTransfer $demoDataGeneratorTransfer,
+        PluginResolverInterface $pluginResolver
+    ): void {
+        $processPlugin = $pluginResolver->getPluginByType($demoDataGeneratorTransfer->getType());
+        $processPlugin->generateDemoData($demoDataGeneratorTransfer);
     }
 }

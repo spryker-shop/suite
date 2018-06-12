@@ -45,17 +45,17 @@ class ProductConcreteGenerator extends AbstractGenerator implements ProductConcr
         } while ($i <= $rowsNumber);
 
         $header = array_keys($this->rows[0]);
-        $this->writeCsv($filePath, $header, $this->rows);
+        $this->writeCsv($header, $this->rows, $filePath);
     }
 
     /**
-     * @param string|null $filePath
      * @param array $header
      * @param array $rows
+     * @param null|string $filePath
      *
      * @return void
      */
-    protected function writeCsv(?string $filePath, array $header, array $rows): void
+    protected function writeCsv(array $header, array $rows, ?string $filePath): void
     {
         $file = $filePath ? $filePath : $this->getConfig()->getProductConcreteCsvPath();
         $this->getFileManager()->write($file, $header, $rows);

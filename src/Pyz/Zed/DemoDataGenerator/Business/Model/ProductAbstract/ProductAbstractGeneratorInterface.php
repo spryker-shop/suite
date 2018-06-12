@@ -12,6 +12,11 @@ use Generated\Shared\Transfer\DemoDataGeneratorTransfer;
 interface ProductAbstractGeneratorInterface
 {
     /**
+     * Specification:
+     * - Generate product_abstract.csv file with demo data for product abstract importer.
+     *
+     * @api
+     *
      * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
      *
      * @return void

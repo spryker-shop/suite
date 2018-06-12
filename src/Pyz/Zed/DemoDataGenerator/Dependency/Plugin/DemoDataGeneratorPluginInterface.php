@@ -12,11 +12,17 @@ use Generated\Shared\Transfer\DemoDataGeneratorTransfer;
 interface DemoDataGeneratorPluginInterface
 {
     /**
+     * Specification:
+     * - Returns type of entity which is used to generate demo data.
+     *
      * @return string
      */
     public function getType(): string;
 
     /**
+     * Specification:
+     * - Generate csv file with demo data based on entered parameters which stores in DemoDataGeneratorTransfer.
+     *
      * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
      *
      * @return void

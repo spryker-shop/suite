@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\DemoDataGenerator\Business;
 
-use Generated\Shared\Transfer\DemoDataGeneratorTransfer;
 use Pyz\Zed\DemoDataGenerator\Business\Model\FileManager\FileManager;
 use Pyz\Zed\DemoDataGenerator\Business\Model\FileManager\FileManagerInterface;
 use Pyz\Zed\DemoDataGenerator\Business\Model\Generator\DemoDataGenerator;
@@ -27,8 +26,8 @@ use Pyz\Zed\DemoDataGenerator\Business\Model\ProductImage\ProductImageGeneratorI
 use Pyz\Zed\DemoDataGenerator\Business\Model\StockProduct\StockProductGenerator;
 use Pyz\Zed\DemoDataGenerator\Business\Model\StockProduct\StockProductGeneratorInterface;
 use Pyz\Zed\DemoDataGenerator\DemoDataGeneratorDependencyProvider;
-use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
+use Spryker\Zed\Store\Business\StoreFacadeInterface;
 
 /**
  * @method \Pyz\Zed\DemoDataGenerator\DemoDataGeneratorConfig getConfig()
@@ -65,7 +64,7 @@ class DemoDataGeneratorBusinessFactory extends AbstractBusinessFactory
         return new PriceProductGenerator(
             $this->createFileManager(),
             $this->getConfig(),
-            $this->getStore()
+            $this->getStoreFacade()
         );
     }
 
@@ -77,7 +76,7 @@ class DemoDataGeneratorBusinessFactory extends AbstractBusinessFactory
         return new ProductAbstractStoreGenerator(
             $this->createFileManager(),
             $this->getConfig(),
-            $this->getStore()
+            $this->getStoreFacade()
         );
     }
 
@@ -89,7 +88,7 @@ class DemoDataGeneratorBusinessFactory extends AbstractBusinessFactory
         return new ProductImageGenerator(
             $this->createFileManager(),
             $this->getConfig(),
-            $this->getStore()
+            $this->getStoreFacade()
         );
     }
 
@@ -113,16 +112,11 @@ class DemoDataGeneratorBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
-     *
      * @return \Pyz\Zed\DemoDataGenerator\Business\Model\Generator\DemoDataGeneratorInterface
      */
-    public function createDemoDataGenerator(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): DemoDataGeneratorInterface
+    public function createDemoDataGenerator(): DemoDataGeneratorInterface
     {
-        return new DemoDataGenerator(
-            $demoDataGeneratorTransfer,
-            $this->createProcessPluginResolver()
-        );
+        return new DemoDataGenerator();
     }
 
     /**
@@ -144,10 +138,10 @@ class DemoDataGeneratorBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Spryker\Shared\Kernel\Store
+     * @return \Spryker\Zed\Store\Business\StoreFacadeInterface
      */
-    protected function getStore(): Store
+    protected function getStoreFacade(): StoreFacadeInterface
     {
-        return $this->getProvidedDependency(DemoDataGeneratorDependencyProvider::STORE);
+        return $this->getProvidedDependency(DemoDataGeneratorDependencyProvider::STORE_FACADE);
     }
 }

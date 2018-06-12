@@ -7,10 +7,19 @@
 
 namespace Pyz\Zed\DemoDataGenerator\Business\Model\Generator;
 
+use Generated\Shared\Transfer\DemoDataGeneratorTransfer;
+use Pyz\Zed\DemoDataGenerator\Business\Model\PluginResolver\PluginResolverInterface;
+
 interface DemoDataGeneratorInterface
 {
     /**
+     * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
+     * @param \Pyz\Zed\DemoDataGenerator\Business\Model\Generator\PluginResolverInterface $pluginResolver
+     *
      * @return void
      */
-    public function generate(): void;
+    public function generate(
+        DemoDataGeneratorTransfer $demoDataGeneratorTransfer,
+        PluginResolverInterface $pluginResolver
+    ): void;
 }

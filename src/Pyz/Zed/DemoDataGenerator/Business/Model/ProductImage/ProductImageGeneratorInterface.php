@@ -12,6 +12,11 @@ use Generated\Shared\Transfer\DemoDataGeneratorTransfer;
 interface ProductImageGeneratorInterface
 {
     /**
+     * Specification:
+     * - Generate product_abstract_store.csv file with demo data for product image importer.
+     *
+     * @api
+     *
      * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
      *
      * @return void

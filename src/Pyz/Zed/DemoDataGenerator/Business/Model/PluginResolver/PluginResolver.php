@@ -23,16 +23,11 @@ class PluginResolver implements PluginResolverInterface
     protected $processPluginStack;
 
     /**
-     * PluginResolver constructor.
-     *
      * @param array $configurationPluginsStack
      */
     public function __construct(array $configurationPluginsStack)
     {
         $this->configurationPluginStack = $configurationPluginsStack;
-        foreach ($this->configurationPluginStack as $plugin) {
-            $this->processPluginStack[$plugin->getType()] = $plugin;
-        }
     }
 
     /**
@@ -44,10 +39,24 @@ class PluginResolver implements PluginResolverInterface
      */
     public function getPluginByType(string $type): DemoDataGeneratorPluginInterface
     {
+        $this->collectProcessPluginStack();
+
         if (isset($this->processPluginStack[$type])) {
             return $this->processPluginStack[$type];
         }
 
         throw new DemoDataGeneratorPluginNotFoundException();
+    }
+
+    /**
+     * @return void
+     */
+    protected function collectProcessPluginStack(): void
+    {
+        if (!$this->processPluginStack) {
+            foreach ($this->configurationPluginStack as $plugin) {
+                $this->processPluginStack[$plugin->getType()] = $plugin;
+            }
+        }
     }
 }
