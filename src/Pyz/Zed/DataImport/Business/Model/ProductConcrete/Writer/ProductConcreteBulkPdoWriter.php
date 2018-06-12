@@ -10,7 +10,8 @@ namespace Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer;
 use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataFormatter;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface;
 use Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductConcreteHydratorStep;
-use Pyz\Zed\DataImport\Business\Model\PropelExecutor;
+use Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\Sql\ProductConcreteSqlInterface;
+use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
 use Spryker\Zed\DataImport\Business\Model\Writer\FlushInterface;
@@ -50,25 +51,33 @@ class ProductConcreteBulkPdoWriter extends DataImporterPublisher implements Writ
     protected $productRepository;
 
     /**
-     * @var \Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\ProductConcreteSql
+     * @var \Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\Sql\ProductConcreteSqlInterface
      */
     protected $productConcreteSql;
+
+    /**
+     * @var \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface
+     */
+    protected $propelExecutor;
 
     /**
      * ProductConcreteBulkPdoWriter constructor.
      *
      * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface $eventFacade
      * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface $productRepository
-     * @param \Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\ProductConcreteSqlInterface $productConcreteSql
+     * @param \Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\Sql\ProductConcreteSqlInterface $productConcreteSql
+     * @param \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface $propelExecutor
      */
     public function __construct(
         DataImportToEventFacadeInterface $eventFacade,
         ProductRepositoryInterface $productRepository,
-        ProductConcreteSqlInterface $productConcreteSql
+        ProductConcreteSqlInterface $productConcreteSql,
+        PropelExecutorInterface $propelExecutor
     ) {
         parent::__construct($eventFacade);
         $this->productRepository = $productRepository;
         $this->productConcreteSql = $productConcreteSql;
+        $this->propelExecutor = $propelExecutor;
     }
 
     /**
@@ -141,7 +150,7 @@ class ProductConcreteBulkPdoWriter extends DataImporterPublisher implements Writ
             $attributes,
             $fkProductAbstract,
         ];
-        $result = PropelExecutor::execute($sql, $parameters);
+        $result = $this->propelExecutor->execute($sql, $parameters);
         $this->addProductConcreteChangeEvent($result);
     }
 
@@ -198,7 +207,7 @@ class ProductConcreteBulkPdoWriter extends DataImporterPublisher implements Writ
                 $isComplete,
                 $idLocale,
             ];
-            PropelExecutor::execute($sql, $parameters);
+            $this->propelExecutor->execute($sql, $parameters);
         }
     }
 
@@ -224,7 +233,7 @@ class ProductConcreteBulkPdoWriter extends DataImporterPublisher implements Writ
                 $sku,
                 $isSearchable,
             ];
-            PropelExecutor::execute($sql, $parameters);
+            $this->propelExecutor->execute($sql, $parameters);
         }
     }
 
@@ -250,7 +259,7 @@ class ProductConcreteBulkPdoWriter extends DataImporterPublisher implements Writ
                 $sku,
                 $quantity,
             ];
-            PropelExecutor::execute($sql, $parameters);
+            $this->propelExecutor->execute($sql, $parameters);
         }
     }
 

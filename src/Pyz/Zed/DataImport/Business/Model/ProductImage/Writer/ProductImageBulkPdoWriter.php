@@ -9,7 +9,8 @@ namespace Pyz\Zed\DataImport\Business\Model\ProductImage\Writer;
 
 use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataFormatter;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\ProductImageHydratorStep;
-use Pyz\Zed\DataImport\Business\Model\PropelExecutor;
+use Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\Sql\ProductImageSqlInterface;
+use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
 use Spryker\Zed\DataImport\Business\Model\Writer\FlushInterface;
@@ -50,20 +51,30 @@ class ProductImageBulkPdoWriter extends DataImporterPublisher implements WriterI
     protected static $persistedProductImageSetCollection = [];
 
     /**
-     * @var \Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\ProductImageSql
+     * @var \Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\Sql\ProductImageSqlInterface
      */
     protected $productImageSql;
+
+    /**
+     * @var \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface
+     */
+    protected $propelExecutor;
 
     /**
      * ProductImageBulkPdoWriter constructor.
      *
      * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface $eventFacade
-     * @param \Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\ProductImageSqlInterface $productImageSql
+     * @param \Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\Sql\ProductImageSqlInterface $productImageSql
+     * @param \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface $propelExecutor
      */
-    public function __construct(DataImportToEventFacadeInterface $eventFacade, ProductImageSqlInterface $productImageSql)
-    {
+    public function __construct(
+        DataImportToEventFacadeInterface $eventFacade,
+        ProductImageSqlInterface $productImageSql,
+        PropelExecutorInterface $propelExecutor
+    ) {
         parent::__construct($eventFacade);
         $this->productImageSql = $productImageSql;
+        $this->propelExecutor = $propelExecutor;
     }
 
     /**
@@ -121,7 +132,7 @@ class ProductImageBulkPdoWriter extends DataImporterPublisher implements WriterI
             $externalUrlSmall,
         ];
 
-        PropelExecutor::execute($sql, $parameters);
+        $this->propelExecutor->execute($sql, $parameters);
     }
 
     /**
@@ -153,7 +164,7 @@ class ProductImageBulkPdoWriter extends DataImporterPublisher implements WriterI
             $fkProductAbstract,
             $fkResourceProductSet,
         ];
-        $result = PropelExecutor::execute($sql, $parameters);
+        $result = $this->propelExecutor->execute($sql, $parameters);
 
         static::$persistedProductImageSetCollection = $result;
         $this->addProductImageSetChangeEvent($result);
@@ -181,7 +192,7 @@ class ProductImageBulkPdoWriter extends DataImporterPublisher implements WriterI
             $sortOrder,
         ];
 
-        PropelExecutor::execute($sql, $parameters);
+        $this->propelExecutor->execute($sql, $parameters);
     }
 
     /**

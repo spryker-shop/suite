@@ -10,7 +10,8 @@ namespace Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer;
 use Propel\Runtime\Propel;
 use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataFormatter;
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\ProductPriceHydratorStep;
-use Pyz\Zed\DataImport\Business\Model\PropelExecutor;
+use Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\Sql\ProductPriceSqlInterface;
+use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
 use Spryker\Zed\DataImport\Business\Model\Writer\FlushInterface;
@@ -24,20 +25,28 @@ class ProductPriceBulkPdoWriter extends DataImporterPublisher implements WriterI
     use DataFormatter;
 
     /**
-     * @var \Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\ProductPriceSql
+     * @var \Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\Sql\ProductPriceSql
      */
     protected $productPriceSql;
 
     /**
+     * @var \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface
+     */
+    protected $propelExecutor;
+
+    /**
      * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface $eventFacade
-     * @param \Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\ProductPriceSqlInterface $productPriceSql
+     * @param \Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\Sql\ProductPriceSqlInterface $productPriceSql
+     * @param \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface $propelExecutor
      */
     public function __construct(
         DataImportToEventFacadeInterface $eventFacade,
-        ProductPriceSqlInterface $productPriceSql
+        ProductPriceSqlInterface $productPriceSql,
+        PropelExecutorInterface $propelExecutor
     ) {
         parent::__construct($eventFacade);
         $this->productPriceSql = $productPriceSql;
+        $this->propelExecutor = $propelExecutor;
     }
 
     /**
@@ -116,7 +125,7 @@ class ProductPriceBulkPdoWriter extends DataImporterPublisher implements WriterI
             $priceModeConfiguration,
         ];
 
-        PropelExecutor::execute($sql, $parameters);
+        $this->propelExecutor->execute($sql, $parameters);
     }
 
     /**
@@ -185,7 +194,7 @@ class ProductPriceBulkPdoWriter extends DataImporterPublisher implements WriterI
             ProductPriceHydratorStep::KEY_FK_PRODUCT_ABSTRACT
         );
 
-        return PropelExecutor::execute($sql, $priceProductAbstractProductParameters);
+        return $this->propelExecutor->execute($sql, $priceProductAbstractProductParameters);
     }
 
     /**
@@ -267,7 +276,7 @@ class ProductPriceBulkPdoWriter extends DataImporterPublisher implements WriterI
         $stmt = $con->prepare($sql);
         $stmt->execute($priceProductConcreteParameters);
 
-        return PropelExecutor::execute($sql, $priceProductConcreteParameters);
+        return $this->propelExecutor->execute($sql, $priceProductConcreteParameters);
     }
 
     /**
@@ -294,7 +303,7 @@ class ProductPriceBulkPdoWriter extends DataImporterPublisher implements WriterI
      */
     protected function persistProductPriceEntities(string $sql, array $parameters): array
     {
-        return PropelExecutor::execute($sql, $parameters);
+        return $this->propelExecutor->execute($sql, $parameters);
     }
 
     /**
@@ -305,7 +314,7 @@ class ProductPriceBulkPdoWriter extends DataImporterPublisher implements WriterI
      */
     protected function persistPriceProductStore(string $sql, array $parameters): void
     {
-        PropelExecutor::execute($sql, $parameters);
+        $this->propelExecutor->execute($sql, $parameters);
     }
 
     /**

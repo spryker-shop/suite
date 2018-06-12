@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\DataImport\Business\Model\ProductAbstract\Writer;
+namespace Pyz\Zed\DataImport\Business\Model\ProductAbstract\Writer\Sql;
 
 class ProductAbstractSql implements ProductAbstractSqlInterface
 {
@@ -56,7 +56,9 @@ class ProductAbstractSql implements ProductAbstractSqlInterface
       fk_tax_set,
       color_code,
       new_from,
-      new_to
+      new_to,
+      created_at,
+      updated_at
     ) (
       SELECT
         nextval('spy_product_abstract_pk_seq'),
@@ -65,7 +67,9 @@ class ProductAbstractSql implements ProductAbstractSqlInterface
         fkTaxSet,
         colorCode,
         newFrom,
-        newTo
+        newTo,
+        now(),
+        now()
     FROM records
     WHERE idProductAbstract is null
   ) RETURNING id_product_abstract,sku

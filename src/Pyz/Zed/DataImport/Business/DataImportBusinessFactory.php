@@ -38,22 +38,26 @@ use Pyz\Zed\DataImport\Business\Model\ProductAbstract\AddProductAbstractSkusStep
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\ProductAbstractHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\Writer\ProductAbstractBulkPdoWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\Writer\ProductAbstractPropelWriter;
-use Pyz\Zed\DataImport\Business\Model\ProductAbstract\Writer\ProductAbstractSql;
+use Pyz\Zed\DataImport\Business\Model\ProductAbstract\Writer\Sql\ProductAbstractSql;
+use Pyz\Zed\DataImport\Business\Model\ProductAbstract\Writer\Sql\ProductAbstractSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\ProductAbstractStoreHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\ProductAbstractStoreBulkPdoWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\ProductAbstractStorePropelWriter;
-use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\ProductAbstractStoreSql;
+use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\Sql\ProductAbstractStoreSql;
+use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\Sql\ProductAbstractStoreSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\ProductAttributeKey\AddProductAttributeKeysStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAttributeKey\ProductAttributeKeyWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductConcreteHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\ProductConcreteBulkPdoWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\ProductConcretePropelWriter;
-use Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\ProductConcreteSql;
+use Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\Sql\ProductConcreteSql;
+use Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\Sql\ProductConcreteSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\ProductGroup\ProductGroupWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\ProductImageHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\ProductImageBulkPdoWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\ProductImagePropelWriter;
-use Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\ProductImageSql;
+use Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\Sql\ProductImageSql;
+use Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\Sql\ProductImageSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\ProductLabel\Hook\ProductLabelAfterImportPublishHook;
 use Pyz\Zed\DataImport\Business\Model\ProductLabel\ProductLabelWriterStep;
 use Pyz\Zed\DataImport\Business\Model\ProductManagementAttribute\ProductManagementAttributeWriter;
@@ -63,7 +67,8 @@ use Pyz\Zed\DataImport\Business\Model\ProductOptionPrice\ProductOptionPriceWrite
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\ProductPriceHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\ProductPriceBulkPdoWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\ProductPricePropelWriter;
-use Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\ProductPriceSql;
+use Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\Sql\ProductPriceSql;
+use Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\Sql\ProductPriceSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\ProductRelation\Hook\ProductRelationAfterImportHook;
 use Pyz\Zed\DataImport\Business\Model\ProductRelation\ProductRelationWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductReview\ProductReviewWriterStep;
@@ -76,7 +81,10 @@ use Pyz\Zed\DataImport\Business\Model\ProductStock\Hook\ProductStockAfterImportP
 use Pyz\Zed\DataImport\Business\Model\ProductStock\ProductStockHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockBulkPdoWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockPropelWriter;
-use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockSql;
+use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSql;
+use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSqlInterface;
+use Pyz\Zed\DataImport\Business\Model\PropelExecutor;
+use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
 use Pyz\Zed\DataImport\Business\Model\Shipment\ShipmentWriterStep;
 use Pyz\Zed\DataImport\Business\Model\ShipmentPrice\ShipmentPriceWriterStep;
 use Pyz\Zed\DataImport\Business\Model\Stock\StockWriterStep;
@@ -159,14 +167,15 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     {
         return new ProductAbstractBulkPdoWriter(
             $this->getEventFacade(),
-            $this->createProductAbstractSql()
+            $this->createProductAbstractSql(),
+            $this->createPropelExecutor()
         );
     }
 
     /**
-     * @return \Pyz\Zed\DataImport\Business\Model\ProductAbstract\Writer\ProductAbstractSql
+     * @return \Pyz\Zed\DataImport\Business\Model\ProductAbstract\Writer\Sql\ProductAbstractSqlInterface
      */
-    protected function createProductAbstractSql(): ProductAbstractSql
+    protected function createProductAbstractSql(): ProductAbstractSqlInterface
     {
         return new ProductAbstractSql();
     }
@@ -189,16 +198,17 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     {
         return new ProductPriceBulkPdoWriter(
             $this->getEventFacade(),
-            $this->createProductPriceSql()
+            $this->createProductPriceSql(),
+            $this->createPropelExecutor()
         );
     }
 
     /**
-     * @return \Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\ProductPriceSql
+     * @return \Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\Sql\ProductPriceSqlInterface
      */
-    protected function createProductPriceSql(): ProductPriceSql
+    protected function createProductPriceSql(): ProductPriceSqlInterface
     {
-        return new ProductPriceSql();
+        return new ProductPriceSql;
     }
 
     /**
@@ -219,38 +229,39 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     {
         return new ProductAbstractStoreBulkPdoWriter(
             $this->getEventFacade(),
-            $this->createProductAbstractStoreSql()
+            $this->createProductAbstractStoreSql(),
+            $this->createPropelExecutor()
         );
     }
 
     /**
-     * @return \Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\ProductAbstractStoreSql
+     * @return \Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\Sql\ProductAbstractStoreSqlInterface
      */
-    public function createProductAbstractStoreSql(): ProductAbstractStoreSql
+    public function createProductAbstractStoreSql(): ProductAbstractStoreSqlInterface
     {
         return new ProductAbstractStoreSql();
     }
 
     /**
-     * @return \Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\ProductConcreteSql
+     * @return \Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\Sql\ProductConcreteSqlInterface
      */
-    public function createProductConcreteSql(): ProductConcreteSql
+    public function createProductConcreteSql(): ProductConcreteSqlInterface
     {
         return new ProductConcreteSql();
     }
 
     /**
-     * @return \Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockSql
+     * @return \Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSqlInterface
      */
-    public function createProductStockSql(): ProductStockSql
+    public function createProductStockSql(): ProductStockSqlInterface
     {
         return new ProductStockSql();
     }
 
     /**
-     * @return \Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\ProductImageSql
+     * @return \Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\Sql\ProductImageSqlInterface
      */
-    public function createProductImageSql(): ProductImageSql
+    public function createProductImageSql(): ProductImageSqlInterface
     {
         return new ProductImageSql();
     }
@@ -281,8 +292,17 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         return new ProductConcreteBulkPdoWriter(
             $this->getEventFacade(),
             $this->createProductRepository(),
-            $this->createProductConcreteSql()
+            $this->createProductConcreteSql(),
+            $this->createPropelExecutor()
         );
+    }
+
+    /**
+     * @return \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface
+     */
+    public function createPropelExecutor(): PropelExecutorInterface
+    {
+        return new PropelExecutor();
     }
 
     /**
@@ -324,7 +344,11 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     public function createProductImageBulkPdoWriter()
     {
-        return new ProductImageBulkPdoWriter($this->getEventFacade(), $this->createProductImageSql());
+        return new ProductImageBulkPdoWriter(
+            $this->getEventFacade(),
+            $this->createProductImageSql(),
+            $this->createPropelExecutor()
+        );
     }
 
     /**
@@ -350,7 +374,8 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             $this->getAvailabilityFacade(),
             $this->getProductBundleFacade(),
             $this->createProductRepository(),
-            $this->createProductStockSql()
+            $this->createProductStockSql(),
+            $this->createPropelExecutor()
         );
     }
 

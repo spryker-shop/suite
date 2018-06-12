@@ -9,7 +9,8 @@ namespace Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer;
 
 use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataFormatter;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\ProductAbstractStoreHydratorStep;
-use Pyz\Zed\DataImport\Business\Model\PropelExecutor;
+use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\Sql\ProductAbstractStoreSqlInterface;
+use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
 use Spryker\Zed\DataImport\Business\Model\Writer\FlushInterface;
@@ -21,20 +22,28 @@ class ProductAbstractStoreBulkPdoWriter extends DataImporterPublisher implements
     use DataFormatter;
 
     /**
-     * @var \Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\ProductAbstractStoreSql
+     * @var \Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\Sql\ProductAbstractStoreSql
      */
     protected $productAbstractStoreSql;
 
     /**
+     * @var \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface
+     */
+    protected $propelExecutor;
+
+    /**
      * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface $eventFacade
-     * @param \Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\ProductAbstractStoreSqlInterface $productAbstractStoreSql
+     * @param \Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\Sql\ProductAbstractStoreSqlInterface $productAbstractStoreSql
+     * @param \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface $propelExecutor
      */
     public function __construct(
         DataImportToEventFacadeInterface $eventFacade,
-        ProductAbstractStoreSqlInterface $productAbstractStoreSql
+        ProductAbstractStoreSqlInterface $productAbstractStoreSql,
+        PropelExecutorInterface $propelExecutor
     ) {
         parent::__construct($eventFacade);
         $this->productAbstractStoreSql = $productAbstractStoreSql;
+        $this->propelExecutor = $propelExecutor;
     }
 
     /**
@@ -74,7 +83,7 @@ class ProductAbstractStoreBulkPdoWriter extends DataImporterPublisher implements
             $storeName,
         ];
 
-        PropelExecutor::execute($sql, $parameters);
+        $this->propelExecutor->execute($sql, $parameters);
     }
 
     /**
