@@ -13,6 +13,7 @@ use Orm\Zed\Currency\Persistence\Base\SpyCurrency;
 use Orm\Zed\Currency\Persistence\SpyCurrencyQuery;
 use Orm\Zed\PriceProduct\Persistence\Base\SpyPriceProduct;
 use Orm\Zed\PriceProduct\Persistence\Base\SpyPriceType;
+use Orm\Zed\PriceProduct\Persistence\Map\SpyPriceTypeTableMap;
 use Orm\Zed\PriceProduct\Persistence\SpyPriceProductQuery;
 use Orm\Zed\PriceProduct\Persistence\SpyPriceProductStoreQuery;
 use Orm\Zed\PriceProduct\Persistence\SpyPriceTypeQuery;
@@ -84,7 +85,7 @@ class ProductPricePropelWriter extends DataImporterPublisher implements WriterIn
             ->findOneOrCreate();
 
         if ($priceTypeEntity->isNew() || $priceTypeEntity->isModified()) {
-            $priceTypeEntity->setPriceModeConfiguration($priceTypeTransfer->getPriceModeConfiguration());
+            $priceTypeEntity->setPriceModeConfiguration(SpyPriceTypeTableMap::COL_PRICE_MODE_CONFIGURATION_BOTH);
             $priceTypeEntity->save();
         }
 
