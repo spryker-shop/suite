@@ -376,7 +376,7 @@ class DataImportConfig extends SprykerDataImportConfig
     {
         return [
             PropelConfig::DB_ENGINE_PGSQL => [
-                static::IMPORT_TYPE_PRODUCT_ABSTRACT => $this->getProductAbstractMySqlWriter(),
+                static::IMPORT_TYPE_PRODUCT_ABSTRACT => $this->getProductAbstractPostgreWriter(),
                 static::IMPORT_TYPE_PRODUCT_ABSTRACT_STORE => $this->getProductAbstractStorePostgreWriter(),
                 static::IMPORT_TYPE_PRODUCT_CONCRETE => $this->getProductConcretePostgreWriter(),
                 static::IMPORT_TYPE_PRODUCT_PRICE => $this->getProductPricePostgreWriter(),
