@@ -69,13 +69,13 @@ class ProductAbstractGenerator extends AbstractGenerator implements ProductAbstr
     protected function createProductAbstractRow(ProductAbstractTransfer $productAbstractTransfer)
     {
         $row = [
-            'category_key' => 'digital-cameras',
+            'category_key' => $this->getConfig()->getDefaultCategoryKey(),
             'category_product_order' => 1,
             'abstract_sku' => $productAbstractTransfer->getSku(),
             'name.en_US' => $productAbstractTransfer->getLocalizedAttributes()[0]->getName(),
             'name.de_DE' => '(DE) ' . $productAbstractTransfer->getLocalizedAttributes()[0]->getName(),
-            'url.en_US' => uniqid('/en/demo/url/'),
-            'url.de_DE' => uniqid('/de/demo/url/'),
+            'url.en_US' => uniqid($this->getConfig()->getDefaultUrlEn()),
+            'url.de_DE' => uniqid($this->getConfig()->getDefaultUrlDe()),
             'is_featured' => 0,
         ];
 
@@ -86,7 +86,7 @@ class ProductAbstractGenerator extends AbstractGenerator implements ProductAbstr
             'description.en_US' => $productAbstractTransfer->getLocalizedAttributes()[0]->getDescription(),
             'description.de_DE' => '(DE) ' . $productAbstractTransfer->getLocalizedAttributes()[0]->getDescription(),
             'icecat_pdp_url' => null,
-            'tax_set_name' => 'Entertainment Electronics',
+            'tax_set_name' => $this->getConfig()->getDefaultTaxSetName(),
             'meta_title.en_US' => $productAbstractTransfer->getLocalizedAttributes()[0]->getMetaTitle(),
             'meta_title.de_DE' => '(DE) ' . $productAbstractTransfer->getLocalizedAttributes()[0]->getMetaTitle(),
             'meta_keywords.en_US' => $productAbstractTransfer->getLocalizedAttributes()[0]->getMetaKeywords(),

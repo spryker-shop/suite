@@ -20,7 +20,12 @@ class DemoDataGeneratorConfig extends AbstractBundleConfig
     protected const PRODUCT_PRICE_CSV_PATH = self::DATA_FOLDER_PATH . 'product_price.csv';
     protected const PRODUCT_STOCK_CSV_PATH = self::DATA_FOLDER_PATH . 'product_stock.csv';
     protected const STOCK_CSV_PATH = self::DATA_FOLDER_PATH . 'stock.csv';
-
+    protected const DEFAULT_CATEGORY_KEY = 'digital-cameras';
+    protected const DEFAULT_DE_URL = '/de/demo/url/';
+    protected const DEFAULT_EN_URL = '/en/demo/url/';
+    protected const DEFAULT_TAX_SET_NAME = 'Entertainment Electronics';
+    protected const MIN_PRODUCT_BUNDLE_COUNT = 1;
+    protected const MAX_PRODUCT_BUNDLE_COUNT = 5;
     /**
      * @var array
      */
@@ -88,5 +93,70 @@ class DemoDataGeneratorConfig extends AbstractBundleConfig
     public function getStockCsvPath(): string
     {
         return static::STOCK_CSV_PATH;
+    }
+
+    /**
+     * @return array
+     */
+    public function getSkuPrefixStrategy(): array
+    {
+        return [
+            [
+                'digits' => 1,
+                'prefix' => '00',
+            ],
+            [
+                'digits' => 2,
+                'prefix' => '0',
+            ],
+        ];
+    }
+
+    /**
+     * @return string
+     */
+    public function getDefaultCategoryKey(): string
+    {
+         return static::DEFAULT_CATEGORY_KEY;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDefaultUrlDe(): string
+    {
+        return static::DEFAULT_DE_URL;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDefaultUrlEn(): string
+    {
+        return static::DEFAULT_EN_URL;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDefaultTaxSetName(): string
+    {
+        return static::DEFAULT_TAX_SET_NAME;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMinProductBundleCount(): int
+    {
+        return static::MIN_PRODUCT_BUNDLE_COUNT;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMaxProductBundleCount(): int
+    {
+        return static::MAX_PRODUCT_BUNDLE_COUNT;
     }
 }

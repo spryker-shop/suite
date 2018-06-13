@@ -14,9 +14,6 @@ use Pyz\Zed\DemoDataGenerator\Business\Model\AbstractGenerator;
 
 class ProductConcreteGenerator extends AbstractGenerator implements ProductConcreteGeneratorInterface
 {
-    const MIN_PRODUCT_BUNDLE_COUNT = 1;
-    const MAX_PRODUCT_BUNDLE_COUNT = 5;
-
     /**
      * @var array
      */
@@ -103,17 +100,29 @@ class ProductConcreteGenerator extends AbstractGenerator implements ProductConcr
      */
     protected function getOldSku($concreteSku, $rowNumber): string
     {
-        $prefix = '';
-
-        if ($rowNumber < 100) {
-            $prefix = '0';
-        }
-
-        if ($rowNumber < 10) {
-            $prefix = '00';
-        }
+        $prefix = $this->getSkuPrefix($rowNumber);
 
         return $prefix . $rowNumber . '_' . $concreteSku;
+    }
+
+    /**
+     * @param int $rowNumber
+     *
+     * @return string
+     */
+    public function getSkuPrefix($rowNumber): string
+    {
+        $defaultSkuPrefix = '';
+        $digitsCount = strlen((string)$rowNumber);
+        $skuPrefixStrategies = $this->getConfig()->getSkuPrefixStrategy();
+
+        foreach ($skuPrefixStrategies as $skuPrefix) {
+            if ($skuPrefix['digits'] === $digitsCount) {
+                return $skuPrefix['prefix'];
+            }
+        }
+
+        return $defaultSkuPrefix;
     }
 
     /**
@@ -124,7 +133,10 @@ class ProductConcreteGenerator extends AbstractGenerator implements ProductConcr
         $withBundleProduct = rand(0, 1);
 
         if (count($this->rows) && $withBundleProduct) {
-            $bundledProductCount = rand(static::MIN_PRODUCT_BUNDLE_COUNT, static::MAX_PRODUCT_BUNDLE_COUNT);
+            $bundledProductCount = rand(
+                $this->getConfig()->getMinProductBundleCount(),
+                $this->getConfig()->getMaxProductBundleCount()
+            );
 
             return $this->getRandomProductSku() . '/' . $bundledProductCount;
         }
