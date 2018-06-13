@@ -8,14 +8,13 @@
 namespace Pyz\Zed\DataImport\Communication\Plugin\ProductConcrete;
 
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
-use Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface;
-use Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface;
+use Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 
 /**
  * @method \Pyz\Zed\DataImport\Business\DataImportFacadeInterface getFacade()
  */
-class ProductConcretePropelWriterPlugin extends AbstractPlugin implements DataImportWriterPluginInterface, DataImportFlushPluginInterface
+class ProductConcretePropelWriterPlugin extends AbstractPlugin implements DataSetWriterPluginInterface
 {
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet

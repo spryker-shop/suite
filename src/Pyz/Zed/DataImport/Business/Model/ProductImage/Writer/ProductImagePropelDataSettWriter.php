@@ -18,12 +18,11 @@ use Orm\Zed\ProductImage\Persistence\SpyProductImageSetToProductImageQuery;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\ProductImageHydratorStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
-use Spryker\Zed\DataImport\Business\Model\Writer\FlushInterface;
-use Spryker\Zed\DataImport\Business\Model\Writer\WriterInterface;
+use Spryker\Zed\DataImport\Business\Model\Writer\DataSettWriterInterface;
 use Spryker\Zed\Product\Dependency\ProductEvents;
 use Spryker\Zed\ProductImage\Dependency\ProductImageEvents;
 
-class ProductImagePropelWriter extends DataImporterPublisher implements WriterInterface, FlushInterface
+class ProductImagePropelDataSettWriter extends DataImporterPublisher implements DataSettWriterInterface
 {
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet

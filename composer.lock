@@ -2109,7 +2109,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "bbe2cc0b0afc0f7a623d946e137f5227fd10c436"
+                "reference": "6348f5bfe3c6c4c258a3f0e3fe188ba399485d6d"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.0",
@@ -2368,7 +2368,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-06-07T08:36:00+00:00"
+            "time": "2018-06-07T09:18:44+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2376,7 +2376,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "fa3ebb9d701b6db1c9068a2eff66cb969e1e3947"
+                "reference": "89e174604ccb061c13c6973d1db90685b011bfde"
             },
             "require": {
                 "php": ">=7.1"
@@ -2423,12 +2423,14 @@
                 "spryker-shop/quick-order-page": "*",
                 "spryker-shop/redirect-page": "*",
                 "spryker-shop/shop-application": "*",
+                "spryker-shop/shop-application-extension": "*",
                 "spryker-shop/shop-layout": "*",
                 "spryker-shop/shop-router": "*",
                 "spryker-shop/shop-translator": "*",
                 "spryker-shop/web-profiler-widget": "*",
                 "spryker-shop/wishlist-page": "*",
-                "spryker-shop/wishlist-widget": "*"
+                "spryker-shop/wishlist-widget": "*",
+                "spryker/business-on-behalf-widget": "*"
             },
             "require-dev": {
                 "spryker/code-sniffer": "dev-master",
@@ -2449,7 +2451,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-06-05T23:12:52+00:00"
+            "time": "2018-06-12T15:26:57+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -7508,12 +7510,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "5213f9bb5a2eff524e9e5a16c7e8b58dc7667617"
+                "reference": "74772135db70662d45836f61b72570a9f2ee3383"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/5213f9bb5a2eff524e9e5a16c7e8b58dc7667617",
-                "reference": "5213f9bb5a2eff524e9e5a16c7e8b58dc7667617",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/74772135db70662d45836f61b72570a9f2ee3383",
+                "reference": "74772135db70662d45836f61b72570a9f2ee3383",
                 "shasum": ""
             },
             "require": {
@@ -7522,6 +7524,7 @@
                 "squizlabs/php_codesniffer": "^3.0"
             },
             "require-dev": {
+                "phpstan/phpstan-shim": "^0.9.2",
                 "phpunit/phpunit": "<5.0"
             },
             "bin": [
@@ -7551,7 +7554,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-06-06T15:32:47+00:00"
+            "time": "2018-06-12T21:23:05+00:00"
         },
         {
             "name": "spryker/development-core",

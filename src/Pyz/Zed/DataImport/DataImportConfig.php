@@ -403,7 +403,7 @@ class DataImportConfig extends SprykerDataImportConfig
     }
 
     /**
-     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
      */
     protected function getProductAbstractPostgreWriter(): array
     {
@@ -413,7 +413,7 @@ class DataImportConfig extends SprykerDataImportConfig
     }
 
     /**
-     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
      */
     protected function getProductAbstractMySqlWriter(): array
     {
@@ -423,7 +423,7 @@ class DataImportConfig extends SprykerDataImportConfig
     }
 
     /**
-     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
      */
     protected function getProductAbstractStorePostgreWriter(): array
     {
@@ -433,7 +433,7 @@ class DataImportConfig extends SprykerDataImportConfig
     }
 
     /**
-     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
      */
     protected function getProductAbstractStoreMySqlWriter(): array
     {
@@ -443,7 +443,7 @@ class DataImportConfig extends SprykerDataImportConfig
     }
 
     /**
-     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
      */
     protected function getProductConcretePostgreWriter(): array
     {
@@ -453,7 +453,7 @@ class DataImportConfig extends SprykerDataImportConfig
     }
 
     /**
-     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
      */
     protected function getProductConcreteMySqlWriter(): array
     {
@@ -463,7 +463,7 @@ class DataImportConfig extends SprykerDataImportConfig
     }
 
     /**
-     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
      */
     protected function getProductImagePostgreWriter()
     {
@@ -473,7 +473,7 @@ class DataImportConfig extends SprykerDataImportConfig
     }
 
     /**
-     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
      */
     protected function getProductImageMySqlWriter()
     {
@@ -483,7 +483,7 @@ class DataImportConfig extends SprykerDataImportConfig
     }
 
     /**
-     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
      */
     protected function getProductPricePostgreWriter(): array
     {
@@ -493,7 +493,7 @@ class DataImportConfig extends SprykerDataImportConfig
     }
 
     /**
-     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
      */
     protected function getProductPriceMySqlWriter(): array
     {
@@ -503,7 +503,7 @@ class DataImportConfig extends SprykerDataImportConfig
     }
 
     /**
-     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
      */
     protected function getProductStockPostgreWriter(): array
     {
@@ -513,7 +513,7 @@ class DataImportConfig extends SprykerDataImportConfig
     }
 
     /**
-     * @return \Spryker\Zed\DataImport\Dependency\Plugin\DataImportWriterPluginInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportFlushPluginInterface[]
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
      */
     protected function getProductStockMySqlWriter(): array
     {

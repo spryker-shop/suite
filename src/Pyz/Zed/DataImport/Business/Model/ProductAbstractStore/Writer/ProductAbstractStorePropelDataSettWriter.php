@@ -14,10 +14,9 @@ use Orm\Zed\Store\Persistence\SpyStoreQuery;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\ProductAbstractStoreHydratorStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
-use Spryker\Zed\DataImport\Business\Model\Writer\FlushInterface;
-use Spryker\Zed\DataImport\Business\Model\Writer\WriterInterface;
+use Spryker\Zed\DataImport\Business\Model\Writer\DataSettWriterInterface;
 
-class ProductAbstractStorePropelWriter extends DataImporterPublisher implements WriterInterface, FlushInterface
+class ProductAbstractStorePropelDataSettWriter extends DataImporterPublisher implements DataSettWriterInterface
 {
     /**
      * @var int[] Keys are SKUs, values are product abstract ids.

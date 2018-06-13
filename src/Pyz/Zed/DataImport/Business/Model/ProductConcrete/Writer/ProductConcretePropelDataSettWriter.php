@@ -18,12 +18,11 @@ use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterf
 use Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductConcreteHydratorStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
-use Spryker\Zed\DataImport\Business\Model\Writer\FlushInterface;
-use Spryker\Zed\DataImport\Business\Model\Writer\WriterInterface;
+use Spryker\Zed\DataImport\Business\Model\Writer\DataSettWriterInterface;
 use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
 use Spryker\Zed\Product\Dependency\ProductEvents;
 
-class ProductConcretePropelWriter extends DataImporterPublisher implements WriterInterface, FlushInterface
+class ProductConcretePropelDataSettWriter extends DataImporterPublisher implements DataSettWriterInterface
 {
     /**
      * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface
