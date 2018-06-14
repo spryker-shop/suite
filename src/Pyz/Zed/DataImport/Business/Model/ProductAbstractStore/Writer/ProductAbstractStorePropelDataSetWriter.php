@@ -13,10 +13,10 @@ use Orm\Zed\Product\Persistence\SpyProductAbstractStoreQuery;
 use Orm\Zed\Store\Persistence\SpyStoreQuery;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\ProductAbstractStoreHydratorStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
+use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
-use Spryker\Zed\DataImport\Business\Model\Writer\DataSettWriterInterface;
 
-class ProductAbstractStorePropelDataSettWriter extends DataImporterPublisher implements DataSettWriterInterface
+class ProductAbstractStorePropelDataSetWriter extends DataImporterPublisher implements DataSetWriterInterface
 {
     /**
      * @var int[] Keys are SKUs, values are product abstract ids.

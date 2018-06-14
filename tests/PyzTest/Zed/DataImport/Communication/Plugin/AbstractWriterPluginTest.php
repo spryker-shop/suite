@@ -15,7 +15,7 @@ use Propel\Runtime\Propel;
 use Pyz\Zed\DataImport\Business\DataImportBusinessFactory;
 use Pyz\Zed\DataImport\DataImportConfig;
 use Spryker\Shared\Kernel\Store;
-use Spryker\Zed\DataImport\Business\Model\Writer\DataSettWriterCollection;
+use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterCollection;
 use Spryker\Zed\DataImport\Dependency\Propel\DataImportToPropelConnectionBridge;
 
 /**
@@ -74,11 +74,11 @@ abstract class AbstractWriterPluginTest extends Unit
     }
 
     /**
-     * @return \Spryker\Zed\DataImport\Business\Model\Writer\DataSettWriterCollection
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterCollection
      */
-    public function createDataImportWriters(): DataSettWriterCollection
+    public function createDataImportWriters(): DataSetWriterCollection
     {
-        return new DataSettWriterCollection($this->getDataImportWriterPlugins());
+        return new DataSetWriterCollection($this->getDataImportWriterPlugins());
     }
 
     /**

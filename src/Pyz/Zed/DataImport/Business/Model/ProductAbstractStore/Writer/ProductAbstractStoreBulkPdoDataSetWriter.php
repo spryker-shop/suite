@@ -12,11 +12,11 @@ use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\ProductAbstractStoreH
 use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\Sql\ProductAbstractStoreSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
+use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
-use Spryker\Zed\DataImport\Business\Model\Writer\DataSettWriterInterface;
 use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
 
-class ProductAbstractStoreBulkPdoDataSettWriter extends DataImporterPublisher implements DataSettWriterInterface
+class ProductAbstractStoreBulkPdoDataSetWriter extends DataImporterPublisher implements DataSetWriterInterface
 {
     use DataFormatter;
 

@@ -13,12 +13,12 @@ use Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductConcreteHydratorSte
 use Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\Sql\ProductConcreteSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
+use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
-use Spryker\Zed\DataImport\Business\Model\Writer\DataSettWriterInterface;
 use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
 use Spryker\Zed\Product\Dependency\ProductEvents;
 
-class ProductConcreteBulkPdoDataSettWriter extends DataImporterPublisher implements DataSettWriterInterface
+class ProductConcreteBulkPdoDataSetWriter extends DataImporterPublisher implements DataSetWriterInterface
 {
     use DataFormatter;
 
