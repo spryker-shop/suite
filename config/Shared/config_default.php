@@ -381,17 +381,13 @@ $config[QueueConstants::QUEUE_WORKER_LOG_ACTIVE] = false;
  */
 $config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION_DEFAULT] = [
     QueueConfig::CONFIG_QUEUE_ADAPTER => RabbitMqAdapter::class,
-    QueueConfig::CONFIG_MAX_WORKER_NUMBER => 5,
+    QueueConfig::CONFIG_MAX_WORKER_NUMBER => 1,
 ];
 
 $config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION] = [
     EventConstants::EVENT_QUEUE => [
         QueueConfig::CONFIG_QUEUE_ADAPTER => RabbitMqAdapter::class,
-        QueueConfig::CONFIG_MAX_WORKER_NUMBER => 5,
-    ],
-    \Spryker\Shared\ProductStorage\ProductStorageConstants::PRODUCT_SYNC_STORAGE_QUEUE => [
-        QueueConfig::CONFIG_QUEUE_ADAPTER => RabbitMqAdapter::class,
-        QueueConfig::CONFIG_MAX_WORKER_NUMBER => 5,
+        QueueConfig::CONFIG_MAX_WORKER_NUMBER => 1,
     ],
 ];
 
@@ -400,6 +396,7 @@ $config[LogglyConstants::ERROR_QUEUE_NAME] = 'loggly-log-queue.error';
 
 // ---------- Events
 $config[EventConstants::LOGGER_ACTIVE] = false;
+$config[EventConstants::MAX_RETRY_ON_FAIL] = 1;
 
 // ---------- EventBehavior
 $config[EventBehaviorConstants::EVENT_BEHAVIOR_TRIGGERING_ACTIVE] = true;
