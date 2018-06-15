@@ -97,7 +97,7 @@ class ProductImageBulkPdoDataSetWriter extends DataImporterPublisher implements 
      */
     public function flush(): void
     {
-        $this->triggerEvents();
+        $this->writeEntities();
     }
 
     /**
