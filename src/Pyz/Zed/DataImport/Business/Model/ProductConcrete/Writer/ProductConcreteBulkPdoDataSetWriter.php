@@ -174,12 +174,8 @@ class ProductConcreteBulkPdoDataSetWriter extends DataImporterPublisher implemen
     protected function persistConcreteProductLocalizedAttributesEntities(): void
     {
         if (!empty(static::$productLocalizedAttributesCollection)) {
-            $spyProduct = array_column(
-                static::$productLocalizedAttributesCollection,
-                ProductConcreteHydratorStep::KEY_SPY_PRODUCT
-            );
             $sku = $this->formatPostgresArrayString(
-                $this->getCollectionDataByKey($spyProduct, ProductConcreteHydratorStep::KEY_SKU)
+                $this->getCollectionDataByKey(static::$productLocalizedAttributesCollection, ProductConcreteHydratorStep::KEY_SKU)
             );
             $idLocale = $this->formatPostgresArray(
                 $this->getCollectionDataByKey(static::$productLocalizedAttributesCollection, ProductConcreteHydratorStep::KEY_FK_LOCALE)
@@ -306,6 +302,7 @@ class ProductConcreteBulkPdoDataSetWriter extends DataImporterPublisher implemen
             $productSearchArray[ProductConcreteHydratorStep::KEY_SKU] = $productConcreteLocalizedTransfer[ProductConcreteHydratorStep::KEY_SKU];
 
             $localizedAttributeArray = $productConcreteLocalizedTransfer[ProductConcreteHydratorStep::KEY_PRODUCT_CONCRETE_LOCALIZED_TRANSFER]->modifiedToArray();
+            $localizedAttributeArray[ProductConcreteHydratorStep::KEY_SKU] = $productConcreteLocalizedTransfer[ProductConcreteHydratorStep::KEY_SKU];
             $localizedAttributeArray[ProductConcreteHydratorStep::KEY_DESCRIPTION] = str_replace(
                 '"',
                 '',
