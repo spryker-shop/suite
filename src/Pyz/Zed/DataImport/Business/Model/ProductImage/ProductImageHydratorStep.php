@@ -10,8 +10,6 @@ namespace Pyz\Zed\DataImport\Business\Model\ProductImage;
 use Generated\Shared\Transfer\SpyProductImageEntityTransfer;
 use Generated\Shared\Transfer\SpyProductImageSetEntityTransfer;
 use Generated\Shared\Transfer\SpyProductImageSetToProductImageEntityTransfer;
-use Pyz\Zed\DataImport\Business\Model\Locale\Repository\LocaleRepositoryInterface;
-use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
@@ -38,26 +36,6 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
     const PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER = 'PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER';
 
     /**
-     * @var \Pyz\Zed\DataImport\Business\Model\Locale\Repository\LocaleRepositoryInterface
-     */
-    protected $localeRepository;
-
-    /**
-     * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface
-     */
-    protected $productRepository;
-
-    /**
-     * @param \Pyz\Zed\DataImport\Business\Model\Locale\Repository\LocaleRepositoryInterface $localeRepository
-     * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface $productRepository
-     */
-    public function __construct(LocaleRepositoryInterface $localeRepository, ProductRepositoryInterface $productRepository)
-    {
-        $this->localeRepository = $localeRepository;
-        $this->productRepository = $productRepository;
-    }
-
-    /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
      * @return void
@@ -76,24 +54,8 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
      */
     protected function importImageSet(DataSetInterface $dataSet): void
     {
-        $idLocale = $this->getIdLocaleByLocale($dataSet);
-
         $imageSetEntityTransfer = new SpyProductImageSetEntityTransfer();
         $imageSetEntityTransfer->setName($dataSet[static::KEY_IMAGE_SET_NAME]);
-        $imageSetEntityTransfer->setFkLocale($idLocale);
-
-        if (!empty($dataSet[static::KEY_ABSTRACT_SKU])) {
-            $idProductAbstract = $this->productRepository->getIdProductAbstractByAbstractSku($dataSet[static::KEY_ABSTRACT_SKU]);
-            $imageSetEntityTransfer->setFkProductAbstract($idProductAbstract);
-            $imageSetEntityTransfer->setFkProduct('null');
-        }
-
-        if (!empty($dataSet[static::KEY_CONCRETE_SKU])) {
-            $idProduct = $this->productRepository->getIdProductByConcreteSku($dataSet[static::KEY_CONCRETE_SKU]);
-            $imageSetEntityTransfer->setFkProduct($idProduct);
-            $imageSetEntityTransfer->setFkProductAbstract('null');
-        }
-
         $dataSet[static::PRODUCT_IMAGE_SET_TRANSFER] = $imageSetEntityTransfer;
     }
 
@@ -122,21 +84,5 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
         $imageToImageSetRelationEntityTransfer->setSortOrder(static::IMAGE_TO_IMAGE_SET_RELATION_ORDER);
 
         $dataSet[static::PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER] = $imageToImageSetRelationEntityTransfer;
-    }
-
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return int
-     */
-    protected function getIdLocaleByLocale(DataSetInterface $dataSet): int
-    {
-        $idLocale = null;
-
-        if (!empty($dataSet[static::KEY_LOCALE])) {
-            $idLocale = $this->localeRepository->getIdLocaleByLocale($dataSet[static::KEY_LOCALE]);
-        }
-
-        return $idLocale;
     }
 }

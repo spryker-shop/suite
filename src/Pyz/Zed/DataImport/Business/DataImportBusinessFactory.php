@@ -293,7 +293,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     {
         return new ProductConcreteBulkPdoDataSetWriter(
             $this->getEventFacade(),
-            $this->createProductRepository(),
             $this->createProductConcreteSql(),
             $this->createPropelExecutor()
         );
@@ -375,7 +374,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             $this->getEventFacade(),
             $this->getAvailabilityFacade(),
             $this->getProductBundleFacade(),
-            $this->createProductRepository(),
             $this->createProductStockSql(),
             $this->createPropelExecutor()
         );
@@ -810,10 +808,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductImageBulkPdoDataSetWriter::BULK_SIZE);
         $dataSetStepBroker
-            ->addStep(new ProductImageHydratorStep(
-                $this->createLocaleRepository(),
-                $this->createProductRepository()
-            ));
+            ->addStep(new ProductImageHydratorStep());
 
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
         $dataImporter->setDataSetWriter($this->createProductImageDataWriters());

@@ -17,41 +17,47 @@ class ProductImageSql implements ProductImageSqlInterface
         $sql = "WITH records AS (
     SELECT
       input.name,
-      input.fkLocale,
-      input.fkProduct,
-      input.fkProductAbstract,
+      input.localeName,
+      input.concreteProductSku,
+      input.abstractProductSku,
       input.fkResourceProductSet,
-      id_product_image_set as idProductImageSet
+      id_product_image_set as idProductImageSet,
+      spy_locale.id_locale,
+      spy_product.id_product,
+      spy_product_abstract.id_product_abstract
     FROM (
            SELECT
              unnest(? :: VARCHAR []) AS name,
-             unnest(? :: INTEGER []) AS fkLocale,
-             unnest(? :: INTEGER []) AS fkProduct,
-             unnest(? :: INTEGER []) AS fkProductAbstract,
+             unnest(? :: VARCHAR []) AS localeName,
+             unnest(? :: VARCHAR []) AS concreteProductSku,
+             unnest(? :: VARCHAR []) AS abstractProductSku,
              unnest(? :: INTEGER []) AS fkResourceProductSet
          ) input
+      LEFT JOIN spy_product ON spy_product.sku = concreteProductSku OR spy_product.sku is NULL
+      LEFT JOIN spy_product_abstract ON spy_product_abstract.sku = abstractProductSku OR spy_product_abstract.sku is NULL
+      LEFT JOIN spy_locale ON spy_locale.locale_name = localeName OR spy_locale.locale_name is NULL
       LEFT JOIN spy_product_image_set ON
-        spy_product_image_set.fk_locale = input.fkLocale AND
-        (spy_product_image_set.fk_product_abstract = input.fkProductAbstract OR
-        spy_product_image_set.fk_product_abstract is null) AND
-        (spy_product_image_set.fk_product = input.fkProduct OR
-        spy_product_image_set.fk_product is null)
+                                        spy_product_image_set.fk_locale = id_locale AND
+                                        (spy_product_image_set.fk_product_abstract = id_product_abstract OR
+                                         spy_product_image_set.fk_product_abstract is null) AND
+                                        (spy_product_image_set.fk_product = id_product OR
+                                         spy_product_image_set.fk_product is null)
 ),
     updated AS (
     UPDATE spy_product_image_set
     SET
       name = records.name,
-      fk_locale = records.fkLocale,
-      fk_product = records.fkProduct,
-      fk_product_abstract = records.fkProductAbstract,
+      fk_locale = records.id_locale,
+      fk_product = records.id_product,
+      fk_product_abstract = records.id_product_abstract,
       fk_resource_product_set = records.fkResourceProductSet,
       updated_at = now()
     FROM records
     WHERE
       idProductImageSet is not null AND (
-      (records.fkProduct = spy_product_image_set.fk_product OR records.fkProduct is null) AND
-      (records.fkProductAbstract = spy_product_image_set.fk_product_abstract OR records.fkProductAbstract is null) AND
-      records.fkLocale = spy_product_image_set.fk_locale )
+        (records.id_product = spy_product_image_set.fk_product OR records.id_product is null) AND
+        (records.id_product_abstract = spy_product_image_set.fk_product_abstract OR records.id_product_abstract is null) AND
+        records.id_locale = spy_product_image_set.fk_locale )
     RETURNING id_product_image_set, fk_product_abstract, fk_product
   ),
     inserted AS(
@@ -68,14 +74,14 @@ class ProductImageSql implements ProductImageSqlInterface
       SELECT
         nextval('spy_product_image_set_pk_seq'),
         name,
-        fkLocale,
-        fkProduct,
-        fkProductAbstract,
+        id_locale,
+        id_product,
+        id_product_abstract,
         fkResourceProductSet,
         now(),
         now()
       FROM records
-      WHERE idProductImageSet is null AND (fkProduct is null OR fkProductAbstract is null OR fkLocale is null)
+      WHERE idProductImageSet is null AND (id_product is null OR id_product_abstract is null OR id_locale is null)
     ) RETURNING id_product_image_set, fk_product_abstract, fk_product
   )
 SELECT updated.id_product_image_set, updated.fk_product_abstract, updated.fk_product FROM updated UNION ALL SELECT inserted.id_product_image_set, inserted.fk_product_abstract, inserted.fk_product FROM inserted;";

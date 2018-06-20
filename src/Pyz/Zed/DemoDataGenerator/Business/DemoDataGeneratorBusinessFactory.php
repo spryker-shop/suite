@@ -13,8 +13,6 @@ use Pyz\Zed\DemoDataGenerator\Business\Model\Generator\DemoDataGenerator;
 use Pyz\Zed\DemoDataGenerator\Business\Model\Generator\DemoDataGeneratorInterface;
 use Pyz\Zed\DemoDataGenerator\Business\Model\PluginResolver\PluginResolver;
 use Pyz\Zed\DemoDataGenerator\Business\Model\PluginResolver\PluginResolverInterface;
-use Pyz\Zed\DemoDataGenerator\Business\Model\PriceProduct\PriceProductGenerator;
-use Pyz\Zed\DemoDataGenerator\Business\Model\PriceProduct\PriceProductGeneratorInterface;
 use Pyz\Zed\DemoDataGenerator\Business\Model\ProductAbstract\ProductAbstractGenerator;
 use Pyz\Zed\DemoDataGenerator\Business\Model\ProductAbstract\ProductAbstractGeneratorInterface;
 use Pyz\Zed\DemoDataGenerator\Business\Model\ProductAbstractStore\ProductAbstractStoreGenerator;
@@ -23,8 +21,10 @@ use Pyz\Zed\DemoDataGenerator\Business\Model\ProductConcrete\ProductConcreteGene
 use Pyz\Zed\DemoDataGenerator\Business\Model\ProductConcrete\ProductConcreteGeneratorInterface;
 use Pyz\Zed\DemoDataGenerator\Business\Model\ProductImage\ProductImageGenerator;
 use Pyz\Zed\DemoDataGenerator\Business\Model\ProductImage\ProductImageGeneratorInterface;
-use Pyz\Zed\DemoDataGenerator\Business\Model\StockProduct\StockProductGenerator;
-use Pyz\Zed\DemoDataGenerator\Business\Model\StockProduct\StockProductGeneratorInterface;
+use Pyz\Zed\DemoDataGenerator\Business\Model\ProductPrice\ProductPriceGenerator;
+use Pyz\Zed\DemoDataGenerator\Business\Model\ProductPrice\ProductPriceGeneratorInterface;
+use Pyz\Zed\DemoDataGenerator\Business\Model\ProductStock\ProductStockGenerator;
+use Pyz\Zed\DemoDataGenerator\Business\Model\ProductStock\ProductStockGeneratorInterface;
 use Pyz\Zed\DemoDataGenerator\DemoDataGeneratorDependencyProvider;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 use Spryker\Zed\Store\Business\StoreFacadeInterface;
@@ -57,11 +57,11 @@ class DemoDataGeneratorBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Pyz\Zed\DemoDataGenerator\Business\Model\PriceProduct\PriceProductGeneratorInterface
+     * @return \Pyz\Zed\DemoDataGenerator\Business\Model\ProductPrice\ProductPriceGeneratorInterface
      */
-    public function createPriceProductDemoDataGenerator(): PriceProductGeneratorInterface
+    public function createPriceProductDemoDataGenerator(): ProductPriceGeneratorInterface
     {
-        return new PriceProductGenerator(
+        return new ProductPriceGenerator(
             $this->createFileManager(),
             $this->getConfig(),
             $this->getStoreFacade()
@@ -93,11 +93,11 @@ class DemoDataGeneratorBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Pyz\Zed\DemoDataGenerator\Business\Model\StockProduct\StockProductGeneratorInterface
+     * @return \Pyz\Zed\DemoDataGenerator\Business\Model\ProductStock\ProductStockGeneratorInterface
      */
-    public function createStockProductDemoDataGenerator(): StockProductGeneratorInterface
+    public function createStockProductDemoDataGenerator(): ProductStockGeneratorInterface
     {
-        return new StockProductGenerator(
+        return new ProductStockGenerator(
             $this->createFileManager(),
             $this->getConfig()
         );

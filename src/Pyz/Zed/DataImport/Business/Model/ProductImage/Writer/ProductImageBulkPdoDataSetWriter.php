@@ -142,14 +142,14 @@ class ProductImageBulkPdoDataSetWriter extends DataImporterPublisher implements 
         $name = $this->formatPostgresArrayString(
             $this->getCollectionDataByKey(static::$productImageSetCollection, ProductImageHydratorStep::KEY_IMAGE_SET_DB_NAME_COLUMN)
         );
-        $fkLocale = $this->formatPostgresArray(
-            $this->getCollectionDataByKey(static::$productImageSetCollection, ProductImageHydratorStep::KEY_IMAGE_SET_FK_LOCALE)
+        $localeName = $this->formatPostgresArrayString(
+            $this->getCollectionDataByKey(static::$productImageSetCollection, ProductImageHydratorStep::KEY_LOCALE)
         );
-        $fkProduct = $this->formatPostgresArray(
-            $this->getCollectionDataByKey(static::$productImageSetCollection, ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT)
+        $productConcreteSku = $this->formatPostgresArrayString(
+            $this->getCollectionDataByKey(static::$productImageSetCollection, ProductImageHydratorStep::KEY_CONCRETE_SKU)
         );
-        $fkProductAbstract = $this->formatPostgresArray(
-            $this->getCollectionDataByKey(static::$productImageSetCollection, ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT)
+        $productAbstractSku = $this->formatPostgresArrayString(
+            $this->getCollectionDataByKey(static::$productImageSetCollection, ProductImageHydratorStep::KEY_ABSTRACT_SKU)
         );
         $fkResourceProductSet = $this->formatPostgresArray(
             $this->getCollectionDataByKey(static::$productImageSetCollection, ProductImageHydratorStep::KEY_IMAGE_SET_FK_RESOURCE_PRODUCT_SET)
@@ -158,9 +158,9 @@ class ProductImageBulkPdoDataSetWriter extends DataImporterPublisher implements 
         $sql = $this->productImageSql->createProductImageSetSQL();
         $parameters = [
             $name,
-            $fkLocale,
-            $fkProduct,
-            $fkProductAbstract,
+            $localeName,
+            $productConcreteSku,
+            $productAbstractSku,
             $fkResourceProductSet,
         ];
         $result = $this->propelExecutor->execute($sql, $parameters);
@@ -240,6 +240,9 @@ class ProductImageBulkPdoDataSetWriter extends DataImporterPublisher implements 
     protected function collectProductSetImage(DataSetInterface $dataSet): void
     {
         static::$productImageSetCollection[] = $dataSet[ProductImageHydratorStep::PRODUCT_IMAGE_SET_TRANSFER]->modifiedToArray();
+        static::$productImageSetCollection[][ProductImageHydratorStep::KEY_LOCALE] = $dataSet[ProductImageHydratorStep::KEY_LOCALE];
+        static::$productImageSetCollection[][ProductImageHydratorStep::KEY_ABSTRACT_SKU] = $dataSet[ProductImageHydratorStep::KEY_ABSTRACT_SKU];
+        static::$productImageSetCollection[][ProductImageHydratorStep::KEY_CONCRETE_SKU] = $dataSet[ProductImageHydratorStep::KEY_CONCRETE_SKU];
     }
 
     /**

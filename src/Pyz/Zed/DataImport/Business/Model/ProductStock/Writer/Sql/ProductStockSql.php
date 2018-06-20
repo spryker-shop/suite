@@ -57,32 +57,34 @@ SELECT updated.idStock FROM updated UNION ALL SELECT inserted.id_stock FROM inse
     {
         $sql = "WITH records AS (
     SELECT
-      input.fk_product,
+      input.sku,
       input.stockName,
       input.quantity,
       input.is_never_out_of_stock,
       id_stock_product as idStockProduct,
-      id_stock as fkStock
+      id_stock as fkStock,
+      id_product
     FROM (
            SELECT
-             unnest(? :: INTEGER []) AS fk_product,
+             unnest(? :: VARCHAR []) AS sku,
              unnest(? :: VARCHAR []) AS stockName,
              unnest(? :: INTEGER []) AS quantity,
              unnest(? :: BOOLEAN []) AS is_never_out_of_stock
          ) input
       INNER JOIN spy_stock on spy_stock.name = stockName
-      LEFT JOIN spy_stock_product ON spy_stock_product.fk_product = input.fk_product
+      INNER JOIN spy_product on spy_product.sku = input.sku
+      LEFT JOIN spy_stock_product ON spy_stock_product.fk_product = id_product
                                      AND spy_stock_product.fk_stock = spy_stock.id_stock
 ),
     updated AS (
     UPDATE spy_stock_product
     SET
-      fk_product = records.fk_product,
+      fk_product = records.id_product,
       fk_stock = records.fkStock,
       quantity = records.quantity,
       is_never_out_of_stock = records.is_never_out_of_stock
     FROM records
-    WHERE spy_stock_product.fk_product = records.fk_product AND fk_stock = records.fkStock
+    WHERE spy_stock_product.fk_product = records.id_product AND fk_stock = records.fkStock
     RETURNING idStockProduct
   ),
     inserted AS(
@@ -95,7 +97,7 @@ SELECT updated.idStock FROM updated UNION ALL SELECT inserted.id_stock FROM inse
     ) (
       SELECT
         nextval('spy_stock_product_pk_seq'),
-        fk_product,
+        id_product,
         fkStock,
         quantity,
         is_never_out_of_stock

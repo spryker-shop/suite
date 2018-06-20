@@ -8,7 +8,6 @@
 namespace Pyz\Zed\DataImport\Business\Model\ProductStock\Writer;
 
 use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataFormatter;
-use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\ProductStockHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
@@ -60,7 +59,6 @@ class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements 
      * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface $eventFacade
      * @param \Spryker\Zed\Availability\Business\AvailabilityFacadeInterface $availabilityFacade
      * @param \Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface $productBundleFacade
-     * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface $productRepository
      * @param \Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSqlInterface $productStockSql
      * @param \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface $propelExecutor
      */
@@ -68,14 +66,12 @@ class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements 
         DataImportToEventFacadeInterface $eventFacade,
         AvailabilityFacadeInterface $availabilityFacade,
         ProductBundleFacadeInterface $productBundleFacade,
-        ProductRepositoryInterface $productRepository,
         ProductStockSqlInterface $productStockSql,
         PropelExecutorInterface $propelExecutor
     ) {
         parent::__construct($eventFacade);
         $this->availabilityFacade = $availabilityFacade;
         $this->productBundleFacade = $productBundleFacade;
-        $this->productRepository = $productRepository;
         $this->productStockSql = $productStockSql;
         $this->propelExecutor = $propelExecutor;
     }
@@ -150,8 +146,8 @@ class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements 
      */
     protected function persistStockProductEntities(): void
     {
-        $fkProduct = $this->formatPostgresArray(
-            $this->getCollectionDataByKey(static::$stockProductCollection, ProductStockHydratorStep::KEY_FK_PRODUCT)
+        $sku = $this->formatPostgresArrayString(
+            $this->getCollectionDataByKey(static::$stockProductCollection, ProductStockHydratorStep::KEY_CONCRETE_SKU)
         );
         $stockName = $this->formatPostgresArray(
             $this->getCollectionDataByKey(static::$stockCollection, ProductStockHydratorStep::KEY_NAME)
@@ -165,7 +161,7 @@ class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements 
 
         $sql = $this->productStockSql->createStockProductSQL();
         $parameters = [
-            $fkProduct,
+            $sku,
             $stockName,
             $quantity,
             $isNeverOutOfStock,
@@ -190,9 +186,6 @@ class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements 
      */
     protected function collectStockProduct(DataSetInterface $dataSet): void
     {
-        $sku = $dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU];
-        $idProduct = $this->productRepository->getIdProductByConcreteSku($sku);
-        $dataSet[ProductStockHydratorStep::STOCK_PRODUCT_ENTITY_TRANSFER]->setFkProduct($idProduct);
         static::$stockProductCollection[] = $dataSet[ProductStockHydratorStep::STOCK_PRODUCT_ENTITY_TRANSFER]->modifiedToArray();
     }
 }

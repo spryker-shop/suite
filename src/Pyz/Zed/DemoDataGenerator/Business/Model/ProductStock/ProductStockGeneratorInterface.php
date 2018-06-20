@@ -5,11 +5,11 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\DemoDataGenerator\Business\Model\StockProduct;
+namespace Pyz\Zed\DemoDataGenerator\Business\Model\ProductStock;
 
 use Generated\Shared\Transfer\DemoDataGeneratorTransfer;
 
-interface StockProductGeneratorInterface
+interface ProductStockGeneratorInterface
 {
     /**
      * Specification:

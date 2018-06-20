@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\DemoDataGenerator\Business\Model\PriceProduct;
+namespace Pyz\Zed\DemoDataGenerator\Business\Model\ProductPrice;
 
 use Generated\Shared\DataBuilder\PriceProductBuilder;
 use Generated\Shared\Transfer\DemoDataGeneratorTransfer;
@@ -15,7 +15,7 @@ use Pyz\Zed\DemoDataGenerator\Business\Model\FileManager\FileManagerInterface;
 use Pyz\Zed\DemoDataGenerator\DemoDataGeneratorConfig;
 use Spryker\Zed\Store\Business\StoreFacadeInterface;
 
-class PriceProductGenerator extends AbstractGenerator implements PriceProductGeneratorInterface
+class ProductPriceGenerator extends AbstractGenerator implements ProductPriceGeneratorInterface
 {
     const EMPTY_SKU = '';
 

@@ -21,8 +21,9 @@ class ProductConcreteSql implements ProductConcreteSqlInterface
       input.concrete_sku,
       input.is_active,
       input.attributes,
-      input.fk_product_abstract,
-      id_product as idProduct
+      input.sku_product_abstract,
+      id_product as idProduct,
+      id_product_abstract as fk_product_abstract
     FROM (
            SELECT
              unnest(? :: INTEGER []) AS discount,
@@ -30,15 +31,16 @@ class ProductConcreteSql implements ProductConcreteSqlInterface
              unnest(? :: VARCHAR []) AS concrete_sku,
              unnest(? :: BOOLEAN []) AS is_active,
              json_array_elements(?) AS attributes,
-             unnest(? :: INTEGER []) AS fk_product_abstract
-         ) input    
+             unnest(? :: VARCHAR []) AS sku_product_abstract
+         ) input
       LEFT JOIN spy_product ON spy_product.sku = input.concrete_sku
+      INNER JOIN spy_product_abstract a on sku_product_abstract = a.sku 
 ),
     updated AS (
     UPDATE spy_product
     SET
-      discount = records.discount,    
-      warehouses = records.warehouses,  
+      discount = records.discount,
+      warehouses = records.warehouses,
       sku = records.concrete_sku,
       fk_product_abstract = records.fk_product_abstract,
       is_active = records.is_active,
@@ -51,7 +53,7 @@ class ProductConcreteSql implements ProductConcreteSqlInterface
     inserted AS(
     INSERT INTO spy_product (
       id_product,
-      discount,    
+      discount,
       warehouses,
       sku,
       is_active,
@@ -62,7 +64,7 @@ class ProductConcreteSql implements ProductConcreteSqlInterface
     ) (
       SELECT
         nextval('spy_product_pk_seq'),
-        discount,   
+        discount,
         warehouses,
         concrete_sku,
         is_active,
@@ -70,10 +72,10 @@ class ProductConcreteSql implements ProductConcreteSqlInterface
         fk_product_abstract,
         now(),
         now()
-    FROM records
-    WHERE idProduct is null
-  ) RETURNING id_product,sku
-)
+      FROM records
+      WHERE idProduct is null
+    ) RETURNING id_product,sku
+  )
 SELECT updated.id_product,sku FROM updated UNION ALL SELECT inserted.id_product,sku FROM inserted;";
         return $sql;
     }

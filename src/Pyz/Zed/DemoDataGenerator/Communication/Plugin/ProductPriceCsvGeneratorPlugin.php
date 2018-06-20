@@ -14,9 +14,9 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 /**
  * @method \Pyz\Zed\DemoDataGenerator\Business\DemoDataGeneratorFacadeInterface getFacade()
  */
-class PriceProductCsvGeneratorPlugin extends AbstractPlugin implements DemoDataGeneratorPluginInterface
+class ProductPriceCsvGeneratorPlugin extends AbstractPlugin implements DemoDataGeneratorPluginInterface
 {
-    protected const PLUGIN_TYPE = 'price_product';
+    protected const PLUGIN_TYPE = 'product_price';
 
     /**
      * @return string

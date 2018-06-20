@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\DemoDataGenerator\Business\Model\StockProduct;
+namespace Pyz\Zed\DemoDataGenerator\Business\Model\ProductStock;
 
 use Generated\Shared\DataBuilder\StockProductBuilder;
 use Generated\Shared\Transfer\DemoDataGeneratorTransfer;
@@ -14,7 +14,7 @@ use Pyz\Zed\DemoDataGenerator\Business\Model\AbstractGenerator;
 use Pyz\Zed\DemoDataGenerator\Business\Model\FileManager\FileManagerInterface;
 use Pyz\Zed\DemoDataGenerator\DemoDataGeneratorConfig;
 
-class StockProductGenerator extends AbstractGenerator implements StockProductGeneratorInterface
+class ProductStockGenerator extends AbstractGenerator implements ProductStockGeneratorInterface
 {
     /**
      * @var array

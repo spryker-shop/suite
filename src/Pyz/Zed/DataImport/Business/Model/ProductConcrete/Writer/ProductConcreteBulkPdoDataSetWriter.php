@@ -8,7 +8,6 @@
 namespace Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer;
 
 use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataFormatter;
-use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface;
 use Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductConcreteHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\Sql\ProductConcreteSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
@@ -63,18 +62,15 @@ class ProductConcreteBulkPdoDataSetWriter extends DataImporterPublisher implemen
      * ProductConcreteBulkPdoWriter constructor.
      *
      * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface $eventFacade
-     * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface $productRepository
      * @param \Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\Sql\ProductConcreteSqlInterface $productConcreteSql
      * @param \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface $propelExecutor
      */
     public function __construct(
         DataImportToEventFacadeInterface $eventFacade,
-        ProductRepositoryInterface $productRepository,
         ProductConcreteSqlInterface $productConcreteSql,
         PropelExecutorInterface $propelExecutor
     ) {
         parent::__construct($eventFacade);
-        $this->productRepository = $productRepository;
         $this->productConcreteSql = $productConcreteSql;
         $this->propelExecutor = $propelExecutor;
     }
@@ -136,8 +132,8 @@ class ProductConcreteBulkPdoDataSetWriter extends DataImporterPublisher implemen
         $isActive = $this->formatPostgresArray(
             $this->getCollectionDataByKey(static::$productConcreteCollection, ProductConcreteHydratorStep::KEY_IS_ACTIVE)
         );
-        $fkProductAbstract = $this->formatPostgresArray(
-            $this->getCollectionDataByKey(static::$productConcreteCollection, ProductConcreteHydratorStep::KEY_FK_PRODUCT_ABSTRACT)
+        $skuProductAbstract = $this->formatPostgresArrayString(
+            $this->getCollectionDataByKey(static::$productConcreteCollection, ProductConcreteHydratorStep::KEY_ABSTRACT_SKU)
         );
 
         $sql = $this->productConcreteSql->createConcreteProductSQL();
@@ -147,7 +143,7 @@ class ProductConcreteBulkPdoDataSetWriter extends DataImporterPublisher implemen
             $sku,
             $isActive,
             $attributes,
-            $fkProductAbstract,
+            $skuProductAbstract,
         ];
         $result = $this->propelExecutor->execute($sql, $parameters);
         $this->addProductConcreteChangeEvent($result);
@@ -266,14 +262,9 @@ class ProductConcreteBulkPdoDataSetWriter extends DataImporterPublisher implemen
     protected function collectProductConcrete(DataSetInterface $dataSet): void
     {
         if (!$this->isSkuAlreadyCollected($dataSet)) {
-            $idAbstract = $this
-                ->productRepository
-                ->getIdProductAbstractByAbstractSku($dataSet[ProductConcreteHydratorStep::KEY_ABSTRACT_SKU]);
-
             $productConcreteTransfer = $dataSet[ProductConcreteHydratorStep::PRODUCT_CONCRETE_TRANSFER];
-            $productConcreteTransfer->setFkProductAbstract($idAbstract);
-
             static::$productConcreteCollection[] = $productConcreteTransfer->modifiedToArray();
+            static::$productConcreteCollection[][ProductConcreteHydratorStep::KEY_ABSTRACT_SKU] = $dataSet[ProductConcreteHydratorStep::KEY_ABSTRACT_SKU];
         }
     }
 

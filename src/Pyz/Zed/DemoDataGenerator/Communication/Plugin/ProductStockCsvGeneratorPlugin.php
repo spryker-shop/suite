@@ -13,9 +13,8 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 
 /**
  * @method \Pyz\Zed\DemoDataGenerator\Business\DemoDataGeneratorFacadeInterface getFacade()
- * @method \Pyz\Zed\DemoDataGenerator\Communication\DemoDataGeneratorCommunicationFactory getFactory()
  */
-class StockProductCsvGeneratorPlugin extends AbstractPlugin implements DemoDataGeneratorPluginInterface
+class ProductStockCsvGeneratorPlugin extends AbstractPlugin implements DemoDataGeneratorPluginInterface
 {
     protected const PLUGIN_TYPE = 'product_stock';
 
