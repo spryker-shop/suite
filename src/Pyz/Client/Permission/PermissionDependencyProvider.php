@@ -12,6 +12,7 @@ use Spryker\Client\CustomerAccessPermission\Plugin\CustomerAccessPermissionStora
 use Spryker\Client\CustomerAccessPermission\Plugin\SeeAddToCartPermissionPlugin;
 use Spryker\Client\CustomerAccessPermission\Plugin\SeeOrderPlaceSubmitPermissionPlugin;
 use Spryker\Client\CustomerAccessPermission\Plugin\SeePricePermissionPlugin;
+use Spryker\Client\CustomerAccessPermission\Plugin\SeeShoppingListPermissionPlugin;
 use Spryker\Client\CustomerAccessPermission\Plugin\SeeWishlistPermissionPlugin;
 use Spryker\Client\Permission\PermissionDependencyProvider as SprykerPermissionDependencyProvider;
 use Spryker\Client\SharedCart\Plugin\ReadSharedCartPermissionPlugin;
@@ -28,7 +29,7 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
     {
         return [
             new PermissionStoragePlugin(), #SharedCartFeature #ShoppingListFeature
-            new CustomerAccessPermissionStoragePlugin(),
+            new CustomerAccessPermissionStoragePlugin(), #CustomerAccessFeature
         ];
     }
 
@@ -42,10 +43,11 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new WriteSharedCartPermissionPlugin(), #SharedCartFeature
             new ReadShoppingListPermissionPlugin(), #ShoppingListFeature
             new WriteShoppingListPermissionPlugin(), #ShoppingListFeature
-            new SeePricePermissionPlugin(),
-            new SeeOrderPlaceSubmitPermissionPlugin(),
-            new SeeAddToCartPermissionPlugin(),
-            new SeeWishlistPermissionPlugin(),
+            new SeePricePermissionPlugin(), #CustomerAccessFeature
+            new SeeOrderPlaceSubmitPermissionPlugin(), #CustomerAccessFeature
+            new SeeAddToCartPermissionPlugin(), #CustomerAccessFeature
+            new SeeWishlistPermissionPlugin(), #CustomerAccessFeature
+            new SeeShoppingListPermissionPlugin(), #CustomerAccessFeature
         ];
     }
 }
