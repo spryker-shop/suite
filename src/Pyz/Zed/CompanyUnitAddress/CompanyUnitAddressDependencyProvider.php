@@ -13,7 +13,7 @@ use Spryker\Zed\CompanyUnitAddressLabel\Communication\Plugin\CompanyUnitAddressP
 class CompanyUnitAddressDependencyProvider extends SprykerCompanyUnitAddressDependencyProvider
 {
     /**
-     * @return array
+     * @return \Spryker\Zed\CompanyUnitAddressExtension\Dependency\Plugin\CompanyUnitAddressPostSavePluginInterface[]
      */
     protected function getCompanyUnitAddressPostSavePlugins(): array
     {
