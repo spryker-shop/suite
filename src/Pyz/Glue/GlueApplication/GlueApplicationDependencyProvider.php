@@ -25,6 +25,11 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface[]
+     */
     protected function getResourceRoutePlugins(): array
     {
         return [
