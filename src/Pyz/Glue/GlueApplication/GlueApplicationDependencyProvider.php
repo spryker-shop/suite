@@ -7,6 +7,7 @@
 
 namespace Pyz\Glue\GlueApplication;
 
+use Spryker\Glue\CustomersRestApi\Plugin\CustomersResourceRoutePlugin;
 use Spryker\Glue\GlueApplication\GlueApplicationDependencyProvider as SprykerGlueApplicationDependencyProvider;
 use Spryker\Glue\GlueApplication\Plugin\Rest\SetStoreCurrentLocaleBeforeActionPlugin;
 
@@ -21,6 +22,18 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     {
         return [
            new SetStoreCurrentLocaleBeforeActionPlugin(),
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface[]
+     */
+    protected function getResourceRoutePlugins(): array
+    {
+        return [
+            new CustomersResourceRoutePlugin(),
         ];
     }
 }
