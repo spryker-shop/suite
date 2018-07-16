@@ -16,6 +16,7 @@ use Spryker\Zed\PaymentCartConnector\Communication\Plugin\Cart\RemovePaymentCart
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\CartItemPricePlugin;
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\CartItemPricePreCheckPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\BundleItemPriceQuoteChangeObserverPlugin;
+use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\CartBundleActivePreCheckPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\CartBundleAvailabilityPreCheckPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\CartBundleItemsPreReloadPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\CartItemWithBundleGroupKeyExpanderPlugin;
@@ -76,6 +77,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new CartItemPricePreCheckPlugin(),
             new ProductOptionValuePriceExistsCartPreCheckPlugin(),
             new CartBundleAvailabilityPreCheckPlugin(),
+            new CartBundleActivePreCheckPlugin(),
             new CartShipmentPreCheckPlugin(),
             new ProductQuantityRestrictionCartPreCheckPlugin(),
         ];
@@ -104,8 +106,8 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     protected function getPreReloadPlugins(Container $container)
     {
         return [
-           new CartBundleItemsPreReloadPlugin(),
-           new RemoveInactiveItemsPreReloadPlugin(),
+            new CartBundleItemsPreReloadPlugin(),
+            new RemoveInactiveItemsPreReloadPlugin(),
         ];
     }
 
