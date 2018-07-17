@@ -25,8 +25,8 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     protected function getDataExpanderPlugins()
     {
         $dataExpanderPlugins = parent::getDataExpanderPlugins();
-        $dataExpanderPlugins[ProductLabelSearchConfig::PLUGIN_PRODUCT_LABEL_DATA] = new ProductLabelDataExpanderPlugin();
-        $dataExpanderPlugins[ProductReviewSearchConfig::PLUGIN_PRODUCT_PAGE_RATING_DATA] = new ProductReviewDataExpanderPlugin();
+//        $dataExpanderPlugins[ProductLabelSearchConfig::PLUGIN_PRODUCT_LABEL_DATA] = new ProductLabelDataExpanderPlugin();
+//        $dataExpanderPlugins[ProductReviewSearchConfig::PLUGIN_PRODUCT_PAGE_RATING_DATA] = new ProductReviewDataExpanderPlugin();
 
         return $dataExpanderPlugins;
     }
@@ -37,8 +37,8 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     protected function getMapExpanderPlugins()
     {
         $mapExpanderPlugins = parent::getMapExpanderPlugins();
-        $mapExpanderPlugins[] = new ProductLabelMapExpanderPlugin();
-        $mapExpanderPlugins[] = new ProductReviewMapExpanderPlugin();
+//        $mapExpanderPlugins[] = new ProductLabelMapExpanderPlugin();
+//        $mapExpanderPlugins[] = new ProductReviewMapExpanderPlugin();
 
         return $mapExpanderPlugins;
     }
