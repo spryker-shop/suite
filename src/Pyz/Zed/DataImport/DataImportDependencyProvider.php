@@ -20,6 +20,7 @@ use Spryker\Zed\DataImport\DataImportDependencyProvider as SprykerDataImportDepe
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\MerchantDataImport\Communication\Plugin\MerchantDataImportPlugin;
 use Spryker\Zed\MerchantRelationshipDataImport\Communication\Plugin\MerchantRelationshipDataImportPlugin;
+use Spryker\Zed\MinimumOrderValueDataImport\Communication\Plugin\DataImport\MinimumOrderValueDataImportPlugin;
 use Spryker\Zed\PriceProductDataImport\Communication\Plugin\PriceProductDataImportPlugin;
 use Spryker\Zed\PriceProductMerchantRelationshipDataImport\Communication\Plugin\PriceProductMerchantRelationshipDataImportPlugin;
 use Spryker\Zed\ProductMeasurementUnitDataImport\Communication\Plugin\ProductMeasurementBaseUnitDataImportPlugin;
@@ -145,6 +146,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new ProductQuantityDataImportPlugin(),
             new ProductPackagingUnitTypeDataImportPlugin(),
             new ProductPackagingUnitDataImportPlugin(),
+            new MinimumOrderValueDataImportPlugin(),
             new BusinessOnBehalfCompanyUserDataImportPlugin(),
             new PriceProductDataImportPlugin(),
             new MerchantDataImportPlugin(),
