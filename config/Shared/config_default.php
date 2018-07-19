@@ -430,5 +430,5 @@ $config[OauthConstants::PUBLIC_KEY_PATH] = 'file://';
 $config[OauthConstants::ENCRYPTION_KEY] = '';
 
 // ----------- Api
-$config[\Spryker\Shared\Api\ApiConstants::SERVER_VARIABLE_FILTER_STRATEGY] = \Spryker\Shared\Api\ApiConstants::SERVER_VARIABLE_FILTER_STRATEGY_WHITELIST;
-$config[\Spryker\Shared\Api\ApiConstants::SERVER_VARIABLE_WHITELIST] = ['REQUEST_URI'];
+$config[\Spryker\Shared\Api\ApiConstants::API_ENV_SERVER_VARIABLE_FILTER_STRATEGY] = \Spryker\Shared\Api\ApiConstants::API_ENV_SERVER_VARIABLE_FILTER_STRATEGY_WHITELIST;
+$config[\Spryker\Shared\Api\ApiConstants::API_ENV_SERVER_VARIABLE_WHITELIST] = ['REQUEST_URI'];
