@@ -154,5 +154,5 @@ $config[OauthConstants::PUBLIC_KEY_PATH] = 'file://' . APPLICATION_ROOT_DIR . '/
 $config[OauthConstants::ENCRYPTION_KEY] = 'lxZFUEsBCJ2Yb14IF2ygAHI5N4+ZAUXXaSeeJm6+twsUmIen';
 
 // ----------- Api
-$config[\Spryker\Shared\Api\ApiConstants::API_ENV_SERVER_VARIABLE_FILTER_STRATEGY] = \Spryker\Shared\Api\ApiConstants::API_ENV_SERVER_VARIABLE_FILTER_STRATEGY_BLACKLIST;
-$config[\Spryker\Shared\Api\ApiConstants::API_ENV_SERVER_VARIABLE_BLACKLIST] = [];
+$config[\Spryker\Shared\Api\ApiConstants::ENV_SERVER_VARIABLE_FILTER_STRATEGY] = \Spryker\Shared\Api\ApiConstants::ENV_SERVER_VARIABLE_FILTER_STRATEGY_BLACKLIST;
+$config[\Spryker\Shared\Api\ApiConstants::ENV_SERVER_VARIABLE_BLACKLIST] = [];
