@@ -40,6 +40,7 @@ class LogDependencyProvider extends SprykerLogDependencyProvider
         return [
             new StreamHandlerPlugin(),
             new ExceptionStreamHandlerPlugin(),
+            new QueueHandlerPlugin(),
         ];
     }
 
