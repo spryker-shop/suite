@@ -15,6 +15,7 @@ use Spryker\Zed\Installer\InstallerDependencyProvider as SprykerInstallerDepende
 use Spryker\Zed\Locale\Communication\Plugin\LocaleInstallerPlugin;
 use Spryker\Zed\MinimumOrderValue\Communication\Plugin\MinimumOrderValueTypeInstallerPlugin;
 use Spryker\Zed\Newsletter\Communication\Plugin\NewsletterInstallerPlugin;
+use Spryker\Zed\OauthCustomerConnector\Communication\Plugin\Installer\OauthCustomerInstallerPlugin;
 use Spryker\Zed\PriceProduct\Communication\Plugin\PriceInstallerPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Installer\ProductMeasurementUnitInstallerPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Installer\ProductPackagingUnitTypeInstallerPlugin;
@@ -43,6 +44,7 @@ class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
             new CompanyUserInvitationStatusInstallerPlugin(), #BulkImportCompanyUserInvitationsFeature
             new ProductPackagingUnitTypeInstallerPlugin(),
             new MinimumOrderValueTypeInstallerPlugin(),
+            new OauthCustomerInstallerPlugin(),
         ];
     }
 }
