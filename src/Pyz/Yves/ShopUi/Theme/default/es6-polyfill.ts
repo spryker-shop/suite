@@ -4,10 +4,6 @@ import 'core-js/fn/array';
 import 'core-js/fn/set';
 import 'core-js/fn/map';
 
-// import 'lodash-es/_Promise';
-// import 'lodash-es/_Set';
-// import 'lodash-es/_Map';
-
 // check if the browser natively supports webcomponents (and es6)
 const hasNativeCustomElements = !!window.customElements;
 
