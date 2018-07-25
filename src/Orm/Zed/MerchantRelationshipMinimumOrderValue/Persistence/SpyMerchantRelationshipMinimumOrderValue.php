@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\MerchantRelationshipMinimumOrderValue\Persistence;
 
-use Orm\Zed\MerchantRelationshipMinimumOrderValue\Persistence\Base\SpyMerchantRelationshipMinimumOrderValue as BaseSpyMerchantRelationshipMinimumOrderValue;
+use Spryker\Zed\MerchantRelationshipMinimumOrderValue\Persistence\Propel\AbstractSpyMerchantRelationshipMinimumOrderValue;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_merchant_relationship_min_order_value' table.
@@ -19,6 +19,6 @@ use Orm\Zed\MerchantRelationshipMinimumOrderValue\Persistence\Base\SpyMerchantRe
  * long as it does not already exist in the output directory.
  *
  */
-class SpyMerchantRelationshipMinimumOrderValue extends BaseSpyMerchantRelationshipMinimumOrderValue
+class SpyMerchantRelationshipMinimumOrderValue extends AbstractSpyMerchantRelationshipMinimumOrderValue
 {
 }
