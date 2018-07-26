@@ -14,6 +14,7 @@ use Generated\Shared\Transfer\SpyProductSearchEntityTransfer;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
+use Orm\Zed\Product\Persistence\Map\SpyProductTableMap;
 
 class ProductConcreteHydratorStep implements DataImportStepInterface
 {
@@ -47,11 +48,17 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
     const PRODUCT_CONCRETE_TRANSFER = 'PRODUCT_CONCRETE_TRANSFER';
     const PRODUCT_CONCRETE_LOCALIZED_TRANSFER = 'PRODUCT_CONCRETE_LOCALIZED_TRANSFER';
     const PRODUCT_BUNDLE_TRANSFER = 'PRODUCT_BUNDLE_TRANSFER';
+    const KEY_IS_QUANTITY_SPLITTABLE = 'is_quantity_splittable';
 
     /**
      * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository
      */
     protected $productRepository;
+
+    /**
+     * @var bool[] Keys are product column names
+     */
+    protected static $isProductColumnBuffer = [];
 
     /**
      * ProductConcreteHydratorStep constructor.
@@ -87,6 +94,11 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
         $productEntityTransfer
             ->setIsActive($dataSet[static::KEY_IS_ACTIVE] ?? true)
             ->setAttributes(json_encode($dataSet[static::KEY_ATTRIBUTES]));
+
+        if ($this->isProductColumn(static::KEY_IS_QUANTITY_SPLITTABLE)) {
+            $isQuantitySplittable = $dataSet[static::KEY_IS_QUANTITY_SPLITTABLE] === "" ? true : $dataSet[static::KEY_IS_QUANTITY_SPLITTABLE];
+            $productEntityTransfer->setIsQuantitySplittable($isQuantitySplittable);
+        }
 
         $dataSet[static::PRODUCT_CONCRETE_TRANSFER] = $productEntityTransfer;
     }
@@ -150,5 +162,21 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
             }
         }
         $dataSet[static::PRODUCT_BUNDLE_TRANSFER] = $productBundleTransfer;
+    }
+
+    /**
+     * @param string $columnName
+     *
+     * @return bool
+     */
+    protected function isProductColumn(string $columnName): bool
+    {
+        if (isset(static::$isProductColumnBuffer[$columnName])) {
+            return static::$isProductColumnBuffer[$columnName];
+        }
+        $isColumnExists = SpyProductTableMap::getTableMap()->hasColumn($columnName);
+        static::$isProductColumnBuffer[$columnName] = $isColumnExists;
+
+        return $isColumnExists;
     }
 }
