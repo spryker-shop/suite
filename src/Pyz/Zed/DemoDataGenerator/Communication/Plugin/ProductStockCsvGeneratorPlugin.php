@@ -33,6 +33,6 @@ class ProductStockCsvGeneratorPlugin extends AbstractPlugin implements DemoDataG
      */
     public function generateDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void
     {
-        $this->getFacade()->createStockProductCsvDemoData($demoDataGeneratorTransfer);
+        $this->getFacade()->createProductStockCsvDemoData($demoDataGeneratorTransfer);
     }
 }

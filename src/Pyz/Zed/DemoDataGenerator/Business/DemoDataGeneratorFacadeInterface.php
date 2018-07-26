@@ -46,7 +46,7 @@ interface DemoDataGeneratorFacadeInterface
      *
      * @return void
      */
-    public function createPriceProductCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void;
+    public function createProductPriceCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void;
 
     /**
      * - Create product_abstract_store.csv file.
@@ -82,7 +82,7 @@ interface DemoDataGeneratorFacadeInterface
      *
      * @return void
      */
-    public function createStockProductCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void;
+    public function createProductStockCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void;
 
     /**
      * - Get plugin type from $demoDataGeneratorTransfer and generate specific demo data.

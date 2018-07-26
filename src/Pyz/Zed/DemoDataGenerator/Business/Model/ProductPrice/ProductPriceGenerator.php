@@ -48,7 +48,7 @@ class ProductPriceGenerator extends AbstractGenerator implements ProductPriceGen
      *
      * @return void
      */
-    public function createPriceProductCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void
+    public function createProductPriceCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void
     {
         $filePath = $demoDataGeneratorTransfer->getFilePath();
         $this->generateRowsForProductAbstract();

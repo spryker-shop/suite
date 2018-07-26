@@ -59,7 +59,7 @@ class DemoDataGeneratorBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \Pyz\Zed\DemoDataGenerator\Business\Model\ProductPrice\ProductPriceGeneratorInterface
      */
-    public function createPriceProductDemoDataGenerator(): ProductPriceGeneratorInterface
+    public function createProductPriceDemoDataGenerator(): ProductPriceGeneratorInterface
     {
         return new ProductPriceGenerator(
             $this->createFileManager(),
@@ -95,7 +95,7 @@ class DemoDataGeneratorBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \Pyz\Zed\DemoDataGenerator\Business\Model\ProductStock\ProductStockGeneratorInterface
      */
-    public function createStockProductDemoDataGenerator(): ProductStockGeneratorInterface
+    public function createProductStockDemoDataGenerator(): ProductStockGeneratorInterface
     {
         return new ProductStockGenerator(
             $this->createFileManager(),
