@@ -99,7 +99,6 @@ class ProductAbstractStoreBulkPdoDataSetWriter extends DataImporterPublisher imp
     protected function writeEntities(): void
     {
         $this->persistAbstractProductStoreEntities();
-        $this->triggerEvents();
         $this->flushMemory();
     }
 
