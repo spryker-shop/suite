@@ -23,10 +23,10 @@ class FileManager implements FileManagerInterface
      *
      * @return array
      */
-    public function readColumn(string $path, int $offset = 1, int $index = 2): array
+    public function readColumn(string $path, int $offset = 0, int $index = 2): array
     {
         $reader = $this->getReaderFromPath($path);
-        $reader->setOffset($offset);
+        $reader->setHeaderOffset($offset);
 
         $content = [];
 
@@ -57,7 +57,7 @@ class FileManager implements FileManagerInterface
     /**
      * @param string $path
      *
-     * @return static
+     * @return \League\Csv\Reader
      */
     protected function getReaderFromPath($path)
     {
@@ -67,7 +67,7 @@ class FileManager implements FileManagerInterface
     /**
      * @param string $path
      *
-     * @return static
+     * @return \League\Csv\Writer
      */
     protected function getWriterFromPath($path)
     {
