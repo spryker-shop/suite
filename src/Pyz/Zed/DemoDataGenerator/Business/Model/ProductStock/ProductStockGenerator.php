@@ -37,7 +37,7 @@ class ProductStockGenerator extends AbstractGenerator implements ProductStockGen
      *
      * @return void
      */
-    public function createStockProductCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void
+    public function createProductStockCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void
     {
         $filePath = $demoDataGeneratorTransfer->getFilePath();
 

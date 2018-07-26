@@ -50,11 +50,11 @@ class DemoDataGeneratorFacade extends AbstractFacade implements DemoDataGenerato
      *
      * @return void
      */
-    public function createPriceProductCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void
+    public function createProductPriceCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void
     {
         $this->getFactory()
-            ->createPriceProductDemoDataGenerator()
-            ->createPriceProductCsvDemoData($demoDataGeneratorTransfer);
+            ->createProductPriceDemoDataGenerator()
+            ->createProductPriceCsvDemoData($demoDataGeneratorTransfer);
     }
 
     /**
@@ -92,11 +92,11 @@ class DemoDataGeneratorFacade extends AbstractFacade implements DemoDataGenerato
      *
      * @return void
      */
-    public function createStockProductCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void
+    public function createProductStockCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void
     {
         $this->getFactory()
-            ->createStockProductDemoDataGenerator()
-            ->createStockProductCsvDemoData($demoDataGeneratorTransfer);
+            ->createProductStockDemoDataGenerator()
+            ->createProductStockCsvDemoData($demoDataGeneratorTransfer);
     }
 
     /**

@@ -21,5 +21,5 @@ interface ProductStockGeneratorInterface
      *
      * @return void
      */
-    public function createStockProductCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void;
+    public function createProductStockCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void;
 }
