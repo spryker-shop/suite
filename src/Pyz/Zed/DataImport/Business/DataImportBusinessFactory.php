@@ -111,7 +111,7 @@ use Spryker\Zed\Discount\DiscountConfig;
 class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 {
     /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterCollectionInterface
      */
     public function getImporter()
     {
@@ -140,7 +140,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             ->addDataImporter($this->createProductOptionImporter())
             ->addDataImporter($this->createProductOptionPriceImporter())
             ->addDataImporter($this->createProductGroupImporter())
-            ->addDataImporter($this->createProductPriceImporter())
             ->addDataImporter($this->createProductRelationImporter())
             ->addDataImporter($this->createProductReviewImporter())
             ->addDataImporter($this->createProductLabelImporter())
@@ -684,29 +683,17 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     /**
      * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
      */
-    public function createProductPriceImporter()
+    protected function createProductPriceImporter()
     {
-        $dataImporter = $this->getCsvDataImporterWriterAwareFromConfig($this->getConfig()->getProductPriceDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getProductPriceDataImporterConfiguration());
 
-        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductPriceHydratorStep::BULK_SIZE);
+        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductPriceWriterStep::BULK_SIZE);
         $dataSetStepBroker
-            ->addStep(new ProductPriceHydratorStep());
+            ->addStep(new ProductPriceWriterStep($this->createProductRepository()));
 
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
-        $dataImporter->setDataSetWriter($this->createProductPriceDataImportWriters());
 
         return $dataImporter;
-    }
-
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
-     */
-    protected function createProductPriceDataImportWriters()
-    {
-        $databaseWriters = $this->getConfig()->getDatabaseWriters();
-        $currentDbEngine = $this->getConfig()->getCurrentDbEngine();
-
-        return new DataSetWriterCollection($databaseWriters[$currentDbEngine][DataImportConfig::IMPORT_TYPE_PRODUCT_PRICE]);
     }
 
     /**
