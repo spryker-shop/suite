@@ -1,9 +1,11 @@
-const merge = require('webpack-merge');
-const config = require('./development');
+const appSettings = require('../settings');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
-module.exports = merge(config, {
+module.exports = {
+    mode: 'development',
     plugins: [
-        new StyleLintPlugin()
+        new StyleLintPlugin({
+            context: appSettings.paths.core.modules
+        })
     ]
-});
+};
