@@ -24,7 +24,6 @@ use Spryker\Shared\Config\Environment;
 use Spryker\Yves\Application\Plugin\Provider\CookieServiceProvider;
 use Spryker\Yves\Application\Plugin\Provider\YvesHstsServiceProvider;
 use Spryker\Yves\Application\Plugin\ServiceProvider\AssertUrlConfigurationServiceProvider;
-use Spryker\Yves\Application\Plugin\ServiceProvider\KernelLogServiceProvider;
 use Spryker\Yves\Application\Plugin\ServiceProvider\SslServiceProvider;
 use Spryker\Yves\CmsContentWidget\Plugin\CmsContentWidgetServiceProvider;
 use Spryker\Yves\Messenger\Plugin\Provider\FlashMessengerServiceProvider;
@@ -33,7 +32,6 @@ use Spryker\Yves\Session\Plugin\ServiceProvider\SessionServiceProvider as Spryke
 use Spryker\Yves\Storage\Plugin\Provider\StorageCacheServiceProvider;
 use Spryker\Yves\Twig\Plugin\ServiceProvider\TwigServiceProvider as SprykerTwigServiceProvider;
 use Spryker\Yves\ZedRequest\Plugin\ServiceProvider\ZedRequestHeaderServiceProvider;
-use Spryker\Yves\ZedRequest\Plugin\ServiceProvider\ZedRequestLogServiceProvider;
 use SprykerShop\Yves\CalculationPage\Plugin\Provider\CalculationPageControllerProvider;
 use SprykerShop\Yves\CartNoteWidget\Plugin\Provider\CartNoteWidgetControllerProvider;
 use SprykerShop\Yves\CartPage\Plugin\Provider\CartControllerProvider;
@@ -42,6 +40,7 @@ use SprykerShop\Yves\CartToShoppingListWidget\Plugin\Provider\CartToShoppingList
 use SprykerShop\Yves\CatalogPage\Plugin\Provider\CatalogPageControllerProvider;
 use SprykerShop\Yves\CatalogPage\Plugin\Provider\CatalogPageTwigServiceProvider;
 use SprykerShop\Yves\CategoryWidget\Plugin\Provider\CategoryServiceProvider;
+use SprykerShop\Yves\ChartWidget\Plugin\Provider\TwigChartFunctionServiceProvider;
 use SprykerShop\Yves\CheckoutPage\Plugin\Provider\CheckoutPageControllerProvider;
 use SprykerShop\Yves\CmsBlockWidget\Plugin\Provider\CmsBlockTwigFunctionServiceProvider;
 use SprykerShop\Yves\CmsPage\Plugin\Provider\CmsTwigFunctionServiceProvider;
@@ -99,9 +98,7 @@ class YvesBootstrap extends SprykerYvesBootstrap
 
         $this->application->register(new SslServiceProvider());
         $this->application->register(new StorageCacheServiceProvider());
-        $this->application->register(new KernelLogServiceProvider());
         $this->application->register(new ZedRequestHeaderServiceProvider());
-        $this->application->register(new ZedRequestLogServiceProvider());
 
         $this->application->register(new ShopControllerEventServiceProvider());
         $this->application->register(new ShopTwigServiceProvider());
@@ -142,6 +139,7 @@ class YvesBootstrap extends SprykerYvesBootstrap
         $this->application->register(new CatalogPageTwigServiceProvider());
         $this->application->register(new ShopUiTwigServiceProvider());
         $this->application->register(new ShopPermissionServiceProvider());
+        $this->application->register(new TwigChartFunctionServiceProvider());
     }
 
     /**

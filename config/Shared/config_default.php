@@ -24,6 +24,7 @@ use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\NewRelic\NewRelicConstants;
 use Spryker\Shared\Oauth\OauthConstants;
+use Spryker\Shared\OauthCustomerConnector\OauthCustomerConnectorConstants;
 use Spryker\Shared\Oms\OmsConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Queue\QueueConfig;
@@ -396,9 +397,6 @@ $config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION] = [
 $config[LogglyConstants::QUEUE_NAME] = 'loggly-log-queue';
 $config[LogglyConstants::ERROR_QUEUE_NAME] = 'loggly-log-queue.error';
 
-// ---------- Events
-$config[EventConstants::LOGGER_ACTIVE] = false;
-
 // ---------- EventBehavior
 $config[EventBehaviorConstants::EVENT_BEHAVIOR_TRIGGERING_ACTIVE] = true;
 
@@ -416,6 +414,9 @@ $config[CmsGuiConstants::CMS_PAGE_PREVIEW_URI] = '/en/cms/preview/%d';
 // ---------- Loggly
 $config[LogglyConstants::TOKEN] = 'loggly-token:sample:123456';
 
+// ---------- CMS
+$config[CmsGuiConstants::CMS_FOLDER_PATH] = '@Cms/templates/';
+
 // ----------- Glue Application
 $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = '';
 $config[GlueApplicationConstants::GLUE_APPLICATION_REST_DEBUG] = false;
@@ -425,3 +426,7 @@ $config[GlueApplicationConstants::GLUE_APPLICATION_REST_DEBUG] = false;
 $config[OauthConstants::PRIVATE_KEY_PATH] = 'file://';
 $config[OauthConstants::PUBLIC_KEY_PATH] = 'file://';
 $config[OauthConstants::ENCRYPTION_KEY] = '';
+
+// ----------- AuthRestApi
+$config[OauthCustomerConnectorConstants::OAUTH_CLIENT_IDENTIFIER] = '';
+$config[OauthCustomerConnectorConstants::OAUTH_CLIENT_SECRET] = '';
