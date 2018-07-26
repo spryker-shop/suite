@@ -41,6 +41,11 @@ class ProductConcreteBulkPdoDataSetWriter extends DataImporterPublisher implemen
     /**
      * @var array
      */
+    protected static $productConcreteUpdated = [];
+
+    /**
+     * @var array
+     */
     protected static $productSearchCollection = [];
 
     /**
@@ -87,7 +92,7 @@ class ProductConcreteBulkPdoDataSetWriter extends DataImporterPublisher implemen
         $this->collectProductConcreteBundle($dataSet);
 
         if (count(static::$productConcreteCollection) >= static::BULK_SIZE) {
-            $this->writeEntities();
+            $this->flush();
         }
     }
 
@@ -96,18 +101,15 @@ class ProductConcreteBulkPdoDataSetWriter extends DataImporterPublisher implemen
      */
     public function flush(): void
     {
-        $this->writeEntities();
-    }
-
-    /**
-     * @return void
-     */
-    protected function writeEntities(): void
-    {
         $this->persistConcreteProductEntities();
         $this->persistConcreteProductLocalizedAttributesEntities();
         $this->persistConcreteProductSearchEntities();
         $this->persistConcreteProductBundleEntities();
+
+        foreach (static::$productConcreteUpdated as $concreteProductId) {
+            $this->addEvent(ProductEvents::PRODUCT_CONCRETE_PUBLISH, $concreteProductId);
+        }
+
         $this->triggerEvents();
         $this->flushMemory();
     }
@@ -146,21 +148,8 @@ class ProductConcreteBulkPdoDataSetWriter extends DataImporterPublisher implemen
             $skuProductAbstract,
         ];
         $result = $this->propelExecutor->execute($sql, $parameters);
-        $this->addProductConcreteChangeEvent($result);
-    }
-
-    /**
-     * @param array $result
-     *
-     * @return void
-     */
-    protected function addProductConcreteChangeEvent($result): void
-    {
         foreach ($result as $columns) {
-            $this->addEvent(
-                ProductEvents::PRODUCT_CONCRETE_PUBLISH,
-                $columns[ProductConcreteHydratorStep::KEY_ID_PRODUCT]
-            );
+            static::$productConcreteUpdated[] = $columns[ProductConcreteHydratorStep::KEY_ID_PRODUCT];
         }
     }
 
@@ -330,5 +319,6 @@ class ProductConcreteBulkPdoDataSetWriter extends DataImporterPublisher implemen
         static::$productLocalizedAttributesCollection = [];
         static::$productSearchCollection = [];
         static::$productBundleCollection = [];
+        static::$productConcreteUpdated = [];
     }
 }
