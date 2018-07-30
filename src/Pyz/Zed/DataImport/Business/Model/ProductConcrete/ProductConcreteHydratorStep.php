@@ -11,10 +11,10 @@ use Generated\Shared\Transfer\SpyProductBundleEntityTransfer;
 use Generated\Shared\Transfer\SpyProductEntityTransfer;
 use Generated\Shared\Transfer\SpyProductLocalizedAttributesEntityTransfer;
 use Generated\Shared\Transfer\SpyProductSearchEntityTransfer;
+use Orm\Zed\Product\Persistence\Map\SpyProductTableMap;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
-use Orm\Zed\Product\Persistence\Map\SpyProductTableMap;
 
 class ProductConcreteHydratorStep implements DataImportStepInterface
 {
@@ -96,7 +96,10 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
             ->setAttributes(json_encode($dataSet[static::KEY_ATTRIBUTES]));
 
         if ($this->isProductColumn(static::KEY_IS_QUANTITY_SPLITTABLE)) {
-            $isQuantitySplittable = $dataSet[static::KEY_IS_QUANTITY_SPLITTABLE] === "" ? true : $dataSet[static::KEY_IS_QUANTITY_SPLITTABLE];
+            $isQuantitySplittable = (
+                !isset($dataSet[static::KEY_IS_QUANTITY_SPLITTABLE]) ||
+                $dataSet[static::KEY_IS_QUANTITY_SPLITTABLE] === ""
+            ) ? true : $dataSet[static::KEY_IS_QUANTITY_SPLITTABLE];
             $productEntityTransfer->setIsQuantitySplittable($isQuantitySplittable);
         }
 
