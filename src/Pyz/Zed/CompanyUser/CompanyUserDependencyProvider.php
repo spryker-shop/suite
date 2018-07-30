@@ -12,6 +12,7 @@ use Spryker\Zed\CompanyBusinessUnit\Communication\Plugin\CompanyUser\CompanyBusi
 use Spryker\Zed\CompanyRole\Communication\Plugin\CompanyUser\AssignDefaultCompanyUserRolePlugin;
 use Spryker\Zed\CompanyRole\Communication\Plugin\CompanyUser\AssignRolesCompanyUserPostCreatePlugin;
 use Spryker\Zed\CompanyRole\Communication\Plugin\CompanyUser\AssignRolesCompanyUserPostSavePlugin;
+use Spryker\Zed\CompanyRole\Communication\Plugin\CompanyUser\CompanyRolesHydratePlugin;
 use Spryker\Zed\CompanyUser\CompanyUserDependencyProvider as SprykerCompanyUserDependencyProvider;
 use Spryker\Zed\MerchantRelationship\Communication\Plugin\CompanyUser\MerchantRelationshipHydratePlugin;
 
@@ -25,6 +26,7 @@ class CompanyUserDependencyProvider extends SprykerCompanyUserDependencyProvider
         return [
             new CompanyBusinessUnitHydratePlugin(),
             new MerchantRelationshipHydratePlugin(),
+            new CompanyRolesHydratePlugin(),
         ];
     }
 
