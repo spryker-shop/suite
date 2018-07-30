@@ -13,12 +13,12 @@ use SprykerShop\Yves\CompanyUserInvitationWidget\Plugin\CompanyPage\CompanyUserI
 class CompanyPageDependencyProvider extends SprykerShopCompanyPageDependencyProvider
 {
     /**
-     * @return \SprykerShop\Yves\CompanyPage\Dependency\Plugin\CompanyUserInvitationWidget\CompanyUserInvitationWidgetPluginInterface[]
+     * @return string[]
      */
     protected function getCompanyUserOverviewWidgetPlugins(): array
     {
         return [
-            new CompanyUserInvitationWidgetPlugin(),
+            CompanyUserInvitationWidgetPlugin::class,
         ];
     }
 }
