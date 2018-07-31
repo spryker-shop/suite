@@ -239,10 +239,11 @@ class ProductImageBulkPdoDataSetWriter extends DataImporterPublisher implements 
      */
     protected function collectProductSetImage(DataSetInterface $dataSet): void
     {
-        static::$productImageSetCollection[] = $dataSet[ProductImageHydratorStep::PRODUCT_IMAGE_SET_TRANSFER]->modifiedToArray();
-        static::$productImageSetCollection[][ProductImageHydratorStep::KEY_LOCALE] = $dataSet[ProductImageHydratorStep::KEY_LOCALE];
-        static::$productImageSetCollection[][ProductImageHydratorStep::KEY_ABSTRACT_SKU] = $dataSet[ProductImageHydratorStep::KEY_ABSTRACT_SKU];
-        static::$productImageSetCollection[][ProductImageHydratorStep::KEY_CONCRETE_SKU] = $dataSet[ProductImageHydratorStep::KEY_CONCRETE_SKU];
+        $productImage = $dataSet[ProductImageHydratorStep::PRODUCT_IMAGE_SET_TRANSFER]->modifiedToArray();
+        $productImage[ProductImageHydratorStep::KEY_LOCALE] = $dataSet[ProductImageHydratorStep::KEY_LOCALE];
+        $productImage[ProductImageHydratorStep::KEY_ABSTRACT_SKU] = $dataSet[ProductImageHydratorStep::KEY_ABSTRACT_SKU];
+        $productImage[ProductImageHydratorStep::KEY_CONCRETE_SKU] = $dataSet[ProductImageHydratorStep::KEY_CONCRETE_SKU];
+        static::$productImageSetCollection[] = $productImage;
     }
 
     /**

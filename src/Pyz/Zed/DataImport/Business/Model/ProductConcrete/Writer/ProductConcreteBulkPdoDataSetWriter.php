@@ -251,9 +251,9 @@ class ProductConcreteBulkPdoDataSetWriter extends DataImporterPublisher implemen
     protected function collectProductConcrete(DataSetInterface $dataSet): void
     {
         if (!$this->isSkuAlreadyCollected($dataSet)) {
-            $productConcreteTransfer = $dataSet[ProductConcreteHydratorStep::PRODUCT_CONCRETE_TRANSFER];
-            static::$productConcreteCollection[] = $productConcreteTransfer->modifiedToArray();
-            static::$productConcreteCollection[][ProductConcreteHydratorStep::KEY_ABSTRACT_SKU] = $dataSet[ProductConcreteHydratorStep::KEY_ABSTRACT_SKU];
+            $productConcreteTransfer = $dataSet[ProductConcreteHydratorStep::PRODUCT_CONCRETE_TRANSFER]->modifiedToArray();
+            $productConcreteTransfer[ProductConcreteHydratorStep::KEY_ABSTRACT_SKU] = $dataSet[ProductConcreteHydratorStep::KEY_ABSTRACT_SKU];
+            static::$productConcreteCollection[] = $productConcreteTransfer;
         }
     }
 
