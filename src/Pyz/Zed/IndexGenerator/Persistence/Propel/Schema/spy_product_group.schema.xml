@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\ProductGroup\Persistence" package="src.Orm.Zed.ProductGroup.Persistence">
+  <table name="spy_product_abstract_group">
+    <index name="index-spy_product_abstract_group-fk_product_abstract">
+      <index-column name="fk_product_abstract"/>
+    </index>
+    <index name="index-spy_product_abstract_group-fk_product_group">
+      <index-column name="fk_product_group"/>
+    </index>
+  </table>
+</database>
