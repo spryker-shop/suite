@@ -15,7 +15,7 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
     /**
      * @return \Spryker\Shared\PermissionExtension\Dependency\Plugin\PermissionPluginInterface[]
      */
-    public function getAdminRolePermissions(): string
+    public function getAdminRolePermissions(): array
     {
         return [
             new CompanyUserStatusChangePermissionPlugin(),
