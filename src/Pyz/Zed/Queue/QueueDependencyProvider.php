@@ -19,6 +19,7 @@ use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\PriceProductStorage\PriceProductStorageConstants;
 use Spryker\Shared\ProductPageSearch\ProductPageSearchConstants;
 use Spryker\Shared\ProductStorage\ProductStorageConstants;
+use Spryker\Shared\ShoppingListStorage\ShoppingListStorageConstants;
 use Spryker\Shared\UrlStorage\UrlStorageConstants;
 use Spryker\Zed\Event\Communication\Plugin\Queue\EventQueueMessageProcessorPlugin;
 use Spryker\Zed\Kernel\Container;
@@ -49,6 +50,7 @@ class QueueDependencyProvider extends SprykerDependencyProvider
             CmsPageSearchConstants::CMS_SYNC_SEARCH_QUEUE => new SynchronizationSearchQueueMessageProcessorPlugin(),
             CategoryPageSearchConstants::CATEGORY_SYNC_SEARCH_QUEUE => new SynchronizationSearchQueueMessageProcessorPlugin(),
             ProductPageSearchConstants::PRODUCT_SYNC_SEARCH_QUEUE => new SynchronizationSearchQueueMessageProcessorPlugin(),
+            ShoppingListStorageConstants::SHOPPING_LIST_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
         ];
     }
 }
