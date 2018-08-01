@@ -88,12 +88,6 @@ class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements 
 
         if (count(static::$stockProductCollection) >= static::BULK_SIZE) {
             $this->writeEntities();
-            $this->availabilityFacade->updateAvailability($dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU]);
-
-            if ($dataSet[ProductStockHydratorStep::KEY_IS_BUNDLE]) {
-                $this->productBundleFacade->updateBundleAvailability($dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU]);
-                $this->productBundleFacade->updateAffectedBundlesAvailability($dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU]);
-            }
         }
     }
 
@@ -112,7 +106,7 @@ class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements 
     {
         $this->persistStockEntities();
         $this->persistStockProductEntities();
-        $this->triggerEvents();
+
         $this->flushMemory();
     }
 
@@ -167,6 +161,15 @@ class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements 
             $isNeverOutOfStock,
         ];
         $this->propelExecutor->execute($sql, $parameters);
+
+        foreach (static::$stockProductCollection as $stockProduct) {
+            $this->availabilityFacade->updateAvailability($stockProduct[ProductStockHydratorStep::KEY_CONCRETE_SKU]);
+
+            if ($stockProduct[ProductStockHydratorStep::KEY_IS_BUNDLE]) {
+                $this->productBundleFacade->updateBundleAvailability($stockProduct[ProductStockHydratorStep::KEY_CONCRETE_SKU]);
+                $this->productBundleFacade->updateAffectedBundlesAvailability($stockProduct[ProductStockHydratorStep::KEY_CONCRETE_SKU]);
+            }
+        }
     }
 
     /**
@@ -186,6 +189,10 @@ class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements 
      */
     protected function collectStockProduct(DataSetInterface $dataSet): void
     {
-        static::$stockProductCollection[] = $dataSet[ProductStockHydratorStep::STOCK_PRODUCT_ENTITY_TRANSFER]->modifiedToArray();
+        $productStockArray = $dataSet[ProductStockHydratorStep::STOCK_PRODUCT_ENTITY_TRANSFER]->modifiedToArray();
+        $productStockArray[ProductStockHydratorStep::KEY_IS_BUNDLE] = $dataSet[ProductStockHydratorStep::KEY_IS_BUNDLE];
+        $productStockArray[ProductStockHydratorStep::KEY_CONCRETE_SKU] = $dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU];
+
+        static::$stockProductCollection[] = $productStockArray;
     }
 }
