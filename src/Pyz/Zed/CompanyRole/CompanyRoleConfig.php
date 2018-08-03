@@ -13,12 +13,12 @@ use SprykerShop\Shared\CompanyPage\Plugin\CompanyUserStatusChangePermissionPlugi
 class CompanyRoleConfig extends SprykerCompanyRoleConfig
 {
     /**
-     * @return \Spryker\Shared\PermissionExtension\Dependency\Plugin\PermissionPluginInterface[]
+     * @return string[]
      */
     public function getAdminRolePermissions(): array
     {
         return [
-            new CompanyUserStatusChangePermissionPlugin(),
+            CompanyUserStatusChangePermissionPlugin::KEY,
         ];
     }
 }
