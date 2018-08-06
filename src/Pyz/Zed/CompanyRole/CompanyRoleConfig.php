@@ -14,6 +14,7 @@ use SprykerShop\Client\CheckoutPage\Plugin\PlaceOrderWithAmountUpToPermissionPlu
 use SprykerShop\Shared\CartPage\Plugin\AddCartItemPermissionPlugin;
 use SprykerShop\Shared\CartPage\Plugin\ChangeCartItemPermissionPlugin;
 use SprykerShop\Shared\CartPage\Plugin\RemoveCartItemPermissionPlugin;
+use SprykerShop\Shared\CompanyPage\Plugin\CompanyUserStatusChangePermissionPlugin;
 
 class CompanyRoleConfig extends SprykerCompanyRoleConfig
 {
@@ -27,6 +28,7 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
         return [
             AddCompanyUserPermissionPlugin::KEY,
             ManageCompanyUserInvitationPermissionPlugin::KEY,
+            CompanyUserStatusChangePermissionPlugin::KEY,
         ];
     }
 
