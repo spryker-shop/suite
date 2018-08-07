@@ -38,6 +38,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     const FACADE_CATEGORY = 'category facade';
     const FACADE_PRODUCT_BUNDLE = 'product bundle facade';
     const FACADE_PRODUCT_RELATION = 'product relation facade';
+    const FACADE_STOCK = 'stock facade';
     const FACADE_PRODUCT_SEARCH = 'product search facade';
     const DATA_IMPORT_PRODUCT_ABSTRACT_WRITER_PLUGINS = 'DATA_IMPORT_PRODUCT_ABSTRACT_WRITER_PLUGINS';
     const DATA_IMPORT_PRODUCT_IMAGE_WRITER_PLUGINS = 'DATA_IMPORT_PRODUCT_IMAGE_WRITER_PLUGINS';
@@ -56,6 +57,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
         $container = parent::provideBusinessLayerDependencies($container);
 
         $container = $this->addAvailabilityFacade($container);
+        $container = $this->addStockFacade($container);
         $container = $this->addCategoryFacade($container);
         $container = $this->addProductBundleFacade($container);
         $container = $this->addProductRelationFacade($container);
@@ -73,6 +75,20 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     {
         $container[static::FACADE_AVAILABILITY] = function (Container $container) {
             return $container->getLocator()->availability()->facade();
+        };
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addStockFacade(Container $container)
+    {
+        $container[static::FACADE_STOCK] = function (Container $container) {
+            return $container->getLocator()->stock()->facade();
         };
 
         return $container;

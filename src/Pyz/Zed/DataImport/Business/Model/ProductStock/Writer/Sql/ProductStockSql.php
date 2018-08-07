@@ -74,7 +74,7 @@ SELECT updated.idStock FROM updated UNION ALL SELECT inserted.id_stock FROM inse
       INNER JOIN spy_stock on spy_stock.name = stockName
       INNER JOIN spy_product on spy_product.sku = input.sku
       LEFT JOIN spy_stock_product ON spy_stock_product.fk_product = id_product
-                                     AND spy_stock_product.fk_stock = spy_stock.id_stock
+       AND spy_stock_product.fk_stock = spy_stock.id_stock
 ),
     updated AS (
     UPDATE spy_stock_product
@@ -106,6 +106,93 @@ SELECT updated.idStock FROM updated UNION ALL SELECT inserted.id_stock FROM inse
     ) RETURNING id_stock_product
   )
 SELECT updated.idStockProduct FROM updated UNION ALL SELECT inserted.id_stock_product FROM inserted;";
+
+        return $sql;
+    }
+
+    /**
+     * @return string
+     */
+    public function createAvailabilityProductSQL(): string
+    {
+        $sql = "WITH product_availability AS (
+    SELECT
+      input.sku,
+      CASE WHEN SUM(CASE WHEN ssp.is_never_out_of_stock THEN 1 ELSE 0 END) > 0 THEN TRUE 
+        ELSE FALSE END
+      AS is_never_out_of_stock,
+      CASE
+      WHEN
+        SUM(CASE WHEN ssp.is_never_out_of_stock THEN 1 ELSE 0 END) = 0
+        THEN SUM(
+                 CASE WHEN ssp.quantity IS NULL THEN 0 ELSE ssp.quantity END
+             ) - SUM(
+            CASE WHEN spy_oms_product_reservation.reservation_quantity IS NULL THEN 0 ELSE spy_oms_product_reservation.reservation_quantity END
+        )
+        ELSE 0
+      END
+        AS quantity,
+      spy_store.id_store as fk_store,
+      spy_product_abstract.sku as abstract_sku
+    FROM (
+           SELECT
+             unnest(? :: VARCHAR []) AS sku,
+             unnest(? :: VARCHAR []) AS store_name
+         ) input
+      INNER JOIN spy_store ON spy_store.name = input.store_name
+      INNER JOIN spy_product ON spy_product.sku = input.sku
+      INNER JOIN spy_product_abstract ON spy_product_abstract.id_product_abstract = spy_product.fk_product_abstract
+      LEFT JOIN (
+            SELECT spy_stock_product.* FROM spy_stock_product
+            INNER JOIN spy_stock ON spy_stock.id_stock = spy_stock_product.fk_stock AND spy_stock.name IN (SELECT(unnest(? :: VARCHAR [])))
+      ) as ssp  ON ssp.fk_product = spy_product.id_product
+      LEFT JOIN spy_oms_product_reservation ON spy_oms_product_reservation.sku = input.sku AND spy_oms_product_reservation.fk_store = spy_store.id_store
+      LEFT JOIN spy_availability ON spy_availability.sku = input.sku AND spy_availability.fk_store = spy_store.id_store
+      GROUP BY input.sku, spy_store.id_store, spy_product_abstract.sku
+    ),
+    product_abstract_availability AS (
+    SELECT
+      product_availability.abstract_sku,
+      CASE
+        WHEN SUM(CASE WHEN product_availability.is_never_out_of_stock THEN 1 ELSE 0 END) = 0
+        THEN SUM(product_availability.quantity) 
+        ELSE 0
+      END 
+      AS quantity,
+      product_availability.fk_store,
+      spy_availability_abstract.id_availability_abstract as idAvailabilityAbstract
+    FROM product_availability
+    LEFT JOIN spy_availability_abstract ON spy_availability_abstract.abstract_sku = product_availability.abstract_sku 
+        AND spy_availability_abstract.fk_store = product_availability.fk_store
+    GROUP BY product_availability.abstract_sku, product_availability.fk_store, spy_availability_abstract.id_availability_abstract
+    ),
+    updated_product AS (
+    UPDATE spy_availability_abstract
+    SET
+      abstract_sku = product_abstract_availability.abstract_sku,
+      quantity = product_abstract_availability.quantity
+    FROM product_abstract_availability
+    WHERE spy_availability_abstract.abstract_sku = product_abstract_availability.abstract_sku
+        AND spy_availability_abstract.fk_store = product_abstract_availability.fk_store
+    RETURNING spy_availability_abstract.abstract_sku,id_availability_abstract
+  ),
+    inserted_product AS(
+    INSERT INTO spy_availability_abstract (
+      id_availability_abstract,
+      abstract_sku,
+      quantity,
+      fk_store
+    ) (
+      SELECT
+        nextval('spy_availability_abstract_pk_seq'),
+        abstract_sku,
+        quantity,
+        fk_store
+      FROM product_abstract_availability
+      WHERE idAvailabilityAbstract is null
+    ) RETURNING abstract_sku,id_availability_abstract
+  )
+  SELECT inserted_product.abstract_sku FROM inserted_product UNION ALL SELECT updated_product.abstract_sku FROM updated_product;";
 
         return $sql;
     }

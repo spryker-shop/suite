@@ -17,6 +17,7 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
 use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
 use Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface;
+use Spryker\Zed\Stock\Business\StockFacadeInterface;
 
 class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements DataSetWriterInterface
 {
@@ -28,10 +29,17 @@ class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements 
 
     protected static $stockProductCollection = [];
 
+    protected static $storeToStock = [];
+
     /**
      * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository
      */
     protected $productRepository;
+
+    /**
+     * @var \Spryker\Zed\Stock\Business\StockFacadeInterface
+     */
+    protected $stockFacade;
 
     /**
      * @var \Spryker\Zed\Availability\Business\AvailabilityFacadeInterface
@@ -57,6 +65,7 @@ class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements 
      * ProductStockBulkPdoWriter constructor.
      *
      * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface $eventFacade
+     * @param \Spryker\Zed\Stock\Business\StockFacadeInterface $stockFacade
      * @param \Spryker\Zed\Availability\Business\AvailabilityFacadeInterface $availabilityFacade
      * @param \Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface $productBundleFacade
      * @param \Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSqlInterface $productStockSql
@@ -64,12 +73,14 @@ class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements 
      */
     public function __construct(
         DataImportToEventFacadeInterface $eventFacade,
+        StockFacadeInterface $stockFacade,
         AvailabilityFacadeInterface $availabilityFacade,
         ProductBundleFacadeInterface $productBundleFacade,
         ProductStockSqlInterface $productStockSql,
         PropelExecutorInterface $propelExecutor
     ) {
         parent::__construct($eventFacade);
+        $this->stockFacade = $stockFacade;
         $this->availabilityFacade = $availabilityFacade;
         $this->productBundleFacade = $productBundleFacade;
         $this->productStockSql = $productStockSql;
@@ -106,6 +117,7 @@ class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements 
     {
         $this->persistStockEntities();
         $this->persistStockProductEntities();
+        $this->persistAvailabilityProductEntities();
 
         $this->flushMemory();
     }
@@ -161,12 +173,34 @@ class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements 
             $isNeverOutOfStock,
         ];
         $this->propelExecutor->execute($sql, $parameters);
+    }
+
+    /**
+     * @return void
+     */
+    protected function persistAvailabilityProductEntities(): void
+    {
+//        $skus = $this->formatPostgresArrayString(
+//            $this->getCollectionDataByKey(static::$stockProductCollection, ProductStockHydratorStep::KEY_CONCRETE_SKU)
+//        );
+//
+//        $sql = $this->productStockSql->createAvailabilityProductSQL();
+//        $storeToStock = $this->getStoreToWarehouse();
+//        foreach ($storeToStock as $store => $stocks) {
+//            $stores = array_fill(0, count(static::$stockProductCollection), $store);
+//            $parameters = [
+//                $skus,
+//                $this->formatPostgresArrayString($stores),
+//                $this->formatPostgresArrayString($stocks),
+//            ];
+//            $this->propelExecutor->execute($sql, $parameters);
+//
+//        }
 
         foreach (static::$stockProductCollection as $stockProduct) {
             $this->availabilityFacade->updateAvailability($stockProduct[ProductStockHydratorStep::KEY_CONCRETE_SKU]);
-
             if ($stockProduct[ProductStockHydratorStep::KEY_IS_BUNDLE]) {
-                $this->productBundleFacade->updateBundleAvailability($stockProduct[ProductStockHydratorStep::KEY_CONCRETE_SKU]);
+                //$this->productBundleFacade->updateBundleAvailability($stockProduct[ProductStockHydratorStep::KEY_CONCRETE_SKU]);
                 $this->productBundleFacade->updateAffectedBundlesAvailability($stockProduct[ProductStockHydratorStep::KEY_CONCRETE_SKU]);
             }
         }
@@ -192,7 +226,27 @@ class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements 
         $productStockArray = $dataSet[ProductStockHydratorStep::STOCK_PRODUCT_ENTITY_TRANSFER]->modifiedToArray();
         $productStockArray[ProductStockHydratorStep::KEY_IS_BUNDLE] = $dataSet[ProductStockHydratorStep::KEY_IS_BUNDLE];
         $productStockArray[ProductStockHydratorStep::KEY_CONCRETE_SKU] = $dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU];
+        $productStockArray[ProductStockHydratorStep::KEY_CONCRETE_SKU] = $dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU];
 
         static::$stockProductCollection[] = $productStockArray;
+    }
+
+    /**
+     * @return array
+     */
+    protected function getStoreToWarehouse()
+    {
+        if (empty(static::$storeToStock)) {
+            $storeToWarehouse = [];
+            $warehouseToStore = $this->stockFacade->getWarehouseToStoreMapping();
+            foreach ($warehouseToStore as $warehouse => $stores) {
+                foreach ($stores as $store) {
+                    $storeToWarehouse[$store][$warehouse] = $warehouse;
+                }
+            }
+            static::$storeToStock = $storeToWarehouse;
+        }
+
+        return static::$storeToStock;
     }
 }
