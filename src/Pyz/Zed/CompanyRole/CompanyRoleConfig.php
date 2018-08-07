@@ -51,17 +51,22 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
      */
     public function getCompanyRoles(): array
     {
-        $administratorRoleTransfer = $this->getAdministratorRole();
+        $companyRoleTransfers = parent::getCompanyRoles();
 
-        $buyerRoleTransfer = (new CompanyRoleTransfer())
+        $companyRoleTransfers[] = $this->getBuyerRole();
+
+        return $companyRoleTransfers;
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\CompanyRoleTransfer
+     */
+    protected function getBuyerRole(): CompanyRoleTransfer
+    {
+        return (new CompanyRoleTransfer())
             ->setName(static::BUYER_ROLE_NAME)
             ->setPermissionCollection($this->createPermissionCollectionFromPermissionKeys(
                 $this->getPermissionsForBuyerRole()
             ));
-
-        return [
-            $buyerRoleTransfer,
-            $administratorRoleTransfer,
-        ];
     }
 }
