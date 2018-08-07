@@ -8,8 +8,6 @@
 namespace Pyz\Zed\CompanyRole;
 
 use Generated\Shared\Transfer\CompanyRoleTransfer;
-use Generated\Shared\Transfer\PermissionCollectionTransfer;
-use Generated\Shared\Transfer\PermissionTransfer;
 use Spryker\Client\CompanyUser\Plugin\AddCompanyUserPermissionPlugin;
 use Spryker\Client\CompanyUserInvitation\Plugin\ManageCompanyUserInvitationPermissionPlugin;
 use Spryker\Zed\CompanyRole\CompanyRoleConfig as SprykerCompanyRoleConfig;
@@ -53,41 +51,17 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
      */
     public function getCompanyRoles(): array
     {
+        $administratorRoleTransfer = $this->getAdministratorRole();
+
         $buyerRoleTransfer = (new CompanyRoleTransfer())
             ->setName(static::BUYER_ROLE_NAME)
             ->setPermissionCollection($this->createPermissionCollectionFromPermissionKeys(
                 $this->getPermissionsForBuyerRole()
             ));
 
-        $administratorRoleTransfer = (new CompanyRoleTransfer())
-            ->setName(static::DEFAULT_ADMIN_ROLE_NAME)
-            ->setIsDefault(true)
-            ->setPermissionCollection($this->createPermissionCollectionFromPermissionKeys(
-                $this->getAdminRolePermissions()
-            ));
-
         return [
             $buyerRoleTransfer,
             $administratorRoleTransfer,
         ];
-    }
-
-    /**
-     * @param array $rolePermissionKeys
-     *
-     * @return \Generated\Shared\Transfer\PermissionCollectionTransfer
-     */
-    protected function createPermissionCollectionFromPermissionKeys(array $rolePermissionKeys): PermissionCollectionTransfer
-    {
-        $permissions = new PermissionCollectionTransfer();
-
-        foreach ($rolePermissionKeys as $permissionKey) {
-            $permission = (new PermissionTransfer())
-                ->setKey($permissionKey);
-
-            $permissions->addPermission($permission);
-        }
-
-        return $permissions;
     }
 }
