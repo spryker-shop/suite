@@ -123,7 +123,14 @@ SELECT updated.idStockProduct FROM updated UNION ALL SELECT inserted.id_stock_pr
       AS is_never_out_of_stock,
       CASE
       WHEN
-        SUM(CASE WHEN ssp.is_never_out_of_stock THEN 1 ELSE 0 END) = 0
+        (SUM(CASE WHEN ssp.is_never_out_of_stock THEN 1 ELSE 0 END) = 0) AND
+        (
+        SUM(
+                 CASE WHEN ssp.quantity IS NULL THEN 0 ELSE ssp.quantity END
+             ) - SUM(
+            CASE WHEN spy_oms_product_reservation.reservation_quantity IS NULL THEN 0 ELSE spy_oms_product_reservation.reservation_quantity END
+        ) > 0
+        )
         THEN SUM(
                  CASE WHEN ssp.quantity IS NULL THEN 0 ELSE ssp.quantity END
              ) - SUM(
@@ -133,7 +140,8 @@ SELECT updated.idStockProduct FROM updated UNION ALL SELECT inserted.id_stock_pr
       END
         AS quantity,
       spy_store.id_store as fk_store,
-      spy_product_abstract.sku as abstract_sku
+      spy_product_abstract.sku as abstract_sku,
+      spy_availability.id_availability as idAvailability
     FROM (
            SELECT
              unnest(? :: VARCHAR []) AS sku,
@@ -148,7 +156,7 @@ SELECT updated.idStockProduct FROM updated UNION ALL SELECT inserted.id_stock_pr
       ) as ssp  ON ssp.fk_product = spy_product.id_product
       LEFT JOIN spy_oms_product_reservation ON spy_oms_product_reservation.sku = input.sku AND spy_oms_product_reservation.fk_store = spy_store.id_store
       LEFT JOIN spy_availability ON spy_availability.sku = input.sku AND spy_availability.fk_store = spy_store.id_store
-      GROUP BY input.sku, spy_store.id_store, spy_product_abstract.sku
+      GROUP BY input.sku, spy_store.id_store, spy_product_abstract.sku, spy_availability.id_availability
     ),
     product_abstract_availability AS (
     SELECT
@@ -166,17 +174,16 @@ SELECT updated.idStockProduct FROM updated UNION ALL SELECT inserted.id_stock_pr
         AND spy_availability_abstract.fk_store = product_availability.fk_store
     GROUP BY product_availability.abstract_sku, product_availability.fk_store, spy_availability_abstract.id_availability_abstract
     ),
-    updated_product AS (
+    updated_product_abstract AS (
     UPDATE spy_availability_abstract
     SET
       abstract_sku = product_abstract_availability.abstract_sku,
       quantity = product_abstract_availability.quantity
     FROM product_abstract_availability
-    WHERE spy_availability_abstract.abstract_sku = product_abstract_availability.abstract_sku
-        AND spy_availability_abstract.fk_store = product_abstract_availability.fk_store
-    RETURNING spy_availability_abstract.abstract_sku,id_availability_abstract
+    WHERE spy_availability_abstract.id_availability_abstract = product_abstract_availability.idAvailabilityAbstract
+    RETURNING spy_availability_abstract.abstract_sku as abstractSku,id_availability_abstract
   ),
-    inserted_product AS(
+    inserted_product_abstract AS (
     INSERT INTO spy_availability_abstract (
       id_availability_abstract,
       abstract_sku,
@@ -190,9 +197,53 @@ SELECT updated.idStockProduct FROM updated UNION ALL SELECT inserted.id_stock_pr
         fk_store
       FROM product_abstract_availability
       WHERE idAvailabilityAbstract is null
-    ) RETURNING abstract_sku,id_availability_abstract
+    ) RETURNING abstract_sku as abstractSku,id_availability_abstract
+  ),
+  product_availability_results AS (
+    SELECT
+      product_availability.sku,
+      product_availability.quantity,
+      product_availability.fk_store,
+      product_availability.is_never_out_of_stock,
+      product_availability.idAvailability,
+      apa.id_availability_abstract
+    FROM product_availability
+    INNER JOIN (
+        SELECT inserted_product_abstract.abstractSku, id_availability_abstract FROM inserted_product_abstract 
+        UNION ALL 
+        SELECT updated_product_abstract.abstractSku, id_availability_abstract FROM updated_product_abstract
+    ) as apa ON apa.abstractSku = product_availability.abstract_sku
+  ),
+  updated_product AS (
+    UPDATE spy_availability
+    SET
+      is_never_out_of_stock = product_availability_results.is_never_out_of_stock,
+      quantity = product_availability_results.quantity
+    FROM product_availability_results
+    WHERE spy_availability.id_availability = product_availability_results.idAvailability
+    RETURNING id_availability
+  ),
+    inserted_product AS (
+    INSERT INTO spy_availability (
+      id_availability,
+      fk_availability_abstract,
+      sku,
+      quantity,
+      is_never_out_of_stock,
+      fk_store
+    ) (
+      SELECT
+        nextval('spy_availability_pk_seq'),
+        id_availability_abstract,
+        sku,
+        quantity,
+        is_never_out_of_stock,
+        fk_store
+      FROM product_availability_results
+      WHERE idAvailability is null
+    ) RETURNING id_availability
   )
-  SELECT inserted_product.abstract_sku FROM inserted_product UNION ALL SELECT updated_product.abstract_sku FROM updated_product;";
+  SELECT inserted_product.id_availability FROM inserted_product UNION ALL SELECT updated_product.id_availability FROM updated_product";
 
         return $sql;
     }

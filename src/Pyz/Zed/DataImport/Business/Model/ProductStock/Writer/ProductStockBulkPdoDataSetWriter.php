@@ -23,7 +23,7 @@ class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements 
 {
     use DataFormatter;
 
-    const BULK_SIZE = 5000;
+    const BULK_SIZE = 1000;
 
     protected static $stockCollection = [];
 
@@ -180,27 +180,25 @@ class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements 
      */
     protected function persistAvailabilityProductEntities(): void
     {
-//        $skus = $this->formatPostgresArrayString(
-//            $this->getCollectionDataByKey(static::$stockProductCollection, ProductStockHydratorStep::KEY_CONCRETE_SKU)
-//        );
-//
-//        $sql = $this->productStockSql->createAvailabilityProductSQL();
-//        $storeToStock = $this->getStoreToWarehouse();
-//        foreach ($storeToStock as $store => $stocks) {
-//            $stores = array_fill(0, count(static::$stockProductCollection), $store);
-//            $parameters = [
-//                $skus,
-//                $this->formatPostgresArrayString($stores),
-//                $this->formatPostgresArrayString($stocks),
-//            ];
-//            $this->propelExecutor->execute($sql, $parameters);
-//
-//        }
+        $skus = $this->formatPostgresArrayString(
+            $this->getCollectionDataByKey(static::$stockProductCollection, ProductStockHydratorStep::KEY_CONCRETE_SKU)
+        );
+
+        $sql = $this->productStockSql->createAvailabilityProductSQL();
+        $storeToStock = $this->getStoreToWarehouse();
+        foreach ($storeToStock as $store => $stocks) {
+            $stores = array_fill(0, count(static::$stockProductCollection), $store);
+            $parameters = [
+                $skus,
+                $this->formatPostgresArrayString($stores),
+                $this->formatPostgresArrayString($stocks),
+            ];
+            $this->propelExecutor->execute($sql, $parameters);
+        }
 
         foreach (static::$stockProductCollection as $stockProduct) {
-            $this->availabilityFacade->updateAvailability($stockProduct[ProductStockHydratorStep::KEY_CONCRETE_SKU]);
             if ($stockProduct[ProductStockHydratorStep::KEY_IS_BUNDLE]) {
-                //$this->productBundleFacade->updateBundleAvailability($stockProduct[ProductStockHydratorStep::KEY_CONCRETE_SKU]);
+                $this->productBundleFacade->updateBundleAvailability($stockProduct[ProductStockHydratorStep::KEY_CONCRETE_SKU]);
                 $this->productBundleFacade->updateAffectedBundlesAvailability($stockProduct[ProductStockHydratorStep::KEY_CONCRETE_SKU]);
             }
         }

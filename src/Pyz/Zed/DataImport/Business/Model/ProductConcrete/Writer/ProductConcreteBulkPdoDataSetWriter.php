@@ -21,7 +21,7 @@ class ProductConcreteBulkPdoDataSetWriter extends DataImporterPublisher implemen
 {
     use DataFormatter;
 
-    const BULK_SIZE = 5000;
+    const BULK_SIZE = 3000;
 
     /**
      * @var array
