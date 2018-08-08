@@ -7,18 +7,66 @@
 
 namespace Pyz\Zed\CompanyRole;
 
+use Generated\Shared\Transfer\CompanyRoleTransfer;
+use Spryker\Client\CompanyUser\Plugin\AddCompanyUserPermissionPlugin;
+use Spryker\Client\CompanyUserInvitation\Plugin\ManageCompanyUserInvitationPermissionPlugin;
 use Spryker\Zed\CompanyRole\CompanyRoleConfig as SprykerCompanyRoleConfig;
+use SprykerShop\Client\CheckoutPage\Plugin\PlaceOrderWithAmountUpToPermissionPlugin;
+use SprykerShop\Shared\CartPage\Plugin\AddCartItemPermissionPlugin;
+use SprykerShop\Shared\CartPage\Plugin\ChangeCartItemPermissionPlugin;
+use SprykerShop\Shared\CartPage\Plugin\RemoveCartItemPermissionPlugin;
 use SprykerShop\Shared\CompanyPage\Plugin\CompanyUserStatusChangePermissionPlugin;
 
 class CompanyRoleConfig extends SprykerCompanyRoleConfig
 {
+    protected const BUYER_ROLE_NAME = 'Buyer';
+
     /**
      * @return string[]
      */
     public function getAdminRolePermissions(): array
     {
         return [
+            AddCompanyUserPermissionPlugin::KEY,
+            ManageCompanyUserInvitationPermissionPlugin::KEY,
             CompanyUserStatusChangePermissionPlugin::KEY,
         ];
+    }
+
+    /**
+     * @return string[]
+     */
+    protected function getPermissionsForBuyerRole(): array
+    {
+        return [
+            AddCartItemPermissionPlugin::KEY,
+            ChangeCartItemPermissionPlugin::KEY,
+            RemoveCartItemPermissionPlugin::KEY,
+            PlaceOrderWithAmountUpToPermissionPlugin::KEY,
+        ];
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\CompanyRoleTransfer[]
+     */
+    public function getCompanyRoles(): array
+    {
+        $companyRoleTransfers = parent::getCompanyRoles();
+
+        $companyRoleTransfers[] = $this->getBuyerRole();
+
+        return $companyRoleTransfers;
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\CompanyRoleTransfer
+     */
+    protected function getBuyerRole(): CompanyRoleTransfer
+    {
+        return (new CompanyRoleTransfer())
+            ->setName(static::BUYER_ROLE_NAME)
+            ->setPermissionCollection($this->createPermissionCollectionFromPermissionKeys(
+                $this->getPermissionsForBuyerRole()
+            ));
     }
 }
