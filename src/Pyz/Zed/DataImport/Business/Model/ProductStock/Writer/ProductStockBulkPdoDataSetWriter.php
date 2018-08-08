@@ -11,7 +11,6 @@ use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataFormatter;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\ProductStockHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
-use Spryker\Zed\Availability\Business\AvailabilityFacadeInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
@@ -23,7 +22,7 @@ class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements 
 {
     use DataFormatter;
 
-    const BULK_SIZE = 1000;
+    const BULK_SIZE = 2000;
 
     protected static $stockCollection = [];
 
@@ -40,11 +39,6 @@ class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements 
      * @var \Spryker\Zed\Stock\Business\StockFacadeInterface
      */
     protected $stockFacade;
-
-    /**
-     * @var \Spryker\Zed\Availability\Business\AvailabilityFacadeInterface
-     */
-    protected $availabilityFacade;
 
     /**
      * @var \Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface
@@ -66,7 +60,6 @@ class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements 
      *
      * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface $eventFacade
      * @param \Spryker\Zed\Stock\Business\StockFacadeInterface $stockFacade
-     * @param \Spryker\Zed\Availability\Business\AvailabilityFacadeInterface $availabilityFacade
      * @param \Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface $productBundleFacade
      * @param \Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSqlInterface $productStockSql
      * @param \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface $propelExecutor
@@ -74,14 +67,12 @@ class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements 
     public function __construct(
         DataImportToEventFacadeInterface $eventFacade,
         StockFacadeInterface $stockFacade,
-        AvailabilityFacadeInterface $availabilityFacade,
         ProductBundleFacadeInterface $productBundleFacade,
         ProductStockSqlInterface $productStockSql,
         PropelExecutorInterface $propelExecutor
     ) {
         parent::__construct($eventFacade);
         $this->stockFacade = $stockFacade;
-        $this->availabilityFacade = $availabilityFacade;
         $this->productBundleFacade = $productBundleFacade;
         $this->productStockSql = $productStockSql;
         $this->propelExecutor = $propelExecutor;

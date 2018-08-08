@@ -372,7 +372,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         return new ProductStockBulkPdoDataSetWriter(
             $this->getEventFacade(),
             $this->getStockFacade(),
-            $this->getAvailabilityFacade(),
             $this->getProductBundleFacade(),
             $this->createProductStockSql(),
             $this->createPropelExecutor()
