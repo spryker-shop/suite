@@ -43,11 +43,11 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new ReadShoppingListPermissionPlugin(), #ShoppingListFeature
             new WriteShoppingListPermissionPlugin(), #ShoppingListFeature
             new ManageCompanyUserInvitationPermissionPlugin(), #CompanyUserInvitationFeature
-            new AddCompanyUserPermissionPlugin(), #ManagingUsersFeature
-            new AddCartItemPermissionPlugin(), #ManagingUsersFeature
-            new ChangeCartItemPermissionPlugin(), #ManagingUsersFeature
-            new RemoveCartItemPermissionPlugin(), #ManagingUsersFeature
-            new PlaceOrderWithAmountUpToPermissionPlugin(), #ManagingUsersFeature
+            new AddCompanyUserPermissionPlugin(), #CompanyUserFeature
+            new AddCartItemPermissionPlugin(), #CartFeature
+            new ChangeCartItemPermissionPlugin(), #CartFeature
+            new RemoveCartItemPermissionPlugin(), #CartFeature
+            new PlaceOrderWithAmountUpToPermissionPlugin(), #CheckoutFeature
         ];
     }
 }
