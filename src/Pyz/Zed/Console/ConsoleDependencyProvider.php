@@ -86,6 +86,7 @@ use Spryker\Zed\Search\Communication\Console\SearchCopyIndexConsole;
 use Spryker\Zed\Search\Communication\Console\SearchCreateSnapshotConsole;
 use Spryker\Zed\Search\Communication\Console\SearchDeleteIndexConsole;
 use Spryker\Zed\Search\Communication\Console\SearchDeleteSnapshotConsole;
+use Spryker\Zed\Search\Communication\Console\SearchOpenIndexConsole;
 use Spryker\Zed\Search\Communication\Console\SearchRegisterSnapshotRepositoryConsole;
 use Spryker\Zed\Search\Communication\Console\SearchRestoreSnapshotConsole;
 use Spryker\Zed\Session\Communication\Console\SessionRemoveLockConsole;
@@ -190,6 +191,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . DataImportConfig::IMPORT_TYPE_TAX),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . DataImportConfig::IMPORT_TYPE_DISCOUNT_AMOUNT),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . DataImportConfig::IMPORT_TYPE_ORDER_SOURCE),
+
             //core data importers
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . PriceProductDataImportConfig::IMPORT_TYPE_PRODUCT_PRICE),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . CompanyDataImportConfig::IMPORT_TYPE_COMPANY),
@@ -227,6 +229,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new StorageDeleteAllConsole(),
             new SearchDeleteIndexConsole(),
             new SearchCloseIndexConsole(),
+            new SearchOpenIndexConsole(),
             new SearchRegisterSnapshotRepositoryConsole(),
             new SearchDeleteSnapshotConsole(),
             new SearchCreateSnapshotConsole(),
