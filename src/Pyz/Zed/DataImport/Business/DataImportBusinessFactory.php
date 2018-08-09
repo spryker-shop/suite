@@ -371,7 +371,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     {
         return new ProductStockBulkPdoDataSetWriter(
             $this->getEventFacade(),
-            $this->getAvailabilityFacade(),
+            $this->getStockFacade(),
             $this->getProductBundleFacade(),
             $this->createProductStockSql(),
             $this->createPropelExecutor()
@@ -768,6 +768,14 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     protected function createProductStockAfterImportPublishHook()
     {
         return new ProductStockAfterImportPublishHook();
+    }
+
+    /**
+     * @return \Spryker\Zed\Stock\Business\StockFacadeInterface
+     */
+    protected function getStockFacade()
+    {
+        return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_STOCK);
     }
 
     /**
