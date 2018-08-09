@@ -2,6 +2,7 @@
 
 use Monolog\Logger;
 use Spryker\Client\RabbitMq\Model\RabbitMqAdapter;
+use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBuilderPlugin;
 use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Auth\AuthConstants;
@@ -15,6 +16,8 @@ use Spryker\Shared\ErrorHandler\ErrorRenderer\WebHtmlErrorRenderer;
 use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\EventBehavior\EventBehaviorConstants;
 use Spryker\Shared\EventJournal\EventJournalConstants;
+use Spryker\Shared\FileManager\FileManagerConstants;
+use Spryker\Shared\FileManagerGui\FileManagerGuiConstants;
 use Spryker\Shared\FileSystem\FileSystemConstants;
 use Spryker\Shared\Flysystem\FlysystemConstants;
 use Spryker\Shared\GlueApplication\GlueApplicationConstants;
@@ -397,10 +400,6 @@ $config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION] = [
 $config[LogglyConstants::QUEUE_NAME] = 'loggly-log-queue';
 $config[LogglyConstants::ERROR_QUEUE_NAME] = 'loggly-log-queue.error';
 
-// ---------- Events
-$config[EventConstants::LOGGER_ACTIVE] = false;
-$config[EventConstants::MAX_RETRY_ON_FAIL] = 1;
-
 // ---------- EventBehavior
 $config[EventBehaviorConstants::EVENT_BEHAVIOR_TRIGGERING_ACTIVE] = true;
 
@@ -434,3 +433,16 @@ $config[OauthConstants::ENCRYPTION_KEY] = '';
 // ----------- AuthRestApi
 $config[OauthCustomerConnectorConstants::OAUTH_CLIENT_IDENTIFIER] = '';
 $config[OauthCustomerConnectorConstants::OAUTH_CLIENT_SECRET] = '';
+
+// ---------- FileSystem
+$config[FileSystemConstants::FILESYSTEM_SERVICE] = [
+    'files' => [
+        'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
+        'root' => APPLICATION_ROOT_DIR . '/data/DE/media/',
+        'path' => 'files/',
+    ],
+];
+
+// ---------- FileManager
+$config[FileManagerConstants::STORAGE_NAME] = 'files';
+$config[FileManagerGuiConstants::DEFAULT_FILE_MAX_SIZE] = '10M';
