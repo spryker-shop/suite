@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\MinimumOrderValue\Persistence;
 
-use Orm\Zed\MinimumOrderValue\Persistence\Base\SpyMinimumOrderValueLocalizedMessage as BaseSpyMinimumOrderValueLocalizedMessage;
+use Spryker\Zed\MinimumOrderValue\Persistence\Propel\AbstractSpyMinimumOrderValueLocalizedMessage;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_min_order_value_localized_message' table.
@@ -19,6 +19,6 @@ use Orm\Zed\MinimumOrderValue\Persistence\Base\SpyMinimumOrderValueLocalizedMess
  * long as it does not already exist in the output directory.
  *
  */
-class SpyMinimumOrderValueLocalizedMessage extends BaseSpyMinimumOrderValueLocalizedMessage
+class SpyMinimumOrderValueLocalizedMessage extends AbstractSpyMinimumOrderValueLocalizedMessage
 {
 }
