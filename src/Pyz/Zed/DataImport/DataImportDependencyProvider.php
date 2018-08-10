@@ -21,7 +21,6 @@ use Spryker\Zed\FileManagerDataImport\Communication\Plugin\FileManagerDataImport
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\MerchantDataImport\Communication\Plugin\MerchantDataImportPlugin;
 use Spryker\Zed\MerchantRelationshipDataImport\Communication\Plugin\MerchantRelationshipDataImportPlugin;
-use Spryker\Zed\PriceProductDataImport\Communication\Plugin\PriceProductDataImportPlugin;
 use Spryker\Zed\PriceProductMerchantRelationshipDataImport\Communication\Plugin\PriceProductMerchantRelationshipDataImportPlugin;
 use Spryker\Zed\ProductAlternativeDataImport\Communication\Plugin\ProductAlternativeDataImportPlugin;
 use Spryker\Zed\ProductDiscontinuedDataImport\Communication\Plugin\ProductDiscontinuedDataImportPlugin;
@@ -37,6 +36,8 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
 {
     const FACADE_AVAILABILITY = 'availability facade';
     const FACADE_CATEGORY = 'category facade';
+    const FACADE_STORE = 'store facade';
+    const FACADE_CURRENCY = 'currency facade';
     const FACADE_PRODUCT_BUNDLE = 'product bundle facade';
     const FACADE_PRODUCT_RELATION = 'product relation facade';
     const FACADE_STOCK = 'stock facade';
@@ -59,10 +60,40 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
 
         $container = $this->addAvailabilityFacade($container);
         $container = $this->addStockFacade($container);
+        $container = $this->addCurrencyFacade($container);
+        $container = $this->addStoreFacade($container);
         $container = $this->addCategoryFacade($container);
         $container = $this->addProductBundleFacade($container);
         $container = $this->addProductRelationFacade($container);
         $container = $this->addProductSearchFacade($container);
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addCurrencyFacade(Container $container)
+    {
+        $container[static::FACADE_CURRENCY] = function (Container $container) {
+            return $container->getLocator()->currency()->facade();
+        };
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addStoreFacade(Container $container)
+    {
+        $container[static::FACADE_STORE] = function (Container $container) {
+            return $container->getLocator()->store()->facade();
+        };
 
         return $container;
     }
@@ -157,28 +188,28 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     protected function getDataImporterPlugins(): array
     {
         return [
-            [new CategoryDataImportPlugin(), DataImportConfig::IMPORT_TYPE_CATEGORY_TEMPLATE],
-            new PriceProductDataImportPlugin(),
-            new CompanyDataImportPlugin(),
-            new CompanyBusinessUnitDataImportPlugin(),
-            new CompanyUnitAddressDataImportPlugin(),
-            new CompanyUnitAddressLabelDataImportPlugin(),
-            new CompanyUnitAddressLabelRelationDataImportPlugin(),
-            new ProductDiscontinuedDataImportPlugin(), #ProductDiscontinuedFeature
-            new ProductMeasurementUnitDataImportPlugin(),
-            new ProductMeasurementBaseUnitDataImportPlugin(),
-            new ProductMeasurementSalesUnitDataImportPlugin(),
-            new ProductMeasurementSalesUnitStoreDataImportPlugin(),
-            new ProductQuantityDataImportPlugin(),
-            new ProductAlternativeDataImportPlugin(), #ProductAlternativeFeature
-            new ProductPackagingUnitTypeDataImportPlugin(),
-            new ProductPackagingUnitDataImportPlugin(),
-            new BusinessOnBehalfCompanyUserDataImportPlugin(),
-            new PriceProductDataImportPlugin(),
-            new MerchantDataImportPlugin(),
-            new MerchantRelationshipDataImportPlugin(),
-            new PriceProductMerchantRelationshipDataImportPlugin(),
-            new FileManagerDataImportPlugin(),
+            [
+                new CategoryDataImportPlugin(), DataImportConfig::IMPORT_TYPE_CATEGORY_TEMPLATE],
+                new CompanyDataImportPlugin(),
+                new CompanyBusinessUnitDataImportPlugin(),
+                new CompanyUnitAddressDataImportPlugin(),
+                new CompanyUnitAddressLabelDataImportPlugin(),
+                new CompanyUnitAddressLabelRelationDataImportPlugin(),
+                new ProductDiscontinuedDataImportPlugin(), #ProductDiscontinuedFeature
+                new ProductMeasurementUnitDataImportPlugin(),
+                new ProductMeasurementBaseUnitDataImportPlugin(),
+                new ProductMeasurementSalesUnitDataImportPlugin(),
+                new ProductMeasurementSalesUnitStoreDataImportPlugin(),
+                new ProductQuantityDataImportPlugin(),
+                new ProductAlternativeDataImportPlugin(), #ProductAlternativeFeature
+                new ProductPackagingUnitTypeDataImportPlugin(),
+                new ProductPackagingUnitDataImportPlugin(),
+                new BusinessOnBehalfCompanyUserDataImportPlugin(),
+//                new PriceProductDataImportPlugin(),
+                new MerchantDataImportPlugin(),
+                new MerchantRelationshipDataImportPlugin(),
+                new PriceProductMerchantRelationshipDataImportPlugin(),
+                new FileManagerDataImportPlugin(),
         ];
     }
 

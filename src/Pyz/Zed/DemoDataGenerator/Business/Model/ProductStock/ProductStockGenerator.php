@@ -71,7 +71,7 @@ class ProductStockGenerator extends AbstractGenerator implements ProductStockGen
     }
 
     /**
-     * @return \Generated\Shared\Transfer\StockProductTransfer|\Spryker\Shared\Kernel\Transfer\AbstractTransfer
+     * @return \Generated\Shared\Transfer\StockProductTransfer
      */
     protected function generateStockProduct(): StockProductTransfer
     {

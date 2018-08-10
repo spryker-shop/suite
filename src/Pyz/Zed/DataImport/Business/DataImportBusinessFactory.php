@@ -137,6 +137,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             ->addDataImporter($this->createProductConcreteImporter())
             ->addDataImporter($this->createProductImageImporter())
             ->addDataImporter($this->createProductStockImporter())
+            ->addDataImporter($this->createProductPriceImporter())
             ->addDataImporter($this->createProductOptionImporter())
             ->addDataImporter($this->createProductOptionPriceImporter())
             ->addDataImporter($this->createProductGroupImporter())
@@ -219,7 +220,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     {
         return new ProductPricePropelDataSetWriter(
             $this->getEventFacade(),
-            $this->createProductRepository()
+            $this->createProductRepository(),
+            $this->getStoreFacade(),
+            $this->getCurrencyFacade()
         );
     }
 
@@ -685,13 +688,14 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductPriceImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getProductPriceDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterWriterAwareFromConfig($this->getConfig()->getProductPriceDataImporterConfiguration());
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductPriceHydratorStep::BULK_SIZE);
         $dataSetStepBroker
             ->addStep(new ProductPriceHydratorStep());
 
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
+        $dataImporter->setDataSetWriter($this->createProductPriceDataImportWriters());
 
         return $dataImporter;
     }
@@ -749,6 +753,17 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         $dataImporter->setDataSetWriter($this->createProductStockDataImportWriters());
 
         return $dataImporter;
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
+     */
+    protected function createProductPriceDataImportWriters()
+    {
+        $databaseWriters = $this->getConfig()->getDatabaseWriters();
+        $currentDbEngine = $this->getConfig()->getCurrentDbEngine();
+
+        return new DataSetWriterCollection($databaseWriters[$currentDbEngine][DataImportConfig::IMPORT_TYPE_PRODUCT_PRICE]);
     }
 
     /**
@@ -1365,6 +1380,22 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     protected function getEventFacade(): DataImportToEventFacadeInterface
     {
         return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_EVENT);
+    }
+
+    /**
+     * @return \Spryker\Zed\Store\Business\StoreFacadeInterface
+     */
+    protected function getStoreFacade(): DataImportToEventFacadeInterface
+    {
+        return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_STORE);
+    }
+
+    /**
+     * @return \Spryker\Zed\Currency\Business\CurrencyFacadeInterface
+     */
+    protected function getCurrencyFacade(): DataImportToEventFacadeInterface
+    {
+        return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_CURRENCY);
     }
 
     /**

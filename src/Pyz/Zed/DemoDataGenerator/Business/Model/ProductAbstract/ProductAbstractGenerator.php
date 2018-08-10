@@ -23,7 +23,7 @@ class ProductAbstractGenerator extends AbstractGenerator implements ProductAbstr
     public function createProductAbstractCsvDemoData(DemoDataGeneratorTransfer $demoDataGeneratorTransfer): void
     {
         $rows = [];
-        $i = 0;
+        $counter = 0;
         $rowsNumber = $demoDataGeneratorTransfer->getRowNumber();
         $filePath = $demoDataGeneratorTransfer->getFilePath();
 
@@ -31,8 +31,8 @@ class ProductAbstractGenerator extends AbstractGenerator implements ProductAbstr
             $productAbstractTransfer = $this->generateProductAbstract();
             $row = $this->createProductAbstractRow($productAbstractTransfer);
             $rows[] = array_values($row);
-            $i++;
-        } while ($i < $rowsNumber);
+            $counter++;
+        } while ($counter < $rowsNumber);
 
         $header = array_keys($row);
         $this->writeCsv($header, $rows, $filePath);
@@ -107,10 +107,10 @@ class ProductAbstractGenerator extends AbstractGenerator implements ProductAbstr
     protected function generateAttributes(): array
     {
         $attributes = [];
-        $i = 0;
+        $counter = 0;
 
         do {
-            $attributeIndex = $i + 1;
+            $attributeIndex = $counter + 1;
             $attributes = array_merge($attributes, [
                 'attribute_key_' . $attributeIndex => 'att_key_' . $attributeIndex,
                 'value_' . $attributeIndex => 'att_val_' . $attributeIndex,
@@ -119,8 +119,8 @@ class ProductAbstractGenerator extends AbstractGenerator implements ProductAbstr
                 'attribute_key_' . $attributeIndex . '.de_DE' => null,
                 'value_' . $attributeIndex . '.de_DE' => null,
             ]);
-            $i++;
-        } while ($i < 6);
+            $counter++;
+        } while ($counter < 6);
 
         return $attributes;
     }

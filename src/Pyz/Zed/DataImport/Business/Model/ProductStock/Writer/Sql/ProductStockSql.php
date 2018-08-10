@@ -111,6 +111,8 @@ SELECT updated.idStockProduct FROM updated UNION ALL SELECT inserted.id_stock_pr
     }
 
     /**
+     * @SuppressWarnings(PHPMD)
+     *
      * @return string
      */
     public function createAvailabilityProductSQL(): string
@@ -180,7 +182,8 @@ SELECT updated.idStockProduct FROM updated UNION ALL SELECT inserted.id_stock_pr
       abstract_sku = product_abstract_availability.abstract_sku,
       quantity = product_abstract_availability.quantity
     FROM product_abstract_availability
-    WHERE spy_availability_abstract.id_availability_abstract = product_abstract_availability.idAvailabilityAbstract
+    WHERE idAvailabilityAbstract IS NOT NULL AND
+    spy_availability_abstract.id_availability_abstract = product_abstract_availability.idAvailabilityAbstract
     RETURNING spy_availability_abstract.abstract_sku as abstractSku,id_availability_abstract
   ),
     inserted_product_abstract AS (

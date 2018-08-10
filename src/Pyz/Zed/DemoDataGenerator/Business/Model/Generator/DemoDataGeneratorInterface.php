@@ -14,7 +14,7 @@ interface DemoDataGeneratorInterface
 {
     /**
      * @param \Generated\Shared\Transfer\DemoDataGeneratorTransfer $demoDataGeneratorTransfer
-     * @param \Pyz\Zed\DemoDataGenerator\Business\Model\Generator\PluginResolverInterface $pluginResolver
+     * @param \Pyz\Zed\DemoDataGenerator\Business\Model\PluginResolver\PluginResolverInterface $pluginResolver
      *
      * @return void
      */
