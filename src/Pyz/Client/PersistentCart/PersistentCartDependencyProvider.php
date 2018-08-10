@@ -8,7 +8,6 @@
 namespace Pyz\Client\PersistentCart;
 
 use Spryker\Client\DiscountPromotion\Plugin\AddDiscountPromotionPersistentCartRequestExpanderPlugin;
-use Spryker\Client\MerchantRelationship\Plugin\PersistentCart\MerchantRelationshipPersistentCartChangeRequestExpanderPlugin;
 use Spryker\Client\MultiCart\Plugin\DefaultQuoteUpdatePlugin;
 use Spryker\Client\MultiCart\Plugin\QuickOrderQuoteNameExpanderPlugin;
 use Spryker\Client\MultiCart\Plugin\QuoteSelectorPersistentCartChangeExpanderPlugin;
@@ -49,7 +48,6 @@ class PersistentCartDependencyProvider extends SprykerPersistentCartDependencyPr
             new ProductSeparatePersistentCartChangeExpanderPlugin(), #SharedCartFeature
             new SingleItemQuantitySalesUnitPersistentCartChangeExpanderPlugin(),
             new ProductPackagingUnitAmountPersistentCartChangeExpanderPlugin(), #ProductPackagingUnit
-            new MerchantRelationshipPersistentCartChangeRequestExpanderPlugin(),
         ];
     }
 }
