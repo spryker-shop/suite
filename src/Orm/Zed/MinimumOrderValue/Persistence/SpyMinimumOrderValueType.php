@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\MinimumOrderValue\Persistence;
 
-use Orm\Zed\MinimumOrderValue\Persistence\Base\SpyMinimumOrderValueType as BaseSpyMinimumOrderValueType;
+use Spryker\Zed\MinimumOrderValue\Persistence\Propel\AbstractSpyMinimumOrderValueType;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_min_order_value_type' table.
@@ -19,6 +19,6 @@ use Orm\Zed\MinimumOrderValue\Persistence\Base\SpyMinimumOrderValueType as BaseS
  * long as it does not already exist in the output directory.
  *
  */
-class SpyMinimumOrderValueType extends BaseSpyMinimumOrderValueType
+class SpyMinimumOrderValueType extends AbstractSpyMinimumOrderValueType
 {
 }
