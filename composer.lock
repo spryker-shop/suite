@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3982248100db8628f470839dbb8abe87",
+    "content-hash": "d932bcaee30ac46541a814f464f63241",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -926,16 +926,16 @@
         },
         {
             "name": "lcobucci/jwt",
-            "version": "3.2.3",
+            "version": "3.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lcobucci/jwt.git",
-                "reference": "01da822b3c2982ca9f2a1234f802a3ec001527ec"
+                "reference": "c9704b751315d21735dc98d78d4f37bd73596da7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/01da822b3c2982ca9f2a1234f802a3ec001527ec",
-                "reference": "01da822b3c2982ca9f2a1234f802a3ec001527ec",
+                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/c9704b751315d21735dc98d78d4f37bd73596da7",
+                "reference": "c9704b751315d21735dc98d78d4f37bd73596da7",
                 "shasum": ""
             },
             "require": {
@@ -980,7 +980,7 @@
                 "JWS",
                 "jwt"
             ],
-            "time": "2018-07-29T14:38:43+00:00"
+            "time": "2018-08-03T11:23:50+00:00"
         },
         {
             "name": "league/csv",
@@ -1502,33 +1502,29 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.17",
+            "version": "v9.99.99",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "29af24f25bab834fcbb38ad2a69fa93b867e070d"
+                "reference": "84b4dfb120c6f9b4ff7b3685f9b8f1aa365a0c95"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/29af24f25bab834fcbb38ad2a69fa93b867e070d",
-                "reference": "29af24f25bab834fcbb38ad2a69fa93b867e070d",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/84b4dfb120c6f9b4ff7b3685f9b8f1aa365a0c95",
+                "reference": "84b4dfb120c6f9b4ff7b3685f9b8f1aa365a0c95",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.2.0"
+                "php": "^7"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.*|5.*"
+                "phpunit/phpunit": "4.*|5.*",
+                "vimeo/psalm": "^1"
             },
             "suggest": {
                 "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
             },
             "type": "library",
-            "autoload": {
-                "files": [
-                    "lib/random.php"
-                ]
-            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -1547,7 +1543,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2018-07-04T16:31:37+00:00"
+            "time": "2018-07-02T15:55:56+00:00"
         },
         {
             "name": "php-amqplib/php-amqplib",
@@ -1660,6 +1656,158 @@
                 }
             ],
             "time": "2016-02-02T13:00:08+00:00"
+        },
+        {
+            "name": "phpdocumentor/reflection-common",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpDocumentor/ReflectionCommon.git",
+                "reference": "21bdeb5f65d7ebf9f43b1b25d404f87deab5bfb6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionCommon/zipball/21bdeb5f65d7ebf9f43b1b25d404f87deab5bfb6",
+                "reference": "21bdeb5f65d7ebf9f43b1b25d404f87deab5bfb6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.6"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "phpDocumentor\\Reflection\\": [
+                        "src"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jaap van Otterdijk",
+                    "email": "opensource@ijaap.nl"
+                }
+            ],
+            "description": "Common reflection classes used by phpdocumentor to reflect the code structure",
+            "homepage": "http://www.phpdoc.org",
+            "keywords": [
+                "FQSEN",
+                "phpDocumentor",
+                "phpdoc",
+                "reflection",
+                "static analysis"
+            ],
+            "time": "2017-09-11T18:02:19+00:00"
+        },
+        {
+            "name": "phpdocumentor/reflection-docblock",
+            "version": "4.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
+                "reference": "94fd0001232e47129dd3504189fa1c7225010d08"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/94fd0001232e47129dd3504189fa1c7225010d08",
+                "reference": "94fd0001232e47129dd3504189fa1c7225010d08",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0",
+                "phpdocumentor/reflection-common": "^1.0.0",
+                "phpdocumentor/type-resolver": "^0.4.0",
+                "webmozart/assert": "^1.0"
+            },
+            "require-dev": {
+                "doctrine/instantiator": "~1.0.5",
+                "mockery/mockery": "^1.0",
+                "phpunit/phpunit": "^6.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "phpDocumentor\\Reflection\\": [
+                        "src/"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mike van Riel",
+                    "email": "me@mikevanriel.com"
+                }
+            ],
+            "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
+            "time": "2017-11-30T07:14:17+00:00"
+        },
+        {
+            "name": "phpdocumentor/type-resolver",
+            "version": "0.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpDocumentor/TypeResolver.git",
+                "reference": "9c977708995954784726e25d0cd1dddf4e65b0f7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/9c977708995954784726e25d0cd1dddf4e65b0f7",
+                "reference": "9c977708995954784726e25d0cd1dddf4e65b0f7",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5 || ^7.0",
+                "phpdocumentor/reflection-common": "^1.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "^5.2||^4.8.24"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "phpDocumentor\\Reflection\\": [
+                        "src/"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mike van Riel",
+                    "email": "me@mikevanriel.com"
+                }
+            ],
+            "time": "2017-07-14T14:27:02+00:00"
         },
         {
             "name": "pimple/pimple",
@@ -2340,12 +2488,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/install.git",
-                "reference": "8c9c7d30e10c226de4729ee0211e7947c179fe30"
+                "reference": "891f243108df2109db1a8a3d5102ea4aedc679e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/install/zipball/8c9c7d30e10c226de4729ee0211e7947c179fe30",
-                "reference": "8c9c7d30e10c226de4729ee0211e7947c179fe30",
+                "url": "https://api.github.com/repos/spryker/install/zipball/891f243108df2109db1a8a3d5102ea4aedc679e3",
+                "reference": "891f243108df2109db1a8a3d5102ea4aedc679e3",
                 "shasum": ""
             },
             "require": {
@@ -2376,7 +2524,7 @@
                 "MIT"
             ],
             "description": "Spryker install tool",
-            "time": "2018-07-26T07:36:01+00:00"
+            "time": "2018-08-09T13:33:04+00:00"
         },
         {
             "name": "spryker/rabbit-mq",
@@ -2384,12 +2532,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "8aa26ca00e6d4ae5d3d8bbccba9302a5b158afaa"
+                "reference": "86b75a2ad2e879fac9af7b73569e8fd380fa74bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/8aa26ca00e6d4ae5d3d8bbccba9302a5b158afaa",
-                "reference": "8aa26ca00e6d4ae5d3d8bbccba9302a5b158afaa",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/86b75a2ad2e879fac9af7b73569e8fd380fa74bb",
+                "reference": "86b75a2ad2e879fac9af7b73569e8fd380fa74bb",
                 "shasum": ""
             },
             "require": {
@@ -2435,15 +2583,15 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "time": "2018-07-23T08:12:41+00:00"
+            "time": "2018-08-09T12:54:53+00:00"
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/glue-588/dev-generate-api-code-for-swagger",
+            "version": "dev-feature/glue-588/master-generate-api-code-for-swagger",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "5e83b3edfd6703ae34f8955018fee6b3a329d1cd"
+                "reference": "1e4ed12359955c0dff5fbd21cbdb35bccdc508d1"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2708,7 +2856,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-08-02T15:56:34+00:00"
+            "time": "2018-08-13T13:22:56+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2716,7 +2864,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "05f7679fb1d9e1215c68cef273ea59813ceeebca"
+                "reference": "debb6954d62ec285e13e4746842d1cc5bf943477"
             },
             "require": {
                 "php": ">=7.1"
@@ -2791,7 +2939,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-08-02T15:56:37+00:00"
+            "time": "2018-08-13T12:09:48+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -3752,25 +3900,28 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.8.0",
+            "version": "v1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "7cc359f1b7b80fc25ed7796be7d96adc9b354bae"
+                "reference": "e3d826245268269cd66f8326bd8bc066687b4a19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/7cc359f1b7b80fc25ed7796be7d96adc9b354bae",
-                "reference": "7cc359f1b7b80fc25ed7796be7d96adc9b354bae",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/e3d826245268269cd66f8326bd8bc066687b4a19",
+                "reference": "e3d826245268269cd66f8326bd8bc066687b4a19",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
+            "suggest": {
+                "ext-ctype": "For best performance"
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.8-dev"
+                    "dev-master": "1.9-dev"
                 }
             },
             "autoload": {
@@ -3803,20 +3954,20 @@
                 "polyfill",
                 "portable"
             ],
-            "time": "2018-04-30T19:57:29+00:00"
+            "time": "2018-08-06T14:22:27+00:00"
         },
         {
             "name": "symfony/polyfill-intl-icu",
-            "version": "v1.8.0",
+            "version": "v1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-icu.git",
-                "reference": "80ee17ae83c10cd513e5144f91a73607a21edb4e"
+                "reference": "f22a90256d577c7ef7efad8df1f0201663d57644"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-icu/zipball/80ee17ae83c10cd513e5144f91a73607a21edb4e",
-                "reference": "80ee17ae83c10cd513e5144f91a73607a21edb4e",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-icu/zipball/f22a90256d577c7ef7efad8df1f0201663d57644",
+                "reference": "f22a90256d577c7ef7efad8df1f0201663d57644",
                 "shasum": ""
             },
             "require": {
@@ -3829,7 +3980,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.8-dev"
+                    "dev-master": "1.9-dev"
                 }
             },
             "autoload": {
@@ -3861,20 +4012,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-04-25T14:53:50+00:00"
+            "time": "2018-08-06T14:22:27+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.8.0",
+            "version": "v1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "3296adf6a6454a050679cde90f95350ad604b171"
+                "reference": "d0cd638f4634c16d8df4508e847f14e9e43168b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/3296adf6a6454a050679cde90f95350ad604b171",
-                "reference": "3296adf6a6454a050679cde90f95350ad604b171",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/d0cd638f4634c16d8df4508e847f14e9e43168b8",
+                "reference": "d0cd638f4634c16d8df4508e847f14e9e43168b8",
                 "shasum": ""
             },
             "require": {
@@ -3886,7 +4037,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.8-dev"
+                    "dev-master": "1.9-dev"
                 }
             },
             "autoload": {
@@ -3920,20 +4071,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-04-26T10:06:28+00:00"
+            "time": "2018-08-06T14:22:27+00:00"
         },
         {
             "name": "symfony/polyfill-php56",
-            "version": "v1.8.0",
+            "version": "v1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php56.git",
-                "reference": "af98553c84912459db3f636329567809d639a8f6"
+                "reference": "7b4fc009172cc0196535b0328bd1226284a28000"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/af98553c84912459db3f636329567809d639a8f6",
-                "reference": "af98553c84912459db3f636329567809d639a8f6",
+                "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/7b4fc009172cc0196535b0328bd1226284a28000",
+                "reference": "7b4fc009172cc0196535b0328bd1226284a28000",
                 "shasum": ""
             },
             "require": {
@@ -3943,7 +4094,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.8-dev"
+                    "dev-master": "1.9-dev"
                 }
             },
             "autoload": {
@@ -3976,30 +4127,30 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-04-26T10:06:28+00:00"
+            "time": "2018-08-06T14:22:27+00:00"
         },
         {
             "name": "symfony/polyfill-php70",
-            "version": "v1.8.0",
+            "version": "v1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php70.git",
-                "reference": "77454693d8f10dd23bb24955cffd2d82db1007a6"
+                "reference": "1e24b0c4a56d55aaf368763a06c6d1c7d3194934"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/77454693d8f10dd23bb24955cffd2d82db1007a6",
-                "reference": "77454693d8f10dd23bb24955cffd2d82db1007a6",
+                "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/1e24b0c4a56d55aaf368763a06c6d1c7d3194934",
+                "reference": "1e24b0c4a56d55aaf368763a06c6d1c7d3194934",
                 "shasum": ""
             },
             "require": {
-                "paragonie/random_compat": "~1.0|~2.0",
+                "paragonie/random_compat": "~1.0|~2.0|~9.99",
                 "php": ">=5.3.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.8-dev"
+                    "dev-master": "1.9-dev"
                 }
             },
             "autoload": {
@@ -4035,20 +4186,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-04-26T10:06:28+00:00"
+            "time": "2018-08-06T14:22:27+00:00"
         },
         {
             "name": "symfony/polyfill-util",
-            "version": "v1.8.0",
+            "version": "v1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-util.git",
-                "reference": "1a5ad95d9436cbff3296034fe9f8d586dce3fb3a"
+                "reference": "8e15d04ba3440984d23e7964b2ee1d25c8de1581"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/1a5ad95d9436cbff3296034fe9f8d586dce3fb3a",
-                "reference": "1a5ad95d9436cbff3296034fe9f8d586dce3fb3a",
+                "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/8e15d04ba3440984d23e7964b2ee1d25c8de1581",
+                "reference": "8e15d04ba3440984d23e7964b2ee1d25c8de1581",
                 "shasum": ""
             },
             "require": {
@@ -4057,7 +4208,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.8-dev"
+                    "dev-master": "1.9-dev"
                 }
             },
             "autoload": {
@@ -4087,7 +4238,7 @@
                 "polyfill",
                 "shim"
             ],
-            "time": "2018-04-26T10:06:28+00:00"
+            "time": "2018-08-06T14:22:27+00:00"
         },
         {
             "name": "symfony/process",
@@ -4797,6 +4948,56 @@
                 "templating"
             ],
             "time": "2018-07-13T07:12:17+00:00"
+        },
+        {
+            "name": "webmozart/assert",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webmozart/assert.git",
+                "reference": "0df1908962e7a3071564e857d86874dad1ef204a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webmozart/assert/zipball/0df1908962e7a3071564e857d86874dad1ef204a",
+                "reference": "0df1908962e7a3071564e857d86874dad1ef204a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3.3 || ^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.6",
+                "sebastian/version": "^1.0.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Webmozart\\Assert\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bernhard Schussek",
+                    "email": "bschussek@gmail.com"
+                }
+            ],
+            "description": "Assertions to validate method input/output with nice error messages.",
+            "keywords": [
+                "assert",
+                "check",
+                "validate"
+            ],
+            "time": "2018-01-29T19:49:41+00:00"
         },
         {
             "name": "willdurand/negotiation",
@@ -6351,158 +6552,6 @@
             "time": "2017-03-05T17:38:23+00:00"
         },
         {
-            "name": "phpdocumentor/reflection-common",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpDocumentor/ReflectionCommon.git",
-                "reference": "21bdeb5f65d7ebf9f43b1b25d404f87deab5bfb6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionCommon/zipball/21bdeb5f65d7ebf9f43b1b25d404f87deab5bfb6",
-                "reference": "21bdeb5f65d7ebf9f43b1b25d404f87deab5bfb6",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.6"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "phpDocumentor\\Reflection\\": [
-                        "src"
-                    ]
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jaap van Otterdijk",
-                    "email": "opensource@ijaap.nl"
-                }
-            ],
-            "description": "Common reflection classes used by phpdocumentor to reflect the code structure",
-            "homepage": "http://www.phpdoc.org",
-            "keywords": [
-                "FQSEN",
-                "phpDocumentor",
-                "phpdoc",
-                "reflection",
-                "static analysis"
-            ],
-            "time": "2017-09-11T18:02:19+00:00"
-        },
-        {
-            "name": "phpdocumentor/reflection-docblock",
-            "version": "4.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "94fd0001232e47129dd3504189fa1c7225010d08"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/94fd0001232e47129dd3504189fa1c7225010d08",
-                "reference": "94fd0001232e47129dd3504189fa1c7225010d08",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.0",
-                "phpdocumentor/reflection-common": "^1.0.0",
-                "phpdocumentor/type-resolver": "^0.4.0",
-                "webmozart/assert": "^1.0"
-            },
-            "require-dev": {
-                "doctrine/instantiator": "~1.0.5",
-                "mockery/mockery": "^1.0",
-                "phpunit/phpunit": "^6.4"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "phpDocumentor\\Reflection\\": [
-                        "src/"
-                    ]
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mike van Riel",
-                    "email": "me@mikevanriel.com"
-                }
-            ],
-            "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
-            "time": "2017-11-30T07:14:17+00:00"
-        },
-        {
-            "name": "phpdocumentor/type-resolver",
-            "version": "0.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "9c977708995954784726e25d0cd1dddf4e65b0f7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/9c977708995954784726e25d0cd1dddf4e65b0f7",
-                "reference": "9c977708995954784726e25d0cd1dddf4e65b0f7",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.5 || ^7.0",
-                "phpdocumentor/reflection-common": "^1.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "^0.9.4",
-                "phpunit/phpunit": "^5.2||^4.8.24"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "phpDocumentor\\Reflection\\": [
-                        "src/"
-                    ]
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mike van Riel",
-                    "email": "me@mikevanriel.com"
-                }
-            ],
-            "time": "2017-07-14T14:27:02+00:00"
-        },
-        {
             "name": "phpmd/phpmd",
             "version": "2.6.0",
             "source": {
@@ -6570,16 +6619,16 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.7.6",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "33a7e3c4fda54e912ff6338c48823bd5c0f0b712"
+                "reference": "4ba436b55987b4bf311cb7c6ba82aa528aac0a06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/33a7e3c4fda54e912ff6338c48823bd5c0f0b712",
-                "reference": "33a7e3c4fda54e912ff6338c48823bd5c0f0b712",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/4ba436b55987b4bf311cb7c6ba82aa528aac0a06",
+                "reference": "4ba436b55987b4bf311cb7c6ba82aa528aac0a06",
                 "shasum": ""
             },
             "require": {
@@ -6591,12 +6640,12 @@
             },
             "require-dev": {
                 "phpspec/phpspec": "^2.5|^3.2",
-                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.5"
+                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.5 || ^7.1"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.7.x-dev"
+                    "dev-master": "1.8.x-dev"
                 }
             },
             "autoload": {
@@ -6629,7 +6678,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2018-04-18T13:57:24+00:00"
+            "time": "2018-08-05T17:53:17+00:00"
         },
         {
             "name": "phpstan/phpdoc-parser",
@@ -6679,16 +6728,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.10.2",
+            "version": "0.10.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "d69658794514e57ad9f247e623513397038f362f"
+                "reference": "dc62f78c9aa6e9f7c44e8d6518f1123cd1e1b1c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/d69658794514e57ad9f247e623513397038f362f",
-                "reference": "d69658794514e57ad9f247e623513397038f362f",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/dc62f78c9aa6e9f7c44e8d6518f1123cd1e1b1c0",
+                "reference": "dc62f78c9aa6e9f7c44e8d6518f1123cd1e1b1c0",
                 "shasum": ""
             },
             "require": {
@@ -6744,7 +6793,7 @@
                 "MIT"
             ],
             "description": "PHPStan - PHP Static Analysis Tool",
-            "time": "2018-07-22T17:55:11+00:00"
+            "time": "2018-08-12T15:14:21+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -6997,16 +7046,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "6.5.9",
+            "version": "6.5.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "093ca5508174cd8ab8efe44fd1dde447adfdec8f"
+                "reference": "7bab54cb366076023bbf457a2a0d513332cd40f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/093ca5508174cd8ab8efe44fd1dde447adfdec8f",
-                "reference": "093ca5508174cd8ab8efe44fd1dde447adfdec8f",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/7bab54cb366076023bbf457a2a0d513332cd40f2",
+                "reference": "7bab54cb366076023bbf457a2a0d513332cd40f2",
                 "shasum": ""
             },
             "require": {
@@ -7024,7 +7073,7 @@
                 "phpunit/php-file-iterator": "^1.4.3",
                 "phpunit/php-text-template": "^1.2.1",
                 "phpunit/php-timer": "^1.0.9",
-                "phpunit/phpunit-mock-objects": "^5.0.5",
+                "phpunit/phpunit-mock-objects": "^5.0.9",
                 "sebastian/comparator": "^2.1",
                 "sebastian/diff": "^2.0",
                 "sebastian/environment": "^3.1",
@@ -7077,20 +7126,20 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-07-03T06:40:40+00:00"
+            "time": "2018-08-07T07:05:35+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
-            "version": "5.0.8",
+            "version": "5.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "6f9a3c8bf34188a2b53ce2ae7a126089c53e0a9f"
+                "reference": "cd1cf05c553ecfec36b170070573e540b67d3f1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/6f9a3c8bf34188a2b53ce2ae7a126089c53e0a9f",
-                "reference": "6f9a3c8bf34188a2b53ce2ae7a126089c53e0a9f",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/cd1cf05c553ecfec36b170070573e540b67d3f1f",
+                "reference": "cd1cf05c553ecfec36b170070573e540b67d3f1f",
                 "shasum": ""
             },
             "require": {
@@ -7103,7 +7152,7 @@
                 "phpunit/phpunit": "<6.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.5"
+                "phpunit/phpunit": "^6.5.11"
             },
             "suggest": {
                 "ext-soap": "*"
@@ -7136,7 +7185,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2018-07-13T03:27:23+00:00"
+            "time": "2018-08-09T05:50:03+00:00"
         },
         {
             "name": "roave/better-reflection",
@@ -8176,12 +8225,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-generator.git",
-                "reference": "587192cab353cb7acd2186bbd6513369924315e7"
+                "reference": "01176bf9141b844960949897d4177dcb6e405a55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-generator/zipball/587192cab353cb7acd2186bbd6513369924315e7",
-                "reference": "587192cab353cb7acd2186bbd6513369924315e7",
+                "url": "https://api.github.com/repos/spryker/code-generator/zipball/01176bf9141b844960949897d4177dcb6e405a55",
+                "reference": "01176bf9141b844960949897d4177dcb6e405a55",
                 "shasum": ""
             },
             "require": {
@@ -8209,7 +8258,7 @@
                 "MIT"
             ],
             "description": "CodeGenerator module",
-            "time": "2018-05-09T16:07:48+00:00"
+            "time": "2018-08-09T13:10:30+00:00"
         },
         {
             "name": "spryker/code-sniffer",
@@ -8217,12 +8266,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "55290e534acfc6db4fbf8b834496af0e588c0d1c"
+                "reference": "65d62cdc80279bf05cdd98ff9c315d139699a03d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/55290e534acfc6db4fbf8b834496af0e588c0d1c",
-                "reference": "55290e534acfc6db4fbf8b834496af0e588c0d1c",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/65d62cdc80279bf05cdd98ff9c315d139699a03d",
+                "reference": "65d62cdc80279bf05cdd98ff9c315d139699a03d",
                 "shasum": ""
             },
             "require": {
@@ -8261,7 +8310,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-07-23T07:42:49+00:00"
+            "time": "2018-08-08T10:04:01+00:00"
         },
         {
             "name": "spryker/development-core",
@@ -8269,7 +8318,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "f703db0b65a74891f1fea0cd7b115a048c867c86"
+                "reference": "fb4722978c171878086e85c8479251f4bf90dbfe"
             },
             "require": {
                 "spryker/development": "@stable"
@@ -8306,7 +8355,7 @@
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2018-07-30T13:02:45+00:00"
+            "time": "2018-08-13T09:51:38+00:00"
         },
         {
             "name": "spryker/git-hook",
@@ -8366,7 +8415,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryk.git",
-                "reference": "e97b902d3d69c6747fa5d41eca72e65f2c418c7e"
+                "reference": "f31444ecc2a3b88e79f250bc91fd673b03b2b13c"
             },
             "require": {
                 "php": ">=7.1",
@@ -8422,7 +8471,7 @@
                 "MIT"
             ],
             "description": "Spryker Spryk build tool",
-            "time": "2018-07-27T12:04:15+00:00"
+            "time": "2018-08-13T07:21:52+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -8760,16 +8809,16 @@
         },
         {
             "name": "symfony/polyfill-php72",
-            "version": "v1.8.0",
+            "version": "v1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php72.git",
-                "reference": "a4576e282d782ad82397f3e4ec1df8e0f0cafb46"
+                "reference": "95c50420b0baed23852452a7f0c7b527303ed5ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/a4576e282d782ad82397f3e4ec1df8e0f0cafb46",
-                "reference": "a4576e282d782ad82397f3e4ec1df8e0f0cafb46",
+                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/95c50420b0baed23852452a7f0c7b527303ed5ae",
+                "reference": "95c50420b0baed23852452a7f0c7b527303ed5ae",
                 "shasum": ""
             },
             "require": {
@@ -8778,7 +8827,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.8-dev"
+                    "dev-master": "1.9-dev"
                 }
             },
             "autoload": {
@@ -8811,7 +8860,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-04-26T10:06:28+00:00"
+            "time": "2018-08-06T14:22:27+00:00"
         },
         {
             "name": "symfony/stopwatch",
@@ -9074,56 +9123,6 @@
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
             "time": "2017-04-07T12:08:54+00:00"
-        },
-        {
-            "name": "webmozart/assert",
-            "version": "1.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/webmozart/assert.git",
-                "reference": "0df1908962e7a3071564e857d86874dad1ef204a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/0df1908962e7a3071564e857d86874dad1ef204a",
-                "reference": "0df1908962e7a3071564e857d86874dad1ef204a",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.3.3 || ^7.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.6",
-                "sebastian/version": "^1.0.1"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.3-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Webmozart\\Assert\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Bernhard Schussek",
-                    "email": "bschussek@gmail.com"
-                }
-            ],
-            "description": "Assertions to validate method input/output with nice error messages.",
-            "keywords": [
-                "assert",
-                "check",
-                "validate"
-            ],
-            "time": "2018-01-29T19:49:41+00:00"
         }
     ],
     "aliases": [],
