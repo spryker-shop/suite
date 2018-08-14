@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "97527658ab491552a6d6b5eeed0645ef",
+    "content-hash": "16d057c841bf6760afce666b84f7beec",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -1998,7 +1998,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -2628,12 +2628,47 @@
             "time": "2018-08-09T12:54:53+00:00"
         },
         {
+            "name": "spryker/ramsey-uuid",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/ramsey-uuid.git",
+                "reference": "622d58c423fcae4facf128eb09401a9dc0142578"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/ramsey-uuid/zipball/622d58c423fcae4facf128eb09401a9dc0142578",
+                "reference": "622d58c423fcae4facf128eb09401a9dc0142578",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "ramsey/uuid": "^3.8.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "RamseyUuid module",
+            "time": "2018-07-25T11:16:07+00:00"
+        },
+        {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/ps-2606/dev-bu-yves-improvement",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "fe5582521122b13f84c81de62898b82ef80dc327"
+                "reference": "43d2b79bc450fa2e891f24f2c81d7822ce8f1779"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2827,7 +2862,6 @@
                 "spryker/propel-orm": "*",
                 "spryker/queue": "*",
                 "spryker/quote": "*",
-                "spryker/ramsey-uuid": "*",
                 "spryker/ratepay": "*",
                 "spryker/redis": "*",
                 "spryker/refund": "*",
@@ -2868,7 +2902,6 @@
                 "spryker/util-network": "*",
                 "spryker/util-sanitize": "*",
                 "spryker/util-text": "*",
-                "spryker/util-uuid-generator": "*",
                 "spryker/util-validate": "*",
                 "spryker/wishlist": "*",
                 "spryker/zed-navigation": "*",
@@ -2898,15 +2931,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-08-13T14:15:57+00:00"
+            "time": "2018-07-31T21:44:58+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/ps-2606/dev-bu-yves-improvement",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "debb6954d62ec285e13e4746842d1cc5bf943477"
+                "reference": "6c90717113bfae46afe3dec66b42195845360476"
             },
             "require": {
                 "php": ">=7.1"
@@ -2981,7 +3014,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-08-13T12:09:48+00:00"
+            "time": "2018-08-14T09:01:54+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -3033,6 +3066,47 @@
             ],
             "description": "SynchronizationBehavior module",
             "time": "2018-08-02T10:10:13+00:00"
+        },
+        {
+            "name": "spryker/util-uuid-generator",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/util-uuid-generator.git",
+                "reference": "060829b2e2449be8247b0b2ffe116d406dc518fe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/util-uuid-generator/zipball/060829b2e2449be8247b0b2ffe116d406dc518fe",
+                "reference": "060829b2e2449be8247b0b2ffe116d406dc518fe",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.0.0",
+                "spryker/ramsey-uuid": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "UtilUuidGenerator module",
+            "time": "2018-07-26T08:59:06+00:00"
         },
         {
             "name": "spryker/uuid-behavior",
@@ -5831,45 +5905,34 @@
         },
         {
             "name": "facebook/webdriver",
-            "version": "1.6.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facebook/php-webdriver.git",
-                "reference": "bd8c740097eb9f2fc3735250fc1912bc811a954e"
+                "reference": "77300c4ab2025d4316635f592ec849ca7323bd8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/bd8c740097eb9f2fc3735250fc1912bc811a954e",
-                "reference": "bd8c740097eb9f2fc3735250fc1912bc811a954e",
+                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/77300c4ab2025d4316635f592ec849ca7323bd8c",
+                "reference": "77300c4ab2025d4316635f592ec849ca7323bd8c",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
-                "ext-json": "*",
-                "ext-mbstring": "*",
-                "ext-zip": "*",
-                "php": "^5.6 || ~7.0",
-                "symfony/process": "^2.8 || ^3.1 || ^4.0"
+                "php": "^5.5 || ~7.0",
+                "symfony/process": "^2.8 || ^3.1"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.0",
-                "jakub-onderka/php-parallel-lint": "^0.9.2",
-                "php-coveralls/php-coveralls": "^2.0",
+                "friendsofphp/php-cs-fixer": "^1.11",
                 "php-mock/php-mock-phpunit": "^1.1",
-                "phpunit/phpunit": "^5.7",
-                "sebastian/environment": "^1.3.4 || ^2.0 || ^3.0",
-                "squizlabs/php_codesniffer": "^2.6",
-                "symfony/var-dumper": "^3.3 || ^4.0"
+                "phpunit/phpunit": "4.6.* || ~5.0",
+                "satooshi/php-coveralls": "^1.0",
+                "squizlabs/php_codesniffer": "^2.6"
             },
             "suggest": {
-                "ext-SimpleXML": "For Firefox profile creation"
+                "phpdocumentor/phpdocumentor": "2.*"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-community": "1.5-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Facebook\\WebDriver\\": "lib/"
@@ -5879,7 +5942,7 @@
             "license": [
                 "Apache-2.0"
             ],
-            "description": "A PHP client for Selenium WebDriver",
+            "description": "A PHP client for WebDriver",
             "homepage": "https://github.com/facebook/php-webdriver",
             "keywords": [
                 "facebook",
@@ -5887,7 +5950,7 @@
                 "selenium",
                 "webdriver"
             ],
-            "time": "2018-05-16T17:37:13+00:00"
+            "time": "2017-01-13T15:48:08+00:00"
         },
         {
             "name": "jakoch/phantomjs-installer",
@@ -6112,7 +6175,7 @@
                 "configurator",
                 "nette"
             ],
-            "time": "2018-05-17T12:52:20+00:00"
+            "time": "2018-05-16T11:51:51+00:00"
         },
         {
             "name": "nette/di",
@@ -6366,7 +6429,7 @@
                 "php",
                 "scaffolding"
             ],
-            "time": "2018-04-26T16:47:39+00:00"
+            "time": "2018-04-26T09:21:21+00:00"
         },
         {
             "name": "nette/robot-loader",
@@ -6653,7 +6716,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-13T13:21:38+00:00"
+            "time": "2017-12-12T17:28:44+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -8321,12 +8384,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/architecture-sniffer.git",
-                "reference": "2f359eeb7a6d5673a369f6587666b6cf1d73ec95"
+                "reference": "1f6a94fa6fd65e60b5becce0d493868253363092"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/2f359eeb7a6d5673a369f6587666b6cf1d73ec95",
-                "reference": "2f359eeb7a6d5673a369f6587666b6cf1d73ec95",
+                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/1f6a94fa6fd65e60b5becce0d493868253363092",
+                "reference": "1f6a94fa6fd65e60b5becce0d493868253363092",
                 "shasum": ""
             },
             "require": {
@@ -8367,7 +8430,7 @@
                 "sniffer",
                 "standards"
             ],
-            "time": "2018-07-19T08:12:18+00:00"
+            "time": "2018-08-14T08:02:25+00:00"
         },
         {
             "name": "spryker/code-generator",
@@ -8513,12 +8576,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/git-hook.git",
-                "reference": "bc83bcec548316c5e10c3faecca825aa8be40ac6"
+                "reference": "329a1c10f401a1410f7b767fa271591ed46ebdf0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/git-hook/zipball/bc83bcec548316c5e10c3faecca825aa8be40ac6",
-                "reference": "bc83bcec548316c5e10c3faecca825aa8be40ac6",
+                "url": "https://api.github.com/repos/spryker/git-hook/zipball/329a1c10f401a1410f7b767fa271591ed46ebdf0",
+                "reference": "329a1c10f401a1410f7b767fa271591ed46ebdf0",
                 "shasum": ""
             },
             "require": {
@@ -8557,7 +8620,7 @@
                 "sniffer",
                 "standards"
             ],
-            "time": "2018-07-30T09:51:34+00:00"
+            "time": "2018-08-14T08:01:48+00:00"
         },
         {
             "name": "spryker/spryk",
@@ -8565,7 +8628,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryk.git",
-                "reference": "f31444ecc2a3b88e79f250bc91fd673b03b2b13c"
+                "reference": "3953add8343a7c1d54ababf3db05edf347d8de11"
             },
             "require": {
                 "php": ">=7.1",
@@ -8621,7 +8684,7 @@
                 "MIT"
             ],
             "description": "Spryker Spryk build tool",
-            "time": "2018-08-13T07:21:52+00:00"
+            "time": "2018-08-14T07:58:52+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
