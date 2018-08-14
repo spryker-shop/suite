@@ -16,6 +16,6 @@ class EventConfig extends SprykerEventConfig
      */
     public function getEventQueueMessageChunkSize()
     {
-        return 5000;
+        return 200;
     }
 }

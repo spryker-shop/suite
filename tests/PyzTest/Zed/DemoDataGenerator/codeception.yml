@@ -1,0 +1,25 @@
+namespace: PyzTest\Zed\DemoDataGenerator
+
+paths:
+    tests: .
+    data: _data
+    support: _support
+    log: _output
+
+coverage:
+    enabled: true
+    remote: false
+    whitelist: { include: ['../../../../src/*'] }
+
+suites:
+    Communication:
+        path: Communication
+        class_name: DemoDataGeneratorTester
+        modules:
+            enabled:
+                - Asserts
+                - Filesystem
+                - \SprykerTest\Shared\Testify\Helper\Environment
+                - \SprykerTest\Shared\Testify\Helper\ConfigHelper
+                - \SprykerTest\Shared\Testify\Helper\LocatorHelper:
+                    projectNamespaces: ['Pyz']

@@ -8,6 +8,7 @@
 namespace Pyz\Zed\Console;
 
 use Pyz\Zed\DataImport\DataImportConfig;
+use Pyz\Zed\DemoDataGenerator\Communication\Console\DemoDataGeneratorConsole;
 use Silex\Provider\TwigServiceProvider as SilexTwigServiceProvider;
 use Spryker\Shared\Config\Environment;
 use Spryker\Spryk\Console\SprykDumpConsole;
@@ -232,6 +233,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new SearchCreateSnapshotConsole(),
             new SearchRestoreSnapshotConsole(),
             new SearchCopyIndexConsole(),
+            new DemoDataGeneratorConsole(),
 
             new InstallPackageManagerConsole(),
             new CleanUpDependenciesConsole(),
