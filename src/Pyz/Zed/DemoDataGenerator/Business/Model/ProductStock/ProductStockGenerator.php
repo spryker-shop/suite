@@ -83,7 +83,7 @@ class ProductStockGenerator extends AbstractGenerator implements ProductStockGen
      */
     protected function readStockFromCsv(): array
     {
-        return $this->getFileManager()->readColumn($this->getConfig()->getStockCsvPath(), 1, 0);
+        return $this->getFileManager()->readColumn($this->getConfig()->getStockCsvPath(), 0, 0);
     }
 
     /**
@@ -98,7 +98,7 @@ class ProductStockGenerator extends AbstractGenerator implements ProductStockGen
             'name' => $this->getStockName(),
             'quantity' => $stockProductTransfer->getQuantity(),
             'is_never_out_of_stock' => $stockProductTransfer->getIsNeverOutOfStock(),
-            'is_bundle' => rand(0, 1),
+            'is_bundle' => random_int(0, 1),
         ];
 
         return $row;
@@ -128,7 +128,7 @@ class ProductStockGenerator extends AbstractGenerator implements ProductStockGen
         $maxIndex = max(array_keys($stockNames));
 
         if ($maxIndex) {
-            $randomIndex = rand($minIndex, $maxIndex);
+            $randomIndex = random_int($minIndex, $maxIndex);
             return $stockNames[$randomIndex];
         }
     }
