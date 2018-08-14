@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "157422abf2b0f477df5aa64bfc744581",
+    "content-hash": "bbbbb27fc7f4fa8f154f6e6a5908b6ff",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -2483,53 +2483,6 @@
             "time": "2018-07-23T08:13:08+00:00"
         },
         {
-            "name": "spryker/glue-application-extension",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/glue-application-extension.git",
-                "reference": "814394259c86e6728dfad5d9a952d8bf22bccd3f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/glue-application-extension/zipball/814394259c86e6728dfad5d9a952d8bf22bccd3f",
-                "reference": "814394259c86e6728dfad5d9a952d8bf22bccd3f",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/glue-application": "*",
-                "spryker/kernel": "*",
-                "spryker/symfony": "*",
-                "spryker/testify": "*"
-            },
-            "suggest": {
-                "spryker/glue-application": "If you want to use plugins with glue application.",
-                "spryker/kernel": "If you want to use kernel functionality with certain plugins",
-                "spryker/symfony": "If you want to plugins with symfony components."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "GlueApplicationExtension module",
-            "time": "2018-07-11T08:13:38+00:00"
-        },
-        {
             "name": "spryker/install",
             "version": "dev-master",
             "source": {
@@ -2638,7 +2591,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "1e4ed12359955c0dff5fbd21cbdb35bccdc508d1"
+                "reference": "2fbbb562540f32c6b4cc257439378b1a1437a2c0"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2903,7 +2856,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-08-13T13:22:56+00:00"
+            "time": "2018-08-14T09:34:44+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2987,56 +2940,6 @@
             ],
             "description": "Spryker Shop page and widget modules",
             "time": "2018-08-13T12:09:48+00:00"
-        },
-        {
-            "name": "spryker/swagger-generator",
-            "version": "dev-feature/glue-588/dev-generate-api-code-for-swagger",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:spryker/swagger-generator.git",
-                "reference": "9429e256f915e42dba0a19c9a06543060e237583"
-            },
-            "require": {
-                "php": "^7.1",
-                "spryker/config": "^3.0.0",
-                "spryker/glue-application": "^1.0.0",
-                "spryker/glue-application-extension": "^1.0.0",
-                "spryker/kernel": "^3.22.0",
-                "spryker/symfony": "^3.0.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "SprykerTest\\": "tests/SprykerTest/"
-                }
-            },
-            "scripts": {
-                "cs-check": [
-                    "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v --ignore=/uuid-behavior/vendor/,/templates/ ./"
-                ],
-                "cs-fix": [
-                    "phpcbf --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v --ignore=/uuid-behavior/vendor/,/templates/ ./"
-                ]
-            },
-            "license": [
-                "proprietary"
-            ],
-            "description": "SwaggerGenerator module",
-            "time": "2018-08-13T13:31:32+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -9231,7 +9134,6 @@
         "spryker/rabbit-mq": 20,
         "spryker/install": 20,
         "spryker/event-behavior": 20,
-        "spryker/swagger-generator": 20,
         "spryker/synchronization-behavior": 20,
         "spryker/architecture-sniffer": 20,
         "spryker/code-generator": 20,

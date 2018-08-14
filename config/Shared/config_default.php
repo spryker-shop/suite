@@ -38,7 +38,6 @@ use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\SequenceNumber\SequenceNumberConstants;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\Storage\StorageConstants;
-use Spryker\Shared\SwaggerGenerator\SwaggerGeneratorConstants;
 use Spryker\Shared\Tax\TaxConstants;
 use Spryker\Shared\Twig\TwigConstants;
 use Spryker\Shared\User\UserConstants;
@@ -48,6 +47,7 @@ use Spryker\Yves\Log\Plugin\YvesLoggerConfigPlugin;
 use Spryker\Zed\Log\Communication\Plugin\ZedLoggerConfigPlugin;
 use Spryker\Zed\Oms\OmsConfig;
 use Spryker\Zed\Propel\PropelConfig;
+use Spryker\Zed\SwaggerGenerator\SwaggerGeneratorConfig;
 use SprykerEco\Shared\Loggly\LogglyConstants;
 
 $CURRENT_STORE = Store::getInstance()->getStoreName();
@@ -456,4 +456,7 @@ $config[MonitoringConstants::IGNORABLE_TRANSACTIONS] = [
 ];
 
 // ---------- SwaggerGenerator
-$config[SwaggerGeneratorConstants::SWAGGER_GENERATOR_FILE_NAME] = 'spryker_rest_api';
+$config[SwaggerGeneratorConfig::SWAGGER_GENERATOR_FILE_NAME] = 'spryker_rest_api';
+$config[SwaggerGeneratorConfig::SWAGGER_GENERATOR_INFO_VERSION] = '1.0.0';
+$config[SwaggerGeneratorConfig::SWAGGER_GENERATOR_INFO_TITLE] = 'Spryker REST API';
+$config[SwaggerGeneratorConfig::SWAGGER_GENERATOR_INFO_LICENCE_NAME] = 'MIT';
