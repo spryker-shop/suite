@@ -10,7 +10,8 @@ namespace Pyz\Zed\ProductPageSearch;
 use Spryker\Shared\ProductLabelSearch\ProductLabelSearchConfig;
 use Spryker\Shared\ProductListSearch\ProductListSearchConfig;
 use Spryker\Shared\ProductReviewSearch\ProductReviewSearchConfig;
-use Spryker\Zed\ProductLabelSearch\Communication\Plugin\PageDataExpander\ProductLabelDataExpanderPlugin;
+use Spryker\Zed\ProductLabelSearch\Communication\Plugin\PageDataExpander\ProductLabelDataLoaderExpanderPlugin;
+use Spryker\Zed\ProductLabelSearch\Communication\Plugin\PageDataLoader\ProductLabelPageDataLoaderPlugin;
 use Spryker\Zed\ProductLabelSearch\Communication\Plugin\PageMapExpander\ProductLabelMapExpanderPlugin;
 use Spryker\Zed\ProductListSearch\Communication\Plugin\ProductPageSearch\ProductListDataExpanderPlugin;
 use Spryker\Zed\ProductListSearch\Communication\Plugin\ProductPageSearch\ProductListMapExpanderPlugin;
@@ -30,7 +31,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     protected function getDataExpanderPlugins()
     {
         $dataExpanderPlugins = parent::getDataExpanderPlugins();
-        $dataExpanderPlugins[ProductLabelSearchConfig::PLUGIN_PRODUCT_LABEL_DATA] = new ProductLabelDataExpanderPlugin();
+        $dataExpanderPlugins[ProductLabelSearchConfig::PLUGIN_PRODUCT_LABEL_DATA] = new ProductLabelDataLoaderExpanderPlugin();
         $dataExpanderPlugins[ProductReviewSearchConfig::PLUGIN_PRODUCT_PAGE_RATING_DATA] = new ProductReviewDataExpanderPlugin();
         $dataExpanderPlugins[ProductListSearchConfig::PLUGIN_PRODUCT_LIST_DATA] = new ProductListDataExpanderPlugin();
         $dataExpanderPlugins[static::PLUGIN_PRODUCT_CATEGORY_PAGE_DATA] = new ProductCategoryPageDataLoaderExpanderPlugin();
@@ -50,5 +51,15 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
         $mapExpanderPlugins[] = new ProductListMapExpanderPlugin();
 
         return $mapExpanderPlugins;
+    }
+
+    /**
+     * @return \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductPageDataLoaderPluginInterface[]
+     */
+    protected function getDataLoaderPlugins()
+    {
+        return array_merge([
+            new ProductLabelPageDataLoaderPlugin(),
+        ], parent::getDataLoaderPlugins());
     }
 }
