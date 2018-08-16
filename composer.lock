@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "05574e8f7931a3866d45f97b068da7d4",
+    "content-hash": "97527658ab491552a6d6b5eeed0645ef",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -2587,11 +2587,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-remove-braintree",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "69f18e4676eee079d4a4356af683fc4631acf537"
+                "reference": "a63ab1024693c419c809dfd0e0ba483a5ee09ed7"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2610,6 +2610,7 @@
                 "spryker/availability-cart-connector": "*",
                 "spryker/availability-gui": "*",
                 "spryker/availability-storage": "*",
+                "spryker/braintree": "*",
                 "spryker/business-on-behalf": "*",
                 "spryker/business-on-behalf-data-import": "*",
                 "spryker/cache": "*",
@@ -2767,6 +2768,7 @@
                 "spryker/product-relation": "*",
                 "spryker/product-relation-collector": "*",
                 "spryker/product-relation-storage": "*",
+                "spryker/product-resource-alias-storage": "*",
                 "spryker/product-review": "*",
                 "spryker/product-review-collector": "*",
                 "spryker/product-review-gui": "*",
@@ -2780,6 +2782,7 @@
                 "spryker/product-set-page-search": "*",
                 "spryker/product-set-storage": "*",
                 "spryker/product-storage": "*",
+                "spryker/products-rest-api": "*",
                 "spryker/propel": "*",
                 "spryker/propel-orm": "*",
                 "spryker/queue": "*",
@@ -2855,7 +2858,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-08-16T09:50:48+00:00"
+            "time": "2018-08-16T12:24:39+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5574,16 +5577,16 @@
         },
         {
             "name": "composer/xdebug-handler",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/xdebug-handler.git",
-                "reference": "c919dc6c62e221fc6406f861ea13433c0aa24f08"
+                "reference": "e1809da56ce1bd1b547a752936817341ac244d8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/c919dc6c62e221fc6406f861ea13433c0aa24f08",
-                "reference": "c919dc6c62e221fc6406f861ea13433c0aa24f08",
+                "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/e1809da56ce1bd1b547a752936817341ac244d8e",
+                "reference": "e1809da56ce1bd1b547a752936817341ac244d8e",
                 "shasum": ""
             },
             "require": {
@@ -5614,7 +5617,7 @@
                 "Xdebug",
                 "performance"
             ],
-            "time": "2018-04-11T15:42:36+00:00"
+            "time": "2018-08-16T10:54:23+00:00"
         },
         {
             "name": "doctrine/instantiator",
@@ -6207,7 +6210,7 @@
                 "php",
                 "scaffolding"
             ],
-            "time": "2018-04-26T09:21:21+00:00"
+            "time": "2018-04-26T16:47:39+00:00"
         },
         {
             "name": "nette/robot-loader",
