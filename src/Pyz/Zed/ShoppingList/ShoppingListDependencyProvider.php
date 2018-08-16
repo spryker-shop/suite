@@ -42,7 +42,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     protected function getShoppingListItemPostSavePlugins(): array
     {
         return [
-            new ShoppingListItemNotePostSavePlugin(),
+            new ShoppingListItemNotePostSavePlugin(), #ShoppingListNoteFeature
         ];
     }
 
@@ -52,7 +52,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     protected function getBeforeDeleteShoppingListItemPlugins(): array
     {
         return [
-            new ShoppingListItemNoteBeforeDeletePlugin(),
+            new ShoppingListItemNoteBeforeDeletePlugin(), #ShoppingListNoteFeature
         ];
     }
 
@@ -62,7 +62,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     protected function getItemExpanderPlugins(): array
     {
         return [
-            new ShoppingListItemExpanderPlugin(),
+            new ShoppingListItemExpanderPlugin(), #ShoppingListNoteFeature
         ];
     }
 }
