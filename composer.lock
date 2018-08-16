@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7792fd3cb7922b53f05f0af3d0344952",
+    "content-hash": "62e29756deae606dfbbc05616a73c0fa",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -2439,11 +2439,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/glue-381/dev-customers-api",
+            "version": "dev-feature/glue-381/glue-386-delete-addresses",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "04223d08fecd67708fb4c5a11540f18d56ae9552"
+                "reference": "5ef0d62c124150d38e913637b02d9c64b84588b4"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2708,7 +2708,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-08-01T08:16:42+00:00"
+            "time": "2018-08-16T10:09:12+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2843,6 +2843,51 @@
             ],
             "description": "SynchronizationBehavior module",
             "time": "2018-07-23T08:13:22+00:00"
+        },
+        {
+            "name": "spryker/uuid-behavior",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/uuid-behavior.git",
+                "reference": "1416c5c522d6cee15f7c613f29511b6b759f6745"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/uuid-behavior/zipball/1416c5c522d6cee15f7c613f29511b6b759f6745",
+                "reference": "1416c5c522d6cee15f7c613f29511b6b759f6745",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.0.0",
+                "spryker/propel-orm": "^1.6.0",
+                "spryker/util-uuid-generator": "^1.0.0",
+                "spryker/zend": "^2.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "propel-behavior",
+            "extra": {
+                "name": "uuid",
+                "class": "\\Spryker\\Zed\\UuidBehavior\\Persistence\\Propel\\Behavior\\UuidBehavior",
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "UuidBehavior module",
+            "time": "2018-08-02T10:25:32+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
