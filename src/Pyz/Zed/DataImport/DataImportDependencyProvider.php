@@ -205,7 +205,6 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
                 new ProductPackagingUnitTypeDataImportPlugin(),
                 new ProductPackagingUnitDataImportPlugin(),
                 new BusinessOnBehalfCompanyUserDataImportPlugin(),
-//                new PriceProductDataImportPlugin(),
                 new MerchantDataImportPlugin(),
                 new MerchantRelationshipDataImportPlugin(),
                 new PriceProductMerchantRelationshipDataImportPlugin(),
