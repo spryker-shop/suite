@@ -215,7 +215,6 @@ class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements 
         $productStockArray = $dataSet[ProductStockHydratorStep::STOCK_PRODUCT_ENTITY_TRANSFER]->modifiedToArray();
         $productStockArray[ProductStockHydratorStep::KEY_IS_BUNDLE] = $dataSet[ProductStockHydratorStep::KEY_IS_BUNDLE];
         $productStockArray[ProductStockHydratorStep::KEY_CONCRETE_SKU] = $dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU];
-        $productStockArray[ProductStockHydratorStep::KEY_CONCRETE_SKU] = $dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU];
 
         static::$stockProductCollection[] = $productStockArray;
     }
