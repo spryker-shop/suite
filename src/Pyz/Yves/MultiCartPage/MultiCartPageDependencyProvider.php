@@ -9,6 +9,7 @@ namespace Pyz\Yves\MultiCartPage;
 
 use SprykerShop\Yves\MultiCartPage\MultiCartPageDependencyProvider as SprykerMultiCartPageDependencyProvider;
 use SprykerShop\Yves\ProductBundleWidget\Plugin\MultiCartPage\ProductBundleItemCounterWidgetPlugin;
+use SprykerShop\Yves\SharedCartWidget\Plugin\MultiCartPage\CartListPermissionGroupWidgetPlugin;
 
 class MultiCartPageDependencyProvider extends SprykerMultiCartPageDependencyProvider
 {
@@ -19,6 +20,7 @@ class MultiCartPageDependencyProvider extends SprykerMultiCartPageDependencyProv
     {
         return [
             ProductBundleItemCounterWidgetPlugin::class, #ProductBundleFeature
+            CartListPermissionGroupWidgetPlugin::class, #SharedCartWidget
         ];
     }
 }
