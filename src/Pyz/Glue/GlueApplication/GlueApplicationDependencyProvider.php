@@ -19,6 +19,7 @@ use Spryker\Glue\GlueApplication\GlueApplicationDependencyProvider as SprykerGlu
 use Spryker\Glue\GlueApplication\Plugin\Rest\SetStoreCurrentLocaleBeforeActionPlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\AbstractProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\ConcreteProductsResourceRoutePlugin;
+use Spryker\Glue\StoresRestApi\Plugin\StoresResourceRoutePlugin;
 
 class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependencyProvider
 {
@@ -33,6 +34,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new AccessTokensResourceRoutePlugin(),
             new RefreshTokensResourceRoutePlugin(),
             new CatalogSearchResourceRoutePlugin(),
+            new StoresResourceRoutePlugin(),
             new CatalogSearchSuggestionsResourceRoutePlugin(),
             new CustomersResourceRoutePlugin(),
             new AbstractProductsResourceRoutePlugin(),
