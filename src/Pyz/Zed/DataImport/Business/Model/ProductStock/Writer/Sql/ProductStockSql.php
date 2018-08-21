@@ -120,19 +120,13 @@ SELECT updated.idStockProduct FROM updated UNION ALL SELECT inserted.id_stock_pr
         $sql = "WITH product_availability AS (
     SELECT
       input.sku,
-      CASE WHEN SUM(CASE WHEN ssp.is_never_out_of_stock THEN 1 ELSE 0 END) > 0 THEN TRUE 
-        ELSE FALSE END
+      CASE WHEN SUM(CASE WHEN ssp.is_never_out_of_stock THEN 1 ELSE 0 END) > 0 THEN TRUE ELSE FALSE END
       AS is_never_out_of_stock,
       CASE
       WHEN
-        (SUM(CASE WHEN ssp.is_never_out_of_stock THEN 1 ELSE 0 END) = 0) AND
-        (
-        SUM(
-                 CASE WHEN ssp.quantity IS NULL THEN 0 ELSE ssp.quantity END
-             ) - SUM(
+        SUM(CASE WHEN ssp.quantity IS NULL THEN 0 ELSE ssp.quantity END) - SUM(
             CASE WHEN spy_oms_product_reservation.reservation_quantity IS NULL THEN 0 ELSE spy_oms_product_reservation.reservation_quantity END
         ) > 0
-        )
         THEN SUM(
                  CASE WHEN ssp.quantity IS NULL THEN 0 ELSE ssp.quantity END
              ) - SUM(
@@ -200,6 +194,7 @@ SELECT updated.idStockProduct FROM updated UNION ALL SELECT inserted.id_stock_pr
         fk_store
       FROM product_abstract_availability
       WHERE idAvailabilityAbstract is null
+      ORDER BY abstract_sku
     ) RETURNING abstract_sku as abstractSku,id_availability_abstract
   ),
   product_availability_results AS (

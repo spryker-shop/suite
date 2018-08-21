@@ -31,7 +31,7 @@ class ProductAbstractSql implements ProductAbstractSqlInterface
              unnest(?::VARCHAR[]) AS colorCode,
              unnest(?::TIMESTAMP[]) AS newFrom,
              unnest(?::TIMESTAMP[]) AS newTo
-         ) input    
+         ) input
       LEFT JOIN spy_product_abstract ON spy_product_abstract.sku = input.abstract_sku
 ),
     updated AS (
@@ -72,6 +72,7 @@ class ProductAbstractSql implements ProductAbstractSqlInterface
         now()
     FROM records
     WHERE idProductAbstract is null
+    ORDER BY abstract_sku
   ) RETURNING id_product_abstract,sku
 )
 SELECT updated.id_product_abstract,sku FROM updated UNION ALL SELECT inserted.id_product_abstract,sku FROM inserted;";
