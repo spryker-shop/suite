@@ -56,7 +56,7 @@ class ProductImageCsvGeneratorPluginTest extends AbstractCsvGenerator
         $demoDataGeneratorStoreMock = $this->createDemoDataGeneratorStoreMock();
 
         $demoDataGeneratorFactoryMock = $this->getMockBuilder(DemoDataGeneratorBusinessFactory::class)
-            ->setMethods(['getConfig', 'getStore'])
+            ->setMethods(['getConfig', 'getStore', 'getStoreFacade'])
             ->getMock();
 
         $demoDataGeneratorFactoryMock
@@ -66,6 +66,10 @@ class ProductImageCsvGeneratorPluginTest extends AbstractCsvGenerator
         $demoDataGeneratorFactoryMock
             ->method('getStore')
             ->willReturn($demoDataGeneratorStoreMock);
+
+        $demoDataGeneratorFactoryMock
+            ->method('getStoreFacade')
+            ->willReturn($this->tester->getLocator()->store()->facade());
 
         return $demoDataGeneratorFactoryMock;
     }
