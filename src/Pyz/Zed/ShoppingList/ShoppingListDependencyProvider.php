@@ -40,7 +40,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     protected function getItemExpanderPlugins(): array
     {
         return [
-            new ShoppingListItemExpanderPlugin(),
+            new ShoppingListItemExpanderPlugin(), #ShoppingListNoteFeature
         ];
     }
 }
