@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\Braintree\Persistence;
+namespace Orm\Zed\FileManager\Persistence;
 
-use Orm\Zed\Braintree\Persistence\Base\SpyPaymentBraintreeOrderItem as BaseSpyPaymentBraintreeOrderItem;
+use Spryker\Zed\FileManager\Persistence\Propel\AbstractSpyFileInfoQuery as BaseSpyFileInfoQuery;
 
 /**
- * Skeleton subclass for representing a row from the 'spy_payment_braintree_order_item' table.
+ * Skeleton subclass for performing query and update operations on the 'spy_file_info' table.
  *
  *
  *
@@ -19,6 +19,6 @@ use Orm\Zed\Braintree\Persistence\Base\SpyPaymentBraintreeOrderItem as BaseSpyPa
  * long as it does not already exist in the output directory.
  *
  */
-class SpyPaymentBraintreeOrderItem extends BaseSpyPaymentBraintreeOrderItem
+class SpyFileInfoQuery extends BaseSpyFileInfoQuery
 {
 }
