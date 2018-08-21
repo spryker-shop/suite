@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\Braintree\Persistence;
+namespace Orm\Zed\ProductList\Persistence;
 
-use Orm\Zed\Braintree\Persistence\Base\SpyPaymentBraintreeQuery as BaseSpyPaymentBraintreeQuery;
+use Spryker\Zed\ProductList\Persistence\Propel\AbstractSpyProductListProductConcreteQuery as BaseSpyProductListProductConcreteQuery;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_payment_braintree' table.
+ * Skeleton subclass for performing query and update operations on the 'spy_product_list_product_concrete' table.
  *
  *
  *
@@ -19,6 +19,6 @@ use Orm\Zed\Braintree\Persistence\Base\SpyPaymentBraintreeQuery as BaseSpyPaymen
  * long as it does not already exist in the output directory.
  *
  */
-class SpyPaymentBraintreeQuery extends BaseSpyPaymentBraintreeQuery
+class SpyProductListProductConcreteQuery extends BaseSpyProductListProductConcreteQuery
 {
 }
