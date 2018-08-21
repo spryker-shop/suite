@@ -110,6 +110,7 @@ use Spryker\Zed\Storage\Communication\Console\StorageDeleteAllConsole;
 use Spryker\Zed\Storage\Communication\Console\StorageExportRdbConsole;
 use Spryker\Zed\Storage\Communication\Console\StorageImportRdbConsole;
 use Spryker\Zed\Synchronization\Communication\Console\ExportSynchronizedDataConsole;
+use Spryker\Zed\TaxSetsRestApi\Communication\Console\TaxSetsRestApiConsole;
 use Spryker\Zed\Transfer\Communication\Console\DataBuilderGeneratorConsole;
 use Spryker\Zed\Transfer\Communication\Console\GeneratorConsole;
 use Spryker\Zed\Transfer\Communication\Console\ValidatorConsole;
@@ -256,6 +257,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
             new PriceProductStoreOptimizeConsole(),
             new PriceProductMerchantRelationshipDeleteConsole(),
+
+            new TaxSetsRestApiConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();

@@ -17,8 +17,12 @@ use Spryker\Glue\CustomersRestApi\Plugin\CustomersResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\SetCustomerBeforeActionPlugin;
 use Spryker\Glue\GlueApplication\GlueApplicationDependencyProvider as SprykerGlueApplicationDependencyProvider;
 use Spryker\Glue\GlueApplication\Plugin\Rest\SetStoreCurrentLocaleBeforeActionPlugin;
+use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationshipCollectionInterface;
 use Spryker\Glue\ProductsRestApi\Plugin\AbstractProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\ConcreteProductsResourceRoutePlugin;
+use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
+use Spryker\Glue\ProductsTaxSetsResourceRelationship\Plugin\ProductsTaxSetsResourceRelationshipPlugin;
+use Spryker\Glue\TaxSetsRestApi\Plugin\TaxSetsResourceRoutePlugin;
 
 class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependencyProvider
 {
@@ -37,6 +41,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new CustomersResourceRoutePlugin(),
             new AbstractProductsResourceRoutePlugin(),
             new ConcreteProductsResourceRoutePlugin(),
+            new TaxSetsResourceRoutePlugin(),
         ];
     }
 
@@ -75,5 +80,22 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new SetStoreCurrentLocaleBeforeActionPlugin(),
             new SetCustomerBeforeActionPlugin(),
         ];
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @param \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationshipCollectionInterface $resourceRelationshipCollection
+     *
+     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationshipCollectionInterface
+     */
+    protected function getResourceRelationshipPlugins(
+        ResourceRelationshipCollectionInterface $resourceRelationshipCollection
+    ): ResourceRelationshipCollectionInterface {
+        $resourceRelationshipCollection->addRelationship(
+            ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
+            new ProductsTaxSetsResourceRelationshipPlugin()
+        );
+        return $resourceRelationshipCollection;
     }
 }
