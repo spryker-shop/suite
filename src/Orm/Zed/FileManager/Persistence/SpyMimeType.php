@@ -5,20 +5,18 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\Braintree\Persistence;
+namespace Orm\Zed\FileManager\Persistence;
 
-use Orm\Zed\Braintree\Persistence\Base\SpyPaymentBraintreeOrderItemQuery as BaseSpyPaymentBraintreeOrderItemQuery;
+use Spryker\Zed\FileManager\Persistence\Propel\AbstractSpyMimeType as BaseSpyMimeType;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_payment_braintree_order_item' table.
- *
- *
+ * Skeleton subclass for representing a row from the 'spy_mime_type' table.
  *
  * You should add additional methods to this class to meet the
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  *
  */
-class SpyPaymentBraintreeOrderItemQuery extends BaseSpyPaymentBraintreeOrderItemQuery
+class SpyMimeType extends BaseSpyMimeType
 {
 }
