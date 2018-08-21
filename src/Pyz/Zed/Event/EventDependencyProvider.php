@@ -26,6 +26,7 @@ use Spryker\Zed\ProductCategoryFilterStorage\Communication\Plugin\Event\Subscrib
 use Spryker\Zed\ProductCategoryStorage\Communication\Plugin\Event\Subscriber\ProductCategoryStorageEventSubscriber;
 use Spryker\Zed\ProductDiscontinuedStorage\Communication\Plugin\Event\Subscriber\ProductDiscontinuedStorageEventSubscriber;
 use Spryker\Zed\ProductGroupStorage\Communication\Plugin\Event\Subscriber\ProductGroupStorageEventSubscriber;
+use Spryker\Zed\ProductImageResourceAliasStorage\Communication\Plugin\Event\Subscriber\ProductImageMappingResourceStorageEventSubscriber;
 use Spryker\Zed\ProductImageStorage\Communication\Plugin\Event\Subscriber\ProductImageStorageEventSubscriber;
 use Spryker\Zed\ProductLabelSearch\Communication\Plugin\Event\Subscriber\ProductLabelSearchEventSubscriber;
 use Spryker\Zed\ProductLabelStorage\Communication\Plugin\Event\Subscriber\ProductLabelStorageEventSubscriber;
@@ -96,6 +97,7 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new PriceProductMerchantRelationshipStorageEventSubscriber());
         $eventSubscriberCollection->add(new FileManagerStorageSubscriber());
         $eventSubscriberCollection->add(new ProductResourceAliasStorageEventSubscriber());
+        $eventSubscriberCollection->add(new ProductImageMappingResourceStorageEventSubscriber());
 
         /**
          * Search Events
