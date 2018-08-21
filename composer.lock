@@ -2440,7 +2440,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "534079a95445ffc2694fc64ed619f49769ecdff1"
+                "reference": "596c452a6de642de76955ff033d3bc54791c9c12"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2455,11 +2455,11 @@
                 "spryker/assertion": "*",
                 "spryker/auth": "*",
                 "spryker/auth-mail-connector": "*",
+                "spryker/auth-rest-api": "*",
                 "spryker/availability": "*",
                 "spryker/availability-cart-connector": "*",
                 "spryker/availability-gui": "*",
                 "spryker/availability-storage": "*",
-                "spryker/braintree": "*",
                 "spryker/business-on-behalf": "*",
                 "spryker/business-on-behalf-data-import": "*",
                 "spryker/cache": "*",
@@ -2469,6 +2469,7 @@
                 "spryker/cart-variant": "*",
                 "spryker/catalog": "*",
                 "spryker/catalog-price-product-connector": "*",
+                "spryker/catalog-search-rest-api": "*",
                 "spryker/category": "*",
                 "spryker/category-exporter": "*",
                 "spryker/category-page-search": "*",
@@ -2515,6 +2516,7 @@
                 "spryker/customer-note-gui": "*",
                 "spryker/customer-user-connector": "*",
                 "spryker/customer-user-connector-gui": "*",
+                "spryker/customers-rest-api": "*",
                 "spryker/development": "*",
                 "spryker/discount": "*",
                 "spryker/discount-calculation-connector": "*",
@@ -2535,6 +2537,7 @@
                 "spryker/glossary": "*",
                 "spryker/glossary-storage": "*",
                 "spryker/glue-application": "*",
+                "spryker/glue-application-extension": "*",
                 "spryker/graph": "*",
                 "spryker/graphviz": "*",
                 "spryker/gui": "*",
@@ -2563,6 +2566,9 @@
                 "spryker/new-relic-api": "*",
                 "spryker/newsletter": "*",
                 "spryker/nopayment": "*",
+                "spryker/oauth": "*",
+                "spryker/oauth-customer-connector": "*",
+                "spryker/oauth-extension": "*",
                 "spryker/offer": "*",
                 "spryker/offer-gui": "*",
                 "spryker/oms": "*",
@@ -2617,6 +2623,7 @@
                 "spryker/product-relation": "*",
                 "spryker/product-relation-collector": "*",
                 "spryker/product-relation-storage": "*",
+                "spryker/product-resource-alias-storage": "*",
                 "spryker/product-review": "*",
                 "spryker/product-review-collector": "*",
                 "spryker/product-review-gui": "*",
@@ -2630,6 +2637,7 @@
                 "spryker/product-set-page-search": "*",
                 "spryker/product-set-storage": "*",
                 "spryker/product-storage": "*",
+                "spryker/products-rest-api": "*",
                 "spryker/propel": "*",
                 "spryker/propel-orm": "*",
                 "spryker/queue": "*",
@@ -2705,7 +2713,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-08-20T10:21:50+00:00"
+            "time": "2018-08-21T08:21:56+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2843,16 +2851,16 @@
         },
         {
             "name": "spryker/uuid-behavior",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/uuid-behavior.git",
-                "reference": "1416c5c522d6cee15f7c613f29511b6b759f6745"
+                "reference": "4cfe7577db908fbee334c9a1cf8f7b2476414b11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/uuid-behavior/zipball/1416c5c522d6cee15f7c613f29511b6b759f6745",
-                "reference": "1416c5c522d6cee15f7c613f29511b6b759f6745",
+                "url": "https://api.github.com/repos/spryker/uuid-behavior/zipball/4cfe7577db908fbee334c9a1cf8f7b2476414b11",
+                "reference": "4cfe7577db908fbee334c9a1cf8f7b2476414b11",
                 "shasum": ""
             },
             "require": {
@@ -2884,7 +2892,7 @@
                 "proprietary"
             ],
             "description": "UuidBehavior module",
-            "time": "2018-08-02T10:25:32+00:00"
+            "time": "2018-08-20T13:01:35+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -8217,12 +8225,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "65d62cdc80279bf05cdd98ff9c315d139699a03d"
+                "reference": "2df561e63eda8bde112d0076d220e081a20d90ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/65d62cdc80279bf05cdd98ff9c315d139699a03d",
-                "reference": "65d62cdc80279bf05cdd98ff9c315d139699a03d",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/2df561e63eda8bde112d0076d220e081a20d90ff",
+                "reference": "2df561e63eda8bde112d0076d220e081a20d90ff",
                 "shasum": ""
             },
             "require": {
@@ -8261,7 +8269,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-08-08T10:04:01+00:00"
+            "time": "2018-08-21T08:35:16+00:00"
         },
         {
             "name": "spryker/development-core",
