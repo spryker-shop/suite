@@ -7,20 +7,15 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer;
 
-use Generated\Shared\Transfer\SpyPriceProductEntityTransfer;
-use Generated\Shared\Transfer\SpyPriceTypeEntityTransfer;
-use Orm\Zed\Currency\Persistence\Base\SpyCurrency;
-use Orm\Zed\Currency\Persistence\SpyCurrencyQuery;
 use Orm\Zed\PriceProduct\Persistence\Base\SpyPriceProduct;
 use Orm\Zed\PriceProduct\Persistence\Base\SpyPriceType;
 use Orm\Zed\PriceProduct\Persistence\Map\SpyPriceTypeTableMap;
 use Orm\Zed\PriceProduct\Persistence\SpyPriceProductQuery;
 use Orm\Zed\PriceProduct\Persistence\SpyPriceProductStoreQuery;
 use Orm\Zed\PriceProduct\Persistence\SpyPriceTypeQuery;
-use Orm\Zed\Store\Persistence\Base\SpyStore;
-use Orm\Zed\Store\Persistence\SpyStoreQuery;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\ProductPriceHydratorStep;
+use Spryker\Zed\Currency\Business\CurrencyFacadeInterface;
 use Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
@@ -28,6 +23,7 @@ use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
 use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
 use Spryker\Zed\PriceProduct\Dependency\PriceProductEvents;
 use Spryker\Zed\Product\Dependency\ProductEvents;
+use Spryker\Zed\Store\Business\StoreFacadeInterface;
 
 class ProductPricePropelDataSetWriter extends DataImporterPublisher implements DataSetWriterInterface
 {
@@ -37,15 +33,31 @@ class ProductPricePropelDataSetWriter extends DataImporterPublisher implements D
     protected $productRepository;
 
     /**
+     * @var \Spryker\Zed\Store\Business\StoreFacadeInterface
+     */
+    protected $storeFacade;
+
+    /**
+     * @var \Spryker\Zed\Currency\Business\CurrencyFacadeInterface
+     */
+    protected $currencyFacade;
+
+    /**
      * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface $eventFacade
      * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository $productRepository
+     * @param \Spryker\Zed\Store\Business\StoreFacadeInterface $storeFacade
+     * @param \Spryker\Zed\Currency\Business\CurrencyFacadeInterface $currencyFacade
      */
     public function __construct(
         DataImportToEventFacadeInterface $eventFacade,
-        ProductRepository $productRepository
+        ProductRepository $productRepository,
+        StoreFacadeInterface $storeFacade,
+        CurrencyFacadeInterface $currencyFacade
     ) {
         parent::__construct($eventFacade);
         $this->productRepository = $productRepository;
+        $this->storeFacade = $storeFacade;
+        $this->currencyFacade = $currencyFacade;
     }
 
     /**
@@ -77,13 +89,13 @@ class ProductPricePropelDataSetWriter extends DataImporterPublisher implements D
      */
     protected function findOrCreatePriceType(DataSetInterface $dataSet)
     {
-        $priceTypeTransfer = $this->getPriceTypeTransfer($dataSet);
+        $priceTypeTransfer = $dataSet[ProductPriceHydratorStep::PRICE_TYPE_TRANSFER];
 
         $priceTypeEntity = SpyPriceTypeQuery::create()
             ->filterByName($priceTypeTransfer->getName())
             ->findOneOrCreate();
 
-        if ($priceTypeEntity->isNew() || $priceTypeEntity->isModified()) {
+        if ($priceTypeEntity->isNew()) {
             $priceTypeEntity->setPriceModeConfiguration(SpyPriceTypeTableMap::COL_PRICE_MODE_CONFIGURATION_BOTH);
             $priceTypeEntity->save();
         }
@@ -141,12 +153,12 @@ class ProductPricePropelDataSetWriter extends DataImporterPublisher implements D
      */
     protected function findOrCreatePriceProductStore(DataSetInterface $dataSet, SpyPriceProduct $spyPriceProduct): void
     {
-        $storeEntity = $this->getStore($dataSet[ProductPriceHydratorStep::KEY_STORE]);
-        $currencyEntity = $this->getCurrency($dataSet[ProductPriceHydratorStep::KEY_CURRENCY]);
+        $storeTransfer = $this->storeFacade->getStoreByName(ProductPriceHydratorStep::KEY_STORE);
+        $currencyTransfer = $this->currencyFacade->fromIsoCode($dataSet[ProductPriceHydratorStep::KEY_CURRENCY]);
 
         $priceProductStoreEntity = SpyPriceProductStoreQuery::create()
-            ->filterByFkStore($storeEntity->getPrimaryKey())
-            ->filterByFkCurrency($currencyEntity->getPrimaryKey())
+            ->filterByFkStore($storeTransfer->getPrimaryKey())
+            ->filterByFkCurrency($currencyTransfer->getIdCurrency())
             ->filterByFkPriceProduct($spyPriceProduct->getPrimaryKey())
             ->findOneOrCreate();
 
@@ -162,65 +174,5 @@ class ProductPricePropelDataSetWriter extends DataImporterPublisher implements D
     public function flush(): void
     {
         $this->triggerEvents();
-    }
-
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return \Generated\Shared\Transfer\SpyPriceTypeEntityTransfer
-     */
-    protected function getPriceTypeTransfer(DataSetInterface $dataSet): SpyPriceTypeEntityTransfer
-    {
-        return $dataSet[ProductPriceHydratorStep::PRICE_TYPE_TRANSFER];
-    }
-
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return \Generated\Shared\Transfer\SpyPriceProductEntityTransfer
-     */
-    protected function getPriceProductTransfer(DataSetInterface $dataSet): SpyPriceProductEntityTransfer
-    {
-        return $dataSet[ProductPriceHydratorStep::PRICE_PRODUCT_TRANSFER];
-    }
-
-    /**
-     * @param string $currencyIsoCode
-     *
-     * @return \Orm\Zed\Currency\Persistence\SpyCurrency
-     */
-    protected function getCurrency(string $currencyIsoCode): SpyCurrency
-    {
-        if (isset(static::$currencyCache[$currencyIsoCode])) {
-            return static::$currencyCache[$currencyIsoCode];
-        }
-
-        $currencyEntity = SpyCurrencyQuery::create()
-            ->filterByCode($currencyIsoCode)
-            ->findOne();
-
-        static::$currencyCache[$currencyIsoCode] = $currencyEntity;
-
-        return $currencyEntity;
-    }
-
-    /**
-     * @param string $storeName
-     *
-     * @return \Orm\Zed\Store\Persistence\SpyStore
-     */
-    protected function getStore(string $storeName): SpyStore
-    {
-        if (isset(static::$storeCache[$storeName])) {
-            return static::$storeCache[$storeName];
-        }
-
-        $storeEntity = SpyStoreQuery::create()
-            ->filterByName($storeName)
-            ->findOne();
-
-        static::$storeCache[$storeName] = $storeEntity;
-
-        return $storeEntity;
     }
 }

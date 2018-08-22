@@ -97,11 +97,13 @@ use Pyz\Zed\DataImport\DataImportConfig;
 use Pyz\Zed\DataImport\DataImportDependencyProvider;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\ProductSearch\Code\KeyBuilder\FilterGlossaryKeyBuilder;
+use Spryker\Zed\Currency\Business\CurrencyFacadeInterface;
 use Spryker\Zed\DataImport\Business\DataImportBusinessFactory as SprykerDataImportBusinessFactory;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterCollection;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
 use Spryker\Zed\Discount\DiscountConfig;
+use Spryker\Zed\Store\Business\StoreFacadeInterface;
 
 /**
  * @method \Pyz\Zed\DataImport\DataImportConfig getConfig()
@@ -140,6 +142,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             ->addDataImporter($this->createProductOptionImporter())
             ->addDataImporter($this->createProductOptionPriceImporter())
             ->addDataImporter($this->createProductGroupImporter())
+            ->addDataImporter($this->createProductPriceImporter())
             ->addDataImporter($this->createProductRelationImporter())
             ->addDataImporter($this->createProductReviewImporter())
             ->addDataImporter($this->createProductLabelImporter())
@@ -219,7 +222,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     {
         return new ProductPricePropelDataSetWriter(
             $this->getEventFacade(),
-            $this->createProductRepository()
+            $this->createProductRepository(),
+            $this->getStoreFacade(),
+            $this->getCurrencyFacade()
         );
     }
 
@@ -683,15 +688,16 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     /**
      * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
      */
-    protected function createProductPriceImporter()
+    public function createProductPriceImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getProductPriceDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterWriterAwareFromConfig($this->getConfig()->getProductPriceDataImporterConfiguration());
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductPriceHydratorStep::BULK_SIZE);
         $dataSetStepBroker
             ->addStep(new ProductPriceHydratorStep());
 
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
+        $dataImporter->setDataSetWriter($this->createProductPriceDataImportWriters());
 
         return $dataImporter;
     }
@@ -749,6 +755,17 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         $dataImporter->setDataSetWriter($this->createProductStockDataImportWriters());
 
         return $dataImporter;
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
+     */
+    protected function createProductPriceDataImportWriters()
+    {
+        $databaseWriters = $this->getConfig()->getDatabaseWriters();
+        $currentDbEngine = $this->getConfig()->getCurrentDbEngine();
+
+        return new DataSetWriterCollection($databaseWriters[$currentDbEngine][DataImportConfig::IMPORT_TYPE_PRODUCT_PRICE]);
     }
 
     /**
@@ -1365,6 +1382,22 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     protected function getEventFacade(): DataImportToEventFacadeInterface
     {
         return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_EVENT);
+    }
+
+    /**
+     * @return \Spryker\Zed\Store\Business\StoreFacadeInterface
+     */
+    protected function getStoreFacade(): StoreFacadeInterface
+    {
+        return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_STORE);
+    }
+
+    /**
+     * @return \Spryker\Zed\Currency\Business\CurrencyFacadeInterface
+     */
+    protected function getCurrencyFacade(): CurrencyFacadeInterface
+    {
+        return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_CURRENCY);
     }
 
     /**

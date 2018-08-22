@@ -111,6 +111,8 @@ SELECT updated.idStockProduct FROM updated UNION ALL SELECT inserted.id_stock_pr
     }
 
     /**
+     * @SuppressWarnings(PHPMD)
+     *
      * @return string
      */
     public function createAvailabilityProductSQL(): string
@@ -118,19 +120,13 @@ SELECT updated.idStockProduct FROM updated UNION ALL SELECT inserted.id_stock_pr
         $sql = "WITH product_availability AS (
     SELECT
       input.sku,
-      CASE WHEN SUM(CASE WHEN ssp.is_never_out_of_stock THEN 1 ELSE 0 END) > 0 THEN TRUE 
-        ELSE FALSE END
+      CASE WHEN SUM(CASE WHEN ssp.is_never_out_of_stock THEN 1 ELSE 0 END) > 0 THEN TRUE ELSE FALSE END
       AS is_never_out_of_stock,
       CASE
       WHEN
-        (SUM(CASE WHEN ssp.is_never_out_of_stock THEN 1 ELSE 0 END) = 0) AND
-        (
-        SUM(
-                 CASE WHEN ssp.quantity IS NULL THEN 0 ELSE ssp.quantity END
-             ) - SUM(
+        SUM(CASE WHEN ssp.quantity IS NULL THEN 0 ELSE ssp.quantity END) - SUM(
             CASE WHEN spy_oms_product_reservation.reservation_quantity IS NULL THEN 0 ELSE spy_oms_product_reservation.reservation_quantity END
         ) > 0
-        )
         THEN SUM(
                  CASE WHEN ssp.quantity IS NULL THEN 0 ELSE ssp.quantity END
              ) - SUM(
@@ -180,7 +176,8 @@ SELECT updated.idStockProduct FROM updated UNION ALL SELECT inserted.id_stock_pr
       abstract_sku = product_abstract_availability.abstract_sku,
       quantity = product_abstract_availability.quantity
     FROM product_abstract_availability
-    WHERE spy_availability_abstract.id_availability_abstract = product_abstract_availability.idAvailabilityAbstract
+    WHERE idAvailabilityAbstract IS NOT NULL AND
+    spy_availability_abstract.id_availability_abstract = product_abstract_availability.idAvailabilityAbstract
     RETURNING spy_availability_abstract.abstract_sku as abstractSku,id_availability_abstract
   ),
     inserted_product_abstract AS (

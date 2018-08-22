@@ -23,17 +23,17 @@ class ProductPriceSql implements ProductPriceSqlInterface
     SELECT
       input.sku,
       input.price_type_name,
-      %1\$s,
-      id_price_type,
-      id_price_product as idPriceProduct
+      %2\$s.%1\$s,
+      spy_price_type.id_price_type,
+      spy_price_product.id_price_product as idPriceProduct
     FROM (
            SELECT
              unnest(?::VARCHAR []) AS sku,
              unnest(?::VARCHAR[]) AS price_type_name
          ) input
-      INNER JOIN %2\$s ON %2\$s.sku = input.sku    
       INNER JOIN spy_price_type ON spy_price_type.name = input.price_type_name
-      LEFT JOIN spy_price_product ON (spy_price_product.fk_price_type = id_price_type AND spy_price_product.%3\$s = %1\$s)
+      INNER JOIN %2\$s ON %2\$s.sku = input.sku    
+      LEFT JOIN spy_price_product ON (spy_price_product.fk_price_type = spy_price_type.id_price_type AND spy_price_product.%3\$s = %1\$s)
 ),
     updated AS (
     UPDATE spy_price_product
@@ -41,8 +41,8 @@ class ProductPriceSql implements ProductPriceSqlInterface
       %3\$s = records.%1\$s,
       fk_price_type = records.id_price_type
     FROM records
-    WHERE records.%1\$s = spy_price_product.%3\$s AND records.id_price_type = spy_price_product.fk_price_type
-    RETURNING id_price_product, %3\$s as %1\$s
+    WHERE idPriceProduct IS NOT NULL AND spy_price_product.id_price_product = idPriceProduct
+    RETURNING id_price_product, spy_price_product.%3\$s as %1\$s
   ),
     inserted AS(
     INSERT INTO spy_price_product (
@@ -55,8 +55,8 @@ class ProductPriceSql implements ProductPriceSqlInterface
         id_price_type,
         %1\$s
     FROM records
-    WHERE idPriceProduct is null
-  ) ON CONFLICT (fk_price_type, %3\$s) DO NOTHING 
+    WHERE idPriceProduct IS NULL
+  ) ON CONFLICT (fk_price_type, %3\$s) DO NOTHING
      RETURNING id_price_product, %3\$s as %1\$s
   )
 SELECT updated.id_price_product,%1\$s FROM updated UNION ALL SELECT inserted.id_price_product,%1\$s FROM inserted;",
@@ -77,13 +77,13 @@ SELECT updated.id_price_product,%1\$s FROM updated UNION ALL SELECT inserted.id_
     SELECT
       input.name,
       input.price_mode_configuration,
-      id_price_type as idPriceType
+      spy_price_type.id_price_type as idPriceType
     FROM (
            SELECT
-             unnest(?::VARCHAR []) AS name,
+             DISTINCT(unnest(?::VARCHAR [])) AS name,
              unnest(?::INTEGER[]) AS price_mode_configuration
          ) input    
-      LEFT JOIN spy_price_type ON (spy_price_type.name = input.name AND spy_price_type.price_mode_configuration = input.price_mode_configuration)
+      LEFT JOIN spy_price_type ON spy_price_type.name = input.name
 ),
     updated AS (
     UPDATE spy_price_type
@@ -91,7 +91,7 @@ SELECT updated.id_price_product,%1\$s FROM updated UNION ALL SELECT inserted.id_
       name = records.name,
       price_mode_configuration = records.price_mode_configuration
     FROM records
-    WHERE records.name = spy_price_type.name AND records.price_mode_configuration = spy_price_type.price_mode_configuration
+    WHERE idPriceType IS NOT NULL AND spy_price_type.id_price_type = idPriceType
   ),
     inserted AS(
     INSERT INTO spy_price_type (
@@ -104,8 +104,8 @@ SELECT updated.id_price_product,%1\$s FROM updated UNION ALL SELECT inserted.id_
         name,
         price_mode_configuration
     FROM records
-    WHERE idPriceType is null
-  ) ON CONFLICT (name) DO NOTHING
+    WHERE idPriceType IS NULL
+  )
   )
 SELECT 1;";
 
@@ -125,16 +125,11 @@ SELECT 1;";
     SELECT
       input.gross_price,
       input.net_price,
-      input.currency,
-      input.store,
       input.sku,
-      input.price_type,
-      id_currency,
-      id_store,
-      %3\$s,
-      id_price_type,
-      id_price_product,
-      id_price_product_store as idProductStore
+      spy_currency.id_currency,
+      spy_store.id_store,
+      spy_price_product.id_price_product,
+      spy_price_product_store.id_price_product_store as idProductStore
       FROM (
            SELECT
              unnest(?::INTEGER []) AS gross_price,
@@ -144,12 +139,12 @@ SELECT 1;";
              unnest(?::VARCHAR[]) AS sku,
              unnest(?::VARCHAR[]) AS price_type
          ) input  
-      INNER JOIN %1\$s ON %1\$s.sku = input.sku
       INNER JOIN spy_price_type ON spy_price_type.name = input.price_type
-      INNER JOIN spy_price_product ON (spy_price_product.%2\$s = %3\$s AND spy_price_product.fk_price_type = id_price_type) 
-      INNER JOIN spy_currency ON spy_currency.code = input.currency
       INNER JOIN spy_store ON spy_store.name = input.store
-      LEFT JOIN spy_price_product_store ON (spy_price_product_store.fk_price_product = id_price_product AND spy_price_product_store.fk_currency = id_currency AND spy_price_product_store.fk_store = id_store)
+      INNER JOIN spy_currency ON spy_currency.code = input.currency
+      INNER JOIN %1\$s ON %1\$s.sku = input.sku
+      INNER JOIN spy_price_product ON (spy_price_product.%2\$s = %1\$s.%3\$s AND spy_price_product.fk_price_type = spy_price_type.id_price_type) 
+      LEFT JOIN spy_price_product_store ON (spy_price_product_store.fk_price_product = id_price_product AND spy_price_product_store.fk_currency = id_currency AND spy_price_product_store.fk_store = spy_store.id_store)
 ),
  updated AS (
     UPDATE spy_price_product_store
@@ -157,8 +152,8 @@ SELECT 1;";
       gross_price = records.gross_price,
       net_price = records.net_price
     FROM records
-    WHERE spy_price_product_store.fk_price_product = records.id_price_product AND 
-    spy_price_product_store.fk_store = records.id_store AND
+    WHERE spy_price_product_store.fk_store = records.id_store AND 
+    spy_price_product_store.fk_price_product = records.id_price_product AND 
     spy_price_product_store.fk_currency = records.id_currency
   ),
     inserted AS(
@@ -178,8 +173,19 @@ SELECT 1;";
         net_price,
         id_price_product
     FROM records
-    WHERE idProductStore is null
-  ) ON CONFLICT (fk_currency, fk_price_product, fk_store) DO NOTHING
+    WHERE idProductStore IS NULL
+  ) RETURNING id_price_product_store
+  ),
+    insertedDefault AS (
+    INSERT INTO spy_price_product_default (
+      id_price_product_default,
+      fk_price_product_store
+    ) (
+      SELECT
+        nextval('spy_price_product_default_pk_seq'),
+        id_price_product_store
+    FROM inserted
+    )
   )
 SELECT 1;", $tableName, $foreignKey, $idProduct);
 
