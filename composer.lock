@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a66393d5a9869c4a38064674560d51fe",
+    "content-hash": "d5dd0ef193b5dd79921f6e0aba980c45",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -2587,47 +2587,12 @@
             "time": "2018-08-09T12:54:53+00:00"
         },
         {
-            "name": "spryker/ramsey-uuid",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/ramsey-uuid.git",
-                "reference": "622d58c423fcae4facf128eb09401a9dc0142578"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/ramsey-uuid/zipball/622d58c423fcae4facf128eb09401a9dc0142578",
-                "reference": "622d58c423fcae4facf128eb09401a9dc0142578",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1",
-                "ramsey/uuid": "^3.8.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "RamseyUuid module",
-            "time": "2018-07-25T11:16:07+00:00"
-        },
-        {
             "name": "spryker/spryker",
-            "version": "dev-feature/ps-3087/ps-3173-enabler-implement-shopping-list-session-module",
+            "version": "dev-feature/ps-3087/ps-3088-as-a-b2b-yves-user-i-want-to-see-all-my-shopping-lists-in-widget-in-header",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "b53a0b62911f876a7e767390196fcae9ee41b99f"
+                "reference": "04e9d9b6ba2949f296854e5b20ebe6262f297301"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2642,11 +2607,11 @@
                 "spryker/assertion": "*",
                 "spryker/auth": "*",
                 "spryker/auth-mail-connector": "*",
+                "spryker/auth-rest-api": "*",
                 "spryker/availability": "*",
                 "spryker/availability-cart-connector": "*",
                 "spryker/availability-gui": "*",
                 "spryker/availability-storage": "*",
-                "spryker/braintree": "*",
                 "spryker/business-on-behalf": "*",
                 "spryker/business-on-behalf-data-import": "*",
                 "spryker/cache": "*",
@@ -2656,6 +2621,7 @@
                 "spryker/cart-variant": "*",
                 "spryker/catalog": "*",
                 "spryker/catalog-price-product-connector": "*",
+                "spryker/catalog-search-rest-api": "*",
                 "spryker/category": "*",
                 "spryker/category-exporter": "*",
                 "spryker/category-page-search": "*",
@@ -2702,6 +2668,7 @@
                 "spryker/customer-note-gui": "*",
                 "spryker/customer-user-connector": "*",
                 "spryker/customer-user-connector-gui": "*",
+                "spryker/customers-rest-api": "*",
                 "spryker/development": "*",
                 "spryker/discount": "*",
                 "spryker/discount-calculation-connector": "*",
@@ -2722,6 +2689,7 @@
                 "spryker/glossary": "*",
                 "spryker/glossary-storage": "*",
                 "spryker/glue-application": "*",
+                "spryker/glue-application-extension": "*",
                 "spryker/graph": "*",
                 "spryker/graphviz": "*",
                 "spryker/gui": "*",
@@ -2750,6 +2718,9 @@
                 "spryker/new-relic-api": "*",
                 "spryker/newsletter": "*",
                 "spryker/nopayment": "*",
+                "spryker/oauth": "*",
+                "spryker/oauth-customer-connector": "*",
+                "spryker/oauth-extension": "*",
                 "spryker/offer": "*",
                 "spryker/offer-gui": "*",
                 "spryker/oms": "*",
@@ -2804,6 +2775,7 @@
                 "spryker/product-relation": "*",
                 "spryker/product-relation-collector": "*",
                 "spryker/product-relation-storage": "*",
+                "spryker/product-resource-alias-storage": "*",
                 "spryker/product-review": "*",
                 "spryker/product-review-collector": "*",
                 "spryker/product-review-gui": "*",
@@ -2817,10 +2789,12 @@
                 "spryker/product-set-page-search": "*",
                 "spryker/product-set-storage": "*",
                 "spryker/product-storage": "*",
+                "spryker/products-rest-api": "*",
                 "spryker/propel": "*",
                 "spryker/propel-orm": "*",
                 "spryker/queue": "*",
                 "spryker/quote": "*",
+                "spryker/ramsey-uuid": "*",
                 "spryker/ratepay": "*",
                 "spryker/redis": "*",
                 "spryker/refund": "*",
@@ -2861,6 +2835,7 @@
                 "spryker/util-network": "*",
                 "spryker/util-sanitize": "*",
                 "spryker/util-text": "*",
+                "spryker/util-uuid-generator": "*",
                 "spryker/util-validate": "*",
                 "spryker/wishlist": "*",
                 "spryker/zed-navigation": "*",
@@ -2890,7 +2865,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-08-21T12:59:12+00:00"
+            "time": "2018-08-22T12:31:14+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -3025,47 +3000,6 @@
             ],
             "description": "SynchronizationBehavior module",
             "time": "2018-08-17T09:01:55+00:00"
-        },
-        {
-            "name": "spryker/util-uuid-generator",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/util-uuid-generator.git",
-                "reference": "060829b2e2449be8247b0b2ffe116d406dc518fe"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/util-uuid-generator/zipball/060829b2e2449be8247b0b2ffe116d406dc518fe",
-                "reference": "060829b2e2449be8247b0b2ffe116d406dc518fe",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1",
-                "spryker/kernel": "^3.0.0",
-                "spryker/ramsey-uuid": "^1.0.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "UtilUuidGenerator module",
-            "time": "2018-07-26T08:59:06+00:00"
         },
         {
             "name": "spryker/uuid-behavior",
