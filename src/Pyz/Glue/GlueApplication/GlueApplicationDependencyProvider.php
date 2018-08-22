@@ -11,7 +11,7 @@ use Spryker\Glue\AuthRestApi\Plugin\AccessTokensResourceRoutePlugin;
 use Spryker\Glue\AuthRestApi\Plugin\AccessTokenValidatorPlugin;
 use Spryker\Glue\AuthRestApi\Plugin\FormatAuthenticationErrorResponseHeadersPlugin;
 use Spryker\Glue\AuthRestApi\Plugin\RefreshTokensResourceRoutePlugin;
-use Spryker\Glue\CartsProductsResourceRelationship\Plugin\CartItemsProductsRelationshipPlugin;
+use Spryker\Glue\CartItemsProductsRelationship\Plugin\CartItemsProductsRelationshipPlugin;
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
 use Spryker\Glue\CartsRestApi\Plugin\CartItemsResourceRoutePlugin;
 use Spryker\Glue\CartsRestApi\Plugin\CartsResourceRoutePlugin;
