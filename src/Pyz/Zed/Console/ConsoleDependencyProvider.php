@@ -115,7 +115,6 @@ use Spryker\Zed\Transfer\Communication\Console\GeneratorConsole;
 use Spryker\Zed\Transfer\Communication\Console\ValidatorConsole;
 use Spryker\Zed\Twig\Communication\Console\CacheWarmerConsole;
 use Spryker\Zed\Twig\Communication\Plugin\ServiceProvider\TwigServiceProvider as SprykerTwigServiceProvider;
-use Spryker\Zed\WishlistsRestApi\Communication\Console\WishlistItemsUuidWriterConsole;
 use Spryker\Zed\WishlistsRestApi\Communication\Console\WishlistsUuidWriterConsole;
 use Spryker\Zed\ZedNavigation\Communication\Console\BuildNavigationConsole;
 use Stecman\Component\Symfony\Console\BashCompletion\CompletionCommand;
@@ -260,7 +259,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new PriceProductMerchantRelationshipDeleteConsole(),
 
             new WishlistsUuidWriterConsole(),
-            new WishlistItemsUuidWriterConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
