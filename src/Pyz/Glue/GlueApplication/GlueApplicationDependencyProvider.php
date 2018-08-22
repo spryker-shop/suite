@@ -20,7 +20,7 @@ use Spryker\Glue\GlueApplication\Plugin\Rest\SetStoreCurrentLocaleBeforeActionPl
 use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationshipCollectionInterface;
 use Spryker\Glue\ProductsRestApi\Plugin\AbstractProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\ConcreteProductsResourceRoutePlugin;
-use Spryker\Glue\WishlistsProductsResourceRelationship\Plugin\WishlistItemsConcreteProductsResourceRelationshipPlugin;
+use Spryker\Glue\WishlistItemsProductsResourceRelationship\Plugin\WishlistItemsConcreteProductsResourceRelationshipPlugin;
 use Spryker\Glue\WishlistsRestApi\Plugin\WishlistItemsResourceRoutePlugin;
 use Spryker\Glue\WishlistsRestApi\Plugin\WishlistsResourceRoutePlugin;
 use Spryker\Glue\WishlistsRestApi\WishlistsRestApiConfig;
@@ -101,6 +101,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
             new WishlistItemsConcreteProductsResourceRelationshipPlugin()
         );
+
         return $resourceRelationshipCollection;
     }
 }
