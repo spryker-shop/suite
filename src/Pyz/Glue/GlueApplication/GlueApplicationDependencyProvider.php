@@ -19,7 +19,7 @@ use Spryker\Glue\CustomersRestApi\Plugin\SetCustomerBeforeActionPlugin;
 use Spryker\Glue\GlueApplication\GlueApplicationDependencyProvider as SprykerGlueApplicationDependencyProvider;
 use Spryker\Glue\GlueApplication\Plugin\Rest\SetStoreCurrentLocaleBeforeActionPlugin;
 use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationshipCollectionInterface;
-use Spryker\Glue\ProductsCategoryResourceRelationship\Plugin\AbstractProductsCategoryResourceRelationshipPlugin;
+use Spryker\Glue\ProductsCategoriesResourceRelationship\Plugin\AbstractProductsCategoriesResourceRelationshipPlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\AbstractProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\ConcreteProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
@@ -94,7 +94,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     ): ResourceRelationshipCollectionInterface {
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
-            new AbstractProductsCategoryResourceRelationshipPlugin()
+            new AbstractProductsCategoriesResourceRelationshipPlugin()
         );
 
         return $resourceRelationshipCollection;
