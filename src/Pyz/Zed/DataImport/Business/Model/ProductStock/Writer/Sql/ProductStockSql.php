@@ -194,7 +194,6 @@ SELECT updated.idStockProduct FROM updated UNION ALL SELECT inserted.id_stock_pr
         fk_store
       FROM product_abstract_availability
       WHERE idAvailabilityAbstract is null
-      ORDER BY abstract_sku
     ) RETURNING abstract_sku as abstractSku,id_availability_abstract
   ),
   product_availability_results AS (

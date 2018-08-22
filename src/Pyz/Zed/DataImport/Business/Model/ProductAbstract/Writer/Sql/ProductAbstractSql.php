@@ -72,7 +72,6 @@ class ProductAbstractSql implements ProductAbstractSqlInterface
         now()
     FROM records
     WHERE idProductAbstract is null
-    ORDER BY abstract_sku
   ) RETURNING id_product_abstract,sku
 )
 SELECT updated.id_product_abstract,sku FROM updated UNION ALL SELECT inserted.id_product_abstract,sku FROM inserted;";
