@@ -23,7 +23,7 @@ class CustomerAccessConfig extends SprykerCustomerAccessConfig
             static::CONTENT_TYPE_ORDER_PLACE_SUBMIT,
             static::CONTENT_TYPE_ADD_TO_CART,
             static::CONTENT_TYPE_WISHLIST,
-            static::CONTENT_TYPE_SHOPPING_LIST
+            static::CONTENT_TYPE_SHOPPING_LIST,
         ];
     }
 }
