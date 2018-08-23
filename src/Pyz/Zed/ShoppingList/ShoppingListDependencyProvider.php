@@ -13,6 +13,7 @@ use Spryker\Zed\ShoppingList\ShoppingListDependencyProvider as SprykerShoppingLi
 use Spryker\Zed\ShoppingListNote\Communication\Plugin\ShoppingListItemExpanderPlugin;
 use Spryker\Zed\ShoppingListNote\Communication\Plugin\ShoppingListItemNoteBeforeDeletePlugin;
 use Spryker\Zed\ShoppingListNote\Communication\Plugin\ShoppingListItemNotePostSavePlugin;
+use Spryker\Zed\ShoppingListNote\Communication\Plugin\ShoppingListItemNoteExpanderPlugin;
 
 class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvider
 {
@@ -62,7 +63,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     protected function getItemExpanderPlugins(): array
     {
         return [
-            new ShoppingListItemExpanderPlugin(), #ShoppingListNoteFeature
+            new ShoppingListItemNoteExpanderPlugin(), #ShoppingListNoteFeature
         ];
     }
 }
