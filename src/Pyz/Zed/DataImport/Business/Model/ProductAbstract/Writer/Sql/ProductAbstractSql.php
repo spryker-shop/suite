@@ -31,7 +31,7 @@ class ProductAbstractSql implements ProductAbstractSqlInterface
              unnest(?::VARCHAR[]) AS colorCode,
              unnest(?::TIMESTAMP[]) AS newFrom,
              unnest(?::TIMESTAMP[]) AS newTo
-         ) input    
+         ) input
       LEFT JOIN spy_product_abstract ON spy_product_abstract.sku = input.abstract_sku
 ),
     updated AS (

@@ -9,7 +9,7 @@ namespace PyzTest\Zed\DemoDataGenerator\Communication\Plugin;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use Pyz\Zed\DemoDataGenerator\Business\DemoDataGeneratorBusinessFactory;
-use Pyz\Zed\DemoDataGenerator\Communication\Plugin\PriceProductCsvGeneratorPlugin;
+use Pyz\Zed\DemoDataGenerator\Communication\Plugin\ProductPriceCsvGeneratorPlugin;
 use Spryker\Shared\Kernel\Store;
 
 /**
@@ -39,7 +39,7 @@ class PriceProductCsvGeneratorPluginTest extends AbstractCsvGenerator
         $demoDataGeneratorFactoryMock = $this->createDemoDataGeneratorFactoryMock($demoDataGeneratorConfigMock);
         $demoDataGeneratorFacade = $this->createDemoDataGeneratorFacade($demoDataGeneratorFactoryMock);
 
-        $productAbstractCsvDemoDataGeneratorPlugin = new PriceProductCsvGeneratorPlugin();
+        $productAbstractCsvDemoDataGeneratorPlugin = new ProductPriceCsvGeneratorPlugin();
         $productAbstractCsvDemoDataGeneratorPlugin->setFacade($demoDataGeneratorFacade);
         $productAbstractCsvDemoDataGeneratorPlugin->generateDemoData($demoDataGeneratorTransfer);
 
@@ -57,7 +57,7 @@ class PriceProductCsvGeneratorPluginTest extends AbstractCsvGenerator
         $demoDataGeneratorStoreMock = $this->createDemoDataGeneratorStoreMock();
 
         $demoDataGeneratorFactoryMock = $this->getMockBuilder(DemoDataGeneratorBusinessFactory::class)
-            ->setMethods(['getConfig', 'getStore'])
+            ->setMethods(['getConfig', 'getStore', 'getStoreFacade'])
             ->getMock();
 
         $demoDataGeneratorFactoryMock
@@ -67,6 +67,10 @@ class PriceProductCsvGeneratorPluginTest extends AbstractCsvGenerator
         $demoDataGeneratorFactoryMock
             ->method('getStore')
             ->willReturn($demoDataGeneratorStoreMock);
+
+        $demoDataGeneratorFactoryMock
+            ->method('getStoreFacade')
+            ->willReturn($this->tester->getLocator()->store()->facade());
 
         return $demoDataGeneratorFactoryMock;
     }

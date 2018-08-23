@@ -25,7 +25,7 @@ class ProductPriceGenerator extends AbstractGenerator implements ProductPriceGen
     protected $rows = [];
 
     /**
-     * @var \Spryker\Shared\Kernel\Store
+     * @var \Spryker\Zed\Store\Business\StoreFacadeInterface
      */
     protected $storeFacade;
 
@@ -150,7 +150,7 @@ class ProductPriceGenerator extends AbstractGenerator implements ProductPriceGen
     }
 
     /**
-     * @return \Generated\Shared\Transfer\PriceProductTransfer|\Spryker\Shared\Kernel\Transfer\AbstractTransfer
+     * @return \Generated\Shared\Transfer\PriceProductTransfer
      */
     protected function generatePriceProduct()
     {

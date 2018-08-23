@@ -34,12 +34,12 @@ class ProductConcreteGenerator extends AbstractGenerator implements ProductConcr
         $this->productAbstractSkus = $this->readProductAbstractFromCsv();
         $rowsNumber = $demoDataGeneratorTransfer->getRowNumber();
         $filePath = $demoDataGeneratorTransfer->getFilePath();
-        $i = 1;
+        $counter = 1;
 
         do {
-            $this->createProductConcreteRow($i);
-            $i++;
-        } while ($i <= $rowsNumber);
+            $this->createProductConcreteRow($counter);
+            $counter++;
+        } while ($counter <= $rowsNumber);
 
         $header = array_keys($this->rows[0]);
         $this->writeCsv($header, $this->rows, $filePath);
@@ -164,7 +164,7 @@ class ProductConcreteGenerator extends AbstractGenerator implements ProductConcr
     }
 
     /**
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer|\Spryker\Shared\Kernel\Transfer\AbstractTransfer
+     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
      */
     protected function generateProductConcrete(): ProductConcreteTransfer
     {
@@ -179,10 +179,10 @@ class ProductConcreteGenerator extends AbstractGenerator implements ProductConcr
     protected function generateAttributes(): array
     {
         $attributes = [];
-        $i = 0;
+        $counter = 0;
 
         do {
-            $attributeIndex = $i + 1;
+            $attributeIndex = $counter + 1;
             $attributes = array_merge($attributes, [
                 'attribute_key_' . $attributeIndex => 'att_key_' . $attributeIndex,
                 'value_' . $attributeIndex => 'att_val_' . $attributeIndex,
@@ -191,8 +191,8 @@ class ProductConcreteGenerator extends AbstractGenerator implements ProductConcr
                 'attribute_key_' . $attributeIndex . '.de_DE' => null,
                 'value_' . $attributeIndex . '.de_DE' => null,
             ]);
-            $i++;
-        } while ($i < 2);
+            $counter++;
+        } while ($counter < 2);
 
         return $attributes;
     }

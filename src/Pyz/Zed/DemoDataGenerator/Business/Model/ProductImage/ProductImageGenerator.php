@@ -129,7 +129,7 @@ class ProductImageGenerator extends AbstractGenerator implements ProductImageGen
     }
 
     /**
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer|\Spryker\Shared\Kernel\Transfer\AbstractTransfer
+     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
      */
     protected function generateProductConcrete(): ProductConcreteTransfer
     {
@@ -174,7 +174,7 @@ class ProductImageGenerator extends AbstractGenerator implements ProductImageGen
     }
 
     /**
-     * @return \Generated\Shared\Transfer\ProductImageTransfer|\Spryker\Shared\Kernel\Transfer\AbstractTransfer
+     * @return \Generated\Shared\Transfer\ProductImageTransfer
      */
     protected function generateProductImage(): ProductImageTransfer
     {
@@ -182,7 +182,7 @@ class ProductImageGenerator extends AbstractGenerator implements ProductImageGen
     }
 
     /**
-     * @return \Generated\Shared\Transfer\ProductImageSetTransfer|\Spryker\Shared\Kernel\Transfer\AbstractTransfer
+     * @return \Generated\Shared\Transfer\ProductImageSetTransfer
      */
     protected function generateProductImageSet(): ProductImageSetTransfer
     {

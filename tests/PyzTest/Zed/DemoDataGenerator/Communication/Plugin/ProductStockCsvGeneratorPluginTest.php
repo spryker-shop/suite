@@ -7,7 +7,7 @@
 
 namespace PyzTest\Zed\DemoDataGenerator\Communication\Plugin;
 
-use Pyz\Zed\DemoDataGenerator\Communication\Plugin\StockProductCsvGeneratorPlugin;
+use Pyz\Zed\DemoDataGenerator\Communication\Plugin\ProductStockCsvGeneratorPlugin;
 
 /**
  * Auto-generated group annotations
@@ -34,7 +34,7 @@ class ProductStockCsvGeneratorPluginTest extends AbstractCsvGenerator
         $demoDataGeneratorFactoryMock = $this->createDemoDataGeneratorFactoryMock($demoDataGeneratorConfigMock);
         $demoDataGeneratorFacade = $this->createDemoDataGeneratorFacade($demoDataGeneratorFactoryMock);
 
-        $productAbstractCsvDemoDataGeneratorPlugin = new StockProductCsvGeneratorPlugin();
+        $productAbstractCsvDemoDataGeneratorPlugin = new ProductStockCsvGeneratorPlugin();
         $productAbstractCsvDemoDataGeneratorPlugin->setFacade($demoDataGeneratorFacade);
         $productAbstractCsvDemoDataGeneratorPlugin->generateDemoData($demoDataGeneratorTransfer);
 
