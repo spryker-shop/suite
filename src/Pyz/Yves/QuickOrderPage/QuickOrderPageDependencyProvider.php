@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\QuickOrderPage;
 
+use Spryker\Client\ProductPackagingUnitStorage\Plugin\QuickOrderPage\QuickOrderItemTransferPackagingUnitExpanderPlugin;
 use SprykerShop\Yves\MultiCartWidget\Plugin\QuickOrderPage\MultiCartListWidgetPlugin;
 use SprykerShop\Yves\QuickOrderPage\QuickOrderPageDependencyProvider as SprykerQuickOrderPageDependencyProvider;
 
@@ -19,6 +20,16 @@ class QuickOrderPageDependencyProvider extends SprykerQuickOrderPageDependencyPr
     {
         return [
             MultiCartListWidgetPlugin::class, #MultiCartFeature
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\QuickOrderExtension\Dependency\Plugin\QuickOrderItemTransferExpanderPluginInterface[]
+     */
+    protected function getQuickOrderItemTransferExpanderPlugins(): array
+    {
+        return [
+            new QuickOrderItemTransferPackagingUnitExpanderPlugin(),
         ];
     }
 }
