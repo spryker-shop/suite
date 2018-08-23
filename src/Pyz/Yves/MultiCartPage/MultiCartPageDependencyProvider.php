@@ -21,8 +21,8 @@ class MultiCartPageDependencyProvider extends SprykerMultiCartPageDependencyProv
     {
         return [
             ProductBundleItemCounterWidgetPlugin::class, #ProductBundleFeature
-            CartListPermissionGroupWidgetPlugin::class, #SharedCartWidget
-            CartToShoppingListWidgetPlugin::class, #ShoppingListWidget
+            CartListPermissionGroupWidgetPlugin::class, #SharedCartFeature
+            CartToShoppingListWidgetPlugin::class, #ShoppingListFeature
         ];
     }
 }
