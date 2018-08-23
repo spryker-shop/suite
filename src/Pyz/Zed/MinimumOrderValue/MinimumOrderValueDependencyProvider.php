@@ -7,21 +7,26 @@
 
 namespace Pyz\Zed\MinimumOrderValue;
 
-use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\MerchantRelationshipMinimumOrderValue\Communication\Plugin\MinimumOrderValue\MerchantRelationshipMinimumOrderValueDataSourceStrategyPlugin;
 use Spryker\Zed\MinimumOrderValue\MinimumOrderValueDependencyProvider as SprykerMinimumOrderValueDependencyProvider;
 
 class MinimumOrderValueDependencyProvider extends SprykerMinimumOrderValueDependencyProvider
 {
     /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
      * @return \Spryker\Zed\MinimumOrderValueExtension\Dependency\Plugin\MinimumOrderValueDataSourceStrategyPluginInterface[]
      */
-    protected function getMinimumOrderValueDataSourceStrategies(Container $container): array
+    protected function getMinimumOrderValueDataSourceStrategies(): array
     {
         return [
             new MerchantRelationshipMinimumOrderValueDataSourceStrategyPlugin(),
         ];
+    }
+
+    /**
+     * @return \Spryker\Zed\MinimumOrderValueExtension\Dependency\Plugin\MinimumOrderValueStrategyPluginInterface[]
+     */
+    protected function getMinimumOrderValueStrategyPlugins(): array
+    {
+        return parent::getMinimumOrderValueStrategyPlugins() + [];
     }
 }
