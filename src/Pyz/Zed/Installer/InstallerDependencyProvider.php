@@ -41,7 +41,6 @@ class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
             new NewsletterInstallerPlugin(),
             new GlossaryInstallerPlugin(),
             new CustomerAccessInstallerPlugin(),
-            new SharedCartPermissionInstallerPlugin(),
             new ShoppingListPermissionsInstallerPlugin(),
             new SharedCartPermissionInstallerPlugin(), #SharedCartFeature
             new ProductMeasurementUnitInstallerPlugin(),
