@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a8ad25574dd401649bfda941e884acfc",
+    "content-hash": "530ed67a85035792f9aaa08f83c217c8",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -2588,11 +2588,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/glue-381/glue-388-change-password",
+            "version": "dev-feature/glue-381/dev-customers-api",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "33c0514d42545f812d4840d07315a0b4394a35d2"
+                "reference": "8a47e15346117ad46184b3a690837efae9c6d25a"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2607,6 +2607,7 @@
                 "spryker/assertion": "*",
                 "spryker/auth": "*",
                 "spryker/auth-mail-connector": "*",
+                "spryker/auth-rest-api": "*",
                 "spryker/availability": "*",
                 "spryker/availability-cart-connector": "*",
                 "spryker/availability-gui": "*",
@@ -2620,6 +2621,7 @@
                 "spryker/cart-variant": "*",
                 "spryker/catalog": "*",
                 "spryker/catalog-price-product-connector": "*",
+                "spryker/catalog-search-rest-api": "*",
                 "spryker/category": "*",
                 "spryker/category-exporter": "*",
                 "spryker/category-page-search": "*",
@@ -2666,6 +2668,7 @@
                 "spryker/customer-note-gui": "*",
                 "spryker/customer-user-connector": "*",
                 "spryker/customer-user-connector-gui": "*",
+                "spryker/customers-rest-api": "*",
                 "spryker/development": "*",
                 "spryker/discount": "*",
                 "spryker/discount-calculation-connector": "*",
@@ -2686,6 +2689,7 @@
                 "spryker/glossary": "*",
                 "spryker/glossary-storage": "*",
                 "spryker/glue-application": "*",
+                "spryker/glue-application-extension": "*",
                 "spryker/graph": "*",
                 "spryker/graphviz": "*",
                 "spryker/gui": "*",
@@ -2714,6 +2718,9 @@
                 "spryker/new-relic-api": "*",
                 "spryker/newsletter": "*",
                 "spryker/nopayment": "*",
+                "spryker/oauth": "*",
+                "spryker/oauth-customer-connector": "*",
+                "spryker/oauth-extension": "*",
                 "spryker/offer": "*",
                 "spryker/offer-gui": "*",
                 "spryker/oms": "*",
@@ -2858,7 +2865,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-08-21T13:57:01+00:00"
+            "time": "2018-08-23T13:21:45+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5956,7 +5963,7 @@
                 "configurator",
                 "nette"
             ],
-            "time": "2018-05-16T11:51:51+00:00"
+            "time": "2018-05-17T12:52:20+00:00"
         },
         {
             "name": "nette/di",
