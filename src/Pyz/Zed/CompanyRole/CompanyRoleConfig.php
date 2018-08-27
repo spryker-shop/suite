@@ -24,7 +24,7 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
     /**
      * @return string[]
      */
-    public function getAdminRolePermissions(): array
+    public function getAdminRolePermissionKeys(): array
     {
         return [
             AddCompanyUserPermissionPlugin::KEY,
@@ -36,7 +36,7 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
     /**
      * @return string[]
      */
-    protected function getPermissionsForBuyerRole(): array
+    protected function getBuyerRolePermissionKeys(): array
     {
         return [
             AddCartItemPermissionPlugin::KEY,
@@ -52,7 +52,6 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
     public function getCompanyRoles(): array
     {
         $companyRoleTransfers = parent::getCompanyRoles();
-
         $companyRoleTransfers[] = $this->getBuyerRole();
 
         return $companyRoleTransfers;
@@ -66,7 +65,7 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
         return (new CompanyRoleTransfer())
             ->setName(static::BUYER_ROLE_NAME)
             ->setPermissionCollection($this->createPermissionCollectionFromPermissionKeys(
-                $this->getPermissionsForBuyerRole()
+                $this->getBuyerRolePermissionKeys()
             ));
     }
 }
