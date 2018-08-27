@@ -9,6 +9,7 @@ namespace PyzTest\Yves\Availability;
 
 use Codeception\Actor;
 use Codeception\Scenario;
+use PyzTest\Yves\Customer\PageObject\CustomerLoginPage;
 
 /**
  * Inherited Methods
@@ -42,6 +43,11 @@ class AvailabilityPresentationTester extends Actor
         parent::__construct($scenario);
 
         $this->amYves();
+        $customerTransfer = $this->haveRegisteredCustomer();
+        $this->submitForm(['name' => 'loginForm'], [
+            CustomerLoginPage::FORM_FIELD_SELECTOR_EMAIL => $customerTransfer->getEmail(),
+            CustomerLoginPage::FORM_FIELD_SELECTOR_PASSWORD => $customerTransfer->getPassword(),
+        ]);
     }
 
     /**
