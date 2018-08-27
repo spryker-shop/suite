@@ -12,8 +12,7 @@ use Spryker\Zed\Cart\Communication\Plugin\SkuGroupKeyPlugin;
 use Spryker\Zed\Discount\Communication\Plugin\Cart\DiscountQuoteChangeObserverPlugin;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Cart\CartGroupPromotionItems;
 use Spryker\Zed\Kernel\Container;
-use Spryker\Zed\MinimumOrderValue\Communication\Plugin\Cart\AddMinimumOrderValueThresholdMessagesToMessengerCartPostSavePlugin;
-use Spryker\Zed\MinimumOrderValue\Communication\Plugin\Cart\AddMinimumOrderValueThresholdsToQuoteCartPostSavePlugin;
+use Spryker\Zed\MinimumOrderValue\Communication\Plugin\Cart\AddMinimumOrderValueThresholdMessagesCartPostSavePlugin;
 use Spryker\Zed\PaymentCartConnector\Communication\Plugin\Cart\RemovePaymentCartPostSavePlugin;
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\CartItemPricePlugin;
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\CartItemPricePreCheckPlugin;
@@ -118,8 +117,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new RemovePaymentCartPostSavePlugin(),
             new QuantitySalesUnitValuePostSavePlugin(),
             new AmountSalesUnitValuePostSavePlugin(), #ProductPackagingUnit
-            new AddMinimumOrderValueThresholdsToQuoteCartPostSavePlugin(), #MinimumOrderValueFeature
-            new AddMinimumOrderValueThresholdMessagesToMessengerCartPostSavePlugin(), #MinimumOrderValueFeature
+            new AddMinimumOrderValueThresholdMessagesCartPostSavePlugin(), #MinimumOrderValueFeature
         ];
     }
 

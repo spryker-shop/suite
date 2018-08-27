@@ -32,8 +32,8 @@ use Spryker\Zed\Calculation\Communication\Plugin\Calculator\TaxTotalCalculatorPl
 use Spryker\Zed\DiscountCalculationConnector\Communication\Plugin\DiscountCalculatorPlugin;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Calculation\RemovePromotionItemsCalculatorPlugin;
 use Spryker\Zed\Kernel\Container;
-use Spryker\Zed\MinimumOrderValue\Communication\Plugin\Calculation\AddMinimumOrderValueExpensesToQuoteCalculationPlugin;
-use Spryker\Zed\MinimumOrderValue\Communication\Plugin\Calculation\RemoveMinimumOrderValueExpensesFromQuoteCalculationPlugin;
+use Spryker\Zed\MinimumOrderValue\Communication\Plugin\Calculation\AddMinimumOrderValueExpenseCalculatorPlugin;
+use Spryker\Zed\MinimumOrderValue\Communication\Plugin\Calculation\RemoveMinimumOrderValueExpenseCalculatorPlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Calculation\PaymentCalculatorPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Calculation\CalculateBundlePricePlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\ProductOptionTaxRateCalculatorPlugin;
@@ -186,14 +186,14 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new RemoveAllCalculatedDiscountsCalculatorPlugin(),
             new RemovePromotionItemsCalculatorPlugin(),
             new RemoveCanceledAmountCalculatorPlugin(),
-            new RemoveMinimumOrderValueExpensesFromQuoteCalculationPlugin(), #MinimumOrderValueFeature
+            new RemoveMinimumOrderValueExpenseCalculatorPlugin(), #MinimumOrderValueFeature
 
             new PriceCalculatorPlugin(),
             new ItemProductOptionPriceAggregatorPlugin(),
             new ItemSubtotalAggregatorPlugin(),
 
             new SubtotalCalculatorPlugin(),
-            new AddMinimumOrderValueExpensesToQuoteCalculationPlugin(), #MinimumOrderValueFeature
+            new AddMinimumOrderValueExpenseCalculatorPlugin(), #MinimumOrderValueFeature
 
             new ProductItemTaxRateCalculatorPlugin(),
             new ProductOptionTaxRateCalculatorPlugin(),
