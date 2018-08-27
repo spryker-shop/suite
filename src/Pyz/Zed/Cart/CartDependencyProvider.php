@@ -120,7 +120,6 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new AmountSalesUnitValuePostSavePlugin(), #ProductPackagingUnit
             new AddMinimumOrderValueThresholdsToQuoteCartPostSavePlugin(), #MinimumOrderValueFeature
             new AddMinimumOrderValueThresholdMessagesToMessengerCartPostSavePlugin(), #MinimumOrderValueFeature
-//            new MinimumOrderValueCartPostSavePlugin(),
         ];
     }
 
