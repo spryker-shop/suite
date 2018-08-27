@@ -40,7 +40,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             DisplayOnBehalfBusinessWidgetPlugin::class,
             MenuItemBusinessOnBehalfWidgetPlugin::class,
             MenuItemCompanyWidgetPlugin::class,
-            ShoppingListWidgetPlugin::class, #ShoppingListSession
+            ShoppingListWidgetPlugin::class, #ShoppingListFeature
         ];
     }
 
