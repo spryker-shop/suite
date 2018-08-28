@@ -14,6 +14,7 @@ use SprykerShop\Yves\ProductAlternativeWidget\Plugin\ShoppingListPage\ProductAlt
 use SprykerShop\Yves\ProductBarcodeWidget\Plugin\ShoppingList\ProductBarcodeWidgetPlugin;
 use SprykerShop\Yves\ProductDiscontinuedWidget\Plugin\ShoppingListPage\ProductDiscontinuedWidgetPlugin;
 use SprykerShop\Yves\ShoppingListNoteWidget\Plugin\ShoppingListNoteWidgetPlugin;
+use SprykerShop\Yves\ShoppingListNoteWidget\Plugin\ShoppingListPage\ShoppingListItemNoteFormExpanderPlugin;
 use SprykerShop\Yves\ShoppingListPage\ShoppingListPageDependencyProvider as SprykerShoppingListPageDependencyProvider;
 
 class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependencyProvider
@@ -52,6 +53,16 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
             ProductAlternativeWidgetPlugin::class, #ProductAlternativeFeature
             ProductDiscontinuedWidgetPlugin::class, #ProductDiscontinuedFeature
             ShoppingListNoteWidgetPlugin::class, #ShoppingListNoteFeature
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\ShoppingListPageExtension\Dependency\Plugin\ShoppingListItemFormExpanderPluginInterface[]
+     */
+    protected function getShoppingListItemFormWidgetPlugins(): array
+    {
+        return [
+            new ShoppingListItemNoteFormExpanderPlugin(), #ShoppingListNoteFeature
         ];
     }
 }
