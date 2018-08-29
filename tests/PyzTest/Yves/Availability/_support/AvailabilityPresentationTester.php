@@ -43,11 +43,30 @@ class AvailabilityPresentationTester extends Actor
         parent::__construct($scenario);
 
         $this->amYves();
-        $customerTransfer = $this->haveRegisteredCustomer();
-        $this->submitForm(['name' => 'loginForm'], [
+//        $customerTransfer = $this->haveRegisteredCustomer();
+//        $this->submitForm(['name' => 'loginForm'], [
+//            CustomerLoginPage::FORM_FIELD_SELECTOR_EMAIL => $customerTransfer->getEmail(),
+//            CustomerLoginPage::FORM_FIELD_SELECTOR_PASSWORD => $customerTransfer->getPassword(),
+//        ]);
+
+        $i = $this->getWebDriver();
+        $customerTransfer = $this->haveRegisteredCustomer();;
+
+        if ($i->loadSessionSnapshot($customerTransfer->getEmail())) {
+            return;
+        }
+
+        $i = $this->getWebDriver();
+        $i->amOnPage(CustomerLoginPage::URL);
+        $i->waitForElement("form[name='loginForm']");
+        $i->submitForm(['name' => 'loginForm'], [
             CustomerLoginPage::FORM_FIELD_SELECTOR_EMAIL => $customerTransfer->getEmail(),
             CustomerLoginPage::FORM_FIELD_SELECTOR_PASSWORD => $customerTransfer->getPassword(),
         ]);
+
+        $i->waitForElement(CustomerLoginPage::CLASS_HOMEPAGE_SEARCH_FIELD);
+
+        $i->saveSessionSnapshot($customerTransfer->getEmail());
     }
 
     /**
