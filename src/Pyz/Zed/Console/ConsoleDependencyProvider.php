@@ -14,6 +14,7 @@ use Spryker\Spryk\Console\SprykDumpConsole;
 use Spryker\Spryk\Console\SprykRunConsole;
 use Spryker\Zed\BusinessOnBehalfDataImport\BusinessOnBehalfDataImportConfig;
 use Spryker\Zed\Cache\Communication\Console\EmptyAllCachesConsole;
+use Spryker\Zed\CartsRestApi\Communication\Console\QuoteUuidGeneratorConsole;
 use Spryker\Zed\CodeGenerator\Communication\Console\BundleClientCodeGeneratorConsole;
 use Spryker\Zed\CodeGenerator\Communication\Console\BundleCodeGeneratorConsole;
 use Spryker\Zed\CodeGenerator\Communication\Console\BundleServiceCodeGeneratorConsole;
@@ -132,6 +133,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
     {
         $commands = [
             new CacheWarmerConsole(),
+            new QuoteUuidGeneratorConsole(),
             new BuildNavigationConsole(),
             new EmptyAllCachesConsole(),
             new GeneratorConsole(),
