@@ -17,6 +17,7 @@ use SprykerShop\Yves\CustomerPage\Plugin\CustomerPage\CustomerNavigationWidgetPl
 use SprykerShop\Yves\LanguageSwitcherWidget\Plugin\ShopUi\LanguageSwitcherWidgetPlugin;
 use SprykerShop\Yves\MultiCartWidget\Plugin\ShopUi\MiniCartWidgetPlugin;
 use SprykerShop\Yves\NavigationWidget\Plugin\ShopUi\NavigationWidgetPlugin;
+use SprykerShop\Yves\NavigationWidget\Widget\NavigationWidget;
 use SprykerShop\Yves\PriceWidget\Plugin\ShopUi\PriceModeSwitcherWidgetPlugin;
 use SprykerShop\Yves\ProductGroupWidget\Plugin\ShopUi\ProductGroupWidgetPlugin;
 use SprykerShop\Yves\ShopApplication\ShopApplicationDependencyProvider as SprykerShopApplicationDependencyProvider;
@@ -26,12 +27,13 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
     /**
      * @return string[]
      */
-    protected function getGlobalWidgetPlugins(): array
+    protected function getGlobalWidgets(): array
     {
         return [
             CurrencyWidgetPlugin::class,
             LanguageSwitcherWidgetPlugin::class,
             NavigationWidgetPlugin::class,
+            NavigationWidget::class,
             ProductGroupWidgetPlugin::class,
             PriceModeSwitcherWidgetPlugin::class,
             MiniCartWidgetPlugin::class, #MultiCartFeature
