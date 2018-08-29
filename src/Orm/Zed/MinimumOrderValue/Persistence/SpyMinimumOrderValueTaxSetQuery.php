@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\MinimumOrderValue\Persistence;
 
-use Spryker\Zed\MinimumOrderValue\Persistence\Propel\AbstractSpyMinimumOrderValueTaxSetQuery as BaseSpyMinimumOrderValueTaxSetQuery;
+use Spryker\Zed\MinimumOrderValue\Persistence\Propel\AbstractSpyMinimumOrderValueTaxSetQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_min_order_value_tax_set' table.
@@ -19,6 +19,6 @@ use Spryker\Zed\MinimumOrderValue\Persistence\Propel\AbstractSpyMinimumOrderValu
  * long as it does not already exist in the output directory.
  *
  */
-class SpyMinimumOrderValueTaxSetQuery extends BaseSpyMinimumOrderValueTaxSetQuery
+class SpyMinimumOrderValueTaxSetQuery extends AbstractSpyMinimumOrderValueTaxSetQuery
 {
 }
