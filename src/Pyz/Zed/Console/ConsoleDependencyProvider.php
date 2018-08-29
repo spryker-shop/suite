@@ -274,9 +274,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new ModuleBridgeCreateConsole();
             $commands[] = new ModuleCreateConsole();
             $commands[] = new CodePhpMessDetectorConsole();
-            $commands[] = new DependencyTreeBuilderConsole();
-            $commands[] = new DependencyViolationFinderConsole();
-            $commands[] = new DependencyViolationFixConsole();
             $commands[] = new ComposerJsonUpdaterConsole();
             $commands[] = new ValidatorConsole();
             $commands[] = new BundleCodeGeneratorConsole();
@@ -340,8 +337,13 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
     protected function addProjectNonsplitOnlyCommands(array $commands): array
     {
         $commands[] = new AdjustPhpstanConsole();
+
         $commands[] = new SprykRunConsole();
         $commands[] = new SprykDumpConsole();
+
+        $commands[] = new DependencyTreeBuilderConsole();
+        $commands[] = new DependencyViolationFinderConsole();
+        $commands[] = new DependencyViolationFixConsole();
 
         return $commands;
     }
