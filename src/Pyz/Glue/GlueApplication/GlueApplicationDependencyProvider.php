@@ -15,6 +15,7 @@ use Spryker\Glue\CatalogSearchRestApi\Plugin\CatalogSearchResourceRoutePlugin;
 use Spryker\Glue\CatalogSearchRestApi\Plugin\CatalogSearchSuggestionsResourceRoutePlugin;
 use Spryker\Glue\CategoriesRestApi\Plugin\CategoriesResourceRoutePlugin;
 use Spryker\Glue\CategoriesRestApi\Plugin\CategoryResourceRoutePlugin;
+use Spryker\Glue\CustomersRestApi\Plugin\CustomersResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\SetCustomerBeforeActionPlugin;
 use Spryker\Glue\GlueApplication\GlueApplicationDependencyProvider as SprykerGlueApplicationDependencyProvider;
 use Spryker\Glue\GlueApplication\Plugin\Rest\SetStoreCurrentLocaleBeforeActionPlugin;
@@ -37,6 +38,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new CatalogSearchSuggestionsResourceRoutePlugin(),
             new CategoriesResourceRoutePlugin(),
             new CategoryResourceRoutePlugin(),
+            new CustomersResourceRoutePlugin(),
             new AbstractProductsResourceRoutePlugin(),
             new ConcreteProductsResourceRoutePlugin(),
         ];
