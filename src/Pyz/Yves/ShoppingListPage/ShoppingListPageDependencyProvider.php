@@ -13,6 +13,7 @@ use Spryker\Client\ProductImageStorage\Plugin\ProductViewImageExpanderPlugin;
 use SprykerShop\Yves\ProductAlternativeWidget\Plugin\ShoppingListPage\ProductAlternativeWidgetPlugin;
 use SprykerShop\Yves\ProductBarcodeWidget\Plugin\ShoppingList\ProductBarcodeWidgetPlugin;
 use SprykerShop\Yves\ProductDiscontinuedWidget\Plugin\ShoppingListPage\ProductDiscontinuedWidgetPlugin;
+use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionFormExpanderPlugin;
 use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionWidgetPlugin;
 use SprykerShop\Yves\ShoppingListPage\ShoppingListPageDependencyProvider as SprykerShoppingListPageDependencyProvider;
 
@@ -52,6 +53,16 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
             ProductAlternativeWidgetPlugin::class, #ProductAlternativeFeature
             ProductDiscontinuedWidgetPlugin::class, #ProductDiscontinuedFeature
             ShoppingListItemProductOptionWidgetPlugin::class,
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\ShoppingListPageExtension\Dependency\Plugin\ShoppingListItemFormExpanderPluginInterface[]
+     */
+    protected function getShoppingListItemFormWidgetPlugins(): array
+    {
+        return [
+            new ShoppingListItemProductOptionFormExpanderPlugin()
         ];
     }
 }
