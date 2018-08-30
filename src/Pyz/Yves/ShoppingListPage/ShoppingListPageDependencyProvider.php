@@ -38,6 +38,7 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
     {
         return [
             ProductBarcodeWidgetPlugin::class,
+            ShoppingListNoteWidgetPlugin::class, #ShoppingListNoteFeature
         ];
     }
 
