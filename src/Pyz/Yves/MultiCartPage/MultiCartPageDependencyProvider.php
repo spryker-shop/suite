@@ -21,10 +21,19 @@ class MultiCartPageDependencyProvider extends SprykerShopMultiCartPageDependency
     protected function getCartDeleteCompanyUsersListWidgetPlugins(): array
     {
         return [
+            CartDeleteCompanyUsersListWidgetPlugin::class, #SharedCartFeature
+        ];
+    }
+
+    /**
+     * @return string[]
+     */
+    protected function getMultiCartListWidgetPlugins(): array
+    {
+        return [
             ProductBundleItemCounterWidgetPlugin::class, #ProductBundleFeature
             CartListPermissionGroupWidgetPlugin::class, #SharedCartFeature
             CartToShoppingListWidgetPlugin::class, #ShoppingListFeature
-            CartDeleteCompanyUsersListWidgetPlugin::class, #SharedCartFeature
         ];
     }
 }
