@@ -6,6 +6,10 @@ env:
     - APPLICATION_STORE=DE
     - PROJECT=suite
 
+branches:
+    except:
+    - ^.+\/.+\/.+\/
+
 #Possible travis events (push, pull_request, cron, or api)
 matrix:
   fast_finish: true
