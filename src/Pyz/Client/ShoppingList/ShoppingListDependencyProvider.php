@@ -8,7 +8,7 @@
 namespace Pyz\Client\ShoppingList;
 
 use Spryker\Client\ShoppingList\ShoppingListDependencyProvider as SprykerShoppingListDependencyProvider;
-use Spryker\Client\ShoppingListNote\Plugin\ShoppingListItemNoteToItemMapperPlugin;
+use Spryker\Client\ShoppingListNote\Plugin\ShoppingListItemNoteToItemCartNoteMapperPlugin;
 
 class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvider
 {
@@ -18,7 +18,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     protected function getShoppingListItemToItemMapperPlugins(): array
     {
         return [
-            new ShoppingListItemNoteToItemMapperPlugin(),
+            new ShoppingListItemNoteToItemCartNoteMapperPlugin(),
         ];
     }
 }
