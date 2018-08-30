@@ -6,11 +6,11 @@
     </index>
   </table>
   <table name="spy_product_discontinued_note">
-    <index name="index-spy_product_discontinued_note-fk_locale">
-      <index-column name="fk_locale"/>
-    </index>
     <index name="index-spy_product_discontinued_note-fk_product_discontinued">
       <index-column name="fk_product_discontinued"/>
+    </index>
+    <index name="index-spy_product_discontinued_note-fk_locale">
+      <index-column name="fk_locale"/>
     </index>
   </table>
 </database>

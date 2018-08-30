@@ -11,11 +11,11 @@
     </index>
   </table>
   <table name="spy_file_localized_attributes">
-    <index name="index-spy_file_localized_attributes-fk_locale">
-      <index-column name="fk_locale"/>
-    </index>
     <index name="index-spy_file_localized_attributes-fk_file">
       <index-column name="fk_file"/>
+    </index>
+    <index name="index-spy_file_localized_attributes-fk_locale">
+      <index-column name="fk_locale"/>
     </index>
   </table>
   <table name="spy_file_directory">
@@ -24,11 +24,11 @@
     </index>
   </table>
   <table name="spy_file_directory_localized_attributes">
-    <index name="index-spy_file_directory_localized_attributes-fk_locale">
-      <index-column name="fk_locale"/>
-    </index>
     <index name="index-spy_file_directory_localized_attributes-fk_file_directory">
       <index-column name="fk_file_directory"/>
+    </index>
+    <index name="index-spy_file_directory_localized_attributes-fk_locale">
+      <index-column name="fk_locale"/>
     </index>
   </table>
 </database>

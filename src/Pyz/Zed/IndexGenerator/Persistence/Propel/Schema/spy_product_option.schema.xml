@@ -6,11 +6,11 @@
     </index>
   </table>
   <table name="spy_product_abstract_product_option_group">
-    <index name="index-spy_product_abstract_product_option_group-fk-2b13db0bf6f9">
-      <index-column name="fk_product_option_group"/>
-    </index>
     <index name="index-spy_product_abstract_product_option_group-fk-9ef2e26082d9">
       <index-column name="fk_product_abstract"/>
+    </index>
+    <index name="index-spy_product_abstract_product_option_group-fk-2b13db0bf6f9">
+      <index-column name="fk_product_option_group"/>
     </index>
   </table>
   <table name="spy_product_option_value">
@@ -19,11 +19,11 @@
     </index>
   </table>
   <table name="spy_product_option_value_price">
-    <index name="index-spy_product_option_value_price-fk_store">
-      <index-column name="fk_store"/>
-    </index>
     <index name="index-spy_product_option_value_price-fk_currency">
       <index-column name="fk_currency"/>
+    </index>
+    <index name="index-spy_product_option_value_price-fk_store">
+      <index-column name="fk_store"/>
     </index>
     <index name="index-spy_product_option_value_price-fk_product_option_value">
       <index-column name="fk_product_option_value"/>

@@ -11,11 +11,11 @@
     </index>
   </table>
   <table name="spy_product_packaging_lead_product">
-    <index name="index-spy_product_packaging_lead_product-fk_product">
-      <index-column name="fk_product"/>
-    </index>
     <index name="index-spy_product_packaging_lead_product-fk_product_abstract">
       <index-column name="fk_product_abstract"/>
+    </index>
+    <index name="index-spy_product_packaging_lead_product-fk_product">
+      <index-column name="fk_product"/>
     </index>
   </table>
 </database>

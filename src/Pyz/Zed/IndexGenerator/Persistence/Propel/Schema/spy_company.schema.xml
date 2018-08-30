@@ -6,11 +6,11 @@
     </index>
   </table>
   <table name="spy_company_store">
-    <index name="index-spy_company_store-fk_store">
-      <index-column name="fk_store"/>
-    </index>
     <index name="index-spy_company_store-fk_company">
       <index-column name="fk_company"/>
+    </index>
+    <index name="index-spy_company_store-fk_store">
+      <index-column name="fk_store"/>
     </index>
   </table>
 </database>

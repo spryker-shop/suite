@@ -6,27 +6,27 @@
     </index>
   </table>
   <table name="spy_category_attribute">
-    <index name="index-spy_category_attribute-fk_category">
-      <index-column name="fk_category"/>
-    </index>
     <index name="index-spy_category_attribute-fk_locale">
       <index-column name="fk_locale"/>
     </index>
-  </table>
-  <table name="spy_category_node">
-    <index name="index-spy_category_node-fk_category">
+    <index name="index-spy_category_attribute-fk_category">
       <index-column name="fk_category"/>
     </index>
+  </table>
+  <table name="spy_category_node">
     <index name="index-spy_category_node-fk_parent_category_node">
       <index-column name="fk_parent_category_node"/>
     </index>
+    <index name="index-spy_category_node-fk_category">
+      <index-column name="fk_category"/>
+    </index>
   </table>
   <table name="spy_category_closure_table">
-    <index name="index-spy_category_closure_table-fk_category_node_descendant">
-      <index-column name="fk_category_node_descendant"/>
-    </index>
     <index name="index-spy_category_closure_table-fk_category_node">
       <index-column name="fk_category_node"/>
+    </index>
+    <index name="index-spy_category_closure_table-fk_category_node_descendant">
+      <index-column name="fk_category_node_descendant"/>
     </index>
   </table>
 </database>
