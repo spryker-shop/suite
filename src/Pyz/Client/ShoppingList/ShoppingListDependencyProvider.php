@@ -13,7 +13,7 @@ use Spryker\Client\ShoppingListNote\Plugin\ShoppingListItemNoteToItemCartNoteMap
 class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvider
 {
     /**
-     * @return \Spryker\Client\ShoppingList\Dependency\Plugin\ShoppingListItemToItemMapperPluginInterface[]
+     * @return \Spryker\Client\ShoppingListExtension\Dependency\Plugin\ShoppingListItemToItemMapperPluginInterface[]
      */
     protected function getShoppingListItemToItemMapperPlugins(): array
     {
