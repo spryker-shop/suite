@@ -47,6 +47,7 @@ class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
             new ProductDiscontinuedProductLabelConnectorInstallerPlugin(), #ProductDiscontinuedFeature
             new CompanyUserInvitationStatusInstallerPlugin(), #BulkImportCompanyUserInvitationsFeature
             new ProductPackagingUnitTypeInstallerPlugin(),
+            new MinimumOrderValueTypeInstallerPlugin(), #MinimumOrderValueFeature
             new OauthCustomerInstallerPlugin(),
             new MinimumOrderValueTypeInstallerPlugin(),
         ];

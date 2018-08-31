@@ -157,11 +157,11 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new ProductAlternativeDataImportPlugin(), #ProductAlternativeFeature
             new ProductPackagingUnitTypeDataImportPlugin(),
             new ProductPackagingUnitDataImportPlugin(),
-            new MinimumOrderValueDataImportPlugin(),
-            new MerchantRelationshipMinimumOrderValueDataImportPlugin(),
             new BusinessOnBehalfCompanyUserDataImportPlugin(),
+            new MinimumOrderValueDataImportPlugin(),
             new MerchantDataImportPlugin(),
             new MerchantRelationshipDataImportPlugin(),
+            new MerchantRelationshipMinimumOrderValueDataImportPlugin(),
             new ProductListDataImportPlugin(),
             new ProductListCategoryDataImportPlugin(),
             new ProductListProductConcreteDataImportPlugin(),
