@@ -68,6 +68,7 @@ use SprykerShop\Yves\ProductNewPage\Plugin\Provider\ProductNewPageControllerProv
 use SprykerShop\Yves\ProductReviewWidget\Plugin\Provider\ProductReviewControllerProvider;
 use SprykerShop\Yves\ProductSetListPage\Plugin\Provider\ProductSetListPageControllerProvider;
 use SprykerShop\Yves\QuickOrderPage\Plugin\Provider\QuickOrderPageControllerProvider;
+use SprykerShop\Yves\QuickOrderToShoppingListWidget\Plugin\Provider\QuickOrderToShoppingListWidgetControllerProvider;
 use SprykerShop\Yves\SharedCartPage\Plugin\Provider\SharedCartPageControllerProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\AutoloaderCacheServiceProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\ShopApplicationServiceProvider;
@@ -206,6 +207,7 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new ShoppingListWidgetControllerProvider($isSsl), #ShoppingListFeature
             new CompanyUserInvitationPageControllerProvider($isSsl), #BulkImportCompanyUserInvitationsFeature
             new FileManagerWidgetControllerProvider($isSsl),
+            new QuickOrderToShoppingListWidgetControllerProvider($isSsl), #ShoppingListFeature
         ];
     }
 }
