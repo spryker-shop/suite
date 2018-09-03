@@ -10,6 +10,8 @@ namespace Pyz\Yves\QuickOrderPage;
 use Spryker\Client\ProductPackagingUnitStorage\Plugin\QuickOrderPage\QuickOrderItemTransferPackagingUnitExpanderPlugin;
 use SprykerShop\Yves\MultiCartWidget\Plugin\QuickOrderPage\MultiCartListWidgetPlugin;
 use SprykerShop\Yves\QuickOrderPage\QuickOrderPageDependencyProvider as SprykerQuickOrderPageDependencyProvider;
+use SprykerShop\Yves\ShoppingListWidget\Plugin\QuickOrderPage\ShoppingListQuickOrderFormHandlerStrategyPlugin;
+use SprykerShop\Yves\ShoppingListWidget\Plugin\QuickOrderPage\ShoppingListQuickOrderPageWidgetPlugin;
 
 class QuickOrderPageDependencyProvider extends SprykerQuickOrderPageDependencyProvider
 {
@@ -20,6 +22,7 @@ class QuickOrderPageDependencyProvider extends SprykerQuickOrderPageDependencyPr
     {
         return [
             MultiCartListWidgetPlugin::class, #MultiCartFeature
+            ShoppingListQuickOrderPageWidgetPlugin::class, #ShoppingListFeature
         ];
     }
 
@@ -30,6 +33,16 @@ class QuickOrderPageDependencyProvider extends SprykerQuickOrderPageDependencyPr
     {
         return [
             new QuickOrderItemTransferPackagingUnitExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\QuickOrderPageExtension\Dependency\Plugin\QuickOrderFormHandlerStrategyPluginInterface[]
+     */
+    protected function getQuickOrderFormHandlerStrategyPlugins(): array
+    {
+        return [
+            new ShoppingListQuickOrderFormHandlerStrategyPlugin(), #ShoppingListFeature
         ];
     }
 }
