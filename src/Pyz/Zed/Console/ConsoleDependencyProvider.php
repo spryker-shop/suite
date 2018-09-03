@@ -35,7 +35,8 @@ use Spryker\Zed\Development\Communication\Console\CodeStyleSnifferConsole;
 use Spryker\Zed\Development\Communication\Console\CodeTestConsole;
 use Spryker\Zed\Development\Communication\Console\ComposerJsonUpdaterConsole;
 use Spryker\Zed\Development\Communication\Console\DependencyTreeBuilderConsole;
-use Spryker\Zed\Development\Communication\Console\DependencyTreeDependencyViolationConsole;
+use Spryker\Zed\Development\Communication\Console\DependencyViolationFinderConsole;
+use Spryker\Zed\Development\Communication\Console\DependencyViolationFixConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateClientIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateGlueIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateIdeAutoCompletionConsole;
@@ -276,8 +277,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new ModuleBridgeCreateConsole();
             $commands[] = new ModuleCreateConsole();
             $commands[] = new CodePhpMessDetectorConsole();
-            $commands[] = new DependencyTreeBuilderConsole();
-            $commands[] = new DependencyTreeDependencyViolationConsole();
             $commands[] = new ComposerJsonUpdaterConsole();
             $commands[] = new ValidatorConsole();
             $commands[] = new BundleCodeGeneratorConsole();
@@ -341,8 +340,13 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
     protected function addProjectNonsplitOnlyCommands(array $commands): array
     {
         $commands[] = new AdjustPhpstanConsole();
+
         $commands[] = new SprykRunConsole();
         $commands[] = new SprykDumpConsole();
+
+        $commands[] = new DependencyTreeBuilderConsole();
+        $commands[] = new DependencyViolationFinderConsole();
+        $commands[] = new DependencyViolationFixConsole();
 
         return $commands;
     }

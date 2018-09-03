@@ -4,55 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "de2a02870c71a57152da38ea1f103276",
+    "content-hash": "33ef71753511048e2378aa6d74bad255",
     "packages": [
-        {
-            "name": "braintree/braintree_php",
-            "version": "3.15.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/braintree/braintree_php.git",
-                "reference": "1026b6cca5f2dd5dfdd5447843b920cc74d2b8ca"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/braintree/braintree_php/zipball/1026b6cca5f2dd5dfdd5447843b920cc74d2b8ca",
-                "reference": "1026b6cca5f2dd5dfdd5447843b920cc74d2b8ca",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "ext-dom": "*",
-                "ext-hash": "*",
-                "ext-openssl": "*",
-                "ext-xmlwriter": "*",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "3.7.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Braintree": "lib/"
-                },
-                "psr-4": {
-                    "Braintree\\": "lib/Braintree"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Braintree",
-                    "homepage": "http://www.braintreepayments.com"
-                }
-            ],
-            "description": "Braintree PHP Client Library",
-            "time": "2016-07-18T21:55:50+00:00"
-        },
         {
             "name": "codeitnowin/barcode",
             "version": "3.0.2",
@@ -2384,12 +2337,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-eco/loggly.git",
-                "reference": "4e0bce8d31a810efcd50de81ee7c5de81e12fdc6"
+                "reference": "308da4c7ef36e4a5927b54155816df03bc03a8af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-eco/loggly/zipball/4e0bce8d31a810efcd50de81ee7c5de81e12fdc6",
-                "reference": "4e0bce8d31a810efcd50de81ee7c5de81e12fdc6",
+                "url": "https://api.github.com/repos/spryker-eco/loggly/zipball/308da4c7ef36e4a5927b54155816df03bc03a8af",
+                "reference": "308da4c7ef36e4a5927b54155816df03bc03a8af",
                 "shasum": ""
             },
             "require": {
@@ -2398,8 +2351,7 @@
             "require-dev": {
                 "spryker/code-sniffer": "*",
                 "spryker/monolog": "*",
-                "spryker/queue": "*",
-                "spryker/testify": "*"
+                "spryker/queue": "*"
             },
             "suggest": {
                 "spryker/monolog": "Needed to send messages to loggly via Curl helper",
@@ -2421,7 +2373,7 @@
                 "proprietary"
             ],
             "description": "Loggly module",
-            "time": "2018-04-24T10:34:44+00:00"
+            "time": "2018-08-31T13:22:51+00:00"
         },
         {
             "name": "spryker/event-behavior",
@@ -2873,7 +2825,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "0bee9f849be390e7362a422a6dbcf8920b9077a6"
+                "reference": "5b0395177d2aed4bcefee417314103513320f656"
             },
             "require": {
                 "php": ">=7.1"
@@ -2948,7 +2900,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-08-29T08:52:22+00:00"
+            "time": "2018-09-03T13:51:36+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -2956,12 +2908,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/synchronization-behavior.git",
-                "reference": "754ad795631657564797c7f7374afa580146cc1c"
+                "reference": "311673c36059437158eca999783698b93eddf547"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/754ad795631657564797c7f7374afa580146cc1c",
-                "reference": "754ad795631657564797c7f7374afa580146cc1c",
+                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/311673c36059437158eca999783698b93eddf547",
+                "reference": "311673c36059437158eca999783698b93eddf547",
                 "shasum": ""
             },
             "require": {
@@ -2972,7 +2924,8 @@
             "require-dev": {
                 "spryker/code-sniffer": "*",
                 "spryker/queue": "^1.1.0",
-                "spryker/synchronization": "^0.1.0 || ^0.2.0 || ^1.0.0"
+                "spryker/synchronization": "^0.1.0 || ^0.2.0 || ^1.0.0",
+                "spryker/testify": "*"
             },
             "suggest": {
                 "spryker/queue": "Generated classes are using spryker/queue module.",
@@ -2999,7 +2952,7 @@
                 "proprietary"
             ],
             "description": "SynchronizationBehavior module",
-            "time": "2018-08-17T09:01:55+00:00"
+            "time": "2018-09-03T08:13:05+00:00"
         },
         {
             "name": "spryker/uuid-behavior",
@@ -5584,16 +5537,16 @@
         },
         {
             "name": "composer/xdebug-handler",
-            "version": "1.2.1",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/xdebug-handler.git",
-                "reference": "e37cbd80da64afe314c72de8d2d2fec0e40d9373"
+                "reference": "b8e9745fb9b06ea6664d8872c4505fb16df4611c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/e37cbd80da64afe314c72de8d2d2fec0e40d9373",
-                "reference": "e37cbd80da64afe314c72de8d2d2fec0e40d9373",
+                "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/b8e9745fb9b06ea6664d8872c4505fb16df4611c",
+                "reference": "b8e9745fb9b06ea6664d8872c4505fb16df4611c",
                 "shasum": ""
             },
             "require": {
@@ -5624,7 +5577,7 @@
                 "Xdebug",
                 "performance"
             ],
-            "time": "2018-08-23T12:00:19+00:00"
+            "time": "2018-08-31T19:07:57+00:00"
         },
         {
             "name": "doctrine/instantiator",
@@ -7103,16 +7056,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "7.3.2",
+            "version": "7.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "34705f81bddc3f505b9599a2ef96e2b4315ba9b8"
+                "reference": "1bd5629cccfb2c0a9ef5474b4ff772349e1ec898"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/34705f81bddc3f505b9599a2ef96e2b4315ba9b8",
-                "reference": "34705f81bddc3f505b9599a2ef96e2b4315ba9b8",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1bd5629cccfb2c0a9ef5474b4ff772349e1ec898",
+                "reference": "1bd5629cccfb2c0a9ef5474b4ff772349e1ec898",
                 "shasum": ""
             },
             "require": {
@@ -7183,7 +7136,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-08-22T06:39:21+00:00"
+            "time": "2018-09-01T15:49:55+00:00"
         },
         {
             "name": "roave/better-reflection",
@@ -8075,16 +8028,16 @@
         },
         {
             "name": "slevomat/coding-standard",
-            "version": "4.7.1",
+            "version": "4.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/slevomat/coding-standard.git",
-                "reference": "48791724c29374840443dd5404b8dab75cc56a65"
+                "reference": "d6d531b47b81fda400f11dab30008e12703e7fee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/48791724c29374840443dd5404b8dab75cc56a65",
-                "reference": "48791724c29374840443dd5404b8dab75cc56a65",
+                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/d6d531b47b81fda400f11dab30008e12703e7fee",
+                "reference": "d6d531b47b81fda400f11dab30008e12703e7fee",
                 "shasum": ""
             },
             "require": {
@@ -8110,7 +8063,7 @@
                 "MIT"
             ],
             "description": "Slevomat Coding Standard for PHP_CodeSniffer complements Consistence Coding Standard by providing sniffs with additional checks.",
-            "time": "2018-08-29T20:31:52+00:00"
+            "time": "2018-08-30T21:30:07+00:00"
         },
         {
             "name": "sllh/composer-versions-check",
@@ -8267,12 +8220,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "f4c0cc4f12f5adba230c4670b34fbf477554aa46"
+                "reference": "f49b6c2f17ba9431e66b73980e7f2e3e41672e36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/f4c0cc4f12f5adba230c4670b34fbf477554aa46",
-                "reference": "f4c0cc4f12f5adba230c4670b34fbf477554aa46",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/f49b6c2f17ba9431e66b73980e7f2e3e41672e36",
+                "reference": "f49b6c2f17ba9431e66b73980e7f2e3e41672e36",
                 "shasum": ""
             },
             "require": {
@@ -8311,7 +8264,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-08-28T13:07:06+00:00"
+            "time": "2018-08-31T16:41:34+00:00"
         },
         {
             "name": "spryker/development-core",
@@ -8364,17 +8317,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/git-hook.git",
-                "reference": "c806747b8152543f3da05c233b3c46a860552f40"
+                "reference": "0af99b58c35a77e85708121f34509f7f475f704e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/git-hook/zipball/c806747b8152543f3da05c233b3c46a860552f40",
-                "reference": "c806747b8152543f3da05c233b3c46a860552f40",
+                "url": "https://api.github.com/repos/spryker/git-hook/zipball/0af99b58c35a77e85708121f34509f7f475f704e",
+                "reference": "0af99b58c35a77e85708121f34509f7f475f704e",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "symfony/yaml": "^2.8|^3"
+                "symfony/yaml": "^2.8|^3",
+                "zendframework/zend-filter": "^2.0.0"
             },
             "require-dev": {
                 "codeception/codeception": "^2.2.10",
@@ -8386,8 +8340,8 @@
             },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "GitHook": "src"
+                "psr-4": {
+                    "GitHook\\": "src/GitHook/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -8408,7 +8362,7 @@
                 "sniffer",
                 "standards"
             ],
-            "time": "2018-08-16T09:21:34+00:00"
+            "time": "2018-08-31T11:32:04+00:00"
         },
         {
             "name": "spryker/spryk",
@@ -8416,7 +8370,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryk.git",
-                "reference": "cd82feba797bf11289ff90707827f422ba6880f7"
+                "reference": "5cb0cb410f976713615a7d7bb06031ebea300e27"
             },
             "require": {
                 "php": ">=7.1",
@@ -8435,8 +8389,8 @@
                 "phpstan/phpstan": "^0.9.0 || ^0.10.0",
                 "phpstan/phpstan-phpunit": "^0.9.0 || ^0.10.0",
                 "phpstan/phpstan-strict-rules": "^0.9.0 || ^0.10.0",
-                "spryker/code-sniffer": "dev-master as 1.0.0",
-                "spryker/git-hook": "dev-bugfix/core-4886-githook-broken",
+                "spryker/code-sniffer": "^0.12.0",
+                "spryker/git-hook": "dev-master",
                 "symfony/var-dumper": "^4.0.9"
             },
             "type": "library",
@@ -8472,7 +8426,7 @@
                 "MIT"
             ],
             "description": "Spryker Spryk build tool",
-            "time": "2018-08-29T09:59:43+00:00"
+            "time": "2018-08-31T19:36:34+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -9131,12 +9085,12 @@
     "stability-flags": {
         "spryker/spryker": 20,
         "spryker/spryker-shop": 20,
+        "spryker-eco/loggly": 20,
         "spryker/rabbit-mq": 20,
         "spryker/install": 20,
         "spryker/event-behavior": 20,
         "spryker/synchronization-behavior": 20,
         "spryker/uuid-behavior": 20,
-        "spryker-eco/loggly": 20,
         "spryker/architecture-sniffer": 20,
         "spryker/code-generator": 20,
         "spryker/code-sniffer": 20,
