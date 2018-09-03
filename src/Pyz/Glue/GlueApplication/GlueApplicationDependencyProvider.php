@@ -30,8 +30,8 @@ use Spryker\Glue\ProductsProductAvailabilitiesResourceRelationship\Plugin\Concre
 use Spryker\Glue\ProductsProductAvailabilitiesResourceRelationship\Plugin\ProductsProductAvailabilitiesResourceRelationshipPlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\AbstractProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\ConcreteProductsResourceRoutePlugin;
-use Spryker\Glue\StoresRestApi\Plugin\StoresResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
+use Spryker\Glue\StoresRestApi\Plugin\StoresResourceRoutePlugin;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
