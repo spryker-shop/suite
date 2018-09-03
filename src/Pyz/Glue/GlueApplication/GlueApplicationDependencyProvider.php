@@ -24,8 +24,13 @@ use Spryker\Glue\CustomersRestApi\Plugin\SetCustomerBeforeActionPlugin;
 use Spryker\Glue\GlueApplication\GlueApplicationDependencyProvider as SprykerGlueApplicationDependencyProvider;
 use Spryker\Glue\GlueApplication\Plugin\Rest\SetStoreCurrentLocaleBeforeActionPlugin;
 use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationshipCollectionInterface;
+use Spryker\Glue\ProductAvailabilitiesRestApi\Plugin\AbstractProductAvailabilitiesRoutePlugin;
+use Spryker\Glue\ProductAvailabilitiesRestApi\Plugin\ConcreteProductAvailabilitiesRoutePlugin;
+use Spryker\Glue\ProductsProductAvailabilitiesResourceRelationship\Plugin\ConcreteProductAvailabilitiesResourceRelationshipPlugin;
+use Spryker\Glue\ProductsProductAvailabilitiesResourceRelationship\Plugin\ProductsProductAvailabilitiesResourceRelationshipPlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\AbstractProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\ConcreteProductsResourceRoutePlugin;
+use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
 use Spryker\Glue\StoresRestApi\Plugin\StoresResourceRoutePlugin;
 
 /**
@@ -46,6 +51,8 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new CatalogSearchResourceRoutePlugin(),
             new StoresResourceRoutePlugin(),
             new CatalogSearchSuggestionsResourceRoutePlugin(),
+            new ConcreteProductAvailabilitiesRoutePlugin(),
+            new AbstractProductAvailabilitiesRoutePlugin(),
             new CategoriesResourceRoutePlugin(),
             new CategoryResourceRoutePlugin(),
             new CustomersResourceRoutePlugin(),
@@ -107,6 +114,15 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             CartsRestApiConfig::RESOURCE_CART_ITEMS,
             new CartItemsProductsRelationshipPlugin()
         );
+        $resourceRelationshipCollection->addRelationship(
+            ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
+            new ProductsProductAvailabilitiesResourceRelationshipPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+            new ConcreteProductAvailabilitiesResourceRelationshipPlugin()
+        );
+
         return $resourceRelationshipCollection;
     }
 }
