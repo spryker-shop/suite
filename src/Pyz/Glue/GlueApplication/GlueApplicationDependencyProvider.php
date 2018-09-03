@@ -27,6 +27,7 @@ use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationship
 use Spryker\Glue\ProductsRestApi\Plugin\AbstractProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\ConcreteProductsResourceRoutePlugin;
 use Spryker\Glue\RestRequestValidator\Plugin\RestRequestValidatorPlugin;
+use Spryker\Glue\StoresRestApi\Plugin\StoresResourceRoutePlugin;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -44,6 +45,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new AccessTokensResourceRoutePlugin(),
             new RefreshTokensResourceRoutePlugin(),
             new CatalogSearchResourceRoutePlugin(),
+            new StoresResourceRoutePlugin(),
             new CatalogSearchSuggestionsResourceRoutePlugin(),
             new CategoriesResourceRoutePlugin(),
             new CategoryResourceRoutePlugin(),
