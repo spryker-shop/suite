@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "33ef71753511048e2378aa6d74bad255",
+    "content-hash": "d1e9e67222c915e1dd173e8543263a53",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -2540,11 +2540,19 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-bugfix/te-36",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
+<<<<<<< HEAD
                 "reference": "36f1e279bf3411fe0f61daabf725bd02b5b62f08"
+=======
+<<<<<<< HEAD
+                "reference": "0653a329acaac4a88c0747539ea60870bf7e58e2"
+=======
+                "reference": "c3293c3337943946dec5fd0fef8d31c7e2c25a4d"
+>>>>>>> te-36 updated composer, updated travis and added new console command
+>>>>>>> te-36 updated composer, updated travis and added new console command
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2817,15 +2825,27 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
+<<<<<<< HEAD
             "time": "2018-09-04T08:39:33+00:00"
+=======
+<<<<<<< HEAD
+            "time": "2018-09-03T12:29:52+00:00"
+=======
+            "time": "2018-09-03T13:13:49+00:00"
+>>>>>>> te-36 updated composer, updated travis and added new console command
+>>>>>>> te-36 updated composer, updated travis and added new console command
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-bugfix/te-36",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
+<<<<<<< HEAD
                 "reference": "5b0395177d2aed4bcefee417314103513320f656"
+=======
+                "reference": "4ce8f75c22ad905584c02f51c3f9c7bc98011de1"
+>>>>>>> te-36 updated composer, updated travis and added new console command
             },
             "require": {
                 "php": ">=7.1"
@@ -2900,7 +2920,11 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
+<<<<<<< HEAD
             "time": "2018-09-03T13:51:36+00:00"
+=======
+            "time": "2018-09-03T13:05:20+00:00"
+>>>>>>> te-36 updated composer, updated travis and added new console command
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8175,22 +8199,22 @@
         },
         {
             "name": "spryker/code-generator",
-            "version": "dev-master",
+            "version": "dev-bugfix/te-36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-generator.git",
-                "reference": "86c1c73b7635d3bc7e8f932ac9d24197f54bba59"
+                "reference": "15fc02a07b15e052149e65a598082185248c1d80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-generator/zipball/86c1c73b7635d3bc7e8f932ac9d24197f54bba59",
-                "reference": "86c1c73b7635d3bc7e8f932ac9d24197f54bba59",
+                "url": "https://api.github.com/repos/spryker/code-generator/zipball/15fc02a07b15e052149e65a598082185248c1d80",
+                "reference": "15fc02a07b15e052149e65a598082185248c1d80",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/kernel": "^3.0.0",
-                "zendframework/zend-filter": "*"
+                "zendframework/zend-filter": "^2.8.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -8212,7 +8236,7 @@
                 "MIT"
             ],
             "description": "CodeGenerator module",
-            "time": "2018-08-22T14:28:34+00:00"
+            "time": "2018-09-03T13:06:23+00:00"
         },
         {
             "name": "spryker/code-sniffer",
