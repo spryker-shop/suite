@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b42a6b8c3ce65533c32cb99031f4f79b",
+    "content-hash": "7d8e522db638886a1e73809d47ee4c40",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1893,7 +1893,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -9203,21 +9203,22 @@
         },
         {
             "name": "spryker/company-business-unit",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/company-business-unit.git",
-                "reference": "602e39d72b71569814ee64acf2b1100a9c8b4887"
+                "reference": "ef6589763a48af2ff4b758cd41e65cc94a46218b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/company-business-unit/zipball/602e39d72b71569814ee64acf2b1100a9c8b4887",
-                "reference": "602e39d72b71569814ee64acf2b1100a9c8b4887",
+                "url": "https://api.github.com/repos/spryker/company-business-unit/zipball/ef6589763a48af2ff4b758cd41e65cc94a46218b",
+                "reference": "ef6589763a48af2ff4b758cd41e65cc94a46218b",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/company": "^1.0.0",
+                "spryker/company-business-unit-extension": "^1.0.0",
                 "spryker/company-extension": "^1.0.0",
                 "spryker/company-user-extension": "^1.0.0",
                 "spryker/kernel": "^3.0.0",
@@ -9225,8 +9226,7 @@
                 "spryker/zed-request": "^3.0.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/company-user": "^1.0.0",
+                "spryker/propel": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
@@ -9249,7 +9249,7 @@
                 "proprietary"
             ],
             "description": "CompanyBusinessUnit module",
-            "time": "2018-08-11T16:13:45+00:00"
+            "time": "2018-08-31T10:06:30+00:00"
         },
         {
             "name": "spryker/company-business-unit-data-import",
@@ -9336,30 +9336,27 @@
         },
         {
             "name": "spryker/company-business-unit-gui",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/company-business-unit-gui.git",
-                "reference": "5b8276e5dd3f50fb3d851d61c9bada5935c9fd7d"
+                "reference": "cad7fe6496ea5d44fde670a85bbef22c9bd914f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/company-business-unit-gui/zipball/5b8276e5dd3f50fb3d851d61c9bada5935c9fd7d",
-                "reference": "5b8276e5dd3f50fb3d851d61c9bada5935c9fd7d",
+                "url": "https://api.github.com/repos/spryker/company-business-unit-gui/zipball/cad7fe6496ea5d44fde670a85bbef22c9bd914f8",
+                "reference": "cad7fe6496ea5d44fde670a85bbef22c9bd914f8",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/company": "^1.0.0",
                 "spryker/company-business-unit": "^2.1.0",
+                "spryker/company-business-unit-gui-extension": "^1.0.0",
                 "spryker/gui": "^3.13.0",
                 "spryker/kernel": "^3.0.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/util-text": "^1.2.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
             },
             "type": "library",
             "extra": {
@@ -9377,7 +9374,7 @@
                 "proprietary"
             ],
             "description": "CompanyBusinessUnitGui module",
-            "time": "2018-08-10T12:09:55+00:00"
+            "time": "2018-08-31T10:06:30+00:00"
         },
         {
             "name": "spryker/company-business-unit-gui-extension",
@@ -9784,16 +9781,16 @@
         },
         {
             "name": "spryker/company-unit-address",
-            "version": "1.3.1",
+            "version": "1.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/company-unit-address.git",
-                "reference": "4d18be18f8df30c24495f639f0f4099832edbdba"
+                "reference": "21043b08a92dbfbcc777e6489df61b4b50906b5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/company-unit-address/zipball/4d18be18f8df30c24495f639f0f4099832edbdba",
-                "reference": "4d18be18f8df30c24495f639f0f4099832edbdba",
+                "url": "https://api.github.com/repos/spryker/company-unit-address/zipball/21043b08a92dbfbcc777e6489df61b4b50906b5e",
+                "reference": "21043b08a92dbfbcc777e6489df61b4b50906b5e",
                 "shasum": ""
             },
             "require": {
@@ -9801,6 +9798,7 @@
                 "spryker/company": "^1.0.0",
                 "spryker/company-business-unit": "^1.0.0 || ^2.0.0",
                 "spryker/company-business-unit-extension": "^1.0.0",
+                "spryker/company-unit-address-extension": "^1.0.0",
                 "spryker/country": "^3.0.0",
                 "spryker/kernel": "^3.0.0",
                 "spryker/locale": "^3.0.0",
@@ -9828,7 +9826,7 @@
                 "proprietary"
             ],
             "description": "CompanyUnitAddress module",
-            "time": "2018-06-11T09:06:43+00:00"
+            "time": "2018-08-31T10:06:30+00:00"
         },
         {
             "name": "spryker/company-unit-address-data-import",
@@ -9920,16 +9918,16 @@
         },
         {
             "name": "spryker/company-unit-address-gui",
-            "version": "0.2.1",
+            "version": "0.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/company-unit-address-gui.git",
-                "reference": "7685f8c85f386938ad6c8d95cbfd36137202ad15"
+                "reference": "a37c2e6ef2e5b8a896a49be77755c4eae1a00d47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/company-unit-address-gui/zipball/7685f8c85f386938ad6c8d95cbfd36137202ad15",
-                "reference": "7685f8c85f386938ad6c8d95cbfd36137202ad15",
+                "url": "https://api.github.com/repos/spryker/company-unit-address-gui/zipball/a37c2e6ef2e5b8a896a49be77755c4eae1a00d47",
+                "reference": "a37c2e6ef2e5b8a896a49be77755c4eae1a00d47",
                 "shasum": ""
             },
             "require": {
@@ -9937,6 +9935,7 @@
                 "spryker/company": "^1.0.0",
                 "spryker/company-business-unit-gui-extension": "^1.0.0",
                 "spryker/company-unit-address": "^1.1.0",
+                "spryker/company-unit-address-gui-extension": "^1.0.0",
                 "spryker/country": "^3.0.0",
                 "spryker/gui": "^3.0.0",
                 "spryker/kernel": "^3.0.0",
@@ -9963,7 +9962,7 @@
                 "proprietary"
             ],
             "description": "CompanyUnitAddressGui module",
-            "time": "2018-06-28T13:26:49+00:00"
+            "time": "2018-08-31T10:06:30+00:00"
         },
         {
             "name": "spryker/company-unit-address-gui-extension",
@@ -10403,30 +10402,29 @@
         },
         {
             "name": "spryker/country",
-            "version": "3.1.2",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/country.git",
-                "reference": "2013ffa107d5a40a605ce645336d9d71951f347f"
+                "reference": "ff649871d151b76ce34cc2fba48c18c5ce65ab85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/country/zipball/2013ffa107d5a40a605ce645336d9d71951f347f",
-                "reference": "2013ffa107d5a40a605ce645336d9d71951f347f",
+                "url": "https://api.github.com/repos/spryker/country/zipball/ff649871d151b76ce34cc2fba48c18c5ce65ab85",
+                "reference": "ff649871d151b76ce34cc2fba48c18c5ce65ab85",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/gui": "^3.0.0",
-                "spryker/kernel": "^3.0.0"
+                "spryker/kernel": "^3.0.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/zed-request": "^3.0.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*",
                 "spryker/installer": "*",
                 "spryker/log": "*",
                 "spryker/propel": "*",
-                "spryker/propel-orm": "*",
-                "spryker/silex": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
@@ -10449,7 +10447,7 @@
                 "proprietary"
             ],
             "description": "Country module",
-            "time": "2018-03-29T05:15:22+00:00"
+            "time": "2018-09-03T08:58:06+00:00"
         },
         {
             "name": "spryker/csv",
@@ -14419,16 +14417,16 @@
         },
         {
             "name": "spryker/oauth",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/oauth.git",
-                "reference": "04aaef413e33be349dca6231726be0e580a0aecd"
+                "reference": "c90adb452c0b9a4624085505d2abece359361c2a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/oauth/zipball/04aaef413e33be349dca6231726be0e580a0aecd",
-                "reference": "04aaef413e33be349dca6231726be0e580a0aecd",
+                "url": "https://api.github.com/repos/spryker/oauth/zipball/c90adb452c0b9a4624085505d2abece359361c2a",
+                "reference": "c90adb452c0b9a4624085505d2abece359361c2a",
                 "shasum": ""
             },
             "require": {
@@ -14437,10 +14435,12 @@
                 "spryker/config": "^3.0.0",
                 "spryker/guzzle": "^2.0.0",
                 "spryker/kernel": "^3.0.0",
+                "spryker/oauth-extension": "^1.0.0",
                 "spryker/zed-request": "^3.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
                 "spryker/testify": "*"
             },
             "type": "library",
@@ -14459,7 +14459,7 @@
                 "proprietary"
             ],
             "description": "Oauth module",
-            "time": "2018-06-28T08:24:10+00:00"
+            "time": "2018-08-31T10:06:30+00:00"
         },
         {
             "name": "spryker/oauth-customer-connector",
@@ -21640,16 +21640,16 @@
         },
         {
             "name": "spryker/store",
-            "version": "1.7.0",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/store.git",
-                "reference": "ed7d96fdade90e30a3f291fae15189fdbe075109"
+                "reference": "9c5bf06e9fc8d07b86a0fd89c4de7af0c3af81c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/store/zipball/ed7d96fdade90e30a3f291fae15189fdbe075109",
-                "reference": "ed7d96fdade90e30a3f291fae15189fdbe075109",
+                "url": "https://api.github.com/repos/spryker/store/zipball/9c5bf06e9fc8d07b86a0fd89c4de7af0c3af81c0",
+                "reference": "9c5bf06e9fc8d07b86a0fd89c4de7af0c3af81c0",
                 "shasum": ""
             },
             "require": {
@@ -21660,11 +21660,8 @@
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
-                "spryker/propel": "*",
                 "spryker/quote": "*",
-                "spryker/testify": "*",
-                "spryker/transfer": "*",
-                "spryker/twig": "*"
+                "spryker/testify": "*"
             },
             "suggest": {
                 "spryker/quote": "If you want to use StoreQuoteTransferExpander plugin, minimum required version: 1.2.0"
@@ -21685,7 +21682,52 @@
                 "proprietary"
             ],
             "description": "Store module",
-            "time": "2018-05-16T16:01:08+00:00"
+            "time": "2018-09-03T08:58:06+00:00"
+        },
+        {
+            "name": "spryker/stores-rest-api",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/stores-rest-api.git",
+                "reference": "e14d5be222ba5eec141513eb235f0e668f73690e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/stores-rest-api/zipball/e14d5be222ba5eec141513eb235f0e668f73690e",
+                "reference": "e14d5be222ba5eec141513eb235f0e668f73690e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/country": "^3.2.0",
+                "spryker/currency": "^3.0.0",
+                "spryker/glue-application": "^1.0.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.22.0",
+                "spryker/store": "^1.8.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "StoresRestApi module",
+            "time": "2018-08-31T12:08:35+00:00"
         },
         {
             "name": "spryker/symfony",
@@ -21796,16 +21838,16 @@
         },
         {
             "name": "spryker/synchronization-behavior",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/synchronization-behavior.git",
-                "reference": "82d3132c9c3fe887129d2a14ad016ec5c0ab7d48"
+                "reference": "311673c36059437158eca999783698b93eddf547"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/82d3132c9c3fe887129d2a14ad016ec5c0ab7d48",
-                "reference": "82d3132c9c3fe887129d2a14ad016ec5c0ab7d48",
+                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/311673c36059437158eca999783698b93eddf547",
+                "reference": "311673c36059437158eca999783698b93eddf547",
                 "shasum": ""
             },
             "require": {
@@ -21816,7 +21858,8 @@
             "require-dev": {
                 "spryker/code-sniffer": "*",
                 "spryker/queue": "^1.1.0",
-                "spryker/synchronization": "^0.1.0 || ^0.2.0 || ^1.0.0"
+                "spryker/synchronization": "^0.1.0 || ^0.2.0 || ^1.0.0",
+                "spryker/testify": "*"
             },
             "suggest": {
                 "spryker/queue": "Generated classes are using spryker/queue module.",
@@ -21843,7 +21886,7 @@
                 "proprietary"
             ],
             "description": "SynchronizationBehavior module",
-            "time": "2018-08-02T10:10:13+00:00"
+            "time": "2018-09-03T08:13:05+00:00"
         },
         {
             "name": "spryker/synchronization-extension",
@@ -22040,16 +22083,16 @@
         },
         {
             "name": "spryker/transfer",
-            "version": "3.6.3",
+            "version": "3.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/transfer.git",
-                "reference": "7d0206c749992fa96ace1d095823b4bd77ca7f58"
+                "reference": "6e2cc5984b901bb60ac0269fc8e8583ab69994db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/transfer/zipball/7d0206c749992fa96ace1d095823b4bd77ca7f58",
-                "reference": "7d0206c749992fa96ace1d095823b4bd77ca7f58",
+                "url": "https://api.github.com/repos/spryker/transfer/zipball/6e2cc5984b901bb60ac0269fc8e8583ab69994db",
+                "reference": "6e2cc5984b901bb60ac0269fc8e8583ab69994db",
                 "shasum": ""
             },
             "require": {
@@ -22063,6 +22106,7 @@
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
                 "spryker/testify": "*"
             },
             "type": "library",
@@ -22082,7 +22126,7 @@
                 "proprietary"
             ],
             "description": "Transfer module",
-            "time": "2018-08-13T10:09:37+00:00"
+            "time": "2018-08-31T14:52:30+00:00"
         },
         {
             "name": "spryker/twig",
