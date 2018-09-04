@@ -117,7 +117,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new RemovePaymentCartPostSavePlugin(),
             new QuantitySalesUnitValuePostSavePlugin(),
             new AmountSalesUnitValuePostSavePlugin(), #ProductPackagingUnit
-            new AddMinimumOrderValueThresholdMessagesCartPostSavePlugin(),
+            new AddMinimumOrderValueThresholdMessagesCartPostSavePlugin(), #MinimumOrderValueFeature
         ];
     }
 

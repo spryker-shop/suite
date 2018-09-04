@@ -21,4 +21,12 @@ class MinimumOrderValueDependencyProvider extends SprykerMinimumOrderValueDepend
             new MerchantRelationshipMinimumOrderValueDataSourceStrategyPlugin(),
         ];
     }
+
+    /**
+     * @return \Spryker\Zed\MinimumOrderValueExtension\Dependency\Plugin\MinimumOrderValueStrategyPluginInterface[]
+     */
+    protected function getMinimumOrderValueStrategyPlugins(): array
+    {
+        return array_merge(parent::getMinimumOrderValueStrategyPlugins(), []);
+    }
 }

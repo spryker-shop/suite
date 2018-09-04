@@ -48,7 +48,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new ShipmentCheckoutPreCheckPlugin(),
             new ProductDiscontinuedCheckoutPreConditionPlugin(), #ProductDiscontinuedFeature
             new AmountAvailabilityCheckoutPreConditionPlugin(),
-            new MinimumOrderValueCheckoutPreConditionPlugin(),
+            new MinimumOrderValueCheckoutPreConditionPlugin(), #MinimumOrderValueFeature
         ];
     }
 

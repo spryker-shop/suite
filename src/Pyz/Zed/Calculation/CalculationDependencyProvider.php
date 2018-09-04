@@ -186,14 +186,14 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new RemoveAllCalculatedDiscountsCalculatorPlugin(),
             new RemovePromotionItemsCalculatorPlugin(),
             new RemoveCanceledAmountCalculatorPlugin(),
-            new RemoveMinimumOrderValueExpenseCalculatorPlugin(),
+            new RemoveMinimumOrderValueExpenseCalculatorPlugin(), #MinimumOrderValueFeature
 
             new PriceCalculatorPlugin(),
             new ItemProductOptionPriceAggregatorPlugin(),
             new ItemSubtotalAggregatorPlugin(),
 
             new SubtotalCalculatorPlugin(),
-            new AddMinimumOrderValueExpenseCalculatorPlugin(),
+            new AddMinimumOrderValueExpenseCalculatorPlugin(), #MinimumOrderValueFeature
 
             new ProductItemTaxRateCalculatorPlugin(),
             new ProductOptionTaxRateCalculatorPlugin(),

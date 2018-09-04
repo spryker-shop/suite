@@ -34,7 +34,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
             CartNoteQuoteItemNoteWidgetPlugin::class, #CartNoteFeature
             CartNoteQuoteNoteWidgetPlugin::class, #CartNoteFeature
             SummaryProductPackagingUnitWidgetPlugin::class, #ProductPackagingUnit
-            MinimumOrderValueWidgetPlugin::class, #MinimumOrderValue
+            MinimumOrderValueWidgetPlugin::class, #MinimumOrderValueFeature
         ];
     }
 
