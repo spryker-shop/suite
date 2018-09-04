@@ -13,6 +13,7 @@ use Spryker\Zed\Country\Communication\Plugin\CountryInstallerPlugin;
 use Spryker\Zed\Glossary\Communication\Plugin\GlossaryInstallerPlugin;
 use Spryker\Zed\Installer\InstallerDependencyProvider as SprykerInstallerDependencyProvider;
 use Spryker\Zed\Locale\Communication\Plugin\LocaleInstallerPlugin;
+use Spryker\Zed\MinimumOrderValue\Communication\Plugin\Installer\MinimumOrderValueTypeInstallerPlugin;
 use Spryker\Zed\Newsletter\Communication\Plugin\NewsletterInstallerPlugin;
 use Spryker\Zed\OauthCustomerConnector\Communication\Plugin\Installer\OauthCustomerInstallerPlugin;
 use Spryker\Zed\PriceProduct\Communication\Plugin\PriceInstallerPlugin;
@@ -46,6 +47,7 @@ class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
             new ProductDiscontinuedProductLabelConnectorInstallerPlugin(), #ProductDiscontinuedFeature
             new CompanyUserInvitationStatusInstallerPlugin(), #BulkImportCompanyUserInvitationsFeature
             new ProductPackagingUnitTypeInstallerPlugin(),
+            new MinimumOrderValueTypeInstallerPlugin(), #MinimumOrderValueFeature
             new OauthCustomerInstallerPlugin(),
         ];
     }

@@ -14,6 +14,8 @@ use Spryker\Zed\Customer\Communication\Plugin\Checkout\CustomerOrderSavePlugin;
 use Spryker\Zed\Customer\Communication\Plugin\CustomerPreConditionCheckerPlugin;
 use Spryker\Zed\Discount\Communication\Plugin\Checkout\DiscountOrderSavePlugin;
 use Spryker\Zed\Kernel\Container;
+use Spryker\Zed\MinimumOrderValue\Communication\Plugin\Checkout\MinimumOrderValueCheckoutPreConditionPlugin;
+use Spryker\Zed\MinimumOrderValue\Communication\Plugin\Checkout\MinimumOrderValueExpenseSavePlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Checkout\PaymentOrderSaverPlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Checkout\PaymentPostCheckPlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Checkout\PaymentPreCheckPlugin;
@@ -46,6 +48,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new ShipmentCheckoutPreCheckPlugin(),
             new ProductDiscontinuedCheckoutPreConditionPlugin(), #ProductDiscontinuedFeature
             new AmountAvailabilityCheckoutPreConditionPlugin(),
+            new MinimumOrderValueCheckoutPreConditionPlugin(), #MinimumOrderValueFeature
         ];
     }
 
@@ -67,6 +70,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new ProductBundleOrderSaverPlugin(),
             new PaymentOrderSaverPlugin(),
             new ReclamationOrderSaverPlugin(),
+            new MinimumOrderValueExpenseSavePlugin(), #MinimumOrderValueFeature
         ];
     }
 
