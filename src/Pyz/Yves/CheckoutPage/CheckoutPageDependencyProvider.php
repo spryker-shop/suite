@@ -19,6 +19,7 @@ use SprykerShop\Yves\CustomerPage\Form\GuestForm;
 use SprykerShop\Yves\CustomerPage\Form\LoginForm;
 use SprykerShop\Yves\CustomerPage\Form\RegisterForm;
 use SprykerShop\Yves\DiscountWidget\Plugin\CheckoutPage\CheckoutVoucherFormWidgetPlugin;
+use SprykerShop\Yves\MinimumOrderValueWidget\Plugin\CheckoutPage\MinimumOrderValueWidgetPlugin;
 use SprykerShop\Yves\ProductPackagingUnitWidget\Plugin\CheckoutPage\SummaryProductPackagingUnitWidgetPlugin;
 
 class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyProvider
@@ -33,6 +34,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
             CartNoteQuoteItemNoteWidgetPlugin::class, #CartNoteFeature
             CartNoteQuoteNoteWidgetPlugin::class, #CartNoteFeature
             SummaryProductPackagingUnitWidgetPlugin::class, #ProductPackagingUnit
+            MinimumOrderValueWidgetPlugin::class, #MinimumOrderValueFeature
         ];
     }
 
