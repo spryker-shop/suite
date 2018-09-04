@@ -161,7 +161,7 @@ class ProductConcreteWriter extends PublishAwareStep implements DataImportStepIn
             $bundleProducts = explode(',', $dataSet[static::KEY_BUNDLES]);
             foreach ($bundleProducts as $bundleProduct) {
                 $bundleProduct = trim($bundleProduct);
-                list($sku, $quantity) = explode('/', $bundleProduct);
+                [$sku, $quantity] = explode('/', $bundleProduct);
                 $idProduct = $this->productRepository->getIdProductByConcreteSku($sku);
 
                 $productBundleEntity = SpyProductBundleQuery::create()
