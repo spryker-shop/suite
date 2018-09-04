@@ -14,6 +14,7 @@ use Spryker\Spryk\Console\SprykDumpConsole;
 use Spryker\Spryk\Console\SprykRunConsole;
 use Spryker\Zed\BusinessOnBehalfDataImport\BusinessOnBehalfDataImportConfig;
 use Spryker\Zed\Cache\Communication\Console\EmptyAllCachesConsole;
+use Spryker\Zed\CartsRestApi\Communication\Console\QuoteUuidGeneratorConsole;
 use Spryker\Zed\CodeGenerator\Communication\Console\BundleClientCodeGeneratorConsole;
 use Spryker\Zed\CodeGenerator\Communication\Console\BundleCodeGeneratorConsole;
 use Spryker\Zed\CodeGenerator\Communication\Console\BundleServiceCodeGeneratorConsole;
@@ -43,6 +44,7 @@ use Spryker\Zed\Development\Communication\Console\GenerateYvesIdeAutoCompletionC
 use Spryker\Zed\Development\Communication\Console\GenerateZedIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\ModuleBridgeCreateConsole;
 use Spryker\Zed\Development\Communication\Console\ModuleCreateConsole;
+use Spryker\Zed\Development\Communication\Console\PropelAbstractValidateConsole;
 use Spryker\Zed\DevelopmentCore\Communication\Console\AdjustPhpstanConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventBehaviorTriggerTimeoutConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventTriggerConsole;
@@ -131,6 +133,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
     {
         $commands = [
             new CacheWarmerConsole(),
+            new QuoteUuidGeneratorConsole(),
             new BuildNavigationConsole(),
             new EmptyAllCachesConsole(),
             new GeneratorConsole(),
@@ -291,6 +294,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new PropelSchemaValidatorConsole();
             $commands[] = new DataImportDumpConsole();
             $commands[] = new GenerateGlueIdeAutoCompletionConsole();
+            $commands[] = new PropelAbstractValidateConsole();
         }
 
         return $commands;
