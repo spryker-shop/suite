@@ -27,6 +27,6 @@ class MinimumOrderValueDependencyProvider extends SprykerMinimumOrderValueDepend
      */
     protected function getMinimumOrderValueStrategyPlugins(): array
     {
-        return parent::getMinimumOrderValueStrategyPlugins() + [];
+        return array_merge(parent::getMinimumOrderValueStrategyPlugins(), []);
     }
 }

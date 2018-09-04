@@ -49,7 +49,6 @@ class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
             new ProductPackagingUnitTypeInstallerPlugin(),
             new MinimumOrderValueTypeInstallerPlugin(), #MinimumOrderValueFeature
             new OauthCustomerInstallerPlugin(),
-            new MinimumOrderValueTypeInstallerPlugin(),
         ];
     }
 }
