@@ -13,10 +13,6 @@ use Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\IsActiveQueryExpand
 use Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\LocalizedQueryExpanderPlugin;
 use Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\StoreQueryExpanderPlugin;
 
-/**
- * Class CmsPageSearchDependencyProvider
- * @package Pyz\Client\CmsPageSearch
- */
 class CmsPageSearchDependencyProvider extends SprykerCmsPageSearchDependencyProvider
 {
     /**

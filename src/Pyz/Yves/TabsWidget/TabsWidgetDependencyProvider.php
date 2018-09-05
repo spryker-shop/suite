@@ -11,10 +11,6 @@ use SprykerShop\Yves\CatalogPage\Plugin\FullTextSearchProductsTabPlugin;
 use SprykerShop\Yves\CmsSearchPage\Plugin\FullTextSearchCmsPageTabPlugin;
 use SprykerShop\Yves\TabsWidget\TabsWidgetDependencyProvider as SprykerTabsWidgetDependencyProvider;
 
-/**
- * Class TabsWidgetDependencyProvider
- * @package Pyz\Yves\TabsWidget
- */
 class TabsWidgetDependencyProvider extends SprykerTabsWidgetDependencyProvider
 {
     /**
