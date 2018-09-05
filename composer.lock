@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7d8e522db638886a1e73809d47ee4c40",
+    "content-hash": "d466e29b1a59e70501841e961337573c",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -7463,26 +7463,25 @@
             "time": "2018-07-04T14:05:29+00:00"
         },
         {
-            "name": "spryker/catalog-search-rest-api",
-            "version": "0.1.0",
+            "name": "spryker/catalog-search-products-resource-relationship",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/catalog-search-rest-api.git",
-                "reference": "dba2e880e71af0f38bd8e1f66f9e146e69933b82"
+                "url": "https://github.com/spryker/catalog-search-products-resource-relationship.git",
+                "reference": "b68e054b17fb48ceb589810ec896522ad6e1b80d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/catalog-search-rest-api/zipball/dba2e880e71af0f38bd8e1f66f9e146e69933b82",
-                "reference": "dba2e880e71af0f38bd8e1f66f9e146e69933b82",
+                "url": "https://api.github.com/repos/spryker/catalog-search-products-resource-relationship/zipball/b68e054b17fb48ceb589810ec896522ad6e1b80d",
+                "reference": "b68e054b17fb48ceb589810ec896522ad6e1b80d",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "spryker/catalog": "^5.2.0",
                 "spryker/glue-application": "^1.0.0",
                 "spryker/glue-application-extension": "^1.0.0",
                 "spryker/kernel": "^3.22.0",
-                "spryker/symfony": "^3.0.0"
+                "spryker/products-rest-api": "^1.2.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -7503,8 +7502,53 @@
             "license": [
                 "proprietary"
             ],
+            "description": "CatalogSearchProductsResourceRelationship module",
+            "time": "2018-09-03T15:21:06+00:00"
+        },
+        {
+            "name": "spryker/catalog-search-rest-api",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/catalog-search-rest-api.git",
+                "reference": "8c918db8110b8b0e6c37eab30732e1bf21d731c6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/catalog-search-rest-api/zipball/8c918db8110b8b0e6c37eab30732e1bf21d731c6",
+                "reference": "8c918db8110b8b0e6c37eab30732e1bf21d731c6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/catalog": "^5.2.0",
+                "spryker/glue-application": "^1.0.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.22.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
             "description": "CatalogSearchRestApi module",
-            "time": "2018-07-24T09:41:01+00:00"
+            "time": "2018-09-04T10:11:54+00:00"
         },
         {
             "name": "spryker/categories-rest-api",
