@@ -13,12 +13,10 @@ use SprykerShop\Shared\CmsContentWidgetProductConnector\ContentWidgetConfigurati
 use SprykerShop\Shared\CmsContentWidgetProductConnector\ContentWidgetConfigurationProvider\CmsProductGroupContentWidgetConfigurationProvider;
 use SprykerShop\Shared\CmsContentWidgetProductSetConnector\ContentWidgetConfigurationProvider\CmsProductSetContentWidgetConfigurationProvider;
 use SprykerShop\Shared\FileManagerWidget\CmsContentWidgetConfigurationProvider\FileManagerWidgetConfigurationProvider;
-use SprykerShop\Shared\ProductSearchWidget\CmsContentWidgetConfigurationProvider\ProductSearchWidgetConfigurationProvider;
 use SprykerShop\Yves\CmsContentWidgetChartConnector\Plugin\CmsContentWidget\CmsChartContentWidgetPlugin;
 use SprykerShop\Yves\CmsContentWidgetProductConnector\Plugin\CmsProductContentWidgetPlugin;
 use SprykerShop\Yves\CmsContentWidgetProductSetConnector\Plugin\CmsProductSetContentWidgetPlugin;
 use SprykerShop\Yves\FileManagerWidget\Plugin\CmsContentWidget\FileManagerWidgetPlugin;
-use SprykerShop\Yves\ProductSearchWidget\Plugin\CmsContentWidget\ProductSearchWidgetPlugin;
 
 class CmsContentWidgetDependencyProvider extends SprykerCmsContentWidgetDependencyProvider
 {
@@ -44,9 +42,6 @@ class CmsContentWidgetDependencyProvider extends SprykerCmsContentWidgetDependen
             ),
             FileManagerWidgetConfigurationProvider::FUNCTION_NAME => new FileManagerWidgetPlugin(
                 new FileManagerWidgetConfigurationProvider()
-            ),
-            ProductSearchWidgetConfigurationProvider::FUNCTION_NAME => new ProductSearchWidgetPlugin(
-                new ProductSearchWidgetConfigurationProvider()
             ),
         ];
     }
