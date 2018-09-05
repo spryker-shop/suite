@@ -11,6 +11,7 @@ use Pyz\Yves\ExampleProductColorGroupWidget\Plugin\ProductDetailPage\ExampleProd
 use SprykerShop\Yves\AvailabilityWidget\Plugin\ProductDetailPage\AvailabilityWidgetPlugin;
 use SprykerShop\Yves\CmsBlockWidget\Plugin\ProductDetailPage\ProductCmsBlockWidgetPlugin;
 use SprykerShop\Yves\MultiCartWidget\Plugin\ProductDetailPage\MultiCartWidgetPlugin;
+use SprykerShop\Yves\PriceProductVolumeWidget\Plugin\ProductDetailPage\PriceProductVolumeWidgetPlugin;
 use SprykerShop\Yves\PriceWidget\Plugin\ProductDetailPage\PriceWidgetPlugin;
 use SprykerShop\Yves\ProductAlternativeWidget\Plugin\ProductDetailPage\ProductAlternativeWidgetPlugin;
 use SprykerShop\Yves\ProductCategoryWidget\Plugin\ProductDetailPage\ProductCategoryWidgetPlugin;
@@ -20,6 +21,7 @@ use SprykerShop\Yves\ProductImageWidget\Plugin\ProductDetailPage\ProductImageWid
 use SprykerShop\Yves\ProductLabelWidget\Plugin\ProductDetailPage\ProductAbstractLabelWidgetPlugin;
 use SprykerShop\Yves\ProductMeasurementUnitWidget\Plugin\ProductDetailPage\ProductMeasurementUnitWidgetPlugin;
 use SprykerShop\Yves\ProductOptionWidget\Plugin\ProductDetailPage\ProductOptionWidgetPlugin;
+use SprykerShop\Yves\ProductPackagingUnitWidget\Plugin\ProductDetailPage\ProductPackagingUnitWidgetPlugin;
 use SprykerShop\Yves\ProductRelationWidget\Plugin\ProductDetailPage\SimilarProductsWidgetPlugin;
 use SprykerShop\Yves\ProductReplacementForWidget\Plugin\ProductDetailPage\ProductReplacementForWidgetPlugin;
 use SprykerShop\Yves\ProductReviewWidget\Plugin\ProductDetailPage\ProductReviewWidgetPlugin;
@@ -51,6 +53,8 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
             ProductDiscontinuedWidgetPlugin::class, #ProductDiscontinuedFeature
             ProductReplacementForWidgetPlugin::class, #ProductAlternativeFeature
             ProductAlternativeWidgetPlugin::class, #ProductAlternativeFeature
+            PriceProductVolumeWidgetPlugin::class, #PriceProductVolumeFeature
+            ProductPackagingUnitWidgetPlugin::class, #ProductPackagingUnit
         ];
     }
 }
