@@ -15,6 +15,9 @@ use Spryker\Glue\CartItemsProductsRelationship\Plugin\CartItemsProductsRelations
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
 use Spryker\Glue\CartsRestApi\Plugin\CartItemsResourceRoutePlugin;
 use Spryker\Glue\CartsRestApi\Plugin\CartsResourceRoutePlugin;
+use Spryker\Glue\CatalogSearchProductsResourceRelationship\Plugin\CatalogSearchAbstractProductsResourceRelationshipPlugin;
+use Spryker\Glue\CatalogSearchProductsResourceRelationship\Plugin\CatalogSearchSuggestionsAbstractProductsResourceRelationshipPlugin;
+use Spryker\Glue\CatalogSearchRestApi\CatalogSearchRestApiConfig;
 use Spryker\Glue\CatalogSearchRestApi\Plugin\CatalogSearchResourceRoutePlugin;
 use Spryker\Glue\CatalogSearchRestApi\Plugin\CatalogSearchSuggestionsResourceRoutePlugin;
 use Spryker\Glue\CategoriesRestApi\Plugin\CategoriesResourceRoutePlugin;
@@ -114,6 +117,15 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             CartsRestApiConfig::RESOURCE_CART_ITEMS,
             new CartItemsProductsRelationshipPlugin()
         );
+        $resourceRelationshipCollection->addRelationship(
+            CatalogSearchRestApiConfig::RESOURCE_CATALOG_SEARCH,
+            new CatalogSearchAbstractProductsResourceRelationshipPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            CatalogSearchRestApiConfig::RESOURCE_CATALOG_SEARCH_SUGGESTIONS,
+            new CatalogSearchSuggestionsAbstractProductsResourceRelationshipPlugin()
+        );
+
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
             new AbstractProductAvailabilitiesResourceRelationshipPlugin()
