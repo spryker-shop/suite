@@ -36,4 +36,16 @@ class CmsPageSearchDependencyProvider extends SprykerCmsPageSearchDependencyProv
             new RawCmsPageSearchResultFormatterPlugin(),
         ];
     }
+
+    /**
+     * @return \Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface[]
+     */
+    protected function createCmsPageSearchCountQueryExpanderPlugins(): array
+    {
+        return [
+            new StoreQueryExpanderPlugin(),
+            new LocalizedQueryExpanderPlugin(),
+            new IsActiveQueryExpanderPlugin(),
+        ];
+    }
 }
