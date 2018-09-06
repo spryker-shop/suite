@@ -15,6 +15,9 @@ use Spryker\Glue\CartItemsProductsRelationship\Plugin\CartItemsProductsRelations
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
 use Spryker\Glue\CartsRestApi\Plugin\CartItemsResourceRoutePlugin;
 use Spryker\Glue\CartsRestApi\Plugin\CartsResourceRoutePlugin;
+use Spryker\Glue\CatalogSearchProductsResourceRelationship\Plugin\CatalogSearchAbstractProductsResourceRelationshipPlugin;
+use Spryker\Glue\CatalogSearchProductsResourceRelationship\Plugin\CatalogSearchSuggestionsAbstractProductsResourceRelationshipPlugin;
+use Spryker\Glue\CatalogSearchRestApi\CatalogSearchRestApiConfig;
 use Spryker\Glue\CatalogSearchRestApi\Plugin\CatalogSearchResourceRoutePlugin;
 use Spryker\Glue\CatalogSearchRestApi\Plugin\CatalogSearchSuggestionsResourceRoutePlugin;
 use Spryker\Glue\CategoriesRestApi\Plugin\CategoriesResourceRoutePlugin;
@@ -24,8 +27,13 @@ use Spryker\Glue\CustomersRestApi\Plugin\SetCustomerBeforeActionPlugin;
 use Spryker\Glue\GlueApplication\GlueApplicationDependencyProvider as SprykerGlueApplicationDependencyProvider;
 use Spryker\Glue\GlueApplication\Plugin\Rest\SetStoreCurrentLocaleBeforeActionPlugin;
 use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationshipCollectionInterface;
+use Spryker\Glue\ProductAvailabilitiesRestApi\Plugin\AbstractProductAvailabilitiesRoutePlugin;
+use Spryker\Glue\ProductAvailabilitiesRestApi\Plugin\ConcreteProductAvailabilitiesRoutePlugin;
+use Spryker\Glue\ProductsProductAvailabilitiesResourceRelationship\Plugin\AbstractProductAvailabilitiesResourceRelationshipPlugin;
+use Spryker\Glue\ProductsProductAvailabilitiesResourceRelationship\Plugin\ConcreteProductAvailabilitiesResourceRelationshipPlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\AbstractProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\ConcreteProductsResourceRoutePlugin;
+use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
 use Spryker\Glue\StoresRestApi\Plugin\StoresResourceRoutePlugin;
 
 /**
@@ -46,6 +54,8 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new CatalogSearchResourceRoutePlugin(),
             new StoresResourceRoutePlugin(),
             new CatalogSearchSuggestionsResourceRoutePlugin(),
+            new ConcreteProductAvailabilitiesRoutePlugin(),
+            new AbstractProductAvailabilitiesRoutePlugin(),
             new CategoriesResourceRoutePlugin(),
             new CategoryResourceRoutePlugin(),
             new CustomersResourceRoutePlugin(),
@@ -107,6 +117,24 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             CartsRestApiConfig::RESOURCE_CART_ITEMS,
             new CartItemsProductsRelationshipPlugin()
         );
+        $resourceRelationshipCollection->addRelationship(
+            CatalogSearchRestApiConfig::RESOURCE_CATALOG_SEARCH,
+            new CatalogSearchAbstractProductsResourceRelationshipPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            CatalogSearchRestApiConfig::RESOURCE_CATALOG_SEARCH_SUGGESTIONS,
+            new CatalogSearchSuggestionsAbstractProductsResourceRelationshipPlugin()
+        );
+
+        $resourceRelationshipCollection->addRelationship(
+            ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
+            new AbstractProductAvailabilitiesResourceRelationshipPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+            new ConcreteProductAvailabilitiesResourceRelationshipPlugin()
+        );
+
         return $resourceRelationshipCollection;
     }
 }

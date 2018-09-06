@@ -34,7 +34,9 @@ use Spryker\Zed\Development\Communication\Console\CodePhpstanConsole;
 use Spryker\Zed\Development\Communication\Console\CodeStyleSnifferConsole;
 use Spryker\Zed\Development\Communication\Console\CodeTestConsole;
 use Spryker\Zed\Development\Communication\Console\ComposerJsonUpdaterConsole;
+use Spryker\Zed\Development\Communication\Console\ComposerJsonValidatorConsole;
 use Spryker\Zed\Development\Communication\Console\DependencyTreeBuilderConsole;
+use Spryker\Zed\Development\Communication\Console\DependencyTreeDependencyViolationConsole;
 use Spryker\Zed\Development\Communication\Console\DependencyViolationFinderConsole;
 use Spryker\Zed\Development\Communication\Console\DependencyViolationFixConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateClientIdeAutoCompletionConsole;
@@ -294,6 +296,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new DataImportDumpConsole();
             $commands[] = new GenerateGlueIdeAutoCompletionConsole();
             $commands[] = new PropelAbstractValidateConsole();
+
+            $commands[] = new DependencyTreeDependencyViolationConsole();
         }
 
         return $commands;
@@ -344,6 +348,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
         $commands[] = new DependencyTreeBuilderConsole();
         $commands[] = new DependencyViolationFinderConsole();
         $commands[] = new DependencyViolationFixConsole();
+
+        $commands[] = new ComposerJsonValidatorConsole();
 
         return $commands;
     }
