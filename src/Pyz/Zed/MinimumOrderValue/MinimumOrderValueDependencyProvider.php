@@ -8,6 +8,10 @@
 namespace Pyz\Zed\MinimumOrderValue;
 
 use Spryker\Zed\MerchantRelationshipMinimumOrderValue\Communication\Plugin\MinimumOrderValue\MerchantRelationshipMinimumOrderValueDataSourceStrategyPlugin;
+use Spryker\Zed\MinimumOrderValue\Communication\Plugin\Strategy\HardThresholdStrategyPlugin;
+use Spryker\Zed\MinimumOrderValue\Communication\Plugin\Strategy\SoftThresholdWithFixedFeeStrategyPlugin;
+use Spryker\Zed\MinimumOrderValue\Communication\Plugin\Strategy\SoftThresholdWithFlexibleFeeStrategyPlugin;
+use Spryker\Zed\MinimumOrderValue\Communication\Plugin\Strategy\SoftThresholdWithMessageStrategyPlugin;
 use Spryker\Zed\MinimumOrderValue\MinimumOrderValueDependencyProvider as SprykerMinimumOrderValueDependencyProvider;
 
 class MinimumOrderValueDependencyProvider extends SprykerMinimumOrderValueDependencyProvider
@@ -27,6 +31,11 @@ class MinimumOrderValueDependencyProvider extends SprykerMinimumOrderValueDepend
      */
     protected function getMinimumOrderValueStrategyPlugins(): array
     {
-        return array_merge(parent::getMinimumOrderValueStrategyPlugins(), []);
+        return [
+            new HardThresholdStrategyPlugin(),
+            new SoftThresholdWithMessageStrategyPlugin(),
+            new SoftThresholdWithFixedFeeStrategyPlugin(),
+            new SoftThresholdWithFlexibleFeeStrategyPlugin(),
+        ];
     }
 }
