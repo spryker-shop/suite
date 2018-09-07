@@ -126,7 +126,6 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             CatalogSearchRestApiConfig::RESOURCE_CATALOG_SEARCH_SUGGESTIONS,
             new CatalogSearchSuggestionsAbstractProductsResourceRelationshipPlugin()
         );
-
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
             new AbstractProductAvailabilitiesResourceRelationshipPlugin()
