@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa72e15fbfd9e0ca971539ac4d59d918",
+    "content-hash": "99ac1f7a4d85acff1227fffc005b6d1a",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -1909,7 +1909,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -2381,12 +2381,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "90f107d4debf40dcebcc5a464711de004ac4a986"
+                "reference": "228892302eb9b774d83358e95c430cbb6edfc4bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/90f107d4debf40dcebcc5a464711de004ac4a986",
-                "reference": "90f107d4debf40dcebcc5a464711de004ac4a986",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/228892302eb9b774d83358e95c430cbb6edfc4bd",
+                "reference": "228892302eb9b774d83358e95c430cbb6edfc4bd",
                 "shasum": ""
             },
             "require": {
@@ -2433,7 +2433,7 @@
                 "proprietary"
             ],
             "description": "EventBehavior module",
-            "time": "2018-08-29T13:27:05+00:00"
+            "time": "2018-09-05T14:57:27+00:00"
         },
         {
             "name": "spryker/install",
@@ -2540,11 +2540,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/ps-2957/dev-shopping-list-product-options",
+            "version": "dev-feature/ps-2957/ps-3097-edit-product-options",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "9a12036a0ac0fecb873add688d4a58b450b426df"
+                "reference": "b992e50fbaa93575dc1d49729fea9df20d6f4f53"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2817,15 +2817,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-09-04T17:02:14+00:00"
+            "time": "2018-09-06T15:53:05+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/ps-2957/dev-shopping-list-product-options",
+            "version": "dev-feature/ps-2957/ps-3097-edit-product-options",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "119a399e62450d9dc540368af6f85c2a673ec70f"
+                "reference": "0334311b8644cfb937573e5444a572aa8eddfbe8"
             },
             "require": {
                 "php": ">=7.1"
@@ -2900,7 +2900,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-09-04T18:28:51+00:00"
+            "time": "2018-09-07T09:55:47+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -5635,45 +5635,34 @@
         },
         {
             "name": "facebook/webdriver",
-            "version": "1.6.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facebook/php-webdriver.git",
-                "reference": "bd8c740097eb9f2fc3735250fc1912bc811a954e"
+                "reference": "77300c4ab2025d4316635f592ec849ca7323bd8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/bd8c740097eb9f2fc3735250fc1912bc811a954e",
-                "reference": "bd8c740097eb9f2fc3735250fc1912bc811a954e",
+                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/77300c4ab2025d4316635f592ec849ca7323bd8c",
+                "reference": "77300c4ab2025d4316635f592ec849ca7323bd8c",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
-                "ext-json": "*",
-                "ext-mbstring": "*",
-                "ext-zip": "*",
-                "php": "^5.6 || ~7.0",
-                "symfony/process": "^2.8 || ^3.1 || ^4.0"
+                "php": "^5.5 || ~7.0",
+                "symfony/process": "^2.8 || ^3.1"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.0",
-                "jakub-onderka/php-parallel-lint": "^0.9.2",
-                "php-coveralls/php-coveralls": "^2.0",
+                "friendsofphp/php-cs-fixer": "^1.11",
                 "php-mock/php-mock-phpunit": "^1.1",
-                "phpunit/phpunit": "^5.7",
-                "sebastian/environment": "^1.3.4 || ^2.0 || ^3.0",
-                "squizlabs/php_codesniffer": "^2.6",
-                "symfony/var-dumper": "^3.3 || ^4.0"
+                "phpunit/phpunit": "4.6.* || ~5.0",
+                "satooshi/php-coveralls": "^1.0",
+                "squizlabs/php_codesniffer": "^2.6"
             },
             "suggest": {
-                "ext-SimpleXML": "For Firefox profile creation"
+                "phpdocumentor/phpdocumentor": "2.*"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-community": "1.5-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Facebook\\WebDriver\\": "lib/"
@@ -5683,7 +5672,7 @@
             "license": [
                 "Apache-2.0"
             ],
-            "description": "A PHP client for Selenium WebDriver",
+            "description": "A PHP client for WebDriver",
             "homepage": "https://github.com/facebook/php-webdriver",
             "keywords": [
                 "facebook",
@@ -5691,7 +5680,7 @@
                 "selenium",
                 "webdriver"
             ],
-            "time": "2018-05-16T17:37:13+00:00"
+            "time": "2017-01-13T15:48:08+00:00"
         },
         {
             "name": "jakoch/phantomjs-installer",
@@ -6457,7 +6446,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-12T17:28:44+00:00"
+            "time": "2017-12-13T13:21:38+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -7056,16 +7045,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "7.3.3",
+            "version": "7.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "1bd5629cccfb2c0a9ef5474b4ff772349e1ec898"
+                "reference": "0356331bf62896dc56e3a15030b23b73f38b2935"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1bd5629cccfb2c0a9ef5474b4ff772349e1ec898",
-                "reference": "1bd5629cccfb2c0a9ef5474b4ff772349e1ec898",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/0356331bf62896dc56e3a15030b23b73f38b2935",
+                "reference": "0356331bf62896dc56e3a15030b23b73f38b2935",
                 "shasum": ""
             },
             "require": {
@@ -7136,7 +7125,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-09-01T15:49:55+00:00"
+            "time": "2018-09-05T09:58:53+00:00"
         },
         {
             "name": "roave/better-reflection",
@@ -8179,12 +8168,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-generator.git",
-                "reference": "c2638cde2e7886c876a9d6752875f5e2ced1a86d"
+                "reference": "67c56f612c3c26b6614c327cf1fadde9f1c9c7ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-generator/zipball/c2638cde2e7886c876a9d6752875f5e2ced1a86d",
-                "reference": "c2638cde2e7886c876a9d6752875f5e2ced1a86d",
+                "url": "https://api.github.com/repos/spryker/code-generator/zipball/67c56f612c3c26b6614c327cf1fadde9f1c9c7ff",
+                "reference": "67c56f612c3c26b6614c327cf1fadde9f1c9c7ff",
                 "shasum": ""
             },
             "require": {
@@ -8212,7 +8201,7 @@
                 "MIT"
             ],
             "description": "CodeGenerator module",
-            "time": "2018-09-04T09:50:22+00:00"
+            "time": "2018-09-05T14:55:39+00:00"
         },
         {
             "name": "spryker/code-sniffer",
@@ -8220,12 +8209,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "f49b6c2f17ba9431e66b73980e7f2e3e41672e36"
+                "reference": "7185dcca38480c23a0fdb1d2dd51572ee615cce5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/f49b6c2f17ba9431e66b73980e7f2e3e41672e36",
-                "reference": "f49b6c2f17ba9431e66b73980e7f2e3e41672e36",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/7185dcca38480c23a0fdb1d2dd51572ee615cce5",
+                "reference": "7185dcca38480c23a0fdb1d2dd51572ee615cce5",
                 "shasum": ""
             },
             "require": {
@@ -8264,7 +8253,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-08-31T16:41:34+00:00"
+            "time": "2018-09-05T13:24:33+00:00"
         },
         {
             "name": "spryker/development-core",
