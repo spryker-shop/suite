@@ -8,7 +8,9 @@
 namespace Pyz\Client\CmsPageSearch;
 
 use Spryker\Client\CmsPageSearch\CmsPageSearchDependencyProvider as SprykerCmsPageSearchDependencyProvider;
+use Spryker\Client\CmsPageSearch\Plugin\Elasticsearch\QueryExpander\PaginatedCmsPageQueryExpanderPlugin;
 use Spryker\Client\CmsPageSearch\Plugin\Elasticsearch\QueryExpander\SortedCmsPageQueryExpanderPlugin;
+use Spryker\Client\CmsPageSearch\Plugin\Elasticsearch\ResultFormatter\PaginatedCmsPageResultFormatterPlugin;
 use Spryker\Client\CmsPageSearch\Plugin\Elasticsearch\ResultFormatter\RawCmsPageSearchResultFormatterPlugin;
 use Spryker\Client\CmsPageSearch\Plugin\Elasticsearch\ResultFormatter\SortedCmsPageSearchResultFormatterPlugin;
 use Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\IsActiveQueryExpanderPlugin;
@@ -26,6 +28,7 @@ class CmsPageSearchDependencyProvider extends SprykerCmsPageSearchDependencyProv
             new StoreQueryExpanderPlugin(),
             new LocalizedQueryExpanderPlugin(),
             new SortedCmsPageQueryExpanderPlugin(),
+            new PaginatedCmsPageQueryExpanderPlugin(),
             new IsActiveQueryExpanderPlugin(),
         ];
     }
@@ -37,6 +40,7 @@ class CmsPageSearchDependencyProvider extends SprykerCmsPageSearchDependencyProv
     {
         return [
             new SortedCmsPageSearchResultFormatterPlugin(),
+            new PaginatedCmsPageResultFormatterPlugin(),
             new RawCmsPageSearchResultFormatterPlugin(),
         ];
     }
