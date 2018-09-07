@@ -64,7 +64,7 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
     protected function getShoppingListItemFormWidgetPlugins(): array
     {
         return [
-            new ShoppingListItemProductOptionFormExpanderPlugin()
+            new ShoppingListItemProductOptionFormExpanderPlugin(),
         ];
     }
 
@@ -74,7 +74,7 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
     protected function getShoppingListDataProviderExpanderPlugins(): array
     {
         return [
-            new ShoppingListItemProductOptionDataProviderExpanderPlugin()
+            new ShoppingListItemProductOptionDataProviderExpanderPlugin(),
         ];
     }
 
@@ -84,7 +84,7 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
     protected function getShoppingListOverviewUpdatePageWidgets(): array
     {
         return [
-            ShoppingListItemProductOptionEditWidgetPlugin::class
+            ShoppingListItemProductOptionEditWidgetPlugin::class,
         ];
     }
 }
