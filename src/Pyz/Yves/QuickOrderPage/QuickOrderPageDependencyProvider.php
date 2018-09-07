@@ -8,7 +8,7 @@
 namespace Pyz\Yves\QuickOrderPage;
 
 use Spryker\Client\ProductPackagingUnitStorage\Plugin\QuickOrderPage\QuickOrderItemTransferPackagingUnitExpanderPlugin;
-use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\QuickOrderPage\QuickOrderPageMeasurementUnitColumnProviderPlugin;
+use Spryker\Yves\ProductMeasurementUnit\Plugin\QuickOrderPage\QuickOrderPageMeasurementUnitColumnProviderPlugin;
 use SprykerShop\Yves\MultiCartWidget\Plugin\QuickOrderPage\MultiCartListWidgetPlugin;
 use SprykerShop\Yves\QuickOrderPage\QuickOrderPageDependencyProvider as SprykerQuickOrderPageDependencyProvider;
 use SprykerShop\Yves\ShoppingListWidget\Plugin\QuickOrderPage\ShoppingListQuickOrderFormHandlerStrategyPlugin;
