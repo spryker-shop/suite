@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a16a0bc90598839378d6a79774b89385",
+    "content-hash": "acd2429ff65b1ee41571e25ddb5107ac",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -2441,12 +2441,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/install.git",
-                "reference": "68a74147dcb6833fe142ac9c11f4feb602b6bb1f"
+                "reference": "98b19e2f3078c3e9bc035060869a11417ce55c7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/install/zipball/68a74147dcb6833fe142ac9c11f4feb602b6bb1f",
-                "reference": "68a74147dcb6833fe142ac9c11f4feb602b6bb1f",
+                "url": "https://api.github.com/repos/spryker/install/zipball/98b19e2f3078c3e9bc035060869a11417ce55c7a",
+                "reference": "98b19e2f3078c3e9bc035060869a11417ce55c7a",
                 "shasum": ""
             },
             "require": {
@@ -2477,7 +2477,7 @@
                 "MIT"
             ],
             "description": "Spryker install tool",
-            "time": "2018-08-16T09:20:39+00:00"
+            "time": "2018-09-10T11:02:48+00:00"
         },
         {
             "name": "spryker/rabbit-mq",
@@ -2540,11 +2540,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/ps-3087/dev-shopping-list-widget",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "61fa9e52a818e662deefa4c65e79d547a08bd73b"
+                "reference": "72005d79652e65ffe0a2f1668741a6c426456d77"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2817,15 +2817,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-09-07T17:46:18+00:00"
+            "time": "2018-09-10T11:56:41+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/ps-3087/dev-shopping-list-widget",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "0f59a20283e8cc8e8c5576228b6c98fda9162e2b"
+                "reference": "52da6e72611ee2ee3a025a93c19e9c11e1c149dd"
             },
             "require": {
                 "php": ">=7.1"
@@ -2900,7 +2900,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-09-07T16:46:00+00:00"
+            "time": "2018-09-10T10:37:16+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8370,7 +8370,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryk.git",
-                "reference": "5cb0cb410f976713615a7d7bb06031ebea300e27"
+                "reference": "f6e2c0e3683fc477b4cc5d759d02af0226142b2c"
             },
             "require": {
                 "php": ">=7.1",
@@ -8389,7 +8389,7 @@
                 "phpstan/phpstan": "^0.9.0 || ^0.10.0",
                 "phpstan/phpstan-phpunit": "^0.9.0 || ^0.10.0",
                 "phpstan/phpstan-strict-rules": "^0.9.0 || ^0.10.0",
-                "spryker/code-sniffer": "^0.12.0",
+                "spryker/code-sniffer": "dev-master",
                 "spryker/git-hook": "dev-master",
                 "symfony/var-dumper": "^4.0.9"
             },
@@ -8420,13 +8420,22 @@
                 ],
                 "post-update-cmd": [
                     "GitHook\\Composer\\Scripts\\HookInstaller::installGitHook"
+                ],
+                "cs-check": [
+                    "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/ tests/"
+                ],
+                "cs-fix": [
+                    "phpcbf --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/ tests/"
+                ],
+                "phpstan": [
+                    "phpstan analyse -l 7 -c phpstan.neon src/"
                 ]
             },
             "license": [
                 "MIT"
             ],
             "description": "Spryker Spryk build tool",
-            "time": "2018-08-31T19:36:34+00:00"
+            "time": "2018-09-10T10:30:07+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
