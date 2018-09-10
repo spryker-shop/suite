@@ -145,7 +145,7 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
      * @param \Orm\Zed\Navigation\Persistence\SpyNavigationNode $navigationNodeEntity
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
-     * @return int
+     * @return bool
      */
     protected function getIsActive(SpyNavigationNode $navigationNodeEntity, DataSetInterface $dataSet)
     {
