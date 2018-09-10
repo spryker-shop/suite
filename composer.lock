@@ -2488,12 +2488,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/install.git",
-                "reference": "68a74147dcb6833fe142ac9c11f4feb602b6bb1f"
+                "reference": "98b19e2f3078c3e9bc035060869a11417ce55c7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/install/zipball/68a74147dcb6833fe142ac9c11f4feb602b6bb1f",
-                "reference": "68a74147dcb6833fe142ac9c11f4feb602b6bb1f",
+                "url": "https://api.github.com/repos/spryker/install/zipball/98b19e2f3078c3e9bc035060869a11417ce55c7a",
+                "reference": "98b19e2f3078c3e9bc035060869a11417ce55c7a",
                 "shasum": ""
             },
             "require": {
@@ -2524,7 +2524,7 @@
                 "MIT"
             ],
             "description": "Spryker install tool",
-            "time": "2018-08-16T09:20:39+00:00"
+            "time": "2018-09-10T11:02:48+00:00"
         },
         {
             "name": "spryker/rabbit-mq",
@@ -2865,7 +2865,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "0f59a20283e8cc8e8c5576228b6c98fda9162e2b"
+                "reference": "5a75b6125c89ef46cc007af076ebe7fb2162a112"
             },
             "require": {
                 "php": ">=7.1"
@@ -2940,7 +2940,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-09-07T16:46:00+00:00"
+            "time": "2018-09-10T10:50:51+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8219,18 +8219,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-generator.git",
-                "reference": "67c56f612c3c26b6614c327cf1fadde9f1c9c7ff"
+                "reference": "343350dd1a203d60e7f0734e4eb8fe778e24ea4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-generator/zipball/67c56f612c3c26b6614c327cf1fadde9f1c9c7ff",
-                "reference": "67c56f612c3c26b6614c327cf1fadde9f1c9c7ff",
+                "url": "https://api.github.com/repos/spryker/code-generator/zipball/343350dd1a203d60e7f0734e4eb8fe778e24ea4d",
+                "reference": "343350dd1a203d60e7f0734e4eb8fe778e24ea4d",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/kernel": "^3.0.0",
-                "zendframework/zend-filter": "^2.8.0"
+                "spryker/symfony": "^3.0.0",
+                "spryker/twig": "^3.0.0",
+                "spryker/zend": "^2.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -8252,7 +8254,7 @@
                 "MIT"
             ],
             "description": "CodeGenerator module",
-            "time": "2018-09-05T14:55:39+00:00"
+            "time": "2018-09-10T12:37:02+00:00"
         },
         {
             "name": "spryker/code-sniffer",
@@ -8410,7 +8412,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryk.git",
-                "reference": "5cb0cb410f976713615a7d7bb06031ebea300e27"
+                "reference": "f6e2c0e3683fc477b4cc5d759d02af0226142b2c"
             },
             "require": {
                 "php": ">=7.1",
@@ -8429,7 +8431,7 @@
                 "phpstan/phpstan": "^0.9.0 || ^0.10.0",
                 "phpstan/phpstan-phpunit": "^0.9.0 || ^0.10.0",
                 "phpstan/phpstan-strict-rules": "^0.9.0 || ^0.10.0",
-                "spryker/code-sniffer": "^0.12.0",
+                "spryker/code-sniffer": "dev-master",
                 "spryker/git-hook": "dev-master",
                 "symfony/var-dumper": "^4.0.9"
             },
@@ -8460,13 +8462,22 @@
                 ],
                 "post-update-cmd": [
                     "GitHook\\Composer\\Scripts\\HookInstaller::installGitHook"
+                ],
+                "cs-check": [
+                    "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/ tests/"
+                ],
+                "cs-fix": [
+                    "phpcbf --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/ tests/"
+                ],
+                "phpstan": [
+                    "phpstan analyse -l 7 -c phpstan.neon src/"
                 ]
             },
             "license": [
                 "MIT"
             ],
             "description": "Spryker Spryk build tool",
-            "time": "2018-08-31T19:36:34+00:00"
+            "time": "2018-09-10T10:30:07+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
