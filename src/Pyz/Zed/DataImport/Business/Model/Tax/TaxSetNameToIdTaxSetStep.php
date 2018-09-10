@@ -8,7 +8,6 @@
 namespace Pyz\Zed\DataImport\Business\Model\Tax;
 
 use Orm\Zed\Tax\Persistence\SpyTaxSetQuery;
-use Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException;
 use Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
@@ -69,8 +68,6 @@ class TaxSetNameToIdTaxSetStep implements DataImportStepInterface
 
     /**
      * @param string $taxSetName
-     *
-     * @throws \Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException
      *
      * @return int
      */
