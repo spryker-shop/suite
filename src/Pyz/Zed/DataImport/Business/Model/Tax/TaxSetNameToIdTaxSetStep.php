@@ -80,10 +80,6 @@ class TaxSetNameToIdTaxSetStep implements DataImportStepInterface
             ->filterByName($taxSetName)
             ->findOneOrCreate();
 
-        if (!$taxSetEntity) {
-            throw new EntityNotFoundException(sprintf('Tax set by name "%s" not found.', $taxSetName));
-        }
-
         $taxSetEntity->save();
 
         return $taxSetEntity->getIdTaxSet();
