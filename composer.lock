@@ -1,58 +1,11 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b38c4b8d980a924b73593239c87bb951",
+    "content-hash": "a16a0bc90598839378d6a79774b89385",
     "packages": [
-        {
-            "name": "braintree/braintree_php",
-            "version": "3.15.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/braintree/braintree_php.git",
-                "reference": "1026b6cca5f2dd5dfdd5447843b920cc74d2b8ca"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/braintree/braintree_php/zipball/1026b6cca5f2dd5dfdd5447843b920cc74d2b8ca",
-                "reference": "1026b6cca5f2dd5dfdd5447843b920cc74d2b8ca",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "ext-dom": "*",
-                "ext-hash": "*",
-                "ext-openssl": "*",
-                "ext-xmlwriter": "*",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "3.7.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Braintree": "lib/"
-                },
-                "psr-4": {
-                    "Braintree\\": "lib/Braintree"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Braintree",
-                    "homepage": "http://www.braintreepayments.com"
-                }
-            ],
-            "description": "Braintree PHP Client Library",
-            "time": "2016-07-18T21:55:50+00:00"
-        },
         {
             "name": "codeitnowin/barcode",
             "version": "3.0.2",
@@ -533,16 +486,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.2.1",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "e79cd403fb77fc8963a99ecc30e80ddd885b3311"
+                "reference": "181c4502d8f34db7aed7bfe88d4f87875b8e947a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/e79cd403fb77fc8963a99ecc30e80ddd885b3311",
-                "reference": "e79cd403fb77fc8963a99ecc30e80ddd885b3311",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/181c4502d8f34db7aed7bfe88d4f87875b8e947a",
+                "reference": "181c4502d8f34db7aed7bfe88d4f87875b8e947a",
                 "shasum": ""
             },
             "require": {
@@ -561,7 +514,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2-dev"
+                    "dev-master": "2.1-dev"
                 }
             },
             "autoload": {
@@ -590,7 +543,7 @@
                 "throwable",
                 "whoops"
             ],
-            "time": "2018-06-30T13:14:06+00:00"
+            "time": "2018-03-03T17:56:25+00:00"
         },
         {
             "name": "fzaninotto/faker",
@@ -1956,7 +1909,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -2488,12 +2441,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/install.git",
-                "reference": "98b19e2f3078c3e9bc035060869a11417ce55c7a"
+                "reference": "68a74147dcb6833fe142ac9c11f4feb602b6bb1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/install/zipball/98b19e2f3078c3e9bc035060869a11417ce55c7a",
-                "reference": "98b19e2f3078c3e9bc035060869a11417ce55c7a",
+                "url": "https://api.github.com/repos/spryker/install/zipball/68a74147dcb6833fe142ac9c11f4feb602b6bb1f",
+                "reference": "68a74147dcb6833fe142ac9c11f4feb602b6bb1f",
                 "shasum": ""
             },
             "require": {
@@ -2524,7 +2477,7 @@
                 "MIT"
             ],
             "description": "Spryker install tool",
-            "time": "2018-09-10T11:02:48+00:00"
+            "time": "2018-08-16T09:20:39+00:00"
         },
         {
             "name": "spryker/rabbit-mq",
@@ -2587,11 +2540,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-bugfix/cc-683-demodata-needs-change",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "daf2b03803989318ebcb39c6fdd3308e62bc8c3a"
+                "reference": "1032beeb103ed3f8b4209083b580bd5209bcce1f"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2606,6 +2559,7 @@
                 "spryker/assertion": "*",
                 "spryker/auth": "*",
                 "spryker/auth-mail-connector": "*",
+                "spryker/auth-rest-api": "*",
                 "spryker/availability": "*",
                 "spryker/availability-cart-connector": "*",
                 "spryker/availability-gui": "*",
@@ -2619,6 +2573,7 @@
                 "spryker/cart-variant": "*",
                 "spryker/catalog": "*",
                 "spryker/catalog-price-product-connector": "*",
+                "spryker/catalog-search-rest-api": "*",
                 "spryker/category": "*",
                 "spryker/category-exporter": "*",
                 "spryker/category-page-search": "*",
@@ -2665,6 +2620,7 @@
                 "spryker/customer-note-gui": "*",
                 "spryker/customer-user-connector": "*",
                 "spryker/customer-user-connector-gui": "*",
+                "spryker/customers-rest-api": "*",
                 "spryker/development": "*",
                 "spryker/discount": "*",
                 "spryker/discount-calculation-connector": "*",
@@ -2685,6 +2641,7 @@
                 "spryker/glossary": "*",
                 "spryker/glossary-storage": "*",
                 "spryker/glue-application": "*",
+                "spryker/glue-application-extension": "*",
                 "spryker/graph": "*",
                 "spryker/graphviz": "*",
                 "spryker/gui": "*",
@@ -2713,6 +2670,9 @@
                 "spryker/new-relic-api": "*",
                 "spryker/newsletter": "*",
                 "spryker/nopayment": "*",
+                "spryker/oauth": "*",
+                "spryker/oauth-customer-connector": "*",
+                "spryker/oauth-extension": "*",
                 "spryker/offer": "*",
                 "spryker/offer-gui": "*",
                 "spryker/oms": "*",
@@ -2857,7 +2817,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-09-06T17:24:23+00:00"
+            "time": "2018-09-10T13:06:01+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2865,7 +2825,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "5a75b6125c89ef46cc007af076ebe7fb2162a112"
+                "reference": "0f59a20283e8cc8e8c5576228b6c98fda9162e2b"
             },
             "require": {
                 "php": ">=7.1"
@@ -2940,7 +2900,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-09-10T10:50:51+00:00"
+            "time": "2018-09-07T16:46:00+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -6210,7 +6170,7 @@
                 "php",
                 "scaffolding"
             ],
-            "time": "2018-04-26T09:21:21+00:00"
+            "time": "2018-04-26T16:47:39+00:00"
         },
         {
             "name": "nette/robot-loader",
@@ -6497,7 +6457,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-12T17:28:44+00:00"
+            "time": "2017-12-13T13:21:38+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -7096,16 +7056,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "7.3.5",
+            "version": "7.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "7b331efabbb628c518c408fdfcaf571156775de2"
+                "reference": "0356331bf62896dc56e3a15030b23b73f38b2935"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/7b331efabbb628c518c408fdfcaf571156775de2",
-                "reference": "7b331efabbb628c518c408fdfcaf571156775de2",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/0356331bf62896dc56e3a15030b23b73f38b2935",
+                "reference": "0356331bf62896dc56e3a15030b23b73f38b2935",
                 "shasum": ""
             },
             "require": {
@@ -7176,7 +7136,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-09-08T15:14:29+00:00"
+            "time": "2018-09-05T09:58:53+00:00"
         },
         {
             "name": "roave/better-reflection",
@@ -8219,20 +8179,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-generator.git",
-                "reference": "343350dd1a203d60e7f0734e4eb8fe778e24ea4d"
+                "reference": "67c56f612c3c26b6614c327cf1fadde9f1c9c7ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-generator/zipball/343350dd1a203d60e7f0734e4eb8fe778e24ea4d",
-                "reference": "343350dd1a203d60e7f0734e4eb8fe778e24ea4d",
+                "url": "https://api.github.com/repos/spryker/code-generator/zipball/67c56f612c3c26b6614c327cf1fadde9f1c9c7ff",
+                "reference": "67c56f612c3c26b6614c327cf1fadde9f1c9c7ff",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/kernel": "^3.0.0",
-                "spryker/symfony": "^3.0.0",
-                "spryker/twig": "^3.0.0",
-                "spryker/zend": "^2.0.0"
+                "zendframework/zend-filter": "^2.8.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -8254,7 +8212,7 @@
                 "MIT"
             ],
             "description": "CodeGenerator module",
-            "time": "2018-09-10T12:37:02+00:00"
+            "time": "2018-09-05T14:55:39+00:00"
         },
         {
             "name": "spryker/code-sniffer",
@@ -8412,7 +8370,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryk.git",
-                "reference": "f6e2c0e3683fc477b4cc5d759d02af0226142b2c"
+                "reference": "5cb0cb410f976713615a7d7bb06031ebea300e27"
             },
             "require": {
                 "php": ">=7.1",
@@ -8431,7 +8389,7 @@
                 "phpstan/phpstan": "^0.9.0 || ^0.10.0",
                 "phpstan/phpstan-phpunit": "^0.9.0 || ^0.10.0",
                 "phpstan/phpstan-strict-rules": "^0.9.0 || ^0.10.0",
-                "spryker/code-sniffer": "dev-master",
+                "spryker/code-sniffer": "^0.12.0",
                 "spryker/git-hook": "dev-master",
                 "symfony/var-dumper": "^4.0.9"
             },
@@ -8462,22 +8420,13 @@
                 ],
                 "post-update-cmd": [
                     "GitHook\\Composer\\Scripts\\HookInstaller::installGitHook"
-                ],
-                "cs-check": [
-                    "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/ tests/"
-                ],
-                "cs-fix": [
-                    "phpcbf --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/ tests/"
-                ],
-                "phpstan": [
-                    "phpstan analyse -l 7 -c phpstan.neon src/"
                 ]
             },
             "license": [
                 "MIT"
             ],
             "description": "Spryker Spryk build tool",
-            "time": "2018-09-10T10:30:07+00:00"
+            "time": "2018-08-31T19:36:34+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -9143,10 +9092,10 @@
         "spryker/synchronization-behavior": 20,
         "spryker/uuid-behavior": 20,
         "spryker/architecture-sniffer": 20,
+        "spryker/development-core": 20,
         "spryker/code-generator": 20,
         "spryker/code-sniffer": 20,
         "spryker/git-hook": 20,
-        "spryker/development-core": 20,
         "spryker/spryk": 20
     },
     "prefer-stable": true,
