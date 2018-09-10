@@ -127,7 +127,6 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
             new WishlistItemsConcreteProductsResourceRelationshipPlugin()
         );
-
         $resourceRelationshipCollection->addRelationship(
             CatalogSearchRestApiConfig::RESOURCE_CATALOG_SEARCH,
             new CatalogSearchAbstractProductsResourceRelationshipPlugin()
@@ -136,7 +135,6 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             CatalogSearchRestApiConfig::RESOURCE_CATALOG_SEARCH_SUGGESTIONS,
             new CatalogSearchSuggestionsAbstractProductsResourceRelationshipPlugin()
         );
-
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
             new AbstractProductAvailabilitiesResourceRelationshipPlugin()
