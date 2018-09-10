@@ -60,6 +60,12 @@ sections:
         propel-copy-schema:
             command: "vendor/bin/console propel:schema:copy"
 
+        propel-postgres-index-generator:
+            command: "vendor/bin/console propel:postgres-index-generator:generate"
+
+        propel-copy-and-merge-with-generated-indices:
+            command: "vendor/bin/console propel:schema:copy"
+
         propel-build:
             command: "vendor/bin/console propel:model:build"
 
