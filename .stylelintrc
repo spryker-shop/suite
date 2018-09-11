@@ -6,8 +6,7 @@
     "at-rule-empty-line-before": ["always", {
       "ignore": [
         "inside-block",
-        "blockless-after-blockless",
-        "after-same-name"]
+        "blockless-after-blockless"]
     }],
 
     "at-rule-name-case": "lower",
@@ -40,13 +39,17 @@
 
     "color-hex-case": "lower",
 
-    "color-hex-length": "short",
+    "color-hex-length": null,
 
     "color-named": "never",
 
     "color-no-invalid-hex": true,
 
-    "comment-empty-line-before": "always",
+    "comment-empty-line-before": ["always", {
+      "except": [
+        "first-nested"
+      ]
+    }],
 
     "comment-no-empty": true,
 
@@ -54,11 +57,11 @@
 
     "comment-word-blacklist": [],
 
-    "custom-media-pattern": "",
+    "custom-media-pattern": null,
 
     "custom-property-empty-line-before": "never",
 
-    "custom-property-pattern": "",
+    "custom-property-pattern": null,
 
     "declaration-bang-space-after": "never",
 
@@ -86,12 +89,7 @@
 
     "declaration-property-unit-blacklist": {
       "font-size": ["pt"],
-      "line-height": ["","pt"]
-    },
-
-    "declaration-property-unit-whitelist": {
-      "font-size": ["px","em","rem"],
-      "line-height": ["px","em","rem"]
+      "line-height": ["pt"]
     },
 
     "font-family-name-quotes": "always-where-recommended",
@@ -100,13 +98,15 @@
 
     "font-family-no-missing-generic-family-keyword": true,
 
-    "font-weight-notation": "numeric",
+    "font-weight-notation": null,
 
     "function-blacklist": [],
 
     "function-calc-no-unspaced-operator": true,
 
-    "function-comma-newline-before": "always-multi-line",
+    "function-comma-newline-before": "never-multi-line",
+
+    "function-comma-newline-after": "never-multi-line",
 
     "function-comma-space-after": "always",
 
@@ -114,7 +114,7 @@
 
     "function-linear-gradient-no-nonstandard-direction": true,
 
-    "function-max-empty-lines": 1,
+    "function-max-empty-lines": 0,
 
     "function-name-case": "lower",
 
@@ -122,13 +122,11 @@
 
     "function-parentheses-space-inside": "never",
 
-    "function-url-no-scheme-relative": true,
+    "function-url-no-scheme-relative": null,
 
     "function-url-quotes": "always",
 
     "function-url-scheme-blacklist": ["ftp"],
-
-    "function-url-scheme-whitelist": ["data", "/^http/"],
 
     "function-whitespace-after": "always",
 
@@ -142,15 +140,7 @@
 
     "max-empty-lines": 1,
 
-    "max-nesting-depth": [4,{
-      "ignoreAtRules": [
-        "/^each/",
-        "/^if/",
-        "media",
-        "supports",
-        "include"
-      ]
-    }],
+    "max-nesting-depth": null,
 
     "media-feature-colon-space-after": "always",
 
@@ -164,7 +154,7 @@
 
     "media-feature-name-no-vendor-prefix": true,
 
-    "media-feature-parentheses-space-inside": "always",
+    "media-feature-parentheses-space-inside": "never",
 
     "media-feature-range-operator-space-after": "always",
 
@@ -190,13 +180,13 @@
 
     "no-extra-semicolons": true,
 
-    "no-invalid-double-slash-comments": true,
+    "no-invalid-double-slash-comments": null,
 
     "no-missing-end-of-source-newline": true,
 
     "number-leading-zero": "always",
 
-    "number-max-precision": 4,
+    "number-max-precision": 3,
 
     "number-no-trailing-zeros": true,
 
@@ -206,9 +196,7 @@
 
     "property-no-unknown": true,
 
-    "property-no-vendor-prefix": [true, {
-      "ignoreProperties": ["appearance"]
-    }],
+    "property-no-vendor-prefix": [true],
 
     "rule-empty-line-before": [
       "always",
@@ -239,17 +227,17 @@
 
     "selector-id-pattern": "",
 
-    "selector-list-comma-newline-after": "always-multi-line",
+    "selector-list-comma-newline-after": "always",
 
     "selector-list-comma-newline-before": "never-multi-line",
 
     "selector-max-attribute": 1,
 
-    "selector-max-class": 3,
+    "selector-max-class": 2,
 
-    "selector-max-combinators": 4,
+    "selector-max-combinators": 2,
 
-    "selector-max-compound-selectors": 4,
+    "selector-max-compound-selectors": 3,
 
     "selector-max-empty-lines": 0,
 
@@ -261,12 +249,12 @@
 
     "selector-max-type": 2,
 
-    "selector-max-universal": 4,
+    "selector-max-universal": 1,
 
     "selector-nested-pattern": "",
 
     "selector-no-qualifying-type": [true, {
-      "ignore": ["attribute", "class", "id"]
+      "ignore": ["attribute"]
     }],
 
     "selector-pseudo-class-blacklist": [],
