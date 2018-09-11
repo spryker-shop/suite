@@ -28,8 +28,8 @@ use Spryker\Glue\ProductsRestApi\Plugin\AbstractProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\ConcreteProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
 use Spryker\Glue\ProductsTaxSetsResourceRelationship\Plugin\ProductsTaxSetsResourceRelationshipPlugin;
+use Spryker\Glue\ProductTaxSetsRestApi\Plugin\ProductTaxSetsResourceRoutePlugin;
 use Spryker\Glue\StoresRestApi\Plugin\StoresResourceRoutePlugin;
-use Spryker\Glue\TaxSetsRestApi\Plugin\TaxSetsResourceRoutePlugin;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -56,7 +56,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new ConcreteProductsResourceRoutePlugin(),
             new CartsResourceRoutePlugin(),
             new CartItemsResourceRoutePlugin(),
-            new TaxSetsResourceRoutePlugin(),
+            new ProductTaxSetsResourceRoutePlugin(),
         ];
     }
 
