@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4214058cb0043a057025a985df095710",
+    "content-hash": "361631135e89ff4f2de86576f8bc5dab",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -7775,16 +7775,16 @@
         },
         {
             "name": "spryker/categories-rest-api",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/categories-rest-api.git",
-                "reference": "8648635eb7773cd71739f78debd83f7bb7dcc950"
+                "reference": "e1777f635d1493734a901e7a995cc822dfd5675b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/categories-rest-api/zipball/8648635eb7773cd71739f78debd83f7bb7dcc950",
-                "reference": "8648635eb7773cd71739f78debd83f7bb7dcc950",
+                "url": "https://api.github.com/repos/spryker/categories-rest-api/zipball/e1777f635d1493734a901e7a995cc822dfd5675b",
+                "reference": "e1777f635d1493734a901e7a995cc822dfd5675b",
                 "shasum": ""
             },
             "require": {
@@ -7815,7 +7815,7 @@
                 "proprietary"
             ],
             "description": "CategoriesRestApi module",
-            "time": "2018-08-29T11:06:46+00:00"
+            "time": "2018-09-10T16:58:59+00:00"
         },
         {
             "name": "spryker/category",
@@ -13077,16 +13077,16 @@
         },
         {
             "name": "spryker/heartbeat",
-            "version": "3.2.1",
+            "version": "3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/heartbeat.git",
-                "reference": "05885b0aba20378845ca25ab550bf1bedaced943"
+                "reference": "477b3d28f8b3b58cbbe25b32b44890da14903e1d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/heartbeat/zipball/05885b0aba20378845ca25ab550bf1bedaced943",
-                "reference": "05885b0aba20378845ca25ab550bf1bedaced943",
+                "url": "https://api.github.com/repos/spryker/heartbeat/zipball/477b3d28f8b3b58cbbe25b32b44890da14903e1d",
+                "reference": "477b3d28f8b3b58cbbe25b32b44890da14903e1d",
                 "shasum": ""
             },
             "require": {
@@ -13102,7 +13102,7 @@
                 "spryker/symfony": "^3.0.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
                 "spryker/testify": "*"
             },
             "type": "library",
@@ -13121,7 +13121,7 @@
                 "proprietary"
             ],
             "description": "Heartbeat module",
-            "time": "2018-03-09T07:57:08+00:00"
+            "time": "2018-09-11T09:39:45+00:00"
         },
         {
             "name": "spryker/install",
@@ -20368,6 +20368,51 @@
             ],
             "description": "ProductValidity module",
             "time": "2018-02-01T18:50:14+00:00"
+        },
+        {
+            "name": "spryker/products-categories-resource-relationship",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/products-categories-resource-relationship.git",
+                "reference": "5f05c0002e9b6bc1312ef513ef7230c417b26fa4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/products-categories-resource-relationship/zipball/5f05c0002e9b6bc1312ef513ef7230c417b26fa4",
+                "reference": "5f05c0002e9b6bc1312ef513ef7230c417b26fa4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/categories-rest-api": "^1.1.0",
+                "spryker/glue-application": "^1.1.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.22.0",
+                "spryker/product-category-storage": "^1.0.0",
+                "spryker/product-storage": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductsCategoriesResourceRelationship module",
+            "time": "2018-09-11T12:23:33+00:00"
         },
         {
             "name": "spryker/products-product-availabilities-resource-relationship",
