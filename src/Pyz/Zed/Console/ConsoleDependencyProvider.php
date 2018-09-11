@@ -53,6 +53,7 @@ use Spryker\Zed\EventBehavior\Communication\Console\EventBehaviorTriggerTimeoutC
 use Spryker\Zed\EventBehavior\Communication\Console\EventTriggerConsole;
 use Spryker\Zed\EventBehavior\Communication\Plugin\Console\EventBehaviorPostHookPlugin;
 use Spryker\Zed\IndexGenerator\Communication\Console\PostgresIndexGeneratorConsole;
+use Spryker\Zed\IndexGenerator\Communication\Console\PostgresIndexRemoverConsole;
 use Spryker\Zed\Installer\Communication\Console\InitializeDatabaseConsole;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Log\Communication\Console\DeleteLogFilesConsole;
@@ -307,6 +308,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new PropelAbstractValidateConsole();
             $commands[] = new PluginUsageFinderConsole();
             $commands[] = new PostgresIndexGeneratorConsole();
+            $commands[] = new PostgresIndexRemoverConsole();
         }
 
         return $commands;

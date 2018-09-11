@@ -57,6 +57,9 @@ sections:
         propel-postgres-compatibility:
             command: "vendor/bin/console propel:pg-sql-compat"
 
+        propel-postgres-index-remover:
+            command: "vendor/bin/console propel:postgres-index-generator:remove"
+
         propel-copy-schema:
             command: "vendor/bin/console propel:schema:copy"
 
