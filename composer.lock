@@ -2329,6 +2329,7 @@
             "keywords": [
                 "microframework"
             ],
+            "abandoned": "symfony/flex",
             "time": "2017-04-30T16:26:54+00:00"
         },
         {
@@ -2381,12 +2382,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "228892302eb9b774d83358e95c430cbb6edfc4bd"
+                "reference": "052f6003f46ae95bc477ebb8f83316a8d3b08047"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/228892302eb9b774d83358e95c430cbb6edfc4bd",
-                "reference": "228892302eb9b774d83358e95c430cbb6edfc4bd",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/052f6003f46ae95bc477ebb8f83316a8d3b08047",
+                "reference": "052f6003f46ae95bc477ebb8f83316a8d3b08047",
                 "shasum": ""
             },
             "require": {
@@ -2433,7 +2434,7 @@
                 "proprietary"
             ],
             "description": "EventBehavior module",
-            "time": "2018-09-05T14:57:27+00:00"
+            "time": "2018-09-10T15:10:33+00:00"
         },
         {
             "name": "spryker/install",
@@ -2544,7 +2545,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "72005d79652e65ffe0a2f1668741a6c426456d77"
+                "reference": "dd22821712e04219541bec54b69c4a04b552efe2"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2817,7 +2818,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-09-10T11:56:41+00:00"
+            "time": "2018-09-11T13:25:18+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2825,7 +2826,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "52da6e72611ee2ee3a025a93c19e9c11e1c149dd"
+                "reference": "f7a219e03b7b0e8a52563a808d95f7d7067523b0"
             },
             "require": {
                 "php": ">=7.1"
@@ -2900,7 +2901,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-09-10T10:37:16+00:00"
+            "time": "2018-09-11T13:25:18+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8179,18 +8180,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-generator.git",
-                "reference": "67c56f612c3c26b6614c327cf1fadde9f1c9c7ff"
+                "reference": "343350dd1a203d60e7f0734e4eb8fe778e24ea4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-generator/zipball/67c56f612c3c26b6614c327cf1fadde9f1c9c7ff",
-                "reference": "67c56f612c3c26b6614c327cf1fadde9f1c9c7ff",
+                "url": "https://api.github.com/repos/spryker/code-generator/zipball/343350dd1a203d60e7f0734e4eb8fe778e24ea4d",
+                "reference": "343350dd1a203d60e7f0734e4eb8fe778e24ea4d",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/kernel": "^3.0.0",
-                "zendframework/zend-filter": "^2.8.0"
+                "spryker/symfony": "^3.0.0",
+                "spryker/twig": "^3.0.0",
+                "spryker/zend": "^2.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -8212,7 +8215,7 @@
                 "MIT"
             ],
             "description": "CodeGenerator module",
-            "time": "2018-09-05T14:55:39+00:00"
+            "time": "2018-09-10T12:37:02+00:00"
         },
         {
             "name": "spryker/code-sniffer",
