@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3d1f269024e228112bfb149cefec6093",
+    "content-hash": "9dfb0b6d2bf7938b04b64a43f5865daf",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -12808,16 +12808,16 @@
         },
         {
             "name": "spryker/glue-application",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/glue-application.git",
-                "reference": "5f6ca450f7d397631d04b198c8ad52405a904a76"
+                "reference": "6a0fd96672ea7553aa9f82b435389b3b56fe2109"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/glue-application/zipball/5f6ca450f7d397631d04b198c8ad52405a904a76",
-                "reference": "5f6ca450f7d397631d04b198c8ad52405a904a76",
+                "url": "https://api.github.com/repos/spryker/glue-application/zipball/6a0fd96672ea7553aa9f82b435389b3b56fe2109",
+                "reference": "6a0fd96672ea7553aa9f82b435389b3b56fe2109",
                 "shasum": ""
             },
             "require": {
@@ -12858,7 +12858,7 @@
                 "proprietary"
             ],
             "description": "GlueApplication module",
-            "time": "2018-09-05T09:29:38+00:00"
+            "time": "2018-09-11T15:44:34+00:00"
         },
         {
             "name": "spryker/glue-application-extension",
@@ -17786,17 +17786,63 @@
             "time": "2017-06-29T12:15:48+00:00"
         },
         {
-            "name": "spryker/product-image-storage",
-            "version": "1.0.1",
+            "name": "spryker/product-image-sets-rest-api",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/product-image-storage.git",
-                "reference": "f81c1e967be5c7d4b8935a4ed8f6cf0c3a4efd2b"
+                "url": "https://github.com/spryker/product-image-sets-rest-api.git",
+                "reference": "c7c3194f22f6c970456ab3db2570bd13b68d0091"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-image-storage/zipball/f81c1e967be5c7d4b8935a4ed8f6cf0c3a4efd2b",
-                "reference": "f81c1e967be5c7d4b8935a4ed8f6cf0c3a4efd2b",
+                "url": "https://api.github.com/repos/spryker/product-image-sets-rest-api/zipball/c7c3194f22f6c970456ab3db2570bd13b68d0091",
+                "reference": "c7c3194f22f6c970456ab3db2570bd13b68d0091",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/glue-application": "^1.1.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.22.0",
+                "spryker/product-image-storage": "^1.1.0",
+                "spryker/product-storage": "^1.2.0",
+                "spryker/products-rest-api": "^2.0.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductImageSetsRestApi module",
+            "time": "2018-09-12T13:50:52+00:00"
+        },
+        {
+            "name": "spryker/product-image-storage",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-image-storage.git",
+                "reference": "175755419cb407665a14064c3767be2b37118781"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-image-storage/zipball/175755419cb407665a14064c3767be2b37118781",
+                "reference": "175755419cb407665a14064c3767be2b37118781",
                 "shasum": ""
             },
             "require": {
@@ -17811,8 +17857,13 @@
                 "spryker/synchronization-extension": "^1.0.0"
             },
             "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/config": "*",
                 "spryker/event": "*",
-                "spryker/product-storage": "*"
+                "spryker/product-storage": "*",
+                "spryker/propel": "*",
+                "spryker/propel-query-builder": "*",
+                "spryker/testify": "*"
             },
             "suggest": {
                 "spryker/event": "If you want to use Event plugins, minimum required version: 2.1.0",
@@ -17834,7 +17885,7 @@
                 "proprietary"
             ],
             "description": "ProductImageStorage module",
-            "time": "2018-07-17T18:22:31+00:00"
+            "time": "2018-09-12T16:43:05+00:00"
         },
         {
             "name": "spryker/product-label",
