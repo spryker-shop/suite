@@ -49,9 +49,9 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
     /**
      * @return \Generated\Shared\Transfer\CompanyRoleTransfer[]
      */
-    public function getCompanyRoles(): array
+    public function getPredefinedCompanyRoles(): array
     {
-        $companyRoleTransfers = parent::getCompanyRoles();
+        $companyRoleTransfers = parent::getPredefinedCompanyRoles();
         $companyRoleTransfers[] = $this->getBuyerRole();
 
         return $companyRoleTransfers;
