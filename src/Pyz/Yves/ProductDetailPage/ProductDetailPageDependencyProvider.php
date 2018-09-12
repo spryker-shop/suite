@@ -31,7 +31,9 @@ use SprykerShop\Yves\WishlistWidget\Plugin\ProductDetailPage\WishlistWidgetPlugi
 class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDependencyProvider
 {
     /**
-     * @return \Spryker\Yves\Kernel\Dependency\Plugin\WidgetPluginInterface[]
+     * {@inheritdoc}
+     *
+     * @return string[]
      */
     protected function getProductDetailPageWidgetPlugins(): array
     {
