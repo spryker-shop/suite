@@ -44,6 +44,10 @@ use Spryker\Glue\ProductsRestApi\Plugin\AbstractProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\ConcreteProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
 use Spryker\Glue\StoresRestApi\Plugin\StoresResourceRoutePlugin;
+use Spryker\Glue\WishlistItemsProductsResourceRelationship\Plugin\WishlistItemsConcreteProductsResourceRelationshipPlugin;
+use Spryker\Glue\WishlistsRestApi\Plugin\WishlistItemsResourceRoutePlugin;
+use Spryker\Glue\WishlistsRestApi\Plugin\WishlistsResourceRoutePlugin;
+use Spryker\Glue\WishlistsRestApi\WishlistsRestApiConfig;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -76,6 +80,8 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new CartItemsResourceRoutePlugin(),
             new AbstractProductImageSetsRoutePlugin(),
             new ConcreteProductImageSetsRoutePlugin(),
+            new WishlistsResourceRoutePlugin(),
+            new WishlistItemsResourceRoutePlugin(),
         ];
     }
 
@@ -137,6 +143,10 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_CART_ITEMS,
             new CartItemsProductsRelationshipPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
+            new WishlistItemsConcreteProductsResourceRelationshipPlugin()
         );
         $resourceRelationshipCollection->addRelationship(
             CatalogSearchRestApiConfig::RESOURCE_CATALOG_SEARCH,
