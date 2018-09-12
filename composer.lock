@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "361631135e89ff4f2de86576f8bc5dab",
+    "content-hash": "3d1f269024e228112bfb149cefec6093",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.67.9",
+            "version": "3.67.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "bc580636c7e7c4ed4293776bfac250f726554a41"
+                "reference": "e6571970d7f28da4c736eeeb0d01c0a5fdaf51e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/bc580636c7e7c4ed4293776bfac250f726554a41",
-                "reference": "bc580636c7e7c4ed4293776bfac250f726554a41",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/e6571970d7f28da4c736eeeb0d01c0a5fdaf51e1",
+                "reference": "e6571970d7f28da4c736eeeb0d01c0a5fdaf51e1",
                 "shasum": ""
             },
             "require": {
@@ -84,7 +84,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2018-09-10T21:52:39+00:00"
+            "time": "2018-09-11T18:17:34+00:00"
         },
         {
             "name": "codeitnowin/barcode",
@@ -11107,16 +11107,16 @@
         },
         {
             "name": "spryker/customer-group",
-            "version": "2.2.6",
+            "version": "2.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/customer-group.git",
-                "reference": "bbb57158ac74a72c2c93089a9929e6c300539b12"
+                "reference": "4d1be60f75d846e40318ac31537853517893f54a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/customer-group/zipball/bbb57158ac74a72c2c93089a9929e6c300539b12",
-                "reference": "bbb57158ac74a72c2c93089a9929e6c300539b12",
+                "url": "https://api.github.com/repos/spryker/customer-group/zipball/4d1be60f75d846e40318ac31537853517893f54a",
+                "reference": "4d1be60f75d846e40318ac31537853517893f54a",
                 "shasum": ""
             },
             "require": {
@@ -11130,14 +11130,10 @@
                 "spryker/util-encoding": "^2.0.0"
             },
             "require-dev": {
-                "spryker/assertion": "^3.0.0",
-                "spryker/code-sniffer": "*",
-                "spryker/country": "*",
-                "spryker/locale": "*",
+                "spryker/application": "*",
                 "spryker/propel": "*",
-                "spryker/silex": "*",
                 "spryker/testify": "*",
-                "spryker/twig": "*"
+                "spryker/zed-navigation": "*"
             },
             "type": "library",
             "extra": {
@@ -11156,7 +11152,7 @@
                 "proprietary"
             ],
             "description": "CustomerGroup module",
-            "time": "2018-02-05T06:01:59+00:00"
+            "time": "2018-09-11T14:18:59+00:00"
         },
         {
             "name": "spryker/customer-group-discount-connector",
@@ -21837,16 +21833,16 @@
         },
         {
             "name": "spryker/shopping-list",
-            "version": "1.1.1",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/shopping-list.git",
-                "reference": "f31036e16f8498b5cbf4130a4859bdb4f3be3461"
+                "reference": "665a24b4b1944d4b45a890db89fa6762d6a22388"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/shopping-list/zipball/f31036e16f8498b5cbf4130a4859bdb4f3be3461",
-                "reference": "f31036e16f8498b5cbf4130a4859bdb4f3be3461",
+                "url": "https://api.github.com/repos/spryker/shopping-list/zipball/665a24b4b1944d4b45a890db89fa6762d6a22388",
+                "reference": "665a24b4b1944d4b45a890db89fa6762d6a22388",
                 "shasum": ""
             },
             "require": {
@@ -21868,7 +21864,11 @@
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/company": "*",
                 "spryker/installer": "*",
+                "spryker/propel": "*",
+                "spryker/quote": "*",
+                "spryker/stock": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
@@ -21891,7 +21891,7 @@
                 "proprietary"
             ],
             "description": "ShoppingList module",
-            "time": "2018-08-15T06:37:03+00:00"
+            "time": "2018-09-12T08:58:28+00:00"
         },
         {
             "name": "spryker/shopping-list-extension",
@@ -22445,32 +22445,28 @@
         },
         {
             "name": "spryker/synchronization-behavior",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/synchronization-behavior.git",
-                "reference": "311673c36059437158eca999783698b93eddf547"
+                "reference": "06edc061c3b4fb1ccc0057a55e65569f3c26eeee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/311673c36059437158eca999783698b93eddf547",
-                "reference": "311673c36059437158eca999783698b93eddf547",
+                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/06edc061c3b4fb1ccc0057a55e65569f3c26eeee",
+                "reference": "06edc061c3b4fb1ccc0057a55e65569f3c26eeee",
                 "shasum": ""
             },
             "require": {
                 "spryker/kernel": "^3.20.0",
                 "spryker/propel-orm": "^1.6.0",
+                "spryker/queue": "^1.1.0",
+                "spryker/synchronization": "^0.1.0 || ^0.2.0 || ^1.0.0",
                 "spryker/zend": "^2.1.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
-                "spryker/queue": "^1.1.0",
-                "spryker/synchronization": "^0.1.0 || ^0.2.0 || ^1.0.0",
                 "spryker/testify": "*"
-            },
-            "suggest": {
-                "spryker/queue": "Generated classes are using spryker/queue module.",
-                "spryker/synchronization": "Generated classes are using spryker/synchronization module."
             },
             "type": "propel-behavior",
             "extra": {
@@ -22493,7 +22489,7 @@
                 "proprietary"
             ],
             "description": "SynchronizationBehavior module",
-            "time": "2018-09-03T08:13:05+00:00"
+            "time": "2018-09-11T22:10:58+00:00"
         },
         {
             "name": "spryker/synchronization-extension",
@@ -22690,16 +22686,16 @@
         },
         {
             "name": "spryker/transfer",
-            "version": "3.6.4",
+            "version": "3.6.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/transfer.git",
-                "reference": "6e2cc5984b901bb60ac0269fc8e8583ab69994db"
+                "reference": "016a5ec591f89a48f5f00ce60d4138879b22dc04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/transfer/zipball/6e2cc5984b901bb60ac0269fc8e8583ab69994db",
-                "reference": "6e2cc5984b901bb60ac0269fc8e8583ab69994db",
+                "url": "https://api.github.com/repos/spryker/transfer/zipball/016a5ec591f89a48f5f00ce60d4138879b22dc04",
+                "reference": "016a5ec591f89a48f5f00ce60d4138879b22dc04",
                 "shasum": ""
             },
             "require": {
@@ -22733,7 +22729,7 @@
                 "proprietary"
             ],
             "description": "Transfer module",
-            "time": "2018-08-31T14:52:30+00:00"
+            "time": "2018-09-11T12:54:14+00:00"
         },
         {
             "name": "spryker/twig",
@@ -23535,16 +23531,16 @@
         },
         {
             "name": "spryker/wishlist",
-            "version": "6.1.0",
+            "version": "6.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/wishlist.git",
-                "reference": "8c6e4370a37ab35c66047eeb3b1a424965792f40"
+                "reference": "1a197aaf36e99577eb5e233fa5fd3952cdefe5ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/wishlist/zipball/8c6e4370a37ab35c66047eeb3b1a424965792f40",
-                "reference": "8c6e4370a37ab35c66047eeb3b1a424965792f40",
+                "url": "https://api.github.com/repos/spryker/wishlist/zipball/1a197aaf36e99577eb5e233fa5fd3952cdefe5ab",
+                "reference": "1a197aaf36e99577eb5e233fa5fd3952cdefe5ab",
                 "shasum": ""
             },
             "require": {
@@ -23559,9 +23555,7 @@
                 "spryker/zed-request": "^3.0.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*",
                 "spryker/propel": "*",
-                "spryker/silex": "*",
                 "spryker/stock": "^4.0.0 || ^5.0.0",
                 "spryker/testify": "*"
             },
@@ -23581,7 +23575,7 @@
                 "proprietary"
             ],
             "description": "Wishlist module",
-            "time": "2018-07-06T14:49:22+00:00"
+            "time": "2018-09-12T11:59:36+00:00"
         },
         {
             "name": "spryker/wishlist-extension",
@@ -23621,6 +23615,97 @@
             ],
             "description": "WishlistExtension module",
             "time": "2018-07-20T08:40:49+00:00"
+        },
+        {
+            "name": "spryker/wishlist-items-products-resource-relationship",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/wishlist-items-products-resource-relationship.git",
+                "reference": "5602a6afe720ce47af185813c9b60cab7a75db7f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/wishlist-items-products-resource-relationship/zipball/5602a6afe720ce47af185813c9b60cab7a75db7f",
+                "reference": "5602a6afe720ce47af185813c9b60cab7a75db7f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/glue-application": "^1.0.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.22.0",
+                "spryker/products-rest-api": "^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/wishlists-rest-api": "If you want to expand wishlist items resource with concrete products relationship."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "WishlistItemsProductsResourceRelationship module",
+            "time": "2018-09-06T09:49:53+00:00"
+        },
+        {
+            "name": "spryker/wishlists-rest-api",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/wishlists-rest-api.git",
+                "reference": "c40f0172701e130eb81ca539622eac518b1d4dd3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/wishlists-rest-api/zipball/c40f0172701e130eb81ca539622eac518b1d4dd3",
+                "reference": "c40f0172701e130eb81ca539622eac518b1d4dd3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/glue-application": "^1.0.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.22.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/wishlist": "^6.1.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "WishlistsRestApi module",
+            "time": "2018-09-12T11:59:36+00:00"
         },
         {
             "name": "spryker/zed-navigation",
