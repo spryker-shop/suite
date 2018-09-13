@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9dfb0b6d2bf7938b04b64a43f5865daf",
+    "content-hash": "e18ffbbc1d9fd322d86064dcd5e65cca",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.67.10",
+            "version": "3.67.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "e6571970d7f28da4c736eeeb0d01c0a5fdaf51e1"
+                "reference": "2fcd5b49bda2dc79f7b1a70677733194af1548e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/e6571970d7f28da4c736eeeb0d01c0a5fdaf51e1",
-                "reference": "e6571970d7f28da4c736eeeb0d01c0a5fdaf51e1",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/2fcd5b49bda2dc79f7b1a70677733194af1548e3",
+                "reference": "2fcd5b49bda2dc79f7b1a70677733194af1548e3",
                 "shasum": ""
             },
             "require": {
@@ -84,7 +84,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2018-09-11T18:17:34+00:00"
+            "time": "2018-09-12T20:11:40+00:00"
         },
         {
             "name": "codeitnowin/barcode",
@@ -20374,6 +20374,53 @@
             "time": "2018-08-06T14:30:50+00:00"
         },
         {
+            "name": "spryker/product-tax-sets-rest-api",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-tax-sets-rest-api.git",
+                "reference": "0859e60a9c812e09027929c00a0a053844bc59dd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-tax-sets-rest-api/zipball/0859e60a9c812e09027929c00a0a053844bc59dd",
+                "reference": "0859e60a9c812e09027929c00a0a053844bc59dd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/glue-application": "^1.1.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.22.0",
+                "spryker/products-rest-api": "^2.0.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/tax": "^5.0.0",
+                "spryker/tax-product-connector": "^4.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductTaxSetsRestApi module",
+            "time": "2018-09-13T09:26:29+00:00"
+        },
+        {
             "name": "spryker/product-validity",
             "version": "1.0.0",
             "source": {
@@ -20552,6 +20599,49 @@
             ],
             "description": "ProductsProductPricesResourceRelationship module",
             "time": "2018-09-07T08:22:20+00:00"
+        },
+        {
+            "name": "spryker/products-product-tax-sets-resource-relationship",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/products-product-tax-sets-resource-relationship.git",
+                "reference": "0f495b3b83fff6cbfd9f232a0516615036a2e59a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/products-product-tax-sets-resource-relationship/zipball/0f495b3b83fff6cbfd9f232a0516615036a2e59a",
+                "reference": "0f495b3b83fff6cbfd9f232a0516615036a2e59a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/glue-application": "^1.0.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.22.0",
+                "spryker/product-tax-sets-rest-api": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductsProductTaxSetsResourceRelationship module",
+            "time": "2018-09-12T12:27:41+00:00"
         },
         {
             "name": "spryker/products-rest-api",
@@ -22639,16 +22729,16 @@
         },
         {
             "name": "spryker/tax-product-connector",
-            "version": "4.0.4",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/tax-product-connector.git",
-                "reference": "55d5cbb9b325ac8139075e92320091f6b0f6d878"
+                "reference": "236eb5e6a35e7a365bcc15a56013ae26b096eee7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/tax-product-connector/zipball/55d5cbb9b325ac8139075e92320091f6b0f6d878",
-                "reference": "55d5cbb9b325ac8139075e92320091f6b0f6d878",
+                "url": "https://api.github.com/repos/spryker/tax-product-connector/zipball/236eb5e6a35e7a365bcc15a56013ae26b096eee7",
+                "reference": "236eb5e6a35e7a365bcc15a56013ae26b096eee7",
                 "shasum": ""
             },
             "require": {
@@ -22656,14 +22746,13 @@
                 "spryker/kernel": "^3.0.0",
                 "spryker/product": "^5.0.0 || ^6.0.0",
                 "spryker/propel-orm": "^1.0.0",
-                "spryker/tax": "^4.0.0 || ^5.0.0"
+                "spryker/tax": "^4.0.0 || ^5.0.0",
+                "spryker/zed-request": "^3.0.0"
             },
             "require-dev": {
                 "spryker/calculation": "*",
-                "spryker/code-sniffer": "*",
                 "spryker/country": "*",
                 "spryker/propel": "*",
-                "spryker/silex": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
@@ -22685,7 +22774,7 @@
                 "proprietary"
             ],
             "description": "TaxProductConnector module",
-            "time": "2018-01-24T11:43:27+00:00"
+            "time": "2018-09-12T17:42:18+00:00"
         },
         {
             "name": "spryker/touch",
