@@ -544,7 +544,8 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             ]))
             ->addStep(new CmsBlockWriterStep(
                 $this->createCategoryRepository(),
-                $this->createProductRepository()
+                $this->createProductRepository(),
+                $this->getEventFacade()
             ));
 
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
