@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\MinimumOrderValue\Persistence;
+namespace Orm\Zed\SalesOrderThreshold\Persistence;
 
-use Spryker\Zed\MinimumOrderValue\Persistence\Propel\AbstractSpyMinimumOrderValueQuery;
+use Spryker\Zed\SalesOrderThreshold\Persistence\Propel\AbstractSpySalesOrderThresholdTypeQuery;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_min_order_value' table.
+ * Skeleton subclass for performing query and update operations on the 'spy_sales_order_threshold_type' table.
  *
  *
  *
@@ -19,6 +19,6 @@ use Spryker\Zed\MinimumOrderValue\Persistence\Propel\AbstractSpyMinimumOrderValu
  * long as it does not already exist in the output directory.
  *
  */
-class SpyMinimumOrderValueQuery extends AbstractSpyMinimumOrderValueQuery
+class SpySalesOrderThresholdTypeQuery extends AbstractSpySalesOrderThresholdTypeQuery
 {
 }

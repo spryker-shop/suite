@@ -15,7 +15,6 @@ use SprykerShop\Yves\CheckoutWidget\Plugin\CartPage\CheckoutBreadcrumbWidgetPlug
 use SprykerShop\Yves\DiscountPromotionWidget\Plugin\CartPage\DiscountPromotionItemListWidgetPlugin;
 use SprykerShop\Yves\DiscountWidget\Plugin\CartPage\DiscountSummaryWidgetPlugin;
 use SprykerShop\Yves\DiscountWidget\Plugin\CartPage\DiscountVoucherFormWidgetPlugin;
-use SprykerShop\Yves\MinimumOrderValueWidget\Plugin\CartPage\MinimumOrderValueWidgetPlugin;
 use SprykerShop\Yves\MultiCartWidget\Plugin\CartPage\CartOperationsWidgetPlugin;
 use SprykerShop\Yves\MultiCartWidget\Plugin\CartPage\MultiCartListWidgetPlugin;
 use SprykerShop\Yves\ProductBundleWidget\Plugin\CartPage\ProductBundleCartItemTransformerPlugin;
@@ -24,6 +23,7 @@ use SprykerShop\Yves\ProductMeasurementUnitWidget\Plugin\CartPage\QuantitySalesU
 use SprykerShop\Yves\ProductOptionWidget\Plugin\CartPage\CartItemProductOptionWidgetPlugin;
 use SprykerShop\Yves\ProductPackagingUnitWidget\Plugin\CartPage\CartProductPackagingUnitWidgetPlugin;
 use SprykerShop\Yves\ProductRelationWidget\Plugin\CartPage\UpSellingProductsWidgetPlugin;
+use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CartPage\SalesOrderThresholdWidgetPlugin;
 
 class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
 {
@@ -47,7 +47,7 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
             CartOperationsWidgetPlugin::class, #MultiCartFeature
             CartToShoppingListWidgetPlugin::class, #ShoppingListFeature
             CartProductPackagingUnitWidgetPlugin::class, #ProductPackagingUnit
-            MinimumOrderValueWidgetPlugin::class, #MinimumOrderValue
+            SalesOrderThresholdWidgetPlugin::class, #SalesOrderThreshold
         ];
     }
 
