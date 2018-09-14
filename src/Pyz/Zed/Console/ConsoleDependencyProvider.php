@@ -14,6 +14,7 @@ use Spryker\Spryk\Console\SprykDumpConsole;
 use Spryker\Spryk\Console\SprykRunConsole;
 use Spryker\Zed\BusinessOnBehalfDataImport\BusinessOnBehalfDataImportConfig;
 use Spryker\Zed\Cache\Communication\Console\EmptyAllCachesConsole;
+use Spryker\Zed\CartsRestApi\Communication\Console\QuoteUuidGeneratorConsole;
 use Spryker\Zed\CodeGenerator\Communication\Console\BundleClientCodeGeneratorConsole;
 use Spryker\Zed\CodeGenerator\Communication\Console\BundleCodeGeneratorConsole;
 use Spryker\Zed\CodeGenerator\Communication\Console\BundleServiceCodeGeneratorConsole;
@@ -33,8 +34,11 @@ use Spryker\Zed\Development\Communication\Console\CodePhpstanConsole;
 use Spryker\Zed\Development\Communication\Console\CodeStyleSnifferConsole;
 use Spryker\Zed\Development\Communication\Console\CodeTestConsole;
 use Spryker\Zed\Development\Communication\Console\ComposerJsonUpdaterConsole;
+use Spryker\Zed\Development\Communication\Console\ComposerJsonValidatorConsole;
 use Spryker\Zed\Development\Communication\Console\DependencyTreeBuilderConsole;
 use Spryker\Zed\Development\Communication\Console\DependencyTreeDependencyViolationConsole;
+use Spryker\Zed\Development\Communication\Console\DependencyViolationFinderConsole;
+use Spryker\Zed\Development\Communication\Console\DependencyViolationFixConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateClientIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateGlueIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateIdeAutoCompletionConsole;
@@ -132,6 +136,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
     {
         $commands = [
             new CacheWarmerConsole(),
+            new QuoteUuidGeneratorConsole(),
             new BuildNavigationConsole(),
             new EmptyAllCachesConsole(),
             new GeneratorConsole(),
@@ -271,8 +276,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new ModuleBridgeCreateConsole();
             $commands[] = new ModuleCreateConsole();
             $commands[] = new CodePhpMessDetectorConsole();
-            $commands[] = new DependencyTreeBuilderConsole();
-            $commands[] = new DependencyTreeDependencyViolationConsole();
             $commands[] = new ComposerJsonUpdaterConsole();
             $commands[] = new ValidatorConsole();
             $commands[] = new BundleCodeGeneratorConsole();
@@ -293,6 +296,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new DataImportDumpConsole();
             $commands[] = new GenerateGlueIdeAutoCompletionConsole();
             $commands[] = new PropelAbstractValidateConsole();
+
+            $commands[] = new DependencyTreeDependencyViolationConsole();
         }
 
         return $commands;
@@ -336,8 +341,15 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
     protected function addProjectNonsplitOnlyCommands(array $commands): array
     {
         $commands[] = new AdjustPhpstanConsole();
+
         $commands[] = new SprykRunConsole();
         $commands[] = new SprykDumpConsole();
+
+        $commands[] = new DependencyTreeBuilderConsole();
+        $commands[] = new DependencyViolationFinderConsole();
+        $commands[] = new DependencyViolationFixConsole();
+
+        $commands[] = new ComposerJsonValidatorConsole();
 
         return $commands;
     }
