@@ -2545,7 +2545,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-              "reference": "a39c865b869bb664c4d11a48452f72b428780907"
+              "reference": "b0e3c6d8212f6445cb6f32778bd9303de5b3226f"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2818,7 +2818,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-          "time": "2018-09-13T11:42:56+00:00"
+          "time": "2018-09-14T11:41:03+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2826,7 +2826,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-              "reference": "63c763e005513736218a265831f1e9c5d6b2217f"
+              "reference": "3ec79d909dabc13ce6f919c3783cbac9c807f5e4"
             },
             "require": {
                 "php": ">=7.1"
@@ -2901,7 +2901,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-          "time": "2018-09-12T13:29:48+00:00"
+          "time": "2018-09-14T10:44:05+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -6868,21 +6868,24 @@
         },
         {
             "name": "phpunit/php-file-iterator",
-            "version": "2.0.1",
+          "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-file-iterator.git",
-                "reference": "cecbc684605bb0cc288828eb5d65d93d5c676d3c"
+              "reference": "050bedf145a257b1ff02746c31894800e5122946"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/cecbc684605bb0cc288828eb5d65d93d5c676d3c",
-                "reference": "cecbc684605bb0cc288828eb5d65d93d5c676d3c",
+              "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/050bedf145a257b1ff02746c31894800e5122946",
+              "reference": "050bedf145a257b1ff02746c31894800e5122946",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1"
             },
+          "require-dev": {
+            "phpunit/phpunit": "^7.1"
+          },
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -6911,7 +6914,7 @@
                 "filesystem",
                 "iterator"
             ],
-            "time": "2018-06-11T11:44:00+00:00"
+          "time": "2018-09-13T20:33:42+00:00"
         },
         {
             "name": "phpunit/php-text-template",
@@ -8272,14 +8275,15 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-              "reference": "78dd4877e507dce79deb0f012f92bdfacdc32251"
+              "reference": "36c09ed97a16cfaa6300b4bd36fe90e47eb008eb"
             },
             "require": {
-                "spryker/development": "@stable"
+              "spryker/development": "@stable",
+              "spryker/kernel": "^3.0.0",
+              "spryker/symfony": "^3.0.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/development": "dev-master"
+              "spryker/code-sniffer": "*"
             },
             "type": "library",
             "extra": {
@@ -8309,7 +8313,7 @@
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-          "time": "2018-09-13T14:36:01+00:00"
+          "time": "2018-09-13T18:30:38+00:00"
         },
         {
             "name": "spryker/git-hook",
