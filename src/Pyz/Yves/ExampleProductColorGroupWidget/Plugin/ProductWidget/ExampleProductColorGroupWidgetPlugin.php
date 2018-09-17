@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\ExampleProductColorGroupWidget\Plugin\ProductWidget;
 
+use Pyz\Yves\ExampleProductColorGroupWidget\Widget\ExampleProductColorGroupWidget;
 use Spryker\Yves\Kernel\Widget\AbstractWidgetPlugin;
 use SprykerShop\Yves\ProductWidget\Dependency\Plugin\ProductGroupWidget\ProductGroupWidgetPluginInterface;
 
@@ -35,6 +36,6 @@ class ExampleProductColorGroupWidgetPlugin extends AbstractWidgetPlugin implemen
      */
     public static function getTemplate(): string
     {
-        return '@ExampleProductColorGroupWidget/views/product-color-selector-widget/product-color-selector-widget.twig';
+        return ExampleProductColorGroupWidget::getTemplate();
     }
 }
