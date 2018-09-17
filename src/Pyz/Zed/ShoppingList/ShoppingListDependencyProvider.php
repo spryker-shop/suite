@@ -11,6 +11,7 @@ use Spryker\Zed\ProductBundle\Communication\Plugin\ShoppingList\ReplaceBundledQu
 use Spryker\Zed\ProductDiscontinued\Communication\Plugin\ShoppingList\ProductDiscontinuedAddItemPreCheckPlugin;
 use Spryker\Zed\ShoppingList\ShoppingListDependencyProvider as SprykerShoppingListDependencyProvider;
 use Spryker\Zed\ShoppingListProductOption\Communication\Plugin\ShoppingList\CartItemProductOptionToShoppingListItemProductOptionMapperPlugin;
+use Spryker\Zed\ShoppingListProductOption\Communication\Plugin\ShoppingList\ShoppingListItemProductOptionBeforeDeletePlugin;
 use Spryker\Zed\ShoppingListProductOption\Communication\Plugin\ShoppingList\ShoppingListItemProductOptionExpanderPlugin;
 use Spryker\Zed\ShoppingListProductOption\Communication\Plugin\ShoppingList\ShoppingListItemProductOptionPostSavePlugin;
 
@@ -63,6 +64,16 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     {
         return [
             new ShoppingListItemProductOptionPostSavePlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\ShoppingListExtension\Dependency\Plugin\ShoppingListItemBeforeDeletePluginInterface[]
+     */
+    protected function getBeforeDeleteShoppingListItemPlugins(): array
+    {
+        return [
+            new ShoppingListItemProductOptionBeforeDeletePlugin()
         ];
     }
 }
