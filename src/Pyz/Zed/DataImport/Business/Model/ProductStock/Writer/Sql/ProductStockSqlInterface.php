@@ -22,5 +22,10 @@ interface ProductStockSqlInterface
     /**
      * @return string
      */
-    public function createAvailabilityProductSQL(): string;
+    public function createAbstractAvailabilitySQL(): string;
+
+    /**
+     * @return string
+     */
+    public function createAvailabilitySQL(): string;
 }

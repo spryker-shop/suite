@@ -379,7 +379,8 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             $this->getStockFacade(),
             $this->getProductBundleFacade(),
             $this->createProductStockSql(),
-            $this->createPropelExecutor()
+            $this->createPropelExecutor(),
+            $this->getStoreFacade()
         );
     }
 

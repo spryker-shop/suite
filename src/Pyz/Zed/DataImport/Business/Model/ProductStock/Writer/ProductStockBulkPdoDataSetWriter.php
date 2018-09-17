@@ -7,6 +7,15 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\ProductStock\Writer;
 
+use Generated\Shared\Transfer\StoreTransfer;
+use Orm\Zed\Oms\Persistence\Map\SpyOmsProductReservationTableMap;
+use Orm\Zed\Oms\Persistence\SpyOmsProductReservationQuery;
+use Orm\Zed\Product\Persistence\Map\SpyProductAbstractTableMap;
+use Orm\Zed\Product\Persistence\Map\SpyProductTableMap;
+use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
+use Orm\Zed\Stock\Persistence\Map\SpyStockProductTableMap;
+use Orm\Zed\Stock\Persistence\Map\SpyStockTableMap;
+use Orm\Zed\Stock\Persistence\SpyStockProductQuery;
 use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataFormatter;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\ProductStockHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSqlInterface;
@@ -17,12 +26,17 @@ use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
 use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
 use Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface;
 use Spryker\Zed\Stock\Business\StockFacadeInterface;
+use Spryker\Zed\Store\Business\StoreFacadeInterface;
 
 class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements DataSetWriterInterface
 {
     use DataFormatter;
 
     const BULK_SIZE = 2000;
+
+    protected const KEY_SKU = 'sku';
+    protected const KEY_QUANTITY = 'qty';
+    protected const KEY_IS_NEVER_OUT_OF_STOCK = 'is_never_out_of_stock';
 
     protected static $stockCollection = [];
 
@@ -56,6 +70,11 @@ class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements 
     protected $propelExecutor;
 
     /**
+     * @var \Spryker\Zed\Store\Business\StoreFacadeInterface
+     */
+    protected $storeFacade;
+
+    /**
      * ProductStockBulkPdoWriter constructor.
      *
      * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface $eventFacade
@@ -63,19 +82,22 @@ class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements 
      * @param \Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface $productBundleFacade
      * @param \Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSqlInterface $productStockSql
      * @param \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface $propelExecutor
+     * @param \Spryker\Zed\Store\Business\StoreFacadeInterface $storeFacade
      */
     public function __construct(
         DataImportToEventFacadeInterface $eventFacade,
         StockFacadeInterface $stockFacade,
         ProductBundleFacadeInterface $productBundleFacade,
         ProductStockSqlInterface $productStockSql,
-        PropelExecutorInterface $propelExecutor
+        PropelExecutorInterface $propelExecutor,
+        StoreFacadeInterface $storeFacade
     ) {
         parent::__construct($eventFacade);
         $this->stockFacade = $stockFacade;
         $this->productBundleFacade = $productBundleFacade;
         $this->productStockSql = $productStockSql;
         $this->propelExecutor = $propelExecutor;
+        $this->storeFacade = $storeFacade;
     }
 
     /**
@@ -108,7 +130,7 @@ class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements 
     {
         $this->persistStockEntities();
         $this->persistStockProductEntities();
-        $this->persistAvailabilityProductEntities();
+        $this->persistAvailability();
 
         $this->flushMemory();
     }
@@ -169,29 +191,189 @@ class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements 
     /**
      * @return void
      */
-    protected function persistAvailabilityProductEntities(): void
+    protected function persistAvailability(): void
     {
-        $skus = $this->formatPostgresArrayString(
-            $this->getCollectionDataByKey(static::$stockProductCollection, ProductStockHydratorStep::KEY_CONCRETE_SKU)
-        );
+        $skus = $this->getCollectionDataByKey(static::$stockProductCollection, ProductStockHydratorStep::KEY_CONCRETE_SKU);
+        $storeTransfer = $this->storeFacade->getCurrentStore();
 
-        $sql = $this->productStockSql->createAvailabilityProductSQL();
-        $storeToStock = $this->getStoreToWarehouse();
-        foreach ($storeToStock as $store => $stocks) {
-            $stores = array_fill(0, count(static::$stockProductCollection), $store);
-            $parameters = [
-                $skus,
-                $this->formatPostgresArrayString($stores),
-                $this->formatPostgresArrayString($stocks),
-            ];
-            $this->propelExecutor->execute($sql, $parameters);
+        $concreteSkusToAbstractMap = $this->mapConcreteSkuToAbstractSku($skus);
+        $reservationItems = $this->getReservationsBySkus($skus);
+
+        $this->updateAvailability($skus, $storeTransfer, $concreteSkusToAbstractMap, $reservationItems);
+
+        $sharedStores = $storeTransfer->getStoresWithSharedPersistence();
+        foreach ($sharedStores as $storeName) {
+            $storeTransfer = $this->storeFacade->getStoreByName($storeName);
+            $this->updateAvailability($skus, $storeTransfer, $concreteSkusToAbstractMap, $reservationItems);
         }
 
-        foreach (static::$stockProductCollection as $stockProduct) {
-            if ($stockProduct[ProductStockHydratorStep::KEY_IS_BUNDLE]) {
-                $this->productBundleFacade->updateBundleAvailability($stockProduct[ProductStockHydratorStep::KEY_CONCRETE_SKU]);
-                $this->productBundleFacade->updateAffectedBundlesAvailability($stockProduct[ProductStockHydratorStep::KEY_CONCRETE_SKU]);
+        $this->updateBundleAvailability();
+    }
+
+    /**
+     * @param array $skus
+     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
+     * @param array $concreteSkusToAbstractMap
+     * @param array $reservationItems
+     *
+     * @return void
+     */
+    protected function updateAvailability(array $skus, StoreTransfer $storeTransfer, array $concreteSkusToAbstractMap, array $reservationItems): void
+    {
+        $stockProductsForStore = $this->getStockProductBySkusAndStore($skus, $storeTransfer);
+
+        $concreteAvailabilityData = $this->prepareConcreteAvailabilityData($stockProductsForStore, $reservationItems);
+
+        $abstractAvailabilityData = $this->prepareAbstractAvailabilityData($concreteAvailabilityData, $concreteSkusToAbstractMap);
+
+        $abstractAvailabilityQueryParams = [
+            $this->formatPostgresArrayString(array_column($abstractAvailabilityData, static::KEY_SKU)),
+            $this->formatPostgresArray(array_column($abstractAvailabilityData, static::KEY_QUANTITY)),
+            $this->formatPostgresArray(array_fill(0, count($abstractAvailabilityData), $storeTransfer->getIdStore())),
+        ];
+
+        $this->propelExecutor->execute($this->productStockSql->createAbstractAvailabilitySQL(), $abstractAvailabilityQueryParams);
+
+        $availabilityQueryParams = [
+            $this->formatPostgresArrayString(array_column($concreteAvailabilityData, static::KEY_SKU)),
+            $this->formatPostgresArray(array_column($concreteAvailabilityData, static::KEY_QUANTITY)),
+            $this->formatPostgresArray(array_column($concreteAvailabilityData, static::KEY_IS_NEVER_OUT_OF_STOCK)),
+            $this->formatPostgresArray(array_fill(0, count($concreteAvailabilityData), $storeTransfer->getIdStore())),
+        ];
+        $this->propelExecutor->execute($this->productStockSql->createAvailabilitySQL(), $availabilityQueryParams);
+    }
+
+    /**
+     * @param array $skus
+     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
+     *
+     * @return array
+     */
+    protected function getStockProductBySkusAndStore(array $skus, StoreTransfer $storeTransfer): array
+    {
+        $stocks = $this->stockFacade->getStoreToWarehouseMapping();
+
+        $result = [];
+        $stockProducts = SpyStockProductQuery::create()
+            ->useSpyProductQuery()
+                ->filterBySku_In($skus)
+            ->endUse()
+            ->leftJoinWithStock()
+            ->select([
+                SpyProductTableMap::COL_SKU,
+                SpyStockProductTableMap::COL_QUANTITY,
+                SpyStockProductTableMap::COL_IS_NEVER_OUT_OF_STOCK,
+                SpyStockTableMap::COL_NAME,
+            ])
+            ->find()
+            ->toArray();
+        foreach ($stockProducts as $stockProduct) {
+            $sku = $stockProduct[SpyProductTableMap::COL_SKU];
+            $result[$sku][static::KEY_SKU] = $sku;
+            $result[$sku][static::KEY_QUANTITY] = $stockProduct[SpyStockProductTableMap::COL_QUANTITY];
+            $result[$sku][static::KEY_IS_NEVER_OUT_OF_STOCK] = (int)$stockProduct[SpyStockProductTableMap::COL_IS_NEVER_OUT_OF_STOCK];
+            if (!in_array($stockProduct, $stocks[$storeTransfer->getName()])) {
+                $result[$sku][static::KEY_QUANTITY] = 0;
+            } else {
+                $result[$sku][static::KEY_QUANTITY] = ($result[$sku][static::KEY_QUANTITY] ?? 0) + $stockProduct[SpyStockProductTableMap::COL_QUANTITY];
             }
+        }
+        return $result;
+    }
+
+    /**
+     * @param array $skus
+     *
+     * @return array
+     */
+    protected function getReservationsBySkus(array $skus): array
+    {
+        $reservations = SpyOmsProductReservationQuery::create()
+            ->filterBySku_In($skus)
+            ->select([
+                SpyOmsProductReservationTableMap::COL_SKU,
+                SpyOmsProductReservationTableMap::COL_RESERVATION_QUANTITY,
+            ])
+            ->find()
+            ->toArray();
+        $result = [];
+        foreach ($reservations as $reservation) {
+            $result[$reservation[SpyOmsProductReservationTableMap::COL_SKU]] += $reservation[SpyOmsProductReservationTableMap::COL_RESERVATION_QUANTITY];
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param array $skus
+     *
+     * @return array
+     */
+    protected function mapConcreteSkuToAbstractSku(array $skus): array
+    {
+        $abstractProducts = SpyProductAbstractQuery::create()
+            ->useSpyProductQuery()
+                ->filterBySku_In($skus)
+            ->endUse()
+            ->select([SpyProductTableMap::COL_SKU, SpyProductAbstractTableMap::COL_SKU])
+            ->find()
+            ->toArray();
+
+        return array_combine(
+            array_column($abstractProducts, SpyProductTableMap::COL_SKU),
+            array_column($abstractProducts, SpyProductAbstractTableMap::COL_SKU)
+        );
+    }
+
+    /**
+     * @param array $stockProducts
+     * @param array $reservations
+     *
+     * @return array
+     */
+    protected function prepareConcreteAvailabilityData(array $stockProducts, array $reservations): array
+    {
+        foreach ($stockProducts as $stock) {
+            $sku = $stock[static::KEY_SKU];
+            $stockProducts[$sku][static::KEY_QUANTITY] = $stock[static::KEY_QUANTITY] - ($reservations[$sku] ?? 0);
+            $stockProducts[$sku][static::KEY_QUANTITY] = $stockProducts[$sku][static::KEY_QUANTITY] >= 0 ? $stockProducts[$sku][static::KEY_QUANTITY] : 0;
+        }
+
+        return $stockProducts;
+    }
+
+    /**
+     * @param array $concreteAvailabilityData
+     * @param array $concreteSkusToAbstractMap
+     *
+     * @return array
+     */
+    protected function prepareAbstractAvailabilityData(array $concreteAvailabilityData, array $concreteSkusToAbstractMap): array
+    {
+        $abstractAvailabilityData = [];
+        foreach ($concreteAvailabilityData as $concreteAvailability) {
+            $abstractSku = $concreteSkusToAbstractMap[$concreteAvailability[static::KEY_SKU]] ?? null;
+            if (!$abstractSku) {
+                continue;
+            }
+            $abstractAvailabilityData[$abstractSku][static::KEY_SKU] = $abstractSku;
+            $abstractAvailabilityData[$abstractSku][static::KEY_QUANTITY] = ($abstractAvailabilityData[$abstractSku][static::KEY_QUANTITY] ?? 0) + $concreteAvailability[static::KEY_QUANTITY];
+        }
+
+        return $abstractAvailabilityData;
+    }
+
+    /**
+     * @return void
+     */
+    protected function updateBundleAvailability(): void
+    {
+        foreach (static::$stockProductCollection as $stockProduct) {
+            if (!$stockProduct[ProductStockHydratorStep::KEY_IS_BUNDLE]) {
+                continue;
+            }
+            $this->productBundleFacade->updateBundleAvailability($stockProduct[ProductStockHydratorStep::KEY_CONCRETE_SKU]);
+            $this->productBundleFacade->updateAffectedBundlesAvailability($stockProduct[ProductStockHydratorStep::KEY_CONCRETE_SKU]);
         }
     }
 
