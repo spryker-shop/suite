@@ -91,6 +91,8 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
         $queueOptionTransfer
             ->setQueueName($queueName)
             ->setDurable(true)
+            ->setNoWait(false)
+            ->setArguments(['x-queue-mode' => 'lazy'])
             ->addRoutingKey('');
 
         return $queueOptionTransfer;
@@ -108,6 +110,8 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
         $queueOptionTransfer
             ->setQueueName($errorQueueName)
             ->setDurable(true)
+            ->setNoWait(false)
+            ->setArguments(['x-queue-mode' => 'lazy'])
             ->addRoutingKey($routingKey);
 
         return $queueOptionTransfer;

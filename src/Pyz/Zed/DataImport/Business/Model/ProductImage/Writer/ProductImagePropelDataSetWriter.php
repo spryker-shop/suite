@@ -22,7 +22,7 @@ use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
 use Spryker\Zed\Product\Dependency\ProductEvents;
 use Spryker\Zed\ProductImage\Dependency\ProductImageEvents;
 
-class ProductImagePropelDataSetWriter extends DataImporterPublisher implements DataSetWriterInterface
+class ProductImagePropelDataSetWriter implements DataSetWriterInterface
 {
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
@@ -41,7 +41,7 @@ class ProductImagePropelDataSetWriter extends DataImporterPublisher implements D
      */
     public function flush(): void
     {
-        $this->triggerEvents();
+        DataImporterPublisher::triggerEvents();
     }
 
     /**
@@ -161,16 +161,16 @@ class ProductImagePropelDataSetWriter extends DataImporterPublisher implements D
     protected function addImagePublishEvents(SpyProductImageSet $productImageSetEntity): void
     {
         if ($productImageSetEntity->getFkProductAbstract()) {
-            $this->addEvent(
+            DataImporterPublisher::addEvent(
                 ProductImageEvents::PRODUCT_IMAGE_PRODUCT_ABSTRACT_PUBLISH,
                 $productImageSetEntity->getFkProductAbstract()
             );
-            $this->addEvent(
+            DataImporterPublisher::addEvent(
                 ProductEvents::PRODUCT_ABSTRACT_PUBLISH,
                 $productImageSetEntity->getFkProductAbstract()
             );
         } elseif ($productImageSetEntity->getFkProduct()) {
-            $this->addEvent(
+            DataImporterPublisher::addEvent(
                 ProductImageEvents::PRODUCT_IMAGE_PRODUCT_CONCRETE_PUBLISH,
                 $productImageSetEntity->getFkProduct()
             );

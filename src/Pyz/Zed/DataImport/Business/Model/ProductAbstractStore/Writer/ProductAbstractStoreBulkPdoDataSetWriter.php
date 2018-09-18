@@ -13,10 +13,8 @@ use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\Sql\ProductAbs
 use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
-use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
-use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
 
-class ProductAbstractStoreBulkPdoDataSetWriter extends DataImporterPublisher implements DataSetWriterInterface
+class ProductAbstractStoreBulkPdoDataSetWriter implements DataSetWriterInterface
 {
     use DataFormatter;
 
@@ -31,16 +29,13 @@ class ProductAbstractStoreBulkPdoDataSetWriter extends DataImporterPublisher imp
     protected $propelExecutor;
 
     /**
-     * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface $eventFacade
      * @param \Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\Sql\ProductAbstractStoreSqlInterface $productAbstractStoreSql
      * @param \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface $propelExecutor
      */
     public function __construct(
-        DataImportToEventFacadeInterface $eventFacade,
         ProductAbstractStoreSqlInterface $productAbstractStoreSql,
         PropelExecutorInterface $propelExecutor
     ) {
-        parent::__construct($eventFacade);
         $this->productAbstractStoreSql = $productAbstractStoreSql;
         $this->propelExecutor = $propelExecutor;
     }

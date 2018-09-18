@@ -20,12 +20,11 @@ use Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
-use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
 use Spryker\Zed\PriceProduct\Dependency\PriceProductEvents;
 use Spryker\Zed\Product\Dependency\ProductEvents;
 use Spryker\Zed\Store\Business\StoreFacadeInterface;
 
-class ProductPricePropelDataSetWriter extends DataImporterPublisher implements DataSetWriterInterface
+class ProductPricePropelDataSetWriter implements DataSetWriterInterface
 {
     /**
      * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository
@@ -43,18 +42,15 @@ class ProductPricePropelDataSetWriter extends DataImporterPublisher implements D
     protected $currencyFacade;
 
     /**
-     * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface $eventFacade
      * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository $productRepository
      * @param \Spryker\Zed\Store\Business\StoreFacadeInterface $storeFacade
      * @param \Spryker\Zed\Currency\Business\CurrencyFacadeInterface $currencyFacade
      */
     public function __construct(
-        DataImportToEventFacadeInterface $eventFacade,
         ProductRepository $productRepository,
         StoreFacadeInterface $storeFacade,
         CurrencyFacadeInterface $currencyFacade
     ) {
-        parent::__construct($eventFacade);
         $this->productRepository = $productRepository;
         $this->storeFacade = $storeFacade;
         $this->currencyFacade = $currencyFacade;
@@ -128,11 +124,11 @@ class ProductPricePropelDataSetWriter extends DataImporterPublisher implements D
         if (!empty($dataSet[ProductPriceHydratorStep::KEY_ABSTRACT_SKU])) {
             $idProductAbstract = $this->productRepository->getIdProductAbstractByAbstractSku($dataSet[ProductPriceHydratorStep::KEY_ABSTRACT_SKU]);
             $query->filterByFkProductAbstract($idProductAbstract);
-            $this->addEvent(PriceProductEvents::PRICE_ABSTRACT_PUBLISH, $idProductAbstract);
-            $this->addEvent(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $idProductAbstract);
+            DataImporterPublisher::addEvent(PriceProductEvents::PRICE_ABSTRACT_PUBLISH, $idProductAbstract);
+            DataImporterPublisher::addEvent(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $idProductAbstract);
         } else {
             $idProduct = $this->productRepository->getIdProductByConcreteSku($dataSet[ProductPriceHydratorStep::KEY_CONCRETE_SKU]);
-            $this->addEvent(PriceProductEvents::PRICE_CONCRETE_PUBLISH, $idProduct);
+            DataImporterPublisher::addEvent(PriceProductEvents::PRICE_CONCRETE_PUBLISH, $idProduct);
             $query->filterByFkProduct($idProduct);
         }
 
@@ -173,6 +169,6 @@ class ProductPricePropelDataSetWriter extends DataImporterPublisher implements D
      */
     public function flush(): void
     {
-        $this->triggerEvents();
+        DataImporterPublisher::triggerEvents();
     }
 }
