@@ -41,7 +41,9 @@
     {% endblock %}
 
     {% block rating %}
-        {{ widget('ProductAbstractReviewWidgetPlugin', data.abstractId) }}
+        {% widget 'ProductAbstractReviewWidget' args [data.abstractId] only %}
+        {% elsewidget 'ProductAbstractReviewWidgetPlugin' args [data.abstractId] only %} {# @deprecated Use ProductAbstractReviewWidget instead. #}
+        {% endwidget %}
     {% endblock %}
 
     {% block price %}
