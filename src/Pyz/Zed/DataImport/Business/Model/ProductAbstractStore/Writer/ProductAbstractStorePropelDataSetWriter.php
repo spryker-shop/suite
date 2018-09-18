@@ -16,7 +16,7 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
 
-class ProductAbstractStorePropelDataSetWriter extends DataImporterPublisher implements DataSetWriterInterface
+class ProductAbstractStorePropelDataSetWriter implements DataSetWriterInterface
 {
     /**
      * @var int[] Keys are SKUs, values are product abstract ids.
@@ -92,7 +92,7 @@ class ProductAbstractStorePropelDataSetWriter extends DataImporterPublisher impl
      */
     public function flush(): void
     {
-        $this->triggerEvents();
+        DataImporterPublisher::triggerEvents();
     }
 
     /**

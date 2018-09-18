@@ -15,11 +15,10 @@ use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
-use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
 use Spryker\Zed\PriceProduct\Dependency\PriceProductEvents;
 use Spryker\Zed\Product\Dependency\ProductEvents;
 
-class ProductPriceBulkPdoDataSetWriter extends DataImporterPublisher implements DataSetWriterInterface
+class ProductPriceBulkPdoDataSetWriter implements DataSetWriterInterface
 {
     use DataFormatter;
 
@@ -34,16 +33,13 @@ class ProductPriceBulkPdoDataSetWriter extends DataImporterPublisher implements 
     protected $propelExecutor;
 
     /**
-     * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface $eventFacade
      * @param \Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\Sql\ProductPriceSqlInterface $productPriceSql
      * @param \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface $propelExecutor
      */
     public function __construct(
-        DataImportToEventFacadeInterface $eventFacade,
         ProductPriceSqlInterface $productPriceSql,
         PropelExecutorInterface $propelExecutor
     ) {
-        parent::__construct($eventFacade);
         $this->productPriceSql = $productPriceSql;
         $this->propelExecutor = $propelExecutor;
     }
@@ -171,8 +167,8 @@ class ProductPriceBulkPdoDataSetWriter extends DataImporterPublisher implements 
             $result = $this->persistPriceProductAbstractProductEntities($priceProductAbstractProductParameters);
 
             foreach ($result as $columns) {
-                $this->addEvent(PriceProductEvents::PRICE_ABSTRACT_PUBLISH, $columns[ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT]);
-                $this->addEvent(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $columns[ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT]);
+                DataImporterPublisher::addEvent(PriceProductEvents::PRICE_ABSTRACT_PUBLISH, $columns[ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT]);
+                DataImporterPublisher::addEvent(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $columns[ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT]);
             }
 
             $priceProductAbstractProductParameters = [$grossPrice, $netPrice, $currencyName, $storeName, $sku, $priceTypeName];
@@ -250,7 +246,7 @@ class ProductPriceBulkPdoDataSetWriter extends DataImporterPublisher implements 
             $result = $this->persistPriceProductConcreteProductEntities($priceProductConcreteParameters);
 
             foreach ($result as $columns) {
-                $this->addEvent(PriceProductEvents::PRICE_CONCRETE_PUBLISH, $columns[ProductPriceHydratorStep::KEY_ID_PRODUCT]);
+                DataImporterPublisher::addEvent(PriceProductEvents::PRICE_CONCRETE_PUBLISH, $columns[ProductPriceHydratorStep::KEY_ID_PRODUCT]);
             }
 
             $priceProductConcreteProductParameters = [$grossPrice, $netPrice, $currencyName, $storeName, $sku, $priceTypeName];
@@ -324,7 +320,8 @@ class ProductPriceBulkPdoDataSetWriter extends DataImporterPublisher implements 
         $this->persistPriceTypeEntities();
         $this->persistProductAbstractEntities();
         $this->persistProductConcreteEntities();
-        $this->triggerEvents();
+
+        DataImporterPublisher::triggerEvents();
         $this->flushMemory();
     }
 

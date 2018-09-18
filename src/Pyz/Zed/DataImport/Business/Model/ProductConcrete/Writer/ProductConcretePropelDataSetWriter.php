@@ -19,10 +19,9 @@ use Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductConcreteHydratorSte
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
-use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
 use Spryker\Zed\Product\Dependency\ProductEvents;
 
-class ProductConcretePropelDataSetWriter extends DataImporterPublisher implements DataSetWriterInterface
+class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
 {
     /**
      * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface
@@ -30,16 +29,10 @@ class ProductConcretePropelDataSetWriter extends DataImporterPublisher implement
     protected $productRepository;
 
     /**
-     * ProductConcretePropelWriter constructor.
-     *
-     * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface $eventFacade
      * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface $productRepository
      */
-    public function __construct(
-        DataImportToEventFacadeInterface $eventFacade,
-        ProductRepositoryInterface $productRepository
-    ) {
-        parent::__construct($eventFacade);
+    public function __construct(ProductRepositoryInterface $productRepository)
+    {
         $this->productRepository = $productRepository;
     }
 
@@ -66,7 +59,7 @@ class ProductConcretePropelDataSetWriter extends DataImporterPublisher implement
      */
     public function flush(): void
     {
-        $this->triggerEvents();
+        DataImporterPublisher::triggerEvents();
     }
 
     /**
@@ -90,7 +83,7 @@ class ProductConcretePropelDataSetWriter extends DataImporterPublisher implement
 
         if ($productConcreteEntity->isNew() || $productConcreteEntity->isModified()) {
             $productConcreteEntity->save();
-            $this->addEvent(ProductEvents::PRODUCT_CONCRETE_PUBLISH, $productConcreteEntity->getIdProduct());
+            DataImporterPublisher::addEvent(ProductEvents::PRODUCT_CONCRETE_PUBLISH, $productConcreteEntity->getIdProduct());
         }
 
         return $productConcreteEntity;

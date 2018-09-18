@@ -19,12 +19,11 @@ use Pyz\Zed\DataImport\Business\Model\ProductAbstract\ProductAbstractHydratorSte
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
-use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
 use Spryker\Zed\Product\Dependency\ProductEvents;
 use Spryker\Zed\ProductCategory\Dependency\ProductCategoryEvents;
 use Spryker\Zed\Url\Dependency\UrlEvents;
 
-class ProductAbstractPropelDataSetWriter extends DataImporterPublisher implements DataSetWriterInterface
+class ProductAbstractPropelDataSetWriter implements DataSetWriterInterface
 {
     /**
      * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository
@@ -32,14 +31,11 @@ class ProductAbstractPropelDataSetWriter extends DataImporterPublisher implement
     protected $productRepository;
 
     /**
-     * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface $eventFacade
      * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository $productRepository
      */
     public function __construct(
-        DataImportToEventFacadeInterface $eventFacade,
         ProductRepository $productRepository
     ) {
-        parent::__construct($eventFacade);
         $this->productRepository = $productRepository;
     }
 
@@ -58,7 +54,7 @@ class ProductAbstractPropelDataSetWriter extends DataImporterPublisher implement
         $this->createOrUpdateProductCategories($dataSet, $productAbstractEntity->getIdProductAbstract());
         $this->createOrUpdateProductUrls($dataSet, $productAbstractEntity->getIdProductAbstract());
 
-        $this->addEvent(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $productAbstractEntity->getIdProductAbstract());
+        DataImporterPublisher::addEvent(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $productAbstractEntity->getIdProductAbstract());
     }
 
     /**
@@ -79,7 +75,7 @@ class ProductAbstractPropelDataSetWriter extends DataImporterPublisher implement
         if ($productAbstractEntity->isNew() || $productAbstractEntity->isModified()) {
             $productAbstractEntity->save();
 
-            $this->addEvent(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $productAbstractEntity->getIdProductAbstract());
+            DataImporterPublisher::addEvent(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $productAbstractEntity->getIdProductAbstract());
         }
 
         return $productAbstractEntity;
@@ -136,8 +132,8 @@ class ProductAbstractPropelDataSetWriter extends DataImporterPublisher implement
             if ($productCategoryEntity->isNew() || $productCategoryEntity->isModified()) {
                 $productCategoryEntity->save();
 
-                $this->addEvent(ProductCategoryEvents::PRODUCT_CATEGORY_PUBLISH, $idProductAbstract);
-                $this->addEvent(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $idProductAbstract);
+                DataImporterPublisher::addEvent(ProductCategoryEvents::PRODUCT_CATEGORY_PUBLISH, $idProductAbstract);
+                DataImporterPublisher::addEvent(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $idProductAbstract);
             }
         }
     }
@@ -170,7 +166,7 @@ class ProductAbstractPropelDataSetWriter extends DataImporterPublisher implement
             if ($urlEntity->isNew() || $urlEntity->isModified()) {
                 $urlEntity->save();
 
-                $this->addEvent(UrlEvents::URL_PUBLISH, $urlEntity->getIdUrl());
+                DataImporterPublisher::addEvent(UrlEvents::URL_PUBLISH, $urlEntity->getIdUrl());
             }
         }
     }
@@ -193,7 +189,7 @@ class ProductAbstractPropelDataSetWriter extends DataImporterPublisher implement
      */
     public function flush(): void
     {
-        $this->triggerEvents();
+        DataImporterPublisher::triggerEvents();
     }
 
     /**

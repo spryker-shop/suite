@@ -12,12 +12,11 @@ use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
-use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
 use Spryker\Zed\Product\Dependency\ProductEvents;
 use Spryker\Zed\ProductCategory\Dependency\ProductCategoryEvents;
 use Spryker\Zed\Url\Dependency\UrlEvents;
 
-class ProductAbstractBulkPdoDataSetWriter extends DataImporterPublisher implements DataSetWriterInterface
+class ProductAbstractBulkPdoDataSetWriter implements DataSetWriterInterface
 {
     use DataFormatter;
 
@@ -62,16 +61,13 @@ class ProductAbstractBulkPdoDataSetWriter extends DataImporterPublisher implemen
     protected $productAbstractSql;
 
     /**
-     * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface $eventFacade
      * @param \Pyz\Zed\DataImport\Business\Model\ProductAbstract\Writer\Sql\ProductAbstractSqlInterface $productAbstractSql
      * @param \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface $propelExecutor
      */
     public function __construct(
-        DataImportToEventFacadeInterface $eventFacade,
         ProductAbstractSqlInterface $productAbstractSql,
         PropelExecutorInterface $propelExecutor
     ) {
-        parent::__construct($eventFacade);
         $this->productAbstractSql = $productAbstractSql;
         $this->propelExecutor = $propelExecutor;
     }
@@ -281,8 +277,8 @@ class ProductAbstractBulkPdoDataSetWriter extends DataImporterPublisher implemen
             $result = $this->propelExecutor->execute($sql, $parameters);
 
             foreach ($result as $columns) {
-                $this->addEvent(ProductCategoryEvents::PRODUCT_CATEGORY_PUBLISH, $columns[ProductAbstractHydratorStep::KEY_ID_PRODUCT_ABSTRACT]);
-                $this->addEvent(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $columns[ProductAbstractHydratorStep::KEY_ID_PRODUCT_ABSTRACT]);
+                DataImporterPublisher::addEvent(ProductCategoryEvents::PRODUCT_CATEGORY_PUBLISH, $columns[ProductAbstractHydratorStep::KEY_ID_PRODUCT_ABSTRACT]);
+                DataImporterPublisher::addEvent(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $columns[ProductAbstractHydratorStep::KEY_ID_PRODUCT_ABSTRACT]);
             }
         }
     }
@@ -313,7 +309,7 @@ class ProductAbstractBulkPdoDataSetWriter extends DataImporterPublisher implemen
             $result = $this->propelExecutor->execute($sql, $parameters);
 
             foreach ($result as $columns) {
-                $this->addEvent(UrlEvents::URL_PUBLISH, $columns[ProductAbstractHydratorStep::KEY_ID_URL]);
+                DataImporterPublisher::addEvent(UrlEvents::URL_PUBLISH, $columns[ProductAbstractHydratorStep::KEY_ID_URL]);
             }
         }
     }
@@ -329,10 +325,10 @@ class ProductAbstractBulkPdoDataSetWriter extends DataImporterPublisher implemen
         $this->persistAbstractProductUrlEntities();
 
         foreach (static::$productAbstractUpdated as $abstractProductId) {
-            $this->addEvent(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $abstractProductId);
+            DataImporterPublisher::addEvent(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $abstractProductId);
         }
 
-        $this->triggerEvents();
+        DataImporterPublisher::triggerEvents();
         $this->flushMemory();
     }
 
