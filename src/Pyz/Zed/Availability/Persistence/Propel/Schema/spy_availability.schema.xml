@@ -9,6 +9,7 @@
 
     <table name="spy_availability">
         <behavior name="event">
+            <!-- if there is no need to update quantity for each order, you can use `value="0" operator="==="`-->
             <parameter name="spy_availability_is_never_out_of_stock" column="is_never_out_of_stock" />
         </behavior>
     </table>
