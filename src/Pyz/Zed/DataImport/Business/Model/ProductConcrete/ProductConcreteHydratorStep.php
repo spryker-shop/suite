@@ -153,7 +153,7 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
 
             foreach ($bundleProducts as $bundleProduct) {
                 $bundleProduct = trim($bundleProduct);
-                list($sku, $quantity) = explode('/', $bundleProduct);
+                [$sku, $quantity] = explode('/', $bundleProduct);
 
                 $productBundleEntityTransfer = new SpyProductBundleEntityTransfer();
                 $productBundleEntityTransfer->setQuantity($quantity);
