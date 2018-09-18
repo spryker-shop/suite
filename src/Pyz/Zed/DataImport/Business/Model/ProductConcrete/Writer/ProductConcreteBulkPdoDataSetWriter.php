@@ -100,11 +100,6 @@ class ProductConcreteBulkPdoDataSetWriter implements DataSetWriterInterface
         $this->persistConcreteProductSearchEntities();
         $this->persistConcreteProductBundleEntities();
 
-        //TODO this is wrong place
-        foreach (static::$productConcreteUpdated as $concreteProductId) {
-            DataImporterPublisher::addEvent(ProductEvents::PRODUCT_CONCRETE_PUBLISH, $concreteProductId);
-        }
-
         DataImporterPublisher::triggerEvents();
         $this->flushMemory();
     }
@@ -144,7 +139,7 @@ class ProductConcreteBulkPdoDataSetWriter implements DataSetWriterInterface
         ];
         $result = $this->propelExecutor->execute($sql, $parameters);
         foreach ($result as $columns) {
-            static::$productConcreteUpdated[] = $columns[ProductConcreteHydratorStep::KEY_ID_PRODUCT];
+            DataImporterPublisher::addEvent(ProductEvents::PRODUCT_CONCRETE_PUBLISH, $columns[ProductConcreteHydratorStep::KEY_ID_PRODUCT]);
         }
     }
 

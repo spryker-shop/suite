@@ -15,7 +15,6 @@ use Pyz\Zed\DataImport\Business\Model\ProductStock\ProductStockHydratorStep;
 use Spryker\Zed\Availability\Business\AvailabilityFacadeInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
-use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
 use Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface;
 
 class ProductStockPropelDataSetWriter implements DataSetWriterInterface
@@ -75,8 +74,6 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
      */
     public function flush(): void
     {
-        //TODO do we need this?
-        DataImporterPublisher::triggerEvents();
     }
 
     /**
