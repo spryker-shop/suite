@@ -7,9 +7,13 @@
 
 namespace Pyz\Yves\ExampleProductColorGroupWidget\Plugin\ProductDetailPage;
 
+use Pyz\Yves\ExampleProductColorGroupWidget\Widget\ExamplePdpColorGroupWidget;
 use Spryker\Yves\Kernel\Widget\AbstractWidgetPlugin;
 use SprykerShop\Yves\ProductDetailPage\Dependency\Plugin\ProductGroupWidget\ProductGroupWidgetPluginInterface;
 
+/**
+ * @deprecated Use \Yves\ExampleProductColorGroupWidget\Widget\ExampleProductColorGroupWidget instead.
+ */
 class ExampleProductColorGroupWidgetPlugin extends AbstractWidgetPlugin implements ProductGroupWidgetPluginInterface
 {
     /**
@@ -35,6 +39,6 @@ class ExampleProductColorGroupWidgetPlugin extends AbstractWidgetPlugin implemen
      */
     public static function getTemplate(): string
     {
-        return '@ExampleProductColorGroupWidget/views/pdp-color-selector-widget/pdp-color-selector-widget.twig';
+        return ExamplePdpColorGroupWidget::getTemplate();
     }
 }
