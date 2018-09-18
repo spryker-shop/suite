@@ -13,7 +13,6 @@ use Spryker\Zed\Country\Communication\Plugin\CountryInstallerPlugin;
 use Spryker\Zed\Glossary\Communication\Plugin\GlossaryInstallerPlugin;
 use Spryker\Zed\Installer\InstallerDependencyProvider as SprykerInstallerDependencyProvider;
 use Spryker\Zed\Locale\Communication\Plugin\LocaleInstallerPlugin;
-use Spryker\Zed\MinimumOrderValue\Communication\Plugin\Installer\MinimumOrderValueTypeInstallerPlugin;
 use Spryker\Zed\Newsletter\Communication\Plugin\NewsletterInstallerPlugin;
 use Spryker\Zed\OauthCustomerConnector\Communication\Plugin\Installer\OauthCustomerInstallerPlugin;
 use Spryker\Zed\PriceProduct\Communication\Plugin\PriceInstallerPlugin;
@@ -21,6 +20,7 @@ use Spryker\Zed\ProductAlternativeProductLabelConnector\Communication\Plugin\Ins
 use Spryker\Zed\ProductDiscontinuedProductLabelConnector\Communication\Plugin\Installer\ProductDiscontinuedProductLabelConnectorInstallerPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Installer\ProductMeasurementUnitInstallerPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Installer\ProductPackagingUnitTypeInstallerPlugin;
+use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Installer\SalesOrderThresholdTypeInstallerPlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\SharedCartPermissionInstallerPlugin;
 use Spryker\Zed\ShoppingList\Communication\Plugin\ShoppingListPermissionsInstallerPlugin;
 use Spryker\Zed\User\Communication\Plugin\UserInstallerPlugin;
@@ -47,7 +47,7 @@ class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
             new ProductDiscontinuedProductLabelConnectorInstallerPlugin(), #ProductDiscontinuedFeature
             new CompanyUserInvitationStatusInstallerPlugin(), #BulkImportCompanyUserInvitationsFeature
             new ProductPackagingUnitTypeInstallerPlugin(),
-            new MinimumOrderValueTypeInstallerPlugin(), #MinimumOrderValueFeature
+            new SalesOrderThresholdTypeInstallerPlugin(), #SalesOrderThresholdFeature
             new OauthCustomerInstallerPlugin(),
         ];
     }

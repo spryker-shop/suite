@@ -32,11 +32,11 @@ use Spryker\Zed\Calculation\Communication\Plugin\Calculator\TaxTotalCalculatorPl
 use Spryker\Zed\DiscountCalculationConnector\Communication\Plugin\DiscountCalculatorPlugin;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Calculation\RemovePromotionItemsCalculatorPlugin;
 use Spryker\Zed\Kernel\Container;
-use Spryker\Zed\MinimumOrderValue\Communication\Plugin\Calculation\AddMinimumOrderValueExpenseCalculatorPlugin;
-use Spryker\Zed\MinimumOrderValue\Communication\Plugin\Calculation\RemoveMinimumOrderValueExpenseCalculatorPlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Calculation\PaymentCalculatorPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Calculation\CalculateBundlePricePlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\ProductOptionTaxRateCalculatorPlugin;
+use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Calculation\AddSalesOrderThresholdExpenseCalculatorPlugin;
+use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Calculation\RemoveSalesOrderThresholdExpenseCalculatorPlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\ShipmentTaxRateCalculatorPlugin;
 use Spryker\Zed\Tax\Communication\Plugin\Calculator\TaxAmountAfterCancellationCalculatorPlugin;
 use Spryker\Zed\Tax\Communication\Plugin\Calculator\TaxAmountCalculatorPlugin;
@@ -181,19 +181,20 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
      */
     protected function getQuoteCalculatorPluginStack(Container $container)
     {
-        return [
+        /** @var \Spryker\Zed\Calculation\Dependency\Plugin\CalculationPluginInterface[] $pluginStack */
+        $pluginStack = [
             new RemoveTotalsCalculatorPlugin(),
             new RemoveAllCalculatedDiscountsCalculatorPlugin(),
             new RemovePromotionItemsCalculatorPlugin(),
             new RemoveCanceledAmountCalculatorPlugin(),
-            new RemoveMinimumOrderValueExpenseCalculatorPlugin(), #MinimumOrderValueFeature
+            new RemoveSalesOrderThresholdExpenseCalculatorPlugin(), #SalesOrderThresholdFeature
 
             new PriceCalculatorPlugin(),
             new ItemProductOptionPriceAggregatorPlugin(),
             new ItemSubtotalAggregatorPlugin(),
 
             new SubtotalCalculatorPlugin(),
-            new AddMinimumOrderValueExpenseCalculatorPlugin(), #MinimumOrderValueFeature
+            new AddSalesOrderThresholdExpenseCalculatorPlugin(), #SalesOrderThresholdFeature
 
             new ProductItemTaxRateCalculatorPlugin(),
             new ProductOptionTaxRateCalculatorPlugin(),
@@ -224,6 +225,8 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
 
             new PaymentCalculatorPlugin(),
         ];
+
+        return $pluginStack;
     }
 
     /**
