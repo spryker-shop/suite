@@ -10,9 +10,9 @@
     "spryker/install": "dev-master",
     "spryker/event-behavior": "dev-master",
     "spryker/synchronization-behavior": "dev-master",
-    "spryker/uuid-behavior": " ^1.0.0",
+    "spryker/uuid-behavior": "dev-master",
+
     "php": ">=7.1",
-    "braintree/braintree_php": "~3.15.0",
     "codeitnowin/barcode": "^3.0.0",
     "guzzlehttp/guzzle": "~6.3.0",
     "league/csv": "^9.1",
@@ -68,11 +68,12 @@
   },
   "require-dev": {
     "spryker/architecture-sniffer": "dev-master",
+    "spryker/development-core": "dev-master",
     "spryker/code-generator": "dev-master",
     "spryker/code-sniffer": "dev-master",
     "spryker/git-hook": "dev-master",
-    "spryker/development-core": "dev-master",
     "spryker/spryk": "dev-master",
+
     "codeception/codeception": "^2.0.0",
     "pdepend/pdepend": "^2.2.2",
     "phpmd/phpmd": "^2.4",
@@ -152,7 +153,7 @@
       "GitHook\\Composer\\Scripts\\HookInstaller::installProjectHooks"
     ],
     "phpstan": [
-      "php -d memory_limit=1024M vendor/bin/phpstan analyze -c phpstan.neon src/ -l 2"
+      "php -d memory_limit=1024M vendor/bin/phpstan analyze -c phpstan.neon src/ -l 4"
     ],
     "phpstan-setup": "vendor/bin/console dev:ide:generate-auto-completion"
   }
