@@ -13,6 +13,7 @@ use Spryker\Client\ProductPackagingUnitStorage\Plugin\QuickOrderPage\QuickOrderI
 use Spryker\Yves\PriceProduct\Plugin\QuickOrderPage\QuickOrderPagePriceColumnProviderPlugin;
 use Spryker\Yves\ProductMeasurementUnit\Plugin\QuickOrderPage\QuickOrderPageMeasurementUnitColumnProviderPlugin;
 use SprykerShop\Yves\MultiCartWidget\Plugin\QuickOrderPage\MultiCartListWidgetPlugin;
+use SprykerShop\Yves\ProductSearchWidget\Plugin\QuickOrderPage\QuickOrderPageProductSearchWidgetPlugin;
 use SprykerShop\Yves\QuickOrderPage\QuickOrderPageDependencyProvider as SprykerQuickOrderPageDependencyProvider;
 use SprykerShop\Yves\ShoppingListWidget\Plugin\QuickOrderPage\ShoppingListQuickOrderFormHandlerStrategyPlugin;
 use SprykerShop\Yves\ShoppingListWidget\Plugin\QuickOrderPage\ShoppingListQuickOrderPageWidgetPlugin;
@@ -26,12 +27,13 @@ class QuickOrderPageDependencyProvider extends SprykerQuickOrderPageDependencyPr
     {
         return [
             MultiCartListWidgetPlugin::class, #MultiCartFeature
-            ShoppingListQuickOrderPageWidgetPlugin::class, #ShoppingListFeature
+            ShoppingListQuickOrderPageWidgetPlugin::class, #ShoppingListFeature,
+            QuickOrderPageProductSearchWidgetPlugin::class,
         ];
     }
 
     /**
-     * @return \Spryker\Zed\QuickOrderExtension\Dependency\Plugin\QuickOrderItemTransferExpanderPluginInterface[]
+     * @return \Spryker\Client\QuickOrderExtension\Dependency\Plugin\QuickOrderItemTransferExpanderPluginInterface[]
      */
     protected function getQuickOrderItemTransferExpanderPlugins(): array
     {
@@ -62,7 +64,7 @@ class QuickOrderPageDependencyProvider extends SprykerQuickOrderPageDependencyPr
     }
 
     /**
-     * @return \Spryker\Zed\QuickOrderExtension\Dependency\Plugin\QuickOrderProductAdditionalDataTransferExpanderPluginInterface[]
+     * @return \Spryker\Client\QuickOrderExtension\Dependency\Plugin\QuickOrderProductAdditionalDataTransferExpanderPluginInterface[]
      */
     protected function getQuickOrderProductAdditionalDataTransferExpanderPlugins(): array
     {

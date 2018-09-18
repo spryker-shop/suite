@@ -3,8 +3,8 @@
   "description": "Spryker Suite (internal)",
   "license": "MIT",
   "require": {
-    "spryker/spryker": "dev-feature/ps-1855/ps-3207-as-a-user-i-want-to-choose-which-shopping-list-i-want-to-add-my-products-to",
-    "spryker/spryker-shop": "dev-feature/ps-1855/ps-3207-as-a-user-i-want-to-choose-which-shopping-list-i-want-to-add-my-products-to",
+    "spryker/spryker": "dev-feature/ps-1855/dev-quick-add-to-cart-part-2",
+    "spryker/spryker-shop": "dev-feature/ps-1855/dev-quick-add-to-cart-part-2",
     "spryker-eco/loggly": "dev-master",
     "spryker/rabbit-mq": "dev-master",
     "spryker/install": "dev-master",
@@ -68,10 +68,10 @@
   },
   "require-dev": {
     "spryker/architecture-sniffer": "dev-master",
+    "spryker/development-core": "dev-master",
     "spryker/code-generator": "dev-master",
     "spryker/code-sniffer": "dev-master",
     "spryker/git-hook": "dev-master",
-    "spryker/development-core": "dev-master",
     "spryker/spryk": "dev-master",
 
     "codeception/codeception": "^2.0.0",
@@ -153,7 +153,7 @@
       "GitHook\\Composer\\Scripts\\HookInstaller::installProjectHooks"
     ],
     "phpstan": [
-      "php -d memory_limit=1024M vendor/bin/phpstan analyze -c phpstan.neon src/ -l 2"
+      "php -d memory_limit=1024M vendor/bin/phpstan analyze -c phpstan.neon src/ -l 4"
     ],
     "phpstan-setup": "vendor/bin/console dev:ide:generate-auto-completion"
   }

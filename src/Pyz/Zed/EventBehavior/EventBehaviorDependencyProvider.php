@@ -31,6 +31,7 @@ use Spryker\Zed\ProductLabelStorage\Communication\Plugin\Event\ProductLabelDicti
 use Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Event\ProductConcreteMeasurementUnitEventResourceRepositoryPlugin;
 use Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Event\ProductMeasurementUnitEventResourceRepositoryPlugin;
 use Spryker\Zed\ProductOptionStorage\Communication\Plugin\Event\ProductOptionEventResourceQueryContainerPlugin;
+use Spryker\Zed\ProductPageSearch\Communication\Plugin\Event\ProductConcretePageSearchEventResourceRepositoryPlugin;
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\Event\ProductPageEventResourceQueryContainerPlugin;
 use Spryker\Zed\ProductQuantityStorage\Communication\Plugin\Event\ProductQuantityEventResourceRepositoryPlugin;
 use Spryker\Zed\ProductRelationStorage\Communication\Plugin\Event\ProductRelationEventResourceQueryContainerPlugin;
@@ -47,13 +48,13 @@ use Spryker\Zed\UrlStorage\Communication\Plugin\Event\UrlEventResourceQueryConta
 class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\EventBehavior\Dependency\Plugin\EventResourceQueryContainerPluginInterface[]
+     * @return \Spryker\Zed\EventBehavior\Dependency\Plugin\EventResourcePluginInterface[]
      */
     protected function getEventTriggerResourcePlugins()
     {
         return [
             new CmsPageEventResourceQueryContainerPlugin(),
-            new CategoryPageEventResourceQueryContainerPlugin,
+            new CategoryPageEventResourceQueryContainerPlugin(),
             new ProductPageEventResourceQueryContainerPlugin(),
             new ProductSetPageSearchEventResourceQueryContainerPlugin(),
             new ProductReviewSearchEventResourceQueryContainerPlugin(),
@@ -87,6 +88,7 @@ class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProv
             new ProductMeasurementUnitEventResourceRepositoryPlugin(),
             new ProductConcreteMeasurementUnitEventResourceRepositoryPlugin(),
             new ProductQuantityEventResourceRepositoryPlugin(),
+            new ProductConcretePageSearchEventResourceRepositoryPlugin(),
         ];
     }
 }
