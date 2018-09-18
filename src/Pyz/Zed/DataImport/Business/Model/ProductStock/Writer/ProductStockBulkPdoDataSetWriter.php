@@ -251,9 +251,6 @@ class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements 
      */
     protected function getStockProductBySkusAndStore(array $skus, StoreTransfer $storeTransfer): array
     {
-        $stocks = $this->stockFacade->getStoreToWarehouseMapping();
-
-        $result = [];
         $stockProducts = SpyStockProductQuery::create()
             ->useSpyProductQuery()
                 ->filterBySku_In($skus)
@@ -267,16 +264,31 @@ class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements 
             ])
             ->find()
             ->toArray();
+
+        return $this->mapStockProducts($stockProducts, $storeTransfer);
+    }
+
+    /**
+     * @param array $stockProducts
+     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
+     *
+     * @return array
+     */
+    protected function mapStockProducts(array $stockProducts, StoreTransfer $storeTransfer): array
+    {
+        $stocks = $this->stockFacade->getStoreToWarehouseMapping();
+        $result = [];
         foreach ($stockProducts as $stockProduct) {
             $sku = $stockProduct[SpyProductTableMap::COL_SKU];
             $result[$sku][static::KEY_SKU] = $sku;
             $result[$sku][static::KEY_QUANTITY] = $stockProduct[SpyStockProductTableMap::COL_QUANTITY];
             $result[$sku][static::KEY_IS_NEVER_OUT_OF_STOCK] = (int)$stockProduct[SpyStockProductTableMap::COL_IS_NEVER_OUT_OF_STOCK];
-            if (!in_array($stockProduct, $stocks[$storeTransfer->getName()])) {
-                $result[$sku][static::KEY_QUANTITY] = 0;
-            } else {
-                $result[$sku][static::KEY_QUANTITY] = ($result[$sku][static::KEY_QUANTITY] ?? 0) + $stockProduct[SpyStockProductTableMap::COL_QUANTITY];
+
+            $quantity = 0;
+            if (in_array($stockProduct[SpyStockTableMap::COL_NAME], $stocks[$storeTransfer->getName()])) {
+                $quantity = ($result[$sku][static::KEY_QUANTITY] ?? 0) + $stockProduct[SpyStockProductTableMap::COL_QUANTITY];
             }
+            $result[$sku][static::KEY_QUANTITY] = $quantity;
         }
         return $result;
     }
