@@ -2,6 +2,8 @@ config:
   phpstan:
     level: 4
     config: phpstan.neon
+    additionalDirectories:
+      - tests/
   architecture:
     priority: 2
 
