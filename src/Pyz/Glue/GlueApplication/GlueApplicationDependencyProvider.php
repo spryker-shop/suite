@@ -28,6 +28,7 @@ use Spryker\Glue\CustomersRestApi\Plugin\CustomerPasswordResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\CustomersResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\CustomersToAddressesRelationshipPlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\SetCustomerBeforeActionPlugin;
+use Spryker\Glue\CustomersWishlistsResourceRelationship\Plugin\CustomersWishlistsResourceRelationshipPlugin;
 use Spryker\Glue\GlueApplication\GlueApplicationDependencyProvider as SprykerGlueApplicationDependencyProvider;
 use Spryker\Glue\GlueApplication\Plugin\Rest\SetStoreCurrentLocaleBeforeActionPlugin;
 use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationshipCollectionInterface;
@@ -44,6 +45,7 @@ use Spryker\Glue\ProductsRestApi\Plugin\AbstractProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\ConcreteProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
 use Spryker\Glue\StoresRestApi\Plugin\StoresResourceRoutePlugin;
+use Spryker\Glue\WishlistsRestApi\Plugin\WishlistsResourceRoutePlugin;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -76,6 +78,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new CartItemsResourceRoutePlugin(),
             new CustomerPasswordResourceRoutePlugin(),
             new AddressesResourceRoutePlugin(),
+            new WishlistsResourceRoutePlugin(),
         ];
     }
 
@@ -161,6 +164,10 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         $resourceRelationshipCollection->addRelationship(
             CustomersRestApiConfig::RESOURCE_CUSTOMERS,
             new CustomersToAddressesRelationshipPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            CustomersRestApiConfig::RESOURCE_CUSTOMERS,
+            new CustomersWishlistsResourceRelationshipPlugin()
         );
 
         return $resourceRelationshipCollection;
