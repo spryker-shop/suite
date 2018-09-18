@@ -22,13 +22,11 @@ use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSqlInt
 use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
-use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
-use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
 use Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface;
 use Spryker\Zed\Stock\Business\StockFacadeInterface;
 use Spryker\Zed\Store\Business\StoreFacadeInterface;
 
-class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements DataSetWriterInterface
+class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
 {
     use DataFormatter;
 
@@ -77,7 +75,6 @@ class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements 
     /**
      * ProductStockBulkPdoWriter constructor.
      *
-     * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface $eventFacade
      * @param \Spryker\Zed\Stock\Business\StockFacadeInterface $stockFacade
      * @param \Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface $productBundleFacade
      * @param \Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSqlInterface $productStockSql
@@ -85,14 +82,12 @@ class ProductStockBulkPdoDataSetWriter extends DataImporterPublisher implements 
      * @param \Spryker\Zed\Store\Business\StoreFacadeInterface $storeFacade
      */
     public function __construct(
-        DataImportToEventFacadeInterface $eventFacade,
         StockFacadeInterface $stockFacade,
         ProductBundleFacadeInterface $productBundleFacade,
         ProductStockSqlInterface $productStockSql,
         PropelExecutorInterface $propelExecutor,
         StoreFacadeInterface $storeFacade
     ) {
-        parent::__construct($eventFacade);
         $this->stockFacade = $stockFacade;
         $this->productBundleFacade = $productBundleFacade;
         $this->productStockSql = $productStockSql;

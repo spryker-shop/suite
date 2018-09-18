@@ -11,12 +11,14 @@ use Spryker\Shared\Application\Log\Config\SprykerLoggerConfig;
 use Spryker\Shared\Config\ConfigConstants;
 use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebExceptionErrorRenderer;
+use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\GlueApplication\GlueApplicationConstants;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\Oauth\OauthConstants;
 use Spryker\Shared\OauthCustomerConnector\OauthCustomerConnectorConstants;
 use Spryker\Shared\Propel\PropelConstants;
+use Spryker\Shared\Queue\QueueConstants;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
 use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\Session\SessionConstants;
@@ -134,3 +136,9 @@ $config[OauthConstants::ENCRYPTION_KEY] = 'lxZFUEsBCJ2Yb14IF2ygAHI5N4+ZAUXXaSeeJ
 // ----------- AuthRestApi
 $config[OauthCustomerConnectorConstants::OAUTH_CLIENT_IDENTIFIER] = 'frontend';
 $config[OauthCustomerConnectorConstants::OAUTH_CLIENT_SECRET] = 'abc123';
+
+// ----------- Queue
+$config[QueueConstants::QUEUE_WORKER_LOOP] = true;
+
+// ---------- Event
+$config[EventConstants::EVENT_CHUNK] = 5000;

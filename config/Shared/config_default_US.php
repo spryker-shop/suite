@@ -6,6 +6,7 @@ use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\GlueApplication\GlueApplicationConstants;
 use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\ProductManagement\ProductManagementConstants;
+use Spryker\Shared\RabbitMq\RabbitMqEnv;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 
@@ -63,3 +64,16 @@ $config[EventConstants::LOG_FILE_PATH] = APPLICATION_ROOT_DIR . '/data/US/logs/a
 
 // ----------- Glue Application
 $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = sprintf('http://glue.us.%s.local', $domain);
+
+$config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
+    'US' => [
+        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'US-connection',
+        RabbitMqEnv::RABBITMQ_HOST => 'localhost',
+        RabbitMqEnv::RABBITMQ_PORT => '5672',
+        RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
+        RabbitMqEnv::RABBITMQ_USERNAME => 'US_development',
+        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/US_development_zed',
+        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['US'],
+        RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => true,
+    ],
+];
