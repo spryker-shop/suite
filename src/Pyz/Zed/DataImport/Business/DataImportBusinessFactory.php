@@ -209,7 +209,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductPriceSql(): ProductPriceSqlInterface
     {
-        return new ProductPriceSql;
+        return new ProductPriceSql();
     }
 
     /**
