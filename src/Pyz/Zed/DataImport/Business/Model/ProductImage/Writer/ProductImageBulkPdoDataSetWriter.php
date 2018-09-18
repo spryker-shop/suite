@@ -14,11 +14,10 @@ use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
-use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
 use Spryker\Zed\Product\Dependency\ProductEvents;
 use Spryker\Zed\ProductImage\Dependency\ProductImageEvents;
 
-class ProductImageBulkPdoDataSetWriter extends DataImporterPublisher implements DataSetWriterInterface
+class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
 {
     use DataFormatter;
 
@@ -60,18 +59,13 @@ class ProductImageBulkPdoDataSetWriter extends DataImporterPublisher implements 
     protected $propelExecutor;
 
     /**
-     * ProductImageBulkPdoWriter constructor.
-     *
-     * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface $eventFacade
      * @param \Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\Sql\ProductImageSqlInterface $productImageSql
      * @param \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface $propelExecutor
      */
     public function __construct(
-        DataImportToEventFacadeInterface $eventFacade,
         ProductImageSqlInterface $productImageSql,
         PropelExecutorInterface $propelExecutor
     ) {
-        parent::__construct($eventFacade);
         $this->productImageSql = $productImageSql;
         $this->propelExecutor = $propelExecutor;
     }
@@ -109,7 +103,7 @@ class ProductImageBulkPdoDataSetWriter extends DataImporterPublisher implements 
         $this->persistProductImageEntities();
         $this->persistProductImageSetRelationEntities();
 
-        $this->triggerEvents();
+        DataImporterPublisher::triggerEvents();
         $this->flushMemory();
     }
 
@@ -203,16 +197,16 @@ class ProductImageBulkPdoDataSetWriter extends DataImporterPublisher implements 
     {
         foreach ($insertedProductSetImage as $productImageSet) {
             if ($productImageSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT]) {
-                $this->addEvent(
+                DataImporterPublisher::addEvent(
                     ProductImageEvents::PRODUCT_IMAGE_PRODUCT_ABSTRACT_PUBLISH,
                     $productImageSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT]
                 );
-                $this->addEvent(
+                DataImporterPublisher::addEvent(
                     ProductEvents::PRODUCT_ABSTRACT_PUBLISH,
                     $productImageSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT]
                 );
             } elseif ($productImageSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT]) {
-                $this->addEvent(
+                DataImporterPublisher::addEvent(
                     ProductImageEvents::PRODUCT_IMAGE_PRODUCT_CONCRETE_PUBLISH,
                     $productImageSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT]
                 );

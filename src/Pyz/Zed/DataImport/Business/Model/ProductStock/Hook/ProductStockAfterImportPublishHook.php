@@ -15,7 +15,7 @@ use Spryker\Zed\Availability\Dependency\AvailabilityEvents;
 use Spryker\Zed\DataImport\Business\Model\DataImporterAfterImportInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
 
-class ProductStockAfterImportPublishHook extends DataImporterPublisher implements DataImporterAfterImportInterface
+class ProductStockAfterImportPublishHook implements DataImporterAfterImportInterface
 {
     /**
      * @var array
@@ -37,7 +37,7 @@ class ProductStockAfterImportPublishHook extends DataImporterPublisher implement
             ->find();
 
         foreach ($availabilities as $availability) {
-            $this->addEvent(AvailabilityEvents::AVAILABILITY_ABSTRACT_PUBLISH, $availability->getIdAvailabilityAbstract());
+            DataImporterPublisher::addEvent(AvailabilityEvents::AVAILABILITY_ABSTRACT_PUBLISH, $availability->getIdAvailabilityAbstract());
         }
     }
 }

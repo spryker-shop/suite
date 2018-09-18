@@ -11,7 +11,7 @@ use Spryker\Zed\DataImport\Business\Model\DataImporterAfterImportInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
 use Spryker\Zed\ProductSearch\Dependency\ProductSearchEvents;
 
-class ProductSearchAfterImportHook extends DataImporterPublisher implements DataImporterAfterImportInterface
+class ProductSearchAfterImportHook implements DataImporterAfterImportInterface
 {
     const ID_DEFAULT = 0;
 
@@ -20,6 +20,6 @@ class ProductSearchAfterImportHook extends DataImporterPublisher implements Data
      */
     public function afterImport()
     {
-        $this->addEvent(ProductSearchEvents::PRODUCT_SEARCH_CONFIG_PUBLISH, static::ID_DEFAULT);
+        DataImporterPublisher::addEvent(ProductSearchEvents::PRODUCT_SEARCH_CONFIG_PUBLISH, static::ID_DEFAULT);
     }
 }

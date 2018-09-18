@@ -170,7 +170,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     public function createProductAbstractBulkPdoWriter()
     {
         return new ProductAbstractBulkPdoDataSetWriter(
-            $this->getEventFacade(),
             $this->createProductAbstractSql(),
             $this->createPropelExecutor()
         );
@@ -190,7 +189,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     public function createProductAbstractPropelWriter()
     {
         return new ProductAbstractPropelDataSetWriter(
-            $this->getEventFacade(),
             $this->createProductRepository()
         );
     }
@@ -201,7 +199,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     public function createProductPriceBulkPdoWriter()
     {
         return new ProductPriceBulkPdoDataSetWriter(
-            $this->getEventFacade(),
             $this->createProductPriceSql(),
             $this->createPropelExecutor()
         );
@@ -221,7 +218,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     public function createProductPricePropelWriter()
     {
         return new ProductPricePropelDataSetWriter(
-            $this->getEventFacade(),
             $this->createProductRepository(),
             $this->getStoreFacade(),
             $this->getCurrencyFacade()
@@ -234,7 +230,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     public function createProductAbstractStoreBulkPdoWriter()
     {
         return new ProductAbstractStoreBulkPdoDataSetWriter(
-            $this->getEventFacade(),
             $this->createProductAbstractStoreSql(),
             $this->createPropelExecutor()
         );
@@ -277,9 +272,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     public function createProductAbstractStorePropelWriter()
     {
-        return new ProductAbstractStorePropelDataSetWriter(
-            $this->getEventFacade()
-        );
+        return new ProductAbstractStorePropelDataSetWriter();
     }
 
     /**
@@ -287,7 +280,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     public function createProductConcretePropelWriter()
     {
-        return new ProductConcretePropelDataSetWriter($this->getEventFacade(), $this->createProductRepository());
+        return new ProductConcretePropelDataSetWriter($this->createProductRepository());
     }
 
     /**
@@ -296,7 +289,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     public function createProductConcreteBulkPdoWriter()
     {
         return new ProductConcreteBulkPdoDataSetWriter(
-            $this->getEventFacade(),
             $this->createProductConcreteSql(),
             $this->createPropelExecutor()
         );
@@ -341,7 +333,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     public function createProductImagePropelWriter()
     {
-        return new ProductImagePropelDataSetWriter($this->getEventFacade());
+        return new ProductImagePropelDataSetWriter();
     }
 
     /**
@@ -350,7 +342,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     public function createProductImageBulkPdoWriter()
     {
         return new ProductImageBulkPdoDataSetWriter(
-            $this->getEventFacade(),
             $this->createProductImageSql(),
             $this->createPropelExecutor()
         );
@@ -362,7 +353,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     public function createProductStockPropelWriter()
     {
         return new ProductStockPropelDataSetWriter(
-            $this->getEventFacade(),
             $this->getAvailabilityFacade(),
             $this->getProductBundleFacade(),
             $this->createProductRepository()
@@ -375,7 +365,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     public function createProductStockBulkPdoWriter()
     {
         return new ProductStockBulkPdoDataSetWriter(
-            $this->getEventFacade(),
             $this->getStockFacade(),
             $this->getProductBundleFacade(),
             $this->createProductStockSql(),
@@ -544,8 +533,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             ]))
             ->addStep(new CmsBlockWriterStep(
                 $this->createCategoryRepository(),
-                $this->createProductRepository(),
-                $this->getEventFacade()
+                $this->createProductRepository()
             ));
 
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);

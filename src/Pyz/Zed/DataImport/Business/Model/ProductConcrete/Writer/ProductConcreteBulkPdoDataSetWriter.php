@@ -14,10 +14,9 @@ use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
-use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
 use Spryker\Zed\Product\Dependency\ProductEvents;
 
-class ProductConcreteBulkPdoDataSetWriter extends DataImporterPublisher implements DataSetWriterInterface
+class ProductConcreteBulkPdoDataSetWriter implements DataSetWriterInterface
 {
     use DataFormatter;
 
@@ -64,18 +63,13 @@ class ProductConcreteBulkPdoDataSetWriter extends DataImporterPublisher implemen
     protected $propelExecutor;
 
     /**
-     * ProductConcreteBulkPdoWriter constructor.
-     *
-     * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface $eventFacade
      * @param \Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\Sql\ProductConcreteSqlInterface $productConcreteSql
      * @param \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface $propelExecutor
      */
     public function __construct(
-        DataImportToEventFacadeInterface $eventFacade,
         ProductConcreteSqlInterface $productConcreteSql,
         PropelExecutorInterface $propelExecutor
     ) {
-        parent::__construct($eventFacade);
         $this->productConcreteSql = $productConcreteSql;
         $this->propelExecutor = $propelExecutor;
     }
@@ -106,11 +100,12 @@ class ProductConcreteBulkPdoDataSetWriter extends DataImporterPublisher implemen
         $this->persistConcreteProductSearchEntities();
         $this->persistConcreteProductBundleEntities();
 
+        //TODO this is wrong place
         foreach (static::$productConcreteUpdated as $concreteProductId) {
-            $this->addEvent(ProductEvents::PRODUCT_CONCRETE_PUBLISH, $concreteProductId);
+            DataImporterPublisher::addEvent(ProductEvents::PRODUCT_CONCRETE_PUBLISH, $concreteProductId);
         }
 
-        $this->triggerEvents();
+        DataImporterPublisher::triggerEvents();
         $this->flushMemory();
     }
 

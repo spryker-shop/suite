@@ -11,7 +11,7 @@ use Spryker\Zed\DataImport\Business\Model\DataImporterAfterImportInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
 use Spryker\Zed\ProductLabel\Dependency\ProductLabelEvents;
 
-class ProductLabelAfterImportPublishHook extends DataImporterPublisher implements DataImporterAfterImportInterface
+class ProductLabelAfterImportPublishHook implements DataImporterAfterImportInterface
 {
     const ID_DEFAULT = 0;
 
@@ -20,6 +20,6 @@ class ProductLabelAfterImportPublishHook extends DataImporterPublisher implement
      */
     public function afterImport()
     {
-        $this->addEvent(ProductLabelEvents::PRODUCT_LABEL_DICTIONARY_PUBLISH, static::ID_DEFAULT);
+        DataImporterPublisher::addEvent(ProductLabelEvents::PRODUCT_LABEL_DICTIONARY_PUBLISH, static::ID_DEFAULT);
     }
 }

@@ -2592,7 +2592,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "c36f086189e8a83de57ff45e0acf64735f6c3840"
+                "reference": "02760e5e6b7c2ecf49118b6e42b6a750255c7429"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2865,7 +2865,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-09-13T10:37:53+00:00"
+            "time": "2018-09-18T08:54:51+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -8022,6 +8022,7 @@
             ],
             "description": "A WebProfiler for Silex",
             "homepage": "http://silex.sensiolabs.org/",
+            "abandoned": true,
             "time": "2016-05-04T16:32:42+00:00"
         },
         {
@@ -8319,14 +8320,15 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "9d2c04b95fffaddae275f693a1516295214c1b07"
+                "reference": "36c09ed97a16cfaa6300b4bd36fe90e47eb008eb"
             },
             "require": {
-                "spryker/development": "@stable"
+                "spryker/development": "@stable",
+                "spryker/kernel": "^3.0.0",
+                "spryker/symfony": "^3.0.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/development": "dev-master"
+                "spryker/code-sniffer": "*"
             },
             "type": "library",
             "extra": {
@@ -8356,7 +8358,7 @@
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2018-08-20T09:56:55+00:00"
+            "time": "2018-09-13T18:30:38+00:00"
         },
         {
             "name": "spryker/git-hook",
@@ -8364,12 +8366,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/git-hook.git",
-                "reference": "0af99b58c35a77e85708121f34509f7f475f704e"
+                "reference": "5f0e735003a910a059adb4e61cddf662234f1db9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/git-hook/zipball/0af99b58c35a77e85708121f34509f7f475f704e",
-                "reference": "0af99b58c35a77e85708121f34509f7f475f704e",
+                "url": "https://api.github.com/repos/spryker/git-hook/zipball/5f0e735003a910a059adb4e61cddf662234f1db9",
+                "reference": "5f0e735003a910a059adb4e61cddf662234f1db9",
                 "shasum": ""
             },
             "require": {
@@ -8409,7 +8411,7 @@
                 "sniffer",
                 "standards"
             ],
-            "time": "2018-08-31T11:32:04+00:00"
+            "time": "2018-09-18T08:29:09+00:00"
         },
         {
             "name": "spryker/spryk",

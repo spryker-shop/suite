@@ -16,10 +16,9 @@ use Spryker\Zed\Availability\Business\AvailabilityFacadeInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
-use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
 use Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface;
 
-class ProductStockPropelDataSetWriter extends DataImporterPublisher implements DataSetWriterInterface
+class ProductStockPropelDataSetWriter implements DataSetWriterInterface
 {
     /**
      * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository
@@ -39,18 +38,15 @@ class ProductStockPropelDataSetWriter extends DataImporterPublisher implements D
     /**
      * ProductStockPropelWriter constructor.
      *
-     * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface $eventFacade
      * @param \Spryker\Zed\Availability\Business\AvailabilityFacadeInterface $availabilityFacade
      * @param \Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface $productBundleFacade
      * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface $productRepository
      */
     public function __construct(
-        DataImportToEventFacadeInterface $eventFacade,
         AvailabilityFacadeInterface $availabilityFacade,
         ProductBundleFacadeInterface $productBundleFacade,
         ProductRepositoryInterface $productRepository
     ) {
-        parent::__construct($eventFacade);
         $this->availabilityFacade = $availabilityFacade;
         $this->productBundleFacade = $productBundleFacade;
         $this->productRepository = $productRepository;
@@ -79,7 +75,8 @@ class ProductStockPropelDataSetWriter extends DataImporterPublisher implements D
      */
     public function flush(): void
     {
-        $this->triggerEvents();
+        //TODO do we need this?
+        DataImporterPublisher::triggerEvents();
     }
 
     /**
