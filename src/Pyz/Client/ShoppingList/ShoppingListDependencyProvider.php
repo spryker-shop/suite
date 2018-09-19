@@ -16,7 +16,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     /**
      * @return \Spryker\Client\ShoppingListExtension\Dependency\Plugin\ShoppingListItemExpanderPluginInterface[]
      */
-    protected function getShoppingListItemExpanderPlugins(): array
+    protected function getAddItemShoppingListItemExpanderPlugins(): array
     {
         return [
             new ShoppingListItemProductOptionRequestExpanderPlugin(),
