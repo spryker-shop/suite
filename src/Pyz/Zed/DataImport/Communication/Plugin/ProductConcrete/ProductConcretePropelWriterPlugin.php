@@ -13,6 +13,9 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 
 /**
  * @method \Pyz\Zed\DataImport\Business\DataImportFacadeInterface getFacade()
+ *
+ * There is a faster way to import data. You can use it instead of this class if you use PostgreSQL
+ * @see \Pyz\Zed\DataImport\Communication\Plugin\ProductConcrete\ProductConcreteBulkPdoWriterPlugin
  */
 class ProductConcretePropelWriterPlugin extends AbstractPlugin implements DataSetWriterPluginInterface
 {
