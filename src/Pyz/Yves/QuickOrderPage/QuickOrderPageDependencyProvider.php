@@ -7,7 +7,7 @@
 
 namespace Pyz\Yves\QuickOrderPage;
 
-use Spryker\Client\PriceProductStorage\Plugin\QuickOrderPage\QuickOrderProductPriceTransferExpanderPlugin;
+use Spryker\Client\PriceProductStorage\Plugin\QuickOrderPage\QuickOrderProductPriceTransferPriceExpanderPlugin;
 use Spryker\Client\ProductMeasurementUnitStorage\Plugin\QuickOrderPage\QuickOrderProductAdditionalDataTransferMeasurementUnitExpanderPlugin;
 use Spryker\Client\ProductPackagingUnitStorage\Plugin\QuickOrderPage\QuickOrderItemTransferPackagingUnitExpanderPlugin;
 use Spryker\Yves\PriceProduct\Plugin\QuickOrderPage\QuickOrderPagePriceColumnProviderPlugin;
@@ -79,7 +79,7 @@ class QuickOrderPageDependencyProvider extends SprykerQuickOrderPageDependencyPr
     protected function getQuickOrderProductPriceTransferExpanderPlugins(): array
     {
         return [
-            new QuickOrderProductPriceTransferExpanderPlugin(),
+            new QuickOrderProductPriceTransferPriceExpanderPlugin(),
         ];
     }
 }
