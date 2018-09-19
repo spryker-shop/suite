@@ -29,7 +29,7 @@
 
     {% if data.categoryId %}
         <div class="box">
-            {% widget 'CatalogWithCmsBlockWidget' use view('@CmsBlockWidget/views/catalog-with-cms-block/catalog-with-cms-block-middle.twig') only %}
+            {% widget 'CatalogWithCmsBlockWidget' args [data.categoryId] use view('catalog-with-cms-block-middle', 'CmsBlockWidget') only %}
             {% nowidget %}
                 {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'middle', data.categoryId) }}
             {% endwidget %}
@@ -40,7 +40,7 @@
 {% block content %}
     {% if data.categoryId %}
         <div class="box">
-            {% widget 'CatalogWithCmsBlockWidget' use view('@CmsBlockWidget/views/catalog-with-cms-block/catalog-with-cms-block-top.twig') only %}
+            {% widget 'CatalogWithCmsBlockWidget' args [data.categoryId] use view('catalog-with-cms-block-top', 'CmsBlockWidget') only %}
             {% nowidget %}
                 {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'top', data.categoryId) }}
             {% endwidget %}
@@ -51,7 +51,7 @@
 
     {% if data.categoryId %}
         <div class="box">
-            {% widget 'CatalogWithCmsBlockWidget' use view('@CmsBlockWidget/views/catalog-with-cms-block/catalog-with-cms-block-bottom.twig') only %}
+            {% widget 'CatalogWithCmsBlockWidget' args [data.categoryId] use view('catalog-with-cms-block-bottom', 'CmsBlockWidget') only %}
             {% nowidget %}
                 {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'bottom', data.categoryId) }}
             {% endwidget %}

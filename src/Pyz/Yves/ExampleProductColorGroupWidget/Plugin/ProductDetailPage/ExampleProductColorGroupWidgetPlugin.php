@@ -8,11 +8,12 @@
 namespace Pyz\Yves\ExampleProductColorGroupWidget\Plugin\ProductDetailPage;
 
 use Pyz\Yves\ExampleProductColorGroupWidget\Widget\ExamplePdpColorGroupWidget;
+use Pyz\Yves\ExampleProductColorGroupWidget\Widget\ExampleProductColorSelectorWidget;
 use Spryker\Yves\Kernel\Widget\AbstractWidgetPlugin;
 use SprykerShop\Yves\ProductDetailPage\Dependency\Plugin\ProductGroupWidget\ProductGroupWidgetPluginInterface;
 
 /**
- * @deprecated Use \Yves\ExampleProductColorGroupWidget\Widget\ExampleProductColorGroupWidget instead.
+ * @deprecated Use \Yves\ExampleProductColorGroupWidget\Widget\ExampleProductColorSelectorWidget instead.
  */
 class ExampleProductColorGroupWidgetPlugin extends AbstractWidgetPlugin implements ProductGroupWidgetPluginInterface
 {
@@ -23,7 +24,9 @@ class ExampleProductColorGroupWidgetPlugin extends AbstractWidgetPlugin implemen
      */
     public function initialize(int $idProductAbstract): void
     {
-        $this->addParameter('idProductAbstract', $idProductAbstract);
+        $widget = new ExampleProductColorSelectorWidget($idProductAbstract);
+
+        $this->parameters = $widget->getParameters();
     }
 
     /**
@@ -39,6 +42,6 @@ class ExampleProductColorGroupWidgetPlugin extends AbstractWidgetPlugin implemen
      */
     public static function getTemplate(): string
     {
-        return ExamplePdpColorGroupWidget::getTemplate();
+        return '@ExampleProductColorGroupWidget/views/pdp-color-selector-widget/pdp-color-selector-widget.twig';
     }
 }
