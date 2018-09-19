@@ -285,7 +285,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new DataBuilderGeneratorConsole();
             $commands[] = new PropelSchemaValidatorConsole();
             $commands[] = new DataImportDumpConsole();
-            $commands[] = new GenerateGlueIdeAutoCompletionConsole()
+            $commands[] = new GenerateGlueIdeAutoCompletionConsole();
             $commands[] = new PropelAbstractValidateConsole();
             $commands[] = new PluginUsageFinderConsole();
         }
