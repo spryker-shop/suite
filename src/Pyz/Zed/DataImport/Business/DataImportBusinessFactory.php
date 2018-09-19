@@ -93,7 +93,12 @@ use Pyz\Zed\DataImport\Business\Model\Store\StoreReader;
 use Pyz\Zed\DataImport\Business\Model\Store\StoreWriterStep;
 use Pyz\Zed\DataImport\Business\Model\Tax\TaxSetNameToIdTaxSetStep;
 use Pyz\Zed\DataImport\Business\Model\Tax\TaxWriterStep;
-use Pyz\Zed\DataImport\DataImportConfig;
+use Pyz\Zed\DataImport\Communication\Plugin\ProductAbstract\ProductAbstractPropelWriterPlugin;
+use Pyz\Zed\DataImport\Communication\Plugin\ProductAbstractStore\ProductAbstractStorePropelWriterPlugin;
+use Pyz\Zed\DataImport\Communication\Plugin\ProductConcrete\ProductConcretePropelWriterPlugin;
+use Pyz\Zed\DataImport\Communication\Plugin\ProductImage\ProductImagePropelWriterPlugin;
+use Pyz\Zed\DataImport\Communication\Plugin\ProductPrice\ProductPricePropelWriterPlugin;
+use Pyz\Zed\DataImport\Communication\Plugin\ProductStock\ProductStockPropelWriterPlugin;
 use Pyz\Zed\DataImport\DataImportDependencyProvider;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\ProductSearch\Code\KeyBuilder\FilterGlossaryKeyBuilder;
@@ -752,10 +757,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductPriceDataImportWriters()
     {
-        $databaseWriters = $this->getConfig()->getDatabaseWriters();
-        $currentDbEngine = $this->getConfig()->getCurrentDbEngine();
-
-        return new DataSetWriterCollection($databaseWriters[$currentDbEngine][DataImportConfig::IMPORT_TYPE_PRODUCT_PRICE]);
+        return new DataSetWriterCollection([
+            new ProductPricePropelWriterPlugin(),
+        ]);
     }
 
     /**
@@ -763,10 +767,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductStockDataImportWriters()
     {
-        $databaseWriters = $this->getConfig()->getDatabaseWriters();
-        $currentDbEngine = $this->getConfig()->getCurrentDbEngine();
-
-        return new DataSetWriterCollection($databaseWriters[$currentDbEngine][DataImportConfig::IMPORT_TYPE_PRODUCT_STOCK]);
+        return new DataSetWriterCollection([
+            new ProductStockPropelWriterPlugin(),
+        ]);
     }
 
     /**
@@ -823,10 +826,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductImageDataWriters()
     {
-        $databaseWriters = $this->getConfig()->getDatabaseWriters();
-        $currentDbEngine = $this->getConfig()->getCurrentDbEngine();
-
-        return new DataSetWriterCollection($databaseWriters[$currentDbEngine][DataImportConfig::IMPORT_TYPE_PRODUCT_IMAGE]);
+        return new DataSetWriterCollection([
+            new ProductImagePropelWriterPlugin(),
+        ]);
     }
 
     /**
@@ -1014,10 +1016,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductAbstractDataImportWriters()
     {
-        $databaseWriters = $this->getConfig()->getDatabaseWriters();
-        $currentDbEngine = $this->getConfig()->getCurrentDbEngine();
-
-        return new DataSetWriterCollection($databaseWriters[$currentDbEngine][DataImportConfig::IMPORT_TYPE_PRODUCT_ABSTRACT]);
+        return new DataSetWriterCollection([
+            new ProductAbstractPropelWriterPlugin(),
+        ]);
     }
 
     /**
@@ -1041,10 +1042,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductAbstractStoreDataImportWriters(): DataSetWriterInterface
     {
-        $databaseWriters = $this->getConfig()->getDatabaseWriters();
-        $currentDbEngine = $this->getConfig()->getCurrentDbEngine();
-
-        return new DataSetWriterCollection($databaseWriters[$currentDbEngine][DataImportConfig::IMPORT_TYPE_PRODUCT_ABSTRACT_STORE]);
+        return new DataSetWriterCollection([
+            new ProductAbstractStorePropelWriterPlugin(),
+        ]);
     }
 
     /**
@@ -1052,10 +1052,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductConcreteDataImportWriters()
     {
-        $databaseWriters = $this->getConfig()->getDatabaseWriters();
-        $currentDbEngine = $this->getConfig()->getCurrentDbEngine();
-
-        return new DataSetWriterCollection($databaseWriters[$currentDbEngine][DataImportConfig::IMPORT_TYPE_PRODUCT_CONCRETE]);
+        return new DataSetWriterCollection([
+            new ProductConcretePropelWriterPlugin(),
+        ]);
     }
 
     /**
