@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "020c34946da0c7879bc48f20d2110c94",
+    "content-hash": "ac69e1cb479629bd7a9adf40fc2b5541",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -2495,11 +2495,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/cc-184/dev-pub-sync-performance",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "698213d95d2d88024d1a421d072cae48af078bc9"
+                "reference": "43ca68d7c82b2b5e437063749f5055abd5554e7f"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2772,7 +2772,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-09-19T04:53:14+00:00"
+            "time": "2018-09-20T11:25:36+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2780,7 +2780,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "8f7250abf650393b35488a8e166d295d6d053484"
+                "reference": "2e2791fbd12c9c97d4451fb4cfaad05b97db6405"
             },
             "require": {
                 "php": ">=7.1"
@@ -2855,32 +2855,36 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-09-18T13:12:16+00:00"
+            "time": "2018-09-20T08:43:29+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
-            "version": "dev-master",
+            "version": "dev-feature/cc-184/dev-pub-sync-performance",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/synchronization-behavior.git",
-                "reference": "06edc061c3b4fb1ccc0057a55e65569f3c26eeee"
+                "reference": "e16098a60acbd743830bb2899091c6474b480c02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/06edc061c3b4fb1ccc0057a55e65569f3c26eeee",
-                "reference": "06edc061c3b4fb1ccc0057a55e65569f3c26eeee",
+                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/e16098a60acbd743830bb2899091c6474b480c02",
+                "reference": "e16098a60acbd743830bb2899091c6474b480c02",
                 "shasum": ""
             },
             "require": {
                 "spryker/kernel": "^3.20.0",
                 "spryker/propel-orm": "^1.6.0",
-                "spryker/queue": "^1.1.0",
-                "spryker/synchronization": "^0.1.0 || ^0.2.0 || ^1.0.0",
                 "spryker/zend": "^2.1.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/queue": "^1.1.0",
+                "spryker/synchronization": "^0.1.0 || ^0.2.0 || ^1.0.0",
                 "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/queue": "Generated classes are using spryker/queue module.",
+                "spryker/synchronization": "Generated classes are using spryker/synchronization module."
             },
             "type": "propel-behavior",
             "extra": {
@@ -2903,7 +2907,7 @@
                 "proprietary"
             ],
             "description": "SynchronizationBehavior module",
-            "time": "2018-09-11T22:10:58+00:00"
+            "time": "2018-09-18T11:41:37+00:00"
         },
         {
             "name": "spryker/uuid-behavior",
@@ -8280,7 +8284,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-09-07T17:20:34+00:00"
+            "time": "2018-08-31T16:41:34+00:00"
         },
         {
             "name": "spryker/development-core",
@@ -8334,12 +8338,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/git-hook.git",
-                "reference": "5f0e735003a910a059adb4e61cddf662234f1db9"
+                "reference": "2bfee4f360a8cb2598016ec6adc14d5232c6ceaf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/git-hook/zipball/5f0e735003a910a059adb4e61cddf662234f1db9",
-                "reference": "5f0e735003a910a059adb4e61cddf662234f1db9",
+                "url": "https://api.github.com/repos/spryker/git-hook/zipball/2bfee4f360a8cb2598016ec6adc14d5232c6ceaf",
+                "reference": "2bfee4f360a8cb2598016ec6adc14d5232c6ceaf",
                 "shasum": ""
             },
             "require": {
@@ -8379,7 +8383,7 @@
                 "sniffer",
                 "standards"
             ],
-            "time": "2018-09-18T08:29:09+00:00"
+            "time": "2018-09-19T04:57:21+00:00"
         },
         {
             "name": "spryker/spryk",
