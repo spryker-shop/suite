@@ -176,7 +176,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ProductDetailPageReviewWidget::class,
             ProductDiscontinuedNoteWidget::class,
             ProductDiscontinuedWidget::class,
-            ProductGroupWidget::class,
+            // ProductGroupWidget::class, todo: uncomment after fix
             ProductImageSliderWidget::class,
             ProductOptionConfiguratorWidget::class,
             ProductPackagingUnitWidget::class,
