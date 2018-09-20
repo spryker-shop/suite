@@ -35,8 +35,9 @@ use SprykerShop\Yves\CustomerPage\Plugin\CustomerPage\CustomerNavigationWidgetPl
 use SprykerShop\Yves\CustomerPage\Widget\CustomerNavigationWidget;
 use SprykerShop\Yves\CustomerReorderWidget\Widget\CustomerReorderWidget;
 use SprykerShop\Yves\DiscountPromotionWidget\Widget\CartDiscountPromotionProductListWidget;
+use SprykerShop\Yves\DiscountWidget\Widget\CheckoutVoucherFormWidget;
 use SprykerShop\Yves\DiscountWidget\Widget\DiscountSummaryWidget;
-use SprykerShop\Yves\DiscountWidget\Widget\VoucherFormWidget;
+use SprykerShop\Yves\DiscountWidget\Widget\DiscountVoucherFormWidget;
 use SprykerShop\Yves\LanguageSwitcherWidget\Plugin\ShopUi\LanguageSwitcherWidgetPlugin;
 use SprykerShop\Yves\LanguageSwitcherWidget\Widget\LanguageSwitcherWidget;
 use SprykerShop\Yves\MultiCartWidget\Plugin\ShopUi\MiniCartWidgetPlugin;
@@ -64,7 +65,6 @@ use SprykerShop\Yves\ProductCategoryWidget\Widget\ProductBreadcrumbsWithCategori
 use SprykerShop\Yves\ProductDiscontinuedWidget\Widget\ProductDiscontinuedNoteWidget;
 use SprykerShop\Yves\ProductDiscontinuedWidget\Widget\ProductDiscontinuedWidget;
 use SprykerShop\Yves\ProductGroupWidget\Plugin\ShopUi\ProductGroupWidgetPlugin;
-use SprykerShop\Yves\ProductGroupWidget\Widget\ProductGroupWidget;
 use SprykerShop\Yves\ProductImageWidget\Widget\ProductImageSliderWidget;
 use SprykerShop\Yves\ProductLabelWidget\Widget\ProductAbstractLabelWidget;
 use SprykerShop\Yves\ProductLabelWidget\Widget\ProductConcreteLabelWidget;
@@ -133,7 +133,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CartProductMeasurementUnitQuantitySelectorWidget::class,
             CartProductPackagingUnitWidget::class,
             CatalogPageProductWidget::class,
-//            CatalogWithCmsBlockWidget::class,
+            CatalogWithCmsBlockWidget::class,
             ChartWidget::class,
             CheckoutBreadcrumbWidget::class,
             CmsContentProductSetWidget::class,
@@ -198,7 +198,8 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             SimilarProductsWidget::class,
             SummaryProductPackagingUnitWidget::class,
             UpSellingProductsWidget::class,
-            VoucherFormWidget::class,
+            DiscountVoucherFormWidget::class,
+            CheckoutVoucherFormWidget::class,
             WishlistMenuItemWidget::class,
             WishlistProductAlternativeWidget::class,
         ];
