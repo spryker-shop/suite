@@ -13,14 +13,12 @@
     "spryker/uuid-behavior": "dev-master",
 
     "php": ">=7.1",
-    "braintree/braintree_php": "~3.15.0",
     "codeitnowin/barcode": "^3.0.0",
     "guzzlehttp/guzzle": "~6.3.0",
     "league/csv": "^9.1",
     "filp/whoops": "^2.1",
     "mandrill/mandrill": "~1.0.55",
     "monolog/monolog": "^1.21.0",
-    "nesbot/carbon": "~1.13.0",
     "pimple/pimple": "~1.1.1",
     "predis/predis": "^1.1.1",
     "propel/propel": "2.0.0-alpha8",
@@ -69,26 +67,25 @@
   },
   "require-dev": {
     "spryker/architecture-sniffer": "dev-master",
+    "spryker/development-core": "dev-master",
     "spryker/code-generator": "dev-master",
     "spryker/code-sniffer": "dev-master",
     "spryker/git-hook": "dev-master",
-    "spryker/development-core": "dev-master",
     "spryker/spryk": "dev-master",
 
     "codeception/codeception": "^2.0.0",
     "pdepend/pdepend": "^2.2.2",
     "phpmd/phpmd": "^2.4",
     "sebastian/phpcpd": "^4.0.0",
-    "sensiolabs/security-checker": "^3.0.2",
+    "sensiolabs/security-checker": "*",
     "silex/web-profiler": "^1.0.8",
     "symfony/web-profiler-bundle": "*",
     "symfony/var-dumper": "*",
     "site5/phantoman": "^2.0.0",
     "sllh/composer-versions-check": "^2.0.2",
     "jakoch/phantomjs-installer": "^2.1.0",
-    "stecman/symfony-console-completion": "^0.7.0",
+    "stecman/symfony-console-completion": "*",
     "fzaninotto/faker": "^1.6",
-    "nette/php-generator": "^2.6.1",
     "ajgl/breakpoint-twig-extension": "^0.3.1",
     "phpstan/phpstan": "^0.10.2"
   },
@@ -154,7 +151,7 @@
       "GitHook\\Composer\\Scripts\\HookInstaller::installProjectHooks"
     ],
     "phpstan": [
-      "php -d memory_limit=1024M vendor/bin/phpstan analyze -c phpstan.neon src/ -l 2"
+      "php -d memory_limit=1024M vendor/bin/phpstan analyze -c phpstan.neon src/ -l 4"
     ],
     "phpstan-setup": "vendor/bin/console dev:ide:generate-auto-completion"
   }
