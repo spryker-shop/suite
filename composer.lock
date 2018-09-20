@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "020c34946da0c7879bc48f20d2110c94",
+    "content-hash": "7f4941fdfd926f6d9fda518bb7445f96",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -1863,7 +1863,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -2436,16 +2436,16 @@
         },
         {
             "name": "spryker/rabbit-mq",
-            "version": "dev-master",
+            "version": "dev-feature/cc-184/dev-pub-sync-performance",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "86b75a2ad2e879fac9af7b73569e8fd380fa74bb"
+                "reference": "441018ac67d466bf1b4651da0ab6e74e47251b38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/86b75a2ad2e879fac9af7b73569e8fd380fa74bb",
-                "reference": "86b75a2ad2e879fac9af7b73569e8fd380fa74bb",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/441018ac67d466bf1b4651da0ab6e74e47251b38",
+                "reference": "441018ac67d466bf1b4651da0ab6e74e47251b38",
                 "shasum": ""
             },
             "require": {
@@ -2491,15 +2491,15 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "time": "2018-08-09T12:54:53+00:00"
+            "time": "2018-09-19T13:33:51+00:00"
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/cc-184/dev-pub-sync-performance",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "698213d95d2d88024d1a421d072cae48af078bc9"
+                "reference": "43ca68d7c82b2b5e437063749f5055abd5554e7f"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2772,7 +2772,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-09-19T04:53:14+00:00"
+            "time": "2018-09-20T11:25:36+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2859,28 +2859,32 @@
         },
         {
             "name": "spryker/synchronization-behavior",
-            "version": "dev-master",
+            "version": "dev-feature/cc-184/dev-pub-sync-performance",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/synchronization-behavior.git",
-                "reference": "06edc061c3b4fb1ccc0057a55e65569f3c26eeee"
+                "reference": "e16098a60acbd743830bb2899091c6474b480c02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/06edc061c3b4fb1ccc0057a55e65569f3c26eeee",
-                "reference": "06edc061c3b4fb1ccc0057a55e65569f3c26eeee",
+                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/e16098a60acbd743830bb2899091c6474b480c02",
+                "reference": "e16098a60acbd743830bb2899091c6474b480c02",
                 "shasum": ""
             },
             "require": {
                 "spryker/kernel": "^3.20.0",
                 "spryker/propel-orm": "^1.6.0",
-                "spryker/queue": "^1.1.0",
-                "spryker/synchronization": "^0.1.0 || ^0.2.0 || ^1.0.0",
                 "spryker/zend": "^2.1.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/queue": "^1.1.0",
+                "spryker/synchronization": "^0.1.0 || ^0.2.0 || ^1.0.0",
                 "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/queue": "Generated classes are using spryker/queue module.",
+                "spryker/synchronization": "Generated classes are using spryker/synchronization module."
             },
             "type": "propel-behavior",
             "extra": {
@@ -2903,7 +2907,7 @@
                 "proprietary"
             ],
             "description": "SynchronizationBehavior module",
-            "time": "2018-09-11T22:10:58+00:00"
+            "time": "2018-09-18T11:41:37+00:00"
         },
         {
             "name": "spryker/uuid-behavior",
@@ -6465,7 +6469,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-12T17:28:44+00:00"
+            "time": "2017-12-13T13:21:38+00:00"
         },
         {
             "name": "phar-io/manifest",
