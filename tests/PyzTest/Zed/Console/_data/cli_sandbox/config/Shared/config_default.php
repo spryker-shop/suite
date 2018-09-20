@@ -365,7 +365,6 @@ $config[PropelConstants::ZED_DB_SUPPORTED_ENGINES] = [
     PropelConfig::DB_ENGINE_MYSQL => 'MySql',
     PropelConfig::DB_ENGINE_PGSQL => 'PostgreSql',
 ];
-$config[PropelConstants::SCHEMA_FILE_PATH_PATTERN] = APPLICATION_SOURCE_DIR . '/*/Zed/*/Persistence/Propel/Schema/';
 
 $config[KernelConstants::DEPENDENCY_INJECTOR_YVES] = [
     'CheckoutPage' => [
