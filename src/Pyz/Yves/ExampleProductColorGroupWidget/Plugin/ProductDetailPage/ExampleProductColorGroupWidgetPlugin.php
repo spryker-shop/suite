@@ -7,7 +7,6 @@
 
 namespace Pyz\Yves\ExampleProductColorGroupWidget\Plugin\ProductDetailPage;
 
-use Pyz\Yves\ExampleProductColorGroupWidget\Widget\ExamplePdpColorGroupWidget;
 use Pyz\Yves\ExampleProductColorGroupWidget\Widget\ExampleProductColorSelectorWidget;
 use Spryker\Yves\Kernel\Widget\AbstractWidgetPlugin;
 use SprykerShop\Yves\ProductDetailPage\Dependency\Plugin\ProductGroupWidget\ProductGroupWidgetPluginInterface;
