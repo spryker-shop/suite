@@ -61,7 +61,6 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
     protected static $isProductColumnBuffer = [];
 
     /**
-     *
      * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository $productRepository
      */
     public function __construct(ProductRepository $productRepository)

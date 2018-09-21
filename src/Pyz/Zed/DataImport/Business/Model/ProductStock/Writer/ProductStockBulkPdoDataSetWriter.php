@@ -73,7 +73,6 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
     protected $storeFacade;
 
     /**
-     *
      * @param \Spryker\Zed\Stock\Business\StockFacadeInterface $stockFacade
      * @param \Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface $productBundleFacade
      * @param \Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSqlInterface $productStockSql
