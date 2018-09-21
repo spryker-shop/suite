@@ -15,9 +15,9 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class CmsPageStoreWriterStep implements DataImportStepInterface
 {
-    const BULK_SIZE = 100;
-    const KEY_PAGE_NAME = 'page_key';
-    const KEY_STORE_NAME = 'store_name';
+    public const BULK_SIZE = 100;
+    protected const KEY_PAGE_NAME = 'page_key';
+    protected const KEY_STORE_NAME = 'store_name';
 
     /**
      * @var int[] Keys are CMS Page keys, values are CMS Page IDs.
