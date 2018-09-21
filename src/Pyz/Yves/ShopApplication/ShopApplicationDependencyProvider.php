@@ -109,19 +109,6 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
     protected function getGlobalWidgets(): array
     {
         return [
-            CurrencyWidgetPlugin::class,
-            LanguageSwitcherWidgetPlugin::class,
-            NavigationWidgetPlugin::class,
-            NavigationWidget::class,
-            ProductGroupWidgetPlugin::class,
-            PriceModeSwitcherWidgetPlugin::class,
-            MiniCartWidgetPlugin::class, #MultiCartFeature
-            CustomerNavigationWidgetPlugin::class,
-            DisplayOnBehalfBusinessWidgetPlugin::class,
-            MenuItemBusinessOnBehalfWidgetPlugin::class,
-            MenuItemCompanyWidgetPlugin::class,
-            AgentWidgetPlugin::class, #AgentFeature
-
             AddToMultiCartWidget::class,
             AddToShoppingListWidget::class,
             AgentControlBarWidget::class,
@@ -176,7 +163,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ProductDetailPageReviewWidget::class,
             ProductDiscontinuedNoteWidget::class,
             ProductDiscontinuedWidget::class,
-            // ProductGroupWidget::class, todo: uncomment after fix
+//             ProductGroupWidget::class, //todo: uncomment after fix
             ProductImageSliderWidget::class,
             ProductOptionConfiguratorWidget::class,
             ProductPackagingUnitWidget::class,
