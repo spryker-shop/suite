@@ -149,11 +149,11 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
      */
     protected function findOrCreatePriceProductStore(DataSetInterface $dataSet, SpyPriceProduct $spyPriceProduct): void
     {
-        $storeTransfer = $this->storeFacade->getStoreByName(ProductPriceHydratorStep::KEY_STORE);
+        $storeTransfer = $this->storeFacade->getStoreByName($dataSet[ProductPriceHydratorStep::KEY_STORE]);
         $currencyTransfer = $this->currencyFacade->fromIsoCode($dataSet[ProductPriceHydratorStep::KEY_CURRENCY]);
 
         $priceProductStoreEntity = SpyPriceProductStoreQuery::create()
-            ->filterByFkStore($storeTransfer->getPrimaryKey())
+            ->filterByFkStore($storeTransfer->getIdStore())
             ->filterByFkCurrency($currencyTransfer->getIdCurrency())
             ->filterByFkPriceProduct($spyPriceProduct->getPrimaryKey())
             ->findOneOrCreate();

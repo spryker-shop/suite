@@ -7,8 +7,8 @@
 
 namespace PyzTest\Zed\DataImport\Business\Model\ProductConcrete;
 
-use Generated\Shared\Transfer\SpyProductEntityTransfer;
-use Generated\Shared\Transfer\SpyProductLocalizedAttributesEntityTransfer;
+use Generated\Shared\DataBuilder\SpyProductEntityBuilder;
+use Generated\Shared\DataBuilder\SpyProductLocalizedAttributesEntityBuilder;
 use Generated\Shared\Transfer\SpyProductSearchEntityTransfer;
 use Orm\Zed\Product\Persistence\SpyProductLocalizedAttributesQuery;
 use Orm\Zed\Product\Persistence\SpyProductQuery;
@@ -32,9 +32,6 @@ abstract class AbstractProductConcreteWriterTest extends AbstractWriterTest
     protected const SKU1 = '001';
     protected const SKU2 = '002';
 
-    protected const SKU1_CONCRETE = '001_25904006';
-    protected const SKU2_CONCRETE = '002_25904004';
-
     protected const FK_DE_LOCAL = 46;
     protected const FK_EN_LOCAL = 66;
 
@@ -43,88 +40,49 @@ abstract class AbstractProductConcreteWriterTest extends AbstractWriterTest
      */
     protected function createDataSets(): array
     {
-        $dataSet1 = new DataSet();
-        $dataSet1[ProductConcreteHydratorStep::KEY_ABSTRACT_SKU] = static::SKU1;
-        $dataSet1[ProductConcreteHydratorStep::PRODUCT_CONCRETE_TRANSFER] = (new SpyProductEntityTransfer())
-            ->setSku(static::SKU1_CONCRETE)
-            ->setIsActive(true)
-            ->setAttributes('[]')
-            ->setIsQuantitySplittable(true);
-        $dataSet1[ProductConcreteHydratorStep::PRODUCT_CONCRETE_LOCALIZED_TRANSFER] = [
-            [
-                'sku' => static::SKU1_CONCRETE,
-                'localizedAttributeTransfer' => (new SpyProductLocalizedAttributesEntityTransfer())
-                    ->setFkLocale(static::FK_DE_LOCAL)
-                    ->setName('Canon IXUS 160')
-                    ->setDescription('Beeindruckende Aufnahmen, ganz einfach Smart Auto ermöglicht die mühelose Aufnahme von fantastischen Fotos und Movies – die Kamera wählt in diesem Modus automatisch die idealen Einstellungen für die jeweilige Aufnahmesituation. Sie müssen nur noch das Motiv anvisieren und auslösen. Ein Druck auf die Hilfe-Taste führt zu leicht verständlichen Erklärungen der Kamerafunktionen. Zahlreiche Kreativfilter laden zum Experimentieren ein und bieten echten Fotospaß. So lässt sich neben vielen anderen Optionen der Verzeichnungseffekt eines Fisheye-Objektivs nachempfinden oder in Fotos und Movies werden die Dinge wie Miniaturmodelle dargestellt.')
-                    ->setAttributes('[]')
-                    ->setIsComplete(true),
-                'productSearchEntityTransfer' => (new SpyProductSearchEntityTransfer())
-                    ->setFkLocale(static::FK_DE_LOCAL)
-                    ->setIsSearchable(1),
-            ],
-            [
-                'sku' => static::SKU1_CONCRETE,
-                'localizedAttributeTransfer' => (new SpyProductLocalizedAttributesEntityTransfer())
-                    ->setFkLocale(static::FK_EN_LOCAL)
-                    ->setName('Canon IXUS 160')
-                    ->setDescription('Add a personal touch Make shots your own with quick and easy control over picture settings such as brightness and colour intensity. Preview the results while framing using Live View Control and enjoy sharing them with friends using the 6.8 cm (2.7”) LCD screen. Combine with a Canon Connect Station and you can easily share your photos and movies with the world on social media sites and online albums like irista, plus enjoy watching them with family and friends on an HD TV. Effortlessly enjoy great shots of friends thanks to Face Detection technology. It detects multiple faces in a single frame making sure they remain in focus and with optimum brightness. Face Detection also ensures natural skin tones even in unusual lighting conditions.')
-                    ->setAttributes('[]')
-                    ->setIsComplete(true),
-                'productSearchEntityTransfer' => (new SpyProductSearchEntityTransfer())
-                    ->setFkLocale(static::FK_EN_LOCAL)
-                    ->setIsSearchable(1),
-            ],
-        ];
-        $dataSet1[ProductConcreteHydratorStep::PRODUCT_BUNDLE_TRANSFER] = [];
+        $result = [];
 
-        $dataSet2 = new DataSet();
-        $dataSet2[ProductConcreteHydratorStep::KEY_ABSTRACT_SKU] = static::SKU2;
-        $dataSet2[ProductConcreteHydratorStep::PRODUCT_CONCRETE_TRANSFER] = (new SpyProductEntityTransfer())
-            ->setSku(static::SKU2_CONCRETE)
-            ->setIsActive(true)
-            ->setAttributes('[]')
-            ->setIsQuantitySplittable(true);
-        $dataSet2[ProductConcreteHydratorStep::PRODUCT_CONCRETE_LOCALIZED_TRANSFER] = [
-            [
-                'sku' => static::SKU2_CONCRETE,
-                'localizedAttributeTransfer' => (new SpyProductLocalizedAttributesEntityTransfer())
-                    ->setFkLocale(static::FK_DE_LOCAL)
-                    ->setName('Canon IXUS 160')
-                    ->setDescription('Beeindruckende Aufnahmen, ganz einfach Smart Auto ermöglicht die mühelose Aufnahme von fantastischen Fotos und Movies – die Kamera wählt in diesem Modus automatisch die idealen Einstellungen für die jeweilige Aufnahmesituation. Sie müssen nur noch das Motiv anvisieren und auslösen. Ein Druck auf die Hilfe-Taste führt zu leicht verständlichen Erklärungen der Kamerafunktionen. Zahlreiche Kreativfilter laden zum Experimentieren ein und bieten echten Fotospaß. So lässt sich neben vielen anderen Optionen der Verzeichnungseffekt eines Fisheye-Objektivs nachempfinden oder in Fotos und Movies werden die Dinge wie Miniaturmodelle dargestellt.')
-                    ->setAttributes('[]')
-                    ->setIsComplete(true),
-                'productSearchEntityTransfer' => (new SpyProductSearchEntityTransfer())
-                    ->setFkLocale(static::FK_DE_LOCAL)
-                    ->setIsSearchable(1),
-            ],
-            [
-                'sku' => static::SKU2_CONCRETE,
-                'localizedAttributeTransfer' => (new SpyProductLocalizedAttributesEntityTransfer())
-                    ->setFkLocale(static::FK_EN_LOCAL)
-                    ->setName('Canon IXUS 160')
-                    ->setDescription('Add a personal touch Make shots your own with quick and easy control over picture settings such as brightness and colour intensity. Preview the results while framing using Live View Control and enjoy sharing them with friends using the 6.8 cm (2.7”) LCD screen. Combine with a Canon Connect Station and you can easily share your photos and movies with the world on social media sites and online albums like irista, plus enjoy watching them with family and friends on an HD TV. Effortlessly enjoy great shots of friends thanks to Face Detection technology. It detects multiple faces in a single frame making sure they remain in focus and with optimum brightness. Face Detection also ensures natural skin tones even in unusual lighting conditions.')
-                    ->setAttributes('[]')
-                    ->setIsComplete(true),
-                'productSearchEntityTransfer' => (new SpyProductSearchEntityTransfer())
-                    ->setFkLocale(static::FK_EN_LOCAL)
-                    ->setIsSearchable(1),
-            ],
-        ];
-        $dataSet2[ProductConcreteHydratorStep::PRODUCT_BUNDLE_TRANSFER] = [];
+        foreach ([static::SKU1, static::SKU2] as $abstractSku) {
+            $dataSet = new DataSet();
+            $productTransfer = (new SpyProductEntityBuilder())->build();
+            $dataSet[ProductConcreteHydratorStep::KEY_ABSTRACT_SKU] = $abstractSku;
+            $dataSet[ProductConcreteHydratorStep::PRODUCT_CONCRETE_TRANSFER] = $productTransfer;
+            $dataSet[ProductConcreteHydratorStep::PRODUCT_CONCRETE_LOCALIZED_TRANSFER] = [
+                [
+                    'sku' => $productTransfer->getSku(),
+                    'localizedAttributeTransfer' => (new SpyProductLocalizedAttributesEntityBuilder())
+                        ->build()
+                        ->setFkLocale(static::FK_DE_LOCAL),
+                    'productSearchEntityTransfer' => (new SpyProductSearchEntityTransfer())
+                        ->setFkLocale(static::FK_DE_LOCAL)
+                        ->setIsSearchable(1),
+                ],
+                [
+                    'sku' => $productTransfer->getSku(),
+                    'localizedAttributeTransfer' => (new SpyProductLocalizedAttributesEntityBuilder())
+                        ->build()
+                        ->setFkLocale(static::FK_EN_LOCAL),
+                    'productSearchEntityTransfer' => (new SpyProductSearchEntityTransfer())
+                        ->setFkLocale(static::FK_EN_LOCAL)
+                        ->setIsSearchable(1),
+                ],
+            ];
+            $dataSet[ProductConcreteHydratorStep::PRODUCT_BUNDLE_TRANSFER] = [];
 
-        return [
-            static::SKU1_CONCRETE => $dataSet1,
-            static::SKU2_CONCRETE => $dataSet2,
-        ];
+            $result[$productTransfer->getSku()] = $dataSet;
+        }
+
+        return $result;
     }
 
     /**
+     * @param array $skus
+     *
      * @return array
      */
-    protected function queryDataFromDB(): array
+    protected function queryDataFromDB(array $skus): array
     {
-        $products = SpyProductQuery::create()->filterBySku_In([static::SKU1_CONCRETE, static::SKU2_CONCRETE])->find();
+        $products = SpyProductQuery::create()->filterBySku_In($skus)->find();
         $productIds = array_column($products->toArray(), 'IdProduct');
         $productsLocalizedAttributes = SpyProductLocalizedAttributesQuery::create()->filterByFkProduct_In($productIds);
 

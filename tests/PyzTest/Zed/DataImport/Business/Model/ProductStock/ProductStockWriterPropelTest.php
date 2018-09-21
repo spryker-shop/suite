@@ -22,12 +22,12 @@ class ProductStockWriterPropelTest extends AbstractProductStockWriterTest
 {
     /**
      * @group ProductWriterTest
-     * @group ProductPriceWriterTest
-     * @group ProductPriceWriterPropelTest
+     * @group ProductStockWriterTest
+     * @group ProductStockWriterPropelTest
      *
      * @return void
      */
-    public function testProductPriceWriter(): void
+    public function testProductStockWriter(): void
     {
         $writer = $this->getDataImportBusinessFactoryStub()->createProductStockPropelWriter();
 

@@ -38,20 +38,16 @@ abstract class AbstractProductAbstractStoreWriterTest extends AbstractWriterTest
      */
     protected function createDataSets(): array
     {
-        $dataSet1 = new DataSet();
-        $dataSet1[ProductAbstractStoreHydratorStep::PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER] = (new ProductAbstractStoreTransfer())
-            ->setProductAbstractSku(static::SKU1)
-            ->setStoreName(static::STORE_NAME);
+        $result = [];
+        foreach ([static::SKU1, static::SKU2] as $sku) {
+            $dataSet = new DataSet();
+            $dataSet[ProductAbstractStoreHydratorStep::PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER] = (new ProductAbstractStoreTransfer())
+                ->setProductAbstractSku($sku)
+                ->setStoreName(static::STORE_NAME);
 
-        $dataSet2 = new DataSet();
-        $dataSet2[ProductAbstractStoreHydratorStep::PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER] = (new ProductAbstractStoreTransfer())
-            ->setProductAbstractSku(static::SKU2)
-            ->setStoreName(static::STORE_NAME);
-
-        return [
-            static::SKU1 => $dataSet1,
-            static::SKU2 => $dataSet2,
-        ];
+            $result[$sku] = $dataSet;
+        }
+        return $result;
     }
 
     /**

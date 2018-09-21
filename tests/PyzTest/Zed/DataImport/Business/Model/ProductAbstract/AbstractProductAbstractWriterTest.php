@@ -7,10 +7,10 @@
 
 namespace PyzTest\Zed\DataImport\Business\Model\ProductAbstract;
 
-use Generated\Shared\Transfer\SpyProductAbstractEntityTransfer;
-use Generated\Shared\Transfer\SpyProductAbstractLocalizedAttributesEntityTransfer;
+use Generated\Shared\DataBuilder\SpyProductAbstractEntityBuilder;
+use Generated\Shared\DataBuilder\SpyProductAbstractLocalizedAttributesEntityBuilder;
+use Generated\Shared\DataBuilder\SpyUrlEntityBuilder;
 use Generated\Shared\Transfer\SpyProductCategoryEntityTransfer;
-use Generated\Shared\Transfer\SpyUrlEntityTransfer;
 use Orm\Zed\Product\Persistence\SpyProductAbstractLocalizedAttributesQuery;
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Orm\Zed\ProductCategory\Persistence\SpyProductCategoryQuery;
@@ -32,9 +32,6 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
  */
 abstract class AbstractProductAbstractWriterTest extends AbstractWriterTest
 {
-    protected const SKU1 = '001';
-    protected const SKU2 = '002';
-
     protected const FK_DE_LOCAL = 46;
     protected const FK_EN_LOCAL = 66;
 
@@ -42,133 +39,74 @@ abstract class AbstractProductAbstractWriterTest extends AbstractWriterTest
 
     protected const PRODUCT_ORDER = 16;
 
+    protected const DATA_SET_COUNT = 2;
+
     /**
      * @return array
      */
     protected function createDataSets(): array
     {
-        $dataSet1 = new DataSet();
-        $dataSet1[ProductAbstractHydratorStep::PRODUCT_ABSTRACT_TRANSFER] = (new SpyProductAbstractEntityTransfer())
-            ->setNewFrom('2017-06-01 00:00:00.000000')
-            ->setNewTo('2017-06-30 00:00:00.000000')
-            ->setSku(static::SKU1)
-            ->setAttributes('{"megapixel":"20 MP","flash_range_tele":"1.3-1.5 m","memory_slots":"1","usb_version":"2","brand":"Canon"}')
-            ->setFkTaxSet(1)
-            ->setColorCode('#DC2E09');
-        $dataSet1[ProductAbstractHydratorStep::PRODUCT_ABSTRACT_LOCALIZED_TRANSFER] = [
-            [
-                'abstract_sku' => static::SKU1,
-                'localizedAttributeTransfer' => (new SpyProductAbstractLocalizedAttributesEntityTransfer())
-                    ->setFkLocale(static::FK_DE_LOCAL)
-                    ->setName('Canon IXUS 160')
-                    ->setDescription('Beeindruckende Aufnahmen, ganz einfach Smart Auto ermöglicht die mühelose Aufnahme von fantastischen Fotos und Movies – die Kamera wählt in diesem Modus automatisch die idealen Einstellungen für die jeweilige Aufnahmesituation. Sie müssen nur noch das Motiv anvisieren und auslösen. Ein Druck auf die Hilfe-Taste führt zu leicht verständlichen Erklärungen der Kamerafunktionen. Zahlreiche Kreativfilter laden zum Experimentieren ein und bieten echten Fotospaß. So lässt sich neben vielen anderen Optionen der Verzeichnungseffekt eines Fisheye-Objektivs nachempfinden oder in Fotos und Movies werden die Dinge wie Miniaturmodelle dargestellt.')
-                    ->setMetaTitle('Canon IXUS 160')
-                    ->setMetaKeywords('Canon,Entertainment Electronics')
-                    ->setMetaDescription('Beeindruckende Aufnahmen, ganz einfach Smart Auto ermöglicht die mühelose Aufnahme von fantastischen Fotos und Movies – die Kamera wählt in diesem Modus au')
-                    ->setAttributes('{"color":"Weinrot"}'),
-            ],
-            [
-                'abstract_sku' => static::SKU1,
-                'localizedAttributeTransfer' => (new SpyProductAbstractLocalizedAttributesEntityTransfer())
-                    ->setFkLocale(static::FK_EN_LOCAL)
-                    ->setName('Canon IXUS 160')
-                    ->setDescription('Beeindruckende Aufnahmen, ganz einfach Smart Auto ermöglicht die mühelose Aufnahme von fantastischen Fotos und Movies – die Kamera wählt in diesem Modus automatisch die idealen Einstellungen für die jeweilige Aufnahmesituation. Sie müssen nur noch das Motiv anvisieren und auslösen. Ein Druck auf die Hilfe-Taste führt zu leicht verständlichen Erklärungen der Kamerafunktionen. Zahlreiche Kreativfilter laden zum Experimentieren ein und bieten echten Fotospaß. So lässt sich neben vielen anderen Optionen der Verzeichnungseffekt eines Fisheye-Objektivs nachempfinden oder in Fotos und Movies werden die Dinge wie Miniaturmodelle dargestellt.')
-                    ->setMetaTitle('Canon IXUS 160')
-                    ->setMetaKeywords('Canon,Entertainment Electronics')
-                    ->setMetaDescription('Add a personal touch Make shots your own with quick and easy control over picture settings such as brightness and colour intensity. Preview the results whi')
-                    ->setAttributes('{"flash_range_tele":"4.2-4.9 ft","color":"Red"}'),
-            ],
-        ];
-        $dataSet1[ProductAbstractHydratorStep::PRODUCT_CATEGORY_TRANSFER] = [
-            [
-                'abstract_sku' => static::SKU1,
-                'productCategoryTransfer' => (new SpyProductCategoryEntityTransfer())
-                    ->setFkCategory(static::FK_CATEGORY)
-                    ->setProductOrder(static::PRODUCT_ORDER),
-            ],
-        ];
-        $dataSet1[ProductAbstractHydratorStep::PRODUCT_URL_TRANSFER] = [
-            [
-                'abstract_sku' => static::SKU1,
-                'urlTransfer' => (new SpyUrlEntityTransfer())
-                    ->setFkLocale(static::FK_DE_LOCAL)
-                    ->setUrl('/de/canon-ixus-160-001'),
-            ],
-            [
-                'abstract_sku' => static::SKU1,
-                'urlTransfer' => (new SpyUrlEntityTransfer())
-                    ->setFkLocale(static::FK_EN_LOCAL)
-                    ->setUrl('/en/canon-ixus-160-001'),
-            ],
-        ];
+        $result = [];
 
-        $dataSet2 = new DataSet();
-        $dataSet2[ProductAbstractHydratorStep::PRODUCT_ABSTRACT_TRANSFER] = (new SpyProductAbstractEntityTransfer())
-            ->setNewFrom('2017-06-01 00:00:00.000000')
-            ->setNewTo('2017-06-30 00:00:00.000000')
-            ->setSku(static::SKU2)
-            ->setAttributes('{"megapixel":"20 MP","flash_range_tele":"1.3-1.5 m","memory_slots":"1","usb_version":"2","brand":"Canon"}')
-            ->setFkTaxSet(1)
-            ->setColorCode('#DC2E09');
-        $dataSet2[ProductAbstractHydratorStep::PRODUCT_ABSTRACT_LOCALIZED_TRANSFER] = [
-            [
-                'abstract_sku' => static::SKU2,
-                'localizedAttributeTransfer' => (new SpyProductAbstractLocalizedAttributesEntityTransfer())
-                    ->setFkLocale(static::FK_DE_LOCAL)
-                    ->setName('Canon IXUS 161')
-                    ->setDescription('Beeindruckende Aufnahmen, ganz einfach Smart Auto ermöglicht die mühelose Aufnahme von fantastischen Fotos und Movies – die Kamera wählt in diesem Modus automatisch die idealen Einstellungen für die jeweilige Aufnahmesituation. Sie müssen nur noch das Motiv anvisieren und auslösen. Ein Druck auf die Hilfe-Taste führt zu leicht verständlichen Erklärungen der Kamerafunktionen. Zahlreiche Kreativfilter laden zum Experimentieren ein und bieten echten Fotospaß. So lässt sich neben vielen anderen Optionen der Verzeichnungseffekt eines Fisheye-Objektivs nachempfinden oder in Fotos und Movies werden die Dinge wie Miniaturmodelle dargestellt.')
-                    ->setMetaTitle('Canon IXUS 160')
-                    ->setMetaKeywords('Canon,Entertainment Electronics')
-                    ->setMetaDescription('Beeindruckende Aufnahmen, ganz einfach Smart Auto ermöglicht die mühelose Aufnahme von fantastischen Fotos und Movies – die Kamera wählt in diesem Modus au')
-                    ->setAttributes('{"color":"Weinrot"}'),
-            ],
-            [
-                'abstract_sku' => static::SKU2,
-                'localizedAttributeTransfer' => (new SpyProductAbstractLocalizedAttributesEntityTransfer())
-                    ->setFkLocale(static::FK_EN_LOCAL)
-                    ->setName('Canon IXUS 161')
-                    ->setDescription('Beeindruckende Aufnahmen, ganz einfach Smart Auto ermöglicht die mühelose Aufnahme von fantastischen Fotos und Movies – die Kamera wählt in diesem Modus automatisch die idealen Einstellungen für die jeweilige Aufnahmesituation. Sie müssen nur noch das Motiv anvisieren und auslösen. Ein Druck auf die Hilfe-Taste führt zu leicht verständlichen Erklärungen der Kamerafunktionen. Zahlreiche Kreativfilter laden zum Experimentieren ein und bieten echten Fotospaß. So lässt sich neben vielen anderen Optionen der Verzeichnungseffekt eines Fisheye-Objektivs nachempfinden oder in Fotos und Movies werden die Dinge wie Miniaturmodelle dargestellt.')
-                    ->setMetaTitle('Canon IXUS 160')
-                    ->setMetaKeywords('Canon,Entertainment Electronics')
-                    ->setMetaDescription('Add a personal touch Make shots your own with quick and easy control over picture settings such as brightness and colour intensity. Preview the results whi')
-                    ->setAttributes('{"flash_range_tele":"4.2-4.9 ft","color":"Red"}'),
-            ],
-        ];
-        $dataSet2[ProductAbstractHydratorStep::PRODUCT_CATEGORY_TRANSFER] = [
-            [
-                'abstract_sku' => static::SKU2,
-                'productCategoryTransfer' => (new SpyProductCategoryEntityTransfer())
-                    ->setFkCategory(static::FK_CATEGORY)
-                    ->setProductOrder(static::PRODUCT_ORDER),
-            ],
-        ];
-        $dataSet2[ProductAbstractHydratorStep::PRODUCT_URL_TRANSFER] = [
-            [
-                'abstract_sku' => static::SKU2,
-                'urlTransfer' => (new SpyUrlEntityTransfer())
-                    ->setFkLocale(static::FK_DE_LOCAL)
-                    ->setUrl('/de/canon-ixus-160-002'),
-            ],
-            [
-                'abstract_sku' => static::SKU2,
-                'urlTransfer' => (new SpyUrlEntityTransfer())
-                    ->setFkLocale(static::FK_EN_LOCAL)
-                    ->setUrl('/en/canon-ixus-160-002'),
-            ],
-        ];
+        for ($i = 0; $i < static::DATA_SET_COUNT; $i++) {
+            $dataSet = new DataSet();
+            $spyProductAbstractEntityTransfer = (new SpyProductAbstractEntityBuilder())
+                ->build()
+                ->setFkTaxSet(1)
+                ->setAttributes('{"flash_range_tele":"4.2-4.9 ft","color":"Red"}');
+            $dataSet[ProductAbstractHydratorStep::PRODUCT_ABSTRACT_TRANSFER] = $spyProductAbstractEntityTransfer;
+            $dataSet[ProductAbstractHydratorStep::PRODUCT_ABSTRACT_LOCALIZED_TRANSFER] = [
+                [
+                    'abstract_sku' => $spyProductAbstractEntityTransfer->getSku(),
+                    'localizedAttributeTransfer' => (new SpyProductAbstractLocalizedAttributesEntityBuilder())
+                        ->build()
+                        ->setFkLocale(static::FK_DE_LOCAL)
+                        ->setAttributes('{"flash_range_tele":"4.2-4.9 ft","color":"Red"}'),
+                ],
+                [
+                    'abstract_sku' => $spyProductAbstractEntityTransfer->getSku(),
+                    'localizedAttributeTransfer' => (new SpyProductAbstractLocalizedAttributesEntityBuilder())
+                        ->build()
+                        ->setFkLocale(static::FK_EN_LOCAL)
+                        ->setAttributes('{"flash_range_tele":"4.2-4.9 ft","color":"Red"}'),
+                ],
+            ];
+            $dataSet[ProductAbstractHydratorStep::PRODUCT_CATEGORY_TRANSFER] = [
+                [
+                    'abstract_sku' => $spyProductAbstractEntityTransfer->getSku(),
+                    'productCategoryTransfer' => (new SpyProductCategoryEntityTransfer())
+                        ->setFkCategory(static::FK_CATEGORY)
+                        ->setProductOrder(static::PRODUCT_ORDER),
+                ],
+            ];
+            $dataSet[ProductAbstractHydratorStep::PRODUCT_URL_TRANSFER] = [
+                [
+                    'abstract_sku' => $spyProductAbstractEntityTransfer->getSku(),
+                    'urlTransfer' => (new SpyUrlEntityBuilder())
+                        ->build()
+                        ->setFkLocale(static::FK_DE_LOCAL),
+                ],
+                [
+                    'abstract_sku' => $spyProductAbstractEntityTransfer->getSku(),
+                    'urlTransfer' => (new SpyUrlEntityBuilder())
+                        ->build()
+                        ->setFkLocale(static::FK_EN_LOCAL),
+                ],
+            ];
+            $result[$spyProductAbstractEntityTransfer->getSku()] = $dataSet;
+        }
 
-        return [
-            static::SKU1 => $dataSet1,
-            static::SKU2 => $dataSet2,
-        ];
+        return $result;
     }
 
     /**
+     * @param array $skus
+     *
      * @return array
      */
-    protected function queryDataFromDB(): array
+    protected function queryDataFromDB(array $skus): array
     {
-        $abstractProducts = SpyProductAbstractQuery::create()->filterBySku_In([static::SKU1, static::SKU2])->find();
+        $abstractProducts = SpyProductAbstractQuery::create()->filterBySku_In($skus)->find();
         $productAbstractIds = array_column($abstractProducts->toArray(), 'IdProductAbstract');
         $abstractProductsLocalizedAttributes = SpyProductAbstractLocalizedAttributesQuery::create()->filterByFkProductAbstract_In($productAbstractIds);
         $abstractProductsCategories = SpyProductCategoryQuery::create()->filterByFkProductAbstract_In($productAbstractIds)->find();

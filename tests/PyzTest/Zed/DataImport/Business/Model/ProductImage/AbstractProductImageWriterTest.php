@@ -7,8 +7,8 @@
 
 namespace PyzTest\Zed\DataImport\Business\Model\ProductImage;
 
-use Generated\Shared\Transfer\SpyProductImageEntityTransfer;
-use Generated\Shared\Transfer\SpyProductImageSetEntityTransfer;
+use Generated\Shared\DataBuilder\SpyProductImageEntityBuilder;
+use Generated\Shared\DataBuilder\SpyProductImageSetEntityBuilder;
 use Generated\Shared\Transfer\SpyProductImageSetToProductImageEntityTransfer;
 use Orm\Zed\Product\Persistence\Map\SpyProductAbstractTableMap;
 use Orm\Zed\ProductImage\Persistence\Map\SpyProductImageSetTableMap;
@@ -43,34 +43,22 @@ abstract class AbstractProductImageWriterTest extends AbstractWriterTest
      */
     protected function createDataSets(): array
     {
-        $dataSet1 = new DataSet();
-        $dataSet1[ProductImageHydratorStep::KEY_ABSTRACT_SKU] = static::SKU1;
-        $dataSet1[ProductImageHydratorStep::KEY_CONCRETE_SKU] = '';
-        $dataSet1[ProductImageHydratorStep::KEY_LOCALE] = 'de_DE';
-        $dataSet1[ProductImageHydratorStep::PRODUCT_IMAGE_SET_TRANSFER] = (new SpyProductImageSetEntityTransfer())
-            ->setName('default');
-        $dataSet1[ProductImageHydratorStep::PRODUCT_IMAGE_TRANSFER] = (new SpyProductImageEntityTransfer())
-            ->setExternalUrlSmall('//images.icecat.biz/img/norm/medium/25904006-8438.jpg')
-            ->setExternalUrlLarge('//images.icecat.biz/img/norm/high/25904006-8438.jpg');
-        $dataSet1[ProductImageHydratorStep::PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER] = (new SpyProductImageSetToProductImageEntityTransfer())
-            ->setSortOrder(0);
+        $result = [];
 
-        $dataSet2 = new DataSet();
-        $dataSet2[ProductImageHydratorStep::KEY_ABSTRACT_SKU] = static::SKU2;
-        $dataSet2[ProductImageHydratorStep::KEY_CONCRETE_SKU] = '';
-        $dataSet2[ProductImageHydratorStep::KEY_LOCALE] = 'de_DE';
-        $dataSet2[ProductImageHydratorStep::PRODUCT_IMAGE_SET_TRANSFER] = (new SpyProductImageSetEntityTransfer())
-            ->setName('default');
-        $dataSet2[ProductImageHydratorStep::PRODUCT_IMAGE_TRANSFER] = (new SpyProductImageEntityTransfer())
-            ->setExternalUrlSmall('//images.icecat.biz/img/norm/medium/25904006-8439.jpg')
-            ->setExternalUrlLarge('//images.icecat.biz/img/norm/high/25904006-8439.jpg');
-        $dataSet2[ProductImageHydratorStep::PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER] = (new SpyProductImageSetToProductImageEntityTransfer())
-            ->setSortOrder(0);
+        foreach ([static::SKU1, static::SKU2] as $sku) {
+            $dataSet = new DataSet();
+            $dataSet[ProductImageHydratorStep::KEY_ABSTRACT_SKU] = $sku;
+            $dataSet[ProductImageHydratorStep::KEY_CONCRETE_SKU] = '';
+            $dataSet[ProductImageHydratorStep::KEY_LOCALE] = 'de_DE';
+            $dataSet[ProductImageHydratorStep::PRODUCT_IMAGE_SET_TRANSFER] = (new SpyProductImageSetEntityBuilder())->build();
+            $dataSet[ProductImageHydratorStep::PRODUCT_IMAGE_TRANSFER] = (new SpyProductImageEntityBuilder())->build();
+            $dataSet[ProductImageHydratorStep::PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER] = (new SpyProductImageSetToProductImageEntityTransfer())
+                ->setSortOrder(0);
 
-        return [
-            static::SKU1 => $dataSet1,
-            static::SKU2 => $dataSet2,
-        ];
+            $result[$sku] = $dataSet;
+        }
+
+        return $result;
     }
 
     /**

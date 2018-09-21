@@ -22,8 +22,8 @@ class ProductConcreteWriterPropelTest extends AbstractProductConcreteWriterTest
 {
     /**
      * @group ProductWriterTest
-     * @group ProductAbstractWriterTest
-     * @group ProductAbstractWriterPropelTest
+     * @group ProductConcreteWriterTest
+     * @group ProductConcreteWriterPropelTest
      *
      * @return void
      */
@@ -36,6 +36,6 @@ class ProductConcreteWriterPropelTest extends AbstractProductConcreteWriterTest
             $writer->write($dataSet);
         }
 
-        $this->assertImportedData($dataSets, $this->queryDataFromDB());
+        $this->assertImportedData($dataSets, $this->queryDataFromDB(array_keys($dataSets)));
     }
 }

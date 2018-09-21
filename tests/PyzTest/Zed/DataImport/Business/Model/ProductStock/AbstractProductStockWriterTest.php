@@ -47,30 +47,34 @@ abstract class AbstractProductStockWriterTest extends AbstractWriterTest
      */
     protected function createDataSets(): array
     {
-        $dataSet1 = new DataSet();
-        $dataSet1[ProductStockHydratorStep::KEY_IS_BUNDLE] = 0;
-        $dataSet1[ProductStockHydratorStep::KEY_CONCRETE_SKU] = static::SKU1_CONCRETE;
-        $dataSet1[ProductStockHydratorStep::STOCK_ENTITY_TRANSFER] = (new SpyStockEntityTransfer())
-            ->setName(static::WAREHOUSE1_NAME);
+        $result = [];
 
-        $dataSet1[ProductStockHydratorStep::STOCK_PRODUCT_ENTITY_TRANSFER] = (new SpyStockProductEntityTransfer())
-            ->setQuantity(static::WAREHOUSE1_QTY)
-            ->setIsNeverOutOfStock(0);
-
-        $dataSet2 = new DataSet();
-        $dataSet2[ProductStockHydratorStep::KEY_IS_BUNDLE] = 0;
-        $dataSet2[ProductStockHydratorStep::KEY_CONCRETE_SKU] = static::SKU2_CONCRETE;
-        $dataSet2[ProductStockHydratorStep::STOCK_ENTITY_TRANSFER] = (new SpyStockEntityTransfer())
-            ->setName(static::WAREHOUSE2_NAME);
-
-        $dataSet2[ProductStockHydratorStep::STOCK_PRODUCT_ENTITY_TRANSFER] = (new SpyStockProductEntityTransfer())
-            ->setQuantity(static::WAREHOUSE2_QTY)
-            ->setIsNeverOutOfStock(0);
-
-        return [
-            static::SKU1_CONCRETE => $dataSet1,
-            static::SKU2_CONCRETE => $dataSet2,
+        $data = [
+            static::SKU1_CONCRETE => [
+                'warehouseName' => static::WAREHOUSE1_NAME,
+                'warehouseQty' => static::WAREHOUSE1_QTY,
+            ],
+            static::SKU2_CONCRETE => [
+                'warehouseName' => static::WAREHOUSE2_NAME,
+                'warehouseQty' => static::WAREHOUSE2_QTY,
+            ],
         ];
+        foreach ($data as $sku => $warehouseData) {
+            $dataSet = new DataSet();
+
+            $dataSet[ProductStockHydratorStep::KEY_IS_BUNDLE] = 0;
+            $dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU] = $sku;
+            $dataSet[ProductStockHydratorStep::STOCK_ENTITY_TRANSFER] = (new SpyStockEntityTransfer())
+                ->setName($warehouseData['warehouseName']);
+
+            $dataSet[ProductStockHydratorStep::STOCK_PRODUCT_ENTITY_TRANSFER] = (new SpyStockProductEntityTransfer())
+                ->setQuantity($warehouseData['warehouseQty'])
+                ->setIsNeverOutOfStock(0);
+
+            $result[$sku] = $dataSet;
+        }
+
+        return $result;
     }
 
     /**

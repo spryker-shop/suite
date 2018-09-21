@@ -8,9 +8,9 @@
 namespace PyzTest\Zed\DataImport\Business\Model\ProductPrice;
 
 use ArrayObject;
+use Generated\Shared\DataBuilder\SpyPriceProductStoreEntityBuilder;
 use Generated\Shared\Transfer\SpyCurrencyEntityTransfer;
 use Generated\Shared\Transfer\SpyPriceProductEntityTransfer;
-use Generated\Shared\Transfer\SpyPriceProductStoreEntityTransfer;
 use Generated\Shared\Transfer\SpyPriceTypeEntityTransfer;
 use Generated\Shared\Transfer\SpyProductAbstractEntityTransfer;
 use Generated\Shared\Transfer\SpyStoreEntityTransfer;
@@ -43,45 +43,45 @@ abstract class AbstractProductPriceWriterTest extends AbstractWriterTest
 
     protected const PRICE_MODE_CONFIGURATION = 2;
 
+    protected const STORE_NAME = 'DE';
+
+    protected const CURRENCY = 'EUR';
+
     /**
      * @return array
      */
     protected function createDataSets(): array
     {
+        $result = [];
+
+        $priceProductStore = (new SpyPriceProductStoreEntityBuilder())
+            ->build()
+            ->setCurrency((new SpyCurrencyEntityTransfer())->setName(static::CURRENCY))
+            ->setStore((new SpyStoreEntityTransfer())->setName(static::STORE_NAME));
         $priceProductStores = new ArrayObject();
-        $priceProductStores->append((new SpyPriceProductStoreEntityTransfer())
-            ->setNetPrice('8999')
-            ->setGrossPrice('9999')
-            ->setCurrency((new SpyCurrencyEntityTransfer())->setName('EUR'))
-            ->setStore((new SpyStoreEntityTransfer())->setName('DE')));
+        $priceProductStores->append($priceProductStore);
 
-        $dataSet1 = new DataSet();
-        $dataSet1[ProductPriceHydratorStep::KEY_ABSTRACT_SKU] = static::SKU1;
-        $dataSet1[ProductPriceHydratorStep::KEY_CONCRETE_SKU] = '';
-        $dataSet1[ProductPriceHydratorStep::PRICE_TYPE_TRANSFER] = (new SpyPriceTypeEntityTransfer())
-            ->setName(static::PRICE_TYPE1)
-            ->setPriceModeConfiguration(static::PRICE_MODE_CONFIGURATION);
+        foreach ([static::SKU1 => static::PRICE_TYPE1, static::SKU2 => static::PRICE_TYPE2] as $sku => $priceType) {
+            $dataSet = new DataSet();
 
-        $dataSet1[ProductPriceHydratorStep::PRICE_PRODUCT_TRANSFER] = (new SpyPriceProductEntityTransfer())
-            ->setPriceType($dataSet1[ProductPriceHydratorStep::PRICE_TYPE_TRANSFER])
-            ->setSpyProductAbstract((new SpyProductAbstractEntityTransfer())->setSku(static::SKU1))
-            ->setSpyPriceProductStores($priceProductStores);
+            $dataSet[ProductPriceHydratorStep::KEY_STORE] = $priceProductStore->getStore()->getName();
+            $dataSet[ProductPriceHydratorStep::KEY_CURRENCY] = $priceProductStore->getCurrency()->getName();
+            $dataSet[ProductPriceHydratorStep::KEY_PRICE_GROSS] = $priceProductStore->getGrossPrice();
+            $dataSet[ProductPriceHydratorStep::KEY_PRICE_NET] = $priceProductStore->getNetPrice();
+            $dataSet[ProductPriceHydratorStep::KEY_ABSTRACT_SKU] = $sku;
+            $dataSet[ProductPriceHydratorStep::KEY_CONCRETE_SKU] = '';
+            $dataSet[ProductPriceHydratorStep::PRICE_TYPE_TRANSFER] = (new SpyPriceTypeEntityTransfer())
+                ->setName($priceType)
+                ->setPriceModeConfiguration(static::PRICE_MODE_CONFIGURATION);
+            $dataSet[ProductPriceHydratorStep::PRICE_PRODUCT_TRANSFER] = (new SpyPriceProductEntityTransfer())
+                ->setPriceType($dataSet[ProductPriceHydratorStep::PRICE_TYPE_TRANSFER])
+                ->setSpyProductAbstract((new SpyProductAbstractEntityTransfer())->setSku($sku))
+                ->setSpyPriceProductStores($priceProductStores);
 
-        $dataSet2 = new DataSet();
-        $dataSet2[ProductPriceHydratorStep::KEY_ABSTRACT_SKU] = static::SKU2;
-        $dataSet2[ProductPriceHydratorStep::KEY_CONCRETE_SKU] = '';
-        $dataSet2[ProductPriceHydratorStep::PRICE_TYPE_TRANSFER] = (new SpyPriceTypeEntityTransfer())
-            ->setName(static::PRICE_TYPE2)
-            ->setPriceModeConfiguration(static::PRICE_MODE_CONFIGURATION);
-        $dataSet2[ProductPriceHydratorStep::PRICE_PRODUCT_TRANSFER] = (new SpyPriceProductEntityTransfer())
-            ->setPriceType($dataSet2[ProductPriceHydratorStep::PRICE_TYPE_TRANSFER])
-            ->setSpyProductAbstract((new SpyProductAbstractEntityTransfer())->setSku(static::SKU2))
-            ->setSpyPriceProductStores($priceProductStores);
+            $result[$sku] = $dataSet;
+        }
 
-        return [
-            static::SKU1 => $dataSet1,
-            static::SKU2 => $dataSet2,
-        ];
+        return $result;
     }
 
     /**
