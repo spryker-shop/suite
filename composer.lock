@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ac69e1cb479629bd7a9adf40fc2b5541",
+    "content-hash": "7f4941fdfd926f6d9fda518bb7445f96",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -1863,7 +1863,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -2436,16 +2436,16 @@
         },
         {
             "name": "spryker/rabbit-mq",
-            "version": "dev-master",
+            "version": "dev-feature/cc-184/dev-pub-sync-performance",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "86b75a2ad2e879fac9af7b73569e8fd380fa74bb"
+                "reference": "441018ac67d466bf1b4651da0ab6e74e47251b38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/86b75a2ad2e879fac9af7b73569e8fd380fa74bb",
-                "reference": "86b75a2ad2e879fac9af7b73569e8fd380fa74bb",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/441018ac67d466bf1b4651da0ab6e74e47251b38",
+                "reference": "441018ac67d466bf1b4651da0ab6e74e47251b38",
                 "shasum": ""
             },
             "require": {
@@ -2491,7 +2491,7 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "time": "2018-08-09T12:54:53+00:00"
+            "time": "2018-09-19T13:33:51+00:00"
         },
         {
             "name": "spryker/spryker",
@@ -2499,7 +2499,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "43ca68d7c82b2b5e437063749f5055abd5554e7f"
+                "reference": "7694e3b5f10323565afd9c6e3fa0a8e84e848a06"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2772,7 +2772,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-09-20T11:25:36+00:00"
+            "time": "2018-09-21T06:24:57+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2863,28 +2863,24 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/synchronization-behavior.git",
-                "reference": "e16098a60acbd743830bb2899091c6474b480c02"
+                "reference": "64e9287e7bd496ea11e381c7e4fd07325e84c886"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/e16098a60acbd743830bb2899091c6474b480c02",
-                "reference": "e16098a60acbd743830bb2899091c6474b480c02",
+                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/64e9287e7bd496ea11e381c7e4fd07325e84c886",
+                "reference": "64e9287e7bd496ea11e381c7e4fd07325e84c886",
                 "shasum": ""
             },
             "require": {
                 "spryker/kernel": "^3.20.0",
                 "spryker/propel-orm": "^1.6.0",
+                "spryker/queue": "^1.1.2",
+                "spryker/synchronization": "^0.1.0 || ^0.2.0 || ^1.0.0",
                 "spryker/zend": "^2.1.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
-                "spryker/queue": "^1.1.0",
-                "spryker/synchronization": "^0.1.0 || ^0.2.0 || ^1.0.0",
                 "spryker/testify": "*"
-            },
-            "suggest": {
-                "spryker/queue": "Generated classes are using spryker/queue module.",
-                "spryker/synchronization": "Generated classes are using spryker/synchronization module."
             },
             "type": "propel-behavior",
             "extra": {
@@ -2907,7 +2903,7 @@
                 "proprietary"
             ],
             "description": "SynchronizationBehavior module",
-            "time": "2018-09-18T11:41:37+00:00"
+            "time": "2018-09-20T12:48:12+00:00"
         },
         {
             "name": "spryker/uuid-behavior",
@@ -6469,7 +6465,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-12T17:28:44+00:00"
+            "time": "2017-12-13T13:21:38+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -8046,21 +8042,21 @@
         },
         {
             "name": "slevomat/coding-standard",
-            "version": "4.7.3",
+            "version": "4.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/slevomat/coding-standard.git",
-                "reference": "360ed8f9ce03afbf07fc67d198fe187fc2543c32"
+                "reference": "7b33fb140a8ee1502754c4c8dc44c3082746f30c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/360ed8f9ce03afbf07fc67d198fe187fc2543c32",
-                "reference": "360ed8f9ce03afbf07fc67d198fe187fc2543c32",
+                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/7b33fb140a8ee1502754c4c8dc44c3082746f30c",
+                "reference": "7b33fb140a8ee1502754c4c8dc44c3082746f30c",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1",
-                "squizlabs/php_codesniffer": "^3.2.3"
+                "squizlabs/php_codesniffer": "^3.3.0"
             },
             "require-dev": {
                 "jakub-onderka/php-parallel-lint": "1.0.0",
@@ -8068,7 +8064,7 @@
                 "phpstan/phpstan": "0.9.2",
                 "phpstan/phpstan-phpunit": "0.9.4",
                 "phpstan/phpstan-strict-rules": "0.9",
-                "phpunit/phpunit": "7.3.1"
+                "phpunit/phpunit": "7.3.5"
             },
             "type": "phpcodesniffer-standard",
             "autoload": {
@@ -8081,7 +8077,7 @@
                 "MIT"
             ],
             "description": "Slevomat Coding Standard for PHP_CodeSniffer complements Consistence Coding Standard by providing sniffs with additional checks.",
-            "time": "2018-09-03T21:12:37+00:00"
+            "time": "2018-09-19T22:49:38+00:00"
         },
         {
             "name": "sllh/composer-versions-check",
@@ -8284,7 +8280,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-08-31T16:41:34+00:00"
+            "time": "2018-09-07T17:20:34+00:00"
         },
         {
             "name": "spryker/development-core",
