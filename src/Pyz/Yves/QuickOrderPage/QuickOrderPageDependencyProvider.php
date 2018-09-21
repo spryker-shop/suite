@@ -72,7 +72,7 @@ class QuickOrderPageDependencyProvider extends SprykerQuickOrderPageDependencyPr
     }
 
     /**
-     * @return \Spryker\Zed\QuickOrderExtension\Dependency\Plugin\QuickOrderProductPriceTransferExpanderPluginInterface[]
+     * @return \Spryker\Client\QuickOrderExtension\Dependency\Plugin\QuickOrderProductPriceTransferExpanderPluginInterface[]
      */
     protected function getQuickOrderProductPriceTransferExpanderPlugins(): array
     {
