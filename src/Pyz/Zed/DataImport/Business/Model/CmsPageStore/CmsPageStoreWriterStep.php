@@ -10,6 +10,7 @@ namespace Pyz\Zed\DataImport\Business\Model\CmsPageStore;
 use Orm\Zed\Cms\Persistence\SpyCmsPageQuery;
 use Orm\Zed\Cms\Persistence\SpyCmsPageStoreQuery;
 use Orm\Zed\Store\Persistence\SpyStoreQuery;
+use Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
@@ -46,28 +47,44 @@ class CmsPageStoreWriterStep implements DataImportStepInterface
     /**
      * @param string $cmsPageKey
      *
+     * @throws \Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException
+     *
      * @return int
      */
     protected function getIdCmsPageByPageKey(string $cmsPageKey): int
     {
         if (!isset(static::$idCmsPageBuffer[$cmsPageKey])) {
-            static::$idCmsPageBuffer[$cmsPageKey] =
-                SpyCmsPageQuery::create()->findOneByPageKey($cmsPageKey)->getIdCmsPage();
+            $cmsPageEntity = SpyCmsPageQuery::create()->findOneByPageKey($cmsPageKey);
+
+            if (!$cmsPageEntity) {
+                throw new EntityNotFoundException(sprintf('CmsPage with page key "%s" not found in the database!', $cmsPageKey));
+            }
+
+            static::$idCmsPageBuffer[$cmsPageKey] = $cmsPageEntity->getIdCmsPage();
         }
+
         return static::$idCmsPageBuffer[$cmsPageKey];
     }
 
     /**
      * @param string $storeName
      *
+     * @throws \Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException
+     *
      * @return int
      */
     protected function getIdStoreByName(string $storeName): int
     {
         if (!isset(static::$idStoreBuffer[$storeName])) {
-            static::$idStoreBuffer[$storeName] =
-                SpyStoreQuery::create()->findOneByName($storeName)->getIdStore();
+            $storeEntity = SpyStoreQuery::create()->findOneByName($storeName);
+
+            if (!$storeEntity) {
+                throw new EntityNotFoundException(sprintf('Store with name "%s" not found in the database!', $storeName));
+            }
+
+            static::$idStoreBuffer[$storeName] = $storeEntity->getIdStore();
         }
+
         return static::$idStoreBuffer[$storeName];
     }
 }
