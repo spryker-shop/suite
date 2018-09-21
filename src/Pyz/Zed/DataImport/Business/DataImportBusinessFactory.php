@@ -16,6 +16,8 @@ use Pyz\Zed\DataImport\Business\Model\CmsBlockStore\CmsBlockStoreWriterStep;
 use Pyz\Zed\DataImport\Business\Model\CmsPage\CmsPageWriterStep;
 use Pyz\Zed\DataImport\Business\Model\CmsPage\PlaceholderExtractorStep;
 use Pyz\Zed\DataImport\Business\Model\CmsPageStore\CmsPageStoreWriterStep;
+use Pyz\Zed\DataImport\Business\Model\CmsPageStore\Step\CmsPageKeyToIdCmsPageStep;
+use Pyz\Zed\DataImport\Business\Model\CmsPageStore\Step\StoreNameToIdStoreStep;
 use Pyz\Zed\DataImport\Business\Model\CmsTemplate\CmsTemplateWriterStep;
 use Pyz\Zed\DataImport\Business\Model\Country\Repository\CountryRepository;
 use Pyz\Zed\DataImport\Business\Model\Currency\CurrencyWriterStep;
@@ -71,6 +73,7 @@ use Pyz\Zed\DataImport\DataImportDependencyProvider;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\ProductSearch\Code\KeyBuilder\FilterGlossaryKeyBuilder;
 use Spryker\Zed\DataImport\Business\DataImportBusinessFactory as SprykerDataImportBusinessFactory;
+use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\Discount\DiscountConfig;
 
 /**
@@ -985,6 +988,8 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getCmsPageStoreDataImporterConfiguration());
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(CmsPageStoreWriterStep::BULK_SIZE);
+        $dataSetStepBroker->addStep($this->createStoreNameToIdStoreStep());
+        $dataSetStepBroker->addStep($this->createCmsPageKeyToIdCmsPageStep());
         $dataSetStepBroker->addStep(new CmsPageStoreWriterStep());
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
 
@@ -1069,6 +1074,22 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     protected function createAddProductAttributeKeysStep()
     {
         return new AddProductAttributeKeysStep();
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
+     */
+    public function createStoreNameToIdStoreStep(): DataImportStepInterface
+    {
+        return new StoreNameToIdStoreStep();
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
+     */
+    public function createCmsPageKeyToIdCmsPageStep(): DataImportStepInterface
+    {
+        return new CmsPageKeyToIdCmsPageStep();
     }
 
     /**
