@@ -12,7 +12,7 @@ use Spryker\Zed\Propel\PropelConfig as SprykerPropelConfig;
 class PropelConfig extends SprykerPropelConfig
 {
     /**
-     * @project Only needed in Project, not in demoshop
+     * @project Only needed in nonsplit projects.
      *
      * @return array
      */
