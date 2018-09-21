@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\CustomerAccess;
 
+use Spryker\Shared\CustomerAccess\CustomerAccessConfig as SprykerSharedCustomerAccessConfig;
 use Spryker\Zed\CustomerAccess\CustomerAccessConfig as SprykerCustomerAccessConfig;
 
 class CustomerAccessConfig extends SprykerCustomerAccessConfig
@@ -19,11 +20,11 @@ class CustomerAccessConfig extends SprykerCustomerAccessConfig
     public function getContentTypes(): array
     {
         return [
-            static::CONTENT_TYPE_PRICE,
-            static::CONTENT_TYPE_ORDER_PLACE_SUBMIT,
-            static::CONTENT_TYPE_ADD_TO_CART,
-            static::CONTENT_TYPE_WISHLIST,
-            static::CONTENT_TYPE_SHOPPING_LIST,
+            SprykerSharedCustomerAccessConfig::CONTENT_TYPE_PRICE,
+            SprykerSharedCustomerAccessConfig::CONTENT_TYPE_ORDER_PLACE_SUBMIT,
+            SprykerSharedCustomerAccessConfig::CONTENT_TYPE_ADD_TO_CART,
+            SprykerSharedCustomerAccessConfig::CONTENT_TYPE_WISHLIST,
+            SprykerSharedCustomerAccessConfig::CONTENT_TYPE_SHOPPING_LIST,
         ];
     }
 }
