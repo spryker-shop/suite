@@ -1079,7 +1079,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     /**
      * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
      */
-    public function createStoreNameToIdStoreStep(): DataImportStepInterface
+    protected function createStoreNameToIdStoreStep(): DataImportStepInterface
     {
         return new StoreNameToIdStoreStep();
     }
@@ -1087,7 +1087,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     /**
      * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
      */
-    public function createCmsPageKeyToIdCmsPageStep(): DataImportStepInterface
+    protected function createCmsPageKeyToIdCmsPageStep(): DataImportStepInterface
     {
         return new CmsPageKeyToIdCmsPageStep();
     }
