@@ -35,7 +35,6 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
     protected $productBundleFacade;
 
     /**
-     * ProductStockPropelWriter constructor.
      *
      * @param \Spryker\Zed\Availability\Business\AvailabilityFacadeInterface $availabilityFacade
      * @param \Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface $productBundleFacade

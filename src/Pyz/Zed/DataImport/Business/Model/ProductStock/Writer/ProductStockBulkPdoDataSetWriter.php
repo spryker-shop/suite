@@ -73,7 +73,6 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
     protected $storeFacade;
 
     /**
-     * ProductStockBulkPdoWriter constructor.
      *
      * @param \Spryker\Zed\Stock\Business\StockFacadeInterface $stockFacade
      * @param \Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface $productBundleFacade
@@ -281,7 +280,7 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
 
             $quantity = 0;
             if (in_array($stockProduct[SpyStockTableMap::COL_NAME], $stocks[$storeTransfer->getName()])) {
-                $quantity = ($result[$sku][static::KEY_QUANTITY] ?? 0) + $stockProduct[SpyStockProductTableMap::COL_QUANTITY];
+                $quantity = $stockProduct[SpyStockProductTableMap::COL_QUANTITY];
             }
             $result[$sku][static::KEY_QUANTITY] = $quantity;
         }
