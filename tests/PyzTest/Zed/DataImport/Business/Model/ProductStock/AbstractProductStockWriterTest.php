@@ -13,11 +13,14 @@ use Orm\Zed\Availability\Persistence\Map\SpyAvailabilityAbstractTableMap;
 use Orm\Zed\Availability\Persistence\Map\SpyAvailabilityTableMap;
 use Orm\Zed\Availability\Persistence\SpyAvailabilityAbstractQuery;
 use Orm\Zed\Product\Persistence\Map\SpyProductTableMap;
+use Orm\Zed\Product\Persistence\SpyProductQuery;
 use Orm\Zed\Stock\Persistence\Map\SpyStockProductTableMap;
 use Orm\Zed\Stock\Persistence\Map\SpyStockTableMap;
 use Orm\Zed\Stock\Persistence\SpyStockProductQuery;
+use Orm\Zed\Stock\Persistence\SpyStockQuery;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\ProductStockHydratorStep;
 use PyzTest\Zed\DataImport\Business\Model\AbstractWriterTest;
+use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
 
 /**
@@ -39,36 +42,31 @@ abstract class AbstractProductStockWriterTest extends AbstractWriterTest
     protected const WAREHOUSE1_NAME = 'Warehouse1';
     protected const WAREHOUSE2_NAME = 'Warehouse2';
 
-    protected const WAREHOUSE1_QTY = 155;
-    protected const WAREHOUSE2_QTY = 154;
+    protected const WAREHOUSES_QTY = [
+        12345,
+        123456,
+    ];
 
     /**
+     * @param array $productSkus
+     * @param array $warehouses
+     *
      * @return array
      */
-    protected function createDataSets(): array
+    protected function createDataSets(array $productSkus, array $warehouses): array
     {
         $result = [];
 
-        $data = [
-            static::SKU1_CONCRETE => [
-                'warehouseName' => static::WAREHOUSE1_NAME,
-                'warehouseQty' => static::WAREHOUSE1_QTY,
-            ],
-            static::SKU2_CONCRETE => [
-                'warehouseName' => static::WAREHOUSE2_NAME,
-                'warehouseQty' => static::WAREHOUSE2_QTY,
-            ],
-        ];
-        foreach ($data as $sku => $warehouseData) {
+        foreach ($productSkus as $index => $sku) {
             $dataSet = new DataSet();
 
             $dataSet[ProductStockHydratorStep::KEY_IS_BUNDLE] = 0;
             $dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU] = $sku;
             $dataSet[ProductStockHydratorStep::STOCK_ENTITY_TRANSFER] = (new SpyStockEntityTransfer())
-                ->setName($warehouseData['warehouseName']);
+                ->setName($warehouses[$index] ?? $warehouses[0]);
 
             $dataSet[ProductStockHydratorStep::STOCK_PRODUCT_ENTITY_TRANSFER] = (new SpyStockProductEntityTransfer())
-                ->setQuantity($warehouseData['warehouseQty'])
+                ->setQuantity(static::WAREHOUSES_QTY[$index])
                 ->setIsNeverOutOfStock(0);
 
             $result[$sku] = $dataSet;
@@ -78,18 +76,21 @@ abstract class AbstractProductStockWriterTest extends AbstractWriterTest
     }
 
     /**
+     * @param array $skus
+     * @param array $warehouses
+     *
      * @return array
      */
-    protected function queryDataFromDB(): array
+    protected function queryDataFromDB(array $skus, array $warehouses): array
     {
 
         $stockProducts = SpyStockProductQuery::create()
-            ->filterByQuantity_In([static::WAREHOUSE1_QTY, static::WAREHOUSE2_QTY])
+            ->filterByQuantity_In(static::WAREHOUSES_QTY)
             ->useStockQuery()
-                ->filterByName_In([static::WAREHOUSE1_NAME, static::WAREHOUSE2_NAME])
+                ->filterByName_In($warehouses)
             ->endUse()
             ->useSpyProductQuery()
-                ->filterBySku_In([static::SKU1_CONCRETE, static::SKU2_CONCRETE])
+                ->filterBySku_In($skus)
             ->endUse()
             ->select([
                 SpyStockTableMap::COL_NAME,
@@ -100,7 +101,7 @@ abstract class AbstractProductStockWriterTest extends AbstractWriterTest
             ->toArray();
         $availability = SpyAvailabilityAbstractQuery::create()
             ->useSpyAvailabilityQuery()
-                ->filterBySku_In([static::SKU1_CONCRETE, static::SKU2_CONCRETE])
+                ->filterBySku_In($skus)
             ->endUse()
             ->select([
                 SpyAvailabilityTableMap::COL_SKU,
@@ -109,7 +110,7 @@ abstract class AbstractProductStockWriterTest extends AbstractWriterTest
                 SpyAvailabilityAbstractTableMap::COL_QUANTITY,
             ])
             ->useStoreQuery()
-                ->filterByName('DE')
+                ->filterByName(Store::getDefaultStore())
             ->endUse()
             ->find()
             ->toArray();
@@ -154,5 +155,29 @@ abstract class AbstractProductStockWriterTest extends AbstractWriterTest
                 $availability[SpyAvailabilityTableMap::COL_QUANTITY]
             );
         }
+    }
+
+    /**
+     * @return array
+     */
+    protected function getProductsSkus(): array
+    {
+        return SpyProductQuery::create()
+            ->limit(count(static::WAREHOUSES_QTY))
+            ->select(SpyProductTableMap::COL_SKU)
+            ->find()
+            ->toArray();
+    }
+
+    /**
+     * @return array
+     */
+    protected function getWarehouses(): array
+    {
+        return SpyStockQuery::create()
+            ->limit(count(static::WAREHOUSES_QTY))
+            ->select(SpyStockTableMap::COL_NAME)
+            ->find()
+            ->toArray();
     }
 }

@@ -36,6 +36,6 @@ class ProductPriceWriterPropelTest extends AbstractProductPriceWriterTest
             $writer->write($dataSet);
         }
 
-        $this->assertImportedData($dataSets, $this->queryDataFromDB());
+        $this->assertImportedData($dataSets, $this->queryDataFromDB(array_keys($dataSets)));
     }
 }

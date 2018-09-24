@@ -31,12 +31,14 @@ class ProductImageWriterPdoTest extends AbstractProductImageWriterTest
     {
         $writer = $this->getDataImportBusinessFactoryStub()->createProductImageBulkPdoWriter();
 
-        $dataSets = $this->createDataSets();
+        $abstractProducts = $this->getAbstractProducts();
+        $locale = $this->getLocale();
+        $dataSets = $this->createDataSets($abstractProducts, $locale);
         foreach ($dataSets as $dataSet) {
             $writer->write($dataSet);
         }
         $writer->flush();
 
-        $this->assertImportedData($dataSets, $this->queryDataFromDB());
+        $this->assertImportedData($dataSets, $this->queryDataFromDB($abstractProducts, $locale));
     }
 }

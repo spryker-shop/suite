@@ -10,7 +10,10 @@ namespace PyzTest\Zed\DataImport\Business\Model\ProductImage;
 use Generated\Shared\DataBuilder\SpyProductImageEntityBuilder;
 use Generated\Shared\DataBuilder\SpyProductImageSetEntityBuilder;
 use Generated\Shared\Transfer\SpyProductImageSetToProductImageEntityTransfer;
+use Orm\Zed\Locale\Persistence\SpyLocale;
+use Orm\Zed\Locale\Persistence\SpyLocaleQuery;
 use Orm\Zed\Product\Persistence\Map\SpyProductAbstractTableMap;
+use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Orm\Zed\ProductImage\Persistence\Map\SpyProductImageSetTableMap;
 use Orm\Zed\ProductImage\Persistence\Map\SpyProductImageSetToProductImageTableMap;
 use Orm\Zed\ProductImage\Persistence\Map\SpyProductImageTableMap;
@@ -33,43 +36,49 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
  */
 abstract class AbstractProductImageWriterTest extends AbstractWriterTest
 {
-    protected const SKU1 = '001';
-    protected const SKU2 = '002';
-
-    protected const FK_DE_LOCAL = 46;
+    protected const PRODUCTS_LIMIT = 2;
 
     /**
+     * @param array $products
+     * @param \Orm\Zed\Locale\Persistence\SpyLocale $locale
+     *
      * @return array
      */
-    protected function createDataSets(): array
+    protected function createDataSets(array $products, SpyLocale $locale): array
     {
         $result = [];
 
-        foreach ([static::SKU1, static::SKU2] as $sku) {
+        foreach ($products as $product) {
             $dataSet = new DataSet();
-            $dataSet[ProductImageHydratorStep::KEY_ABSTRACT_SKU] = $sku;
+            $dataSet[ProductImageHydratorStep::KEY_ABSTRACT_SKU] = $product[SpyProductAbstractTableMap::COL_SKU];
             $dataSet[ProductImageHydratorStep::KEY_CONCRETE_SKU] = '';
-            $dataSet[ProductImageHydratorStep::KEY_LOCALE] = 'de_DE';
-            $dataSet[ProductImageHydratorStep::PRODUCT_IMAGE_SET_TRANSFER] = (new SpyProductImageSetEntityBuilder())->build();
+            $dataSet[ProductImageHydratorStep::KEY_LOCALE] = $locale->getLocaleName();
+            $dataSet[ProductImageHydratorStep::PRODUCT_IMAGE_SET_TRANSFER] = (new SpyProductImageSetEntityBuilder())
+                ->build()
+                ->setFkLocale($locale->getIdLocale())
+                ->setFkProductAbstract($product[SpyProductAbstractTableMap::COL_ID_PRODUCT_ABSTRACT]);
             $dataSet[ProductImageHydratorStep::PRODUCT_IMAGE_TRANSFER] = (new SpyProductImageEntityBuilder())->build();
             $dataSet[ProductImageHydratorStep::PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER] = (new SpyProductImageSetToProductImageEntityTransfer())
                 ->setSortOrder(0);
 
-            $result[$sku] = $dataSet;
+            $result[$product[SpyProductAbstractTableMap::COL_SKU]] = $dataSet;
         }
 
         return $result;
     }
 
     /**
+     * @param array $products
+     * @param \Orm\Zed\Locale\Persistence\SpyLocale $locale
+     *
      * @return array
      */
-    protected function queryDataFromDB(): array
+    protected function queryDataFromDB(array $products, SpyLocale $locale): array
     {
         $productImageSets = SpyProductImageSetQuery::create()
-            ->filterByFkLocale(static::FK_DE_LOCAL)
+            ->filterByFkLocale($locale->getIdLocale())
             ->useSpyProductAbstractQuery()
-                ->filterBySku_In([static::SKU1, static::SKU2])
+                ->filterBySku_In(array_column($products, SpyProductAbstractTableMap::COL_SKU))
             ->endUse()
             ->select([
                 SpyProductImageSetTableMap::COL_ID_PRODUCT_IMAGE_SET,
@@ -78,6 +87,7 @@ abstract class AbstractProductImageWriterTest extends AbstractWriterTest
             ])
             ->find()
             ->toArray();
+
         $setIds = array_column($productImageSets, SpyProductImageSetTableMap::COL_ID_PRODUCT_IMAGE_SET);
         $productImages = SpyProductImageQuery::create()
             ->useSpyProductImageSetToProductImageQuery()
@@ -117,5 +127,28 @@ abstract class AbstractProductImageWriterTest extends AbstractWriterTest
                 $productImageSet[SpyProductImageSetTableMap::COL_NAME]
             );
         }
+    }
+
+    /**
+     * @return array
+     */
+    protected function getAbstractProducts(): array
+    {
+        return SpyProductAbstractQuery::create()
+            ->select([
+                SpyProductAbstractTableMap::COL_SKU,
+                SpyProductAbstractTableMap::COL_ID_PRODUCT_ABSTRACT,
+            ])
+            ->limit(static::PRODUCTS_LIMIT)
+            ->find()
+            ->toArray();
+    }
+
+    /**
+     * @return \Orm\Zed\Locale\Persistence\SpyLocale
+     */
+    protected function getLocale(): SpyLocale
+    {
+        return SpyLocaleQuery::create()->findOne();
     }
 }

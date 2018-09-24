@@ -9,10 +9,12 @@ namespace PyzTest\Zed\DataImport\Business\Model\ProductAbstractStore;
 
 use Generated\Shared\Transfer\ProductAbstractStoreTransfer;
 use Orm\Zed\Product\Persistence\Map\SpyProductAbstractTableMap;
+use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Orm\Zed\Product\Persistence\SpyProductAbstractStoreQuery;
 use Orm\Zed\Store\Persistence\Map\SpyStoreTableMap;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\ProductAbstractStoreHydratorStep;
 use PyzTest\Zed\DataImport\Business\Model\AbstractWriterTest;
+use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
 
 /**
@@ -28,10 +30,7 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
  */
 abstract class AbstractProductAbstractStoreWriterTest extends AbstractWriterTest
 {
-    protected const SKU1 = '001';
-    protected const SKU2 = '002';
-
-    protected const STORE_NAME = 'DE';
+    protected const PRODUCTS_LIMIT = 2;
 
     /**
      * @return array
@@ -39,28 +38,31 @@ abstract class AbstractProductAbstractStoreWriterTest extends AbstractWriterTest
     protected function createDataSets(): array
     {
         $result = [];
-        foreach ([static::SKU1, static::SKU2] as $sku) {
+        $abstractProductSkus = $this->getAbstractProductSkus();
+        foreach ($abstractProductSkus as $abstractProductSku) {
             $dataSet = new DataSet();
             $dataSet[ProductAbstractStoreHydratorStep::PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER] = (new ProductAbstractStoreTransfer())
-                ->setProductAbstractSku($sku)
-                ->setStoreName(static::STORE_NAME);
+                ->setProductAbstractSku($abstractProductSku)
+                ->setStoreName(Store::getDefaultStore());
 
-            $result[$sku] = $dataSet;
+            $result[$abstractProductSku] = $dataSet;
         }
         return $result;
     }
 
     /**
+     * @param array $skus
+     *
      * @return array
      */
-    protected function queryDataFromDB(): array
+    protected function queryDataFromDB(array $skus): array
     {
         return SpyProductAbstractStoreQuery::create()
             ->useSpyProductAbstractQuery()
-                ->filterBySku_In([static::SKU1, static::SKU2])
+                ->filterBySku_In($skus)
             ->endUse()
             ->useSpyStoreQuery()
-                ->filterByName(static::STORE_NAME)
+                ->filterByName(Store::getDefaultStore())
             ->endUse()
             ->select([SpyProductAbstractTableMap::COL_SKU, SpyStoreTableMap::COL_NAME])
             ->find()
@@ -86,5 +88,17 @@ abstract class AbstractProductAbstractStoreWriterTest extends AbstractWriterTest
                 $productAbstractStore[SpyStoreTableMap::COL_NAME]
             );
         }
+    }
+
+    /**
+     * @return array
+     */
+    protected function getAbstractProductSkus(): array
+    {
+        return SpyProductAbstractQuery::create()
+            ->select(SpyProductAbstractTableMap::COL_SKU)
+            ->limit(static::PRODUCTS_LIMIT)
+            ->find()
+            ->toArray();
     }
 }

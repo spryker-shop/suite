@@ -37,6 +37,6 @@ class ProductAbstractStoreWriterPdoTest extends AbstractProductAbstractStoreWrit
         }
         $writer->flush();
 
-        $this->assertImportedData($dataSets, $this->queryDataFromDB());
+        $this->assertImportedData($dataSets, $this->queryDataFromDB(array_keys($dataSets)));
     }
 }

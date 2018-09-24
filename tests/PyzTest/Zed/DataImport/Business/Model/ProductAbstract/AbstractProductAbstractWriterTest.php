@@ -11,6 +11,10 @@ use Generated\Shared\DataBuilder\SpyProductAbstractEntityBuilder;
 use Generated\Shared\DataBuilder\SpyProductAbstractLocalizedAttributesEntityBuilder;
 use Generated\Shared\DataBuilder\SpyUrlEntityBuilder;
 use Generated\Shared\Transfer\SpyProductCategoryEntityTransfer;
+use Orm\Zed\Category\Persistence\SpyCategory;
+use Orm\Zed\Category\Persistence\SpyCategoryQuery;
+use Orm\Zed\Locale\Persistence\SpyLocale;
+use Orm\Zed\Locale\Persistence\SpyLocaleQuery;
 use Orm\Zed\Product\Persistence\SpyProductAbstractLocalizedAttributesQuery;
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Orm\Zed\ProductCategory\Persistence\SpyProductCategoryQuery;
@@ -32,14 +36,11 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
  */
 abstract class AbstractProductAbstractWriterTest extends AbstractWriterTest
 {
-    protected const FK_DE_LOCAL = 46;
-    protected const FK_EN_LOCAL = 66;
-
-    protected const FK_CATEGORY = 4;
-
     protected const PRODUCT_ORDER = 16;
 
     protected const DATA_SET_COUNT = 2;
+
+    protected const LOCALES_LIMIT = 2;
 
     /**
      * @return array
@@ -48,6 +49,7 @@ abstract class AbstractProductAbstractWriterTest extends AbstractWriterTest
     {
         $result = [];
 
+        $locale = $this->getLocale();
         for ($i = 0; $i < static::DATA_SET_COUNT; $i++) {
             $dataSet = new DataSet();
             $spyProductAbstractEntityTransfer = (new SpyProductAbstractEntityBuilder())
@@ -60,23 +62,8 @@ abstract class AbstractProductAbstractWriterTest extends AbstractWriterTest
                     'abstract_sku' => $spyProductAbstractEntityTransfer->getSku(),
                     'localizedAttributeTransfer' => (new SpyProductAbstractLocalizedAttributesEntityBuilder())
                         ->build()
-                        ->setFkLocale(static::FK_DE_LOCAL)
+                        ->setFkLocale($locale->getIdLocale())
                         ->setAttributes('{"flash_range_tele":"4.2-4.9 ft","color":"Red"}'),
-                ],
-                [
-                    'abstract_sku' => $spyProductAbstractEntityTransfer->getSku(),
-                    'localizedAttributeTransfer' => (new SpyProductAbstractLocalizedAttributesEntityBuilder())
-                        ->build()
-                        ->setFkLocale(static::FK_EN_LOCAL)
-                        ->setAttributes('{"flash_range_tele":"4.2-4.9 ft","color":"Red"}'),
-                ],
-            ];
-            $dataSet[ProductAbstractHydratorStep::PRODUCT_CATEGORY_TRANSFER] = [
-                [
-                    'abstract_sku' => $spyProductAbstractEntityTransfer->getSku(),
-                    'productCategoryTransfer' => (new SpyProductCategoryEntityTransfer())
-                        ->setFkCategory(static::FK_CATEGORY)
-                        ->setProductOrder(static::PRODUCT_ORDER),
                 ],
             ];
             $dataSet[ProductAbstractHydratorStep::PRODUCT_URL_TRANSFER] = [
@@ -84,13 +71,15 @@ abstract class AbstractProductAbstractWriterTest extends AbstractWriterTest
                     'abstract_sku' => $spyProductAbstractEntityTransfer->getSku(),
                     'urlTransfer' => (new SpyUrlEntityBuilder())
                         ->build()
-                        ->setFkLocale(static::FK_DE_LOCAL),
+                        ->setFkLocale($locale->getIdLocale()),
                 ],
+            ];
+            $dataSet[ProductAbstractHydratorStep::PRODUCT_CATEGORY_TRANSFER] = [
                 [
                     'abstract_sku' => $spyProductAbstractEntityTransfer->getSku(),
-                    'urlTransfer' => (new SpyUrlEntityBuilder())
-                        ->build()
-                        ->setFkLocale(static::FK_EN_LOCAL),
+                    'productCategoryTransfer' => (new SpyProductCategoryEntityTransfer())
+                        ->setFkCategory($this->getCategory()->getIdCategory())
+                        ->setProductOrder(static::PRODUCT_ORDER),
                 ],
             ];
             $result[$spyProductAbstractEntityTransfer->getSku()] = $dataSet;
@@ -172,5 +161,22 @@ abstract class AbstractProductAbstractWriterTest extends AbstractWriterTest
                 }
             }
         }
+    }
+
+    /**
+     * @return \Orm\Zed\Locale\Persistence\SpyLocale
+     */
+    protected function getLocale(): SpyLocale
+    {
+        return SpyLocaleQuery::create()
+            ->findOne();
+    }
+
+    /**
+     * @return \Orm\Zed\Category\Persistence\SpyCategory
+     */
+    protected function getCategory(): SpyCategory
+    {
+        return SpyCategoryQuery::create()->findOne();
     }
 }

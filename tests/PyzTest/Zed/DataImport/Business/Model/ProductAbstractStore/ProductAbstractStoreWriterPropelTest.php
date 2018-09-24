@@ -36,6 +36,6 @@ class ProductAbstractStoreWriterPropelTest extends AbstractProductAbstractStoreW
             $writer->write($dataSet);
         }
 
-        $this->assertImportedData($dataSets, $this->queryDataFromDB());
+        $this->assertImportedData($dataSets, $this->queryDataFromDB(array_keys($dataSets)));
     }
 }

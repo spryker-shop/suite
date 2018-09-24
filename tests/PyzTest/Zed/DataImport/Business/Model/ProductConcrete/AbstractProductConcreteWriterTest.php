@@ -10,6 +10,10 @@ namespace PyzTest\Zed\DataImport\Business\Model\ProductConcrete;
 use Generated\Shared\DataBuilder\SpyProductEntityBuilder;
 use Generated\Shared\DataBuilder\SpyProductLocalizedAttributesEntityBuilder;
 use Generated\Shared\Transfer\SpyProductSearchEntityTransfer;
+use Orm\Zed\Locale\Persistence\SpyLocale;
+use Orm\Zed\Locale\Persistence\SpyLocaleQuery;
+use Orm\Zed\Product\Persistence\Map\SpyProductAbstractTableMap;
+use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Orm\Zed\Product\Persistence\SpyProductLocalizedAttributesQuery;
 use Orm\Zed\Product\Persistence\SpyProductQuery;
 use Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductConcreteHydratorStep;
@@ -29,11 +33,9 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
  */
 abstract class AbstractProductConcreteWriterTest extends AbstractWriterTest
 {
-    protected const SKU1 = '001';
-    protected const SKU2 = '002';
+    protected const LOCALES_LIMIT = 2;
 
-    protected const FK_DE_LOCAL = 46;
-    protected const FK_EN_LOCAL = 66;
+    protected const PRODUCTS_LIMIT = 2;
 
     /**
      * @return array
@@ -42,7 +44,9 @@ abstract class AbstractProductConcreteWriterTest extends AbstractWriterTest
     {
         $result = [];
 
-        foreach ([static::SKU1, static::SKU2] as $abstractSku) {
+        $abstractSkus = $this->getAbstractProductSkus();
+        $locale = $this->getLocale();
+        foreach ($abstractSkus as $abstractSku) {
             $dataSet = new DataSet();
             $productTransfer = (new SpyProductEntityBuilder())->build();
             $dataSet[ProductConcreteHydratorStep::KEY_ABSTRACT_SKU] = $abstractSku;
@@ -52,18 +56,9 @@ abstract class AbstractProductConcreteWriterTest extends AbstractWriterTest
                     'sku' => $productTransfer->getSku(),
                     'localizedAttributeTransfer' => (new SpyProductLocalizedAttributesEntityBuilder())
                         ->build()
-                        ->setFkLocale(static::FK_DE_LOCAL),
+                        ->setFkLocale($locale->getIdLocale()),
                     'productSearchEntityTransfer' => (new SpyProductSearchEntityTransfer())
-                        ->setFkLocale(static::FK_DE_LOCAL)
-                        ->setIsSearchable(1),
-                ],
-                [
-                    'sku' => $productTransfer->getSku(),
-                    'localizedAttributeTransfer' => (new SpyProductLocalizedAttributesEntityBuilder())
-                        ->build()
-                        ->setFkLocale(static::FK_EN_LOCAL),
-                    'productSearchEntityTransfer' => (new SpyProductSearchEntityTransfer())
-                        ->setFkLocale(static::FK_EN_LOCAL)
+                        ->setFkLocale($locale->getIdLocale())
                         ->setIsSearchable(1),
                 ],
             ];
@@ -144,5 +139,25 @@ abstract class AbstractProductConcreteWriterTest extends AbstractWriterTest
                 }
             }
         }
+    }
+
+    /**
+     * @return \Orm\Zed\Locale\Persistence\SpyLocale
+     */
+    protected function getLocale(): SpyLocale
+    {
+        return SpyLocaleQuery::create()->findOne();
+    }
+
+    /**
+     * @return array
+     */
+    protected function getAbstractProductSkus(): array
+    {
+        return SpyProductAbstractQuery::create()
+            ->select(SpyProductAbstractTableMap::COL_SKU)
+            ->limit(static::PRODUCTS_LIMIT)
+            ->find()
+            ->toArray();
     }
 }

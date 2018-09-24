@@ -31,11 +31,14 @@ class ProductStockWriterPropelTest extends AbstractProductStockWriterTest
     {
         $writer = $this->getDataImportBusinessFactoryStub()->createProductStockPropelWriter();
 
-        $dataSets = $this->createDataSets();
+        $productSkus = $this->getProductsSkus();
+        $warehouses = $this->getWarehouses();
+
+        $dataSets = $this->createDataSets($productSkus, $warehouses);
         foreach ($dataSets as $dataSet) {
             $writer->write($dataSet);
         }
 
-        $this->assertImportedData($dataSets, $this->queryDataFromDB());
+        $this->assertImportedData($dataSets, $this->queryDataFromDB($productSkus, $warehouses));
     }
 }

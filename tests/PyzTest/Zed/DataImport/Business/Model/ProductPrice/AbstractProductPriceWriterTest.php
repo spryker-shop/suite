@@ -14,12 +14,16 @@ use Generated\Shared\Transfer\SpyPriceProductEntityTransfer;
 use Generated\Shared\Transfer\SpyPriceTypeEntityTransfer;
 use Generated\Shared\Transfer\SpyProductAbstractEntityTransfer;
 use Generated\Shared\Transfer\SpyStoreEntityTransfer;
+use Orm\Zed\Currency\Persistence\SpyCurrency;
+use Orm\Zed\Currency\Persistence\SpyCurrencyQuery;
 use Orm\Zed\PriceProduct\Persistence\Map\SpyPriceProductStoreTableMap;
 use Orm\Zed\PriceProduct\Persistence\Map\SpyPriceTypeTableMap;
 use Orm\Zed\PriceProduct\Persistence\SpyPriceProductQuery;
 use Orm\Zed\Product\Persistence\Map\SpyProductAbstractTableMap;
+use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\ProductPriceHydratorStep;
 use PyzTest\Zed\DataImport\Business\Model\AbstractWriterTest;
+use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
 
 /**
@@ -35,17 +39,12 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
  */
 abstract class AbstractProductPriceWriterTest extends AbstractWriterTest
 {
-    protected const SKU1 = '001';
-    protected const SKU2 = '002';
-
-    protected const PRICE_TYPE1 = 'DATAIMPORT_TEST1';
-    protected const PRICE_TYPE2 = 'DATAIMPORT_TEST2';
+    protected const PRICE_TYPES = [
+        'DATAIMPORT_TEST1',
+        'DATAIMPORT_TEST2',
+    ];
 
     protected const PRICE_MODE_CONFIGURATION = 2;
-
-    protected const STORE_NAME = 'DE';
-
-    protected const CURRENCY = 'EUR';
 
     /**
      * @return array
@@ -56,12 +55,13 @@ abstract class AbstractProductPriceWriterTest extends AbstractWriterTest
 
         $priceProductStore = (new SpyPriceProductStoreEntityBuilder())
             ->build()
-            ->setCurrency((new SpyCurrencyEntityTransfer())->setName(static::CURRENCY))
-            ->setStore((new SpyStoreEntityTransfer())->setName(static::STORE_NAME));
+            ->setCurrency((new SpyCurrencyEntityTransfer())->setName($this->getCurrency()->getCode()))
+            ->setStore((new SpyStoreEntityTransfer())->setName(Store::getDefaultStore()));
         $priceProductStores = new ArrayObject();
         $priceProductStores->append($priceProductStore);
 
-        foreach ([static::SKU1 => static::PRICE_TYPE1, static::SKU2 => static::PRICE_TYPE2] as $sku => $priceType) {
+        $abstractProductSkus = $this->getAbstractProductSkus();
+        foreach ($abstractProductSkus as $index => $sku) {
             $dataSet = new DataSet();
 
             $dataSet[ProductPriceHydratorStep::KEY_STORE] = $priceProductStore->getStore()->getName();
@@ -71,7 +71,7 @@ abstract class AbstractProductPriceWriterTest extends AbstractWriterTest
             $dataSet[ProductPriceHydratorStep::KEY_ABSTRACT_SKU] = $sku;
             $dataSet[ProductPriceHydratorStep::KEY_CONCRETE_SKU] = '';
             $dataSet[ProductPriceHydratorStep::PRICE_TYPE_TRANSFER] = (new SpyPriceTypeEntityTransfer())
-                ->setName($priceType)
+                ->setName(static::PRICE_TYPES[$index])
                 ->setPriceModeConfiguration(static::PRICE_MODE_CONFIGURATION);
             $dataSet[ProductPriceHydratorStep::PRICE_PRODUCT_TRANSFER] = (new SpyPriceProductEntityTransfer())
                 ->setPriceType($dataSet[ProductPriceHydratorStep::PRICE_TYPE_TRANSFER])
@@ -85,17 +85,19 @@ abstract class AbstractProductPriceWriterTest extends AbstractWriterTest
     }
 
     /**
+     * @param array $skus
+     *
      * @return array
      */
-    protected function queryDataFromDB(): array
+    protected function queryDataFromDB(array $skus): array
     {
         return SpyPriceProductQuery::create()
             ->joinPriceProductStore()
             ->useSpyProductAbstractQuery()
-                ->filterBySku_In([static::SKU1, static::SKU2])
+                ->filterBySku_In($skus)
             ->endUse()
             ->usePriceTypeQuery()
-                ->filterByName_In([static::PRICE_TYPE1, static::PRICE_TYPE2])
+                ->filterByName_In(static::PRICE_TYPES)
             ->endUse()
             ->select([
                 SpyPriceTypeTableMap::COL_NAME,
@@ -134,5 +136,25 @@ abstract class AbstractProductPriceWriterTest extends AbstractWriterTest
                 $productPrice[SpyPriceProductStoreTableMap::COL_GROSS_PRICE]
             );
         }
+    }
+
+    /**
+     * @return \Orm\Zed\Currency\Persistence\SpyCurrency
+     */
+    protected function getCurrency(): SpyCurrency
+    {
+        return SpyCurrencyQuery::create()->findOne();
+    }
+
+    /**
+     * @return array
+     */
+    protected function getAbstractProductSkus(): array
+    {
+        return SpyProductAbstractQuery::create()
+            ->select(SpyProductAbstractTableMap::COL_SKU)
+            ->limit(count(static::PRICE_TYPES))
+            ->find()
+            ->toArray();
     }
 }

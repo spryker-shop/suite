@@ -31,12 +31,15 @@ class ProductStockPdoTest extends AbstractProductStockWriterTest
     {
         $writer = $this->getDataImportBusinessFactoryStub()->createProductStockBulkPdoWriter();
 
-        $dataSets = $this->createDataSets();
+        $productSkus = $this->getProductsSkus();
+        $warehouses = $this->getWarehouses();
+
+        $dataSets = $this->createDataSets($productSkus, $warehouses);
         foreach ($dataSets as $dataSet) {
             $writer->write($dataSet);
         }
         $writer->flush();
 
-        $this->assertImportedData($dataSets, $this->queryDataFromDB());
+        $this->assertImportedData($dataSets, $this->queryDataFromDB($productSkus, $warehouses));
     }
 }
