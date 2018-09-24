@@ -8,6 +8,7 @@
 namespace Pyz\Yves\ExampleProductColorGroupWidget\Widget;
 
 use Spryker\Yves\Kernel\Widget\AbstractWidget;
+use SprykerShop\Yves\ProductGroupWidget\Widget\ProductGroupWidget;
 
 class ExampleProductColorSelectorWidget extends AbstractWidget
 {
@@ -16,7 +17,9 @@ class ExampleProductColorSelectorWidget extends AbstractWidget
      */
     public function __construct(int $idProductAbstract)
     {
-        $this->addParameter('idProductAbstract', $idProductAbstract);
+        $widget = new ProductGroupWidget($idProductAbstract);
+
+        $this->parameters = $widget->getParameters();
     }
 
     /**
@@ -32,6 +35,6 @@ class ExampleProductColorSelectorWidget extends AbstractWidget
      */
     public static function getTemplate(): string
     {
-        return '@ExampleProductColorGroupWidget/views/product-color-selector-widget/product-color-selector-widget.twig';
+        return '@ExampleProductColorGroupWidget/views/product-color-selector/product-color-selector.twig';
     }
 }

@@ -33,7 +33,9 @@
     {% endblock %}
 
     {% block groups %}
-        {{ widget('ProductGroupWidgetPlugin', data.abstractId) }}
+        {% widget 'ExampleProductColorSelectorWidget' args [data.abstractId] use view('product-color-selector', 'ExampleProductColorGroupWidget') only %}
+        {% elsewidget 'ExampleProductColorGroupWidgetPlugin' args [data.abstractId] only %} {# @deprecated Use ExampleProductColorSelectorWidget or ProductGroupWidget instead. #}
+        {% endwidget %}
     {% endblock %}
 
     {% block name %}
