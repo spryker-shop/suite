@@ -10,7 +10,10 @@ namespace Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer;
 use Orm\Zed\PriceProduct\Persistence\Base\SpyPriceProduct;
 use Orm\Zed\PriceProduct\Persistence\Base\SpyPriceType;
 use Orm\Zed\PriceProduct\Persistence\Map\SpyPriceTypeTableMap;
+use Orm\Zed\PriceProduct\Persistence\SpyPriceProductDefault;
+use Orm\Zed\PriceProduct\Persistence\SpyPriceProductDefaultQuery;
 use Orm\Zed\PriceProduct\Persistence\SpyPriceProductQuery;
+use Orm\Zed\PriceProduct\Persistence\SpyPriceProductStore;
 use Orm\Zed\PriceProduct\Persistence\SpyPriceProductStoreQuery;
 use Orm\Zed\PriceProduct\Persistence\SpyPriceTypeQuery;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
@@ -75,7 +78,8 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
     {
         $priceTypeEntity = $this->findOrCreatePriceType($dataSet);
         $productPriceEntity = $this->findOrCreateProductPrice($dataSet, $priceTypeEntity);
-        $this->findOrCreatePriceProductStore($dataSet, $productPriceEntity);
+        $priceProductStoreEntity = $this->findOrCreatePriceProductStore($dataSet, $productPriceEntity);
+        $priceProductDefault = $this->findOrCreatePriceProductDefault($priceProductStoreEntity);
     }
 
     /**
@@ -141,13 +145,10 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet $dataSet
      * @param \Orm\Zed\PriceProduct\Persistence\SpyPriceProduct $spyPriceProduct
-     *
-     *
-     * return void
-     *
-     * @return void
+
+     * @return \Orm\Zed\PriceProduct\Persistence\SpyPriceProductStore
      */
-    protected function findOrCreatePriceProductStore(DataSetInterface $dataSet, SpyPriceProduct $spyPriceProduct): void
+    protected function findOrCreatePriceProductStore(DataSetInterface $dataSet, SpyPriceProduct $spyPriceProduct): SpyPriceProductStore
     {
         $storeTransfer = $this->storeFacade->getStoreByName($dataSet[ProductPriceHydratorStep::KEY_STORE]);
         $currencyTransfer = $this->currencyFacade->fromIsoCode($dataSet[ProductPriceHydratorStep::KEY_CURRENCY]);
@@ -162,6 +163,24 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
         $priceProductStoreEntity->setNetPrice($dataSet[ProductPriceHydratorStep::KEY_PRICE_NET]);
 
         $priceProductStoreEntity->save();
+
+        return $priceProductStoreEntity;
+    }
+
+    /**
+     * @param \Orm\Zed\PriceProduct\Persistence\SpyPriceProductStore $priceProductStore
+     *
+     * @return \Orm\Zed\PriceProduct\Persistence\SpyPriceProductDefault
+     */
+    protected function findOrCreatePriceProductDefault(SpyPriceProductStore $priceProductStore): SpyPriceProductDefault
+    {
+        $priceProductDefault = SpyPriceProductDefaultQuery::create()
+            ->filterByFkPriceProductStore($priceProductStore->getIdPriceProductStore())
+            ->findOneOrCreate();
+
+        $priceProductDefault->save();
+
+        return $priceProductDefault;
     }
 
     /**

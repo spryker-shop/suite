@@ -191,4 +191,41 @@ SELECT 1;", $tableName, $foreignKey, $idProduct);
 
         return $sql;
     }
+
+    /**
+     * @return string
+     */
+    public function createPriceProductDefaultSql(): string
+    {
+        $sql = "WITH records AS (
+    SELECT
+    spy_price_product_default.id_price_product_default as idPriceProductDefault,
+      spy_price_product_store.id_price_product_store as idPriceProductStore
+    FROM spy_price_product_store
+    LEFT JOIN spy_price_product_default ON spy_price_product_store.id_price_product_store = spy_price_product_default.fk_price_product_store
+),
+    updated AS (
+    UPDATE spy_price_product_default
+    SET
+      fk_price_product_store = records.idPriceProductStore
+    FROM records
+    WHERE id_price_product_default = records.idPriceProductDefault
+    RETURNING id_price_product_default
+  ),
+    inserted AS(
+    INSERT INTO spy_price_product_default (
+      id_price_product_default,
+      fk_price_product_store
+    ) (
+      SELECT
+        nextval('spy_price_product_default_pk_seq'),
+        records.idPriceProductStore
+      FROM records
+      WHERE idPriceProductDefault is null
+    ) RETURNING id_price_product_default
+  )
+SELECT updated.id_price_product_default FROM updated UNION ALL SELECT inserted.id_price_product_default FROM inserted;";
+
+        return $sql;
+    }
 }
