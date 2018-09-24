@@ -5,14 +5,6 @@
       <index-column name="fk_tax_set"/>
     </index>
   </table>
-  <table name="spy_product_abstract_product_option_group">
-    <index name="index-spy_product_abstract_product_option_group-fk-9ef2e26082d9">
-      <index-column name="fk_product_abstract"/>
-    </index>
-    <index name="index-spy_product_abstract_product_option_group-fk-2b13db0bf6f9">
-      <index-column name="fk_product_option_group"/>
-    </index>
-  </table>
   <table name="spy_product_option_value">
     <index name="index-spy_product_option_value-fk_product_option_group">
       <index-column name="fk_product_option_group"/>
