@@ -303,7 +303,7 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
             ->toArray();
         $result = [];
         foreach ($reservations as $reservation) {
-            $result[$reservation[SpyOmsProductReservationTableMap::COL_SKU]] += $reservation[SpyOmsProductReservationTableMap::COL_RESERVATION_QUANTITY];
+            $result[$reservation[SpyOmsProductReservationTableMap::COL_SKU]] = ($result[$reservation[SpyOmsProductReservationTableMap::COL_SKU]] ?? 0) + $reservation[SpyOmsProductReservationTableMap::COL_RESERVATION_QUANTITY];
         }
 
         return $result;
