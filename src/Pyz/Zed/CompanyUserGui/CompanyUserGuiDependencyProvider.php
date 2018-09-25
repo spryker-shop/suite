@@ -7,6 +7,8 @@
 
 namespace Pyz\Zed\CompanyUserGui;
 
+use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyRoleCompanyUserTableConfigExpanderPlugin;
+use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyRoleCompanyUserTablePrepareDataExpanderPlugin;
 use Spryker\Zed\CompanyUserGui\CompanyUserGuiDependencyProvider as SprykerCompanyUserGuiDependencyProvider;
 
 class CompanyUserGuiDependencyProvider extends SprykerCompanyUserGuiDependencyProvider
@@ -16,7 +18,9 @@ class CompanyUserGuiDependencyProvider extends SprykerCompanyUserGuiDependencyPr
      */
     protected function getCompanyUserTableConfigExpanderPlugins(): array
     {
-        return [];
+        return [
+            new CompanyRoleCompanyUserTableConfigExpanderPlugin(),
+        ];
     }
 
     /**
@@ -24,6 +28,8 @@ class CompanyUserGuiDependencyProvider extends SprykerCompanyUserGuiDependencyPr
      */
     protected function getCompanyUserTablePrepareDataExpanderPlugins(): array
     {
-        return [];
+        return [
+            new CompanyRoleCompanyUserTablePrepareDataExpanderPlugin(),
+        ];
     }
 }
