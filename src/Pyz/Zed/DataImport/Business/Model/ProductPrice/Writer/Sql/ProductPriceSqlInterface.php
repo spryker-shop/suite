@@ -31,4 +31,9 @@ interface ProductPriceSqlInterface
      * @return string
      */
     public function createPriceProductStoreSql(string $tableName, string $foreignKey, string $idProduct): string;
+
+    /**
+     * @return string
+     */
+    public function createPriceProductDefaultSql(): string;
 }

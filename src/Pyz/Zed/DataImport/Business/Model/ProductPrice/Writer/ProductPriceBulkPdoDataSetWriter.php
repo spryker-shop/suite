@@ -23,7 +23,7 @@ class ProductPriceBulkPdoDataSetWriter implements DataSetWriterInterface
     use DataFormatter;
 
     /**
-     * @var \Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\Sql\ProductPriceSql
+     * @var \Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\Sql\ProductPriceSqlInterface
      */
     protected $productPriceSql;
 
@@ -315,11 +315,21 @@ class ProductPriceBulkPdoDataSetWriter implements DataSetWriterInterface
     /**
      * @return void
      */
+    protected function persistPriceProductDefault(): void
+    {
+        $sql = $this->productPriceSql->createPriceProductDefaultSql();
+        $this->propelExecutor->execute($sql, []);
+    }
+
+    /**
+     * @return void
+     */
     public function flush(): void
     {
         $this->persistPriceTypeEntities();
         $this->persistProductAbstractEntities();
         $this->persistProductConcreteEntities();
+        $this->persistPriceProductDefault();
 
         DataImporterPublisher::triggerEvents();
         $this->flushMemory();
