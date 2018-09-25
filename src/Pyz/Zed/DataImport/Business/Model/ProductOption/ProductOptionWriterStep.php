@@ -11,8 +11,8 @@ use Orm\Zed\Glossary\Persistence\SpyGlossaryKeyQuery;
 use Orm\Zed\Glossary\Persistence\SpyGlossaryTranslationQuery;
 use Orm\Zed\Product\Persistence\Map\SpyProductAbstractTableMap;
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
-use Orm\Zed\ProductOption\Persistence\Base\SpyProductOptionGroup;
 use Orm\Zed\ProductOption\Persistence\SpyProductAbstractProductOptionGroupQuery;
+use Orm\Zed\ProductOption\Persistence\SpyProductOptionGroup;
 use Orm\Zed\ProductOption\Persistence\SpyProductOptionGroupQuery;
 use Orm\Zed\ProductOption\Persistence\SpyProductOptionValueQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -92,7 +92,7 @@ class ProductOptionWriterStep extends PublishAwareStep implements DataImportStep
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     * @param \Orm\Zed\ProductOption\Persistence\Base\SpyProductOptionGroup $productOptionGroupEntity
+     * @param \Orm\Zed\ProductOption\Persistence\SpyProductOptionGroup $productOptionGroupEntity
      *
      * @return bool
      */
