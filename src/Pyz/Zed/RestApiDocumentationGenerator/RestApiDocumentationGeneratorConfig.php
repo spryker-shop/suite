@@ -7,12 +7,13 @@
 
 namespace Pyz\Zed\RestApiDocumentationGenerator;
 
+use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Zed\RestApiDocumentationGenerator\RestApiDocumentationGeneratorConfig as SprykerRestApiDocumentationGeneratorConfig;
 
 class RestApiDocumentationGeneratorConfig extends SprykerRestApiDocumentationGeneratorConfig
 {
-    protected const APPLICATION_ANNOTATIONS_SOURCE_DIRECTORY_PATTERN = APPLICATION_SOURCE_DIR . '/*/Glue/*/Controller/';
-    protected const CORE_ANNOTATIONS_SOURCE_DIRECTORY_PATTERN = APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/*/src/Spryker/Glue/*/Controller/';
+    protected const APPLICATION_ANNOTATIONS_SOURCE_DIRECTORY_PATTERN = '/Glue/%1$s/Controller/';
+    protected const CORE_ANNOTATIONS_SOURCE_DIRECTORY_PATTERN = '/spryker/spryker/Bundles/%1$s/src/Spryker/Glue/%1$s/Controller/';
 
     /**
      * @return array
@@ -20,7 +21,7 @@ class RestApiDocumentationGeneratorConfig extends SprykerRestApiDocumentationGen
     protected function getCoreAnnotationsSourceDirectoryGlobPatterns(): array
     {
         return [
-            static::CORE_ANNOTATIONS_SOURCE_DIRECTORY_PATTERN,
+            APPLICATION_VENDOR_DIR . static::CORE_ANNOTATIONS_SOURCE_DIRECTORY_PATTERN,
         ];
     }
 
@@ -30,7 +31,7 @@ class RestApiDocumentationGeneratorConfig extends SprykerRestApiDocumentationGen
     protected function getApplicationAnnotationsSourceDirectoryGlobPattern(): array
     {
         return [
-            static::APPLICATION_ANNOTATIONS_SOURCE_DIRECTORY_PATTERN,
+            APPLICATION_SOURCE_DIR . '/' . $this->get(KernelConstants::PROJECT_NAMESPACE) . static::APPLICATION_ANNOTATIONS_SOURCE_DIRECTORY_PATTERN,
         ];
     }
 }

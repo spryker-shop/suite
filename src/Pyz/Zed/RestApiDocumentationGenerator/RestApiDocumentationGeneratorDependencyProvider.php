@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\RestApiDocumentationGenerator;
 
+use Spryker\Glue\GlueApplication\Plugin\Rest\ResourceRelationshipCollectionProviderPlugin;
 use Spryker\Glue\GlueApplication\Plugin\Rest\ResourceRoutePluginsProviderPlugin;
 use Spryker\Zed\RestApiDocumentationGenerator\RestApiDocumentationGeneratorDependencyProvider as SprykerRestApiDocumentationGeneratorDependencyProvider;
 
@@ -19,6 +20,16 @@ class RestApiDocumentationGeneratorDependencyProvider extends SprykerRestApiDocu
     {
         return [
             new ResourceRoutePluginsProviderPlugin(),
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    protected function getResourceRelationshipsCollectionProviderPlugin(): array
+    {
+        return [
+            new ResourceRelationshipCollectionProviderPlugin(),
         ];
     }
 }
