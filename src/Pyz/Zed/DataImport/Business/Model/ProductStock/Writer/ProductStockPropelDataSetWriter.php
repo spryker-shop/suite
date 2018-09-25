@@ -20,7 +20,7 @@ use Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface;
 class ProductStockPropelDataSetWriter implements DataSetWriterInterface
 {
     /**
-     * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository
+     * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface
      */
     protected $productRepository;
 
@@ -35,8 +35,6 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
     protected $productBundleFacade;
 
     /**
-     * ProductStockPropelWriter constructor.
-     *
      * @param \Spryker\Zed\Availability\Business\AvailabilityFacadeInterface $availabilityFacade
      * @param \Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface $productBundleFacade
      * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface $productRepository

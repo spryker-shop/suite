@@ -10,13 +10,6 @@ namespace Pyz\Zed\DataImport\Business\Model\ProductImage;
 use Generated\Shared\Transfer\SpyProductImageEntityTransfer;
 use Generated\Shared\Transfer\SpyProductImageSetEntityTransfer;
 use Generated\Shared\Transfer\SpyProductImageSetToProductImageEntityTransfer;
-use Orm\Zed\Locale\Persistence\SpyLocale;
-use Orm\Zed\Locale\Persistence\SpyLocaleQuery;
-use Orm\Zed\Product\Persistence\SpyProduct;
-use Orm\Zed\Product\Persistence\SpyProductAbstract;
-use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
-use Orm\Zed\Product\Persistence\SpyProductQuery;
-use Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
@@ -63,11 +56,11 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
     {
         $imageSetEntityTransfer = new SpyProductImageSetEntityTransfer();
         $imageSetEntityTransfer->setName($dataSet[static::KEY_IMAGE_SET_NAME]);
-        $imageSetEntityTransfer->setFkLocale($this->getLocale($dataSet)->getIdLocale());
-        if ($dataSet[static::KEY_ABSTRACT_SKU]) {
-            $imageSetEntityTransfer->setFkProductAbstract($this->getProductAbstract($dataSet)->getIdProductAbstract());
-        } elseif ($dataSet[static::KEY_CONCRETE_SKU]) {
-            $imageSetEntityTransfer->setFkProduct($this->getProduct($dataSet)->getIdProduct());
+        $imageSetEntityTransfer->setFkLocale($dataSet[static::KEY_IMAGE_SET_FK_LOCALE]);
+        if (!empty($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT])) {
+            $imageSetEntityTransfer->setFkProductAbstract($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT]);
+        } elseif (!empty($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT])) {
+            $imageSetEntityTransfer->setFkProduct($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT]);
         }
         $dataSet[static::PRODUCT_IMAGE_SET_TRANSFER] = $imageSetEntityTransfer;
     }
@@ -97,59 +90,5 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
         $imageToImageSetRelationEntityTransfer->setSortOrder(static::IMAGE_TO_IMAGE_SET_RELATION_ORDER);
 
         $dataSet[static::PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER] = $imageToImageSetRelationEntityTransfer;
-    }
-
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @throws \Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException
-     *
-     * @return \Orm\Zed\Locale\Persistence\SpyLocale
-     */
-    protected function getLocale(DataSetInterface $dataSet): SpyLocale
-    {
-        $localeEntity = SpyLocaleQuery::create()->findOneByLocaleName($dataSet[static::KEY_LOCALE]);
-
-        if (!$localeEntity) {
-            throw new EntityNotFoundException();
-        }
-
-        return $localeEntity;
-    }
-
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @throws \Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException
-     *
-     * @return \Orm\Zed\Product\Persistence\SpyProductAbstract
-     */
-    protected function getProductAbstract(DataSetInterface $dataSet): SpyProductAbstract
-    {
-        $productAbstractEntity = SpyProductAbstractQuery::create()->findOneBySku($dataSet[static::KEY_ABSTRACT_SKU]);
-
-        if (!$productAbstractEntity) {
-            throw new EntityNotFoundException();
-        }
-
-        return $productAbstractEntity;
-    }
-
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @throws \Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException
-     *
-     * @return \Orm\Zed\Product\Persistence\SpyProduct
-     */
-    protected function getProduct(DataSetInterface $dataSet): SpyProduct
-    {
-        $productEntity = SpyProductQuery::create()->findOneBySku($dataSet[static::KEY_CONCRETE_SKU]);
-
-        if (!$productEntity) {
-            throw new EntityNotFoundException();
-        }
-
-        return $productEntity;
     }
 }
