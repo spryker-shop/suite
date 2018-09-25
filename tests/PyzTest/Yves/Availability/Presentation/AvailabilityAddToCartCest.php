@@ -32,6 +32,8 @@ class AvailabilityAddToCartCest
         $i->wantTo('Open product page, and add item to cart with larger quantity than available');
         $i->expectTo('Display error message');
 
+        $i->amLoggedInCustomer();
+
         $i->amOnPage(AvailabilityPresentationTester::FUJITSU2_PRODUCT_PAGE);
 
         $i->click(ProductDetailPage::ADD_TO_CART_XPATH);
