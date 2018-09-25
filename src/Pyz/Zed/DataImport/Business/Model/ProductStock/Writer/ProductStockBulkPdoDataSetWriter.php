@@ -73,8 +73,6 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
     protected $storeFacade;
 
     /**
-     * ProductStockBulkPdoWriter constructor.
-     *
      * @param \Spryker\Zed\Stock\Business\StockFacadeInterface $stockFacade
      * @param \Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface $productBundleFacade
      * @param \Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSqlInterface $productStockSql
@@ -305,7 +303,7 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
             ->toArray();
         $result = [];
         foreach ($reservations as $reservation) {
-            $result[$reservation[SpyOmsProductReservationTableMap::COL_SKU]] += $reservation[SpyOmsProductReservationTableMap::COL_RESERVATION_QUANTITY];
+            $result[$reservation[SpyOmsProductReservationTableMap::COL_SKU]] = ($result[$reservation[SpyOmsProductReservationTableMap::COL_SKU]] ?? 0) + $reservation[SpyOmsProductReservationTableMap::COL_RESERVATION_QUANTITY];
         }
 
         return $result;
