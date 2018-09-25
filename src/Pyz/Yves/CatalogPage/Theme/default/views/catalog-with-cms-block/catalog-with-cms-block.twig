@@ -29,10 +29,7 @@
 
     {% if data.categoryId %}
         <div class="box">
-            {% widget 'CatalogWithCmsBlockWidget' args [data.categoryId] use view('catalog-with-cms-block-middle', 'CmsBlockWidget') only %}
-            {% nowidget %}
-                {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'middle', data.categoryId) }}
-            {% endwidget %}
+            {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'middle', data.categoryId) }}
         </div>
     {% endif %}
 {% endblock %}
@@ -40,10 +37,7 @@
 {% block content %}
     {% if data.categoryId %}
         <div class="box">
-            {% widget 'CatalogWithCmsBlockWidget' args [data.categoryId] use view('catalog-with-cms-block-top', 'CmsBlockWidget') only %}
-            {% nowidget %}
-                {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'top', data.categoryId) }}
-            {% endwidget %}
+            {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'top', data.categoryId) }}
         </div>
     {% endif %}
 
@@ -51,10 +45,7 @@
 
     {% if data.categoryId %}
         <div class="box">
-            {% widget 'CatalogWithCmsBlockWidget' args [data.categoryId] use view('catalog-with-cms-block-bottom', 'CmsBlockWidget') only %}
-            {% nowidget %}
-                {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'bottom', data.categoryId) }}
-            {% endwidget %}
+            {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'bottom', data.categoryId) }}
         </div>
     {% endif %}
 {% endblock %}
