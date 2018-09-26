@@ -44,7 +44,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             MenuItemCompanyWidgetPlugin::class,
             AgentWidgetPlugin::class, #AgentFeature
             ShoppingListWidgetPlugin::class, #ShoppingListFeature
-            FullTextSearchTabsWidget::class, #CMSSearchPageFeature
+            FullTextSearchTabsWidget::class, #CmsSearchPageFeature
         ];
     }
 
