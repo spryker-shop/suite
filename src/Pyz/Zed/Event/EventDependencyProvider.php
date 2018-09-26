@@ -37,13 +37,13 @@ use Spryker\Zed\ProductPackagingUnitStorage\Communication\Plugin\Event\Subscribe
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\Event\Subscriber\ProductPageSearchEventSubscriber;
 use Spryker\Zed\ProductQuantityStorage\Communication\Plugin\Event\Subscriber\ProductQuantityStorageEventSubscriber;
 use Spryker\Zed\ProductRelationStorage\Communication\Plugin\Event\Subscriber\ProductRelationStorageEventSubscriber;
-use Spryker\Zed\ProductResourceAliasStorage\Communication\Plugin\Event\Subscriber\ProductResourceAliasStorageEventSubscriber;
 use Spryker\Zed\ProductReviewSearch\Communication\Plugin\Event\Subscriber\ProductReviewSearchEventSubscriber;
 use Spryker\Zed\ProductReviewStorage\Communication\Plugin\Event\Subscriber\ProductReviewStorageEventSubscriber;
 use Spryker\Zed\ProductSearchConfigStorage\Communication\Plugin\Event\Subscriber\ProductSearchConfigStorageEventSubscriber;
 use Spryker\Zed\ProductSetPageSearch\Communication\Plugin\Event\Subscriber\ProductSetPageSearchEventSubscriber;
 use Spryker\Zed\ProductSetStorage\Communication\Plugin\Event\Subscriber\ProductSetStorageEventSubscriber;
 use Spryker\Zed\ProductStorage\Communication\Plugin\Event\Subscriber\ProductStorageEventSubscriber;
+use Spryker\Zed\ShoppingListStorage\Communication\Plugin\Event\Subscriber\ShoppingListStorageEventSubscriber;
 use Spryker\Zed\UrlStorage\Communication\Plugin\Event\Subscriber\UrlStorageEventSubscriber;
 
 class EventDependencyProvider extends SprykerEventDependencyProvider
@@ -95,7 +95,7 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new ProductPackagingUnitStorageEventSubscriber());
         $eventSubscriberCollection->add(new PriceProductMerchantRelationshipStorageEventSubscriber());
         $eventSubscriberCollection->add(new FileManagerStorageSubscriber());
-        $eventSubscriberCollection->add(new ProductResourceAliasStorageEventSubscriber());
+        $eventSubscriberCollection->add(new ShoppingListStorageEventSubscriber()); #ShoppingListWidget feature
 
         /**
          * Search Events

@@ -7,12 +7,14 @@
 
 namespace Pyz\Yves\CustomerPage;
 
+use SprykerShop\Yves\AgentPage\Plugin\FixAgentTokenAfterCustomerAuthenticationSuccessPlugin;
 use SprykerShop\Yves\CartNoteWidget\Plugin\CustomerPage\CartNoteOrderItemNoteWidgetPlugin;
 use SprykerShop\Yves\CartNoteWidget\Plugin\CustomerPage\CartNoteOrderNoteWidgetPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\CustomerPage\BusinessOnBehalfCompanyUserRedirectAfterLoginStrategyPlugin;
 use SprykerShop\Yves\CompanyUserInvitationPage\Plugin\CompanyUserInvitationPreRegistrationCustomerTransferExpanderPlugin;
 use SprykerShop\Yves\CustomerPage\CustomerPageDependencyProvider as SprykerShopCustomerPageDependencyProvider;
 use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderWidgetPlugin;
+use SprykerShop\Yves\MultiCartWidget\Plugin\CustomerPage\MultiCartMenuItemWidgetPlugin;
 use SprykerShop\Yves\NewsletterWidget\Plugin\CustomerPage\NewsletterSubscriptionSummaryWidgetPlugin;
 use SprykerShop\Yves\ProductPackagingUnitWidget\Plugin\CustomerPage\OrderDetailProductPackagingUnitWidgetPlugin;
 use SprykerShop\Yves\ShoppingListWidget\Plugin\CustomerPage\ShoppingListMenuItemWidgetPlugin;
@@ -62,6 +64,7 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
         return [
             WishlistMenuItemWidgetPlugin::class,
             ShoppingListMenuItemWidgetPlugin::class, #ShoppingListFeature
+            MultiCartMenuItemWidgetPlugin::class, #MultiCartFeature
         ];
     }
 
@@ -82,6 +85,16 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     {
         return [
             new BusinessOnBehalfCompanyUserRedirectAfterLoginStrategyPlugin(), #BusinessOnBehalfFeature
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\AgentPage\Plugin\FixAgentTokenAfterCustomerAuthenticationSuccessPlugin[]
+     */
+    protected function getAfterCustomerAuthenticationSuccessPlugins(): array
+    {
+        return [
+            new FixAgentTokenAfterCustomerAuthenticationSuccessPlugin(),
         ];
     }
 }
