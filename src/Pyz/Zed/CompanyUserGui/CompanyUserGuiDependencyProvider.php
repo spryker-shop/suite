@@ -7,7 +7,8 @@
 
 namespace Pyz\Zed\CompanyUserGui;
 
-use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyRoleFieldPlugin;
+use Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyUserBusinessUnitFieldPlugin;
+use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyUserRoleFieldPlugin;
 use Spryker\Zed\CompanyUserGui\CompanyUserGuiDependencyProvider as SprykerCompanyUserGuiDependencyProvider;
 
 class CompanyUserGuiDependencyProvider extends SprykerCompanyUserGuiDependencyProvider
@@ -18,7 +19,8 @@ class CompanyUserGuiDependencyProvider extends SprykerCompanyUserGuiDependencyPr
     protected function getCompanyUserFormExpanderPlugins(): array
     {
         return [
-            new CompanyRoleFieldPlugin(),
+            new CompanyUserBusinessUnitFieldPlugin(),
+            new CompanyUserRoleFieldPlugin(),
         ];
     }
 
@@ -28,7 +30,8 @@ class CompanyUserGuiDependencyProvider extends SprykerCompanyUserGuiDependencyPr
     protected function getCompanyUserEditFormExpanderPlugins(): array
     {
         return [
-            new CompanyRoleFieldPlugin(),
+            new CompanyUserBusinessUnitFieldPlugin(),
+            new CompanyUserRoleFieldPlugin(),
         ];
     }
 }
