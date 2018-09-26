@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "bae613d9e24dc652396072cc30bf7daf",
+    "content-hash": "6564be8e3088ca3cf0cc92c6e9582343",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.67.18",
+            "version": "3.67.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "590d47c6f2b07d665737e02ef3b6cee3155e12a8"
+                "reference": "8575c7470c301fd7f2ed25e78bf23198db68c1cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/590d47c6f2b07d665737e02ef3b6cee3155e12a8",
-                "reference": "590d47c6f2b07d665737e02ef3b6cee3155e12a8",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/8575c7470c301fd7f2ed25e78bf23198db68c1cf",
+                "reference": "8575c7470c301fd7f2ed25e78bf23198db68c1cf",
                 "shasum": ""
             },
             "require": {
@@ -84,7 +84,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2018-09-24T21:19:19+00:00"
+            "time": "2018-09-25T20:15:23+00:00"
         },
         {
             "name": "codeitnowin/barcode",
@@ -284,16 +284,16 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.5",
+            "version": "2.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/EmailValidator.git",
-                "reference": "54859fabea8b3beecbb1a282888d5c990036b9e3"
+                "reference": "0578b32b30b22de3e8664f797cf846fc9246f786"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/54859fabea8b3beecbb1a282888d5c990036b9e3",
-                "reference": "54859fabea8b3beecbb1a282888d5c990036b9e3",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/0578b32b30b22de3e8664f797cf846fc9246f786",
+                "reference": "0578b32b30b22de3e8664f797cf846fc9246f786",
                 "shasum": ""
             },
             "require": {
@@ -337,7 +337,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2018-08-16T20:49:45+00:00"
+            "time": "2018-09-25T20:47:26+00:00"
         },
         {
             "name": "elasticsearch/elasticsearch",
@@ -1893,7 +1893,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -5132,16 +5132,16 @@
         },
         {
             "name": "spryker-shop/product-set-detail-page",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/product-set-detail-page.git",
-                "reference": "3f1dd140267d0c930ff4c0b48cffff74003a594b"
+                "reference": "5e3675ae36202c72b24ae7fe2c74249d52a988be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/product-set-detail-page/zipball/3f1dd140267d0c930ff4c0b48cffff74003a594b",
-                "reference": "3f1dd140267d0c930ff4c0b48cffff74003a594b",
+                "url": "https://api.github.com/repos/spryker-shop/product-set-detail-page/zipball/5e3675ae36202c72b24ae7fe2c74249d52a988be",
+                "reference": "5e3675ae36202c72b24ae7fe2c74249d52a988be",
                 "shasum": ""
             },
             "require": {
@@ -5154,7 +5154,9 @@
                 "spryker/product-storage": "^1.1.0"
             },
             "require-dev": {
-                "spryker/silex": "*"
+                "spryker/code-sniffer": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
             },
             "suggest": {
                 "spryker/silex": "Use this module when using plugins that need Silex dependencies."
@@ -5175,7 +5177,7 @@
                 "proprietary"
             ],
             "description": "ProductSetDetailPage module",
-            "time": "2018-08-02T06:30:34+00:00"
+            "time": "2018-09-10T08:35:57+00:00"
         },
         {
             "name": "spryker-shop/product-set-list-page",
@@ -6288,11 +6290,19 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "SprykerTest\\": "tests/SprykerTest/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Api module",
+            "support": {
+                "source": "https://github.com/spryker/Api/tree/master"
+            },
             "time": "2017-11-20T13:06:10+00:00"
         },
         {
@@ -6434,11 +6444,19 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-0": {
+                    "Unit": "tests/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Assertion bundle",
+            "support": {
+                "source": "https://github.com/spryker/Assertion/tree/3.0.0"
+            },
             "time": "2017-02-22T12:08:46+00:00"
         },
         {
@@ -7002,16 +7020,16 @@
         },
         {
             "name": "spryker/business-on-behalf-data-import",
-            "version": "1.1.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/business-on-behalf-data-import.git",
-                "reference": "0c38c08053e56786956bf2635b73c2c82a85a987"
+                "reference": "a064596581c50bbbfbb48df1d402c4060e0eeb66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/business-on-behalf-data-import/zipball/0c38c08053e56786956bf2635b73c2c82a85a987",
-                "reference": "0c38c08053e56786956bf2635b73c2c82a85a987",
+                "url": "https://api.github.com/repos/spryker/business-on-behalf-data-import/zipball/a064596581c50bbbfbb48df1d402c4060e0eeb66",
+                "reference": "a064596581c50bbbfbb48df1d402c4060e0eeb66",
                 "shasum": ""
             },
             "require": {
@@ -7024,7 +7042,7 @@
                 "spryker/kernel": "^3.0.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
@@ -7047,7 +7065,7 @@
                 "MIT"
             ],
             "description": "BusinessOnBehalfDataImport module",
-            "time": "2018-08-20T10:58:31+00:00"
+            "time": "2018-09-10T15:30:38+00:00"
         },
         {
             "name": "spryker/cache",
@@ -7082,11 +7100,14 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Cache bundle",
+            "support": {
+                "source": "https://github.com/spryker/Cache/tree/3.1.0"
+            },
             "time": "2017-04-10T13:13:21+00:00"
         },
         {
@@ -8002,11 +8023,14 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "CategoryExporter module",
+            "support": {
+                "source": "https://github.com/spryker/CategoryExporter/tree/3.0.2"
+            },
             "time": "2017-07-13T15:46:45+00:00"
         },
         {
@@ -9271,11 +9295,19 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-0": {
+                    "Functional": "tests/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "CmsUserConnector bundle",
+            "support": {
+                "source": "https://github.com/spryker/CmsUserConnector/tree/1.0.1"
+            },
             "time": "2017-06-29T10:18:58+00:00"
         },
         {
@@ -9563,27 +9595,31 @@
         },
         {
             "name": "spryker/company-business-unit-data-import",
-            "version": "0.3.3",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/company-business-unit-data-import.git",
-                "reference": "0b0909c2d7a723f4466cdaa4c5584382884df7b8"
+                "reference": "3e643397fb76e3662f732c68283a3d58da14fb17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/company-business-unit-data-import/zipball/0b0909c2d7a723f4466cdaa4c5584382884df7b8",
-                "reference": "0b0909c2d7a723f4466cdaa4c5584382884df7b8",
+                "url": "https://api.github.com/repos/spryker/company-business-unit-data-import/zipball/3e643397fb76e3662f732c68283a3d58da14fb17",
+                "reference": "3e643397fb76e3662f732c68283a3d58da14fb17",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/company": "^1.0.0",
                 "spryker/company-business-unit": "^2.0.0",
+                "spryker/company-unit-address": "^1.0.0",
+                "spryker/company-user": "^1.3.0",
                 "spryker/data-import": "^1.2.0",
                 "spryker/kernel": "^3.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/country": "*",
+                "spryker/customer": "*",
                 "spryker/propel": "*",
                 "spryker/propel-orm": "*",
                 "spryker/testify": "*"
@@ -9605,7 +9641,7 @@
                 "MIT"
             ],
             "description": "CompanyBusinessUnitDataImport module",
-            "time": "2018-09-13T11:25:24+00:00"
+            "time": "2018-09-26T01:30:46+00:00"
         },
         {
             "name": "spryker/company-business-unit-extension",
@@ -9737,16 +9773,16 @@
         },
         {
             "name": "spryker/company-data-import",
-            "version": "0.1.6",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/company-data-import.git",
-                "reference": "e98534949cdb6d03f1b88fc6a0c87f94060057ea"
+                "reference": "ef8d6f2148f0f018eac4852991e365b54003ca57"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/company-data-import/zipball/e98534949cdb6d03f1b88fc6a0c87f94060057ea",
-                "reference": "e98534949cdb6d03f1b88fc6a0c87f94060057ea",
+                "url": "https://api.github.com/repos/spryker/company-data-import/zipball/ef8d6f2148f0f018eac4852991e365b54003ca57",
+                "reference": "ef8d6f2148f0f018eac4852991e365b54003ca57",
                 "shasum": ""
             },
             "require": {
@@ -9779,7 +9815,7 @@
                 "MIT"
             ],
             "description": "CompanyDataImport module",
-            "time": "2018-09-13T11:25:24+00:00"
+            "time": "2018-09-18T14:34:48+00:00"
         },
         {
             "name": "spryker/company-extension",
@@ -10004,6 +10040,55 @@
             "time": "2018-04-06T09:05:36+00:00"
         },
         {
+            "name": "spryker/company-role-data-import",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/company-role-data-import.git",
+                "reference": "c19413693ed259fc09a37f28bdf1a165e3688aee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/company-role-data-import/zipball/c19413693ed259fc09a37f28bdf1a165e3688aee",
+                "reference": "c19413693ed259fc09a37f28bdf1a165e3688aee",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/company": "^1.1.1",
+                "spryker/company-role": "^1.0.0",
+                "spryker/company-user": "^1.3.0",
+                "spryker/data-import": "^1.3.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/permission": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/customer": "^4.1.0 || ^5.0.0 || ^6.0.0 || ^7.0.0",
+                "spryker/permission-extension": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\CompanyRoleDataImport\\Helper\\": "tests/SprykerTest/Zed/CompanyRoleDataImport/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "CompanyRoleDataImport module",
+            "time": "2018-09-26T01:30:46+00:00"
+        },
+        {
             "name": "spryker/company-supplier",
             "version": "1.0.0",
             "source": {
@@ -10145,16 +10230,16 @@
         },
         {
             "name": "spryker/company-unit-address-data-import",
-            "version": "0.1.1",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/company-unit-address-data-import.git",
-                "reference": "841a61da9820a6e06ebee0ca8964dff2435b37b4"
+                "reference": "184ab568053311ca1a75388c40e8d2a1c64f0bd5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/company-unit-address-data-import/zipball/841a61da9820a6e06ebee0ca8964dff2435b37b4",
-                "reference": "841a61da9820a6e06ebee0ca8964dff2435b37b4",
+                "url": "https://api.github.com/repos/spryker/company-unit-address-data-import/zipball/184ab568053311ca1a75388c40e8d2a1c64f0bd5",
+                "reference": "184ab568053311ca1a75388c40e8d2a1c64f0bd5",
                 "shasum": ""
             },
             "require": {
@@ -10187,7 +10272,7 @@
                 "MIT"
             ],
             "description": "CompanyUnitAddressDataImport module",
-            "time": "2018-09-21T10:44:56+00:00"
+            "time": "2018-09-21T13:53:08+00:00"
         },
         {
             "name": "spryker/company-unit-address-extension",
@@ -10519,6 +10604,52 @@
             ],
             "description": "CompanyUser module",
             "time": "2018-09-17T07:51:54+00:00"
+        },
+        {
+            "name": "spryker/company-user-data-import",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/company-user-data-import.git",
+                "reference": "99bab0fae4c11aef2ec09d8f381f9a8b6a783d7a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/company-user-data-import/zipball/99bab0fae4c11aef2ec09d8f381f9a8b6a783d7a",
+                "reference": "99bab0fae4c11aef2ec09d8f381f9a8b6a783d7a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/company": "^1.0.0",
+                "spryker/company-user": "^1.3.0",
+                "spryker/customer": "^4.1.0 || ^5.0.0 || ^6.0.0 || ^7.0.0",
+                "spryker/data-import": "^1.3.0",
+                "spryker/kernel": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\CompanyUserDataImport\\Helper\\": "tests/SprykerTest/Zed/CompanyUserDataImport/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "CompanyUserDataImport module",
+            "time": "2018-09-21T18:32:37+00:00"
         },
         {
             "name": "spryker/company-user-extension",
@@ -11010,11 +11141,19 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "SprykerTest\\": "tests/SprykerTest/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "CustomerApi module",
+            "support": {
+                "source": "https://github.com/spryker/CustomerApi/tree/master"
+            },
             "time": "2017-11-10T15:08:30+00:00"
         },
         {
@@ -11895,11 +12034,14 @@
                     "dev-master": "1.0.x-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Egulias module",
+            "support": {
+                "source": "https://github.com/spryker/Egulias/tree/1.0.0"
+            },
             "time": "2017-11-09T13:55:22+00:00"
         },
         {
@@ -12943,11 +13085,19 @@
                     "Function": "tests/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-0": {
+                    "Unit": "tests/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Graph bundle",
+            "support": {
+                "source": "https://github.com/spryker/Graph/tree/3.0.0"
+            },
             "time": "2017-02-22T12:08:46+00:00"
         },
         {
@@ -12973,11 +13123,14 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Graphviz module",
+            "support": {
+                "source": "https://github.com/spryker/Graphviz/tree/2.0.1"
+            },
             "time": "2017-08-02T16:31:17+00:00"
         },
         {
@@ -13222,11 +13375,20 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-0": {
+                    "Functional": "tests/",
+                    "Unit": "tests/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Invoice bundle",
+            "support": {
+                "source": "https://github.com/spryker/Invoice/tree/2.0.1"
+            },
             "time": "2017-02-22T11:53:10+00:00"
         },
         {
@@ -15415,11 +15577,14 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "pimple bundle",
+            "support": {
+                "source": "https://github.com/spryker/Pimple/tree/2.0.0"
+            },
             "time": "2016-04-01T13:06:05+00:00"
         },
         {
@@ -21131,11 +21296,14 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Redis bundle",
+            "support": {
+                "source": "https://github.com/spryker/Redis/tree/2.0.1"
+            },
             "time": "2017-04-26T15:15:36+00:00"
         },
         {
@@ -21178,11 +21346,22 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Config\\Module\\": "vendor/spryker/config/tests/_support/Module",
+                    "Propel\\Module\\": "vendor/spryker/propel/tests/_support/Module",
+                    "Transfer\\Module\\": "vendor/spryker/transfer/tests/_support/Module",
+                    "SprykerTest\\": "tests/SprykerTest/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Refund module",
+            "support": {
+                "source": "https://github.com/spryker/Refund/tree/master"
+            },
             "time": "2017-11-27T14:09:42+00:00"
         },
         {
@@ -22285,11 +22464,14 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Silex bundle",
+            "support": {
+                "source": "https://github.com/spryker/Silex/tree/2.0.1"
+            },
             "time": "2016-12-09T13:45:20+00:00"
         },
         {
@@ -23492,11 +23674,19 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "SprykerTest\\": "tests/SprykerTest/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "UtilDateTime module",
+            "support": {
+                "source": "https://github.com/spryker/UtilDateTime/tree/1.0.2"
+            },
             "time": "2017-10-24T13:32:31+00:00"
         },
         {
@@ -23673,11 +23863,19 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "SprykerTest\\": "tests/SprykerTest/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "UtilText module",
+            "support": {
+                "source": "https://github.com/spryker/UtilText/tree/master"
+            },
             "time": "2017-10-24T13:32:31+00:00"
         },
         {
@@ -23754,11 +23952,19 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "SprykerTest\\": "tests/SprykerTest/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "UtilValidate module",
+            "support": {
+                "source": "https://github.com/spryker/UtilValidate/tree/1.0.0"
+            },
             "time": "2017-11-09T13:55:22+00:00"
         },
         {
@@ -23842,11 +24048,14 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.spryker.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "WebProfiler module",
+            "support": {
+                "source": "https://github.com/spryker/WebProfiler/tree/1.0.0"
+            },
             "time": "2018-01-10T11:59:45+00:00"
         },
         {
@@ -24154,11 +24363,14 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Zend module",
+            "support": {
+                "source": "https://github.com/spryker/Zend/tree/2.1.0"
+            },
             "time": "2017-08-02T16:31:17+00:00"
         },
         {
@@ -29141,16 +29353,16 @@
         },
         {
             "name": "slevomat/coding-standard",
-            "version": "4.8.2",
+            "version": "4.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/slevomat/coding-standard.git",
-                "reference": "5e878708a16a75ed11a7d9aa02f50c257065d4fe"
+                "reference": "32e1ca205fc34920f323582ed29c0602e3897ae3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/5e878708a16a75ed11a7d9aa02f50c257065d4fe",
-                "reference": "5e878708a16a75ed11a7d9aa02f50c257065d4fe",
+                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/32e1ca205fc34920f323582ed29c0602e3897ae3",
+                "reference": "32e1ca205fc34920f323582ed29c0602e3897ae3",
                 "shasum": ""
             },
             "require": {
@@ -29176,7 +29388,7 @@
                 "MIT"
             ],
             "description": "Slevomat Coding Standard for PHP_CodeSniffer complements Consistence Coding Standard by providing sniffs with additional checks.",
-            "time": "2018-09-25T06:49:15+00:00"
+            "time": "2018-09-25T21:21:11+00:00"
         },
         {
             "name": "sllh/composer-versions-check",
