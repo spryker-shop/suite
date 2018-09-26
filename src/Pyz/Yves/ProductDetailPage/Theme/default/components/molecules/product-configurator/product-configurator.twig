@@ -24,9 +24,13 @@
     }]) %}
 {% endfor %}
 
-{% set productViewAvailabilityWidget = findWidget('ProductViewAvailabilityWidget', [data.product]) %}
-{% set isAvailable = productViewAvailabilityWidget.isAvailable | default(widgetBlock('AvailabilityWidgetPlugin', 'isAvailable', data.product)) %} {# @deprecated Use ProductViewAvailabilityWidget instead of AvailabilityWidgetPlugin. #}
-{% set isDisabled = not isAvailable or isDisabled %}
+{% if widgetExists('AvailabilityWidgetPlugin') %} {# @deprecated Use NEW_MOLECULE instead of AvailabilityWidgetPlugin. #}
+    {% set isAvailable = widgetBlock('AvailabilityWidgetPlugin', 'isAvailable', data.product) %}
+    {% set isDisabled = not isAvailable or isDisabled %}
+{% else %}
+    {% set isAvailable = data.product.idProductConcrete and data.product.available %}
+    {% set isDisabled = not isAvailable or isDisabled %}
+{% endif %}
 
 {% set productDiscontinuedNoteWidget = findWidget('ProductDiscontinuedNoteWidget', [sku]) %}
 {% set isDiscontinued = productDiscontinuedNoteWidget.isDiscontinued | default(widgetBlock('ProductDiscontinuedWidgetPlugin', 'isDiscontinued', sku)) %} {# @deprecated Use productDiscontinuedNoteWidget instead of ProductDiscontinuedWidgetPlugin. #}
