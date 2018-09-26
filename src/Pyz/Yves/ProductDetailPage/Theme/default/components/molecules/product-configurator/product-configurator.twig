@@ -120,7 +120,7 @@
         {% endwidget %}
 
         {% if widgetExists('AvailabilityWidgetPlugin') %}
-            {{ widget('AvailabilityWidgetPlugin', data.product) }}
+            {{ widget('AvailabilityWidgetPlugin', data.product) }} {# @deprecated Use molecule('availability-product', 'AvailabilityWidget') instead. #}
         {% else %}
             {% include molecule('availability-product', 'AvailabilityWidget') ignore missing with {
                 data: {
@@ -148,10 +148,15 @@
     {% if isProductAvailable %}
         {% if widgetExists('WishlistWidgetPlugin') %}
             <hr />
-            {{ widget('WishlistWidgetPlugin', data.product) }} {# @deprecated Use NEW_MOLECULE instead. #}
+            {{ widget('WishlistWidgetPlugin', data.product) }} {# @deprecated Use molecule('wishlist-selector', 'WishlistWidget') instead. #}
         {% else %}
             <hr />
-            {# todo: include NEW_MOLECULE here #}
+            {% include molecule('wishlist-selector', 'WishlistWidget') ignore missing with {
+                data: {
+                    sku: data.product.sku,
+                    idProductConcrete: data.product.idProductConcrete | default
+                }
+            } only %}
         {% endif %}
     {% endif %}
 
