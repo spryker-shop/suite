@@ -8,17 +8,7 @@
 namespace Pyz\Yves\CmsSearchPage;
 
 use SprykerShop\Yves\CmsSearchPage\CmsSearchPageDependencyProvider as SprykerCmsSearchPageDependencyProvider;
-use SprykerShop\Yves\TabsWidget\Plugin\ShopApplication\FullTextSearchTabsWidgetPlugin;
 
 class CmsSearchPageDependencyProvider extends SprykerCmsSearchPageDependencyProvider
 {
-    /**
-     * @return string[]
-     */
-    protected function getCmsSearchPageWidgetPlugins(): array
-    {
-        return [
-            FullTextSearchTabsWidgetPlugin::class,
-        ];
-    }
 }
