@@ -1504,10 +1504,24 @@ multi_cart.form.edit_cart,"Change Name",en_US
 multi_cart.form.edit_cart,"Namen ändern",de_DE
 multi_cart.form.edit_cart_information,"Edit Cart information",en_US
 multi_cart.form.edit_cart_information,"Einkaufswageninformationen bearbeiten",de_DE
-multi_cart.cart.set_default.success,"Cart '%quote%' has successfully been set to your active cart.",en_US
-multi_cart.cart.set_default.success,"Warenkorb '%quote%' wurde erfolgreich aktiviert.",de_DE
+multi_cart.cart.set_default.success,"Cart '%quote%' was successfully set as active.",en_US
+multi_cart.cart.set_default.success,"Warenkorb '%quote%' wurde erfolgreich auf aktiv gesetzt.",de_DE
 multi_cart_page.cart_clear.success,"Cart was successfully cleared",en_US
 multi_cart_page.cart_clear.success,"Einkaufswagen wurde erfolgreich gelöscht",de_DE
+multi_cart_page.cart_delete_confirmation.warning,Warning,en_US
+multi_cart_page.cart_delete_confirmation.warning,Warnung,de_DE
+multi_cart_page.cart_delete_confirmation.trying_to_delete,You are trying to delete Cart,en_US
+multi_cart_page.cart_delete_confirmation.trying_to_delete,Sie versuchen den Warenkorb zu löschen,de_DE
+multi_cart_page.cart_delete_confirmation.shared_with,It is shared with the following users,en_US
+multi_cart_page.cart_delete_confirmation.shared_with,Der Warenkorb ist mit den folgenden Personen geteilt,de_DE
+multi_cart_page.cart_delete_confirmation.from_all_of_them,It will be deleted from all of them,en_US
+multi_cart_page.cart_delete_confirmation.from_all_of_them,Der Warenkorb wird für alle Nutzer gelöscht,de_DE
+multi_cart_page.cart_delete_confirmation.cancel,Cancel,en_US
+multi_cart_page.cart_delete_confirmation.cancel,Abbrechen,de_DE
+multi_cart_page.cart_delete_confirmation.delete,Delete,en_US
+multi_cart_page.cart_delete_confirmation.delete,Löschen,de_DE
+multi_cart_page.cart_delete_confirmation.breadcrumbs.shopping_carts,Shopping carts,en_US
+multi_cart_page.cart_delete_confirmation.breadcrumbs.shopping_carts,Warenkörbe,de_DE
 multi_cart_widget.cart.cart_name,"Cart Name",en_US
 multi_cart_widget.cart.cart_name,"Name des Einkaufswagens",de_DE
 multi_cart_widget.cart.add,"Create New Cart",en_US
@@ -1548,8 +1562,6 @@ multi_cart_widget.cart.created.success,"Cart '%quoteName%' was created successfu
 multi_cart_widget.cart.created.success,"Warenkorb '%quoteName%' wurde erfolgreich erstellt",de_DE
 multi_cart_widget.cart.updated.success,"Cart updated successfully",en_US
 multi_cart_widget.cart.updated.success,"Einkaufswagen wurde erfolgreich aktualisiert",de_DE
-multi_cart_widget.cart.remove.confirm,Are you sure that you want to remove this cart?,en_US
-multi_cart_widget.cart.remove.confirm,"Sind Sie sicher, dass Sie diesen Warenkorb entfernen möchten?",de_DE
 shared_cart_widget.add_product.separate,"Add as separate item",en_US
 shared_cart_widget.add_product.separate,"Als separaten Artikel hinzufügen",de_DE
 shared_cart_widget.cart.share,"Share cart",en_US
@@ -1566,6 +1578,8 @@ shared_cart_widget.share_list.actions,Actions,en_US
 shared_cart_widget.share_list.actions,Aktionen,de_DE
 shared_cart_widget.share_list.action.unshare,Unshare cart,en_US
 shared_cart_widget.share_list.action.unshare,Freigabe des Einkaufswagens,de_DE
+shared_cart.share_list.permissions.NO_ACCESS,No access,en_US
+shared_cart.share_list.permissions.NO_ACCESS,Kein Zugang,de_DE
 shared_cart.share_list.permissions.READ_ONLY,Read-only,en_US
 shared_cart.share_list.permissions.READ_ONLY,Schreibgeschützt,de_DE
 shared_cart.share_list.permissions.FULL_ACCESS,Full access,en_US
@@ -1574,6 +1588,8 @@ shared_cart.share_list.permissions.OWNER_ACCESS,Owner access,en_US
 shared_cart.share_list.permissions.OWNER_ACCESS,Eigentümer Zugriff,de_DE
 shared_cart.form.share_cart,"Share cart",en_US
 shared_cart.form.share_cart,"Warenkorb teilen",de_DE
+shared_cart.form.share_cart.title,"Share cart ""cart_name""",en_US
+shared_cart.form.share_cart.title,"Warenkorb teilen ""cart_name""",de_DE
 shared_cart.form.customer,"Customer name",en_US
 shared_cart.form.customer,Kundenname,de_DE
 shared_cart.form.select_customer,Select customer,en_US
@@ -1582,8 +1598,18 @@ shared_cart.form.select_permissions,Select access level,en_US
 shared_cart.form.select_permissions,"Wählen Sie Zugriffsebene",de_DE
 shared_cart.form.share_button,Share,en_US
 shared_cart.form.share_button,Aktie,de_DE
+shared_cart.form.save_button,Save,en_US
+shared_cart.form.save_button,Sparen,de_DE
+shared_cart.form.data_empty,"There are no Users with whom you can share shopping cart.",en_US
+shared_cart.form.data_empty,"Es gibt keine Benutzer, mit denen Sie den Einkaufswagen teilen können.",de_DE
 shared_cart.share.error.already_exist,Cart was already shared with this customer,en_US
 shared_cart.share.error.already_exist,Der Warenkorb wurde bereits mit diesem Kunden geteilt,de_DE
+shared_cart.share.breadcrumbs.share,Share,en_US
+shared_cart.share.breadcrumbs.share,Teilen,de_DE
+shared_cart.share.breadcrumbs.shopping_carts,Shopping carts,en_US
+shared_cart.share.breadcrumbs.shopping_carts,Warenkörbe,de_DE
+shared_cart.share.form.users,Users,en_US
+shared_cart.share.form.users,Benutzer,de_DE
 shared_cart_page.share.success,Cart was successfully shared,en_US
 shared_cart_page.share.success,Warenkorb wurde erfolgreich geteilt,de_DE
 shared_cart_page.unshare.success,Cart was successfully unshared,en_US
@@ -1834,6 +1860,54 @@ cart.pre.check.amount.interval.failed,Die Anzahl für Produkt SKU '%sku%' liegt 
 cart.pre.check.amount.interval.failed,Amount interval requirements for product SKU '%sku%' are not fulfilled.,en_US
 cart.pre.check.amount.is_not_variable.failed,Standardbetrag für Produkt SKU '%sku%' ist überschritten.,de_DE
 cart.pre.check.amount.is_not_variable.failed,Default amount requirements for product SKU '%sku%' are not fulfilled.,en_US
+customer.account.shopping_list.create_from_cart.choose_shopping_list,Choose shopping list,en_US
+customer.account.shopping_list.create_from_cart.choose_shopping_list,Wählen Sie die Einkaufsliste,de_DE
+customer.account.shopping_list.create_from_cart.name,Name,en_US
+customer.account.shopping_list.create_from_cart.name,Name,de_DE
+customer.account.shopping_list.create_from_cart.form_title,'%cart_name%' add to shopping list,en_US
+customer.account.shopping_list.create_from_cart.form_title,'%cart_name%' auf die Merkliste,de_DE
+customer.account.shopping_list.create_from_cart.title,Add to shopping list,en_US
+customer.account.shopping_list.create_from_cart.title,Auf die Merkliste,de_DE
+customer.account.shopping_list.shopping_cart,Shopping cart,en_US
+customer.account.shopping_list.shopping_cart,Einkaufswagen,de_DE
+page.multi_cart.shopping_cart.list.title,Shopping cart,en_US
+page.multi_cart.shopping_cart.list.title,Einkaufswagen,de_DE
+page.multi_cart.shopping_cart.list.create_link,Create,en_US
+page.multi_cart.shopping_cart.list.create_link,Erstellen,de_DE
+page.multi_cart.shopping_cart.list.label.name,Name,en_US
+page.multi_cart.shopping_cart.list.label.name,Name,de_DE
+page.multi_cart.shopping_cart.list.label.num_of_products,Number of products,en_US
+page.multi_cart.shopping_cart.list.label.num_of_products,Anzahl der Produkte,de_DE
+page.multi_cart.shopping_cart.list.label.total,Total,en_US
+page.multi_cart.shopping_cart.list.label.total,Gesamt,de_DE
+page.multi_cart.shopping_cart.list.label.actions,Actions,en_US
+page.multi_cart.shopping_cart.list.label.actions,Aktionen,de_DE
+page.multi_cart.shopping_cart.list.link.edit_name,Edit name,en_US
+page.multi_cart.shopping_cart.list.link.edit_name,Namen bearbeiten,de_DE
+page.multi_cart.shopping_cart.list.link.duplicate,Duplicate,en_US
+page.multi_cart.shopping_cart.list.link.duplicate,Duplikat,de_DE
+page.multi_cart.shopping_cart.list.link.delete,Delete,en_US
+page.multi_cart.shopping_cart.list.link.delete,Löschen,de_DE
+page.multi_cart.shopping_cart.list.label.item,"Item",en_US
+page.multi_cart.shopping_cart.list.label.item,"Artikel",de_DE
+page.multi_cart.shopping_cart.list.label.items,"Items",en_US
+page.multi_cart.shopping_cart.list.label.items,"Artikel",de_DE
+customer.account.shopping_cart.list.title,Manage Shopping carts,en_US
+customer.account.shopping_cart.list.title,Verwalten Sie Einkaufswagen,de_DE
+widget.shared_cart.multi_cart.permissions.READ_ONLY,Read-only,en_US
+widget.shared_cart.multi_cart.permissions.READ_ONLY,Schreibgeschützt,de_DE
+widget.shared_cart.multi_cart.permissions.FULL_ACCESS,Full access,en_US
+widget.shared_cart.multi_cart.permissions.FULL_ACCESS,Ohne Einschränkung,de_DE
+widget.shared_cart.multi_cart.permissions.OWNER_ACCESS,Owner access,en_US
+widget.shared_cart.multi_cart.permissions.OWNER_ACCESS,Eigentümer Zugriff,de_DE
+page.multi_cart.shopping_cart.list.label.access,Access,en_US
+page.multi_cart.shopping_cart.list.label.access,Zugriff,de_DE
+widget.shopping_list.multi_cart.to_shopping_list,To shopping list,en_US
+widget.shopping_list.multi_cart.to_shopping_list,Zur Einkaufsliste,de_DE
+page.multi_cart.shopping_cart.update.title,Edit,en_US
+page.multi_cart.shopping_cart.update.title,Bearbeiten,de_DE
+page.multi_cart.shopping_cart.create.title,Create,en_US
+page.multi_cart.shopping_cart.create.title,Erstellen,de_DE
 agent.authentication.failed,Authentication failed,en_US
 agent.authentication.failed,Authentifizierung fehlgeschlagen,de_DE
 agent.login.title,Access your account,en_US
@@ -1856,5 +1930,15 @@ agent.autocomplete.no_results,No results found,en_US
 agent.autocomplete.no_results,Keine Ergebnisse gefunden,de_DE
 autocomplete.placeholder,Search,en_US
 autocomplete.placeholder,Suche,de_DE
+shopping_list_widget.items,Items,en_US
+shopping_list_widget.items,Artikel,de_DE
+shopping_list_widget.full_access,Full access,en_US
+shopping_list_widget.full_access,Ohne Einschränkung,de_DE
+shopping_list_widget.read_only,Read only,en_US
+shopping_list_widget.read_only,Schreibgeschützt,de_DE
+shopping_list.create_new_list,Create new list,en_US
+shopping_list.create_new_list,Erstelle eine neue Liste,de_DE
+shopping_list.no_lists_created,You do not have any shopping lists yet.,en_US
+shopping_list.no_lists_created,Du hast noch keine Einkaufslisten.,de_DE
 multi_cart_widget.cart.was-deleted-before,Dieser Warenkorb wurde bereits gelöscht,de_DE
 multi_cart_widget.cart.was-deleted-before,This cart was already deleted,en_US
