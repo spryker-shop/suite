@@ -115,9 +115,16 @@
         {% elsewidget 'MultiCartWidgetPlugin' args [data.product, isDisabled] only %} {# @deprecated Use AddToMultiCartWidget instead. #}
         {% endwidget %}
 
-        {% widget productViewAvailabilityWidget only %}
-        {% elsewidget 'AvailabilityWidgetPlugin' args [data.product] only %} {# @deprecated Use ProductViewAvailabilityWidget instead. #}
-        {% endwidget %}
+        {% if widgetExists('AvailabilityWidgetPlugin') %}
+            {{ widget('AvailabilityWidgetPlugin', data.product) }}
+        {% else %}
+            {% include molecule('availability-product', 'AvailabilityWidget') ignore missing with {
+                data: {
+                    idProductConcrete: data.product.idProductConcrete,
+                    isAvailable: data.product.available
+                }
+            } only %}
+        {% endif %}
     </form>
 
     {% if isProductAvailable %}
