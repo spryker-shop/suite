@@ -26,7 +26,7 @@ class RestApiDocumentationGeneratorDependencyProvider extends SprykerRestApiDocu
     /**
      * @return array
      */
-    protected function getResourceRelationshipsCollectionProviderPlugin(): array
+    protected function getResourceRelationshipsCollectionProviderPlugins(): array
     {
         return [
             new ResourceRelationshipCollectionProviderPlugin(),

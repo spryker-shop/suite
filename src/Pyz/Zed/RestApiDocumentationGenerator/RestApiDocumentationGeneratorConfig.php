@@ -12,26 +12,26 @@ use Spryker\Zed\RestApiDocumentationGenerator\RestApiDocumentationGeneratorConfi
 
 class RestApiDocumentationGeneratorConfig extends SprykerRestApiDocumentationGeneratorConfig
 {
-    protected const APPLICATION_ANNOTATIONS_SOURCE_DIRECTORY_PATTERN = '/Glue/%1$s/Controller/';
-    protected const CORE_ANNOTATIONS_SOURCE_DIRECTORY_PATTERN = '/spryker/spryker/Bundles/%1$s/src/Spryker/Glue/%1$s/Controller/';
+    protected const APPLICATION_SOURCE_ANNOTATIONS_SOURCE_DIRECTORY_PATTERN = '/Glue/%1$s/Controller/';
+    protected const APPLICATION_VENDOR_ANNOTATIONS_SOURCE_DIRECTORY_PATTERN = '/spryker/spryker/Bundles/%1$s/src/Spryker/Glue/%1$s/Controller/';
 
     /**
      * @return array
      */
-    protected function getCoreAnnotationsSourceDirectoryGlobPatterns(): array
+    protected function getCoreAnnotationsSourceDirectoryPatterns(): array
     {
         return [
-            APPLICATION_VENDOR_DIR . static::CORE_ANNOTATIONS_SOURCE_DIRECTORY_PATTERN,
+            APPLICATION_VENDOR_DIR . static::APPLICATION_VENDOR_ANNOTATIONS_SOURCE_DIRECTORY_PATTERN,
         ];
     }
 
     /**
      * @return array
      */
-    protected function getApplicationAnnotationsSourceDirectoryGlobPattern(): array
+    protected function getApplicationAnnotationsSourceDirectoryPattern(): array
     {
         return [
-            APPLICATION_SOURCE_DIR . '/' . $this->get(KernelConstants::PROJECT_NAMESPACE) . static::APPLICATION_ANNOTATIONS_SOURCE_DIRECTORY_PATTERN,
+            APPLICATION_SOURCE_DIR . '/' . $this->get(KernelConstants::PROJECT_NAMESPACE) . static::APPLICATION_SOURCE_ANNOTATIONS_SOURCE_DIRECTORY_PATTERN,
         ];
     }
 }
