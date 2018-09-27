@@ -71,7 +71,7 @@ use SprykerShop\Yves\ProductWidget\Widget\CatalogPageProductWidget;
 use SprykerShop\Yves\ProductWidget\Widget\CmsProductGroupWidget;
 use SprykerShop\Yves\ProductWidget\Widget\CmsProductWidget;
 use SprykerShop\Yves\ProductWidget\Widget\PdpProductRelationWidget;
-use SprykerShop\Yves\ProductWidget\Widget\PdpProductReplacementForWidget;
+use SprykerShop\Yves\ProductWidget\Widget\PdpProductReplacementForListWidget;
 use SprykerShop\Yves\ProductWidget\Widget\ProductAlternativeWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartDetailsWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartOperationsWidget;
@@ -130,7 +130,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             NavigationWidget::class,
             NewsletterSubscriptionSummaryWidget::class,
             PdpProductRelationWidget::class,
-            PdpProductReplacementForWidget::class,
+            PdpProductReplacementForListWidget::class,
             PriceModeSwitcherWidget::class,
             ProductAbstractLabelWidget::class,
             ProductAlternativeListWidget::class,
