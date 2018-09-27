@@ -22,6 +22,7 @@ use SprykerShop\Yves\PriceWidget\Plugin\ShopUi\PriceModeSwitcherWidgetPlugin;
 use SprykerShop\Yves\ProductGroupWidget\Plugin\ShopUi\ProductGroupWidgetPlugin;
 use SprykerShop\Yves\ShopApplication\ShopApplicationDependencyProvider as SprykerShopApplicationDependencyProvider;
 use SprykerShop\Yves\ShoppingListWidget\Plugin\ShopUi\ShoppingListWidgetPlugin;
+use SprykerShop\Yves\TabsWidget\Widget\FullTextSearchTabsWidget;
 
 class ShopApplicationDependencyProvider extends SprykerShopApplicationDependencyProvider
 {
@@ -43,6 +44,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             MenuItemCompanyWidgetPlugin::class,
             AgentWidgetPlugin::class, #AgentFeature
             ShoppingListWidgetPlugin::class, #ShoppingListFeature
+            FullTextSearchTabsWidget::class, #CmsSearchPageFeature
         ];
     }
 

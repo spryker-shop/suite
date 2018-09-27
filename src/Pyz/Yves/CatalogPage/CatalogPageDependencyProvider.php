@@ -11,7 +11,6 @@ use SprykerShop\Yves\CatalogPage\CatalogPageDependencyProvider as SprykerCatalog
 use SprykerShop\Yves\CmsBlockWidget\Plugin\CatalogPage\CatalogCmsBlockWidgetPlugin;
 use SprykerShop\Yves\ProductReviewWidget\Plugin\CatalogPage\ProductRatingFilterWidgetPlugin;
 use SprykerShop\Yves\ProductWidget\Plugin\CatalogPage\ProductWidgetPlugin;
-use SprykerShop\Yves\TabsWidget\Plugin\ShopApplication\FullTextSearchTabsWidgetPlugin;
 
 class CatalogPageDependencyProvider extends SprykerCatalogPageDependencyProvider
 {
@@ -24,7 +23,6 @@ class CatalogPageDependencyProvider extends SprykerCatalogPageDependencyProvider
             ProductWidgetPlugin::class,
             CatalogCmsBlockWidgetPlugin::class,
             ProductRatingFilterWidgetPlugin::class,
-            FullTextSearchTabsWidgetPlugin::class,
         ];
     }
 }
