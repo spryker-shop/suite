@@ -10,7 +10,7 @@
     abstractId: required,
     url: required,
     imageUrl: required,
-    price: required,
+    price: null,
     originalPrice: null
 } %}
 
@@ -45,13 +45,17 @@
     {% endblock %}
 
     {% block price %}
-        <p>
-            {% include molecule('price') with {
-                data: {
-                    amount: data.price | money,
-                    originalAmount: data.originalPrice is empty ? null : (data.originalPrice | money)
-                }
-            } only %}
-        </p>
+        {% if data.price is not null %}
+            <p>
+                {% include molecule('price') with {
+                    data: {
+                        amount: data.price | money,
+                        originalAmount: data.originalPrice is empty ? null : (data.originalPrice | money)
+                    }
+                } only %}
+            </p>
+        {% else %}
+            N/A
+        {% endif %}
     {% endblock %}
 {% endblock %}
