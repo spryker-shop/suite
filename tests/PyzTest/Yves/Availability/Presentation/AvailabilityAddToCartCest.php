@@ -35,8 +35,9 @@ class AvailabilityAddToCartCest
         $i->amLoggedInCustomer();
 
         $i->amOnPage(AvailabilityPresentationTester::FUJITSU2_PRODUCT_PAGE);
+        $i->amOnPage('/cart/add/119_29804808');
 
-        $i->click(ProductDetailPage::ADD_TO_CART_SUBMIT);
+//        $i->click(ProductDetailPage::ADD_TO_CART_SUBMIT);
 
         $i->see(CartListPage::CART_HEADER);
 
