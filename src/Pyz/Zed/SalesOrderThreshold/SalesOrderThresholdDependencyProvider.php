@@ -8,6 +8,7 @@
 namespace Pyz\Zed\SalesOrderThreshold;
 
 use Spryker\Zed\MerchantRelationshipSalesOrderThreshold\Communication\Plugin\SalesOrderThreshold\MerchantRelationshipSalesOrderThresholdDataSourceStrategyPlugin;
+use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\SalesOrderThresholdExtension\GlobalSalesOrderThresholdDataSourceStrategyPlugin;
 use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Strategy\HardMinimumThresholdStrategyPlugin;
 use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Strategy\SoftMinimumThresholdWithFixedFeeStrategyPlugin;
 use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Strategy\SoftMinimumThresholdWithFlexibleFeeStrategyPlugin;
@@ -23,6 +24,7 @@ class SalesOrderThresholdDependencyProvider extends SprykerSalesOrderThresholdDe
     {
         return [
             new MerchantRelationshipSalesOrderThresholdDataSourceStrategyPlugin(),
+            new GlobalSalesOrderThresholdDataSourceStrategyPlugin(),
         ];
     }
 
