@@ -50,8 +50,8 @@ abstract class AbstractProductConcreteWriterTest extends AbstractWriterTest
             $dataSet = new DataSet();
             $productTransfer = (new SpyProductEntityBuilder())->build();
             $dataSet[ProductConcreteHydratorStep::KEY_ABSTRACT_SKU] = $abstractSku;
-            $dataSet[ProductConcreteHydratorStep::PRODUCT_CONCRETE_TRANSFER] = $productTransfer;
-            $dataSet[ProductConcreteHydratorStep::PRODUCT_CONCRETE_LOCALIZED_TRANSFER] = [
+            $dataSet[ProductConcreteHydratorStep::DATA_PRODUCT_CONCRETE_TRANSFER] = $productTransfer;
+            $dataSet[ProductConcreteHydratorStep::DATA_PRODUCT_CONCRETE_LOCALIZED_TRANSFER] = [
                 [
                     'sku' => $productTransfer->getSku(),
                     'localizedAttributeTransfer' => (new SpyProductLocalizedAttributesEntityBuilder())
@@ -62,7 +62,7 @@ abstract class AbstractProductConcreteWriterTest extends AbstractWriterTest
                         ->setIsSearchable(1),
                 ],
             ];
-            $dataSet[ProductConcreteHydratorStep::PRODUCT_BUNDLE_TRANSFER] = [];
+            $dataSet[ProductConcreteHydratorStep::DATA_PRODUCT_BUNDLE_TRANSFER] = [];
 
             $result[$productTransfer->getSku()] = $dataSet;
         }
@@ -101,7 +101,7 @@ abstract class AbstractProductConcreteWriterTest extends AbstractWriterTest
         foreach ($fetchedResult['products'] as $productEntity) {
             //Product
             /** @var \Generated\Shared\Transfer\SpyProductEntityTransfer $dataSetProduct */
-            $dataSetProduct = $dataSets[$productEntity->getSku()][ProductConcreteHydratorStep::PRODUCT_CONCRETE_TRANSFER];
+            $dataSetProduct = $dataSets[$productEntity->getSku()][ProductConcreteHydratorStep::DATA_PRODUCT_CONCRETE_TRANSFER];
             $this->assertEquals(
                 $dataSetProduct->getIsActive(),
                 $productEntity->getIsActive()
@@ -112,7 +112,7 @@ abstract class AbstractProductConcreteWriterTest extends AbstractWriterTest
             );
 
             //Localized
-            $dataSetLocalizedAttributes = $dataSets[$productEntity->getSku()][ProductConcreteHydratorStep::PRODUCT_CONCRETE_LOCALIZED_TRANSFER];
+            $dataSetLocalizedAttributes = $dataSets[$productEntity->getSku()][ProductConcreteHydratorStep::DATA_PRODUCT_CONCRETE_LOCALIZED_TRANSFER];
             /** @var \Orm\Zed\Product\Persistence\SpyProductLocalizedAttributes $localizedAttribute */
             foreach ($fetchedResult['productsLocalizedAttributes'] as $localizedAttribute) {
                 if ($localizedAttribute->getFkProduct() !== $productEntity->getIdProduct()) {

@@ -172,7 +172,7 @@ class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
      */
     protected function getProductConcreteBundleTransfers(DataSetInterface $dataSet): array
     {
-        return $dataSet[ProductConcreteHydratorStep::PRODUCT_BUNDLE_TRANSFER][ProductConcreteHydratorStep::KEY_PRODUCT_BUNDLE_TRANSFER] ?? [];
+        return $dataSet[ProductConcreteHydratorStep::DATA_PRODUCT_BUNDLE_TRANSFER][ProductConcreteHydratorStep::KEY_PRODUCT_BUNDLE_TRANSFER] ?? [];
     }
 
     /**
@@ -182,7 +182,7 @@ class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
      */
     protected function getProductConcreteLocalizedTransfers(DataSetInterface $dataSet): array
     {
-        return $dataSet[ProductConcreteHydratorStep::PRODUCT_CONCRETE_LOCALIZED_TRANSFER] ?? [];
+        return $dataSet[ProductConcreteHydratorStep::DATA_PRODUCT_CONCRETE_LOCALIZED_TRANSFER] ?? [];
     }
 
     /**
@@ -192,6 +192,6 @@ class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
      */
     protected function getProductConcreteTransfer(DataSetInterface $dataSet): SpyProductEntityTransfer
     {
-        return $dataSet[ProductConcreteHydratorStep::PRODUCT_CONCRETE_TRANSFER];
+        return $dataSet[ProductConcreteHydratorStep::DATA_PRODUCT_CONCRETE_TRANSFER];
     }
 }

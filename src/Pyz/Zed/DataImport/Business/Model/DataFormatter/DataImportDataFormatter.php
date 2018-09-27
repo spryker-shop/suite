@@ -7,16 +7,17 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\DataFormatter;
 
-trait DataFormatter
+class DataImportDataFormatter implements DataImportDataFormatterInterface
 {
     /**
      * @param string $value
+     * @param string $replace
      *
      * @return string
      */
-    protected function replaceDoubleQuotes(string $value): string
+    public function replaceDoubleQuotes(string $value, string $replace = ''): string
     {
-        return str_replace('"', '', $value);
+        return str_replace('"', $replace, $value);
     }
 
     /**
@@ -24,7 +25,7 @@ trait DataFormatter
      *
      * @return string
      */
-    protected function formatPostgresArray(array $values): string
+    public function formatPostgresArray(array $values): string
     {
         if (is_array($values) && empty($values)) {
             return '{null}';
@@ -32,7 +33,7 @@ trait DataFormatter
 
         return sprintf(
             '{%s}',
-            implode(',', $values)
+            pg_escape_string(implode(',', $values))
         );
     }
 
@@ -41,11 +42,11 @@ trait DataFormatter
      *
      * @return string
      */
-    protected function formatPostgresArrayString(array $values): string
+    public function formatPostgresArrayString(array $values): string
     {
         return sprintf(
             '{"%s"}',
-            implode('","', $values)
+            pg_escape_string(implode('","', $values))
         );
     }
 
@@ -54,11 +55,11 @@ trait DataFormatter
      *
      * @return string
      */
-    protected function formatPostgresArrayFromJson(array $values): string
+    public function formatPostgresArrayFromJson(array $values): string
     {
         return sprintf(
             '[%s]',
-            implode(',', $values)
+            pg_escape_string(implode(',', $values))
         );
     }
 
@@ -68,7 +69,7 @@ trait DataFormatter
      *
      * @return array
      */
-    protected function getCollectionDataByKey(array $collection, string $key)
+    public function getCollectionDataByKey(array $collection, string $key)
     {
         return array_column($collection, $key);
     }

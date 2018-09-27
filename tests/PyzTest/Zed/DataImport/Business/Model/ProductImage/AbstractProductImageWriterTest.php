@@ -53,12 +53,12 @@ abstract class AbstractProductImageWriterTest extends AbstractWriterTest
             $dataSet[ProductImageHydratorStep::KEY_ABSTRACT_SKU] = $product[SpyProductAbstractTableMap::COL_SKU];
             $dataSet[ProductImageHydratorStep::KEY_CONCRETE_SKU] = '';
             $dataSet[ProductImageHydratorStep::KEY_LOCALE] = $locale->getLocaleName();
-            $dataSet[ProductImageHydratorStep::PRODUCT_IMAGE_SET_TRANSFER] = (new SpyProductImageSetEntityBuilder())
+            $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_SET_TRANSFER] = (new SpyProductImageSetEntityBuilder())
                 ->build()
                 ->setFkLocale($locale->getIdLocale())
                 ->setFkProductAbstract($product[SpyProductAbstractTableMap::COL_ID_PRODUCT_ABSTRACT]);
-            $dataSet[ProductImageHydratorStep::PRODUCT_IMAGE_TRANSFER] = (new SpyProductImageEntityBuilder())->build();
-            $dataSet[ProductImageHydratorStep::PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER] = (new SpyProductImageSetToProductImageEntityTransfer())
+            $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_TRANSFER] = (new SpyProductImageEntityBuilder())->build();
+            $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER] = (new SpyProductImageSetToProductImageEntityTransfer())
                 ->setSortOrder(0);
 
             $result[$product[SpyProductAbstractTableMap::COL_SKU]] = $dataSet;
@@ -121,7 +121,7 @@ abstract class AbstractProductImageWriterTest extends AbstractWriterTest
         foreach ($fetchedResult['productImageSets'] as $productImageSet) {
             //Image Set
             /** @var \Generated\Shared\Transfer\SpyProductImageSetEntityTransfer $dataSetProductImageSet */
-            $dataSetProductImageSet = $dataSets[$productImageSet[SpyProductAbstractTableMap::COL_SKU]][ProductImageHydratorStep::PRODUCT_IMAGE_SET_TRANSFER];
+            $dataSetProductImageSet = $dataSets[$productImageSet[SpyProductAbstractTableMap::COL_SKU]][ProductImageHydratorStep::DATA_PRODUCT_IMAGE_SET_TRANSFER];
             $this->assertEquals(
                 $dataSetProductImageSet->getName(),
                 $productImageSet[SpyProductImageSetTableMap::COL_NAME]

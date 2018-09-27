@@ -87,7 +87,7 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
      *
      * @return \Orm\Zed\PriceProduct\Persistence\SpyPriceType
      */
-    protected function findOrCreatePriceType(DataSetInterface $dataSet)
+    protected function findOrCreatePriceType(DataSetInterface $dataSet): SpyPriceType
     {
         $priceTypeTransfer = $dataSet[ProductPriceHydratorStep::PRICE_TYPE_TRANSFER];
 

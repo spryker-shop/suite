@@ -16,7 +16,7 @@ class ProductAbstractStoreHydratorStep implements DataImportStepInterface
     public const BULK_SIZE = 1000;
     public const KEY_PRODUCT_ABSTRACT_SKU = 'product_abstract_sku';
     public const KEY_STORE_NAME = 'store_name';
-    public const PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER = 'PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER';
+    public const DATA_PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER = 'DATA_PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER';
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
@@ -40,6 +40,6 @@ class ProductAbstractStoreHydratorStep implements DataImportStepInterface
             ->setStoreName($dataSet[static::KEY_STORE_NAME])
             ->setProductAbstractSku($dataSet[static::KEY_PRODUCT_ABSTRACT_SKU]);
 
-        $dataSet[static::PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER] = $productAbstractStoreTransfer;
+        $dataSet[static::DATA_PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER] = $productAbstractStoreTransfer;
     }
 }

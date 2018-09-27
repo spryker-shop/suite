@@ -31,9 +31,9 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
     const KEY_IMAGE_SET_FK_LOCALE = 'fk_locale';
     const KEY_SORT_ORDER = 'sort_order';
     const IMAGE_TO_IMAGE_SET_RELATION_ORDER = 0;
-    const PRODUCT_IMAGE_SET_TRANSFER = 'PRODUCT_IMAGE_SET_TRANSFER';
-    const PRODUCT_IMAGE_TRANSFER = 'PRODUCT_IMAGE_TRANSFER';
-    const PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER = 'PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER';
+    const DATA_PRODUCT_IMAGE_SET_TRANSFER = 'DATA_PRODUCT_IMAGE_SET_TRANSFER';
+    const DATA_PRODUCT_IMAGE_TRANSFER = 'DATA_PRODUCT_IMAGE_TRANSFER';
+    const DATA_PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER = 'DATA_PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER';
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
@@ -62,7 +62,7 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
         } elseif (!empty($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT])) {
             $imageSetEntityTransfer->setFkProduct($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT]);
         }
-        $dataSet[static::PRODUCT_IMAGE_SET_TRANSFER] = $imageSetEntityTransfer;
+        $dataSet[static::DATA_PRODUCT_IMAGE_SET_TRANSFER] = $imageSetEntityTransfer;
     }
 
     /**
@@ -76,7 +76,7 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
         $imageEntityTransfer->setExternalUrlLarge($dataSet[static::KEY_EXTERNAL_URL_LARGE]);
         $imageEntityTransfer->setExternalUrlSmall($dataSet[static::KEY_EXTERNAL_URL_SMALL]);
 
-        $dataSet[static::PRODUCT_IMAGE_TRANSFER] = $imageEntityTransfer;
+        $dataSet[static::DATA_PRODUCT_IMAGE_TRANSFER] = $imageEntityTransfer;
     }
 
     /**
@@ -89,6 +89,6 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
         $imageToImageSetRelationEntityTransfer = new SpyProductImageSetToProductImageEntityTransfer();
         $imageToImageSetRelationEntityTransfer->setSortOrder(static::IMAGE_TO_IMAGE_SET_RELATION_ORDER);
 
-        $dataSet[static::PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER] = $imageToImageSetRelationEntityTransfer;
+        $dataSet[static::DATA_PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER] = $imageToImageSetRelationEntityTransfer;
     }
 }

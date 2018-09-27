@@ -102,6 +102,6 @@ class ProductAbstractStorePropelDataSetWriter implements DataSetWriterInterface
      */
     protected function getProductAbstractStoreTransfers(DataSetInterface $dataSet): ProductAbstractStoreTransfer
     {
-        return $dataSet[ProductAbstractStoreHydratorStep::PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER];
+        return $dataSet[ProductAbstractStoreHydratorStep::DATA_PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER];
     }
 }

@@ -199,7 +199,7 @@ class ProductAbstractPropelDataSetWriter implements DataSetWriterInterface
      */
     protected function getProductAbstractTransfer(DataSetInterface $dataSet): SpyProductAbstractEntityTransfer
     {
-        return $dataSet[ProductAbstractHydratorStep::PRODUCT_ABSTRACT_TRANSFER];
+        return $dataSet[ProductAbstractHydratorStep::DATA_PRODUCT_ABSTRACT_TRANSFER];
     }
 
     /**
@@ -209,7 +209,7 @@ class ProductAbstractPropelDataSetWriter implements DataSetWriterInterface
      */
     protected function getProductAbstractLocalizedTransfers(DataSetInterface $dataSet): array
     {
-        return $dataSet[ProductAbstractHydratorStep::PRODUCT_ABSTRACT_LOCALIZED_TRANSFER];
+        return $dataSet[ProductAbstractHydratorStep::DATA_PRODUCT_ABSTRACT_LOCALIZED_TRANSFER];
     }
 
     /**
@@ -219,7 +219,7 @@ class ProductAbstractPropelDataSetWriter implements DataSetWriterInterface
      */
     protected function getProductCategoryTransfers(DataSetInterface $dataSet): array
     {
-        return $dataSet[ProductAbstractHydratorStep::PRODUCT_CATEGORY_TRANSFER];
+        return $dataSet[ProductAbstractHydratorStep::DATA_PRODUCT_CATEGORY_TRANSFER];
     }
 
     /**
@@ -229,6 +229,6 @@ class ProductAbstractPropelDataSetWriter implements DataSetWriterInterface
      */
     protected function getProductUrlTransfers(DataSetInterface $dataSet): array
     {
-        return $dataSet[ProductAbstractHydratorStep::PRODUCT_URL_TRANSFER];
+        return $dataSet[ProductAbstractHydratorStep::DATA_PRODUCT_URL_TRANSFER];
     }
 }

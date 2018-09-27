@@ -21,7 +21,7 @@ class ProductStockBulkPdoWriterPlugin extends AbstractPlugin implements DataSetW
      *
      * @return void
      */
-    public function write(DataSetInterface $dataSet)
+    public function write(DataSetInterface $dataSet): void
     {
         $this->getFacade()->writeProductStockPdoDataSet($dataSet);
     }
@@ -29,7 +29,7 @@ class ProductStockBulkPdoWriterPlugin extends AbstractPlugin implements DataSetW
     /**
      * @return void
      */
-    public function flush()
+    public function flush(): void
     {
         $this->getFacade()->flushProductStockPdoDataImporter();
     }

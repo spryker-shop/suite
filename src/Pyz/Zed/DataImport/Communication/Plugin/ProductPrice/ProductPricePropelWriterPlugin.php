@@ -24,7 +24,7 @@ class ProductPricePropelWriterPlugin extends AbstractPlugin implements DataSetWr
      *
      * @return void
      */
-    public function write(DataSetInterface $dataSet)
+    public function write(DataSetInterface $dataSet): void
     {
         $this->getFacade()->writeProductPriceDataSet($dataSet);
     }
@@ -32,7 +32,7 @@ class ProductPricePropelWriterPlugin extends AbstractPlugin implements DataSetWr
     /**
      * @return void
      */
-    public function flush()
+    public function flush(): void
     {
         $this->getFacade()->flushProductPriceDataImporter();
     }

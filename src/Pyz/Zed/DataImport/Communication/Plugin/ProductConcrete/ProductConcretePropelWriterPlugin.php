@@ -24,7 +24,7 @@ class ProductConcretePropelWriterPlugin extends AbstractPlugin implements DataSe
      *
      * @return void
      */
-    public function write(DataSetInterface $dataSet)
+    public function write(DataSetInterface $dataSet): void
     {
         $this->getFacade()->writeProductConcreteDataSet($dataSet);
     }
@@ -32,7 +32,7 @@ class ProductConcretePropelWriterPlugin extends AbstractPlugin implements DataSe
     /**
      * @return void
      */
-    public function flush()
+    public function flush(): void
     {
         $this->getFacade()->flushProductConcreteDataImporter();
     }

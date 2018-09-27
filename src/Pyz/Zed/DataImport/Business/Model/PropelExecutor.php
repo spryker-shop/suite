@@ -18,7 +18,7 @@ class PropelExecutor implements PropelExecutorInterface
      *
      * @return array|null
      */
-    public function execute(string $sql, array $parameters)
+    public function execute(string $sql, array $parameters): ?array
     {
         $connection = $this->getConnection();
         $stmt = $connection->prepare($sql);

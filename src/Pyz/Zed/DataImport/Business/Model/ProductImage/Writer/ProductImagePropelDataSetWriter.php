@@ -130,7 +130,7 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
      */
     protected function getProductImageTransfer(DataSetInterface $dataSet): SpyProductImageEntityTransfer
     {
-        return $dataSet[ProductImageHydratorStep::PRODUCT_IMAGE_TRANSFER];
+        return $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_TRANSFER];
     }
 
     /**
@@ -140,7 +140,7 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
      */
     protected function getProductImageSetTransfer(DataSetInterface $dataSet): SpyProductImageSetEntityTransfer
     {
-        return $dataSet[ProductImageHydratorStep::PRODUCT_IMAGE_SET_TRANSFER];
+        return $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_SET_TRANSFER];
     }
 
     /**
@@ -150,7 +150,7 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
      */
     protected function getProductImageToImageSetRelationTransfer(DataSetInterface $dataSet): SpyProductImageSetToProductImageEntityTransfer
     {
-        return $dataSet[ProductImageHydratorStep::PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER];
+        return $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER];
     }
 
     /**

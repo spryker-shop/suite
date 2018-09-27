@@ -19,10 +19,10 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 class ProductAbstractHydratorStep implements DataImportStepInterface
 {
     public const BULK_SIZE = 5000;
-    public const PRODUCT_ABSTRACT_TRANSFER = 'PRODUCT_ABSTRACT_TRANSFER';
-    public const PRODUCT_ABSTRACT_LOCALIZED_TRANSFER = 'PRODUCT_ABSTRACT_LOCALIZED_TRANSFER';
-    public const PRODUCT_CATEGORY_TRANSFER = 'PRODUCT_CATEGORY_TRANSFER';
-    public const PRODUCT_URL_TRANSFER = 'PRODUCT_URL_TRANSFER';
+    public const DATA_PRODUCT_ABSTRACT_TRANSFER = 'DATA_PRODUCT_ABSTRACT_TRANSFER';
+    public const DATA_PRODUCT_ABSTRACT_LOCALIZED_TRANSFER = 'DATA_PRODUCT_ABSTRACT_LOCALIZED_TRANSFER';
+    public const DATA_PRODUCT_CATEGORY_TRANSFER = 'DATA_PRODUCT_CATEGORY_TRANSFER';
+    public const DATA_PRODUCT_URL_TRANSFER = 'DATA_PRODUCT_URL_TRANSFER';
     public const KEY_PRODUCT_CATEGORY_TRANSFER = 'productCategoryTransfer';
     public const KEY_PRODUCT_ABSTRACT_LOCALIZED_TRANSFER = 'localizedAttributeTransfer';
     public const KEY_PRODUCT_URL_TRASNFER = 'urlTransfer';
@@ -81,7 +81,7 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
             ->setNewFrom($dataSet[static::KEY_NEW_FROM])
             ->setNewTo($dataSet[static::KEY_NEW_TO]);
 
-        $dataSet[static::PRODUCT_ABSTRACT_TRANSFER] = $productAbstractEntityTransfer;
+        $dataSet[static::DATA_PRODUCT_ABSTRACT_TRANSFER] = $productAbstractEntityTransfer;
     }
 
     /**
@@ -110,7 +110,7 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
             ];
         }
 
-        $dataSet[static::PRODUCT_ABSTRACT_LOCALIZED_TRANSFER] = $localizedAttributeTransfer;
+        $dataSet[static::DATA_PRODUCT_ABSTRACT_LOCALIZED_TRANSFER] = $localizedAttributeTransfer;
     }
 
     /**
@@ -152,7 +152,7 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
             ];
         }
 
-        $dataSet[static::PRODUCT_CATEGORY_TRANSFER] = $productCategoryTransfers;
+        $dataSet[static::DATA_PRODUCT_CATEGORY_TRANSFER] = $productCategoryTransfers;
     }
 
     /**
@@ -180,7 +180,7 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
             ];
         }
 
-        $dataSet[static::PRODUCT_URL_TRANSFER] = $urlsTransfer;
+        $dataSet[static::DATA_PRODUCT_URL_TRANSFER] = $urlsTransfer;
     }
 
     /**

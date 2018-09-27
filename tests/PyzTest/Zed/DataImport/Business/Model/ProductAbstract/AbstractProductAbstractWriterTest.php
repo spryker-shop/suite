@@ -56,8 +56,8 @@ abstract class AbstractProductAbstractWriterTest extends AbstractWriterTest
                 ->build()
                 ->setFkTaxSet(1)
                 ->setAttributes('{"flash_range_tele":"4.2-4.9 ft","color":"Red"}');
-            $dataSet[ProductAbstractHydratorStep::PRODUCT_ABSTRACT_TRANSFER] = $spyProductAbstractEntityTransfer;
-            $dataSet[ProductAbstractHydratorStep::PRODUCT_ABSTRACT_LOCALIZED_TRANSFER] = [
+            $dataSet[ProductAbstractHydratorStep::DATA_PRODUCT_ABSTRACT_TRANSFER] = $spyProductAbstractEntityTransfer;
+            $dataSet[ProductAbstractHydratorStep::DATA_PRODUCT_ABSTRACT_LOCALIZED_TRANSFER] = [
                 [
                     'abstract_sku' => $spyProductAbstractEntityTransfer->getSku(),
                     'localizedAttributeTransfer' => (new SpyProductAbstractLocalizedAttributesEntityBuilder())
@@ -66,7 +66,7 @@ abstract class AbstractProductAbstractWriterTest extends AbstractWriterTest
                         ->setAttributes('{"flash_range_tele":"4.2-4.9 ft","color":"Red"}'),
                 ],
             ];
-            $dataSet[ProductAbstractHydratorStep::PRODUCT_URL_TRANSFER] = [
+            $dataSet[ProductAbstractHydratorStep::DATA_PRODUCT_URL_TRANSFER] = [
                 [
                     'abstract_sku' => $spyProductAbstractEntityTransfer->getSku(),
                     'urlTransfer' => (new SpyUrlEntityBuilder())
@@ -74,7 +74,7 @@ abstract class AbstractProductAbstractWriterTest extends AbstractWriterTest
                         ->setFkLocale($locale->getIdLocale()),
                 ],
             ];
-            $dataSet[ProductAbstractHydratorStep::PRODUCT_CATEGORY_TRANSFER] = [
+            $dataSet[ProductAbstractHydratorStep::DATA_PRODUCT_CATEGORY_TRANSFER] = [
                 [
                     'abstract_sku' => $spyProductAbstractEntityTransfer->getSku(),
                     'productCategoryTransfer' => (new SpyProductCategoryEntityTransfer())
@@ -123,7 +123,7 @@ abstract class AbstractProductAbstractWriterTest extends AbstractWriterTest
         foreach ($fetchedResult['abstractProducts'] as $abstractProductEntity) {
             //Abstract product
             /** @var \Generated\Shared\Transfer\SpyProductAbstractEntityTransfer $dataSetProduct */
-            $dataSetProduct = $dataSets[$abstractProductEntity->getSku()][ProductAbstractHydratorStep::PRODUCT_ABSTRACT_TRANSFER];
+            $dataSetProduct = $dataSets[$abstractProductEntity->getSku()][ProductAbstractHydratorStep::DATA_PRODUCT_ABSTRACT_TRANSFER];
             $this->assertEquals(
                 $dataSetProduct->getAttributes(),
                 $abstractProductEntity->getAttributes()
@@ -134,7 +134,7 @@ abstract class AbstractProductAbstractWriterTest extends AbstractWriterTest
             );
 
             //Localized
-            $dataSetLocalizedAttributes = $dataSets[$abstractProductEntity->getSku()][ProductAbstractHydratorStep::PRODUCT_ABSTRACT_LOCALIZED_TRANSFER];
+            $dataSetLocalizedAttributes = $dataSets[$abstractProductEntity->getSku()][ProductAbstractHydratorStep::DATA_PRODUCT_ABSTRACT_LOCALIZED_TRANSFER];
             /** @var \Orm\Zed\Product\Persistence\SpyProductAbstractLocalizedAttributes $localizedAttribute */
             foreach ($fetchedResult['abstractProductsLocalizedAttributes'] as $localizedAttribute) {
                 if ($localizedAttribute->getFkProductAbstract() !== $abstractProductEntity->getIdProductAbstract()) {

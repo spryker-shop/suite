@@ -40,7 +40,7 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
      *
      * @return void
      */
-    public function writeProductStockDataSet(DataSetInterface $dataSet)
+    public function writeProductStockDataSet(DataSetInterface $dataSet): void
     {
         $this->getFactory()->createProductStockPropelWriter()->write($dataSet);
     }
@@ -50,7 +50,7 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
      *
      * @return void
      */
-    public function writeProductStockPdoDataSet(DataSetInterface $dataSet)
+    public function writeProductStockPdoDataSet(DataSetInterface $dataSet): void
     {
         $this->getFactory()->createProductStockBulkPdoWriter()->write($dataSet);
     }
@@ -76,7 +76,7 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
      *
      * @return void
      */
-    public function writeProductImageDataSet(DataSetInterface $dataSet)
+    public function writeProductImageDataSet(DataSetInterface $dataSet): void
     {
         $this->getFactory()->createProductImagePropelWriter()->write($dataSet);
     }
@@ -86,7 +86,7 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
      *
      * @return void
      */
-    public function writeProductImagePdoDataSet(DataSetInterface $dataSet)
+    public function writeProductImagePdoDataSet(DataSetInterface $dataSet): void
     {
         $this->getFactory()->createProductImageBulkPdoWriter()->write($dataSet);
     }
@@ -94,7 +94,7 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
     /**
      * @return void
      */
-    public function flushProductImageDataImporter()
+    public function flushProductImageDataImporter(): void
     {
         $this->getFactory()->createProductImagePropelWriter()->flush();
     }
@@ -102,7 +102,7 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
     /**
      * @return void
      */
-    public function flushProductImagePdoDataImporter()
+    public function flushProductImagePdoDataImporter(): void
     {
         $this->getFactory()->createProductImageBulkPdoWriter()->flush();
     }
@@ -184,7 +184,7 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
      *
      * @return void
      */
-    public function writeProductConcreteDataSet(DataSetInterface $dataSet)
+    public function writeProductConcreteDataSet(DataSetInterface $dataSet): void
     {
         $this->getFactory()->createProductConcretePropelWriter()->write($dataSet);
     }
@@ -194,7 +194,7 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
      *
      * @return void
      */
-    public function writeProductConcretePdoDataSet(DataSetInterface $dataSet)
+    public function writeProductConcretePdoDataSet(DataSetInterface $dataSet): void
     {
         $this->getFactory()->createProductConcreteBulkPdoWriter()->write($dataSet);
     }
@@ -202,7 +202,7 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
     /**
      * @return void
      */
-    public function flushProductConcreteDataImporter()
+    public function flushProductConcreteDataImporter(): void
     {
         $this->getFactory()->createProductConcretePropelWriter()->flush();
     }
@@ -210,7 +210,7 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
     /**
      * @return void
      */
-    public function flushProductConcretePdoDataImporter()
+    public function flushProductConcretePdoDataImporter(): void
     {
         $this->getFactory()->createProductConcreteBulkPdoWriter()->flush();
     }
@@ -218,7 +218,7 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
     /**
      * @return void
      */
-    public function flushProductStockDataImporter()
+    public function flushProductStockDataImporter(): void
     {
         $this->getFactory()->createProductStockPropelWriter()->flush();
     }
@@ -226,7 +226,7 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
     /**
      * @return void
      */
-    public function flushProductStockPdoDataImporter()
+    public function flushProductStockPdoDataImporter(): void
     {
         $this->getFactory()->createProductStockBulkPdoWriter()->flush();
     }

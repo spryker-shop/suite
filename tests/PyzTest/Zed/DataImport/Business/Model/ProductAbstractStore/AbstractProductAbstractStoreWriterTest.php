@@ -41,7 +41,7 @@ abstract class AbstractProductAbstractStoreWriterTest extends AbstractWriterTest
         $abstractProductSkus = $this->getAbstractProductSkus();
         foreach ($abstractProductSkus as $abstractProductSku) {
             $dataSet = new DataSet();
-            $dataSet[ProductAbstractStoreHydratorStep::PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER] = (new ProductAbstractStoreTransfer())
+            $dataSet[ProductAbstractStoreHydratorStep::DATA_PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER] = (new ProductAbstractStoreTransfer())
                 ->setProductAbstractSku($abstractProductSku)
                 ->setStoreName(Store::getDefaultStore());
 
@@ -84,7 +84,7 @@ abstract class AbstractProductAbstractStoreWriterTest extends AbstractWriterTest
             $productAbstractStoreDataSet = $dataSets[$productAbstractStore[SpyProductAbstractTableMap::COL_SKU]];
             $this->assertNotEmpty($productAbstractStoreDataSet);
             $this->assertEquals(
-                $productAbstractStoreDataSet[ProductAbstractStoreHydratorStep::PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER]->getStoreName(),
+                $productAbstractStoreDataSet[ProductAbstractStoreHydratorStep::DATA_PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER]->getStoreName(),
                 $productAbstractStore[SpyStoreTableMap::COL_NAME]
             );
         }

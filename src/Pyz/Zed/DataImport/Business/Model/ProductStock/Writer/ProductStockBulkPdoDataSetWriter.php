@@ -16,7 +16,7 @@ use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Orm\Zed\Stock\Persistence\Map\SpyStockProductTableMap;
 use Orm\Zed\Stock\Persistence\Map\SpyStockTableMap;
 use Orm\Zed\Stock\Persistence\SpyStockProductQuery;
-use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataFormatter;
+use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\ProductStockHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
@@ -28,9 +28,7 @@ use Spryker\Zed\Store\Business\StoreFacadeInterface;
 
 class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
 {
-    use DataFormatter;
-
-    const BULK_SIZE = 2000;
+    public const BULK_SIZE = 2000;
 
     protected const KEY_SKU = 'sku';
     protected const KEY_QUANTITY = 'qty';
@@ -73,24 +71,32 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
     protected $storeFacade;
 
     /**
+     * @var \Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface
+     */
+    protected $dataFormatter;
+
+    /**
      * @param \Spryker\Zed\Stock\Business\StockFacadeInterface $stockFacade
      * @param \Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface $productBundleFacade
      * @param \Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSqlInterface $productStockSql
      * @param \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface $propelExecutor
      * @param \Spryker\Zed\Store\Business\StoreFacadeInterface $storeFacade
+     * @param \Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface $dataFormatter
      */
     public function __construct(
         StockFacadeInterface $stockFacade,
         ProductBundleFacadeInterface $productBundleFacade,
         ProductStockSqlInterface $productStockSql,
         PropelExecutorInterface $propelExecutor,
-        StoreFacadeInterface $storeFacade
+        StoreFacadeInterface $storeFacade,
+        DataImportDataFormatterInterface $dataFormatter
     ) {
         $this->stockFacade = $stockFacade;
         $this->productBundleFacade = $productBundleFacade;
         $this->productStockSql = $productStockSql;
         $this->propelExecutor = $propelExecutor;
         $this->storeFacade = $storeFacade;
+        $this->dataFormatter = $dataFormatter;
     }
 
     /**
@@ -142,9 +148,9 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
      */
     protected function persistStockEntities(): void
     {
-        $names = $this->getCollectionDataByKey(static::$stockCollection, ProductStockHydratorStep::KEY_NAME);
+        $names = $this->dataFormatter->getCollectionDataByKey(static::$stockCollection, ProductStockHydratorStep::KEY_NAME);
         $uniqueNames = array_unique($names);
-        $name = $this->formatPostgresArrayString($uniqueNames);
+        $name = $this->dataFormatter->formatPostgresArrayString($uniqueNames);
 
         $sql = $this->productStockSql->createStockSQL();
         $parameters = [
@@ -158,17 +164,17 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
      */
     protected function persistStockProductEntities(): void
     {
-        $sku = $this->formatPostgresArrayString(
-            $this->getCollectionDataByKey(static::$stockProductCollection, ProductStockHydratorStep::KEY_CONCRETE_SKU)
+        $sku = $this->dataFormatter->formatPostgresArrayString(
+            $this->dataFormatter->getCollectionDataByKey(static::$stockProductCollection, ProductStockHydratorStep::KEY_CONCRETE_SKU)
         );
-        $stockName = $this->formatPostgresArray(
-            $this->getCollectionDataByKey(static::$stockCollection, ProductStockHydratorStep::KEY_NAME)
+        $stockName = $this->dataFormatter->formatPostgresArray(
+            $this->dataFormatter->getCollectionDataByKey(static::$stockCollection, ProductStockHydratorStep::KEY_NAME)
         );
-        $quantity = $this->formatPostgresArray(
-            $this->getCollectionDataByKey(static::$stockProductCollection, ProductStockHydratorStep::KEY_QUANTITY)
+        $quantity = $this->dataFormatter->formatPostgresArray(
+            $this->dataFormatter->getCollectionDataByKey(static::$stockProductCollection, ProductStockHydratorStep::KEY_QUANTITY)
         );
-        $isNeverOutOfStock = $this->formatPostgresArray(
-            $this->getCollectionDataByKey(static::$stockProductCollection, ProductStockHydratorStep::KEY_IS_NEVER_OUT_OF_STOCK)
+        $isNeverOutOfStock = $this->dataFormatter->formatPostgresArray(
+            $this->dataFormatter->getCollectionDataByKey(static::$stockProductCollection, ProductStockHydratorStep::KEY_IS_NEVER_OUT_OF_STOCK)
         );
 
         $sql = $this->productStockSql->createStockProductSQL();
@@ -186,7 +192,7 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
      */
     protected function persistAvailability(): void
     {
-        $skus = $this->getCollectionDataByKey(static::$stockProductCollection, ProductStockHydratorStep::KEY_CONCRETE_SKU);
+        $skus = $this->dataFormatter->getCollectionDataByKey(static::$stockProductCollection, ProductStockHydratorStep::KEY_CONCRETE_SKU);
         $storeTransfer = $this->storeFacade->getCurrentStore();
 
         $concreteSkusToAbstractMap = $this->mapConcreteSkuToAbstractSku($skus);
@@ -220,18 +226,18 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
         $abstractAvailabilityData = $this->prepareAbstractAvailabilityData($concreteAvailabilityData, $concreteSkusToAbstractMap);
 
         $abstractAvailabilityQueryParams = [
-            $this->formatPostgresArrayString(array_column($abstractAvailabilityData, static::KEY_SKU)),
-            $this->formatPostgresArray(array_column($abstractAvailabilityData, static::KEY_QUANTITY)),
-            $this->formatPostgresArray(array_fill(0, count($abstractAvailabilityData), $storeTransfer->getIdStore())),
+            $this->dataFormatter->formatPostgresArrayString(array_column($abstractAvailabilityData, static::KEY_SKU)),
+            $this->dataFormatter->formatPostgresArray(array_column($abstractAvailabilityData, static::KEY_QUANTITY)),
+            $this->dataFormatter->formatPostgresArray(array_fill(0, count($abstractAvailabilityData), $storeTransfer->getIdStore())),
         ];
 
         $this->propelExecutor->execute($this->productStockSql->createAbstractAvailabilitySQL(), $abstractAvailabilityQueryParams);
 
         $availabilityQueryParams = [
-            $this->formatPostgresArrayString(array_column($concreteAvailabilityData, static::KEY_SKU)),
-            $this->formatPostgresArray(array_column($concreteAvailabilityData, static::KEY_QUANTITY)),
-            $this->formatPostgresArray(array_column($concreteAvailabilityData, static::KEY_IS_NEVER_OUT_OF_STOCK)),
-            $this->formatPostgresArray(array_fill(0, count($concreteAvailabilityData), $storeTransfer->getIdStore())),
+            $this->dataFormatter->formatPostgresArrayString(array_column($concreteAvailabilityData, static::KEY_SKU)),
+            $this->dataFormatter->formatPostgresArray(array_column($concreteAvailabilityData, static::KEY_QUANTITY)),
+            $this->dataFormatter->formatPostgresArray(array_column($concreteAvailabilityData, static::KEY_IS_NEVER_OUT_OF_STOCK)),
+            $this->dataFormatter->formatPostgresArray(array_fill(0, count($concreteAvailabilityData), $storeTransfer->getIdStore())),
         ];
         $this->propelExecutor->execute($this->productStockSql->createAvailabilitySQL(), $availabilityQueryParams);
     }
@@ -409,7 +415,7 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
     /**
      * @return array
      */
-    protected function getStoreToWarehouse()
+    protected function getStoreToWarehouse(): array
     {
         if (empty(static::$storeToStock)) {
             $storeToWarehouse = [];

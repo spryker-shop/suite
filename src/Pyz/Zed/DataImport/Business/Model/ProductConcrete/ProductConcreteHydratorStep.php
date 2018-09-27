@@ -45,9 +45,9 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
     const KEY_PRODUCT_CONCRETE_LOCALIZED_TRANSFER = 'localizedAttributeTransfer';
     const KEY_PRODUCT_SEARCH_TRANSFER = 'productSearchEntityTransfer';
     const KEY_PRODUCT_BUNDLE_SKU = 'bundledProductSku';
-    const PRODUCT_CONCRETE_TRANSFER = 'PRODUCT_CONCRETE_TRANSFER';
-    const PRODUCT_CONCRETE_LOCALIZED_TRANSFER = 'PRODUCT_CONCRETE_LOCALIZED_TRANSFER';
-    const PRODUCT_BUNDLE_TRANSFER = 'PRODUCT_BUNDLE_TRANSFER';
+    const DATA_PRODUCT_CONCRETE_TRANSFER = 'DATA_PRODUCT_CONCRETE_TRANSFER';
+    const DATA_PRODUCT_CONCRETE_LOCALIZED_TRANSFER = 'DATA_PRODUCT_CONCRETE_LOCALIZED_TRANSFER';
+    const DATA_PRODUCT_BUNDLE_TRANSFER = 'DATA_PRODUCT_BUNDLE_TRANSFER';
     const KEY_IS_QUANTITY_SPLITTABLE = 'is_quantity_splittable';
 
     /**
@@ -101,7 +101,7 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
             $productEntityTransfer->setIsQuantitySplittable($isQuantitySplittable);
         }
 
-        $dataSet[static::PRODUCT_CONCRETE_TRANSFER] = $productEntityTransfer;
+        $dataSet[static::DATA_PRODUCT_CONCRETE_TRANSFER] = $productEntityTransfer;
     }
 
     /**
@@ -134,7 +134,7 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
             ];
         }
 
-        $dataSet[static::PRODUCT_CONCRETE_LOCALIZED_TRANSFER] = $localizedAttributeTransfer;
+        $dataSet[static::DATA_PRODUCT_CONCRETE_LOCALIZED_TRANSFER] = $localizedAttributeTransfer;
     }
 
     /**
@@ -162,7 +162,7 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
                 ];
             }
         }
-        $dataSet[static::PRODUCT_BUNDLE_TRANSFER] = $productBundleTransfer;
+        $dataSet[static::DATA_PRODUCT_BUNDLE_TRANSFER] = $productBundleTransfer;
     }
 
     /**

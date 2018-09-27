@@ -36,12 +36,6 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
  */
 abstract class AbstractProductStockWriterTest extends AbstractWriterTest
 {
-    protected const SKU1_CONCRETE = '001_25904006';
-    protected const SKU2_CONCRETE = '002_25904004';
-
-    protected const WAREHOUSE1_NAME = 'Warehouse1';
-    protected const WAREHOUSE2_NAME = 'Warehouse2';
-
     protected const WAREHOUSES_QTY = [
         12345,
         123456,

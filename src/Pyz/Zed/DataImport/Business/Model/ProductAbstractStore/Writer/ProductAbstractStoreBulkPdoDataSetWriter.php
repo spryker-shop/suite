@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer;
 
-use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataFormatter;
+use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\ProductAbstractStoreHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\Sql\ProductAbstractStoreSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
@@ -16,10 +16,8 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 
 class ProductAbstractStoreBulkPdoDataSetWriter implements DataSetWriterInterface
 {
-    use DataFormatter;
-
     /**
-     * @var \Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\Sql\ProductAbstractStoreSql
+     * @var \Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\Sql\ProductAbstractStoreSqlInterface
      */
     protected $productAbstractStoreSql;
 
@@ -29,15 +27,23 @@ class ProductAbstractStoreBulkPdoDataSetWriter implements DataSetWriterInterface
     protected $propelExecutor;
 
     /**
+     * @var \Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface
+     */
+    protected $dataFormatter;
+
+    /**
      * @param \Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\Sql\ProductAbstractStoreSqlInterface $productAbstractStoreSql
      * @param \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface $propelExecutor
+     * @param \Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface $dataFormatter
      */
     public function __construct(
         ProductAbstractStoreSqlInterface $productAbstractStoreSql,
-        PropelExecutorInterface $propelExecutor
+        PropelExecutorInterface $propelExecutor,
+        DataImportDataFormatterInterface $dataFormatter
     ) {
         $this->productAbstractStoreSql = $productAbstractStoreSql;
         $this->propelExecutor = $propelExecutor;
+        $this->dataFormatter = $dataFormatter;
     }
 
     /**
@@ -64,11 +70,11 @@ class ProductAbstractStoreBulkPdoDataSetWriter implements DataSetWriterInterface
      */
     protected function persistAbstractProductStoreEntities(): void
     {
-        $abstractSku = $this->formatPostgresArrayString(
-            $this->getCollectionDataByKey(static::$productAbstractStoreCollection, ProductAbstractStoreHydratorStep::KEY_PRODUCT_ABSTRACT_SKU)
+        $abstractSku = $this->dataFormatter->formatPostgresArrayString(
+            $this->dataFormatter->getCollectionDataByKey(static::$productAbstractStoreCollection, ProductAbstractStoreHydratorStep::KEY_PRODUCT_ABSTRACT_SKU)
         );
-        $storeName = $this->formatPostgresArrayString(
-            $this->getCollectionDataByKey(static::$productAbstractStoreCollection, ProductAbstractStoreHydratorStep::KEY_STORE_NAME)
+        $storeName = $this->dataFormatter->formatPostgresArrayString(
+            $this->dataFormatter->getCollectionDataByKey(static::$productAbstractStoreCollection, ProductAbstractStoreHydratorStep::KEY_STORE_NAME)
         );
 
         $sql = $this->productAbstractStoreSql->createAbstractProductStoreSQL();
@@ -112,6 +118,6 @@ class ProductAbstractStoreBulkPdoDataSetWriter implements DataSetWriterInterface
      */
     protected function collectProductAbstractStoreCollection(DataSetInterface $dataSet): void
     {
-        static::$productAbstractStoreCollection[] = $dataSet[ProductAbstractStoreHydratorStep::PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER]->modifiedToArray();
+        static::$productAbstractStoreCollection[] = $dataSet[ProductAbstractStoreHydratorStep::DATA_PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER]->modifiedToArray();
     }
 }
