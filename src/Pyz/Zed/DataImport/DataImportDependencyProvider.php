@@ -9,6 +9,8 @@ namespace Pyz\Zed\DataImport;
 
 use Spryker\Zed\BusinessOnBehalfDataImport\Communication\Plugin\DataImport\BusinessOnBehalfCompanyUserDataImportPlugin;
 use Spryker\Zed\CategoryDataImport\Communication\Plugin\CategoryDataImportPlugin;
+use Spryker\Zed\CmsPageDataImport\Communication\Plugin\CmsPageDataImportPlugin;
+use Spryker\Zed\CmsPageDataImport\Communication\Plugin\CmsPageStoreDataImportPlugin;
 use Spryker\Zed\CompanyBusinessUnitDataImport\Communication\Plugin\CompanyBusinessUnitDataImportPlugin;
 use Spryker\Zed\CompanyDataImport\Communication\Plugin\CompanyDataImportPlugin;
 use Spryker\Zed\CompanyUnitAddressDataImport\Communication\Plugin\CompanyUnitAddressDataImportPlugin;
@@ -165,6 +167,8 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new PriceProductDataImportPlugin(),
             new PriceProductMerchantRelationshipDataImportPlugin(),
             new FileManagerDataImportPlugin(),
+            new CmsPageDataImportPlugin(),
+            new CmsPageStoreDataImportPlugin(),
         ];
     }
 
