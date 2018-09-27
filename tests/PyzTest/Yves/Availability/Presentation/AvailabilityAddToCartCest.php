@@ -36,11 +36,9 @@ class AvailabilityAddToCartCest
 
         $i->amOnPage(AvailabilityPresentationTester::FUJITSU2_PRODUCT_PAGE);
 
-        $i->wait(300);
-
         $i->waitForElementVisible(ProductDetailPage::ADD_TO_CART_XPATH, 30);
 
-        $i->click(ProductDetailPage::ADD_TO_CART_XPATH);
+        $i->click(ProductDetailPage::ADD_TO_CART_SUBMIT);
 
         $i->see(CartListPage::CART_HEADER);
 
