@@ -9,7 +9,6 @@ namespace PyzTest\Yves\Availability\Presentation;
 
 use PyzTest\Yves\Availability\AvailabilityPresentationTester;
 use PyzTest\Yves\Cart\PageObject\CartListPage;
-use PyzTest\Yves\Product\PageObject\ProductDetailPage;
 
 /**
  * Auto-generated group annotations
