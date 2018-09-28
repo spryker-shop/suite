@@ -20,7 +20,7 @@ use Spryker\Zed\ManualOrderEntryGui\Communication\Plugin\SummaryManualOrderEntry
 use Spryker\Zed\ManualOrderEntryGui\Communication\Plugin\VoucherManualOrderEntryFormPlugin;
 use Spryker\Zed\ManualOrderEntryGui\ManualOrderEntryGuiDependencyProvider as SprykerManualOrderEntryGuiDependencyProvider;
 use Spryker\Zed\OfferGui\Communication\Plugin\ManualOrderEntryGui\OfferQuoteExpanderPlugin;
-use Spryker\Zed\SalesReclamationGui\Communication\Plugin\ReclamationOrderEntryFormPlugin;
+use Spryker\Zed\SalesReclamationGui\Communication\Plugin\ManualOrderEntryGui\ReclamationOrderEntryFormPlugin;
 
 class ManualOrderEntryGuiDependencyProvider extends SprykerManualOrderEntryGuiDependencyProvider
 {

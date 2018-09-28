@@ -28,8 +28,8 @@ use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ItemMetadataHyd
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ProductIdHydratorPlugin;
 use Spryker\Zed\SalesQuantity\Communication\Plugin\SalesExtension\IsQuantitySplittableOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\SalesQuantity\Communication\Plugin\SalesExtension\NonSplittableItemTransformerStrategyPlugin;
-use Spryker\Zed\SalesReclamation\Communication\Plugin\SalesReclamationOrderExpanderPreSavePlugin;
-use Spryker\Zed\SalesReclamationGui\Communication\Plugin\ReclamationSalesTablePlugin;
+use Spryker\Zed\SalesReclamation\Communication\Plugin\Sales\SalesReclamationOrderExpanderPreSavePlugin;
+use Spryker\Zed\SalesReclamationGui\Communication\Plugin\Sales\ReclamationSalesTablePlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\ShipmentOrderHydratePlugin;
 
 class SalesDependencyProvider extends SprykerSalesDependencyProvider
