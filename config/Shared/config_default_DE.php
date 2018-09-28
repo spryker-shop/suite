@@ -9,7 +9,7 @@ use Spryker\Shared\ProductManagement\ProductManagementConstants;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 
-$domain = getenv('VM_PROJECT') ?: 'suite';
+$domain = getenv('VM_PROJECT') ?: 'suite-nonsplit';
 
 // ---------- Yves host
 $config[ApplicationConstants::HOST_YVES] = sprintf('www.de.%s.local', $domain);
