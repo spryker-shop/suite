@@ -14,11 +14,9 @@ use Spryker\Glue\CartsRestApiExtension\Dependency\Plugin\QuoteCollectionReaderPl
 class CartsRestApiDependencyProvider extends SprykerCartsRestApiDependencyProvider
 {
     /**
-     * Quote collection reader plugin
-     *
      * @return \Spryker\Glue\CartsRestApiExtension\Dependency\Plugin\QuoteCollectionReaderPluginInterface
      */
-    protected function getQuoteCollectionReaderPlugin(): QuoteCollectionReaderPluginInterface
+    protected function createQuoteCollectionReaderPlugin(): QuoteCollectionReaderPluginInterface
     {
         return new CartQuoteCollectionReaderPlugin();
     }
