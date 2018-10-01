@@ -5,8 +5,10 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Client\QuickOrderPage;
+namespace Pyz\Client\QuickOrder;
 
+use Spryker\Client\ProductMeasurementUnitStorage\Plugin\QuickOrderPage\ProductConcreteMeasurementUnitExpanderPlugin;
+use Spryker\Client\ProductQuantityStorage\Plugin\QuickOrderPage\ProductConcreteQuantityRestrictionsExpanderPlugin;
 use Spryker\Client\QuickOrder\QuickOrderDependencyProvider as SprykerQuickOrderDependencyProvider;
 
 class QuickOrderDependencyProvider extends SprykerQuickOrderDependencyProvider
@@ -17,7 +19,8 @@ class QuickOrderDependencyProvider extends SprykerQuickOrderDependencyProvider
     protected function getProductConcreteExpanderPlugins(): array
     {
         return [
-
+            new ProductConcreteMeasurementUnitExpanderPlugin(),
+            new ProductConcreteQuantityRestrictionsExpanderPlugin(),
         ];
     }
 }
