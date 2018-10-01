@@ -24,7 +24,7 @@
     }]) %}
 {% endfor %}
 
-{% if widgetExists('AvailabilityWidgetPlugin') %} {# @deprecated Use NEW_MOLECULE instead of AvailabilityWidgetPlugin. #}
+{% if widgetExists('AvailabilityWidgetPlugin') %} {# @deprecated Use molecule('availability-product', 'AvailabilityWidget') instead of AvailabilityWidgetPlugin. #}
     {% set isAvailable = widgetBlock('AvailabilityWidgetPlugin', 'isAvailable', data.product) %}
     {% set isDisabled = not isAvailable or isDisabled %}
 {% else %}
@@ -33,7 +33,7 @@
 {% endif %}
 
 {% set productDiscontinuedNoteWidget = findWidget('ProductDiscontinuedNoteWidget', [sku]) %}
-{% set isDiscontinued = productDiscontinuedNoteWidget.isDiscontinued | default(widgetBlock('ProductDiscontinuedWidgetPlugin', 'isDiscontinued', sku)) %} {# @deprecated Use productDiscontinuedNoteWidget instead of ProductDiscontinuedWidgetPlugin. #}
+{% set isDiscontinued = productDiscontinuedNoteWidget.isDiscontinued ?? widgetBlock('ProductDiscontinuedWidgetPlugin', 'isDiscontinued', sku) %} {# @deprecated Use productDiscontinuedNoteWidget instead of ProductDiscontinuedWidgetPlugin. #}
 {% if isDiscontinued is not null %}
     {% set isDisabled = isDiscontinued or isDisabled %}
     {% set isProductAvailable = not isDiscontinued %}
@@ -123,7 +123,7 @@
             </div>
         {% endwidget %}
 
-        {% widget 'AddToMultiCartWidget' args [data.product, isDisabled] only %}
+        {% widget 'AddToMultiCartWidget' args [isDisabled] only %}
         {% elsewidget 'MultiCartWidgetPlugin' args [data.product, isDisabled] only %} {# @deprecated Use AddToMultiCartWidget instead. #}
         {% endwidget %}
 
