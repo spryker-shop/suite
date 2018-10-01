@@ -15,6 +15,8 @@ use Spryker\Glue\CartItemsProductsRelationship\Plugin\CartItemsProductsRelations
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
 use Spryker\Glue\CartsRestApi\Plugin\CartItemsResourceRoutePlugin;
 use Spryker\Glue\CartsRestApi\Plugin\CartsResourceRoutePlugin;
+use Spryker\Glue\CartsRestApi\Plugin\GuestCartControllerBeforeActionPlugin;
+use Spryker\Glue\CartsRestApi\Plugin\GuestCartsResourceRoutePlugin;
 use Spryker\Glue\CatalogSearchProductsResourceRelationship\Plugin\CatalogSearchAbstractProductsResourceRelationshipPlugin;
 use Spryker\Glue\CatalogSearchProductsResourceRelationship\Plugin\CatalogSearchSuggestionsAbstractProductsResourceRelationshipPlugin;
 use Spryker\Glue\CatalogSearchRestApi\CatalogSearchRestApiConfig;
@@ -85,6 +87,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new WishlistsResourceRoutePlugin(),
             new WishlistItemsResourceRoutePlugin(),
             new ProductTaxSetsResourceRoutePlugin(),
+            new GuestCartsResourceRoutePlugin(),
         ];
     }
 
@@ -121,6 +124,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     {
         return [
             new SetStoreCurrentLocaleBeforeActionPlugin(),
+            new GuestCartControllerBeforeActionPlugin(),
             new SetCustomerBeforeActionPlugin(),
         ];
     }
