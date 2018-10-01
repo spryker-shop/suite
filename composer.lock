@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "dcee503a3c30fd1a6580a10384fa1098",
+    "content-hash": "5e18f5ea1e88bba1f68d118117046d83",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -3274,16 +3274,16 @@
         },
         {
             "name": "spryker-shop/company-page",
-            "version": "1.4.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/company-page.git",
-                "reference": "5f853cea91af60e4ef1b7a12621c8708a9773e0e"
+                "reference": "9f367ef404673e250d3ac38d072d4674b775225e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/company-page/zipball/5f853cea91af60e4ef1b7a12621c8708a9773e0e",
-                "reference": "5f853cea91af60e4ef1b7a12621c8708a9773e0e",
+                "url": "https://api.github.com/repos/spryker-shop/company-page/zipball/9f367ef404673e250d3ac38d072d4674b775225e",
+                "reference": "9f367ef404673e250d3ac38d072d4674b775225e",
                 "shasum": ""
             },
             "require": {
@@ -3295,11 +3295,12 @@
                 "spryker/application": "^3.8.0",
                 "spryker/business-on-behalf": "^1.0.0",
                 "spryker/company": "^1.0.0",
-                "spryker/company-business-unit": "^1.0.0 || ^2.0.0",
-                "spryker/company-role": "^1.0.0",
-                "spryker/company-unit-address": "^1.0.0",
-                "spryker/company-user": "^1.0.0",
+                "spryker/company-business-unit": "^2.3.0",
+                "spryker/company-role": "^1.1.0",
+                "spryker/company-unit-address": "^1.4.0",
+                "spryker/company-user": "^2.0.0",
                 "spryker/customer": "^7.4.0",
+                "spryker/glossary-storage": "^1.0.0",
                 "spryker/kernel": "^3.16.0",
                 "spryker/messenger": "^3.1.0",
                 "spryker/permission": "^1.0.0",
@@ -3307,13 +3308,15 @@
                 "spryker/symfony": "^3.1.0"
             },
             "require-dev": {
+                "spryker-shop/company-user-invitation-page": "*",
                 "spryker-shop/customer-page": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/silex": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
-                "spryker-shop/customer-page": "ADD SUGGEST DESCRIPTION",
+                "spryker-shop/company-user-invitation-page": "If you want to import new invitations from file: ^2.1.0",
+                "spryker-shop/customer-page": "If you want to have profile page for customers: ^1.3.2",
                 "spryker/silex": "*"
             },
             "type": "library",
@@ -3332,7 +3335,7 @@
                 "proprietary"
             ],
             "description": "CompanyPage module",
-            "time": "2018-09-26T14:40:00+00:00"
+            "time": "2018-09-28T12:40:02+00:00"
         },
         {
             "name": "spryker-shop/company-user-invitation-page",
@@ -8359,16 +8362,16 @@
         },
         {
             "name": "spryker/checkout-permission-connector",
-            "version": "0.0.4",
+            "version": "0.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/checkout-permission-connector.git",
-                "reference": "fd29be277f791ca78902c2729d223c1baad82547"
+                "reference": "1aa97d9989d55ea12c5c36dcfa5617e5a7e60f96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/checkout-permission-connector/zipball/fd29be277f791ca78902c2729d223c1baad82547",
-                "reference": "fd29be277f791ca78902c2729d223c1baad82547",
+                "url": "https://api.github.com/repos/spryker/checkout-permission-connector/zipball/1aa97d9989d55ea12c5c36dcfa5617e5a7e60f96",
+                "reference": "1aa97d9989d55ea12c5c36dcfa5617e5a7e60f96",
                 "shasum": ""
             },
             "require": {
@@ -8401,7 +8404,7 @@
                 "proprietary"
             ],
             "description": "CheckoutPermissionConnector module",
-            "time": "2018-03-14T10:13:27+00:00"
+            "time": "2018-09-27T07:48:04+00:00"
         },
         {
             "name": "spryker/cms",
@@ -10616,16 +10619,16 @@
         },
         {
             "name": "spryker/company-user",
-            "version": "1.4.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/company-user.git",
-                "reference": "2f37d674ea524e6e78209030dc469ffc1e78430a"
+                "reference": "015171f408988623915e87512288cf7cb03a8ee2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/company-user/zipball/2f37d674ea524e6e78209030dc469ffc1e78430a",
-                "reference": "2f37d674ea524e6e78209030dc469ffc1e78430a",
+                "url": "https://api.github.com/repos/spryker/company-user/zipball/015171f408988623915e87512288cf7cb03a8ee2",
+                "reference": "015171f408988623915e87512288cf7cb03a8ee2",
                 "shasum": ""
             },
             "require": {
@@ -10664,7 +10667,7 @@
                 "proprietary"
             ],
             "description": "CompanyUser module",
-            "time": "2018-09-17T07:51:54+00:00"
+            "time": "2018-09-27T11:48:41+00:00"
         },
         {
             "name": "spryker/company-user-data-import",
