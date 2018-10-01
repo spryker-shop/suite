@@ -13,6 +13,8 @@ use Spryker\Client\ProductImageStorage\Plugin\ProductViewImageExpanderPlugin;
 use SprykerShop\Yves\ProductAlternativeWidget\Plugin\ShoppingListPage\ProductAlternativeWidgetPlugin;
 use SprykerShop\Yves\ProductBarcodeWidget\Plugin\ShoppingList\ProductBarcodeWidgetPlugin;
 use SprykerShop\Yves\ProductDiscontinuedWidget\Plugin\ShoppingListPage\ProductDiscontinuedWidgetPlugin;
+use SprykerShop\Yves\ShoppingListNoteWidget\Plugin\ShoppingListItemNoteWidgetPlugin;
+use SprykerShop\Yves\ShoppingListNoteWidget\Plugin\ShoppingListPage\ShoppingListItemNoteFormExpanderPlugin;
 use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionDataProviderExpanderPlugin;
 use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionFormExpanderPlugin;
 use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionWidgetPlugin;
@@ -39,6 +41,7 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
     {
         return [
             ProductBarcodeWidgetPlugin::class,
+            ShoppingListItemNoteWidgetPlugin::class, #ShoppingListNoteFeature
         ];
     }
 
@@ -53,7 +56,8 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
         return [
             ProductAlternativeWidgetPlugin::class, #ProductAlternativeFeature
             ProductDiscontinuedWidgetPlugin::class, #ProductDiscontinuedFeature
-            ShoppingListItemProductOptionWidgetPlugin::class,
+            ShoppingListItemNoteWidgetPlugin::class, #ShoppingListNoteFeature
+            ShoppingListItemProductOptionWidgetPlugin::class
         ];
     }
 
@@ -63,7 +67,8 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
     protected function getShoppingListItemFormExpanderPlugins(): array
     {
         return [
-            new ShoppingListItemProductOptionFormExpanderPlugin(),
+            new ShoppingListItemNoteFormExpanderPlugin(), #ShoppingListNoteFeature
+            new ShoppingListItemProductOptionFormExpanderPlugin()
         ];
     }
 
