@@ -82,6 +82,37 @@ $config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION] = [
     ],
 ];
 
+$config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
+    'DE' => [
+        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'DE-connection',
+        RabbitMqEnv::RABBITMQ_HOST => 'localhost',
+        RabbitMqEnv::RABBITMQ_PORT => '5672',
+        RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
+        RabbitMqEnv::RABBITMQ_USERNAME => 'DE_devtest',
+        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/DE_devtest_zed',
+        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['DE'],
+        RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => true,
+    ],
+    'AT' => [
+        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'AT-connection',
+        RabbitMqEnv::RABBITMQ_HOST => 'localhost',
+        RabbitMqEnv::RABBITMQ_PORT => '5672',
+        RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
+        RabbitMqEnv::RABBITMQ_USERNAME => 'AT_devtest',
+        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/AT_devtest_zed',
+        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['AT'],
+    ],
+    'US' => [
+        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'US-connection',
+        RabbitMqEnv::RABBITMQ_HOST => 'localhost',
+        RabbitMqEnv::RABBITMQ_PORT => '5672',
+        RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
+        RabbitMqEnv::RABBITMQ_USERNAME => 'US_devtest',
+        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/US_devtest_zed',
+        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['US'],
+    ],
+];
+
 // ---------- Event
 $config[EventConstants::EVENT_CHUNK] = 5000;
 

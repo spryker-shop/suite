@@ -768,9 +768,17 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductPriceDataImportWriters(): DataSetWriterInterface
     {
-        return new DataSetWriterCollection([
+        return new DataSetWriterCollection($this->createProductPriceWriterPlugins());
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
+     */
+    protected function createProductPriceWriterPlugins()
+    {
+        return [
             new ProductPricePropelWriterPlugin(),
-        ]);
+        ];
     }
 
     /**
@@ -778,9 +786,17 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductStockDataImportWriters(): DataSetWriterInterface
     {
-        return new DataSetWriterCollection([
+        return new DataSetWriterCollection($this->createProductStockWriterPlugins());
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
+     */
+    protected function createProductStockWriterPlugins()
+    {
+        return [
             new ProductStockPropelWriterPlugin(),
-        ]);
+        ];
     }
 
     /**
@@ -840,9 +856,17 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductImageDataWriters(): DataSetWriterInterface
     {
-        return new DataSetWriterCollection([
+        return new DataSetWriterCollection($this->createProductImageWriterPlugins());
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
+     */
+    protected function createProductImageWriterPlugins()
+    {
+        return [
             new ProductImagePropelWriterPlugin(),
-        ]);
+        ];
     }
 
     /**
@@ -1022,9 +1046,17 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductAbstractDataImportWriters(): DataSetWriterInterface
     {
-        return new DataSetWriterCollection([
+        return new DataSetWriterCollection($this->createProductAbstractWriterPlugins());
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
+     */
+    protected function createProductAbstractWriterPlugins()
+    {
+        return [
             new ProductAbstractPropelWriterPlugin(),
-        ]);
+        ];
     }
 
     /**
@@ -1048,9 +1080,17 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductAbstractStoreDataImportWriters(): DataSetWriterInterface
     {
-        return new DataSetWriterCollection([
+        return new DataSetWriterCollection($this->createProductAbstractStoreWriterPlugins());
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
+     */
+    protected function createProductAbstractStoreWriterPlugins()
+    {
+        return [
             new ProductAbstractStorePropelWriterPlugin(),
-        ]);
+        ];
     }
 
     /**
@@ -1058,9 +1098,17 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductConcreteDataImportWriters(): DataSetWriterInterface
     {
-        return new DataSetWriterCollection([
+        return new DataSetWriterCollection($this->createProductConcreteWriterPlugins());
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
+     */
+    protected function createProductConcreteWriterPlugins()
+    {
+        return [
             new ProductConcretePropelWriterPlugin(),
-        ]);
+        ];
     }
 
     /**

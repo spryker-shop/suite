@@ -64,37 +64,6 @@ $config[SessionConstants::ZED_SESSION_REDIS_PASSWORD] = $config[SessionConstants
 // ---------- Elasticsearch
 $config[SearchConstants::SEARCH_INDEX_NAME_SUFFIX] = '_devtest';
 
-// ---------- RabbitMq
-$config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
-    'DE' => [
-        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'DE-connection',
-        RabbitMqEnv::RABBITMQ_HOST => 'localhost',
-        RabbitMqEnv::RABBITMQ_PORT => '5672',
-        RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
-        RabbitMqEnv::RABBITMQ_USERNAME => 'DE_devtest',
-        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/DE_devtest_zed',
-        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['DE'],
-    ],
-    'AT' => [
-        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'AT-connection',
-        RabbitMqEnv::RABBITMQ_HOST => 'localhost',
-        RabbitMqEnv::RABBITMQ_PORT => '5672',
-        RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
-        RabbitMqEnv::RABBITMQ_USERNAME => 'AT_devtest',
-        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/AT_devtest_zed',
-        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['AT'],
-    ],
-    'US' => [
-        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'US-connection',
-        RabbitMqEnv::RABBITMQ_HOST => 'localhost',
-        RabbitMqEnv::RABBITMQ_PORT => '5672',
-        RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
-        RabbitMqEnv::RABBITMQ_USERNAME => 'US_devtest',
-        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/US_devtest_zed',
-        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['US'],
-    ],
-];
-
 $config[RabbitMqEnv::RABBITMQ_API_HOST] = 'localhost';
 $config[RabbitMqEnv::RABBITMQ_API_PORT] = '15672';
 $config[RabbitMqEnv::RABBITMQ_API_USERNAME] = 'admin';
