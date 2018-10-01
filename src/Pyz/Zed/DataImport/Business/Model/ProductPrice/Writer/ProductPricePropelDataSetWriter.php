@@ -79,7 +79,7 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
         $priceTypeEntity = $this->findOrCreatePriceType($dataSet);
         $productPriceEntity = $this->findOrCreateProductPrice($dataSet, $priceTypeEntity);
         $priceProductStoreEntity = $this->findOrCreatePriceProductStore($dataSet, $productPriceEntity);
-        $priceProductDefault = $this->findOrCreatePriceProductDefault($priceProductStoreEntity);
+        $this->findOrCreatePriceProductDefault($priceProductStoreEntity);
     }
 
     /**
