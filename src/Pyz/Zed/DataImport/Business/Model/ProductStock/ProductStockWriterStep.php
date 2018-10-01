@@ -82,7 +82,9 @@ class ProductStockWriterStep extends PublishAwareStep implements DataImportStepI
 
         if ($dataSet[static::KEY_IS_BUNDLE]) {
             $this->productBundleFacade->updateBundleAvailability($dataSet[static::KEY_CONCRETE_SKU]);
+        } else {
             $this->productBundleFacade->updateAffectedBundlesAvailability($dataSet[static::KEY_CONCRETE_SKU]);
+            $this->productBundleFacade->updateAffectedBundlesStock($dataSet[static::KEY_CONCRETE_SKU]);
         }
     }
 }
