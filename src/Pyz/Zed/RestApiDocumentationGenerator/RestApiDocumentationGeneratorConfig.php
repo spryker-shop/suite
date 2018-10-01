@@ -11,16 +11,4 @@ use Spryker\Zed\RestApiDocumentationGenerator\RestApiDocumentationGeneratorConfi
 
 class RestApiDocumentationGeneratorConfig extends SprykerRestApiDocumentationGeneratorConfig
 {
-    /**
-     * @project Only needed internal non-split project, not in public split project.
-     *
-     * @return array
-     */
-    protected function getCoreAnnotationsSourceDirectoryPatterns(): array
-    {
-        $directoryPatterns = parent::getCoreAnnotationsSourceDirectoryPatterns();
-        $directoryPatterns[] = APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/%1$s/src/Spryker/Glue/%1$s/Controller/';
-
-        return $directoryPatterns;
-    }
 }
