@@ -36,7 +36,6 @@ use Spryker\Zed\Development\Communication\Console\CodeTestConsole;
 use Spryker\Zed\Development\Communication\Console\ComposerJsonUpdaterConsole;
 use Spryker\Zed\Development\Communication\Console\ComposerJsonValidatorConsole;
 use Spryker\Zed\Development\Communication\Console\DependencyTreeBuilderConsole;
-use Spryker\Zed\Development\Communication\Console\DependencyTreeDependencyViolationConsole;
 use Spryker\Zed\Development\Communication\Console\DependencyViolationFinderConsole;
 use Spryker\Zed\Development\Communication\Console\DependencyViolationFixConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateClientIdeAutoCompletionConsole;
@@ -47,6 +46,7 @@ use Spryker\Zed\Development\Communication\Console\GenerateYvesIdeAutoCompletionC
 use Spryker\Zed\Development\Communication\Console\GenerateZedIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\ModuleBridgeCreateConsole;
 use Spryker\Zed\Development\Communication\Console\ModuleCreateConsole;
+use Spryker\Zed\Development\Communication\Console\PluginUsageFinderConsole;
 use Spryker\Zed\Development\Communication\Console\PropelAbstractValidateConsole;
 use Spryker\Zed\DevelopmentCore\Communication\Console\AdjustPhpstanConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventBehaviorTriggerTimeoutConsole;
@@ -83,6 +83,7 @@ use Spryker\Zed\RabbitMq\Communication\Console\DeleteAllExchangesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\DeleteAllQueuesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\PurgeAllQueuesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\SetUserPermissionsConsole;
+use Spryker\Zed\RestApiDocumentationGenerator\Communication\Console\RestApiDocumentationGeneratorConsole;
 use Spryker\Zed\Search\Communication\Console\GenerateIndexMapConsole;
 use Spryker\Zed\Search\Communication\Console\SearchCloseIndexConsole;
 use Spryker\Zed\Search\Communication\Console\SearchConsole;
@@ -265,8 +266,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new PriceProductMerchantRelationshipDeleteConsole(),
 
             new WishlistsUuidWriterConsole(),
-
             new ProductTaxSetsRestApiConsole(),
+
+            new RestApiDocumentationGeneratorConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
@@ -302,8 +304,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new DataImportDumpConsole();
             $commands[] = new GenerateGlueIdeAutoCompletionConsole();
             $commands[] = new PropelAbstractValidateConsole();
-
-            $commands[] = new DependencyTreeDependencyViolationConsole();
+            $commands[] = new PluginUsageFinderConsole();
         }
 
         return $commands;
