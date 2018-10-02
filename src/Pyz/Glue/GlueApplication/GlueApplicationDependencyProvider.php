@@ -23,6 +23,7 @@ use Spryker\Glue\CatalogSearchRestApi\Plugin\CatalogSearchSuggestionsResourceRou
 use Spryker\Glue\CategoriesRestApi\Plugin\CategoriesResourceRoutePlugin;
 use Spryker\Glue\CategoriesRestApi\Plugin\CategoryResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\CustomerForgottenPasswordResourceRoutePlugin;
+use Spryker\Glue\CustomersRestApi\Plugin\CustomerRestorePasswordResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\CustomersResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\SetCustomerBeforeActionPlugin;
 use Spryker\Glue\GlueApplication\GlueApplicationDependencyProvider as SprykerGlueApplicationDependencyProvider;
@@ -76,6 +77,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new CategoryResourceRoutePlugin(),
             new CustomersResourceRoutePlugin(),
             new CustomerForgottenPasswordResourceRoutePlugin(),
+            new CustomerRestorePasswordResourceRoutePlugin(),
             new AbstractProductsResourceRoutePlugin(),
             new ConcreteProductsResourceRoutePlugin(),
             new AbstractProductPricesRoutePlugin(),
