@@ -16,6 +16,7 @@ use Spryker\Shared\CategoryPageSearch\CategoryPageSearchConstants;
 use Spryker\Shared\CategoryStorage\CategoryStorageConstants;
 use Spryker\Shared\CmsPageSearch\CmsPageSearchConstants;
 use Spryker\Shared\CmsStorage\CmsStorageConstants;
+use Spryker\Shared\Event\EventConfig;
 use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\FileManagerStorage\FileManagerStorageConstants;
 use Spryker\Shared\GlossaryStorage\GlossaryStorageConstants;
@@ -35,7 +36,8 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
     protected function getQueueOptions()
     {
         $queueOptionCollection = new ArrayObject();
-        $queueOptionCollection->append($this->createQueueOption(EventConstants::EVENT_QUEUE, EventConstants::EVENT_QUEUE_ERROR));
+        $queueOptionCollection->append($this->createQueueOption(EventConstants::EVENT_QUEUE, EventConstants::EVENT_QUEUE_RETRY, EventConfig::EVENT_ROUTING_KEY_RETRY));
+        $queueOptionCollection->append($this->createQueueOption(EventConstants::EVENT_QUEUE, EventConstants::EVENT_QUEUE_ERROR, EventConfig::EVENT_ROUTING_KEY_ERROR));
         $queueOptionCollection->append($this->createQueueOption(GlossaryStorageConstants::SYNC_STORAGE_QUEUE, GlossaryStorageConstants::SYNC_STORAGE_ERROR_QUEUE));
         $queueOptionCollection->append($this->createQueueOption(UrlStorageConstants::URL_SYNC_STORAGE_QUEUE, UrlStorageConstants::URL_SYNC_STORAGE_ERROR_QUEUE));
         $queueOptionCollection->append($this->createQueueOption(AvailabilityStorageConstants::AVAILABILITY_SYNC_STORAGE_QUEUE, AvailabilityStorageConstants::AVAILABILITY_SYNC_STORAGE_ERROR_QUEUE));
@@ -91,6 +93,8 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
         $queueOptionTransfer
             ->setQueueName($queueName)
             ->setDurable(true)
+            ->setNoWait(false)
+            ->setArguments(['x-queue-mode' => 'lazy'])
             ->addRoutingKey('');
 
         return $queueOptionTransfer;
@@ -108,6 +112,8 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
         $queueOptionTransfer
             ->setQueueName($errorQueueName)
             ->setDurable(true)
+            ->setNoWait(false)
+            ->setArguments(['x-queue-mode' => 'lazy'])
             ->addRoutingKey($routingKey);
 
         return $queueOptionTransfer;
