@@ -32,12 +32,6 @@
     {% set isDisabled = not isAvailable or isDisabled %}
 {% endif %}
 
-
-{% set fooWidget = findWidget('FooWidget', [param1, param2]) %}
-{% set foo = fooWidget.foo | default(widget('FooWidgetPlugin', param1, param2)) %} {# @deprecated Use FooWidget instead of FooWidgetPlugin. #}
-
-set v = false | default(true)
-
 {% set productDiscontinuedNoteWidget = findWidget('ProductDiscontinuedNoteWidget', [sku]) %}
 {% set isDiscontinued = productDiscontinuedNoteWidget.isDiscontinued ?? widgetBlock('ProductDiscontinuedWidgetPlugin', 'isDiscontinued', sku) %} {# @deprecated Use productDiscontinuedNoteWidget instead of ProductDiscontinuedWidgetPlugin. #}
 {% if isDiscontinued is not null %}
