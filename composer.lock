@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "020c34946da0c7879bc48f20d2110c94",
+    "content-hash": "081cc836dbaa921a88630c5264dce016",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -147,6 +147,73 @@
                 "symmetric key cryptography"
             ],
             "time": "2018-07-24T23:27:56+00:00"
+        },
+        {
+            "name": "doctrine/inflector",
+            "version": "v1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/inflector.git",
+                "reference": "5527a48b7313d15261292c149e55e26eae771b0a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/5527a48b7313d15261292c149e55e26eae771b0a",
+                "reference": "5527a48b7313d15261292c149e55e26eae771b0a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Doctrine\\Common\\Inflector\\": "lib/Doctrine/Common/Inflector"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
+                },
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de"
+                },
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com"
+                },
+                {
+                    "name": "Johannes Schmitt",
+                    "email": "schmittjoh@gmail.com"
+                }
+            ],
+            "description": "Common String Manipulations with regard to casing and singular/plural rules.",
+            "homepage": "http://www.doctrine-project.org",
+            "keywords": [
+                "inflection",
+                "pluralize",
+                "singularize",
+                "string"
+            ],
+            "time": "2018-01-09T20:05:19+00:00"
         },
         {
             "name": "doctrine/lexer",
@@ -2440,12 +2507,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "fcb29aa7adb354ae0cad3718a2e3d7585126906a"
+                "reference": "5da48f3e7f34b3a2c777c9a6ac3f5d7a4e5f4f49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/fcb29aa7adb354ae0cad3718a2e3d7585126906a",
-                "reference": "fcb29aa7adb354ae0cad3718a2e3d7585126906a",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/5da48f3e7f34b3a2c777c9a6ac3f5d7a4e5f4f49",
+                "reference": "5da48f3e7f34b3a2c777c9a6ac3f5d7a4e5f4f49",
                 "shasum": ""
             },
             "require": {
@@ -2491,7 +2558,7 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "time": "2018-09-24T13:36:50+00:00"
+            "time": "2018-10-02T06:33:11+00:00"
         },
         {
             "name": "spryker/spryker",
@@ -2499,7 +2566,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "95806f60e1dfa79cc7ed70c87886f8fc006f2a16"
+                "reference": "f2d3965ee77c7b15a05ef800d5c910320e32e6d2"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2772,7 +2839,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-09-30T11:22:52+00:00"
+            "time": "2018-10-02T09:06:56+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2780,7 +2847,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "fdb90914a69cc78538abce46a029f93b3aff20f6"
+                "reference": "2468633a3c959dce3e044b98d2684a50b1cc8b05"
             },
             "require": {
                 "php": ">=7.1"
@@ -2855,7 +2922,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-10-01T10:31:20+00:00"
+            "time": "2018-10-01T19:34:47+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -6466,7 +6533,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-13T13:21:38+00:00"
+            "time": "2017-12-12T17:28:44+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -8043,16 +8110,16 @@
         },
         {
             "name": "slevomat/coding-standard",
-            "version": "4.8.3",
+            "version": "4.8.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/slevomat/coding-standard.git",
-                "reference": "32e1ca205fc34920f323582ed29c0602e3897ae3"
+                "reference": "bc8a02f25e03eb5481c4976cc615621cdd75aef9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/32e1ca205fc34920f323582ed29c0602e3897ae3",
-                "reference": "32e1ca205fc34920f323582ed29c0602e3897ae3",
+                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/bc8a02f25e03eb5481c4976cc615621cdd75aef9",
+                "reference": "bc8a02f25e03eb5481c4976cc615621cdd75aef9",
                 "shasum": ""
             },
             "require": {
@@ -8078,7 +8145,7 @@
                 "MIT"
             ],
             "description": "Slevomat Coding Standard for PHP_CodeSniffer complements Consistence Coding Standard by providing sniffs with additional checks.",
-            "time": "2018-09-25T21:21:11+00:00"
+            "time": "2018-10-01T20:16:49+00:00"
         },
         {
             "name": "sllh/composer-versions-check",
@@ -8121,7 +8188,7 @@
             ],
             "authors": [
                 {
-                    "name": "Sullivan Sénéchal",
+                    "name": "Sullivan SENECHAL",
                     "email": "soullivaneuh@gmail.com"
                 }
             ],
