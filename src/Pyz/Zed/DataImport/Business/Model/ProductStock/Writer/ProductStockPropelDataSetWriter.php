@@ -63,7 +63,9 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
 
         if ($dataSet[ProductStockHydratorStep::KEY_IS_BUNDLE]) {
             $this->productBundleFacade->updateBundleAvailability($dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU]);
+        } else {
             $this->productBundleFacade->updateAffectedBundlesAvailability($dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU]);
+            $this->productBundleFacade->updateAffectedBundlesStock($dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU]);
         }
     }
 
