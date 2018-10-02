@@ -23,6 +23,7 @@ use Spryker\Shared\ProductStorage\ProductStorageConstants;
 use Spryker\Shared\ShoppingListStorage\ShoppingListStorageConfig;
 use Spryker\Shared\UrlStorage\UrlStorageConstants;
 use Spryker\Zed\Event\Communication\Plugin\Queue\EventQueueMessageProcessorPlugin;
+use Spryker\Zed\Event\Communication\Plugin\Queue\EventRetryQueueMessageProcessorPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Queue\QueueDependencyProvider as SprykerDependencyProvider;
 use Spryker\Zed\Synchronization\Communication\Plugin\Queue\SynchronizationSearchQueueMessageProcessorPlugin;
@@ -40,6 +41,7 @@ class QueueDependencyProvider extends SprykerDependencyProvider
     {
         return [
             EventConstants::EVENT_QUEUE => new EventQueueMessageProcessorPlugin(),
+            EventConstants::EVENT_QUEUE_RETRY => new EventRetryQueueMessageProcessorPlugin(),
             Config::get(LogConstants::LOG_QUEUE_NAME) => new LogglyLoggerQueueMessageProcessorPlugin(),
             CmsStorageConstants::CMS_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
             AvailabilityStorageConstants::AVAILABILITY_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
