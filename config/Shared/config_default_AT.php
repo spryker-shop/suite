@@ -78,4 +78,13 @@ $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
         RabbitMqEnv::RABBITMQ_STORE_NAMES => ['AT'],
         RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => true,
     ],
+    'DE' => [
+        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'DE-connection',
+        RabbitMqEnv::RABBITMQ_HOST => 'localhost',
+        RabbitMqEnv::RABBITMQ_PORT => '5672',
+        RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
+        RabbitMqEnv::RABBITMQ_USERNAME => 'DE_development',
+        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/DE_development_zed',
+        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['DE'],
+    ],
 ];
