@@ -1,9 +1,12 @@
 <?php
+
 /**
  * This file is part of the Spryker Suite.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
+
 namespace Pyz\Zed\DataImport;
+
 use Spryker\Zed\BusinessOnBehalfDataImport\Communication\Plugin\DataImport\BusinessOnBehalfCompanyUserDataImportPlugin;
 use Spryker\Zed\CategoryDataImport\Communication\Plugin\CategoryDataImportPlugin;
 use Spryker\Zed\CompanyBusinessUnitDataImport\Communication\Plugin\CompanyBusinessUnitAddressDataImportPlugin;
@@ -40,6 +43,7 @@ use Spryker\Zed\ProductPackagingUnitDataImport\Communication\Plugin\DataImport\P
 use Spryker\Zed\ProductPackagingUnitDataImport\Communication\Plugin\DataImport\ProductPackagingUnitTypeDataImportPlugin;
 use Spryker\Zed\ProductQuantityDataImport\Communication\Plugin\ProductQuantityDataImportPlugin;
 use Spryker\Zed\SalesOrderThresholdDataImport\Communication\Plugin\DataImport\SalesOrderThresholdDataImportPlugin;
+
 class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
 {
     public const FACADE_AVAILABILITY = 'availability facade';
@@ -50,6 +54,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     public const FACADE_PRODUCT_RELATION = 'product relation facade';
     public const FACADE_STOCK = 'stock facade';
     public const FACADE_PRODUCT_SEARCH = 'product search facade';
+
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
@@ -58,6 +63,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     public function provideBusinessLayerDependencies(Container $container)
     {
         $container = parent::provideBusinessLayerDependencies($container);
+
         $container = $this->addAvailabilityFacade($container);
         $container = $this->addStockFacade($container);
         $container = $this->addCurrencyFacade($container);
@@ -66,8 +72,10 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
         $container = $this->addProductBundleFacade($container);
         $container = $this->addProductRelationFacade($container);
         $container = $this->addProductSearchFacade($container);
+
         return $container;
     }
+
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
@@ -78,8 +86,10 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
         $container[static::FACADE_CURRENCY] = function (Container $container) {
             return $container->getLocator()->currency()->facade();
         };
+
         return $container;
     }
+
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
@@ -90,8 +100,10 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
         $container[static::FACADE_STORE] = function (Container $container) {
             return $container->getLocator()->store()->facade();
         };
+
         return $container;
     }
+
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
@@ -102,8 +114,10 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
         $container[static::FACADE_AVAILABILITY] = function (Container $container) {
             return $container->getLocator()->availability()->facade();
         };
+
         return $container;
     }
+
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
@@ -114,8 +128,10 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
         $container[static::FACADE_STOCK] = function (Container $container) {
             return $container->getLocator()->stock()->facade();
         };
+
         return $container;
     }
+
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
@@ -126,8 +142,10 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
         $container[static::FACADE_CATEGORY] = function (Container $container) {
             return $container->getLocator()->category()->facade();
         };
+
         return $container;
     }
+
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
@@ -138,8 +156,10 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
         $container[static::FACADE_PRODUCT_BUNDLE] = function (Container $container) {
             return $container->getLocator()->productBundle()->facade();
         };
+
         return $container;
     }
+
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
@@ -150,8 +170,10 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
         $container[static::FACADE_PRODUCT_SEARCH] = function (Container $container) {
             return $container->getLocator()->productSearch()->facade();
         };
+
         return $container;
     }
+
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
@@ -162,8 +184,10 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
         $container[static::FACADE_PRODUCT_RELATION] = function (Container $container) {
             return $container->getLocator()->productRelation()->facade();
         };
+
         return $container;
     }
+
     /**
      * @return array
      */
@@ -204,6 +228,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new CompanyBusinessUnitAddressDataImportPlugin(),
         ];
     }
+
     /**
      * @return array
      */
@@ -213,6 +238,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new DataImportEventBehaviorPlugin(),
         ];
     }
+
     /**
      * @return array
      */
