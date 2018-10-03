@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\Dataset\Persistence" package="src.Orm.Zed.Dataset.Persistence">
+  <table name="spy_dataset_row_column_value">
+    <index name="index-spy_dataset_row_column_value-fk_dataset">
+      <index-column name="fk_dataset"/>
+    </index>
+    <index name="index-spy_dataset_row_column_value-fk_dataset_row">
+      <index-column name="fk_dataset_row"/>
+    </index>
+    <index name="index-spy_dataset_row_column_value-fk_dataset_column">
+      <index-column name="fk_dataset_column"/>
+    </index>
+  </table>
+  <table name="spy_dataset_localized_attributes">
+    <index name="index-spy_dataset_localized_attributes-fk_dataset">
+      <index-column name="fk_dataset"/>
+    </index>
+    <index name="index-spy_dataset_localized_attributes-fk_locale">
+      <index-column name="fk_locale"/>
+    </index>
+  </table>
+</database>
