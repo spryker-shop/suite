@@ -81,9 +81,10 @@ use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartOperationsWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartPermissionGroupWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartShareWidget;
 use SprykerShop\Yves\ShopApplication\ShopApplicationDependencyProvider as SprykerShopApplicationDependencyProvider;
-use SprykerShop\Yves\ShoppingListWidget\Plugin\ShopUi\ShoppingListNavigationMenuWidgetPlugin;
+use SprykerShop\Yves\ShoppingListWidget\Plugin\ShopUi\ShoppingListWidgetPlugin;
 use SprykerShop\Yves\ShoppingListWidget\Widget\AddToShoppingListWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListMenuItemWidget;
+use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListNavigationMenuWidget;
 use SprykerShop\Yves\WishlistWidget\Widget\WishlistMenuItemWidget;
 
 class ShopApplicationDependencyProvider extends SprykerShopApplicationDependencyProvider
@@ -105,7 +106,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
 //            MenuItemBusinessOnBehalfWidgetPlugin::class,
 //            MenuItemCompanyWidgetPlugin::class,
 //            AgentWidgetPlugin::class, #AgentFeature
-//            ShoppingListNavigationMenuWidgetPlugin::class, #ShoppingListFeature
+//            ShoppingListWidgetPlugin::class, #ShoppingListFeature
 
             AddToMultiCartWidget::class,
             AddToShoppingListWidget::class,
@@ -163,6 +164,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             SharedCartPermissionGroupWidget::class,
             SharedCartShareWidget::class,
             ShoppingListMenuItemWidget::class,
+            ShoppingListNavigationMenuWidget::class,
             ShoppingListProductAlternativeWidget::class,
             SimilarProductsWidget::class,
             UpSellingProductsWidget::class,
