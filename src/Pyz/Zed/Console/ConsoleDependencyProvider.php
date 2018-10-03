@@ -79,6 +79,7 @@ use Spryker\Zed\Propel\Communication\Console\PropelSchemaValidatorConsole;
 use Spryker\Zed\Propel\Communication\Plugin\ServiceProvider\PropelServiceProvider;
 use Spryker\Zed\Queue\Communication\Console\QueueTaskConsole;
 use Spryker\Zed\Queue\Communication\Console\QueueWorkerConsole;
+use Spryker\Zed\Quote\Communication\Console\CleanExpiredGuestCartConsoleConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\DeleteAllExchangesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\DeleteAllQueuesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\PurgeAllQueuesConsole;
@@ -267,6 +268,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new WishlistsUuidWriterConsole(),
 
             new ProductTaxSetsRestApiConsole(),
+            new CleanExpiredGuestCartConsoleConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
