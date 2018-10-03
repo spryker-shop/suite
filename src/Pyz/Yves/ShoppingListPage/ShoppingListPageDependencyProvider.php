@@ -81,12 +81,4 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
             new ShoppingListItemProductOptionDataProviderExpanderPlugin(),
         ];
     }
-
-    /**
-     * @return string[]
-     */
-    protected function getShoppingListOverviewUpdatePageWidgets(): array
-    {
-        return [];
-    }
 }
