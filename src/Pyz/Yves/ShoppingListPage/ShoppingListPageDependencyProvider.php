@@ -15,7 +15,7 @@ use SprykerShop\Yves\ProductBarcodeWidget\Plugin\ShoppingList\ProductBarcodeWidg
 use SprykerShop\Yves\ProductDiscontinuedWidget\Plugin\ShoppingListPage\ProductDiscontinuedWidgetPlugin;
 use SprykerShop\Yves\ShoppingListNoteWidget\Plugin\ShoppingListItemNoteWidgetPlugin;
 use SprykerShop\Yves\ShoppingListNoteWidget\Plugin\ShoppingListPage\ShoppingListItemNoteFormExpanderPlugin;
-use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionDataProviderExpanderPlugin;
+use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionFormDataProviderMapperPlugin;
 use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionFormExpanderPlugin;
 use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionWidgetPlugin;
 use SprykerShop\Yves\ShoppingListPage\ShoppingListPageDependencyProvider as SprykerShoppingListPageDependencyProvider;
@@ -73,12 +73,12 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
     }
 
     /**
-     * @return \SprykerShop\Yves\ShoppingListPageExtension\Dependency\Plugin\ShoppingListDataProviderExpanderPluginInterface[]
+     * @return \SprykerShop\Yves\ShoppingListPageExtension\Dependency\Plugin\ShoppingListFormDataProviderMapperPluginInterface[]
      */
-    protected function getShoppingListDataProviderExpanderPlugins(): array
+    protected function getShoppingListFormDataProviderMapperPlugins(): array
     {
         return [
-            new ShoppingListItemProductOptionDataProviderExpanderPlugin(),
+            new ShoppingListItemProductOptionFormDataProviderMapperPlugin(),
         ];
     }
 }
