@@ -89,6 +89,17 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     {
         return [
             new AccessTokenValidatorPlugin(),
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\RestRequestValidatorPluginInterface[]
+     */
+    protected function getRestRequestValidatorPlugins(): array
+    {
+        return [
             new ValidateRestRequestAttributesPlugin(),
         ];
     }
