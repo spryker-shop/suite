@@ -94,7 +94,7 @@ class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface
                 ->addFilter($stringFacetFieldFilter)
                 ->addFilter($stringFacetValueFilter);
         }
-        
+
         return $newProductsBoolQuery;
     }
 
