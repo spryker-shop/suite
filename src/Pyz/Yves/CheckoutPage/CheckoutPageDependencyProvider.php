@@ -108,7 +108,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     /**
      * @return \Spryker\Yves\Checkout\Dependency\Plugin\Form\SubFormFilterPluginInterface[]
      */
-    protected function getPaymentFormFilterPlugins()
+    protected function getPaymentMethodSubFormFilterPlugins(): array
     {
         return [
             new PaymentFormFilterPlugin(),
