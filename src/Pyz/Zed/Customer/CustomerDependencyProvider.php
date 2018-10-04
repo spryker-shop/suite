@@ -12,7 +12,7 @@ use Spryker\Zed\BusinessOnBehalf\Communication\Plugin\Customer\DefaultCompanyUse
 use Spryker\Zed\BusinessOnBehalf\Communication\Plugin\Customer\IsOnBehalfCustomerTransferExpanderPlugin;
 use Spryker\Zed\CompanyRole\Communication\Plugin\PermissionCustomerExpanderPlugin;
 use Spryker\Zed\CompanyUser\Communication\Plugin\Customer\CustomerTransferCompanyUserExpanderPlugin;
-use Spryker\Zed\CompanyUserGui\Communication\Plugin\AttachUserToCompanyPlugin;
+use Spryker\Zed\CompanyUserGui\Communication\Plugin\Customer\CustomerTableActionExpanderPlugin;
 use Spryker\Zed\CompanyUserInvitation\Communication\Plugin\CompanyUserInvitationPostCustomerRegistrationPlugin;
 use Spryker\Zed\Customer\CustomerDependencyProvider as SprykerCustomerDependencyProvider;
 use Spryker\Zed\CustomerGroup\Communication\Plugin\CustomerAnonymizer\RemoveCustomerFromGroupPlugin;
@@ -94,7 +94,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     protected function getCustomerTableActionExpanderPlugins(): array
     {
         return [
-            new AttachUserToCompanyPlugin(),
+            new CustomerTableActionExpanderPlugin(),
         ];
     }
 }
