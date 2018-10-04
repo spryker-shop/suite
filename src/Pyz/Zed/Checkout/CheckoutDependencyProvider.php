@@ -56,7 +56,8 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
      */
     protected function getCheckoutOrderSavers(Container $container)
     {
-        return [
+        /** @var \Spryker\Zed\Checkout\Dependency\Plugin\CheckoutSaveOrderInterface[] $plugins */
+        $plugins = [
             new CustomerOrderSavePlugin(),
             new SalesOrderSaverPlugin(),
             new CartNoteSaverPlugin(), #CartNoteFeature
@@ -67,6 +68,8 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new ProductBundleOrderSaverPlugin(),
             new PaymentOrderSaverPlugin(),
         ];
+
+        return $plugins;
     }
 
     /**
