@@ -6,7 +6,7 @@ use Generated\Shared\Transfer\PaymentMethodsTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Zed\Payment\Dependency\Plugin\Payment\PaymentMethodFilterPluginInterface;
 
-class TestFilterPlugin implements PaymentMethodFilterPluginInterface
+class SkipFirstPaymentMethodFilterPlugin implements PaymentMethodFilterPluginInterface
 {
     /**
      * Specification:
