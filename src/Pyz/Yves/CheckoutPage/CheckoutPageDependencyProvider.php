@@ -21,6 +21,7 @@ use SprykerShop\Yves\CustomerPage\Form\LoginForm;
 use SprykerShop\Yves\CustomerPage\Form\RegisterForm;
 use SprykerShop\Yves\DiscountWidget\Plugin\CheckoutPage\CheckoutVoucherFormWidgetPlugin;
 use SprykerShop\Yves\ProductPackagingUnitWidget\Plugin\CheckoutPage\SummaryProductPackagingUnitWidgetPlugin;
+use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThresholdWidgetPlugin;
 
 class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyProvider
 {
@@ -34,6 +35,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
             CartNoteQuoteItemNoteWidgetPlugin::class, #CartNoteFeature
             CartNoteQuoteNoteWidgetPlugin::class, #CartNoteFeature
             SummaryProductPackagingUnitWidgetPlugin::class, #ProductPackagingUnit
+            SalesOrderThresholdWidgetPlugin::class, #SalesOrderThresholdFeature
         ];
     }
 
