@@ -7,18 +7,18 @@
 
 namespace Pyz\Zed\CompanyUserGui;
 
-use Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyBusinessUnitCompanyUserTableConfigExpanderPlugin;
-use Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyBusinessUnitCompanyUserTablePrepareDataExpanderPlugin;
-use Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyUserBusinessUnitFieldPlugin;
-use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyRoleCompanyUserTableConfigExpanderPlugin;
-use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyRoleCompanyUserTablePrepareDataExpanderPlugin;
-use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyUserRoleFieldPlugin;
+use Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyBusinessUnit\CompanyBusinessUnitCompanyUserTableConfigExpanderPlugin;
+use Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyBusinessUnit\CompanyBusinessUnitCompanyUserTablePrepareDataExpanderPlugin;
+use Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyUser\CompanyBusinessUnitFormExpanderPlugin;
+use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyRole\CompanyRoleCompanyUserTableConfigExpanderPlugin;
+use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyRole\CompanyRoleCompanyUserTablePrepareDataExpanderPlugin;
+use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyUser\CompanyRoleFromExpanderPlugin;
 use Spryker\Zed\CompanyUserGui\CompanyUserGuiDependencyProvider as SprykerCompanyUserGuiDependencyProvider;
 
 class CompanyUserGuiDependencyProvider extends SprykerCompanyUserGuiDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\CompanyUserGuiExtension\Dependency\Plugin\CompanyUserGui\CompanyUserTableConfigExpanderPluginInterface[]
+     * @return \Spryker\Zed\CompanyUserGuiExtension\Dependency\Plugin\CompanyUserTableConfigExpanderPluginInterface[]
      */
     protected function getCompanyUserTableConfigExpanderPlugins(): array
     {
@@ -29,7 +29,7 @@ class CompanyUserGuiDependencyProvider extends SprykerCompanyUserGuiDependencyPr
     }
 
     /**
-     * @return \Spryker\Zed\CompanyUserGuiExtension\Dependency\Plugin\CompanyUserGui\CompanyUserTablePrepareDataExpanderPluginInterface[]
+     * @return \Spryker\Zed\CompanyUserGuiExtension\Dependency\Plugin\CompanyUserTablePrepareDataExpanderPluginInterface[]
      */
     protected function getCompanyUserTablePrepareDataExpanderPlugins(): array
     {
@@ -40,24 +40,13 @@ class CompanyUserGuiDependencyProvider extends SprykerCompanyUserGuiDependencyPr
     }
 
     /**
-     * @return \Spryker\Zed\CompanyUserGuiExtension\Communication\Plugin\CompanyUserFormExpanderPluginInterface[]
+     * @return \Spryker\Zed\CompanyUserGuiExtension\Dependency\Plugin\CompanyUserFormExpanderPluginInterface[]
      */
     protected function getCompanyUserFormExpanderPlugins(): array
     {
         return [
-            new CompanyUserBusinessUnitFieldPlugin(),
-            new CompanyUserRoleFieldPlugin(),
-        ];
-    }
-
-    /**
-     * @return \Spryker\Zed\CompanyUserGuiExtension\Communication\Plugin\CompanyUserFormExpanderPluginInterface[]
-     */
-    protected function getCompanyUserEditFormExpanderPlugins(): array
-    {
-        return [
-            new CompanyUserBusinessUnitFieldPlugin(),
-            new CompanyUserRoleFieldPlugin(),
+            new CompanyBusinessUnitFormExpanderPlugin(),
+            new CompanyRoleFromExpanderPlugin(),
         ];
     }
 }
