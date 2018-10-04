@@ -9,18 +9,19 @@ namespace Pyz\Client\ShoppingList;
 
 use Spryker\Client\ShoppingList\ShoppingListDependencyProvider as SprykerShoppingListDependencyProvider;
 use Spryker\Client\ShoppingListNote\Plugin\ShoppingListItemNoteToItemCartNoteMapperPlugin;
-use Spryker\Client\ShoppingListProductOption\Plugin\ShoppingListExtension\ShoppingListItemProductOptionRequestExpanderPlugin;
-use Spryker\Client\ShoppingListProductOption\Plugin\ShoppingListItemProductOptionToItemProductOptionMapperPlugin;
+use Spryker\Client\ShoppingListProductOption\Plugin\ShoppingListExtension\ProductOptionQuoteItemToItemMapperPluginInterfacePlugin;
+use Spryker\Client\ShoppingListProductOption\Plugin\ShoppingListExtension\ShoppingListItemProductOptionRequestMapperPlugin;
+use Spryker\Client\ShoppingListProductOption\Plugin\ShoppingListExtension\ShoppingListItemProductOptionToItemProductOptionMapperPlugin;
 
 class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvider
 {
     /**
-     * @return \Spryker\Client\ShoppingListExtension\Dependency\Plugin\ShoppingListItemExpanderPluginInterface[]
+     * @return \Spryker\Client\ShoppingListExtension\Dependency\Plugin\ShoppingListItemMapperPluginInterface[]
      */
-    protected function getAddItemShoppingListItemExpanderPlugins(): array
+    protected function getAddItemShoppingListItemMapperPlugins(): array
     {
         return [
-            new ShoppingListItemProductOptionRequestExpanderPlugin(),
+            new ShoppingListItemProductOptionRequestMapperPlugin(),
         ];
     }
 
@@ -32,6 +33,16 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
         return [
             new ShoppingListItemNoteToItemCartNoteMapperPlugin(),
             new ShoppingListItemProductOptionToItemProductOptionMapperPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Client\ShoppingListExtension\Dependency\Plugin\QuoteItemToItemMapperPluginInterface[]
+     */
+    protected function getQuoteItemToItemMapperPlugins(): array
+    {
+        return [
+            new ProductOptionQuoteItemToItemMapperPluginInterfacePlugin(),
         ];
     }
 }
