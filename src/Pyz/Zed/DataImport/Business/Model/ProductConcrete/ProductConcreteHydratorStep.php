@@ -18,37 +18,37 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class ProductConcreteHydratorStep implements DataImportStepInterface
 {
-    const BULK_SIZE = 100;
+    public const BULK_SIZE = 100;
 
-    const KEY_ATTRIBUTES = 'attributes';
-    const KEY_DISCOUNT = 'discount';
-    const KEY_QUANTITY = 'quantity';
-    const KEY_WAREHOUSES = 'warehouses';
-    const KEY_SPY_PRODUCT = 'spy_product';
-    const KEY_ID_PRODUCT = 'id_product';
-    const KEY_FK_PRODUCT_ABSTRACT = 'fk_product_abstract';
-    const KEY_LOCALIZED_ATTRIBUTES = 'localizedAttributes';
-    const KEY_NAME = 'name';
-    const KEY_DESCRIPTION = 'description';
-    const KEY_LOCALES = 'locales';
-    const KEY_FK_LOCALE = 'fk_locale';
-    const KEY_FK_PRODUCT = 'fk_product';
-    const KEY_FK_BUNDLED_PRODUCT = 'fk_bundled_product';
-    const KEY_CONCRETE_SKU = 'concrete_sku';
-    const KEY_ABSTRACT_SKU = 'abstract_sku';
-    const KEY_SKU = 'sku';
-    const KEY_IS_ACTIVE = 'is_active';
-    const KEY_IS_COMPLETE = 'is_complete';
-    const KEY_IS_SEARCHABLE = 'is_searchable';
-    const KEY_BUNDLES = 'bundled';
-    const KEY_PRODUCT_BUNDLE_TRANSFER = 'productBundleEntityTransfer';
-    const KEY_PRODUCT_CONCRETE_LOCALIZED_TRANSFER = 'localizedAttributeTransfer';
-    const KEY_PRODUCT_SEARCH_TRANSFER = 'productSearchEntityTransfer';
-    const KEY_PRODUCT_BUNDLE_SKU = 'bundledProductSku';
-    const DATA_PRODUCT_CONCRETE_TRANSFER = 'DATA_PRODUCT_CONCRETE_TRANSFER';
-    const DATA_PRODUCT_CONCRETE_LOCALIZED_TRANSFER = 'DATA_PRODUCT_CONCRETE_LOCALIZED_TRANSFER';
-    const DATA_PRODUCT_BUNDLE_TRANSFER = 'DATA_PRODUCT_BUNDLE_TRANSFER';
-    const KEY_IS_QUANTITY_SPLITTABLE = 'is_quantity_splittable';
+    public const KEY_ATTRIBUTES = 'attributes';
+    public const KEY_DISCOUNT = 'discount';
+    public const KEY_QUANTITY = 'quantity';
+    public const KEY_WAREHOUSES = 'warehouses';
+    public const KEY_SPY_PRODUCT = 'spy_product';
+    public const KEY_ID_PRODUCT = 'id_product';
+    public const KEY_FK_PRODUCT_ABSTRACT = 'fk_product_abstract';
+    public const KEY_LOCALIZED_ATTRIBUTES = 'localizedAttributes';
+    public const KEY_NAME = 'name';
+    public const KEY_DESCRIPTION = 'description';
+    public const KEY_LOCALES = 'locales';
+    public const KEY_FK_LOCALE = 'fk_locale';
+    public const KEY_FK_PRODUCT = 'fk_product';
+    public const KEY_FK_BUNDLED_PRODUCT = 'fk_bundled_product';
+    public const KEY_CONCRETE_SKU = 'concrete_sku';
+    public const KEY_ABSTRACT_SKU = 'abstract_sku';
+    public const KEY_SKU = 'sku';
+    public const KEY_IS_ACTIVE = 'is_active';
+    public const KEY_IS_COMPLETE = 'is_complete';
+    public const KEY_IS_SEARCHABLE = 'is_searchable';
+    public const KEY_BUNDLES = 'bundled';
+    public const KEY_PRODUCT_BUNDLE_TRANSFER = 'productBundleEntityTransfer';
+    public const KEY_PRODUCT_CONCRETE_LOCALIZED_TRANSFER = 'localizedAttributeTransfer';
+    public const KEY_PRODUCT_SEARCH_TRANSFER = 'productSearchEntityTransfer';
+    public const KEY_PRODUCT_BUNDLE_SKU = 'bundledProductSku';
+    public const DATA_PRODUCT_CONCRETE_TRANSFER = 'DATA_PRODUCT_CONCRETE_TRANSFER';
+    public const DATA_PRODUCT_CONCRETE_LOCALIZED_TRANSFER = 'DATA_PRODUCT_CONCRETE_LOCALIZED_TRANSFER';
+    public const DATA_PRODUCT_BUNDLE_TRANSFER = 'DATA_PRODUCT_BUNDLE_TRANSFER';
+    public const KEY_IS_QUANTITY_SPLITTABLE = 'is_quantity_splittable';
 
     /**
      * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository
