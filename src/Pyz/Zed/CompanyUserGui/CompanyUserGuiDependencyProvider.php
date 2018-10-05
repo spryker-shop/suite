@@ -7,13 +7,13 @@
 
 namespace Pyz\Zed\CompanyUserGui;
 
-use Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\BusinessUnitFieldCustomerCompanyAttachFormExpanderPlugin;
-use Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyBusinessUnit\CompanyBusinessUnitCompanyUserTableConfigExpanderPlugin;
-use Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyBusinessUnit\CompanyBusinessUnitCompanyUserTablePrepareDataExpanderPlugin;
+use Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyUser\CompanyBusinessUnitAttachCustomerFormExpanderPlugin;
+use Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyUser\CompanyBusinessUnitCompanyUserTableConfigExpanderPlugin;
+use Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyUser\CompanyBusinessUnitCompanyUserTablePrepareDataExpanderPlugin;
 use Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyUser\CompanyBusinessUnitFormExpanderPlugin;
-use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyRole\CompanyRoleCompanyUserTableConfigExpanderPlugin;
-use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyRole\CompanyRoleCompanyUserTablePrepareDataExpanderPlugin;
-use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyRoleFieldCustomerCompanyAttachFormExpanderPlugin;
+use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyUser\CompanyRoleAttachCustomerFormExpanderPlugin;
+use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyUser\CompanyRoleCompanyUserTableConfigExpanderPlugin;
+use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyUser\CompanyRoleCompanyUserTablePrepareDataExpanderPlugin;
 use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyUser\CompanyRoleFromExpanderPlugin;
 use Spryker\Zed\CompanyUserGui\CompanyUserGuiDependencyProvider as SprykerCompanyUserGuiDependencyProvider;
 
@@ -53,13 +53,13 @@ class CompanyUserGuiDependencyProvider extends SprykerCompanyUserGuiDependencyPr
     }
 
     /**
-     * @return \Spryker\Zed\CompanyUserGuiExtension\Dependency\Plugin\CustomerCompanyAttachFormExpanderPluginInterface[]
+     * @return \Spryker\Zed\CompanyUserGuiExtension\Dependency\Plugin\CompanyUserAttachCustomerFormExpanderPluginInterface[]
      */
-    protected function getCustomerCompanyAttachFormExpanderPlugins(): array
+    protected function getCompanyUserAttachCustomerFormExpanderPlugins(): array
     {
         return [
-            new BusinessUnitFieldCustomerCompanyAttachFormExpanderPlugin(),
-            new CompanyRoleFieldCustomerCompanyAttachFormExpanderPlugin(),
+            new CompanyBusinessUnitAttachCustomerFormExpanderPlugin(),
+            new CompanyRoleAttachCustomerFormExpanderPlugin(),
         ];
     }
 }
