@@ -7,8 +7,9 @@
 
 namespace Pyz\Zed\PriceProduct\Business;
 
+use Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface as SprykerPriceProductFacadeInterface;
 use Spryker\Zed\PriceProductDataImport\Dependency\Facade\PriceProductDataImportToPriceProductFacadeInterface;
 
-interface PriceProductFacadeInterface extends PriceProductDataImportToPriceProductFacadeInterface
+interface PriceProductFacadeInterface extends PriceProductDataImportToPriceProductFacadeInterface, SprykerPriceProductFacadeInterface
 {
 }

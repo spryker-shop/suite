@@ -7,11 +7,12 @@
 
 namespace Pyz\Service\UtilEncoding;
 
+use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface as SprykerUtilEncodingServiceInterface;
 use Spryker\Zed\PriceProductDataImport\Dependency\Service\PriceProductDataImportToUtilEncodingServiceInterface;
 
 /**
  * @method \Spryker\Service\UtilEncoding\UtilEncodingServiceFactory getFactory()
  */
-interface UtilEncodingServiceInterface extends PriceProductDataImportToUtilEncodingServiceInterface
+interface UtilEncodingServiceInterface extends PriceProductDataImportToUtilEncodingServiceInterface, SprykerUtilEncodingServiceInterface
 {
 }
