@@ -81,4 +81,18 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
             new ShoppingListItemProductOptionFormDataProviderMapperPlugin(),
         ];
     }
+
+    /**
+     * Returns a list of widget plugin class names that implement
+     * \Spryker\Yves\Kernel\Dependency\Plugin\WidgetPluginInterface.
+     *
+     * @return string[]
+     */
+    protected function getShoppingListEditWidgetPlugins(): array
+    {
+        return [
+            ProductAlternativeWidgetPlugin::class, #ProductAlternativeFeature
+            ProductDiscontinuedWidgetPlugin::class, #ProductDiscontinuedFeature
+        ];
+    }
 }
