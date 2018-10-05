@@ -9,9 +9,9 @@ namespace Pyz\Client\ShoppingList;
 
 use Spryker\Client\ShoppingList\ShoppingListDependencyProvider as SprykerShoppingListDependencyProvider;
 use Spryker\Client\ShoppingListNote\Plugin\ShoppingListItemNoteToItemCartNoteMapperPlugin;
-use Spryker\Client\ShoppingListProductOption\Plugin\ShoppingListExtension\ProductOptionQuoteItemToItemMapperPluginInterfacePlugin;
-use Spryker\Client\ShoppingListProductOption\Plugin\ShoppingListExtension\ShoppingListItemProductOptionRequestMapperPlugin;
-use Spryker\Client\ShoppingListProductOption\Plugin\ShoppingListExtension\ShoppingListItemProductOptionToItemProductOptionMapperPlugin;
+use Spryker\Client\ShoppingListProductOption\ShoppingList\ProductOptionQuoteItemToItemMapperPlugin;
+use Spryker\Client\ShoppingListProductOption\ShoppingList\ShoppingListItemProductOptionRequestMapperPlugin;
+use Spryker\Client\ShoppingListProductOption\ShoppingList\ShoppingListItemProductOptionToItemProductOptionMapperPlugin;
 
 class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvider
 {
@@ -42,7 +42,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     protected function getQuoteItemToItemMapperPlugins(): array
     {
         return [
-            new ProductOptionQuoteItemToItemMapperPluginInterfacePlugin(),
+            new ProductOptionQuoteItemToItemMapperPlugin(),
         ];
     }
 }
