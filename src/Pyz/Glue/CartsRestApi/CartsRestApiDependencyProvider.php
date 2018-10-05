@@ -16,7 +16,7 @@ class CartsRestApiDependencyProvider extends SprykerCartsRestApiDependencyProvid
     /**
      * @return \Spryker\Glue\CartsRestApiExtension\Dependency\Plugin\QuoteCollectionReaderPluginInterface
      */
-    protected function createQuoteCollectionReaderPlugin(): QuoteCollectionReaderPluginInterface
+    protected function getQuoteCollectionReaderPlugin(): QuoteCollectionReaderPluginInterface
     {
         return new CartQuoteCollectionReaderPlugin();
     }
