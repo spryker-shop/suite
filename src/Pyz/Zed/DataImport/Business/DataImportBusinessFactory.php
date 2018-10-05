@@ -108,10 +108,12 @@ use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\ProductSearch\Code\KeyBuilder\FilterGlossaryKeyBuilder;
 use Spryker\Zed\Currency\Business\CurrencyFacadeInterface;
 use Spryker\Zed\DataImport\Business\DataImportBusinessFactory as SprykerDataImportBusinessFactory;
+use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterCollection;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
 use Spryker\Zed\Discount\DiscountConfig;
+use Spryker\Zed\PriceProductDataImport\Business\Model\Step\PreparePriceDataStep;
 use Spryker\Zed\Stock\Business\StockFacadeInterface;
 use Spryker\Zed\Store\Business\StoreFacadeInterface;
 
@@ -700,7 +702,8 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductPriceHydratorStep::BULK_SIZE);
         $dataSetStepBroker
-            ->addStep(new ProductPriceHydratorStep());
+            ->addStep(new ProductPriceHydratorStep())
+            ->addStep($this->createPreparePriceDataStep());
 
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
         $dataImporter->setDataSetWriter($this->createProductPriceDataImportWriters());
@@ -1475,5 +1478,16 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     protected function createDataFormatter(): DataImportDataFormatterInterface
     {
         return new DataImportDataFormatter();
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
+     */
+    protected function createPreparePriceDataStep(): DataImportStepInterface
+    {
+        return new PreparePriceDataStep(
+            $this->getProvidedDependency(DataImportDependencyProvider::FACADE_PRICE_PRODUCT),
+            $this->getProvidedDependency(DataImportDependencyProvider::SERVICE_UTIL_ENCODING)
+        );
     }
 }

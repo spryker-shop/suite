@@ -55,6 +55,9 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     public const FACADE_STOCK = 'stock facade';
     public const FACADE_PRODUCT_SEARCH = 'product search facade';
 
+    public const FACADE_PRICE_PRODUCT = 'FACADE_PRICE_PRODUCT';
+    public const SERVICE_UTIL_ENCODING = 'SERVICE_UTIL_ENCODING';
+
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
@@ -72,6 +75,8 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
         $container = $this->addProductBundleFacade($container);
         $container = $this->addProductRelationFacade($container);
         $container = $this->addProductSearchFacade($container);
+        $container = $this->addPriceProductFacade($container);
+        $container = $this->addUtilEncodingService($container);
 
         return $container;
     }
@@ -248,5 +253,33 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new DataImportEventBehaviorPlugin(),
             new DataImportPublisherPlugin(),
         ];
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addPriceProductFacade(Container $container): Container
+    {
+        $container[static::FACADE_PRICE_PRODUCT] = function (Container $container) {
+            return $container->getLocator()->priceProduct()->facade();
+        };
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addUtilEncodingService(Container $container): Container
+    {
+        $container[static::SERVICE_UTIL_ENCODING] = function (Container $container) {
+            return $container->getLocator()->utilEncoding()->service();
+        };
+
+        return $container;
     }
 }

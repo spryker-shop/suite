@@ -47,6 +47,8 @@ class ProductPriceHydratorStep implements DataImportStepInterface
     public const KEY_SKU = 'sku';
     public const PRICE_TYPE_TRANSFER = 'PRICE_TYPE_TRANSFER';
     public const PRICE_PRODUCT_TRANSFER = 'PRICE_PRODUCT_TRANSFER';
+    public const KEY_PRICE_DATA = 'price_data';
+    public const KEY_PRICE_DATA_CHECKSUM = 'price_data_checksum';
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
