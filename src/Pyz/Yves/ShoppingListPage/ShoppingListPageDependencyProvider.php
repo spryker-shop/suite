@@ -13,11 +13,11 @@ use Spryker\Client\ProductImageStorage\Plugin\ProductViewImageExpanderPlugin;
 use SprykerShop\Yves\ProductAlternativeWidget\Plugin\ShoppingListPage\ProductAlternativeWidgetPlugin;
 use SprykerShop\Yves\ProductBarcodeWidget\Plugin\ShoppingList\ProductBarcodeWidgetPlugin;
 use SprykerShop\Yves\ProductDiscontinuedWidget\Plugin\ShoppingListPage\ProductDiscontinuedWidgetPlugin;
-use SprykerShop\Yves\ShoppingListNoteWidget\Plugin\ShoppingListItemNoteWidgetPlugin;
-use SprykerShop\Yves\ShoppingListNoteWidget\Plugin\ShoppingListPage\ShoppingListItemNoteFormExpanderPlugin;
 use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionFormDataProviderMapperPlugin;
 use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionFormExpanderPlugin;
 use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionWidgetPlugin;
+use SprykerShop\Yves\ShoppingListNoteWidget\Plugin\ShoppingListItemNoteWidgetPlugin;
+use SprykerShop\Yves\ShoppingListNoteWidget\Plugin\ShoppingListPage\ShoppingListItemNoteFormExpanderPlugin;
 use SprykerShop\Yves\ShoppingListPage\ShoppingListPageDependencyProvider as SprykerShoppingListPageDependencyProvider;
 
 class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependencyProvider
@@ -57,7 +57,7 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
             ProductAlternativeWidgetPlugin::class, #ProductAlternativeFeature
             ProductDiscontinuedWidgetPlugin::class, #ProductDiscontinuedFeature
             ShoppingListItemNoteWidgetPlugin::class, #ShoppingListNoteFeature
-            ShoppingListItemProductOptionWidgetPlugin::class
+            ShoppingListItemProductOptionWidgetPlugin::class,
         ];
     }
 
@@ -68,7 +68,7 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
     {
         return [
             new ShoppingListItemNoteFormExpanderPlugin(), #ShoppingListNoteFeature
-            new ShoppingListItemProductOptionFormExpanderPlugin()
+            new ShoppingListItemProductOptionFormExpanderPlugin(),
         ];
     }
 
