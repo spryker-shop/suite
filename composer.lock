@@ -2608,7 +2608,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "d255c346100bf43267c6aa4f01b0f50c8dc2dc5b"
+                "reference": "a002ecb6a0834a626f3a012828ecde09b5ad5199"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2881,7 +2881,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-10-05T11:23:34+00:00"
+            "time": "2018-10-05T14:12:06+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2889,7 +2889,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "8a6bcc7758ee3fb17c4ab8f1a130ee4e0df49265"
+                "reference": "134846b6f864f9ecf44dc0e22ac48a79e2889d47"
             },
             "require": {
                 "php": ">=7.1"
@@ -2964,7 +2964,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-10-05T11:29:48+00:00"
+            "time": "2018-10-05T13:13:18+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8130,20 +8130,21 @@
         },
         {
             "name": "sensiolabs/security-checker",
-            "version": "v4.1.8",
+            "version": "v5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/security-checker.git",
-                "reference": "dc270d5fec418cc6ac983671dba5d80ffaffb142"
+                "reference": "df4625e39868ecf4e868355caf45352f566791db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/dc270d5fec418cc6ac983671dba5d80ffaffb142",
-                "reference": "dc270d5fec418cc6ac983671dba5d80ffaffb142",
+                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/df4625e39868ecf4e868355caf45352f566791db",
+                "reference": "df4625e39868ecf4e868355caf45352f566791db",
                 "shasum": ""
             },
             "require": {
                 "composer/ca-bundle": "^1.0",
+                "php": ">=5.5.9",
                 "symfony/console": "~2.7|~3.0|~4.0"
             },
             "bin": [
@@ -8152,12 +8153,12 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.1-dev"
+                    "dev-master": "5.0-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "SensioLabs\\Security": ""
+                "psr-4": {
+                    "SensioLabs\\Security\\": "SensioLabs/Security"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -8171,7 +8172,7 @@
                 }
             ],
             "description": "A security checker for your composer.lock",
-            "time": "2018-02-28T22:10:01+00:00"
+            "time": "2018-09-04T07:02:17+00:00"
         },
         {
             "name": "silex/web-profiler",
@@ -8268,16 +8269,16 @@
         },
         {
             "name": "slevomat/coding-standard",
-            "version": "4.8.4",
+            "version": "4.8.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/slevomat/coding-standard.git",
-                "reference": "bc8a02f25e03eb5481c4976cc615621cdd75aef9"
+                "reference": "057f3f154cf4888b60eb4cdffadc509a3ae9dccd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/bc8a02f25e03eb5481c4976cc615621cdd75aef9",
-                "reference": "bc8a02f25e03eb5481c4976cc615621cdd75aef9",
+                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/057f3f154cf4888b60eb4cdffadc509a3ae9dccd",
+                "reference": "057f3f154cf4888b60eb4cdffadc509a3ae9dccd",
                 "shasum": ""
             },
             "require": {
@@ -8303,7 +8304,7 @@
                 "MIT"
             ],
             "description": "Slevomat Coding Standard for PHP_CodeSniffer complements Consistence Coding Standard by providing sniffs with additional checks.",
-            "time": "2018-10-01T20:16:49+00:00"
+            "time": "2018-10-05T12:10:21+00:00"
         },
         {
             "name": "sllh/composer-versions-check",
