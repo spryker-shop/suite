@@ -13,17 +13,13 @@ use Spryker\Zed\ProductLabel\Dependency\ProductLabelEvents;
 
 class ProductLabelAfterImportPublishHook implements DataImporterAfterImportInterface
 {
-    const ID_DEFAULT = 0;
+    public const ID_DEFAULT = 0;
 
     /**
      * @return void
      */
     public function afterImport()
     {
-        DataImporterPublisher::addImportedEntityEvents([
-            ProductLabelEvents::PRODUCT_LABEL_DICTIONARY_PUBLISH => [
-                static::ID_DEFAULT,
-            ],
-        ]);
+        DataImporterPublisher::addEvent(ProductLabelEvents::PRODUCT_LABEL_DICTIONARY_PUBLISH, static::ID_DEFAULT);
     }
 }
