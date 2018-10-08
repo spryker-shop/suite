@@ -112,7 +112,9 @@ class ProductPriceHydratorStep implements DataImportStepInterface
             ->setCurrency($currencyEntityTransfer)
             ->setStore($storeEntityTransfer)
             ->setNetPrice($dataSet[static::KEY_PRICE_NET])
-            ->setGrossPrice($dataSet[static::KEY_PRICE_GROSS]);
+            ->setGrossPrice($dataSet[static::KEY_PRICE_GROSS])
+            ->setPriceData($dataSet[static::KEY_PRICE_DATA])
+            ->setPriceDataChecksum($dataSet[static::KEY_PRICE_DATA_CHECKSUM]);
 
         return $priceProductStoreEntityTransfer;
     }

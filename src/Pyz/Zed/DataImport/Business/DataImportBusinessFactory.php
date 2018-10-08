@@ -702,8 +702,8 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductPriceHydratorStep::BULK_SIZE);
         $dataSetStepBroker
-            ->addStep(new ProductPriceHydratorStep())
-            ->addStep($this->createPreparePriceDataStep());
+            ->addStep($this->createPreparePriceDataStep())
+            ->addStep(new ProductPriceHydratorStep());
 
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
         $dataImporter->setDataSetWriter($this->createProductPriceDataImportWriters());

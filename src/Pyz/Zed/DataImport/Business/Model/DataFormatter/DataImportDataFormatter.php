@@ -73,4 +73,20 @@ class DataImportDataFormatter implements DataImportDataFormatterInterface
     {
         return array_column($collection, $key);
     }
+
+    /**
+     * @param array $values
+     *
+     * @return string
+     */
+    public function formatPostgresDirtyArrayFromJson(array $values): string
+    {
+        $dirtyArray = [];
+
+        foreach ($values as $value) {
+            $dirtyArray[] = $value ?: '';
+        }
+
+        return pg_escape_string(json_encode($dirtyArray));
+    }
 }
