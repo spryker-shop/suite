@@ -7,8 +7,11 @@ env:
     - PROJECT=suite
 
 branches:
-    except:
-    - ^.+\/.+\/.+\/
+  only:
+  - master
+  - /feature\/[a-z]+-\d+\/(master|dev).+/
+  - /(bugfix|hotfix)\/[a-z]+-\d+.+/
+  - /beta\/.+/
 
 #Possible travis events (push, pull_request, cron, or api)
 matrix:
@@ -107,7 +110,7 @@ before_script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console setup:search ; fi
 
 script:
-  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpstan analyze -c phpstan.neon -l 2 src/ ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpstan analyze -c phpstan.neon -l 4 src/ ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:phpstan -m Spryker.all ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:phpstan -m SprykerShop.all ; fi
 
