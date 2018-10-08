@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\DataImport\Business;
 
+use Pyz\Service\UtilEncoding\UtilEncodingServiceInterface;
 use Pyz\Zed\DataImport\Business\Model\CategoryTemplate\CategoryTemplateWriterStep;
 use Pyz\Zed\DataImport\Business\Model\CmsBlock\Category\Repository\CategoryRepository;
 use Pyz\Zed\DataImport\Business\Model\CmsBlock\CmsBlockWriterStep;
@@ -104,6 +105,7 @@ use Pyz\Zed\DataImport\Communication\Plugin\ProductImage\ProductImagePropelWrite
 use Pyz\Zed\DataImport\Communication\Plugin\ProductPrice\ProductPricePropelWriterPlugin;
 use Pyz\Zed\DataImport\Communication\Plugin\ProductStock\ProductStockPropelWriterPlugin;
 use Pyz\Zed\DataImport\DataImportDependencyProvider;
+use Pyz\Zed\PriceProduct\Business\PriceProductFacadeInterface;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\ProductSearch\Code\KeyBuilder\FilterGlossaryKeyBuilder;
 use Spryker\Zed\Currency\Business\CurrencyFacadeInterface;
@@ -1486,8 +1488,24 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     protected function createPreparePriceDataStep(): DataImportStepInterface
     {
         return new PreparePriceDataStep(
-            $this->getProvidedDependency(DataImportDependencyProvider::FACADE_PRICE_PRODUCT),
-            $this->getProvidedDependency(DataImportDependencyProvider::SERVICE_UTIL_ENCODING)
+            $this->getPriceProductFacade(),
+            $this->getUtilEncodingService()
         );
+    }
+
+    /**
+     * @return \Pyz\Zed\PriceProduct\Business\PriceProductFacadeInterface
+     */
+    public function getPriceProductFacade(): PriceProductFacadeInterface
+    {
+        return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_PRICE_PRODUCT);
+    }
+
+    /**
+     * @return \Pyz\Service\UtilEncoding\UtilEncodingServiceInterface
+     */
+    public function getUtilEncodingService(): UtilEncodingServiceInterface
+    {
+        return $this->getProvidedDependency(DataImportDependencyProvider::SERVICE_UTIL_ENCODING);
     }
 }
