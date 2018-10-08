@@ -14,7 +14,7 @@ use Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyUser\CompanyB
 use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyUser\CompanyRoleAttachCustomerFormExpanderPlugin;
 use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyUser\CompanyRoleCompanyUserTableConfigExpanderPlugin;
 use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyUser\CompanyRoleCompanyUserTablePrepareDataExpanderPlugin;
-use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyUser\CompanyRoleFromExpanderPlugin;
+use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyUser\CompanyRoleFormExpanderPlugin;
 use Spryker\Zed\CompanyUserGui\CompanyUserGuiDependencyProvider as SprykerCompanyUserGuiDependencyProvider;
 
 class CompanyUserGuiDependencyProvider extends SprykerCompanyUserGuiDependencyProvider
@@ -48,7 +48,7 @@ class CompanyUserGuiDependencyProvider extends SprykerCompanyUserGuiDependencyPr
     {
         return [
             new CompanyBusinessUnitFormExpanderPlugin(),
-            new CompanyRoleFromExpanderPlugin(),
+            new CompanyRoleFormExpanderPlugin(),
         ];
     }
 
