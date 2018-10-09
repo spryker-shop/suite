@@ -7,7 +7,7 @@
 
 namespace Pyz\Client\QuickOrder;
 
-use Spryker\Client\ProductMeasurementUnitStorage\Plugin\ProductConcreteMeasurementUnitExpanderPlugin;
+use Spryker\Client\ProductMeasurementUnitStorage\Plugin\ProductConcreteTransferBaseMeasurementUnitExpanderPlugin;
 use Spryker\Client\ProductQuantityStorage\Plugin\ProductConcreteQuantityRestrictionsExpanderPlugin;
 use Spryker\Client\QuickOrder\QuickOrderDependencyProvider as SprykerQuickOrderDependencyProvider;
 
@@ -19,7 +19,7 @@ class QuickOrderDependencyProvider extends SprykerQuickOrderDependencyProvider
     protected function getProductConcreteExpanderPlugins(): array
     {
         return [
-            new ProductConcreteMeasurementUnitExpanderPlugin(),
+            new ProductConcreteTransferBaseMeasurementUnitExpanderPlugin(),
             new ProductConcreteQuantityRestrictionsExpanderPlugin(),
         ];
     }
