@@ -22,6 +22,7 @@ use Spryker\Glue\CatalogSearchRestApi\Plugin\CatalogSearchResourceRoutePlugin;
 use Spryker\Glue\CatalogSearchRestApi\Plugin\CatalogSearchSuggestionsResourceRoutePlugin;
 use Spryker\Glue\CategoriesRestApi\Plugin\CategoriesResourceRoutePlugin;
 use Spryker\Glue\CategoriesRestApi\Plugin\CategoryResourceRoutePlugin;
+use Spryker\Glue\CheckoutRestApi\Plugin\CheckoutDataResourcePlugin;
 use Spryker\Glue\CustomersRestApi\CustomersRestApiConfig;
 use Spryker\Glue\CustomersRestApi\Plugin\AddressesResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\CustomerPasswordResourceRoutePlugin;
@@ -94,6 +95,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new ProductTaxSetsResourceRoutePlugin(),
             new CustomerPasswordResourceRoutePlugin(),
             new AddressesResourceRoutePlugin(),
+            new CheckoutDataResourcePlugin(),
         ];
     }
 
