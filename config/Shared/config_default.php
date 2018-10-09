@@ -30,9 +30,11 @@ use Spryker\Shared\NewRelic\NewRelicConstants;
 use Spryker\Shared\Oauth\OauthConstants;
 use Spryker\Shared\OauthCustomerConnector\OauthCustomerConnectorConstants;
 use Spryker\Shared\Oms\OmsConstants;
+use Spryker\Shared\PersistentCart\PersistentCartConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Queue\QueueConfig;
 use Spryker\Shared\Queue\QueueConstants;
+use Spryker\Shared\Quote\QuoteConstants;
 use Spryker\Shared\Sales\SalesConstants;
 use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\SequenceNumber\SequenceNumberConstants;
@@ -457,3 +459,9 @@ $config[MonitoringConstants::IGNORABLE_TRANSACTIONS] = [
     '_profiler',
     '_wdt',
 ];
+
+// ---------- PersistentCart
+$config[PersistentCartConstants::PERSISTENT_CART_ANONYMOUS_PREFIX] = 'anonymous:';
+
+// ---------- Guest cart
+$config[QuoteConstants::GUEST_CART_LIFETIME] = 'P01M';

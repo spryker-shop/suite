@@ -132,3 +132,13 @@ $jobs[] = [
     'stores' => $allStores,
 ];
 */
+
+/* Quote */
+$jobs[] = [
+    'name' => 'clean-expired-guest-cart',
+    'command' => '$PHP_BIN vendor/bin/console quote:guest-cart:clean-expired',
+    'schedule' => '30 1 * * *',
+    'enable' => true,
+    'run_on_non_production' => true,
+    'stores' => $allStores,
+];
