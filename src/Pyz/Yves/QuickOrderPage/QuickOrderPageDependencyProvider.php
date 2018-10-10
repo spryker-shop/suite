@@ -7,7 +7,7 @@
 
 namespace Pyz\Yves\QuickOrderPage;
 
-use Spryker\Client\ProductPackagingUnitStorage\Plugin\QuickOrder\QuickOrderItemTransferDefaultPackagingUnitExpanderPlugin;
+use Spryker\Client\ProductPackagingUnitStorage\Plugin\QuickOrder\QuickOrderItemDefaultPackagingUnitExpanderPlugin;
 use SprykerShop\Yves\MultiCartWidget\Plugin\QuickOrderPage\MultiCartListWidgetPlugin;
 use SprykerShop\Yves\ProductSearchWidget\Plugin\QuickOrderPage\QuickOrderPageProductSearchWidgetPlugin;
 use SprykerShop\Yves\QuickOrderPage\Plugin\QuickOrderFormAdditionalDataColumn\QuickOrderPageMeasurementUnitColumnProviderPlugin;
@@ -30,12 +30,12 @@ class QuickOrderPageDependencyProvider extends SprykerQuickOrderPageDependencyPr
     }
 
     /**
-     * @return \Spryker\Client\QuickOrderExtension\Dependency\Plugin\QuickOrderItemTransferExpanderPluginInterface[]
+     * @return \Spryker\Client\QuickOrderExtension\Dependency\Plugin\QuickOrderItemExpanderPluginInterface[]
      */
     protected function getQuickOrderItemTransferExpanderPlugins(): array
     {
         return [
-            new QuickOrderItemTransferDefaultPackagingUnitExpanderPlugin(),
+            new QuickOrderItemDefaultPackagingUnitExpanderPlugin(),
         ];
     }
 
