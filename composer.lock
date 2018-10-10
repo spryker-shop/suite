@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "499e3f5372892fd1332c313f91dcab4e",
+    "content-hash": "b114fb20ac1e9ba5d6d1966b01654af2",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -11416,6 +11416,48 @@
                 "proprietary"
             ],
             "description": "CustomerAccess module",
+            "time": "2018-10-10T09:18:10+00:00"
+        },
+        {
+            "name": "spryker/customer-access-gui",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/customer-access-gui.git",
+                "reference": "62cd16a42e6cc74776a8f3bbe5da9aea9f1ee933"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/customer-access-gui/zipball/62cd16a42e6cc74776a8f3bbe5da9aea9f1ee933",
+                "reference": "62cd16a42e6cc74776a8f3bbe5da9aea9f1ee933",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/customer-access": "^1.0.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CustomerAccessGui module",
             "time": "2018-10-10T09:18:10+00:00"
         },
         {
