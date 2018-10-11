@@ -83,45 +83,45 @@
     {% endembed %}
 
     <hr />
-    <form method="POST" action="/cart/add/{{sku}}">
+    <form method="POST" action="{{ path("cart/add", {"sku": sku}) }}">
         {% widget 'ProductOptionConfiguratorWidget' args [data.product] only %}
         {% elsewidget 'ProductOptionWidgetPlugin' args [data.product] only %} {# @deprecated Use ProductOptionConfiguratorWidget instead. #}
         {% endwidget %}
 
-        {% widget 'ProductPackagingUnitWidget' args [data.product, isDisabled, options] only %}
-        {% elsewidget 'ProductPackagingUnitWidgetPlugin' args [data.product, isDisabled, options] only %} {# @deprecated Use ProductPackagingUnitWidget instead. #}
-        {% elsewidget 'ManageProductMeasurementUnitWidget' args [data.product, isDisabled, options] only %}
-        {% elsewidget 'ProductMeasurementUnitWidgetPlugin' args [data.product, isDisabled, options] only %} {# @deprecated Use ManageProductMeasurementUnitWidget instead. #}
-        {% nowidget %}
-            <div class="grid grid--bottom grid--justify">
-                <div class="col col--sm-5">
-                    <label>
-                        {{'cart.item_quantity' | trans}}
-                        {% include atom('select') with {
-                            modifiers: ['expand'],
-                            data: {
-                                options: options
-                            },
-                            attributes: {
-                                name: 'quantity',
-                                disabled: isDisabled
-                            }
-                        } only %}
-                    </label>
-                </div>
+        {% if can('SeeAddToCartPermissionPlugin') %}
+            {% elsewidget 'ManageProductMeasurementUnitWidget' args [data.product, isDisabled, options] only %}
+            {% elsewidget 'ProductMeasurementUnitWidgetPlugin' args [data.product, isDisabled, options] only %} {# @deprecated Use ManageProductMeasurementUnitWidget instead. #}
+            {% nowidget %}
+                <div class="grid grid--bottom grid--justify">
+                    <div class="col col--sm-5">
+                        <label>
+                            {{'cart.item_quantity' | trans}}
+                            {% include atom('select') with {
+                                modifiers: ['expand'],
+                                data: {
+                                    options: options
+                                },
+                                attributes: {
+                                    name: 'quantity',
+                                    disabled: isDisabled
+                                }
+                            } only %}
+                        </label>
+                    </div>
 
-                <div class="col col--sm-6">
-                    <button type="submit" class="button button--success button--expand" {{ isDisabled ? 'disabled' : '' }} onclick="this.form.submit(); this.disabled='disabled'; return false;" {{qa('add-to-cart-button')}}>
-                        {% include atom('icon') with {
-                            data: {
-                                name: 'cart-plus'
-                            }
-                        } only %}
-                        {{ 'page.detail.add-to-cart' | trans }}
-                    </button>
+                    <div class="col col--sm-6">
+                        <button type="submit" class="button button--success button--expand" {{ isDisabled ? 'disabled' : '' }} onclick="this.form.submit(); this.disabled='disabled'; return false;" {{qa('add-to-cart-button')}}>
+                            {% include atom('icon') with {
+                                data: {
+                                    name: 'cart-plus'
+                                }
+                            } only %}
+                            {{ 'page.detail.add-to-cart' | trans }}
+                        </button>
+                    </div>
                 </div>
-            </div>
-        {% endwidget %}
+            {% endwidget %}
+        {% endif %}
 
         {% widget 'AddToMultiCartWidget' args [isDisabled] only %}
         {% elsewidget 'MultiCartWidgetPlugin' args [data.product, isDisabled] only %} {# @deprecated Use AddToMultiCartWidget instead. #}
@@ -139,7 +139,7 @@
         {% endif %}
     </form>
 
-    {% if isProductAvailable %}
+    {% if can('SeeShoppingListPermissionPlugin') and isProductAvailable %}
         {% widget 'AddToShoppingListWidget' args [sku, isDisabled] only %}
             {% block body %}
                 <hr />
@@ -153,13 +153,12 @@
         {% endwidget %}
     {% endif %}
 
-    {% if isProductAvailable %}
+    {% if can('SeeWishlistPermissionPlugin') and isProductAvailable %}
         {% if widgetExists('WishlistWidgetPlugin') %}
             <hr />
             {{ widget('WishlistWidgetPlugin', data.product) }} {# @deprecated Use molecule('wishlist-selector', 'WishlistWidget') instead. #}
         {% else %}
-            <hr />
-            {% include molecule('wishlist-selector', 'WishlistWidget') ignore missing with {
+            {% include molecule('wishlist-selector-for-pdp', 'WishlistWidget') ignore missing with {
                 data: {
                     sku: data.product.sku,
                     idProductConcrete: data.product.idProductConcrete | default
