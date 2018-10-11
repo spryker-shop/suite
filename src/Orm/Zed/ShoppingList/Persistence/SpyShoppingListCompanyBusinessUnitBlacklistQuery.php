@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Suite.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Orm\Zed\ShoppingList\Persistence;
 
 use Spryker\Zed\ShoppingList\Persistence\Propel\AbstractSpyShoppingListCompanyBusinessUnitBlacklistQuery as BaseSpyShoppingListCompanyBusinessUnitBlacklistQuery;

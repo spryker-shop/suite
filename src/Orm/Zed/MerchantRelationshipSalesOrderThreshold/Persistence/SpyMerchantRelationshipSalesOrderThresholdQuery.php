@@ -1,8 +1,13 @@
 <?php
 
+/**
+ * This file is part of the Spryker Suite.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Orm\Zed\MerchantRelationshipSalesOrderThreshold\Persistence;
 
-use Spryker\Zed\MerchantRelationshipSalesOrderThreshold\Persistence\Propel\AbstractSpyMerchantRelationshipSalesOrderThresholdQuery as BaseSpyMerchantRelationshipSalesOrderThresholdQuery;
+use Spryker\Zed\MerchantRelationshipSalesOrderThreshold\Persistence\Propel\AbstractSpyMerchantRelationshipSalesOrderThresholdQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_merchant_relationship_sales_order_threshold' table.
@@ -14,6 +19,6 @@ use Spryker\Zed\MerchantRelationshipSalesOrderThreshold\Persistence\Propel\Abstr
  * long as it does not already exist in the output directory.
  *
  */
-class SpyMerchantRelationshipSalesOrderThresholdQuery extends BaseSpyMerchantRelationshipSalesOrderThresholdQuery
+class SpyMerchantRelationshipSalesOrderThresholdQuery extends AbstractSpyMerchantRelationshipSalesOrderThresholdQuery
 {
 }
