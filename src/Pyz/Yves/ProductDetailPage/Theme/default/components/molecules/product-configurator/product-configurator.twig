@@ -89,7 +89,7 @@
         {% endwidget %}
 
         {% if can('SeeAddToCartPermissionPlugin') %}
-            {% elsewidget 'ManageProductMeasurementUnitWidget' args [data.product, isDisabled, options] only %}
+            {% widget 'ManageProductMeasurementUnitWidget' args [data.product, isDisabled, options] only %}
             {% elsewidget 'ProductMeasurementUnitWidgetPlugin' args [data.product, isDisabled, options] only %} {# @deprecated Use ManageProductMeasurementUnitWidget instead. #}
             {% nowidget %}
                 <div class="grid grid--bottom grid--justify">
