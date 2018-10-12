@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\DataImport\Business;
 
-use Pyz\Service\UtilEncoding\UtilEncodingServiceInterface;
 use Pyz\Zed\DataImport\Business\Model\CategoryTemplate\CategoryTemplateWriterStep;
 use Pyz\Zed\DataImport\Business\Model\CmsBlock\Category\Repository\CategoryRepository;
 use Pyz\Zed\DataImport\Business\Model\CmsBlock\CmsBlockWriterStep;
@@ -105,17 +104,16 @@ use Pyz\Zed\DataImport\Communication\Plugin\ProductImage\ProductImagePropelWrite
 use Pyz\Zed\DataImport\Communication\Plugin\ProductPrice\ProductPricePropelWriterPlugin;
 use Pyz\Zed\DataImport\Communication\Plugin\ProductStock\ProductStockPropelWriterPlugin;
 use Pyz\Zed\DataImport\DataImportDependencyProvider;
-use Pyz\Zed\PriceProduct\Business\PriceProductFacadeInterface;
+use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\ProductSearch\Code\KeyBuilder\FilterGlossaryKeyBuilder;
 use Spryker\Zed\Currency\Business\CurrencyFacadeInterface;
 use Spryker\Zed\DataImport\Business\DataImportBusinessFactory as SprykerDataImportBusinessFactory;
-use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterCollection;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
 use Spryker\Zed\Discount\DiscountConfig;
-use Spryker\Zed\PriceProductDataImport\Business\Model\Step\PreparePriceDataStep;
+use Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface;
 use Spryker\Zed\Stock\Business\StockFacadeInterface;
 use Spryker\Zed\Store\Business\StoreFacadeInterface;
 
@@ -704,8 +702,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductPriceHydratorStep::BULK_SIZE);
         $dataSetStepBroker
-            ->addStep($this->createPreparePriceDataStep())
-            ->addStep(new ProductPriceHydratorStep());
+            ->addStep(new ProductPriceHydratorStep(
+                $this->getPriceProductFacade(),
+                $this->getUtilEncodingService()
+            ));
 
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
         $dataImporter->setDataSetWriter($this->createProductPriceDataImportWriters());
@@ -1483,18 +1483,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     }
 
     /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
-     */
-    protected function createPreparePriceDataStep(): DataImportStepInterface
-    {
-        return new PreparePriceDataStep(
-            $this->getPriceProductFacade(),
-            $this->getUtilEncodingService()
-        );
-    }
-
-    /**
-     * @return \Pyz\Zed\PriceProduct\Business\PriceProductFacadeInterface
+     * @return \Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface
      */
     public function getPriceProductFacade(): PriceProductFacadeInterface
     {
@@ -1502,7 +1491,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     }
 
     /**
-     * @return \Pyz\Service\UtilEncoding\UtilEncodingServiceInterface
+     * @return \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface
      */
     public function getUtilEncodingService(): UtilEncodingServiceInterface
     {

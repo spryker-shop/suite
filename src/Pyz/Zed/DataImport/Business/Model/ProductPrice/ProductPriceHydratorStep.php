@@ -14,9 +14,12 @@ use Generated\Shared\Transfer\SpyPriceTypeEntityTransfer;
 use Generated\Shared\Transfer\SpyProductAbstractEntityTransfer;
 use Generated\Shared\Transfer\SpyProductEntityTransfer;
 use Generated\Shared\Transfer\SpyStoreEntityTransfer;
+use Pyz\Zed\DataImport\Business\Exception\InvalidPriceDataKeyException;
+use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
 use Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
+use Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface;
 
 class ProductPriceHydratorStep implements DataImportStepInterface
 {
@@ -49,6 +52,29 @@ class ProductPriceHydratorStep implements DataImportStepInterface
     public const PRICE_PRODUCT_TRANSFER = 'PRICE_PRODUCT_TRANSFER';
     public const KEY_PRICE_DATA = 'price_data';
     public const KEY_PRICE_DATA_CHECKSUM = 'price_data_checksum';
+    public const KEY_PRICE_DATA_PREFIX = 'price_data.';
+
+    /**
+     * @var \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface
+     */
+    protected $utilEncodingService;
+
+    /**
+     * @var \Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface
+     */
+    protected $priceProductFacade;
+
+    /**
+     * @param \Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface $priceProductFacade
+     * @param \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface $utilEncodingService
+     */
+    public function __construct(
+        PriceProductFacadeInterface $priceProductFacade,
+        UtilEncodingServiceInterface $utilEncodingService
+    ) {
+        $this->priceProductFacade = $priceProductFacade;
+        $this->utilEncodingService = $utilEncodingService;
+    }
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
@@ -57,6 +83,7 @@ class ProductPriceHydratorStep implements DataImportStepInterface
      */
     public function execute(DataSetInterface $dataSet): void
     {
+        $this->importPriceData($dataSet);
         $this->importPriceType($dataSet);
         $this->importProductPrice($dataSet);
     }
@@ -160,5 +187,97 @@ class ProductPriceHydratorStep implements DataImportStepInterface
         $productConcreteTransfer->setSku($dataSet[static::KEY_CONCRETE_SKU]);
 
         return $productConcreteTransfer;
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    protected function importPriceData(DataSetInterface $dataSet): void
+    {
+        $priceData = $this->getPriceData($dataSet);
+
+        if ($priceData === []) {
+            $dataSet[static::KEY_PRICE_DATA] = null;
+            $dataSet[static::KEY_PRICE_DATA_CHECKSUM] = null;
+
+            return;
+        }
+
+        $dataSet[static::KEY_PRICE_DATA] = $this->utilEncodingService->encodeJson($priceData);
+        $dataSet[static::KEY_PRICE_DATA_CHECKSUM] = $this->priceProductFacade->generatePriceDataChecksum($priceData);
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return array
+     */
+    protected function getPriceData(DataSetInterface $dataSet): array
+    {
+        $priceData = [];
+
+        foreach ($dataSet as $key => $value) {
+            if (!$this->isPriceDataKey($key)) {
+                continue;
+            }
+
+            $priceData = $this->addPriceDataValue($priceData, $this->getPriceDataKey($key), $dataSet[$key]);
+        }
+
+        return $priceData;
+    }
+
+    /**
+     * @param string $key
+     *
+     * @return bool
+     */
+    protected function isPriceDataKey(string $key): bool
+    {
+        return mb_strpos($key, static::KEY_PRICE_DATA_PREFIX) === 0;
+    }
+
+    /**
+     * @param string $key
+     *
+     * @throws \Pyz\Zed\DataImport\Business\Exception\InvalidPriceDataKeyException
+     *
+     * @return string
+     */
+    protected function getPriceDataKey(string $key): string
+    {
+        $keyParts = explode('.', $key);
+
+        if (count($keyParts) < 2) {
+            throw new InvalidPriceDataKeyException(
+                sprintf(
+                    'Price data key "%s" has invalid format. Should be in following format: "price_data.some_key"',
+                    $key
+                )
+            );
+        }
+
+        return $keyParts[1];
+    }
+
+    /**
+     * @param array $priceData
+     * @param string $key
+     * @param string $value
+     *
+     * @return array
+     */
+    protected function addPriceDataValue(array $priceData, string $key, string $value): array
+    {
+        if (empty($value)) {
+            return $priceData;
+        }
+
+        $priceData[$key] = $this->utilEncodingService
+            ->decodeJson($value, true);
+
+        return $priceData;
     }
 }
