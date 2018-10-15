@@ -109,7 +109,7 @@ class YvesBootstrap extends SprykerYvesBootstrap
         $this->application->register(new ShopControllerEventServiceProvider());
         $this->application->register(new ShopTwigServiceProvider());
         $this->application->register(new SprykerTwigServiceProvider());
-        $this->application->register(new WidgetServiceProvider()); // TODO: remove after code is refactored?
+        $this->application->register(new WidgetServiceProvider());
         $this->application->register(new WidgetTagServiceProvider());
         $this->application->register(new ShopApplicationServiceProvider());
         $this->application->register(new DateTimeFormatterServiceProvider());
