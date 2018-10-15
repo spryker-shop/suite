@@ -4962,33 +4962,37 @@
         },
         {
             "name": "spryker-shop/product-option-widget",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/product-option-widget.git",
-                "reference": "62bbfdc23c0f3e4b6bf214660915b9e7c37b617b"
+                "reference": "50b30567682c1a99fabf57dc8c71ace8643c5529"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/product-option-widget/zipball/62bbfdc23c0f3e4b6bf214660915b9e7c37b617b",
-                "reference": "62bbfdc23c0f3e4b6bf214660915b9e7c37b617b",
+                "url": "https://api.github.com/repos/spryker-shop/product-option-widget/zipball/50b30567682c1a99fabf57dc8c71ace8643c5529",
+                "reference": "50b30567682c1a99fabf57dc8c71ace8643c5529",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker-shop/shop-ui": "^1.0.0",
+                "spryker-shop/shopping-list-page-extension": "^1.1.0",
                 "spryker/kernel": "^3.16.0",
-                "spryker/product-option-storage": "^1.0.0"
+                "spryker/product-option-storage": "^1.0.0",
+                "spryker/symfony": "^3.0.0"
             },
             "require-dev": {
                 "spryker-shop/cart-page": "*",
                 "spryker-shop/product-detail-page": "*",
+                "spryker-shop/shopping-list-page": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
                 "spryker-shop/cart-page": "Widget plugins are available for this module.",
-                "spryker-shop/product-detail-page": "Widget plugins are available for this module."
+                "spryker-shop/product-detail-page": "Widget plugins are available for this module.",
+                "spryker-shop/shopping-list-page": "Widget plugins are available for this module."
             },
             "type": "library",
             "extra": {
@@ -5006,7 +5010,7 @@
                 "proprietary"
             ],
             "description": "ProductOptionWidget module",
-            "time": "2018-09-20T08:42:29+00:00"
+            "time": "2018-10-08T11:31:51+00:00"
         },
         {
             "name": "spryker-shop/product-packaging-unit-widget",
