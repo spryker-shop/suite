@@ -10,7 +10,7 @@ namespace Pyz\Yves\QuickOrderPage;
 use Spryker\Client\ProductPackagingUnitStorage\Plugin\QuickOrder\QuickOrderItemDefaultPackagingUnitExpanderPlugin;
 use SprykerShop\Yves\MultiCartWidget\Plugin\QuickOrderPage\MultiCartListWidgetPlugin;
 use SprykerShop\Yves\ProductSearchWidget\Plugin\QuickOrderPage\QuickOrderPageProductSearchWidgetPlugin;
-use SprykerShop\Yves\QuickOrderPage\Plugin\QuickOrderFormAdditionalDataColumn\QuickOrderPageMeasurementUnitColumnProviderPlugin;
+use SprykerShop\Yves\QuickOrderPage\Plugin\QuickOrder\QuickOrderFormMeasurementUnitColumnPlugin;
 use SprykerShop\Yves\QuickOrderPage\QuickOrderPageDependencyProvider as SprykerQuickOrderPageDependencyProvider;
 use SprykerShop\Yves\ShoppingListWidget\Plugin\QuickOrderPage\QuickOrderPageAddItemsToShoppingListWidgetPlugin;
 use SprykerShop\Yves\ShoppingListWidget\Plugin\QuickOrderPage\ShoppingListQuickOrderFormHandlerStrategyPlugin;
@@ -50,12 +50,12 @@ class QuickOrderPageDependencyProvider extends SprykerQuickOrderPageDependencyPr
     }
 
     /**
-     * @return \SprykerShop\Yves\QuickOrderPageExtension\Dependency\Plugin\QuickOrderFormAdditionalDataColumnProviderPluginInterface[]
+     * @return \SprykerShop\Yves\QuickOrderPageExtension\Dependency\Plugin\QuickOrderFormColumnPluginInterface[]
      */
-    protected function getQuickOrderFormAdditionalDataColumnProviderPlugins(): array
+    protected function getQuickOrderFormColumnPlugins(): array
     {
         return [
-            new QuickOrderPageMeasurementUnitColumnProviderPlugin(),
+            new QuickOrderFormMeasurementUnitColumnPlugin(),
         ];
     }
 }
