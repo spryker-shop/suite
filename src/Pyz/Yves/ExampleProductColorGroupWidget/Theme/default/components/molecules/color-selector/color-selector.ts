@@ -4,7 +4,7 @@ export default class ColorSelector extends Component {
     colors: HTMLAnchorElement[]
     images: HTMLImageElement[]
 
-    protected readyCallback(): void {
+    readyCallback(): void {
         this.colors = <HTMLAnchorElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__color`));
         this.images = <HTMLImageElement[]>Array.from(document.querySelectorAll(this.targetImageSelector));
         this.mapEvents();
