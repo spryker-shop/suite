@@ -7,8 +7,8 @@
 
 namespace Pyz\Glue\CheckoutRestApi;
 
-use Spryker\Client\CheckoutRestApi\Plugin\CartQuoteCollectionReaderPlugin;
 use Spryker\Glue\CheckoutRestApi\CheckoutRestApiDependencyProvider as SprykerCheckoutRestApiDependencyProvider;
+use Spryker\Glue\CheckoutRestApi\Plugin\QuoteCollectionReaderPlugin;
 use Spryker\Glue\CheckoutRestApiExtension\Dependency\Plugin\QuoteCollectionReaderPluginInterface;
 
 class CheckoutRestApiDependencyProvider extends SprykerCheckoutRestApiDependencyProvider
@@ -18,6 +18,6 @@ class CheckoutRestApiDependencyProvider extends SprykerCheckoutRestApiDependency
      */
     protected function getQuoteCollectionReaderPlugin(): QuoteCollectionReaderPluginInterface
     {
-        return new CartQuoteCollectionReaderPlugin();
+        return new QuoteCollectionReaderPlugin();
     }
 }
