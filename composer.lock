@@ -5669,16 +5669,16 @@
         },
         {
             "name": "spryker-shop/shop-application",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/shop-application.git",
-                "reference": "c61294a161eca82620bf989a879523fa88428d02"
+                "reference": "5da286b373f7a244118ba22181c30e5a5c07e4e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/shop-application/zipball/c61294a161eca82620bf989a879523fa88428d02",
-                "reference": "c61294a161eca82620bf989a879523fa88428d02",
+                "url": "https://api.github.com/repos/spryker-shop/shop-application/zipball/5da286b373f7a244118ba22181c30e5a5c07e4e1",
+                "reference": "5da286b373f7a244118ba22181c30e5a5c07e4e1",
                 "shasum": ""
             },
             "require": {
@@ -5719,7 +5719,7 @@
                 "proprietary"
             ],
             "description": "ShopApplication module",
-            "time": "2018-09-24T06:42:14+00:00"
+            "time": "2018-10-15T12:37:34+00:00"
         },
         {
             "name": "spryker-shop/shop-application-extension",
@@ -5766,16 +5766,16 @@
         },
         {
             "name": "spryker-shop/shop-permission",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/shop-permission.git",
-                "reference": "572602294d045e16387167da087a0bacff102ca4"
+                "reference": "77359d3a2fa0b678cabe015dd24dae898869cab6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/shop-permission/zipball/572602294d045e16387167da087a0bacff102ca4",
-                "reference": "572602294d045e16387167da087a0bacff102ca4",
+                "url": "https://api.github.com/repos/spryker-shop/shop-permission/zipball/77359d3a2fa0b678cabe015dd24dae898869cab6",
+                "reference": "77359d3a2fa0b678cabe015dd24dae898869cab6",
                 "shasum": ""
             },
             "require": {
@@ -5784,12 +5784,14 @@
                 "spryker/permission": "^1.0.0"
             },
             "require-dev": {
+                "spryker-shop/shop-application": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/silex": "^2.0.0",
                 "spryker/testify": "*",
                 "spryker/twig": "^3.0.0"
             },
             "suggest": {
+                "spryker-shop/shop-application": ">1.0.0 If you want to use the permission plugin for Twig",
                 "spryker/silex": ">2.0.0 If you want to use the permission plugin for Twig",
                 "spryker/twig": ">3.0.0 If you want to use the permission plugin for Twig"
             },
@@ -5809,7 +5811,7 @@
                 "proprietary"
             ],
             "description": "ShopPermission module",
-            "time": "2018-06-15T09:15:59+00:00"
+            "time": "2018-10-16T04:29:35+00:00"
         },
         {
             "name": "spryker-shop/shop-router",
@@ -25230,28 +25232,31 @@
         },
         {
             "name": "spryker/web-profiler",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/WebProfiler.git",
-                "reference": "e4c9a60956ce66d042ae3fdf8098ecb8f58d01fc"
+                "url": "https://github.com/spryker/web-profiler.git",
+                "reference": "1941017baadf5ebb8befdc349eaaebb897804d15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/WebProfiler/zipball/e4c9a60956ce66d042ae3fdf8098ecb8f58d01fc",
-                "reference": "e4c9a60956ce66d042ae3fdf8098ecb8f58d01fc",
+                "url": "https://api.github.com/repos/spryker/web-profiler/zipball/1941017baadf5ebb8befdc349eaaebb897804d15",
+                "reference": "1941017baadf5ebb8befdc349eaaebb897804d15",
                 "shasum": ""
             },
             "require": {
+                "php": ">=7.1",
                 "spryker/kernel": "^3.15.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
                 "spryker/silex": "*",
+                "spryker/symfony": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
-                "spryker/silex": "If you want to use ServiceProvider plugins."
+                "spryker/silex": "If you want to use ServiceProvider plugins.",
+                "spryker/symfony": "If you want to use the WebProfilerServiceProvider plugin."
             },
             "type": "library",
             "extra": {
@@ -25269,7 +25274,7 @@
                 "proprietary"
             ],
             "description": "WebProfiler module",
-            "time": "2018-01-10T11:59:45+00:00"
+            "time": "2018-10-15T11:57:03+00:00"
         },
         {
             "name": "spryker/wishlist",
@@ -30641,7 +30646,7 @@
             ],
             "authors": [
                 {
-                    "name": "Sullivan Sénéchal",
+                    "name": "Sullivan SENECHAL",
                     "email": "soullivaneuh@gmail.com"
                 }
             ],
