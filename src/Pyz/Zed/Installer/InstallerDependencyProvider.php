@@ -48,7 +48,6 @@ class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
             new CompanyUserInvitationStatusInstallerPlugin(), #BulkImportCompanyUserInvitationsFeature
             new ProductPackagingUnitTypeInstallerPlugin(),
             new OauthCustomerInstallerPlugin(),
-
             new UserLocaleInstallerPlugin(),
         ];
     }
