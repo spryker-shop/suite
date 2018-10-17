@@ -20,6 +20,7 @@ use SprykerShop\Yves\MultiCartWidget\Plugin\ShopUi\MiniCartWidgetPlugin;
 use SprykerShop\Yves\NavigationWidget\Plugin\ShopUi\NavigationWidgetPlugin;
 use SprykerShop\Yves\PriceWidget\Plugin\ShopUi\PriceModeSwitcherWidgetPlugin;
 use SprykerShop\Yves\ProductGroupWidget\Plugin\ShopUi\ProductGroupWidgetPlugin;
+use SprykerShop\Yves\ProductSearchWidget\Widget\ProductConcreteSearchWidget;
 use SprykerShop\Yves\ShopApplication\ShopApplicationDependencyProvider as SprykerShopApplicationDependencyProvider;
 use SprykerShop\Yves\ShoppingListWidget\Plugin\ShopUi\ShoppingListWidgetPlugin;
 
@@ -43,6 +44,16 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             MenuItemCompanyWidgetPlugin::class,
             AgentWidgetPlugin::class, #AgentFeature
             ShoppingListWidgetPlugin::class, #ShoppingListFeature
+        ];
+    }
+
+    /**
+     * @return string[]
+     */
+    protected function getGlobalWidgets(): array
+    {
+        return [
+            ProductConcreteSearchWidget::class,
         ];
     }
 

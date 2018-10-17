@@ -9,7 +9,6 @@ namespace Pyz\Yves\QuickOrderPage;
 
 use SprykerShop\Yves\MultiCartWidget\Plugin\QuickOrderPage\MultiCartListWidgetPlugin;
 use SprykerShop\Yves\ProductPackagingUnitWidget\Plugin\QuickOrder\QuickOrderItemDefaultPackagingUnitExpanderPlugin;
-use SprykerShop\Yves\ProductSearchWidget\Plugin\QuickOrderPage\QuickOrderPageProductSearchWidgetPlugin;
 use SprykerShop\Yves\QuickOrderPage\Plugin\QuickOrder\QuickOrderFormMeasurementUnitColumnPlugin;
 use SprykerShop\Yves\QuickOrderPage\QuickOrderPageDependencyProvider as SprykerQuickOrderPageDependencyProvider;
 use SprykerShop\Yves\ShoppingListWidget\Plugin\QuickOrderPage\QuickOrderPageAddItemsToShoppingListWidgetPlugin;
@@ -25,7 +24,6 @@ class QuickOrderPageDependencyProvider extends SprykerQuickOrderPageDependencyPr
         return [
             MultiCartListWidgetPlugin::class, #MultiCartFeature
             QuickOrderPageAddItemsToShoppingListWidgetPlugin::class, #ShoppingListFeature,
-            QuickOrderPageProductSearchWidgetPlugin::class,
         ];
     }
 
