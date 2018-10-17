@@ -18,6 +18,7 @@ use Spryker\Glue\CartsRestApi\Plugin\CartsResourceRoutePlugin;
 use Spryker\Glue\CartsRestApi\Plugin\GuestCartControllerBeforeActionPlugin;
 use Spryker\Glue\CartsRestApi\Plugin\GuestCartItemsResourceRoutePlugin;
 use Spryker\Glue\CartsRestApi\Plugin\GuestCartsResourceRoutePlugin;
+use Spryker\Glue\CartsRestApi\Plugin\GuestCartValidatorPlugin;
 use Spryker\Glue\CatalogSearchProductsResourceRelationship\Plugin\CatalogSearchAbstractProductsResourceRelationshipPlugin;
 use Spryker\Glue\CatalogSearchProductsResourceRelationship\Plugin\CatalogSearchSuggestionsAbstractProductsResourceRelationshipPlugin;
 use Spryker\Glue\CatalogSearchRestApi\CatalogSearchRestApiConfig;
@@ -111,6 +112,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     {
         return [
             new AccessTokenValidatorPlugin(),
+            new GuestCartValidatorPlugin(),
         ];
     }
 
