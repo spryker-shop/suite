@@ -597,8 +597,18 @@ customer.password.recovery.mail.sent,"If there is an account associated with thi
 customer.password.recovery.mail.sent,"Falls ein Konto für diese Emailaddresse existiert, werden Sie eine Email mit den weiteren Anweisungen bekommen",de_DE
 customer.address.number,Number,en_US
 customer.address.number,Nummer,de_DE
+countries.iso.AT,Austria,en_US
+countries.iso.AT,Österreich,de_DE
 countries.iso.DE,Germany,en_US
 countries.iso.DE,Deutschland,de_DE
+countries.iso.NO,Norway,en_US
+countries.iso.NO,Norwegen,de_DE
+countries.iso.CH,Switzerland,en_US
+countries.iso.CH,Schweiz,de_DE
+countries.iso.ES,Spain,en_US
+countries.iso.ES,Spanien,de_DE
+countries.iso.GB,United Kingdom,en_US
+countries.iso.GB,Großbritannien,de_DE
 customer.billingSameAsShipping,Billing address same as shipping address,en_US
 customer.billingSameAsShipping,Liefer- und Rechnungsadresse sind gleich,de_DE
 checkout.customer.proceed_as_user,Proceed as a registered user (sign up),en_US
@@ -665,6 +675,8 @@ discount.quote_change.discount.not_available,"The discounts you have chosen for 
 discount.quote_change.discount.not_available,"The discounts you have chosen for the following items skus is no longer available",de_DE
 discount.quote_change.discount.amount_changed,"The discounts you selected for the following items skus have changed",en_US
 discount.quote_change.discount.amount_changed,"The discounts you selected for the following items skus have changed",de_DE
+discount.quote_change.does_not_apply_for_currency,"Voucher ""%code%"" was disabled because it does not apply for this currency.",en_US
+discount.quote_change.does_not_apply_for_currency,"Der Gutschein mit dem Namen ""%code%"" wurde deaktiviert, da er nicht auf diese Währung anwendbar ist.",de_DE
 product.unavailable,Product '%sku%' is not available at the moment,en_US
 product.unavailable,Das Produkt '%sku%' ist momentan nicht verfügbar,de_DE
 product_bundle.unavailable,Product '%productSku%' in the Bundle Product '%bundleSku%' is not available at the moment,en_US
@@ -957,8 +969,6 @@ customer.order.bundled_items,Produkte in diesem Bündel:,de_DE
 customer.order.bundled_items,Items in the bundle:,en_US
 customer.order.options,Produktoptionen:,de_DE
 customer.order.options,Product options:,en_US
-countries.iso.AT,Österreich,de_DE
-countries.iso.AT,Austria,en_US
 cart.item.option.description,Product options:,en_US
 cart.item.option.description,Produktoptionen:,de_DE
 cart.item.sku,SKU,en_US
@@ -1351,6 +1361,10 @@ company.account.company_user.delete.confirmation.deleted_from_everywhere,It will
 company.account.company_user.delete.confirmation.deleted_from_everywhere,Es wird überall entfernt werden,de_DE
 company.account.company_user.delete,Delete,en_US
 company.account.company_user.delete,Löschen,de_DE
+company.account.company_user.edit_information,Edit user information,en_US
+customer.access.cannot_see_price,Please login to see the price,en_US
+customer.access.cannot_see_price,Bitte melden Sie sich an um den Preis zu sehen,de_DE
+company.account.company_user.edit_information,Benutzerinfomation bearbeiten,de_DE
 company.account.company_user.delete.back,Back,en_US
 company.account.company_user.delete.back,Zurück,de_DE
 company.account.company_user.edit_information,Edit user '%first_name% %last_name%',en_US
@@ -1615,6 +1629,8 @@ shared_cart_widget.cart.share,"Share cart",en_US
 shared_cart_widget.cart.share,"Warenkorb teilen",de_DE
 shared_cart_widget.cart.unshare,"Unshare cart",en_US
 shared_cart_widget.cart.unshare,"Freigabewagen wird aufgehoben",de_DE
+shared_cart_widget.cart.dismiss,Dismiss,en_US
+shared_cart_widget.cart.dismiss,Ablehnen,de_DE
 shared_cart_widget.share_list.shared_with,Cart shared with,en_US
 shared_cart_widget.share_list.shared_with,Warenkorb geteilt mit,de_DE
 shared_cart_widget.share_list.customer_name,Customer name,en_US
@@ -1661,6 +1677,18 @@ shared_cart_page.share.success,Cart was successfully shared,en_US
 shared_cart_page.share.success,Warenkorb wurde erfolgreich geteilt,de_DE
 shared_cart_page.unshare.success,Cart was successfully unshared,en_US
 shared_cart_page.unshare.success,Teilen des Warenkorbs wurde erfolgreich aufgehoben ,de_DE
+shared_cart_page.dismiss_confirmation.warning,Warning,en_US
+shared_cart_page.dismiss_confirmation.warning,Warnung,de_DE
+shared_cart.dismiss.title,Dismiss shared cart ‘quote_name’,en_US
+shared_cart.dismiss.title,Warenkorb ‘quote_name’ ablehnen,de_DE
+shared_cart_page.share.breadcrumbs.dismiss,Dismiss,en_US
+shared_cart_page.share.breadcrumbs.dismiss,Ablehnen,de_DE
+shared_cart_page.cart.dismiss,Dismiss,en_US
+shared_cart_page.cart.dismiss,Ablehnen,de_DE
+shared_cart_page.dismiss_confirmation.trying_to_dismiss,Are you sure that you what to dismiss shopping cart?,en_US
+shared_cart_page.dismiss_confirmation.trying_to_dismiss,"Sind Sie sicher, dass Sie den Warenkorb ablehnen wollen?",de_DE
+shared_cart_page.dismiss.success,Shopping cart was dismissed successfully.,en_US
+shared_cart_page.dismiss.success,Warenkorb wurde erfolgreich abgelehnt.,de_DE
 shopping_list.shopping_list,Shopping list,en_US
 shopping_list.shopping_list,Einkaufsliste,de_DE
 shopping_list.item_quantity,Anzahl,de_DE
@@ -1717,6 +1745,14 @@ customer.account.shopping_list.overview.share,Share,en_US
 customer.account.shopping_list.overview.share,Teilen,de_DE
 customer.account.shopping_list.overview.print,Print,en_US
 customer.account.shopping_list.overview.print,Drucken,de_DE
+customer.account.shopping_list.overview.dismiss,Dismiss,en_US
+customer.account.shopping_list.overview.dismiss,Ablehnen,de_DE
+shopping_list_page.dismiss_confirmation.trying_to_dismiss,"Are you sure that you what to dismiss shopping list?",en_US
+shopping_list_page.dismiss_confirmation.trying_to_dismiss,"Sind Sie sicher, dass Sie den Einkaufsliste ablehnen wollen?",de_DE
+shopping_list_page.dismiss.failed,Shopping list was not dismissed.,en_US
+shopping_list_page.dismiss.failed,Einkaufsliste wurde nicht abgelehnt,de_DE
+shopping_list_page.dismiss.success,Shopping list was dismissed successfully.,en_US
+shopping_list_page.dismiss.success,"Einkaufsliste wurde erfolgreich abgelehnt.",de_DE
 customer.account.shopping_list.share.from.share,Share,en_US
 customer.account.shopping_list.share.from.share,Teilen,de_DE
 customer.account.shopping_list.share.from.share_with,Share Shopping List with:,en_US
@@ -1849,6 +1885,14 @@ packaging_unit_type.giftbox.name,Giftbox,en_US
 packaging_unit_type.giftbox.name,Geschenkbox,de_DE
 packaging_unit_type.valentines_special.name,"Valentine's special",en_US
 packaging_unit_type.valentines_special.name,Valentinstag Geschenkbox,de_DE
+packaging_unit_type.pack_20.name,Pack 20,en_US
+packaging_unit_type.pack_20.name,Pack 20,de_DE
+packaging_unit_type.pack_500.name,Pack 500,en_US
+packaging_unit_type.pack_500.name,Pack 500,de_DE
+packaging_unit_type.pack_100.name,Pack 100,en_US
+packaging_unit_type.pack_100.name,Pack 100,de_DE
+packaging_unit_type.pack_mixed.name,Mixed Screws boxes,en_US
+packaging_unit_type.pack_mixed.name,Gemischte Schraubenkästen,de_DE
 business_on_behalf_widget.no_selected_company,No selected company,en_US
 business_on_behalf_widget.no_selected_company,Kein Unternehmen ausgewählt,de_DE
 business_on_behalf_widget.change_company_user,Change Company User,en_US
@@ -2143,6 +2187,8 @@ company.account.company_user.form.select_roles,Select roles,en_US
 company.account.company_user.form.select_roles,Rollen auswählen,de_DE
 company.account.company_user.form.select_business_unit,Select business unit,en_US
 company.account.company_user.form.select_business_unit,Wählen Sie die Geschäftseinheit aus,de_DE
+customer.account.shopping_list.remove_all,Remove all,en_US
+customer.account.shopping_list.remove_all,Alles entfernen,de_DE
 shopping_list_widget.items,Items,en_US
 shopping_list_widget.items,Artikel,de_DE
 shopping_list_widget.full_access,Full access,en_US
