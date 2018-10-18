@@ -16,24 +16,24 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class ProductImageHydratorStep extends PublishAwareStep implements DataImportStepInterface
 {
-    const KEY_LOCALE = 'locale';
-    const KEY_IMAGE_SET_NAME = 'image_set_name';
-    const KEY_IMAGE_SET_DB_NAME_COLUMN = 'name';
-    const KEY_ABSTRACT_SKU = 'abstract_sku';
-    const KEY_CONCRETE_SKU = 'concrete_sku';
-    const KEY_EXTERNAL_URL_LARGE = 'external_url_large';
-    const KEY_EXTERNAL_URL_SMALL = 'external_url_small';
-    const KEY_IMAGE_SET_FK_PRODUCT = 'fk_product';
-    const KEY_IMAGE_SET_RELATION_ID_PRODUCT_IMAGE_SET = 'id_product_image_set';
-    const KEY_IMAGE_SET_RELATION_ID_PRODUCT_IMAGE = 'id_product_image';
-    const KEY_IMAGE_SET_FK_RESOURCE_PRODUCT_SET = 'fk_resource_product_set';
-    const KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT = 'fk_product_abstract';
-    const KEY_IMAGE_SET_FK_LOCALE = 'fk_locale';
-    const KEY_SORT_ORDER = 'sort_order';
-    const IMAGE_TO_IMAGE_SET_RELATION_ORDER = 0;
-    const DATA_PRODUCT_IMAGE_SET_TRANSFER = 'DATA_PRODUCT_IMAGE_SET_TRANSFER';
-    const DATA_PRODUCT_IMAGE_TRANSFER = 'DATA_PRODUCT_IMAGE_TRANSFER';
-    const DATA_PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER = 'DATA_PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER';
+    public const KEY_LOCALE = 'locale';
+    public const KEY_IMAGE_SET_NAME = 'image_set_name';
+    public const KEY_IMAGE_SET_DB_NAME_COLUMN = 'name';
+    public const KEY_ABSTRACT_SKU = 'abstract_sku';
+    public const KEY_CONCRETE_SKU = 'concrete_sku';
+    public const KEY_EXTERNAL_URL_LARGE = 'external_url_large';
+    public const KEY_EXTERNAL_URL_SMALL = 'external_url_small';
+    public const KEY_IMAGE_SET_FK_PRODUCT = 'fk_product';
+    public const KEY_IMAGE_SET_RELATION_ID_PRODUCT_IMAGE_SET = 'id_product_image_set';
+    public const KEY_IMAGE_SET_RELATION_ID_PRODUCT_IMAGE = 'id_product_image';
+    public const KEY_IMAGE_SET_FK_RESOURCE_PRODUCT_SET = 'fk_resource_product_set';
+    public const KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT = 'fk_product_abstract';
+    public const KEY_IMAGE_SET_FK_LOCALE = 'fk_locale';
+    public const KEY_SORT_ORDER = 'sort_order';
+    public const IMAGE_TO_IMAGE_SET_RELATION_ORDER = 0;
+    public const DATA_PRODUCT_IMAGE_SET_TRANSFER = 'DATA_PRODUCT_IMAGE_SET_TRANSFER';
+    public const DATA_PRODUCT_IMAGE_TRANSFER = 'DATA_PRODUCT_IMAGE_TRANSFER';
+    public const DATA_PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER = 'DATA_PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER';
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
