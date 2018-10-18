@@ -8,6 +8,7 @@
 namespace Pyz\Zed\CompanyBusinessUnit;
 
 use Spryker\Zed\CompanyBusinessUnit\CompanyBusinessUnitDependencyProvider as SprykerCompanyBusinessUnitDependencyProvider;
+use Spryker\Zed\CompanyUnitAddress\Communication\Plugin\CompanyBusinessUnit\CompanyBusinessUnitAddressesCompanyBusinessUnitTransferExpanderPlugin;
 use Spryker\Zed\CompanyUnitAddress\Communication\Plugin\CompanyBusinessUnitAddressSaverPlugin;
 
 class CompanyBusinessUnitDependencyProvider extends SprykerCompanyBusinessUnitDependencyProvider
@@ -27,6 +28,8 @@ class CompanyBusinessUnitDependencyProvider extends SprykerCompanyBusinessUnitDe
      */
     protected function getCompanyBusinessUnitTransferExpanderPlugins(): array
     {
-        return [];
+        return [
+            new CompanyBusinessUnitAddressesCompanyBusinessUnitTransferExpanderPlugin(),
+        ];
     }
 }

@@ -11,7 +11,6 @@ use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Zed\BusinessOnBehalf\Communication\Plugin\Customer\DefaultCompanyUserCustomerTransferExpanderPlugin;
 use Spryker\Zed\BusinessOnBehalf\Communication\Plugin\Customer\IsOnBehalfCustomerTransferExpanderPlugin;
 use Spryker\Zed\CompanyRole\Communication\Plugin\PermissionCustomerExpanderPlugin;
-use Spryker\Zed\CompanyUnitAddress\Communication\Plugin\CompanyBusinessUnitAddressesCustomerTransferExpanderPlugin;
 use Spryker\Zed\CompanyUser\Communication\Plugin\Customer\CustomerTransferCompanyUserExpanderPlugin;
 use Spryker\Zed\CompanyUserInvitation\Communication\Plugin\CompanyUserInvitationPostCustomerRegistrationPlugin;
 use Spryker\Zed\Customer\CustomerDependencyProvider as SprykerCustomerDependencyProvider;
@@ -75,7 +74,6 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
             new IsOnBehalfCustomerTransferExpanderPlugin(), #BusinessOnBefalfFeature
             new DefaultCompanyUserCustomerTransferExpanderPlugin(), #BusinessOnBefalfFeature
             new ProductListCustomerTransferExpanderPlugin(),
-            new CompanyBusinessUnitAddressesCustomerTransferExpanderPlugin(), #CompanyUnitAddressFeature
         ];
     }
 
