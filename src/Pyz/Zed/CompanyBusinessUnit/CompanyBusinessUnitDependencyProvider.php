@@ -21,4 +21,12 @@ class CompanyBusinessUnitDependencyProvider extends SprykerCompanyBusinessUnitDe
             new CompanyBusinessUnitAddressSaverPlugin(),
         ];
     }
+
+    /**
+     * @return \Spryker\Zed\CompanyBusinessUnitExtension\Dependency\Plugin\CompanyBusinessUnitTransferExpanderPluginInterface[]
+     */
+    protected function getCompanyBusinessUnitTransferExpanderPlugins(): array
+    {
+        return [];
+    }
 }
