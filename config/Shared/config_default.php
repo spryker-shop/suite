@@ -39,6 +39,7 @@ use Spryker\Shared\SequenceNumber\SequenceNumberConstants;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\Storage\StorageConstants;
 use Spryker\Shared\Tax\TaxConstants;
+use Spryker\Shared\Translator\TranslatorConstants;
 use Spryker\Shared\Twig\TwigConstants;
 use Spryker\Shared\User\UserConstants;
 use Spryker\Shared\ZedNavigation\ZedNavigationConstants;
@@ -456,4 +457,9 @@ $config[FileManagerGuiConstants::DEFAULT_FILE_MAX_SIZE] = '10M';
 $config[MonitoringConstants::IGNORABLE_TRANSACTIONS] = [
     '_profiler',
     '_wdt',
+];
+
+// ----------- Translator
+$config[TranslatorConstants::FALLBACK_LOCALES] = [
+    'de_DE' => ['en_US'],
 ];

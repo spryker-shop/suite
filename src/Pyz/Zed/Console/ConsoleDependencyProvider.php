@@ -121,6 +121,8 @@ use Spryker\Zed\Synchronization\Communication\Console\ExportSynchronizedDataCons
 use Spryker\Zed\Transfer\Communication\Console\DataBuilderGeneratorConsole;
 use Spryker\Zed\Transfer\Communication\Console\GeneratorConsole;
 use Spryker\Zed\Transfer\Communication\Console\ValidatorConsole;
+use Spryker\Zed\Translator\Communication\Console\ClearTranslationCacheConsole;
+use Spryker\Zed\Translator\Communication\Console\GenerateTranslationCacheConsole;
 use Spryker\Zed\Twig\Communication\Console\CacheWarmerConsole;
 use Spryker\Zed\Twig\Communication\Plugin\ServiceProvider\TwigServiceProvider as SprykerTwigServiceProvider;
 use Spryker\Zed\WishlistsRestApi\Communication\Console\WishlistsUuidWriterConsole;
@@ -271,6 +273,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new ProductTaxSetsRestApiConsole(),
 
             new RestApiDocumentationGeneratorConsole(),
+
+            new ClearTranslationCacheConsole(),
+            new GenerateTranslationCacheConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
