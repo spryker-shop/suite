@@ -15,6 +15,7 @@ class CheckoutRestApiConfig extends SprykerCheckoutRestApiConfig
         'paymentMethod' => '',
         'paymentProvider' => '',
         'paymentSelection' => '',
+        'amount' => '',
     ];
 
     protected const PAYMENT_REQUIRED_DATA = [
