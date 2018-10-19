@@ -45,6 +45,7 @@ use Spryker\Zed\Session\Communication\Plugin\ServiceProvider\SessionServiceProvi
 use Spryker\Zed\Translator\Communication\Plugin\TranslatorTwigExtensionPlugin;
 use Spryker\Zed\Twig\Communication\Plugin\ServiceProvider\TwigServiceProvider as SprykerTwigServiceProvider;
 use Spryker\Zed\User\Communication\Plugin\ServiceProvider\UserServiceProvider;
+use Spryker\Zed\UserLocale\Communication\Plugin\ServiceProvider\UserLocaleServiceProvider;
 use Spryker\Zed\WebProfiler\Communication\Plugin\ServiceProvider\WebProfilerServiceProvider;
 use Spryker\Zed\ZedNavigation\Communication\Plugin\ServiceProvider\ZedNavigationServiceProvider;
 use Spryker\Zed\ZedRequest\Communication\Plugin\GatewayServiceProviderPlugin;
@@ -63,6 +64,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
         $providers = [
             new SessionServiceProvider(),
             new SprykerSessionServiceProvider(),
+            new UserLocaleServiceProvider(),
             new SslServiceProvider(),
             new AuthBootstrapProvider(),
             new AclBootstrapProvider(),
