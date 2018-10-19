@@ -16,6 +16,7 @@ use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\User\UserDependencyProvider as SprykerUserDependencyProvider;
 use Spryker\Zed\UserLocale\Communication\Plugin\AssignUserLocalePreSavePlugin;
 use Spryker\Zed\UserLocale\Communication\Plugin\UserLocaleTransferExpanderPlugin;
+use Spryker\Zed\UserLocaleGui\Communication\Plugin\UserLocaleFormExpanderPlugin;
 
 class UserDependencyProvider extends SprykerUserDependencyProvider
 {
@@ -50,6 +51,7 @@ class UserDependencyProvider extends SprykerUserDependencyProvider
     {
         return [
             new UserAgentFormExpanderPlugin(),
+            new UserLocaleFormExpanderPlugin(),
         ];
     }
 
