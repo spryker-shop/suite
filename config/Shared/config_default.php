@@ -464,4 +464,4 @@ $config[MonitoringConstants::IGNORABLE_TRANSACTIONS] = [
 $config[PersistentCartConstants::PERSISTENT_CART_ANONYMOUS_PREFIX] = 'anonymous:';
 
 // ---------- Guest cart
-$config[QuoteConstants::GUEST_CART_LIFETIME] = 'P01M';
+$config[QuoteConstants::GUEST_QUOTE_LIFETIME] = 'P01M';
