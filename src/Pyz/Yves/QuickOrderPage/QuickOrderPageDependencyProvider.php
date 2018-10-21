@@ -11,7 +11,6 @@ use SprykerShop\Yves\MultiCartWidget\Plugin\QuickOrderPage\MultiCartListWidgetPl
 use SprykerShop\Yves\ProductPackagingUnitWidget\Plugin\QuickOrder\QuickOrderItemDefaultPackagingUnitExpanderPlugin;
 use SprykerShop\Yves\QuickOrderPage\Plugin\QuickOrder\QuickOrderFormMeasurementUnitColumnPlugin;
 use SprykerShop\Yves\QuickOrderPage\QuickOrderPageDependencyProvider as SprykerQuickOrderPageDependencyProvider;
-use SprykerShop\Yves\ShoppingListWidget\Plugin\QuickOrderPage\QuickOrderPageAddItemsToShoppingListWidgetPlugin;
 use SprykerShop\Yves\ShoppingListWidget\Plugin\QuickOrderPage\ShoppingListQuickOrderFormHandlerStrategyPlugin;
 
 class QuickOrderPageDependencyProvider extends SprykerQuickOrderPageDependencyProvider
@@ -23,7 +22,6 @@ class QuickOrderPageDependencyProvider extends SprykerQuickOrderPageDependencyPr
     {
         return [
             MultiCartListWidgetPlugin::class, #MultiCartFeature
-            QuickOrderPageAddItemsToShoppingListWidgetPlugin::class, #ShoppingListFeature,
         ];
     }
 
