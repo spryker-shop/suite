@@ -9,7 +9,9 @@ namespace Pyz\Glue\CartsRestApi;
 
 use Spryker\Glue\CartsRestApi\CartsRestApiDependencyProvider as SprykerCartsRestApiDependencyProvider;
 use Spryker\Glue\CartsRestApi\Plugin\CartQuoteCollectionReaderPlugin;
+use Spryker\Glue\CartsRestApi\Plugin\SingleQuoteCreatorPlugin;
 use Spryker\Glue\CartsRestApiExtension\Dependency\Plugin\QuoteCollectionReaderPluginInterface;
+use Spryker\Glue\CartsRestApiExtension\Dependency\Plugin\QuoteCreatorPluginInterface;
 
 class CartsRestApiDependencyProvider extends SprykerCartsRestApiDependencyProvider
 {
@@ -19,5 +21,13 @@ class CartsRestApiDependencyProvider extends SprykerCartsRestApiDependencyProvid
     protected function getQuoteCollectionReaderPlugin(): QuoteCollectionReaderPluginInterface
     {
         return new CartQuoteCollectionReaderPlugin();
+    }
+
+    /**
+     * @return \Spryker\Glue\CartsRestApiExtension\Dependency\Plugin\QuoteCreatorPluginInterface
+     */
+    protected function getQuoteCreatorPlugin(): QuoteCreatorPluginInterface
+    {
+        return new SingleQuoteCreatorPlugin();
     }
 }
