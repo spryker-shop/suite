@@ -7,9 +7,9 @@
 
 namespace Pyz\Zed\RestRequestValidator;
 
-use Spryker\Zed\RestRequestValidator\RestRequestValidatorConfig as CoreRestRequestValidatorConfig;
+use Spryker\Zed\RestRequestValidator\RestRequestValidatorConfig as SprykerRestRequestValidatorConfig;
 
-class RestRequestValidatorConfig extends CoreRestRequestValidatorConfig
+class RestRequestValidatorConfig extends SprykerRestRequestValidatorConfig
 {
     /**
      * @project Only needed in internal nonsplit project, not in public split project.
