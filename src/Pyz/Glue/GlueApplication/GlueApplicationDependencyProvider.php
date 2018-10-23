@@ -15,6 +15,7 @@ use Spryker\Glue\CartItemsProductsRelationship\Plugin\CartItemsProductsRelations
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
 use Spryker\Glue\CartsRestApi\Plugin\CartItemsResourceRoutePlugin;
 use Spryker\Glue\CartsRestApi\Plugin\CartsResourceRoutePlugin;
+use Spryker\Glue\CartsRestApi\Plugin\DiscountResourceRoutePlugin;
 use Spryker\Glue\CatalogSearchProductsResourceRelationship\Plugin\CatalogSearchAbstractProductsResourceRelationshipPlugin;
 use Spryker\Glue\CatalogSearchProductsResourceRelationship\Plugin\CatalogSearchSuggestionsAbstractProductsResourceRelationshipPlugin;
 use Spryker\Glue\CatalogSearchRestApi\CatalogSearchRestApiConfig;
@@ -24,7 +25,9 @@ use Spryker\Glue\CategoriesRestApi\Plugin\CategoriesResourceRoutePlugin;
 use Spryker\Glue\CategoriesRestApi\Plugin\CategoryResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\CustomersRestApiConfig;
 use Spryker\Glue\CustomersRestApi\Plugin\AddressesResourceRoutePlugin;
+use Spryker\Glue\CustomersRestApi\Plugin\CustomerForgottenPasswordResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\CustomerPasswordResourceRoutePlugin;
+use Spryker\Glue\CustomersRestApi\Plugin\CustomerRestorePasswordResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\CustomersResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\CustomersToAddressesRelationshipPlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\SetCustomerBeforeActionPlugin;
@@ -80,6 +83,8 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new CategoriesResourceRoutePlugin(),
             new CategoryResourceRoutePlugin(),
             new CustomersResourceRoutePlugin(),
+            new CustomerForgottenPasswordResourceRoutePlugin(),
+            new CustomerRestorePasswordResourceRoutePlugin(),
             new AbstractProductsResourceRoutePlugin(),
             new ConcreteProductsResourceRoutePlugin(),
             new AbstractProductPricesRoutePlugin(),
@@ -94,6 +99,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new ProductTaxSetsResourceRoutePlugin(),
             new CustomerPasswordResourceRoutePlugin(),
             new AddressesResourceRoutePlugin(),
+            new DiscountResourceRoutePlugin(),
         ];
     }
 
