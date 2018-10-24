@@ -53,8 +53,11 @@ abstract class AbstractProductImageWriterTest extends AbstractWriterTest
             $dataSet[ProductImageHydratorStep::KEY_ABSTRACT_SKU] = $product[SpyProductAbstractTableMap::COL_SKU];
             $dataSet[ProductImageHydratorStep::KEY_CONCRETE_SKU] = '';
             $dataSet[ProductImageHydratorStep::KEY_LOCALE] = $locale->getLocaleName();
-            $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_SET_TRANSFER] = (new SpyProductImageSetEntityBuilder())
-                ->build()
+            /**
+             * @var \Generated\Shared\Transfer\SpyProductImageSetEntityTransfer
+             */
+            $spyProductImageSetEntityTransfer = (new SpyProductImageSetEntityBuilder())->build();
+            $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_SET_TRANSFER] = $spyProductImageSetEntityTransfer
                 ->setFkLocale($locale->getIdLocale())
                 ->setFkProductAbstract($product[SpyProductAbstractTableMap::COL_ID_PRODUCT_ABSTRACT]);
             $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_TRANSFER] = (new SpyProductImageEntityBuilder())->build();
