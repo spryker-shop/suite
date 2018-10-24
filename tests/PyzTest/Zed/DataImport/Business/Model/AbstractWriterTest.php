@@ -38,11 +38,12 @@ use Spryker\Zed\Store\Business\StoreFacadeInterface;
 abstract class AbstractWriterTest extends Unit
 {
     /**
-     * @return object|\Pyz\Zed\DataImport\Business\DataImportBusinessFactory
+     * @return \Pyz\Zed\DataImport\Business\DataImportBusinessFactory
      */
     protected function getDataImportBusinessFactoryStub()
     {
-        return Stub::make(DataImportBusinessFactory::class, [
+        /** @var \Pyz\Zed\DataImport\Business\DataImportBusinessFactory $dataImportBusinessFactory */
+        $dataImportBusinessFactory = Stub::make(DataImportBusinessFactory::class, [
             'getPropelConnection' => $this->getPropelConnection(),
             'getStore' => $this->getStore(),
             'getStoreFacade' => $this->getStoreFacade(),
@@ -51,14 +52,19 @@ abstract class AbstractWriterTest extends Unit
             'getProductBundleFacade' => $this->getProductBundleFacade(),
             'getAvailabilityFacade' => $this->getAvailabilityFacade(),
         ]);
+
+        return $dataImportBusinessFactory;
     }
 
     /**
-     * @return object|\Pyz\Zed\DataImport\DataImportConfig
+     * @return \Pyz\Zed\DataImport\DataImportConfig
      */
     public function getDataImportConfigStub()
     {
-        return Stub::make(DataImportConfig::class);
+        /** @var \Pyz\Zed\DataImport\DataImportConfig $dataImportConfig */
+        $dataImportConfig = Stub::make(DataImportConfig::class);
+
+        return $dataImportConfig;
     }
 
     /**
