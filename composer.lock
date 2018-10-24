@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "69af7c43005b4fc8cd1041bbcdd4f44f",
+    "content-hash": "dcc711f0c72c5540b192f3720f8b70ba",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -23666,6 +23666,57 @@
             ],
             "description": "ShoppingList module",
             "time": "2018-10-16T08:54:31+00:00"
+        },
+        {
+            "name": "spryker/shopping-list-data-import",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/shopping-list-data-import.git",
+                "reference": "94175b5e1727e317393aa04b1671dc11cd54c737"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/shopping-list-data-import/zipball/94175b5e1727e317393aa04b1671dc11cd54c737",
+                "reference": "94175b5e1727e317393aa04b1671dc11cd54c737",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/company-business-unit": "^1.0.0 || ^2.0.0",
+                "spryker/company-user": "^1.0.0 || ^2.0.0",
+                "spryker/customer": "^7.0.0",
+                "spryker/data-import": "^1.0.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/product": "^5.0.0 || ^6.0.0",
+                "spryker/shopping-list": "^1.0.0 || ^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/company": "*",
+                "spryker/permission": "*",
+                "spryker/propel": "*",
+                "spryker/propel-orm": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\ShoppingListDataImport\\Helper\\": "tests/SprykerTest/Zed/ShoppingListDataImport/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "ShoppingListDataImport module",
+            "time": "2018-10-22T11:14:12+00:00"
         },
         {
             "name": "spryker/shopping-list-extension",
