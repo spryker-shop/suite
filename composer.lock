@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "dcc711f0c72c5540b192f3720f8b70ba",
+    "content-hash": "87455a3bc22487c97078fdf5c9699b8f",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -12368,16 +12368,16 @@
         },
         {
             "name": "spryker/data-import",
-            "version": "1.4.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/data-import.git",
-                "reference": "68df262489d54450b81372b41f1e9905971be77f"
+                "reference": "4c680225842b637ddab67c2fcd07cd495091d825"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/data-import/zipball/68df262489d54450b81372b41f1e9905971be77f",
-                "reference": "68df262489d54450b81372b41f1e9905971be77f",
+                "url": "https://api.github.com/repos/spryker/data-import/zipball/4c680225842b637ddab67c2fcd07cd495091d825",
+                "reference": "4c680225842b637ddab67c2fcd07cd495091d825",
                 "shasum": ""
             },
             "require": {
@@ -12417,7 +12417,7 @@
                 "proprietary"
             ],
             "description": "DataImport module",
-            "time": "2018-10-02T06:35:14+00:00"
+            "time": "2018-10-24T13:22:31+00:00"
         },
         {
             "name": "spryker/data-import-extension",
@@ -13744,22 +13744,22 @@
         },
         {
             "name": "spryker/glue-application",
-            "version": "1.5.0",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/glue-application.git",
-                "reference": "b27ec90853fef5e17d7e1cb57884336f90cb320a"
+                "reference": "d2992a9db1504674c4480ff557fdb08b0f727625"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/glue-application/zipball/b27ec90853fef5e17d7e1cb57884336f90cb320a",
-                "reference": "b27ec90853fef5e17d7e1cb57884336f90cb320a",
+                "url": "https://api.github.com/repos/spryker/glue-application/zipball/d2992a9db1504674c4480ff557fdb08b0f727625",
+                "reference": "d2992a9db1504674c4480ff557fdb08b0f727625",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/application": "^3.0.0",
-                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/glue-application-extension": "^1.1.0",
                 "spryker/kernel": "^3.22.0",
                 "spryker/log": "^3.0.0",
                 "spryker/rest-api-documentation-generator-extension": "^0.1.0",
@@ -13795,20 +13795,20 @@
                 "proprietary"
             ],
             "description": "GlueApplication module",
-            "time": "2018-10-11T10:55:27+00:00"
+            "time": "2018-10-24T14:58:46+00:00"
         },
         {
             "name": "spryker/glue-application-extension",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/glue-application-extension.git",
-                "reference": "814394259c86e6728dfad5d9a952d8bf22bccd3f"
+                "reference": "8aaea8cb9779e51190922d6e48f0f27d105de0e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/glue-application-extension/zipball/814394259c86e6728dfad5d9a952d8bf22bccd3f",
-                "reference": "814394259c86e6728dfad5d9a952d8bf22bccd3f",
+                "url": "https://api.github.com/repos/spryker/glue-application-extension/zipball/8aaea8cb9779e51190922d6e48f0f27d105de0e1",
+                "reference": "8aaea8cb9779e51190922d6e48f0f27d105de0e1",
                 "shasum": ""
             },
             "require": {
@@ -13842,7 +13842,7 @@
                 "proprietary"
             ],
             "description": "GlueApplicationExtension module",
-            "time": "2018-07-11T08:13:38+00:00"
+            "time": "2018-10-09T14:36:03+00:00"
         },
         {
             "name": "spryker/graph",
@@ -22519,6 +22519,52 @@
             ],
             "description": "RestApiDocumentationGeneratorExtension module",
             "time": "2018-09-24T11:52:01+00:00"
+        },
+        {
+            "name": "spryker/rest-request-validator",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/rest-request-validator.git",
+                "reference": "c2998704444e4ed7b9a4b89a3c7c9fa2958e365c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/rest-request-validator/zipball/c2998704444e4ed7b9a4b89a3c7c9fa2958e365c",
+                "reference": "c2998704444e4ed7b9a4b89a3c7c9fa2958e365c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/config": "^3.0.0",
+                "spryker/glue-application": "^1.6.0",
+                "spryker/glue-application-extension": "^1.1.0",
+                "spryker/kernel": "^3.22.0",
+                "spryker/store": "^1.0.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "RestRequestValidator module",
+            "time": "2018-10-18T12:38:51+00:00"
         },
         {
             "name": "spryker/sales",
