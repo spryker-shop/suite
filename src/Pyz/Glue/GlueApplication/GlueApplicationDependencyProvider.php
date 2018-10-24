@@ -13,12 +13,12 @@ use Spryker\Glue\AuthRestApi\Plugin\FormatAuthenticationErrorResponseHeadersPlug
 use Spryker\Glue\AuthRestApi\Plugin\RefreshTokensResourceRoutePlugin;
 use Spryker\Glue\CartItemsProductsRelationship\Plugin\CartItemsProductsRelationshipPlugin;
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
-use Spryker\Glue\CartsRestApi\Plugin\CartItemsResourceRoutePlugin;
-use Spryker\Glue\CartsRestApi\Plugin\CartsResourceRoutePlugin;
-use Spryker\Glue\CartsRestApi\Plugin\GuestCartControllerBeforeActionPlugin;
-use Spryker\Glue\CartsRestApi\Plugin\GuestCartItemsResourceRoutePlugin;
-use Spryker\Glue\CartsRestApi\Plugin\GuestCartsResourceRoutePlugin;
-use Spryker\Glue\CartsRestApi\Plugin\GuestCartValidatorPlugin;
+use Spryker\Glue\CartsRestApi\Plugin\ControllerBeforeAction\SetAnonymousCustomerIdControllerBeforeActionPlugin;
+use Spryker\Glue\CartsRestApi\Plugin\ResourceRoute\CartItemsResourceRoutePlugin;
+use Spryker\Glue\CartsRestApi\Plugin\ResourceRoute\CartsResourceRoutePlugin;
+use Spryker\Glue\CartsRestApi\Plugin\ResourceRoute\GuestCartItemsResourceRoutePlugin;
+use Spryker\Glue\CartsRestApi\Plugin\ResourceRoute\GuestCartsResourceRoutePlugin;
+use Spryker\Glue\CartsRestApi\Plugin\Validator\AnonymousCustomerUniqueIdValidatorPlugin;
 use Spryker\Glue\CatalogSearchProductsResourceRelationship\Plugin\CatalogSearchAbstractProductsResourceRelationshipPlugin;
 use Spryker\Glue\CatalogSearchProductsResourceRelationship\Plugin\CatalogSearchSuggestionsAbstractProductsResourceRelationshipPlugin;
 use Spryker\Glue\CatalogSearchRestApi\CatalogSearchRestApiConfig;
@@ -116,7 +116,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     {
         return [
             new AccessTokenValidatorPlugin(),
-            new GuestCartValidatorPlugin(),
+            new AnonymousCustomerUniqueIdValidatorPlugin(),
         ];
     }
 
@@ -141,7 +141,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     {
         return [
             new SetStoreCurrentLocaleBeforeActionPlugin(),
-            new GuestCartControllerBeforeActionPlugin(),
+            new SetAnonymousCustomerIdControllerBeforeActionPlugin(),
             new SetCustomerBeforeActionPlugin(),
         ];
     }
