@@ -53,6 +53,7 @@ use Spryker\Glue\ProductsRestApi\Plugin\AbstractProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\ConcreteProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
 use Spryker\Glue\ProductTaxSetsRestApi\Plugin\ProductTaxSetsResourceRoutePlugin;
+use Spryker\Glue\RestRequestValidator\Plugin\ValidateRestRequestAttributesPlugin;
 use Spryker\Glue\StoresRestApi\Plugin\StoresResourceRoutePlugin;
 use Spryker\Glue\WishlistItemsProductsResourceRelationship\Plugin\WishlistItemsConcreteProductsResourceRelationshipPlugin;
 use Spryker\Glue\WishlistsRestApi\Plugin\WishlistItemsResourceRoutePlugin;
@@ -112,6 +113,18 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     {
         return [
             new AccessTokenValidatorPlugin(),
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\RestRequestValidatorPluginInterface[]
+     */
+    protected function getRestRequestValidatorPlugins(): array
+    {
+        return [
+            new ValidateRestRequestAttributesPlugin(),
         ];
     }
 
