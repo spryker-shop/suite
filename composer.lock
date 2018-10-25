@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "569f5ab5674962974821b153b9272df7",
+    "content-hash": "90b7a1e9e54e10b9b17e131849354fb7",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -2843,11 +2843,11 @@
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-bugfix/ps-1892-widget-name-constraint",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "f9740cb373deae01152175d376175d5a995af43c"
+                "reference": "168f8aafa2a6c1d9c5b3c9a2ca196b3f3934350e"
             },
             "require": {
                 "php": ">=7.1"
@@ -2922,7 +2922,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-10-23T19:26:06+00:00"
+            "time": "2018-10-25T13:22:06+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -6534,7 +6534,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-13T13:21:38+00:00"
+            "time": "2017-12-12T17:28:44+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -8312,9 +8312,10 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "36c09ed97a16cfaa6300b4bd36fe90e47eb008eb"
+                "reference": "781296647b91291698af1109d247ecdbc00bfd7f"
             },
             "require": {
+                "php": ">=7.1",
                 "spryker/development": "@stable",
                 "spryker/kernel": "^3.0.0",
                 "spryker/symfony": "^3.0.0"
@@ -8333,11 +8334,6 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "SprykerTest\\": "tests/SprykerTest/"
-                }
-            },
             "scripts": {
                 "cs-check": [
                     "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/"
@@ -8350,7 +8346,7 @@
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2018-09-13T18:30:38+00:00"
+            "time": "2018-10-25T14:03:19+00:00"
         },
         {
             "name": "spryker/git-hook",
