@@ -24,7 +24,9 @@ use Spryker\Glue\CategoriesRestApi\Plugin\CategoriesResourceRoutePlugin;
 use Spryker\Glue\CategoriesRestApi\Plugin\CategoryResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\CustomersRestApiConfig;
 use Spryker\Glue\CustomersRestApi\Plugin\AddressesResourceRoutePlugin;
+use Spryker\Glue\CustomersRestApi\Plugin\CustomerForgottenPasswordResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\CustomerPasswordResourceRoutePlugin;
+use Spryker\Glue\CustomersRestApi\Plugin\CustomerRestorePasswordResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\CustomersResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\CustomersToAddressesRelationshipPlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\SetCustomerBeforeActionPlugin;
@@ -50,6 +52,7 @@ use Spryker\Glue\ProductsRestApi\Plugin\AbstractProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\ConcreteProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
 use Spryker\Glue\ProductTaxSetsRestApi\Plugin\ProductTaxSetsResourceRoutePlugin;
+use Spryker\Glue\RestRequestValidator\Plugin\ValidateRestRequestAttributesPlugin;
 use Spryker\Glue\StoresRestApi\Plugin\StoresResourceRoutePlugin;
 use Spryker\Glue\WishlistItemsProductsResourceRelationship\Plugin\WishlistItemsConcreteProductsResourceRelationshipPlugin;
 use Spryker\Glue\WishlistsRestApi\Plugin\WishlistItemsResourceRoutePlugin;
@@ -80,6 +83,8 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new CategoriesResourceRoutePlugin(),
             new CategoryResourceRoutePlugin(),
             new CustomersResourceRoutePlugin(),
+            new CustomerForgottenPasswordResourceRoutePlugin(),
+            new CustomerRestorePasswordResourceRoutePlugin(),
             new AbstractProductsResourceRoutePlugin(),
             new ConcreteProductsResourceRoutePlugin(),
             new AbstractProductPricesRoutePlugin(),
@@ -106,6 +111,18 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     {
         return [
             new AccessTokenValidatorPlugin(),
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\RestRequestValidatorPluginInterface[]
+     */
+    protected function getRestRequestValidatorPlugins(): array
+    {
+        return [
+            new ValidateRestRequestAttributesPlugin(),
         ];
     }
 
