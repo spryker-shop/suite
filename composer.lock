@@ -4,23 +4,24 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ef73db9d7681299d938060ccc2488877",
+    "content-hash": "569f5ab5674962974821b153b9272df7",
     "packages": [
         {
             "name": "codeitnowin/barcode",
-            "version": "3.0.2",
+            "version": "3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeitnowin/barcode-generator.git",
-                "reference": "a84e923469a631e48723cd1cca21858605966904"
+                "reference": "6325a15ae904ec401b947e1a3e868de1c2cc80b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeitnowin/barcode-generator/zipball/a84e923469a631e48723cd1cca21858605966904",
-                "reference": "a84e923469a631e48723cd1cca21858605966904",
+                "url": "https://api.github.com/repos/codeitnowin/barcode-generator/zipball/6325a15ae904ec401b947e1a3e868de1c2cc80b0",
+                "reference": "6325a15ae904ec401b947e1a3e868de1c2cc80b0",
                 "shasum": ""
             },
             "require": {
+                "ext-gd": "*",
                 "php": ">=5.3.2"
             },
             "type": "library",
@@ -52,7 +53,7 @@
                 "qrcode",
                 "symfony"
             ],
-            "time": "2018-06-01T13:33:52+00:00"
+            "time": "2018-10-25T18:32:10+00:00"
         },
         {
             "name": "container-interop/container-interop",
@@ -1929,7 +1930,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -2562,11 +2563,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/glue-552/dev-guest-cart-api",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "d7f7073956ecbb03928d7b4da131b08f61fc36ba"
+                "reference": "193f5f31c5627609f58357eef06de009e714372f"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2839,7 +2840,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-10-25T15:23:10+00:00"
+            "time": "2018-10-25T19:55:26+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2847,7 +2848,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "f9740cb373deae01152175d376175d5a995af43c"
+                "reference": "74d7da8b3b0faa8e51c77eed3f2cab90b5e18b76"
             },
             "require": {
                 "php": ">=7.1"
@@ -2922,7 +2923,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-10-23T19:26:06+00:00"
+            "time": "2018-10-25T13:08:04+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -5925,12 +5926,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/bootstrap.git",
-                "reference": "a64071253a70fb31ca31762763f993859ff0b691"
+                "reference": "268816e3f1bb7426c3a4ceec2bd38a036b532543"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/bootstrap/zipball/a64071253a70fb31ca31762763f993859ff0b691",
-                "reference": "a64071253a70fb31ca31762763f993859ff0b691",
+                "url": "https://api.github.com/repos/nette/bootstrap/zipball/268816e3f1bb7426c3a4ceec2bd38a036b532543",
+                "reference": "268816e3f1bb7426c3a4ceec2bd38a036b532543",
                 "shasum": ""
             },
             "require": {
@@ -5993,7 +5994,7 @@
                 "configurator",
                 "nette"
             ],
-            "time": "2018-05-16T11:51:51+00:00"
+            "time": "2018-05-17T12:52:20+00:00"
         },
         {
             "name": "nette/di",
@@ -8312,9 +8313,10 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "36c09ed97a16cfaa6300b4bd36fe90e47eb008eb"
+                "reference": "781296647b91291698af1109d247ecdbc00bfd7f"
             },
             "require": {
+                "php": ">=7.1",
                 "spryker/development": "@stable",
                 "spryker/kernel": "^3.0.0",
                 "spryker/symfony": "^3.0.0"
@@ -8333,11 +8335,6 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "SprykerTest\\": "tests/SprykerTest/"
-                }
-            },
             "scripts": {
                 "cs-check": [
                     "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/"
@@ -8350,7 +8347,7 @@
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2018-09-13T18:30:38+00:00"
+            "time": "2018-10-25T14:03:19+00:00"
         },
         {
             "name": "spryker/git-hook",
