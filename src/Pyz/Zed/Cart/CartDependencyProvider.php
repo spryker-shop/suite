@@ -139,9 +139,9 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return \Spryker\Zed\CartExtension\Dependency\Plugin\ItemsPostReloadPluginInterface[]
+     * @return \Spryker\Zed\CartExtension\Dependency\Plugin\PostReloadItemsPluginInterface[]
      */
-    protected function getItemsPostReloadPlugins(Container $container): array
+    protected function getPostReloadItemsPlugins(Container $container): array
     {
         return [
             new AddThresholdMessagesCartPostReloadItemsPlugin(), #SalesOrderThresholdFeature
