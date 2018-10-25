@@ -2,7 +2,8 @@ namespace: PyzTest
 actor: Tester
 
 include:
-    - tests/PyzTest/*/*
+    - tests/PyzTest/Yves/Availability
+#    - tests/PyzTest/*/*
 #    - vendor/spryker/spryker/Bundles/*/*
 #    - vendor/spryker/spryker-shop/Bundles/*/*
 
@@ -34,4 +35,4 @@ extensions:
         Codeception\Extension\Phantoman:
             suites: ['Presentation']
         Codeception\Extension\RemoteDebug:
-            sessionName: PHPSTORM
+            sessionName: XDEBUG_ECLIPSE
