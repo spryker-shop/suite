@@ -2,10 +2,9 @@ namespace: PyzTest
 actor: Tester
 
 include:
-    - tests/PyzTest/Yves/Availability
-#    - tests/PyzTest/*/*
-#    - vendor/spryker/spryker/Bundles/*/*
-#    - vendor/spryker/spryker-shop/Bundles/*/*
+    - tests/PyzTest/*/*
+    - vendor/spryker/spryker/Bundles/*/*
+    - vendor/spryker/spryker-shop/Bundles/*/*
 
 paths:
     tests: tests
@@ -30,9 +29,6 @@ coverage:
 extensions:
     enabled:
         - Codeception\Extension\Phantoman
-        - Codeception\Extension\RemoteDebug
     config:
         Codeception\Extension\Phantoman:
             suites: ['Presentation']
-        Codeception\Extension\RemoteDebug:
-            sessionName: XDEBUG_ECLIPSE
