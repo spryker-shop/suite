@@ -13,7 +13,6 @@ use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\Mail\MailConstants;
 use Spryker\Shared\Newsletter\NewsletterConstants;
-use Spryker\Shared\PersistentCart\PersistentCartConstants;
 use Spryker\Shared\ProductManagement\ProductManagementConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Quote\QuoteConstants;
@@ -173,9 +172,6 @@ $config[ApplicationConstants::YVES_TRUSTED_HOSTS] = [
     $config[ApplicationConstants::HOST_ZED],
     'localhost',
 ];
-
-// ---------- PersistentCart
-$config[PersistentCartConstants::PERSISTENT_CART_ANONYMOUS_PREFIX] = 'anonymous:';
 
 // ---------- Guest cart
 $config[QuoteConstants::GUEST_QUOTE_LIFETIME] = 'P01M';
