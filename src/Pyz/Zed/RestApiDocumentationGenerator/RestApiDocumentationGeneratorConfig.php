@@ -16,9 +16,9 @@ class RestApiDocumentationGeneratorConfig extends SprykerRestApiDocumentationGen
      *
      * @return array
      */
-    protected function getCoreAnnotationsSourceDirectoryPatterns(): array
+    protected function getProjectAnnotationSourceDirectoryPatterns(): array
     {
-        $directoryPatterns = parent::getCoreAnnotationsSourceDirectoryPatterns();
+        $directoryPatterns = parent::getProjectAnnotationSourceDirectoryPatterns();
         $directoryPatterns[] = APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/%1$s/src/Spryker/Glue/%1$s/Controller/';
 
         return $directoryPatterns;
