@@ -52,26 +52,40 @@ abstract class AbstractProductAbstractWriterTest extends AbstractWriterTest
         $locale = $this->getLocale();
         for ($i = 0; $i < static::DATA_SET_COUNT; $i++) {
             $dataSet = new DataSet();
+            /**
+             * @var \Generated\Shared\Transfer\SpyProductAbstractEntityTransfer
+             */
             $spyProductAbstractEntityTransfer = (new SpyProductAbstractEntityBuilder())
-                ->build()
+                ->build();
+            $spyProductAbstractEntityTransfer
                 ->setFkTaxSet(1)
                 ->setAttributes('{"flash_range_tele":"4.2-4.9 ft","color":"Red"}');
             $dataSet[ProductAbstractHydratorStep::DATA_PRODUCT_ABSTRACT_TRANSFER] = $spyProductAbstractEntityTransfer;
+
+            /**
+             * @var \Generated\Shared\Transfer\SpyProductAbstractLocalizedAttributesEntityTransfer
+             */
+            $productAbstractLocalizedAttributesEntityTransfer = (new SpyProductAbstractLocalizedAttributesEntityBuilder())
+                ->build();
+            $productAbstractLocalizedAttributesEntityTransfer
+                ->setFkLocale($locale->getIdLocale())
+                ->setAttributes('{"flash_range_tele":"4.2-4.9 ft","color":"Red"}');
             $dataSet[ProductAbstractHydratorStep::DATA_PRODUCT_ABSTRACT_LOCALIZED_TRANSFER] = [
                 [
                     'abstract_sku' => $spyProductAbstractEntityTransfer->getSku(),
-                    'localizedAttributeTransfer' => (new SpyProductAbstractLocalizedAttributesEntityBuilder())
-                        ->build()
-                        ->setFkLocale($locale->getIdLocale())
-                        ->setAttributes('{"flash_range_tele":"4.2-4.9 ft","color":"Red"}'),
+                    'localizedAttributeTransfer' => $productAbstractLocalizedAttributesEntityTransfer,
                 ],
             ];
+            /**
+             * @var \Generated\Shared\Transfer\SpyUrlEntityTransfer
+             */
+            $urlEntityTransfer = (new SpyUrlEntityBuilder())->build();
+            $urlEntityTransfer
+                ->setFkLocale($locale->getIdLocale());
             $dataSet[ProductAbstractHydratorStep::DATA_PRODUCT_URL_TRANSFER] = [
                 [
                     'abstract_sku' => $spyProductAbstractEntityTransfer->getSku(),
-                    'urlTransfer' => (new SpyUrlEntityBuilder())
-                        ->build()
-                        ->setFkLocale($locale->getIdLocale()),
+                    'urlTransfer' => $urlEntityTransfer,
                 ],
             ];
             $dataSet[ProductAbstractHydratorStep::DATA_PRODUCT_CATEGORY_TRANSFER] = [
