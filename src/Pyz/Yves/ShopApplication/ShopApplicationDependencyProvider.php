@@ -16,17 +16,7 @@ use SprykerShop\Yves\CartToShoppingListWidget\Widget\CreateShoppingListFromCartW
 use SprykerShop\Yves\CheckoutWidget\Widget\CheckoutBreadcrumbWidget;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CheckBusinessOnBehalfCompanyUserHandlerPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyUserRestrictionHandlerPlugin;
-<<<<<<< HEAD
-use SprykerShop\Yves\CompanyWidget\Plugin\ShopUi\MenuItemCompanyWidgetPlugin;
 use SprykerShop\Yves\CompanyWidget\Widget\CompanyBusinessUnitAddressWidget;
-use SprykerShop\Yves\CurrencyWidget\Plugin\ShopUi\CurrencyWidgetPlugin;
-use SprykerShop\Yves\CustomerPage\Plugin\CustomerPage\CustomerNavigationWidgetPlugin;
-use SprykerShop\Yves\LanguageSwitcherWidget\Plugin\ShopUi\LanguageSwitcherWidgetPlugin;
-use SprykerShop\Yves\MultiCartWidget\Plugin\ShopUi\MiniCartWidgetPlugin;
-use SprykerShop\Yves\NavigationWidget\Plugin\ShopUi\NavigationWidgetPlugin;
-use SprykerShop\Yves\PriceWidget\Plugin\ShopUi\PriceModeSwitcherWidgetPlugin;
-use SprykerShop\Yves\ProductGroupWidget\Plugin\ShopUi\ProductGroupWidgetPlugin;
-=======
 use SprykerShop\Yves\CompanyWidget\Widget\CompanyMenuItemWidget;
 use SprykerShop\Yves\CurrencyWidget\Widget\CurrencyWidget;
 use SprykerShop\Yves\CustomerPage\Widget\CustomerNavigationWidget;
@@ -81,7 +71,6 @@ use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartDetailsWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartOperationsWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartPermissionGroupWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartShareWidget;
->>>>>>> origin/master
 use SprykerShop\Yves\ShopApplication\ShopApplicationDependencyProvider as SprykerShopApplicationDependencyProvider;
 use SprykerShop\Yves\ShoppingListNoteWidget\Widget\ShoppingListItemNoteWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\AddToShoppingListWidget;
@@ -163,6 +152,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CheckoutVoucherFormWidget::class,
             WishlistMenuItemWidget::class,
             WishlistProductAlternativeWidget::class,
+            CompanyBusinessUnitAddressWidget::class,
         ];
     }
 
@@ -174,16 +164,6 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
         return [
             new CompanyUserRestrictionHandlerPlugin(),
             new CheckBusinessOnBehalfCompanyUserHandlerPlugin(), #BusinessOnBehalfFeature
-        ];
-    }
-
-    /**
-     * @return array
-     */
-    protected function getGlobalWidgets(): array
-    {
-        return [
-            CompanyBusinessUnitAddressWidget::class,
         ];
     }
 }
