@@ -10,13 +10,9 @@ namespace Pyz\Yves\ShoppingListPage;
 use Spryker\Client\AvailabilityStorage\Plugin\ProductViewAvailabilityStorageExpanderPlugin;
 use Spryker\Client\PriceProductStorage\Plugin\ProductViewPriceExpanderPlugin;
 use Spryker\Client\ProductImageStorage\Plugin\ProductViewImageExpanderPlugin;
-use SprykerShop\Yves\ProductAlternativeWidget\Plugin\ShoppingListPage\ProductAlternativeWidgetPlugin;
-use SprykerShop\Yves\ProductBarcodeWidget\Plugin\ShoppingList\ProductBarcodeWidgetPlugin;
-use SprykerShop\Yves\ProductDiscontinuedWidget\Plugin\ShoppingListPage\ProductDiscontinuedWidgetPlugin;
 use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionFormDataProviderMapperPlugin;
 use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionFormExpanderPlugin;
 use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionWidgetPlugin;
-use SprykerShop\Yves\ShoppingListNoteWidget\Plugin\ShoppingListItemNoteWidgetPlugin;
 use SprykerShop\Yves\ShoppingListNoteWidget\Plugin\ShoppingListPage\ShoppingListItemNoteFormExpanderPlugin;
 use SprykerShop\Yves\ShoppingListPage\ShoppingListPageDependencyProvider as SprykerShoppingListPageDependencyProvider;
 
@@ -35,17 +31,6 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
     }
 
     /**
-     * @return string[]
-     */
-    protected function getShoppingListWidgetPlugins(): array
-    {
-        return [
-            ProductBarcodeWidgetPlugin::class,
-            ShoppingListItemNoteWidgetPlugin::class, #ShoppingListNoteFeature
-        ];
-    }
-
-    /**
      * Returns a list of widget plugin class names that implement
      * \Spryker\Yves\Kernel\Dependency\Plugin\WidgetPluginInterface.
      *
@@ -54,9 +39,6 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
     protected function getShoppingListViewWidgetPlugins(): array
     {
         return [
-            ProductAlternativeWidgetPlugin::class, #ProductAlternativeFeature
-            ProductDiscontinuedWidgetPlugin::class, #ProductDiscontinuedFeature
-            ShoppingListItemNoteWidgetPlugin::class, #ShoppingListNoteFeature
             ShoppingListItemProductOptionWidgetPlugin::class,
         ];
     }
@@ -79,20 +61,6 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
     {
         return [
             new ShoppingListItemProductOptionFormDataProviderMapperPlugin(),
-        ];
-    }
-
-    /**
-     * Returns a list of widget plugin class names that implement
-     * \Spryker\Yves\Kernel\Dependency\Plugin\WidgetPluginInterface.
-     *
-     * @return string[]
-     */
-    protected function getShoppingListEditWidgetPlugins(): array
-    {
-        return [
-            ProductAlternativeWidgetPlugin::class, #ProductAlternativeFeature
-            ProductDiscontinuedWidgetPlugin::class, #ProductDiscontinuedFeature
         ];
     }
 }
