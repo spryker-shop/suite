@@ -8856,16 +8856,16 @@
         },
         {
             "name": "spryker/cms-block",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cms-block.git",
-                "reference": "0176d28bf4a35c6f26ced1840232b67abb709412"
+                "reference": "1550cc3023619f7136e8e1155bfb1016cfa6382e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-block/zipball/0176d28bf4a35c6f26ced1840232b67abb709412",
-                "reference": "0176d28bf4a35c6f26ced1840232b67abb709412",
+                "url": "https://api.github.com/repos/spryker/cms-block/zipball/1550cc3023619f7136e8e1155bfb1016cfa6382e",
+                "reference": "1550cc3023619f7136e8e1155bfb1016cfa6382e",
                 "shasum": ""
             },
             "require": {
@@ -8909,7 +8909,7 @@
                 "proprietary"
             ],
             "description": "CmsBlock module",
-            "time": "2018-10-12T07:26:44+00:00"
+            "time": "2018-10-25T05:34:19+00:00"
         },
         {
             "name": "spryker/cms-block-category-connector",
@@ -14528,30 +14528,29 @@
         },
         {
             "name": "spryker/mail",
-            "version": "4.0.2",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/mail.git",
-                "reference": "d17ceea63b847a1c1c99b608fd8089849bddc00d"
+                "reference": "168e9b2ca9ce22806b7bbdf6bb2604b58aac60d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/mail/zipball/d17ceea63b847a1c1c99b608fd8089849bddc00d",
-                "reference": "d17ceea63b847a1c1c99b608fd8089849bddc00d",
+                "url": "https://api.github.com/repos/spryker/mail/zipball/168e9b2ca9ce22806b7bbdf6bb2604b58aac60d7",
+                "reference": "168e9b2ca9ce22806b7bbdf6bb2604b58aac60d7",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/glossary": "^3.0.0",
-                "spryker/kernel": "^3.0.0"
+                "spryker/kernel": "^3.0.0",
+                "swiftmailer/swiftmailer": "^5.4.5 || ^6.1"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
                 "spryker/testify": "*",
                 "spryker/twig": "*"
-            },
-            "suggest": {
-                "swiftmailer/swiftmailer": "Recommended to use this package as default mailer."
             },
             "type": "library",
             "extra": {
@@ -14569,7 +14568,7 @@
                 "proprietary"
             ],
             "description": "Mail module",
-            "time": "2018-02-07T09:40:41+00:00"
+            "time": "2018-10-19T11:24:52+00:00"
         },
         {
             "name": "spryker/maintenance",
