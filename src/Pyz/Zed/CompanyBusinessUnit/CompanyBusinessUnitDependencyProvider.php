@@ -10,6 +10,7 @@ namespace Pyz\Zed\CompanyBusinessUnit;
 use Spryker\Zed\CompanyBusinessUnit\CompanyBusinessUnitDependencyProvider as SprykerCompanyBusinessUnitDependencyProvider;
 use Spryker\Zed\CompanyUnitAddress\Communication\Plugin\CompanyBusinessUnit\CompanyBusinessUnitAddressesCompanyBusinessUnitExpanderPlugin;
 use Spryker\Zed\CompanyUnitAddress\Communication\Plugin\CompanyBusinessUnitAddressSaverPlugin;
+use Spryker\Zed\ShoppingList\Communication\Plugin\CompanyBusinessUnit\CompanyBusinessUnitPreDeletePlugin;
 
 class CompanyBusinessUnitDependencyProvider extends SprykerCompanyBusinessUnitDependencyProvider
 {
@@ -24,12 +25,21 @@ class CompanyBusinessUnitDependencyProvider extends SprykerCompanyBusinessUnitDe
     }
 
     /**
+<<<<<<< HEAD
      * @return \Spryker\Zed\CompanyBusinessUnitExtension\Dependency\Plugin\CompanyBusinessUnitExpanderPluginInterface[]
      */
     protected function getCompanyBusinessUnitExpanderPlugins(): array
     {
         return [
             new CompanyBusinessUnitAddressesCompanyBusinessUnitExpanderPlugin(),
+=======
+     * @return \Spryker\Zed\CompanyBusinessUnitExtension\Dependency\Plugin\CompanyBusinessUnitPreDeletePluginInterface[]
+     */
+    protected function getCompanyBusinessUnitPreDeletePlugins(): array
+    {
+        return [
+            new CompanyBusinessUnitPreDeletePlugin(),
+>>>>>>> origin/master
         ];
     }
 }
