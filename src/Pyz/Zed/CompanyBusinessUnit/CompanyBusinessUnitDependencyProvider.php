@@ -25,21 +25,22 @@ class CompanyBusinessUnitDependencyProvider extends SprykerCompanyBusinessUnitDe
     }
 
     /**
-<<<<<<< HEAD
      * @return \Spryker\Zed\CompanyBusinessUnitExtension\Dependency\Plugin\CompanyBusinessUnitExpanderPluginInterface[]
      */
     protected function getCompanyBusinessUnitExpanderPlugins(): array
     {
         return [
             new CompanyBusinessUnitAddressesCompanyBusinessUnitExpanderPlugin(),
-=======
+        ];
+    }
+
+    /**
      * @return \Spryker\Zed\CompanyBusinessUnitExtension\Dependency\Plugin\CompanyBusinessUnitPreDeletePluginInterface[]
      */
     protected function getCompanyBusinessUnitPreDeletePlugins(): array
     {
         return [
             new CompanyBusinessUnitPreDeletePlugin(),
->>>>>>> origin/master
         ];
     }
 }
