@@ -17,6 +17,7 @@ use SprykerShop\Yves\CheckoutWidget\Widget\CheckoutBreadcrumbWidget;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CheckBusinessOnBehalfCompanyUserHandlerPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyBusinessUnitControllerRestrictionPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyUserRestrictionHandlerPlugin;
+use SprykerShop\Yves\CompanyWidget\Widget\CompanyBusinessUnitAddressWidget;
 use SprykerShop\Yves\CompanyWidget\Widget\CompanyMenuItemWidget;
 use SprykerShop\Yves\CurrencyWidget\Widget\CurrencyWidget;
 use SprykerShop\Yves\CustomerPage\Widget\CustomerNavigationWidget;
@@ -152,6 +153,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CheckoutVoucherFormWidget::class,
             WishlistMenuItemWidget::class,
             WishlistProductAlternativeWidget::class,
+            CompanyBusinessUnitAddressWidget::class,
         ];
     }
 
