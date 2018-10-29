@@ -33,6 +33,7 @@ use Spryker\Shared\Oms\OmsConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Queue\QueueConfig;
 use Spryker\Shared\Queue\QueueConstants;
+use Spryker\Shared\Quote\QuoteConstants;
 use Spryker\Shared\Sales\SalesConstants;
 use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\SequenceNumber\SequenceNumberConstants;
@@ -78,7 +79,7 @@ $config[PropelConstants::ZED_DB_SUPPORTED_ENGINES] = [
     PropelConfig::DB_ENGINE_MYSQL => 'MySql',
     PropelConfig::DB_ENGINE_PGSQL => 'PostgreSql',
 ];
-$config[PropelConstants::SCHEMA_FILE_PATH_PATTERN] = APPLICATION_VENDOR_DIR . '/*/*/src/*/Zed/*/Persistence/Propel/Schema/';
+
 $config[PropelConstants::USE_SUDO_TO_MANAGE_DATABASE] = true;
 $config[PropelConstants::PROPEL_DEBUG] = false;
 
@@ -409,7 +410,7 @@ $config[EventConstants::EVENT_CHUNK] = 500;
 $config[EventBehaviorConstants::EVENT_BEHAVIOR_TRIGGERING_ACTIVE] = true;
 
 // ---------- Customer
-$config[CustomerConstants::CUSTOMER_SECURED_PATTERN] = '(^/login_check$|^(/en|/de)?/customer|^(/en|/de)?/wishlist|^(/en|/de)?/shopping-list|^(/en|/de)?/company(?!/register)|^(/en|/de)?/multi-cart|^(/en|/de)?/shared-cart)';
+$config[CustomerConstants::CUSTOMER_SECURED_PATTERN] = '(^/login_check$|^(/en|/de)?/customer|^(/en|/de)?/wishlist|^(/en|/de)?/shopping-list|^(/en|/de)?/company(?!/register)|^(/en|/de)?/multi-cart|^(/en|/de)?/shared-cart|^(/en|/de)?/cart(?!/add)|^(/en|/de)?/checkout)';
 $config[CustomerConstants::CUSTOMER_ANONYMOUS_PATTERN] = '^/.*';
 
 // ---------- Taxes
@@ -457,3 +458,6 @@ $config[MonitoringConstants::IGNORABLE_TRANSACTIONS] = [
     '_profiler',
     '_wdt',
 ];
+
+// ---------- Guest cart
+$config[QuoteConstants::GUEST_QUOTE_LIFETIME] = 'P01M';
