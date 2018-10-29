@@ -13,9 +13,12 @@ use Spryker\Glue\AuthRestApi\Plugin\FormatAuthenticationErrorResponseHeadersPlug
 use Spryker\Glue\AuthRestApi\Plugin\RefreshTokensResourceRoutePlugin;
 use Spryker\Glue\CartItemsProductsRelationship\Plugin\CartItemsProductsRelationshipPlugin;
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
-use Spryker\Glue\CartsRestApi\Plugin\CartItemsResourceRoutePlugin;
-use Spryker\Glue\CartsRestApi\Plugin\CartsResourceRoutePlugin;
-use Spryker\Glue\CartsRestApi\Plugin\DiscountResourceRoutePlugin;
+use Spryker\Glue\CartsRestApi\Plugin\ControllerBeforeAction\SetAnonymousCustomerIdControllerBeforeActionPlugin;
+use Spryker\Glue\CartsRestApi\Plugin\ResourceRoute\CartItemsResourceRoutePlugin;
+use Spryker\Glue\CartsRestApi\Plugin\ResourceRoute\CartsResourceRoutePlugin;
+use Spryker\Glue\CartsRestApi\Plugin\ResourceRoute\GuestCartItemsResourceRoutePlugin;
+use Spryker\Glue\CartsRestApi\Plugin\ResourceRoute\GuestCartsResourceRoutePlugin;
+use Spryker\Glue\CartsRestApi\Plugin\Validator\AnonymousCustomerUniqueIdValidatorPlugin;
 use Spryker\Glue\CatalogSearchProductsResourceRelationship\Plugin\CatalogSearchAbstractProductsResourceRelationshipPlugin;
 use Spryker\Glue\CatalogSearchProductsResourceRelationship\Plugin\CatalogSearchSuggestionsAbstractProductsResourceRelationshipPlugin;
 use Spryker\Glue\CatalogSearchRestApi\CatalogSearchRestApiConfig;
@@ -100,7 +103,8 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new ProductTaxSetsResourceRoutePlugin(),
             new CustomerPasswordResourceRoutePlugin(),
             new AddressesResourceRoutePlugin(),
-            new DiscountResourceRoutePlugin(),
+            new GuestCartsResourceRoutePlugin(),
+            new GuestCartItemsResourceRoutePlugin(),
         ];
     }
 
@@ -113,6 +117,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     {
         return [
             new AccessTokenValidatorPlugin(),
+            new AnonymousCustomerUniqueIdValidatorPlugin(),
         ];
     }
 
@@ -149,6 +154,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     {
         return [
             new SetStoreCurrentLocaleBeforeActionPlugin(),
+            new SetAnonymousCustomerIdControllerBeforeActionPlugin(),
             new SetCustomerBeforeActionPlugin(),
         ];
     }
@@ -173,6 +179,10 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         );
         $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_CART_ITEMS,
+            new CartItemsProductsRelationshipPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
             new CartItemsProductsRelationshipPlugin()
         );
         $resourceRelationshipCollection->addRelationship(
