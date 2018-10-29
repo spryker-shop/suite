@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<transfers xmlns="spryker:transfer-01"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="spryker:transfer-01 http://static.spryker.com/transfer-01.xsd">
+
+    <transfer name="SpyProductAbstractEntity">
+        <property name="sku" type="string" dataBuilderRule="isbn10" />
+        <property name="newFrom" type="string" dataBuilderRule="iso8601" />
+        <property name="newTo" type="string" dataBuilderRule="iso8601" />
+        <property name="colorCode" type="string" dataBuilderRule="hexcolor" />
+    </transfer>
+
+    <transfer name="SpyProductAbstractLocalizedAttributesEntity">
+        <property name="name" type="string" dataBuilderRule="sentence(2)" />
+        <property name="description" type="string" dataBuilderRule="sentence(5)" />
+        <property name="metaTitle" type="string" dataBuilderRule="sentence(2)" />
+        <property name="metaKeywords" type="string" dataBuilderRule="sentence(5)" />
+        <property name="metaDescription" type="string" dataBuilderRule="sentence(5)" />
+    </transfer>
+
+    <transfer name="SpyUrlEntity">
+        <property name="url" type="string" dataBuilderRule="slug" />
+    </transfer>
+
+    <transfer name="SpyProductEntity">
+        <property name="sku" type="string" dataBuilderRule="isbn10" />
+        <property name="attributes" type="string" dataBuilderRule="=[]" />
+        <property name="isActive" type="boolean" dataBuilderRule="boolean(100)" />
+        <property name="isQuantitySplittable" type="boolean" dataBuilderRule="boolean(100)" />
+    </transfer>
+
+    <transfer name="SpyProductLocalizedAttributesEntity">
+        <property name="name" type="string" dataBuilderRule="sentence(2)" />
+        <property name="description" type="string" dataBuilderRule="sentence(5)" />
+        <property name="attributes" type="string" dataBuilderRule="=[]" />
+        <property name="isComplete" type="boolean" dataBuilderRule="boolean(100)" />
+    </transfer>
+
+    <transfer name="SpyProductImageSetEntity">
+        <property name="name" type="string" dataBuilderRule="=default" />
+    </transfer>
+
+    <transfer name="SpyProductImageEntity">
+        <property name="externalUrlSmall" type="string" dataBuilderRule="url" />
+        <property name="externalUrlLarge" type="string" dataBuilderRule="url" />
+    </transfer>
+
+    <transfer name="SpyPriceProductStoreEntity">
+        <property name="netPrice" type="integer" dataBuilderRule="numberBetween(100, 9999)" />
+        <property name="grossPrice" type="integer" dataBuilderRule="numberBetween(100, 9999)" />
+    </transfer>
+
+</transfers>
+

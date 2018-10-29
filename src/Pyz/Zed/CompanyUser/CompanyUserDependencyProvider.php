@@ -10,7 +10,11 @@ namespace Pyz\Zed\CompanyUser;
 use Spryker\Zed\CompanyBusinessUnit\Communication\Plugin\CompanyUser\AssignDefaultBusinessUnitToCompanyUserPlugin;
 use Spryker\Zed\CompanyBusinessUnit\Communication\Plugin\CompanyUser\CompanyBusinessUnitHydratePlugin;
 use Spryker\Zed\CompanyRole\Communication\Plugin\CompanyUser\AssignDefaultCompanyUserRolePlugin;
+use Spryker\Zed\CompanyRole\Communication\Plugin\CompanyUser\AssignRolesCompanyUserPostCreatePlugin;
+use Spryker\Zed\CompanyRole\Communication\Plugin\CompanyUser\AssignRolesCompanyUserPostSavePlugin;
+use Spryker\Zed\CompanyRole\Communication\Plugin\CompanyUser\CompanyRoleCollectionHydratePlugin;
 use Spryker\Zed\CompanyUser\CompanyUserDependencyProvider as SprykerCompanyUserDependencyProvider;
+use Spryker\Zed\MerchantRelationship\Communication\Plugin\CompanyUser\MerchantRelationshipHydratePlugin;
 
 class CompanyUserDependencyProvider extends SprykerCompanyUserDependencyProvider
 {
@@ -21,6 +25,8 @@ class CompanyUserDependencyProvider extends SprykerCompanyUserDependencyProvider
     {
         return [
             new CompanyBusinessUnitHydratePlugin(),
+            new MerchantRelationshipHydratePlugin(),
+            new CompanyRoleCollectionHydratePlugin(),
         ];
     }
 
@@ -30,6 +36,7 @@ class CompanyUserDependencyProvider extends SprykerCompanyUserDependencyProvider
     protected function getCompanyUserPostCreatePlugins(): array
     {
         return [
+            new AssignRolesCompanyUserPostCreatePlugin(),
             new AssignDefaultCompanyUserRolePlugin(),
         ];
     }
@@ -41,6 +48,16 @@ class CompanyUserDependencyProvider extends SprykerCompanyUserDependencyProvider
     {
         return [
             new AssignDefaultBusinessUnitToCompanyUserPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\CompanyUserExtension\Dependency\Plugin\CompanyUserPostSavePluginInterface[]
+     */
+    protected function getCompanyUserPostSavePlugins(): array
+    {
+        return [
+            new AssignRolesCompanyUserPostSavePlugin(),
         ];
     }
 }

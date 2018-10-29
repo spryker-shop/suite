@@ -8,11 +8,17 @@
 namespace Pyz\Client\Permission;
 
 use Spryker\Client\CompanyRole\Plugin\PermissionStoragePlugin;
+use Spryker\Client\CustomerAccessPermission\Plugin\CustomerAccessPermissionStoragePlugin;
+use Spryker\Client\CustomerAccessPermission\Plugin\SeeAddToCartPermissionPlugin;
+use Spryker\Client\CustomerAccessPermission\Plugin\SeeOrderPlaceSubmitPermissionPlugin;
+use Spryker\Client\CustomerAccessPermission\Plugin\SeePricePermissionPlugin;
+use Spryker\Client\CustomerAccessPermission\Plugin\SeeShoppingListPermissionPlugin;
+use Spryker\Client\CustomerAccessPermission\Plugin\SeeWishlistPermissionPlugin;
 use Spryker\Client\Permission\PermissionDependencyProvider as SprykerPermissionDependencyProvider;
 use Spryker\Client\SharedCart\Plugin\ReadSharedCartPermissionPlugin;
 use Spryker\Client\SharedCart\Plugin\WriteSharedCartPermissionPlugin;
+use Spryker\Client\ShoppingList\Plugin\ReadShoppingListPermissionPlugin;
 use Spryker\Client\ShoppingList\Plugin\WriteShoppingListPermissionPlugin;
-use Spryker\Zed\ShoppingList\Communication\Plugin\ReadShoppingListPermissionPlugin;
 
 class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
 {
@@ -23,6 +29,7 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
     {
         return [
             new PermissionStoragePlugin(), #SharedCartFeature #ShoppingListFeature
+            new CustomerAccessPermissionStoragePlugin(), #CustomerAccessFeature
         ];
     }
 
@@ -36,6 +43,11 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new WriteSharedCartPermissionPlugin(), #SharedCartFeature
             new ReadShoppingListPermissionPlugin(), #ShoppingListFeature
             new WriteShoppingListPermissionPlugin(), #ShoppingListFeature
+            new SeePricePermissionPlugin(), #CustomerAccessFeature
+            new SeeOrderPlaceSubmitPermissionPlugin(), #CustomerAccessFeature
+            new SeeAddToCartPermissionPlugin(), #CustomerAccessFeature
+            new SeeWishlistPermissionPlugin(), #CustomerAccessFeature
+            new SeeShoppingListPermissionPlugin(), #CustomerAccessFeature
         ];
     }
 }

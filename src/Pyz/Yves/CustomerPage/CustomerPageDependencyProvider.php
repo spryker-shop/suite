@@ -7,14 +7,11 @@
 
 namespace Pyz\Yves\CustomerPage;
 
-use SprykerShop\Yves\CartNoteWidget\Plugin\CustomerPage\CartNoteOrderItemNoteWidgetPlugin;
-use SprykerShop\Yves\CartNoteWidget\Plugin\CustomerPage\CartNoteOrderNoteWidgetPlugin;
+use SprykerShop\Yves\AgentPage\Plugin\FixAgentTokenAfterCustomerAuthenticationSuccessPlugin;
+use SprykerShop\Yves\CompanyPage\Plugin\CustomerPage\BusinessOnBehalfCompanyUserRedirectAfterLoginStrategyPlugin;
 use SprykerShop\Yves\CompanyUserInvitationPage\Plugin\CompanyUserInvitationPreRegistrationCustomerTransferExpanderPlugin;
 use SprykerShop\Yves\CustomerPage\CustomerPageDependencyProvider as SprykerShopCustomerPageDependencyProvider;
 use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderWidgetPlugin;
-use SprykerShop\Yves\NewsletterWidget\Plugin\CustomerPage\NewsletterSubscriptionSummaryWidgetPlugin;
-use SprykerShop\Yves\ShoppingListWidget\Plugin\CustomerPage\ShoppingListMenuItemWidgetPlugin;
-use SprykerShop\Yves\WishlistWidget\Plugin\CustomerPage\WishlistMenuItemWidgetPlugin;
 
 class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyProvider
 {
@@ -24,7 +21,6 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     protected function getCustomerOverviewWidgetPlugins(): array
     {
         return [
-            NewsletterSubscriptionSummaryWidgetPlugin::class,
             CustomerReorderWidgetPlugin::class,
         ];
     }
@@ -46,19 +42,6 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     {
         return [
             CustomerReorderWidgetPlugin::class,
-            CartNoteOrderItemNoteWidgetPlugin::class, #CartNoteFeature
-            CartNoteOrderNoteWidgetPlugin::class, #CartNoteFeature
-        ];
-    }
-
-    /**
-     * @return string[]
-     */
-    protected function getCustomerMenuItemWidgetPlugins(): array
-    {
-        return [
-            WishlistMenuItemWidgetPlugin::class,
-            ShoppingListMenuItemWidgetPlugin::class, #ShoppingListFeature
         ];
     }
 
@@ -69,6 +52,26 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     {
         return [
             new CompanyUserInvitationPreRegistrationCustomerTransferExpanderPlugin(), #BulkImportCompanyUserInvitationsFeature
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CustomerPageExtension\Dependency\Plugin\CustomerRedirectStrategyPluginInterface[]
+     */
+    protected function getAfterLoginCustomerRedirectPlugins(): array
+    {
+        return [
+            new BusinessOnBehalfCompanyUserRedirectAfterLoginStrategyPlugin(), #BusinessOnBehalfFeature
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\AgentPage\Plugin\FixAgentTokenAfterCustomerAuthenticationSuccessPlugin[]
+     */
+    protected function getAfterCustomerAuthenticationSuccessPlugins(): array
+    {
+        return [
+            new FixAgentTokenAfterCustomerAuthenticationSuccessPlugin(),
         ];
     }
 }

@@ -10,7 +10,10 @@ namespace Pyz\Yves\ShoppingListPage;
 use Spryker\Client\AvailabilityStorage\Plugin\ProductViewAvailabilityStorageExpanderPlugin;
 use Spryker\Client\PriceProductStorage\Plugin\ProductViewPriceExpanderPlugin;
 use Spryker\Client\ProductImageStorage\Plugin\ProductViewImageExpanderPlugin;
-use SprykerShop\Yves\ProductBarcodeWidget\Plugin\ShoppingList\ProductBarcodeWidgetPlugin;
+use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionFormDataProviderMapperPlugin;
+use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionFormExpanderPlugin;
+use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionWidgetPlugin;
+use SprykerShop\Yves\ShoppingListNoteWidget\Plugin\ShoppingListPage\ShoppingListItemNoteFormExpanderPlugin;
 use SprykerShop\Yves\ShoppingListPage\ShoppingListPageDependencyProvider as SprykerShoppingListPageDependencyProvider;
 
 class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependencyProvider
@@ -28,12 +31,36 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
     }
 
     /**
-     * @return array
+     * Returns a list of widget plugin class names that implement
+     * \Spryker\Yves\Kernel\Dependency\Plugin\WidgetPluginInterface.
+     *
+     * @return string[]
      */
-    protected function getShoppingListWidgetPlugins(): array
+    protected function getShoppingListViewWidgetPlugins(): array
     {
         return [
-            ProductBarcodeWidgetPlugin::class,
+            ShoppingListItemProductOptionWidgetPlugin::class,
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\ShoppingListPageExtension\Dependency\Plugin\ShoppingListItemFormExpanderPluginInterface[]
+     */
+    protected function getShoppingListItemFormExpanderPlugins(): array
+    {
+        return [
+            new ShoppingListItemNoteFormExpanderPlugin(), #ShoppingListNoteFeature
+            new ShoppingListItemProductOptionFormExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\ShoppingListPageExtension\Dependency\Plugin\ShoppingListFormDataProviderMapperPluginInterface[]
+     */
+    protected function getShoppingListFormDataProviderMapperPlugins(): array
+    {
+        return [
+            new ShoppingListItemProductOptionFormDataProviderMapperPlugin(),
         ];
     }
 }

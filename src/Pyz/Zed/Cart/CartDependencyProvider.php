@@ -8,6 +8,7 @@
 namespace Pyz\Zed\Cart;
 
 use Spryker\Zed\Cart\CartDependencyProvider as SprykerCartDependencyProvider;
+use Spryker\Zed\Cart\Communication\Plugin\CleanUpItemsPreReloadPlugin;
 use Spryker\Zed\Cart\Communication\Plugin\SkuGroupKeyPlugin;
 use Spryker\Zed\Discount\Communication\Plugin\Cart\DiscountQuoteChangeObserverPlugin;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Cart\CartGroupPromotionItems;
@@ -25,7 +26,10 @@ use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\ExpandBundleItemsWithIma
 use Spryker\Zed\ProductCartConnector\Communication\Plugin\ProductCartPlugin;
 use Spryker\Zed\ProductCartConnector\Communication\Plugin\ProductExistsCartPreCheckPlugin;
 use Spryker\Zed\ProductCartConnector\Communication\Plugin\RemoveInactiveItemsPreReloadPlugin;
+use Spryker\Zed\ProductDiscontinued\Communication\Plugin\Cart\ProductDiscontinuedCartPreCheckPlugin;
 use Spryker\Zed\ProductImageCartConnector\Communication\Plugin\ProductImageCartPlugin;
+use Spryker\Zed\ProductList\Communication\Plugin\CartExtension\ProductListRestrictedItemsPreCheckPlugin;
+use Spryker\Zed\ProductList\Communication\Plugin\CartExtension\RemoveRestrictedItemsPreReloadPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitGroupKeyItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitValuePostSavePlugin;
@@ -33,8 +37,19 @@ use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\CartItemGroupKey
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\CartItemProductOptionPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\ChangeProductOptionQuantityPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\ProductOptionValuePriceExistsCartPreCheckPlugin;
+use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\AmountAvailabilityCartPreCheckPlugin;
+use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\AmountGroupKeyItemExpanderPlugin;
+use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\AmountRestrictionCartPreCheckPlugin;
+use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\AmountSalesUnitItemExpanderPlugin;
+use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\AmountSalesUnitValuePostSavePlugin;
+use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\CustomAmountPriceItemExpanderPlugin;
+use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\ProductPackagingUnitCartAddItemStrategyPlugin;
+use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\ProductPackagingUnitCartRemoveItemStrategyPlugin;
+use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\ProductPackagingUnitItemExpanderPlugin;
 use Spryker\Zed\ProductQuantity\Communication\Plugin\Cart\ProductQuantityRestrictionCartPreCheckPlugin;
 use Spryker\Zed\ProductQuantity\Communication\Plugin\CartExtension\ProductQuantityRestrictionCartRemovalPreCheckPlugin;
+use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Cart\AddThresholdMessagesCartPreReloadItemsPlugin;
+use Spryker\Zed\SalesQuantity\Communication\Plugin\Cart\IsQuantitySplittableItemExpanderPlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentExpanderPlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentPreCheckPlugin;
 
@@ -49,6 +64,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     {
         return [
             new ProductCartPlugin(),
+            new IsQuantitySplittableItemExpanderPlugin(),
             new CartItemPricePlugin(),
             new CartItemProductOptionPlugin(),
             new ExpandBundleItemsPlugin(),
@@ -61,13 +77,17 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new CartGroupPromotionItems(),
             new CartShipmentExpanderPlugin(),
             new QuantitySalesUnitItemExpanderPlugin(),
+            new AmountGroupKeyItemExpanderPlugin(), #ProductPackagingUnit
+            new AmountSalesUnitItemExpanderPlugin(), #ProductPackagingUnit
+            new ProductPackagingUnitItemExpanderPlugin(), #ProductPackagingUnit
+            new CustomAmountPriceItemExpanderPlugin(), #ProductPackagingUnit
         ];
     }
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return \Spryker\Zed\Cart\Dependency\CartPreCheckPluginInterface[]
+     * @return \Spryker\Zed\CartExtension\Dependency\Plugin\CartPreCheckPluginInterface[]
      */
     protected function getCartPreCheckPlugins(Container $container)
     {
@@ -78,6 +98,10 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new CartBundleAvailabilityPreCheckPlugin(),
             new CartShipmentPreCheckPlugin(),
             new ProductQuantityRestrictionCartPreCheckPlugin(),
+            new ProductListRestrictedItemsPreCheckPlugin(),
+            new ProductDiscontinuedCartPreCheckPlugin(), #ProductDiscontinuedFeature
+            new AmountAvailabilityCartPreCheckPlugin(), #ProductPackagingUnit
+            new AmountRestrictionCartPreCheckPlugin(), #ProductPackagingUnit
         ];
     }
 
@@ -93,19 +117,23 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new CartPostSaveUpdateBundlesPlugin(),
             new RemovePaymentCartPostSavePlugin(),
             new QuantitySalesUnitValuePostSavePlugin(),
+            new AmountSalesUnitValuePostSavePlugin(), #ProductPackagingUnit
         ];
     }
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return \Spryker\Zed\Cart\Dependency\PreReloadItemsPluginInterface[]
+     * @return \Spryker\Zed\CartExtension\Dependency\Plugin\PreReloadItemsPluginInterface[]
      */
     protected function getPreReloadPlugins(Container $container)
     {
         return [
-           new CartBundleItemsPreReloadPlugin(),
-           new RemoveInactiveItemsPreReloadPlugin(),
+            new CartBundleItemsPreReloadPlugin(),
+            new RemoveInactiveItemsPreReloadPlugin(),
+            new RemoveRestrictedItemsPreReloadPlugin(),
+            new CleanUpItemsPreReloadPlugin(),
+            new AddThresholdMessagesCartPreReloadItemsPlugin(), #SalesOrderThresholdFeature
         ];
     }
 
@@ -141,6 +169,30 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
         return [
             new DiscountQuoteChangeObserverPlugin(),
             new BundleItemPriceQuoteChangeObserverPlugin(),
+        ];
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\CartExtension\Dependency\Plugin\CartOperationStrategyPluginInterface[]
+     */
+    protected function getCartAddItemStrategyPlugins(Container $container): array
+    {
+        return [
+            new ProductPackagingUnitCartAddItemStrategyPlugin(),
+        ];
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\CartExtension\Dependency\Plugin\CartOperationStrategyPluginInterface[]
+     */
+    protected function getCartRemoveItemStrategyPlugins(Container $container): array
+    {
+        return [
+            new ProductPackagingUnitCartRemoveItemStrategyPlugin(),
         ];
     }
 }

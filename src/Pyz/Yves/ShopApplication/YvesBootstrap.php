@@ -24,16 +24,18 @@ use Spryker\Shared\Config\Environment;
 use Spryker\Yves\Application\Plugin\Provider\CookieServiceProvider;
 use Spryker\Yves\Application\Plugin\Provider\YvesHstsServiceProvider;
 use Spryker\Yves\Application\Plugin\ServiceProvider\AssertUrlConfigurationServiceProvider;
-use Spryker\Yves\Application\Plugin\ServiceProvider\KernelLogServiceProvider;
 use Spryker\Yves\Application\Plugin\ServiceProvider\SslServiceProvider;
 use Spryker\Yves\CmsContentWidget\Plugin\CmsContentWidgetServiceProvider;
 use Spryker\Yves\Messenger\Plugin\Provider\FlashMessengerServiceProvider;
+use Spryker\Yves\Monitoring\Plugin\ServiceProvider\MonitoringRequestTransactionServiceProvider;
 use Spryker\Yves\NewRelic\Plugin\ServiceProvider\NewRelicRequestTransactionServiceProvider;
 use Spryker\Yves\Session\Plugin\ServiceProvider\SessionServiceProvider as SprykerSessionServiceProvider;
 use Spryker\Yves\Storage\Plugin\Provider\StorageCacheServiceProvider;
 use Spryker\Yves\Twig\Plugin\ServiceProvider\TwigServiceProvider as SprykerTwigServiceProvider;
 use Spryker\Yves\ZedRequest\Plugin\ServiceProvider\ZedRequestHeaderServiceProvider;
-use Spryker\Yves\ZedRequest\Plugin\ServiceProvider\ZedRequestLogServiceProvider;
+use SprykerShop\Yves\AgentPage\Plugin\Provider\AgentPageControllerProvider;
+use SprykerShop\Yves\AgentPage\Plugin\Provider\AgentPageSecurityServiceProvider;
+use SprykerShop\Yves\AgentWidget\Plugin\Provider\AgentWidgetControllerProvider;
 use SprykerShop\Yves\CalculationPage\Plugin\Provider\CalculationPageControllerProvider;
 use SprykerShop\Yves\CartNoteWidget\Plugin\Provider\CartNoteWidgetControllerProvider;
 use SprykerShop\Yves\CartPage\Plugin\Provider\CartControllerProvider;
@@ -42,6 +44,7 @@ use SprykerShop\Yves\CartToShoppingListWidget\Plugin\Provider\CartToShoppingList
 use SprykerShop\Yves\CatalogPage\Plugin\Provider\CatalogPageControllerProvider;
 use SprykerShop\Yves\CatalogPage\Plugin\Provider\CatalogPageTwigServiceProvider;
 use SprykerShop\Yves\CategoryWidget\Plugin\Provider\CategoryServiceProvider;
+use SprykerShop\Yves\ChartWidget\Plugin\Provider\TwigChartFunctionServiceProvider;
 use SprykerShop\Yves\CheckoutPage\Plugin\Provider\CheckoutPageControllerProvider;
 use SprykerShop\Yves\CmsBlockWidget\Plugin\Provider\CmsBlockTwigFunctionServiceProvider;
 use SprykerShop\Yves\CmsPage\Plugin\Provider\CmsTwigFunctionServiceProvider;
@@ -56,6 +59,7 @@ use SprykerShop\Yves\CustomerReorderWidget\Plugin\Provider\CustomerReorderContro
 use SprykerShop\Yves\DiscountWidget\Plugin\Provider\DiscountWidgetControllerProvider;
 use SprykerShop\Yves\ErrorPage\Plugin\Provider\ErrorPageControllerProvider;
 use SprykerShop\Yves\ErrorPage\Plugin\Provider\ErrorPageServiceProvider;
+use SprykerShop\Yves\FileManagerWidget\Plugin\Provider\FileManagerWidgetControllerProvider;
 use SprykerShop\Yves\HeartbeatPage\Plugin\Provider\HeartbeatPageControllerProvider;
 use SprykerShop\Yves\HomePage\Plugin\Provider\HomePageControllerProvider;
 use SprykerShop\Yves\MoneyWidget\Plugin\ServiceProvider\TwigMoneyServiceProvider;
@@ -73,6 +77,7 @@ use SprykerShop\Yves\ShopApplication\Plugin\Provider\ShopApplicationServiceProvi
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\ShopControllerEventServiceProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\ShopTwigServiceProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\WidgetServiceProvider;
+use SprykerShop\Yves\ShopApplication\Plugin\Provider\WidgetTagServiceProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\YvesExceptionServiceProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\YvesSecurityServiceProvider;
 use SprykerShop\Yves\ShopApplication\YvesBootstrap as SprykerYvesBootstrap;
@@ -99,14 +104,13 @@ class YvesBootstrap extends SprykerYvesBootstrap
 
         $this->application->register(new SslServiceProvider());
         $this->application->register(new StorageCacheServiceProvider());
-        $this->application->register(new KernelLogServiceProvider());
         $this->application->register(new ZedRequestHeaderServiceProvider());
-        $this->application->register(new ZedRequestLogServiceProvider());
 
         $this->application->register(new ShopControllerEventServiceProvider());
         $this->application->register(new ShopTwigServiceProvider());
         $this->application->register(new SprykerTwigServiceProvider());
         $this->application->register(new WidgetServiceProvider());
+        $this->application->register(new WidgetTagServiceProvider());
         $this->application->register(new ShopApplicationServiceProvider());
         $this->application->register(new DateTimeFormatterServiceProvider());
         $this->application->register(new SessionServiceProvider());
@@ -118,6 +122,7 @@ class YvesBootstrap extends SprykerYvesBootstrap
         $this->application->register(new YvesExceptionServiceProvider());
         $this->application->register(new ErrorPageServiceProvider());
         $this->application->register(new NewRelicRequestTransactionServiceProvider());
+        $this->application->register(new MonitoringRequestTransactionServiceProvider());
         $this->application->register(new CookieServiceProvider());
         $this->application->register(new UrlGeneratorServiceProvider());
         $this->application->register(new ServiceControllerServiceProvider());
@@ -142,6 +147,8 @@ class YvesBootstrap extends SprykerYvesBootstrap
         $this->application->register(new CatalogPageTwigServiceProvider());
         $this->application->register(new ShopUiTwigServiceProvider());
         $this->application->register(new ShopPermissionServiceProvider());
+        $this->application->register(new TwigChartFunctionServiceProvider());
+        $this->application->register(new AgentPageSecurityServiceProvider()); # AgentFeature
     }
 
     /**
@@ -204,6 +211,9 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new CartToShoppingListWidgetControllerProvider($isSsl), #ShoppingListFeature
             new ShoppingListWidgetControllerProvider($isSsl), #ShoppingListFeature
             new CompanyUserInvitationPageControllerProvider($isSsl), #BulkImportCompanyUserInvitationsFeature
+            new AgentPageControllerProvider($isSsl), #AgentFeature
+            new AgentWidgetControllerProvider($isSsl), #AgentFeature
+            new FileManagerWidgetControllerProvider($isSsl),
         ];
     }
 }
