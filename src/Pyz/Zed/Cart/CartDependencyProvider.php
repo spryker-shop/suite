@@ -16,7 +16,7 @@ use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\PaymentCartConnector\Communication\Plugin\Cart\RemovePaymentCartPostSavePlugin;
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\CartItemPricePlugin;
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\CartItemPricePreCheckPlugin;
-use Spryker\Zed\PriceCartConnector\Communication\Plugin\RemoveWithoutPriceItemsPreReloadPlugin;
+use Spryker\Zed\PriceCartConnector\Communication\Plugin\FilterItemsWithoutPricePlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\BundleItemPriceQuoteChangeObserverPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\CartBundleAvailabilityPreCheckPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\CartBundleItemsPreReloadPlugin;
@@ -135,7 +135,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new RemoveRestrictedItemsPreReloadPlugin(),
             new CleanUpItemsPreReloadPlugin(),
             new AddThresholdMessagesCartPreReloadItemsPlugin(), #SalesOrderThresholdFeature
-            new RemoveWithoutPriceItemsPreReloadPlugin(),
+            new FilterItemsWithoutPricePlugin(),
         ];
     }
 
