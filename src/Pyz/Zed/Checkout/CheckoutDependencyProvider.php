@@ -13,7 +13,7 @@ use Spryker\Zed\Checkout\CheckoutDependencyProvider as SprykerCheckoutDependency
 use Spryker\Zed\Customer\Communication\Plugin\Checkout\CustomerOrderSavePlugin;
 use Spryker\Zed\Customer\Communication\Plugin\CustomerPreConditionCheckerPlugin;
 use Spryker\Zed\Discount\Communication\Plugin\Checkout\DiscountOrderSavePlugin;
-use Spryker\Zed\Discount\Communication\Plugin\Checkout\VoucherDiscountCheckoutPreConditionPlugin;
+use Spryker\Zed\Discount\Communication\Plugin\Checkout\VoucherDiscountMaxUsageCheckoutPreConditionPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Payment\Communication\Plugin\Checkout\PaymentOrderSaverPlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Checkout\PaymentPostCheckPlugin;
@@ -43,7 +43,6 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
     {
         return [
             new CustomerPreConditionCheckerPlugin(),
-            new VoucherDiscountCheckoutPreConditionPlugin(),
             new ProductsAvailableCheckoutPreConditionPlugin(),
             new ProductBundleAvailabilityCheckoutPreConditionPlugin(),
             new PaymentPreCheckPlugin(),
@@ -51,6 +50,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new ProductDiscontinuedCheckoutPreConditionPlugin(), #ProductDiscontinuedFeature
             new AmountAvailabilityCheckoutPreConditionPlugin(),
             new SalesOrderThresholdCheckoutPreConditionPlugin(), #SalesOrderThresholdFeature
+            new VoucherDiscountMaxUsageCheckoutPreConditionPlugin(),
         ];
     }
 
