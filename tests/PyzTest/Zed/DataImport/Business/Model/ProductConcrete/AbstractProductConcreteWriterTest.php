@@ -48,14 +48,20 @@ abstract class AbstractProductConcreteWriterTest extends AbstractWriterTest
         $locale = $this->getLocale();
         foreach ($abstractSkus as $abstractSku) {
             $dataSet = new DataSet();
+
+            /** @var \Generated\Shared\Transfer\SpyProductEntityTransfer $productTransfer */
             $productTransfer = (new SpyProductEntityBuilder())->build();
             $dataSet[ProductConcreteHydratorStep::KEY_ABSTRACT_SKU] = $abstractSku;
             $dataSet[ProductConcreteHydratorStep::DATA_PRODUCT_CONCRETE_TRANSFER] = $productTransfer;
+            /**
+             * @var \Generated\Shared\Transfer\SpyProductLocalizedAttributesEntityTransfer
+             */
+            $spyProductLocalizedAttributesEntityTransfer = (new SpyProductLocalizedAttributesEntityBuilder())
+                ->build();
             $dataSet[ProductConcreteHydratorStep::DATA_PRODUCT_CONCRETE_LOCALIZED_TRANSFER] = [
                 [
                     'sku' => $productTransfer->getSku(),
-                    'localizedAttributeTransfer' => (new SpyProductLocalizedAttributesEntityBuilder())
-                        ->build()
+                    'localizedAttributeTransfer' => $spyProductLocalizedAttributesEntityTransfer
                         ->setFkLocale($locale->getIdLocale()),
                     'productSearchEntityTransfer' => (new SpyProductSearchEntityTransfer())
                         ->setFkLocale($locale->getIdLocale())
