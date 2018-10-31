@@ -122,8 +122,6 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         return [
             new AccessTokenValidatorPlugin(),
             new AnonymousCustomerUniqueIdValidatorPlugin(),
-            new CurrencyParameterValidatorPlugin(),
-            new PriceModeParameterValidatorPlugin(),
         ];
     }
 
@@ -136,6 +134,8 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     {
         return [
             new ValidateRestRequestAttributesPlugin(),
+            new CurrencyParameterValidatorPlugin(),
+            new PriceModeParameterValidatorPlugin(),
         ];
     }
 
