@@ -83,7 +83,7 @@
     {% endembed %}
 
     <hr />
-    <form method="POST" action="{{ path("cart/add", {"sku": sku}) }}">
+    <form method="POST" class="{{ config.jsName }}__form" action="{{ path("cart/add", {"sku": sku}) }}">
         {% widget 'ProductOptionConfiguratorWidget' args [data.product] only %}
         {% elsewidget 'ProductOptionWidgetPlugin' args [data.product] only %} {# @deprecated Use ProductOptionConfiguratorWidget instead. #}
         {% endwidget %}
