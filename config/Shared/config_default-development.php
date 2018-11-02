@@ -80,8 +80,8 @@ $config[SessionConstants::ZED_SESSION_REDIS_DATABASE] = 2;
 $config[SessionConstants::ZED_SESSION_TIME_TO_LIVE] = SessionConfig::SESSION_LIFETIME_1_YEAR;
 
 // ---------- Jenkins
-$config[SetupConstants::JENKINS_BASE_URL] = 'http://localhost:10007/';
-$config[SetupConstants::JENKINS_DIRECTORY] = '/data/shop/development/shared/data/common/jenkins';
+$config[SetupConstants::JENKINS_BASE_URL] = getenv('JENKINS_BASE_URL', 'http://localhost:10007/');
+$config[SetupConstants::JENKINS_DIRECTORY] = getenv('JENKINS_DIRECTORY', '/data/shop/development/shared/data/common/jenkins');
 
 // ---------- Zed request
 $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_FORWARD_ENABLED] = true;
@@ -120,8 +120,8 @@ $config[GlueApplicationConstants::GLUE_APPLICATION_REST_DEBUG] = true;
 // ----------- OAUTH
 $config[OauthConstants::PRIVATE_KEY_PATH] = 'file://' . APPLICATION_ROOT_DIR . '/config/Zed/dev_only_private.key';
 $config[OauthConstants::PUBLIC_KEY_PATH] = 'file://' . APPLICATION_ROOT_DIR . '/config/Zed/dev_only_public.key';
-$config[OauthConstants::ENCRYPTION_KEY] = 'lxZFUEsBCJ2Yb14IF2ygAHI5N4+ZAUXXaSeeJm6+twsUmIen';
+$config[OauthConstants::ENCRYPTION_KEY] = getenv('OAUTH_CLIENT_IDENTIFIER', 'lxZFUEsBCJ2Yb14IF2ygAHI5N4+ZAUXXaSeeJm6+twsUmIen');
 
 // ----------- AuthRestApi
-$config[OauthCustomerConnectorConstants::OAUTH_CLIENT_IDENTIFIER] = 'frontend';
-$config[OauthCustomerConnectorConstants::OAUTH_CLIENT_SECRET] = 'abc123';
+$config[OauthCustomerConnectorConstants::OAUTH_CLIENT_IDENTIFIER] = getenv('OAUTH_CLIENT_IDENTIFIER', 'frontend');
+$config[OauthCustomerConnectorConstants::OAUTH_CLIENT_SECRET] = getenv('OAUTH_CLIENT_SECRET', 'abc123');

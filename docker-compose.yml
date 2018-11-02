@@ -8,23 +8,18 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile
-    environment:
-      - DB_HOST=db
-      - DB_USERNAME=postgres
-      - DB_PASSWORD=password
-      - REDIS_HOST=redis
-      - REDIS_PORT=6379
-      - RABBIT_HOST=rabbit
-      - RABBIT_PORT=5672
-      - RABBIT_USERNAME=guest
-      - RABBIT_PASSWORD=guest
+      args:
+        app_path: 
+    env_file:
+      - docker/.env
     ports:
       - "9000:9000"
     volumes:
-      - ${PWD}:/app
+      - ${PWD}:/var/www/html
       # - ${PWD}/docker/conf/php.ini:/opt/bitnami/php/lib/php.ini
     links:
       - db
+      - rabbit
 
   nginx:
     image: 'nginx:alpine'
@@ -40,6 +35,9 @@ services:
     image: postgres:alpine
     volumes:
       - $PWD/data/postgresql:/var/lib/postgresql:rw
+
+  jenkins:
+    image: jenkins:alpine
 
   redis:
     image: redis:alpine

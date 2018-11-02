@@ -1,6 +1,8 @@
 FROM php:7-fpm-alpine
 
-ADD $PWD /var/www/html
+WORKDIR /app
+
+ADD $PWD /app
 
 # because crikey php eats memory
 ENV COMPOSER_MEMORY_LIMIT=-1
