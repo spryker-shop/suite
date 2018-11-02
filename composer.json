@@ -549,8 +549,7 @@
   "scripts": {
     "compile": [
       "mkdir -p ./data/DE/logs/ZED",
-      "echo '<?php return \"development-heroku\";' > config/Shared/console_env_local.php",
-      "./deploy/heroku/run.sh"
+      "echo '<?php return \"development\";' > config/Shared/console_env_local.php"
     ],
     "post-install-cmd": [
       "PhantomInstaller\\Installer::installPhantomJS"

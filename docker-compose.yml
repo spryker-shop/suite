@@ -1,0 +1,48 @@
+#
+# removed "ext-pdo_pgsql": "*", from composer
+#
+version: "3"
+services:
+  app:
+    tty: true
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    environment:
+      - DB_HOST=db
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=password
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - RABBIT_HOST=rabbit
+      - RABBIT_PORT=5672
+      - RABBIT_USERNAME=guest
+      - RABBIT_PASSWORD=guest
+    ports:
+      - "9000:9000"
+    volumes:
+      - ${PWD}:/app
+      # - ${PWD}/docker/conf/php.ini:/opt/bitnami/php/lib/php.ini
+    links:
+      - db
+
+  nginx:
+    image: 'nginx:alpine'
+    depends_on:
+      - app
+    ports:
+      - '8081:80'
+      #- '443:443'
+    volumes:
+      - ${PWD}/docker/conf/spryker-suite.conf:/etc/nginx/conf.d/default.conf
+
+  db:
+    image: postgres:alpine
+    volumes:
+      - $PWD/data/postgresql:/var/lib/postgresql:rw
+
+  redis:
+    image: redis:alpine
+
+  rabbit:
+    image: rabbitmq:alpine
