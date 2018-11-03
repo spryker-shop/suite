@@ -162,6 +162,9 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
         $priceProductStoreEntity->setGrossPrice($dataSet[ProductPriceHydratorStep::KEY_PRICE_GROSS]);
         $priceProductStoreEntity->setNetPrice($dataSet[ProductPriceHydratorStep::KEY_PRICE_NET]);
 
+        $priceProductStoreEntity->setPriceData($dataSet[ProductPriceHydratorStep::KEY_PRICE_DATA]);
+        $priceProductStoreEntity->setPriceDataChecksum($dataSet[ProductPriceHydratorStep::KEY_PRICE_DATA_CHECKSUM]);
+
         $priceProductStoreEntity->save();
 
         return $priceProductStoreEntity;
