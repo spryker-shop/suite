@@ -1,15 +1,14 @@
 FROM php:7-fpm-alpine
 
+ARG app_path
+
 WORKDIR /app
 
 ADD $PWD /app
 
-# because crikey php eats memory
-ENV COMPOSER_MEMORY_LIMIT=-1
-
 RUN apk add --no-cache --update --virtual buildDeps autoconf
-RUN apk add --update --no-cache alpine-sdk postgresql-dev libpng libpng-dev \
-        libsodium-dev icu-dev gmp-dev zip git && \
+RUN apk add --update --no-cache alpine-sdk postgresql-dev postgresql-client libpng libpng-dev \
+        libsodium-dev icu-dev gmp-dev npm zip git httpie nmap && \
         ulimit -n 65535 && \
         rm -rf /var/cache/apk/*
 

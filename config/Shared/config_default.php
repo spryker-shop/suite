@@ -79,8 +79,8 @@ $config[PropelConstants::ZED_DB_SUPPORTED_ENGINES] = [
     PropelConfig::DB_ENGINE_PGSQL => 'PostgreSql',
 ];
 
-$config[PropelConstants::USE_SUDO_TO_MANAGE_DATABASE] = true;
-$config[PropelConstants::PROPEL_DEBUG] = false;
+$config[PropelConstants::USE_SUDO_TO_MANAGE_DATABASE] = false;
+$config[PropelConstants::PROPEL_DEBUG] = true;
 
 // ---------- Authentication
 $config[UserConstants::USER_SYSTEM_USERS] = [
@@ -180,11 +180,12 @@ $config[AclConstants::ACL_DEFAULT_CREDENTIALS] = [
 ];
 
 // ---------- Elasticsearch
-$ELASTICA_HOST = 'localhost';
+$elastica_url = parse_url(getenv('ELASTICSEARCH_HOST', 'http://localhost:9200'));
+$ELASTICA_HOST = $elastica_url['hostname'];
 $config[SearchConstants::ELASTICA_PARAMETER__HOST] = $ELASTICA_HOST;
-$ELASTICA_TRANSPORT_PROTOCOL = 'http';
+$ELASTICA_TRANSPORT_PROTOCOL = $elastica_url['scheme'];
 $config[SearchConstants::ELASTICA_PARAMETER__TRANSPORT] = $ELASTICA_TRANSPORT_PROTOCOL;
-$ELASTICA_PORT = '10005';
+$ELASTICA_PORT = $elastica_url['port'];
 $config[SearchConstants::ELASTICA_PARAMETER__PORT] = $ELASTICA_PORT;
 $ELASTICA_AUTH_HEADER = null;
 $config[SearchConstants::ELASTICA_PARAMETER__AUTH_HEADER] = $ELASTICA_AUTH_HEADER;
@@ -453,3 +454,4 @@ $config[MonitoringConstants::IGNORABLE_TRANSACTIONS] = [
 
 // ---------- Guest cart
 $config[QuoteConstants::GUEST_QUOTE_LIFETIME] = 'P01M';
+

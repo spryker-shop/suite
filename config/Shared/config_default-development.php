@@ -44,6 +44,7 @@ $config[ApplicationConstants::YVES_SSL_ENABLED] = false;
 // ---------- Propel
 $config[PropelConstants::PROPEL_DEBUG] = false;
 $config[PropelOrmConstants::PROPEL_SHOW_EXTENDED_EXCEPTION] = true;
+$config[PropelConstants::ZED_DB_DATABASE] = getenv('DB_NAME', 'DE_development_zed');
 $config[PropelConstants::ZED_DB_USERNAME] = getenv('DB_USERNAME');
 $config[PropelConstants::ZED_DB_PASSWORD] = getenv('DB_PASSWORD');
 $config[PropelConstants::ZED_DB_HOST] = getenv('DB_HOST');
@@ -63,6 +64,7 @@ $config[RabbitMqEnv::RABBITMQ_API_HOST] = getenv('RABBIT_HOST', 'rabbit');
 $config[RabbitMqEnv::RABBITMQ_API_PORT] = getenv('RABBIT_PORT', '15672');
 $config[RabbitMqEnv::RABBITMQ_API_USERNAME] = getenv('RABBIT_USERNAME', 'admin');
 $config[RabbitMqEnv::RABBITMQ_API_PASSWORD] = getenv('RABBIT_PASSWORD', 'mate20mg');
+$config[ApplicationConstants::ZED_RABBITMQ_VHOST] = getenv('RABBIT_VHOST', '/DE_development_zed');
 
 // ---------- Session
 $config[SessionConstants::YVES_SESSION_COOKIE_SECURE] = false;
