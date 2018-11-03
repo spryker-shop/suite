@@ -12,6 +12,7 @@ use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInter
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\ProductPriceHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\Sql\ProductPriceSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
+use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
@@ -36,18 +37,26 @@ class ProductPriceBulkPdoDataSetWriter implements DataSetWriterInterface
     protected $dataFormatter;
 
     /**
+     * @var \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface
+     */
+    protected $utilEncodingService;
+
+    /**
      * @param \Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\Sql\ProductPriceSqlInterface $productPriceSql
      * @param \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface $propelExecutor
      * @param \Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface $dataFormatter
+     * @param \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface $utilEncodingService
      */
     public function __construct(
         ProductPriceSqlInterface $productPriceSql,
         PropelExecutorInterface $propelExecutor,
-        DataImportDataFormatterInterface $dataFormatter
+        DataImportDataFormatterInterface $dataFormatter,
+        UtilEncodingServiceInterface $utilEncodingService
     ) {
         $this->productPriceSql = $productPriceSql;
         $this->propelExecutor = $propelExecutor;
         $this->dataFormatter = $dataFormatter;
+        $this->utilEncodingService = $utilEncodingService;
     }
 
     /**
@@ -308,7 +317,7 @@ class ProductPriceBulkPdoDataSetWriter implements DataSetWriterInterface
             return $price ?: '';
         }, $priceData);
 
-        return pg_escape_string(json_encode($priceData));
+        return pg_escape_string($this->utilEncodingService->encodeJson($priceData));
     }
 
     /**

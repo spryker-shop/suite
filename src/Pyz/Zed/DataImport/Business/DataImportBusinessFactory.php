@@ -214,7 +214,8 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         return new ProductPriceBulkPdoDataSetWriter(
             $this->createProductPriceSql(),
             $this->createPropelExecutor(),
-            $this->createDataFormatter()
+            $this->createDataFormatter(),
+            $this->getUtilEncodingService()
         );
     }
 
