@@ -223,7 +223,7 @@ class ProductPriceHydratorStep implements DataImportStepInterface
                 continue;
             }
 
-            $priceData = $this->addPriceDataValue($priceData, $this->getPriceDataKey($key), $dataSet[$key]);
+            $priceData = $this->addPriceDataValue($priceData, $this->getPriceDataKey($key), $value);
         }
 
         return $priceData;
