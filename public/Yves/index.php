@@ -4,6 +4,9 @@ use Pyz\Yves\ShopApplication\YvesBootstrap;
 use Spryker\Shared\Config\Application\Environment;
 use Spryker\Shared\ErrorHandler\ErrorHandlerEnvironment;
 
+$app_dir = realpath(__DIR__ . '/../..');
+define('APPLICATION_ROOT_DIR', getenv('APPLICATION_ROOT_DIR', $app_dir));
+
 require __DIR__ . '/maintenance/maintenance.php';
 
 define('APPLICATION', 'YVES');
