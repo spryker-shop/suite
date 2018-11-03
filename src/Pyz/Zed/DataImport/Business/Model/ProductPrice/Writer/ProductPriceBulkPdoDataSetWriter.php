@@ -168,7 +168,7 @@ class ProductPriceBulkPdoDataSetWriter implements DataSetWriterInterface
             $storeName = $this->dataFormatter->formatPostgresArrayString(
                 $this->dataFormatter->getCollectionDataByKey($storeCollection, ProductPriceHydratorStep::KEY_STORE_NAME)
             );
-            $priceData = $this->dataFormatter->formatPostgresDirtyArrayFromJson($this->dataFormatter->getCollectionDataByKey(
+            $priceData = $this->preparePriceDataString($this->dataFormatter->getCollectionDataByKey(
                 $priceProductStoreCollection,
                 ProductPriceHydratorStep::KEY_PRICE_DATA
             ));
