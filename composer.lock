@@ -1522,20 +1522,21 @@
         },
         {
             "name": "php-amqplib/php-amqplib",
-            "version": "v2.8.0",
+            "version": "2.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-amqplib/php-amqplib.git",
-                "reference": "7df8553bd8b347cf6e919dd4a21e75f371547aa0"
+                "reference": "20fc065ec03c5944cd3ada9adc56625b449b158e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/7df8553bd8b347cf6e919dd4a21e75f371547aa0",
-                "reference": "7df8553bd8b347cf6e919dd4a21e75f371547aa0",
+                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/20fc065ec03c5944cd3ada9adc56625b449b158e",
+                "reference": "20fc065ec03c5944cd3ada9adc56625b449b158e",
                 "shasum": ""
             },
             "require": {
                 "ext-bcmath": "*",
+                "ext-sockets": "*",
                 "php": ">=5.4.0"
             },
             "replace": {
@@ -1546,9 +1547,6 @@
                 "phpunit/phpunit": "^4.8",
                 "scrutinizer/ocular": "^1.1",
                 "squizlabs/php_codesniffer": "^2.5"
-            },
-            "suggest": {
-                "ext-sockets": "Use AMQPSocketConnection"
             },
             "type": "library",
             "extra": {
@@ -1579,6 +1577,11 @@
                     "name": "Raúl Araya",
                     "email": "nubeiro@gmail.com",
                     "role": "Maintainer"
+                },
+                {
+                    "name": "Luke Bakken",
+                    "email": "luke@bakken.io",
+                    "role": "Maintainer"
                 }
             ],
             "description": "Formerly videlalvaro/php-amqplib.  This library is a pure PHP implementation of the AMQP protocol. It's been tested against RabbitMQ.",
@@ -1588,7 +1591,7 @@
                 "queue",
                 "rabbitmq"
             ],
-            "time": "2018-10-23T18:48:24+00:00"
+            "time": "2018-10-31T14:27:47+00:00"
         },
         {
             "name": "phpdocumentor/graphviz",
@@ -2567,7 +2570,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "8919243a8c2cf19c43a447bfe7a52b68cdb279cf"
+                "reference": "90111de0c6c03f094322bfcad94d8f2cd63f2810"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2837,7 +2840,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-11-02T13:51:48+00:00"
+            "time": "2018-11-03T09:24:20+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2845,7 +2848,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "3759ffe6d0cd0f9e79dd166a19518b1f06613096"
+                "reference": "516a0532d15e44162f82511bf87acf9edfa9b067"
             },
             "require": {
                 "php": ">=7.1"
@@ -2920,7 +2923,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-11-01T10:56:57+00:00"
+            "time": "2018-11-03T09:24:20+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
