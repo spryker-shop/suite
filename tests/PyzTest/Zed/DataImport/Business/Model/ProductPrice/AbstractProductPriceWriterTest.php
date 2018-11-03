@@ -54,8 +54,11 @@ abstract class AbstractProductPriceWriterTest extends AbstractWriterTest
     {
         $result = [];
 
-        $priceProductStore = (new SpyPriceProductStoreEntityBuilder())
-            ->build()
+        /**
+         * @var \Generated\Shared\Transfer\SpyPriceProductStoreEntityTransfer
+         */
+        $spyPriceProductStoreEntityTransfer = (new SpyPriceProductStoreEntityBuilder())->build();
+        $priceProductStore = $spyPriceProductStoreEntityTransfer
             ->setCurrency((new SpyCurrencyEntityTransfer())->setName($this->getCurrency()->getCode()))
             ->setStore((new SpyStoreEntityTransfer())->setName(Store::getDefaultStore()))
             ->setPriceData(static::PRICE_DATA);

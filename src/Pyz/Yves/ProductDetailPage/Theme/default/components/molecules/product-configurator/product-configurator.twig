@@ -89,7 +89,9 @@
         {% endwidget %}
 
         {% if can('SeeAddToCartPermissionPlugin') %}
-            {% widget 'ManageProductMeasurementUnitWidget' args [data.product, isDisabled, options] only %}
+            {% widget 'ProductPackagingUnitWidget' args [data.product, isDisabled, options] only %}
+            {% elsewidget 'ProductPackagingUnitWidgetPlugin' args [data.product, isDisabled, options] only %} {# @deprecated Use ProductPackagingUnitWidget instead. #}
+            {% elsewidget 'ManageProductMeasurementUnitWidget' args [data.product, isDisabled, options] only %}
             {% elsewidget 'ProductMeasurementUnitWidgetPlugin' args [data.product, isDisabled, options] only %} {# @deprecated Use ManageProductMeasurementUnitWidget instead. #}
             {% nowidget %}
                 <div class="grid grid--bottom grid--justify">
