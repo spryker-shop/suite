@@ -265,7 +265,7 @@ class ProductPriceBulkPdoDataSetWriter implements DataSetWriterInterface
             $storeName = $this->dataFormatter->formatPostgresArrayString(
                 $this->dataFormatter->getCollectionDataByKey($storeCollection, ProductPriceHydratorStep::KEY_STORE_NAME)
             );
-            $priceData = $this->dataFormatter->formatPostgresDirtyArrayFromJson($this->dataFormatter->getCollectionDataByKey(
+            $priceData = $this->preparePriceDataString($this->dataFormatter->getCollectionDataByKey(
                 $priceProductStoreCollection,
                 ProductPriceHydratorStep::KEY_PRICE_DATA
             ));
@@ -295,6 +295,20 @@ class ProductPriceBulkPdoDataSetWriter implements DataSetWriterInterface
             ];
             $this->persistPriceProductStoreProductConcreteEntities($priceProductConcreteProductParameters);
         }
+    }
+
+    /**
+     * @param array $priceData
+     *
+     * @return string
+     */
+    protected function preparePriceDataString(array $priceData): string
+    {
+        $priceData = array_map(function ($price) {
+            return $price ?: '';
+        }, $priceData);
+
+        return pg_escape_string(json_encode($priceData));
     }
 
     /**

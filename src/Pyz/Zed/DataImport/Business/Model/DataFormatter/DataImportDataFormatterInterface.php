@@ -45,11 +45,4 @@ interface DataImportDataFormatterInterface
      * @return array
      */
     public function getCollectionDataByKey(array $collection, string $key);
-
-    /**
-     * @param array $values
-     *
-     * @return string
-     */
-    public function formatPostgresDirtyArrayFromJson(array $values): string;
 }
