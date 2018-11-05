@@ -1039,7 +1039,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
                 ProductAbstractHydratorStep::KEY_META_DESCRIPTION,
                 ProductAbstractHydratorStep::KEY_META_KEYWORDS,
             ]))
-            ->addStep(new ProductAbstractHydratorStep());
+            ->addStep(new ProductAbstractHydratorStep(
+                $this->createProductRepository()
+            ));
 
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
         $dataImporter->setDataSetWriter($this->createProductAbstractDataImportWriters());
