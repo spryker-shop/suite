@@ -13,8 +13,8 @@ use Spryker\Glue\AuthRestApi\Plugin\FormatAuthenticationErrorResponseHeadersPlug
 use Spryker\Glue\AuthRestApi\Plugin\RefreshTokensResourceRoutePlugin;
 use Spryker\Glue\CartItemsProductsRelationship\Plugin\CartItemsProductsRelationshipPlugin;
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
-use Spryker\Glue\CartsRestApi\Plugin\CartItemsResourceRoutePlugin;
-use Spryker\Glue\CartsRestApi\Plugin\CartsResourceRoutePlugin;
+use Spryker\Glue\CartsRestApi\Plugin\ResourceRoute\CartItemsResourceRoutePlugin;
+use Spryker\Glue\CartsRestApi\Plugin\ResourceRoute\CartsResourceRoutePlugin;
 use Spryker\Glue\CatalogSearchProductsResourceRelationship\Plugin\CatalogSearchAbstractProductsResourceRelationshipPlugin;
 use Spryker\Glue\CatalogSearchProductsResourceRelationship\Plugin\CatalogSearchSuggestionsAbstractProductsResourceRelationshipPlugin;
 use Spryker\Glue\CatalogSearchRestApi\CatalogSearchRestApiConfig;

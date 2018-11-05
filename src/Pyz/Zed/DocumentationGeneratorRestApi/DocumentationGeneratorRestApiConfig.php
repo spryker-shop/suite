@@ -5,11 +5,11 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\RestApiDocumentationGenerator;
+namespace Pyz\Zed\DocumentationGeneratorRestApi;
 
-use Spryker\Zed\RestApiDocumentationGenerator\RestApiDocumentationGeneratorConfig as SprykerRestApiDocumentationGeneratorConfig;
+use Spryker\Zed\DocumentationGeneratorRestApi\DocumentationGeneratorRestApiConfig as SprykerDocumentationGeneratorRestApiConfig;
 
-class RestApiDocumentationGeneratorConfig extends SprykerRestApiDocumentationGeneratorConfig
+class DocumentationGeneratorRestApiConfig extends SprykerDocumentationGeneratorRestApiConfig
 {
     /**
      * @project Only needed internal non-split project, not in public split project.

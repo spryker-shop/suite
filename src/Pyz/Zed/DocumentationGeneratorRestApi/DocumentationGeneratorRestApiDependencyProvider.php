@@ -5,13 +5,13 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\RestApiDocumentationGenerator;
+namespace Pyz\Zed\DocumentationGeneratorRestApi;
 
 use Spryker\Glue\GlueApplication\Plugin\Rest\ResourceRelationshipCollectionProviderPlugin;
 use Spryker\Glue\GlueApplication\Plugin\Rest\ResourceRoutePluginsProviderPlugin;
-use Spryker\Zed\RestApiDocumentationGenerator\RestApiDocumentationGeneratorDependencyProvider as SprykerRestApiDocumentationGeneratorDependencyProvider;
+use Spryker\Zed\DocumentationGeneratorRestApi\DocumentationGeneratorRestApiDependencyProvider as SprykerDocumentationGeneratorRestApiDependencyProvider;
 
-class RestApiDocumentationGeneratorDependencyProvider extends SprykerRestApiDocumentationGeneratorDependencyProvider
+class DocumentationGeneratorRestApiDependencyProvider extends SprykerDocumentationGeneratorRestApiDependencyProvider
 {
     /**
      * @return array
