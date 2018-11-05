@@ -36,6 +36,16 @@ class ProductListGuiDependencyProvider extends SprykerProductListGuiDependencyPr
     /**
      * @return \Spryker\Zed\ProductListGuiExtension\Dependency\Plugin\ProductListTableDataExpanderPluginInterface[]
      */
+    protected function getProductListTableQueryExpanderPlugins(): array
+    {
+        return [
+            new MerchantRelationshipTableExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\ProductListGuiExtension\Dependency\Plugin\ProductListTableDataExpanderPluginInterface[]
+     */
     protected function getProductListTableDataExpanderPlugins(): array
     {
         return [
