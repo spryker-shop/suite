@@ -78,7 +78,7 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
     {
         $this->productRepository = $productRepository;
 
-        self::$skuProductAbstractList = array_flip($productRepository->getSkuProductAbstractList());
+        static::$skuProductAbstractList = array_flip($productRepository->getSkuProductAbstractList());
     }
 
     /**
