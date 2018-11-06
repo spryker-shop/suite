@@ -8,6 +8,7 @@
 namespace Pyz\Zed\CompanyRole;
 
 use Generated\Shared\Transfer\CompanyRoleTransfer;
+use Spryker\Shared\Checkout\Plugin\Permission\PlaceOrderWithAmountUpToPermissionPlugin;
 use Spryker\Shared\CompanyUser\Plugin\AddCompanyUserPermissionPlugin;
 use Spryker\Shared\CompanyUserInvitation\Plugin\ManageCompanyUserInvitationPermissionPlugin;
 use Spryker\Zed\CompanyRole\CompanyRoleConfig as SprykerCompanyRoleConfig;
@@ -29,6 +30,7 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
             AddCompanyUserPermissionPlugin::KEY,
             ManageCompanyUserInvitationPermissionPlugin::KEY,
             CompanyUserStatusChangePermissionPlugin::KEY,
+            PlaceOrderWithAmountUpToPermissionPlugin::KEY,
         ];
     }
 
