@@ -12,12 +12,16 @@ use Codeception\Util\Stub;
 use Propel\Runtime\Propel;
 use Pyz\Zed\DataImport\Business\DataImportBusinessFactory;
 use Pyz\Zed\DataImport\DataImportConfig;
+use Spryker\Service\UtilEncoding\UtilEncodingService;
+use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\Availability\Business\AvailabilityFacade;
 use Spryker\Zed\Availability\Business\AvailabilityFacadeInterface;
 use Spryker\Zed\Currency\Business\CurrencyFacade;
 use Spryker\Zed\Currency\Business\CurrencyFacadeInterface;
 use Spryker\Zed\DataImport\Dependency\Propel\DataImportToPropelConnectionBridge;
+use Spryker\Zed\PriceProduct\Business\PriceProductFacade;
+use Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface;
 use Spryker\Zed\ProductBundle\Business\ProductBundleFacade;
 use Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface;
 use Spryker\Zed\Stock\Business\StockFacade;
@@ -38,11 +42,12 @@ use Spryker\Zed\Store\Business\StoreFacadeInterface;
 abstract class AbstractWriterTest extends Unit
 {
     /**
-     * @return object|\Pyz\Zed\DataImport\Business\DataImportBusinessFactory
+     * @return \Pyz\Zed\DataImport\Business\DataImportBusinessFactory
      */
     protected function getDataImportBusinessFactoryStub()
     {
-        return Stub::make(DataImportBusinessFactory::class, [
+        /** @var \Pyz\Zed\DataImport\Business\DataImportBusinessFactory $dataImportBusinessFactory */
+        $dataImportBusinessFactory = Stub::make(DataImportBusinessFactory::class, [
             'getPropelConnection' => $this->getPropelConnection(),
             'getStore' => $this->getStore(),
             'getStoreFacade' => $this->getStoreFacade(),
@@ -50,15 +55,22 @@ abstract class AbstractWriterTest extends Unit
             'getStockFacade' => $this->getStockFacade(),
             'getProductBundleFacade' => $this->getProductBundleFacade(),
             'getAvailabilityFacade' => $this->getAvailabilityFacade(),
+            'getPriceProductFacade' => $this->getPriceProductFacade(),
+            'getUtilEncodingService' => $this->getUtilEncodingService(),
         ]);
+
+        return $dataImportBusinessFactory;
     }
 
     /**
-     * @return object|\Pyz\Zed\DataImport\DataImportConfig
+     * @return \Pyz\Zed\DataImport\DataImportConfig
      */
     public function getDataImportConfigStub()
     {
-        return Stub::make(DataImportConfig::class);
+        /** @var \Pyz\Zed\DataImport\DataImportConfig $dataImportConfig */
+        $dataImportConfig = Stub::make(DataImportConfig::class);
+
+        return $dataImportConfig;
     }
 
     /**
@@ -115,5 +127,21 @@ abstract class AbstractWriterTest extends Unit
     protected function getAvailabilityFacade(): AvailabilityFacadeInterface
     {
         return new AvailabilityFacade();
+    }
+
+    /**
+     * @return \Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface
+     */
+    protected function getPriceProductFacade(): PriceProductFacadeInterface
+    {
+        return new PriceProductFacade();
+    }
+
+    /**
+     * @return \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface
+     */
+    protected function getUtilEncodingService(): UtilEncodingServiceInterface
+    {
+        return new UtilEncodingService();
     }
 }
