@@ -64,7 +64,7 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
     protected static $skuProductConcreteList = [];
 
     /**
-     * @var array Keys are abstract product sku values. Values are set to "true" when concrete product added.
+     * @var array Keys are abstract product sku values. Values are set to "true" when abstract product added.
      */
     protected static $resolved = [];
 
@@ -75,7 +75,7 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
     {
         $this->productRepository = $productRepository;
 
-        self::$skuProductConcreteList = array_flip($productRepository->getSkuProductConcreteList());
+        static::$skuProductConcreteList = array_flip($productRepository->getSkuProductConcreteList());
     }
 
     /**
@@ -103,15 +103,15 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
     {
         $sku = $dataSet[static::KEY_ABSTRACT_SKU];
 
-        if (isset(self::$skuProductConcreteList[$sku])) {
-            throw new InvalidSkuProductException(sprintf('Abstract product with the same sku "%s" was found in DB.', $sku));
+        if (isset(static::$skuProductConcreteList[$sku])) {
+            throw new InvalidSkuProductException(sprintf('Concrete product with SKU "%s" already exists.', $sku));
         }
 
-        if (isset(self::$resolved[$sku])) {
-            throw new InvalidSkuProductException(sprintf('Concrete product with the same sku "%s" has been already imported.', $sku));
+        if (isset(static::$resolved[$sku])) {
+            throw new InvalidSkuProductException(sprintf('Abstract product with SKU "%s" has been already imported.', $sku));
         }
 
-        self::$resolved[$sku] = true;
+        static::$resolved[$sku] = true;
     }
 
     /**

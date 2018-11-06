@@ -106,11 +106,11 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
         $sku = $dataSet[static::KEY_CONCRETE_SKU];
 
         if (isset(self::$skuProductAbstractList[$sku])) {
-            throw new InvalidSkuProductException(sprintf('Concrete product with the same sku "%s" was found in DB.', $sku));
+            throw new InvalidSkuProductException(sprintf('Abstract product with SKU "%s" already exists.', $sku));
         }
 
         if (isset(self::$resolved[$sku])) {
-            throw new InvalidSkuProductException(sprintf('Abstract product with the same sku "%s" has been already imported.', $sku));
+            throw new InvalidSkuProductException(sprintf('Concrete product with SKU "%s" has been already imported.', $sku));
         }
 
         self::$resolved[$sku] = true;
