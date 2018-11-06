@@ -7,7 +7,6 @@
 
 namespace PyzTest\Yves\Availability\Presentation;
 
-use Codeception\Scenario;
 use PyzTest\Yves\Availability\AvailabilityPresentationTester;
 use PyzTest\Yves\Cart\PageObject\CartListPage;
 use PyzTest\Yves\Product\PageObject\ProductDetailPage;
@@ -32,10 +31,8 @@ class CheckoutAvailabilityCest
      *
      * @return void
      */
-    public function testCheckoutItemWithAvailability(AvailabilityPresentationTester $i, Scenario $scenario)
+    public function testCheckoutItemWithAvailability(AvailabilityPresentationTester $i)
     {
-        $scenario->skip('Re-enable the test when VM with PHP 7.2 is available.');
-
         $i->wantTo('Checkout item with stock');
         $i->expectTo('Availability changed during SM processing.');
 

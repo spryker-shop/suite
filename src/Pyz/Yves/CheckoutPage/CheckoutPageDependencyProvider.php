@@ -17,6 +17,7 @@ use SprykerShop\Yves\CustomerPage\Form\DataProvider\CheckoutAddressFormDataProvi
 use SprykerShop\Yves\CustomerPage\Form\GuestForm;
 use SprykerShop\Yves\CustomerPage\Form\LoginForm;
 use SprykerShop\Yves\CustomerPage\Form\RegisterForm;
+use SprykerShop\Yves\CustomerPage\Plugin\RegisterFormTypePlugin;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThresholdWidgetPlugin;
 
 class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyProvider
@@ -32,13 +33,21 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     }
 
     /**
+     * @return \Symfony\Component\Form\FormBuilderInterface
+     */
+    protected function createRegisterFormNamedBuilder()
+    {
+        return (new RegisterFormTypePlugin())->getRegisterFormNamedBuilder(CustomerCheckoutForm::SUB_FORM_CUSTOMER, CustomerCheckoutForm::OPTIONS_SUB_FORM_CUSTOMER);
+    }
+
+    /**
      * @return mixed[]
      */
     protected function getCustomerStepSubForms()
     {
         return [
             LoginForm::class,
-            $this->getCustomerCheckoutForm(RegisterForm::class, RegisterForm::BLOCK_PREFIX),
+            $this->getCustomerCheckoutForm($this->createRegisterFormNamedBuilder(), RegisterForm::BLOCK_PREFIX),
             $this->getCustomerCheckoutForm(GuestForm::class, GuestForm::BLOCK_PREFIX),
         ];
     }
@@ -50,7 +59,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     {
         return [
             LoginForm::class,
-            $this->getCustomerCheckoutForm(RegisterForm::class, RegisterForm::BLOCK_PREFIX),
+            $this->getCustomerCheckoutForm($this->createRegisterFormNamedBuilder(), RegisterForm::BLOCK_PREFIX),
             $this->getCustomerCheckoutForm(GuestForm::class, GuestForm::BLOCK_PREFIX),
         ];
     }
