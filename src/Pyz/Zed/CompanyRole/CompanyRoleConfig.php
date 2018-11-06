@@ -30,7 +30,6 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
             AddCompanyUserPermissionPlugin::KEY,
             ManageCompanyUserInvitationPermissionPlugin::KEY,
             CompanyUserStatusChangePermissionPlugin::KEY,
-            PlaceOrderWithAmountUpToPermissionPlugin::KEY,
         ];
     }
 
@@ -43,6 +42,7 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
             AddCartItemPermissionPlugin::KEY,
             ChangeCartItemPermissionPlugin::KEY,
             RemoveCartItemPermissionPlugin::KEY,
+            PlaceOrderWithAmountUpToPermissionPlugin::KEY,
         ];
     }
 
