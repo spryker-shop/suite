@@ -32,6 +32,7 @@ use SprykerShop\Yves\MultiCartWidget\Widget\MultiCartListWidget;
 use SprykerShop\Yves\MultiCartWidget\Widget\MultiCartMenuItemWidget;
 use SprykerShop\Yves\MultiCartWidget\Widget\QuickOrderPageWidget;
 use SprykerShop\Yves\NavigationWidget\Widget\NavigationWidget;
+use SprykerShop\Yves\NewsletterWidget\Widget\NewsletterSubscriptionFooterWidget;
 use SprykerShop\Yves\NewsletterWidget\Widget\NewsletterSubscriptionSummaryWidget;
 use SprykerShop\Yves\PriceProductVolumeWidget\Widget\ProductPriceVolumeWidget;
 use SprykerShop\Yves\PriceWidget\Widget\PriceModeSwitcherWidget;
@@ -115,6 +116,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             MultiCartListWidget::class,
             MultiCartMenuItemWidget::class,
             NavigationWidget::class,
+            NewsletterSubscriptionFooterWidget::class,
             NewsletterSubscriptionSummaryWidget::class,
             PdpProductRelationWidget::class,
             PdpProductReplacementForListWidget::class,
