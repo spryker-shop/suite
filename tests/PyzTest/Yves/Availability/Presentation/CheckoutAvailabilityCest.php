@@ -27,7 +27,6 @@ class CheckoutAvailabilityCest
 {
     /**
      * @param \PyzTest\Yves\Availability\AvailabilityPresentationTester $i
-     * @param \Codeception\Scenario $scenario
      *
      * @return void
      */
