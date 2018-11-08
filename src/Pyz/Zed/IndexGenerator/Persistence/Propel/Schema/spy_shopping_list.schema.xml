@@ -27,6 +27,14 @@
       <index-column name="fk_shopping_list_permission_group"/>
     </index>
   </table>
+  <table name="spy_shopping_list_company_business_unit_blacklist">
+    <index name="index-spy_shopping_list_company_business_unit_blac-02b93f3310f1">
+      <index-column name="fk_shopping_list_company_business_unit"/>
+    </index>
+    <index name="index-spy_shopping_list_company_business_unit_blac-3a6bca02d731">
+      <index-column name="fk_company_user"/>
+    </index>
+  </table>
   <table name="spy_shopping_list_permission_group_to_permission">
     <index name="index-spy_shopping_list_permission_group_to_permis-7157e52256dc">
       <index-column name="fk_shopping_list_permission_group"/>
