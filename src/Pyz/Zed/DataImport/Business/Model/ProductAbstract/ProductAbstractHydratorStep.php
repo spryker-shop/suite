@@ -11,9 +11,7 @@ use Generated\Shared\Transfer\SpyProductAbstractEntityTransfer;
 use Generated\Shared\Transfer\SpyProductAbstractLocalizedAttributesEntityTransfer;
 use Generated\Shared\Transfer\SpyProductCategoryEntityTransfer;
 use Generated\Shared\Transfer\SpyUrlEntityTransfer;
-use Pyz\Zed\DataImport\Business\Exception\InvalidSkuProductException;
 use Pyz\Zed\DataImport\Business\Model\Product\ProductLocalizedAttributesExtractorStep;
-use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
 use Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
@@ -54,64 +52,16 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
     public const KEY_ID_PRODUCT_ABSTRACT = 'id_product_abstract';
 
     /**
-     * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository
-     */
-    protected $productRepository;
-
-    /**
-     * @var array Keys are concrete product sku values.
-     */
-    protected static $skuProductConcreteList = [];
-
-    /**
-     * @var array Keys are abstract product sku values. Values are set to "true" when abstract product added.
-     */
-    protected static $resolved = [];
-
-    /**
-     * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository $productRepository
-     */
-    public function __construct(ProductRepository $productRepository)
-    {
-        $this->productRepository = $productRepository;
-
-        static::$skuProductConcreteList = array_flip($productRepository->getSkuProductConcreteList());
-    }
-
-    /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
      * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {
-        $this->checkSkuProductAlreadyExists($dataSet);
         $this->importProductAbstract($dataSet);
         $this->importProductAbstractLocalizedAttributes($dataSet);
         $this->importProductCategories($dataSet);
         $this->importProductUrls($dataSet);
-    }
-
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @throws \Pyz\Zed\DataImport\Business\Exception\InvalidSkuProductException
-     *
-     * @return void
-     */
-    protected function checkSkuProductAlreadyExists(DataSetInterface $dataSet): void
-    {
-        $sku = $dataSet[static::KEY_ABSTRACT_SKU];
-
-        if (isset(static::$skuProductConcreteList[$sku])) {
-            throw new InvalidSkuProductException(sprintf('Concrete product with SKU "%s" already exists.', $sku));
-        }
-
-        if (isset(static::$resolved[$sku])) {
-            throw new InvalidSkuProductException(sprintf('Abstract product with SKU "%s" has been already imported.', $sku));
-        }
-
-        static::$resolved[$sku] = true;
     }
 
     /**

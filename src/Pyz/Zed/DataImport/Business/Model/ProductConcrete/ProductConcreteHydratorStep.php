@@ -12,7 +12,6 @@ use Generated\Shared\Transfer\SpyProductEntityTransfer;
 use Generated\Shared\Transfer\SpyProductLocalizedAttributesEntityTransfer;
 use Generated\Shared\Transfer\SpyProductSearchEntityTransfer;
 use Orm\Zed\Product\Persistence\Map\SpyProductTableMap;
-use Pyz\Zed\DataImport\Business\Exception\InvalidSkuProductException;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
@@ -62,23 +61,11 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
     protected static $isProductColumnBuffer = [];
 
     /**
-     * @var array Keys are abstract product sku values.
-     */
-    protected static $skuProductAbstractList = [];
-
-    /**
-     * @var array Keys are concrete product sku values. Values are set to "true" when concrete product added.
-     */
-    protected static $resolved = [];
-
-    /**
      * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository $productRepository
      */
     public function __construct(ProductRepository $productRepository)
     {
         $this->productRepository = $productRepository;
-
-        static::$skuProductAbstractList = array_flip($productRepository->getSkuProductAbstractList());
     }
 
     /**
@@ -88,32 +75,9 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
      */
     public function execute(DataSetInterface $dataSet): void
     {
-        $this->checkSkuProductAlreadyExists($dataSet);
         $this->importProduct($dataSet);
         $this->importProductLocalizedAttributes($dataSet);
         $this->importBundles($dataSet);
-    }
-
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @throws \Pyz\Zed\DataImport\Business\Exception\InvalidSkuProductException
-     *
-     * @return void
-     */
-    protected function checkSkuProductAlreadyExists(DataSetInterface $dataSet): void
-    {
-        $sku = $dataSet[static::KEY_CONCRETE_SKU];
-
-        if (isset(static::$skuProductAbstractList[$sku])) {
-            throw new InvalidSkuProductException(sprintf('Abstract product with SKU "%s" already exists.', $sku));
-        }
-
-        if (isset(static::$resolved[$sku])) {
-            throw new InvalidSkuProductException(sprintf('Concrete product with SKU "%s" has been already imported.', $sku));
-        }
-
-        static::$resolved[$sku] = true;
     }
 
     /**
