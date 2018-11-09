@@ -1564,21 +1564,20 @@
         },
         {
             "name": "php-amqplib/php-amqplib",
-            "version": "2.8.2",
+            "version": "v2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-amqplib/php-amqplib.git",
-                "reference": "20fc065ec03c5944cd3ada9adc56625b449b158e"
+                "reference": "7df8553bd8b347cf6e919dd4a21e75f371547aa0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/20fc065ec03c5944cd3ada9adc56625b449b158e",
-                "reference": "20fc065ec03c5944cd3ada9adc56625b449b158e",
+                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/7df8553bd8b347cf6e919dd4a21e75f371547aa0",
+                "reference": "7df8553bd8b347cf6e919dd4a21e75f371547aa0",
                 "shasum": ""
             },
             "require": {
                 "ext-bcmath": "*",
-                "ext-sockets": "*",
                 "php": ">=5.4.0"
             },
             "replace": {
@@ -1589,6 +1588,9 @@
                 "phpunit/phpunit": "^4.8",
                 "scrutinizer/ocular": "^1.1",
                 "squizlabs/php_codesniffer": "^2.5"
+            },
+            "suggest": {
+                "ext-sockets": "Use AMQPSocketConnection"
             },
             "type": "library",
             "extra": {
@@ -1619,11 +1621,6 @@
                     "name": "Raúl Araya",
                     "email": "nubeiro@gmail.com",
                     "role": "Maintainer"
-                },
-                {
-                    "name": "Luke Bakken",
-                    "email": "luke@bakken.io",
-                    "role": "Maintainer"
                 }
             ],
             "description": "Formerly videlalvaro/php-amqplib.  This library is a pure PHP implementation of the AMQP protocol. It's been tested against RabbitMQ.",
@@ -1633,7 +1630,7 @@
                 "queue",
                 "rabbitmq"
             ],
-            "time": "2018-10-31T14:27:47+00:00"
+            "time": "2018-10-23T18:48:24+00:00"
         },
         {
             "name": "phpdocumentor/graphviz",
@@ -2612,7 +2609,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "59a2cf41ca6e1b0e82d144c07ce2dd0859ca34d3"
+                "reference": "106aa57cb1a438e592d85e7b95742eef7fc2c9d3"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2882,7 +2879,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-11-05T14:08:05+00:00"
+            "time": "2018-11-08T22:00:10+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2890,7 +2887,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "c676ee3d66880588e7ba81f38b2996256c1c84fc"
+                "reference": "91e96f96fa3e29edc00ae0a0101128c647bd51ce"
             },
             "require": {
                 "php": ">=7.1"
@@ -2965,7 +2962,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-11-05T15:26:16+00:00"
+            "time": "2018-11-09T13:23:33+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8571,12 +8568,13 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryk.git",
-                "reference": "f5de4f192f020521a30f7492451b43869ca2a93e"
+                "reference": "dba81bdf0a37184b8c2b6f0cdc670e8360c488ff"
             },
             "require": {
                 "php": ">=7.1",
                 "roave/better-reflection": "^2.0 || ^3.0",
                 "spryker/kernel": "^3.17.0",
+                "symfony/console": "^3.4.0 || ^4.0.0",
                 "symfony/finder": "^3.4.0 || ^4.0.0",
                 "symfony/yaml": "^3.4.9",
                 "twig/twig": "^1.34 || ^2.0.0",
@@ -8612,6 +8610,9 @@
                     "Spryker\\Shared\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Shared/FooBar/",
                     "Spryker\\Yves\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Yves/FooBar/",
                     "Spryker\\Zed\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Zed/FooBar/",
+                    "Spryker\\Zed\\ZipZap\\": "tests/_support/Fixtures/Spryker/Zed/ZipZap/",
+                    "Spryker\\Client\\ZipZap\\": "tests/_support/Fixtures/Spryker/Client/ZipZap/",
+                    "Spryker\\Service\\ZipZap\\": "tests/_support/Fixtures/Spryker/Service/ZipZap/",
                     "SprykerTest\\Zed\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/tests/SprykerTest/Zed/FooBar/"
                 }
             },
@@ -8623,10 +8624,10 @@
                     "GitHook\\Composer\\Scripts\\HookInstaller::installGitHook"
                 ],
                 "cs-check": [
-                    "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/ tests/"
+                    "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/ tests/ --ignore='/Fixtures/'"
                 ],
                 "cs-fix": [
-                    "phpcbf --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/ tests/"
+                    "phpcbf --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/ tests/ --ignore='/Fixtures/'"
                 ],
                 "phpstan": [
                     "phpstan analyse -l 7 -c phpstan.neon src/"
@@ -8636,7 +8637,7 @@
                 "MIT"
             ],
             "description": "Spryker Spryk build tool",
-            "time": "2018-11-03T22:07:42+00:00"
+            "time": "2018-11-05T19:37:23+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
