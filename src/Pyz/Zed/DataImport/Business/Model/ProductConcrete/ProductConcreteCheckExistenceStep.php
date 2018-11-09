@@ -17,7 +17,7 @@ class ProductConcreteCheckExistenceStep implements DataImportStepInterface
     public const KEY_CONCRETE_SKU = 'concrete_sku';
 
     /**
-     * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository
+     * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface
      */
     protected $productRepository;
 

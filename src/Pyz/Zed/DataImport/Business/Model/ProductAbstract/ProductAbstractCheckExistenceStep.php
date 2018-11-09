@@ -17,7 +17,7 @@ class ProductAbstractCheckExistenceStep implements DataImportStepInterface
     public const KEY_ABSTRACT_SKU = 'abstract_sku';
 
     /**
-     * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository
+     * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface
      */
     protected $productRepository;
 
