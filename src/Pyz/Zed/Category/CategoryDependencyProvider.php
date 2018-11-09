@@ -68,6 +68,9 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
         return $readPlugins;
     }
 
+    /**
+     * @return array
+     */
     protected function getCategoryPostReadPluginStack(): array
     {
         return [
@@ -96,6 +99,9 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
         ];
     }
 
+    /**
+     * @return array
+     */
     protected function getCategoryPostUpdatePluginStack(): array
     {
         return [
@@ -103,6 +109,9 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
         ];
     }
 
+    /**
+     * @return array
+     */
     protected function getCategoryPostCreatePluginStack(): array
     {
         return [
