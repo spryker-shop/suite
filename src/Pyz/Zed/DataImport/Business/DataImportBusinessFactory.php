@@ -330,9 +330,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductConcreteHydratorStep::BULK_SIZE);
         $dataSetStepBroker
-            ->addStep(new ProductConcreteCheckExistenceStep(
-                $this->createProductRepository()
-            ))
+            ->addStep($this->createProductConcreteCheckExistenceStep())
             ->addStep($this->createAddLocalesStep())
             ->addStep($this->createAttributesExtractorStep())
             ->addStep($this->createProductLocalizedAttributesExtractorStep([
@@ -348,6 +346,16 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         $dataImporter->setDataSetWriter($this->createProductConcreteDataImportWriters());
 
         return $dataImporter;
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
+     */
+    protected function createProductConcreteCheckExistenceStep()
+    {
+        return new ProductConcreteCheckExistenceStep(
+            $this->createProductRepository()
+        );
     }
 
     /**
@@ -1032,9 +1040,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductAbstractHydratorStep::BULK_SIZE);
         $dataSetStepBroker
-            ->addStep(new ProductAbstractCheckExistenceStep(
-                $this->createProductRepository()
-            ))
+            ->addStep($this->createProductAbstractCheckExistenceStep())
             ->addStep($this->createAddLocalesStep())
             ->addStep($this->createAddCategoryKeysStep())
             ->addStep($this->createTaxSetNameToIdTaxSetStep(ProductAbstractHydratorStep::KEY_TAX_SET_NAME))
@@ -1053,6 +1059,16 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         $dataImporter->setDataSetWriter($this->createProductAbstractDataImportWriters());
 
         return $dataImporter;
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
+     */
+    protected function createProductAbstractCheckExistenceStep()
+    {
+        return new ProductAbstractCheckExistenceStep(
+            $this->createProductRepository()
+        );
     }
 
     /**
