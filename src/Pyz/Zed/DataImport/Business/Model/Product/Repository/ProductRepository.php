@@ -76,7 +76,6 @@ class ProductRepository implements ProductRepositoryInterface
     {
         return SpyProductAbstractQuery::create()
             ->select([SpyProductAbstractTableMap::COL_SKU])
-            ->setFormatter(new SimpleArrayFormatter())
             ->find()
             ->toArray();
     }
@@ -88,7 +87,6 @@ class ProductRepository implements ProductRepositoryInterface
     {
         return SpyProductQuery::create()
             ->select([SpyProductTableMap::COL_SKU])
-            ->setFormatter(new SimpleArrayFormatter())
             ->find()
             ->toArray();
     }
