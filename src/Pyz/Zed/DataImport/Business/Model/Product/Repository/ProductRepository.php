@@ -13,7 +13,6 @@ use Orm\Zed\Product\Persistence\SpyProduct;
 use Orm\Zed\Product\Persistence\SpyProductAbstract;
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Orm\Zed\Product\Persistence\SpyProductQuery;
-use Propel\Runtime\Formatter\SimpleArrayFormatter;
 use Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException;
 
 class ProductRepository implements ProductRepositoryInterface
