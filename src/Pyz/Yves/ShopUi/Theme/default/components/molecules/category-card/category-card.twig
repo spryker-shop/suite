@@ -1,0 +1,32 @@
+{% extends molecule('card') %}
+
+{% define config = {
+    name: 'category-card',
+    tag: 'article'
+} %}
+
+{% define data = {
+    name: required,
+    url: required,
+    imageUrl: required
+} %}
+
+{% block image %}
+    <a href="{{data.url}}">
+        {% include atom('thumbnail') with {
+            attributes: {
+                alt: data.name,
+                src: data.imageUrl,
+                title: data.name
+            }
+        } only %}
+    </a>
+{% endblock %}
+
+{% block content %}
+    {% block name %}
+        <p class="text-center">
+            <strong>{{ data.name }}</strong>
+        </p>
+    {% endblock %}
+{% endblock %}
