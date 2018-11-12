@@ -8,7 +8,7 @@
 namespace Pyz\Client\CartsRestApi;
 
 use Spryker\Client\CartsRestApi\CartsRestApiDependencyProvider as SprykerCartsRestApiDependencyProvider;
-use Spryker\Client\CartsRestApi\Plugin\QuoteCollectionReader\CartQuoteCollectionReaderPlugin;
+use Spryker\Client\CartsRestApi\Plugin\QuoteCollectionReader\SingleQuoteCollectionReaderPlugin;
 use Spryker\Client\CartsRestApiExtension\Dependency\Plugin\QuoteCollectionReaderPluginInterface;
 
 class CartsRestApiDependencyProvider extends SprykerCartsRestApiDependencyProvider
@@ -18,6 +18,6 @@ class CartsRestApiDependencyProvider extends SprykerCartsRestApiDependencyProvid
      */
     protected function getQuoteCollectionReaderPlugin(): QuoteCollectionReaderPluginInterface
     {
-        return new CartQuoteCollectionReaderPlugin();
+        return new SingleQuoteCollectionReaderPlugin();
     }
 }

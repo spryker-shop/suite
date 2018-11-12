@@ -18,12 +18,14 @@ class CheckoutRestApiConfig extends SprykerCheckoutRestApiConfig
     ];
 
     protected const PAYMENT_METHOD_REQUIRED_FIELDS = [
-        'dummyPaymentInvoice.dateOfBirth',
-        'dummyPaymentCreditCard.cardType',
-        'dummyPaymentCreditCard.cardNumber',
-        'dummyPaymentCreditCard.nameOnCard',
-        'dummyPaymentCreditCard.cardExpiresMonth',
-        'dummyPaymentCreditCard.cardExpiresYear',
-        'dummyPaymentCreditCard.cardSecurityCode',
+        'dummyPaymentInvoice' => ['dummyPaymentInvoice.dateOfBirth'],
+        'dummyPaymentCreditCard' => [
+            'dummyPaymentCreditCard.cardType',
+            'dummyPaymentCreditCard.cardNumber',
+            'dummyPaymentCreditCard.nameOnCard',
+            'dummyPaymentCreditCard.cardExpiresMonth',
+            'dummyPaymentCreditCard.cardExpiresYear',
+            'dummyPaymentCreditCard.cardSecurityCode',
+        ],
     ];
 }
