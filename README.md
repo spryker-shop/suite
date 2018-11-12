@@ -17,7 +17,7 @@ Shop (internal)
 License: [MIT](LICENSE)
 
 ## Installation
-In order to install Spryker Suite on your machine, you can follow the instructions described in the link below :
+In order to install the Shop Suite on your machine, you can follow the instructions described in the link below:
 
 * [Installation Guide](https://academy.spryker.com/getting_started/installation_guide.html)
 
