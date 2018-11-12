@@ -29,9 +29,9 @@ class CustomerAccessConfig extends SprykerCustomerAccessConfig
     }
 
     /**
-     * Gets default content type access for install (shopping list content type will be created with restricted access).
+     * Gets default content type access for install.
      *
-     * @return array
+     * @return bool[]
      */
     public function getDefaultContentTypeAccess(): array
     {
