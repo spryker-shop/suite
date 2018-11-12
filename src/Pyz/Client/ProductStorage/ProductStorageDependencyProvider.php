@@ -38,6 +38,23 @@ class ProductStorageDependencyProvider extends SprykerProductStorageDependencyPr
     }
 
     /**
+     * @return \Spryker\Client\ProductStorage\Dependency\Plugin\ProductViewExpanderPluginInterface[]
+     */
+    protected function getAbstractProductViewExpanderPlugins()
+    {
+        /** @var \Spryker\Client\ProductStorage\Dependency\Plugin\ProductViewExpanderPluginInterface[] $plugins */
+        $plugins = [
+            new ProductViewDiscontinuedOptionsExpanderPlugin(), #ProductDiscontinuedFeature
+            new ProductViewPriceExpanderPlugin(),
+            new ProductViewAvailabilityStorageExpanderPlugin(),
+            new ProductDiscontinuedProductAvailabilityExpanderPlugin(), #ProductDiscontinuedFeature
+            new ProductViewImageExpanderPlugin(),
+        ];
+
+        return $plugins;
+    }
+
+    /**
      * @return \Spryker\Client\ProductStorageExtension\Dependency\Plugin\ProductAbstractRestrictionPluginInterface[]
      */
     protected function getProductAbstractRestrictionPlugins(): array
