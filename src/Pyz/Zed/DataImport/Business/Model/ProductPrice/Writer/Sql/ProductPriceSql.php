@@ -129,7 +129,9 @@ SELECT 1;";
       spy_currency.id_currency,
       spy_store.id_store,
       spy_price_product.id_price_product,
-      spy_price_product_store.id_price_product_store as idProductStore
+      spy_price_product_store.id_price_product_store as idProductStore,
+      input.price_data,
+      input.price_data_checksum
       FROM (
            SELECT
              unnest(?::INTEGER []) AS gross_price,
@@ -137,7 +139,9 @@ SELECT 1;";
              unnest(?::VARCHAR[]) AS currency,
              unnest(?::VARCHAR[]) AS store,
              unnest(?::VARCHAR[]) AS sku,
-             unnest(?::VARCHAR[]) AS price_type
+             unnest(?::VARCHAR[]) AS price_type,
+             json_array_elements(?) AS price_data,
+             unnest(?::VARCHAR[]) AS price_data_checksum
          ) input  
       INNER JOIN spy_price_type ON spy_price_type.name = input.price_type
       INNER JOIN spy_store ON spy_store.name = input.store
@@ -150,7 +154,9 @@ SELECT 1;";
     UPDATE spy_price_product_store
     SET
       gross_price = records.gross_price,
-      net_price = records.net_price
+      net_price = records.net_price,
+      price_data = records.price_data,
+      price_data_checksum = records.price_data_checksum
     FROM records
     WHERE spy_price_product_store.fk_store = records.id_store AND 
     spy_price_product_store.fk_price_product = records.id_price_product AND 
@@ -163,7 +169,9 @@ SELECT 1;";
       fk_store,
       gross_price,
       net_price,
-      fk_price_product
+      fk_price_product,
+      price_data,
+      price_data_checksum
     ) (
       SELECT
         nextval('spy_price_product_store_pk_seq'),
@@ -171,7 +179,9 @@ SELECT 1;";
         id_store,
         gross_price,
         net_price,
-        id_price_product
+        id_price_product,
+        price_data,
+        price_data_checksum
     FROM records
     WHERE idProductStore IS NULL
   ) RETURNING id_price_product_store

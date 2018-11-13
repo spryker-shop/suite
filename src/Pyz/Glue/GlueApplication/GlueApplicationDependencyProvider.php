@@ -48,6 +48,8 @@ use Spryker\Glue\ProductImageSetsRestApi\Plugin\AbstractProductImageSetsRoutePlu
 use Spryker\Glue\ProductImageSetsRestApi\Plugin\ConcreteProductImageSetsRoutePlugin;
 use Spryker\Glue\ProductImageSetsRestApi\Plugin\Relationship\AbstractProductsProductImageSetsResourceRelationshipPlugin;
 use Spryker\Glue\ProductImageSetsRestApi\Plugin\Relationship\ConcreteProductsProductImageSetsResourceRelationshipPlugin;
+use Spryker\Glue\ProductLabelsRestApi\Plugin\GlueApplication\ProductLabelsRelationshipByResourceIdPlugin;
+use Spryker\Glue\ProductLabelsRestApi\Plugin\GlueApplication\ProductLabelsResourceRoutePlugin;
 use Spryker\Glue\ProductPricesRestApi\Plugin\AbstractProductPricesRoutePlugin;
 use Spryker\Glue\ProductPricesRestApi\Plugin\ConcreteProductPricesRoutePlugin;
 use Spryker\Glue\ProductsCategoriesResourceRelationship\Plugin\AbstractProductsCategoriesResourceRelationshipPlugin;
@@ -109,6 +111,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new AddressesResourceRoutePlugin(),
             new GuestCartsResourceRoutePlugin(),
             new GuestCartItemsResourceRoutePlugin(),
+            new ProductLabelsResourceRoutePlugin(),
             new CheckoutDataResourcePlugin(),
             new CheckoutResourcePlugin(),
         ];
@@ -234,6 +237,10 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         $resourceRelationshipCollection->addRelationship(
             CustomersRestApiConfig::RESOURCE_CUSTOMERS,
             new WishlistRelationshipByResourceIdPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
+            new ProductLabelsRelationshipByResourceIdPlugin()
         );
         $resourceRelationshipCollection->addRelationship(
             CheckoutRestApiConfig::RESOURCE_CHECKOUT,
