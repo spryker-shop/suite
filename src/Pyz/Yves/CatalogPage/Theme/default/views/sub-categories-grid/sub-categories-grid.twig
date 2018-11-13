@@ -30,9 +30,9 @@
         {% include molecule('category-card') with {
             class: 'col col--sm-12 col--md-6 col--lg-6 col--xl-4',
             data: {
+                id: childCategory.id_category,
                 name: childCategory.name,
-                url: childCategory.url,
-                imageUrl: ''
+                url: childCategory.url
             }
         } only %}
     {% endfor %}

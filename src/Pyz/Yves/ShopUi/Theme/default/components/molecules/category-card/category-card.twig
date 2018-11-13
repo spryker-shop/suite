@@ -6,20 +6,15 @@
 } %}
 
 {% define data = {
+    id: required,
     name: required,
     url: required,
-    imageUrl: required
+    imageUrl: ''
 } %}
 
 {% block image %}
     <a href="{{data.url}}">
-        {% include atom('thumbnail') with {
-            attributes: {
-                alt: data.name,
-                src: data.imageUrl,
-                title: data.name
-            }
-        } only %}
+        {% widget 'CategoryImageStorageWidget' args [data.id, data.name] only %}{% endwidget %}
     </a>
 {% endblock %}
 
