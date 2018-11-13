@@ -291,8 +291,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
             new CustomerAddressesUuidWriterConsole(),
             new DeleteExpiredGuestQuoteConsole(),
-
-            new PropelSchemaXmlNameValidatorConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
@@ -325,6 +323,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new CompletionCommand();
             $commands[] = new DataBuilderGeneratorConsole();
             $commands[] = new PropelSchemaValidatorConsole();
+            $commands[] = new PropelSchemaXmlNameValidatorConsole();
             $commands[] = new DataImportDumpConsole();
             $commands[] = new GenerateGlueIdeAutoCompletionConsole();
             $commands[] = new PropelAbstractValidateConsole();
