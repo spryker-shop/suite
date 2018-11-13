@@ -7,6 +7,7 @@
 
 namespace PyzTest\Zed\DataImport\Communication\Plugin;
 
+use Codeception\Configuration;
 use Codeception\Test\Unit;
 use Codeception\Util\Stub;
 use Generated\Shared\Transfer\DataImporterConfigurationTransfer;
@@ -14,9 +15,11 @@ use Generated\Shared\Transfer\DataImporterReaderConfigurationTransfer;
 use Propel\Runtime\Propel;
 use Pyz\Zed\DataImport\Business\DataImportBusinessFactory;
 use Pyz\Zed\DataImport\DataImportConfig;
+use Spryker\Service\UtilEncoding\UtilEncodingService;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterCollection;
 use Spryker\Zed\DataImport\Dependency\Propel\DataImportToPropelConnectionBridge;
+use Spryker\Zed\PriceProduct\Business\PriceProductFacade;
 
 /**
  * Auto-generated group annotations
@@ -41,11 +44,14 @@ abstract class AbstractWriterPluginTest extends Unit
     abstract public function getDataImportCsvFile(): string;
 
     /**
-     * @return object|\Pyz\Zed\DataImport\Business\DataImportBusinessFactory
+     * @return \Pyz\Zed\DataImport\Business\DataImportBusinessFactory
      */
     protected function getDataImportBusinessFactoryStub()
     {
-        return Stub::make(DataImportBusinessFactory::class, [
+        /**
+         * @var \Pyz\Zed\DataImport\Business\DataImportBusinessFactory
+         */
+        $dataImportBusinessFactory = Stub::make(DataImportBusinessFactory::class, [
             'createProductAbstractDataImportWriters' => $this->createDataImportWriters(),
             'createProductAbstractStoreDataImportWriters' => $this->createDataImportWriters(),
             'createProductPriceDataImportWriters' => $this->createDataImportWriters(),
@@ -55,15 +61,20 @@ abstract class AbstractWriterPluginTest extends Unit
             'getConfig' => $this->getDataImportConfigStub(),
             'getPropelConnection' => $this->getPropelConnection(),
             'getStore' => $this->getStore(),
+            'getPriceProductFacade' => new PriceProductFacade(),
+            'getUtilEncodingService' => new UtilEncodingService(),
         ]);
+
+        return $dataImportBusinessFactory;
     }
 
     /**
-     * @return object|\Pyz\Zed\DataImport\DataImportConfig
+     * @return \Pyz\Zed\DataImport\DataImportConfig
      */
     public function getDataImportConfigStub()
     {
-        return Stub::make(DataImportConfig::class, [
+        /** @var \Pyz\Zed\DataImport\DataImportConfig $dataImportConfig */
+        $dataImportConfig = Stub::make(DataImportConfig::class, [
             'getProductAbstractDataImporterConfiguration' => $this->getDataImporterConfiguration(),
             'getProductStockDataImporterConfiguration' => $this->getDataImporterConfiguration(),
             'getProductAbstractStoreDataImporterConfiguration' => $this->getDataImporterConfiguration(),
@@ -71,6 +82,8 @@ abstract class AbstractWriterPluginTest extends Unit
             'getProductConcreteDataImporterConfiguration' => $this->getDataImporterConfiguration(),
             'getProductImageDataImporterConfiguration' => $this->getDataImporterConfiguration(),
         ]);
+
+        return $dataImportConfig;
     }
 
     /**
@@ -87,7 +100,7 @@ abstract class AbstractWriterPluginTest extends Unit
     public function getDataImporterConfiguration(): DataImporterConfigurationTransfer
     {
         $dataImporterReaderConfigurationTransfer = new DataImporterReaderConfigurationTransfer();
-        $dataImporterReaderConfigurationTransfer->setFileName(codecept_data_dir() . $this->getDataImportCsvFile());
+        $dataImporterReaderConfigurationTransfer->setFileName(Configuration::dataDir() . $this->getDataImportCsvFile());
 
         $dataImportConfigurationTransfer = new DataImporterConfigurationTransfer();
         $dataImportConfigurationTransfer->setReaderConfiguration($dataImporterReaderConfigurationTransfer);
