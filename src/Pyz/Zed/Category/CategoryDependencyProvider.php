@@ -9,6 +9,10 @@ namespace Pyz\Zed\Category;
 
 use Spryker\Zed\Category\CategoryDependencyProvider as SprykerDependencyProvider;
 use Spryker\Zed\Category\Communication\Plugin\CategoryUrlPathPrefixUpdaterPlugin;
+use Spryker\Zed\CategoryImage\Communication\Plugin\CategoryAfterCreatePlugin;
+use Spryker\Zed\CategoryImage\Communication\Plugin\CategoryAfterUpdatePlugin;
+use Spryker\Zed\CategoryImage\Communication\Plugin\CategoryReadPlugin;
+use Spryker\Zed\CategoryImageGui\Communication\Form\CategoryImageFormPlugin;
 use Spryker\Zed\CategoryNavigationConnector\Communication\Plugin\UpdateNavigationRelationPlugin;
 use Spryker\Zed\CmsBlockCategoryConnector\Communication\Plugin\CategoryFormPlugin;
 use Spryker\Zed\CmsBlockCategoryConnector\Communication\Plugin\ReadCmsBlockCategoryRelationsPlugin;
@@ -67,10 +71,21 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
     /**
      * @return array
      */
+    protected function getCategoryPostReadPluginStack(): array
+    {
+        return [
+            new CategoryReadPlugin(),
+        ];
+    }
+
+    /**
+     * @return array
+     */
     protected function getCategoryFormPlugins()
     {
         return array_merge(parent::getCategoryFormPlugins(), [
             new CategoryFormPlugin(),
+            new CategoryImageFormPlugin(),
         ]);
     }
 
@@ -81,6 +96,26 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
     {
         return [
             new CategoryUrlPathPrefixUpdaterPlugin(),
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    protected function getCategoryPostUpdatePluginStack(): array
+    {
+        return [
+            new CategoryAfterUpdatePlugin(),
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    protected function getCategoryPostCreatePluginStack(): array
+    {
+        return [
+            new CategoryAfterCreatePlugin(),
         ];
     }
 }
