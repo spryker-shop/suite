@@ -69,7 +69,7 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
     }
 
     /**
-     * @return array
+     * @return \Spryker\Zed\CategoryExtension\Dependency\Plugin\CategoryTransferExpanderPluginInterface[]
      */
     protected function getCategoryPostReadPluginStack(): array
     {
@@ -100,7 +100,7 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
     }
 
     /**
-     * @return array
+     * @return \Spryker\Zed\CategoryExtension\Dependency\Plugin\CategoryUpdateAfterPluginInterface[]
      */
     protected function getCategoryPostUpdatePluginStack(): array
     {
@@ -110,7 +110,7 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
     }
 
     /**
-     * @return array
+     * @return \Spryker\Zed\CategoryExtension\Dependency\Plugin\CategoryCreateAfterPluginInterface[]
      */
     protected function getCategoryPostCreatePluginStack(): array
     {
