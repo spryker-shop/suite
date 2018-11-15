@@ -16,7 +16,7 @@ class DocumentationGeneratorRestApiDependencyProvider extends SprykerDocumentati
     /**
      * @return \Spryker\Glue\DocumentationGeneratorRestApiExtension\Dependency\Plugin\ResourceRoutePluginsProviderPluginInterface[]
      */
-    protected function getResourceRoutePluginsProviderPlugins(): array
+    protected function getResourceRoutePluginProviderPlugins(): array
     {
         return [
             new ResourceRoutePluginsProviderPlugin(),
