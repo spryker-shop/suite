@@ -12,16 +12,13 @@ use Spryker\Zed\CheckoutRestApi\Communication\Plugin\AddressesQuoteMappingPlugin
 use Spryker\Zed\CheckoutRestApi\Communication\Plugin\CustomerQuoteMappingPlugin;
 use Spryker\Zed\CheckoutRestApi\Communication\Plugin\PaymentsQuoteMappingPlugin;
 use Spryker\Zed\CheckoutRestApi\Communication\Plugin\ShipmentQuoteMappingPlugin;
-use Spryker\Zed\Kernel\Container;
 
 class CheckoutRestApiDependencyProvider extends SprykerCheckoutRestApiDependencyProvider
 {
     /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
      * @return \Spryker\Zed\CheckoutRestApiExtension\Dependency\Plugin\QuoteMappingPluginInterface[]
      */
-    protected function getQuoteMappingPlugins(Container $container): array
+    protected function getQuoteMappingPlugins(): array
     {
         return [
             new ShipmentQuoteMappingPlugin(),
