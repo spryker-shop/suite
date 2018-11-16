@@ -8,16 +8,10 @@
 namespace Pyz\Yves\CustomerPage;
 
 use SprykerShop\Yves\AgentPage\Plugin\FixAgentTokenAfterCustomerAuthenticationSuccessPlugin;
-use SprykerShop\Yves\CartNoteWidget\Plugin\CustomerPage\CartNoteOrderItemNoteWidgetPlugin;
-use SprykerShop\Yves\CartNoteWidget\Plugin\CustomerPage\CartNoteOrderNoteWidgetPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\CustomerPage\BusinessOnBehalfCompanyUserRedirectAfterLoginStrategyPlugin;
 use SprykerShop\Yves\CompanyUserInvitationPage\Plugin\CompanyUserInvitationPreRegistrationCustomerTransferExpanderPlugin;
 use SprykerShop\Yves\CustomerPage\CustomerPageDependencyProvider as SprykerShopCustomerPageDependencyProvider;
 use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderWidgetPlugin;
-use SprykerShop\Yves\NewsletterWidget\Plugin\CustomerPage\NewsletterSubscriptionSummaryWidgetPlugin;
-use SprykerShop\Yves\ProductPackagingUnitWidget\Plugin\CustomerPage\OrderDetailProductPackagingUnitWidgetPlugin;
-use SprykerShop\Yves\ShoppingListWidget\Plugin\CustomerPage\ShoppingListMenuItemWidgetPlugin;
-use SprykerShop\Yves\WishlistWidget\Plugin\CustomerPage\WishlistMenuItemWidgetPlugin;
 
 class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyProvider
 {
@@ -27,7 +21,6 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     protected function getCustomerOverviewWidgetPlugins(): array
     {
         return [
-            NewsletterSubscriptionSummaryWidgetPlugin::class,
             CustomerReorderWidgetPlugin::class,
         ];
     }
@@ -49,20 +42,6 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     {
         return [
             CustomerReorderWidgetPlugin::class,
-            CartNoteOrderItemNoteWidgetPlugin::class, #CartNoteFeature
-            CartNoteOrderNoteWidgetPlugin::class, #CartNoteFeature
-            OrderDetailProductPackagingUnitWidgetPlugin::class, #ProductPackagingUnit
-        ];
-    }
-
-    /**
-     * @return string[]
-     */
-    protected function getCustomerMenuItemWidgetPlugins(): array
-    {
-        return [
-            WishlistMenuItemWidgetPlugin::class,
-            ShoppingListMenuItemWidgetPlugin::class, #ShoppingListFeature
         ];
     }
 
