@@ -102,13 +102,13 @@ class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
         foreach ($productBundleTransfers as $productBundleTransfer) {
             $bundledProductId = $this
                 ->productRepository
-                ->getIdProductByConcreteSku($dataSet[ProductConcreteHydratorStep::KEY_PRODUCT_BUNDLE_SKU]);
+                ->getIdProductByConcreteSku($productBundleTransfer[ProductConcreteHydratorStep::KEY_PRODUCT_BUNDLE_SKU]);
 
             $productBundleEntity = SpyProductBundleQuery::create()
                 ->filterByFkProduct($idProduct)
                 ->filterByFkBundledProduct($bundledProductId)
                 ->findOneOrCreate();
-            $productBundleEntity->fromArray($productBundleTransfer->modifiedToArray());
+            $productBundleEntity->fromArray($productBundleTransfer[ProductConcreteHydratorStep::KEY_PRODUCT_BUNDLE_TRANSFER]->modifiedToArray());
 
             if ($productBundleEntity->isNew() || $productBundleEntity->isModified()) {
                 $productBundleEntity->save();
@@ -172,7 +172,7 @@ class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
      */
     protected function getProductConcreteBundleTransfers(DataSetInterface $dataSet): array
     {
-        return $dataSet[ProductConcreteHydratorStep::DATA_PRODUCT_BUNDLE_TRANSFER][ProductConcreteHydratorStep::KEY_PRODUCT_BUNDLE_TRANSFER] ?? [];
+        return $dataSet[ProductConcreteHydratorStep::DATA_PRODUCT_BUNDLE_TRANSFER] ?? [];
     }
 
     /**
