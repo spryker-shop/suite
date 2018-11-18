@@ -16,11 +16,10 @@ class DocumentationGeneratorRestApiConfig extends SprykerDocumentationGeneratorR
      *
      * @return array
      */
-    protected function getProjectAnnotationSourceDirectoryPatterns(): array
+    protected function getCoreAnnotationSourceDirectoryPatterns(): array
     {
-        $directoryPatterns = parent::getProjectAnnotationSourceDirectoryPatterns();
-        $directoryPatterns[] = APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/%1$s/src/Spryker/Glue/%1$s/Controller/';
-
-        return $directoryPatterns;
+        return [
+            APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/%1$s/src/Spryker/Glue/%1$s/Controller/',
+        ];
     }
 }
