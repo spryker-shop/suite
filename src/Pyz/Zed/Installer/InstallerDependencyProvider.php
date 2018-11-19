@@ -10,6 +10,7 @@ namespace Pyz\Zed\Installer;
 use Spryker\Zed\Acl\Communication\Plugin\AclInstallerPlugin;
 use Spryker\Zed\CompanyUserInvitation\Communication\Plugin\CompanyUserInvitationStatusInstallerPlugin;
 use Spryker\Zed\Country\Communication\Plugin\CountryInstallerPlugin;
+use Spryker\Zed\CustomerAccess\Communication\Plugin\CustomerAccessInstallerPlugin;
 use Spryker\Zed\Glossary\Communication\Plugin\GlossaryInstallerPlugin;
 use Spryker\Zed\Installer\InstallerDependencyProvider as SprykerInstallerDependencyProvider;
 use Spryker\Zed\Locale\Communication\Plugin\LocaleInstallerPlugin;
@@ -20,6 +21,7 @@ use Spryker\Zed\ProductAlternativeProductLabelConnector\Communication\Plugin\Ins
 use Spryker\Zed\ProductDiscontinuedProductLabelConnector\Communication\Plugin\Installer\ProductDiscontinuedProductLabelConnectorInstallerPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Installer\ProductMeasurementUnitInstallerPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Installer\ProductPackagingUnitTypeInstallerPlugin;
+use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Installer\SalesOrderThresholdTypeInstallerPlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\SharedCartPermissionInstallerPlugin;
 use Spryker\Zed\ShoppingList\Communication\Plugin\ShoppingListPermissionsInstallerPlugin;
 use Spryker\Zed\Translator\Communication\Plugin\TranslatorInstallerPlugin;
@@ -41,6 +43,7 @@ class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
             new AclInstallerPlugin(),
             new NewsletterInstallerPlugin(),
             new GlossaryInstallerPlugin(),
+            new CustomerAccessInstallerPlugin(),
             new TranslatorInstallerPlugin(),
             new ShoppingListPermissionsInstallerPlugin(),
             new SharedCartPermissionInstallerPlugin(), #SharedCartFeature
@@ -49,6 +52,7 @@ class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
             new ProductDiscontinuedProductLabelConnectorInstallerPlugin(), #ProductDiscontinuedFeature
             new CompanyUserInvitationStatusInstallerPlugin(), #BulkImportCompanyUserInvitationsFeature
             new ProductPackagingUnitTypeInstallerPlugin(),
+            new SalesOrderThresholdTypeInstallerPlugin(), #SalesOrderThresholdFeature
             new OauthCustomerInstallerPlugin(),
             new UserLocaleInstallerPlugin(),
         ];
