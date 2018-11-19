@@ -12,6 +12,7 @@ use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInter
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\ProductPriceHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\Sql\ProductPriceSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
+use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
@@ -36,18 +37,26 @@ class ProductPriceBulkPdoDataSetWriter implements DataSetWriterInterface
     protected $dataFormatter;
 
     /**
+     * @var \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface
+     */
+    protected $utilEncodingService;
+
+    /**
      * @param \Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\Sql\ProductPriceSqlInterface $productPriceSql
      * @param \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface $propelExecutor
      * @param \Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface $dataFormatter
+     * @param \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface $utilEncodingService
      */
     public function __construct(
         ProductPriceSqlInterface $productPriceSql,
         PropelExecutorInterface $propelExecutor,
-        DataImportDataFormatterInterface $dataFormatter
+        DataImportDataFormatterInterface $dataFormatter,
+        UtilEncodingServiceInterface $utilEncodingService
     ) {
         $this->productPriceSql = $productPriceSql;
         $this->propelExecutor = $propelExecutor;
         $this->dataFormatter = $dataFormatter;
+        $this->utilEncodingService = $utilEncodingService;
     }
 
     /**
@@ -168,6 +177,16 @@ class ProductPriceBulkPdoDataSetWriter implements DataSetWriterInterface
             $storeName = $this->dataFormatter->formatPostgresArrayString(
                 $this->dataFormatter->getCollectionDataByKey($storeCollection, ProductPriceHydratorStep::KEY_STORE_NAME)
             );
+            $priceData = $this->preparePriceDataString($this->dataFormatter->getCollectionDataByKey(
+                $priceProductStoreCollection,
+                ProductPriceHydratorStep::KEY_PRICE_DATA
+            ));
+            $checksum = $this->dataFormatter->formatPostgresArrayString(
+                $this->dataFormatter->getCollectionDataByKey(
+                    $priceProductStoreCollection,
+                    ProductPriceHydratorStep::KEY_PRICE_DATA_CHECKSUM
+                )
+            );
 
             $priceProductAbstractProductParameters = [$sku, $priceTypeName];
             $result = $this->persistPriceProductAbstractProductEntities($priceProductAbstractProductParameters);
@@ -176,8 +195,16 @@ class ProductPriceBulkPdoDataSetWriter implements DataSetWriterInterface
                 DataImporterPublisher::addEvent(PriceProductEvents::PRICE_ABSTRACT_PUBLISH, $columns[ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT]);
                 DataImporterPublisher::addEvent(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $columns[ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT]);
             }
-
-            $priceProductAbstractProductParameters = [$grossPrice, $netPrice, $currencyName, $storeName, $sku, $priceTypeName];
+            $priceProductAbstractProductParameters = [
+                $grossPrice,
+                $netPrice,
+                $currencyName,
+                $storeName,
+                $sku,
+                $priceTypeName,
+                $priceData,
+                $checksum,
+            ];
             $this->persistPriceProductStoreProductAbstractEntities($priceProductAbstractProductParameters);
         }
     }
@@ -247,6 +274,16 @@ class ProductPriceBulkPdoDataSetWriter implements DataSetWriterInterface
             $storeName = $this->dataFormatter->formatPostgresArrayString(
                 $this->dataFormatter->getCollectionDataByKey($storeCollection, ProductPriceHydratorStep::KEY_STORE_NAME)
             );
+            $priceData = $this->preparePriceDataString($this->dataFormatter->getCollectionDataByKey(
+                $priceProductStoreCollection,
+                ProductPriceHydratorStep::KEY_PRICE_DATA
+            ));
+            $checksum = $this->dataFormatter->formatPostgresArrayString(
+                $this->dataFormatter->getCollectionDataByKey(
+                    $priceProductStoreCollection,
+                    ProductPriceHydratorStep::KEY_PRICE_DATA_CHECKSUM
+                )
+            );
 
             $priceProductConcreteParameters = [$sku, $priceTypeName];
             $result = $this->persistPriceProductConcreteProductEntities($priceProductConcreteParameters);
@@ -255,9 +292,32 @@ class ProductPriceBulkPdoDataSetWriter implements DataSetWriterInterface
                 DataImporterPublisher::addEvent(PriceProductEvents::PRICE_CONCRETE_PUBLISH, $columns[ProductPriceHydratorStep::KEY_ID_PRODUCT]);
             }
 
-            $priceProductConcreteProductParameters = [$grossPrice, $netPrice, $currencyName, $storeName, $sku, $priceTypeName];
+            $priceProductConcreteProductParameters = [
+                $grossPrice,
+                $netPrice,
+                $currencyName,
+                $storeName,
+                $sku,
+                $priceTypeName,
+                $priceData,
+                $checksum,
+            ];
             $this->persistPriceProductStoreProductConcreteEntities($priceProductConcreteProductParameters);
         }
+    }
+
+    /**
+     * @param array $priceData
+     *
+     * @return string
+     */
+    protected function preparePriceDataString(array $priceData): string
+    {
+        $priceData = array_map(function ($price) {
+            return $price ?: '';
+        }, $priceData);
+
+        return pg_escape_string($this->utilEncodingService->encodeJson($priceData));
     }
 
     /**
