@@ -29,6 +29,7 @@ use Spryker\Zed\MerchantDataImport\Communication\Plugin\MerchantDataImportPlugin
 use Spryker\Zed\MerchantRelationshipDataImport\Communication\Plugin\MerchantRelationshipDataImportPlugin;
 use Spryker\Zed\MerchantRelationshipProductListDataImport\Communication\Plugin\MerchantRelationshipProductListDataImportPlugin;
 use Spryker\Zed\MerchantRelationshipSalesOrderThresholdDataImport\Communication\Plugin\DataImport\MerchantRelationshipSalesOrderThresholdDataImportPlugin;
+use Spryker\Zed\MultiCartDataImport\Communication\Plugin\MultiCartDataImportPlugin;
 use Spryker\Zed\PriceProductMerchantRelationshipDataImport\Communication\Plugin\PriceProductMerchantRelationshipDataImportPlugin;
 use Spryker\Zed\ProductAlternativeDataImport\Communication\Plugin\ProductAlternativeDataImportPlugin;
 use Spryker\Zed\ProductDiscontinuedDataImport\Communication\Plugin\ProductDiscontinuedDataImportPlugin;
@@ -43,6 +44,11 @@ use Spryker\Zed\ProductPackagingUnitDataImport\Communication\Plugin\DataImport\P
 use Spryker\Zed\ProductPackagingUnitDataImport\Communication\Plugin\DataImport\ProductPackagingUnitTypeDataImportPlugin;
 use Spryker\Zed\ProductQuantityDataImport\Communication\Plugin\ProductQuantityDataImportPlugin;
 use Spryker\Zed\SalesOrderThresholdDataImport\Communication\Plugin\DataImport\SalesOrderThresholdDataImportPlugin;
+use Spryker\Zed\SharedCartDataImport\Communication\Plugin\SharedCartDataImportPlugin;
+use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListCompanyBusinessUnitDataImportPlugin;
+use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListCompanyUserDataImportPlugin;
+use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListDataImportPlugin;
+use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListItemDataImportPlugin;
 
 class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
 {
@@ -54,6 +60,9 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     public const FACADE_PRODUCT_RELATION = 'product relation facade';
     public const FACADE_STOCK = 'stock facade';
     public const FACADE_PRODUCT_SEARCH = 'product search facade';
+
+    public const FACADE_PRICE_PRODUCT = 'FACADE_PRICE_PRODUCT';
+    public const SERVICE_UTIL_ENCODING = 'SERVICE_UTIL_ENCODING';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -72,6 +81,8 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
         $container = $this->addProductBundleFacade($container);
         $container = $this->addProductRelationFacade($container);
         $container = $this->addProductSearchFacade($container);
+        $container = $this->addPriceProductFacade($container);
+        $container = $this->addUtilEncodingService($container);
 
         return $container;
     }
@@ -226,6 +237,12 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new CompanyUserRoleDataImportPlugin(),
             new CompanyBusinessUnitUserDataImportPlugin(),
             new CompanyBusinessUnitAddressDataImportPlugin(),
+            new MultiCartDataImportPlugin(),
+            new SharedCartDataImportPlugin(),
+            new ShoppingListDataImportPlugin(),
+            new ShoppingListItemDataImportPlugin(),
+            new ShoppingListCompanyUserDataImportPlugin(),
+            new ShoppingListCompanyBusinessUnitDataImportPlugin(),
         ];
     }
 
@@ -248,5 +265,33 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new DataImportEventBehaviorPlugin(),
             new DataImportPublisherPlugin(),
         ];
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addPriceProductFacade(Container $container): Container
+    {
+        $container[static::FACADE_PRICE_PRODUCT] = function (Container $container) {
+            return $container->getLocator()->priceProduct()->facade();
+        };
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addUtilEncodingService(Container $container): Container
+    {
+        $container[static::SERVICE_UTIL_ENCODING] = function (Container $container) {
+            return $container->getLocator()->utilEncoding()->service();
+        };
+
+        return $container;
     }
 }
