@@ -34,7 +34,7 @@ class ProductListGuiDependencyProvider extends SprykerProductListGuiDependencyPr
     }
 
     /**
-     * @return \Spryker\Zed\ProductListGuiExtension\Dependency\Plugin\ProductListTableQueryExpanderPluginInterface[]
+     * @return \Spryker\Zed\ProductListGuiExtension\Dependency\Plugin\ProductListTableQueryCriteriaExpanderPluginInterface[]
      */
     protected function getProductListTableQueryCriteriaExpanderPlugins(): array
     {
