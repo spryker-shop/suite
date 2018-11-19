@@ -45,7 +45,7 @@ class ManualOrderEntryGuiDependencyProvider extends SprykerManualOrderEntryGuiDe
     }
 
     /**
-     * @return \Spryker\Zed\ManualOrderEntryGui\Communication\Plugin\ManualOrderEntryFormPluginInterface[]
+     * @return \Spryker\Zed\ManualOrderEntryGuiExtension\Dependency\Plugin\ManualOrderEntryFormPluginInterface[]
      */
     protected function getManualOrderEntryFormPlugins(): array
     {
