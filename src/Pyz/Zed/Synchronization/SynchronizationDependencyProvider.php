@@ -18,8 +18,8 @@ use Spryker\Zed\CmsPageSearch\Communication\Plugin\Synchronization\CmsPageSynchr
 use Spryker\Zed\CmsStorage\Communication\Plugin\Synchronization\CmsSynchronizationDataPlugin;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Synchronization\GlossarySynchronizationDataPlugin;
 use Spryker\Zed\NavigationStorage\Communication\Plugin\Synchronization\NavigationSynchronizationDataPlugin;
-use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Synchronization\PriceProductAbstractMerchantRelationSynchronizationDataPlugin;
-use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Synchronization\PriceProductConcreteMerchantRelationSynchronizationDataPlugin;
+use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Synchronization\PriceProductAbstractMerchantRelationSynchronizationDataBulkPlugin;
+use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Synchronization\PriceProductConcreteMerchantRelationSynchronizationDataBulkPlugin;
 use Spryker\Zed\PriceProductStorage\Communication\Plugin\Synchronization\PriceProductAbstractSynchronizationDataPlugin;
 use Spryker\Zed\PriceProductStorage\Communication\Plugin\Synchronization\PriceProductConcreteSynchronizationDataPlugin;
 use Spryker\Zed\ProductCategoryFilterStorage\Communication\Plugin\Synchronization\ProductCategoryFilterSynchronizationDataPlugin;
@@ -29,14 +29,14 @@ use Spryker\Zed\ProductImageStorage\Communication\Plugin\Synchronization\Product
 use Spryker\Zed\ProductImageStorage\Communication\Plugin\Synchronization\ProductConcreteImageSynchronizationDataPlugin;
 use Spryker\Zed\ProductLabelStorage\Communication\Plugin\Synchronization\ProductAbstractLabelSynchronizationDataPlugin;
 use Spryker\Zed\ProductLabelStorage\Communication\Plugin\Synchronization\ProductLabelDictionarySynchronizationDataPlugin;
-use Spryker\Zed\ProductListStorage\Communication\Plugin\Synchronization\ProductAbstractProductListSynchronizationDataPlugin;
-use Spryker\Zed\ProductListStorage\Communication\Plugin\Synchronization\ProductConcreteProductListSynchronizationDataPlugin;
-use Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Synchronization\ProductConcreteMeasurementUnitSynchronizationDataPlugin;
-use Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Synchronization\ProductMeasurementUnitSynchronizationDataPlugin;
+use Spryker\Zed\ProductListStorage\Communication\Plugin\Synchronization\ProductAbstractProductListSynchronizationDataBulkPlugin;
+use Spryker\Zed\ProductListStorage\Communication\Plugin\Synchronization\ProductConcreteProductListSynchronizationDataBulkPlugin;
+use Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Synchronization\ProductConcreteMeasurementUnitSynchronizationDataBulkPlugin;
+use Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Synchronization\ProductMeasurementUnitSynchronizationDataBulkPlugin;
 use Spryker\Zed\ProductOptionStorage\Communication\Plugin\Synchronization\ProductOptionSynchronizationDataPlugin;
-use Spryker\Zed\ProductPackagingUnitStorage\Communication\Plugin\Synchronization\ProductPackagingUnitSynchronizationDataPlugin;
+use Spryker\Zed\ProductPackagingUnitStorage\Communication\Plugin\Synchronization\ProductPackagingUnitSynchronizationDataBulkPlugin;
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\Synchronization\ProductPageSynchronizationDataPlugin;
-use Spryker\Zed\ProductQuantityStorage\Communication\Plugin\Synchronization\ProductQuantitySynchronizationDataPlugin;
+use Spryker\Zed\ProductQuantityStorage\Communication\Plugin\Synchronization\ProductQuantitySynchronizationDataBulkPlugin;
 use Spryker\Zed\ProductRelationStorage\Communication\Plugin\Synchronization\ProductRelationSynchronizationDataPlugin;
 use Spryker\Zed\ProductReviewSearch\Communication\Plugin\Synchronization\ProductReviewSynchronizationDataPlugin as ProductReviewSearchSynchronizationDataPlugin;
 use Spryker\Zed\ProductReviewStorage\Communication\Plugin\Synchronization\ProductReviewSynchronizationDataPlugin;
@@ -45,7 +45,7 @@ use Spryker\Zed\ProductSetPageSearch\Communication\Plugin\Synchronization\Produc
 use Spryker\Zed\ProductSetStorage\Communication\Plugin\Synchronization\ProductSetSynchronizationDataPlugin;
 use Spryker\Zed\ProductStorage\Communication\Plugin\Synchronization\ProductAbstractSynchronizationDataPlugin;
 use Spryker\Zed\ProductStorage\Communication\Plugin\Synchronization\ProductConcreteSynchronizationDataPlugin;
-use Spryker\Zed\ShoppingListStorage\Communication\Plugin\Synchronization\ShoppingListSynchronizationDataPlugin;
+use Spryker\Zed\ShoppingListStorage\Communication\Plugin\Synchronization\ShoppingListSynchronizationDataBulkPlugin;
 use Spryker\Zed\Synchronization\SynchronizationDependencyProvider as SprykerSynchronizationDependencyProvider;
 use Spryker\Zed\UrlStorage\Communication\Plugin\Synchronization\UrlRedirectSynchronizationDataPlugin;
 use Spryker\Zed\UrlStorage\Communication\Plugin\Synchronization\UrlSynchronizationDataPlugin;
@@ -81,9 +81,9 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
             new ProductConcreteImageSynchronizationDataPlugin(),
             new ProductAbstractLabelSynchronizationDataPlugin(),
             new ProductLabelDictionarySynchronizationDataPlugin(),
-            new ProductMeasurementUnitSynchronizationDataPlugin(),
-            new ProductConcreteMeasurementUnitSynchronizationDataPlugin(),
-            new ProductQuantitySynchronizationDataPlugin(),
+            new ProductMeasurementUnitSynchronizationDataBulkPlugin(),
+            new ProductConcreteMeasurementUnitSynchronizationDataBulkPlugin(),
+            new ProductQuantitySynchronizationDataBulkPlugin(),
             new ProductOptionSynchronizationDataPlugin(),
             new ProductRelationSynchronizationDataPlugin(),
             new ProductReviewSynchronizationDataPlugin(),
@@ -93,12 +93,12 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
             new ProductAbstractSynchronizationDataPlugin(),
             new UrlRedirectSynchronizationDataPlugin(),
             new UrlSynchronizationDataPlugin(),
-            new ProductPackagingUnitSynchronizationDataPlugin(),
-            new ShoppingListSynchronizationDataPlugin(),
-            new ProductAbstractProductListSynchronizationDataPlugin(),
-            new ProductConcreteProductListSynchronizationDataPlugin(),
-            new PriceProductConcreteMerchantRelationSynchronizationDataPlugin(),
-            new PriceProductAbstractMerchantRelationSynchronizationDataPlugin(),
+            new ProductPackagingUnitSynchronizationDataBulkPlugin(),
+            new ShoppingListSynchronizationDataBulkPlugin(),
+            new ProductAbstractProductListSynchronizationDataBulkPlugin(),
+            new ProductConcreteProductListSynchronizationDataBulkPlugin(),
+            new PriceProductConcreteMerchantRelationSynchronizationDataBulkPlugin(),
+            new PriceProductAbstractMerchantRelationSynchronizationDataBulkPlugin(),
         ];
     }
 }
