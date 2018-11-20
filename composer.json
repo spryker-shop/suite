@@ -63,7 +63,8 @@
     "willdurand/negotiation": "^2.3",
     "ramsey/uuid": "^3.8.0",
     "phpdocumentor/reflection-docblock": "^4.3",
-    "doctrine/inflector": "^1.3"
+    "doctrine/inflector": "^1.3",
+    "spryker-sdk/phpstan-spryker": "dev-master"
   },
   "require-dev": {
     "spryker/architecture-sniffer": "dev-master",
@@ -85,8 +86,7 @@
     "jakoch/phantomjs-installer": "^2.1.0",
     "stecman/symfony-console-completion": "*",
     "fzaninotto/faker": "^1.6",
-    "ajgl/breakpoint-twig-extension": "^0.3.1",
-    "phpstan/phpstan": "^0.10.5"
+    "ajgl/breakpoint-twig-extension": "^0.3.1"
   },
   "autoload": {
     "psr-4": {
@@ -133,6 +133,10 @@
     {
       "type": "git",
       "url": "git@github.com:spryker/spryk.git"
+    },
+    {
+      "type": "git",
+      "url": "git@github.com:spryker-sdk/phpstan-spryker.git"
     }
   ],
   "scripts": {
