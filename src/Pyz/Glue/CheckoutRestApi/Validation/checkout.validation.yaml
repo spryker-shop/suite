@@ -172,6 +172,7 @@ checkout:
                 - Choice:
                     choices: [DE, AT]
           payments:
+          - NotBlank
           - All:
               constraints:
               - Collection:
