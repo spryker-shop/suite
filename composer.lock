@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ba78e40405c881df2759bde87c09587a",
+    "content-hash": "9aad65f63d80f36f5f55b9230f96e573",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -2015,7 +2015,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -6801,11 +6801,19 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-0": {
+                    "Unit": "tests/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Assertion bundle",
+            "support": {
+                "source": "https://github.com/spryker/Assertion/tree/3.0.0"
+            },
             "time": "2017-02-22T12:08:46+00:00"
         },
         {
@@ -7454,11 +7462,14 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Cache bundle",
+            "support": {
+                "source": "https://github.com/spryker/Cache/tree/3.1.0"
+            },
             "time": "2017-04-10T13:13:21+00:00"
         },
         {
@@ -8281,16 +8292,16 @@
         },
         {
             "name": "spryker/category",
-            "version": "4.9.0",
+            "version": "4.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/category.git",
-                "reference": "253afc760982667527a3f7d7a75f8094f3139d6c"
+                "reference": "5a7ffafe45c3a2d8675c7cb21ffdc6e80551d1c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/category/zipball/253afc760982667527a3f7d7a75f8094f3139d6c",
-                "reference": "253afc760982667527a3f7d7a75f8094f3139d6c",
+                "url": "https://api.github.com/repos/spryker/category/zipball/5a7ffafe45c3a2d8675c7cb21ffdc6e80551d1c1",
+                "reference": "5a7ffafe45c3a2d8675c7cb21ffdc6e80551d1c1",
                 "shasum": ""
             },
             "require": {
@@ -8334,7 +8345,7 @@
                 "proprietary"
             ],
             "description": "Category module",
-            "time": "2018-11-01T14:58:18+00:00"
+            "time": "2018-11-16T17:20:56+00:00"
         },
         {
             "name": "spryker/category-data-feed",
@@ -8459,11 +8470,14 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "CategoryExporter module",
+            "support": {
+                "source": "https://github.com/spryker/CategoryExporter/tree/3.0.2"
+            },
             "time": "2017-07-13T15:46:45+00:00"
         },
         {
@@ -9766,11 +9780,19 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-0": {
+                    "Functional": "tests/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "CmsUserConnector bundle",
+            "support": {
+                "source": "https://github.com/spryker/CmsUserConnector/tree/1.0.1"
+            },
             "time": "2017-06-29T10:18:58+00:00"
         },
         {
@@ -11930,11 +11952,19 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "SprykerTest\\": "tests/SprykerTest/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "CustomerApi module",
+            "support": {
+                "source": "https://github.com/spryker/CustomerApi/tree/master"
+            },
             "time": "2017-11-10T15:08:30+00:00"
         },
         {
@@ -12074,22 +12104,22 @@
         },
         {
             "name": "spryker/customer-group-discount-connector",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/customer-group-discount-connector.git",
-                "reference": "22958f55ffd5ef103661fb8d1b2110d64f6e8e41"
+                "reference": "a21b9745258553596d14b25358c9ab93e23a0600"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/customer-group-discount-connector/zipball/22958f55ffd5ef103661fb8d1b2110d64f6e8e41",
-                "reference": "22958f55ffd5ef103661fb8d1b2110d64f6e8e41",
+                "url": "https://api.github.com/repos/spryker/customer-group-discount-connector/zipball/a21b9745258553596d14b25358c9ab93e23a0600",
+                "reference": "a21b9745258553596d14b25358c9ab93e23a0600",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/customer-group": "^2.3.0",
-                "spryker/discount": "^4.0.0 || ^5.0.0 || ^6.0.0",
+                "spryker/discount": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0",
                 "spryker/kernel": "^3.0.0"
             },
             "require-dev": {
@@ -12112,7 +12142,7 @@
                 "proprietary"
             ],
             "description": "CustomerGroupDiscountConnector module",
-            "time": "2018-11-02T10:19:40+00:00"
+            "time": "2018-11-19T14:34:38+00:00"
         },
         {
             "name": "spryker/customer-note",
@@ -12616,16 +12646,16 @@
         },
         {
             "name": "spryker/discount",
-            "version": "6.4.0",
+            "version": "7.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/discount.git",
-                "reference": "463ff4ace2f53c5f2e5bbf4b47e04b0200b86c5e"
+                "reference": "158ecda03e7e6e6f9d692ab3431d5e0ad19cbc72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/discount/zipball/463ff4ace2f53c5f2e5bbf4b47e04b0200b86c5e",
-                "reference": "463ff4ace2f53c5f2e5bbf4b47e04b0200b86c5e",
+                "url": "https://api.github.com/repos/spryker/discount/zipball/158ecda03e7e6e6f9d692ab3431d5e0ad19cbc72",
+                "reference": "158ecda03e7e6e6f9d692ab3431d5e0ad19cbc72",
                 "shasum": ""
             },
             "require": {
@@ -12674,31 +12704,29 @@
                 "proprietary"
             ],
             "description": "Discount module",
-            "time": "2018-11-09T17:07:35+00:00"
+            "time": "2018-11-20T08:38:16+00:00"
         },
         {
             "name": "spryker/discount-calculation-connector",
-            "version": "5.0.2",
+            "version": "5.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/discount-calculation-connector.git",
-                "reference": "a848d1b3b965228b0fbd602c783b70c78801c447"
+                "reference": "cc4ab7ffc6b241be7fafd4547ac1c748ae50bd3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/discount-calculation-connector/zipball/a848d1b3b965228b0fbd602c783b70c78801c447",
-                "reference": "a848d1b3b965228b0fbd602c783b70c78801c447",
+                "url": "https://api.github.com/repos/spryker/discount-calculation-connector/zipball/cc4ab7ffc6b241be7fafd4547ac1c748ae50bd3b",
+                "reference": "cc4ab7ffc6b241be7fafd4547ac1c748ae50bd3b",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "spryker/discount": "^4.0.0 || ^5.0.0 || ^6.0.0",
+                "spryker/discount": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0",
                 "spryker/kernel": "^3.0.0"
             },
             "require-dev": {
-                "spryker/calculation": "*",
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
+                "spryker/calculation": "*"
             },
             "suggest": {
                 "spryker/calculation": "If you want to use Calculation plugins."
@@ -12719,7 +12747,7 @@
                 "proprietary"
             ],
             "description": "DiscountCalculationConnector module",
-            "time": "2018-01-26T13:20:18+00:00"
+            "time": "2018-11-19T14:34:38+00:00"
         },
         {
             "name": "spryker/discount-extension",
@@ -12762,23 +12790,23 @@
         },
         {
             "name": "spryker/discount-promotion",
-            "version": "1.1.4",
+            "version": "1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/discount-promotion.git",
-                "reference": "1e11c711d912ac1a910329e7bc017a91141072bc"
+                "reference": "db82a90003f7762ed1766620a34b36cf5612d899"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/discount-promotion/zipball/1e11c711d912ac1a910329e7bc017a91141072bc",
-                "reference": "1e11c711d912ac1a910329e7bc017a91141072bc",
+                "url": "https://api.github.com/repos/spryker/discount-promotion/zipball/db82a90003f7762ed1766620a34b36cf5612d899",
+                "reference": "db82a90003f7762ed1766620a34b36cf5612d899",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/availability": "^5.0.3 || ^6.0.0",
                 "spryker/cart-extension": "^1.0.0 || ^2.0.0",
-                "spryker/discount": "^4.5.0 || ^5.0.0 || ^6.0.0",
+                "spryker/discount": "^4.5.0 || ^5.0.0 || ^6.0.0 || ^7.0.0",
                 "spryker/kernel": "^3.0.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/persistent-cart-extension": "^1.0.0",
@@ -12813,7 +12841,7 @@
                 "proprietary"
             ],
             "description": "DiscountPromotion module",
-            "time": "2018-11-03T11:06:58+00:00"
+            "time": "2018-11-19T14:34:38+00:00"
         },
         {
             "name": "spryker/doctrine-inflector",
@@ -12931,11 +12959,14 @@
                     "dev-master": "1.0.x-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Egulias module",
+            "support": {
+                "source": "https://github.com/spryker/Egulias/tree/1.0.0"
+            },
             "time": "2017-11-09T13:55:22+00:00"
         },
         {
@@ -13571,16 +13602,16 @@
         },
         {
             "name": "spryker/gift-card",
-            "version": "1.0.3",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/gift-card.git",
-                "reference": "432e3612328fe6d42c88de677d4fc8826abc9b67"
+                "reference": "759d489a5e488f52973e520b3d43e6180029155a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/gift-card/zipball/432e3612328fe6d42c88de677d4fc8826abc9b67",
-                "reference": "432e3612328fe6d42c88de677d4fc8826abc9b67",
+                "url": "https://api.github.com/repos/spryker/gift-card/zipball/759d489a5e488f52973e520b3d43e6180029155a",
+                "reference": "759d489a5e488f52973e520b3d43e6180029155a",
                 "shasum": ""
             },
             "require": {
@@ -13598,7 +13629,7 @@
                 "spryker/cart": "^4.0.0 || ^5.0.0",
                 "spryker/checkout": "^3.2.0 || ^4.0.0",
                 "spryker/code-sniffer": "*",
-                "spryker/discount": "^5.0.0 || ^6.0.0",
+                "spryker/discount": "^5.0.0 || ^6.0.0 || ^7.0.0",
                 "spryker/oms": "^7.0.0 || ^8.0.0",
                 "spryker/propel": "^3.0.0",
                 "spryker/shipment": "^6.2.0",
@@ -13610,7 +13641,6 @@
                 "spryker/checkout": "To save gift card payments using order savers",
                 "spryker/discount": "If you want to make sure GiftCards have no Discount applied",
                 "spryker/oms": "If you want to use OMS plugins",
-                "spryker/payment": "If you want to use Payment plugins",
                 "spryker/shipment": "To filter shipment methods based on gift card rules"
             },
             "type": "library",
@@ -13630,7 +13660,7 @@
                 "proprietary"
             ],
             "description": "GiftCard module",
-            "time": "2018-08-28T16:39:42+00:00"
+            "time": "2018-11-20T08:59:39+00:00"
         },
         {
             "name": "spryker/gift-card-balance",
@@ -13977,11 +14007,19 @@
                     "Function": "tests/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-0": {
+                    "Unit": "tests/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Graph bundle",
+            "support": {
+                "source": "https://github.com/spryker/Graph/tree/3.0.0"
+            },
             "time": "2017-02-22T12:08:46+00:00"
         },
         {
@@ -14007,11 +14045,14 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Graphviz module",
+            "support": {
+                "source": "https://github.com/spryker/Graphviz/tree/2.0.1"
+            },
             "time": "2017-08-02T16:31:17+00:00"
         },
         {
@@ -14299,11 +14340,20 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-0": {
+                    "Functional": "tests/",
+                    "Unit": "tests/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Invoice bundle",
+            "support": {
+                "source": "https://github.com/spryker/Invoice/tree/2.0.1"
+            },
             "time": "2017-02-22T11:53:10+00:00"
         },
         {
@@ -14652,16 +14702,16 @@
         },
         {
             "name": "spryker/manual-order-entry-gui",
-            "version": "0.5.0",
+            "version": "0.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/manual-order-entry-gui.git",
-                "reference": "ea10228ffb5a58f3aad18bce2d86671ebc4a0337"
+                "reference": "cf2c86b30e3f477fbfee51388a57e7ac31862e0e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/manual-order-entry-gui/zipball/ea10228ffb5a58f3aad18bce2d86671ebc4a0337",
-                "reference": "ea10228ffb5a58f3aad18bce2d86671ebc4a0337",
+                "url": "https://api.github.com/repos/spryker/manual-order-entry-gui/zipball/cf2c86b30e3f477fbfee51388a57e7ac31862e0e",
+                "reference": "cf2c86b30e3f477fbfee51388a57e7ac31862e0e",
                 "shasum": ""
             },
             "require": {
@@ -14671,7 +14721,7 @@
                 "spryker/checkout": "^4.1.0",
                 "spryker/currency": "^3.1.0",
                 "spryker/customer": "^7.1.0",
-                "spryker/discount": "^6.1.0",
+                "spryker/discount": "^6.1.0 || ^7.0.0",
                 "spryker/gui": "^3.1.0",
                 "spryker/kernel": "^3.18.0",
                 "spryker/manual-order-entry": "^1.0.0",
@@ -14706,7 +14756,7 @@
                 "proprietary"
             ],
             "description": "ManualOrderEntryGui module",
-            "time": "2018-05-30T09:01:39+00:00"
+            "time": "2018-11-19T14:34:38+00:00"
         },
         {
             "name": "spryker/manual-order-entry-gui-extension",
@@ -16373,28 +16423,26 @@
         },
         {
             "name": "spryker/oms-discount-connector",
-            "version": "3.0.2",
+            "version": "3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/oms-discount-connector.git",
-                "reference": "6e9fab0f23363fdaa6b92fd3b8ec6ae937198aa5"
+                "reference": "16e78b90bd36e48e5adb9e5d0f9f973b93fd0302"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/oms-discount-connector/zipball/6e9fab0f23363fdaa6b92fd3b8ec6ae937198aa5",
-                "reference": "6e9fab0f23363fdaa6b92fd3b8ec6ae937198aa5",
+                "url": "https://api.github.com/repos/spryker/oms-discount-connector/zipball/16e78b90bd36e48e5adb9e5d0f9f973b93fd0302",
+                "reference": "16e78b90bd36e48e5adb9e5d0f9f973b93fd0302",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "spryker/discount": "^4.0.0 || ^5.0.0 || ^6.0.0",
+                "spryker/discount": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0",
                 "spryker/kernel": "^3.0.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*",
                 "spryker/oms": "*",
-                "spryker/sales": "*",
-                "spryker/testify": "*"
+                "spryker/sales": "*"
             },
             "suggest": {
                 "spryker/oms": "If you want to use Oms command plugins.",
@@ -16416,7 +16464,7 @@
                 "proprietary"
             ],
             "description": "OmsDiscountConnector module",
-            "time": "2018-01-26T13:20:18+00:00"
+            "time": "2018-11-19T14:34:38+00:00"
         },
         {
             "name": "spryker/orders-rest-api",
@@ -16746,11 +16794,14 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "pimple bundle",
+            "support": {
+                "source": "https://github.com/spryker/Pimple/tree/2.0.0"
+            },
             "time": "2016-04-01T13:06:05+00:00"
         },
         {
@@ -18917,30 +18968,27 @@
         },
         {
             "name": "spryker/product-discount-connector",
-            "version": "3.2.2",
+            "version": "3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-discount-connector.git",
-                "reference": "f5660f22bbb39413e228807524e3556dbe3abdc9"
+                "reference": "35c66c5ce6eacdcfec701e604ab7d35804928801"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-discount-connector/zipball/f5660f22bbb39413e228807524e3556dbe3abdc9",
-                "reference": "f5660f22bbb39413e228807524e3556dbe3abdc9",
+                "url": "https://api.github.com/repos/spryker/product-discount-connector/zipball/35c66c5ce6eacdcfec701e604ab7d35804928801",
+                "reference": "35c66c5ce6eacdcfec701e604ab7d35804928801",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "spryker/discount": "^4.0.0 || ^5.0.0 || ^6.0.0",
+                "spryker/discount": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0",
                 "spryker/kernel": "^3.0.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/product": "^5.0.0 || ^6.0.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*",
                 "spryker/propel": "*",
-                "spryker/propel-orm": "*",
-                "spryker/silex": "*",
                 "spryker/tax": "*",
                 "spryker/testify": "*"
             },
@@ -18960,7 +19008,7 @@
                 "proprietary"
             ],
             "description": "ProductDiscountConnector module",
-            "time": "2018-01-26T13:20:18+00:00"
+            "time": "2018-11-19T14:34:38+00:00"
         },
         {
             "name": "spryker/product-group",
@@ -19414,26 +19462,28 @@
         },
         {
             "name": "spryker/product-label-discount-connector",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-label-discount-connector.git",
-                "reference": "8ab73e0c207495b305baac6741524e416132d425"
+                "reference": "cbf48136b5934ddd1c3b1985f781ec2ab57b1784"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-label-discount-connector/zipball/8ab73e0c207495b305baac6741524e416132d425",
-                "reference": "8ab73e0c207495b305baac6741524e416132d425",
+                "url": "https://api.github.com/repos/spryker/product-label-discount-connector/zipball/cbf48136b5934ddd1c3b1985f781ec2ab57b1784",
+                "reference": "cbf48136b5934ddd1c3b1985f781ec2ab57b1784",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "spryker/discount": "^4.2.0 || ^5.0.0 || ^6.0.0",
+                "spryker/discount": "^4.2.0 || ^5.0.0 || ^6.0.0 || ^7.0.0",
                 "spryker/kernel": "^3.0.0",
                 "spryker/product-label": "^1.1.0 || ^2.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/product": "*",
+                "spryker/propel": "*",
                 "spryker/testify": "*"
             },
             "type": "library",
@@ -19452,7 +19502,7 @@
                 "proprietary"
             ],
             "description": "ProductLabelDiscountConnector module",
-            "time": "2018-01-26T13:20:18+00:00"
+            "time": "2018-11-19T14:34:38+00:00"
         },
         {
             "name": "spryker/product-label-gui",
@@ -19966,16 +20016,16 @@
         },
         {
             "name": "spryker/product-management",
-            "version": "0.16.1",
+            "version": "0.16.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-management.git",
-                "reference": "c06ec76c970660957f9e26df5fda2e1a96f173d7"
+                "reference": "8d4fe66b0e842afb47a142fb1907d1c348287d09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-management/zipball/c06ec76c970660957f9e26df5fda2e1a96f173d7",
-                "reference": "c06ec76c970660957f9e26df5fda2e1a96f173d7",
+                "url": "https://api.github.com/repos/spryker/product-management/zipball/8d4fe66b0e842afb47a142fb1907d1c348287d09",
+                "reference": "8d4fe66b0e842afb47a142fb1907d1c348287d09",
                 "shasum": ""
             },
             "require": {
@@ -20030,7 +20080,7 @@
                 "proprietary"
             ],
             "description": "ProductManagement module",
-            "time": "2018-11-08T14:55:24+00:00"
+            "time": "2018-11-19T13:37:57+00:00"
         },
         {
             "name": "spryker/product-management-extension",
@@ -22624,11 +22674,14 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Redis bundle",
+            "support": {
+                "source": "https://github.com/spryker/Redis/tree/2.0.1"
+            },
             "time": "2017-04-26T15:15:36+00:00"
         },
         {
@@ -22671,11 +22724,22 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Config\\Module\\": "vendor/spryker/config/tests/_support/Module",
+                    "Propel\\Module\\": "vendor/spryker/propel/tests/_support/Module",
+                    "Transfer\\Module\\": "vendor/spryker/transfer/tests/_support/Module",
+                    "SprykerTest\\": "tests/SprykerTest/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Refund module",
+            "support": {
+                "source": "https://github.com/spryker/Refund/tree/master"
+            },
             "time": "2017-11-27T14:09:42+00:00"
         },
         {
@@ -23851,30 +23915,27 @@
         },
         {
             "name": "spryker/shipment-discount-connector",
-            "version": "1.1.2",
+            "version": "1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/shipment-discount-connector.git",
-                "reference": "0f108c960f0720d5a25f506edee72015a67837ea"
+                "reference": "9f3bc6835ebbd00ee10afcbf1770397d5494206a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/shipment-discount-connector/zipball/0f108c960f0720d5a25f506edee72015a67837ea",
-                "reference": "0f108c960f0720d5a25f506edee72015a67837ea",
+                "url": "https://api.github.com/repos/spryker/shipment-discount-connector/zipball/9f3bc6835ebbd00ee10afcbf1770397d5494206a",
+                "reference": "9f3bc6835ebbd00ee10afcbf1770397d5494206a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "spryker/discount": "^4.3.0 || ^5.0.0 || ^6.0.0",
+                "spryker/discount": "^4.3.0 || ^5.0.0 || ^6.0.0 || ^7.0.0",
                 "spryker/kernel": "^3.0.0",
                 "spryker/money": "^2.0.0",
                 "spryker/shipment": "^5.1.0 || ^6.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
-                "spryker/country": "*",
-                "spryker/propel": "*",
-                "spryker/silex": "*",
                 "spryker/testify": "*"
             },
             "type": "library",
@@ -23893,7 +23954,7 @@
                 "proprietary"
             ],
             "description": "ShipmentDiscountConnector module",
-            "time": "2018-01-26T13:20:18+00:00"
+            "time": "2018-11-19T14:34:38+00:00"
         },
         {
             "name": "spryker/shopping-list",
@@ -24318,11 +24379,14 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Silex bundle",
+            "support": {
+                "source": "https://github.com/spryker/Silex/tree/2.0.1"
+            },
             "time": "2016-12-09T13:45:20+00:00"
         },
         {
@@ -25523,11 +25587,19 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "SprykerTest\\": "tests/SprykerTest/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "UtilDateTime module",
+            "support": {
+                "source": "https://github.com/spryker/UtilDateTime/tree/1.0.2"
+            },
             "time": "2017-10-24T13:32:31+00:00"
         },
         {
@@ -25705,11 +25777,19 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "SprykerTest\\": "tests/SprykerTest/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "UtilText module",
+            "support": {
+                "source": "https://github.com/spryker/UtilText/tree/master"
+            },
             "time": "2017-10-24T13:32:31+00:00"
         },
         {
@@ -25786,11 +25866,19 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "SprykerTest\\": "tests/SprykerTest/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "UtilValidate module",
+            "support": {
+                "source": "https://github.com/spryker/UtilValidate/tree/1.0.0"
+            },
             "time": "2017-11-09T13:55:22+00:00"
         },
         {
@@ -26190,11 +26278,14 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Zend module",
+            "support": {
+                "source": "https://github.com/spryker/Zend/tree/2.1.0"
+            },
             "time": "2017-08-02T16:31:17+00:00"
         },
         {
@@ -31429,7 +31520,7 @@
             ],
             "authors": [
                 {
-                    "name": "Sullivan Sénéchal",
+                    "name": "Sullivan SENECHAL",
                     "email": "soullivaneuh@gmail.com"
                 }
             ],
