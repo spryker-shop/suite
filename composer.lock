@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
     "content-hash": "83b04b18aa3a43b27bb2f772c0cfc179",
@@ -1206,16 +1206,16 @@
         },
         {
             "name": "league/oauth2-server",
-            "version": "7.2.0",
+            "version": "7.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/oauth2-server.git",
-                "reference": "8184f771d43ea7305ddbb893d0daf6f0352ec5fd"
+                "reference": "f2cd3646ffe92a5ce83942cb487702e34b0cf504"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/oauth2-server/zipball/8184f771d43ea7305ddbb893d0daf6f0352ec5fd",
-                "reference": "8184f771d43ea7305ddbb893d0daf6f0352ec5fd",
+                "url": "https://api.github.com/repos/thephpleague/oauth2-server/zipball/f2cd3646ffe92a5ce83942cb487702e34b0cf504",
+                "reference": "f2cd3646ffe92a5ce83942cb487702e34b0cf504",
                 "shasum": ""
             },
             "require": {
@@ -1235,6 +1235,7 @@
                 "phpstan/phpstan-phpunit": "^0.9.4",
                 "phpstan/phpstan-strict-rules": "^0.9.0",
                 "phpunit/phpunit": "^6.3 || ^7.0",
+                "roave/security-advisories": "dev-master",
                 "zendframework/zend-diactoros": "^1.3.2"
             },
             "type": "library",
@@ -1252,6 +1253,12 @@
                     "name": "Alex Bilbie",
                     "email": "hello@alexbilbie.com",
                     "homepage": "http://www.alexbilbie.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Andy Millington",
+                    "email": "andrew@noexceptions.io",
+                    "homepage": "https://www.noexceptions.io",
                     "role": "Developer"
                 }
             ],
@@ -1272,7 +1279,7 @@
                 "secure",
                 "server"
             ],
-            "time": "2018-06-23T16:57:59+00:00"
+            "time": "2018-11-15T22:37:18+00:00"
         },
         {
             "name": "mandrill/mandrill",
@@ -2407,12 +2414,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "77ecbf38ef59ca1b921e454152ae0147ef324989"
+                "reference": "618a94482cf0abefa7f632af0b3960a252a8d8aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/77ecbf38ef59ca1b921e454152ae0147ef324989",
-                "reference": "77ecbf38ef59ca1b921e454152ae0147ef324989",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/618a94482cf0abefa7f632af0b3960a252a8d8aa",
+                "reference": "618a94482cf0abefa7f632af0b3960a252a8d8aa",
                 "shasum": ""
             },
             "require": {
@@ -2425,8 +2432,6 @@
                 "spryker/zend": "^2.1.0"
             },
             "require-dev": {
-                "spryker/availability-storage": "*",
-                "spryker/category-storage": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/config": "^3.1.0",
                 "spryker/console": "^3.1.0 || ^4.0.0",
@@ -2459,7 +2464,7 @@
                 "proprietary"
             ],
             "description": "EventBehavior module",
-            "time": "2018-09-11T15:49:17+00:00"
+            "time": "2018-11-19T11:21:35+00:00"
         },
         {
             "name": "spryker/install",
@@ -2570,7 +2575,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "8e03cc4f6ed5d4027eac6aaa2d6552091021a44e"
+                "reference": "366cc69438f9c447a41bb387b0a0dc543ed7b6ee"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2839,7 +2844,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-11-12T08:23:48+00:00"
+            "time": "2018-11-20T13:29:19+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2847,7 +2852,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "3fb73776f46820c3574b62f374aece069131bb0f"
+                "reference": "31b857cba190dcb74484d0bccafdfda57b0f54ea"
             },
             "require": {
                 "php": ">=7.1"
@@ -2922,7 +2927,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-11-09T15:21:03+00:00"
+            "time": "2018-11-19T10:52:39+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8149,7 +8154,7 @@
             ],
             "authors": [
                 {
-                    "name": "Sullivan Sénéchal",
+                    "name": "Sullivan SENECHAL",
                     "email": "soullivaneuh@gmail.com"
                 }
             ],
