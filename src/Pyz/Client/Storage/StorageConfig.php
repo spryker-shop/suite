@@ -19,6 +19,8 @@ class StorageConfig extends SprykerStorageClientConfig
         return [
             'page',
             'sort',
+            'ipp',
+            'q',
         ];
     }
 }
