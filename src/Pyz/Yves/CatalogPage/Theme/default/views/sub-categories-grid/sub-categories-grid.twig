@@ -25,15 +25,67 @@
     }
 } %}
 
-{% block content %}
-    {% for childCategory in data.children %}
-        {% include molecule('category-card') with {
-            class: 'col col--sm-12 col--md-6 col--lg-6 col--xl-4',
-            data: {
-                id: childCategory.id_category,
-                name: childCategory.name,
-                url: childCategory.url
-            }
-        } only %}
-    {% endfor %}
+{% block form %}
+    <div class="col col--sm-12 col--lg-4 col--xl-3">
+        {% block filterBar %}
+            {% include molecule('view-mode-switch', 'CatalogPage') with {
+                class: 'box'
+            } only %}
+
+            {% embed organism('filter-section', 'CatalogPage') with {
+                class: 'box js-catalog__filters-toggle',
+                data: {
+                    facets: data.facets,
+                    filterPath: data.filterPath,
+                    categories: data.categories,
+                    isEmptyCategoryFilterValueVisible: data.isEmptyCategoryFilterValueVisible
+                }
+            } only %}
+                {% block body %}
+                    {% for filter in data.facets %}
+                        {% set filterHasValues = filter.values is not defined or filter.values | length > 0 %}
+                        {% set filterIsVisible = filterHasValues and filter.name == 'category' %}
+
+                        {% if filterHasValues and filterIsVisible %}
+                            <h6>{{ ('product.filter.' ~ filter.name | lower) | trans }}</h6>
+
+                            {% include [
+                                molecule('filter-' ~ filter.config.name, 'CatalogPage'),
+                                molecule('filter-' ~ filter.config.type, 'CatalogPage')
+                                ] ignore missing with {
+                                data: {
+                                    filterPath: data.filterPath,
+                                    categories: data.categories,
+                                    filter: filter,
+                                    parameter: filter.config.parameterName | default(''),
+                                    min: filter.min | default(0),
+                                    max: filter.max | default(0),
+                                    activeMin: filter.activeMin | default(0),
+                                    activeMax: filter.activeMax | default(0),
+                                    isEmptyCategoryFilterValueVisible: data.isEmptyCategoryFilterValueVisible
+                                }
+                            } only %}
+
+                            <hr />
+                        {% endif %}
+                    {% endfor %}
+                {% endblock %}
+            {% endembed %}
+        {% endblock %}
+    </div>
+
+    <div class="col col--sm-12 col--lg-8 col--xl-9">
+        <div class="grid grid--stretch">
+            {% for childCategory in data.children %}
+                {% include molecule('category-card') with {
+                    class: 'col col--sm-12 col--md-6 col--lg-6 col--xl-4',
+                    data: {
+                        id: childCategory.id_category,
+                        name: childCategory.name,
+                        url: childCategory.url
+                    }
+                } only %}
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
