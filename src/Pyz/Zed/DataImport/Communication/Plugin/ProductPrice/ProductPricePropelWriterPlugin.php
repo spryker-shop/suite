@@ -16,6 +16,7 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
  *
  * There is a faster way to import data. You can use it instead of this class if you use PostgreSQL
  * @see \Pyz\Zed\DataImport\Communication\Plugin\ProductPrice\ProductPriceBulkPdoWriterPlugin
+ * @method \Pyz\Zed\DataImport\DataImportConfig getConfig()
  */
 class ProductPricePropelWriterPlugin extends AbstractPlugin implements DataSetWriterPluginInterface
 {
