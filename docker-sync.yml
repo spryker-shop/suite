@@ -1,0 +1,12 @@
+version: "2"
+
+options:
+  compose-file-path: './docker-compose.yml'
+  verbose: true # make the whole sync verbose
+syncs:
+  advanced-sync: #tip: add -sync and you keep consistent names as a convention
+    src: './app'
+    sync_host_ip: 'auto'
+    sync_host_port: 10872
+    sync_userid: '1001'
+    watch_args: '-v' # make watching verbose

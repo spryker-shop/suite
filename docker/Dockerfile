@@ -1,10 +1,8 @@
 FROM php:7-fpm-alpine
 
-ARG app_path
+WORKDIR /var/www/html
 
-WORKDIR /app
-
-ADD $PWD /app
+ADD $PWD /var/www/html
 
 RUN apk add --no-cache --update --virtual buildDeps autoconf
 RUN apk add --update --no-cache alpine-sdk postgresql-dev postgresql-client libpng libpng-dev \

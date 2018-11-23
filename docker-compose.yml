@@ -4,11 +4,9 @@ x-spryker_common: &spryker_common
   tty: true
   env_file:
     - ${PWD}/docker/.env
-  volumes:
-    - ${PWD}:/app
-    # - ${PWD}/docker/conf/php.ini:/opt/bitnami/php/lib/php.ini
   links:
     - db
+    - redis
     - rabbit
     - elasticsearch
 
@@ -19,24 +17,23 @@ services:
       context: .
       dockerfile: docker/Dockerfile
     volumes:
-      - ${PWD}:/app
-      - ${PWD}/public/Zed:/var/www/html
+      - ${PWD}:/var/www/html:delegated
     ports:
       - "9000:9000"
+
   yves:
     <<: *spryker_common
     image: suite_app:latest
     volumes:
-      - ${PWD}:/app
-      - ${PWD}/public/Yves:/var/www/html
+      - ${PWD}:/var/www/html:delegated
     ports:
       - "9001:9000"
+
   glue:
     <<: *spryker_common
     image: suite_app:latest
     volumes:
-      - ${PWD}:/app
-      - ${PWD}/public/Glue:/var/www/html
+      - ${PWD}:/var/www/html:delegated
     ports:
       - "9002:9000"
 
@@ -45,16 +42,10 @@ services:
     depends_on:
       - app
     ports:
-      - '8000:8000'
-      - '8001:8001'
-      - '8002:8002'
-      #- '443:443'
-    expose:
-      - 8000
-      - 8001
-      - 8002
+      - '80:80'
     volumes:
       - ${PWD}/docker/conf/spryker-suite.conf:/etc/nginx/conf.d/default.conf
+      - ${PWD}/public/Zed/assets:/var/www/html/public/Zed/assets
 
   db:
     image: postgres:alpine
@@ -68,11 +59,25 @@ services:
 
   redis:
     image: redis:alpine
+    expose:
+      - "6379:6379"
+    expose:
+      - 6379
 
   rabbit:
     image: rabbitmq:3.6-management-alpine
     ports:
+    #   - "15671:15671"
       - "15672:15672"
+    #   - "4369:4369"
+    #   - "5671:5671"
+    #   - "5672:5672"
+    expose:
+      # - "15671"
+      - "15672"
+      # - "4369"
+      # - "5671"
+      # - "5672"
 
   elasticsearch:
     image: elasticsearch:5-alpine
