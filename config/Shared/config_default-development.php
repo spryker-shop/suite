@@ -20,6 +20,7 @@ use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\PropelOrm\PropelOrmConstants;
 use Spryker\Shared\PropelQueryBuilder\PropelQueryBuilderConstants;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
+use Spryker\Shared\Session\SessionConfig;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\Setup\SetupConstants;
 use Spryker\Shared\Storage\StorageConstants;
@@ -62,35 +63,6 @@ $config[RabbitMqEnv::RABBITMQ_API_HOST] = 'localhost';
 $config[RabbitMqEnv::RABBITMQ_API_PORT] = '15672';
 $config[RabbitMqEnv::RABBITMQ_API_USERNAME] = 'admin';
 $config[RabbitMqEnv::RABBITMQ_API_PASSWORD] = 'mate20mg';
-$config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
-    'DE' => [
-        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'DE-connection',
-        RabbitMqEnv::RABBITMQ_HOST => 'localhost',
-        RabbitMqEnv::RABBITMQ_PORT => '5672',
-        RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
-        RabbitMqEnv::RABBITMQ_USERNAME => 'DE_development',
-        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/DE_development_zed',
-        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['DE'],
-    ],
-    'AT' => [
-        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'AT-connection',
-        RabbitMqEnv::RABBITMQ_HOST => 'localhost',
-        RabbitMqEnv::RABBITMQ_PORT => '5672',
-        RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
-        RabbitMqEnv::RABBITMQ_USERNAME => 'AT_development',
-        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/AT_development_zed',
-        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['AT'],
-    ],
-    'US' => [
-        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'US-connection',
-        RabbitMqEnv::RABBITMQ_HOST => 'localhost',
-        RabbitMqEnv::RABBITMQ_PORT => '5672',
-        RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
-        RabbitMqEnv::RABBITMQ_USERNAME => 'US_development',
-        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/US_development_zed',
-        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['US'],
-    ],
-];
 
 // ---------- Session
 $config[SessionConstants::YVES_SESSION_COOKIE_SECURE] = false;
@@ -105,7 +77,7 @@ $config[SessionConstants::ZED_SESSION_REDIS_HOST] = $config[SessionConstants::YV
 $config[SessionConstants::ZED_SESSION_REDIS_PORT] = $config[SessionConstants::YVES_SESSION_REDIS_PORT];
 $config[SessionConstants::ZED_SESSION_REDIS_PASSWORD] = $config[SessionConstants::YVES_SESSION_REDIS_PASSWORD];
 $config[SessionConstants::ZED_SESSION_REDIS_DATABASE] = 2;
-$config[SessionConstants::ZED_SESSION_TIME_TO_LIVE] = SessionConstants::SESSION_LIFETIME_1_YEAR;
+$config[SessionConstants::ZED_SESSION_TIME_TO_LIVE] = SessionConfig::SESSION_LIFETIME_1_YEAR;
 
 // ---------- Jenkins
 $config[SetupConstants::JENKINS_BASE_URL] = 'http://localhost:10007/';
