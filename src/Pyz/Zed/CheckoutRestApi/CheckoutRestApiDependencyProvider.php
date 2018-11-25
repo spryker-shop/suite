@@ -18,7 +18,7 @@ class CheckoutRestApiDependencyProvider extends SprykerCheckoutRestApiDependency
     /**
      * @return \Spryker\Zed\CheckoutRestApiExtension\Dependency\Plugin\QuoteMapperPluginInterface[]
      */
-    protected function getQuoteMappingPlugins(): array
+    protected function getQuoteMapperPlugins(): array
     {
         return [
             new CustomerQuoteMapperPlugin(),
