@@ -286,9 +286,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
             new WishlistsUuidWriterConsole(),
             new ProductTaxSetsRestApiConsole(),
-
-            new DocumentationGeneratorRestApiConsole(),
-
             new CustomerAddressesUuidWriterConsole(),
             new DeleteExpiredGuestQuoteConsole(),
         ];
@@ -330,6 +327,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new PluginUsageFinderConsole();
             $commands[] = new PostgresIndexGeneratorConsole();
             $commands[] = new PostgresIndexRemoverConsole();
+            $commands[] = new DocumentationGeneratorRestApiConsole();
         }
 
         return $commands;
