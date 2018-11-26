@@ -180,23 +180,23 @@ $config[AclConstants::ACL_DEFAULT_CREDENTIALS] = [
 ];
 
 // ---------- Elasticsearch
-$elastica_url = parse_url(getenv('ELASTICSEARCH_HOST', 'http://localhost:9200'));
-$ELASTICA_HOST = $elastica_url['hostname'];
-$config[SearchConstants::ELASTICA_PARAMETER__HOST] = $ELASTICA_HOST;
-$ELASTICA_TRANSPORT_PROTOCOL = $elastica_url['scheme'];
-$config[SearchConstants::ELASTICA_PARAMETER__TRANSPORT] = $ELASTICA_TRANSPORT_PROTOCOL;
-$ELASTICA_PORT = $elastica_url['port'];
-$config[SearchConstants::ELASTICA_PARAMETER__PORT] = $ELASTICA_PORT;
-$ELASTICA_AUTH_HEADER = null;
-$config[SearchConstants::ELASTICA_PARAMETER__AUTH_HEADER] = $ELASTICA_AUTH_HEADER;
-$ELASTICA_INDEX_NAME = null;// Store related config
-$config[SearchConstants::ELASTICA_PARAMETER__INDEX_NAME] = $ELASTICA_INDEX_NAME;
-$config[CollectorConstants::ELASTICA_PARAMETER__INDEX_NAME] = $ELASTICA_INDEX_NAME;
-$ELASTICA_DOCUMENT_TYPE = 'page';
-$config[SearchConstants::ELASTICA_PARAMETER__DOCUMENT_TYPE] = $ELASTICA_DOCUMENT_TYPE;
-$config[CollectorConstants::ELASTICA_PARAMETER__DOCUMENT_TYPE] = $ELASTICA_DOCUMENT_TYPE;
-$ELASTICA_PARAMETER__EXTRA = [];
-$config[SearchConstants::ELASTICA_PARAMETER__EXTRA] = $ELASTICA_PARAMETER__EXTRA;
+// $elastica_url = parse_url(getenv('ELASTICSEARCH_HOST', 'http://localhost:9200'));
+// $ELASTICA_HOST = $elastica_url['host'];
+// $config[SearchConstants::ELASTICA_PARAMETER__HOST] = $ELASTICA_HOST;
+// $ELASTICA_TRANSPORT_PROTOCOL = $elastica_url['scheme'];
+// $config[SearchConstants::ELASTICA_PARAMETER__TRANSPORT] = $ELASTICA_TRANSPORT_PROTOCOL;
+// $ELASTICA_PORT = $elastica_url['port'];
+// $config[SearchConstants::ELASTICA_PARAMETER__PORT] = $ELASTICA_PORT;
+// $ELASTICA_AUTH_HEADER = null;
+// $config[SearchConstants::ELASTICA_PARAMETER__AUTH_HEADER] = $ELASTICA_AUTH_HEADER;
+// $ELASTICA_INDEX_NAME = null;// Store related config
+// $config[SearchConstants::ELASTICA_PARAMETER__INDEX_NAME] = $ELASTICA_INDEX_NAME;
+// $config[CollectorConstants::ELASTICA_PARAMETER__INDEX_NAME] = $ELASTICA_INDEX_NAME;
+// $ELASTICA_DOCUMENT_TYPE = 'page';
+// $config[SearchConstants::ELASTICA_PARAMETER__DOCUMENT_TYPE] = $ELASTICA_DOCUMENT_TYPE;
+// $config[CollectorConstants::ELASTICA_PARAMETER__DOCUMENT_TYPE] = $ELASTICA_DOCUMENT_TYPE;
+// $ELASTICA_PARAMETER__EXTRA = [];
+// $config[SearchConstants::ELASTICA_PARAMETER__EXTRA] = $ELASTICA_PARAMETER__EXTRA;
 
 // ---------- Page search
 $config[SearchConstants::FULL_TEXT_BOOSTED_BOOSTING_VALUE] = 3;

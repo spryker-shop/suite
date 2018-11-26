@@ -2,6 +2,7 @@
 
 use Spryker\Client\RabbitMq\Model\RabbitMqAdapter;
 use Spryker\Shared\Application\ApplicationConstants;
+use Spryker\Shared\Collector\CollectorConstants;
 use Spryker\Shared\Customer\CustomerConstants;
 use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\GlueApplication\GlueApplicationConstants;
@@ -10,6 +11,7 @@ use Spryker\Shared\ProductManagement\ProductManagementConstants;
 use Spryker\Shared\Queue\QueueConfig;
 use Spryker\Shared\Queue\QueueConstants;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
+use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 
@@ -67,41 +69,66 @@ $glue = getenv('GLUE_HOST', sprintf('http://glue.de.%s.local', $domain));
 $glue_url = parse_url($glue);
 $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = $glue;
 
-// ----------- RabbitMq
-// $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
-//     'DE' => [
-//         RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'DE-connection',
-//         RabbitMqEnv::RABBITMQ_HOST => 'localhost',
-//         RabbitMqEnv::RABBITMQ_PORT => '5672',
-//         RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
-//         RabbitMqEnv::RABBITMQ_USERNAME => 'DE_development',
-//         RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/DE_development_zed',
-//         RabbitMqEnv::RABBITMQ_STORE_NAMES => ['DE'],
-//         RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => true,
-//     ],
-//     'AT' => [
-//         RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'AT-connection',
-//         RabbitMqEnv::RABBITMQ_HOST => 'localhost',
-//         RabbitMqEnv::RABBITMQ_PORT => '5672',
-//         RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
-//         RabbitMqEnv::RABBITMQ_USERNAME => 'AT_development',
-//         RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/AT_development_zed',
-//         RabbitMqEnv::RABBITMQ_STORE_NAMES => ['AT'],
-//     ],
-//     'US' => [
-//         RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'US-connection',
-//         RabbitMqEnv::RABBITMQ_HOST => 'localhost',
-//         RabbitMqEnv::RABBITMQ_PORT => '5672',
-//         RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
-//         RabbitMqEnv::RABBITMQ_USERNAME => 'US_development',
-//         RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/US_development_zed',
-//         RabbitMqEnv::RABBITMQ_STORE_NAMES => ['US'],
-//     ],
-// ];
+// ----------- Elasticsearch
+$elastica_url = parse_url(getenv('ELASTICSEARCH_HOST', 'http://localhost:9200'));
+$ELASTICA_HOST = $elastica_url['host'];
+$config[SearchConstants::ELASTICA_PARAMETER__HOST] = $ELASTICA_HOST;
+$ELASTICA_TRANSPORT_PROTOCOL = $elastica_url['scheme'];
+$config[SearchConstants::ELASTICA_PARAMETER__TRANSPORT] = $ELASTICA_TRANSPORT_PROTOCOL;
+$ELASTICA_PORT = $elastica_url['port'];
+$config[SearchConstants::ELASTICA_PARAMETER__PORT] = $ELASTICA_PORT;
+$ELASTICA_AUTH_HEADER = null;
+$config[SearchConstants::ELASTICA_PARAMETER__AUTH_HEADER] = $ELASTICA_AUTH_HEADER;
+$ELASTICA_INDEX_NAME = 'de_search';
+$config[SearchConstants::ELASTICA_PARAMETER__INDEX_NAME] = $ELASTICA_INDEX_NAME;
+$config[CollectorConstants::ELASTICA_PARAMETER__INDEX_NAME] = $ELASTICA_INDEX_NAME;
+$ELASTICA_DOCUMENT_TYPE = 'page';
+$config[SearchConstants::ELASTICA_PARAMETER__DOCUMENT_TYPE] = $ELASTICA_DOCUMENT_TYPE;
+$config[CollectorConstants::ELASTICA_PARAMETER__DOCUMENT_TYPE] = $ELASTICA_DOCUMENT_TYPE;
+$ELASTICA_PARAMETER__EXTRA = [];
+$config[SearchConstants::ELASTICA_PARAMETER__EXTRA] = $ELASTICA_PARAMETER__EXTRA;
 
-// $config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION_DEFAULT] = [
-//     QueueConfig::CONFIG_QUEUE_ADAPTER => RabbitMqAdapter::class,
-//     QueueConfig::CONFIG_MAX_WORKER_NUMBER => 2,
-// ];
+
+// ----------- RabbitMq
+$config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['DE'][RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION] = true;
+$config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = '/DE_development_zed';
+$config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
+    'DE' => [
+        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'DE-connection',
+        RabbitMqEnv::RABBITMQ_HOST => getenv('RABBIT_HOST', 'rabbit'),
+        RabbitMqEnv::RABBITMQ_PORT => getenv('RABBIT_PORT', '15672'),
+        RabbitMqEnv::RABBITMQ_PASSWORD => getenv('RABBIT_PASSWORD', 'mate20mg'),
+        RabbitMqEnv::RABBITMQ_USERNAME => getenv('RABBIT_USERNAME', 'admin'),
+        RabbitMqEnv::RABBITMQ_USERNAME => 'DE_development',
+        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/DE_development_zed',
+        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['DE'],
+        RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => true,
+    ],
+    'AT' => [
+        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'AT-connection',
+        RabbitMqEnv::RABBITMQ_HOST => getenv('RABBIT_HOST', 'rabbit'),
+        RabbitMqEnv::RABBITMQ_PORT => getenv('RABBIT_PORT', '15672'),
+        RabbitMqEnv::RABBITMQ_PASSWORD => getenv('RABBIT_PASSWORD', 'mate20mg'),
+        RabbitMqEnv::RABBITMQ_USERNAME => getenv('RABBIT_USERNAME', 'admin'),
+        RabbitMqEnv::RABBITMQ_USERNAME => 'AT_development',
+        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/AT_development_zed',
+        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['AT'],
+    ],
+    'US' => [
+        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'US-connection',
+        RabbitMqEnv::RABBITMQ_HOST => getenv('RABBIT_HOST', 'rabbit'),
+        RabbitMqEnv::RABBITMQ_PORT => getenv('RABBIT_PORT', '15672'),
+        RabbitMqEnv::RABBITMQ_PASSWORD => getenv('RABBIT_PASSWORD', 'mate20mg'),
+        RabbitMqEnv::RABBITMQ_USERNAME => getenv('RABBIT_USERNAME', 'admin'),
+        RabbitMqEnv::RABBITMQ_USERNAME => 'US_development',
+        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/US_development_zed',
+        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['US'],
+    ],
+];
+
+$config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION_DEFAULT] = [
+    QueueConfig::CONFIG_QUEUE_ADAPTER => RabbitMqAdapter::class,
+    QueueConfig::CONFIG_MAX_WORKER_NUMBER => 2,
+];
 
 $config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION][EventConstants::EVENT_QUEUE][QueueConfig::CONFIG_MAX_WORKER_NUMBER] = 5;

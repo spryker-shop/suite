@@ -16,24 +16,27 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile
-    volumes:
-      - ${PWD}:/var/www/html:delegated
+    # volumes:
+    #   - ${PWD}:/var/www/html:delegated
     ports:
       - "9000:9000"
 
   yves:
     <<: *spryker_common
     image: suite_app:latest
+    # volumes:
+    #   - ${PWD}:/var/www/html:delegated
     volumes:
-      - ${PWD}:/var/www/html:delegated
+      - ${PWD}/config:/var/www/html/config:delegated
+      - ${PWD}/public:/var/www/html/public:delegated
     ports:
       - "9001:9000"
 
   glue:
     <<: *spryker_common
     image: suite_app:latest
-    volumes:
-      - ${PWD}:/var/www/html:delegated
+    # volumes:
+    #   - ${PWD}:/var/www/html:delegated
     ports:
       - "9002:9000"
 
@@ -46,6 +49,7 @@ services:
     volumes:
       - ${PWD}/docker/conf/spryker-suite.conf:/etc/nginx/conf.d/default.conf
       - ${PWD}/public/Zed/assets:/var/www/html/public/Zed/assets
+      - ${PWD}/public/Yves/assets:/var/www/html/public/Yves/assets
 
   db:
     image: postgres:alpine
@@ -67,7 +71,7 @@ services:
   rabbit:
     image: rabbitmq:3.6-management-alpine
     ports:
-    #   - "15671:15671"
+      # - "15671:15671"
       - "15672:15672"
     #   - "4369:4369"
     #   - "5671:5671"

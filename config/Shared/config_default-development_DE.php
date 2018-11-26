@@ -15,3 +15,6 @@ use Spryker\Shared\Search\SearchConstants;
 // // ---------- MailCatcher
 // $config[MailConstants::MAILCATCHER_GUI] = sprintf('http://%s:1080', $config[ApplicationConstants::HOST_ZED]);
 
+
+
+$config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = '/DE_development_zed';

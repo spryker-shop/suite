@@ -93,8 +93,12 @@ $config[RabbitMqEnv::RABBITMQ_API_PORT] = getenv('RABBIT_PORT', '15672');
 $config[RabbitMqEnv::RABBITMQ_API_USERNAME] = getenv('RABBIT_USERNAME', 'admin');
 $config[RabbitMqEnv::RABBITMQ_API_PASSWORD] = getenv('RABBIT_PASSWORD', 'mate20mg');
 $config[ApplicationConstants::ZED_RABBITMQ_VHOST] = getenv('RABBIT_VHOST', '/DE_development_zed');
-
-$config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = '/DE_development_zed';
+// var_dump($config[RabbitMqEnv::RABBITMQ_API_PORT]);
+// var_dump($config[RabbitMqEnv::RABBITMQ_API_HOST]);
+// var_dump($config[RabbitMqEnv::RABBITMQ_API_USERNAME]);
+// var_dump($config[RabbitMqEnv::RABBITMQ_API_PASSWORD]);
+// exit;
+###$config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = '/DE_development_zed';
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
     'DE' => [
         RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'DE-connection',

@@ -65,26 +65,26 @@ $config[PropelConstants::ZED_DB_SUPPORTED_ENGINES] = [
 /**
  * Elasticsearch settings
  */
-$config[ApplicationConstants::ELASTICA_PARAMETER__HOST]
-    = $config[SearchConstants::ELASTICA_PARAMETER__HOST]
-    = 'localhost';
-$config[ApplicationConstants::ELASTICA_PARAMETER__TRANSPORT]
-    = $config[SearchConstants::ELASTICA_PARAMETER__TRANSPORT]
-    = 'http';
-$config[ApplicationConstants::ELASTICA_PARAMETER__PORT]
-    = $config[SearchConstants::ELASTICA_PARAMETER__PORT]
-    = '10005';
-$config[ApplicationConstants::ELASTICA_PARAMETER__AUTH_HEADER]
-    = $config[SearchConstants::ELASTICA_PARAMETER__AUTH_HEADER]
-    = '';
-$config[ApplicationConstants::ELASTICA_PARAMETER__INDEX_NAME]
-    = $config[CollectorConstants::ELASTICA_PARAMETER__INDEX_NAME]
-    = $config[SearchConstants::ELASTICA_PARAMETER__INDEX_NAME]
-    = null; // Store related config
-$config[ApplicationConstants::ELASTICA_PARAMETER__DOCUMENT_TYPE]
-    = $config[CollectorConstants::ELASTICA_PARAMETER__DOCUMENT_TYPE]
-    = $config[SearchConstants::ELASTICA_PARAMETER__DOCUMENT_TYPE]
-    = 'page';
+// $config[ApplicationConstants::ELASTICA_PARAMETER_HOST]
+//     = $config[SearchConstants::ELASTICA_PARAMETER_HOST]
+//     = 'localhost';
+// $config[ApplicationConstants::ELASTICA_PARAMETER_TRANSPORT]
+//     = $config[SearchConstants::ELASTICA_PARAMETER_TRANSPORT]
+//     = 'http';
+// $config[ApplicationConstants::ELASTICA_PARAMETER_PORT]
+//     = $config[SearchConstants::ELASTICA_PARAMETER_PORT]
+//     = '10005';
+// $config[ApplicationConstants::ELASTICA_PARAMETER_AUTH_HEADER]
+//     = $config[SearchConstants::ELASTICA_PARAMETER_AUTH_HEADER]
+//     = '';
+// $config[ApplicationConstants::ELASTICA_PARAMETER_INDEX_NAME]
+//     = $config[CollectorConstants::ELASTICA_PARAMETER_INDEX_NAME]
+//     = $config[SearchConstants::ELASTICA_PARAMETER_INDEX_NAME]
+//     = null; // Store related config
+// $config[ApplicationConstants::ELASTICA_PARAMETER_DOCUMENT_TYPE]
+//     = $config[CollectorConstants::ELASTICA_PARAMETER_DOCUMENT_TYPE]
+//     = $config[SearchConstants::ELASTICA_PARAMETER_DOCUMENT_TYPE]
+//     = 'page';
 
 /**
  * Page search settings
