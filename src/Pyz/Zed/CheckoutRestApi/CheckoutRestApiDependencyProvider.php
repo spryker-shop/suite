@@ -8,23 +8,23 @@
 namespace Pyz\Zed\CheckoutRestApi;
 
 use Spryker\Zed\CheckoutRestApi\CheckoutRestApiDependencyProvider as SprykerCheckoutRestApiDependencyProvider;
-use Spryker\Zed\CheckoutRestApi\Communication\Plugin\AddressesQuoteMappingPlugin;
-use Spryker\Zed\CheckoutRestApi\Communication\Plugin\CustomerQuoteMappingPlugin;
-use Spryker\Zed\CheckoutRestApi\Communication\Plugin\PaymentsQuoteMappingPlugin;
-use Spryker\Zed\CheckoutRestApi\Communication\Plugin\ShipmentQuoteMappingPlugin;
+use Spryker\Zed\CheckoutRestApi\Communication\Plugin\AddressesQuoteMapperPlugin;
+use Spryker\Zed\CheckoutRestApi\Communication\Plugin\CustomerQuoteMapperPlugin;
+use Spryker\Zed\PaymentsRestApi\Communication\Plugin\CheckoutRestApi\PaymentsQuoteMapperPlugin;
+use Spryker\Zed\ShipmentsRestApi\Communication\Plugin\CheckoutRestApi\ShipmentQuoteMapperPlugin;
 
 class CheckoutRestApiDependencyProvider extends SprykerCheckoutRestApiDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\CheckoutRestApiExtension\Dependency\Plugin\QuoteMappingPluginInterface[]
+     * @return \Spryker\Zed\CheckoutRestApiExtension\Dependency\Plugin\QuoteMapperPluginInterface[]
      */
     protected function getQuoteMappingPlugins(): array
     {
         return [
-            new ShipmentQuoteMappingPlugin(),
-            new PaymentsQuoteMappingPlugin(),
-            new AddressesQuoteMappingPlugin(),
-            new CustomerQuoteMappingPlugin(),
+            new ShipmentQuoteMapperPlugin(),
+            new PaymentsQuoteMapperPlugin(),
+            new AddressesQuoteMapperPlugin(),
+            new CustomerQuoteMapperPlugin(),
         ];
     }
 }
