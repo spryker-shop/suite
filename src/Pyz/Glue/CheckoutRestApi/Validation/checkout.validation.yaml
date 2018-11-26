@@ -90,21 +90,8 @@ checkout-data:
                     fields:
                       shipmentSelection:
                       - NotBlank
-                      method:
-                      - Collection:
-                          fields:
-                            carrierName:
-                            - NotBlank
-                            id:
-                            - NotBlank
-                            - Type:
-                                type: numeric
-                            name:
-                            - NotBlank
-                            price:
-                            - NotBlank
-                            - Type:
-                                type: numeric
+                      - Type:
+                          type: numeric
 checkout:
   post:
     cart:
@@ -188,18 +175,5 @@ checkout:
               fields:
                 shipmentSelection:
                 - NotBlank
-                method:
-                - Collection:
-                    fields:
-                      carrierName:
-                      - NotBlank
-                      id:
-                      - NotBlank
-                      - Type:
-                          type: numeric
-                      name:
-                      - NotBlank
-                      price:
-                      - NotBlank
-                      - Type:
-                          type: numeric
+                - Type:
+                    type: numeric
