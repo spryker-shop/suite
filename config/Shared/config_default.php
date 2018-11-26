@@ -143,6 +143,12 @@ $config[AclConstants::ACL_DEFAULT_RULES] = [
         'action' => 'index',
         'type' => 'allow',
     ],
+    [
+        'bundle' => 'auth',
+        'controller' => 'logout',
+        'action' => 'index',
+        'type' => 'allow',
+    ],
 ];
 // ACL: Allow or disallow of urls for Zed Admin GUI
 $config[AclConstants::ACL_USER_RULE_WHITELIST] = [
@@ -282,13 +288,17 @@ $config[ApplicationConstants::YVES_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG] = $HST
 
 // ---------- SSL
 $config[SessionConstants::YVES_SSL_ENABLED] = false;
-$config[ApplicationConstants::YVES_SSL_ENABLED] = false;
+$config[ApplicationConstants::YVES_SSL_ENABLED] =
+$config[SessionConstants::YVES_SSL_ENABLED]
+    = false;
 $config[ApplicationConstants::YVES_SSL_EXCLUDED] = [
     'heartbeat' => '/heartbeat',
 ];
 
 $config[ZedRequestConstants::ZED_API_SSL_ENABLED] = false;
-$config[ApplicationConstants::ZED_SSL_ENABLED] = false;
+$config[ApplicationConstants::ZED_SSL_ENABLED] =
+    $config[SessionConstants::ZED_SSL_ENABLED]
+    = false;
 $config[ApplicationConstants::ZED_SSL_EXCLUDED] = ['heartbeat/index'];
 
 // ---------- Theme
