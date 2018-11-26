@@ -60,7 +60,9 @@ use SprykerShop\Yves\ProductReplacementForWidget\Widget\ProductReplacementForLis
 use SprykerShop\Yves\ProductReviewWidget\Widget\DisplayProductAbstractReviewWidget;
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductDetailPageReviewWidget;
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductRatingFilterWidget;
+use SprykerShop\Yves\ProductReviewWidget\Widget\ProductReviewAddWidget;
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductReviewDisplayWidget;
+use SprykerShop\Yves\ProductReviewWidget\Widget\ProductReviewListWidget;
 use SprykerShop\Yves\ProductWidget\Widget\CatalogPageProductWidget;
 use SprykerShop\Yves\ProductWidget\Widget\CmsProductGroupWidget;
 use SprykerShop\Yves\ProductWidget\Widget\CmsProductWidget;
@@ -158,6 +160,8 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             WishlistMenuItemWidget::class,
             WishlistProductAlternativeWidget::class,
             CompanyBusinessUnitAddressWidget::class,
+            ProductReviewListWidget::class,
+            ProductReviewAddWidget::class,
         ];
     }
 
