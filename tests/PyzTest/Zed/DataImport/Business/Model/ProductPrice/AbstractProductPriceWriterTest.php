@@ -45,6 +45,7 @@ abstract class AbstractProductPriceWriterTest extends AbstractWriterTest
     ];
 
     protected const PRICE_MODE_CONFIGURATION = 2;
+    protected const PRICE_DATA = '[{""quantity"":5,""net_price"":150,""gross_price"":165}]';
 
     /**
      * @return array
@@ -59,7 +60,9 @@ abstract class AbstractProductPriceWriterTest extends AbstractWriterTest
         $spyPriceProductStoreEntityTransfer = (new SpyPriceProductStoreEntityBuilder())->build();
         $priceProductStore = $spyPriceProductStoreEntityTransfer
             ->setCurrency((new SpyCurrencyEntityTransfer())->setName($this->getCurrency()->getCode()))
-            ->setStore((new SpyStoreEntityTransfer())->setName(Store::getDefaultStore()));
+            ->setStore((new SpyStoreEntityTransfer())->setName(Store::getDefaultStore()))
+            ->setPriceData(static::PRICE_DATA);
+
         $priceProductStores = new ArrayObject();
         $priceProductStores->append($priceProductStore);
 
@@ -80,6 +83,9 @@ abstract class AbstractProductPriceWriterTest extends AbstractWriterTest
                 ->setPriceType($dataSet[ProductPriceHydratorStep::PRICE_TYPE_TRANSFER])
                 ->setSpyProductAbstract((new SpyProductAbstractEntityTransfer())->setSku($sku))
                 ->setSpyPriceProductStores($priceProductStores);
+
+            $dataSet[ProductPriceHydratorStep::KEY_PRICE_DATA] = $priceProductStore->getPriceData();
+            $dataSet[ProductPriceHydratorStep::KEY_PRICE_DATA_CHECKSUM] = $priceProductStore->getPriceDataChecksum();
 
             $result[$sku] = $dataSet;
         }
@@ -107,6 +113,8 @@ abstract class AbstractProductPriceWriterTest extends AbstractWriterTest
                 SpyProductAbstractTableMap::COL_SKU,
                 SpyPriceProductStoreTableMap::COL_GROSS_PRICE,
                 SpyPriceProductStoreTableMap::COL_NET_PRICE,
+                SpyPriceProductStoreTableMap::COL_PRICE_DATA,
+                SpyPriceProductStoreTableMap::COL_PRICE_DATA_CHECKSUM,
             ])
             ->find()
             ->toArray();

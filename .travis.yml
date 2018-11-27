@@ -10,7 +10,7 @@ branches:
   only:
   - master
   - /feature\/[a-z]+-\d+\/(master|dev).+/
-  - /(bugfix|hotfix)\/[a-z]+-\d+.+/
+  - /(bugfix|hotfix)\/.+/
   - /beta\/.+/
 
 #Possible travis events (push, pull_request, cron, or api)
@@ -28,6 +28,7 @@ matrix:
       env:
         - TEST_GROUP=without-acceptance
         - ON_EVENTS=cron,push
+        - DB=mysql
     - php: "7.1"
       env:
         - TEST_GROUP=acceptance
@@ -36,6 +37,7 @@ matrix:
       env:
         - TEST_GROUP=acceptance
         - ON_EVENTS=push,cron
+        - DB=mysql
 addons:
   postgresql: 9.6
   mysql: 5.7
@@ -117,6 +119,7 @@ script:
 
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:propel:validate-abstract ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:schema:validate ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:schema:validate-xml-names ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:validate ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:sniff:style ; fi
 

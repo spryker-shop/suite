@@ -12,12 +12,16 @@ use Codeception\Util\Stub;
 use Propel\Runtime\Propel;
 use Pyz\Zed\DataImport\Business\DataImportBusinessFactory;
 use Pyz\Zed\DataImport\DataImportConfig;
+use Spryker\Service\UtilEncoding\UtilEncodingService;
+use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\Availability\Business\AvailabilityFacade;
 use Spryker\Zed\Availability\Business\AvailabilityFacadeInterface;
 use Spryker\Zed\Currency\Business\CurrencyFacade;
 use Spryker\Zed\Currency\Business\CurrencyFacadeInterface;
 use Spryker\Zed\DataImport\Dependency\Propel\DataImportToPropelConnectionBridge;
+use Spryker\Zed\PriceProduct\Business\PriceProductFacade;
+use Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface;
 use Spryker\Zed\ProductBundle\Business\ProductBundleFacade;
 use Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface;
 use Spryker\Zed\Stock\Business\StockFacade;
@@ -51,6 +55,8 @@ abstract class AbstractWriterTest extends Unit
             'getStockFacade' => $this->getStockFacade(),
             'getProductBundleFacade' => $this->getProductBundleFacade(),
             'getAvailabilityFacade' => $this->getAvailabilityFacade(),
+            'getPriceProductFacade' => $this->getPriceProductFacade(),
+            'getUtilEncodingService' => $this->getUtilEncodingService(),
         ]);
 
         return $dataImportBusinessFactory;
@@ -121,5 +127,21 @@ abstract class AbstractWriterTest extends Unit
     protected function getAvailabilityFacade(): AvailabilityFacadeInterface
     {
         return new AvailabilityFacade();
+    }
+
+    /**
+     * @return \Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface
+     */
+    protected function getPriceProductFacade(): PriceProductFacadeInterface
+    {
+        return new PriceProductFacade();
+    }
+
+    /**
+     * @return \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface
+     */
+    protected function getUtilEncodingService(): UtilEncodingServiceInterface
+    {
+        return new UtilEncodingService();
     }
 }
