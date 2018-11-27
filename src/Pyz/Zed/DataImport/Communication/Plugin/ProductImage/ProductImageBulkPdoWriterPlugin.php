@@ -13,6 +13,7 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 
 /**
  * @method \Pyz\Zed\DataImport\Business\DataImportFacadeInterface getFacade()
+ * @method \Pyz\Zed\DataImport\DataImportConfig getConfig()
  */
 class ProductImageBulkPdoWriterPlugin extends AbstractPlugin implements DataSetWriterPluginInterface
 {
