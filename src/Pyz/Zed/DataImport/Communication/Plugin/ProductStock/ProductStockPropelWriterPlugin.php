@@ -12,10 +12,10 @@ use Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterfa
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 
 /**
- * @method \Pyz\Zed\DataImport\Business\DataImportFacadeInterface getFacade()
- *
  * There is a faster way to import data. You can use it instead of this class if you use PostgreSQL
  * @see \Pyz\Zed\DataImport\Communication\Plugin\ProductStock\ProductStockBulkPdoWriterPlugin
+ *
+ * @method \Pyz\Zed\DataImport\Business\DataImportFacadeInterface getFacade()
  * @method \Pyz\Zed\DataImport\DataImportConfig getConfig()
  */
 class ProductStockPropelWriterPlugin extends AbstractPlugin implements DataSetWriterPluginInterface
