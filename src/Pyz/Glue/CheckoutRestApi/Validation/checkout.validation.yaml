@@ -43,6 +43,16 @@ checkout-data:
                       - NotBlank
                       - Choice:
                           choices: [DE, AT]
+                      isDefaultBilling:
+                      - Optional:
+                          constraints:
+                          - Type:
+                              type: boolean
+                      isDefaultShipping:
+                      - Optional:
+                          constraints:
+                          - Type:
+                              type: boolean
           shippingAddress:
           - Optional:
               constraints:
@@ -70,6 +80,16 @@ checkout-data:
                       - NotBlank
                       - Choice:
                           choices: [DE, AT]
+                      isDefaultBilling:
+                      - Optional:
+                          constraints:
+                          - Type:
+                              type: boolean
+                      isDefaultShipping:
+                      - Optional:
+                          constraints:
+                          - Type:
+                              type: boolean
           payments:
           - Optional:
               constraints:
@@ -107,7 +127,6 @@ checkout:
                     choices: [Mr, Mrs, Ms, Dr]
                 email:
                 - EmailConstraint
-
           billingAddress:
           - Collection:
               fields:
@@ -133,6 +152,16 @@ checkout:
                 - NotBlank
                 - Choice:
                     choices: [DE, AT]
+                isDefaultBilling:
+                - Optional:
+                    constraints:
+                    - Type:
+                        type: boolean
+                isDefaultShipping:
+                - Optional:
+                    constraints:
+                    - Type:
+                        type: boolean
           shippingAddress:
           - Collection:
               fields:
@@ -158,6 +187,16 @@ checkout:
                 - NotBlank
                 - Choice:
                     choices: [DE, AT]
+                isDefaultBilling:
+                - Optional:
+                    constraints:
+                    - Type:
+                        type: boolean
+                isDefaultShipping:
+                - Optional:
+                    constraints:
+                    - Type:
+                        type: boolean
           payments:
           - NotBlank
           - All:
