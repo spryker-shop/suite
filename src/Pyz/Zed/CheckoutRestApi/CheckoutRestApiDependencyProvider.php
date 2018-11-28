@@ -8,7 +8,7 @@
 namespace Pyz\Zed\CheckoutRestApi;
 
 use Spryker\Zed\CheckoutRestApi\CheckoutRestApiDependencyProvider as SprykerCheckoutRestApiDependencyProvider;
-use Spryker\Zed\CustomersRestApi\Communication\Plugin\CheckoutRestApi\AddressesQuoteMapperPlugin;
+use Spryker\Zed\CustomersRestApi\Communication\Plugin\CheckoutRestApi\AddressQuoteMapperPlugin;
 use Spryker\Zed\CustomersRestApi\Communication\Plugin\CheckoutRestApi\CustomerQuoteMapperPlugin;
 use Spryker\Zed\PaymentsRestApi\Communication\Plugin\CheckoutRestApi\PaymentsQuoteMapperPlugin;
 use Spryker\Zed\ShipmentsRestApi\Communication\Plugin\CheckoutRestApi\ShipmentQuoteMapperPlugin;
@@ -22,7 +22,7 @@ class CheckoutRestApiDependencyProvider extends SprykerCheckoutRestApiDependency
     {
         return [
             new CustomerQuoteMapperPlugin(),
-            new AddressesQuoteMapperPlugin(),
+            new AddressQuoteMapperPlugin(),
             new PaymentsQuoteMapperPlugin(),
             new ShipmentQuoteMapperPlugin(),
         ];
