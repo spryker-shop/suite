@@ -12,6 +12,7 @@ use Spryker\Zed\BusinessOnBehalf\Communication\Plugin\Customer\DefaultCompanyUse
 use Spryker\Zed\BusinessOnBehalf\Communication\Plugin\Customer\IsOnBehalfCustomerTransferExpanderPlugin;
 use Spryker\Zed\CompanyRole\Communication\Plugin\PermissionCustomerExpanderPlugin;
 use Spryker\Zed\CompanyUser\Communication\Plugin\Customer\CustomerTransferCompanyUserExpanderPlugin;
+use Spryker\Zed\CompanyUserGui\Communication\Plugin\Customer\CompanyUserCustomerTableActionExpanderPlugin;
 use Spryker\Zed\CompanyUserInvitation\Communication\Plugin\CompanyUserInvitationPostCustomerRegistrationPlugin;
 use Spryker\Zed\Customer\CustomerDependencyProvider as SprykerCustomerDependencyProvider;
 use Spryker\Zed\CustomerGroup\Communication\Plugin\CustomerAnonymizer\RemoveCustomerFromGroupPlugin;
@@ -24,8 +25,8 @@ use Spryker\Zed\ShoppingList\Communication\Plugin\ShoppingListPermissionCustomer
 
 class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
 {
-    const SALES_FACADE = 'sales facade';
-    const NEWSLETTER_FACADE = 'newsletter facade';
+    public const SALES_FACADE = 'sales facade';
+    public const NEWSLETTER_FACADE = 'newsletter facade';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -84,6 +85,16 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     {
         return [
             new CompanyUserInvitationPostCustomerRegistrationPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\CustomerExtension\Dependency\Plugin\CustomerTableActionExpanderPluginInterface[]
+     */
+    protected function getCustomerTableActionExpanderPlugins(): array
+    {
+        return [
+            new CompanyUserCustomerTableActionExpanderPlugin(),
         ];
     }
 }
