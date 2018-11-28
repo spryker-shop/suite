@@ -78,6 +78,7 @@ use SprykerShop\Yves\ShoppingListNoteWidget\Widget\ShoppingListItemNoteWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\AddToShoppingListWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListMenuItemWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListNavigationMenuWidget;
+use SprykerShop\Yves\TabsWidget\Widget\FullTextSearchTabsWidget;
 use SprykerShop\Yves\WishlistWidget\Widget\WishlistMenuItemWidget;
 
 class ShopApplicationDependencyProvider extends SprykerShopApplicationDependencyProvider
@@ -156,6 +157,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             WishlistMenuItemWidget::class,
             WishlistProductAlternativeWidget::class,
             CompanyBusinessUnitAddressWidget::class,
+            FullTextSearchTabsWidget::class,
         ];
     }
 
