@@ -99,7 +99,6 @@ $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
         RabbitMqEnv::RABBITMQ_PORT => getenv('RABBIT_PORT', '15672'),
         RabbitMqEnv::RABBITMQ_PASSWORD => getenv('RABBIT_PASSWORD', 'mate20mg'),
         RabbitMqEnv::RABBITMQ_USERNAME => getenv('RABBIT_USERNAME', 'admin'),
-        RabbitMqEnv::RABBITMQ_USERNAME => 'DE_development',
         RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/DE_development_zed',
         RabbitMqEnv::RABBITMQ_STORE_NAMES => ['DE'],
         RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => true,

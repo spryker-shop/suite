@@ -8,6 +8,7 @@ use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Queue\QueueConstants;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
 use Spryker\Shared\Search\SearchConstants;
+use Spryker\Shared\Setup\SetupConstants;
 
 // // ---------- Propel
 // $config[PropelConstants::ZED_DB_DATABASE] = 'DE_development_zed';
@@ -16,5 +17,5 @@ use Spryker\Shared\Search\SearchConstants;
 // $config[MailConstants::MAILCATCHER_GUI] = sprintf('http://%s:1080', $config[ApplicationConstants::HOST_ZED]);
 
 
-
+$config[SetupConstants::JENKINS_CSRF_PROTECTION_ENABLED] = true;
 $config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = '/DE_development_zed';

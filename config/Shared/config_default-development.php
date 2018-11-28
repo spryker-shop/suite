@@ -70,6 +70,7 @@ $config[RabbitMqEnv::RABBITMQ_API_USERNAME] = getenv('RABBIT_USERNAME', 'admin')
 $config[RabbitMqEnv::RABBITMQ_API_PASSWORD] = getenv('RABBIT_PASSWORD', 'mate20mg');
 $config[ApplicationConstants::ZED_RABBITMQ_VHOST] = getenv('RABBIT_VHOST', '/DE_development_zed');
 
+
 // // ---------- Elasticsearch
 $ELASTICA_INDEX_NAME = 'de_search';
 $config[SearchConstants::ELASTICA_PARAMETER__INDEX_NAME] = $ELASTICA_INDEX_NAME;

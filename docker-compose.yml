@@ -16,8 +16,9 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile
-    # volumes:
-    #   - ${PWD}:/var/www/html:delegated
+    volumes:
+      - ${PWD}/config:/var/www/html/config
+      - ${PWD}/public:/var/www/html/public
     ports:
       - "9000:9000"
 
@@ -27,8 +28,8 @@ services:
     # volumes:
     #   - ${PWD}:/var/www/html:delegated
     volumes:
-      - ${PWD}/config:/var/www/html/config:delegated
-      - ${PWD}/public:/var/www/html/public:delegated
+      - ${PWD}/config:/var/www/html/config
+      - ${PWD}/public:/var/www/html/public
     ports:
       - "9001:9000"
 
@@ -60,28 +61,17 @@ services:
 
   jenkins:
     image: jenkins:alpine
+    ports:
+      - "8080:8080"
 
   redis:
     image: redis:alpine
-    expose:
-      - "6379:6379"
-    expose:
-      - 6379
 
   rabbit:
-    image: rabbitmq:3.6-management-alpine
+    image: rabbitmq:3.6.15-management-alpine
     ports:
-      # - "15671:15671"
       - "15672:15672"
-    #   - "4369:4369"
-    #   - "5671:5671"
-    #   - "5672:5672"
-    expose:
-      # - "15671"
-      - "15672"
-      # - "4369"
-      # - "5671"
-      # - "5672"
+
 
   elasticsearch:
     image: elasticsearch:5-alpine

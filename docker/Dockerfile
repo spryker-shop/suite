@@ -7,20 +7,28 @@ RUN apk add --update --no-cache alpine-sdk postgresql-dev postgresql-client libp
         rm -rf /var/cache/apk/*
 
 RUN pecl install redis && docker-php-ext-enable redis
-RUN docker-php-ext-install gd pdo_pgsql pgsql bcmath gmp intl sodium
+RUN docker-php-ext-install gd pdo_pgsql pgsql bcmath gmp intl sodium sockets
 
 RUN curl --silent --show-error https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+RUN mkdir -p /var/www/html/data/DE/logs /var/www/html/data/AT/logs /var/www/html/data/US/logs
+
+RUN chown -R www-data:www-data /var/www/html/data/DE
+RUN chown -R www-data:www-data /var/www/html/data/AT
+RUN chown -R www-data:www-data /var/www/html/data/US
+
+RUN chmod -R 777 /var/www/html/data/DE /var/www/html/data/AT /var/www/html/data/US /var/www/html/src/Generated
+
+#
+# limited user
+#
 USER www-data
 
 WORKDIR /var/www/html
 
 ADD $PWD /var/www/html
 
-RUN chmod -R 755 /var/www/html
-RUN chown -R www-data:www-data /var/www/html
-
 RUN composer global require hirak/prestissimo
 RUN composer install --no-interaction
 
-#RUN vendor/bin/install
+#RUN vendor/bin/install # needs db rabbit redis etc running at same time to work

@@ -72,7 +72,7 @@ use Spryker\Shared\ZedRequest\ZedRequestConstants;
 //         RabbitMqEnv::RABBITMQ_HOST => 'localhost',
 //         RabbitMqEnv::RABBITMQ_PORT => '5672',
 //         RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
-//         RabbitMqEnv::RABBITMQ_USERNAME => 'DE_development',
+//         RabbitMqEnv::RABBITMQ_USERNAME => 'admin',
 //         RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/DE_development_zed',
 //         RabbitMqEnv::RABBITMQ_STORE_NAMES => ['DE'],
 //         RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => true,

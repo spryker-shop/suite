@@ -47,9 +47,9 @@ sections:
             command: "vendor/bin/console setup:empty-generated-directory"
 
 
-    jenkins-down:
-        jenkins-stop:
-            command: "vendor/bin/console setup:jenkins:disable"
+    # jenkins-down:
+    #     jenkins-stop:
+    #         command: "vendor/bin/console setup:jenkins:disable"
 
 
     generate:
@@ -226,12 +226,12 @@ sections:
                 - DE
 
 
-    jenkins-up:
-        jenkins-generate:
-            command: "vendor/bin/console setup:jenkins:generate"
+    # jenkins-up:
+    #     jenkins-generate:
+    #         command: "vendor/bin/console setup:jenkins:generate"
 
-        jenkins-enable:
-            command: "vendor/bin/console setup:jenkins:enable"
+    #     jenkins-enable:
+    #         command: "vendor/bin/console setup:jenkins:enable"
 
 
     frontend:

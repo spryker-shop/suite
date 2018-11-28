@@ -25,3 +25,14 @@ In order to install the Shop Suite on your machine, you can follow the instructi
 If you encounter any issues during or after installation, you can first check our Troubleshooting article:
 
 * [Troubleshooting](https://academy.spryker.com/getting_started/troubleshooting.html)
+
+
+# Docker
+
+```
+docker-compose build app
+docker-compose up -d
+docker-compose exec app sh ./vendor/bin/install
+create vhosts on rabbit create spryker/spryker1234 admin user
+
+```
