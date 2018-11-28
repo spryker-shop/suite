@@ -39,7 +39,7 @@ checkout-data:
                 iso2Code:
                 - NotBlank
                 - Choice:
-                    choices: [DE, AT]
+                    choices: [DE, AT, US]
                 isDefaultBilling:
                 - Optional:
                     constraints:
@@ -76,7 +76,7 @@ checkout-data:
                 iso2Code:
                 - NotBlank
                 - Choice:
-                    choices: [DE, AT]
+                    choices: [DE, AT, US]
                 isDefaultBilling:
                 - Optional:
                     constraints:
@@ -145,7 +145,7 @@ checkout:
           iso2Code:
           - NotBlank
           - Choice:
-              choices: [DE, AT]
+              choices: [DE, AT, US]
           isDefaultBilling:
           - Optional:
               constraints:
@@ -180,7 +180,7 @@ checkout:
           iso2Code:
           - NotBlank
           - Choice:
-              choices: [DE, AT]
+              choices: [DE, AT, US]
           isDefaultBilling:
           - Optional:
               constraints:
