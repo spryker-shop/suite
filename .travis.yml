@@ -28,7 +28,7 @@ matrix:
       env:
         - TEST_GROUP=without-acceptance
         - ON_EVENTS=cron,push
-        - DB=mysql
+#        - DB=mysql
     - php: "7.1"
       env:
         - TEST_GROUP=acceptance
