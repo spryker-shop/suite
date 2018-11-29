@@ -17,6 +17,7 @@ use SprykerShop\Yves\CheckoutWidget\Widget\CheckoutBreadcrumbWidget;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CheckBusinessOnBehalfCompanyUserHandlerPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyBusinessUnitControllerRestrictionPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyUserRestrictionHandlerPlugin;
+use SprykerShop\Yves\CompanyWidget\Widget\CompanyBusinessUnitAddressWidget;
 use SprykerShop\Yves\CompanyWidget\Widget\CompanyMenuItemWidget;
 use SprykerShop\Yves\CurrencyWidget\Widget\CurrencyWidget;
 use SprykerShop\Yves\CustomerPage\Widget\CustomerNavigationWidget;
@@ -54,6 +55,7 @@ use SprykerShop\Yves\ProductOptionWidget\Widget\ProductOptionConfiguratorWidget;
 use SprykerShop\Yves\ProductPackagingUnitWidget\Widget\ProductPackagingUnitWidget;
 use SprykerShop\Yves\ProductRelationWidget\Widget\SimilarProductsWidget;
 use SprykerShop\Yves\ProductRelationWidget\Widget\UpSellingProductsWidget;
+use SprykerShop\Yves\ProductReplacementForWidget\Widget\ProductReplacementForListWidget;
 use SprykerShop\Yves\ProductReviewWidget\Widget\DisplayProductAbstractReviewWidget;
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductDetailPageReviewWidget;
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductRatingFilterWidget;
@@ -76,6 +78,7 @@ use SprykerShop\Yves\ShoppingListNoteWidget\Widget\ShoppingListItemNoteWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\AddToShoppingListWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListMenuItemWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListNavigationMenuWidget;
+use SprykerShop\Yves\TabsWidget\Widget\FullTextSearchTabsWidget;
 use SprykerShop\Yves\WishlistWidget\Widget\WishlistMenuItemWidget;
 
 class ShopApplicationDependencyProvider extends SprykerShopApplicationDependencyProvider
@@ -116,6 +119,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             NewsletterSubscriptionSummaryWidget::class,
             PdpProductRelationWidget::class,
             PdpProductReplacementForListWidget::class,
+            ProductReplacementForListWidget::class,
             PriceModeSwitcherWidget::class,
             ProductAbstractLabelWidget::class,
             ProductAlternativeListWidget::class,
@@ -152,6 +156,8 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CheckoutVoucherFormWidget::class,
             WishlistMenuItemWidget::class,
             WishlistProductAlternativeWidget::class,
+            CompanyBusinessUnitAddressWidget::class,
+            FullTextSearchTabsWidget::class,
         ];
     }
 
