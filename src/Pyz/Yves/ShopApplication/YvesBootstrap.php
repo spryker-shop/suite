@@ -28,7 +28,6 @@ use Spryker\Yves\Application\Plugin\ServiceProvider\SslServiceProvider;
 use Spryker\Yves\CmsContentWidget\Plugin\CmsContentWidgetServiceProvider;
 use Spryker\Yves\Messenger\Plugin\Provider\FlashMessengerServiceProvider;
 use Spryker\Yves\Monitoring\Plugin\ServiceProvider\MonitoringRequestTransactionServiceProvider;
-use Spryker\Yves\NewRelic\Plugin\ServiceProvider\NewRelicRequestTransactionServiceProvider;
 use Spryker\Yves\Session\Plugin\ServiceProvider\SessionServiceProvider as SprykerSessionServiceProvider;
 use Spryker\Yves\Storage\Plugin\Provider\StorageCacheServiceProvider;
 use Spryker\Yves\Twig\Plugin\ServiceProvider\TwigServiceProvider as SprykerTwigServiceProvider;
@@ -49,6 +48,7 @@ use SprykerShop\Yves\CheckoutPage\Plugin\Provider\CheckoutPageControllerProvider
 use SprykerShop\Yves\CmsBlockWidget\Plugin\Provider\CmsBlockTwigFunctionServiceProvider;
 use SprykerShop\Yves\CmsPage\Plugin\Provider\CmsTwigFunctionServiceProvider;
 use SprykerShop\Yves\CmsPage\Plugin\Provider\PreviewControllerProvider;
+use SprykerShop\Yves\CmsSearchPage\Plugin\Provider\CmsSearchPageControllerProvider;
 use SprykerShop\Yves\CompanyPage\Plugin\Provider\CompanyPageControllerProvider;
 use SprykerShop\Yves\CompanyUserInvitationPage\Plugin\Provider\CompanyUserInvitationPageControllerProvider;
 use SprykerShop\Yves\CurrencyWidget\Plugin\Provider\CurrencyWidgetControllerProvider;
@@ -77,6 +77,7 @@ use SprykerShop\Yves\ShopApplication\Plugin\Provider\ShopApplicationServiceProvi
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\ShopControllerEventServiceProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\ShopTwigServiceProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\WidgetServiceProvider;
+use SprykerShop\Yves\ShopApplication\Plugin\Provider\WidgetTagServiceProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\YvesExceptionServiceProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\YvesSecurityServiceProvider;
 use SprykerShop\Yves\ShopApplication\YvesBootstrap as SprykerYvesBootstrap;
@@ -109,6 +110,7 @@ class YvesBootstrap extends SprykerYvesBootstrap
         $this->application->register(new ShopTwigServiceProvider());
         $this->application->register(new SprykerTwigServiceProvider());
         $this->application->register(new WidgetServiceProvider());
+        $this->application->register(new WidgetTagServiceProvider());
         $this->application->register(new ShopApplicationServiceProvider());
         $this->application->register(new DateTimeFormatterServiceProvider());
         $this->application->register(new SessionServiceProvider());
@@ -119,7 +121,6 @@ class YvesBootstrap extends SprykerYvesBootstrap
         $this->application->register(new YvesSecurityServiceProvider());
         $this->application->register(new YvesExceptionServiceProvider());
         $this->application->register(new ErrorPageServiceProvider());
-        $this->application->register(new NewRelicRequestTransactionServiceProvider());
         $this->application->register(new MonitoringRequestTransactionServiceProvider());
         $this->application->register(new CookieServiceProvider());
         $this->application->register(new UrlGeneratorServiceProvider());
@@ -212,6 +213,7 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new AgentPageControllerProvider($isSsl), #AgentFeature
             new AgentWidgetControllerProvider($isSsl), #AgentFeature
             new FileManagerWidgetControllerProvider($isSsl),
+            new CmsSearchPageControllerProvider($isSsl), #CmsSearchPageFeature
         ];
     }
 }
