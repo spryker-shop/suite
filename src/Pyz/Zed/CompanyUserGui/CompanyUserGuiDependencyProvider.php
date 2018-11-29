@@ -7,6 +7,8 @@
 
 namespace Pyz\Zed\CompanyUserGui;
 
+use Spryker\Zed\BusinessOnBehalfGui\Communication\Plugin\CompanyUserGui\CompanyUserTableAttachToBusinessUnitActionLinksExpanderPlugin;
+use Spryker\Zed\BusinessOnBehalfGui\Communication\Plugin\CompanyUserGui\ReplaceDeleteButtonCompanyUserTableActionLinksExpanderPlugin;
 use Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyUserGui\CompanyBusinessUnitAttachCustomerFormExpanderPlugin;
 use Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyUserGui\CompanyBusinessUnitCompanyUserTableConfigExpanderPlugin;
 use Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyUserGui\CompanyBusinessUnitCompanyUserTablePrepareDataExpanderPlugin;
@@ -60,6 +62,17 @@ class CompanyUserGuiDependencyProvider extends SprykerCompanyUserGuiDependencyPr
         return [
             new CompanyBusinessUnitAttachCustomerFormExpanderPlugin(),
             new CompanyRoleAttachCustomerFormExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\CompanyUserGuiExtension\Dependency\Plugin\CompanyUserTableActionLinksExpanderPluginInterface[]
+     */
+    protected function getCompanyUserTableActionLinksExpanderPlugins(): array
+    {
+        return [
+            new ReplaceDeleteButtonCompanyUserTableActionLinksExpanderPlugin(),
+            new CompanyUserTableAttachToBusinessUnitActionLinksExpanderPlugin(),
         ];
     }
 }
