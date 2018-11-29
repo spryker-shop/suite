@@ -40,7 +40,7 @@ class CustomerAccessConfig extends SprykerCustomerAccessConfig
             SprykerSharedCustomerAccessConfig::CONTENT_TYPE_ORDER_PLACE_SUBMIT => false,
             SprykerSharedCustomerAccessConfig::CONTENT_TYPE_ADD_TO_CART => false,
             SprykerSharedCustomerAccessConfig::CONTENT_TYPE_WISHLIST => false,
-            SprykerSharedCustomerAccessConfig::CONTENT_TYPE_SHOPPING_LIST => true,
+            SprykerSharedCustomerAccessConfig::CONTENT_TYPE_SHOPPING_LIST => false,
         ];
     }
 }
