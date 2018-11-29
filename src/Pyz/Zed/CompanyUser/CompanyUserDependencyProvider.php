@@ -8,7 +8,7 @@
 namespace Pyz\Zed\CompanyUser;
 
 use Spryker\Zed\CompanyBusinessUnit\Communication\Plugin\CompanyUser\AssignDefaultBusinessUnitToCompanyUserPlugin;
-use Spryker\Zed\CompanyBusinessUnit\Communication\Plugin\CompanyUser\CheckCompanyUserByBusinessUnitIdCompanyUserIdExistsPlugin;
+use Spryker\Zed\CompanyBusinessUnit\Communication\Plugin\CompanyUser\CheckUniqueCompanyUserByBusinessUnitSavePreCheckPlugin;
 use Spryker\Zed\CompanyBusinessUnit\Communication\Plugin\CompanyUser\CompanyBusinessUnitHydratePlugin;
 use Spryker\Zed\CompanyRole\Communication\Plugin\CompanyUser\AssignDefaultCompanyUserRolePlugin;
 use Spryker\Zed\CompanyRole\Communication\Plugin\CompanyUser\AssignRolesCompanyUserPostCreatePlugin;
@@ -76,12 +76,12 @@ class CompanyUserDependencyProvider extends SprykerCompanyUserDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\CompanyUserExtension\Dependency\Plugin\CompanyUserPreSaveCheckPluginInterface[]
+     * @return \Spryker\Zed\CompanyUserExtension\Dependency\Plugin\CompanyUserSavePreCheckPluginInterface[]
      */
-    protected function getCompanyUserPreSaveCheckPlugins(): array
+    protected function getCompanyUserSavePreCheckPlugins(): array
     {
         return [
-            new CheckCompanyUserByBusinessUnitIdCompanyUserIdExistsPlugin(),
+            new CheckUniqueCompanyUserByBusinessUnitSavePreCheckPlugin(),
         ];
     }
 }
