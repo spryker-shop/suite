@@ -74,14 +74,4 @@ class CompanyUserDependencyProvider extends SprykerCompanyUserDependencyProvider
             new SharedCartCompanyUserPreDeletePlugin(),
         ];
     }
-
-    /**
-     * @return \Spryker\Zed\CompanyUserExtension\Dependency\Plugin\CompanyUserSavePreCheckPluginInterface[]
-     */
-    protected function getCompanyUserSavePreCheckPlugins(): array
-    {
-        return [
-            new CheckUniqueCompanyUserByBusinessUnitSavePreCheckPlugin(),
-        ];
-    }
 }
