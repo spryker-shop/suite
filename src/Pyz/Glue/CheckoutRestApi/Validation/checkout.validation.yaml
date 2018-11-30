@@ -1,6 +1,6 @@
 checkout-data:
   post:
-    id:
+    idCart:
     - NotBlank
     customer:
     - Optional:
@@ -111,7 +111,7 @@ checkout-data:
                     type: numeric
 checkout:
   post:
-    id:
+    idCart:
     - NotBlank
     customer:
     - Collection:
