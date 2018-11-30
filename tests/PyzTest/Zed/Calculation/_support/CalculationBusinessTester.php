@@ -9,7 +9,6 @@ namespace PyzTest\Zed\Calculation;
 
 use Codeception\Actor;
 use DateTime;
-use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\CurrencyTransfer;
 use Generated\Shared\Transfer\DiscountTransfer;
 use Generated\Shared\Transfer\ExpenseTransfer;
@@ -358,20 +357,6 @@ class CalculationBusinessTester extends Actor
     protected function getCurrency(): SpyCurrency
     {
         return SpyCurrencyQuery::create()->findOneByCode('EUR');
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\AddressTransfer
-     */
-    protected function createAddressTransfer(): AddressTransfer
-    {
-        return (new AddressTransfer())
-            ->setIso2Code('DE')
-            ->setAddress1('test-' . $this->getIncrementNumber())
-            ->setFirstName('Max')
-            ->setLastName('Mustermann')
-            ->setZipCode('1337')
-            ->setCity('SpryHome');
     }
 
     /**

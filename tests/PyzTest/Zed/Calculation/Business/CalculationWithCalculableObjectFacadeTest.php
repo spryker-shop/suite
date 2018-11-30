@@ -481,11 +481,11 @@ class CalculationWithCalculableObjectFacadeTest extends Test
             'Gross - Test case 1' => [
                 CalculationPriceMode::PRICE_MODE_GROSS,
                 [
-                    [10000, 1, 19, [[2500, 1, 10], [1000, 1, 15]], [], 0],
+                    [10000, 2, 19, [[2500, 2, 10], [1000, 2, 15]], [], 0],
                     [33234, 1, 9.99, [[1012, 1, 4.21], [9954, 1, 0.98]], [], 0],
                 ],
                 [],
-                [57700, 0, 0, 57700, 5110, 57700],
+                [71200, 0, 0, 71200, 7065, 71200],
             ],
             'Gross - Test case 2' => [
                 CalculationPriceMode::PRICE_MODE_GROSS,
