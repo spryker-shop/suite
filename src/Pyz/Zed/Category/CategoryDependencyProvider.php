@@ -12,6 +12,7 @@ use Spryker\Zed\Category\Communication\Plugin\CategoryUrlPathPrefixUpdaterPlugin
 use Spryker\Zed\CategoryImage\Communication\Plugin\CategoryAfterCreatePlugin;
 use Spryker\Zed\CategoryImage\Communication\Plugin\CategoryAfterUpdatePlugin;
 use Spryker\Zed\CategoryImage\Communication\Plugin\CategoryReadPlugin;
+use Spryker\Zed\CategoryImage\Communication\Plugin\RemoveCategoryImageSetRelationPlugin;
 use Spryker\Zed\CategoryImageGui\Communication\Form\CategoryImageFormPlugin;
 use Spryker\Zed\CategoryNavigationConnector\Communication\Plugin\UpdateNavigationRelationPlugin;
 use Spryker\Zed\CmsBlockCategoryConnector\Communication\Plugin\CategoryFormPlugin;
@@ -30,6 +31,7 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
         $deletePlugins = array_merge(
             [
                 new RemoveProductCategoryRelationPlugin(),
+                new RemoveCategoryImageSetRelationPlugin(),
             ],
             parent::getRelationDeletePluginStack()
         );
