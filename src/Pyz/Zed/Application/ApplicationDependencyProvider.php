@@ -43,7 +43,7 @@ use Spryker\Zed\Money\Communication\Plugin\ServiceProvider\TwigMoneyServiceProvi
 use Spryker\Zed\Monitoring\Communication\Plugin\ServiceProvider\MonitoringRequestTransactionServiceProvider;
 use Spryker\Zed\Propel\Communication\Plugin\ServiceProvider\PropelServiceProvider;
 use Spryker\Zed\Session\Communication\Plugin\ServiceProvider\SessionServiceProvider as SprykerSessionServiceProvider;
-use Spryker\Zed\Translator\Communication\Plugin\TranslatorTwigExtensionPlugin;
+use Spryker\Zed\Translator\Communication\Plugin\ServiceProvider\ZedTranslationServiceProvider;
 use Spryker\Zed\Twig\Communication\Plugin\ServiceProvider\TwigServiceProvider as SprykerTwigServiceProvider;
 use Spryker\Zed\User\Communication\Plugin\ServiceProvider\UserServiceProvider;
 use Spryker\Zed\UserLocale\Communication\Plugin\ServiceProvider\UserLocaleServiceProvider;
@@ -85,6 +85,8 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new ZedNavigationServiceProvider(),
             new MonitoringRequestTransactionServiceProvider(),
             new TranslationServiceProvider(),
+            // ZedTranslationServiceProvider must be declared after TranslationServiceProvider
+            new ZedTranslationServiceProvider(),
             new DateTimeFormatterServiceProvider(),
             new GuiTwigExtensionServiceProvider(),
             new RedirectAfterLoginProvider(),
@@ -181,16 +183,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new TwigServiceProvider(),
             new SprykerTwigServiceProvider(),
             new EventBehaviorServiceProvider(),
-        ];
-    }
-
-    /**
-     * @return \Spryker\Zed\ApplicationExtension\Dependency\Plugin\TwigTranslatorExtensionPluginInterface[]
-     */
-    protected function getTwigTranslatorExtensionPlugins(): array
-    {
-        return [
-            new TranslatorTwigExtensionPlugin(),
         ];
     }
 }
