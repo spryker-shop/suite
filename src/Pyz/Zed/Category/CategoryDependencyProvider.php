@@ -71,7 +71,7 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
     /**
      * @return \Spryker\Zed\CategoryExtension\Dependency\Plugin\CategoryTransferExpanderPluginInterface[]
      */
-    protected function getCategoryPostReadPluginStack(): array
+    protected function getCategoryPostReadPlugins(): array
     {
         return [
             new CategoryReadPlugin(),
@@ -102,7 +102,7 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
     /**
      * @return \Spryker\Zed\CategoryExtension\Dependency\Plugin\CategoryUpdateAfterPluginInterface[]
      */
-    protected function getCategoryPostUpdatePluginStack(): array
+    protected function getCategoryPostUpdatePlugins(): array
     {
         return [
             new CategoryAfterUpdatePlugin(),
@@ -112,7 +112,7 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
     /**
      * @return \Spryker\Zed\CategoryExtension\Dependency\Plugin\CategoryCreateAfterPluginInterface[]
      */
-    protected function getCategoryPostCreatePluginStack(): array
+    protected function getCategoryPostCreatePlugins(): array
     {
         return [
             new CategoryAfterCreatePlugin(),
