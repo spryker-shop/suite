@@ -27,20 +27,4 @@ class CustomerAccessConfig extends SprykerCustomerAccessConfig
             SprykerSharedCustomerAccessConfig::CONTENT_TYPE_SHOPPING_LIST,
         ];
     }
-
-    /**
-     * Gets default content type access for install.
-     *
-     * @return bool[]
-     */
-    public function getContentTypeAccessRestrictedByDefault(): array
-    {
-        return [
-            SprykerSharedCustomerAccessConfig::CONTENT_TYPE_PRICE => false,
-            SprykerSharedCustomerAccessConfig::CONTENT_TYPE_ORDER_PLACE_SUBMIT => false,
-            SprykerSharedCustomerAccessConfig::CONTENT_TYPE_ADD_TO_CART => false,
-            SprykerSharedCustomerAccessConfig::CONTENT_TYPE_WISHLIST => false,
-            SprykerSharedCustomerAccessConfig::CONTENT_TYPE_SHOPPING_LIST => false,
-        ];
-    }
 }
