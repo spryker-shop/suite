@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.80.1",
+            "version": "3.80.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "16819253927a18f96c9bbd85cb1b47419e5bc371"
+                "reference": "2f1509337ed63ab186ed6306eb5d6ea674a3fdab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/16819253927a18f96c9bbd85cb1b47419e5bc371",
-                "reference": "16819253927a18f96c9bbd85cb1b47419e5bc371",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/2f1509337ed63ab186ed6306eb5d6ea674a3fdab",
+                "reference": "2f1509337ed63ab186ed6306eb5d6ea674a3fdab",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2018-11-30T00:01:18+00:00"
+            "time": "2018-12-03T23:05:45+00:00"
         },
         {
             "name": "codeitnowin/barcode",
@@ -864,32 +864,33 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "1.4.2",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c"
+                "reference": "53662d6688033a5eccde987bdd5a4a98ebe2d952"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
-                "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/53662d6688033a5eccde987bdd5a4a98ebe2d952",
+                "reference": "53662d6688033a5eccde987bdd5a4a98ebe2d952",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4.0",
-                "psr/http-message": "~1.0"
+                "psr/http-message": "~1.0",
+                "ralouphie/getallheaders": "^2.0.5"
             },
             "provide": {
                 "psr/http-message-implementation": "1.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.0"
+                "phpunit/phpunit": "~4.8.36 || ^5.7.27 || ^6.5.8"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4-dev"
+                    "dev-master": "1.5-dev"
                 }
             },
             "autoload": {
@@ -919,13 +920,14 @@
             "keywords": [
                 "http",
                 "message",
+                "psr-7",
                 "request",
                 "response",
                 "stream",
                 "uri",
                 "url"
             ],
-            "time": "2017-03-20T17:10:46+00:00"
+            "time": "2018-12-03T05:07:51+00:00"
         },
         {
             "name": "guzzlehttp/ringphp",
@@ -2015,7 +2017,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -2173,6 +2175,46 @@
                 "psr-3"
             ],
             "time": "2016-10-10T12:19:37+00:00"
+        },
+        {
+            "name": "ralouphie/getallheaders",
+            "version": "2.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ralouphie/getallheaders.git",
+                "reference": "5601c8a83fbba7ef674a7369456d12f1e0d0eafa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ralouphie/getallheaders/zipball/5601c8a83fbba7ef674a7369456d12f1e0d0eafa",
+                "reference": "5601c8a83fbba7ef674a7369456d12f1e0d0eafa",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~3.7.0",
+                "satooshi/php-coveralls": ">=1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/getallheaders.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ralph Khattar",
+                    "email": "ralph.khattar@gmail.com"
+                }
+            ],
+            "description": "A polyfill for getallheaders.",
+            "time": "2016-02-11T07:05:27+00:00"
         },
         {
             "name": "ramsey/uuid",
@@ -6932,19 +6974,11 @@
                     "Spryker": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-0": {
-                    "Unit": "tests/"
-                }
-            },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Assertion bundle",
-            "support": {
-                "source": "https://github.com/spryker/Assertion/tree/3.0.0"
-            },
             "time": "2017-02-22T12:08:46+00:00"
         },
         {
@@ -7043,16 +7077,16 @@
         },
         {
             "name": "spryker/auth-rest-api",
-            "version": "2.0.1",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/auth-rest-api.git",
-                "reference": "e42833b3dcc6f2d4b09b04330b7c7c863827c832"
+                "reference": "57c8b5d14175c37d580f16c82055ea3cf021b773"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/auth-rest-api/zipball/e42833b3dcc6f2d4b09b04330b7c7c863827c832",
-                "reference": "e42833b3dcc6f2d4b09b04330b7c7c863827c832",
+                "url": "https://api.github.com/repos/spryker/auth-rest-api/zipball/57c8b5d14175c37d580f16c82055ea3cf021b773",
+                "reference": "57c8b5d14175c37d580f16c82055ea3cf021b773",
                 "shasum": ""
             },
             "require": {
@@ -7066,6 +7100,9 @@
             "require-dev": {
                 "spryker/code-sniffer": "*",
                 "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/rest-request-validator": "If you want to use rest request validation."
             },
             "type": "library",
             "extra": {
@@ -7083,7 +7120,7 @@
                 "proprietary"
             ],
             "description": "AuthRestApi module",
-            "time": "2018-11-18T15:53:27+00:00"
+            "time": "2018-12-03T13:19:19+00:00"
         },
         {
             "name": "spryker/availability",
@@ -7597,14 +7634,11 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Cache bundle",
-            "support": {
-                "source": "https://github.com/spryker/Cache/tree/3.1.0"
-            },
             "time": "2017-04-10T13:13:21+00:00"
         },
         {
@@ -8094,16 +8128,16 @@
         },
         {
             "name": "spryker/carts-rest-api",
-            "version": "2.0.3",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/carts-rest-api.git",
-                "reference": "2313d8403da4c6dd83e43675463792d8c607f03e"
+                "reference": "9716cee2418d4c3f042ec60495c1c9db3ac9225e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/carts-rest-api/zipball/2313d8403da4c6dd83e43675463792d8c607f03e",
-                "reference": "2313d8403da4c6dd83e43675463792d8c607f03e",
+                "url": "https://api.github.com/repos/spryker/carts-rest-api/zipball/9716cee2418d4c3f042ec60495c1c9db3ac9225e",
+                "reference": "9716cee2418d4c3f042ec60495c1c9db3ac9225e",
                 "shasum": ""
             },
             "require": {
@@ -8125,6 +8159,7 @@
                 "spryker/testify": "*"
             },
             "suggest": {
+                "spryker/rest-request-validator": "If you want to use rest request validation.",
                 "spryker/uuid-behavior": "Used to generate UUIDs for the cart entities."
             },
             "type": "library",
@@ -8143,7 +8178,7 @@
                 "proprietary"
             ],
             "description": "CartsRestApi module",
-            "time": "2018-11-22T14:55:52+00:00"
+            "time": "2018-12-03T12:15:08+00:00"
         },
         {
             "name": "spryker/carts-rest-api-extension",
@@ -8604,14 +8639,11 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "CategoryExporter module",
-            "support": {
-                "source": "https://github.com/spryker/CategoryExporter/tree/3.0.2"
-            },
             "time": "2017-07-13T15:46:45+00:00"
         },
         {
@@ -9934,19 +9966,11 @@
                     "Spryker": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-0": {
-                    "Functional": "tests/"
-                }
-            },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "CmsUserConnector bundle",
-            "support": {
-                "source": "https://github.com/spryker/CmsUserConnector/tree/1.0.1"
-            },
             "time": "2017-06-29T10:18:58+00:00"
         },
         {
@@ -12106,19 +12130,11 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "SprykerTest\\": "tests/SprykerTest/"
-                }
-            },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "CustomerApi module",
-            "support": {
-                "source": "https://github.com/spryker/CustomerApi/tree/master"
-            },
             "time": "2017-11-10T15:08:30+00:00"
         },
         {
@@ -12528,16 +12544,16 @@
         },
         {
             "name": "spryker/customers-rest-api",
-            "version": "1.4.2",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/customers-rest-api.git",
-                "reference": "30601edb50d994e671c80abb02705f0729adc226"
+                "reference": "de4a3b2dbdf701329482dfc04db840447f06517e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/customers-rest-api/zipball/30601edb50d994e671c80abb02705f0729adc226",
-                "reference": "30601edb50d994e671c80abb02705f0729adc226",
+                "url": "https://api.github.com/repos/spryker/customers-rest-api/zipball/de4a3b2dbdf701329482dfc04db840447f06517e",
+                "reference": "de4a3b2dbdf701329482dfc04db840447f06517e",
                 "shasum": ""
             },
             "require": {
@@ -12555,6 +12571,9 @@
                 "spryker/code-sniffer": "*",
                 "spryker/testify": "*"
             },
+            "suggest": {
+                "spryker/rest-request-validator": "If you want to use rest request validation."
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -12571,7 +12590,7 @@
                 "proprietary"
             ],
             "description": "CustomersRestApi module",
-            "time": "2018-11-22T14:55:52+00:00"
+            "time": "2018-12-04T13:18:45+00:00"
         },
         {
             "name": "spryker/customers-rest-api-extension",
@@ -13034,16 +13053,16 @@
         },
         {
             "name": "spryker/documentation-generator-rest-api",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/documentation-generator-rest-api.git",
-                "reference": "4cc5e08279f3bea48f18becd2cc0cfbef6b13dbf"
+                "reference": "8c2036deae17c3bc4393a5ea056189f33c4ac926"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/documentation-generator-rest-api/zipball/4cc5e08279f3bea48f18becd2cc0cfbef6b13dbf",
-                "reference": "4cc5e08279f3bea48f18becd2cc0cfbef6b13dbf",
+                "url": "https://api.github.com/repos/spryker/documentation-generator-rest-api/zipball/8c2036deae17c3bc4393a5ea056189f33c4ac926",
+                "reference": "8c2036deae17c3bc4393a5ea056189f33c4ac926",
                 "shasum": ""
             },
             "require": {
@@ -13078,7 +13097,7 @@
                 "proprietary"
             ],
             "description": "DocumentationGeneratorRestApi module",
-            "time": "2018-11-28T16:39:08+00:00"
+            "time": "2018-12-01T10:17:50+00:00"
         },
         {
             "name": "spryker/documentation-generator-rest-api-extension",
@@ -13201,14 +13220,11 @@
                     "dev-master": "1.0.x-dev"
                 }
             },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Egulias module",
-            "support": {
-                "source": "https://github.com/spryker/Egulias/tree/1.0.0"
-            },
             "time": "2017-11-09T13:55:22+00:00"
         },
         {
@@ -14112,16 +14128,16 @@
         },
         {
             "name": "spryker/glue-application",
-            "version": "1.8.2",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/glue-application.git",
-                "reference": "2d4f211d6f48b74dedd09640ca815812cbbe055b"
+                "reference": "25c9fc82705920d88904afc3ef16ded6f9586a86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/glue-application/zipball/2d4f211d6f48b74dedd09640ca815812cbbe055b",
-                "reference": "2d4f211d6f48b74dedd09640ca815812cbbe055b",
+                "url": "https://api.github.com/repos/spryker/glue-application/zipball/25c9fc82705920d88904afc3ef16ded6f9586a86",
+                "reference": "25c9fc82705920d88904afc3ef16ded6f9586a86",
                 "shasum": ""
             },
             "require": {
@@ -14163,7 +14179,7 @@
                 "proprietary"
             ],
             "description": "GlueApplication module",
-            "time": "2018-11-18T15:53:27+00:00"
+            "time": "2018-12-01T10:45:51+00:00"
         },
         {
             "name": "spryker/glue-application-extension",
@@ -14247,19 +14263,11 @@
                     "Function": "tests/"
                 }
             },
-            "autoload-dev": {
-                "psr-0": {
-                    "Unit": "tests/"
-                }
-            },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Graph bundle",
-            "support": {
-                "source": "https://github.com/spryker/Graph/tree/3.0.0"
-            },
             "time": "2017-02-22T12:08:46+00:00"
         },
         {
@@ -14285,14 +14293,11 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Graphviz module",
-            "support": {
-                "source": "https://github.com/spryker/Graphviz/tree/2.0.1"
-            },
             "time": "2017-08-02T16:31:17+00:00"
         },
         {
@@ -14580,20 +14585,11 @@
                     "Spryker": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-0": {
-                    "Functional": "tests/",
-                    "Unit": "tests/"
-                }
-            },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Invoice bundle",
-            "support": {
-                "source": "https://github.com/spryker/Invoice/tree/2.0.1"
-            },
             "time": "2017-02-22T11:53:10+00:00"
         },
         {
@@ -16210,16 +16206,16 @@
         },
         {
             "name": "spryker/newsletter",
-            "version": "4.3.1",
+            "version": "4.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/newsletter.git",
-                "reference": "1f2b7cfd71ed20e94b7122f061c88effc9e107d5"
+                "reference": "08c637bf65624106e9a1678d8c946afd24ae3c69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/newsletter/zipball/1f2b7cfd71ed20e94b7122f061c88effc9e107d5",
-                "reference": "1f2b7cfd71ed20e94b7122f061c88effc9e107d5",
+                "url": "https://api.github.com/repos/spryker/newsletter/zipball/08c637bf65624106e9a1678d8c946afd24ae3c69",
+                "reference": "08c637bf65624106e9a1678d8c946afd24ae3c69",
                 "shasum": ""
             },
             "require": {
@@ -16233,11 +16229,8 @@
                 "spryker/zed-request": "^3.0.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*",
                 "spryker/installer": "*",
                 "spryker/propel": "*",
-                "spryker/propel-orm": "*",
-                "spryker/silex": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
@@ -16259,7 +16252,7 @@
                 "proprietary"
             ],
             "description": "Newsletter module",
-            "time": "2018-08-13T10:09:38+00:00"
+            "time": "2018-12-03T17:27:47+00:00"
         },
         {
             "name": "spryker/nopayment",
@@ -17034,14 +17027,11 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "pimple bundle",
-            "support": {
-                "source": "https://github.com/spryker/Pimple/tree/2.0.0"
-            },
             "time": "2016-04-01T13:06:05+00:00"
         },
         {
@@ -17231,16 +17221,16 @@
         },
         {
             "name": "spryker/price-product",
-            "version": "2.6.0",
+            "version": "2.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/price-product.git",
-                "reference": "890115908f040e0064a0e5a9028077c05ef97a3d"
+                "reference": "ce243ca1151d98f39f174a2cbeeb1435b23f811d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/price-product/zipball/890115908f040e0064a0e5a9028077c05ef97a3d",
-                "reference": "890115908f040e0064a0e5a9028077c05ef97a3d",
+                "url": "https://api.github.com/repos/spryker/price-product/zipball/ce243ca1151d98f39f174a2cbeeb1435b23f811d",
+                "reference": "ce243ca1151d98f39f174a2cbeeb1435b23f811d",
                 "shasum": ""
             },
             "require": {
@@ -17284,7 +17274,7 @@
                 "proprietary"
             ],
             "description": "PriceProduct module",
-            "time": "2018-11-27T09:30:41+00:00"
+            "time": "2018-11-29T16:46:25+00:00"
         },
         {
             "name": "spryker/price-product-data-import",
@@ -20698,16 +20688,16 @@
         },
         {
             "name": "spryker/product-option-storage",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-option-storage.git",
-                "reference": "45a04eeb36aae86a813e4e409afd44d4c02d7162"
+                "reference": "9695731a3615d919f153c42a1734928475d2cf17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-option-storage/zipball/45a04eeb36aae86a813e4e409afd44d4c02d7162",
-                "reference": "45a04eeb36aae86a813e4e409afd44d4c02d7162",
+                "url": "https://api.github.com/repos/spryker/product-option-storage/zipball/9695731a3615d919f153c42a1734928475d2cf17",
+                "reference": "9695731a3615d919f153c42a1734928475d2cf17",
                 "shasum": ""
             },
             "require": {
@@ -20750,7 +20740,7 @@
                 "proprietary"
             ],
             "description": "ProductOptionStorage module",
-            "time": "2018-11-26T09:26:56+00:00"
+            "time": "2018-11-28T11:11:58+00:00"
         },
         {
             "name": "spryker/product-packaging-unit",
@@ -22939,14 +22929,11 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Redis bundle",
-            "support": {
-                "source": "https://github.com/spryker/Redis/tree/2.0.1"
-            },
             "time": "2017-04-26T15:15:36+00:00"
         },
         {
@@ -22989,36 +22976,25 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Config\\Module\\": "vendor/spryker/config/tests/_support/Module",
-                    "Propel\\Module\\": "vendor/spryker/propel/tests/_support/Module",
-                    "Transfer\\Module\\": "vendor/spryker/transfer/tests/_support/Module",
-                    "SprykerTest\\": "tests/SprykerTest/"
-                }
-            },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Refund module",
-            "support": {
-                "source": "https://github.com/spryker/Refund/tree/master"
-            },
             "time": "2017-11-27T14:09:42+00:00"
         },
         {
             "name": "spryker/rest-request-validator",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rest-request-validator.git",
-                "reference": "c2998704444e4ed7b9a4b89a3c7c9fa2958e365c"
+                "reference": "5a07afd93a3237176652e98614e8774c4432ae69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rest-request-validator/zipball/c2998704444e4ed7b9a4b89a3c7c9fa2958e365c",
-                "reference": "c2998704444e4ed7b9a4b89a3c7c9fa2958e365c",
+                "url": "https://api.github.com/repos/spryker/rest-request-validator/zipball/5a07afd93a3237176652e98614e8774c4432ae69",
+                "reference": "5a07afd93a3237176652e98614e8774c4432ae69",
                 "shasum": ""
             },
             "require": {
@@ -23051,7 +23027,7 @@
                 "proprietary"
             ],
             "description": "RestRequestValidator module",
-            "time": "2018-10-18T12:38:51+00:00"
+            "time": "2018-12-03T17:41:56+00:00"
         },
         {
             "name": "spryker/sales",
@@ -24558,14 +24534,11 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Silex bundle",
-            "support": {
-                "source": "https://github.com/spryker/Silex/tree/2.0.1"
-            },
             "time": "2016-12-09T13:45:20+00:00"
         },
         {
@@ -25304,16 +25277,16 @@
         },
         {
             "name": "spryker/transfer",
-            "version": "3.7.1",
+            "version": "3.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/transfer.git",
-                "reference": "10367cf437b35ec3e7879c6beb63000d48124659"
+                "reference": "6bdc0505c9817e6fa22606e28a6816e453a44e6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/transfer/zipball/10367cf437b35ec3e7879c6beb63000d48124659",
-                "reference": "10367cf437b35ec3e7879c6beb63000d48124659",
+                "url": "https://api.github.com/repos/spryker/transfer/zipball/6bdc0505c9817e6fa22606e28a6816e453a44e6e",
+                "reference": "6bdc0505c9817e6fa22606e28a6816e453a44e6e",
                 "shasum": ""
             },
             "require": {
@@ -25347,7 +25320,7 @@
                 "proprietary"
             ],
             "description": "Transfer module",
-            "time": "2018-10-30T08:44:04+00:00"
+            "time": "2018-11-28T08:11:02+00:00"
         },
         {
             "name": "spryker/twig",
@@ -25765,19 +25738,11 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "SprykerTest\\": "tests/SprykerTest/"
-                }
-            },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "UtilDateTime module",
-            "support": {
-                "source": "https://github.com/spryker/UtilDateTime/tree/1.0.2"
-            },
             "time": "2017-10-24T13:32:31+00:00"
         },
         {
@@ -25955,19 +25920,11 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "SprykerTest\\": "tests/SprykerTest/"
-                }
-            },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "UtilText module",
-            "support": {
-                "source": "https://github.com/spryker/UtilText/tree/master"
-            },
             "time": "2017-10-24T13:32:31+00:00"
         },
         {
@@ -26044,19 +26001,11 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "SprykerTest\\": "tests/SprykerTest/"
-                }
-            },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "UtilValidate module",
-            "support": {
-                "source": "https://github.com/spryker/UtilValidate/tree/1.0.0"
-            },
             "time": "2017-11-09T13:55:22+00:00"
         },
         {
@@ -26286,16 +26235,16 @@
         },
         {
             "name": "spryker/wishlists-rest-api",
-            "version": "1.2.4",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/wishlists-rest-api.git",
-                "reference": "d8d94ddb4e64c6717474865e277e7e97fd10804c"
+                "reference": "0f141750eb86b3244e6ee82acd65e6cdb0f8c7e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/wishlists-rest-api/zipball/d8d94ddb4e64c6717474865e277e7e97fd10804c",
-                "reference": "d8d94ddb4e64c6717474865e277e7e97fd10804c",
+                "url": "https://api.github.com/repos/spryker/wishlists-rest-api/zipball/0f141750eb86b3244e6ee82acd65e6cdb0f8c7e8",
+                "reference": "0f141750eb86b3244e6ee82acd65e6cdb0f8c7e8",
                 "shasum": ""
             },
             "require": {
@@ -26310,6 +26259,9 @@
             "require-dev": {
                 "spryker/code-sniffer": "*",
                 "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/rest-request-validator": "If you want to use rest request validation."
             },
             "type": "library",
             "extra": {
@@ -26327,7 +26279,7 @@
                 "proprietary"
             ],
             "description": "WishlistsRestApi module",
-            "time": "2018-11-22T14:55:52+00:00"
+            "time": "2018-12-04T13:18:45+00:00"
         },
         {
             "name": "spryker/zed-navigation",
@@ -26383,21 +26335,21 @@
         },
         {
             "name": "spryker/zed-request",
-            "version": "3.5.1",
+            "version": "3.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/zed-request.git",
-                "reference": "87d5274aa375da838db72b16dd2c0fc524ef4983"
+                "reference": "6584d0e63f00e876fe5afb60af37355d60871033"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/zed-request/zipball/87d5274aa375da838db72b16dd2c0fc524ef4983",
-                "reference": "87d5274aa375da838db72b16dd2c0fc524ef4983",
+                "url": "https://api.github.com/repos/spryker/zed-request/zipball/6584d0e63f00e876fe5afb60af37355d60871033",
+                "reference": "6584d0e63f00e876fe5afb60af37355d60871033",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "spryker/application": "^3.0.0",
+                "spryker/application": "^3.2.0",
                 "spryker/config": "^3.0.0",
                 "spryker/guzzle": "^2.1.0",
                 "spryker/kernel": "^3.0.0",
@@ -26429,7 +26381,7 @@
                 "proprietary"
             ],
             "description": "ZedRequest module",
-            "time": "2018-11-15T11:32:12+00:00"
+            "time": "2018-11-26T15:02:43+00:00"
         },
         {
             "name": "spryker/zend",
@@ -26456,14 +26408,11 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Zend module",
-            "support": {
-                "source": "https://github.com/spryker/Zend/tree/2.1.0"
-            },
             "time": "2017-08-02T16:31:17+00:00"
         },
         {
@@ -26713,16 +26662,16 @@
         },
         {
             "name": "symfony/contracts",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/contracts.git",
-                "reference": "4a33574d5771f4b04334cd4f7d43de96a92efb62"
+                "reference": "3edf0ab943d1985a356721952cba36ff31bd6e5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/contracts/zipball/4a33574d5771f4b04334cd4f7d43de96a92efb62",
-                "reference": "4a33574d5771f4b04334cd4f7d43de96a92efb62",
+                "url": "https://api.github.com/repos/symfony/contracts/zipball/3edf0ab943d1985a356721952cba36ff31bd6e5f",
+                "reference": "3edf0ab943d1985a356721952cba36ff31bd6e5f",
                 "shasum": ""
             },
             "require": {
@@ -26777,7 +26726,7 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2018-10-31T08:00:32+00:00"
+            "time": "2018-11-24T09:35:08+00:00"
         },
         {
             "name": "symfony/debug",
@@ -29056,21 +29005,21 @@
         },
         {
             "name": "codeception/phpunit-wrapper",
-            "version": "7.1.4",
+            "version": "7.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/phpunit-wrapper.git",
-                "reference": "f18ed631f1eddbb603d72219f577d223b23a1f89"
+                "reference": "4d09630101f1f746f6c073fdc1b76bd17e12c908"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/phpunit-wrapper/zipball/f18ed631f1eddbb603d72219f577d223b23a1f89",
-                "reference": "f18ed631f1eddbb603d72219f577d223b23a1f89",
+                "url": "https://api.github.com/repos/Codeception/phpunit-wrapper/zipball/4d09630101f1f746f6c073fdc1b76bd17e12c908",
+                "reference": "4d09630101f1f746f6c073fdc1b76bd17e12c908",
                 "shasum": ""
             },
             "require": {
                 "phpunit/php-code-coverage": "^6.0",
-                "phpunit/phpunit": "^7.1",
+                "phpunit/phpunit": ">=7.1 <7.5",
                 "sebastian/comparator": "^3.0",
                 "sebastian/diff": "^3.0"
             },
@@ -29095,7 +29044,7 @@
                 }
             ],
             "description": "PHPUnit classes used by Codeception",
-            "time": "2018-06-20T20:07:21+00:00"
+            "time": "2018-12-02T15:15:13+00:00"
         },
         {
             "name": "codeception/stub",
@@ -30538,16 +30487,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.10.5",
+            "version": "0.10.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "c6a8cd1fe08a23b9d101a55ffa9ff6b91d71ef5d"
+                "reference": "f0252a5ab6b4a293fb25f218d9c64386f272280f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/c6a8cd1fe08a23b9d101a55ffa9ff6b91d71ef5d",
-                "reference": "c6a8cd1fe08a23b9d101a55ffa9ff6b91d71ef5d",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/f0252a5ab6b4a293fb25f218d9c64386f272280f",
+                "reference": "f0252a5ab6b4a293fb25f218d9c64386f272280f",
                 "shasum": ""
             },
             "require": {
@@ -30562,6 +30511,9 @@
                 "phpstan/phpdoc-parser": "^0.3",
                 "symfony/console": "~3.2 || ~4.0",
                 "symfony/finder": "~3.2 || ~4.0"
+            },
+            "conflict": {
+                "symfony/console": "3.4.16 || 4.1.5"
             },
             "require-dev": {
                 "brianium/paratest": "^2.0",
@@ -30579,7 +30531,8 @@
                 "phpstan/phpstan-phpunit": "^0.10",
                 "phpstan/phpstan-strict-rules": "^0.10",
                 "phpunit/phpunit": "^7.0",
-                "slevomat/coding-standard": "^4.7.2"
+                "slevomat/coding-standard": "^4.7.2",
+                "squizlabs/php_codesniffer": "^3.3.2"
             },
             "bin": [
                 "bin/phpstan"
@@ -30603,7 +30556,7 @@
                 "MIT"
             ],
             "description": "PHPStan - PHP Static Analysis Tool",
-            "time": "2018-10-20T17:24:55+00:00"
+            "time": "2018-12-04T07:28:04+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -30859,16 +30812,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "7.4.4",
+            "version": "7.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "b1be2c8530c4c29c3519a052c9fb6cee55053bbd"
+                "reference": "61d34e8dd6eb3555900f0f2a2fa9e7e570730102"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b1be2c8530c4c29c3519a052c9fb6cee55053bbd",
-                "reference": "b1be2c8530c4c29c3519a052c9fb6cee55053bbd",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/61d34e8dd6eb3555900f0f2a2fa9e7e570730102",
+                "reference": "61d34e8dd6eb3555900f0f2a2fa9e7e570730102",
                 "shasum": ""
             },
             "require": {
@@ -30889,7 +30842,7 @@
                 "phpunit/php-timer": "^2.0",
                 "sebastian/comparator": "^3.0",
                 "sebastian/diff": "^3.0",
-                "sebastian/environment": "^3.1 || ^4.0",
+                "sebastian/environment": "^4.0",
                 "sebastian/exporter": "^3.1",
                 "sebastian/global-state": "^2.0",
                 "sebastian/object-enumerator": "^3.0.3",
@@ -30939,7 +30892,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-11-14T16:52:02+00:00"
+            "time": "2018-12-03T05:01:24+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -31767,7 +31720,7 @@
             ],
             "authors": [
                 {
-                    "name": "Sullivan SENECHAL",
+                    "name": "Sullivan Sénéchal",
                     "email": "soullivaneuh@gmail.com"
                 }
             ],
@@ -31926,19 +31879,20 @@
         },
         {
             "name": "spryker/development",
-            "version": "3.13.2",
+            "version": "3.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/development.git",
-                "reference": "3c0cf6c1a8ea35dd252fc8de4066a4d19b09a72d"
+                "reference": "db794dc41bc653340d5f5da87c5cb59005778251"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/development/zipball/3c0cf6c1a8ea35dd252fc8de4066a4d19b09a72d",
-                "reference": "3c0cf6c1a8ea35dd252fc8de4066a4d19b09a72d",
+                "url": "https://api.github.com/repos/spryker/development/zipball/db794dc41bc653340d5f5da87c5cb59005778251",
+                "reference": "db794dc41bc653340d5f5da87c5cb59005778251",
                 "shasum": ""
             },
             "require": {
+                "nette/di": "^2.4.7 || ^3.0",
                 "php": ">=7.1",
                 "spryker/config": "^3.0.0",
                 "spryker/graph": "^3.0.0",
@@ -31972,7 +31926,7 @@
                 "proprietary"
             ],
             "description": "Development module",
-            "time": "2018-11-05T15:51:38+00:00"
+            "time": "2018-12-04T12:20:09+00:00"
         },
         {
             "name": "spryker/testify",
