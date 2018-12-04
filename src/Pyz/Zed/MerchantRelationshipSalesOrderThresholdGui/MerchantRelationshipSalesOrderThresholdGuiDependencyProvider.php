@@ -16,7 +16,7 @@ use Spryker\Zed\MerchantRelationshipSalesOrderThresholdGui\MerchantRelationshipS
 class MerchantRelationshipSalesOrderThresholdGuiDependencyProvider extends SprykerMerchantRelationshipSalesOrderThresholdGuiDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\SalesOrderThresholdGuiExtension\Dependency\Plugin\SalesOrderThresholdFormExpanderPluginInterface[]
+     * @return \Spryker\Zed\MerchantRelationshipSalesOrderThresholdGuiExtension\Dependency\Plugin\SalesOrderThresholdFormExpanderPluginInterface[]
      */
     protected function getSalesOrderThresholdFormExpanderPlugins(): array
     {
