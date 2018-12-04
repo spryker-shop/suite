@@ -8,7 +8,7 @@
 namespace Pyz\Zed\CompanyUserGui;
 
 use Spryker\Zed\BusinessOnBehalfGui\Communication\Plugin\CompanyUserGui\CompanyUserTableAttachToBusinessUnitActionLinksExpanderPlugin;
-use Spryker\Zed\BusinessOnBehalfGui\Communication\Plugin\CompanyUserGui\ReplaceDeleteButtonCompanyUserTableActionLinksExpanderPlugin;
+use Spryker\Zed\BusinessOnBehalfGui\Communication\Plugin\CompanyUserGui\CompanyUserTableGetDeleteLinkPlugin;
 use Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyUserGui\CompanyBusinessUnitAttachCustomerFormExpanderPlugin;
 use Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyUserGui\CompanyBusinessUnitCompanyUserTableConfigExpanderPlugin;
 use Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyUserGui\CompanyBusinessUnitCompanyUserTablePrepareDataExpanderPlugin;
@@ -18,6 +18,7 @@ use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyUserGui\CompanyRoleCo
 use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyUserGui\CompanyRoleCompanyUserTablePrepareDataExpanderPlugin;
 use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyUserGui\CompanyRoleFormExpanderPlugin;
 use Spryker\Zed\CompanyUserGui\CompanyUserGuiDependencyProvider as SprykerCompanyUserGuiDependencyProvider;
+use Spryker\Zed\CompanyUserGuiExtension\Dependency\Plugin\CompanyUserTableGetDeleteLinkPluginInterface;
 
 class CompanyUserGuiDependencyProvider extends SprykerCompanyUserGuiDependencyProvider
 {
@@ -66,13 +67,20 @@ class CompanyUserGuiDependencyProvider extends SprykerCompanyUserGuiDependencyPr
     }
 
     /**
-     * @return \Spryker\Zed\CompanyUserGuiExtension\Dependency\Plugin\CompanyUserTableActionLinksExpanderPluginInterface[]
+     * @return \Spryker\Zed\CompanyUserGuiExtension\Dependency\Plugin\CompanyUserTableActionExpanderPluginInterface[]
      */
     protected function getCompanyUserTableActionLinksExpanderPlugins(): array
     {
         return [
-            new ReplaceDeleteButtonCompanyUserTableActionLinksExpanderPlugin(),
             new CompanyUserTableAttachToBusinessUnitActionLinksExpanderPlugin(),
         ];
+    }
+
+    /**
+     * @return \Spryker\Zed\CompanyUserGuiExtension\Dependency\Plugin\CompanyUserTableGetDeleteLinkPluginInterface|null
+     */
+    protected function getCompanyUserTableGetDeleteLinkPlugin(): ?CompanyUserTableGetDeleteLinkPluginInterface
+    {
+        return new CompanyUserTableGetDeleteLinkPlugin();
     }
 }
