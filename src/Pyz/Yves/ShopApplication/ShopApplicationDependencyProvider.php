@@ -32,7 +32,7 @@ use SprykerShop\Yves\MultiCartWidget\Widget\MultiCartListWidget;
 use SprykerShop\Yves\MultiCartWidget\Widget\MultiCartMenuItemWidget;
 use SprykerShop\Yves\MultiCartWidget\Widget\QuickOrderPageWidget;
 use SprykerShop\Yves\NavigationWidget\Widget\NavigationWidget;
-use SprykerShop\Yves\NewsletterWidget\Widget\NewsletterSubscriptionFooterWidget;
+use SprykerShop\Yves\NewsletterWidget\Widget\NewsletterSubscriptionWidget;
 use SprykerShop\Yves\NewsletterWidget\Widget\NewsletterSubscriptionSummaryWidget;
 use SprykerShop\Yves\PriceProductVolumeWidget\Widget\ProductPriceVolumeWidget;
 use SprykerShop\Yves\PriceWidget\Widget\PriceModeSwitcherWidget;
@@ -60,9 +60,7 @@ use SprykerShop\Yves\ProductReplacementForWidget\Widget\ProductReplacementForLis
 use SprykerShop\Yves\ProductReviewWidget\Widget\DisplayProductAbstractReviewWidget;
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductDetailPageReviewWidget;
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductRatingFilterWidget;
-use SprykerShop\Yves\ProductReviewWidget\Widget\ProductReviewAddWidget;
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductReviewDisplayWidget;
-use SprykerShop\Yves\ProductReviewWidget\Widget\ProductReviewListWidget;
 use SprykerShop\Yves\ProductWidget\Widget\CatalogPageProductWidget;
 use SprykerShop\Yves\ProductWidget\Widget\CmsProductGroupWidget;
 use SprykerShop\Yves\ProductWidget\Widget\CmsProductWidget;
@@ -118,7 +116,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             MultiCartListWidget::class,
             MultiCartMenuItemWidget::class,
             NavigationWidget::class,
-            NewsletterSubscriptionFooterWidget::class,
+            NewsletterSubscriptionWidget::class,
             NewsletterSubscriptionSummaryWidget::class,
             PdpProductRelationWidget::class,
             PdpProductReplacementForListWidget::class,
@@ -160,8 +158,6 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             WishlistMenuItemWidget::class,
             WishlistProductAlternativeWidget::class,
             CompanyBusinessUnitAddressWidget::class,
-            ProductReviewListWidget::class,
-            ProductReviewAddWidget::class,
         ];
     }
 
