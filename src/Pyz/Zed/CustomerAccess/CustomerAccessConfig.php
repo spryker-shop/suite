@@ -33,7 +33,7 @@ class CustomerAccessConfig extends SprykerCustomerAccessConfig
      *
      * @return bool[]
      */
-    public function getDefaultContentTypeAccess(): array
+    public function getContentTypeAccessRestrictedByDefault(): array
     {
         return [
             SprykerSharedCustomerAccessConfig::CONTENT_TYPE_PRICE => false,
