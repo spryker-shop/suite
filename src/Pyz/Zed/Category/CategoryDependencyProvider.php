@@ -14,6 +14,7 @@ use Spryker\Zed\CategoryImage\Communication\Plugin\CategoryAfterUpdatePlugin;
 use Spryker\Zed\CategoryImage\Communication\Plugin\CategoryReadPlugin;
 use Spryker\Zed\CategoryImage\Communication\Plugin\RemoveCategoryImageSetRelationPlugin;
 use Spryker\Zed\CategoryImageGui\Communication\Form\CategoryImageFormPlugin;
+use Spryker\Zed\CategoryImageGui\Communication\Plugin\CategoryImageFormTabExpanderPlugin;
 use Spryker\Zed\CategoryNavigationConnector\Communication\Plugin\UpdateNavigationRelationPlugin;
 use Spryker\Zed\CmsBlockCategoryConnector\Communication\Plugin\CategoryFormPlugin;
 use Spryker\Zed\CmsBlockCategoryConnector\Communication\Plugin\ReadCmsBlockCategoryRelationsPlugin;
@@ -118,6 +119,16 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
     {
         return [
             new CategoryAfterCreatePlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\CategoryExtension\Dependency\Plugin\CategoryFormTabExpanderPluginInterface[]
+     */
+    protected function getCategoryFormTabExpanderPlugins(): array
+    {
+        return [
+            new CategoryImageFormTabExpanderPlugin(),
         ];
     }
 }
