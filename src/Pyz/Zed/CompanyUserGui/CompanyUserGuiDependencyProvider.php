@@ -7,8 +7,8 @@
 
 namespace Pyz\Zed\CompanyUserGui;
 
+use Spryker\Zed\BusinessOnBehalfGui\Communication\Plugin\CompanyUserGui\BusinessOnBehalfCompanyUserTableDeleteActionPlugin;
 use Spryker\Zed\BusinessOnBehalfGui\Communication\Plugin\CompanyUserGui\CompanyUserTableAttachToBusinessUnitActionLinksExpanderPlugin;
-use Spryker\Zed\BusinessOnBehalfGui\Communication\Plugin\CompanyUserGui\CompanyUserTableGetDeleteLinkPlugin;
 use Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyUserGui\CompanyBusinessUnitAttachCustomerFormExpanderPlugin;
 use Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyUserGui\CompanyBusinessUnitCompanyUserTableConfigExpanderPlugin;
 use Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyUserGui\CompanyBusinessUnitCompanyUserTablePrepareDataExpanderPlugin;
@@ -18,7 +18,7 @@ use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyUserGui\CompanyRoleCo
 use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyUserGui\CompanyRoleCompanyUserTablePrepareDataExpanderPlugin;
 use Spryker\Zed\CompanyRoleGui\Communication\Plugin\CompanyUserGui\CompanyRoleFormExpanderPlugin;
 use Spryker\Zed\CompanyUserGui\CompanyUserGuiDependencyProvider as SprykerCompanyUserGuiDependencyProvider;
-use Spryker\Zed\CompanyUserGuiExtension\Dependency\Plugin\CompanyUserTableGetDeleteLinkPluginInterface;
+use Spryker\Zed\CompanyUserGuiExtension\Dependency\Plugin\CompanyUserTableDeleteActionPluginInterface;
 
 class CompanyUserGuiDependencyProvider extends SprykerCompanyUserGuiDependencyProvider
 {
@@ -69,7 +69,7 @@ class CompanyUserGuiDependencyProvider extends SprykerCompanyUserGuiDependencyPr
     /**
      * @return \Spryker\Zed\CompanyUserGuiExtension\Dependency\Plugin\CompanyUserTableActionExpanderPluginInterface[]
      */
-    protected function getCompanyUserTableActionLinksExpanderPlugins(): array
+    protected function getCompanyUserTableActionExpanderPlugins(): array
     {
         return [
             new CompanyUserTableAttachToBusinessUnitActionLinksExpanderPlugin(),
@@ -77,10 +77,10 @@ class CompanyUserGuiDependencyProvider extends SprykerCompanyUserGuiDependencyPr
     }
 
     /**
-     * @return \Spryker\Zed\CompanyUserGuiExtension\Dependency\Plugin\CompanyUserTableGetDeleteLinkPluginInterface|null
+     * @return \Spryker\Zed\CompanyUserGuiExtension\Dependency\Plugin\CompanyUserTableDeleteActionPluginInterface|null
      */
-    protected function getCompanyUserTableGetDeleteLinkPlugin(): ?CompanyUserTableGetDeleteLinkPluginInterface
+    protected function getCompanyUserTableDeleteActionPlugin(): ?CompanyUserTableDeleteActionPluginInterface
     {
-        return new CompanyUserTableGetDeleteLinkPlugin();
+        return new BusinessOnBehalfCompanyUserTableDeleteActionPlugin();
     }
 }
