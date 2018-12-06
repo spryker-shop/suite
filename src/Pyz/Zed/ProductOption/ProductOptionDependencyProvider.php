@@ -29,9 +29,8 @@ class ProductOptionDependencyProvider extends SprykerProductOptionDependencyProv
      */
     protected function getProductOptionValuesPreRemovePlugins(): array
     {
-        $plugins = parent::getProductOptionValuesPreRemovePlugins();
-        $plugins[] = new ShoppingListItemsProductOptionValuesPreRemovePlugin();
-
-        return $plugins;
+        return [
+            new ShoppingListItemsProductOptionValuesPreRemovePlugin(),
+        ];
     }
 }
