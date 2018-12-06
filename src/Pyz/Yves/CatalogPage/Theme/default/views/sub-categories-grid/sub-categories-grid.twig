@@ -1,14 +1,11 @@
 {% extends template('page-layout-catalog', 'CatalogPage') %}
 
 {% define data = {
-    products: _view.products,
+    products: [],
     facets: _view.facets,
     category: _view.category | default,
     categories: categories | default([]),
-    children: _view.category.children | default([]),
-    categoryId: _view.idCategory | default,
     isEmptyCategoryFilterValueVisible: _view.isEmptyCategoryFilterValueVisible | default,
-    filterPath: _view.filterPath | default,
     viewMode: _view.viewMode | default,
 
     title: _view.category.name | default,
@@ -17,13 +14,21 @@
     metaKeywords: _view.pageKeywords | default,
 
     pagination: {
-        parameters: app.request.query.all(),
-        currentPage: _view.pagination.currentPage,
-        paginationPath: app.request.getPathInfo(),
-        maxPage: _view.pagination.maxPage,
-        showAlwaysFirstAndLast: true
+        parameters: null,
+        currentPage: null,
+        paginationPath: null,
+        maxPage: null,
+        showAlwaysFirstAndLast: false
     }
 } %}
+
+{% set categoryTemplate = molecule('category-card') %}
+{% set cardClass = 'col col--sm-12 col--md-6 col--lg-6 col--xl-4' %}
+
+{% if data.viewMode == 'list' %}
+    {% set categoryTemplate = molecule('category-list-item') %}
+    {% set cardClass = 'col col--sm-12' %}
+{% endif %}
 
 {% block form %}
     <div class="col col--sm-12 col--lg-4 col--xl-3">
@@ -36,7 +41,6 @@
                 class: 'box js-catalog__filters-toggle',
                 data: {
                     facets: data.facets,
-                    filterPath: data.filterPath,
                     categories: data.categories,
                     isEmptyCategoryFilterValueVisible: data.isEmptyCategoryFilterValueVisible
                 }
@@ -54,10 +58,8 @@
                                 molecule('filter-' ~ filter.config.type, 'CatalogPage')
                                 ] ignore missing with {
                                 data: {
-                                    filterPath: data.filterPath,
                                     categories: data.categories,
                                     filter: filter,
-                                    parameter: filter.config.parameterName | default(''),
                                     min: filter.min | default(0),
                                     max: filter.max | default(0),
                                     activeMin: filter.activeMin | default(0),
@@ -76,9 +78,9 @@
 
     <div class="col col--sm-12 col--lg-8 col--xl-9">
         <div class="grid grid--stretch">
-            {% for childCategory in data.children %}
-                {% include molecule('category-card') with {
-                    class: 'col col--sm-12 col--md-6 col--lg-6 col--xl-4',
+            {% for childCategory in data.category.children %}
+                {% include categoryTemplate with {
+                    class: cardClass,
                     data: {
                         id: childCategory.id_category,
                         name: childCategory.name,
