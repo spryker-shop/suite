@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3d8e316bb16288768506845ecd59655a",
+    "content-hash": "a18eef213787fd27c5479cde161c901e",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -8943,6 +8943,63 @@
             "time": "2018-09-27T07:48:04+00:00"
         },
         {
+            "name": "spryker/checkout-rest-api",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/checkout-rest-api.git",
+                "reference": "72a4c62f8832ca9811bd83cf03d4360ae805f3e4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/checkout-rest-api/zipball/72a4c62f8832ca9811bd83cf03d4360ae805f3e4",
+                "reference": "72a4c62f8832ca9811bd83cf03d4360ae805f3e4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/calculation": "^4.0.0",
+                "spryker/cart": "^5.0.0",
+                "spryker/carts-rest-api": "^2.2.0",
+                "spryker/checkout": "^4.0.0",
+                "spryker/checkout-rest-api-extension": "^1.0.0",
+                "spryker/customer": "^7.11.0",
+                "spryker/glossary-storage": "^1.0.0",
+                "spryker/glue-application": "^1.2.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.29.0",
+                "spryker/payment": "^4.4.0",
+                "spryker/quote": "^2.0.0",
+                "spryker/shipment": "^6.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/zed-request": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/product": "*",
+                "spryker/propel": "*",
+                "spryker/stock": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CheckoutRestApi module",
+            "time": "2018-12-05T13:04:25+00:00"
+        },
+        {
             "name": "spryker/checkout-rest-api-extension",
             "version": "1.0.0",
             "source": {
@@ -16832,6 +16889,47 @@
             "time": "2017-08-25T12:27:25+00:00"
         },
         {
+            "name": "spryker/payments-rest-api",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/payments-rest-api.git",
+                "reference": "39db56fc0d3f19308f16c69a2eb8ecf52b4076e6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/payments-rest-api/zipball/39db56fc0d3f19308f16c69a2eb8ecf52b4076e6",
+                "reference": "39db56fc0d3f19308f16c69a2eb8ecf52b4076e6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/checkout-rest-api-extension": "^1.0.0",
+                "spryker/kernel": "^3.22.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "PaymentsRestApi module",
+            "time": "2018-12-05T13:04:25+00:00"
+        },
+        {
             "name": "spryker/permission",
             "version": "1.2.0",
             "source": {
@@ -24109,6 +24207,48 @@
             ],
             "description": "ShipmentDiscountConnector module",
             "time": "2018-11-19T14:34:38+00:00"
+        },
+        {
+            "name": "spryker/shipments-rest-api",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/shipments-rest-api.git",
+                "reference": "19d93b794e37820d0b9b5516351f4e322c5cbf92"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/shipments-rest-api/zipball/19d93b794e37820d0b9b5516351f4e322c5cbf92",
+                "reference": "19d93b794e37820d0b9b5516351f4e322c5cbf92",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/checkout-rest-api-extension": "^1.0.0",
+                "spryker/kernel": "^3.22.0",
+                "spryker/shipment": "^6.2.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ShipmentsRestApi module",
+            "time": "2018-12-04T14:39:16+00:00"
         },
         {
             "name": "spryker/shopping-list",
