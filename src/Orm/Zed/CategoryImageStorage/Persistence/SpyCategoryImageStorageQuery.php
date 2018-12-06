@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\CategoryImageStorage\Persistence;
 
-use Orm\Zed\CategoryImageStorage\Persistence\Base\SpyCategoryImageStorageQuery as BaseSpyCategoryImageStorageQuery;
+use Spryker\Zed\CategoryImageStorage\Persistence\Propel\AbstractSpyCategoryImageStorageQuery as BaseSpyCategoryImageStorageQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_category_image_storage' table.
