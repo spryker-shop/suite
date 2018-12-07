@@ -8,7 +8,6 @@
 namespace Pyz\Client\QuickOrder;
 
 use Spryker\Client\ProductMeasurementUnitStorage\Plugin\QuickOrder\ProductConcreteTransferBaseMeasurementUnitExpanderPlugin;
-use Spryker\Client\ProductQuantityStorage\Plugin\QuickOrder\ProductConcreteTransferProductQuantityExpanderPlugin;
 use Spryker\Client\QuickOrder\QuickOrderDependencyProvider as SprykerQuickOrderDependencyProvider;
 
 class QuickOrderDependencyProvider extends SprykerQuickOrderDependencyProvider
@@ -20,7 +19,6 @@ class QuickOrderDependencyProvider extends SprykerQuickOrderDependencyProvider
     {
         return [
             new ProductConcreteTransferBaseMeasurementUnitExpanderPlugin(),
-            new ProductConcreteTransferProductQuantityExpanderPlugin(),
         ];
     }
 }
