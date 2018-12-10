@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "a45eea4ed6d48653d0f55d89e7fb244e",
@@ -2660,7 +2660,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "c359bc1cd0b1a05304dbec3f08fedcbf77ca7d76"
+                "reference": "499f388512c172efccf5cfed4347880c2bfefe51"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2929,7 +2929,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-12-10T11:03:07+00:00"
+            "time": "2018-12-10T11:29:53+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2937,7 +2937,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "505d7e3c5d0f37e85979a16e6259888bed0c0693"
+                "reference": "2d5af7e4a3965d21fae12a6606a28d201d434b48"
             },
             "require": {
                 "php": ">=7.1"
@@ -3012,7 +3012,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-12-07T10:55:04+00:00"
+            "time": "2018-12-10T11:39:08+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8379,17 +8379,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/architecture-sniffer.git",
-                "reference": "e33aac45113f3690a0c86b9183845656f6d56faf"
+                "reference": "0bb74048114155841c4d0f9905cc8612e61e0c7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/e33aac45113f3690a0c86b9183845656f6d56faf",
-                "reference": "e33aac45113f3690a0c86b9183845656f6d56faf",
+                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/0bb74048114155841c4d0f9905cc8612e61e0c7f",
+                "reference": "0bb74048114155841c4d0f9905cc8612e61e0c7f",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "phpmd/phpmd": "^2.4"
+                "phpmd/phpmd": "^2.4",
+                "roave/better-reflection": "*",
+                "symfony/finder": "*",
+                "zendframework/zend-config": "*",
+                "zendframework/zend-filter": "*"
             },
             "require-dev": {
                 "codeception/codeception": "^2.4",
@@ -8425,7 +8429,7 @@
                 "sniffer",
                 "standards"
             ],
-            "time": "2018-11-30T10:56:30+00:00"
+            "time": "2018-12-10T11:37:51+00:00"
         },
         {
             "name": "spryker/code-generator",
