@@ -2414,12 +2414,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "19e78d290035cb9ddfc4f0790ca2b52f183a941c"
+                "reference": "975efc301d6a53e28e3a553247487a4bfa1f4ac7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/19e78d290035cb9ddfc4f0790ca2b52f183a941c",
-                "reference": "19e78d290035cb9ddfc4f0790ca2b52f183a941c",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/975efc301d6a53e28e3a553247487a4bfa1f4ac7",
+                "reference": "975efc301d6a53e28e3a553247487a4bfa1f4ac7",
                 "shasum": ""
             },
             "require": {
@@ -2464,7 +2464,7 @@
                 "proprietary"
             ],
             "description": "EventBehavior module",
-            "time": "2018-11-26T14:24:05+00:00"
+            "time": "2018-12-05T12:50:38+00:00"
         },
         {
             "name": "spryker/install",
@@ -2575,7 +2575,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "0307e8f901edfb02435af6ee2f6fde0e9985ab4e"
+                "reference": "a57c34b9e4fe55db9b403fa1c77086a4b5824b0c"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2844,7 +2844,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-11-28T09:43:43+00:00"
+            "time": "2018-12-10T16:33:13+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -8173,17 +8173,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/architecture-sniffer.git",
-                "reference": "1f6a94fa6fd65e60b5becce0d493868253363092"
+                "reference": "5143080b523c48d7e27bce1f8dd2d518aa3613de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/1f6a94fa6fd65e60b5becce0d493868253363092",
-                "reference": "1f6a94fa6fd65e60b5becce0d493868253363092",
+                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/5143080b523c48d7e27bce1f8dd2d518aa3613de",
+                "reference": "5143080b523c48d7e27bce1f8dd2d518aa3613de",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "phpmd/phpmd": "^2.4"
+                "phpmd/phpmd": "^2.4",
+                "roave/better-reflection": "*",
+                "symfony/finder": "*",
+                "zendframework/zend-config": "*",
+                "zendframework/zend-filter": "*"
             },
             "require-dev": {
                 "codeception/codeception": "^2.4",
@@ -8208,18 +8212,18 @@
             "authors": [
                 {
                     "name": "Spryker",
-                    "homepage": "http://spryker.com"
+                    "homepage": "https://spryker.com"
                 }
             ],
-            "description": "Spryker Code Architecture Sniffer",
-            "homepage": "http://spryker.com",
+            "description": "Spryker Architecture Sniffer",
+            "homepage": "https://spryker.com",
             "keywords": [
                 "architecture",
                 "framework",
                 "sniffer",
                 "standards"
             ],
-            "time": "2018-08-14T08:02:25+00:00"
+            "time": "2018-12-10T16:03:30+00:00"
         },
         {
             "name": "spryker/code-generator",
