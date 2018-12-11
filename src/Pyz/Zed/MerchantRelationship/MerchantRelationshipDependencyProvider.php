@@ -15,7 +15,7 @@ class MerchantRelationshipDependencyProvider extends SprykerMerchantRelationship
     /**
      * @return \Spryker\Zed\MerchantRelationshipExtension\Dependency\Plugin\MerchantRelationshipPreDeletePluginInterface[]
      */
-    protected function getMerchantRelationshipPreDeletePlugins()
+    protected function getMerchantRelationshipPreDeletePlugins(): array
     {
         return [
             new ProductListMerchantRelationshipPreDeletePlugin(),
