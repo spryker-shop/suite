@@ -42,6 +42,8 @@ use Spryker\Glue\GlueApplication\Plugin\Rest\SetStoreCurrentLocaleBeforeActionPl
 use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationshipCollectionInterface;
 use Spryker\Glue\OrdersRestApi\Plugin\OrderRelationshipByOrderReferencePlugin;
 use Spryker\Glue\OrdersRestApi\Plugin\OrdersResourceRoutePlugin;
+use Spryker\Glue\ProductAlternativesRestApi\Plugin\GlueApplication\ProductAlternativesRelationshipByResourceIdPlugin;
+use Spryker\Glue\ProductAlternativesRestApi\Plugin\GlueApplication\ProductAlternativesResourceRoutePlugin;
 use Spryker\Glue\ProductAvailabilitiesRestApi\Plugin\AbstractProductAvailabilitiesRoutePlugin;
 use Spryker\Glue\ProductAvailabilitiesRestApi\Plugin\ConcreteProductAvailabilitiesRoutePlugin;
 use Spryker\Glue\ProductImageSetsRestApi\Plugin\AbstractProductImageSetsRoutePlugin;
@@ -118,6 +120,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new ProductLabelsResourceRoutePlugin(),
             new CheckoutDataResourcePlugin(),
             new CheckoutResourcePlugin(),
+            new ProductAlternativesResourceRoutePlugin(),
         ];
     }
 
@@ -253,6 +256,10 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         $resourceRelationshipCollection->addRelationship(
             CheckoutRestApiConfig::RESOURCE_CHECKOUT,
             new OrderRelationshipByOrderReferencePlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+            new ProductAlternativesRelationshipByResourceIdPlugin()
         );
 
         return $resourceRelationshipCollection;
