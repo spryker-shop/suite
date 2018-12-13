@@ -16,6 +16,7 @@ use Spryker\Zed\CmsBlockProductStorage\Communication\Plugin\Synchronization\CmsB
 use Spryker\Zed\CmsBlockStorage\Communication\Plugin\Synchronization\CmsBlockSynchronizationDataPlugin;
 use Spryker\Zed\CmsPageSearch\Communication\Plugin\Synchronization\CmsPageSynchronizationDataPlugin;
 use Spryker\Zed\CmsStorage\Communication\Plugin\Synchronization\CmsSynchronizationDataPlugin;
+use Spryker\Zed\CustomerAccessStorage\Communication\Plugin\Synchronization\CustomerAccessSynchronizationDataPlugin;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Synchronization\GlossarySynchronizationDataPlugin;
 use Spryker\Zed\NavigationStorage\Communication\Plugin\Synchronization\NavigationSynchronizationDataPlugin;
 use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Synchronization\PriceProductAbstractMerchantRelationSynchronizationDataPlugin;
@@ -103,6 +104,7 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
             new PriceProductConcreteMerchantRelationSynchronizationDataPlugin(),
             new PriceProductAbstractMerchantRelationSynchronizationDataPlugin(),
             new ProductDiscontinuedSynchronizationDataPlugin(),
+            new CustomerAccessSynchronizationDataPlugin(),
             new ProductAlternativeSynchronizationDataPlugin(),
             new ProductReplacementForSynchronizationDataPlugin(),
         ];
