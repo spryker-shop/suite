@@ -20,7 +20,7 @@ class CartsRestApiDependencyProvider extends SprykerCartsRestApiDependencyProvid
      */
     protected function getQuoteCollectionReaderPlugin(): QuoteCollectionReaderPluginInterface
     {
-        return new MultipleQuoteCollectionReaderPlugin();
+        return new MultipleQuoteCollectionReaderPlugin(); #MultiCartFeature
     }
 
     /**
@@ -28,6 +28,6 @@ class CartsRestApiDependencyProvider extends SprykerCartsRestApiDependencyProvid
      */
     protected function getQuoteCreatorPlugin(): QuoteCreatorPluginInterface
     {
-        return new MultipleQuoteCreatorPlugin();
+        return new MultipleQuoteCreatorPlugin(); #MultiCartFeature
     }
 }
