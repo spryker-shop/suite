@@ -11,6 +11,7 @@ use Generated\Shared\Transfer\CompanyRoleTransfer;
 use Spryker\Shared\Checkout\Plugin\Permission\PlaceOrderWithAmountUpToPermissionPlugin;
 use Spryker\Shared\CompanyUser\Plugin\AddCompanyUserPermissionPlugin;
 use Spryker\Shared\CompanyUserInvitation\Plugin\ManageCompanyUserInvitationPermissionPlugin;
+use Spryker\Shared\QuoteApproval\Plugin\Permission\ApproveQuotePermissionPlugin;
 use Spryker\Shared\QuoteApproval\Plugin\Permission\PlaceOrderPermissionPlugin;
 use Spryker\Zed\CompanyRole\CompanyRoleConfig as SprykerCompanyRoleConfig;
 use SprykerShop\Shared\CartPage\Plugin\AddCartItemPermissionPlugin;
@@ -55,7 +56,7 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
     protected function getApproverRolePermissionKeys(): array
     {
         return [
-            PlaceOrderWithAmountUpToPermissionPlugin::KEY,
+            ApproveQuotePermissionPlugin::KEY,
         ];
     }
 
