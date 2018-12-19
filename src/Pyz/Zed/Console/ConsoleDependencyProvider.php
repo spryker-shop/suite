@@ -48,6 +48,7 @@ use Spryker\Zed\Development\Communication\Console\ModuleCreateConsole;
 use Spryker\Zed\Development\Communication\Console\PluginUsageFinderConsole;
 use Spryker\Zed\Development\Communication\Console\PropelAbstractValidateConsole;
 use Spryker\Zed\DevelopmentCore\Communication\Console\AdjustPhpstanConsole;
+use Spryker\Zed\DocumentationGeneratorRestApi\Communication\Console\GenerateRestApiDocumentationConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventBehaviorTriggerTimeoutConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventTriggerConsole;
 use Spryker\Zed\EventBehavior\Communication\Plugin\Console\EventBehaviorPostHookPlugin;
@@ -73,7 +74,6 @@ use Spryker\Zed\ProductLabel\Communication\Console\ProductLabelRelationUpdaterCo
 use Spryker\Zed\ProductLabel\Communication\Console\ProductLabelValidityConsole;
 use Spryker\Zed\ProductPackagingUnitDataImport\ProductPackagingUnitDataImportConfig;
 use Spryker\Zed\ProductRelation\Communication\Console\ProductRelationUpdaterConsole;
-use Spryker\Zed\ProductTaxSetsRestApi\Communication\Console\ProductTaxSetsRestApiConsole;
 use Spryker\Zed\Propel\Communication\Console\DatabaseDropConsole;
 use Spryker\Zed\Propel\Communication\Console\DatabaseExportConsole;
 use Spryker\Zed\Propel\Communication\Console\DatabaseImportConsole;
@@ -88,7 +88,6 @@ use Spryker\Zed\RabbitMq\Communication\Console\DeleteAllExchangesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\DeleteAllQueuesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\PurgeAllQueuesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\SetUserPermissionsConsole;
-use Spryker\Zed\RestApiDocumentationGenerator\Communication\Console\RestApiDocumentationGeneratorConsole;
 use Spryker\Zed\RestRequestValidator\Communication\Console\BuildValidationCacheConsole;
 use Spryker\Zed\Search\Communication\Console\GenerateIndexMapConsole;
 use Spryker\Zed\Search\Communication\Console\SearchCloseIndexConsole;
@@ -281,8 +280,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new PriceProductStoreOptimizeConsole(),
             new PriceProductMerchantRelationshipDeleteConsole(),
 
-            new RestApiDocumentationGeneratorConsole(),
-
             new DeleteExpiredGuestQuoteConsole(),
 
             new UuidGeneratorConsole(),
@@ -325,6 +322,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new PluginUsageFinderConsole();
             $commands[] = new PostgresIndexGeneratorConsole();
             $commands[] = new PostgresIndexRemoverConsole();
+            $commands[] = new GenerateRestApiDocumentationConsole();
         }
 
         return $commands;
