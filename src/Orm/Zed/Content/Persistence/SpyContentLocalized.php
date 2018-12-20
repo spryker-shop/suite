@@ -7,10 +7,10 @@
 
 namespace Orm\Zed\Content\Persistence;
 
-use Orm\Zed\Content\Persistence\Base\SpyContentLocalizedAttributes as BaseSpyContentLocalizedAttributes;
+use Orm\Zed\Content\Persistence\Base\SpyContentLocalized as BaseSpyContentLocalized;
 
 /**
- * Skeleton subclass for representing a row from the 'spy_content_localized_attributes' table.
+ * Skeleton subclass for representing a row from the 'spy_content_localized' table.
  *
  *
  *
@@ -19,6 +19,6 @@ use Orm\Zed\Content\Persistence\Base\SpyContentLocalizedAttributes as BaseSpyCon
  * long as it does not already exist in the output directory.
  *
  */
-class SpyContentLocalizedAttributes extends BaseSpyContentLocalizedAttributes
+class SpyContentLocalized extends BaseSpyContentLocalized
 {
 }

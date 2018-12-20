@@ -7,10 +7,10 @@
 
 namespace Orm\Zed\Content\Persistence;
 
-use Orm\Zed\Content\Persistence\Base\SpyContentLocalizedAttributesQuery as BaseSpyContentLocalizedAttributesQuery;
+use Spryker\Zed\Content\Persistence\Propel\AbstractSpyContentLocalizedQuery as BaseSpyContentLocalizedQuery;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_content_localized_attributes' table.
+ * Skeleton subclass for performing query and update operations on the 'spy_content_localized' table.
  *
  *
  *
@@ -19,6 +19,6 @@ use Orm\Zed\Content\Persistence\Base\SpyContentLocalizedAttributesQuery as BaseS
  * long as it does not already exist in the output directory.
  *
  */
-class SpyContentLocalizedAttributesQuery extends BaseSpyContentLocalizedAttributesQuery
+class SpyContentLocalizedQuery extends BaseSpyContentLocalizedQuery
 {
 }
