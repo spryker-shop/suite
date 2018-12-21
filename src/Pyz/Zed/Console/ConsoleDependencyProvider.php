@@ -84,6 +84,7 @@ use Spryker\Zed\Propel\Communication\Console\DeleteMigrationFilesConsole;
 use Spryker\Zed\Propel\Communication\Console\PropelSchemaValidatorConsole;
 use Spryker\Zed\Propel\Communication\Console\PropelSchemaXmlNameValidatorConsole;
 use Spryker\Zed\Propel\Communication\Plugin\ServiceProvider\PropelServiceProvider;
+use Spryker\Zed\Queue\Communication\Console\QueueDumpConsole;
 use Spryker\Zed\Queue\Communication\Console\QueueTaskConsole;
 use Spryker\Zed\Queue\Communication\Console\QueueWorkerConsole;
 use Spryker\Zed\Quote\Communication\Console\DeleteExpiredGuestQuoteConsole;
@@ -166,6 +167,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new SessionRemoveLockConsole(),
             new QueueTaskConsole(),
             new QueueWorkerConsole(),
+            new QueueDumpConsole(),
             new ProductRelationUpdaterConsole(),
             new ProductLabelValidityConsole(),
             new ProductLabelRelationUpdaterConsole(),
