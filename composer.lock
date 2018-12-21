@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a18eef213787fd27c5479cde161c901e",
+    "content-hash": "ad5f9336fa6412a784d6b66e66cea085",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5228,23 +5228,24 @@
         },
         {
             "name": "spryker-shop/product-packaging-unit-widget",
-            "version": "0.1.4",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/product-packaging-unit-widget.git",
-                "reference": "8de7c118c3e8ed928175984170e59a2a81697be2"
+                "reference": "25b672d34fbdab51e0cb1a2f8756700787b506ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/product-packaging-unit-widget/zipball/8de7c118c3e8ed928175984170e59a2a81697be2",
-                "reference": "8de7c118c3e8ed928175984170e59a2a81697be2",
+                "url": "https://api.github.com/repos/spryker-shop/product-packaging-unit-widget/zipball/25b672d34fbdab51e0cb1a2f8756700787b506ae",
+                "reference": "25b672d34fbdab51e0cb1a2f8756700787b506ae",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
+                "spryker-shop/quick-order-page-extension": "^1.0.0",
                 "spryker/kernel": "^3.24.0",
                 "spryker/product-measurement-unit-storage": "^1.1.0",
-                "spryker/product-packaging-unit-storage": "^1.0.0",
+                "spryker/product-packaging-unit-storage": "^2.0.0",
                 "spryker/product-quantity-storage": "^1.0.0",
                 "spryker/util-encoding": "^2.0.0"
             },
@@ -5280,7 +5281,7 @@
                 "proprietary"
             ],
             "description": "ProductPackagingUnitWidget module",
-            "time": "2018-12-03T10:34:05+00:00"
+            "time": "2018-12-10T16:34:06+00:00"
         },
         {
             "name": "spryker-shop/product-relation-widget",
@@ -5433,6 +5434,55 @@
             ],
             "description": "ProductReviewWidget module",
             "time": "2018-11-02T15:06:47+00:00"
+        },
+        {
+            "name": "spryker-shop/product-search-widget",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/product-search-widget.git",
+                "reference": "7ebd2672476cdd11dcba0045f7f165ab02f29156"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/product-search-widget/zipball/7ebd2672476cdd11dcba0045f7f165ab02f29156",
+                "reference": "7ebd2672476cdd11dcba0045f7f165ab02f29156",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/catalog": "^5.5.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker-shop/shop-application": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/quick-order-page": "Use this module when using plugins that need QuickOrderPage dependencies.",
+                "spryker-shop/shop-application": "Use this module when using plugins that need ShopApplication dependencies.",
+                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductSearchWidget module",
+            "time": "2018-12-21T11:03:50+00:00"
         },
         {
             "name": "spryker-shop/product-set-detail-page",
@@ -5637,27 +5687,32 @@
         },
         {
             "name": "spryker-shop/quick-order-page",
-            "version": "1.1.1",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/quick-order-page.git",
-                "reference": "52031f4b82d39b1ef0c021e0a02f0107e0965f13"
+                "reference": "767d167c3cdfa38e10c45ba76044efda3f3301b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/quick-order-page/zipball/52031f4b82d39b1ef0c021e0a02f0107e0965f13",
-                "reference": "52031f4b82d39b1ef0c021e0a02f0107e0965f13",
+                "url": "https://api.github.com/repos/spryker-shop/quick-order-page/zipball/767d167c3cdfa38e10c45ba76044efda3f3301b1",
+                "reference": "767d167c3cdfa38e10c45ba76044efda3f3301b1",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker-shop/cart-page": "^1.0.0",
                 "spryker-shop/checkout-page": "^1.0.0",
+                "spryker-shop/quick-order-page-extension": "^1.0.0",
                 "spryker-shop/shop-application": "^1.0.0",
                 "spryker-shop/shop-ui": "^1.0.0",
                 "spryker/application": "^3.0.0",
                 "spryker/cart": "^4.0.0 || ^5.0.0",
                 "spryker/kernel": "^3.24.0",
+                "spryker/price-product-storage": "^2.9.0",
+                "spryker/product-quantity-storage": "^1.2.0",
+                "spryker/product-storage": "^1.7.0",
+                "spryker/quick-order": "^1.0.0",
                 "spryker/quote": "^1.0.0 || ^2.0.0",
                 "spryker/symfony": "^3.1.0",
                 "spryker/zed-request": "^3.4.0"
@@ -5686,7 +5741,49 @@
                 "proprietary"
             ],
             "description": "QuickOrderPage module",
-            "time": "2018-12-11T17:20:45+00:00"
+            "time": "2018-12-20T15:58:04+00:00"
+        },
+        {
+            "name": "spryker-shop/quick-order-page-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/quick-order-page-extension.git",
+                "reference": "640015985458f65e8365e42ccad32f76d78b9289"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/quick-order-page-extension/zipball/640015985458f65e8365e42ccad32f76d78b9289",
+                "reference": "640015985458f65e8365e42ccad32f76d78b9289",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/symfony": "If you want to use symfony forms"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "QuickOrderPageExtension module",
+            "time": "2018-12-18T16:10:09+00:00"
         },
         {
             "name": "spryker-shop/redirect-page",
@@ -6361,25 +6458,26 @@
         },
         {
             "name": "spryker-shop/shopping-list-widget",
-            "version": "0.3.11",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/shopping-list-widget.git",
-                "reference": "789f36889edd8f65bd9acbb3f01ecbae61261a21"
+                "reference": "a9aad99baf7ba8da0f30671f2de6877ec1b1d140"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/shopping-list-widget/zipball/789f36889edd8f65bd9acbb3f01ecbae61261a21",
-                "reference": "789f36889edd8f65bd9acbb3f01ecbae61261a21",
+                "url": "https://api.github.com/repos/spryker-shop/shopping-list-widget/zipball/a9aad99baf7ba8da0f30671f2de6877ec1b1d140",
+                "reference": "a9aad99baf7ba8da0f30671f2de6877ec1b1d140",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
+                "spryker-shop/quick-order-page-extension": "^1.0.0",
                 "spryker-shop/shop-application": "^1.0.0",
                 "spryker-shop/shop-ui": "^1.0.0",
                 "spryker/customer": "^7.4.0",
                 "spryker/kernel": "^3.24.0",
-                "spryker/shopping-list": "^1.7.0 || ^2.1.0",
+                "spryker/shopping-list": "^2.5.0",
                 "spryker/shopping-list-session": "^1.0.0",
                 "spryker/symfony": "^3.1.0"
             },
@@ -6395,6 +6493,7 @@
             "suggest": {
                 "spryker-shop/customer-page": "Widget plugins are available for this module.",
                 "spryker-shop/multi-cart-page": "If you want to use CartToShoppingListWidgetPlugin: ^1.0.0",
+                "spryker-shop/quick-order-page": "If you want to use ShoppingListQuickOrderPageWidgetPlugin: ^1.0.0",
                 "spryker-shop/shopping-list-page": "Use this module if you want see shopping list pages",
                 "spryker/product-detail-page": "To use ShoppingListWidget plugin, ShoppingListWidgetPluginInterface from product-detail-page v0.2.2 is needed",
                 "spryker/silex": "Use this module when using plugins that need Silex dependencies."
@@ -6415,7 +6514,7 @@
                 "proprietary"
             ],
             "description": "ShoppingListWidget module",
-            "time": "2018-11-14T13:49:39+00:00"
+            "time": "2018-12-18T16:10:09+00:00"
         },
         {
             "name": "spryker-shop/tabs-widget",
@@ -19975,16 +20074,16 @@
         },
         {
             "name": "spryker/product-label-search",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-label-search.git",
-                "reference": "ca41c46eddc96326a73694d0c1ea6401cdc3cb8e"
+                "reference": "e08a1b932ac6e80bad132a833a83672b97d984cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-label-search/zipball/ca41c46eddc96326a73694d0c1ea6401cdc3cb8e",
-                "reference": "ca41c46eddc96326a73694d0c1ea6401cdc3cb8e",
+                "url": "https://api.github.com/repos/spryker/product-label-search/zipball/e08a1b932ac6e80bad132a833a83672b97d984cb",
+                "reference": "e08a1b932ac6e80bad132a833a83672b97d984cb",
                 "shasum": ""
             },
             "require": {
@@ -19992,7 +20091,7 @@
                 "spryker/event-behavior": "^1.1.0",
                 "spryker/kernel": "^3.21.0",
                 "spryker/product-label": "^2.4.0",
-                "spryker/product-page-search": "^0.1.0 || ^1.0.0 || ^2.2.0",
+                "spryker/product-page-search": "^0.1.0 || ^1.0.0 || ^2.2.0 || ^3.0.0",
                 "spryker/product-page-search-extension": "^1.0.0",
                 "spryker/util-sanitize": "^2.1.0"
             },
@@ -20025,7 +20124,7 @@
                 "proprietary"
             ],
             "description": "ProductLabelSearch module",
-            "time": "2018-11-21T12:21:25+00:00"
+            "time": "2018-12-21T09:40:33+00:00"
         },
         {
             "name": "spryker/product-label-storage",
@@ -20324,16 +20423,16 @@
         },
         {
             "name": "spryker/product-list-search",
-            "version": "1.3.0",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-list-search.git",
-                "reference": "f8d85b51b04b0c82600acad1813ffc791377a9fd"
+                "reference": "3623aa57ed9976d793de13eea59230b385e10e7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-list-search/zipball/f8d85b51b04b0c82600acad1813ffc791377a9fd",
-                "reference": "f8d85b51b04b0c82600acad1813ffc791377a9fd",
+                "url": "https://api.github.com/repos/spryker/product-list-search/zipball/3623aa57ed9976d793de13eea59230b385e10e7f",
+                "reference": "3623aa57ed9976d793de13eea59230b385e10e7f",
                 "shasum": ""
             },
             "require": {
@@ -20343,7 +20442,7 @@
                 "spryker/product": "^5.0.0 || ^6.0.0",
                 "spryker/product-category": "^4.0.0",
                 "spryker/product-list": "^1.2.0",
-                "spryker/product-page-search": "^2.2.0",
+                "spryker/product-page-search": "^2.2.0 || ^3.0.0",
                 "spryker/product-page-search-extension": "^1.0.0"
             },
             "require-dev": {
@@ -20378,7 +20477,7 @@
                 "proprietary"
             ],
             "description": "ProductListSearch module",
-            "time": "2018-10-26T09:16:47+00:00"
+            "time": "2018-12-21T09:40:33+00:00"
         },
         {
             "name": "spryker/product-list-storage",
@@ -21084,16 +21183,16 @@
         },
         {
             "name": "spryker/product-packaging-unit-storage",
-            "version": "1.0.4",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-packaging-unit-storage.git",
-                "reference": "81ccff8c3b50de5e77a0c2ffcacca453c01436bc"
+                "reference": "7717c1fb495653943ed673f98d9f0af82bbf9658"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-packaging-unit-storage/zipball/81ccff8c3b50de5e77a0c2ffcacca453c01436bc",
-                "reference": "81ccff8c3b50de5e77a0c2ffcacca453c01436bc",
+                "url": "https://api.github.com/repos/spryker/product-packaging-unit-storage/zipball/7717c1fb495653943ed673f98d9f0af82bbf9658",
+                "reference": "7717c1fb495653943ed673f98d9f0af82bbf9658",
                 "shasum": ""
             },
             "require": {
@@ -21101,6 +21200,7 @@
                 "spryker/event-behavior": "^1.0.0",
                 "spryker/kernel": "^3.0.0",
                 "spryker/product": "^6.0.0",
+                "spryker/product-measurement-unit-storage": "^1.0.0",
                 "spryker/product-packaging-unit": "^1.0.0",
                 "spryker/storage": "^3.4.0",
                 "spryker/synchronization": "^1.0.0",
@@ -21133,20 +21233,20 @@
                 "proprietary"
             ],
             "description": "ProductPackagingUnitStorage module",
-            "time": "2018-10-11T14:31:50+00:00"
+            "time": "2018-12-11T16:22:07+00:00"
         },
         {
             "name": "spryker/product-page-search",
-            "version": "2.6.1",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-page-search.git",
-                "reference": "250c446e7b7dbe9036b838c9973ce2739a51e23a"
+                "reference": "aa120b48edbc750f4272a7c5976645aad1361b23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-page-search/zipball/250c446e7b7dbe9036b838c9973ce2739a51e23a",
-                "reference": "250c446e7b7dbe9036b838c9973ce2739a51e23a",
+                "url": "https://api.github.com/repos/spryker/product-page-search/zipball/aa120b48edbc750f4272a7c5976645aad1361b23",
+                "reference": "aa120b48edbc750f4272a7c5976645aad1361b23",
                 "shasum": ""
             },
             "require": {
@@ -21158,10 +21258,10 @@
                 "spryker/kernel": "^3.21.0",
                 "spryker/price": "^5.3.0",
                 "spryker/price-product": "^1.1.0 || ^2.1.0",
-                "spryker/product": "^5.5.0 || ^6.0.0",
+                "spryker/product": "^6.8.0",
                 "spryker/product-category": "^4.5.0",
                 "spryker/product-image": "^3.5.0",
-                "spryker/product-page-search-extension": "^1.0.0",
+                "spryker/product-page-search-extension": "^1.1.0",
                 "spryker/product-search": "^5.5.0",
                 "spryker/propel-orm": "^1.5.0",
                 "spryker/search": "^7.0.0 || ^8.0.0",
@@ -21180,6 +21280,7 @@
                 "spryker/testify": "*"
             },
             "suggest": {
+                "spryker/elastica": "If you want to use Elasticsearch plugins, minimum required version: 4.0.0",
                 "spryker/event": "If you want to use Event plugins, minimum required version: 2.1.0"
             },
             "type": "library",
@@ -21198,7 +21299,7 @@
                 "proprietary"
             ],
             "description": "ProductPageSearch module",
-            "time": "2018-12-17T16:51:31+00:00"
+            "time": "2018-12-20T15:57:40+00:00"
         },
         {
             "name": "spryker/product-page-search-extension",
@@ -21822,23 +21923,23 @@
         },
         {
             "name": "spryker/product-review-search",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-review-search.git",
-                "reference": "05bed00a55dd5520f7e9289c408203aa6cfa9c06"
+                "reference": "7b41a1f485474e77ba4cf25baf95560e0054942f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-review-search/zipball/05bed00a55dd5520f7e9289c408203aa6cfa9c06",
-                "reference": "05bed00a55dd5520f7e9289c408203aa6cfa9c06",
+                "url": "https://api.github.com/repos/spryker/product-review-search/zipball/7b41a1f485474e77ba4cf25baf95560e0054942f",
+                "reference": "7b41a1f485474e77ba4cf25baf95560e0054942f",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/event-behavior": "^1.1.0",
                 "spryker/kernel": "^3.21.0",
-                "spryker/product-page-search": "^0.1.0 || ^1.0.0 || ^2.2.0",
+                "spryker/product-page-search": "^0.1.0 || ^1.0.0 || ^2.2.0 || ^3.0.0",
                 "spryker/product-page-search-extension": "^1.0.0",
                 "spryker/product-review": "^1.1.0 || ^2.0.0",
                 "spryker/synchronization-extension": "^1.0.0",
@@ -21873,7 +21974,7 @@
                 "proprietary"
             ],
             "description": "ProductReviewSearch module",
-            "time": "2018-11-21T12:01:15+00:00"
+            "time": "2018-12-21T09:40:33+00:00"
         },
         {
             "name": "spryker/product-review-storage",
@@ -22910,6 +23011,48 @@
             ],
             "description": "Queue module",
             "time": "2018-10-02T06:35:14+00:00"
+        },
+        {
+            "name": "spryker/quick-order",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/quick-order.git",
+                "reference": "453f33dc27fdd0b4e132db800a945206e851d9a7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/quick-order/zipball/453f33dc27fdd0b4e132db800a945206e851d9a7",
+                "reference": "453f33dc27fdd0b4e132db800a945206e851d9a7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.0.0",
+                "spryker/product-storage": "^1.6.0",
+                "spryker/quick-order-extension": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "QuickOrder module",
+            "time": "2018-12-18T18:01:18+00:00"
         },
         {
             "name": "spryker/quick-order-extension",
