@@ -238,7 +238,7 @@ shipment.hermes,Hermes,en_US
 customer.first_name,Vorname,de_DE
 customer.first_name,First Name,en_US
 customer.last_name,Name,de_DE
-customer.last_name,Name,en_US
+customer.last_name,Last Name,en_US
 customer.salutation.mr,Herr,de_DE
 customer.salutation.mr,Mr.,en_US
 customer.salutation.mrs,Frau,de_DE
@@ -407,8 +407,8 @@ customer.profile.order_history,Last Orders,en_US
 customer.profile.order_history,Letzte Bestellungen,de_DE
 customer.account.no_orders,No orders at the moment,en_US
 customer.account.no_orders,Keine Bestellungen,de_DE
-customer.address.updated,New address updated,en_US
-customer.address.updated,Neue Adresse hinzugefügt,de_DE
+customer.address.updated,Address was successfully updated,en_US
+customer.address.updated,Adresse wurde erfolgreich aktualisiert,de_DE
 customer.address.delete.success,Address deleted successfully,en_US
 customer.address.delete.success,Adresse erfolgreich gelöscht,de_DE
 customer.address.added,Address was successfully added,en_US
@@ -1095,8 +1095,8 @@ product-cart.validation.error.abstract-product-exists,"Product ""sku"" not found
 product-cart.validation.error.abstract-product-exists,"Produkt ""sku"" nicht gefunden",de_DE
 product-cart.validation.error.concrete-product-exists,"Product ""sku"" not found",en_US
 product-cart.validation.error.concrete-product-exists,"Produkt ""sku"" nicht gefunden",de_DE
-cart.item.option.pre.check.validation.error.exists,"Product option with value '%id%' does not exist.",en_US
-cart.item.option.pre.check.validation.error.exists,"Die Produktoption '%id%' existiert nicht.",de_DE
+cart.item.option.pre.check.validation.error.exists,"You can not reorder the product %name% directly, please add it to your cart separately.",en_US
+cart.item.option.pre.check.validation.error.exists,"Sie können das Produkt %name% nicht direkt nachbestellen, fügen Sie es bitte separat in Ihren Warenkorb.",de_DE
 product-cart.validation.error.product-option-value-price-exists,"Product option price not found for product '%sku%'.",en_US
 product-cart.validation.error.product-option-value-price-exists,"Produktoptionspreis nicht gefunden für Produkt '%sku%'.",de_DE
 product-cart.validation.error.concrete-product-inactive,"Product sku is not active.",en_US
@@ -1291,6 +1291,8 @@ company.account.business_unit.address,Addresses,en_US
 company.account.business_unit.address,Adressen,de_DE
 company.account.business_unit.details,Details,de_DE
 company.account.business_unit.details,Details,en_US
+company.account.business_unit.delete.confirmation.warning,Warning,en_US
+company.account.business_unit.delete.confirmation.warning,Warnung,de_DE
 company.company_business_unit.delete.error.has_users,You can not delete a business unit while it contains users,en_US
 company.company_business_unit.delete.error.has_users,Sie können diese Geschäftseinheit nicht löschen solange Nutzer vorhanden sind,de_DE
 company.account.address.is_default_billing,Is default billing address,en_US
@@ -1741,6 +1743,8 @@ customer.account.shopping_list.create.success,"List '%name%' was created success
 customer.account.shopping_list.create.success,"Einkaufsliste '%name%' wurde erfolgreich erstellt.",de_DE
 customer.account.shopping_list.create.failed,Shopping list creation failed.,en_US
 customer.account.shopping_list.create.failed,Erstellen der Einkaufsliste ist fehlgeschlagen,de_DE
+customer.account.shopping_list.overview.create.success,Shopping List has been created successfully.,en_US
+customer.account.shopping_list.overview.create.success,Einkaufsliste wurde erfolgreich erstellt.,de_DE
 customer.account.shopping_list.overview.shared_with,Shared with,en_US
 customer.account.shopping_list.overview.shared_with,Geteilt mit,de_DE
 customer.account.shopping_list.overview.title,Manage Shopping Lists,en_US
@@ -1817,6 +1821,8 @@ customer.account.shopping_list.print_shopping_list,Print,en_US
 customer.account.shopping_list.print_shopping_list,Drucken,de_DE
 customer.account.shopping_list.item.not_added,Failed to add product to shopping list.,en_US
 customer.account.shopping_list.item.not_added,Hinzufügen zur Einkaufsliste fehlgeschlagen.,de_DE
+customer.account.shopping_list.add_item.success,Item has been added to the shopping list.,en_US
+customer.account.shopping_list.add_item.success,Artikel wurde der Einkaufsliste hinzugefügt.,de_DE
 customer.account.shopping_list.item.remove.success,Product removed successfully.,en_US
 customer.account.shopping_list.item.remove.success,Produkt erfolgreich entfernt.,de_DE
 customer.account.shopping_list.item.remove.failed,Product was not removed from shopping list.,en_US
@@ -1925,16 +1931,18 @@ packaging_unit_type.pack_mixed.name,Mixed Screws boxes,en_US
 packaging_unit_type.pack_mixed.name,Gemischte Schraubenkästen,de_DE
 business_on_behalf_widget.no_selected_company,No selected company,en_US
 business_on_behalf_widget.no_selected_company,Kein Unternehmen ausgewählt,de_DE
-business_on_behalf_widget.change_company_user,Change Company User,en_US
-business_on_behalf_widget.change_company_user,Firmenbenutzer Profil ändern,de_DE
+business_on_behalf_widget.change_company_user,Select Business Unit,en_US
+business_on_behalf_widget.change_company_user,Geschäftseinheit auswählen,de_DE
 company_user.business_on_behalf.error.company_not_active,"You can not select this company user, company is not active.",en_US
 company_user.business_on_behalf.error.company_not_active,"Sie können diesen Firmennutzer nicht auswählen da die Firma inaktiv ist",de_DE
 company_user.business_on_behalf.error.company_user_invalid,"You can not select this company user, it is invalid.",en_US
 company_user.business_on_behalf.error.company_user_invalid,"Sie können diesen Firmennutzer nicht auswählen da er ungültig ist",de_DE
-company_user.change_company_user,Change Company User,en_US
-company_user.change_company_user,Veränderung Firmennutzer,de_DE
-company_user.no_company,No Company,en_US
-company_user.no_company,Kein Unternehmen,de_DE
+company_user.change_company_user,Select Business Unit,en_US
+company_user.change_company_user,Geschäftseinheit auswählen,de_DE
+company_user.no_company,No Business Unit,en_US
+company_user.no_company,Keine Geschäftseinheit,de_DE
+company_user.company_choice,Business Unit,en_US
+company_user.company_choice,Geschäftseinheit,de_DE
 company_user.remember_choice,Remember choice,en_US
 company_user.remember_choice,Auswahl speichern,de_DE
 company_page.company_user_restricted_message,Regular customers are not allowed to operate on company pages,en_US
@@ -2237,8 +2245,6 @@ shopping_list.create_new_list,Create new list,en_US
 shopping_list.create_new_list,Erstelle eine neue Liste,de_DE
 shopping_list.no_lists_created,You do not have any shopping lists yet.,en_US
 shopping_list.no_lists_created,Du hast noch keine Einkaufslisten.,de_DE
-multi_cart_widget.cart.was-deleted-before,Dieser Warenkorb wurde bereits gelöscht,de_DE
-multi_cart_widget.cart.was-deleted-before,This cart was already deleted,en_US
 message.business_unit.update.cycle_dependency_error,"Company Business Unit '%unit%' has not been updated. A Business Unit cannot be set as a child to an own child Business Unit, please check the Business Unit hierarchy.",en_US
 message.business_unit.update.cycle_dependency_error,"Geschäftseinheit %unit% wurde nicht aktualisiert. Es ist nicht möglich eine Geschäftseinheit einer Einheit unterzuordnen zu derer Sie selber untergeordnet ist. Bitte überprüfen Sie die Hierarchie Ihrer Geschäftseinheiten.",de_DE
 This value should not be blank.,Dies ist ein Pflichtfeld.,de_DE
@@ -2255,3 +2261,15 @@ wishlist.validation.error.name.wrong_format,"Please enter name using only letter
 wishlist.validation.error.name.wrong_format,"Bitte geben Sie Ihren Namen nur mit Buchstaben, Zahlen, Unterstriche, Leerzeichen oder Bindestriche ein.",de_DE
 wishlist.validation.error.name.already_exists,"A wishlist with the same name already exists.",en_US
 wishlist.validation.error.name.already_exists,"Eine Wunschliste mit dem gleichen Namen existiert schon.",de_DE
+global.search.pages,Seiten,de_DE
+global.search.pages,Pages,en_US
+global.search.results.view,Ansehen,de_DE
+global.search.results.view,View,en_US
+cms.page.sort.relevance,Nach Relevanz sortieren,de_DE
+cms.page.sort.relevance,Sort by relevance,en_US
+cms.page.sort.name_asc,Nach Name aufsteigend sortieren,de_DE
+cms.page.sort.name_asc,Sort by name ascending,en_US
+cms.page.sort.name_desc,Nach Name absteigend sortieren,de_DE
+cms.page.sort.name_desc,Sort by name descending,en_US
+cms.page.itemsFound,Artikel gefunden,de_DE
+cms.page.itemsFound,Items found,en_US
