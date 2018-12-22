@@ -2,7 +2,7 @@
 
 namespace Orm\Zed\AvailabilityNotification\Persistence;
 
-use Orm\Zed\AvailabilityNotification\Persistence\Base\SpyAvailabilitySubscription as BaseSpyAvailabilitySubscription;
+use Spryker\Zed\AvailabilityNotification\Persistence\Propel\AbstractSpyAvailabilitySubscription as BaseSpyAvailabilitySubscription;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_availability_subscription' table.
