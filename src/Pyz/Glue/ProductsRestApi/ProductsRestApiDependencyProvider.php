@@ -7,7 +7,7 @@
 
 namespace Pyz\Glue\ProductsRestApi;
 
-use Spryker\Glue\ProductDiscontinuedRestApi\Plugin\DiscontinuedProductConcreteProductsResourceExpanderPlugin;
+use Spryker\Glue\ProductDiscontinuedRestApi\Plugin\ProductDiscontinuedConcreteProductsResourceExpanderPlugin;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiDependencyProvider as SprykerProductsRestApiDependencyProvider;
 
 class ProductsRestApiDependencyProvider extends SprykerProductsRestApiDependencyProvider
@@ -18,7 +18,7 @@ class ProductsRestApiDependencyProvider extends SprykerProductsRestApiDependency
     protected function getConcreteProductsResourceExpanderPlugins(): array
     {
         return [
-            new DiscontinuedProductConcreteProductsResourceExpanderPlugin(),
+            new ProductDiscontinuedConcreteProductsResourceExpanderPlugin(),
         ];
     }
 }
