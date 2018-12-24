@@ -53,6 +53,7 @@ use SprykerShop\Yves\ProductMeasurementUnitWidget\Widget\CartProductMeasurementU
 use SprykerShop\Yves\ProductMeasurementUnitWidget\Widget\ManageProductMeasurementUnitWidget;
 use SprykerShop\Yves\ProductOptionWidget\Widget\ProductOptionConfiguratorWidget;
 use SprykerShop\Yves\ProductPackagingUnitWidget\Widget\ProductPackagingUnitWidget;
+use SprykerShop\Yves\ProductQuickAddWidget\Widget\ProductQuickAddWidget;
 use SprykerShop\Yves\ProductRelationWidget\Widget\SimilarProductsWidget;
 use SprykerShop\Yves\ProductRelationWidget\Widget\UpSellingProductsWidget;
 use SprykerShop\Yves\ProductReplacementForWidget\Widget\ProductReplacementForListWidget;
@@ -67,7 +68,6 @@ use SprykerShop\Yves\ProductWidget\Widget\CmsProductWidget;
 use SprykerShop\Yves\ProductWidget\Widget\PdpProductRelationWidget;
 use SprykerShop\Yves\ProductWidget\Widget\PdpProductReplacementForListWidget;
 use SprykerShop\Yves\ProductWidget\Widget\ProductAlternativeWidget;
-use SprykerShop\Yves\QuickOrderCompactWidget\Widget\QuickOrderCompactWidget;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Widget\SalesOrderThresholdWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartDeleteCompanyUsersListWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartListPermissionGroupWidget;
@@ -144,7 +144,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ProductPriceVolumeWidget::class,
             ProductRatingFilterWidget::class,
             ProductReviewDisplayWidget::class,
-            QuickOrderCompactWidget::class,
+            ProductQuickAddWidget::class,
             QuickOrderPageWidget::class,
             SalesOrderThresholdWidget::class,
             SharedCartDetailsWidget::class,
