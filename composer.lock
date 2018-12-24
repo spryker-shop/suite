@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "470fadacf86a8c5d19f26d8e347a454c",
+    "content-hash": "40acb0c467cc0932d6dbde7f14cbda1a",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -2541,25 +2541,25 @@
         },
         {
             "name": "spryker/event-behavior",
-            "version": "dev-master",
+            "version": "dev-feature/te-657/dev-debug-listeners-command",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "975efc301d6a53e28e3a553247487a4bfa1f4ac7"
+                "reference": "b9ecb064e55b8e98c231155d9ff458c4a8620c01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/975efc301d6a53e28e3a553247487a4bfa1f4ac7",
-                "reference": "975efc301d6a53e28e3a553247487a4bfa1f4ac7",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/b9ecb064e55b8e98c231155d9ff458c4a8620c01",
+                "reference": "b9ecb064e55b8e98c231155d9ff458c4a8620c01",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "spryker/event": "^2.1.0",
+                "spryker/event": "^2.4.0",
                 "spryker/kernel": "^3.20.0",
                 "spryker/propel-orm": "^1.6.0",
                 "spryker/symfony": "^3.1.0",
-                "spryker/util-encoding": "^2.0.0",
+                "spryker/util-encoding": "^2.1.0",
                 "spryker/zend": "^2.1.0"
             },
             "require-dev": {
@@ -2595,7 +2595,7 @@
                 "proprietary"
             ],
             "description": "EventBehavior module",
-            "time": "2018-12-05T12:50:38+00:00"
+            "time": "2018-12-21T13:04:25+00:00"
         },
         {
             "name": "spryker/install",
@@ -8238,16 +8238,16 @@
         },
         {
             "name": "sensiolabs/security-checker",
-            "version": "v5.0.3",
+            "version": "v5.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/security-checker.git",
-                "reference": "46be3f58adac13084497961e10eed9a7fb4d44d1"
+                "reference": "728f9fb0fe815003b3bcfd331d33106c0d8a6b1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/46be3f58adac13084497961e10eed9a7fb4d44d1",
-                "reference": "46be3f58adac13084497961e10eed9a7fb4d44d1",
+                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/728f9fb0fe815003b3bcfd331d33106c0d8a6b1e",
+                "reference": "728f9fb0fe815003b3bcfd331d33106c0d8a6b1e",
                 "shasum": ""
             },
             "require": {
@@ -8280,7 +8280,7 @@
                 }
             ],
             "description": "A security checker for your composer.lock",
-            "time": "2018-12-19T17:14:59+00:00"
+            "time": "2018-12-10T06:08:43+00:00"
         },
         {
             "name": "site5/phantoman",
@@ -8529,12 +8529,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "f06a2ad4116981ac9f3439209508493ca7f8864a"
+                "reference": "4d480e06bf1782f6b480c455775eaef29aff895f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/f06a2ad4116981ac9f3439209508493ca7f8864a",
-                "reference": "f06a2ad4116981ac9f3439209508493ca7f8864a",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/4d480e06bf1782f6b480c455775eaef29aff895f",
+                "reference": "4d480e06bf1782f6b480c455775eaef29aff895f",
                 "shasum": ""
             },
             "require": {
@@ -8552,7 +8552,8 @@
             "type": "phpcodesniffer-standard",
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "Spryker"
+                    "Spryker\\": "Spryker",
+                    "SprykerStrict\\": "SprykerStrict"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -8573,7 +8574,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-12-17T09:14:25+00:00"
+            "time": "2018-12-21T16:50:58+00:00"
         },
         {
             "name": "spryker/development-core",
@@ -8749,16 +8750,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.4.0",
+            "version": "3.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "379deb987e26c7cd103a7b387aea178baec96e48"
+                "reference": "6ad28354c04b364c3c71a34e4a18b629cc3b231e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/379deb987e26c7cd103a7b387aea178baec96e48",
-                "reference": "379deb987e26c7cd103a7b387aea178baec96e48",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/6ad28354c04b364c3c71a34e4a18b629cc3b231e",
+                "reference": "6ad28354c04b364c3c71a34e4a18b629cc3b231e",
                 "shasum": ""
             },
             "require": {
@@ -8796,7 +8797,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-12-19T23:57:18+00:00"
+            "time": "2018-09-23T23:08:17+00:00"
         },
         {
             "name": "stecman/symfony-console-completion",
