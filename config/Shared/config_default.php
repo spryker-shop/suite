@@ -2,6 +2,8 @@
 
 use Monolog\Logger;
 use Spryker\Client\RabbitMq\Model\RabbitMqAdapter;
+use Spryker\Glue\Log\Plugin\GlueLoggerConfigPlugin;
+use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBuilderPlugin;
 use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Auth\AuthConstants;
@@ -14,21 +16,27 @@ use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebHtmlErrorRenderer;
 use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\EventBehavior\EventBehaviorConstants;
-use Spryker\Shared\EventJournal\EventJournalConstants;
+use Spryker\Shared\FileManager\FileManagerConstants;
+use Spryker\Shared\FileManagerGui\FileManagerGuiConstants;
 use Spryker\Shared\FileSystem\FileSystemConstants;
 use Spryker\Shared\Flysystem\FlysystemConstants;
+use Spryker\Shared\GlueApplication\GlueApplicationConstants;
 use Spryker\Shared\Kernel\ClassResolver\Cache\Provider\File;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
-use Spryker\Shared\NewRelic\NewRelicConstants;
+use Spryker\Shared\Monitoring\MonitoringConstants;
+use Spryker\Shared\Oauth\OauthConstants;
+use Spryker\Shared\OauthCustomerConnector\OauthCustomerConnectorConstants;
 use Spryker\Shared\Oms\OmsConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Queue\QueueConfig;
 use Spryker\Shared\Queue\QueueConstants;
+use Spryker\Shared\Quote\QuoteConstants;
 use Spryker\Shared\Sales\SalesConstants;
 use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\SequenceNumber\SequenceNumberConstants;
+use Spryker\Shared\Session\SessionConfig;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\Storage\StorageConstants;
 use Spryker\Shared\Tax\TaxConstants;
@@ -71,7 +79,7 @@ $config[PropelConstants::ZED_DB_SUPPORTED_ENGINES] = [
     PropelConfig::DB_ENGINE_MYSQL => 'MySql',
     PropelConfig::DB_ENGINE_PGSQL => 'PostgreSql',
 ];
-$config[PropelConstants::SCHEMA_FILE_PATH_PATTERN] = APPLICATION_VENDOR_DIR . '/*/*/src/*/Zed/*/Persistence/Propel/Schema/';
+
 $config[PropelConstants::USE_SUDO_TO_MANAGE_DATABASE] = true;
 $config[PropelConstants::PROPEL_DEBUG] = false;
 
@@ -136,6 +144,12 @@ $config[AclConstants::ACL_DEFAULT_RULES] = [
         'action' => 'index',
         'type' => 'allow',
     ],
+    [
+        'bundle' => 'auth',
+        'controller' => 'logout',
+        'action' => 'index',
+        'type' => 'allow',
+    ],
 ];
 // ACL: Allow or disallow of urls for Zed Admin GUI
 $config[AclConstants::ACL_USER_RULE_WHITELIST] = [
@@ -179,7 +193,7 @@ $ELASTICA_TRANSPORT_PROTOCOL = 'http';
 $config[SearchConstants::ELASTICA_PARAMETER__TRANSPORT] = $ELASTICA_TRANSPORT_PROTOCOL;
 $ELASTICA_PORT = '10005';
 $config[SearchConstants::ELASTICA_PARAMETER__PORT] = $ELASTICA_PORT;
-$ELASTICA_AUTH_HEADER = '';
+$ELASTICA_AUTH_HEADER = null;
 $config[SearchConstants::ELASTICA_PARAMETER__AUTH_HEADER] = $ELASTICA_AUTH_HEADER;
 $ELASTICA_INDEX_NAME = null;// Store related config
 $config[SearchConstants::ELASTICA_PARAMETER__INDEX_NAME] = $ELASTICA_INDEX_NAME;
@@ -241,14 +255,14 @@ $config[StorageConstants::STORAGE_KV_SOURCE] = 'redis';
 $config[StorageConstants::STORAGE_PERSISTENT_CONNECTION] = true;
 
 // ---------- Session
-$config[SessionConstants::YVES_SESSION_SAVE_HANDLER] = SessionConstants::SESSION_HANDLER_REDIS_LOCKING;
-$config[SessionConstants::YVES_SESSION_TIME_TO_LIVE] = SessionConstants::SESSION_LIFETIME_1_HOUR;
-$config[SessionConstants::YVES_SESSION_COOKIE_TIME_TO_LIVE] = SessionConstants::SESSION_LIFETIME_0_5_HOUR;
+$config[SessionConstants::YVES_SESSION_SAVE_HANDLER] = SessionConfig::SESSION_HANDLER_REDIS_LOCKING;
+$config[SessionConstants::YVES_SESSION_TIME_TO_LIVE] = SessionConfig::SESSION_LIFETIME_1_HOUR;
+$config[SessionConstants::YVES_SESSION_COOKIE_TIME_TO_LIVE] = SessionConfig::SESSION_LIFETIME_0_5_HOUR;
 $config[SessionConstants::YVES_SESSION_FILE_PATH] = session_save_path();
 $config[SessionConstants::YVES_SESSION_PERSISTENT_CONNECTION] = $config[StorageConstants::STORAGE_PERSISTENT_CONNECTION];
-$config[SessionConstants::ZED_SESSION_SAVE_HANDLER] = SessionConstants::SESSION_HANDLER_REDIS;
-$config[SessionConstants::ZED_SESSION_TIME_TO_LIVE] = SessionConstants::SESSION_LIFETIME_1_HOUR;
-$config[SessionConstants::ZED_SESSION_COOKIE_TIME_TO_LIVE] = SessionConstants::SESSION_LIFETIME_BROWSER_SESSION;
+$config[SessionConstants::ZED_SESSION_SAVE_HANDLER] = SessionConfig::SESSION_HANDLER_REDIS;
+$config[SessionConstants::ZED_SESSION_TIME_TO_LIVE] = SessionConfig::SESSION_LIFETIME_1_HOUR;
+$config[SessionConstants::ZED_SESSION_COOKIE_TIME_TO_LIVE] = SessionConfig::SESSION_LIFETIME_BROWSER_SESSION;
 $config[SessionConstants::ZED_SESSION_FILE_PATH] = session_save_path();
 $config[SessionConstants::ZED_SESSION_PERSISTENT_CONNECTION] = $config[StorageConstants::STORAGE_PERSISTENT_CONNECTION];
 $config[SessionConstants::SESSION_HANDLER_REDIS_LOCKING_TIMEOUT_MILLISECONDS] = 0;
@@ -275,13 +289,17 @@ $config[ApplicationConstants::YVES_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG] = $HST
 
 // ---------- SSL
 $config[SessionConstants::YVES_SSL_ENABLED] = false;
-$config[ApplicationConstants::YVES_SSL_ENABLED] = false;
+$config[ApplicationConstants::YVES_SSL_ENABLED] =
+$config[SessionConstants::YVES_SSL_ENABLED]
+    = false;
 $config[ApplicationConstants::YVES_SSL_EXCLUDED] = [
     'heartbeat' => '/heartbeat',
 ];
 
 $config[ZedRequestConstants::ZED_API_SSL_ENABLED] = false;
-$config[ApplicationConstants::ZED_SSL_ENABLED] = false;
+$config[ApplicationConstants::ZED_SSL_ENABLED] =
+    $config[SessionConstants::ZED_SSL_ENABLED]
+    = false;
 $config[ApplicationConstants::ZED_SSL_EXCLUDED] = ['heartbeat/index'];
 
 // ---------- Theme
@@ -302,6 +320,7 @@ $config[ErrorHandlerConstants::ERROR_LEVEL] = E_ALL & ~E_DEPRECATED & ~E_USER_DE
 // ---------- Logging
 $config[LogConstants::LOGGER_CONFIG_ZED] = ZedLoggerConfigPlugin::class;
 $config[LogConstants::LOGGER_CONFIG_YVES] = YvesLoggerConfigPlugin::class;
+$config[LogConstants::LOGGER_CONFIG_GLUE] = GlueLoggerConfigPlugin::class;
 
 $config[LogConstants::LOG_LEVEL] = Logger::INFO;
 
@@ -309,9 +328,11 @@ $baseLogFilePath = sprintf('%s/data/%s/logs', APPLICATION_ROOT_DIR, $CURRENT_STO
 
 $config[LogConstants::LOG_FILE_PATH_YVES] = $baseLogFilePath . '/YVES/application.log';
 $config[LogConstants::LOG_FILE_PATH_ZED] = $baseLogFilePath . '/ZED/application.log';
+$config[LogConstants::LOG_FILE_PATH_GLUE] = $baseLogFilePath . '/GLUE/application.log';
 
 $config[LogConstants::EXCEPTION_LOG_FILE_PATH_YVES] = $baseLogFilePath . '/YVES/exception.log';
 $config[LogConstants::EXCEPTION_LOG_FILE_PATH_ZED] = $baseLogFilePath . '/ZED/exception.log';
+$config[LogConstants::EXCEPTION_LOG_FILE_PATH_GLUE] = $baseLogFilePath . '/GLUE/exception.log';
 
 $config[LogConstants::LOG_SANITIZE_FIELDS] = [
     'password',
@@ -319,11 +340,6 @@ $config[LogConstants::LOG_SANITIZE_FIELDS] = [
 
 $config[LogConstants::LOG_QUEUE_NAME] = 'log-queue';
 $config[LogConstants::LOG_ERROR_QUEUE_NAME] = 'error-log-queue';
-
-/**
- * As long EventJournal is in ZedRequest bundle this needs to be disabled by hand
- */
-$config[EventJournalConstants::DISABLE_EVENT_JOURNAL] = true;
 
 // ---------- Auto-loader
 $config[KernelConstants::AUTO_LOADER_CACHE_FILE_NO_LOCK] = false;
@@ -358,15 +374,13 @@ $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
     DummyPaymentConfig::PAYMENT_METHOD_CREDIT_CARD => 'DummyPayment01',
 ];
 
-// ---------- NewRelic
-$config[NewRelicConstants::NEWRELIC_API_KEY] = null;
-
 // ---------- Queue
 $config[QueueConstants::QUEUE_SERVER_ID] = (gethostname()) ?: php_uname('n');
 $config[QueueConstants::QUEUE_WORKER_INTERVAL_MILLISECONDS] = 1000;
 $config[QueueConstants::QUEUE_PROCESS_TRIGGER_INTERVAL_MICROSECONDS] = 1001;
 $config[QueueConstants::QUEUE_WORKER_MAX_THRESHOLD_SECONDS] = 59;
 $config[QueueConstants::QUEUE_WORKER_LOG_ACTIVE] = false;
+$config[QueueConstants::QUEUE_WORKER_LOOP] = false;
 
 /*
  * Queues can have different adapters and maximum worker number
@@ -394,14 +408,14 @@ $config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION] = [
 $config[LogglyConstants::QUEUE_NAME] = 'loggly-log-queue';
 $config[LogglyConstants::ERROR_QUEUE_NAME] = 'loggly-log-queue.error';
 
-// ---------- Events
-$config[EventConstants::LOGGER_ACTIVE] = false;
+// ---------- Event
+$config[EventConstants::EVENT_CHUNK] = 500;
 
 // ---------- EventBehavior
 $config[EventBehaviorConstants::EVENT_BEHAVIOR_TRIGGERING_ACTIVE] = true;
 
 // ---------- Customer
-$config[CustomerConstants::CUSTOMER_SECURED_PATTERN] = '(^/login_check$|^(/en|/de)?/customer|^(/en|/de)?/wishlist|^(/en|/de)?/shopping-list|^(/en|/de)?/company(?!/register)|^(/en|/de)?/multi-cart|^(/en|/de)?/shared-cart)';
+$config[CustomerConstants::CUSTOMER_SECURED_PATTERN] = '(^/login_check$|^(/en|/de)?/customer|^(/en|/de)?/wishlist|^(/en|/de)?/shopping-list|^(/en|/de)?/company(?!/register)|^(/en|/de)?/multi-cart|^(/en|/de)?/shared-cart|^(/en|/de)?/cart(?!/add)|^(/en|/de)?/checkout)';
 $config[CustomerConstants::CUSTOMER_ANONYMOUS_PATTERN] = '^/.*';
 
 // ---------- Taxes
@@ -413,3 +427,42 @@ $config[CmsGuiConstants::CMS_PAGE_PREVIEW_URI] = '/en/cms/preview/%d';
 
 // ---------- Loggly
 $config[LogglyConstants::TOKEN] = 'loggly-token:sample:123456';
+
+// ---------- CMS
+$config[CmsGuiConstants::CMS_FOLDER_PATH] = '@Cms/templates/';
+
+// ----------- Glue Application
+$config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = '';
+$config[GlueApplicationConstants::GLUE_APPLICATION_REST_DEBUG] = false;
+
+// ----------- OAUTH
+//Check how to generate https://oauth2.thephpleague.com/installation/
+$config[OauthConstants::PRIVATE_KEY_PATH] = 'file://';
+$config[OauthConstants::PUBLIC_KEY_PATH] = 'file://';
+$config[OauthConstants::ENCRYPTION_KEY] = '';
+
+// ----------- AuthRestApi
+$config[OauthCustomerConnectorConstants::OAUTH_CLIENT_IDENTIFIER] = '';
+$config[OauthCustomerConnectorConstants::OAUTH_CLIENT_SECRET] = '';
+
+// ---------- FileSystem
+$config[FileSystemConstants::FILESYSTEM_SERVICE] = [
+    'files' => [
+        'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
+        'root' => APPLICATION_ROOT_DIR . '/data/DE/media/',
+        'path' => 'files/',
+    ],
+];
+
+// ---------- FileManager
+$config[FileManagerConstants::STORAGE_NAME] = 'files';
+$config[FileManagerGuiConstants::DEFAULT_FILE_MAX_SIZE] = '10M';
+
+// ---------- Monitoring
+$config[MonitoringConstants::IGNORABLE_TRANSACTIONS] = [
+    '_profiler',
+    '_wdt',
+];
+
+// ---------- Guest cart
+$config[QuoteConstants::GUEST_QUOTE_LIFETIME] = 'P01M';

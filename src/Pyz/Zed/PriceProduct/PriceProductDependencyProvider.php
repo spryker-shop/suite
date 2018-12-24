@@ -11,7 +11,9 @@ use Spryker\Zed\PriceProduct\PriceProductDependencyProvider as SprykerPriceProdu
 use Spryker\Zed\PriceProductMerchantRelationship\Communication\Plugin\PriceProduct\MerchantRelationshipPriceDimensionAbstractWriterPlugin;
 use Spryker\Zed\PriceProductMerchantRelationship\Communication\Plugin\PriceProduct\MerchantRelationshipPriceDimensionConcreteWriterPlugin;
 use Spryker\Zed\PriceProductMerchantRelationship\Communication\Plugin\PriceProduct\MerchantRelationshipPriceProductDimensionExpanderStrategyPlugin;
+use Spryker\Zed\PriceProductMerchantRelationship\Communication\Plugin\PriceProduct\MerchantRelationshipPriceProductStorePreDeletePlugin;
 use Spryker\Zed\PriceProductMerchantRelationship\Communication\Plugin\PriceProduct\MerchantRelationshipPriceQueryCriteriaPlugin;
+use Spryker\Zed\PriceProductVolume\Communication\Plugin\PriceProductExtension\PriceProductVolumeExtractorPlugin;
 
 /**
  * Copyright © 2017-present Spryker Systems GmbH. All rights reserved.
@@ -46,6 +48,18 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
     /**
      * {@inheritdoc}
      *
+     * @return \Spryker\Zed\PriceProductExtension\Dependency\Plugin\PriceProductStorePreDeletePluginInterface[]
+     */
+    protected function getPriceProductStorePreDeletePlugins(): array
+    {
+        return [
+            new MerchantRelationshipPriceProductStorePreDeletePlugin(),
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     *
      * @return \Spryker\Zed\PriceProductExtension\Dependency\Plugin\PriceDimensionConcreteSaverPluginInterface[]
      */
     protected function getPriceDimensionConcreteSaverPlugins(): array
@@ -62,6 +76,16 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
     {
         return [
             new MerchantRelationshipPriceProductDimensionExpanderStrategyPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\PriceProductExtension\Dependency\Plugin\PriceProductReaderPricesExtractorPluginInterface[]
+     */
+    protected function getPriceProductPricesExtractorPlugins(): array
+    {
+        return [
+            new PriceProductVolumeExtractorPlugin(),
         ];
     }
 }

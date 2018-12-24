@@ -12,6 +12,8 @@ use Spryker\Client\Catalog\Plugin\ConfigTransferBuilder\AscendingNameSortConfigT
 use Spryker\Client\Catalog\Plugin\ConfigTransferBuilder\CategoryFacetConfigTransferBuilderPlugin;
 use Spryker\Client\Catalog\Plugin\ConfigTransferBuilder\DescendingNameSortConfigTransferBuilderPlugin;
 use Spryker\Client\Catalog\Plugin\Elasticsearch\Query\ProductCatalogSearchQueryPlugin;
+use Spryker\Client\Catalog\Plugin\Elasticsearch\QueryExpander\PaginatedProductConcreteCatalogSearchQueryExpanderPlugin;
+use Spryker\Client\Catalog\Plugin\Elasticsearch\ResultFormatter\ProductConcreteCatalogSearchResultFormatterPlugin;
 use Spryker\Client\Catalog\Plugin\Elasticsearch\ResultFormatter\RawCatalogSearchResultFormatterPlugin;
 use Spryker\Client\CatalogPriceProductConnector\Plugin\ConfigTransferBuilder\AscendingPriceSortConfigTransferBuilderPlugin;
 use Spryker\Client\CatalogPriceProductConnector\Plugin\ConfigTransferBuilder\DescendingPriceSortConfigTransferBuilderPlugin;
@@ -19,6 +21,7 @@ use Spryker\Client\CatalogPriceProductConnector\Plugin\ConfigTransferBuilder\Pri
 use Spryker\Client\CatalogPriceProductConnector\Plugin\CurrencyAwareCatalogSearchResultFormatterPlugin;
 use Spryker\Client\CatalogPriceProductConnector\Plugin\CurrencyAwareSuggestionByTypeResultFormatter;
 use Spryker\Client\CatalogPriceProductConnector\Plugin\ProductPriceQueryExpanderPlugin;
+use Spryker\Client\CustomerCatalog\Plugin\Search\ProductListQueryExpanderPlugin;
 use Spryker\Client\ProductLabelStorage\Plugin\ProductLabelFacetConfigTransferBuilderPlugin;
 use Spryker\Client\ProductReview\Plugin\RatingFacetConfigTransferBuilderPlugin;
 use Spryker\Client\ProductReview\Plugin\RatingSortConfigTransferBuilderPlugin;
@@ -86,13 +89,18 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new StoreQueryExpanderPlugin(),
             new LocalizedQueryExpanderPlugin(),
             new ProductPriceQueryExpanderPlugin(),
-            new FacetQueryExpanderPlugin(),
             new SortedQueryExpanderPlugin(),
             new SortedCategoryQueryExpanderPlugin(CategoryFacetConfigTransferBuilderPlugin::PARAMETER_NAME),
             new PaginatedQueryExpanderPlugin(),
             new SpellingSuggestionQueryExpanderPlugin(),
             new IsActiveQueryExpanderPlugin(),
             new IsActiveInDateRangeQueryExpanderPlugin(),
+            new ProductListQueryExpanderPlugin(),
+
+            /**
+             * FacetQueryExpanderPlugin needs to be after other query expanders which filters down the results.
+             */
+            new FacetQueryExpanderPlugin(),
         ];
     }
 
@@ -124,6 +132,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new SuggestionByTypeQueryExpanderPlugin(),
             new IsActiveQueryExpanderPlugin(),
             new IsActiveInDateRangeQueryExpanderPlugin(),
+            new ProductListQueryExpanderPlugin(),
         ];
     }
 
@@ -137,6 +146,41 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new CurrencyAwareSuggestionByTypeResultFormatter(
                 new SuggestionByTypeResultFormatterPlugin()
             ),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface[]
+     */
+    protected function createCatalogSearchCountQueryExpanderPlugins(): array
+    {
+        return [
+            new StoreQueryExpanderPlugin(),
+            new LocalizedQueryExpanderPlugin(),
+            new IsActiveQueryExpanderPlugin(),
+            new IsActiveInDateRangeQueryExpanderPlugin(),
+            new ProductListQueryExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Client\Search\Dependency\Plugin\ResultFormatterPluginInterface[]
+     */
+    protected function getProductConcreteCatalogSearchResultFormatterPlugins(): array
+    {
+        return [
+            new ProductConcreteCatalogSearchResultFormatterPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface[]
+     */
+    protected function getProductConcreteCatalogSearchQueryExpanderPlugins(): array
+    {
+        return [
+            new LocalizedQueryExpanderPlugin(),
+            new PaginatedProductConcreteCatalogSearchQueryExpanderPlugin(),
         ];
     }
 }

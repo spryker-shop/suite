@@ -10,7 +10,9 @@ namespace Pyz\Yves\ShoppingListPage;
 use Spryker\Client\AvailabilityStorage\Plugin\ProductViewAvailabilityStorageExpanderPlugin;
 use Spryker\Client\PriceProductStorage\Plugin\ProductViewPriceExpanderPlugin;
 use Spryker\Client\ProductImageStorage\Plugin\ProductViewImageExpanderPlugin;
-use SprykerShop\Yves\ProductBarcodeWidget\Plugin\ShoppingList\ProductBarcodeWidgetPlugin;
+use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionFormDataProviderMapperPlugin;
+use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionFormExpanderPlugin;
+use SprykerShop\Yves\ShoppingListNoteWidget\Plugin\ShoppingListPage\ShoppingListItemNoteFormExpanderPlugin;
 use SprykerShop\Yves\ShoppingListPage\ShoppingListPageDependencyProvider as SprykerShoppingListPageDependencyProvider;
 
 class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependencyProvider
@@ -28,12 +30,23 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
     }
 
     /**
-     * @return array
+     * @return \SprykerShop\Yves\ShoppingListPageExtension\Dependency\Plugin\ShoppingListItemFormExpanderPluginInterface[]
      */
-    protected function getShoppingListWidgetPlugins(): array
+    protected function getShoppingListItemFormExpanderPlugins(): array
     {
         return [
-            ProductBarcodeWidgetPlugin::class,
+            new ShoppingListItemNoteFormExpanderPlugin(), #ShoppingListNoteFeature
+            new ShoppingListItemProductOptionFormExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\ShoppingListPageExtension\Dependency\Plugin\ShoppingListFormDataProviderMapperPluginInterface[]
+     */
+    protected function getShoppingListFormDataProviderMapperPlugins(): array
+    {
+        return [
+            new ShoppingListItemProductOptionFormDataProviderMapperPlugin(),
         ];
     }
 }
