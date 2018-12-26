@@ -13,43 +13,63 @@ const defaultGlobSettings = {
 // perform a search in a list of directories
 // matching provided patterns
 // using provided glob settings
-function find(globDirs, globPatterns, globSettings = {}) {
-    return globDirs.reduce((results, dir) => [
-        ...results,
-        ...glob.sync(globPatterns, {
-            ...defaultGlobSettings,
+async function find(globDirs, globPatterns, globSettings = {}) {
+    return await globDirs.reduce(async (results, dir) => {
+        const globAsync = glob(globPatterns, {
+            defaultGlobSettings,
             ...globSettings,
             cwd: dir
+        });
+
+        return await globAsync.then(globResult => {
+            const globFullPath = globResult.map(result => path.join(dir, result));
+
+            return results.then(result => {
+                return [
+                    ...result,
+                    ...globFullPath
+                ];
+            }, error => {
+                log.error(error, 'impossible to resolve fast-glob promise');
+            })
         })
-    ], []);
+    }, Promise.resolve([]));
 }
 
 // find components according to `appSettings.find.componentEntryPoints`
-function findComponentEntryPoints() {
-    process.stdout.write('Scanning for component entry points...');
+async function findComponentEntryPoints() {
+    console.log('Scanning for component entry points...');
     const settings = appSettings.find.componentEntryPoints;
-    const files = find(settings.dirs, settings.patterns, settings.globSettings);
+    const filesPromise = find(settings.dirs, settings.patterns, settings.globSettings);
 
-    const entryPoints = Object.values(files.reduce((map, file) => {
-        const dir = path.dirname(file);
-        const name = path.basename(dir);
-        const type = path.basename(path.dirname(dir));
-        map[`${type}/${name}`] = file;
-        return map;
-    }, {}));
+    return await filesPromise.then(files => {
+        const entryPoints = Object.values(files.reduce((map, file) => {
+            const dir = path.dirname(file);
+            const name = path.basename(dir);
+            const type = path.basename(path.dirname(dir));
+            map[`${type}/${name}`] = file;
+            return map;
+        }, {}));
 
-    console.log(`${entryPoints.length} found`);
-    return entryPoints;
+        console.log(`${entryPoints.length} found`);
+        return entryPoints;
+    }, error => {
+        log.error(error, 'impossible to resolve entries promise');
+    })
 }
 
 // find styles according to `appSettings.find.componentStyles`
-function findComponentStyles() {
-    process.stdout.write('Scanning for component styles... ');
+async function findComponentStyles() {
+    console.log('Scanning for component styles...');
     const settings = appSettings.find.componentStyles;
-    const styles = find(settings.dirs, settings.patterns, settings.globSettings);
+    const stylesPromise = find(settings.dirs, settings.patterns, settings.globSettings);
 
-    console.log(`${styles.length} found`);
-    return styles;
+    return await stylesPromise.then(styles => {
+        console.log(`${styles.length} found`);
+        return styles;
+    }, error => {
+        log.error(error, 'impossible to resolve styles promise');
+    })
 }
 
 module.exports = {

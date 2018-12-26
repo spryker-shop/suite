@@ -1,6 +1,12 @@
-const merge = require('webpack-merge');
 const config = require('./development');
 
-module.exports = merge(config, {
-    watch: true
-})
+async function configurationWatchMode() {
+    return await config.then(configResult => {
+        return {
+            ...configResult,
+            watch: true
+        }
+    });
+}
+
+module.exports = configurationWatchMode()
