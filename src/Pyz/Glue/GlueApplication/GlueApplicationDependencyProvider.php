@@ -26,6 +26,9 @@ use Spryker\Glue\CatalogSearchRestApi\Plugin\CatalogSearchResourceRoutePlugin;
 use Spryker\Glue\CatalogSearchRestApi\Plugin\CatalogSearchSuggestionsResourceRoutePlugin;
 use Spryker\Glue\CategoriesRestApi\Plugin\CategoriesResourceRoutePlugin;
 use Spryker\Glue\CategoriesRestApi\Plugin\CategoryResourceRoutePlugin;
+use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig;
+use Spryker\Glue\CheckoutRestApi\Plugin\GlueApplication\CheckoutDataResourcePlugin;
+use Spryker\Glue\CheckoutRestApi\Plugin\GlueApplication\CheckoutResourcePlugin;
 use Spryker\Glue\CompanyUsersRestApi\Plugin\GlueApplication\CompanyUsersResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\CustomersRestApiConfig;
 use Spryker\Glue\CustomersRestApi\Plugin\AddressesResourceRoutePlugin;
@@ -38,6 +41,7 @@ use Spryker\Glue\CustomersRestApi\Plugin\SetCustomerBeforeActionPlugin;
 use Spryker\Glue\GlueApplication\GlueApplicationDependencyProvider as SprykerGlueApplicationDependencyProvider;
 use Spryker\Glue\GlueApplication\Plugin\Rest\SetStoreCurrentLocaleBeforeActionPlugin;
 use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationshipCollectionInterface;
+use Spryker\Glue\OrdersRestApi\Plugin\OrderRelationshipByOrderReferencePlugin;
 use Spryker\Glue\OrdersRestApi\Plugin\OrdersResourceRoutePlugin;
 use Spryker\Glue\ProductAvailabilitiesRestApi\Plugin\AbstractProductAvailabilitiesRoutePlugin;
 use Spryker\Glue\ProductAvailabilitiesRestApi\Plugin\ConcreteProductAvailabilitiesRoutePlugin;
@@ -49,6 +53,10 @@ use Spryker\Glue\ProductLabelsRestApi\Plugin\GlueApplication\ProductLabelsRelati
 use Spryker\Glue\ProductLabelsRestApi\Plugin\GlueApplication\ProductLabelsResourceRoutePlugin;
 use Spryker\Glue\ProductPricesRestApi\Plugin\AbstractProductPricesRoutePlugin;
 use Spryker\Glue\ProductPricesRestApi\Plugin\ConcreteProductPricesRoutePlugin;
+use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\CurrencyParameterValidatorPlugin;
+use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\PriceModeParameterValidatorPlugin;
+use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\SetCurrencyBeforeActionPlugin;
+use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\SetPriceModeBeforeActionPlugin;
 use Spryker\Glue\ProductsCategoriesResourceRelationship\Plugin\AbstractProductsCategoriesResourceRelationshipPlugin;
 use Spryker\Glue\ProductsProductAvailabilitiesResourceRelationship\Plugin\AbstractProductAvailabilitiesResourceRelationshipPlugin;
 use Spryker\Glue\ProductsProductAvailabilitiesResourceRelationship\Plugin\ConcreteProductAvailabilitiesResourceRelationshipPlugin;
@@ -109,6 +117,8 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new GuestCartsResourceRoutePlugin(),
             new GuestCartItemsResourceRoutePlugin(),
             new ProductLabelsResourceRoutePlugin(),
+            new CheckoutDataResourcePlugin(),
+            new CheckoutResourcePlugin(),
             new CompanyUsersResourceRoutePlugin(),
         ];
     }
@@ -135,6 +145,8 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     {
         return [
             new ValidateRestRequestAttributesPlugin(),
+            new CurrencyParameterValidatorPlugin(),
+            new PriceModeParameterValidatorPlugin(),
         ];
     }
 
@@ -161,6 +173,8 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new SetStoreCurrentLocaleBeforeActionPlugin(),
             new SetAnonymousCustomerIdControllerBeforeActionPlugin(),
             new SetCustomerBeforeActionPlugin(),
+            new SetCurrencyBeforeActionPlugin(),
+            new SetPriceModeBeforeActionPlugin(),
         ];
     }
 
@@ -237,6 +251,10 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
             new ProductLabelsRelationshipByResourceIdPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            CheckoutRestApiConfig::RESOURCE_CHECKOUT,
+            new OrderRelationshipByOrderReferencePlugin()
         );
 
         return $resourceRelationshipCollection;
