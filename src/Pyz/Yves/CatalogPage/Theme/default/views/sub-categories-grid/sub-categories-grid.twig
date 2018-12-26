@@ -3,11 +3,10 @@
 {% define data = {
     products: [],
     facets: _view.facets,
-    category: _view.category | default,
-    categories: categories | default([]),
-    isEmptyCategoryFilterValueVisible: _view.isEmptyCategoryFilterValueVisible | default,
-    viewMode: _view.viewMode | default,
-    children: _view.category.children | default([]),
+    categories: categories,
+    isEmptyCategoryFilterValueVisible: _view.isEmptyCategoryFilterValueVisible,
+    viewMode: _view.viewMode,
+    children: _view.category.children,
 
     title: _view.category.name | default,
     metaTitle: _view.pageTitle | default(_view.category.name | default),
@@ -26,7 +25,7 @@
 {% set categoryTemplate = molecule('category-card') %}
 {% set cardClass = 'col col--sm-12 col--md-6 col--lg-6 col--xl-4' %}
 
-{% if data.viewMode == 'list' %}
+{% if 'list' == data.viewMode | default %}
     {% set categoryTemplate = molecule('category-list-item') %}
     {% set cardClass = 'col col--sm-12' %}
 {% endif %}
@@ -42,8 +41,8 @@
                 class: 'box js-catalog__filters-toggle',
                 data: {
                     facets: data.facets,
-                    categories: data.categories,
-                    isEmptyCategoryFilterValueVisible: data.isEmptyCategoryFilterValueVisible
+                    categories: data.categories | default([]),
+                    isEmptyCategoryFilterValueVisible: data.isEmptyCategoryFilterValueVisible | default
                 }
             } only %}
                 {% block body %}
@@ -59,13 +58,13 @@
                                 molecule('filter-' ~ filter.config.type, 'CatalogPage')
                                 ] ignore missing with {
                                 data: {
-                                    categories: data.categories,
+                                    categories: data.categories | default([]),
                                     filter: filter,
                                     min: filter.min | default(0),
                                     max: filter.max | default(0),
                                     activeMin: filter.activeMin | default(0),
                                     activeMax: filter.activeMax | default(0),
-                                    isEmptyCategoryFilterValueVisible: data.isEmptyCategoryFilterValueVisible
+                                    isEmptyCategoryFilterValueVisible: data.isEmptyCategoryFilterValueVisible | default
                                 }
                             } only %}
 
@@ -79,7 +78,7 @@
 
     <div class="col col--sm-12 col--lg-8 col--xl-9">
         <div class="grid grid--stretch">
-            {% for childCategory in data.children %}
+            {% for childCategory in data.children | default([]) %}
                 {% include categoryTemplate with {
                     class: cardClass,
                     data: {
