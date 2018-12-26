@@ -13,7 +13,7 @@ use Spryker\Zed\CategoryImage\Communication\Plugin\CategoryAfterCreatePlugin;
 use Spryker\Zed\CategoryImage\Communication\Plugin\CategoryAfterUpdatePlugin;
 use Spryker\Zed\CategoryImage\Communication\Plugin\CategoryReadPlugin;
 use Spryker\Zed\CategoryImage\Communication\Plugin\RemoveCategoryImageSetRelationPlugin;
-use Spryker\Zed\CategoryImageGui\Communication\Form\CategoryImageFormPlugin;
+use Spryker\Zed\CategoryImageGui\Communication\Plugin\CategoryImageFormPlugin;
 use Spryker\Zed\CategoryImageGui\Communication\Plugin\CategoryImageFormTabExpanderPlugin;
 use Spryker\Zed\CategoryNavigationConnector\Communication\Plugin\UpdateNavigationRelationPlugin;
 use Spryker\Zed\CmsBlockCategoryConnector\Communication\Plugin\CategoryFormPlugin;
