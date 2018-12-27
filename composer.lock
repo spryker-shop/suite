@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8c873f8e719c8803b67f5498f32929d0",
+    "content-hash": "b1a257d1032dac514899946ec780679c",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -995,7 +995,7 @@
                 {
                     "name": "Luís Otávio Cobucci Oblonczyk",
                     "email": "lcobucci@gmail.com",
-                    "role": "Developer"
+                    "role": "developer"
                 }
             ],
             "description": "A simple library to work with JSON Web Token and JSON Web Signature",
@@ -1325,6 +1325,52 @@
                 "email"
             ],
             "time": "2015-09-22T13:58:03+00:00"
+        },
+        {
+            "name": "mikey179/vfsStream",
+            "version": "v1.6.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mikey179/vfsStream.git",
+                "reference": "d5fec95f541d4d71c4823bb5e30cf9b9e5b96145"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mikey179/vfsStream/zipball/d5fec95f541d4d71c4823bb5e30cf9b9e5b96145",
+                "reference": "d5fec95f541d4d71c4823bb5e30cf9b9e5b96145",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.6.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "org\\bovigo\\vfs\\": "src/main/php"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Frank Kleine",
+                    "homepage": "http://frankkleine.de/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Virtual file system to mock the real file system in unit tests.",
+            "homepage": "http://vfs.bovigo.org/",
+            "time": "2017-08-01T08:02:14+00:00"
         },
         {
             "name": "moneyphp/money",
@@ -2618,11 +2664,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "be54844843961971dfef47fa0991b1213f136dc1"
+                "reference": "8716d444ca8b8bc7b402bb96fc3dc738c2e357e1"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
                 "fzaninotto/faker": "^1.6",
+                "mikey179/vfsstream": "^1.6",
                 "moneyphp/money": "^3.0.0",
                 "php": ">=7.1",
                 "phpdocumentor/graphviz": "^1.0.4"
@@ -2887,15 +2934,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-12-13T16:10:18+00:00"
+            "time": "2018-12-21T09:48:37+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/cms-25/cms-26-cms-block-widget",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "7278693c7055b490f178adfd4ecf77b86ff5c449"
+                "reference": "d1b9a52365e9eea391466945ac30a31bd8f1b779"
             },
             "require": {
                 "php": ">=7.1"
@@ -2970,7 +3017,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-12-14T09:40:02+00:00"
+            "time": "2018-12-19T07:24:01+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -6589,7 +6636,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-12T17:28:44+00:00"
+            "time": "2017-12-13T13:21:38+00:00"
         },
         {
             "name": "phar-io/manifest",
