@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ad5f9336fa6412a784d6b66e66cea085",
+    "content-hash": "5b5b3473f1f79aba6558017dd223276c",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -7702,6 +7702,55 @@
             ],
             "description": "BusinessOnBehalfDataImport module",
             "time": "2018-10-05T13:26:14+00:00"
+        },
+        {
+            "name": "spryker/business-on-behalf-gui",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/business-on-behalf-gui.git",
+                "reference": "cacc34b1e7e54fd8ee26442ab0d1502f34ede94f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/business-on-behalf-gui/zipball/cacc34b1e7e54fd8ee26442ab0d1502f34ede94f",
+                "reference": "cacc34b1e7e54fd8ee26442ab0d1502f34ede94f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/business-on-behalf-gui-extension": "^1.0.0",
+                "spryker/company": "^1.0.0",
+                "spryker/company-business-unit": "^2.0.0",
+                "spryker/company-user": "^2.3.0",
+                "spryker/company-user-gui-extension": "^1.1.0",
+                "spryker/customer": "^7.0.0",
+                "spryker/customer-extension": "^1.1.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/symfony": "^3.1.0",
+                "spryker/util-text": "^1.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "BusinessOnBehalfGui module",
+            "time": "2018-12-24T13:26:52+00:00"
         },
         {
             "name": "spryker/business-on-behalf-gui-extension",
