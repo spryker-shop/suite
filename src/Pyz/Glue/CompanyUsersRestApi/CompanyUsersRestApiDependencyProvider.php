@@ -7,20 +7,20 @@
 
 namespace Pyz\Glue\CompanyUsersRestApi;
 
-use Spryker\Glue\CompanyRolesRestApi\Plugin\CompanyUsersRestApi\CompanyRoleExpanderPlugin;
-use Spryker\Glue\CompanyUnitAddressesRestApi\Plugin\CompanyUsersRestApi\CompanyUnitAddressExpanderPlugin;
+use Spryker\Glue\CompanyBusinessUnitsRestApi\Plugin\CompanyUsersRestApi\CompanyBusinessUnitMapperPlugin;
+use Spryker\Glue\CompanyRolesRestApi\Plugin\CompanyUsersRestApi\CompanyRoleMapperPlugin;
 use Spryker\Glue\CompanyUsersRestApi\CompanyUsersRestApiDependencyProvider as SprykerCompanyUsersRestApiDependencyProvider;
 
 class CompanyUsersRestApiDependencyProvider extends SprykerCompanyUsersRestApiDependencyProvider
 {
     /**
-     * @return \Spryker\Glue\CompanyUsersRestApiExtension\Dependency\Plugin\CompanyUsersResourceExpanderPluginInterface[]
+     * @return \Spryker\Glue\CompanyUsersRestApiExtension\Dependency\Plugin\CompanyUserAttributesMapperPluginInterface[]
      */
-    protected function getCompanyUsersResourceExpanderPlugins(): array
+    protected function getCompanyUserAttributesMapperPlugins(): array
     {
         return [
-            new CompanyRoleExpanderPlugin(),
-            new CompanyUnitAddressExpanderPlugin(),
+            new CompanyRoleMapperPlugin(),
+            new CompanyBusinessUnitMapperPlugin(),
         ];
     }
 }
