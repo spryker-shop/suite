@@ -11,7 +11,7 @@
     "yves": "node ./frontend/build development",
     "yves:watch": "node ./frontend/build development-watch",
     "yves:production": "node ./frontend/build production",
-    "yves:lint": "node ./frontend/build lint",
+    "yves:lint": "node ./frontend/lint",
     "zed": "node ./node_modules/@spryker/oryx-for-zed/build",
     "zed:watch": "node ./node_modules/@spryker/oryx-for-zed/build --dev",
     "zed:production": "node ./node_modules/@spryker/oryx-for-zed/build --prod"
@@ -26,7 +26,7 @@
     "lodash-es": "~4.17.10"
   },
   "devDependencies": {
-    "@spryker/oryx-for-zed": "^2.1.0",
+    "@spryker/oryx-for-zed": "^2.2.0",
     "autoprefixer": "~8.6.2",
     "clean-webpack-plugin": "~0.1.19",
     "copy-webpack-plugin": "~4.5.1",
