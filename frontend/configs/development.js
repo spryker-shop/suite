@@ -4,7 +4,6 @@ const autoprefixer = require('autoprefixer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const StyleLintPlugin = require('stylelint-webpack-plugin');
 const appSettings = require('../settings');
 const finder = require('../libs/finder');
 const alias = require('../libs/alias');
@@ -122,12 +121,6 @@ module.exports = {
             root: path.join(appSettings.context, appSettings.paths.public),
             verbose: true,
             beforeEmit: true
-        }),
-
-        new StyleLintPlugin({
-            context: process.cwd(),
-            files: [`${appSettings.paths.core.modules}/**/*.scss`, `${appSettings.paths.project.modules}/**/*.scss`],
-            syntax: 'scss',
         }),
 
         new CopyWebpackPlugin([
