@@ -128,7 +128,7 @@ use Spryker\Zed\Transfer\Communication\Console\GeneratorConsole;
 use Spryker\Zed\Transfer\Communication\Console\ValidatorConsole;
 use Spryker\Zed\Twig\Communication\Console\CacheWarmerConsole;
 use Spryker\Zed\Twig\Communication\Plugin\ServiceProvider\TwigServiceProvider as SprykerTwigServiceProvider;
-use Spryker\Zed\UtilUuidGenerator\Communication\Console\UuidGeneratorConsole;
+use Spryker\Zed\Uuid\Communication\Console\UuidGeneratorConsole;
 use Spryker\Zed\ZedNavigation\Communication\Console\BuildNavigationConsole;
 use Stecman\Component\Symfony\Console\BashCompletion\CompletionCommand;
 
@@ -281,7 +281,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new PriceProductMerchantRelationshipDeleteConsole(),
 
             new DeleteExpiredGuestQuoteConsole(),
-
             new UuidGeneratorConsole(),
         ];
 
