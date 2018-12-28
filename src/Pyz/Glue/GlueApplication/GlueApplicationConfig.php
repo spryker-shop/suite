@@ -7,8 +7,8 @@
 
 namespace Pyz\Glue\GlueApplication;
 
+use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
 use Spryker\Glue\GlueApplication\GlueApplicationConfig as SprykerGlueApplicationConfig;
-use Spryker\Glue\GlueApplication\Rest\RequestConstantsInterface;
 
 class GlueApplicationConfig extends SprykerGlueApplicationConfig
 {
@@ -19,7 +19,7 @@ class GlueApplicationConfig extends SprykerGlueApplicationConfig
     {
         return array_merge(
             parent::getCorsAllowedHeaders(),
-            [RequestConstantsInterface::HEADER_X_ANONYMOUS_CUSTOMER_UNIQUE_ID]
+            [CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID]
         );
     }
 }
