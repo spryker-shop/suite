@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a45eea4ed6d48653d0f55d89e7fb244e",
+    "content-hash": "9af3d68ec8dcda65dad33994b4b4b95a",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -1037,7 +1037,7 @@
                 {
                     "name": "Luís Otávio Cobucci Oblonczyk",
                     "email": "lcobucci@gmail.com",
-                    "role": "developer"
+                    "role": "Developer"
                 }
             ],
             "description": "A simple library to work with JSON Web Token and JSON Web Signature",
@@ -1367,52 +1367,6 @@
                 "email"
             ],
             "time": "2015-09-22T13:58:03+00:00"
-        },
-        {
-            "name": "mikey179/vfsStream",
-            "version": "v1.6.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mikey179/vfsStream.git",
-                "reference": "d5fec95f541d4d71c4823bb5e30cf9b9e5b96145"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mikey179/vfsStream/zipball/d5fec95f541d4d71c4823bb5e30cf9b9e5b96145",
-                "reference": "d5fec95f541d4d71c4823bb5e30cf9b9e5b96145",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.5"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.6.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "org\\bovigo\\vfs\\": "src/main/php"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Frank Kleine",
-                    "homepage": "http://frankkleine.de/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Virtual file system to mock the real file system in unit tests.",
-            "homepage": "http://vfs.bovigo.org/",
-            "time": "2017-08-01T08:02:14+00:00"
         },
         {
             "name": "moneyphp/money",
@@ -2702,16 +2656,15 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/ps-5120/dev-tech-debt-for-alternative-products",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "34842289203ffb67df963fa459706a0d9481da89"
+                "reference": "7abfeeeb13ff19a1260ce89c7b253777e9b04687"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
                 "fzaninotto/faker": "^1.6",
-                "mikey179/vfsstream": "^1.6",
                 "moneyphp/money": "^3.0.0",
                 "php": ">=7.1",
                 "phpdocumentor/graphviz": "^1.0.4"
@@ -2976,7 +2929,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-12-20T08:56:45+00:00"
+            "time": "2018-12-20T13:33:38+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2984,7 +2937,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "d1b9a52365e9eea391466945ac30a31bd8f1b779"
+                "reference": "7278693c7055b490f178adfd4ecf77b86ff5c449"
             },
             "require": {
                 "php": ">=7.1"
@@ -3059,7 +3012,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-12-19T07:24:01+00:00"
+            "time": "2018-12-14T09:40:02+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -5125,16 +5078,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.36.0",
+            "version": "v1.35.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "730c9c4471b5152d23061feb02b03382264c8a15"
+                "reference": "7e081e98378a1e78c29cc9eba4aefa5d78a05d2a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/730c9c4471b5152d23061feb02b03382264c8a15",
-                "reference": "730c9c4471b5152d23061feb02b03382264c8a15",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/7e081e98378a1e78c29cc9eba4aefa5d78a05d2a",
+                "reference": "7e081e98378a1e78c29cc9eba4aefa5d78a05d2a",
                 "shasum": ""
             },
             "require": {
@@ -5144,12 +5097,12 @@
             "require-dev": {
                 "psr/container": "^1.0",
                 "symfony/debug": "^2.7",
-                "symfony/phpunit-bridge": "^3.4.19|^4.1.8"
+                "symfony/phpunit-bridge": "^3.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.36-dev"
+                    "dev-master": "1.35-dev"
                 }
             },
             "autoload": {
@@ -5187,7 +5140,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2018-12-16T10:34:11+00:00"
+            "time": "2018-07-13T07:12:17+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -5353,16 +5306,16 @@
         },
         {
             "name": "zendframework/zend-filter",
-            "version": "2.9.1",
+            "version": "2.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-filter.git",
-                "reference": "1c3e6d02f9cd5f6c929c9859498f5efbe216e86f"
+                "reference": "875da9790e5cb16b9a12f41453d5f7c441452daf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-filter/zipball/1c3e6d02f9cd5f6c929c9859498f5efbe216e86f",
-                "reference": "1c3e6d02f9cd5f6c929c9859498f5efbe216e86f",
+                "url": "https://api.github.com/repos/zendframework/zend-filter/zipball/875da9790e5cb16b9a12f41453d5f7c441452daf",
+                "reference": "875da9790e5cb16b9a12f41453d5f7c441452daf",
                 "shasum": ""
             },
             "require": {
@@ -5414,7 +5367,7 @@
                 "filter",
                 "zf"
             ],
-            "time": "2018-12-17T16:00:04+00:00"
+            "time": "2018-12-12T23:14:25+00:00"
         },
         {
             "name": "zendframework/zend-servicemanager",
@@ -6794,7 +6747,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-13T13:21:38+00:00"
+            "time": "2017-12-12T17:28:44+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -8238,16 +8191,16 @@
         },
         {
             "name": "sensiolabs/security-checker",
-            "version": "v5.0.3",
+            "version": "v5.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/security-checker.git",
-                "reference": "46be3f58adac13084497961e10eed9a7fb4d44d1"
+                "reference": "728f9fb0fe815003b3bcfd331d33106c0d8a6b1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/46be3f58adac13084497961e10eed9a7fb4d44d1",
-                "reference": "46be3f58adac13084497961e10eed9a7fb4d44d1",
+                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/728f9fb0fe815003b3bcfd331d33106c0d8a6b1e",
+                "reference": "728f9fb0fe815003b3bcfd331d33106c0d8a6b1e",
                 "shasum": ""
             },
             "require": {
@@ -8280,7 +8233,7 @@
                 }
             ],
             "description": "A security checker for your composer.lock",
-            "time": "2018-12-19T17:14:59+00:00"
+            "time": "2018-12-10T06:08:43+00:00"
         },
         {
             "name": "site5/phantoman",
@@ -8529,12 +8482,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "f06a2ad4116981ac9f3439209508493ca7f8864a"
+                "reference": "ff8fcbe8f6e5fc02918ed3698b63170fb0071c0c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/f06a2ad4116981ac9f3439209508493ca7f8864a",
-                "reference": "f06a2ad4116981ac9f3439209508493ca7f8864a",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/ff8fcbe8f6e5fc02918ed3698b63170fb0071c0c",
+                "reference": "ff8fcbe8f6e5fc02918ed3698b63170fb0071c0c",
                 "shasum": ""
             },
             "require": {
@@ -8573,7 +8526,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-12-17T09:14:25+00:00"
+            "time": "2018-11-24T14:46:47+00:00"
         },
         {
             "name": "spryker/development-core",
@@ -8676,7 +8629,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryk.git",
-                "reference": "d2fa48e64572b27948e6a9b870bb660e0dff4ea6"
+                "reference": "dba81bdf0a37184b8c2b6f0cdc670e8360c488ff"
             },
             "require": {
                 "php": ">=7.1",
@@ -8745,20 +8698,20 @@
                 "MIT"
             ],
             "description": "Spryker Spryk build tool",
-            "time": "2018-12-18T11:30:35+00:00"
+            "time": "2018-11-05T19:37:23+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.4.0",
+            "version": "3.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "379deb987e26c7cd103a7b387aea178baec96e48"
+                "reference": "6ad28354c04b364c3c71a34e4a18b629cc3b231e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/379deb987e26c7cd103a7b387aea178baec96e48",
-                "reference": "379deb987e26c7cd103a7b387aea178baec96e48",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/6ad28354c04b364c3c71a34e4a18b629cc3b231e",
+                "reference": "6ad28354c04b364c3c71a34e4a18b629cc3b231e",
                 "shasum": ""
             },
             "require": {
@@ -8796,7 +8749,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-12-19T23:57:18+00:00"
+            "time": "2018-09-23T23:08:17+00:00"
         },
         {
             "name": "stecman/symfony-console-completion",
