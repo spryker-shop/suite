@@ -14,6 +14,7 @@ use Spryker\Zed\MultiCart\Communication\Plugin\DeactivateQuotesBeforeQuoteSavePl
 use Spryker\Zed\MultiCart\Communication\Plugin\InitDefaultQuoteCustomerQuoteDeleteAfterPlugin;
 use Spryker\Zed\MultiCart\Communication\Plugin\ResolveQuoteNameBeforeQuoteCreatePlugin;
 use Spryker\Zed\Quote\QuoteDependencyProvider as SprykerQuoteDependencyProvider;
+use Spryker\Zed\QuoteApproval\Communication\Plugin\UpdateApprovalsQuoteAfterSavePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\CleanQuoteShareBeforeQuoteCreatePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\DeactivateSharedQuotesBeforeQuoteSavePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\MarkAsDefaultQuoteAfterSavePlugin;
@@ -56,6 +57,7 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
         return [
             new UpdateShareDetailsQuoteAfterSavePlugin(), #SharedCartFeature
             new MarkAsDefaultQuoteAfterSavePlugin(), #SharedCartFeature
+            new UpdateApprovalsQuoteAfterSavePlugin(), #QuoteApprovalFeature
         ];
     }
 
