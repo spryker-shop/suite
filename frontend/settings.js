@@ -14,13 +14,13 @@ const context = process.cwd();
 const paths = {
     // locate the typescript configuration json file
     tsConfig: './tsconfig.json',
-
+    
     // assets folder
     assets: './frontend/assets',
-
+    
     // public folder
     public: './public/Yves/assets',
-
+    
     // core folders
     core: {
         // all modules
@@ -28,7 +28,7 @@ const paths = {
         // ShopUi source folder
         shopUiModule: `./vendor/spryker/spryker-shop/Bundles/ShopUi/src/SprykerShop/Yves/ShopUi/Theme/${theme}`
     },
-
+    
     // project folders
     project: {
         // all modules
@@ -44,6 +44,25 @@ const urls = {
     assets: '/assets'
 };
 
+// define components directories patterns
+const componentDirsPattern = {
+    atoms: `**/Theme/${theme}/components/atoms`,
+    molecules: `**/Theme/${theme}/components/molecules`,
+    organisms: `**/Theme/${theme}/components/organisms`,
+    templates: `**/Theme/${theme}/templates`,
+    views: `**/Theme/${theme}/views`,
+};
+
+// define ignore dirs for entry points
+const ignoreDirs = [
+    '!config',
+    '!data',
+    '!deploy',
+    '!node_modules',
+    '!public',
+    '!test'
+];
+
 // export settings
 module.exports = {
     name,
@@ -51,7 +70,9 @@ module.exports = {
     context,
     paths,
     urls,
-
+    componentDirsPattern,
+    ignoreDirs,
+    
     // define settings for suite-frontend-builder finder
     find: {
         // webpack entry points (components) finder settings
@@ -63,20 +84,15 @@ module.exports = {
             ],
             // files/dirs patterns
             patterns: [
-                `**/Theme/${theme}/components/atoms/*/index.ts`,
-                `**/Theme/${theme}/components/molecules/*/index.ts`,
-                `**/Theme/${theme}/components/organisms/*/index.ts`,
-                `**/Theme/${theme}/templates/*/index.ts`,
-                `**/Theme/${theme}/views/*/index.ts`,
-                '!config',
-                '!data',
-                '!deploy',
-                '!node_modules',
-                '!public',
-                '!test'
+                `${componentDirsPattern.atoms}/*/index.ts`,
+                `${componentDirsPattern.molecules}/*/index.ts`,
+                `${componentDirsPattern.organisms}/*/index.ts`,
+                `${componentDirsPattern.templates}/*/index.ts`,
+                `${componentDirsPattern.views}/*/index.ts`,
+                ...ignoreDirs
             ]
         },
-
+        
         // core component styles finder settings
         // important: this part is used in shared scss environment
         // do not change unless necessary
@@ -87,18 +103,13 @@ module.exports = {
             ],
             // files/dirs patterns
             patterns: [
-                `**/Theme/${theme}/components/atoms/*/*.scss`,
-                `**/Theme/${theme}/components/molecules/*/*.scss`,
-                `**/Theme/${theme}/components/organisms/*/*.scss`,
-                `**/Theme/${theme}/templates/*/*.scss`,
-                `**/Theme/${theme}/views/*/*.scss`,
+                `${componentDirsPattern.atoms}/*/*.scss`,
+                `${componentDirsPattern.molecules}/*/*.scss`,
+                `${componentDirsPattern.organisms}/*/*.scss`,
+                `${componentDirsPattern.templates}/*/*.scss`,
+                `${componentDirsPattern.views}/*/*.scss`,
                 `!**/Theme/${theme}/**/style.scss`,
-                '!config',
-                '!data',
-                '!deploy',
-                '!node_modules',
-                '!public',
-                '!test'
+                ...ignoreDirs
             ]
         }
     }
