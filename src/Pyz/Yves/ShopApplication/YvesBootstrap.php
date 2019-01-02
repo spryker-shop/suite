@@ -215,7 +215,7 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new AgentWidgetControllerProvider($isSsl), #AgentFeature
             new FileManagerWidgetControllerProvider($isSsl),
             new CmsSearchPageControllerProvider($isSsl), #CmsSearchPageFeature
-            new QuoteApprovalControllerProvider($isSsl), #CmsSearchPageFeature
+            new QuoteApprovalControllerProvider($isSsl),
         ];
     }
 }
