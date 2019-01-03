@@ -135,5 +135,6 @@ script:
   - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -x Presentation ; fi
   - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/codecept run -g Presentation ; fi
 
+  - if [[ $VALIDATION == 1 ]] ; then node ./frontend/libs/tslint stylish ; fi
 notifications:
   email: false
