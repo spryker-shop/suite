@@ -68,6 +68,7 @@ use SprykerShop\Yves\NewsletterPage\Plugin\Provider\NewsletterPageControllerProv
 use SprykerShop\Yves\NewsletterWidget\Plugin\Provider\NewsletterWidgetControllerProvider;
 use SprykerShop\Yves\PriceWidget\Plugin\Provider\PriceControllerProvider;
 use SprykerShop\Yves\ProductNewPage\Plugin\Provider\ProductNewPageControllerProvider;
+use SprykerShop\Yves\ProductQuickAddWidget\Plugin\Provider\ProductQuickAddWidgetControllerProvider;
 use SprykerShop\Yves\ProductReviewWidget\Plugin\Provider\ProductReviewControllerProvider;
 use SprykerShop\Yves\ProductSearchWidget\Plugin\Provider\ProductSearchWidgetControllerProvider;
 use SprykerShop\Yves\ProductSetListPage\Plugin\Provider\ProductSetListPageControllerProvider;
@@ -216,6 +217,7 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new FileManagerWidgetControllerProvider($isSsl),
             new CmsSearchPageControllerProvider($isSsl), #CmsSearchPageFeature
             new ProductSearchWidgetControllerProvider($isSsl),
+            new ProductQuickAddWidgetControllerProvider($isSsl),
         ];
     }
 }
