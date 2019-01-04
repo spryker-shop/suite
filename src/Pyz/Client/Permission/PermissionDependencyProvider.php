@@ -50,8 +50,8 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new SeeAddToCartPermissionPlugin(), #CustomerAccessFeature
             new SeeWishlistPermissionPlugin(), #CustomerAccessFeature
             new SeeShoppingListPermissionPlugin(), #CustomerAccessFeature
-            new PlaceOrderPermissionPlugin(),
-            new ApproveQuotePermissionPlugin(),
+            new PlaceOrderPermissionPlugin(), #QuoteApprovalFeature
+            new ApproveQuotePermissionPlugin(), #QuoteApprovalFeature
         ];
     }
 }
