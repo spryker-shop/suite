@@ -314,7 +314,7 @@ class ProductPriceBulkPdoDataSetWriter implements DataSetWriterInterface
     protected function preparePriceDataString(array $priceData): string
     {
         $priceData = array_map(function ($price) {
-            return $price ?: '';
+            return $price ?: null;
         }, $priceData);
 
         return pg_escape_string($this->utilEncodingService->encodeJson($priceData));
