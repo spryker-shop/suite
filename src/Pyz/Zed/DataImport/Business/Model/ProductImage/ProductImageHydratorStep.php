@@ -17,7 +17,7 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class ProductImageHydratorStep extends PublishAwareStep implements DataImportStepInterface
 {
-    public const BULK_SIZE = 10;
+    public const BULK_SIZE = 5000;
 
     public const KEY_LOCALE = 'locale';
     public const KEY_ID_LOCALE = 'id_locale';
