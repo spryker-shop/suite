@@ -8,6 +8,9 @@
     </table>
 
     <table name="spy_product_image">
+        <index name="spy_product_image-external_url_large">
+            <index-column name="external_url_large"/>
+        </index>
         <behavior name="event">
             <parameter name="spy_product_image_all" column="*"/>
         </behavior>

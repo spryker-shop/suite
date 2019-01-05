@@ -31,6 +31,10 @@ class DataImportDataFormatter implements DataImportDataFormatterInterface
             return '{null}';
         }
 
+        $values = array_map(function ($v) {
+            return ($v === null || $v === "") ? "NULL" : $v;
+        }, $values);
+
         return sprintf(
             '{%s}',
             pg_escape_string(implode(',', $values))
