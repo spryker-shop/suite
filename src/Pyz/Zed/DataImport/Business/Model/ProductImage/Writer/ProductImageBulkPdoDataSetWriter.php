@@ -49,42 +49,22 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
     /**
      * @var int[]
      */
-    protected static $productAbstractImageLocaleIds = [];
+    protected static $productImageLocaleIds = [];
 
     /**
      * @var int[]
      */
-    protected static $productConcreteImageLocaleIds = [];
+    protected static $productIds = [];
 
     /**
      * @var int[]
      */
-    protected static $productAbstractIds = [];
-
-    /**
-     * @var int[]
-     */
-    protected static $productConcreteIds = [];
-
-    /**
-     * @var int[]
-     */
-    protected static $productAbstractImageIds = [];
-
-    /**
-     * @var int[]
-     */
-    protected static $productConcreteImageIds = [];
+    protected static $productImageIds = [];
 
     /**
      * @var array
      */
-    protected static $productAbstractImageSetIds = [];
-
-    /**
-     * @var array
-     */
-    protected static $productConcreteImageSetIds = [];
+    protected static $productImageSetIds = [];
 
     /**
      * @var \Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\Sql\ProductImageSqlInterface
@@ -149,13 +129,15 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
         $this->prepareAbstractProductImageIds();
         $this->persistProductAbstractImageSetRelationEntities();
 
+        $this->flushProductImageAbstractMemory();
+
         $this->prepareProductConcreteImageSetLocaleIds();
         $this->prepareProductConcreteIds();
         $this->persistProductConcreteImageSetEntities();
         $this->prepareConcreteProductImageIds();
         $this->persistProductConcreteImageSetRelationEntities();
 
-        $this->flushMemory();
+        $this->flushProductImageConcreteMemory();
 
         DataImporterPublisher::triggerEvents();
     }
@@ -180,6 +162,8 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
         ];
 
         $this->propelExecutor->execute($sql, $parameters);
+
+        static::$productUniqueImageCollection = [];
     }
 
     /**
@@ -191,10 +175,10 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
             $this->dataFormatter->getCollectionDataByKey(static::$productAbstractImageSetCollection, ProductImageHydratorStep::KEY_IMAGE_SET_DB_NAME_COLUMN)
         );
         $idLocale = $this->dataFormatter->formatPostgresArray(
-            $this->dataFormatter->getCollectionDataByKey(static::$productAbstractImageLocaleIds, ProductImageHydratorStep::KEY_ID_LOCALE)
+            $this->dataFormatter->getCollectionDataByKey(static::$productImageLocaleIds, ProductImageHydratorStep::KEY_ID_LOCALE)
         );
         $idProductAbstract = $this->dataFormatter->formatPostgresArray(
-            $this->dataFormatter->getCollectionDataByKey(static::$productAbstractIds, ProductImageHydratorStep::KEY_ID_PRODUCT_ABSTRACT)
+            $this->dataFormatter->getCollectionDataByKey(static::$productIds, ProductImageHydratorStep::KEY_ID_PRODUCT_ABSTRACT)
         );
 
         $parametersForProductAbstract = [
@@ -216,11 +200,11 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
         );
 
         $idLocale = $this->dataFormatter->formatPostgresArray(
-            $this->dataFormatter->getCollectionDataByKey(static::$productConcreteImageLocaleIds, ProductImageHydratorStep::KEY_ID_LOCALE)
+            $this->dataFormatter->getCollectionDataByKey(static::$productImageLocaleIds, ProductImageHydratorStep::KEY_ID_LOCALE)
         );
 
         $idProductConcrete = $this->dataFormatter->formatPostgresArray(
-            $this->dataFormatter->getCollectionDataByKey(static::$productConcreteIds, ProductImageHydratorStep::KEY_ID_PRODUCT)
+            $this->dataFormatter->getCollectionDataByKey(static::$productIds, ProductImageHydratorStep::KEY_ID_PRODUCT)
         );
 
         $parametersForProductConcrete = [
@@ -271,19 +255,20 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
      */
     protected function persistProductAbstractImageSetRelationEntities(): void
     {
-        if (!count(static::$productAbstractImageIds)) {
+        if (!count(static::$productImageIds)) {
             return;
         }
 
-        $idProductImage = $this->dataFormatter->formatPostgresArray(
-            $this->dataFormatter->getCollectionDataByKey(static::$productAbstractImageIds, ProductImageHydratorStep::KEY_IMAGE_SET_RELATION_ID_PRODUCT_IMAGE)
-        );
+        $productImageCollection = $this->dataFormatter->getCollectionDataByKey(static::$productImageIds, ProductImageHydratorStep::KEY_IMAGE_SET_RELATION_ID_PRODUCT_IMAGE);
+        $idProductImage = $this->dataFormatter->formatPostgresArray($productImageCollection);
+
         $idProductImageSet = $this->dataFormatter->formatPostgresArray(
-            $this->dataFormatter->getCollectionDataByKey(static::$productAbstractImageSetIds, ProductImageHydratorStep::KEY_IMAGE_SET_RELATION_ID_PRODUCT_IMAGE_SET)
+            $this->dataFormatter->getCollectionDataByKey(static::$productImageSetIds, ProductImageHydratorStep::KEY_IMAGE_SET_RELATION_ID_PRODUCT_IMAGE_SET)
         );
         $sortOrder = $this->dataFormatter->formatPostgresArray(
-            $this->dataFormatter->getCollectionDataByKey(static::$productAbstractImageSetIds, ProductImageHydratorStep::KEY_SORT_ORDER)
+            $this->dataFormatter->getCollectionDataByKey(static::$productImageSetIds, ProductImageHydratorStep::KEY_SORT_ORDER)
         );
+        $orderKey = $this->dataFormatter->formatPostgresArray(array_keys($productImageCollection));
 
         $sql = $this->productImageSql->createProductImageSetRelationSQL();
 
@@ -291,6 +276,7 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
             $idProductImage,
             $idProductImageSet,
             $sortOrder,
+            $orderKey,
         ];
 
         $this->propelExecutor->execute($sql, $parameters);
@@ -301,19 +287,19 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
      */
     protected function persistProductConcreteImageSetRelationEntities(): void
     {
-        if (!count(static::$productConcreteImageIds)) {
+        if (!count(static::$productImageIds)) {
             return;
         }
 
-        $idProductImage = $this->dataFormatter->formatPostgresArray(
-            $this->dataFormatter->getCollectionDataByKey(static::$productConcreteImageIds, ProductImageHydratorStep::KEY_IMAGE_SET_RELATION_ID_PRODUCT_IMAGE)
-        );
+        $productImageCollection = $this->dataFormatter->getCollectionDataByKey(static::$productImageIds, ProductImageHydratorStep::KEY_IMAGE_SET_RELATION_ID_PRODUCT_IMAGE);
+        $idProductImage = $this->dataFormatter->formatPostgresArray($productImageCollection);
         $idProductImageSet = $this->dataFormatter->formatPostgresArray(
-            $this->dataFormatter->getCollectionDataByKey(static::$productConcreteImageSetIds, ProductImageHydratorStep::KEY_IMAGE_SET_RELATION_ID_PRODUCT_IMAGE_SET)
+            $this->dataFormatter->getCollectionDataByKey(static::$productImageSetIds, ProductImageHydratorStep::KEY_IMAGE_SET_RELATION_ID_PRODUCT_IMAGE_SET)
         );
         $sortOrder = $this->dataFormatter->formatPostgresArray(
-            $this->dataFormatter->getCollectionDataByKey(static::$productConcreteImageSetIds, ProductImageHydratorStep::KEY_SORT_ORDER)
+            $this->dataFormatter->getCollectionDataByKey(static::$productImageSetIds, ProductImageHydratorStep::KEY_SORT_ORDER)
         );
+        $orderKey = $this->dataFormatter->formatPostgresArray(array_keys($productImageCollection));
 
         $sql = $this->productImageSql->createProductImageSetRelationSQL();
 
@@ -321,6 +307,7 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
             $idProductImage,
             $idProductImageSet,
             $sortOrder,
+            $orderKey,
         ];
 
         $this->propelExecutor->execute($sql, $parameters);
@@ -342,7 +329,7 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
                 ProductEvents::PRODUCT_ABSTRACT_PUBLISH,
                 $productImageSet[ProductImageHydratorStep::KEY_FK_PRODUCT_ABSTRACT]
             );
-            static::$productAbstractImageSetIds[] = [
+            static::$productImageSetIds[] = [
                 ProductImageHydratorStep::KEY_IMAGE_SET_RELATION_ID_PRODUCT_IMAGE_SET => $productImageSet[ProductImageHydratorStep::KEY_IMAGE_SET_RELATION_ID_PRODUCT_IMAGE_SET],
                 ProductImageHydratorStep::KEY_SORT_ORDER => ProductImageHydratorStep::IMAGE_TO_IMAGE_SET_RELATION_ORDER,
             ];
@@ -361,7 +348,7 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
                 ProductImageEvents::PRODUCT_IMAGE_PRODUCT_CONCRETE_PUBLISH,
                 $productImageSet[ProductImageHydratorStep::KEY_FK_PRODUCT]
             );
-            static::$productConcreteImageSetIds[] = [
+            static::$productImageSetIds[] = [
                 ProductImageHydratorStep::KEY_IMAGE_SET_RELATION_ID_PRODUCT_IMAGE_SET => $productImageSet[ProductImageHydratorStep::KEY_IMAGE_SET_RELATION_ID_PRODUCT_IMAGE_SET],
                 ProductImageHydratorStep::KEY_SORT_ORDER => ProductImageHydratorStep::IMAGE_TO_IMAGE_SET_RELATION_ORDER,
             ];
@@ -371,21 +358,27 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
     /**
      * @return void
      */
-    protected function flushMemory(): void
+    protected function flushProductImageAbstractMemory(): void
     {
         static::$productAbstractImageSetCollection = [];
-        static::$productConcreteImageSetCollection = [];
         static::$productAbstractImageCollection = [];
+        static::$productImageLocaleIds = [];
+        static::$productIds = [];
+        static::$productImageIds = [];
+        static::$productImageSetIds = [];
+    }
+
+    /**
+     * @return void
+     */
+    protected function flushProductImageConcreteMemory(): void
+    {
+        static::$productConcreteImageSetCollection = [];
         static::$productConcreteImageCollection = [];
-        static::$productUniqueImageCollection = [];
-        static::$productAbstractImageLocaleIds = [];
-        static::$productConcreteImageLocaleIds = [];
-        static::$productAbstractIds = [];
-        static::$productConcreteIds = [];
-        static::$productAbstractImageIds = [];
-        static::$productConcreteImageIds = [];
-        static::$productAbstractImageSetIds = [];
-        static::$productConcreteImageSetIds = [];
+        static::$productImageLocaleIds = [];
+        static::$productIds = [];
+        static::$productImageIds = [];
+        static::$productImageSetIds = [];
     }
 
     /**
@@ -465,7 +458,7 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
         $result = $this->propelExecutor->execute($sql, $parameters);
 
         foreach ($result as $idLocale) {
-            static::$productAbstractImageLocaleIds[] = $idLocale;
+            static::$productImageLocaleIds[] = $idLocale;
         }
     }
 
@@ -488,7 +481,7 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
         $result = $this->propelExecutor->execute($sql, $parameters);
 
         foreach ($result as $idLocale) {
-            static::$productConcreteImageLocaleIds[] = $idLocale;
+            static::$productImageLocaleIds[] = $idLocale;
         }
     }
 
@@ -511,7 +504,7 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
         $result = $this->propelExecutor->execute($sql, $parameters);
 
         foreach ($result as $idProductAbstract) {
-            static::$productAbstractIds[] = $idProductAbstract;
+            static::$productIds[] = $idProductAbstract;
         }
     }
 
@@ -534,7 +527,7 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
         $result = $this->propelExecutor->execute($sql, $parameters);
 
         foreach ($result as $idProductConcrete) {
-            static::$productConcreteIds[] = $idProductConcrete;
+            static::$productIds[] = $idProductConcrete;
         }
     }
 
@@ -557,7 +550,7 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
         $result = $this->propelExecutor->execute($sql, $parameters);
 
         foreach ($result as $idProductImage) {
-            static::$productAbstractImageIds[] = $idProductImage;
+            static::$productImageIds[] = $idProductImage;
         }
     }
 
@@ -580,7 +573,7 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
         $result = $this->propelExecutor->execute($sql, $parameters);
 
         foreach ($result as $idProductImage) {
-            static::$productConcreteImageIds[] = $idProductImage;
+            static::$productImageIds[] = $idProductImage;
         }
     }
 }
