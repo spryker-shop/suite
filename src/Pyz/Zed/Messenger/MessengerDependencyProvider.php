@@ -10,6 +10,7 @@ namespace Pyz\Zed\Messenger;
 use Spryker\Zed\Glossary\Communication\Plugin\TranslationPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Messenger\MessengerDependencyProvider as SprykerMessengerDependencyProvider;
+use Spryker\Zed\Translator\Communication\Plugin\TranslationPlugin as FallbackTranslationPlugin;
 
 class MessengerDependencyProvider extends SprykerMessengerDependencyProvider
 {
@@ -22,6 +23,20 @@ class MessengerDependencyProvider extends SprykerMessengerDependencyProvider
     {
         $container[static::PLUGIN_TRANSLATION] = function (Container $container) {
             return new TranslationPlugin();
+        };
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addFallbackTranslationPlugin(Container $container)
+    {
+        $container[static::PLUGIN_FALLBACK_TRANSLATION] = function (Container $container) {
+            return new FallbackTranslationPlugin();
         };
 
         return $container;
