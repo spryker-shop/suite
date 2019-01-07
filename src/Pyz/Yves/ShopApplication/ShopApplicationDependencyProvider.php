@@ -14,6 +14,7 @@ use SprykerShop\Yves\CartNoteWidget\Widget\CartItemNoteFormWidget;
 use SprykerShop\Yves\CartNoteWidget\Widget\CartNoteFormWidget;
 use SprykerShop\Yves\CartToShoppingListWidget\Widget\CreateShoppingListFromCartWidget;
 use SprykerShop\Yves\CheckoutWidget\Widget\CheckoutBreadcrumbWidget;
+use SprykerShop\Yves\CheckoutWidget\Widget\ProcceedToCheckoutButtonWidget;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CheckBusinessOnBehalfCompanyUserHandlerPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyBusinessUnitControllerRestrictionPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyUserRestrictionHandlerPlugin;
@@ -162,6 +163,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CompanyBusinessUnitAddressWidget::class,
             FullTextSearchTabsWidget::class,
             QuoteApproveRequestWidget::class,
+            ProcceedToCheckoutButtonWidget::class,
         ];
     }
 
