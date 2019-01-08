@@ -66,8 +66,11 @@ use Spryker\Glue\ProductsRestApi\Plugin\AbstractProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\ConcreteProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
 use Spryker\Glue\ProductTaxSetsRestApi\Plugin\ProductTaxSetsResourceRoutePlugin;
+use Spryker\Glue\RelatedProductsRestApi\Plugin\RelatedProductsResourceRoutePlugin;
 use Spryker\Glue\RestRequestValidator\Plugin\ValidateRestRequestAttributesPlugin;
 use Spryker\Glue\StoresRestApi\Plugin\StoresResourceRoutePlugin;
+use Spryker\Glue\UpSellingProductsRestApi\Plugin\UpSellingProductsForCartResourceRoutePlugin;
+use Spryker\Glue\UpSellingProductsRestApi\Plugin\UpSellingProductsForGuestCartResourceRoutePlugin;
 use Spryker\Glue\WishlistItemsProductsResourceRelationship\Plugin\WishlistItemsConcreteProductsResourceRelationshipPlugin;
 use Spryker\Glue\WishlistsRestApi\Plugin\WishlistItemsResourceRoutePlugin;
 use Spryker\Glue\WishlistsRestApi\Plugin\WishlistRelationshipByResourceIdPlugin;
@@ -118,6 +121,9 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new ProductLabelsResourceRoutePlugin(),
             new CheckoutDataResourcePlugin(),
             new CheckoutResourcePlugin(),
+            new RelatedProductsResourceRoutePlugin(),
+            new UpSellingProductsForCartResourceRoutePlugin(),
+            new UpSellingProductsForGuestCartResourceRoutePlugin(),
         ];
     }
 
