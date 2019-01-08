@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Glue\CompanyUserRestApi;
+namespace Pyz\Glue\CompanyUsersRestApi;
 
 use Spryker\Glue\CompanyUsersRestApi\CompanyUsersRestApiConfig as SprykerCompanyUsersRestApiConfig;
 use Spryker\Glue\ShoppingListsRestApi\ShoppingListsRestApiConfig;
