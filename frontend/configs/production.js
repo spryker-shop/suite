@@ -1,48 +1,51 @@
 const webpack = require('webpack');
+const merge = require('webpack-merge');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const config = require('./development');
+const configPromise = require('./development');
+
+const mergeWithStrategy = merge.smartStrategy({
+    plugins: 'prepend'
+});
 
 async function configurationProdMode() {
-    return await config.then(configResult => {
-        return {
-            ...configResult,
-            mode: 'production',
-            devtool: false,
+    const config = await configPromise();
 
-            optimization: {
-                minimizer: [
-                    new UglifyJsPlugin({
-                        cache: true,
-                        parallel: true,
-                        sourceMap: false,
-                        uglifyOptions: {
-                            output: {
-                                comments: false,
-                                beautify: false
-                            }
+    return mergeWithStrategy(config, {
+        mode: 'production',
+        devtool: false,
+
+        optimization: {
+            minimizer: [
+                new UglifyJsPlugin({
+                    cache: true,
+                    parallel: true,
+                    sourceMap: false,
+                    uglifyOptions: {
+                        output: {
+                            comments: false,
+                            beautify: false
                         }
-                    }),
-
-                    new OptimizeCSSAssetsPlugin({
-                        cssProcessorOptions: {
-                            discardEmpty: true,
-                            discardComments: {
-                                removeAll: true
-                            }
-                        }
-                    })
-                ]
-            },
-
-            plugins: [
-                new webpack.DefinePlugin({
-                    __PRODUCTION__: true
+                    }
                 }),
-                ...configResult.plugins
+
+                new OptimizeCSSAssetsPlugin({
+                    cssProcessorOptions: {
+                        discardEmpty: true,
+                        discardComments: {
+                            removeAll: true
+                        }
+                    }
+                })
             ]
-        }
-    });
+        },
+
+        plugins: [
+            new webpack.DefinePlugin({
+                __PRODUCTION__: true
+            })
+        ]
+    })
 }
 
-module.exports = configurationProdMode();
+module.exports = configurationProdMode;
