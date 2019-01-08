@@ -38,7 +38,6 @@ async function find(globDirs, globPatterns, globSettings = {}) {
 
 // find components according to `appSettings.find.componentEntryPoints`
 async function findComponentEntryPoints() {
-    console.log('Scanning for component entry points...');
     const settings = appSettings.find.componentEntryPoints;
     const files = await find(settings.dirs, settings.patterns, settings.globSettings);
 
@@ -50,17 +49,16 @@ async function findComponentEntryPoints() {
         return map;
     }, {}));
 
-    console.log(`${entryPoints.length} found`);
+    console.log(`Component entry points: ${entryPoints.length} found`);
     return entryPoints;
 }
 
 // find styles according to `appSettings.find.componentStyles`
 async function findComponentStyles() {
-    console.log('Scanning for component styles...');
     const settings = appSettings.find.componentStyles;
     const styles = await find(settings.dirs, settings.patterns, settings.globSettings);
 
-    console.log(`${styles.length} found`);
+    console.log(`Component styles: ${styles.length} found`);
     return styles;
 }
 

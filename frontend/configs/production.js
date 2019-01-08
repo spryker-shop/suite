@@ -2,14 +2,14 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const configPromise = require('./development');
+const getConfiguration = require('./development');
 
 const mergeWithStrategy = merge.smartStrategy({
     plugins: 'prepend'
 });
 
 async function configurationProdMode() {
-    const config = await configPromise();
+    const config = await getConfiguration();
 
     return mergeWithStrategy(config, {
         mode: 'production',
