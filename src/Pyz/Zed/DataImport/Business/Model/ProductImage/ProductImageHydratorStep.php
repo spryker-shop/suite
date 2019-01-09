@@ -75,11 +75,15 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
 
         if (isset($dataSet[static::KEY_IMAGE_SET_FK_LOCALE])) {
             $imageSetEntityTransfer->setFkLocale($dataSet[static::KEY_IMAGE_SET_FK_LOCALE]);
-        } else {
-            $localeEntityTransfer = new SpyLocaleEntityTransfer();
-            $localeEntityTransfer->setLocaleName($dataSet[static::KEY_LOCALE]);
-            $imageSetEntityTransfer->setSpyLocale($localeEntityTransfer);
+            $dataSet[static::DATA_PRODUCT_IMAGE_SET_TRANSFER] = $imageSetEntityTransfer;
+
+            return;
         }
+
+        $localeEntityTransfer = (new SpyLocaleEntityTransfer())
+            ->setLocaleName($dataSet[static::KEY_LOCALE]);
+
+        $imageSetEntityTransfer->setSpyLocale($localeEntityTransfer);
 
         $dataSet[static::DATA_PRODUCT_IMAGE_SET_TRANSFER] = $imageSetEntityTransfer;
     }
