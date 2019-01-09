@@ -120,15 +120,18 @@ SELECT inserted.id_product_image FROM inserted;";
       input.fkProductImage,
       input.fkProductImageSet,
       input.sortOrder,
+      input.orderKey,
       id_product_image_set_to_product_image as idProductImageRelation
     FROM (
            SELECT
              unnest(? :: INTEGER []) AS fkProductImage,
              unnest(? :: INTEGER []) AS fkProductImageSet,
-             unnest(? :: INTEGER []) AS sortOrder
+             unnest(? :: INTEGER []) AS sortOrder,
+             unnest(? :: INTEGER []) AS orderKey
          ) input
       LEFT JOIN spy_product_image_set_to_product_image as \"pisr\" ON 
       (pisr.fk_product_image = input.fkProductImage AND pisr.fk_product_image_set = input.fkProductImageSet)
+      ORDER BY input.orderKey
 ),
     updated AS (
     UPDATE spy_product_image_set_to_product_image
