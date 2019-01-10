@@ -9,9 +9,9 @@ namespace Pyz\Zed\Category;
 
 use Spryker\Zed\Category\CategoryDependencyProvider as SprykerDependencyProvider;
 use Spryker\Zed\Category\Communication\Plugin\CategoryUrlPathPrefixUpdaterPlugin;
-use Spryker\Zed\CategoryImage\Communication\Plugin\CategoryAfterCreatePlugin;
-use Spryker\Zed\CategoryImage\Communication\Plugin\CategoryAfterUpdatePlugin;
-use Spryker\Zed\CategoryImage\Communication\Plugin\CategoryReadPlugin;
+use Spryker\Zed\CategoryImage\Communication\Plugin\CategoryImageSetCreatorPlugin;
+use Spryker\Zed\CategoryImage\Communication\Plugin\CategoryImageSetExpanderPlugin;
+use Spryker\Zed\CategoryImage\Communication\Plugin\CategoryImageSetUpdaterPlugin;
 use Spryker\Zed\CategoryImage\Communication\Plugin\RemoveCategoryImageSetRelationPlugin;
 use Spryker\Zed\CategoryImageGui\Communication\Plugin\CategoryImageFormPlugin;
 use Spryker\Zed\CategoryImageGui\Communication\Plugin\CategoryImageFormTabExpanderPlugin;
@@ -77,7 +77,7 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
     protected function getCategoryPostReadPlugins(): array
     {
         return [
-            new CategoryReadPlugin(),
+            new CategoryImageSetExpanderPlugin(),
         ];
     }
 
@@ -108,7 +108,7 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
     protected function getCategoryPostUpdatePlugins(): array
     {
         return [
-            new CategoryAfterUpdatePlugin(),
+            new CategoryImageSetUpdaterPlugin(),
         ];
     }
 
@@ -118,7 +118,7 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
     protected function getCategoryPostCreatePlugins(): array
     {
         return [
-            new CategoryAfterCreatePlugin(),
+            new CategoryImageSetCreatorPlugin(),
         ];
     }
 
