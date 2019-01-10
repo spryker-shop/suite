@@ -141,7 +141,7 @@
         {% endif %}
     </form>
 
-    {% if not isProductAvailable %}
+    {% if not isAvailable %}
         {% widget 'AvailabilitySubscriptionWidget' args [data.product] only %}{% endwidget %}
     {% endif %}
 
