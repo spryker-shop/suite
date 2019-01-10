@@ -4,7 +4,7 @@
   "license": "MIT",
   "require": {
     "spryker/spryker": "dev-feature/te-323/te-648-enabling-step-3",
-    "spryker/spryker-shop": "dev-master",
+    "spryker/spryker-shop": "dev-feature/te-323/te-648-enabling-step-3",
     "spryker-eco/loggly": "dev-master",
     "spryker/rabbit-mq": "dev-master",
     "spryker/install": "dev-master",
@@ -12,7 +12,7 @@
     "spryker/synchronization-behavior": "dev-master",
     "spryker/uuid-behavior": "dev-master",
     "spryker/silexphp": "dev-feature/te-323/te-648-enabling-step-3",
-    "spryker/container": "^1.0",
+    "spryker/container": "^1.0.0",
     "php": ">=7.1",
     "codeitnowin/barcode": "^3.0.0",
     "guzzlehttp/guzzle": "~6.3.0",
@@ -87,7 +87,7 @@
     "stecman/symfony-console-completion": "*",
     "fzaninotto/faker": "^1.6",
     "ajgl/breakpoint-twig-extension": "^0.3.1",
-    "phpstan/phpstan": "^0.10.5"
+    "spryker-sdk/phpstan-spryker": "^0.1"
   },
   "autoload": {
     "psr-4": {
@@ -96,7 +96,7 @@
       "Pyz\\": "src/Pyz/"
     },
     "psr-0": {
-      "Pimple": "vendor/spryker/Bundles/Container/src/"
+      "Pimple": "vendor/spryker/spryker/Bundles/Container/src"
     },
     "files": [
       "vendor/spryker/spryker/autoload.php"
