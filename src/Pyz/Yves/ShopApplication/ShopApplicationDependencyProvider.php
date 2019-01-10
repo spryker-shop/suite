@@ -67,6 +67,7 @@ use SprykerShop\Yves\ProductWidget\Widget\CmsProductWidget;
 use SprykerShop\Yves\ProductWidget\Widget\PdpProductRelationWidget;
 use SprykerShop\Yves\ProductWidget\Widget\PdpProductReplacementForListWidget;
 use SprykerShop\Yves\ProductWidget\Widget\ProductAlternativeWidget;
+use SprykerShop\Yves\QuoteRequestWidget\Widget\CreateQuoteRequestWidget;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Widget\SalesOrderThresholdWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartDeleteCompanyUsersListWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartListPermissionGroupWidget;
@@ -164,6 +165,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             FullTextSearchTabsWidget::class,
             ProductConcreteSearchWidget::class,
             AddItemsToShoppingListWidget::class,
+            CreateQuoteRequestWidget::class,
         ];
     }
 
