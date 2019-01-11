@@ -46,7 +46,6 @@ class MailDependencyProvider extends SprykerMailDependencyProvider
                 ->add(new OrderShippedMailTypePlugin())
                 ->add(new CompanyUserInvitationMailTypePlugin())
                 ->add(new CompanyStatusMailTypePlugin())
-                ->add(new CompanyStatusMailTypePlugin())
                 ->add(new AvailabilityNotificationUnsubscribedMailTypePlugin());
 
             return $mailCollection;
