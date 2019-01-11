@@ -68,7 +68,7 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
     protected function getQuoteHydrationPlugins(): array
     {
         return [
-            new QuoteApprovalHydrationPlugin(),
+            new QuoteApprovalHydrationPlugin(), #QuoteApprovalFeature
         ];
     }
 
