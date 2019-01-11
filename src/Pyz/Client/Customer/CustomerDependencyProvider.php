@@ -11,7 +11,7 @@ use Spryker\Client\Cart\Plugin\CustomerChangeCartUpdatePlugin;
 use Spryker\Client\Customer\CustomerDependencyProvider as SprykerCustomerDependencyProvider;
 use Spryker\Client\Customer\Plugin\CustomerAddressSessionUpdatePlugin;
 use Spryker\Client\Customer\Plugin\CustomerTransferSessionRefreshPlugin;
-use Spryker\Client\CustomerAccessPermission\Plugin\CustomerSecuredPatternRulePlugin;
+use Spryker\Client\CustomerAccessPermission\Plugin\CustomerAccessSecuredPatternRulePlugin;
 use Spryker\Client\MultiCart\Plugin\GuestCartSaveCustomerSessionSetPlugin;
 use Spryker\Client\PersistentCart\Plugin\GuestCartUpdateCustomerSessionSetPlugin;
 
@@ -52,10 +52,10 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     /**
      * @return \Spryker\Client\CustomerExtension\Dependency\Plugin\CustomerSecuredPatternRulePluginInterface[]
      */
-    protected function getCustomerSecuredPatternPermissionPlugins(): array
+    protected function getCustomerSecuredPatternRulePlugins(): array
     {
         return [
-            new CustomerSecuredPatternRulePlugin(), #CustomerAccessPermissionFeature
+            new CustomerAccessSecuredPatternRulePlugin(), #CustomerAccessPermissionFeature
         ];
     }
 }
