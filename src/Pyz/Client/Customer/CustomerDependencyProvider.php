@@ -50,7 +50,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     }
 
     /**
-     * @return \Spryker\Client\CustomerAccessPermission\Plugin\CustomerSecuredPatternPermissionPlugin[]
+     * @return \Spryker\Client\CustomerExtension\Dependency\Plugin\CustomerSecuredPatternPermissionPluginInterface[]
      */
     protected function getCustomerSecuredPatternPermissionPlugins(): array
     {
