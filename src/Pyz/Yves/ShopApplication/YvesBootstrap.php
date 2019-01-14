@@ -72,6 +72,7 @@ use SprykerShop\Yves\ProductReviewWidget\Plugin\Provider\ProductReviewController
 use SprykerShop\Yves\ProductSearchWidget\Plugin\Provider\ProductSearchWidgetControllerProvider;
 use SprykerShop\Yves\ProductSetListPage\Plugin\Provider\ProductSetListPageControllerProvider;
 use SprykerShop\Yves\QuickOrderPage\Plugin\Provider\QuickOrderPageControllerProvider;
+use SprykerShop\Yves\QuoteRequestPage\Plugin\Provider\QuoteRequestPageControllerProvider;
 use SprykerShop\Yves\QuoteRequestWidget\Plugin\Provider\QuoteRequestWidgetControllerProvider;
 use SprykerShop\Yves\SharedCartPage\Plugin\Provider\SharedCartPageControllerProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\AutoloaderCacheServiceProvider;
@@ -218,6 +219,7 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new CmsSearchPageControllerProvider($isSsl), #CmsSearchPageFeature
             new ProductSearchWidgetControllerProvider($isSsl),
             new QuoteRequestWidgetControllerProvider($isSsl), #QuoteRequestFeature
+            new QuoteRequestPageControllerProvider($isSsl), #QuoteRequestFeature
         ];
     }
 }
