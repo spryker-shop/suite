@@ -257,4 +257,12 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
 
         return $resourceRelationshipCollection;
     }
+
+    /**
+     * @return \Spryker\Shared\ApplicationExtension\Dependency\Plugin\ApplicationPluginInterface[]
+     */
+    protected function getApplicationPlugins(): array
+    {
+        return [];
+    }
 }
