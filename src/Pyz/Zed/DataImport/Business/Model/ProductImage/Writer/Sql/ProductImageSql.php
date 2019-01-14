@@ -31,7 +31,7 @@ class ProductImageSql implements ProductImageSqlInterface
              unnest(? :: INTEGER[]) AS %1\$s,
              unnest(? :: INTEGER[]) AS sortOrder
          ) input
-         LEFT JOIN spy_product_image_set ON (spy_product_image_set.%2\$s = input.%1\$s)
+         LEFT JOIN spy_product_image_set ON (spy_product_image_set.fk_locale = id_locale AND spy_product_image_set.%2\$s = input.%1\$s)
          ORDER BY input.sortOrder
     ),
     updated AS (

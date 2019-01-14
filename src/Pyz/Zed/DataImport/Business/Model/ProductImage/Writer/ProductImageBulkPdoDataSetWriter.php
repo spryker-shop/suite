@@ -169,6 +169,10 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
      */
     protected function persistProductAbstractImageSetEntities(): void
     {
+        if (!count(static::$productIds)) {
+            return;
+        }
+
         $nameCollection = $this->dataFormatter->getCollectionDataByKey(static::$productAbstractImageSetCollection, ProductImageHydratorStep::KEY_IMAGE_SET_DB_NAME_COLUMN);
         $name = $this->dataFormatter->formatPostgresArrayString($nameCollection);
 
@@ -195,6 +199,10 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
      */
     protected function persistProductConcreteImageSetEntities(): void
     {
+        if (!count(static::$productIds)) {
+            return;
+        }
+
         $nameCollection = $this->dataFormatter->getCollectionDataByKey(static::$productConcreteImageSetCollection, ProductImageHydratorStep::KEY_IMAGE_SET_DB_NAME_COLUMN);
         $name = $this->dataFormatter->formatPostgresArrayString($nameCollection);
 

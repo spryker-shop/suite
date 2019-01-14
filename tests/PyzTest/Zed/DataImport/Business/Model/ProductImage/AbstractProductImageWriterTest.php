@@ -58,11 +58,13 @@ abstract class AbstractProductImageWriterTest extends AbstractWriterTest
              * @var \Generated\Shared\Transfer\SpyProductImageSetEntityTransfer
              */
             $spyProductImageSetEntityTransfer = (new SpyProductImageSetEntityBuilder())->build();
-            $localeEntityTransfer = (new SpyLocaleEntityTransfer())->setLocaleName($dataSet[ProductImageHydratorStep::KEY_LOCALE]);
+
             $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_SET_TRANSFER] = $spyProductImageSetEntityTransfer
                 ->setFkLocale($locale->getIdLocale())
-                ->setSpyLocale($localeEntityTransfer)
                 ->setFkProductAbstract($product[SpyProductAbstractTableMap::COL_ID_PRODUCT_ABSTRACT]);
+
+            $localeEntityTransfer = (new SpyLocaleEntityTransfer())->setLocaleName($dataSet[ProductImageHydratorStep::KEY_LOCALE]);
+            $spyProductImageSetEntityTransfer->setSpyLocale($localeEntityTransfer);
 
             $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_TRANSFER] = (new SpyProductImageEntityBuilder())->build();
             $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER] = (new SpyProductImageSetToProductImageEntityTransfer())
