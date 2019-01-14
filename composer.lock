@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cfd0cbd7032fdfd59e181c2e114d3eda",
+    "content-hash": "723ea12f9f2e2a7a33a7c16abef9fc41",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -2933,11 +2933,11 @@
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/ps-3812/ps-3814-implementation-of-the-search-for-concrete-products-widget-on-the-cart-page",
+            "version": "dev-feature/ps-3812/ps-6697-add-quick-add-widget-on-shopping-list-page",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "520b9ce2d6c27799838a2cf7569983acc2f51fcc"
+                "reference": "8065be33a3ef50b1cd6f7a2bf357a8eaf8281e20"
             },
             "require": {
                 "php": ">=7.1"
@@ -3012,7 +3012,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-01-10T11:09:46+00:00"
+            "time": "2019-01-09T13:13:37+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -6081,6 +6081,52 @@
                 "versions"
             ],
             "time": "2018-06-13T13:22:40+00:00"
+        },
+        {
+            "name": "mikey179/vfsStream",
+            "version": "v1.6.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mikey179/vfsStream.git",
+                "reference": "d5fec95f541d4d71c4823bb5e30cf9b9e5b96145"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mikey179/vfsStream/zipball/d5fec95f541d4d71c4823bb5e30cf9b9e5b96145",
+                "reference": "d5fec95f541d4d71c4823bb5e30cf9b9e5b96145",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.6.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "org\\bovigo\\vfs\\": "src/main/php"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Frank Kleine",
+                    "homepage": "http://frankkleine.de/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Virtual file system to mock the real file system in unit tests.",
+            "homepage": "http://vfs.bovigo.org/",
+            "time": "2017-08-01T08:02:14+00:00"
         },
         {
             "name": "myclabs/deep-copy",
