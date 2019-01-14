@@ -22,14 +22,17 @@ class ProductImageSql implements ProductImageSqlInterface
       input.name,
       input.id_locale,
       input.%1\$s,
+      input.sortOrder,
       id_product_image_set as idProductImageSet
     FROM (
            SELECT
              unnest(? :: VARCHAR[]) AS name,
              unnest(? :: INTEGER[]) AS id_locale,
-             unnest(? :: INTEGER[]) AS %1\$s
+             unnest(? :: INTEGER[]) AS %1\$s,
+             unnest(? :: INTEGER[]) AS sortOrder
          ) input
-         LEFT JOIN spy_product_image_set ON (spy_product_image_set.fk_locale = id_locale AND spy_product_image_set.%2\$s = input.%1\$s)
+         LEFT JOIN spy_product_image_set ON (spy_product_image_set.%2\$s = input.%1\$s)
+         ORDER BY input.sortOrder
     ),
     updated AS (
         UPDATE spy_product_image_set
@@ -63,7 +66,7 @@ class ProductImageSql implements ProductImageSqlInterface
           WHERE idProductImageSet IS NULL AND %1\$s IS NOT NULL
     ) RETURNING id_product_image_set, %2\$s
   )
-SELECT updated.id_product_image_set, updated.%2\$s as %2\$s FROM updated UNION ALL SELECT inserted.id_product_image_set, inserted.%2\$s as %2\$s FROM inserted ORDER BY %2\$s", $idProduct, $fkProduct);
+SELECT updated.id_product_image_set, updated.%2\$s as %2\$s FROM updated UNION ALL SELECT inserted.id_product_image_set, inserted.%2\$s as %2\$s FROM inserted", $idProduct, $fkProduct);
         return $sql;
     }
 
@@ -85,7 +88,7 @@ SELECT updated.id_product_image_set, updated.%2\$s as %2\$s FROM updated UNION A
                  unnest(?::VARCHAR[]) AS externalUrlSmall,
                  unnest(?::INTEGER[]) AS sortOrder
              ) input
-      LEFT JOIN spy_product_image ON spy_product_image.external_url_large = input.externalUrlLarge
+      LEFT JOIN spy_product_image ON (spy_product_image.external_url_large = input.externalUrlLarge AND spy_product_image.external_url_small = input.externalUrlSmall)
       ORDER BY input.sortOrder
 ),
     inserted AS(
