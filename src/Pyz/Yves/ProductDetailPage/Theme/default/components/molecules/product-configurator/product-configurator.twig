@@ -14,6 +14,7 @@
 {% set brand = data.product.attributes.brand | default %}
 {% set sku = data.product.sku %}
 {% set availabilityWidget = '' %}
+{% set isProductAbstract = data.product.idProductConcrete is empty %}
 {% set isDisabled = data.product.idProductConcrete is empty or data.product.price is empty %}
 {% set isProductAvailable = true %}
 
@@ -141,7 +142,7 @@
         {% endif %}
     </form>
 
-    {% if not isAvailable %}
+    {% if not isAvailable and not isProductAbstract %}
         {% widget 'AvailabilitySubscriptionWidget' args [data.product] only %}{% endwidget %}
     {% endif %}
 
