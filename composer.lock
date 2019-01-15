@@ -995,7 +995,7 @@
                 {
                     "name": "Luís Otávio Cobucci Oblonczyk",
                     "email": "lcobucci@gmail.com",
-                    "role": "developer"
+                    "role": "Developer"
                 }
             ],
             "description": "A simple library to work with JSON Web Token and JSON Web Signature",
@@ -1989,7 +1989,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -2664,7 +2664,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "b3d4a5f25bca96799cdc3bd0694768a63e234bcb"
+                "reference": "64c111b11785f09032e61ba6e905985306b1a00c"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2934,7 +2934,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-01-15T08:25:10+00:00"
+            "time": "2019-01-15T15:42:46+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2942,7 +2942,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "587083d32e5bbd1a04d6bacfa3f3dfca97629e55"
+                "reference": "e5952f87f3438f0c1ee138a46042175362bbd138"
             },
             "require": {
                 "php": ">=7.1"
@@ -3017,7 +3017,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-01-10T17:08:31+00:00"
+            "time": "2019-01-15T10:25:25+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -6192,7 +6192,7 @@
                 "configurator",
                 "nette"
             ],
-            "time": "2018-05-16T11:51:51+00:00"
+            "time": "2018-05-17T12:52:20+00:00"
         },
         {
             "name": "nette/di",
@@ -8574,17 +8574,21 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "4118932c4db86ccddadaf9f05bd080e25727ff05"
+                "reference": "f65ffe941440439a2f8f19033a5f7c9693866c10"
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/development": "@stable",
                 "spryker/kernel": "^3.0.0",
-                "spryker/symfony": "^3.0.0"
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.7.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*"
             },
+            "bin": [
+                "bin/spryker-dev-console"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -8608,7 +8612,7 @@
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2019-01-09T13:26:55+00:00"
+            "time": "2019-01-15T14:36:50+00:00"
         },
         {
             "name": "spryker/git-hook",
