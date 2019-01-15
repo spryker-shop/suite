@@ -2540,11 +2540,11 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/silexphp.git",
-                "reference": "08eceb2d8989d0613b7a2f191c81728e9626c9dd"
+                "reference": "44df57db3ddacccd0ad3b1050b7b73f687906351"
             },
             "require": {
                 "php": ">=7.1",
-                "spryker/container": "^1.0.0",
+                "spryker/container": "dev-beta/te-323/te-648-enabling-step-3",
                 "symfony/event-dispatcher": "^3.0.0 || ^4.0.0",
                 "symfony/http-foundation": "^3.0.0",
                 "symfony/http-kernel": "^3.0.0 || ^4.0.0",
@@ -2608,7 +2608,7 @@
             "keywords": [
                 "microframework"
             ],
-            "time": "2019-01-15T12:34:36+00:00"
+            "time": "2019-01-15T15:24:52+00:00"
         },
         {
             "name": "spryker/spryker",
@@ -2894,7 +2894,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "2ade72dbbf402e4026b4a4f7129ef34172dd714c"
+                "reference": "079824d9d5026cc5c0b019cea57781de91883a95"
             },
             "require": {
                 "php": ">=7.1"
@@ -2969,7 +2969,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-01-15T12:57:55+00:00"
+            "time": "2019-01-15T18:15:27+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8526,17 +8526,21 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "4118932c4db86ccddadaf9f05bd080e25727ff05"
+                "reference": "f65ffe941440439a2f8f19033a5f7c9693866c10"
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/development": "@stable",
                 "spryker/kernel": "^3.0.0",
-                "spryker/symfony": "^3.0.0"
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.7.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*"
             },
+            "bin": [
+                "bin/spryker-dev-console"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -8560,7 +8564,7 @@
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2019-01-09T13:26:55+00:00"
+            "time": "2019-01-15T14:36:50+00:00"
         },
         {
             "name": "spryker/git-hook",
