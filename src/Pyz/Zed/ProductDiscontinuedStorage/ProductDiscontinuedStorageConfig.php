@@ -5,17 +5,17 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\ProductOptionStorage;
+namespace Pyz\Zed\ProductDiscontinuedStorage;
 
 use Pyz\Zed\Synchronization\SynchronizationConfig;
-use Spryker\Zed\ProductOptionStorage\ProductOptionStorageConfig as SprykerProductOptionStorageConfig;
+use Spryker\Zed\ProductDiscontinuedStorage\ProductDiscontinuedStorageConfig as SprykerProductDiscontinuedStorageConfig;
 
-class ProductOptionStorageConfig extends SprykerProductOptionStorageConfig
+class ProductDiscontinuedStorageConfig extends SprykerProductDiscontinuedStorageConfig
 {
     /**
      * @return string|null
      */
-    public function getProductAbstractOptionSynchronizationPoolName(): ?string
+    public function getProductDiscontinuedSynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }

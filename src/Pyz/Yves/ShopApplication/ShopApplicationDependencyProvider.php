@@ -61,6 +61,7 @@ use SprykerShop\Yves\ProductReviewWidget\Widget\DisplayProductAbstractReviewWidg
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductDetailPageReviewWidget;
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductRatingFilterWidget;
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductReviewDisplayWidget;
+use SprykerShop\Yves\ProductSearchWidget\Widget\ProductConcreteSearchWidget;
 use SprykerShop\Yves\ProductWidget\Widget\CatalogPageProductWidget;
 use SprykerShop\Yves\ProductWidget\Widget\CmsProductGroupWidget;
 use SprykerShop\Yves\ProductWidget\Widget\CmsProductWidget;
@@ -76,9 +77,12 @@ use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartPermissionGroupWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartShareWidget;
 use SprykerShop\Yves\ShopApplication\ShopApplicationDependencyProvider as SprykerShopApplicationDependencyProvider;
 use SprykerShop\Yves\ShoppingListNoteWidget\Widget\ShoppingListItemNoteWidget;
+use SprykerShop\Yves\ShoppingListPage\Widget\ShoppingListDismissWidget;
+use SprykerShop\Yves\ShoppingListWidget\Widget\AddItemsToShoppingListWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\AddToShoppingListWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListMenuItemWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListNavigationMenuWidget;
+use SprykerShop\Yves\TabsWidget\Widget\FullTextSearchTabsWidget;
 use SprykerShop\Yves\WishlistWidget\Widget\WishlistMenuItemWidget;
 
 class ShopApplicationDependencyProvider extends SprykerShopApplicationDependencyProvider
@@ -147,6 +151,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             SharedCartOperationsWidget::class,
             SharedCartPermissionGroupWidget::class,
             SharedCartShareWidget::class,
+            ShoppingListDismissWidget::class,
             ShoppingListItemNoteWidget::class,
             ShoppingListMenuItemWidget::class,
             ShoppingListNavigationMenuWidget::class,
@@ -158,6 +163,9 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             WishlistMenuItemWidget::class,
             WishlistProductAlternativeWidget::class,
             CompanyBusinessUnitAddressWidget::class,
+            FullTextSearchTabsWidget::class,
+            ProductConcreteSearchWidget::class,
+            AddItemsToShoppingListWidget::class,
         ];
     }
 
