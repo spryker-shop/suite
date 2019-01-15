@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "83baaf9635069140790e574e89628a11",
+    "content-hash": "cfd0cbd7032fdfd59e181c2e114d3eda",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -1037,7 +1037,7 @@
                 {
                     "name": "Luís Otávio Cobucci Oblonczyk",
                     "email": "lcobucci@gmail.com",
-                    "role": "Developer"
+                    "role": "developer"
                 }
             ],
             "description": "A simple library to work with JSON Web Token and JSON Web Signature",
@@ -2656,7 +2656,7 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/ps-1855/master-quick-add-to-cart-part-2",
+            "version": "dev-feature/ps-3812/master-search-widget-for-concrete-products",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
@@ -2933,11 +2933,11 @@
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/ps-1855/master-quick-add-to-cart-part-2",
+            "version": "dev-feature/ps-3812/ps-3814-implementation-of-the-search-for-concrete-products-widget-on-the-cart-page",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "debceabed6e987d58e32a5206918d991cf760ba5"
+                "reference": "9aa375d9093986046715206ebdaf66c6407685c1"
             },
             "require": {
                 "php": ">=7.1"
@@ -3012,7 +3012,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-12-12T16:18:40+00:00"
+            "time": "2019-01-14T16:32:10+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -6083,6 +6083,52 @@
             "time": "2018-06-13T13:22:40+00:00"
         },
         {
+            "name": "mikey179/vfsStream",
+            "version": "v1.6.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mikey179/vfsStream.git",
+                "reference": "d5fec95f541d4d71c4823bb5e30cf9b9e5b96145"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mikey179/vfsStream/zipball/d5fec95f541d4d71c4823bb5e30cf9b9e5b96145",
+                "reference": "d5fec95f541d4d71c4823bb5e30cf9b9e5b96145",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.6.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "org\\bovigo\\vfs\\": "src/main/php"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Frank Kleine",
+                    "homepage": "http://frankkleine.de/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Virtual file system to mock the real file system in unit tests.",
+            "homepage": "http://vfs.bovigo.org/",
+            "time": "2017-08-01T08:02:14+00:00"
+        },
+        {
             "name": "myclabs/deep-copy",
             "version": "1.8.1",
             "source": {
@@ -6745,7 +6791,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-12T17:28:44+00:00"
+            "time": "2017-12-13T13:21:38+00:00"
         },
         {
             "name": "phar-io/manifest",
