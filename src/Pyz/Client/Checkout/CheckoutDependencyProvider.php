@@ -17,6 +17,8 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
      */
     protected function getQuoteProceedCheckoutCheckPlugins(): array
     {
-        return [new QuoteApprovalProceedCheckoutCheckPlugin()];
+        return [
+            new QuoteApprovalProceedCheckoutCheckPlugin(),
+        ];
     }
 }
