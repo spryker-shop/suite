@@ -180,12 +180,4 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new EventBehaviorServiceProvider(),
         ];
     }
-
-    /**
-     * @return \Spryker\Shared\ApplicationExtension\Dependency\Plugin\ApplicationPluginInterface[]
-     */
-    protected function getApplicationPlugins(): array
-    {
-        return [];
-    }
 }

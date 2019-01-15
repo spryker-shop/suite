@@ -178,12 +178,4 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new CompanyBusinessUnitControllerRestrictionPlugin(),
         ];
     }
-
-    /**
-     * @return \Spryker\Shared\ApplicationExtension\Dependency\Plugin\ApplicationPluginInterface[]
-     */
-    protected function getApplicationPlugins(): array
-    {
-        return [];
-    }
 }
