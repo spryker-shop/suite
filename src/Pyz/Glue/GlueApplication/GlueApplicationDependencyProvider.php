@@ -42,8 +42,8 @@ use Spryker\Glue\GlueApplication\Plugin\Rest\SetStoreCurrentLocaleBeforeActionPl
 use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationshipCollectionInterface;
 use Spryker\Glue\OrdersRestApi\Plugin\OrderRelationshipByOrderReferencePlugin;
 use Spryker\Glue\OrdersRestApi\Plugin\OrdersResourceRoutePlugin;
-use Spryker\Glue\ProductAlternativesRestApi\Plugin\GlueApplication\AbstractAlternativeProductsRoutePlugin;
-use Spryker\Glue\ProductAlternativesRestApi\Plugin\GlueApplication\ConcreteAlternativeProductsRoutePlugin;
+use Spryker\Glue\ProductAlternativesRestApi\Plugin\GlueApplication\AbstractAlternativeProductsResourceRoutePlugin;
+use Spryker\Glue\ProductAlternativesRestApi\Plugin\GlueApplication\ConcreteAlternativeProductsResourceRoutePlugin;
 use Spryker\Glue\ProductAvailabilitiesRestApi\Plugin\AbstractProductAvailabilitiesRoutePlugin;
 use Spryker\Glue\ProductAvailabilitiesRestApi\Plugin\ConcreteProductAvailabilitiesRoutePlugin;
 use Spryker\Glue\ProductImageSetsRestApi\Plugin\AbstractProductImageSetsRoutePlugin;
@@ -120,8 +120,8 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new ProductLabelsResourceRoutePlugin(),
             new CheckoutDataResourcePlugin(),
             new CheckoutResourcePlugin(),
-            new ConcreteAlternativeProductsRoutePlugin(),
-            new AbstractAlternativeProductsRoutePlugin(),
+            new ConcreteAlternativeProductsResourceRoutePlugin(),
+            new AbstractAlternativeProductsResourceRoutePlugin(),
         ];
     }
 
