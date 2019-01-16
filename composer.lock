@@ -2664,7 +2664,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "1064850b4715196ed037418568ff08cb31ff1dd0"
+                "reference": "b5c50305935f2373b7aa3944fa09c8ec72df1e7c"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2934,7 +2934,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-01-15T08:15:18+00:00"
+            "time": "2019-01-16T07:46:48+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -7339,16 +7339,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "7.5.1",
+            "version": "7.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "c23d78776ad415d5506e0679723cb461d71f488f"
+                "reference": "7c89093bd00f7d5ddf0ab81dee04f801416b4944"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/c23d78776ad415d5506e0679723cb461d71f488f",
-                "reference": "c23d78776ad415d5506e0679723cb461d71f488f",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/7c89093bd00f7d5ddf0ab81dee04f801416b4944",
+                "reference": "7c89093bd00f7d5ddf0ab81dee04f801416b4944",
                 "shasum": ""
             },
             "require": {
@@ -7419,7 +7419,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-12-12T07:20:32+00:00"
+            "time": "2019-01-15T08:19:08+00:00"
         },
         {
             "name": "roave/better-reflection",
@@ -8574,17 +8574,21 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "4118932c4db86ccddadaf9f05bd080e25727ff05"
+                "reference": "f65ffe941440439a2f8f19033a5f7c9693866c10"
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/development": "@stable",
                 "spryker/kernel": "^3.0.0",
-                "spryker/symfony": "^3.0.0"
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.7.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*"
             },
+            "bin": [
+                "bin/spryker-dev-console"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -8608,7 +8612,7 @@
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2019-01-09T13:26:55+00:00"
+            "time": "2019-01-15T14:36:50+00:00"
         },
         {
             "name": "spryker/git-hook",
