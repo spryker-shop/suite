@@ -2272,16 +2272,16 @@
         },
         {
             "name": "ruflin/elastica",
-            "version": "5.3.3",
+            "version": "5.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ruflin/Elastica.git",
-                "reference": "afc663647c58e2533700ec4dcd2dee35b242caf0"
+                "reference": "6d7c20e632e203bac4aaf8ae9df9802fbabb6453"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ruflin/Elastica/zipball/afc663647c58e2533700ec4dcd2dee35b242caf0",
-                "reference": "afc663647c58e2533700ec4dcd2dee35b242caf0",
+                "url": "https://api.github.com/repos/ruflin/Elastica/zipball/6d7c20e632e203bac4aaf8ae9df9802fbabb6453",
+                "reference": "6d7c20e632e203bac4aaf8ae9df9802fbabb6453",
                 "shasum": ""
             },
             "require": {
@@ -2326,7 +2326,7 @@
                 "client",
                 "search"
             ],
-            "time": "2018-10-16T09:32:04+00:00"
+            "time": "2019-01-16T13:43:32+00:00"
         },
         {
             "name": "silex/silex",
@@ -5390,16 +5390,16 @@
         },
         {
             "name": "behat/gherkin",
-            "version": "v4.5.1",
+            "version": "v4.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Gherkin.git",
-                "reference": "74ac03d52c5e23ad8abd5c5cce4ab0e8dc1b530a"
+                "reference": "ab0a02ea14893860bca00f225f5621d351a3ad07"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Gherkin/zipball/74ac03d52c5e23ad8abd5c5cce4ab0e8dc1b530a",
-                "reference": "74ac03d52c5e23ad8abd5c5cce4ab0e8dc1b530a",
+                "url": "https://api.github.com/repos/Behat/Gherkin/zipball/ab0a02ea14893860bca00f225f5621d351a3ad07",
+                "reference": "ab0a02ea14893860bca00f225f5621d351a3ad07",
                 "shasum": ""
             },
             "require": {
@@ -5407,8 +5407,8 @@
             },
             "require-dev": {
                 "phpunit/phpunit": "~4.5|~5",
-                "symfony/phpunit-bridge": "~2.7|~3",
-                "symfony/yaml": "~2.3|~3"
+                "symfony/phpunit-bridge": "~2.7|~3|~4",
+                "symfony/yaml": "~2.3|~3|~4"
             },
             "suggest": {
                 "symfony/yaml": "If you want to parse features, represented in YAML files"
@@ -5445,7 +5445,7 @@
                 "gherkin",
                 "parser"
             ],
-            "time": "2017-08-30T11:04:43+00:00"
+            "time": "2019-01-16T14:22:17+00:00"
         },
         {
             "name": "codeception/codeception",
@@ -8378,17 +8378,24 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "4118932c4db86ccddadaf9f05bd080e25727ff05"
+                "reference": "ca54b3ceafc159c0f2b4202d77d0b9c4b37f1dc9"
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/development": "@stable",
                 "spryker/kernel": "^3.0.0",
-                "spryker/symfony": "^3.0.0"
+                "spryker/log": "^3.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.7.0",
+                "spryker/twig": "^3.0.0",
+                "spryker/zend": "^2.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*"
             },
+            "bin": [
+                "bin/spryker-dev-console"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -8412,7 +8419,7 @@
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2019-01-09T13:26:55+00:00"
+            "time": "2019-01-16T10:34:47+00:00"
         },
         {
             "name": "spryker/git-hook",
