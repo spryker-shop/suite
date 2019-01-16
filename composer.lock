@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ed0eb69b162340d145ac660e90e5963a",
+    "content-hash": "e95b127b4ee306bde330ae17e58330d4",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -995,7 +995,7 @@
                 {
                     "name": "Luís Otávio Cobucci Oblonczyk",
                     "email": "lcobucci@gmail.com",
-                    "role": "developer"
+                    "role": "Developer"
                 }
             ],
             "description": "A simple library to work with JSON Web Token and JSON Web Signature",
@@ -2660,11 +2660,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/cc-523/master-new-template-for-categories-page",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "b3ad7f537c10321a603920c39adcbb71d6f00fed"
+                "reference": "65e83f39090d95a3109347b9d01b1c989eddea5b"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2934,15 +2934,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-01-15T09:52:45+00:00"
+            "time": "2019-01-16T08:39:44+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/cc-523/master-new-template-for-categories-page",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "e5952f87f3438f0c1ee138a46042175362bbd138"
+                "reference": "1900fc41589bb96b030d32a4ddbc5f286ed78615"
             },
             "require": {
                 "php": ">=7.1"
@@ -3017,7 +3017,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-01-15T10:25:25+00:00"
+            "time": "2019-01-16T08:43:36+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -6733,7 +6733,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-13T13:21:38+00:00"
+            "time": "2017-12-12T17:28:44+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -8574,17 +8574,21 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "4118932c4db86ccddadaf9f05bd080e25727ff05"
+                "reference": "f65ffe941440439a2f8f19033a5f7c9693866c10"
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/development": "@stable",
                 "spryker/kernel": "^3.0.0",
-                "spryker/symfony": "^3.0.0"
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.7.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*"
             },
+            "bin": [
+                "bin/spryker-dev-console"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -8608,7 +8612,7 @@
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2019-01-09T13:26:55+00:00"
+            "time": "2019-01-15T14:36:50+00:00"
         },
         {
             "name": "spryker/git-hook",
