@@ -2664,7 +2664,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "b3ad7f537c10321a603920c39adcbb71d6f00fed"
+                "reference": "d69d2c12dba5363c89a901e0d08e1afaf995cdf4"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2934,7 +2934,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-01-15T09:52:45+00:00"
+            "time": "2019-01-16T09:06:56+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -8574,17 +8574,21 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "4118932c4db86ccddadaf9f05bd080e25727ff05"
+                "reference": "f65ffe941440439a2f8f19033a5f7c9693866c10"
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/development": "@stable",
                 "spryker/kernel": "^3.0.0",
-                "spryker/symfony": "^3.0.0"
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.7.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*"
             },
+            "bin": [
+                "bin/spryker-dev-console"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -8608,7 +8612,7 @@
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2019-01-09T13:26:55+00:00"
+            "time": "2019-01-15T14:36:50+00:00"
         },
         {
             "name": "spryker/git-hook",
