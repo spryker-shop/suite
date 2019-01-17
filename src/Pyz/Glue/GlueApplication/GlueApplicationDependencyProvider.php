@@ -29,6 +29,7 @@ use Spryker\Glue\CategoriesRestApi\Plugin\CategoryResourceRoutePlugin;
 use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig;
 use Spryker\Glue\CheckoutRestApi\Plugin\GlueApplication\CheckoutDataResourcePlugin;
 use Spryker\Glue\CheckoutRestApi\Plugin\GlueApplication\CheckoutResourcePlugin;
+use Spryker\Glue\CompanyRolesRestApi\Plugin\CompanyRolesResourcePlugin;
 use Spryker\Glue\CompaniesRestApi\Plugin\CompaniesResourcePlugin;
 use Spryker\Glue\CompanyBusinessUnitsRestApi\Plugin\CompanyBusinessUnitsResourcePlugin;
 use Spryker\Glue\CustomersRestApi\CustomersRestApiConfig;
@@ -120,6 +121,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new ProductLabelsResourceRoutePlugin(),
             new CheckoutDataResourcePlugin(),
             new CheckoutResourcePlugin(),
+            new CompanyRolesResourcePlugin(),
             new CompaniesResourcePlugin(),
             new CompanyBusinessUnitsResourcePlugin(),
         ];
