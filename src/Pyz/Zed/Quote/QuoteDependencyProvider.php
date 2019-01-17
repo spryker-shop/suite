@@ -14,8 +14,7 @@ use Spryker\Zed\MultiCart\Communication\Plugin\DeactivateQuotesBeforeQuoteSavePl
 use Spryker\Zed\MultiCart\Communication\Plugin\InitDefaultQuoteCustomerQuoteDeleteAfterPlugin;
 use Spryker\Zed\MultiCart\Communication\Plugin\ResolveQuoteNameBeforeQuoteCreatePlugin;
 use Spryker\Zed\Quote\QuoteDependencyProvider as SprykerQuoteDependencyProvider;
-use Spryker\Zed\QuoteApproval\Communication\Plugin\QuoteApprovalHydrationPlugin;
-use Spryker\Zed\QuoteApproval\Communication\Plugin\UpdateApprovalsQuoteAfterSavePlugin;
+use Spryker\Zed\QuoteApproval\Communication\Plugin\Quote\QuoteApprovalExpanderPlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\CleanQuoteShareBeforeQuoteCreatePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\DeactivateSharedQuotesBeforeQuoteSavePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\MarkAsDefaultQuoteAfterSavePlugin;
@@ -58,17 +57,16 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
         return [
             new UpdateShareDetailsQuoteAfterSavePlugin(), #SharedCartFeature
             new MarkAsDefaultQuoteAfterSavePlugin(), #SharedCartFeature
-            new UpdateApprovalsQuoteAfterSavePlugin(), #QuoteApprovalFeature
         ];
     }
 
     /**
-     * @return \Spryker\Zed\Quote\Communication\Plugin\QuoteHydrationPluginInterface[]
+     * @return \Spryker\Zed\QuoteExtension\Dependency\Plugin\QuoteExpanderPluginInterface[]
      */
-    protected function getQuoteHydrationPlugins(): array
+    protected function getQuoteExpanderPlugins(): array
     {
         return [
-            new QuoteApprovalHydrationPlugin(), #QuoteApprovalFeature
+            new QuoteApprovalExpanderPlugin(), #QuoteApprovalFeature
         ];
     }
 
