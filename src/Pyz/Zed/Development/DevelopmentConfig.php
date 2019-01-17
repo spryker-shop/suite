@@ -14,6 +14,16 @@ class DevelopmentConfig extends SprykerDevelopmentConfig
     /**
      * @project Only needed in Project, not in demoshop
      *
+     * @return string
+     */
+    protected const INTERNAL_NAMESPACES_TO_PATH_MAPPING = [
+        self::NAMESPACE_SPRYKER_SHOP => APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR . 'vendor/spryker/spryker-shop/Bundles/',
+        self::NAMESPACE_SPRYKER_MERCHANT_PORTAL => APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR . 'vendor/spryker/spryker-merchant-portal/Bundles/',
+    ];
+
+    /**
+     * @project Only needed in Project, not in demoshop
+     *
      * @return array
      */
     public function getIdeAutoCompletionSourceDirectoryGlobPatterns()
