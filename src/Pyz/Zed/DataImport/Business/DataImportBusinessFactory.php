@@ -846,7 +846,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     {
         $dataImporter = $this->getCsvDataImporterWriterAwareFromConfig($this->getConfig()->getProductImageDataImporterConfiguration());
 
-        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductImageBulkPdoDataSetWriter::BULK_SIZE);
+        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductImageHydratorStep::BULK_SIZE);
         $dataSetStepBroker
             ->addStep($this->createProductAbstractSkuToIdProductAbstractStep(ProductImageHydratorStep::KEY_ABSTRACT_SKU, ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT))
             ->addStep($this->createProductSkuToIdProductStep(ProductImageHydratorStep::KEY_CONCRETE_SKU, ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT))
