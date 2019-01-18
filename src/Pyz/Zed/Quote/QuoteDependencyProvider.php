@@ -7,14 +7,14 @@
 
 namespace Pyz\Zed\Quote;
 
-use Spryker\Zed\Currency\Communication\Plugin\Quote\QuoteCurrencyValidatePlugin;
+use Spryker\Zed\Currency\Communication\Plugin\Quote\QuoteCurrencyValidatorPlugin;
 use Spryker\Zed\Currency\Communication\Plugin\SetDefaultCurrencyBeforeQuoteCreatePlugin;
 use Spryker\Zed\MultiCart\Communication\Plugin\AddDefaultNameBeforeQuoteSavePlugin;
 use Spryker\Zed\MultiCart\Communication\Plugin\AddSuccessMessageAfterQuoteCreatedPlugin;
 use Spryker\Zed\MultiCart\Communication\Plugin\DeactivateQuotesBeforeQuoteSavePlugin;
 use Spryker\Zed\MultiCart\Communication\Plugin\InitDefaultQuoteCustomerQuoteDeleteAfterPlugin;
 use Spryker\Zed\MultiCart\Communication\Plugin\ResolveQuoteNameBeforeQuoteCreatePlugin;
-use Spryker\Zed\Price\Communication\Plugin\Quote\QuotePriceModeValidatePlugin;
+use Spryker\Zed\Price\Communication\Plugin\Quote\QuotePriceModeValidatorPlugin;
 use Spryker\Zed\Quote\QuoteDependencyProvider as SprykerQuoteDependencyProvider;
 use Spryker\Zed\SharedCart\Communication\Plugin\CleanQuoteShareBeforeQuoteCreatePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\DeactivateSharedQuotesBeforeQuoteSavePlugin;
@@ -96,13 +96,13 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\QuoteExtension\Dependency\Plugin\QuoteValidatePluginInterface[]
+     * @return \Spryker\Zed\QuoteExtension\Dependency\Plugin\QuoteValidatorPluginInterface[]
      */
-    protected function getQuoteValidatePlugins(): array
+    protected function getQuoteValidatorPlugins(): array
     {
         return [
-            new QuoteCurrencyValidatePlugin(),
-            new QuotePriceModeValidatePlugin(),
+            new QuoteCurrencyValidatorPlugin(),
+            new QuotePriceModeValidatorPlugin(),
         ];
     }
 }
