@@ -15,7 +15,7 @@ class ContentStorageDependencyProvider extends SprykerContentStorageDependencyPr
     /**
      * @return \Spryker\Client\ContentStorageExtension\Plugin\ContentTermExecutorPluginInterface[]
      */
-    protected function getContentItemPlugins(): array
+    protected function getContentPlugins(): array
     {
         return [
             new AbstractProductListTermPlugin(),

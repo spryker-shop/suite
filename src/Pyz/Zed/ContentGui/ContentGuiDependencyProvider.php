@@ -15,7 +15,7 @@ class ContentGuiDependencyProvider extends SprykerContentGuiDependencyProvider
     /**
      * @return \Spryker\Zed\ContentGuiExtension\Plugin\ContentPluginInterface[]
      */
-    protected function getContentItemPlugins(): array
+    protected function getContentPlugins(): array
     {
         return [
             new ContentProductConnectorPlugin(),
