@@ -7,6 +7,8 @@
 
 namespace Pyz\Zed\Permission;
 
+use Spryker\Shared\QuoteApproval\Plugin\Permission\ApproveQuotePermissionPlugin;
+use Spryker\Shared\QuoteApproval\Plugin\Permission\PlaceOrderPermissionPlugin;
 use Spryker\Zed\CompanyRole\Communication\Plugin\PermissionStoragePlugin;
 use Spryker\Zed\Permission\PermissionDependencyProvider as SprykerPermissionDependencyProvider;
 use Spryker\Zed\SharedCart\Communication\Plugin\QuotePermissionStoragePlugin;
@@ -40,6 +42,8 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new WriteSharedCartPermissionPlugin(), #SharedCartFeature
             new ReadShoppingListPermissionPlugin(), #ShoppingListFeature
             new WriteShoppingListPermissionPlugin(), #ShoppingListFeature
+            new PlaceOrderPermissionPlugin(), #QuoteApprovalFeature
+            new ApproveQuotePermissionPlugin(), #QuoteApprovalFeature
         ];
     }
 }
