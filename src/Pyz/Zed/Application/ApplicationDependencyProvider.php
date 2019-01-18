@@ -28,7 +28,6 @@ use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\SaveSessionServ
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\SilexRoutingServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\SslServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\SubRequestServiceProvider;
-use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\TranslationServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\ZedHstsServiceProvider;
 use Spryker\Zed\Assertion\Communication\Plugin\ServiceProvider\AssertionServiceProvider;
 use Spryker\Zed\Auth\Communication\Plugin\Bootstrap\AuthBootstrapProvider;
@@ -65,7 +64,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
         $providers = [
             new SessionServiceProvider(),
             new SprykerSessionServiceProvider(),
-            new UserLocaleServiceProvider(),
             new SslServiceProvider(),
             new AuthBootstrapProvider(),
             new AclBootstrapProvider(),
@@ -84,9 +82,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new MessengerServiceProvider(),
             new ZedNavigationServiceProvider(),
             new MonitoringRequestTransactionServiceProvider(),
-            new TranslationServiceProvider(),
-            // ZedTranslationServiceProvider must be declared after TranslationServiceProvider
-            new ZedTranslationServiceProvider(),
             new DateTimeFormatterServiceProvider(),
             new GuiTwigExtensionServiceProvider(),
             new RedirectAfterLoginProvider(),
@@ -95,6 +90,8 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new EventBehaviorServiceProvider(),
             new TwigChartFunctionServiceProvider(),
             new SaveSessionServiceProvider(),
+            new UserLocaleServiceProvider(),
+            new ZedTranslationServiceProvider(),
         ];
 
         if (Environment::isDevelopment()) {

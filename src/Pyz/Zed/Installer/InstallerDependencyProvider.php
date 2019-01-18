@@ -27,7 +27,6 @@ use Spryker\Zed\SharedCart\Communication\Plugin\SharedCartPermissionInstallerPlu
 use Spryker\Zed\ShoppingList\Communication\Plugin\ShoppingListPermissionsInstallerPlugin;
 use Spryker\Zed\Translator\Communication\Plugin\TranslatorInstallerPlugin;
 use Spryker\Zed\User\Communication\Plugin\UserInstallerPlugin;
-use Spryker\Zed\UserLocale\Communication\Plugin\UserLocaleInstallerPlugin;
 
 class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
 {
@@ -55,7 +54,6 @@ class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
             new ProductPackagingUnitTypeInstallerPlugin(),
             new SalesOrderThresholdTypeInstallerPlugin(), #SalesOrderThresholdFeature
             new OauthCustomerInstallerPlugin(),
-            new UserLocaleInstallerPlugin(),
             new SalesPaymentMethodTypeInstallerPlugin(),
         ];
     }

@@ -469,6 +469,16 @@ $config[MonitoringConstants::IGNORABLE_TRANSACTIONS] = [
 $config[QuoteConstants::GUEST_QUOTE_LIFETIME] = 'P01M';
 
 // ----------- Translator
-$config[TranslatorConstants::FALLBACK_LOCALES] = [
+$config[TranslatorConstants::TRANSLATION_FALLBACK_LOCALES] = [
     'de_DE' => ['en_US'],
+];
+
+$config[TranslatorConstants::TRANSLATION_CACHE_DIRECTORY] = sprintf(
+    '%s/data/%s/cache/Zed/translation',
+    APPLICATION_ROOT_DIR,
+    $CURRENT_STORE
+);
+
+$config[TranslatorConstants::TRANSLATION_FILE_PATH_PATTERNS] = [
+    APPLICATION_ROOT_DIR . '/data/translation/Zed/*/[a-z][a-z]_[A-Z][A-Z].csv'
 ];
