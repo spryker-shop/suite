@@ -238,7 +238,7 @@ shipment.hermes,Hermes,en_US
 customer.first_name,Vorname,de_DE
 customer.first_name,First Name,en_US
 customer.last_name,Name,de_DE
-customer.last_name,Name,en_US
+customer.last_name,Last Name,en_US
 customer.salutation.mr,Herr,de_DE
 customer.salutation.mr,Mr.,en_US
 customer.salutation.mrs,Frau,de_DE
@@ -407,8 +407,8 @@ customer.profile.order_history,Last Orders,en_US
 customer.profile.order_history,Letzte Bestellungen,de_DE
 customer.account.no_orders,No orders at the moment,en_US
 customer.account.no_orders,Keine Bestellungen,de_DE
-customer.address.updated,New address updated,en_US
-customer.address.updated,Neue Adresse hinzugefügt,de_DE
+customer.address.updated,Address was successfully updated,en_US
+customer.address.updated,Adresse wurde erfolgreich aktualisiert,de_DE
 customer.address.delete.success,Address deleted successfully,en_US
 customer.address.delete.success,Adresse erfolgreich gelöscht,de_DE
 customer.address.added,Address was successfully added,en_US
@@ -611,6 +611,8 @@ customer.password.recovery.mail.sent,"If there is an account associated with thi
 customer.password.recovery.mail.sent,"Falls ein Konto für diese Emailaddresse existiert, werden Sie eine Email mit den weiteren Anweisungen bekommen",de_DE
 customer.address.number,Number,en_US
 customer.address.number,Nummer,de_DE
+customer.address.save_new_address,Save new address to address book,en_US
+customer.address.save_new_address,Neue Adresse in Adressbuch speichern,de_DE
 countries.iso.AT,Austria,en_US
 countries.iso.AT,Österreich,de_DE
 countries.iso.DE,Germany,en_US
@@ -1563,6 +1565,34 @@ persistent_cart.error.quote.not_available,Cart does not exists,en_US
 persistent_cart.error.quote.not_available,Einkaufswagen existiert nicht,de_DE
 cart.locked.change_denied,"You can’t modify this cart because it’s in the process of approval.",en_US
 cart.locked.change_denied,"Sie können diesen Warenkorb nicht ändern, weil er sich gerade in der Genehmigungsphase befindet.",de_DE
+quote_approval.request.send,Send Request,en_US
+quote_approval.request.send,Anfrage Senden,de_DE
+quote_approval.remove,Cancel Request,en_US
+quote_approval.remove,Anfrage Abbrechen,de_DE
+quote_approval.created,"Your request for Approval was send to %first_name% %last_name%".,en_US
+quote_approval.created,"Ihre Anfrage zur Genehmigung wurde an %first_name% %last_name% gesendet.",de_DE
+quote_approval.removed,"Your request for Approval was canceled.",en_US
+quote_approval.removed,"Ihre Genehmigungsanfrage wurde abgebrochen.",de_DE
+quote_approval_widget.title,Approval Request,en_US
+quote_approval_widget.title,Genehmigungsanfrage,de_DE
+quote_approval_widget.limit.unlimited,Unlimited,en_US
+quote_approval_widget.limit.unlimited,Unbegrenzt,de_DE
+quote_approval_widget.cart.status.approved,"Approved",en_US
+quote_approval_widget.cart.status.approved,"Genehmigt",de_DE
+quote_approval_widget.cart.status.declined,"Declined",en_US
+quote_approval_widget.cart.status.declined,"Abgelehnt",de_DE
+quote_approval_widget.cart.status.waiting,"Waiting",en_US
+quote_approval_widget.cart.status.waiting,"Wartet",de_DE
+quote_approval_widget.shared_cart_warning,"After a cart has been sent to approval, all of its shares will be dismissed.",en_US
+quote_approval_widget.shared_cart_warning,"Nachdem der Warenkorb zur Genehmigung gesendet wurde, wird sein Sharing aufgehoben.",de_DE
+quote_approval_widget.limit_text,"Your purchase limit is %amount%. To spend more, request approval from your manager.",en_US
+quote_approval_widget.limit_text,"Ihr Einkaufsrahmen liegt bei %amount%. Um mehr auszugeben, fordern Sie bitte die Genehmigung bei Ihrem Manager an",de_DE
+quote_approval.request.waiting_for_approval_from,Waiting for Approval from,en_US
+quote_approval.request.waiting_for_approval_from,Wartet auf die Genehmigung von,de_DE
+quote_approval.request.approved_by,Approved by,en_US
+quote_approval.request.approved_by,Genehmigt von,de_DE
+quote_approval.request.declined_by,Declined by,en_US
+quote_approval.request.declined_by,Abgelehnt um,de_DE
 persistent_cart.quote.remove.success,Cart deleted successfully,en_US
 persistent_cart.quote.remove.success,Einkaufswagen wurde erfolgreich gelöscht,de_DE
 persistent_cart.quote.remove.can_not_remove_last_cart,Customer should have at least one cart,en_US
@@ -1603,6 +1633,34 @@ quote_approval_widget.cart.cancel,"Cancel",en_US
 quote_approval_widget.cart.cancel,"Abbrechen",de_DE
 cart.validate.items.price.changed,"Prices have been changed for products with SKU '%sku%'.",en_US
 cart.validate.items.price.changed,"Preis wurde für Produkte mit SKU geändert '%sku%'.",de_DE
+quote_approval_widget.cart.quote_owner_name,"Quote owner name",en_US
+quote_approval_widget.cart.quote_owner_name,"Name des Auftragsinhabers",de_DE
+quote_approval_widget.cart.request_date,"Date of requesting for approve",en_US
+quote_approval_widget.cart.request_date,"Datum der Anfrage zur Genehmigung",de_DE
+quote_approval_widget.cart.status,"Status",en_US
+quote_approval_widget.cart.status,"Status",de_DE
+quote_approval_widget.cart.status.Approved,"Approved",en_US
+quote_approval_widget.cart.status.Approved,"Genehmigt",de_DE
+quote_approval_widget.cart.status.Declined,"Declined",en_US
+quote_approval_widget.cart.status.Declined,"Abgelehnt",de_DE
+quote_approval_widget.cart.approve,"Approve",en_US
+quote_approval_widget.cart.approve,"Genehmigen",de_DE
+quote_approval_widget.cart.decline,"Decline",en_US
+quote_approval_widget.cart.decline,"Ablehnen",de_DE
+quote_approval_widget.cart.cancel,"Cancel",en_US
+quote_approval_widget.cart.cancel,"Abbrechen",de_DE
+quote_approval_widget.cart.success_message.approved,"Request from %first_name% %last_name% was successfully approved",en_US
+quote_approval_widget.cart.success_message.approved,"Anfrage von %first_name% %last_name% wurde erfolgreich genehmigt",de_DE
+quote_approval_widget.cart.success_message.declined,"Request from %first_name% %last_name% was successfully declined",en_US
+quote_approval_widget.cart.success_message.declined,"Anfrage von %first_name% %last_name% wurde erfolgreich abgelehnt",de_DE
+quote_approval_widget.cart.success_message.canceled,"Request from %first_name% %last_name% was successfully canceled",en_US
+quote_approval_widget.cart.success_message.canceled,"Anfrage von %first_name% %last_name% wurde erfolgreich abgebrochen",de_DE
+quote_approval_widget.cart.error_approve_message,"You don't have permission to approve this Cart",en_US
+quote_approval_widget.cart.error_approve_message,"Sie sind nicht berechtigt diesen Warenkorb zu genehmigen",de_DE
+quote_approval_widget.cart.error_decline_message,"You don't have permission to decline this Cart",en_US
+quote_approval_widget.cart.error_decline_message,"Sie sind nicht berechtigt diesen Warenkorb abzulehnen",de_DE
+quote_approval_widget.cart.error_cancel_message,"You don't have permission to cancel this Cart",en_US
+quote_approval_widget.cart.error_cancel_message,"Sie sind nicht berechtigt diesen Warenkorb abzubrechen",de_DE
 multi_cart.form.create_cart,"Add new cart",en_US
 multi_cart.form.create_cart,"Füge einen neuen Warenkorb hinzu",de_DE
 multi_cart.form.quote.name,"Cart Name",en_US
@@ -1883,6 +1941,8 @@ shopping_list.cart.items_add.failed,Items could not be added to the List,en_US
 shopping_list.cart.items_add.failed,Artikel konnten der Liste nicht hinzugefügt werden,de_DE
 shopping_list.cart.items_add.success,Items were added to the List,en_US
 shopping_list.cart.items_add.success,Artikel wurden zu der Liste hinzugefügt,de_DE
+shopping_list_add_items_widget.add_to_shopping_list,Add to shopping list,en_US
+shopping_list_add_items_widget.add_to_shopping_list,Auf die Merkliste,de_DE
 page.detail.add-to-shopping-list,Add to Shopping list,en_US
 page.detail.add-to-shopping-list,In die Einkaufsliste,de_DE
 cart.add-to-shopping-list,Add to Shopping list,en_US
@@ -1945,16 +2005,18 @@ packaging_unit_type.pack_mixed.name,Mixed Screws boxes,en_US
 packaging_unit_type.pack_mixed.name,Gemischte Schraubenkästen,de_DE
 business_on_behalf_widget.no_selected_company,No selected company,en_US
 business_on_behalf_widget.no_selected_company,Kein Unternehmen ausgewählt,de_DE
-business_on_behalf_widget.change_company_user,Change Company User,en_US
-business_on_behalf_widget.change_company_user,Firmenbenutzer Profil ändern,de_DE
+business_on_behalf_widget.change_company_user,Select Business Unit,en_US
+business_on_behalf_widget.change_company_user,Geschäftseinheit auswählen,de_DE
 company_user.business_on_behalf.error.company_not_active,"You can not select this company user, company is not active.",en_US
 company_user.business_on_behalf.error.company_not_active,"Sie können diesen Firmennutzer nicht auswählen da die Firma inaktiv ist",de_DE
 company_user.business_on_behalf.error.company_user_invalid,"You can not select this company user, it is invalid.",en_US
 company_user.business_on_behalf.error.company_user_invalid,"Sie können diesen Firmennutzer nicht auswählen da er ungültig ist",de_DE
-company_user.change_company_user,Change Company User,en_US
-company_user.change_company_user,Veränderung Firmennutzer,de_DE
-company_user.no_company,No Company,en_US
-company_user.no_company,Kein Unternehmen,de_DE
+company_user.change_company_user,Select Business Unit,en_US
+company_user.change_company_user,Geschäftseinheit auswählen,de_DE
+company_user.no_company,No Business Unit,en_US
+company_user.no_company,Keine Geschäftseinheit,de_DE
+company_user.company_choice,Business Unit,en_US
+company_user.company_choice,Geschäftseinheit,de_DE
 company_user.remember_choice,Remember choice,en_US
 company_user.remember_choice,Auswahl speichern,de_DE
 company_page.company_user_restricted_message,Regular customers are not allowed to operate on company pages,en_US
@@ -2225,8 +2287,18 @@ permission.name.PlaceOrderPermissionPlugin,Buy Up to Grand Total,en_US
 permission.name.PlaceOrderPermissionPlugin,Bis zum Gesamtbetrag kaufen,de_DE
 permission.name.ApproveQuotePermissionPlugin,Approve Up to Grand Total,en_US
 permission.name.ApproveQuotePermissionPlugin,Bis zum Gesamtbetrag genehmigen,de_DE
-company_page.multi_currency_type.name.cent_amount,Cent Amount,en_US
-company_page.multi_currency_type.name.cent_amount,Cent Betrag,de_DE
+company_page.multi_currency_type.name.cent_amount.EUR,Cent Amount,en_US
+company_page.multi_currency_type.name.cent_amount.EUR,Cent Betrag,de_DE
+company_page.multi_currency_type.name.cent_amount.CHF,Centime Amount,en_US
+company_page.multi_currency_type.name.cent_amount.CHF,Rappen Betrag,de_DE
+company_page.multi_currency_type.label,Configure permission,en_US
+company_page.multi_currency_type.label,Berechtigung konfigurieren,de_DE
+company_page.company_role_permission.permission_not_found_error,Permission was not found,en_US
+company_page.company_role_permission.permission_not_found_error,Berechtigungskonfiguration wurde nicht gefunden,de_DE
+company_page.company_role_permission.permission_save_error,Permission configuration has not been updated,en_US
+company_page.company_role_permission.permission_save_error,Berechtigungskonfiguration wurde nicht aktualisiert,de_DE
+company_page.company_role_permission.permission_save_success,Permission configuration has been updated,en_US
+company_page.company_role_permission.permission_save_success,Berechtigungskonfiguration wurde aktualisiert,de_DE
 company.account.company_user.assign_roles.empty_roles.error,At least one role must be assigned to a user,en_US
 company.account.company_user.assign_roles.empty_roles.error,Mindestens eine Rolle muss einem Benutzer zugewiesen sein,de_DE
 company.account.company_role.delete.error.default_role,"You can not delete a default role, please set another default role before delete action",en_US
@@ -2291,3 +2363,21 @@ cms.page.sort.name_desc,Nach Name absteigend sortieren,de_DE
 cms.page.sort.name_desc,Sort by name descending,en_US
 cms.page.itemsFound,Artikel gefunden,de_DE
 cms.page.itemsFound,Items found,en_US
+quick-order.input-label.sku.name,SKU or Name,en_US
+quick-order.input-label.sku.name,SKU oder Name,de_DE
+quick-order.input.placeholder,Search by SKU or Name,en_US
+quick-order.input.placeholder,Suche per SKU oder Name,de_DE
+quick-order.input-label.measurement_unit,Measuring Unit,en_US
+quick-order.input-label.measurement_unit,Maßeinheit,de_DE
+quick-order.input-label.price,Price,en_US
+quick-order.input-label.price,Preis,de_DE
+quick-order.search.no_results,Item cannot be found,en_US
+quick-order.search.no_results,Das produkt konnte nicht gefunden werden.,de_DE
+quick-order.input-quantity.message.error,Die bestellte Anzahl wurde auf die nächstmögliche Anzahl für diesen Artikel angepasst.,de_DE
+quick-order.input-quantity.message.error,The ordered quantity was adjusted to the next possible quantity for the article.,en_US
+product-quantity.errors.quantity.min.failed,Quantity %s does not satisfy requirements for product. Minimum quantity is %s.,en_US
+product-quantity.errors.quantity.min.failed,Anzahl %s erfüllt nicht die Anforderungen für dieses Produkt. Mindestanzahl is %s.,de_DE
+product-quantity.errors.quantity.max.failed,Quantity %s does not satisfy requirements for product. Maximum quantity is %s.,en_US
+product-quantity.errors.quantity.max.failed,Anzahl %s erfüllt nicht die Anforderungen für dieses Produkt. Maximalanzahl is %s.,de_DE
+product-quantity.errors.quantity.interval.failed,Quantity %s does not satisfy requirements for product. Quantity step is %s.,en_US
+product-quantity.errors.quantity.interval.failed,Anzahl %s erfüllt nicht die Anforderungen für dieses Produkt. Intervallgröße ist %s.,de_DE

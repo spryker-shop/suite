@@ -69,8 +69,10 @@ use SprykerShop\Yves\NewsletterWidget\Plugin\Provider\NewsletterWidgetController
 use SprykerShop\Yves\PriceWidget\Plugin\Provider\PriceControllerProvider;
 use SprykerShop\Yves\ProductNewPage\Plugin\Provider\ProductNewPageControllerProvider;
 use SprykerShop\Yves\ProductReviewWidget\Plugin\Provider\ProductReviewControllerProvider;
+use SprykerShop\Yves\ProductSearchWidget\Plugin\Provider\ProductSearchWidgetControllerProvider;
 use SprykerShop\Yves\ProductSetListPage\Plugin\Provider\ProductSetListPageControllerProvider;
 use SprykerShop\Yves\QuickOrderPage\Plugin\Provider\QuickOrderPageControllerProvider;
+use SprykerShop\Yves\QuoteApprovalWidget\Plugin\Provider\QuoteApprovalControllerProvider;
 use SprykerShop\Yves\SharedCartPage\Plugin\Provider\SharedCartPageControllerProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\AutoloaderCacheServiceProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\ShopApplicationServiceProvider;
@@ -214,6 +216,8 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new AgentWidgetControllerProvider($isSsl), #AgentFeature
             new FileManagerWidgetControllerProvider($isSsl),
             new CmsSearchPageControllerProvider($isSsl), #CmsSearchPageFeature
+            new ProductSearchWidgetControllerProvider($isSsl),
+            new QuoteApprovalControllerProvider($isSsl), #QuoteApprovalFeature
         ];
     }
 }
