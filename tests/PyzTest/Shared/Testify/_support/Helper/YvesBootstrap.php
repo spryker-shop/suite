@@ -34,9 +34,7 @@ class YvesBootstrap extends Framework
      */
     public function _beforeSuite($settings = [])
     {
-        $app = $this->yvesBootstrap->boot();
-        $app->flush();
-        $this->client = new Client($app);
+        $this->client = new Client($this->yvesBootstrap->boot());
     }
 
     /**
