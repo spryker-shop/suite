@@ -38,6 +38,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
 
     protected const COL_AVAILABILITY_TOTAL_QUANTITY = 'availabilityTotalQuantity';
     protected const COL_STOCK_PRODUCT_TOTAL_QUANTITY = 'stockProductTotalQuantity';
+
     /**
      * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface
      */
@@ -128,9 +129,9 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
     protected function createOrUpdateProductStock(DataSetInterface $dataSet, SpyStock $stockEntity): void
     {
         $stockProductEntityTransfer = $dataSet[ProductStockHydratorStep::STOCK_PRODUCT_ENTITY_TRANSFER];
-        $idProduct = $this->productRepository->getIdProductByConcreteSku($dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU]);
+        $idProductConcrete = $this->productRepository->getIdProductByConcreteSku($dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU]);
         $stockProductEntity = SpyStockProductQuery::create()
-            ->filterByFkProduct($idProduct)
+            ->filterByFkProduct($idProductConcrete)
             ->filterByFkStock($stockEntity->getIdStock())
             ->findOneOrCreate();
         $stockProductEntity->fromArray($stockProductEntityTransfer->modifiedToArray());
@@ -180,32 +181,32 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
     }
 
     /**
-     * @param string $sku
+     * @param string $concreteSku
      * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
      *
      * @return int
      */
-    protected function getStockProductQuantityForStore(string $sku, StoreTransfer $storeTransfer): int
+    protected function getStockProductQuantityForStore(string $concreteSku, StoreTransfer $storeTransfer): int
     {
-        $physicalItems = $this->calculateProductStockForStore($sku, $storeTransfer);
-        $reservedItems = $this->getReservationQuantityForStore($sku, $storeTransfer);
+        $physicalItems = $this->calculateProductStockForSkuAndStore($concreteSku, $storeTransfer);
+        $reservedItems = $this->getReservationQuantityForStore($concreteSku, $storeTransfer);
         $stockProductQuantity = $physicalItems - $reservedItems;
 
         return $stockProductQuantity > 0 ? $stockProductQuantity : 0;
     }
 
     /**
-     * @param string $sku
+     * @param string $concreteSku
      * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
      *
      * @return int
      */
-    protected function calculateProductStockForStore($sku, StoreTransfer $storeTransfer): int
+    protected function calculateProductStockForSkuAndStore(string $concreteSku, StoreTransfer $storeTransfer): int
     {
-        $idProduct = $this->productRepository->getIdProductByConcreteSku($sku);
+        $idProductConcrete = $this->productRepository->getIdProductByConcreteSku($concreteSku);
         $stockNames = $this->getStoreWarehouses($storeTransfer->getName());
 
-        return $this->getStockProductQuantityByIdProductAndStockNames($idProduct, $stockNames);
+        return $this->getStockProductQuantityByIdProductAndStockNames($idProductConcrete, $stockNames);
     }
 
     /**
@@ -219,17 +220,17 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
     }
 
     /**
-     * @param int $idProduct
-     * @param array $stockNames
+     * @param int $idProductConcrete
+     * @param string[] $stockNames
      *
      * @return int
      */
-    protected function getStockProductQuantityByIdProductAndStockNames(int $idProduct, array $stockNames): int
+    protected function getStockProductQuantityByIdProductAndStockNames(int $idProductConcrete, array $stockNames): int
     {
         $stockProductTotalQuantity = SpyStockProductQuery::create()
-            ->filterByFkProduct($idProduct)
+            ->filterByFkProduct($idProductConcrete)
             ->useStockQuery()
-            ->filterByName($stockNames, Criteria::IN)
+                ->filterByName($stockNames, Criteria::IN)
             ->endUse()
             ->withColumn('SUM(' . SpyStockProductTableMap::COL_QUANTITY . ')', static::COL_STOCK_PRODUCT_TOTAL_QUANTITY)
             ->select([static::COL_STOCK_PRODUCT_TOTAL_QUANTITY])
@@ -246,7 +247,6 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
      */
     protected function getReservationQuantityForStore(string $sku, StoreTransfer $storeTransfer): int
     {
-        $storeTransfer->requireName();
         $idStore = $this->getIdStore($storeTransfer);
 
         $reservations = SpyOmsProductReservationQuery::create()
@@ -329,12 +329,12 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
     }
 
     /**
-     * @param int $abstractSku
+     * @param string $abstractSku
      * @param int $idStore
      *
      * @return \Orm\Zed\Availability\Persistence\SpyAvailabilityAbstract
      */
-    protected function getAvailabilityAbstract(int $abstractSku, int $idStore): SpyAvailabilityAbstract
+    protected function getAvailabilityAbstract(string $abstractSku, int $idStore): SpyAvailabilityAbstract
     {
         $availabilityAbstractEntity = SpyAvailabilityAbstractQuery::create()
             ->filterByAbstractSku($abstractSku)
@@ -349,12 +349,12 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
     }
 
     /**
-     * @param int $abstractSku
+     * @param string $abstractSku
      * @param int $idStore
      *
      * @return \Orm\Zed\Availability\Persistence\SpyAvailabilityAbstract
      */
-    protected function createAvailabilityAbstract(int $abstractSku, int $idStore): SpyAvailabilityAbstract
+    protected function createAvailabilityAbstract(string $abstractSku, int $idStore): SpyAvailabilityAbstract
     {
         $availableAbstractEntity = (new SpyAvailabilityAbstract())
             ->setAbstractSku($abstractSku)

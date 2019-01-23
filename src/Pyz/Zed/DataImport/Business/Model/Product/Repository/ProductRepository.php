@@ -41,7 +41,7 @@ class ProductRepository implements ProductRepositoryInterface
     /**
      * @param string $sku
      *
-     * @return int
+     * @return string
      */
     public function getAbstractSkuByConcreteSku($sku)
     {
