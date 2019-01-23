@@ -27,7 +27,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
     /**
      * @var int[]
      */
-    protected static $productAbstractSkus;
+    protected $productAbstractSkus;
 
     /**
      * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface
@@ -140,7 +140,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
     protected function collectProductAbstractSku(DataSetInterface $dataSet): void
     {
         $productConcreteSku = $dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU];
-        static::$productAbstractSkus[] = $this->productRepository->getAbstractSkuByConcreteSku($productConcreteSku);
+        $this->productAbstractSkus[] = $this->productRepository->getAbstractSkuByConcreteSku($productConcreteSku);
     }
 
     /**
@@ -148,7 +148,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
      */
     protected function triggerAvailabilityPublishEvents(): void
     {
-        $availabilityAbstractIds = $this->getAvailabilityAbstractIdsByProductAbstractSkus();
+        $availabilityAbstractIds = $this->getAvailabilityAbstractIdsForCollectedAbstractSkus();
 
         foreach ($availabilityAbstractIds as $availabilityAbstractId) {
             DataImporterPublisher::addEvent(AvailabilityEvents::AVAILABILITY_ABSTRACT_PUBLISH, $availabilityAbstractId);
@@ -158,7 +158,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
     /**
      * @return int[]
      */
-    protected function getAvailabilityAbstractIdsByProductAbstractSkus(): array
+    protected function getAvailabilityAbstractIdsForCollectedAbstractSkus(): array
     {
         $storeIds = $this->getStoreIds();
 
@@ -167,7 +167,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
             ->useSpyAvailabilityQuery()
                 ->filterByFkStore_In($storeIds)
             ->endUse()
-            ->filterByAbstractSku_In(static::$productAbstractSkus)
+            ->filterByAbstractSku_In($this->productAbstractSkus)
             ->select([
                 SpyAvailabilityAbstractTableMap::COL_ID_AVAILABILITY_ABSTRACT,
             ])
