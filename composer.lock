@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "296bc6df3c844a4df70075e760972022",
+    "content-hash": "40ec692f5052f12cacc8c0dbde5c09da",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -2586,12 +2586,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/silexphp.git",
-                "reference": "5e61f3f5a4e2362cfe7138958a51f2a7a12117b2"
+                "reference": "7df3e1b93fe711f1854a5e31a2d5b704569b8de3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/silexphp/zipball/5e61f3f5a4e2362cfe7138958a51f2a7a12117b2",
-                "reference": "5e61f3f5a4e2362cfe7138958a51f2a7a12117b2",
+                "url": "https://api.github.com/repos/spryker/silexphp/zipball/7df3e1b93fe711f1854a5e31a2d5b704569b8de3",
+                "reference": "7df3e1b93fe711f1854a5e31a2d5b704569b8de3",
                 "shasum": ""
             },
             "require": {
@@ -2622,7 +2622,7 @@
                 "symfony/security": "~2.3|3.0.*",
                 "symfony/serializer": "~2.3|3.0.*",
                 "symfony/translation": "~2.3|3.0.*",
-                "symfony/twig-bridge": "~2.3|3.0.*",
+                "symfony/twig-bridge": "^3.2.0 || ^4.0.0",
                 "symfony/validator": "^3.0.0",
                 "twig/twig": "~1.28|~2.0"
             },
@@ -2656,7 +2656,7 @@
             "keywords": [
                 "microframework"
             ],
-            "time": "2019-01-09T14:00:16+00:00"
+            "time": "2019-01-23T09:16:57+00:00"
         },
         {
             "name": "spryker/spryker",
@@ -2664,7 +2664,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "0eb840c4a82272bca556e0d8eca2729cbbf9def4"
+                "reference": "9c0b5a2ed01050f9f4e7e7a3fa4da9782d3ab266"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2864,7 +2864,6 @@
                 "spryker/queue": "*",
                 "spryker/quote": "*",
                 "spryker/ramsey-uuid": "*",
-                "spryker/ratepay": "*",
                 "spryker/redis": "*",
                 "spryker/refund": "*",
                 "spryker/sales": "*",
@@ -2934,15 +2933,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-01-22T13:12:24+00:00"
+            "time": "2019-01-23T09:49:21+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-bugfix/ps-6403-fix-glossary-keys",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "33bad9624ce8ddc800fd53c729f6081cc94a20c1"
+                "reference": "de80d68f4cad6d4c3ff5079070e36feca95ff24d"
             },
             "require": {
                 "php": ">=7.1"
@@ -3017,7 +3016,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-01-22T13:24:01+00:00"
+            "time": "2019-01-23T11:12:32+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -4107,7 +4106,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "backendtea@gmail.com"
+                    "email": "BackEndTea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
@@ -8677,7 +8676,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryk.git",
-                "reference": "446a927d4d5ab22cb8f034540d383d4d9bc84d78"
+                "reference": "953df17cbf5718392703694878a80fa2fed2faa4"
             },
             "require": {
                 "php": ">=7.1",
@@ -8751,7 +8750,7 @@
                 "MIT"
             ],
             "description": "Spryker Spryk build tool",
-            "time": "2019-01-21T10:17:41+00:00"
+            "time": "2019-01-23T09:08:13+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
