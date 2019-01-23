@@ -27,7 +27,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
     /**
      * @var int[]
      */
-    protected $productAbstractSkus;
+    protected static $productAbstractSkus = [];
 
     /**
      * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface
@@ -140,7 +140,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
     protected function collectProductAbstractSku(DataSetInterface $dataSet): void
     {
         $productConcreteSku = $dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU];
-        $this->productAbstractSkus[] = $this->productRepository->getAbstractSkuByConcreteSku($productConcreteSku);
+        static::$productAbstractSkus[] = $this->productRepository->getAbstractSkuByConcreteSku($productConcreteSku);
     }
 
     /**
@@ -167,7 +167,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
             ->useSpyAvailabilityQuery()
                 ->filterByFkStore_In($storeIds)
             ->endUse()
-            ->filterByAbstractSku_In($this->productAbstractSkus)
+            ->filterByAbstractSku_In(static::$productAbstractSkus)
             ->select([
                 SpyAvailabilityAbstractTableMap::COL_ID_AVAILABILITY_ABSTRACT,
             ])
