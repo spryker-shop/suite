@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "222caff428bc2f28c5ddc3cde7840eca",
+    "content-hash": "40ec692f5052f12cacc8c0dbde5c09da",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -2425,21 +2425,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "975efc301d6a53e28e3a553247487a4bfa1f4ac7"
+                "reference": "3bda07a7ac5b6e8f65de70dfe348042f31023da4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/975efc301d6a53e28e3a553247487a4bfa1f4ac7",
-                "reference": "975efc301d6a53e28e3a553247487a4bfa1f4ac7",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/3bda07a7ac5b6e8f65de70dfe348042f31023da4",
+                "reference": "3bda07a7ac5b6e8f65de70dfe348042f31023da4",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "spryker/event": "^2.1.0",
+                "spryker/event": "^2.4.0",
                 "spryker/kernel": "^3.20.0",
                 "spryker/propel-orm": "^1.6.0",
                 "spryker/symfony": "^3.1.0",
-                "spryker/util-encoding": "^2.0.0",
+                "spryker/util-encoding": "^2.1.0",
                 "spryker/zend": "^2.1.0"
             },
             "require-dev": {
@@ -2475,7 +2475,7 @@
                 "proprietary"
             ],
             "description": "EventBehavior module",
-            "time": "2018-12-05T12:50:38+00:00"
+            "time": "2019-01-18T15:14:18+00:00"
         },
         {
             "name": "spryker/install",
@@ -2586,12 +2586,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/silexphp.git",
-                "reference": "5e61f3f5a4e2362cfe7138958a51f2a7a12117b2"
+                "reference": "7df3e1b93fe711f1854a5e31a2d5b704569b8de3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/silexphp/zipball/5e61f3f5a4e2362cfe7138958a51f2a7a12117b2",
-                "reference": "5e61f3f5a4e2362cfe7138958a51f2a7a12117b2",
+                "url": "https://api.github.com/repos/spryker/silexphp/zipball/7df3e1b93fe711f1854a5e31a2d5b704569b8de3",
+                "reference": "7df3e1b93fe711f1854a5e31a2d5b704569b8de3",
                 "shasum": ""
             },
             "require": {
@@ -2622,7 +2622,7 @@
                 "symfony/security": "~2.3|3.0.*",
                 "symfony/serializer": "~2.3|3.0.*",
                 "symfony/translation": "~2.3|3.0.*",
-                "symfony/twig-bridge": "~2.3|3.0.*",
+                "symfony/twig-bridge": "^3.2.0 || ^4.0.0",
                 "symfony/validator": "^3.0.0",
                 "twig/twig": "~1.28|~2.0"
             },
@@ -2656,15 +2656,15 @@
             "keywords": [
                 "microframework"
             ],
-            "time": "2019-01-09T14:00:16+00:00"
+            "time": "2019-01-23T09:16:57+00:00"
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-bugfix/ps-6293-quick-order-impossible-to-remove-the-first-row-and-all-rows",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "769dd6298f654335a631afb69cf7f367a3262649"
+                "reference": "9c0b5a2ed01050f9f4e7e7a3fa4da9782d3ab266"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2864,7 +2864,6 @@
                 "spryker/queue": "*",
                 "spryker/quote": "*",
                 "spryker/ramsey-uuid": "*",
-                "spryker/ratepay": "*",
                 "spryker/redis": "*",
                 "spryker/refund": "*",
                 "spryker/sales": "*",
@@ -2934,15 +2933,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-01-17T13:13:00+00:00"
+            "time": "2019-01-23T09:49:21+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-bugfix/ps-6293-quick-order-impossible-to-remove-the-first-row-and-all-rows",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "c3efc31a108c692a671bbd9e4f707da33103baca"
+                "reference": "db34e47f66a2d1c3060bebc4027e4bbb12fa2259"
             },
             "require": {
                 "php": ">=7.1"
@@ -3017,7 +3016,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-01-17T13:30:49+00:00"
+            "time": "2019-01-23T10:47:47+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -6733,7 +6732,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-12T17:28:44+00:00"
+            "time": "2017-12-13T13:21:38+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -8677,7 +8676,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryk.git",
-                "reference": "913ea099a07529127f98e5164b5c357b95a67d4b"
+                "reference": "953df17cbf5718392703694878a80fa2fed2faa4"
             },
             "require": {
                 "php": ">=7.1",
@@ -8722,7 +8721,12 @@
                     "Spryker\\Zed\\ZipZap\\": "tests/_support/Fixtures/Spryker/Zed/ZipZap/",
                     "Spryker\\Client\\ZipZap\\": "tests/_support/Fixtures/Spryker/Client/ZipZap/",
                     "Spryker\\Service\\ZipZap\\": "tests/_support/Fixtures/Spryker/Service/ZipZap/",
-                    "SprykerTest\\Zed\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/tests/SprykerTest/Zed/FooBar/"
+                    "SprykerTest\\Zed\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/tests/SprykerTest/Zed/FooBar/",
+                    "Pyz\\Client\\FooBar\\": "tests/_data/src/Pyz/Client/FooBar/",
+                    "Pyz\\Shared\\FooBar\\": "tests/_data/src/Pyz/Shared/FooBar/",
+                    "Pyz\\Yves\\FooBar\\": "tests/_data/src/Pyz/Yves/FooBar/",
+                    "Pyz\\Zed\\FooBar\\": "tests/_data/src/Pyz/Zed/FooBar/",
+                    "PyzTest\\Zed\\FooBar\\": "tests/_data/tests/PyzTest/Zed/FooBar/"
                 }
             },
             "scripts": {
@@ -8746,7 +8750,7 @@
                 "MIT"
             ],
             "description": "Spryker Spryk build tool",
-            "time": "2019-01-10T17:22:48+00:00"
+            "time": "2019-01-23T09:08:13+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -8801,16 +8805,16 @@
         },
         {
             "name": "stecman/symfony-console-completion",
-            "version": "0.8.0",
+            "version": "0.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stecman/symfony-console-completion.git",
-                "reference": "cd738867503477e91dbe84173dfabd431c883431"
+                "reference": "bd07a24190541de2828c1d6469a8ddce599d3c5a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stecman/symfony-console-completion/zipball/cd738867503477e91dbe84173dfabd431c883431",
-                "reference": "cd738867503477e91dbe84173dfabd431c883431",
+                "url": "https://api.github.com/repos/stecman/symfony-console-completion/zipball/bd07a24190541de2828c1d6469a8ddce599d3c5a",
+                "reference": "bd07a24190541de2828c1d6469a8ddce599d3c5a",
                 "shasum": ""
             },
             "require": {
@@ -8842,7 +8846,7 @@
                 }
             ],
             "description": "Automatic BASH completion for Symfony Console Component based applications.",
-            "time": "2018-02-10T04:28:01+00:00"
+            "time": "2019-01-19T21:25:25+00:00"
         },
         {
             "name": "symfony/browser-kit",
