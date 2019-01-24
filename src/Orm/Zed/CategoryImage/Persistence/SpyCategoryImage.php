@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\Ratepay\Persistence;
+namespace Orm\Zed\CategoryImage\Persistence;
 
-use Orm\Zed\Ratepay\Persistence\Base\SpyPaymentRatepayQuery as BaseSpyPaymentRatepayQuery;
+use Spryker\Zed\CategoryImage\Persistence\Propel\AbstractSpyCategoryImage;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_payment_ratepay' table.
+ * Skeleton subclass for representing a row from the 'spy_category_image' table.
  *
  *
  *
@@ -19,6 +19,6 @@ use Orm\Zed\Ratepay\Persistence\Base\SpyPaymentRatepayQuery as BaseSpyPaymentRat
  * long as it does not already exist in the output directory.
  *
  */
-class SpyPaymentRatepayQuery extends BaseSpyPaymentRatepayQuery
+class SpyCategoryImage extends AbstractSpyCategoryImage
 {
 }
