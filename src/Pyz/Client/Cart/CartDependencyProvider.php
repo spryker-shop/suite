@@ -15,7 +15,7 @@ use Spryker\Client\ProductBundle\Plugin\Cart\ItemCountPlugin;
 use Spryker\Client\ProductBundle\Plugin\Cart\RemoveBundleChangeRequestExpanderPlugin;
 use Spryker\Client\ProductMeasurementUnit\Plugin\Cart\SingleItemQuantitySalesUnitCartChangeRequestExpanderPlugin;
 use Spryker\Client\ProductPackagingUnit\Plugin\CartExtension\ProductPackagingUnitAmountCartChangeRequestExpanderPlugin;
-use Spryker\Client\ProductQuantityStorage\Plugin\Cart\CartChangeItemQuantityValidatorPlugin;
+use Spryker\Client\ProductQuantityStorage\Plugin\Cart\CartChangeItemQuantityExpanderPlugin;
 
 class CartDependencyProvider extends SprykerCartDependencyProvider
 {
@@ -69,12 +69,12 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     }
 
     /**
-     * @return \Spryker\Client\CartExtension\Dependency\Plugin\CartChangeItemValidatorPluginInterface[]
+     * @return \Spryker\Client\CartExtension\Dependency\Plugin\CartChangeItemExpanderPluginInterface[]
      */
-    protected function getCartChangeItemValidatorPlugins(): array
+    protected function getCartChangeItemExpanderPlugins(): array
     {
         return [
-            new CartChangeItemQuantityValidatorPlugin()
+            new CartChangeItemQuantityExpanderPlugin(),
         ];
     }
 }
