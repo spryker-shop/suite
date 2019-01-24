@@ -25,7 +25,7 @@ use Spryker\Zed\Store\Business\StoreFacadeInterface;
 class ProductStockPropelDataSetWriter implements DataSetWriterInterface
 {
     /**
-     * @var int[]
+     * @var string[]
      */
     protected static $productAbstractSkus = [];
 
