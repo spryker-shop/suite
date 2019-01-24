@@ -72,7 +72,6 @@
     "spryker/code-generator": "dev-master",
     "spryker/code-sniffer": "dev-master",
     "spryker/git-hook": "dev-master",
-    "spryker/spryk": "dev-master",
     "codeception/codeception": "^2.0.0",
     "pdepend/pdepend": "^2.2.2",
     "phpmd/phpmd": "^2.4",
@@ -87,7 +86,8 @@
     "stecman/symfony-console-completion": "*",
     "fzaninotto/faker": "^1.6",
     "ajgl/breakpoint-twig-extension": "^0.3.1",
-    "spryker-sdk/phpstan-spryker": "^0.1"
+    "spryker-sdk/phpstan-spryker": "^0.1",
+    "spryker-sdk/spryk-gui": "dev-master"
   },
   "autoload": {
     "psr-4": {
@@ -133,7 +133,11 @@
     },
     {
       "type": "git",
-      "url": "git@github.com:spryker/spryk.git"
+      "url": "git@github.com:spryker-sdk/spryk-gui.git"
+    },
+    {
+      "type": "git",
+      "url": "git@github.com:spryker-sdk/spryk.git"
     }
   ],
   "scripts": {
