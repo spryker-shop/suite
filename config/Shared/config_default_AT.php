@@ -64,6 +64,7 @@ $config[EventConstants::LOG_FILE_PATH] = APPLICATION_ROOT_DIR . '/data/AT/logs/a
 
 // ----------- Glue Application
 $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = sprintf('http://glue.at.%s.local', $domain);
+$config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = sprintf('http://glue.at.%s.local', $domain);
 
 // ---------- RabbitMQ
 $config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = '/AT_development_zed';
