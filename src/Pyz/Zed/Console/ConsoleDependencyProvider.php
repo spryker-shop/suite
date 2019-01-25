@@ -14,7 +14,6 @@ use Spryker\Spryk\Console\SprykDumpConsole;
 use Spryker\Spryk\Console\SprykRunConsole;
 use Spryker\Zed\BusinessOnBehalfDataImport\BusinessOnBehalfDataImportConfig;
 use Spryker\Zed\Cache\Communication\Console\EmptyAllCachesConsole;
-use Spryker\Zed\CartsRestApi\Communication\Console\QuoteUuidGeneratorConsole;
 use Spryker\Zed\CodeGenerator\Communication\Console\BundleClientCodeGeneratorConsole;
 use Spryker\Zed\CodeGenerator\Communication\Console\BundleCodeGeneratorConsole;
 use Spryker\Zed\CodeGenerator\Communication\Console\BundleServiceCodeGeneratorConsole;
@@ -26,7 +25,6 @@ use Spryker\Zed\CompanyDataImport\CompanyDataImportConfig;
 use Spryker\Zed\CompanyUnitAddressDataImport\CompanyUnitAddressDataImportConfig;
 use Spryker\Zed\CompanyUnitAddressLabelDataImport\CompanyUnitAddressLabelDataImportConfig;
 use Spryker\Zed\Console\ConsoleDependencyProvider as SprykerConsoleDependencyProvider;
-use Spryker\Zed\CustomersRestApi\Communication\Console\CustomerAddressesUuidWriterConsole;
 use Spryker\Zed\DataImport\Communication\Console\DataImportConsole;
 use Spryker\Zed\DataImport\Communication\Console\DataImportDumpConsole;
 use Spryker\Zed\Development\Communication\Console\CodeArchitectureSnifferConsole;
@@ -53,6 +51,7 @@ use Spryker\Zed\DevelopmentCore\Communication\Console\AdjustPhpstanConsole;
 use Spryker\Zed\DocumentationGeneratorRestApi\Communication\Console\GenerateRestApiDocumentationConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventBehaviorTriggerTimeoutConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventTriggerConsole;
+use Spryker\Zed\EventBehavior\Communication\Console\EventTriggerListenerConsole;
 use Spryker\Zed\EventBehavior\Communication\Plugin\Console\EventBehaviorPostHookPlugin;
 use Spryker\Zed\IndexGenerator\Communication\Console\PostgresIndexGeneratorConsole;
 use Spryker\Zed\IndexGenerator\Communication\Console\PostgresIndexRemoverConsole;
@@ -76,7 +75,7 @@ use Spryker\Zed\ProductLabel\Communication\Console\ProductLabelRelationUpdaterCo
 use Spryker\Zed\ProductLabel\Communication\Console\ProductLabelValidityConsole;
 use Spryker\Zed\ProductPackagingUnitDataImport\ProductPackagingUnitDataImportConfig;
 use Spryker\Zed\ProductRelation\Communication\Console\ProductRelationUpdaterConsole;
-use Spryker\Zed\ProductTaxSetsRestApi\Communication\Console\ProductTaxSetsRestApiConsole;
+use Spryker\Zed\ProductValidity\Communication\Console\ProductValidityConsole;
 use Spryker\Zed\Propel\Communication\Console\DatabaseDropConsole;
 use Spryker\Zed\Propel\Communication\Console\DatabaseExportConsole;
 use Spryker\Zed\Propel\Communication\Console\DatabaseImportConsole;
@@ -84,6 +83,7 @@ use Spryker\Zed\Propel\Communication\Console\DeleteMigrationFilesConsole;
 use Spryker\Zed\Propel\Communication\Console\PropelSchemaValidatorConsole;
 use Spryker\Zed\Propel\Communication\Console\PropelSchemaXmlNameValidatorConsole;
 use Spryker\Zed\Propel\Communication\Plugin\ServiceProvider\PropelServiceProvider;
+use Spryker\Zed\Queue\Communication\Console\QueueDumpConsole;
 use Spryker\Zed\Queue\Communication\Console\QueueTaskConsole;
 use Spryker\Zed\Queue\Communication\Console\QueueWorkerConsole;
 use Spryker\Zed\Quote\Communication\Console\DeleteExpiredGuestQuoteConsole;
@@ -131,7 +131,7 @@ use Spryker\Zed\Transfer\Communication\Console\GeneratorConsole;
 use Spryker\Zed\Transfer\Communication\Console\ValidatorConsole;
 use Spryker\Zed\Twig\Communication\Console\CacheWarmerConsole;
 use Spryker\Zed\Twig\Communication\Plugin\ServiceProvider\TwigServiceProvider as SprykerTwigServiceProvider;
-use Spryker\Zed\WishlistsRestApi\Communication\Console\WishlistsUuidWriterConsole;
+use Spryker\Zed\Uuid\Communication\Console\UuidGeneratorConsole;
 use Spryker\Zed\ZedNavigation\Communication\Console\BuildNavigationConsole;
 use Stecman\Component\Symfony\Console\BashCompletion\CompletionCommand;
 
@@ -149,7 +149,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
     {
         $commands = [
             new CacheWarmerConsole(),
-            new QuoteUuidGeneratorConsole(),
             new BuildNavigationConsole(),
             new BuildValidationCacheConsole(),
             new EmptyAllCachesConsole(),
@@ -169,6 +168,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new ProductRelationUpdaterConsole(),
             new ProductLabelValidityConsole(),
             new ProductLabelRelationUpdaterConsole(),
+            new ProductValidityConsole(),
             new DataImportConsole(),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . DataImportConfig::IMPORT_TYPE_STORE),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . DataImportConfig::IMPORT_TYPE_CURRENCY),
@@ -284,10 +284,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new PriceProductStoreOptimizeConsole(),
             new PriceProductMerchantRelationshipDeleteConsole(),
 
-            new WishlistsUuidWriterConsole(),
-            new ProductTaxSetsRestApiConsole(),
-            new CustomerAddressesUuidWriterConsole(),
             new DeleteExpiredGuestQuoteConsole(),
+            new UuidGeneratorConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
@@ -328,6 +326,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new PostgresIndexGeneratorConsole();
             $commands[] = new PostgresIndexRemoverConsole();
             $commands[] = new GenerateRestApiDocumentationConsole();
+            $commands[] = new QueueDumpConsole();
+            $commands[] = new EventTriggerListenerConsole();
         }
 
         return $commands;
