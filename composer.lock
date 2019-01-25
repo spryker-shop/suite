@@ -2664,7 +2664,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "bec60e245c7be505f254f70bf456584e9da11218"
+                "reference": "ba868e297df9787cd1a732ec4fccdb51ec087409"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2933,7 +2933,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-01-23T15:24:03+00:00"
+            "time": "2019-01-24T16:17:39+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -8419,7 +8419,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker-sdk/spryk.git",
-                "reference": "91c7dfa51fd9b0ee743907e98244ad50c547a82f"
+                "reference": "6ef5a9145895e8013e86b977b399b810091218e5"
             },
             "require": {
                 "php": ">=7.1",
@@ -8446,13 +8446,13 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Spryker\\Spryk\\": "src/Spryker/Spryk/"
+                    "SprykerSdk\\Spryk\\": "src/SprykerSdk/Spryk/"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "SprykerTest\\": "tests/SprykerTest/",
-                    "SprykerTest\\Module\\": "tests/_support/Module/",
+                    "SprykerSdkTest\\": "tests/SprykerSdkTest/",
+                    "SprykerSdkTest\\Module\\": "tests/_support/Module/",
                     "Spryker\\Yves\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Yves/Kernel/",
                     "Spryker\\Zed\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Zed/Kernel/",
                     "Spryker\\Shared\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Shared/Kernel/",
@@ -8493,7 +8493,7 @@
                 "MIT"
             ],
             "description": "Spryker Spryk build tool",
-            "time": "2019-01-24T12:54:10+00:00"
+            "time": "2019-01-24T16:29:26+00:00"
         },
         {
             "name": "spryker-sdk/spryk-gui",
@@ -8501,7 +8501,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker-sdk/spryk-gui.git",
-                "reference": "071d13165511c8d619a12f9f47d1f0ceaa0685bc"
+                "reference": "2db1834bf5b76e3dca5668d9a0cb9598e863517e"
             },
             "require": {
                 "php": ">=7.1",
@@ -8528,19 +8528,19 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                    "SprykerSdk\\": "src/SprykerSdk/"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "SprykerTest\\": "tests/SprykerTest/"
+                    "SprykerSdkTest\\": "tests/SprykerSdkTest/"
                 }
             },
             "license": [
                 "proprietary"
             ],
             "description": "SprykGui module",
-            "time": "2019-01-24T10:21:30+00:00"
+            "time": "2019-01-25T11:40:07+00:00"
         },
         {
             "name": "spryker/architecture-sniffer",
