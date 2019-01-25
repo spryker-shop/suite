@@ -5,17 +5,17 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\ProductOptionStorage;
+namespace Pyz\Zed\CategoryImageStorage;
 
 use Pyz\Zed\Synchronization\SynchronizationConfig;
-use Spryker\Zed\ProductOptionStorage\ProductOptionStorageConfig as SprykerProductOptionStorageConfig;
+use Spryker\Zed\CategoryImageStorage\CategoryImageStorageConfig as SprykerCategoryImageSTorageConfig;
 
-class ProductOptionStorageConfig extends SprykerProductOptionStorageConfig
+class CategoryImageStorageConfig extends SprykerCategoryImageSTorageConfig
 {
     /**
      * @return string|null
      */
-    public function getProductAbstractOptionSynchronizationPoolName(): ?string
+    public function getCategoryImageSynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
