@@ -7,6 +7,8 @@
 
 namespace Pyz\Glue\GlueApplication;
 
+use Spryker\Glue\AlternativeProductsRestApi\Plugin\GlueApplication\AbstractAlternativeProductsResourceRoutePlugin;
+use Spryker\Glue\AlternativeProductsRestApi\Plugin\GlueApplication\ConcreteAlternativeProductsResourceRoutePlugin;
 use Spryker\Glue\AuthRestApi\Plugin\AccessTokensResourceRoutePlugin;
 use Spryker\Glue\AuthRestApi\Plugin\AccessTokenValidatorPlugin;
 use Spryker\Glue\AuthRestApi\Plugin\FormatAuthenticationErrorResponseHeadersPlugin;
@@ -29,6 +31,7 @@ use Spryker\Glue\CategoriesRestApi\Plugin\CategoryResourceRoutePlugin;
 use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig;
 use Spryker\Glue\CheckoutRestApi\Plugin\GlueApplication\CheckoutDataResourcePlugin;
 use Spryker\Glue\CheckoutRestApi\Plugin\GlueApplication\CheckoutResourcePlugin;
+use Spryker\Glue\CompanyUsersRestApi\Plugin\GlueApplication\CompanyUsersResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\CustomersRestApiConfig;
 use Spryker\Glue\CustomersRestApi\Plugin\AddressesResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\CustomerForgottenPasswordResourceRoutePlugin;
@@ -118,6 +121,9 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new ProductLabelsResourceRoutePlugin(),
             new CheckoutDataResourcePlugin(),
             new CheckoutResourcePlugin(),
+            new CompanyUsersResourceRoutePlugin(),
+            new ConcreteAlternativeProductsResourceRoutePlugin(),
+            new AbstractAlternativeProductsResourceRoutePlugin(),
         ];
     }
 
