@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\ContentStorage\Persistence;
 
-use Orm\Zed\ContentStorage\Persistence\Base\SpyContentStorageQuery as BaseSpyContentStorageQuery;
+use Spryker\Zed\ContentStorage\Persistence\Propel\AbstractSpyContentStorageQuery as BaseSpyContentStorageQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_content_storage' table.
