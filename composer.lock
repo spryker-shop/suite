@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ad64ca037fa7b80615366c920f1ee2e4",
+    "content-hash": "5cd38d659a27dbb592df00a0c806c4f6",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -1843,52 +1843,6 @@
             "time": "2017-07-14T14:27:02+00:00"
         },
         {
-            "name": "pimple/pimple",
-            "version": "v1.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/silexphp/Pimple.git",
-                "reference": "2019c145fe393923f3441b23f29bbdfaa5c58c4d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/silexphp/Pimple/zipball/2019c145fe393923f3441b23f29bbdfaa5c58c4d",
-                "reference": "2019c145fe393923f3441b23f29bbdfaa5c58c4d",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Pimple": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                }
-            ],
-            "description": "Pimple is a simple Dependency Injection Container for PHP 5.3",
-            "homepage": "http://pimple.sensiolabs.org",
-            "keywords": [
-                "container",
-                "dependency injection"
-            ],
-            "time": "2013-11-22T08:30:29+00:00"
-        },
-        {
             "name": "predis/predis",
             "version": "v1.1.1",
             "source": {
@@ -2585,18 +2539,12 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/silexphp.git",
-                "reference": "7df3e1b93fe711f1854a5e31a2d5b704569b8de3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/silexphp/zipball/7df3e1b93fe711f1854a5e31a2d5b704569b8de3",
-                "reference": "7df3e1b93fe711f1854a5e31a2d5b704569b8de3",
-                "shasum": ""
+                "url": "git@github.com:spryker/silexphp.git",
+                "reference": "534ac4280186a98fec685096720ef2b8ef09b739"
             },
             "require": {
                 "php": ">=7.1",
-                "pimple/pimple": "^1.0",
+                "spryker/container": "^1.1.0",
                 "symfony/event-dispatcher": "^3.0.0 || ^4.0.0",
                 "symfony/http-foundation": "^3.0.0",
                 "symfony/http-kernel": "^3.0.0 || ^4.0.0",
@@ -2637,7 +2585,11 @@
                     "Silex\\": "src/Silex"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Silex\\Tests\\": "tests/Silex/Tests"
+                }
+            },
             "license": [
                 "MIT"
             ],
@@ -2656,7 +2608,7 @@
             "keywords": [
                 "microframework"
             ],
-            "time": "2019-01-23T09:16:57+00:00"
+            "time": "2019-01-25T09:02:20+00:00"
         },
         {
             "name": "spryker/spryker",
@@ -7421,6 +7373,52 @@
             "time": "2019-01-15T08:19:08+00:00"
         },
         {
+            "name": "pimple/pimple",
+            "version": "v1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/silexphp/Pimple.git",
+                "reference": "2019c145fe393923f3441b23f29bbdfaa5c58c4d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/silexphp/Pimple/zipball/2019c145fe393923f3441b23f29bbdfaa5c58c4d",
+                "reference": "2019c145fe393923f3441b23f29bbdfaa5c58c4d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Pimple": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Pimple is a simple Dependency Injection Container for PHP 5.3",
+            "homepage": "http://pimple.sensiolabs.org",
+            "keywords": [
+                "container",
+                "dependency injection"
+            ],
+            "time": "2013-11-22T08:30:29+00:00"
+        },
+        {
             "name": "roave/better-reflection",
             "version": "3.2.0",
             "source": {
@@ -8520,12 +8518,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "a1cd44dd7a67877d55e7d705c876e14d061f571d"
+                "reference": "e433c2104f34a9f4db2b1d84c7e8ce32311f865f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/a1cd44dd7a67877d55e7d705c876e14d061f571d",
-                "reference": "a1cd44dd7a67877d55e7d705c876e14d061f571d",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/e433c2104f34a9f4db2b1d84c7e8ce32311f865f",
+                "reference": "e433c2104f34a9f4db2b1d84c7e8ce32311f865f",
                 "shasum": ""
             },
             "require": {
@@ -8565,7 +8563,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-01-10T09:34:59+00:00"
+            "time": "2019-01-24T17:20:26+00:00"
         },
         {
             "name": "spryker/development-core",
