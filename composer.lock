@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "40ec692f5052f12cacc8c0dbde5c09da",
+    "content-hash": "9f96a878344e8b8204d8492d4f9f650a",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -995,7 +995,7 @@
                 {
                     "name": "Luís Otávio Cobucci Oblonczyk",
                     "email": "lcobucci@gmail.com",
-                    "role": "Developer"
+                    "role": "developer"
                 }
             ],
             "description": "A simple library to work with JSON Web Token and JSON Web Signature",
@@ -1989,7 +1989,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -2586,17 +2586,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/silexphp.git",
-                "reference": "7df3e1b93fe711f1854a5e31a2d5b704569b8de3"
+                "reference": "534ac4280186a98fec685096720ef2b8ef09b739"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/silexphp/zipball/7df3e1b93fe711f1854a5e31a2d5b704569b8de3",
-                "reference": "7df3e1b93fe711f1854a5e31a2d5b704569b8de3",
+                "url": "https://api.github.com/repos/spryker/silexphp/zipball/534ac4280186a98fec685096720ef2b8ef09b739",
+                "reference": "534ac4280186a98fec685096720ef2b8ef09b739",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "pimple/pimple": "^1.0",
+                "spryker/container": "^1.1.0",
                 "symfony/event-dispatcher": "^3.0.0 || ^4.0.0",
                 "symfony/http-foundation": "^3.0.0",
                 "symfony/http-kernel": "^3.0.0 || ^4.0.0",
@@ -2656,15 +2656,15 @@
             "keywords": [
                 "microframework"
             ],
-            "time": "2019-01-23T09:16:57+00:00"
+            "time": "2019-01-25T09:02:20+00:00"
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/glue-2793/master-navigation",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "ba868e297df9787cd1a732ec4fccdb51ec087409"
+                "reference": "64aff0d54d43840a49688828f21a767abeeb625e"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2731,6 +2731,7 @@
                 "spryker/company-unit-address-label-gui": "*",
                 "spryker/config": "*",
                 "spryker/console": "*",
+                "spryker/container": "*",
                 "spryker/country": "*",
                 "spryker/csv": "*",
                 "spryker/currency": "*",
@@ -2797,7 +2798,6 @@
                 "spryker/oms-discount-connector": "*",
                 "spryker/payment": "*",
                 "spryker/payment-cart-connector": "*",
-                "spryker/pimple": "*",
                 "spryker/price": "*",
                 "spryker/price-cart-connector": "*",
                 "spryker/price-product": "*",
@@ -2933,7 +2933,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-01-24T16:17:39+00:00"
+            "time": "2019-01-25T10:38:52+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6191,7 +6191,7 @@
                 "configurator",
                 "nette"
             ],
-            "time": "2018-05-17T12:52:20+00:00"
+            "time": "2018-05-16T11:51:51+00:00"
         },
         {
             "name": "nette/di",
@@ -6732,7 +6732,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-13T13:21:38+00:00"
+            "time": "2017-12-12T17:28:44+00:00"
         },
         {
             "name": "phar-io/manifest",
