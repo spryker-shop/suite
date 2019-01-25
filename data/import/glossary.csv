@@ -1573,6 +1573,20 @@ quote_approval.cart.require_approval,"You can't place this order because of your
 quote_approval.cart.require_approval,"Sie können diese Bestellung aufgrund Ihres Einkaufslimits nicht aufgeben. Senden Sie Ihren Einkaufswagen zur Genehmigung oder wenden Sie sich an Ihren Kontakmanager.",de_DE
 quote_approval.create.approver_cant_approve_quote,"Selected approver cannot approve your request due to approver limit.",en_US
 quote_approval.create.approver_cant_approve_quote,"Der ausgewählte Manager kann Ihre Anfrage aufgrund des Genehmigungslimits nicht genehmigen.",de_DE
+quote_approval.create.you_cant_approve_quote,"You can't approve or decline this cart because it's amount higher that your Approver limit.",en_US
+quote_approval.create.you_cant_approve_quote,"",de_DE
+quote_approval.create.quote_already_approved,"This Cart was already approved.",en_US
+quote_approval.create.quote_already_approved,"",de_DE
+quote_approval.create.quote_already_declined,"This Cart was already declined.",en_US
+quote_approval.create.quote_already_declined,"",de_DE
+quote_approval.create.quote_already_cancelled,"You can't work with this Cart it was already sent to another approver.",en_US
+quote_approval.create.quote_already_cancelled,"",de_DE
+quote_approval.create.quote_already_waiting_for_approval,"This Cart was already sent for approval.",en_US
+quote_approval.create.quote_already_waiting_for_approval,"",de_DE
+quote_approval.create.only_quote_owner_can_send_request,"You can't sent Cart for Approval, only Cart owner can do it.",en_US
+quote_approval.create.only_quote_owner_can_send_request,"",de_DE
+quote_approval.request.approval_by,by,en_US
+quote_approval.request.approval_by,von,de_DE
 quote_approval.created,"Your request for Approval was send to %first_name% %last_name%".,en_US
 quote_approval.created,"Ihre Anfrage zur Genehmigung wurde an %first_name% %last_name% gesendet.",de_DE
 quote_approval.removed,"Your request for Approval was canceled.",en_US
@@ -1625,10 +1639,6 @@ cart_note.customer_page.order_note,Order Note,en_US
 cart_note.customer_page.order_note,Bestellhinweis,de_DE
 cart.validate.items.price.changed,"Prices have been changed for products with SKU '%sku%'.",en_US
 cart.validate.items.price.changed,"Preis wurde für Produkte mit SKU geändert '%sku%'.",de_DE
-quote_approval_widget.cart.quote_owner_name,"Quote owner name",en_US
-quote_approval_widget.cart.quote_owner_name,"Name des Auftragsinhabers",de_DE
-quote_approval_widget.cart.request_date,"Date of requesting for approve",en_US
-quote_approval_widget.cart.request_date,"Datum der Anfrage zur Genehmigung",de_DE
 quote_approval_widget.cart.status,"Status",en_US
 quote_approval_widget.cart.status,"Status",de_DE
 quote_approval_widget.cart.approve,"Approve",en_US
@@ -1643,12 +1653,6 @@ quote_approval_widget.cart.success_message.declined,"Request from %first_name% %
 quote_approval_widget.cart.success_message.declined,"Anfrage von %first_name% %last_name% wurde erfolgreich abgelehnt",de_DE
 quote_approval_widget.cart.success_message.canceled,"Request from %first_name% %last_name% was successfully canceled",en_US
 quote_approval_widget.cart.success_message.canceled,"Anfrage von %first_name% %last_name% wurde erfolgreich abgebrochen",de_DE
-quote_approval_widget.cart.error_approve_message,"You don't have permission to approve this Cart",en_US
-quote_approval_widget.cart.error_approve_message,"Sie sind nicht berechtigt diesen Warenkorb zu genehmigen",de_DE
-quote_approval_widget.cart.error_decline_message,"You don't have permission to decline this Cart",en_US
-quote_approval_widget.cart.error_decline_message,"Sie sind nicht berechtigt diesen Warenkorb abzulehnen",de_DE
-quote_approval_widget.cart.error_cancel_message,"You don't have permission to cancel this Cart",en_US
-quote_approval_widget.cart.error_cancel_message,"Sie sind nicht berechtigt diesen Warenkorb abzubrechen",de_DE
 multi_cart.form.create_cart,"Add new cart",en_US
 multi_cart.form.create_cart,"Füge einen neuen Warenkorb hinzu",de_DE
 multi_cart.form.quote.name,"Cart Name",en_US
