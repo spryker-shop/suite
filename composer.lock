@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d8c8906c6f9d02625bd427fef8509f1a",
+    "content-hash": "a53ee73ac49429af3b14f9990983d7e8",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -2374,6 +2374,49 @@
             "time": "2018-10-16T13:00:22+00:00"
         },
         {
+            "name": "spryker/container",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/container.git",
+                "reference": "12d50f4add4ba7046962d3b1e36af35d2f62a1c9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/container/zipball/12d50f4add4ba7046962d3b1e36af35d2f62a1c9",
+                "reference": "12d50f4add4ba7046962d3b1e36af35d2f62a1c9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "psr/container": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                },
+                "psr-0": {
+                    "Pimple": "src/Spryker"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Container module",
+            "time": "2019-01-22T13:59:37+00:00"
+        },
+        {
             "name": "spryker/event-behavior",
             "version": "dev-master",
             "source": {
@@ -2542,6 +2585,12 @@
                 "url": "git@github.com:spryker/silexphp.git",
                 "reference": "534ac4280186a98fec685096720ef2b8ef09b739"
             },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/silexphp/zipball/534ac4280186a98fec685096720ef2b8ef09b739",
+                "reference": "534ac4280186a98fec685096720ef2b8ef09b739",
+                "shasum": ""
+            },
             "require": {
                 "php": ">=7.1",
                 "spryker/container": "^1.1.0",
@@ -2585,11 +2634,7 @@
                     "Silex\\": "src/Silex"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Silex\\Tests\\": "tests/Silex/Tests"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2612,11 +2657,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/glue-3912/master-api-b2b-login-td",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "f78d0f04765a4cd4cee90c560b7c8c6359f9c105"
+                "reference": "ba868e297df9787cd1a732ec4fccdb51ec087409"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2683,7 +2728,6 @@
                 "spryker/company-unit-address-label-gui": "*",
                 "spryker/config": "*",
                 "spryker/console": "*",
-                "spryker/container": "*",
                 "spryker/country": "*",
                 "spryker/csv": "*",
                 "spryker/currency": "*",
@@ -2750,6 +2794,7 @@
                 "spryker/oms-discount-connector": "*",
                 "spryker/payment": "*",
                 "spryker/payment-cart-connector": "*",
+                "spryker/pimple": "*",
                 "spryker/price": "*",
                 "spryker/price-cart-connector": "*",
                 "spryker/price-product": "*",
@@ -2885,7 +2930,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-01-25T10:46:31+00:00"
+            "time": "2019-01-24T16:17:39+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6143,7 +6188,7 @@
                 "configurator",
                 "nette"
             ],
-            "time": "2018-05-17T12:52:20+00:00"
+            "time": "2018-05-16T11:51:51+00:00"
         },
         {
             "name": "nette/di",
@@ -6684,7 +6729,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-13T13:21:38+00:00"
+            "time": "2017-12-12T17:28:44+00:00"
         },
         {
             "name": "phar-io/manifest",
