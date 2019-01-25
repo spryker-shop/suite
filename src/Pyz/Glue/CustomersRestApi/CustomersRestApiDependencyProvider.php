@@ -8,23 +8,10 @@
 namespace Pyz\Glue\CustomersRestApi;
 
 use Spryker\Glue\CartsRestApi\Plugin\CustomerPostCreate\UpdateCartCreateCustomerReferencePlugin;
-use Spryker\Glue\CartsRestApi\Plugin\CustomerPostRegister\UpdateCartCustomerReferencePlugin;
 use Spryker\Glue\CustomersRestApi\CustomersRestApiDependencyProvider as SprykerCustomersRestApiDependencyProvider;
 
 class CustomersRestApiDependencyProvider extends SprykerCustomersRestApiDependencyProvider
 {
-    /**
-     * @deprecated use getCustomerPostCreatePlugins()
-     *
-     * @return \Spryker\Glue\CustomersRestApiExtension\Dependency\Plugin\CustomerPostRegisterPluginInterface[]
-     */
-    protected function getCustomerPostRegisterPlugins(): array
-    {
-        return array_merge(parent::getCustomerPostRegisterPlugins(), [
-            new UpdateCartCustomerReferencePlugin(),
-        ]);
-    }
-
     /**
      * @return \Spryker\Glue\CustomersRestApiExtension\Dependency\Plugin\CustomerPostCreatePluginInterface[]
      */
