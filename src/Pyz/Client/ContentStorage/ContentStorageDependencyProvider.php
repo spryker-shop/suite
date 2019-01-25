@@ -7,7 +7,7 @@
 
 namespace Pyz\Client\ContentStorage;
 
-use Spryker\Client\ContentProductConnector\Plugin\AbstractProductListTermPlugin;
+use Spryker\Client\ContentProduct\Plugin\AbstractProductListTermExecutorPlugin;
 use Spryker\Client\ContentStorage\ContentStorageDependencyProvider as SprykerContentStorageDependencyProvider;
 
 class ContentStorageDependencyProvider extends SprykerContentStorageDependencyProvider
@@ -18,7 +18,7 @@ class ContentStorageDependencyProvider extends SprykerContentStorageDependencyPr
     protected function getContentPlugins(): array
     {
         return [
-            new AbstractProductListTermPlugin(),
+            new AbstractProductListTermExecutorPlugin(),
         ];
     }
 }
