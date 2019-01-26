@@ -68,6 +68,7 @@ use SprykerShop\Yves\ProductWidget\Widget\CmsProductWidget;
 use SprykerShop\Yves\ProductWidget\Widget\PdpProductRelationWidget;
 use SprykerShop\Yves\ProductWidget\Widget\PdpProductReplacementForListWidget;
 use SprykerShop\Yves\ProductWidget\Widget\ProductAlternativeWidget;
+use SprykerShop\Yves\QuoteApprovalWidget\Widget\QuoteApprovalStatusWidget;
 use SprykerShop\Yves\QuoteApprovalWidget\Widget\QuoteApprovalWidget;
 use SprykerShop\Yves\QuoteApprovalWidget\Widget\QuoteApproveRequestWidget;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Widget\SalesOrderThresholdWidget;
@@ -165,6 +166,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             WishlistProductAlternativeWidget::class,
             CompanyBusinessUnitAddressWidget::class,
             FullTextSearchTabsWidget::class,
+            QuoteApprovalStatusWidget::class,
             QuoteApproveRequestWidget::class,
             ProcceedToCheckoutButtonWidget::class,
             QuoteApprovalWidget::class,
