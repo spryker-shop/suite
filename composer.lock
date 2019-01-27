@@ -2420,6 +2420,49 @@
             "time": "2018-10-16T13:00:22+00:00"
         },
         {
+            "name": "spryker/container",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/container.git",
+                "reference": "12d50f4add4ba7046962d3b1e36af35d2f62a1c9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/container/zipball/12d50f4add4ba7046962d3b1e36af35d2f62a1c9",
+                "reference": "12d50f4add4ba7046962d3b1e36af35d2f62a1c9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "psr/container": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                },
+                "psr-0": {
+                    "Pimple": "src/Spryker"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Container module",
+            "time": "2019-01-22T13:59:37+00:00"
+        },
+        {
             "name": "spryker/event-behavior",
             "version": "dev-master",
             "source": {
@@ -2586,17 +2629,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/silexphp.git",
-                "reference": "7df3e1b93fe711f1854a5e31a2d5b704569b8de3"
+                "reference": "534ac4280186a98fec685096720ef2b8ef09b739"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/silexphp/zipball/7df3e1b93fe711f1854a5e31a2d5b704569b8de3",
-                "reference": "7df3e1b93fe711f1854a5e31a2d5b704569b8de3",
+                "url": "https://api.github.com/repos/spryker/silexphp/zipball/534ac4280186a98fec685096720ef2b8ef09b739",
+                "reference": "534ac4280186a98fec685096720ef2b8ef09b739",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "pimple/pimple": "^1.0",
+                "spryker/container": "^1.1.0",
                 "symfony/event-dispatcher": "^3.0.0 || ^4.0.0",
                 "symfony/http-foundation": "^3.0.0",
                 "symfony/http-kernel": "^3.0.0 || ^4.0.0",
@@ -2656,7 +2699,7 @@
             "keywords": [
                 "microframework"
             ],
-            "time": "2019-01-23T09:16:57+00:00"
+            "time": "2019-01-25T09:02:20+00:00"
         },
         {
             "name": "spryker/spryker",
@@ -2664,7 +2707,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "501cf2963092b8c9ceb4a6754e17f22c3118f514"
+                "reference": "71be93c80bf0d475c079f2ed2188f62af69e3d1a"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2934,7 +2977,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-01-24T17:26:56+00:00"
+            "time": "2019-01-25T15:00:53+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -8420,12 +8463,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/architecture-sniffer.git",
-                "reference": "c9f6fd8e8b15dc5501ebfdbd6f8f9b7b041b3df9"
+                "reference": "91400b2da8ec07297464dd9c1d84207e9e39f46d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/c9f6fd8e8b15dc5501ebfdbd6f8f9b7b041b3df9",
-                "reference": "c9f6fd8e8b15dc5501ebfdbd6f8f9b7b041b3df9",
+                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/91400b2da8ec07297464dd9c1d84207e9e39f46d",
+                "reference": "91400b2da8ec07297464dd9c1d84207e9e39f46d",
                 "shasum": ""
             },
             "require": {
@@ -8438,7 +8481,7 @@
             },
             "require-dev": {
                 "codeception/codeception": "^2.4",
-                "phpstan/phpstan": "^0.9.2",
+                "phpstan/phpstan": "^0.10.0",
                 "phpunit/phpunit": "~5.2",
                 "spryker/code-sniffer": "*",
                 "symfony/var-dumper": "^4.0"
@@ -8470,7 +8513,7 @@
                 "sniffer",
                 "standards"
             ],
-            "time": "2018-12-11T11:17:43+00:00"
+            "time": "2019-01-25T15:37:13+00:00"
         },
         {
             "name": "spryker/code-generator",
