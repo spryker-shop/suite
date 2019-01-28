@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a53ee73ac49429af3b14f9990983d7e8",
+    "content-hash": "d8c8906c6f9d02625bd427fef8509f1a",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -995,7 +995,7 @@
                 {
                     "name": "Luís Otávio Cobucci Oblonczyk",
                     "email": "lcobucci@gmail.com",
-                    "role": "developer"
+                    "role": "Developer"
                 }
             ],
             "description": "A simple library to work with JSON Web Token and JSON Web Signature",
@@ -2374,49 +2374,6 @@
             "time": "2018-10-16T13:00:22+00:00"
         },
         {
-            "name": "spryker/container",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/container.git",
-                "reference": "12d50f4add4ba7046962d3b1e36af35d2f62a1c9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/container/zipball/12d50f4add4ba7046962d3b1e36af35d2f62a1c9",
-                "reference": "12d50f4add4ba7046962d3b1e36af35d2f62a1c9",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1",
-                "psr/container": "^1.0.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                },
-                "psr-0": {
-                    "Pimple": "src/Spryker"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "Container module",
-            "time": "2019-01-22T13:59:37+00:00"
-        },
-        {
             "name": "spryker/event-behavior",
             "version": "dev-master",
             "source": {
@@ -2585,12 +2542,6 @@
                 "url": "git@github.com:spryker/silexphp.git",
                 "reference": "534ac4280186a98fec685096720ef2b8ef09b739"
             },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/silexphp/zipball/534ac4280186a98fec685096720ef2b8ef09b739",
-                "reference": "534ac4280186a98fec685096720ef2b8ef09b739",
-                "shasum": ""
-            },
             "require": {
                 "php": ">=7.1",
                 "spryker/container": "^1.1.0",
@@ -2634,7 +2585,11 @@
                     "Silex\\": "src/Silex"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Silex\\Tests\\": "tests/Silex/Tests"
+                }
+            },
             "license": [
                 "MIT"
             ],
@@ -2657,11 +2612,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/glue-3912/master-api-b2b-login-td",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "ba868e297df9787cd1a732ec4fccdb51ec087409"
+                "reference": "c8ab31fe6cc8cd82812381c7bc480a6d0dc68c47"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2728,6 +2683,7 @@
                 "spryker/company-unit-address-label-gui": "*",
                 "spryker/config": "*",
                 "spryker/console": "*",
+                "spryker/container": "*",
                 "spryker/country": "*",
                 "spryker/csv": "*",
                 "spryker/currency": "*",
@@ -2794,7 +2750,6 @@
                 "spryker/oms-discount-connector": "*",
                 "spryker/payment": "*",
                 "spryker/payment-cart-connector": "*",
-                "spryker/pimple": "*",
                 "spryker/price": "*",
                 "spryker/price-cart-connector": "*",
                 "spryker/price-product": "*",
@@ -2930,7 +2885,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-01-24T16:17:39+00:00"
+            "time": "2019-01-28T09:00:33+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6188,7 +6143,7 @@
                 "configurator",
                 "nette"
             ],
-            "time": "2018-05-16T11:51:51+00:00"
+            "time": "2018-05-17T12:52:20+00:00"
         },
         {
             "name": "nette/di",
@@ -6729,7 +6684,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-12T17:28:44+00:00"
+            "time": "2017-12-13T13:21:38+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -8416,12 +8371,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/architecture-sniffer.git",
-                "reference": "c9f6fd8e8b15dc5501ebfdbd6f8f9b7b041b3df9"
+                "reference": "91400b2da8ec07297464dd9c1d84207e9e39f46d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/c9f6fd8e8b15dc5501ebfdbd6f8f9b7b041b3df9",
-                "reference": "c9f6fd8e8b15dc5501ebfdbd6f8f9b7b041b3df9",
+                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/91400b2da8ec07297464dd9c1d84207e9e39f46d",
+                "reference": "91400b2da8ec07297464dd9c1d84207e9e39f46d",
                 "shasum": ""
             },
             "require": {
@@ -8434,7 +8389,7 @@
             },
             "require-dev": {
                 "codeception/codeception": "^2.4",
-                "phpstan/phpstan": "^0.9.2",
+                "phpstan/phpstan": "^0.10.0",
                 "phpunit/phpunit": "~5.2",
                 "spryker/code-sniffer": "*",
                 "symfony/var-dumper": "^4.0"
@@ -8466,7 +8421,7 @@
                 "sniffer",
                 "standards"
             ],
-            "time": "2018-12-11T11:17:43+00:00"
+            "time": "2019-01-25T15:37:13+00:00"
         },
         {
             "name": "spryker/code-generator",
