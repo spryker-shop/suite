@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "275b47d2fe013e57b01731e87a31123c",
+    "content-hash": "628910c8c56fed65e5a97502f0bc2ea5",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -16653,16 +16653,16 @@
         },
         {
             "name": "spryker/navigation-storage",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/navigation-storage.git",
-                "reference": "d15f1a6a6e9e76bc8663d8dbc561c9678569a7e9"
+                "reference": "bc05ebfb664d6e3c36943035be272c409af79345"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/navigation-storage/zipball/d15f1a6a6e9e76bc8663d8dbc561c9678569a7e9",
-                "reference": "d15f1a6a6e9e76bc8663d8dbc561c9678569a7e9",
+                "url": "https://api.github.com/repos/spryker/navigation-storage/zipball/bc05ebfb664d6e3c36943035be272c409af79345",
+                "reference": "bc05ebfb664d6e3c36943035be272c409af79345",
                 "shasum": ""
             },
             "require": {
@@ -16675,7 +16675,7 @@
                 "spryker/storage": "^3.4.0",
                 "spryker/synchronization": "^0.2.0 || ^1.0.0",
                 "spryker/synchronization-extension": "^1.0.0",
-                "spryker/util-sanitize": "^2.1.0"
+                "spryker/util-sanitize": "^2.2.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -16704,7 +16704,51 @@
                 "proprietary"
             ],
             "description": "NavigationStorage module",
-            "time": "2019-01-17T19:49:29+00:00"
+            "time": "2019-01-24T11:37:39+00:00"
+        },
+        {
+            "name": "spryker/navigations-rest-api",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/navigations-rest-api.git",
+                "reference": "b9e5e7fd22babe89b26b8124ea9194b830e35f05"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/navigations-rest-api/zipball/b9e5e7fd22babe89b26b8124ea9194b830e35f05",
+                "reference": "b9e5e7fd22babe89b26b8124ea9194b830e35f05",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/glue-application": "^1.9.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.29.0",
+                "spryker/navigation-storage": "^1.4.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "NavigationsRestApi module",
+            "time": "2019-01-24T11:29:01+00:00"
         },
         {
             "name": "spryker/new-relic",
@@ -26893,21 +26937,25 @@
         },
         {
             "name": "spryker/util-sanitize",
-            "version": "2.1.2",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/util-sanitize.git",
-                "reference": "a494e19199349491a762c7c8f0450bf64fdf5e53"
+                "reference": "664966be9e07d4d81d60b89a673c0b29024a573b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/util-sanitize/zipball/a494e19199349491a762c7c8f0450bf64fdf5e53",
-                "reference": "a494e19199349491a762c7c8f0450bf64fdf5e53",
+                "url": "https://api.github.com/repos/spryker/util-sanitize/zipball/664966be9e07d4d81d60b89a673c0b29024a573b",
+                "reference": "664966be9e07d4d81d60b89a673c0b29024a573b",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/kernel": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/propel": "*",
+                "spryker/testify": "*"
             },
             "type": "library",
             "extra": {
@@ -26925,7 +26973,7 @@
                 "proprietary"
             ],
             "description": "UtilSanitize module",
-            "time": "2018-02-05T11:41:16+00:00"
+            "time": "2019-01-25T14:06:47+00:00"
         },
         {
             "name": "spryker/util-text",
