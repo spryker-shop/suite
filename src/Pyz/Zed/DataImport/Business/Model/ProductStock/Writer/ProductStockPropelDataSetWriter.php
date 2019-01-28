@@ -232,7 +232,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
             ->useStockQuery()
                 ->filterByName($stockNames, Criteria::IN)
             ->endUse()
-            ->withColumn('SUM(' . SpyStockProductTableMap::COL_QUANTITY . ')', static::COL_STOCK_PRODUCT_TOTAL_QUANTITY)
+            ->withColumn(sprintf('SUM(%s)', SpyStockProductTableMap::COL_QUANTITY), static::COL_STOCK_PRODUCT_TOTAL_QUANTITY)
             ->select([static::COL_STOCK_PRODUCT_TOTAL_QUANTITY])
             ->findOne();
 
@@ -376,7 +376,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
         $sumQuantity = SpyAvailabilityQuery::create()
             ->filterByFkAvailabilityAbstract($availabilityAbstractEntity->getIdAvailabilityAbstract())
             ->filterByFkStore($idStore)
-            ->withColumn('SUM(' . SpyAvailabilityTableMap::COL_QUANTITY . ')', static::COL_AVAILABILITY_TOTAL_QUANTITY)
+            ->withColumn(sprintf('SUM(%s)', SpyAvailabilityTableMap::COL_QUANTITY), static::COL_AVAILABILITY_TOTAL_QUANTITY)
             ->select([static::COL_AVAILABILITY_TOTAL_QUANTITY])
             ->findOne();
 
