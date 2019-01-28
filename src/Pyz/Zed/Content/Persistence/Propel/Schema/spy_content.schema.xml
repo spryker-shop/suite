@@ -5,8 +5,8 @@
           package="src.Orm.Zed.Content.Persistence">
 
     <table name="spy_content" phpName="SpyContent">
-        <behavior name="uuid">
-            <parameter name="key_columns" value="id_content.name.content_type_candidate_key.content_category_candidate_key"/>
+        <behavior name="event">
+            <parameter name="spy_content_all" column="*"/>
         </behavior>
     </table>
 </database>
