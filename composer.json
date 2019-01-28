@@ -3,8 +3,8 @@
   "description": "Spryker Suite (internal)",
   "license": "MIT",
   "require": {
-    "spryker/spryker": "dev-feature/ps-2940/master-reclamtion-techdebt",
-    "spryker/spryker-shop": "dev-feature/ps-2940/master-reclamtion-techdebt",
+    "spryker/spryker": "dev-master",
+    "spryker/spryker-shop": "dev-master",
     "spryker-eco/loggly": "dev-master",
     "spryker/rabbit-mq": "dev-master",
     "spryker/install": "dev-master",
@@ -19,7 +19,6 @@
     "filp/whoops": "^2.1",
     "mandrill/mandrill": "~1.0.55",
     "monolog/monolog": "^1.21.0",
-    "pimple/pimple": "~1.1.1",
     "predis/predis": "^1.1.1",
     "propel/propel": "2.0.0-alpha8",
     "psr/log": "^1.0.0",
@@ -40,7 +39,7 @@
     "symfony/security": "^2.6.13 || ^3.0.0",
     "symfony/serializer": "^2.6.13 || ^3.0.0",
     "symfony/translation": "^2.6.13 || ^3.0.0",
-    "symfony/twig-bridge": "^2.7.0 || ^3.0.0 || ^4.0.0",
+    "symfony/twig-bridge": "^3.2.0 || ^4.0.0",
     "symfony/validator": "^2.6.13 || ^3.0.0",
     "symfony/yaml": "^2.6.13 || ^3.0.0",
     "swiftmailer/swiftmailer": "^6.1",
@@ -95,6 +94,9 @@
       "Orm\\": "src/Orm/",
       "Pyz\\": "src/Pyz/"
     },
+    "psr-0": {
+      "Pimple": "vendor/spryker/spryker/Bundles/Container/src/Spryker"
+    },
     "files": [
       "vendor/spryker/spryker/autoload.php"
     ]
@@ -134,6 +136,10 @@
     {
       "type": "git",
       "url": "git@github.com:spryker/spryk.git"
+    },
+    {
+      "type": "git",
+      "url": "git@github.com:spryker/silexphp.git"
     }
   ],
   "scripts": {
