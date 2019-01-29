@@ -8,7 +8,7 @@
 namespace Pyz\Zed\ProductBundle;
 
 use Spryker\Zed\ProductBundle\ProductBundleDependencyProvider as SprykerProductBundleDependencyProvider;
-use Spryker\Zed\ProductDiscontinuedProductBundleConnector\Communication\Plugin\PostSaveBundledProductsPlugin;
+use Spryker\Zed\ProductDiscontinuedProductBundleConnector\Communication\Plugin\PostSaveBundledProductsDiscontinuedPlugin;
 
 class ProductBundleDependencyProvider extends SprykerProductBundleDependencyProvider
 {
@@ -18,7 +18,7 @@ class ProductBundleDependencyProvider extends SprykerProductBundleDependencyProv
     protected function getPostSaveBundledProductsPlugins(): array
     {
         return [
-            new PostSaveBundledProductsPlugin(),
+            new PostSaveBundledProductsDiscontinuedPlugin(),
         ];
     }
 }
