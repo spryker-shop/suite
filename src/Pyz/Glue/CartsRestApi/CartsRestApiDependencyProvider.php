@@ -8,10 +8,10 @@
 namespace Pyz\Glue\CartsRestApi;
 
 use Spryker\Glue\CartsRestApi\CartsRestApiDependencyProvider as SprykerCartsRestApiDependencyProvider;
+use Spryker\Glue\CartsRestApi\Plugin\QuoteCollectionReader\CartQuoteCollectionReaderPlugin;
+use Spryker\Glue\CartsRestApi\Plugin\QuoteCreator\SingleQuoteCreatorPlugin;
 use Spryker\Glue\CartsRestApiExtension\Dependency\Plugin\QuoteCollectionReaderPluginInterface;
 use Spryker\Glue\CartsRestApiExtension\Dependency\Plugin\QuoteCreatorPluginInterface;
-use Spryker\Glue\MultiCartsRestApi\Plugin\QuoteCollectionReader\MultipleQuoteCollectionReaderPlugin;
-use Spryker\Glue\MultiCartsRestApi\Plugin\QuoteCreator\MultipleQuoteCreatorPlugin;
 
 class CartsRestApiDependencyProvider extends SprykerCartsRestApiDependencyProvider
 {
@@ -20,7 +20,7 @@ class CartsRestApiDependencyProvider extends SprykerCartsRestApiDependencyProvid
      */
     protected function getQuoteCollectionReaderPlugin(): QuoteCollectionReaderPluginInterface
     {
-        return new MultipleQuoteCollectionReaderPlugin(); #MultiCartFeature
+        return new CartQuoteCollectionReaderPlugin();
     }
 
     /**
@@ -28,6 +28,6 @@ class CartsRestApiDependencyProvider extends SprykerCartsRestApiDependencyProvid
      */
     protected function getQuoteCreatorPlugin(): QuoteCreatorPluginInterface
     {
-        return new MultipleQuoteCreatorPlugin(); #MultiCartFeature
+        return new SingleQuoteCreatorPlugin();
     }
 }
