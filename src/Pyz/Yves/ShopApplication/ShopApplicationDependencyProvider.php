@@ -54,7 +54,6 @@ use SprykerShop\Yves\ProductMeasurementUnitWidget\Widget\CartProductMeasurementU
 use SprykerShop\Yves\ProductMeasurementUnitWidget\Widget\ManageProductMeasurementUnitWidget;
 use SprykerShop\Yves\ProductOptionWidget\Widget\ProductOptionConfiguratorWidget;
 use SprykerShop\Yves\ProductPackagingUnitWidget\Widget\ProductPackagingUnitWidget;
-use SprykerShop\Yves\ProductQuickAddWidget\Widget\ProductQuickAddWidget;
 use SprykerShop\Yves\ProductRelationWidget\Widget\SimilarProductsWidget;
 use SprykerShop\Yves\ProductRelationWidget\Widget\UpSellingProductsWidget;
 use SprykerShop\Yves\ProductReplacementForWidget\Widget\ProductReplacementForListWidget;
@@ -62,6 +61,7 @@ use SprykerShop\Yves\ProductReviewWidget\Widget\DisplayProductAbstractReviewWidg
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductDetailPageReviewWidget;
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductRatingFilterWidget;
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductReviewDisplayWidget;
+use SprykerShop\Yves\ProductSearchWidget\Widget\ProductConcreteAddWidget;
 use SprykerShop\Yves\ProductSearchWidget\Widget\ProductConcreteSearchWidget;
 use SprykerShop\Yves\ProductWidget\Widget\CatalogPageProductWidget;
 use SprykerShop\Yves\ProductWidget\Widget\CmsProductGroupWidget;
@@ -145,7 +145,6 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ProductPriceVolumeWidget::class,
             ProductRatingFilterWidget::class,
             ProductReviewDisplayWidget::class,
-            ProductQuickAddWidget::class,
             QuickOrderPageWidget::class,
             SalesOrderThresholdWidget::class,
             SharedCartDetailsWidget::class,
@@ -168,6 +167,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ProductConcreteSearchWidget::class,
             AddItemsToShoppingListWidget::class,
             CategoryImageStorageWidget::class,
+            ProductConcreteAddWidget::class,
         ];
     }
 
