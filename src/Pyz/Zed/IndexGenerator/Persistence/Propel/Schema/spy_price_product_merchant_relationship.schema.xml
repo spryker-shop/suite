@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\PriceProductMerchantRelationship\Persistence" package="src.Orm.Zed.PriceProductMerchantRelationship.Persistence">
+  <table name="spy_price_product_merchant_relationship">
+    <index name="index-spy_price_product_merchant_relationship-fk_p-4905c2170e15">
+      <index-column name="fk_price_product_store"/>
+    </index>
+    <index name="index-spy_price_product_merchant_relationship-fk_m-b6e6f9891017">
+      <index-column name="fk_merchant_relationship"/>
+    </index>
+  </table>
+</database>
