@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "d8c8906c6f9d02625bd427fef8509f1a",
@@ -2616,7 +2616,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "fc2062e01cd5456816cdf5afbdb4ea60716c2c22"
+                "reference": "17e7003bc8f1c7ae3e93470d9b9bf7b839fdf2d7"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2885,7 +2885,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-01-30T14:20:05+00:00"
+            "time": "2019-01-31T13:30:20+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2893,7 +2893,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "204256ea2e386597c4087d4ba405c0b445ffa81e"
+                "reference": "0364a9d5cd7a65ff90f9defbb864de465ac1ed1e"
             },
             "require": {
                 "php": ">=7.1"
@@ -2968,7 +2968,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-01-30T11:10:50+00:00"
+            "time": "2019-01-31T13:35:10+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -4058,7 +4058,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "BackEndTea@gmail.com"
+                    "email": "backendtea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
@@ -6147,23 +6147,23 @@
         },
         {
             "name": "nette/di",
-            "version": "v2.4.14",
+            "version": "v2.4.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/di.git",
-                "reference": "923da3e2c0aa53162ef455472c0ac7787b096c5a"
+                "reference": "d0561b8f77e8ef2ed6d83328860e16c81a5a8649"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/di/zipball/923da3e2c0aa53162ef455472c0ac7787b096c5a",
-                "reference": "923da3e2c0aa53162ef455472c0ac7787b096c5a",
+                "url": "https://api.github.com/repos/nette/di/zipball/d0561b8f77e8ef2ed6d83328860e16c81a5a8649",
+                "reference": "d0561b8f77e8ef2ed6d83328860e16c81a5a8649",
                 "shasum": ""
             },
             "require": {
                 "ext-tokenizer": "*",
                 "nette/neon": "^2.3.3 || ~3.0.0",
-                "nette/php-generator": "^2.6.1 || ~3.0.0",
-                "nette/utils": "^2.4.3 || ~3.0.0",
+                "nette/php-generator": "^2.6.1 || ^3.0.0",
+                "nette/utils": "^2.5.0 || ~3.0.0",
                 "php": ">=5.6.0"
             },
             "conflict": {
@@ -6212,7 +6212,7 @@
                 "nette",
                 "static"
             ],
-            "time": "2018-09-17T15:47:40+00:00"
+            "time": "2019-01-30T13:26:05+00:00"
         },
         {
             "name": "nette/finder",
@@ -6339,21 +6339,21 @@
         },
         {
             "name": "nette/php-generator",
-            "version": "v3.0.5",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/php-generator.git",
-                "reference": "ea90209c2e8a7cd087b2742ca553c047a8df5eff"
+                "reference": "9de4e093a130f7a1bd175198799ebc0efbac6924"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/php-generator/zipball/ea90209c2e8a7cd087b2742ca553c047a8df5eff",
-                "reference": "ea90209c2e8a7cd087b2742ca553c047a8df5eff",
+                "url": "https://api.github.com/repos/nette/php-generator/zipball/9de4e093a130f7a1bd175198799ebc0efbac6924",
+                "reference": "9de4e093a130f7a1bd175198799ebc0efbac6924",
                 "shasum": ""
             },
             "require": {
                 "nette/utils": "^2.4.2 || ~3.0.0",
-                "php": ">=7.0"
+                "php": ">=7.1"
             },
             "conflict": {
                 "nette/nette": "<2.2"
@@ -6365,7 +6365,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "3.2-dev"
                 }
             },
             "autoload": {
@@ -6389,7 +6389,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🐘 Nette PHP Generator: generates neat PHP code for you. Supports new PHP 7.2 features.",
+            "description": "🐘 Nette PHP Generator: generates neat PHP code for you. Supports new PHP 7.3 features.",
             "homepage": "https://nette.org",
             "keywords": [
                 "code",
@@ -6397,7 +6397,7 @@
                 "php",
                 "scaffolding"
             ],
-            "time": "2018-08-09T14:32:27+00:00"
+            "time": "2018-11-27T19:00:14+00:00"
         },
         {
             "name": "nette/robot-loader",
@@ -6684,7 +6684,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-12T17:28:44+00:00"
+            "time": "2017-12-13T13:21:38+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -8574,12 +8574,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/git-hook.git",
-                "reference": "aab2ad407f341d07e4667736e84421eafc21623c"
+                "reference": "c9abd16a02741d70eae75629cb8d82d43f7710c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/git-hook/zipball/aab2ad407f341d07e4667736e84421eafc21623c",
-                "reference": "aab2ad407f341d07e4667736e84421eafc21623c",
+                "url": "https://api.github.com/repos/spryker/git-hook/zipball/c9abd16a02741d70eae75629cb8d82d43f7710c9",
+                "reference": "c9abd16a02741d70eae75629cb8d82d43f7710c9",
                 "shasum": ""
             },
             "require": {
@@ -8609,18 +8609,18 @@
             "authors": [
                 {
                     "name": "Spryker",
-                    "homepage": "http://spryker.com"
+                    "homepage": "https://spryker.com"
                 }
             ],
             "description": "Spryker Git hooks",
-            "homepage": "http://spryker.com",
+            "homepage": "https://spryker.com",
             "keywords": [
                 "architecture",
                 "framework",
                 "sniffer",
                 "standards"
             ],
-            "time": "2019-01-10T08:43:51+00:00"
+            "time": "2019-01-30T17:48:46+00:00"
         },
         {
             "name": "spryker/spryk",
@@ -8628,7 +8628,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryk.git",
-                "reference": "07521d82bcf9fadae67434e79a100860dff8f853"
+                "reference": "922ab2cb5a2fe232447c2cefc9d6bd17c3a002b9"
             },
             "require": {
                 "php": ">=7.1",
@@ -8702,7 +8702,7 @@
                 "MIT"
             ],
             "description": "Spryker Spryk build tool",
-            "time": "2019-01-23T14:54:17+00:00"
+            "time": "2019-01-30T17:36:47+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
