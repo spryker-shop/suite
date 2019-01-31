@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e32e1dbcd4f517662c908420c4ff0d45",
+    "content-hash": "63d428672a1e89ffcea3017bdca06ee9",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -8418,8 +8418,14 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@github.com:spryker-sdk/spryk.git",
-                "reference": "6ef5a9145895e8013e86b977b399b810091218e5"
+                "url": "https://github.com/spryker-sdk/spryk.git",
+                "reference": "f8c682d248f6bf4f989012ea4ca99ffefb9e9a10"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/f8c682d248f6bf4f989012ea4ca99ffefb9e9a10",
+                "reference": "f8c682d248f6bf4f989012ea4ca99ffefb9e9a10",
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
@@ -8449,59 +8455,26 @@
                     "SprykerSdk\\Spryk\\": "src/SprykerSdk/Spryk/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "SprykerSdkTest\\": "tests/SprykerSdkTest/",
-                    "SprykerSdkTest\\Module\\": "tests/_support/Module/",
-                    "Spryker\\Yves\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Yves/Kernel/",
-                    "Spryker\\Zed\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Zed/Kernel/",
-                    "Spryker\\Shared\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Shared/Kernel/",
-                    "Spryker\\Client\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Client/Kernel/",
-                    "Spryker\\Client\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Client/FooBar/",
-                    "Spryker\\Shared\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Shared/FooBar/",
-                    "Spryker\\Yves\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Yves/FooBar/",
-                    "Spryker\\Zed\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Zed/FooBar/",
-                    "Spryker\\Zed\\ZipZap\\": "tests/_support/Fixtures/Spryker/Zed/ZipZap/",
-                    "Spryker\\Client\\ZipZap\\": "tests/_support/Fixtures/Spryker/Client/ZipZap/",
-                    "Spryker\\Service\\ZipZap\\": "tests/_support/Fixtures/Spryker/Service/ZipZap/",
-                    "SprykerTest\\Zed\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/tests/SprykerTest/Zed/FooBar/",
-                    "Pyz\\Client\\FooBar\\": "tests/_data/src/Pyz/Client/FooBar/",
-                    "Pyz\\Shared\\FooBar\\": "tests/_data/src/Pyz/Shared/FooBar/",
-                    "Pyz\\Yves\\FooBar\\": "tests/_data/src/Pyz/Yves/FooBar/",
-                    "Pyz\\Zed\\FooBar\\": "tests/_data/src/Pyz/Zed/FooBar/",
-                    "PyzTest\\Zed\\FooBar\\": "tests/_data/tests/PyzTest/Zed/FooBar/"
-                }
-            },
-            "scripts": {
-                "post-install-cmd": [
-                    "GitHook\\Composer\\Scripts\\HookInstaller::installGitHook"
-                ],
-                "post-update-cmd": [
-                    "GitHook\\Composer\\Scripts\\HookInstaller::installGitHook"
-                ],
-                "cs-check": [
-                    "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/ tests/ --ignore='/Fixtures/'"
-                ],
-                "cs-fix": [
-                    "phpcbf --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/ tests/ --ignore='/Fixtures/'"
-                ],
-                "phpstan": [
-                    "phpstan analyse -l 7 -c phpstan.neon src/"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "proprietary"
             ],
-            "description": "Spryker Spryk build tool",
-            "time": "2019-01-24T16:29:26+00:00"
+            "description": "Spryk module",
+            "time": "2019-01-31T14:41:53+00:00"
         },
         {
             "name": "spryker-sdk/spryk-gui",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@github.com:spryker-sdk/spryk-gui.git",
-                "reference": "2db1834bf5b76e3dca5668d9a0cb9598e863517e"
+                "url": "https://github.com/spryker-sdk/spryk-gui.git",
+                "reference": "ad834b4d6a5ede6b8f9d393d528d1c032f4377df"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk-gui/zipball/ad834b4d6a5ede6b8f9d393d528d1c032f4377df",
+                "reference": "ad834b4d6a5ede6b8f9d393d528d1c032f4377df",
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
@@ -8531,16 +8504,12 @@
                     "SprykerSdk\\": "src/SprykerSdk/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "SprykerSdkTest\\": "tests/SprykerSdkTest/"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "SprykGui module",
-            "time": "2019-01-25T11:40:07+00:00"
+            "time": "2019-01-31T14:42:44+00:00"
         },
         {
             "name": "spryker/architecture-sniffer",
