@@ -92,7 +92,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
      *
      * @return \Spryker\Zed\CartExtension\Dependency\Plugin\CartPreCheckPluginInterface[]
      */
-    protected function getCartItemsNormalizerPlugins(Container $container)
+    protected function getCartItemsNormalizerPlugins(Container $container): array
     {
         return [
             new CartItemsQuantityNormalizerPlugin(),
