@@ -64,6 +64,7 @@ $config[EventConstants::LOG_FILE_PATH] = APPLICATION_ROOT_DIR . '/data/US/logs/a
 
 // ----------- Glue Application
 $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = sprintf('http://glue.us.%s.local', $domain);
+$config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = sprintf('http://glue.us.%s.local', $domain);
 
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
     'DE' => [
