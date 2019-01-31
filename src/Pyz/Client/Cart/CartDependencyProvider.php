@@ -73,8 +73,6 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
      */
     protected function getCartChangeItemExpanderPlugins(): array
     {
-        return [
-            new CartChangeItemQuantityExpanderPlugin(),
-        ];
+        return [];
     }
 }
