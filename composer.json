@@ -538,6 +538,7 @@
     "spryker/development": "^3.0.0",
     "spryker/testify": "^3.0.0",
     "spryker-sdk/phpstan-spryker": "^0.1",
+    "spryker-sdk/spryk-gui": "dev-master",
     "stecman/symfony-console-completion": "^0.8.0",
     "symfony/var-dumper": "*",
     "symfony/web-profiler-bundle": "^3.0.0"
@@ -546,17 +547,13 @@
     "psr-4": {
       "Generated\\": "src/Generated/",
       "Orm\\": "src/Orm/",
-      "Pyz\\": "src/Pyz/",
-      "Install\\": "src/Install/"
+      "Pyz\\": "src/Pyz/"
     }
   },
   "autoload-dev": {
     "psr-4": {
       "PyzTest\\": "tests/PyzTest/",
-      "PhpStan\\": "tests/PhpStan/",
-      "Acceptance\\Auth\\": "vendor/spryker/auth/tests/",
-      "Application\\Module\\": "vendor/spryker/application/tests/_support/Module/",
-      "Auth\\Module\\": "vendor/spryker/auth/tests/_support/Module/"
+      "Acceptance\\Auth\\": "vendor/spryker/auth/tests/"
     },
     "files": [
       "test-autoload.php"
