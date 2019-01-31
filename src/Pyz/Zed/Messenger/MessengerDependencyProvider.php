@@ -14,6 +14,8 @@ use Spryker\Zed\Translator\Communication\Plugin\TranslationPlugin;
 class MessengerDependencyProvider extends SprykerMessengerDependencyProvider
 {
     /**
+     * For correct work of ZED translations TranslationPlugin must be added to the end of the array.
+     *
      * @return \Spryker\Zed\MessengerExtension\Dependency\Plugin\TranslationPluginInterface[]
      */
     protected function getTranslationPlugins(): array
