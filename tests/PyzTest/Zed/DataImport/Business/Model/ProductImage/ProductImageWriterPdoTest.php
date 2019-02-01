@@ -7,6 +7,9 @@
 
 namespace PyzTest\Zed\DataImport\Business\Model\ProductImage;
 
+use Spryker\Shared\Config\Config;
+use Spryker\Shared\Propel\PropelConstants;
+
 /**
  * Auto-generated group annotations
  * @group PyzTest
@@ -29,6 +32,10 @@ class ProductImageWriterPdoTest extends AbstractProductImageWriterTest
      */
     public function testProductImageWriter(): void
     {
+        if (Config::get(PropelConstants::ZED_DB_ENGINE) !== Config::get(PropelConstants::ZED_DB_ENGINE_PGSQL)) {
+            $this->markTestSkipped('PostgreSQL related test');
+        }
+
         $writer = $this->getDataImportBusinessFactoryStub()->createProductImageBulkPdoWriter();
 
         $abstractProducts = $this->getAbstractProducts();
