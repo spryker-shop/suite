@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3981ffe6c112801e2df8e22874073a42",
+    "content-hash": "a7cf082b0e78add1564df734c3b496a1",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -3290,16 +3290,16 @@
         },
         {
             "name": "spryker-shop/cms-page",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/cms-page.git",
-                "reference": "28d7f47d07750e02cb14b3fa6b17647ed53b76b0"
+                "reference": "6d02d48f7a74892f355420fdd220cf1d3ef22818"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/cms-page/zipball/28d7f47d07750e02cb14b3fa6b17647ed53b76b0",
-                "reference": "28d7f47d07750e02cb14b3fa6b17647ed53b76b0",
+                "url": "https://api.github.com/repos/spryker-shop/cms-page/zipball/6d02d48f7a74892f355420fdd220cf1d3ef22818",
+                "reference": "6d02d48f7a74892f355420fdd220cf1d3ef22818",
                 "shasum": ""
             },
             "require": {
@@ -3307,9 +3307,9 @@
                 "spryker-shop/shop-application": "^1.0.0",
                 "spryker-shop/shop-router-extension": "^1.0.0",
                 "spryker-shop/shop-ui": "^1.0.0",
-                "spryker/cms": "^6.4.0",
+                "spryker/cms": "^6.4.0 || ^7.0.0",
                 "spryker/cms-content-widget": "^1.2.0",
-                "spryker/cms-storage": "^1.0.0",
+                "spryker/cms-storage": "^1.0.0 || ^2.0.0",
                 "spryker/customer": "^7.4.0",
                 "spryker/kernel": "^3.16.0",
                 "spryker/symfony": "^3.1.0"
@@ -3340,27 +3340,27 @@
                 "proprietary"
             ],
             "description": "CmsPage module",
-            "time": "2019-01-04T15:29:56+00:00"
+            "time": "2019-01-11T07:23:00+00:00"
         },
         {
             "name": "spryker-shop/cms-search-page",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/cms-search-page.git",
-                "reference": "258a8c70627099c768f8d132ccbf3df3bbbc9b4f"
+                "reference": "99f5f2291205a8735ea628292698700915449133"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/cms-search-page/zipball/258a8c70627099c768f8d132ccbf3df3bbbc9b4f",
-                "reference": "258a8c70627099c768f8d132ccbf3df3bbbc9b4f",
+                "url": "https://api.github.com/repos/spryker-shop/cms-search-page/zipball/99f5f2291205a8735ea628292698700915449133",
+                "reference": "99f5f2291205a8735ea628292698700915449133",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker-shop/shop-application": "^1.3.0",
                 "spryker-shop/tabs-widget-extension": "^1.0.0",
-                "spryker/cms-page-search": "^1.2.0",
+                "spryker/cms-page-search": "^1.2.0 || ^2.0.0",
                 "spryker/kernel": "^3.23.1",
                 "spryker/symfony": "^3.1.5"
             },
@@ -3388,7 +3388,7 @@
                 "proprietary"
             ],
             "description": "CmsSearchPage module",
-            "time": "2019-01-04T15:29:56+00:00"
+            "time": "2019-01-31T11:53:04+00:00"
         },
         {
             "name": "spryker-shop/company-page",
@@ -7051,19 +7051,11 @@
                     "Spryker": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-0": {
-                    "Unit": "tests/"
-                }
-            },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Assertion bundle",
-            "support": {
-                "source": "https://github.com/spryker/Assertion/tree/3.0.0"
-            },
             "time": "2017-02-22T12:08:46+00:00"
         },
         {
@@ -7812,14 +7804,11 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Cache bundle",
-            "support": {
-                "source": "https://github.com/spryker/Cache/tree/3.1.0"
-            },
             "time": "2017-04-10T13:13:21+00:00"
         },
         {
@@ -8820,14 +8809,11 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "CategoryExporter module",
-            "support": {
-                "source": "https://github.com/spryker/CategoryExporter/tree/3.0.2"
-            },
             "time": "2017-07-13T15:46:45+00:00"
         },
         {
@@ -9453,28 +9439,28 @@
         },
         {
             "name": "spryker/cms",
-            "version": "6.7.0",
+            "version": "7.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cms.git",
-                "reference": "a4d4d9a49c966a1f960f62a12d8f5dfebcee849f"
+                "reference": "5f3d34d03923d1f85819a988f75a290eadd4db6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms/zipball/a4d4d9a49c966a1f960f62a12d8f5dfebcee849f",
-                "reference": "a4d4d9a49c966a1f960f62a12d8f5dfebcee849f",
+                "url": "https://api.github.com/repos/spryker/cms/zipball/5f3d34d03923d1f85819a988f75a290eadd4db6f",
+                "reference": "5f3d34d03923d1f85819a988f75a290eadd4db6f",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/category": "^3.0.0 || ^4.0.0",
+                "spryker/cms-extension": "^1.0.0",
                 "spryker/glossary": "^3.1.0",
                 "spryker/gui": "^3.0.0",
                 "spryker/kernel": "^3.28.0",
-                "spryker/key-builder": "^1.0.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/propel-orm": "^1.0.0",
-                "spryker/storage": "^3.0.0",
+                "spryker/store": "^1.0.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/touch": "^3.0.0 || ^4.0.0",
                 "spryker/url": "^3.2.1",
@@ -9508,7 +9494,7 @@
                 "proprietary"
             ],
             "description": "Cms module",
-            "time": "2018-11-23T15:45:53+00:00"
+            "time": "2019-01-18T15:26:56+00:00"
         },
         {
             "name": "spryker/cms-block",
@@ -9934,21 +9920,21 @@
         },
         {
             "name": "spryker/cms-collector",
-            "version": "2.0.3",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cms-collector.git",
-                "reference": "ac8f05994338b8db74e0d19a1b2aea80d7fe0aaa"
+                "reference": "47a0f35cff02f536c9d253d7c93168ee137aa9ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-collector/zipball/ac8f05994338b8db74e0d19a1b2aea80d7fe0aaa",
-                "reference": "ac8f05994338b8db74e0d19a1b2aea80d7fe0aaa",
+                "url": "https://api.github.com/repos/spryker/cms-collector/zipball/47a0f35cff02f536c9d253d7c93168ee137aa9ce",
+                "reference": "47a0f35cff02f536c9d253d7c93168ee137aa9ce",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "spryker/cms": "^6.2.0",
+                "spryker/cms": "^6.2.0 || ^7.0.0",
                 "spryker/collector": "^5.1.1 || ^6.0.0",
                 "spryker/kernel": "^3.0.0",
                 "spryker/propel-orm": "^1.1.0",
@@ -9960,8 +9946,6 @@
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
-                "spryker/propel": "^3.0.0",
-                "spryker/silex": "^2.0.0",
                 "spryker/testify": "*"
             },
             "type": "library",
@@ -9980,24 +9964,25 @@
                 "proprietary"
             ],
             "description": "CmsCollector module",
-            "time": "2018-03-09T07:57:08+00:00"
+            "time": "2019-01-11T07:14:46+00:00"
         },
         {
             "name": "spryker/cms-content-widget",
-            "version": "1.2.1",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cms-content-widget.git",
-                "reference": "863c24758984508ecbf7007f9b95c6ce9112a366"
+                "reference": "381ec237f493a08ad9fdd9d859750188e2281adf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-content-widget/zipball/863c24758984508ecbf7007f9b95c6ce9112a366",
-                "reference": "863c24758984508ecbf7007f9b95c6ce9112a366",
+                "url": "https://api.github.com/repos/spryker/cms-content-widget/zipball/381ec237f493a08ad9fdd9d859750188e2281adf",
+                "reference": "381ec237f493a08ad9fdd9d859750188e2281adf",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
+                "spryker/cms-extension": "^1.0.0",
                 "spryker/glossary": "^3.0.0",
                 "spryker/kernel": "^3.0.0",
                 "spryker/log": "^3.0.0",
@@ -10006,15 +9991,10 @@
                 "spryker/util-encoding": "^2.0.0"
             },
             "require-dev": {
-                "spryker/cms": "*",
                 "spryker/cms-block-collector": "*",
-                "spryker/cms-block-gui": "*",
                 "spryker/cms-block-storage": "*",
                 "spryker/cms-collector": "*",
-                "spryker/cms-gui": "*",
                 "spryker/code-sniffer": "*",
-                "spryker/propel": "*",
-                "spryker/propel-orm": "*",
                 "spryker/silex": "*",
                 "spryker/testify": "*"
             },
@@ -10043,7 +10023,7 @@
                 "proprietary"
             ],
             "description": "CmsContentWidget module",
-            "time": "2018-01-25T09:08:11+00:00"
+            "time": "2019-01-11T07:14:46+00:00"
         },
         {
             "name": "spryker/cms-content-widget-cms-block-connector",
@@ -10234,23 +10214,62 @@
             "time": "2018-01-24T11:43:27+00:00"
         },
         {
-            "name": "spryker/cms-gui",
-            "version": "4.6.0",
+            "name": "spryker/cms-extension",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/cms-gui.git",
-                "reference": "9b752239825f8e71174c5b432d3ec13d53d2da1b"
+                "url": "https://github.com/spryker/cms-extension.git",
+                "reference": "cc1633e2d81fbb866211f99afc7eb7bebd46c7be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-gui/zipball/9b752239825f8e71174c5b432d3ec13d53d2da1b",
-                "reference": "9b752239825f8e71174c5b432d3ec13d53d2da1b",
+                "url": "https://api.github.com/repos/spryker/cms-extension/zipball/cc1633e2d81fbb866211f99afc7eb7bebd46c7be",
+                "reference": "cc1633e2d81fbb866211f99afc7eb7bebd46c7be",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsExtension module",
+            "time": "2019-01-07T19:19:20+00:00"
+        },
+        {
+            "name": "spryker/cms-gui",
+            "version": "5.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-gui.git",
+                "reference": "89cdf808e1b5d6012a15f18aa1b324e505c62620"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-gui/zipball/89cdf808e1b5d6012a15f18aa1b324e505c62620",
+                "reference": "89cdf808e1b5d6012a15f18aa1b324e505c62620",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/application": "^3.2.0",
-                "spryker/cms": "^5.1.0 || ^6.6.0",
+                "spryker/cms": "^7.0.0",
                 "spryker/glossary": "^3.0.0",
                 "spryker/gui": "^3.10.0",
                 "spryker/kernel": "^3.28.0",
@@ -10264,6 +10283,7 @@
             "require-dev": {
                 "spryker/config": "*",
                 "spryker/propel": "*",
+                "spryker/store": "*",
                 "spryker/testify": "*",
                 "spryker/zed-navigation": "*"
             },
@@ -10283,30 +10303,32 @@
                 "proprietary"
             ],
             "description": "CmsGui module",
-            "time": "2018-11-23T15:45:53+00:00"
+            "time": "2019-01-25T11:42:30+00:00"
         },
         {
             "name": "spryker/cms-navigation-connector",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cms-navigation-connector.git",
-                "reference": "eea1cdb3e66f42fe325ba5a40670cdccdb4f9df3"
+                "reference": "f2b765ebbe9a43edff56b4420bf0637dd88c5751"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-navigation-connector/zipball/eea1cdb3e66f42fe325ba5a40670cdccdb4f9df3",
-                "reference": "eea1cdb3e66f42fe325ba5a40670cdccdb4f9df3",
+                "url": "https://api.github.com/repos/spryker/cms-navigation-connector/zipball/f2b765ebbe9a43edff56b4420bf0637dd88c5751",
+                "reference": "f2b765ebbe9a43edff56b4420bf0637dd88c5751",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "spryker/cms": "^6.5.0",
+                "spryker/cms": "^6.5.0 || ^7.0.0",
                 "spryker/kernel": "^3.0.0",
                 "spryker/navigation": "^2.3.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/locale": "*",
+                "spryker/propel": "*",
                 "spryker/testify": "*"
             },
             "type": "library",
@@ -10325,28 +10347,77 @@
                 "proprietary"
             ],
             "description": "CmsNavigationConnector module",
-            "time": "2018-01-31T12:07:33+00:00"
+            "time": "2019-01-11T07:14:46+00:00"
         },
         {
-            "name": "spryker/cms-page-search",
-            "version": "1.3.0",
+            "name": "spryker/cms-page-data-import",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/cms-page-search.git",
-                "reference": "3b44fde1d19a2e39c590aec4eff0c36ee404a2b1"
+                "url": "https://github.com/spryker/cms-page-data-import.git",
+                "reference": "b6f6a512acf60d8ed2c11fd830ece87ed627554d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-page-search/zipball/3b44fde1d19a2e39c590aec4eff0c36ee404a2b1",
-                "reference": "3b44fde1d19a2e39c590aec4eff0c36ee404a2b1",
+                "url": "https://api.github.com/repos/spryker/cms-page-data-import/zipball/b6f6a512acf60d8ed2c11fd830ece87ed627554d",
+                "reference": "b6f6a512acf60d8ed2c11fd830ece87ed627554d",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "spryker/cms": "^6.4.0",
+                "spryker/cms": "^7.0.0",
+                "spryker/data-import": "^1.3.0",
+                "spryker/glossary": "^3.3.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/store": "^1.8.0",
+                "spryker/url": "^3.3.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/propel-orm": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\CmsPageDataImport\\Helper\\": "tests/SprykerTest/Zed/CmsPageDataImport/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "CmsPageDataImport module",
+            "time": "2019-01-10T14:36:31+00:00"
+        },
+        {
+            "name": "spryker/cms-page-search",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-page-search.git",
+                "reference": "e30530e790f3acbd38c31310eb50686054fda3ba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-page-search/zipball/e30530e790f3acbd38c31310eb50686054fda3ba",
+                "reference": "e30530e790f3acbd38c31310eb50686054fda3ba",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/cms": "^7.0.0",
                 "spryker/event-behavior": "^1.1.0",
                 "spryker/kernel": "^3.21.0",
                 "spryker/locale": "^3.1.0",
+                "spryker/propel-orm": "^1.0.0",
                 "spryker/search": "^7.0.0 || ^8.0.0",
                 "spryker/synchronization-extension": "^1.0.0",
                 "spryker/util-encoding": "^2.0.0"
@@ -10357,7 +10428,6 @@
                 "spryker/elastica": "*",
                 "spryker/event": "*",
                 "spryker/propel": "*",
-                "spryker/propel-orm": "*",
                 "spryker/testify": "*",
                 "spryker/url": "*"
             },
@@ -10365,7 +10435,6 @@
                 "spryker/config": "If you want to use config.",
                 "spryker/elastica": "If you want to use Elastica plugins.",
                 "spryker/event": "If you want to use Event plugins, minimum required version: 2.1.0",
-                "spryker/propel-orm": "If you want to use transaction functionality, minimum required version: 1.3.0",
                 "spryker/url": "If you want to use Url plugins, minimum required version: 3.3.0"
             },
             "type": "library",
@@ -10384,28 +10453,29 @@
                 "proprietary"
             ],
             "description": "CmsPageSearch module",
-            "time": "2019-01-14T20:51:51+00:00"
+            "time": "2019-01-25T11:40:10+00:00"
         },
         {
             "name": "spryker/cms-storage",
-            "version": "1.3.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cms-storage.git",
-                "reference": "9f8efa9ac0e4f78d1a81394a2cea4cb1489af591"
+                "reference": "64557f729d8f1e471b7520efe7d78a152ce55b8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-storage/zipball/9f8efa9ac0e4f78d1a81394a2cea4cb1489af591",
-                "reference": "9f8efa9ac0e4f78d1a81394a2cea4cb1489af591",
+                "url": "https://api.github.com/repos/spryker/cms-storage/zipball/64557f729d8f1e471b7520efe7d78a152ce55b8a",
+                "reference": "64557f729d8f1e471b7520efe7d78a152ce55b8a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "spryker/cms": "^6.4.0",
+                "spryker/cms": "^7.0.0",
                 "spryker/event-behavior": "^1.1.0",
                 "spryker/kernel": "^3.21.0",
                 "spryker/locale": "^3.1.0",
+                "spryker/propel-orm": "^1.0.0",
                 "spryker/synchronization": "^0.2.0 || ^1.0.0",
                 "spryker/synchronization-extension": "^1.0.0"
             },
@@ -10413,14 +10483,12 @@
                 "spryker/code-sniffer": "*",
                 "spryker/event": "*",
                 "spryker/propel": "*",
-                "spryker/propel-orm": "*",
                 "spryker/testify": "*",
                 "spryker/url": "*",
                 "spryker/url-storage": "*"
             },
             "suggest": {
                 "spryker/event": "If you want to use Event plugins, minimum required version: 2.1.0",
-                "spryker/propel-orm": "If you want to use transaction functionality, minimum required version: 1.3.0",
                 "spryker/url": "If you want to use Url plugins, minimum required version: 3.3.0",
                 "spryker/url-storage": "If you want to use UrlStorage plugins, minimum required version: 0.2.0"
             },
@@ -10440,32 +10508,32 @@
                 "proprietary"
             ],
             "description": "CmsStorage module",
-            "time": "2019-01-17T19:49:29+00:00"
+            "time": "2019-01-24T08:33:53+00:00"
         },
         {
             "name": "spryker/cms-user-connector",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/CmsUserConnector.git",
-                "reference": "5d124aa6ddb7d492b5a9d1dc97e72f944c5c63f5"
+                "url": "https://github.com/spryker/cms-user-connector.git",
+                "reference": "6851983617b9a52feb1ad724b4746fb5d0e04672"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/CmsUserConnector/zipball/5d124aa6ddb7d492b5a9d1dc97e72f944c5c63f5",
-                "reference": "5d124aa6ddb7d492b5a9d1dc97e72f944c5c63f5",
+                "url": "https://api.github.com/repos/spryker/cms-user-connector/zipball/6851983617b9a52feb1ad724b4746fb5d0e04672",
+                "reference": "6851983617b9a52feb1ad724b4746fb5d0e04672",
                 "shasum": ""
             },
             "require": {
-                "spryker/cms": "^5.0.0 || ^6.0.0",
+                "php": ">=7.1",
+                "spryker/cms": "^5.0.0 || ^6.0.0 || ^7.0.0",
+                "spryker/cms-extension": "^1.0.0",
                 "spryker/kernel": "^3.0.0",
                 "spryker/user": "^3.0.1"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
                 "spryker/propel": "*",
-                "spryker/propelorm": "^1.0.0",
-                "spryker/silex": "*",
                 "spryker/testify": "*"
             },
             "type": "library",
@@ -10475,24 +10543,16 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Spryker": "src/"
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
                 }
             },
-            "autoload-dev": {
-                "psr-0": {
-                    "Functional": "tests/"
-                }
-            },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
-            "description": "CmsUserConnector bundle",
-            "support": {
-                "source": "https://github.com/spryker/CmsUserConnector/tree/1.0.1"
-            },
-            "time": "2017-06-29T10:18:58+00:00"
+            "description": "CmsUserConnector module",
+            "time": "2019-01-11T07:14:46+00:00"
         },
         {
             "name": "spryker/code-it-now",
@@ -12749,19 +12809,11 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "SprykerTest\\": "tests/SprykerTest/"
-                }
-            },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "CustomerApi module",
-            "support": {
-                "source": "https://github.com/spryker/CustomerApi/tree/master"
-            },
             "time": "2017-11-10T15:08:30+00:00"
         },
         {
@@ -13845,14 +13897,11 @@
                     "dev-master": "1.0.x-dev"
                 }
             },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Egulias module",
-            "support": {
-                "source": "https://github.com/spryker/Egulias/tree/1.0.0"
-            },
             "time": "2017-11-09T13:55:22+00:00"
         },
         {
@@ -14892,19 +14941,11 @@
                     "Function": "tests/"
                 }
             },
-            "autoload-dev": {
-                "psr-0": {
-                    "Unit": "tests/"
-                }
-            },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Graph bundle",
-            "support": {
-                "source": "https://github.com/spryker/Graph/tree/3.0.0"
-            },
             "time": "2017-02-22T12:08:46+00:00"
         },
         {
@@ -14930,14 +14971,11 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Graphviz module",
-            "support": {
-                "source": "https://github.com/spryker/Graphviz/tree/2.0.1"
-            },
             "time": "2017-08-02T16:31:17+00:00"
         },
         {
@@ -15225,20 +15263,11 @@
                     "Spryker": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-0": {
-                    "Functional": "tests/",
-                    "Unit": "tests/"
-                }
-            },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Invoice bundle",
-            "support": {
-                "source": "https://github.com/spryker/Invoice/tree/2.0.1"
-            },
             "time": "2017-02-22T11:53:10+00:00"
         },
         {
@@ -16705,22 +16734,22 @@
         },
         {
             "name": "spryker/navigation-gui",
-            "version": "2.2.0",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/navigation-gui.git",
-                "reference": "4a40c7762c721affbf338d547888b81782fa6d7c"
+                "reference": "0c1702096182fa914a4d4d49b10629364ed6d010"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/navigation-gui/zipball/4a40c7762c721affbf338d547888b81782fa6d7c",
-                "reference": "4a40c7762c721affbf338d547888b81782fa6d7c",
+                "url": "https://api.github.com/repos/spryker/navigation-gui/zipball/0c1702096182fa914a4d4d49b10629364ed6d010",
+                "reference": "0c1702096182fa914a4d4d49b10629364ed6d010",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/category": "^3.0.0 || ^4.0.0",
-                "spryker/cms": "^4.0.0 || ^5.0.0 || ^6.0.0",
+                "spryker/cms": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0",
                 "spryker/gui": "^3.13.0",
                 "spryker/kernel": "^3.0.0",
                 "spryker/locale": "^3.0.0",
@@ -16750,7 +16779,7 @@
                 "proprietary"
             ],
             "description": "NavigationGui module",
-            "time": "2018-10-02T11:39:06+00:00"
+            "time": "2019-01-11T07:14:46+00:00"
         },
         {
             "name": "spryker/navigation-storage",
@@ -23903,14 +23932,11 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Redis bundle",
-            "support": {
-                "source": "https://github.com/spryker/Redis/tree/2.0.1"
-            },
             "time": "2017-04-26T15:15:36+00:00"
         },
         {
@@ -23953,22 +23979,11 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Config\\Module\\": "vendor/spryker/config/tests/_support/Module",
-                    "Propel\\Module\\": "vendor/spryker/propel/tests/_support/Module",
-                    "Transfer\\Module\\": "vendor/spryker/transfer/tests/_support/Module",
-                    "SprykerTest\\": "tests/SprykerTest/"
-                }
-            },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Refund module",
-            "support": {
-                "source": "https://github.com/spryker/Refund/tree/master"
-            },
             "time": "2017-11-27T14:09:42+00:00"
         },
         {
@@ -26927,19 +26942,11 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "SprykerTest\\": "tests/SprykerTest/"
-                }
-            },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "UtilDateTime module",
-            "support": {
-                "source": "https://github.com/spryker/UtilDateTime/tree/1.0.2"
-            },
             "time": "2017-10-24T13:32:31+00:00"
         },
         {
@@ -27126,19 +27133,11 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "SprykerTest\\": "tests/SprykerTest/"
-                }
-            },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "UtilText module",
-            "support": {
-                "source": "https://github.com/spryker/UtilText/tree/master"
-            },
             "time": "2017-10-24T13:32:31+00:00"
         },
         {
@@ -27215,19 +27214,11 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "SprykerTest\\": "tests/SprykerTest/"
-                }
-            },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "UtilValidate module",
-            "support": {
-                "source": "https://github.com/spryker/UtilValidate/tree/1.0.0"
-            },
             "time": "2017-11-09T13:55:22+00:00"
         },
         {
@@ -27676,14 +27667,11 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Zend module",
-            "support": {
-                "source": "https://github.com/spryker/Zend/tree/2.1.0"
-            },
             "time": "2017-08-02T16:31:17+00:00"
         },
         {
@@ -28674,7 +28662,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "BackEndTea@gmail.com"
+                    "email": "backendtea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
