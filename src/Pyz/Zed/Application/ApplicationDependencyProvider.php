@@ -11,6 +11,7 @@ use Silex\Provider\HttpFragmentServiceProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\SessionServiceProvider;
 use Silex\Provider\TwigServiceProvider;
+use Spryker\Service\Translator\Plugin\ServiceProvider\ZedTranslationServiceProvider;
 use Spryker\Service\UtilDateTime\ServiceProvider\DateTimeFormatterServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\FormFactoryServiceProvider;
 use Spryker\Shared\Config\Environment;
@@ -42,7 +43,6 @@ use Spryker\Zed\Money\Communication\Plugin\ServiceProvider\TwigMoneyServiceProvi
 use Spryker\Zed\Monitoring\Communication\Plugin\ServiceProvider\MonitoringRequestTransactionServiceProvider;
 use Spryker\Zed\Propel\Communication\Plugin\ServiceProvider\PropelServiceProvider;
 use Spryker\Zed\Session\Communication\Plugin\ServiceProvider\SessionServiceProvider as SprykerSessionServiceProvider;
-use Spryker\Zed\Translator\Communication\Plugin\ServiceProvider\ZedTranslationServiceProvider;
 use Spryker\Zed\Twig\Communication\Plugin\ServiceProvider\TwigServiceProvider as SprykerTwigServiceProvider;
 use Spryker\Zed\User\Communication\Plugin\ServiceProvider\UserServiceProvider;
 use Spryker\Zed\UserLocale\Communication\Plugin\ServiceProvider\UserLocaleServiceProvider;

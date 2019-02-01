@@ -129,7 +129,7 @@ use Spryker\Zed\Synchronization\Communication\Console\ExportSynchronizedDataCons
 use Spryker\Zed\Transfer\Communication\Console\DataBuilderGeneratorConsole;
 use Spryker\Zed\Transfer\Communication\Console\GeneratorConsole;
 use Spryker\Zed\Transfer\Communication\Console\ValidatorConsole;
-use Spryker\Zed\Translator\Communication\Console\ClearTranslationCacheConsole;
+use Spryker\Zed\Translator\Communication\Console\CleanTranslationCacheConsole;
 use Spryker\Zed\Translator\Communication\Console\GenerateTranslationCacheConsole;
 use Spryker\Zed\Twig\Communication\Console\CacheWarmerConsole;
 use Spryker\Zed\Twig\Communication\Plugin\ServiceProvider\TwigServiceProvider as SprykerTwigServiceProvider;
@@ -289,7 +289,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new DeleteExpiredGuestQuoteConsole(),
             new UuidGeneratorConsole(),
 
-            new ClearTranslationCacheConsole(),
+            new CleanTranslationCacheConsole(),
             new GenerateTranslationCacheConsole(),
         ];
 
