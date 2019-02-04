@@ -7,7 +7,9 @@
 
 namespace Pyz\Yves\CmsContentWidget;
 
+use Spryker\Shared\CmsContentWidgetCmsBlockConnector\ContentWidgetConfigurationProvider\CmsContentWidgetCmsBlockConnectorConfigurationProvider;
 use Spryker\Yves\CmsContentWidget\CmsContentWidgetDependencyProvider as SprykerCmsContentWidgetDependencyProvider;
+use Spryker\Yves\CmsContentWidgetCmsBlockConnector\Plugin\CmsContentWidget\CmsBlockContentWidgetPlugin;
 use SprykerShop\Shared\CmsContentWidgetChartConnector\ContentWidgetConfigurationProvider\CmsChartContentWidgetConfigurationProvider;
 use SprykerShop\Shared\CmsContentWidgetProductConnector\ContentWidgetConfigurationProvider\CmsProductContentWidgetConfigurationProvider;
 use SprykerShop\Shared\CmsContentWidgetProductConnector\ContentWidgetConfigurationProvider\CmsProductGroupContentWidgetConfigurationProvider;
@@ -42,6 +44,9 @@ class CmsContentWidgetDependencyProvider extends SprykerCmsContentWidgetDependen
             ),
             FileManagerWidgetConfigurationProvider::FUNCTION_NAME => new FileManagerWidgetPlugin(
                 new FileManagerWidgetConfigurationProvider()
+            ),
+            CmsContentWidgetCmsBlockConnectorConfigurationProvider::FUNCTION_NAME => new CmsBlockContentWidgetPlugin(
+                new CmsContentWidgetCmsBlockConnectorConfigurationProvider()
             ),
         ];
     }
