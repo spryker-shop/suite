@@ -13,22 +13,33 @@ const defaultGlobSettings = {
 // perform a search in a list of directories
 // matching provided patterns
 // using provided glob settings
-function find(globDirs, globPatterns, globSettings = {}) {
-    return globDirs.reduce((results, dir) => [
-        ...results,
-        ...glob.sync(globPatterns, {
+async function globAsync(patterns, rootConfiguration) {
+    try {
+        return await glob(patterns, rootConfiguration);
+    } catch(error) {
+        console.error('An error occurred while globbing the system for entry points.', error);
+    }
+}
+
+async function find(globDirs, globPatterns, globSettings = {}) {
+    return await globDirs.reduce(async (resultsPromise, dir) => {
+        const rootConfiguration = {
             ...defaultGlobSettings,
             ...globSettings,
             cwd: dir
-        })
-    ], []);
+        };
+
+        const results = await resultsPromise;
+        const globPath = await globAsync(globPatterns, rootConfiguration);
+
+        return results.concat(globPath);
+    }, Promise.resolve([]));
 }
 
 // find components according to `appSettings.find.componentEntryPoints`
-function findComponentEntryPoints() {
-    process.stdout.write('Scanning for component entry points...');
+async function findComponentEntryPoints() {
     const settings = appSettings.find.componentEntryPoints;
-    const files = find(settings.dirs, settings.patterns, settings.globSettings);
+    const files = await find(settings.dirs, settings.patterns, settings.globSettings);
 
     const entryPoints = Object.values(files.reduce((map, file) => {
         const dir = path.dirname(file);
@@ -38,17 +49,16 @@ function findComponentEntryPoints() {
         return map;
     }, {}));
 
-    console.log(`${entryPoints.length} found`);
+    console.log(`Component entry points: ${entryPoints.length} found`);
     return entryPoints;
 }
 
 // find styles according to `appSettings.find.componentStyles`
-function findComponentStyles() {
-    process.stdout.write('Scanning for component styles... ');
+async function findComponentStyles() {
     const settings = appSettings.find.componentStyles;
-    const styles = find(settings.dirs, settings.patterns, settings.globSettings);
+    const styles = await find(settings.dirs, settings.patterns, settings.globSettings);
 
-    console.log(`${styles.length} found`);
+    console.log(`Component styles: ${styles.length} found`);
     return styles;
 }
 
