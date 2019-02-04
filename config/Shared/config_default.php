@@ -70,6 +70,7 @@ $config[KernelConstants::CORE_NAMESPACES] = [
     'SprykerShop',
     'SprykerEco',
     'Spryker',
+    'SprykerSdk',
 ];
 
 // ---------- Propel
@@ -434,6 +435,7 @@ $config[CmsGuiConstants::CMS_FOLDER_PATH] = '@Cms/templates/';
 // ----------- Glue Application
 $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = '';
 $config[GlueApplicationConstants::GLUE_APPLICATION_REST_DEBUG] = false;
+$config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = '';
 
 // ----------- OAUTH
 //Check how to generate https://oauth2.thephpleague.com/installation/
