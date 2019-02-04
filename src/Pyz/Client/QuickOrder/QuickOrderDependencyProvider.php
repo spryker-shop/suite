@@ -7,10 +7,10 @@
 
 namespace Pyz\Client\QuickOrder;
 
-use Spryker\Client\PriceProductStorage\Plugin\QuickOrder\QuickOrderProductPriceValidatorPlugin;
-use Spryker\Client\ProductDiscontinuedStorage\Plugin\QuickOrder\QuickOrderProductDiscontinuedValidatorPlugin;
+use Spryker\Client\PriceProductStorage\Plugin\ProductPriceItemValidatorPlugin;
+use Spryker\Client\ProductDiscontinuedStorage\Plugin\ProductDiscontinuedItemValidatorPlugin;
 use Spryker\Client\ProductMeasurementUnitStorage\Plugin\QuickOrder\ProductConcreteTransferBaseMeasurementUnitExpanderPlugin;
-use Spryker\Client\ProductQuantityStorage\Plugin\QuickOrder\QuickOrderProductQuantityValidatorPlugin;
+use Spryker\Client\ProductQuantityStorage\Plugin\ProductQuantityItemValidatorPlugin;
 use Spryker\Client\QuickOrder\QuickOrderDependencyProvider as SprykerQuickOrderDependencyProvider;
 
 class QuickOrderDependencyProvider extends SprykerQuickOrderDependencyProvider
@@ -26,14 +26,14 @@ class QuickOrderDependencyProvider extends SprykerQuickOrderDependencyProvider
     }
 
     /**
-     * @return \Spryker\Client\QuickOrderExtension\Dependency\Plugin\QuickOrderValidatorPluginInterface[]
+     * @return \Spryker\Client\QuickOrderExtension\Dependency\Plugin\ItemValidatorPluginInterface[]
      */
     protected function getQuickOrderValidationPlugins(): array
     {
         return [
-            new QuickOrderProductDiscontinuedValidatorPlugin(),
-            new QuickOrderProductPriceValidatorPlugin(),
-            new QuickOrderProductQuantityValidatorPlugin(),
+            new ProductDiscontinuedItemValidatorPlugin(),
+            new ProductPriceItemValidatorPlugin(),
+            new ProductQuantityItemValidatorPlugin(),
         ];
     }
 }
