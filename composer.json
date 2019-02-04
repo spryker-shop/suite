@@ -72,7 +72,6 @@
     "spryker/code-generator": "dev-master",
     "spryker/code-sniffer": "dev-master",
     "spryker/git-hook": "dev-master",
-    "spryker/spryk": "dev-master",
     "codeception/codeception": "^2.0.0",
     "pdepend/pdepend": "^2.2.2",
     "phpmd/phpmd": "^2.4",
@@ -87,7 +86,8 @@
     "stecman/symfony-console-completion": "*",
     "fzaninotto/faker": "^1.6",
     "ajgl/breakpoint-twig-extension": "^0.3.1",
-    "spryker-sdk/phpstan-spryker": "^0.1"
+    "spryker-sdk/phpstan-spryker": "^0.1",
+    "spryker-sdk/spryk-gui": "dev-master"
   },
   "autoload": {
     "psr-4": {
@@ -101,9 +101,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "PyzTest\\": "tests/PyzTest/",
-      "PhpStan\\": "tests/PhpStan/",
-      "Spryker\\Spryk\\": "vendor/spryker/spryk/src/Spryker/Spryk/"
+      "PyzTest\\": "tests/PyzTest/"
     },
     "files": [
       "test-autoload.php"
@@ -130,10 +128,6 @@
     {
       "type": "git",
       "url": "git@github.com:spryker/development-core.git"
-    },
-    {
-      "type": "git",
-      "url": "git@github.com:spryker/spryk.git"
     }
   ],
   "scripts": {

@@ -26,6 +26,7 @@ class TwigConfig extends SprykerTwigConfig
         $themeName = $this->getThemeName();
         $paths[] = $this->get(KernelConstants::SPRYKER_ROOT) . '/%1$s/src/Spryker/Yves/%1$s/Theme/' . $themeName;
         $paths[] = APPLICATION_VENDOR_DIR . '/spryker/spryker-shop/Bundles/%1$s/src/SprykerShop/Yves/%1$s/Theme/' . $themeName;
+        $paths[] = APPLICATION_VENDOR_DIR . '/spryker-eco/%1$s/src/SprykerEco/Yves/%1$s/Theme/' . $themeName;
 
         return $paths;
     }
