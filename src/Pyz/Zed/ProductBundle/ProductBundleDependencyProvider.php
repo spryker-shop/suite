@@ -15,7 +15,7 @@ class ProductBundleDependencyProvider extends SprykerProductBundleDependencyProv
     /**
      * @return \Spryker\Zed\ProductBundleExtension\Dependency\Plugin\PostSaveProductBundlePluginInterface[]
      */
-    protected function getPostSaveBundledProductsPlugins(): array
+    protected function getPostSaveProductBundlePlugins(): array
     {
         return [
             new PostSaveProductBundleDiscontinuedPlugin(),
