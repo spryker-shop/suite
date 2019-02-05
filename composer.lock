@@ -2420,49 +2420,6 @@
             "time": "2018-10-16T13:00:22+00:00"
         },
         {
-            "name": "spryker/container",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/container.git",
-                "reference": "12d50f4add4ba7046962d3b1e36af35d2f62a1c9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/container/zipball/12d50f4add4ba7046962d3b1e36af35d2f62a1c9",
-                "reference": "12d50f4add4ba7046962d3b1e36af35d2f62a1c9",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1",
-                "psr/container": "^1.0.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                },
-                "psr-0": {
-                    "Pimple": "src/Spryker"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "Container module",
-            "time": "2019-01-22T13:59:37+00:00"
-        },
-        {
             "name": "spryker/event-behavior",
             "version": "dev-master",
             "source": {
@@ -2707,7 +2664,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "f2732501b2c8affb6ce235bd2ece0166b5187f51"
+                "reference": "aeaf7c7efcfa6e12d9c0a88abae6a5ad0ba5e44e"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2774,6 +2731,7 @@
                 "spryker/company-unit-address-label-gui": "*",
                 "spryker/config": "*",
                 "spryker/console": "*",
+                "spryker/container": "*",
                 "spryker/country": "*",
                 "spryker/csv": "*",
                 "spryker/currency": "*",
@@ -2840,7 +2798,6 @@
                 "spryker/oms-discount-connector": "*",
                 "spryker/payment": "*",
                 "spryker/payment-cart-connector": "*",
-                "spryker/pimple": "*",
                 "spryker/price": "*",
                 "spryker/price-cart-connector": "*",
                 "spryker/price-product": "*",
@@ -2907,7 +2864,6 @@
                 "spryker/queue": "*",
                 "spryker/quote": "*",
                 "spryker/ramsey-uuid": "*",
-                "spryker/ratepay": "*",
                 "spryker/redis": "*",
                 "spryker/refund": "*",
                 "spryker/sales": "*",
@@ -2977,7 +2933,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-02-04T21:44:35+00:00"
+            "time": "2019-02-05T13:52:44+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2985,7 +2941,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "4a6db4368a32d93ff29bd64d890a6888591adbb4"
+                "reference": "49472d3d8cc1bec8d9e7a4c6b551723fd77a69fc"
             },
             "require": {
                 "php": ">=7.1"
@@ -3060,7 +3016,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-02-04T21:48:35+00:00"
+            "time": "2019-02-05T15:54:22+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
