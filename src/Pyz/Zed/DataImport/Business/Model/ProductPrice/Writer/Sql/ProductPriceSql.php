@@ -140,7 +140,7 @@ SELECT 1;";
              unnest(?::VARCHAR[]) AS store,
              unnest(?::VARCHAR[]) AS sku,
              unnest(?::VARCHAR[]) AS price_type,
-             json_array_elements(?) AS price_data,
+             json_array_elements_text(?) AS price_data,
              unnest(?::VARCHAR[]) AS price_data_checksum
          ) input  
       INNER JOIN spy_price_type ON spy_price_type.name = input.price_type
