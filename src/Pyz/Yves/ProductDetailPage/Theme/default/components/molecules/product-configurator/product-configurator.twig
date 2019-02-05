@@ -143,7 +143,7 @@
     </form>
 
     {% if not isAvailable and not isProductAbstract %}
-        {% widget 'AvailabilitySubscriptionWidget' args [data.product] only %}{% endwidget %}
+        {% widget 'AvailabilityNotificationSubscriptionWidget' args [data.product] only %}{% endwidget %}
     {% endif %}
 
     {% if can('SeeShoppingListPermissionPlugin') and isProductAvailable %}
