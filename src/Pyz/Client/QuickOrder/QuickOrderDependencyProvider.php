@@ -7,10 +7,10 @@
 
 namespace Pyz\Client\QuickOrder;
 
-use Spryker\Client\PriceProductStorage\Plugin\ProductPriceItemValidatorPlugin;
-use Spryker\Client\ProductDiscontinuedStorage\Plugin\ProductDiscontinuedItemValidatorPlugin;
+use Spryker\Client\PriceProductStorage\Plugin\QuickOrder\ProductPriceItemValidatorPlugin;
+use Spryker\Client\ProductDiscontinuedStorage\Plugin\QuickOrder\ProductDiscontinuedItemValidatorPlugin;
 use Spryker\Client\ProductMeasurementUnitStorage\Plugin\QuickOrder\ProductConcreteTransferBaseMeasurementUnitExpanderPlugin;
-use Spryker\Client\ProductQuantityStorage\Plugin\ProductQuantityItemValidatorPlugin;
+use Spryker\Client\ProductQuantityStorage\Plugin\QuickOrder\ProductQuantityItemValidatorPlugin;
 use Spryker\Client\QuickOrder\QuickOrderDependencyProvider as SprykerQuickOrderDependencyProvider;
 
 class QuickOrderDependencyProvider extends SprykerQuickOrderDependencyProvider
