@@ -8,7 +8,7 @@
 namespace Pyz\Zed\Mail;
 
 use Spryker\Zed\AvailabilityNotification\Communication\Plugin\Mail\AvailabilityNotificationMailTypePlugin;
-use Spryker\Zed\AvailabilityNotification\Communication\Plugin\Mail\AvailabilityNotificationSubscribedMailTypePlugin;
+use Spryker\Zed\AvailabilityNotification\Communication\Plugin\Mail\AvailabilityNotificationSubscriptionMailTypePlugin;
 use Spryker\Zed\AvailabilityNotification\Communication\Plugin\Mail\AvailabilityNotificationUnsubscribedMailTypePlugin;
 use Spryker\Zed\CompanyMailConnector\Communication\Plugin\Mail\CompanyStatusMailTypePlugin;
 use Spryker\Zed\CompanyUserInvitation\Communication\Plugin\Mail\CompanyUserInvitationMailTypePlugin;
@@ -49,7 +49,7 @@ class MailDependencyProvider extends SprykerMailDependencyProvider
                 ->add(new CompanyUserInvitationMailTypePlugin())
                 ->add(new CompanyStatusMailTypePlugin())
                 ->add(new AvailabilityNotificationUnsubscribedMailTypePlugin())
-                ->add(new AvailabilityNotificationSubscribedMailTypePlugin())
+                ->add(new AvailabilityNotificationSubscriptionMailTypePlugin())
                 ->add(new AvailabilityNotificationMailTypePlugin());
 
             return $mailCollection;
