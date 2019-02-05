@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\CompanyUserStorage\Persistence;
 
-use Orm\Zed\CompanyUserStorage\Persistence\Base\SpyCompanyUserStorage as BaseSpyCompanyUserStorage;
+use Spryker\Zed\CompanyUserStorage\Persistence\Propel\AbstractSpyCompanyUserStorage as BaseSpyCompanyUserStorage;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_company_user_storage' table.
