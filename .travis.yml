@@ -17,40 +17,35 @@ branches:
 matrix:
   fast_finish: true
 
-  allow_failures:
-    - php: "7.3"
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
-        - DB=mysql
+  allow_failures: []
 
   include:
     - php: "7.3"
       env:
         - VALIDATION=1
-    - php: "7.1"
-      env:
-        - TEST_GROUP=without-acceptance
-        - ON_EVENTS=cron,push
     - php: "7.3"
-      env:
-        - TEST_GROUP=without-acceptance
-        - ON_EVENTS=cron,push
-        - DB=mysql
-    - php: "7.1"
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
-    - php: "7.2"
       env:
         - TEST_GROUP=acceptance
         - ON_EVENTS=push,cron
         - DB=mysql
     - php: "7.3"
       env:
+        - TEST_GROUP=without-acceptance
+        - ON_EVENTS=cron,push
+        - DB=mysql
+    - php: "7.3"
+      env:
         - TEST_GROUP=acceptance
         - ON_EVENTS=push,cron
         - DB=mysql
+    - php: "7.1"
+      env:
+        - TEST_GROUP=acceptance
+        - ON_EVENTS=push,cron
+    - php: "7.1"
+      env:
+        - TEST_GROUP=without-acceptance
+        - ON_EVENTS=cron,push
 addons:
   postgresql: 9.6
   mysql: 5.7
@@ -66,6 +61,7 @@ addons:
 cache:
     directories:
         - $HOME/.composer/cache
+        - /home/travis/.rvm/gems # Mailcatcher is a ruby gem, takes 5 minutes to install.
 
 services:
   - postgresql
