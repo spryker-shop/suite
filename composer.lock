@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d3a164e48a03101a295f87882011c90b",
+    "content-hash": "3f82ce3f0e36e8c8aade4a7cfadd6443",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -1841,52 +1841,6 @@
                 }
             ],
             "time": "2017-07-14T14:27:02+00:00"
-        },
-        {
-            "name": "pimple/pimple",
-            "version": "v1.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/silexphp/Pimple.git",
-                "reference": "2019c145fe393923f3441b23f29bbdfaa5c58c4d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/silexphp/Pimple/zipball/2019c145fe393923f3441b23f29bbdfaa5c58c4d",
-                "reference": "2019c145fe393923f3441b23f29bbdfaa5c58c4d",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Pimple": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                }
-            ],
-            "description": "Pimple is a simple Dependency Injection Container for PHP 5.3",
-            "homepage": "http://pimple.sensiolabs.org",
-            "keywords": [
-                "container",
-                "dependency injection"
-            ],
-            "time": "2013-11-22T08:30:29+00:00"
         },
         {
             "name": "predis/predis",
@@ -8420,6 +8374,104 @@
             "time": "2018-12-20T14:15:37+00:00"
         },
         {
+            "name": "spryker-sdk/spryk",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-sdk/spryk.git",
+                "reference": "361a5c1eebe3405066835f52d9ad2c444fa302c0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/361a5c1eebe3405066835f52d9ad2c444fa302c0",
+                "reference": "361a5c1eebe3405066835f52d9ad2c444fa302c0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "roave/better-reflection": "^2.0 || ^3.0",
+                "spryker/kernel": "^3.17.0",
+                "symfony/console": "^3.4.0 || ^4.0.0",
+                "symfony/finder": "^3.4.0 || ^4.0.0",
+                "symfony/yaml": "^3.4.9",
+                "twig/twig": "^1.34 || ^2.0.0",
+                "zendframework/zend-filter": "^2.8"
+            },
+            "require-dev": {
+                "codeception/codeception": "^2.4.1",
+                "nette/finder": "^2.4.0",
+                "nette/utils": "^2.5.0",
+                "php-coveralls/php-coveralls": "^1.0",
+                "phpstan/phpstan": "^0.10.0",
+                "phpstan/phpstan-phpunit": "^0.10.0",
+                "phpstan/phpstan-strict-rules": "^0.10.0",
+                "spryker/code-sniffer": "dev-master",
+                "spryker/git-hook": "dev-master",
+                "symfony/var-dumper": "^4.0.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SprykerSdk\\Spryk\\": "src/SprykerSdk/Spryk/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Spryk module",
+            "time": "2019-01-31T17:07:54+00:00"
+        },
+        {
+            "name": "spryker-sdk/spryk-gui",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-sdk/spryk-gui.git",
+                "reference": "ad834b4d6a5ede6b8f9d393d528d1c032f4377df"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk-gui/zipball/ad834b4d6a5ede6b8f9d393d528d1c032f4377df",
+                "reference": "ad834b4d6a5ede6b8f9d393d528d1c032f4377df",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-sdk/spryk": "dev-master",
+                "spryker/config": "^3.1.3",
+                "spryker/development": "^3.12.0",
+                "spryker/graph": "^3.0.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/zend": "^2.0.0"
+            },
+            "require-dev": {
+                "spryker/application": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*",
+                "spryker/zed-navigation": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerSdk\\": "src/SprykerSdk/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SprykGui module",
+            "time": "2019-01-31T14:42:44+00:00"
+        },
+        {
             "name": "spryker/architecture-sniffer",
             "version": "dev-master",
             "source": {
@@ -8675,88 +8727,6 @@
                 "standards"
             ],
             "time": "2019-01-30T17:48:46+00:00"
-        },
-        {
-            "name": "spryker/spryk",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:spryker/spryk.git",
-                "reference": "922ab2cb5a2fe232447c2cefc9d6bd17c3a002b9"
-            },
-            "require": {
-                "php": ">=7.1",
-                "roave/better-reflection": "^2.0 || ^3.0",
-                "spryker/kernel": "^3.17.0",
-                "symfony/console": "^3.4.0 || ^4.0.0",
-                "symfony/finder": "^3.4.0 || ^4.0.0",
-                "symfony/yaml": "^3.4.9",
-                "twig/twig": "^1.34 || ^2.0.0",
-                "zendframework/zend-filter": "^2.8"
-            },
-            "require-dev": {
-                "codeception/codeception": "^2.4.1",
-                "nette/finder": "^2.4.0",
-                "nette/utils": "^2.5.0",
-                "php-coveralls/php-coveralls": "^1.0",
-                "phpstan/phpstan": "^0.10.0",
-                "phpstan/phpstan-phpunit": "^0.10.0",
-                "phpstan/phpstan-strict-rules": "^0.10.0",
-                "spryker/code-sniffer": "dev-master",
-                "spryker/git-hook": "dev-master",
-                "symfony/var-dumper": "^4.0.9"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\Spryk\\": "src/Spryker/Spryk/"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "SprykerTest\\": "tests/SprykerTest/",
-                    "SprykerTest\\Module\\": "tests/_support/Module/",
-                    "Spryker\\Yves\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Yves/Kernel/",
-                    "Spryker\\Zed\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Zed/Kernel/",
-                    "Spryker\\Shared\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Shared/Kernel/",
-                    "Spryker\\Client\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Client/Kernel/",
-                    "Spryker\\Client\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Client/FooBar/",
-                    "Spryker\\Shared\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Shared/FooBar/",
-                    "Spryker\\Yves\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Yves/FooBar/",
-                    "Spryker\\Zed\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Zed/FooBar/",
-                    "Spryker\\Zed\\ZipZap\\": "tests/_support/Fixtures/Spryker/Zed/ZipZap/",
-                    "Spryker\\Client\\ZipZap\\": "tests/_support/Fixtures/Spryker/Client/ZipZap/",
-                    "Spryker\\Service\\ZipZap\\": "tests/_support/Fixtures/Spryker/Service/ZipZap/",
-                    "SprykerTest\\Zed\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/tests/SprykerTest/Zed/FooBar/",
-                    "Pyz\\Client\\FooBar\\": "tests/_data/src/Pyz/Client/FooBar/",
-                    "Pyz\\Shared\\FooBar\\": "tests/_data/src/Pyz/Shared/FooBar/",
-                    "Pyz\\Yves\\FooBar\\": "tests/_data/src/Pyz/Yves/FooBar/",
-                    "Pyz\\Zed\\FooBar\\": "tests/_data/src/Pyz/Zed/FooBar/",
-                    "PyzTest\\Zed\\FooBar\\": "tests/_data/tests/PyzTest/Zed/FooBar/"
-                }
-            },
-            "scripts": {
-                "post-install-cmd": [
-                    "GitHook\\Composer\\Scripts\\HookInstaller::installGitHook"
-                ],
-                "post-update-cmd": [
-                    "GitHook\\Composer\\Scripts\\HookInstaller::installGitHook"
-                ],
-                "cs-check": [
-                    "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/ tests/ --ignore='/Fixtures/'"
-                ],
-                "cs-fix": [
-                    "phpcbf --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/ tests/ --ignore='/Fixtures/'"
-                ],
-                "phpstan": [
-                    "phpstan analyse -l 7 -c phpstan.neon src/"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "description": "Spryker Spryk build tool",
-            "time": "2019-01-30T17:36:47+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -9440,7 +9410,7 @@
         "spryker/code-generator": 20,
         "spryker/code-sniffer": 20,
         "spryker/git-hook": 20,
-        "spryker/spryk": 20
+        "spryker-sdk/spryk-gui": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
