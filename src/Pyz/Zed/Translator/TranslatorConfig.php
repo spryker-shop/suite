@@ -5,9 +5,9 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Service\Translator;
+namespace Pyz\Zed\Translator;
 
-use Spryker\Service\Translator\TranslatorConfig as SprykerTranslatorConfig;
+use Spryker\Zed\Translator\TranslatorConfig as SprykerTranslatorConfig;
 
 class TranslatorConfig extends SprykerTranslatorConfig
 {
@@ -16,9 +16,9 @@ class TranslatorConfig extends SprykerTranslatorConfig
      *
      * @return string[]
      */
-    public function getCoreTranslationFilePathPatterns(): array
+    public function getCoreZedTranslationFilePathPatterns(): array
     {
-        $coreTranslationFilePathPatterns = parent::getCoreTranslationFilePathPatterns();
+        $coreTranslationFilePathPatterns = parent::getCoreZedTranslationFilePathPatterns();
         $coreTranslationFilePathPatterns[] = APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/*/data/translation/Zed/[a-z][a-z]_[A-Z][A-Z].csv';
 
         return $coreTranslationFilePathPatterns;

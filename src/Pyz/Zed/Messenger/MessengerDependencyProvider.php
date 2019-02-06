@@ -9,7 +9,7 @@ namespace Pyz\Zed\Messenger;
 
 use Spryker\Zed\Glossary\Communication\Plugin\TranslationPlugin as GlossaryTranslationPlugin;
 use Spryker\Zed\Messenger\MessengerDependencyProvider as SprykerMessengerDependencyProvider;
-use Spryker\Zed\Translator\Communication\Plugin\TranslationPlugin;
+use Spryker\Zed\Translator\Communication\Plugin\Messenger\TranslationPlugin;
 
 class MessengerDependencyProvider extends SprykerMessengerDependencyProvider
 {
