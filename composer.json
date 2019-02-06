@@ -11,6 +11,7 @@
     "spryker/event-behavior": "dev-master",
     "spryker/synchronization-behavior": "dev-master",
     "spryker/uuid-behavior": "dev-master",
+    "spryker/silexphp": "dev-master",
     "php": ">=7.1",
     "codeitnowin/barcode": "^3.0.0",
     "guzzlehttp/guzzle": "~6.3.0",
@@ -18,18 +19,17 @@
     "filp/whoops": "^2.1",
     "mandrill/mandrill": "~1.0.55",
     "monolog/monolog": "^1.21.0",
-    "pimple/pimple": "~1.1.1",
     "predis/predis": "^1.1.1",
     "propel/propel": "2.0.0-alpha8",
     "psr/log": "^1.0.0",
     "ruflin/elastica": "~5.3.0",
-    "silex/silex": "^1.3.5",
     "symfony-cmf/routing": "^1.3.0",
     "symfony/console": "^3.0.0",
     "symfony/debug": "^2.6.13 || ^3.0.0",
     "symfony/filesystem": "^2.6.13 || ^3.0.0",
     "symfony/finder": "^2.6.13 || ^3.0.0",
-    "symfony/form": "^2.7.0 || ^3.0.0",
+    "symfony/form": "^3.0.0",
+    "symfony/http-foundation": "^3.0.0",
     "symfony/http-kernel": "^2.6.13 || ^3.0.0",
     "symfony/intl": "^2.8.8 || ^3.0.0",
     "symfony/options-resolver": "^2.6.13 || ^3.0.0",
@@ -39,7 +39,7 @@
     "symfony/security": "^2.6.13 || ^3.0.0",
     "symfony/serializer": "^2.6.13 || ^3.0.0",
     "symfony/translation": "^2.6.13 || ^3.0.0",
-    "symfony/twig-bridge": "^2.7.0 || ^3.0.0",
+    "symfony/twig-bridge": "^3.2.0 || ^4.0.0",
     "symfony/validator": "^2.6.13 || ^3.0.0",
     "symfony/yaml": "^2.6.13 || ^3.0.0",
     "swiftmailer/swiftmailer": "^6.1",
@@ -71,7 +71,6 @@
     "spryker/code-generator": "dev-master",
     "spryker/code-sniffer": "dev-master",
     "spryker/git-hook": "dev-master",
-    "spryker/spryk": "dev-master",
     "codeception/codeception": "^2.0.0",
     "pdepend/pdepend": "^2.2.2",
     "phpmd/phpmd": "^2.4",
@@ -86,7 +85,8 @@
     "stecman/symfony-console-completion": "*",
     "fzaninotto/faker": "^1.6",
     "ajgl/breakpoint-twig-extension": "^0.3.1",
-    "phpstan/phpstan": "^0.10.5"
+    "spryker-sdk/phpstan-spryker": "^0.1",
+    "spryker-sdk/spryk-gui": "dev-master"
   },
   "autoload": {
     "psr-4": {
@@ -94,15 +94,16 @@
       "Orm\\": "src/Orm/",
       "Pyz\\": "src/Pyz/"
     },
+    "psr-0": {
+      "Pimple": "vendor/spryker/spryker/Bundles/Container/src/Spryker"
+    },
     "files": [
       "vendor/spryker/spryker/autoload.php"
     ]
   },
   "autoload-dev": {
     "psr-4": {
-      "PyzTest\\": "tests/PyzTest/",
-      "PhpStan\\": "tests/PhpStan/",
-      "Spryker\\Spryk\\": "vendor/spryker/spryk/src/Spryker/Spryk/"
+      "PyzTest\\": "tests/PyzTest/"
     },
     "files": [
       "test-autoload.php"
@@ -129,10 +130,6 @@
     {
       "type": "git",
       "url": "git@github.com:spryker/development-core.git"
-    },
-    {
-      "type": "git",
-      "url": "git@github.com:spryker/spryk.git"
     }
   ],
   "scripts": {
