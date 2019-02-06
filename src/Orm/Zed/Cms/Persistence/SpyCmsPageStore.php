@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\Ratepay\Persistence;
+namespace Orm\Zed\Cms\Persistence;
 
-use Orm\Zed\Ratepay\Persistence\Base\SpyPaymentRatepayQuery as BaseSpyPaymentRatepayQuery;
+use Spryker\Zed\Cms\Persistence\Propel\AbstractSpyCmsPageStore as BaseSpyCmsPageStore;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_payment_ratepay' table.
+ * Skeleton subclass for representing a row from the 'spy_cms_page_store' table.
  *
  *
  *
@@ -19,6 +19,6 @@ use Orm\Zed\Ratepay\Persistence\Base\SpyPaymentRatepayQuery as BaseSpyPaymentRat
  * long as it does not already exist in the output directory.
  *
  */
-class SpyPaymentRatepayQuery extends BaseSpyPaymentRatepayQuery
+class SpyCmsPageStore extends BaseSpyCmsPageStore
 {
 }
