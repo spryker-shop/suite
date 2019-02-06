@@ -7,10 +7,10 @@
 
 namespace Orm\Zed\AvailabilityNotification\Persistence;
 
-use Spryker\Zed\AvailabilityNotification\Persistence\Propel\AbstractSpyAvailabilitySubscription as BaseSpyAvailabilitySubscription;
+use Spryker\Zed\AvailabilityNotification\Persistence\Propel\AbstractSpyAvailabilityNotificationSubscription as BaseSpyAvailabilityNotificationSubscription;
 
 /**
- * Skeleton subclass for representing a row from the 'spy_availability_subscription' table.
+ * Skeleton subclass for representing a row from the 'spy_availability_notification_subscription' table.
  *
  *
  *
@@ -19,6 +19,6 @@ use Spryker\Zed\AvailabilityNotification\Persistence\Propel\AbstractSpyAvailabil
  * long as it does not already exist in the output directory.
  *
  */
-class SpyAvailabilitySubscription extends BaseSpyAvailabilitySubscription
+class SpyAvailabilityNotificationSubscription extends BaseSpyAvailabilityNotificationSubscription
 {
 }
