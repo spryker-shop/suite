@@ -7,6 +7,7 @@ use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBui
 use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Auth\AuthConstants;
+use Spryker\Shared\AvailabilityNotification\AvailabilityNotificationConstants;
 use Spryker\Shared\Cms\CmsConstants;
 use Spryker\Shared\CmsGui\CmsGuiConstants;
 use Spryker\Shared\Collector\CollectorConstants;
@@ -468,3 +469,5 @@ $config[MonitoringConstants::IGNORABLE_TRANSACTIONS] = [
 
 // ---------- Guest cart
 $config[QuoteConstants::GUEST_QUOTE_LIFETIME] = 'P01M';
+
+$config[AvailabilityNotificationConstants::AVAILABILITY_NOTIFICATION_UNSUBSCRIBE_BY_KEY_URI] = '/%s/availability-notification/unsubscribe-by-key/%s';
