@@ -1,5 +1,8 @@
 language: php
 
+git:
+  depth: 3
+
 env:
   global:
     - APPLICATION_ENV=devtest
@@ -16,27 +19,35 @@ branches:
 #Possible travis events (push, pull_request, cron, or api)
 matrix:
   fast_finish: true
+
+  allow_failures: []
+
   include:
+
     - php: "7.3"
       env:
         - VALIDATION=1
-    - php: "7.1"
+
+    - php: "7.3"
       env:
-        - TEST_GROUP=without-acceptance
-        - ON_EVENTS=cron,push
+        - TEST_GROUP=acceptance
+        - ON_EVENTS=push,cron
+
     - php: "7.3"
       env:
         - TEST_GROUP=without-acceptance
         - ON_EVENTS=cron,push
+
+    - php: "7.1"
+      env:
+        - TEST_GROUP=acceptance
+        - ON_EVENTS=push,cron
         - DB=mysql
+
     - php: "7.1"
       env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
-    - php: "7.3"
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
+        - TEST_GROUP=without-acceptance
+        - ON_EVENTS=cron,push
         - DB=mysql
 addons:
   postgresql: 9.6
@@ -53,6 +64,7 @@ addons:
 cache:
     directories:
         - $HOME/.composer/cache
+        - /home/travis/.rvm/gems # Mailcatcher is a ruby gem, takes 5 minutes to install.
 
 services:
   - postgresql
@@ -65,6 +77,7 @@ sudo: required
 before_install:
   - if [[ $VALIDATION != 1 && $ON_EVENTS != *$TRAVIS_EVENT_TYPE* ]] ; then exit ; fi
   - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - phpenv config-rm xdebug.ini
   - if [[ $DB == 'mysql' ]] ; then chmod +x ./config/Shared/ci/travis/mysql/* ; fi
   - if [[ $DB == 'mysql' ]] ; then ./config/Shared/ci/travis/mysql/travis_mysql_5.7.sh ; fi
   # Merges travis-ci/stores.php into the general stores.php at the defined "travis hook" line. Uses temporary file during the process.
@@ -131,7 +144,7 @@ script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2 ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then ./tests/travis_check_untracked.sh ; fi
-  - vendor/bin/phantomjs --webdriver=4444 &
+  - timeout 45m bash -c "vendor/bin/phantomjs --webdriver=4444 --webdriver-logfile=/tmp/phantomjs.log"&
   - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -x Presentation ; fi
   - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/codecept run -g Presentation ; fi
 
