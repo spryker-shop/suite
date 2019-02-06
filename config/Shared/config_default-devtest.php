@@ -25,6 +25,7 @@ use Spryker\Shared\Session\SessionConfig;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\Setup\SetupConstants;
 use Spryker\Shared\Storage\StorageConstants;
+use Spryker\Shared\StorageDatabase\StorageDatabaseConstants;
 use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\Twig\TwigConstants;
 use Spryker\Shared\WebProfiler\WebProfilerConstants;
@@ -112,3 +113,8 @@ $config[QueueConstants::QUEUE_WORKER_LOOP] = true;
 
 // ---------- Event
 $config[EventConstants::EVENT_CHUNK] = 5000;
+
+// ---------- StorageDatabase
+$config[StorageDatabaseConstants::DB_ENGINE] = $config[PropelConstants::ZED_DB_ENGINE_PGSQL];
+$config[StorageDatabaseConstants::DB_HOST] = '127.0.0.1';
+$config[StorageDatabaseConstants::DB_PORT] = 5432;
