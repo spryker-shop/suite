@@ -115,6 +115,6 @@ $config[QueueConstants::QUEUE_WORKER_LOOP] = true;
 $config[EventConstants::EVENT_CHUNK] = 5000;
 
 // ---------- StorageDatabase
-$config[StorageDatabaseConstants::DB_ENGINE] = $config[PropelConstants::ZED_DB_ENGINE_PGSQL];
+$config[StorageDatabaseConstants::DB_ENGINE] = $config[StorageDatabaseConstants::DB_ENGINE_PGSQL];
 $config[StorageDatabaseConstants::DB_HOST] = '127.0.0.1';
 $config[StorageDatabaseConstants::DB_PORT] = 5432;

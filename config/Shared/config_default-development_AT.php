@@ -7,6 +7,7 @@ use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Queue\QueueConstants;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
 use Spryker\Shared\Search\SearchConstants;
+use Spryker\Shared\StorageDatabase\StorageDatabaseConstants;
 
 // ---------- Propel
 $config[PropelConstants::ZED_DB_DATABASE] = 'DE_development_zed';
@@ -30,3 +31,6 @@ $config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = '/AT_development_zed';
 
 // ---------- MailCatcher
 $config[MailConstants::MAILCATCHER_GUI] = sprintf('http://%s:1080', $config[ApplicationConstants::HOST_ZED]);
+
+// ---------- StorageDatabase
+$config[StorageDatabaseConstants::DB_DATABASE] = 'DE_development_zed';

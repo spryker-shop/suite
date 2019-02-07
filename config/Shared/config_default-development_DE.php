@@ -8,6 +8,7 @@ use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Queue\QueueConstants;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
 use Spryker\Shared\Search\SearchConstants;
+use Spryker\Shared\StorageDatabase\StorageDatabaseConstants;
 
 // ---------- Propel
 $config[PropelConstants::ZED_DB_DATABASE] = 'DE_development_zed';
@@ -31,3 +32,6 @@ $config[EventConstants::MAX_RETRY_ON_FAIL] = 5;
 // ---------- RabbitMQ
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['DE'][RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION] = true;
 $config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = '/DE_development_zed';
+
+// ---------- StorageDatabase
+$config[StorageDatabaseConstants::DB_DATABASE] = 'DE_development_zed';

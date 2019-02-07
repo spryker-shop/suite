@@ -470,11 +470,7 @@ $config[MonitoringConstants::IGNORABLE_TRANSACTIONS] = [
 // ---------- Guest cart
 $config[QuoteConstants::GUEST_QUOTE_LIFETIME] = 'P01M';
 
-
 // ---------- StorageDatabase
-$config[StorageDatabaseConstants::DB_ENGINE] = PropelConfig::DB_ENGINE_PGSQL;
-$config[StorageDatabaseConstants::DB_USERNAME] = 'development';
-$config[StorageDatabaseConstants::DB_PASSWORD] = 'mate20mg';
-$config[StorageDatabaseConstants::DB_HOST] = '127.0.0.1';
-$config[StorageDatabaseConstants::DB_PORT] = 5432;
-$config[StorageDatabaseConstants::DB_DATABASE] = 'DE_development_zed';
+$config[StorageDatabaseConstants::DB_ENGINE_PGSQL] = PropelConfig::DB_ENGINE_PGSQL;
+$config[StorageDatabaseConstants::DB_ENGINE_MYSQL] = PropelConfig::DB_ENGINE_MYSQL;
+$config[StorageDatabaseConstants::DB_DEBUG] = false;
