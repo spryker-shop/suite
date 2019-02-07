@@ -2664,7 +2664,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "955252a318b6e8a200a9f96b0cfd8071541b2654"
+                "reference": "e9186f014b92f262ad4363e964f282f09d63f7b5"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2934,7 +2934,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-01-18T08:10:17+00:00"
+            "time": "2019-02-07T13:50:34+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -8567,6 +8567,49 @@
                 "standards"
             ],
             "time": "2019-01-10T09:34:59+00:00"
+        },
+        {
+            "name": "spryker/container",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/container.git",
+                "reference": "12d50f4add4ba7046962d3b1e36af35d2f62a1c9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/container/zipball/12d50f4add4ba7046962d3b1e36af35d2f62a1c9",
+                "reference": "12d50f4add4ba7046962d3b1e36af35d2f62a1c9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "psr/container": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                },
+                "psr-0": {
+                    "Pimple": "src/Spryker"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Container module",
+            "time": "2019-01-22T13:59:37+00:00"
         },
         {
             "name": "spryker/development-core",
