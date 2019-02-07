@@ -66,4 +66,12 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new RemoveBundleChangeRequestExpanderPlugin(),
         ];
     }
+
+    /**
+     * @return \Spryker\Client\CartExtension\Dependency\Plugin\CartChangeItemExpanderPluginInterface[]
+     */
+    protected function getCartChangeItemExpanderPlugins(): array
+    {
+        return [];
+    }
 }
