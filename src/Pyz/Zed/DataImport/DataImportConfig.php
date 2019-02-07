@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\DataImport;
 
+use Generated\Shared\Transfer\DataImporterConfigurationTransfer;
 use Spryker\Zed\DataImport\DataImportConfig as SprykerDataImportConfig;
 
 /**
@@ -38,6 +39,7 @@ class DataImportConfig extends SprykerDataImportConfig
     public const IMPORT_TYPE_PRODUCT_SEARCH_ATTRIBUTE = 'product-search-attribute';
     public const IMPORT_TYPE_CMS_TEMPLATE = 'cms-template';
     public const IMPORT_TYPE_CMS_PAGE = 'cms-page';
+    public const IMPORT_TYPE_CMS_PAGE_STORE = 'cms-page-store';
     public const IMPORT_TYPE_CMS_BLOCK = 'cms-block';
     public const IMPORT_TYPE_CMS_BLOCK_STORE = 'cms-block-store';
     public const IMPORT_TYPE_CMS_BLOCK_CATEGORY_POSITION = 'cms-block-category-position';
@@ -300,6 +302,14 @@ class DataImportConfig extends SprykerDataImportConfig
     public function getCmsPageDataImporterConfiguration()
     {
         return $this->buildImporterConfiguration('cms_page.csv', static::IMPORT_TYPE_CMS_PAGE);
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
+     */
+    public function getCmsPageStoreDataImporterConfiguration(): DataImporterConfigurationTransfer
+    {
+        return $this->buildImporterConfiguration('cms_page_store.csv', static::IMPORT_TYPE_CMS_PAGE_STORE);
     }
 
     /**
