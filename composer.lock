@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2506b7cc912f2748a9a8e4b840e3fd87",
+    "content-hash": "3b21e00e8b5775173a606ddf6f0da89c",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -2614,11 +2614,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/cc-18/dev-product-is-available-again",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "e8050c9708365397027f85e0f172e7f194379a96"
+                "reference": "6b64201a243b7ddedae16c6bdbbb1bb485c4cd09"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2887,15 +2887,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-02-06T16:26:02+00:00"
+            "time": "2019-02-07T08:47:36+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/cc-18/dev-product-is-available-again",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "5fb18ac839480e31aee28258939c5ea242d689cc"
+                "reference": "bb61590ab3d84df1ef28f5962d1298a753388127"
             },
             "require": {
                 "php": ">=7.1"
@@ -2970,7 +2970,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-02-06T07:37:54+00:00"
+            "time": "2019-02-06T16:49:56+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -7376,6 +7376,52 @@
                 "xunit"
             ],
             "time": "2019-02-01T05:24:07+00:00"
+        },
+        {
+            "name": "pimple/pimple",
+            "version": "v1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/silexphp/Pimple.git",
+                "reference": "2019c145fe393923f3441b23f29bbdfaa5c58c4d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/silexphp/Pimple/zipball/2019c145fe393923f3441b23f29bbdfaa5c58c4d",
+                "reference": "2019c145fe393923f3441b23f29bbdfaa5c58c4d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Pimple": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Pimple is a simple Dependency Injection Container for PHP 5.3",
+            "homepage": "http://pimple.sensiolabs.org",
+            "keywords": [
+                "container",
+                "dependency injection"
+            ],
+            "time": "2013-11-22T08:30:29+00:00"
         },
         {
             "name": "roave/better-reflection",
