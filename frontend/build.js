@@ -5,7 +5,9 @@ const compiler = require('./libs/compiler');
 const [mode] = process.argv.slice(2);
 
 // get the webpack configuration associated with the provided mode
-const config = require(`./configs/${mode}`);
+const getConfiguration = require(`./configs/${mode}`);
 
 // build the project
-compiler.compile(config);
+getConfiguration()
+    .then(config => compiler.compile(config))
+    .catch(error => console.error('An error occur while creating configuration', error));
