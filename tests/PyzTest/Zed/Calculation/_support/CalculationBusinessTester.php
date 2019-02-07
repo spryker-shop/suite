@@ -160,6 +160,7 @@ class CalculationBusinessTester extends Actor
 
         $container = new Container();
         $container[CalculationDependencyProvider::QUOTE_CALCULATOR_PLUGIN_STACK] = $calculatorPlugins;
+        $container[CalculationDependencyProvider::PLUGINS_POST_QUOTE_RECALCULATE] = [];
 
         $calculationBusinessFactory->setContainer($container);
         $calculationFacade->setFactory($calculationBusinessFactory);
