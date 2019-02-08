@@ -897,10 +897,10 @@ cart.pre.check.availability.failed.empty,Product %sku% is not available at the m
 cart.pre.check.availability.failed.empty,Das Produkt %sku% ist momentan nicht verfügbar.,de_DE
 cart.pre.check.availability.failed.lead.product,Products inside the item 'sku' are not available at the moment.,en_US
 cart.pre.check.availability.failed.lead.product,Produkte im Artikel 'sku' sind momentan nicht verfügbar.,de_DE
-mail.sender.name,Spryker demoshop,en_US
-mail.sender.name,Spryker demoshop,de_DE
-mail.sender.email,demoshop@spryker.com,en_US
-mail.sender.email,demoshop@spryker.de,de_DE
+mail.sender.name,Spryker No-Reply,en_US
+mail.sender.name,Spryker No-Reply,de_DE
+mail.sender.email,noreply@demo-spryker.com,en_US
+mail.sender.email,noreply@demo-spryker.com,de_DE
 mail.company.status.subject,"Your company has changed status",en_US
 mail.company.status.subject,"Ihre Firma hat den Status geändert",de_DE
 mail.company.status.text,"Your company has changed status to: ",en_US
@@ -1797,8 +1797,8 @@ shopping_list_page.dismiss.success,Shopping list was dismissed successfully.,en_
 shopping_list_page.dismiss.success,"Einkaufsliste wurde erfolgreich abgelehnt.",de_DE
 customer.account.shopping_list.share.from.share,Share,en_US
 customer.account.shopping_list.share.from.share,Teilen,de_DE
-customer.account.shopping_list.share.from.share_with,Share Shopping List with:,en_US
-customer.account.shopping_list.share.from.share_with,Einkaufsliste teilen mit:,de_DE
+customer.account.shopping_list.share.from.share.title,Share "%name%",en_US
+customer.account.shopping_list.share.from.share.title,Teilen "%name%",de_DE
 customer.account.shopping_list.item.select_item,At least one product should be selected.,en_US
 customer.account.shopping_list.item.select_item,Mindestens ein Produkt sollte ausgewählt werden.,de_DE
 customer.account.shopping_list.item.add.success,Item %sku% was added to the List.,en_US
@@ -2243,6 +2243,10 @@ validation.zip_code,This field should contain exactly 5 digits.,en_US
 validation.zip_code,Dieses Feld sollte genau 5 Ziffern enthalten.,de_DE
 validation.min_length,This field must be at least {{limit}} characters long.,en_US
 validation.min_length,Dieses Feld muss mindestens {{limit}} Zeichen lang sein.,de_DE
+validation.max_length.singular,This value is too long. It should have {{ limit }} character or less.,en_US
+validation.max_length.singular,"Dieser Wert ist zu lang. Es sollte maximal {{ limit }} Zeichen oder weniger haben.",de_DE
+validation.max_length.plural,This value is too long. It should have {{ limit }} characters or less.,en_US
+validation.max_length.plural,"Dieser Wert ist zu lang. Es sollte maximal {{ limit }} Zeichen oder weniger haben.",de_DE
 validation.email,This value is not a valid email address.,en_US
 validation.email,Dieser Wert ist keine gültige E-Mail-Adresse.,de_DE
 validation.choice,This value is not valid,en_US
