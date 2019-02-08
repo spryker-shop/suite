@@ -10,6 +10,8 @@ namespace PyzTest\Zed\DataImport\Communication\Plugin\ProductAbstractStore;
 use Generated\Shared\Transfer\DataImporterReportTransfer;
 use Pyz\Zed\DataImport\Communication\Plugin\ProductAbstractStore\ProductAbstractStoreBulkPdoWriterPlugin;
 use PyzTest\Zed\DataImport\Communication\Plugin\AbstractWriterPluginTest;
+use Spryker\Shared\Config\Config;
+use Spryker\Shared\Propel\PropelConstants;
 
 /**
  * Auto-generated group annotations
@@ -31,6 +33,10 @@ class ProductAbstractStoreBulkPdoWriterPluginTest extends AbstractWriterPluginTe
      */
     public function testProductAbstractStoreBulkPdoWriterPlugin(): void
     {
+        if (Config::get(PropelConstants::ZED_DB_ENGINE) !== Config::get(PropelConstants::ZED_DB_ENGINE_PGSQL)) {
+            $this->markTestSkipped('PostgreSQL related test');
+        }
+
         $dataImportBusinessFactory = $this->getDataImportBusinessFactoryStub();
         $dataImport = $dataImportBusinessFactory->createProductAbstractStoreImporter();
         $dataImporterReportTransfer = $dataImport->import();

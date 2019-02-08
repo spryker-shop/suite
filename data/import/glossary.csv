@@ -210,7 +210,7 @@ catalog.sort.price_asc,Sort by price ascending,en_US
 catalog.sort.price_desc,Nach Preis absteigend sortieren,de_DE
 catalog.sort.price_desc,Sort by price descending,en_US
 catalog.sort.rating,Sort by product ratings,en_US
-caralot.sort.rating,Nach Produktbewertungen sortieren,de_DE
+catalog.sort.rating,Nach Produktbewertungen sortieren,de_DE
 catalog.filter.activeFilters,Aktive Filter,de_DE
 catalog.filter.activeFilters,Active filters,en_US
 catalog.filter.resetAllFilters,Alle Filter zurücksetzen,de_DE
@@ -407,8 +407,8 @@ customer.profile.order_history,Last Orders,en_US
 customer.profile.order_history,Letzte Bestellungen,de_DE
 customer.account.no_orders,No orders at the moment,en_US
 customer.account.no_orders,Keine Bestellungen,de_DE
-customer.address.updated,New address updated,en_US
-customer.address.updated,Neue Adresse hinzugefügt,de_DE
+customer.address.updated,Address was successfully updated,en_US
+customer.address.updated,Adresse wurde erfolgreich aktualisiert,de_DE
 customer.address.delete.success,Address deleted successfully,en_US
 customer.address.delete.success,Adresse erfolgreich gelöscht,de_DE
 customer.address.added,Address was successfully added,en_US
@@ -611,6 +611,8 @@ customer.password.recovery.mail.sent,"If there is an account associated with thi
 customer.password.recovery.mail.sent,"Falls ein Konto für diese Emailaddresse existiert, werden Sie eine Email mit den weiteren Anweisungen bekommen",de_DE
 customer.address.number,Number,en_US
 customer.address.number,Nummer,de_DE
+customer.address.save_new_address,Save new address to address book,en_US
+customer.address.save_new_address,Neue Adresse in Adressbuch speichern,de_DE
 countries.iso.AT,Austria,en_US
 countries.iso.AT,Österreich,de_DE
 countries.iso.DE,Germany,en_US
@@ -893,10 +895,10 @@ cart.pre.check.availability.failed.empty,Product %sku% is not available at the m
 cart.pre.check.availability.failed.empty,Das Produkt %sku% ist momentan nicht verfügbar.,de_DE
 cart.pre.check.availability.failed.lead.product,Products inside the item 'sku' are not available at the moment.,en_US
 cart.pre.check.availability.failed.lead.product,Produkte im Artikel 'sku' sind momentan nicht verfügbar.,de_DE
-mail.sender.name,Spryker demoshop,en_US
-mail.sender.name,Spryker demoshop,de_DE
-mail.sender.email,demoshop@spryker.com,en_US
-mail.sender.email,demoshop@spryker.de,de_DE
+mail.sender.name,Spryker No-Reply,en_US
+mail.sender.name,Spryker No-Reply,de_DE
+mail.sender.email,noreply@demo-spryker.com,en_US
+mail.sender.email,noreply@demo-spryker.com,de_DE
 mail.company.status.subject,"Your company has changed status",en_US
 mail.company.status.subject,"Ihre Firma hat den Status geändert",de_DE
 mail.company.status.text,"Your company has changed status to: ",en_US
@@ -1425,6 +1427,10 @@ quick-order.button.add-more-rows,Add More Rows,en_US
 quick-order.button.add-more-rows,Reihen hinzufügen,de_DE
 quick-order.button.create-order,Create Order,en_US
 quick-order.button.create-order,Bestellen,de_DE
+quick-order.button.clear-all-rows,Clear All Rows,en_US
+quick-order.button.clear-all-rows,Eingabe löschen,de_DE
+quick-order.message.success.the-form-items-have-been-successfully-cleared,The form items have been successfully cleared.,en_US
+quick-order.message.success.the-form-items-have-been-successfully-cleared,Eingegebene Daten wurden erfolgreich gelöscht.,de_DE
 quick-order.errors.items-required,Please enter at least one product SKU,en_US
 quick-order.errors.items-required,Bitte geben Sie mindestens eine Produkt-Artikelnummer,de_DE
 quick-order.errors.quantity-required,Quantity must be at least 1,en_US
@@ -1789,8 +1795,8 @@ shopping_list_page.dismiss.success,Shopping list was dismissed successfully.,en_
 shopping_list_page.dismiss.success,"Einkaufsliste wurde erfolgreich abgelehnt.",de_DE
 customer.account.shopping_list.share.from.share,Share,en_US
 customer.account.shopping_list.share.from.share,Teilen,de_DE
-customer.account.shopping_list.share.from.share_with,Share Shopping List with:,en_US
-customer.account.shopping_list.share.from.share_with,Einkaufsliste teilen mit:,de_DE
+customer.account.shopping_list.share.from.share.title,Share "%name%",en_US
+customer.account.shopping_list.share.from.share.title,Teilen "%name%",de_DE
 customer.account.shopping_list.item.select_item,At least one product should be selected.,en_US
 customer.account.shopping_list.item.select_item,Mindestens ein Produkt sollte ausgewählt werden.,de_DE
 customer.account.shopping_list.item.add.success,Item %sku% was added to the List.,en_US
@@ -1841,8 +1847,8 @@ customer.account.shopping_list.delete.warning,Warning,en_US
 customer.account.shopping_list.delete.warning,Warnung,de_DE
 customer.account.shopping_list.delete.it_belongs_to_follow,It belongs to following,en_US
 customer.account.shopping_list.delete.it_belongs_to_follow,Es gehört zu folgenden,de_DE
-customer.account.shopping_list.delete.it_wll_be_deleted_from_all_of_them,It will be deleted from all of them,en_US
-customer.account.shopping_list.delete.it_wll_be_deleted_from_all_of_them,Es wird von allen gelöscht,de_DE
+customer.account.shopping_list.delete.it_will_be_deleted_from_all_of_them,It will be deleted from all of them,en_US
+customer.account.shopping_list.delete.it_will_be_deleted_from_all_of_them,Es wird von allen gelöscht,de_DE
 customer.account.shopping_list.quantity,Quantity,en_US
 customer.account.shopping_list.quantity,Anzahl,de_DE
 customer.account.shopping_list.remove,Remove,en_US
@@ -1869,6 +1875,10 @@ shopping_list.cart.items_add.failed,Items could not be added to the List,en_US
 shopping_list.cart.items_add.failed,Artikel konnten der Liste nicht hinzugefügt werden,de_DE
 shopping_list.cart.items_add.success,Items were added to the List,en_US
 shopping_list.cart.items_add.success,Artikel wurden zu der Liste hinzugefügt,de_DE
+shopping_list.not_applicable,N/A,en_US
+shopping_list.not_applicable,N/A,de_DE
+shopping_list_add_items_widget.add_to_shopping_list,Add to shopping list,en_US
+shopping_list_add_items_widget.add_to_shopping_list,Auf die Merkliste,de_DE
 page.detail.add-to-shopping-list,Add to Shopping list,en_US
 page.detail.add-to-shopping-list,In die Einkaufsliste,de_DE
 cart.add-to-shopping-list,Add to Shopping list,en_US
@@ -1931,16 +1941,18 @@ packaging_unit_type.pack_mixed.name,Mixed Screws boxes,en_US
 packaging_unit_type.pack_mixed.name,Gemischte Schraubenkästen,de_DE
 business_on_behalf_widget.no_selected_company,No selected company,en_US
 business_on_behalf_widget.no_selected_company,Kein Unternehmen ausgewählt,de_DE
-business_on_behalf_widget.change_company_user,Change Company User,en_US
-business_on_behalf_widget.change_company_user,Firmenbenutzer Profil ändern,de_DE
+business_on_behalf_widget.change_company_user,Select Business Unit,en_US
+business_on_behalf_widget.change_company_user,Geschäftseinheit auswählen,de_DE
 company_user.business_on_behalf.error.company_not_active,"You can not select this company user, company is not active.",en_US
 company_user.business_on_behalf.error.company_not_active,"Sie können diesen Firmennutzer nicht auswählen da die Firma inaktiv ist",de_DE
 company_user.business_on_behalf.error.company_user_invalid,"You can not select this company user, it is invalid.",en_US
 company_user.business_on_behalf.error.company_user_invalid,"Sie können diesen Firmennutzer nicht auswählen da er ungültig ist",de_DE
-company_user.change_company_user,Change Company User,en_US
-company_user.change_company_user,Veränderung Firmennutzer,de_DE
-company_user.no_company,No Company,en_US
-company_user.no_company,Kein Unternehmen,de_DE
+company_user.change_company_user,Select Business Unit,en_US
+company_user.change_company_user,Geschäftseinheit auswählen,de_DE
+company_user.no_company,No Business Unit,en_US
+company_user.no_company,Keine Geschäftseinheit,de_DE
+company_user.company_choice,Business Unit,en_US
+company_user.company_choice,Geschäftseinheit,de_DE
 company_user.remember_choice,Remember choice,en_US
 company_user.remember_choice,Auswahl speichern,de_DE
 company_page.company_user_restricted_message,Regular customers are not allowed to operate on company pages,en_US
@@ -2229,6 +2241,10 @@ validation.zip_code,This field should contain exactly 5 digits.,en_US
 validation.zip_code,Dieses Feld sollte genau 5 Ziffern enthalten.,de_DE
 validation.min_length,This field must be at least {{limit}} characters long.,en_US
 validation.min_length,Dieses Feld muss mindestens {{limit}} Zeichen lang sein.,de_DE
+validation.max_length.singular,This value is too long. It should have {{ limit }} character or less.,en_US
+validation.max_length.singular,"Dieser Wert ist zu lang. Es sollte maximal {{ limit }} Zeichen oder weniger haben.",de_DE
+validation.max_length.plural,This value is too long. It should have {{ limit }} characters or less.,en_US
+validation.max_length.plural,"Dieser Wert ist zu lang. Es sollte maximal {{ limit }} Zeichen oder weniger haben.",de_DE
 validation.email,This value is not a valid email address.,en_US
 validation.email,Dieser Wert ist keine gültige E-Mail-Adresse.,de_DE
 validation.choice,This value is not valid,en_US
@@ -2259,3 +2275,33 @@ wishlist.validation.error.name.wrong_format,"Please enter name using only letter
 wishlist.validation.error.name.wrong_format,"Bitte geben Sie Ihren Namen nur mit Buchstaben, Zahlen, Unterstriche, Leerzeichen oder Bindestriche ein.",de_DE
 wishlist.validation.error.name.already_exists,"A wishlist with the same name already exists.",en_US
 wishlist.validation.error.name.already_exists,"Eine Wunschliste mit dem gleichen Namen existiert schon.",de_DE
+global.search.pages,Seiten,de_DE
+global.search.pages,Pages,en_US
+global.search.results.view,Ansehen,de_DE
+global.search.results.view,View,en_US
+cms.page.sort.relevance,Nach Relevanz sortieren,de_DE
+cms.page.sort.relevance,Sort by relevance,en_US
+cms.page.sort.name_asc,Nach Name aufsteigend sortieren,de_DE
+cms.page.sort.name_asc,Sort by name ascending,en_US
+cms.page.sort.name_desc,Nach Name absteigend sortieren,de_DE
+cms.page.sort.name_desc,Sort by name descending,en_US
+cms.page.itemsFound,Artikel gefunden,de_DE
+cms.page.itemsFound,Items found,en_US
+quick-order.input-label.sku.name,SKU or Name,en_US
+quick-order.input-label.sku.name,SKU oder Name,de_DE
+quick-order.input.placeholder,Search by SKU or Name,en_US
+quick-order.input.placeholder,Suche per SKU oder Name,de_DE
+quick-order.input-label.measurement_unit,Measuring Unit,en_US
+quick-order.input-label.measurement_unit,Maßeinheit,de_DE
+quick-order.input-label.price,Price,en_US
+quick-order.input-label.price,Preis,de_DE
+quick-order.search.no_results,Item cannot be found,en_US
+quick-order.search.no_results,Das produkt konnte nicht gefunden werden.,de_DE
+quick-order.input-quantity.message.error,Die bestellte Anzahl wurde auf die nächstmögliche Anzahl für diesen Artikel angepasst.,de_DE
+quick-order.input-quantity.message.error,The ordered quantity was adjusted to the next possible quantity for the article.,en_US
+product-quantity.errors.quantity.min.failed,Quantity %s does not satisfy requirements for product. Minimum quantity is %s.,en_US
+product-quantity.errors.quantity.min.failed,Anzahl %s erfüllt nicht die Anforderungen für dieses Produkt. Mindestanzahl is %s.,de_DE
+product-quantity.errors.quantity.max.failed,Quantity %s does not satisfy requirements for product. Maximum quantity is %s.,en_US
+product-quantity.errors.quantity.max.failed,Anzahl %s erfüllt nicht die Anforderungen für dieses Produkt. Maximalanzahl is %s.,de_DE
+product-quantity.errors.quantity.interval.failed,Quantity %s does not satisfy requirements for product. Quantity step is %s.,en_US
+product-quantity.errors.quantity.interval.failed,Anzahl %s erfüllt nicht die Anforderungen für dieses Produkt. Intervallgröße ist %s.,de_DE
