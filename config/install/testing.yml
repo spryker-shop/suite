@@ -106,6 +106,10 @@ sections:
         update-product-labels:
             command: "vendor/bin/console product-label:relations:update"
 
+    setup-fixtures:
+        fixtures:
+            command: 'vendor/bin/console code:fixtures'
+
     backup:
         backup-database:
             command: "vendor/bin/console propel:database:export data/db.backup"

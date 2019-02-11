@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ad62de119018afb0d3b15266ce1c4104",
+    "content-hash": "5ff9b2c55494eddee0e3770223ae379d",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -2660,11 +2660,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/glue-2210/dev-shopping-list",
+            "version": "dev-feature/glue-2210/dev-shopping-list-e2e",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "712d9b26bbb5274848a3e3d432c7c6b65d0d0788"
+                "reference": "8605dd710a64a57eb8f9d1fa33ccea49b5c5df7f"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2934,7 +2934,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-01-23T12:55:15+00:00"
+            "time": "2019-02-11T17:02:18+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5970,6 +5970,54 @@
             "time": "2018-05-16T17:37:13+00:00"
         },
         {
+            "name": "galbar/jsonpath",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Galbar/JsonPath-PHP.git",
+                "reference": "d08d1efeadad3345257249e35e8cfd65f21256ae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Galbar/JsonPath-PHP/zipball/d08d1efeadad3345257249e35e8cfd65f21256ae",
+                "reference": "d08d1efeadad3345257249e35e8cfd65f21256ae",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "sami/sami": ">=3.3.0",
+                "satooshi/php-coveralls": ">=1.0.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "JsonPath\\": "src/Skyscanner/",
+                    "Utilities\\": "src/Skyscanner/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache 2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Alessio Linares",
+                    "email": "alessio.linares@skyscanner.net",
+                    "role": "Software Engineer"
+                }
+            ],
+            "description": "JSONPath implementation for querying and updating JSON objects",
+            "keywords": [
+                "json",
+                "jsonpath",
+                "path"
+            ],
+            "time": "2017-09-13T09:14:46+00:00"
+        },
+        {
             "name": "jakoch/phantomjs-installer",
             "version": "2.1.1-p09",
             "source": {
@@ -6069,6 +6117,72 @@
                 "versions"
             ],
             "time": "2018-06-13T13:22:40+00:00"
+        },
+        {
+            "name": "justinrainbow/json-schema",
+            "version": "5.2.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/justinrainbow/json-schema.git",
+                "reference": "dcb6e1006bb5fd1e392b4daa68932880f37550d4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/justinrainbow/json-schema/zipball/dcb6e1006bb5fd1e392b4daa68932880f37550d4",
+                "reference": "dcb6e1006bb5fd1e392b4daa68932880f37550d4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "~2.2.20",
+                "json-schema/json-schema-test-suite": "1.2.0",
+                "phpunit/phpunit": "^4.8.35"
+            },
+            "bin": [
+                "bin/validate-json"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "JsonSchema\\": "src/JsonSchema/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bruno Prieto Reis",
+                    "email": "bruno.p.reis@gmail.com"
+                },
+                {
+                    "name": "Justin Rainbow",
+                    "email": "justin.rainbow@gmail.com"
+                },
+                {
+                    "name": "Igor Wiedler",
+                    "email": "igor@wiedler.ch"
+                },
+                {
+                    "name": "Robert Schönthal",
+                    "email": "seroscho@googlemail.com"
+                }
+            ],
+            "description": "A library to validate a json schema.",
+            "homepage": "https://github.com/justinrainbow/json-schema",
+            "keywords": [
+                "json",
+                "schema"
+            ],
+            "time": "2019-01-14T23:55:14+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -8567,6 +8681,49 @@
                 "standards"
             ],
             "time": "2019-01-10T09:34:59+00:00"
+        },
+        {
+            "name": "spryker/container",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/container.git",
+                "reference": "12d50f4add4ba7046962d3b1e36af35d2f62a1c9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/container/zipball/12d50f4add4ba7046962d3b1e36af35d2f62a1c9",
+                "reference": "12d50f4add4ba7046962d3b1e36af35d2f62a1c9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "psr/container": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                },
+                "psr-0": {
+                    "Pimple": "src/Spryker"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Container module",
+            "time": "2019-01-22T13:59:37+00:00"
         },
         {
             "name": "spryker/development-core",
