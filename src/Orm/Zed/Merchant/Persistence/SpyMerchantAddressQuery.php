@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\Merchant\Persistence;
 
-use Spryker\Zed\Merchant\Persistence\Propel\SpyMerchantAddressQuery as BaseSpyMerchantAddressQuery;
+use Spryker\Zed\Merchant\Persistence\Propel\AbstractSpyMerchantAddressQuery as BaseSpyMerchantAddressQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_merchant_address' table.

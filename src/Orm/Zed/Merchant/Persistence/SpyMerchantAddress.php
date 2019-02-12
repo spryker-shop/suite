@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\Merchant\Persistence;
 
-use Spryker\Zed\Merchant\Persistence\Propel\SpyMerchantAddress as BaseSpyMerchantAddress;
+use Spryker\Zed\Merchant\Persistence\Propel\AbstractSpyMerchantAddress as BaseSpyMerchantAddress;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_merchant_address' table.
