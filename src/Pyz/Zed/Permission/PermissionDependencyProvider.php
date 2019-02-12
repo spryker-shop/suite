@@ -7,10 +7,10 @@
 
 namespace Pyz\Zed\Permission;
 
-use Spryker\Shared\QuoteApproval\Plugin\Permission\ApproveQuotePermissionPlugin;
-use Spryker\Shared\QuoteApproval\Plugin\Permission\PlaceOrderPermissionPlugin;
 use Spryker\Zed\CompanyRole\Communication\Plugin\PermissionStoragePlugin;
 use Spryker\Zed\Permission\PermissionDependencyProvider as SprykerPermissionDependencyProvider;
+use Spryker\Zed\QuoteApproval\Communication\Plugin\ApproveQuotePermissionPlugin;
+use Spryker\Zed\QuoteApproval\Communication\Plugin\PlaceOrderPermissionPlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\QuotePermissionStoragePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\ReadSharedCartPermissionPlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\WriteSharedCartPermissionPlugin;
