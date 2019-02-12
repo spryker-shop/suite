@@ -18,6 +18,7 @@ use PyzTest\Glue\ShoppingListsRestApi\ShoppingListsApiTester;
  * @group RestApi
  * @group ShoppingListsRestApiCest
  * Add your own group annotations below this line
+ * @group EndToEnd
  */
 class ShoppingListsRestApiCest
 {

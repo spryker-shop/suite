@@ -107,7 +107,7 @@ sections:
         update-product-labels:
             command: "vendor/bin/console product-label:relations:update"
 
-    setup-fixtures:
+    fixtures:
         fixtures:
             command: 'vendor/bin/console code:fixtures'
 

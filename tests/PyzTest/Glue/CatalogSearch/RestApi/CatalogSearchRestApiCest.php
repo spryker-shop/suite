@@ -18,6 +18,7 @@ use PyzTest\Glue\CatalogSearch\CatalogSearchApiTester;
  * @group RestApi
  * @group CatalogSearchRestApiCest
  * Add your own group annotations below this line
+ * @group EndToEnd
  */
 class CatalogSearchRestApiCest
 {

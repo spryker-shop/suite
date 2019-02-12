@@ -18,6 +18,7 @@ use PyzTest\Glue\Carts\CartsApiTester;
  * @group RestApi
  * @group CartsRestApiCest
  * Add your own group annotations below this line
+ * @group EndToEnd
  */
 class CartsRestApiCest
 {
