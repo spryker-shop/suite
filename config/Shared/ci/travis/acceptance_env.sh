@@ -20,6 +20,7 @@ FE_ZED_BUNDLE_PKGJSON_PATTERN=".+/assets/Zed/package.json$"
 sudo apt-get install apache2 libapache2-mod-fastcgi
 
 sudo chmod -R 755 $HOME
+sudo chmod 600 config/Zed/dev_only_private.key
 
 # enable php-fpm
 
