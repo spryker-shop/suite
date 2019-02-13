@@ -71,15 +71,14 @@ class DevelopmentConfig extends SprykerDevelopmentConfig
      */
     public function getPathToInternalNamespace(string $namespace): ?string
     {
-        if ($pathToSprykerRoot = $this->checkPathToSprykerRoot($namespace)) {
+        $pathToSprykerRoot = $this->checkPathToSprykerRoot($namespace);
+        if ($pathToSprykerRoot) {
             return $pathToSprykerRoot;
         }
 
         if (array_key_exists($namespace, $this->getPathsToInternalNamespace())) {
-            $mergedInternalNamespacesToPathMapping = array_merge(
-                parent::INTERNAL_NAMESPACES_TO_PATH_MAPPING,
-                static::INTERNAL_NAMESPACES_TO_PATH_MAPPING
-            );
+            $mergedInternalNamespacesToPathMapping =
+                static::INTERNAL_NAMESPACES_TO_PATH_MAPPING + parent::INTERNAL_NAMESPACES_TO_PATH_MAPPING;
 
             return $mergedInternalNamespacesToPathMapping[$namespace];
         }
@@ -95,9 +94,6 @@ class DevelopmentConfig extends SprykerDevelopmentConfig
         $pathToSprykerRoot = $this->checkPathToSprykerRoot(static::NAMESPACE_SPRYKER);
         $sprykerNamespacePath = $pathToSprykerRoot ? [static::NAMESPACE_SPRYKER => $pathToSprykerRoot] : [];
 
-        return $sprykerNamespacePath + array_merge(
-            parent::INTERNAL_NAMESPACES_TO_PATH_MAPPING,
-            static::INTERNAL_NAMESPACES_TO_PATH_MAPPING
-        );
+        return $sprykerNamespacePath + static::INTERNAL_NAMESPACES_TO_PATH_MAPPING + parent::INTERNAL_NAMESPACES_TO_PATH_MAPPING;
     }
 }
