@@ -14,7 +14,7 @@ class DevelopmentConfig extends SprykerDevelopmentConfig
     /**
      * @project Only needed in Project, not in demoshop
      *
-     * @return array
+     * @var array
      */
     protected const INTERNAL_NAMESPACES_TO_PATH_MAPPING = [
         self::NAMESPACE_SPRYKER => APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR . 'vendor/spryker/spryker/Bundles/',
