@@ -20,7 +20,8 @@ class QuoteConfig extends SprykerQuoteConfig
         return array_merge(parent::getQuoteFieldsAllowedForSaving(), [
             QuoteTransfer::BUNDLE_ITEMS,
             QuoteTransfer::CART_NOTE, #CartNoteFeature
-            QuoteTransfer::QUOTE_REQUEST_VERSION_REFERENCE, #QuoteRequestFeature
+            QuoteTransfer::QUOTE_REQUEST_VERSION_REFERENCE,
+            QuoteTransfer::QUOTE_REQUEST_REFERENCE,
         ]);
     }
 }
