@@ -28,7 +28,7 @@ class QuickOrderDependencyProvider extends SprykerQuickOrderDependencyProvider
     /**
      * @return \Spryker\Client\QuickOrderExtension\Dependency\Plugin\ItemValidatorPluginInterface[]
      */
-    protected function getQuickOrderValidationPlugins(): array
+    protected function getQuickOrderBuildItemValidatorPlugins(): array
     {
         return [
             new ProductDiscontinuedItemValidatorPlugin(),
