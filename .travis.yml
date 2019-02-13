@@ -115,7 +115,7 @@ before_script:
   - if [[ $DB == 'mysql' ]] ; then sudo service mysql restart ; fi
 
   - if [[ $TEST_GROUP == 'acceptance' ]] ; then config/Shared/ci/travis/acceptance_env.sh ; fi
-  - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/install DE -r testing -vvv ; fi
+  - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/install DE -r testing -v ; fi
   - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/install DE -r testing -x frontend -x fixtures ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:generate ; fi
