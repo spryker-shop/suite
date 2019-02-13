@@ -19,9 +19,6 @@ class DevelopmentConfig extends SprykerDevelopmentConfig
     protected const INTERNAL_NAMESPACES_TO_PATH_MAPPING = [
         self::NAMESPACE_SPRYKER => APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR . 'vendor/spryker/spryker/Bundles/',
         self::NAMESPACE_SPRYKER_SHOP => APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR . 'vendor/spryker/spryker-shop/Bundles/',
-        self::NAMESPACE_SPRYKER_ECO => APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR . 'vendor/spryker-eco/',
-        self::NAMESPACE_SPRYKER_SDK => APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR . 'vendor/spryker-sdk/',
-        self::NAMESPACE_SPRYKER_MERCHANT_PORTAL => APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR . 'vendor/spryker/spryker-merchant-portal/Bundles/',
     ];
 
     /**
@@ -65,5 +62,42 @@ class DevelopmentConfig extends SprykerDevelopmentConfig
         $rootDir = APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR;
 
         return $rootDir . 'config/ruleset.xml';
+    }
+
+    /**
+     * @param string $namespace
+     *
+     * @return string|null
+     */
+    public function getPathToInternalNamespace(string $namespace): ?string
+    {
+        if ($pathToSprykerRoot = $this->checkPathToSprykerRoot($namespace)) {
+            return $pathToSprykerRoot;
+        }
+
+        if (array_key_exists($namespace, $this->getPathsToInternalNamespace())) {
+            $mergedInternalNamespacesToPathMapping = array_merge(
+                parent::INTERNAL_NAMESPACES_TO_PATH_MAPPING,
+                static::INTERNAL_NAMESPACES_TO_PATH_MAPPING
+            );
+
+            return $mergedInternalNamespacesToPathMapping[$namespace];
+        }
+
+        return null;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getPathsToInternalNamespace(): array
+    {
+        $pathToSprykerRoot = $this->checkPathToSprykerRoot(static::NAMESPACE_SPRYKER);
+        $sprykerNamespacePath = $pathToSprykerRoot ? [static::NAMESPACE_SPRYKER => $pathToSprykerRoot] : [];
+
+        return $sprykerNamespacePath + array_merge(
+            parent::INTERNAL_NAMESPACES_TO_PATH_MAPPING,
+            static::INTERNAL_NAMESPACES_TO_PATH_MAPPING
+        );
     }
 }
