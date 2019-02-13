@@ -9,7 +9,7 @@ namespace Pyz\Zed\ProductDiscontinued;
 
 use Spryker\Zed\ProductDiscontinued\ProductDiscontinuedDependencyProvider as SprykerProductDiscontinuedDependencyProvider;
 use Spryker\Zed\ProductDiscontinuedProductBundleConnector\Communication\Plugin\DiscontinueBundlePostProductDiscontinuePlugin;
-use Spryker\Zed\ProductDiscontinuedProductBundleConnector\Communication\Plugin\ProductDiscontinued\ProductDiscontinuedPreDeleteCheckBundledProductsPlugin;
+use Spryker\Zed\ProductDiscontinuedProductBundleConnector\Communication\Plugin\ProductDiscontinued\BundledProductsProductDiscontinuedPreDeleteCheckPlugin;
 use Spryker\Zed\ProductDiscontinuedProductLabelConnector\Communication\Plugin\PostDeleteProductDiscontinuedPlugin;
 use Spryker\Zed\ProductDiscontinuedProductLabelConnector\Communication\Plugin\PostProductDiscontinuedPlugin;
 
@@ -42,7 +42,7 @@ class ProductDiscontinuedDependencyProvider extends SprykerProductDiscontinuedDe
     protected function getProductDiscontinuedPreDeleteCheckPlugins(): array
     {
         return [
-            new ProductDiscontinuedPreDeleteCheckBundledProductsPlugin(),
+            new BundledProductsProductDiscontinuedPreDeleteCheckPlugin(),
         ];
     }
 }
