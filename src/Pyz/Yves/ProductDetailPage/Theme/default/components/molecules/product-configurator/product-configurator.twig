@@ -14,6 +14,7 @@
 {% set brand = data.product.attributes.brand | default %}
 {% set sku = data.product.sku %}
 {% set availabilityWidget = '' %}
+{% set isProductAbstract = data.product.idProductConcrete is empty %}
 {% set isDisabled = data.product.idProductConcrete is empty or data.product.price is empty %}
 {% set isProductAvailable = true %}
 
@@ -140,6 +141,10 @@
             } only %}
         {% endif %}
     </form>
+
+    {% if not isAvailable and not isProductAbstract %}
+        {% widget 'AvailabilityNotificationSubscriptionWidget' args [data.product] only %}{% endwidget %}
+    {% endif %}
 
     {% if can('SeeShoppingListPermissionPlugin') and isProductAvailable %}
         {% widget 'AddToShoppingListWidget' args [sku, isDisabled] only %}
