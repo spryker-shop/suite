@@ -10,6 +10,7 @@ namespace Pyz\Yves\CheckoutPage;
 use Spryker\Yves\Kernel\Container;
 use Spryker\Yves\Kernel\Plugin\Pimple;
 use Spryker\Yves\Payment\Plugin\PaymentFormFilterPlugin;
+use Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageDependencyProvider as SprykerShopCheckoutPageDependencyProvider;
 use SprykerShop\Yves\CustomerPage\Form\CheckoutAddressCollectionForm;
 use SprykerShop\Yves\CustomerPage\Form\CustomerCheckoutForm;
@@ -94,9 +95,13 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
      *
      * @return \Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface|null
      */
-    protected function getAddressStepFormDataProvider(Container $container)
+    protected function getAddressStepFormDataProvider(Container $container): ?StepEngineFormDataProviderInterface
     {
-        return new CheckoutAddressFormDataProvider($this->getCustomerClient($container), $this->getStore());
+        return new CheckoutAddressFormDataProvider(
+            $this->getCustomerClient($container),
+            $this->getStore(),
+            $this->getCheckoutStepTemplateResolver()->isMultiShipmentFullEnabled()
+        );
     }
 
     /**
