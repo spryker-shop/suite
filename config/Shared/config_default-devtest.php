@@ -16,7 +16,7 @@ use Spryker\Shared\GlueApplication\GlueApplicationConstants;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\Oauth\OauthConstants;
-use Spryker\Shared\OauthCompanyUserConnector\OauthCompanyUserConnectorConstants;
+use Spryker\Shared\OauthCompanyUser\OauthCompanyUserConstants;
 use Spryker\Shared\OauthCustomerConnector\OauthCustomerConnectorConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Queue\QueueConstants;
@@ -109,8 +109,8 @@ $config[OauthCustomerConnectorConstants::OAUTH_CLIENT_IDENTIFIER] = 'frontend';
 $config[OauthCustomerConnectorConstants::OAUTH_CLIENT_SECRET] = 'abc123';
 
 // ----------- CompanyUserAuthRestApi
-$config[OauthCompanyUserConnectorConstants::OAUTH_CLIENT_IDENTIFIER] = 'frontend';
-$config[OauthCompanyUserConnectorConstants::OAUTH_CLIENT_SECRET] = 'abc123';
+$config[OauthCompanyUserConstants::OAUTH_CLIENT_IDENTIFIER] = 'frontend';
+$config[OauthCompanyUserConstants::OAUTH_CLIENT_SECRET] = 'abc123';
 
 // ----------- Queue
 $config[QueueConstants::QUEUE_WORKER_LOOP] = true;

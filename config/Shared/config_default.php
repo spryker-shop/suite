@@ -27,7 +27,7 @@ use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\Monitoring\MonitoringConstants;
 use Spryker\Shared\Oauth\OauthConstants;
-use Spryker\Shared\OauthCompanyUserConnector\OauthCompanyUserConnectorConstants;
+use Spryker\Shared\OauthCompanyUser\OauthCompanyUserConstants;
 use Spryker\Shared\OauthCustomerConnector\OauthCustomerConnectorConstants;
 use Spryker\Shared\Oms\OmsConstants;
 use Spryker\Shared\Propel\PropelConstants;
@@ -449,8 +449,8 @@ $config[OauthCustomerConnectorConstants::OAUTH_CLIENT_IDENTIFIER] = '';
 $config[OauthCustomerConnectorConstants::OAUTH_CLIENT_SECRET] = '';
 
 // ----------- CompanyUserAuthRestApi
-$config[OauthCompanyUserConnectorConstants::OAUTH_CLIENT_IDENTIFIER] = '';
-$config[OauthCompanyUserConnectorConstants::OAUTH_CLIENT_SECRET] = '';
+$config[OauthCompanyUserConstants::OAUTH_CLIENT_IDENTIFIER] = '';
+$config[OauthCompanyUserConstants::OAUTH_CLIENT_SECRET] = '';
 
 // ---------- FileSystem
 $config[FileSystemConstants::FILESYSTEM_SERVICE] = [

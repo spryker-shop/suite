@@ -13,7 +13,7 @@ use Spryker\Zed\Oauth\OauthConfig as SprykerOauthConfig;
 class OauthConfig extends SprykerOauthConfig
 {
     /**
-     * @uses \Spryker\Zed\OauthCompanyUserConnector\OauthCompanyUserConnectorConfig::SCOPE_COMPANY_USER
+     * @uses \Spryker\Zed\OauthCompanyUser\OauthCompanyUserConfig::SCOPE_COMPANY_USER
      */
     public const SCOPE_COMPANY_USER = 'company_user';
 
