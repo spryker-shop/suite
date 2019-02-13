@@ -40,6 +40,7 @@ use Spryker\Shared\Session\SessionConfig;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\Storage\StorageConstants;
 use Spryker\Shared\Tax\TaxConstants;
+use Spryker\Shared\Translator\TranslatorConstants;
 use Spryker\Shared\Twig\TwigConstants;
 use Spryker\Shared\User\UserConstants;
 use Spryker\Shared\ZedNavigation\ZedNavigationConstants;
@@ -433,3 +434,18 @@ $config[MonitoringConstants::IGNORABLE_TRANSACTIONS] = [
 
 // ---------- Guest cart
 $config[QuoteConstants::GUEST_QUOTE_LIFETIME] = 'P01M';
+
+// ----------- Translator
+$config[TranslatorConstants::TRANSLATION_ZED_FALLBACK_LOCALES] = [
+    'de_DE' => ['en_US'],
+];
+
+$config[TranslatorConstants::TRANSLATION_ZED_CACHE_DIRECTORY] = sprintf(
+    '%s/data/%s/cache/Zed/translation',
+    APPLICATION_ROOT_DIR,
+    $CURRENT_STORE
+);
+
+$config[TranslatorConstants::TRANSLATION_ZED_FILE_PATH_PATTERNS] = [
+    APPLICATION_ROOT_DIR . '/data/translation/Zed/*/[a-z][a-z]_[A-Z][A-Z].csv',
+];
