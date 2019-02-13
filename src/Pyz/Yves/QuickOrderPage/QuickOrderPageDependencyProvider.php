@@ -50,7 +50,7 @@ class QuickOrderPageDependencyProvider extends SprykerQuickOrderPageDependencyPr
     /**
      * @return \SprykerShop\Yves\QuickOrderPageExtension\Dependency\Plugin\QuickOrderUploadedFileParserStrategyPluginInterface[]
      */
-    protected function getQuickOrderFileParserPlugins(): array
+    protected function getQuickOrderUploadedFileParserPlugins(): array
     {
         return [
             new QuickOrderCsvUploadedFileParserStrategyPlugin(),
@@ -70,7 +70,7 @@ class QuickOrderPageDependencyProvider extends SprykerQuickOrderPageDependencyPr
     /**
      * @return \SprykerShop\Yves\QuickOrderPageExtension\Dependency\Plugin\QuickOrderUploadedFileValidatorStrategyPluginInterface[]
      */
-    protected function getQuickOrderFileValidatorPlugins(): array
+    protected function getQuickOrderUploadedFileValidatorPlugins(): array
     {
         return [
             new QuickOrderCsvUploadedFileValidatorStrategyPlugin(),
