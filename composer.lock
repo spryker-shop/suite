@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "126a7dd290289ba504768e47027e301f",
@@ -995,7 +995,7 @@
                 {
                     "name": "Luís Otávio Cobucci Oblonczyk",
                     "email": "lcobucci@gmail.com",
-                    "role": "Developer"
+                    "role": "developer"
                 }
             ],
             "description": "A simple library to work with JSON Web Token and JSON Web Signature",
@@ -2481,21 +2481,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "d86e10a51eea1de94a8e92d802c48760e699a7e5"
+                "reference": "8ca1502ac1c998adb1344d2cf271f4f37468d0f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/d86e10a51eea1de94a8e92d802c48760e699a7e5",
-                "reference": "d86e10a51eea1de94a8e92d802c48760e699a7e5",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/8ca1502ac1c998adb1344d2cf271f4f37468d0f6",
+                "reference": "8ca1502ac1c998adb1344d2cf271f4f37468d0f6",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "php-amqplib/php-amqplib": "^2.6",
                 "spryker/kernel": "^3.20.0",
-                "spryker/queue": "^1.1.2",
+                "spryker/queue": "^1.4.0",
                 "spryker/store": "^1.9.0",
-                "spryker/transfer": "^3.6.0"
+                "spryker/transfer": "^3.8.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*"
@@ -2532,7 +2532,7 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "time": "2019-01-09T13:45:36+00:00"
+            "time": "2019-02-13T07:32:36+00:00"
         },
         {
             "name": "spryker/silexphp",
@@ -2895,7 +2895,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "1db9c41afd50dfa2803dc3be5f9e978d45003aa5"
+                "reference": "563952338344f91f07444ac027612f58435764a2"
             },
             "require": {
                 "php": ">=7.1"
@@ -2970,7 +2970,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-02-04T11:58:15+00:00"
+            "time": "2019-02-13T09:37:38+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8680,24 +8680,24 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/git-hook.git",
-                "reference": "c9abd16a02741d70eae75629cb8d82d43f7710c9"
+                "reference": "fa5b0a870efa40d11ec21cf72bc5bb6b86be3091"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/git-hook/zipball/c9abd16a02741d70eae75629cb8d82d43f7710c9",
-                "reference": "c9abd16a02741d70eae75629cb8d82d43f7710c9",
+                "url": "https://api.github.com/repos/spryker/git-hook/zipball/fa5b0a870efa40d11ec21cf72bc5bb6b86be3091",
+                "reference": "fa5b0a870efa40d11ec21cf72bc5bb6b86be3091",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "symfony/process": "^3.0.0",
-                "symfony/yaml": "^2.8|^3",
+                "symfony/yaml": "^2.8 || ^3.0",
                 "zendframework/zend-filter": "^2.0.0"
             },
             "require-dev": {
                 "codeception/codeception": "^2.2.10",
                 "phpmd/phpmd": "^2.6",
-                "phpstan/phpstan": "^0.10.0",
+                "phpstan/phpstan": "^0.11.2",
                 "sebastian/phpcpd": "^3.0",
                 "spryker/code-sniffer": "*",
                 "symfony/var-dumper": "^3.3"
@@ -8726,7 +8726,7 @@
                 "sniffer",
                 "standards"
             ],
-            "time": "2019-01-30T17:48:46+00:00"
+            "time": "2019-02-13T11:51:40+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
