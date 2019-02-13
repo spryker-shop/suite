@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9724b4d7edc7f43b38a36aec86328097",
+    "content-hash": "3bda126f3097da0496561e00ceefead6",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -7411,6 +7411,65 @@
             ],
             "description": "AvailabilityGui module",
             "time": "2019-02-08T11:26:26+00:00"
+        },
+        {
+            "name": "spryker/availability-notification",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/availability-notification.git",
+                "reference": "7ace9a5a5274d40c85013adfa2047bd149e91c53"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/availability-notification/zipball/7ace9a5a5274d40c85013adfa2047bd149e91c53",
+                "reference": "7ace9a5a5274d40c85013adfa2047bd149e91c53",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/application": "^3.2.0",
+                "spryker/customer": "^7.16.1",
+                "spryker/glossary": "^3.0.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/locale": "^3.0.0",
+                "spryker/mail": "^4.0.0",
+                "spryker/product": "^6.8.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/store": "^1.5.0",
+                "spryker/util-text": "^1.2.0",
+                "spryker/util-validate": "^1.0.0",
+                "spryker/zed-request": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/availability": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/event": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/availability": "If you want use handler for availability_notification Event",
+                "spryker/event": "If you want to use availability_notification Event"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\AvailabilityNotification\\Helper\\": "tests/SprykerTest/Zed/AvailabilityNotification/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "AvailabilityNotification module",
+            "time": "2019-02-11T13:41:03+00:00"
         },
         {
             "name": "spryker/availability-offer-connector",
