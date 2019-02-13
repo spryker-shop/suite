@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3bda126f3097da0496561e00ceefead6",
+    "content-hash": "cf4676f48bef18a484e509c98935e168",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -2464,6 +2464,104 @@
             ],
             "description": "AgentWidget module",
             "time": "2019-01-14T13:35:32+00:00"
+        },
+        {
+            "name": "spryker-shop/availability-notification-page",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/availability-notification-page.git",
+                "reference": "ba2ace25446e7cfe3fd7328aeb0dd9792daaeec0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/availability-notification-page/zipball/ba2ace25446e7cfe3fd7328aeb0dd9792daaeec0",
+                "reference": "ba2ace25446e7cfe3fd7328aeb0dd9792daaeec0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/shop-application": "^1.0.0",
+                "spryker/availability-notification": "^1.0.0",
+                "spryker/customer": "^7.16.0",
+                "spryker/kernel": "^3.24.0",
+                "spryker/symfony": "^3.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/silex": "If you want to use silex"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "AvailabilityNotificationPage module",
+            "time": "2019-02-07T10:05:16+00:00"
+        },
+        {
+            "name": "spryker-shop/availability-notification-widget",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/availability-notification-widget.git",
+                "reference": "730197eda5c64697facd8092f5863632a6b3ad0a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/availability-notification-widget/zipball/730197eda5c64697facd8092f5863632a6b3ad0a",
+                "reference": "730197eda5c64697facd8092f5863632a6b3ad0a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/shop-application": "^1.3.0",
+                "spryker/application": "^3.8.0",
+                "spryker/availability-notification": "^1.0.0",
+                "spryker/customer": "^7.16.0",
+                "spryker/kernel": "^3.24.0",
+                "spryker/symfony": "^3.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/product-detail-page": "If you want to see AvailabilityNotificationWidget on pdp",
+                "spryker/silex": "If you want to use silex"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "AvailabilityNotificationWidget module",
+            "time": "2019-02-11T15:46:18+00:00"
         },
         {
             "name": "spryker-shop/availability-widget",
