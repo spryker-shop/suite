@@ -7,18 +7,28 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\ProductStock\Writer;
 
+use Orm\Zed\Availability\Persistence\Map\SpyAvailabilityAbstractTableMap;
+use Orm\Zed\Availability\Persistence\SpyAvailabilityAbstractQuery;
 use Orm\Zed\Stock\Persistence\SpyStock;
 use Orm\Zed\Stock\Persistence\SpyStockProductQuery;
 use Orm\Zed\Stock\Persistence\SpyStockQuery;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\ProductStockHydratorStep;
 use Spryker\Zed\Availability\Business\AvailabilityFacadeInterface;
+use Spryker\Zed\Availability\Dependency\AvailabilityEvents;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
+use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
 use Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface;
+use Spryker\Zed\Store\Business\StoreFacadeInterface;
 
 class ProductStockPropelDataSetWriter implements DataSetWriterInterface
 {
+    /**
+     * @var string[]
+     */
+    protected static $productAbstractSkus = [];
+
     /**
      * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface
      */
@@ -35,18 +45,26 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
     protected $productBundleFacade;
 
     /**
+     * @var \Spryker\Zed\Store\Business\StoreFacadeInterface
+     */
+    protected $storeFacade;
+
+    /**
      * @param \Spryker\Zed\Availability\Business\AvailabilityFacadeInterface $availabilityFacade
      * @param \Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface $productBundleFacade
      * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface $productRepository
+     * @param \Spryker\Zed\Store\Business\StoreFacadeInterface $storeFacade
      */
     public function __construct(
         AvailabilityFacadeInterface $availabilityFacade,
         ProductBundleFacadeInterface $productBundleFacade,
-        ProductRepositoryInterface $productRepository
+        ProductRepositoryInterface $productRepository,
+        StoreFacadeInterface $storeFacade
     ) {
         $this->availabilityFacade = $availabilityFacade;
         $this->productBundleFacade = $productBundleFacade;
         $this->productRepository = $productRepository;
+        $this->storeFacade = $storeFacade;
     }
 
     /**
@@ -58,6 +76,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
     {
         $stockEntity = $this->createOrUpdateStock($dataSet);
         $this->createOrUpdateProductStock($dataSet, $stockEntity);
+        $this->collectProductAbstractSku($dataSet);
 
         $this->availabilityFacade->updateAvailability($dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU]);
 
@@ -74,6 +93,8 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
      */
     public function flush(): void
     {
+        $this->triggerAvailabilityPublishEvents();
+        $this->productRepository->flush();
     }
 
     /**
@@ -109,5 +130,64 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
             ->findOneOrCreate();
         $stockProductEntity->fromArray($stockProductEntityTransfer->modifiedToArray());
         $stockProductEntity->save();
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    protected function collectProductAbstractSku(DataSetInterface $dataSet): void
+    {
+        $productConcreteSku = $dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU];
+        static::$productAbstractSkus[] = $this->productRepository->getAbstractSkuByConcreteSku($productConcreteSku);
+    }
+
+    /**
+     * @return void
+     */
+    protected function triggerAvailabilityPublishEvents(): void
+    {
+        $availabilityAbstractIds = $this->getAvailabilityAbstractIdsForCollectedAbstractSkus();
+
+        foreach ($availabilityAbstractIds as $availabilityAbstractId) {
+            DataImporterPublisher::addEvent(AvailabilityEvents::AVAILABILITY_ABSTRACT_PUBLISH, $availabilityAbstractId);
+        }
+    }
+
+    /**
+     * @return int[]
+     */
+    protected function getAvailabilityAbstractIdsForCollectedAbstractSkus(): array
+    {
+        $storeIds = $this->getStoreIds();
+
+        return SpyAvailabilityAbstractQuery::create()
+            ->joinWithSpyAvailability()
+            ->useSpyAvailabilityQuery()
+                ->filterByFkStore_In($storeIds)
+            ->endUse()
+            ->filterByAbstractSku_In(static::$productAbstractSkus)
+            ->select([
+                SpyAvailabilityAbstractTableMap::COL_ID_AVAILABILITY_ABSTRACT,
+            ])
+            ->find()
+            ->getData();
+    }
+
+    /**
+     * @return int[]
+     */
+    protected function getStoreIds(): array
+    {
+        $storeTransfer = $this->storeFacade->getCurrentStore();
+        $storeIds = [$storeTransfer->getIdStore()];
+
+        foreach ($storeTransfer->getStoresWithSharedPersistence() as $storeName) {
+            $storeTransfer = $this->storeFacade->getStoreByName($storeName);
+            $storeIds[] = $storeTransfer->getIdStore();
+        }
+
+        return $storeIds;
     }
 }
