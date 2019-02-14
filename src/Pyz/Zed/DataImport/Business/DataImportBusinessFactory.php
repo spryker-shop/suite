@@ -80,7 +80,6 @@ use Pyz\Zed\DataImport\Business\Model\ProductSearchAttribute\ProductSearchAttrib
 use Pyz\Zed\DataImport\Business\Model\ProductSearchAttributeMap\ProductSearchAttributeMapWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductSet\ProductSetImageExtractorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductSet\ProductSetWriterStep;
-use Pyz\Zed\DataImport\Business\Model\ProductStock\Hook\ProductStockAfterImportPublishHook;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\ProductStockHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockBulkPdoDataSetWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockPropelDataSetWriter;
@@ -373,7 +372,8 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         return new ProductStockPropelDataSetWriter(
             $this->getAvailabilityFacade(),
             $this->getProductBundleFacade(),
-            $this->createProductRepository()
+            $this->createProductRepository(),
+            $this->getStoreFacade()
         );
     }
 
@@ -726,8 +726,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         $dataSetStepBroker
             ->addStep(new ProductStockHydratorStep());
         $dataImporter->addDataSetStepBroker($dataSetStepBroker)
-            ->addAfterImportHook($this->createProductStockAfterImportPublishHook());
-        $dataImporter->setDataSetWriter($this->createProductStockDataImportWriters());
+            ->setDataSetWriter($this->createProductStockDataImportWriters());
 
         return $dataImporter;
     }
@@ -766,14 +765,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         return [
             new ProductStockPropelWriterPlugin(),
         ];
-    }
-
-    /**
-     * @return \Pyz\Zed\DataImport\Business\Model\ProductStock\Hook\ProductStockAfterImportPublishHook
-     */
-    protected function createProductStockAfterImportPublishHook()
-    {
-        return new ProductStockAfterImportPublishHook();
     }
 
     /**
