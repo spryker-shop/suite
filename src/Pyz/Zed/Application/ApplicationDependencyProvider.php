@@ -14,10 +14,7 @@ use Silex\Provider\TwigServiceProvider;
 use Spryker\Service\UtilDateTime\ServiceProvider\DateTimeFormatterServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\FormFactoryServiceProvider;
 use Spryker\Shared\Config\Environment;
-use Spryker\Shared\ErrorHandler\Plugin\ServiceProvider\WhoopsErrorHandlerServiceProvider;
 use Spryker\Zed\Acl\Communication\Plugin\Bootstrap\AclBootstrapProvider;
-use Spryker\Zed\Api\Communication\Plugin\ApiServiceProviderPlugin;
-use Spryker\Zed\Api\Communication\Plugin\ServiceProvider\ApiRoutingServiceProvider;
 use Spryker\Zed\Application\ApplicationDependencyProvider as SprykerApplicationDependencyProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\AssertUrlConfigurationServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\EnvironmentInformationServiceProvider;
@@ -97,32 +94,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
         }
 
         $providers = array_merge($providers, $coreProviders);
-
-        return $providers;
-    }
-
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Silex\ServiceProviderInterface[]
-     */
-    protected function getApiServiceProviders(Container $container)
-    {
-        $providers = [
-            // Add Auth service providers
-            new RequestServiceProvider(),
-            new SslServiceProvider(),
-            new ServiceControllerServiceProvider(),
-            new RoutingServiceProvider(),
-            new ApiServiceProviderPlugin(),
-            new ApiRoutingServiceProvider(),
-            new PropelServiceProvider(),
-            new EventBehaviorServiceProvider(),
-        ];
-
-        if (Environment::isDevelopment()) {
-            $providers[] = new WhoopsErrorHandlerServiceProvider();
-        }
 
         return $providers;
     }
