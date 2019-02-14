@@ -15,13 +15,13 @@ use Spryker\Client\CustomerAccessPermission\Plugin\SeePricePermissionPlugin;
 use Spryker\Client\CustomerAccessPermission\Plugin\SeeShoppingListPermissionPlugin;
 use Spryker\Client\CustomerAccessPermission\Plugin\SeeWishlistPermissionPlugin;
 use Spryker\Client\Permission\PermissionDependencyProvider as SprykerPermissionDependencyProvider;
-use Spryker\Client\QuoteApproval\Plugin\ApproveQuotePermissionPlugin;
-use Spryker\Client\QuoteApproval\Plugin\PlaceOrderPermissionPlugin;
+use Spryker\Client\QuoteApproval\Plugin\Permission\ApproveQuotePermissionPlugin;
+use Spryker\Client\QuoteApproval\Plugin\Permission\PlaceOrderPermissionPlugin;
+use Spryker\Client\QuoteApproval\Plugin\Permission\RequestQuoteApprovalPermissionPlugin;
 use Spryker\Client\SharedCart\Plugin\ReadSharedCartPermissionPlugin;
 use Spryker\Client\SharedCart\Plugin\WriteSharedCartPermissionPlugin;
 use Spryker\Client\ShoppingList\Plugin\ReadShoppingListPermissionPlugin;
 use Spryker\Client\ShoppingList\Plugin\WriteShoppingListPermissionPlugin;
-use Spryker\Shared\QuoteApproval\Plugin\RequestQuoteApprovalPermissionPlugin;
 
 class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
 {
