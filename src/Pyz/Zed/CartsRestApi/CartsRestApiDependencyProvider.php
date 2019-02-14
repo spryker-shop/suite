@@ -8,10 +8,10 @@
 namespace Pyz\Zed\CartsRestApi;
 
 use Spryker\Zed\CartsRestApi\CartsRestApiDependencyProvider as SprykerCartsRestApiDependencyProvider;
-use Spryker\Zed\MultiCartsRestApi\Communication\Plugin\CartsRestApi\QuoteCollectionReader\MultipleQuoteCollectionReaderPlugin;
-use Spryker\Zed\MultiCartsRestApi\Communication\Plugin\CartsRestApi\QuoteCreator\MultipleQuoteCreatorPlugin;
 use Spryker\Zed\CartsRestApiExtension\Dependency\Plugin\QuoteCollectionReaderPluginInterface;
 use Spryker\Zed\CartsRestApiExtension\Dependency\Plugin\QuoteCreatorPluginInterface;
+use Spryker\Zed\MultiCartsRestApi\Communication\Plugin\CartsRestApi\QuoteCollectionReader\MultipleQuoteCollectionReaderPlugin;
+use Spryker\Zed\MultiCartsRestApi\Communication\Plugin\CartsRestApi\QuoteCreator\MultipleQuoteCreatorPlugin;
 
 class CartsRestApiDependencyProvider extends SprykerCartsRestApiDependencyProvider
 {
