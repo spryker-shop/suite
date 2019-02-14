@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "c7ee4683c772a1273283e4d3bacfc795",
@@ -1930,7 +1930,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -18733,16 +18733,16 @@
         },
         {
             "name": "spryker/price-product-storage",
-            "version": "2.11.0",
+            "version": "2.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/price-product-storage.git",
-                "reference": "384f606790a9282f7a19253a9c4a56375c226ec2"
+                "reference": "e962bd748e801bb5a74398fcde70982c0b7f20c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/price-product-storage/zipball/384f606790a9282f7a19253a9c4a56375c226ec2",
-                "reference": "384f606790a9282f7a19253a9c4a56375c226ec2",
+                "url": "https://api.github.com/repos/spryker/price-product-storage/zipball/e962bd748e801bb5a74398fcde70982c0b7f20c0",
+                "reference": "e962bd748e801bb5a74398fcde70982c0b7f20c0",
                 "shasum": ""
             },
             "require": {
@@ -18753,6 +18753,7 @@
                 "spryker/price-product-storage-extension": "^1.0.0",
                 "spryker/product": "^5.5.0 || ^6.0.0",
                 "spryker/propel-orm": "^1.5.0",
+                "spryker/quick-order-extension": "^1.1.0",
                 "spryker/storage": "^3.4.0",
                 "spryker/store": "^1.7.0",
                 "spryker/synchronization": "^0.2.0 || ^1.0.0",
@@ -18785,7 +18786,7 @@
                 "proprietary"
             ],
             "description": "PriceProductStorage module",
-            "time": "2019-01-17T19:49:29+00:00"
+            "time": "2019-02-13T15:04:31+00:00"
         },
         {
             "name": "spryker/price-product-storage-extension",
@@ -20358,16 +20359,16 @@
         },
         {
             "name": "spryker/product-discontinued-storage",
-            "version": "1.4.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-discontinued-storage.git",
-                "reference": "c1a50c331b0b57f4b8cc4b90f66b2b515d6ab6bc"
+                "reference": "e83880df445116132f4e2034e351c1fb3a1ab4d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-discontinued-storage/zipball/c1a50c331b0b57f4b8cc4b90f66b2b515d6ab6bc",
-                "reference": "c1a50c331b0b57f4b8cc4b90f66b2b515d6ab6bc",
+                "url": "https://api.github.com/repos/spryker/product-discontinued-storage/zipball/e83880df445116132f4e2034e351c1fb3a1ab4d1",
+                "reference": "e83880df445116132f4e2034e351c1fb3a1ab4d1",
                 "shasum": ""
             },
             "require": {
@@ -20378,6 +20379,7 @@
                 "spryker/locale": "^3.0.0",
                 "spryker/product-alternative-storage-extension": "^1.0.0",
                 "spryker/product-discontinued": "^1.0.0",
+                "spryker/quick-order-extension": "^1.1.0",
                 "spryker/storage": "^3.4.0",
                 "spryker/synchronization": "^1.0.0",
                 "spryker/synchronization-extension": "^1.0.0"
@@ -20412,7 +20414,7 @@
                 "proprietary"
             ],
             "description": "ProductDiscontinuedStorage module",
-            "time": "2019-01-14T20:51:51+00:00"
+            "time": "2019-02-13T15:04:31+00:00"
         },
         {
             "name": "spryker/product-discount-connector",
@@ -22424,16 +22426,16 @@
         },
         {
             "name": "spryker/product-quantity-storage",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-quantity-storage.git",
-                "reference": "8de7fa656baa5f914cfb1eac67e976b05b8c92f9"
+                "reference": "d4726d53d9d1d4928a54452ab7ab1676ece08651"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-quantity-storage/zipball/8de7fa656baa5f914cfb1eac67e976b05b8c92f9",
-                "reference": "8de7fa656baa5f914cfb1eac67e976b05b8c92f9",
+                "url": "https://api.github.com/repos/spryker/product-quantity-storage/zipball/d4726d53d9d1d4928a54452ab7ab1676ece08651",
+                "reference": "d4726d53d9d1d4928a54452ab7ab1676ece08651",
                 "shasum": ""
             },
             "require": {
@@ -22441,6 +22443,7 @@
                 "spryker/event-behavior": "^1.1.0",
                 "spryker/kernel": "^3.21.0",
                 "spryker/product-quantity": "^1.0.1",
+                "spryker/quick-order-extension": "^1.1.0",
                 "spryker/storage": "^3.0.0",
                 "spryker/synchronization": "^0.2.0 || ^1.0.0",
                 "spryker/synchronization-extension": "^1.0.0"
@@ -22474,7 +22477,7 @@
                 "proprietary"
             ],
             "description": "ProductQuantityStorage module",
-            "time": "2018-12-19T13:35:39+00:00"
+            "time": "2019-02-13T16:21:53+00:00"
         },
         {
             "name": "spryker/product-relation",
@@ -23995,23 +23998,24 @@
         },
         {
             "name": "spryker/quick-order",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/quick-order.git",
-                "reference": "dbd9a0a4b6318de95701e7fc1673524a7a7c1aa8"
+                "reference": "4662205a2a1de10aab3ec027b55b6a2930bf78f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/quick-order/zipball/dbd9a0a4b6318de95701e7fc1673524a7a7c1aa8",
-                "reference": "dbd9a0a4b6318de95701e7fc1673524a7a7c1aa8",
+                "url": "https://api.github.com/repos/spryker/quick-order/zipball/4662205a2a1de10aab3ec027b55b6a2930bf78f7",
+                "reference": "4662205a2a1de10aab3ec027b55b6a2930bf78f7",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/kernel": "^3.0.0",
+                "spryker/locale": "^3.0.0",
                 "spryker/product-storage": "^1.6.0",
-                "spryker/quick-order-extension": "^1.0.0"
+                "spryker/quick-order-extension": "^1.1.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -24033,20 +24037,20 @@
                 "proprietary"
             ],
             "description": "QuickOrder module",
-            "time": "2019-01-30T19:34:21+00:00"
+            "time": "2019-02-13T16:54:09+00:00"
         },
         {
             "name": "spryker/quick-order-extension",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/quick-order-extension.git",
-                "reference": "697ae64ed1d4d4f375f60a0868d079c0655d5958"
+                "reference": "35561349b25bf3e838658d64dd977a043d282b87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/quick-order-extension/zipball/697ae64ed1d4d4f375f60a0868d079c0655d5958",
-                "reference": "697ae64ed1d4d4f375f60a0868d079c0655d5958",
+                "url": "https://api.github.com/repos/spryker/quick-order-extension/zipball/35561349b25bf3e838658d64dd977a043d282b87",
+                "reference": "35561349b25bf3e838658d64dd977a043d282b87",
                 "shasum": ""
             },
             "require": {
@@ -24072,7 +24076,7 @@
                 "proprietary"
             ],
             "description": "QuickOrderExtension module",
-            "time": "2018-12-18T15:41:13+00:00"
+            "time": "2019-02-11T16:04:12+00:00"
         },
         {
             "name": "spryker/quote",
@@ -29256,7 +29260,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "BackEndTea@gmail.com"
+                    "email": "backendtea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
