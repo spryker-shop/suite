@@ -38,7 +38,7 @@ class MailDependencyProvider extends SprykerMailDependencyProvider
     {
         $container = parent::provideBusinessLayerDependencies($container);
 
-        $container->extend(self::MAIL_TYPE_COLLECTION, function (MailTypeCollectionAddInterface $mailCollection) {
+        $container->extend(static::MAIL_TYPE_COLLECTION, function (MailTypeCollectionAddInterface $mailCollection) {
             $mailCollection
                 ->add(new CustomerRegistrationMailTypePlugin())
                 ->add(new CustomerRestorePasswordMailTypePlugin())

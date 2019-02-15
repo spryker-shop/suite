@@ -8,6 +8,7 @@
 namespace Pyz\Zed\Auth;
 
 use Spryker\Zed\Auth\AuthDependencyProvider as SprykerAuthDependencyProvider;
+use Spryker\Zed\Auth\Dependency\Plugin\AuthPasswordResetSenderInterface;
 use Spryker\Zed\AuthMailConnector\Communication\Plugin\AuthPasswordResetMailSenderPlugin;
 use Spryker\Zed\Kernel\Container;
 
@@ -21,7 +22,7 @@ class AuthDependencyProvider extends SprykerAuthDependencyProvider
      *
      * @return \Spryker\Zed\Auth\Dependency\Plugin\AuthPasswordResetSenderInterface|null
      */
-    protected function getPasswordResetNotificationSender(Container $container)
+    protected function getPasswordResetNotificationSender(Container $container): ?AuthPasswordResetSenderInterface
     {
         return new AuthPasswordResetMailSenderPlugin();
     }
