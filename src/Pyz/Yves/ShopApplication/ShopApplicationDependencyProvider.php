@@ -16,7 +16,7 @@ use SprykerShop\Yves\CartNoteWidget\Widget\CartNoteFormWidget;
 use SprykerShop\Yves\CartToShoppingListWidget\Widget\CreateShoppingListFromCartWidget;
 use SprykerShop\Yves\CategoryImageStorageWidget\Widget\CategoryImageStorageWidget;
 use SprykerShop\Yves\CheckoutWidget\Widget\CheckoutBreadcrumbWidget;
-use SprykerShop\Yves\CheckoutWidget\Widget\ProcceedToCheckoutButtonWidget;
+use SprykerShop\Yves\CheckoutWidget\Widget\ProceedToCheckoutButtonWidget;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CheckBusinessOnBehalfCompanyUserHandlerPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyBusinessUnitControllerRestrictionPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyUserRestrictionHandlerPlugin;
@@ -170,7 +170,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             FullTextSearchTabsWidget::class,
             QuoteApprovalStatusWidget::class,
             QuoteApproveRequestWidget::class,
-            ProcceedToCheckoutButtonWidget::class,
+            ProceedToCheckoutButtonWidget::class,
             QuoteApprovalWidget::class,
             ProductConcreteSearchWidget::class,
             AddItemsToShoppingListWidget::class,
