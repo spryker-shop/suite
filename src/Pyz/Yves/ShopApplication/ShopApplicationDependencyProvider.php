@@ -8,6 +8,7 @@
 namespace Pyz\Yves\ShopApplication;
 
 use Pyz\Yves\ExampleProductColorGroupWidget\Widget\ExampleProductColorSelectorWidget;
+use SprykerShop\Yves\AgentQuoteRequestWidget\Widget\AgentQuoteRequestOverviewWidget;
 use SprykerShop\Yves\AgentWidget\Widget\AgentControlBarWidget;
 use SprykerShop\Yves\BusinessOnBehalfWidget\Widget\BusinessOnBehalfStatusWidget;
 use SprykerShop\Yves\CartNoteWidget\Widget\CartItemNoteFormWidget;
@@ -168,6 +169,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             AddItemsToShoppingListWidget::class,
             CategoryImageStorageWidget::class,
             CreateQuoteRequestWidget::class,
+            AgentQuoteRequestOverviewWidget::class,
         ];
     }
 
