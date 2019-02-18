@@ -244,7 +244,7 @@ SELECT updated.id_price_product_store FROM updated UNION ALL SELECT inserted.id_
             records.id_price_product_store
           FROM records
           WHERE price_product_default_id IS NULL
-        )
+        ) ON CONFLICT DO NOTHING
   )
 SELECT 1;";
 
