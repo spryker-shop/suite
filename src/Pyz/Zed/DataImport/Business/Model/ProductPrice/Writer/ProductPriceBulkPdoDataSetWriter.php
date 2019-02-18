@@ -650,17 +650,19 @@ class ProductPriceBulkPdoDataSetWriter implements DataSetWriterInterface
      */
     protected function flushPriceProductAbstract(): void
     {
-        $this->persistProductAbstractPriceTypeCollection();
-        $this->prepareProductAbstractPriceTypeIdsCollection();
-        $this->prepareProductAbstractStoreIdsCollection();
-        $this->prepareProductAbstractCurrencyIdsCollection();
-        $this->prepareProductAbstractIdsCollection();
-        $this->persistPriceProductAbstractEntities();
-        $this->addPriceProductAbstractEvents();
-        $this->persistPriceProductAbstractStoreEntities();
-        $this->persistPriceProductAbstractDefault();
+        if (static::$priceProductAbstractCollection) {
+            $this->persistProductAbstractPriceTypeCollection();
+            $this->prepareProductAbstractPriceTypeIdsCollection();
+            $this->prepareProductAbstractStoreIdsCollection();
+            $this->prepareProductAbstractCurrencyIdsCollection();
+            $this->prepareProductAbstractIdsCollection();
+            $this->persistPriceProductAbstractEntities();
+            $this->addPriceProductAbstractEvents();
+            $this->persistPriceProductAbstractStoreEntities();
+            $this->persistPriceProductAbstractDefault();
 
-        $this->flushMemory();
+            $this->flushMemory();
+        }
     }
 
     /**
@@ -668,17 +670,19 @@ class ProductPriceBulkPdoDataSetWriter implements DataSetWriterInterface
      */
     protected function flushPriceProductConcrete(): void
     {
-        $this->persistProductConcretePriceTypeCollection();
-        $this->prepareProductConcretePriceTypeIdsCollection();
-        $this->prepareProductConcreteStoreIdsCollection();
-        $this->prepareProductConcreteCurrencyIdsCollection();
-        $this->prepareProductConcreteIdsCollection();
-        $this->persistPriceProductConcreteEntities();
-        $this->addPriceProductConcreteEvents();
-        $this->persistPriceProductConcreteStoreEntities();
-        $this->persistPriceProductConcreteDefault();
+        if (static::$priceProductConcreteCollection) {
+            $this->persistProductConcretePriceTypeCollection();
+            $this->prepareProductConcretePriceTypeIdsCollection();
+            $this->prepareProductConcreteStoreIdsCollection();
+            $this->prepareProductConcreteCurrencyIdsCollection();
+            $this->prepareProductConcreteIdsCollection();
+            $this->persistPriceProductConcreteEntities();
+            $this->addPriceProductConcreteEvents();
+            $this->persistPriceProductConcreteStoreEntities();
+            $this->persistPriceProductConcreteDefault();
 
-        $this->flushMemory();
+            $this->flushMemory();
+        }
     }
 
     /**
