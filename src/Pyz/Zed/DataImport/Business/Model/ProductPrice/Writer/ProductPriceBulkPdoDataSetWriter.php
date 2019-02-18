@@ -7,12 +7,12 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer;
 
-use Propel\Runtime\Propel;
+use Orm\Zed\Product\Persistence\Map\SpyProductAbstractTableMap;
+use Orm\Zed\Product\Persistence\Map\SpyProductTableMap;
 use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface;
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\ProductPriceHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\Sql\ProductPriceSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
-use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
@@ -21,6 +21,46 @@ use Spryker\Zed\Product\Dependency\ProductEvents;
 
 class ProductPriceBulkPdoDataSetWriter implements DataSetWriterInterface
 {
+    /**
+     * @var array
+     */
+    protected static $priceProductAbstractCollection = [];
+
+    /**
+     * @var array
+     */
+    protected static $priceProductConcreteCollection = [];
+
+    /**
+     * @var int[]
+     */
+    protected static $productCurrencyIdsCollection = [];
+
+    /**
+     * @var int[]
+     */
+    protected static $productStoreIdsCollection = [];
+
+    /**
+     * @var int[]
+     */
+    protected static $productPriceTypeIdsCollection = [];
+
+    /**
+     * @var int[]
+     */
+    protected static $productIds = [];
+
+    /**
+     * @var int[]
+     */
+    protected static $priceProductStoreIds = [];
+
+    /**
+     * @var int[]
+     */
+    protected static $priceProductIds = [];
+
     /**
      * @var \Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\Sql\ProductPriceSqlInterface
      */
@@ -37,42 +77,19 @@ class ProductPriceBulkPdoDataSetWriter implements DataSetWriterInterface
     protected $dataFormatter;
 
     /**
-     * @var \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface
-     */
-    protected $utilEncodingService;
-
-    /**
      * @param \Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\Sql\ProductPriceSqlInterface $productPriceSql
      * @param \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface $propelExecutor
      * @param \Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface $dataFormatter
-     * @param \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface $utilEncodingService
      */
     public function __construct(
         ProductPriceSqlInterface $productPriceSql,
         PropelExecutorInterface $propelExecutor,
-        DataImportDataFormatterInterface $dataFormatter,
-        UtilEncodingServiceInterface $utilEncodingService
+        DataImportDataFormatterInterface $dataFormatter
     ) {
         $this->productPriceSql = $productPriceSql;
         $this->propelExecutor = $propelExecutor;
         $this->dataFormatter = $dataFormatter;
-        $this->utilEncodingService = $utilEncodingService;
     }
-
-    /**
-     * @var array
-     */
-    protected static $priceTypeCollection = [];
-
-    /**
-     * @var array
-     */
-    protected static $productAbstractPriceCollection = [];
-
-    /**
-     * @var array
-     */
-    protected static $productConcretePriceCollection = [];
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
@@ -81,24 +98,13 @@ class ProductPriceBulkPdoDataSetWriter implements DataSetWriterInterface
      */
     public function write(DataSetInterface $dataSet): void
     {
-        $this->collectProductPriceTypeCollection($dataSet);
         $this->collectProductPriceCollection($dataSet);
 
-        if (count(static::$productAbstractPriceCollection) >= ProductPriceHydratorStep::BULK_SIZE ||
-            count(static::$productConcretePriceCollection) >= ProductPriceHydratorStep::BULK_SIZE
+        if (count(static::$priceProductAbstractCollection) >= ProductPriceHydratorStep::BULK_SIZE ||
+            count(static::$priceProductConcreteCollection) >= ProductPriceHydratorStep::BULK_SIZE
         ) {
             $this->flush();
         }
-    }
-
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
-    protected function collectProductPriceTypeCollection(DataSetInterface $dataSet): void
-    {
-        static::$priceTypeCollection[] = $dataSet[ProductPriceHydratorStep::PRICE_TYPE_TRANSFER]->modifiedToArray();
     }
 
     /**
@@ -111,28 +117,37 @@ class ProductPriceBulkPdoDataSetWriter implements DataSetWriterInterface
         $productPriceItem = $dataSet[ProductPriceHydratorStep::PRICE_PRODUCT_TRANSFER]->modifiedToArray();
 
         if (array_key_exists(ProductPriceHydratorStep::KEY_SPY_PRODUCT_ABSTRACT, $productPriceItem)) {
-            static::$productAbstractPriceCollection[] = $productPriceItem;
+            static::$priceProductAbstractCollection[] = array_merge(
+                $productPriceItem[ProductPriceHydratorStep::KEY_PRICE_TYPE],
+                $productPriceItem[ProductPriceHydratorStep::KEY_SPY_PRODUCT_ABSTRACT],
+                $productPriceItem[ProductPriceHydratorStep::KEY_PRICE_PRODUCT_STORES][0]
+            );
         } else {
-            static::$productConcretePriceCollection[] = $productPriceItem;
+            static::$priceProductConcreteCollection[] = array_merge(
+                $productPriceItem[ProductPriceHydratorStep::KEY_PRICE_TYPE],
+                $productPriceItem[ProductPriceHydratorStep::KEY_PRODUCT],
+                $productPriceItem[ProductPriceHydratorStep::KEY_PRICE_PRODUCT_STORES][0]
+            );
         }
     }
 
     /**
      * @return void
      */
-    protected function persistPriceTypeEntities(): void
+    protected function persistProductAbstractPriceTypeCollection(): void
     {
-        $priceTypeName = $this->dataFormatter->formatPostgresArrayString(
-            $this->dataFormatter->getCollectionDataByKey(static::$priceTypeCollection, ProductPriceHydratorStep::KEY_PRICE_TYPE_NAME)
-        );
-        $priceModeConfiguration = $this->dataFormatter->formatPostgresArrayString(
-            [ProductPriceHydratorStep::KEY_DEFAULT_PRICE_MODE_CONFIGURATION]
-        );
+        $priceTypeCollection = $this->dataFormatter->getCollectionDataByKey(static::$priceProductAbstractCollection, ProductPriceHydratorStep::KEY_PRICE_TYPE_NAME);
+        $priceTypeModeCollection = $this->dataFormatter->getCollectionDataByKey(static::$priceProductAbstractCollection, ProductPriceHydratorStep::KEY_PRICE_MODE_CONFIGURATION);
+        $priceType = $this->dataFormatter->formatPostgresArrayString($priceTypeCollection);
+        $priceMode = $this->dataFormatter->formatPostgresArrayString($priceTypeModeCollection);
+        $orderKey = $this->dataFormatter->formatPostgresArrayString(array_keys($priceTypeCollection));
 
         $sql = $this->productPriceSql->createPriceTypeSQL();
+
         $parameters = [
-            $priceTypeName,
-            $priceModeConfiguration,
+            $priceType,
+            $priceMode,
+            $orderKey,
         ];
 
         $this->propelExecutor->execute($sql, $parameters);
@@ -141,250 +156,482 @@ class ProductPriceBulkPdoDataSetWriter implements DataSetWriterInterface
     /**
      * @return void
      */
-    protected function persistProductAbstractEntities(): void
+    protected function persistProductConcretePriceTypeCollection(): void
     {
-        if (!empty(static::$productAbstractPriceCollection)) {
-            $productsCollection = $this->dataFormatter->getCollectionDataByKey(
-                static::$productAbstractPriceCollection,
-                ProductPriceHydratorStep::KEY_SPY_PRODUCT_ABSTRACT
-            );
-            $priceProductStoreCollection = array_column(
-                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractPriceCollection, ProductPriceHydratorStep::KEY_PRICE_PRODUCT_STORES),
-                '0'
-            );
-            $currencyCollection = $this->dataFormatter->getCollectionDataByKey($priceProductStoreCollection, ProductPriceHydratorStep::KEY_CURRENCY);
-            $storeCollection = $this->dataFormatter->getCollectionDataByKey($priceProductStoreCollection, ProductPriceHydratorStep::KEY_STORE);
-            $priceTypesCollection = $this->dataFormatter->getCollectionDataByKey(
-                static::$productAbstractPriceCollection,
-                ProductPriceHydratorStep::KEY_PRICE_TYPE
-            );
+        $priceTypeCollection = $this->dataFormatter->getCollectionDataByKey(static::$priceProductConcreteCollection, ProductPriceHydratorStep::KEY_PRICE_TYPE_NAME);
+        $priceTypeModeCollection = $this->dataFormatter->getCollectionDataByKey(static::$priceProductConcreteCollection, ProductPriceHydratorStep::KEY_PRICE_MODE_CONFIGURATION);
+        $priceType = $this->dataFormatter->formatPostgresArrayString($priceTypeCollection);
+        $priceMode = $this->dataFormatter->formatPostgresArrayString($priceTypeModeCollection);
+        $orderKey = $this->dataFormatter->formatPostgresArrayString(array_keys($priceTypeCollection));
 
-            $sku = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey($productsCollection, ProductPriceHydratorStep::KEY_SKU)
-            );
-            $priceTypeName = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey($priceTypesCollection, ProductPriceHydratorStep::KEY_PRICE_TYPE_NAME)
-            );
-            $grossPrice = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey($priceProductStoreCollection, ProductPriceHydratorStep::KEY_PRICE_GROSS_DB)
-            );
-            $netPrice = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey($priceProductStoreCollection, ProductPriceHydratorStep::KEY_PRICE_NET_DB)
-            );
-            $currencyName = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey($currencyCollection, ProductPriceHydratorStep::KEY_CURRENCY_NAME)
-            );
-            $storeName = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey($storeCollection, ProductPriceHydratorStep::KEY_STORE_NAME)
-            );
-            $priceData = $this->preparePriceDataString($this->dataFormatter->getCollectionDataByKey(
-                $priceProductStoreCollection,
-                ProductPriceHydratorStep::KEY_PRICE_DATA
-            ));
-            $checksum = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey(
-                    $priceProductStoreCollection,
-                    ProductPriceHydratorStep::KEY_PRICE_DATA_CHECKSUM
-                )
-            );
+        $sql = $this->productPriceSql->createPriceTypeSQL();
+        $parameters = [
+            $priceType,
+            $priceMode,
+            $orderKey,
+        ];
 
-            $priceProductAbstractProductParameters = [$sku, $priceTypeName];
-            $result = $this->persistPriceProductAbstractProductEntities($priceProductAbstractProductParameters);
-
-            foreach ($result as $columns) {
-                DataImporterPublisher::addEvent(PriceProductEvents::PRICE_ABSTRACT_PUBLISH, $columns[ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT]);
-                DataImporterPublisher::addEvent(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $columns[ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT]);
-            }
-            $priceProductAbstractProductParameters = [
-                $grossPrice,
-                $netPrice,
-                $currencyName,
-                $storeName,
-                $sku,
-                $priceTypeName,
-                $priceData,
-                $checksum,
-            ];
-            $this->persistPriceProductStoreProductAbstractEntities($priceProductAbstractProductParameters);
-        }
-    }
-
-    /**
-     * @param array $priceProductAbstractProductParameters
-     *
-     * @return array
-     */
-    protected function persistPriceProductAbstractProductEntities(array $priceProductAbstractProductParameters): array
-    {
-        $sql = $this->productPriceSql->createProductPriceSQL(
-            ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT,
-            ProductPriceHydratorStep::KEY_SPY_PRODUCT_ABSTRACT,
-            ProductPriceHydratorStep::KEY_FK_PRODUCT_ABSTRACT
-        );
-
-        return $this->propelExecutor->execute($sql, $priceProductAbstractProductParameters);
-    }
-
-    /**
-     * @param array $priceProductAbstractProductParameters
-     *
-     * @return void
-     */
-    protected function persistPriceProductStoreProductAbstractEntities(array $priceProductAbstractProductParameters): void
-    {
-        $sql = $this->productPriceSql->createPriceProductStoreSql(
-            ProductPriceHydratorStep::KEY_SPY_PRODUCT_ABSTRACT,
-            ProductPriceHydratorStep::KEY_FK_PRODUCT_ABSTRACT,
-            ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT
-        );
-
-        $this->persistPriceProductStore($sql, $priceProductAbstractProductParameters);
-    }
-
-    /**
-     * @return void
-     */
-    protected function persistProductConcreteEntities(): void
-    {
-        if (!empty(static::$productConcretePriceCollection)) {
-            $productCollection = $this->dataFormatter->getCollectionDataByKey(static::$productConcretePriceCollection, ProductPriceHydratorStep::KEY_PRODUCT);
-            $priceProductStoreCollection = array_column(
-                $this->dataFormatter->getCollectionDataByKey(static::$productConcretePriceCollection, ProductPriceHydratorStep::KEY_PRICE_PRODUCT_STORES),
-                '0'
-            );
-            $priceTypeCollection = $this->dataFormatter->getCollectionDataByKey(static::$productConcretePriceCollection, ProductPriceHydratorStep::KEY_PRICE_TYPE);
-            $currencyCollection = $this->dataFormatter->getCollectionDataByKey($priceProductStoreCollection, ProductPriceHydratorStep::KEY_CURRENCY);
-            $storeCollection = $this->dataFormatter->getCollectionDataByKey($priceProductStoreCollection, ProductPriceHydratorStep::KEY_STORE);
-
-            $sku = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey($productCollection, ProductPriceHydratorStep::KEY_SKU)
-            );
-            $priceTypeName = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey($priceTypeCollection, ProductPriceHydratorStep::KEY_PRICE_TYPE_NAME)
-            );
-            $grossPrice = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey($priceProductStoreCollection, ProductPriceHydratorStep::KEY_PRICE_GROSS_DB)
-            );
-            $netPrice = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey($priceProductStoreCollection, ProductPriceHydratorStep::KEY_PRICE_NET_DB)
-            );
-            $currencyName = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey($currencyCollection, ProductPriceHydratorStep::KEY_CURRENCY_NAME)
-            );
-            $storeName = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey($storeCollection, ProductPriceHydratorStep::KEY_STORE_NAME)
-            );
-            $priceData = $this->preparePriceDataString($this->dataFormatter->getCollectionDataByKey(
-                $priceProductStoreCollection,
-                ProductPriceHydratorStep::KEY_PRICE_DATA
-            ));
-            $checksum = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey(
-                    $priceProductStoreCollection,
-                    ProductPriceHydratorStep::KEY_PRICE_DATA_CHECKSUM
-                )
-            );
-
-            $priceProductConcreteParameters = [$sku, $priceTypeName];
-            $result = $this->persistPriceProductConcreteProductEntities($priceProductConcreteParameters);
-
-            foreach ($result as $columns) {
-                DataImporterPublisher::addEvent(PriceProductEvents::PRICE_CONCRETE_PUBLISH, $columns[ProductPriceHydratorStep::KEY_ID_PRODUCT]);
-            }
-
-            $priceProductConcreteProductParameters = [
-                $grossPrice,
-                $netPrice,
-                $currencyName,
-                $storeName,
-                $sku,
-                $priceTypeName,
-                $priceData,
-                $checksum,
-            ];
-            $this->persistPriceProductStoreProductConcreteEntities($priceProductConcreteProductParameters);
-        }
-    }
-
-    /**
-     * @param array $priceData
-     *
-     * @return string
-     */
-    protected function preparePriceDataString(array $priceData): string
-    {
-        $priceData = array_map(function ($price) {
-            return $price ?: null;
-        }, $priceData);
-
-        return pg_escape_string($this->utilEncodingService->encodeJson($priceData));
-    }
-
-    /**
-     * @param array $priceProductConcreteParameters
-     *
-     * @return array
-     */
-    protected function persistPriceProductConcreteProductEntities(array $priceProductConcreteParameters): array
-    {
-        $sql = $this->productPriceSql->createProductPriceSQL(
-            ProductPriceHydratorStep::KEY_ID_PRODUCT,
-            ProductPriceHydratorStep::KEY_SPY_PRODUCT,
-            ProductPriceHydratorStep::KEY_FK_PRODUCT
-        );
-
-        $con = Propel::getConnection();
-        $stmt = $con->prepare($sql);
-        $stmt->execute($priceProductConcreteParameters);
-
-        return $this->propelExecutor->execute($sql, $priceProductConcreteParameters);
-    }
-
-    /**
-     * @param array $priceProductConcreteProductParameters
-     *
-     * @return void
-     */
-    protected function persistPriceProductStoreProductConcreteEntities(array $priceProductConcreteProductParameters): void
-    {
-        $sql = $this->productPriceSql->createPriceProductStoreSql(
-            ProductPriceHydratorStep::KEY_SPY_PRODUCT_ABSTRACT,
-            ProductPriceHydratorStep::KEY_FK_PRODUCT_ABSTRACT,
-            ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT
-        );
-
-        $this->persistPriceProductStore($sql, $priceProductConcreteProductParameters);
-    }
-
-    /**
-     * @param string $sql
-     * @param array $parameters
-     *
-     * @return array
-     */
-    protected function persistProductPriceEntities(string $sql, array $parameters): array
-    {
-        return $this->propelExecutor->execute($sql, $parameters);
-    }
-
-    /**
-     * @param string $sql
-     * @param array $parameters
-     *
-     * @return void
-     */
-    protected function persistPriceProductStore(string $sql, array $parameters): void
-    {
         $this->propelExecutor->execute($sql, $parameters);
     }
 
     /**
      * @return void
      */
-    protected function persistPriceProductDefault(): void
+    protected function prepareProductAbstractPriceTypeIdsCollection(): void
     {
+        $priceTypeCollection = $this->dataFormatter->getCollectionDataByKey(static::$priceProductAbstractCollection, ProductPriceHydratorStep::KEY_PRICE_TYPE_NAME);
+        $priceType = $this->dataFormatter->formatPostgresArrayString($priceTypeCollection);
+        $orderKey = $this->dataFormatter->formatPostgresArrayString(array_keys($priceTypeCollection));
+
+        $sql = $this->productPriceSql->collectPriceTypes();
+
+        $parameters = [
+            $priceType,
+            $orderKey,
+        ];
+
+        $priceTypeIds = $this->propelExecutor->execute($sql, $parameters);
+
+        foreach ($priceTypeIds as $idPriceType) {
+            static::$productPriceTypeIdsCollection[] = $idPriceType;
+        }
+    }
+
+    /**
+     * @return void
+     */
+    protected function prepareProductConcretePriceTypeIdsCollection(): void
+    {
+        $priceTypeCollection = $this->dataFormatter->getCollectionDataByKey(static::$priceProductConcreteCollection, ProductPriceHydratorStep::KEY_PRICE_TYPE_NAME);
+        $priceType = $this->dataFormatter->formatPostgresArrayString($priceTypeCollection);
+        $orderKey = $this->dataFormatter->formatPostgresArrayString(array_keys($priceTypeCollection));
+
+        $sql = $this->productPriceSql->collectPriceTypes();
+
+        $parameters = [
+            $priceType,
+            $orderKey,
+        ];
+
+        $priceTypeIds = $this->propelExecutor->execute($sql, $parameters);
+
+        foreach ($priceTypeIds as $idPriceType) {
+            static::$productPriceTypeIdsCollection[] = $idPriceType;
+        }
+    }
+
+    /**
+     * @return void
+     */
+    protected function prepareProductAbstractStoreIdsCollection(): void
+    {
+        $storeCollection = $this->dataFormatter->getCollectionDataByKey(static::$priceProductAbstractCollection, ProductPriceHydratorStep::KEY_STORE);
+        $storeNameCollection = $this->dataFormatter->getCollectionDataByKey($storeCollection, ProductPriceHydratorStep::KEY_STORE_NAME);
+        $orderKey = $this->dataFormatter->formatPostgresArrayString(array_keys($storeNameCollection));
+        $store = $this->dataFormatter->formatPostgresArrayString($storeNameCollection);
+
+        $sql = $this->productPriceSql->convertStoreNameToId();
+
+        $parameters = [
+            $orderKey,
+            $store,
+        ];
+
+        $result = $this->propelExecutor->execute($sql, $parameters);
+
+        foreach ($result as $idStore) {
+            static::$productStoreIdsCollection[] = $idStore;
+        }
+    }
+
+    /**
+     * @return void
+     */
+    protected function prepareProductConcreteStoreIdsCollection(): void
+    {
+        $storeCollection = $this->dataFormatter->getCollectionDataByKey(static::$priceProductConcreteCollection, ProductPriceHydratorStep::KEY_STORE);
+        $storeNameCollection = $this->dataFormatter->getCollectionDataByKey($storeCollection, ProductPriceHydratorStep::KEY_STORE_NAME);
+        $orderKey = $this->dataFormatter->formatPostgresArrayString(array_keys($storeNameCollection));
+        $store = $this->dataFormatter->formatPostgresArrayString($storeNameCollection);
+
+        $sql = $this->productPriceSql->convertStoreNameToId();
+
+        $parameters = [
+            $orderKey,
+            $store,
+        ];
+
+        $result = $this->propelExecutor->execute($sql, $parameters);
+
+        foreach ($result as $idStore) {
+            static::$productStoreIdsCollection[] = $idStore;
+        }
+    }
+
+    /**
+     * @return void
+     */
+    protected function prepareProductAbstractCurrencyIdsCollection(): void
+    {
+        $currencyCollection = $this->dataFormatter->getCollectionDataByKey(static::$priceProductAbstractCollection, ProductPriceHydratorStep::KEY_CURRENCY);
+        $currencyNameCollection = $this->dataFormatter->getCollectionDataByKey($currencyCollection, ProductPriceHydratorStep::KEY_CURRENCY_NAME);
+        $orderKey = $this->dataFormatter->formatPostgresArrayString(array_keys($currencyNameCollection));
+        $currency = $this->dataFormatter->formatPostgresArrayString($currencyNameCollection);
+
+        $sql = $this->productPriceSql->convertCurrencyNameToId();
+
+        $parameters = [
+            $orderKey,
+            $currency,
+        ];
+
+        $result = $this->propelExecutor->execute($sql, $parameters);
+
+        foreach ($result as $idCurrency) {
+            static::$productCurrencyIdsCollection[] = $idCurrency;
+        }
+    }
+
+    /**
+     * @return void
+     */
+    protected function prepareProductConcreteCurrencyIdsCollection(): void
+    {
+        $currencyCollection = $this->dataFormatter->getCollectionDataByKey(static::$priceProductConcreteCollection, ProductPriceHydratorStep::KEY_CURRENCY);
+        $currencyNameCollection = $this->dataFormatter->getCollectionDataByKey($currencyCollection, ProductPriceHydratorStep::KEY_CURRENCY_NAME);
+        $orderKey = $this->dataFormatter->formatPostgresArrayString(array_keys($currencyNameCollection));
+        $currency = $this->dataFormatter->formatPostgresArrayString($currencyNameCollection);
+
+        $sql = $this->productPriceSql->convertCurrencyNameToId();
+
+        $parameters = [
+            $orderKey,
+            $currency,
+        ];
+
+        $result = $this->propelExecutor->execute($sql, $parameters);
+
+        foreach ($result as $idCurrency) {
+            static::$productCurrencyIdsCollection[] = $idCurrency;
+        }
+    }
+
+    /**
+     * @return void
+     */
+    protected function prepareProductAbstractIdsCollection(): void
+    {
+        $productAbstractSkuCollection = $this->dataFormatter->getCollectionDataByKey(static::$priceProductAbstractCollection, ProductPriceHydratorStep::KEY_SKU);
+        $productSku = $this->dataFormatter->formatPostgresArray($productAbstractSkuCollection);
+        $orderKey = $this->dataFormatter->formatPostgresArrayString(array_keys($productAbstractSkuCollection));
+
+        $sql = $this->productPriceSql->convertProductSkuToId(
+            SpyProductAbstractTableMap::TABLE_NAME,
+            ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT
+        );
+
+        $parameters = [
+            $orderKey,
+            $productSku,
+        ];
+
+        $result = $this->propelExecutor->execute($sql, $parameters);
+
+        foreach ($result as $idProductAbstract) {
+            static::$productIds[] = $idProductAbstract;
+        }
+    }
+
+    /**
+     * @return void
+     */
+    protected function prepareProductConcreteIdsCollection(): void
+    {
+        $productConcreteSkuCollection = $this->dataFormatter->getCollectionDataByKey(static::$priceProductConcreteCollection, ProductPriceHydratorStep::KEY_SKU);
+        $productSku = $this->dataFormatter->formatPostgresArray($productConcreteSkuCollection);
+        $orderKey = $this->dataFormatter->formatPostgresArrayString(array_keys($productConcreteSkuCollection));
+
+        $sql = $this->productPriceSql->convertProductSkuToId(
+            SpyProductTableMap::TABLE_NAME,
+            ProductPriceHydratorStep::KEY_ID_PRODUCT
+        );
+
+        $parameters = [
+            $orderKey,
+            $productSku,
+        ];
+
+        $result = $this->propelExecutor->execute($sql, $parameters);
+
+        foreach ($result as $idProduct) {
+            static::$productIds[] = $idProduct;
+        }
+    }
+
+    /**
+     * @return void
+     */
+    protected function persistPriceProductAbstractEntities(): void
+    {
+        if (empty(static::$productIds)) {
+            return;
+        }
+
+        $productCollection = $this->dataFormatter->getCollectionDataByKey(static::$productIds, ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT);
+        $product = $this->dataFormatter->formatPostgresArray($productCollection);
+        $priceType = $this->dataFormatter->formatPostgresArrayString(
+            $this->dataFormatter->getCollectionDataByKey(static::$productPriceTypeIdsCollection, ProductPriceHydratorStep::KEY_ID_PRICE_TYPE)
+        );
+
+        $priceProductAbstractParameters = [
+            $product,
+            $priceType,
+        ];
+
+        $sql = $this->productPriceSql->createPriceProductSQL(
+            ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT,
+            ProductPriceHydratorStep::KEY_SPY_PRODUCT_ABSTRACT,
+            ProductPriceHydratorStep::KEY_FK_PRODUCT_ABSTRACT
+        );
+
+        $this->propelExecutor->execute($sql, $priceProductAbstractParameters);
+    }
+
+    /**
+     * @return void
+     */
+    protected function persistPriceProductConcreteEntities(): void
+    {
+        if (empty(static::$productIds)) {
+            return;
+        }
+
+        $productCollection = $this->dataFormatter->getCollectionDataByKey(static::$productIds, ProductPriceHydratorStep::KEY_ID_PRODUCT);
+        $product = $this->dataFormatter->formatPostgresArray($productCollection);
+        $priceType = $this->dataFormatter->formatPostgresArrayString(
+            $this->dataFormatter->getCollectionDataByKey(static::$productPriceTypeIdsCollection, ProductPriceHydratorStep::KEY_ID_PRICE_TYPE)
+        );
+
+        $priceProductConcreteParameters = [
+            $product,
+            $priceType,
+        ];
+
+        $sql = $this->productPriceSql->createPriceProductSQL(
+            ProductPriceHydratorStep::KEY_ID_PRODUCT,
+            ProductPriceHydratorStep::KEY_SPY_PRODUCT,
+            ProductPriceHydratorStep::KEY_FK_PRODUCT
+        );
+
+        $this->propelExecutor->execute($sql, $priceProductConcreteParameters);
+    }
+
+    /**
+     * @return void
+     */
+    protected function addPriceProductAbstractEvents(): void
+    {
+        $productCollection = $this->dataFormatter->getCollectionDataByKey(static::$productIds, ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT);
+        $product = $this->dataFormatter->formatPostgresArray($productCollection);
+        $orderKey = $this->dataFormatter->formatPostgresArrayString(array_keys($productCollection));
+        $priceType = $this->dataFormatter->formatPostgresArrayString(
+            $this->dataFormatter->getCollectionDataByKey(static::$productPriceTypeIdsCollection, ProductPriceHydratorStep::KEY_ID_PRICE_TYPE)
+        );
+
+        $selectProductPriceSql = $this->productPriceSql->selectProductPriceSQL(
+            ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT,
+            ProductPriceHydratorStep::KEY_FK_PRODUCT_ABSTRACT
+        );
+
+        $priceProductAbstractProductParameters = [
+            $product,
+            $priceType,
+            $orderKey,
+        ];
+
+        $result = $this->propelExecutor->execute($selectProductPriceSql, $priceProductAbstractProductParameters);
+
+        foreach ($result as $columns) {
+            static::$priceProductIds[][ProductPriceHydratorStep::KEY_ID_PRICE_PRODUCT] = $columns[ProductPriceHydratorStep::KEY_ID_PRICE_PRODUCT];
+            DataImporterPublisher::addEvent(PriceProductEvents::PRICE_ABSTRACT_PUBLISH, $columns[ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT]);
+            DataImporterPublisher::addEvent(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $columns[ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT]);
+        }
+    }
+
+    /**
+     * @return void
+     */
+    protected function addPriceProductConcreteEvents(): void
+    {
+        $productCollection = $this->dataFormatter->getCollectionDataByKey(static::$productIds, ProductPriceHydratorStep::KEY_ID_PRODUCT);
+        $product = $this->dataFormatter->formatPostgresArray($productCollection);
+        $orderKey = $this->dataFormatter->formatPostgresArrayString(array_keys($productCollection));
+        $priceType = $this->dataFormatter->formatPostgresArrayString(
+            $this->dataFormatter->getCollectionDataByKey(static::$productPriceTypeIdsCollection, ProductPriceHydratorStep::KEY_ID_PRICE_TYPE)
+        );
+
+        $selectProductPriceSql = $this->productPriceSql->selectProductPriceSQL(
+            ProductPriceHydratorStep::KEY_ID_PRODUCT,
+            ProductPriceHydratorStep::KEY_FK_PRODUCT
+        );
+
+        $priceProductAbstractProductParameters = [
+            $product,
+            $priceType,
+            $orderKey,
+        ];
+
+        $result = $this->propelExecutor->execute($selectProductPriceSql, $priceProductAbstractProductParameters);
+
+        foreach ($result as $columns) {
+            static::$priceProductIds[][ProductPriceHydratorStep::KEY_ID_PRICE_PRODUCT] = $columns[ProductPriceHydratorStep::KEY_ID_PRICE_PRODUCT];
+            DataImporterPublisher::addEvent(PriceProductEvents::PRICE_CONCRETE_PUBLISH, $columns[ProductPriceHydratorStep::KEY_ID_PRODUCT]);
+        }
+    }
+
+    /**
+     * @return void
+     */
+    protected function persistPriceProductAbstractStoreEntities(): void
+    {
+        $productCollection = $this->dataFormatter->getCollectionDataByKey(static::$productIds, ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT);
+        $product = $this->dataFormatter->formatPostgresArray($productCollection);
+        $currency = $this->dataFormatter->formatPostgresArrayString(
+            $this->dataFormatter->getCollectionDataByKey(static::$productCurrencyIdsCollection, ProductPriceHydratorStep::KEY_ID_CURRENCY)
+        );
+        $store = $this->dataFormatter->formatPostgresArrayString(
+            $this->dataFormatter->getCollectionDataByKey(static::$productStoreIdsCollection, ProductPriceHydratorStep::KEY_ID_STORE)
+        );
+        $productPrice = $this->dataFormatter->formatPostgresArrayString(
+            $this->dataFormatter->getCollectionDataByKey(static::$priceProductIds, ProductPriceHydratorStep::KEY_ID_PRICE_PRODUCT)
+        );
+        $grossPrice = $this->dataFormatter->formatPostgresArrayString(
+            $this->dataFormatter->getCollectionDataByKey(static::$priceProductAbstractCollection, ProductPriceHydratorStep::KEY_PRICE_GROSS_DB)
+        );
+        $netPrice = $this->dataFormatter->formatPostgresArrayString(
+            $this->dataFormatter->getCollectionDataByKey(static::$priceProductAbstractCollection, ProductPriceHydratorStep::KEY_PRICE_NET_DB)
+        );
+        $priceData = $this->dataFormatter->formatPostgresPriceDataString(
+            $this->dataFormatter->getCollectionDataByKey(static::$priceProductAbstractCollection, ProductPriceHydratorStep::KEY_PRICE_DATA)
+        );
+        $checksum = $this->dataFormatter->formatPostgresArrayString(
+            $this->dataFormatter->getCollectionDataByKey(static::$priceProductAbstractCollection, ProductPriceHydratorStep::KEY_PRICE_DATA_CHECKSUM)
+        );
+
+        static::$priceProductAbstractCollection = [];
+
+        $priceProductAbstractStoreParameters = [
+            $store,
+            $currency,
+            $product,
+            $productPrice,
+            $grossPrice,
+            $netPrice,
+            $priceData,
+            $checksum,
+        ];
+
+        $sql = $this->productPriceSql->createPriceProductStoreSql(
+            ProductPriceHydratorStep::KEY_SPY_PRODUCT_ABSTRACT,
+            ProductPriceHydratorStep::KEY_FK_PRODUCT_ABSTRACT,
+            ProductPriceHydratorStep::KEY_ID_PRODUCT_ABSTRACT
+        );
+
+        $priceProductStoreIds = $this->propelExecutor->execute($sql, $priceProductAbstractStoreParameters);
+
+        foreach ($priceProductStoreIds as $idPriceProductStore) {
+            static::$priceProductStoreIds[] = $idPriceProductStore;
+        }
+    }
+
+    /**
+     * @return void
+     */
+    protected function persistPriceProductConcreteStoreEntities(): void
+    {
+        $productCollection = $this->dataFormatter->getCollectionDataByKey(static::$productIds, ProductPriceHydratorStep::KEY_ID_PRODUCT);
+        $product = $this->dataFormatter->formatPostgresArray($productCollection);
+        $currency = $this->dataFormatter->formatPostgresArrayString(
+            $this->dataFormatter->getCollectionDataByKey(static::$productCurrencyIdsCollection, ProductPriceHydratorStep::KEY_ID_CURRENCY)
+        );
+        $store = $this->dataFormatter->formatPostgresArrayString(
+            $this->dataFormatter->getCollectionDataByKey(static::$productStoreIdsCollection, ProductPriceHydratorStep::KEY_ID_STORE)
+        );
+        $productPrice = $this->dataFormatter->formatPostgresArrayString(
+            $this->dataFormatter->getCollectionDataByKey(static::$priceProductIds, ProductPriceHydratorStep::KEY_ID_PRICE_PRODUCT)
+        );
+        $grossPrice = $this->dataFormatter->formatPostgresArrayString(
+            $this->dataFormatter->getCollectionDataByKey(static::$priceProductConcreteCollection, ProductPriceHydratorStep::KEY_PRICE_GROSS_DB)
+        );
+        $netPrice = $this->dataFormatter->formatPostgresArrayString(
+            $this->dataFormatter->getCollectionDataByKey(static::$priceProductConcreteCollection, ProductPriceHydratorStep::KEY_PRICE_NET_DB)
+        );
+        $priceData = $this->dataFormatter->formatPostgresPriceDataString(
+            $this->dataFormatter->getCollectionDataByKey(static::$priceProductConcreteCollection, ProductPriceHydratorStep::KEY_PRICE_DATA)
+        );
+        $checksum = $this->dataFormatter->formatPostgresArrayString(
+            $this->dataFormatter->getCollectionDataByKey(static::$priceProductConcreteCollection, ProductPriceHydratorStep::KEY_PRICE_DATA_CHECKSUM)
+        );
+
+        static::$priceProductConcreteCollection = [];
+
+        $priceProductConcreteStoreParameters = [
+            $store,
+            $currency,
+            $product,
+            $productPrice,
+            $grossPrice,
+            $netPrice,
+            $priceData,
+            $checksum,
+        ];
+
+        $sql = $this->productPriceSql->createPriceProductStoreSql(
+            ProductPriceHydratorStep::KEY_SPY_PRODUCT,
+            ProductPriceHydratorStep::KEY_FK_PRODUCT,
+            ProductPriceHydratorStep::KEY_ID_PRODUCT
+        );
+
+        $priceProductStoreIds = $this->propelExecutor->execute($sql, $priceProductConcreteStoreParameters);
+
+        foreach ($priceProductStoreIds as $idPriceProductStore) {
+            static::$priceProductStoreIds[] = $idPriceProductStore;
+        }
+    }
+
+    /**
+     * @return void
+     */
+    protected function persistPriceProductAbstractDefault(): void
+    {
+        $priceProductStoreIds = $this->dataFormatter->formatPostgresArray(
+            $this->dataFormatter->getCollectionDataByKey(static::$priceProductStoreIds, ProductPriceHydratorStep::KEY_ID_PRICE_PRODUCT_STORE)
+        );
+
+        $parameters = [
+            $priceProductStoreIds,
+        ];
+
         $sql = $this->productPriceSql->createPriceProductDefaultSql();
-        $this->propelExecutor->execute($sql, []);
+
+        $this->propelExecutor->execute($sql, $parameters);
+    }
+
+    /**
+     * @return void
+     */
+    protected function persistPriceProductConcreteDefault(): void
+    {
+        $priceProductStoreIds = $this->dataFormatter->formatPostgresArray(
+            $this->dataFormatter->getCollectionDataByKey(static::$priceProductStoreIds, ProductPriceHydratorStep::KEY_ID_PRICE_PRODUCT_STORE)
+        );
+
+        $parameters = [
+            $priceProductStoreIds,
+        ];
+
+        $sql = $this->productPriceSql->createPriceProductDefaultSql();
+        $this->propelExecutor->execute($sql, $parameters);
     }
 
     /**
@@ -392,12 +639,45 @@ class ProductPriceBulkPdoDataSetWriter implements DataSetWriterInterface
      */
     public function flush(): void
     {
-        $this->persistPriceTypeEntities();
-        $this->persistProductAbstractEntities();
-        $this->persistProductConcreteEntities();
-        $this->persistPriceProductDefault();
+        $this->flushPriceProductAbstract();
+        $this->flushPriceProductConcrete();
 
         DataImporterPublisher::triggerEvents();
+    }
+
+    /**
+     * @return void
+     */
+    protected function flushPriceProductAbstract(): void
+    {
+        $this->persistProductAbstractPriceTypeCollection();
+        $this->prepareProductAbstractPriceTypeIdsCollection();
+        $this->prepareProductAbstractStoreIdsCollection();
+        $this->prepareProductAbstractCurrencyIdsCollection();
+        $this->prepareProductAbstractIdsCollection();
+        $this->persistPriceProductAbstractEntities();
+        $this->addPriceProductAbstractEvents();
+        $this->persistPriceProductAbstractStoreEntities();
+        $this->persistPriceProductAbstractDefault();
+
+        $this->flushMemory();
+    }
+
+    /**
+     * @return void
+     */
+    protected function flushPriceProductConcrete(): void
+    {
+        $this->persistProductConcretePriceTypeCollection();
+        $this->prepareProductConcretePriceTypeIdsCollection();
+        $this->prepareProductConcreteStoreIdsCollection();
+        $this->prepareProductConcreteCurrencyIdsCollection();
+        $this->prepareProductConcreteIdsCollection();
+        $this->persistPriceProductConcreteEntities();
+        $this->addPriceProductConcreteEvents();
+        $this->persistPriceProductConcreteStoreEntities();
+        $this->persistPriceProductConcreteDefault();
+
         $this->flushMemory();
     }
 
@@ -406,8 +686,11 @@ class ProductPriceBulkPdoDataSetWriter implements DataSetWriterInterface
      */
     protected function flushMemory(): void
     {
-        static::$priceTypeCollection = [];
-        static::$productAbstractPriceCollection = [];
-        static::$productConcretePriceCollection = [];
+        static::$productCurrencyIdsCollection = [];
+        static::$productStoreIdsCollection = [];
+        static::$productPriceTypeIdsCollection = [];
+        static::$productIds = [];
+        static::$priceProductStoreIds = [];
+        static::$priceProductIds = [];
     }
 }

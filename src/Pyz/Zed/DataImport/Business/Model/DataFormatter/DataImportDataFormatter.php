@@ -7,8 +7,24 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\DataFormatter;
 
+use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
+
 class DataImportDataFormatter implements DataImportDataFormatterInterface
 {
+    /**
+     * @var \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface
+     */
+    protected $utilEncodingService;
+
+    /**
+     * @param \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface $utilEncodingService
+     */
+    public function __construct(
+        UtilEncodingServiceInterface $utilEncodingService
+    ) {
+        $this->utilEncodingService = $utilEncodingService;
+    }
+
     /**
      * @param string $value
      * @param string $replace
@@ -76,5 +92,19 @@ class DataImportDataFormatter implements DataImportDataFormatterInterface
     public function getCollectionDataByKey(array $collection, string $key)
     {
         return array_column($collection, $key);
+    }
+
+    /**
+     * @param array $priceData
+     *
+     * @return string
+     */
+    public function formatPostgresPriceDataString(array $priceData): string
+    {
+        $priceData = array_map(function ($price) {
+            return $price ?: null;
+        }, $priceData);
+
+        return pg_escape_string($this->utilEncodingService->encodeJson($priceData));
     }
 }
