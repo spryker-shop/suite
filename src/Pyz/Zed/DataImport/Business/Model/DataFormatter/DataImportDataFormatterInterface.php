@@ -45,4 +45,11 @@ interface DataImportDataFormatterInterface
      * @return array
      */
     public function getCollectionDataByKey(array $collection, string $key);
+
+    /**
+     * @param array $priceData
+     *
+     * @return string
+     */
+    public function formatPostgresPriceDataString(array $priceData): string;
 }
