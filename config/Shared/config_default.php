@@ -41,6 +41,7 @@ use Spryker\Shared\Session\SessionConfig;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\Storage\StorageConstants;
 use Spryker\Shared\Tax\TaxConstants;
+use Spryker\Shared\Translator\TranslatorConstants;
 use Spryker\Shared\Twig\TwigConstants;
 use Spryker\Shared\User\UserConstants;
 use Spryker\Shared\ZedNavigation\ZedNavigationConstants;
@@ -112,26 +113,8 @@ $config[AuthConstants::AUTH_DEFAULT_CREDENTIALS] = [
 $config[AclConstants::ACL_DEFAULT_RULES] = [
     [
         'bundle' => 'auth',
-        'controller' => 'login',
-        'action' => 'index',
-        'type' => 'allow',
-    ],
-    [
-        'bundle' => 'auth',
-        'controller' => 'login',
-        'action' => 'check',
-        'type' => 'allow',
-    ],
-    [
-        'bundle' => 'auth',
-        'controller' => 'password',
-        'action' => 'reset',
-        'type' => 'allow',
-    ],
-    [
-        'bundle' => 'auth',
-        'controller' => 'password',
-        'action' => 'reset-request',
+        'controller' => '*',
+        'action' => '*',
         'type' => 'allow',
     ],
     [
@@ -146,12 +129,6 @@ $config[AclConstants::ACL_DEFAULT_RULES] = [
         'action' => 'index',
         'type' => 'allow',
     ],
-    [
-        'bundle' => 'auth',
-        'controller' => 'logout',
-        'action' => 'index',
-        'type' => 'allow',
-    ],
 ];
 // ACL: Allow or disallow of urls for Zed Admin GUI
 $config[AclConstants::ACL_USER_RULE_WHITELIST] = [
@@ -159,18 +136,6 @@ $config[AclConstants::ACL_USER_RULE_WHITELIST] = [
         'bundle' => 'application',
         'controller' => '*',
         'action' => '*',
-        'type' => 'allow',
-    ],
-    [
-        'bundle' => 'auth',
-        'controller' => '*',
-        'action' => '*',
-        'type' => 'allow',
-    ],
-    [
-        'bundle' => 'heartbeat',
-        'controller' => 'heartbeat',
-        'action' => 'index',
         'type' => 'allow',
     ],
 ];
@@ -473,3 +438,18 @@ $config[MonitoringConstants::IGNORABLE_TRANSACTIONS] = [
 
 // ---------- Guest cart
 $config[QuoteConstants::GUEST_QUOTE_LIFETIME] = 'P01M';
+
+// ----------- Translator
+$config[TranslatorConstants::TRANSLATION_ZED_FALLBACK_LOCALES] = [
+    'de_DE' => ['en_US'],
+];
+
+$config[TranslatorConstants::TRANSLATION_ZED_CACHE_DIRECTORY] = sprintf(
+    '%s/data/%s/cache/Zed/translation',
+    APPLICATION_ROOT_DIR,
+    $CURRENT_STORE
+);
+
+$config[TranslatorConstants::TRANSLATION_ZED_FILE_PATH_PATTERNS] = [
+    APPLICATION_ROOT_DIR . '/data/translation/Zed/*/[a-z][a-z]_[A-Z][A-Z].csv',
+];
