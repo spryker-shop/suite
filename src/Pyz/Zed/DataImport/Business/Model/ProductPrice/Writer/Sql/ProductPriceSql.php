@@ -195,7 +195,7 @@ class ProductPriceSql implements ProductPriceSqlInterface
               price_data_checksum
             ) (
               SELECT
-                nextval('spy_price_product_pk_seq'),
+                nextval('spy_price_product_store_pk_seq'),
                 id_store,
                 id_currency,
                 id_price_product,
