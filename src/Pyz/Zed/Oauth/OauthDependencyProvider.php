@@ -38,6 +38,9 @@ class OauthDependencyProvider extends SprykerOauthDependencyProvider
         ];
     }
 
+    /**
+     * @return \Spryker\Zed\OauthExtension\Dependency\Plugin\OauthGrantTypeProviderPluginInterface[]
+     */
     protected function getGrantTypeProviderPlugins(): array
     {
         return [
