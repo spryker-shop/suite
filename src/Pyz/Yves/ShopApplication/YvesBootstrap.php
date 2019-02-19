@@ -34,6 +34,7 @@ use Spryker\Yves\Twig\Plugin\ServiceProvider\TwigServiceProvider as SprykerTwigS
 use Spryker\Yves\ZedRequest\Plugin\ServiceProvider\ZedRequestHeaderServiceProvider;
 use SprykerShop\Yves\AgentPage\Plugin\Provider\AgentPageControllerProvider;
 use SprykerShop\Yves\AgentPage\Plugin\Provider\AgentPageSecurityServiceProvider;
+use SprykerShop\Yves\AgentQuoteRequestPage\Plugin\Provider\AgentQuoteRequestPageControllerProvider;
 use SprykerShop\Yves\AgentWidget\Plugin\Provider\AgentWidgetControllerProvider;
 use SprykerShop\Yves\CalculationPage\Plugin\Provider\CalculationPageControllerProvider;
 use SprykerShop\Yves\CartNoteWidget\Plugin\Provider\CartNoteWidgetControllerProvider;
@@ -73,7 +74,6 @@ use SprykerShop\Yves\ProductSearchWidget\Plugin\Provider\ProductSearchWidgetCont
 use SprykerShop\Yves\ProductSetListPage\Plugin\Provider\ProductSetListPageControllerProvider;
 use SprykerShop\Yves\QuickOrderPage\Plugin\Provider\QuickOrderPageControllerProvider;
 use SprykerShop\Yves\QuoteRequestPage\Plugin\Provider\QuoteRequestPageControllerProvider;
-use SprykerShop\Yves\QuoteRequestWidget\Plugin\Provider\QuoteRequestWidgetControllerProvider;
 use SprykerShop\Yves\SharedCartPage\Plugin\Provider\SharedCartPageControllerProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\AutoloaderCacheServiceProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\ShopApplicationServiceProvider;
@@ -218,7 +218,8 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new FileManagerWidgetControllerProvider($isSsl),
             new CmsSearchPageControllerProvider($isSsl), #CmsSearchPageFeature
             new ProductSearchWidgetControllerProvider($isSsl),
-            new QuoteRequestPageControllerProvider($isSsl), #QuoteRequestFeature
+            new QuoteRequestPageControllerProvider($isSsl),
+            new AgentQuoteRequestPageControllerProvider($isSsl),
         ];
     }
 }
