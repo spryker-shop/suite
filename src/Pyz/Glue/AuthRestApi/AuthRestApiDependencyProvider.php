@@ -8,7 +8,7 @@
 namespace Pyz\Glue\AuthRestApi;
 
 use Spryker\Glue\AuthRestApi\AuthRestApiDependencyProvider as SprykerAuthRestApiDependencyProvider;
-use Spryker\Glue\CompanyUserAuthRestApi\Plugin\AuthRestApi\CompanyUserRestUserIdentifierExpanderPlugin;
+use Spryker\Glue\OauthCompanyUser\Plugin\AuthRestApi\CompanyUserRestUserExpanderPlugin;
 
 /**
  * @method \Spryker\Glue\AuthRestApi\AuthRestApiConfig getConfig()
@@ -16,12 +16,12 @@ use Spryker\Glue\CompanyUserAuthRestApi\Plugin\AuthRestApi\CompanyUserRestUserId
 class AuthRestApiDependencyProvider extends SprykerAuthRestApiDependencyProvider
 {
     /**
-     * @return \Spryker\Glue\AuthRestApiExtension\Dependency\Plugin\RestUserIdentifierExpanderPluginInterface[]
+     * @return \Spryker\Glue\AuthRestApiExtension\Dependency\Plugin\RestUserExpanderPluginInterface[]
      */
-    protected function getRestUserIdentifierExpanderPlugins(): array
+    protected function getRestUserExpanderPlugins(): array
     {
         return [
-            new CompanyUserRestUserIdentifierExpanderPlugin(),
+            new CompanyUserRestUserExpanderPlugin(),
         ];
     }
 }
