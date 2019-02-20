@@ -16,6 +16,7 @@ use SprykerShop\Yves\CartNoteWidget\Widget\CartNoteFormWidget;
 use SprykerShop\Yves\CartToShoppingListWidget\Widget\CreateShoppingListFromCartWidget;
 use SprykerShop\Yves\CategoryImageStorageWidget\Widget\CategoryImageStorageWidget;
 use SprykerShop\Yves\CheckoutWidget\Widget\CheckoutBreadcrumbWidget;
+use SprykerShop\Yves\CheckoutWidget\Widget\ProceedToCheckoutButtonWidget;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CheckBusinessOnBehalfCompanyUserHandlerPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyBusinessUnitControllerRestrictionPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyUserRestrictionHandlerPlugin;
@@ -71,6 +72,9 @@ use SprykerShop\Yves\ProductWidget\Widget\CmsProductWidget;
 use SprykerShop\Yves\ProductWidget\Widget\PdpProductRelationWidget;
 use SprykerShop\Yves\ProductWidget\Widget\PdpProductReplacementForListWidget;
 use SprykerShop\Yves\ProductWidget\Widget\ProductAlternativeWidget;
+use SprykerShop\Yves\QuoteApprovalWidget\Widget\QuoteApprovalStatusWidget;
+use SprykerShop\Yves\QuoteApprovalWidget\Widget\QuoteApprovalWidget;
+use SprykerShop\Yves\QuoteApprovalWidget\Widget\QuoteApproveRequestWidget;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Widget\SalesOrderThresholdWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartDeleteCompanyUsersListWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartListPermissionGroupWidget;
@@ -167,6 +171,10 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             WishlistProductAlternativeWidget::class,
             CompanyBusinessUnitAddressWidget::class,
             FullTextSearchTabsWidget::class,
+            QuoteApprovalStatusWidget::class,
+            QuoteApproveRequestWidget::class,
+            ProceedToCheckoutButtonWidget::class,
+            QuoteApprovalWidget::class,
             ProductConcreteSearchWidget::class,
             AddItemsToShoppingListWidget::class,
             CategoryImageStorageWidget::class,
