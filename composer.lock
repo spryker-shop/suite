@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4682ad9c0ea94f4be16ab3cb00d65236",
+    "content-hash": "a62ff0791c50cfc9ce44c4832671d206",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -8323,16 +8323,16 @@
         },
         {
             "name": "spryker-sdk/phpstan-spryker",
-            "version": "0.1.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/phpstan-spryker.git",
-                "reference": "f6d4c96aa1fcdc46b5f70575646ae40e9d1d8eb9"
+                "reference": "7d870706e514ebd7e518e1d4a7995d8a411b0779"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/phpstan-spryker/zipball/f6d4c96aa1fcdc46b5f70575646ae40e9d1d8eb9",
-                "reference": "f6d4c96aa1fcdc46b5f70575646ae40e9d1d8eb9",
+                "url": "https://api.github.com/repos/spryker-sdk/phpstan-spryker/zipball/7d870706e514ebd7e518e1d4a7995d8a411b0779",
+                "reference": "7d870706e514ebd7e518e1d4a7995d8a411b0779",
                 "shasum": ""
             },
             "require": {
@@ -8350,6 +8350,11 @@
                 "squizlabs/php_codesniffer": "^3.3.1"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "PHPStan\\": "src/"
@@ -8371,20 +8376,20 @@
                 "PHPStan",
                 "analyzing"
             ],
-            "time": "2019-02-18T14:42:03+00:00"
+            "time": "2019-02-19T23:00:40+00:00"
         },
         {
             "name": "spryker-sdk/spryk",
-            "version": "0.1.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/spryk.git",
-                "reference": "69cbd6880b3c411bebfac5d977bca561b93dbb65"
+                "reference": "2195963580aef2c7fe63425f2f66e84ec5da8c4f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/69cbd6880b3c411bebfac5d977bca561b93dbb65",
-                "reference": "69cbd6880b3c411bebfac5d977bca561b93dbb65",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/2195963580aef2c7fe63425f2f66e84ec5da8c4f",
+                "reference": "2195963580aef2c7fe63425f2f66e84ec5da8c4f",
                 "shasum": ""
             },
             "require": {
@@ -8406,14 +8411,19 @@
                 "nette/finder": "^2.4.0",
                 "nette/utils": "^2.5.0",
                 "php-coveralls/php-coveralls": "^1.0",
-                "phpstan/phpstan": "^0.10.0",
-                "phpstan/phpstan-phpunit": "^0.10.0",
-                "phpstan/phpstan-strict-rules": "^0.10.0",
+                "phpstan/phpstan": "^0.11.0",
+                "phpstan/phpstan-phpunit": "^0.11.0",
+                "phpstan/phpstan-strict-rules": "^0.11.0",
                 "spryker/code-sniffer": "*",
                 "spryker/testify": "*",
                 "symfony/var-dumper": "^4.0.9"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "SprykerSdk\\": "src/SprykerSdk/"
@@ -8424,7 +8434,7 @@
                 "proprietary"
             ],
             "description": "Spryk module",
-            "time": "2019-02-18T13:17:05+00:00"
+            "time": "2019-02-20T13:15:46+00:00"
         },
         {
             "name": "spryker-sdk/spryk-gui",
@@ -9397,7 +9407,14 @@
             "time": "2017-04-07T12:08:54+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "alias": "0.1.0",
+            "alias_normalized": "0.1.0.0",
+            "version": "9999999-dev",
+            "package": "spryker-sdk/spryk"
+        }
+    ],
     "minimum-stability": "dev",
     "stability-flags": {
         "spryker/spryker": 20,
@@ -9414,6 +9431,8 @@
         "spryker/code-generator": 20,
         "spryker/code-sniffer": 20,
         "spryker/git-hook": 20,
+        "spryker-sdk/phpstan-spryker": 20,
+        "spryker-sdk/spryk": 20,
         "spryker-sdk/spryk-gui": 20
     },
     "prefer-stable": true,
