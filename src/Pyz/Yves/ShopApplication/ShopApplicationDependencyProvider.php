@@ -8,6 +8,7 @@
 namespace Pyz\Yves\ShopApplication;
 
 use Pyz\Yves\ExampleProductColorGroupWidget\Widget\ExampleProductColorSelectorWidget;
+use SprykerShop\Yves\AgentQuoteRequestPage\Widget\AgentQuoteRequestCancelWidget;
 use SprykerShop\Yves\AgentQuoteRequestWidget\Widget\AgentQuoteRequestOverviewWidget;
 use SprykerShop\Yves\AgentWidget\Widget\AgentControlBarWidget;
 use SprykerShop\Yves\BusinessOnBehalfWidget\Widget\BusinessOnBehalfStatusWidget;
@@ -69,6 +70,7 @@ use SprykerShop\Yves\ProductWidget\Widget\CmsProductWidget;
 use SprykerShop\Yves\ProductWidget\Widget\PdpProductRelationWidget;
 use SprykerShop\Yves\ProductWidget\Widget\PdpProductReplacementForListWidget;
 use SprykerShop\Yves\ProductWidget\Widget\ProductAlternativeWidget;
+use SprykerShop\Yves\QuoteRequestPage\Widget\QuoteRequestCancelWidget;
 use SprykerShop\Yves\QuoteRequestWidget\Widget\CreateQuoteRequestWidget;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Widget\SalesOrderThresholdWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartDeleteCompanyUsersListWidget;
@@ -169,7 +171,9 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             AddItemsToShoppingListWidget::class,
             CategoryImageStorageWidget::class,
             CreateQuoteRequestWidget::class,
+            QuoteRequestCancelWidget::class,
             AgentQuoteRequestOverviewWidget::class,
+            AgentQuoteRequestCancelWidget::class,
         ];
     }
 
