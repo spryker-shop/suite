@@ -89,7 +89,7 @@ class DataImportDataFormatter implements DataImportDataFormatterInterface
      *
      * @return array
      */
-    public function getCollectionDataByKey(array $collection, string $key)
+    public function getCollectionDataByKey(array $collection, string $key): array
     {
         return array_column($collection, $key);
     }
