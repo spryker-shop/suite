@@ -189,7 +189,7 @@ class ProductPriceBulkPdoDataSetWriter implements DataSetWriterInterface
     }
 
     /**
-     * @param $priceProductConcreteCollection
+     * @param array $priceProductConcreteCollection
      *
      * @return void
      */
