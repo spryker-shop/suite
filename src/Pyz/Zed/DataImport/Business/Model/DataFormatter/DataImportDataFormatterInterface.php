@@ -44,7 +44,7 @@ interface DataImportDataFormatterInterface
      *
      * @return array
      */
-    public function getCollectionDataByKey(array $collection, string $key);
+    public function getCollectionDataByKey(array $collection, string $key): array;
 
     /**
      * @param array $priceData
