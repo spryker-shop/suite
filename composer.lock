@@ -2482,24 +2482,28 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "dd960e92242a9c97b50691c9bdac874a0c568207"
+                "reference": "0378850f44d7fb388147625d33685a481375ca0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/dd960e92242a9c97b50691c9bdac874a0c568207",
-                "reference": "dd960e92242a9c97b50691c9bdac874a0c568207",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/0378850f44d7fb388147625d33685a481375ca0d",
+                "reference": "0378850f44d7fb388147625d33685a481375ca0d",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "php-amqplib/php-amqplib": "^2.6",
+                "spryker/guzzle": "^2.0.0",
                 "spryker/kernel": "^3.20.0",
+                "spryker/log": "^3.0.0",
                 "spryker/queue": "^1.4.0",
                 "spryker/store": "^1.9.0",
+                "spryker/symfony": "^3.0.0",
                 "spryker/transfer": "^3.8.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*"
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
             },
             "type": "library",
             "extra": {
@@ -2533,7 +2537,7 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "time": "2019-02-21T10:02:02+00:00"
+            "time": "2019-02-21T15:31:22+00:00"
         },
         {
             "name": "spryker/silexphp",
@@ -2896,7 +2900,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "8dda8f22104e9af329e7296fdd57f83c5364c555"
+                "reference": "16c156b575853b13bf380fd47f7d5e063b4c01f3"
             },
             "require": {
                 "php": ">=7.1"
@@ -2971,7 +2975,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-02-21T08:17:30+00:00"
+            "time": "2019-02-21T14:56:40+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
