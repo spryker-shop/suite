@@ -36,6 +36,8 @@ use SprykerShop\Yves\AgentPage\Plugin\Provider\AgentPageControllerProvider;
 use SprykerShop\Yves\AgentPage\Plugin\Provider\AgentPageSecurityServiceProvider;
 use SprykerShop\Yves\AgentQuoteRequestPage\Plugin\Provider\AgentQuoteRequestPageControllerProvider;
 use SprykerShop\Yves\AgentWidget\Plugin\Provider\AgentWidgetControllerProvider;
+use SprykerShop\Yves\AvailabilityNotificationPage\Plugin\Provider\AvailabilityNotificationPageControllerProvider;
+use SprykerShop\Yves\AvailabilityNotificationWidget\Plugin\Provider\AvailabilityNotificationWidgetControllerProvider;
 use SprykerShop\Yves\CalculationPage\Plugin\Provider\CalculationPageControllerProvider;
 use SprykerShop\Yves\CartNoteWidget\Plugin\Provider\CartNoteWidgetControllerProvider;
 use SprykerShop\Yves\CartPage\Plugin\Provider\CartControllerProvider;
@@ -73,6 +75,7 @@ use SprykerShop\Yves\ProductReviewWidget\Plugin\Provider\ProductReviewController
 use SprykerShop\Yves\ProductSearchWidget\Plugin\Provider\ProductSearchWidgetControllerProvider;
 use SprykerShop\Yves\ProductSetListPage\Plugin\Provider\ProductSetListPageControllerProvider;
 use SprykerShop\Yves\QuickOrderPage\Plugin\Provider\QuickOrderPageControllerProvider;
+use SprykerShop\Yves\QuoteApprovalWidget\Plugin\Provider\QuoteApprovalControllerProvider;
 use SprykerShop\Yves\QuoteRequestPage\Plugin\Provider\QuoteRequestPageControllerProvider;
 use SprykerShop\Yves\SharedCartPage\Plugin\Provider\SharedCartPageControllerProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\AutoloaderCacheServiceProvider;
@@ -218,6 +221,10 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new FileManagerWidgetControllerProvider($isSsl),
             new CmsSearchPageControllerProvider($isSsl), #CmsSearchPageFeature
             new ProductSearchWidgetControllerProvider($isSsl),
+            new AvailabilityNotificationWidgetControllerProvider($isSsl),
+            new AvailabilityNotificationPageControllerProvider($isSsl),
+            new QuoteApprovalControllerProvider($isSsl), #QuoteApprovalFeature
+            new QuoteRequestPageControllerProvider($isSsl), #QuoteRequestFeature
             new QuoteRequestPageControllerProvider($isSsl),
             new AgentQuoteRequestPageControllerProvider($isSsl),
         ];
