@@ -224,7 +224,6 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new AvailabilityNotificationWidgetControllerProvider($isSsl),
             new AvailabilityNotificationPageControllerProvider($isSsl),
             new QuoteApprovalControllerProvider($isSsl), #QuoteApprovalFeature
-            new QuoteRequestPageControllerProvider($isSsl), #QuoteRequestFeature
             new QuoteRequestPageControllerProvider($isSsl),
             new AgentQuoteRequestPageControllerProvider($isSsl),
         ];
