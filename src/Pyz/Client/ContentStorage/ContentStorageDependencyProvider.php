@@ -13,7 +13,7 @@ use Spryker\Client\ContentStorage\ContentStorageDependencyProvider as SprykerCon
 class ContentStorageDependencyProvider extends SprykerContentStorageDependencyProvider
 {
     /**
-     * @return \Spryker\Client\ContentStorageExtension\Plugin\ContentTermExecutorPluginInterface[]
+     * @return \Spryker\Client\ContentStorageExtension\Dependency\Plugin\ContentTermExecutorPluginInterface[]
      */
     protected function getContentPlugins(): array
     {

@@ -13,7 +13,7 @@ use Spryker\Zed\ContentGui\ContentGuiDependencyProvider as SprykerContentGuiDepe
 class ContentGuiDependencyProvider extends SprykerContentGuiDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\ContentGuiExtension\Plugin\ContentPluginInterface[]
+     * @return \Spryker\Zed\ContentGuiExtension\Dependency\Plugin\ContentPluginInterface[]
      */
     protected function getContentPlugins(): array
     {
