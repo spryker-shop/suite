@@ -7,7 +7,8 @@
 
 namespace Orm\Zed\Content\Persistence;
 
-use Orm\Zed\Content\Persistence\Base\SpyContentQuery as BaseSpyContentQuery;
+
+use Spryker\Zed\Content\Persistence\Propel\AbstractSpyContentQuery as BaseSpyContentQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_content' table.

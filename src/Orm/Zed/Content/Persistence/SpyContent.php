@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\Content\Persistence;
 
-use Orm\Zed\Content\Persistence\Base\SpyContent as BaseSpyContent;
+use Spryker\Zed\Content\Persistence\Propel\AbstractSpyContent as BaseSpyContent;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_content' table.
