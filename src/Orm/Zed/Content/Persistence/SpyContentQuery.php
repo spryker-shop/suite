@@ -7,7 +7,6 @@
 
 namespace Orm\Zed\Content\Persistence;
 
-
 use Spryker\Zed\Content\Persistence\Propel\AbstractSpyContentQuery as BaseSpyContentQuery;
 
 /**
