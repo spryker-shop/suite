@@ -7,15 +7,15 @@
 
 namespace Pyz\Yves\AgentQuoteRequestPage;
 
-use SprykerShop\Yves\QuoteRequestPage\Plugin\QuoteRequestPage\DeliveryDateMetadataFieldPlugin;
-use SprykerShop\Yves\QuoteRequestPage\Plugin\QuoteRequestPage\NoteMetadataFieldPlugin;
-use SprykerShop\Yves\QuoteRequestPage\Plugin\QuoteRequestPage\PurchaseOrderNumberMetadataFieldPlugin;
 use SprykerShop\Yves\AgentQuoteRequestPage\AgentQuoteRequestPageDependencyProvider as SprykerAgentQuoteRequestPageDependencyProvider;
+use SprykerShop\Yves\AgentQuoteRequestPage\Plugin\AgentQuoteRequestPage\DeliveryDateMetadataFieldPlugin;
+use SprykerShop\Yves\AgentQuoteRequestPage\Plugin\AgentQuoteRequestPage\NoteMetadataFieldPlugin;
+use SprykerShop\Yves\AgentQuoteRequestPage\Plugin\AgentQuoteRequestPage\PurchaseOrderNumberMetadataFieldPlugin;
 
 class AgentQuoteRequestPageDependencyProvider extends SprykerAgentQuoteRequestPageDependencyProvider
 {
     /**
-     * @return \SprykerShop\Yves\QuoteRequestPageExtension\Dependency\Plugin\QuoteRequestFormMetadataFieldPluginInterface[]
+     * @return \SprykerShop\Yves\AgentQuoteRequestPageExtension\Dependency\Plugin\AgentQuoteRequestFormMetadataFieldPluginInterface[]
      */
     protected function getAgentQuoteRequestFormMetadataFieldPlugins(): array
     {
