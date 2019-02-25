@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\Content\Persistence;
+namespace Orm\Zed\QuoteApproval\Persistence;
 
-use Spryker\Zed\Content\Persistence\Propel\AbstractSpyContent as BaseSpyContent;
+use Spryker\Zed\QuoteApproval\Persistence\Propel\AbstractSpyQuoteApproval as BaseSpyQuoteApproval;
 
 /**
- * Skeleton subclass for representing a row from the 'spy_content' table.
+ * Skeleton subclass for representing a row from the 'spy_quote_approval' table.
  *
  *
  *
@@ -19,6 +19,6 @@ use Spryker\Zed\Content\Persistence\Propel\AbstractSpyContent as BaseSpyContent;
  * long as it does not already exist in the output directory.
  *
  */
-class SpyContent extends BaseSpyContent
+class SpyQuoteApproval extends BaseSpyQuoteApproval
 {
 }
