@@ -60,12 +60,12 @@ class AddressStepTest extends Unit
 
         $customerTransfer = new CustomerTransfer();
         $customerTransfer->addBillingAddress($addressTransfer);
-        $shipmentAddress = clone $addressTransfer;
-        $shipmentAddress->setIdCustomerAddress(2);
+        $shippingAddress = clone $addressTransfer;
+        $shippingAddress->setIdCustomerAddress(2);
 
         $addressesTransfer = new AddressesTransfer();
         $addressesTransfer->addAddress($addressTransfer);
-        $addressesTransfer->addAddress($shipmentAddress);
+        $addressesTransfer->addAddress($shippingAddress);
         $customerTransfer->setAddresses($addressesTransfer);
 
         $customerClientMock = $this->createCustomerClientMock();
@@ -85,7 +85,7 @@ class AddressStepTest extends Unit
 
         $addressStep->execute($this->createRequest(), $quoteTransfer);
 
-        $this->assertEquals($shipmentAddress->getAddress1(), $quoteTransfer->getShippingAddress()->getAddress1());
+        $this->assertEquals($shippingAddress->getAddress1(), $quoteTransfer->getShippingAddress()->getAddress1());
         $this->assertEquals($addressTransfer->getAddress1(), $quoteTransfer->getBillingAddress()->getAddress1());
     }
 
