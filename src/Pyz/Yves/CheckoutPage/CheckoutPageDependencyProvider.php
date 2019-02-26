@@ -20,6 +20,9 @@ use SprykerShop\Yves\CustomerPage\Form\LoginForm;
 use SprykerShop\Yves\CustomerPage\Form\RegisterForm;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThresholdWidgetPlugin;
 
+/**
+ * @method \Pyz\Yves\CheckoutPage\CheckoutPageConfig getConfig()
+ */
 class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyProvider
 {
     /**
@@ -100,7 +103,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
         return new CheckoutAddressFormDataProvider(
             $this->getCustomerClient($container),
             $this->getStore(),
-            $this->getCheckoutStepTemplateResolver()->isMultiShipmentEnabled()
+            $this->getConfig()->isMultiShipmentEnabled()
         );
     }
 
