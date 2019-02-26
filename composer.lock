@@ -2664,7 +2664,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "a7f34281d75fad8e509c51b720475b4f85587d52"
+                "reference": "9e11fa9f83c91ba98432f3984969dda9de7aea4f"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2731,6 +2731,7 @@
                 "spryker/company-unit-address-label-gui": "*",
                 "spryker/config": "*",
                 "spryker/console": "*",
+                "spryker/container": "*",
                 "spryker/country": "*",
                 "spryker/csv": "*",
                 "spryker/currency": "*",
@@ -2797,7 +2798,6 @@
                 "spryker/oms-discount-connector": "*",
                 "spryker/payment": "*",
                 "spryker/payment-cart-connector": "*",
-                "spryker/pimple": "*",
                 "spryker/price": "*",
                 "spryker/price-cart-connector": "*",
                 "spryker/price-product": "*",
@@ -2864,7 +2864,6 @@
                 "spryker/queue": "*",
                 "spryker/quote": "*",
                 "spryker/ramsey-uuid": "*",
-                "spryker/ratepay": "*",
                 "spryker/redis": "*",
                 "spryker/refund": "*",
                 "spryker/sales": "*",
@@ -2934,7 +2933,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-01-04T15:18:38+00:00"
+            "time": "2019-02-26T13:05:25+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2942,7 +2941,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "f4829d662ac08158e2d4a5bfc0d71f29683fa684"
+                "reference": "16c156b575853b13bf380fd47f7d5e063b4c01f3"
             },
             "require": {
                 "php": ">=7.1"
@@ -3017,7 +3016,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-01-04T11:29:42+00:00"
+            "time": "2019-02-21T14:56:40+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -6637,7 +6636,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-13T13:21:38+00:00"
+            "time": "2017-12-12T17:28:44+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -8520,7 +8519,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryk.git",
-                "reference": "7520ca725ffc43cccfd188fba4d73f3967445756"
+                "reference": "922ab2cb5a2fe232447c2cefc9d6bd17c3a002b9"
             },
             "require": {
                 "php": ">=7.1",
@@ -8533,13 +8532,13 @@
                 "zendframework/zend-filter": "^2.8"
             },
             "require-dev": {
-                "codeception/codeception": "^2.4.0",
+                "codeception/codeception": "^2.4.1",
                 "nette/finder": "^2.4.0",
                 "nette/utils": "^2.5.0",
                 "php-coveralls/php-coveralls": "^1.0",
-                "phpstan/phpstan": "^0.9.0 || ^0.10.0",
-                "phpstan/phpstan-phpunit": "^0.9.0 || ^0.10.0",
-                "phpstan/phpstan-strict-rules": "^0.9.0 || ^0.10.0",
+                "phpstan/phpstan": "^0.10.0",
+                "phpstan/phpstan-phpunit": "^0.10.0",
+                "phpstan/phpstan-strict-rules": "^0.10.0",
                 "spryker/code-sniffer": "dev-master",
                 "spryker/git-hook": "dev-master",
                 "symfony/var-dumper": "^4.0.9"
@@ -8565,7 +8564,12 @@
                     "Spryker\\Zed\\ZipZap\\": "tests/_support/Fixtures/Spryker/Zed/ZipZap/",
                     "Spryker\\Client\\ZipZap\\": "tests/_support/Fixtures/Spryker/Client/ZipZap/",
                     "Spryker\\Service\\ZipZap\\": "tests/_support/Fixtures/Spryker/Service/ZipZap/",
-                    "SprykerTest\\Zed\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/tests/SprykerTest/Zed/FooBar/"
+                    "SprykerTest\\Zed\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/tests/SprykerTest/Zed/FooBar/",
+                    "Pyz\\Client\\FooBar\\": "tests/_data/src/Pyz/Client/FooBar/",
+                    "Pyz\\Shared\\FooBar\\": "tests/_data/src/Pyz/Shared/FooBar/",
+                    "Pyz\\Yves\\FooBar\\": "tests/_data/src/Pyz/Yves/FooBar/",
+                    "Pyz\\Zed\\FooBar\\": "tests/_data/src/Pyz/Zed/FooBar/",
+                    "PyzTest\\Zed\\FooBar\\": "tests/_data/tests/PyzTest/Zed/FooBar/"
                 }
             },
             "scripts": {
@@ -8589,7 +8593,7 @@
                 "MIT"
             ],
             "description": "Spryker Spryk build tool",
-            "time": "2018-12-21T13:52:36+00:00"
+            "time": "2019-01-30T17:36:47+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
