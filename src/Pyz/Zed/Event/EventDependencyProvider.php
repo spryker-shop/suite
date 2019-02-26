@@ -7,7 +7,9 @@
 
 namespace Pyz\Zed\Event;
 
+use Spryker\Zed\AvailabilityNotification\Communication\Plugin\Event\Subscriber\AvailabilityNotificationSubscriber;
 use Spryker\Zed\AvailabilityStorage\Communication\Plugin\Event\Subscriber\AvailabilityStorageEventSubscriber;
+use Spryker\Zed\CategoryImageStorage\Communication\Plugin\Event\Subscriber\CategoryImageStorageEventSubscriber;
 use Spryker\Zed\CategoryPageSearch\Communication\Plugin\Event\Subscriber\CategoryPageSearchEventSubscriber;
 use Spryker\Zed\CategoryStorage\Communication\Plugin\Event\Subscriber\CategoryStorageEventSubscriber;
 use Spryker\Zed\CmsBlockCategoryStorage\Communication\Plugin\Event\Subscriber\CmsBlockCategoryStorageEventSubscriber;
@@ -84,6 +86,7 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new ProductCategoryStorageEventSubscriber());
         $eventSubscriberCollection->add(new ProductCategoryFilterStorageEventSubscriber());
         $eventSubscriberCollection->add(new ProductImageStorageEventSubscriber());
+        $eventSubscriberCollection->add(new CategoryImageStorageEventSubscriber());
         $eventSubscriberCollection->add(new ProductGroupStorageEventSubscriber());
         $eventSubscriberCollection->add(new ProductOptionStorageEventSubscriber());
         $eventSubscriberCollection->add(new ProductRelationStorageEventSubscriber());
@@ -102,6 +105,7 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new CustomerAccessStorageEventSubscriber());
         $eventSubscriberCollection->add(new ShoppingListStorageEventSubscriber()); #ShoppingListWidget feature
 
+        $eventSubscriberCollection->add(new AvailabilityNotificationSubscriber());
         /**
          * Search Events
          */
