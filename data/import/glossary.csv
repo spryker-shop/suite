@@ -595,6 +595,8 @@ general.edit.button,Edit,en_US
 general.edit.button,Bearbeiten,de_DE
 newsletter.subscription.success,You successfully subscribed to the newsletter,en_US
 newsletter.subscription.success,Sie wurden erfolgreich für den Newsletter angemeldet,de_DE
+newsletter.subscription.error,Something went wrong. Sorry.,en_US
+newsletter.subscription.error,Leider ging etwas schief. Tut uns leid.,de_DE
 newsletter.unsubscription.success,You successfully unsubscribed from the newsletter,en_US
 newsletter.unsubscription.success,Sie wurden erfolgreich für den Newsletter abgemeldet,de_DE
 newsletter.subscription.already_subscribed,You are already subscribed to the newsletter,en_US
@@ -899,6 +901,12 @@ mail.sender.name,Spryker No-Reply,en_US
 mail.sender.name,Spryker No-Reply,de_DE
 mail.sender.email,noreply@demo-spryker.com,en_US
 mail.sender.email,noreply@demo-spryker.com,de_DE
+mail.auth.restore_password.subject,Neues Passwort für Ihren Spryker Backoffice Account,de_DE
+mail.auth.restore_password.subject,New password for your Spryker Backoffice account,en_US
+mail.auth.restore_password.text,"""Es wurde ein neues Passwort für Ihren Spryker Backoffice Account angefordert. Wenn Sie nicht um um eine Neueinrichtung des Passworts gebeten haben, ignorieren Sie bitte diese Email. Klicken Sie auf den folgedenen Link, um Ihr Passwort zu ändern:""",de_DE
+mail.auth.restore_password.text,"""Somebody has requested a new password for your Spryker Backoffice account. If it's not you, just ignore this email. If it's you, please follow the link bellow:""",en_US
+mail.auth.restore_password.label,Passwort ändern,de_DE
+mail.auth.restore_password.label,Change Password,en_US
 mail.company.status.subject,"Your company has changed status",en_US
 mail.company.status.subject,"Ihre Firma hat den Status geändert",de_DE
 mail.company.status.text,"Your company has changed status to: ",en_US
@@ -1123,6 +1131,8 @@ price.mode.gross_mode,Gross prices,en_US
 price.mode.gross_mode,Bruttopreise,de_DE
 price.mode.net_mode,Net prices,en_US
 price.mode.net_mode,Nettopreise,de_DE
+price_product.error.price_not_found,Product price not found.,en_US
+price_product.error.price_not_found,Produktpreis nicht gefunden.,de_DE
 cart.pre.check.price.failed,"Price in selected currency not found for product with sku '%sku%'. Please change the currency or remove product from order.",en_US
 cart.pre.check.price.failed,"Der Preis in der ausgewählten Währung wurde für das Produkt mit sku '%sku%' nicht gefunden. Bitte ändern Sie die Währung oder entfernen Sie das Produkt aus der Bestellung.",de_DE
 price.mode.switch.error,"Can't switch price mode when there are items in the cart.",en_US
@@ -1435,6 +1445,8 @@ quick-order.errors.items-required,Please enter at least one product SKU,en_US
 quick-order.errors.items-required,Bitte geben Sie mindestens eine Produkt-Artikelnummer,de_DE
 quick-order.errors.quantity-required,Quantity must be at least 1,en_US
 quick-order.errors.quantity-required,Die Anzahl muss mindestens 1 sein,de_DE
+quick-order.errors.quantity-invalid,Entered quantity value is invalid. Quantity was adjusted to the next possible valid value.,en_US
+quick-order.errors.quantity-invalid,Der eingegebene Mengenwert ist ungültig. Die Menge wurde an den nächstmöglichen gültigen Wert angepasst.,de_DE
 quick-order.paste-order.title,Paste your order,en_US
 quick-order.paste-order.title,Bestellung einfügen,de_DE
 quick-order.paste-order.description,"Copy and paste your order with the item # and quantity separated by spaces, semicolons or commas. One sku per line.",en_US
@@ -1447,6 +1459,40 @@ quick-order.paste-order.errors.text-order-format-incorrect,"Order format is inco
 quick-order.paste-order.errors.text-order-format-incorrect,"Falsches Bestellungsformat.",de_DE
 quick-order.paste-order.errors.parser.separator-not-detected,"Separator is not defined.",en_US
 quick-order.paste-order.errors.parser.separator-not-detected,"Trennzeichen nicht definiert.",de_DE
+quick-order.file-upload-order.title,Upload your order,en_US
+quick-order.file-upload-order.title,Bestellung hochladen,de_DE
+quick-order.file-upload-order.description,Choose file,en_US
+quick-order.file-upload-order.description,Datei auswählen,de_DE
+quick-order.file-upload-order.success-message,File successfully uploaded,en_US
+quick-order.file-upload-order.success-message,Datei erfolgreich hochgeladen,de_DE
+quick-order.file-upload-order.error-message,File could not be uploaded. Click here %url% to download the csv template,en_US
+quick-order.file-upload-order.error-message,Datei konnte nich hochgeladen werden. Hier klicken %url% um das csv Vorlage,de_DE
+quick-order.file-upload-order.file-template-download-message,Click here to download a %template% template,en_US
+quick-order.file-upload-order.file-template-download-message,Hier klicken für das %template% Vorlage,de_DE
+quick-order.file-upload-order.button.upload,Upload,en_US
+quick-order.file-upload-order.button.upload,Hochladen,de_DE
+quick-order.upload-order.errors.upload-order-invalid-mime-type,Invalid file type.,en_US
+quick-order.upload-order.errors.upload-order-invalid-mime-type,Ungültiger Dateityp.,de_DE
+quick-order.upload-order.errors.upload-order-invalid-amount-of-rows,"To many rows, file can’t be processed.",en_US
+quick-order.upload-order.errors.upload-order-invalid-amount-of-rows,"Zu viele Zeilen, die Datei kann nicht bearbeitet werden.",de_DE
+quick-order.upload-order.errors.upload-order-invalid-format,Invalid format.,en_US
+quick-order.upload-order.errors.upload-order-invalid-format,Ungültiges Format.,de_DE
+quick-order.upload-order.errors.upload-order-no-file,There was no file added.,en_US
+quick-order.upload-order.errors.upload-order-no-file,Es wurde keine Datei hinzugefügt.,de_DE
+quick-order.input-label.sku.name,SKU or Name,en_US
+quick-order.input-label.sku.name,SKU oder Name,de_DE
+quick-order.input.placeholder,Search by SKU or Name,en_US
+quick-order.input.placeholder,Suche per SKU oder Name,de_DE
+quick-order.input-label.measurement_unit,Measuring Unit,en_US
+quick-order.input-label.measurement_unit,Maßeinheit,de_DE
+quick-order.input-label.price,Price,en_US
+quick-order.input-label.price,Preis,de_DE
+quick-order.search.no_results,Item cannot be found,en_US
+quick-order.search.no_results,Das produkt konnte nicht gefunden werden.,de_DE
+quick-order.input-quantity.message.error,Die bestellte Anzahl wurde auf die nächstmögliche Anzahl für diesen Artikel angepasst.,de_DE
+quick-order.input-quantity.message.error,The ordered quantity was adjusted to the next possible quantity for the article.,en_US
+quick-order.upload-order.errors.upload-order-invalid-sku-item,Product with this SKU is not found.,en_US
+quick-order.upload-order.errors.upload-order-invalid-sku-item,Produkt mit dieser SKU wurde nicht gefunden.,de_DE
 checkout.pre.check.shipment.failed,Invalid shipping method.,en_US
 checkout.pre.check.shipment.failed,Ungültige Versandmethode,de_DE
 measurement_units.item.name,Item,en_US
@@ -1567,6 +1613,60 @@ cart.pre.check.quantity.interval.failed,Die Anzahl für Produkt SKU '%sku%' lieg
 cart.pre.check.quantity.interval.failed,Quantity interval requirements for product SKU '%sku%' are not fulfilled.,en_US
 persistent_cart.error.quote.not_available,Cart does not exists,en_US
 persistent_cart.error.quote.not_available,Einkaufswagen existiert nicht,de_DE
+cart.locked.change_denied,"You can't modify this cart because it's in the process of approval.",en_US
+cart.locked.change_denied,"Sie können diesen Warenkorb nicht ändern, weil er sich gerade in der Genehmigungsphase befindet.",de_DE
+quote_approval.request.send,Send Request,en_US
+quote_approval.request.send,Anfrage Senden,de_DE
+quote_approval.remove,Cancel Request,en_US
+quote_approval.remove,Anfrage Abbrechen,de_DE
+quote_approval.cart.require_approval,"You can't place this order because of your purchasing limit, please send your cart for approval or contact your manager.",en_US
+quote_approval.cart.require_approval,"Sie können diese Bestellung aufgrund Ihres Einkaufslimits nicht aufgeben. Senden Sie Ihren Einkaufswagen zur Genehmigung oder wenden Sie sich an Ihren Kontakmanager.",de_DE
+quote_approval.create.approver_cant_approve_quote,"Selected approver cannot approve your request due to approver limit.",en_US
+quote_approval.create.approver_cant_approve_quote,"Der ausgewählte Manager kann Ihre Anfrage aufgrund des Genehmigungslimits nicht genehmigen.",de_DE
+quote_approval.create.you_cant_approve_quote,"You can't approve or decline this cart because it's amount higher that your Approver limit.",en_US
+quote_approval.create.you_cant_approve_quote,"Sie können diesen Einkaufswagen nicht genehmigen oder ablehnen, weil dessen Betrag höher als ihr Genehmigungslimit ist.",de_DE
+quote_approval.create.quote_already_approved,"This Cart was already approved.",en_US
+quote_approval.create.quote_already_approved,"Dieser Einkaufswagen wurde schon zur Genehmigung gesendet.",de_DE
+quote_approval.create.quote_already_declined,"This Cart was already declined.",en_US
+quote_approval.create.quote_already_declined,"Dieser Einkaufswagen wurde schon abgelehnt.",de_DE
+quote_approval.create.quote_already_cancelled,"You can't work with this Cart it was already sent to another approver.",en_US
+quote_approval.create.quote_already_cancelled,"Sie können nicht mit diesem Einkaufswagen arbeiten, er wurde schon dem anderen Manager gesendet.",de_DE
+quote_approval.create.quote_already_waiting_for_approval,"This Cart was already sent for approval.",en_US
+quote_approval.create.quote_already_waiting_for_approval,"",de_DE
+quote_approval.create.only_quote_owner_can_send_request,"You can't sent Cart for Approval, only Cart owner can do it.",en_US
+quote_approval.create.only_quote_owner_can_send_request,"Sie können den Einkaufswagen zur Genehmigung nicht senden, das kann nur Inhaber des Einkaufswagens machen.",de_DE
+quote_approval.cancel.do_not_have_permission,"You don't have permissions to cancel Approval request.",en_US
+quote_approval.cancel.do_not_have_permission,"Sie haben nicht die notwendigen Rechte um die Genehmigungsanfrage zu abbrechen.",de_DE
+quote_approval.request.approval_by,by,en_US
+quote_approval.request.approval_by,von,de_DE
+quote_approval.created,"Your request for Approval was send to %first_name% %last_name%".,en_US
+quote_approval.created,"Ihre Anfrage zur Genehmigung wurde an %first_name% %last_name% gesendet.",de_DE
+quote_approval.removed,"Your request for Approval was canceled.",en_US
+quote_approval.removed,"Ihre Genehmigungsanfrage wurde abgebrochen.",de_DE
+quote_approval_widget.title,Approval Request,en_US
+quote_approval_widget.title,Genehmigungsanfrage,de_DE
+quote_approval_widget.limit.unlimited,Unlimited,en_US
+quote_approval_widget.limit.unlimited,Unbegrenzt,de_DE
+quote_approval_widget.no_approvers_found,Keine Genehmiger gefunden.,de_DE
+quote_approval_widget.no_approvers_found,No approvers found.,en_US
+quote_approval_widget.cart.status.approved,"Approved",en_US
+quote_approval_widget.cart.status.approved,"Genehmigt",de_DE
+quote_approval_widget.cart.status.declined,"Declined",en_US
+quote_approval_widget.cart.status.declined,"Abgelehnt",de_DE
+quote_approval_widget.cart.status.waiting,"Waiting",en_US
+quote_approval_widget.cart.status.waiting,"Wartet",de_DE
+quote_approval_widget.shared_cart_warning,"After a cart has been sent to approval, all of its shares will be dismissed.",en_US
+quote_approval_widget.shared_cart_warning,"Nachdem der Warenkorb zur Genehmigung gesendet wurde, wird sein Sharing aufgehoben.",de_DE
+quote_approval_widget.limit_text,"Your purchase limit is %amount%. To spend more, request approval from your manager.",en_US
+quote_approval_widget.limit_text,"Ihr Einkaufsrahmen liegt bei %amount%. Um mehr auszugeben, fordern Sie bitte die Genehmigung bei Ihrem Manager an",de_DE
+quote_approval_widget.no_limit_text,"You do not have a purchase limit",en_US
+quote_approval_widget.no_limit_text,"Sie haben kein Einkaufslimit",de_DE
+quote_approval.request.waiting_for_approval_from,Waiting for Approval from,en_US
+quote_approval.request.waiting_for_approval_from,Wartet auf die Genehmigung von,de_DE
+quote_approval.request.approved_by,Approved by,en_US
+quote_approval.request.approved_by,Genehmigt von,de_DE
+quote_approval.request.declined_by,Declined by,en_US
+quote_approval.request.declined_by,Abgelehnt um,de_DE
 persistent_cart.quote.remove.success,Cart deleted successfully,en_US
 persistent_cart.quote.remove.success,Einkaufswagen wurde erfolgreich gelöscht,de_DE
 persistent_cart.quote.remove.can_not_remove_last_cart,Customer should have at least one cart,en_US
@@ -1595,6 +1695,20 @@ cart_note.customer_page.order_note,Order Note,en_US
 cart_note.customer_page.order_note,Bestellhinweis,de_DE
 cart.validate.items.price.changed,"Prices have been changed for products with SKU '%sku%'.",en_US
 cart.validate.items.price.changed,"Preis wurde für Produkte mit SKU geändert '%sku%'.",de_DE
+quote_approval_widget.cart.status,"Status",en_US
+quote_approval_widget.cart.status,"Status",de_DE
+quote_approval_widget.cart.approve,"Approve",en_US
+quote_approval_widget.cart.approve,"Genehmigen",de_DE
+quote_approval_widget.cart.decline,"Decline",en_US
+quote_approval_widget.cart.decline,"Ablehnen",de_DE
+quote_approval_widget.cart.cancel,"Cancel",en_US
+quote_approval_widget.cart.cancel,"Abbrechen",de_DE
+quote_approval_widget.cart.success_message.approved,"Request from %first_name% %last_name% was successfully approved",en_US
+quote_approval_widget.cart.success_message.approved,"Anfrage von %first_name% %last_name% wurde erfolgreich genehmigt",de_DE
+quote_approval_widget.cart.success_message.declined,"Request from %first_name% %last_name% was successfully declined",en_US
+quote_approval_widget.cart.success_message.declined,"Anfrage von %first_name% %last_name% wurde erfolgreich abgelehnt",de_DE
+quote_approval_widget.cart.success_message.canceled,"Request from %first_name% %last_name% was successfully canceled",en_US
+quote_approval_widget.cart.success_message.canceled,"Anfrage von %first_name% %last_name% wurde erfolgreich abgebrochen",de_DE
 multi_cart.form.create_cart,"Add new cart",en_US
 multi_cart.form.create_cart,"Füge einen neuen Warenkorb hinzu",de_DE
 multi_cart.form.quote.name,"Cart Name",en_US
@@ -1661,6 +1775,8 @@ multi_cart_widget.cart.created.success,"Cart '%quoteName%' was created successfu
 multi_cart_widget.cart.created.success,"Warenkorb '%quoteName%' wurde erfolgreich erstellt",de_DE
 multi_cart_widget.cart.updated.success,"Cart updated successfully",en_US
 multi_cart_widget.cart.updated.success,"Einkaufswagen wurde erfolgreich aktualisiert",de_DE
+multi_cart_widget.cart.updated.error,"Cart has been restricted or deleted",en_US
+multi_cart_widget.cart.updated.error,"Warenkorb wurde eingeschränkt oder gelöscht",de_DE
 shared_cart_widget.add_product.separate,"Add as separate item",en_US
 shared_cart_widget.add_product.separate,"Als separaten Artikel hinzufügen",de_DE
 shared_cart_widget.cart.share,"Share cart",en_US
@@ -1821,6 +1937,10 @@ customer.account.shopping_list.empty,Currently there are no items in your shoppi
 customer.account.shopping_list.empty,Zurzeit ist kein Produkt auf deiner Einkaufsliste.,de_DE
 customer.account.shopping_list.add_all_available_to_cart,Add all available products to cart,en_US
 customer.account.shopping_list.add_all_available_to_cart,Alle Produkte zum Warenkorb hinzufügen,de_DE
+customer.account.shopping_list.quick_add,"Quick add",en_US
+customer.account.shopping_list.quick_add,"Schnell hinzufügen",de_DE
+customer.account.shopping_list.quick_add.submit,Add,en_US
+customer.account.shopping_list.quick_add.submit,Hinzufügen,de_DE
 customer.account.shopping_list.print_shopping_list,Print,en_US
 customer.account.shopping_list.print_shopping_list,Drucken,de_DE
 customer.account.shopping_list.item.not_added,Failed to add product to shopping list.,en_US
@@ -1891,6 +2011,20 @@ cart.add-to-shopping-list.form.create,Create shopping list,en_US
 cart.add-to-shopping-list.form.create,Neue Einkaufsliste hinzufügen,de_DE
 cart.add-to-shopping-list.form.error.empty_name,"Please, enter shopping list name",en_US
 cart.add-to-shopping-list.form.error.empty_name,Bitte geben Sie den Namen der Einkaufsliste ein,de_DE
+cart.quick_add_to_cart,Schnell zum Warenkorb hinzufügen,de_DE
+cart.quick_add_to_cart,Quick add to Cart,en_US
+cart.quick_add_to_cart.submit,In den Warenkorb,de_DE
+cart.quick_add_to_cart.submit,Add to Cart,en_US
+product_quick_add_widget.form.quantity,"# Qty",en_US
+product_quick_add_widget.form.quantity,"# Anzahl",de_DE
+product_quick_add_widget.form.error.quantity.required,"Quantity must be at least 1",en_US
+product_quick_add_widget.form.error.quantity.required,"Die Anzahl muss mindestens 1 sein",de_DE
+product_quick_add_widget.form.error.quantity.max_value_constraint,"Provided quantity is too high",en_US
+product_quick_add_widget.form.error.quantity.max_value_constraint,"Die Menge ist leider zu groß",de_DE
+product_quick_add_widget.form.error.redirect_route_empty,"Redirect router should not be empty",en_US
+product_quick_add_widget.form.error.redirect_route_empty,"Redirect Router kann nicht leer sein",de_DE
+product_quick_add_widget.form.error.sku.empty,"SKU should not be empty",en_US
+product_quick_add_widget.form.error.sku.empty,"SKU kann nicht leer sein",de_DE
 customer.account.shopping_list.overview.add_shopping_list_to_cart,Add selected to,en_US
 customer.account.shopping_list.overview.add_shopping_list_to_cart,Hinzufügen zu,de_DE
 customer.account.shopping_list.items.added_to_cart.failed,Items were not added to cart.,en_US
@@ -2029,6 +2163,8 @@ product_discontinued_widget.note,Note,en_US
 product_discontinued_widget.note,Notiz,de_DE
 product_discontinued.super_attribute_discontinued,Discontinued,en_US
 product_discontinued.super_attribute_discontinued,Abgesetzt,de_DE
+product_discontinued.message.product_discontinued,"Product is discontinued, please choose an alternative one.",en_US
+product_discontinued.message.product_discontinued,"Produkt ist nicht mehr verfügbar, bitte wählen Sie eine Alternative.",de_DE
 shopping_list.pre.check.product_discontinued,"Product %sku% is discontinued, please choose an alternative one.",en_US
 shopping_list.pre.check.product_discontinued,"Produkt %sku% ist nicht mehr verfügbar, bitte wählen Sie eine Alternative.",de_DE
 cart.pre.check.product_discontinued,"Product %sku% is discontinued, please choose an alternative one.",en_US
@@ -2217,6 +2353,24 @@ permission.name.RemoveCartItemPermissionPlugin,Remove item from cart,en_US
 permission.name.RemoveCartItemPermissionPlugin,Artikel aus dem Warenkorb entfernen,de_DE
 permission.name.PlaceOrderWithAmountUpToPermissionPlugin,Place Order,en_US
 permission.name.PlaceOrderWithAmountUpToPermissionPlugin,Bestellung aufgeben,de_DE
+permission.name.PlaceOrderPermissionPlugin,Buy up to grand total (Requires “Send cart for approval”),en_US
+permission.name.PlaceOrderPermissionPlugin,Bis zur Gesamtsumme kaufen (erfordert “Einkaufswagen zur Genehmigung senden”),de_DE
+permission.name.RequestQuoteApprovalPermissionPlugin,Send cart for approval (Requires “Buy up to grand total”),en_US
+permission.name.RequestQuoteApprovalPermissionPlugin,Einkaufswagen zur Genehmigung senden (erfordert “Bis zur Gesamtsumme kaufen”),de_DE
+permission.name.ApproveQuotePermissionPlugin,Approve up to grand total,en_US
+permission.name.ApproveQuotePermissionPlugin,Bis zur Gesamtsumme genehmigen,de_DE
+company_page.multi_currency_type.name.cent_amount.EUR,Cent Amount,en_US
+company_page.multi_currency_type.name.cent_amount.EUR,Cent Betrag,de_DE
+company_page.multi_currency_type.name.cent_amount.CHF,Centime Amount,en_US
+company_page.multi_currency_type.name.cent_amount.CHF,Rappen Betrag,de_DE
+company_page.multi_currency_type.label,Configure permission,en_US
+company_page.multi_currency_type.label,Berechtigung konfigurieren,de_DE
+company_page.company_role_permission.permission_not_found_error,Permission was not found,en_US
+company_page.company_role_permission.permission_not_found_error,Berechtigungskonfiguration wurde nicht gefunden,de_DE
+company_page.company_role_permission.permission_save_error,Permission configuration has not been updated,en_US
+company_page.company_role_permission.permission_save_error,Berechtigungskonfiguration wurde nicht aktualisiert,de_DE
+company_page.company_role_permission.permission_save_success,Permission configuration has been updated,en_US
+company_page.company_role_permission.permission_save_success,Berechtigungskonfiguration wurde aktualisiert,de_DE
 company.account.company_user.assign_roles.empty_roles.error,At least one role must be assigned to a user,en_US
 company.account.company_user.assign_roles.empty_roles.error,Mindestens eine Rolle muss einem Benutzer zugewiesen sein,de_DE
 company.account.company_role.delete.error.default_role,"You can not delete a default role, please set another default role before delete action",en_US
@@ -2285,21 +2439,57 @@ cms.page.sort.name_desc,Nach Name absteigend sortieren,de_DE
 cms.page.sort.name_desc,Sort by name descending,en_US
 cms.page.itemsFound,Artikel gefunden,de_DE
 cms.page.itemsFound,Items found,en_US
-quick-order.input-label.sku.name,SKU or Name,en_US
-quick-order.input-label.sku.name,SKU oder Name,de_DE
-quick-order.input.placeholder,Search by SKU or Name,en_US
-quick-order.input.placeholder,Suche per SKU oder Name,de_DE
-quick-order.input-label.measurement_unit,Measuring Unit,en_US
-quick-order.input-label.measurement_unit,Maßeinheit,de_DE
-quick-order.input-label.price,Price,en_US
-quick-order.input-label.price,Preis,de_DE
-quick-order.search.no_results,Item cannot be found,en_US
-quick-order.search.no_results,Das produkt konnte nicht gefunden werden.,de_DE
-quick-order.input-quantity.message.error,Die bestellte Anzahl wurde auf die nächstmögliche Anzahl für diesen Artikel angepasst.,de_DE
-quick-order.input-quantity.message.error,The ordered quantity was adjusted to the next possible quantity for the article.,en_US
 product-quantity.errors.quantity.min.failed,Quantity %s does not satisfy requirements for product. Minimum quantity is %s.,en_US
 product-quantity.errors.quantity.min.failed,Anzahl %s erfüllt nicht die Anforderungen für dieses Produkt. Mindestanzahl is %s.,de_DE
 product-quantity.errors.quantity.max.failed,Quantity %s does not satisfy requirements for product. Maximum quantity is %s.,en_US
 product-quantity.errors.quantity.max.failed,Anzahl %s erfüllt nicht die Anforderungen für dieses Produkt. Maximalanzahl is %s.,de_DE
 product-quantity.errors.quantity.interval.failed,Quantity %s does not satisfy requirements for product. Quantity step is %s.,en_US
 product-quantity.errors.quantity.interval.failed,Anzahl %s erfüllt nicht die Anforderungen für dieses Produkt. Intervallgröße ist %s.,de_DE
+product-quantity.warning.quantity.min.failed,The ordered quantity was adjusted to the next possible quantity for the article because minimum quantity is %min%.,en_US
+product-quantity.warning.quantity.min.failed,Die bestellte Anzahl erfüllt nicht die Anforderungen für dieses Produkt. Mindestanzahl ist %min%.,de_DE
+product-quantity.warning.quantity.max.failed,The ordered quantity was adjusted to the next possible quantity for the article because maximum quantity is %max%.,en_US
+product-quantity.warning.quantity.max.failed,Die bestellte Anzahl erfüllt nicht die Anforderungen für dieses Produkt. Maximalanzahl ist %max%.,de_DE
+product-quantity.warning.quantity.interval.failed,The ordered quantity was adjusted to the next possible quantity for the article because quantity step is %step%.,en_US
+product-quantity.warning.quantity.interval.failed,Die bestellte Anzahl erfüllt nicht die Anforderungen für dieses Produkt. Intervallgröße ist %step%.,de_DE
+availability_notification.notify_me,Notify me when back in stock,en_US
+availability_notification.notify_me,"Benachrichtigen Sie mich, wenn der Artikel wieder verfügbar ist",de_DE
+availability_notification.do_not_notify_me,Do not notify me when back in stock,en_US
+availability_notification.do_not_notify_me,"Benachrichtigen Sie mich nicht, wenn der Artikel wieder verfügbar ist",de_DE
+availability_notification.subscribed,Successfully subscribed,en_US
+availability_notification.subscribed,Erfolgreich abonniert,de_DE
+availability_notification.unsubscribed,Successfully unsubscribed,en_US
+availability_notification.unsubscribed,Erfolgreich abgemeldet,de_DE
+availability_notification.successfully_unsubscribed,"Successfully unsubscribed",en_US
+availability_notification.successfully_unsubscribed,"Erfolgreich abbestellt",de_DE
+availability_notification.successfully_unsubscribed_text,"You have successfully unsubscribed from being notified when the product is available again",en_US
+availability_notification.successfully_unsubscribed_text,"Sie haben erfolgreich eine Benachrichtigung erhalten, wenn das produkt wieder verfügbar ist",de_DE
+availability_notification_subscription.mail.subscribed.head,"We just informed our purchase team about your subscription!",en_US
+availability_notification_subscription.mail.subscribed.head,"Wir haben unser Einkaufsteam gerade über Ihr Abonnement informiert!",de_DE
+availability_notification_subscription.mail.subscribed.body,"You will receive an email when the product will be available again",en_US
+availability_notification_subscription.mail.subscribed.body,"Sie erhalten eine E-Mail, sobald das Produkt wieder verfügbar ist",de_DE
+availability_notification_subscription.mail.subscribed.subject,"We just informed our purchase team about your subscription!",en_US
+availability_notification_subscription.mail.subscribed.subject,"Abonnement für Produktverfügbarkeit",de_DE
+availability_notification_subscription.mail.unsubscribed.subject,"You will not be notified when the product %name% will be available again.",en_US
+availability_notification_subscription.mail.unsubscribed.subject,"Sie werden nicht benachrichtigt, wenn das Produkt %name% wieder verfügbar ist.",de_DE
+availability_notification_subscription.mail.unsubscribed.body,"You will not be notified when the product %name% will be available again.",en_US
+availability_notification_subscription.mail.unsubscribed.body,"Sie werden nicht benachrichtigt, wenn das Produkt %name% wieder verfügbar ist.",de_DE
+availability_notification_subscription.mail.notification.buy_now,"Buy now",en_US
+availability_notification_subscription.mail.notification.buy_now,"Kaufe jetzt",de_DE
+availability_notification_subscription.mail.notification.subject,"%name% is available again!",en_US
+availability_notification_subscription.mail.notification.subject,"%name% ist wieder verfügbar!",de_DE
+availability_notification_subscription.mail.notification.head,"%name% is available again!",en_US
+availability_notification_subscription.mail.notification.head,"%name% ist wieder verfügbar",de_DE
+availability_notification_subscription.mail.notification.body,"The wait is over, you can not add this product inside your cart.",en_US
+availability_notification_subscription.mail.notification.body,"Das Warten hat ein Ende, Sie können dieses Produkt nicht in Ihren Warenkorb legen.",de_DE
+availability_notification_subscription.mail.copyright,"<em>Copyright © current year company name, All rights reserved.</em><br><br>",en_US
+availability_notification_subscription.mail.copyright,"<em>Copyright © Name des aktuellen Jahres, Alle Rechte vorbehalten.</em><br><br>",de_DE
+availability_notification_subscription.mail.unsubscribe,"Want to change how you receive these emails?<br>You can <a target=""_blank"" href=""%link%"" style=""mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #656565;font-weight: normal;text-decoration: underline;"">unsubscribe from this list</a>.",en_US
+availability_notification_subscription.mail.unsubscribe,"Möchten Sie ändern, wie Sie diese E-Mails erhalten?<br>Sie können <a target=""_blank"" href=""%link%"" style=""mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #656565;font-weight: normal;text-decoration: underline;"">aus dieser Liste austragen</a>.",de_DE
+availability_notification.email_address,"Email address",en_US
+availability_notification.email_address,"E-Mail-Addresse",de_DE
+product-quantity.notification.quantity.min.failed,The ordered quantity was adjusted to the next possible quantity for the article because minimum quantity is %min%.,en_US
+product-quantity.notification.quantity.min.failed,Die bestellte Anzahl erfüllt nicht die Anforderungen für dieses Produkt. Mindestanzahl ist %min%.,de_DE
+product-quantity.notification.quantity.max.failed,The ordered quantity was adjusted to the next possible quantity for the article because maximum quantity is %max%.,en_US
+product-quantity.notification.quantity.max.failed,Die bestellte Anzahl erfüllt nicht die Anforderungen für dieses Produkt. Maximalanzahl ist %max%.,de_DE
+product-quantity.notification.quantity.interval.failed,The ordered quantity was adjusted to the next possible quantity for the article because quantity step is %step%.,en_US
+product-quantity.notification.quantity.interval.failed,Die bestellte Anzahl erfüllt nicht die Anforderungen für dieses Produkt. Intervallgröße ist %step%.,de_DE
