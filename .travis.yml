@@ -1,9 +1,5 @@
 language: php
 
-notifications:
-  webhooks:
-    - https://release.spryker.com/ci-webhooks/add
-
 git:
   depth: 3
 
@@ -12,6 +8,10 @@ env:
     - APPLICATION_ENV=devtest
     - APPLICATION_STORE=DE
     - PROJECT=suite
+    - ARTIFACTS_KEY=AKIAJD43J5ACVDJKUXLA
+    - ARTIFACTS_SECRET=AWS_S3_SECRET_ACCESS_KEY
+    - ARTIFACTS_BUCKET=sprykerci
+    - ARTIFACTS_REGION=eu-central-1
 
 branches:
   only:
@@ -56,6 +56,13 @@ matrix:
 addons:
   postgresql: 9.6
   mysql: 5.7
+
+  artifacts:
+    debug: true
+    paths:
+      - $(ls ./data/*/logs/*/*.log | tr "\n" ":")
+      - $(ls ./tests/_output/* | tr "\n" ":")
+      - $(ls ./tests/PyzTest/*/*/_output/* | tr "\n" ":")
 
   apt:
     packages:
@@ -154,3 +161,5 @@ script:
 
 notifications:
   email: false
+  webhooks:
+    - https://release.spryker.com/ci-webhooks/add
