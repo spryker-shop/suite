@@ -37,6 +37,9 @@ use Spryker\Glue\CompanyRolesRestApi\Plugin\GlueApplication\CompanyRoleByCompany
 use Spryker\Glue\CompanyUsersRestApi\CompanyUsersRestApiConfig;
 use Spryker\Glue\CompanyUsersRestApi\Plugin\GlueApplication\CompanyUsersResourceRoutePlugin;
 use Spryker\Glue\ContentBannersRestApi\Plugin\ContentBannerResourceRoutePlugin;
+use Spryker\Glue\ContentProductsProductsResourceRelationship\Plugin\ContentProductsProductsResourceRelationshipPlugin;
+use Spryker\Glue\ContentProductsRestApi\ContentProductsRestApiConfig;
+use Spryker\Glue\ContentProductsRestApi\Plugin\ContentProductsResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\CustomersRestApiConfig;
 use Spryker\Glue\CustomersRestApi\Plugin\AddressesResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\CustomerForgottenPasswordResourceRoutePlugin;
@@ -138,6 +141,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new CartUpSellingProductsResourceRoutePlugin(),
             new GuestCartUpSellingProductsResourceRoutePlugin(),
             new ContentBannerResourceRoutePlugin(),
+            new ContentProductsResourceRoutePlugin(),
         ];
     }
 
@@ -285,6 +289,10 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         $resourceRelationshipCollection->addRelationship(
             CompanyUsersRestApiConfig::RESOURCE_COMPANY_USERS,
             new CompanyRoleByCompanyUserResourceRelationshipPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            ContentProductsRestApiConfig::RESOURCE_CONTENT_PRODUCTS,
+            new ContentProductsProductsResourceRelationshipPlugin()
         );
 
         return $resourceRelationshipCollection;
