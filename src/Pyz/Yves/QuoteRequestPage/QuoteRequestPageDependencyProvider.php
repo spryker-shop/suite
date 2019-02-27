@@ -21,8 +21,8 @@ class QuoteRequestPageDependencyProvider extends SprykerQuoteRequestPageDependen
     {
         return [
             new PurchaseOrderNumberMetadataFieldPlugin(),
-            new DeliveryDateMetadataFieldPlugin(),
             new NoteMetadataFieldPlugin(),
+            new DeliveryDateMetadataFieldPlugin(),
         ];
     }
 }
