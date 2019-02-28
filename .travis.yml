@@ -1,5 +1,8 @@
 language: php
 
+git:
+  depth: 3
+
 env:
   global:
     - APPLICATION_ENV=devtest
@@ -101,3 +104,5 @@ script:
 
 notifications:
   email: false
+  webhooks:
+    - https://release.spryker.com/ci-webhooks/add
