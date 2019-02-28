@@ -60,9 +60,9 @@ addons:
     debug: true
     s3_region: eu-central-1
     paths:
-      - $(ls ./data/*/logs/*/*.log | tr "\n" ":")
-      - $(ls ./tests/_output/* | tr "\n" ":")
-      - $(ls ./tests/PyzTest/*/*/_output/* | tr "\n" ":")
+      - $(find ./data/*/logs/*/*.log -not -empty | tr "\n" ":")
+      - $(find ./tests/_output/* -not -empty | tr "\n" ":")
+      - $(find ./tests/PyzTest/*/*/_output/* -not -empty | tr "\n" ":")
 
   apt:
     packages:
