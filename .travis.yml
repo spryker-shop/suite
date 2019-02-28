@@ -1,5 +1,9 @@
 language: php
 
+notifications:
+  webhooks:
+    - https://release.spryker.com/ci-webhooks/add
+
 git:
   depth: 3
 
