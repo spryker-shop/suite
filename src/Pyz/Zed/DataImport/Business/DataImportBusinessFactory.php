@@ -214,8 +214,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         return new ProductPriceBulkPdoDataSetWriter(
             $this->createProductPriceSql(),
             $this->createPropelExecutor(),
-            $this->createDataFormatter(),
-            $this->getUtilEncodingService()
+            $this->createDataFormatter()
         );
     }
 
@@ -1434,7 +1433,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createDataFormatter(): DataImportDataFormatterInterface
     {
-        return new DataImportDataFormatter();
+        return new DataImportDataFormatter(
+            $this->getUtilEncodingService()
+        );
     }
 
     /**
