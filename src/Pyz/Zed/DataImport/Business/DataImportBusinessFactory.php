@@ -351,7 +351,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     /**
      * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
      */
-    protected function createProductConcreteCheckExistenceStep()
+    public function createProductConcreteCheckExistenceStep()
     {
         return new ProductConcreteCheckExistenceStep(
             $this->createProductRepository()
@@ -1064,7 +1064,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     /**
      * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
      */
-    protected function createProductAbstractCheckExistenceStep()
+    public function createProductAbstractCheckExistenceStep()
     {
         return new ProductAbstractCheckExistenceStep(
             $this->createProductRepository()
