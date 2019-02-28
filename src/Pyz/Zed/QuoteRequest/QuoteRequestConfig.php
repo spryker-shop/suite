@@ -24,6 +24,8 @@ class QuoteRequestConfig extends SprykerQuoteRequestConfig
             QuoteTransfer::PRICE_MODE,
             QuoteTransfer::BUNDLE_ITEMS,
             QuoteTransfer::VOUCHER_DISCOUNTS,
+            QuoteTransfer::CART_RULE_DISCOUNTS,
+            QuoteTransfer::PROMOTION_ITEMS,
         ]);
     }
 }
