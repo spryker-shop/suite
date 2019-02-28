@@ -10,7 +10,7 @@ env:
     - PROJECT=suite
     - ARTIFACTS_KEY=AKIAJD43J5ACVDJKUXLA
     - ARTIFACTS_SECRET=$AWS_S3_SECRET_ACCESS_KEY
-    - ARTIFACTS_BUCKET=sprykerci
+    - ARTIFACTS_BUCKET=spryker-ci
 
 branches:
   only:
@@ -58,7 +58,7 @@ addons:
 
   artifacts:
     debug: true
-    s3_region: eu-central-1
+    s3_region: eu-west-1
     paths:
       - $(ls ./data/*/logs/*/*.log | tr "\n" ":")
       - $(ls ./tests/_output/* | tr "\n" ":")
