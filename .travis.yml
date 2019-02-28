@@ -62,6 +62,7 @@ addons:
       - $(find ./data/*/logs/*/*.log -not -empty | tr "\n" ":")
       - $(find ./tests/_output/* -not -empty | tr "\n" ":")
       - $(find ./tests/PyzTest/*/*/_output/* -not -empty | tr "\n" ":")
+      - $(find ./vendor/spryker/spryker/Bundles/*/tests/SprykerTest/*/*/_output/* -not -empty | tr "\n" ":")
       - /tmp/phantomjs.log
 
   apt:
