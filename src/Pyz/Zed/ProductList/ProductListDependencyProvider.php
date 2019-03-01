@@ -13,7 +13,7 @@ use Spryker\Zed\ProductList\ProductListDependencyProvider as SprykerProductListD
 class ProductListDependencyProvider extends SprykerProductListDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\ProductListExtension\Dependency\Plugin\ProductListPreSaverInterface[]
+     * @return \Spryker\Zed\ProductListExtension\Dependency\Plugin\ProductListPreSaveInterface[]
      */
     protected function getProductListPreSavePlugins(): array
     {
