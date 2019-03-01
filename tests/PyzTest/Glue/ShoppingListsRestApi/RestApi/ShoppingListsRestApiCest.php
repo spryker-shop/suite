@@ -64,43 +64,54 @@ class ShoppingListsRestApiCest
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSure('first shopping list type and id are correct')->whenI()->seeResponseJsonPathContains([
-            'type' => 'shopping-lists',
-            'id' => $this->fixtures->getFirstShoppingList()->getUuid(),
-        ], '$.data[0]');
+        $I->amSure('two shopping lists are in response')->whenI()->seeResponseDataContainsResourceCollectionOfTypeWithSizeOf(
+            'shopping-lists',
+            4
+        );
 
-        $I->amSure('first shopping list attributes are correct')->whenI()->seeResponseJsonPathContains([
-            'name' => $this->fixtures->getFirstShoppingList()->getName(),
-            'numberOfItems' => 0,
-            'owner' => $this->fixtures->getCustomer()->getFirstName() . ' ' . $this->fixtures->getCustomer()->getLastName(),
-        ], '$.data[0].attributes');
+        $I->amSure('first shopping list id is correct')->whenI()->seeResourceCollectionHasResourceWithId(
+            $this->fixtures->getFirstShoppingList()->getUuid()
+        );
 
-        $I->amSure('second shopping list links are correct')->whenI()->seeResponseJsonPathContains([
-            'self' => $I->formatFullUrl('shopping-lists/{idShoppingList}', [
+        $I->amSure('first shopping list attributes are correct')->whenI()->seeResourceByIdContainsAttributes(
+            $this->fixtures->getFirstShoppingList()->getUuid(),
+            [
+                'name' => $this->fixtures->getFirstShoppingList()->getName(),
+                'numberOfItems' => 0,
+                'owner' => $this->fixtures->getCustomer()->getFirstName() . ' ' . $this->fixtures->getCustomer()->getLastName(),
+            ]
+        );
+
+        $I->amSure('first shopping list self link is correct')->whenI()->seeResourceByIdHasSelfLink(
+            $this->fixtures->getFirstShoppingList()->getUuid(),
+            $I->formatFullUrl('shopping-lists/{idShoppingList}', [
                 'idShoppingList' => $this->fixtures->getFirstShoppingList()->getUuid(),
-            ]),
-        ], '$.data[0].links');
+            ])
+        );
 
-        $I->amSure('second shopping list type and id are correct')->whenI()->seeResponseJsonPathContains([
-            'type' => 'shopping-lists',
-            'id' => $this->fixtures->getSecondShoppingList()->getUuid(),
-        ], '$.data[1]');
+        $I->amSure('second shopping list id is correct')->whenI()->seeResourceCollectionHasResourceWithId(
+            $this->fixtures->getSecondShoppingList()->getUuid()
+        );
 
-        $I->amSure('second shopping list attributes are correct')->whenI()->seeResponseJsonPathContains([
-            'name' => $this->fixtures->getSecondShoppingList()->getName(),
-            'numberOfItems' => 3,
-            'owner' => $this->fixtures->getCustomer()->getFirstName() . ' ' . $this->fixtures->getCustomer()->getLastName(),
-        ], '$.data[1].attributes');
+        $I->amSure('second shopping list attributes are correct')->whenI()->seeResourceByIdContainsAttributes(
+            $this->fixtures->getSecondShoppingList()->getUuid(),
+            [
+                'name' => $this->fixtures->getSecondShoppingList()->getName(),
+                'numberOfItems' => 3,
+                'owner' => $this->fixtures->getCustomer()->getFirstName() . ' ' . $this->fixtures->getCustomer()->getLastName(),
+            ]
+        );
 
-        $I->amSure('second shopping list links are correct')->whenI()->seeResponseJsonPathContains([
-            'self' => $I->formatFullUrl('shopping-lists/{idShoppingList}', [
+        $I->amSure('second shopping list self link is correct')->whenI()->seeResourceByIdHasSelfLink(
+            $this->fixtures->getSecondShoppingList()->getUuid(),
+            $I->formatFullUrl('shopping-lists/{idShoppingList}', [
                 'idShoppingList' => $this->fixtures->getSecondShoppingList()->getUuid(),
-            ]),
-        ], '$.data[1].links');
+            ])
+        );
 
-        $I->amSure('response has self link')->whenI()->seeResponseJsonPathContains([
-            'self' => $I->formatFullUrl('shopping-lists'),
-        ], '$.links');
+        $I->amSure('response has self link')->whenI()->seeResponseLinksContainsSelfLink(
+            $I->formatFullUrl('shopping-lists')
+        );
     }
 
     /**
@@ -193,101 +204,123 @@ class ShoppingListsRestApiCest
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSure('shopping list type and id are correct')->whenI()->seeResponseJsonPathContains([
-            'type' => 'shopping-lists',
-            'id' => $this->fixtures->getSecondShoppingList()->getUuid(),
-        ], '$.data');
+        $I->amSure('shopping list is in the response')->whenI()->seeResponseDataContainsSingleResourceOfType(
+            'shopping-lists'
+        );
 
-        $I->amSure('shopping list attributes are correct')->whenI()->seeResponseJsonPathContains([
-            'name' => $this->fixtures->getSecondShoppingList()->getName(),
-            'numberOfItems' => 3,
-            'owner' => $this->fixtures->getCustomer()->getFirstName() . ' ' . $this->fixtures->getCustomer()->getLastName(),
-        ], '$.data.attributes');
+        $I->amSure('shopping list id is correct')->whenI()->seeSingleResourceIdEqualTo(
+            $this->fixtures->getSecondShoppingList()->getUuid()
+        );
 
-        $I->amSure('shopping list self link are correct')->whenI()->seeResponseJsonPathContains([
-            'self' => $I->formatFullUrl('shopping-lists/{idShoppingList}', [
+        $I->amSure('shopping list attributes are correct')->whenI()->seeSingleResourceContainsAttributes(
+            [
+                'name' => $this->fixtures->getSecondShoppingList()->getName(),
+                'numberOfItems' => 3,
+                'owner' => $this->fixtures->getCustomer()->getFirstName() . ' ' . $this->fixtures->getCustomer()->getLastName(),
+            ]
+        );
+
+        $I->amSure('shopping list has first item relation')->whenI()->seeSingleResourceHasRelationshipByTypeAndId(
+            'shopping-list-items',
+            $this->fixtures->getFirstItemInSecondShoppingList()->getUuid()
+        );
+
+        $I->amSure('shopping list link is correct')->whenI()->seeSingleResourceHasSelfLink(
+            $I->formatFullUrl('shopping-lists/{idShoppingList}', [
                 'idShoppingList' => $this->fixtures->getSecondShoppingList()->getUuid(),
-            ]),
-        ], '$.data.links');
+            ])
+        );
 
-        $I->amSure('shopping list relations are correct')->whenI()->seeResponseJsonPathContains([
-            'type' => 'shopping-list-items',
-        ], '$.data.relationships.shopping-list-items.data[*]');
+        $I->amSure('first shopping list item is included')->whenI()->seeIncludesContainsResourceByTypeAndId(
+            'shopping-list-items',
+            $this->fixtures->getFirstItemInSecondShoppingList()->getUuid()
+        );
 
-        $I->amSure('included contains first item')->whenI()->seeResponseJsonPathContains(
+        $I->amSure('first shopping list item attributes are correct')->whenI()->seeIncludedResourceByTypeAndIdContainsAttributes(
+            'shopping-list-items',
+            $this->fixtures->getFirstItemInSecondShoppingList()->getUuid(),
             [
-                'type' => 'shopping-list-items',
-                'attributes' => [
-                    'sku' => $this->fixtures->getFirstItemInSecondShoppingList()->getSku(),
-                    'quantity' => $this->fixtures->getFirstItemInSecondShoppingList()->getQuantity(),
-                ],
-                'links' => [
-                    'self' => $I->formatFullUrl(
-                        'shopping-lists/{idShoppingList}/shopping-list-items/{idShoppingListItem}',
-                        [
-                            'idShoppingList' => $this->fixtures->getSecondShoppingList()->getUuid(),
-                            'idShoppingListItem' => $this->fixtures->getFirstItemInSecondShoppingList()->getUuid(),
-                        ]
-                    ),
-                ],
-            ],
-            sprintf(
-                '$.included[?(@.id == %s and @.type == %s)]',
-                json_encode($this->fixtures->getFirstItemInSecondShoppingList()->getUuid()),
-                json_encode('shopping-list-items')
+                'sku' => $this->fixtures->getFirstItemInSecondShoppingList()->getSku(),
+                'quantity' => $this->fixtures->getFirstItemInSecondShoppingList()->getQuantity(),
+            ]
+        );
+
+        $I->amSure('first shopping list item has relation to its product')->whenI()->seeIncludedResourceByTypeAndIdHasRelationshipByTypeAndId(
+            'shopping-list-items',
+            $this->fixtures->getFirstItemInSecondShoppingList()->getUuid(),
+            'concrete-products',
+            $this->fixtures->getFirstItemInSecondShoppingList()->getSku()
+        );
+
+        $I->amSure('first shopping list item link is correct')->whenI()->seeIncludedResourceByTypeAndIdHasSelfLink(
+            'shopping-list-items',
+            $this->fixtures->getFirstItemInSecondShoppingList()->getUuid(),
+            $I->formatFullUrl(
+                'shopping-lists/{idShoppingList}/shopping-list-items/{idShoppingListItem}',
+                [
+                    'idShoppingList' => $this->fixtures->getSecondShoppingList()->getUuid(),
+                    'idShoppingListItem' => $this->fixtures->getFirstItemInSecondShoppingList()->getUuid(),
+                ]
             )
         );
 
-        $I->amSure('included contains second item')->whenI()->seeResponseJsonPathContains(
+        $I->amSure('second shopping list item is included')->whenI()->seeIncludesContainsResourceByTypeAndId(
+            'shopping-list-items',
+            $this->fixtures->getSecondItemInSecondShoppingList()->getUuid()
+        );
+
+        $I->amSure('second shopping list item attributes are correct')->whenI()->seeIncludedResourceByTypeAndIdContainsAttributes(
+            'shopping-list-items',
+            $this->fixtures->getSecondItemInSecondShoppingList()->getUuid(),
             [
-                'type' => 'shopping-list-items',
-                'attributes' => [
-                    'sku' => $this->fixtures->getSecondItemInSecondShoppingList()->getSku(),
-                    'quantity' => $this->fixtures->getSecondItemInSecondShoppingList()->getQuantity(),
-                ],
-                'links' => [
-                    'self' => $I->formatFullUrl(
-                        'shopping-lists/{idShoppingList}/shopping-list-items/{idShoppingListItem}',
-                        [
-                            'idShoppingList' => $this->fixtures->getSecondShoppingList()->getUuid(),
-                            'idShoppingListItem' => $this->fixtures->getSecondItemInSecondShoppingList()->getUuid(),
-                        ]
-                    ),
-                ],
-            ],
-            sprintf(
-                '$.included[?(@.id == %s and @.type == %s)]',
-                json_encode($this->fixtures->getSecondItemInSecondShoppingList()->getUuid()),
-                json_encode('shopping-list-items')
+                'sku' => $this->fixtures->getSecondItemInSecondShoppingList()->getSku(),
+                'quantity' => $this->fixtures->getSecondItemInSecondShoppingList()->getQuantity(),
+            ]
+        );
+
+        $I->amSure('second shopping list item has relation to its product')->whenI()->seeIncludedResourceByTypeAndIdHasRelationshipByTypeAndId(
+            'shopping-list-items',
+            $this->fixtures->getSecondItemInSecondShoppingList()->getUuid(),
+            'concrete-products',
+            $this->fixtures->getSecondItemInSecondShoppingList()->getSku()
+        );
+
+        $I->amSure('second shopping list item link is correct')->whenI()->seeIncludedResourceByTypeAndIdHasSelfLink(
+            'shopping-list-items',
+            $this->fixtures->getSecondItemInSecondShoppingList()->getUuid(),
+            $I->formatFullUrl(
+                'shopping-lists/{idShoppingList}/shopping-list-items/{idShoppingListItem}',
+                [
+                    'idShoppingList' => $this->fixtures->getSecondShoppingList()->getUuid(),
+                    'idShoppingListItem' => $this->fixtures->getSecondItemInSecondShoppingList()->getUuid(),
+                ]
             )
         );
 
-        $I->amSure('included contains concrete product for first item')->whenI()->seeResponseJsonPathContains(
-            [
-                'type' => 'concrete-products',
-                'attributes' => [
-                    'sku' => $this->fixtures->getFirstItemInSecondShoppingList()->getSku(),
-                ],
-            ],
-            sprintf(
-                '$.included[?(@.id == %s and @.type == %s)]',
-                json_encode($this->fixtures->getFirstItemInSecondShoppingList()->getSku()),
-                json_encode('concrete-products')
-            )
+        $I->amSure('first shopping list item product is included')->whenI()->seeIncludesContainsResourceByTypeAndId(
+            'concrete-products',
+            $this->fixtures->getFirstItemInSecondShoppingList()->getSku()
         );
 
-        $I->amSure('included contains concrete product for second item')->whenI()->seeResponseJsonPathContains(
+        $I->amSure('first shopping list item product attributes are correct')->whenI()->seeIncludesContainsResourceByTypeAndId(
+            'concrete-products',
+            $this->fixtures->getFirstItemInSecondShoppingList()->getSku(),
             [
-                'type' => 'concrete-products',
-                'attributes' => [
-                    'sku' => $this->fixtures->getSecondItemInSecondShoppingList()->getSku(),
-                ],
-            ],
-            sprintf(
-                '$.included[?(@.id == %s and @.type == %s)]',
-                json_encode($this->fixtures->getSecondItemInSecondShoppingList()->getSku()),
-                json_encode('concrete-products')
-            )
+                'sku' => $this->fixtures->getSecondItemInSecondShoppingList()->getSku(),
+            ]
+        );
+
+        $I->amSure('second shopping list item product is included')->whenI()->seeIncludesContainsResourceByTypeAndId(
+            'concrete-products',
+            $this->fixtures->getSecondItemInSecondShoppingList()->getSku()
+        );
+
+        $I->amSure('second shopping list item product attributes are correct')->whenI()->seeIncludesContainsResourceByTypeAndId(
+            'concrete-products',
+            $this->fixtures->getSecondItemInSecondShoppingList()->getSku(),
+            [
+                'sku' => $this->fixtures->getSecondItemInSecondShoppingList()->getSku(),
+            ]
         );
     }
 
