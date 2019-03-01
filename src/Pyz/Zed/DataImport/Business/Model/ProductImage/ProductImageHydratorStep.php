@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\ProductImage;
 
+use Generated\Shared\Transfer\SpyLocaleEntityTransfer;
 use Generated\Shared\Transfer\SpyProductImageEntityTransfer;
 use Generated\Shared\Transfer\SpyProductImageSetEntityTransfer;
 use Generated\Shared\Transfer\SpyProductImageSetToProductImageEntityTransfer;
@@ -16,7 +17,12 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class ProductImageHydratorStep extends PublishAwareStep implements DataImportStepInterface
 {
+    public const BULK_SIZE = 5000;
+
     public const KEY_LOCALE = 'locale';
+    public const KEY_ID_LOCALE = 'id_locale';
+    public const KEY_SPY_LOCALE = 'spy_locale';
+    public const KEY_LOCALE_NAME = 'locale_name';
     public const KEY_IMAGE_SET_NAME = 'image_set_name';
     public const KEY_IMAGE_SET_DB_NAME_COLUMN = 'name';
     public const KEY_ABSTRACT_SKU = 'abstract_sku';
@@ -29,6 +35,10 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
     public const KEY_IMAGE_SET_FK_RESOURCE_PRODUCT_SET = 'fk_resource_product_set';
     public const KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT = 'fk_product_abstract';
     public const KEY_IMAGE_SET_FK_LOCALE = 'fk_locale';
+    public const KEY_ID_PRODUCT = 'id_product';
+    public const KEY_FK_PRODUCT = 'fk_product';
+    public const KEY_ID_PRODUCT_ABSTRACT = 'id_product_abstract';
+    public const KEY_FK_PRODUCT_ABSTRACT = 'fk_product_abstract';
     public const KEY_SORT_ORDER = 'sort_order';
     public const IMAGE_TO_IMAGE_SET_RELATION_ORDER = 0;
     public const DATA_PRODUCT_IMAGE_SET_TRANSFER = 'DATA_PRODUCT_IMAGE_SET_TRANSFER';
@@ -56,12 +66,25 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
     {
         $imageSetEntityTransfer = new SpyProductImageSetEntityTransfer();
         $imageSetEntityTransfer->setName($dataSet[static::KEY_IMAGE_SET_NAME]);
-        $imageSetEntityTransfer->setFkLocale($dataSet[static::KEY_IMAGE_SET_FK_LOCALE]);
+
         if (!empty($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT])) {
             $imageSetEntityTransfer->setFkProductAbstract($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT]);
         } elseif (!empty($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT])) {
             $imageSetEntityTransfer->setFkProduct($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT]);
         }
+
+        if (isset($dataSet[static::KEY_IMAGE_SET_FK_LOCALE])) {
+            $imageSetEntityTransfer->setFkLocale($dataSet[static::KEY_IMAGE_SET_FK_LOCALE]);
+            $dataSet[static::DATA_PRODUCT_IMAGE_SET_TRANSFER] = $imageSetEntityTransfer;
+
+            return;
+        }
+
+        $localeEntityTransfer = (new SpyLocaleEntityTransfer())
+            ->setLocaleName($dataSet[static::KEY_LOCALE]);
+
+        $imageSetEntityTransfer->setSpyLocale($localeEntityTransfer);
+
         $dataSet[static::DATA_PRODUCT_IMAGE_SET_TRANSFER] = $imageSetEntityTransfer;
     }
 

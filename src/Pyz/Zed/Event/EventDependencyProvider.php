@@ -7,7 +7,9 @@
 
 namespace Pyz\Zed\Event;
 
+use Spryker\Zed\AvailabilityNotification\Communication\Plugin\Event\Subscriber\AvailabilityNotificationSubscriber;
 use Spryker\Zed\AvailabilityStorage\Communication\Plugin\Event\Subscriber\AvailabilityStorageEventSubscriber;
+use Spryker\Zed\CategoryImageStorage\Communication\Plugin\Event\Subscriber\CategoryImageStorageEventSubscriber;
 use Spryker\Zed\CategoryPageSearch\Communication\Plugin\Event\Subscriber\CategoryPageSearchEventSubscriber;
 use Spryker\Zed\CategoryStorage\Communication\Plugin\Event\Subscriber\CategoryStorageEventSubscriber;
 use Spryker\Zed\CmsBlockCategoryStorage\Communication\Plugin\Event\Subscriber\CmsBlockCategoryStorageEventSubscriber;
@@ -15,6 +17,7 @@ use Spryker\Zed\CmsBlockProductStorage\Communication\Plugin\Event\Subscriber\Cms
 use Spryker\Zed\CmsBlockStorage\Communication\Plugin\Event\Subscriber\CmsBlockStorageEventSubscriber;
 use Spryker\Zed\CmsPageSearch\Communication\Plugin\Event\Subscriber\CmsPageSearchEventSubscriber;
 use Spryker\Zed\CmsStorage\Communication\Plugin\Event\Subscriber\CmsStorageEventSubscriber;
+use Spryker\Zed\ContentStorage\Communication\Plugin\Event\Subscriber\ContentStorageEventSubscriber;
 use Spryker\Zed\CustomerAccessStorage\Communication\Plugin\Event\Subscriber\CustomerAccessStorageEventSubscriber;
 use Spryker\Zed\Event\EventDependencyProvider as SprykerEventDependencyProvider;
 use Spryker\Zed\FileManagerStorage\Communication\Plugin\Event\Subscriber\FileManagerStorageSubscriber;
@@ -35,6 +38,9 @@ use Spryker\Zed\ProductListStorage\Communication\Plugin\Event\Subscriber\Product
 use Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Event\Subscriber\ProductMeasurementUnitStorageEventSubscriber;
 use Spryker\Zed\ProductOptionStorage\Communication\Plugin\Event\Subscriber\ProductOptionStorageEventSubscriber;
 use Spryker\Zed\ProductPackagingUnitStorage\Communication\Plugin\Event\Subscriber\ProductPackagingUnitStorageEventSubscriber;
+use Spryker\Zed\ProductPageSearch\Communication\Plugin\Event\Subscriber\ProductConcretePageSearchProductAbstractEventSubscriber;
+use Spryker\Zed\ProductPageSearch\Communication\Plugin\Event\Subscriber\ProductConcretePageSearchProductEventSubscriber;
+use Spryker\Zed\ProductPageSearch\Communication\Plugin\Event\Subscriber\ProductConcretePageSearchProductLocalizedAttributesEventSubscriber;
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\Event\Subscriber\ProductPageSearchEventSubscriber;
 use Spryker\Zed\ProductQuantityStorage\Communication\Plugin\Event\Subscriber\ProductQuantityStorageEventSubscriber;
 use Spryker\Zed\ProductRelationStorage\Communication\Plugin\Event\Subscriber\ProductRelationStorageEventSubscriber;
@@ -81,6 +87,7 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new ProductCategoryStorageEventSubscriber());
         $eventSubscriberCollection->add(new ProductCategoryFilterStorageEventSubscriber());
         $eventSubscriberCollection->add(new ProductImageStorageEventSubscriber());
+        $eventSubscriberCollection->add(new CategoryImageStorageEventSubscriber());
         $eventSubscriberCollection->add(new ProductGroupStorageEventSubscriber());
         $eventSubscriberCollection->add(new ProductOptionStorageEventSubscriber());
         $eventSubscriberCollection->add(new ProductRelationStorageEventSubscriber());
@@ -98,7 +105,9 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new FileManagerStorageSubscriber());
         $eventSubscriberCollection->add(new CustomerAccessStorageEventSubscriber());
         $eventSubscriberCollection->add(new ShoppingListStorageEventSubscriber()); #ShoppingListWidget feature
+        $eventSubscriberCollection->add(new ContentStorageEventSubscriber());
 
+        $eventSubscriberCollection->add(new AvailabilityNotificationSubscriber());
         /**
          * Search Events
          */
@@ -109,6 +118,9 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new ProductPageSearchEventSubscriber());
         $eventSubscriberCollection->add(new ProductLabelSearchEventSubscriber());
         $eventSubscriberCollection->add(new ProductListSearchEventSubscriber());
+        $eventSubscriberCollection->add(new ProductConcretePageSearchProductAbstractEventSubscriber());
+        $eventSubscriberCollection->add(new ProductConcretePageSearchProductEventSubscriber());
+        $eventSubscriberCollection->add(new ProductConcretePageSearchProductLocalizedAttributesEventSubscriber());
 
         return $eventSubscriberCollection;
     }
