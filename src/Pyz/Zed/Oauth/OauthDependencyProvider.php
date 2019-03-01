@@ -7,9 +7,12 @@
 
 namespace Pyz\Zed\Oauth;
 
+use Spryker\Zed\Oauth\Communication\Plugin\Oauth\PasswordOauthGrantConfigurationProviderPlugin;
+use Spryker\Zed\Oauth\Communication\Plugin\Oauth\RefreshTokenOauthGrantConfigurationProviderPlugin;
 use Spryker\Zed\Oauth\OauthDependencyProvider as SprykerOauthDependencyProvider;
-use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Oauth\CompanyUserOauthGrantTypeProviderPlugin;
 use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Oauth\CompanyUserOauthScopeProviderPlugin;
+use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Oauth\CompanyUserOauthUserProviderPlugin;
+use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Oauth\IdCompanyUserOauthGrantConfigurationProviderPlugin;
 use Spryker\Zed\OauthCustomerConnector\Communication\Plugin\Oauth\CustomerOauthScopeProviderPlugin;
 use Spryker\Zed\OauthCustomerConnector\Communication\Plugin\Oauth\CustomerOauthUserProviderPlugin;
 
@@ -22,6 +25,7 @@ class OauthDependencyProvider extends SprykerOauthDependencyProvider
     {
         return [
             new CustomerOauthUserProviderPlugin(),
+            new CompanyUserOauthUserProviderPlugin(),
         ];
     }
 
@@ -31,18 +35,20 @@ class OauthDependencyProvider extends SprykerOauthDependencyProvider
     protected function getScopeProviderPlugins(): array
     {
         return [
-            new CompanyUserOauthScopeProviderPlugin(),
             new CustomerOauthScopeProviderPlugin(),
+            new CompanyUserOauthScopeProviderPlugin(),
         ];
     }
 
     /**
-     * @return \Spryker\Zed\OauthExtension\Dependency\Plugin\OauthGrantTypeProviderPluginInterface[]
+     * @return \Spryker\Zed\OauthExtension\Dependency\Plugin\OauthGrantConfigurationProviderPluginInterface[]
      */
-    protected function getGrantTypeProviderPlugins(): array
+    protected function getGrantTypeConfigurationProviderPlugins(): array
     {
         return [
-            new CompanyUserOauthGrantTypeProviderPlugin(),
+            new PasswordOauthGrantConfigurationProviderPlugin(),
+            new RefreshTokenOauthGrantConfigurationProviderPlugin(),
+            new IdCompanyUserOauthGrantConfigurationProviderPlugin(),
         ];
     }
 }
