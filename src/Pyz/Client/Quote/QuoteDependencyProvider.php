@@ -12,6 +12,7 @@ use Spryker\Client\MultiCart\Plugin\NameQuoteTransferExpanderPlugin;
 use Spryker\Client\Price\Plugin\PriceModeQuoteTransferExpanderPlugin;
 use Spryker\Client\Quote\QuoteDependencyProvider as BaseQuoteDependencyProvider;
 use Spryker\Client\Store\Plugin\StoreQuoteTransferExpanderPlugin;
+use Spryker\Zed\QuoteRequest\Communication\Plugin\Quote\QuoteRequestAllowableDatabaseStrategyPlugin;
 
 class QuoteDependencyProvider extends BaseQuoteDependencyProvider
 {
@@ -26,6 +27,18 @@ class QuoteDependencyProvider extends BaseQuoteDependencyProvider
             new NameQuoteTransferExpanderPlugin(), #MultiCartFeature
             new StoreQuoteTransferExpanderPlugin(),
             new PriceModeQuoteTransferExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @param \Spryker\Client\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\QuoteExtension\Dependency\Plugin\AllowableDatabaseStrategyPluginInterface[]
+     */
+    protected function getAllowableDatabaseStrategyPlugins(Container $container)
+    {
+        return [
+            new QuoteRequestAllowableDatabaseStrategyPlugin(),
         ];
     }
 }
