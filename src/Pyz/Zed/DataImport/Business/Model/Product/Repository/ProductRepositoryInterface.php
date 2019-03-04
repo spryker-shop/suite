@@ -22,7 +22,7 @@ interface ProductRepositoryInterface
     /**
      * @param string $sku
      *
-     * @return int
+     * @return string
      */
     public function getAbstractSkuByConcreteSku($sku);
 
@@ -32,6 +32,16 @@ interface ProductRepositoryInterface
      * @return int
      */
     public function getIdProductAbstractByAbstractSku($sku);
+
+    /**
+     * @return string[]
+     */
+    public function getSkuProductAbstractList(): array;
+
+    /**
+     * @return string[]
+     */
+    public function getSkuProductConcreteList(): array;
 
     /**
      * @param \Orm\Zed\Product\Persistence\SpyProductAbstract $productAbstractEntity
@@ -47,4 +57,9 @@ interface ProductRepositoryInterface
      * @return void
      */
     public function addProductConcrete(SpyProduct $productEntity, $abstractSku = null);
+
+    /**
+     * @return void
+     */
+    public function flush(): void;
 }
