@@ -9,7 +9,6 @@ namespace Pyz\Client\Checkout;
 
 use Spryker\Client\Checkout\CheckoutDependencyProvider as SprykerCheckoutDependencyProvider;
 use Spryker\Client\QuoteApproval\Plugin\Checkout\QuoteApprovalCheckoutPreCheckPlugin;
-use Spryker\Client\QuoteRequest\Plugin\Checkout\QuoteRequestCheckoutPreCheckPlugin;
 
 class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
 {
@@ -20,7 +19,6 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
     {
         return [
             new QuoteApprovalCheckoutPreCheckPlugin(),
-            new QuoteRequestCheckoutPreCheckPlugin(),
         ];
     }
 }
