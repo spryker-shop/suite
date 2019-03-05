@@ -7,6 +7,8 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\Product\Repository;
 
+use Orm\Zed\Product\Persistence\Map\SpyProductAbstractTableMap;
+use Orm\Zed\Product\Persistence\Map\SpyProductTableMap;
 use Orm\Zed\Product\Persistence\SpyProduct;
 use Orm\Zed\Product\Persistence\SpyProductAbstract;
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
@@ -64,6 +66,28 @@ class ProductRepository implements ProductRepositoryInterface
         }
 
         return static::$resolved[$sku][static::ID_PRODUCT_ABSTRACT];
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getSkuProductAbstractList(): array
+    {
+        return SpyProductAbstractQuery::create()
+            ->select([SpyProductAbstractTableMap::COL_SKU])
+            ->find()
+            ->toArray();
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getSkuProductConcreteList(): array
+    {
+        return SpyProductQuery::create()
+            ->select([SpyProductTableMap::COL_SKU])
+            ->find()
+            ->toArray();
     }
 
     /**
@@ -134,5 +158,13 @@ class ProductRepository implements ProductRepositoryInterface
             static::ID_PRODUCT => $productEntity->getIdProduct(),
             static::ABSTRACT_SKU => ($abstractSku) ? $abstractSku : $productEntity->getSpyProductAbstract()->getSku(),
         ];
+    }
+
+    /**
+     * @return void
+     */
+    public function flush(): void
+    {
+        static::$resolved = [];
     }
 }
