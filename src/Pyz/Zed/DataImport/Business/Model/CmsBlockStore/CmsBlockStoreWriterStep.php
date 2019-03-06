@@ -38,15 +38,15 @@ class CmsBlockStoreWriterStep extends PublishAwareStep implements DataImportStep
      */
     public function execute(DataSetInterface $dataSet)
     {
-        $cmsBlockId = $this->getIdCmsBlockByName($dataSet[static::KEY_BLOCK_NAME]);
+        $idCmsBlock = $this->getIdCmsBlockByName($dataSet[static::KEY_BLOCK_NAME]);
 
         (new SpyCmsBlockStoreQuery())
-            ->filterByFkCmsBlock($cmsBlockId)
+            ->filterByFkCmsBlock($idCmsBlock)
             ->filterByFkStore($this->getIdStoreByName($dataSet[static::KEY_STORE_NAME]))
             ->findOneOrCreate()
             ->save();
 
-        $this->addPublishEvents(CmsBlockEvents::CMS_BLOCK_PUBLISH, $cmsBlockId);
+        $this->addPublishEvents(CmsBlockEvents::CMS_BLOCK_PUBLISH, $idCmsBlock);
     }
 
     /**
