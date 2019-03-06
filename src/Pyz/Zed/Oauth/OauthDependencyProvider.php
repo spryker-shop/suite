@@ -7,12 +7,12 @@
 
 namespace Pyz\Zed\Oauth;
 
-use Spryker\Zed\Oauth\Communication\Plugin\Oauth\PasswordOauthGrantConfigurationProviderPlugin;
-use Spryker\Zed\Oauth\Communication\Plugin\Oauth\RefreshTokenOauthGrantConfigurationProviderPlugin;
+use Spryker\Zed\Oauth\Communication\Plugin\Oauth\PasswordOauthGrantTypeConfigurationProviderPlugin;
+use Spryker\Zed\Oauth\Communication\Plugin\Oauth\RefreshTokenOauthGrantTypeConfigurationProviderPlugin;
 use Spryker\Zed\Oauth\OauthDependencyProvider as SprykerOauthDependencyProvider;
 use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Oauth\CompanyUserOauthScopeProviderPlugin;
 use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Oauth\CompanyUserOauthUserProviderPlugin;
-use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Oauth\IdCompanyUserOauthGrantConfigurationProviderPlugin;
+use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Oauth\IdCompanyUserOauthGrantTypeConfigurationProviderPlugin;
 use Spryker\Zed\OauthCustomerConnector\Communication\Plugin\Oauth\CustomerOauthScopeProviderPlugin;
 use Spryker\Zed\OauthCustomerConnector\Communication\Plugin\Oauth\CustomerOauthUserProviderPlugin;
 
@@ -41,14 +41,14 @@ class OauthDependencyProvider extends SprykerOauthDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\OauthExtension\Dependency\Plugin\OauthGrantConfigurationProviderPluginInterface[]
+     * @return \Spryker\Zed\OauthExtension\Dependency\Plugin\OauthGrantTypeConfigurationProviderPluginInterface[]
      */
     protected function getGrantTypeConfigurationProviderPlugins(): array
     {
         return [
-            new PasswordOauthGrantConfigurationProviderPlugin(),
-            new RefreshTokenOauthGrantConfigurationProviderPlugin(),
-            new IdCompanyUserOauthGrantConfigurationProviderPlugin(),
+            new PasswordOauthGrantTypeConfigurationProviderPlugin(),
+            new RefreshTokenOauthGrantTypeConfigurationProviderPlugin(),
+            new IdCompanyUserOauthGrantTypeConfigurationProviderPlugin(),
         ];
     }
 }
