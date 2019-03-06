@@ -31,11 +31,9 @@ class QuoteDependencyProvider extends BaseQuoteDependencyProvider
     }
 
     /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
      * @return \Spryker\Zed\QuoteExtension\Dependency\Plugin\AllowableDatabaseStrategyPluginInterface[]
      */
-    protected function getAllowableDatabaseStrategyPlugins(Container $container)
+    protected function getAllowableDatabaseStrategyPlugins()
     {
         return [
             new QuoteRequestAllowableDatabaseStrategyPlugin(),
