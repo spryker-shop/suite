@@ -21,8 +21,8 @@ class AgentQuoteRequestPageDependencyProvider extends SprykerAgentQuoteRequestPa
     {
         return [
             new PurchaseOrderNumberMetadataFieldPlugin(),
-            new NoteMetadataFieldPlugin(),
             new DeliveryDateMetadataFieldPlugin(),
+            new NoteMetadataFieldPlugin(),
         ];
     }
 }
