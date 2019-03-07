@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "52a45699a9b57715bfb031186c86bec2",
+    "content-hash": "67696dc07347d9b637f47ef9ee78b7a6",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1930,7 +1930,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -4266,27 +4266,27 @@
         },
         {
             "name": "spryker-shop/multi-cart-page",
-            "version": "1.5.1",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/multi-cart-page.git",
-                "reference": "35901c73db1469c36400194867412a04ec98d4c6"
+                "reference": "c284a604b30e1b5486536b8e5603443c0b8ffa02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/multi-cart-page/zipball/35901c73db1469c36400194867412a04ec98d4c6",
-                "reference": "35901c73db1469c36400194867412a04ec98d4c6",
+                "url": "https://api.github.com/repos/spryker-shop/multi-cart-page/zipball/c284a604b30e1b5486536b8e5603443c0b8ffa02",
+                "reference": "c284a604b30e1b5486536b8e5603443c0b8ffa02",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "spryker-shop/cart-page": "^1.0.0",
                 "spryker-shop/shop-application": "^1.0.0",
                 "spryker-shop/shop-ui": "^1.6.0",
                 "spryker/application": "^3.0.0",
                 "spryker/cart": "^5.0.0",
                 "spryker/kernel": "^3.24.0",
                 "spryker/multi-cart": "^1.0.0",
+                "spryker/quote": "^2.8.0",
                 "spryker/symfony": "^3.1.0"
             },
             "require-dev": {
@@ -4299,8 +4299,8 @@
             },
             "suggest": {
                 "spryker-shop/customer-page": "if you want to use customer layout templates: ^1.0.0",
-                "spryker-shop/shared-cart-widget": "If you want to use CartListPermissionGroupWidget or CartListPermissionGroupWidgetPlugin",
-                "spryker-shop/shopping-list-widget": "If you want to use components from module ShoppingListWidget or CartToShoppingListWidgetPlugin",
+                "spryker-shop/shared-cart-widget": "If you want to use CartListPermissionGroupWidget",
+                "spryker-shop/shopping-list-widget": "If you want to use components from module ShoppingListWidget",
                 "spryker/permission": "If you want to use permissions plugins",
                 "spryker/silex": "Use this module when using plugins that need Silex dependencies."
             },
@@ -4320,7 +4320,7 @@
                 "proprietary"
             ],
             "description": "MultiCartPage module",
-            "time": "2019-02-14T11:49:33+00:00"
+            "time": "2019-03-06T20:54:09+00:00"
         },
         {
             "name": "spryker-shop/multi-cart-widget",
@@ -4721,16 +4721,16 @@
         },
         {
             "name": "spryker-shop/product-bundle-widget",
-            "version": "1.3.0",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/product-bundle-widget.git",
-                "reference": "21dcf15820be9415757dc13626739d54e0f32bd1"
+                "reference": "28c3e61c6a8d316ce1303016084c5e22f7eb9dcc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/product-bundle-widget/zipball/21dcf15820be9415757dc13626739d54e0f32bd1",
-                "reference": "21dcf15820be9415757dc13626739d54e0f32bd1",
+                "url": "https://api.github.com/repos/spryker-shop/product-bundle-widget/zipball/28c3e61c6a8d316ce1303016084c5e22f7eb9dcc",
+                "reference": "28c3e61c6a8d316ce1303016084c5e22f7eb9dcc",
                 "shasum": ""
             },
             "require": {
@@ -4741,7 +4741,6 @@
             },
             "require-dev": {
                 "spryker-shop/cart-page": "*",
-                "spryker-shop/multi-cart-page": "*",
                 "spryker-shop/multi-cart-widget": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/testify": "*"
@@ -4767,7 +4766,7 @@
                 "proprietary"
             ],
             "description": "ProductBundleWidget module",
-            "time": "2018-10-11T17:28:11+00:00"
+            "time": "2019-03-06T20:54:09+00:00"
         },
         {
             "name": "spryker-shop/product-category-widget",
@@ -5979,16 +5978,16 @@
         },
         {
             "name": "spryker-shop/shared-cart-widget",
-            "version": "1.5.0",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/shared-cart-widget.git",
-                "reference": "77d082deed8646b27bcb19506adbbeada55887d8"
+                "reference": "6fe6e372067f24c8734d92cb00d2935baa79d31b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/shared-cart-widget/zipball/77d082deed8646b27bcb19506adbbeada55887d8",
-                "reference": "77d082deed8646b27bcb19506adbbeada55887d8",
+                "url": "https://api.github.com/repos/spryker-shop/shared-cart-widget/zipball/6fe6e372067f24c8734d92cb00d2935baa79d31b",
+                "reference": "6fe6e372067f24c8734d92cb00d2935baa79d31b",
                 "shasum": ""
             },
             "require": {
@@ -6001,7 +6000,6 @@
                 "spryker/shared-cart": "^1.2.0"
             },
             "require-dev": {
-                "spryker-shop/multi-cart-page": "*",
                 "spryker-shop/multi-cart-widget": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/testify": "*"
@@ -6028,7 +6026,7 @@
                 "proprietary"
             ],
             "description": "SharedCartWidget module",
-            "time": "2019-02-18T18:07:44+00:00"
+            "time": "2019-03-07T14:54:30+00:00"
         },
         {
             "name": "spryker-shop/shop-application",
@@ -6401,16 +6399,16 @@
         },
         {
             "name": "spryker-shop/shopping-list-page",
-            "version": "0.6.0",
+            "version": "0.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/shopping-list-page.git",
-                "reference": "d5e09372a4785c75d9b3d9fc5618b18b6ae6abaf"
+                "reference": "809f93c21747365953eb0e5adb54629b56878783"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/shopping-list-page/zipball/d5e09372a4785c75d9b3d9fc5618b18b6ae6abaf",
-                "reference": "d5e09372a4785c75d9b3d9fc5618b18b6ae6abaf",
+                "url": "https://api.github.com/repos/spryker-shop/shopping-list-page/zipball/809f93c21747365953eb0e5adb54629b56878783",
+                "reference": "809f93c21747365953eb0e5adb54629b56878783",
                 "shasum": ""
             },
             "require": {
@@ -6458,7 +6456,7 @@
                 "proprietary"
             ],
             "description": "ShoppingListPage module",
-            "time": "2019-03-01T11:54:36+00:00"
+            "time": "2019-03-07T14:54:30+00:00"
         },
         {
             "name": "spryker-shop/shopping-list-page-extension",
@@ -6505,16 +6503,16 @@
         },
         {
             "name": "spryker-shop/shopping-list-widget",
-            "version": "0.4.2",
+            "version": "0.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/shopping-list-widget.git",
-                "reference": "9ed008ed453c0708fc668d3944e5b0b115189e5b"
+                "reference": "d14041494f2a79473450f3ec05dc818cbbbbaa35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/shopping-list-widget/zipball/9ed008ed453c0708fc668d3944e5b0b115189e5b",
-                "reference": "9ed008ed453c0708fc668d3944e5b0b115189e5b",
+                "url": "https://api.github.com/repos/spryker-shop/shopping-list-widget/zipball/d14041494f2a79473450f3ec05dc818cbbbbaa35",
+                "reference": "d14041494f2a79473450f3ec05dc818cbbbbaa35",
                 "shasum": ""
             },
             "require": {
@@ -6530,7 +6528,6 @@
             },
             "require-dev": {
                 "spryker-shop/customer-page": "*",
-                "spryker-shop/multi-cart-page": "*",
                 "spryker-shop/shopping-list-page": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/product-detail-page": "*",
@@ -6561,7 +6558,7 @@
                 "proprietary"
             ],
             "description": "ShoppingListWidget module",
-            "time": "2019-01-04T15:29:56+00:00"
+            "time": "2019-03-07T14:54:30+00:00"
         },
         {
             "name": "spryker-shop/tabs-widget",
@@ -7213,11 +7210,19 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-0": {
+                    "Unit": "tests/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Assertion bundle",
+            "support": {
+                "source": "https://github.com/spryker/Assertion/tree/3.0.0"
+            },
             "time": "2017-02-22T12:08:46+00:00"
         },
         {
@@ -8028,11 +8033,14 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Cache bundle",
+            "support": {
+                "source": "https://github.com/spryker/Cache/tree/3.1.0"
+            },
             "time": "2017-04-10T13:13:21+00:00"
         },
         {
@@ -9036,11 +9044,14 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "CategoryExporter module",
+            "support": {
+                "source": "https://github.com/spryker/CategoryExporter/tree/3.0.2"
+            },
             "time": "2017-07-13T15:46:45+00:00"
         },
         {
@@ -13184,11 +13195,19 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "SprykerTest\\": "tests/SprykerTest/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "CustomerApi module",
+            "support": {
+                "source": "https://github.com/spryker/CustomerApi/tree/master"
+            },
             "time": "2017-11-10T15:08:30+00:00"
         },
         {
@@ -14276,11 +14295,14 @@
                     "dev-master": "1.0.x-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Egulias module",
+            "support": {
+                "source": "https://github.com/spryker/Egulias/tree/1.0.0"
+            },
             "time": "2017-11-09T13:55:22+00:00"
         },
         {
@@ -15321,11 +15343,19 @@
                     "Function": "tests/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-0": {
+                    "Unit": "tests/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Graph bundle",
+            "support": {
+                "source": "https://github.com/spryker/Graph/tree/3.0.0"
+            },
             "time": "2017-02-22T12:08:46+00:00"
         },
         {
@@ -15351,11 +15381,14 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Graphviz module",
+            "support": {
+                "source": "https://github.com/spryker/Graphviz/tree/2.0.1"
+            },
             "time": "2017-08-02T16:31:17+00:00"
         },
         {
@@ -15643,11 +15676,20 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-0": {
+                    "Functional": "tests/",
+                    "Unit": "tests/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Invoice bundle",
+            "support": {
+                "source": "https://github.com/spryker/Invoice/tree/2.0.1"
+            },
             "time": "2017-02-22T11:53:10+00:00"
         },
         {
@@ -18229,16 +18271,16 @@
         },
         {
             "name": "spryker/persistent-cart",
-            "version": "1.7.1",
+            "version": "1.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/persistent-cart.git",
-                "reference": "b593850721edc00709370aae6947c70b0f1abd15"
+                "reference": "db571b8b2cd9a01fcade59a71ca293c4b4aa8ab2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/persistent-cart/zipball/b593850721edc00709370aae6947c70b0f1abd15",
-                "reference": "b593850721edc00709370aae6947c70b0f1abd15",
+                "url": "https://api.github.com/repos/spryker/persistent-cart/zipball/db571b8b2cd9a01fcade59a71ca293c4b4aa8ab2",
+                "reference": "db571b8b2cd9a01fcade59a71ca293c4b4aa8ab2",
                 "shasum": ""
             },
             "require": {
@@ -18275,7 +18317,7 @@
                 "proprietary"
             ],
             "description": "PersistentCart module",
-            "time": "2019-03-01T12:46:17+00:00"
+            "time": "2019-03-07T14:52:21+00:00"
         },
         {
             "name": "spryker/persistent-cart-extension",
@@ -24490,11 +24532,14 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Redis bundle",
+            "support": {
+                "source": "https://github.com/spryker/Redis/tree/2.0.1"
+            },
             "time": "2017-04-26T15:15:36+00:00"
         },
         {
@@ -27745,11 +27790,19 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "SprykerTest\\": "tests/SprykerTest/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "UtilDateTime module",
+            "support": {
+                "source": "https://github.com/spryker/UtilDateTime/tree/1.0.2"
+            },
             "time": "2017-10-24T13:32:31+00:00"
         },
         {
@@ -27936,11 +27989,19 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "SprykerTest\\": "tests/SprykerTest/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "UtilText module",
+            "support": {
+                "source": "https://github.com/spryker/UtilText/tree/master"
+            },
             "time": "2017-10-24T13:32:31+00:00"
         },
         {
@@ -28017,11 +28078,19 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "SprykerTest\\": "tests/SprykerTest/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "UtilValidate module",
+            "support": {
+                "source": "https://github.com/spryker/UtilValidate/tree/1.0.0"
+            },
             "time": "2017-11-09T13:55:22+00:00"
         },
         {
@@ -28470,11 +28539,14 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Zend module",
+            "support": {
+                "source": "https://github.com/spryker/Zend/tree/2.1.0"
+            },
             "time": "2017-08-02T16:31:17+00:00"
         },
         {
@@ -29468,7 +29540,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "backendtea@gmail.com"
+                    "email": "BackEndTea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
@@ -31409,34 +31481,45 @@
         },
         {
             "name": "facebook/webdriver",
-            "version": "1.3.0",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facebook/php-webdriver.git",
-                "reference": "77300c4ab2025d4316635f592ec849ca7323bd8c"
+                "reference": "bd8c740097eb9f2fc3735250fc1912bc811a954e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/77300c4ab2025d4316635f592ec849ca7323bd8c",
-                "reference": "77300c4ab2025d4316635f592ec849ca7323bd8c",
+                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/bd8c740097eb9f2fc3735250fc1912bc811a954e",
+                "reference": "bd8c740097eb9f2fc3735250fc1912bc811a954e",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
-                "php": "^5.5 || ~7.0",
-                "symfony/process": "^2.8 || ^3.1"
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-zip": "*",
+                "php": "^5.6 || ~7.0",
+                "symfony/process": "^2.8 || ^3.1 || ^4.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^1.11",
+                "friendsofphp/php-cs-fixer": "^2.0",
+                "jakub-onderka/php-parallel-lint": "^0.9.2",
+                "php-coveralls/php-coveralls": "^2.0",
                 "php-mock/php-mock-phpunit": "^1.1",
-                "phpunit/phpunit": "4.6.* || ~5.0",
-                "satooshi/php-coveralls": "^1.0",
-                "squizlabs/php_codesniffer": "^2.6"
+                "phpunit/phpunit": "^5.7",
+                "sebastian/environment": "^1.3.4 || ^2.0 || ^3.0",
+                "squizlabs/php_codesniffer": "^2.6",
+                "symfony/var-dumper": "^3.3 || ^4.0"
             },
             "suggest": {
-                "phpdocumentor/phpdocumentor": "2.*"
+                "ext-SimpleXML": "For Firefox profile creation"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-community": "1.5-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Facebook\\WebDriver\\": "lib/"
@@ -31446,7 +31529,7 @@
             "license": [
                 "Apache-2.0"
             ],
-            "description": "A PHP client for WebDriver",
+            "description": "A PHP client for Selenium WebDriver",
             "homepage": "https://github.com/facebook/php-webdriver",
             "keywords": [
                 "facebook",
@@ -31454,7 +31537,7 @@
                 "selenium",
                 "webdriver"
             ],
-            "time": "2017-01-13T15:48:08+00:00"
+            "time": "2018-05-16T17:37:13+00:00"
         },
         {
             "name": "jakoch/phantomjs-installer",
@@ -34034,7 +34117,7 @@
             ],
             "authors": [
                 {
-                    "name": "Sullivan Sénéchal",
+                    "name": "Sullivan SENECHAL",
                     "email": "soullivaneuh@gmail.com"
                 }
             ],
