@@ -63,7 +63,7 @@ addons:
       - $(find ./tests/_output/* -not -empty | tr "\n" ":")
       - $(find ./tests/PyzTest/*/*/_output/* -not -empty | tr "\n" ":")
       - $(find ./vendor/spryker/spryker/Bundles/*/tests/_output/* -not -empty | tr "\n" ":")
-      - /tmp/phantomjs.log
+      - /tmp/phantomjs.log.gz
 
   apt:
     packages:
@@ -159,6 +159,10 @@ script:
   - timeout 45m bash -c "vendor/bin/phantomjs --webdriver=4444 --webdriver-logfile=/tmp/phantomjs.log --webdriver-loglevel=DEBUG">/dev/null &
   - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -x Presentation ; fi
   - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/codecept run -g Presentation ; fi
+
+after_script:
+  - if [[ $TRAVIS_TEST_RESULT == 0 ]] rm /tmp/phantomjs.log
+  - if [[ $TRAVIS_TEST_RESULT == 1 ]] gzip --best /tmp/phantomjs.log
 
 notifications:
   email: false
