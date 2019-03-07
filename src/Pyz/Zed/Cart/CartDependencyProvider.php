@@ -33,6 +33,7 @@ use Spryker\Zed\ProductDiscontinued\Communication\Plugin\Cart\ProductDiscontinue
 use Spryker\Zed\ProductImageCartConnector\Communication\Plugin\ProductImageCartPlugin;
 use Spryker\Zed\ProductList\Communication\Plugin\CartExtension\ProductListRestrictedItemsPreCheckPlugin;
 use Spryker\Zed\ProductList\Communication\Plugin\CartExtension\RemoveRestrictedItemsPreReloadPlugin;
+use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\DefaultQuantitySalesUnitItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitGroupKeyItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitValuePostSavePlugin;
@@ -75,6 +76,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new ExpandBundleItemsPlugin(),
             new ExpandBundleItemsWithImagesPlugin(),
             new SkuGroupKeyPlugin(),
+            new DefaultQuantitySalesUnitItemExpanderPlugin(),
             new QuantitySalesUnitGroupKeyItemExpanderPlugin(),
             new CartItemGroupKeyOptionPlugin(),
             new CartItemWithBundleGroupKeyExpanderPlugin(),
