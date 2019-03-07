@@ -104,9 +104,5 @@ script:
   - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -x Presentation ; fi
   - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/codecept run -g Presentation ; fi
 
-after_script:
-  - if [[ $TRAVIS_TEST_RESULT == 0 ]] ; then rm /tmp/phantomjs.log ; fi
-  - if [[ $TRAVIS_TEST_RESULT == 1 ]] ; then gzip --best /tmp/phantomjs.log ; fi
-
 notifications:
   email: false
