@@ -7,11 +7,11 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\ProductStock\Writer;
 
-use Orm\Zed\Availability\Persistence\Map\SpyAvailabilityAbstractTableMap;
-use Orm\Zed\Availability\Persistence\SpyAvailabilityAbstractQuery;
 use Generated\Shared\Transfer\StoreTransfer;
+use Orm\Zed\Availability\Persistence\Map\SpyAvailabilityAbstractTableMap;
 use Orm\Zed\Availability\Persistence\Map\SpyAvailabilityTableMap;
 use Orm\Zed\Availability\Persistence\SpyAvailabilityAbstract;
+use Orm\Zed\Availability\Persistence\SpyAvailabilityAbstractQuery;
 use Orm\Zed\Availability\Persistence\SpyAvailabilityQuery;
 use Orm\Zed\Oms\Persistence\Map\SpyOmsProductReservationTableMap;
 use Orm\Zed\Oms\Persistence\SpyOmsProductReservationQuery;
@@ -27,9 +27,9 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
 use Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface;
-use Spryker\Zed\Store\Business\StoreFacadeInterface;
 use Spryker\Zed\PropelOrm\Business\Runtime\ActiveQuery\Criteria;
 use Spryker\Zed\Stock\Business\StockFacadeInterface;
+use Spryker\Zed\Store\Business\StoreFacadeInterface;
 
 class ProductStockPropelDataSetWriter implements DataSetWriterInterface
 {
