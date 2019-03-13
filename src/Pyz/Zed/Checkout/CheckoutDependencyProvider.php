@@ -37,7 +37,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
     /**
      * @param \Spryker\Zed\Kernel\Container $container ’
      *
-     * @return \Spryker\Zed\Checkout\Dependency\Plugin\CheckoutPreConditionInterface[]
+     * @return \Spryker\Zed\CheckoutExtension\Dependency\Plugin\CheckoutPreConditionInterface[]
      */
     protected function getCheckoutPreConditions(Container $container)
     {
@@ -50,8 +50,8 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new ProductDiscontinuedCheckoutPreConditionPlugin(), #ProductDiscontinuedFeature
             new AmountAvailabilityCheckoutPreConditionPlugin(),
             new SalesOrderThresholdCheckoutPreConditionPlugin(), #SalesOrderThresholdFeature
-            new QuoteRequestPreCheckPlugin(), #QuoteRequestFeature
             new VoucherDiscountMaxUsageCheckoutPreConditionPlugin(),
+            new QuoteRequestPreCheckPlugin(),
         ];
     }
 

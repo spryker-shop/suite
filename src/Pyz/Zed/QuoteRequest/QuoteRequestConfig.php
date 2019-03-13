@@ -18,6 +18,9 @@ class QuoteRequestConfig extends SprykerQuoteRequestConfig
     public function getQuoteFieldsAllowedForSaving(): array
     {
         return array_merge(parent::getQuoteFieldsAllowedForSaving(), [
+            QuoteTransfer::CUSTOMER_REFERENCE,
+            QuoteTransfer::CUSTOMER,
+            QuoteTransfer::STORE,
             QuoteTransfer::ITEMS,
             QuoteTransfer::TOTALS,
             QuoteTransfer::CURRENCY,
