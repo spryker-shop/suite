@@ -7,7 +7,6 @@
 
 namespace Pyz\Glue\GlueApplication;
 
-use Pyz\Glue\NavigationsRestApi\NavigationsRestApiConfig;
 use Spryker\Glue\AlternativeProductsRestApi\Plugin\GlueApplication\AbstractAlternativeProductsResourceRoutePlugin;
 use Spryker\Glue\AlternativeProductsRestApi\Plugin\GlueApplication\ConcreteAlternativeProductsResourceRoutePlugin;
 use Spryker\Glue\AuthRestApi\Plugin\AccessTokensResourceRoutePlugin;
@@ -50,6 +49,7 @@ use Spryker\Glue\GlueApplication\GlueApplicationDependencyProvider as SprykerGlu
 use Spryker\Glue\GlueApplication\Plugin\Rest\SetStoreCurrentLocaleBeforeActionPlugin;
 use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationshipCollectionInterface;
 use Spryker\Glue\NavigationsCategoryNodesResourceRelationship\Plugin\CategoryNodeByIdResourceRelationshipPlugin;
+use Spryker\Glue\NavigationsRestApi\NavigationsRestApiConfig;
 use Spryker\Glue\NavigationsRestApi\Plugin\ResourceRoute\NavigationsResourceRoutePlugin;
 use Spryker\Glue\OrdersRestApi\Plugin\OrderRelationshipByOrderReferencePlugin;
 use Spryker\Glue\OrdersRestApi\Plugin\OrdersResourceRoutePlugin;
