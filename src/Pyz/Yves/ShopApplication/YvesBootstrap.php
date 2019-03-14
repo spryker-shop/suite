@@ -35,6 +35,7 @@ use Spryker\Yves\ZedRequest\Plugin\ServiceProvider\ZedRequestHeaderServiceProvid
 use SprykerShop\Yves\AgentPage\Plugin\Provider\AgentPageControllerProvider;
 use SprykerShop\Yves\AgentPage\Plugin\Provider\AgentPageSecurityServiceProvider;
 use SprykerShop\Yves\AgentQuoteRequestPage\Plugin\Provider\AgentQuoteRequestPageControllerProvider;
+use SprykerShop\Yves\AgentQuoteRequestWidget\Plugin\Provider\AgentQuoteRequestWidgetControllerProvider;
 use SprykerShop\Yves\AgentWidget\Plugin\Provider\AgentWidgetControllerProvider;
 use SprykerShop\Yves\AvailabilityNotificationPage\Plugin\Provider\AvailabilityNotificationPageControllerProvider;
 use SprykerShop\Yves\AvailabilityNotificationWidget\Plugin\Provider\AvailabilityNotificationWidgetControllerProvider;
@@ -226,6 +227,7 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new QuoteApprovalControllerProvider($isSsl), #QuoteApprovalFeature
             new QuoteRequestPageControllerProvider($isSsl),
             new AgentQuoteRequestPageControllerProvider($isSsl),
+            new AgentQuoteRequestWidgetControllerProvider($isSsl),
         ];
     }
 }
