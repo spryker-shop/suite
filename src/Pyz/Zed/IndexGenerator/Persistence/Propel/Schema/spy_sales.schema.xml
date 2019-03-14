@@ -27,6 +27,9 @@
     <index name="index-spy_sales_order_item-fk_oms_order_process">
       <index-column name="fk_oms_order_process"/>
     </index>
+    <index name="index-spy_sales_order_item-fk_sales_shipment">
+      <index-column name="fk_sales_shipment"/>
+    </index>
   </table>
   <table name="spy_sales_discount">
     <index name="index-spy_sales_discount-fk_sales_order">
@@ -97,6 +100,9 @@
     </index>
     <index name="index-spy_sales_shipment-fk_sales_expense">
       <index-column name="fk_sales_expense"/>
+    </index>
+    <index name="index-spy_sales_shipment-fk_sales_order_address">
+      <index-column name="fk_sales_order_address"/>
     </index>
   </table>
 </database>
