@@ -54,7 +54,6 @@ use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListItemData
 
 class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
 {
-    public const FACADE_AVAILABILITY = 'availability facade';
     public const FACADE_CATEGORY = 'category facade';
     public const FACADE_STORE = 'store facade';
     public const FACADE_CURRENCY = 'currency facade';
@@ -75,7 +74,6 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     {
         $container = parent::provideBusinessLayerDependencies($container);
 
-        $container = $this->addAvailabilityFacade($container);
         $container = $this->addStockFacade($container);
         $container = $this->addCurrencyFacade($container);
         $container = $this->addStoreFacade($container);
@@ -112,20 +110,6 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     {
         $container[static::FACADE_STORE] = function (Container $container) {
             return $container->getLocator()->store()->facade();
-        };
-
-        return $container;
-    }
-
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
-    protected function addAvailabilityFacade(Container $container)
-    {
-        $container[static::FACADE_AVAILABILITY] = function (Container $container) {
-            return $container->getLocator()->availability()->facade();
         };
 
         return $container;
