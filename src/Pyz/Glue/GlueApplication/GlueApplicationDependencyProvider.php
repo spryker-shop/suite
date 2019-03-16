@@ -13,6 +13,8 @@ use Spryker\Glue\AuthRestApi\Plugin\AccessTokensResourceRoutePlugin;
 use Spryker\Glue\AuthRestApi\Plugin\AccessTokenValidatorPlugin;
 use Spryker\Glue\AuthRestApi\Plugin\FormatAuthenticationErrorResponseHeadersPlugin;
 use Spryker\Glue\AuthRestApi\Plugin\RefreshTokensResourceRoutePlugin;
+use Spryker\Glue\AuthRestApi\Plugin\RestRequestAccessTokenValidatorPlugin;
+use Spryker\Glue\AuthRestApi\Plugin\RestUserFinderByAccessTokenPlugin;
 use Spryker\Glue\CartItemsProductsRelationship\Plugin\CartItemsProductsRelationshipPlugin;
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
 use Spryker\Glue\CartsRestApi\Plugin\ControllerBeforeAction\SetAnonymousCustomerIdControllerBeforeActionPlugin;
@@ -43,7 +45,9 @@ use Spryker\Glue\CustomersRestApi\Plugin\CustomersToAddressesRelationshipPlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\SetCustomerBeforeActionPlugin;
 use Spryker\Glue\GlueApplication\GlueApplicationDependencyProvider as SprykerGlueApplicationDependencyProvider;
 use Spryker\Glue\GlueApplication\Plugin\Rest\SetStoreCurrentLocaleBeforeActionPlugin;
+use Spryker\Glue\GlueApplication\Plugin\Rest\Validator\ProtectedRouteValidatorPlugin;
 use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationshipCollectionInterface;
+use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\RestUserFinderPluginInterface;
 use Spryker\Glue\NavigationsRestApi\Plugin\ResourceRoute\NavigationsResourceRoutePlugin;
 use Spryker\Glue\OrdersRestApi\Plugin\OrderRelationshipByOrderReferencePlugin;
 use Spryker\Glue\OrdersRestApi\Plugin\OrdersResourceRoutePlugin;
@@ -145,7 +149,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     protected function getValidateRestRequestPlugins(): array
     {
         return [
-            new AccessTokenValidatorPlugin(),
+//            new AccessTokenValidatorPlugin(),
             new AnonymousCustomerUniqueIdValidatorPlugin(),
         ];
     }
@@ -158,6 +162,8 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     protected function getRestRequestValidatorPlugins(): array
     {
         return [
+            new RestRequestAccessTokenValidatorPlugin(),
+            new ProtectedRouteValidatorPlugin(),
             new ValidateRestRequestAttributesPlugin(),
             new CurrencyParameterValidatorPlugin(),
             new PriceModeParameterValidatorPlugin(),
@@ -272,5 +278,13 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         );
 
         return $resourceRelationshipCollection;
+    }
+
+    /**
+     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\RestUserFinderPluginInterface
+     */
+    protected function getRestUserFinderPlugin(): RestUserFinderPluginInterface
+    {
+        return new RestUserFinderByAccessTokenPlugin();
     }
 }
