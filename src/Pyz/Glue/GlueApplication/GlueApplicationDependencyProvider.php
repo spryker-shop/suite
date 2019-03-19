@@ -66,8 +66,8 @@ use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\CurrencyParameterVa
 use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\PriceModeParameterValidatorPlugin;
 use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\SetCurrencyBeforeActionPlugin;
 use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\SetPriceModeBeforeActionPlugin;
-use Spryker\Glue\ProductPricesRestApi\Plugin\Relationship\AbstractProductsProductPricesRelationshipBySkuPlugin;
-use Spryker\Glue\ProductPricesRestApi\Plugin\Relationship\ConcreteProductsProductPricesRelationshipBySkuPlugin;
+use Spryker\Glue\ProductPricesRestApi\Plugin\Relationship\AbstractProductPricesRelationshipBySkuPlugin;
+use Spryker\Glue\ProductPricesRestApi\Plugin\Relationship\ConcreteProductPricesRelationshipBySkuPlugin;
 use Spryker\Glue\ProductsCategoriesResourceRelationship\Plugin\AbstractProductsCategoriesResourceRelationshipPlugin;
 use Spryker\Glue\ProductsProductTaxSetsResourceRelationship\Plugin\ProductsProductTaxSetsResourceRelationshipPlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\AbstractProductsResourceRoutePlugin;
@@ -243,11 +243,11 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         );
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
-            new AbstractProductsProductPricesRelationshipBySkuPlugin()
+            new AbstractProductPricesRelationshipBySkuPlugin()
         );
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-            new ConcreteProductsProductPricesRelationshipBySkuPlugin()
+            new ConcreteProductPricesRelationshipBySkuPlugin()
         );
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
