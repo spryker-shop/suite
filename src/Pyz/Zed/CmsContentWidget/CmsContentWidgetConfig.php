@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\CmsContentWidget;
 
-use Spryker\Shared\CmsContentWidgetBanner\ContentWidgetConfigurationProvider\CmsContentWidgetBannerConfigurationProvider;
 use Spryker\Shared\CmsContentWidgetCmsBlockConnector\ContentWidgetConfigurationProvider\CmsContentWidgetCmsBlockConnectorConfigurationProvider;
 use Spryker\Shared\CmsContentWidgetProductConnector\ContentWidgetConfigurationProvider\CmsProductContentWidgetConfigurationProvider;
 use Spryker\Shared\CmsContentWidgetProductGroupConnector\ContentWidgetConfigurationProvider\CmsProductGroupContentWidgetConfigurationProvider;
@@ -32,7 +31,6 @@ class CmsContentWidgetConfig extends SprykerCmsContentConfig
             CmsProductGroupContentWidgetConfigurationProvider::FUNCTION_NAME => new CmsProductGroupContentWidgetConfigurationProvider(),
             FileManagerWidgetConfigurationProvider::FUNCTION_NAME => new FileManagerWidgetConfigurationProvider(),
             CmsContentWidgetCmsBlockConnectorConfigurationProvider::FUNCTION_NAME => new CmsContentWidgetCmsBlockConnectorConfigurationProvider(),
-            CmsContentWidgetBannerConfigurationProvider::FUNCTION_NAME => new CmsContentWidgetBannerConfigurationProvider(),
         ];
     }
 }
