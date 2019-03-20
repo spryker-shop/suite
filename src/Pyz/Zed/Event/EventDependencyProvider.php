@@ -51,6 +51,7 @@ use Spryker\Zed\ProductSetPageSearch\Communication\Plugin\Event\Subscriber\Produ
 use Spryker\Zed\ProductSetStorage\Communication\Plugin\Event\Subscriber\ProductSetStorageEventSubscriber;
 use Spryker\Zed\ProductStorage\Communication\Plugin\Event\Subscriber\ProductStorageEventSubscriber;
 use Spryker\Zed\ShoppingListStorage\Communication\Plugin\Event\Subscriber\ShoppingListStorageEventSubscriber;
+use Spryker\Zed\TaxProductStorage\Communication\Plugin\Event\Subscriber\TaxProductStorageSubscriber;
 use Spryker\Zed\UrlStorage\Communication\Plugin\Event\Subscriber\UrlStorageEventSubscriber;
 
 class EventDependencyProvider extends SprykerEventDependencyProvider
@@ -106,8 +107,9 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new CustomerAccessStorageEventSubscriber());
         $eventSubscriberCollection->add(new ShoppingListStorageEventSubscriber()); #ShoppingListWidget feature
         $eventSubscriberCollection->add(new ContentStorageEventSubscriber());
-
         $eventSubscriberCollection->add(new AvailabilityNotificationSubscriber());
+        $eventSubscriberCollection->add(new TaxProductStorageSubscriber());
+
         /**
          * Search Events
          */
