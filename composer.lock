@@ -1579,16 +1579,16 @@
         },
         {
             "name": "php-amqplib/php-amqplib",
-            "version": "v2.8.1",
+            "version": "v2.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-amqplib/php-amqplib.git",
-                "reference": "84449ffd3f5a7466bbee3946facb3746ff11f075"
+                "reference": "08d105d6b69ff4d8fa4fe090c49afdc568a5665b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/84449ffd3f5a7466bbee3946facb3746ff11f075",
-                "reference": "84449ffd3f5a7466bbee3946facb3746ff11f075",
+                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/08d105d6b69ff4d8fa4fe090c49afdc568a5665b",
+                "reference": "08d105d6b69ff4d8fa4fe090c49afdc568a5665b",
                 "shasum": ""
             },
             "require": {
@@ -1600,9 +1600,10 @@
                 "videlalvaro/php-amqplib": "self.version"
             },
             "require-dev": {
+                "ext-curl": "*",
+                "nategood/httpful": "^0.2.20",
                 "phpdocumentor/phpdocumentor": "^2.9",
                 "phpunit/phpunit": "^4.8",
-                "scrutinizer/ocular": "^1.1",
                 "squizlabs/php_codesniffer": "^2.5"
             },
             "type": "library",
@@ -1648,7 +1649,7 @@
                 "queue",
                 "rabbitmq"
             ],
-            "time": "2018-11-13T09:35:17+00:00"
+            "time": "2019-03-22T16:02:15+00:00"
         },
         {
             "name": "phpdocumentor/graphviz",
@@ -2623,7 +2624,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "3dbe89badca8faf60b19977a6f3a577d36e5cc24"
+                "reference": "138b1b5ab289b747248073d92f1196fda91e5e70"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2892,7 +2893,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-03-22T13:25:47+00:00"
+            "time": "2019-03-22T16:41:53+00:00"
         },
         {
             "name": "spryker/spryker-shop",
