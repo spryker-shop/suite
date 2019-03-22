@@ -21,7 +21,7 @@ use Spryker\Zed\ContentStorage\Communication\Plugin\Event\Subscriber\ContentStor
 use Spryker\Zed\CustomerAccessStorage\Communication\Plugin\Event\Subscriber\CustomerAccessStorageEventSubscriber;
 use Spryker\Zed\Event\EventDependencyProvider as SprykerEventDependencyProvider;
 use Spryker\Zed\FileManagerStorage\Communication\Plugin\Event\Subscriber\FileManagerStorageSubscriber;
-use Spryker\Zed\GlossaryStorage\Communication\Plugin\Event\Subscriber\GlossaryStorageEventSubscriber;
+use Spryker\Zed\GlossaryStorage\Communication\Plugin\Event\Subscriber\GlossaryStoragePublisherRegistry;
 use Spryker\Zed\NavigationStorage\Communication\Plugin\Event\Subscriber\NavigationStorageEventSubscriber;
 use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Event\Subscriber\PriceProductMerchantRelationshipStorageEventSubscriber;
 use Spryker\Zed\PriceProductStorage\Communication\Plugin\Event\Subscriber\PriceProductStorageEventSubscriber;
@@ -73,54 +73,54 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         /**
          * Storage Events
          */
-        $eventSubscriberCollection->add(new GlossaryStorageEventSubscriber());
-        $eventSubscriberCollection->add(new UrlStorageEventSubscriber());
-        $eventSubscriberCollection->add(new AvailabilityStorageEventSubscriber());
-        $eventSubscriberCollection->add(new CategoryStorageEventSubscriber());
-        $eventSubscriberCollection->add(new CmsStorageEventSubscriber());
-        $eventSubscriberCollection->add(new CmsBlockStorageEventSubscriber());
-        $eventSubscriberCollection->add(new CmsBlockCategoryStorageEventSubscriber());
-        $eventSubscriberCollection->add(new CmsBlockProductStorageEventSubscriber());
-        $eventSubscriberCollection->add(new NavigationStorageEventSubscriber());
-        $eventSubscriberCollection->add(new PriceProductStorageEventSubscriber());
-        $eventSubscriberCollection->add(new ProductStorageEventSubscriber());
-        $eventSubscriberCollection->add(new ProductCategoryStorageEventSubscriber());
-        $eventSubscriberCollection->add(new ProductCategoryFilterStorageEventSubscriber());
-        $eventSubscriberCollection->add(new ProductImageStorageEventSubscriber());
-        $eventSubscriberCollection->add(new CategoryImageStorageEventSubscriber());
-        $eventSubscriberCollection->add(new ProductGroupStorageEventSubscriber());
-        $eventSubscriberCollection->add(new ProductOptionStorageEventSubscriber());
-        $eventSubscriberCollection->add(new ProductRelationStorageEventSubscriber());
-        $eventSubscriberCollection->add(new ProductReviewStorageEventSubscriber());
-        $eventSubscriberCollection->add(new ProductMeasurementUnitStorageEventSubscriber());
-        $eventSubscriberCollection->add(new ProductQuantityStorageEventSubscriber());
-        $eventSubscriberCollection->add(new ProductLabelStorageEventSubscriber());
-        $eventSubscriberCollection->add(new ProductSetStorageEventSubscriber());
-        $eventSubscriberCollection->add(new ProductSearchConfigStorageEventSubscriber());
-        $eventSubscriberCollection->add(new ProductListStorageEventSubscriber());
-        $eventSubscriberCollection->add(new ProductDiscontinuedStorageEventSubscriber()); #ProductDiscontinuedFeature
-        $eventSubscriberCollection->add(new ProductAlternativeStorageEventSubscriber()); #ProductAlternativeFeature
-        $eventSubscriberCollection->add(new ProductPackagingUnitStorageEventSubscriber());
-        $eventSubscriberCollection->add(new PriceProductMerchantRelationshipStorageEventSubscriber());
-        $eventSubscriberCollection->add(new FileManagerStorageSubscriber());
-        $eventSubscriberCollection->add(new CustomerAccessStorageEventSubscriber());
-        $eventSubscriberCollection->add(new ShoppingListStorageEventSubscriber()); #ShoppingListWidget feature
-        $eventSubscriberCollection->add(new ContentStorageEventSubscriber());
-
-        $eventSubscriberCollection->add(new AvailabilityNotificationSubscriber());
-        /**
-         * Search Events
-         */
-        $eventSubscriberCollection->add(new CategoryPageSearchEventSubscriber());
-        $eventSubscriberCollection->add(new CmsPageSearchEventSubscriber());
-        $eventSubscriberCollection->add(new ProductReviewSearchEventSubscriber());
-        $eventSubscriberCollection->add(new ProductSetPageSearchEventSubscriber());
-        $eventSubscriberCollection->add(new ProductPageSearchEventSubscriber());
-        $eventSubscriberCollection->add(new ProductLabelSearchEventSubscriber());
-        $eventSubscriberCollection->add(new ProductListSearchEventSubscriber());
-        $eventSubscriberCollection->add(new ProductConcretePageSearchProductAbstractEventSubscriber());
-        $eventSubscriberCollection->add(new ProductConcretePageSearchProductEventSubscriber());
-        $eventSubscriberCollection->add(new ProductConcretePageSearchProductLocalizedAttributesEventSubscriber());
+//        $eventSubscriberCollection->add(new GlossaryStorageEventSubscriber());
+//        $eventSubscriberCollection->add(new UrlStorageEventSubscriber());
+//        $eventSubscriberCollection->add(new AvailabilityStorageEventSubscriber());
+//        $eventSubscriberCollection->add(new CategoryStorageEventSubscriber());
+//        $eventSubscriberCollection->add(new CmsStorageEventSubscriber());
+//        $eventSubscriberCollection->add(new CmsBlockStorageEventSubscriber());
+//        $eventSubscriberCollection->add(new CmsBlockCategoryStorageEventSubscriber());
+//        $eventSubscriberCollection->add(new CmsBlockProductStorageEventSubscriber());
+//        $eventSubscriberCollection->add(new NavigationStorageEventSubscriber());
+//        $eventSubscriberCollection->add(new PriceProductStorageEventSubscriber());
+//        $eventSubscriberCollection->add(new ProductStorageEventSubscriber());
+//        $eventSubscriberCollection->add(new ProductCategoryStorageEventSubscriber());
+//        $eventSubscriberCollection->add(new ProductCategoryFilterStorageEventSubscriber());
+//        $eventSubscriberCollection->add(new ProductImageStorageEventSubscriber());
+//        $eventSubscriberCollection->add(new CategoryImageStorageEventSubscriber());
+//        $eventSubscriberCollection->add(new ProductGroupStorageEventSubscriber());
+//        $eventSubscriberCollection->add(new ProductOptionStorageEventSubscriber());
+//        $eventSubscriberCollection->add(new ProductRelationStorageEventSubscriber());
+//        $eventSubscriberCollection->add(new ProductReviewStorageEventSubscriber());
+//        $eventSubscriberCollection->add(new ProductMeasurementUnitStorageEventSubscriber());
+//        $eventSubscriberCollection->add(new ProductQuantityStorageEventSubscriber());
+//        $eventSubscriberCollection->add(new ProductLabelStorageEventSubscriber());
+//        $eventSubscriberCollection->add(new ProductSetStorageEventSubscriber());
+//        $eventSubscriberCollection->add(new ProductSearchConfigStorageEventSubscriber());
+//        $eventSubscriberCollection->add(new ProductListStorageEventSubscriber());
+//        $eventSubscriberCollection->add(new ProductDiscontinuedStorageEventSubscriber()); #ProductDiscontinuedFeature
+//        $eventSubscriberCollection->add(new ProductAlternativeStorageEventSubscriber()); #ProductAlternativeFeature
+//        $eventSubscriberCollection->add(new ProductPackagingUnitStorageEventSubscriber());
+//        $eventSubscriberCollection->add(new PriceProductMerchantRelationshipStorageEventSubscriber());
+//        $eventSubscriberCollection->add(new FileManagerStorageSubscriber());
+//        $eventSubscriberCollection->add(new CustomerAccessStorageEventSubscriber());
+//        $eventSubscriberCollection->add(new ShoppingListStorageEventSubscriber()); #ShoppingListWidget feature
+//        $eventSubscriberCollection->add(new ContentStorageEventSubscriber());
+//
+//        $eventSubscriberCollection->add(new AvailabilityNotificationSubscriber());
+//        /**
+//         * Search Events
+//         */
+//        $eventSubscriberCollection->add(new CategoryPageSearchEventSubscriber());
+//        $eventSubscriberCollection->add(new CmsPageSearchEventSubscriber());
+//        $eventSubscriberCollection->add(new ProductReviewSearchEventSubscriber());
+//        $eventSubscriberCollection->add(new ProductSetPageSearchEventSubscriber());
+//        $eventSubscriberCollection->add(new ProductPageSearchEventSubscriber());
+//        $eventSubscriberCollection->add(new ProductLabelSearchEventSubscriber());
+//        $eventSubscriberCollection->add(new ProductListSearchEventSubscriber());
+//        $eventSubscriberCollection->add(new ProductConcretePageSearchProductAbstractEventSubscriber());
+//        $eventSubscriberCollection->add(new ProductConcretePageSearchProductEventSubscriber());
+//        $eventSubscriberCollection->add(new ProductConcretePageSearchProductLocalizedAttributesEventSubscriber());
 
         return $eventSubscriberCollection;
     }
