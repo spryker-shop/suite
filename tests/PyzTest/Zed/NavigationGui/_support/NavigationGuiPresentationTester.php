@@ -134,7 +134,7 @@ class NavigationGuiPresentationTester extends Actor
      */
     public function seeSuccessMessage($expectedMessagePattern)
     {
-        $this->waitForElement(static::FLASH_MESSAGE_TEXT_SELECTOR, 5);
+        $this->waitForElement(static::FLASH_MESSAGE_TEXT_SELECTOR, 30);
         $successMessage = $this->grabTextFrom(static::FLASH_MESSAGE_TEXT_SELECTOR);
         $this->seeMatches($expectedMessagePattern, $successMessage);
 
