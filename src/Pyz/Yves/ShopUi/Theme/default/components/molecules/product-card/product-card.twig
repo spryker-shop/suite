@@ -58,7 +58,7 @@
                 {% include molecule('price') with {
                     data: {
                         amount: data.price,
-                        originalAmount: data.originalPrice is empty ? null : (data.originalPrice | money)
+                        originalAmount: data.originalPrice is empty ? null : data.originalPrice
                     }
                 } only %}
             {% else %}
