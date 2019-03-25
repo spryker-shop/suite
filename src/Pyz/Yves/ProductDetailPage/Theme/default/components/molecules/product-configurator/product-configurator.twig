@@ -56,7 +56,7 @@
             <p>
                 {% include molecule('price') with {
                     data: {
-                        amount: data.product.price | money,
+                        amount: data.product.price,
                         originalAmount: data.product.prices.ORIGINAL | default
                     }
                 } only %}

@@ -57,7 +57,7 @@
             {% if can('SeePricePermissionPlugin') %}
                 {% include molecule('price') with {
                     data: {
-                        amount: data.price | money,
+                        amount: data.price,
                         originalAmount: data.originalPrice is empty ? null : (data.originalPrice | money)
                     }
                 } only %}
