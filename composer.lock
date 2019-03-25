@@ -1579,16 +1579,16 @@
         },
         {
             "name": "php-amqplib/php-amqplib",
-            "version": "v2.8.1",
+            "version": "v2.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-amqplib/php-amqplib.git",
-                "reference": "84449ffd3f5a7466bbee3946facb3746ff11f075"
+                "reference": "08d105d6b69ff4d8fa4fe090c49afdc568a5665b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/84449ffd3f5a7466bbee3946facb3746ff11f075",
-                "reference": "84449ffd3f5a7466bbee3946facb3746ff11f075",
+                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/08d105d6b69ff4d8fa4fe090c49afdc568a5665b",
+                "reference": "08d105d6b69ff4d8fa4fe090c49afdc568a5665b",
                 "shasum": ""
             },
             "require": {
@@ -1600,9 +1600,10 @@
                 "videlalvaro/php-amqplib": "self.version"
             },
             "require-dev": {
+                "ext-curl": "*",
+                "nategood/httpful": "^0.2.20",
                 "phpdocumentor/phpdocumentor": "^2.9",
                 "phpunit/phpunit": "^4.8",
-                "scrutinizer/ocular": "^1.1",
                 "squizlabs/php_codesniffer": "^2.5"
             },
             "type": "library",
@@ -1648,7 +1649,7 @@
                 "queue",
                 "rabbitmq"
             ],
-            "time": "2018-11-13T09:35:17+00:00"
+            "time": "2019-03-22T16:02:15+00:00"
         },
         {
             "name": "phpdocumentor/graphviz",
@@ -5203,16 +5204,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.38.3",
+            "version": "v1.38.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "5df0ef0ca2d08a6f087384c7f31530fb84889f28"
+                "reference": "7732e9e7017d751313811bd118de61302e9c8b35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/5df0ef0ca2d08a6f087384c7f31530fb84889f28",
-                "reference": "5df0ef0ca2d08a6f087384c7f31530fb84889f28",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/7732e9e7017d751313811bd118de61302e9c8b35",
+                "reference": "7732e9e7017d751313811bd118de61302e9c8b35",
                 "shasum": ""
             },
             "require": {
@@ -5265,7 +5266,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2019-03-21T14:50:13+00:00"
+            "time": "2019-03-23T14:27:19+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -5732,16 +5733,16 @@
         },
         {
             "name": "codeception/codeception",
-            "version": "2.5.4",
+            "version": "2.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Codeception.git",
-                "reference": "a2ecfe2f3ad36cc29904d2d566b0d7280854e6c9"
+                "reference": "547a64cb31edcf1902b296c511f5ca74101bcb4c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/a2ecfe2f3ad36cc29904d2d566b0d7280854e6c9",
-                "reference": "a2ecfe2f3ad36cc29904d2d566b0d7280854e6c9",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/547a64cb31edcf1902b296c511f5ca74101bcb4c",
+                "reference": "547a64cb31edcf1902b296c511f5ca74101bcb4c",
                 "shasum": ""
             },
             "require": {
@@ -5820,7 +5821,7 @@
                 "functional testing",
                 "unit testing"
             ],
-            "time": "2019-02-20T20:45:25+00:00"
+            "time": "2019-03-23T17:57:45+00:00"
         },
         {
             "name": "codeception/phpunit-wrapper",
