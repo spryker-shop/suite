@@ -50,6 +50,7 @@ use Spryker\Zed\Log\Communication\Plugin\ZedLoggerConfigPlugin;
 use Spryker\Zed\Oms\OmsConfig;
 use Spryker\Zed\Propel\PropelConfig;
 use SprykerEco\Shared\Loggly\LogglyConstants;
+use Twig\Cache\FilesystemCache;
 
 $CURRENT_STORE = Store::getInstance()->getStoreName();
 
@@ -176,23 +177,23 @@ $config[SearchConstants::SEARCH_INDEX_NAME_SUFFIX] = '';
 
 // ---------- Twig
 $config[TwigConstants::YVES_TWIG_OPTIONS] = [
-    'cache' => new Twig_Cache_Filesystem(
+    'cache' => new FilesystemCache(
         sprintf(
             '%s/data/%s/cache/Yves/twig',
             APPLICATION_ROOT_DIR,
             $CURRENT_STORE
         ),
-        Twig_Cache_Filesystem::FORCE_BYTECODE_INVALIDATION
+        FilesystemCache::FORCE_BYTECODE_INVALIDATION
     ),
 ];
 $config[TwigConstants::ZED_TWIG_OPTIONS] = [
-    'cache' => new Twig_Cache_Filesystem(
+    'cache' => new FilesystemCache(
         sprintf(
             '%s/data/%s/cache/Zed/twig',
             APPLICATION_ROOT_DIR,
             $CURRENT_STORE
         ),
-        Twig_Cache_Filesystem::FORCE_BYTECODE_INVALIDATION
+        FilesystemCache::FORCE_BYTECODE_INVALIDATION
     ),
 ];
 $config[TwigConstants::YVES_PATH_CACHE_FILE] = sprintf(
@@ -381,7 +382,7 @@ $config[EventConstants::EVENT_CHUNK] = 500;
 $config[EventBehaviorConstants::EVENT_BEHAVIOR_TRIGGERING_ACTIVE] = true;
 
 // ---------- Customer
-$config[CustomerConstants::CUSTOMER_SECURED_PATTERN] = '(^/login_check$|^(/en|/de)?/customer|^(/en|/de)?/wishlist|^(/en|/de)?/shopping-list|^(/en|/de)?/company(?!/register)|^(/en|/de)?/multi-cart|^(/en|/de)?/shared-cart|^(/en|/de)?/cart(?!/add)|^(/en|/de)?/checkout)';
+$config[CustomerConstants::CUSTOMER_SECURED_PATTERN] = '(^/login_check$|^(/en|/de)?/customer($|/)|^(/en|/de)?/wishlist($|/)|^(/en|/de)?/shopping-list($|/)|^(/en|/de)?/company(?!/register)($|/)|^(/en|/de)?/multi-cart($|/)|^(/en|/de)?/shared-cart($|/)|^(/en|/de)?/cart(?!/add)($|/)|^(/en|/de)?/checkout($|/))';
 $config[CustomerConstants::CUSTOMER_ANONYMOUS_PATTERN] = '^/.*';
 
 // ---------- Taxes
