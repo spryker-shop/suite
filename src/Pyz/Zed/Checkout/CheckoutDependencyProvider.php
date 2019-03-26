@@ -89,7 +89,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
     {
         return [
             new PaymentPostCheckPlugin(),
-            new CloseQuoteRequestCheckoutPostSaveHookPlugin(), #RequestForQuoteFeature
+            new CloseQuoteRequestCheckoutPostSaveHookPlugin(),
         ];
     }
 
