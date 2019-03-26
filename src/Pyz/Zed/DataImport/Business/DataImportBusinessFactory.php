@@ -383,10 +383,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     public function createProductStockPropelWriter(): DataSetWriterInterface
     {
         return new ProductStockPropelDataSetWriter(
-            $this->getAvailabilityFacade(),
             $this->getProductBundleFacade(),
             $this->createProductRepository(),
-            $this->getStoreFacade()
+            $this->getStoreFacade(),
+            $this->getStockFacade()
         );
     }
 
@@ -785,14 +785,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     protected function getStockFacade(): StockFacadeInterface
     {
         return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_STOCK);
-    }
-
-    /**
-     * @return \Spryker\Zed\Availability\Business\AvailabilityFacadeInterface
-     */
-    protected function getAvailabilityFacade()
-    {
-        return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_AVAILABILITY);
     }
 
     /**
