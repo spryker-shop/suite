@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.90.7",
+            "version": "3.90.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "5b188c9f5f21e87b4994bc1b477951eff4608547"
+                "reference": "b9d93ad14a504a0833bdafa2e80c9bd90d6cf47a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/5b188c9f5f21e87b4994bc1b477951eff4608547",
-                "reference": "5b188c9f5f21e87b4994bc1b477951eff4608547",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/b9d93ad14a504a0833bdafa2e80c9bd90d6cf47a",
+                "reference": "b9d93ad14a504a0833bdafa2e80c9bd90d6cf47a",
                 "shasum": ""
             },
             "require": {
@@ -86,7 +86,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-03-21T18:10:13+00:00"
+            "time": "2019-03-25T18:17:43+00:00"
         },
         {
             "name": "codeitnowin/barcode",
@@ -1717,16 +1717,16 @@
         },
         {
             "name": "php-amqplib/php-amqplib",
-            "version": "v2.8.1",
+            "version": "v2.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-amqplib/php-amqplib.git",
-                "reference": "84449ffd3f5a7466bbee3946facb3746ff11f075"
+                "reference": "08d105d6b69ff4d8fa4fe090c49afdc568a5665b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/84449ffd3f5a7466bbee3946facb3746ff11f075",
-                "reference": "84449ffd3f5a7466bbee3946facb3746ff11f075",
+                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/08d105d6b69ff4d8fa4fe090c49afdc568a5665b",
+                "reference": "08d105d6b69ff4d8fa4fe090c49afdc568a5665b",
                 "shasum": ""
             },
             "require": {
@@ -1738,9 +1738,10 @@
                 "videlalvaro/php-amqplib": "self.version"
             },
             "require-dev": {
+                "ext-curl": "*",
+                "nategood/httpful": "^0.2.20",
                 "phpdocumentor/phpdocumentor": "^2.9",
                 "phpunit/phpunit": "^4.8",
-                "scrutinizer/ocular": "^1.1",
                 "squizlabs/php_codesniffer": "^2.5"
             },
             "type": "library",
@@ -1786,7 +1787,7 @@
                 "queue",
                 "rabbitmq"
             ],
-            "time": "2018-11-13T09:35:17+00:00"
+            "time": "2019-03-22T16:02:15+00:00"
         },
         {
             "name": "phpdocumentor/graphviz",
@@ -7207,19 +7208,11 @@
                     "Spryker": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-0": {
-                    "Unit": "tests/"
-                }
-            },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Assertion bundle",
-            "support": {
-                "source": "https://github.com/spryker/Assertion/tree/3.0.0"
-            },
             "time": "2017-02-22T12:08:46+00:00"
         },
         {
@@ -8030,14 +8023,11 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Cache bundle",
-            "support": {
-                "source": "https://github.com/spryker/Cache/tree/3.1.0"
-            },
             "time": "2017-04-10T13:13:21+00:00"
         },
         {
@@ -9041,14 +9031,11 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "CategoryExporter module",
-            "support": {
-                "source": "https://github.com/spryker/CategoryExporter/tree/3.0.2"
-            },
             "time": "2017-07-13T15:46:45+00:00"
         },
         {
@@ -13880,16 +13867,16 @@
         },
         {
             "name": "spryker/discount",
-            "version": "7.3.0",
+            "version": "7.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/discount.git",
-                "reference": "6cc7297905c7cd0eee59230d01d980955b143529"
+                "reference": "f0c2bd1d13f36cd1cd18da768ea08a15f5fa1b1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/discount/zipball/6cc7297905c7cd0eee59230d01d980955b143529",
-                "reference": "6cc7297905c7cd0eee59230d01d980955b143529",
+                "url": "https://api.github.com/repos/spryker/discount/zipball/f0c2bd1d13f36cd1cd18da768ea08a15f5fa1b1e",
+                "reference": "f0c2bd1d13f36cd1cd18da768ea08a15f5fa1b1e",
                 "shasum": ""
             },
             "require": {
@@ -13938,7 +13925,7 @@
                 "proprietary"
             ],
             "description": "Discount module",
-            "time": "2019-02-12T15:10:27+00:00"
+            "time": "2019-03-26T09:21:31+00:00"
         },
         {
             "name": "spryker/discount-calculation-connector",
@@ -14280,14 +14267,11 @@
                     "dev-master": "1.0.x-dev"
                 }
             },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Egulias module",
-            "support": {
-                "source": "https://github.com/spryker/Egulias/tree/1.0.0"
-            },
             "time": "2017-11-09T13:55:22+00:00"
         },
         {
@@ -15328,19 +15312,11 @@
                     "Function": "tests/"
                 }
             },
-            "autoload-dev": {
-                "psr-0": {
-                    "Unit": "tests/"
-                }
-            },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Graph bundle",
-            "support": {
-                "source": "https://github.com/spryker/Graph/tree/3.0.0"
-            },
             "time": "2017-02-22T12:08:46+00:00"
         },
         {
@@ -19619,16 +19595,16 @@
         },
         {
             "name": "spryker/product-availabilities-rest-api",
-            "version": "1.0.3",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-availabilities-rest-api.git",
-                "reference": "115c6e422e4f66fcfd0cdc88f739cc98b7f564ad"
+                "reference": "3bb5f8cb5f8c4489f86b043bf18faf00c36f50bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-availabilities-rest-api/zipball/115c6e422e4f66fcfd0cdc88f739cc98b7f564ad",
-                "reference": "115c6e422e4f66fcfd0cdc88f739cc98b7f564ad",
+                "url": "https://api.github.com/repos/spryker/product-availabilities-rest-api/zipball/3bb5f8cb5f8c4489f86b043bf18faf00c36f50bd",
+                "reference": "3bb5f8cb5f8c4489f86b043bf18faf00c36f50bd",
                 "shasum": ""
             },
             "require": {
@@ -19661,7 +19637,7 @@
                 "proprietary"
             ],
             "description": "ProductAvailabilitiesRestApi module",
-            "time": "2018-12-20T07:33:27+00:00"
+            "time": "2019-03-26T09:38:45+00:00"
         },
         {
             "name": "spryker/product-barcode",
@@ -22452,16 +22428,16 @@
         },
         {
             "name": "spryker/product-prices-rest-api",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-prices-rest-api.git",
-                "reference": "41b0a955c73a67645855c55de42449474ca20e1b"
+                "reference": "3c63ba38712dd24530cd7af75f5bb542a95b2971"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-prices-rest-api/zipball/41b0a955c73a67645855c55de42449474ca20e1b",
-                "reference": "41b0a955c73a67645855c55de42449474ca20e1b",
+                "url": "https://api.github.com/repos/spryker/product-prices-rest-api/zipball/3c63ba38712dd24530cd7af75f5bb542a95b2971",
+                "reference": "3c63ba38712dd24530cd7af75f5bb542a95b2971",
                 "shasum": ""
             },
             "require": {
@@ -22498,7 +22474,7 @@
                 "proprietary"
             ],
             "description": "ProductPricesRestApi module",
-            "time": "2018-11-30T15:16:51+00:00"
+            "time": "2019-03-26T09:38:45+00:00"
         },
         {
             "name": "spryker/product-quantity",
@@ -23889,16 +23865,16 @@
         },
         {
             "name": "spryker/products-rest-api",
-            "version": "2.3.0",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/products-rest-api.git",
-                "reference": "3bd39b651a33de849662324c302efd967ac38928"
+                "reference": "6c3e5749b7e30d6d8a4ce63f02abad84eedb7719"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/products-rest-api/zipball/3bd39b651a33de849662324c302efd967ac38928",
-                "reference": "3bd39b651a33de849662324c302efd967ac38928",
+                "url": "https://api.github.com/repos/spryker/products-rest-api/zipball/6c3e5749b7e30d6d8a4ce63f02abad84eedb7719",
+                "reference": "6c3e5749b7e30d6d8a4ce63f02abad84eedb7719",
                 "shasum": ""
             },
             "require": {
@@ -23931,7 +23907,7 @@
                 "proprietary"
             ],
             "description": "ProductsRestApi module",
-            "time": "2019-01-24T14:15:54+00:00"
+            "time": "2019-03-26T09:38:45+00:00"
         },
         {
             "name": "spryker/products-rest-api-extension",
@@ -27969,19 +27945,11 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "SprykerTest\\": "tests/SprykerTest/"
-                }
-            },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "UtilText module",
-            "support": {
-                "source": "https://github.com/spryker/UtilText/tree/master"
-            },
             "time": "2017-10-24T13:32:31+00:00"
         },
         {
@@ -28058,19 +28026,11 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "SprykerTest\\": "tests/SprykerTest/"
-                }
-            },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "UtilValidate module",
-            "support": {
-                "source": "https://github.com/spryker/UtilValidate/tree/1.0.0"
-            },
             "time": "2017-11-09T13:55:22+00:00"
         },
         {
@@ -28522,14 +28482,11 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Zend module",
-            "support": {
-                "source": "https://github.com/spryker/Zend/tree/2.1.0"
-            },
             "time": "2017-08-02T16:31:17+00:00"
         },
         {
@@ -29480,16 +29437,16 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.10.0",
+            "version": "v1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "e3d826245268269cd66f8326bd8bc066687b4a19"
+                "reference": "82ebae02209c21113908c229e9883c419720738a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/e3d826245268269cd66f8326bd8bc066687b4a19",
-                "reference": "e3d826245268269cd66f8326bd8bc066687b4a19",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/82ebae02209c21113908c229e9883c419720738a",
+                "reference": "82ebae02209c21113908c229e9883c419720738a",
                 "shasum": ""
             },
             "require": {
@@ -29501,7 +29458,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.9-dev"
+                    "dev-master": "1.11-dev"
                 }
             },
             "autoload": {
@@ -29523,7 +29480,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "BackEndTea@gmail.com"
+                    "email": "backendtea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
@@ -29534,20 +29491,20 @@
                 "polyfill",
                 "portable"
             ],
-            "time": "2018-08-06T14:22:27+00:00"
+            "time": "2019-02-06T07:57:58+00:00"
         },
         {
             "name": "symfony/polyfill-intl-icu",
-            "version": "v1.10.0",
+            "version": "v1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-icu.git",
-                "reference": "f22a90256d577c7ef7efad8df1f0201663d57644"
+                "reference": "999878a3a09d73cae157b0cf89bb6fb2cc073057"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-icu/zipball/f22a90256d577c7ef7efad8df1f0201663d57644",
-                "reference": "f22a90256d577c7ef7efad8df1f0201663d57644",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-icu/zipball/999878a3a09d73cae157b0cf89bb6fb2cc073057",
+                "reference": "999878a3a09d73cae157b0cf89bb6fb2cc073057",
                 "shasum": ""
             },
             "require": {
@@ -29592,20 +29549,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-08-06T14:22:27+00:00"
+            "time": "2019-01-07T19:39:47+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.10.0",
+            "version": "v1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "c79c051f5b3a46be09205c73b80b346e4153e494"
+                "reference": "fe5e94c604826c35a32fa832f35bd036b6799609"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/c79c051f5b3a46be09205c73b80b346e4153e494",
-                "reference": "c79c051f5b3a46be09205c73b80b346e4153e494",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/fe5e94c604826c35a32fa832f35bd036b6799609",
+                "reference": "fe5e94c604826c35a32fa832f35bd036b6799609",
                 "shasum": ""
             },
             "require": {
@@ -29617,7 +29574,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.9-dev"
+                    "dev-master": "1.11-dev"
                 }
             },
             "autoload": {
@@ -29651,20 +29608,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-09-21T13:07:52+00:00"
+            "time": "2019-02-06T07:57:58+00:00"
         },
         {
             "name": "symfony/polyfill-php56",
-            "version": "v1.10.0",
+            "version": "v1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php56.git",
-                "reference": "ff208829fe1aa48ab9af356992bb7199fed551af"
+                "reference": "f4dddbc5c3471e1b700a147a20ae17cdb72dbe42"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/ff208829fe1aa48ab9af356992bb7199fed551af",
-                "reference": "ff208829fe1aa48ab9af356992bb7199fed551af",
+                "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/f4dddbc5c3471e1b700a147a20ae17cdb72dbe42",
+                "reference": "f4dddbc5c3471e1b700a147a20ae17cdb72dbe42",
                 "shasum": ""
             },
             "require": {
@@ -29674,7 +29631,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.9-dev"
+                    "dev-master": "1.11-dev"
                 }
             },
             "autoload": {
@@ -29707,20 +29664,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-09-21T06:26:08+00:00"
+            "time": "2019-02-06T07:57:58+00:00"
         },
         {
             "name": "symfony/polyfill-php70",
-            "version": "v1.10.0",
+            "version": "v1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php70.git",
-                "reference": "6b88000cdd431cd2e940caa2cb569201f3f84224"
+                "reference": "bc4858fb611bda58719124ca079baff854149c89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/6b88000cdd431cd2e940caa2cb569201f3f84224",
-                "reference": "6b88000cdd431cd2e940caa2cb569201f3f84224",
+                "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/bc4858fb611bda58719124ca079baff854149c89",
+                "reference": "bc4858fb611bda58719124ca079baff854149c89",
                 "shasum": ""
             },
             "require": {
@@ -29730,7 +29687,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.9-dev"
+                    "dev-master": "1.11-dev"
                 }
             },
             "autoload": {
@@ -29766,20 +29723,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-09-21T06:26:08+00:00"
+            "time": "2019-02-06T07:57:58+00:00"
         },
         {
             "name": "symfony/polyfill-php72",
-            "version": "v1.10.0",
+            "version": "v1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php72.git",
-                "reference": "9050816e2ca34a8e916c3a0ae8b9c2fccf68b631"
+                "reference": "ab50dcf166d5f577978419edd37aa2bb8eabce0c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/9050816e2ca34a8e916c3a0ae8b9c2fccf68b631",
-                "reference": "9050816e2ca34a8e916c3a0ae8b9c2fccf68b631",
+                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/ab50dcf166d5f577978419edd37aa2bb8eabce0c",
+                "reference": "ab50dcf166d5f577978419edd37aa2bb8eabce0c",
                 "shasum": ""
             },
             "require": {
@@ -29788,7 +29745,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.9-dev"
+                    "dev-master": "1.11-dev"
                 }
             },
             "autoload": {
@@ -29821,20 +29778,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-09-21T13:07:52+00:00"
+            "time": "2019-02-06T07:57:58+00:00"
         },
         {
             "name": "symfony/polyfill-util",
-            "version": "v1.10.0",
+            "version": "v1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-util.git",
-                "reference": "3b58903eae668d348a7126f999b0da0f2f93611c"
+                "reference": "b46c6cae28a3106735323f00a0c38eccf2328897"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/3b58903eae668d348a7126f999b0da0f2f93611c",
-                "reference": "3b58903eae668d348a7126f999b0da0f2f93611c",
+                "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/b46c6cae28a3106735323f00a0c38eccf2328897",
+                "reference": "b46c6cae28a3106735323f00a0c38eccf2328897",
                 "shasum": ""
             },
             "require": {
@@ -29843,7 +29800,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.9-dev"
+                    "dev-master": "1.11-dev"
                 }
             },
             "autoload": {
@@ -29873,7 +29830,7 @@
                 "polyfill",
                 "shim"
             ],
-            "time": "2018-09-30T16:36:12+00:00"
+            "time": "2019-02-08T14:16:39+00:00"
         },
         {
             "name": "symfony/process",
@@ -30726,16 +30683,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.38.3",
+            "version": "v1.38.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "5df0ef0ca2d08a6f087384c7f31530fb84889f28"
+                "reference": "7732e9e7017d751313811bd118de61302e9c8b35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/5df0ef0ca2d08a6f087384c7f31530fb84889f28",
-                "reference": "5df0ef0ca2d08a6f087384c7f31530fb84889f28",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/7732e9e7017d751313811bd118de61302e9c8b35",
+                "reference": "7732e9e7017d751313811bd118de61302e9c8b35",
                 "shasum": ""
             },
             "require": {
@@ -30788,7 +30745,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2019-03-21T14:50:13+00:00"
+            "time": "2019-03-23T14:27:19+00:00"
         },
         {
             "name": "willdurand/negotiation",
@@ -31144,16 +31101,16 @@
         },
         {
             "name": "codeception/codeception",
-            "version": "2.5.4",
+            "version": "2.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Codeception.git",
-                "reference": "a2ecfe2f3ad36cc29904d2d566b0d7280854e6c9"
+                "reference": "547a64cb31edcf1902b296c511f5ca74101bcb4c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/a2ecfe2f3ad36cc29904d2d566b0d7280854e6c9",
-                "reference": "a2ecfe2f3ad36cc29904d2d566b0d7280854e6c9",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/547a64cb31edcf1902b296c511f5ca74101bcb4c",
+                "reference": "547a64cb31edcf1902b296c511f5ca74101bcb4c",
                 "shasum": ""
             },
             "require": {
@@ -31232,7 +31189,7 @@
                 "functional testing",
                 "unit testing"
             ],
-            "time": "2019-02-20T20:45:25+00:00"
+            "time": "2019-03-23T17:57:45+00:00"
         },
         {
             "name": "codeception/phpunit-wrapper",
@@ -31988,24 +31945,21 @@
         },
         {
             "name": "nette/php-generator",
-            "version": "v3.2.1",
+            "version": "v3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/php-generator.git",
-                "reference": "9de4e093a130f7a1bd175198799ebc0efbac6924"
+                "reference": "acff8b136fad84b860a626d133e791f95781f9f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/php-generator/zipball/9de4e093a130f7a1bd175198799ebc0efbac6924",
-                "reference": "9de4e093a130f7a1bd175198799ebc0efbac6924",
+                "url": "https://api.github.com/repos/nette/php-generator/zipball/acff8b136fad84b860a626d133e791f95781f9f5",
+                "reference": "acff8b136fad84b860a626d133e791f95781f9f5",
                 "shasum": ""
             },
             "require": {
                 "nette/utils": "^2.4.2 || ~3.0.0",
                 "php": ">=7.1"
-            },
-            "conflict": {
-                "nette/nette": "<2.2"
             },
             "require-dev": {
                 "nette/tester": "^2.0",
@@ -32046,7 +32000,7 @@
                 "php",
                 "scaffolding"
             ],
-            "time": "2018-11-27T19:00:14+00:00"
+            "time": "2019-03-15T03:41:13+00:00"
         },
         {
             "name": "nette/robot-loader",
