@@ -1,5 +1,5 @@
 const path = require('path');
-const { Linter, Configuration } = require("tslint");
+const { Linter, Configuration } = require('tslint');
 const appSettings = require('../settings');
 const colors = require('colors');
 
