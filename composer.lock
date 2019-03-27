@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "154daaaa809917cd791a11a5ce38064e",
+    "content-hash": "f78d010f208c33f107d8b4d93d6638cb",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -1945,7 +1945,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -2620,11 +2620,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/te-1407/master/php-stan-0-11-support",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "a8dc8debcdad53f215973c709c720ad5924631b7"
+                "reference": "aa8b19950e30213d5701b29651c65995b07f60ff"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2893,15 +2893,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-04-09T14:37:49+00:00"
+            "time": "2019-04-10T06:54:20+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/te-1407/master/php-stan-0-11-support",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "88602a4e3ea395506945813b95dcd2c2ac4accbf"
+                "reference": "8471a4d671f7187cbae241a86599f61d97986137"
             },
             "require": {
                 "php": ">=7.1"
@@ -2976,7 +2976,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-04-09T13:39:46+00:00"
+            "time": "2019-04-08T16:33:26+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -7204,16 +7204,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.10.8",
+            "version": "0.11.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "4f828460a0276180da76c670a0a6e592e7c38b71"
+                "reference": "24ce5a566a798b81343138ed5d41d6877554cf9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/4f828460a0276180da76c670a0a6e592e7c38b71",
-                "reference": "4f828460a0276180da76c670a0a6e592e7c38b71",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/24ce5a566a798b81343138ed5d41d6877554cf9a",
+                "reference": "24ce5a566a798b81343138ed5d41d6877554cf9a",
                 "shasum": ""
             },
             "require": {
@@ -7236,17 +7236,17 @@
                 "brianium/paratest": "^2.0",
                 "consistence/coding-standard": "^3.5",
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4",
-                "ext-gd": "*",
                 "ext-intl": "*",
                 "ext-mysqli": "*",
+                "ext-soap": "*",
                 "ext-zip": "*",
                 "jakub-onderka/php-parallel-lint": "^1.0",
-                "localheinz/composer-normalize": "~0.9.0",
+                "localheinz/composer-normalize": "^1.1.0",
                 "phing/phing": "^2.16.0",
-                "phpstan/phpstan-deprecation-rules": "^0.10.2",
-                "phpstan/phpstan-php-parser": "^0.10",
-                "phpstan/phpstan-phpunit": "^0.10",
-                "phpstan/phpstan-strict-rules": "^0.10",
+                "phpstan/phpstan-deprecation-rules": "^0.11",
+                "phpstan/phpstan-php-parser": "^0.11",
+                "phpstan/phpstan-phpunit": "^0.11",
+                "phpstan/phpstan-strict-rules": "^0.11",
                 "phpunit/phpunit": "^7.0",
                 "slevomat/coding-standard": "^4.7.2",
                 "squizlabs/php_codesniffer": "^3.3.2"
@@ -7257,7 +7257,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.10-dev"
+                    "dev-master": "0.11-dev"
                 }
             },
             "autoload": {
@@ -7273,7 +7273,7 @@
                 "MIT"
             ],
             "description": "PHPStan - PHP Static Analysis Tool",
-            "time": "2019-01-08T09:51:19+00:00"
+            "time": "2019-03-25T16:40:09+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -8557,38 +8557,34 @@
         },
         {
             "name": "spryker-sdk/phpstan-spryker",
-            "version": "dev-master",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/phpstan-spryker.git",
-                "reference": "7d870706e514ebd7e518e1d4a7995d8a411b0779"
+                "reference": "f320ce430a29656543f79fdbe2a849393af596dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/phpstan-spryker/zipball/7d870706e514ebd7e518e1d4a7995d8a411b0779",
-                "reference": "7d870706e514ebd7e518e1d4a7995d8a411b0779",
+                "url": "https://api.github.com/repos/spryker-sdk/phpstan-spryker/zipball/f320ce430a29656543f79fdbe2a849393af596dc",
+                "reference": "f320ce430a29656543f79fdbe2a849393af596dc",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "phpstan/phpstan": "^0.10.2"
+                "phpstan/phpstan": "^0.11.1"
             },
             "require-dev": {
                 "consistence/coding-standard": "^3.5",
                 "jakub-onderka/php-parallel-lint": "^1.0",
                 "localheinz/composer-normalize": "~0.9.0",
                 "phing/phing": "^2.16.0",
-                "phpstan/phpstan-strict-rules": "^0.10",
+                "phpstan/phpstan-strict-rules": "^0.11",
                 "slevomat/coding-standard": "^4.7.2",
-                "spryker/code-sniffer": "*",
+                "spryker/code-sniffer": "dev-master",
+                "spryker/kernel": "*",
                 "squizlabs/php_codesniffer": "^3.3.1"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.1.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "PHPStan\\": "src/"
@@ -8601,16 +8597,16 @@
             "authors": [
                 {
                     "name": "Spryker",
-                    "homepage": "http://spryker.com"
+                    "homepage": "https://spryker.com"
                 }
             ],
             "description": "Spryker PHPStan Extensions",
-            "homepage": "http://spryker.com",
+            "homepage": "https://spryker.com",
             "keywords": [
                 "PHPStan",
                 "analyzing"
             ],
-            "time": "2019-02-19T23:00:40+00:00"
+            "time": "2019-01-25T17:41:52+00:00"
         },
         {
             "name": "spryker-sdk/spryk",
