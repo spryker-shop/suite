@@ -9,7 +9,6 @@ namespace Pyz\Client\ShoppingList;
 
 use Spryker\Client\ShoppingList\ShoppingListDependencyProvider as SprykerShoppingListDependencyProvider;
 use Spryker\Client\ShoppingListNote\Plugin\ShoppingListItemNoteToItemCartNoteMapperPlugin;
-use Spryker\Client\ShoppingListProductOptionConnector\Plugin\ShoppingList\ProductOptionShoppingListItemSubtotalPriceExpanderPlugin;
 use Spryker\Client\ShoppingListProductOptionConnector\ShoppingList\ProductOptionQuoteItemToItemMapperPlugin;
 use Spryker\Client\ShoppingListProductOptionConnector\ShoppingList\ShoppingListItemProductOptionRequestMapperPlugin;
 use Spryker\Client\ShoppingListProductOptionConnector\ShoppingList\ShoppingListItemProductOptionToItemProductOptionMapperPlugin;
@@ -44,16 +43,6 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     {
         return [
             new ProductOptionQuoteItemToItemMapperPlugin(),
-        ];
-    }
-
-    /**
-     * @return \Spryker\Client\ShoppingListExtension\Dependency\Plugin\ShoppingListItemSubtotalPriceExpanderPluginInterface[]
-     */
-    protected function getShoppingListItemSubtotalPriceExpanderPlugins(): array
-    {
-        return [
-            new ProductOptionShoppingListItemSubtotalPriceExpanderPlugin(),
         ];
     }
 }
