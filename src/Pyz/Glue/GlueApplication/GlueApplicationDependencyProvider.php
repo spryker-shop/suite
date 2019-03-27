@@ -9,8 +9,8 @@ namespace Pyz\Glue\GlueApplication;
 
 use Spryker\Glue\AlternativeProductsRestApi\Plugin\GlueApplication\AbstractAlternativeProductsResourceRoutePlugin;
 use Spryker\Glue\AlternativeProductsRestApi\Plugin\GlueApplication\ConcreteAlternativeProductsResourceRoutePlugin;
+use Spryker\Glue\AuthRestApi\Plugin\AccessTokenRestRequestValidatorPlugin;
 use Spryker\Glue\AuthRestApi\Plugin\AccessTokensResourceRoutePlugin;
-use Spryker\Glue\AuthRestApi\Plugin\AccessTokenValidatorPlugin;
 use Spryker\Glue\AuthRestApi\Plugin\FormatAuthenticationErrorResponseHeadersPlugin;
 use Spryker\Glue\AuthRestApi\Plugin\RefreshTokensResourceRoutePlugin;
 use Spryker\Glue\AuthRestApi\Plugin\RestUserFinderByAccessTokenPlugin;
@@ -151,7 +151,6 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     protected function getValidateRestRequestPlugins(): array
     {
         return [
-            new AccessTokenValidatorPlugin(),
             new AnonymousCustomerUniqueIdValidatorPlugin(),
         ];
     }
@@ -164,6 +163,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     protected function getRestRequestValidatorPlugins(): array
     {
         return [
+            new AccessTokenRestRequestValidatorPlugin(),
             new ValidateRestRequestAttributesPlugin(),
             new CurrencyParameterValidatorPlugin(),
             new PriceModeParameterValidatorPlugin(),
