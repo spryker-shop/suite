@@ -53,6 +53,10 @@ class ProductPriceHydratorStep implements DataImportStepInterface
     public const KEY_PRICE_DATA = 'price_data';
     public const KEY_PRICE_DATA_CHECKSUM = 'price_data_checksum';
     public const KEY_PRICE_DATA_PREFIX = 'price_data.';
+    public const KEY_ID_PRICE_TYPE = 'id_price_type';
+    public const KEY_ID_CURRENCY = 'id_currency';
+    public const KEY_ID_STORE = 'id_store';
+    public const KEY_ID_PRICE_PRODUCT_STORE = 'id_price_product_store';
 
     /**
      * @var \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface
