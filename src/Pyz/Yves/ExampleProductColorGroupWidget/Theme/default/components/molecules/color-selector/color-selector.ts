@@ -1,8 +1,15 @@
 import Component from 'ShopUi/models/component';
 
 export default class ColorSelector extends Component {
-    colors: HTMLAnchorElement[]
-    images: HTMLImageElement[]
+    /**
+     * Collection of the anchor elements which on hover change images of product.
+     */
+    colors: HTMLAnchorElement[];
+
+    /**
+     * Collection of the product image elements.
+     */
+    images: HTMLImageElement[];
 
     protected readyCallback(): void {
         this.colors = <HTMLAnchorElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__color`));
@@ -24,6 +31,10 @@ export default class ColorSelector extends Component {
         this.changeImage(imageSrc);
     }
 
+    /**
+     * Adds or removes active class names from the product color elements.
+     * @param newColor HTMLAnchorElement corresponding to the product color element that was selected.
+     */
     changeActiveColor(newColor: HTMLAnchorElement): void {
         this.colors.forEach((color: HTMLAnchorElement) => {
             color.classList.remove(`${this.name}__color--active`);
@@ -32,6 +43,10 @@ export default class ColorSelector extends Component {
         newColor.classList.add(`${this.name}__color--active`);
     }
 
+    /**
+     * Replaced src attribute for product image elements.
+     * @param newImageSrc A new scr string for product image.
+     */
     changeImage(newImageSrc: string): void {
         this.images.forEach((image: HTMLImageElement) => {
             if (image.src !== newImageSrc) {
@@ -40,6 +55,9 @@ export default class ColorSelector extends Component {
         });
     }
 
+    /**
+     * Gets a target image class name.
+     */
     get targetImageSelector(): string {
         return this.getAttribute('target-image-selector');
     }
