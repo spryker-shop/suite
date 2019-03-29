@@ -2,21 +2,27 @@
 
 namespace Pyz\Zed\Publishing;
 
-use Spryker\Zed\GlossaryStorage\Communication\Plugin\Event\Subscriber\GlossaryStoragePublisherRegistry;
+use Spryker\Zed\AvailabilityStorage\Communication\Plugin\Publishing\AvailabilityStoragePublishingRegistry;
+use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publishing\GlossaryStoragePublishingRegistry;
 
 class PublishingDependencyProvider extends \Spryker\Zed\Publishing\PublishingDependencyProvider
 {
 
     /**
-     * @return \Spryker\Zed\Publisher\Dependency\PublisherRegistryCollection
+     * @return mixed
      */
-    public function getPublisherRegistryCollection()
+    public function getPublishingRegistryCollection()
     {
-        $collection = parent::getPublisherRegistryCollection();
+        $publishingRegistryCollection = parent::getPublishingRegistryCollection();
 
-        $collection->add(new GlossaryStoragePublisherRegistry());
+        $publishingRegistryCollection->add( new GlossaryStoragePublishingRegistry());
+        $publishingRegistryCollection->add( new AvailabilityStoragePublishingRegistry());
+//        $publishingRegistryCollection->add( new ProductStoragePublishingRegistry());
+//        $publishingRegistryCollection->add( new ProductPriceStoragePublishingRegistry());
+//        $publishingRegistryCollection->add( new CmsPublishingRegistry());
+//        ....
 
-        return $collection;
+        return $publishingRegistryCollection;
     }
 
 }
