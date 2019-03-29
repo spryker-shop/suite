@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "dc649250c012e682fbd7cb9eb88bacd1",
+    "content-hash": "0645acb8414959c417babb2aa4fe0f3d",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -14521,6 +14521,53 @@
             "time": "2019-03-11T08:32:09+00:00"
         },
         {
+            "name": "spryker/event-dispatcher",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/event-dispatcher.git",
+                "reference": "2f0589b9deb759cbe91c13d9456ea024594ad18e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/event-dispatcher/zipball/2f0589b9deb759cbe91c13d9456ea024594ad18e",
+                "reference": "2f0589b9deb759cbe91c13d9456ea024594ad18e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/application-extension": "^1.0.0",
+                "spryker/event-dispatcher-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/symfony": "^3.2.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/container": "If you want to use the EventDispatcherApplicationPlugin"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "EventDispatcher module",
+            "time": "2019-03-26T15:19:37+00:00"
+        },
+        {
             "name": "spryker/event-dispatcher-extension",
             "version": "1.0.0",
             "source": {
@@ -24868,6 +24915,56 @@
             ],
             "description": "RestRequestValidator module",
             "time": "2018-12-03T17:41:56+00:00"
+        },
+        {
+            "name": "spryker/router",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/router.git",
+                "reference": "5812d58b7545169c56d76cc30850fdbc2cb1482f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/router/zipball/5812d58b7545169c56d76cc30850fdbc2cb1482f",
+                "reference": "5812d58b7545169c56d76cc30850fdbc2cb1482f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/event-dispatcher-extension": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/event-dispatcher": "*",
+                "spryker/kernel": "*",
+                "spryker/symfony": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/container": "If you want to use EventDispatcher plugin.",
+                "spryker/event-dispatcher": "If you want to use EventDispatcher plugin.",
+                "spryker/kernel": "If you want to use EventDispatcher plugin.",
+                "spryker/symfony": "If you want to use EventDispatcher plugin."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Router module",
+            "time": "2019-03-26T15:19:37+00:00"
         },
         {
             "name": "spryker/sales",
