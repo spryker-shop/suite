@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "316bfcafa698a075b3222a6bbffd1ae7",
+    "content-hash": "dc649250c012e682fbd7cb9eb88bacd1",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -7247,11 +7247,19 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-0": {
+                    "Unit": "tests/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Assertion bundle",
+            "support": {
+                "source": "https://github.com/spryker/Assertion/tree/3.0.0"
+            },
             "time": "2017-02-22T12:08:46+00:00"
         },
         {
@@ -8062,11 +8070,14 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Cache bundle",
+            "support": {
+                "source": "https://github.com/spryker/Cache/tree/3.1.0"
+            },
             "time": "2017-04-10T13:13:21+00:00"
         },
         {
@@ -9070,11 +9081,14 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "CategoryExporter module",
+            "support": {
+                "source": "https://github.com/spryker/CategoryExporter/tree/3.0.2"
+            },
             "time": "2017-07-13T15:46:45+00:00"
         },
         {
@@ -14315,11 +14329,14 @@
                     "dev-master": "1.0.x-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Egulias module",
+            "support": {
+                "source": "https://github.com/spryker/Egulias/tree/1.0.0"
+            },
             "time": "2017-11-09T13:55:22+00:00"
         },
         {
@@ -15406,11 +15423,19 @@
                     "Function": "tests/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-0": {
+                    "Unit": "tests/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Graph bundle",
+            "support": {
+                "source": "https://github.com/spryker/Graph/tree/3.0.0"
+            },
             "time": "2017-02-22T12:08:46+00:00"
         },
         {
@@ -17455,6 +17480,52 @@
             ],
             "description": "NavigationStorage module",
             "time": "2019-01-24T11:37:39+00:00"
+        },
+        {
+            "name": "spryker/navigations-category-nodes-resource-relationship",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/navigations-category-nodes-resource-relationship.git",
+                "reference": "1c7b84b6096815ebb6cc1083f57158e36160b531"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/navigations-category-nodes-resource-relationship/zipball/1c7b84b6096815ebb6cc1083f57158e36160b531",
+                "reference": "1c7b84b6096815ebb6cc1083f57158e36160b531",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/categories-rest-api": "^1.1.0",
+                "spryker/glue-application": "^1.0.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.22.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/navigations-rest-api": "If you want to expand navigation resource with category nodes relationship."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "NavigationsCategoryNodesResourceRelationship module",
+            "time": "2019-03-27T16:00:07+00:00"
         },
         {
             "name": "spryker/navigations-rest-api",
@@ -28211,11 +28282,19 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "SprykerTest\\": "tests/SprykerTest/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "UtilText module",
+            "support": {
+                "source": "https://github.com/spryker/UtilText/tree/master"
+            },
             "time": "2017-10-24T13:32:31+00:00"
         },
         {
@@ -28292,11 +28371,19 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "SprykerTest\\": "tests/SprykerTest/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "UtilValidate module",
+            "support": {
+                "source": "https://github.com/spryker/UtilValidate/tree/1.0.0"
+            },
             "time": "2017-11-09T13:55:22+00:00"
         },
         {
@@ -28751,11 +28838,14 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Zend module",
+            "support": {
+                "source": "https://github.com/spryker/Zend/tree/2.1.0"
+            },
             "time": "2017-08-02T16:31:17+00:00"
         },
         {
@@ -34492,16 +34582,16 @@
         },
         {
             "name": "spryker/architecture-sniffer",
-            "version": "0.4.1",
+            "version": "0.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/architecture-sniffer.git",
-                "reference": "91400b2da8ec07297464dd9c1d84207e9e39f46d"
+                "reference": "db5f56a25e9903c0409fd3053e8e4bda4af91977"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/91400b2da8ec07297464dd9c1d84207e9e39f46d",
-                "reference": "91400b2da8ec07297464dd9c1d84207e9e39f46d",
+                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/db5f56a25e9903c0409fd3053e8e4bda4af91977",
+                "reference": "db5f56a25e9903c0409fd3053e8e4bda4af91977",
                 "shasum": ""
             },
             "require": {
@@ -34514,7 +34604,7 @@
             },
             "require-dev": {
                 "codeception/codeception": "^2.4",
-                "phpstan/phpstan": "^0.10.0",
+                "phpstan/phpstan": "^0.11.1",
                 "phpunit/phpunit": "~5.2",
                 "spryker/code-sniffer": "*",
                 "symfony/var-dumper": "^4.0"
@@ -34546,7 +34636,7 @@
                 "sniffer",
                 "standards"
             ],
-            "time": "2019-01-25T15:37:13+00:00"
+            "time": "2019-03-14T14:56:25+00:00"
         },
         {
             "name": "spryker/code-generator",
@@ -34904,16 +34994,16 @@
         },
         {
             "name": "spryker/content-storage",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/content-storage.git",
-                "reference": "4c527775f1621e9b8fe8ec1f6f260e6af66f33e9"
+                "reference": "a0fbf3224c995109329aacd7b914c64f00b6c884"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/content-storage/zipball/4c527775f1621e9b8fe8ec1f6f260e6af66f33e9",
-                "reference": "4c527775f1621e9b8fe8ec1f6f260e6af66f33e9",
+                "url": "https://api.github.com/repos/spryker/content-storage/zipball/a0fbf3224c995109329aacd7b914c64f00b6c884",
+                "reference": "a0fbf3224c995109329aacd7b914c64f00b6c884",
                 "shasum": ""
             },
             "require": {
@@ -34955,7 +35045,7 @@
                 "proprietary"
             ],
             "description": "ContentStorage module",
-            "time": "2019-02-22T12:13:32+00:00"
+            "time": "2019-03-28T10:06:04+00:00"
         },
         {
             "name": "spryker/content-storage-extension",
