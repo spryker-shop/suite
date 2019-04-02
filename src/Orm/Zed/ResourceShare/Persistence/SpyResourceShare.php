@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\ResourceShare\Persistence;
 
-use Spryker\Zed\ResourceShare\Persistence\Propel\AbstractResourceShare as BaseResourceShare;
+use Spryker\Zed\ResourceShare\Persistence\Propel\AbstractSpyResourceShare as BaseResourceShare;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_resource_share' table.
@@ -19,6 +19,6 @@ use Spryker\Zed\ResourceShare\Persistence\Propel\AbstractResourceShare as BaseRe
  * long as it does not already exist in the output directory.
  *
  */
-class ResourceShare extends BaseResourceShare
+class SpyResourceShare extends BaseResourceShare
 {
 }
