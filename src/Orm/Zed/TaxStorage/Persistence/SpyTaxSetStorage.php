@@ -1,13 +1,8 @@
 <?php
 
-/**
- * This file is part of the Spryker Suite.
- * For full license information, please view the LICENSE file that was distributed with this source code.
- */
-
 namespace Orm\Zed\TaxStorage\Persistence;
 
-use Spryker\Zed\Tax\Persistence\Propel\AbstractSpyTaxSet as BaseSpyTaxSetStorage;
+use Spryker\Zed\TaxStorage\Persistence\Propel\AbstractSpyTaxSetStorage;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_tax_set_storage' table.
@@ -19,6 +14,6 @@ use Spryker\Zed\Tax\Persistence\Propel\AbstractSpyTaxSet as BaseSpyTaxSetStorage
  * long as it does not already exist in the output directory.
  *
  */
-class AbstractSpyTaxSetStorage extends BaseSpyTaxSetStorage
+class SpyTaxSetStorage extends AbstractSpyTaxSetStorage
 {
 }
