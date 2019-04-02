@@ -2624,7 +2624,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "f9cb3519ca3b7a980feaceab9b89d6e3b018c3b1"
+                "reference": "de4ffba68b87dc3467f5e3261439ae186a4703e1"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2893,7 +2893,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-04-02T07:18:50+00:00"
+            "time": "2019-04-02T11:35:44+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6336,16 +6336,16 @@
         },
         {
             "name": "nette/di",
-            "version": "v3.0.0-RC3",
+            "version": "v3.0.0-RC4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/di.git",
-                "reference": "51e6a4ce80336db721881db4127cb7bbe7320a76"
+                "reference": "76aee049962de18cb87102833affe05ab5a17ff1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/di/zipball/51e6a4ce80336db721881db4127cb7bbe7320a76",
-                "reference": "51e6a4ce80336db721881db4127cb7bbe7320a76",
+                "url": "https://api.github.com/repos/nette/di/zipball/76aee049962de18cb87102833affe05ab5a17ff1",
+                "reference": "76aee049962de18cb87102833affe05ab5a17ff1",
                 "shasum": ""
             },
             "require": {
@@ -6353,14 +6353,15 @@
                 "nette/neon": "^3.0",
                 "nette/php-generator": "^3.2.2",
                 "nette/robot-loader": "^3.2",
-                "nette/utils": "^3.0.1",
+                "nette/schema": "^1.0",
+                "nette/utils": "^3.0",
                 "php": ">=7.1"
             },
             "conflict": {
                 "nette/bootstrap": "<3.0"
             },
             "require-dev": {
-                "nette/tester": "^2.2",
+                "nette/tester": "^2.0",
                 "tracy/tracy": "^2.3"
             },
             "type": "library",
@@ -6404,7 +6405,7 @@
                 "nette",
                 "static"
             ],
-            "time": "2019-03-26T16:21:10+00:00"
+            "time": "2019-04-02T11:15:12+00:00"
         },
         {
             "name": "nette/finder",
@@ -6649,6 +6650,64 @@
                 "trait"
             ],
             "time": "2019-03-08T21:57:24+00:00"
+        },
+        {
+            "name": "nette/schema",
+            "version": "v1.0.0-RC",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nette/schema.git",
+                "reference": "9aee7347449a617c668291dbe9a1751092566eb5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nette/schema/zipball/9aee7347449a617c668291dbe9a1751092566eb5",
+                "reference": "9aee7347449a617c668291dbe9a1751092566eb5",
+                "shasum": ""
+            },
+            "require": {
+                "nette/utils": "^3.0.1",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "nette/php-generator": "^3.2.2",
+                "nette/tester": "^2.2",
+                "tracy/tracy": "^2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause",
+                "GPL-2.0",
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "David Grudl",
+                    "homepage": "https://davidgrudl.com"
+                },
+                {
+                    "name": "Nette Community",
+                    "homepage": "https://nette.org/contributors"
+                }
+            ],
+            "description": "📐 Nette Schema: validating data structures against a given Schema.",
+            "homepage": "https://nette.org",
+            "keywords": [
+                "config",
+                "nette"
+            ],
+            "time": "2019-04-02T01:15:23+00:00"
         },
         {
             "name": "nette/utils",
