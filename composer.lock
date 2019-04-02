@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8a3544f972bfe1df5bf69ac926b074e9",
+    "content-hash": "f0351c37837e14f134633cb045648396",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -2624,7 +2624,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "bdbf6dade50d624e880df6a2ce132921b8c1768f"
+                "reference": "f86b0b288bffdcdddd152569532e00428199962a"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2893,7 +2893,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-04-02T10:04:45+00:00"
+            "time": "2019-04-02T11:15:17+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6263,36 +6263,39 @@
         },
         {
             "name": "nette/bootstrap",
-            "version": "v3.0.0",
+            "version": "v3.0.0-RC1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/bootstrap.git",
-                "reference": "e1075af05c211915e03e0c86542f3ba5433df4a3"
+                "reference": "5c323e105b16e80881648cf77fac363509e4fbf8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/bootstrap/zipball/e1075af05c211915e03e0c86542f3ba5433df4a3",
-                "reference": "e1075af05c211915e03e0c86542f3ba5433df4a3",
+                "url": "https://api.github.com/repos/nette/bootstrap/zipball/5c323e105b16e80881648cf77fac363509e4fbf8",
+                "reference": "5c323e105b16e80881648cf77fac363509e4fbf8",
                 "shasum": ""
             },
             "require": {
-                "nette/di": "^3.0",
-                "nette/utils": "^3.0",
+                "nette/di": "^2.4.7 || ^3.0",
+                "nette/utils": "^2.4 || ^3.0",
                 "php": ">=7.1"
+            },
+            "conflict": {
+                "nette/nette": "<2.2"
             },
             "require-dev": {
                 "latte/latte": "^2.2",
-                "nette/application": "^3.0",
-                "nette/caching": "^3.0",
-                "nette/database": "^3.0",
-                "nette/forms": "^3.0",
-                "nette/http": "^3.0",
-                "nette/mail": "^3.0",
-                "nette/robot-loader": "^3.0",
+                "nette/application": "^2.3 || ^3.0",
+                "nette/caching": "^2.3 || ^3.0",
+                "nette/database": "^2.3 || ^3.0",
+                "nette/forms": "^2.3 || ^3.0",
+                "nette/http": "^2.4.0 || ^3.0",
+                "nette/mail": "^2.3 || ^3.0",
+                "nette/robot-loader": "^2.4.2 || ^3.0",
                 "nette/safe-stream": "^2.2",
-                "nette/security": "^3.0",
+                "nette/security": "^2.3 || ^3.0",
                 "nette/tester": "^2.0",
-                "tracy/tracy": "^2.6"
+                "tracy/tracy": "^2.5"
             },
             "suggest": {
                 "nette/robot-loader": "to use Configurator::createRobotLoader()",
@@ -6325,56 +6328,53 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🅱 Nette Bootstrap: the simple way to configure and bootstrap your Nette application.",
+            "description": "? Nette Bootstrap: the simple way to configure and bootstrap your Nette application.",
             "homepage": "https://nette.org",
             "keywords": [
                 "bootstrapping",
                 "configurator",
                 "nette"
             ],
-            "time": "2019-03-26T12:59:07+00:00"
+            "time": "2018-11-04T13:05:13+00:00"
         },
         {
             "name": "nette/di",
-            "version": "v3.0.0-RC3",
+            "version": "v2.4.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/di.git",
-                "reference": "51e6a4ce80336db721881db4127cb7bbe7320a76"
+                "reference": "d0561b8f77e8ef2ed6d83328860e16c81a5a8649"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/di/zipball/51e6a4ce80336db721881db4127cb7bbe7320a76",
-                "reference": "51e6a4ce80336db721881db4127cb7bbe7320a76",
+                "url": "https://api.github.com/repos/nette/di/zipball/d0561b8f77e8ef2ed6d83328860e16c81a5a8649",
+                "reference": "d0561b8f77e8ef2ed6d83328860e16c81a5a8649",
                 "shasum": ""
             },
             "require": {
                 "ext-tokenizer": "*",
-                "nette/neon": "^3.0",
-                "nette/php-generator": "^3.2.2",
-                "nette/robot-loader": "^3.2",
-                "nette/utils": "^3.0.1",
-                "php": ">=7.1"
+                "nette/neon": "^2.3.3 || ~3.0.0",
+                "nette/php-generator": "^2.6.1 || ^3.0.0",
+                "nette/utils": "^2.5.0 || ~3.0.0",
+                "php": ">=5.6.0"
             },
             "conflict": {
-                "nette/bootstrap": "<3.0"
+                "nette/bootstrap": "<2.4",
+                "nette/nette": "<2.2"
             },
             "require-dev": {
-                "nette/tester": "^2.2",
+                "nette/tester": "^2.0",
                 "tracy/tracy": "^2.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "2.4-dev"
                 }
             },
             "autoload": {
                 "classmap": [
                     "src/"
-                ],
-                "files": [
-                    "src/compatibility.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -6393,7 +6393,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "💎 Nette Dependency Injection Container: Flexible, compiled and full-featured DIC with perfectly usable autowiring and support for all new PHP 7.1 features.",
+            "description": "? Nette Dependency Injection Container: Flexible, compiled and full-featured DIC with perfectly usable autowiring and support for all new PHP 7.1 features.",
             "homepage": "https://nette.org",
             "keywords": [
                 "compiled",
@@ -6404,7 +6404,7 @@
                 "nette",
                 "static"
             ],
-            "time": "2019-03-26T16:21:10+00:00"
+            "time": "2019-01-30T13:26:05+00:00"
         },
         {
             "name": "nette/finder",
@@ -8666,12 +8666,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/architecture-sniffer.git",
-                "reference": "d05c82d278a343ff4231026b6bf011f67d1e6caa"
+                "reference": "db5f56a25e9903c0409fd3053e8e4bda4af91977"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/d05c82d278a343ff4231026b6bf011f67d1e6caa",
-                "reference": "d05c82d278a343ff4231026b6bf011f67d1e6caa",
+                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/db5f56a25e9903c0409fd3053e8e4bda4af91977",
+                "reference": "db5f56a25e9903c0409fd3053e8e4bda4af91977",
                 "shasum": ""
             },
             "require": {
@@ -8716,7 +8716,7 @@
                 "sniffer",
                 "standards"
             ],
-            "time": "2019-02-22T12:22:33+00:00"
+            "time": "2019-03-14T14:56:25+00:00"
         },
         {
             "name": "spryker/code-generator",
