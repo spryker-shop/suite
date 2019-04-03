@@ -162,7 +162,7 @@ script:
   - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -x Presentation ; fi
   - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/codecept run -g Presentation ; fi
 
-  - if [[ $VALIDATION == 1 ]] ; then node ./frontend/lint ; fi
+  - if [[ $VALIDATION == 1 ]] ; then node ./frontend/stylelint ; fi
 
 after_script:
   - if [[ $TRAVIS_TEST_RESULT == 0 ]] ; then rm /tmp/phantomjs.log ; fi
