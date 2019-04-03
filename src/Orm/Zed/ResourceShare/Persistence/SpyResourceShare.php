@@ -1,13 +1,13 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
- * For full license information, please view the LICENSE file that was distributed with this source code.
+ * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
 namespace Orm\Zed\ResourceShare\Persistence;
 
-use Spryker\Zed\ResourceShare\Persistence\Propel\AbstractSpyResourceShare as BaseResourceShare;
+use Spryker\Zed\ResourceShare\Persistence\Propel\AbstractSpyResourceShare as BaseSpyResourceShare;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_resource_share' table.
@@ -19,6 +19,6 @@ use Spryker\Zed\ResourceShare\Persistence\Propel\AbstractSpyResourceShare as Bas
  * long as it does not already exist in the output directory.
  *
  */
-class SpyResourceShare extends BaseResourceShare
+class SpyResourceShare extends BaseSpyResourceShare
 {
 }
