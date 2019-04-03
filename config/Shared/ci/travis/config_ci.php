@@ -21,6 +21,7 @@ use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\Setup\SetupConstants;
 use Spryker\Shared\Storage\StorageConstants;
+use Spryker\Shared\StorageRedis\StorageRedisConstants;
 use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\Twig\TwigConstants;
 use Spryker\Shared\WebProfiler\WebProfilerConstants;
@@ -81,11 +82,16 @@ $config[TestifyConstants::BOOTSTRAP_CLASS_YVES] = YvesBootstrap::class;
 $config[TestifyConstants::BOOTSTRAP_CLASS_ZED] = ZedBootstrap::class;
 
 // ---------- Redis
-$config[StorageConstants::STORAGE_REDIS_PROTOCOL] = 'tcp';
-$config[StorageConstants::STORAGE_REDIS_HOST] = '127.0.0.1';
-$config[StorageConstants::STORAGE_REDIS_PORT] = '6379';
-$config[StorageConstants::STORAGE_REDIS_PASSWORD] = false;
-$config[StorageConstants::STORAGE_REDIS_DATABASE] = 3;
+$config[StorageRedisConstants::STORAGE_REDIS_PROTOCOL] = 'tcp';
+$config[StorageRedisConstants::STORAGE_REDIS_HOST] = '127.0.0.1';
+$config[StorageRedisConstants::STORAGE_REDIS_PORT] = '6379';
+$config[StorageRedisConstants::STORAGE_REDIS_PASSWORD] = false;
+$config[StorageRedisConstants::STORAGE_REDIS_DATABASE] = 3;
+$config[StorageConstants::STORAGE_REDIS_PROTOCOL] = $config[StorageRedisConstants::STORAGE_REDIS_PROTOCOL];
+$config[StorageConstants::STORAGE_REDIS_HOST] = $config[StorageRedisConstants::STORAGE_REDIS_HOST];
+$config[StorageConstants::STORAGE_REDIS_PORT] = $config[StorageRedisConstants::STORAGE_REDIS_PORT];
+$config[StorageConstants::STORAGE_REDIS_PASSWORD] = $config[StorageRedisConstants::STORAGE_REDIS_PASSWORD];
+$config[StorageConstants::STORAGE_REDIS_DATABASE] = $config[StorageRedisConstants::STORAGE_REDIS_DATABASE];
 
 // ---------- Elasticsearch
 $ELASTICA_INDEX_NAME = 'de_search_devtest';
