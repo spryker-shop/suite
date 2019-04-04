@@ -8,6 +8,9 @@ env:
     - APPLICATION_ENV=devtest
     - APPLICATION_STORE=DE
     - PROJECT=suite
+    - ARTIFACTS_KEY=AKIAJD43J5ACVDJKUXLA
+    - ARTIFACTS_SECRET=$AWS_S3_SECRET_ACCESS_KEY
+    - ARTIFACTS_BUCKET=spryker-ci
 
 branches:
   only:
@@ -52,6 +55,15 @@ matrix:
 addons:
   postgresql: 9.6
   mysql: 5.7
+
+  artifacts:
+    s3_region: eu-west-1
+    paths:
+      - $(find ./data/*/logs/*/*.log -not -empty | tr "\n" ":")
+      - $(find ./tests/_output/* -not -empty | tr "\n" ":")
+      - $(find ./tests/PyzTest/*/*/_output/* -not -empty | tr "\n" ":")
+      - $(find ./vendor/spryker/spryker/Bundles/*/tests/_output/* -not -empty | tr "\n" ":")
+      - /tmp/phantomjs.log.gz
 
   apt:
     packages:
@@ -144,9 +156,13 @@ script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2 ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then ./tests/travis_check_untracked.sh ; fi
-  - timeout 45m bash -c "vendor/bin/phantomjs --webdriver=4444 --webdriver-logfile=/tmp/phantomjs.log"&
+  - timeout 45m bash -c "vendor/bin/phantomjs --webdriver=4444 --webdriver-logfile=/tmp/phantomjs.log --webdriver-loglevel=DEBUG">/dev/null &
   - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -x Presentation ; fi
   - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/codecept run -g Presentation ; fi
+
+after_script:
+  - if [[ $TRAVIS_TEST_RESULT == 0 ]] ; then rm /tmp/phantomjs.log ; fi
+  - if [[ $TRAVIS_TEST_RESULT == 1 ]] ; then gzip --best /tmp/phantomjs.log ; fi
 
 notifications:
   email: false
