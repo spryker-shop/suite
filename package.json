@@ -11,7 +11,7 @@
     "yves": "node ./frontend/build development",
     "yves:watch": "node ./frontend/build development-watch",
     "yves:production": "node ./frontend/build production",
-    "yves:stylelint": "NODE_ENV=development node ./frontend/stylelint development",
+    "yves:stylelint": "NODE_ENV=development node ./frontend/libs/stylelint development",
     "zed": "node ./node_modules/@spryker/oryx-for-zed/build",
     "zed:watch": "node ./node_modules/@spryker/oryx-for-zed/build --dev",
     "zed:production": "node ./node_modules/@spryker/oryx-for-zed/build --prod"
