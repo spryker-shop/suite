@@ -25,7 +25,7 @@ use SprykerShop\Yves\CategoryWidget\Plugin\Twig\CategoryTwigPlugin;
 use SprykerShop\Yves\ChartWidget\Plugin\Twig\ChartTwigPlugin;
 use SprykerShop\Yves\CmsBlockWidget\Plugin\Twig\CmsBlockTwigPlugin;
 use SprykerShop\Yves\CmsPage\Plugin\Twig\CmsTwigPlugin;
-use SprykerShop\Yves\ContentProductWidget\Plugin\ContentProductAbstractListTwigPlugin;
+use SprykerShop\Yves\ContentProductWidget\Plugin\Twig\ContentProductAbstractListTwigPlugin;
 use SprykerShop\Yves\CustomerPage\Plugin\Twig\CustomerTwigPlugin;
 use SprykerShop\Yves\MoneyWidget\Plugin\Twig\MoneyTwigPlugin;
 use SprykerShop\Yves\ShopApplication\Plugin\Twig\ShopApplicationFormTwigLoaderPlugin;
