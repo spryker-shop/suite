@@ -38,6 +38,7 @@ use Spryker\Glue\CompanyUserAuthRestApi\Plugin\GlueApplication\CompanyUserAccess
 use Spryker\Glue\CompanyUsersRestApi\CompanyUsersRestApiConfig;
 use Spryker\Glue\CompanyUsersRestApi\Plugin\GlueApplication\CompanyUsersResourceRoutePlugin;
 use Spryker\Glue\ContentBannersRestApi\Plugin\ContentBannerResourceRoutePlugin;
+use Spryker\Glue\ContentProductAbstractListsRestApi\Plugin\ContentProductAbstractListRoutePlugin;
 use Spryker\Glue\CustomersRestApi\CustomersRestApiConfig;
 use Spryker\Glue\CustomersRestApi\Plugin\AddressesResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\CustomerForgottenPasswordResourceRoutePlugin;
@@ -142,6 +143,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new CartUpSellingProductsResourceRoutePlugin(),
             new GuestCartUpSellingProductsResourceRoutePlugin(),
             new ContentBannerResourceRoutePlugin(),
+            new ContentProductAbstractListRoutePlugin(),
         ];
     }
 
