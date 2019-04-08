@@ -11,7 +11,7 @@ x-spryker_common: &spryker_common
     - elasticsearch
 
 services:
-  app:
+  zed:
     <<: *spryker_common
     build:
       context: .
@@ -44,7 +44,7 @@ services:
   nginx:
     image: 'nginx:alpine'
     depends_on:
-      - app
+      - zed
     ports:
       - '80:80'
     volumes:
@@ -71,7 +71,6 @@ services:
     image: rabbitmq:3.6.15-management-alpine
     ports:
       - "15672:15672"
-
 
   elasticsearch:
     image: elasticsearch:5-alpine

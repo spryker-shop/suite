@@ -11,13 +11,14 @@ RUN docker-php-ext-install gd pdo_pgsql pgsql bcmath gmp intl sodium sockets
 
 RUN curl --silent --show-error https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-RUN mkdir -p /var/www/html/data/DE/logs /var/www/html/data/AT/logs /var/www/html/data/US/logs
+RUN mkdir -p /var/www/html/data/DE/logs /var/www/html/data/AT/logs /var/www/html/data/US/logs /var/www/html/src/Generated /var/www/html/vendor
 
 RUN chown -R www-data:www-data /var/www/html/data/DE
 RUN chown -R www-data:www-data /var/www/html/data/AT
 RUN chown -R www-data:www-data /var/www/html/data/US
+RUN chown -R www-data:www-data /var/www/html/vendor
 
-RUN chmod -R 777 /var/www/html/data/DE /var/www/html/data/AT /var/www/html/data/US /var/www/html/src/Generated
+RUN chmod -R 777 /var/www/html/data/DE /var/www/html/data/AT /var/www/html/data/US /var/www/html/src/Generated /var/www/html/vendor || true
 
 #
 # limited user
