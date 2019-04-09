@@ -7,7 +7,6 @@
 
 namespace Pyz\Yves\Twig;
 
-use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Yves\Twig\TwigConfig as SprykerTwigConfig;
 
 class TwigConfig extends SprykerTwigConfig
@@ -23,10 +22,9 @@ class TwigConfig extends SprykerTwigConfig
     {
         $paths = parent::addCoreTemplatePaths($paths);
 
-        $themeName = $this->getThemeName();
-        $paths[] = $this->get(KernelConstants::SPRYKER_ROOT) . '/%1$s/src/Spryker/Yves/%1$s/Theme/' . $themeName;
-        $paths[] = APPLICATION_VENDOR_DIR . '/spryker/spryker-shop/Bundles/%1$s/src/SprykerShop/Yves/%1$s/Theme/' . $themeName;
-        $paths[] = APPLICATION_VENDOR_DIR . '/spryker-eco/%1$s/src/SprykerEco/Yves/%1$s/Theme/' . $themeName;
+        $paths[] = APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/%1$s/src/Spryker/Yves/%1$s/Theme/' . $this->getThemeNameDefault();
+        $paths[] = APPLICATION_VENDOR_DIR . '/spryker/spryker-shop/Bundles/%1$s/src/SprykerShop/Yves/%1$s/Theme/' . $this->getThemeNameDefault();
+        $paths[] = APPLICATION_VENDOR_DIR . '/spryker-eco/%1$s/src/SprykerEco/Yves/%1$s/Theme/' . $this->getThemeNameDefault();
 
         return $paths;
     }
