@@ -137,6 +137,8 @@ before_script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/codecept build --ansi ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:databuilder:generate ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console setup:search ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console frontend:project:install-dependencies ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console frontend:yves:install-dependencies ; fi
 
 script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpstan analyze -c phpstan.neon -l 4 src/ ; fi
