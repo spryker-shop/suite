@@ -12,8 +12,6 @@ use Spryker\Yves\EventDispatcher\Plugin\Application\EventDispatcherApplicationPl
 use Spryker\Yves\Locale\Plugin\Application\LocaleApplicationPlugin;
 use Spryker\Yves\Store\Plugin\Application\StoreApplicationPlugin;
 use Spryker\Yves\Twig\Plugin\Application\TwigApplicationPlugin;
-use SprykerShop\Yves\AgentQuoteRequestPage\Widget\AgentQuoteRequestCancelWidget;
-use SprykerShop\Yves\AgentQuoteRequestWidget\Widget\AgentQuoteRequestOverviewWidget;
 use SprykerShop\Yves\AgentWidget\Widget\AgentControlBarWidget;
 use SprykerShop\Yves\AvailabilityNotificationWidget\Widget\AvailabilityNotificationSubscriptionWidget;
 use SprykerShop\Yves\BusinessOnBehalfWidget\Widget\BusinessOnBehalfStatusWidget;
@@ -81,6 +79,8 @@ use SprykerShop\Yves\ProductWidget\Widget\ProductAlternativeWidget;
 use SprykerShop\Yves\QuoteApprovalWidget\Widget\QuoteApprovalStatusWidget;
 use SprykerShop\Yves\QuoteApprovalWidget\Widget\QuoteApprovalWidget;
 use SprykerShop\Yves\QuoteApprovalWidget\Widget\QuoteApproveRequestWidget;
+use SprykerShop\Yves\QuoteRequestAgentPage\Widget\QuoteRequestAgentCancelWidget;
+use SprykerShop\Yves\QuoteRequestAgentWidget\Widget\QuoteRequestAgentOverviewWidget;
 use SprykerShop\Yves\QuoteRequestPage\Widget\QuoteRequestCancelWidget;
 use SprykerShop\Yves\QuoteRequestWidget\Widget\CreateQuoteRequestWidget;
 use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCartWidget;
@@ -195,8 +195,8 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CreateQuoteRequestWidget::class,
             QuoteRequestCartWidget::class,
             QuoteRequestCancelWidget::class,
-            AgentQuoteRequestOverviewWidget::class,
-            AgentQuoteRequestCancelWidget::class,
+            QuoteRequestAgentOverviewWidget::class,
+            QuoteRequestAgentCancelWidget::class,
         ];
     }
 
