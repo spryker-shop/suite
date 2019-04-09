@@ -14,10 +14,10 @@ use Spryker\Zed\Discount\Communication\Plugin\Cart\DiscountQuoteChangeObserverPl
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Cart\CartGroupPromotionItems;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\PaymentCartConnector\Communication\Plugin\Cart\RemovePaymentCartPostSavePlugin;
+use Spryker\Zed\PriceCartConnector\Communication\Plugin\Cart\SanitizeSourcePricesQuotePreUnlockPlugin;
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\CartItemPricePlugin;
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\CartItemPricePreCheckPlugin;
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\FilterItemsWithoutPricePlugin;
-use Spryker\Zed\PriceCartConnector\Communication\Plugin\SourcePricesBeforeQuoteUnlockPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\BundleItemPriceQuoteChangeObserverPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\CartBundleActivePreCheckPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\CartBundleAvailabilityPreCheckPlugin;
@@ -55,8 +55,8 @@ use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\ProductPackagingU
 use Spryker\Zed\ProductQuantity\Communication\Plugin\Cart\CartChangeTransferQuantityNormalizerPlugin;
 use Spryker\Zed\ProductQuantity\Communication\Plugin\Cart\ProductQuantityRestrictionCartPreCheckPlugin;
 use Spryker\Zed\ProductQuantity\Communication\Plugin\CartExtension\ProductQuantityRestrictionCartRemovalPreCheckPlugin;
-use Spryker\Zed\QuoteApproval\Communication\Plugin\Cart\QuoteApprovalBeforeQuoteUnlockPlugin;
-use Spryker\Zed\QuoteRequest\Communication\Plugin\Cart\QuoteRequestBeforeQuoteUnlockPlugin;
+use Spryker\Zed\QuoteApproval\Communication\Plugin\Cart\SanitizeQuoteApprovalPreQuoteUnlockPlugin;
+use Spryker\Zed\QuoteRequest\Communication\Plugin\Cart\SanitizeQuoteRequestPreQuoteUnlockPlugin;
 use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Cart\AddThresholdMessagesCartPostReloadItemsPlugin;
 use Spryker\Zed\SalesQuantity\Communication\Plugin\Cart\IsQuantitySplittableItemExpanderPlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentExpanderPlugin;
@@ -234,14 +234,14 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\CartExtension\Dependency\Plugin\QuoteBeforeUnlockPluginInterface[]
+     * @return \Spryker\Zed\CartExtension\Dependency\Plugin\QuotePreUnlockPluginInterface[]
      */
-    protected function getQuoteBeforeUnlockPlugins(): array
+    protected function getQuotePreUnlockPlugins(): array
     {
         return [
-            new QuoteRequestBeforeQuoteUnlockPlugin(),
-            new QuoteApprovalBeforeQuoteUnlockPlugin(),
-            new SourcePricesBeforeQuoteUnlockPlugin(),
+            new SanitizeQuoteRequestPreQuoteUnlockPlugin(),
+            new SanitizeQuoteApprovalPreQuoteUnlockPlugin(),
+            new SanitizeSourcePricesQuotePreUnlockPlugin(),
         ];
     }
 }
