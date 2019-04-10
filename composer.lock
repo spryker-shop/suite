@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c4aee2b60754fd071c45ed68744e6f41",
+    "content-hash": "154daaaa809917cd791a11a5ce38064e",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -4072,7 +4072,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "backendtea@gmail.com"
+                    "email": "BackEndTea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
@@ -5614,16 +5614,16 @@
     "packages-dev": [
         {
             "name": "ajgl/breakpoint-twig-extension",
-            "version": "0.3.3",
+            "version": "0.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ajgarlag/AjglBreakpointTwigExtension.git",
-                "reference": "81b9eee68417ff6a708e6ab63532febb41443335"
+                "reference": "13ee39406dc3d959c5704b462a3dbc3cbf088f16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ajgarlag/AjglBreakpointTwigExtension/zipball/81b9eee68417ff6a708e6ab63532febb41443335",
-                "reference": "81b9eee68417ff6a708e6ab63532febb41443335",
+                "url": "https://api.github.com/repos/ajgarlag/AjglBreakpointTwigExtension/zipball/13ee39406dc3d959c5704b462a3dbc3cbf088f16",
+                "reference": "13ee39406dc3d959c5704b462a3dbc3cbf088f16",
                 "shasum": ""
             },
             "require": {
@@ -5670,7 +5670,7 @@
                 "breakpoint",
                 "twig"
             ],
-            "time": "2019-03-18T10:59:03+00:00"
+            "time": "2019-04-10T11:41:26+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -6459,7 +6459,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette Finder: find files and directories with an intuitive API.",
+            "description": "🔍 Nette Finder: find files and directories with an intuitive API.",
             "homepage": "https://nette.org",
             "keywords": [
                 "filesystem",
@@ -6519,7 +6519,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette NEON: encodes and decodes NEON file format.",
+            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -6923,7 +6923,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-13T13:21:38+00:00"
+            "time": "2017-12-12T17:28:44+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -8557,16 +8557,16 @@
         },
         {
             "name": "spryker-sdk/phpstan-spryker",
-            "version": "dev-develop",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/phpstan-spryker.git",
-                "reference": "f320ce430a29656543f79fdbe2a849393af596dc"
+                "reference": "e4ffc7bd58eef12f15ecc6b77a556d3be75a5f45"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/phpstan-spryker/zipball/f320ce430a29656543f79fdbe2a849393af596dc",
-                "reference": "f320ce430a29656543f79fdbe2a849393af596dc",
+                "url": "https://api.github.com/repos/spryker-sdk/phpstan-spryker/zipball/e4ffc7bd58eef12f15ecc6b77a556d3be75a5f45",
+                "reference": "e4ffc7bd58eef12f15ecc6b77a556d3be75a5f45",
                 "shasum": ""
             },
             "require": {
@@ -8574,17 +8574,18 @@
                 "phpstan/phpstan": "^0.11.1"
             },
             "require-dev": {
-                "consistence/coding-standard": "^3.5",
                 "jakub-onderka/php-parallel-lint": "^1.0",
                 "localheinz/composer-normalize": "~0.9.0",
                 "phing/phing": "^2.16.0",
                 "phpstan/phpstan-strict-rules": "^0.11",
-                "slevomat/coding-standard": "^4.7.2",
-                "spryker/code-sniffer": "dev-master",
-                "spryker/kernel": "*",
-                "squizlabs/php_codesniffer": "^3.3.1"
+                "spryker/code-sniffer": "*"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "PHPStan\\": "src/"
@@ -8606,7 +8607,7 @@
                 "PHPStan",
                 "analyzing"
             ],
-            "time": "2019-01-25T17:41:52+00:00"
+            "time": "2019-04-10T12:31:00+00:00"
         },
         {
             "name": "spryker-sdk/spryk",
