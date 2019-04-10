@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "91210988d08f327c0da481a6311ed0cb",
+    "content-hash": "154daaaa809917cd791a11a5ce38064e",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -2546,12 +2546,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/silexphp.git",
-                "reference": "f0eeb93045c3116dcbb447a9562757822f4f0481"
+                "reference": "abcd9061e7057264f049196caca9e63fdeb712b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/silexphp/zipball/f0eeb93045c3116dcbb447a9562757822f4f0481",
-                "reference": "f0eeb93045c3116dcbb447a9562757822f4f0481",
+                "url": "https://api.github.com/repos/spryker/silexphp/zipball/abcd9061e7057264f049196caca9e63fdeb712b4",
+                "reference": "abcd9061e7057264f049196caca9e63fdeb712b4",
                 "shasum": ""
             },
             "require": {
@@ -2616,15 +2616,15 @@
             "keywords": [
                 "microframework"
             ],
-            "time": "2019-04-10T07:31:56+00:00"
+            "time": "2019-03-26T15:17:22+00:00"
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/cms-388/master-abstract-product-list-ci-and-api",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "c748f09f660f1e7334128714081f63840bd01cf7"
+                "reference": "a8dc8debcdad53f215973c709c720ad5924631b7"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2893,7 +2893,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-04-10T09:45:14+00:00"
+            "time": "2019-04-09T14:37:49+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -4072,7 +4072,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "BackEndTea@gmail.com"
+                    "email": "backendtea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
@@ -6263,39 +6263,36 @@
         },
         {
             "name": "nette/bootstrap",
-            "version": "v3.0.0-RC1",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/bootstrap.git",
-                "reference": "5c323e105b16e80881648cf77fac363509e4fbf8"
+                "reference": "e1075af05c211915e03e0c86542f3ba5433df4a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/bootstrap/zipball/5c323e105b16e80881648cf77fac363509e4fbf8",
-                "reference": "5c323e105b16e80881648cf77fac363509e4fbf8",
+                "url": "https://api.github.com/repos/nette/bootstrap/zipball/e1075af05c211915e03e0c86542f3ba5433df4a3",
+                "reference": "e1075af05c211915e03e0c86542f3ba5433df4a3",
                 "shasum": ""
             },
             "require": {
-                "nette/di": "^2.4.7 || ^3.0",
-                "nette/utils": "^2.4 || ^3.0",
+                "nette/di": "^3.0",
+                "nette/utils": "^3.0",
                 "php": ">=7.1"
-            },
-            "conflict": {
-                "nette/nette": "<2.2"
             },
             "require-dev": {
                 "latte/latte": "^2.2",
-                "nette/application": "^2.3 || ^3.0",
-                "nette/caching": "^2.3 || ^3.0",
-                "nette/database": "^2.3 || ^3.0",
-                "nette/forms": "^2.3 || ^3.0",
-                "nette/http": "^2.4.0 || ^3.0",
-                "nette/mail": "^2.3 || ^3.0",
-                "nette/robot-loader": "^2.4.2 || ^3.0",
+                "nette/application": "^3.0",
+                "nette/caching": "^3.0",
+                "nette/database": "^3.0",
+                "nette/forms": "^3.0",
+                "nette/http": "^3.0",
+                "nette/mail": "^3.0",
+                "nette/robot-loader": "^3.0",
                 "nette/safe-stream": "^2.2",
-                "nette/security": "^2.3 || ^3.0",
+                "nette/security": "^3.0",
                 "nette/tester": "^2.0",
-                "tracy/tracy": "^2.5"
+                "tracy/tracy": "^2.6"
             },
             "suggest": {
                 "nette/robot-loader": "to use Configurator::createRobotLoader()",
@@ -6328,53 +6325,57 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette Bootstrap: the simple way to configure and bootstrap your Nette application.",
+            "description": "🅱 Nette Bootstrap: the simple way to configure and bootstrap your Nette application.",
             "homepage": "https://nette.org",
             "keywords": [
                 "bootstrapping",
                 "configurator",
                 "nette"
             ],
-            "time": "2018-11-04T13:05:13+00:00"
+            "time": "2019-03-26T12:59:07+00:00"
         },
         {
             "name": "nette/di",
-            "version": "v2.4.15",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/di.git",
-                "reference": "d0561b8f77e8ef2ed6d83328860e16c81a5a8649"
+                "reference": "19d83539245aaacb59470828919182411061841f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/di/zipball/d0561b8f77e8ef2ed6d83328860e16c81a5a8649",
-                "reference": "d0561b8f77e8ef2ed6d83328860e16c81a5a8649",
+                "url": "https://api.github.com/repos/nette/di/zipball/19d83539245aaacb59470828919182411061841f",
+                "reference": "19d83539245aaacb59470828919182411061841f",
                 "shasum": ""
             },
             "require": {
                 "ext-tokenizer": "*",
-                "nette/neon": "^2.3.3 || ~3.0.0",
-                "nette/php-generator": "^2.6.1 || ^3.0.0",
-                "nette/utils": "^2.5.0 || ~3.0.0",
-                "php": ">=5.6.0"
+                "nette/neon": "^3.0",
+                "nette/php-generator": "^3.2.2",
+                "nette/robot-loader": "^3.2",
+                "nette/schema": "^1.0",
+                "nette/utils": "^3.0",
+                "php": ">=7.1"
             },
             "conflict": {
-                "nette/bootstrap": "<2.4",
-                "nette/nette": "<2.2"
+                "nette/bootstrap": "<3.0"
             },
             "require-dev": {
-                "nette/tester": "^2.0",
+                "nette/tester": "^2.2",
                 "tracy/tracy": "^2.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.4-dev"
+                    "dev-master": "3.0-dev"
                 }
             },
             "autoload": {
                 "classmap": [
                     "src/"
+                ],
+                "files": [
+                    "src/compatibility.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -6393,7 +6394,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette Dependency Injection Container: Flexible, compiled and full-featured DIC with perfectly usable autowiring and support for all new PHP 7.1 features.",
+            "description": "💎 Nette Dependency Injection Container: Flexible, compiled and full-featured DIC with perfectly usable autowiring and support for all new PHP 7.1 features.",
             "homepage": "https://nette.org",
             "keywords": [
                 "compiled",
@@ -6404,7 +6405,7 @@
                 "nette",
                 "static"
             ],
-            "time": "2019-01-30T13:26:05+00:00"
+            "time": "2019-04-03T19:35:46+00:00"
         },
         {
             "name": "nette/finder",
@@ -6458,7 +6459,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🔍 Nette Finder: find files and directories with an intuitive API.",
+            "description": "? Nette Finder: find files and directories with an intuitive API.",
             "homepage": "https://nette.org",
             "keywords": [
                 "filesystem",
@@ -6518,7 +6519,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
+            "description": "? Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -6649,6 +6650,63 @@
                 "trait"
             ],
             "time": "2019-03-08T21:57:24+00:00"
+        },
+        {
+            "name": "nette/schema",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nette/schema.git",
+                "reference": "6241d8d4da39e825dd6cb5bfbe4242912f4d7e4d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nette/schema/zipball/6241d8d4da39e825dd6cb5bfbe4242912f4d7e4d",
+                "reference": "6241d8d4da39e825dd6cb5bfbe4242912f4d7e4d",
+                "shasum": ""
+            },
+            "require": {
+                "nette/utils": "^3.0.1",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "nette/tester": "^2.2",
+                "tracy/tracy": "^2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause",
+                "GPL-2.0",
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "David Grudl",
+                    "homepage": "https://davidgrudl.com"
+                },
+                {
+                    "name": "Nette Community",
+                    "homepage": "https://nette.org/contributors"
+                }
+            ],
+            "description": "📐 Nette Schema: validating data structures against a given Schema.",
+            "homepage": "https://nette.org",
+            "keywords": [
+                "config",
+                "nette"
+            ],
+            "time": "2019-04-03T15:53:25+00:00"
         },
         {
             "name": "nette/utils",
@@ -8768,12 +8826,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "f1ea4781e64d9a265be2de4fc0e29e731d7d4f74"
+                "reference": "58704bb1d266c34e3fc9af069accf91698ff07de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/f1ea4781e64d9a265be2de4fc0e29e731d7d4f74",
-                "reference": "f1ea4781e64d9a265be2de4fc0e29e731d7d4f74",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/58704bb1d266c34e3fc9af069accf91698ff07de",
+                "reference": "58704bb1d266c34e3fc9af069accf91698ff07de",
                 "shasum": ""
             },
             "require": {
@@ -8813,7 +8871,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-04-10T07:23:57+00:00"
+            "time": "2019-04-09T09:38:00+00:00"
         },
         {
             "name": "spryker/development-core",
