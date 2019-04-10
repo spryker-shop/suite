@@ -7,18 +7,18 @@
 
 namespace Pyz\Client\QuoteRequest;
 
-use Spryker\Client\QuoteApproval\Plugin\QuoteRequest\QuoteApprovalQuoteRequestCreatePreCheckPlugin;
+use Spryker\Client\QuoteApproval\Plugin\QuoteRequest\QuoteApprovalQuoteRequestQuoteCheckPlugin;
 use Spryker\Client\QuoteRequest\QuoteRequestDependencyProvider as SprykerQuoteRequestDependencyProvider;
 
 class QuoteRequestDependencyProvider extends SprykerQuoteRequestDependencyProvider
 {
     /**
-     * @return \Spryker\Client\QuoteRequestExtension\Dependency\Plugin\QuoteRequestCreatePreCheckPluginInterface[]
+     * @return \Spryker\Client\QuoteRequestExtension\Dependency\Plugin\QuoteRequestQuoteCheckPluginInterface[]
      */
-    protected function getQuoteRequestCreatePreCheckPlugins(): array
+    protected function getQuoteRequestQuoteCheckPlugins(): array
     {
         return [
-            new QuoteApprovalQuoteRequestCreatePreCheckPlugin(),
+            new QuoteApprovalQuoteRequestQuoteCheckPlugin(),
         ];
     }
 }
