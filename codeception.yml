@@ -32,3 +32,5 @@ extensions:
     config:
         Codeception\Extension\Phantoman:
             suites: ['Presentation']
+            loadImages: false
+            diskCache: true
