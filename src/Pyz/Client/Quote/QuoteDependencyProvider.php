@@ -11,7 +11,7 @@ use Spryker\Client\Kernel\Container;
 use Spryker\Client\MultiCart\Plugin\NameQuoteTransferExpanderPlugin;
 use Spryker\Client\Price\Plugin\PriceModeQuoteTransferExpanderPlugin;
 use Spryker\Client\Quote\QuoteDependencyProvider as BaseQuoteDependencyProvider;
-use Spryker\Client\QuoteRequest\Plugin\Quote\QuoteRequestDatabaseStrategyAvailabilityCheckPlugin;
+use Spryker\Client\QuoteRequest\Plugin\Quote\QuoteRequestDatabaseStrategyPreCheckPlugin;
 use Spryker\Client\Store\Plugin\StoreQuoteTransferExpanderPlugin;
 
 class QuoteDependencyProvider extends BaseQuoteDependencyProvider
@@ -31,12 +31,12 @@ class QuoteDependencyProvider extends BaseQuoteDependencyProvider
     }
 
     /**
-     * @return \Spryker\Client\QuoteExtension\Dependency\Plugin\DatabaseStrategyAvailabilityCheckPluginInterface[]
+     * @return \Spryker\Client\QuoteExtension\Dependency\Plugin\DatabaseStrategyPreCheckPluginInterface[]
      */
-    protected function getDatabaseStrategyAvailabilityCheckPlugins(): array
+    protected function getDatabaseStrategyPreCheckPlugins(): array
     {
         return [
-            new QuoteRequestDatabaseStrategyAvailabilityCheckPlugin(),
+            new QuoteRequestDatabaseStrategyPreCheckPlugin(),
         ];
     }
 }
