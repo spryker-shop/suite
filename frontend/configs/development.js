@@ -146,11 +146,11 @@ async function getConfiguration() {
                 filename: `./css/${appSettings.name}.[name].css`,
             }),
 
-            function() {
-                this.hooks.done.tap('webpack', stats => {
-                    if (stats.compilation.errors && stats.compilation.errors.length &&
+            (compiler) => {
+                compiler.hooks.done.tap('webpack', compilationParams => {
+                    if (compilationParams.compilation.errors && compilationParams.compilation.errors.length &&
                         process.env.npm_lifecycle_event !== 'yves:watch') {
-                        stats.compilation.errors.forEach(error => console.log(error.message));
+                        compilationParams.compilation.errors.forEach(error => console.log(error.message));
                         process.exit(1);
                     }
                 });
