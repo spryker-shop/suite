@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "154daaaa809917cd791a11a5ce38064e",
+    "content-hash": "f67246d1ea66843da0cd1e4c92aef9e8",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -2546,12 +2546,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/silexphp.git",
-                "reference": "abcd9061e7057264f049196caca9e63fdeb712b4"
+                "reference": "dd5d11488162f82173680d7c598d00f3cc16c5f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/silexphp/zipball/abcd9061e7057264f049196caca9e63fdeb712b4",
-                "reference": "abcd9061e7057264f049196caca9e63fdeb712b4",
+                "url": "https://api.github.com/repos/spryker/silexphp/zipball/dd5d11488162f82173680d7c598d00f3cc16c5f5",
+                "reference": "dd5d11488162f82173680d7c598d00f3cc16c5f5",
                 "shasum": ""
             },
             "require": {
@@ -2616,7 +2616,7 @@
             "keywords": [
                 "microframework"
             ],
-            "time": "2019-03-26T15:17:22+00:00"
+            "time": "2019-04-10T10:22:42+00:00"
         },
         {
             "name": "spryker/spryker",
@@ -2624,7 +2624,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "a8dc8debcdad53f215973c709c720ad5924631b7"
+                "reference": "ae6af5871adeb3c03c44b5f25e4dcc4aafee49c6"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2893,11 +2893,11 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-04-09T14:37:49+00:00"
+            "time": "2019-04-12T08:41:45+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-bugfix/cc-4467-aborting-install-if-frontend-is-broken",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
@@ -5614,16 +5614,16 @@
     "packages-dev": [
         {
             "name": "ajgl/breakpoint-twig-extension",
-            "version": "0.3.3",
+            "version": "0.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ajgarlag/AjglBreakpointTwigExtension.git",
-                "reference": "81b9eee68417ff6a708e6ab63532febb41443335"
+                "reference": "13ee39406dc3d959c5704b462a3dbc3cbf088f16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ajgarlag/AjglBreakpointTwigExtension/zipball/81b9eee68417ff6a708e6ab63532febb41443335",
-                "reference": "81b9eee68417ff6a708e6ab63532febb41443335",
+                "url": "https://api.github.com/repos/ajgarlag/AjglBreakpointTwigExtension/zipball/13ee39406dc3d959c5704b462a3dbc3cbf088f16",
+                "reference": "13ee39406dc3d959c5704b462a3dbc3cbf088f16",
                 "shasum": ""
             },
             "require": {
@@ -5670,7 +5670,7 @@
                 "breakpoint",
                 "twig"
             ],
-            "time": "2019-03-18T10:59:03+00:00"
+            "time": "2019-04-10T11:41:26+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -7204,16 +7204,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.10.8",
+            "version": "0.11.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "4f828460a0276180da76c670a0a6e592e7c38b71"
+                "reference": "24ce5a566a798b81343138ed5d41d6877554cf9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/4f828460a0276180da76c670a0a6e592e7c38b71",
-                "reference": "4f828460a0276180da76c670a0a6e592e7c38b71",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/24ce5a566a798b81343138ed5d41d6877554cf9a",
+                "reference": "24ce5a566a798b81343138ed5d41d6877554cf9a",
                 "shasum": ""
             },
             "require": {
@@ -7236,17 +7236,17 @@
                 "brianium/paratest": "^2.0",
                 "consistence/coding-standard": "^3.5",
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4",
-                "ext-gd": "*",
                 "ext-intl": "*",
                 "ext-mysqli": "*",
+                "ext-soap": "*",
                 "ext-zip": "*",
                 "jakub-onderka/php-parallel-lint": "^1.0",
-                "localheinz/composer-normalize": "~0.9.0",
+                "localheinz/composer-normalize": "^1.1.0",
                 "phing/phing": "^2.16.0",
-                "phpstan/phpstan-deprecation-rules": "^0.10.2",
-                "phpstan/phpstan-php-parser": "^0.10",
-                "phpstan/phpstan-phpunit": "^0.10",
-                "phpstan/phpstan-strict-rules": "^0.10",
+                "phpstan/phpstan-deprecation-rules": "^0.11",
+                "phpstan/phpstan-php-parser": "^0.11",
+                "phpstan/phpstan-phpunit": "^0.11",
+                "phpstan/phpstan-strict-rules": "^0.11",
                 "phpunit/phpunit": "^7.0",
                 "slevomat/coding-standard": "^4.7.2",
                 "squizlabs/php_codesniffer": "^3.3.2"
@@ -7257,7 +7257,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.10-dev"
+                    "dev-master": "0.11-dev"
                 }
             },
             "autoload": {
@@ -7273,7 +7273,7 @@
                 "MIT"
             ],
             "description": "PHPStan - PHP Static Analysis Tool",
-            "time": "2019-01-08T09:51:19+00:00"
+            "time": "2019-03-25T16:40:09+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -8561,32 +8561,30 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/phpstan-spryker.git",
-                "reference": "7d870706e514ebd7e518e1d4a7995d8a411b0779"
+                "reference": "40afba6ab87491b4f5947c1625ace53133efbd1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/phpstan-spryker/zipball/7d870706e514ebd7e518e1d4a7995d8a411b0779",
-                "reference": "7d870706e514ebd7e518e1d4a7995d8a411b0779",
+                "url": "https://api.github.com/repos/spryker-sdk/phpstan-spryker/zipball/40afba6ab87491b4f5947c1625ace53133efbd1b",
+                "reference": "40afba6ab87491b4f5947c1625ace53133efbd1b",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "phpstan/phpstan": "^0.10.2"
+                "phpstan/phpstan": "^0.11.1"
             },
             "require-dev": {
-                "consistence/coding-standard": "^3.5",
                 "jakub-onderka/php-parallel-lint": "^1.0",
                 "localheinz/composer-normalize": "~0.9.0",
                 "phing/phing": "^2.16.0",
-                "phpstan/phpstan-strict-rules": "^0.10",
-                "slevomat/coding-standard": "^4.7.2",
-                "spryker/code-sniffer": "*",
+                "phpstan/phpstan-strict-rules": "^0.11",
+                "spryker/code-sniffer": "^0.14",
                 "squizlabs/php_codesniffer": "^3.3.1"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.1.x-dev"
+                    "dev-master": "1.0.x-dev"
                 }
             },
             "autoload": {
@@ -8601,16 +8599,16 @@
             "authors": [
                 {
                     "name": "Spryker",
-                    "homepage": "http://spryker.com"
+                    "homepage": "https://spryker.com"
                 }
             ],
             "description": "Spryker PHPStan Extensions",
-            "homepage": "http://spryker.com",
+            "homepage": "https://spryker.com",
             "keywords": [
                 "PHPStan",
                 "analyzing"
             ],
-            "time": "2019-02-19T23:00:40+00:00"
+            "time": "2019-04-10T12:54:24+00:00"
         },
         {
             "name": "spryker-sdk/spryk",
@@ -8826,12 +8824,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "58704bb1d266c34e3fc9af069accf91698ff07de"
+                "reference": "ea093c1aad2a8a3a2ffbb2ceb0eb05bc05642b50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/58704bb1d266c34e3fc9af069accf91698ff07de",
-                "reference": "58704bb1d266c34e3fc9af069accf91698ff07de",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/ea093c1aad2a8a3a2ffbb2ceb0eb05bc05642b50",
+                "reference": "ea093c1aad2a8a3a2ffbb2ceb0eb05bc05642b50",
                 "shasum": ""
             },
             "require": {
@@ -8871,7 +8869,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-04-09T09:38:00+00:00"
+            "time": "2019-04-10T12:09:01+00:00"
         },
         {
             "name": "spryker/development-core",
@@ -8978,16 +8976,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.4.1",
+            "version": "3.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "5b4333b4010625d29580eb4a41f1e53251be6baa"
+                "reference": "b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/5b4333b4010625d29580eb4a41f1e53251be6baa",
-                "reference": "5b4333b4010625d29580eb4a41f1e53251be6baa",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8",
+                "reference": "b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8",
                 "shasum": ""
             },
             "require": {
@@ -9025,7 +9023,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-03-19T03:22:27+00:00"
+            "time": "2019-04-10T23:49:02+00:00"
         },
         {
             "name": "stecman/symfony-console-completion",
