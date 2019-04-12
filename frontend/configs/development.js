@@ -144,9 +144,19 @@ async function getConfiguration() {
 
             new MiniCssExtractPlugin({
                 filename: `./css/${appSettings.name}.[name].css`,
-            })
+            }),
+
+            function() {
+                this.hooks.done.tap('webpack', stats => {
+                    if (stats.compilation.errors && stats.compilation.errors.length &&
+                        process.env.npm_lifecycle_event !== 'yves:watch') {
+                        stats.compilation.errors.forEach(error => console.log(error.message));
+                        process.exit(1);
+                    }
+                });
+            }
         ]
-    }
+    };
 
     return config;
 }
