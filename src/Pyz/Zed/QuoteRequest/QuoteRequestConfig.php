@@ -26,6 +26,7 @@ class QuoteRequestConfig extends SprykerQuoteRequestConfig
             QuoteTransfer::CURRENCY,
             QuoteTransfer::PRICE_MODE,
             QuoteTransfer::BUNDLE_ITEMS,
+            QuoteTransfer::EXPENSES,
             QuoteTransfer::VOUCHER_DISCOUNTS,
             QuoteTransfer::CART_RULE_DISCOUNTS,
             QuoteTransfer::PROMOTION_ITEMS,
