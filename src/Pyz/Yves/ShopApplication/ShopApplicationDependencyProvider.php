@@ -81,9 +81,9 @@ use SprykerShop\Yves\QuoteApprovalWidget\Widget\QuoteApprovalWidget;
 use SprykerShop\Yves\QuoteApprovalWidget\Widget\QuoteApproveRequestWidget;
 use SprykerShop\Yves\QuoteRequestAgentWidget\Widget\QuoteRequestAgentCancelWidget;
 use SprykerShop\Yves\QuoteRequestAgentWidget\Widget\QuoteRequestAgentOverviewWidget;
-use SprykerShop\Yves\QuoteRequestWidget\Widget\CreateQuoteRequestWidget;
 use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCancelWidget;
 use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCartWidget;
+use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCreateWidget;
 use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestMenuItemWidget;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Widget\SalesOrderThresholdWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartDeleteCompanyUsersListWidget;
@@ -192,7 +192,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CategoryImageStorageWidget::class,
             AvailabilityNotificationSubscriptionWidget::class,
             ProductConcreteAddWidget::class,
-            CreateQuoteRequestWidget::class,
+            QuoteRequestCreateWidget::class,
             QuoteRequestCartWidget::class,
             QuoteRequestCancelWidget::class,
             QuoteRequestAgentOverviewWidget::class,
