@@ -7,18 +7,18 @@
 
 namespace Pyz\Glue\CompanyBusinessUnitsRestApi;
 
-use Spryker\Glue\CompanyBusinessUnitAddressesRestApi\Plugin\CompanyBusinessUnit\DefaultBillingAddressMapper;
+use Spryker\Glue\CompanyBusinessUnitAddressesRestApi\Plugin\CompanyBusinessUnitsRestApi\DefaultBillingAddressMapperPlugin;
 use Spryker\Glue\CompanyBusinessUnitsRestApi\CompanyBusinessUnitsRestApiDependencyProvider as SprykerCompanyBusinessUnitsRestApiDependencyProvider;
 
 class CompanyBusinessUnitsRestApiDependencyProvider extends SprykerCompanyBusinessUnitsRestApiDependencyProvider
 {
     /**
-     * @return \Spryker\Glue\CompanyBusinessUnitsRestApiExtension\Dependency\Plugin\CompanyBusinessUnitMapperInterface[]
+     * @return \Spryker\Glue\CompanyBusinessUnitsRestApiExtension\Dependency\Plugin\CompanyBusinessUnitMapperPluginInterface[]
      */
     protected function getCompanyBusinessUnitMapperPlugins(): array
     {
         return [
-            new DefaultBillingAddressMapper(),
+            new DefaultBillingAddressMapperPlugin(),
         ];
     }
 }
