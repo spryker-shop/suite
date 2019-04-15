@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "abe39cb1e160f34dcfe6a71bfc8836f9",
+    "content-hash": "1c23b17ca84d4c6499c912a5bfe8ca9f",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -13218,6 +13218,182 @@
             ],
             "description": "ContentBannerDataImport module",
             "time": "2019-04-03T10:10:52+00:00"
+        },
+        {
+            "name": "spryker/content-banner-gui",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/content-banner-gui.git",
+                "reference": "fbe6075ad4a2760d792557f195cbf8efcb27fb57"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/content-banner-gui/zipball/fbe6075ad4a2760d792557f195cbf8efcb27fb57",
+                "reference": "fbe6075ad4a2760d792557f195cbf8efcb27fb57",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/content-gui-extension": "^1.0.0",
+                "spryker/kernel": "^3.8.0",
+                "spryker/symfony": "^3.1.5"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ContentBannerGui module",
+            "time": "2019-04-02T11:15:17+00:00"
+        },
+        {
+            "name": "spryker/content-banners-rest-api",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/content-banners-rest-api.git",
+                "reference": "2e570fdbe853f61467a35d8905e90f828e7c0539"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/content-banners-rest-api/zipball/2e570fdbe853f61467a35d8905e90f828e7c0539",
+                "reference": "2e570fdbe853f61467a35d8905e90f828e7c0539",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/content-banner": "^1.2.0",
+                "spryker/glue-application": "^1.8.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.22.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ContentBannersRestApi module",
+            "time": "2019-04-15T09:26:22+00:00"
+        },
+        {
+            "name": "spryker/content-gui",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/content-gui.git",
+                "reference": "feaf8d91d6cc95ca9bb774be21428c7fe8bb583b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/content-gui/zipball/feaf8d91d6cc95ca9bb774be21428c7fe8bb583b",
+                "reference": "feaf8d91d6cc95ca9bb774be21428c7fe8bb583b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/content": "^1.0.0",
+                "spryker/content-gui-extension": "^1.0.0",
+                "spryker/gui": "^3.16.0",
+                "spryker/kernel": "^3.29.0",
+                "spryker/locale": "^3.0.0",
+                "spryker/symfony": "^3.2.0",
+                "spryker/util-encoding": "^2.0.0",
+                "spryker/util-text": "^1.2.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ContentGui module",
+            "time": "2019-03-07T15:02:47+00:00"
+        },
+        {
+            "name": "spryker/content-gui-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/content-gui-extension.git",
+                "reference": "a8cb6bbc83d9c308a1a4171696470a43fcb55d04"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/content-gui-extension/zipball/a8cb6bbc83d9c308a1a4171696470a43fcb55d04",
+                "reference": "a8cb6bbc83d9c308a1a4171696470a43fcb55d04",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/kernel": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/kernel": "If you want to use content plugin"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ContentGuiExtension module",
+            "time": "2019-02-22T10:46:02+00:00"
         },
         {
             "name": "spryker/content-storage",
@@ -35490,182 +35666,6 @@
                 "standards"
             ],
             "time": "2019-04-10T07:23:57+00:00"
-        },
-        {
-            "name": "spryker/content-banner-gui",
-            "version": "1.0.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/content-banner-gui.git",
-                "reference": "fbe6075ad4a2760d792557f195cbf8efcb27fb57"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/content-banner-gui/zipball/fbe6075ad4a2760d792557f195cbf8efcb27fb57",
-                "reference": "fbe6075ad4a2760d792557f195cbf8efcb27fb57",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1",
-                "spryker/content-gui-extension": "^1.0.0",
-                "spryker/kernel": "^3.8.0",
-                "spryker/symfony": "^3.1.5"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "ContentBannerGui module",
-            "time": "2019-04-02T11:15:17+00:00"
-        },
-        {
-            "name": "spryker/content-banners-rest-api",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/content-banners-rest-api.git",
-                "reference": "2e570fdbe853f61467a35d8905e90f828e7c0539"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/content-banners-rest-api/zipball/2e570fdbe853f61467a35d8905e90f828e7c0539",
-                "reference": "2e570fdbe853f61467a35d8905e90f828e7c0539",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1",
-                "spryker/content-banner": "^1.2.0",
-                "spryker/glue-application": "^1.8.0",
-                "spryker/glue-application-extension": "^1.0.0",
-                "spryker/kernel": "^3.22.0",
-                "spryker/symfony": "^3.0.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "ContentBannersRestApi module",
-            "time": "2019-04-15T09:26:22+00:00"
-        },
-        {
-            "name": "spryker/content-gui",
-            "version": "1.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/content-gui.git",
-                "reference": "feaf8d91d6cc95ca9bb774be21428c7fe8bb583b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/content-gui/zipball/feaf8d91d6cc95ca9bb774be21428c7fe8bb583b",
-                "reference": "feaf8d91d6cc95ca9bb774be21428c7fe8bb583b",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1",
-                "spryker/content": "^1.0.0",
-                "spryker/content-gui-extension": "^1.0.0",
-                "spryker/gui": "^3.16.0",
-                "spryker/kernel": "^3.29.0",
-                "spryker/locale": "^3.0.0",
-                "spryker/symfony": "^3.2.0",
-                "spryker/util-encoding": "^2.0.0",
-                "spryker/util-text": "^1.2.1"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "ContentGui module",
-            "time": "2019-03-07T15:02:47+00:00"
-        },
-        {
-            "name": "spryker/content-gui-extension",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/content-gui-extension.git",
-                "reference": "a8cb6bbc83d9c308a1a4171696470a43fcb55d04"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/content-gui-extension/zipball/a8cb6bbc83d9c308a1a4171696470a43fcb55d04",
-                "reference": "a8cb6bbc83d9c308a1a4171696470a43fcb55d04",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/kernel": "*",
-                "spryker/testify": "*"
-            },
-            "suggest": {
-                "spryker/kernel": "If you want to use content plugin"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "ContentGuiExtension module",
-            "time": "2019-02-22T10:46:02+00:00"
         },
         {
             "name": "spryker/development",
