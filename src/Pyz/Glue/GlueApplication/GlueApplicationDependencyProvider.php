@@ -100,6 +100,7 @@ use Spryker\Glue\WishlistsRestApi\WishlistsRestApiConfig;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
+ * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
  */
 class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependencyProvider
 {
