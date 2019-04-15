@@ -292,7 +292,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
             new CleanTranslationCacheConsole(),
             new GenerateTranslationCacheConsole(),
-
             new CloseOutdatedQuoteRequestConsole(),
         ];
 
