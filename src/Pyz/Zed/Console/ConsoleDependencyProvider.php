@@ -66,6 +66,8 @@ use Spryker\Zed\Oms\Communication\Console\ClearLocksConsole as OmsClearLocksCons
 use Spryker\Zed\PriceProduct\Communication\Console\PriceProductStoreOptimizeConsole;
 use Spryker\Zed\PriceProductDataImport\PriceProductDataImportConfig;
 use Spryker\Zed\PriceProductMerchantRelationship\Communication\Console\PriceProductMerchantRelationshipDeleteConsole;
+use Spryker\Zed\PriceProductSchedule\Communication\Console\PriceProductScheduleApplyConsole;
+use Spryker\Zed\PriceProductSchedule\Communication\Console\PriceProductScheduleCleanConsole;
 use Spryker\Zed\PriceProductScheduleDataImport\PriceProductScheduleDataImportConfig;
 use Spryker\Zed\ProductAlternativeDataImport\ProductAlternativeDataImportConfig;
 use Spryker\Zed\ProductDiscontinued\Communication\Console\DeactivateDiscontinuedProductsConsole;
@@ -293,6 +295,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
             new CleanTranslationCacheConsole(),
             new GenerateTranslationCacheConsole(),
+
+            new PriceProductScheduleApplyConsole(),
+            new PriceProductScheduleCleanConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
