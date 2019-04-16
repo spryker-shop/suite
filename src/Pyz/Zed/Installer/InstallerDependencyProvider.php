@@ -15,6 +15,7 @@ use Spryker\Zed\Glossary\Communication\Plugin\GlossaryInstallerPlugin;
 use Spryker\Zed\Installer\InstallerDependencyProvider as SprykerInstallerDependencyProvider;
 use Spryker\Zed\Locale\Communication\Plugin\LocaleInstallerPlugin;
 use Spryker\Zed\Newsletter\Communication\Plugin\NewsletterInstallerPlugin;
+use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Installer\OauthCompanyUserInstallerPlugin;
 use Spryker\Zed\OauthCustomerConnector\Communication\Plugin\Installer\OauthCustomerInstallerPlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Installer\SalesPaymentMethodTypeInstallerPlugin;
 use Spryker\Zed\PriceProduct\Communication\Plugin\PriceInstallerPlugin;
@@ -25,6 +26,7 @@ use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Installer\ProductPacka
 use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Installer\SalesOrderThresholdTypeInstallerPlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\SharedCartPermissionInstallerPlugin;
 use Spryker\Zed\ShoppingList\Communication\Plugin\ShoppingListPermissionsInstallerPlugin;
+use Spryker\Zed\Translator\Communication\Plugin\TranslatorInstallerPlugin;
 use Spryker\Zed\User\Communication\Plugin\UserInstallerPlugin;
 
 class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
@@ -43,6 +45,7 @@ class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
             new NewsletterInstallerPlugin(),
             new GlossaryInstallerPlugin(),
             new CustomerAccessInstallerPlugin(),
+            new TranslatorInstallerPlugin(),
             new ShoppingListPermissionsInstallerPlugin(),
             new SharedCartPermissionInstallerPlugin(), #SharedCartFeature
             new ProductMeasurementUnitInstallerPlugin(),
@@ -53,6 +56,7 @@ class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
             new SalesOrderThresholdTypeInstallerPlugin(), #SalesOrderThresholdFeature
             new OauthCustomerInstallerPlugin(),
             new SalesPaymentMethodTypeInstallerPlugin(),
+            new OauthCompanyUserInstallerPlugin(),
         ];
     }
 }
