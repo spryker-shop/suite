@@ -7,6 +7,7 @@
 
 namespace Pyz\Client\ResourceShare;
 
+use Spryker\Client\PersistentCartShare\Plugin\PersistentCartShareResourceDataExpanderStrategyPlugin;
 use Spryker\Client\ResourceShare\ResourceShareDependencyProvider as SprykerResourceShareDependencyProvider;
 
 class ResourceShareDependencyProvider extends SprykerResourceShareDependencyProvider
@@ -16,6 +17,8 @@ class ResourceShareDependencyProvider extends SprykerResourceShareDependencyProv
      */
     protected function getResourceShareResourceDataExpanderStrategyPlugins(): array
     {
-        return [];
+        return [
+            new PersistentCartShareResourceDataExpanderStrategyPlugin(),
+        ];
     }
 }
