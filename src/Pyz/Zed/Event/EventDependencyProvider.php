@@ -9,7 +9,7 @@ namespace Pyz\Zed\Event;
 
 use Spryker\Zed\AvailabilityNotification\Communication\Plugin\Event\Subscriber\AvailabilityNotificationSubscriber;
 use Spryker\Zed\Event\EventDependencyProvider as SprykerEventDependencyProvider;
-use Spryker\Zed\Publishing\Communication\Plugin\Event\PublishingSubscriber;
+use Spryker\Zed\Publishing\Communication\Plugin\Event\PublisherSubscriber;
 
 class EventDependencyProvider extends SprykerEventDependencyProvider
 {
@@ -28,7 +28,7 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
     {
         $eventSubscriberCollection = parent::getEventSubscriberCollection();
 
-        $eventSubscriberCollection->add(new PublishingSubscriber());
+        $eventSubscriberCollection->add(new PublisherSubscriber());
 
         /**
          * Notification events

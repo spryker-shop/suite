@@ -1,11 +1,10 @@
 <?php
 
-namespace Pyz\Zed\Publishing;
+namespace Pyz\Zed\Publisher;
 
-use Spryker\Zed\AvailabilityStorage\Communication\Plugin\Publishing\AvailabilityStoragePublisherRegistry;
-use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publishing\GlossaryStoragePublisherRegistry;
+use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryStoragePublisherRegistryPlugin;
 
-class PublishingDependencyProvider extends \Spryker\Zed\Publishing\PublishingDependencyProvider
+class PublisherDependencyProvider extends \Spryker\Zed\Publisher\PublisherDependencyProvider
 {
 
     /**
@@ -15,8 +14,7 @@ class PublishingDependencyProvider extends \Spryker\Zed\Publishing\PublishingDep
     {
         $publishingRegistryCollection = parent::getPublisherRegistryCollection();
 
-        $publishingRegistryCollection->add( new GlossaryStoragePublisherRegistry());
-        $publishingRegistryCollection->add( new AvailabilityStoragePublisherRegistry());
+        $publishingRegistryCollection->add( new GlossaryStoragePublisherRegistryPlugin());
 //        $publishingRegistryCollection->add( new ProductStoragePublishingRegistry());
 //        $publishingRegistryCollection->add( new ProductPriceStoragePublishingRegistry());
 //        $publishingRegistryCollection->add( new CmsPublishingRegistry());
