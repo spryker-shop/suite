@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\ContentGui;
 
-use Spryker\Shared\ContentBannerGui\ContentBannerGuiConfig;
+use Spryker\Shared\ContentBanner\ContentBannerConfig;
 use Spryker\Zed\ContentGui\ContentGuiConfig as SprykerContentGuiConfig;
 
 class ContentGuiConfig extends SprykerContentGuiConfig
@@ -18,7 +18,7 @@ class ContentGuiConfig extends SprykerContentGuiConfig
     public function getEnabledContentTypesForEditor(): array
     {
         return [
-            ContentBannerGuiConfig::CONTENT_TYPE_BANNER,
+            ContentBannerConfig::CONTENT_TYPE_BANNER,
         ];
     }
 }
