@@ -16,7 +16,7 @@ class ContentGuiConfig extends SprykerContentGuiConfig
     /**
      * @return array
      */
-    public function getEnabledContentTypesForEditor(): array
+    public function getEditorContentTypes(): array
     {
         return [
             ContentBannerConfig::CONTENT_TYPE_BANNER,
