@@ -8,6 +8,7 @@
 namespace Pyz\Zed\ContentGui;
 
 use Spryker\Shared\ContentBanner\ContentBannerConfig;
+use Spryker\Shared\ContentProduct\ContentProductConfig;
 use Spryker\Zed\ContentGui\ContentGuiConfig as SprykerContentGuiConfig;
 
 class ContentGuiConfig extends SprykerContentGuiConfig
@@ -19,6 +20,7 @@ class ContentGuiConfig extends SprykerContentGuiConfig
     {
         return [
             ContentBannerConfig::CONTENT_TYPE_BANNER,
+            ContentProductConfig::CONTENT_TYPE_PRODUCT_ABSTRACT_LIST,
         ];
     }
 }
