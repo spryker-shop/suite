@@ -14,7 +14,7 @@ use Spryker\Zed\ContentGui\ContentGuiConfig as SprykerContentGuiConfig;
 class ContentGuiConfig extends SprykerContentGuiConfig
 {
     /**
-     * @return array
+     * @return string[]
      */
     public function getEditorContentTypes(): array
     {
