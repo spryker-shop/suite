@@ -67,7 +67,6 @@ $config[PropelConstants::PROPEL] = [
         'sqlDir' => APPLICATION_ROOT_DIR . '/src/Orm/Propel/' . $CURRENT_STORE . '/Sql',
         'migrationDir' => APPLICATION_ROOT_DIR . '/src/Orm/Propel/' . $CURRENT_STORE . '/Migration_' . $config[PropelConstants::ZED_DB_ENGINE],
         'schemaDir' => APPLICATION_ROOT_DIR . '/src/Orm/Propel/' . $CURRENT_STORE . '/Schema',
-        'phpConfDir' => APPLICATION_ROOT_DIR . '/src/Orm/Propel/' . $CURRENT_STORE . '/Config/' . APPLICATION_ENV . '/',
     ],
 ];
 
