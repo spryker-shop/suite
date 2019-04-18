@@ -15,7 +15,7 @@ class OauthCompanyUserDependencyProvider extends SprykerOauthCompanyUserDependen
     /**
      * @return \Spryker\Zed\OauthCompanyUserExtension\Dependency\Plugin\OauthCompanyUserIdentifierExpanderPluginInterface[]
      */
-    protected function getOauthCompanyUserExpanderPlugins(): array
+    protected function getOauthCompanyUserIdentifierExpanderPlugins(): array
     {
         return [
             new PermissionOauthCompanyUserIdentifierExpanderPlugin(),
