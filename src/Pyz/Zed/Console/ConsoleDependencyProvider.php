@@ -86,6 +86,7 @@ use Spryker\Zed\Queue\Communication\Console\QueueTaskConsole;
 use Spryker\Zed\Queue\Communication\Console\QueueWorkerConsole;
 use Spryker\Zed\Quote\Communication\Console\DeleteExpiredGuestQuoteConsole;
 use Spryker\Zed\QuoteRequest\Communication\Console\CloseOutdatedQuoteRequestConsole;
+use Spryker\Zed\QuoteRequestDataImport\QuoteRequestDataImportConfig;
 use Spryker\Zed\RabbitMq\Communication\Console\DeleteAllExchangesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\DeleteAllQueuesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\PurgeAllQueuesConsole;
@@ -230,6 +231,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . ShoppingListDataImportConfig::IMPORT_TYPE_SHOPPING_LIST_ITEM),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . ShoppingListDataImportConfig::IMPORT_TYPE_SHOPPING_LIST_COMPANY_USER),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . ShoppingListDataImportConfig::IMPORT_TYPE_SHOPPING_LIST_COMPANY_BUSINESS_UNIT),
+
+            new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . QuoteRequestDataImportConfig::IMPORT_TYPE_QUOTE_REQUEST),
+            new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . QuoteRequestDataImportConfig::IMPORT_TYPE_QUOTE_REQUEST_VERSION),
 
             // Publish and Synchronization
             new EventBehaviorTriggerTimeoutConsole(),
