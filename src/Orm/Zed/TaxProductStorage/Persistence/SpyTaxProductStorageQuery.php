@@ -16,5 +16,4 @@ use Spryker\Zed\TaxProductStorage\Persistence\Propel\AbstractSpyTaxProductStorag
  */
 class SpyTaxProductStorageQuery extends BaseSpyTaxProductStorageQuery
 {
-
 }
