@@ -67,7 +67,7 @@ use Spryker\Zed\PriceProduct\Communication\Console\PriceProductStoreOptimizeCons
 use Spryker\Zed\PriceProductDataImport\PriceProductDataImportConfig;
 use Spryker\Zed\PriceProductMerchantRelationship\Communication\Console\PriceProductMerchantRelationshipDeleteConsole;
 use Spryker\Zed\PriceProductSchedule\Communication\Console\PriceProductScheduleApplyConsole;
-use Spryker\Zed\PriceProductSchedule\Communication\Console\PriceProductScheduleCleanConsole;
+use Spryker\Zed\PriceProductSchedule\Communication\Console\PriceProductScheduleCleanupConsole;
 use Spryker\Zed\PriceProductScheduleDataImport\PriceProductScheduleDataImportConfig;
 use Spryker\Zed\ProductAlternativeDataImport\ProductAlternativeDataImportConfig;
 use Spryker\Zed\ProductDiscontinued\Communication\Console\DeactivateDiscontinuedProductsConsole;
@@ -297,7 +297,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new GenerateTranslationCacheConsole(),
 
             new PriceProductScheduleApplyConsole(),
-            new PriceProductScheduleCleanConsole(),
+            new PriceProductScheduleCleanupConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
