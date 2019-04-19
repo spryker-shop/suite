@@ -18,4 +18,12 @@ class ResourceShareDependencyProvider extends SprykerResourceShareDependencyProv
     {
         return [];
     }
+
+    /**
+     * @return \Spryker\Zed\ResourceShareExtension\Dependency\Plugin\ResourceShareActivatorStrategyPluginInterface[]
+     */
+    protected function getResourceShareResourceDataExpanderStrategyPlugins(): array
+    {
+        return [];
+    }
 }
