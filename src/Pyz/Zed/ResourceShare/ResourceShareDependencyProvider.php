@@ -21,4 +21,12 @@ class ResourceShareDependencyProvider extends SprykerResourceShareDependencyProv
             new CartPreviewActivatorStrategyPlugin(),
         ];
     }
+
+    /**
+     * @return \Spryker\Zed\ResourceShareExtension\Dependency\Plugin\ResourceShareActivatorStrategyPluginInterface[]
+     */
+    protected function getResourceShareResourceDataExpanderStrategyPlugins(): array
+    {
+        return [];
+    }
 }
