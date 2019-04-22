@@ -8,6 +8,7 @@
 namespace Pyz\Yves\Session;
 
 use Spryker\Yves\Session\SessionDependencyProvider as SprykerSessionDependencyProvider;
+use Spryker\Yves\SessionFile\Plugin\Session\SessionHandlerFilePlugin;
 use Spryker\Yves\SessionRedis\Plugin\Session\SessionHandlerRedisLockingPlugin;
 use Spryker\Yves\SessionRedis\Plugin\Session\SessionHandlerRedisPlugin;
 
@@ -21,6 +22,7 @@ class SessionDependencyProvider extends SprykerSessionDependencyProvider
         return [
             new SessionHandlerRedisPlugin(),
             new SessionHandlerRedisLockingPlugin(),
+            new SessionHandlerFilePlugin(),
         ];
     }
 }

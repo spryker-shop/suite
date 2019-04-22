@@ -13,6 +13,7 @@ use Spryker\Shared\PropelOrm\PropelOrmConstants;
 use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\Session\SessionConfig;
 use Spryker\Shared\Session\SessionConstants;
+use Spryker\Shared\SessionRedis\SessionRedisConstants;
 use Spryker\Shared\Setup\SetupConstants;
 use Spryker\Shared\Storage\StorageConstants;
 use Spryker\Shared\ZedNavigation\ZedNavigationConstants;
@@ -57,12 +58,20 @@ $config[SessionConstants::YVES_SESSION_REDIS_PROTOCOL] = $config[StorageConstant
 $config[SessionConstants::YVES_SESSION_REDIS_HOST] = $config[StorageConstants::STORAGE_REDIS_HOST];
 $config[SessionConstants::YVES_SESSION_REDIS_PORT] = $config[StorageConstants::STORAGE_REDIS_PORT];
 $config[SessionConstants::YVES_SESSION_REDIS_PASSWORD] = $config[StorageConstants::STORAGE_REDIS_PASSWORD];
+$config[SessionRedisConstants::YVES_SESSION_REDIS_PROTOCOL] = $config[StorageConstants::STORAGE_REDIS_PROTOCOL];
+$config[SessionRedisConstants::YVES_SESSION_REDIS_HOST] = $config[StorageConstants::STORAGE_REDIS_HOST];
+$config[SessionRedisConstants::YVES_SESSION_REDIS_PORT] = $config[StorageConstants::STORAGE_REDIS_PORT];
+$config[SessionRedisConstants::YVES_SESSION_REDIS_PASSWORD] = $config[StorageConstants::STORAGE_REDIS_PASSWORD];
 $config[SessionConstants::ZED_SESSION_COOKIE_SECURE] = false;
 $config[SessionConstants::ZED_SESSION_SAVE_HANDLER] = SessionConfig::SESSION_HANDLER_REDIS;
 $config[SessionConstants::ZED_SESSION_REDIS_PROTOCOL] = $config[SessionConstants::YVES_SESSION_REDIS_PROTOCOL];
 $config[SessionConstants::ZED_SESSION_REDIS_HOST] = $config[SessionConstants::YVES_SESSION_REDIS_HOST];
 $config[SessionConstants::ZED_SESSION_REDIS_PORT] = $config[SessionConstants::YVES_SESSION_REDIS_PORT];
 $config[SessionConstants::ZED_SESSION_REDIS_PASSWORD] = $config[SessionConstants::YVES_SESSION_REDIS_PASSWORD];
+$config[SessionRedisConstants::ZED_SESSION_REDIS_PROTOCOL] = $config[SessionRedisConstants::YVES_SESSION_REDIS_PROTOCOL];
+$config[SessionRedisConstants::ZED_SESSION_REDIS_HOST] = $config[SessionRedisConstants::YVES_SESSION_REDIS_HOST];
+$config[SessionRedisConstants::ZED_SESSION_REDIS_PORT] = $config[SessionRedisConstants::YVES_SESSION_REDIS_PORT];
+$config[SessionRedisConstants::ZED_SESSION_REDIS_PASSWORD] = $config[SessionRedisConstants::YVES_SESSION_REDIS_PASSWORD];
 
 // ---------- Elasticsearch
 $ENV_ELASTICA_CONNECTION_DATA = parse_url(getenv(getenv('ELASTIC_SEARCH_URL_NAME') ?: 'ELASTIC_SEARCH_URL'));

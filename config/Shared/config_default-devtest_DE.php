@@ -17,6 +17,7 @@ use Spryker\Shared\Queue\QueueConstants;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
 use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\Session\SessionConstants;
+use Spryker\Shared\SessionRedis\SessionRedisConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 
 // ---------- Yves host
@@ -121,3 +122,5 @@ $config[SessionConstants::YVES_SESSION_COOKIE_DOMAIN] = $config[ApplicationConst
 $config[SessionConstants::ZED_SESSION_COOKIE_NAME] = $config[ApplicationConstants::HOST_ZED];
 $config[SessionConstants::YVES_SESSION_REDIS_DATABASE] = 5;
 $config[SessionConstants::ZED_SESSION_REDIS_DATABASE] = $config[SessionConstants::YVES_SESSION_REDIS_DATABASE];
+$config[SessionRedisConstants::YVES_SESSION_REDIS_DATABASE] = 5;
+$config[SessionRedisConstants::ZED_SESSION_REDIS_DATABASE] = $config[SessionRedisConstants::YVES_SESSION_REDIS_DATABASE];

@@ -8,6 +8,7 @@
 namespace Pyz\Zed\Session;
 
 use Spryker\Zed\Session\SessionDependencyProvider as SprykerSessionDependencyProvider;
+use Spryker\Zed\SessionFile\Communication\Plugin\Session\SessionHandlerFilePlugin;
 use Spryker\Zed\SessionRedis\Communication\Plugin\Session\SessionHandlerRedisLockingPlugin;
 use Spryker\Zed\SessionRedis\Communication\Plugin\Session\SessionHandlerRedisPlugin;
 use Spryker\Zed\SessionRedis\Communication\Plugin\Session\SessionRedisLockReleaserPlugin;
@@ -22,6 +23,7 @@ class SessionDependencyProvider extends SprykerSessionDependencyProvider
         return [
             new SessionHandlerRedisPlugin(),
             new SessionHandlerRedisLockingPlugin(),
+            new SessionHandlerFilePlugin(),
         ];
     }
 
