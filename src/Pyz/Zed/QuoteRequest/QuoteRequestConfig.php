@@ -30,6 +30,7 @@ class QuoteRequestConfig extends SprykerQuoteRequestConfig
             QuoteTransfer::VOUCHER_DISCOUNTS,
             QuoteTransfer::CART_RULE_DISCOUNTS,
             QuoteTransfer::PROMOTION_ITEMS,
+            QuoteTransfer::QUOTE_APPROVALS,
         ]);
     }
 }
