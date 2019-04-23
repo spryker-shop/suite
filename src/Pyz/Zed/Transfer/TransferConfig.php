@@ -49,4 +49,15 @@ class TransferConfig extends SprykerTransferConfig
             APPLICATION_SOURCE_DIR . '/Orm/Propel/*/Schema/',
         ];
     }
+
+    /**
+     * We use strictness for core internal usage and enable this by default for all
+     * new projects.
+     *
+     * @return bool
+     */
+    public function useStrictGeneration(): bool
+    {
+        return true;
+    }
 }
