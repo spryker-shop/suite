@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\EventBehavior;
 
-use Spryker\Zed\AvailabilityStorage\Communication\Plugin\EventBehaviour\AvailabilityEventResourceQueryContainerPlugin;
+use Spryker\Zed\AvailabilityStorage\Communication\Plugin\Event\AvailabilityEventResourceQueryContainerPlugin;
 use Spryker\Zed\CategoryPageSearch\Communication\Plugin\Event\CategoryPageEventResourceQueryContainerPlugin;
 use Spryker\Zed\CategoryStorage\Communication\Plugin\Event\CategoryNodeEventResourceQueryContainerPlugin;
 use Spryker\Zed\CategoryStorage\Communication\Plugin\Event\CategoryTreeEventResourceQueryContainerPlugin;
