@@ -22,6 +22,8 @@ use Spryker\Zed\CompanyUnitAddressDataImport\Communication\Plugin\CompanyUnitAdd
 use Spryker\Zed\CompanyUnitAddressLabelDataImport\Communication\Plugin\CompanyUnitAddressLabelDataImportPlugin;
 use Spryker\Zed\CompanyUnitAddressLabelDataImport\Communication\Plugin\CompanyUnitAddressLabelRelationDataImportPlugin;
 use Spryker\Zed\CompanyUserDataImport\Communication\Plugin\DataImport\CompanyUserDataImportPlugin;
+use Spryker\Zed\ContentBannerDataImport\Communication\Plugin\ContentBannerDataImportPlugin;
+use Spryker\Zed\ContentProductDataImport\Communication\Plugin\ContentProductAbstractListDataImportPlugin;
 use Spryker\Zed\DataImport\Communication\Plugin\DataImportEventBehaviorPlugin;
 use Spryker\Zed\DataImport\Communication\Plugin\DataImportPublisherPlugin;
 use Spryker\Zed\DataImport\DataImportDependencyProvider as SprykerDataImportDependencyProvider;
@@ -54,7 +56,6 @@ use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListItemData
 
 class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
 {
-    public const FACADE_AVAILABILITY = 'availability facade';
     public const FACADE_CATEGORY = 'category facade';
     public const FACADE_STORE = 'store facade';
     public const FACADE_CURRENCY = 'currency facade';
@@ -75,7 +76,6 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     {
         $container = parent::provideBusinessLayerDependencies($container);
 
-        $container = $this->addAvailabilityFacade($container);
         $container = $this->addStockFacade($container);
         $container = $this->addCurrencyFacade($container);
         $container = $this->addStoreFacade($container);
@@ -112,20 +112,6 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     {
         $container[static::FACADE_STORE] = function (Container $container) {
             return $container->getLocator()->store()->facade();
-        };
-
-        return $container;
-    }
-
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
-    protected function addAvailabilityFacade(Container $container)
-    {
-        $container[static::FACADE_AVAILABILITY] = function (Container $container) {
-            return $container->getLocator()->availability()->facade();
         };
 
         return $container;
@@ -208,6 +194,8 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     {
         return [
             [new CategoryDataImportPlugin(), DataImportConfig::IMPORT_TYPE_CATEGORY_TEMPLATE],
+            new CmsPageDataImportPlugin(),
+            new CmsPageStoreDataImportPlugin(),
             new CompanyDataImportPlugin(),
             new CompanyBusinessUnitDataImportPlugin(),
             new CompanyUnitAddressDataImportPlugin(),
@@ -233,8 +221,6 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new MerchantRelationshipProductListDataImportPlugin(),
             new PriceProductMerchantRelationshipDataImportPlugin(),
             new FileManagerDataImportPlugin(),
-            new CmsPageDataImportPlugin(),
-            new CmsPageStoreDataImportPlugin(),
             new CompanyUserDataImportPlugin(),
             new CompanyRoleDataImportPlugin(),
             new CompanyRolePermissionDataImportPlugin(),
@@ -247,6 +233,8 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new ShoppingListItemDataImportPlugin(),
             new ShoppingListCompanyUserDataImportPlugin(),
             new ShoppingListCompanyBusinessUnitDataImportPlugin(),
+            new ContentBannerDataImportPlugin(),
+            new ContentProductAbstractListDataImportPlugin(),
         ];
     }
 

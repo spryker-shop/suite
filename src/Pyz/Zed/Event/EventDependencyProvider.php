@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Event;
 
+use Spryker\Zed\AvailabilityNotification\Communication\Plugin\Event\Subscriber\AvailabilityNotificationSubscriber;
 use Spryker\Zed\AvailabilityStorage\Communication\Plugin\Event\Subscriber\AvailabilityStorageEventSubscriber;
 use Spryker\Zed\CategoryImageStorage\Communication\Plugin\Event\Subscriber\CategoryImageStorageEventSubscriber;
 use Spryker\Zed\CategoryPageSearch\Communication\Plugin\Event\Subscriber\CategoryPageSearchEventSubscriber;
@@ -16,6 +17,8 @@ use Spryker\Zed\CmsBlockProductStorage\Communication\Plugin\Event\Subscriber\Cms
 use Spryker\Zed\CmsBlockStorage\Communication\Plugin\Event\Subscriber\CmsBlockStorageEventSubscriber;
 use Spryker\Zed\CmsPageSearch\Communication\Plugin\Event\Subscriber\CmsPageSearchEventSubscriber;
 use Spryker\Zed\CmsStorage\Communication\Plugin\Event\Subscriber\CmsStorageEventSubscriber;
+use Spryker\Zed\CompanyUserStorage\Communication\Plugin\Event\Subscriber\CompanyUserStorageEventSubscriber;
+use Spryker\Zed\ContentStorage\Communication\Plugin\Event\Subscriber\ContentStorageEventSubscriber;
 use Spryker\Zed\CustomerAccessStorage\Communication\Plugin\Event\Subscriber\CustomerAccessStorageEventSubscriber;
 use Spryker\Zed\Event\EventDependencyProvider as SprykerEventDependencyProvider;
 use Spryker\Zed\FileManagerStorage\Communication\Plugin\Event\Subscriber\FileManagerStorageSubscriber;
@@ -103,7 +106,10 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new FileManagerStorageSubscriber());
         $eventSubscriberCollection->add(new CustomerAccessStorageEventSubscriber());
         $eventSubscriberCollection->add(new ShoppingListStorageEventSubscriber()); #ShoppingListWidget feature
+        $eventSubscriberCollection->add(new CompanyUserStorageEventSubscriber());
+        $eventSubscriberCollection->add(new ContentStorageEventSubscriber());
 
+        $eventSubscriberCollection->add(new AvailabilityNotificationSubscriber());
         /**
          * Search Events
          */
