@@ -10,5 +10,7 @@ parameters:
 
     ignoreErrors:
         - '#Call to an undefined method .+Criteria::.+\(\).#'
+        - '#Call to an undefined method .+DataSetStepBrokerAwareInterface::setDataSetWriter\(\).#'
+        - '#Call to an undefined method .+DataSetStepBrokerAwareInterface::addAfterImportHook\(\).#'
 
     reportUnmatchedIgnoredErrors: false
