@@ -8,6 +8,7 @@
 namespace Pyz\Zed\ResourceShare;
 
 use Spryker\Zed\PersistentCartShare\Communication\Plugin\CartPreviewActivatorStrategyPlugin;
+use Spryker\Zed\PersistentCartShare\Communication\Plugin\PersistentCartShareResourceDataExpanderStrategyPlugin;
 use Spryker\Zed\ResourceShare\ResourceShareDependencyProvider as SprykerResourceShareDependencyProvider;
 
 class ResourceShareDependencyProvider extends SprykerResourceShareDependencyProvider
@@ -23,10 +24,12 @@ class ResourceShareDependencyProvider extends SprykerResourceShareDependencyProv
     }
 
     /**
-     * @return \Spryker\Zed\ResourceShareExtension\Dependency\Plugin\ResourceShareActivatorStrategyPluginInterface[]
+     * @return \Spryker\Zed\ResourceShareExtension\Dependency\Plugin\ResourceShareResourceDataExpanderStrategyPluginInterface[]
      */
     protected function getResourceShareResourceDataExpanderStrategyPlugins(): array
     {
-        return [];
+        return [
+            new PersistentCartShareResourceDataExpanderStrategyPlugin(),
+        ];
     }
 }
