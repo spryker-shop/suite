@@ -7,18 +7,29 @@
 
 namespace Pyz\Zed\ProductList;
 
-use Spryker\Zed\ProductBundleProductListConnector\Communication\Plugin\ProductBundleProductListPreSavePlugin;
+use Spryker\Zed\ProductBundleProductListConnector\Communication\Plugin\ProductList\ProductBundleProductListPreCreatePlugin;
+use Spryker\Zed\ProductBundleProductListConnector\Communication\Plugin\ProductList\ProductBundleProductListPreUpdatePlugin;
 use Spryker\Zed\ProductList\ProductListDependencyProvider as SprykerProductListDependencyProvider;
 
 class ProductListDependencyProvider extends SprykerProductListDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\ProductListExtension\Dependency\Plugin\ProductListPreSaveInterface[]
+     * @return \Spryker\Zed\ProductListExtension\Dependency\Plugin\ProductListPreCreatePluginInterface[]
      */
-    protected function getProductListPreSavePlugins(): array
+    protected function getProductListPreCreatePlugins(): array
     {
         return [
-            new ProductBundleProductListPreSavePlugin(),
+            new ProductBundleProductListPreCreatePlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\ProductListExtension\Dependency\Plugin\ProductListPreUpdatePluginInterface[]
+     */
+    protected function getProductListPreUpdatePlugins(): array
+    {
+        return [
+            new ProductBundleProductListPreUpdatePlugin(),
         ];
     }
 }
