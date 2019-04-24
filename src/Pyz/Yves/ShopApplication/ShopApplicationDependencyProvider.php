@@ -95,6 +95,7 @@ use SprykerShop\Yves\ShoppingListWidget\Widget\AddItemsToShoppingListWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\AddToShoppingListWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListMenuItemWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListNavigationMenuWidget;
+use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListSubtotalWidget;
 use SprykerShop\Yves\TabsWidget\Widget\FullTextSearchTabsWidget;
 use SprykerShop\Yves\WishlistWidget\Widget\WishlistMenuItemWidget;
 
@@ -170,6 +171,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ShoppingListMenuItemWidget::class,
             ShoppingListNavigationMenuWidget::class,
             ShoppingListProductAlternativeWidget::class,
+            ShoppingListSubtotalWidget::class,
             SimilarProductsWidget::class,
             UpSellingProductsWidget::class,
             DiscountVoucherFormWidget::class,
