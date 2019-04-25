@@ -51,12 +51,12 @@
     {% elsewidget 'PriceProductVolumeWidgetPlugin' args [data.product] only %} {# @deprecated Use ProductPriceVolumeWidget instead. #}
     {% nowidget %}
         {% if widgetExists('PriceWidgetPlugin') %}
-            {{ widget('PriceWidgetPlugin', data.product) }}  {# @deprecated Use molecule('price') instead. #}
+            {{ widget('PriceWidgetPlugin', data.product) }}  {# @deprecated Use molecule('money-price') instead. #}
         {% else %}
             <p>
-                {% include molecule('price') with {
+                {% include molecule('money-price') with {
                     data: {
-                        amount: data.product.price | money,
+                        amount: data.product.price,
                         originalAmount: data.product.prices.ORIGINAL | default
                     }
                 } only %}
