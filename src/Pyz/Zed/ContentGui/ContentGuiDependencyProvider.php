@@ -19,8 +19,8 @@ class ContentGuiDependencyProvider extends SprykerContentGuiDependencyProvider
     protected function getContentPlugins(): array
     {
         return [
-            new ProductAbstractListFormPlugin(),
             new ContentBannerFormPlugin(),
+            new ProductAbstractListFormPlugin(),
         ];
     }
 }
