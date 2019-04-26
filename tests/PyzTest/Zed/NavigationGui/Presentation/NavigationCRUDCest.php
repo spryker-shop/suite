@@ -109,7 +109,7 @@ class NavigationCRUDCest
         $i->expect('New navigation status persisted in Zed.');
         $i->amOnPage(NavigationPage::URL);
         $i->waitForElementVisible(NavigationPage::PAGE_LIST_TABLE_XPATH, 5);
-        $i->waitForElementChange('html', function(RemoteWebElement $el) {
+        $i->waitForElementChange('html', function (RemoteWebElement $el) {
             return $el->getText();
         });
         $i->switchToIFrame('navigation-node-form-iframe');
@@ -120,7 +120,6 @@ class NavigationCRUDCest
         $i->seeSuccessMessage(NavigationStatusTogglePage::MESSAGE_ACTIVE_SUCCESS);
         $i->seeCurrentUrlEquals(NavigationPage::URL);
     }
-
 
     /**
      * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
@@ -134,7 +133,7 @@ class NavigationCRUDCest
 
         $i->amOnPage(NavigationPage::URL);
         $i->waitForElementVisible(NavigationPage::PAGE_LIST_TABLE_XPATH, 5);
-        $i->waitForElementChange('html', function(RemoteWebElement $el) {
+        $i->waitForElementChange('html', function (RemoteWebElement $el) {
             return $el->getText();
         });
         $i->switchToIFrame('navigation-node-form-iframe');
