@@ -49,4 +49,15 @@ class TransferConfig extends SprykerTransferConfig
             APPLICATION_SOURCE_DIR . '/Orm/Propel/*/Schema/',
         ];
     }
+
+    /**
+     * We use strict name validation for core internal usage and enable this by default for all
+     * new projects.
+     *
+     * @return bool
+     */
+    public function isTransferNameValidated(): bool
+    {
+        return true;
+    }
 }
