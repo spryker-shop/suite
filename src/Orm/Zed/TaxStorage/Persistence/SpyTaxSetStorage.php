@@ -2,7 +2,7 @@
 
 namespace Orm\Zed\TaxStorage\Persistence;
 
-use Spryker\Zed\TaxStorage\Persistence\Propel\AbstractSpyTaxSetStorage;
+use Spryker\Zed\TaxStorage\Persistence\Propel\AbstractSpyTaxSetStorage as BaseSpyTaxSetStorage;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_tax_set_storage' table.
@@ -14,6 +14,6 @@ use Spryker\Zed\TaxStorage\Persistence\Propel\AbstractSpyTaxSetStorage;
  * long as it does not already exist in the output directory.
  *
  */
-class SpyTaxSetStorage extends AbstractSpyTaxSetStorage
+class SpyTaxSetStorage extends BaseSpyTaxSetStorage
 {
 }
