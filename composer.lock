@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c9cd6dba4ab34002277963a4267690c1",
+    "content-hash": "1bdef8c837e93ff1071e9d2989e05a0b",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1931,7 +1931,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -13354,16 +13354,16 @@
         },
         {
             "name": "spryker/content-gui",
-            "version": "1.0.4",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/content-gui.git",
-                "reference": "17aa531f5e29ee9235b2c11d500994d37347a24c"
+                "reference": "6a89bceb0d5d12a1c9aaf025b5e537e1ef1bd3a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/content-gui/zipball/17aa531f5e29ee9235b2c11d500994d37347a24c",
-                "reference": "17aa531f5e29ee9235b2c11d500994d37347a24c",
+                "url": "https://api.github.com/repos/spryker/content-gui/zipball/6a89bceb0d5d12a1c9aaf025b5e537e1ef1bd3a7",
+                "reference": "6a89bceb0d5d12a1c9aaf025b5e537e1ef1bd3a7",
                 "shasum": ""
             },
             "require": {
@@ -13397,7 +13397,7 @@
                 "proprietary"
             ],
             "description": "ContentGui module",
-            "time": "2019-04-04T16:00:20+00:00"
+            "time": "2019-04-25T12:27:35+00:00"
         },
         {
             "name": "spryker/content-gui-extension",
@@ -13574,6 +13574,54 @@
             ],
             "description": "ContentProductDataImport module",
             "time": "2019-04-16T08:07:29+00:00"
+        },
+        {
+            "name": "spryker/content-product-gui",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/content-product-gui.git",
+                "reference": "642b683f7f656dd920c94042fd6389f8b33d327f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/content-product-gui/zipball/642b683f7f656dd920c94042fd6389f8b33d327f",
+                "reference": "642b683f7f656dd920c94042fd6389f8b33d327f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/content-gui-extension": "^1.0.0",
+                "spryker/content-product": "^0.1.0",
+                "spryker/gui": "^3.17.0",
+                "spryker/kernel": "^3.8.0",
+                "spryker/locale": "^3.0.0",
+                "spryker/product": "^6.0.0",
+                "spryker/product-image": "^3.3.0",
+                "spryker/symfony": "^3.1.5",
+                "spryker/util-text": "^1.2.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ContentProductGui module",
+            "time": "2019-04-29T10:08:12+00:00"
         },
         {
             "name": "spryker/content-storage",
@@ -16417,16 +16465,16 @@
         },
         {
             "name": "spryker/gui",
-            "version": "3.19.0",
+            "version": "3.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/gui.git",
-                "reference": "517681582da2cf3a69f8f0b80c32bdaeea84e930"
+                "reference": "a2e3d83b872f60f6b24ca08b3593daf9dac6ed58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/gui/zipball/517681582da2cf3a69f8f0b80c32bdaeea84e930",
-                "reference": "517681582da2cf3a69f8f0b80c32bdaeea84e930",
+                "url": "https://api.github.com/repos/spryker/gui/zipball/a2e3d83b872f60f6b24ca08b3593daf9dac6ed58",
+                "reference": "a2e3d83b872f60f6b24ca08b3593daf9dac6ed58",
                 "shasum": ""
             },
             "require": {
@@ -16467,7 +16515,7 @@
                 "proprietary"
             ],
             "description": "Gui module",
-            "time": "2019-03-26T15:19:37+00:00"
+            "time": "2019-04-16T13:16:25+00:00"
         },
         {
             "name": "spryker/guzzle",
@@ -33577,7 +33625,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette NEON: encodes and decodes NEON file format.",
+            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -35754,7 +35802,7 @@
             ],
             "authors": [
                 {
-                    "name": "Sullivan Sénéchal",
+                    "name": "Sullivan SENECHAL",
                     "email": "soullivaneuh@gmail.com"
                 }
             ],
@@ -36029,16 +36077,16 @@
         },
         {
             "name": "spryker/code-sniffer",
-            "version": "0.14.3",
+            "version": "0.14.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "f1ea4781e64d9a265be2de4fc0e29e731d7d4f74"
+                "reference": "20cbc586a01970996c674c53dafb9e1ab42af8b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/f1ea4781e64d9a265be2de4fc0e29e731d7d4f74",
-                "reference": "f1ea4781e64d9a265be2de4fc0e29e731d7d4f74",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/20cbc586a01970996c674c53dafb9e1ab42af8b1",
+                "reference": "20cbc586a01970996c674c53dafb9e1ab42af8b1",
                 "shasum": ""
             },
             "require": {
@@ -36078,7 +36126,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-04-10T07:23:57+00:00"
+            "time": "2019-04-25T10:11:38+00:00"
         },
         {
             "name": "spryker/development",
