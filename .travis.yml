@@ -134,6 +134,7 @@ before_script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:config:convert ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:database:create ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:pg-sql-compat ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:postgres-indexes:remove ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:schema:copy ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:postgres-indexes:generate ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:schema:copy ; fi
