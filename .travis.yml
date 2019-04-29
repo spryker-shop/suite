@@ -130,8 +130,18 @@ before_script:
   - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/install DE -r testing -x frontend -v ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:generate ; fi
-  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:install ; fi
+
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:config:convert ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:database:create ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:pg-sql-compat ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:schema:copy ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:postgres-indexes:generate ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:schema:copy ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:model:build ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:diff ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:migrate ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:generate ; fi
+
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console dev:ide:generate-auto-completion ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/codecept build --ansi ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:databuilder:generate ; fi
