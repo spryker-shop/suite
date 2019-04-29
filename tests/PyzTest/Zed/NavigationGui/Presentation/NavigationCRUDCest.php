@@ -7,6 +7,7 @@
 
 namespace PyzTest\Zed\NavigationGui\Presentation;
 
+use Facebook\WebDriver\Remote\RemoteWebElement;
 use PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester;
 use PyzTest\Zed\NavigationGui\PageObject\NavigationCreatePage;
 use PyzTest\Zed\NavigationGui\PageObject\NavigationDeletePage;
