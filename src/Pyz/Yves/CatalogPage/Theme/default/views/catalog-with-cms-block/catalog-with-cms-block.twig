@@ -27,54 +27,36 @@
 {% block filterBar %}
     {{parent()}}
     {% if data.categoryId %}
-        {% if widgetExists('CatalogCmsBlockWidgetPlugin') %}
-            <div class="box">
-                {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'middle', data.categoryId) }} {# @deprecated Use molecule('catalog-cms-block', 'CmsBlockWidget') instead. #}
-            </div>
-        {% else %}
-            {% include molecule('catalog-cms-block', 'CmsBlockWidget') ignore missing with {
-                class: 'box',
-                data: {
-                    idCategory: data.categoryId,
-                    position: 'middle'
-                }
-            } only %}
-        {% endif %}
+        {% include molecule('catalog-cms-block', 'CmsBlockWidget') ignore missing with {
+            class: 'box',
+            data: {
+                idCategory: data.categoryId,
+                position: 'middle'
+            }
+        } only %}
     {% endif %}
 {% endblock %}
 
 {% block content %}
     {% if data.categoryId %}
-        {% if widgetExists('CatalogCmsBlockWidgeetPlugin') %}
-            <div class="box">
-                {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'middle', data.categoryId) }} {# @deprecated Use molecule('catalog-cms-block', 'CmsBlockWidget') instead. #}
-            </div>
-        {% else %}
-            {% include molecule('catalog-cms-block', 'CmsBlockWidget') ignore missing with {
-                class: 'box',
-                data: {
-                    idCategory: data.categoryId,
-                    position: 'top'
-                }
-            } only %}
-        {% endif %}
+        {% include molecule('catalog-cms-block', 'CmsBlockWidget') ignore missing with {
+            class: 'box',
+            data: {
+                idCategory: data.categoryId,
+                position: 'top'
+            }
+        } only %}
     {% endif %}
 
     {{parent()}}
 
     {% if data.categoryId %}
-        {% if widgetExists('CatalogCmsBlockWidgetePlugin') %}
-            <div class="box">
-                {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'middle', data.categoryId) }} {# @deprecated Use molecule('catalog-cms-block', 'CmsBlockWidget') instead. #}
-            </div>
-        {% else %}
-            {% include molecule('catalog-cms-block', 'CmsBlockWidget') ignore missing with {
-                class: 'box',
-                data: {
-                    idCategory: data.categoryId,
-                    position: 'bottom'
-                }
-            } only %}
-        {% endif %}
+        {% include molecule('catalog-cms-block', 'CmsBlockWidget') ignore missing with {
+            class: 'box',
+            data: {
+                idCategory: data.categoryId,
+                position: 'bottom'
+            }
+        } only %}
     {% endif %}
 {% endblock %}
