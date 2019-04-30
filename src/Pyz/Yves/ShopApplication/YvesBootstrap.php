@@ -187,7 +187,7 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new AvailabilityNotificationWidgetControllerProvider($isSsl),
             new AvailabilityNotificationPageControllerProvider($isSsl),
             new QuoteApprovalControllerProvider($isSsl), #QuoteApprovalFeature
-            new PersistentCartSharePageControllerProvider($isSsl), #UniqueUrlPerCartForEasySharingFeature
+            new PersistentCartSharePageControllerProvider($isSsl), #UniqueUrlFeature
             new ResourceSharePageControllerProvider($isSsl), #UniqueUrlFeature
         ];
     }
