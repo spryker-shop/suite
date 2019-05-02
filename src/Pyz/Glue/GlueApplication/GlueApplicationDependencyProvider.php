@@ -62,6 +62,7 @@ use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationship
 use Spryker\Glue\NavigationsCategoryNodesResourceRelationship\Plugin\GlueApplication\CategoryNodeByResourceIdResourceRelationshipPlugin;
 use Spryker\Glue\NavigationsRestApi\NavigationsRestApiConfig;
 use Spryker\Glue\NavigationsRestApi\Plugin\ResourceRoute\NavigationsResourceRoutePlugin;
+use Spryker\Glue\OrderPaymentsRestApi\Plugin\OrderPaymentsResourceRoutePlugin;
 use Spryker\Glue\OrdersRestApi\Plugin\OrderRelationshipByOrderReferencePlugin;
 use Spryker\Glue\OrdersRestApi\Plugin\OrdersResourceRoutePlugin;
 use Spryker\Glue\ProductAvailabilitiesRestApi\Plugin\AbstractProductAvailabilitiesRoutePlugin;
@@ -155,6 +156,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new ContentBannerResourceRoutePlugin(),
             new CartPermissionGroupsResourceRoutePlugin(),
             new ContentProductAbstractListRoutePlugin(),
+            new OrderPaymentsResourceRoutePlugin(),
             new CompanyBusinessUnitAddressesResourcePlugin(),
             new CompanyRolesResourcePlugin(),
             new CompaniesResourcePlugin(),
