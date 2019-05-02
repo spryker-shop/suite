@@ -32,8 +32,8 @@ class ContentGuiDependencyProvider extends SprykerContentGuiDependencyProvider
     protected function getContentEditorPlugins(): array
     {
         return [
-            new ContentBannerContentGuiEditorPlugin(),
             new ContentProductContentGuiEditorPlugin(),
+            new ContentBannerContentGuiEditorPlugin(),
         ];
     }
 }
