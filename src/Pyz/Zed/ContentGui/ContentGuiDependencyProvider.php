@@ -9,6 +9,7 @@ namespace Pyz\Zed\ContentGui;
 
 use Spryker\Zed\ContentBannerGui\Communication\Plugin\ContentGui\ContentBannerFormPlugin;
 use Spryker\Zed\ContentGui\ContentGuiDependencyProvider as SprykerContentGuiDependencyProvider;
+use Spryker\Zed\ContentProductGui\Communication\Plugin\ContentGui\ProductAbstractListFormPlugin;
 use Spryker\Zed\ContentProductSetGui\Communication\Plugin\ContentGui\ProductSetFormPlugin;
 
 class ContentGuiDependencyProvider extends SprykerContentGuiDependencyProvider
@@ -19,8 +20,9 @@ class ContentGuiDependencyProvider extends SprykerContentGuiDependencyProvider
     protected function getContentPlugins(): array
     {
         return [
-            new ProductSetFormPlugin(),
             new ContentBannerFormPlugin(),
+            new ProductAbstractListFormPlugin(),
+            new ProductSetFormPlugin(),
         ];
     }
 }
