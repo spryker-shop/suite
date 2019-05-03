@@ -20,9 +20,9 @@ class PersistentCartShareDependencyProvider extends SprykerPersistentCartShareDe
     protected function getCartShareOptionPlugins(): array
     {
         return [
-            new PreviewCartShareOptionPlugin(), #PersistentCartShareFeature
-            new ReadOnlyCartShareOptionPlugin(), #SharedCartFeature
-            new FullAccessCartShareOptionPlugin(), #SharedCartFeature
+            new PreviewCartShareOptionPlugin(),
+            new ReadOnlyCartShareOptionPlugin(),
+            new FullAccessCartShareOptionPlugin(),
         ];
     }
 }
