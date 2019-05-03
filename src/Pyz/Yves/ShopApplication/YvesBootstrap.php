@@ -56,6 +56,7 @@ use SprykerShop\Yves\HomePage\Plugin\Provider\HomePageControllerProvider;
 use SprykerShop\Yves\MultiCartPage\Plugin\Provider\MultiCartPageControllerProvider;
 use SprykerShop\Yves\NewsletterPage\Plugin\Provider\NewsletterPageControllerProvider;
 use SprykerShop\Yves\NewsletterWidget\Plugin\Provider\NewsletterWidgetControllerProvider;
+use SprykerShop\Yves\PersistentCartSharePage\Plugin\Provider\PersistentCartSharePageControllerProvider;
 use SprykerShop\Yves\PersistentCartShareWidget\Plugin\Provider\ShareCartByLinkWidgetControllerProvider;
 use SprykerShop\Yves\PriceWidget\Plugin\Provider\PriceControllerProvider;
 use SprykerShop\Yves\ProductNewPage\Plugin\Provider\ProductNewPageControllerProvider;
@@ -64,6 +65,7 @@ use SprykerShop\Yves\ProductSearchWidget\Plugin\Provider\ProductSearchWidgetCont
 use SprykerShop\Yves\ProductSetListPage\Plugin\Provider\ProductSetListPageControllerProvider;
 use SprykerShop\Yves\QuickOrderPage\Plugin\Provider\QuickOrderPageControllerProvider;
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\Provider\QuoteApprovalControllerProvider;
+use SprykerShop\Yves\ResourceSharePage\Plugin\Provider\ResourceSharePageControllerProvider;
 use SprykerShop\Yves\SharedCartPage\Plugin\Provider\SharedCartPageControllerProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\AutoloaderCacheServiceProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\ShopControllerEventServiceProvider;
@@ -186,6 +188,8 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new AvailabilityNotificationWidgetControllerProvider($isSsl),
             new AvailabilityNotificationPageControllerProvider($isSsl),
             new QuoteApprovalControllerProvider($isSsl), #QuoteApprovalFeature
+            new PersistentCartSharePageControllerProvider($isSsl), #UniqueUrlFeature
+            new ResourceSharePageControllerProvider($isSsl), #UniqueUrlFeature
             new ShareCartByLinkWidgetControllerProvider($isSsl), #UniqueURLFeature
         ];
     }
