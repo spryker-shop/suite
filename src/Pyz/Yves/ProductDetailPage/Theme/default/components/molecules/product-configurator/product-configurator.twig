@@ -50,18 +50,14 @@
     {% widget 'ProductPriceVolumeWidget' args [data.product] only %}
     {% elsewidget 'PriceProductVolumeWidgetPlugin' args [data.product] only %} {# @deprecated Use ProductPriceVolumeWidget instead. #}
     {% nowidget %}
-        {% if widgetExists('PriceWidgetPlugin') %}
-            {{ widget('PriceWidgetPlugin', data.product) }}  {# @deprecated Use molecule('money-price') instead. #}
-        {% else %}
-            <p>
-                {% include molecule('money-price') with {
-                    data: {
-                        amount: data.product.price,
-                        originalAmount: data.product.prices.ORIGINAL | default
-                    }
-                } only %}
-            </p>
-        {% endif %}
+        <p>
+            {% include molecule('money-price') with {
+                data: {
+                    amount: data.product.price,
+                    originalAmount: data.product.prices.ORIGINAL | default
+                }
+            } only %}
+        </p>
     {% endwidget %}
 
     {% widget 'ProductDetailPageReviewWidget' args [data.product.idProductAbstract] use view('pdp-review-rating', 'ProductReviewWidget') only %}
