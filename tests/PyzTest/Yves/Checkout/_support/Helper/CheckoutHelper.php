@@ -99,7 +99,6 @@ class CheckoutHelper extends Module
     public function processSuccessStep()
     {
         $tester = $this->getWebDriver();
-        $tester->wait(30);
         $tester->see('Your order has been placed successfully!');
 
         return $this;
