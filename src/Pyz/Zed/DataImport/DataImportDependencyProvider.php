@@ -22,6 +22,8 @@ use Spryker\Zed\CompanyUnitAddressDataImport\Communication\Plugin\CompanyUnitAdd
 use Spryker\Zed\CompanyUnitAddressLabelDataImport\Communication\Plugin\CompanyUnitAddressLabelDataImportPlugin;
 use Spryker\Zed\CompanyUnitAddressLabelDataImport\Communication\Plugin\CompanyUnitAddressLabelRelationDataImportPlugin;
 use Spryker\Zed\CompanyUserDataImport\Communication\Plugin\DataImport\CompanyUserDataImportPlugin;
+use Spryker\Zed\ContentBannerDataImport\Communication\Plugin\ContentBannerDataImportPlugin;
+use Spryker\Zed\ContentProductDataImport\Communication\Plugin\ContentProductAbstractListDataImportPlugin;
 use Spryker\Zed\DataImport\Communication\Plugin\DataImportEventBehaviorPlugin;
 use Spryker\Zed\DataImport\Communication\Plugin\DataImportPublisherPlugin;
 use Spryker\Zed\DataImport\DataImportDependencyProvider as SprykerDataImportDependencyProvider;
@@ -65,7 +67,6 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     public const FACADE_PRODUCT_SEARCH = 'product search facade';
 
     public const FACADE_PRICE_PRODUCT = 'FACADE_PRICE_PRODUCT';
-    public const SERVICE_UTIL_ENCODING = 'SERVICE_UTIL_ENCODING';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -235,6 +236,8 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new ShoppingListCompanyBusinessUnitDataImportPlugin(),
             new QuoteRequestDataImportPlugin(),
             new QuoteRequestVersionDataImportPlugin(),
+            new ContentBannerDataImportPlugin(),
+            new ContentProductAbstractListDataImportPlugin(),
         ];
     }
 
@@ -268,20 +271,6 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     {
         $container[static::FACADE_PRICE_PRODUCT] = function (Container $container) {
             return $container->getLocator()->priceProduct()->facade();
-        };
-
-        return $container;
-    }
-
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
-    protected function addUtilEncodingService(Container $container): Container
-    {
-        $container[static::SERVICE_UTIL_ENCODING] = function (Container $container) {
-            return $container->getLocator()->utilEncoding()->service();
         };
 
         return $container;
