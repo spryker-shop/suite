@@ -9,6 +9,7 @@ namespace Pyz\Yves\ResourceSharePage;
 
 use SprykerShop\Yves\PersistentCartSharePage\Plugin\CartPreviewRouterStrategyPlugin;
 use SprykerShop\Yves\ResourceSharePage\ResourceSharePageDependencyProvider as SprykerResourceSharePageDependencyProvider;
+use SprykerShop\Yves\SharedCartPage\Plugin\ResourceShare\SharedCartRouterStrategyPlugin;
 
 class ResourceSharePageDependencyProvider extends SprykerResourceSharePageDependencyProvider
 {
@@ -19,6 +20,7 @@ class ResourceSharePageDependencyProvider extends SprykerResourceSharePageDepend
     {
         return [
             new CartPreviewRouterStrategyPlugin(),
+            new SharedCartRouterStrategyPlugin(),
         ];
     }
 }
