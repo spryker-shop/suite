@@ -57,6 +57,7 @@ use SprykerShop\Yves\MultiCartPage\Plugin\Provider\MultiCartPageControllerProvid
 use SprykerShop\Yves\NewsletterPage\Plugin\Provider\NewsletterPageControllerProvider;
 use SprykerShop\Yves\NewsletterWidget\Plugin\Provider\NewsletterWidgetControllerProvider;
 use SprykerShop\Yves\PersistentCartSharePage\Plugin\Provider\PersistentCartSharePageControllerProvider;
+use SprykerShop\Yves\PersistentCartShareWidget\Plugin\Provider\ShareCartByLinkWidgetControllerProvider;
 use SprykerShop\Yves\PriceWidget\Plugin\Provider\PriceControllerProvider;
 use SprykerShop\Yves\ProductNewPage\Plugin\Provider\ProductNewPageControllerProvider;
 use SprykerShop\Yves\ProductReviewWidget\Plugin\Provider\ProductReviewControllerProvider;
@@ -189,6 +190,7 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new QuoteApprovalControllerProvider($isSsl), #QuoteApprovalFeature
             new PersistentCartSharePageControllerProvider($isSsl), #UniqueUrlFeature
             new ResourceSharePageControllerProvider($isSsl), #UniqueUrlFeature
+            new ShareCartByLinkWidgetControllerProvider($isSsl), #UniqueURLFeature
         ];
     }
 }
