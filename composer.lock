@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c57616e756e21208863b1db90431637c",
+    "content-hash": "ec04459ddb2e213e973562efb7ac708c",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -1942,7 +1942,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -2617,11 +2617,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/te-3458/master/project-module-constrainer",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "d76f90389cf9991cb05ddb1236d9f233dc796f62"
+                "reference": "b221183b6c17d3f604122e734e956a93e96021f5"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2736,6 +2736,7 @@
                 "spryker/maintenance": "*",
                 "spryker/mandrill": "*",
                 "spryker/messenger": "*",
+                "spryker/module-finder": "*",
                 "spryker/money": "*",
                 "spryker/monitoring": "*",
                 "spryker/monitoring-extension": "*",
@@ -2889,7 +2890,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-06-04T14:03:04+00:00"
+            "time": "2019-06-04T11:23:48+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -4065,7 +4066,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "BackEndTea@gmail.com"
+                    "email": "backendtea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
@@ -5199,16 +5200,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.42.0",
+            "version": "v1.42.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "2983fcf2e20a4afe95f07e61d89a7590b3c8df2e"
+                "reference": "671347603760a88b1e7288aaa9378f33687d7edf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/2983fcf2e20a4afe95f07e61d89a7590b3c8df2e",
-                "reference": "2983fcf2e20a4afe95f07e61d89a7590b3c8df2e",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/671347603760a88b1e7288aaa9378f33687d7edf",
+                "reference": "671347603760a88b1e7288aaa9378f33687d7edf",
                 "shasum": ""
             },
             "require": {
@@ -5261,7 +5262,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2019-05-31T06:20:05+00:00"
+            "time": "2019-06-04T11:31:08+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -6437,7 +6438,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🔍 Nette Finder: find files and directories with an intuitive API.",
+            "description": "? Nette Finder: find files and directories with an intuitive API.",
             "homepage": "https://nette.org",
             "keywords": [
                 "filesystem",
@@ -6497,7 +6498,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
+            "description": "? Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -8538,6 +8539,50 @@
             "time": "2017-06-16T09:29:23+00:00"
         },
         {
+            "name": "spryker-sdk/composer-constrainer",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:spryker-sdk/composer-constrainer.git",
+                "reference": "186324a39cb87976a4e538af7dac74840c0487bf"
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.33.0",
+                "spryker/module-finder": "^1.0.0",
+                "spryker/symfony": "^3.2.2",
+                "spryker/zend": "^2.2.2"
+            },
+            "require-dev": {
+                "sllh/composer-versions-check": "^2.0.2",
+                "spryker/code-sniffer": "*",
+                "spryker/console": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerSdk\\": "src/SprykerSdk/",
+                    "SprykerSdkTest\\Zed\\ComposerConstrainer\\Helper\\": "tests/SprykerSdkTest/Zed/ComposerConstrainer/_support/Helper/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "SprykerSdkTest\\": "tests/SprykerSdkTest/"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "description": "ComposerConstrainer module",
+            "time": "2019-05-29T09:26:04+00:00"
+        },
+        {
             "name": "spryker-sdk/phpstan-spryker",
             "version": "dev-master",
             "source": {
@@ -8556,19 +8601,17 @@
                 "phpstan/phpstan": "^0.11.1"
             },
             "require-dev": {
-                "consistence/coding-standard": "^3.5",
                 "jakub-onderka/php-parallel-lint": "^1.0",
                 "localheinz/composer-normalize": "~0.9.0",
                 "phing/phing": "^2.16.0",
-                "phpstan/phpstan-strict-rules": "^0.10",
-                "slevomat/coding-standard": "^4.7.2",
-                "spryker/code-sniffer": "*",
+                "phpstan/phpstan-strict-rules": "^0.11",
+                "spryker/code-sniffer": "^0.14",
                 "squizlabs/php_codesniffer": "^3.3.1"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.1.x-dev"
+                    "dev-master": "1.0.x-dev"
                 }
             },
             "autoload": {
@@ -8583,16 +8626,16 @@
             "authors": [
                 {
                     "name": "Spryker",
-                    "homepage": "http://spryker.com"
+                    "homepage": "https://spryker.com"
                 }
             ],
             "description": "Spryker PHPStan Extensions",
-            "homepage": "http://spryker.com",
+            "homepage": "https://spryker.com",
             "keywords": [
                 "PHPStan",
                 "analyzing"
             ],
-            "time": "2019-02-19T23:00:40+00:00"
+            "time": "2019-04-10T12:54:24+00:00"
         },
         {
             "name": "spryker-sdk/spryk",
@@ -9873,12 +9916,6 @@
             "alias_normalized": "0.2.0.0",
             "version": "9999999-dev",
             "package": "spryker-sdk/spryk"
-        },
-        {
-            "alias": "0.1.1",
-            "alias_normalized": "0.1.1.0",
-            "version": "9999999-dev",
-            "package": "spryker-sdk/spryk-gui"
         }
     ],
     "minimum-stability": "dev",
@@ -9899,7 +9936,8 @@
         "spryker/git-hook": 20,
         "spryker-sdk/phpstan-spryker": 20,
         "spryker-sdk/spryk": 20,
-        "spryker-sdk/spryk-gui": 20
+        "spryker-sdk/spryk-gui": 20,
+        "spryker-sdk/composer-constrainer": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
