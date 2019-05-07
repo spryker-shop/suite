@@ -34,10 +34,9 @@ class CheckoutAvailabilityCest
      */
     public function testCheckoutItemWithAvailability(AvailabilityPresentationTester $i, Scenario $scenario)
     {
-        $scenario->skip('Re-enable when incompatibility with CustomerAccess issue will be solved');
-
         $i->wantTo('Checkout item with stock');
         $i->expectTo('Availability changed during SM processing.');
+        $i->truncateSalesOrderThresholds();
 
         $i->amOnPage(AvailabilityPresentationTester::FUJITSU_PRODUCT_PAGE);
 
@@ -51,9 +50,7 @@ class CheckoutAvailabilityCest
         $i->amZed();
         $i->amLoggedInUser();
 
-        $idProductFujitsu = 301;
-
-        $i->amOnPage(sprintf(AvailabilityViewPage::VIEW_PRODUCT_AVAILABILITY_URL, $idProductFujitsu));
+        $i->amOnPage(sprintf(AvailabilityViewPage::VIEW_PRODUCT_AVAILABILITY_URL, AvailabilityPresentationTester::FUJITSU_PRODUCT_ID));
 
         $i->waitForElementVisible(AvailabilityViewPage::AVAILABILITY_RESERVATION_XPATH, 30);
         $reservedProductsBefore = $i->grabTextFrom(AvailabilityViewPage::AVAILABILITY_RESERVATION_XPATH);
@@ -71,7 +68,7 @@ class CheckoutAvailabilityCest
         $i->click(sprintf(OrderDetailPage::OMS_EVENT_TRIGGER_XPATH, 'return'));
         $i->click(sprintf(OrderDetailPage::OMS_EVENT_TRIGGER_XPATH, 'refund'));
 
-        $i->amOnPage(sprintf(AvailabilityViewPage::VIEW_PRODUCT_AVAILABILITY_URL, $idProductFujitsu));
+        $i->amOnPage(sprintf(AvailabilityViewPage::VIEW_PRODUCT_AVAILABILITY_URL, AvailabilityPresentationTester::FUJITSU_PRODUCT_ID));
 
         $i->waitForElementVisible(AvailabilityViewPage::AVAILABILITY_RESERVATION_XPATH, 10);
         $reservedProductsAfter = $i->grabTextFrom(AvailabilityViewPage::AVAILABILITY_RESERVATION_XPATH);
