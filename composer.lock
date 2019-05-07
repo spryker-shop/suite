@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "437ac3ef85790db092499117195803f6",
+    "content-hash": "a43429ac545ef7d86965be80e725dc4e",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -20295,6 +20295,102 @@
             ],
             "description": "PriceProductMerchantRelationshipStorage module",
             "time": "2019-04-08T07:50:37+00:00"
+        },
+        {
+            "name": "spryker/price-product-schedule",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/price-product-schedule.git",
+                "reference": "cf84db777e0e6dfc474eb5e0f04b6a3b2f603d97"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/price-product-schedule/zipball/cf84db777e0e6dfc474eb5e0f04b6a3b2f603d97",
+                "reference": "cf84db777e0e6dfc474eb5e0f04b6a3b2f603d97",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/currency": "^3.6.0",
+                "spryker/kernel": "^3.32.0",
+                "spryker/price-product": "^2.12.0",
+                "spryker/product": "^6.9.0",
+                "spryker/propel": "^3.8.0",
+                "spryker/propel-orm": "^1.8.0",
+                "spryker/store": "^1.9.1",
+                "spryker/symfony": "^3.2.2",
+                "spryker/user": "^3.7.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Shared\\PriceProductSchedule\\Helper\\": "tests/SprykerTest/Shared/PriceProductSchedule/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "PriceProductSchedule module",
+            "time": "2019-05-06T13:14:13+00:00"
+        },
+        {
+            "name": "spryker/price-product-schedule-data-import",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/price-product-schedule-data-import.git",
+                "reference": "4888fe0c3fb2d859a29d811ebd5bb9321673411d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/price-product-schedule-data-import/zipball/4888fe0c3fb2d859a29d811ebd5bb9321673411d",
+                "reference": "4888fe0c3fb2d859a29d811ebd5bb9321673411d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/currency": "^3.6.0",
+                "spryker/data-import": "^1.4.3",
+                "spryker/kernel": "^3.9.0",
+                "spryker/price-product": "^2.9.2",
+                "spryker/price-product-schedule": "^0.1.0",
+                "spryker/product": "^6.9.0",
+                "spryker/store": "^1.9.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "^0.9.5",
+                "spryker/propel": "^3.8.0",
+                "spryker/testify": "^3.9.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PriceProductScheduleDataImport module",
+            "time": "2019-04-29T07:07:10+00:00"
         },
         {
             "name": "spryker/price-product-storage",
