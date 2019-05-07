@@ -10,7 +10,7 @@ namespace Pyz\Client\QuickOrder;
 use Spryker\Client\PriceProductStorage\Plugin\QuickOrder\ProductPriceItemValidatorPlugin;
 use Spryker\Client\ProductDiscontinuedStorage\Plugin\QuickOrder\ProductDiscontinuedItemValidatorPlugin;
 use Spryker\Client\ProductMeasurementUnitStorage\Plugin\QuickOrder\ProductConcreteTransferBaseMeasurementUnitExpanderPlugin;
-use Spryker\Client\ProductQuantityStorage\Plugin\QuickOrder\ProductConcreteTransferQuantityRestrictionsExpanderPlugin;
+use Spryker\Client\ProductQuantityStorage\Plugin\QuickOrder\ProductConcreteTransferQuantityRestrictionExpanderPlugin;
 use Spryker\Client\ProductQuantityStorage\Plugin\QuickOrder\ProductQuantityItemValidatorPlugin;
 use Spryker\Client\QuickOrder\QuickOrderDependencyProvider as SprykerQuickOrderDependencyProvider;
 
@@ -23,7 +23,7 @@ class QuickOrderDependencyProvider extends SprykerQuickOrderDependencyProvider
     {
         return [
             new ProductConcreteTransferBaseMeasurementUnitExpanderPlugin(),
-            new ProductConcreteTransferQuantityRestrictionsExpanderPlugin(),
+            new ProductConcreteTransferQuantityRestrictionExpanderPlugin(),
         ];
     }
 
