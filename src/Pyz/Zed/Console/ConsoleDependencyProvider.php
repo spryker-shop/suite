@@ -66,6 +66,9 @@ use Spryker\Zed\Oms\Communication\Console\ClearLocksConsole as OmsClearLocksCons
 use Spryker\Zed\PriceProduct\Communication\Console\PriceProductStoreOptimizeConsole;
 use Spryker\Zed\PriceProductDataImport\PriceProductDataImportConfig;
 use Spryker\Zed\PriceProductMerchantRelationship\Communication\Console\PriceProductMerchantRelationshipDeleteConsole;
+use Spryker\Zed\PriceProductSchedule\Communication\Console\PriceProductScheduleApplyConsole;
+use Spryker\Zed\PriceProductSchedule\Communication\Console\PriceProductScheduleCleanupConsole;
+use Spryker\Zed\PriceProductScheduleDataImport\PriceProductScheduleDataImportConfig;
 use Spryker\Zed\ProductAlternativeDataImport\ProductAlternativeDataImportConfig;
 use Spryker\Zed\ProductDiscontinued\Communication\Console\DeactivateDiscontinuedProductsConsole;
 use Spryker\Zed\ProductDiscontinuedDataImport\ProductDiscontinuedDataImportConfig;
@@ -214,6 +217,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
             //core data importers
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . PriceProductDataImportConfig::IMPORT_TYPE_PRODUCT_PRICE),
+            new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . PriceProductScheduleDataImportConfig::IMPORT_TYPE_PRODUCT_PRICE_SCHEDULE),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . CompanyDataImportConfig::IMPORT_TYPE_COMPANY),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . CompanyBusinessUnitDataImportConfig::IMPORT_TYPE_COMPANY_BUSINESS_UNIT),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . CompanyUnitAddressDataImportConfig::IMPORT_TYPE_COMPANY_UNIT_ADDRESS),
@@ -293,6 +297,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new CleanTranslationCacheConsole(),
             new GenerateTranslationCacheConsole(),
             new CloseOutdatedQuoteRequestConsole(),
+
+            new PriceProductScheduleApplyConsole(),
+            new PriceProductScheduleCleanupConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
