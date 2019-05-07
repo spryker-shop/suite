@@ -16,6 +16,8 @@ use Spryker\Zed\CompanyUserInvitation\Communication\Plugin\Mail\CompanyUserInvit
 use Spryker\Zed\Customer\Communication\Plugin\Mail\CustomerRegistrationMailTypePlugin;
 use Spryker\Zed\Customer\Communication\Plugin\Mail\CustomerRestoredPasswordConfirmationMailTypePlugin;
 use Spryker\Zed\Customer\Communication\Plugin\Mail\CustomerRestorePasswordMailTypePlugin;
+use Spryker\Zed\GiftCardMailConnector\Communication\Plugin\Mail\GiftCardDeliveryMailTypePlugin;
+use Spryker\Zed\GiftCardMailConnector\Communication\Plugin\Mail\GiftCardUsageMailTypePlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Mail\Business\Model\Mail\MailTypeCollectionAddInterface;
 use Spryker\Zed\Mail\Business\Model\Provider\MailProviderCollectionAddInterface;
@@ -52,7 +54,9 @@ class MailDependencyProvider extends SprykerMailDependencyProvider
                 ->add(new AvailabilityNotificationUnsubscribedMailTypePlugin())
                 ->add(new AvailabilityNotificationSubscriptionMailTypePlugin())
                 ->add(new AvailabilityNotificationMailTypePlugin())
-                ->add(new RestorePasswordMailTypePlugin());
+                ->add(new RestorePasswordMailTypePlugin())
+                ->add(new GiftCardDeliveryMailTypePlugin()) #GiftCardFeature
+                ->add(new GiftCardUsageMailTypePlugin()); #GiftCardFeature
 
             return $mailCollection;
         });
