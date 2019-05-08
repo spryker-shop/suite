@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\Vault\Persistence;
 
-use Orm\Zed\Vault\Persistence\Base\SpyVault as BaseSpyVault;
+use Spryker\Zed\Vault\Persistence\Propel\AbstractSpyVault as BaseSpyVault;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_vault' table.

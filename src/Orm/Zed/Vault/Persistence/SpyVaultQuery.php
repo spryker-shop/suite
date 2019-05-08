@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\Vault\Persistence;
 
-use Orm\Zed\Vault\Persistence\Base\SpyVaultQuery as BaseSpyVaultQuery;
+use Spryker\Zed\Vault\Persistence\Propel\AbstractSpyVaultQuery as BaseSpyVaultQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_vault' table.
