@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3f465221dcc02b3437ad46c80049d713",
+    "content-hash": "2f3ac0627e6584432816cb3baa693f72",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -11722,6 +11722,55 @@
             ],
             "description": "CompanyBusinessUnit module",
             "time": "2019-05-06T14:36:01+00:00"
+        },
+        {
+            "name": "spryker/company-business-unit-addresses-rest-api",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/company-business-unit-addresses-rest-api.git",
+                "reference": "cfe19acaf6bd04925146a34b2b4c02a2a3833d34"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/company-business-unit-addresses-rest-api/zipball/cfe19acaf6bd04925146a34b2b4c02a2a3833d34",
+                "reference": "cfe19acaf6bd04925146a34b2b4c02a2a3833d34",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/company-business-units-rest-api-extension": "^1.0.0",
+                "spryker/company-unit-address": "^1.8.0",
+                "spryker/glue-application": "^1.15.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.29.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/uuid-behavior": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/auth-rest-api": "If you want to authorize and authenticate customers via access tokens."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CompanyBusinessUnitAddressesRestApi module",
+            "time": "2019-05-08T13:33:43+00:00"
         },
         {
             "name": "spryker/company-business-unit-data-import",
