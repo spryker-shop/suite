@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "755da0356ea7878e71c99fe25011ef51",
+    "content-hash": "3f465221dcc02b3437ad46c80049d713",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.93.5",
+            "version": "3.93.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "e9cfeb39ad6bc7c9ead2a40ce4fc23029ff1e17a"
+                "reference": "75d6b1ec57f3438ac960d74e08366be43d52eca7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/e9cfeb39ad6bc7c9ead2a40ce4fc23029ff1e17a",
-                "reference": "e9cfeb39ad6bc7c9ead2a40ce4fc23029ff1e17a",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/75d6b1ec57f3438ac960d74e08366be43d52eca7",
+                "reference": "75d6b1ec57f3438ac960d74e08366be43d52eca7",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-05-07T18:29:58+00:00"
+            "time": "2019-05-08T18:16:33+00:00"
         },
         {
             "name": "codeitnowin/barcode",
@@ -16878,11 +16878,14 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Graphviz module",
+            "support": {
+                "source": "https://github.com/spryker/Graphviz/tree/2.0.1"
+            },
             "time": "2017-08-02T16:31:17+00:00"
         },
         {
@@ -17173,11 +17176,20 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-0": {
+                    "Functional": "tests/",
+                    "Unit": "tests/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Invoice bundle",
+            "support": {
+                "source": "https://github.com/spryker/Invoice/tree/2.0.1"
+            },
             "time": "2017-02-22T11:53:10+00:00"
         },
         {
@@ -26814,11 +26826,14 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Redis bundle",
+            "support": {
+                "source": "https://github.com/spryker/Redis/tree/2.0.1"
+            },
             "time": "2017-04-26T15:15:36+00:00"
         },
         {
@@ -31971,7 +31986,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "BackEndTea@gmail.com"
+                    "email": "backendtea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
@@ -34405,7 +34420,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette Finder: find files and directories with an intuitive API.",
+            "description": "🔍 Nette Finder: find files and directories with an intuitive API.",
             "homepage": "https://nette.org",
             "keywords": [
                 "filesystem",
@@ -34465,7 +34480,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette NEON: encodes and decodes NEON file format.",
+            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -34586,7 +34601,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette RobotLoader: high performance and comfortable autoloader that will search and autoload classes within your application.",
+            "description": "🍀 Nette RobotLoader: high performance and comfortable autoloader that will search and autoload classes within your application.",
             "homepage": "https://nette.org",
             "keywords": [
                 "autoload",
@@ -35303,16 +35318,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.11.5",
+            "version": "0.11.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "24ce5a566a798b81343138ed5d41d6877554cf9a"
+                "reference": "7af8b9d02b3ab36444dbf4e1b9ca1c1bd5044d81"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/24ce5a566a798b81343138ed5d41d6877554cf9a",
-                "reference": "24ce5a566a798b81343138ed5d41d6877554cf9a",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/7af8b9d02b3ab36444dbf4e1b9ca1c1bd5044d81",
+                "reference": "7af8b9d02b3ab36444dbf4e1b9ca1c1bd5044d81",
                 "shasum": ""
             },
             "require": {
@@ -35372,7 +35387,7 @@
                 "MIT"
             ],
             "description": "PHPStan - PHP Static Analysis Tool",
-            "time": "2019-03-25T16:40:09+00:00"
+            "time": "2019-05-08T16:33:56+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -35628,16 +35643,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "7.5.9",
+            "version": "7.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "134669cf0eeac3f79bc7f0c793efbc158bffc160"
+                "reference": "d7d9cee051d03ed98df6023aad93f7902731a780"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/134669cf0eeac3f79bc7f0c793efbc158bffc160",
-                "reference": "134669cf0eeac3f79bc7f0c793efbc158bffc160",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/d7d9cee051d03ed98df6023aad93f7902731a780",
+                "reference": "d7d9cee051d03ed98df6023aad93f7902731a780",
                 "shasum": ""
             },
             "require": {
@@ -35708,7 +35723,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-04-19T15:50:46+00:00"
+            "time": "2019-05-09T05:06:47+00:00"
         },
         {
             "name": "roave/better-reflection",
@@ -36642,7 +36657,7 @@
             ],
             "authors": [
                 {
-                    "name": "Sullivan Senechal",
+                    "name": "Sullivan SENECHAL",
                     "email": "soullivaneuh@gmail.com"
                 }
             ],
@@ -36711,16 +36726,16 @@
         },
         {
             "name": "spryker-sdk/spryk",
-            "version": "0.1.2",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/spryk.git",
-                "reference": "078605d7d705e88cc7adb8644411ba94bec89da2"
+                "reference": "c963f2e2ba249bfcc0b9e22c97f9052e6bae1ed1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/078605d7d705e88cc7adb8644411ba94bec89da2",
-                "reference": "078605d7d705e88cc7adb8644411ba94bec89da2",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/c963f2e2ba249bfcc0b9e22c97f9052e6bae1ed1",
+                "reference": "c963f2e2ba249bfcc0b9e22c97f9052e6bae1ed1",
                 "shasum": ""
             },
             "require": {
@@ -36752,7 +36767,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.1.x-dev"
+                    "dev-master": "1.0.x-dev"
                 }
             },
             "autoload": {
@@ -36765,25 +36780,25 @@
                 "proprietary"
             ],
             "description": "Spryk module",
-            "time": "2019-03-21T14:58:40+00:00"
+            "time": "2019-05-09T05:23:08+00:00"
         },
         {
             "name": "spryker-sdk/spryk-gui",
-            "version": "dev-master",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/spryk-gui.git",
-                "reference": "5c73f211cf7764cc68f3f06f0500896b9e6a0579"
+                "reference": "6d0dc13188de803318fff13ffad726516d195a14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk-gui/zipball/5c73f211cf7764cc68f3f06f0500896b9e6a0579",
-                "reference": "5c73f211cf7764cc68f3f06f0500896b9e6a0579",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk-gui/zipball/6d0dc13188de803318fff13ffad726516d195a14",
+                "reference": "6d0dc13188de803318fff13ffad726516d195a14",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "spryker-sdk/spryk": "^0.1.0",
+                "spryker-sdk/spryk": "^0.1.0 || ^0.2.0",
                 "spryker/config": "^3.1.3",
                 "spryker/development": "^3.12.0",
                 "spryker/graph": "^3.0.0",
@@ -36814,7 +36829,7 @@
                 "proprietary"
             ],
             "description": "SprykGui module",
-            "time": "2019-02-21T13:42:51+00:00"
+            "time": "2019-05-09T05:22:14+00:00"
         },
         {
             "name": "spryker/architecture-sniffer",
@@ -37550,8 +37565,7 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "spryker-eco/loggly": 20,
-        "spryker-sdk/spryk-gui": 20
+        "spryker-eco/loggly": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
