@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c57616e756e21208863b1db90431637c",
+    "content-hash": "ab0061644ba2b4ae882a65543b44cf02",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -995,7 +995,7 @@
                 {
                     "name": "Luís Otávio Cobucci Oblonczyk",
                     "email": "lcobucci@gmail.com",
-                    "role": "Developer"
+                    "role": "developer"
                 }
             ],
             "description": "A simple library to work with JSON Web Token and JSON Web Signature",
@@ -2620,11 +2620,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/te-723-prototype-publishing-module",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "f1e25e5cb7b320cc1b794515fbfd5c9b4a65911b"
+                "reference": "f29bbbc5a147cbbb80d6c197f5f35dcc25587d84"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2893,7 +2893,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-05-09T09:23:35+00:00"
+            "time": "2019-05-09T15:30:47+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6503,7 +6503,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette Finder: find files and directories with an intuitive API.",
+            "description": "🔍 Nette Finder: find files and directories with an intuitive API.",
             "homepage": "https://nette.org",
             "keywords": [
                 "filesystem",
@@ -6563,7 +6563,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette NEON: encodes and decodes NEON file format.",
+            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -8588,7 +8588,7 @@
             ],
             "authors": [
                 {
-                    "name": "Sullivan Senechal",
+                    "name": "Sullivan SENECHAL",
                     "email": "soullivaneuh@gmail.com"
                 }
             ],
@@ -8620,17 +8620,19 @@
                 "phpstan/phpstan": "^0.11.1"
             },
             "require-dev": {
+                "consistence/coding-standard": "^3.5",
                 "jakub-onderka/php-parallel-lint": "^1.0",
                 "localheinz/composer-normalize": "~0.9.0",
                 "phing/phing": "^2.16.0",
-                "phpstan/phpstan-strict-rules": "^0.11",
-                "spryker/code-sniffer": "^0.14",
+                "phpstan/phpstan-strict-rules": "^0.10",
+                "slevomat/coding-standard": "^4.7.2",
+                "spryker/code-sniffer": "*",
                 "squizlabs/php_codesniffer": "^3.3.1"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "0.1.x-dev"
                 }
             },
             "autoload": {
@@ -8645,16 +8647,16 @@
             "authors": [
                 {
                     "name": "Spryker",
-                    "homepage": "https://spryker.com"
+                    "homepage": "http://spryker.com"
                 }
             ],
             "description": "Spryker PHPStan Extensions",
-            "homepage": "https://spryker.com",
+            "homepage": "http://spryker.com",
             "keywords": [
                 "PHPStan",
                 "analyzing"
             ],
-            "time": "2019-04-10T12:54:24+00:00"
+            "time": "2019-02-19T23:00:40+00:00"
         },
         {
             "name": "spryker-sdk/spryk",
@@ -8662,12 +8664,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/spryk.git",
-                "reference": "c963f2e2ba249bfcc0b9e22c97f9052e6bae1ed1"
+                "reference": "87b2774f649674de81517acb7d51d2d726a0214e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/c963f2e2ba249bfcc0b9e22c97f9052e6bae1ed1",
-                "reference": "c963f2e2ba249bfcc0b9e22c97f9052e6bae1ed1",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/87b2774f649674de81517acb7d51d2d726a0214e",
+                "reference": "87b2774f649674de81517acb7d51d2d726a0214e",
                 "shasum": ""
             },
             "require": {
@@ -8712,7 +8714,7 @@
                 "proprietary"
             ],
             "description": "Spryk module",
-            "time": "2019-05-09T05:23:08+00:00"
+            "time": "2019-05-09T14:13:18+00:00"
         },
         {
             "name": "spryker-sdk/spryk-gui",
@@ -8972,12 +8974,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/git-hook.git",
-                "reference": "008ef234177a136ed42ba30bc355552b4252ad69"
+                "reference": "f563c1736a16cb02a84c3916eba2ecc7fec7f61a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/git-hook/zipball/008ef234177a136ed42ba30bc355552b4252ad69",
-                "reference": "008ef234177a136ed42ba30bc355552b4252ad69",
+                "url": "https://api.github.com/repos/spryker/git-hook/zipball/f563c1736a16cb02a84c3916eba2ecc7fec7f61a",
+                "reference": "f563c1736a16cb02a84c3916eba2ecc7fec7f61a",
                 "shasum": ""
             },
             "require": {
@@ -9018,7 +9020,7 @@
                 "sniffer",
                 "standards"
             ],
-            "time": "2019-03-01T09:05:34+00:00"
+            "time": "2019-05-09T11:49:32+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
