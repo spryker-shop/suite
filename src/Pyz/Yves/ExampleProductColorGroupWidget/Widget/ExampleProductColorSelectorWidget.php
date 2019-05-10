@@ -14,12 +14,14 @@ class ExampleProductColorSelectorWidget extends AbstractWidget
 {
     /**
      * @param int $idProductAbstract
+     * @param string|null $wrapper
      */
-    public function __construct(int $idProductAbstract)
+    public function __construct(int $idProductAbstract, string $wrapper = null)
     {
         $widget = new ProductGroupWidget($idProductAbstract);
 
         $this->parameters = $widget->getParameters();
+        $this->addParameter('wrapper', $wrapper);
     }
 
     /**

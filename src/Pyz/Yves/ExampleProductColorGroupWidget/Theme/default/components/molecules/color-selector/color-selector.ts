@@ -3,10 +3,12 @@ import Component from 'ShopUi/models/component';
 export default class ColorSelector extends Component {
     colors: HTMLAnchorElement[];
     images: HTMLImageElement[];
+    wrap: HTMLElement | HTMLBodyElement;
 
     protected readyCallback(): void {
+        this.wrap = <HTMLElement | HTMLBodyElement>document.querySelector(this.targetParentWrapper);
         this.colors = <HTMLAnchorElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__color`));
-        this.images = <HTMLImageElement[]>Array.from(document.querySelectorAll(this.targetImageSelector));
+        this.images = <HTMLImageElement[]>Array.from(this.wrap.querySelectorAll(this.targetImageSelector));
         this.mapEvents();
     }
 
@@ -42,5 +44,9 @@ export default class ColorSelector extends Component {
 
     get targetImageSelector(): string {
         return this.getAttribute('target-image-selector');
+    }
+
+    get targetParentWrapper(): string {
+        return this.getAttribute('target-parent-wrapper-selector');
     }
 }
