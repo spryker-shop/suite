@@ -22,7 +22,7 @@ use Spryker\Shared\CustomerAccessStorage\CustomerAccessStorageConstants;
 use Spryker\Shared\Event\EventConfig;
 use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\FileManagerStorage\FileManagerStorageConstants;
-use Spryker\Shared\GlossaryStorage\GlossaryStorageConstants;
+use Spryker\Shared\GlossaryStorage\GlossaryStorageConfig;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\PriceProductStorage\PriceProductStorageConstants;
 use Spryker\Shared\ProductPackagingUnitStorage\ProductPackagingUnitStorageConfig;
@@ -41,7 +41,7 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
         $queueOptionCollection = new ArrayObject();
         $queueOptionCollection->append($this->createQueueOption(EventConstants::EVENT_QUEUE, EventConstants::EVENT_QUEUE_RETRY, EventConfig::EVENT_ROUTING_KEY_RETRY));
         $queueOptionCollection->append($this->createQueueOption(EventConstants::EVENT_QUEUE, EventConstants::EVENT_QUEUE_ERROR, EventConfig::EVENT_ROUTING_KEY_ERROR));
-        $queueOptionCollection->append($this->createQueueOption(GlossaryStorageConstants::SYNC_STORAGE_QUEUE, GlossaryStorageConstants::SYNC_STORAGE_ERROR_QUEUE));
+        $queueOptionCollection->append($this->createQueueOption(GlossaryStorageConfig::SYNC_STORAGE_QUEUE, GlossaryStorageConfig::SYNC_STORAGE_ERROR_QUEUE));
         $queueOptionCollection->append($this->createQueueOption(UrlStorageConstants::URL_SYNC_STORAGE_QUEUE, UrlStorageConstants::URL_SYNC_STORAGE_ERROR_QUEUE));
         $queueOptionCollection->append($this->createQueueOption(AvailabilityStorageConstants::AVAILABILITY_SYNC_STORAGE_QUEUE, AvailabilityStorageConstants::AVAILABILITY_SYNC_STORAGE_ERROR_QUEUE));
         $queueOptionCollection->append($this->createQueueOption(CustomerAccessStorageConstants::CUSTOMER_ACCESS_SYNC_STORAGE_QUEUE, CustomerAccessStorageConstants::CUSTOMER_ACCESS_SYNC_STORAGE_ERROR_QUEUE));
