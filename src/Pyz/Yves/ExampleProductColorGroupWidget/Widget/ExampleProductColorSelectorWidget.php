@@ -16,7 +16,7 @@ class ExampleProductColorSelectorWidget extends AbstractWidget
      * @param int $idProductAbstract
      * @param string|null $wrapper
      */
-    public function __construct(int $idProductAbstract, string $wrapper = null)
+    public function __construct(int $idProductAbstract, ?string $wrapper = null)
     {
         $widget = new ProductGroupWidget($idProductAbstract);
 
