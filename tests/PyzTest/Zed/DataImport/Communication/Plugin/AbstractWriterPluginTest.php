@@ -19,6 +19,7 @@ use Spryker\Service\UtilEncoding\UtilEncodingService;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterCollection;
 use Spryker\Zed\DataImport\Dependency\Propel\DataImportToPropelConnectionBridge;
+use Spryker\Zed\DataImport\Dependency\Service\DataImportToUtilEncodingServiceBridge;
 use Spryker\Zed\PriceProduct\Business\PriceProductFacade;
 
 /**
@@ -62,7 +63,9 @@ abstract class AbstractWriterPluginTest extends Unit
             'getPropelConnection' => $this->getPropelConnection(),
             'getStore' => $this->getStore(),
             'getPriceProductFacade' => new PriceProductFacade(),
-            'getUtilEncodingService' => new UtilEncodingService(),
+            'getUtilEncodingService' => new DataImportToUtilEncodingServiceBridge(
+                new UtilEncodingService()
+            ),
         ]);
 
         return $dataImportBusinessFactory;
