@@ -25,6 +25,7 @@ use Spryker\Shared\Session\SessionConfig;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\Setup\SetupConstants;
 use Spryker\Shared\Storage\StorageConstants;
+use Spryker\Shared\StorageDatabase\StorageDatabaseConstants;
 use Spryker\Shared\WebProfiler\WebProfilerConstants;
 use Spryker\Shared\ZedNavigation\ZedNavigationConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
@@ -133,3 +134,11 @@ $config[OauthCustomerConnectorConstants::OAUTH_CLIENT_SECRET] = 'abc123';
 // ----------- CompanyUserAuthRestApi
 $config[OauthCompanyUserConstants::OAUTH_CLIENT_IDENTIFIER] = 'frontend';
 $config[OauthCompanyUserConstants::OAUTH_CLIENT_SECRET] = 'abc123';
+
+// ---------- StorageDatabase
+$config[StorageDatabaseConstants::DB_ENGINE] = $config[StorageDatabaseConstants::DB_ENGINE_PGSQL];
+$config[StorageDatabaseConstants::DB_USERNAME] = 'development';
+$config[StorageDatabaseConstants::DB_PASSWORD] = 'mate20mg';
+$config[StorageDatabaseConstants::DB_HOST] = '127.0.0.1';
+$config[StorageDatabaseConstants::DB_PORT] = 5432;
+$config[StorageDatabaseConstants::DB_DEBUG] = false;

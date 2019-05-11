@@ -39,6 +39,7 @@ use Spryker\Shared\SequenceNumber\SequenceNumberConstants;
 use Spryker\Shared\Session\SessionConfig;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\Storage\StorageConstants;
+use Spryker\Shared\StorageDatabase\StorageDatabaseConstants;
 use Spryker\Shared\Tax\TaxConstants;
 use Spryker\Shared\Translator\TranslatorConstants;
 use Spryker\Shared\Twig\TwigConstants;
@@ -448,3 +449,8 @@ $config[TranslatorConstants::TRANSLATION_ZED_CACHE_DIRECTORY] = sprintf(
 $config[TranslatorConstants::TRANSLATION_ZED_FILE_PATH_PATTERNS] = [
     APPLICATION_ROOT_DIR . '/data/translation/Zed/*/[a-z][a-z]_[A-Z][A-Z].csv',
 ];
+
+// ---------- StorageDatabase
+$config[StorageDatabaseConstants::DB_ENGINE_PGSQL] = PropelConfig::DB_ENGINE_PGSQL;
+$config[StorageDatabaseConstants::DB_ENGINE_MYSQL] = PropelConfig::DB_ENGINE_MYSQL;
+$config[StorageDatabaseConstants::DB_DEBUG] = false;
