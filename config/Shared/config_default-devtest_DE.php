@@ -120,7 +120,5 @@ $config[EventConstants::EVENT_CHUNK] = 5000;
 // ---------- Session
 $config[SessionConstants::YVES_SESSION_COOKIE_DOMAIN] = $config[ApplicationConstants::HOST_YVES];
 $config[SessionConstants::ZED_SESSION_COOKIE_NAME] = $config[ApplicationConstants::HOST_ZED];
-$config[SessionConstants::YVES_SESSION_REDIS_DATABASE] = 5;
-$config[SessionConstants::ZED_SESSION_REDIS_DATABASE] = $config[SessionConstants::YVES_SESSION_REDIS_DATABASE];
 $config[SessionRedisConstants::YVES_SESSION_REDIS_DATABASE] = 5;
 $config[SessionRedisConstants::ZED_SESSION_REDIS_DATABASE] = $config[SessionRedisConstants::YVES_SESSION_REDIS_DATABASE];
