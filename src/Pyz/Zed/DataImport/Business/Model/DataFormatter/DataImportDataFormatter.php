@@ -7,20 +7,20 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\DataFormatter;
 
-use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
+use Spryker\Zed\DataImport\Dependency\Service\DataImportToUtilEncodingServiceInterface;
 
 class DataImportDataFormatter implements DataImportDataFormatterInterface
 {
     /**
-     * @var \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface
+     * @var \Spryker\Zed\DataImport\Dependency\Service\DataImportToUtilEncodingServiceInterface
      */
     protected $utilEncodingService;
 
     /**
-     * @param \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface $utilEncodingService
+     * @param \Spryker\Zed\DataImport\Dependency\Service\DataImportToUtilEncodingServiceInterface $utilEncodingService
      */
     public function __construct(
-        UtilEncodingServiceInterface $utilEncodingService
+        DataImportToUtilEncodingServiceInterface $utilEncodingService
     ) {
         $this->utilEncodingService = $utilEncodingService;
     }

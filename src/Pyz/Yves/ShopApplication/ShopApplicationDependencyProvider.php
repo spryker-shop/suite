@@ -28,6 +28,7 @@ use SprykerShop\Yves\CompanyWidget\Widget\CompanyBusinessUnitAddressWidget;
 use SprykerShop\Yves\CompanyWidget\Widget\CompanyMenuItemWidget;
 use SprykerShop\Yves\CurrencyWidget\Widget\CurrencyWidget;
 use SprykerShop\Yves\CustomerPage\Widget\CustomerNavigationWidget;
+use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderItemCheckboxWidget;
 use SprykerShop\Yves\DiscountPromotionWidget\Widget\CartDiscountPromotionProductListWidget;
 use SprykerShop\Yves\DiscountWidget\Widget\CheckoutVoucherFormWidget;
 use SprykerShop\Yves\DiscountWidget\Widget\DiscountVoucherFormWidget;
@@ -79,6 +80,12 @@ use SprykerShop\Yves\ProductWidget\Widget\ProductAlternativeWidget;
 use SprykerShop\Yves\QuoteApprovalWidget\Widget\QuoteApprovalStatusWidget;
 use SprykerShop\Yves\QuoteApprovalWidget\Widget\QuoteApprovalWidget;
 use SprykerShop\Yves\QuoteApprovalWidget\Widget\QuoteApproveRequestWidget;
+use SprykerShop\Yves\QuoteRequestAgentWidget\Widget\QuoteRequestAgentCancelWidget;
+use SprykerShop\Yves\QuoteRequestAgentWidget\Widget\QuoteRequestAgentOverviewWidget;
+use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCancelWidget;
+use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCartWidget;
+use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCreateWidget;
+use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestMenuItemWidget;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Widget\SalesOrderThresholdWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartDeleteCompanyUsersListWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartListPermissionGroupWidget;
@@ -125,6 +132,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CreateShoppingListFromCartWidget::class,
             CurrencyWidget::class,
             CustomerNavigationWidget::class,
+            CustomerReorderItemCheckboxWidget::class,
             DisplayProductAbstractReviewWidget::class,
             ExampleProductColorSelectorWidget::class,
             LanguageSwitcherWidget::class,
@@ -132,6 +140,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             MiniCartWidget::class,
             MultiCartListWidget::class,
             MultiCartMenuItemWidget::class,
+            QuoteRequestMenuItemWidget::class,
             NavigationWidget::class,
             NewsletterSubscriptionWidget::class,
             NewsletterSubscriptionSummaryWidget::class,
@@ -187,6 +196,11 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CategoryImageStorageWidget::class,
             AvailabilityNotificationSubscriptionWidget::class,
             ProductConcreteAddWidget::class,
+            QuoteRequestCreateWidget::class,
+            QuoteRequestCartWidget::class,
+            QuoteRequestCancelWidget::class,
+            QuoteRequestAgentOverviewWidget::class,
+            QuoteRequestAgentCancelWidget::class,
         ];
     }
 
