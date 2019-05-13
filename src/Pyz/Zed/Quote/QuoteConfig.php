@@ -24,6 +24,7 @@ class QuoteConfig extends SprykerQuoteConfig
             QuoteTransfer::VOUCHER_DISCOUNTS, #QuoteApprovalFeature
             QuoteTransfer::CART_RULE_DISCOUNTS, #QuoteApprovalFeature
             QuoteTransfer::PROMOTION_ITEMS, #QuoteApprovalFeature
+            QuoteTransfer::SHIPMENT,
             QuoteTransfer::IS_LOCKED, #QuoteApprovalFeature
         ]);
     }
