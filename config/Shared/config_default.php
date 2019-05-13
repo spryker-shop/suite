@@ -7,7 +7,6 @@ use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBui
 use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Auth\AuthConstants;
-use Spryker\Shared\Cms\CmsConstants;
 use Spryker\Shared\CmsGui\CmsGuiConstants;
 use Spryker\Shared\Collector\CollectorConstants;
 use Spryker\Shared\Customer\CustomerConstants;
@@ -270,11 +269,6 @@ $config[ApplicationConstants::ZED_SSL_ENABLED] =
     $config[SessionConstants::ZED_SSL_ENABLED]
     = false;
 $config[ApplicationConstants::ZED_SSL_EXCLUDED] = ['heartbeat/index'];
-
-// ---------- Theme
-$YVES_THEME = 'default';
-$config[TwigConstants::YVES_THEME] = $YVES_THEME;
-$config[CmsConstants::YVES_THEME] = $YVES_THEME;
 
 // ---------- Error handling
 $config[ErrorHandlerConstants::YVES_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Yves/errorpage/error.html';

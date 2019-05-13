@@ -4,7 +4,6 @@ use Monolog\Logger;
 use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Auth\AuthConstants;
-use Spryker\Shared\Cms\CmsConstants;
 use Spryker\Shared\Collector\CollectorConstants;
 use Spryker\Shared\Customer\CustomerConstants;
 use Spryker\Shared\DummyPayment\DummyPaymentConfig;
@@ -158,9 +157,6 @@ $config[SessionConstants::SESSION_HANDLER_REDIS_LOCKING_RETRY_DELAY_MICROSECONDS
 $config[SessionConstants::SESSION_HANDLER_REDIS_LOCKING_LOCK_TTL_MILLISECONDS] = 0;
 
 $config[ZedRequestConstants::ZED_API_SSL_ENABLED] = false;
-
-$config[TwigConstants::YVES_THEME]
-    = $config[CmsConstants::YVES_THEME] = 'default';
 
 $config[ErrorHandlerConstants::YVES_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Yves/errorpage/error.html';
 $config[ErrorHandlerConstants::ZED_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Yves/errorpage/error.html';
