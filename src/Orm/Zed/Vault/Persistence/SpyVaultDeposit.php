@@ -7,10 +7,10 @@
 
 namespace Orm\Zed\Vault\Persistence;
 
-use Spryker\Zed\Vault\Persistence\Propel\AbstractSpyVault as BaseSpyVault;
+use Spryker\Zed\Vault\Persistence\Propel\AbstractSpyVaultDeposit as BaseSpyVaultDeposit;
 
 /**
- * Skeleton subclass for representing a row from the 'spy_vault' table.
+ * Skeleton subclass for representing a row from the 'spy_vault_deposit' table.
  *
  *
  *
@@ -19,6 +19,6 @@ use Spryker\Zed\Vault\Persistence\Propel\AbstractSpyVault as BaseSpyVault;
  * long as it does not already exist in the output directory.
  *
  */
-class SpyVault extends BaseSpyVault
+class SpyVaultDeposit extends BaseSpyVaultDeposit
 {
 }

@@ -7,10 +7,10 @@
 
 namespace Orm\Zed\Vault\Persistence;
 
-use Spryker\Zed\Vault\Persistence\Propel\AbstractSpyVaultQuery as BaseSpyVaultQuery;
+use Spryker\Zed\Vault\Persistence\Propel\AbstractSpyVaultDepositQuery as BaseSpyVaultDepositQuery;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_vault' table.
+ * Skeleton subclass for performing query and update operations on the 'spy_vault_deposit' table.
  *
  *
  *
@@ -19,6 +19,6 @@ use Spryker\Zed\Vault\Persistence\Propel\AbstractSpyVaultQuery as BaseSpyVaultQu
  * long as it does not already exist in the output directory.
  *
  */
-class SpyVaultQuery extends BaseSpyVaultQuery
+class SpyVaultDepositQuery extends BaseSpyVaultDepositQuery
 {
 }
