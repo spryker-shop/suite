@@ -7,6 +7,8 @@
 
 namespace Pyz\Zed\ProductManagement;
 
+use Spryker\Zed\PriceProductScheduleGui\Communication\Plugin\ProductManagement\ScheduledPriceProductAbstractEditViewExpanderPlugin;
+use Spryker\Zed\PriceProductScheduleGui\Communication\Plugin\ProductManagement\ScheduledPriceProductAbstractFormEditTabsExpanderPlugin;
 use Spryker\Zed\CmsBlockProductConnector\Communication\Plugin\CmsBlockProductAbstractBlockListViewPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Money\Communication\Plugin\Form\MoneyFormTypePlugin;
@@ -61,6 +63,23 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
         return [
             new DiscontinueProductConcreteFormEditTabsExpanderPlugin(), #ProductDiscontinuedFeature
             new ProductConcreteFormEditTabsExpanderPlugin(), #ProductAlternativeFeature
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductAbstractEditFormTabsExpanderPluginInterface[]
+     */
+    protected function getProductAbstractFormEditTabsExpanderPlugins(): array
+    {
+        return [
+            new ScheduledPriceProductAbstractFormEditTabsExpanderPlugin(),
+        ];
+    }
+
+    protected function getProductAbstractEditViewExpanderPlugins(): array
+    {
+        return [
+            new ScheduledPriceProductAbstractEditViewExpanderPlugin(),
         ];
     }
 
