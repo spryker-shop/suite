@@ -15,7 +15,7 @@ class TaxProductStorageConfig extends SprykerTaxProductStorageConfig
     /**
      * @return string|null
      */
-    public function getTaxProductSyncronizationPoolName(): ?string
+    public function getTaxProductSynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
