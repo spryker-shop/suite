@@ -12,8 +12,8 @@ use Spryker\Zed\CmsBlockCategoryConnector\Communication\Plugin\CmsBlockCategoryL
 use Spryker\Zed\CmsBlockGui\CmsBlockGuiDependencyProvider as CmsBlockGuiCmsBlockGuiDependencyProvider;
 use Spryker\Zed\CmsBlockProductConnector\Communication\Plugin\CmsBlockProductAbstractFormPlugin;
 use Spryker\Zed\CmsBlockProductConnector\Communication\Plugin\CmsBlockProductAbstractListViewPlugin;
-use Spryker\Zed\ContentGui\Communication\Plugin\CmsBlockGui\HtmlToTwigFunctionCmsBlockGlossaryBeforeSavePlugin;
-use Spryker\Zed\ContentGui\Communication\Plugin\CmsBlockGui\TwigFunctionToHtmlCmsBlockGlossaryAfterFindPlugin;
+use Spryker\Zed\ContentGui\Communication\Plugin\CmsBlockGui\HtmlToShortCodeCmsBlockGlossaryBeforeSavePlugin;
+use Spryker\Zed\ContentGui\Communication\Plugin\CmsBlockGui\ShortCodeToHtmlCmsBlockGlossaryAfterFindPlugin;
 use Spryker\Zed\Store\Communication\Plugin\Form\StoreRelationToggleFormTypePlugin;
 
 class CmsBlockGuiDependencyProvider extends CmsBlockGuiCmsBlockGuiDependencyProvider
@@ -57,7 +57,7 @@ class CmsBlockGuiDependencyProvider extends CmsBlockGuiCmsBlockGuiDependencyProv
     protected function getCmsBlockGlossaryAfterFindPlugins(): array
     {
         return [
-            new TwigFunctionToHtmlCmsBlockGlossaryAfterFindPlugin(),
+            new ShortCodeToHtmlCmsBlockGlossaryAfterFindPlugin(),
         ];
     }
 
@@ -67,7 +67,7 @@ class CmsBlockGuiDependencyProvider extends CmsBlockGuiCmsBlockGuiDependencyProv
     protected function getCmsBlockGlossaryBeforeSavePlugins(): array
     {
         return [
-            new HtmlToTwigFunctionCmsBlockGlossaryBeforeSavePlugin(),
+            new HtmlToShortCodeCmsBlockGlossaryBeforeSavePlugin(),
         ];
     }
 }
