@@ -14,6 +14,8 @@ use Spryker\Zed\PriceProductMerchantRelationshipGui\Communication\Plugin\Product
 use Spryker\Zed\PriceProductMerchantRelationshipGui\Communication\Plugin\ProductManagement\MerchantRelationshipProductConcreteFormExpanderPlugin;
 use Spryker\Zed\PriceProductScheduleGui\Communication\Plugin\ProductManagement\ScheduledPriceProductAbstractEditViewExpanderPlugin;
 use Spryker\Zed\PriceProductScheduleGui\Communication\Plugin\ProductManagement\ScheduledPriceProductAbstractFormEditTabsExpanderPlugin;
+use Spryker\Zed\PriceProductScheduleGui\Communication\Plugin\ProductManagement\ScheduledPriceProductConcreteEditViewExpanderPlugin;
+use Spryker\Zed\PriceProductScheduleGui\Communication\Plugin\ProductManagement\ScheduledPriceProductConcreteFormEditTabsExpanderPlugin;
 use Spryker\Zed\ProductAlternativeGui\Communication\Plugin\ProductManagement\ProductConcreteEditFormExpanderPlugin;
 use Spryker\Zed\ProductAlternativeGui\Communication\Plugin\ProductManagement\ProductConcreteFormEditDataProviderExpanderPlugin;
 use Spryker\Zed\ProductAlternativeGui\Communication\Plugin\ProductManagement\ProductConcreteFormEditTabsExpanderPlugin;
@@ -63,6 +65,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
         return [
             new DiscontinueProductConcreteFormEditTabsExpanderPlugin(), #ProductDiscontinuedFeature
             new ProductConcreteFormEditTabsExpanderPlugin(), #ProductAlternativeFeature
+            new ScheduledPriceProductConcreteFormEditTabsExpanderPlugin(),
         ];
     }
 
@@ -83,6 +86,16 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     {
         return [
             new ScheduledPriceProductAbstractEditViewExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductConcreteEditViewExpanderPluginInterface[]
+     */
+    protected function getProductConcreteEditViewExpanderPlugins(): array
+    {
+        return [
+            new ScheduledPriceProductConcreteEditViewExpanderPlugin(),
         ];
     }
 
