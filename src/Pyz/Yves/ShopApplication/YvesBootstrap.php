@@ -48,7 +48,6 @@ use SprykerShop\Yves\CurrencyWidget\Plugin\Provider\CurrencyWidgetControllerProv
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerPageControllerProvider;
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerSecurityServiceProvider;
 use SprykerShop\Yves\CustomerReorderWidget\Plugin\Provider\CustomerReorderControllerProvider;
-use SprykerShop\Yves\DiscountWidget\Plugin\Provider\DiscountWidgetControllerProvider;
 use SprykerShop\Yves\ErrorPage\Plugin\Provider\ErrorPageControllerProvider;
 use SprykerShop\Yves\ErrorPage\Plugin\Provider\ErrorPageServiceProvider;
 use SprykerShop\Yves\FileManagerWidget\Plugin\Provider\FileManagerWidgetControllerProvider;
@@ -167,7 +166,7 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new CurrencyWidgetControllerProvider($isSsl),
             new ProductNewPageControllerProvider($isSsl),
             new ProductReviewControllerProvider($isSsl),
-            new DiscountWidgetControllerProvider($isSsl),
+            new CartCodeWidgetControllerProvider($isSsl),
             new PriceControllerProvider($isSsl),
             new CartNoteWidgetControllerProvider($isSsl), #CartNoteFeature
             new QuickOrderPageControllerProvider($isSsl),
@@ -186,7 +185,6 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new AvailabilityNotificationWidgetControllerProvider($isSsl),
             new AvailabilityNotificationPageControllerProvider($isSsl),
             new QuoteApprovalControllerProvider($isSsl), #QuoteApprovalFeature
-            new CartCodeWidgetControllerProvider($isSsl),
         ];
     }
 }
