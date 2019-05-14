@@ -107,12 +107,22 @@ $config[SessionRedisConstants::YVES_SESSION_REDIS_HOST] = $config[StorageRedisCo
 $config[SessionRedisConstants::YVES_SESSION_REDIS_PORT] = $config[StorageRedisConstants::STORAGE_REDIS_PORT];
 $config[SessionRedisConstants::YVES_SESSION_REDIS_PASSWORD] = $config[StorageRedisConstants::STORAGE_REDIS_PASSWORD];
 $config[SessionRedisConstants::YVES_SESSION_REDIS_DATABASE] = 1;
+$config[SessionConstants::YVES_SESSION_REDIS_PROTOCOL] = $config[SessionRedisConstants::YVES_SESSION_REDIS_PROTOCOL];
+$config[SessionConstants::YVES_SESSION_REDIS_HOST] = $config[SessionRedisConstants::YVES_SESSION_REDIS_HOST];
+$config[SessionConstants::YVES_SESSION_REDIS_PORT] = $config[SessionRedisConstants::YVES_SESSION_REDIS_PORT];
+$config[SessionConstants::YVES_SESSION_REDIS_PASSWORD] = $config[SessionRedisConstants::YVES_SESSION_REDIS_PASSWORD];
+$config[SessionConstants::YVES_SESSION_REDIS_DATABASE] = $config[SessionRedisConstants::YVES_SESSION_REDIS_DATABASE];
 $config[SessionConstants::ZED_SESSION_COOKIE_NAME] = $config[ApplicationConstants::HOST_ZED];
 $config[SessionRedisConstants::ZED_SESSION_REDIS_PROTOCOL] = $config[SessionRedisConstants::YVES_SESSION_REDIS_PROTOCOL];
 $config[SessionRedisConstants::ZED_SESSION_REDIS_HOST] = $config[SessionRedisConstants::YVES_SESSION_REDIS_HOST];
 $config[SessionRedisConstants::ZED_SESSION_REDIS_PORT] = $config[SessionRedisConstants::YVES_SESSION_REDIS_PORT];
 $config[SessionRedisConstants::ZED_SESSION_REDIS_PASSWORD] = $config[SessionRedisConstants::YVES_SESSION_REDIS_PASSWORD];
 $config[SessionRedisConstants::ZED_SESSION_REDIS_DATABASE] = 2;
+$config[SessionConstants::ZED_SESSION_REDIS_PROTOCOL] = $config[SessionRedisConstants::ZED_SESSION_REDIS_PROTOCOL];
+$config[SessionConstants::ZED_SESSION_REDIS_HOST] = $config[SessionRedisConstants::ZED_SESSION_REDIS_HOST];
+$config[SessionConstants::ZED_SESSION_REDIS_PORT] = $config[SessionRedisConstants::ZED_SESSION_REDIS_PORT];
+$config[SessionConstants::ZED_SESSION_REDIS_PASSWORD] = $config[SessionRedisConstants::ZED_SESSION_REDIS_PASSWORD];
+$config[SessionConstants::ZED_SESSION_REDIS_DATABASE] = $config[SessionRedisConstants::ZED_SESSION_REDIS_DATABASE];
 
 // ---------- Twig
 $config[TwigConstants::YVES_PATH_CACHE_ENABLED] = true;
