@@ -16,7 +16,7 @@ class GiftCardConfig extends SprykerGiftCardConfig
     /**
      * @return array
      */
-    public function getGiftCardPaymentMethodBlacklist()
+    public function getGiftCardPaymentMethodBlacklist(): array
     {
         return [
             DummyPaymentConfig::PAYMENT_METHOD_INVOICE,

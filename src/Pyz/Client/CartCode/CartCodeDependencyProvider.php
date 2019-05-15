@@ -14,9 +14,9 @@ use Spryker\Client\GiftCard\Plugin\CartCode\GiftCardCartCodeHandlerPlugin;
 class CartCodeDependencyProvider extends SprykerCartCodeDependencyProvider
 {
     /**
-     * @return array
+     * @return \Spryker\Client\CartCodeExtension\Dependency\Plugin\CartCodeHandlerPluginInterface[]
      */
-    protected function getCartCodeHandlerPluginCollection()
+    protected function getCartCodeHandlerPluginCollection(): array
     {
         return [
             new VoucherCartCodeHandlerPlugin(),
