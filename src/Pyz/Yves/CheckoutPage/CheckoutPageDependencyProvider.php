@@ -24,7 +24,6 @@ use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThr
 
 class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyProvider
 {
-
     /**
      * @param \Spryker\Yves\Kernel\Container $container
      *
@@ -141,5 +140,4 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
 
         return $container;
     }
-
 }

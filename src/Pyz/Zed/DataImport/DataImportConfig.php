@@ -64,6 +64,7 @@ class DataImportConfig extends SprykerDataImportConfig
     public const PRODUCT_IMAGE_QUEUE_ERROR = 'import.product_image.error';
     public const PRODUCT_PRICE_QUEUE = 'import.product_price';
     public const PRODUCT_PRICE_QUEUE_ERROR = 'import.product_price.error';
+
     /**
      * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
      */
@@ -415,6 +416,7 @@ class DataImportConfig extends SprykerDataImportConfig
     {
         return $this->buildImporterConfiguration('gift_card_abstract_configuration.csv', static::IMPORT_TYPE_ABSTRACT_GIFT_CARD_CONFIGURATION);
     }
+
     /**
      * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
      */
