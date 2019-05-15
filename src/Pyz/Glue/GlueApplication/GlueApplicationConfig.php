@@ -28,6 +28,6 @@ class GlueApplicationConfig extends SprykerGlueApplicationConfig
      */
     public function isEagerRelationshipsLoadingEnabled(): bool
     {
-        return true;
+        return false;
     }
 }
