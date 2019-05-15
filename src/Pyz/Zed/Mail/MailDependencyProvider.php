@@ -67,6 +67,7 @@ class MailDependencyProvider extends SprykerMailDependencyProvider
                     MailConfig::MAIL_TYPE_ALL,
                     CompanyUserInvitationMailTypePlugin::MAIL_TYPE,
                 ]);
+
             return $mailProviderCollection;
         });
 
