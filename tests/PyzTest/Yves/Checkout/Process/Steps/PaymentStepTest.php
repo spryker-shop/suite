@@ -129,4 +129,8 @@ class PaymentStepTest extends Unit
             ->setMethods(['getAvailableMethods'])
             ->getMock();
 
-        $mock->method('getAvailableMethods')->willReturn($availabl
+        $mock->method('getAvailableMethods')->willReturn($availablePaymentMethods);
+
+        return $mock;
+    }
+}
