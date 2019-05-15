@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "249472ea6199fd3b92fd2611e77c1d0b",
+    "content-hash": "ac0011f59cd1efc98b24aae63a660bda",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -2952,16 +2952,16 @@
         },
         {
             "name": "spryker-shop/category-image-storage-widget",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/category-image-storage-widget.git",
-                "reference": "052f20bee0bf74d485fb09db540a468f0b73dc68"
+                "reference": "4104ee2d410c7afe70935335b578fbc2bbe6a934"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/category-image-storage-widget/zipball/052f20bee0bf74d485fb09db540a468f0b73dc68",
-                "reference": "052f20bee0bf74d485fb09db540a468f0b73dc68",
+                "url": "https://api.github.com/repos/spryker-shop/category-image-storage-widget/zipball/4104ee2d410c7afe70935335b578fbc2bbe6a934",
+                "reference": "4104ee2d410c7afe70935335b578fbc2bbe6a934",
                 "shasum": ""
             },
             "require": {
@@ -2989,7 +2989,7 @@
                 "proprietary"
             ],
             "description": "CategoryImageStorageWidget module",
-            "time": "2019-01-16T08:14:30+00:00"
+            "time": "2019-04-30T11:04:15+00:00"
         },
         {
             "name": "spryker-shop/category-widget",
@@ -5854,16 +5854,16 @@
         },
         {
             "name": "spryker-shop/quick-order-page",
-            "version": "2.6.0",
+            "version": "2.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/quick-order-page.git",
-                "reference": "54ecc071b167f108afa1c13f7d46347182f704e9"
+                "reference": "c7f1b6e44833846def8080f8b391798b7835fd83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/quick-order-page/zipball/54ecc071b167f108afa1c13f7d46347182f704e9",
-                "reference": "54ecc071b167f108afa1c13f7d46347182f704e9",
+                "url": "https://api.github.com/repos/spryker-shop/quick-order-page/zipball/c7f1b6e44833846def8080f8b391798b7835fd83",
+                "reference": "c7f1b6e44833846def8080f8b391798b7835fd83",
                 "shasum": ""
             },
             "require": {
@@ -5909,7 +5909,7 @@
                 "proprietary"
             ],
             "description": "QuickOrderPage module",
-            "time": "2019-05-07T08:34:49+00:00"
+            "time": "2019-05-15T13:53:11+00:00"
         },
         {
             "name": "spryker-shop/quick-order-page-extension",
@@ -6812,16 +6812,16 @@
         },
         {
             "name": "spryker-shop/shop-ui",
-            "version": "1.20.0",
+            "version": "1.21.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/shop-ui.git",
-                "reference": "b35f84a27d2f44c28975e690621bb6ba904aa290"
+                "reference": "10a20b4295f5d20dd78580d16e48a9f860cf5cae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/shop-ui/zipball/b35f84a27d2f44c28975e690621bb6ba904aa290",
-                "reference": "b35f84a27d2f44c28975e690621bb6ba904aa290",
+                "url": "https://api.github.com/repos/spryker-shop/shop-ui/zipball/10a20b4295f5d20dd78580d16e48a9f860cf5cae",
+                "reference": "10a20b4295f5d20dd78580d16e48a9f860cf5cae",
                 "shasum": ""
             },
             "require": {
@@ -6856,7 +6856,7 @@
                 "proprietary"
             ],
             "description": "ShopUi module",
-            "time": "2019-05-07T13:50:55+00:00"
+            "time": "2019-05-15T13:33:25+00:00"
         },
         {
             "name": "spryker-shop/shopping-list-note-widget",
@@ -30378,6 +30378,48 @@
             "time": "2019-01-15T09:00:26+00:00"
         },
         {
+            "name": "spryker/util-encryption",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/util-encryption.git",
+                "reference": "5f6400e5de0ff215089e71044b63780951610f61"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/util-encryption/zipball/5f6400e5de0ff215089e71044b63780951610f61",
+                "reference": "5f6400e5de0ff215089e71044b63780951610f61",
+                "shasum": ""
+            },
+            "require": {
+                "ext-openssl": "@stable",
+                "php": ">=7.1",
+                "spryker/kernel": "^3.0.0",
+                "spryker/util-text": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "UtilEncryption module",
+            "time": "2019-05-15T08:01:22+00:00"
+        },
+        {
             "name": "spryker/util-measurement-unit-conversion",
             "version": "1.0.1",
             "source": {
@@ -30695,6 +30737,48 @@
             ],
             "description": "UuidBehavior module",
             "time": "2018-08-20T13:01:35+00:00"
+        },
+        {
+            "name": "spryker/vault",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/vault.git",
+                "reference": "b4b6ae927cf259d369cc810e16f16e9919fcc179"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/vault/zipball/b4b6ae927cf259d369cc810e16f16e9919fcc179",
+                "reference": "b4b6ae927cf259d369cc810e16f16e9919fcc179",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.0.0",
+                "spryker/util-encryption": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Vault module",
+            "time": "2019-05-15T12:52:29+00:00"
         },
         {
             "name": "spryker/web-profiler",
@@ -34499,7 +34583,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette Finder: find files and directories with an intuitive API.",
+            "description": "🔍 Nette Finder: find files and directories with an intuitive API.",
             "homepage": "https://nette.org",
             "keywords": [
                 "filesystem",
@@ -34559,7 +34643,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette NEON: encodes and decodes NEON file format.",
+            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -34680,7 +34764,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette RobotLoader: high performance and comfortable autoloader that will search and autoload classes within your application.",
+            "description": "🍀 Nette RobotLoader: high performance and comfortable autoloader that will search and autoload classes within your application.",
             "homepage": "https://nette.org",
             "keywords": [
                 "autoload",
