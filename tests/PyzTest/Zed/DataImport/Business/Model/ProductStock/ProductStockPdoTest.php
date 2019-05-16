@@ -7,6 +7,9 @@
 
 namespace PyzTest\Zed\DataImport\Business\Model\ProductStock;
 
+use Spryker\Shared\Config\Config;
+use Spryker\Shared\Propel\PropelConstants;
+
 /**
  * Auto-generated group annotations
  * @group PyzTest
@@ -30,8 +33,12 @@ class ProductStockPdoTest extends AbstractProductStockWriterTest
     public function testProductStockWriter(): void
     {
         // This test is randomly failed, this should be fixed with followup ticket for https://spryker.atlassian.net/browse/CC-116
-        $this->markTestSkipped(true);
+//        $this->markTestSkipped(true);
         $writer = $this->getDataImportBusinessFactoryStub()->createProductStockBulkPdoWriter();
+
+        if (Config::get(PropelConstants::ZED_DB_ENGINE) !== Config::get(PropelConstants::ZED_DB_ENGINE_PGSQL)) {
+            $this->markTestSkipped('PostgreSQL related test');
+        }
 
         $productSkus = $this->getProductsSkus();
         $warehouses = $this->getWarehouses();
