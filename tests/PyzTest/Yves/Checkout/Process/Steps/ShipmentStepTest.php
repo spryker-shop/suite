@@ -16,8 +16,10 @@ use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollectio
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageDependencyProvider;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface;
+use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\ShipmentStep;
 use Symfony\Component\HttpFoundation\Request;
+use SprykerShop\Yves\CheckoutPage\Process\Steps\ShipmentStep\PostConditionCheckerWithoutMultiShipment;
 
 /**
  * Auto-generated group annotations
@@ -83,11 +85,16 @@ class ShipmentStepTest extends Unit
      */
     protected function createShipmentStep(StepHandlerPluginCollection $shipmentPlugins)
     {
+        /**
+         * @todo Update this test regarding to Split Delivery.
+         */
         return new ShipmentStep(
             $this->createCalculationClientMock(),
             $shipmentPlugins,
+            $this->createShipmentServiceMock(),
             CheckoutPageDependencyProvider::PLUGIN_SHIPMENT_STEP_HANDLER,
-            'escape_route'
+            'escape_route',
+            $this->createShipmentStepStrategyResolver()
         );
     }
 
@@ -108,6 +115,25 @@ class ShipmentStepTest extends Unit
         $calculationMock->method('recalculate')->willReturnArgument(0);
 
         return $calculationMock;
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceInterface
+     */
+    protected function createShipmentServiceMock()
+    {
+        return $this->getMockBuilder(CheckoutPageToShipmentServiceInterface::class)->getMock();
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface
+     */
+    protected function createShipmentStepStrategyResolverMock()
+    {
+        $mock = $this->getMockBuilder(CheckoutPageToCalculationClientInterface::class)->getMock();
+        $mock->method('resolvePostCondition')->willReturnArgument(new PostConditionCheckerWithoutMultiShipment());
+
+        return $mock;
     }
 
     /**
