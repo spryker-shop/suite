@@ -24,6 +24,8 @@ use PyzTest\Zed\CmsGui\PageObject\CmsEditPage;
 class CmsGuiCreatePageCest
 {
     /**
+     * @todo Add P&S check after it is available
+     *
      * @param \PyzTest\Zed\CmsGui\CmsGuiPresentationTester $i
      *
      * @return void
