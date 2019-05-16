@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ac0011f59cd1efc98b24aae63a660bda",
+    "content-hash": "d18abe13c8cdd7726ed6681aa156bd65",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -14131,6 +14131,138 @@
             ],
             "description": "ContentProductGui module",
             "time": "2019-05-07T15:17:18+00:00"
+        },
+        {
+            "name": "spryker/content-product-set",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/content-product-set.git",
+                "reference": "415e0bf1524bc3e9010824fcffb29117d0a5b76e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/content-product-set/zipball/415e0bf1524bc3e9010824fcffb29117d0a5b76e",
+                "reference": "415e0bf1524bc3e9010824fcffb29117d0a5b76e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.33.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ContentProductSet module",
+            "time": "2019-05-13T06:51:05+00:00"
+        },
+        {
+            "name": "spryker/content-product-set-data-import",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/content-product-set-data-import.git",
+                "reference": "1b9c7fbc3b1337aa72d279959f8522207fe6cbda"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/content-product-set-data-import/zipball/1b9c7fbc3b1337aa72d279959f8522207fe6cbda",
+                "reference": "1b9c7fbc3b1337aa72d279959f8522207fe6cbda",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/content": "^1.1.0",
+                "spryker/data-import": "^1.5.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/product-set": "^1.4.0",
+                "spryker/util-encoding": "^1.0.0 || ^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\ContentProductSetDataImport\\Helper\\": "tests/SprykerTest/Zed/ContentProductSetDataImport/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "ContentProductSetDataImport module",
+            "time": "2019-05-14T08:03:02+00:00"
+        },
+        {
+            "name": "spryker/content-product-set-gui",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/content-product-set-gui.git",
+                "reference": "39d405b7ae3511f73072f1b108458228bc4b011b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/content-product-set-gui/zipball/39d405b7ae3511f73072f1b108458228bc4b011b",
+                "reference": "39d405b7ae3511f73072f1b108458228bc4b011b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/content-gui-extension": "^1.1.0",
+                "spryker/gui": "^3.21.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/locale": "^3.2.0",
+                "spryker/product-set": "^1.4.0",
+                "spryker/symfony": "^3.2.2",
+                "spryker/util-text": "^1.2.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ContentProductSetGui module",
+            "time": "2019-05-16T09:56:32+00:00"
         },
         {
             "name": "spryker/content-storage",
@@ -32149,7 +32281,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "BackEndTea@gmail.com"
+                    "email": "backendtea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
@@ -34643,7 +34775,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette NEON: encodes and decodes NEON file format.",
+            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
