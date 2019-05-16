@@ -23,8 +23,10 @@ use Spryker\Shared\PropelQueryBuilder\PropelQueryBuilderConstants;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
 use Spryker\Shared\Session\SessionConfig;
 use Spryker\Shared\Session\SessionConstants;
+use Spryker\Shared\SessionFile\SessionFileConstants;
+use Spryker\Shared\SessionRedis\SessionRedisConstants;
 use Spryker\Shared\Setup\SetupConstants;
-use Spryker\Shared\Storage\StorageConstants;
+use Spryker\Shared\StorageRedis\StorageRedisConstants;
 use Spryker\Shared\WebProfiler\WebProfilerConstants;
 use Spryker\Shared\ZedNavigation\ZedNavigationConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
@@ -56,11 +58,11 @@ $config[PropelConstants::ZED_DB_ENGINE] = $config[PropelConstants::ZED_DB_ENGINE
 $config[PropelQueryBuilderConstants::ZED_DB_ENGINE] = $config[PropelConstants::ZED_DB_ENGINE_PGSQL];
 
 // ---------- Redis
-$config[StorageConstants::STORAGE_REDIS_PROTOCOL] = 'tcp';
-$config[StorageConstants::STORAGE_REDIS_HOST] = '127.0.0.1';
-$config[StorageConstants::STORAGE_REDIS_PORT] = '10009';
-$config[StorageConstants::STORAGE_REDIS_PASSWORD] = false;
-$config[StorageConstants::STORAGE_REDIS_DATABASE] = 0;
+$config[StorageRedisConstants::STORAGE_REDIS_PROTOCOL] = 'tcp';
+$config[StorageRedisConstants::STORAGE_REDIS_HOST] = '127.0.0.1';
+$config[StorageRedisConstants::STORAGE_REDIS_PORT] = 10009;
+$config[StorageRedisConstants::STORAGE_REDIS_PASSWORD] = false;
+$config[StorageRedisConstants::STORAGE_REDIS_DATABASE] = 0;
 
 // ---------- RabbitMQ
 $config[RabbitMqEnv::RABBITMQ_API_HOST] = 'localhost';
@@ -70,18 +72,30 @@ $config[RabbitMqEnv::RABBITMQ_API_PASSWORD] = 'mate20mg';
 
 // ---------- Session
 $config[SessionConstants::YVES_SESSION_COOKIE_SECURE] = false;
-$config[SessionConstants::YVES_SESSION_REDIS_PROTOCOL] = $config[StorageConstants::STORAGE_REDIS_PROTOCOL];
-$config[SessionConstants::YVES_SESSION_REDIS_HOST] = $config[StorageConstants::STORAGE_REDIS_HOST];
-$config[SessionConstants::YVES_SESSION_REDIS_PORT] = $config[StorageConstants::STORAGE_REDIS_PORT];
-$config[SessionConstants::YVES_SESSION_REDIS_PASSWORD] = $config[StorageConstants::STORAGE_REDIS_PASSWORD];
-$config[SessionConstants::YVES_SESSION_REDIS_DATABASE] = 1;
+$config[SessionRedisConstants::YVES_SESSION_REDIS_PROTOCOL] = $config[StorageRedisConstants::STORAGE_REDIS_PROTOCOL];
+$config[SessionRedisConstants::YVES_SESSION_REDIS_HOST] = $config[StorageRedisConstants::STORAGE_REDIS_HOST];
+$config[SessionRedisConstants::YVES_SESSION_REDIS_PORT] = $config[StorageRedisConstants::STORAGE_REDIS_PORT];
+$config[SessionRedisConstants::YVES_SESSION_REDIS_PASSWORD] = $config[StorageRedisConstants::STORAGE_REDIS_PASSWORD];
+$config[SessionRedisConstants::YVES_SESSION_REDIS_DATABASE] = 1;
+$config[SessionConstants::YVES_SESSION_REDIS_PROTOCOL] = $config[SessionRedisConstants::YVES_SESSION_REDIS_PROTOCOL];
+$config[SessionConstants::YVES_SESSION_REDIS_HOST] = $config[SessionRedisConstants::YVES_SESSION_REDIS_HOST];
+$config[SessionConstants::YVES_SESSION_REDIS_PORT] = $config[SessionRedisConstants::YVES_SESSION_REDIS_PORT];
+$config[SessionConstants::YVES_SESSION_REDIS_PASSWORD] = $config[SessionRedisConstants::YVES_SESSION_REDIS_PASSWORD];
+$config[SessionConstants::YVES_SESSION_REDIS_DATABASE] = $config[SessionRedisConstants::YVES_SESSION_REDIS_DATABASE];
 $config[SessionConstants::ZED_SESSION_COOKIE_SECURE] = false;
-$config[SessionConstants::ZED_SESSION_REDIS_PROTOCOL] = $config[SessionConstants::YVES_SESSION_REDIS_PROTOCOL];
-$config[SessionConstants::ZED_SESSION_REDIS_HOST] = $config[SessionConstants::YVES_SESSION_REDIS_HOST];
-$config[SessionConstants::ZED_SESSION_REDIS_PORT] = $config[SessionConstants::YVES_SESSION_REDIS_PORT];
-$config[SessionConstants::ZED_SESSION_REDIS_PASSWORD] = $config[SessionConstants::YVES_SESSION_REDIS_PASSWORD];
-$config[SessionConstants::ZED_SESSION_REDIS_DATABASE] = 2;
+$config[SessionRedisConstants::ZED_SESSION_REDIS_PROTOCOL] = $config[SessionRedisConstants::YVES_SESSION_REDIS_PROTOCOL];
+$config[SessionRedisConstants::ZED_SESSION_REDIS_HOST] = $config[SessionRedisConstants::YVES_SESSION_REDIS_HOST];
+$config[SessionRedisConstants::ZED_SESSION_REDIS_PORT] = $config[SessionRedisConstants::YVES_SESSION_REDIS_PORT];
+$config[SessionRedisConstants::ZED_SESSION_REDIS_PASSWORD] = $config[SessionRedisConstants::YVES_SESSION_REDIS_PASSWORD];
+$config[SessionRedisConstants::ZED_SESSION_REDIS_DATABASE] = 2;
+$config[SessionConstants::ZED_SESSION_REDIS_PROTOCOL] = $config[SessionRedisConstants::ZED_SESSION_REDIS_PROTOCOL];
+$config[SessionConstants::ZED_SESSION_REDIS_HOST] = $config[SessionRedisConstants::ZED_SESSION_REDIS_HOST];
+$config[SessionConstants::ZED_SESSION_REDIS_PORT] = $config[SessionRedisConstants::ZED_SESSION_REDIS_PORT];
+$config[SessionConstants::ZED_SESSION_REDIS_PASSWORD] = $config[SessionRedisConstants::ZED_SESSION_REDIS_PASSWORD];
+$config[SessionConstants::ZED_SESSION_REDIS_DATABASE] = $config[SessionRedisConstants::ZED_SESSION_REDIS_DATABASE];
 $config[SessionConstants::ZED_SESSION_TIME_TO_LIVE] = SessionConfig::SESSION_LIFETIME_1_YEAR;
+$config[SessionRedisConstants::ZED_SESSION_TIME_TO_LIVE] = $config[SessionConstants::ZED_SESSION_TIME_TO_LIVE];
+$config[SessionFileConstants::ZED_SESSION_TIME_TO_LIVE] = $config[SessionConstants::ZED_SESSION_TIME_TO_LIVE];
 
 // ---------- Jenkins
 $config[SetupConstants::JENKINS_BASE_URL] = 'http://localhost:10007/';
