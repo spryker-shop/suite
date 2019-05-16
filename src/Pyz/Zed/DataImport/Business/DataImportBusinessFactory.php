@@ -104,7 +104,6 @@ use Pyz\Zed\DataImport\Communication\Plugin\ProductImage\ProductImagePropelWrite
 use Pyz\Zed\DataImport\Communication\Plugin\ProductPrice\ProductPricePropelWriterPlugin;
 use Pyz\Zed\DataImport\Communication\Plugin\ProductStock\ProductStockPropelWriterPlugin;
 use Pyz\Zed\DataImport\DataImportDependencyProvider;
-use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\ProductSearch\Code\KeyBuilder\FilterGlossaryKeyBuilder;
 use Spryker\Zed\Currency\Business\CurrencyFacadeInterface;
@@ -626,6 +625,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         $dataSetStepBroker
             ->addStep(new DiscountStoreWriterStep());
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
+
         return $dataImporter;
     }
 
@@ -1460,14 +1460,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     public function getPriceProductFacade(): PriceProductFacadeInterface
     {
         return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_PRICE_PRODUCT);
-    }
-
-    /**
-     * @return \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface
-     */
-    public function getUtilEncodingService(): UtilEncodingServiceInterface
-    {
-        return $this->getProvidedDependency(DataImportDependencyProvider::SERVICE_UTIL_ENCODING);
     }
 
     /**

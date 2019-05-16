@@ -8,23 +8,23 @@
 namespace Pyz\Zed\Session;
 
 use Spryker\Zed\Session\SessionDependencyProvider as SprykerSessionDependencyProvider;
-use Spryker\Zed\SessionFile\Communication\Plugin\Session\SessionHandlerFilePlugin;
-use Spryker\Zed\SessionRedis\Communication\Plugin\Session\SessionHandlerRedisLockingPlugin;
-use Spryker\Zed\SessionRedis\Communication\Plugin\Session\SessionHandlerRedisPlugin;
+use Spryker\Zed\SessionFile\Communication\Plugin\Session\SessionHandlerFileProviderPlugin;
+use Spryker\Zed\SessionRedis\Communication\Plugin\Session\SessionHandlerRedisLockingProviderPlugin;
+use Spryker\Zed\SessionRedis\Communication\Plugin\Session\SessionHandlerRedisProviderPlugin;
 use Spryker\Zed\SessionRedis\Communication\Plugin\Session\YvesSessionRedisLockReleaserPlugin;
 use Spryker\Zed\SessionRedis\Communication\Plugin\Session\ZedSessionRedisLockReleaserPlugin;
 
 class SessionDependencyProvider extends SprykerSessionDependencyProvider
 {
     /**
-     * @return \Spryker\Shared\SessionExtension\Dependency\Plugin\SessionHandlerPluginInterface[]
+     * @return \Spryker\Shared\SessionExtension\Dependency\Plugin\SessionHandlerProviderPluginInterface[]
      */
     protected function getSessionHandlerPlugins(): array
     {
         return [
-            new SessionHandlerRedisPlugin(),
-            new SessionHandlerRedisLockingPlugin(),
-            new SessionHandlerFilePlugin(),
+            new SessionHandlerRedisProviderPlugin(),
+            new SessionHandlerRedisLockingProviderPlugin(),
+            new SessionHandlerFileProviderPlugin(),
         ];
     }
 
