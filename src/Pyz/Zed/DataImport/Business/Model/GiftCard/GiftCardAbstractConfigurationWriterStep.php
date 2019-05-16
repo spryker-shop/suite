@@ -16,6 +16,8 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 class GiftCardAbstractConfigurationWriterStep implements DataImportStepInterface
 {
     public const BULK_SIZE = 100;
+    public const COL_PATTERN = 'pattern';
+    public const COL_ABSTRACT_SKU = 'abstract_sku';
 
     /**
      * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface
@@ -31,22 +33,14 @@ class GiftCardAbstractConfigurationWriterStep implements DataImportStepInterface
     }
 
     /**
-     * @return string
-     */
-    public function getTitle()
-    {
-        return 'Abstract Gift-Card Configurations';
-    }
-
-    /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
      * @return void
      */
     public function execute(DataSetInterface $dataSet)
     {
-        $pattern = $dataSet['pattern'];
-        $abstractSku = $dataSet['abstract_sku'];
+        $pattern = $dataSet[static::COL_PATTERN];
+        $abstractSku = $dataSet[static::COL_ABSTRACT_SKU];
 
         $typeEntity = SpyGiftCardProductAbstractConfigurationQuery::create()
             ->filterByCodePattern($pattern)

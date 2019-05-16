@@ -8,19 +8,19 @@
 namespace Pyz\Client\CartCode;
 
 use Spryker\Client\CartCode\CartCodeDependencyProvider as SprykerCartCodeDependencyProvider;
-use Spryker\Client\Discount\Plugin\CartCode\VoucherCartCodeHandlerPlugin;
-use Spryker\Client\GiftCard\Plugin\CartCode\GiftCardCartCodeHandlerPlugin;
+use Spryker\Client\Discount\Plugin\CartCode\VoucherCartCodePlugin;
+use Spryker\Client\GiftCard\Plugin\CartCode\GiftCardCartCodePlugin;
 
 class CartCodeDependencyProvider extends SprykerCartCodeDependencyProvider
 {
     /**
-     * @return \Spryker\Client\CartCodeExtension\Dependency\Plugin\CartCodeHandlerPluginInterface[]
+     * @return \Spryker\Client\CartCodeExtension\Dependency\Plugin\CartCodePluginInterface[]
      */
-    protected function getCartCodeHandlerPluginCollection(): array
+    protected function getCartCodePluginCollection(): array
     {
         return [
-            new VoucherCartCodeHandlerPlugin(),
-            new GiftCardCartCodeHandlerPlugin(),
+            new VoucherCartCodePlugin(),
+            new GiftCardCartCodePlugin(),
         ];
     }
 }

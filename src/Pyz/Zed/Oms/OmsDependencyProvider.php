@@ -41,7 +41,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function extendCommandPlugins(Container $container)
+    protected function extendCommandPlugins(Container $container): Container
     {
         $container->extend(self::COMMAND_PLUGINS, function (CommandCollectionInterface $commandCollection) {
             $commandCollection->add(new SendOrderConfirmationPlugin(), 'Oms/SendOrderConfirmation');
@@ -60,7 +60,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function extendConditionPlugins(Container $container)
+    protected function extendConditionPlugins(Container $container): Container
     {
         $container->extend(OmsDependencyProvider::CONDITION_PLUGINS, function (ConditionCollectionInterface $conditionCollection) {
             $conditionCollection

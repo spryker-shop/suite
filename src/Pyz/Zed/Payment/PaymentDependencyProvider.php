@@ -49,7 +49,7 @@ class PaymentDependencyProvider extends SprykerPaymentDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function extendPaymentPlugins(Container $container)
+    protected function extendPaymentPlugins(Container $container): Container
     {
         $container->extend(
             PaymentDependencyProvider::CHECKOUT_PLUGINS,
