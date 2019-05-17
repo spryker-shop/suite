@@ -77,6 +77,7 @@ class ProductConcreteSql implements ProductConcreteSqlInterface
     ) RETURNING id_product,sku
   )
 SELECT updated.id_product,sku FROM updated UNION ALL SELECT inserted.id_product,sku FROM inserted;";
+
         return $sql;
     }
 
@@ -200,6 +201,7 @@ SELECT updated.id_product_attributes FROM updated UNION ALL SELECT inserted.id_p
     ) RETURNING id_product_search
   )
 SELECT updated.id_product_search FROM updated UNION ALL SELECT inserted.id_product_search FROM inserted;";
+
         return $sql;
     }
 
