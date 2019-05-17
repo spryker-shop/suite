@@ -49,7 +49,8 @@ sections:
 
     jenkins-down:
         jenkins-stop:
-            command: "vendor/bin/console setup:jenkins:disable"
+            command: "vendor/bin/console scheduler:clean"
+            stores: true
 
 
     generate:
