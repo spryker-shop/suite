@@ -24,6 +24,7 @@ use Spryker\Zed\CompanyUnitAddressLabelDataImport\Communication\Plugin\CompanyUn
 use Spryker\Zed\CompanyUserDataImport\Communication\Plugin\DataImport\CompanyUserDataImportPlugin;
 use Spryker\Zed\ContentBannerDataImport\Communication\Plugin\ContentBannerDataImportPlugin;
 use Spryker\Zed\ContentProductDataImport\Communication\Plugin\ContentProductAbstractListDataImportPlugin;
+use Spryker\Zed\ContentProductSetDataImport\Communication\Plugin\ContentProductSetDataImportPlugin;
 use Spryker\Zed\DataImport\Communication\Plugin\DataImportEventBehaviorPlugin;
 use Spryker\Zed\DataImport\Communication\Plugin\DataImportPublisherPlugin;
 use Spryker\Zed\DataImport\DataImportDependencyProvider as SprykerDataImportDependencyProvider;
@@ -240,6 +241,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new PriceProductScheduleDataImportPlugin(),
             new ContentBannerDataImportPlugin(),
             new ContentProductAbstractListDataImportPlugin(),
+            new ContentProductSetDataImportPlugin(),
         ];
     }
 
