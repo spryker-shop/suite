@@ -9,7 +9,7 @@ namespace Pyz\Zed\CartsRestApi;
 
 use Spryker\Zed\CartsRestApi\CartsRestApiDependencyProvider as SprykerCartsRestApiDependencyProvider;
 use Spryker\Zed\CartsRestApiExtension\Dependency\Plugin\QuoteCreatorPluginInterface;
-use Spryker\Zed\PersistentCart\Communication\Plugin\CartsRestApi\QuoteCreator\QuoteCreatorPlugin;
+use Spryker\Zed\PersistentCart\Communication\Plugin\CartsRestApi\QuoteCreatorPlugin;
 
 class CartsRestApiDependencyProvider extends SprykerCartsRestApiDependencyProvider
 {
