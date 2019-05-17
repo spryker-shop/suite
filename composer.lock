@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3b2d85ef3a2d8f864b3c2a6d303f0dc8",
+    "content-hash": "9ab2f9fe32ec44908d48b76ae56defdd",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -4304,6 +4304,47 @@
             ],
             "description": "FileManagerWidget module",
             "time": "2019-03-22T06:59:44+00:00"
+        },
+        {
+            "name": "spryker-shop/gift-card-widget",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/gift-card-widget.git",
+                "reference": "6e043f856cd9b83ed7195e3fcc5acecaf47a8c71"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/gift-card-widget/zipball/6e043f856cd9b83ed7195e3fcc5acecaf47a8c71",
+                "reference": "6e043f856cd9b83ed7195e3fcc5acecaf47a8c71",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/cart-code-widget": "^1.0.0",
+                "spryker-shop/shop-ui": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "GiftCardWidget module",
+            "time": "2019-05-16T08:40:54+00:00"
         },
         {
             "name": "spryker-shop/heartbeat-page",
