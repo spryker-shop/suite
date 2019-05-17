@@ -23,6 +23,7 @@ class ZedBootstrap extends SprykerZedBootstrap
     {
         if (!empty($_SERVER['REQUEST_URI']) && strpos($_SERVER['REQUEST_URI'], ApiConfig::ROUTE_PREFIX_API_REST) === 0) {
             $this->registerApiServiceProvider();
+
             return;
         }
 
