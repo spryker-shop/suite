@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d18abe13c8cdd7726ed6681aa156bd65",
+    "content-hash": "9ab2f9fe32ec44908d48b76ae56defdd",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -2712,6 +2712,56 @@
             "time": "2019-01-04T15:29:56+00:00"
         },
         {
+            "name": "spryker-shop/cart-code-widget",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/cart-code-widget.git",
+                "reference": "b232bf9bc82d149eceb3da7d56c39ad552ca4308"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/cart-code-widget/zipball/b232bf9bc82d149eceb3da7d56c39ad552ca4308",
+                "reference": "b232bf9bc82d149eceb3da7d56c39ad552ca4308",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/shop-application": "^1.0.0",
+                "spryker/application": "^3.8.0",
+                "spryker/cart-code": "^1.0.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/quote": "^2.8.0",
+                "spryker/symfony": "^3.1.0",
+                "spryker/zed-request": "^3.6.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CartCodeWidget module",
+            "time": "2019-05-17T06:27:50+00:00"
+        },
+        {
             "name": "spryker-shop/cart-note-widget",
             "version": "1.1.2",
             "source": {
@@ -2769,16 +2819,16 @@
         },
         {
             "name": "spryker-shop/cart-page",
-            "version": "1.9.0",
+            "version": "1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/cart-page.git",
-                "reference": "f52713b8ebe758b768688c0e9dd6ee42141ede8e"
+                "reference": "da316f06ad674bca83b7c42237e030e734d56176"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/cart-page/zipball/f52713b8ebe758b768688c0e9dd6ee42141ede8e",
-                "reference": "f52713b8ebe758b768688c0e9dd6ee42141ede8e",
+                "url": "https://api.github.com/repos/spryker-shop/cart-page/zipball/da316f06ad674bca83b7c42237e030e734d56176",
+                "reference": "da316f06ad674bca83b7c42237e030e734d56176",
                 "shasum": ""
             },
             "require": {
@@ -2799,6 +2849,7 @@
             },
             "require-dev": {
                 "spryker-shop/discount-widget": "*",
+                "spryker-shop/gift-card-widget": "*",
                 "spryker-shop/multi-cart-widget": "*",
                 "spryker-shop/product-option-widget": "*",
                 "spryker-shop/product-packaging-unit-widget": "*",
@@ -2810,6 +2861,7 @@
             },
             "suggest": {
                 "spryker-shop/discount-widget": "If you want to use components from module DiscountWidget or DiscountSummaryWidgetPlugin",
+                "spryker-shop/gift-card-widget": "If you want to use components from module GiftCardWidget.",
                 "spryker-shop/multi-cart-widget": "If you want to use components from module MultiCartWidget or CartOperationsWidgetPlugin",
                 "spryker-shop/product-option-widget": "If you want to use components from module ProductOptionWidget or CartItemProductOptionWidgetPlugin",
                 "spryker-shop/product-packaging-unit-widget": "If you want to use components from module ProductPackagingUnitWidget or CartProductPackagingUnitWidgetPlugin",
@@ -2834,7 +2886,7 @@
                 "proprietary"
             ],
             "description": "CartPage module",
-            "time": "2019-05-07T15:47:46+00:00"
+            "time": "2019-05-17T07:21:31+00:00"
         },
         {
             "name": "spryker-shop/cart-to-shopping-list-widget",
@@ -3096,16 +3148,16 @@
         },
         {
             "name": "spryker-shop/checkout-page",
-            "version": "1.12.1",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/checkout-page.git",
-                "reference": "b6d5398a7c91c3d51887865eaf3bf1203f23c2b0"
+                "reference": "c502c0d49cd04f1bfd04b14426fcc5a4b833f2d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/checkout-page/zipball/b6d5398a7c91c3d51887865eaf3bf1203f23c2b0",
-                "reference": "b6d5398a7c91c3d51887865eaf3bf1203f23c2b0",
+                "url": "https://api.github.com/repos/spryker-shop/checkout-page/zipball/c502c0d49cd04f1bfd04b14426fcc5a4b833f2d9",
+                "reference": "c502c0d49cd04f1bfd04b14426fcc5a4b833f2d9",
                 "shasum": ""
             },
             "require": {
@@ -3124,6 +3176,7 @@
                 "spryker/kernel": "^3.24.0",
                 "spryker/messenger": "^3.1.0",
                 "spryker/money": "^2.4.0",
+                "spryker/payment": "^4.3.0",
                 "spryker/permission-extension": "^1.0.0",
                 "spryker/price": "^5.1.0",
                 "spryker/product-bundle": "^4.1.0",
@@ -3136,6 +3189,7 @@
             "require-dev": {
                 "spryker-shop/cart-note-widget": "*",
                 "spryker-shop/checkout-widget": "*",
+                "spryker-shop/gift-card-widget": "*",
                 "spryker-shop/product-packaging-unit-widget": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/silex": "*",
@@ -3144,6 +3198,7 @@
             "suggest": {
                 "spryker-shop/cart-note-widget": "If you want to use components from module CartNoteWidget or CartNoteQuoteItemNoteWidgetPlugin.",
                 "spryker-shop/checkout-widget": "ADD SUGGEST DESCRIPTION",
+                "spryker-shop/gift-card-widget": "If you want to use components from module GiftCardWidget",
                 "spryker-shop/product-packaging-unit-widget": "If you want to use components from module ProductPackagingUnitWidget or SummaryProductPackagingUnitWidgetPlugin.",
                 "spryker/silex": "Use this module when using plugins that need Silex dependencies."
             },
@@ -3163,25 +3218,25 @@
                 "proprietary"
             ],
             "description": "CheckoutPage module",
-            "time": "2019-04-24T13:31:18+00:00"
+            "time": "2019-05-17T07:21:31+00:00"
         },
         {
             "name": "spryker-shop/checkout-widget",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/checkout-widget.git",
-                "reference": "7b91108a8e6d8b1a505c24ff0388363aa825d4bb"
+                "reference": "20371f179fc1d884a52ff7597605923af52db5a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/checkout-widget/zipball/7b91108a8e6d8b1a505c24ff0388363aa825d4bb",
-                "reference": "7b91108a8e6d8b1a505c24ff0388363aa825d4bb",
+                "url": "https://api.github.com/repos/spryker-shop/checkout-widget/zipball/20371f179fc1d884a52ff7597605923af52db5a9",
+                "reference": "20371f179fc1d884a52ff7597605923af52db5a9",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "spryker-shop/checkout-page": "^1.0.0",
+                "spryker-shop/checkout-page": "^1.0.0 || ^2.0.0",
                 "spryker-shop/shop-ui": "^1.0.0",
                 "spryker/checkout": "^4.3.0",
                 "spryker/kernel": "^3.24.0"
@@ -3210,7 +3265,7 @@
                 "proprietary"
             ],
             "description": "CheckoutWidget module",
-            "time": "2019-02-18T08:50:46+00:00"
+            "time": "2019-05-17T07:21:31+00:00"
         },
         {
             "name": "spryker-shop/cms-block-widget",
@@ -4096,22 +4151,22 @@
         },
         {
             "name": "spryker-shop/discount-widget",
-            "version": "1.2.1",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/discount-widget.git",
-                "reference": "717e640923b76b80e9a0239932f82f1ece358b61"
+                "reference": "72743af7d839d5e3f5cf028bbf0f8fd411fb3c28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/discount-widget/zipball/717e640923b76b80e9a0239932f82f1ece358b61",
-                "reference": "717e640923b76b80e9a0239932f82f1ece358b61",
+                "url": "https://api.github.com/repos/spryker-shop/discount-widget/zipball/72743af7d839d5e3f5cf028bbf0f8fd411fb3c28",
+                "reference": "72743af7d839d5e3f5cf028bbf0f8fd411fb3c28",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker-shop/cart-page": "^1.0.0",
-                "spryker-shop/checkout-page": "^1.0.0",
+                "spryker-shop/checkout-page": "^1.0.0 || ^2.0.0",
                 "spryker-shop/shop-application": "^1.0.0",
                 "spryker-shop/shop-ui": "^1.0.0",
                 "spryker/application": "^3.8.0",
@@ -4122,11 +4177,13 @@
                 "spryker/symfony": "^3.1.0"
             },
             "require-dev": {
+                "spryker-shop/cart-code-widget": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/silex": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
+                "spryker-shop/cart-code-widget": "If you want to use components from module CartCodeWidget.",
                 "spryker/silex": "Use this module when using plugins that need Silex dependencies."
             },
             "type": "library",
@@ -4145,7 +4202,7 @@
                 "proprietary"
             ],
             "description": "DiscountWidget module",
-            "time": "2019-03-04T16:15:43+00:00"
+            "time": "2019-05-17T07:21:31+00:00"
         },
         {
             "name": "spryker-shop/error-page",
@@ -4247,6 +4304,47 @@
             ],
             "description": "FileManagerWidget module",
             "time": "2019-03-22T06:59:44+00:00"
+        },
+        {
+            "name": "spryker-shop/gift-card-widget",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/gift-card-widget.git",
+                "reference": "6e043f856cd9b83ed7195e3fcc5acecaf47a8c71"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/gift-card-widget/zipball/6e043f856cd9b83ed7195e3fcc5acecaf47a8c71",
+                "reference": "6e043f856cd9b83ed7195e3fcc5acecaf47a8c71",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/cart-code-widget": "^1.0.0",
+                "spryker-shop/shop-ui": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "GiftCardWidget module",
+            "time": "2019-05-16T08:40:54+00:00"
         },
         {
             "name": "spryker-shop/heartbeat-page",
@@ -5854,22 +5952,22 @@
         },
         {
             "name": "spryker-shop/quick-order-page",
-            "version": "2.6.1",
+            "version": "2.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/quick-order-page.git",
-                "reference": "c7f1b6e44833846def8080f8b391798b7835fd83"
+                "reference": "b689bb13417c6067561a5979fbc24b7b7f1db545"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/quick-order-page/zipball/c7f1b6e44833846def8080f8b391798b7835fd83",
-                "reference": "c7f1b6e44833846def8080f8b391798b7835fd83",
+                "url": "https://api.github.com/repos/spryker-shop/quick-order-page/zipball/b689bb13417c6067561a5979fbc24b7b7f1db545",
+                "reference": "b689bb13417c6067561a5979fbc24b7b7f1db545",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker-shop/cart-page": "^1.0.0",
-                "spryker-shop/checkout-page": "^1.0.0",
+                "spryker-shop/checkout-page": "^1.0.0 || ^2.0.0",
                 "spryker-shop/quick-order-page-extension": "^1.1.0",
                 "spryker-shop/shop-application": "^1.0.0",
                 "spryker-shop/shop-ui": "^1.19.0",
@@ -5909,7 +6007,7 @@
                 "proprietary"
             ],
             "description": "QuickOrderPage module",
-            "time": "2019-05-15T13:53:11+00:00"
+            "time": "2019-05-17T07:59:22+00:00"
         },
         {
             "name": "spryker-shop/quick-order-page-extension",
@@ -5956,16 +6054,16 @@
         },
         {
             "name": "spryker-shop/quote-approval-widget",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/quote-approval-widget.git",
-                "reference": "51f20105258304daa19967f18adebc54712cdb69"
+                "reference": "2d9a59c9c55130dc31379f56331135e0a398b720"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/quote-approval-widget/zipball/51f20105258304daa19967f18adebc54712cdb69",
-                "reference": "51f20105258304daa19967f18adebc54712cdb69",
+                "url": "https://api.github.com/repos/spryker-shop/quote-approval-widget/zipball/2d9a59c9c55130dc31379f56331135e0a398b720",
+                "reference": "2d9a59c9c55130dc31379f56331135e0a398b720",
                 "shasum": ""
             },
             "require": {
@@ -6005,7 +6103,7 @@
                 "proprietary"
             ],
             "description": "QuoteApprovalWidget module",
-            "time": "2019-04-10T16:57:48+00:00"
+            "time": "2019-05-17T07:21:31+00:00"
         },
         {
             "name": "spryker-shop/quote-request-agent-page",
@@ -6375,16 +6473,16 @@
         },
         {
             "name": "spryker-shop/sales-order-threshold-widget",
-            "version": "1.1.1",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/sales-order-threshold-widget.git",
-                "reference": "683ed89849563ab5b9e7438f984dc83e3c806cf9"
+                "reference": "b9defe6b1a2c2089b21d3f23058ac5c30dca398f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/sales-order-threshold-widget/zipball/683ed89849563ab5b9e7438f984dc83e3c806cf9",
-                "reference": "683ed89849563ab5b9e7438f984dc83e3c806cf9",
+                "url": "https://api.github.com/repos/spryker-shop/sales-order-threshold-widget/zipball/b9defe6b1a2c2089b21d3f23058ac5c30dca398f",
+                "reference": "b9defe6b1a2c2089b21d3f23058ac5c30dca398f",
                 "shasum": ""
             },
             "require": {
@@ -6418,7 +6516,7 @@
                 "proprietary"
             ],
             "description": "SalesOrderThresholdWidget module",
-            "time": "2019-03-04T16:15:43+00:00"
+            "time": "2019-05-17T07:21:31+00:00"
         },
         {
             "name": "spryker-shop/shared-cart-page",
@@ -7718,11 +7816,19 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-0": {
+                    "Unit": "tests/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Assertion bundle",
+            "support": {
+                "source": "https://github.com/spryker/Assertion/tree/3.0.0"
+            },
             "time": "2017-02-22T12:08:46+00:00"
         },
         {
@@ -8579,11 +8685,14 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Cache bundle",
+            "support": {
+                "source": "https://github.com/spryker/Cache/tree/3.1.0"
+            },
             "time": "2017-04-10T13:13:21+00:00"
         },
         {
@@ -8724,6 +8833,88 @@
             ],
             "description": "Cart module",
             "time": "2019-05-07T14:36:04+00:00"
+        },
+        {
+            "name": "spryker/cart-code",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cart-code.git",
+                "reference": "77a0c1c25edf370485c261929ffb70b259fa54e1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cart-code/zipball/77a0c1c25edf370485c261929ffb70b259fa54e1",
+                "reference": "77a0c1c25edf370485c261929ffb70b259fa54e1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/calculation": "^4.0.0",
+                "spryker/cart-code-extension": "^1.0.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/quote": "^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CartCode module",
+            "time": "2019-05-17T06:22:47+00:00"
+        },
+        {
+            "name": "spryker/cart-code-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cart-code-extension.git",
+                "reference": "c1c49e57375c71bfd64311834e2a94de58dfea67"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cart-code-extension/zipball/c1c49e57375c71bfd64311834e2a94de58dfea67",
+                "reference": "c1c49e57375c71bfd64311834e2a94de58dfea67",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CartCodeExtension module",
+            "time": "2019-05-17T06:22:47+00:00"
         },
         {
             "name": "spryker/cart-currency-connector",
@@ -9631,11 +9822,14 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "CategoryExporter module",
+            "support": {
+                "source": "https://github.com/spryker/CategoryExporter/tree/3.0.2"
+            },
             "time": "2017-07-13T15:46:45+00:00"
         },
         {
@@ -10030,16 +10224,16 @@
         },
         {
             "name": "spryker/checkout",
-            "version": "4.4.0",
+            "version": "4.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/checkout.git",
-                "reference": "847665747031456368fd0c2b9611eea5efa4e62b"
+                "reference": "39043f9ac85364f3f60c0ea301a658e6de2861b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/checkout/zipball/847665747031456368fd0c2b9611eea5efa4e62b",
-                "reference": "847665747031456368fd0c2b9611eea5efa4e62b",
+                "url": "https://api.github.com/repos/spryker/checkout/zipball/39043f9ac85364f3f60c0ea301a658e6de2861b4",
+                "reference": "39043f9ac85364f3f60c0ea301a658e6de2861b4",
                 "shasum": ""
             },
             "require": {
@@ -10059,7 +10253,6 @@
                 "spryker/availability": "*",
                 "spryker/country": "*",
                 "spryker/customer": "*",
-                "spryker/locale": "*",
                 "spryker/product": "*",
                 "spryker/propel": "*",
                 "spryker/sales": "*",
@@ -10082,7 +10275,7 @@
                 "proprietary"
             ],
             "description": "Checkout module",
-            "time": "2019-05-07T10:56:32+00:00"
+            "time": "2019-05-15T15:46:40+00:00"
         },
         {
             "name": "spryker/checkout-extension",
@@ -15529,20 +15722,21 @@
         },
         {
             "name": "spryker/discount",
-            "version": "7.4.2",
+            "version": "7.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/discount.git",
-                "reference": "fd0e84ffa00bfa00d255702acb37fe4f5af48b1f"
+                "reference": "70221498a6907cbe9d9abfc7f899678fd3f1906a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/discount/zipball/fd0e84ffa00bfa00d255702acb37fe4f5af48b1f",
-                "reference": "fd0e84ffa00bfa00d255702acb37fe4f5af48b1f",
+                "url": "https://api.github.com/repos/spryker/discount/zipball/70221498a6907cbe9d9abfc7f899678fd3f1906a",
+                "reference": "70221498a6907cbe9d9abfc7f899678fd3f1906a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
+                "spryker/cart-code-extension": "^1.0.0",
                 "spryker/cart-extension": "^1.0.0 || ^2.0.0",
                 "spryker/currency": "^3.1.0",
                 "spryker/discount-extension": "^1.0.0",
@@ -15587,7 +15781,7 @@
                 "proprietary"
             ],
             "description": "Discount module",
-            "time": "2019-04-10T06:07:51+00:00"
+            "time": "2019-05-17T07:21:27+00:00"
         },
         {
             "name": "spryker/discount-calculation-connector",
@@ -15929,11 +16123,14 @@
                     "dev-master": "1.0.x-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Egulias module",
+            "support": {
+                "source": "https://github.com/spryker/Egulias/tree/1.0.0"
+            },
             "time": "2017-11-09T13:55:22+00:00"
         },
         {
@@ -16663,20 +16860,21 @@
         },
         {
             "name": "spryker/gift-card",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/gift-card.git",
-                "reference": "cb68878650bb7d6fd69f47963b1aabc1445ec4e9"
+                "reference": "59f37957b1617dd1708f7a83d12cd2b1837e9a70"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/gift-card/zipball/cb68878650bb7d6fd69f47963b1aabc1445ec4e9",
-                "reference": "cb68878650bb7d6fd69f47963b1aabc1445ec4e9",
+                "url": "https://api.github.com/repos/spryker/gift-card/zipball/59f37957b1617dd1708f7a83d12cd2b1837e9a70",
+                "reference": "59f37957b1617dd1708f7a83d12cd2b1837e9a70",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
+                "spryker/cart-code-extension": "^1.0.0",
                 "spryker/kernel": "^3.0.0",
                 "spryker/payment": "^4.0.0",
                 "spryker/product": "^1.0.0 || ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0",
@@ -16721,7 +16919,7 @@
                 "proprietary"
             ],
             "description": "GiftCard module",
-            "time": "2019-01-21T15:36:52+00:00"
+            "time": "2019-05-17T07:21:27+00:00"
         },
         {
             "name": "spryker/gift-card-balance",
@@ -17069,11 +17267,19 @@
                     "Function": "tests/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-0": {
+                    "Unit": "tests/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Graph bundle",
+            "support": {
+                "source": "https://github.com/spryker/Graph/tree/3.0.0"
+            },
             "time": "2017-02-22T12:08:46+00:00"
         },
         {
@@ -17099,11 +17305,14 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Graphviz module",
+            "support": {
+                "source": "https://github.com/spryker/Graphviz/tree/2.0.1"
+            },
             "time": "2017-08-02T16:31:17+00:00"
         },
         {
@@ -17394,11 +17603,20 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-0": {
+                    "Functional": "tests/",
+                    "Unit": "tests/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Invoice bundle",
+            "support": {
+                "source": "https://github.com/spryker/Invoice/tree/2.0.1"
+            },
             "time": "2017-02-22T11:53:10+00:00"
         },
         {
@@ -27037,11 +27255,14 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Redis bundle",
+            "support": {
+                "source": "https://github.com/spryker/Redis/tree/2.0.1"
+            },
             "time": "2017-04-26T15:15:36+00:00"
         },
         {
@@ -28213,16 +28434,16 @@
         },
         {
             "name": "spryker/shipment",
-            "version": "6.7.0",
+            "version": "6.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/shipment.git",
-                "reference": "4618c2d27867b016897db035076d4e39582ccc6f"
+                "reference": "d27e89d896322f52039c86c3e901866385511d3f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/shipment/zipball/4618c2d27867b016897db035076d4e39582ccc6f",
-                "reference": "4618c2d27867b016897db035076d4e39582ccc6f",
+                "url": "https://api.github.com/repos/spryker/shipment/zipball/d27e89d896322f52039c86c3e901866385511d3f",
+                "reference": "d27e89d896322f52039c86c3e901866385511d3f",
                 "shasum": ""
             },
             "require": {
@@ -28272,7 +28493,7 @@
                 "proprietary"
             ],
             "description": "Shipment module",
-            "time": "2019-02-04T09:31:49+00:00"
+            "time": "2019-05-17T07:21:27+00:00"
         },
         {
             "name": "spryker/shipment-cart-connector",
@@ -30695,11 +30916,19 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "SprykerTest\\": "tests/SprykerTest/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "UtilText module",
+            "support": {
+                "source": "https://github.com/spryker/UtilText/tree/master"
+            },
             "time": "2017-10-24T13:32:31+00:00"
         },
         {
@@ -30776,11 +31005,19 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "SprykerTest\\": "tests/SprykerTest/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "UtilValidate module",
+            "support": {
+                "source": "https://github.com/spryker/UtilValidate/tree/1.0.0"
+            },
             "time": "2017-11-09T13:55:22+00:00"
         },
         {
@@ -31280,11 +31517,14 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Zend module",
+            "support": {
+                "source": "https://github.com/spryker/Zend/tree/2.1.0"
+            },
             "time": "2017-08-02T16:31:17+00:00"
         },
         {
@@ -34715,7 +34955,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette Finder: find files and directories with an intuitive API.",
+            "description": "🔍 Nette Finder: find files and directories with an intuitive API.",
             "homepage": "https://nette.org",
             "keywords": [
                 "filesystem",
@@ -34896,7 +35136,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette RobotLoader: high performance and comfortable autoloader that will search and autoload classes within your application.",
+            "description": "🍀 Nette RobotLoader: high performance and comfortable autoloader that will search and autoload classes within your application.",
             "homepage": "https://nette.org",
             "keywords": [
                 "autoload",
