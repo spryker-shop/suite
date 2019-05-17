@@ -225,14 +225,14 @@ sections:
                 - US
                 - DE
 
-
     jenkins-up:
         jenkins-generate:
-            command: "vendor/bin/console setup:jenkins:generate"
+            command: "vendor/bin/console scheduler:setup"
+            stores: true
 
         jenkins-enable:
-            command: "vendor/bin/console setup:jenkins:enable"
-
+            command: "vendor/bin/console scheduler:resume"
+            stores: true
 
     frontend:
         dependencies-install:
