@@ -27,6 +27,8 @@ use PyzTest\Zed\Sales\PageObject\OrderListPage;
 class CheckoutAvailabilityCest
 {
     /**
+     * @skip Require P&S functionality
+     *
      * @param \PyzTest\Yves\Availability\AvailabilityPresentationTester $i
      * @param \Codeception\Scenario $scenario
      *
