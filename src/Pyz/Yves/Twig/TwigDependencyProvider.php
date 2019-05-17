@@ -26,6 +26,7 @@ use SprykerShop\Yves\ChartWidget\Plugin\Twig\ChartTwigPlugin;
 use SprykerShop\Yves\CmsBlockWidget\Plugin\Twig\CmsBlockTwigPlugin;
 use SprykerShop\Yves\CmsPage\Plugin\Twig\CmsTwigPlugin;
 use SprykerShop\Yves\ContentBannerWidget\Plugin\Twig\ContentBannerTwigPlugin;
+use SprykerShop\Yves\ContentFileWidget\Plugin\Twig\ContentFileListTwigPlugin;
 use SprykerShop\Yves\ContentProductWidget\Plugin\Twig\ContentProductAbstractListTwigPlugin;
 use SprykerShop\Yves\CustomerPage\Plugin\Twig\CustomerTwigPlugin;
 use SprykerShop\Yves\MoneyWidget\Plugin\Twig\MoneyTwigPlugin;
@@ -71,6 +72,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new WidgetTagTwigPlugin(),
             new ContentBannerTwigPlugin(),
             new ContentProductAbstractListTwigPlugin(),
+            new ContentFileListTwigPlugin(),
         ];
     }
 
