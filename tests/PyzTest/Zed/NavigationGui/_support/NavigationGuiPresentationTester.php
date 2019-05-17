@@ -53,6 +53,7 @@ class NavigationGuiPresentationTester extends Actor
     public const SWEET_ALERT_SELECTOR = '.sweet-alert';
     public const SWEET_ALERT_CONFIRM_SELECTOR = '.sweet-alert button.confirm';
     public const NODE_FORM_SELECTOR = 'form';
+    public const FLASH_MESSAGE_TEXT_SELECTOR = '//div[@class="flash-messages"]/div';
 
     /**
      * @param \Codeception\Scenario $scenario
@@ -133,7 +134,8 @@ class NavigationGuiPresentationTester extends Actor
      */
     public function seeSuccessMessage($expectedMessagePattern)
     {
-        $successMessage = $this->grabTextFrom('//div[@class="flash-messages"]/div');
+        $this->waitForElement(static::FLASH_MESSAGE_TEXT_SELECTOR, 30);
+        $successMessage = $this->grabTextFrom(static::FLASH_MESSAGE_TEXT_SELECTOR);
         $this->seeMatches($expectedMessagePattern, $successMessage);
 
         preg_match($expectedMessagePattern, $successMessage, $matches);
@@ -379,6 +381,7 @@ class NavigationGuiPresentationTester extends Actor
     public function testDeleteNavigationNode()
     {
         $i = $this;
+
         /**
          * Test skipped because popup confirmation is not working as expected under phantomjs.
          * TODO: once we have Selenium, enable this test case.
