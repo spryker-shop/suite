@@ -17,6 +17,12 @@ use Spryker\Zed\ProductStorage\Business\Storage\ProductConcreteStorageWriter as 
 use Spryker\Zed\ProductStorage\Dependency\Facade\ProductStorageToProductInterface;
 use Spryker\Zed\ProductStorage\Persistence\ProductStorageQueryContainerInterface;
 
+/**
+ * This is an example of running ProductConcreteStorageWriter
+ * with CTE (@see https://www.postgresql.org/docs/9.1/queries-with.html).
+ * By using this class, reduce the amount of database queries and increase the performance
+ * for saving storage data in database.
+ */
 class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
 {
     /**

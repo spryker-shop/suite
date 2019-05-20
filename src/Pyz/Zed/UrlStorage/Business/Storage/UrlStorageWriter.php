@@ -19,6 +19,12 @@ use Spryker\Zed\UrlStorage\Dependency\Facade\UrlStorageToStoreFacadeInterface;
 use Spryker\Zed\UrlStorage\Dependency\Service\UrlStorageToUtilSanitizeServiceInterface;
 use Spryker\Zed\UrlStorage\Persistence\UrlStorageQueryContainerInterface;
 
+/**
+ * This is an example of running UrlStorageWriter
+ * with CTE (@see https://www.postgresql.org/docs/9.1/queries-with.html).
+ * By using this class, reduce the amount of database queries and increase the performance
+ * for saving storage data in database.
+ */
 class UrlStorageWriter extends SprykerUrlStorageWriter
 {
     /**
