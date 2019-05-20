@@ -8,17 +8,17 @@
 namespace Pyz\Glue\CartsRestApi;
 
 use Spryker\Glue\CartsRestApi\CartsRestApiDependencyProvider as SprykerCartsRestApiDependencyProvider;
-use Spryker\Glue\CompanyUsersRestApi\Plugin\CartsRestApi\CompanyUserQuoteCustomerExpanderPlugin;
+use Spryker\Glue\CompanyUsersRestApi\Plugin\CartsRestApi\CompanyUserCustomerExpanderPlugin;
 
 class CartsRestApiDependencyProvider extends SprykerCartsRestApiDependencyProvider
 {
     /**
-     * @return \Spryker\Glue\CartsRestApiExtension\Dependency\Plugin\QuoteCustomerExpanderPluginInterface[]
+     * @return \Spryker\Glue\CartsRestApiExtension\Dependency\Plugin\CustomerExpanderPluginInterface[]
      */
     protected function getQuoteCustomerExpanderPlugins(): array
     {
         return [
-            new CompanyUserQuoteCustomerExpanderPlugin(),
+            new CompanyUserCustomerExpanderPlugin(),
         ];
     }
 }
