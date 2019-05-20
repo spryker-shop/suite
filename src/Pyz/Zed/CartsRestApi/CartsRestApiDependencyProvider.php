@@ -8,26 +8,16 @@
 namespace Pyz\Zed\CartsRestApi;
 
 use Spryker\Zed\CartsRestApi\CartsRestApiDependencyProvider as SprykerCartsRestApiDependencyProvider;
-use Spryker\Zed\CartsRestApiExtension\Dependency\Plugin\QuoteCollectionReaderPluginInterface;
 use Spryker\Zed\CartsRestApiExtension\Dependency\Plugin\QuoteCreatorPluginInterface;
-use Spryker\Zed\MultiCartsRestApi\Communication\Plugin\CartsRestApi\QuoteCollectionReader\MultipleQuoteCollectionReaderPlugin;
-use Spryker\Zed\MultiCartsRestApi\Communication\Plugin\CartsRestApi\QuoteCreator\MultipleQuoteCreatorPlugin;
+use Spryker\Zed\PersistentCart\Communication\Plugin\CartsRestApi\QuoteCreatorPlugin;
 
 class CartsRestApiDependencyProvider extends SprykerCartsRestApiDependencyProvider
 {
-    /**
-     * @return \Spryker\Zed\CartsRestApiExtension\Dependency\Plugin\QuoteCollectionReaderPluginInterface
-     */
-    protected function getQuoteCollectionReaderPlugin(): QuoteCollectionReaderPluginInterface
-    {
-        return new MultipleQuoteCollectionReaderPlugin();
-    }
-
     /**
      * @return \Spryker\Zed\CartsRestApiExtension\Dependency\Plugin\QuoteCreatorPluginInterface
      */
     protected function getQuoteCreatorPlugin(): QuoteCreatorPluginInterface
     {
-        return new MultipleQuoteCreatorPlugin();
+        return new QuoteCreatorPlugin();
     }
 }

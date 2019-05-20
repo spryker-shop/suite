@@ -9,7 +9,7 @@ namespace Pyz\Glue\CustomersRestApi;
 
 use Spryker\Glue\CompanyBusinessUnitsRestApi\Plugin\CustomersRestApi\CompanyBusinessUnitCustomerExpanderPlugin;
 use Spryker\Glue\CompanyUsersRestApi\Plugin\CustomersRestApi\CompanyUserCustomerExpanderPlugin;
-use Spryker\Glue\CartsRestApi\Plugin\CustomerPostCreate\UpdateCartCreateCustomerReferencePlugin;
+use Spryker\Glue\CartsRestApi\Plugin\CustomersRestApi\UpdateCartCreateCustomerReferencePlugin;
 use Spryker\Glue\CustomersRestApi\CustomersRestApiDependencyProvider as SprykerCustomersRestApiDependencyProvider;
 
 class CustomersRestApiDependencyProvider extends SprykerCustomersRestApiDependencyProvider
