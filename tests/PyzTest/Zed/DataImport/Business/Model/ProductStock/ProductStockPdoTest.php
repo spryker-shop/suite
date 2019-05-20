@@ -7,9 +7,6 @@
 
 namespace PyzTest\Zed\DataImport\Business\Model\ProductStock;
 
-use Spryker\Shared\Config\Config;
-use Spryker\Shared\Propel\PropelConstants;
-
 /**
  * Auto-generated group annotations
  * @group PyzTest
