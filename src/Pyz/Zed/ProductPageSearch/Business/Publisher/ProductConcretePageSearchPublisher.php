@@ -203,7 +203,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
         $payload = [
             'write' => [
                 'key' => $data['key'],
-                'value' => $data['data'],
+                'value' => json_decode($data['data']),
                 'resource' => $resourceName,
                 'params' => $params,
             ],
