@@ -4,7 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "c0d292894b4e6b2bd5b0981d0e098cd9",
+=======
+<<<<<<< HEAD
+    "content-hash": "313699e75ea08ea1541c4b797f09fc47",
+=======
+    "content-hash": "1f6ec2fb57014266a7bce66623db7b1d",
+>>>>>>> TE-1070 Updated ruflin/elastica
+>>>>>>> TE-1070 Updated ruflin/elastica
     "packages": [
         {
             "name": "codeception/phpunit-wrapper",
@@ -435,29 +443,31 @@
         },
         {
             "name": "elasticsearch/elasticsearch",
-            "version": "v5.3.2",
+            "version": "v6.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/elastic/elasticsearch-php.git",
-                "reference": "4b29a4121e790bbfe690d5ee77da348b62d48eb8"
+                "reference": "8bde3f3b821361ec75e08a3746231d87230a2d3a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elastic/elasticsearch-php/zipball/4b29a4121e790bbfe690d5ee77da348b62d48eb8",
-                "reference": "4b29a4121e790bbfe690d5ee77da348b62d48eb8",
+                "url": "https://api.github.com/repos/elastic/elasticsearch-php/zipball/8bde3f3b821361ec75e08a3746231d87230a2d3a",
+                "reference": "8bde3f3b821361ec75e08a3746231d87230a2d3a",
                 "shasum": ""
             },
             "require": {
+                "ext-json": ">=1.3.7",
                 "guzzlehttp/ringphp": "~1.0",
-                "php": "^5.6|^7.0",
+                "php": "^7.0",
                 "psr/log": "~1.0"
             },
             "require-dev": {
-                "cpliakas/git-wrapper": "~1.0",
+                "cpliakas/git-wrapper": "^1.7 || ^2.1",
                 "doctrine/inflector": "^1.1",
-                "mockery/mockery": "0.9.4",
-                "phpunit/phpunit": "^4.7|^5.4",
-                "sami/sami": "~3.2",
+                "mockery/mockery": "^1.2",
+                "phpstan/phpstan-shim": "^0.9 || ^0.11",
+                "phpunit/phpunit": "^5.7 || ^6.5",
+                "squizlabs/php_codesniffer": "^3.4",
                 "symfony/finder": "^2.8",
                 "symfony/yaml": "^2.8"
             },
@@ -478,6 +488,9 @@
             "authors": [
                 {
                     "name": "Zachary Tong"
+                },
+                {
+                    "name": "Enrico Zimuel"
                 }
             ],
             "description": "PHP Client for Elasticsearch",
@@ -486,7 +499,7 @@
                 "elasticsearch",
                 "search"
             ],
-            "time": "2017-11-08T17:04:47+00:00"
+            "time": "2019-04-29T15:14:22+00:00"
         },
         {
             "name": "everon/collection",
@@ -1102,7 +1115,7 @@
                 {
                     "name": "Luís Otávio Cobucci Oblonczyk",
                     "email": "lcobucci@gmail.com",
-                    "role": "Developer"
+                    "role": "developer"
                 }
             ],
             "description": "A simple library to work with JSON Web Token and JSON Web Signature",
@@ -2553,6 +2566,7 @@
             "time": "2016-06-16T16:22:20+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "propel/propel",
             "version": "2.0.0-alpha8",
             "source": {
@@ -2575,6 +2589,25 @@
                 "symfony/finder": "~2.3||~3.0||~4.0",
                 "symfony/validator": "~2.3||~3.0.0||~3.1.0||^3.2.4||~4.0",
                 "symfony/yaml": "~2.3||~3.0||~4.0"
+=======
+            "name": "ruflin/elastica",
+            "version": "6.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ruflin/Elastica.git",
+                "reference": "333dff62346adf835c0a0fd198e8c9f9ec8da65a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ruflin/Elastica/zipball/333dff62346adf835c0a0fd198e8c9f9ec8da65a",
+                "reference": "333dff62346adf835c0a0fd198e8c9f9ec8da65a",
+                "shasum": ""
+            },
+            "require": {
+                "elasticsearch/elasticsearch": "^6.0",
+                "php": "^7.0",
+                "psr/log": "~1.0"
+>>>>>>> TE-1070 Updated ruflin/elastica
             },
             "require-dev": {
                 "monolog/monolog": "~1.3",
@@ -2589,7 +2622,11 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
+<<<<<<< HEAD
                     "dev-master": "2.0-dev"
+=======
+                    "dev-master": "6.0.x-dev"
+>>>>>>> TE-1070 Updated ruflin/elastica
                 }
             },
             "autoload": {
@@ -2614,7 +2651,11 @@
                 "orm",
                 "persistence"
             ],
+<<<<<<< HEAD
             "time": "2018-02-19T12:58:55+00:00"
+=======
+            "time": "2019-01-29T09:38:03+00:00"
+>>>>>>> TE-1070 Updated ruflin/elastica
         },
         {
             "name": "psr/container",
