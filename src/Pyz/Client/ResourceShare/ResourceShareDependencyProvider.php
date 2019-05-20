@@ -7,8 +7,8 @@
 
 namespace Pyz\Client\ResourceShare;
 
-use Spryker\Client\MultiCart\Plugin\ResourceShare\SwitchDefaultCartResourceShareActivatorStrategyPlugin;
 use Spryker\Client\ResourceShare\ResourceShareDependencyProvider as SprykerResourceShareDependencyProvider;
+use Spryker\Client\SharedCart\Plugin\ResourceShare\SwitchDefaultCartResourceShareActivatorStrategyPlugin;
 
 class ResourceShareDependencyProvider extends SprykerResourceShareDependencyProvider
 {
