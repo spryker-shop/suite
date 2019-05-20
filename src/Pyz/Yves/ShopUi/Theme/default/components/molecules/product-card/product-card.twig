@@ -11,7 +11,8 @@
     url: required,
     imageUrl: required,
     price: null,
-    originalPrice: null
+    originalPrice: null,
+    currencyIsoCode: null,
 } %}
 
 {% block image %}
@@ -21,8 +22,8 @@
             attributes: {
                 alt: data.name,
                 src: data.imageUrl,
-                title: data.name
-            }
+                title: data.name,
+            },
         } only %}
     </a>
 {% endblock %}
@@ -57,9 +58,9 @@
             {% if can('SeePricePermissionPlugin') %}
                 {% include molecule('price') with {
                     data: {
-                        amount: data.price | money,
-                        originalAmount: data.originalPrice is empty ? null : (data.originalPrice | money)
-                    }
+                        amount: data.price | money(true, data.currencyIsoCode),
+                        originalAmount: data.originalPrice is empty ? null : (data.originalPrice | money(true, data.currencyIsoCode)),
+                    },
                 } only %}
             {% else %}
                 {{ 'customer.access.cannot_see_price' | trans }}
