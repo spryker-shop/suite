@@ -19,6 +19,8 @@ use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 
+$domain = getenv('VM_PROJECT') ?: 'suite-nonsplit';
+
 // ---------- Yves host
 $config[ApplicationConstants::HOST_YVES] = 'www-test.de.suite.local';
 $config[ApplicationConstants::PORT_YVES] = '';
