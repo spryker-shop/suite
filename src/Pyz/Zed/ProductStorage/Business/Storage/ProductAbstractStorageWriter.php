@@ -19,6 +19,8 @@ use Spryker\Zed\ProductStorage\Dependency\Facade\ProductStorageToProductInterfac
 use Spryker\Zed\ProductStorage\Persistence\ProductStorageQueryContainerInterface;
 
 /**
+ * @example
+ *
  * This is an example of running ProductAbstractStorageWriter
  * with CTE (@see https://www.postgresql.org/docs/9.1/queries-with.html).
  * By using this class, reduce the amount of database queries and increase the performance

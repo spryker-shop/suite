@@ -24,6 +24,8 @@ use Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToSearchInt
 use Spryker\Zed\ProductPageSearch\Dependency\Service\ProductPageSearchToUtilEncodingInterface;
 
 /**
+ * @example
+ *
  * This is an example of running ProductConcretePageSearchPublisher
  * with CTE (@see https://www.postgresql.org/docs/9.1/queries-with.html).
  * By using this class, reduce the amount of database queries and increase the performance

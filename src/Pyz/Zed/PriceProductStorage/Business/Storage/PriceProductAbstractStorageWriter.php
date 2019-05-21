@@ -20,6 +20,8 @@ use Spryker\Zed\PriceProductStorage\Dependency\Facade\PriceProductStorageToStore
 use Spryker\Zed\PriceProductStorage\Persistence\PriceProductStorageQueryContainerInterface;
 
 /**
+ * @example
+ *
  * This is an example of running PriceProductAbstractStorageWriter
  * with CTE (@see https://www.postgresql.org/docs/9.1/queries-with.html).
  * By using this class, reduce the amount of database queries and increase the performance

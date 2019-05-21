@@ -21,6 +21,8 @@ use Spryker\Zed\ProductPageSearch\Business\Publisher\ProductAbstractPagePublishe
 use Spryker\Zed\ProductPageSearch\Persistence\ProductPageSearchQueryContainerInterface;
 
 /**
+ * @example
+ *
  * This is an example of running ProductAbstractPagePublisher
  * with CTE (@see https://www.postgresql.org/docs/9.1/queries-with.html).
  * By using this class, reduce the amount of database queries and increase the performance
