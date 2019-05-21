@@ -382,6 +382,7 @@ class NavigationGuiPresentationTester extends Actor
     public function testDeleteNavigationNode()
     {
         $i = $this;
+
         /**
          * Test skipped because popup confirmation is not working as expected under phantomjs.
          * TODO: once we have Selenium, enable this test case.
