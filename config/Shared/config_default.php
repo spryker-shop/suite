@@ -7,7 +7,6 @@ use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBui
 use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Auth\AuthConstants;
-use Spryker\Shared\Cms\CmsConstants;
 use Spryker\Shared\CmsGui\CmsGuiConstants;
 use Spryker\Shared\Collector\CollectorConstants;
 use Spryker\Shared\Customer\CustomerConstants;
@@ -26,6 +25,8 @@ use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\Monitoring\MonitoringConstants;
+use Spryker\Shared\Nopayment\NopaymentConfig;
+use Spryker\Shared\Nopayment\NopaymentConstants;
 use Spryker\Shared\Oauth\OauthConstants;
 use Spryker\Shared\OauthCompanyUser\OauthCompanyUserConstants;
 use Spryker\Shared\OauthCustomerConnector\OauthCustomerConnectorConstants;
@@ -47,6 +48,7 @@ use Spryker\Shared\User\UserConstants;
 use Spryker\Shared\ZedNavigation\ZedNavigationConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use Spryker\Yves\Log\Plugin\YvesLoggerConfigPlugin;
+use Spryker\Zed\GiftCard\GiftCardConfig;
 use Spryker\Zed\Log\Communication\Plugin\ZedLoggerConfigPlugin;
 use Spryker\Zed\Oms\OmsConfig;
 use Spryker\Zed\Propel\PropelConfig;
@@ -270,11 +272,6 @@ $config[ApplicationConstants::ZED_SSL_ENABLED] =
     = false;
 $config[ApplicationConstants::ZED_SSL_EXCLUDED] = ['heartbeat/index'];
 
-// ---------- Theme
-$YVES_THEME = 'default';
-$config[TwigConstants::YVES_THEME] = $YVES_THEME;
-$config[CmsConstants::YVES_THEME] = $YVES_THEME;
-
 // ---------- Error handling
 $config[ErrorHandlerConstants::YVES_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Yves/errorpage/error.html';
 $config[ErrorHandlerConstants::ZED_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Zed/errorpage/error.html';
@@ -318,28 +315,41 @@ $config[KernelConstants::AUTO_LOADER_UNRESOLVABLE_CACHE_PROVIDER] = File::class;
 $config[KernelConstants::DEPENDENCY_INJECTOR_YVES] = [
     'CheckoutPage' => [
         'DummyPayment',
+        NopaymentConfig::PAYMENT_PROVIDER_NAME,
     ],
 ];
 $config[KernelConstants::DEPENDENCY_INJECTOR_ZED] = [
     'Payment' => [
         'DummyPayment',
+        GiftCardConfig::PROVIDER_NAME,
+        NopaymentConfig::PAYMENT_PROVIDER_NAME,
     ],
     'Oms' => [
         'DummyPayment',
+        GiftCardConfig::PROVIDER_NAME,
     ],
+];
+
+$config[NopaymentConstants::NO_PAYMENT_METHODS] = [
+    NopaymentConfig::PAYMENT_PROVIDER_NAME,
+];
+$config[NopaymentConstants::WHITELIST_PAYMENT_METHODS] = [
+    GiftCardConfig::PROVIDER_NAME,
 ];
 
 // ---------- State machine (OMS)
 $config[OmsConstants::PROCESS_LOCATION] = [
     OmsConfig::DEFAULT_PROCESS_LOCATION,
-    $config[KernelConstants::SPRYKER_ROOT] . '/DummyPayment/config/Zed/Oms',
 ];
 $config[OmsConstants::ACTIVE_PROCESSES] = [
     'DummyPayment01',
+    'Nopayment01',
 ];
 $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
     DummyPaymentConfig::PAYMENT_METHOD_INVOICE => 'DummyPayment01',
     DummyPaymentConfig::PAYMENT_METHOD_CREDIT_CARD => 'DummyPayment01',
+    GiftCardConfig::PROVIDER_NAME => 'DummyPayment01',
+    NopaymentConfig::PAYMENT_PROVIDER_NAME => 'Nopayment01',
 ];
 
 // ---------- Queue

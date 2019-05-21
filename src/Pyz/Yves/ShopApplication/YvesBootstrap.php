@@ -34,6 +34,7 @@ use SprykerShop\Yves\AgentWidget\Plugin\Provider\AgentWidgetControllerProvider;
 use SprykerShop\Yves\AvailabilityNotificationPage\Plugin\Provider\AvailabilityNotificationPageControllerProvider;
 use SprykerShop\Yves\AvailabilityNotificationWidget\Plugin\Provider\AvailabilityNotificationWidgetControllerProvider;
 use SprykerShop\Yves\CalculationPage\Plugin\Provider\CalculationPageControllerProvider;
+use SprykerShop\Yves\CartCodeWidget\Plugin\Provider\CartCodeWidgetControllerProvider;
 use SprykerShop\Yves\CartNoteWidget\Plugin\Provider\CartNoteWidgetControllerProvider;
 use SprykerShop\Yves\CartPage\Plugin\Provider\CartControllerProvider;
 use SprykerShop\Yves\CartToShoppingListWidget\Plugin\Provider\CartToShoppingListWidgetControllerProvider;
@@ -42,12 +43,12 @@ use SprykerShop\Yves\CheckoutPage\Plugin\Provider\CheckoutPageControllerProvider
 use SprykerShop\Yves\CmsPage\Plugin\Provider\PreviewControllerProvider;
 use SprykerShop\Yves\CmsSearchPage\Plugin\Provider\CmsSearchPageControllerProvider;
 use SprykerShop\Yves\CompanyPage\Plugin\Provider\CompanyPageControllerProvider;
+use SprykerShop\Yves\CompanyUserAgentWidget\Plugin\Provider\CompanyUserAgentWidgetControllerProvider;
 use SprykerShop\Yves\CompanyUserInvitationPage\Plugin\Provider\CompanyUserInvitationPageControllerProvider;
 use SprykerShop\Yves\CurrencyWidget\Plugin\Provider\CurrencyWidgetControllerProvider;
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerPageControllerProvider;
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerSecurityServiceProvider;
 use SprykerShop\Yves\CustomerReorderWidget\Plugin\Provider\CustomerReorderControllerProvider;
-use SprykerShop\Yves\DiscountWidget\Plugin\Provider\DiscountWidgetControllerProvider;
 use SprykerShop\Yves\ErrorPage\Plugin\Provider\ErrorPageControllerProvider;
 use SprykerShop\Yves\ErrorPage\Plugin\Provider\ErrorPageServiceProvider;
 use SprykerShop\Yves\FileManagerWidget\Plugin\Provider\FileManagerWidgetControllerProvider;
@@ -65,6 +66,10 @@ use SprykerShop\Yves\ProductSearchWidget\Plugin\Provider\ProductSearchWidgetCont
 use SprykerShop\Yves\ProductSetListPage\Plugin\Provider\ProductSetListPageControllerProvider;
 use SprykerShop\Yves\QuickOrderPage\Plugin\Provider\QuickOrderPageControllerProvider;
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\Provider\QuoteApprovalControllerProvider;
+use SprykerShop\Yves\QuoteRequestAgentPage\Plugin\Provider\QuoteRequestAgentPageControllerProvider;
+use SprykerShop\Yves\QuoteRequestAgentWidget\Plugin\Provider\QuoteRequestAgentWidgetControllerProvider;
+use SprykerShop\Yves\QuoteRequestPage\Plugin\Provider\QuoteRequestPageControllerProvider;
+use SprykerShop\Yves\QuoteRequestWidget\Plugin\Provider\QuoteRequestWidgetControllerProvider;
 use SprykerShop\Yves\ResourceSharePage\Plugin\Provider\ResourceSharePageControllerProvider;
 use SprykerShop\Yves\SharedCartPage\Plugin\Provider\SharedCartPageControllerProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\AutoloaderCacheServiceProvider;
@@ -169,7 +174,7 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new CurrencyWidgetControllerProvider($isSsl),
             new ProductNewPageControllerProvider($isSsl),
             new ProductReviewControllerProvider($isSsl),
-            new DiscountWidgetControllerProvider($isSsl),
+            new CartCodeWidgetControllerProvider($isSsl),
             new PriceControllerProvider($isSsl),
             new CartNoteWidgetControllerProvider($isSsl), #CartNoteFeature
             new QuickOrderPageControllerProvider($isSsl),
@@ -188,6 +193,11 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new AvailabilityNotificationWidgetControllerProvider($isSsl),
             new AvailabilityNotificationPageControllerProvider($isSsl),
             new QuoteApprovalControllerProvider($isSsl), #QuoteApprovalFeature
+            new QuoteRequestPageControllerProvider($isSsl),
+            new QuoteRequestAgentPageControllerProvider($isSsl),
+            new QuoteRequestAgentWidgetControllerProvider($isSsl),
+            new QuoteRequestWidgetControllerProvider($isSsl),
+            new CompanyUserAgentWidgetControllerProvider($isSsl),
             new PersistentCartSharePageControllerProvider($isSsl), #UniqueUrlFeature
             new ResourceSharePageControllerProvider($isSsl), #UniqueUrlFeature
             new ShareCartByLinkWidgetControllerProvider($isSsl), #UniqueURLFeature
