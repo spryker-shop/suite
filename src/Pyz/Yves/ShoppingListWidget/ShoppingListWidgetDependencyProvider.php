@@ -7,7 +7,7 @@
 
 namespace Pyz\Yves\ShoppingListWidget;
 
-use Spryker\Client\ProductQuantityStorage\Plugin\ShoppingListWidget\ProductViewTransferQuantityRestrictionExpanderPlugin;
+use SprykerShop\Yves\ProductQuantity\Plugin\ProductViewTransferQuantityRestrictionExpanderPlugin;
 use SprykerShop\Yves\ShoppingListWidget\ShoppingListWidgetDependencyProvider as SprykerShoppingListWidgetDependencyProvider;
 
 class ShoppingListWidgetDependencyProvider extends SprykerShoppingListWidgetDependencyProvider
