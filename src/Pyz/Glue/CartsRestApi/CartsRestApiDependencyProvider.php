@@ -15,7 +15,7 @@ class CartsRestApiDependencyProvider extends SprykerCartsRestApiDependencyProvid
     /**
      * @return \Spryker\Glue\CartsRestApiExtension\Dependency\Plugin\CustomerExpanderPluginInterface[]
      */
-    protected function getQuoteCustomerExpanderPlugins(): array
+    protected function getCustomerExpanderPlugins(): array
     {
         return [
             new CompanyUserCustomerExpanderPlugin(),
