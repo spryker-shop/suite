@@ -10,7 +10,6 @@ namespace Pyz\Zed\CartsRestApi;
 use Spryker\Zed\CartsRestApi\CartsRestApiDependencyProvider as SprykerCartsRestApiDependencyProvider;
 use Spryker\Zed\CartsRestApiExtension\Dependency\Plugin\QuoteCreatorPluginInterface;
 use Spryker\Zed\PersistentCart\Communication\Plugin\CartsRestApi\QuoteCreatorPlugin;
-use Spryker\Zed\SharedCart\Communication\Plugin\CartsRestApi\QuotePermissionGroupQuoteCollectionExpanderPlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\CartsRestApi\SharedCartQuoteCollectionExpanderPlugin;
 
 class CartsRestApiDependencyProvider extends SprykerCartsRestApiDependencyProvider
@@ -30,7 +29,6 @@ class CartsRestApiDependencyProvider extends SprykerCartsRestApiDependencyProvid
     {
         return [
             new SharedCartQuoteCollectionExpanderPlugin(),
-            new QuotePermissionGroupQuoteCollectionExpanderPlugin(),
         ];
     }
 }
