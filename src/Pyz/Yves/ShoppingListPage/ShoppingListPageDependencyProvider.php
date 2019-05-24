@@ -27,7 +27,7 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
             new ProductViewPriceExpanderPlugin(),
             new ProductViewImageExpanderPlugin(),
             new ProductViewAvailabilityStorageExpanderPlugin(),
-            new ProductViewQuantityRestrictionExpanderPlugin()
+            new ProductViewQuantityRestrictionExpanderPlugin(),
         ];
     }
 
