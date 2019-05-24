@@ -5,13 +5,13 @@
  */
 
 use Monolog\Logger;
+use Pyz\Shared\Scheduler\SchedulerConfig;
 use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Config\ConfigConstants;
 use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebExceptionErrorRenderer;
 use Spryker\Shared\GlueApplication\GlueApplicationConstants;
-use Spryker\Shared\JenkinsScheduler\JenkinsSchedulerConstants;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
@@ -22,9 +22,10 @@ use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\PropelOrm\PropelOrmConstants;
 use Spryker\Shared\PropelQueryBuilder\PropelQueryBuilderConstants;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
+use Spryker\Shared\Scheduler\SchedulerConstants;
+use Spryker\Shared\SchedulerJenkins\SchedulerJenkinsConstants;
 use Spryker\Shared\Session\SessionConfig;
 use Spryker\Shared\Session\SessionConstants;
-use Spryker\Shared\Setup\SetupConstants;
 use Spryker\Shared\Storage\StorageConstants;
 use Spryker\Shared\WebProfiler\WebProfilerConstants;
 use Spryker\Shared\ZedNavigation\ZedNavigationConstants;
@@ -84,17 +85,16 @@ $config[SessionConstants::ZED_SESSION_REDIS_PASSWORD] = $config[SessionConstants
 $config[SessionConstants::ZED_SESSION_REDIS_DATABASE] = 2;
 $config[SessionConstants::ZED_SESSION_TIME_TO_LIVE] = SessionConfig::SESSION_LIFETIME_1_YEAR;
 
-// ---------- Jenkins
-$config[SetupConstants::JENKINS_BASE_URL] = 'http://localhost:10007/';
-$config[SetupConstants::JENKINS_DIRECTORY] = '/data/shop/development/shared/data/common/jenkins';
-
-// Jenkins Scheduler
-$config[JenkinsSchedulerConstants::JENKINS_CONFIGURATION] = [
-    'jenkins' => [
+// ---------- Scheduler
+$config[SchedulerConstants::ENABLED_SCHEDULERS] = [
+    SchedulerConfig::SCHEDULER_JENKINS,
+];
+$config[SchedulerJenkinsConstants::JENKINS_CONFIGURATION] = [
+    SchedulerConfig::SCHEDULER_JENKINS => [
         'host' => 'http://localhost:10007/',
     ],
 ];
-$config[JenkinsSchedulerConstants::JENKINS_DIRECTORY] = '/data/shop/development/shared/data/common/jenkins';
+$config[SchedulerJenkinsConstants::JENKINS_DIRECTORY] = '/data/shop/development/shared/data/common/jenkins';
 
 // ---------- Zed request
 $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_FORWARD_ENABLED] = true;

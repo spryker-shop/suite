@@ -7,31 +7,30 @@
 
 namespace Pyz\Zed\Scheduler;
 
-use Spryker\Zed\JenkinsScheduler\Communication\Plugin\Adapter\JenkinsSchedulerAdapterPlugin;
-use Spryker\Zed\Scheduler\Communication\Plugin\ConfigurationReader\PhpSchedulerReaderPlugin;
+use Pyz\Shared\Scheduler\SchedulerConfig;
+use Spryker\Zed\Scheduler\Communication\Plugin\Scheduler\PhpScheduleReaderPlugin;
 use Spryker\Zed\Scheduler\SchedulerDependencyProvider as SprykerSchedulerDependencyProvider;
+use Spryker\Zed\SchedulerJenkins\Communication\Plugin\Adapter\SchedulerJenkinsAdapterPlugin;
 
 class SchedulerDependencyProvider extends SprykerSchedulerDependencyProvider
 {
-    protected const JENKINS_SCHEDULER_ID = 'jenkins';
-
     /**
-     * @return \Spryker\Zed\SchedulerExtension\Dependency\Plugin\SchedulerReaderPluginInterface[]
+     * @return \Spryker\Zed\SchedulerExtension\Dependency\Plugin\ScheduleReaderPluginInterface[]
      */
-    protected function getReaderPlugins(): array
+    protected function getSchedulerReaderPlugins(): array
     {
         return [
-            new PhpSchedulerReaderPlugin(),
+            new PhpScheduleReaderPlugin(),
         ];
     }
 
     /**
-     * @return \Spryker\Zed\SchedulerExtension\Dependency\Adapter\SchedulerAdapterPluginInterface[]
+     * @return \Spryker\Zed\SchedulerExtension\Dependency\Plugin\SchedulerAdapterPluginInterface[]
      */
-    protected function getAdapterPlugins(): array
+    protected function getSchedulerAdapterPlugins(): array
     {
         return [
-            static::JENKINS_SCHEDULER_ID => new JenkinsSchedulerAdapterPlugin(),
+            SchedulerConfig::SCHEDULER_JENKINS => new SchedulerJenkinsAdapterPlugin(),
         ];
     }
 }
