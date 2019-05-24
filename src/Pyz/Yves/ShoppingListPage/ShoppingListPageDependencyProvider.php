@@ -19,7 +19,7 @@ use SprykerShop\Yves\ShoppingListPage\ShoppingListPageDependencyProvider as Spry
 class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependencyProvider
 {
     /**
-     * @return \Spryker\Client\ProductStorage\Dependency\Plugin\ProductViewExpanderPluginInterface[]
+     * @return \Spryker\Client\ProductStorage\Dependency\Plugin\ProductViewExpanderPluginInterface[]|\Spryker\Client\ProductStorageExtension\Dependency\Plugin\ProductViewExpanderPluginInterface[]
      */
     protected function getShoppingListItemExpanderPlugins(): array
     {
