@@ -85,7 +85,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
      * @param \Orm\Zed\ProductPageSearch\Persistence\SpyProductAbstractPageSearch[] $productAbstractPageSearchEntities
      * @param \Spryker\Zed\ProductPageSearch\Dependency\Plugin\ProductPageDataExpanderInterface[] $pageDataExpanderPlugins
      * @param \Generated\Shared\Transfer\ProductPageLoadTransfer $productPageLoadTransfer
-     * @param bool $isRefresh
+     * @param bool|int $isRefresh
      *
      * @return void
      */
@@ -94,7 +94,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
         array $productAbstractPageSearchEntities,
         array $pageDataExpanderPlugins,
         ProductPageLoadTransfer $productPageLoadTransfer,
-        $isRefresh = false
+        $isRefresh = 0
     ) {
         $pairedEntities = $this->pairProductAbstractLocalizedEntitiesWithProductAbstractPageSearchEntities(
             $productAbstractLocalizedEntities,
@@ -135,7 +135,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
      * @param string $storeName
      * @param string $localeName
      * @param \Spryker\Zed\ProductPageSearch\Dependency\Plugin\ProductPageDataExpanderInterface[] $pageDataExpanderPlugins
-     * @param bool $isRefresh
+     * @param bool|int $isRefresh
      *
      * @return void
      */
@@ -145,8 +145,9 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
         $storeName,
         $localeName,
         array $pageDataExpanderPlugins,
-        $isRefresh = false
+        $isRefresh = 0
     ) {
+        $isRefresh = filter_var($isRefresh, FILTER_VALIDATE_BOOLEAN);
         $productPageSearchTransfer = $this->getProductPageSearchTransfer(
             $productAbstractLocalizedEntity,
             $productAbstractPageSearchEntity,
