@@ -23,6 +23,7 @@ use Spryker\Shared\PropelOrm\PropelOrmConstants;
 use Spryker\Shared\PropelQueryBuilder\PropelQueryBuilderConstants;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
 use Spryker\Shared\Scheduler\SchedulerConstants;
+use Spryker\Shared\SchedulerJenkins\SchedulerJenkinsConfig;
 use Spryker\Shared\SchedulerJenkins\SchedulerJenkinsConstants;
 use Spryker\Shared\Session\SessionConfig;
 use Spryker\Shared\Session\SessionConstants;
@@ -91,7 +92,7 @@ $config[SchedulerConstants::ENABLED_SCHEDULERS] = [
 ];
 $config[SchedulerJenkinsConstants::JENKINS_CONFIGURATION] = [
     SchedulerConfig::SCHEDULER_JENKINS => [
-        'host' => 'http://localhost:10007/',
+        SchedulerJenkinsConfig::SCHEDULER_JENKINS_BASE_URL => 'http://localhost:10007/',
     ],
 ];
 $config[SchedulerJenkinsConstants::JENKINS_DIRECTORY] = '/data/shop/development/shared/data/common/jenkins';

@@ -1,14 +1,11 @@
 <?php
 
-use Pyz\Shared\Scheduler\SchedulerConfig;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Collector\CollectorConstants;
 use Spryker\Shared\Customer\CustomerConstants;
 use Spryker\Shared\Mail\MailConstants;
 use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\ProductManagement\ProductManagementConstants;
-use Spryker\Shared\Scheduler\SchedulerConstants;
-use Spryker\Shared\SchedulerJenkins\SchedulerJenkinsConstants;
 use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
@@ -64,16 +61,6 @@ $config[ApplicationConstants::BASE_URL_SSL_STATIC_MEDIA] = $config[ApplicationCo
 // ---------- Session
 $config[SessionConstants::YVES_SESSION_COOKIE_DOMAIN] = $config[ApplicationConstants::HOST_YVES];
 $config[SessionConstants::ZED_SESSION_COOKIE_NAME] = $config[ApplicationConstants::HOST_ZED];
-
-// ---------- Scheduler
-$config[SchedulerConstants::ENABLED_SCHEDULERS] = [
-    SchedulerConfig::SCHEDULER_JENKINS,
-];
-$config[SchedulerJenkinsConstants::JENKINS_CONFIGURATION] = [
-    SchedulerConfig::SCHEDULER_JENKINS => [
-        'host' => 'http://localhost:10007/',
-    ],
-];
 
 // ---------- Elasticsearch
 $ELASTICA_INDEX_NAME = 'de_search';

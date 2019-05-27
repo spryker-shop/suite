@@ -7,7 +7,9 @@
 
 namespace Pyz\Shared\Scheduler;
 
-interface SchedulerConfig
+use Spryker\Shared\Kernel\AbstractSharedConfig;
+
+class SchedulerConfig extends AbstractSharedConfig
 {
     public const SCHEDULER_JENKINS = 'jenkins';
 }

@@ -1,7 +1,6 @@
 <?php
 
 use Monolog\Logger;
-use Pyz\Shared\Scheduler\SchedulerConfig;
 use Pyz\Yves\ShopApplication\YvesBootstrap;
 use Pyz\Zed\Application\Communication\ZedBootstrap;
 use Spryker\Shared\Application\ApplicationConstants;
@@ -18,8 +17,6 @@ use Spryker\Shared\ProductManagement\ProductManagementConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Quote\QuoteConstants;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
-use Spryker\Shared\Scheduler\SchedulerConstants;
-use Spryker\Shared\SchedulerJenkins\SchedulerJenkinsConstants;
 use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\Storage\StorageConstants;
@@ -128,17 +125,6 @@ $config[TwigConstants::ZED_PATH_CACHE_FILE] = sprintf(
     APPLICATION_ROOT_DIR,
     $CURRENT_STORE
 );
-
-// ---------- Scheduler
-$config[SchedulerConstants::ENABLED_SCHEDULERS] = [
-    SchedulerConfig::SCHEDULER_JENKINS,
-];
-$config[SchedulerJenkinsConstants::JENKINS_CONFIGURATION] = [
-    SchedulerConfig::SCHEDULER_JENKINS => [
-        'host' => 'http://localhost:10007/',
-    ],
-];
-$config[SchedulerJenkinsConstants::JENKINS_DIRECTORY] = '/data/shop/development/shared/data/common/jenkins';
 
 // ---------- Email
 $config[MailConstants::MAILCATCHER_GUI] = 'http://' . $config[ApplicationConstants::HOST_ZED] . ':1080';
