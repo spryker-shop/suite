@@ -725,9 +725,14 @@ class NavigationGuiPresentationTester extends Actor
      */
     protected function findNavigationByName(NavigationTransfer $navigationTransfer): ?SpyNavigation
     {
-        $navigationEntity = (new SpyNavigationQuery())->findByName(
-            $navigationTransfer->getName()
-        )->getFirst();
+        $navigationEntity = (new SpyNavigationQuery())
+            ->joinWithSpyNavigationNode()
+                ->useSpyNavigationNodeQuery()
+                    ->joinWithSpyNavigationNodeLocalizedAttributes()
+                ->endUse()
+            ->findByName(
+                $navigationTransfer->getName()
+            )->getFirst();
 
         return $navigationEntity;
     }
