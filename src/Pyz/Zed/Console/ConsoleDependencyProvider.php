@@ -78,10 +78,10 @@ use Spryker\Zed\ProductPackagingUnitDataImport\ProductPackagingUnitDataImportCon
 use Spryker\Zed\ProductRelation\Communication\Console\ProductRelationUpdaterConsole;
 use Spryker\Zed\ProductValidity\Communication\Console\ProductValidityConsole;
 use Spryker\Zed\Propel\Communication\Console\DatabaseDropConsole;
+use Spryker\Zed\Propel\Communication\Console\DatabaseDropTablesConsole;
 use Spryker\Zed\Propel\Communication\Console\DatabaseExportConsole;
 use Spryker\Zed\Propel\Communication\Console\DatabaseImportConsole;
 use Spryker\Zed\Propel\Communication\Console\DeleteMigrationFilesConsole;
-use Spryker\Zed\Propel\Communication\Console\DropDatabaseTablesConsole;
 use Spryker\Zed\Propel\Communication\Console\PropelSchemaValidatorConsole;
 use Spryker\Zed\Propel\Communication\Console\PropelSchemaXmlNameValidatorConsole;
 use Spryker\Zed\Propel\Communication\Plugin\ServiceProvider\PropelServiceProvider;
@@ -253,7 +253,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new DeployPreparePropelConsole(),
 
             new DatabaseDropConsole(),
-            new DropDatabaseTablesConsole(),
+            new DatabaseDropTablesConsole(),
             new DatabaseExportConsole(),
             new DatabaseImportConsole(),
             new DeleteMigrationFilesConsole(),
