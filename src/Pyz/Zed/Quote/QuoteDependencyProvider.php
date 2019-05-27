@@ -24,6 +24,7 @@ use Spryker\Zed\SharedCart\Communication\Plugin\MarkAsDefaultQuoteAfterSavePlugi
 use Spryker\Zed\SharedCart\Communication\Plugin\RemoveSharedQuoteBeforeQuoteDeletePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\SharedQuoteSetDefaultBeforeQuoteSavePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\UpdateShareDetailsQuoteAfterSavePlugin;
+use Spryker\Zed\Store\Communication\Plugin\Quote\QuoteStoreValidatorPlugin;
 
 class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
 {
@@ -116,6 +117,7 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
         return [
             new QuoteCurrencyValidatorPlugin(),
             new QuotePriceModeValidatorPlugin(),
+            new QuoteStoreValidatorPlugin(),
         ];
     }
 }
