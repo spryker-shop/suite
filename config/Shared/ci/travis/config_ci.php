@@ -17,6 +17,7 @@ use Spryker\Shared\ProductManagement\ProductManagementConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Quote\QuoteConstants;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
+use Spryker\Shared\Scheduler\SchedulerConstants;
 use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\Storage\StorageConstants;
@@ -128,6 +129,9 @@ $config[TwigConstants::ZED_PATH_CACHE_FILE] = sprintf(
 
 // ---------- Email
 $config[MailConstants::MAILCATCHER_GUI] = 'http://' . $config[ApplicationConstants::HOST_ZED] . ':1080';
+
+// ---------- Scheduler
+$config[SchedulerConstants::ENABLED_SCHEDULERS] = [];
 
 // ---------- Propel
 $config[PropelConstants::ZED_DB_DATABASE] = 'DE_test_zed';

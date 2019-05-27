@@ -95,7 +95,6 @@ $config[SchedulerJenkinsConstants::JENKINS_CONFIGURATION] = [
         SchedulerJenkinsConfig::SCHEDULER_JENKINS_BASE_URL => 'http://localhost:10007/',
     ],
 ];
-$config[SchedulerJenkinsConstants::JENKINS_DIRECTORY] = '/data/shop/development/shared/data/common/jenkins';
 
 // ---------- Zed request
 $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_FORWARD_ENABLED] = true;

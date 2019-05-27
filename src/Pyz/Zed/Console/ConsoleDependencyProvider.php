@@ -301,6 +301,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
             new PriceProductScheduleApplyConsole(),
             new PriceProductScheduleCleanupConsole(),
+
             new SchedulerSetupConsole(),
             new SchedulerCleanConsole(),
             new SchedulerSuspendConsole(),

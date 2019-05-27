@@ -93,7 +93,6 @@ $config[SchedulerJenkinsConstants::JENKINS_CONFIGURATION] = [
         'host' => 'http://localhost:10007/',
     ],
 ];
-$config[SchedulerJenkinsConstants::JENKINS_DIRECTORY] = '/data/shop/development/shared/data/common/jenkins';
 
 // ---------- ErrorHandler
 $config[ErrorHandlerConstants::ERROR_RENDERER] = WebExceptionErrorRenderer::class;
