@@ -70,8 +70,8 @@ class ProductOptionFacadeAggregatorTest extends Test
     protected function createSalesOrderAddress()
     {
         $salesOrderAddressEntity = new SpySalesOrderAddress();
-        $salesOrderAddressEntity->setAddress1(1);
-        $salesOrderAddressEntity->setAddress2(2);
+        $salesOrderAddressEntity->setAddress1('1');
+        $salesOrderAddressEntity->setAddress2('2');
         $salesOrderAddressEntity->setSalutation('Mr');
         $salesOrderAddressEntity->setCellPhone('123456789');
         $salesOrderAddressEntity->setCity('City');
@@ -84,7 +84,7 @@ class ProductOptionFacadeAggregatorTest extends Test
         $salesOrderAddressEntity->setLastName('LastName');
         $salesOrderAddressEntity->setFkCountry(1);
         $salesOrderAddressEntity->setEmail('Email');
-        $salesOrderAddressEntity->setZipCode(12345);
+        $salesOrderAddressEntity->setZipCode('12345');
         $salesOrderAddressEntity->save();
 
         return $salesOrderAddressEntity;
@@ -165,7 +165,7 @@ class ProductOptionFacadeAggregatorTest extends Test
         $salesOrderItemEntity->setQuantity(2);
         $salesOrderItemEntity->setSku('sku-123-321');
         $salesOrderItemEntity->setName('name-of-order-item');
-        $salesOrderItemEntity->setTaxRate(19);
+        $salesOrderItemEntity->setTaxRate('19');
         $salesOrderItemEntity->setLastStateChange(new DateTime());
         $salesOrderItemEntity->save();
 
@@ -184,7 +184,7 @@ class ProductOptionFacadeAggregatorTest extends Test
         $salesOrderItemOptionEntity->setGrossPrice(100);
         $salesOrderItemOptionEntity->setGroupName('group');
         $salesOrderItemOptionEntity->setValue('value');
-        $salesOrderItemOptionEntity->setTaxRate(19);
+        $salesOrderItemOptionEntity->setTaxRate('19');
         $salesOrderItemOptionEntity->setSku('123');
         $salesOrderItemOptionEntity->save();
 
@@ -229,6 +229,7 @@ class ProductOptionFacadeAggregatorTest extends Test
         $itemTransfer->addProductOption($productOptionTransfer);
 
         $orderTransfer->addItem($itemTransfer);
+
         return $orderTransfer;
     }
 }
