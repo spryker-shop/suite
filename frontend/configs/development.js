@@ -144,9 +144,24 @@ async function getConfiguration() {
 
             new MiniCssExtractPlugin({
                 filename: `./css/${appSettings.name}.[name].css`,
+            }),
+
+            (compiler) => compiler.hooks.done.tap('webpack', compilationParams => {
+                if (process.env.npm_lifecycle_event === 'yves:watch') {
+                    return;
+                }
+
+                const { errors } = compilationParams.compilation;
+
+                if (!errors || errors.length === 0) {
+                    return;
+                }
+
+                errors.forEach(error => console.log(error.message));
+                process.exit(1);
             })
         ]
-    }
+    };
 
     return config;
 }
