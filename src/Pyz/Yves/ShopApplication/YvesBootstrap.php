@@ -18,7 +18,6 @@ use Spryker\Shared\Application\ServiceProvider\FormFactoryServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\HeadersSecurityServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\RoutingServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\UrlGeneratorServiceProvider;
-use Spryker\Shared\Config\Environment;
 use Spryker\Yves\Application\Plugin\Provider\CookieServiceProvider;
 use Spryker\Yves\Application\Plugin\Provider\YvesHstsServiceProvider;
 use Spryker\Yves\Application\Plugin\ServiceProvider\AssertUrlConfigurationServiceProvider;
@@ -89,7 +88,7 @@ class YvesBootstrap extends SprykerYvesBootstrap
      */
     protected function registerServiceProviders()
     {
-        if (Environment::isDevelopment()) {
+        if ($this->config->isYvesHostUrlValidationEnabled()) {
             $this->application->register(new AssertUrlConfigurationServiceProvider());
         }
 

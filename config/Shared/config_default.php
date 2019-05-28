@@ -1,11 +1,13 @@
 <?php
 
 use Monolog\Logger;
+use Pyz\Shared\Application\ApplicationConstants;
+use Pyz\Shared\Console\ConsoleConstants;
 use Spryker\Client\RabbitMq\Model\RabbitMqAdapter;
 use Spryker\Glue\Log\Plugin\GlueLoggerConfigPlugin;
 use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBuilderPlugin;
 use Spryker\Shared\Acl\AclConstants;
-use Spryker\Shared\Application\ApplicationConstants;
+use Spryker\Shared\Api\ApiConstants;
 use Spryker\Shared\Auth\AuthConstants;
 use Spryker\Shared\CmsGui\CmsGuiConstants;
 use Spryker\Shared\Collector\CollectorConstants;
@@ -38,6 +40,7 @@ use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\SequenceNumber\SequenceNumberConstants;
 use Spryker\Shared\Session\SessionConfig;
 use Spryker\Shared\Session\SessionConstants;
+use Spryker\Shared\Setup\SetupConstants;
 use Spryker\Shared\Storage\StorageConstants;
 use Spryker\Shared\Tax\TaxConstants;
 use Spryker\Shared\Translator\TranslatorConstants;
@@ -51,6 +54,9 @@ use Spryker\Zed\Log\Communication\Plugin\ZedLoggerConfigPlugin;
 use Spryker\Zed\Oms\OmsConfig;
 use Spryker\Zed\Propel\PropelConfig;
 use SprykerEco\Shared\Loggly\LogglyConstants;
+use SprykerShop\Shared\CalculationPage\CalculationPageConstants;
+use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
+use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
 use Twig\Cache\FilesystemCache;
 
 $CURRENT_STORE = Store::getInstance()->getStoreName();
@@ -456,3 +462,30 @@ $config[TranslatorConstants::TRANSLATION_ZED_CACHE_DIRECTORY] = sprintf(
 $config[TranslatorConstants::TRANSLATION_ZED_FILE_PATH_PATTERNS] = [
     APPLICATION_ROOT_DIR . '/data/translation/Zed/*/[a-z][a-z]_[A-Z][A-Z].csv',
 ];
+
+// ----------- Api
+$config[ApiConstants::ENABLE_API_DEBUG] = false;
+
+// ----------- Application
+$config[ApplicationConstants::ENABLE_APPLICATION_SERVICE_DEBUG] = false;
+$config[ApplicationConstants::ENABLE_ZED_HOST_URL_VALIDATION] = false;
+$config[ApplicationConstants::ENABLE_API_APPLICATION_SERVICE_DEBUG] = false;
+
+// ----------- Kernel test
+$config[KernelConstants::ADJUST_TEST_NAMESPACE] = false;
+
+// ----------- Setup
+$config[SetupConstants::ENABLE_SCHEDULER] = true;
+$config[SetupConstants::ENABLE_DEPLOY_VARS] = true;
+
+// ----------- Calculation page
+$config[CalculationPageConstants::ENABLE_CART_DEBUG] = false;
+
+// ----------- Error page
+$config[ErrorPageConstants::ENABLE_ERROR404_STACK_TRACE] = false;
+
+// ----------- Shop application
+$config[ShopApplicationConstants::ENABLE_YVES_HOST_URL_VALIDATION] = false;
+
+// ------------ Console
+$config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = false;

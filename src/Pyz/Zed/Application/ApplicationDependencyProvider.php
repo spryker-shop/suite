@@ -11,7 +11,6 @@ use Silex\Provider\HttpFragmentServiceProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\SessionServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\FormFactoryServiceProvider;
-use Spryker\Shared\Config\Environment;
 use Spryker\Shared\ErrorHandler\Plugin\ServiceProvider\WhoopsErrorHandlerServiceProvider;
 use Spryker\Zed\Acl\Communication\Plugin\Bootstrap\AclBootstrapProvider;
 use Spryker\Zed\Api\Communication\Plugin\ApiServiceProviderPlugin;
@@ -43,6 +42,9 @@ use Spryker\Zed\Twig\Communication\Plugin\Application\TwigApplicationPlugin;
 use Spryker\Zed\WebProfiler\Communication\Plugin\ServiceProvider\WebProfilerServiceProvider;
 use Spryker\Zed\ZedRequest\Communication\Plugin\GatewayServiceProviderPlugin;
 
+/**
+ * @method \Pyz\Zed\Application\ApplicationConfig getConfig()
+ */
 class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
 {
     /**
@@ -76,7 +78,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new SaveSessionServiceProvider(),
         ];
 
-        if (Environment::isDevelopment()) {
+        if ($this->getConfig()->isZedHostUrlValidationEnabled()) {
             array_unshift($providers, new AssertUrlConfigurationServiceProvider());
         }
 
@@ -104,7 +106,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new EventBehaviorServiceProvider(),
         ];
 
-        if (Environment::isDevelopment()) {
+        if ($this->getConfig()->isApiApplicationServiceDebugEnabled()) {
             $providers[] = new WhoopsErrorHandlerServiceProvider();
         }
 
