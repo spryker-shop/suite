@@ -7,11 +7,11 @@
 } %}
 
 {% block body %}
-    {%  set attributes = {
+    {% set attributes = {
         'target-image-selector': '.js-product-color-group__image-' ~ data.idProductAbstract ~ ' > img',
     } %}
 
-    {% if  data.wrapper is not null %}
+    {% if data.wrapper is not null %}
         {% set attributes = attributes|merge({'target-parent-wrapper-selector': data.wrapper}) %}
     {% endif %}
 
