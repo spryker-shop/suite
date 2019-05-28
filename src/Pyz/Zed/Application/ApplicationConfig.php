@@ -20,7 +20,7 @@ class ApplicationConfig extends SprykerApplicationConfig
         return $this->get(ApplicationConstants::ENABLE_ZED_HOST_URL_VALIDATION, APPLICATION_ENV === 'development');
     }
 
-    /*
+    /**
      * @return bool
      */
     public function isApiApplicationServiceDebugEnabled(): bool
