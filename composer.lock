@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c5a46ae14d203345042ea40dfd4c11b5",
+    "content-hash": "8912d85385220f5259d1a6a6f899c17d",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -24407,6 +24407,48 @@
             "time": "2019-04-15T16:05:45+00:00"
         },
         {
+            "name": "spryker/product-merchant-connector",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-merchant-connector.git",
+                "reference": "1e70cc4fe8d87d3cc509da71d425956e2ee195f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-merchant-connector/zipball/1e70cc4fe8d87d3cc509da71d425956e2ee195f3",
+                "reference": "1e70cc4fe8d87d3cc509da71d425956e2ee195f3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.33.0",
+                "spryker/merchant": "^1.0.0",
+                "spryker/product": "^6.10.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductMerchantConnector module",
+            "time": "2019-05-28T06:44:04+00:00"
+        },
+        {
             "name": "spryker/product-new",
             "version": "1.1.4",
             "source": {
@@ -27572,6 +27614,47 @@
             ],
             "description": "SalesExtension module",
             "time": "2018-06-18T17:01:18+00:00"
+        },
+        {
+            "name": "spryker/sales-merchant-connector",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/sales-merchant-connector.git",
+                "reference": "e52fdc24133a055ae633af30f8ed0a23e12dab88"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/sales-merchant-connector/zipball/e52fdc24133a055ae633af30f8ed0a23e12dab88",
+                "reference": "e52fdc24133a055ae633af30f8ed0a23e12dab88",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.33.0",
+                "spryker/sales-extension": "^1.2.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SalesMerchantConnector module",
+            "time": "2019-05-28T06:47:38+00:00"
         },
         {
             "name": "spryker/sales-order-threshold",
