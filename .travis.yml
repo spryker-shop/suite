@@ -28,26 +28,31 @@ matrix:
   include:
 
     - php: "7.3"
+      dist: trusty
       env:
         - VALIDATION=1
 
     - php: "7.3"
+      dist: trusty
       env:
         - TEST_GROUP=acceptance
         - ON_EVENTS=push,cron
 
     - php: "7.3"
+      dist: trusty
       env:
         - TEST_GROUP=without-acceptance
         - ON_EVENTS=cron,push
 
     - php: "7.1"
+      dist: trusty
       env:
         - TEST_GROUP=acceptance
         - ON_EVENTS=push,cron
         - DB=mysql
 
     - php: "7.1"
+      dist: trusty
       env:
         - TEST_GROUP=without-acceptance
         - ON_EVENTS=cron,push

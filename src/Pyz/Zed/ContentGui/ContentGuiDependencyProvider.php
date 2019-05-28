@@ -14,6 +14,7 @@ use Spryker\Zed\ContentFileGui\Communication\Plugin\ContentGui\FileListFormPlugi
 use Spryker\Zed\ContentGui\ContentGuiDependencyProvider as SprykerContentGuiDependencyProvider;
 use Spryker\Zed\ContentProductGui\Communication\Plugin\ContentGui\ContentProductContentGuiEditorPlugin;
 use Spryker\Zed\ContentProductGui\Communication\Plugin\ContentGui\ProductAbstractListFormPlugin;
+use Spryker\Zed\ContentProductSetGui\Communication\Plugin\ContentGui\ProductSetFormPlugin;
 
 class ContentGuiDependencyProvider extends SprykerContentGuiDependencyProvider
 {
@@ -25,6 +26,7 @@ class ContentGuiDependencyProvider extends SprykerContentGuiDependencyProvider
         return [
             new ContentBannerFormPlugin(),
             new ProductAbstractListFormPlugin(),
+            new ProductSetFormPlugin(),
             new FileListFormPlugin(),
         ];
     }
