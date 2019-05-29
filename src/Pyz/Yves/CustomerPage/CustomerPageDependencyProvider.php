@@ -11,8 +11,8 @@ use SprykerShop\Yves\AgentPage\Plugin\FixAgentTokenAfterCustomerAuthenticationSu
 use SprykerShop\Yves\CompanyPage\Plugin\CustomerPage\BusinessOnBehalfCompanyUserRedirectAfterLoginStrategyPlugin;
 use SprykerShop\Yves\CompanyUserInvitationPage\Plugin\CompanyUserInvitationPreRegistrationCustomerTransferExpanderPlugin;
 use SprykerShop\Yves\CustomerPage\CustomerPageDependencyProvider as SprykerShopCustomerPageDependencyProvider;
+use SprykerShop\Yves\CustomerPage\Plugin\CustomerPage\RedirectUrlRedirectAfterLoginStrategyPlugin;
 use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderWidgetPlugin;
-use SprykerShop\Yves\ResourceSharePage\Plugin\CustomerPage\ResourceSharePageRedirectAfterLoginStrategyPlugin;
 
 class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyProvider
 {
@@ -62,7 +62,7 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     protected function getAfterLoginCustomerRedirectPlugins(): array
     {
         return [
-            new ResourceSharePageRedirectAfterLoginStrategyPlugin(), #UniqueUrlFeature
+            new RedirectUrlRedirectAfterLoginStrategyPlugin(),
             new BusinessOnBehalfCompanyUserRedirectAfterLoginStrategyPlugin(), #BusinessOnBehalfFeature
         ];
     }
