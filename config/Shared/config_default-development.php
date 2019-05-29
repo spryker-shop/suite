@@ -136,7 +136,6 @@ $config[ApiConstants::ENABLE_API_DEBUG] = true;
 // ---------- Application
 $config[ApplicationConstants::ENABLE_APPLICATION_SERVICE_DEBUG] = true;
 $config[ApplicationConstants::ENABLE_ZED_HOST_URL_VALIDATION] = true;
-$config[ApplicationConstants::ENABLE_ZED_HOST_URL_VALIDATION] = true;
 $config[ApplicationConstants::ENABLE_API_APPLICATION_SERVICE_DEBUG] = true;
 
 // ---------- Setup
