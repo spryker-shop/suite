@@ -85,12 +85,12 @@ use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\PriceModeParameterV
 use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\SetCurrencyBeforeActionPlugin;
 use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\SetPriceModeBeforeActionPlugin;
 use Spryker\Glue\ProductsCategoriesResourceRelationship\Plugin\AbstractProductsCategoriesResourceRelationshipPlugin;
-use Spryker\Glue\ProductsProductTaxSetsResourceRelationship\Plugin\ProductsProductTaxSetsResourceRelationshipPlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\AbstractProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\ConcreteProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\GlueApplication\ConcreteProductBySkuResourceRelationshipPlugin;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
-use Spryker\Glue\ProductTaxSetsRestApi\Plugin\ProductTaxSetsResourceRoutePlugin;
+use Spryker\Glue\ProductTaxSetsRestApi\Plugin\GlueApplication\ProductTaxSetByProductAbstractSkuResourceRelationshipPlugin;
+use Spryker\Glue\ProductTaxSetsRestApi\Plugin\GlueApplication\ProductTaxSetsResourceRoutePlugin;
 use Spryker\Glue\RelatedProductsRestApi\Plugin\GlueApplication\RelatedProductsResourceRoutePlugin;
 use Spryker\Glue\RestRequestValidator\Plugin\ValidateRestRequestAttributesPlugin;
 use Spryker\Glue\SharedCartsRestApi\Plugin\GlueApplication\SharedCartsResourceRoutePlugin;
@@ -282,7 +282,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         );
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
-            new ProductsProductTaxSetsResourceRelationshipPlugin()
+            new ProductTaxSetByProductAbstractSkuResourceRelationshipPlugin()
         );
         $resourceRelationshipCollection->addRelationship(
             CustomersRestApiConfig::RESOURCE_CUSTOMERS,
