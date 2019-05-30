@@ -122,8 +122,8 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
      */
     protected function getSortOrder(DataSetInterface $dataSet): int
     {
-        if (isset($dataSet[static::KEY_SORT_ORDER]) && $dataSet[static::KEY_SORT_ORDER] > 0) {
-            return $dataSet[static::KEY_SORT_ORDER];
+        if (isset($dataSet[static::KEY_SORT_ORDER]) && $dataSet[static::KEY_SORT_ORDER] >= 0) {
+            return (int)$dataSet[static::KEY_SORT_ORDER];
         }
 
         return static::IMAGE_TO_IMAGE_SET_RELATION_ORDER;
