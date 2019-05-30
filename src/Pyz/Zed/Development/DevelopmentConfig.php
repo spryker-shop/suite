@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Development;
 
+use Spryker\Shared\Development\DevelopmentConstants;
 use Spryker\Zed\Development\DevelopmentConfig as SprykerDevelopmentConfig;
 
 class DevelopmentConfig extends SprykerDevelopmentConfig
@@ -95,5 +96,16 @@ class DevelopmentConfig extends SprykerDevelopmentConfig
         $sprykerNamespacePath = $pathToSprykerRoot ? [static::NAMESPACE_SPRYKER => $pathToSprykerRoot] : [];
 
         return $sprykerNamespacePath + static::INTERNAL_NAMESPACES_TO_PATH_MAPPING + parent::INTERNAL_NAMESPACES_TO_PATH_MAPPING;
+    }
+
+    /**
+     * @return array
+     */
+    public function getCodeceptionConfigurationFiles(): array
+    {
+        return [
+            DevelopmentConstants::TYPE_TEST_ACCEPTANCE => 'codeception.acceptance.yml',
+            DevelopmentConstants::TYPE_TEST_FUNCTIONAL => 'codeception.functional.yml',
+        ];
     }
 }
