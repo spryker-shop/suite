@@ -110,10 +110,22 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
     protected function importImageToImageSetRelation(DataSetInterface $dataSet): void
     {
         $imageToImageSetRelationEntityTransfer = new SpyProductImageSetToProductImageEntityTransfer();
-        $imageToImageSetRelationEntityTransfer->setSortOrder(
-            $dataSet[static::KEY_SORT_ORDER] ?? static::IMAGE_TO_IMAGE_SET_RELATION_ORDER
-        );
+        $imageToImageSetRelationEntityTransfer->setSortOrder($this->getSortOrder($dataSet));
 
         $dataSet[static::DATA_PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER] = $imageToImageSetRelationEntityTransfer;
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return int
+     */
+    protected function getSortOrder(DataSetInterface $dataSet): int
+    {
+        if (isset($dataSet[static::KEY_SORT_ORDER]) && $dataSet[static::KEY_SORT_ORDER] > 0) {
+            return $dataSet[static::KEY_SORT_ORDER];
+        }
+
+        return static::IMAGE_TO_IMAGE_SET_RELATION_ORDER;
     }
 }
