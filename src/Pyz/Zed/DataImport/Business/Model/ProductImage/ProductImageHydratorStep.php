@@ -110,7 +110,9 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
     protected function importImageToImageSetRelation(DataSetInterface $dataSet): void
     {
         $imageToImageSetRelationEntityTransfer = new SpyProductImageSetToProductImageEntityTransfer();
-        $imageToImageSetRelationEntityTransfer->setSortOrder(static::IMAGE_TO_IMAGE_SET_RELATION_ORDER);
+        $imageToImageSetRelationEntityTransfer->setSortOrder(
+            $dataSet[static::KEY_SORT_ORDER] ?? static::IMAGE_TO_IMAGE_SET_RELATION_ORDER
+        );
 
         $dataSet[static::DATA_PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER] = $imageToImageSetRelationEntityTransfer;
     }
