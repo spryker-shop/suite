@@ -16,11 +16,20 @@ class ResourceShareDependencyProvider extends SprykerResourceShareDependencyProv
     /**
      * @return \Spryker\Client\ResourceShareExtension\Dependency\Plugin\ResourceShareActivatorStrategyPluginInterface[]
      */
-    protected function getResourceShareActivatorStrategyPlugins(): array
+    protected function getAfterZedResourceShareActivatorStrategyPlugins(): array
     {
         return [
             new SwitchDefaultCartResourceShareActivatorStrategyPlugin(),
             new QuoteFallbackActivatorStrategyPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Client\ResourceShareExtension\Dependency\Plugin\ResourceShareActivatorStrategyPluginInterface[]
+     */
+    protected function getBeforeZedResourceShareActivatorStrategyPlugins(): array
+    {
+        return [
         ];
     }
 }
