@@ -10,8 +10,8 @@ namespace Pyz\Zed\CmsGui;
 use Spryker\Zed\CmsGui\CmsGuiDependencyProvider as SprykerCmsGuiDependencyProvider;
 use Spryker\Zed\CmsGui\Communication\Plugin\CmsPageTableExpanderPlugin;
 use Spryker\Zed\CmsGui\Communication\Plugin\CreateGlossaryExpanderPlugin;
-use Spryker\Zed\ContentGui\Communication\Plugin\CmsGui\HtmlToShortCodeCmsGlossaryBeforeSavePlugin;
-use Spryker\Zed\ContentGui\Communication\Plugin\CmsGui\ShortCodeToHtmlCmsGlossaryAfterFindPlugin;
+use Spryker\Zed\ContentGui\Communication\Plugin\CmsGui\HtmlToTwigExpressionCmsGlossaryBeforeSavePlugin;
+use Spryker\Zed\ContentGui\Communication\Plugin\CmsGui\TwigExpressionToHtmlCmsGlossaryAfterFindPlugin;
 use Spryker\Zed\Kernel\Communication\Form\FormTypeInterface;
 use Spryker\Zed\Store\Communication\Plugin\Form\StoreRelationToggleFormTypePlugin;
 
@@ -51,7 +51,7 @@ class CmsGuiDependencyProvider extends SprykerCmsGuiDependencyProvider
     protected function getCmsGlossaryAfterFindPlugins(): array
     {
         return [
-            new ShortCodeToHtmlCmsGlossaryAfterFindPlugin(),
+            new TwigExpressionToHtmlCmsGlossaryAfterFindPlugin(),
         ];
     }
 
@@ -61,7 +61,7 @@ class CmsGuiDependencyProvider extends SprykerCmsGuiDependencyProvider
     protected function getCmsGlossaryBeforeSavePlugins(): array
     {
         return [
-            new HtmlToShortCodeCmsGlossaryBeforeSavePlugin(),
+            new HtmlToTwigExpressionCmsGlossaryBeforeSavePlugin(),
         ];
     }
 }
