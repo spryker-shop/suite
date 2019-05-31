@@ -19,7 +19,7 @@ class ResourceShareDependencyProvider extends SprykerResourceShareDependencyProv
     protected function getBeforeZedResourceShareActivatorStrategyPlugins(): array
     {
         return [
-            new InternalShareIsLoginRequiredResourceShareActivatorStrategyPlugin(),
+            new InternalShareIsLoginRequiredResourceShareClientActivatorStrategyPlugin(),
         ];
     }
 
@@ -29,7 +29,7 @@ class ResourceShareDependencyProvider extends SprykerResourceShareDependencyProv
     protected function getAfterZedResourceShareActivatorStrategyPlugins(): array
     {
         return [
-            new SwitchDefaultCartResourceShareActivatorStrategyPlugin(),
+            new SwitchDefaultCartResourceShareClientActivatorStrategyPlugin(),
         ];
     }
 }
