@@ -13,7 +13,7 @@ use Spryker\Zed\SharedCart\Communication\Plugin\ResourceShare\SharedCartByUuidAc
 class ResourceShareDependencyProvider extends SprykerResourceShareDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\ResourceShareExtension\Dependency\Plugin\ResourceShareActivatorStrategyPluginInterface[]
+     * @return \Spryker\Zed\ResourceShareExtension\Dependency\Plugin\ResourceShareZedActivatorStrategyPluginInterface[]
      */
     protected function getResourceShareActivatorStrategyPlugins(): array
     {
