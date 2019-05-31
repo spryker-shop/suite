@@ -11891,16 +11891,16 @@
         },
         {
             "name": "spryker/company-business-unit",
-            "version": "2.10.0",
+            "version": "2.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/company-business-unit.git",
-                "reference": "582af4a3625e580f143ed20762c13acf4aa798f6"
+                "reference": "ff63c55da069d19b6317380e0b9390e56543b568"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/company-business-unit/zipball/582af4a3625e580f143ed20762c13acf4aa798f6",
-                "reference": "582af4a3625e580f143ed20762c13acf4aa798f6",
+                "url": "https://api.github.com/repos/spryker/company-business-unit/zipball/ff63c55da069d19b6317380e0b9390e56543b568",
+                "reference": "ff63c55da069d19b6317380e0b9390e56543b568",
                 "shasum": ""
             },
             "require": {
@@ -11908,7 +11908,9 @@
                 "spryker/company": "^1.0.0",
                 "spryker/company-business-unit-extension": "^1.2.0",
                 "spryker/company-extension": "^1.0.0",
+                "spryker/company-user": "^1.0.0 || ^2.0.0",
                 "spryker/company-user-extension": "^1.2.0",
+                "spryker/customer": "^7.0.0",
                 "spryker/kernel": "^3.0.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/zed-request": "^3.0.0"
@@ -11917,9 +11919,6 @@
                 "spryker/code-sniffer": "*",
                 "spryker/propel": "*",
                 "spryker/testify": "*"
-            },
-            "suggest": {
-                "spryker/company-user": "If you want to have company users management functionality: ^2.0.0"
             },
             "type": "library",
             "extra": {
@@ -11938,7 +11937,7 @@
                 "proprietary"
             ],
             "description": "CompanyBusinessUnit module",
-            "time": "2019-05-06T14:36:01+00:00"
+            "time": "2019-05-31T10:53:43+00:00"
         },
         {
             "name": "spryker/company-business-unit-addresses-rest-api",
@@ -26990,16 +26989,16 @@
         },
         {
             "name": "spryker/quote-request",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/quote-request.git",
-                "reference": "bb37d1119d9dc602e6283fa24273a56be5b6f4c8"
+                "reference": "713cff9e6f84f0116975dc0abdff526a5f07e1da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/quote-request/zipball/bb37d1119d9dc602e6283fa24273a56be5b6f4c8",
-                "reference": "bb37d1119d9dc602e6283fa24273a56be5b6f4c8",
+                "url": "https://api.github.com/repos/spryker/quote-request/zipball/713cff9e6f84f0116975dc0abdff526a5f07e1da",
+                "reference": "713cff9e6f84f0116975dc0abdff526a5f07e1da",
                 "shasum": ""
             },
             "require": {
@@ -27008,7 +27007,9 @@
                 "spryker/cart": "^5.9.0",
                 "spryker/cart-extension": "^2.4.0",
                 "spryker/checkout-extension": "^1.2.0",
-                "spryker/company-user": "^2.0.0",
+                "spryker/company": "^1.0.0",
+                "spryker/company-user": "^1.0.0 || ^2.0.0",
+                "spryker/customer": "^7.0.0",
                 "spryker/kernel": "^3.17.0",
                 "spryker/persistent-cart": "^1.8.0",
                 "spryker/propel-orm": "^1.0.0",
@@ -27024,9 +27025,7 @@
             "require-dev": {
                 "spryker/checkout": "*",
                 "spryker/code-sniffer": "*",
-                "spryker/company": "*",
                 "spryker/company-business-unit": "*",
-                "spryker/customer": "*",
                 "spryker/propel": "*",
                 "spryker/testify": "*"
             },
@@ -27052,7 +27051,7 @@
                 "proprietary"
             ],
             "description": "QuoteRequest module",
-            "time": "2019-05-20T10:47:51+00:00"
+            "time": "2019-05-31T10:53:43+00:00"
         },
         {
             "name": "spryker/quote-request-agent",
@@ -32695,7 +32694,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "backendtea@gmail.com"
+                    "email": "BackEndTea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
@@ -35247,7 +35246,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
+            "description": "? Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
