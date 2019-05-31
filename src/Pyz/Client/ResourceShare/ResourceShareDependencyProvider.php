@@ -7,8 +7,8 @@
 
 namespace Pyz\Client\ResourceShare;
 
-use Spryker\Client\PersistentCartShare\Plugin\ResourceShare\QuoteFallbackActivatorStrategyPlugin;
 use Spryker\Client\ResourceShare\ResourceShareDependencyProvider as SprykerResourceShareDependencyProvider;
+use Spryker\Client\SharedCart\Plugin\ResourceShare\InternalShareIsLoginRequiredResourceShareActivatorStrategyPlugin;
 use Spryker\Client\SharedCart\Plugin\ResourceShare\SwitchDefaultCartResourceShareActivatorStrategyPlugin;
 
 class ResourceShareDependencyProvider extends SprykerResourceShareDependencyProvider
@@ -16,20 +16,20 @@ class ResourceShareDependencyProvider extends SprykerResourceShareDependencyProv
     /**
      * @return \Spryker\Client\ResourceShareExtension\Dependency\Plugin\ResourceShareActivatorStrategyPluginInterface[]
      */
-    protected function getAfterZedResourceShareActivatorStrategyPlugins(): array
+    protected function getBeforeZedResourceShareActivatorStrategyPlugins(): array
     {
         return [
-            new SwitchDefaultCartResourceShareActivatorStrategyPlugin(),
-            new QuoteFallbackActivatorStrategyPlugin(),
+            new InternalShareIsLoginRequiredResourceShareActivatorStrategyPlugin(),
         ];
     }
 
     /**
      * @return \Spryker\Client\ResourceShareExtension\Dependency\Plugin\ResourceShareActivatorStrategyPluginInterface[]
      */
-    protected function getBeforeZedResourceShareActivatorStrategyPlugins(): array
+    protected function getAfterZedResourceShareActivatorStrategyPlugins(): array
     {
         return [
+            new SwitchDefaultCartResourceShareActivatorStrategyPlugin(),
         ];
     }
 }

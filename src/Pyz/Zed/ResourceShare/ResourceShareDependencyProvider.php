@@ -7,9 +7,6 @@
 
 namespace Pyz\Zed\ResourceShare;
 
-use Spryker\Zed\PersistentCartShare\Communication\Plugin\ResourceShare\CartPreviewActivatorStrategyPlugin;
-use Spryker\Zed\PersistentCartShare\Communication\Plugin\ResourceShare\CustomerQuoteFallbackActivatorStrategyPlugin;
-use Spryker\Zed\PersistentCartShare\Communication\Plugin\ResourceShare\GuestQuoteFallbackActivatorStrategyPlugin;
 use Spryker\Zed\ResourceShare\ResourceShareDependencyProvider as SprykerResourceShareDependencyProvider;
 use Spryker\Zed\SharedCart\Communication\Plugin\ResourceShare\SharedCartByUuidActivatorStrategyPlugin;
 
@@ -21,10 +18,7 @@ class ResourceShareDependencyProvider extends SprykerResourceShareDependencyProv
     protected function getResourceShareActivatorStrategyPlugins(): array
     {
         return [
-            new CartPreviewActivatorStrategyPlugin(),
             new SharedCartByUuidActivatorStrategyPlugin(),
-            new CustomerQuoteFallbackActivatorStrategyPlugin(),
-            new GuestQuoteFallbackActivatorStrategyPlugin(),
         ];
     }
 
