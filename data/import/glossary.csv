@@ -1141,9 +1141,11 @@ price.mode.net_mode,Net prices,en_US
 price.mode.net_mode,Nettopreise,de_DE
 price_product.error.price_not_found,Product price not found.,en_US
 price_product.error.price_not_found,Produktpreis nicht gefunden.,de_DE
-cart.pre.check.price.failed,Price in selected currency not found for product with sku '%sku%'. Please change the currency or remove product from order.,en_US
-cart.pre.check.price.failed,Der Preis in der ausgewählten Währung wurde für das Produkt mit sku '%sku%' nicht gefunden. Bitte ändern Sie die Währung oder entfernen Sie das Produkt aus der Bestellung.,de_DE
-price.mode.switch.error,Can't switch price mode when there are items in the cart.,en_US
+cart.pre.check.min_price.failed,"You can not add to the cart products with a price less than %price% %currencyIsoCode%.",en_US
+cart.pre.check.min_price.failed,"Du kannst keine Produkte mit einem kleineren Preis als %price% %currencyIsoCode% zum Warenkorb hinzufügen.",de_DE
+cart.pre.check.price.failed,"Price in selected currency not found for product with sku '%sku%'. Please change the currency or remove product from order.",en_US
+cart.pre.check.price.failed,"Der Preis in der ausgewählten Währung wurde für das Produkt mit sku '%sku%' nicht gefunden. Bitte ändern Sie die Währung oder entfernen Sie das Produkt aus der Bestellung.",de_DE
+price.mode.switch.error,"Can't switch price mode when there are items in the cart.",en_US
 price.mode.switch.error,"Preismodus kann nicht geändert werden, wenn sich Artikel im Warenkorb befinden.",de_DE
 price-cart-connector.info.concrete-product-without-price.removed,Item %sku% without price was removed from your shopping cart.,en_US
 price-cart-connector.info.concrete-product-without-price.removed,Artikel% sku% ohne Preis wurde aus Ihrem Einkaufswagen entfernt.,de_DE
@@ -2571,8 +2573,8 @@ quote_request_page.quote_request.labels.status,Status,en_US
 quote_request_page.quote_request.labels.status,Status,de_DE
 quote_request_page.quote_request.labels.valid_till,Valid Till,en_US
 quote_request_page.quote_request.labels.valid_till,Gültig bis,de_DE
-quote_request_page.quote_request.labels.hide_latest_version,Hide latest version from customer,en_US
-quote_request_page.quote_request.labels.hide_latest_version,Die letzte Version vom Kunden verstecken,de_DE
+quote_request_page.quote_request.labels.show_latest_version,Show latest version to customer,en_US
+quote_request_page.quote_request.labels.show_latest_version,Die aktuelle Version dem Kunden anzeigen,de_DE
 quote_request_page.quote_request.labels.latest_version_is_hidden,The latest version is hidden from the customer,en_US
 quote_request_page.quote_request.labels.latest_version_is_hidden,Die letzte Version ist dem Kunden verborgen,de_DE
 quote_request_page.quote_request.labels.latest_version_is_visible,The latest version is visible to the customer,en_US
@@ -2707,7 +2709,7 @@ general.next.button,Next,en_US
 general.next.button,Weiter,de_DE
 checkout.giftcard.label,Gift card,en_US
 checkout.giftcard.label,Geschenkgutschein,de_DE
-roduct.attribute.value,Value,en_US
+product.attribute.value,Value,en_US
 product.attribute.value,Der Wert,de_DE
 mail.giftCard.delivery.subject,Your Gift card!,en_US
 mail.giftCard.delivery.subject,Deine Geschenkkarte!,de_DE
@@ -2717,3 +2719,7 @@ mail.giftCard.usage.subject,Thank you for using a Gift Card!,en_US
 mail.giftCard.usage.subject,Vielen Dank dass Sie ein Geschenkgutschein benutzt haben.,de_DE
 cart.code.enter-code,Gutscheincode/Geschenkgutscheincode eingeben,de_DE
 cart.code.enter-code,Enter voucher/gift card code,en_US
+customer_page.error.customer_already_logged_in,Customer already logged in.,en_US
+customer_page.error.customer_already_logged_in,Der Kunde ist bereits eingeloggt.,de_DE
+customer_page.error.invalid_access_token,Invalid access token.,en_US
+customer_page.error.invalid_access_token,Ungültiges Zugriffstoken.,de_DE
