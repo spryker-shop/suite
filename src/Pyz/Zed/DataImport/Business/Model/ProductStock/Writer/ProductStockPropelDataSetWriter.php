@@ -331,7 +331,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
         $reservationQuantity = 0;
 
         foreach ($reservations as $reservation) {
-            $reservationQuantity += $reservation[SpyOmsProductReservationTableMap::COL_RESERVATION_QUANTITY];
+            $reservationQuantity += $reservation;
         }
 
         $reservationQuantity += $this->getReservationsFromOtherStores($sku, $storeTransfer);
