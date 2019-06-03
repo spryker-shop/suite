@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * This file is part of the Spryker Suite.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
+namespace Pyz\Zed\OauthPermission;
+
+use Spryker\Zed\OauthPermission\OauthPermissionConfig as SprykerOauthPermissionConfig;
+
+class OauthPermissionConfig extends SprykerOauthPermissionConfig
+{
+    /**
+     * @return array
+     */
+    public function getOauthUserIdentifierFilterKeys(): array
+    {
+        return [
+            'permission',
+        ];
+    }
+}
