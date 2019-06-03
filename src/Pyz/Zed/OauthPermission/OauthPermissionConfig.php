@@ -17,7 +17,7 @@ class OauthPermissionConfig extends SprykerOauthPermissionConfig
     public function getOauthUserIdentifierFilterKeys(): array
     {
         return [
-            'permission',
+            'permissions',
         ];
     }
 }
