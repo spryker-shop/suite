@@ -12,8 +12,11 @@ parameters:
         - '#Call to an undefined method .+Criteria::.+\(\).#'
         - '#Call to an undefined method .+DataSetStepBrokerAwareInterface::setDataSetWriter\(\).#'
         - '#Call to an undefined method .+DataSetStepBrokerAwareInterface::addAfterImportHook\(\).#'
-        - "#Strict comparison using === between '' and 'development' will always evaluate to false.#"
-        - "#Strict comparison using === between '' and 'devtest' will always evaluate to false.#"
         - "#Result of || is always false.#"
 
     reportUnmatchedIgnoredErrors: false
+
+    dynamicConstantNames:
+        - APPLICATION
+        - APPLICATION_ENV
+        - APPLICATION_STORE
