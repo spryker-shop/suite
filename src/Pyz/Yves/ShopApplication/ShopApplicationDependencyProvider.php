@@ -22,6 +22,7 @@ use SprykerShop\Yves\CartToShoppingListWidget\Widget\CreateShoppingListFromCartW
 use SprykerShop\Yves\CategoryImageStorageWidget\Widget\CategoryImageStorageWidget;
 use SprykerShop\Yves\CheckoutWidget\Widget\CheckoutBreadcrumbWidget;
 use SprykerShop\Yves\CheckoutWidget\Widget\ProceedToCheckoutButtonWidget;
+use SprykerShop\Yves\CommentWidget\Widget\CommentThreadWidget;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CheckBusinessOnBehalfCompanyUserHandlerPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyBusinessUnitControllerRestrictionPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyUserRestrictionHandlerPlugin;
@@ -199,6 +200,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             QuoteRequestCancelWidget::class,
             QuoteRequestAgentOverviewWidget::class,
             QuoteRequestAgentCancelWidget::class,
+            CommentThreadWidget::class,
         ];
     }
 
