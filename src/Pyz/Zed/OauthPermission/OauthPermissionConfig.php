@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\OauthPermission;
 
+use Generated\Shared\Transfer\CustomerIdentifierTransfer;
 use Spryker\Zed\OauthPermission\OauthPermissionConfig as SprykerOauthPermissionConfig;
 
 class OauthPermissionConfig extends SprykerOauthPermissionConfig
@@ -17,7 +18,7 @@ class OauthPermissionConfig extends SprykerOauthPermissionConfig
     public function getOauthUserIdentifierFilterKeys(): array
     {
         return [
-            'permissions',
+            CustomerIdentifierTransfer::PERMISSIONS,
         ];
     }
 }
