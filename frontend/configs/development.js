@@ -1,19 +1,19 @@
-const path = require('path');
+const { join } = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const appSettings = require('../settings');
-const finder = require('../libs/finder');
-const alias = require('../libs/alias');
+const { findEntryPoints, findStyles } = require('../libs/finder');
+const { getAliasFromTsConfig } = require('../libs/alias');
 
-async function getConfiguration() {
-    const entriesPromise = finder.findComponentEntryPoints();
-    const stylesPromise = finder.findComponentStyles();
-    const [entries, styles] = await Promise.all([entriesPromise, stylesPromise]);
+async function getConfiguration(appSettings) {
+    const entryPointsPromise = findEntryPoints(appSettings.find.componentEntryPoints);
+    const stylesPromise = findStyles(appSettings.find.componentStyles);
+    const [entryPoints, styles] = await Promise.all([entryPointsPromise, stylesPromise]);
+    const alias = getAliasFromTsConfig(appSettings);
 
-    let config = {
+    return {
         context: appSettings.context,
         mode: 'development',
         devtool: 'inline-source-map',
@@ -28,26 +28,25 @@ async function getConfiguration() {
         },
 
         entry: {
-            'es6-polyfill': path.join(appSettings.context, appSettings.paths.project.shopUiModule, './es6-polyfill.ts'),
-            'vendor': path.join(appSettings.context, appSettings.paths.project.shopUiModule, './vendor.ts'),
+            'vendor': join(appSettings.context, appSettings.paths.project.shopUiModule, './vendor.ts'),
             'app': [
-                path.join(appSettings.context, appSettings.paths.project.shopUiModule, './app.ts'),
-                path.join(appSettings.context, appSettings.paths.project.shopUiModule, './styles/basic.scss'),
-                ...entries,
-                path.join(appSettings.context, appSettings.paths.project.shopUiModule, './styles/util.scss')
+                join(appSettings.context, appSettings.paths.project.shopUiModule, './app.ts'),
+                join(appSettings.context, appSettings.paths.project.shopUiModule, './styles/basic.scss'),
+                ...entryPoints,
+                join(appSettings.context, appSettings.paths.project.shopUiModule, './styles/util.scss')
             ]
         },
 
         output: {
-            path: path.join(appSettings.context, appSettings.paths.public),
+            path: join(appSettings.context, appSettings.paths.public),
             publicPath: `${appSettings.urls.assets}/`,
-            filename: `./js/${appSettings.name}.[name].js`,
-            jsonpFunction: `webpackJsonp_${appSettings.name}`
+            filename: `./js/[name].js`,
+            jsonpFunction: `webpackJsonp_${appSettings.name.replace(/(-|\W)+/gi, '_')}`
         },
 
         resolve: {
             extensions: ['.ts', '.js', '.json', '.css', '.scss'],
-            alias: alias.getFromTsConfig()
+            alias
         },
 
         module: {
@@ -57,7 +56,7 @@ async function getConfiguration() {
                     loader: 'ts-loader',
                     options: {
                         context: appSettings.context,
-                        configFile: path.join(appSettings.context, appSettings.paths.tsConfig),
+                        configFile: join(appSettings.context, appSettings.paths.tsConfig),
                         compilerOptions: {
                             baseUrl: appSettings.context,
                             outDir: appSettings.paths.public
@@ -88,7 +87,7 @@ async function getConfiguration() {
                             loader: 'sass-resources-loader',
                             options: {
                                 resources: [
-                                    path.join(appSettings.context, appSettings.paths.project.shopUiModule, './styles/shared.scss'),
+                                    join(appSettings.context, appSettings.paths.project.shopUiModule, './styles/shared.scss'),
                                     ...styles
                                 ]
                             }
@@ -123,19 +122,20 @@ async function getConfiguration() {
                 'images',
                 'fonts'
             ], {
-                root: path.join(appSettings.context, appSettings.paths.public),
+                root: join(appSettings.context, appSettings.paths.public),
                 verbose: true,
                 beforeEmit: true
             }),
 
             new CopyWebpackPlugin([
                 {
-                    from: `${appSettings.paths.assets}/images`,
-                    to: 'images',
+                    from: `${appSettings.paths.globalAssets}`,
+                    to: '.',
                     ignore: ['*.gitkeep']
-                }, {
-                    from: `${appSettings.paths.assets}/fonts`,
-                    to: 'fonts',
+                },
+                {
+                    from: `${appSettings.paths.assets}`,
+                    to: '.',
                     ignore: ['*.gitkeep']
                 }
             ], {
@@ -143,7 +143,7 @@ async function getConfiguration() {
             }),
 
             new MiniCssExtractPlugin({
-                filename: `./css/${appSettings.name}.[name].css`,
+                filename: `./css/[name].css`,
             }),
 
             (compiler) => compiler.hooks.done.tap('webpack', compilationParams => {
@@ -162,8 +162,6 @@ async function getConfiguration() {
             })
         ]
     };
-
-    return config;
 }
 
 module.exports = getConfiguration;

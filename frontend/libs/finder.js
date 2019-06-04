@@ -1,6 +1,5 @@
 const path = require('path');
 const glob = require('fast-glob');
-const appSettings = require('../settings');
 
 // define the default glob settings for fast-glob
 const defaultGlobSettings = {
@@ -21,8 +20,8 @@ async function globAsync(patterns, rootConfiguration) {
     }
 }
 
-async function find(globDirs, globPatterns, globSettings = {}) {
-    return await globDirs.reduce(async (resultsPromise, dir) => {
+async function find(globDirs, globPatterns, globFallbackPatterns, globSettings = {}) {
+    const customThemeFiles = await globDirs.reduce(async (resultsPromise, dir) => {
         const rootConfiguration = {
             ...defaultGlobSettings,
             ...globSettings,
@@ -34,12 +33,26 @@ async function find(globDirs, globPatterns, globSettings = {}) {
 
         return results.concat(globPath);
     }, Promise.resolve([]));
+
+    const defaultThemeFiles = await globDirs.reduce(async (resultsPromise, dir) => {
+        const rootConfiguration = {
+            ...defaultGlobSettings,
+            ...globSettings,
+            cwd: dir
+        };
+
+        const results = await resultsPromise;
+        const globPath = await globAsync(globFallbackPatterns, rootConfiguration);
+
+        return results.concat(globPath);
+    }, Promise.resolve([]));
+
+    return defaultThemeFiles.concat(customThemeFiles);
 }
 
-// find components according to `appSettings.find.componentEntryPoints`
-async function findComponentEntryPoints() {
-    const settings = appSettings.find.componentEntryPoints;
-    const files = await find(settings.dirs, settings.patterns, settings.globSettings);
+// find components entry points
+async function findEntryPoints(settings) {
+    const files = await find(settings.dirs, settings.patterns,  settings.fallbackPatterns, settings.globSettings);
 
     const entryPoints = Object.values(files.reduce((map, file) => {
         const dir = path.dirname(file);
@@ -49,20 +62,20 @@ async function findComponentEntryPoints() {
         return map;
     }, {}));
 
-    console.log(`Component entry points: ${entryPoints.length} found`);
+    console.log(`Components entry points: ${entryPoints.length}`);
+
     return entryPoints;
 }
 
-// find styles according to `appSettings.find.componentStyles`
-async function findComponentStyles() {
-    const settings = appSettings.find.componentStyles;
-    const styles = await find(settings.dirs, settings.patterns, settings.globSettings);
+// find component styles
+async function findStyles(settings) {
+    const styles = await find(settings.dirs, settings.patterns, [], settings.globSettings);
 
-    console.log(`Component styles: ${styles.length} found`);
+    console.log(`Components styles: ${styles.length}`);
     return styles;
 }
 
 module.exports = {
-    findComponentEntryPoints,
-    findComponentStyles
+    findEntryPoints,
+    findStyles
 }
