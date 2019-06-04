@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\Comment\Persistence;
 
-use Orm\Zed\Comment\Persistence\Base\SpyCommentToCommentTagQuery as BaseSpyCommentToCommentTagQuery;
+use Spryker\Zed\Comment\Persistence\Propel\AbstractSpyCommentToCommentTagQuery as BaseSpyCommentToCommentTagQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_comment_to_comment_tag' table.

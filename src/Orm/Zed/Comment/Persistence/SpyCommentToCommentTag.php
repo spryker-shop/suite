@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\Comment\Persistence;
 
-use Orm\Zed\Comment\Persistence\Base\SpyCommentToCommentTag as BaseSpyCommentToCommentTag;
+use Spryker\Zed\Comment\Persistence\Propel\AbstractSpyCommentToCommentTag as BaseSpyCommentToCommentTag;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_comment_to_comment_tag' table.
