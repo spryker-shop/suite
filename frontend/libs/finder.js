@@ -20,8 +20,8 @@ async function globAsync(patterns, rootConfiguration) {
     }
 }
 
-async function find(globDirs, globPatterns, globFallbackPatterns, globSettings = {}) {
-    const customThemeFiles = await globDirs.reduce(async (resultsPromise, dir) => {
+function findFiles(globDirs, globPatterns, globSettings) {
+    return globDirs.reduce(async (resultsPromise, dir) => {
         const rootConfiguration = {
             ...defaultGlobSettings,
             ...globSettings,
@@ -33,19 +33,15 @@ async function find(globDirs, globPatterns, globFallbackPatterns, globSettings =
 
         return results.concat(globPath);
     }, Promise.resolve([]));
+}
 
-    const defaultThemeFiles = await globDirs.reduce(async (resultsPromise, dir) => {
-        const rootConfiguration = {
-            ...defaultGlobSettings,
-            ...globSettings,
-            cwd: dir
-        };
+async function find(globDirs, globPatterns, globFallbackPatterns, globSettings = {}) {
+    const customThemeFiles = await findFiles(globDirs, globPatterns, globSettings);
+    let defaultThemeFiles = [];
 
-        const results = await resultsPromise;
-        const globPath = await globAsync(globFallbackPatterns, rootConfiguration);
-
-        return results.concat(globPath);
-    }, Promise.resolve([]));
+    if(globFallbackPatterns.length > 0) {
+        defaultThemeFiles = await findFiles(globDirs, globFallbackPatterns, globSettings);
+    }
 
     return defaultThemeFiles.concat(customThemeFiles);
 }
