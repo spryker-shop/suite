@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Glue\EntityTagRestApi;
+namespace Pyz\Glue\EntityTagsRestApi;
 
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
-use Spryker\Glue\EntityTagRestApi\EntityTagRestApiConfig as SprykerEntityTagRestApiConfig;
+use Spryker\Glue\EntityTagsRestApi\EntityTagsRestApiConfig as SprykerEntityTagsRestApiConfig;
 
-class EntityTagRestApiConfig extends SprykerEntityTagRestApiConfig
+class EntityTagsRestApiConfig extends SprykerEntityTagsRestApiConfig
 {
     protected const RESOURCES_ENTITY_TAG_REQUIRED = [
         CartsRestApiConfig::RESOURCE_CARTS,
