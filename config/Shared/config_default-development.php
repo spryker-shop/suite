@@ -149,6 +149,3 @@ $config[ErrorPageConstants::ENABLE_ERROR404_STACK_TRACE] = true;
 
 // ---------- Shop application
 $config[ShopApplicationConstants::ENABLE_YVES_HOST_URL_VALIDATION] = true;
-
-// ---------- Console
-$config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = true;

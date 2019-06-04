@@ -486,6 +486,3 @@ $config[ErrorPageConstants::ENABLE_ERROR404_STACK_TRACE] = false;
 
 // ----------- Shop application
 $config[ShopApplicationConstants::ENABLE_YVES_HOST_URL_VALIDATION] = false;
-
-// ------------ Console
-$config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = false;

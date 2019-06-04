@@ -114,5 +114,3 @@ $config[EventConstants::EVENT_CHUNK] = 5000;
 // ---------- Kernel
 $config[KernelConstants::ADJUST_TEST_NAMESPACE] = true;
 
-// ---------- Console
-$config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = true;
