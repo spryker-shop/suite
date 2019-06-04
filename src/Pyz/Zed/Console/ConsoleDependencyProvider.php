@@ -26,7 +26,6 @@ use Spryker\Zed\CompanyUnitAddressLabelDataImport\CompanyUnitAddressLabelDataImp
 use Spryker\Zed\Console\ConsoleDependencyProvider as SprykerConsoleDependencyProvider;
 use Spryker\Zed\DataImport\Communication\Console\DataImportConsole;
 use Spryker\Zed\DataImport\Communication\Console\DataImportDumpConsole;
-use Spryker\Zed\Development\Communication\Console\CodeAllSnifferConsole;
 use Spryker\Zed\Development\Communication\Console\CodeArchitectureSnifferConsole;
 use Spryker\Zed\Development\Communication\Console\CodePhpMessDetectorConsole;
 use Spryker\Zed\Development\Communication\Console\CodePhpstanConsole;
@@ -400,7 +399,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
         $commands[] = new ComposerJsonValidatorConsole();
 
-        $commands[] = new CodeAllSnifferConsole();
         $commands[] = new CodeTestConsole(
             CodeTestConsole::COMMAND_NAME
             . ':'
