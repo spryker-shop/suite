@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3a6579626e3c1ebdf62fc9f0185cd6ca",
+    "content-hash": "c7201e326141284aa764e38eadd7559f",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -21263,6 +21263,56 @@
             "time": "2019-05-31T07:59:48+00:00"
         },
         {
+            "name": "spryker/price-product-schedule-gui",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/price-product-schedule-gui.git",
+                "reference": "e750882533e33eb62edb072b721dc502b1d38dc7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/price-product-schedule-gui/zipball/e750882533e33eb62edb072b721dc502b1d38dc7",
+                "reference": "e750882533e33eb62edb072b721dc502b1d38dc7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/currency": "^3.6.0",
+                "spryker/gui": "^3.21.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/money": "^2.7.0",
+                "spryker/price-product": "^3.0.0",
+                "spryker/price-product-schedule": "^0.1.0",
+                "spryker/product-management-extension": "^1.3.0",
+                "spryker/store": "^1.10.0",
+                "spryker/symfony": "^3.2.0",
+                "spryker/translator": "^1.1.0",
+                "spryker/util-text": "^1.2.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "PriceProductScheduleGui module",
+            "time": "2019-06-04T12:01:32+00:00"
+        },
+        {
             "name": "spryker/price-product-storage",
             "version": "3.0.0",
             "source": {
@@ -24108,16 +24158,16 @@
         },
         {
             "name": "spryker/product-management",
-            "version": "0.17.0",
+            "version": "0.17.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-management.git",
-                "reference": "84a83c453c16865bf15bf91d4958e0b2ad55ef36"
+                "reference": "7558d12ac7a300316b3a6b2416e59fb1c081fad8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-management/zipball/84a83c453c16865bf15bf91d4958e0b2ad55ef36",
-                "reference": "84a83c453c16865bf15bf91d4958e0b2ad55ef36",
+                "url": "https://api.github.com/repos/spryker/product-management/zipball/7558d12ac7a300316b3a6b2416e59fb1c081fad8",
+                "reference": "7558d12ac7a300316b3a6b2416e59fb1c081fad8",
                 "shasum": ""
             },
             "require": {
@@ -24138,7 +24188,7 @@
                 "spryker/product-category": "^4.6.0",
                 "spryker/product-group": "^1.0.0",
                 "spryker/product-image": "^3.0.0",
-                "spryker/product-management-extension": "^1.2.0",
+                "spryker/product-management-extension": "^1.3.0",
                 "spryker/product-validity": "^1.0.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/stock": "^6.0.0",
@@ -24172,20 +24222,20 @@
                 "proprietary"
             ],
             "description": "ProductManagement module",
-            "time": "2019-05-23T21:56:08+00:00"
+            "time": "2019-06-04T11:46:19+00:00"
         },
         {
             "name": "spryker/product-management-extension",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-management-extension.git",
-                "reference": "c0993b0e9ca1f9dbcf7dd2107df33e229c7672fe"
+                "reference": "bc4f5e8db48fdaf9be6f17e58b19cf26d07a8411"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-management-extension/zipball/c0993b0e9ca1f9dbcf7dd2107df33e229c7672fe",
-                "reference": "c0993b0e9ca1f9dbcf7dd2107df33e229c7672fe",
+                "url": "https://api.github.com/repos/spryker/product-management-extension/zipball/bc4f5e8db48fdaf9be6f17e58b19cf26d07a8411",
+                "reference": "bc4f5e8db48fdaf9be6f17e58b19cf26d07a8411",
                 "shasum": ""
             },
             "require": {
@@ -24213,7 +24263,7 @@
                 "proprietary"
             ],
             "description": "ProductManagementExtension module",
-            "time": "2018-10-18T11:06:54+00:00"
+            "time": "2019-05-14T13:23:45+00:00"
         },
         {
             "name": "spryker/product-measurement-unit",
