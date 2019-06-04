@@ -15,12 +15,14 @@ use Spryker\Yves\Payment\Plugin\PaymentFormFilterPlugin;
 use Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageDependencyProvider as SprykerShopCheckoutPageDependencyProvider;
+use SprykerShop\Yves\CompanyPage\Plugin\CheckoutPage\CompanyUnitAddressExpanderPlugin;
 use SprykerShop\Yves\CustomerPage\Form\CheckoutAddressCollectionForm;
 use SprykerShop\Yves\CustomerPage\Form\CustomerCheckoutForm;
 use SprykerShop\Yves\CustomerPage\Form\DataProvider\CheckoutAddressFormDataProvider;
 use SprykerShop\Yves\CustomerPage\Form\GuestForm;
 use SprykerShop\Yves\CustomerPage\Form\LoginForm;
 use SprykerShop\Yves\CustomerPage\Form\RegisterForm;
+use SprykerShop\Yves\CustomerPage\Plugin\CheckoutPage\CustomerAddressExpanderPlugin;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThresholdWidgetPlugin;
 
 /**
@@ -147,5 +149,16 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
         });
 
         return $container;
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\AddressTransferExpanderPluginInterface[]
+     */
+    protected function getAddressTransferExpanderPlugins(): array
+    {
+        return [
+            new CustomerAddressExpanderPlugin(),
+            new CompanyUnitAddressExpanderPlugin(),
+        ];
     }
 }
