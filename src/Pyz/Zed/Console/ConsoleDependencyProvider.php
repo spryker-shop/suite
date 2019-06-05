@@ -8,9 +8,10 @@
 namespace Pyz\Zed\Console;
 
 use Pyz\Zed\DataImport\DataImportConfig;
+use Pyz\Zed\Development\Communication\Console\AcceptanceCodeTestConsole;
+use Pyz\Zed\Development\Communication\Console\FunctionalCodeTestConsole;
 use Silex\Provider\TwigServiceProvider as SilexTwigServiceProvider;
 use Spryker\Shared\Config\Environment;
-use Spryker\Shared\Development\DevelopmentConstants;
 use Spryker\Zed\BusinessOnBehalfDataImport\BusinessOnBehalfDataImportConfig;
 use Spryker\Zed\Cache\Communication\Console\EmptyAllCachesConsole;
 use Spryker\Zed\CodeGenerator\Communication\Console\BundleClientCodeGeneratorConsole;
@@ -399,16 +400,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
         $commands[] = new ComposerJsonValidatorConsole();
 
-        $commands[] = new CodeTestConsole(
-            CodeTestConsole::COMMAND_NAME
-            . ':'
-            . DevelopmentConstants::TYPE_TEST_ACCEPTANCE
-        );
-        $commands[] = new CodeTestConsole(
-            CodeTestConsole::COMMAND_NAME
-            . ':'
-            . DevelopmentConstants::TYPE_TEST_FUNCTIONAL
-        );
+        $commands[] = new AcceptanceCodeTestConsole();
+        $commands[] = new FunctionalCodeTestConsole();
 
         return $commands;
     }
