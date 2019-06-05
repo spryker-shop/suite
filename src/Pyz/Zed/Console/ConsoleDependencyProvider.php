@@ -15,8 +15,8 @@ use Spryker\Zed\CompanyBusinessUnitDataImport\CompanyBusinessUnitDataImportConfi
 use Spryker\Zed\CompanyDataImport\CompanyDataImportConfig;
 use Spryker\Zed\CompanyUnitAddressDataImport\CompanyUnitAddressDataImportConfig;
 use Spryker\Zed\CompanyUnitAddressLabelDataImport\CompanyUnitAddressLabelDataImportConfig;
+use Spryker\Zed\Console\Communication\Resolver\OptionalCommandResolver;
 use Spryker\Zed\Console\ConsoleDependencyProvider as SprykerConsoleDependencyProvider;
-use Spryker\Zed\Console\Dependency\Resolver\OptionalCommandResolver;
 use Spryker\Zed\DataImport\Communication\Console\DataImportConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventBehaviorTriggerTimeoutConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventTriggerConsole;
@@ -273,9 +273,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return \Spryker\Zed\Console\Dependency\Resolver\OptionalCommandResolverInterface[]
+     * @return \Spryker\Zed\Console\Communication\Resolver\OptionalCommandResolverInterface[]
      */
-    protected function getOptionalConsoleResolvers(Container $container)
+    protected function getOptionalConsoleResolvers(Container $container): array
     {
         $resolvers = [];
 
