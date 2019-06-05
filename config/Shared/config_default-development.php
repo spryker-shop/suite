@@ -90,6 +90,7 @@ $config[SetupConstants::JENKINS_DIRECTORY] = '/data/shop/development/shared/data
 
 // ---------- Zed request
 $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_FORWARD_ENABLED] = true;
+$config[ZedRequestConstants::ENABLE_REPEAT] = true;
 $config[ZedRequestConstants::SET_REPEAT_DATA] = true;
 $config[ZedRequestConstants::YVES_REQUEST_REPEAT_DATA_PATH] = APPLICATION_ROOT_DIR . '/data/' . Store::getInstance()->getStoreName() . '/' . APPLICATION_ENV . '/yves-requests';
 

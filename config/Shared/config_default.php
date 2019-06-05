@@ -222,6 +222,7 @@ $config[ZedRequestConstants::TRANSFER_USERNAME] = 'yves';
 $config[ZedRequestConstants::TRANSFER_PASSWORD] = 'o7&bg=Fz;nSslHBC';
 $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_FORWARD_ENABLED] = false;
 $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_NAME] = 'XDEBUG_SESSION';
+$config[ZedRequestConstants::ENABLE_REPEAT] = false;
 
 // ---------- KV storage
 $config[StorageConstants::STORAGE_KV_SOURCE] = 'redis';

@@ -17,7 +17,7 @@ class ApplicationConfig extends SprykerApplicationConfig
      */
     public function isZedHostUrlValidationEnabled(): bool
     {
-        return $this->get(ApplicationConstants::ENABLE_ZED_HOST_URL_VALIDATION, APPLICATION_ENV === 'development');
+        return $this->get(ApplicationConstants::ENABLE_ZED_HOST_URL_VALIDATION, $this->getEnvironmentName() === 'development');
     }
 
     /**
@@ -25,6 +25,6 @@ class ApplicationConfig extends SprykerApplicationConfig
      */
     public function isApiApplicationServiceDebugEnabled(): bool
     {
-        return $this->get(ApplicationConstants::ENABLE_API_APPLICATION_SERVICE_DEBUG, APPLICATION_ENV === 'development');
+        return $this->get(ApplicationConstants::ENABLE_API_APPLICATION_SERVICE_DEBUG, $this->getEnvironmentName() === 'development');
     }
 }
