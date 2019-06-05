@@ -3,17 +3,35 @@ const { join } = require('path');
 // define the current context (root)
 const context = process.cwd();
 
-// define the default theme
-const defaultTheme = 'default';
-
 function getAppSettingsByStore(store) {
+    // define current theme
+    const currentTheme = store.currentTheme || store.defaultTheme;
+
     // define the applicatin name
-    const name = `${store.name}_${store.theme}`;
+    const name = `${store.name}_${currentTheme}`;
 
     // define relative urls to site host (/)
     const urls = {
         // assets base url
-        assets: join('/assets', store.name, store.theme)
+        defaultAssets: join('/assets', store.name, store.defaultTheme),
+        currentAssets: join('/assets', store.name, currentTheme)
+    };
+
+    const assetPaths = function() {
+        let assetPathsCollection = {
+            // global assets folder
+            globalAssets: './frontend/assets/global',
+
+            // assets folder for current theme in store
+            defaultAssets: join('./frontend', urls.defaultAssets),
+        };
+
+        if (currentTheme !== store.defaultTheme) {
+            // assets folder for current theme in store
+            assetPathsCollection.currntAssets = join('./frontend', urls.currentAssets);
+        }
+
+        return assetPathsCollection
     };
 
     // define project relative paths to context
@@ -21,21 +39,17 @@ function getAppSettingsByStore(store) {
         // locate the typescript configuration json file
         tsConfig: './tsconfig.json',
 
-        // global assets folder
-        globalAssets: './frontend/assets/global',
-
-        // assets folder
-        assets: join('./frontend', urls.assets),
+        assets: assetPaths(),
 
         // public folder
-        public: join('./public/Yves', urls.assets),
+        public: join('./public/Yves', urls.currentAssets),
 
         // core folders
         core: {
             // all modules
             modules: './vendor/spryker/spryker-shop/Bundles',
             // ShopUi source folder
-            shopUiModule: `./vendor/spryker/spryker-shop/Bundles/ShopUi/src/SprykerShop/Yves/ShopUi/Theme/${defaultTheme}`
+            shopUiModule: `./vendor/spryker/spryker-shop/Bundles/ShopUi/src/SprykerShop/Yves/ShopUi/Theme/${store.defaultTheme}`
         },
 
         // eco folders
@@ -49,25 +63,32 @@ function getAppSettingsByStore(store) {
             // all modules
             modules: './src/Pyz/Yves',
             // ShopUi source folder
-            shopUiModule: `./src/Pyz/Yves/ShopUi/Theme/${defaultTheme}`
+            shopUiModule: `./src/Pyz/Yves/ShopUi/Theme/${store.defaultTheme}`
         }
     };
 
-    // define fallback entry points if current theme ont the same as default
-    let fallbackComponentEntryPointPatterns = [];
-    if (defaultTheme !== store.theme) {
-        fallbackComponentEntryPointPatterns = [
-            `**/Theme/${defaultTheme}/components/atoms/*/index.ts`,
-            `**/Theme/${defaultTheme}/components/molecules/*/index.ts`,
-            `**/Theme/${defaultTheme}/components/organisms/*/index.ts`,
-            `**/Theme/${defaultTheme}/templates/*/index.ts`,
-            `**/Theme/${defaultTheme}/views/*/index.ts`,
-            `**/*${store.name}/Theme/${defaultTheme}/components/atoms/*/index.ts`,
-            `**/*${store.name}/Theme/${defaultTheme}/components/molecules/*/index.ts`,
-            `**/*${store.name}/Theme/${defaultTheme}/components/organisms/*/index.ts`,
-            `**/*${store.name}/Theme/${defaultTheme}/templates/*/index.ts`,
-            `**/*${store.name}/Theme/${defaultTheme}/views/*/index.ts`
-        ]
+    // define entry point patterns for current theme, if current theme is defined
+    let customThemeEntryPointPatterns = [];
+    if (currentTheme !== store.defaultTheme) {
+        customThemeEntryPointPatterns = [
+            `**/Theme/${currentTheme}/components/atoms/*/index.ts`,
+            `**/Theme/${currentTheme}/components/molecules/*/index.ts`,
+            `**/Theme/${currentTheme}/components/organisms/*/index.ts`,
+            `**/Theme/${currentTheme}/templates/*/index.ts`,
+            `**/Theme/${currentTheme}/views/*/index.ts`,
+            `**/*${store.name}/Theme/${currentTheme}/components/atoms/*/index.ts`,
+            `**/*${store.name}/Theme/${currentTheme}/components/molecules/*/index.ts`,
+            `**/*${store.name}/Theme/${currentTheme}/components/organisms/*/index.ts`,
+            `**/*${store.name}/Theme/${currentTheme}/templates/*/index.ts`,
+            `**/*${store.name}/Theme/${currentTheme}/views/*/index.ts`,
+            '!config',
+            '!data',
+            '!deploy',
+            '!node_modules',
+            '!public',
+            '!test'
+        ];
+
     }
 
     // return settings
@@ -89,25 +110,25 @@ function getAppSettingsByStore(store) {
                     join(context, paths.project.modules)
                 ],
                 // files/dirs patterns
-                patterns: [
-                    `**/Theme/${store.theme}/components/atoms/*/index.ts`,
-                    `**/Theme/${store.theme}/components/molecules/*/index.ts`,
-                    `**/Theme/${store.theme}/components/organisms/*/index.ts`,
-                    `**/Theme/${store.theme}/templates/*/index.ts`,
-                    `**/Theme/${store.theme}/views/*/index.ts`,
-                    `**/*${store.name}/Theme/${store.theme}/components/atoms/*/index.ts`,
-                    `**/*${store.name}/Theme/${store.theme}/components/molecules/*/index.ts`,
-                    `**/*${store.name}/Theme/${store.theme}/components/organisms/*/index.ts`,
-                    `**/*${store.name}/Theme/${store.theme}/templates/*/index.ts`,
-                    `**/*${store.name}/Theme/${store.theme}/views/*/index.ts`,
+                patterns: customThemeEntryPointPatterns,
+                fallbackPatterns: [
+                    `**/Theme/${store.defaultTheme}/components/atoms/*/index.ts`,
+                    `**/Theme/${store.defaultTheme}/components/molecules/*/index.ts`,
+                    `**/Theme/${store.defaultTheme}/components/organisms/*/index.ts`,
+                    `**/Theme/${store.defaultTheme}/templates/*/index.ts`,
+                    `**/Theme/${store.defaultTheme}/views/*/index.ts`,
+                    `**/*${store.name}/Theme/${store.defaultTheme}/components/atoms/*/index.ts`,
+                    `**/*${store.name}/Theme/${store.defaultTheme}/components/molecules/*/index.ts`,
+                    `**/*${store.name}/Theme/${store.defaultTheme}/components/organisms/*/index.ts`,
+                    `**/*${store.name}/Theme/${store.defaultTheme}/templates/*/index.ts`,
+                    `**/*${store.name}/Theme/${store.defaultTheme}/views/*/index.ts`,
                     '!config',
                     '!data',
                     '!deploy',
                     '!node_modules',
                     '!public',
                     '!test'
-                ],
-                fallbackPatterns: fallbackComponentEntryPointPatterns
+                ]
             },
 
             // core component styles finder settings
@@ -120,12 +141,12 @@ function getAppSettingsByStore(store) {
                 ],
                 // files/dirs patterns
                 patterns: [
-                    `**/Theme/${defaultTheme}/components/atoms/*/*.scss`,
-                    `**/Theme/${defaultTheme}/components/molecules/*/*.scss`,
-                    `**/Theme/${defaultTheme}/components/organisms/*/*.scss`,
-                    `**/Theme/${defaultTheme}/templates/*/*.scss`,
-                    `**/Theme/${defaultTheme}/views/*/*.scss`,
-                    `!**/Theme/${defaultTheme}/**/style.scss`,
+                    `**/Theme/${store.defaultTheme}/components/atoms/*/*.scss`,
+                    `**/Theme/${store.defaultTheme}/components/molecules/*/*.scss`,
+                    `**/Theme/${store.defaultTheme}/components/organisms/*/*.scss`,
+                    `**/Theme/${store.defaultTheme}/templates/*/*.scss`,
+                    `**/Theme/${store.defaultTheme}/views/*/*.scss`,
+                    `!**/Theme/${store.defaultTheme}/**/style.scss`,
                     '!config',
                     '!data',
                     '!deploy',

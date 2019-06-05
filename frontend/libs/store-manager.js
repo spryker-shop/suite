@@ -1,9 +1,10 @@
-const storesJson = require('../config.json');
+const storesConfig = require('../config.json');
 
 const stores = new Map();
 
-for (let key in storesJson) {
-    stores.set(key, storesJson[key]);
+for (let key in storesConfig) {
+    console.log(key);
+    stores.set(key, storesConfig[key]);
 }
 
 if (stores.has('default')) {
@@ -17,7 +18,8 @@ function printWrongStoreIdMessage(name) {
 }
 
 function printStoreInfoMessage(store) {
-    console.log(`Store "${store.name}" with theme "${store.theme}".`);
+    let currentTheme = store.currentTheme || store.defaultTheme;
+    console.log(`Store "${store.name}" with theme "${currentTheme}".`);
     return store;
 }
 

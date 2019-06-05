@@ -39,7 +39,7 @@ async function find(globDirs, globPatterns, globFallbackPatterns, globSettings =
     const customThemeFiles = await findFiles(globDirs, globPatterns, globSettings);
     let defaultThemeFiles = [];
 
-    if(globFallbackPatterns.length > 0) {
+    if (globFallbackPatterns.length > 0) {
         defaultThemeFiles = await findFiles(globDirs, globFallbackPatterns, globSettings);
     }
 

@@ -13,6 +13,22 @@ async function getConfiguration(appSettings) {
     const [entryPoints, styles] = await Promise.all([entryPointsPromise, stylesPromise]);
     const alias = getAliasFromTsConfig(appSettings);
 
+    const copyConfig = function() {
+        let config = [];
+
+        for(let asset in appSettings.paths.assets) {
+            config = config.concat([
+                {
+                    from: appSettings.paths.assets[asset],
+                    to: '.',
+                    ignore: ['*.gitkeep']
+                }
+            ])
+        }
+
+        return config;
+    };
+
     return {
         context: appSettings.context,
         mode: 'development',
@@ -127,18 +143,7 @@ async function getConfiguration(appSettings) {
                 beforeEmit: true
             }),
 
-            new CopyWebpackPlugin([
-                {
-                    from: `${appSettings.paths.globalAssets}`,
-                    to: '.',
-                    ignore: ['*.gitkeep']
-                },
-                {
-                    from: `${appSettings.paths.assets}`,
-                    to: '.',
-                    ignore: ['*.gitkeep']
-                }
-            ], {
+            new CopyWebpackPlugin(copyConfig(), {
                 context: appSettings.context
             }),
 

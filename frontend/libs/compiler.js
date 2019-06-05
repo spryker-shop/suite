@@ -27,7 +27,7 @@ function compile(config) {
 // execute webpack compiler on array of configurations
 // and nicely handle the console output
 function multiCompile(configs) {
-    if (configs.length === 0) {
+    if (configs.length === 0 && configs.length === undefined) {
         return console.error('No configuration provided. Build aborted.');
     }
 
