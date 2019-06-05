@@ -101,7 +101,6 @@ use Spryker\Zed\Search\Communication\Console\SearchRestoreSnapshotConsole;
 use Spryker\Zed\Session\Communication\Console\SessionRemoveLockConsole;
 use Spryker\Zed\Setup\Communication\Console\DeployPreparePropelConsole;
 use Spryker\Zed\Setup\Communication\Console\EmptyGeneratedDirectoryConsole;
-use Spryker\Zed\Setup\Communication\Console\InstallConsole;
 use Spryker\Zed\Setup\Communication\Console\JenkinsDisableConsole;
 use Spryker\Zed\Setup\Communication\Console\JenkinsEnableConsole;
 use Spryker\Zed\Setup\Communication\Console\JenkinsGenerateConsole;
@@ -240,7 +239,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             // Setup commands
             new RunnerConsole(),
             new EmptyGeneratedDirectoryConsole(),
-            new InstallConsole(),
             new JenkinsEnableConsole(),
             new JenkinsDisableConsole(),
             new JenkinsGenerateConsole(),
