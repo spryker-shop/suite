@@ -15,6 +15,7 @@ use Spryker\Yves\Twig\Plugin\Application\TwigApplicationPlugin;
 use SprykerShop\Yves\AgentWidget\Widget\AgentControlBarWidget;
 use SprykerShop\Yves\AvailabilityNotificationWidget\Widget\AvailabilityNotificationSubscriptionWidget;
 use SprykerShop\Yves\BusinessOnBehalfWidget\Widget\BusinessOnBehalfStatusWidget;
+use SprykerShop\Yves\CartCodeWidget\Widget\CartCodeFormWidget;
 use SprykerShop\Yves\CartNoteWidget\Widget\CartItemNoteFormWidget;
 use SprykerShop\Yves\CartNoteWidget\Widget\CartNoteFormWidget;
 use SprykerShop\Yves\CartToShoppingListWidget\Widget\CreateShoppingListFromCartWidget;
@@ -30,8 +31,6 @@ use SprykerShop\Yves\CurrencyWidget\Widget\CurrencyWidget;
 use SprykerShop\Yves\CustomerPage\Widget\CustomerNavigationWidget;
 use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderItemCheckboxWidget;
 use SprykerShop\Yves\DiscountPromotionWidget\Widget\CartDiscountPromotionProductListWidget;
-use SprykerShop\Yves\DiscountWidget\Widget\CheckoutVoucherFormWidget;
-use SprykerShop\Yves\DiscountWidget\Widget\DiscountVoucherFormWidget;
 use SprykerShop\Yves\LanguageSwitcherWidget\Widget\LanguageSwitcherWidget;
 use SprykerShop\Yves\MultiCartWidget\Widget\AddToMultiCartWidget;
 use SprykerShop\Yves\MultiCartWidget\Widget\CartOperationsWidget;
@@ -99,6 +98,7 @@ use SprykerShop\Yves\ShoppingListNoteWidget\Widget\ShoppingListItemNoteWidget;
 use SprykerShop\Yves\ShoppingListPage\Widget\ShoppingListDismissWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\AddItemsToShoppingListWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\AddToShoppingListWidget;
+use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListItemQuantityInputWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListMenuItemWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListNavigationMenuWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListSubtotalWidget;
@@ -119,6 +119,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             BusinessOnBehalfStatusWidget::class,
             CartDeleteCompanyUsersListWidget::class,
             CartDiscountPromotionProductListWidget::class,
+            CartCodeFormWidget::class,
             CartItemNoteFormWidget::class,
             CartListPermissionGroupWidget::class,
             CartNoteFormWidget::class,
@@ -181,8 +182,6 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ShoppingListSubtotalWidget::class,
             SimilarProductsWidget::class,
             UpSellingProductsWidget::class,
-            DiscountVoucherFormWidget::class,
-            CheckoutVoucherFormWidget::class,
             WishlistMenuItemWidget::class,
             WishlistProductAlternativeWidget::class,
             CompanyBusinessUnitAddressWidget::class,
@@ -196,6 +195,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CategoryImageStorageWidget::class,
             AvailabilityNotificationSubscriptionWidget::class,
             ProductConcreteAddWidget::class,
+            ShoppingListItemQuantityInputWidget::class,
             QuoteRequestCreateWidget::class,
             QuoteRequestCartWidget::class,
             QuoteRequestCancelWidget::class,

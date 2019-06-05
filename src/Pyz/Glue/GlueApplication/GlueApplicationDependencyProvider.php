@@ -56,6 +56,7 @@ use Spryker\Glue\CustomersRestApi\Plugin\CustomerPasswordResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\CustomerRestorePasswordResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\CustomersResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\CustomersToAddressesRelationshipPlugin;
+use Spryker\Glue\CustomersRestApi\Plugin\GlueApplication\CustomerByCompanyUserResourceRelationshipPlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\SetCustomerBeforeActionPlugin;
 use Spryker\Glue\GlueApplication\GlueApplicationDependencyProvider as SprykerGlueApplicationDependencyProvider;
 use Spryker\Glue\GlueApplication\Plugin\Rest\SetStoreCurrentLocaleBeforeActionPlugin;
@@ -85,12 +86,12 @@ use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\PriceModeParameterV
 use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\SetCurrencyBeforeActionPlugin;
 use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\SetPriceModeBeforeActionPlugin;
 use Spryker\Glue\ProductsCategoriesResourceRelationship\Plugin\AbstractProductsCategoriesResourceRelationshipPlugin;
-use Spryker\Glue\ProductsProductTaxSetsResourceRelationship\Plugin\ProductsProductTaxSetsResourceRelationshipPlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\AbstractProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\ConcreteProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\GlueApplication\ConcreteProductBySkuResourceRelationshipPlugin;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
-use Spryker\Glue\ProductTaxSetsRestApi\Plugin\ProductTaxSetsResourceRoutePlugin;
+use Spryker\Glue\ProductTaxSetsRestApi\Plugin\GlueApplication\ProductTaxSetByProductAbstractSkuResourceRelationshipPlugin;
+use Spryker\Glue\ProductTaxSetsRestApi\Plugin\GlueApplication\ProductTaxSetsResourceRoutePlugin;
 use Spryker\Glue\RelatedProductsRestApi\Plugin\GlueApplication\RelatedProductsResourceRoutePlugin;
 use Spryker\Glue\RestRequestValidator\Plugin\ValidateRestRequestAttributesPlugin;
 use Spryker\Glue\StoresRestApi\Plugin\StoresResourceRoutePlugin;
@@ -280,7 +281,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         );
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
-            new ProductsProductTaxSetsResourceRelationshipPlugin()
+            new ProductTaxSetByProductAbstractSkuResourceRelationshipPlugin()
         );
         $resourceRelationshipCollection->addRelationship(
             CustomersRestApiConfig::RESOURCE_CUSTOMERS,
@@ -325,6 +326,10 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         $resourceRelationshipCollection->addRelationship(
             CompanyBusinessUnitsRestApiConfig::RESOURCE_COMPANY_BUSINESS_UNITS,
             new CompanyBusinessUnitAddressesByCompanyBusinessUnitResourceRelationshipPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            CompanyUsersRestApiConfig::RESOURCE_COMPANY_USERS,
+            new CustomerByCompanyUserResourceRelationshipPlugin()
         );
 
         return $resourceRelationshipCollection;

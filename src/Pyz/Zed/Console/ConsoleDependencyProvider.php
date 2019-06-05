@@ -75,9 +75,11 @@ use Spryker\Zed\ProductDiscontinuedDataImport\ProductDiscontinuedDataImportConfi
 use Spryker\Zed\ProductLabel\Communication\Console\ProductLabelRelationUpdaterConsole;
 use Spryker\Zed\ProductLabel\Communication\Console\ProductLabelValidityConsole;
 use Spryker\Zed\ProductPackagingUnitDataImport\ProductPackagingUnitDataImportConfig;
+use Spryker\Zed\ProductQuantityDataImport\ProductQuantityDataImportConfig;
 use Spryker\Zed\ProductRelation\Communication\Console\ProductRelationUpdaterConsole;
 use Spryker\Zed\ProductValidity\Communication\Console\ProductValidityConsole;
 use Spryker\Zed\Propel\Communication\Console\DatabaseDropConsole;
+use Spryker\Zed\Propel\Communication\Console\DatabaseDropTablesConsole;
 use Spryker\Zed\Propel\Communication\Console\DatabaseExportConsole;
 use Spryker\Zed\Propel\Communication\Console\DatabaseImportConsole;
 use Spryker\Zed\Propel\Communication\Console\DeleteMigrationFilesConsole;
@@ -107,7 +109,6 @@ use Spryker\Zed\Search\Communication\Console\SearchRestoreSnapshotConsole;
 use Spryker\Zed\Session\Communication\Console\SessionRemoveLockConsole;
 use Spryker\Zed\Setup\Communication\Console\DeployPreparePropelConsole;
 use Spryker\Zed\Setup\Communication\Console\EmptyGeneratedDirectoryConsole;
-use Spryker\Zed\Setup\Communication\Console\InstallConsole;
 use Spryker\Zed\Setup\Communication\Console\JenkinsDisableConsole;
 use Spryker\Zed\Setup\Communication\Console\JenkinsEnableConsole;
 use Spryker\Zed\Setup\Communication\Console\JenkinsGenerateConsole;
@@ -214,6 +215,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . DataImportConfig::IMPORT_TYPE_TAX),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . DataImportConfig::IMPORT_TYPE_DISCOUNT_AMOUNT),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . DataImportConfig::IMPORT_TYPE_ORDER_SOURCE),
+            new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . DataImportConfig::IMPORT_TYPE_ABSTRACT_GIFT_CARD_CONFIGURATION), #GiftCardFeature
+            new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . DataImportConfig::IMPORT_TYPE_CONCRETE_GIFT_CARD_CONFIGURATION), #GiftCardFeature
 
             //core data importers
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . PriceProductDataImportConfig::IMPORT_TYPE_PRODUCT_PRICE),
@@ -234,6 +237,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . ShoppingListDataImportConfig::IMPORT_TYPE_SHOPPING_LIST_ITEM),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . ShoppingListDataImportConfig::IMPORT_TYPE_SHOPPING_LIST_COMPANY_USER),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . ShoppingListDataImportConfig::IMPORT_TYPE_SHOPPING_LIST_COMPANY_BUSINESS_UNIT),
+            new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . ProductQuantityDataImportConfig::IMPORT_TYPE_PRODUCT_QUANTITY),
 
             // Publish and Synchronization
             new EventBehaviorTriggerTimeoutConsole(),
@@ -243,14 +247,13 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             // Setup commands
             new RunnerConsole(),
             new EmptyGeneratedDirectoryConsole(),
-            new InstallConsole(),
             new JenkinsEnableConsole(),
             new JenkinsDisableConsole(),
             new JenkinsGenerateConsole(),
             new DeployPreparePropelConsole(),
 
             new DatabaseDropConsole(),
-
+            new DatabaseDropTablesConsole(),
             new DatabaseExportConsole(),
             new DatabaseImportConsole(),
             new DeleteMigrationFilesConsole(),
