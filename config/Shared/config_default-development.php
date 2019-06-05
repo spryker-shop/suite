@@ -6,7 +6,6 @@
 
 use Monolog\Logger;
 use Pyz\Shared\Application\ApplicationConstants;
-use Pyz\Shared\Console\ConsoleConstants;
 use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Api\ApiConstants;
 use Spryker\Shared\Config\ConfigConstants;

@@ -5,7 +5,6 @@
  */
 
 use Monolog\Logger;
-use Pyz\Shared\Console\ConsoleConstants;
 use Pyz\Yves\ShopApplication\YvesBootstrap;
 use Pyz\Zed\Application\Communication\ZedBootstrap;
 use Spryker\Shared\Application\Log\Config\SprykerLoggerConfig;
@@ -113,4 +112,3 @@ $config[EventConstants::EVENT_CHUNK] = 5000;
 
 // ---------- Kernel
 $config[KernelConstants::ADJUST_TEST_NAMESPACE] = true;
-
