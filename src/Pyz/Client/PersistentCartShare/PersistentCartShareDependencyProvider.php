@@ -9,8 +9,8 @@ namespace Pyz\Client\PersistentCartShare;
 
 use Spryker\Client\PersistentCartShare\PersistentCartShareDependencyProvider as SprykerPersistentCartShareDependencyProvider;
 use Spryker\Client\PersistentCartShare\Plugin\PersistentCartShare\PreviewCartShareOptionPlugin;
-use Spryker\Client\SharedCart\Plugin\FullAccessCartShareOptionPlugin;
-use Spryker\Client\SharedCart\Plugin\ReadOnlyCartShareOptionPlugin;
+use Spryker\Client\SharedCart\Plugin\PersistentCartShare\FullAccessCartShareOptionPlugin;
+use Spryker\Client\SharedCart\Plugin\PersistentCartShare\ReadOnlyCartShareOptionPlugin;
 
 class PersistentCartShareDependencyProvider extends SprykerPersistentCartShareDependencyProvider
 {
