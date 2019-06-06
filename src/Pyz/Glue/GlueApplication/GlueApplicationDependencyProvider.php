@@ -14,6 +14,7 @@ use Spryker\Glue\AuthRestApi\Plugin\AccessTokensResourceRoutePlugin;
 use Spryker\Glue\AuthRestApi\Plugin\FormatAuthenticationErrorResponseHeadersPlugin;
 use Spryker\Glue\AuthRestApi\Plugin\RefreshTokensResourceRoutePlugin;
 use Spryker\Glue\AuthRestApi\Plugin\RestUserFinderByAccessTokenPlugin;
+use Spryker\Glue\CartPermissionGroupsRestApi\Plugin\GlueApplication\CartPermissionGroupByQuoteResourceRelationshipPlugin;
 use Spryker\Glue\CartPermissionGroupsRestApi\Plugin\GlueApplication\CartPermissionGroupsResourceRoutePlugin;
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
 use Spryker\Glue\CartsRestApi\Plugin\ControllerBeforeAction\SetAnonymousCustomerIdControllerBeforeActionPlugin;
@@ -56,6 +57,7 @@ use Spryker\Glue\CustomersRestApi\Plugin\CustomerPasswordResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\CustomerRestorePasswordResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\CustomersResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\CustomersToAddressesRelationshipPlugin;
+use Spryker\Glue\CustomersRestApi\Plugin\GlueApplication\CustomerByCompanyUserResourceRelationshipPlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\SetCustomerBeforeActionPlugin;
 use Spryker\Glue\GlueApplication\GlueApplicationDependencyProvider as SprykerGlueApplicationDependencyProvider;
 use Spryker\Glue\GlueApplication\Plugin\Rest\SetStoreCurrentLocaleBeforeActionPlugin;
@@ -325,6 +327,14 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         $resourceRelationshipCollection->addRelationship(
             CompanyBusinessUnitsRestApiConfig::RESOURCE_COMPANY_BUSINESS_UNITS,
             new CompanyBusinessUnitAddressesByCompanyBusinessUnitResourceRelationshipPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            CompanyUsersRestApiConfig::RESOURCE_COMPANY_USERS,
+            new CustomerByCompanyUserResourceRelationshipPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            CartsRestApiConfig::RESOURCE_CARTS,
+            new CartPermissionGroupByQuoteResourceRelationshipPlugin()
         );
 
         return $resourceRelationshipCollection;
