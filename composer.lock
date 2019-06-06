@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c57616e756e21208863b1db90431637c",
+    "content-hash": "7b3b824e2fe3ce75447bac37062102d6",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -2621,7 +2621,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "464e5e8b5201b998a94401025de5f65f540f72d3"
+                "reference": "215350fdde4347ab899cfae279ebd08ceb4a971a"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2736,6 +2736,7 @@
                 "spryker/maintenance": "*",
                 "spryker/mandrill": "*",
                 "spryker/messenger": "*",
+                "spryker/module-finder": "*",
                 "spryker/money": "*",
                 "spryker/monitoring": "*",
                 "spryker/monitoring-extension": "*",
@@ -2889,7 +2890,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-06-06T08:46:15+00:00"
+            "time": "2019-06-06T09:25:04+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -8538,6 +8539,50 @@
             "time": "2017-06-16T09:29:23+00:00"
         },
         {
+            "name": "spryker-sdk/composer-constrainer",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:spryker-sdk/composer-constrainer.git",
+                "reference": "186324a39cb87976a4e538af7dac74840c0487bf"
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.33.0",
+                "spryker/module-finder": "^1.0.0",
+                "spryker/symfony": "^3.2.2",
+                "spryker/zend": "^2.2.2"
+            },
+            "require-dev": {
+                "sllh/composer-versions-check": "^2.0.2",
+                "spryker/code-sniffer": "*",
+                "spryker/console": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerSdk\\": "src/SprykerSdk/",
+                    "SprykerSdkTest\\Zed\\ComposerConstrainer\\Helper\\": "tests/SprykerSdkTest/Zed/ComposerConstrainer/_support/Helper/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "SprykerSdkTest\\": "tests/SprykerSdkTest/"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "description": "ComposerConstrainer module",
+            "time": "2019-05-29T09:26:04+00:00"
+        },
+        {
             "name": "spryker-sdk/phpstan-spryker",
             "version": "dev-master",
             "source": {
@@ -9871,12 +9916,6 @@
             "alias_normalized": "0.2.0.0",
             "version": "9999999-dev",
             "package": "spryker-sdk/spryk"
-        },
-        {
-            "alias": "0.1.1",
-            "alias_normalized": "0.1.1.0",
-            "version": "9999999-dev",
-            "package": "spryker-sdk/spryk-gui"
         }
     ],
     "minimum-stability": "dev",
@@ -9897,7 +9936,8 @@
         "spryker/git-hook": 20,
         "spryker-sdk/phpstan-spryker": 20,
         "spryker-sdk/spryk": 20,
-        "spryker-sdk/spryk-gui": 20
+        "spryker-sdk/spryk-gui": 20,
+        "spryker-sdk/composer-constrainer": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
