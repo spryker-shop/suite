@@ -1,10 +1,16 @@
 language: php
 
+git:
+  depth: 3
+
 env:
   global:
     - APPLICATION_ENV=devtest
     - APPLICATION_STORE=DE
     - PROJECT=suite
+    - ARTIFACTS_KEY=AKIAJD43J5ACVDJKUXLA
+    - ARTIFACTS_SECRET=$AWS_S3_SECRET_ACCESS_KEY
+    - ARTIFACTS_BUCKET=spryker-ci
 
 branches:
   only:
@@ -17,43 +23,52 @@ branches:
 matrix:
   fast_finish: true
 
-  allow_failures:
+  allow_failures: []
+
+  include:
+
     - php: "7.3"
+      dist: trusty
+      env:
+        - VALIDATION=1
+
+    - php: "7.3"
+      dist: trusty
+      env:
+        - TEST_GROUP=acceptance
+        - ON_EVENTS=push,cron
+
+    - php: "7.3"
+      dist: trusty
+      env:
+        - TEST_GROUP=without-acceptance
+        - ON_EVENTS=cron,push
+
+    - php: "7.1"
+      dist: trusty
       env:
         - TEST_GROUP=acceptance
         - ON_EVENTS=push,cron
         - DB=mysql
 
-  include:
-    - php: "7.3"
-      env:
-        - VALIDATION=1
     - php: "7.1"
+      dist: trusty
       env:
         - TEST_GROUP=without-acceptance
         - ON_EVENTS=cron,push
-    - php: "7.3"
-      env:
-        - TEST_GROUP=without-acceptance
-        - ON_EVENTS=cron,push
-        - DB=mysql
-    - php: "7.1"
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
-    - php: "7.2"
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
-        - DB=mysql
-    - php: "7.3"
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
         - DB=mysql
 addons:
   postgresql: 9.6
   mysql: 5.7
+
+  artifacts:
+    s3_region: eu-west-1
+    paths:
+      - $(find ./data/*/logs/*/*.log -not -empty | tr "\n" ":")
+      - $(find ./tests/_output/* -not -empty | tr "\n" ":")
+      - $(find ./tests/PyzTest/*/*/_output/* -not -empty | tr "\n" ":")
+      - $(find ./vendor/spryker/spryker/Bundles/*/tests/_output/* -not -empty | tr "\n" ":")
+      - /tmp/phantomjs.log.gz
 
   apt:
     packages:
@@ -67,6 +82,7 @@ addons:
 cache:
     directories:
         - $HOME/.composer/cache
+        - /home/travis/.rvm/gems # Mailcatcher is a ruby gem, takes 5 minutes to install.
 
 services:
   - postgresql
@@ -79,6 +95,7 @@ sudo: required
 before_install:
   - if [[ $VALIDATION != 1 && $ON_EVENTS != *$TRAVIS_EVENT_TYPE* ]] ; then exit ; fi
   - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - phpenv config-rm xdebug.ini
   - if [[ $DB == 'mysql' ]] ; then chmod +x ./config/Shared/ci/travis/mysql/* ; fi
   - if [[ $DB == 'mysql' ]] ; then ./config/Shared/ci/travis/mysql/travis_mysql_5.7.sh ; fi
   # Merges travis-ci/stores.php into the general stores.php at the defined "travis hook" line. Uses temporary file during the process.
@@ -116,7 +133,7 @@ before_script:
 
   - if [[ $TEST_GROUP == 'acceptance' ]] ; then config/Shared/ci/travis/acceptance_env.sh ; fi
   - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/install DE -r testing -v ; fi
-  - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/install DE -r testing -x frontend -x fixtures ; fi
+  - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/install DE -r testing -x frontend -x fixtures  -v ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:generate ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:install ; fi
@@ -125,6 +142,8 @@ before_script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/codecept build --ansi ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:databuilder:generate ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console setup:search ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console frontend:project:install-dependencies ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console frontend:yves:install-dependencies ; fi
 
 script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpstan analyze -c phpstan.neon -l 4 src/ ; fi
@@ -145,9 +164,18 @@ script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2 ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then ./tests/travis_check_untracked.sh ; fi
-  - vendor/bin/phantomjs --webdriver=4444 &
-  - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -x EndToEnd -x Presentation; fi
-  - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/codecept run -g EndToEnd -g Presentation; fi
+  - timeout 45m bash -c "vendor/bin/phantomjs --webdriver=4444 --disk-cache=true --load-images=false --webdriver-logfile=/tmp/phantomjs.log --webdriver-loglevel=DEBUG">/dev/null &
+  - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -x EndToEnd -x Presentation ; fi
+  - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/codecept run -g EndToEnd -g Presentation ; fi
+
+  - if [[ $VALIDATION == 1 ]] ; then node ./frontend/libs/stylelint ; fi
+  - if [[ $VALIDATION == 1 ]] ; then node ./frontend/libs/tslint stylish ; fi
+
+after_script:
+  - if [[ $TRAVIS_TEST_RESULT == 0 ]] ; then rm /tmp/phantomjs.log ; fi
+  - if [[ $TRAVIS_TEST_RESULT == 1 ]] ; then gzip --best /tmp/phantomjs.log ; fi
 
 notifications:
   email: false
+  webhooks:
+    - https://release.spryker.com/ci-webhooks/add

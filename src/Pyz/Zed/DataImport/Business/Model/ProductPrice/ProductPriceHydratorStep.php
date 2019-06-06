@@ -15,10 +15,10 @@ use Generated\Shared\Transfer\SpyProductAbstractEntityTransfer;
 use Generated\Shared\Transfer\SpyProductEntityTransfer;
 use Generated\Shared\Transfer\SpyStoreEntityTransfer;
 use Pyz\Zed\DataImport\Business\Exception\InvalidPriceDataKeyException;
-use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
 use Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
+use Spryker\Zed\DataImport\Dependency\Service\DataImportToUtilEncodingServiceInterface;
 use Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface;
 
 class ProductPriceHydratorStep implements DataImportStepInterface
@@ -53,9 +53,13 @@ class ProductPriceHydratorStep implements DataImportStepInterface
     public const KEY_PRICE_DATA = 'price_data';
     public const KEY_PRICE_DATA_CHECKSUM = 'price_data_checksum';
     public const KEY_PRICE_DATA_PREFIX = 'price_data.';
+    public const KEY_ID_PRICE_TYPE = 'id_price_type';
+    public const KEY_ID_CURRENCY = 'id_currency';
+    public const KEY_ID_STORE = 'id_store';
+    public const KEY_ID_PRICE_PRODUCT_STORE = 'id_price_product_store';
 
     /**
-     * @var \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface
+     * @var \Spryker\Zed\DataImport\Dependency\Service\DataImportToUtilEncodingServiceInterface
      */
     protected $utilEncodingService;
 
@@ -66,11 +70,11 @@ class ProductPriceHydratorStep implements DataImportStepInterface
 
     /**
      * @param \Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface $priceProductFacade
-     * @param \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface $utilEncodingService
+     * @param \Spryker\Zed\DataImport\Dependency\Service\DataImportToUtilEncodingServiceInterface $utilEncodingService
      */
     public function __construct(
         PriceProductFacadeInterface $priceProductFacade,
-        UtilEncodingServiceInterface $utilEncodingService
+        DataImportToUtilEncodingServiceInterface $utilEncodingService
     ) {
         $this->priceProductFacade = $priceProductFacade;
         $this->utilEncodingService = $utilEncodingService;

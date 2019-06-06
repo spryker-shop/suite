@@ -8,6 +8,7 @@
 namespace Pyz\Zed\DataImport\Business\Model\ProductStock\Writer;
 
 use Generated\Shared\Transfer\StoreTransfer;
+use Orm\Zed\Availability\Persistence\Map\SpyAvailabilityAbstractTableMap;
 use Orm\Zed\Oms\Persistence\Map\SpyOmsProductReservationTableMap;
 use Orm\Zed\Oms\Persistence\SpyOmsProductReservationQuery;
 use Orm\Zed\Product\Persistence\Map\SpyProductAbstractTableMap;
@@ -20,8 +21,10 @@ use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInter
 use Pyz\Zed\DataImport\Business\Model\ProductStock\ProductStockHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
+use Spryker\Zed\Availability\Dependency\AvailabilityEvents;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
+use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
 use Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface;
 use Spryker\Zed\Stock\Business\StockFacadeInterface;
 use Spryker\Zed\Store\Business\StoreFacadeInterface;
@@ -76,6 +79,11 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
     protected $dataFormatter;
 
     /**
+     * @var int[]
+     */
+    protected $availabilityAbstractIds = [];
+
+    /**
      * @param \Spryker\Zed\Stock\Business\StockFacadeInterface $stockFacade
      * @param \Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface $productBundleFacade
      * @param \Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSqlInterface $productStockSql
@@ -120,6 +128,7 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
     public function flush(): void
     {
         $this->writeEntities();
+        $this->triggerAvailabilityPublishEvents();
     }
 
     /**
@@ -231,7 +240,8 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
             $this->dataFormatter->formatPostgresArray(array_fill(0, count($abstractAvailabilityData), $storeTransfer->getIdStore())),
         ];
 
-        $this->propelExecutor->execute($this->productStockSql->createAbstractAvailabilitySQL(), $abstractAvailabilityQueryParams);
+        $availabilityAbstractIds = $this->propelExecutor->execute($this->productStockSql->createAbstractAvailabilitySQL(), $abstractAvailabilityQueryParams);
+        $this->collectAvailabilityAbstractIds($availabilityAbstractIds);
 
         $availabilityQueryParams = [
             $this->dataFormatter->formatPostgresArrayString(array_column($concreteAvailabilityData, static::KEY_SKU)),
@@ -289,6 +299,7 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
             }
             $result[$sku][static::KEY_QUANTITY] = $quantity;
         }
+
         return $result;
     }
 
@@ -429,5 +440,29 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
         }
 
         return static::$storeToStock;
+    }
+
+    /**
+     * @param int[] $availabilityAbstractIds
+     *
+     * @return void
+     */
+    protected function collectAvailabilityAbstractIds(array $availabilityAbstractIds): void
+    {
+        $availabilityAbstractIds = array_merge(
+            $this->availabilityAbstractIds,
+            array_column($availabilityAbstractIds, SpyAvailabilityAbstractTableMap::COL_ID_AVAILABILITY_ABSTRACT)
+        );
+        $this->availabilityAbstractIds = array_unique($availabilityAbstractIds);
+    }
+
+    /**
+     * @return void
+     */
+    protected function triggerAvailabilityPublishEvents(): void
+    {
+        foreach ($this->availabilityAbstractIds as $availabilityAbstractId) {
+            DataImporterPublisher::addEvent(AvailabilityEvents::AVAILABILITY_ABSTRACT_PUBLISH, $availabilityAbstractId);
+        }
     }
 }
