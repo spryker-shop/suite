@@ -71,7 +71,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new GuiTwigExtensionServiceProvider(),
             new RedirectAfterLoginProvider(),
             new PropelServiceProvider(),
-            new GuiTwigExtensionServiceProvider(),
             new EventBehaviorServiceProvider(),
             new SaveSessionServiceProvider(),
         ];
