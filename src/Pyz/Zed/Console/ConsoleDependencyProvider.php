@@ -18,6 +18,7 @@ use Spryker\Zed\CodeGenerator\Communication\Console\BundleServiceCodeGeneratorCo
 use Spryker\Zed\CodeGenerator\Communication\Console\BundleSharedCodeGeneratorConsole;
 use Spryker\Zed\CodeGenerator\Communication\Console\BundleYvesCodeGeneratorConsole;
 use Spryker\Zed\CodeGenerator\Communication\Console\BundleZedCodeGeneratorConsole;
+use Spryker\Zed\CommentDataImport\CommentDataImportConfig;
 use Spryker\Zed\CompanyBusinessUnitDataImport\CompanyBusinessUnitDataImportConfig;
 use Spryker\Zed\CompanyDataImport\CompanyDataImportConfig;
 use Spryker\Zed\CompanyUnitAddressDataImport\CompanyUnitAddressDataImportConfig;
@@ -236,6 +237,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . ShoppingListDataImportConfig::IMPORT_TYPE_SHOPPING_LIST_ITEM),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . ShoppingListDataImportConfig::IMPORT_TYPE_SHOPPING_LIST_COMPANY_USER),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . ShoppingListDataImportConfig::IMPORT_TYPE_SHOPPING_LIST_COMPANY_BUSINESS_UNIT),
+            new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . CommentDataImportConfig::IMPORT_TYPE_COMMENT),
 
             // Publish and Synchronization
             new EventBehaviorTriggerTimeoutConsole(),
