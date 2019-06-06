@@ -2,9 +2,8 @@ const storesConfig = require('../config.json');
 
 const stores = new Map();
 
-for (let key in storesConfig) {
-    console.log(key);
-    stores.set(key, storesConfig[key]);
+for (let storeId in storesConfig) {
+    stores.set(storeId, storesConfig[storeId]);
 }
 
 if (stores.has('default')) {

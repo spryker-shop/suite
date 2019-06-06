@@ -16,7 +16,7 @@ async function getConfiguration(appSettings) {
     const copyConfig = function() {
         let config = [];
 
-        for(let asset in appSettings.paths.assets) {
+        for (let asset in appSettings.paths.assets) {
             config = config.concat([
                 {
                     from: appSettings.paths.assets[asset],
