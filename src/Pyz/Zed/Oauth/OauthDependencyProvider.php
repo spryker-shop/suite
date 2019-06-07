@@ -15,6 +15,7 @@ use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Oauth\CompanyUserOauthUser
 use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Oauth\IdCompanyUserOauthGrantTypeConfigurationProviderPlugin;
 use Spryker\Zed\OauthCustomerConnector\Communication\Plugin\Oauth\CustomerOauthScopeProviderPlugin;
 use Spryker\Zed\OauthCustomerConnector\Communication\Plugin\Oauth\CustomerOauthUserProviderPlugin;
+use Spryker\Zed\OauthPermission\Communication\Plugin\Filter\OauthUserIdentifierFilterPermissionPlugin;
 
 class OauthDependencyProvider extends SprykerOauthDependencyProvider
 {
@@ -50,5 +51,15 @@ class OauthDependencyProvider extends SprykerOauthDependencyProvider
             new IdCompanyUserOauthGrantTypeConfigurationProviderPlugin(),
             new CompanyUserAccessTokenOauthGrantTypeConfigurationProviderPlugin(),
         ]);
+    }
+
+    /**
+     * @return \Spryker\Zed\OauthExtension\Dependency\Plugin\OauthUserIdentifierFilterPluginInterface[]
+     */
+    protected function getOauthUserIdentifierFilterPlugins(): array
+    {
+        return [
+            new OauthUserIdentifierFilterPermissionPlugin(),
+        ];
     }
 }
