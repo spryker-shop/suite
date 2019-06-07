@@ -11,6 +11,12 @@ use Pyz\Zed\DataImport\DataImportConfig;
 use Silex\Provider\TwigServiceProvider as SilexTwigServiceProvider;
 use Spryker\Zed\BusinessOnBehalfDataImport\BusinessOnBehalfDataImportConfig;
 use Spryker\Zed\Cache\Communication\Console\EmptyAllCachesConsole;
+use Spryker\Zed\CodeGenerator\Communication\Console\BundleClientCodeGeneratorConsole;
+use Spryker\Zed\CodeGenerator\Communication\Console\BundleCodeGeneratorConsole;
+use Spryker\Zed\CodeGenerator\Communication\Console\BundleServiceCodeGeneratorConsole;
+use Spryker\Zed\CodeGenerator\Communication\Console\BundleSharedCodeGeneratorConsole;
+use Spryker\Zed\CodeGenerator\Communication\Console\BundleYvesCodeGeneratorConsole;
+use Spryker\Zed\CodeGenerator\Communication\Console\BundleZedCodeGeneratorConsole;
 use Spryker\Zed\CompanyBusinessUnitDataImport\CompanyBusinessUnitDataImportConfig;
 use Spryker\Zed\CompanyDataImport\CompanyDataImportConfig;
 use Spryker\Zed\CompanyUnitAddressDataImport\CompanyUnitAddressDataImportConfig;
@@ -18,9 +24,35 @@ use Spryker\Zed\CompanyUnitAddressLabelDataImport\CompanyUnitAddressLabelDataImp
 use Spryker\Zed\Console\Communication\Resolver\OptionalCommandResolver;
 use Spryker\Zed\Console\ConsoleDependencyProvider as SprykerConsoleDependencyProvider;
 use Spryker\Zed\DataImport\Communication\Console\DataImportConsole;
+use Spryker\Zed\DataImport\Communication\Console\DataImportDumpConsole;
+use Spryker\Zed\Development\Communication\Console\CodeArchitectureSnifferConsole;
+use Spryker\Zed\Development\Communication\Console\CodePhpMessDetectorConsole;
+use Spryker\Zed\Development\Communication\Console\CodePhpstanConsole;
+use Spryker\Zed\Development\Communication\Console\CodeStyleSnifferConsole;
+use Spryker\Zed\Development\Communication\Console\CodeTestConsole;
+use Spryker\Zed\Development\Communication\Console\ComposerJsonUpdaterConsole;
+use Spryker\Zed\Development\Communication\Console\ComposerJsonValidatorConsole;
+use Spryker\Zed\Development\Communication\Console\DependencyTreeBuilderConsole;
+use Spryker\Zed\Development\Communication\Console\DependencyViolationFinderConsole;
+use Spryker\Zed\Development\Communication\Console\DependencyViolationFixConsole;
+use Spryker\Zed\Development\Communication\Console\GenerateClientIdeAutoCompletionConsole;
+use Spryker\Zed\Development\Communication\Console\GenerateGlueIdeAutoCompletionConsole;
+use Spryker\Zed\Development\Communication\Console\GenerateIdeAutoCompletionConsole;
+use Spryker\Zed\Development\Communication\Console\GenerateServiceIdeAutoCompletionConsole;
+use Spryker\Zed\Development\Communication\Console\GenerateYvesIdeAutoCompletionConsole;
+use Spryker\Zed\Development\Communication\Console\GenerateZedIdeAutoCompletionConsole;
+use Spryker\Zed\Development\Communication\Console\ModuleBridgeCreateConsole;
+use Spryker\Zed\Development\Communication\Console\ModuleCreateConsole;
+use Spryker\Zed\Development\Communication\Console\PluginUsageFinderConsole;
+use Spryker\Zed\Development\Communication\Console\PropelAbstractValidateConsole;
+use Spryker\Zed\DevelopmentCore\Communication\Console\AdjustPhpstanConsole;
+use Spryker\Zed\DocumentationGeneratorRestApi\Communication\Console\GenerateRestApiDocumentationConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventBehaviorTriggerTimeoutConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventTriggerConsole;
+use Spryker\Zed\EventBehavior\Communication\Console\EventTriggerListenerConsole;
 use Spryker\Zed\EventBehavior\Communication\Plugin\Console\EventBehaviorPostHookPlugin;
+use Spryker\Zed\IndexGenerator\Communication\Console\PostgresIndexGeneratorConsole;
+use Spryker\Zed\IndexGenerator\Communication\Console\PostgresIndexRemoverConsole;
 use Spryker\Zed\Installer\Communication\Console\InitializeDatabaseConsole;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Log\Communication\Console\DeleteLogFilesConsole;
@@ -49,7 +81,10 @@ use Spryker\Zed\Propel\Communication\Console\DatabaseDropConsole;
 use Spryker\Zed\Propel\Communication\Console\DatabaseExportConsole;
 use Spryker\Zed\Propel\Communication\Console\DatabaseImportConsole;
 use Spryker\Zed\Propel\Communication\Console\DeleteMigrationFilesConsole;
+use Spryker\Zed\Propel\Communication\Console\PropelSchemaValidatorConsole;
+use Spryker\Zed\Propel\Communication\Console\PropelSchemaXmlNameValidatorConsole;
 use Spryker\Zed\Propel\Communication\Plugin\ServiceProvider\PropelServiceProvider;
+use Spryker\Zed\Queue\Communication\Console\QueueDumpConsole;
 use Spryker\Zed\Queue\Communication\Console\QueueTaskConsole;
 use Spryker\Zed\Queue\Communication\Console\QueueWorkerConsole;
 use Spryker\Zed\Quote\Communication\Console\DeleteExpiredGuestQuoteConsole;
@@ -93,13 +128,19 @@ use Spryker\Zed\Storage\Communication\Console\StorageDeleteAllConsole;
 use Spryker\Zed\Storage\Communication\Console\StorageExportRdbConsole;
 use Spryker\Zed\Storage\Communication\Console\StorageImportRdbConsole;
 use Spryker\Zed\Synchronization\Communication\Console\ExportSynchronizedDataConsole;
+use Spryker\Zed\Transfer\Communication\Console\DataBuilderGeneratorConsole;
 use Spryker\Zed\Transfer\Communication\Console\GeneratorConsole;
+use Spryker\Zed\Transfer\Communication\Console\ValidatorConsole;
 use Spryker\Zed\Translator\Communication\Console\CleanTranslationCacheConsole;
 use Spryker\Zed\Translator\Communication\Console\GenerateTranslationCacheConsole;
 use Spryker\Zed\Twig\Communication\Console\CacheWarmerConsole;
 use Spryker\Zed\Twig\Communication\Plugin\ServiceProvider\TwigServiceProvider as SprykerTwigServiceProvider;
 use Spryker\Zed\Uuid\Communication\Console\UuidGeneratorConsole;
 use Spryker\Zed\ZedNavigation\Communication\Console\BuildNavigationConsole;
+use SprykerSdk\Spryk\Console\SprykBuildConsole;
+use SprykerSdk\Spryk\Console\SprykDumpConsole;
+use SprykerSdk\Spryk\Console\SprykRunConsole;
+use Stecman\Component\Symfony\Console\BashCompletion\CompletionCommand;
 
 /**
  * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
@@ -279,48 +320,48 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
     {
         $resolvers = [];
 
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\CodeGenerator\Communication\Console\BundleClientCodeGeneratorConsole');
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\CodeGenerator\Communication\Console\BundleCodeGeneratorConsole');
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\CodeGenerator\Communication\Console\BundleServiceCodeGeneratorConsole');
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\CodeGenerator\Communication\Console\BundleSharedCodeGeneratorConsole');
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\CodeGenerator\Communication\Console\BundleYvesCodeGeneratorConsole');
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\CodeGenerator\Communication\Console\BundleZedCodeGeneratorConsole');
+        $resolvers[] = new OptionalCommandResolver(BundleClientCodeGeneratorConsole::class);
+        $resolvers[] = new OptionalCommandResolver(BundleCodeGeneratorConsole::class);
+        $resolvers[] = new OptionalCommandResolver(BundleServiceCodeGeneratorConsole::class);
+        $resolvers[] = new OptionalCommandResolver(BundleSharedCodeGeneratorConsole::class);
+        $resolvers[] = new OptionalCommandResolver(BundleYvesCodeGeneratorConsole::class);
+        $resolvers[] = new OptionalCommandResolver(BundleZedCodeGeneratorConsole::class);
 
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\DataImport\Communication\Console\DataImportDumpConsole');
+        $resolvers[] = new OptionalCommandResolver(DataImportDumpConsole::class);
 
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\Development\Communication\Console\CodeArchitectureSnifferConsole');
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\Development\Communication\Console\CodePhpMessDetectorConsole');
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\Development\Communication\Console\CodePhpstanConsole');
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\Development\Communication\Console\CodeStyleSnifferConsole');
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\Development\Communication\Console\CodeTestConsole');
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\Development\Communication\Console\ComposerJsonUpdaterConsole');
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\Development\Communication\Console\GenerateClientIdeAutoCompletionConsole');
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\Development\Communication\Console\GenerateGlueIdeAutoCompletionConsole');
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\Development\Communication\Console\GenerateIdeAutoCompletionConsole');
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\Development\Communication\Console\GenerateServiceIdeAutoCompletionConsole');
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\Development\Communication\Console\GenerateYvesIdeAutoCompletionConsole');
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\Development\Communication\Console\GenerateZedIdeAutoCompletionConsole');
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\Development\Communication\Console\ModuleBridgeCreateConsole');
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\Development\Communication\Console\ModuleCreateConsole');
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\Development\Communication\Console\PluginUsageFinderConsole');
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\Development\Communication\Console\PropelAbstractValidateConsole');
+        $resolvers[] = new OptionalCommandResolver(CodeArchitectureSnifferConsole::class);
+        $resolvers[] = new OptionalCommandResolver(CodePhpMessDetectorConsole::class);
+        $resolvers[] = new OptionalCommandResolver(CodePhpstanConsole::class);
+        $resolvers[] = new OptionalCommandResolver(CodeStyleSnifferConsole::class);
+        $resolvers[] = new OptionalCommandResolver(CodeTestConsole::class);
+        $resolvers[] = new OptionalCommandResolver(ComposerJsonUpdaterConsole::class);
+        $resolvers[] = new OptionalCommandResolver(GenerateClientIdeAutoCompletionConsole::class);
+        $resolvers[] = new OptionalCommandResolver(GenerateGlueIdeAutoCompletionConsole::class);
+        $resolvers[] = new OptionalCommandResolver(GenerateIdeAutoCompletionConsole::class);
+        $resolvers[] = new OptionalCommandResolver(GenerateServiceIdeAutoCompletionConsole::class);
+        $resolvers[] = new OptionalCommandResolver(GenerateYvesIdeAutoCompletionConsole::class);
+        $resolvers[] = new OptionalCommandResolver(GenerateZedIdeAutoCompletionConsole::class);
+        $resolvers[] = new OptionalCommandResolver(ModuleBridgeCreateConsole::class);
+        $resolvers[] = new OptionalCommandResolver(ModuleCreateConsole::class);
+        $resolvers[] = new OptionalCommandResolver(PluginUsageFinderConsole::class);
+        $resolvers[] = new OptionalCommandResolver(PropelAbstractValidateConsole::class);
 
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\DocumentationGeneratorRestApi\Communication\Console\GenerateRestApiDocumentationConsole');
+        $resolvers[] = new OptionalCommandResolver(GenerateRestApiDocumentationConsole::class);
 
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\EventBehavior\Communication\Console\EventTriggerListenerConsole');
+        $resolvers[] = new OptionalCommandResolver(EventTriggerListenerConsole::class);
 
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\IndexGenerator\Communication\Console\PostgresIndexGeneratorConsole');
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\IndexGenerator\Communication\Console\PostgresIndexRemoverConsole');
+        $resolvers[] = new OptionalCommandResolver(PostgresIndexGeneratorConsole::class);
+        $resolvers[] = new OptionalCommandResolver(PostgresIndexRemoverConsole::class);
 
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\Propel\Communication\Console\PropelSchemaValidatorConsole');
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\Propel\Communication\Console\PropelSchemaXmlNameValidatorConsole');
+        $resolvers[] = new OptionalCommandResolver(PropelSchemaValidatorConsole::class);
+        $resolvers[] = new OptionalCommandResolver(PropelSchemaXmlNameValidatorConsole::class);
 
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\Queue\Communication\Console\QueueDumpConsole');
+        $resolvers[] = new OptionalCommandResolver(QueueDumpConsole::class);
 
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\Transfer\Communication\Console\DataBuilderGeneratorConsole');
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\Transfer\Communication\Console\ValidatorConsole');
+        $resolvers[] = new OptionalCommandResolver(DataBuilderGeneratorConsole::class);
+        $resolvers[] = new OptionalCommandResolver(ValidatorConsole::class);
 
-        $resolvers[] = new OptionalCommandResolver('\Stecman\Component\Symfony\Console\BashCompletion\CompletionCommand;');
+        $resolvers[] = new OptionalCommandResolver(CompletionCommand::class);
 
         $resolvers = $this->addProjectNonSplitOnlyResolvers($resolvers);
 
@@ -364,16 +405,16 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
      */
     protected function addProjectNonSplitOnlyResolvers(array $resolvers): array
     {
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\Development\Communication\Console\ComposerJsonValidatorConsole');
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\Development\Communication\Console\DependencyTreeBuilderConsole');
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\Development\Communication\Console\DependencyViolationFinderConsole');
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\Development\Communication\Console\DependencyViolationFixConsole');
+        $resolvers[] = new OptionalCommandResolver(ComposerJsonValidatorConsole::class);
+        $resolvers[] = new OptionalCommandResolver(DependencyTreeBuilderConsole::class);
+        $resolvers[] = new OptionalCommandResolver(DependencyViolationFinderConsole::class);
+        $resolvers[] = new OptionalCommandResolver(DependencyViolationFixConsole::class);
 
-        $resolvers[] = new OptionalCommandResolver('\Spryker\Zed\DevelopmentCore\Communication\Console\AdjustPhpstanConsole');
+        $resolvers[] = new OptionalCommandResolver(AdjustPhpstanConsole::class);
 
-        $resolvers[] = new OptionalCommandResolver('\SprykerSdk\Spryk\Console\SprykBuildConsole');
-        $resolvers[] = new OptionalCommandResolver('\SprykerSdk\Spryk\Console\SprykDumpConsole');
-        $resolvers[] = new OptionalCommandResolver('\SprykerSdk\Spryk\Console\SprykRunConsole');
+        $resolvers[] = new OptionalCommandResolver(SprykBuildConsole::class);
+        $resolvers[] = new OptionalCommandResolver(SprykDumpConsole::class);
+        $resolvers[] = new OptionalCommandResolver(SprykRunConsole::class);
 
         return $resolvers;
     }
