@@ -72,7 +72,6 @@ $config[ErrorHandlerConstants::ERROR_RENDERER] = WebExceptionErrorRenderer::clas
 $config[ApplicationConstants::ENABLE_APPLICATION_DEBUG]
     = $config[ShopApplicationConstants::ENABLE_APPLICATION_DEBUG]
     = true;
-$config[ZedRequestConstants::ENABLE_REPEAT] = true;
 $config[ZedRequestConstants::SET_REPEAT_DATA] = true;
 $config[KernelConstants::STORE_PREFIX] = 'DEV';
 
