@@ -5,9 +5,9 @@
  */
 
 use Monolog\Logger;
-use Pyz\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Api\ApiConstants;
+use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Config\ConfigConstants;
 use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebExceptionErrorRenderer;
@@ -90,7 +90,6 @@ $config[SetupConstants::JENKINS_DIRECTORY] = '/data/shop/development/shared/data
 
 // ---------- Zed request
 $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_FORWARD_ENABLED] = true;
-$config[ZedRequestConstants::ENABLE_REPEAT] = true;
 $config[ZedRequestConstants::SET_REPEAT_DATA] = true;
 $config[ZedRequestConstants::YVES_REQUEST_REPEAT_DATA_PATH] = APPLICATION_ROOT_DIR . '/data/' . Store::getInstance()->getStoreName() . '/' . APPLICATION_ENV . '/yves-requests';
 
@@ -133,11 +132,6 @@ $config[OauthConstants::OAUTH_CLIENT_SECRET] = 'abc123';
 // ---------- Api
 $config[ApiConstants::ENABLE_API_DEBUG] = true;
 
-// ---------- Application
-$config[ApplicationConstants::ENABLE_APPLICATION_SERVICE_DEBUG] = true;
-$config[ApplicationConstants::ENABLE_ZED_HOST_URL_VALIDATION] = true;
-$config[ApplicationConstants::ENABLE_API_APPLICATION_SERVICE_DEBUG] = true;
-
 // ---------- Setup
 $config[SetupConstants::ENABLE_DEPLOY_VARS] = false;
 
@@ -147,5 +141,5 @@ $config[CalculationPageConstants::ENABLE_CART_DEBUG] = true;
 // ---------- Error page
 $config[ErrorPageConstants::ENABLE_ERROR404_STACK_TRACE] = true;
 
-// ---------- Shop application
-$config[ShopApplicationConstants::ENABLE_YVES_HOST_URL_VALIDATION] = true;
+// ----------- Error handler
+$config[ErrorHandlerConstants::ENABLE_PRETTY_ERROR_HANDLER] = true;

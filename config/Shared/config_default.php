@@ -1,12 +1,12 @@
 <?php
 
 use Monolog\Logger;
-use Pyz\Shared\Application\ApplicationConstants;
 use Spryker\Client\RabbitMq\Model\RabbitMqAdapter;
 use Spryker\Glue\Log\Plugin\GlueLoggerConfigPlugin;
 use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBuilderPlugin;
 use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Api\ApiConstants;
+use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Auth\AuthConstants;
 use Spryker\Shared\CmsGui\CmsGuiConstants;
 use Spryker\Shared\Collector\CollectorConstants;
@@ -55,7 +55,6 @@ use Spryker\Zed\Propel\PropelConfig;
 use SprykerEco\Shared\Loggly\LogglyConstants;
 use SprykerShop\Shared\CalculationPage\CalculationPageConstants;
 use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
-use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
 use Twig\Cache\FilesystemCache;
 
 $CURRENT_STORE = Store::getInstance()->getStoreName();
@@ -222,7 +221,6 @@ $config[ZedRequestConstants::TRANSFER_USERNAME] = 'yves';
 $config[ZedRequestConstants::TRANSFER_PASSWORD] = 'o7&bg=Fz;nSslHBC';
 $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_FORWARD_ENABLED] = false;
 $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_NAME] = 'XDEBUG_SESSION';
-$config[ZedRequestConstants::ENABLE_REPEAT] = false;
 
 // ---------- KV storage
 $config[StorageConstants::STORAGE_KV_SOURCE] = 'redis';
@@ -466,10 +464,8 @@ $config[TranslatorConstants::TRANSLATION_ZED_FILE_PATH_PATTERNS] = [
 // ----------- Api
 $config[ApiConstants::ENABLE_API_DEBUG] = false;
 
-// ----------- Application
-$config[ApplicationConstants::ENABLE_APPLICATION_SERVICE_DEBUG] = false;
-$config[ApplicationConstants::ENABLE_ZED_HOST_URL_VALIDATION] = false;
-$config[ApplicationConstants::ENABLE_API_APPLICATION_SERVICE_DEBUG] = false;
+// ----------- Error handler
+$config[ErrorHandlerConstants::ENABLE_PRETTY_ERROR_HANDLER] = false;
 
 // ----------- Kernel test
 $config[KernelConstants::ADJUST_TEST_NAMESPACE] = false;
@@ -483,6 +479,3 @@ $config[CalculationPageConstants::ENABLE_CART_DEBUG] = false;
 
 // ----------- Error page
 $config[ErrorPageConstants::ENABLE_ERROR404_STACK_TRACE] = false;
-
-// ----------- Shop application
-$config[ShopApplicationConstants::ENABLE_YVES_HOST_URL_VALIDATION] = false;
