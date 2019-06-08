@@ -514,6 +514,4 @@ $config[SynchronizationConstants::STORAGE_SYNC_ENABLED] = true;
 $config[SynchronizationConstants::SEARCH_SYNC_ENABLED] = true;
 
 // ---------- StorageDatabase
-$config[StorageDatabaseConstants::DB_ENGINE_PGSQL] = PropelConfig::DB_ENGINE_PGSQL;
-$config[StorageDatabaseConstants::DB_ENGINE_MYSQL] = PropelConfig::DB_ENGINE_MYSQL;
 $config[StorageDatabaseConstants::DB_DEBUG] = false;
