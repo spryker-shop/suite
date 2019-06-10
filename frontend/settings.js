@@ -8,7 +8,8 @@ function getAppSettingsByStore(store) {
     const currentTheme = store.currentTheme || store.defaultTheme;
 
     // define the applicatin name
-    const name = `${store.name}_${currentTheme}`;
+    // important: the name must be normalized
+    const name = 'yves_default';
 
     // define relative urls to site host (/)
     const urls = {
