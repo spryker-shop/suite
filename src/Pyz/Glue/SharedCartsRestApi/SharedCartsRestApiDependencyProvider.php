@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * This file is part of the Spryker Suite.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
+namespace Pyz\Glue\SharedCartsRestApi;
+
+use Spryker\Glue\CompanyUserStorage\Communication\Plugin\SharedCartsRestApi\CompanyUserStorageProviderPlugin;
+use Spryker\Glue\SharedCartsRestApi\SharedCartsRestApiDependencyProvider as SprykerSharedCartsRestApiDependencyProvider;
+
+class SharedCartsRestApiDependencyProvider extends SprykerSharedCartsRestApiDependencyProvider
+{
+    /**
+     * @return \Spryker\Glue\SharedCartsRestApiExtension\Dependency\Plugin\CompanyUserProviderPluginInterface[]
+     */
+    protected function getCompanyUserProviderPlugins(): array
+    {
+        return [
+            new CompanyUserStorageProviderPlugin(),
+        ];
+    }
+}
