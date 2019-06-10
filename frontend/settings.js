@@ -4,6 +4,27 @@ const { join } = require('path');
 const context = process.cwd();
 
 function getAppSettingsByStore(store) {
+    const entryPointsParts = [
+        'components/atoms/*/index.ts',
+        'components/molecules/*/index.ts',
+        'components/organisms/*/index.ts',
+        'templates/*/index.ts',
+        'views/*/index.ts'
+    ];
+
+    const ignoreFiles = [
+        '!config',
+        '!data',
+        '!deploy',
+        '!node_modules',
+        '!public',
+        '!test'
+    ];
+
+    const entryPointsCollection = function(pathPattern) {
+        return entryPointsParts.map((element) => `${pathPattern}/${element}`);
+    };
+
     // define current theme
     const currentTheme = store.currentTheme || store.defaultTheme;
 
@@ -28,7 +49,7 @@ function getAppSettingsByStore(store) {
 
         if (currentTheme !== store.defaultTheme) {
             // assets folder for current theme in store
-            assetPathsCollection.currntAssets = join('./frontend', urls.currentAssets);
+            assetPathsCollection.currentAssets = join('./frontend', urls.currentAssets);
         }
 
         return assetPathsCollection
@@ -71,22 +92,9 @@ function getAppSettingsByStore(store) {
     let customThemeEntryPointPatterns = [];
     if (currentTheme !== store.defaultTheme) {
         customThemeEntryPointPatterns = [
-            `**/Theme/${currentTheme}/components/atoms/*/index.ts`,
-            `**/Theme/${currentTheme}/components/molecules/*/index.ts`,
-            `**/Theme/${currentTheme}/components/organisms/*/index.ts`,
-            `**/Theme/${currentTheme}/templates/*/index.ts`,
-            `**/Theme/${currentTheme}/views/*/index.ts`,
-            `**/*${store.name}/Theme/${currentTheme}/components/atoms/*/index.ts`,
-            `**/*${store.name}/Theme/${currentTheme}/components/molecules/*/index.ts`,
-            `**/*${store.name}/Theme/${currentTheme}/components/organisms/*/index.ts`,
-            `**/*${store.name}/Theme/${currentTheme}/templates/*/index.ts`,
-            `**/*${store.name}/Theme/${currentTheme}/views/*/index.ts`,
-            '!config',
-            '!data',
-            '!deploy',
-            '!node_modules',
-            '!public',
-            '!test'
+            ...entryPointsCollection(`**/Theme/${currentTheme}`),
+            ...entryPointsCollection(`**/*${store.name}/Theme/${currentTheme}`),
+            ...ignoreFiles
         ];
 
     }
@@ -112,22 +120,9 @@ function getAppSettingsByStore(store) {
                 // files/dirs patterns
                 patterns: customThemeEntryPointPatterns,
                 fallbackPatterns: [
-                    `**/Theme/${store.defaultTheme}/components/atoms/*/index.ts`,
-                    `**/Theme/${store.defaultTheme}/components/molecules/*/index.ts`,
-                    `**/Theme/${store.defaultTheme}/components/organisms/*/index.ts`,
-                    `**/Theme/${store.defaultTheme}/templates/*/index.ts`,
-                    `**/Theme/${store.defaultTheme}/views/*/index.ts`,
-                    `**/*${store.name}/Theme/${store.defaultTheme}/components/atoms/*/index.ts`,
-                    `**/*${store.name}/Theme/${store.defaultTheme}/components/molecules/*/index.ts`,
-                    `**/*${store.name}/Theme/${store.defaultTheme}/components/organisms/*/index.ts`,
-                    `**/*${store.name}/Theme/${store.defaultTheme}/templates/*/index.ts`,
-                    `**/*${store.name}/Theme/${store.defaultTheme}/views/*/index.ts`,
-                    '!config',
-                    '!data',
-                    '!deploy',
-                    '!node_modules',
-                    '!public',
-                    '!test'
+                    ...entryPointsCollection(`**/Theme/${store.defaultTheme}`),
+                    ...entryPointsCollection(`**/*${store.name}/Theme/${store.defaultTheme}`),
+                    ...ignoreFiles
                 ]
             },
 
@@ -147,12 +142,7 @@ function getAppSettingsByStore(store) {
                     `**/Theme/${store.defaultTheme}/templates/*/*.scss`,
                     `**/Theme/${store.defaultTheme}/views/*/*.scss`,
                     `!**/Theme/${store.defaultTheme}/**/style.scss`,
-                    '!config',
-                    '!data',
-                    '!deploy',
-                    '!node_modules',
-                    '!public',
-                    '!test'
+                    ...ignoreFiles
                 ]
             }
         }
@@ -161,4 +151,4 @@ function getAppSettingsByStore(store) {
 
 module.exports = {
     getAppSettingsByStore
-}
+};

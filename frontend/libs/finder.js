@@ -7,7 +7,7 @@ const defaultGlobSettings = {
     absolute: true,
     onlyFiles: true,
     onlyDirectories: false
-}
+};
 
 // perform a search in a list of directories
 // matching provided patterns
@@ -74,4 +74,4 @@ async function findStyles(settings) {
 module.exports = {
     findEntryPoints,
     findStyles
-}
+};

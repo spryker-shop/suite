@@ -6,12 +6,6 @@ for (let storeId in storesConfig) {
     stores.set(storeId, storesConfig[storeId]);
 }
 
-if (stores.has('default')) {
-    console.warn('Your store registry contains a "default".');
-    console.warn('Default store is reserved for the system and cannot be customised.');
-    console.warn('it\'s orginal configuration will be restored.');
-}
-
 function printWrongStoreIdMessage(name) {
     console.warn(`Store "${name}" does not exist.`);
 }
@@ -46,4 +40,4 @@ function getStoresByIds(ids) {
 
 module.exports = {
     getStoresByIds
-}
+};
