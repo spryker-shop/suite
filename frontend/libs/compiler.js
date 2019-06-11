@@ -1,4 +1,6 @@
 const webpack = require('webpack');
+const rimraf = require('rimraf');
+const { globalSettings } = require('../settings');
 
 // execute webpack compiler
 // and nicely handle the console output
@@ -60,7 +62,18 @@ function multiCompile(configs) {
     });
 }
 
+// clear assets
+function clearAllAssets(storeIds) {
+    if (storeIds.length === 0) {
+        console.log(globalSettings.paths.publicAll);
+        // rimraf(globalSettings.paths.publicAll, () => {
+        //     console.log(`${globalSettings.paths.publicAll} has been removed.`);
+        // });
+    }
+}
+
 module.exports = {
     compile,
-    multiCompile
-}
+    multiCompile,
+    clearAllAssets
+};

@@ -2,32 +2,15 @@ const { join } = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { findEntryPoints, findStyles } = require('../libs/finder');
 const { getAliasFromTsConfig } = require('../libs/alias');
+const { getAssetsConfig } = require('../libs/asset-manager');
 
 async function getConfiguration(appSettings) {
     const entryPointsPromise = findEntryPoints(appSettings.find.componentEntryPoints);
     const stylesPromise = findStyles(appSettings.find.componentStyles);
     const [entryPoints, styles] = await Promise.all([entryPointsPromise, stylesPromise]);
     const alias = getAliasFromTsConfig(appSettings);
-
-    const copyConfig = function() {
-        let config = [];
-
-        for (let asset in appSettings.paths.assets) {
-            config = config.concat([
-                {
-                    from: appSettings.paths.assets[asset],
-                    to: '.',
-                    ignore: ['*.gitkeep']
-                }
-            ])
-        }
-
-        return config;
-    };
 
     return {
         context: appSettings.context,
@@ -132,20 +115,7 @@ async function getConfiguration(appSettings) {
                 __PRODUCTION__: false
             }),
 
-            new CleanWebpackPlugin([
-                'js',
-                'css',
-                'images',
-                'fonts'
-            ], {
-                root: join(appSettings.context, appSettings.paths.public),
-                verbose: true,
-                beforeEmit: true
-            }),
-
-            new CopyWebpackPlugin(copyConfig(), {
-                context: appSettings.context
-            }),
+            ...getAssetsConfig(appSettings),
 
             new MiniCssExtractPlugin({
                 filename: `./css/[name].css`,

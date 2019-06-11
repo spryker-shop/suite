@@ -1,7 +1,14 @@
 const { join } = require('path');
 
-// define the current context (root)
-const context = process.cwd();
+// define global settings
+const globalSettings = {
+    // define the current context (root)
+    context: process.cwd(),
+
+    paths: {
+        publicAll: './public/Yves/assets'
+    }
+};
 
 function getAppSettingsByStore(store) {
     const entryPointsParts = [
@@ -62,7 +69,10 @@ function getAppSettingsByStore(store) {
 
         assets: assetPaths(),
 
-        // public folder
+        // public folder with all assets
+        publicAll: globalSettings.paths.publicAll,
+
+        // current store and theme public assets folder
         public: join('./public/Yves', urls.currentAssets),
 
         // core folders
@@ -103,9 +113,10 @@ function getAppSettingsByStore(store) {
     return {
         name,
         store,
-        context,
         paths,
         urls,
+
+        context: globalSettings.context,
 
         // define settings for suite-frontend-builder finder
         find: {
@@ -113,9 +124,9 @@ function getAppSettingsByStore(store) {
             componentEntryPoints: {
                 // absolute dirs in which look for
                 dirs: [
-                    join(context, paths.core.modules),
-                    join(context, paths.eco.modules),
-                    join(context, paths.project.modules)
+                    join(globalSettings.context, paths.core.modules),
+                    join(globalSettings.context, paths.eco.modules),
+                    join(globalSettings.context, paths.project.modules)
                 ],
                 // files/dirs patterns
                 patterns: customThemeEntryPointPatterns,
@@ -132,7 +143,7 @@ function getAppSettingsByStore(store) {
             componentStyles: {
                 // absolute dirs in which look for
                 dirs: [
-                    join(context, paths.core.modules)
+                    join(globalSettings.context, paths.core.modules)
                 ],
                 // files/dirs patterns
                 patterns: [
@@ -150,5 +161,6 @@ function getAppSettingsByStore(store) {
 }
 
 module.exports = {
+    globalSettings,
     getAppSettingsByStore
 };
