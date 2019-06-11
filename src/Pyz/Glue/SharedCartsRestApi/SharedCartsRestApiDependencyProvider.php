@@ -9,16 +9,15 @@ namespace Pyz\Glue\SharedCartsRestApi;
 
 use Spryker\Glue\CompanyUserStorage\Communication\Plugin\SharedCartsRestApi\CompanyUserStorageProviderPlugin;
 use Spryker\Glue\SharedCartsRestApi\SharedCartsRestApiDependencyProvider as SprykerSharedCartsRestApiDependencyProvider;
+use Spryker\Glue\SharedCartsRestApiExtension\Dependency\Plugin\CompanyUserProviderPluginInterface;
 
 class SharedCartsRestApiDependencyProvider extends SprykerSharedCartsRestApiDependencyProvider
 {
     /**
-     * @return \Spryker\Glue\SharedCartsRestApiExtension\Dependency\Plugin\CompanyUserProviderPluginInterface[]
+     * @return \Spryker\Glue\SharedCartsRestApiExtension\Dependency\Plugin\CompanyUserProviderPluginInterface
      */
-    protected function getCompanyUserProviderPlugins(): array
+    protected function getCompanyUserProviderPlugin(): CompanyUserProviderPluginInterface
     {
-        return [
-            new CompanyUserStorageProviderPlugin(),
-        ];
+        return new CompanyUserStorageProviderPlugin();
     }
 }
