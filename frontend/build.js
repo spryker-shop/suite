@@ -24,9 +24,9 @@ const configurationPromises = getStoresByIds(storeIds)
 compiler.clearAllAssets(storeIds);
 
 // build the project
-// Promise.all(configurationPromises)
-//     .then(configs => compiler.multiCompile(configs))
-//     .catch(error => console.error('An error occur while creating configuration', error));
+Promise.all(configurationPromises)
+    .then(configs => compiler.multiCompile(configs))
+    .catch(error => console.error('An error occur while creating configuration', error));
 
 
 

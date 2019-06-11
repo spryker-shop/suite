@@ -65,10 +65,9 @@ function multiCompile(configs) {
 // clear assets
 function clearAllAssets(storeIds) {
     if (storeIds.length === 0) {
-        console.log(globalSettings.paths.publicAll);
-        // rimraf(globalSettings.paths.publicAll, () => {
-        //     console.log(`${globalSettings.paths.publicAll} has been removed.`);
-        // });
+        rimraf(globalSettings.paths.publicAll, () => {
+            console.log(`${globalSettings.paths.publicAll} has been removed. \n`);
+        });
     }
 }
 
