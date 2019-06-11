@@ -8,7 +8,7 @@
 namespace Pyz\Zed\ResourceShare;
 
 use Spryker\Zed\ResourceShare\ResourceShareDependencyProvider as SprykerResourceShareDependencyProvider;
-use Spryker\Zed\SharedCart\Communication\Plugin\ResourceShare\SharedCartByUuidResourceShareZedActivatorStrategyPlugin;
+use Spryker\Zed\SharedCart\Communication\Plugin\ResourceShare\ShareCartByResourceShareZedActivatorStrategyPlugin;
 
 class ResourceShareDependencyProvider extends SprykerResourceShareDependencyProvider
 {
@@ -18,7 +18,7 @@ class ResourceShareDependencyProvider extends SprykerResourceShareDependencyProv
     protected function getResourceShareActivatorStrategyPlugins(): array
     {
         return [
-            new SharedCartByUuidResourceShareZedActivatorStrategyPlugin(),
+            new ShareCartByResourceShareZedActivatorStrategyPlugin(),
         ];
     }
 }
