@@ -8,7 +8,7 @@
 namespace Pyz\Client\ResourceShare;
 
 use Spryker\Client\ResourceShare\ResourceShareDependencyProvider as SprykerResourceShareDependencyProvider;
-use Spryker\Client\SharedCart\Plugin\ResourceShare\InternalShareIsLoginRequiredResourceShareClientActivatorStrategyPlugin;
+use Spryker\Client\SharedCart\Plugin\ResourceShare\CartShareLoginRequiredResourceShareClientActivatorStrategyPlugin;
 use Spryker\Client\SharedCart\Plugin\ResourceShare\SwitchDefaultCartResourceShareClientActivatorStrategyPlugin;
 
 class ResourceShareDependencyProvider extends SprykerResourceShareDependencyProvider
@@ -19,7 +19,7 @@ class ResourceShareDependencyProvider extends SprykerResourceShareDependencyProv
     protected function getBeforeZedResourceShareActivatorStrategyPlugins(): array
     {
         return [
-            new InternalShareIsLoginRequiredResourceShareClientActivatorStrategyPlugin(),
+            new CartShareLoginRequiredResourceShareClientActivatorStrategyPlugin(),
         ];
     }
 
