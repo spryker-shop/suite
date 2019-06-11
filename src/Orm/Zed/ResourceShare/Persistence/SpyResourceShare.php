@@ -21,4 +21,11 @@ use Spryker\Zed\ResourceShare\Persistence\Propel\AbstractSpyResourceShare as Bas
  */
 class SpyResourceShare extends BaseSpyResourceShare
 {
+    /**
+     * @return void
+     */
+    public function updateUuid(): void
+    {
+        $this->updateUuidBeforeUpdate();
+    }
 }
