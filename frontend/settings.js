@@ -1,123 +1,165 @@
-const path = require('path');
-
-// define the applicatin name
-// important: the name must be normalized
-const name = 'yves_default';
-
-// define the current theme
-const theme = 'default';
+const { join } = require('path');
 
 // define the current context (root)
 const context = process.cwd();
 
-// define project relative paths to context
-const paths = {
-    // locate the typescript configuration json file
-    tsConfig: './tsconfig.json',
+function getAppSettingsByStore(store) {
+    // define current theme
+    const currentTheme = store.currentTheme || store.defaultTheme;
 
-    // assets folder
-    assets: './frontend/assets',
+    // define the applicatin name
+    // important: the name must be normalized
+    const name = 'yves_default';
 
-    // public folder
-    public: './public/Yves/assets',
+    // define relative urls to site host (/)
+    const urls = {
+        // assets base url
+        defaultAssets: join('/assets', store.name, store.defaultTheme),
+        currentAssets: join('/assets', store.name, currentTheme)
+    };
 
-    // core folders
-    core: {
-        // all modules
-        modules: './vendor/spryker/spryker-shop/Bundles',
-        // ShopUi source folder
-        shopUiModule: `./vendor/spryker/spryker-shop/Bundles/ShopUi/src/SprykerShop/Yves/ShopUi/Theme/${theme}`
-    },
+    const assetPaths = function() {
+        let assetPathsCollection = {
+            // global assets folder
+            globalAssets: './frontend/assets/global',
 
-    // eco folders
-    eco: {
-        // all modules
-        modules: './vendor/spryker-eco'
-    },
+            // assets folder for current theme in store
+            defaultAssets: join('./frontend', urls.defaultAssets),
+        };
 
-    // project folders
-    project: {
-        // all modules
-        modules: './src/Pyz/Yves',
-        // ShopUi source folder
-        shopUiModule: `./src/Pyz/Yves/ShopUi/Theme/${theme}`
-    }
-};
+        if (currentTheme !== store.defaultTheme) {
+            // assets folder for current theme in store
+            assetPathsCollection.currntAssets = join('./frontend', urls.currentAssets);
+        }
 
-// define relative urls to site host (/)
-const urls = {
-    // assets base url
-    assets: '/assets'
-};
+        return assetPathsCollection
+    };
 
-// define components directories patterns
-const componentDirsPattern = {
-    atoms: `**/Theme/${theme}/components/atoms`,
-    molecules: `**/Theme/${theme}/components/molecules`,
-    organisms: `**/Theme/${theme}/components/organisms`,
-    templates: `**/Theme/${theme}/templates`,
-    views: `**/Theme/${theme}/views`,
-};
+    // define project relative paths to context
+    const paths = {
+        // locate the typescript configuration json file
+        tsConfig: './tsconfig.json',
 
-// define ignore dirs for entry points
-const ignoreDirs = [
-    '!config',
-    '!data',
-    '!deploy',
-    '!node_modules',
-    '!public',
-    '!test'
-];
+        assets: assetPaths(),
 
-// export settings
-module.exports = {
-    name,
-    theme,
-    context,
-    paths,
-    urls,
-    componentDirsPattern,
-    ignoreDirs,
+        // public folder
+        public: join('./public/Yves', urls.currentAssets),
 
-    // define settings for suite-frontend-builder finder
-    find: {
-        // webpack entry points (components) finder settings
-        componentEntryPoints: {
-            // absolute dirs in which look for
-            dirs: [
-                path.join(context, paths.core.modules),
-                path.join(context, paths.eco.modules),
-                path.join(context, paths.project.modules)
-            ],
-            // files/dirs patterns
-            patterns: [
-                `${componentDirsPattern.atoms}/*/index.ts`,
-                `${componentDirsPattern.molecules}/*/index.ts`,
-                `${componentDirsPattern.organisms}/*/index.ts`,
-                `${componentDirsPattern.templates}/*/index.ts`,
-                `${componentDirsPattern.views}/*/index.ts`,
-                ...ignoreDirs
-            ]
+        // core folders
+        core: {
+            // all modules
+            modules: './vendor/spryker/spryker-shop/Bundles',
+            // ShopUi source folder
+            shopUiModule: `./vendor/spryker/spryker-shop/Bundles/ShopUi/src/SprykerShop/Yves/ShopUi/Theme/${store.defaultTheme}`
         },
 
-        // core component styles finder settings
-        // important: this part is used in shared scss environment
-        // do not change unless necessary
-        componentStyles: {
-            // absolute dirs in which look for
-            dirs: [
-                path.join(context, paths.core.modules)
-            ],
-            // files/dirs patterns
-            patterns: [
-                `${componentDirsPattern.atoms}/*/*.scss`,
-                `${componentDirsPattern.molecules}/*/*.scss`,
-                `${componentDirsPattern.organisms}/*/*.scss`,
-                `${componentDirsPattern.templates}/*/*.scss`,
-                `${componentDirsPattern.views}/*/*.scss`,
-                `!**/Theme/${theme}/**/style.scss`,
-                ...ignoreDirs
-            ]
+        // eco folders
+        eco: {
+            // all modules
+            modules: './vendor/spryker-eco'
+        },
+
+        // project folders
+        project: {
+            // all modules
+            modules: './src/Pyz/Yves',
+            // ShopUi source folder
+            shopUiModule: `./src/Pyz/Yves/ShopUi/Theme/${store.defaultTheme}`
+        }
+    };
+
+    // define entry point patterns for current theme, if current theme is defined
+    let customThemeEntryPointPatterns = [];
+    if (currentTheme !== store.defaultTheme) {
+        customThemeEntryPointPatterns = [
+            `**/Theme/${currentTheme}/components/atoms/*/index.ts`,
+            `**/Theme/${currentTheme}/components/molecules/*/index.ts`,
+            `**/Theme/${currentTheme}/components/organisms/*/index.ts`,
+            `**/Theme/${currentTheme}/templates/*/index.ts`,
+            `**/Theme/${currentTheme}/views/*/index.ts`,
+            `**/*${store.name}/Theme/${currentTheme}/components/atoms/*/index.ts`,
+            `**/*${store.name}/Theme/${currentTheme}/components/molecules/*/index.ts`,
+            `**/*${store.name}/Theme/${currentTheme}/components/organisms/*/index.ts`,
+            `**/*${store.name}/Theme/${currentTheme}/templates/*/index.ts`,
+            `**/*${store.name}/Theme/${currentTheme}/views/*/index.ts`,
+            '!config',
+            '!data',
+            '!deploy',
+            '!node_modules',
+            '!public',
+            '!test'
+        ];
+
+    }
+
+    // return settings
+    return {
+        name,
+        store,
+        context,
+        paths,
+        urls,
+
+        // define settings for suite-frontend-builder finder
+        find: {
+            // webpack entry points (components) finder settings
+            componentEntryPoints: {
+                // absolute dirs in which look for
+                dirs: [
+                    join(context, paths.core.modules),
+                    join(context, paths.eco.modules),
+                    join(context, paths.project.modules)
+                ],
+                // files/dirs patterns
+                patterns: customThemeEntryPointPatterns,
+                fallbackPatterns: [
+                    `**/Theme/${store.defaultTheme}/components/atoms/*/index.ts`,
+                    `**/Theme/${store.defaultTheme}/components/molecules/*/index.ts`,
+                    `**/Theme/${store.defaultTheme}/components/organisms/*/index.ts`,
+                    `**/Theme/${store.defaultTheme}/templates/*/index.ts`,
+                    `**/Theme/${store.defaultTheme}/views/*/index.ts`,
+                    `**/*${store.name}/Theme/${store.defaultTheme}/components/atoms/*/index.ts`,
+                    `**/*${store.name}/Theme/${store.defaultTheme}/components/molecules/*/index.ts`,
+                    `**/*${store.name}/Theme/${store.defaultTheme}/components/organisms/*/index.ts`,
+                    `**/*${store.name}/Theme/${store.defaultTheme}/templates/*/index.ts`,
+                    `**/*${store.name}/Theme/${store.defaultTheme}/views/*/index.ts`,
+                    '!config',
+                    '!data',
+                    '!deploy',
+                    '!node_modules',
+                    '!public',
+                    '!test'
+                ]
+            },
+
+            // core component styles finder settings
+            // important: this part is used in shared scss environment
+            // do not change unless necessary
+            componentStyles: {
+                // absolute dirs in which look for
+                dirs: [
+                    join(context, paths.core.modules)
+                ],
+                // files/dirs patterns
+                patterns: [
+                    `**/Theme/${store.defaultTheme}/components/atoms/*/*.scss`,
+                    `**/Theme/${store.defaultTheme}/components/molecules/*/*.scss`,
+                    `**/Theme/${store.defaultTheme}/components/organisms/*/*.scss`,
+                    `**/Theme/${store.defaultTheme}/templates/*/*.scss`,
+                    `**/Theme/${store.defaultTheme}/views/*/*.scss`,
+                    `!**/Theme/${store.defaultTheme}/**/style.scss`,
+                    '!config',
+                    '!data',
+                    '!deploy',
+                    '!node_modules',
+                    '!public',
+                    '!test'
+                ]
+            }
         }
     }
+}
+
+module.exports = {
+    getAppSettingsByStore
 }

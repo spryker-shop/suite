@@ -8,8 +8,8 @@ const mergeWithStrategy = merge.smartStrategy({
     plugins: 'prepend'
 });
 
-async function configurationProdMode() {
-    const config = await getConfiguration();
+async function configurationProdMode(appSettings) {
+    const config = await getConfiguration(appSettings);
 
     return mergeWithStrategy(config, {
         mode: 'production',

@@ -6,6 +6,7 @@
 
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Kernel\Store;
+use Spryker\Shared\SetupFrontend\SetupFrontendConstants;
 use Spryker\Shared\Twig\TwigConstants;
 
 $CURRENT_STORE = Store::getInstance()->getStoreName();
@@ -16,3 +17,6 @@ $config[KernelConstants::AUTO_LOADER_UNRESOLVABLE_CACHE_ENABLED] = true;
 // ---------- Twig
 $config[TwigConstants::YVES_PATH_CACHE_ENABLED] = true;
 $config[TwigConstants::ZED_PATH_CACHE_ENABLED] = true;
+
+// ----------- Yves assets
+$config[SetupFrontendConstants::YVES_BUILD_COMMAND] = 'npm run yves:production %store%';
