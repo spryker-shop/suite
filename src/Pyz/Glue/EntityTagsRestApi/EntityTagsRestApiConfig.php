@@ -12,7 +12,14 @@ use Spryker\Glue\EntityTagsRestApi\EntityTagsRestApiConfig as SprykerEntityTagsR
 
 class EntityTagsRestApiConfig extends SprykerEntityTagsRestApiConfig
 {
-    protected const RESOURCES_ENTITY_TAG_REQUIRED = [
-        CartsRestApiConfig::RESOURCE_CARTS,
-    ];
+    /**
+     * @return string[]
+     */
+    public function getEntityTagRequiredResources(): array
+    {
+        return array_merge(
+            parent::getEntityTagRequiredResources(),
+            [CartsRestApiConfig::RESOURCE_CARTS]
+        );
+    }
 }
