@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5baf0cecf9b4f075e8a0610443072872",
+    "content-hash": "5dae1e3067a4b34a2eb3cd09fa87fd10",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.99.4",
+            "version": "3.100.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "6fff31b8402b3309fcfe51f802c5faca7c738e33"
+                "reference": "ecf8acf56bdb6e642fe86ead6c80eab0c61067cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/6fff31b8402b3309fcfe51f802c5faca7c738e33",
-                "reference": "6fff31b8402b3309fcfe51f802c5faca7c738e33",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/ecf8acf56bdb6e642fe86ead6c80eab0c61067cb",
+                "reference": "ecf8acf56bdb6e642fe86ead6c80eab0c61067cb",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-06-07T18:09:17+00:00"
+            "time": "2019-06-10T18:09:57+00:00"
         },
         {
             "name": "codeitnowin/barcode",
@@ -17382,16 +17382,16 @@
         },
         {
             "name": "spryker/heartbeat",
-            "version": "3.2.3",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/heartbeat.git",
-                "reference": "738ef769450251e5e170b4244c32b25c8fb1ee43"
+                "reference": "f2dc9ddd331b427321dd31ba3878ffef7ba82607"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/heartbeat/zipball/738ef769450251e5e170b4244c32b25c8fb1ee43",
-                "reference": "738ef769450251e5e170b4244c32b25c8fb1ee43",
+                "url": "https://api.github.com/repos/spryker/heartbeat/zipball/f2dc9ddd331b427321dd31ba3878ffef7ba82607",
+                "reference": "f2dc9ddd331b427321dd31ba3878ffef7ba82607",
                 "shasum": ""
             },
             "require": {
@@ -17399,11 +17399,9 @@
                 "spryker/application": "^3.4.0",
                 "spryker/config": "^3.0.0",
                 "spryker/elastica": "^2.0.0 || ^3.0.0 || ^4.0.0",
-                "spryker/kernel": "^3.0.0",
+                "spryker/kernel": "^3.33.0",
                 "spryker/propel-orm": "^1.0.0",
-                "spryker/redis": "^2.0.0",
-                "spryker/session": "^3.0.0 || ^4.0.0",
-                "spryker/storage": "^3.2.0",
+                "spryker/storage": "^3.8.0",
                 "spryker/symfony": "^3.0.0"
             },
             "require-dev": {
@@ -17426,7 +17424,7 @@
                 "proprietary"
             ],
             "description": "Heartbeat module",
-            "time": "2018-10-29T12:36:26+00:00"
+            "time": "2019-05-23T10:18:05+00:00"
         },
         {
             "name": "spryker/index-generator",
@@ -27266,20 +27264,27 @@
         },
         {
             "name": "spryker/redis",
-            "version": "2.0.1",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/Redis.git",
-                "reference": "5a453b3d1542f0fd8534b43e437636a54d7bc7ad"
+                "url": "https://github.com/spryker/redis.git",
+                "reference": "c99db394216128be4ed591aeca4012f33e3fccdf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/Redis/zipball/5a453b3d1542f0fd8534b43e437636a54d7bc7ad",
-                "reference": "5a453b3d1542f0fd8534b43e437636a54d7bc7ad",
+                "url": "https://api.github.com/repos/spryker/redis/zipball/c99db394216128be4ed591aeca4012f33e3fccdf",
+                "reference": "c99db394216128be4ed591aeca4012f33e3fccdf",
                 "shasum": ""
             },
             "require": {
-                "predis/predis": "^1.1.1"
+                "php": ">=7.1",
+                "predis/predis": "^1.1.1",
+                "spryker/kernel": "^3.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.8.0"
+            },
+            "require-dev": {
+                "spryker/testify": "*"
             },
             "type": "library",
             "extra": {
@@ -27287,12 +27292,17 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
-            "description": "Redis bundle",
-            "time": "2017-04-26T15:15:36+00:00"
+            "description": "Redis module",
+            "time": "2019-05-22T16:34:56+00:00"
         },
         {
             "name": "spryker/refund",
@@ -28255,24 +28265,25 @@
         },
         {
             "name": "spryker/session",
-            "version": "4.2.0",
+            "version": "4.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/session.git",
-                "reference": "2981ccbc0a5370dc5e09dd55570859d0cb64f69e"
+                "reference": "0c8cf0b1a10290123330e459f22ddec45a54ca70"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/session/zipball/2981ccbc0a5370dc5e09dd55570859d0cb64f69e",
-                "reference": "2981ccbc0a5370dc5e09dd55570859d0cb64f69e",
+                "url": "https://api.github.com/repos/spryker/session/zipball/0c8cf0b1a10290123330e459f22ddec45a54ca70",
+                "reference": "0c8cf0b1a10290123330e459f22ddec45a54ca70",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/config": "^3.0.0",
-                "spryker/kernel": "^3.0.0",
+                "spryker/kernel": "^3.33.0",
                 "spryker/monitoring": "^1.0.0 || ^2.0.0",
                 "spryker/redis": "^2.0.0",
+                "spryker/session-extension": "^1.0.0",
                 "spryker/silex": "^2.0.0",
                 "spryker/symfony": "^3.0.0"
             },
@@ -28298,7 +28309,132 @@
                 "proprietary"
             ],
             "description": "Session module",
-            "time": "2019-02-20T08:30:14+00:00"
+            "time": "2019-06-07T12:27:14+00:00"
+        },
+        {
+            "name": "spryker/session-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/session-extension.git",
+                "reference": "4f926d073daeed34a3b3bf779a2804c3ea3455db"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/session-extension/zipball/4f926d073daeed34a3b3bf779a2804c3ea3455db",
+                "reference": "4f926d073daeed34a3b3bf779a2804c3ea3455db",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SessionExtension module",
+            "time": "2019-06-07T09:07:12+00:00"
+        },
+        {
+            "name": "spryker/session-file",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/session-file.git",
+                "reference": "88c1d9e2ff309a11a5c87a4018665ac31733713b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/session-file/zipball/88c1d9e2ff309a11a5c87a4018665ac31733713b",
+                "reference": "88c1d9e2ff309a11a5c87a4018665ac31733713b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.33.0",
+                "spryker/monitoring": "^1.0.0 || ^2.0.0",
+                "spryker/session-extension": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/symfony": "^3.0.0",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SessionFile module",
+            "time": "2019-05-23T10:18:05+00:00"
+        },
+        {
+            "name": "spryker/session-redis",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/session-redis.git",
+                "reference": "e20134f120037da39acc11c056a3af579e382d29"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/session-redis/zipball/e20134f120037da39acc11c056a3af579e382d29",
+                "reference": "e20134f120037da39acc11c056a3af579e382d29",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.33.0",
+                "spryker/monitoring": "^1.0.0 || ^2.0.0",
+                "spryker/redis": "^2.1.0",
+                "spryker/session-extension": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SessionRedis module",
+            "time": "2019-05-24T12:49:42+00:00"
         },
         {
             "name": "spryker/setup",
@@ -29521,26 +29657,27 @@
         },
         {
             "name": "spryker/storage",
-            "version": "3.7.1",
+            "version": "3.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/storage.git",
-                "reference": "eb0112fb6393895d12aba6b20fcdd8ca6a69bf25"
+                "reference": "8463d624c0b6139ded013ed3687626b2fe2346bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/storage/zipball/eb0112fb6393895d12aba6b20fcdd8ca6a69bf25",
-                "reference": "eb0112fb6393895d12aba6b20fcdd8ca6a69bf25",
+                "url": "https://api.github.com/repos/spryker/storage/zipball/8463d624c0b6139ded013ed3687626b2fe2346bc",
+                "reference": "8463d624c0b6139ded013ed3687626b2fe2346bc",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/config": "^3.0.0",
                 "spryker/gui": "^3.0.0",
-                "spryker/kernel": "^3.0.0",
+                "spryker/kernel": "^3.33.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/redis": "^2.0.0",
                 "spryker/silex": "^2.0.0",
+                "spryker/storage-extension": "^1.0.0",
                 "spryker/store": "^1.4.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/util-sanitize": "^2.0.0",
@@ -29570,7 +29707,89 @@
                 "proprietary"
             ],
             "description": "Storage module",
-            "time": "2019-03-06T12:37:28+00:00"
+            "time": "2019-06-07T12:27:14+00:00"
+        },
+        {
+            "name": "spryker/storage-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/storage-extension.git",
+                "reference": "6a8ae53d7917356465c365bf6881e6dcade6fca0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/storage-extension/zipball/6a8ae53d7917356465c365bf6881e6dcade6fca0",
+                "reference": "6a8ae53d7917356465c365bf6881e6dcade6fca0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "StorageExtension module",
+            "time": "2019-06-07T09:07:12+00:00"
+        },
+        {
+            "name": "spryker/storage-redis",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/storage-redis.git",
+                "reference": "63dde0aedbc82c722a5671f867d16ad96a8a9e9b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/storage-redis/zipball/63dde0aedbc82c722a5671f867d16ad96a8a9e9b",
+                "reference": "63dde0aedbc82c722a5671f867d16ad96a8a9e9b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.33.0",
+                "spryker/redis": "^2.1.0",
+                "spryker/storage-extension": "^1.0.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "StorageRedis module",
+            "time": "2019-06-04T06:23:03+00:00"
         },
         {
             "name": "spryker/store",
@@ -34767,16 +34986,16 @@
         },
         {
             "name": "facebook/webdriver",
-            "version": "1.6.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facebook/php-webdriver.git",
-                "reference": "bd8c740097eb9f2fc3735250fc1912bc811a954e"
+                "reference": "9a52b1ac036743c31bc127fd7f2f4710e2bc968a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/bd8c740097eb9f2fc3735250fc1912bc811a954e",
-                "reference": "bd8c740097eb9f2fc3735250fc1912bc811a954e",
+                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/9a52b1ac036743c31bc127fd7f2f4710e2bc968a",
+                "reference": "9a52b1ac036743c31bc127fd7f2f4710e2bc968a",
                 "shasum": ""
             },
             "require": {
@@ -34823,7 +35042,7 @@
                 "selenium",
                 "webdriver"
             ],
-            "time": "2018-05-16T17:37:13+00:00"
+            "time": "2019-06-10T14:32:25+00:00"
         },
         {
             "name": "jakoch/phantomjs-installer",
