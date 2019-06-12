@@ -35,6 +35,8 @@ function getAppSettingsByStore(store) {
     // define current theme
     const currentTheme = store.currentTheme || store.defaultTheme;
 
+    store.name = store.name.toLowerCase();
+
     // define the applicatin name
     const name = `${store.name}_${currentTheme}`;
 
@@ -78,9 +80,7 @@ function getAppSettingsByStore(store) {
         // core folders
         core: {
             // all modules
-            modules: './vendor/spryker/spryker-shop/Bundles',
-            // ShopUi source folder
-            shopUiModule: `./vendor/spryker/spryker-shop/Bundles/ShopUi/src/SprykerShop/Yves/ShopUi/Theme/${store.defaultTheme}`
+            modules: './vendor/spryker/spryker-shop/Bundles'
         },
 
         // eco folders
@@ -92,22 +92,33 @@ function getAppSettingsByStore(store) {
         // project folders
         project: {
             // all modules
-            modules: './src/Pyz/Yves',
-            // ShopUi source folder
-            shopUiModule: `./src/Pyz/Yves/ShopUi/Theme/${store.defaultTheme}`
+            modules: './src/Pyz/Yves'
         }
     };
 
     // define entry point patterns for current theme, if current theme is defined
-    let customThemeEntryPointPatterns = [];
-    if (currentTheme !== store.defaultTheme) {
-        customThemeEntryPointPatterns = [
-            ...entryPointsCollection(`**/Theme/${currentTheme}`),
-            ...entryPointsCollection(`**/*${store.name}/Theme/${currentTheme}`),
-            ...ignoreFiles
-        ];
+    const customThemeEntryPointPatterns = function () {
+        if (currentTheme !== store.defaultTheme) {
+            return [
+                ...entryPointsCollection(`**/Theme/${currentTheme}`),
+                ...entryPointsCollection(`**/*${store.name}/Theme/${currentTheme}`),
+                ...ignoreFiles
+            ];
+        }
 
-    }
+        return [];
+    };
+
+    //
+    const shopUiEntryPointsPattern = function () {
+        if (currentTheme !== store.defaultTheme) {
+            return [
+                `./ShopUi/Theme/${currentTheme}`,
+                `./ShopUi${store.name}/Theme/${currentTheme}`
+            ];
+        }
+        return []
+    };
 
     // return settings
     return {
@@ -129,7 +140,7 @@ function getAppSettingsByStore(store) {
                     join(globalSettings.context, paths.project.modules)
                 ],
                 // files/dirs patterns
-                patterns: customThemeEntryPointPatterns,
+                patterns: customThemeEntryPointPatterns(),
                 fallbackPatterns: [
                     ...entryPointsCollection(`**/Theme/${store.defaultTheme}`),
                     ...entryPointsCollection(`**/*${store.name}/Theme/${store.defaultTheme}`),
@@ -154,6 +165,19 @@ function getAppSettingsByStore(store) {
                     `**/Theme/${store.defaultTheme}/views/*/*.scss`,
                     `!**/Theme/${store.defaultTheme}/**/style.scss`,
                     ...ignoreFiles
+                ]
+            },
+
+            shopUiEntryPoints: {
+                dirs: [
+                    join(globalSettings.context, './src/Pyz/Yves/')
+                ],
+                patterns: [
+                    ...shopUiEntryPointsPattern()
+                ],
+                fallbackPatterns: [
+                    `./ShopUi/Theme/${store.defaultTheme}`,
+                    `./ShopUi${store.name}/Theme/${store.defaultTheme}`
                 ]
             }
         }

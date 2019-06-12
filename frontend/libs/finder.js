@@ -71,7 +71,23 @@ async function findStyles(settings) {
     return styles;
 }
 
+async function findAppEntryPointPromise(settings, file) {
+    let config = Object.assign({}, settings);
+    const updatePatterns = function(patterncollection) {
+        return patterncollection.map((pattern) => {
+            return path.join(pattern, file);
+        });
+    };
+
+    config.patterns = updatePatterns(config.patterns);
+    config.fallbackPatterns = updatePatterns(config.fallbackPatterns);
+
+    const entryPoint = await findEntryPoints(config);
+    return entryPoint[0];
+}
+
 module.exports = {
     findEntryPoints,
-    findStyles
+    findStyles,
+    findAppEntryPointPromise
 };

@@ -2,7 +2,7 @@ const { join } = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { findEntryPoints, findStyles } = require('../libs/finder');
+const { findEntryPoints, findStyles, findAppEntryPointPromise } = require('../libs/finder');
 const { getAliasFromTsConfig } = require('../libs/alias');
 const { getAssetsConfig } = require('../libs/asset-manager');
 
@@ -27,12 +27,12 @@ async function getConfiguration(appSettings) {
         },
 
         entry: {
-            'vendor': join(appSettings.context, appSettings.paths.project.shopUiModule, './vendor.ts'),
+            'vendor': await findAppEntryPointPromise(appSettings.find.shopUiEntryPoints, './vendor.ts'),
             'app': [
-                join(appSettings.context, appSettings.paths.project.shopUiModule, './app.ts'),
-                join(appSettings.context, appSettings.paths.project.shopUiModule, './styles/basic.scss'),
+                await findAppEntryPointPromise(appSettings.find.shopUiEntryPoints, './app.ts'),
+                await findAppEntryPointPromise(appSettings.find.shopUiEntryPoints, './styles/basic.scss'),
                 ...entryPoints,
-                join(appSettings.context, appSettings.paths.project.shopUiModule, './styles/util.scss')
+                await findAppEntryPointPromise(appSettings.find.shopUiEntryPoints, './styles/util.scss'),
             ]
         },
 
@@ -86,7 +86,7 @@ async function getConfiguration(appSettings) {
                             loader: 'sass-resources-loader',
                             options: {
                                 resources: [
-                                    join(appSettings.context, appSettings.paths.project.shopUiModule, './styles/shared.scss'),
+                                    await findAppEntryPointPromise(appSettings.find.shopUiEntryPoints, './styles/shared.scss'),
                                     ...styles
                                 ]
                             }
