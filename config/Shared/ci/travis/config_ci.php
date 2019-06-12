@@ -25,6 +25,7 @@ use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\Twig\TwigConstants;
 use Spryker\Shared\WebProfiler\WebProfilerConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
+use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
 
 $CURRENT_STORE = Store::getInstance()->getStoreName();
 
@@ -168,3 +169,16 @@ $config[ApplicationConstants::YVES_TRUSTED_HOSTS] = [
 $config[QuoteConstants::GUEST_QUOTE_LIFETIME] = 'P01M';
 
 $config[MailConstants::SMTP_PORT] = 1025;
+
+// ---------- Kernel
+$config[KernelConstants::ADJUST_TEST_NAMESPACE] = true;
+$config[KernelConstants::OVERWRITE_CONTAINER_FOR_TESTING] = true;
+
+// ----------- Application
+$config[ApplicationConstants::TWIG_ENVIRONMENT_NAME] = 'devtest';
+
+// ---------- Session
+$config[SessionConstants::SESSION_ENVIRONMENT_NAME] = 'devtest';
+
+// ----------- Shop application
+$config[ShopApplicationConstants::SHOP_TWIG_ENVIRONMENT_NAME] = 'devtest';

@@ -5,6 +5,7 @@
  */
 
 use Monolog\Logger;
+use Pyz\Shared\Console\ConsoleConstants;
 use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Api\ApiConstants;
 use Spryker\Shared\Application\ApplicationConstants;
@@ -132,6 +133,13 @@ $config[OauthConstants::OAUTH_CLIENT_SECRET] = 'abc123';
 // ---------- Api
 $config[ApiConstants::ENABLE_API_DEBUG] = true;
 
+// ----------- Application
+$config[ApplicationConstants::TWIG_ENVIRONMENT_NAME] = 'development';
+$config[ApplicationConstants::ENABLE_APPLICATION_SERVICE_DEBUG] = true;
+
+// ----------- Shop application
+$config[ShopApplicationConstants::SHOP_TWIG_ENVIRONMENT_NAME] = 'development';
+
 // ---------- Setup
 $config[SetupConstants::ENABLE_DEPLOY_VARS] = false;
 
@@ -143,3 +151,9 @@ $config[ErrorPageConstants::ENABLE_ERROR404_STACK_TRACE] = true;
 
 // ----------- Error handler
 $config[ErrorHandlerConstants::ENABLE_PRETTY_ERROR_HANDLER] = true;
+
+// ---------- Console
+$config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = true;
+
+// ---------- Session
+$config[SessionConstants::SESSION_ENVIRONMENT_NAME] = 'development';

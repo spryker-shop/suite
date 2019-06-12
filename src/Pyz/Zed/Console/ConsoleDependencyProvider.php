@@ -21,7 +21,6 @@ use Spryker\Zed\CompanyBusinessUnitDataImport\CompanyBusinessUnitDataImportConfi
 use Spryker\Zed\CompanyDataImport\CompanyDataImportConfig;
 use Spryker\Zed\CompanyUnitAddressDataImport\CompanyUnitAddressDataImportConfig;
 use Spryker\Zed\CompanyUnitAddressLabelDataImport\CompanyUnitAddressLabelDataImportConfig;
-use Spryker\Zed\Console\Communication\Resolver\OptionalCommandResolver;
 use Spryker\Zed\Console\ConsoleDependencyProvider as SprykerConsoleDependencyProvider;
 use Spryker\Zed\DataImport\Communication\Console\DataImportConsole;
 use Spryker\Zed\DataImport\Communication\Console\DataImportDumpConsole;
@@ -141,11 +140,11 @@ use Spryker\Zed\ZedNavigation\Communication\Console\BuildNavigationConsole;
 use SprykerSdk\Spryk\Console\SprykBuildConsole;
 use SprykerSdk\Spryk\Console\SprykDumpConsole;
 use SprykerSdk\Spryk\Console\SprykRunConsole;
-use SprykerSdk\Zed\ComposerConstrainer\Communication\Console\ComposerConstraintConsole;
 use Stecman\Component\Symfony\Console\BashCompletion\CompletionCommand;
 
 /**
  * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+ * @method \Pyz\Zed\Console\ConsoleConfig getConfig()
  */
 class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 {
@@ -309,66 +308,85 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
         $commands = array_merge($commands, $propelCommands);
 
+        if ($this->getConfig()->isDevelopmentConsoleCommandsEnabled()) {
+            $commands = $this->addProjectNonsplitOnlyCommands($commands);
+
+            $commands[] = new CodeTestConsole();
+            $commands[] = new CodeStyleSnifferConsole();
+            $commands[] = new CodeArchitectureSnifferConsole();
+            $commands[] = new CodePhpstanConsole();
+            $commands[] = new ModuleBridgeCreateConsole();
+            $commands[] = new ModuleCreateConsole();
+            $commands[] = new CodePhpMessDetectorConsole();
+            $commands[] = new ComposerJsonUpdaterConsole();
+            $commands[] = new ValidatorConsole();
+            $commands[] = new BundleCodeGeneratorConsole();
+            $commands[] = new BundleYvesCodeGeneratorConsole();
+            $commands[] = new BundleZedCodeGeneratorConsole();
+            $commands[] = new BundleServiceCodeGeneratorConsole();
+            $commands[] = new BundleSharedCodeGeneratorConsole();
+            $commands[] = new BundleClientCodeGeneratorConsole();
+            $commands[] = new GenerateZedIdeAutoCompletionConsole();
+            $commands[] = new GenerateClientIdeAutoCompletionConsole();
+            $commands[] = new GenerateServiceIdeAutoCompletionConsole();
+            $commands[] = new GenerateYvesIdeAutoCompletionConsole();
+            $commands[] = new GenerateIdeAutoCompletionConsole();
+            $commands[] = new DataBuilderGeneratorConsole();
+            $commands[] = new CompletionCommand();
+            $commands[] = new DataBuilderGeneratorConsole();
+            $commands[] = new PropelSchemaValidatorConsole();
+            $commands[] = new PropelSchemaXmlNameValidatorConsole();
+            $commands[] = new DataImportDumpConsole();
+            $commands[] = new GenerateGlueIdeAutoCompletionConsole();
+            $commands[] = new PropelAbstractValidateConsole();
+            $commands[] = new PluginUsageFinderConsole();
+            $commands[] = new PostgresIndexGeneratorConsole();
+            $commands[] = new PostgresIndexRemoverConsole();
+            $commands[] = new GenerateRestApiDocumentationConsole();
+            $commands[] = new QueueDumpConsole();
+            $commands[] = new EventTriggerListenerConsole();
+        }
+
+        if ($this->getConfig()->isDevelopmentConsoleCommandsEnabled()) {
+            $commands = $this->addProjectNonsplitOnlyCommands($commands);
+
+            $commands[] = new CodeTestConsole();
+            $commands[] = new CodeStyleSnifferConsole();
+            $commands[] = new CodeArchitectureSnifferConsole();
+            $commands[] = new CodePhpstanConsole();
+            $commands[] = new ModuleBridgeCreateConsole();
+            $commands[] = new ModuleCreateConsole();
+            $commands[] = new CodePhpMessDetectorConsole();
+            $commands[] = new ComposerJsonUpdaterConsole();
+            $commands[] = new ValidatorConsole();
+            $commands[] = new BundleCodeGeneratorConsole();
+            $commands[] = new BundleYvesCodeGeneratorConsole();
+            $commands[] = new BundleZedCodeGeneratorConsole();
+            $commands[] = new BundleServiceCodeGeneratorConsole();
+            $commands[] = new BundleSharedCodeGeneratorConsole();
+            $commands[] = new BundleClientCodeGeneratorConsole();
+            $commands[] = new GenerateZedIdeAutoCompletionConsole();
+            $commands[] = new GenerateClientIdeAutoCompletionConsole();
+            $commands[] = new GenerateServiceIdeAutoCompletionConsole();
+            $commands[] = new GenerateYvesIdeAutoCompletionConsole();
+            $commands[] = new GenerateIdeAutoCompletionConsole();
+            $commands[] = new DataBuilderGeneratorConsole();
+            $commands[] = new CompletionCommand();
+            $commands[] = new DataBuilderGeneratorConsole();
+            $commands[] = new PropelSchemaValidatorConsole();
+            $commands[] = new PropelSchemaXmlNameValidatorConsole();
+            $commands[] = new DataImportDumpConsole();
+            $commands[] = new GenerateGlueIdeAutoCompletionConsole();
+            $commands[] = new PropelAbstractValidateConsole();
+            $commands[] = new PluginUsageFinderConsole();
+            $commands[] = new PostgresIndexGeneratorConsole();
+            $commands[] = new PostgresIndexRemoverConsole();
+            $commands[] = new GenerateRestApiDocumentationConsole();
+            $commands[] = new QueueDumpConsole();
+            $commands[] = new EventTriggerListenerConsole();
+        }
+
         return $commands;
-    }
-
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Console\Communication\Resolver\OptionalCommandResolverInterface[]
-     */
-    protected function getOptionalConsoleResolvers(Container $container): array
-    {
-        $resolvers = [];
-
-        $resolvers[] = new OptionalCommandResolver(BundleClientCodeGeneratorConsole::class);
-        $resolvers[] = new OptionalCommandResolver(BundleCodeGeneratorConsole::class);
-        $resolvers[] = new OptionalCommandResolver(BundleServiceCodeGeneratorConsole::class);
-        $resolvers[] = new OptionalCommandResolver(BundleSharedCodeGeneratorConsole::class);
-        $resolvers[] = new OptionalCommandResolver(BundleYvesCodeGeneratorConsole::class);
-        $resolvers[] = new OptionalCommandResolver(BundleZedCodeGeneratorConsole::class);
-
-        $resolvers[] = new OptionalCommandResolver(DataImportDumpConsole::class);
-
-        $resolvers[] = new OptionalCommandResolver(CodeArchitectureSnifferConsole::class);
-        $resolvers[] = new OptionalCommandResolver(CodePhpMessDetectorConsole::class);
-        $resolvers[] = new OptionalCommandResolver(CodePhpstanConsole::class);
-        $resolvers[] = new OptionalCommandResolver(CodeStyleSnifferConsole::class);
-        $resolvers[] = new OptionalCommandResolver(CodeTestConsole::class);
-        $resolvers[] = new OptionalCommandResolver(ComposerJsonUpdaterConsole::class);
-        $resolvers[] = new OptionalCommandResolver(GenerateClientIdeAutoCompletionConsole::class);
-        $resolvers[] = new OptionalCommandResolver(GenerateGlueIdeAutoCompletionConsole::class);
-        $resolvers[] = new OptionalCommandResolver(GenerateIdeAutoCompletionConsole::class);
-        $resolvers[] = new OptionalCommandResolver(GenerateServiceIdeAutoCompletionConsole::class);
-        $resolvers[] = new OptionalCommandResolver(GenerateYvesIdeAutoCompletionConsole::class);
-        $resolvers[] = new OptionalCommandResolver(GenerateZedIdeAutoCompletionConsole::class);
-        $resolvers[] = new OptionalCommandResolver(ModuleBridgeCreateConsole::class);
-        $resolvers[] = new OptionalCommandResolver(ModuleCreateConsole::class);
-        $resolvers[] = new OptionalCommandResolver(PluginUsageFinderConsole::class);
-        $resolvers[] = new OptionalCommandResolver(PropelAbstractValidateConsole::class);
-
-        $resolvers[] = new OptionalCommandResolver(GenerateRestApiDocumentationConsole::class);
-
-        $resolvers[] = new OptionalCommandResolver(EventTriggerListenerConsole::class);
-
-        $resolvers[] = new OptionalCommandResolver(PostgresIndexGeneratorConsole::class);
-        $resolvers[] = new OptionalCommandResolver(PostgresIndexRemoverConsole::class);
-
-        $resolvers[] = new OptionalCommandResolver(PropelSchemaValidatorConsole::class);
-        $resolvers[] = new OptionalCommandResolver(PropelSchemaXmlNameValidatorConsole::class);
-
-        $resolvers[] = new OptionalCommandResolver(QueueDumpConsole::class);
-
-        $resolvers[] = new OptionalCommandResolver(DataBuilderGeneratorConsole::class);
-        $resolvers[] = new OptionalCommandResolver(ValidatorConsole::class);
-
-        $resolvers[] = new OptionalCommandResolver(CompletionCommand::class);
-
-        $resolvers[] = new OptionalCommandResolver(ComposerConstraintConsole::class);
-
-        $resolvers = $this->addProjectNonSplitOnlyResolvers($resolvers);
-
-        return $resolvers;
     }
 
     /**
@@ -402,23 +420,24 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
     /**
      * @project Only available in internal nonsplit project, not in public split project.
      *
-     * @param array $resolvers
+     * @param array $commands
      *
      * @return array
      */
-    protected function addProjectNonSplitOnlyResolvers(array $resolvers): array
+    protected function addProjectNonsplitOnlyCommands(array $commands): array
     {
-        $resolvers[] = new OptionalCommandResolver(ComposerJsonValidatorConsole::class);
-        $resolvers[] = new OptionalCommandResolver(DependencyTreeBuilderConsole::class);
-        $resolvers[] = new OptionalCommandResolver(DependencyViolationFinderConsole::class);
-        $resolvers[] = new OptionalCommandResolver(DependencyViolationFixConsole::class);
+        $commands[] = new AdjustPhpstanConsole();
 
-        $resolvers[] = new OptionalCommandResolver(AdjustPhpstanConsole::class);
+        $commands[] = new SprykRunConsole();
+        $commands[] = new SprykDumpConsole();
+        $commands[] = new SprykBuildConsole();
 
-        $resolvers[] = new OptionalCommandResolver(SprykBuildConsole::class);
-        $resolvers[] = new OptionalCommandResolver(SprykDumpConsole::class);
-        $resolvers[] = new OptionalCommandResolver(SprykRunConsole::class);
+        $commands[] = new DependencyTreeBuilderConsole();
+        $commands[] = new DependencyViolationFinderConsole();
+        $commands[] = new DependencyViolationFixConsole();
 
-        return $resolvers;
+        $commands[] = new ComposerJsonValidatorConsole();
+
+        return $commands;
     }
 }

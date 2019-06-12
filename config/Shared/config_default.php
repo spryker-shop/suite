@@ -1,6 +1,7 @@
 <?php
 
 use Monolog\Logger;
+use Pyz\Shared\Console\ConsoleConstants;
 use Spryker\Client\RabbitMq\Model\RabbitMqAdapter;
 use Spryker\Glue\Log\Plugin\GlueLoggerConfigPlugin;
 use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBuilderPlugin;
@@ -469,6 +470,7 @@ $config[ErrorHandlerConstants::ENABLE_PRETTY_ERROR_HANDLER] = false;
 
 // ----------- Kernel test
 $config[KernelConstants::ADJUST_TEST_NAMESPACE] = false;
+$config[KernelConstants::OVERWRITE_CONTAINER_FOR_TESTING] = false;
 
 // ----------- Setup
 $config[SetupConstants::ENABLE_SCHEDULER] = true;
@@ -479,3 +481,9 @@ $config[CalculationPageConstants::ENABLE_CART_DEBUG] = false;
 
 // ----------- Error page
 $config[ErrorPageConstants::ENABLE_ERROR404_STACK_TRACE] = false;
+
+// ----------- Application
+$config[ApplicationConstants::ENABLE_APPLICATION_SERVICE_DEBUG] = false;
+
+// ------------ Console
+$config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = false;

@@ -6,6 +6,7 @@
 
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Kernel\KernelConstants;
+use Spryker\Shared\Session\SessionConstants;
 use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
 
 // ---------- General
@@ -15,3 +16,12 @@ $config[ApplicationConstants::ENABLE_APPLICATION_DEBUG]
 
 // ---------- Auto-loader
 $config[KernelConstants::AUTO_LOADER_UNRESOLVABLE_CACHE_ENABLED] = true;
+
+// ----------- Application
+$config[ApplicationConstants::TWIG_ENVIRONMENT_NAME] = 'staging';
+
+// ---------- Session
+$config[SessionConstants::SESSION_ENVIRONMENT_NAME] = 'staging';
+
+// ----------- Shop application
+$config[ShopApplicationConstants::SHOP_TWIG_ENVIRONMENT_NAME] = 'staging';
