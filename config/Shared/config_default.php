@@ -28,8 +28,6 @@ use Spryker\Shared\Monitoring\MonitoringConstants;
 use Spryker\Shared\Nopayment\NopaymentConfig;
 use Spryker\Shared\Nopayment\NopaymentConstants;
 use Spryker\Shared\Oauth\OauthConstants;
-use Spryker\Shared\OauthCompanyUser\OauthCompanyUserConstants;
-use Spryker\Shared\OauthCustomerConnector\OauthCustomerConnectorConstants;
 use Spryker\Shared\Oms\OmsConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Queue\QueueConfig;
@@ -40,7 +38,11 @@ use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\SequenceNumber\SequenceNumberConstants;
 use Spryker\Shared\Session\SessionConfig;
 use Spryker\Shared\Session\SessionConstants;
+use Spryker\Shared\SessionFile\SessionFileConstants;
+use Spryker\Shared\SessionRedis\SessionRedisConfig;
+use Spryker\Shared\SessionRedis\SessionRedisConstants;
 use Spryker\Shared\Storage\StorageConstants;
+use Spryker\Shared\StorageRedis\StorageRedisConstants;
 use Spryker\Shared\Tax\TaxConstants;
 use Spryker\Shared\Translator\TranslatorConstants;
 use Spryker\Shared\Twig\TwigConstants;
@@ -222,22 +224,26 @@ $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_NAME] = 'XDEBUG_SESSION';
 
 // ---------- KV storage
 $config[StorageConstants::STORAGE_KV_SOURCE] = 'redis';
-$config[StorageConstants::STORAGE_PERSISTENT_CONNECTION] = true;
+$config[StorageRedisConstants::STORAGE_REDIS_PERSISTENT_CONNECTION] = true;
 
 // ---------- Session
-$config[SessionConstants::YVES_SESSION_SAVE_HANDLER] = SessionConfig::SESSION_HANDLER_REDIS_LOCKING;
+$config[SessionConstants::YVES_SESSION_SAVE_HANDLER] = SessionRedisConfig::SESSION_HANDLER_REDIS_LOCKING;
 $config[SessionConstants::YVES_SESSION_TIME_TO_LIVE] = SessionConfig::SESSION_LIFETIME_1_HOUR;
+$config[SessionRedisConstants::YVES_SESSION_TIME_TO_LIVE] = $config[SessionConstants::YVES_SESSION_TIME_TO_LIVE];
+$config[SessionFileConstants::YVES_SESSION_TIME_TO_LIVE] = $config[SessionConstants::YVES_SESSION_TIME_TO_LIVE];
 $config[SessionConstants::YVES_SESSION_COOKIE_TIME_TO_LIVE] = SessionConfig::SESSION_LIFETIME_0_5_HOUR;
-$config[SessionConstants::YVES_SESSION_FILE_PATH] = session_save_path();
-$config[SessionConstants::YVES_SESSION_PERSISTENT_CONNECTION] = $config[StorageConstants::STORAGE_PERSISTENT_CONNECTION];
-$config[SessionConstants::ZED_SESSION_SAVE_HANDLER] = SessionConfig::SESSION_HANDLER_REDIS;
+$config[SessionFileConstants::YVES_SESSION_FILE_PATH] = session_save_path();
+$config[SessionConstants::YVES_SESSION_PERSISTENT_CONNECTION] = $config[StorageRedisConstants::STORAGE_REDIS_PERSISTENT_CONNECTION];
+$config[SessionConstants::ZED_SESSION_SAVE_HANDLER] = SessionRedisConfig::SESSION_HANDLER_REDIS;
 $config[SessionConstants::ZED_SESSION_TIME_TO_LIVE] = SessionConfig::SESSION_LIFETIME_1_HOUR;
+$config[SessionRedisConstants::ZED_SESSION_TIME_TO_LIVE] = $config[SessionConstants::ZED_SESSION_TIME_TO_LIVE];
+$config[SessionFileConstants::ZED_SESSION_TIME_TO_LIVE] = $config[SessionConstants::ZED_SESSION_TIME_TO_LIVE];
 $config[SessionConstants::ZED_SESSION_COOKIE_TIME_TO_LIVE] = SessionConfig::SESSION_LIFETIME_BROWSER_SESSION;
-$config[SessionConstants::ZED_SESSION_FILE_PATH] = session_save_path();
-$config[SessionConstants::ZED_SESSION_PERSISTENT_CONNECTION] = $config[StorageConstants::STORAGE_PERSISTENT_CONNECTION];
-$config[SessionConstants::SESSION_HANDLER_REDIS_LOCKING_TIMEOUT_MILLISECONDS] = 0;
-$config[SessionConstants::SESSION_HANDLER_REDIS_LOCKING_RETRY_DELAY_MICROSECONDS] = 0;
-$config[SessionConstants::SESSION_HANDLER_REDIS_LOCKING_LOCK_TTL_MILLISECONDS] = 0;
+$config[SessionFileConstants::ZED_SESSION_FILE_PATH] = session_save_path();
+$config[SessionConstants::ZED_SESSION_PERSISTENT_CONNECTION] = $config[StorageRedisConstants::STORAGE_REDIS_PERSISTENT_CONNECTION];
+$config[SessionRedisConstants::LOCKING_TIMEOUT_MILLISECONDS] = 0;
+$config[SessionRedisConstants::LOCKING_RETRY_DELAY_MICROSECONDS] = 0;
+$config[SessionRedisConstants::LOCKING_LOCK_TTL_MILLISECONDS] = 0;
 
 // ---------- Cookie
 $config[ApplicationConstants::YVES_COOKIE_DEVICE_ID_NAME] = 'did';
@@ -419,14 +425,8 @@ $config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = '';
 $config[OauthConstants::PRIVATE_KEY_PATH] = 'file://';
 $config[OauthConstants::PUBLIC_KEY_PATH] = 'file://';
 $config[OauthConstants::ENCRYPTION_KEY] = '';
-
-// ----------- AuthRestApi
-$config[OauthCustomerConnectorConstants::OAUTH_CLIENT_IDENTIFIER] = '';
-$config[OauthCustomerConnectorConstants::OAUTH_CLIENT_SECRET] = '';
-
-// ----------- CompanyUserAuthRestApi
-$config[OauthCompanyUserConstants::OAUTH_CLIENT_IDENTIFIER] = '';
-$config[OauthCompanyUserConstants::OAUTH_CLIENT_SECRET] = '';
+$config[OauthConstants::OAUTH_CLIENT_IDENTIFIER] = '';
+$config[OauthConstants::OAUTH_CLIENT_SECRET] = '';
 
 // ---------- FileSystem
 $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
