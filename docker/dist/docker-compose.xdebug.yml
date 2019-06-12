@@ -1,0 +1,54 @@
+version: "3.5"
+
+x-volumes:
+  &xdebug-volumes
+  volumes:
+    - ./docker/context/php/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/01-xdebug.ini
+    - ./docker/context/php/conf.d/xdebug.custom.ini:/usr/local/etc/php/conf.d/02-xdebug.ini
+
+x-environment:
+  &xdebug-environment
+  environment:
+    SPRYKER_XDEBUG_HOST_IP: ${SPRYKER_XDEBUG_HOST_IP}
+
+services:
+
+  zed_de:
+    <<: *xdebug-volumes
+    <<: *xdebug-environment
+
+  zed_at:
+    <<: *xdebug-volumes
+    <<: *xdebug-environment
+
+  zed_us:
+    <<: *xdebug-volumes
+    <<: *xdebug-environment
+
+  yves_de:
+    <<: *xdebug-volumes
+    <<: *xdebug-environment
+
+  yves_at:
+    <<: *xdebug-volumes
+    <<: *xdebug-environment
+
+  yves_us:
+    <<: *xdebug-volumes
+    <<: *xdebug-environment
+
+  glue_de:
+    <<: *xdebug-volumes
+    <<: *xdebug-environment
+
+  glue_at:
+    <<: *xdebug-volumes
+    <<: *xdebug-environment
+
+  glue_us:
+    <<: *xdebug-volumes
+    <<: *xdebug-environment
+
+  scheduler:
+    <<: *xdebug-volumes
+    <<: *xdebug-environment

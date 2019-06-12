@@ -1,0 +1,66 @@
+version: "3.5"
+
+
+x-volumes:
+  &win-dev-volumes
+  volumes:
+    - ./docker/context/php/opcache_dev.ini:/etc/php7/conf.d/opcache.ini
+    - data-sync://data
+
+x-env_file:
+  &win-dev-envfile
+  env_file:
+    - docker/dev.env
+
+services:
+
+  yves_de:
+    <<: *win-dev-envfile
+    <<: *win-dev-volumes
+
+  yves_at:
+    <<: *win-dev-envfile
+    <<: *win-dev-volumes
+
+  yves_us:
+    <<: *win-dev-envfile
+    <<: *win-dev-volumes
+
+  glue_de:
+    <<: *win-dev-envfile
+    <<: *win-dev-volumes
+
+  glue_at:
+    <<: *win-dev-envfile
+    <<: *win-dev-volumes
+
+  glue_us:
+    <<: *win-dev-envfile
+    <<: *win-dev-volumes
+
+  zed_de:
+    <<: *win-dev-envfile
+    <<: *win-dev-volumes
+
+  zed_at:
+    <<: *win-dev-envfile
+    <<: *win-dev-volumes
+
+  zed_us:
+    <<: *win-dev-envfile
+    <<: *win-dev-volumes
+
+  scheduler:
+    <<: *win-dev-envfile
+    <<: *win-dev-volumes
+
+  nginx_frontend:
+    volumes:
+        - ./docker/context/nginx/vhost.d:/etc/nginx/vhost.d
+        - ./docker/context/nginx/vhost.d_dev/default_dev:/etc/nginx/vhost.d/default
+        - data-sync://data
+
+volumes:
+  data-sync:
+    external: true
+  assets:

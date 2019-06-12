@@ -1,0 +1,377 @@
+version: "3.5"
+services:
+
+  nginx_frontend:
+    image: jwilder/nginx-proxy:alpine
+    ports:
+      - "0.0.0.0:80:80"
+    networks:
+      - services
+      - public
+    depends_on:
+      - yves_de
+      - yves_at
+      - yves_us
+      - zed_de
+      - zed_at
+      - zed_us
+      - glue_de
+      - glue_at
+      - glue_us
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./docker/context/nginx/vhost.d:/etc/nginx/vhost.d
+      - ./docker/context/nginx/nginx.tmpl:/app/nginx.tmpl
+      - ./public/Yves/favicon.ico:/public/favicon.ico:ro
+      - assets:/assets:ro
+    environment:
+      DHPARAM_BITS: 1024
+      DHPARAM_GENERATION: "false"
+      SCOPE: "public"
+
+  yves_de:
+    image: spryker_app:latest
+    depends_on:
+      - rpc_server_de
+      - key_value_store
+      - search
+    networks:
+      - services
+    env_file:
+      - docker/.env
+      - docker/DE.env
+      - docker/DS1.env
+    environment:
+      VIRTUAL_HOST: "public:DE:SPRYKER_FE_HOST:SPRYKER_FE_PORT"
+      VIRTUAL_PROTO: fastcgi
+      VIRTUAL_PORT: 9000
+      VIRTUAL_ROOT: /data/public/Yves
+    volumes:
+        - logs:/var/log/spryker:rw
+
+  yves_at:
+    image: spryker_app:latest
+    depends_on:
+      - rpc_server_at
+      - key_value_store
+      - search
+    networks:
+      - services
+    env_file:
+      - docker/.env
+      - docker/AT.env
+      - docker/DS1.env
+    environment:
+      VIRTUAL_HOST: "public:AT:SPRYKER_FE_HOST:SPRYKER_FE_PORT"
+      VIRTUAL_PROTO: fastcgi
+      VIRTUAL_PORT: 9000
+      VIRTUAL_ROOT: /data/public/Yves
+    volumes:
+        - logs:/var/log/spryker:rw
+
+  yves_us:
+    image: spryker_app:latest
+    depends_on:
+      - rpc_server_us
+      - key_value_store
+      - search
+    networks:
+      - services
+    env_file:
+      - docker/.env
+      - docker/US.env
+      - docker/DS2.env
+    environment:
+      VIRTUAL_HOST: "public:US:SPRYKER_FE_HOST:SPRYKER_FE_PORT"
+      VIRTUAL_PROTO: fastcgi
+      VIRTUAL_PORT: 9000
+      VIRTUAL_ROOT: /data/public/Yves
+    volumes:
+        - logs:/var/log/spryker:rw
+
+  glue_de:
+    image: spryker_app:latest
+    depends_on:
+      - rpc_server_de
+      - key_value_store
+      - search
+    env_file:
+      - docker/.env
+      - docker/DE.env
+      - docker/DS1.env
+    networks:
+      - services
+    environment:
+      VIRTUAL_HOST: "public:DE:SPRYKER_API_HOST:SPRYKER_API_PORT"
+      VIRTUAL_PROTO: fastcgi
+      VIRTUAL_PORT: 9000
+      VIRTUAL_ROOT: /data/public/Glue
+    volumes:
+        - logs:/var/log/spryker:rw
+
+  glue_at:
+    image: spryker_app:latest
+    depends_on:
+      - rpc_server_at
+      - key_value_store
+      - search
+    env_file:
+      - docker/.env
+      - docker/AT.env
+      - docker/DS1.env
+    networks:
+      - services
+    environment:
+      VIRTUAL_HOST: "public:AT:SPRYKER_API_HOST:SPRYKER_API_PORT"
+      VIRTUAL_PROTO: fastcgi
+      VIRTUAL_PORT: 9000
+      VIRTUAL_ROOT: /data/public/Glue
+    volumes:
+        - logs:/var/log/spryker:rw
+
+  glue_us:
+    image: spryker_app:latest
+    depends_on:
+      - rpc_server_us
+      - key_value_store
+      - search
+    env_file:
+      - docker/.env
+      - docker/US.env
+      - docker/DS2.env
+    networks:
+      - services
+    environment:
+      VIRTUAL_HOST: "public:US:SPRYKER_API_HOST:SPRYKER_API_PORT"
+      VIRTUAL_PROTO: fastcgi
+      VIRTUAL_PORT: 9000
+      VIRTUAL_ROOT: /data/public/Glue
+    volumes:
+        - logs:/var/log/spryker:rw
+
+  rpc_server_de:
+    image: jwilder/nginx-proxy:alpine
+    depends_on:
+      - zed_de
+    networks:
+      - services
+      - private
+    env_file:
+      - docker/DE.env
+    environment:
+      DHPARAM_BITS: 1024
+      DHPARAM_GENERATION: "false"
+      SCOPE: "private"
+      VIRTUAL_HOST: "public:DE:SPRYKER_BE_HOST:SPRYKER_BE_PORT"
+      VIRTUAL_PORT: 80
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./docker/context/nginx/nginx.tmpl:/app/nginx.tmpl
+      - ./docker/context/nginx/vhost.d:/etc/nginx/vhost.d
+
+  rpc_server_at:
+    image: jwilder/nginx-proxy:alpine
+    depends_on:
+      - zed_at
+    networks:
+      - services
+      - private
+    env_file:
+      - docker/AT.env
+    environment:
+      DHPARAM_BITS: 1024
+      DHPARAM_GENERATION: "false"
+      SCOPE: "private"
+      VIRTUAL_HOST: "public:AT:SPRYKER_BE_HOST:SPRYKER_BE_PORT"
+      VIRTUAL_PORT: 80
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./docker/context/nginx/nginx.tmpl:/app/nginx.tmpl
+      - ./docker/context/nginx/vhost.d:/etc/nginx/vhost.d
+
+  rpc_server_us:
+    image: jwilder/nginx-proxy:alpine
+    depends_on:
+      - zed_us
+    networks:
+      - services
+      - private
+    env_file:
+      - docker/US.env
+    environment:
+      DHPARAM_BITS: 1024
+      DHPARAM_GENERATION: "false"
+      SCOPE: "private"
+      VIRTUAL_HOST: "public:US:SPRYKER_BE_HOST:SPRYKER_BE_PORT"
+      VIRTUAL_PORT: 80
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./docker/context/nginx/nginx.tmpl:/app/nginx.tmpl
+      - ./docker/context/nginx/vhost.d:/etc/nginx/vhost.d
+
+
+  zed_de:
+    image: spryker_app:latest
+    depends_on:
+      - db
+      - broker
+    networks:
+      - private
+    env_file:
+      - docker/.env
+      - docker/DE.env
+      - docker/DS1.env
+    volumes:
+        - logs:/var/log/spryker:rw
+    environment:
+      VIRTUAL_HOST: "private:DE:SPRYKER_ZED_HOST:SPRYKER_ZED_PORT,private:DE:SPRYKER_BE_HOST:SPRYKER_ZED_PORT"
+      VIRTUAL_PORT: 9000
+      VIRTUAL_PROTO: fastcgi
+      VIRTUAL_ROOT: /data/public/Zed
+
+  zed_at:
+    image: spryker_app:latest
+    depends_on:
+      - db
+      - broker
+    networks:
+      - private
+    env_file:
+      - docker/.env
+      - docker/AT.env
+      - docker/DS1.env
+    volumes:
+        - logs:/var/log/spryker:rw
+    environment:
+      VIRTUAL_HOST: "private:AT:SPRYKER_ZED_HOST:SPRYKER_ZED_PORT,private:AT:SPRYKER_BE_HOST:SPRYKER_ZED_PORT"
+      VIRTUAL_PORT: 9000
+      VIRTUAL_PROTO: fastcgi
+      VIRTUAL_ROOT: /data/public/Zed
+
+  zed_us:
+    image: spryker_app:latest
+    depends_on:
+      - db
+      - broker
+    networks:
+      - private
+    env_file:
+      - docker/.env
+      - docker/US.env
+      - docker/DS2.env
+    volumes:
+        - logs:/var/log/spryker:rw
+    environment:
+      VIRTUAL_HOST: "private:US:SPRYKER_ZED_HOST:SPRYKER_ZED_PORT,private:US:SPRYKER_BE_HOST:SPRYKER_ZED_PORT"
+      VIRTUAL_PORT: 9000
+      VIRTUAL_PROTO: fastcgi
+      VIRTUAL_ROOT: /data/public/Zed
+
+  mailhog:
+    restart: always
+    image: mailhog/mailhog:v1.0.0
+    networks:
+      - services
+      - private
+    environment:
+      MH_SMTP_BIND_ADDR: 0.0.0.0:1025
+      VIRTUAL_HOST: "public:services:SPRYKER_MAIL_HOST"
+      VIRTUAL_PORT: 8025
+    env_file:
+      - docker/services.env
+
+
+  db:
+    image: postgres:9.6-alpine
+    networks:
+      - services
+      - private
+    environment:
+      POSTGRES_USER: ${SPRYKER_DB_USERNAME}
+      POSTGRES_PASSWORD: ${SPRYKER_DB_PASSWORD}
+    volumes:
+      - db-data:/var/lib/postgresql/data:rw
+
+  search:
+    image: elasticsearch:5.6-alpine
+    networks:
+      - services
+      - private
+    environment:
+      ES_JAVA_OPTS: "-Xms384m -Xmx512m"
+    volumes:
+      - search-data:/usr/share/elasticsearch/data:rw
+
+  key_value_store:
+    image: redis:5.0-alpine
+    command: 'redis-server --appendonly yes --save \"\"'
+    networks:
+      - services
+      - private
+    volumes:
+      - key_value_store-data:/data
+
+  broker:
+    build:
+      context: .
+      dockerfile: docker/rabbitmq/Dockerfile
+    image: spryker_rabbitmq:1.0
+    networks:
+      - services
+      - private
+    environment:
+      RABBITMQ_DEFAULT_USER: ${SPRYKER_BROKER_USERNAME}
+      RABBITMQ_DEFAULT_PASS: ${SPRYKER_BROKER_PASSWORD}
+      RABBITMQ_DEFAULT_VHOST: ${SPRYKER_BROKER_NAMESPACE}
+      VIRTUAL_HOST: "public:services:SPRYKER_BROKER_HOST"
+      VIRTUAL_PORT: 15672
+    volumes:
+      - broker-data:/var/lib/rabbitmq:rw
+    env_file:
+      - docker/services.env
+
+  scheduler:
+    build:
+      context: .
+      dockerfile: docker/jenkins/Dockerfile
+    image: spryker_jenkins:1.0
+    environment:
+      JAVA_OPTS: '-Djenkins.install.runSetupWizard=false'
+      VIRTUAL_HOST: "public:services:SPRYKER_SCHEDULER_HOST"
+      VIRTUAL_PORT: 8080
+    depends_on:
+      - db
+      - key_value_store
+      - search
+      - broker
+    networks:
+      - services
+      - private
+    env_file:
+      - docker/.env
+      - docker/services.env
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - scheduler-data:/var/jenkins_home:rw
+
+volumes:
+  db-data:
+    external: false
+  search-data:
+    external: false
+  key_value_store-data:
+    external: false
+  broker-data:
+    external: false
+  scheduler-data:
+    external: false
+  logs:
+    external: false
+  assets:
+    external: true
+    name: "${COMPOSE_PROJECT_NAME}_assets"
+
+networks:
+  public:
+  services:
+  private:

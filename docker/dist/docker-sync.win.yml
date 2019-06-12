@@ -1,0 +1,16 @@
+version: "2"
+
+options:
+  verbose: true
+syncs:
+  data-sync:
+    src: '.'
+    sync_strategy: 'unison'
+    sync_excludes: ['.gitignore', '.git', '.idea', '.project', 'data/*/cache', '*.log', 'node_modules', 'docker', '.composer', '.npm']
+    sync_userid: '1000'
+    sync_args:
+      - "-prefer newer"
+      - "-perms=0"
+    monit_enable: true
+    monit_interval: 3
+    monit_high_cpu_cycles: 2

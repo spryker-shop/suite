@@ -1,0 +1,65 @@
+version: "3.5"
+
+x-ssl-environment:
+  &ssl-environment
+    HTTPS_METHOD: noredirect
+    CERT_NAME: ${SPRYKER_DOCKER_PREFIX}_ssl_
+
+services:
+  nginx_frontend:
+    ports:
+      - "0.0.0.0:443:443"
+    volumes:
+      - ./docker/context/certs:/etc/nginx/spryker_certs
+  yves_de:
+    environment:
+      <<: *ssl-environment
+      SPRYKER_SSL_ENABLE: 1
+  glue_de:
+    environment:
+      <<: *ssl-environment
+      SPRYKER_SSL_ENABLE: 1
+  rpc_server_de:
+    environment:
+      <<: *ssl-environment
+
+
+  yves_at:
+    environment:
+      <<: *ssl-environment
+      SPRYKER_SSL_ENABLE: 1
+  glue_at:
+    environment:
+      <<: *ssl-environment
+      SPRYKER_SSL_ENABLE: 1
+  rpc_server_at:
+    environment:
+      <<: *ssl-environment
+
+
+  yves_us:
+    environment:
+      <<: *ssl-environment
+      SPRYKER_SSL_ENABLE: 1
+  glue_us:
+    environment:
+      <<: *ssl-environment
+      SPRYKER_SSL_ENABLE: 1
+  rpc_server_us:
+    environment:
+      <<: *ssl-environment
+
+  scheduler:
+    environment:
+      <<: *ssl-environment
+      SPRYKER_SSL_ENABLE: 1
+
+  broker:
+    environment:
+      <<: *ssl-environment
+      SPRYKER_SSL_ENABLE: 1
+
+  mailhog:
+    environment:
+      <<: *ssl-environment
+      SPRYKER_SSL_ENABLE: 1
