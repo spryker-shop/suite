@@ -1,6 +1,7 @@
 <?php
 
 use Monolog\Logger;
+use Pyz\Shared\Console\ConsoleConstants;
 use Pyz\Yves\ShopApplication\YvesBootstrap;
 use Pyz\Zed\Application\Communication\ZedBootstrap;
 use Spryker\Shared\Application\ApplicationConstants;
@@ -181,3 +182,6 @@ $config[ShopApplicationConstants::TWIG_ENVIRONMENT_NAME] = 'devtest';
 
 // ---------- Session
 $config[SessionConstants::SESSION_ENVIRONMENT_NAME] = 'devtest';
+
+// ---------- Console
+$config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = true;
