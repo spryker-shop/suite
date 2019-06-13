@@ -318,6 +318,11 @@ function buildBaseImageDev() {
       echo \"cd /data\" >> /data/deploy/vars ; \
       ln -s /data '/data/\$destination_release_dir'"
     fi
+    # Fix the docker-sync permission issue on windows 
+    if [ ${OS_WINDOWS} -eq 1 ]; then
+       executableFile=$(buildSprykerDev '[ ! -x $(readlink -f vendor/bin/console) ] && echo 0 || echo 1'|tail -n 1)
+       [ "${executableFile}" == "0" ] && buildSprykerDev 'chmod +x vendor/bin/*' 
+    fi
   fi
 }
 
