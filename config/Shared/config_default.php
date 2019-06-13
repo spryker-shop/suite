@@ -40,10 +40,10 @@ use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\SequenceNumber\SequenceNumberConstants;
 use Spryker\Shared\Session\SessionConfig;
 use Spryker\Shared\Session\SessionConstants;
-use Spryker\Shared\Setup\SetupConstants;
 use Spryker\Shared\SessionFile\SessionFileConstants;
 use Spryker\Shared\SessionRedis\SessionRedisConfig;
 use Spryker\Shared\SessionRedis\SessionRedisConstants;
+use Spryker\Shared\Setup\SetupConstants;
 use Spryker\Shared\Storage\StorageConstants;
 use Spryker\Shared\StorageRedis\StorageRedisConstants;
 use Spryker\Shared\Tax\TaxConstants;
@@ -531,9 +531,6 @@ $config[CalculationPageConstants::ENABLE_CART_DEBUG] = false;
 
 // ----------- Error page
 $config[ErrorPageConstants::ENABLE_ERROR404_STACK_TRACE] = false;
-
-// ----------- Application
-$config[ApplicationConstants::ENABLE_APPLICATION_SERVICE_DEBUG] = false;
 
 // ------------ Console
 $config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = false;
