@@ -274,7 +274,13 @@ function buildBaseImage() {
   [[ ${SPRYKER_DEVELOPMENT_ENABLE} == 1 ]] && docker pull ${SPRYKER_BASE_IMAGE_NAME}
 
   ${ifVerbose} && echo -e "${INFO}Building base_app image (based on base_platform)${NC}"
-  eval $(cat "${DOCKER_DIR}/.env" | grep "^GITHUB_TOKEN=")
+  if [[ -z ${GITHUB_TOKEN} ]]; then
+    eval $(cat "${DOCKER_DIR}/.env" | grep "^GITHUB_TOKEN=")
+  fi
+  if [[ -z ${GITHUB_TOKEN} ]]; then
+    echo -e "${INFO}GITHUB_TOKEN is not set.${NC}"
+  fi
+
   docker build -t ${SPRYKER_DOCKER_PREFIX}_app:${SPRYKER_DOCKER_VERSION} \
     --progress=${PROGRESS_TYPE} \
     -f ${DOCKER_DIR}/${BASE_APP_FOLDER:-base_app}/Dockerfile \
@@ -318,10 +324,10 @@ function buildBaseImageDev() {
       echo \"cd /data\" >> /data/deploy/vars ; \
       ln -s /data '/data/\$destination_release_dir'"
     fi
-    # Fix the docker-sync permission issue on windows 
+    # Fix the docker-sync permission issue on windows
     if [ ${OS_WINDOWS} -eq 1 ]; then
        executableFile=$(buildSprykerDev '[ ! -x $(readlink -f vendor/bin/console) ] && echo 0 || echo 1'|tail -n 1)
-       [ "${executableFile}" == "0" ] && buildSprykerDev 'chmod +x vendor/bin/*' 
+       [ "${executableFile}" == "0" ] && buildSprykerDev 'chmod +x vendor/bin/*'
     fi
   fi
 }
@@ -650,7 +656,7 @@ function doBootstrap() {
   DEST_DIR="${DOCKER_DIR}"
   echo -e "${INFO}Boostrapping docker setup...${NC}"
   if [ -f "${DOCKER_DIR}/.env" ]; then
-    echo "Saving backup of docker/.env"
+    echo "${WHITE}Saving backup of docker/.env${NC}"
     cp -f "${DOCKER_DIR}/.env" "${DOCKER_DIR}/.env.bak"
   fi
   echo -e "${WHITE}Copying files from ${DIST_DIR} to ${DEST_DIR}${NC}"
