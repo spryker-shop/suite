@@ -2,15 +2,21 @@ const { join } = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { findEntryPoints, findStyles, findAppEntryPointPromise } = require('../libs/finder');
+const { findComponentEntryPoints, findStyles, findAppEntryPoint } = require('../libs/finder');
 const { getAliasFromTsConfig } = require('../libs/alias');
 const { getAssetsConfig } = require('../libs/asset-manager');
 
 async function getConfiguration(appSettings) {
-    const entryPointsPromise = findEntryPoints(appSettings.find.componentEntryPoints);
+    const componentEntryPointsPromise = findComponentEntryPoints(appSettings.find.componentEntryPoints);
     const stylesPromise = findStyles(appSettings.find.componentStyles);
-    const [entryPoints, styles] = await Promise.all([entryPointsPromise, stylesPromise]);
+    const [componentEntryPoints, styles] = await Promise.all([componentEntryPointsPromise, stylesPromise]);
     const alias = getAliasFromTsConfig(appSettings);
+
+    const vendorTs = await findAppEntryPoint(appSettings.find.shopUiEntryPoints, './vendor.ts');
+    const appTs = await findAppEntryPoint(appSettings.find.shopUiEntryPoints, './app.ts');
+    const basicScss = await findAppEntryPoint(appSettings.find.shopUiEntryPoints, './styles/basic.scss');
+    const utilScss = await findAppEntryPoint(appSettings.find.shopUiEntryPoints, './styles/util.scss');
+    const sharedScss = await findAppEntryPoint(appSettings.find.shopUiEntryPoints, './styles/shared.scss');
 
     return {
         context: appSettings.context,
@@ -27,12 +33,12 @@ async function getConfiguration(appSettings) {
         },
 
         entry: {
-            'vendor': await findAppEntryPointPromise(appSettings.find.shopUiEntryPoints, './vendor.ts'),
+            'vendor': vendorTs,
             'app': [
-                await findAppEntryPointPromise(appSettings.find.shopUiEntryPoints, './app.ts'),
-                await findAppEntryPointPromise(appSettings.find.shopUiEntryPoints, './styles/basic.scss'),
-                ...entryPoints,
-                await findAppEntryPointPromise(appSettings.find.shopUiEntryPoints, './styles/util.scss'),
+                appTs,
+                basicScss,
+                ...componentEntryPoints,
+                utilScss,
             ]
         },
 
@@ -86,7 +92,7 @@ async function getConfiguration(appSettings) {
                             loader: 'sass-resources-loader',
                             options: {
                                 resources: [
-                                    await findAppEntryPointPromise(appSettings.find.shopUiEntryPoints, './styles/shared.scss'),
+                                    sharedScss,
                                     ...styles
                                 ]
                             }

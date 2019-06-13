@@ -35,8 +35,6 @@ function getAppSettingsByStore(store) {
     // define current theme
     const currentTheme = store.currentTheme || store.defaultTheme;
 
-    store.name = store.name.toLowerCase();
-
     // define the applicatin name
     // important: the name must be normalized
     const name = 'yves_default';
@@ -44,8 +42,8 @@ function getAppSettingsByStore(store) {
     // define relative urls to site host (/)
     const urls = {
         // assets base url
-        defaultAssets: join('/assets', store.name, store.defaultTheme),
-        currentAssets: join('/assets', store.name, currentTheme)
+        defaultAssets: join('/assets', store.storeKey, store.defaultTheme),
+        currentAssets: join('/assets', store.storeKey, currentTheme)
     };
 
     const assetPaths = function() {
@@ -102,7 +100,7 @@ function getAppSettingsByStore(store) {
         if (currentTheme !== store.defaultTheme) {
             return [
                 ...entryPointsCollection(`**/Theme/${currentTheme}`),
-                ...entryPointsCollection(`**/*${store.name}/Theme/${currentTheme}`),
+                ...entryPointsCollection(`**/*${store.storeKey}/Theme/${currentTheme}`),
                 ...ignoreFiles
             ];
         }
@@ -115,7 +113,7 @@ function getAppSettingsByStore(store) {
         if (currentTheme !== store.defaultTheme) {
             return [
                 `./ShopUi/Theme/${currentTheme}`,
-                `./ShopUi${store.name}/Theme/${currentTheme}`
+                `./ShopUi${store.storeKey}/Theme/${currentTheme}`
             ];
         }
         return []
@@ -144,7 +142,7 @@ function getAppSettingsByStore(store) {
                 patterns: customThemeEntryPointPatterns(),
                 fallbackPatterns: [
                     ...entryPointsCollection(`**/Theme/${store.defaultTheme}`),
-                    ...entryPointsCollection(`**/*${store.name}/Theme/${store.defaultTheme}`),
+                    ...entryPointsCollection(`**/*${store.storeKey}/Theme/${store.defaultTheme}`),
                     ...ignoreFiles
                 ]
             },
@@ -178,7 +176,7 @@ function getAppSettingsByStore(store) {
                 ],
                 fallbackPatterns: [
                     `./ShopUi/Theme/${store.defaultTheme}`,
-                    `./ShopUi${store.name}/Theme/${store.defaultTheme}`
+                    `./ShopUi${store.storeKey}/Theme/${store.defaultTheme}`
                 ]
             }
         }
