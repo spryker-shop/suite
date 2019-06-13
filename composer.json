@@ -3,7 +3,7 @@
   "description": "Spryker Suite (internal)",
   "license": "MIT",
   "require": {
-    "spryker/spryker": "dev-feature/glue-5817/glue-7132-implement-etag-header",
+    "spryker/spryker": "dev-feature/glue-5817/dev-implement-etag-header",
     "spryker/spryker-shop": "dev-master",
     "spryker-eco/loggly": "dev-master",
     "spryker/rabbit-mq": "dev-master",
@@ -88,7 +88,8 @@
     "myclabs/deep-copy": "~1.8.1",
     "spryker-sdk/phpstan-spryker": "dev-master",
     "spryker-sdk/spryk": "dev-master as 0.2.0",
-    "spryker-sdk/spryk-gui": "dev-master as 0.1.1",
+    "spryker-sdk/spryk-gui": "dev-master",
+    "spryker-sdk/composer-constrainer": "dev-master",
     "roave/better-reflection": "~3.3.0"
   },
   "autoload": {
@@ -133,6 +134,10 @@
     {
       "type": "git",
       "url": "git@github.com:spryker/development-core.git"
+    },
+    {
+      "type": "git",
+      "url": "git@github.com:spryker-sdk/composer-constrainer.git"
     }
   ],
   "scripts": {
