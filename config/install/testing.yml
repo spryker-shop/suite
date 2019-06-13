@@ -131,6 +131,9 @@ sections:
         yves-install-dependencies:
             command: "vendor/bin/console frontend:yves:install-dependencies"
 
+        yves-prepare-config-frontend:
+            command: "vendor/bin/console frontend:yves:prepare-config"
+
         yves-build-frontend:
             command: "vendor/bin/console frontend:yves:build"
 

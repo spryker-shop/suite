@@ -38,7 +38,8 @@ function getAppSettingsByStore(store) {
     store.name = store.name.toLowerCase();
 
     // define the applicatin name
-    const name = `${store.name}_${currentTheme}`;
+    // important: the name must be normalized
+    const name = 'yves_default';
 
     // define relative urls to site host (/)
     const urls = {

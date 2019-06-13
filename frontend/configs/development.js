@@ -39,7 +39,7 @@ async function getConfiguration(appSettings) {
         output: {
             path: join(appSettings.context, appSettings.paths.public),
             publicPath: `${appSettings.urls.currentAssets}/`,
-            filename: `./js/[name].js`,
+            filename: `./js/${appSettings.name}.[name].js`,
             jsonpFunction: `webpackJsonp_${appSettings.name.replace(/(-|\W)+/gi, '_')}`
         },
 
@@ -118,7 +118,7 @@ async function getConfiguration(appSettings) {
             ...getAssetsConfig(appSettings),
 
             new MiniCssExtractPlugin({
-                filename: `./css/[name].css`,
+                filename: `./css/${appSettings.name}.[name].css`,
             }),
 
             (compiler) => compiler.hooks.done.tap('webpack', compilationParams => {
