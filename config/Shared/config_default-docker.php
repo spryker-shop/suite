@@ -153,7 +153,7 @@ $config[KernelConstants::DEPENDENCY_INJECTOR_ZED] = [
 /* End ZED */
 
 /* Backend */
-$config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker';
+$config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker/spryker/Bundles';
 $config[ApplicationConstants::PROJECT_TIMEZONE] = 'UTC';
 $config[ApplicationConstants::ENABLE_WEB_PROFILER] = false;
 $config[KernelConstants::STORE_PREFIX] = 'DEV';
