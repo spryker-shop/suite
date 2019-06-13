@@ -23,57 +23,99 @@ use PyzTest\Glue\Products\ProductsApiTester;
 class ProductAbstractRestApiCest
 {
     /**
+     * @var \PyzTest\Glue\Products\RestApi\ProductAbstractsRestApiFixtures
+     */
+    protected $fixtures;
+
+    /**
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     *
+     * @return void
+     */
+    public function loadFixtures(ProductsApiTester $I): void
+    {
+        $this->fixtures = $I->loadFixtures(ProductAbstractsRestApiFixtures::class);
+    }
+
+    /**
+     * @depends loadFixtures
+     *
      * @param \PyzTest\Glue\Products\ProductsApiTester $I
      *
      * @return void
      */
     public function requestTheNonExistedProductAbstract(ProductsApiTester $I): void
     {
+        //act
         $I->sendGET('abstract-products/non-exist');
+
+        //assert
         $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
+     * @depends loadFixtures
+     *
      * @param \PyzTest\Glue\Products\ProductsApiTester $I
      *
      * @return void
      */
     public function requestProductAbstractWithoutId(ProductsApiTester $I): void
     {
+        //act
         $I->sendGET('abstract-products');
 
+        //assert
         $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
         $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
+     * @depends loadFixtures
+     *
      * @param \PyzTest\Glue\Products\ProductsApiTester $I
      *
      * @return void
      */
     public function requestExistingProductAbstract(ProductsApiTester $I): void
     {
-//        properties:
-//                abstract-product-image-sets:
-//                    items:
-//                        $ref: '#/components/schemas/RestRelationships'
-//                abstract-product-availabilities:
-//                    items:
-//                        $ref: '#/components/schemas/RestRelationships'
-//                abstract-product-prices:
-//                    items:
-//                        $ref: '#/components/schemas/RestRelationships'
-//                category-nodes:
-//                    items:
-//                        $ref: '#/components/schemas/RestRelationships'
-//                product-tax-sets:
-//                    items:
-//                        $ref: '#/components/schemas/RestRelationships'
-//                product-labels:
-//                    items:
-//                        $ref: '#/components/schemas/RestRelationships'
+        //act
+        $I->sendGET(
+            $I->formatUrl(
+                'abstract-products/{ProductAbstractSku}',
+                [
+                    'ProductAbstractSku' => $this->fixtures->getProductAbstractTransfer()->getSku()
+                ]
+            ),
+            [
+                'included' => 'abstract-product-image-sets,abstract-product-prices'
+            ]
+        );
+
+        //assert
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+
+        $I->amSure('Returned resource is of type abstract-products')
+            ->whenI()
+            ->seeResponseDataContainsSingleResourceOfType('abstract-products');
+        $I->amSure('Returned resource has correct id')
+            ->whenI()
+            ->seeSingleResourceIdEqualTo($this->fixtures->getProductAbstractTransfer()->getIdProductAbstract());
+        $I->amSure('Returned resource has included relationship abstract-product-image-sets')
+            ->whenI()
+            ->seeSingleResourceHasRelationshipByTypeAndId(
+                'abstract-product-image-sets',
+                $this->fixtures->getProductImageSetTransfer()->getIdProductImageSet()
+            );
+        $I->amSure('Returned resource has included relationship abstract-product-prices')
+            ->whenI()
+            ->seeSingleResourceHasRelationshipByTypeAndId(
+                'abstract-product-prices',
+                $this->fixtures->getPriceProductTransfer()->getIdPriceProduct()
+            );
     }
 }

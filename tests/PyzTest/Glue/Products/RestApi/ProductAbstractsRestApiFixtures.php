@@ -5,9 +5,10 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace PyzTest\Glue\Carts\RestApi;
+namespace PyzTest\Glue\Products\RestApi;
 
 use Generated\Shared\Transfer\PriceProductTransfer;
+use Generated\Shared\Transfer\ProductAbstractTransfer;
 use Generated\Shared\Transfer\ProductImageSetTransfer;
 use PyzTest\Glue\Products\ProductsApiTester;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
@@ -31,14 +32,12 @@ class ProductAbstractsRestApiFixtures implements FixturesBuilderInterface, Fixtu
     protected $productAbstractTransfer;
 
     /**
-     * @var \Generated\Shared\Transfer\ProductImageSetTransfer[]
+     * @return \Generated\Shared\Transfer\ProductAbstractTransfer
      */
-    protected $productImageSetTransfer;
-
-    /**
-     * @var \Generated\Shared\Transfer\PriceProductTransfer
-     */
-    protected $priceProductTransfer;
+    public function getProductAbstractTransfer(): ProductAbstractTransfer
+    {
+        return $this->productAbstractTransfer;
+    }
 
     /**
      * @param \PyzTest\Glue\Products\ProductsApiTester $I
@@ -48,8 +47,6 @@ class ProductAbstractsRestApiFixtures implements FixturesBuilderInterface, Fixtu
     public function buildFixtures(ProductsApiTester $I): FixturesContainerInterface
     {
         $this->createProductAbstract($I);
-        $this->createProductAbstractImageSet($I);
-        $this->createProductAbstractPrice($I);
 
         return $this;
     }
@@ -61,31 +58,6 @@ class ProductAbstractsRestApiFixtures implements FixturesBuilderInterface, Fixtu
      */
     protected function createProductAbstract(ProductsApiTester $I): void
     {
-        $this->productAbstractTransfer = $I->haveProductAbstract();
-    }
-
-    /**
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
-     *
-     * @return void
-     */
-    protected function createProductAbstractImageSet(ProductsApiTester $I): void
-    {
-        $this->productImageSetTransfer = $I->haveProductImageSet([
-            ProductImageSetTransfer::ID_PRODUCT_ABSTRACT => $this->productAbstractTransfer->getIdProductAbstract(),
-        ]);
-    }
-
-    /**
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
-     *
-     * @return void
-     */
-    protected function createProductAbstractPrice(ProductsApiTester $I): void
-    {
-        $this->priceProductTransfer = $I->havePriceProduct([
-            PriceProductTransfer::ID_PRODUCT_ABSTRACT => $this->productAbstractTransfer->getIdProductAbstract(),
-            PriceProductTransfer::SKU_PRODUCT_ABSTRACT => $this->productAbstractTransfer->getSku()
-        ]);
+        $this->productAbstractTransfer = $I->haveProductAbstractWithoutCleanup();
     }
 }
