@@ -1,7 +1,6 @@
 <?php
 
 use Monolog\Logger;
-use Pyz\Shared\Console\ConsoleConstants;
 use Spryker\Client\RabbitMq\Model\RabbitMqAdapter;
 use Spryker\Glue\Log\Plugin\GlueLoggerConfigPlugin;
 use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBuilderPlugin;
@@ -531,6 +530,3 @@ $config[CalculationPageConstants::ENABLE_CART_DEBUG] = false;
 
 // ----------- Error page
 $config[ErrorPageConstants::ENABLE_ERROR404_STACK_TRACE] = false;
-
-// ------------ Console
-$config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = false;

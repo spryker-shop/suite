@@ -17,14 +17,6 @@ class ConsoleConfig extends SprykerConsoleConfig
      */
     public function isDevelopmentConsoleCommandsEnabled(): bool
     {
-        return $this->get(ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS, $this->getDevelopmentConsoleCommandsDefaultValue());
-    }
-
-    /**
-     * @return bool
-     */
-    protected function getDevelopmentConsoleCommandsDefaultValue(): bool
-    {
-        return APPLICATION_ENV === 'development' || APPLICATION_ENV === 'devtest';
+        return $this->get(ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS, false);
     }
 }
