@@ -134,11 +134,9 @@ $config[OauthConstants::OAUTH_CLIENT_SECRET] = 'abc123';
 $config[ApiConstants::ENABLE_API_DEBUG] = true;
 
 // ----------- Application
-$config[ApplicationConstants::TWIG_ENVIRONMENT_NAME] = 'development';
+$config[ApplicationConstants::TWIG_ENVIRONMENT_NAME] =
+$config[ShopApplicationConstants::TWIG_ENVIRONMENT_NAME] = 'development';
 $config[ApplicationConstants::ENABLE_APPLICATION_SERVICE_DEBUG] = true;
-
-// ----------- Shop application
-$config[ShopApplicationConstants::SHOP_TWIG_ENVIRONMENT_NAME] = 'development';
 
 // ---------- Setup
 $config[SetupConstants::ENABLE_DEPLOY_VARS] = false;

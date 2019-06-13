@@ -175,10 +175,8 @@ $config[KernelConstants::ADJUST_TEST_NAMESPACE] = true;
 $config[KernelConstants::OVERWRITE_CONTAINER_FOR_TESTING] = true;
 
 // ----------- Application
-$config[ApplicationConstants::TWIG_ENVIRONMENT_NAME] = 'devtest';
+$config[ApplicationConstants::TWIG_ENVIRONMENT_NAME] =
+$config[ShopApplicationConstants::TWIG_ENVIRONMENT_NAME] = 'devtest';
 
 // ---------- Session
 $config[SessionConstants::SESSION_ENVIRONMENT_NAME] = 'devtest';
-
-// ----------- Shop application
-$config[ShopApplicationConstants::SHOP_TWIG_ENVIRONMENT_NAME] = 'devtest';

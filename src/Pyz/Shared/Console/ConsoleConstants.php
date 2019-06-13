@@ -9,5 +9,11 @@ namespace Pyz\Shared\Console;
 
 interface ConsoleConstants
 {
+    /**
+     * Specification:
+     * - Enables require-dev console commands.
+     *
+     * @api
+     */
     public const ENABLE_DEVELOPMENT_CONSOLE_COMMANDS = 'CONSOLE:ENABLE_DEVELOPMENT_CONSOLE_COMMANDS';
 }

@@ -21,8 +21,6 @@ class ConsoleConfig extends SprykerConsoleConfig
     }
 
     /**
-     * @deprecated Will be removed without replacement.
-     *
      * @return bool
      */
     protected function getDevelopmentConsoleCommandsDefaultValue(): bool

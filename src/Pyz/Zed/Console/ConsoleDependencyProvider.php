@@ -140,6 +140,7 @@ use Spryker\Zed\ZedNavigation\Communication\Console\BuildNavigationConsole;
 use SprykerSdk\Spryk\Console\SprykBuildConsole;
 use SprykerSdk\Spryk\Console\SprykDumpConsole;
 use SprykerSdk\Spryk\Console\SprykRunConsole;
+use SprykerSdk\Zed\ComposerConstrainer\Communication\Console\ComposerConstraintConsole;
 use Stecman\Component\Symfony\Console\BashCompletion\CompletionCommand;
 
 /**
@@ -345,45 +346,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new GenerateRestApiDocumentationConsole();
             $commands[] = new QueueDumpConsole();
             $commands[] = new EventTriggerListenerConsole();
-        }
-
-        if ($this->getConfig()->isDevelopmentConsoleCommandsEnabled()) {
-            $commands = $this->addProjectNonsplitOnlyCommands($commands);
-
-            $commands[] = new CodeTestConsole();
-            $commands[] = new CodeStyleSnifferConsole();
-            $commands[] = new CodeArchitectureSnifferConsole();
-            $commands[] = new CodePhpstanConsole();
-            $commands[] = new ModuleBridgeCreateConsole();
-            $commands[] = new ModuleCreateConsole();
-            $commands[] = new CodePhpMessDetectorConsole();
-            $commands[] = new ComposerJsonUpdaterConsole();
-            $commands[] = new ValidatorConsole();
-            $commands[] = new BundleCodeGeneratorConsole();
-            $commands[] = new BundleYvesCodeGeneratorConsole();
-            $commands[] = new BundleZedCodeGeneratorConsole();
-            $commands[] = new BundleServiceCodeGeneratorConsole();
-            $commands[] = new BundleSharedCodeGeneratorConsole();
-            $commands[] = new BundleClientCodeGeneratorConsole();
-            $commands[] = new GenerateZedIdeAutoCompletionConsole();
-            $commands[] = new GenerateClientIdeAutoCompletionConsole();
-            $commands[] = new GenerateServiceIdeAutoCompletionConsole();
-            $commands[] = new GenerateYvesIdeAutoCompletionConsole();
-            $commands[] = new GenerateIdeAutoCompletionConsole();
-            $commands[] = new DataBuilderGeneratorConsole();
-            $commands[] = new CompletionCommand();
-            $commands[] = new DataBuilderGeneratorConsole();
-            $commands[] = new PropelSchemaValidatorConsole();
-            $commands[] = new PropelSchemaXmlNameValidatorConsole();
-            $commands[] = new DataImportDumpConsole();
-            $commands[] = new GenerateGlueIdeAutoCompletionConsole();
-            $commands[] = new PropelAbstractValidateConsole();
-            $commands[] = new PluginUsageFinderConsole();
-            $commands[] = new PostgresIndexGeneratorConsole();
-            $commands[] = new PostgresIndexRemoverConsole();
-            $commands[] = new GenerateRestApiDocumentationConsole();
-            $commands[] = new QueueDumpConsole();
-            $commands[] = new EventTriggerListenerConsole();
+            $commands[] = new ComposerConstraintConsole();
         }
 
         return $commands;
