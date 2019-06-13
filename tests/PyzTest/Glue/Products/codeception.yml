@@ -17,10 +17,21 @@ suites:
         modules:
             enabled:
                 - \PyzTest\Shared\Testify\Helper\Environment
+                - \SprykerTest\Shared\Testify\Helper\LocatorHelper
+                - \SprykerTest\Shared\Propel\Helper\TransactionHelper
+                - \SprykerTest\Shared\Testify\Helper\DataCleanupHelper
                 - \SprykerTest\Glue\Testify\Helper\GlueRest
                 - \SprykerTest\Glue\Testify\Helper\OpenApi3
                 - \SprykerTest\Glue\Testify\Helper\JsonPath
+                - \SprykerTest\Shared\Product\Helper\ProductDataHelper
+                - \SprykerTest\Shared\ProductImage\Helper\ProductImageDataHelper
+                - \SprykerTest\Shared\Availability\Helper\AvailabilityDataHelper
+                - \SprykerTest\Shared\PriceProduct\Helper\PriceProductDataHelper
             config:
                 \SprykerTest\Glue\Testify\Helper\GlueRest:
                     depends: PhpBrowser
                     part: Json
+
+extensions:
+    commands:
+        - \SprykerTest\Shared\Testify\Fixtures\FixturesCommand
