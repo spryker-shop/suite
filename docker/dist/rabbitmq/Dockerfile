@@ -1,0 +1,7 @@
+FROM rabbitmq:3.7.14-management-alpine
+
+ARG RABBITMQ_SERVER_CODE_PATH=/rabbitmq_hipe
+ENV RABBITMQ_SERVER_CODE_PATH ${RABBITMQ_SERVER_CODE_PATH}
+
+RUN rabbitmqctl hipe_compile ${RABBITMQ_SERVER_CODE_PATH}
+

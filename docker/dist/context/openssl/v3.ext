@@ -1,0 +1,17 @@
+[req]
+req_extensions = v3_req
+distinguished_name = dn
+prompt = no
+
+[dn]
+C = DE
+ST = Berlin
+L = Berlin
+OU = Spryker
+O = Spryker
+CN = Spryker
+
+[ v3_req ]
+basicConstraints = CA:FALSE
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName = ${ENV::ALT_NAMES}
