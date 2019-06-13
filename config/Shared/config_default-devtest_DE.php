@@ -19,6 +19,7 @@ use Spryker\Shared\RabbitMq\RabbitMqEnv;
 use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\Testify\TestifyConstants;
+use Spryker\Shared\SessionRedis\SessionRedisConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 
 $domain = getenv('VM_PROJECT') ?: 'suite-nonsplit';
@@ -123,7 +124,8 @@ $config[EventConstants::EVENT_CHUNK] = 5000;
 // ---------- Session
 $config[SessionConstants::YVES_SESSION_COOKIE_DOMAIN] = $config[ApplicationConstants::HOST_YVES];
 $config[SessionConstants::ZED_SESSION_COOKIE_NAME] = $config[ApplicationConstants::HOST_ZED];
-$config[SessionConstants::YVES_SESSION_REDIS_DATABASE] = 5;
+$config[SessionRedisConstants::YVES_SESSION_REDIS_DATABASE] = 5;
+$config[SessionRedisConstants::ZED_SESSION_REDIS_DATABASE] = $config[SessionRedisConstants::YVES_SESSION_REDIS_DATABASE];
 
 // ----------- Glue Application
 $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = sprintf('http://glue-test.de.%s.local', $domain);
