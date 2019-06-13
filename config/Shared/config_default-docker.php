@@ -1,9 +1,6 @@
 <?php
 
 use Monolog\Logger;
-use Pyz\Shared\Config\LogDestination\LogDestinationFactory;
-use Pyz\Shared\DataImport\DataImportConstants;
-use Pyz\Shared\Scheduler\SchedulerConstants;
 use Spryker\Client\RabbitMq\Model\RabbitMqAdapter;
 use Spryker\Glue\Log\Plugin\GlueLoggerConfigPlugin;
 use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBuilderPlugin;
@@ -15,7 +12,6 @@ use Spryker\Shared\Cms\CmsConstants;
 use Spryker\Shared\CmsGui\CmsGuiConstants;
 use Spryker\Shared\Collector\CollectorConstants;
 use Spryker\Shared\Config\ConfigConstants;
-use Spryker\Shared\Config\Environment;
 use Spryker\Shared\Customer\CustomerConstants;
 use Spryker\Shared\DummyPayment\DummyPaymentConfig;
 use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
@@ -70,12 +66,6 @@ $logBaseFolder = getenv('SPRYKER_LOG_DIRECTORY') ?: sprintf('%s/data', APPLICATI
 $defaultLogDestination = '%STORE%/logs/%APP%/%LOG_TYPE%.log';
 $logDestination = getenv('SPRYKER_LOG_DESTINATION') ?: $defaultLogDestination;
 
-$logDestinationFactory = new LogDestinationFactory();
-$logDestinationBuilder = $logDestinationFactory->createLogDestinationBuilder(
-    $CURRENT_STORE,
-    Environment::getEnvironment(),
-    rtrim($logBaseFolder, '/') . '/' . $logDestination
-);
 /* End Init block */
 
 /* ZED */
@@ -335,8 +325,6 @@ $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
     ],
 ];
 
-$config[DataImportConstants::IS_ENABLE_INTERNAL_IMAGE] = false;
-
 //Check how to generate https://oauth2.thephpleague.com/installation/
 $config[OauthConstants::PRIVATE_KEY_PATH] = 'file://' . APPLICATION_ROOT_DIR . '/config/Zed/dev_only_private.key';
 $config[OauthConstants::PUBLIC_KEY_PATH] = 'file://' . APPLICATION_ROOT_DIR . '/config/Zed/dev_only_public.key';
@@ -348,7 +336,6 @@ $config[OauthCustomerConnectorConstants::OAUTH_CLIENT_SECRET] = 'abc123';
 $config[QuoteConstants::GUEST_QUOTE_LIFETIME] = 'P01M';
 
 $config[MailConstants::MAILCATCHER_GUI] = sprintf('http://%s:1080', $config[ApplicationConstants::HOST_ZED]);
-$config[EventConstants::LOG_FILE_PATH] = $logDestinationBuilder->build('application', 'events');
 /* End Backend */
 
 /* Yves */
@@ -465,7 +452,7 @@ $config[PropelConstants::ZED_DB_DATABASE] = getenv('SPRYKER_DB_DATABASE');
 
 /* Job runner */
 $jenkinsBaseUrl = 'http://' . getenv('SPRYKER_SCHEDULER_HOST') . ':' . getenv('SPRYKER_SCHEDULER_PORT') . '/';
-$config[SetupConstants::JENKINS_BASE_URL] = $config[SchedulerConstants::JENKINS_BASE_URL] = $jenkinsBaseUrl;
+$config[SetupConstants::JENKINS_BASE_URL] = $jenkinsBaseUrl;
 /* End Job runner */
 
 /* Broker */
@@ -474,7 +461,6 @@ $config[QueueConstants::QUEUE_WORKER_INTERVAL_MILLISECONDS] = 1000;
 $config[QueueConstants::QUEUE_PROCESS_TRIGGER_INTERVAL_MICROSECONDS] = 1001;
 $config[QueueConstants::QUEUE_WORKER_MAX_THRESHOLD_SECONDS] = 59;
 $config[QueueConstants::QUEUE_WORKER_LOG_ACTIVE] = false;
-$config[QueueConstants::QUEUE_WORKER_OUTPUT_FILE_NAME] = $logDestinationBuilder->build('application', 'queue');
 
 /*
  * Queues can have different adapters and maximum worker number
@@ -599,16 +585,6 @@ $config[LogConstants::LOGGER_CONFIG_YVES] = YvesLoggerConfigPlugin::class;
 $config[LogConstants::LOGGER_CONFIG_GLUE] = GlueLoggerConfigPlugin::class;
 
 $config[LogConstants::LOG_LEVEL] = Logger::INFO;
-
-$config[PropelConstants::LOG_FILE_PATH] = $logDestinationBuilder->build('Zed', 'propel');
-
-$config[LogConstants::LOG_FILE_PATH_YVES] = $logDestinationBuilder->build('YVES', 'application');
-$config[LogConstants::LOG_FILE_PATH_ZED] = $logDestinationBuilder->build('ZED', 'application');
-$config[LogConstants::LOG_FILE_PATH_GLUE] = $logDestinationBuilder->build('GLUE', 'application');
-
-$config[LogConstants::EXCEPTION_LOG_FILE_PATH_YVES] = $logDestinationBuilder->build('YVES', 'exception');
-$config[LogConstants::EXCEPTION_LOG_FILE_PATH_ZED] = $logDestinationBuilder->build('ZED', 'exception');
-$config[LogConstants::EXCEPTION_LOG_FILE_PATH_GLUE] = $logDestinationBuilder->build('GLUE', 'exception');
 
 $config[LogConstants::LOG_SANITIZE_FIELDS] = [
     'password',
