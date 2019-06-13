@@ -1,17 +1,16 @@
 # Ignore local copy of docker files
-.env
-.env.bak
-*.env
-*.yml
-sdk
-!dist/sdk
-context/
-base_app/
-base_dev/
-builder_assets/
-cli/
-rabbitmq/
-jenkins/
+/.env
+/.env.bak
+/*.env
+/*.yml
+/sdk
+/context/
+/base_app/
+/base_dev/
+/builder_assets/
+/cli/
+/rabbitmq/
+/jenkins/
 
 # Ignore user-defined xdebug config
 local/context/php/conf.d/xdebug.custom.ini
