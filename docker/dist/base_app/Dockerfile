@@ -15,6 +15,9 @@ WORKDIR /data
 
 COPY --chown=spryker:spryker composer.json composer.lock ${srcRoot}/
 
+ARG GITHUB_TOKEN
+ARG COMPOSER_AUTH="{\"github-oauth\": {\"github.com\": \"${GITHUB_TOKEN}\"}}"
+
 # Install all modules for Spryker
 RUN --mount=type=cache,target=/home/spryker/.composer/cache,from=composer_cache,source=/cache \
   composer install --no-interaction --optimize-autoloader

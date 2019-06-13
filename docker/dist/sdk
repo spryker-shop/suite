@@ -274,12 +274,14 @@ function buildBaseImage() {
   [[ ${SPRYKER_DEVELOPMENT_ENABLE} == 1 ]] && docker pull ${SPRYKER_BASE_IMAGE_NAME}
 
   ${ifVerbose} && echo -e "${INFO}Building base_app image (based on base_platform)${NC}"
+  eval $(cat "${DOCKER_DIR}/.env" | grep "^GITHUB_TOKEN=")
   docker build -t ${SPRYKER_DOCKER_PREFIX}_app:${SPRYKER_DOCKER_VERSION} \
     --progress=${PROGRESS_TYPE} \
     -f ${DOCKER_DIR}/${BASE_APP_FOLDER:-base_app}/Dockerfile \
     --build-arg SPRYKER_PHP_VERSION=${SPRYKER_PHP_VERSION} \
     --build-arg USER_UID=${USER_UID:-1000} \
     --build-arg USER_GID=${USER_GID:-1000} \
+    --build-arg GITHUB_TOKEN=${GITHUB_TOKEN} \
     --build-arg APPLICATION_ENV=${APPLICATION_ENV} \
     --build-arg SPRYKER_DB_ENGINE=${SPRYKER_DB_ENGINE} \
     --build-arg SPRYKER_LOG_DIRECTORY=${SPRYKER_LOG_DIRECTORY} \
