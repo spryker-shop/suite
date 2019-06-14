@@ -19,7 +19,6 @@ suites:
             enabled:
               - \PyzTest\Shared\Testify\Helper\Environment
               - \SprykerTest\Shared\Application\Helper\ZedHelper
-              - \SprykerTest\Shared\Application\Helper\SetupHelper
               - \SprykerTest\Shared\Config\Helper\ConfigInit
               - \SprykerTest\Shared\Testify\Helper\LocatorHelper:
                   projectNamespaces: ['Pyz']
@@ -31,4 +30,5 @@ suites:
                   window_size: 1920x1080
                   host: 0.0.0.0
                   restart: false
+                  log_js_errors: true
               - \SprykerTest\Shared\Testify\Helper\DataCleanupHelper
