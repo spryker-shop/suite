@@ -154,7 +154,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     /**
      * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\AddressTransferExpanderPluginInterface[]
      */
-    protected function getAddressTransferExpanderPlugins(): array
+    protected function getAddressStepExecutorAddressExpanderPlugins(): array
     {
         return [
             new CustomerAddressExpanderPlugin(),
