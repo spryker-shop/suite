@@ -513,5 +513,5 @@ $config[TranslatorConstants::TRANSLATION_ZED_FILE_PATH_PATTERNS] = [
 $config[SynchronizationConstants::STORAGE_SYNC_ENABLED] = true;
 $config[SynchronizationConstants::SEARCH_SYNC_ENABLED] = true;
 
-// ---------- StorageDatabase
+// ---------- Database storage
 $config[StorageDatabaseConstants::DB_DEBUG] = false;

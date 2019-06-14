@@ -33,5 +33,5 @@ $config[EventConstants::MAX_RETRY_ON_FAIL] = 5;
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['DE'][RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION] = true;
 $config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = '/DE_development_zed';
 
-// ---------- StorageDatabase
+// ---------- Database storage
 $config[StorageDatabaseConstants::DB_DATABASE] = 'DE_development_zed';
