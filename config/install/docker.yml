@@ -53,15 +53,17 @@ sections:
 
     build-jobs:
         jenkins-generate:
-            command: "vendor/bin/console setup:scheduler:generate"
+            command: "vendor/bin/console setup:jenkins:generate"
 
         jenkins-enable:
-            command: "vendor/bin/console setup:scheduler:enable"
+            command: "vendor/bin/console setup:jenkins:enable"
 
     init-storages:
         ## TODO [Cloud] Workaround until https://spryker.aha.io/features/SCLOUD-86 is developed
         # propel-drop-db:
         #     command: "vendor/bin/console propel:database:drop"
+        propel-copy-schema:
+            command: "vendor/bin/console propel:schema:copy"
 
         propel-create:
             command: "vendor/bin/console propel:database:create"
