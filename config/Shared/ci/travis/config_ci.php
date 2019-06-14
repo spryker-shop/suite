@@ -178,10 +178,10 @@ $config[KernelConstants::OVERWRITE_CONTAINER_FOR_TESTING] = true;
 
 // ----------- Application
 $config[ApplicationConstants::TWIG_ENVIRONMENT_NAME] =
-$config[ShopApplicationConstants::TWIG_ENVIRONMENT_NAME] = 'devtest';
+$config[ShopApplicationConstants::TWIG_ENVIRONMENT_NAME] = APPLICATION_ENV;
 
 // ---------- Session
-$config[SessionConstants::SESSION_ENVIRONMENT_NAME] = 'devtest';
+$config[SessionConstants::SESSION_ENVIRONMENT_NAME] = APPLICATION_ENV;
 
 // ---------- Console
 $config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = true;

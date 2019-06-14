@@ -8,7 +8,6 @@ use Monolog\Logger;
 use Pyz\Shared\Console\ConsoleConstants;
 use Pyz\Yves\ShopApplication\YvesBootstrap;
 use Pyz\Zed\Application\Communication\ZedBootstrap;
-use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Application\Log\Config\SprykerLoggerConfig;
 use Spryker\Shared\Config\ConfigConstants;
 use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
@@ -29,7 +28,6 @@ use Spryker\Shared\StorageRedis\StorageRedisConstants;
 use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\Twig\TwigConstants;
 use Spryker\Shared\WebProfiler\WebProfilerConstants;
-use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
 
 // ---------- General
 $config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker/spryker/Bundles';
@@ -107,11 +105,3 @@ $config[KernelConstants::OVERWRITE_CONTAINER_FOR_TESTING] = true;
 
 // ---------- Console
 $config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = true;
-
-// ----------- Application
-$config[ApplicationConstants::TWIG_ENVIRONMENT_NAME]
-    = $config[ShopApplicationConstants::TWIG_ENVIRONMENT_NAME]
-    = 'devtest';
-
-// ---------- Session
-$config[SessionConstants::SESSION_ENVIRONMENT_NAME] = 'devtest';

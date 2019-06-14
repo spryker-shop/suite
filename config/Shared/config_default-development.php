@@ -119,11 +119,6 @@ $config[OauthConstants::OAUTH_CLIENT_SECRET] = 'abc123';
 // ---------- Api
 $config[ApiConstants::ENABLE_API_DEBUG] = true;
 
-// ----------- Application
-$config[ApplicationConstants::TWIG_ENVIRONMENT_NAME]
-    = $config[ShopApplicationConstants::TWIG_ENVIRONMENT_NAME]
-    = 'development';
-
 // ---------- Setup
 $config[SetupConstants::ENABLE_DEPLOY_VARS] = false;
 
@@ -138,6 +133,3 @@ $config[ErrorHandlerConstants::ENABLE_PRETTY_ERROR_HANDLER] = true;
 
 // ---------- Console
 $config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = true;
-
-// ---------- Session
-$config[SessionConstants::SESSION_ENVIRONMENT_NAME] = 'development';
