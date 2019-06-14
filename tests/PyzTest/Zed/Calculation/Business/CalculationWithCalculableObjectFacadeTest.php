@@ -60,7 +60,7 @@ class CalculationWithCalculableObjectFacadeTest extends Test
 
         $itemTransfer = $recalculatedQuoteTransfer->getItems()[0];
 
-        $this->assertSame(19, $itemTransfer->getTaxRate());
+        $this->assertSame(19.0, $itemTransfer->getTaxRate());
         $this->assertSame(16, $itemTransfer->getUnitTaxAmount());
         $this->assertSame(32, $itemTransfer->getSumTaxAmount());
         $this->assertSame(20, $itemTransfer->getUnitTaxAmountFullAggregation());
@@ -95,7 +95,7 @@ class CalculationWithCalculableObjectFacadeTest extends Test
         $this->assertSame(100, $expenseTransfer->getUnitPriceToPayAggregation());
         $this->assertSame(100, $expenseTransfer->getSumPriceToPayAggregation());
 
-        $this->assertSame(19, $expenseTransfer->getTaxRate());
+        $this->assertSame(19.0, $expenseTransfer->getTaxRate());
         $this->assertSame(16, $expenseTransfer->getUnitTaxAmount());
         $this->assertSame(16, $expenseTransfer->getSumTaxAmount());
 
@@ -129,7 +129,7 @@ class CalculationWithCalculableObjectFacadeTest extends Test
         //item totals
         $itemTransfer = $recalculatedQuoteTransfer->getItems()[0];
 
-        $this->assertSame(19, $itemTransfer->getTaxRate());
+        $this->assertSame(19.0, $itemTransfer->getTaxRate());
         $this->assertSame(14, $itemTransfer->getUnitTaxAmount());
         $this->assertSame(29, $itemTransfer->getSumTaxAmount());
         $this->assertSame(18, $itemTransfer->getUnitTaxAmountFullAggregation());
@@ -193,7 +193,7 @@ class CalculationWithCalculableObjectFacadeTest extends Test
 
         $itemTransfer = $recalculatedQuoteTransfer->getItems()[0];
 
-        $this->assertSame(19, $itemTransfer->getTaxRate());
+        $this->assertSame(19.0, $itemTransfer->getTaxRate());
         $this->assertSame(13, $itemTransfer->getUnitTaxAmount());
         $this->assertSame(27, $itemTransfer->getSumTaxAmount());
         $this->assertSame(17, $itemTransfer->getUnitTaxAmountFullAggregation());
@@ -228,7 +228,7 @@ class CalculationWithCalculableObjectFacadeTest extends Test
         $this->assertSame(95, $expenseTransfer->getUnitPriceToPayAggregation());
         $this->assertSame(95, $expenseTransfer->getSumPriceToPayAggregation());
 
-        $this->assertSame(19, $expenseTransfer->getTaxRate());
+        $this->assertSame(19.0, $expenseTransfer->getTaxRate());
         $this->assertSame(15, $expenseTransfer->getUnitTaxAmount());
         $this->assertSame(15, $expenseTransfer->getSumTaxAmount());
 
@@ -254,7 +254,7 @@ class CalculationWithCalculableObjectFacadeTest extends Test
 
         $itemTransfer = $recalculatedQuoteTransfer->getItems()[0];
 
-        $this->assertSame(19, $itemTransfer->getTaxRate());
+        $this->assertSame(19.0, $itemTransfer->getTaxRate());
         $this->assertSame(15, $itemTransfer->getUnitTaxAmount());
         $this->assertSame(30, $itemTransfer->getSumTaxAmount());
         $this->assertSame(19, $itemTransfer->getUnitTaxAmountFullAggregation());
@@ -289,7 +289,7 @@ class CalculationWithCalculableObjectFacadeTest extends Test
         $this->assertSame(95, $expenseTransfer->getUnitPriceToPayAggregation());
         $this->assertSame(95, $expenseTransfer->getSumPriceToPayAggregation());
 
-        $this->assertSame(19, $expenseTransfer->getTaxRate());
+        $this->assertSame(19.0, $expenseTransfer->getTaxRate());
         $this->assertSame(15, $expenseTransfer->getUnitTaxAmount());
         $this->assertSame(15, $expenseTransfer->getSumTaxAmount());
 
@@ -447,13 +447,13 @@ class CalculationWithCalculableObjectFacadeTest extends Test
 
         $itemTransfer = new ItemTransfer();
         $itemTransfer->setSku('test1');
-        $itemTransfer->setTaxRate(19);
+        $itemTransfer->setTaxRate(19.0);
         $itemTransfer->setQuantity(2);
         $itemTransfer->setUnitGrossPrice(100);
         $itemTransfer->setUnitNetPrice(80);
 
         $productOptionTransfer = new ProductOptionTransfer();
-        $productOptionTransfer->setTaxRate(19);
+        $productOptionTransfer->setTaxRate(19.0);
         $productOptionTransfer->setQuantity(2);
         $productOptionTransfer->setUnitGrossPrice(25);
         $productOptionTransfer->setUnitNetPrice(20);
@@ -465,7 +465,7 @@ class CalculationWithCalculableObjectFacadeTest extends Test
         $expenseTransfer = new ExpenseTransfer();
         $expenseTransfer->setUnitGrossPrice(100);
         $expenseTransfer->setUnitNetPrice(80);
-        $expenseTransfer->setTaxRate(19);
+        $expenseTransfer->setTaxRate(19.0);
         $expenseTransfer->setQuantity(1);
         $quoteTransfer->addExpense($expenseTransfer);
 
