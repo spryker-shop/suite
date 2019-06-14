@@ -529,4 +529,4 @@ $config[SetupConstants::ENABLE_DEPLOY_VARS] = true;
 $config[CalculationPageConstants::ENABLE_CART_DEBUG] = false;
 
 // ----------- Error page
-$config[ErrorPageConstants::ENABLE_ERROR404_STACK_TRACE] = false;
+$config[ErrorPageConstants::ENABLE_ERROR_404_STACK_TRACE] = false;

@@ -25,8 +25,9 @@ $config[TwigConstants::ZED_PATH_CACHE_ENABLED] = true;
 $config[SetupConstants::ENABLE_SCHEDULER] = false;
 
 // ----------- Application
-$config[ApplicationConstants::TWIG_ENVIRONMENT_NAME] =
-$config[ShopApplicationConstants::TWIG_ENVIRONMENT_NAME] = 'production';
+$config[ApplicationConstants::TWIG_ENVIRONMENT_NAME]
+    = $config[ShopApplicationConstants::TWIG_ENVIRONMENT_NAME]
+    = 'production';
 
 // ---------- Session
 $config[SessionConstants::SESSION_ENVIRONMENT_NAME] = 'production';

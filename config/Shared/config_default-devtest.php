@@ -109,8 +109,9 @@ $config[KernelConstants::OVERWRITE_CONTAINER_FOR_TESTING] = true;
 $config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = true;
 
 // ----------- Application
-$config[ApplicationConstants::TWIG_ENVIRONMENT_NAME] =
-$config[ShopApplicationConstants::TWIG_ENVIRONMENT_NAME] = 'devtest';
+$config[ApplicationConstants::TWIG_ENVIRONMENT_NAME]
+    = $config[ShopApplicationConstants::TWIG_ENVIRONMENT_NAME]
+    = 'devtest';
 
 // ---------- Session
 $config[SessionConstants::SESSION_ENVIRONMENT_NAME] = 'devtest';

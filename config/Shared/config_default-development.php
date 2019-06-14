@@ -120,8 +120,9 @@ $config[OauthConstants::OAUTH_CLIENT_SECRET] = 'abc123';
 $config[ApiConstants::ENABLE_API_DEBUG] = true;
 
 // ----------- Application
-$config[ApplicationConstants::TWIG_ENVIRONMENT_NAME] =
-$config[ShopApplicationConstants::TWIG_ENVIRONMENT_NAME] = 'development';
+$config[ApplicationConstants::TWIG_ENVIRONMENT_NAME]
+    = $config[ShopApplicationConstants::TWIG_ENVIRONMENT_NAME]
+    = 'development';
 
 // ---------- Setup
 $config[SetupConstants::ENABLE_DEPLOY_VARS] = false;
@@ -130,7 +131,7 @@ $config[SetupConstants::ENABLE_DEPLOY_VARS] = false;
 $config[CalculationPageConstants::ENABLE_CART_DEBUG] = true;
 
 // ---------- Error page
-$config[ErrorPageConstants::ENABLE_ERROR404_STACK_TRACE] = true;
+$config[ErrorPageConstants::ENABLE_ERROR_404_STACK_TRACE] = true;
 
 // ----------- Error handler
 $config[ErrorHandlerConstants::ENABLE_PRETTY_ERROR_HANDLER] = true;
