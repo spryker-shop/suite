@@ -12,13 +12,16 @@ use Generated\Shared\Transfer\AddressesTransfer;
 use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
+use SprykerShop\Yves\CheckoutPage\CheckoutPageConfig;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCustomerClientInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep;
+use SprykerShop\Yves\CheckoutPage\StrategyResolver\AddressStep\AddressStepStrategyResolverInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Yves
  * @group Checkout
@@ -188,10 +191,19 @@ class AddressStepTest extends Unit
         }
 
         $calculationClientMock = $this->createCalculationClientMock();
+        $stepResolverMock = $this->createStepResolverMock();
+        $checkoutPageConfigMock = $this->createCheckoutPageConfigMock();
 
         $addressStepMock = $this->getMockBuilder(AddressStep::class)
             ->setMethods(['getDataClass'])
-            ->setConstructorArgs([$customerClientMock, $calculationClientMock, 'address_step', 'escape_route'])
+            ->setConstructorArgs([
+                $customerClientMock,
+                $calculationClientMock,
+                'address_step',
+                'escape_route',
+                $stepResolverMock,
+                $checkoutPageConfigMock,
+            ])
             ->getMock();
 
         $addressStepMock->method('getDataClass')->willReturn(new QuoteTransfer());
@@ -223,5 +235,23 @@ class AddressStepTest extends Unit
     protected function createCustomerClientMock()
     {
         return $this->getMockBuilder(CheckoutPageToCustomerClientInterface::class)->getMock();
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\StrategyResolver\AddressStep\AddressStepStrategyResolverInterface
+     */
+    protected function createStepResolverMock()
+    {
+        $mock = $this->getMockBuilder(AddressStepStrategyResolverInterface::class)->getMock();
+
+        return $mock;
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\CheckoutPageConfig
+     */
+    protected function createCheckoutPageConfigMock()
+    {
+        return $this->getMockBuilder(CheckoutPageConfig::class)->getMock();
     }
 }
