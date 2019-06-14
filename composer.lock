@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "85d33c525d67c6970fb34f80bc3ad041",
+    "content-hash": "099e5832e5372d79aefe86c061af1ff7",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.100.1",
+            "version": "3.100.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "0ae18bb40836e9599bdbd6a65b292329bc83df64"
+                "reference": "daa94a5ac8931e151ccf0dcdce632d9b6a83a1fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/0ae18bb40836e9599bdbd6a65b292329bc83df64",
-                "reference": "0ae18bb40836e9599bdbd6a65b292329bc83df64",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/daa94a5ac8931e151ccf0dcdce632d9b6a83a1fe",
+                "reference": "daa94a5ac8931e151ccf0dcdce632d9b6a83a1fe",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-06-11T18:32:05+00:00"
+            "time": "2019-06-13T19:22:34+00:00"
         },
         {
             "name": "codeitnowin/barcode",
@@ -7871,11 +7871,19 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-0": {
+                    "Unit": "tests/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Assertion bundle",
+            "support": {
+                "source": "https://github.com/spryker/Assertion/tree/3.0.0"
+            },
             "time": "2017-02-22T12:08:46+00:00"
         },
         {
@@ -8770,11 +8778,14 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Cache bundle",
+            "support": {
+                "source": "https://github.com/spryker/Cache/tree/3.1.0"
+            },
             "time": "2017-04-10T13:13:21+00:00"
         },
         {
@@ -9859,11 +9870,14 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "CategoryExporter module",
+            "support": {
+                "source": "https://github.com/spryker/CategoryExporter/tree/3.0.2"
+            },
             "time": "2017-07-13T15:46:45+00:00"
         },
         {
@@ -14681,16 +14695,16 @@
         },
         {
             "name": "spryker/currency",
-            "version": "3.7.1",
+            "version": "3.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/currency.git",
-                "reference": "118220888f0e803ff54d16d7424ff9d7d060c76e"
+                "reference": "b434717d54a6d8200cc4b5a1f6d8dd3fae4bd3f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/currency/zipball/118220888f0e803ff54d16d7424ff9d7d060c76e",
-                "reference": "118220888f0e803ff54d16d7424ff9d7d060c76e",
+                "url": "https://api.github.com/repos/spryker/currency/zipball/b434717d54a6d8200cc4b5a1f6d8dd3fae4bd3f9",
+                "reference": "b434717d54a6d8200cc4b5a1f6d8dd3fae4bd3f9",
                 "shasum": ""
             },
             "require": {
@@ -14737,7 +14751,7 @@
                 "proprietary"
             ],
             "description": "Currency module",
-            "time": "2019-05-30T12:49:50+00:00"
+            "time": "2019-06-12T13:57:04+00:00"
         },
         {
             "name": "spryker/currency-extension",
@@ -16170,11 +16184,14 @@
                     "dev-master": "1.0.x-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Egulias module",
+            "support": {
+                "source": "https://github.com/spryker/Egulias/tree/1.0.0"
+            },
             "time": "2017-11-09T13:55:22+00:00"
         },
         {
@@ -17310,11 +17327,19 @@
                     "Function": "tests/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-0": {
+                    "Unit": "tests/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Graph bundle",
+            "support": {
+                "source": "https://github.com/spryker/Graph/tree/3.0.0"
+            },
             "time": "2017-02-22T12:08:46+00:00"
         },
         {
@@ -17340,25 +17365,28 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Graphviz module",
+            "support": {
+                "source": "https://github.com/spryker/Graphviz/tree/2.0.1"
+            },
             "time": "2017-08-02T16:31:17+00:00"
         },
         {
             "name": "spryker/gui",
-            "version": "3.21.0",
+            "version": "3.21.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/gui.git",
-                "reference": "7f1bc21f061a5771900c6c64b62b216fd17d7364"
+                "reference": "152a50de6e5bd9c5438955a5a0a719fd547e51e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/gui/zipball/7f1bc21f061a5771900c6c64b62b216fd17d7364",
-                "reference": "7f1bc21f061a5771900c6c64b62b216fd17d7364",
+                "url": "https://api.github.com/repos/spryker/gui/zipball/152a50de6e5bd9c5438955a5a0a719fd547e51e3",
+                "reference": "152a50de6e5bd9c5438955a5a0a719fd547e51e3",
                 "shasum": ""
             },
             "require": {
@@ -17399,7 +17427,7 @@
                 "proprietary"
             ],
             "description": "Gui module",
-            "time": "2019-05-07T14:37:08+00:00"
+            "time": "2019-06-06T21:54:27+00:00"
         },
         {
             "name": "spryker/guzzle",
@@ -17633,11 +17661,20 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-0": {
+                    "Functional": "tests/",
+                    "Unit": "tests/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Invoice bundle",
+            "support": {
+                "source": "https://github.com/spryker/Invoice/tree/2.0.1"
+            },
             "time": "2017-02-22T11:53:10+00:00"
         },
         {
@@ -21266,29 +21303,30 @@
         },
         {
             "name": "spryker/price-product-schedule",
-            "version": "0.1.3",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/price-product-schedule.git",
-                "reference": "6a2776968bbdde32bbbb4387ca72f1d652fa8375"
+                "reference": "7fe82bba0bea9f2f5fcd6eb9e0e791e2e77133d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/price-product-schedule/zipball/6a2776968bbdde32bbbb4387ca72f1d652fa8375",
-                "reference": "6a2776968bbdde32bbbb4387ca72f1d652fa8375",
+                "url": "https://api.github.com/repos/spryker/price-product-schedule/zipball/7fe82bba0bea9f2f5fcd6eb9e0e791e2e77133d4",
+                "reference": "7fe82bba0bea9f2f5fcd6eb9e0e791e2e77133d4",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "spryker/currency": "^3.6.0",
+                "spryker/currency": "^3.8.0",
                 "spryker/kernel": "^3.32.0",
-                "spryker/price-product": "^2.13.0 || ^3.0.0",
+                "spryker/price-product": "^3.0.0",
                 "spryker/product": "^6.9.0",
                 "spryker/propel": "^3.8.0",
                 "spryker/propel-orm": "^1.8.0",
-                "spryker/store": "^1.9.1",
+                "spryker/store": "^1.11.0",
                 "spryker/symfony": "^3.2.2",
-                "spryker/user": "^3.7.0"
+                "spryker/user": "^3.7.0",
+                "spryker/util-csv": "^1.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -21311,20 +21349,20 @@
                 "proprietary"
             ],
             "description": "PriceProductSchedule module",
-            "time": "2019-05-31T07:59:48+00:00"
+            "time": "2019-06-12T13:53:34+00:00"
         },
         {
             "name": "spryker/price-product-schedule-data-import",
-            "version": "0.1.1",
+            "version": "0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/price-product-schedule-data-import.git",
-                "reference": "cfca53afe5ccb6dfdf8f5ea8aed8e2c1d15fe6d8"
+                "reference": "975a10f6221c5b0d1b8110dd0ea51b14dedda3f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/price-product-schedule-data-import/zipball/cfca53afe5ccb6dfdf8f5ea8aed8e2c1d15fe6d8",
-                "reference": "cfca53afe5ccb6dfdf8f5ea8aed8e2c1d15fe6d8",
+                "url": "https://api.github.com/repos/spryker/price-product-schedule-data-import/zipball/975a10f6221c5b0d1b8110dd0ea51b14dedda3f4",
+                "reference": "975a10f6221c5b0d1b8110dd0ea51b14dedda3f4",
                 "shasum": ""
             },
             "require": {
@@ -21333,7 +21371,7 @@
                 "spryker/data-import": "^1.4.3",
                 "spryker/kernel": "^3.9.0",
                 "spryker/price-product": "^2.9.2 || ^3.0.0",
-                "spryker/price-product-schedule": "^0.1.0",
+                "spryker/price-product-schedule": "^0.1.0 || ^1.0.0",
                 "spryker/product": "^6.9.0",
                 "spryker/store": "^1.9.1"
             },
@@ -21358,31 +21396,33 @@
                 "MIT"
             ],
             "description": "PriceProductScheduleDataImport module",
-            "time": "2019-05-31T07:59:48+00:00"
+            "time": "2019-06-13T11:43:43+00:00"
         },
         {
             "name": "spryker/price-product-schedule-gui",
-            "version": "0.1.0",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/price-product-schedule-gui.git",
-                "reference": "e750882533e33eb62edb072b721dc502b1d38dc7"
+                "reference": "517990433aaea5731afb2626c78db0da8fa74251"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/price-product-schedule-gui/zipball/e750882533e33eb62edb072b721dc502b1d38dc7",
-                "reference": "e750882533e33eb62edb072b721dc502b1d38dc7",
+                "url": "https://api.github.com/repos/spryker/price-product-schedule-gui/zipball/517990433aaea5731afb2626c78db0da8fa74251",
+                "reference": "517990433aaea5731afb2626c78db0da8fa74251",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/currency": "^3.6.0",
-                "spryker/gui": "^3.21.0",
+                "spryker/gui": "^3.21.1",
                 "spryker/kernel": "^3.33.0",
                 "spryker/money": "^2.7.0",
                 "spryker/price-product": "^3.0.0",
-                "spryker/price-product-schedule": "^0.1.0",
+                "spryker/price-product-schedule": "^1.0.0",
+                "spryker/product": "^6.10.0",
                 "spryker/product-management-extension": "^1.3.0",
+                "spryker/propel-orm": "^1.8.0",
                 "spryker/store": "^1.10.0",
                 "spryker/symfony": "^3.2.0",
                 "spryker/translator": "^1.1.0",
@@ -21408,7 +21448,7 @@
                 "proprietary"
             ],
             "description": "PriceProductScheduleGui module",
-            "time": "2019-06-04T12:01:32+00:00"
+            "time": "2019-06-13T11:43:43+00:00"
         },
         {
             "name": "spryker/price-product-storage",
@@ -31588,11 +31628,19 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "SprykerTest\\": "tests/SprykerTest/"
+                }
+            },
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "UtilValidate module",
+            "support": {
+                "source": "https://github.com/spryker/UtilValidate/tree/1.0.0"
+            },
             "time": "2017-11-09T13:55:22+00:00"
         },
         {
@@ -32046,11 +32094,14 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.foo.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Zend module",
+            "support": {
+                "source": "https://github.com/spryker/Zend/tree/2.1.0"
+            },
             "time": "2017-08-02T16:31:17+00:00"
         },
         {
@@ -35043,16 +35094,16 @@
         },
         {
             "name": "facebook/webdriver",
-            "version": "1.7.0",
+            "version": "1.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facebook/php-webdriver.git",
-                "reference": "9a52b1ac036743c31bc127fd7f2f4710e2bc968a"
+                "reference": "e43de70f3c7166169d0f14a374505392734160e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/9a52b1ac036743c31bc127fd7f2f4710e2bc968a",
-                "reference": "9a52b1ac036743c31bc127fd7f2f4710e2bc968a",
+                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/e43de70f3c7166169d0f14a374505392734160e5",
+                "reference": "e43de70f3c7166169d0f14a374505392734160e5",
                 "shasum": ""
             },
             "require": {
@@ -35099,7 +35150,7 @@
                 "selenium",
                 "webdriver"
             ],
-            "time": "2019-06-10T14:32:25+00:00"
+            "time": "2019-06-13T08:02:18+00:00"
         },
         {
             "name": "jakoch/phantomjs-installer",
@@ -35242,7 +35293,7 @@
             "time": "2019-03-25T16:59:23+00:00"
         },
         {
-            "name": "mikey179/vfsstream",
+            "name": "mikey179/vfsStream",
             "version": "v1.6.6",
             "source": {
                 "type": "git",
@@ -35533,7 +35584,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette Finder: find files and directories with an intuitive API.",
+            "description": "🔍 Nette Finder: find files and directories with an intuitive API.",
             "homepage": "https://nette.org",
             "keywords": [
                 "filesystem",
@@ -35593,7 +35644,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette NEON: encodes and decodes NEON file format.",
+            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -35714,7 +35765,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette RobotLoader: high performance and comfortable autoloader that will search and autoload classes within your application.",
+            "description": "🍀 Nette RobotLoader: high performance and comfortable autoloader that will search and autoload classes within your application.",
             "homepage": "https://nette.org",
             "keywords": [
                 "autoload",
@@ -36321,16 +36372,16 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.8.0",
+            "version": "1.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "4ba436b55987b4bf311cb7c6ba82aa528aac0a06"
+                "reference": "1927e75f4ed19131ec9bcc3b002e07fb1173ee76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/4ba436b55987b4bf311cb7c6ba82aa528aac0a06",
-                "reference": "4ba436b55987b4bf311cb7c6ba82aa528aac0a06",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/1927e75f4ed19131ec9bcc3b002e07fb1173ee76",
+                "reference": "1927e75f4ed19131ec9bcc3b002e07fb1173ee76",
                 "shasum": ""
             },
             "require": {
@@ -36351,8 +36402,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Prophecy\\": "src/"
+                "psr-4": {
+                    "Prophecy\\": "src/Prophecy"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -36380,7 +36431,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2018-08-05T17:53:17+00:00"
+            "time": "2019-06-13T12:50:23+00:00"
         },
         {
             "name": "phpstan/phpdoc-parser",
@@ -38586,16 +38637,16 @@
         },
         {
             "name": "theseer/tokenizer",
-            "version": "1.1.2",
+            "version": "1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/theseer/tokenizer.git",
-                "reference": "1c42705be2b6c1de5904f8afacef5895cab44bf8"
+                "reference": "11336f6f84e16a720dae9d8e6ed5019efa85a0f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/theseer/tokenizer/zipball/1c42705be2b6c1de5904f8afacef5895cab44bf8",
-                "reference": "1c42705be2b6c1de5904f8afacef5895cab44bf8",
+                "url": "https://api.github.com/repos/theseer/tokenizer/zipball/11336f6f84e16a720dae9d8e6ed5019efa85a0f9",
+                "reference": "11336f6f84e16a720dae9d8e6ed5019efa85a0f9",
                 "shasum": ""
             },
             "require": {
@@ -38622,7 +38673,7 @@
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
-            "time": "2019-04-04T09:56:43+00:00"
+            "time": "2019-06-13T22:48:21+00:00"
         },
         {
             "name": "webmozart/assert",
