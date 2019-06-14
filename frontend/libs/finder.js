@@ -46,7 +46,7 @@ async function find(globDirs, globPatterns, globFallbackPatterns, globSettings =
     return defaultThemeFiles.concat(customThemeFiles);
 }
 
-// find components entry points
+// find entry points
 async function findEntryPoints(settings) {
     const files = await find(settings.dirs, settings.patterns,  settings.fallbackPatterns, settings.globSettings);
 
@@ -57,6 +57,13 @@ async function findEntryPoints(settings) {
         map[`${type}/${name}`] = file;
         return map;
     }, {}));
+
+    return entryPoints;
+}
+
+// find components entry points
+async function findComponentEntryPoints(settings) {
+    const entryPoints = await findEntryPoints(settings);
 
     console.log(`Components entry points: ${entryPoints.length}`);
 
@@ -71,7 +78,23 @@ async function findStyles(settings) {
     return styles;
 }
 
+async function findAppEntryPoint(settings, file) {
+    let config = Object.assign({}, settings);
+    const updatePatterns = function(patterncollection) {
+        return patterncollection.map((pattern) => {
+            return path.join(pattern, file);
+        });
+    };
+
+    config.patterns = updatePatterns(config.patterns);
+    config.fallbackPatterns = updatePatterns(config.fallbackPatterns);
+
+    const entryPoint = await findEntryPoints(config);
+    return entryPoint[0];
+}
+
 module.exports = {
-    findEntryPoints,
-    findStyles
+    findComponentEntryPoints,
+    findStyles,
+    findAppEntryPoint
 };

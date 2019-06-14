@@ -13,7 +13,7 @@ use Spryker\Zed\Twig\Communication\Plugin\SetupFrontend\ThemeYvesFrontendStoreCo
 class SetupFrontendDependencyProvider extends SprykerSetupFrontendDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\SetupFrontendExtension\Dependency\YvesFrontendStoreConfigExpanderPluginInterface[]
+     * @return \Spryker\Zed\SetupFrontendExtension\Dependency\Plugin\YvesFrontendStoreConfigExpanderPluginInterface[]
      */
     protected function getYvesFrontendStoreConfigExpanderPlugins(): array
     {

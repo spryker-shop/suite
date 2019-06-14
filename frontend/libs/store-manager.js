@@ -1,4 +1,4 @@
-const storesConfig = require('../config.json');
+const storesConfig = require('../store-config.json');
 
 const stores = new Map();
 
@@ -12,7 +12,7 @@ function printWrongStoreIdMessage(name) {
 
 function printStoreInfoMessage(store) {
     let currentTheme = store.currentTheme || store.defaultTheme;
-    console.log(`Store "${store.name}" with theme "${currentTheme}".`);
+    console.log(`Store "${store.storeKey}" with theme "${currentTheme}".`);
     return store;
 }
 

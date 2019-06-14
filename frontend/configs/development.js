@@ -2,32 +2,21 @@ const { join } = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { findEntryPoints, findStyles } = require('../libs/finder');
+const { findComponentEntryPoints, findStyles, findAppEntryPoint } = require('../libs/finder');
 const { getAliasFromTsConfig } = require('../libs/alias');
+const { getAssetsConfig } = require('../libs/asset-manager');
 
 async function getConfiguration(appSettings) {
-    const entryPointsPromise = findEntryPoints(appSettings.find.componentEntryPoints);
+    const componentEntryPointsPromise = findComponentEntryPoints(appSettings.find.componentEntryPoints);
     const stylesPromise = findStyles(appSettings.find.componentStyles);
-    const [entryPoints, styles] = await Promise.all([entryPointsPromise, stylesPromise]);
+    const [componentEntryPoints, styles] = await Promise.all([componentEntryPointsPromise, stylesPromise]);
     const alias = getAliasFromTsConfig(appSettings);
 
-    const copyConfig = function() {
-        let config = [];
-
-        for (let asset in appSettings.paths.assets) {
-            config = config.concat([
-                {
-                    from: appSettings.paths.assets[asset],
-                    to: '.',
-                    ignore: ['*.gitkeep']
-                }
-            ])
-        }
-
-        return config;
-    };
+    const vendorTs = await findAppEntryPoint(appSettings.find.shopUiEntryPoints, './vendor.ts');
+    const appTs = await findAppEntryPoint(appSettings.find.shopUiEntryPoints, './app.ts');
+    const basicScss = await findAppEntryPoint(appSettings.find.shopUiEntryPoints, './styles/basic.scss');
+    const utilScss = await findAppEntryPoint(appSettings.find.shopUiEntryPoints, './styles/util.scss');
+    const sharedScss = await findAppEntryPoint(appSettings.find.shopUiEntryPoints, './styles/shared.scss');
 
     return {
         context: appSettings.context,
@@ -44,18 +33,18 @@ async function getConfiguration(appSettings) {
         },
 
         entry: {
-            'vendor': join(appSettings.context, appSettings.paths.project.shopUiModule, './vendor.ts'),
+            'vendor': vendorTs,
             'app': [
-                join(appSettings.context, appSettings.paths.project.shopUiModule, './app.ts'),
-                join(appSettings.context, appSettings.paths.project.shopUiModule, './styles/basic.scss'),
-                ...entryPoints,
-                join(appSettings.context, appSettings.paths.project.shopUiModule, './styles/util.scss')
+                appTs,
+                basicScss,
+                ...componentEntryPoints,
+                utilScss,
             ]
         },
 
         output: {
             path: join(appSettings.context, appSettings.paths.public),
-            publicPath: `${appSettings.urls.assets}/`,
+            publicPath: `${appSettings.urls.currentAssets}/`,
             filename: `./js/${appSettings.name}.[name].js`,
             jsonpFunction: `webpackJsonp_${appSettings.name.replace(/(-|\W)+/gi, '_')}`
         },
@@ -103,7 +92,7 @@ async function getConfiguration(appSettings) {
                             loader: 'sass-resources-loader',
                             options: {
                                 resources: [
-                                    join(appSettings.context, appSettings.paths.project.shopUiModule, './styles/shared.scss'),
+                                    sharedScss,
                                     ...styles
                                 ]
                             }
@@ -132,20 +121,7 @@ async function getConfiguration(appSettings) {
                 __PRODUCTION__: false
             }),
 
-            new CleanWebpackPlugin([
-                'js',
-                'css',
-                'images',
-                'fonts'
-            ], {
-                root: join(appSettings.context, appSettings.paths.public),
-                verbose: true,
-                beforeEmit: true
-            }),
-
-            new CopyWebpackPlugin(copyConfig(), {
-                context: appSettings.context
-            }),
+            ...getAssetsConfig(appSettings),
 
             new MiniCssExtractPlugin({
                 filename: `./css/${appSettings.name}.[name].css`,
