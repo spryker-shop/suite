@@ -29,8 +29,12 @@ coverage:
 extensions:
     enabled:
         - \SprykerTest\Shared\Testify\Helper\WebDriverHelper
+        - \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper
     config:
         \SprykerTest\Shared\Testify\Helper\WebDriverHelper:
             suites: ['Presentation']
             loadImages: false
             diskCache: true
+        \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper:
+            exclusive:
+                - Presentation

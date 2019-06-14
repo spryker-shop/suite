@@ -8,6 +8,8 @@
 namespace Pyz\Zed\Console;
 
 use Pyz\Zed\DataImport\DataImportConfig;
+use Pyz\Zed\Development\Communication\Console\AcceptanceCodeTestConsole;
+use Pyz\Zed\Development\Communication\Console\FunctionalCodeTestConsole;
 use Silex\Provider\TwigServiceProvider as SilexTwigServiceProvider;
 use Spryker\Shared\Config\Environment;
 use Spryker\Zed\BusinessOnBehalfDataImport\BusinessOnBehalfDataImportConfig;
@@ -304,6 +306,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
             new PriceProductScheduleApplyConsole(),
             new PriceProductScheduleCleanupConsole(),
+
+            new DataBuilderGeneratorConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
@@ -332,9 +336,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new GenerateServiceIdeAutoCompletionConsole();
             $commands[] = new GenerateYvesIdeAutoCompletionConsole();
             $commands[] = new GenerateIdeAutoCompletionConsole();
-            $commands[] = new DataBuilderGeneratorConsole();
             $commands[] = new CompletionCommand();
-            $commands[] = new DataBuilderGeneratorConsole();
             $commands[] = new PropelSchemaValidatorConsole();
             $commands[] = new PropelSchemaXmlNameValidatorConsole();
             $commands[] = new DataImportDumpConsole();
@@ -400,6 +402,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
         $commands[] = new DependencyViolationFixConsole();
 
         $commands[] = new ComposerJsonValidatorConsole();
+
+        $commands[] = new AcceptanceCodeTestConsole();
+        $commands[] = new FunctionalCodeTestConsole();
 
         return $commands;
     }
