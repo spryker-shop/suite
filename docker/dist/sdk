@@ -400,6 +400,21 @@ function destroyAppVolumesAndImages() {
 }
 
 
+function initBrokerVhosts() {
+  WAIT_FOR_BROKER=1
+  VERBOSE_EXEC=0
+  execSpryker "echo 'All ok'" > /dev/null 2>&1
+  # init vhosts for all existing stores
+  brokerContainers=$(docker ps --filter "name=${COMPOSE_PROJECT_NAME}_broker*" --format "{{.Names}}")
+  for APPLICATION_STORE in ${APPLICATION_STORES[@]}; do
+    for brokerContainer in ${brokerContainers}; do
+      docker exec ${brokerContainer} rabbitmqctl add_vhost /${APPLICATION_STORE}_docker_zed
+      docker exec ${brokerContainer} rabbitmqctl set_permissions -p /${APPLICATION_STORE}_docker_zed spryker ".*" ".*" ".*"
+    done
+  done
+}
+
+
 function loadDemoData() {
   detectDevelopmentMode
   runApp
@@ -409,6 +424,9 @@ function loadDemoData() {
   WAIT_FOR_DB_SERVICE=1
   WAIT_FOR_KEY_VALUE_STORE=1
   dataSync start
+
+  initBrokerVhosts
+
   for APPLICATION_STORE in ${APPLICATION_STORES[@]}; do
     export APPLICATION_STORE=${APPLICATION_STORE}
     if [ ${SPRYKER_DEMO_DATA_CHECK} -eq 1 ]; then
@@ -821,6 +839,9 @@ case $1 in
     ;;
   jobs)
     createSchedulerJobs
+    ;;
+  broker_vhosts)
+    initBrokerVhosts
     ;;
   reset)
     stopApp
