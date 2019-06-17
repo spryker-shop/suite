@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ecf5aabf13272924c79a2036cc478aa4",
+    "content-hash": "8aec9e28df5a3cf796d7ca8b8b49504d",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.100.3",
+            "version": "3.100.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "daa94a5ac8931e151ccf0dcdce632d9b6a83a1fe"
+                "reference": "803f3cdc37f42112c4df1af0a77e25130b9448d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/daa94a5ac8931e151ccf0dcdce632d9b6a83a1fe",
-                "reference": "daa94a5ac8931e151ccf0dcdce632d9b6a83a1fe",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/803f3cdc37f42112c4df1af0a77e25130b9448d3",
+                "reference": "803f3cdc37f42112c4df1af0a77e25130b9448d3",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-06-13T19:22:34+00:00"
+            "time": "2019-06-14T18:12:13+00:00"
         },
         {
             "name": "codeitnowin/barcode",
@@ -7871,19 +7871,11 @@
                     "Spryker": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-0": {
-                    "Unit": "tests/"
-                }
-            },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Assertion bundle",
-            "support": {
-                "source": "https://github.com/spryker/Assertion/tree/3.0.0"
-            },
             "time": "2017-02-22T12:08:46+00:00"
         },
         {
@@ -8778,14 +8770,11 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Cache bundle",
-            "support": {
-                "source": "https://github.com/spryker/Cache/tree/3.1.0"
-            },
             "time": "2017-04-10T13:13:21+00:00"
         },
         {
@@ -9870,14 +9859,11 @@
                     "Spryker": "src/"
                 }
             },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "CategoryExporter module",
-            "support": {
-                "source": "https://github.com/spryker/CategoryExporter/tree/3.0.2"
-            },
             "time": "2017-07-13T15:46:45+00:00"
         },
         {
@@ -10781,21 +10767,22 @@
         },
         {
             "name": "spryker/cms-block-gui",
-            "version": "2.2.0",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cms-block-gui.git",
-                "reference": "6340cae1824b75737dca622d6d8919951b1e1bab"
+                "reference": "bfd1b746e11b8d99e58fdb7b8801179053f2e5bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-block-gui/zipball/6340cae1824b75737dca622d6d8919951b1e1bab",
-                "reference": "6340cae1824b75737dca622d6d8919951b1e1bab",
+                "url": "https://api.github.com/repos/spryker/cms-block-gui/zipball/bfd1b746e11b8d99e58fdb7b8801179053f2e5bf",
+                "reference": "bfd1b746e11b8d99e58fdb7b8801179053f2e5bf",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/cms-block": "^2.0.0",
+                "spryker/cms-block-gui-extension": "^1.0.0",
                 "spryker/gui": "^3.21.0",
                 "spryker/kernel": "^3.13.0",
                 "spryker/locale": "^3.0.0",
@@ -10828,7 +10815,46 @@
                 "proprietary"
             ],
             "description": "CmsBlockGui module",
-            "time": "2019-05-07T15:17:18+00:00"
+            "time": "2019-06-12T11:58:53+00:00"
+        },
+        {
+            "name": "spryker/cms-block-gui-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-block-gui-extension.git",
+                "reference": "ddfae6b92a7272f179e6911d824807a4d0a85c6f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-block-gui-extension/zipball/ddfae6b92a7272f179e6911d824807a4d0a85c6f",
+                "reference": "ddfae6b92a7272f179e6911d824807a4d0a85c6f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsBlockGuiExtension module",
+            "time": "2019-05-27T10:14:13+00:00"
         },
         {
             "name": "spryker/cms-block-product-connector",
@@ -11331,22 +11357,23 @@
         },
         {
             "name": "spryker/cms-gui",
-            "version": "5.3.0",
+            "version": "5.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cms-gui.git",
-                "reference": "e19efdd9345b7a377137514222bc403e06b9987b"
+                "reference": "088d3d4c2a522732fbd4c448d5a668e4d4d26185"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-gui/zipball/e19efdd9345b7a377137514222bc403e06b9987b",
-                "reference": "e19efdd9345b7a377137514222bc403e06b9987b",
+                "url": "https://api.github.com/repos/spryker/cms-gui/zipball/088d3d4c2a522732fbd4c448d5a668e4d4d26185",
+                "reference": "088d3d4c2a522732fbd4c448d5a668e4d4d26185",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/application": "^3.2.0",
                 "spryker/cms": "^7.0.0",
+                "spryker/cms-gui-extension": "^1.0.0",
                 "spryker/glossary": "^3.0.0",
                 "spryker/gui": "^3.21.0",
                 "spryker/kernel": "^3.28.0",
@@ -11380,7 +11407,46 @@
                 "proprietary"
             ],
             "description": "CmsGui module",
-            "time": "2019-05-07T15:17:18+00:00"
+            "time": "2019-05-28T13:18:22+00:00"
+        },
+        {
+            "name": "spryker/cms-gui-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-gui-extension.git",
+                "reference": "d0b4dd119c7508efb274fb3eb5307411eae19384"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-gui-extension/zipball/d0b4dd119c7508efb274fb3eb5307411eae19384",
+                "reference": "d0b4dd119c7508efb274fb3eb5307411eae19384",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsGuiExtension module",
+            "time": "2019-05-27T10:14:13+00:00"
         },
         {
             "name": "spryker/cms-navigation-connector",
@@ -14113,31 +14179,36 @@
         },
         {
             "name": "spryker/content-gui",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/content-gui.git",
-                "reference": "9063cdd2d435fed8d28c342b56c34acdc400b5e0"
+                "reference": "94da7182688a12371f438b9ba2073c61ba019f86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/content-gui/zipball/9063cdd2d435fed8d28c342b56c34acdc400b5e0",
-                "reference": "9063cdd2d435fed8d28c342b56c34acdc400b5e0",
+                "url": "https://api.github.com/repos/spryker/content-gui/zipball/94da7182688a12371f438b9ba2073c61ba019f86",
+                "reference": "94da7182688a12371f438b9ba2073c61ba019f86",
                 "shasum": ""
             },
             "require": {
+                "ext-libxml": "*",
                 "php": ">=7.1",
+                "spryker/cms-block-gui-extension": "^1.0.0",
+                "spryker/cms-gui-extension": "^1.0.0",
                 "spryker/content": "^2.0.0",
                 "spryker/content-gui-extension": "^1.1.0",
                 "spryker/gui": "^3.21.0",
                 "spryker/kernel": "^3.32.0",
                 "spryker/locale": "^3.2.0",
                 "spryker/symfony": "^3.2.0",
+                "spryker/translator": "^1.1.0",
                 "spryker/util-encoding": "^2.1.0",
                 "spryker/util-text": "^1.2.1"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
                 "spryker/testify": "*"
             },
             "type": "library",
@@ -14156,7 +14227,7 @@
                 "proprietary"
             ],
             "description": "ContentGui module",
-            "time": "2019-06-07T09:39:10+00:00"
+            "time": "2019-06-14T15:15:46+00:00"
         },
         {
             "name": "spryker/content-gui-extension",
@@ -16185,14 +16256,11 @@
                     "dev-master": "1.0.x-dev"
                 }
             },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Egulias module",
-            "support": {
-                "source": "https://github.com/spryker/Egulias/tree/1.0.0"
-            },
             "time": "2017-11-09T13:55:22+00:00"
         },
         {
@@ -17192,16 +17260,16 @@
         },
         {
             "name": "spryker/glue-application",
-            "version": "1.18.0",
+            "version": "1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/glue-application.git",
-                "reference": "338a9e0bf57ffde48e01f9c8a211b227e93a8143"
+                "reference": "e9c5deda447bfff942467b49725388fd9fe9bebf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/glue-application/zipball/338a9e0bf57ffde48e01f9c8a211b227e93a8143",
-                "reference": "338a9e0bf57ffde48e01f9c8a211b227e93a8143",
+                "url": "https://api.github.com/repos/spryker/glue-application/zipball/e9c5deda447bfff942467b49725388fd9fe9bebf",
+                "reference": "e9c5deda447bfff942467b49725388fd9fe9bebf",
                 "shasum": ""
             },
             "require": {
@@ -17244,7 +17312,7 @@
                 "proprietary"
             ],
             "description": "GlueApplication module",
-            "time": "2019-05-16T06:09:24+00:00"
+            "time": "2019-06-11T08:20:27+00:00"
         },
         {
             "name": "spryker/glue-application-extension",
@@ -17328,19 +17396,11 @@
                     "Function": "tests/"
                 }
             },
-            "autoload-dev": {
-                "psr-0": {
-                    "Unit": "tests/"
-                }
-            },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Graph bundle",
-            "support": {
-                "source": "https://github.com/spryker/Graph/tree/3.0.0"
-            },
             "time": "2017-02-22T12:08:46+00:00"
         },
         {
@@ -17366,28 +17426,25 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Graphviz module",
-            "support": {
-                "source": "https://github.com/spryker/Graphviz/tree/2.0.1"
-            },
             "time": "2017-08-02T16:31:17+00:00"
         },
         {
             "name": "spryker/gui",
-            "version": "3.21.1",
+            "version": "3.22.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/gui.git",
-                "reference": "152a50de6e5bd9c5438955a5a0a719fd547e51e3"
+                "reference": "dc86034a042e6ffb7ed1d4fb998e15f413d70ffd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/gui/zipball/152a50de6e5bd9c5438955a5a0a719fd547e51e3",
-                "reference": "152a50de6e5bd9c5438955a5a0a719fd547e51e3",
+                "url": "https://api.github.com/repos/spryker/gui/zipball/dc86034a042e6ffb7ed1d4fb998e15f413d70ffd",
+                "reference": "dc86034a042e6ffb7ed1d4fb998e15f413d70ffd",
                 "shasum": ""
             },
             "require": {
@@ -17428,7 +17485,7 @@
                 "proprietary"
             ],
             "description": "Gui module",
-            "time": "2019-06-06T21:54:27+00:00"
+            "time": "2019-06-17T12:35:54+00:00"
         },
         {
             "name": "spryker/guzzle",
@@ -17662,20 +17719,11 @@
                     "Spryker": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-0": {
-                    "Functional": "tests/",
-                    "Unit": "tests/"
-                }
-            },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Invoice bundle",
-            "support": {
-                "source": "https://github.com/spryker/Invoice/tree/2.0.1"
-            },
             "time": "2017-02-22T11:53:10+00:00"
         },
         {
@@ -31670,19 +31718,11 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "SprykerTest\\": "tests/SprykerTest/"
-                }
-            },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "UtilValidate module",
-            "support": {
-                "source": "https://github.com/spryker/UtilValidate/tree/1.0.0"
-            },
             "time": "2017-11-09T13:55:22+00:00"
         },
         {
@@ -32136,14 +32176,11 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "Zend module",
-            "support": {
-                "source": "https://github.com/spryker/Zend/tree/2.1.0"
-            },
             "time": "2017-08-02T16:31:17+00:00"
         },
         {
@@ -35335,7 +35372,7 @@
             "time": "2019-03-25T16:59:23+00:00"
         },
         {
-            "name": "mikey179/vfsStream",
+            "name": "mikey179/vfsstream",
             "version": "v1.6.6",
             "source": {
                 "type": "git",
@@ -35626,7 +35663,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🔍 Nette Finder: find files and directories with an intuitive API.",
+            "description": "? Nette Finder: find files and directories with an intuitive API.",
             "homepage": "https://nette.org",
             "keywords": [
                 "filesystem",
@@ -35686,7 +35723,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
+            "description": "? Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -35807,7 +35844,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🍀 Nette RobotLoader: high performance and comfortable autoloader that will search and autoload classes within your application.",
+            "description": "? Nette RobotLoader: high performance and comfortable autoloader that will search and autoload classes within your application.",
             "homepage": "https://nette.org",
             "keywords": [
                 "autoload",
