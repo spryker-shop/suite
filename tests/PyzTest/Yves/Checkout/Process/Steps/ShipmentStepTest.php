@@ -18,6 +18,7 @@ use SprykerShop\Yves\CheckoutPage\CheckoutPageConfig;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageDependencyProvider;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceInterface;
+use SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\ShipmentStep;
 use SprykerShop\Yves\CheckoutPage\StrategyResolver\ShipmentStep\ShipmentStepStrategyResolverInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -83,10 +84,9 @@ class ShipmentStepTest extends Unit
         return new ShipmentStep(
             $this->createCalculationClientMock(),
             $shipmentPlugins,
-            $this->createShipmentServiceMock(),
+            $this->createPostConditionCheckerMock(),
             CheckoutPageDependencyProvider::PLUGIN_SHIPMENT_STEP_HANDLER,
-            'escape_route',
-            $this->createShipmentStepStrategyResolverMock()
+            'escape_route'
         );
     }
 
@@ -110,21 +110,11 @@ class ShipmentStepTest extends Unit
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceInterface
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface
      */
-    protected function createShipmentServiceMock()
+    protected function createPostConditionCheckerMock()
     {
-        return $this->getMockBuilder(CheckoutPageToShipmentServiceInterface::class)->getMock();
-    }
-
-    /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\StrategyResolver\ShipmentStep\ShipmentStepStrategyResolverInterface
-     */
-    protected function createShipmentStepStrategyResolverMock()
-    {
-        $mock = $this->getMockBuilder(ShipmentStepStrategyResolverInterface::class)->getMock();
-
-        return $mock;
+        return $this->getMockBuilder(PostConditionCheckerInterface::class)->getMock();
     }
 
     /**
