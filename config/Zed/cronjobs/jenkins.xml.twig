@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+    <actions/>
+    <description></description>
+    <logRotator>
+        <daysToKeep>{{ job.daysToKeep }}</daysToKeep>
+        <numToKeep>-1</numToKeep>
+        <artifactDaysToKeep>{{ job.daysToKeep }}</artifactDaysToKeep>
+        <artifactNumToKeep>-1</artifactNumToKeep>
+    </logRotator>
+    <keepDependencies>false</keepDependencies>
+    <properties/>
+    <scm class='hudson.scm.NullSCM'/>
+    <canRoam>true</canRoam>
+    <disabled>{{ not job.enable }}</disabled>
+    <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+    <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+    <triggers class='vector'>
+        <hudson.triggers.TimerTrigger>
+            <spec>{{ job.schedule }}</spec>
+        </hudson.triggers.TimerTrigger>
+    </triggers>
+    <concurrentBuild>false</concurrentBuild>
+    <builders>
+        <hudson.tasks.Shell>
+            <command>
+                {% if job.env.APPLICATION_ENV == 'docker'%}
+                    docker exec -i -u spryker -e APPLICATION_ENV={{ job.env.APPLICATION_ENV }} -e APPLICATION_STORE={{ job.store }} -w /data {{ job.env.SPRYKER_JOB_CONTAINER  | replace({ '%store%': job.store|lower }) }} bash -s &lt;&lt;EOF
+                    . /data/config/Zed/cronjobs/cron.conf
+                    {{ job.command }}
+                    EOF
+                {% else %}
+                    {{ job.command }}
+                {% endif %}
+            </command>
+        </hudson.tasks.Shell>
+    </builders>
+    {% if job.notifications is defined and job.notifications is iterable %}
+        <publishers>
+            <hudson.tasks.Mailer>
+                <recipients>{{ job.notifications|split(',') }}</recipients>
+                <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
+                <sendToIndividuals>false</sendToIndividuals>
+            </hudson.tasks.Mailer>
+        </publishers>
+    {% else %}
+        <publishers/>
+
+    {% endif %}
+    <buildWrappers/>
+</project>
