@@ -54,11 +54,11 @@ sections:
     build-jobs:
         jenkins-generate:
             command: "vendor/bin/console scheduler:setup"
-            stores: true
+#            stores: true
 
         jenkins-enable:
             command: "vendor/bin/console scheduler:resume"
-            stores: true
+#            stores: true
 
     init-storages:
         ## TODO [Cloud] Workaround until https://spryker.aha.io/features/SCLOUD-86 is developed
