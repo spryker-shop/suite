@@ -12,13 +12,18 @@ use Generated\Shared\Transfer\AddressesTransfer;
 use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
+use SprykerShop\Yves\CheckoutPage\CheckoutPageConfig;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCustomerClientInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep;
+use SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface;
+use SprykerShop\Yves\CheckoutPage\Process\Steps\StepExecutorInterface;
+use SprykerShop\Yves\CheckoutPage\StrategyResolver\AddressStep\AddressStepStrategyResolverInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Yves
  * @group Checkout
@@ -34,8 +39,7 @@ class AddressStepTest extends Unit
      */
     public function testExecuteAddressStepWhenGuestIsSubmittedShouldUseDataFromAddressFromForm()
     {
-        $customerClientMock = $this->createCustomerClientMock();
-        $addressStep = $this->createAddressStep($customerClientMock);
+        $addressStep = $this->createAddressStep();
 
         $quoteTransfer = new QuoteTransfer();
         $addressTransfer = new AddressTransfer();
@@ -68,10 +72,7 @@ class AddressStepTest extends Unit
         $addressesTransfer->addAddress($shippingAddress);
         $customerTransfer->setAddresses($addressesTransfer);
 
-        $customerClientMock = $this->createCustomerClientMock();
-        $customerClientMock->expects($this->once())->method('getCustomer')->willReturn($customerTransfer);
-
-        $addressStep = $this->createAddressStep($customerClientMock);
+        $addressStep = $this->createAddressStep();
 
         $quoteTransfer = new QuoteTransfer();
 
@@ -103,10 +104,7 @@ class AddressStepTest extends Unit
         $addressesTransfer->addAddress($addressTransfer);
         $customerTransfer->setAddresses($addressesTransfer);
 
-        $customerClientMock = $this->createCustomerClientMock();
-        $customerClientMock->expects($this->once())->method('getCustomer')->willReturn($customerTransfer);
-
-        $addressStep = $this->createAddressStep($customerClientMock);
+        $addressStep = $this->createAddressStep();
 
         $quoteTransfer = new QuoteTransfer();
         $quoteTransfer->setBillingSameAsShipping(true);
@@ -177,21 +175,25 @@ class AddressStepTest extends Unit
     }
 
     /**
-     * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCustomerClientInterface|\PHPUnit_Framework_MockObject_MockObject|null $customerClientMock
-     *
      * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep|\PHPUnit_Framework_MockObject_MockObject
      */
-    protected function createAddressStep($customerClientMock = null)
+    protected function createAddressStep()
     {
-        if ($customerClientMock === null) {
-            $customerClientMock = $this->createCustomerClientMock();
-        }
-
         $calculationClientMock = $this->createCalculationClientMock();
+        $stepExecutorMock = $this->createStepExecutorMock();
+        $postConditionMock = $this->createPostConditionCheckerMock();
+        $checkoutPageConfigMock = $this->createCheckoutPageConfigMock();
 
         $addressStepMock = $this->getMockBuilder(AddressStep::class)
             ->setMethods(['getDataClass'])
-            ->setConstructorArgs([$customerClientMock, $calculationClientMock, 'address_step', 'escape_route'])
+            ->setConstructorArgs([
+                $calculationClientMock,
+                $stepExecutorMock,
+                $postConditionMock,
+                $checkoutPageConfigMock,
+                'address_step',
+                'escape_route',
+            ])
             ->getMock();
 
         $addressStepMock->method('getDataClass')->willReturn(new QuoteTransfer());
@@ -210,6 +212,16 @@ class AddressStepTest extends Unit
     }
 
     /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface
+     */
+    protected function createStepExecutorMock()
+    {
+        $calculationMock = $this->getMockBuilder(StepExecutorInterface::class)->getMock();
+
+        return $calculationMock;
+    }
+
+    /**
      * @return \Symfony\Component\HttpFoundation\Request
      */
     protected function createRequest()
@@ -223,5 +235,21 @@ class AddressStepTest extends Unit
     protected function createCustomerClientMock()
     {
         return $this->getMockBuilder(CheckoutPageToCustomerClientInterface::class)->getMock();
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface
+     */
+    protected function createPostConditionCheckerMock()
+    {
+        return $this->getMockBuilder(PostConditionCheckerInterface::class)->getMock();
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\CheckoutPageConfig
+     */
+    protected function createCheckoutPageConfigMock()
+    {
+        return $this->getMockBuilder(CheckoutPageConfig::class)->getMock();
     }
 }

@@ -14,12 +14,14 @@ use Generated\Shared\Transfer\ShipmentTransfer;
 use Spryker\Shared\Shipment\ShipmentConstants;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface;
+use SprykerShop\Yves\CheckoutPage\CheckoutPageConfig;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageDependencyProvider;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceInterface;
+use SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\ShipmentStep;
+use SprykerShop\Yves\CheckoutPage\StrategyResolver\ShipmentStep\ShipmentStepStrategyResolverInterface;
 use Symfony\Component\HttpFoundation\Request;
-use SprykerShop\Yves\CheckoutPage\Process\Steps\ShipmentStep\PostConditionCheckerWithoutMultiShipment;
 
 /**
  * Auto-generated group annotations
@@ -63,6 +65,9 @@ class ShipmentStepTest extends Unit
         $expenseTransfer = new ExpenseTransfer();
         $expenseTransfer->setType(ShipmentConstants::SHIPMENT_EXPENSE_TYPE);
         $quoteTransfer->addExpense($expenseTransfer);
+        $shipmentTransfer = new ShipmentTransfer();
+        $shipmentTransfer->setShipmentSelection(CheckoutPageConfig::SHIPMENT_METHOD_NAME_NO_SHIPMENT);
+        $quoteTransfer->setShipment($shipmentTransfer);
 
         $shipmentStep = $this->createShipmentStep(new StepHandlerPluginCollection());
 
@@ -76,16 +81,12 @@ class ShipmentStepTest extends Unit
      */
     protected function createShipmentStep(StepHandlerPluginCollection $shipmentPlugins)
     {
-        /**
-         * @todo Update this test regarding to Split Delivery.
-         */
         return new ShipmentStep(
             $this->createCalculationClientMock(),
             $shipmentPlugins,
-            $this->createShipmentServiceMock(),
+            $this->createPostConditionCheckerMock(),
             CheckoutPageDependencyProvider::PLUGIN_SHIPMENT_STEP_HANDLER,
-            'escape_route',
-            $this->createShipmentStepStrategyResolver()
+            'escape_route'
         );
     }
 
@@ -109,22 +110,11 @@ class ShipmentStepTest extends Unit
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceInterface
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface
      */
-    protected function createShipmentServiceMock()
+    protected function createPostConditionCheckerMock()
     {
-        return $this->getMockBuilder(CheckoutPageToShipmentServiceInterface::class)->getMock();
-    }
-
-    /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface
-     */
-    protected function createShipmentStepStrategyResolverMock()
-    {
-        $mock = $this->getMockBuilder(CheckoutPageToCalculationClientInterface::class)->getMock();
-        $mock->method('resolvePostCondition')->willReturnArgument(new PostConditionCheckerWithoutMultiShipment());
-
-        return $mock;
+        return $this->getMockBuilder(PostConditionCheckerInterface::class)->getMock();
     }
 
     /**
