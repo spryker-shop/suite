@@ -31,7 +31,7 @@
 docker exec -i -u spryker \
   -e APPLICATION_ENV={{ getenv('APPLICATION_ENV') }} \
   -e APPLICATION_STORE={{ job.store }} \
-  -e PHP_BIN="/usr/bin/php" \
+  -e PHP_BIN="/usr/local/bin/php" \
   {{ getenv('SPRYKER_JOB_CONTAINER') | replace({ '%store%': job.store|lower }) }} \
   bash -c \
   "{{ job.command }}"
