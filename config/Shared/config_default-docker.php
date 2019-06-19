@@ -462,6 +462,9 @@ $config[SchedulerJenkinsConstants::JENKINS_CONFIGURATION] = [
         SchedulerJenkinsConfig::SCHEDULER_JENKINS_BASE_URL => 'http://' . getenv('SPRYKER_SCHEDULER_HOST') . ':' . getenv('SPRYKER_SCHEDULER_PORT') . '/',
     ],
 ];
+
+$config[SchedulerJenkinsConstants::JENKINS_TEMPLATE_PATH] = APPLICATION_ROOT_DIR . '/config/Zed/cronjobs/';
+$config[SchedulerJenkinsConstants::JENKINS_TEMPLATE_NAME] = 'jenkins.xml.twig';
 /* End Job runner */
 
 /* Broker */
