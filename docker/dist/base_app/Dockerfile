@@ -24,8 +24,8 @@ RUN --mount=type=cache,target=/home/spryker/.composer/cache,from=composer_cache,
 
 # Intermediate container - with dependencies, PHP code and configs
 FROM spryker_app_dependencies AS spryker_app_base
-COPY --chown=spryker:spryker config ${srcRoot}/config
 COPY --chown=spryker:spryker src ${srcRoot}/src
+COPY --chown=spryker:spryker config ${srcRoot}/config
 COPY --chown=spryker:spryker *.php ${srcRoot}/
 
 ARG APPLICATION_ENV
