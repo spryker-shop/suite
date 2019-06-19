@@ -674,7 +674,7 @@ function doBootstrap() {
   DEST_DIR="${DOCKER_DIR}"
   echo -e "${INFO}Boostrapping docker setup...${NC}"
   if [ -f "${DOCKER_DIR}/.env" ]; then
-    echo "${WHITE}Saving backup of docker/.env${NC}"
+    echo -e "${WHITE}Saving backup of docker/.env${NC}"
     cp -f "${DOCKER_DIR}/.env" "${DOCKER_DIR}/.env.bak"
   fi
   echo -e "${WHITE}Copying files from ${DIST_DIR} to ${DEST_DIR}${NC}"
