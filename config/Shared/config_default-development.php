@@ -24,7 +24,6 @@ use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\SessionFile\SessionFileConstants;
 use Spryker\Shared\SessionRedis\SessionRedisConstants;
 use Spryker\Shared\Setup\SetupConstants;
-use Spryker\Shared\StorageDatabase\StorageDatabaseConfig;
 use Spryker\Shared\StorageDatabase\StorageDatabaseConstants;
 use Spryker\Shared\WebProfiler\WebProfilerConstants;
 use Spryker\Shared\ZedNavigation\ZedNavigationConstants;
@@ -115,7 +114,6 @@ $config[OauthConstants::OAUTH_CLIENT_IDENTIFIER] = 'frontend';
 $config[OauthConstants::OAUTH_CLIENT_SECRET] = 'abc123';
 
 // ---------- Database storage
-$config[StorageDatabaseConstants::DB_ENGINE] = StorageDatabaseConfig::DB_ENGINE_PGSQL;
 $config[StorageDatabaseConstants::DB_HOST] = '127.0.0.1';
 $config[StorageDatabaseConstants::DB_PORT] = 5432;
 $config[StorageDatabaseConstants::DB_USERNAME] = 'development';

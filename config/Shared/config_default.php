@@ -42,6 +42,7 @@ use Spryker\Shared\SessionFile\SessionFileConstants;
 use Spryker\Shared\SessionRedis\SessionRedisConfig;
 use Spryker\Shared\SessionRedis\SessionRedisConstants;
 use Spryker\Shared\Storage\StorageConstants;
+use Spryker\Shared\StorageDatabase\StorageDatabaseConfig;
 use Spryker\Shared\StorageDatabase\StorageDatabaseConstants;
 use Spryker\Shared\StorageRedis\StorageRedisConstants;
 use Spryker\Shared\Synchronization\SynchronizationConstants;
@@ -515,3 +516,4 @@ $config[SynchronizationConstants::SEARCH_SYNC_ENABLED] = true;
 
 // ---------- Database storage
 $config[StorageDatabaseConstants::DB_DEBUG] = false;
+$config[StorageDatabaseConstants::DB_ENGINE] = StorageDatabaseConfig::DB_ENGINE_PGSQL;

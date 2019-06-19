@@ -23,7 +23,6 @@ use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\SessionRedis\SessionRedisConfig;
 use Spryker\Shared\Setup\SetupConstants;
-use Spryker\Shared\StorageDatabase\StorageDatabaseConfig;
 use Spryker\Shared\StorageDatabase\StorageDatabaseConstants;
 use Spryker\Shared\StorageRedis\StorageRedisConstants;
 use Spryker\Shared\Testify\TestifyConstants;
@@ -101,6 +100,5 @@ $config[QueueConstants::QUEUE_WORKER_LOOP] = true;
 $config[EventConstants::EVENT_CHUNK] = 5000;
 
 // ---------- Database storage
-$config[StorageDatabaseConstants::DB_ENGINE] = StorageDatabaseConfig::DB_ENGINE_PGSQL;
 $config[StorageDatabaseConstants::DB_HOST] = '127.0.0.1';
 $config[StorageDatabaseConstants::DB_PORT] = 5432;
