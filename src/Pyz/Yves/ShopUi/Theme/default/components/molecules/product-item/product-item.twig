@@ -10,7 +10,7 @@
     name: data.product.name | default(''),
     sku: data.product.sku | default(''),
     url: data.product.url | default(''),
-    image: data.product.images ? data.product.images.0.external_url_small,
+    image: data.product.images ? data.product.images.0.externalUrlSmall | default(''),
     idProductAbstract: data.product.idProductAbstract | default(''),
 } %}
 
@@ -20,7 +20,7 @@
 
 {% block body %}
     {% block imageContainer %}
-        <a href="{{data.product.url}}">
+        <a href="{{ data.url }}">
             {% block image %}
                 {% include atom('thumbnail') with {
                     class: 'js-product-color-group__image-' ~ data.idProductAbstract,
@@ -50,7 +50,7 @@
     {% block content %}
         {% block name %}
             {% if data.name %}
-                <a class="{{ config.name }}__name" href="{{ data.product.url }}">{{ data.name }}</a>
+                <a class="{{ config.name }}__name" href="{{ data.url }}">{{ data.name }}</a>
             {% endif %}
         {% endblock %}
 
@@ -61,7 +61,7 @@
         {% endblock %}
 
         {% block rating %}
-            {% widget 'DisplayProductAbstractReviewWidget' args [data.idProductAbstract] only %}{% endwidget %}
+            {% widget 'ProductAbstractReviewWidget' args [data.idProductAbstract] only %}{% endwidget %}
         {% endblock %}
 
         {% block priceContainer %}
