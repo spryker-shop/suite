@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "382621b4177d9437d9fbad6634242870",
+    "content-hash": "7b3b824e2fe3ce75447bac37062102d6",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -1127,16 +1127,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.52",
+            "version": "1.0.53",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "c5a5097156387970e6f0ccfcdf03f752856f3391"
+                "reference": "08e12b7628f035600634a5e76d95b5eb66cea674"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/c5a5097156387970e6f0ccfcdf03f752856f3391",
-                "reference": "c5a5097156387970e6f0ccfcdf03f752856f3391",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/08e12b7628f035600634a5e76d95b5eb66cea674",
+                "reference": "08e12b7628f035600634a5e76d95b5eb66cea674",
                 "shasum": ""
             },
             "require": {
@@ -1207,7 +1207,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2019-05-20T20:21:14+00:00"
+            "time": "2019-06-18T20:09:29+00:00"
         },
         {
             "name": "league/oauth2-server",
@@ -2623,11 +2623,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-bugfix/cc-4744-security-fix-package-json-dependencies-vulnerabilities",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "5aa757f9e313791d6a2dbbff7300a8b3559c9632"
+                "reference": "42d5ca7537ad0c7fb179b240b1868540d94001ba"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2896,15 +2896,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-06-14T08:56:39+00:00"
+            "time": "2019-06-19T08:06:18+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-bugfix/cc-4744-security-fix-package-json-dependencies-vulnerabilities",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "0d20935db79ebe3cfef17f1030e1583686f92145"
+                "reference": "edbb6c6db407c06d98ec0b5ae08f2c39035225bb"
             },
             "require": {
                 "php": ">=7.1"
@@ -2979,7 +2979,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-06-14T08:56:39+00:00"
+            "time": "2019-06-18T12:25:40+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -5206,16 +5206,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.42.1",
+            "version": "v1.42.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "671347603760a88b1e7288aaa9378f33687d7edf"
+                "reference": "21707d6ebd05476854805e4f91b836531941bcd4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/671347603760a88b1e7288aaa9378f33687d7edf",
-                "reference": "671347603760a88b1e7288aaa9378f33687d7edf",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/21707d6ebd05476854805e4f91b836531941bcd4",
+                "reference": "21707d6ebd05476854805e4f91b836531941bcd4",
                 "shasum": ""
             },
             "require": {
@@ -5268,7 +5268,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2019-06-04T11:31:08+00:00"
+            "time": "2019-06-18T15:35:16+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -8815,12 +8815,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-generator.git",
-                "reference": "a9f0a4e3e7615903f8c1093cb592c5082b1629cb"
+                "reference": "ae2cbb68eb88585012fd9c6bd7192b6ed1937ba6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-generator/zipball/a9f0a4e3e7615903f8c1093cb592c5082b1629cb",
-                "reference": "a9f0a4e3e7615903f8c1093cb592c5082b1629cb",
+                "url": "https://api.github.com/repos/spryker/code-generator/zipball/ae2cbb68eb88585012fd9c6bd7192b6ed1937ba6",
+                "reference": "ae2cbb68eb88585012fd9c6bd7192b6ed1937ba6",
                 "shasum": ""
             },
             "require": {
@@ -8831,6 +8831,7 @@
                 "spryker/zend": "^2.0.0"
             },
             "require-dev": {
+                "phpunit/phpunit": "<8",
                 "spryker/code-sniffer": "*",
                 "spryker/testify": "*"
             },
@@ -8850,7 +8851,7 @@
                 "MIT"
             ],
             "description": "CodeGenerator module",
-            "time": "2019-06-11T15:53:40+00:00"
+            "time": "2019-06-18T13:00:42+00:00"
         },
         {
             "name": "spryker/code-sniffer",
@@ -8960,12 +8961,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/git-hook.git",
-                "reference": "f563c1736a16cb02a84c3916eba2ecc7fec7f61a"
+                "reference": "b27b8ac525b8b8f1a4f17c6c5a99e78cd732750b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/git-hook/zipball/f563c1736a16cb02a84c3916eba2ecc7fec7f61a",
-                "reference": "f563c1736a16cb02a84c3916eba2ecc7fec7f61a",
+                "url": "https://api.github.com/repos/spryker/git-hook/zipball/b27b8ac525b8b8f1a4f17c6c5a99e78cd732750b",
+                "reference": "b27b8ac525b8b8f1a4f17c6c5a99e78cd732750b",
                 "shasum": ""
             },
             "require": {
@@ -9006,7 +9007,7 @@
                 "sniffer",
                 "standards"
             ],
-            "time": "2019-05-09T11:49:32+00:00"
+            "time": "2019-06-14T08:59:28+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
