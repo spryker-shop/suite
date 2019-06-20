@@ -313,8 +313,8 @@ services:
 
   broker:
     build:
-      context: .
-      dockerfile: docker/rabbitmq/Dockerfile
+      context: docker/rabbitmq
+      dockerfile: Dockerfile
     image: spryker_rabbitmq:1.0
     networks:
       - services
@@ -332,11 +332,11 @@ services:
 
   scheduler:
     build:
-      context: .
-      dockerfile: docker/jenkins/Dockerfile
+      context: docker/jenkins
+      dockerfile: Dockerfile
     image: spryker_jenkins:1.0
     environment:
-      JAVA_OPTS: '-Djenkins.install.runSetupWizard=false'
+      JAVA_OPTS: '-Djenkins.install.runSetupWizard=false -Xms128m -Xmx128m'
       VIRTUAL_HOST: "public:services:SPRYKER_SCHEDULER_HOST"
       VIRTUAL_PORT: 8080
     depends_on:
