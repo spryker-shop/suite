@@ -21,7 +21,6 @@
                     attributes: {
                         src: data.image,
                         alt: data.name,
-                        title: data.name,
                     },
                 } only %}
             {% else %}
@@ -111,7 +110,7 @@
             {% endif %}
 
             {% if canEditCart %}
-                <a class="float-right" href="{{ path('cart/remove', {'sku': data.sku, 'groupKey': data.product.groupKey }) }}">
+                <a class="float-right" href="{{ path('cart/remove', {'sku': data.sku, 'groupKey': data.product.groupKey }) }}" data-init-single-click>
                     {{- 'product_cart_item.remove' | trans | raw -}}
                 </a>
             {% endif %}
