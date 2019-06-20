@@ -42,7 +42,6 @@ use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\SessionFile\SessionFileConstants;
 use Spryker\Shared\SessionRedis\SessionRedisConfig;
 use Spryker\Shared\SessionRedis\SessionRedisConstants;
-use Spryker\Shared\Setup\SetupConstants;
 use Spryker\Shared\Storage\StorageConstants;
 use Spryker\Shared\StorageRedis\StorageRedisConstants;
 use Spryker\Shared\Tax\TaxConstants;
@@ -519,12 +518,7 @@ $config[ApiConstants::ENABLE_API_DEBUG] = false;
 $config[ErrorHandlerConstants::ENABLE_PRETTY_ERROR_HANDLER] = false;
 
 // ----------- Kernel test
-$config[KernelConstants::ADJUST_TEST_NAMESPACE] = false;
-$config[KernelConstants::OVERWRITE_CONTAINER_FOR_TESTING] = false;
-
-// ----------- Setup
-$config[SetupConstants::ENABLE_SCHEDULER] = true;
-$config[SetupConstants::ENABLE_DEPLOY_VARS] = true;
+$config[KernelConstants::ENABLE_CONTAINER_OVERRIDING] = false;
 
 // ----------- Calculation page
 $config[CalculationPageConstants::ENABLE_CART_DEBUG] = false;
@@ -536,6 +530,3 @@ $config[ErrorPageConstants::ENABLE_ERROR_404_STACK_TRACE] = false;
 $config[ApplicationConstants::TWIG_ENVIRONMENT_NAME]
     = $config[ShopApplicationConstants::TWIG_ENVIRONMENT_NAME]
     = APPLICATION_ENV;
-
-// ---------- Session
-$config[SessionConstants::SESSION_ENVIRONMENT_NAME] = APPLICATION_ENV;

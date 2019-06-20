@@ -173,15 +173,11 @@ $config[QuoteConstants::GUEST_QUOTE_LIFETIME] = 'P01M';
 $config[MailConstants::SMTP_PORT] = 1025;
 
 // ---------- Kernel
-$config[KernelConstants::ADJUST_TEST_NAMESPACE] = true;
-$config[KernelConstants::OVERWRITE_CONTAINER_FOR_TESTING] = true;
+$config[KernelConstants::ENABLE_CONTAINER_OVERRIDING] = true;
 
 // ----------- Application
 $config[ApplicationConstants::TWIG_ENVIRONMENT_NAME] =
 $config[ShopApplicationConstants::TWIG_ENVIRONMENT_NAME] = APPLICATION_ENV;
-
-// ---------- Session
-$config[SessionConstants::SESSION_ENVIRONMENT_NAME] = APPLICATION_ENV;
 
 // ---------- Console
 $config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = true;

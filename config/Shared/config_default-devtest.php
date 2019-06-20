@@ -100,8 +100,7 @@ $config[QueueConstants::QUEUE_WORKER_LOOP] = true;
 $config[EventConstants::EVENT_CHUNK] = 5000;
 
 // ---------- Kernel
-$config[KernelConstants::ADJUST_TEST_NAMESPACE] = true;
-$config[KernelConstants::OVERWRITE_CONTAINER_FOR_TESTING] = true;
+$config[KernelConstants::ENABLE_CONTAINER_OVERRIDING] = true;
 
 // ---------- Console
 $config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = true;

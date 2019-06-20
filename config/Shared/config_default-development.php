@@ -119,9 +119,6 @@ $config[OauthConstants::OAUTH_CLIENT_SECRET] = 'abc123';
 // ---------- Api
 $config[ApiConstants::ENABLE_API_DEBUG] = true;
 
-// ---------- Setup
-$config[SetupConstants::ENABLE_DEPLOY_VARS] = false;
-
 // ---------- Calculation page
 $config[CalculationPageConstants::ENABLE_CART_DEBUG] = true;
 

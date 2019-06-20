@@ -6,7 +6,6 @@
 
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Kernel\Store;
-use Spryker\Shared\Setup\SetupConstants;
 use Spryker\Shared\Twig\TwigConstants;
 
 $CURRENT_STORE = Store::getInstance()->getStoreName();
@@ -17,6 +16,3 @@ $config[KernelConstants::AUTO_LOADER_UNRESOLVABLE_CACHE_ENABLED] = true;
 // ---------- Twig
 $config[TwigConstants::YVES_PATH_CACHE_ENABLED] = true;
 $config[TwigConstants::ZED_PATH_CACHE_ENABLED] = true;
-
-// ---------- Setup
-$config[SetupConstants::ENABLE_SCHEDULER] = false;
