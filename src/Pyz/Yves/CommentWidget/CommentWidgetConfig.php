@@ -12,15 +12,16 @@ use SprykerShop\Yves\CommentWidget\CommentWidgetConfig as SprykerShopCommentConf
 class CommentWidgetConfig extends SprykerShopCommentConfig
 {
     /**
+     * @see \Spryker\Shared\Comment\CommentConfig::getCommentAvailableTags()
+     *
      * @return string[]
      */
     public function getCommentAvailableTags(): array
     {
         return [
             'attached',
-            '2017-01 Release',
-            'TODO: Johny@email.com',
-            'Case-sensitive tag',
+            '2019',
+            'spryker2019',
         ];
     }
 }

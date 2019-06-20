@@ -18,9 +18,8 @@ class CommentConfig extends SprykerCommentConfig
     {
         return [
             'attached',
-            '2017-01 Release',
-            'TODO: Johny@email.com',
-            'Case-sensitive tag',
+            '2019',
+            'spryker2019',
         ];
     }
 }
