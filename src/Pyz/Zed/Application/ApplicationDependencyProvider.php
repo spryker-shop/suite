@@ -41,9 +41,6 @@ use Spryker\Zed\Twig\Communication\Plugin\Application\TwigApplicationPlugin;
 use Spryker\Zed\WebProfiler\Communication\Plugin\ServiceProvider\WebProfilerServiceProvider;
 use Spryker\Zed\ZedRequest\Communication\Plugin\GatewayServiceProviderPlugin;
 
-/**
- * @method \Pyz\Zed\Application\ApplicationConfig getConfig()
- */
 class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
 {
     /**
