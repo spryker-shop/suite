@@ -3,7 +3,7 @@ version: "3.5"
 x-volumes:
   &mac-dev-volumes
   volumes:
-    - ./docker/context/php/opcache_dev.ini:/etc/php7/conf.d/opcache.ini
+    - ./docker/context/php/conf.d/opcache_dev.ini:/etc/php7/conf.d/opcache.ini
     - data-sync:/data
 
 x-env_file:
@@ -16,7 +16,7 @@ services:
   yves_de:
     <<: *mac-dev-envfile
     <<: *mac-dev-volumes
-  
+
   yves_at:
     <<: *mac-dev-envfile
     <<: *mac-dev-volumes

@@ -4,7 +4,7 @@ version: "3.5"
 x-volumes:
   &win-dev-volumes
   volumes:
-    - ./docker/context/php/opcache_dev.ini:/etc/php7/conf.d/opcache.ini
+    - ./docker/context/php/conf.d/opcache_dev.ini:/etc/php7/conf.d/opcache.ini
     - data-sync://data
 
 x-env_file:
