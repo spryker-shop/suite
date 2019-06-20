@@ -840,9 +840,6 @@ case $1 in
   jobs)
     createSchedulerJobs
     ;;
-  broker_vhosts)
-    initBrokerVhosts
-    ;;
   reset)
     stopApp
     destroyAppAndVolumes
