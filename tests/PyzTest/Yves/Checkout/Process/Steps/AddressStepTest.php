@@ -181,6 +181,8 @@ class AddressStepTest extends Unit
     }
 
     /**
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     *
      * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep|\PHPUnit_Framework_MockObject_MockObject
      */
     protected function createAddressStep(CustomerTransfer $customerTransfer)
@@ -237,7 +239,7 @@ class AddressStepTest extends Unit
             ->setConstructorArgs([
                 $customerService,
                 $customerClientMock,
-                []
+                [],
             ])
             ->getMock();
     }
