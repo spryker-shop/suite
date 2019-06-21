@@ -8,6 +8,7 @@
 namespace PyzTest\Yves\Checkout\Process\Steps;
 
 use Codeception\Test\Unit;
+use Generated\Shared\DataBuilder\ItemBuilder;
 use Generated\Shared\Transfer\ExpenseTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\ShipmentTransfer;
@@ -20,7 +21,6 @@ use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationCli
 use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\ShipmentStep;
-use SprykerShop\Yves\CheckoutPage\StrategyResolver\ShipmentStep\ShipmentStepStrategyResolverInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -61,14 +61,14 @@ class ShipmentStepTest extends Unit
      */
     public function testShipmentPostConditionsShouldReturnTrueWhenShipmentSet()
     {
+        $itemTransfer = (new ItemBuilder())->withShipment()->build();
+
         $quoteTransfer = new QuoteTransfer();
         $expenseTransfer = new ExpenseTransfer();
         $expenseTransfer->setType(ShipmentConstants::SHIPMENT_EXPENSE_TYPE);
+        $expenseTransfer->setShipment($itemTransfer->getShipment());
         $quoteTransfer->addExpense($expenseTransfer);
-        $shipmentTransfer = new ShipmentTransfer();
-        $shipmentTransfer->setShipmentSelection(CheckoutPageConfig::SHIPMENT_METHOD_NAME_NO_SHIPMENT);
-        $quoteTransfer->setShipment($shipmentTransfer);
-
+        $quoteTransfer->addItem($itemTransfer);
         $shipmentStep = $this->createShipmentStep(new StepHandlerPluginCollection());
 
         $this->assertTrue($shipmentStep->postCondition($quoteTransfer));
