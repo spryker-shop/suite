@@ -21,7 +21,6 @@ use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToCustomerServi
 use SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep\AddressStepExecutor;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface;
-use SprykerShop\Yves\CheckoutPage\Process\Steps\StepExecutorInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
