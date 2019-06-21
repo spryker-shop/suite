@@ -71,7 +71,7 @@ async function findComponentEntryPoints(settings, storeName) {
 }
 
 // find component styles
-async function findStyles(settings, storeName) {
+async function findComponentStyles(settings, storeName) {
     const styles = await find(settings.dirs, settings.patterns, [], settings.globSettings);
 
     console.log(`${storeName} store components styles: ${styles.length}`);
@@ -95,6 +95,6 @@ async function findAppEntryPoint(settings, file) {
 
 module.exports = {
     findComponentEntryPoints,
-    findStyles,
+    findComponentStyles,
     findAppEntryPoint
 };
