@@ -11,7 +11,7 @@ interface ConsoleConstants
 {
     /**
      * Specification:
-     * - Enables commands from modules included by require-dev composer section.s
+     * - Enables commands from modules included by require-dev composer section.
      * - Must be set to false for environments where composer install --no-dev is performed.
      *
      * @api
