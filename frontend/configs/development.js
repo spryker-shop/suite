@@ -7,8 +7,8 @@ const { getAliasFromTsConfig } = require('../libs/alias');
 const { getAssetsConfig } = require('../libs/asset-manager');
 
 async function getConfiguration(appSettings) {
-    const componentEntryPointsPromise = findComponentEntryPoints(appSettings.find.componentEntryPoints, appSettings.store.name);
-    const stylesPromise = findComponentStyles(appSettings.find.componentStyles, appSettings.store.name);
+    const componentEntryPointsPromise = findComponentEntryPoints(appSettings.find.componentEntryPoints);
+    const stylesPromise = findComponentStyles(appSettings.find.componentStyles);
     const [componentEntryPoints, styles] = await Promise.all([componentEntryPointsPromise, stylesPromise]);
     const alias = getAliasFromTsConfig(appSettings);
 
@@ -20,6 +20,8 @@ async function getConfiguration(appSettings) {
 
     return {
         storeName: appSettings.store.name,
+        componentEntryPointsLength: componentEntryPoints.length,
+        stylesLength: styles.length,
         webpack: {
             context: appSettings.context,
             mode: 'development',
