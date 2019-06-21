@@ -17,7 +17,7 @@ class SchedulerDependencyProvider extends SprykerSchedulerDependencyProvider
     /**
      * @return \Spryker\Zed\SchedulerExtension\Dependency\Plugin\ScheduleReaderPluginInterface[]
      */
-    protected function getSchedulerReaderPlugins(): array
+    protected function getScheduleReaderPlugins(): array
     {
         return [
             new PhpScheduleReaderPlugin(),
