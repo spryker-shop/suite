@@ -62,24 +62,24 @@ async function findEntryPoints(settings) {
 }
 
 // find components entry points
-async function findComponentEntryPoints(settings) {
+async function findComponentEntryPoints(settings, storeName) {
     const entryPoints = await findEntryPoints(settings);
 
-    console.log(`Components entry points: ${entryPoints.length}`);
+    console.log(`${storeName} store components entry points: ${entryPoints.length}`);
 
     return entryPoints;
 }
 
 // find component styles
-async function findStyles(settings) {
+async function findStyles(settings, storeName) {
     const styles = await find(settings.dirs, settings.patterns, [], settings.globSettings);
 
-    console.log(`Components styles: ${styles.length}`);
+    console.log(`${storeName} store components styles: ${styles.length}`);
     return styles;
 }
 
 async function findAppEntryPoint(settings, file) {
-    let config = Object.assign({}, settings);
+    const config = Object.assign({}, settings);
     const updatePatterns = function(patterncollection) {
         return patterncollection.map((pattern) => {
             return path.join(pattern, file);

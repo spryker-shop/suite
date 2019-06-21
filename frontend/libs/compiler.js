@@ -4,7 +4,7 @@ const { globalSettings } = require('../settings');
 
 // execute webpack compiler
 // and nicely handle the console output
-function compile(config) {
+function compile(config, storeName) {
     console.log(`Building for ${config.mode}...`);
 
     if (config.watch) {
@@ -21,7 +21,7 @@ function compile(config) {
 
             return;
         }
-
+        console.log(`${storeName} store:`);
         console.log(stats.toString(config.stats), '\n');
     });
 }
@@ -33,19 +33,16 @@ function multiCompile(configs) {
         return console.error('No configuration provided. Build aborted.');
     }
 
-    if (configs.length === 1) {
-        return compile(configs[0]);
-    }
+    configs.forEach((config) => {
+        console.log(`${config.storeName} building for ${config.webpack.mode}...`);
 
-    configs.forEach((config, index) => {
-        console.log(`${index}. Building for ${config.mode}...`);
-
-        if (config.watch) {
-            console.log(`${index}. Watch mode: ON`);
+        if (config.webpack.watch) {
+            console.log(`${config.storeName} watch mode: ON`);
         }
     });
 
-    webpack(configs, (err, multiStats) => {
+    const webpackConfigs = configs.map(item => item.webpack);
+    webpack(webpackConfigs, (err, multiStats) => {
         if (err) {
             console.error(err.stack || err);
 
@@ -57,7 +54,10 @@ function multiCompile(configs) {
         }
 
         multiStats.stats.forEach(
-            (stat, index) => console.log(stat.toString(configs[index].stats), '\n')
+            (stat, index) => {
+                console.log(`${configs[index].storeName} store:`);
+                console.log(stat.toString(webpackConfigs[index].stats), '\n')
+            }
         );
     });
 }

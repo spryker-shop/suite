@@ -7,8 +7,8 @@ const { getAliasFromTsConfig } = require('../libs/alias');
 const { getAssetsConfig } = require('../libs/asset-manager');
 
 async function getConfiguration(appSettings) {
-    const componentEntryPointsPromise = findComponentEntryPoints(appSettings.find.componentEntryPoints);
-    const stylesPromise = findStyles(appSettings.find.componentStyles);
+    const componentEntryPointsPromise = findComponentEntryPoints(appSettings.find.componentEntryPoints, appSettings.store.name);
+    const stylesPromise = findStyles(appSettings.find.componentStyles, appSettings.store.name);
     const [componentEntryPoints, styles] = await Promise.all([componentEntryPointsPromise, stylesPromise]);
     const alias = getAliasFromTsConfig(appSettings);
 
@@ -19,129 +19,132 @@ async function getConfiguration(appSettings) {
     const sharedScss = await findAppEntryPoint(appSettings.find.shopUiEntryPoints, './styles/shared.scss');
 
     return {
-        context: appSettings.context,
-        mode: 'development',
-        devtool: 'inline-source-map',
+        storeName: appSettings.store.name,
+        webpack: {
+            context: appSettings.context,
+            mode: 'development',
+            devtool: 'inline-source-map',
 
-        stats: {
-            colors: true,
-            chunks: false,
-            chunkModules: false,
-            chunkOrigins: false,
-            modules: false,
-            entrypoints: false
-        },
+            stats: {
+                colors: true,
+                chunks: false,
+                chunkModules: false,
+                chunkOrigins: false,
+                modules: false,
+                entrypoints: false
+            },
 
-        entry: {
-            'vendor': vendorTs,
-            'app': [
-                appTs,
-                basicScss,
-                ...componentEntryPoints,
-                utilScss,
-            ]
-        },
+            entry: {
+                'vendor': vendorTs,
+                'app': [
+                    appTs,
+                    basicScss,
+                    ...componentEntryPoints,
+                    utilScss,
+                ]
+            },
 
-        output: {
-            path: join(appSettings.context, appSettings.paths.public),
-            publicPath: `${appSettings.urls.currentAssets}/`,
-            filename: `./js/${appSettings.name}.[name].js`,
-            jsonpFunction: `webpackJsonp_${appSettings.name.replace(/(-|\W)+/gi, '_')}`
-        },
+            output: {
+                path: join(appSettings.context, appSettings.paths.public),
+                publicPath: `${appSettings.urls.currentAssets}/`,
+                filename: `./js/${appSettings.name}.[name].js`,
+                jsonpFunction: `webpackJsonp_${appSettings.name.replace(/(-|\W)+/gi, '_')}`
+            },
 
-        resolve: {
-            extensions: ['.ts', '.js', '.json', '.css', '.scss'],
-            alias
-        },
+            resolve: {
+                extensions: ['.ts', '.js', '.json', '.css', '.scss'],
+                alias
+            },
 
-        module: {
-            rules: [
-                {
-                    test: /\.ts$/,
-                    loader: 'ts-loader',
-                    options: {
-                        context: appSettings.context,
-                        configFile: join(appSettings.context, appSettings.paths.tsConfig),
-                        compilerOptions: {
-                            baseUrl: appSettings.context,
-                            outDir: appSettings.paths.public
+            module: {
+                rules: [
+                    {
+                        test: /\.ts$/,
+                        loader: 'ts-loader',
+                        options: {
+                            context: appSettings.context,
+                            configFile: join(appSettings.context, appSettings.paths.tsConfig),
+                            compilerOptions: {
+                                baseUrl: appSettings.context,
+                                outDir: appSettings.paths.public
+                            }
                         }
+                    },
+                    {
+                        test: /\.scss/i,
+                        use: [
+                            MiniCssExtractPlugin.loader, {
+                                loader: 'css-loader',
+                                options: {
+                                    importLoaders: 1
+                                }
+                            }, {
+                                loader: 'postcss-loader',
+                                options: {
+                                    ident: 'postcss',
+                                    plugins: [
+                                        autoprefixer({
+                                            'browsers': ['> 1%', 'last 2 versions']
+                                        })
+                                    ]
+                                }
+                            }, {
+                                loader: 'sass-loader'
+                            }, {
+                                loader: 'sass-resources-loader',
+                                options: {
+                                    resources: [
+                                        sharedScss,
+                                        ...styles
+                                    ]
+                                }
+                            }
+                        ]
                     }
-                },
-                {
-                    test: /\.scss/i,
-                    use: [
-                        MiniCssExtractPlugin.loader, {
-                            loader: 'css-loader',
-                            options: {
-                                importLoaders: 1
-                            }
-                        }, {
-                            loader: 'postcss-loader',
-                            options: {
-                                ident: 'postcss',
-                                plugins: [
-                                    autoprefixer({
-                                        'browsers': ['> 1%', 'last 2 versions']
-                                    })
-                                ]
-                            }
-                        }, {
-                            loader: 'sass-loader'
-                        }, {
-                            loader: 'sass-resources-loader',
-                            options: {
-                                resources: [
-                                    sharedScss,
-                                    ...styles
-                                ]
-                            }
-                        }
-                    ]
+                ]
+            },
+
+            optimization: {
+                runtimeChunk: 'single',
+                concatenateModules: false,
+                splitChunks: {
+                    chunks: 'initial',
+                    minChunks: 1,
+                    cacheGroups: {
+                        default: false,
+                        vendors: false
+                    }
                 }
+            },
+
+            plugins: [
+                new webpack.DefinePlugin({
+                    __NAME__: `'${appSettings.name}'`,
+                    __PRODUCTION__: false
+                }),
+
+                ...getAssetsConfig(appSettings),
+
+                new MiniCssExtractPlugin({
+                    filename: `./css/${appSettings.name}.[name].css`,
+                }),
+
+                (compiler) => compiler.hooks.done.tap('webpack', compilationParams => {
+                    if (process.env.npm_lifecycle_event === 'yves:watch') {
+                        return;
+                    }
+
+                    const { errors } = compilationParams.compilation;
+
+                    if (!errors || errors.length === 0) {
+                        return;
+                    }
+
+                    errors.forEach(error => console.log(error.message));
+                    process.exit(1);
+                })
             ]
-        },
-
-        optimization: {
-            runtimeChunk: 'single',
-            concatenateModules: false,
-            splitChunks: {
-                chunks: 'initial',
-                minChunks: 1,
-                cacheGroups: {
-                    default: false,
-                    vendors: false
-                }
-            }
-        },
-
-        plugins: [
-            new webpack.DefinePlugin({
-                __NAME__: `'${appSettings.name}'`,
-                __PRODUCTION__: false
-            }),
-
-            ...getAssetsConfig(appSettings),
-
-            new MiniCssExtractPlugin({
-                filename: `./css/${appSettings.name}.[name].css`,
-            }),
-
-            (compiler) => compiler.hooks.done.tap('webpack', compilationParams => {
-                if (process.env.npm_lifecycle_event === 'yves:watch') {
-                    return;
-                }
-
-                const { errors } = compilationParams.compilation;
-
-                if (!errors || errors.length === 0) {
-                    return;
-                }
-
-                errors.forEach(error => console.log(error.message));
-                process.exit(1);
-            })
-        ]
+        }
     };
 }
 

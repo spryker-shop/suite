@@ -11,8 +11,8 @@ function printWrongStoreIdMessage(name) {
 }
 
 function printStoreInfoMessage(store) {
-    let currentTheme = store.currentTheme || store.defaultTheme;
-    console.log(`Store "${store.storeKey}" with theme "${currentTheme}".`);
+    const currentTheme = store.currentTheme || store.defaultTheme;
+    console.log(`Store "${store.name}" with theme "${currentTheme}".`);
     return store;
 }
 
@@ -34,7 +34,7 @@ function getStoresByIds(ids) {
 
     return ids
         .filter(id => stores.has(id))
-        .map(id => stores.get(id))
+        .map(id => (Object.assign({'name': id}, stores.get(id))))
         .map(printStoreInfoMessage);
 }
 
