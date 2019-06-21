@@ -4,7 +4,7 @@ const { globalSettings } = require('../settings');
 
 // execute webpack compiler
 // and nicely handle the console output
-function compile(config, storeName) {
+const compile = (config, storeName) => {
     console.log(`Building for ${config.mode}...`);
 
     if (config.watch) {
@@ -21,14 +21,14 @@ function compile(config, storeName) {
 
             return;
         }
-        console.log(`${storeName} store:`);
+        console.log(`${storeName} store building statistics:`);
         console.log(stats.toString(config.stats), '\n');
     });
-}
+};
 
 // execute webpack compiler on array of configurations
 // and nicely handle the console output
-function multiCompile(configs) {
+const multiCompile = configs => {
     if (configs.length === 0 || configs.length === undefined) {
         return console.error('No configuration provided. Build aborted.');
     }
@@ -55,21 +55,23 @@ function multiCompile(configs) {
 
         multiStats.stats.forEach(
             (stat, index) => {
-                console.log(`${configs[index].storeName} store:`);
+                console.log(`${configs[index].storeName} store building statistics:`);
+                console.log(`Components entry points: ${configs[index].componentEntryPointsLength}`);
+                console.log(`Components styles: ${configs[index].stylesLength}`);
                 console.log(stat.toString(webpackConfigs[index].stats), '\n')
             }
         );
     });
-}
+};
 
 // clear assets
-function clearAllAssets(storeIds) {
+const clearAllAssets = storeIds => {
     if (storeIds.length === 0) {
         rimraf(globalSettings.paths.publicAssets, () => {
             console.log(`${globalSettings.paths.publicAssets} has been removed. \n`);
         });
     }
-}
+};
 
 module.exports = {
     compile,
