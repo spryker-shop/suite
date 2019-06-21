@@ -6,7 +6,7 @@ const globalSettings = {
     context: process.cwd(),
 
     paths: {
-        publicAll: './public/Yves/assets'
+        publicAssets: './public/Yves/assets'
     }
 };
 
@@ -28,12 +28,14 @@ function getAppSettingsByStore(store) {
         '!test'
     ];
 
-    const entryPointsCollection = function(pathPattern) {
-        return entryPointsParts.map((element) => `${pathPattern}/${element}`);
-    };
+    // getting collection of entry points by pattern
+    const entryPointsCollection = (pathPattern) => entryPointsParts.map((element) => `${pathPattern}/${element}`);
 
     // define current theme
     const currentTheme = store.currentTheme || store.defaultTheme;
+
+    // define if current theme is empty
+    const isCurrentThemeEmpty = currentTheme !== store.currentTheme;
 
     // define the applicatin name
     // important: the name must be normalized
@@ -46,8 +48,9 @@ function getAppSettingsByStore(store) {
         currentAssets: join('/assets', store.storeKey, currentTheme)
     };
 
-    const assetPaths = function() {
-        let assetPathsCollection = {
+    // getting assets paths collection
+    const assetPaths = () => {
+        const assetPathsCollection = {
             // global assets folder
             globalAssets: './frontend/assets/global',
 
@@ -55,12 +58,12 @@ function getAppSettingsByStore(store) {
             defaultAssets: join('./frontend', urls.defaultAssets),
         };
 
-        if (currentTheme !== store.defaultTheme) {
+        if (!isCurrentThemeEmpty) {
             // assets folder for current theme in store
             assetPathsCollection.currentAssets = join('./frontend', urls.currentAssets);
         }
 
-        return assetPathsCollection
+        return assetPathsCollection;
     };
 
     // define project relative paths to context
@@ -77,46 +80,37 @@ function getAppSettingsByStore(store) {
         public: join('./public/Yves', urls.currentAssets),
 
         // core folders
-        core: {
-            // all modules
-            modules: './vendor/spryker/spryker-shop/Bundles'
-        },
+        core: './vendor/spryker/spryker-shop/Bundles',
 
         // eco folders
-        eco: {
-            // all modules
-            modules: './vendor/spryker-eco'
-        },
+        eco: './vendor/spryker-eco',
 
         // project folders
-        project: {
-            // all modules
-            modules: './src/Pyz/Yves'
-        }
+        project: './src/Pyz/Yves'
     };
 
     // define entry point patterns for current theme, if current theme is defined
-    const customThemeEntryPointPatterns = function () {
-        if (currentTheme !== store.defaultTheme) {
-            return [
-                ...entryPointsCollection(`**/Theme/${currentTheme}`),
-                ...entryPointsCollection(`**/*${store.storeKey}/Theme/${currentTheme}`),
-                ...ignoreFiles
-            ];
+    const customThemeEntryPointPatterns = () => {
+        if (isCurrentThemeEmpty) {
+            return [];
         }
 
-        return [];
+        return [
+            ...entryPointsCollection(`**/Theme/${currentTheme}`),
+            ...entryPointsCollection(`**/*${store.storeKey}/Theme/${currentTheme}`),
+            ...ignoreFiles
+        ];
     };
 
-    //
-    const shopUiEntryPointsPattern = function () {
-        if (currentTheme !== store.defaultTheme) {
-            return [
-                `./ShopUi/Theme/${currentTheme}`,
-                `./ShopUi${store.storeKey}/Theme/${currentTheme}`
-            ];
+    const shopUiEntryPointsPattern = () => {
+        if (isCurrentThemeEmpty) {
+            return [];
         }
-        return []
+
+        return [
+            `./ShopUi/Theme/${currentTheme}`,
+            `./ShopUi${store.storeKey}/Theme/${currentTheme}`
+        ];
     };
 
     // return settings
@@ -134,9 +128,9 @@ function getAppSettingsByStore(store) {
             componentEntryPoints: {
                 // absolute dirs in which look for
                 dirs: [
-                    join(globalSettings.context, paths.core.modules),
-                    join(globalSettings.context, paths.eco.modules),
-                    join(globalSettings.context, paths.project.modules)
+                    join(globalSettings.context, paths.core),
+                    join(globalSettings.context, paths.eco),
+                    join(globalSettings.context, paths.project)
                 ],
                 // files/dirs patterns
                 patterns: customThemeEntryPointPatterns(),
@@ -153,7 +147,7 @@ function getAppSettingsByStore(store) {
             componentStyles: {
                 // absolute dirs in which look for
                 dirs: [
-                    join(globalSettings.context, paths.core.modules)
+                    join(globalSettings.context, paths.core)
                 ],
                 // files/dirs patterns
                 patterns: [
@@ -169,7 +163,7 @@ function getAppSettingsByStore(store) {
 
             shopUiEntryPoints: {
                 dirs: [
-                    join(globalSettings.context, './src/Pyz/Yves/')
+                    join(globalSettings.context, paths.project)
                 ],
                 patterns: [
                     ...shopUiEntryPointsPattern()

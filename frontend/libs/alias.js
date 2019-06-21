@@ -21,10 +21,11 @@ function getAliasFromTsConfig(appSettings) {
         const aliasPath = aliases[name][0].replace(/(\/\*?)$/, '');
         const aliasDir = path.join(appSettings.context, aliasPath);
         map[alias] = aliasDir;
+
         return map;
     }, {});
 }
 
 module.exports = {
     getAliasFromTsConfig
-}
+};

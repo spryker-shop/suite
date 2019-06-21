@@ -2,7 +2,7 @@ const stylelint = require('stylelint');
 const appSettings = require('../settings');
 
 stylelint.lint({
-    files: [`${appSettings.paths.core.modules}/**/*.scss`, `${appSettings.paths.project.modules}/**/*.scss`],
+    files: [`${appSettings.paths.core}/**/*.scss`, `${appSettings.paths.project}/**/*.scss`],
     syntax: "scss",
     formatter: "string",
 }).then(function(data) {
