@@ -108,6 +108,35 @@ class AddressStepTest extends Unit
 
         $addressStep = $this->createAddressStep($customerTransfer);
 
+        $quoteTransfer = new QuoteTransfer();
+        $quoteTransfer->setBillingSameAsShipping(true);
+
+        $shippingAddressTransfer = new AddressTransfer();
+        $shippingAddressTransfer->setIdCustomerAddress(1);
+        $quoteTransfer->setShippingAddress($shippingAddressTransfer);
+
+        $addressStep->execute($this->createRequest(), $quoteTransfer);
+
+        $this->assertEquals($addressTransfer->getAddress1(), $quoteTransfer->getShippingAddress()->getAddress1());
+        $this->assertEquals($addressTransfer->getAddress1(), $quoteTransfer->getBillingAddress()->getAddress1());
+    }
+
+    /**
+     * @return void
+     */
+    public function testExecuteWhenBillingAddressSameAsShippingSelectedShouldCopyShipmentIntoBillingWithItemLevelShippingAddresses()
+    {
+        $addressTransfer = new AddressTransfer();
+        $addressTransfer->setIdCustomerAddress(1);
+        $addressTransfer->setAddress1('add1');
+
+        $customerTransfer = new CustomerTransfer();
+        $addressesTransfer = new AddressesTransfer();
+        $addressesTransfer->addAddress($addressTransfer);
+        $customerTransfer->setAddresses($addressesTransfer);
+
+        $addressStep = $this->createAddressStep($customerTransfer);
+
         $shipmentTransfer = (new ShipmentTransfer())
             ->setShippingAddress($addressTransfer);
 
