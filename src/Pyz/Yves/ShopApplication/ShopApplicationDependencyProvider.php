@@ -42,6 +42,7 @@ use SprykerShop\Yves\MultiCartWidget\Widget\QuickOrderPageWidget;
 use SprykerShop\Yves\NavigationWidget\Widget\NavigationWidget;
 use SprykerShop\Yves\NewsletterWidget\Widget\NewsletterSubscriptionSummaryWidget;
 use SprykerShop\Yves\NewsletterWidget\Widget\NewsletterSubscriptionWidget;
+use SprykerShop\Yves\PersistentCartShareWidget\Widget\ShareCartByLinkWidget;
 use SprykerShop\Yves\PriceProductVolumeWidget\Widget\ProductPriceVolumeWidget;
 use SprykerShop\Yves\PriceWidget\Widget\PriceModeSwitcherWidget;
 use SprykerShop\Yves\ProductAlternativeWidget\Widget\ProductAlternativeListWidget;
@@ -172,6 +173,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ProductReviewDisplayWidget::class,
             QuickOrderPageWidget::class,
             SalesOrderThresholdWidget::class,
+            ShareCartByLinkWidget::class,
             SharedCartDetailsWidget::class,
             SharedCartOperationsWidget::class,
             SharedCartPermissionGroupWidget::class,
