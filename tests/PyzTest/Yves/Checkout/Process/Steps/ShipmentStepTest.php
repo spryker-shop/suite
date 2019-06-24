@@ -12,6 +12,7 @@ use Generated\Shared\DataBuilder\ExpenseBuilder;
 use Generated\Shared\DataBuilder\ItemBuilder;
 use Generated\Shared\DataBuilder\QuoteBuilder;
 use Generated\Shared\DataBuilder\ShipmentBuilder;
+use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\ExpenseTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\ShipmentTransfer;
@@ -20,8 +21,11 @@ use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollectio
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageDependencyProvider;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface;
+use SprykerShop\Yves\CheckoutPage\Plugin\Provider\CheckoutPageControllerProvider;
+use SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\ShipmentStep;
+use SprykerShop\Yves\HomePage\Plugin\Provider\HomePageControllerProvider;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -123,9 +127,38 @@ class ShipmentStepTest extends Unit
             $this->createCalculationClientMock(),
             $shipmentPlugins,
             $this->createPostConditionCheckerMock(),
-            CheckoutPageDependencyProvider::PLUGIN_SHIPMENT_STEP_HANDLER,
-            'escape_route'
+            'checkout-shipment',
+            'home'
         );
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     *
+     * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep|\PHPUnit_Framework_MockObject_MockObject
+     */
+    protected function createAddressStep(CustomerTransfer $customerTransfer)
+    {
+        $calculationClientMock = $this->createCalculationClientMock();
+        $stepExecutorMock = $this->createStepExecutorMock($customerTransfer);
+        $postConditionMock = $this->createPostConditionCheckerMock();
+        $checkoutPageConfigMock = $this->createCheckoutPageConfigMock();
+
+        $addressStepMock = $this->getMockBuilder(AddressStep::class)
+            ->setMethods(['getDataClass'])
+            ->setConstructorArgs([
+                $calculationClientMock,
+                $stepExecutorMock,
+                $postConditionMock,
+                $checkoutPageConfigMock,
+                'address_step',
+                'escape_route',
+            ])
+            ->getMock();
+
+        $addressStepMock->method('getDataClass')->willReturn(new QuoteTransfer());
+
+        return $addressStepMock;
     }
 
     /**
