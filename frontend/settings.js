@@ -6,6 +6,18 @@ const globalSettings = {
     context: process.cwd(),
 
     paths: {
+        // locate the typescript configuration json file
+        tsConfig: './tsconfig.json',
+
+        // core folders
+        core: './vendor/spryker/spryker-shop/Bundles',
+
+        // eco folders
+        eco: './vendor/spryker-eco',
+
+        // project folders
+        project: './src/Pyz/Yves',
+
         publicAssets: './public/Yves/assets'
     }
 };
@@ -69,7 +81,7 @@ const getAppSettingsByStore = store => {
     // define project relative paths to context
     const paths = {
         // locate the typescript configuration json file
-        tsConfig: './tsconfig.json',
+        tsConfig: globalSettings.paths.tsConfig,
 
         assets: assetPaths(),
 
@@ -80,31 +92,33 @@ const getAppSettingsByStore = store => {
         public: join('./public/Yves', urls.currentAssets),
 
         // core folders
-        core: './vendor/spryker/spryker-shop/Bundles',
+        core: globalSettings.paths.core,
 
         // eco folders
-        eco: './vendor/spryker-eco',
+        eco: globalSettings.paths.eco,
 
         // project folders
-        project: './src/Pyz/Yves'
+        project: globalSettings.paths.project
     };
+
+    const isThemeCurrentAndNotEmpty = isThemeCurrent => isThemeCurrent && isCurrentThemeEmpty;
+    const getThemeName = isThemeCurrent => isThemeCurrent ? currentTheme : store.defaultTheme;
 
     // define entry point patterns for current theme, if current theme is defined
-    const entryPointPatterns = (isCustomTheme = false, isShopUi = true) => {
-        if (isCustomTheme && isCurrentThemeEmpty) {
-            return [];
-        }
-
-        const themeName = isCustomTheme ? currentTheme : store.defaultTheme;
-        return isShopUi ? [
-            `./ShopUi/Theme/${themeName}`,
-            `./ShopUi${store.name}/Theme/${themeName}`
-        ] : [
-            ...entryPointsCollection(`**/Theme/${themeName}`),
-            ...entryPointsCollection(`**/*${store.name}/Theme/${themeName}`),
+    const customThemeEntryPointPatterns = (isThemeCurrent = false) => (
+        isThemeCurrentAndNotEmpty(isThemeCurrent) ? [] : [
+            ...entryPointsCollection(`**/Theme/${getThemeName(isThemeCurrent)}`),
+            ...entryPointsCollection(`**/*${store.name}/Theme/${getThemeName(isThemeCurrent)}`),
             ...ignoreFiles
-        ];
-    };
+        ]
+    );
+
+    const shopUiEntryPointsPattern = (isThemeCurrent = false) => (
+        isThemeCurrentAndNotEmpty(isThemeCurrent) ? [] : [
+            `./ShopUi/Theme/${getThemeName(isThemeCurrent)}`,
+            `./ShopUi${store.name}/Theme/${getThemeName(isThemeCurrent)}`
+        ]
+    );
 
     // return settings
     return {
@@ -126,8 +140,8 @@ const getAppSettingsByStore = store => {
                     join(globalSettings.context, paths.project)
                 ],
                 // files/dirs patterns
-                patterns: entryPointPatterns(true, false),
-                fallbackPatterns: entryPointPatterns(false,false)
+                patterns: customThemeEntryPointPatterns(true),
+                fallbackPatterns: customThemeEntryPointPatterns()
             },
 
             // core component styles finder settings
@@ -155,11 +169,11 @@ const getAppSettingsByStore = store => {
                     join(globalSettings.context, paths.project)
                 ],
                 patterns: [
-                    ...entryPointPatterns(true)
+                    ...shopUiEntryPointsPattern(true)
 
                 ],
                 fallbackPatterns: [
-                    ...entryPointPatterns()
+                    ...shopUiEntryPointsPattern()
                 ]
             }
         }
