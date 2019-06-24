@@ -10,7 +10,7 @@ const globalSettings = {
     }
 };
 
-function getAppSettingsByStore(store) {
+const getAppSettingsByStore = store => {
     const entryPointsParts = [
         'components/atoms/*/index.ts',
         'components/molecules/*/index.ts',
@@ -44,8 +44,8 @@ function getAppSettingsByStore(store) {
     // define relative urls to site host (/)
     const urls = {
         // assets base url
-        defaultAssets: join('/assets', store.storeKey, store.defaultTheme),
-        currentAssets: join('/assets', store.storeKey, currentTheme)
+        defaultAssets: join('/assets', store.name, store.defaultTheme),
+        currentAssets: join('/assets', store.name, currentTheme)
     };
 
     // getting assets paths collection
@@ -90,26 +90,19 @@ function getAppSettingsByStore(store) {
     };
 
     // define entry point patterns for current theme, if current theme is defined
-    const customThemeEntryPointPatterns = () => {
-        if (isCurrentThemeEmpty) {
+    const entryPointPatterns = (isCustomTheme = false, isShopUi = true) => {
+        if (isCustomTheme && isCurrentThemeEmpty) {
             return [];
         }
 
-        return [
-            ...entryPointsCollection(`**/Theme/${currentTheme}`),
-            ...entryPointsCollection(`**/*${store.storeKey}/Theme/${currentTheme}`),
+        const themeName = isCustomTheme ? currentTheme : store.defaultTheme;
+        return isShopUi ? [
+            `./ShopUi/Theme/${themeName}`,
+            `./ShopUi${store.name}/Theme/${themeName}`
+        ] : [
+            ...entryPointsCollection(`**/Theme/${themeName}`),
+            ...entryPointsCollection(`**/*${store.name}/Theme/${themeName}`),
             ...ignoreFiles
-        ];
-    };
-
-    const shopUiEntryPointsPattern = () => {
-        if (isCurrentThemeEmpty) {
-            return [];
-        }
-
-        return [
-            `./ShopUi/Theme/${currentTheme}`,
-            `./ShopUi${store.storeKey}/Theme/${currentTheme}`
         ];
     };
 
@@ -133,12 +126,8 @@ function getAppSettingsByStore(store) {
                     join(globalSettings.context, paths.project)
                 ],
                 // files/dirs patterns
-                patterns: customThemeEntryPointPatterns(),
-                fallbackPatterns: [
-                    ...entryPointsCollection(`**/Theme/${store.defaultTheme}`),
-                    ...entryPointsCollection(`**/*${store.storeKey}/Theme/${store.defaultTheme}`),
-                    ...ignoreFiles
-                ]
+                patterns: entryPointPatterns(true, false),
+                fallbackPatterns: entryPointPatterns(false,false)
             },
 
             // core component styles finder settings
@@ -166,16 +155,16 @@ function getAppSettingsByStore(store) {
                     join(globalSettings.context, paths.project)
                 ],
                 patterns: [
-                    ...shopUiEntryPointsPattern()
+                    ...entryPointPatterns(true)
+
                 ],
                 fallbackPatterns: [
-                    `./ShopUi/Theme/${store.defaultTheme}`,
-                    `./ShopUi${store.storeKey}/Theme/${store.defaultTheme}`
+                    ...entryPointPatterns()
                 ]
             }
         }
     }
-}
+};
 
 module.exports = {
     globalSettings,

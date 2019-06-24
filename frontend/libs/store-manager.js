@@ -6,17 +6,15 @@ for (let storeId in storesConfig) {
     stores.set(storeId, storesConfig[storeId]);
 }
 
-function printWrongStoreIdMessage(name) {
-    console.warn(`Store "${name}" does not exist.`);
-}
+const printWrongStoreIdMessage = name => console.warn(`Store "${name}" does not exist.`);
 
-function printStoreInfoMessage(store) {
+const printStoreInfoMessage = store => {
     const currentTheme = store.currentTheme || store.defaultTheme;
     console.log(`Store "${store.name}" with theme "${currentTheme}".`);
     return store;
-}
+};
 
-function getStoresByIds(ids) {
+const getStoresByIds = ids => {
     if (ids.length === 1 && ids[0] === 'which') {
         console.log('Available stores:');
         Array.from(stores.keys()).map(id => console.log(`- ${id}`));
@@ -30,13 +28,13 @@ function getStoresByIds(ids) {
 
     ids
         .filter(id => !stores.has(id))
-        .forEach(printWrongStoreIdMessage);
+        .map(printWrongStoreIdMessage);
 
     return ids
         .filter(id => stores.has(id))
         .map(id => (Object.assign({'name': id}, stores.get(id))))
         .map(printStoreInfoMessage);
-}
+};
 
 module.exports = {
     getStoresByIds

@@ -2,30 +2,6 @@ const webpack = require('webpack');
 const rimraf = require('rimraf');
 const { globalSettings } = require('../settings');
 
-// execute webpack compiler
-// and nicely handle the console output
-const compile = (config, storeName) => {
-    console.log(`Building for ${config.mode}...`);
-
-    if (config.watch) {
-        console.log('Watch mode: ON');
-    }
-
-    webpack(config, (err, stats) => {
-        if (err) {
-            console.error(err.stack || err);
-
-            if (err.details) {
-                console.error(err.details);
-            }
-
-            return;
-        }
-        console.log(`${storeName} store building statistics:`);
-        console.log(stats.toString(config.stats), '\n');
-    });
-};
-
 // execute webpack compiler on array of configurations
 // and nicely handle the console output
 const multiCompile = configs => {
@@ -74,7 +50,6 @@ const clearAllAssets = storeIds => {
 };
 
 module.exports = {
-    compile,
     multiCompile,
     clearAllAssets
 };
