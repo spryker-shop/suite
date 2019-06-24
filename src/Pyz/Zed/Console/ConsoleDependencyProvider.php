@@ -335,7 +335,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new PropelSchemaXmlNameValidatorConsole();
             $commands[] = new DataImportDumpConsole();
             $commands[] = new GenerateGlueIdeAutoCompletionConsole();
-            $commands[] = new PropelAbstractValidateConsole();
             $commands[] = new PluginUsageFinderConsole();
             $commands[] = new PostgresIndexGeneratorConsole();
             $commands[] = new PostgresIndexRemoverConsole();
