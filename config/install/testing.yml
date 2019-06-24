@@ -103,6 +103,7 @@ sections:
         update-product-labels:
             command: "vendor/bin/console product-label:relations:update"
 
+
     queue:
         run-worker:
             command: "vendor/bin/console queue:worker:start"
@@ -115,6 +116,7 @@ sections:
 
         create-database:
             command: "vendor/bin/console propel:database:create"
+
 
     frontend:
         dependencies-install:
