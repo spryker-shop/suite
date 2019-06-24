@@ -64,7 +64,7 @@ sections:
             command: "vendor/bin/console scheduler:resume"
             stores: true
 
-    init-storages:
+    init-services:
         ## TODO [Cloud] Workaround until https://spryker.aha.io/features/SCLOUD-86 is developed
         # propel-drop-db:
         #     command: "vendor/bin/console propel:database:drop"

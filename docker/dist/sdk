@@ -432,11 +432,11 @@ function loadDemoData() {
     if [ ${SPRYKER_DEMO_DATA_CHECK} -eq 1 ]; then
       if [ "$(checkDemoData)" -eq 0 ]; then
         echo -e "${INFO}Loading demo data for ${APPLICATION_STORE} store.${NC}"
-        execSpryker 'vendor/bin/install -r docker -s init-storages -s demodata'
+        execSpryker 'vendor/bin/install -r docker -s init-services -s demodata'
       fi
     else
       echo -e "${INFO}Loading demo data for ${APPLICATION_STORE} store.${NC}"
-      execSpryker 'vendor/bin/install -r docker -s init-storages -s demodata'
+      execSpryker 'vendor/bin/install -r docker -s init-services -s demodata'
     fi
   done
 }
