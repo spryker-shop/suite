@@ -27,6 +27,3 @@ compiler.clearAllAssets(storeIds);
 Promise.all(configurationPromises)
     .then(configs => compiler.multiCompile(configs))
     .catch(error => console.error('An error occur while creating configuration', error));
-
-
-
