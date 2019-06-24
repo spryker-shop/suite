@@ -31,8 +31,10 @@ use Spryker\Zed\Calculation\Communication\Plugin\Calculator\SubtotalCalculatorPl
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\TaxTotalCalculatorPlugin;
 use Spryker\Zed\DiscountCalculationConnector\Communication\Plugin\DiscountCalculatorPlugin;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Calculation\RemovePromotionItemsCalculatorPlugin;
+use Spryker\Zed\GiftCard\Communication\Plugin\GiftCardCalculatorPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Payment\Communication\Plugin\Calculation\PaymentCalculatorPlugin;
+use Spryker\Zed\PersistentCart\Communication\Plugin\Calculation\QuoteSaveQuotePostRecalculateStrategyPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Calculation\CalculateBundlePricePlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\ProductOptionTaxRateCalculatorPlugin;
 use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Calculation\AddSalesOrderThresholdExpenseCalculatorPlugin;
@@ -200,6 +202,8 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new ProductOptionTaxRateCalculatorPlugin(),
             new ShipmentTaxRateCalculatorPlugin(),
 
+            new GiftCardCalculatorPlugin(), #GiftCardFeature
+
             new InitialGrandTotalCalculatorPlugin(),
             new DiscountCalculatorPlugin(),
             new DiscountAmountAggregatorForGenericAmountPlugin(),
@@ -265,6 +269,16 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new OrderTaxTotalCalculationPlugin(),
             new GrandTotalCalculatorPlugin(),
             new NetTotalCalculatorPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\CalculationExtension\Dependency\Plugin\QuotePostRecalculatePluginStrategyInterface[]
+     */
+    protected function getQuotePostRecalculatePlugins(): array
+    {
+        return [
+            new QuoteSaveQuotePostRecalculateStrategyPlugin(),
         ];
     }
 }

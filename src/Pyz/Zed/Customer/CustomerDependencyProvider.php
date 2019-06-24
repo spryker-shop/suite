@@ -8,9 +8,13 @@
 namespace Pyz\Zed\Customer;
 
 use Spryker\Shared\Newsletter\NewsletterConstants;
+use Spryker\Zed\AvailabilityNotification\Communication\Plugin\Customer\AvailabilityNotificationSubscriptionCustomerTransferExpanderPlugin;
+use Spryker\Zed\AvailabilityNotification\Communication\Plugin\CustomerAnonymizer\AvailabilityNotificationAnonymizerPlugin;
 use Spryker\Zed\BusinessOnBehalf\Communication\Plugin\Customer\DefaultCompanyUserCustomerTransferExpanderPlugin;
 use Spryker\Zed\BusinessOnBehalf\Communication\Plugin\Customer\IsOnBehalfCustomerTransferExpanderPlugin;
+use Spryker\Zed\BusinessOnBehalfGui\Communication\Plugin\Customer\BusinessOnBehalfGuiAttachToCompanyButtonCustomerTableActionExpanderPlugin;
 use Spryker\Zed\CompanyRole\Communication\Plugin\PermissionCustomerExpanderPlugin;
+use Spryker\Zed\CompanyUser\Communication\Plugin\Customer\CompanyUserReloadCustomerTransferExpanderPlugin;
 use Spryker\Zed\CompanyUser\Communication\Plugin\Customer\CustomerTransferCompanyUserExpanderPlugin;
 use Spryker\Zed\CompanyUserGui\Communication\Plugin\Customer\CompanyUserCustomerTableActionExpanderPlugin;
 use Spryker\Zed\CompanyUserInvitation\Communication\Plugin\CompanyUserInvitationPostCustomerRegistrationPlugin;
@@ -58,6 +62,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
                 NewsletterConstants::DEFAULT_NEWSLETTER_TYPE,
             ]),
             new RemoveCustomerFromGroupPlugin(),
+            new AvailabilityNotificationAnonymizerPlugin(),
         ];
     }
 
@@ -68,6 +73,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     {
         return [
             new CustomerTransferUsernameExpanderPlugin(),
+            new CompanyUserReloadCustomerTransferExpanderPlugin(),
             new CustomerTransferCompanyUserExpanderPlugin(),
             new PermissionCustomerExpanderPlugin(),
             new QuotePermissionCustomerExpanderPlugin(), #SharedCartFeature
@@ -75,6 +81,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
             new IsOnBehalfCustomerTransferExpanderPlugin(), #BusinessOnBefalfFeature
             new DefaultCompanyUserCustomerTransferExpanderPlugin(), #BusinessOnBefalfFeature
             new ProductListCustomerTransferExpanderPlugin(),
+            new AvailabilityNotificationSubscriptionCustomerTransferExpanderPlugin(),
         ];
     }
 
@@ -95,6 +102,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     {
         return [
             new CompanyUserCustomerTableActionExpanderPlugin(),
+            new BusinessOnBehalfGuiAttachToCompanyButtonCustomerTableActionExpanderPlugin(),
         ];
     }
 }

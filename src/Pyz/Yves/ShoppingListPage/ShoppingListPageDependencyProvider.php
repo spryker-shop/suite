@@ -10,16 +10,16 @@ namespace Pyz\Yves\ShoppingListPage;
 use Spryker\Client\AvailabilityStorage\Plugin\ProductViewAvailabilityStorageExpanderPlugin;
 use Spryker\Client\PriceProductStorage\Plugin\ProductViewPriceExpanderPlugin;
 use Spryker\Client\ProductImageStorage\Plugin\ProductViewImageExpanderPlugin;
+use Spryker\Client\ProductQuantityStorage\Plugin\ProductStorage\ProductViewQuantityRestrictionExpanderPlugin;
 use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionFormDataProviderMapperPlugin;
 use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionFormExpanderPlugin;
-use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionWidgetPlugin;
 use SprykerShop\Yves\ShoppingListNoteWidget\Plugin\ShoppingListPage\ShoppingListItemNoteFormExpanderPlugin;
 use SprykerShop\Yves\ShoppingListPage\ShoppingListPageDependencyProvider as SprykerShoppingListPageDependencyProvider;
 
 class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependencyProvider
 {
     /**
-     * @return \Spryker\Client\ProductStorage\Dependency\Plugin\ProductViewExpanderPluginInterface[]
+     * @return \Spryker\Client\ProductStorage\Dependency\Plugin\ProductViewExpanderPluginInterface[]|\Spryker\Client\ProductStorageExtension\Dependency\Plugin\ProductViewExpanderPluginInterface[]
      */
     protected function getShoppingListItemExpanderPlugins(): array
     {
@@ -27,19 +27,7 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
             new ProductViewPriceExpanderPlugin(),
             new ProductViewImageExpanderPlugin(),
             new ProductViewAvailabilityStorageExpanderPlugin(),
-        ];
-    }
-
-    /**
-     * Returns a list of widget plugin class names that implement
-     * \Spryker\Yves\Kernel\Dependency\Plugin\WidgetPluginInterface.
-     *
-     * @return string[]
-     */
-    protected function getShoppingListViewWidgetPlugins(): array
-    {
-        return [
-            ShoppingListItemProductOptionWidgetPlugin::class,
+            new ProductViewQuantityRestrictionExpanderPlugin(),
         ];
     }
 

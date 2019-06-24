@@ -15,6 +15,7 @@ use Generated\Shared\Transfer\NavigationTransfer;
 use Generated\Shared\Transfer\NavigationTreeNodeTransfer;
 use Generated\Shared\Transfer\NavigationTreeTransfer;
 use Orm\Zed\Navigation\Persistence\SpyNavigation;
+use Orm\Zed\Navigation\Persistence\SpyNavigationQuery;
 use PyzTest\Zed\NavigationGui\PageObject\NavigationNodeCreatePage;
 use PyzTest\Zed\NavigationGui\PageObject\NavigationNodeUpdatePage;
 use PyzTest\Zed\NavigationGui\PageObject\NavigationPage;
@@ -53,6 +54,7 @@ class NavigationGuiPresentationTester extends Actor
     public const SWEET_ALERT_SELECTOR = '.sweet-alert';
     public const SWEET_ALERT_CONFIRM_SELECTOR = '.sweet-alert button.confirm';
     public const NODE_FORM_SELECTOR = 'form';
+    public const FLASH_MESSAGE_TEXT_SELECTOR = '//div[@class="flash-messages"]/div';
 
     /**
      * @param \Codeception\Scenario $scenario
@@ -133,7 +135,8 @@ class NavigationGuiPresentationTester extends Actor
      */
     public function seeSuccessMessage($expectedMessagePattern)
     {
-        $successMessage = $this->grabTextFrom('//div[@class="flash-messages"]/div');
+        $this->waitForElement(static::FLASH_MESSAGE_TEXT_SELECTOR, 30);
+        $successMessage = $this->grabTextFrom(static::FLASH_MESSAGE_TEXT_SELECTOR);
         $this->seeMatches($expectedMessagePattern, $successMessage);
 
         preg_match($expectedMessagePattern, $successMessage, $matches);
@@ -379,6 +382,7 @@ class NavigationGuiPresentationTester extends Actor
     public function testDeleteNavigationNode()
     {
         $i = $this;
+
         /**
          * Test skipped because popup confirmation is not working as expected under phantomjs.
          * TODO: once we have Selenium, enable this test case.
@@ -689,5 +693,47 @@ class NavigationGuiPresentationTester extends Actor
     public function getIdLocale($locale)
     {
         return $this->getLocator()->locale()->facade()->getLocale($locale)->getIdLocale();
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\NavigationTreeTransfer $navigationTreeTransfer
+     *
+     * @return void
+     */
+    public function cleanUpNavigationTree(NavigationTreeTransfer $navigationTreeTransfer): void
+    {
+        $navigationEntity = $this->findNavigationByName($navigationTreeTransfer->getNavigation());
+
+        if (!$navigationEntity) {
+            return;
+        }
+
+        $navigationNodeEntities = $navigationEntity->getSpyNavigationNodes();
+
+        foreach ($navigationNodeEntities as $navigationNodeEntity) {
+            $navigationNodeEntity->getSpyNavigationNodeLocalizedAttributess()->delete();
+        }
+
+        $navigationNodeEntities->delete();
+        $navigationEntity->delete();
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\NavigationTransfer $navigationTransfer
+     *
+     * @return \Orm\Zed\Navigation\Persistence\SpyNavigation|null
+     */
+    protected function findNavigationByName(NavigationTransfer $navigationTransfer): ?SpyNavigation
+    {
+        $navigationEntity = (new SpyNavigationQuery())
+            ->joinWithSpyNavigationNode()
+                ->useSpyNavigationNodeQuery()
+                    ->joinWithSpyNavigationNodeLocalizedAttributes()
+                ->endUse()
+            ->findByName(
+                $navigationTransfer->getName()
+            )->getFirst();
+
+        return $navigationEntity;
     }
 }
