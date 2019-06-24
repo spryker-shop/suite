@@ -8,7 +8,12 @@
 namespace PyzTest\Yves\Checkout\Process\Steps;
 
 use Codeception\Test\Unit;
+use Generated\Shared\DataBuilder\AddressBuilder;
+use Generated\Shared\DataBuilder\ExpenseBuilder;
 use Generated\Shared\DataBuilder\ItemBuilder;
+use Generated\Shared\DataBuilder\QuoteBuilder;
+use Generated\Shared\DataBuilder\ShipmentBuilder;
+use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\ExpenseTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\ShipmentTransfer;
@@ -57,16 +62,54 @@ class ShipmentStepTest extends Unit
     /**
      * @return void
      */
+    public function testShipmentStepExecuteShouldTriggerPluginsWithItemLevelShipments()
+    {
+        $shipmentPluginMock = $this->createShipmentMock();
+        $shipmentPluginMock->expects($this->once())->method('addToDataClass');
+
+        $shipmentStepHandler = new StepHandlerPluginCollection();
+        $shipmentStepHandler->add($shipmentPluginMock, CheckoutPageDependencyProvider::PLUGIN_SHIPMENT_STEP_HANDLER);
+        $shipmentStep = $this->createShipmentStep($shipmentStepHandler);
+
+        $quoteTransfer = (new QuoteBuilder())
+            ->withItem((new ItemBuilder())
+                ->withShipment((new ShipmentBuilder([ShipmentTransfer::SHIPMENT_SELECTION => CheckoutPageDependencyProvider::PLUGIN_SHIPMENT_STEP_HANDLER]))
+                )
+            )->build();
+
+        $shipmentStep->execute($this->createRequest(), $quoteTransfer);
+    }
+
+    /**
+     * @return void
+     */
     public function testShipmentPostConditionsShouldReturnTrueWhenShipmentSet()
     {
-        $itemTransfer = (new ItemBuilder())->withShipment()->build();
-
         $quoteTransfer = new QuoteTransfer();
         $expenseTransfer = new ExpenseTransfer();
         $expenseTransfer->setType(ShipmentConstants::SHIPMENT_EXPENSE_TYPE);
-        $expenseTransfer->setShipment($itemTransfer->getShipment());
         $quoteTransfer->addExpense($expenseTransfer);
-        $quoteTransfer->addItem($itemTransfer);
+
+        $shipmentStep = $this->createShipmentStep(new StepHandlerPluginCollection());
+
+        $this->assertTrue($shipmentStep->postCondition($quoteTransfer));
+    }
+
+    /**
+     * @return void
+     */
+    public function testShipmentPostConditionsShouldReturnTrueWhenShipmentSetWithItemLevelShipments()
+    {
+        $shipmentTransfer = (new ShipmentBuilder())->build();
+
+        $quoteTransfer = (new QuoteBuilder())
+            ->withExpense((new ExpenseBuilder([ExpenseTransfer::TYPE => ShipmentConstants::SHIPMENT_EXPENSE_TYPE])))
+            ->withItem((new ItemBuilder())
+            )->build();
+
+        $quoteTransfer->getItems()[0]->setShipment($shipmentTransfer);
+        $quoteTransfer->getExpenses()[0]->setShipment($shipmentTransfer);
+
         $shipmentStep = $this->createShipmentStep(new StepHandlerPluginCollection());
 
         $this->assertTrue($shipmentStep->postCondition($quoteTransfer));
