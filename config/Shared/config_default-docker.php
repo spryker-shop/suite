@@ -49,6 +49,7 @@ use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\SequenceNumber\SequenceNumberConstants;
 use Spryker\Shared\Session\SessionConfig;
 use Spryker\Shared\Session\SessionConstants;
+use Spryker\Shared\SessionFile\SessionFileConstants;
 use Spryker\Shared\SessionRedis\SessionRedisConfig;
 use Spryker\Shared\SessionRedis\SessionRedisConstants;
 use Spryker\Shared\Storage\StorageConstants;
@@ -504,16 +505,35 @@ $config[RabbitMqEnv::RABBITMQ_API_USERNAME] = getenv('SPRYKER_BROKER_API_USERNAM
 $config[RabbitMqEnv::RABBITMQ_API_PASSWORD] = getenv('SPRYKER_BROKER_API_PASSWORD');
 $config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = getenv('SPRYKER_BROKER_API_NAMESPACE');
 
-$config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [];
-$config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$CURRENT_STORE] = [
-    RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'DE-connection',
-    RabbitMqEnv::RABBITMQ_HOST => getenv('SPRYKER_BROKER_HOST'),
-    RabbitMqEnv::RABBITMQ_PORT => getenv('SPRYKER_BROKER_PORT'),
-    RabbitMqEnv::RABBITMQ_USERNAME => getenv('SPRYKER_BROKER_USERNAME'),
-    RabbitMqEnv::RABBITMQ_PASSWORD => getenv('SPRYKER_BROKER_PASSWORD'),
-    RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => getenv('SPRYKER_BROKER_NAMESPACE'),
-    RabbitMqEnv::RABBITMQ_STORE_NAMES => ['DE', 'US', 'AT'],
-    RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => true,
+$config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
+    'DE' => [
+        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'DE-connection',
+        RabbitMqEnv::RABBITMQ_HOST => getenv('SPRYKER_BROKER_HOST'),
+        RabbitMqEnv::RABBITMQ_PORT => getenv('SPRYKER_BROKER_PORT'),
+        RabbitMqEnv::RABBITMQ_USERNAME => getenv('SPRYKER_BROKER_USERNAME'),
+        RabbitMqEnv::RABBITMQ_PASSWORD => getenv('SPRYKER_BROKER_PASSWORD'),
+        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/DE_docker_zed',
+        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['DE'],
+        RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => true,
+    ],
+    'AT' => [
+        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'AT-connection',
+        RabbitMqEnv::RABBITMQ_HOST => getenv('SPRYKER_BROKER_HOST'),
+        RabbitMqEnv::RABBITMQ_PORT => getenv('SPRYKER_BROKER_PORT'),
+        RabbitMqEnv::RABBITMQ_USERNAME => getenv('SPRYKER_BROKER_USERNAME'),
+        RabbitMqEnv::RABBITMQ_PASSWORD => getenv('SPRYKER_BROKER_PASSWORD'),
+        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/AT_docker_zed',
+        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['AT'],
+    ],
+    'US' => [
+        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'US-connection',
+        RabbitMqEnv::RABBITMQ_HOST => getenv('SPRYKER_BROKER_HOST'),
+        RabbitMqEnv::RABBITMQ_PORT => getenv('SPRYKER_BROKER_PORT'),
+        RabbitMqEnv::RABBITMQ_USERNAME => getenv('SPRYKER_BROKER_USERNAME'),
+        RabbitMqEnv::RABBITMQ_PASSWORD => getenv('SPRYKER_BROKER_PASSWORD'),
+        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/US_docker_zed',
+        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['US'],
+    ],
 ];
 /* End Broker */
 
@@ -536,69 +556,71 @@ $config[SearchConstants::FULL_TEXT_BOOSTED_BOOSTING_VALUE] = 3;
 $config[SearchConstants::SEARCH_INDEX_NAME_SUFFIX] = '';
 /* End Search service */
 
-/* Key-value storage */
-$config[StorageConstants::STORAGE_KV_SOURCE] = strtolower(getenv('SPRYKER_KEY_VALUE_STORE_ENGINE'));
-$config[StorageConstants::STORAGE_REDIS_PROTOCOL] = 'tcp';
-$config[StorageConstants::STORAGE_REDIS_HOST] = getenv('SPRYKER_KEY_VALUE_STORE_HOST');
-$config[StorageConstants::STORAGE_REDIS_PORT] = getenv('SPRYKER_KEY_VALUE_STORE_PORT');
-$config[StorageConstants::STORAGE_REDIS_PASSWORD] = false;
-$config[StorageConstants::STORAGE_REDIS_DATABASE] = getenv('SPRYKER_KEY_VALUE_STORE_NAMESPACE');
+
+// ---------- KV storage
+$config[StorageConstants::STORAGE_KV_SOURCE] = strtolower(getenv('SPRYKER_KEY_VALUE_STORE_ENGINE'));;
+
+/**
+ * Data source names are used exclusively when set, e.g. no other Redis storage configuration will be used for the client.
+ *
+ * Example:
+ *   $config[StorageRedisConstants::STORAGE_REDIS_DATA_SOURCE_NAMES] = ['tcp://127.0.0.1:10009', 'tcp://10.0.0.1:6379']
+ */
+//$config[StorageRedisConstants::STORAGE_REDIS_DATA_SOURCE_NAMES] = [];
 
 $config[StorageRedisConstants::STORAGE_REDIS_PERSISTENT_CONNECTION] = true;
 $config[StorageRedisConstants::STORAGE_REDIS_PROTOCOL] = 'tcp';
 $config[StorageRedisConstants::STORAGE_REDIS_HOST] = getenv('SPRYKER_KEY_VALUE_STORE_HOST');
-$config[StorageRedisConstants::STORAGE_REDIS_PORT] = getenv('SPRYKER_KEY_VALUE_STORE_PORT');
+$config[StorageRedisConstants::STORAGE_REDIS_PORT] = getenv('SPRYKER_KEY_VALUE_STORE_PORT');;
 $config[StorageRedisConstants::STORAGE_REDIS_PASSWORD] = false;
 $config[StorageRedisConstants::STORAGE_REDIS_DATABASE] = getenv('SPRYKER_KEY_VALUE_STORE_NAMESPACE');
-/* End Key-value storage */
 
-/* Session storage */
-$config[SessionConstants::YVES_SESSION_COOKIE_DOMAIN] = $config[ApplicationConstants::HOST_YVES];
-$config[SessionConstants::YVES_SESSION_COOKIE_NAME] = $config[ApplicationConstants::HOST_YVES];
-$config[SessionConstants::YVES_SESSION_COOKIE_SECURE] = false;
-$config[SessionConstants::YVES_SESSION_COOKIE_TIME_TO_LIVE] = SessionConfig::SESSION_LIFETIME_0_5_HOUR;
-$config[SessionConstants::YVES_SESSION_FILE_PATH] = session_save_path();
-$config[SessionConstants::YVES_SESSION_PERSISTENT_CONNECTION] = $config[StorageConstants::STORAGE_PERSISTENT_CONNECTION];
-$config[SessionConstants::YVES_SESSION_SAVE_HANDLER] = strtolower(getenv('SPRYKER_SESSION_FE_ENGINE'));
+// ---------- Session
+$config[SessionConstants::YVES_SESSION_SAVE_HANDLER] = SessionRedisConfig::SESSION_HANDLER_REDIS_LOCKING;
 $config[SessionConstants::YVES_SESSION_TIME_TO_LIVE] = SessionConfig::SESSION_LIFETIME_1_HOUR;
-
-$config[SessionConstants::YVES_SESSION_REDIS_PROTOCOL] = $config[StorageConstants::STORAGE_REDIS_PROTOCOL];
-$config[SessionConstants::YVES_SESSION_REDIS_HOST] = getenv('SPRYKER_SESSION_FE_HOST');
-$config[SessionConstants::YVES_SESSION_REDIS_PORT] = getenv('SPRYKER_SESSION_FE_PORT');
-$config[SessionConstants::YVES_SESSION_REDIS_PASSWORD] = $config[StorageConstants::STORAGE_REDIS_PASSWORD];
-$config[SessionConstants::YVES_SESSION_REDIS_DATABASE] = getenv('SPRYKER_SESSION_FE_NAMESPACE');
-
-$config[SessionRedisConstants::YVES_SESSION_REDIS_PROTOCOL] = $config[StorageConstants::STORAGE_REDIS_PROTOCOL];
-$config[SessionRedisConstants::YVES_SESSION_REDIS_HOST] = getenv('SPRYKER_SESSION_FE_HOST');
-$config[SessionRedisConstants::YVES_SESSION_REDIS_PORT] = getenv('SPRYKER_SESSION_FE_PORT');
-$config[SessionRedisConstants::YVES_SESSION_REDIS_PASSWORD] = $config[StorageConstants::STORAGE_REDIS_PASSWORD];
-$config[SessionRedisConstants::YVES_SESSION_REDIS_DATABASE] = getenv('SPRYKER_SESSION_FE_NAMESPACE');
-
-$config[SessionConstants::ZED_SESSION_COOKIE_DOMAIN] = getenv('SPRYKER_BE_HOST');
-$config[SessionConstants::ZED_SESSION_COOKIE_NAME] = getenv('SPRYKER_BE_HOST');
-$config[SessionConstants::ZED_SESSION_COOKIE_SECURE] = false;
-$config[SessionConstants::ZED_SESSION_COOKIE_TIME_TO_LIVE] = SessionConfig::SESSION_LIFETIME_BROWSER_SESSION;
-$config[SessionConstants::ZED_SESSION_FILE_PATH] = session_save_path();
-$config[SessionConstants::ZED_SESSION_PERSISTENT_CONNECTION] = $config[StorageConstants::STORAGE_PERSISTENT_CONNECTION];
-$config[SessionConstants::ZED_SESSION_SAVE_HANDLER] = strtolower(getenv('SPRYKER_SESSION_BE_ENGINE'));
+$config[SessionRedisConstants::YVES_SESSION_TIME_TO_LIVE] = $config[SessionConstants::YVES_SESSION_TIME_TO_LIVE];
+$config[SessionFileConstants::YVES_SESSION_TIME_TO_LIVE] = $config[SessionConstants::YVES_SESSION_TIME_TO_LIVE];
+$config[SessionConstants::YVES_SESSION_COOKIE_TIME_TO_LIVE] = SessionConfig::SESSION_LIFETIME_0_5_HOUR;
+$config[SessionFileConstants::YVES_SESSION_FILE_PATH] = session_save_path();
+$config[SessionConstants::YVES_SESSION_PERSISTENT_CONNECTION] = $config[StorageRedisConstants::STORAGE_REDIS_PERSISTENT_CONNECTION];
+$config[SessionConstants::ZED_SESSION_SAVE_HANDLER] = SessionRedisConfig::SESSION_HANDLER_REDIS;
 $config[SessionConstants::ZED_SESSION_TIME_TO_LIVE] = SessionConfig::SESSION_LIFETIME_1_HOUR;
+$config[SessionRedisConstants::ZED_SESSION_TIME_TO_LIVE] = $config[SessionConstants::ZED_SESSION_TIME_TO_LIVE];
+$config[SessionFileConstants::ZED_SESSION_TIME_TO_LIVE] = $config[SessionConstants::ZED_SESSION_TIME_TO_LIVE];
+$config[SessionConstants::ZED_SESSION_COOKIE_TIME_TO_LIVE] = SessionConfig::SESSION_LIFETIME_BROWSER_SESSION;
+$config[SessionFileConstants::ZED_SESSION_FILE_PATH] = session_save_path();
+$config[SessionConstants::ZED_SESSION_PERSISTENT_CONNECTION] = $config[StorageRedisConstants::STORAGE_REDIS_PERSISTENT_CONNECTION];
+$config[SessionRedisConstants::LOCKING_TIMEOUT_MILLISECONDS] = 0;
+$config[SessionRedisConstants::LOCKING_RETRY_DELAY_MICROSECONDS] = 0;
+$config[SessionRedisConstants::LOCKING_LOCK_TTL_MILLISECONDS] = 0;
 
-$config[SessionConstants::ZED_SESSION_REDIS_PROTOCOL] = $config[SessionConstants::YVES_SESSION_REDIS_PROTOCOL];
-$config[SessionConstants::ZED_SESSION_REDIS_HOST] = getenv('SPRYKER_SESSION_BE_HOST');
-$config[SessionConstants::ZED_SESSION_REDIS_PORT] = getenv('SPRYKER_SESSION_BE_PORT');
-$config[SessionConstants::ZED_SESSION_REDIS_PASSWORD] = $config[SessionConstants::YVES_SESSION_REDIS_PASSWORD];
-$config[SessionConstants::ZED_SESSION_REDIS_DATABASE] = getenv('SPRYKER_SESSION_BE_NAMESPACE');
+/**
+ * Data source names are used exclusively when set, e.g. no other Redis session configuration will be used for the client.
+ *
+ * Example:
+ *   $config[SessionRedisConstants::YVES_SESSION_REDIS_DATA_SOURCE_NAMES] = ['tcp://127.0.0.1:10009', 'tcp://10.0.0.1:6379']
+ */
+//$config[SessionRedisConstants::YVES_SESSION_REDIS_DATA_SOURCE_NAMES] = [];
 
-$config[SessionRedisConstants::ZED_SESSION_REDIS_PROTOCOL] = $config[SessionConstants::YVES_SESSION_REDIS_PROTOCOL];
-$config[SessionRedisConstants::ZED_SESSION_REDIS_HOST] = getenv('SPRYKER_SESSION_BE_HOST');
-$config[SessionRedisConstants::ZED_SESSION_REDIS_PORT] = getenv('SPRYKER_SESSION_BE_PORT');
-$config[SessionRedisConstants::ZED_SESSION_REDIS_PASSWORD] = $config[SessionConstants::YVES_SESSION_REDIS_PASSWORD];
-$config[SessionRedisConstants::ZED_SESSION_REDIS_DATABASE] = getenv('SPRYKER_SESSION_BE_NAMESPACE');
+$config[SessionRedisConstants::YVES_SESSION_REDIS_PROTOCOL] = $config[StorageRedisConstants::STORAGE_REDIS_PROTOCOL];
+$config[SessionRedisConstants::YVES_SESSION_REDIS_HOST] = $config[StorageRedisConstants::STORAGE_REDIS_HOST];
+$config[SessionRedisConstants::YVES_SESSION_REDIS_PORT] = $config[StorageRedisConstants::STORAGE_REDIS_PORT];
+$config[SessionRedisConstants::YVES_SESSION_REDIS_PASSWORD] = $config[StorageRedisConstants::STORAGE_REDIS_PASSWORD];
+$config[SessionRedisConstants::YVES_SESSION_REDIS_DATABASE] = 1;
 
-$config[SessionConstants::SESSION_HANDLER_REDIS_LOCKING_TIMEOUT_MILLISECONDS] = 0;
-$config[SessionConstants::SESSION_HANDLER_REDIS_LOCKING_RETRY_DELAY_MICROSECONDS] = 0;
-$config[SessionConstants::SESSION_HANDLER_REDIS_LOCKING_LOCK_TTL_MILLISECONDS] = 0;
-/* End Session storage */
+/**
+ * Data source names are used exclusively when set, e.g. no other Redis session configuration will be used for the client.
+ *
+ * Example:
+ *   $config[SessionRedisConstants::ZED_SESSION_REDIS_DATA_SOURCE_NAMES] = ['tcp://127.0.0.1:10009', 'tcp://10.0.0.1:6379']
+ */
+//$config[SessionRedisConstants::ZED_SESSION_REDIS_DATA_SOURCE_NAMES] = [];
+
+$config[SessionRedisConstants::ZED_SESSION_REDIS_PROTOCOL] = $config[StorageRedisConstants::STORAGE_REDIS_PROTOCOL];
+$config[SessionRedisConstants::ZED_SESSION_REDIS_HOST] = $config[StorageRedisConstants::STORAGE_REDIS_HOST];
+$config[SessionRedisConstants::ZED_SESSION_REDIS_PORT] = $config[StorageRedisConstants::STORAGE_REDIS_PORT];
+$config[SessionRedisConstants::ZED_SESSION_REDIS_PASSWORD] = $config[StorageRedisConstants::STORAGE_REDIS_PASSWORD];
+$config[SessionRedisConstants::ZED_SESSION_REDIS_DATABASE] = 2;
 
 /* Mail */
 $config[MailConstants::SMTP_HOST] = getenv('SPRYKER_SMTP_HOST');
