@@ -8,6 +8,9 @@
 namespace PyzTest\Yves\Checkout\Process\Steps;
 
 use Codeception\Test\Unit;
+use Generated\Shared\DataBuilder\ItemBuilder;
+use Generated\Shared\DataBuilder\PaymentBuilder;
+use Generated\Shared\DataBuilder\QuoteBuilder;
 use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\PaymentTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
@@ -46,6 +49,22 @@ class SummaryStepTest extends Unit
 
         $quoteTransfer->setPayment($paymentTransfer);
         $quoteTransfer->setShipment(new ShipmentTransfer());
+
+        $this->assertTrue($summaryStep->postCondition($quoteTransfer));
+    }
+
+    /**
+     * @return void
+     */
+    public function testPostConditionShouldReturnWhenQuoteReadyForSummaryDisplayWithItemLevelShipment()
+    {
+        $summaryStep = $this->createSummaryStep();
+
+        $quoteTransfer = (new QuoteBuilder())
+            ->withBillingAddress()
+            ->withPayment((new PaymentBuilder([PaymentTransfer::PAYMENT_PROVIDER => 'test'])))
+            ->withItem((new ItemBuilder())->withShipment())
+            ->build();
 
         $this->assertTrue($summaryStep->postCondition($quoteTransfer));
     }
