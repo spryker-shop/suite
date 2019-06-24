@@ -15,9 +15,7 @@ use Generated\Shared\DataBuilder\ShipmentBuilder;
 use Generated\Shared\Transfer\AddressesTransfer;
 use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
-use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
-use Generated\Shared\Transfer\ShipmentTransfer;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageConfig;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCustomerClientInterface;
@@ -71,9 +69,8 @@ class AddressStepTest extends Unit
         $addressTransfer = (new AddressBuilder([AddressTransfer::ADDRESS1 => 'add1']))->build();
 
         $quoteTransfer = (new QuoteBuilder())
-            ->withItem((new ItemBuilder())
-                ->withShipment()
-            )->build();
+            ->withItem((new ItemBuilder())->withShipment())
+            ->build();
 
         $quoteTransfer->getItems()[0]->getShipment()->setShippingAddress($addressTransfer);
         $quoteTransfer->setBillingAddress(clone $addressTransfer);
@@ -141,15 +138,15 @@ class AddressStepTest extends Unit
         $customerTransfer->setAddresses($addressesTransfer);
 
         $addressStep = $this->createAddressStep($customerTransfer);
-
+        $shipmentBuilder = (new ShipmentBuilder())
+            ->withShippingAddress(new AddressBuilder([AddressTransfer::ID_CUSTOMER_ADDRESS => 1]));
+        $itemBuilder = (new ItemBuilder())
+            ->withShipment($shipmentBuilder);
+        $addressBuilder = new AddressBuilder([AddressTransfer::ID_CUSTOMER_ADDRESS => 1]);
         $quoteTransfer = (new QuoteBuilder())
-            ->withBillingAddress((new AddressBuilder([AddressTransfer::ID_CUSTOMER_ADDRESS => 1])))
-            ->withItem((new ItemBuilder())
-                ->withShipment((new ShipmentBuilder())
-                    ->withShippingAddress((new AddressBuilder([AddressTransfer::ID_CUSTOMER_ADDRESS => 1]))
-                    )
-                )
-            )->build();
+            ->withBillingAddress($addressBuilder)
+            ->withItem($itemBuilder)
+            ->build();
 
         $addressStep->execute($this->createRequest(), $quoteTransfer);
 
@@ -203,13 +200,14 @@ class AddressStepTest extends Unit
 
         $addressStep = $this->createAddressStep($customerTransfer);
 
+        $addressBuilder = new AddressBuilder([AddressTransfer::ID_CUSTOMER_ADDRESS => 1]);
+        $shipmentBuilder = (new ShipmentBuilder())
+            ->withShippingAddress($addressBuilder);
+        $itemBuilder = (new ItemBuilder())
+            ->withShipment($shipmentBuilder);
         $quoteTransfer = (new QuoteBuilder([QuoteTransfer::BILLING_SAME_AS_SHIPPING => true]))
-            ->withItem((new ItemBuilder())
-                ->withShipment((new ShipmentBuilder())
-                    ->withShippingAddress((new AddressBuilder([AddressTransfer::ID_CUSTOMER_ADDRESS => 1]))
-                    )
-                )
-            )->build();
+            ->withItem($itemBuilder)
+            ->build();
 
         $addressStep->execute($this->createRequest(), $quoteTransfer);
 
@@ -257,12 +255,13 @@ class AddressStepTest extends Unit
     {
         $addressStep = $this->createAddressStep(new CustomerTransfer());
 
+        $shipmentBuilder = (new ShipmentBuilder())
+            ->withShippingAddress();
+        $itemBuilder = (new ItemBuilder())
+            ->withShipment($shipmentBuilder);
         $quoteTransfer = (new QuoteBuilder())
-            ->withItem((new ItemBuilder())
-                ->withShipment((new ShipmentBuilder())
-                    ->withShippingAddress()
-                )
-            )->build();
+            ->withItem($itemBuilder)
+            ->build();
 
         $this->assertFalse($addressStep->postCondition($quoteTransfer));
     }
@@ -287,13 +286,14 @@ class AddressStepTest extends Unit
     {
         $addressStep = $this->createAddressStep(new CustomerTransfer());
 
+        $shipmentBuilder = (new ShipmentBuilder())
+            ->withShippingAddress();
+        $itemBuilder = (new ItemBuilder())
+            ->withShipment($shipmentBuilder);
         $quoteTransfer = (new QuoteBuilder())
             ->withBillingAddress()
-            ->withItem((new ItemBuilder())
-                ->withShipment((new ShipmentBuilder())
-                    ->withShippingAddress()
-                )
-            )->build();
+            ->withItem($itemBuilder)
+            ->build();
 
         $this->assertFalse($addressStep->postCondition($quoteTransfer));
     }
