@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9a5f681ba56200434dd2f81d2a676b9a",
+    "content-hash": "b1f8c48fc85944a3ed7c3d5bba9b113b",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -2822,16 +2822,16 @@
         },
         {
             "name": "spryker-shop/cart-page",
-            "version": "2.0.1",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/cart-page.git",
-                "reference": "494486b6c5994846a9e223bfc6e7e1746cdfaa3b"
+                "reference": "d0439c29603fe5bd719ebbb0a9ef19c82d68ce2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/cart-page/zipball/494486b6c5994846a9e223bfc6e7e1746cdfaa3b",
-                "reference": "494486b6c5994846a9e223bfc6e7e1746cdfaa3b",
+                "url": "https://api.github.com/repos/spryker-shop/cart-page/zipball/d0439c29603fe5bd719ebbb0a9ef19c82d68ce2f",
+                "reference": "d0439c29603fe5bd719ebbb0a9ef19c82d68ce2f",
                 "shasum": ""
             },
             "require": {
@@ -2854,6 +2854,7 @@
                 "spryker-shop/discount-widget": "*",
                 "spryker-shop/gift-card-widget": "*",
                 "spryker-shop/multi-cart-widget": "*",
+                "spryker-shop/product-measurement-unit-widget": "*",
                 "spryker-shop/product-option-widget": "*",
                 "spryker-shop/product-packaging-unit-widget": "*",
                 "spryker/code-sniffer": "*",
@@ -2866,6 +2867,7 @@
                 "spryker-shop/discount-widget": "If you want to use components from module DiscountWidget or DiscountSummaryWidgetPlugin",
                 "spryker-shop/gift-card-widget": "If you want to use components from module GiftCardWidget.",
                 "spryker-shop/multi-cart-widget": "If you want to use components from module MultiCartWidget or CartOperationsWidgetPlugin",
+                "spryker-shop/product-measurement-unit-widget": "^0.7.2: If you want to use measurement-unit-item molecule from module ProductMeasurementUnitWidget",
                 "spryker-shop/product-option-widget": "If you want to use components from module ProductOptionWidget or CartItemProductOptionWidgetPlugin",
                 "spryker-shop/product-packaging-unit-widget": "If you want to use components from module ProductPackagingUnitWidget or CartProductPackagingUnitWidgetPlugin",
                 "spryker/container": "If you want to use the CartTwigPlugin",
@@ -2889,7 +2891,7 @@
                 "proprietary"
             ],
             "description": "CartPage module",
-            "time": "2019-06-18T07:15:14+00:00"
+            "time": "2019-06-21T14:17:30+00:00"
         },
         {
             "name": "spryker-shop/cart-to-shopping-list-widget",
@@ -4035,16 +4037,16 @@
         },
         {
             "name": "spryker-shop/customer-page",
-            "version": "1.20.1",
+            "version": "1.21.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/customer-page.git",
-                "reference": "8b259e2bb7df95240b5b434af85d54beca87e368"
+                "reference": "c6a538ecc6ca82da0713a9642e4d3cf4610b325b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/customer-page/zipball/8b259e2bb7df95240b5b434af85d54beca87e368",
-                "reference": "8b259e2bb7df95240b5b434af85d54beca87e368",
+                "url": "https://api.github.com/repos/spryker-shop/customer-page/zipball/c6a538ecc6ca82da0713a9642e4d3cf4610b325b",
+                "reference": "c6a538ecc6ca82da0713a9642e4d3cf4610b325b",
                 "shasum": ""
             },
             "require": {
@@ -4104,7 +4106,7 @@
                 "proprietary"
             ],
             "description": "CustomerPage module",
-            "time": "2019-05-31T08:28:39+00:00"
+            "time": "2019-06-14T08:16:47+00:00"
         },
         {
             "name": "spryker-shop/customer-page-extension",
@@ -4208,16 +4210,16 @@
         },
         {
             "name": "spryker-shop/discount-promotion-widget",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/discount-promotion-widget.git",
-                "reference": "8cb574742122221280639897a4676fa3ab7ce196"
+                "reference": "33d95e78dd485272a9c459db51a07c5906f2c4cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/discount-promotion-widget/zipball/8cb574742122221280639897a4676fa3ab7ce196",
-                "reference": "8cb574742122221280639897a4676fa3ab7ce196",
+                "url": "https://api.github.com/repos/spryker-shop/discount-promotion-widget/zipball/33d95e78dd485272a9c459db51a07c5906f2c4cc",
+                "reference": "33d95e78dd485272a9c459db51a07c5906f2c4cc",
                 "shasum": ""
             },
             "require": {
@@ -4251,20 +4253,20 @@
                 "proprietary"
             ],
             "description": "DiscountPromotionWidget module",
-            "time": "2019-05-23T21:56:07+00:00"
+            "time": "2019-06-14T08:16:47+00:00"
         },
         {
             "name": "spryker-shop/discount-widget",
-            "version": "1.3.1",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/discount-widget.git",
-                "reference": "57c46a1863b4abb7ebe6ec19f4571a8141b711e2"
+                "reference": "3ae5307d6b40d7bcdf203c7f27fbd15cfef50b7d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/discount-widget/zipball/57c46a1863b4abb7ebe6ec19f4571a8141b711e2",
-                "reference": "57c46a1863b4abb7ebe6ec19f4571a8141b711e2",
+                "url": "https://api.github.com/repos/spryker-shop/discount-widget/zipball/3ae5307d6b40d7bcdf203c7f27fbd15cfef50b7d",
+                "reference": "3ae5307d6b40d7bcdf203c7f27fbd15cfef50b7d",
                 "shasum": ""
             },
             "require": {
@@ -4306,7 +4308,7 @@
                 "proprietary"
             ],
             "description": "DiscountWidget module",
-            "time": "2019-05-31T08:07:21+00:00"
+            "time": "2019-06-14T08:16:47+00:00"
         },
         {
             "name": "spryker-shop/error-page",
@@ -4905,6 +4907,104 @@
             "time": "2019-02-15T14:34:39+00:00"
         },
         {
+            "name": "spryker-shop/persistent-cart-share-page",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/persistent-cart-share-page.git",
+                "reference": "80cd3a2006ceec52a0615b1f55855c12bc04232a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/persistent-cart-share-page/zipball/80cd3a2006ceec52a0615b1f55855c12bc04232a",
+                "reference": "80cd3a2006ceec52a0615b1f55855c12bc04232a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/cart-page": "^2.1.0",
+                "spryker-shop/resource-share-page-extension": "^1.0.0",
+                "spryker-shop/shop-application": "^1.0.0",
+                "spryker/kernel": "^3.24.0",
+                "spryker/persistent-cart-share": "^1.0.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/discount-widget": "If you want to use components from module DiscountWidget or DiscountSummaryWidgetPlugin",
+                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "PersistentCartSharePage module",
+            "time": "2019-06-21T18:24:26+00:00"
+        },
+        {
+            "name": "spryker-shop/persistent-cart-share-widget",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/persistent-cart-share-widget.git",
+                "reference": "09b6a85283043ff6b8d780aee982e27b70ffb4ce"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/persistent-cart-share-widget/zipball/09b6a85283043ff6b8d780aee982e27b70ffb4ce",
+                "reference": "09b6a85283043ff6b8d780aee982e27b70ffb4ce",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/shop-application": "^1.0.0",
+                "spryker-shop/shop-ui": "^1.25.0",
+                "spryker/customer": "^7.0.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/persistent-cart-share": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "PersistentCartShareWidget module",
+            "time": "2019-06-21T12:24:03+00:00"
+        },
+        {
             "name": "spryker-shop/price-product-volume-widget",
             "version": "1.2.1",
             "source": {
@@ -5439,16 +5539,16 @@
         },
         {
             "name": "spryker-shop/product-measurement-unit-widget",
-            "version": "0.7.1",
+            "version": "0.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/product-measurement-unit-widget.git",
-                "reference": "e3a0248bbbc9f8100d4413cfb67882ee960e5378"
+                "reference": "6c8a6020d31f3c09416c8e1a894e45e440473610"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/product-measurement-unit-widget/zipball/e3a0248bbbc9f8100d4413cfb67882ee960e5378",
-                "reference": "e3a0248bbbc9f8100d4413cfb67882ee960e5378",
+                "url": "https://api.github.com/repos/spryker-shop/product-measurement-unit-widget/zipball/6c8a6020d31f3c09416c8e1a894e45e440473610",
+                "reference": "6c8a6020d31f3c09416c8e1a894e45e440473610",
                 "shasum": ""
             },
             "require": {
@@ -5484,7 +5584,7 @@
                 "proprietary"
             ],
             "description": "ProductMeasurementUnitWidget module",
-            "time": "2019-06-13T09:40:40+00:00"
+            "time": "2019-06-21T14:17:30+00:00"
         },
         {
             "name": "spryker-shop/product-new-page",
@@ -5541,16 +5641,16 @@
         },
         {
             "name": "spryker-shop/product-option-widget",
-            "version": "1.3.2",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/product-option-widget.git",
-                "reference": "e4d5b1f32121506de006d71ca3bec7a73b548725"
+                "reference": "2f3690e4914393ff515da5373420d4556c9625fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/product-option-widget/zipball/e4d5b1f32121506de006d71ca3bec7a73b548725",
-                "reference": "e4d5b1f32121506de006d71ca3bec7a73b548725",
+                "url": "https://api.github.com/repos/spryker-shop/product-option-widget/zipball/2f3690e4914393ff515da5373420d4556c9625fe",
+                "reference": "2f3690e4914393ff515da5373420d4556c9625fe",
                 "shasum": ""
             },
             "require": {
@@ -5589,7 +5689,7 @@
                 "proprietary"
             ],
             "description": "ProductOptionWidget module",
-            "time": "2019-03-18T15:49:49+00:00"
+            "time": "2019-05-21T07:26:57+00:00"
         },
         {
             "name": "spryker-shop/product-packaging-unit-widget",
@@ -6618,6 +6718,96 @@
             "time": "2018-06-13T13:42:55+00:00"
         },
         {
+            "name": "spryker-shop/resource-share-page",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/resource-share-page.git",
+                "reference": "8e2d9b23c0d707a035521af9d477c5af7489bc18"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/resource-share-page/zipball/8e2d9b23c0d707a035521af9d477c5af7489bc18",
+                "reference": "8e2d9b23c0d707a035521af9d477c5af7489bc18",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/resource-share-page-extension": "^1.0.0",
+                "spryker-shop/shop-application": "^1.0.0",
+                "spryker/customer": "^7.0.0",
+                "spryker/kernel": "^3.24.0",
+                "spryker/messenger": "^3.0.0",
+                "spryker/resource-share": "^1.0.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/customer-page": "Use RedirectUriCustomerRedirectStrategyPlugin to allow redirect when login is necessary for a shared resource: 1.21.0",
+                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ResourceSharePage module",
+            "time": "2019-06-21T20:05:04+00:00"
+        },
+        {
+            "name": "spryker-shop/resource-share-page-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/resource-share-page-extension.git",
+                "reference": "b839f5a256d553330254c797555991de0fe4ee20"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/resource-share-page-extension/zipball/b839f5a256d553330254c797555991de0fe4ee20",
+                "reference": "b839f5a256d553330254c797555991de0fe4ee20",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ResourceSharePageExtension module",
+            "time": "2019-05-29T13:35:37+00:00"
+        },
+        {
             "name": "spryker-shop/sales-order-threshold-widget",
             "version": "1.1.2",
             "source": {
@@ -6666,20 +6856,21 @@
         },
         {
             "name": "spryker-shop/shared-cart-page",
-            "version": "2.1.0",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/shared-cart-page.git",
-                "reference": "861ef2caa97147103910207c13fd031f4b4f5f05"
+                "reference": "63887b0a2c826f4dae9505c66d20522116385d4e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/shared-cart-page/zipball/861ef2caa97147103910207c13fd031f4b4f5f05",
-                "reference": "861ef2caa97147103910207c13fd031f4b4f5f05",
+                "url": "https://api.github.com/repos/spryker-shop/shared-cart-page/zipball/63887b0a2c826f4dae9505c66d20522116385d4e",
+                "reference": "63887b0a2c826f4dae9505c66d20522116385d4e",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
+                "spryker-shop/resource-share-page-extension": "^1.0.0",
                 "spryker-shop/shop-application": "^1.0.0",
                 "spryker-shop/shop-ui": "^1.0.0",
                 "spryker/application": "^3.0.0",
@@ -6718,7 +6909,7 @@
                 "proprietary"
             ],
             "description": "SharedCartPage module",
-            "time": "2019-04-30T13:48:55+00:00"
+            "time": "2019-06-14T13:18:23+00:00"
         },
         {
             "name": "spryker-shop/shared-cart-widget",
@@ -7056,16 +7247,16 @@
         },
         {
             "name": "spryker-shop/shop-ui",
-            "version": "1.24.0",
+            "version": "1.25.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/shop-ui.git",
-                "reference": "694bea4fc0afec27943acbb4ecb9e9a65ef1bb8b"
+                "reference": "cd7de60e6f2063a60028985e83ee56729b6f553a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/shop-ui/zipball/694bea4fc0afec27943acbb4ecb9e9a65ef1bb8b",
-                "reference": "694bea4fc0afec27943acbb4ecb9e9a65ef1bb8b",
+                "url": "https://api.github.com/repos/spryker-shop/shop-ui/zipball/cd7de60e6f2063a60028985e83ee56729b6f553a",
+                "reference": "cd7de60e6f2063a60028985e83ee56729b6f553a",
                 "shasum": ""
             },
             "require": {
@@ -7100,7 +7291,7 @@
                 "proprietary"
             ],
             "description": "ShopUi module",
-            "time": "2019-06-20T11:12:46+00:00"
+            "time": "2019-06-21T16:41:47+00:00"
         },
         {
             "name": "spryker-shop/shopping-list-note-widget",
@@ -21002,6 +21193,91 @@
             "time": "2019-04-02T14:39:18+00:00"
         },
         {
+            "name": "spryker/persistent-cart-share",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/persistent-cart-share.git",
+                "reference": "09118b2327172154b887c67e12721ffd1567e923"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/persistent-cart-share/zipball/09118b2327172154b887c67e12721ffd1567e923",
+                "reference": "09118b2327172154b887c67e12721ffd1567e923",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.0.0",
+                "spryker/persistent-cart-share-extension": "^1.0.0",
+                "spryker/quote": "^2.0.0",
+                "spryker/resource-share": "^1.0.0",
+                "spryker/zed-request": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/customer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "PersistentCartShare module",
+            "time": "2019-06-19T09:30:38+00:00"
+        },
+        {
+            "name": "spryker/persistent-cart-share-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/persistent-cart-share-extension.git",
+                "reference": "8e6c86a19eb44aa8471bd0f3cf274c469255a9d5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/persistent-cart-share-extension/zipball/8e6c86a19eb44aa8471bd0f3cf274c469255a9d5",
+                "reference": "8e6c86a19eb44aa8471bd0f3cf274c469255a9d5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "PersistentCartShareExtension module",
+            "time": "2019-05-30T12:29:48+00:00"
+        },
+        {
             "name": "spryker/price",
             "version": "5.5.0",
             "source": {
@@ -27724,6 +28000,90 @@
             "time": "2019-01-31T14:16:09+00:00"
         },
         {
+            "name": "spryker/resource-share",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/resource-share.git",
+                "reference": "76788e7972883cd8aa548ef425971f2123222759"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/resource-share/zipball/76788e7972883cd8aa548ef425971f2123222759",
+                "reference": "76788e7972883cd8aa548ef425971f2123222759",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.32.0",
+                "spryker/resource-share-extension": "^1.0.0",
+                "spryker/util-encoding": "^2.0.0",
+                "spryker/uuid-behavior": "^1.1.0",
+                "spryker/zed-request": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ResourceShare module",
+            "time": "2019-06-20T08:25:13+00:00"
+        },
+        {
+            "name": "spryker/resource-share-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/resource-share-extension.git",
+                "reference": "387b7320302446dc9e298edef92fa95a3bc9832c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/resource-share-extension/zipball/387b7320302446dc9e298edef92fa95a3bc9832c",
+                "reference": "387b7320302446dc9e298edef92fa95a3bc9832c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ResourceShareExtension module",
+            "time": "2019-06-11T09:29:48+00:00"
+        },
+        {
             "name": "spryker/rest-request-validator",
             "version": "1.1.0",
             "source": {
@@ -28849,16 +29209,16 @@
         },
         {
             "name": "spryker/shared-cart",
-            "version": "1.11.0",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/shared-cart.git",
-                "reference": "8def9a23c123a492a6005d91e064a40913c150d2"
+                "reference": "bf780bd5e78538d1ba0d2f23226c4b137a4c1d06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/shared-cart/zipball/8def9a23c123a492a6005d91e064a40913c150d2",
-                "reference": "8def9a23c123a492a6005d91e064a40913c150d2",
+                "url": "https://api.github.com/repos/spryker/shared-cart/zipball/bf780bd5e78538d1ba0d2f23226c4b137a4c1d06",
+                "reference": "bf780bd5e78538d1ba0d2f23226c4b137a4c1d06",
                 "shasum": ""
             },
             "require": {
@@ -28875,9 +29235,11 @@
                 "spryker/permission-extension": "^1.1.0",
                 "spryker/persistent-cart": "^1.0.0 || ^2.0.0",
                 "spryker/persistent-cart-extension": "^1.0.0",
+                "spryker/persistent-cart-share-extension": "^1.0.0",
                 "spryker/propel-orm": "^1.6.0",
                 "spryker/quote": "^2.8.0",
                 "spryker/quote-extension": "^1.0.0",
+                "spryker/resource-share-extension": "^1.0.0",
                 "spryker/store": "^1.0.0",
                 "spryker/zed-request": "^3.0.0"
             },
@@ -28887,6 +29249,7 @@
                 "spryker/company-business-unit": "*",
                 "spryker/installer": "*",
                 "spryker/propel": "*",
+                "spryker/resource-share": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
@@ -28909,7 +29272,7 @@
                 "proprietary"
             ],
             "description": "SharedCart module",
-            "time": "2019-06-12T14:23:13+00:00"
+            "time": "2019-06-21T14:02:17+00:00"
         },
         {
             "name": "spryker/shared-cart-data-import",
@@ -31950,16 +32313,16 @@
         },
         {
             "name": "spryker/uuid-behavior",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/uuid-behavior.git",
-                "reference": "4cfe7577db908fbee334c9a1cf8f7b2476414b11"
+                "reference": "099c93fa7cf6b2245ec9b13a9e4be4944a0fabfe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/uuid-behavior/zipball/4cfe7577db908fbee334c9a1cf8f7b2476414b11",
-                "reference": "4cfe7577db908fbee334c9a1cf8f7b2476414b11",
+                "url": "https://api.github.com/repos/spryker/uuid-behavior/zipball/099c93fa7cf6b2245ec9b13a9e4be4944a0fabfe",
+                "reference": "099c93fa7cf6b2245ec9b13a9e4be4944a0fabfe",
                 "shasum": ""
             },
             "require": {
@@ -31971,6 +32334,7 @@
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
                 "spryker/testify": "*"
             },
             "type": "propel-behavior",
@@ -31991,7 +32355,7 @@
                 "proprietary"
             ],
             "description": "UuidBehavior module",
-            "time": "2018-08-20T13:01:35+00:00"
+            "time": "2019-06-21T14:24:18+00:00"
         },
         {
             "name": "spryker/vault",
@@ -35553,7 +35917,7 @@
             "time": "2019-03-25T16:59:23+00:00"
         },
         {
-            "name": "mikey179/vfsstream",
+            "name": "mikey179/vfsStream",
             "version": "v1.6.6",
             "source": {
                 "type": "git",
@@ -35844,7 +36208,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette Finder: find files and directories with an intuitive API.",
+            "description": "🔍 Nette Finder: find files and directories with an intuitive API.",
             "homepage": "https://nette.org",
             "keywords": [
                 "filesystem",
@@ -35904,7 +36268,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette NEON: encodes and decodes NEON file format.",
+            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -36025,7 +36389,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette RobotLoader: high performance and comfortable autoloader that will search and autoload classes within your application.",
+            "description": "🍀 Nette RobotLoader: high performance and comfortable autoloader that will search and autoload classes within your application.",
             "homepage": "https://nette.org",
             "keywords": [
                 "autoload",
