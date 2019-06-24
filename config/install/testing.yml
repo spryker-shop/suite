@@ -109,15 +109,6 @@ sections:
             command: "vendor/bin/console queue:worker:start"
 
 
-    restore:
-        excluded: true
-        drop-database:
-            command: "vendor/bin/console propel:database:drop"
-
-        create-database:
-            command: "vendor/bin/console propel:database:create"
-
-
     frontend:
         dependencies-install:
             command: "vendor/bin/console frontend:project:install-dependencies"
