@@ -35,5 +35,5 @@ $config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = '/US_development_zed';
 // ---------- MailCatcher
 $config[MailConstants::MAILCATCHER_GUI] = sprintf('http://%s:1080', $config[ApplicationConstants::HOST_ZED]);
 
-// ---------- StorageDatabase
+// ---------- Database storage
 $config[StorageDatabaseConstants::DB_DATABASE] = 'US_development_zed';

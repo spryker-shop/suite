@@ -126,7 +126,7 @@ $config[SessionConstants::ZED_SESSION_COOKIE_NAME] = $config[ApplicationConstant
 $config[SessionRedisConstants::YVES_SESSION_REDIS_DATABASE] = 5;
 $config[SessionRedisConstants::ZED_SESSION_REDIS_DATABASE] = $config[SessionRedisConstants::YVES_SESSION_REDIS_DATABASE];
 
-// ---------- StorageDatabase
+// ---------- Database storage
 $config[StorageDatabaseConstants::DB_USERNAME] = 'devtest';
 $config[StorageDatabaseConstants::DB_PASSWORD] = 'mate20mg';
 $config[StorageDatabaseConstants::DB_DATABASE] = 'DE_devtest_zed';

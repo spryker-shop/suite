@@ -42,6 +42,7 @@ use Spryker\Shared\SessionFile\SessionFileConstants;
 use Spryker\Shared\SessionRedis\SessionRedisConfig;
 use Spryker\Shared\SessionRedis\SessionRedisConstants;
 use Spryker\Shared\Storage\StorageConstants;
+use Spryker\Shared\StorageDatabase\StorageDatabaseConfig;
 use Spryker\Shared\StorageDatabase\StorageDatabaseConstants;
 use Spryker\Shared\StorageRedis\StorageRedisConstants;
 use Spryker\Shared\Synchronization\SynchronizationConstants;
@@ -513,7 +514,6 @@ $config[TranslatorConstants::TRANSLATION_ZED_FILE_PATH_PATTERNS] = [
 $config[SynchronizationConstants::STORAGE_SYNC_ENABLED] = true;
 $config[SynchronizationConstants::SEARCH_SYNC_ENABLED] = true;
 
-// ---------- StorageDatabase
-$config[StorageDatabaseConstants::DB_ENGINE_PGSQL] = PropelConfig::DB_ENGINE_PGSQL;
-$config[StorageDatabaseConstants::DB_ENGINE_MYSQL] = PropelConfig::DB_ENGINE_MYSQL;
+// ---------- Database storage
 $config[StorageDatabaseConstants::DB_DEBUG] = false;
+$config[StorageDatabaseConstants::DB_ENGINE] = StorageDatabaseConfig::DB_ENGINE_PGSQL;
