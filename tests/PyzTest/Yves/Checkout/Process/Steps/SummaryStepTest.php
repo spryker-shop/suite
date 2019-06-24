@@ -62,9 +62,11 @@ class SummaryStepTest extends Unit
 
         $quoteTransfer = (new QuoteBuilder())
             ->withBillingAddress()
-            ->withPayment((new PaymentBuilder([PaymentTransfer::PAYMENT_PROVIDER => 'test'])))
             ->withItem((new ItemBuilder())->withShipment())
             ->build();
+
+        $paymentTransfer = (new PaymentBuilder([PaymentTransfer::PAYMENT_PROVIDER => 'test']))->build();
+        $quoteTransfer->setPayment($paymentTransfer);
 
         $this->assertTrue($summaryStep->postCondition($quoteTransfer));
     }

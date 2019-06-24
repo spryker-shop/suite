@@ -326,8 +326,8 @@ class AddressStepTest extends Unit
                 $stepExecutorMock,
                 $postConditionMock,
                 $checkoutPageConfigMock,
-                'address_step',
-                'escape_route',
+                'checkout-address',
+                'home',
             ])
             ->getMock();
 
