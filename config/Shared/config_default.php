@@ -514,9 +514,6 @@ $config[TranslatorConstants::TRANSLATION_ZED_FILE_PATH_PATTERNS] = [
 // ----------- Api
 $config[ApiConstants::ENABLE_API_DEBUG] = false;
 
-// ----------- Error handler
-$config[ErrorHandlerConstants::ENABLE_PRETTY_ERROR_HANDLER] = false;
-
 // ----------- Kernel test
 $config[KernelConstants::ENABLE_CONTAINER_OVERRIDING] = false;
 
@@ -530,3 +527,5 @@ $config[ErrorPageConstants::ENABLE_ERROR_404_STACK_TRACE] = false;
 $config[ApplicationConstants::TWIG_ENVIRONMENT_NAME]
     = $config[ShopApplicationConstants::TWIG_ENVIRONMENT_NAME]
     = APPLICATION_ENV;
+
+$config[ApplicationConstants::ENABLE_PRETTY_ERROR_HANDLER] = false;

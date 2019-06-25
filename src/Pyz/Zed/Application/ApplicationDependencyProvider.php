@@ -41,6 +41,10 @@ use Spryker\Zed\Twig\Communication\Plugin\Application\TwigApplicationPlugin;
 use Spryker\Zed\WebProfiler\Communication\Plugin\ServiceProvider\WebProfilerServiceProvider;
 use Spryker\Zed\ZedRequest\Communication\Plugin\GatewayServiceProviderPlugin;
 
+/**
+ *
+ * @package Pyz\Zed\Application
+ */
 class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
 {
     /**
@@ -96,8 +100,11 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new ApiRoutingServiceProvider(),
             new PropelServiceProvider(),
             new EventBehaviorServiceProvider(),
-            new WhoopsErrorHandlerServiceProvider(),
         ];
+
+        if ($this->getConfig()->isPrettyErrorHandlerEnabled()) {
+            $providers[] = new WhoopsErrorHandlerServiceProvider();
+        }
 
         return $providers;
     }
