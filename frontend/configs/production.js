@@ -8,10 +8,7 @@ const mergeWithStrategy = merge.smartStrategy({
     plugins: 'prepend'
 });
 
-async function configurationProdMode(appSettings) {
-    const config = await getConfiguration(appSettings);
-
-    return mergeWithStrategy(config, {
+const configurationProdMode = async (appSettings) => mergeWithStrategy(await getConfiguration(appSettings), {webpack: {
         mode: 'production',
         devtool: false,
 
@@ -45,7 +42,6 @@ async function configurationProdMode(appSettings) {
                 __PRODUCTION__: true
             })
         ]
-    })
-}
+    }});
 
 module.exports = configurationProdMode;

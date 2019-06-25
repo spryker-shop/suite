@@ -1,4 +1,6 @@
+/* tslint:disable: no-any */
 declare const require: any;
+/* tslint:enable */
 
 // add webcomponents polyfill
 import 'core-js/fn/promise';
@@ -14,6 +16,7 @@ const hasNativeCustomElements = !!window.customElements;
 if (hasNativeCustomElements) {
     import(/* webpackMode: "eager" */'@webcomponents/webcomponentsjs/custom-elements-es5-adapter');
 }
-
+/* tslint:disable: no-var-requires no-require-imports */
 require('@webcomponents/webcomponentsjs/webcomponents-bundle');
+/* tslint:enable */
 import 'element-closest';

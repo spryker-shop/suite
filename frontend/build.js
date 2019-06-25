@@ -20,10 +20,10 @@ const configurationPromises = getStoresByIds(storeIds)
     .map(getAppSettingsByStore)
     .map(getConfiguration);
 
+// clear all assets
+compiler.clearAllAssets(storeIds);
+
 // build the project
 Promise.all(configurationPromises)
     .then(configs => compiler.multiCompile(configs))
     .catch(error => console.error('An error occur while creating configuration', error));
-
-
-

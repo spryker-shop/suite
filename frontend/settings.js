@@ -1,11 +1,53 @@
 const { join } = require('path');
 
-// define the current context (root)
-const context = process.cwd();
+// define global settings
+const globalSettings = {
+    // define the current context (root)
+    context: process.cwd(),
 
-function getAppSettingsByStore(store) {
+    paths: {
+        // locate the typescript configuration json file
+        tsConfig: './tsconfig.json',
+
+        // core folders
+        core: './vendor/spryker/spryker-shop/Bundles',
+
+        // eco folders
+        eco: './vendor/spryker-eco',
+
+        // project folders
+        project: './src/Pyz/Yves',
+
+        publicAssets: './public/Yves/assets'
+    }
+};
+
+const getAppSettingsByStore = store => {
+    const entryPointsParts = [
+        'components/atoms/*/index.ts',
+        'components/molecules/*/index.ts',
+        'components/organisms/*/index.ts',
+        'templates/*/index.ts',
+        'views/*/index.ts'
+    ];
+
+    const ignoreFiles = [
+        '!config',
+        '!data',
+        '!deploy',
+        '!node_modules',
+        '!public',
+        '!test'
+    ];
+
+    // getting collection of entry points by pattern
+    const entryPointsCollection = (pathPattern) => entryPointsParts.map((element) => `${pathPattern}/${element}`);
+
     // define current theme
     const currentTheme = store.currentTheme || store.defaultTheme;
+
+    // define if current theme is empty
+    const isCurrentThemeEmpty = currentTheme !== store.currentTheme;
 
     // define the applicatin name
     // important: the name must be normalized
@@ -18,8 +60,9 @@ function getAppSettingsByStore(store) {
         currentAssets: join('/assets', store.name, currentTheme)
     };
 
-    const assetPaths = function() {
-        let assetPathsCollection = {
+    // getting assets paths collection
+    const assetPaths = () => {
+        const assetPathsCollection = {
             // global assets folder
             globalAssets: './frontend/assets/global',
 
@@ -27,78 +70,64 @@ function getAppSettingsByStore(store) {
             defaultAssets: join('./frontend', urls.defaultAssets),
         };
 
-        if (currentTheme !== store.defaultTheme) {
+        if (!isCurrentThemeEmpty) {
             // assets folder for current theme in store
-            assetPathsCollection.currntAssets = join('./frontend', urls.currentAssets);
+            assetPathsCollection.currentAssets = join('./frontend', urls.currentAssets);
         }
 
-        return assetPathsCollection
+        return assetPathsCollection;
     };
 
     // define project relative paths to context
     const paths = {
         // locate the typescript configuration json file
-        tsConfig: './tsconfig.json',
+        tsConfig: globalSettings.paths.tsConfig,
 
         assets: assetPaths(),
 
-        // public folder
+        // public folder with all assets
+        publicAll: globalSettings.paths.publicAll,
+
+        // current store and theme public assets folder
         public: join('./public/Yves', urls.currentAssets),
 
         // core folders
-        core: {
-            // all modules
-            modules: './vendor/spryker/spryker-shop/Bundles',
-            // ShopUi source folder
-            shopUiModule: `./vendor/spryker/spryker-shop/Bundles/ShopUi/src/SprykerShop/Yves/ShopUi/Theme/${store.defaultTheme}`
-        },
+        core: globalSettings.paths.core,
 
         // eco folders
-        eco: {
-            // all modules
-            modules: './vendor/spryker-eco'
-        },
+        eco: globalSettings.paths.eco,
 
         // project folders
-        project: {
-            // all modules
-            modules: './src/Pyz/Yves',
-            // ShopUi source folder
-            shopUiModule: `./src/Pyz/Yves/ShopUi/Theme/${store.defaultTheme}`
-        }
+        project: globalSettings.paths.project
     };
 
-    // define entry point patterns for current theme, if current theme is defined
-    let customThemeEntryPointPatterns = [];
-    if (currentTheme !== store.defaultTheme) {
-        customThemeEntryPointPatterns = [
-            `**/Theme/${currentTheme}/components/atoms/*/index.ts`,
-            `**/Theme/${currentTheme}/components/molecules/*/index.ts`,
-            `**/Theme/${currentTheme}/components/organisms/*/index.ts`,
-            `**/Theme/${currentTheme}/templates/*/index.ts`,
-            `**/Theme/${currentTheme}/views/*/index.ts`,
-            `**/*${store.name}/Theme/${currentTheme}/components/atoms/*/index.ts`,
-            `**/*${store.name}/Theme/${currentTheme}/components/molecules/*/index.ts`,
-            `**/*${store.name}/Theme/${currentTheme}/components/organisms/*/index.ts`,
-            `**/*${store.name}/Theme/${currentTheme}/templates/*/index.ts`,
-            `**/*${store.name}/Theme/${currentTheme}/views/*/index.ts`,
-            '!config',
-            '!data',
-            '!deploy',
-            '!node_modules',
-            '!public',
-            '!test'
-        ];
+    const isThemeCurrentAndNotEmpty = isThemeCurrent => isThemeCurrent && isCurrentThemeEmpty;
+    const getThemeName = isThemeCurrent => isThemeCurrent ? currentTheme : store.defaultTheme;
 
-    }
+    // define entry point patterns for current theme, if current theme is defined
+    const customThemeEntryPointPatterns = (isThemeCurrent = false) => (
+        isThemeCurrentAndNotEmpty(isThemeCurrent) ? [] : [
+            ...entryPointsCollection(`**/Theme/${getThemeName(isThemeCurrent)}`),
+            ...entryPointsCollection(`**/*${store.name}/Theme/${getThemeName(isThemeCurrent)}`),
+            ...ignoreFiles
+        ]
+    );
+
+    const shopUiEntryPointsPattern = (isThemeCurrent = false) => (
+        isThemeCurrentAndNotEmpty(isThemeCurrent) ? [] : [
+            `./ShopUi/Theme/${getThemeName(isThemeCurrent)}`,
+            `./ShopUi${store.name}/Theme/${getThemeName(isThemeCurrent)}`
+        ]
+    );
 
     // return settings
     return {
         name,
         store,
-        context,
         paths,
         urls,
+
+        context: globalSettings.context,
 
         // define settings for suite-frontend-builder finder
         find: {
@@ -106,30 +135,13 @@ function getAppSettingsByStore(store) {
             componentEntryPoints: {
                 // absolute dirs in which look for
                 dirs: [
-                    join(context, paths.core.modules),
-                    join(context, paths.eco.modules),
-                    join(context, paths.project.modules)
+                    join(globalSettings.context, paths.core),
+                    join(globalSettings.context, paths.eco),
+                    join(globalSettings.context, paths.project)
                 ],
                 // files/dirs patterns
-                patterns: customThemeEntryPointPatterns,
-                fallbackPatterns: [
-                    `**/Theme/${store.defaultTheme}/components/atoms/*/index.ts`,
-                    `**/Theme/${store.defaultTheme}/components/molecules/*/index.ts`,
-                    `**/Theme/${store.defaultTheme}/components/organisms/*/index.ts`,
-                    `**/Theme/${store.defaultTheme}/templates/*/index.ts`,
-                    `**/Theme/${store.defaultTheme}/views/*/index.ts`,
-                    `**/*${store.name}/Theme/${store.defaultTheme}/components/atoms/*/index.ts`,
-                    `**/*${store.name}/Theme/${store.defaultTheme}/components/molecules/*/index.ts`,
-                    `**/*${store.name}/Theme/${store.defaultTheme}/components/organisms/*/index.ts`,
-                    `**/*${store.name}/Theme/${store.defaultTheme}/templates/*/index.ts`,
-                    `**/*${store.name}/Theme/${store.defaultTheme}/views/*/index.ts`,
-                    '!config',
-                    '!data',
-                    '!deploy',
-                    '!node_modules',
-                    '!public',
-                    '!test'
-                ]
+                patterns: customThemeEntryPointPatterns(true),
+                fallbackPatterns: customThemeEntryPointPatterns()
             },
 
             // core component styles finder settings
@@ -138,7 +150,7 @@ function getAppSettingsByStore(store) {
             componentStyles: {
                 // absolute dirs in which look for
                 dirs: [
-                    join(context, paths.core.modules)
+                    join(globalSettings.context, paths.core)
                 ],
                 // files/dirs patterns
                 patterns: [
@@ -148,18 +160,27 @@ function getAppSettingsByStore(store) {
                     `**/Theme/${store.defaultTheme}/templates/*/*.scss`,
                     `**/Theme/${store.defaultTheme}/views/*/*.scss`,
                     `!**/Theme/${store.defaultTheme}/**/style.scss`,
-                    '!config',
-                    '!data',
-                    '!deploy',
-                    '!node_modules',
-                    '!public',
-                    '!test'
+                    ...ignoreFiles
+                ]
+            },
+
+            shopUiEntryPoints: {
+                dirs: [
+                    join(globalSettings.context, paths.project)
+                ],
+                patterns: [
+                    ...shopUiEntryPointsPattern(true)
+
+                ],
+                fallbackPatterns: [
+                    ...shopUiEntryPointsPattern()
                 ]
             }
         }
     }
-}
+};
 
 module.exports = {
+    globalSettings,
     getAppSettingsByStore
-}
+};
