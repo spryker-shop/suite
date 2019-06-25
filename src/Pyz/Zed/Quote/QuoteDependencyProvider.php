@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\Quote;
 
-use Spryker\Zed\Currency\Communication\Plugin\DefaultCurrencyQuoteExpandBeforeCreatePluginInterface;
+use Spryker\Zed\Currency\Communication\Plugin\DefaultCurrencyQuoteExpandBeforeCreatePlugin;
 use Spryker\Zed\Currency\Communication\Plugin\Quote\QuoteCurrencyValidatorPlugin;
 use Spryker\Zed\MultiCart\Communication\Plugin\AddDefaultNameBeforeQuoteSavePlugin;
 use Spryker\Zed\MultiCart\Communication\Plugin\AddSuccessMessageAfterQuoteCreatedPlugin;
@@ -124,7 +124,7 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
     protected function getQuoteExpandBeforeCreatePlugins(): array
     {
         return [
-            new DefaultCurrencyQuoteExpandBeforeCreatePluginInterface(),
+            new DefaultCurrencyQuoteExpandBeforeCreatePlugin(),
         ];
     }
 }
