@@ -18,8 +18,8 @@ use Spryker\Shared\Queue\QueueConstants;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
 use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\Session\SessionConstants;
-use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\SessionRedis\SessionRedisConstants;
+use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 
 $domain = getenv('VM_PROJECT') ?: 'suite-nonsplit';
