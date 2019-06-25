@@ -44,6 +44,8 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
     protected function getQuoteCreateBeforePlugins(): array
     {
         return [
+            new AddDefaultNameBeforeQuoteSavePlugin(), #MultiCartFeature
+            new ResolveQuoteNameBeforeQuoteCreatePlugin(), #MultiCartFeature
             new DeactivateQuotesBeforeQuoteSavePlugin(), #MultiCartFeature
             new CleanQuoteShareBeforeQuoteCreatePlugin(), #SharedCartFeature
             new DeactivateSharedQuotesBeforeQuoteSavePlugin(), #SharedCartFeature
