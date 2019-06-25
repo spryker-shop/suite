@@ -7,12 +7,11 @@
 
 {% define data = {
     product: required,
-    name: data.product.name | default(''),
-    sku: data.product.sku | default(''),
-    url: data.product.url | default(''),
-    image: data.product.images ? data.product.images.0.externalUrlSmall | default(''),
-    idProductAbstract: data.product.idProductAbstract | default(''),
-} %}
+    name: data.product.name | default,
+    sku: data.product.sku | default,
+    url: data.product.url | default,
+    image: data.product.images ? data.product.images.0.externalUrlSmall | default,
+    idProductAbstract: data.product.idProductAbstract | default,
 
 {% block class -%}
     {{ parent() }} box

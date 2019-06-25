@@ -48,7 +48,7 @@
             </small>
         {%- endblock %}
 
-        {% block specificInformation %}
+        {% block additionalInformation %}
             {% if data.attributes %}
                 {% include molecule('cart-item-variant-selector', 'CartPage') with {
                     data: {
