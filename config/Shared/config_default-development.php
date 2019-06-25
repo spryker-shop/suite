@@ -134,7 +134,7 @@ $config[CalculationPageConstants::ENABLE_CART_DEBUG] = true;
 // ---------- Error page
 $config[ErrorPageConstants::ENABLE_ERROR_404_STACK_TRACE] = true;
 
-// ----------- Application handler
+// ----------- Application
 $config[ApplicationConstants::ENABLE_PRETTY_ERROR_HANDLER] = true;
 
 // ---------- Console
