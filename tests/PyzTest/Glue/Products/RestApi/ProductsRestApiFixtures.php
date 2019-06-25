@@ -20,7 +20,7 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  * @group RestApi
  * @group ProductAbstractRestFixtures
  * Add your own group annotations below this line
- * @group End2End
+ * @group EndToEnd
  */
 class ProductsRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
