@@ -12,6 +12,7 @@
     url: data.product.url | default,
     image: data.product.images ? data.product.images.0.externalUrlSmall | default,
     idProductAbstract: data.product.idProductAbstract | default,
+} %}
 
 {% block class -%}
     {{ parent() }} box
