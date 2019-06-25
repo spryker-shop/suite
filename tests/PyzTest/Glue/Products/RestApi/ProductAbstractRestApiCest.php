@@ -23,7 +23,7 @@ use PyzTest\Glue\Products\ProductsApiTester;
 class ProductAbstractRestApiCest
 {
     /**
-     * @var \PyzTest\Glue\Products\RestApi\ProductAbstractsRestApiFixtures
+     * @var \PyzTest\Glue\Products\RestApi\ProductsRestApiFixtures
      */
     protected $fixtures;
 
@@ -34,7 +34,7 @@ class ProductAbstractRestApiCest
      */
     public function loadFixtures(ProductsApiTester $I): void
     {
-        $this->fixtures = $I->loadFixtures(ProductAbstractsRestApiFixtures::class);
+        $this->fixtures = $I->loadFixtures(ProductsRestApiFixtures::class);
     }
 
     /**
@@ -86,12 +86,9 @@ class ProductAbstractRestApiCest
             $I->formatUrl(
                 'abstract-products/{ProductAbstractSku}',
                 [
-                    'ProductAbstractSku' => $this->fixtures->getProductAbstractTransfer()->getSku()
+                    'ProductAbstractSku' => $this->fixtures->getProductConcreteTransfer()->getAbstractSku(),
                 ]
-            ),
-            [
-                'included' => 'abstract-product-image-sets,abstract-product-prices'
-            ]
+            )
         );
 
         //assert
@@ -104,18 +101,6 @@ class ProductAbstractRestApiCest
             ->seeResponseDataContainsSingleResourceOfType('abstract-products');
         $I->amSure('Returned resource has correct id')
             ->whenI()
-            ->seeSingleResourceIdEqualTo($this->fixtures->getProductAbstractTransfer()->getIdProductAbstract());
-        $I->amSure('Returned resource has included relationship abstract-product-image-sets')
-            ->whenI()
-            ->seeSingleResourceHasRelationshipByTypeAndId(
-                'abstract-product-image-sets',
-                $this->fixtures->getProductImageSetTransfer()->getIdProductImageSet()
-            );
-        $I->amSure('Returned resource has included relationship abstract-product-prices')
-            ->whenI()
-            ->seeSingleResourceHasRelationshipByTypeAndId(
-                'abstract-product-prices',
-                $this->fixtures->getPriceProductTransfer()->getIdPriceProduct()
-            );
+            ->seeSingleResourceIdEqualTo($this->fixtures->getProductConcreteTransfer()->getAbstractSku());
     }
 }

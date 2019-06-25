@@ -7,9 +7,7 @@
 
 namespace PyzTest\Glue\Products\RestApi;
 
-use Generated\Shared\Transfer\PriceProductTransfer;
-use Generated\Shared\Transfer\ProductAbstractTransfer;
-use Generated\Shared\Transfer\ProductImageSetTransfer;
+use Generated\Shared\Transfer\ProductConcreteTransfer;
 use PyzTest\Glue\Products\ProductsApiTester;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
@@ -20,23 +18,23 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  * @group Glue
  * @group Products
  * @group RestApi
- * @group CartsRestApiFixtures
+ * @group ProductAbstractRestFixtures
  * Add your own group annotations below this line
  * @group End2End
  */
-class ProductAbstractsRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
+class ProductsRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
     /**
-     * @var \Generated\Shared\Transfer\ProductAbstractTransfer
+     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
      */
-    protected $productAbstractTransfer;
+    protected $productConcreteTransfer;
 
     /**
-     * @return \Generated\Shared\Transfer\ProductAbstractTransfer
+     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
      */
-    public function getProductAbstractTransfer(): ProductAbstractTransfer
+    public function getProductConcreteTransfer(): ProductConcreteTransfer
     {
-        return $this->productAbstractTransfer;
+        return $this->productConcreteTransfer;
     }
 
     /**
@@ -46,7 +44,7 @@ class ProductAbstractsRestApiFixtures implements FixturesBuilderInterface, Fixtu
      */
     public function buildFixtures(ProductsApiTester $I): FixturesContainerInterface
     {
-        $this->createProductAbstract($I);
+        $this->createProductConcrete($I);
 
         return $this;
     }
@@ -56,8 +54,8 @@ class ProductAbstractsRestApiFixtures implements FixturesBuilderInterface, Fixtu
      *
      * @return void
      */
-    protected function createProductAbstract(ProductsApiTester $I): void
+    protected function createProductConcrete(ProductsApiTester $I): void
     {
-        $this->productAbstractTransfer = $I->haveProductAbstractWithoutCleanup();
+        $this->productConcreteTransfer = $I->haveFullProduct();
     }
 }

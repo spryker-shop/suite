@@ -17,7 +17,8 @@ suites:
         modules:
             enabled:
                 - \PyzTest\Shared\Testify\Helper\Environment
-                - \SprykerTest\Shared\Testify\Helper\LocatorHelper
+                - \SprykerTest\Shared\Testify\Helper\LocatorHelper:
+                      projectNamespaces: ['Pyz']
                 - \SprykerTest\Shared\Propel\Helper\ConnectionHelper
                 - \SprykerTest\Shared\Testify\Helper\DataCleanupHelper
                 - \SprykerTest\Glue\Testify\Helper\GlueRest
@@ -28,7 +29,5 @@ suites:
                 \SprykerTest\Glue\Testify\Helper\GlueRest:
                     depends: PhpBrowser
                     part: Json
-
-extensions:
-    commands:
-        - \SprykerTest\Shared\Testify\Fixtures\FixturesCommand
+                \SprykerTest\Shared\Testify\Helper\DataCleanupHelper:
+                    cleanup: false
