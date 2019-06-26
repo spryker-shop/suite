@@ -12,6 +12,7 @@
     url: data.product.url | default,
     image: data.product.images ? data.product.images.0.externalUrlSmall | default,
     idProductAbstract: data.product.idProductAbstract | default,
+    currencyIsoCode: null,
 } %}
 
 {% block class -%}
@@ -71,6 +72,7 @@
                             data: {
                                 amount: data.product.prices.DEFAULT,
                                 originalAmount: data.product.prices.ORIGINAL | default(null),
+                                currencyIsoCode: data.currencyIsoCode,
                             },
                         } only %}
                     {% else %}

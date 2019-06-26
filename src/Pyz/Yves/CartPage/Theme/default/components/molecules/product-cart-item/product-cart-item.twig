@@ -68,6 +68,7 @@
                     unitPrice: data.product.unitPrice | money,
                     subtotalPrice: data.product.sumSubtotalAggregation | money,
                     cartItem: data.product,
+                    currencyIsoCode: data.cart ? data.cart.currency.code,
                 },
             } only %}
         {% endblock %}
@@ -116,7 +117,9 @@
             {% endif %}
 
             {% if data.cart %}
-                {% widget 'CartItemNoteFormWidget' args [data.product, data.cart] only %}{% endwidget %}
+                {% block cartItemNote %}
+                    {% widget 'CartItemNoteFormWidget' args [data.product, data.cart] only %}{% endwidget %}
+                {% endblock %}
             {% endif %}
         {% endblock %}
     </div>
