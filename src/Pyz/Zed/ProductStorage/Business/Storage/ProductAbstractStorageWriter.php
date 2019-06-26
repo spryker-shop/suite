@@ -16,6 +16,7 @@ use Spryker\Service\Synchronization\SynchronizationServiceInterface;
 use Spryker\Zed\ProductStorage\Business\Attribute\AttributeMapInterface;
 use Spryker\Zed\ProductStorage\Business\Storage\ProductAbstractStorageWriter as SprykerProductAbstractStorageWriter;
 use Spryker\Zed\ProductStorage\Dependency\Facade\ProductStorageToProductInterface;
+use Spryker\Zed\ProductStorage\Dependency\Facade\ProductStorageToStoreFacadeInterface;
 use Spryker\Zed\ProductStorage\Persistence\ProductStorageQueryContainerInterface;
 
 /**
@@ -50,6 +51,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
 
     /**
      * @param \Spryker\Zed\ProductStorage\Dependency\Facade\ProductStorageToProductInterface $productFacade
+     * @param \Spryker\Zed\ProductStorage\Dependency\Facade\ProductStorageToStoreFacadeInterface $storeFacade
      * @param \Spryker\Zed\ProductStorage\Business\Attribute\AttributeMapInterface $attributeMap
      * @param \Spryker\Zed\ProductStorage\Persistence\ProductStorageQueryContainerInterface $queryContainer
      * @param bool $isSendingToQueue
@@ -58,13 +60,14 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
      */
     public function __construct(
         ProductStorageToProductInterface $productFacade,
+        ProductStorageToStoreFacadeInterface $storeFacade,
         AttributeMapInterface $attributeMap,
         ProductStorageQueryContainerInterface $queryContainer,
         $isSendingToQueue,
         SynchronizationServiceInterface $synchronizationService,
         QueueClientInterface $queueClient
     ) {
-        parent::__construct($productFacade, $attributeMap, $queryContainer, $isSendingToQueue);
+        parent::__construct($productFacade, $storeFacade, $attributeMap, $queryContainer, $isSendingToQueue);
 
         $this->synchronizationService = $synchronizationService;
         $this->queueClient = $queueClient;
