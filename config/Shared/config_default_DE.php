@@ -51,6 +51,13 @@ $config[ZedRequestConstants::HOST_ZED_API] = $config[ApplicationConstants::HOST_
 $config[ZedRequestConstants::BASE_URL_ZED_API] = $config[ApplicationConstants::BASE_URL_ZED];
 $config[ZedRequestConstants::BASE_URL_SSL_ZED_API] = $config[ApplicationConstants::BASE_URL_SSL_ZED];
 
+// ---------- Trusted hosts
+$config[ApplicationConstants::YVES_TRUSTED_HOSTS] = [
+    $config[ApplicationConstants::HOST_YVES],
+    $config[ApplicationConstants::HOST_ZED],
+    'localhost',
+];
+
 // ---------- Assets / Media
 $config[ApplicationConstants::BASE_URL_STATIC_ASSETS] = $config[ApplicationConstants::BASE_URL_YVES];
 $config[ApplicationConstants::BASE_URL_STATIC_MEDIA] = $config[ApplicationConstants::BASE_URL_YVES];
