@@ -64,7 +64,7 @@ const getAppSettingsByStore = store => {
     const assetPaths = () => {
         const assetPathsCollection = {
             // global assets folder
-            globalAssets: './frontend/assets/global',
+            globalAssets: `./frontend/assets/global/${!isCurrentThemeEmpty ? currentTheme : store.defaultTheme}`,
 
             // assets folder for current theme in store
             defaultAssets: join('./frontend', urls.defaultAssets),
