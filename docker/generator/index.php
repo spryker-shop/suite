@@ -60,7 +60,7 @@ foreach ($projectData['groups'] ?? [] as $groupName => $groupData) {
                 'port' => strtok(':') ?: $defaultPort,
                 'regionName' => $groupData['region'],
                 'regionData' => $projectData['regions'][$groupData['region']],
-                'brokerConnections' => getBrokerConnections($projectData, $groupData['region']),
+                'brokerConnections' => getBrokerConnections($projectData),
             ])
         );
 
@@ -75,7 +75,7 @@ foreach ($projectData['groups'] ?? [] as $groupName => $groupData) {
                         'port' => strtok(':') ?: $defaultPort,
                         'regionName' => $groupData['region'],
                         'regionData' => $projectData['regions'][$groupData['region']],
-                        'brokerConnections' => getBrokerConnections($projectData, $groupData['region']),
+                        'brokerConnections' => getBrokerConnections($projectData),
                         'storeName' => $domainData['store'],
                         'services' => array_replace_recursive(
                             $projectData['regions'][$groupData['region']]['stores'][$domainData['store']]['services'],
@@ -197,26 +197,27 @@ function getDefaultPort(array $projectData): int
 
 /**
  * @param array $projectData
- * @param $regionName
  *
  * @return string
  */
-function getBrokerConnections(array $projectData, string $regionName): string
+function getBrokerConnections(array $projectData): string
 {
     $brokerServiceData = $projectData['services']['broker'];
 
     $connections = [];
-    foreach ($projectData['regions'][$regionName]['stores'] ?? [] as $storeName => $storeData) {
-        $localServiceData = array_replace($brokerServiceData, $storeData['services']['broker']);
-        $connections[$storeName] = [
-            'RABBITMQ_CONNECTION_NAME' => $storeName . '-connection',
-            'RABBITMQ_HOST' => 'broker',
-            'RABBITMQ_PORT' => $localServiceData['port'] ?? 5672,
-            'RABBITMQ_USERNAME' => $localServiceData['api']['username'],
-            'RABBITMQ_PASSWORD' => $localServiceData['api']['password'],
-            'RABBITMQ_VIRTUAL_HOST' => $localServiceData['namespace'],
-            'RABBITMQ_STORE_NAMES' => [$storeName], // check if connection is shared
-        ];
+    foreach ($projectData['regions'] as $regionName => $regionData) {
+        foreach ($regionData['stores'] ?? [] as $storeName => $storeData) {
+            $localServiceData = array_replace($brokerServiceData, $storeData['services']['broker']);
+            $connections[$storeName] = [
+                'RABBITMQ_CONNECTION_NAME' => $storeName . '-connection',
+                'RABBITMQ_HOST' => 'broker',
+                'RABBITMQ_PORT' => $localServiceData['port'] ?? 5672,
+                'RABBITMQ_USERNAME' => $localServiceData['api']['username'],
+                'RABBITMQ_PASSWORD' => $localServiceData['api']['password'],
+                'RABBITMQ_VIRTUAL_HOST' => $localServiceData['namespace'],
+                'RABBITMQ_STORE_NAMES' => [$storeName], // check if connection is shared
+            ];
+        }
     }
 
     return json_encode($connections);

@@ -9,10 +9,11 @@ php: 7.2
 default-store: DE
 regions:
     EU:
-        database:
-            database: eu-docker
-            username: spryker
-            password: secret
+        services:
+            database:
+                database: eu-docker
+                username: spryker
+                password: secret
 
         stores:
             DE:
@@ -32,10 +33,11 @@ regions:
                     search:
                         namespace: at_search
     US:
-        database:
-            database: us-docker
-            username: spryker
-            password: secret
+        services:
+            database:
+                database: us-docker
+                username: spryker
+                password: secret
         stores:
             US:
                 services:
@@ -106,7 +108,6 @@ groups:
                         services:
                             session:
                                 namespace: 6
-
 services:
     database:
         engine: postgres
