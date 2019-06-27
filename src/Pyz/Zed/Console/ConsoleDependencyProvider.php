@@ -81,8 +81,6 @@ use Spryker\Zed\ProductRelation\Communication\Console\ProductRelationUpdaterCons
 use Spryker\Zed\ProductValidity\Communication\Console\ProductValidityConsole;
 use Spryker\Zed\Propel\Communication\Console\DatabaseDropConsole;
 use Spryker\Zed\Propel\Communication\Console\DatabaseDropTablesConsole;
-use Spryker\Zed\Propel\Communication\Console\DatabaseExportConsole;
-use Spryker\Zed\Propel\Communication\Console\DatabaseImportConsole;
 use Spryker\Zed\Propel\Communication\Console\DeleteMigrationFilesConsole;
 use Spryker\Zed\Propel\Communication\Console\PropelSchemaValidatorConsole;
 use Spryker\Zed\Propel\Communication\Console\PropelSchemaXmlNameValidatorConsole;
@@ -260,8 +258,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
             new DatabaseDropConsole(),
             new DatabaseDropTablesConsole(),
-            new DatabaseExportConsole(),
-            new DatabaseImportConsole(),
             new DeleteMigrationFilesConsole(),
 
             new DeleteLogFilesConsole(),
@@ -351,7 +347,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new PropelSchemaXmlNameValidatorConsole();
             $commands[] = new DataImportDumpConsole();
             $commands[] = new GenerateGlueIdeAutoCompletionConsole();
-            $commands[] = new PropelAbstractValidateConsole();
             $commands[] = new PluginUsageFinderConsole();
             $commands[] = new PostgresIndexGeneratorConsole();
             $commands[] = new PostgresIndexRemoverConsole();
@@ -416,6 +411,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
         $commands[] = new AcceptanceCodeTestConsole();
         $commands[] = new FunctionalCodeTestConsole();
+
+        $commands[] = new PropelAbstractValidateConsole();
 
         return $commands;
     }
