@@ -1,0 +1,57 @@
+{% include "nginx/conf.d/common.conf.twig" with _context %}
+
+{#{{  }}#}
+
+{% for groupData in groups %}
+{% for applicationName, applicationData in groupData['applications'] %}
+upstream {{ applicationName }} {
+    server {{ applicationData['application'] == 'zed' ? 'rpc_server' : applicationName }}:9000;
+}
+
+{% for domain, domainData in applicationData['domain'] %}
+{% include "nginx/#{applicationData['application']}.server.conf.twig" with {
+    ssl: docker['ssl']['enabled'] | default(false),
+    domain: domain,
+    domainData: domainData,
+    upstream: applicationName,
+    project: _context
+} %}
+{% endfor %}
+{% endfor %}
+{% endfor %}
+
+upstream services_queue.demo-spryker.com_80 {
+    server broker:15672;
+}
+server {
+    server_name queue.demo-spryker.com;
+    listen 80 ;
+    access_log /var/log/nginx/access.log vhost;
+    location / {
+        proxy_pass http://services_queue.demo-spryker.com_80;
+    }
+}
+
+upstream services_mail.demo-spryker.com_80 {
+    server mail_catcher:8025;
+}
+server {
+    server_name mail.demo-spryker.com;
+    listen 80 ;
+    access_log /var/log/nginx/access.log vhost;
+    location / {
+        proxy_pass http://services_mail.demo-spryker.com_80;
+    }
+}
+
+upstream services_jobs.demo-spryker.com_80 {
+    server scheduler:8080;
+}
+server {
+    server_name scheduler.demo-spryker.com;
+    listen 80 ;
+    access_log /var/log/nginx/access.log vhost;
+    location / {
+        proxy_pass http://services_jobs.demo-spryker.com_80;
+    }
+}

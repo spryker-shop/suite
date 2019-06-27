@@ -1,0 +1,14 @@
+  {{ applicationName }}:
+    image: ${SPRYKER_DOCKER_PREFIX}_app:${SPRYKER_DOCKER_TAG}
+    depends_on:
+      - database
+      - broker
+      - key_value_store
+      - session
+      - search
+    networks:
+      - services
+      - private
+    env_file:
+      - ${DEPLOYMENT_PATH}/env/{{ applicationName }}.env
+    <<: *app-volumes

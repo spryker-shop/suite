@@ -129,17 +129,14 @@ $config[OauthConstants::OAUTH_CLIENT_SECRET] = 'abc123';
 // ---------- Api
 $config[ApiConstants::ENABLE_API_DEBUG] = true;
 
-// ---------- Setup
-$config[SetupConstants::ENABLE_DEPLOY_VARS] = false;
-
 // ---------- Calculation page
 $config[CalculationPageConstants::ENABLE_CART_DEBUG] = true;
 
 // ---------- Error page
 $config[ErrorPageConstants::ENABLE_ERROR_404_STACK_TRACE] = true;
 
-// ----------- Error handler
-$config[ErrorHandlerConstants::ENABLE_PRETTY_ERROR_HANDLER] = true;
+// ----------- Application
+$config[ApplicationConstants::ENABLE_PRETTY_ERROR_HANDLER] = true;
 
 // ---------- Console
 $config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = true;

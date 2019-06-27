@@ -1,6 +1,7 @@
 <?php
 
 use Monolog\Logger;
+use Pyz\Shared\Console\ConsoleConstants;
 use Spryker\Client\RabbitMq\Model\RabbitMqAdapter;
 use Spryker\Glue\Log\Plugin\GlueLoggerConfigPlugin;
 use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBuilderPlugin;
@@ -515,16 +516,8 @@ $config[TranslatorConstants::TRANSLATION_ZED_FILE_PATH_PATTERNS] = [
 // ----------- Api
 $config[ApiConstants::ENABLE_API_DEBUG] = false;
 
-// ----------- Error handler
-$config[ErrorHandlerConstants::ENABLE_PRETTY_ERROR_HANDLER] = false;
-
 // ----------- Kernel test
-$config[KernelConstants::ADJUST_TEST_NAMESPACE] = false;
-$config[KernelConstants::OVERWRITE_CONTAINER_FOR_TESTING] = false;
-
-// ----------- Setup
-$config[SetupConstants::ENABLE_SCHEDULER] = true;
-$config[SetupConstants::ENABLE_DEPLOY_VARS] = true;
+$config[KernelConstants::ENABLE_CONTAINER_OVERRIDING] = false;
 
 // ----------- Calculation page
 $config[CalculationPageConstants::ENABLE_CART_DEBUG] = false;
@@ -537,5 +530,4 @@ $config[ApplicationConstants::TWIG_ENVIRONMENT_NAME]
     = $config[ShopApplicationConstants::TWIG_ENVIRONMENT_NAME]
     = APPLICATION_ENV;
 
-// ---------- Session
-$config[SessionConstants::SESSION_ENVIRONMENT_NAME] = APPLICATION_ENV;
+$config[ApplicationConstants::ENABLE_PRETTY_ERROR_HANDLER] = false;

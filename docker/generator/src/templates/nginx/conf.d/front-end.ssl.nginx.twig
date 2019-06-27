@@ -1,0 +1,526 @@
+# If we receive X-Forwarded-Proto, pass it through; otherwise, pass along the
+# scheme used to connect to this server
+map $http_x_forwarded_proto $proxy_x_forwarded_proto {
+    default $http_x_forwarded_proto;
+''
+    $scheme;
+}
+# If we receive X-Forwarded-Port, pass it through; otherwise, pass along the
+# server port the client connected to
+map $http_x_forwarded_port $proxy_x_forwarded_port {
+    default $http_x_forwarded_port;
+''
+    $server_port;
+}
+# If we receive Upgrade, set Connection to "upgrade"; otherwise, delete any
+# Connection header that may have been passed to this server
+map $http_upgrade $proxy_connection {
+    default upgrade;
+''
+    close;
+}
+# Apply fix for very long server names
+server_names_hash_bucket_size 128;
+# Default dhparam
+# Set appropriate X-Forwarded-Ssl header
+map $scheme $proxy_x_forwarded_ssl {
+    default off;
+    https on;
+}
+gzip_types text/plain text/css application/javascript application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
+log_format vhost '$host $remote_addr - $remote_user [$time_local] '
+'"$request" $status $body_bytes_sent '
+'"$http_referer" "$http_user_agent"';
+access_log off;
+resolver 127.0.0.11;
+# HTTP 1.1 support
+proxy_http_version 1.1;
+proxy_buffering off;
+proxy_set_header Host $http_host;
+proxy_set_header Upgrade $http_upgrade;
+proxy_set_header Connection $proxy_connection;
+proxy_set_header X-Real-IP $remote_addr;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+proxy_set_header X-Forwarded-Proto $proxy_x_forwarded_proto;
+proxy_set_header X-Forwarded-Ssl $proxy_x_forwarded_ssl;
+proxy_set_header X-Forwarded-Port $proxy_x_forwarded_port;
+# Mitigate httpoxy attack (see README for details)
+proxy_set_header Proxy "";
+server {
+    server_name _; # This is just an invalid value which will never trigger on a real hostname.
+    listen 80;
+    access_log /var/log/nginx/access.log vhost;
+    return 503;
+}
+# glue.at.demo-spryker.com
+upstream AT_glue.at.demo-spryker.com_80 {
+    # Cannot connect to network of this container
+    server 127.0.0.1 down;
+    ## Can be connected with "spryker_services" network
+    # spryker_glue_at_1
+    server 172.26.0.14:9000;
+}
+server {
+    server_name glue.at.demo-spryker.com;
+    listen 80 ssl http2 ;
+    access_log /var/log/nginx/access.log vhost;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+    ssl_ciphers 'ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:!DSS';
+    ssl_prefer_server_ciphers on;
+    ssl_session_timeout 5m;
+    ssl_session_cache shared:SSL:50m;
+    ssl_session_tickets off;
+    ssl_certificate /etc/nginx/spryker_certs/spryker_ssl_AT.crt;
+    ssl_certificate_key /etc/nginx/spryker_certs/spryker_ssl_AT.key;
+    include /etc/nginx/vhost.d/default.conf;
+    location / {
+        root   /data/public/Glue;
+        include fastcgi.conf;
+        fastcgi_pass AT_glue.at.demo-spryker.com_80;
+        include /etc/nginx/vhost.d/default_location.conf;
+    }
+}
+server {
+    server_name glue.at.demo-spryker.com;
+    listen 80 ;
+    access_log /var/log/nginx/access.log vhost;
+    include /etc/nginx/vhost.d/default.conf;
+    location / {
+        root   /data/public/Glue;
+        include fastcgi.conf;
+        fastcgi_pass AT_glue.at.demo-spryker.com_80;
+        include /etc/nginx/vhost.d/default_location.conf;
+    }
+}
+# zed.at.demo-spryker.com
+upstream AT_zed.at.demo-spryker.com_80 {
+    # Cannot connect to network of this container
+    server 127.0.0.1 down;
+    # Cannot connect to network of this container
+    server 127.0.0.1 down;
+    ## Can be connected with "spryker_services" network
+    # spryker_rpc_server_at_1
+    server 172.26.0.9:80;
+    # Cannot connect to network of this container
+    server 127.0.0.1 down;
+}
+server {
+    server_name zed.at.demo-spryker.com;
+    listen 80 ssl http2 ;
+    access_log /var/log/nginx/access.log vhost;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+    ssl_ciphers 'ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:!DSS';
+    ssl_prefer_server_ciphers on;
+    ssl_session_timeout 5m;
+    ssl_session_cache shared:SSL:50m;
+    ssl_session_tickets off;
+    ssl_certificate /etc/nginx/spryker_certs/spryker_ssl_AT.crt;
+    ssl_certificate_key /etc/nginx/spryker_certs/spryker_ssl_AT.key;
+    include /etc/nginx/vhost.d/default.conf;
+    location / {
+        proxy_pass http://AT_zed.at.demo-spryker.com_80;
+        include /etc/nginx/vhost.d/default_location.conf;
+    }
+}
+server {
+    server_name zed.at.demo-spryker.com;
+    listen 80 ;
+    access_log /var/log/nginx/access.log vhost;
+    include /etc/nginx/vhost.d/default.conf;
+    location / {
+        proxy_pass http://AT_zed.at.demo-spryker.com_80;
+        include /etc/nginx/vhost.d/default_location.conf;
+    }
+}
+# yves.at.demo-spryker.com
+upstream AT_yves.at.demo-spryker.com_80 {
+    # Cannot connect to network of this container
+    server 127.0.0.1 down;
+    ## Can be connected with "spryker_services" network
+    # spryker_yves_at_1
+    server 172.26.0.13:9000;
+}
+server {
+    server_name yves.at.demo-spryker.com;
+    listen 80 ssl http2 ;
+    access_log /var/log/nginx/access.log vhost;
+    include /etc/nginx/vhost.d/default.conf;
+    location / {
+        root   /data/public/Yves;
+        include fastcgi.conf;
+        fastcgi_pass AT_yves.at.demo-spryker.com_80;
+        include /etc/nginx/vhost.d/default_location.conf;
+    }
+}
+server {
+    server_name yves.at.demo-spryker.com;
+    listen 80 ;
+    access_log /var/log/nginx/access.log vhost;
+    include /etc/nginx/vhost.d/default.conf;
+    location / {
+        root   /data/public/Yves;
+        include fastcgi.conf;
+        fastcgi_pass AT_yves.at.demo-spryker.com_80;
+        include /etc/nginx/vhost.d/default_location.conf;
+    }
+}
+# glue.de.demo-spryker.com
+upstream DE_glue.de.demo-spryker.com_80 {
+    # Cannot connect to network of this container
+    server 127.0.0.1 down;
+    ## Can be connected with "spryker_services" network
+    # spryker_glue_de_1
+    server 172.26.0.11:9000;
+}
+server {
+    server_name glue.de.demo-spryker.com;
+    listen 80 ssl http2 ;
+    access_log /var/log/nginx/access.log vhost;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+    ssl_ciphers 'ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:!DSS';
+    ssl_prefer_server_ciphers on;
+    ssl_session_timeout 5m;
+    ssl_session_cache shared:SSL:50m;
+    ssl_session_tickets off;
+    ssl_certificate /etc/nginx/spryker_certs/spryker_ssl_DE.crt;
+    ssl_certificate_key /etc/nginx/spryker_certs/spryker_ssl_DE.key;
+    include /etc/nginx/vhost.d/default.conf;
+    location / {
+        root   /data/public/Glue;
+        include fastcgi.conf;
+        fastcgi_pass DE_glue.de.demo-spryker.com_80;
+        include /etc/nginx/vhost.d/default_location.conf;
+    }
+}
+server {
+    server_name glue.de.demo-spryker.com;
+    listen 80 ;
+    access_log /var/log/nginx/access.log vhost;
+    include /etc/nginx/vhost.d/default.conf;
+    location / {
+        root   /data/public/Glue;
+        include fastcgi.conf;
+        fastcgi_pass DE_glue.de.demo-spryker.com_80;
+        include /etc/nginx/vhost.d/default_location.conf;
+    }
+}
+# zed.de.demo-spryker.com
+upstream DE_zed.de.demo-spryker.com_80 {
+    # Cannot connect to network of this container
+    server 127.0.0.1 down;
+    # Cannot connect to network of this container
+    server 127.0.0.1 down;
+    # Cannot connect to network of this container
+    server 127.0.0.1 down;
+    ## Can be connected with "spryker_services" network
+    # spryker_rpc_server_de_1
+    server 172.26.0.8:80;
+}
+server {
+    server_name zed.de.demo-spryker.com;
+    listen 80 ssl http2 ;
+    access_log /var/log/nginx/access.log vhost;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+    ssl_ciphers 'ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:!DSS';
+    ssl_prefer_server_ciphers on;
+    ssl_session_timeout 5m;
+    ssl_session_cache shared:SSL:50m;
+    ssl_session_tickets off;
+    ssl_certificate /etc/nginx/spryker_certs/spryker_ssl_DE.crt;
+    ssl_certificate_key /etc/nginx/spryker_certs/spryker_ssl_DE.key;
+    include /etc/nginx/vhost.d/default.conf;
+    location / {
+        proxy_pass http://DE_zed.de.demo-spryker.com_80;
+        include /etc/nginx/vhost.d/default_location.conf;
+    }
+}
+server {
+    server_name zed.de.demo-spryker.com;
+    listen 80 ;
+    access_log /var/log/nginx/access.log vhost;
+    include /etc/nginx/vhost.d/default.conf;
+    location / {
+        proxy_pass http://DE_zed.de.demo-spryker.com_80;
+        include /etc/nginx/vhost.d/default_location.conf;
+    }
+}
+# yves.de.demo-spryker.com
+upstream DE_yves.de.demo-spryker.com_80 {
+    # Cannot connect to network of this container
+    server 127.0.0.1 down;
+    ## Can be connected with "spryker_services" network
+    # spryker_yves_de_1
+    server 172.26.0.12:9000;
+}
+server {
+    server_name yves.de.demo-spryker.com;
+    listen 80 ssl http2 ;
+    access_log /var/log/nginx/access.log vhost;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+    ssl_ciphers 'ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:!DSS';
+    ssl_prefer_server_ciphers on;
+    ssl_session_timeout 5m;
+    ssl_session_cache shared:SSL:50m;
+    ssl_session_tickets off;
+    ssl_certificate /etc/nginx/spryker_certs/spryker_ssl_DE.crt;
+    ssl_certificate_key /etc/nginx/spryker_certs/spryker_ssl_DE.key;
+    include /etc/nginx/vhost.d/default.conf;
+    location / {
+        root   /data/public/Yves;
+        include fastcgi.conf;
+        fastcgi_pass DE_yves.de.demo-spryker.com_80;
+        include /etc/nginx/vhost.d/default_location.conf;
+    }
+}
+server {
+    server_name yves.de.demo-spryker.com;
+    listen 80 ;
+    access_log /var/log/nginx/access.log vhost;
+    include /etc/nginx/vhost.d/default.conf;
+    location / {
+        root   /data/public/Yves;
+        include fastcgi.conf;
+        fastcgi_pass DE_yves.de.demo-spryker.com_80;
+        include /etc/nginx/vhost.d/default_location.conf;
+    }
+}
+# glue.us.demo-spryker.com
+upstream US_glue.us.demo-spryker.com_80 {
+    # Cannot connect to network of this container
+    server 127.0.0.1 down;
+    ## Can be connected with "spryker_services" network
+    # spryker_glue_us_1
+    server 172.26.0.15:9000;
+}
+server {
+    server_name glue.us.demo-spryker.com;
+    listen 80 ssl http2 ;
+    access_log /var/log/nginx/access.log vhost;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+    ssl_ciphers 'ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:!DSS';
+    ssl_prefer_server_ciphers on;
+    ssl_session_timeout 5m;
+    ssl_session_cache shared:SSL:50m;
+    ssl_session_tickets off;
+    ssl_certificate /etc/nginx/spryker_certs/spryker_ssl_US.crt;
+    ssl_certificate_key /etc/nginx/spryker_certs/spryker_ssl_US.key;
+    include /etc/nginx/vhost.d/default.conf;
+    location / {
+        root   /data/public/Glue;
+        include fastcgi.conf;
+        fastcgi_pass US_glue.us.demo-spryker.com_80;
+        include /etc/nginx/vhost.d/default_location.conf;
+    }
+}
+server {
+    server_name glue.us.demo-spryker.com;
+    listen 80 ;
+    access_log /var/log/nginx/access.log vhost;
+    include /etc/nginx/vhost.d/default.conf;
+    location / {
+        root   /data/public/Glue;
+        include fastcgi.conf;
+        fastcgi_pass US_glue.us.demo-spryker.com_80;
+        include /etc/nginx/vhost.d/default_location.conf;
+    }
+}
+# zed.us.demo-spryker.com
+upstream US_zed.us.demo-spryker.com_80 {
+    # Cannot connect to network of this container
+    server 127.0.0.1 down;
+    # Cannot connect to network of this container
+    server 127.0.0.1 down;
+    # Cannot connect to network of this container
+    server 127.0.0.1 down;
+    ## Can be connected with "spryker_services" network
+    # spryker_rpc_server_us_1
+    server 172.26.0.10:80;
+}
+server {
+    server_name zed.us.demo-spryker.com;
+    listen 80 ssl http2 ;
+    access_log /var/log/nginx/access.log vhost;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+    ssl_ciphers 'ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:!DSS';
+    ssl_prefer_server_ciphers on;
+    ssl_session_timeout 5m;
+    ssl_session_cache shared:SSL:50m;
+    ssl_session_tickets off;
+    ssl_certificate /etc/nginx/spryker_certs/spryker_ssl_US.crt;
+    ssl_certificate_key /etc/nginx/spryker_certs/spryker_ssl_US.key;
+    include /etc/nginx/vhost.d/default.conf;
+    location / {
+        proxy_pass http://US_zed.us.demo-spryker.com_80;
+        include /etc/nginx/vhost.d/default_location.conf;
+    }
+}
+server {
+    server_name zed.us.demo-spryker.com;
+    listen 80 ;
+    access_log /var/log/nginx/access.log vhost;
+    include /etc/nginx/vhost.d/default.conf;
+    location / {
+        proxy_pass http://US_zed.us.demo-spryker.com_80;
+        include /etc/nginx/vhost.d/default_location.conf;
+    }
+}
+# yves.us.demo-spryker.com
+upstream US_yves.us.demo-spryker.com_80 {
+    # Cannot connect to network of this container
+    server 127.0.0.1 down;
+    ## Can be connected with "spryker_services" network
+    # spryker_yves_us_1
+    server 172.26.0.16:9000;
+}
+server {
+    server_name yves.us.demo-spryker.com;
+    listen 80 ssl http2 ;
+    access_log /var/log/nginx/access.log vhost;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+    ssl_ciphers 'ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:!DSS';
+    ssl_prefer_server_ciphers on;
+    ssl_session_timeout 5m;
+    ssl_session_cache shared:SSL:50m;
+    ssl_session_tickets off;
+    ssl_certificate /etc/nginx/spryker_certs/spryker_ssl_US.crt;
+    ssl_certificate_key /etc/nginx/spryker_certs/spryker_ssl_US.key;
+    include /etc/nginx/vhost.d/default.conf;
+    location / {
+        root   /data/public/Yves;
+        include fastcgi.conf;
+        fastcgi_pass US_yves.us.demo-spryker.com_80;
+        include /etc/nginx/vhost.d/default_location.conf;
+    }
+}
+server {
+    server_name yves.us.demo-spryker.com;
+    listen 80 ;
+    access_log /var/log/nginx/access.log vhost;
+    include /etc/nginx/vhost.d/default.conf;
+    location / {
+        root   /data/public/Yves;
+        include fastcgi.conf;
+        fastcgi_pass US_yves.us.demo-spryker.com_80;
+        include /etc/nginx/vhost.d/default_location.conf;
+    }
+}
+# queue.demo-spryker.com
+upstream services_queue.demo-spryker.com_80 {
+    # Cannot connect to network of this container
+    server 127.0.0.1 down;
+    # Cannot connect to network of this container
+    server 127.0.0.1 down;
+    # Cannot connect to network of this container
+    server 127.0.0.1 down;
+    ## Can be connected with "spryker_services" network
+    # spryker_broker_1
+    server 172.26.0.6:15672;
+}
+server {
+    server_name queue.demo-spryker.com;
+    listen 443 ssl http2 ;
+    access_log /var/log/nginx/access.log vhost;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+    ssl_ciphers 'ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:!DSS';
+    ssl_prefer_server_ciphers on;
+    ssl_session_timeout 5m;
+    ssl_session_cache shared:SSL:50m;
+    ssl_session_tickets off;
+    ssl_certificate /etc/nginx/spryker_certs/spryker_ssl_services.crt;
+    ssl_certificate_key /etc/nginx/spryker_certs/spryker_ssl_services.key;
+    include /etc/nginx/vhost.d/default.conf;
+    location / {
+        proxy_pass http://services_queue.demo-spryker.com_80;
+        include /etc/nginx/vhost.d/default_location.conf;
+    }
+}
+server {
+    server_name queue.demo-spryker.com;
+    listen 80 ;
+    access_log /var/log/nginx/access.log vhost;
+    include /etc/nginx/vhost.d/default.conf;
+    location / {
+        proxy_pass http://services_queue.demo-spryker.com_80;
+        include /etc/nginx/vhost.d/default_location.conf;
+    }
+}
+# mail.demo-spryker.com
+upstream services_mail.demo-spryker.com_80 {
+    # Cannot connect to network of this container
+    server 127.0.0.1 down;
+    # Cannot connect to network of this container
+    server 127.0.0.1 down;
+    # Cannot connect to network of this container
+    server 127.0.0.1 down;
+    ## Can be connected with "spryker_services" network
+    # spryker_mailhog_1
+    server 172.26.0.3:8025;
+}
+server {
+    server_name mail.demo-spryker.com;
+    listen 443 ssl http2 ;
+    access_log /var/log/nginx/access.log vhost;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+    ssl_ciphers 'ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:!DSS';
+    ssl_prefer_server_ciphers on;
+    ssl_session_timeout 5m;
+    ssl_session_cache shared:SSL:50m;
+    ssl_session_tickets off;
+    ssl_certificate /etc/nginx/spryker_certs/spryker_ssl_services.crt;
+    ssl_certificate_key /etc/nginx/spryker_certs/spryker_ssl_services.key;
+    include /etc/nginx/vhost.d/default.conf;
+    location / {
+        proxy_pass http://services_mail.demo-spryker.com_80;
+        include /etc/nginx/vhost.d/default_location.conf;
+    }
+}
+server {
+    server_name mail.demo-spryker.com;
+    listen 80 ;
+    access_log /var/log/nginx/access.log vhost;
+    include /etc/nginx/vhost.d/default.conf;
+    location / {
+        proxy_pass http://services_mail.demo-spryker.com_80;
+        include /etc/nginx/vhost.d/default_location.conf;
+    }
+}
+# jobs.demo-spryker.com
+upstream services_jobs.demo-spryker.com_80 {
+    # Cannot connect to network of this container
+    server 127.0.0.1 down;
+    # Cannot connect to network of this container
+    server 127.0.0.1 down;
+    # Cannot connect to network of this container
+    server 127.0.0.1 down;
+    ## Can be connected with "spryker_services" network
+    # spryker_scheduler_1
+    server 172.26.0.7:8080;
+}
+server {
+    server_name jobs.demo-spryker.com;
+    listen 443 ssl http2 ;
+    access_log /var/log/nginx/access.log vhost;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+    ssl_ciphers 'ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:!DSS';
+    ssl_prefer_server_ciphers on;
+    ssl_session_timeout 5m;
+    ssl_session_cache shared:SSL:50m;
+    ssl_session_tickets off;
+    ssl_certificate /etc/nginx/spryker_certs/spryker_ssl_services.crt;
+    ssl_certificate_key /etc/nginx/spryker_certs/spryker_ssl_services.key;
+    include /etc/nginx/vhost.d/default.conf;
+    location / {
+        proxy_pass http://services_jobs.demo-spryker.com_80;
+        include /etc/nginx/vhost.d/default_location.conf;
+    }
+}
+server {
+    server_name jobs.demo-spryker.com;
+    listen 80 ;
+    access_log /var/log/nginx/access.log vhost;
+    include /etc/nginx/vhost.d/default.conf;
+    location / {
+        proxy_pass http://services_jobs.demo-spryker.com_80;
+        include /etc/nginx/vhost.d/default_location.conf;
+    }
+}

@@ -1,0 +1,14 @@
+{% extends "nginx/server.conf.twig" %}
+{% block server %}
+{{ parent() }}
+
+  include /etc/nginx/vhost.d/yves.default.conf;
+{% endblock server %}
+{% block location %}
+{{ parent() }}
+
+    fastcgi_param SPRYKER_API_HOST {{ host }};
+    fastcgi_param SPRYKER_API_PORT {{ port }};
+
+    root /data/public/Yves;
+{% endblock location %}

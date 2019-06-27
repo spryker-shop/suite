@@ -390,9 +390,9 @@ $HSTS_CONFIG = [
 $config[ApplicationConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG] = $HSTS_CONFIG;
 $config[ApplicationConstants::YVES_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG] = $HSTS_CONFIG;
 
-$config[SessionConstants::YVES_SSL_ENABLED] = (bool)getenv("SPRYKER_SSL_ENABLE", false);
-$config[ApplicationConstants::YVES_SSL_ENABLED] = (bool)getenv("SPRYKER_SSL_ENABLE", false);
-$config[SessionConstants::YVES_SSL_ENABLED] = (bool)getenv("SPRYKER_SSL_ENABLE", false);
+$config[SessionConstants::YVES_SSL_ENABLED] = false;
+$config[ApplicationConstants::YVES_SSL_ENABLED] = (bool)getenv('SPRYKER_SSL_ENABLE', false);
+$config[SessionConstants::YVES_SSL_ENABLED] = (bool)getenv('SPRYKER_SSL_ENABLE', false);
 $config[ApplicationConstants::YVES_SSL_EXCLUDED] = [
     'heartbeat' => '/heartbeat',
 ];
@@ -453,6 +453,7 @@ $config[PropelConstants::ZED_DB_DATABASE] = getenv('SPRYKER_DB_DATABASE');
 /* End Database */
 
 /* Job runner */
+// ---------- Scheduler
 $config[SchedulerConstants::ENABLED_SCHEDULERS] = [
     SchedulerConfig::SCHEDULER_JENKINS,
 ];
@@ -462,8 +463,7 @@ $config[SchedulerJenkinsConstants::JENKINS_CONFIGURATION] = [
     ],
 ];
 
-$config[SchedulerJenkinsConstants::JENKINS_TEMPLATE_PATH] = APPLICATION_ROOT_DIR . '/config/Zed/cronjobs/';
-$config[SchedulerJenkinsConstants::JENKINS_TEMPLATE_NAME] = 'jenkins.xml.twig';
+$config[SchedulerJenkinsConstants::JENKINS_TEMPLATE_PATH] = getenv('SPRYKER_JENKINS_TEMPLATE_PATH');
 /* End Job runner */
 
 /* Broker */
@@ -503,38 +503,21 @@ $config[RabbitMqEnv::RABBITMQ_API_HOST] = getenv('SPRYKER_BROKER_API_HOST');
 $config[RabbitMqEnv::RABBITMQ_API_PORT] = getenv('SPRYKER_BROKER_API_PORT');
 $config[RabbitMqEnv::RABBITMQ_API_USERNAME] = getenv('SPRYKER_BROKER_API_USERNAME');
 $config[RabbitMqEnv::RABBITMQ_API_PASSWORD] = getenv('SPRYKER_BROKER_API_PASSWORD');
-$config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = getenv('SPRYKER_BROKER_API_NAMESPACE');
+$config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = getenv('SPRYKER_BROKER_NAMESPACE');
 
-$config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
-    'DE' => [
-        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'DE-connection',
-        RabbitMqEnv::RABBITMQ_HOST => getenv('SPRYKER_BROKER_HOST'),
-        RabbitMqEnv::RABBITMQ_PORT => getenv('SPRYKER_BROKER_PORT'),
-        RabbitMqEnv::RABBITMQ_USERNAME => getenv('SPRYKER_BROKER_USERNAME'),
-        RabbitMqEnv::RABBITMQ_PASSWORD => getenv('SPRYKER_BROKER_PASSWORD'),
-        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/DE_docker_zed',
-        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['DE'],
-        RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => true,
-    ],
-    'AT' => [
-        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'AT-connection',
-        RabbitMqEnv::RABBITMQ_HOST => getenv('SPRYKER_BROKER_HOST'),
-        RabbitMqEnv::RABBITMQ_PORT => getenv('SPRYKER_BROKER_PORT'),
-        RabbitMqEnv::RABBITMQ_USERNAME => getenv('SPRYKER_BROKER_USERNAME'),
-        RabbitMqEnv::RABBITMQ_PASSWORD => getenv('SPRYKER_BROKER_PASSWORD'),
-        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/AT_docker_zed',
-        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['AT'],
-    ],
-    'US' => [
-        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'US-connection',
-        RabbitMqEnv::RABBITMQ_HOST => getenv('SPRYKER_BROKER_HOST'),
-        RabbitMqEnv::RABBITMQ_PORT => getenv('SPRYKER_BROKER_PORT'),
-        RabbitMqEnv::RABBITMQ_USERNAME => getenv('SPRYKER_BROKER_USERNAME'),
-        RabbitMqEnv::RABBITMQ_PASSWORD => getenv('SPRYKER_BROKER_PASSWORD'),
-        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/US_docker_zed',
-        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['US'],
-    ],
-];
+$rabbitConnections = json_decode(getenv('SPRYKER_BROKER_CONNECTIONS') ?: '[]', true);
+
+$config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [];
+
+foreach ($rabbitConnections as $key => $connection) {
+    $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key] = [];
+    foreach ($connection as $constant => $value) {
+        $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][constant(RabbitMqEnv::class . '::' . $constant)] = $value;
+    }
+
+    $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION] =
+        $config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] === $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][RabbitMqEnv::RABBITMQ_VIRTUAL_HOST];
+}
 /* End Broker */
 
 /* Search service */
@@ -629,7 +612,7 @@ $config[MailConstants::SMTP_PORT] = getenv('SPRYKER_SMTP_PORT');
 
 /* Logging */
 $config[LogConstants::LOGGER_CONFIG] = SprykerLoggerConfig::class;
-$config[LogConstants::LOG_FILE_PATH] = APPLICATION_ROOT_DIR . '/data/logs';
+$config[LogConstants::LOG_FILE_PATH] = getenv('SPRYKER_LOG_DIRECTORY') ?: APPLICATION_ROOT_DIR . '/data/logs';
 
 $config[LogConstants::LOGGER_CONFIG_ZED] = ZedLoggerConfigPlugin::class;
 $config[LogConstants::LOGGER_CONFIG_YVES] = YvesLoggerConfigPlugin::class;
@@ -643,4 +626,17 @@ $config[LogConstants::LOG_SANITIZE_FIELDS] = [
 
 $config[LogConstants::LOG_QUEUE_NAME] = 'log-queue';
 $config[LogConstants::LOG_ERROR_QUEUE_NAME] = 'error-log-queue';
+
+$logDir = (getenv('SPRYKER_LOG_DIRECTORY') ?: APPLICATION_ROOT_DIR . '/data/logs') . '/' . APPLICATION_STORE;
+
+$config[QueueConstants::QUEUE_WORKER_OUTPUT_FILE_NAME] = $logDir . '/ZED/queue.log';
+$config[PropelConstants::LOG_FILE_PATH] = $logDir . '/ZED/propel.log';
+
+$config[LogConstants::LOG_FILE_PATH_YVES] = $logDir . '/YVES/application.log';
+$config[LogConstants::LOG_FILE_PATH_ZED] = $logDir . '/ZED/application.log';
+$config[LogConstants::LOG_FILE_PATH_GLUE] = $logDir . '/GLUE/application.log';
+
+$config[LogConstants::EXCEPTION_LOG_FILE_PATH_YVES] = $logDir . '/YVES/exception.log';
+$config[LogConstants::EXCEPTION_LOG_FILE_PATH_ZED] = $logDir . '/ZED/exception.log';
+$config[LogConstants::EXCEPTION_LOG_FILE_PATH_GLUE] = $logDir . '/GLUE/exception.log';
 /* End Logging */

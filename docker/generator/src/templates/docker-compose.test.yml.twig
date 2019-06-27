@@ -1,0 +1,30 @@
+version: "3.5"
+
+x-env_file:
+  &test-envfile
+  env_file:
+    - ${DEPLOYMENT_PATH}/env/test.env
+
+services:
+{% for group in groups %}
+{% for applicationName, applicationData in group['applications'] %}
+
+  {{ applicationName }}:
+    <<: *test-envfile
+{% endfor %}
+{% endfor %}
+
+  webdriver:
+    image: wernight/phantomjs:latest
+    networks:
+      - services
+      - public
+    ports:
+      - 4444:4444
+    command: "phantomjs --webdriver=4444 --disk-cache=true --load-images=false --webdriver-loglevel=DEBUG"
+    links:
+      - frontend:${SPRYKER_BE_HOST}
+      - frontend:${SPRYKER_FE_HOST}
+
+  scheduler:
+    image: tianon/true

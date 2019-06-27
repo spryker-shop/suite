@@ -1,21 +1,5 @@
-# Ignore local copy of docker files
-/.env
-/.env.bak
-/*.env
-/*.yml
-/sdk
-/context/
-/base_app/
-/base_dev/
-/builder_assets/
-/cli/
-/rabbitmq/
-/jenkins/
+# Ignore generated files
+deployment/*
+!deployment/.gitkeep
 
-# Ignore user-defined xdebug config
-local/context/php/conf.d/xdebug.custom.ini
-
-# On a project level, local overrides might be added to .gitignore as well,
-# in order to allow every developer to customise his environment. This is
-# not ignored by default.
-#local/
+generator/vendor

@@ -1,0 +1,12 @@
+{% extends "nginx/server.conf.twig" %}
+{% block host %}
+  server_name {{ host }} {{ rpcServer }};
+  listen 80;
+{% endblock host %}
+{% block location %}
+{{ parent() }}
+
+    fastcgi_param SPRYKER_BE_HOST {{ host }};
+    fastcgi_param SPRYKER_BE_PORT {{ port }};
+    root /data/public/Zed;
+{% endblock location %}

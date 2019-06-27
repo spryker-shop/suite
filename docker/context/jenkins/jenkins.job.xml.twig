@@ -1,0 +1,12 @@
+{% extends 'jenkins-job.default.xml.twig' %}
+
+{%- block setup %}
+{% endblock setup -%}
+
+{% block command %}<![CDATA[
+    docker exec -i -u spryker \
+        -e PHP_BIN="/usr/local/bin/php" \
+        {{ getenv('SPRYKER_JOB_CONTAINER') | replace({ '%store%': job.store|lower }) }} \
+        bash -c \
+        "{{ job.command }}"
+]]>{% endblock command %}

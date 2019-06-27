@@ -1,0 +1,14 @@
+  {{ serviceName }}:
+    image: postgres:9.6-alpine
+    networks:
+      - private
+    healthcheck:
+      test: [ "CMD", "pg_isready" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    environment:
+      POSTGRES_USER: "{{ serviceData['default']['username'] }}"
+      POSTGRES_PASSWORD: "{{ serviceData['default']['password'] }}"
+    volumes:
+      - {{ serviceName }}-data:/var/lib/postgresql/data:rw
