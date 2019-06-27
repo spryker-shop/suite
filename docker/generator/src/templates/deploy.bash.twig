@@ -18,6 +18,7 @@ popd > /dev/null
 readonly PROJECT_DIR="$( pwd )"
 readonly DEPLOYMENT_DIR="$( cd ${BASH_SOURCE%/*} >/dev/null 2>&1 && pwd )"
 export DEPLOYMENT_PATH="${DEPLOYMENT_DIR/$PROJECT_DIR/.}"
+export SPRYKER_REMOTE_DIR="/var/spryker"
 
 readonly IF_NOT_PERFORMED='IF_NOT_PERFORMED'
 
@@ -97,7 +98,7 @@ function showExecHelp()
 
 # Global variables
 DOCKER_COMPOSE_FILES="-f ${DEPLOYMENT_PATH}/docker-compose.yml"
-DOCKER_EXTRA_OPTIONS="-v ${DEPLOYMENT_DIR}/context/jenkins/jenkins.job.xml.twig:/data/config/Zed/cronjobs/jenkins.docker.xml.twig"
+DOCKER_EXTRA_OPTIONS=""
 {% if _platform == 'linux' %}
 readonly USER_UID=$(id -u)
 readonly USER_GID=$(id -g)
@@ -299,7 +300,7 @@ function createSchedulerJobs()
     waitFor scheduler
 
     echo -e "${INFO}Creating Scheduler jobs${NC}"
-    execSpryker "vendor/bin/install -r docker -s build-jobs"
+    execSpryker "vendor/bin/install -r docker -s scheduler-setup"
 }
 
 function destroyAppAndVolumes()
@@ -410,17 +411,21 @@ function setExtraEnvFiles ()
     export DOCKER_EXTRA_ENV_FILES="--env-file=${DEPLOYMENT_PATH}/env/cli/${store}.env"
 }
 
+function getDefaultRunArguments()
+{
+    echo -n " --network=${SPRYKER_DOCKER_PREFIX}_services"
+    echo -n " --network=${SPRYKER_DOCKER_PREFIX}_services"
+    echo -n " --network=${SPRYKER_DOCKER_PREFIX}_private"
+    echo -n " ${DOCKER_EXTRA_ENV_FILES}"
+    echo -n " ${DOCKER_EXTRA_OPTIONS}"
+}
+
 function execSpryker()
 {
     setExtraEnvFiles
     docker run -i --rm \
         -e COMMAND="${1}" \
-        --network=${SPRYKER_DOCKER_PREFIX}_services \
-        --network=${SPRYKER_DOCKER_PREFIX}_public \
-        --network=${SPRYKER_DOCKER_PREFIX}_private \
-        --restart=no \
-        ${DOCKER_EXTRA_ENV_FILES} \
-        ${DOCKER_EXTRA_OPTIONS} \
+        $(getDefaultRunArguments) \
         ${SPRYKER_DOCKER_PREFIX}_cli:${SPRYKER_DOCKER_TAG} bash -s<<'EOF'
             bash -c "${COMMAND}"
 EOF
@@ -435,10 +440,16 @@ function doBuild()
 
 function execDockerCompose()
 {
+    local runArguments="$(getDefaultRunArguments)"
+    runArguments="${runArguments/${DEPLOYMENT_PATH}/${SPRYKER_REMOTE_DIR}}"
+
     DEPLOYMENT_PATH=${DEPLOYMENT_PATH} \
     SPRYKER_LOG_DIRECTORY=${SPRYKER_LOG_DIRECTORY} \
     SPRYKER_DOCKER_PREFIX=${SPRYKER_DOCKER_PREFIX} \
     SPRYKER_DOCKER_TAG=${SPRYKER_DOCKER_TAG} \
+    SPRYKER_DOCKER_RUN_ARGUMENTS="${runArguments}"\
+    SPRYKER_DOCKER_RUN_IMAGE=${SPRYKER_DOCKER_PREFIX}_cli:${SPRYKER_DOCKER_TAG} \
+    SPRYKER_REMOTE_DIR=${SPRYKER_REMOTE_DIR} \
     docker-compose \
         --project-directory ${PROJECT_DIR} \
         --project-name ${SPRYKER_DOCKER_PREFIX} \
@@ -481,14 +492,9 @@ function doCli()
 
     setExtraEnvFiles
     docker create -it --rm \
-        --network=${SPRYKER_DOCKER_PREFIX}_services \
-        --network=${SPRYKER_DOCKER_PREFIX}_public \
-        --network=${SPRYKER_DOCKER_PREFIX}_private \
-        --restart=no \
         -e PS1=${PS1:-"spryker-${SPRYKER_STORE}-cli@\u\$ "} \
         --name ${SPRYKER_DOCKER_PREFIX}_cli \
-        ${DOCKER_EXTRA_ENV_FILES} \
-        ${DOCKER_EXTRA_OPTIONS} \
+        $(getDefaultRunArguments) \
         ${SPRYKER_DOCKER_PREFIX}_cli:${SPRYKER_DOCKER_TAG} \
         bash
     docker start -ai  ${SPRYKER_DOCKER_PREFIX}_cli

@@ -49,7 +49,7 @@ groups:
     EU:
         region: EU
         applications:
-            yves_de:
+            yves_eu:
                 application: yves
                 domain:
                     yves.de.demo-spryker.com:
@@ -57,25 +57,19 @@ groups:
                         services:
                             session:
                                 namespace: 1
-            yves_at:
-                application: yves
-                domain:
                     yves.at.demo-spryker.com:
                         store: AT
                         services:
                             session:
                                 namespace: 2
-            glue_de:
+            glue_eu:
                 application: glue
                 domain:
                     glue.de.demo-spryker.com:
                         store: DE
-            glue_at:
-                application: glue
-                domain:
                     glue.at.demo-spryker.com:
                         store: AT
-            zed_de:
+            zed_eu:
                 application: zed
                 domain:
                     zed.de.demo-spryker.com:
@@ -83,9 +77,6 @@ groups:
                         services:
                             session:
                                 namespace: 3
-            zed_at:
-                application: zed
-                domain:
                     zed.at.demo-spryker.com:
                         store: AT
                         services:
@@ -151,11 +142,3 @@ docker:
 
     mount:
         baked:
-#        native:
-#            platforms:
-#                - linux
-#
-#        docker-sync:
-#            platforms:
-#                - mac
-#                - windows

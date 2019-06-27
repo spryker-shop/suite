@@ -23,8 +23,13 @@ services:
       - 4444:4444
     command: "phantomjs --webdriver=4444 --disk-cache=true --load-images=false --webdriver-loglevel=DEBUG"
     links:
-      - frontend:${SPRYKER_BE_HOST}
-      - frontend:${SPRYKER_FE_HOST}
+{% for group in groups %}
+{% for applicationName, applicationData in group['applications'] %}
+{% for domain, domainData in applicationData['domain'] %}
+      - frontend:{{ domain | split(':') | first }}
+{% endfor %}
+{% endfor %}
+{% endfor %}
 
   scheduler:
     image: tianon/true

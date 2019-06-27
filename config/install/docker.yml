@@ -55,13 +55,14 @@ sections:
         zed-build-frontend:
             command: "vendor/bin/console frontend:zed:build"
 
-    build-jobs:
+    scheduler-setup:
         jenkins-generate:
             command: "vendor/bin/console scheduler:setup"
             stores: true
 
-        jenkins-enable:
-            command: "vendor/bin/console scheduler:resume"
+    scheduler-clean:
+        jenkins-generate:
+            command: "vendor/bin/console scheduler:clean"
             stores: true
 
     init-storages:
