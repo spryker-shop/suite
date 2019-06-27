@@ -17,9 +17,8 @@ class CommentConfig extends SprykerCommentConfig
     public function getCommentAvailableTags(): array
     {
         return [
-            'attached',
-            '2019',
-            'spryker2019',
+            'delivery',
+            'important',
         ];
     }
 }
