@@ -21,7 +21,7 @@ class TwigConfig extends SprykerTwigConfig
     protected function addCoreTemplatePaths(array $paths)
     {
         $paths = parent::addCoreTemplatePaths($paths);
-        $paths[] = $this->getBundlesDirectory() . '/%1$s/src/Spryker/Zed/%1$s/Presentation/';
+        $paths[] = $this->getBundlesDirectory() . '/%2$s/src/Spryker/Zed/%1$s/Presentation/';
 
         return $paths;
     }
@@ -33,7 +33,7 @@ class TwigConfig extends SprykerTwigConfig
      */
     public function getZedDirectoryPathPatterns()
     {
-        $directories = glob('vendor/spryker/spryker/Bundles/*/src/*/Zed/*/Presentation');
+        $directories = glob('vendor/spryker/spryker/Bundles/*/src/*/Zed/*/Presentation', GLOB_NOSORT | GLOB_ONLYDIR);
         $directories = array_merge(
             $directories,
             parent::getZedDirectoryPathPatterns()
