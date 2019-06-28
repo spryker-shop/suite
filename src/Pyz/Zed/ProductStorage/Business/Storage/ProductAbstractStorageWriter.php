@@ -51,23 +51,23 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
 
     /**
      * @param \Spryker\Zed\ProductStorage\Dependency\Facade\ProductStorageToProductInterface $productFacade
-     * @param \Spryker\Zed\ProductStorage\Dependency\Facade\ProductStorageToStoreFacadeInterface $storeFacade
      * @param \Spryker\Zed\ProductStorage\Business\Attribute\AttributeMapInterface $attributeMap
      * @param \Spryker\Zed\ProductStorage\Persistence\ProductStorageQueryContainerInterface $queryContainer
+     * @param \Spryker\Zed\ProductStorage\Dependency\Facade\ProductStorageToStoreFacadeInterface $storeFacade
      * @param bool $isSendingToQueue
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
      */
     public function __construct(
         ProductStorageToProductInterface $productFacade,
-        ProductStorageToStoreFacadeInterface $storeFacade,
         AttributeMapInterface $attributeMap,
         ProductStorageQueryContainerInterface $queryContainer,
+        ProductStorageToStoreFacadeInterface $storeFacade,
         $isSendingToQueue,
         SynchronizationServiceInterface $synchronizationService,
         QueueClientInterface $queueClient
     ) {
-        parent::__construct($productFacade, $storeFacade, $attributeMap, $queryContainer, $isSendingToQueue);
+        parent::__construct($productFacade, $attributeMap, $queryContainer, $storeFacade, $isSendingToQueue);
 
         $this->synchronizationService = $synchronizationService;
         $this->queueClient = $queueClient;
