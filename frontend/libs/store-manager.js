@@ -1,4 +1,4 @@
-const storesConfig = require('../store-config.json');
+const storesConfig = require('../../config/Yves/store-config.json');
 
 const stores = new Map();
 

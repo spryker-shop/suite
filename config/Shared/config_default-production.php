@@ -19,4 +19,4 @@ $config[TwigConstants::YVES_PATH_CACHE_ENABLED] = true;
 $config[TwigConstants::ZED_PATH_CACHE_ENABLED] = true;
 
 // ----------- Yves assets
-$config[SetupFrontendConstants::YVES_BUILD_COMMAND] = 'npm run yves:production %store%';
+$config[SetupFrontendConstants::YVES_BUILD_COMMAND] = sprintf('npm run yves:production %s', $CURRENT_STORE);

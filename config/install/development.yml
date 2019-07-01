@@ -235,12 +235,6 @@ sections:
             groups:
                 - yves
 
-        yves-prepare-config-frontend:
-            command: "vendor/bin/console frontend:yves:prepare-config -vvv"
-            stores: true
-            groups:
-                - yves
-
         yves-build-frontend:
             command: "vendor/bin/console frontend:yves:build -vvv"
             stores: true

@@ -510,5 +510,5 @@ $config[TranslatorConstants::TRANSLATION_ZED_FILE_PATH_PATTERNS] = [
 ];
 
 // ----------- Yves assets
-$config[ShopUiConstants::YVES_ASSETS_URL_PATTERN] = '/assets/%store%/%theme%/';
-$config[SetupFrontendConstants::YVES_BUILD_COMMAND] = 'npm run yves %store%';
+$config[ShopUiConstants::YVES_ASSETS_URL_PATTERN] = sprintf('/assets/%s/', $CURRENT_STORE) . '%theme%/';
+$config[SetupFrontendConstants::YVES_BUILD_COMMAND] = sprintf('npm run yves %s', $CURRENT_STORE);
