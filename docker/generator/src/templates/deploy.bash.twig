@@ -376,15 +376,22 @@ function loadDemoData()
     for region in "${SPRYKER_STORES[@]}";
     do
         eval ${region};
-        local -a STORES=${STORES:-''}
         export SPRYKER_STORE="${STORES[0]}"
 
         if [ "$1" = ${IF_NOT_PERFORMED} ] && isDemoDataLoaded; then
             continue
         fi
 
+        for store in "${STORES[@]}";
+        do
+            export SPRYKER_STORE="${store}"
+            echo -e "${INFO}Init storages for ${SPRYKER_STORE} store.${NC}"
+            execSpryker 'vendor/bin/install -r docker -s init-storages-per-store'
+        done
+
+        export SPRYKER_STORE="${STORES[0]}"
         echo -e "${INFO}Loading demo data for ${SPRYKER_STORE} store.${NC}"
-        execSpryker 'vendor/bin/install -r docker -s init-storages -s demodata'
+        execSpryker 'vendor/bin/install -r docker -s init-storages-per-region -s demodata'
     done
 }
 

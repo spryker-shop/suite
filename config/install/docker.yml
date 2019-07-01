@@ -65,7 +65,11 @@ sections:
             command: "vendor/bin/console scheduler:clean"
             stores: true
 
-    init-storages:
+    init-storages-per-store:
+        setup-search:
+            command: "vendor/bin/console setup:search"
+
+    init-storages-per-region:
         ## TODO [Cloud] Workaround until https://spryker.aha.io/features/SCLOUD-86 is developed
         # propel-drop-db:
         #     command: "vendor/bin/console propel:database:drop"
@@ -89,9 +93,6 @@ sections:
 
         init-database:
             command: "vendor/bin/console setup:init-db"
-
-        setup-search:
-            command: "vendor/bin/console setup:search"
 
     demodata:
         import:
