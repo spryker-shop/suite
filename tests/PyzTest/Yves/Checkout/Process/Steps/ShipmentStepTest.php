@@ -21,9 +21,11 @@ use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollectio
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageDependencyProvider;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface;
+use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceBridge;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep;
-use SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\ShipmentStep;
+use SprykerShop\Yves\CheckoutPage\Process\Steps\ShipmentStep\PostConditionChecker;
+use SprykerTest\Shared\Testify\Helper\LocatorHelperTrait;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -38,6 +40,8 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class ShipmentStepTest extends Unit
 {
+    use LocatorHelperTrait;
+
     /**
      * @return void
      */
@@ -99,7 +103,9 @@ class ShipmentStepTest extends Unit
      */
     public function testShipmentPostConditionsShouldReturnTrueWhenShipmentSetWithItemLevelShipments()
     {
-        $shipmentTransfer = (new ShipmentBuilder())->build();
+        $shipmentTransfer = (new ShipmentBuilder([
+            ShipmentTransfer::SHIPMENT_SELECTION => CheckoutPageDependencyProvider::PLUGIN_SHIPMENT_STEP_HANDLER,
+        ]))->build();
 
         $quoteTransfer = (new QuoteBuilder())
             ->withExpense((new ExpenseBuilder([ExpenseTransfer::TYPE => ShipmentConstants::SHIPMENT_EXPENSE_TYPE])))
@@ -124,7 +130,7 @@ class ShipmentStepTest extends Unit
         return new ShipmentStep(
             $this->createCalculationClientMock(),
             $shipmentPlugins,
-            $this->createPostConditionCheckerMock(),
+            $this->createPostConditionChecker(),
             'checkout-shipment',
             'home'
         );
@@ -139,7 +145,7 @@ class ShipmentStepTest extends Unit
     {
         $calculationClientMock = $this->createCalculationClientMock();
         $stepExecutorMock = $this->createStepExecutorMock($customerTransfer);
-        $postConditionMock = $this->createPostConditionCheckerMock();
+        $postConditionMock = $this->createPostConditionChecker();
         $checkoutPageConfigMock = $this->createCheckoutPageConfigMock();
 
         $addressStepMock = $this->getMockBuilder(AddressStep::class)
@@ -181,9 +187,11 @@ class ShipmentStepTest extends Unit
     /**
      * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface
      */
-    protected function createPostConditionCheckerMock()
+    protected function createPostConditionChecker()
     {
-        return $this->getMockBuilder(PostConditionCheckerInterface::class)->getMock();
+        return new PostConditionChecker(
+            new CheckoutPageToShipmentServiceBridge($this->getLocator()->shipment()->service())
+        );
     }
 
     /**
