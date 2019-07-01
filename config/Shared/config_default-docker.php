@@ -6,6 +6,7 @@ use Spryker\Client\RabbitMq\Model\RabbitMqAdapter;
 use Spryker\Glue\Log\Plugin\GlueLoggerConfigPlugin;
 use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBuilderPlugin;
 use Spryker\Shared\Acl\AclConstants;
+use Spryker\Shared\Api\ApiConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Application\Log\Config\SprykerLoggerConfig;
 use Spryker\Shared\Auth\AuthConstants;
@@ -64,6 +65,8 @@ use Spryker\Yves\Log\Plugin\YvesLoggerConfigPlugin;
 use Spryker\Zed\Log\Communication\Plugin\ZedLoggerConfigPlugin;
 use Spryker\Zed\Propel\PropelConfig;
 use SprykerEco\Shared\Loggly\LogglyConstants;
+use SprykerShop\Shared\CalculationPage\CalculationPageConstants;
+use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
 
 /* Init block */
 $CURRENT_STORE = Store::getInstance()->getStoreName();
@@ -640,3 +643,17 @@ $config[LogConstants::EXCEPTION_LOG_FILE_PATH_YVES] = $logDir . '/YVES/exception
 $config[LogConstants::EXCEPTION_LOG_FILE_PATH_ZED] = $logDir . '/ZED/exception.log';
 $config[LogConstants::EXCEPTION_LOG_FILE_PATH_GLUE] = $logDir . '/GLUE/exception.log';
 /* End Logging */
+
+// ----------- Api
+$config[ApiConstants::ENABLE_API_DEBUG] = (bool)getenv('SPRYKER_DEBUG_ENABLED');
+
+// ----------- Kernel test
+$config[KernelConstants::ENABLE_CONTAINER_OVERRIDING] = (bool)getenv('SPRYKER_TESTING_ENABLED');
+
+// ----------- Calculation page
+$config[CalculationPageConstants::ENABLE_CART_DEBUG] = (bool)getenv('SPRYKER_DEBUG_ENABLED');
+
+// ----------- Error page
+$config[ErrorPageConstants::ENABLE_ERROR_404_STACK_TRACE] = (bool)getenv('SPRYKER_DEBUG_ENABLED');
+
+$config[ApplicationConstants::ENABLE_PRETTY_ERROR_HANDLER] = (bool)getenv('SPRYKER_DEBUG_ENABLED');

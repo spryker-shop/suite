@@ -4,15 +4,14 @@ x-volumes:
   &app-volumes
   volumes:
     - logs:${SPRYKER_LOG_DIRECTORY}:rw
-{% if _mountMode == 'baked' %}
-    - ./${DEPLOYMENT_PATH}/context/jenkins/jenkins.job.xml.twig:/data/config/Zed/cronjobs/jenkins.docker.xml.twig:ro
-{% else %}
+    - ./${DEPLOYMENT_PATH}/context/jenkins/jenkins.job.xml.twig:/var/spryker/jenkins/jenkins.docker.xml.twig:ro
+{% if _mountMode != 'baked' %}
     - ./${DEPLOYMENT_PATH}/context/php/conf.d/opcache_dev.ini:/etc/php7/conf.d/opcache.ini:ro
-{% endif %}
-{% if _mountMode == 'docker-sync' %}
-    - ${SPRYKER_DOCKER_PREFIX}_data_sync:/data
-{% elseif _mountMode == 'native' %}
+{% if _mountMode == 'native' %}
     - ./:/data
+{% else %}
+    - ${SPRYKER_DOCKER_PREFIX}_${SPRYKER_DOCKER_TAG}_data_sync:/data
+{% endif %}
 {% endif %}
 
 services:
@@ -45,10 +44,7 @@ services:
       - ./public/Yves/favicon.ico:/public/favicon.ico:ro
 {% if _mountMode == 'baked' %}
       - assets:/assets:ro
-{% elseif _mountMode == 'docker-sync' %}
-      - ./${DEPLOYMENT_PATH}/context/nginx/vhost.d_dev/default_dev:/etc/nginx/vhost.d/default
-      - data-sync:/data
-{% else %}
+{% elseif _mountMode == 'native' %}
       - ./public:/data/public
 {% endif %}
 
@@ -101,6 +97,9 @@ volumes:
   assets:
     external: true
     name: "${COMPOSE_PROJECT_NAME}_assets"
+{% else %}
+  {{ namespace }}_{{ tag }}_data_sync:
+    external: true
 {% endif %}
 
 networks:

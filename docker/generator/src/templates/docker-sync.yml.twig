@@ -3,7 +3,7 @@ version: "2"
 options:
   verbose: true
 syncs:
-  {{ namespace }}_data_sync:
+  {{ namespace }}_{{ tag }}_data_sync:
     src: '.'
     sync_strategy: {{ (_platform == 'macos') ? 'native_osx' : 'unison' }}
     sync_excludes: ['.gitignore', '.git', '.idea', '.project', 'data/*/cache', '*.log', 'node_modules', 'docker', '.composer', '.npm']

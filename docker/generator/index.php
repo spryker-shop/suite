@@ -19,7 +19,8 @@ $yamlParser = new Parser();
 
 $projectData = $yamlParser->parseFile($projectYaml);
 
-$projectData['tag'] = $projectData['tag'] ?? uniqid('v-');
+$projectData['_projectName'] = $projectName;
+$projectData['tag'] = $projectData['tag'] ?? uniqid();
 $projectData['_platform'] = $platform;
 $mountMode = $projectData['_mountMode'] = retrieveMountMode($projectData, $platform);
 $projectData['_ports'] = retrieveUniquePorts($projectData);
