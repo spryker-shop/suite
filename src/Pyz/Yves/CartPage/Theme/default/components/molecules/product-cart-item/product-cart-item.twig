@@ -1,0 +1,126 @@
+{% extends molecule('product-item') %}
+
+{% define config = {
+    name: 'product-cart-item',
+} %}
+
+{% define data = {
+    cart: {},
+    isQuoteEditable: false,
+    attributes: [],
+} %}
+
+{% set canEditCart = not is_granted('ROLE_USER') or data.isQuoteEditable %}
+
+{% block imageContainer %}
+    <div class="{{ config.name }}__col col col--sm-12 col--lg-2">
+        {% block image %}
+            {% if data.image %}
+                {% include atom('thumbnail') with {
+                    modifiers: ['small'],
+                    attributes: {
+                        src: data.image,
+                        alt: data.name,
+                    },
+                } only %}
+            {% else %}
+                <div class="text-center">
+                    <small>{{ 'global.no_image_available' | trans }}</small>
+                </div>
+            {% endif %}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block labels %}{% endblock %}
+{% block groups %}{% endblock %}
+{% block colors %}{% endblock %}
+
+{% block content %}
+    <div class="{{ config.name }}__col col col--sm-12 col--lg-5">
+        {% block name -%}
+            <h6>{{ data.name }}</h6>
+        {%- endblock %}
+
+        {% block sku -%}
+            <small class="text-secondary">
+                {{- 'cart.item.sku' | trans }} {{ data.sku -}}
+            </small>
+        {%- endblock %}
+
+        {% block additionalInformation %}
+            {% if data.attributes %}
+                {% include molecule('cart-item-variant-selector', 'CartPage') with {
+                    data: {
+                        cartItem: data.product,
+                        cartItemAttributes: data.attributes,
+                        canEditCart: canEditCart,
+                    },
+                } only %}
+            {% endif %}
+
+            {% if data.cart %}
+                {% widget 'ProductBundleCartItemsListWidget' args [data.product, data.cart] only %}{% endwidget %}
+            {% endif %}
+
+            {% include molecule('cart-item-summary', 'CartPage') with {
+                data: {
+                    unitPrice: data.product.unitPrice | money,
+                    subtotalPrice: data.product.sumSubtotalAggregation | money,
+                    cartItem: data.product,
+                    currencyIsoCode: data.cart ? data.cart.currency.code,
+                },
+            } only %}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block actionsContainer %}
+    <div class="{{ config.name }}__col col col--sm-12 col--lg-4">
+        {% if data.product.quantitySalesUnit and data.product.amountSalesUnit %}
+            {% include molecule('packaging-unit-cart', 'ProductPackagingUnitWidget') ignore missing with {
+                data: {
+                    amount: data.product.amount,
+                    quantity: data.product.quantity,
+                    quantitySalesUnit: data.product.quantitySalesUnit,
+                    quantityConversion: data.product.quantitySalesUnit.conversion,
+                    quantityProductMeasurementUnit: data.product.quantitySalesUnit.productMeasurementUnit,
+                    amountSalesUnit: data.product.amountSalesUnit,
+                    amountConversion: data.product.amountSalesUnit.conversion,
+                    amountProductMeasurementUnit: data.product.amountSalesUnit.productMeasurementUnit,
+                    amountValue: data.product.amountSalesUnit.value,
+                },
+            } only %}
+        {% endif %}
+
+        {% block actions %}
+            {% if data.product.amountSalesUnit is empty %}
+                {% if canEditCart %}
+                    {% widget 'CartProductMeasurementUnitQuantitySelectorWidget' args [data.product] only %}
+                    {% nowidget %}
+                        {% include molecule('cart-quantity-input', 'CartPage') with {
+                            data: {
+                                cartItem: data.product,
+                            },
+                        } only %}
+                    {% endwidget %}
+                {% else %}
+                    {{ 'cart.item_quantity' | trans }}:
+                    <strong>{{ data.product.quantity }}</strong>
+                {% endif %}
+            {% endif %}
+
+            {% if canEditCart %}
+                <a class="float-right" href="{{ path('cart/remove', {'sku': data.sku, 'groupKey': data.product.groupKey }) }}" data-init-single-click>
+                    {{- 'product_cart_item.remove' | trans | raw -}}
+                </a>
+            {% endif %}
+
+            {% if data.cart %}
+                {% block cartItemNote %}
+                    {% widget 'CartItemNoteFormWidget' args [data.product, data.cart] only %}{% endwidget %}
+                {% endblock %}
+            {% endif %}
+        {% endblock %}
+    </div>
+{% endblock %}
