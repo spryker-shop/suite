@@ -12,7 +12,6 @@ use Generated\Shared\DataBuilder\ExpenseBuilder;
 use Generated\Shared\DataBuilder\ItemBuilder;
 use Generated\Shared\DataBuilder\QuoteBuilder;
 use Generated\Shared\DataBuilder\ShipmentBuilder;
-use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\ExpenseTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\ShipmentTransfer;
@@ -22,7 +21,6 @@ use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface
 use SprykerShop\Yves\CheckoutPage\CheckoutPageDependencyProvider;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceBridge;
-use SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\ShipmentStep;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\ShipmentStep\PostConditionChecker;
 use SprykerTest\Shared\Testify\Helper\LocatorHelperTrait;
@@ -134,35 +132,6 @@ class ShipmentStepTest extends Unit
             'checkout-shipment',
             'home'
         );
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep|\PHPUnit_Framework_MockObject_MockObject
-     */
-    protected function createAddressStep(CustomerTransfer $customerTransfer)
-    {
-        $calculationClientMock = $this->createCalculationClientMock();
-        $stepExecutorMock = $this->createStepExecutorMock($customerTransfer);
-        $postConditionMock = $this->createPostConditionChecker();
-        $checkoutPageConfigMock = $this->createCheckoutPageConfigMock();
-
-        $addressStepMock = $this->getMockBuilder(AddressStep::class)
-            ->setMethods(['getDataClass'])
-            ->setConstructorArgs([
-                $calculationClientMock,
-                $stepExecutorMock,
-                $postConditionMock,
-                $checkoutPageConfigMock,
-                'address_step',
-                'escape_route',
-            ])
-            ->getMock();
-
-        $addressStepMock->method('getDataClass')->willReturn(new QuoteTransfer());
-
-        return $addressStepMock;
     }
 
     /**
