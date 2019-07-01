@@ -15,7 +15,7 @@ class CommentWidgetDependencyProvider extends SprykerShopCommentDependencyProvid
     /**
      * @return \SprykerShop\Yves\CommentWidgetExtension\Dependency\Plugin\CommentThreadAfterOperationStrategyPluginInterface[]
      */
-    protected function getCommentThreadAfterOperationPlugins(): array
+    protected function getCommentThreadAfterOperationStrategyPlugins(): array
     {
         return [
             new CartCommentThreadAfterOperationStrategyPlugin(),
