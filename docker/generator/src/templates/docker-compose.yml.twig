@@ -4,7 +4,6 @@ x-volumes:
   &app-volumes
   volumes:
     - logs:${SPRYKER_LOG_DIRECTORY}:rw
-    - ./${DEPLOYMENT_PATH}/context/jenkins/jenkins.job.xml.twig:/var/spryker/jenkins/jenkins.docker.xml.twig:ro
 {% if _mountMode != 'baked' %}
     - ./${DEPLOYMENT_PATH}/context/php/conf.d/opcache_dev.ini:/etc/php7/conf.d/opcache.ini:ro
 {% if _mountMode == 'native' %}

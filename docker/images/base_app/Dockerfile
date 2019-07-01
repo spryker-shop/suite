@@ -58,7 +58,6 @@ ENV DEPLOYMENT_PATH=${DEPLOYMENT_PATH}
 COPY ${DEPLOYMENT_PATH}/context/php/php-fpm.d/worker.conf /usr/local/etc/php-fpm.d/worker.conf
 COPY ${DEPLOYMENT_PATH}/context/php/php.ini /usr/local/etc/php/
 COPY ${DEPLOYMENT_PATH}/context/php/conf.d/opcache.ini /usr/local/etc/php/conf.d/
-COPY ${DEPLOYMENT_PATH}/context/jenkins/jenkins.job.xml.twig ${srcRoot}/config/Zed/cronjobs/jenkins.docker.xml.twig
 
 ## Prepare entrypoint
 #COPY ${DEPLOYMENT_PATH}/context/php/entrypoint.sh /spryker-entrypoint.sh

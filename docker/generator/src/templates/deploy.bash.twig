@@ -424,7 +424,6 @@ function getDefaultRunArguments()
     echo -n " --network=${SPRYKER_DOCKER_PREFIX}_services"
     echo -n " --network=${SPRYKER_DOCKER_PREFIX}_services"
     echo -n " --network=${SPRYKER_DOCKER_PREFIX}_private"
-    echo -n " -v ${DEPLOYMENT_DIR}/context/jenkins/jenkins.job.xml.twig:/var/spryker/jenkins/jenkins.docker.xml.twig:ro"
     echo -n " ${DOCKER_EXTRA_ENV_FILES}"
     echo -n " ${DOCKER_EXTRA_OPTIONS}"
 }
