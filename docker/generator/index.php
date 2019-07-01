@@ -26,9 +26,9 @@ $mountMode = $projectData['_mountMode'] = retrieveMountMode($projectData, $platf
 $projectData['_ports'] = retrieveUniquePorts($projectData);
 $defaultPort = $projectData['_defaultPort'] = getDefaultPort($projectData);
 
-mkdir($deploymentDir . DS . 'env' . DS . 'cli', 0777, true);
-mkdir($deploymentDir . DS . 'context' . DS . 'nginx' . DS . 'conf.d', 0777, true);
-mkdir($deploymentDir . DS . 'context' . DS . 'nginx' . DS . 'vhost.d', 0777, true);
+@mkdir($deploymentDir . DS . 'env' . DS . 'cli', 0777, true);
+@mkdir($deploymentDir . DS . 'context' . DS . 'nginx' . DS . 'conf.d', 0777, true);
+@mkdir($deploymentDir . DS . 'context' . DS . 'nginx' . DS . 'vhost.d', 0777, true);
 
 file_put_contents(
     $deploymentDir . DS . 'context' . DS . 'nginx' . DS . 'conf.d' . DS . 'front-end.default.conf',
@@ -45,6 +45,10 @@ file_put_contents(
 file_put_contents(
     $deploymentDir . DS . 'context' . DS . 'nginx' . DS . 'vhost.d' . DS . 'glue.default.conf',
     $twig->render('nginx/vhost.d/glue.default.conf.twig', $projectData)
+);
+file_put_contents(
+    $deploymentDir . DS . 'context' . DS . 'nginx' . DS . 'vhost.d' . DS . 'ssl.default.conf',
+    $twig->render('nginx/vhost.d/ssl.default.conf.twig', $projectData)
 );
 file_put_contents(
     $deploymentDir . DS . 'context' . DS . 'nginx' . DS . 'conf.d' . DS . 'zed-rpc.default.conf',
@@ -111,6 +115,17 @@ switch ($mountMode) {
         break;
 }
 
+$sslDir = $deploymentDir . DS . 'context' . DS . 'nginx' . DS . 'ssl';
+@mkdir($sslDir);
+echo shell_exec(sprintf(
+    'PFX_PASSWORD="%s" DESTINATION=%s ./openssl/generate.sh %s',
+    addslashes($projectData['docker']['ssl']['pfx-password'] ?? 'secret'),
+    $sslDir,
+    implode(' ', retrieveDomainNames($projectData))
+));
+
+copy($sslDir . DS . 'ca.pfx', $deploymentDir . DS . 'spryker.pfx');
+
 // -------------------------
 /**
  * @param array $projectData
@@ -143,9 +158,11 @@ function retrieveMountMode(array $projectData, string $platform): string
  */
 function retrieveUniquePorts(array $projectData)
 {
-    $ports = [];
+    $ports = [
+        80 => 80
+    ];
 
-    foreach (retrieveDomains($projectData) as $domain => $domainData) {
+    foreach (retrieveEndpoints($projectData) as $domain => $domainData) {
         $port = explode(':', $domain)[1];
         $ports[$port] = $port;
     }
@@ -156,13 +173,13 @@ function retrieveUniquePorts(array $projectData)
 /**
  * @param array $projectData
  *
- * @return string[]
+ * @return array[]
  */
-function retrieveDomains(array $projectData)
+function retrieveEndpoints(array $projectData)
 {
     $defaultPort = getDefaultPort($projectData);
 
-    $domains = [];
+    $endpoints = [];
 
     foreach ($projectData['groups'] ?? [] as $groupName => $groupData) {
         foreach ($groupData['applications'] ?? [] as $applicationName => $applicationData) {
@@ -172,7 +189,7 @@ function retrieveDomains(array $projectData)
                     $domain .= ':' . $defaultPort;
                 }
 
-                if (array_key_exists($domain, $domains)) {
+                if (array_key_exists($domain, $endpoints)) {
                     throw new Exception(sprintf(
                         '`%s` domain is used for different applications. Please, make sure domains are unique',
                         $domain
@@ -181,9 +198,44 @@ function retrieveDomains(array $projectData)
 
                 $domainData['region'] = $groupData['region'];
                 $domainData['application'] = $applicationName;
-                $domains[$domain] = $domainData;
+                $endpoints[$domain] = $domainData;
             }
         }
+    }
+
+    foreach ($projectData['services'] as $serviceName => $serviceData) {
+        foreach ($serviceData['domain'] ?? [] as $domain => $domainData) {
+            if (strpos($domain, ':') === false) {
+                $domain .= ':' . $defaultPort;
+            }
+
+            if (array_key_exists($domain, $endpoints)) {
+                throw new Exception(sprintf(
+                    '`%s` domain is used for different applications. Please, make sure domains are unique',
+                    $domain
+                ));
+            }
+
+            $domainData['service'] = $serviceName;
+            $endpoints[$domain] = $domainData;
+        }
+    }
+
+    return $endpoints;
+}
+
+/**
+ * @param array $projectData
+ *
+ * @return string[]
+ */
+function retrieveDomainNames(array $projectData)
+{
+    $domains = [];
+
+    foreach (retrieveEndpoints($projectData) as $endpoint => $endpointData) {
+        $host = strtok($endpoint, ':');
+        $domains[$host] = $host;
     }
 
     return $domains;

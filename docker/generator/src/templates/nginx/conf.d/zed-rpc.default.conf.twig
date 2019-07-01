@@ -1,5 +1,12 @@
 {% include "nginx/conf.d/common.conf.twig" with _context %}
 
+server {
+    server_name _; # This is just an invalid value which will never trigger on a real hostname.
+    listen 80;
+    access_log /var/log/nginx/access.log vhost;
+    return 502;
+}
+
 {% for groupData in groups %}
 {% for applicationName, applicationData in groupData['applications'] %}
 {% if applicationData['application'] == 'zed' %}

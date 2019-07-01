@@ -27,7 +27,6 @@ RUN --mount=type=cache,target=/home/spryker/.composer/cache,from=composer_cache,
   bash -c 'if [ ! -z $GITHUB_TOKEN ]; then export COMPOSER_AUTH="{\"github-oauth\": {\"github.com\": \"${GITHUB_TOKEN}\"}}"; fi; \
     composer install --no-interaction --optimize-autoloader'
 
-
 ### Intermediate container - with dependencies, PHP code and configs
 FROM spryker_app_dependencies AS spryker_app_base
 COPY --chown=spryker:spryker src ${srcRoot}/src
@@ -58,11 +57,6 @@ ENV DEPLOYMENT_PATH=${DEPLOYMENT_PATH}
 COPY ${DEPLOYMENT_PATH}/context/php/php-fpm.d/worker.conf /usr/local/etc/php-fpm.d/worker.conf
 COPY ${DEPLOYMENT_PATH}/context/php/php.ini /usr/local/etc/php/
 COPY ${DEPLOYMENT_PATH}/context/php/conf.d/opcache.ini /usr/local/etc/php/conf.d/
-
-## Prepare entrypoint
-#COPY ${DEPLOYMENT_PATH}/context/php/entrypoint.sh /spryker-entrypoint.sh
-#RUN chmod 755 /spryker-entrypoint.sh
-#ENTRYPOINT [ "/spryker-entrypoint.sh" ]
 
 # Run FPM as default command
 USER root

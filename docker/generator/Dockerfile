@@ -8,6 +8,8 @@ RUN mkdir -p /cache && chmod 0777 /cache
 # Intermediate container - base for app, with composer deps
 FROM spryker/php:${SPRYKER_PHP_VERSION} AS spryker_app_dependencies
 
+RUN apk add --no-cache openssl
+
 WORKDIR /data
 USER spryker
 
@@ -21,5 +23,7 @@ FROM spryker_app_dependencies AS spryker_docker_sdk
 COPY --chown=spryker:spryker src ${srcRoot}/src
 COPY --chown=spryker:spryker openssl ${srcRoot}/openssl
 COPY --chown=spryker:spryker index.php ${srcRoot}
+
+RUN chmod 755 ${srcRoot}/openssl/generate.sh
 
 CMD [ "php", "index.php" ]

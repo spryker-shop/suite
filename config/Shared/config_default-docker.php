@@ -140,10 +140,9 @@ $HSTS_CONFIG = [
 ];
 $config[ApplicationConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG] = $HSTS_CONFIG;
 
-$config[ZedRequestConstants::ZED_API_SSL_ENABLED] = (bool)getenv("SPRYKER_SSL_ENABLE", false);
+$config[ZedRequestConstants::ZED_API_SSL_ENABLED] = false;
 $config[ApplicationConstants::ZED_SSL_ENABLED] = (bool)getenv("SPRYKER_SSL_ENABLE", false);
-$config[SessionConstants::ZED_SSL_ENABLED]
-    = (bool)getenv("SPRYKER_SSL_ENABLE", false);
+$config[SessionConstants::ZED_SSL_ENABLED] = (bool)getenv("SPRYKER_SSL_ENABLE", false);
 $config[ApplicationConstants::ZED_SSL_EXCLUDED] = ['heartbeat/index'];
 
 $config[ErrorHandlerConstants::DISPLAY_ERRORS] = true;
@@ -544,7 +543,7 @@ $config[SearchConstants::SEARCH_INDEX_NAME_SUFFIX] = '';
 
 
 // ---------- KV storage
-$config[StorageConstants::STORAGE_KV_SOURCE] = strtolower(getenv('SPRYKER_KEY_VALUE_STORE_ENGINE'));;
+$config[StorageConstants::STORAGE_KV_SOURCE] = strtolower(getenv('SPRYKER_KEY_VALUE_STORE_ENGINE'));
 
 /**
  * Data source names are used exclusively when set, e.g. no other Redis storage configuration will be used for the client.
@@ -557,7 +556,7 @@ $config[StorageConstants::STORAGE_KV_SOURCE] = strtolower(getenv('SPRYKER_KEY_VA
 $config[StorageRedisConstants::STORAGE_REDIS_PERSISTENT_CONNECTION] = true;
 $config[StorageRedisConstants::STORAGE_REDIS_PROTOCOL] = 'tcp';
 $config[StorageRedisConstants::STORAGE_REDIS_HOST] = getenv('SPRYKER_KEY_VALUE_STORE_HOST');
-$config[StorageRedisConstants::STORAGE_REDIS_PORT] = getenv('SPRYKER_KEY_VALUE_STORE_PORT');;
+$config[StorageRedisConstants::STORAGE_REDIS_PORT] = getenv('SPRYKER_KEY_VALUE_STORE_PORT');
 $config[StorageRedisConstants::STORAGE_REDIS_PASSWORD] = false;
 $config[StorageRedisConstants::STORAGE_REDIS_DATABASE] = getenv('SPRYKER_KEY_VALUE_STORE_NAMESPACE');
 
@@ -588,11 +587,11 @@ $config[SessionRedisConstants::LOCKING_LOCK_TTL_MILLISECONDS] = 0;
  */
 //$config[SessionRedisConstants::YVES_SESSION_REDIS_DATA_SOURCE_NAMES] = [];
 
-$config[SessionRedisConstants::YVES_SESSION_REDIS_PROTOCOL] = $config[StorageRedisConstants::STORAGE_REDIS_PROTOCOL];
-$config[SessionRedisConstants::YVES_SESSION_REDIS_HOST] = $config[StorageRedisConstants::STORAGE_REDIS_HOST];
-$config[SessionRedisConstants::YVES_SESSION_REDIS_PORT] = $config[StorageRedisConstants::STORAGE_REDIS_PORT];
-$config[SessionRedisConstants::YVES_SESSION_REDIS_PASSWORD] = $config[StorageRedisConstants::STORAGE_REDIS_PASSWORD];
-$config[SessionRedisConstants::YVES_SESSION_REDIS_DATABASE] = 1;
+$config[SessionRedisConstants::YVES_SESSION_REDIS_PROTOCOL] = 'tcp';
+$config[SessionRedisConstants::YVES_SESSION_REDIS_HOST] = getenv('SPRYKER_SESSION_FE_HOST');
+$config[SessionRedisConstants::YVES_SESSION_REDIS_PORT] = getenv('SPRYKER_SESSION_FE_PORT');
+$config[SessionRedisConstants::YVES_SESSION_REDIS_PASSWORD] = false;
+$config[SessionRedisConstants::YVES_SESSION_REDIS_DATABASE] = getenv('SPRYKER_SESSION_FE_NAMESPACE');
 
 /**
  * Data source names are used exclusively when set, e.g. no other Redis session configuration will be used for the client.
@@ -602,11 +601,11 @@ $config[SessionRedisConstants::YVES_SESSION_REDIS_DATABASE] = 1;
  */
 //$config[SessionRedisConstants::ZED_SESSION_REDIS_DATA_SOURCE_NAMES] = [];
 
-$config[SessionRedisConstants::ZED_SESSION_REDIS_PROTOCOL] = $config[StorageRedisConstants::STORAGE_REDIS_PROTOCOL];
-$config[SessionRedisConstants::ZED_SESSION_REDIS_HOST] = $config[StorageRedisConstants::STORAGE_REDIS_HOST];
-$config[SessionRedisConstants::ZED_SESSION_REDIS_PORT] = $config[StorageRedisConstants::STORAGE_REDIS_PORT];
-$config[SessionRedisConstants::ZED_SESSION_REDIS_PASSWORD] = $config[StorageRedisConstants::STORAGE_REDIS_PASSWORD];
-$config[SessionRedisConstants::ZED_SESSION_REDIS_DATABASE] = 2;
+$config[SessionRedisConstants::ZED_SESSION_REDIS_PROTOCOL] =  'tcp';
+$config[SessionRedisConstants::ZED_SESSION_REDIS_HOST] =  getenv('SPRYKER_SESSION_BE_HOST');
+$config[SessionRedisConstants::ZED_SESSION_REDIS_PORT] = getenv('SPRYKER_SESSION_BE_PORT');
+$config[SessionRedisConstants::ZED_SESSION_REDIS_PASSWORD] = false;
+$config[SessionRedisConstants::ZED_SESSION_REDIS_DATABASE] = getenv('SPRYKER_SESSION_BE_NAMESPACE');
 
 /* Mail */
 $config[MailConstants::SMTP_HOST] = getenv('SPRYKER_SMTP_HOST');

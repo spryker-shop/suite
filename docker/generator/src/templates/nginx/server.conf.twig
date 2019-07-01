@@ -1,7 +1,6 @@
 {% set ssl = project['docker']['ssl']['enabled'] | default(false) %}
 {% set port = (domain | split(':'))[1] | default(ssl ? 443 :80) %}
 {% set host = domain | split(':') | first %}
-{% set rpcServer = "rpc_server_" ~ ( domainData['store'] | lower ) %}
 server {
 {% block server %}
 {% block host %}
@@ -15,16 +14,7 @@ server {
 
   location / {
 {% block location %}
-    include fastcgi.conf;
-    fastcgi_pass {{ upstream }};
-
-{% include "nginx/default.location.conf.twig" with _context %}
-
-{% include "nginx/store.params.conf.twig" with _context %}
-
-    fastcgi_param SPRYKER_ZED_HOST {{ rpcServer }};
-    fastcgi_param SPRYKER_ZED_PORT 80;
-    fastcgi_param SPRYKER_SSL_ENABLE {{ ssl ? 1 : 0 }};
+    proxy_pass http://{% block upstream %}{{ upstream }}{% endblock upstream %};
 {% endblock location %}
   }
 {% endblock server %}

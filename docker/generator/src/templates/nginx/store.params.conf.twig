@@ -1,7 +1,5 @@
 {% set storeServices = project['regions'][groupData['region']]['stores'][domainData['store']]['services'] | default([]) %}
-{% set domainServices = storeServices | merge(domainData['services'] | default([])) %}
     fastcgi_param APPLICATION_STORE "{{ domainData['store'] }}";
-    fastcgi_param SPRYKER_SEARCH_NAMESPACE "{{ domainServices['search']['namespace'] }}";
-    fastcgi_param SPRYKER_KEY_VALUE_STORE_NAMESPACE "{{ domainServices['key_value_store']['namespace'] }}";
-    fastcgi_param SPRYKER_BROKER_NAMESPACE "{{ domainServices['broker']['namespace'] }}";
-    fastcgi_param SPRYKER_SESSION_BE_NAMESPACE "{{ domainServices['session']['namespace'] }}";
+    fastcgi_param SPRYKER_SEARCH_NAMESPACE "{{ storeServices['search']['namespace'] | default(domainData['services']['search']['namespace'])  }}";
+    fastcgi_param SPRYKER_KEY_VALUE_STORE_NAMESPACE "{{ storeServices['key_value_store']['namespace'] | default(domainData['services']['key_value_store']['namespace'])  }}";
+    fastcgi_param SPRYKER_BROKER_NAMESPACE "{{ storeServices['broker']['namespace'] | default(domainData['services']['broker']['namespace'])  }}";

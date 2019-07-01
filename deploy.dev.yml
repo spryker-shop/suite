@@ -1,7 +1,7 @@
 version: "0.1"
 
 namespace: spryker_demo
-tag: 'test'
+tag: 'dev'
 
 environment: docker
 php: 7.2
@@ -150,7 +150,6 @@ docker:
                 - linux
 
         docker-sync:
-#        mutagen:
             platforms:
                 - macos
                 - windows
