@@ -4,10 +4,15 @@ x-volumes:
   &app-volumes
   volumes:
     - logs:${SPRYKER_LOG_DIRECTORY}:rw
+{% if _mountMode == 'baked' %}
     - ./${DEPLOYMENT_PATH}/context/jenkins/jenkins.job.xml.twig:/data/config/Zed/cronjobs/jenkins.docker.xml.twig:ro
-{% if _mountMode != 'baked' %}
+{% else %}
     - ./${DEPLOYMENT_PATH}/context/php/conf.d/opcache_dev.ini:/etc/php7/conf.d/opcache.ini:ro
-    - data-sync:/data
+{% endif %}
+{% if _mountMode == 'docker-sync' %}
+    - ${SPRYKER_DOCKER_PREFIX}_data_sync:/data
+{% elseif _mountMode == 'native' %}
+    - ./:/data
 {% endif %}
 
 services:

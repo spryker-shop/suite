@@ -6,7 +6,7 @@ pushd ${BASH_SOURCE%/*} > /dev/null
 . ../constants.sh
 . ../console.sh
 
-./require.sh docker docker-sync
+../require.sh docker docker-sync
 popd > /dev/null
 
 function dataSync()
@@ -17,7 +17,7 @@ function dataSync()
     case $1 in
         create)
             verbose "${INFO}Creating 'data-sync' volume${NC}"
-            docker volume create --name=data-sync
+            docker volume create --name=${SPRYKER_DOCKER_PREFIX}_data_sync
             ;;
 
         clean)
@@ -28,7 +28,7 @@ function dataSync()
             docker-sync stop -c ${syncConf} -n data-sync
             ;;
         *)
-            if [ $(docker ps | grep 5000 | grep data-sync | wc -l |sed 's/^ *//') -eq 0 ]; then
+            if [ $(docker ps | grep 5000 | grep ${SPRYKER_DOCKER_PREFIX}_data_sync | wc -l |sed 's/^ *//') -eq 0 ]; then
                 verbose "${INFO}Start sync process for data volume${NC}"
                 pushd ${PROJECT_DIR} > /dev/null
                 docker-sync start -c ${syncConf}

@@ -125,6 +125,11 @@ function retrieveMountMode(array $projectData, string $platform): string
             $mountMode = $engine;
             break;
         }
+        $mountMode = '';
+    }
+
+    if ($mountMode === '') {
+        throw new Exception(sprintf('Mount mode cannot be determined for `%s` platform', $platform));
     }
 
     return $mountMode;

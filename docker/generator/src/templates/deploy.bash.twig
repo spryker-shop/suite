@@ -112,7 +112,7 @@ echo -e "*** ${WARN}DEVELOPMENT MODE${NC}"
 {% if _platform == 'linux' %}
 DOCKER_EXTRA_OPTIONS+=" -v ${PROJECT_DIR}:/data -u ${USER_UID}:${USER_GID}"
 {% else %}
-DOCKER_EXTRA_OPTIONS+=" -v data-sync:/data -u ${USER_UID}:${USER_GID}"
+DOCKER_EXTRA_OPTIONS+=" -v ${SPRYKER_DOCKER_PREFIX}_data_sync:/data -u ${USER_UID}:${USER_GID}"
 {% endif %}
 {% endif %}
 
@@ -251,13 +251,16 @@ EOF
 
 function buildApplication()
 {
-    local vendorDir=$(runApplicationBuild '[ ! -d /data/vendor ] && echo 0 || echo 1'|tail -n 1)
+    dataSync start
+
+    local vendorDir=$(runApplicationBuild '[ ! -f /data/vendor/bin/install ] && echo 0 || echo 1' | tail -n 1)
     if [ ${vendorDir} == "0" ]; then
         verbose "${INFO}Running composer install${NC}"
+        runApplicationBuild 'composer clearcache'
         runApplicationBuild 'composer install --no-interaction --optimize-autoloader'
     fi
 
-    local generatedDir=$(runApplicationBuild '[ ! -d src/Generated ] && echo 0 || echo 1'|tail -n 1)
+    local generatedDir=$(runApplicationBuild '[ ! -d src/Generated ] && echo 0 || echo 1' | tail -n 1)
     if [ "${generatedDir}" == "0" ]; then
         verbose "${INFO}Running build${NC}"
         runApplicationBuild 'vendor/bin/install -r docker -s build -s build-development'
@@ -369,8 +372,6 @@ function loadDemoData()
     waitFor broker
     waitFor search
     waitFor key_value_store
-
-    dataSync start
 
     for region in "${SPRYKER_STORES[@]}";
     do
@@ -657,6 +658,13 @@ case $1 in
     acceptance-tests)
         ensureTestingMode
         doCli console code:test:acceptance ${@:2}
+        ;;
+    trouble)
+        dataSync clean
+        ;;
+    sync)
+        dataSync create
+        dataSync start
         ;;
     help|'')
         showHelp
