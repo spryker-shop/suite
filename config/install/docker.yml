@@ -95,6 +95,10 @@ sections:
         update-product-labels:
             command: "vendor/bin/console product-label:relations:update"
 
+    sync:
+        run-worker:
+            command: "vendor/bin/console queue:worker:start"
+
     cleanup:
         excluded: true
         set-permissions:
