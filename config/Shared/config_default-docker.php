@@ -79,6 +79,7 @@ $logDestination = getenv('SPRYKER_LOG_DESTINATION') ?: $defaultLogDestination;
 
 /* ZED */
 $config[ApplicationConstants::HOST_ZED] = getenv('SPRYKER_ZED_HOST');
+$config[SessionConstants::ZED_SESSION_COOKIE_DOMAIN] = $config[ApplicationConstants::HOST_ZED];
 $config[ApplicationConstants::PORT_ZED] = getenv('SPRYKER_ZED_PORT') ? ':' . getenv('SPRYKER_ZED_PORT') : '';
 $config[ApplicationConstants::PORT_SSL_ZED] = '';
 $config[ApplicationConstants::BASE_URL_ZED] = sprintf(
@@ -344,6 +345,7 @@ $config[MailConstants::MAILCATCHER_GUI] = sprintf('http://%s:1080', $config[Appl
 
 /* Yves */
 $config[ApplicationConstants::HOST_YVES] = getenv('SPRYKER_FE_HOST');
+$config[SessionConstants::YVES_SESSION_COOKIE_DOMAIN] = $config[ApplicationConstants::HOST_YVES];
 $config[ApplicationConstants::PORT_YVES] = getenv('SPRYKER_FE_PORT');
 $config[ApplicationConstants::PORT_SSL_YVES] = '';
 $config[ApplicationConstants::BASE_URL_YVES] = sprintf(
