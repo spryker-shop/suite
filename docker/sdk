@@ -34,7 +34,7 @@ function showHelp()
 }
 
 case $1 in
-    boot)
+    boot|bootstrap)
         [ -f ${DEPLOY_SCRIPT} ] && SPRYKER_SELF_SCRIPT=$0 ${DEPLOY_SCRIPT} down 2> /dev/null && sleep 2 || true
 
         # ------------
@@ -70,7 +70,7 @@ case $1 in
         [ -f ${DEPLOY_SCRIPT} ] && SPRYKER_SELF_SCRIPT=$0 ${DEPLOY_SCRIPT} $@
         ;;
     *)
-        [ ! -f ${DEPLOY_SCRIPT} ] && error "${WARN}The project is not initialized yet. Run ${YELLOW}$0 boot${WARN} before.${NC}" && exit 1
+        [ ! -f ${DEPLOY_SCRIPT} ] && showHelp && error "${WARN}The project is not initialized yet. Run ${YELLOW}$0 boot${WARN} before.${NC}" && exit 1
         SPRYKER_SELF_SCRIPT=$0 ${DEPLOY_SCRIPT} $@
         ;;
 esac
