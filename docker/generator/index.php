@@ -62,7 +62,6 @@ foreach ($projectData['groups'] ?? [] as $groupName => $groupData) {
                 'applicationName' => $applicationName,
                 'applicationData' => $applicationData,
                 'project' => $projectData,
-                'port' => strtok(':') ?: $defaultPort,
                 'regionName' => $groupData['region'],
                 'regionData' => $projectData['regions'][$groupData['region']],
                 'brokerConnections' => getBrokerConnections($projectData),
@@ -77,7 +76,32 @@ foreach ($projectData['groups'] ?? [] as $groupName => $groupData) {
                         'applicationName' => $applicationName,
                         'applicationData' => $applicationData,
                         'project' => $projectData,
-                        'port' => strtok(':') ?: $defaultPort,
+                        'regionName' => $groupData['region'],
+                        'regionData' => $projectData['regions'][$groupData['region']],
+                        'brokerConnections' => getBrokerConnections($projectData),
+                        'storeName' => $domainData['store'],
+                        'services' => array_replace_recursive(
+                            $projectData['regions'][$groupData['region']]['stores'][$domainData['store']]['services'],
+                            $domainData['services'] ?? []
+                        ),
+                    ])
+                );
+            }
+        }
+
+        if ($applicationData['application'] === 'yves') {
+            foreach ($applicationData['domain'] ?? [] as $domain => $domainData) {
+                if ($domainData['store'] !== $projectData['default-store']) {
+                    continue;
+                }
+                file_put_contents(
+                    $deploymentDir . DS . 'env' . DS . 'cli' . DS . 'testing.env',
+                    $twig->render('env/cli/testing.env.twig', [
+                        'applicationName' => $applicationName,
+                        'applicationData' => $applicationData,
+                        'project' => $projectData,
+                        'domain' => strtok($domain, ':'),
+                        'port' => strtok($domain) ?: $defaultPort,
                         'regionName' => $groupData['region'],
                         'regionData' => $projectData['regions'][$groupData['region']],
                         'brokerConnections' => getBrokerConnections($projectData),
@@ -93,8 +117,8 @@ foreach ($projectData['groups'] ?? [] as $groupName => $groupData) {
     }
 }
 file_put_contents(
-    $deploymentDir . DS . 'env' . DS . 'test.env',
-    $twig->render('env/test.env.twig', [
+    $deploymentDir . DS . 'env' . DS . 'testing.env',
+    $twig->render('env/testing.env.twig', [
         'project' => $projectData,
     ])
 );

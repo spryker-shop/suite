@@ -127,7 +127,7 @@ function enableTestingMode()
 {
     echo -e "*** ${WARN}TESTING MODE${NC}"
     DOCKER_COMPOSE_FILES+=" -f ${DEPLOYMENT_PATH}/docker-compose.test.yml"
-    DOCKER_EXTRA_OPTIONS+=" --env-file=${DEPLOYMENT_PATH}/env/test.env -u spryker:spryker"
+    DOCKER_EXTRA_OPTIONS+=" --env-file=${DEPLOYMENT_PATH}/env/cli/testing.env -u spryker:spryker"
 }
 
 function ensureTestingMode()
