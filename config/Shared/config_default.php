@@ -5,6 +5,7 @@ use Spryker\Client\RabbitMq\Model\RabbitMqAdapter;
 use Spryker\Glue\Log\Plugin\GlueLoggerConfigPlugin;
 use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBuilderPlugin;
 use Spryker\Shared\Acl\AclConstants;
+use Spryker\Shared\Api\ApiConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Auth\AuthConstants;
 use Spryker\Shared\CmsGui\CmsGuiConstants;
@@ -55,6 +56,9 @@ use Spryker\Zed\Log\Communication\Plugin\ZedLoggerConfigPlugin;
 use Spryker\Zed\Oms\OmsConfig;
 use Spryker\Zed\Propel\PropelConfig;
 use SprykerEco\Shared\Loggly\LogglyConstants;
+use SprykerShop\Shared\CalculationPage\CalculationPageConstants;
+use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
+use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
 use Twig\Cache\FilesystemCache;
 
 $CURRENT_STORE = Store::getInstance()->getStoreName();
@@ -507,3 +511,22 @@ $config[TranslatorConstants::TRANSLATION_ZED_CACHE_DIRECTORY] = sprintf(
 $config[TranslatorConstants::TRANSLATION_ZED_FILE_PATH_PATTERNS] = [
     APPLICATION_ROOT_DIR . '/data/translation/Zed/*/[a-z][a-z]_[A-Z][A-Z].csv',
 ];
+
+// ----------- Api
+$config[ApiConstants::ENABLE_API_DEBUG] = false;
+
+// ----------- Kernel test
+$config[KernelConstants::ENABLE_CONTAINER_OVERRIDING] = false;
+
+// ----------- Calculation page
+$config[CalculationPageConstants::ENABLE_CART_DEBUG] = false;
+
+// ----------- Error page
+$config[ErrorPageConstants::ENABLE_ERROR_404_STACK_TRACE] = false;
+
+// ----------- Application
+$config[ApplicationConstants::TWIG_ENVIRONMENT_NAME]
+    = $config[ShopApplicationConstants::TWIG_ENVIRONMENT_NAME]
+    = APPLICATION_ENV;
+
+$config[ApplicationConstants::ENABLE_PRETTY_ERROR_HANDLER] = false;
