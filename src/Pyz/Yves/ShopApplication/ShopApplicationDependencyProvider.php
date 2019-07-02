@@ -202,7 +202,6 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             QuoteRequestCancelWidget::class,
             QuoteRequestAgentOverviewWidget::class,
             QuoteRequestAgentCancelWidget::class,
-            ProductQuantityWidget::class,
             CommentThreadWidget::class,
         ];
     }
