@@ -41,7 +41,6 @@ use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\SessionFile\SessionFileConstants;
 use Spryker\Shared\SessionRedis\SessionRedisConfig;
 use Spryker\Shared\SessionRedis\SessionRedisConstants;
-use Spryker\Shared\SetupFrontend\SetupFrontendConstants;
 use Spryker\Shared\Storage\StorageConstants;
 use Spryker\Shared\StorageRedis\StorageRedisConstants;
 use Spryker\Shared\Tax\TaxConstants;
@@ -511,4 +510,3 @@ $config[TranslatorConstants::TRANSLATION_ZED_FILE_PATH_PATTERNS] = [
 
 // ----------- Yves assets
 $config[ShopUiConstants::YVES_ASSETS_URL_PATTERN] = sprintf('/assets/%s/', $CURRENT_STORE) . '%theme%/';
-$config[SetupFrontendConstants::YVES_BUILD_COMMAND] = sprintf('npm run yves %s', $CURRENT_STORE);
