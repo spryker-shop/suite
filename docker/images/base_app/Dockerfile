@@ -19,8 +19,6 @@ WORKDIR /data
 USER spryker
 
 # Install composer modules for Spryker
-# TODO move to platform
-ENV COMPOSE_HTTP_TIMEOUT=400
 COPY --chown=spryker:spryker composer.json composer.lock ${srcRoot}/
 ARG GITHUB_TOKEN
 RUN --mount=type=cache,target=/home/spryker/.composer/cache,from=composer_cache,source=/cache \
@@ -32,6 +30,7 @@ FROM spryker_app_dependencies AS spryker_app_base
 COPY --chown=spryker:spryker src ${srcRoot}/src
 COPY --chown=spryker:spryker config ${srcRoot}/config
 COPY --chown=spryker:spryker *.php ${srcRoot}/
+RUN chmod 600 ${srcRoot}/config/Zed/*.key
 
 RUN composer dump-autoload -o
 

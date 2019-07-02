@@ -23,6 +23,7 @@ export SPRYKER_REMOTE_DIR="/var/spryker"
 readonly IF_NOT_PERFORMED='IF_NOT_PERFORMED'
 
 export DOCKER_BUILDKIT=1
+export COMPOSE_HTTP_TIMEOUT=400
 export COMPOSE_PROJECT_NAME={{ namespace | default('spryker') }}
 {% if _platform == 'windows' %}
 export COMPOSE_CONVERT_WINDOWS_PATHS=1
