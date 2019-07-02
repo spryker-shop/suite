@@ -1,0 +1,21 @@
+{% set ssl = project['docker']['ssl']['enabled'] | default(false) %}
+{% set port = (domain | split(':'))[1] | default(ssl ? 443 :80) %}
+{% set host = domain | split(':') | first %}
+server {
+{% block server %}
+{% block host %}
+  server_name {{ host }};
+  listen {{ port }} {{ ssl ? 'ssl http2' }};
+{% if ssl %}
+  include /etc/nginx/vhost.d/ssl.default.conf;
+{% endif %}
+{% endblock host %}
+  access_log /var/log/nginx/access.log vhost;
+
+  location / {
+{% block location %}
+    proxy_pass http://{% block upstream %}{{ upstream }}{% endblock upstream %};
+{% endblock location %}
+  }
+{% endblock server %}
+}

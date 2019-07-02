@@ -1,0 +1,9 @@
+{% extends "nginx/application.server.conf.twig" %}
+{% block location %}
+    proxy_pass http://rpc_server;
+{% endblock location %}
+{% block server %}
+{{ parent() }}
+
+  include /etc/nginx/vhost.d/zed.default.conf;
+{% endblock server %}

@@ -34,3 +34,9 @@ extensions:
             suites: ['Presentation']
             loadImages: false
             diskCache: true
+            remote-enable: "%SPRYKER_TESTING_ENABLED%"
+            host: "%SPRYKER_TEST_WEB_DRIVER_HOST%"
+            browser: "%SPRYKER_TEST_IN_BROWSER%"
+
+params:
+    - env

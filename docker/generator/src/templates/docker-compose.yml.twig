@@ -1,0 +1,108 @@
+version: "3.5"
+
+x-volumes:
+  &app-volumes
+  volumes:
+    - logs:${SPRYKER_LOG_DIRECTORY}:rw
+{% if _mountMode != 'baked' %}
+    - ./${DEPLOYMENT_PATH}/context/php/conf.d/opcache_dev.ini:/etc/php7/conf.d/opcache.ini:ro
+{% if _mountMode == 'native' %}
+    - ./:/data
+{% else %}
+    - ${SPRYKER_DOCKER_PREFIX}_${SPRYKER_DOCKER_TAG}_data_sync:/data
+{% endif %}
+{% endif %}
+
+services:
+
+  frontend:
+    image: nginx:alpine
+    ports:
+{% for port in _ports %}
+      - "0.0.0.0:{{ port }}:{{ port }}"
+{% endfor %}
+    networks:
+      - services
+      - public
+    depends_on:
+{% for group in groups %}
+{% for applicationName, applicationData in group['applications'] %}
+      - {{ applicationName }}
+{% endfor %}
+{% endfor %}
+{% for serviceName, serviceData in services %}
+      - {{ serviceName }}
+{% endfor %}
+    environment:
+      DHPARAM_BITS: 1024
+      DHPARAM_GENERATION: "false"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./${DEPLOYMENT_PATH}/context/nginx/conf.d/front-end.default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./${DEPLOYMENT_PATH}/context/nginx/vhost.d:/etc/nginx/vhost.d:ro
+      - ./${DEPLOYMENT_PATH}/context/nginx/ssl:/etc/nginx/ssl:ro
+      - ./public/Yves/favicon.ico:/public/favicon.ico:ro
+{% if _mountMode == 'baked' %}
+      - assets:/assets:ro
+{% elseif _mountMode == 'native' %}
+      - ./public:/data/public
+{% endif %}
+
+  rpc_server:
+    image: nginx:alpine
+    depends_on:
+{% for group in groups %}
+{% for applicationName, applicationData in group['applications'] %}
+{% if applicationData['application'] == 'zed' %}
+      - {{ applicationName }}
+{% endif %}
+{% endfor %}
+{% endfor %}
+    networks:
+      - services
+      - private
+    environment:
+      DHPARAM_BITS: 1024
+      DHPARAM_GENERATION: "false"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./${DEPLOYMENT_PATH}/context/nginx/conf.d/zed-rpc.default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./${DEPLOYMENT_PATH}/context/nginx/vhost.d:/etc/nginx/vhost.d:ro
+
+{% for group in groups %}
+{% for applicationName, applicationData in group['applications'] %}
+
+{% include "application/" ~ (applicationData['application'] | lower) ~ ".yml.twig" with {
+    applicationName: applicationName,
+    applicationData: applicationData,
+    regionName: group['region'],
+    project: _context
+} %}
+{% endfor %}
+{% endfor %}
+{% for serviceName, serviceData in services %}
+
+{% include "service/" ~ (serviceData['engine'] | lower) ~ ".yml.twig" with {serviceName: serviceName, serviceData: serviceData} %}
+{% endfor %}
+
+volumes:
+{% for service, serviceData in services %}
+  {{ service }}-{{ serviceData['engine'] }}-data:
+    external: false
+{% endfor %}
+
+  logs:
+    external: false
+{% if _mountMode == 'baked' %}
+  assets:
+    external: true
+    name: "${COMPOSE_PROJECT_NAME}_assets"
+{% else %}
+  {{ namespace }}_{{ tag }}_data_sync:
+    external: true
+{% endif %}
+
+networks:
+  public:
+  services:
+  private:

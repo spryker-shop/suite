@@ -1,0 +1,21 @@
+version: "2"
+
+options:
+  verbose: true
+syncs:
+  {{ namespace }}_{{ tag }}_data_sync:
+    src: '.'
+    sync_strategy: {{ (_platform == 'macos') ? 'native_osx' : 'unison' }}
+    sync_excludes: ['.gitignore', '.git', '.idea', '.project', 'data/*/cache', '*.log', 'node_modules', 'docker', '.composer', '.npm']
+{%  if _platform == 'macos' %}
+    host_disk_mount_mode: 'cached'
+{% endif %}
+    sync_userid: '1000'
+    sync_args:
+      - "-prefer newer"
+{% if _platform == 'windows' %}
+      - "-perms=0"
+{% endif %}
+    monit_enable: true
+    monit_interval: 3
+    monit_high_cpu_cycles: 2

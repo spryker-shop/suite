@@ -1,0 +1,76 @@
+#!/bin/bash
+
+set -e
+
+pushd ${BASH_SOURCE%/*} > /dev/null
+. bin/constants.sh
+. bin/console.sh
+popd > /dev/null
+
+PROJECT_NAME=default
+
+while getopts "vp:" opt;
+do
+    case ${opt} in
+        v)
+            VERBOSE=1
+            ;;
+        p)
+            PROJECT_NAME=$OPTARG
+            ;;
+    esac
+done
+shift $((OPTIND -1))
+
+DESTINATION_DIR=${DESTINATION_DIR:-"${BASH_SOURCE%/*}/deployment/${PROJECT_NAME}"}
+DEPLOYMENT_DIR="${BASH_SOURCE%/*}/deployment/_tmp"
+readonly DEPLOY_SCRIPT=${DESTINATION_DIR}/deploy
+
+function showHelp()
+{
+    echo -e ""
+    echo -e "${INFO}Installation:${NC}"
+    echo -e " $0 [-v] [-p <project-name=default>] boot <project-yml-file=deploy.yml>"
+}
+
+case $1 in
+    boot|bootstrap)
+        [ -f ${DEPLOY_SCRIPT} ] && SPRYKER_SELF_SCRIPT=$0 ${DEPLOY_SCRIPT} down 2> /dev/null && sleep 2 || true
+
+        # ------------
+        SOURCE_DIR=${BASH_SOURCE%/*}
+
+        # ------------
+        shift
+        PROJECT_YAML=${1:-deploy.yml}
+
+        # ------------
+        [ -d ${DEPLOYMENT_DIR} ] && rm -rf ${DEPLOYMENT_DIR}
+        mkdir ${DEPLOYMENT_DIR}
+
+        DEPLOYMENT_DIR="$( cd "${DEPLOYMENT_DIR}" >/dev/null 2>&1 && pwd )"
+
+        # ------------
+        . ${BASH_SOURCE%/*}/bin/boot-deployment.sh
+
+        [ -d ${DESTINATION_DIR} ] && rm -rf ${DESTINATION_DIR}/*
+        [ ! -d ${DESTINATION_DIR} ] && mkdir ${DESTINATION_DIR}
+        cp -R ${DEPLOYMENT_DIR}/. ${DESTINATION_DIR}
+        rm -rf ${DEPLOYMENT_DIR}
+
+        [ ! -f .dockerignore ] && cp ${BASH_SOURCE%/*}/.dockerignore .dockerignore
+
+        echo ""
+        echo -e "${INFO}Deployment is generated into ${LGRAY}${DESTINATION_DIR}${NC}"
+        echo -e "Use ${OK}docker/sdk$([ ${PROJECT_NAME} != 'default' ] && echo -n " -p ${PROJECT_NAME}") up${NC} to start the application."
+
+        ;;
+    help)
+        showHelp
+        [ -f ${DEPLOY_SCRIPT} ] && SPRYKER_SELF_SCRIPT=$0 ${DEPLOY_SCRIPT} $@
+        ;;
+    *)
+        [ ! -f ${DEPLOY_SCRIPT} ] && showHelp && error "${WARN}The project is not initialized yet. Run ${YELLOW}$0 boot${WARN} before.${NC}" && exit 1
+        SPRYKER_SELF_SCRIPT=$0 ${DEPLOY_SCRIPT} $@
+        ;;
+esac

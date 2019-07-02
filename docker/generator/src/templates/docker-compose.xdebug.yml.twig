@@ -1,0 +1,22 @@
+version: "3.5"
+
+x-volumes:
+  &xdebug-volumes
+  volumes:
+    - ./${DEPLOYMENT_PATH}/context/php/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/01-xdebug.ini
+    - ./${DEPLOYMENT_PATH}/context/php/conf.d/xdebug.custom.ini:/usr/local/etc/php/conf.d/02-xdebug.ini
+
+x-environment:
+  &xdebug-environment
+  environment:
+    SPRYKER_XDEBUG_HOST_IP: ${SPRYKER_XDEBUG_HOST_IP}
+
+services:
+{% for group in groups %}
+{% for applicationName, applicationData in group['applications'] %}
+
+  {{ applicationName }}:
+    <<: *xdebug-volumes
+    <<: *xdebug-environment
+{% endfor %}
+{% endfor %}

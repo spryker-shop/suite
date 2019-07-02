@@ -1,0 +1,15 @@
+  {{ applicationName }}:
+    image: ${SPRYKER_DOCKER_PREFIX}_app:${SPRYKER_DOCKER_TAG}
+    depends_on:
+      - rpc_server
+      - key_value_store
+      - search
+    networks:
+      - services
+    links:
+{% for storeName, storeData in project['regions'][regionName]['stores'] %}
+      - rpc_server:rpc_server_{{ storeName | lower }}
+{% endfor %}
+    env_file:
+      - ${DEPLOYMENT_PATH}/env/{{ applicationName }}.env
+    <<: *app-volumes
