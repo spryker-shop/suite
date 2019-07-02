@@ -10,4 +10,4 @@
         timeout: 5s
         retries: 5
     volumes:
-      - {{ serviceName }}-data:/data
+      - {{ serviceName }}-{{ serviceData['engine'] }}-data:/data

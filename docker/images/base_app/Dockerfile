@@ -33,6 +33,8 @@ COPY --chown=spryker:spryker src ${srcRoot}/src
 COPY --chown=spryker:spryker config ${srcRoot}/config
 COPY --chown=spryker:spryker *.php ${srcRoot}/
 
+RUN composer dump-autoload -o
+
 ARG APPLICATION_ENV
 ARG SPRYKER_DB_ENGINE
 ENV APPLICATION_ENV=${APPLICATION_ENV}
@@ -50,12 +52,15 @@ COPY --chown=spryker:spryker public ${srcRoot}/public
 COPY --chown=spryker:spryker tests ${srcRoot}/tests
 COPY --chown=spryker:spryker .* *.* LICENSE ${srcRoot}/
 
+RUN composer dump-autoload -o
+
 ARG DEPLOYMENT_PATH
 ENV DEPLOYMENT_PATH=${DEPLOYMENT_PATH}
 
-# Allow project-level customisations for PHP
+# PHP configuration
 COPY ${DEPLOYMENT_PATH}/context/php/php-fpm.d/worker.conf /usr/local/etc/php-fpm.d/worker.conf
 COPY ${DEPLOYMENT_PATH}/context/php/php.ini /usr/local/etc/php/
+# TODO use opcache before composer somehow
 COPY ${DEPLOYMENT_PATH}/context/php/conf.d/opcache.ini /usr/local/etc/php/conf.d/
 
 # Run FPM as default command

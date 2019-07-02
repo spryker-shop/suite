@@ -13,4 +13,4 @@
       RABBITMQ_DEFAULT_USER: "{{ serviceData['api']['username'] }}"
       RABBITMQ_DEFAULT_PASS: "{{ serviceData['api']['password'] }}"
     volumes:
-      - {{ serviceName }}-data:/var/lib/rabbitmq:rw
+      - {{ serviceName }}-{{ serviceData['engine'] }}-data:/var/lib/rabbitmq:rw

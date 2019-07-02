@@ -87,7 +87,7 @@ services:
 
 volumes:
 {% for service, serviceData in services %}
-  {{ service }}-data:
+  {{ service }}-{{ serviceData['engine'] }}-data:
     external: false
 {% endfor %}
 

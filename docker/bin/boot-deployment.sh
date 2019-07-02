@@ -58,10 +58,6 @@ function bootDeployment()
 
     chmod +x ${DEPLOYMENT_DIR}/deploy
     touch ${DEPLOYMENT_DIR}/context/php/conf.d/xdebug.custom.ini
-
-    echo ""
-    echo -e "${INFO}Deployment is generated into ${LGRAY}${DEPLOYMENT_DIR}${NC}"
-    echo -e "Use ${OK}docker/sdk$([ ${PROJECT_NAME} != 'default' ] && echo -n " -p ${PROJECT_NAME}") up${NC} to start the application."
 }
 
 validateParameters

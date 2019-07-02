@@ -111,8 +111,8 @@ groups:
 services:
     database:
         engine: postgres
-        default:
-            username: "spryker"
+        root:
+            username: "root"
             password: "secret"
     broker:
         engine: rabbitmq

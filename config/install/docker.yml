@@ -70,14 +70,8 @@ sections:
             command: "vendor/bin/console setup:search"
 
     init-storages-per-region:
-        ## TODO [Cloud] Workaround until https://spryker.aha.io/features/SCLOUD-86 is developed
-        # propel-drop-db:
-        #     command: "vendor/bin/console propel:database:drop"
         propel-copy-schema:
             command: "vendor/bin/console propel:schema:copy"
-
-        propel-create:
-            command: "vendor/bin/console propel:database:create"
 
         propel-postgres-compatibility:
             command: "vendor/bin/console propel:pg-sql-compat"
@@ -119,8 +113,8 @@ sections:
             command: "vendor/bin/console queue:exchanges:delete-all"
             stores: true
 
-        drop-database:
-            command: "vendor/bin/console propel:database:drop"
+        drop-tables:
+            command: "vendor/bin/console propel:tables:drop"
 
         delete-elastic-search-index:
             command: "vendor/bin/console search:index:delete"

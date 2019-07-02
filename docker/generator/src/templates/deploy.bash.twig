@@ -38,7 +38,7 @@ readonly SPRYKER_PLATFORM_IMAGE=spryker/php:${SPRYKER_PHP_VERSION}
 export SPRYKER_DOCKER_PREFIX=${COMPOSE_PROJECT_NAME}
 export SPRYKER_DOCKER_TAG={{ tag | default('1.0') }}
 export SPRYKER_LOG_DIRECTORY={{ docker['logs']['path'] | default('/var/log/spryker') }}
-readonly SPRYKER_DB_ENGINE="PGSQL"
+readonly SPRYKER_DB_ENGINE={{ services['database']['engine'] == 'mysql' ? 'mysql' : 'pgsql' }}
 readonly SPRYKER_STORES=({{ regions | map((regionData, region) => "'STORES=(" ~ (regionData['stores'] | keys | join(' ')) ~ ")'") | join(' ') | raw }})
 readonly SPRYKER_DEFAULT_STORE={{ _context['default-store'] | default((regions | first)['stores'] | keys | first) }}
 readonly SPRYKER_BROKER_VIRTUAL_HOSTS='{{ regions | map(regionData => regionData['stores'] | map((storeData, store) => storeData['services']['broker']['namespace']) | join(' ')) | join(' ') }}';
@@ -93,7 +93,7 @@ function showHelp()
 function showExecHelp()
 {
     echo -e "${WARN}This is exec help${NC}"
-    echo -e "Example: ${SPRYKER_SELF_SCRIPT} exec -w db -w broker -w search -w scheduler -c \"ls -la; pwd; echo \\\${INTERNAL_VAR}\""
+    echo -e "Example: ${SPRYKER_SELF_SCRIPT} exec -w database -w broker -w search -w scheduler -c \"ls -la; pwd; echo \\\${INTERNAL_VAR}\""
 }
 
 # Global variables
@@ -285,7 +285,7 @@ function isSchedulerJobsCreated()
     [ ${SPRYKER_TESTING_ENABLE} -eq 1 ] && return 0
 
     waitFor scheduler
-    verbose -n "Checking assets are built..."
+    verbose -n "Checking jobs are created..."
 
     local jobsCount=$(execSpryker 'curl -sL ${SPRYKER_SCHEDULER_HOST}:${SPRYKER_SCHEDULER_PORT}/scriptText -d "script=println Jenkins.instance.projects.collect{ it.name }.size"' | tail -n 1)
     [ "${jobsCount}" -gt 0 ] && verbose "[CREATED]" && return ${__TRUE} || verbose "" && return ${__FALSE}
@@ -368,7 +368,7 @@ function loadDemoData()
 {
     setupBroker
 
-    waitFor db
+    waitFor database
     waitFor broker
     waitFor search
     waitFor key_value_store
@@ -391,6 +391,7 @@ function loadDemoData()
 
         export SPRYKER_STORE="${STORES[0]}"
         echo -e "${INFO}Loading demo data for ${SPRYKER_STORE} store.${NC}"
+        initDatabase
         execSpryker 'vendor/bin/install -r docker -s init-storages-per-region -s demodata'
     done
 }
@@ -437,6 +438,14 @@ function execSpryker()
         ${SPRYKER_DOCKER_PREFIX}_cli:${SPRYKER_DOCKER_TAG} bash -s<<'EOF'
             bash -c "${COMMAND}"
 EOF
+}
+
+function execSprykerMultiString()
+{
+    setExtraEnvFiles
+    docker run -i --rm \
+        $(getDefaultRunArguments) \
+        ${SPRYKER_DOCKER_PREFIX}_cli:${SPRYKER_DOCKER_TAG} bash -s${1}
 }
 
 function doBuild()
@@ -599,7 +608,7 @@ case $1 in
                 w)
                     case ${OPTARG} in
                         db|database)
-                            waitFor db
+                            waitFor database
                             ;;
                         queue|broker)
                             waitFor broker
@@ -617,7 +626,7 @@ case $1 in
                             waitFor session
                             ;;
                         all)
-                            waitFor db
+                            waitFor database
                             waitFor broker
                             waitFor search
                             waitFor scheduler

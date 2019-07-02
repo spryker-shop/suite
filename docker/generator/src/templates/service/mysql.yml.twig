@@ -8,10 +8,10 @@
       timeout: 10s
       retries: 5
     environment:
-      MYSQL_ROOT_PASSWORD: "{{ serviceData['default']['password'] }}"
+      MYSQL_ROOT_PASSWORD: "{{ serviceData['root']['password'] }}"
       LANG: C.UTF-8
     volumes:
-      - {{ serviceName }}-data:/var/lib/mysql:rw
+      - {{ serviceName }}-{{ serviceData['engine'] }}-data:/var/lib/mysql:rw
       - ./${DEPLOYMENT_PATH}/context/mysql/my.cnf:/etc/mysql/my.cnf:ro
     ports:
       - 3306:3306

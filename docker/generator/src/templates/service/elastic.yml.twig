@@ -11,4 +11,4 @@
     environment:
       ES_JAVA_OPTS: "-Xms384m -Xmx512m"
     volumes:
-      - {{ serviceName }}-data:/usr/share/elasticsearch/data:rw
+      - {{ serviceName }}-{{ serviceData['engine'] }}-data:/usr/share/elasticsearch/data:rw

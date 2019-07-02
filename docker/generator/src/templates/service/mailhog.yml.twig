@@ -7,4 +7,4 @@
     environment:
       MH_SMTP_BIND_ADDR: 0.0.0.0:1025
     volumes:
-          - {{ serviceName }}-data:/maildir
+          - {{ serviceName }}-{{ serviceData['engine'] }}-data:/maildir

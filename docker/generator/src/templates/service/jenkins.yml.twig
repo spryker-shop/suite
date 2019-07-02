@@ -14,5 +14,5 @@
       SPRYKER_REMOTE_DIR: ${SPRYKER_REMOTE_DIR}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - {{ serviceName }}-data:/var/jenkins_home:rw
+      - {{ serviceName }}-{{ serviceData['engine'] }}-data:/var/jenkins_home:rw
       - ./${DEPLOYMENT_PATH}/env:${SPRYKER_REMOTE_DIR}/env:ro

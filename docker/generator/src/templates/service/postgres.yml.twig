@@ -8,7 +8,7 @@
       timeout: 5s
       retries: 5
     environment:
-      POSTGRES_USER: "{{ serviceData['default']['username'] }}"
-      POSTGRES_PASSWORD: "{{ serviceData['default']['password'] }}"
+      POSTGRES_USER: "{{ serviceData['root']['username'] }}"
+      POSTGRES_PASSWORD: "{{ serviceData['root']['password'] }}"
     volumes:
-      - {{ serviceName }}-data:/var/lib/postgresql/data:rw
+      - {{ serviceName }}-{{ serviceData['engine'] }}-data:/var/lib/postgresql/data:rw

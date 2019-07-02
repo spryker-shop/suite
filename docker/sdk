@@ -22,8 +22,9 @@ do
 done
 shift $((OPTIND -1))
 
-DEPLOYMENT_DIR=${DEPLOYMENT_DIR:-"${BASH_SOURCE%/*}/deployment/${PROJECT_NAME}"}
-readonly DEPLOY_SCRIPT=${DEPLOYMENT_DIR}/deploy
+DESTINATION_DIR=${DESTINATION_DIR:-"${BASH_SOURCE%/*}/deployment/${PROJECT_NAME}"}
+DEPLOYMENT_DIR="${BASH_SOURCE%/*}/deployment/_tmp"
+readonly DEPLOY_SCRIPT=${DESTINATION_DIR}/deploy
 
 function showHelp()
 {
@@ -46,14 +47,22 @@ case $1 in
         # ------------
         [ -d ${DEPLOYMENT_DIR} ] && rm -rf ${DEPLOYMENT_DIR}
         mkdir ${DEPLOYMENT_DIR}
-        # TODO generate to temporary and then replace existing
 
         DEPLOYMENT_DIR="$( cd "${DEPLOYMENT_DIR}" >/dev/null 2>&1 && pwd )"
 
         # ------------
         . ${BASH_SOURCE%/*}/bin/boot-deployment.sh
 
-        [ ! -f .dockerignore ] && cp
+        [ -d ${DESTINATION_DIR} ] && rm -rf ${DESTINATION_DIR}/*
+        [ ! -d ${DESTINATION_DIR} ] && mkdir ${DESTINATION_DIR}
+        cp -R ${DEPLOYMENT_DIR}/. ${DESTINATION_DIR}
+        rm -rf ${DEPLOYMENT_DIR}
+
+        [ ! -f .dockerignore ] && cp ${BASH_SOURCE%/*}/.dockerignore .dockerignore
+
+        echo ""
+        echo -e "${INFO}Deployment is generated into ${LGRAY}${DESTINATION_DIR}${NC}"
+        echo -e "Use ${OK}docker/sdk$([ ${PROJECT_NAME} != 'default' ] && echo -n " -p ${PROJECT_NAME}") up${NC} to start the application."
 
         ;;
     help)
