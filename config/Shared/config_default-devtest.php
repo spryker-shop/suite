@@ -5,6 +5,7 @@
  */
 
 use Monolog\Logger;
+use Pyz\Shared\Scheduler\SchedulerConfig;
 use Pyz\Yves\ShopApplication\YvesBootstrap;
 use Pyz\Zed\Application\Communication\ZedBootstrap;
 use Spryker\Shared\Application\Log\Config\SprykerLoggerConfig;
@@ -19,11 +20,11 @@ use Spryker\Shared\Oauth\OauthConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Queue\QueueConstants;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
+use Spryker\Shared\Scheduler\SchedulerConstants;
+use Spryker\Shared\SchedulerJenkins\SchedulerJenkinsConstants;
 use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\SessionRedis\SessionRedisConfig;
-use Spryker\Shared\SessionRedis\SessionRedisConstants;
-use Spryker\Shared\Setup\SetupConstants;
 use Spryker\Shared\StorageRedis\StorageRedisConstants;
 use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\Twig\TwigConstants;
@@ -42,25 +43,13 @@ $config[PropelConstants::ZED_DB_HOST] = '127.0.0.1';
 $config[PropelConstants::ZED_DB_PORT] = 5432;
 
 // ---------- Redis
-$config[StorageRedisConstants::STORAGE_REDIS_PROTOCOL] = 'tcp';
-$config[StorageRedisConstants::STORAGE_REDIS_HOST] = '127.0.0.1';
-$config[StorageRedisConstants::STORAGE_REDIS_PORT] = 10009;
-$config[StorageRedisConstants::STORAGE_REDIS_PASSWORD] = false;
 $config[StorageRedisConstants::STORAGE_REDIS_DATABASE] = 3;
 
 // ---------- Session
 $config[SessionConstants::SESSION_IS_TEST] = (bool)getenv("SESSION_IS_TEST");
 $config[SessionConstants::YVES_SESSION_SAVE_HANDLER] = SessionRedisConfig::SESSION_HANDLER_REDIS;
-$config[SessionRedisConstants::YVES_SESSION_REDIS_PROTOCOL] = $config[StorageRedisConstants::STORAGE_REDIS_PROTOCOL];
-$config[SessionRedisConstants::YVES_SESSION_REDIS_HOST] = $config[StorageRedisConstants::STORAGE_REDIS_HOST];
-$config[SessionRedisConstants::YVES_SESSION_REDIS_PORT] = $config[StorageRedisConstants::STORAGE_REDIS_PORT];
-$config[SessionRedisConstants::YVES_SESSION_REDIS_PASSWORD] = $config[StorageRedisConstants::STORAGE_REDIS_PASSWORD];
 $config[SessionConstants::ZED_SESSION_COOKIE_SECURE] = false;
 $config[SessionConstants::ZED_SESSION_SAVE_HANDLER] = SessionRedisConfig::SESSION_HANDLER_REDIS;
-$config[SessionRedisConstants::ZED_SESSION_REDIS_PROTOCOL] = $config[SessionRedisConstants::YVES_SESSION_REDIS_PROTOCOL];
-$config[SessionRedisConstants::ZED_SESSION_REDIS_HOST] = $config[SessionRedisConstants::YVES_SESSION_REDIS_HOST];
-$config[SessionRedisConstants::ZED_SESSION_REDIS_PORT] = $config[SessionRedisConstants::YVES_SESSION_REDIS_PORT];
-$config[SessionRedisConstants::ZED_SESSION_REDIS_PASSWORD] = $config[SessionRedisConstants::YVES_SESSION_REDIS_PASSWORD];
 
 // ---------- Elasticsearch
 $config[SearchConstants::SEARCH_INDEX_NAME_SUFFIX] = '_devtest';
@@ -81,9 +70,15 @@ $config[TwigConstants::YVES_TWIG_OPTIONS] = [
 // ---------- Logging
 $config[LogConstants::LOG_FILE_PATH] = APPLICATION_ROOT_DIR . '/data/logs';
 
-// ---------- Jenkins
-$config[SetupConstants::JENKINS_BASE_URL] = 'http://localhost:10007/';
-$config[SetupConstants::JENKINS_DIRECTORY] = '/data/shop/development/shared/data/common/jenkins';
+// ---------- Scheduler
+$config[SchedulerConstants::ENABLED_SCHEDULERS] = [
+    SchedulerConfig::SCHEDULER_JENKINS,
+];
+$config[SchedulerJenkinsConstants::JENKINS_CONFIGURATION] = [
+    SchedulerConfig::SCHEDULER_JENKINS => [
+        'host' => 'http://localhost:10007/',
+    ],
+];
 
 // ---------- ErrorHandler
 $config[ErrorHandlerConstants::ERROR_RENDERER] = WebExceptionErrorRenderer::class;
