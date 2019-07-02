@@ -17,7 +17,6 @@ $jobs[] = [
     'command' => '$PHP_BIN vendor/bin/console mailqueue:registration:send',
     'schedule' => '*/10 * * * *',
     'enable' => false,
-    'run_on_non_production' => true,
     'stores' => $allStores,
 ];
 
@@ -27,7 +26,6 @@ $jobs[] = [
     'command' => '$PHP_BIN vendor/bin/console product:check-validity',
     'schedule' => '0 6 * * *',
     'enable' => true,
-    'run_on_non_production' => true,
     'stores' => $allStores,
 ];
 
@@ -37,7 +35,6 @@ $jobs[] = [
     'command' => '$PHP_BIN vendor/bin/console product-label:validity',
     'schedule' => '0 6 * * *',
     'enable' => true,
-    'run_on_non_production' => true,
     'stores' => $allStores,
 ];
 $jobs[] = [
@@ -45,7 +42,6 @@ $jobs[] = [
     'command' => '$PHP_BIN vendor/bin/console product-label:relations:update -vvv',
     'schedule' => '* * * * *',
     'enable' => true,
-    'run_on_non_production' => true,
     'stores' => $allStores,
 ];
 
@@ -55,7 +51,6 @@ $jobs[] = [
     'command' => '$PHP_BIN vendor/bin/console oms:check-condition',
     'schedule' => '* * * * *',
     'enable' => true,
-    'run_on_non_production' => true,
     'stores' => $allStores,
 ];
 
@@ -64,7 +59,6 @@ $jobs[] = [
     'command' => '$PHP_BIN vendor/bin/console oms:check-timeout',
     'schedule' => '* * * * *',
     'enable' => true,
-    'run_on_non_production' => true,
     'stores' => $allStores,
 ];
 
@@ -73,7 +67,6 @@ $jobs[] = [
     'command' => '$PHP_BIN vendor/bin/console oms:clear-locks',
     'schedule' => '0 6 * * *',
     'enable' => true,
-    'run_on_non_production' => true,
     'stores' => $allStores,
 ];
 
@@ -82,7 +75,6 @@ $jobs[] = [
     'command' => '$PHP_BIN vendor/bin/console queue:worker:start',
     'schedule' => '* * * * *',
     'enable' => true,
-    'run_on_non_production' => true,
     'stores' => $allStores,
 ];
 
@@ -91,17 +83,15 @@ $jobs[] = [
     'command' => '$PHP_BIN vendor/bin/console product-relation:update -vvv',
     'schedule' => '30 2 * * *',
     'enable' => true,
-    'run_on_non_production' => true,
     'stores' => $allStores,
 ];
 
 $jobs[] = [
-  'name' => 'event-trigger-timeout',
-  'command' => '$PHP_BIN vendor/bin/console event:trigger:timeout -vvv',
-  'schedule' => '*/5 * * * *',
-  'enable' => true,
-  'run_on_non_production' => true,
-'stores' => $allStores,
+    'name' => 'event-trigger-timeout',
+    'command' => '$PHP_BIN vendor/bin/console event:trigger:timeout -vvv',
+    'schedule' => '*/5 * * * *',
+    'enable' => true,
+    'stores' => $allStores,
 ];
 
 $jobs[] = [
@@ -109,7 +99,6 @@ $jobs[] = [
     'command' => '$PHP_BIN vendor/bin/console deactivate-discontinued-products',
     'schedule' => '0 0 * * *',
     'enable' => true,
-    'run_on_non_production' => true,
     'stores' => $allStores,
 ];
 
@@ -120,7 +109,6 @@ $jobs[] = [
     'command' => '$PHP_BIN vendor/bin/console state-machine:check-condition',
     'schedule' => '* * * * *',
     'enable' => true,
-    'run_on_non_production' => true,
     'stores' => $allStores,
 ];
 
@@ -129,7 +117,6 @@ $jobs[] = [
     'command' => '$PHP_BIN vendor/bin/console state-machine:check-timeout',
     'schedule' => '* * * * *',
     'enable' => true,
-    'run_on_non_production' => true,
     'stores' => $allStores,
 ];
 
@@ -138,7 +125,6 @@ $jobs[] = [
     'command' => '$PHP_BIN vendor/bin/console state-machine:clear-locks',
     'schedule' => '0 6 * * *',
     'enable' => true,
-    'run_on_non_production' => true,
     'stores' => $allStores,
 ];
 */
@@ -149,7 +135,6 @@ $jobs[] = [
     'command' => '$PHP_BIN vendor/bin/console quote:delete-expired-guest-quotes',
     'schedule' => '30 1 * * *',
     'enable' => true,
-    'run_on_non_production' => true,
     'stores' => $allStores,
 ];
 
@@ -159,7 +144,6 @@ $jobs[] = [
     'command' => '$PHP_BIN vendor/bin/console quote-request:close-outdated',
     'schedule' => '0 * * * *',
     'enable' => true,
-    'run_on_non_production' => true,
     'stores' => $allStores,
 ];
 
@@ -169,6 +153,5 @@ $jobs[] = [
     'command' => '$PHP_BIN vendor/bin/console price-product-schedule:apply',
     'schedule' => '0 6 * * *',
     'enable' => true,
-    'run_on_non_production' => true,
     'stores' => $allStores,
 ];

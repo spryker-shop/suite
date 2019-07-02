@@ -28,9 +28,9 @@ coverage:
 
 extensions:
     enabled:
-        - Codeception\Extension\Phantoman
+        - \SprykerTest\Shared\Testify\Helper\WebDriverHelper
     config:
-        Codeception\Extension\Phantoman:
+        \SprykerTest\Shared\Testify\Helper\WebDriverHelper:
             suites: ['Presentation']
             loadImages: false
             diskCache: true

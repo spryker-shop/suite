@@ -3,8 +3,8 @@
   "description": "Spryker Suite (internal)",
   "license": "MIT",
   "require": {
-    "spryker/spryker": "dev-master",
-    "spryker/spryker-shop": "dev-master",
+    "spryker/spryker": "dev-feature/sc-776/sc-777/config-tests-webdriver-enablers",
+    "spryker/spryker-shop": "dev-feature/sc-455/master-define-the-current-environment-in-config",
     "spryker-eco/loggly": "dev-master",
     "spryker/rabbit-mq": "dev-master",
     "spryker/install": "dev-master",
@@ -70,7 +70,7 @@
     "spryker/development-core": "dev-master",
     "spryker/code-generator": "dev-master",
     "spryker/code-sniffer": "dev-master",
-    "spryker/git-hook": "dev-master",
+    "spryker/git-hook": "dev-feature/sc-777-migrate-docker-to-nonsplit",
     "codeception/codeception": "^2.0.0",
     "pdepend/pdepend": "^2.2.2",
     "phpmd/phpmd": "^2.4",
@@ -88,7 +88,8 @@
     "myclabs/deep-copy": "~1.8.1",
     "spryker-sdk/phpstan-spryker": "dev-master",
     "spryker-sdk/spryk": "dev-master as 0.2.0",
-    "spryker-sdk/spryk-gui": "dev-master as 0.1.1",
+    "spryker-sdk/spryk-gui": "dev-feature/sc-455/master-define-the-current-environment-in-config",
+    "spryker-sdk/composer-constrainer": "dev-master",
     "roave/better-reflection": "~3.3.0"
   },
   "autoload": {
@@ -133,6 +134,10 @@
     {
       "type": "git",
       "url": "git@github.com:spryker/development-core.git"
+    },
+    {
+      "type": "git",
+      "url": "git@github.com:spryker-sdk/composer-constrainer.git"
     }
   ],
   "scripts": {

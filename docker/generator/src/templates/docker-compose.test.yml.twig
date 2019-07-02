@@ -1,0 +1,36 @@
+version: "3.5"
+
+x-env_file:
+  &test-envfile
+  env_file:
+    - ${DEPLOYMENT_PATH}/env/testing.env
+
+services:
+{% for group in groups %}
+{% for applicationName, applicationData in group['applications'] %}
+
+  {{ applicationName }}:
+    <<: *test-envfile
+{% endfor %}
+{% endfor %}
+
+  webdriver:
+    image: wernight/phantomjs:latest
+    networks:
+      - services
+      - public
+      - private
+    ports:
+      - 4444:4444
+    command: "phantomjs --webdriver=4444 --disk-cache=true --load-images=false --webdriver-loglevel=DEBUG"
+    links:
+{% for group in groups %}
+{% for applicationName, applicationData in group['applications'] %}
+{% for domain, domainData in applicationData['domain'] %}
+      - frontend:{{ domain | split(':') | first }}
+{% endfor %}
+{% endfor %}
+{% endfor %}
+
+  scheduler:
+    image: tianon/true
