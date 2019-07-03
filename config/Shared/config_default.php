@@ -1,7 +1,6 @@
 <?php
 
 use Monolog\Logger;
-use Pyz\Shared\Console\ConsoleConstants;
 use Spryker\Client\RabbitMq\Model\RabbitMqAdapter;
 use Spryker\Glue\Log\Plugin\GlueLoggerConfigPlugin;
 use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBuilderPlugin;

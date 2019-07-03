@@ -69,14 +69,7 @@ use SprykerEco\Shared\Loggly\LogglyConstants;
 use SprykerShop\Shared\CalculationPage\CalculationPageConstants;
 use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
 
-/* Init block */
 $CURRENT_STORE = Store::getInstance()->getStoreName();
-
-$logBaseFolder = getenv('SPRYKER_LOG_DIRECTORY') ?: sprintf('%s/data', APPLICATION_ROOT_DIR);
-$defaultLogDestination = '%STORE%/logs/%APP%/%LOG_TYPE%.log';
-$logDestination = getenv('SPRYKER_LOG_DESTINATION') ?: $defaultLogDestination;
-
-/* End Init block */
 
 /* ZED */
 $config[ApplicationConstants::HOST_ZED] = getenv('SPRYKER_ZED_HOST');
@@ -544,7 +537,6 @@ $config[SearchConstants::FULL_TEXT_BOOSTED_BOOSTING_VALUE] = 3;
 $config[SearchConstants::SEARCH_INDEX_NAME_SUFFIX] = '';
 /* End Search service */
 
-
 // ---------- KV storage
 $config[StorageConstants::STORAGE_KV_SOURCE] = strtolower(getenv('SPRYKER_KEY_VALUE_STORE_ENGINE'));
 
@@ -604,8 +596,8 @@ $config[SessionRedisConstants::YVES_SESSION_REDIS_DATABASE] = getenv('SPRYKER_SE
  */
 //$config[SessionRedisConstants::ZED_SESSION_REDIS_DATA_SOURCE_NAMES] = [];
 
-$config[SessionRedisConstants::ZED_SESSION_REDIS_PROTOCOL] =  'tcp';
-$config[SessionRedisConstants::ZED_SESSION_REDIS_HOST] =  getenv('SPRYKER_SESSION_BE_HOST');
+$config[SessionRedisConstants::ZED_SESSION_REDIS_PROTOCOL] = 'tcp';
+$config[SessionRedisConstants::ZED_SESSION_REDIS_HOST] = getenv('SPRYKER_SESSION_BE_HOST');
 $config[SessionRedisConstants::ZED_SESSION_REDIS_PORT] = getenv('SPRYKER_SESSION_BE_PORT');
 $config[SessionRedisConstants::ZED_SESSION_REDIS_PASSWORD] = false;
 $config[SessionRedisConstants::ZED_SESSION_REDIS_DATABASE] = getenv('SPRYKER_SESSION_BE_NAMESPACE');

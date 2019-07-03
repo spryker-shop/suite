@@ -41,7 +41,7 @@ export SPRYKER_DOCKER_TAG={{ tag | default('1.0') }}
 export SPRYKER_LOG_DIRECTORY={{ docker['logs']['path'] | default('/var/log/spryker') }}
 readonly SPRYKER_DB_ENGINE={{ services['database']['engine'] == 'mysql' ? 'mysql' : 'pgsql' }}
 readonly SPRYKER_STORES=({{ regions | map((regionData, region) => "'STORES=(" ~ (regionData['stores'] | keys | join(' ')) ~ ")'") | join(' ') | raw }})
-readonly SPRYKER_DEFAULT_STORE={{ _context['default-store'] | default((regions | first)['stores'] | keys | first) }}
+readonly SPRYKER_DEFAULT_STORE={{ (regions | first)['stores'] | keys | first }}
 readonly SPRYKER_BROKER_VIRTUAL_HOSTS='{{ regions | map(regionData => regionData['stores'] | map((storeData, store) => storeData['services']['broker']['namespace']) | join(' ')) | join(' ') }}';
 {# TODO get specific username, add user #}
 readonly SPRYKER_BROKER_USERNAME={{ services['broker']['api']['username'] }}

@@ -91,7 +91,7 @@ foreach ($projectData['groups'] ?? [] as $groupName => $groupData) {
 
         if ($applicationData['application'] === 'yves') {
             foreach ($applicationData['domain'] ?? [] as $domain => $domainData) {
-                if ($domainData['store'] !== $projectData['default-store']) {
+                if ($domainData['store'] !== ($projectData['docker']['testing']['store'] ?? '')) {
                     continue;
                 }
                 file_put_contents(
