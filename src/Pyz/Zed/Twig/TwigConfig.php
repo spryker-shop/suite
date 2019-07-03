@@ -33,7 +33,7 @@ class TwigConfig extends SprykerTwigConfig
      */
     public function getZedDirectoryPathPatterns()
     {
-        $directories = glob('vendor/spryker/spryker/Bundles/*/src/*/Zed/*/Presentation');
+        $directories = glob('vendor/spryker/spryker/Bundles/*/src/*/Zed/*/Presentation', GLOB_NOSORT | GLOB_ONLYDIR);
         $directories = array_merge(
             $directories,
             parent::getZedDirectoryPathPatterns()
