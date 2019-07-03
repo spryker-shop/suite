@@ -71,11 +71,6 @@ use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
 
 /* Init block */
 $CURRENT_STORE = Store::getInstance()->getStoreName();
-
-$logBaseFolder = getenv('SPRYKER_LOG_DIRECTORY') ?: sprintf('%s/data', APPLICATION_ROOT_DIR);
-$defaultLogDestination = '%STORE%/logs/%APP%/%LOG_TYPE%.log';
-$logDestination = getenv('SPRYKER_LOG_DESTINATION') ?: $defaultLogDestination;
-
 /* End Init block */
 
 /* ZED */
@@ -544,7 +539,6 @@ $config[SearchConstants::FULL_TEXT_BOOSTED_BOOSTING_VALUE] = 3;
 $config[SearchConstants::SEARCH_INDEX_NAME_SUFFIX] = '';
 /* End Search service */
 
-
 // ---------- KV storage
 $config[StorageConstants::STORAGE_KV_SOURCE] = strtolower(getenv('SPRYKER_KEY_VALUE_STORE_ENGINE'));
 
@@ -604,8 +598,8 @@ $config[SessionRedisConstants::YVES_SESSION_REDIS_DATABASE] = getenv('SPRYKER_SE
  */
 //$config[SessionRedisConstants::ZED_SESSION_REDIS_DATA_SOURCE_NAMES] = [];
 
-$config[SessionRedisConstants::ZED_SESSION_REDIS_PROTOCOL] =  'tcp';
-$config[SessionRedisConstants::ZED_SESSION_REDIS_HOST] =  getenv('SPRYKER_SESSION_BE_HOST');
+$config[SessionRedisConstants::ZED_SESSION_REDIS_PROTOCOL] = 'tcp';
+$config[SessionRedisConstants::ZED_SESSION_REDIS_HOST] = getenv('SPRYKER_SESSION_BE_HOST');
 $config[SessionRedisConstants::ZED_SESSION_REDIS_PORT] = getenv('SPRYKER_SESSION_BE_PORT');
 $config[SessionRedisConstants::ZED_SESSION_REDIS_PASSWORD] = false;
 $config[SessionRedisConstants::ZED_SESSION_REDIS_DATABASE] = getenv('SPRYKER_SESSION_BE_NAMESPACE');
@@ -617,7 +611,7 @@ $config[MailConstants::SMTP_PORT] = getenv('SPRYKER_SMTP_PORT');
 
 /* Logging */
 $config[LogConstants::LOGGER_CONFIG] = SprykerLoggerConfig::class;
-$config[LogConstants::LOG_FILE_PATH] = getenv('SPRYKER_LOG_DIRECTORY') ?: APPLICATION_ROOT_DIR . '/data/logs';
+$config[LogConstants::LOG_FILE_PATH] = (getenv('SPRYKER_LOG_DIRECTORY') ?: APPLICATION_ROOT_DIR . '/data') . '/logs';
 
 $config[LogConstants::LOGGER_CONFIG_ZED] = ZedLoggerConfigPlugin::class;
 $config[LogConstants::LOGGER_CONFIG_YVES] = YvesLoggerConfigPlugin::class;
@@ -632,7 +626,7 @@ $config[LogConstants::LOG_SANITIZE_FIELDS] = [
 $config[LogConstants::LOG_QUEUE_NAME] = 'log-queue';
 $config[LogConstants::LOG_ERROR_QUEUE_NAME] = 'error-log-queue';
 
-$logDir = (getenv('SPRYKER_LOG_DIRECTORY') ?: APPLICATION_ROOT_DIR . '/data/logs') . '/' . APPLICATION_STORE;
+$logDir = (getenv('SPRYKER_LOG_DIRECTORY') ?: APPLICATION_ROOT_DIR . '/data') . '/' . APPLICATION_STORE;
 
 $config[QueueConstants::QUEUE_WORKER_OUTPUT_FILE_NAME] = $logDir . '/ZED/queue.log';
 $config[PropelConstants::LOG_FILE_PATH] = $logDir . '/ZED/propel.log';
@@ -661,4 +655,4 @@ $config[ErrorPageConstants::ENABLE_ERROR_404_STACK_TRACE] = (bool)getenv('SPRYKE
 $config[ApplicationConstants::ENABLE_PRETTY_ERROR_HANDLER] = (bool)getenv('SPRYKER_DEBUG_ENABLED');
 
 // ----------- Console
-$config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = (bool)getenv('SPRYKER_TESTING_ENABLED') || (bool)getenv('SPRYKER_DEBUG_ENABLED');
+$config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = (bool)getenv('DEVELOPMENT_CONSOLE_COMMANDS');

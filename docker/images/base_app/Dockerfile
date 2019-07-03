@@ -39,8 +39,13 @@ ARG SPRYKER_DB_ENGINE
 ENV APPLICATION_ENV=${APPLICATION_ENV}
 ENV SPRYKER_DB_ENGINE=${SPRYKER_DB_ENGINE}
 
-RUN vendor/bin/install -r docker -s build \
-    && rm -rf /var/run/opcache/*
+RUN vendor/bin/install -r docker -s build
+
+# Tests contain transfer declaration
+COPY --chown=spryker:spryker tests ${srcRoot}/tests
+
+ENV DEVELOPMENT_CONSOLE_COMMANDS=1
+RUN vendor/bin/install -r docker -s build-development
 
 ### Final container, with testing tools, public directory and data
 FROM spryker_app_base AS spryker_app
@@ -48,10 +53,11 @@ FROM spryker_app_base AS spryker_app
 # Add remaining Spryker files/directories
 COPY --chown=spryker:spryker data ${srcRoot}/data
 COPY --chown=spryker:spryker public ${srcRoot}/public
-COPY --chown=spryker:spryker tests ${srcRoot}/tests
 COPY --chown=spryker:spryker .* *.* LICENSE ${srcRoot}/
 
 RUN composer dump-autoload -o
+
+RUN rm -rf /var/run/opcache/*
 
 ARG DEPLOYMENT_PATH
 ENV DEPLOYMENT_PATH=${DEPLOYMENT_PATH}

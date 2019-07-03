@@ -11,9 +11,6 @@ sections:
         generate-transfers:
             command: "vendor/bin/console transfer:generate"
 
-        generate-transfer-databuilders:
-            command: "vendor/bin/console transfer:databuilder:generate"
-
         twig-cache-warmup:
             command: "vendor/bin/console twig:cache:warmer"
 
@@ -36,6 +33,9 @@ sections:
             command: "vendor/bin/console search:setup:index-map"
 
     build-development:
+        generate-transfer-databuilders:
+            command: "vendor/bin/console transfer:databuilder:generate"
+
         generate-auto-completion:
             command: "vendor/bin/console dev:ide:generate-auto-completion"
 
@@ -94,6 +94,9 @@ sections:
 
         update-product-labels:
             command: "vendor/bin/console product-label:relations:update"
+
+        translator-generate-cache:
+            command: "vendor/bin/console translator:generate-cache"
 
     sync:
         run-worker:
