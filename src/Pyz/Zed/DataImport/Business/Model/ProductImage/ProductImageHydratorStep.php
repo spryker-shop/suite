@@ -69,8 +69,12 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
 
         if (!empty($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT])) {
             $imageSetEntityTransfer->setFkProductAbstract($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT]);
-        } elseif (!empty($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT])) {
+            $imageSetEntityTransfer->setFkProduct('null');
+        }
+
+        if (!empty($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT])) {
             $imageSetEntityTransfer->setFkProduct($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT]);
+            $imageSetEntityTransfer->setFkProductAbstract('null');
         }
 
         if (isset($dataSet[static::KEY_IMAGE_SET_FK_LOCALE])) {

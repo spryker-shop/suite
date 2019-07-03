@@ -10,12 +10,9 @@ namespace Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\Sql;
 interface ProductImageSqlInterface
 {
     /**
-     * @param string $idProduct
-     * @param string $fkProduct
-     *
      * @return string
      */
-    public function createProductImageSetSQL(string $idProduct, string $fkProduct): string;
+    public function createProductImageSetSQL(): string;
 
     /**
      * @return string
@@ -26,29 +23,4 @@ interface ProductImageSqlInterface
      * @return string
      */
     public function createProductImageSetRelationSQL(): string;
-
-    /**
-     * @return string
-     */
-    public function convertLocaleNameToId(): string;
-
-    /**
-     * @param string $tableName
-     * @param string $fieldName
-     *
-     * @return string
-     */
-    public function convertProductSkuToId(string $tableName, string $fieldName): string;
-
-    /**
-     * @return string
-     */
-    public function convertImageNameToId(): string;
-
-    /**
-     * @param string $fkProductKey
-     *
-     * @return string
-     */
-    public function findProductImageSetIds(string $fkProductKey): string;
 }
