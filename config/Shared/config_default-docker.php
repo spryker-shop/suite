@@ -69,9 +69,7 @@ use SprykerEco\Shared\Loggly\LogglyConstants;
 use SprykerShop\Shared\CalculationPage\CalculationPageConstants;
 use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
 
-/* Init block */
 $CURRENT_STORE = Store::getInstance()->getStoreName();
-/* End Init block */
 
 /* ZED */
 $config[ApplicationConstants::HOST_ZED] = getenv('SPRYKER_ZED_HOST');

@@ -1,12 +1,11 @@
 version: "0.1"
 
-namespace: spryker_demo
+namespace: spryker
 tag: 'dev'
 
 environment: docker
 php: 7.2
 
-default-store: DE
 regions:
     EU:
         services:
@@ -140,6 +139,9 @@ docker:
 
     ssl:
         enabled: false
+
+    testing:
+        store: DE
 
     debug:
         enabled: true

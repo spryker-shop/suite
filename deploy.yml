@@ -6,7 +6,6 @@ tag: '1.0'
 environment: docker
 php: 7.2
 
-default-store: DE
 regions:
     EU:
         services:
@@ -140,6 +139,9 @@ docker:
 
     ssl:
         enabled: false
+
+    testing:
+        store: DE
 
     mount:
         baked:
