@@ -6,7 +6,7 @@ pushd ${BASH_SOURCE%/*} > /dev/null
 . ../constants.sh
 . ../console.sh
 
-../require.sh docker docker-sync
+../require.sh docker mutagen
 popd > /dev/null
 
 function dataSync()

@@ -83,6 +83,7 @@ function showHelp()
     echo -e " ${GREEN}restart${NC}\t  - Restart Spryker containers."
     echo -e " ${GREEN}run${NC}\t\t  - Run Spryker containers."
     echo -e " ${GREEN}up${NC}\t\t  - Build and run Spryker apps based on demo data."
+    echo -e " ${GREEN}logs${NC}\t\t  - Tail all application exception logs."
 
     echo -e ""
     echo -e "${INFO}Possible options are:${NC}"
@@ -181,7 +182,9 @@ function buildAssets()
         -f ${DEPLOYMENT_PATH}/images/builder_assets/Dockerfile \
         .
 
-    docker run -i --rm \
+    local tty
+    [ -t -0 ] && tty='t' || tty=''
+    docker run -i${tty} --rm \
         -v ${SPRYKER_DOCKER_PREFIX}_assets:/assets \
         --name=${SPRYKER_DOCKER_PREFIX}_builder_assets \
         ${SPRYKER_DOCKER_PREFIX}_builder_assets:${SPRYKER_DOCKER_TAG} \
@@ -239,15 +242,14 @@ function buildBaseImage()
 {% if isDevelopment %}
 function runApplicationBuild()
 {
-    docker run -i --rm \
+    local tty
+    [ -t -0 ] && tty='t' || tty=''
+    docker run -i${tty} --rm \
         -e COMMAND="$1" \
         -e SPRYKER_DB_ENGINE=${SPRYKER_DB_ENGINE} \
-{# TODO consider using build.env #}
         --restart=no \
         ${DOCKER_EXTRA_OPTIONS} \
-        ${SPRYKER_DOCKER_PREFIX}_cli:${SPRYKER_DOCKER_TAG} bash -s<<'EOF'
-            bash -c "${COMMAND}"
-EOF
+        ${SPRYKER_DOCKER_PREFIX}_cli:${SPRYKER_DOCKER_TAG} /usr/local/bin/execute.sh
 }
 
 function buildApplication()
@@ -288,7 +290,7 @@ function isSchedulerJobsCreated()
     waitFor scheduler
     verbose -n "Checking jobs are created..."
 
-    local jobsCount=$(execSpryker 'curl -sL ${SPRYKER_SCHEDULER_HOST}:${SPRYKER_SCHEDULER_PORT}/scriptText -d "script=println Jenkins.instance.projects.collect{ it.name }.size"' | tail -n 1)
+    local jobsCount=$(execSpryker 'curl -sL ${SPRYKER_SCHEDULER_HOST}:${SPRYKER_SCHEDULER_PORT}/scriptText -d "script=println Jenkins.instance.projects.collect{ it.name }.size" | tail -n 1 | tr -d " \n\r"' )
     [ "${jobsCount}" -gt 0 ] && verbose "[CREATED]" && return ${__TRUE} || verbose "" && return ${__FALSE}
 }
 
@@ -426,6 +428,7 @@ function getDefaultRunArguments()
     echo -n " --network=${SPRYKER_DOCKER_PREFIX}_services"
     echo -n " --network=${SPRYKER_DOCKER_PREFIX}_services"
     echo -n " --network=${SPRYKER_DOCKER_PREFIX}_private"
+    echo -n " -v ${SPRYKER_DOCKER_PREFIX}_logs:${SPRYKER_LOG_DIRECTORY}:rw"
     echo -n " ${DOCKER_EXTRA_ENV_FILES}"
     echo -n " ${DOCKER_EXTRA_OPTIONS}"
 }
@@ -433,12 +436,13 @@ function getDefaultRunArguments()
 function execSpryker()
 {
     setExtraEnvFiles
-    docker run -i --rm \
+
+    local tty
+    [ -t -0 ] && tty='t' || tty=''
+    docker run -i${tty} --rm \
         -e COMMAND="${1}" \
         $(getDefaultRunArguments) \
-        ${SPRYKER_DOCKER_PREFIX}_cli:${SPRYKER_DOCKER_TAG} bash -s<<'EOF'
-            bash -c "${COMMAND}"
-EOF
+        ${SPRYKER_DOCKER_PREFIX}_cli:${SPRYKER_DOCKER_TAG} /usr/local/bin/execute.sh
 }
 
 function execSprykerMultiString()
@@ -675,6 +679,9 @@ case $1 in
     acceptance-tests)
         ensureTestingMode
         doCli console code:test:acceptance ${@:2}
+        ;;
+    logs)
+        execSpryker "find ${SPRYKER_LOG_DIRECTORY} -type f \( -name \"exception.log\" \) -exec tail -f \"$file\" {} +"
         ;;
     trouble)
         dataSync clean

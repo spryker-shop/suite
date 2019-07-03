@@ -33,4 +33,6 @@ services:
 {% endfor %}
 
   scheduler:
-    image: tianon/true
+    image: nginx:alpine
+    volumes:
+      - ./${DEPLOYMENT_PATH}/context/nginx/dummy/scheduler.conf:/etc/nginx/conf.d/default.conf:ro

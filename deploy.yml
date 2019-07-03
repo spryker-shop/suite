@@ -88,12 +88,12 @@ groups:
         applications:
             yves_us:
                 application: yves
-                services:
-                    session:
-                        namespace: 5
                 domain:
                     yves.us.demo-spryker.com:
                         store: US
+                        services:
+                            session:
+                                namespace: 5
             glue_us:
                 application: glue
                 domain:
