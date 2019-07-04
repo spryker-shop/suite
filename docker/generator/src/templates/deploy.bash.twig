@@ -528,7 +528,16 @@ function doPull()
     execDockerCompose pull --ignore-pull-failures 2> /dev/null
 }
 
-if [ "$1" != "exec" -a "$1" != "shell" ] ; then
+case $1 in
+  acceptance-tests)
+    ;;
+  functional-tests)
+    ;;
+  exec)
+    ;;
+  shell)
+    ;;
+  *)
     # Starting accept arguments after $1
     OPTIND=2
     while getopts ":xvt" opt; do
@@ -557,7 +566,7 @@ if [ "$1" != "exec" -a "$1" != "shell" ] ; then
                 ;;
         esac
     done
-fi
+esac
 
 [ ${SPRYKER_XDEBUG_ENABLE} -eq 1 ] && enableDebuggingMode
 [ ${SPRYKER_TESTING_ENABLE} -eq 1 ] && enableTestingMode
