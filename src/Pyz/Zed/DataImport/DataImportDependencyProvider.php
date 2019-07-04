@@ -210,6 +210,61 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new ProductMeasurementSalesUnitDataImportPlugin(),
             new ProductMeasurementSalesUnitStoreDataImportPlugin(),
             new ProductQuantityDataImportPlugin(),
+            //new ProductAlternativeDataImportPlugin(), #ProductAlternativeFeature
+            new ProductPackagingUnitTypeDataImportPlugin(),
+            new ProductPackagingUnitDataImportPlugin(),
+            new BusinessOnBehalfCompanyUserDataImportPlugin(),
+            new SalesOrderThresholdDataImportPlugin(),
+            new MerchantDataImportPlugin(),
+            new MerchantRelationshipDataImportPlugin(),
+            new MerchantRelationshipSalesOrderThresholdDataImportPlugin(),
+            new ProductListDataImportPlugin(),
+            new ProductListCategoryDataImportPlugin(),
+            new ProductListProductConcreteDataImportPlugin(),
+            new MerchantRelationshipProductListDataImportPlugin(),
+            new PriceProductMerchantRelationshipDataImportPlugin(),
+            new FileManagerDataImportPlugin(),
+            new CompanyUserDataImportPlugin(),
+            new CompanyRoleDataImportPlugin(),
+            new CompanyRolePermissionDataImportPlugin(),
+            new CompanyUserRoleDataImportPlugin(),
+            new CompanyBusinessUnitUserDataImportPlugin(),
+            new CompanyBusinessUnitAddressDataImportPlugin(),
+            new MultiCartDataImportPlugin(),
+            new SharedCartDataImportPlugin(),
+            new ShoppingListDataImportPlugin(),
+            new ShoppingListItemDataImportPlugin(),
+            new ShoppingListCompanyUserDataImportPlugin(),
+            new ShoppingListCompanyBusinessUnitDataImportPlugin(),
+            new QuoteRequestDataImportPlugin(),
+            new QuoteRequestVersionDataImportPlugin(),
+            new PriceProductScheduleDataImportPlugin(),
+            new ContentBannerDataImportPlugin(),
+            new ContentProductAbstractListDataImportPlugin(),
+            new ContentProductSetDataImportPlugin(),
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    protected function getDataImporterRegisteredPlugins(): array
+    {
+        return [
+            [new CategoryDataImportPlugin(), DataImportConfig::IMPORT_TYPE_CATEGORY_TEMPLATE],
+            new CmsPageDataImportPlugin(),
+            new CmsPageStoreDataImportPlugin(),
+            new CompanyDataImportPlugin(),
+            new CompanyBusinessUnitDataImportPlugin(),
+            new CompanyUnitAddressDataImportPlugin(),
+            new CompanyUnitAddressLabelDataImportPlugin(),
+            new CompanyUnitAddressLabelRelationDataImportPlugin(),
+            new ProductDiscontinuedDataImportPlugin(), #ProductDiscontinuedFeature
+            new ProductMeasurementUnitDataImportPlugin(),
+            new ProductMeasurementBaseUnitDataImportPlugin(),
+            new ProductMeasurementSalesUnitDataImportPlugin(),
+            new ProductMeasurementSalesUnitStoreDataImportPlugin(),
+            new ProductQuantityDataImportPlugin(),
             new ProductAlternativeDataImportPlugin(), #ProductAlternativeFeature
             new ProductPackagingUnitTypeDataImportPlugin(),
             new ProductPackagingUnitDataImportPlugin(),

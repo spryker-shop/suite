@@ -182,6 +182,61 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     }
 
     /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterCollectionInterface
+     */
+    public function getImporterList()
+    {
+        $dataImporterCollection = $this->createDataImporterCollection();
+        $dataImporterCollection
+            ->addDataImporter($this->createStoreImporter())
+            ->addDataImporter($this->createCurrencyImporter())
+            ->addDataImporter($this->createOrderSourceImporter())
+            ->addDataImporter($this->createCategoryTemplateImporter())
+            ->addDataImporter($this->createCustomerImporter())
+            ->addDataImporter($this->createGlossaryImporter())
+            ->addDataImporter($this->createTaxImporter())
+            ->addDataImporter($this->createShipmentImporter())
+            ->addDataImporter($this->createShipmentPriceImporter())
+            ->addDataImporter($this->createDiscountImporter())
+            ->addDataImporter($this->createDiscountStoreImporter())
+            ->addDataImporter($this->createDiscountVoucherImporter())
+            ->addDataImporter($this->createStockImporter())
+            ->addDataImporter($this->createProductAttributeKeyImporter())
+            ->addDataImporter($this->createProductManagementAttributeImporter())
+            ->addDataImporter($this->createProductAbstractImporter())
+            ->addDataImporter($this->createProductAbstractStoreImporter())
+            ->addDataImporter($this->createProductConcreteImporter())
+            ->addDataImporter($this->createProductImageImporter())
+            ->addDataImporter($this->createProductStockImporter())
+            ->addDataImporter($this->createProductOptionImporter())
+            ->addDataImporter($this->createProductOptionPriceImporter())
+            ->addDataImporter($this->createProductGroupImporter())
+            ->addDataImporter($this->createProductPriceImporter())
+            ->addDataImporter($this->createProductRelationImporter())
+            ->addDataImporter($this->createProductReviewImporter())
+            ->addDataImporter($this->createProductLabelImporter())
+            ->addDataImporter($this->createProductSetImporter())
+            ->addDataImporter($this->createProductSearchAttributeMapImporter())
+            ->addDataImporter($this->createProductSearchAttributeImporter())
+            ->addDataImporter($this->createCmsTemplateImporter())
+            ->addDataImporter($this->createCmsBlockImporter())
+            ->addDataImporter($this->createCmsBlockStoreImporter())
+            ->addDataImporter($this->createCmsBlockCategoryPositionImporter())
+            ->addDataImporter($this->createCmsBlockCategoryImporter())
+            ->addDataImporter($this->createDiscountAmountImporter())
+            ->addDataImporter($this->createAbstractGiftCardConfigurationImporter())
+            ->addDataImporter($this->createConcreteGiftCardConfigurationImporter());
+
+        $dataImporterCollection->addDataImporterPlugins($this->getDataImporterRegisteredPlugins());
+
+        $dataImporterCollection
+            ->addDataImporter($this->createNavigationImporter())
+            ->addDataImporter($this->createNavigationNodeImporter());
+
+        return $dataImporterCollection;
+    }
+
+    /**
      * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
      */
     public function createProductAbstractBulkPdoWriter(): DataSetWriterInterface
