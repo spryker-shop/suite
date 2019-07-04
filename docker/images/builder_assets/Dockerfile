@@ -57,4 +57,4 @@ RUN --mount=type=cache,target=/root/.npm \
     npm run zed && \
     chown -R spryker:spryker /assets
 
-VOLUME [ /assets ]
+VOLUME [ "/assets" ]

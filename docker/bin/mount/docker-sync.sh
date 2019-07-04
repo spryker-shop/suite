@@ -9,7 +9,7 @@ pushd ${BASH_SOURCE%/*} > /dev/null
 ../require.sh docker docker-sync
 popd > /dev/null
 
-function dataSync()
+function sync()
 {
     export DOCKER_SYNC_SKIP_UPDATE=1
     local syncConf="${DEPLOYMENT_PATH}/docker-sync.yml"
@@ -20,8 +20,14 @@ function dataSync()
             docker volume create --name=${SPRYKER_DOCKER_PREFIX}_${SPRYKER_DOCKER_TAG}_data_sync
             ;;
 
+        recreate)
+            sync clean
+            sync create
+            ;;
+
         clean)
             docker-sync clean -c ${syncConf}
+            docker volume rm ${SPRYKER_DOCKER_PREFIX}_${SPRYKER_DOCKER_TAG}_data_sync || true
             ;;
 
         stop)
@@ -38,4 +44,4 @@ function dataSync()
     esac
 }
 
-export -f dataSync
+export -f sync
