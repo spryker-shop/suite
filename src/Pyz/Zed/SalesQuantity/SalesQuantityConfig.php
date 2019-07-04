@@ -14,5 +14,5 @@ class SalesQuantityConfig extends SprykerSalesQuantityConfig
     /**
      * @see \Spryker\Zed\SalesQuantity\SalesQuantityConfig::ITEM_NONSPLIT_QUANTITY_THRESHOLD
      */
-    protected const ITEM_NONSPLIT_QUANTITY_THRESHOLD = 10.0;
+    protected const ITEM_NONSPLIT_QUANTITY_THRESHOLD = 10;
 }
