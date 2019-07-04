@@ -2446,27 +2446,28 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/install.git",
-                "reference": "52ae259d59c7e3a3b05db095213d686bd6d92ff7"
+                "reference": "cae9796f7e97b4e53104c6bbff767e3d2aa45ed1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/install/zipball/52ae259d59c7e3a3b05db095213d686bd6d92ff7",
-                "reference": "52ae259d59c7e3a3b05db095213d686bd6d92ff7",
+                "url": "https://api.github.com/repos/spryker/install/zipball/cae9796f7e97b4e53104c6bbff767e3d2aa45ed1",
+                "reference": "cae9796f7e97b4e53104c6bbff767e3d2aa45ed1",
                 "shasum": ""
             },
             "require": {
                 "monolog/monolog": "^1.23",
                 "php": ">=7.1",
-                "symfony/console": "^3.0.0",
-                "symfony/process": "^3.0.0",
-                "symfony/yaml": "^3.0.0"
+                "symfony/console": "^3.0.0 || ^4.0.0",
+                "symfony/process": "^3.0.0 || ^4.0.0",
+                "symfony/yaml": "^3.0.0 || ^4.0.0"
             },
             "require-dev": {
                 "codeception/codeception": "*",
                 "php-coveralls/php-coveralls": "^1.0",
                 "phpstan/phpstan": "^0.11.2",
+                "phpunit/phpunit": "<8",
                 "spryker/code-sniffer": "*",
-                "symfony/var-dumper": "^3.0.0"
+                "symfony/var-dumper": "*"
             },
             "bin": [
                 "bin/install"
@@ -2482,7 +2483,7 @@
                 "MIT"
             ],
             "description": "Spryker install tool",
-            "time": "2019-03-06T12:47:51+00:00"
+            "time": "2019-07-04T11:16:45+00:00"
         },
         {
             "name": "spryker/rabbit-mq",
@@ -2553,44 +2554,44 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/silexphp.git",
-                "reference": "dd5d11488162f82173680d7c598d00f3cc16c5f5"
+                "reference": "1ed79869e5e68647ae2e87d2067b5cdccfb0a49a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/silexphp/zipball/dd5d11488162f82173680d7c598d00f3cc16c5f5",
-                "reference": "dd5d11488162f82173680d7c598d00f3cc16c5f5",
+                "url": "https://api.github.com/repos/spryker/silexphp/zipball/1ed79869e5e68647ae2e87d2067b5cdccfb0a49a",
+                "reference": "1ed79869e5e68647ae2e87d2067b5cdccfb0a49a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/container": "^1.1.0",
                 "symfony/event-dispatcher": "^3.0.0 || ^4.0.0",
-                "symfony/http-foundation": "^3.0.0",
+                "symfony/http-foundation": "^3.0.0 || ^4.0.0",
                 "symfony/http-kernel": "^3.0.0 || ^4.0.0",
                 "symfony/routing": "^3.0.0 || ^4.0.0"
             },
             "require-dev": {
                 "doctrine/dbal": "~2.2",
                 "monolog/monolog": "^1.4.1",
-                "phpunit/phpunit": "^5 || ^6 || ^7",
+                "phpunit/phpunit": "^5 || ^6 || ^7 || ^8",
                 "swiftmailer/swiftmailer": "~5",
-                "symfony/browser-kit": "~2.3|3.0.*",
-                "symfony/config": "~2.3|3.0.*",
-                "symfony/css-selector": "~2.3|3.0.*",
-                "symfony/debug": "~2.3|3.0.*",
-                "symfony/dom-crawler": "~2.3|3.0.*",
-                "symfony/finder": "~2.3|3.0.*",
+                "symfony/browser-kit": "^3.0.0 || ^4.0.0",
+                "symfony/config": "^3.0.0 || ^4.0.0",
+                "symfony/css-selector": "^3.0.0 || ^4.0.0",
+                "symfony/debug": "^3.0.0 || ^4.0.0",
+                "symfony/dom-crawler": "^3.0.0 || ^4.0.0",
+                "symfony/finder": "^3.0.0 || ^4.0.0",
                 "symfony/form": "^3.0.0 || ^4.0.0",
-                "symfony/intl": "~2.3|3.0.*",
-                "symfony/monolog-bridge": "~2.3|3.0.*",
-                "symfony/options-resolver": "~2.3|3.0.*",
+                "symfony/intl": "^3.0.0 || ^4.0.0",
+                "symfony/monolog-bridge": "^3.0.0 || ^4.0.0",
+                "symfony/options-resolver": "^3.0.0 || ^4.0.0",
                 "symfony/phpunit-bridge": "~2.7",
-                "symfony/process": "~2.3|3.0.*",
-                "symfony/security": "~2.3|3.0.*",
-                "symfony/serializer": "~2.3|3.0.*",
-                "symfony/translation": "~2.3|3.0.*",
+                "symfony/process": "^3.0.0 || ^4.0.0",
+                "symfony/security": "^3.0.0 || ^4.0.0",
+                "symfony/serializer": "^3.0.0 || ^4.0.0",
+                "symfony/translation": "^3.0.0 || ^4.0.0",
                 "symfony/twig-bridge": "^3.2.0 || ^4.0.0",
-                "symfony/validator": "^3.0.0",
+                "symfony/validator": "^3.0.0 || ^4.0.0",
                 "twig/twig": "~1.28|~2.0"
             },
             "type": "library",
@@ -2623,7 +2624,7 @@
             "keywords": [
                 "microframework"
             ],
-            "time": "2019-04-10T10:22:42+00:00"
+            "time": "2019-07-04T11:16:48+00:00"
         },
         {
             "name": "spryker/spryker",
@@ -2631,7 +2632,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "d20a2baf9302b67feefbf1a16c682574055da41e"
+                "reference": "9e69d29047e05ea209bfc7243f2ee84c494fb74f"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2901,7 +2902,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-07-04T10:18:49+00:00"
+            "time": "2019-07-04T12:03:18+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2909,7 +2910,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "79882498c164de2c09a802d634347b201b6cc753"
+                "reference": "5fea6d255d6a9652333b4b1054f058efdc929349"
             },
             "require": {
                 "php": ">=7.1"
@@ -2984,7 +2985,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-07-04T09:03:08+00:00"
+            "time": "2019-07-04T12:03:17+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8656,12 +8657,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/spryk.git",
-                "reference": "87b2774f649674de81517acb7d51d2d726a0214e"
+                "reference": "4901e1b1bc809aa2936dffbb918b29e9c2107483"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/87b2774f649674de81517acb7d51d2d726a0214e",
-                "reference": "87b2774f649674de81517acb7d51d2d726a0214e",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/4901e1b1bc809aa2936dffbb918b29e9c2107483",
+                "reference": "4901e1b1bc809aa2936dffbb918b29e9c2107483",
                 "shasum": ""
             },
             "require": {
@@ -8673,8 +8674,9 @@
                 "spryker/twig": "^3.0.0",
                 "spryker/zend": "^2.0.0",
                 "symfony/console": "^3.4.0 || ^4.0.0",
+                "symfony/filesystem": "^3.4.0 || ^4.0.0",
                 "symfony/finder": "^3.4.0 || ^4.0.0",
-                "symfony/yaml": "^3.4.9",
+                "symfony/yaml": "^3.4.9 || ^4.0.0",
                 "twig/twig": "^1.34 || ^2.0.0",
                 "zendframework/zend-filter": "^2.8"
             },
@@ -8706,7 +8708,7 @@
                 "proprietary"
             ],
             "description": "Spryk module",
-            "time": "2019-05-09T14:13:18+00:00"
+            "time": "2019-07-04T11:16:23+00:00"
         },
         {
             "name": "spryker-sdk/spryk-gui",
@@ -8966,27 +8968,27 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/git-hook.git",
-                "reference": "b27b8ac525b8b8f1a4f17c6c5a99e78cd732750b"
+                "reference": "6195277316cffa86691428b1069fe2dc5bf4fbb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/git-hook/zipball/b27b8ac525b8b8f1a4f17c6c5a99e78cd732750b",
-                "reference": "b27b8ac525b8b8f1a4f17c6c5a99e78cd732750b",
+                "url": "https://api.github.com/repos/spryker/git-hook/zipball/6195277316cffa86691428b1069fe2dc5bf4fbb7",
+                "reference": "6195277316cffa86691428b1069fe2dc5bf4fbb7",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "symfony/process": "^3.0.0",
-                "symfony/yaml": "^2.8 || ^3.0",
+                "symfony/process": "^3.0.0 || ^4.0.0",
+                "symfony/yaml": "^3.0.0 || ^4.0.0",
                 "zendframework/zend-filter": "^2.0.0"
             },
             "require-dev": {
-                "codeception/codeception": "^2.2.10",
+                "codeception/codeception": "*",
                 "phpmd/phpmd": "^2.6",
                 "phpstan/phpstan": "^0.11.2",
                 "sebastian/phpcpd": "^3.0",
                 "spryker/code-sniffer": "*",
-                "symfony/var-dumper": "^3.3"
+                "symfony/var-dumper": "*"
             },
             "type": "library",
             "autoload": {
@@ -9012,7 +9014,7 @@
                 "sniffer",
                 "standards"
             ],
-            "time": "2019-06-14T08:59:28+00:00"
+            "time": "2019-07-04T11:16:43+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
