@@ -32,6 +32,9 @@ sections:
         generate-page-index-map:
             command: "vendor/bin/console search:setup:index-map"
 
+        translator-generate-cache:
+            command: "vendor/bin/console translator:generate-cache"
+
     build-development:
         generate-transfer-databuilders:
             command: "vendor/bin/console transfer:databuilder:generate"
@@ -94,9 +97,6 @@ sections:
 
         update-product-labels:
             command: "vendor/bin/console product-label:relations:update"
-
-        translator-generate-cache:
-            command: "vendor/bin/console translator:generate-cache"
 
     sync:
         run-worker:

@@ -423,8 +423,8 @@ $config[ApplicationConstants::BASE_URL_SSL_STATIC_MEDIA] = $config[ApplicationCo
 /* Glue */
 $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = sprintf(
     '%s:%d',
-    getenv('SPRYKER_API_HOST'),
-    getenv('SPRYKER_API_PORT')
+    getenv('SPRYKER_API_HOST') ?: 'localhost', // TODO: refactor GlueControllerFilterPluginTest to avoid the knowledge of GLUE_APPLICATION_DOMAIN in Zed
+    getenv('SPRYKER_API_PORT') ?: 80
 );
 $config[GlueApplicationConstants::GLUE_APPLICATION_REST_DEBUG] = false;
 /* End Glue */

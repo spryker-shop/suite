@@ -15,8 +15,10 @@ RUN apk update && apk add \
   git
 
 RUN mkdir -p ${SPRYKER_LOG_DIRECTORY}
-RUN chown spryker:root ${SPRYKER_LOG_DIRECTORY}
+RUN chown spryker:spryker ${SPRYKER_LOG_DIRECTORY}
 WORKDIR /data
 
 COPY ${DEPLOYMENT_PATH}/context/cli/execute.sh /usr/local/bin/execute.sh
 RUN chmod +x /usr/local/bin/execute.sh
+
+USER spryker
