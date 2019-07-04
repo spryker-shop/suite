@@ -73,7 +73,7 @@ $CURRENT_STORE = Store::getInstance()->getStoreName();
 
 /* ZED */
 $config[ApplicationConstants::HOST_ZED] = getenv('SPRYKER_ZED_HOST');
-$config[SessionConstants::ZED_SESSION_COOKIE_DOMAIN] = $config[ApplicationConstants::HOST_ZED];
+$config[SessionConstants::ZED_SESSION_COOKIE_DOMAIN] = getenv('SPRYKER_BE_HOST');
 $config[ApplicationConstants::PORT_ZED] = getenv('SPRYKER_ZED_PORT') ? ':' . getenv('SPRYKER_ZED_PORT') : '';
 $config[ApplicationConstants::PORT_SSL_ZED] = '';
 $config[ApplicationConstants::BASE_URL_ZED] = sprintf(
