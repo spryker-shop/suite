@@ -51,7 +51,6 @@ class SalesConfig extends SprykerSalesConfig
             'cart_note_bundle_items' => '/cart-note-product-bundle-connector/sales/list', #CartNoteFeature
             'payments' => '/payment/sales/list',
             'giftCards' => '/gift-card/sales/list',
-            'shipment' => '/shipment/sales/list',
             'discount' => '/discount/sales/list',
             'refund' => '/refund/sales/list',
             'source' => '/manual-order-entry/sales/list',
