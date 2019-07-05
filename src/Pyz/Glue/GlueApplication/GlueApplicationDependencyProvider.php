@@ -27,6 +27,7 @@ use Spryker\Glue\CartsRestApi\Plugin\Validator\AnonymousCustomerUniqueIdValidato
 use Spryker\Glue\CatalogSearchProductsResourceRelationship\Plugin\CatalogSearchAbstractProductsResourceRelationshipPlugin;
 use Spryker\Glue\CatalogSearchProductsResourceRelationship\Plugin\CatalogSearchSuggestionsAbstractProductsResourceRelationshipPlugin;
 use Spryker\Glue\CatalogSearchRestApi\CatalogSearchRestApiConfig;
+use Spryker\Glue\CatalogSearchRestApi\Plugin\CatalogSearchRequestValidatorPlugin;
 use Spryker\Glue\CatalogSearchRestApi\Plugin\CatalogSearchResourceRoutePlugin;
 use Spryker\Glue\CatalogSearchRestApi\Plugin\CatalogSearchSuggestionsResourceRoutePlugin;
 use Spryker\Glue\CategoriesRestApi\Plugin\CategoriesResourceRoutePlugin;
@@ -200,6 +201,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new CurrencyParameterValidatorPlugin(),
             new PriceModeParameterValidatorPlugin(),
             new EntityTagRestRequestValidatorPlugin(),
+            new CatalogSearchRequestValidatorPlugin(),
         ];
     }
 
