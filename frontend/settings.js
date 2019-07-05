@@ -5,9 +5,18 @@ const globalSettings = {
     // define the current context (root)
     context: process.cwd(),
 
+    modes: {
+        dev: 'development',
+        watch: 'development-watch',
+        prod: 'production'
+    },
+
     paths: {
         // locate the typescript configuration json file
         tsConfig: './tsconfig.json',
+
+        // locate the typescript configuration json file
+        namespaceConfig: './config/Yves/frontend-build-config.json',
 
         // core folders
         core: './vendor/spryker/spryker-shop/Bundles',
@@ -18,11 +27,12 @@ const globalSettings = {
         // project folders
         project: './src/Pyz/Yves',
 
+        // assets folders
         publicAssets: './public/Yves/assets'
     }
 };
 
-const getAppSettingsByStore = store => {
+const getAppSettingsByTheme = (store, theme) => {
     const entryPointsParts = [
         'components/atoms/*/index.ts',
         'components/molecules/*/index.ts',
@@ -44,10 +54,10 @@ const getAppSettingsByStore = store => {
     const entryPointsCollection = (pathPattern) => entryPointsParts.map((element) => `${pathPattern}/${element}`);
 
     // define current theme
-    const currentTheme = store.currentTheme || store.defaultTheme;
+    const currentTheme = theme || store.defaultTheme;
 
     // define if current theme is empty
-    const isCurrentThemeEmpty = currentTheme !== store.currentTheme;
+    const isCurrentThemeEmpty = currentTheme !== theme;
 
     // define the applicatin name
     // important: the name must be normalized
@@ -56,8 +66,8 @@ const getAppSettingsByStore = store => {
     // define relative urls to site host (/)
     const urls = {
         // assets base url
-        defaultAssets: join('/assets', store.name, store.defaultTheme),
-        currentAssets: join('/assets', store.name, currentTheme)
+        defaultAssets: join('/assets', store.namespace, store.defaultTheme),
+        currentAssets: join('/assets', store.namespace, currentTheme)
     };
 
     // getting assets paths collection
@@ -108,7 +118,7 @@ const getAppSettingsByStore = store => {
     const customThemeEntryPointPatterns = (isThemeCurrent = false) => (
         isThemeCurrentAndNotEmpty(isThemeCurrent) ? [] : [
             ...entryPointsCollection(`**/Theme/${getThemeName(isThemeCurrent)}`),
-            ...entryPointsCollection(`**/*${store.name}/Theme/${getThemeName(isThemeCurrent)}`),
+            ...entryPointsCollection(`**/*${store.moduleSuffix}/Theme/${getThemeName(isThemeCurrent)}`),
             ...ignoreFiles
         ]
     );
@@ -116,7 +126,7 @@ const getAppSettingsByStore = store => {
     const shopUiEntryPointsPattern = (isThemeCurrent = false) => (
         isThemeCurrentAndNotEmpty(isThemeCurrent) ? [] : [
             `./ShopUi/Theme/${getThemeName(isThemeCurrent)}`,
-            `./ShopUi${store.name}/Theme/${getThemeName(isThemeCurrent)}`
+            `./ShopUi${store.moduleSuffix}/Theme/${getThemeName(isThemeCurrent)}`
         ]
     );
 
@@ -180,7 +190,17 @@ const getAppSettingsByStore = store => {
     }
 };
 
+const getAppSettings = namespacesConfig => {
+    let appSetting = [];
+    namespacesConfig.forEach(namespaceConfig => {
+        namespaceConfig.themes.forEach(theme => {
+            appSetting.push(getAppSettingsByTheme(namespaceConfig, theme));
+        })
+    });
+    return appSetting;
+};
+
 module.exports = {
     globalSettings,
-    getAppSettingsByStore
+    getAppSettings
 };

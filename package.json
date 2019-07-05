@@ -8,9 +8,10 @@
     "url": "https://spryker.com/"
   },
   "scripts": {
-    "yves": "node ./frontend/build development",
-    "yves:watch": "node ./frontend/build development-watch",
-    "yves:production": "node ./frontend/build production",
+    "yves": "node ./frontend/build",
+    "yves:watch": "node ./frontend/build -m development-watch",
+    "yves:production": "node ./frontend/build -m production",
+    "yves:help": "node ./frontend/libs/command-line-parcer --help",
     "yves:stylelint": "NODE_ENV=development node ./frontend/libs/stylelint development",
     "yves:tslint": "node ./frontend/libs/tslint",
     "zed": "node ./node_modules/@spryker/oryx-for-zed/build",
@@ -31,6 +32,7 @@
     "@spryker/oryx-for-zed": "^2.3.0",
     "autoprefixer": "~8.6.2",
     "clean-webpack-plugin": "~0.1.19",
+    "commander": "^2.20.0",
     "copy-webpack-plugin": "~4.5.1",
     "css-loader": "~2.1.1",
     "fast-glob": "~2.2.2",

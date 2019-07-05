@@ -41,8 +41,8 @@ const multiCompile = configs => {
 };
 
 // clear assets
-const clearAllAssets = storeIds => {
-    if (storeIds.length === 0) {
+const clearAllAssets = (namespaces, themes) => {
+    if (namespaces.length === 0 && themes === 0) {
         rimraf(globalSettings.paths.publicAssets, () => {
             console.log(`${globalSettings.paths.publicAssets} has been removed. \n`);
         });

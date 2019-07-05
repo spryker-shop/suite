@@ -1,41 +1,56 @@
-const storesConfig = require('../../config/Yves/store-config.json');
+const getNamespaceMap = (pathToConfig) => {
+    const namespaceJson = require(pathToConfig);
+    const namespaceMap = new Map();
 
-const stores = new Map();
+    namespaceJson.namespaces.forEach((item) => {
+        namespaceMap.set(item.namespace, item);
+    });
 
-for (let storeId in storesConfig) {
-    stores.set(storeId, storesConfig[storeId]);
-}
-
-const printWrongStoreIdMessage = name => console.warn(`Store "${name}" does not exist.`);
-
-const printStoreInfoMessage = store => {
-    const currentTheme = store.currentTheme || store.defaultTheme;
-    console.log(`Store "${store.name}" with theme "${currentTheme}".`);
-    return store;
+    return namespaceMap;
 };
 
-const getStoresByIds = ids => {
-    if (ids.length === 1 && ids[0] === 'which') {
-        console.log('Available stores:');
-        Array.from(stores.keys()).map(id => console.log(`- ${id}`));
+const printWrongNamespaceMessage = namespace => console.warn(`Namespace "${namespace}" does not exist.`);
+
+const getFilteredConfigNamespaces = (requestedArguments) => {
+    const namespaceMap = getNamespaceMap(requestedArguments.pathToConfig);
+
+    if (requestedArguments.info === true) {
+        console.log('Namespaces with available themes:');
+        Array.from(namespaceMap.keys())
+             .map(namespaceKey => {
+                 console.log(`- ${namespaceKey}`);
+                 console.log(`  ${namespaceMap.get(namespaceKey).defaultTheme}`);
+                 namespaceMap.get(namespaceKey).themes.forEach(theme => console.log(`  ${theme}`));
+             });
         console.log('');
         return [];
     }
 
-    if (ids.length === 0) {
-        ids = Array.from(stores.keys());
+    if (requestedArguments.namespaces.length === 0) {
+        requestedArguments.namespaces = Array.from(namespaceMap.keys());
     }
 
-    ids
-        .filter(id => !stores.has(id))
-        .map(printWrongStoreIdMessage);
+    requestedArguments.namespaces
+        .filter(requestedNamespace => !namespaceMap.has(requestedNamespace))
+        .map(printWrongNamespaceMessage);
 
-    return ids
-        .filter(id => stores.has(id))
-        .map(id => (Object.assign({'name': id}, stores.get(id))))
-        .map(printStoreInfoMessage);
+    return requestedArguments.namespaces
+        .filter(requestedNamespace => namespaceMap.has(requestedNamespace))
+        .map(requestedNamespace => {
+            const namespaceConfig = Object.assign(namespaceMap.get(requestedNamespace));
+            namespaceConfig.themes.push(namespaceConfig.defaultTheme);
+            if (requestedArguments.themes.length > 0) {
+                requestedArguments.themes.map(theme => {
+                    if(!namespaceConfig.themes.includes(theme)){
+                        console.warn(`Theme "${theme}" does not exist in "${requestedNamespace}" namespace.`)
+                    }
+                });
+                namespaceConfig.themes = namespaceConfig.themes.filter(namespaceTheme => requestedArguments.themes.includes(namespaceTheme));
+            }
+            return namespaceConfig;
+        });
 };
 
 module.exports = {
-    getStoresByIds
+    getFilteredConfigNamespaces
 };

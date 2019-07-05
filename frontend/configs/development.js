@@ -19,7 +19,7 @@ const getConfiguration = async (appSettings) => {
     const sharedScss = await findAppEntryPoint(appSettings.find.shopUiEntryPoints, './styles/shared.scss');
 
     return {
-        storeName: appSettings.store.name,
+        storeName: appSettings.store.namespace,
         componentEntryPointsLength: componentEntryPoints.length,
         stylesLength: styles.length,
         webpack: {
