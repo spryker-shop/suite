@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8d4ab207dbee7ca1f19bfcabff9c565f",
+    "content-hash": "e328db9d0b08c348ed0faf6ede08b9d4",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -753,6 +753,54 @@
             "time": "2018-07-12T10:23:15+00:00"
         },
         {
+            "name": "galbar/jsonpath",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Galbar/JsonPath-PHP.git",
+                "reference": "d08d1efeadad3345257249e35e8cfd65f21256ae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Galbar/JsonPath-PHP/zipball/d08d1efeadad3345257249e35e8cfd65f21256ae",
+                "reference": "d08d1efeadad3345257249e35e8cfd65f21256ae",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "sami/sami": ">=3.3.0",
+                "satooshi/php-coveralls": ">=1.0.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "JsonPath\\": "src/Skyscanner/",
+                    "Utilities\\": "src/Skyscanner/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache 2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Alessio Linares",
+                    "email": "alessio.linares@skyscanner.net",
+                    "role": "Software Engineer"
+                }
+            ],
+            "description": "JSONPath implementation for querying and updating JSON objects",
+            "keywords": [
+                "json",
+                "jsonpath",
+                "path"
+            ],
+            "time": "2017-09-13T09:14:46+00:00"
+        },
+        {
             "name": "guzzlehttp/guzzle",
             "version": "6.3.3",
             "source": {
@@ -1039,6 +1087,72 @@
                 "stream"
             ],
             "time": "2014-10-12T19:18:40+00:00"
+        },
+        {
+            "name": "justinrainbow/json-schema",
+            "version": "5.2.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/justinrainbow/json-schema.git",
+                "reference": "dcb6e1006bb5fd1e392b4daa68932880f37550d4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/justinrainbow/json-schema/zipball/dcb6e1006bb5fd1e392b4daa68932880f37550d4",
+                "reference": "dcb6e1006bb5fd1e392b4daa68932880f37550d4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "~2.2.20",
+                "json-schema/json-schema-test-suite": "1.2.0",
+                "phpunit/phpunit": "^4.8.35"
+            },
+            "bin": [
+                "bin/validate-json"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "JsonSchema\\": "src/JsonSchema/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bruno Prieto Reis",
+                    "email": "bruno.p.reis@gmail.com"
+                },
+                {
+                    "name": "Justin Rainbow",
+                    "email": "justin.rainbow@gmail.com"
+                },
+                {
+                    "name": "Igor Wiedler",
+                    "email": "igor@wiedler.ch"
+                },
+                {
+                    "name": "Robert Schönthal",
+                    "email": "seroscho@googlemail.com"
+                }
+            ],
+            "description": "A library to validate a json schema.",
+            "homepage": "https://github.com/justinrainbow/json-schema",
+            "keywords": [
+                "json",
+                "schema"
+            ],
+            "time": "2019-01-14T23:55:14+00:00"
         },
         {
             "name": "lcobucci/jwt",
@@ -1939,7 +2053,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -16415,16 +16529,16 @@
         },
         {
             "name": "spryker/documentation-generator-rest-api",
-            "version": "1.4.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/documentation-generator-rest-api.git",
-                "reference": "92331b28ae10be95fad21d510cb6279256e499cf"
+                "reference": "69e13fb9a7854f3c47e4a5630ab53aff631549eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/documentation-generator-rest-api/zipball/92331b28ae10be95fad21d510cb6279256e499cf",
-                "reference": "92331b28ae10be95fad21d510cb6279256e499cf",
+                "url": "https://api.github.com/repos/spryker/documentation-generator-rest-api/zipball/69e13fb9a7854f3c47e4a5630ab53aff631549eb",
+                "reference": "69e13fb9a7854f3c47e4a5630ab53aff631549eb",
                 "shasum": ""
             },
             "require": {
@@ -16458,7 +16572,7 @@
                 "proprietary"
             ],
             "description": "DocumentationGeneratorRestApi module",
-            "time": "2019-06-26T12:38:20+00:00"
+            "time": "2019-07-05T07:45:29+00:00"
         },
         {
             "name": "spryker/documentation-generator-rest-api-extension",
@@ -18138,6 +18252,76 @@
             ],
             "description": "Invoice bundle",
             "time": "2017-02-22T11:53:10+00:00"
+        },
+        {
+            "name": "spryker/json-path",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/json-path.git",
+                "reference": "589bc1de92b115354553e9d779ee3c152696b8c1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/json-path/zipball/589bc1de92b115354553e9d779ee3c152696b8c1",
+                "reference": "589bc1de92b115354553e9d779ee3c152696b8c1",
+                "shasum": ""
+            },
+            "require": {
+                "galbar/jsonpath": "^1.0",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "JsonPath module",
+            "time": "2019-07-03T10:48:06+00:00"
+        },
+        {
+            "name": "spryker/json-schema",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/json-schema.git",
+                "reference": "ecba5bba9e87fe066ccd850ca54aeb65f02c5569"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/json-schema/zipball/ecba5bba9e87fe066ccd850ca54aeb65f02c5569",
+                "reference": "ecba5bba9e87fe066ccd850ca54aeb65f02c5569",
+                "shasum": ""
+            },
+            "require": {
+                "justinrainbow/json-schema": "^5.2",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "JsonSchema module",
+            "time": "2019-07-03T10:48:06+00:00"
         },
         {
             "name": "spryker/kernel",
@@ -22188,16 +22372,16 @@
         },
         {
             "name": "spryker/product",
-            "version": "6.12.0",
+            "version": "6.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product.git",
-                "reference": "17dc756993a97c698130c2fa9aa7c34ce76ea503"
+                "reference": "b6489afb6b4869764c6fedf55f91573ed54c6564"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product/zipball/17dc756993a97c698130c2fa9aa7c34ce76ea503",
-                "reference": "17dc756993a97c698130c2fa9aa7c34ce76ea503",
+                "url": "https://api.github.com/repos/spryker/product/zipball/b6489afb6b4869764c6fedf55f91573ed54c6564",
+                "reference": "b6489afb6b4869764c6fedf55f91573ed54c6564",
                 "shasum": ""
             },
             "require": {
@@ -22236,7 +22420,7 @@
                 "proprietary"
             ],
             "description": "Product module",
-            "time": "2019-07-02T08:45:44+00:00"
+            "time": "2019-07-05T07:26:57+00:00"
         },
         {
             "name": "spryker/product-abstract-data-feed",
@@ -36189,7 +36373,7 @@
             "time": "2019-03-25T16:59:23+00:00"
         },
         {
-            "name": "mikey179/vfsstream",
+            "name": "mikey179/vfsStream",
             "version": "v1.6.6",
             "source": {
                 "type": "git",
@@ -36480,7 +36664,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette Finder: find files and directories with an intuitive API.",
+            "description": "🔍 Nette Finder: find files and directories with an intuitive API.",
             "homepage": "https://nette.org",
             "keywords": [
                 "filesystem",
@@ -36540,7 +36724,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette NEON: encodes and decodes NEON file format.",
+            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -36553,16 +36737,16 @@
         },
         {
             "name": "nette/php-generator",
-            "version": "v3.2.2",
+            "version": "v3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/php-generator.git",
-                "reference": "acff8b136fad84b860a626d133e791f95781f9f5"
+                "reference": "aea6e81437bb238e5f0e5b5ce06337433908e63b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/php-generator/zipball/acff8b136fad84b860a626d133e791f95781f9f5",
-                "reference": "acff8b136fad84b860a626d133e791f95781f9f5",
+                "url": "https://api.github.com/repos/nette/php-generator/zipball/aea6e81437bb238e5f0e5b5ce06337433908e63b",
+                "reference": "aea6e81437bb238e5f0e5b5ce06337433908e63b",
                 "shasum": ""
             },
             "require": {
@@ -36608,7 +36792,7 @@
                 "php",
                 "scaffolding"
             ],
-            "time": "2019-03-15T03:41:13+00:00"
+            "time": "2019-07-05T13:01:56+00:00"
         },
         {
             "name": "nette/robot-loader",
@@ -39047,16 +39231,16 @@
         },
         {
             "name": "spryker/development",
-            "version": "3.19.3",
+            "version": "3.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/development.git",
-                "reference": "4a49e6b8b63ef1b412092f51e39af92cdb80ec35"
+                "reference": "54dd79dc1a956ff48e9290fbfb39d4761c44085e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/development/zipball/4a49e6b8b63ef1b412092f51e39af92cdb80ec35",
-                "reference": "4a49e6b8b63ef1b412092f51e39af92cdb80ec35",
+                "url": "https://api.github.com/repos/spryker/development/zipball/54dd79dc1a956ff48e9290fbfb39d4761c44085e",
+                "reference": "54dd79dc1a956ff48e9290fbfb39d4761c44085e",
                 "shasum": ""
             },
             "require": {
@@ -39095,20 +39279,20 @@
                 "proprietary"
             ],
             "description": "Development module",
-            "time": "2019-07-04T11:31:19+00:00"
+            "time": "2019-07-05T07:26:57+00:00"
         },
         {
             "name": "spryker/testify",
-            "version": "3.11.3",
+            "version": "3.12.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/testify.git",
-                "reference": "2870544a3f6e4d3e82fce650270ea335be92a54f"
+                "reference": "67611e799de07c40f8638143ad4badf233d3ff3f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/testify/zipball/2870544a3f6e4d3e82fce650270ea335be92a54f",
-                "reference": "2870544a3f6e4d3e82fce650270ea335be92a54f",
+                "url": "https://api.github.com/repos/spryker/testify/zipball/67611e799de07c40f8638143ad4badf233d3ff3f",
+                "reference": "67611e799de07c40f8638143ad4badf233d3ff3f",
                 "shasum": ""
             },
             "require": {
@@ -39123,10 +39307,12 @@
                 "spryker/kernel": "^3.0.0",
                 "spryker/propel": "^3.0.4",
                 "spryker/propel-orm": "^1.0.0",
-                "spryker/silex": "^2.0.0"
+                "spryker/silex": "^2.0.0",
+                "spryker/symfony": "^3.0.0"
             },
             "require-dev": {
-                "spryker/symfony": "^3.0.0",
+                "spryker/json-path": "^1.0.0",
+                "spryker/json-schema": "^1.0.0",
                 "spryker/twig": "^3.0.0"
             },
             "type": "library",
@@ -39139,8 +39325,13 @@
                 "psr-4": {
                     "Spryker\\": "src/Spryker/",
                     "SprykerTest\\Shared\\Testify\\Helper\\": "tests/SprykerTest/Shared/Testify/_support/Helper/",
+                    "SprykerTest\\Glue\\Testify\\Helper\\": "tests/SprykerTest/Glue/Testify/_support/Helper/",
+                    "SprykerTest\\Glue\\Testify\\Tester\\": "tests/SprykerTest/Glue/Testify/_support/Tester/",
                     "SprykerTest\\Yves\\Testify\\Helper\\": "tests/SprykerTest/Yves/Testify/_support/Helper/",
-                    "SprykerTest\\Zed\\Testify\\Helper\\": "tests/SprykerTest/Zed/Testify/_support/Helper/"
+                    "SprykerTest\\Zed\\Testify\\Helper\\": "tests/SprykerTest/Zed/Testify/_support/Helper/",
+                    "SprykerTest\\Shared\\Testify\\Fixtures\\": "tests/SprykerTest/Shared/Testify/_support/Fixtures/",
+                    "SprykerTest\\Shared\\Testify\\Tester\\": "tests/SprykerTest/Shared/Testify/_support/Tester/",
+                    "SprykerTest\\Shared\\Testify\\StepOverride\\": "tests/SprykerTest/Shared/Testify/_support/StepOverride/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -39148,7 +39339,7 @@
                 "proprietary"
             ],
             "description": "Testify module",
-            "time": "2019-06-28T13:03:54+00:00"
+            "time": "2019-07-05T16:48:54+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
