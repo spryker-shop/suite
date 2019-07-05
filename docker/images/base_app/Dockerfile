@@ -57,6 +57,7 @@ FROM spryker_app_base AS spryker_app
 # Add remaining Spryker files/directories
 COPY --chown=spryker:spryker data ${srcRoot}/data
 COPY --chown=spryker:spryker public ${srcRoot}/public
+COPY --chown=spryker:spryker frontend ${srcRoot}/frontend
 COPY --chown=spryker:spryker .* *.* LICENSE ${srcRoot}/
 
 RUN if [ "x${SKIP_DUMP_AUTOLOAD}" = "x0" ] ; then composer dump-autoload -o ; fi
