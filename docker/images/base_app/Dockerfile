@@ -26,7 +26,7 @@ COPY --chown=spryker:spryker composer.json composer.lock vendor ${srcRoot}/
 ARG GITHUB_TOKEN
 RUN --mount=type=cache,target=/home/spryker/.composer/cache,from=composer_cache,source=/cache \
   bash -c 'if [ ! -z $GITHUB_TOKEN ]; then export COMPOSER_AUTH="{\"github-oauth\": {\"github.com\": \"${GITHUB_TOKEN}\"}}"; fi; \
-    if [ ! -f ${srcRoot}/data/vendor/bin/install -o "x${SKIP_BUILD_IF_PERFORMED}" = "x0" ] ; then composer install --no-interaction --optimize-autoloader ; fi'
+    if [ ! -f ${srcRoot}/vendor/bin/install -o "x${SKIP_BUILD_IF_PERFORMED}" = "x0" ] ; then composer install --no-interaction --optimize-autoloader ; fi'
 
 ### Intermediate container - with dependencies, PHP code and configs
 FROM spryker_app_dependencies AS spryker_app_base

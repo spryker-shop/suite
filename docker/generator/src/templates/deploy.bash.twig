@@ -199,7 +199,7 @@ function buildAssets()
 function buildBaseImage()
 {
 {% if isDevelopment %}
-    if [ "$1" = ${IF_NOT_PERFORMED} -a "$(docker images -q ${SPRYKER_DOCKER_PREFIX}_app 2> /dev/null)" != "" ]; then
+    if [ "$1" = ${IF_NOT_PERFORMED} -a "$(docker images -q ${SPRYKER_DOCKER_PREFIX}_app 2> /dev/null)" != "" ] && docker volume inspect ${SPRYKER_DOCKER_PREFIX}_${SPRYKER_DOCKER_TAG}_data_sync > /dev/null 2>&1s; then
         return ${__TRUE}
     fi
 {% endif %}
@@ -249,7 +249,7 @@ function buildBaseImage()
     docker run -i --rm \
         -v ${SPRYKER_DOCKER_PREFIX}_${SPRYKER_DOCKER_TAG}_data_sync:/data \
         --name=${SPRYKER_DOCKER_PREFIX}_app_build \
-        ${SPRYKER_DOCKER_PREFIX}_app_build:${SPRYKER_DOCKER_TAG} \
+        ${SPRYKER_DOCKER_PREFIX}_app:${SPRYKER_DOCKER_TAG} \
         true
 {% endif %}
 {% if _platform == 'windows' %}
