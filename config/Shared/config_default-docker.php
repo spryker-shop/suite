@@ -136,8 +136,8 @@ $HSTS_CONFIG = [
 $config[ApplicationConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG] = $HSTS_CONFIG;
 
 $config[ZedRequestConstants::ZED_API_SSL_ENABLED] = false;
-$config[ApplicationConstants::ZED_SSL_ENABLED] = (bool)getenv("SPRYKER_SSL_ENABLE", false);
-$config[SessionConstants::ZED_SSL_ENABLED] = (bool)getenv("SPRYKER_SSL_ENABLE", false);
+$config[ApplicationConstants::ZED_SSL_ENABLED] = false;
+$config[SessionConstants::ZED_SSL_ENABLED] = (bool)getenv('SPRYKER_SSL_ENABLE', false);
 $config[ApplicationConstants::ZED_SSL_EXCLUDED] = ['heartbeat/index'];
 
 $config[ErrorHandlerConstants::DISPLAY_ERRORS] = true;

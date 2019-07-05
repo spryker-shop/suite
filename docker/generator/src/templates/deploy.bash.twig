@@ -210,6 +210,8 @@ function buildBaseImage()
         verbose "${WARN}GITHUB_TOKEN is not set but may be required.${NC}"
     fi
 
+    [ ! -d ./vendor ] && mkdir vendor
+
     docker build \
         -t ${SPRYKER_DOCKER_PREFIX}_app:${SPRYKER_DOCKER_TAG} \
         --progress=${PROGRESS_TYPE} \
