@@ -74,5 +74,7 @@ COPY ${DEPLOYMENT_PATH}/context/php/conf.d/opcache.ini /usr/local/etc/php/conf.d
 
 # Run FPM as default command
 USER root
+RUN chown -R spryker:spryker /home/spryker
+
 CMD [ "php-fpm", "--nodaemonize" ]
 EXPOSE 9000
