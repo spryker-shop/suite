@@ -26,9 +26,9 @@ $mountMode = $projectData['_mountMode'] = retrieveMountMode($projectData, $platf
 $projectData['_ports'] = retrieveUniquePorts($projectData);
 $defaultPort = $projectData['_defaultPort'] = getDefaultPort($projectData);
 
-@mkdir($deploymentDir . DS . 'env' . DS . 'cli', 0777, true);
-@mkdir($deploymentDir . DS . 'context' . DS . 'nginx' . DS . 'conf.d', 0777, true);
-@mkdir($deploymentDir . DS . 'context' . DS . 'nginx' . DS . 'vhost.d', 0777, true);
+mkdir($deploymentDir . DS . 'env' . DS . 'cli', 0777, true);
+mkdir($deploymentDir . DS . 'context' . DS . 'nginx' . DS . 'conf.d', 0777, true);
+mkdir($deploymentDir . DS . 'context' . DS . 'nginx' . DS . 'vhost.d', 0777, true);
 
 file_put_contents(
     $deploymentDir . DS . 'context' . DS . 'nginx' . DS . 'conf.d' . DS . 'front-end.default.conf',
@@ -123,24 +123,34 @@ file_put_contents(
     ])
 );
 
-file_put_contents($deploymentDir . DS . 'docker-compose.yml',
-    $twig->render('docker-compose.yml.twig', $projectData));
-file_put_contents($deploymentDir . DS . 'docker-compose.xdebug.yml',
-    $twig->render('docker-compose.xdebug.yml.twig', $projectData));
-file_put_contents($deploymentDir . DS . 'docker-compose.test.yml',
-    $twig->render('docker-compose.test.yml.twig', $projectData));
-file_put_contents($deploymentDir . DS . 'deploy',
-    $twig->render('deploy.bash.twig', $projectData));
+file_put_contents(
+    $deploymentDir . DS . 'docker-compose.yml',
+    $twig->render('docker-compose.yml.twig', $projectData)
+);
+file_put_contents(
+    $deploymentDir . DS . 'docker-compose.xdebug.yml',
+    $twig->render('docker-compose.xdebug.yml.twig', $projectData)
+);
+file_put_contents(
+    $deploymentDir . DS . 'docker-compose.test.yml',
+    $twig->render('docker-compose.test.yml.twig', $projectData)
+);
+file_put_contents(
+    $deploymentDir . DS . 'deploy',
+    $twig->render('deploy.bash.twig', $projectData)
+);
 
 switch ($mountMode) {
     case 'docker-sync':
-        file_put_contents($deploymentDir . DS . 'docker-sync.yml',
-            $twig->render('docker-sync.yml.twig', $projectData));
+        file_put_contents(
+            $deploymentDir . DS . 'docker-sync.yml',
+            $twig->render('docker-sync.yml.twig', $projectData)
+        );
         break;
 }
 
 $sslDir = $deploymentDir . DS . 'context' . DS . 'nginx' . DS . 'ssl';
-@mkdir($sslDir);
+mkdir($sslDir);
 echo shell_exec(sprintf(
     'PFX_PASSWORD="%s" DESTINATION=%s ./openssl/generate.sh %s',
     addslashes($projectData['docker']['ssl']['pfx-password'] ?? 'secret'),
@@ -154,6 +164,8 @@ copy($sslDir . DS . 'ca.pfx', $deploymentDir . DS . 'spryker.pfx');
 /**
  * @param array $projectData
  * @param string $platform
+ *
+ * @throws \Exception
  *
  * @return string
  */
@@ -183,7 +195,7 @@ function retrieveMountMode(array $projectData, string $platform): string
 function retrieveUniquePorts(array $projectData)
 {
     $ports = [
-        80 => 80
+        80 => 80,
     ];
 
     foreach (retrieveEndpoints($projectData) as $domain => $domainData) {
@@ -197,9 +209,11 @@ function retrieveUniquePorts(array $projectData)
 /**
  * @param array $projectData
  *
+ * @throws \Exception
+ *
  * @return array[]
  */
-function retrieveEndpoints(array $projectData)
+function retrieveEndpoints(array $projectData): array
 {
     $defaultPort = getDefaultPort($projectData);
 
@@ -208,7 +222,6 @@ function retrieveEndpoints(array $projectData)
     foreach ($projectData['groups'] ?? [] as $groupName => $groupData) {
         foreach ($groupData['applications'] ?? [] as $applicationName => $applicationData) {
             foreach ($applicationData['domain'] ?? [] as $domain => $domainData) {
-
                 if (strpos($domain, ':') === false) {
                     $domain .= ':' . $defaultPort;
                 }
@@ -253,7 +266,7 @@ function retrieveEndpoints(array $projectData)
  *
  * @return string[]
  */
-function retrieveDomainNames(array $projectData)
+function retrieveDomainNames(array $projectData): array
 {
     $domains = [];
 
