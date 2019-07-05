@@ -11,7 +11,7 @@ const getNamespaceMap = (pathToConfig) => {
 
 const printWrongNamespaceMessage = namespace => console.warn(`Namespace "${namespace}" does not exist.`);
 
-const getFilteredConfigNamespaces = (requestedArguments) => {
+const getFilteredNamespaceConfigList = (requestedArguments) => {
     const namespaceMap = getNamespaceMap(requestedArguments.pathToConfig);
 
     if (requestedArguments.info === true) {
@@ -52,5 +52,5 @@ const getFilteredConfigNamespaces = (requestedArguments) => {
 };
 
 module.exports = {
-    getFilteredConfigNamespaces
+    getFilteredNamespaceConfigList
 };

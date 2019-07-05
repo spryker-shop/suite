@@ -10,10 +10,10 @@ const multiCompile = configs => {
     }
 
     configs.forEach((config) => {
-        console.log(`${config.storeName} building for ${config.webpack.mode}...`);
+        console.log(`${config.namespace} building for ${config.webpack.mode}...`);
 
         if (config.webpack.watch) {
-            console.log(`${config.storeName} watch mode: ON`);
+            console.log(`${config.namespace} watch mode: ON`);
         }
     });
 
@@ -31,7 +31,7 @@ const multiCompile = configs => {
 
         multiStats.stats.forEach(
             (stat, index) => {
-                console.log(`${configs[index].storeName} store building statistics:`);
+                console.log(`${configs[index].namespace} namespace building statistics:`);
                 console.log(`Components entry points: ${configs[index].componentEntryPointsLength}`);
                 console.log(`Components styles: ${configs[index].stylesLength}`);
                 console.log(stat.toString(webpackConfigs[index].stats), '\n')
@@ -42,7 +42,7 @@ const multiCompile = configs => {
 
 // clear assets
 const clearAllAssets = (namespaces, themes) => {
-    if (namespaces.length === 0 && themes === 0) {
+    if (namespaces.length === 0 && themes.length === 0) {
         rimraf(globalSettings.paths.publicAssets, () => {
             console.log(`${globalSettings.paths.publicAssets} has been removed. \n`);
         });
