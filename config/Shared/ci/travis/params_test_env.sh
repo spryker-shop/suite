@@ -11,3 +11,6 @@ VERBOSITY='-v'
 CONSOLE=vendor/bin/console
 PHANTOMJS_CDNURL='https://github.com/Medium/phantomjs/'
 DATABASE_BACKUP_PATH='data/test.backup'
+SPRYKER_TESTING_ENABLED=1
+SPRYKER_TEST_WEB_DRIVER_HOST='webdriver'
+SPRYKER_TEST_IN_BROWSER='phantomjs'
