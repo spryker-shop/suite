@@ -150,6 +150,7 @@ SELECT updated.id_product_abstract,sku FROM updated UNION ALL SELECT inserted.id
     )
   )
 SELECT 1;";
+
         return $sql;
     }
 
@@ -200,6 +201,7 @@ SELECT 1;";
         ) RETURNING fk_product_abstract as id_product_abstract
       )
 SELECT updated.id_product_abstract FROM updated UNION ALL SELECT inserted.id_product_abstract FROM inserted";
+
         return $sql;
     }
 
@@ -250,6 +252,7 @@ SELECT updated.id_product_abstract FROM updated UNION ALL SELECT inserted.id_pro
 )
 SELECT updated.id_url,id_product_abstract FROM updated UNION ALL SELECT inserted.id_url,id_product_abstract FROM inserted;
 ";
+
         return $sql;
     }
 }

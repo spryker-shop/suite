@@ -299,6 +299,7 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
             }
             $result[$sku][static::KEY_QUANTITY] = $quantity;
         }
+
         return $result;
     }
 
