@@ -6,9 +6,9 @@ pushd ${BASH_SOURCE%/*} > /dev/null
 . ../constants.sh
 popd > /dev/null
 
-function dataSync()
+function sync()
 {
     return ${__TRUE}
 }
 
-export -f dataSync
+export -f sync
