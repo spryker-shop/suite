@@ -5,6 +5,7 @@ const globalSettings = {
     // define the current context (root)
     context: process.cwd(),
 
+    // build modes
     modes: {
         dev: 'development',
         watch: 'development-watch',
@@ -57,25 +58,10 @@ const getAppSettingsByTheme = (namespaceConfig, theme) => {
     // important: the name must be normalized
     const name = 'yves_default';
 
-    // define relative urls to site host (/)
+    // define relative urls to site host (/) and pattern to assets
     const urls = {
         // assets base url
-        defaultAssets: join('/assets', namespaceConfig.namespace, namespaceConfig.defaultTheme),
-        currentAssets: join('/assets', namespaceConfig.namespace, theme)
-    };
-
-    // getting assets paths collection
-    const assetPaths = () => {
-        return {
-            // global assets folder
-            globalAssets: `./frontend/assets/global/${theme}`,
-
-            // assets folder for default theme into namespace
-            defaultAssets: join('./frontend', urls.defaultAssets),
-
-            // assets folder for current theme into namespace
-            currentAssets: join('./frontend', urls.currentAssets)
-        };
+        assets: join('/assets', namespaceConfig.namespace, theme)
     };
 
     // define project relative paths to context
@@ -83,13 +69,20 @@ const getAppSettingsByTheme = (namespaceConfig, theme) => {
         // locate the typescript configuration json file
         tsConfig: globalSettings.paths.tsConfig,
 
-        assets: assetPaths(),
+        // getting assets paths collection
+        assets: {
+            // global assets folder
+            globalAssets: `./frontend/assets/global/${theme}`,
+
+            // assets folder for current theme into namespace
+            currentAssets: join('./frontend', urls.assets)
+        },
 
         // public folder with all assets
         publicAll: globalSettings.paths.publicAll,
 
         // current namespace and theme public assets folder
-        public: join('./public/Yves', urls.currentAssets),
+        public: join('./public/Yves', urls.assets),
 
         // core folders
         core: globalSettings.paths.core,
@@ -103,22 +96,22 @@ const getAppSettingsByTheme = (namespaceConfig, theme) => {
 
     // define if current theme is empty
     const isDefaultTheme = theme === namespaceConfig.defaultTheme;
-
+    const getThemeName = isFallbackPattern => isFallbackPattern ? namespaceConfig.defaultTheme : theme;
     const isFallbackPatternAndDefaultTheme = isFallbackPattern => (isFallbackPattern && isDefaultTheme);
 
     // define entry point patterns for current theme, if current theme is defined
-    const customThemeEntryPointPatterns = (isFallbackPattern = false) => (
-        isFallbackPatternAndDefaultTheme(isFallbackPattern) ? [] : [
-            ...entryPointsCollection(`**/Theme/${theme}`),
-            ...entryPointsCollection(`**/*${namespaceConfig.moduleSuffix}/Theme/${theme}`),
+    const customThemeEntryPointPatterns = (isFallbackPattern = false) => {
+        return isFallbackPatternAndDefaultTheme(isFallbackPattern) ? [] : [
+            ...entryPointsCollection(`**/Theme/${getThemeName(isFallbackPattern)}`),
+            ...entryPointsCollection(`**/*${namespaceConfig.moduleSuffix}/Theme/${getThemeName(isFallbackPattern)}`),
             ...ignoreFiles
         ]
-    );
+    };
 
     const shopUiEntryPointsPattern = (isFallbackPattern = false) => (
         isFallbackPatternAndDefaultTheme(isFallbackPattern) ? [] : [
-            `./ShopUi/Theme/${theme}`,
-            `./ShopUi${namespaceConfig.moduleSuffix}/Theme/${theme}`
+            `./ShopUi/Theme/${getThemeName(isFallbackPattern)}`,
+            `./ShopUi${namespaceConfig.moduleSuffix}/Theme/${getThemeName(isFallbackPattern)}`
         ]
     );
 

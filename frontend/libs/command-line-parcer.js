@@ -2,9 +2,7 @@ const program = require('commander');
 const { join } = require('path');
 const { globalSettings } = require('../settings');
 
-const parseToArray = (value) => {
-    return value.split(',');
-};
+const parseToArray = (value) => value.split(',');
 
 const getMode = (requestedMode) => {
     for (const mode in globalSettings.modes) {

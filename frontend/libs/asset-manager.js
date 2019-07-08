@@ -3,15 +3,15 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const getCopyConfig = (appSettings) =>
-    Object.values(appSettings.paths.assets).reduce((collection, current) => {
-        if (fs.existsSync(current)) {
-            collection.push({
-                from: current,
+    Object.values(appSettings.paths.assets).reduce((copyConfig, assetsPath) => {
+        if (fs.existsSync(assetsPath)) {
+            copyConfig.push({
+                from: assetsPath,
                 to: '.',
                 ignore: ['*.gitkeep']
             });
         }
-        return collection;
+        return copyConfig;
     },[]);
 
 const getAssetsConfig = (appSettings) => [
