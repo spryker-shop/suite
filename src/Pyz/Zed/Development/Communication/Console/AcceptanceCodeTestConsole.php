@@ -13,5 +13,5 @@ class AcceptanceCodeTestConsole extends CodeTestConsole
 {
     public const COMMAND_NAME = 'code:test:acceptance';
 
-    protected const CODECEPT_CONFIG_FILE_NAME = 'codeception.acceptance.yml';
+    protected const CODECEPTION_CONFIG_FILE_NAME = 'codeception.acceptance.yml';
 }

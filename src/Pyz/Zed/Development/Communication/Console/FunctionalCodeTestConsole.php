@@ -13,5 +13,5 @@ class FunctionalCodeTestConsole extends CodeTestConsole
 {
     public const COMMAND_NAME = 'code:test:functional';
 
-    protected const CODECEPT_CONFIG_FILE_NAME = 'codeception.functional.yml';
+    protected const CODECEPTION_CONFIG_FILE_NAME = 'codeception.functional.yml';
 }
