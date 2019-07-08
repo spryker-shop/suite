@@ -99,7 +99,7 @@ volumes:
   assets:
     external: true
     name: "${COMPOSE_PROJECT_NAME}_assets"
-{% else %}
+{% elseif _mountMode != 'native' %}
   {{ namespace }}_{{ tag }}_data_sync:
     external: true
 {% endif %}

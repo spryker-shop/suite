@@ -282,7 +282,7 @@ function buildCode()
 {% if _platform == 'windows' %}
     # Fix the docker-sync permission issue on windows
    local executableFile=$(runApplicationBuild '[ ! -x $(readlink -f vendor/bin/console) ] && echo 0 || echo 1 | tail -n 1' | tr -d " \n\r")
-   [ "$1" != ${IF_NOT_PERFORMED} -o "${executableFile}" == "0" ] && runApplicationBuild 'chmod +x vendor/bin/*'
+   [ "$1" != ${IF_NOT_PERFORMED} -o "${executableFile}" == "0" ] && runApplicationBuild 'chmod +x vendor/bin/*' || true
 {% endif %}
 }
 {% endif %}
