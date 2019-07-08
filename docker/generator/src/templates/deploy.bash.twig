@@ -101,6 +101,10 @@ function showExecHelp()
 # Global variables
 DOCKER_COMPOSE_FILES="-f ${DEPLOYMENT_PATH}/docker-compose.yml"
 DOCKER_EXTRA_OPTIONS=" -v ${SPRYKER_DOCKER_PREFIX}_logs:${SPRYKER_LOG_DIRECTORY}:rw"
+if [ ! -z "${GITHUB_TOKEN}" ];
+then
+    DOCKER_EXTRA_OPTIONS+=" -e COMPOSER_AUTH={\"github-oauth\":{\"github.com\":\"${GITHUB_TOKEN}\"}}";
+fi;
 {% if _platform == 'linux' %}
 readonly USER_UID=$(id -u)
 readonly USER_GID=$(id -g)
@@ -112,6 +116,7 @@ readonly USER_GID="1000"
 {% if isDevelopment %}
 echo -e "*** ${WARN}DEVELOPMENT MODE${NC}"
 DOCKER_EXTRA_OPTIONS+=" -v ${DEPLOYMENT_DIR}/context/php/conf.d/opcache_dev.ini:/usr/local/etc/php/conf.d/opcache.ini:ro"
+DOCKER_EXTRA_OPTIONS+=" -v $(dirname ~/.composer/cache:/home/spryker/).composer/cache:rw"
 {% if _mountMode == 'native' %}
 DOCKER_EXTRA_OPTIONS+=" -v ${PROJECT_DIR}:/data -u ${USER_UID}:${USER_GID}"
 {% else %}
@@ -150,7 +155,7 @@ function areAssetsBuilt()
 {% else %}
     local assetsHostFolder=$(docker volume ls --filter "name=${SPRYKER_DOCKER_PREFIX}_assets" --format "{{ '{{' }}.Mountpoint{{ '}}' }}")
     if [ ! -z "${assetsHostFolder}" ]; then
-      local assetsFolderFilesCount=$(docker run -i --rm -v $(docker volume ls --filter "name=${SPRYKER_DOCKER_PREFIX}_assets" --format "{{ '{{' }}.Name{{ '}}' }}"):/assets ${SPRYKER_DOCKER_PREFIX}_cli:${SPRYKER_DOCKER_TAG} ls /assets|wc -l | sed 's/^ *//')
+      local assetsFolderFilesCount=$(docker run -i --rm -v ${SPRYKER_DOCKER_PREFIX}_assets:/assets ${SPRYKER_DOCKER_PREFIX}_cli:${SPRYKER_DOCKER_TAG} ls /assets|wc -l | sed 's/^ *//')
       [ ${assetsFolderFilesCount} -gt 0 ] && verbose "[BUILT]" && return ${__TRUE}
     fi
 
@@ -169,6 +174,8 @@ function buildAssets()
     docker volume create --name="${SPRYKER_DOCKER_PREFIX}_assets"
 
 {% if isDevelopment %}
+    sync start
+    sync stop
     runApplicationBuild "vendor/bin/install -r docker -s build-static"
 {% else %}
     verbose "${INFO}Generating assets${NC}"
@@ -199,23 +206,20 @@ function buildAssets()
 function buildBaseImage()
 {
 {% if isDevelopment %}
-    if [ "$1" = ${IF_NOT_PERFORMED} -a "$(docker images -q ${SPRYKER_DOCKER_PREFIX}_app 2> /dev/null)" != "" ] && docker volume inspect ${SPRYKER_DOCKER_PREFIX}_${SPRYKER_DOCKER_TAG}_data_sync > /dev/null 2>&1s; then
+    if [ "$1" = ${IF_NOT_PERFORMED} -a "$(docker images -q ${SPRYKER_DOCKER_PREFIX}_app:${SPRYKER_DOCKER_TAG} 2> /dev/null)" != "" ]; then
         return ${__TRUE}
     fi
 {% endif %}
-
     verbose "${INFO}Building base application image${NC}"
 
     if [ -z ${GITHUB_TOKEN} ]; then
-        verbose "${WARN}GITHUB_TOKEN is not set but may be required.${NC}"
+        echo -e "${WARN}Warning: GITHUB_TOKEN is not set but may be required.${NC}"
     fi
-
-    [ ! -d ./vendor ] && mkdir vendor
 
     docker build \
         -t ${SPRYKER_DOCKER_PREFIX}_app:${SPRYKER_DOCKER_TAG} \
         --progress=${PROGRESS_TYPE} \
-        -f ${DEPLOYMENT_PATH}/images/base_app/Dockerfile \
+        -f ${DEPLOYMENT_PATH}/images/{{ isDevelopment ? 'base_dev' : 'base_app' }}/Dockerfile \
         --build-arg SPRYKER_PHP_VERSION=${SPRYKER_PHP_VERSION} \
         --build-arg SPRYKER_DOCKER_PREFIX=${SPRYKER_DOCKER_PREFIX} \
         --build-arg SPRYKER_DOCKER_TAG=${SPRYKER_DOCKER_TAG} \
@@ -226,10 +230,6 @@ function buildBaseImage()
         --build-arg APPLICATION_ENV=${APPLICATION_ENV} \
         --build-arg SPRYKER_DB_ENGINE=${SPRYKER_DB_ENGINE} \
         --build-arg SPRYKER_LOG_DIRECTORY=${SPRYKER_LOG_DIRECTORY} \
-{% if isDevelopment %}
-        --build-arg SKIP_DUMP_AUTOLOAD=1 \
-        --build-arg SKIP_BUILD_IF_PERFORMED=$([ "$1" = ${IF_NOT_PERFORMED} ] && echo 1 || echo 0) \
-{% endif %}
         .
 
     verbose "${INFO}Building cli image (based on base application image)${NC}"
@@ -242,24 +242,9 @@ function buildBaseImage()
         --progress=${PROGRESS_TYPE} \
         -f ${DEPLOYMENT_PATH}/images/cli/Dockerfile \
         .
-
-{% if isDevelopment %}
-{% if _mountMode != 'native' %}
-    sync recreate
-    docker run -i --rm \
-        -v ${SPRYKER_DOCKER_PREFIX}_${SPRYKER_DOCKER_TAG}_data_sync:/data \
-        --name=${SPRYKER_DOCKER_PREFIX}_app_build \
-        ${SPRYKER_DOCKER_PREFIX}_app:${SPRYKER_DOCKER_TAG} \
-        true
-{% endif %}
-{% if _platform == 'windows' %}
-    # Fix the docker-sync permission issue on windows
-   local executableFile=$(runApplicationBuild '[ ! -x $(readlink -f vendor/bin/console) ] && echo 0 || echo 1' | tail -n 1 | tr -d ' \n\r')
-   [ "${executableFile}" == "0" ] && runApplicationBuild 'chmod +x vendor/bin/*'
-{% endif %}
-{% endif %}
 }
 
+{% if isDevelopment %}
 function runApplicationBuild()
 {
     local tty
@@ -271,6 +256,36 @@ function runApplicationBuild()
         ${DOCKER_EXTRA_OPTIONS} \
         ${SPRYKER_DOCKER_PREFIX}_cli:${SPRYKER_DOCKER_TAG} /usr/local/bin/execute.sh
 }
+
+function buildCode()
+{
+    sync create
+    sync start
+    sync stop
+
+    [ "$1" = ${IF_NOT_PERFORMED} ] && verbose "${INFO}Checking if anything should be built${NC}"
+
+    runApplicationBuild 'chmod 600 /data/config/Zed/*.key'
+
+    local vendorDir=$(runApplicationBuild '[ ! -f /data/vendor/bin/install ] && echo 0 || echo 1 | tail -n 1' | tr -d " \n\r")
+    if [ "$1" != ${IF_NOT_PERFORMED} -o "${vendorDir}" == "0" ]; then
+        verbose "${INFO}Running composer install${NC}"
+        runApplicationBuild 'mkdir ~/.ssh && ssh-keyscan -t rsa,dsa github.com >> ~/.ssh/known_hosts && composer install --no-interaction --optimize-autoloader'
+    fi
+
+    local generatedDir=$(runApplicationBuild '[ ! -d /data/src/Generated ] && echo 0 || echo 1 | tail -n 1' | tr -d " \n\r")
+    if [ "$1" != ${IF_NOT_PERFORMED} -o "${generatedDir}" == "0" ]; then
+        verbose "${INFO}Running build${NC}"
+        runApplicationBuild 'vendor/bin/install -r docker -s build -s build-development'
+    fi
+
+{% if _platform == 'windows' %}
+    # Fix the docker-sync permission issue on windows
+   local executableFile=$(runApplicationBuild '[ ! -x $(readlink -f vendor/bin/console) ] && echo 0 || echo 1 | tail -n 1' | tr -d " \n\r")
+   [ "$1" != ${IF_NOT_PERFORMED} -o "${executableFile}" == "0" ] && runApplicationBuild 'chmod +x vendor/bin/*'
+{% endif %}
+}
+{% endif %}
 
 function isDemoDataLoaded()
 {
@@ -285,7 +300,7 @@ function isSchedulerJobsCreated()
     waitFor scheduler
     verbose -n "Checking jobs are created..."
 
-    local jobsCount=$(execSpryker 'curl -sL ${SPRYKER_SCHEDULER_HOST}:${SPRYKER_SCHEDULER_PORT}/scriptText -d "script=println Jenkins.instance.projects.collect{ it.name }.size" | tail -n 1 | tr -d " \n\r"' )
+    local jobsCount=$(execSpryker 'curl -sL ${SPRYKER_SCHEDULER_HOST}:${SPRYKER_SCHEDULER_PORT}/scriptText -d "script=println Jenkins.instance.projects.collect{ it.name }.size" | tail -n 1' | tr -d " \n\r" )
     [ "${jobsCount}" -gt 0 ] && verbose "[CREATED]" && return ${__TRUE} || verbose "" && return ${__FALSE}
 }
 
@@ -405,10 +420,12 @@ function destroyAssets()
 function destroyImages()
 {
     verbose "Removing all Spryker images"
-    if [ $(docker images --filter "reference=spryker_*:${SPRYKER_DOCKER_TAG}" --format "{{ '{{' }}.ID{{ '}}' }}" | wc -l | sed 's/^ *//') -gt 1 ]; then
-        docker images --filter "reference=spryker_*:${SPRYKER_DOCKER_TAG}" --format "{{ '{{' }}.ID{{ '}}' }}" | xargs docker rmi -f
+    if [ $(docker images --filter "reference=${SPRYKER_DOCKER_PREFIX}_*:${SPRYKER_DOCKER_TAG}" --format "{{ '{{' }}.ID{{ '}}' }}" | wc -l | sed 's/^ *//') -gt 1 ]; then
+        docker images --filter "reference=${SPRYKER_DOCKER_PREFIX}_*:${SPRYKER_DOCKER_TAG}" --format "{{ '{{' }}.ID{{ '}}' }}" | xargs docker rmi -f
     fi
 
+    docker rmi -f ${SPRYKER_DOCKER_PREFIX}_cli
+    docker rmi -f ${SPRYKER_DOCKER_PREFIX}_app
     docker rmi -f ${SPRYKER_PLATFORM_IMAGE}
 }
 
@@ -450,6 +467,9 @@ function execSprykerMultiString()
 function doBuild()
 {
     buildBaseImage $1
+{% if isDevelopment %}
+    buildCode $1
+{% endif %}
     execDockerCompose build
     buildAssets $1
 }
@@ -685,6 +705,14 @@ case $1 in
         ;;
     logs)
         execSpryker "find ${SPRYKER_LOG_DIRECTORY} -type f \( -name \"exception.log\" \) -exec tail -f \"$file\" {} +"
+        ;;
+    prune)
+        stopApp
+        sync clean
+        echo -e "${WARN}This will delete ALL docker images and volumes on the host.${NC}"
+        docker system prune -a
+        docker image prune
+        docker volume prune
         ;;
     trouble)
         stopApp

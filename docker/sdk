@@ -36,7 +36,7 @@ function showHelp()
 
 case $1 in
     boot|bootstrap)
-        [ -f ${DEPLOY_SCRIPT} ] && SPRYKER_SELF_SCRIPT=$0 ${DEPLOY_SCRIPT} down 2> /dev/null && sleep 2 || true
+        [ -f ${DEPLOY_SCRIPT} ] && SPRYKER_SELF_SCRIPT=$0 ${DEPLOY_SCRIPT} down > /dev/null 2>&1 && sleep 2 || true
 
         # ------------
         SOURCE_DIR=${BASH_SOURCE%/*}

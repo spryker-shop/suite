@@ -14,19 +14,15 @@ ENV SPRYKER_LOG_DIRECTORY=${SPRYKER_LOG_DIRECTORY}
 RUN mkdir -p ${SPRYKER_LOG_DIRECTORY} && \
     chown spryker:spryker ${SPRYKER_LOG_DIRECTORY}
 
-ARG SKIP_BUILD_IF_PERFORMED
-ARG USER_UID
-RUN usermod -u ${USER_UID} spryker
-
 WORKDIR /data
 USER spryker
 
 # Install composer modules for Spryker
-COPY --chown=spryker:spryker composer.json composer.lock vendor ${srcRoot}/
+COPY --chown=spryker:spryker composer.json composer.lock ${srcRoot}/
 ARG GITHUB_TOKEN
 RUN --mount=type=cache,target=/home/spryker/.composer/cache,from=composer_cache,source=/cache \
   bash -c 'if [ ! -z $GITHUB_TOKEN ]; then export COMPOSER_AUTH="{\"github-oauth\": {\"github.com\": \"${GITHUB_TOKEN}\"}}"; fi; \
-    if [ ! -f ${srcRoot}/vendor/bin/install -o "x${SKIP_BUILD_IF_PERFORMED}" = "x0" ] ; then composer install --no-interaction --optimize-autoloader ; fi'
+    composer install --no-interaction --optimize-autoloader'
 
 ### Intermediate container - with dependencies, PHP code and configs
 FROM spryker_app_dependencies AS spryker_app_base
@@ -35,21 +31,20 @@ COPY --chown=spryker:spryker config ${srcRoot}/config
 COPY --chown=spryker:spryker *.php ${srcRoot}/
 RUN chmod 600 ${srcRoot}/config/Zed/*.key
 
-ARG SKIP_DUMP_AUTOLOAD=0
-RUN if [ "x${SKIP_DUMP_AUTOLOAD}" = "x0" ] ; then composer dump-autoload -o ; fi
+RUN composer dump-autoload -o
 
 ARG APPLICATION_ENV
 ARG SPRYKER_DB_ENGINE
 ENV APPLICATION_ENV=${APPLICATION_ENV}
 ENV SPRYKER_DB_ENGINE=${SPRYKER_DB_ENGINE}
 
-RUN if [ ! -f ${srcRoot}/data/src/Generated -o "x${SKIP_BUILD_IF_PERFORMED}" = "x0" ] ; then vendor/bin/install -r docker -s build ; fi
+RUN vendor/bin/install -r docker -s build
 
 # Tests contain transfer declaration
 COPY --chown=spryker:spryker tests ${srcRoot}/tests
 
 ENV DEVELOPMENT_CONSOLE_COMMANDS=1
-RUN if [ ! -f ${srcRoot}/data/src/Generated -o "x${SKIP_BUILD_IF_PERFORMED}" = "x0" ] ; then vendor/bin/install -r docker -s build-development ; fi
+RUN vendor/bin/install -r docker -s build-development
 
 ### Final container, with testing tools, public directory and data
 FROM spryker_app_base AS spryker_app
@@ -60,7 +55,7 @@ COPY --chown=spryker:spryker public ${srcRoot}/public
 COPY --chown=spryker:spryker frontend ${srcRoot}/frontend
 COPY --chown=spryker:spryker .* *.* LICENSE ${srcRoot}/
 
-RUN if [ "x${SKIP_DUMP_AUTOLOAD}" = "x0" ] ; then composer dump-autoload -o ; fi
+RUN composer dump-autoload -o
 
 RUN rm -rf /var/run/opcache/*
 

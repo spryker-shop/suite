@@ -18,6 +18,9 @@ RUN mkdir -p ${SPRYKER_LOG_DIRECTORY}
 RUN chown spryker:spryker ${SPRYKER_LOG_DIRECTORY}
 WORKDIR /data
 
+ARG DEPLOYMENT_PATH
+ENV DEPLOYMENT_PATH=${DEPLOYMENT_PATH}
+
 COPY ${DEPLOYMENT_PATH}/context/cli/execute.sh /usr/local/bin/execute.sh
 RUN chmod +x /usr/local/bin/execute.sh
 
