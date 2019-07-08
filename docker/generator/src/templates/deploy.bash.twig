@@ -104,6 +104,7 @@ DOCKER_EXTRA_OPTIONS=" -v ${SPRYKER_DOCKER_PREFIX}_logs:${SPRYKER_LOG_DIRECTORY}
 if [ ! -z "${GITHUB_TOKEN}" ];
 then
     DOCKER_EXTRA_OPTIONS+=" -e COMPOSER_AUTH={\"github-oauth\":{\"github.com\":\"${GITHUB_TOKEN}\"}}";
+    DOCKER_EXTRA_OPTIONS+=" -v $(dirname ~/.ssh)/.ssh/known_hosts:/home/spryker/.ssh/known_hosts";
 fi;
 {% if _platform == 'linux' %}
 readonly USER_UID=$(id -u)
@@ -270,7 +271,7 @@ function buildCode()
     local vendorDir=$(runApplicationBuild '[ ! -f /data/vendor/bin/install ] && echo 0 || echo 1 | tail -n 1' | tr -d " \n\r")
     if [ "$1" != ${IF_NOT_PERFORMED} -o "${vendorDir}" == "0" ]; then
         verbose "${INFO}Running composer install${NC}"
-        runApplicationBuild 'mkdir ~/.ssh && ssh-keyscan -t rsa,dsa github.com >> ~/.ssh/known_hosts && composer install --no-interaction --optimize-autoloader'
+        runApplicationBuild 'composer install --no-interaction --optimize-autoloader'
     fi
 
     local generatedDir=$(runApplicationBuild '[ ! -d /data/src/Generated ] && echo 0 || echo 1 | tail -n 1' | tr -d " \n\r")
