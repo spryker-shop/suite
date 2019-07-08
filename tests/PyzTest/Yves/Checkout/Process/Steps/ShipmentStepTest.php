@@ -21,6 +21,8 @@ use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface
 use SprykerShop\Yves\CheckoutPage\CheckoutPageDependencyProvider;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceBridge;
+use SprykerShop\Yves\CheckoutPage\GiftCard\GiftCardItemsChecker;
+use SprykerShop\Yves\CheckoutPage\GiftCard\GiftCardItemsCheckerInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\ShipmentStep;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\ShipmentStep\PostConditionChecker;
 use SprykerTest\Shared\Testify\Helper\LocatorHelperTrait;
@@ -129,6 +131,7 @@ class ShipmentStepTest extends Unit
             $this->createCalculationClientMock(),
             $shipmentPlugins,
             $this->createPostConditionChecker(),
+            $this->createGiftCardItemsChecker(),
             'checkout-shipment',
             'home'
         );
@@ -159,8 +162,17 @@ class ShipmentStepTest extends Unit
     protected function createPostConditionChecker()
     {
         return new PostConditionChecker(
-            new CheckoutPageToShipmentServiceBridge($this->getLocator()->shipment()->service())
+            new CheckoutPageToShipmentServiceBridge($this->getLocator()->shipment()->service()),
+            $this->createGiftCardItemsChecker()
         );
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CheckoutPage\GiftCard\GiftCardItemsCheckerInterface
+     */
+    protected function createGiftCardItemsChecker(): GiftCardItemsCheckerInterface
+    {
+        return new GiftCardItemsChecker();
     }
 
     /**
