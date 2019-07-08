@@ -3846,7 +3846,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "4064243a06eb815d4dcc724cff0f78b9d1df9e37"
+                "reference": "b5d1cda7fd59c0a9ad124f7980b6c36162c8df3f"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -3961,6 +3961,7 @@
                 "spryker/maintenance": "*",
                 "spryker/mandrill": "*",
                 "spryker/messenger": "*",
+                "spryker/module-finder": "*",
                 "spryker/money": "*",
                 "spryker/monitoring": "*",
                 "spryker/monitoring-extension": "*",
@@ -4064,6 +4065,7 @@
                 "spryker/state-machine": "*",
                 "spryker/step-engine": "*",
                 "spryker/stock": "*",
+                "spryker/stock-sales-connector": "*",
                 "spryker/storage": "*",
                 "spryker/store": "*",
                 "spryker/symfony": "*",
@@ -4114,7 +4116,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-06-06T15:43:51+00:00"
+            "time": "2019-07-08T13:38:25+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -4122,7 +4124,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "3518941afd6989791757a963ce24c1731783029c"
+                "reference": "6d454249604387787bd9a7e34c486ac7cfcd31cb"
             },
             "require": {
                 "php": ">=7.1"
@@ -4197,7 +4199,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-07-08T11:06:52+00:00"
+            "time": "2019-07-08T14:31:01+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -9862,48 +9864,6 @@
                 "standards"
             ],
             "time": "2019-07-04T11:16:43+00:00"
-        },
-        {
-            "name": "spryker/module-finder",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/module-finder.git",
-                "reference": "4acadc6f53e8929d55c028f765a4a594c37712b7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/module-finder/zipball/4acadc6f53e8929d55c028f765a4a594c37712b7",
-                "reference": "4acadc6f53e8929d55c028f765a4a594c37712b7",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1",
-                "spryker/kernel": "^3.33.0",
-                "spryker/symfony": "^3.2.0",
-                "spryker/zend": "^2.0.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "ModuleFinder module",
-            "time": "2019-06-05T07:55:43+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
