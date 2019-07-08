@@ -6,7 +6,7 @@ export default class ColorSelector extends Component {
     wrap: HTMLElement | HTMLBodyElement;
 
     protected readyCallback(): void {
-        this.wrap = <HTMLElement | HTMLBodyElement>document.querySelector(this.targetParentWrapper);
+        this.wrap = <HTMLElement | HTMLBodyElement>this.closest(this.targetParentWrapper);
         this.colors = <HTMLAnchorElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__color`));
         this.images = <HTMLImageElement[]>Array.from(this.wrap.querySelectorAll(this.targetImageSelector));
         this.mapEvents();
