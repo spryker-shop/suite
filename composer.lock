@@ -8093,16 +8093,16 @@
         },
         {
             "name": "spryker/application",
-            "version": "3.17.1",
+            "version": "3.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/application.git",
-                "reference": "5c006f6abfb720cdaaff135aaff32dba4bb9c5d7"
+                "reference": "504db1569979b77ee73ba9ecf50ce82b2b8f21fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/application/zipball/5c006f6abfb720cdaaff135aaff32dba4bb9c5d7",
-                "reference": "5c006f6abfb720cdaaff135aaff32dba4bb9c5d7",
+                "url": "https://api.github.com/repos/spryker/application/zipball/504db1569979b77ee73ba9ecf50ce82b2b8f21fa",
+                "reference": "504db1569979b77ee73ba9ecf50ce82b2b8f21fa",
                 "shasum": ""
             },
             "require": {
@@ -8111,6 +8111,7 @@
                 "spryker/config": "^3.0.0",
                 "spryker/container": "^1.1.0",
                 "spryker/error-handler": "^2.0.0",
+                "spryker/event-dispatcher-extension": "^1.0.0",
                 "spryker/kernel": "^3.31.0",
                 "spryker/log": "^3.1.0",
                 "spryker/monolog": "^2.0.0",
@@ -8125,8 +8126,12 @@
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/event-dispatcher": "*",
                 "spryker/propel": "*",
                 "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/event-dispatcher": "If you want to use EventDispatcher plugin."
             },
             "type": "library",
             "extra": {
@@ -8145,7 +8150,7 @@
                 "proprietary"
             ],
             "description": "Application module",
-            "time": "2019-07-04T11:31:19+00:00"
+            "time": "2019-07-08T12:24:08+00:00"
         },
         {
             "name": "spryker/application-extension",
