@@ -97,18 +97,18 @@ class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
      */
     protected function createOrUpdateBundles(DataSetInterface $dataSet, int $idProduct): void
     {
-        $productBundleTransfers = $this->getProductConcreteBundleTransfers($dataSet);
+        $productBundleData = $this->getProductConcreteBundleData($dataSet);
 
-        foreach ($productBundleTransfers as $productBundleTransfer) {
+        foreach ($productBundleData as $productBundle) {
             $bundledProductId = $this
                 ->productRepository
-                ->getIdProductByConcreteSku($dataSet[ProductConcreteHydratorStep::KEY_PRODUCT_BUNDLE_SKU]);
+                ->getIdProductByConcreteSku($productBundle[ProductConcreteHydratorStep::KEY_PRODUCT_BUNDLE_SKU]);
 
             $productBundleEntity = SpyProductBundleQuery::create()
                 ->filterByFkProduct($idProduct)
                 ->filterByFkBundledProduct($bundledProductId)
                 ->findOneOrCreate();
-            $productBundleEntity->fromArray($productBundleTransfer->modifiedToArray());
+            $productBundleEntity->fromArray($productBundle[ProductConcreteHydratorStep::KEY_PRODUCT_BUNDLE_TRANSFER]->modifiedToArray());
 
             if ($productBundleEntity->isNew() || $productBundleEntity->isModified()) {
                 $productBundleEntity->save();
@@ -170,9 +170,9 @@ class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
      *
      * @return array
      */
-    protected function getProductConcreteBundleTransfers(DataSetInterface $dataSet): array
+    protected function getProductConcreteBundleData(DataSetInterface $dataSet): array
     {
-        return $dataSet[ProductConcreteHydratorStep::DATA_PRODUCT_BUNDLE_TRANSFER][ProductConcreteHydratorStep::KEY_PRODUCT_BUNDLE_TRANSFER] ?? [];
+        return $dataSet[ProductConcreteHydratorStep::DATA_PRODUCT_BUNDLE_TRANSFER] ?? [];
     }
 
     /**
