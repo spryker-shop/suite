@@ -6,7 +6,7 @@ syncs:
   {{ namespace }}_{{ tag }}_data_sync:
     src: '.'
     sync_strategy: {{ (_platform == 'macos') ? 'native_osx' : 'unison' }}
-    sync_excludes: ['.docker-sync', '.gitignore', '.git', '.idea', '.project', 'data/*/cache', '*.log', 'node_modules', 'docker', '.composer', '.npm']
+    sync_excludes: ['.docker-sync', '/.git', '.idea', '.project', 'data/*/cache', '*.log', 'node_modules', 'docker', '.composer', '.npm']
 {%  if _platform == 'macos' %}
     host_disk_mount_mode: 'cached'
 {% endif %}
