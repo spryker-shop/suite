@@ -7,7 +7,7 @@
 
 namespace PyzTest\Glue\Products;
 
-use SprykerTest\Glue\Testify\ApiEndToEndTester;
+use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
 
 /**
  * Inherited Methods
