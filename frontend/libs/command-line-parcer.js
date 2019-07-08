@@ -1,25 +1,26 @@
-const program = require('commander');
+const commandLineParser = require('commander');
 const { join } = require('path');
 const { globalSettings } = require('../settings');
 
-const parseToArray = (value, memo) => {
-    memo.push(value);
-    return memo;
-}
+const collectArguments = (argument, argumentCollection) => {
+    argumentCollection.push(argument);
+    return argumentCollection;
+};
 
 const getMode = (requestedMode) => {
     for (const mode in globalSettings.modes) {
         if (globalSettings.modes[mode] === requestedMode) {
-            return requestedMode
+            return requestedMode;
         }
     }
-    console.warn(`Mode "${program.mode}" is not available`);
+    console.warn(`Mode "${commandLineParser.mode}" is not available`);
     process.exit(1);
 };
 
-program
-    .option('-n, --namespace <namespace list>', 'build the list of namespaces', parseToArray, [])
-    .option('-t, --theme <theme list>', 'build the list of themes', parseToArray, [])
+let modeValue;
+commandLineParser
+    .option('-n, --namespace <namespace name>', 'build the requested namespace. Multiple arguments are allowed.', collectArguments, [])
+    .option('-t, --theme <theme name>', 'build the requested theme. Multiple arguments are allowed.', collectArguments, [])
     .option('-i, --info', 'information about all namespaces and available themes')
     .option('-c, --config <path>', 'path to JSON file with namespace config', globalSettings.paths.namespaceConfig)
     .arguments('<mode>')
@@ -29,15 +30,27 @@ program
     .parse(process.argv);
 
 const mode = modeValue;
-const namespaces = program.namespace;
-const themes = program.theme;
-const info = program.info || false;
-const pathToConfig = join(globalSettings.context, program.config);
+const namespaces = commandLineParser.namespace;
+const themes = commandLineParser.theme;
+const pathToConfig = join(globalSettings.context, commandLineParser.config);
+
+const namespaceJson = require(pathToConfig);
+if (commandLineParser.info === true) {
+    console.log('Namespaces with available themes:');
+    namespaceJson.namespaces.forEach((namespaceConfig) => {
+        console.log(`- ${namespaceConfig.namespace}`);
+        console.log(`  ${namespaceConfig.defaultTheme}`);
+        if (namespaceConfig.themes.length > 0) {
+            namespaceConfig.themes.forEach(theme => console.log(`  ${theme}`));
+        }
+    });
+    console.log('');
+    process.exit();
+}
 
 module.exports = {
     mode,
     namespaces,
     themes,
-    info,
     pathToConfig
 };

@@ -33,7 +33,7 @@ const globalSettings = {
     }
 };
 
-const getAppSettingsByTheme = (namespaceConfig, theme) => {
+const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
     const entryPointsParts = [
         'components/atoms/*/index.ts',
         'components/molecules/*/index.ts',
@@ -58,10 +58,20 @@ const getAppSettingsByTheme = (namespaceConfig, theme) => {
     // important: the name must be normalized
     const name = 'yves_default';
 
-    // define relative urls to site host (/) and pattern to assets
+    // get namespace config
+    const namespaceJson = require(pathToConfig);
+
+    // get public url path according to pattern from config
+    const getPublicUrl = () => (
+        namespaceJson.path
+            .replace(/%namespace%/gi, namespaceConfig.namespace)
+            .replace(/%theme%/gi, theme)
+    );
+
+    // define relative urls to site host (/)
     const urls = {
         // assets base url
-        assets: join('/assets', namespaceConfig.namespace, theme)
+        assets: getPublicUrl()
     };
 
     // define project relative paths to context
@@ -75,7 +85,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme) => {
             globalAssets: `./frontend/assets/global/${theme}`,
 
             // assets folder for current theme into namespace
-            currentAssets: join('./frontend', urls.assets)
+            currentAssets: join('./frontend/assets', namespaceConfig.namespace, theme)
         },
 
         // public folder with all assets
@@ -174,14 +184,14 @@ const getAppSettingsByTheme = (namespaceConfig, theme) => {
     }
 };
 
-const getAppSettings = namespaceConfigList => {
-    let appSetting = [];
+const getAppSettings = (namespaceConfigList, pathToConfig) => {
+    let appSettings = [];
     namespaceConfigList.forEach(namespaceConfig => {
         namespaceConfig.themes.forEach(theme => {
-            appSetting.push(getAppSettingsByTheme(namespaceConfig, theme));
+            appSettings.push(getAppSettingsByTheme(namespaceConfig, theme, pathToConfig));
         })
     });
-    return appSetting;
+    return appSettings;
 };
 
 module.exports = {

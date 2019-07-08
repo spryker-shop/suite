@@ -5,8 +5,8 @@ const { globalSettings } = require('../settings');
 // execute webpack compiler on array of configurations
 // and nicely handle the console output
 const multiCompile = configs => {
-    if (configs.length === 0 || configs.length === undefined) {
-        return console.error('No configuration provided. Build aborted.');
+    if (!configs || !configs.length) {
+        return console.error('Nothing to build. Build aborted.');
     }
 
     configs.forEach((config) => {

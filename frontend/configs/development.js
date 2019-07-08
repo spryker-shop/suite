@@ -3,14 +3,14 @@ const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { findComponentEntryPoints, findComponentStyles, findAppEntryPoint } = require('../libs/finder');
-const { getAliasFromTsConfig } = require('../libs/alias');
-const { getAssetsConfig } = require('../libs/asset-manager');
+const { getAliasList } = require('../libs/alias');
+const { getAssetsConfig } = require('../libs/assets-configurator');
 
 const getConfiguration = async (appSettings) => {
     const componentEntryPointsPromise = findComponentEntryPoints(appSettings.find.componentEntryPoints);
     const stylesPromise = findComponentStyles(appSettings.find.componentStyles);
     const [componentEntryPoints, styles] = await Promise.all([componentEntryPointsPromise, stylesPromise]);
-    const alias = getAliasFromTsConfig(appSettings);
+    const alias = getAliasList(appSettings);
 
     const vendorTs = await findAppEntryPoint(appSettings.find.shopUiEntryPoints, './vendor.ts');
     const appTs = await findAppEntryPoint(appSettings.find.shopUiEntryPoints, './app.ts');

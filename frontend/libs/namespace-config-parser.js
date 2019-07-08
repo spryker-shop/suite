@@ -9,22 +9,13 @@ const getNamespaceMap = (pathToConfig) => {
     return namespaceMap;
 };
 
-const printWrongNamespaceMessage = namespace => console.warn(`Namespace "${namespace}" does not exist.`);
+const printWrongNamespaceMessage = namespace => {
+    console.error(`Namespace "${namespace}" does not exist.`);
+    process.exit(1);
+};
 
 const getFilteredNamespaceConfigList = (requestedArguments) => {
     const namespaceMap = getNamespaceMap(requestedArguments.pathToConfig);
-
-    if (requestedArguments.info === true) {
-        console.log('Namespaces with available themes:');
-        Array.from(namespaceMap.keys())
-             .map(namespaceKey => {
-                 console.log(`- ${namespaceKey}`);
-                 console.log(`  ${namespaceMap.get(namespaceKey).defaultTheme}`);
-                 namespaceMap.get(namespaceKey).themes.forEach(theme => console.log(`  ${theme}`));
-             });
-        console.log('');
-        return [];
-    }
 
     if (requestedArguments.namespaces.length === 0) {
         requestedArguments.namespaces = Array.from(namespaceMap.keys());
@@ -49,6 +40,10 @@ const getFilteredNamespaceConfigList = (requestedArguments) => {
             }
             return namespaceConfig;
         });
+};
+
+const getPathToAssets = () => {
+
 };
 
 module.exports = {
