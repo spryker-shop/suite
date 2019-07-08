@@ -27,6 +27,8 @@ coverage:
     whitelist: { include: ['src/Pyz/*.php'] }
 
 extensions:
+    commands:
+        - \SprykerTest\Shared\Testify\Fixtures\FixturesCommand
     enabled:
         - Codeception\Extension\Phantoman
     config:
