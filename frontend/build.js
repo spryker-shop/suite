@@ -1,5 +1,5 @@
 // get arguments from command line (mode, namespace list, theme list and path to config JSON file
-const requestedArguments = require('./libs/command-line-parcer');
+const requestedArguments = require('./libs/command-line-parser');
 const { getFilteredNamespaceConfigList } = require('./libs/namespace-config-parser');
 const { getAppSettings } = require('./settings');
 const compiler = require('./libs/compiler');
