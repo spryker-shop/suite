@@ -513,7 +513,7 @@ $config[TranslatorConstants::TRANSLATION_ZED_FILE_PATH_PATTERNS] = [
 ];
 
 // ----------- Yves assets
-$config[ShopUiConstants::YVES_ASSETS_URL_PATTERN] = sprintf('/assets/%s/', $CURRENT_STORE) . '%theme%/';
+$config[ShopUiConstants::YVES_ASSETS_URL_PATTERN] = sprintf('/assets/%s/%s/', $CURRENT_STORE, '%theme%');
 
 // ----------- Api
 $config[ApiConstants::ENABLE_API_DEBUG] = false;
