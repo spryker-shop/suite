@@ -26,10 +26,7 @@ const globalSettings = {
         eco: './vendor/spryker-eco',
 
         // project folders
-        project: './src/Pyz/Yves',
-
-        // assets folders
-        publicAssets: './public/Yves/assets'
+        project: './src/Pyz/Yves'
     }
 };
 

@@ -40,16 +40,6 @@ const multiCompile = configs => {
     });
 };
 
-// clear assets
-const clearAllAssets = (namespaces, themes) => {
-    if (namespaces.length === 0 && themes.length === 0) {
-        rimraf(globalSettings.paths.publicAssets, () => {
-            console.log(`${globalSettings.paths.publicAssets} has been removed. \n`);
-        });
-    }
-};
-
 module.exports = {
-    multiCompile,
-    clearAllAssets
+    multiCompile
 };

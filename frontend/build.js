@@ -1,14 +1,11 @@
 // get arguments from command line (mode, namespace list, theme list and path to config JSON file
-const requestedArguments = require('./libs/command-line-parcer');
+const requestedArguments = require('./libs/command-line-parser');
 const { getFilteredNamespaceConfigList } = require('./libs/namespace-config-parser');
 const { getAppSettings } = require('./settings');
 const compiler = require('./libs/compiler');
 
 // get the webpack configuration associated with the provided mode
 const getConfiguration = require(`./configs/${requestedArguments.mode}`);
-
-// clear all assets
-compiler.clearAllAssets(requestedArguments.namespaces, requestedArguments.themes);
 
 // get array of filtered namespace config
 const namespaceConfigList = getFilteredNamespaceConfigList(requestedArguments);
