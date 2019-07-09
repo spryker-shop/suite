@@ -93,18 +93,19 @@
             {% nowidget %}
                 <div class="grid grid--bottom grid--justify">
                     <div class="col col--sm-5">
-                        {% include molecule('quantity-input') with {
-                            inputAttributes: {
-                                class: 'input input--expand js-volume-price__quantity',
-                            },
-                            data: {
-                                maxQuantity: data.product.quantityMax,
-                                value: data.product.quantityMin ?? 1,
-                                minQuantity: data.product.quantityMin ?? 1,
-                                step: data.product.quantityInterval ?? 1,
-                                hasUpdateButton: false,
-                            },
-                        } only %}
+                        <label>
+                            {{'cart.item_quantity' | trans}}
+                            {% include atom('select') with {
+                                modifiers: ['expand'],
+                                data: {
+                                    options: options
+                                },
+                                attributes: {
+                                    name: 'quantity',
+                                    disabled: isDisabled
+                                }
+                            } only %}
+                        </label>
                     </div>
 
                     <div class="col col--sm-6">
