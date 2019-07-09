@@ -532,4 +532,4 @@ $config[ApplicationConstants::TWIG_ENVIRONMENT_NAME]
 $config[ApplicationConstants::ENABLE_PRETTY_ERROR_HANDLER] = false;
 
 // ----------- Documentation generator
-$config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GENERATION] = false;
+$config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GENERATION] = true;
