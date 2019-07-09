@@ -31,7 +31,6 @@ function showHelp()
     echo -e ""
     echo -e "${INFO}Installation:${NC}"
     echo -e " $0 [-v] [-p <project-name=default>] bootstrap [<project-yml-file=deploy.yml>]"
-    echo -e ""
 }
 
 case $1 in
@@ -66,7 +65,7 @@ case $1 in
         echo -e "Use ${OK}docker/sdk$([ ${PROJECT_NAME} != 'default' ] && echo -n " -p ${PROJECT_NAME}") up${NC} to start the application."
 
         ;;
-    help)
+    help|'')
         showHelp
         [ -f ${DEPLOY_SCRIPT} ] && SPRYKER_SELF_SCRIPT=$0 ${DEPLOY_SCRIPT} $@
         ;;
