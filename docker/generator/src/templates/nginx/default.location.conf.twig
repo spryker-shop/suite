@@ -1,0 +1,5 @@
+    add_header X-Server $hostname;
+    proxy_set_header Host $host;
+    fastcgi_index index.php;
+    fastcgi_param SCRIPT_NAME /index.php;
+    fastcgi_param SCRIPT_FILENAME $document_root/index.php;
