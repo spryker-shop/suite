@@ -94,8 +94,10 @@ UNION ALL SELECT inserted.id_product_image_set, inserted.fk_product, inserted.fk
         FROM (
                SELECT
                  unnest(?::VARCHAR[]) AS externalUrlLarge,
-                 unnest(?::VARCHAR[]) AS externalUrlSmall
+                 unnest(?::VARCHAR[]) AS externalUrlSmall,
+                 unnest(?::INTEGER[]) AS orderKey
              ) input
+        ORDER BY input.orderKey
     ),
     inserted AS(
         INSERT INTO spy_product_image (

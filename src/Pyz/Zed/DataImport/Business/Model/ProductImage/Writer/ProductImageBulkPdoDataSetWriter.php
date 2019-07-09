@@ -103,6 +103,7 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
         $parameters = [
             $this->dataFormatter->formatPostgresArrayString($externalUrlLargeCollection),
             $this->dataFormatter->formatPostgresArrayString($externalUrlSmallCollection),
+            $this->dataFormatter->formatPostgresArray(array_keys(static::$productImageDataCollection)),
         ];
 
         $result = $this->propelExecutor->execute($sql, $parameters);
@@ -193,7 +194,10 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
             static::$productImageDataCollection,
             ProductImageHydratorStep::KEY_IMAGE_SET_RELATION_ID_PRODUCT_IMAGE
         );
-        $sortOrder = array_keys(static::$productImageDataCollection);
+        $sortOrder = $this->dataFormatter->getCollectionDataByKey(
+            static::$productImageSetDataCollection,
+            ProductImageHydratorStep::KEY_SORT_ORDER
+        );
 
         $sql = $this->productImageSql->createProductImageSetRelationSQL();
 
@@ -240,6 +244,7 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
     protected function collectProductImageSetData(DataSetInterface $dataSet): void
     {
         $productImageSetData = $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_SET_TRANSFER]->modifiedToArray();
+        $productImageSetData[ProductImageHydratorStep::KEY_SORT_ORDER] = $dataSet[ProductImageHydratorStep::KEY_SORT_ORDER];
 
         static::$productImageSetDataCollection[] = $productImageSetData;
     }
