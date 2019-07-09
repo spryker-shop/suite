@@ -8,8 +8,6 @@
 namespace Pyz\Zed\Console;
 
 use Pyz\Zed\DataImport\DataImportConfig;
-use Pyz\Zed\Development\Communication\Console\AcceptanceCodeTestConsole;
-use Pyz\Zed\Development\Communication\Console\FunctionalCodeTestConsole;
 use Silex\Provider\TwigServiceProvider as SilexTwigServiceProvider;
 use Spryker\Zed\BusinessOnBehalfDataImport\BusinessOnBehalfDataImportConfig;
 use Spryker\Zed\Cache\Communication\Console\EmptyAllCachesConsole;
