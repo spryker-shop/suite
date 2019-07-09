@@ -6,7 +6,7 @@ const { findComponentEntryPoints, findComponentStyles, findAppEntryPoint } = req
 const { getAliasList } = require('../libs/alias');
 const { getAssetsConfig } = require('../libs/assets-configurator');
 
-const getConfiguration = async (appSettings) => {
+const getConfiguration = async appSettings => {
     const componentEntryPointsPromise = findComponentEntryPoints(appSettings.find.componentEntryPoints);
     const stylesPromise = findComponentStyles(appSettings.find.componentStyles);
     const [componentEntryPoints, styles] = await Promise.all([componentEntryPointsPromise, stylesPromise]);
@@ -131,14 +131,14 @@ const getConfiguration = async (appSettings) => {
                     filename: `./css/${appSettings.name}.[name].css`,
                 }),
 
-                (compiler) => compiler.hooks.done.tap('webpack', compilationParams => {
+                compiler => compiler.hooks.done.tap('webpack', compilationParams => {
                     if (process.env.npm_lifecycle_event === 'yves:watch') {
                         return;
                     }
 
                     const { errors } = compilationParams.compilation;
 
-                    if (!errors || errors.length === 0) {
+                    if (!errors || !errors.length) {
                         return;
                     }
 

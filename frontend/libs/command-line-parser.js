@@ -7,7 +7,7 @@ const collectArguments = (argument, argumentCollection) => {
     return argumentCollection;
 };
 
-const getMode = (requestedMode) => {
+const getMode = requestedMode => {
     for (const mode in globalSettings.modes) {
         if (globalSettings.modes[mode] === requestedMode) {
             return requestedMode;
@@ -37,10 +37,10 @@ const pathToConfig = join(globalSettings.context, commandLineParser.config);
 const namespaceJson = require(pathToConfig);
 if (commandLineParser.info === true) {
     console.log('Namespaces with available themes:');
-    namespaceJson.namespaces.forEach((namespaceConfig) => {
+    namespaceJson.namespaces.forEach(namespaceConfig => {
         console.log(`- ${namespaceConfig.namespace}`);
         console.log(`  ${namespaceConfig.defaultTheme}`);
-        if (namespaceConfig.themes.length > 0) {
+        if (namespaceConfig.themes.length) {
             namespaceConfig.themes.forEach(theme => console.log(`  ${theme}`));
         }
     });

@@ -44,7 +44,7 @@ const find = async (globDirs, globPatterns, globFallbackPatterns, globSettings =
 };
 
 // find entry points
-const findEntryPoints = async (settings) => {
+const findEntryPoints = async settings => {
     const files = await find(settings.dirs, settings.patterns,  settings.fallbackPatterns, settings.globSettings);
 
     return Object.values(files.reduce((map, file) => {
@@ -57,10 +57,10 @@ const findEntryPoints = async (settings) => {
 };
 
 // find components entry points
-const findComponentEntryPoints = async (settings) => await findEntryPoints(settings);
+const findComponentEntryPoints = async settings => await findEntryPoints(settings);
 
 // find component styles
-const findComponentStyles = async (settings) =>
+const findComponentStyles = async settings =>
     await find(settings.dirs, settings.patterns, [], settings.globSettings);
 
 const findAppEntryPoint = async (settings, file) => {

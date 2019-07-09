@@ -2,7 +2,7 @@ const fs = require('fs');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const getCopyConfig = (appSettings) =>
+const getCopyConfig = appSettings =>
     Object.values(appSettings.paths.assets).reduce((copyConfig, assetsPath) => {
         if (fs.existsSync(assetsPath)) {
             copyConfig.push({
@@ -14,7 +14,7 @@ const getCopyConfig = (appSettings) =>
         return copyConfig;
     },[]);
 
-const getAssetsConfig = (appSettings) => [
+const getAssetsConfig = appSettings => [
     new CleanWebpackPlugin([appSettings.paths.public],
         {
             root: appSettings.context,

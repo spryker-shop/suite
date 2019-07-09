@@ -9,7 +9,7 @@ const multiCompile = configs => {
         return console.error('Nothing to build. Build aborted.');
     }
 
-    configs.forEach((config) => {
+    configs.forEach(config => {
         console.log(`${config.namespace} building for ${config.webpack.mode}...`);
 
         if (config.webpack.watch) {

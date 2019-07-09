@@ -1,8 +1,8 @@
-const getNamespaceMap = (pathToConfig) => {
+const getNamespaceMap = pathToConfig => {
     const namespaceJson = require(pathToConfig);
     const namespaceMap = new Map();
 
-    namespaceJson.namespaces.forEach((item) => {
+    namespaceJson.namespaces.forEach(item => {
         namespaceMap.set(item.namespace, item);
     });
 
@@ -14,10 +14,10 @@ const printWrongNamespaceMessage = namespace => {
     process.exit(1);
 };
 
-const getFilteredNamespaceConfigList = (requestedArguments) => {
+const getFilteredNamespaceConfigList = requestedArguments => {
     const namespaceMap = getNamespaceMap(requestedArguments.pathToConfig);
 
-    if (requestedArguments.namespaces.length === 0) {
+    if (!requestedArguments.namespaces.length) {
         requestedArguments.namespaces = Array.from(namespaceMap.keys());
     }
 
@@ -30,7 +30,7 @@ const getFilteredNamespaceConfigList = (requestedArguments) => {
         .map(requestedNamespace => {
             const namespaceConfig = Object.assign(namespaceMap.get(requestedNamespace));
             namespaceConfig.themes.push(namespaceConfig.defaultTheme);
-            if (requestedArguments.themes.length > 0) {
+            if (requestedArguments.themes.length) {
                 requestedArguments.themes.map(theme => {
                     if(!namespaceConfig.themes.includes(theme)){
                         console.warn(`Theme "${theme}" does not exist in "${requestedNamespace}" namespace.`)

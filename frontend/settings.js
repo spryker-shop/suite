@@ -49,7 +49,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
     ];
 
     // getting collection of entry points by pattern
-    const entryPointsCollection = (pathPattern) => entryPointsParts.map((element) => `${pathPattern}/${element}`);
+    const entryPointsCollection = pathPattern => entryPointsParts.map(element => `${pathPattern}/${element}`);
 
     // define the applicatin name
     // important: the name must be normalized
