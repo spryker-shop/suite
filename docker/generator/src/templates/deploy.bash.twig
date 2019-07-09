@@ -117,6 +117,7 @@ readonly USER_GID="1000"
 {% if isDevelopment %}
 echo -e "*** ${WARN}DEVELOPMENT MODE${NC}"
 DOCKER_EXTRA_OPTIONS+=" -v ${DEPLOYMENT_DIR}/context/php/conf.d/opcache_dev.ini:/usr/local/etc/php/conf.d/opcache.ini:ro"
+DOCKER_EXTRA_OPTIONS+=" -v ${DEPLOYMENT_DIR}/context/php/php.ini:/usr/local/etc/php/php.ini:ro"
 DOCKER_EXTRA_OPTIONS+=" -v $(dirname ~/.composer/cache:/home/spryker/).composer/cache:rw"
 {% if _mountMode == 'native' %}
 DOCKER_EXTRA_OPTIONS+=" -v ${PROJECT_DIR}:/data -u ${USER_UID}:${USER_GID}"

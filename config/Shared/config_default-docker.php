@@ -76,6 +76,7 @@ $CURRENT_STORE = Store::getInstance()->getStoreName();
 /* ZED */
 $config[ApplicationConstants::HOST_ZED] = getenv('SPRYKER_ZED_HOST');
 $config[SessionConstants::ZED_SESSION_COOKIE_DOMAIN] = getenv('SPRYKER_BE_HOST');
+$config[ApplicationConstants::ZED_TRUSTED_HOSTS] = [];
 $config[ApplicationConstants::PORT_ZED] = getenv('SPRYKER_ZED_PORT') ? ':' . getenv('SPRYKER_ZED_PORT') : '';
 $config[ApplicationConstants::PORT_SSL_ZED] = '';
 $config[ApplicationConstants::BASE_URL_ZED] = sprintf(
@@ -342,6 +343,7 @@ $config[MailConstants::MAILCATCHER_GUI] = sprintf('http://%s:1080', $config[Appl
 /* Yves */
 $config[ApplicationConstants::HOST_YVES] = getenv('SPRYKER_FE_HOST');
 $config[SessionConstants::YVES_SESSION_COOKIE_DOMAIN] = $config[ApplicationConstants::HOST_YVES];
+$config[ApplicationConstants::YVES_TRUSTED_HOSTS] = [];
 $config[ApplicationConstants::PORT_YVES] = getenv('SPRYKER_FE_PORT');
 $config[ApplicationConstants::PORT_SSL_YVES] = '';
 $config[ApplicationConstants::BASE_URL_YVES] = sprintf(
@@ -405,7 +407,6 @@ $config[ErrorHandlerConstants::DISPLAY_ERRORS] = true;
 $config[ErrorHandlerConstants::YVES_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Yves/errorpage/error.html';
 $config[ErrorHandlerConstants::ERROR_RENDERER] = WebHtmlErrorRenderer::class;
 // Due to some deprecation notices we silence all deprecations for the time being
-$config[ErrorHandlerConstants::ERROR_LEVEL] = E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED;
 // To only log e.g. deprecations instead of throwing exceptions here use
 //$config[ErrorHandlerConstants::ERROR_LEVEL] = E_ALL
 //$config[ErrorHandlerConstants::ERROR_LEVEL_LOG_ONLY] = E_DEPRECATED | E_USER_DEPRECATED;
