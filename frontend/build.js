@@ -7,9 +7,6 @@ const compiler = require('./libs/compiler');
 // get the webpack configuration associated with the provided mode
 const getConfiguration = require(`./configs/${requestedArguments.mode}`);
 
-// clear all assets
-compiler.clearAllAssets(requestedArguments.namespaces, requestedArguments.themes);
-
 // get array of filtered namespace config
 const namespaceConfigList = getFilteredNamespaceConfigList(requestedArguments);
 
