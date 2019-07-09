@@ -69,7 +69,7 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
         $this->collectProductImageSetData($dataSet);
         $this->collectProductImageData($dataSet);
 
-        if (count(static::$productImageSetDataCollection) >= 2) {
+        if (count(static::$productImageSetDataCollection) >= ProductImageHydratorStep::BULK_SIZE) {
             $this->flush();
         }
     }
@@ -132,7 +132,7 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
     /**
      * @return void
      */
-    protected function persistProductImageSets()
+    protected function persistProductImageSets(): void
     {
         $fkProductAbstractIds = $this->dataFormatter->getCollectionDataByKey(
             static::$productImageSetDataCollection,
