@@ -1,0 +1,17 @@
+<VirtualHost *:80>
+
+  DocumentRoot %TRAVIS_BUILD_DIR%/public/Glue
+  ServerName glue.de.spryker.test
+  SetEnv APPLICATION_ENV devtest
+
+  ErrorLog /tmp/glue-error.log
+
+  <Directory "%TRAVIS_BUILD_DIR%">
+      Options Indexes FollowSymLinks MultiViews ExecCGI
+      AllowOverride All
+      Order allow,deny
+      allow from all
+      Require all granted
+  </Directory>
+
+</VirtualHost>
