@@ -1,23 +1,4 @@
-{% extends model('component') %}
-
-{% define config = {
-    name: 'product-item',
-    tag: 'article',
-} %}
-
-{% define data = {
-    product: required,
-    name: data.product.name | default,
-    sku: data.product.sku | default,
-    url: data.product.url | default,
-    image: data.product.images ? data.product.images.0.externalUrlSmall | default,
-    idProductAbstract: data.product.idProductAbstract | default,
-    currencyIsoCode: null,
-} %}
-
-{% block class -%}
-    {{ parent() }} box
-{%- endblock %}
+{% extends molecule('product-item', '@SprykerShop:ShopUi') %}
 
 {% block body %}
     {% block imageContainer %}
@@ -35,11 +16,11 @@
     {% endblock %}
 
     {% block labels %}
-        {% widget 'ProductAbstractLabelWidget' args [data.idProductAbstract] only %}{% endwidget %}
+        {{ parent() }}
     {% endblock %}
 
     {% block groups %}
-        {% widget 'ProductGroupWidget' args [data.idProductAbstract] only %}{% endwidget %}
+        {{ parent() }}
     {% endblock %}
 
     {% block colors %}
@@ -48,54 +29,10 @@
     {% endblock %}
 
     {% block content %}
-        {% block name %}
-            {% if data.name %}
-                <a class="{{ config.name }}__name" href="{{ path(data.url) }}">{{ data.name }}</a>
-            {% endif %}
-        {% endblock %}
-
-        {% block sku %}
-            {% if data.sku %}
-                <div>{{ data.sku }}</div>
-            {% endif %}
-        {% endblock %}
-
-        {% block rating %}
-            {% widget 'ProductAbstractReviewWidget' args [data.idProductAbstract] only %}{% endwidget %}
-        {% endblock %}
-
-        {% block priceContainer %}
-            <div class="spacing-y">
-                {% block price %}
-                    {% if can('SeePricePermissionPlugin') and data.product.prices %}
-                        {% include molecule('money-price') with {
-                            data: {
-                                amount: data.product.prices.DEFAULT,
-                                originalAmount: data.product.prices.ORIGINAL | default(null),
-                                currencyIsoCode: data.currencyIsoCode,
-                            },
-                        } only %}
-                    {% else %}
-                        {{ 'customer.access.cannot_see_price' | trans }}
-                    {% endif %}
-                {% endblock %}
-            </div>
-        {% endblock %}
+        {{ parent() }}
     {% endblock %}
 
     {% block actionsContainer %}
-        <div class="{{ config.name }}__actions">
-            {% block actions %}
-                <a class="button button--expand" href="{{ path(data.url) }}">
-                    {{- 'product.view' | trans -}}
-                    {%- include atom('icon') with {
-                        modifiers: ['small'],
-                        data: {
-                            name: 'angle-double-right',
-                        },
-                    } only -%}
-                </a>
-            {% endblock %}
-        </div>
+        {{ parent() }}
     {% endblock %}
 {% endblock %}
