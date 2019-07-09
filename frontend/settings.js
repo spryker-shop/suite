@@ -126,6 +126,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
     return {
         name,
         namespaceConfig,
+        theme,
         paths,
         urls,
 

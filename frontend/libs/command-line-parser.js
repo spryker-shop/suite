@@ -17,19 +17,18 @@ const getMode = requestedMode => {
     process.exit(1);
 };
 
-let modeValue;
+let mode;
 commandLineParser
     .option('-n, --namespace <namespace name>', 'build the requested namespace. Multiple arguments are allowed.', collectArguments, [])
     .option('-t, --theme <theme name>', 'build the requested theme. Multiple arguments are allowed.', collectArguments, [])
     .option('-i, --info', 'information about all namespaces and available themes')
     .option('-c, --config <path>', 'path to JSON file with namespace config', globalSettings.paths.namespaceConfig)
     .arguments('<mode>')
-    .action(function (mode) {
-        modeValue = getMode(mode);
+    .action(function (modeValue) {
+        mode = getMode(modeValue);
     })
     .parse(process.argv);
 
-const mode = modeValue;
 const namespaces = commandLineParser.namespace;
 const themes = commandLineParser.theme;
 const pathToConfig = join(globalSettings.context, commandLineParser.config);

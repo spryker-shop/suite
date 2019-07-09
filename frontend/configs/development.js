@@ -20,6 +20,7 @@ const getConfiguration = async appSettings => {
 
     return {
         namespace: appSettings.namespaceConfig.namespace,
+        theme: appSettings.theme,
         componentEntryPointsLength: componentEntryPoints.length,
         stylesLength: styles.length,
         webpack: {
@@ -48,7 +49,7 @@ const getConfiguration = async appSettings => {
 
             output: {
                 path: join(appSettings.context, appSettings.paths.public),
-                publicPath: `${appSettings.urls.assets}/`,
+                publicPath: `/${appSettings.urls.assets}/`,
                 filename: `./js/${appSettings.name}.[name].js`,
                 jsonpFunction: `webpackJsonp_${appSettings.name.replace(/(-|\W)+/gi, '_')}`
             },
