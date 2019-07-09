@@ -65,7 +65,7 @@ const findComponentStyles = async settings =>
 
 const findAppEntryPoint = async (settings, file) => {
     const config = Object.assign({}, settings);
-    const updatePatterns = patternCollection => patternCollection.map((pattern) => path.join(pattern, file));
+    const updatePatterns = patternCollection => patternCollection.map(pattern => path.join(pattern, file));
 
     config.patterns = updatePatterns(config.patterns);
     config.fallbackPatterns = updatePatterns(config.fallbackPatterns);
