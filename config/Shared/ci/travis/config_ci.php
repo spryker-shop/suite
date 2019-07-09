@@ -189,4 +189,4 @@ $config[ShopApplicationConstants::TWIG_ENVIRONMENT_NAME] = APPLICATION_ENV;
 $config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = true;
 
 // ----------- Documentation generator
-$config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GENERATION] = false;
+$config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GENERATION] = true;
