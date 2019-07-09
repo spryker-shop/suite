@@ -1,0 +1,14 @@
+  {{ serviceName }}:
+    image: elasticsearch:5.6-alpine
+    networks:
+      - services
+      - private
+    healthcheck:
+      test: [ "CMD", "wget", "-q", "--spider", "localhost:9200/_cluster/health" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    environment:
+      ES_JAVA_OPTS: "-Xms384m -Xmx512m"
+    volumes:
+      - {{ serviceName }}-{{ serviceData['engine'] }}-data:/usr/share/elasticsearch/data:rw
