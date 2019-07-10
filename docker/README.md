@@ -45,4 +45,4 @@ Use domains defined in `deploy.yml` to access the application.
 
 ## Documentation
 
-[Spryker Documentation](https://documentation.spryker.com/tutorials/howtos/ht-run-spryker-in-docker.htm)
+[Spryker Documentation](https://documentation.spryker.com/installation/docker-sdk/docker-sdk-201907.htm)
