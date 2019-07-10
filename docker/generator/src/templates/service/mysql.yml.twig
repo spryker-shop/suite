@@ -1,0 +1,17 @@
+  {{ serviceName }}:
+    image: mysql:5.7
+    networks:
+      - private
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "--silent"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    environment:
+      MYSQL_ROOT_PASSWORD: "{{ serviceData['root']['password'] }}"
+      LANG: C.UTF-8
+    volumes:
+      - {{ serviceName }}-{{ serviceData['engine'] }}-data:/var/lib/mysql:rw
+      - ./${DEPLOYMENT_PATH}/context/mysql/my.cnf:/etc/mysql/my.cnf:ro
+    ports:
+      - 3306:3306
