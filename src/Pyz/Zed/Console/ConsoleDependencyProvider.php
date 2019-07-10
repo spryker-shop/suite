@@ -321,6 +321,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
             $commands[] = new CodeTestConsole();
             $commands[] = new CodeFixturesConsole();
+            $commands[] = new AcceptanceCodeTestConsole();
+            $commands[] = new FunctionalCodeTestConsole();
             $commands[] = new CodeStyleSnifferConsole();
             $commands[] = new CodeArchitectureSnifferConsole();
             $commands[] = new CodePhpstanConsole();
@@ -407,9 +409,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
         $commands[] = new DependencyViolationFixConsole();
 
         $commands[] = new ComposerJsonValidatorConsole();
-
-        $commands[] = new AcceptanceCodeTestConsole();
-        $commands[] = new FunctionalCodeTestConsole();
 
         $commands[] = new PropelAbstractValidateConsole();
 
