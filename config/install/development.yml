@@ -48,7 +48,7 @@ sections:
 
     generate:
         generate-transfers:
-            command: "vendor/bin/console transfer:generate:data"
+            command: "vendor/bin/console transfer:generate"
 
         generate-transfer-databuilders:
             command: "vendor/bin/console transfer:databuilder:generate"
@@ -188,7 +188,7 @@ sections:
             stores: true
 
         generate-entity-transfer:
-            command: "vendor/bin/console transfer:generate:entity"
+            command: "vendor/bin/console transfer:entity:generate"
 
         init-database:
             command: "vendor/bin/console setup:init-db"
