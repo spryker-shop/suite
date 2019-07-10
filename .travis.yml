@@ -28,26 +28,31 @@ matrix:
   include:
 
     - php: "7.3"
+      dist: trusty
       env:
         - VALIDATION=1
 
     - php: "7.3"
+      dist: trusty
       env:
         - TEST_GROUP=acceptance
         - ON_EVENTS=push,cron
 
     - php: "7.3"
+      dist: trusty
       env:
         - TEST_GROUP=without-acceptance
         - ON_EVENTS=cron,push
 
     - php: "7.1"
+      dist: trusty
       env:
         - TEST_GROUP=acceptance
         - ON_EVENTS=push,cron
         - DB=mysql
 
     - php: "7.1"
+      dist: trusty
       env:
         - TEST_GROUP=without-acceptance
         - ON_EVENTS=cron,push
@@ -72,6 +77,7 @@ addons:
   hosts:
     - zed.de.spryker.test
     - www.de.spryker.test
+    - glue.de.spryker.test
 
 cache:
     directories:
@@ -127,7 +133,7 @@ before_script:
 
   - if [[ $TEST_GROUP == 'acceptance' ]] ; then config/Shared/ci/travis/acceptance_env.sh ; fi
   - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/install DE -r testing -v ; fi
-  - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/install DE -r testing -x frontend -v ; fi
+  - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/install DE -r testing -x frontend -x fixtures  -v ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:generate ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:install ; fi
@@ -159,8 +165,8 @@ script:
 
   - if [[ $VALIDATION == 1 ]] ; then ./tests/travis_check_untracked.sh ; fi
   - timeout 45m bash -c "vendor/bin/phantomjs --webdriver=4444 --disk-cache=true --load-images=false --webdriver-logfile=/tmp/phantomjs.log --webdriver-loglevel=DEBUG">/dev/null &
-  - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -x Presentation ; fi
-  - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/codecept run -g Presentation ; fi
+  - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -x EndToEnd -x Presentation --no-colors ; fi
+  - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/codecept run -g EndToEnd -g Presentation --no-colors ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then node ./frontend/libs/stylelint ; fi
   - if [[ $VALIDATION == 1 ]] ; then node ./frontend/libs/tslint stylish ; fi

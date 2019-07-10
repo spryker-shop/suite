@@ -53,6 +53,8 @@ class DataImportConfig extends SprykerDataImportConfig
     public const IMPORT_TYPE_CURRENCY = 'currency';
     public const IMPORT_TYPE_STORE = 'store';
     public const IMPORT_TYPE_ORDER_SOURCE = 'order-source';
+    public const IMPORT_TYPE_ABSTRACT_GIFT_CARD_CONFIGURATION = 'gift-card-abstract-configuration';
+    public const IMPORT_TYPE_CONCRETE_GIFT_CARD_CONFIGURATION = 'gift-card-concrete-configuration';
 
     public const PRODUCT_ABSTRACT_QUEUE = 'import.product_abstract';
     public const PRODUCT_ABSTRACT_QUEUE_ERROR = 'import.product_abstract.error';
@@ -405,5 +407,21 @@ class DataImportConfig extends SprykerDataImportConfig
         return (new DataImporterQueueWriterConfigurationTransfer())
             ->setQueueName(static::PRODUCT_PRICE_QUEUE)
             ->setChunkSize($this->getQueueWriterChunkSize());
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
+     */
+    public function getAbstractGiftCardProductConfigurationDataImporterConfiguration()
+    {
+        return $this->buildImporterConfiguration('gift_card_abstract_configuration.csv', static::IMPORT_TYPE_ABSTRACT_GIFT_CARD_CONFIGURATION);
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
+     */
+    public function getConcreteGiftCardProductConfigurationDataImporterConfiguration()
+    {
+        return $this->buildImporterConfiguration('gift_card_concrete_configuration.csv', static::IMPORT_TYPE_CONCRETE_GIFT_CARD_CONFIGURATION);
     }
 }

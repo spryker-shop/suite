@@ -67,6 +67,7 @@ class ProductImageSql implements ProductImageSqlInterface
     ) RETURNING id_product_image_set, %2\$s
   )
 SELECT updated.id_product_image_set, updated.%2\$s as %2\$s FROM updated UNION ALL SELECT inserted.id_product_image_set, inserted.%2\$s as %2\$s FROM inserted", $idProduct, $fkProduct);
+
         return $sql;
     }
 
@@ -110,6 +111,7 @@ SELECT updated.id_product_image_set, updated.%2\$s as %2\$s FROM updated UNION A
         ) RETURNING id_product_image
   )
 SELECT inserted.id_product_image FROM inserted;";
+
         return $sql;
     }
 
@@ -163,6 +165,7 @@ SELECT inserted.id_product_image FROM inserted;";
     ) ON CONFLICT DO NOTHING
   )
 SELECT 1;";
+
         return $sql;
     }
 
@@ -183,6 +186,7 @@ SELECT 1;";
          ) input
         LEFT JOIN spy_locale ON spy_locale.locale_name = input.locale
 ) SELECT records.id_locale FROM records WHERE records.id_locale IS NOT NULL ORDER BY records.sortKey;";
+
         return $sql;
     }
 
@@ -206,6 +210,7 @@ SELECT 1;";
          ) input
         LEFT JOIN %1\$s ON %1\$s.sku = input.sku
 ) SELECT records.%2\$s FROM records ORDER BY records.orderKey;", $tableName, $fieldName);
+
         return $sql;
     }
 
@@ -226,6 +231,7 @@ SELECT 1;";
          ) input
         LEFT JOIN spy_product_image ON spy_product_image.external_url_large = input.external_url_large
 ) SELECT records.id_product_image FROM records where id_product_image IS NOT NULL ORDER BY records.sort_key;";
+
         return $sql;
     }
 
@@ -250,6 +256,7 @@ SELECT 1;";
          ) input
         LEFT JOIN spy_product_image_set ON (spy_product_image_set.%1\$s = input.fk_product AND spy_product_image_set.fk_locale = input.fk_locale)
 ) SELECT records.id_product_image_set FROM records ORDER BY records.sort_key;", $fkProductKey);
+
         return $sql;
     }
 }
