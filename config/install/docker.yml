@@ -9,7 +9,7 @@ stores:
 sections:
     build:
         generate-transfers:
-            command: "vendor/bin/console transfer:generate"
+            command: "vendor/bin/console transfer:generate:data"
 
         twig-cache-warmup:
             command: "vendor/bin/console twig:cache:warmer"
@@ -27,7 +27,7 @@ sections:
             command: "vendor/bin/console propel:model:build"
 
         generate-entity-transfer:
-            command: "vendor/bin/console transfer:generate"
+            command: "vendor/bin/console transfer:generate:entity"
 
         generate-page-index-map:
             command: "vendor/bin/console search:setup:index-map"

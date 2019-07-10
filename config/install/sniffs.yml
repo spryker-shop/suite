@@ -7,7 +7,7 @@ sections:
     generate:
         excluded: true
         generate-transfers:
-            command: "vendor/bin/console transfer:generate"
+            command: "vendor/bin/console transfer:generate:data"
         generate-transfer-databuilders:
             command: "vendor/bin/console transfer:databuilder:generate"
         generate-ide-auto-completion:
