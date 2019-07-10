@@ -1,27 +1,48 @@
-# Spryker OS - Docker SDK
+# Spryker Commerce OS - Docker SDK
+[![Build Status](https://travis-ci.org/spryker/docker-sdk.svg)](https://travis-ci.org/spryker/docker-sdk)
 
-## Bootstrapping
-```
-# Clone Spryker Docker SDK distribution:
-git clone --single-branch --branch v201906 https://github.com/spryker/docker.git ./docker/dist
+## Description
 
-# Bootstrap local docker setup
-docker/dist/sdk bootstrap
+
+## Installation
+
+> Note: All command should be run from Spryker project root directory.  
+ 
+Run the following to fetch Docker SDK tools.
+```bash
+git clone https://github.com/spryker/docker-sdk.git ./docker
 ```
+
+> Note: Make sure `docker 18.09.1+` and `docker-compose 1.23+` are installed in the local environment.
+
+### Preparation
+
+1. Prepare `deploy.yml` file according the documentation.
+    * Examples can be found in [Spryker Shop Suite](https://github.com/spryker-shop/suite) by mask `deploy*.yml`.
+1. Prepare configuration based on environment name defined in `deploy.yml#environment`.
+    * Examples for `docker` environment name can be found in [Spryker Shop Suite](https://github.com/spryker-shop/suite/tree/master/config/Shared)  by mask `config_default-docker*.php`.
+1. Prepare installation `docker.yml` file.
+    * Example can be found in [Spryker Shop Suite](https://github.com/spryker-shop/suite/tree/master/config/install/docker.yml).
+1. Prepare `.dockerignore` to match the project infrastructure.
+    * Example can be found in [Spryker Shop Suite](https://github.com/spryker-shop/suite/tree/master/.dockerignore).
 
 ## Quick start
+
+Initialize the docker setup by running the following.
+
+```bash
+docker/sdk bootstrap
+```
+
+Run the `up` command and wait until done.
 ```
 docker/sdk up
 ```
 
-## Under the hood
-### Bootstrapping and project-level overrides
-Bootstrapping process, started with `docker/dist/sdk bootstrap`, will compose files in directories in `docker/` directory, based on Spryker Docker SDK (`docker/dist`) and project-level configuration overrides (`docker/local`).
+> Note: Make sure all domains from `deploy.yml` are defined as `127.0.0.1` in `hosts` on the local environment.
 
-Original Spryker Docker SDK distribution is located in `docker/dist`. When `docker/dist/sdk bootstrap` is executed, it copies all files from `docker/dist` to `docker/`, then it copies project-level override files from `docker/local` into `docker/`. If you would like to change some settings on a project level, so that your customization is available to your team and part of your repository (for example, customize the `.env` file or multi-store setup) - just place your version of file(s) in `docker/local` directory and re-run `docker/dist/sdk bootstrap`.
+Use domains defined in `deploy.yml` to access the application.
 
-### Individual customization
-If you would like to customise only your local environment and not commit those customizations to your repository, for individual development changes - then you can edit files directly in `docker/` directory. Note that your local changes will be lost if you run `docker/dist/sdk bootstrap` again. Those files are added to `.gitignore`, so changes will stay on your workstation only and will not be commited.
+## Documentation
 
-### Contents of docker/dist
-Directory `docker/dist` contains original distribution of Spryker Docker SDK. You can either copy contents of `spryker/docker` repository into `docker/dist` (as the example above suggests) or use `git submodule` to setup tracking of remote repository. If you would like to overwrite any file from the original repository, please use project-level overrides, as it will be easier for you to get updates of SDK in the future.
+[Spryker Documentation](https://documentation.spryker.com/tutorials/howtos/ht-run-spryker-in-docker.htm)
