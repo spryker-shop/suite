@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Quote;
 
+use Spryker\Zed\Comment\Communication\Plugin\Quote\CommentThreadQuoteExpanderPlugin;
 use Spryker\Zed\Currency\Communication\Plugin\Quote\DefaultCurrencyQuoteExpandBeforeCreatePlugin;
 use Spryker\Zed\Currency\Communication\Plugin\Quote\QuoteCurrencyValidatorPlugin;
 use Spryker\Zed\MultiCart\Communication\Plugin\AddDefaultNameBeforeQuoteSavePlugin;
@@ -70,6 +71,7 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
     {
         return [
             new QuoteApprovalExpanderPlugin(), #QuoteApprovalFeature
+            new CommentThreadQuoteExpanderPlugin(),
         ];
     }
 
