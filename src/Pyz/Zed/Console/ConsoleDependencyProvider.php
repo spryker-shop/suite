@@ -307,6 +307,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
         if ($this->getConfig()->isDevelopmentConsoleCommandsEnabled()) {
             $commands[] = new CodeTestConsole();
             $commands[] = new CodeFixturesConsole();
+            $commands[] = new AcceptanceCodeTestConsole();
+            $commands[] = new FunctionalCodeTestConsole();
             $commands[] = new CodeStyleSnifferConsole();
             $commands[] = new CodeArchitectureSnifferConsole();
             $commands[] = new CodePhpstanConsole();
