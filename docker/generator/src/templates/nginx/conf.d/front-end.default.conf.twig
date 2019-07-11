@@ -1,0 +1,50 @@
+{% include "nginx/conf.d/common.conf.twig" with _context %}
+
+server {
+    server_name _; # This is just an invalid value which will never trigger on a real hostname.
+    listen {{ docker['ssl']['enabled'] ? '443 ssl http2' : 80 }};
+    access_log /var/log/nginx/access.log vhost;
+    return 502;
+{% if docker['ssl']['enabled'] %}
+    include /etc/nginx/vhost.d/ssl.default.conf;
+{% endif %}
+}
+
+{% if docker['ssl']['enabled'] %}
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name _;
+    return 301 https://$host$request_uri;
+}
+{% endif %}
+
+{% for groupData in groups %}
+{% for applicationName, applicationData in groupData['applications'] %}
+upstream {{ applicationName }} {
+    server {{ applicationData['application'] == 'zed' ? 'rpc_server' : applicationName }}:9000;
+}
+
+{% for domain, domainData in applicationData['domain'] %}
+{% include "nginx/#{applicationData['application']}.server.conf.twig" with {
+    ssl: docker['ssl']['enabled'] | default(false),
+    domain: domain,
+    domainData: domainData,
+    upstream: applicationName,
+    project: _context
+} %}
+{% endfor %}
+{% endfor %}
+{% endfor %}
+
+{% for serviceName, serviceData in services %}
+{% for domain, domainData in serviceData['domain'] %}
+{% include "nginx/#{serviceData['engine']}.server.conf.twig" with {
+    ssl: docker['ssl']['enabled'] | default(false),
+    domain: domain,
+    domainData: domainData,
+    upstream: serviceName ~ (serviceData['web-port'] ? ':' ~ serviceData['proxy-port'] : ''),
+    project: _context
+} %}
+{% endfor %}
+{% endfor %}
