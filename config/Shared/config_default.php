@@ -5,11 +5,13 @@ use Spryker\Client\RabbitMq\Model\RabbitMqAdapter;
 use Spryker\Glue\Log\Plugin\GlueLoggerConfigPlugin;
 use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBuilderPlugin;
 use Spryker\Shared\Acl\AclConstants;
+use Spryker\Shared\Api\ApiConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Auth\AuthConstants;
 use Spryker\Shared\CmsGui\CmsGuiConstants;
 use Spryker\Shared\Collector\CollectorConstants;
 use Spryker\Shared\Customer\CustomerConstants;
+use Spryker\Shared\DocumentationGeneratorRestApi\DocumentationGeneratorRestApiConstants;
 use Spryker\Shared\DummyPayment\DummyPaymentConfig;
 use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebHtmlErrorRenderer;
@@ -58,6 +60,9 @@ use Spryker\Zed\Log\Communication\Plugin\ZedLoggerConfigPlugin;
 use Spryker\Zed\Oms\OmsConfig;
 use Spryker\Zed\Propel\PropelConfig;
 use SprykerEco\Shared\Loggly\LogglyConstants;
+use SprykerShop\Shared\CalculationPage\CalculationPageConstants;
+use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
+use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
 use Twig\Cache\FilesystemCache;
 
 $CURRENT_STORE = Store::getInstance()->getStoreName();
@@ -444,7 +449,7 @@ $config[EventConstants::EVENT_CHUNK] = 500;
 $config[EventBehaviorConstants::EVENT_BEHAVIOR_TRIGGERING_ACTIVE] = true;
 
 // ---------- Customer
-$config[CustomerConstants::CUSTOMER_SECURED_PATTERN] = '(^/login_check$|^(/en|/de)?/customer($|/)|^(/en|/de)?/wishlist($|/)|^(/en|/de)?/shopping-list($|/)|^(/en|/de)?/quote-request($|/)|^(/en|/de)?/company(?!/register)($|/)|^(/en|/de)?/multi-cart($|/)|^(/en|/de)?/shared-cart($|/)|^(/en|/de)?/cart(?!/add)($|/)|^(/en|/de)?/checkout($|/))';
+$config[CustomerConstants::CUSTOMER_SECURED_PATTERN] = '(^/login_check$|^(/en|/de)?/customer($|/)|^(/en|/de)?/wishlist($|/)|^(/en|/de)?/shopping-list($|/)|^(/en|/de)?/quote-request($|/)|^(/en|/de)?/comment($|/)|^(/en|/de)?/company(?!/register)($|/)|^(/en|/de)?/multi-cart($|/)|^(/en|/de)?/shared-cart($|/)|^(/en|/de)?/cart(?!/add)($|/)|^(/en|/de)?/checkout($|/))';
 $config[CustomerConstants::CUSTOMER_ANONYMOUS_PATTERN] = '^/.*';
 
 // ---------- Taxes
@@ -509,6 +514,28 @@ $config[TranslatorConstants::TRANSLATION_ZED_CACHE_DIRECTORY] = sprintf(
 $config[TranslatorConstants::TRANSLATION_ZED_FILE_PATH_PATTERNS] = [
     APPLICATION_ROOT_DIR . '/data/translation/Zed/*/[a-z][a-z]_[A-Z][A-Z].csv',
 ];
+
+// ----------- Api
+$config[ApiConstants::ENABLE_API_DEBUG] = false;
+
+// ----------- Kernel test
+$config[KernelConstants::ENABLE_CONTAINER_OVERRIDING] = false;
+
+// ----------- Calculation page
+$config[CalculationPageConstants::ENABLE_CART_DEBUG] = false;
+
+// ----------- Error page
+$config[ErrorPageConstants::ENABLE_ERROR_404_STACK_TRACE] = false;
+
+// ----------- Application
+$config[ApplicationConstants::TWIG_ENVIRONMENT_NAME]
+    = $config[ShopApplicationConstants::TWIG_ENVIRONMENT_NAME]
+    = APPLICATION_ENV;
+
+$config[ApplicationConstants::ENABLE_PRETTY_ERROR_HANDLER] = false;
+
+// ----------- Documentation generator
+$config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GENERATION] = false;
 
 // ---------- Synchronization
 $config[SynchronizationConstants::STORAGE_SYNC_ENABLED] = true;
