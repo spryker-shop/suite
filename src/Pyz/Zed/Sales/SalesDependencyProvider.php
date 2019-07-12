@@ -7,6 +7,8 @@
 
 namespace Pyz\Zed\Sales;
 
+use Spryker\Zed\CommentSalesConnector\Communication\Plugin\Sales\CommentThreadAttachedCommentOrderPostSavePlugin;
+use Spryker\Zed\CommentSalesConnector\Communication\Plugin\Sales\CommentThreadOrderExpanderPlugin;
 use Spryker\Zed\Customer\Communication\Plugin\Sales\CustomerOrderHydratePlugin;
 use Spryker\Zed\Discount\Communication\Plugin\Sales\DiscountOrderHydratePlugin;
 use Spryker\Zed\ManualOrderEntry\Communication\Plugin\Sales\OrderSourceExpanderPreSavePlugin;
@@ -45,7 +47,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\Sales\Dependency\Plugin\HydrateOrderPluginInterface[]
+     * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\OrderExpanderPluginInterface[]
      */
     protected function getOrderHydrationPlugins()
     {
@@ -64,6 +66,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new QuantitySalesUnitHydrateOrderPlugin(),
             new AmountLeadProductHydrateOrderPlugin(),
             new AmountSalesUnitHydrateOrderPlugin(),
+            new CommentThreadOrderExpanderPlugin(),
         ];
     }
 
@@ -99,6 +102,16 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     {
         return [
             new ReclamationSalesTablePlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\OrderPostSavePluginInterface[]
+     */
+    protected function getOrderPostSavePlugins()
+    {
+        return [
+            new CommentThreadAttachedCommentOrderPostSavePlugin(),
         ];
     }
 }

@@ -15,13 +15,10 @@ use Silex\Provider\SecurityServiceProvider;
 use Silex\Provider\SessionServiceProvider;
 use Silex\Provider\ValidatorServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\FormFactoryServiceProvider;
-use Spryker\Shared\Application\ServiceProvider\HeadersSecurityServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\RoutingServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\UrlGeneratorServiceProvider;
-use Spryker\Shared\Config\Environment;
 use Spryker\Yves\Application\Plugin\Provider\CookieServiceProvider;
 use Spryker\Yves\Application\Plugin\Provider\YvesHstsServiceProvider;
-use Spryker\Yves\Application\Plugin\ServiceProvider\AssertUrlConfigurationServiceProvider;
 use Spryker\Yves\Application\Plugin\ServiceProvider\SslServiceProvider;
 use Spryker\Yves\Messenger\Plugin\Provider\FlashMessengerServiceProvider;
 use Spryker\Yves\Monitoring\Plugin\ServiceProvider\MonitoringRequestTransactionServiceProvider;
@@ -42,6 +39,7 @@ use SprykerShop\Yves\CatalogPage\Plugin\Provider\CatalogPageControllerProvider;
 use SprykerShop\Yves\CheckoutPage\Plugin\Provider\CheckoutPageControllerProvider;
 use SprykerShop\Yves\CmsPage\Plugin\Provider\PreviewControllerProvider;
 use SprykerShop\Yves\CmsSearchPage\Plugin\Provider\CmsSearchPageControllerProvider;
+use SprykerShop\Yves\CommentWidget\Plugin\Provider\CommentWidgetControllerProvider;
 use SprykerShop\Yves\CompanyPage\Plugin\Provider\CompanyPageControllerProvider;
 use SprykerShop\Yves\CompanyUserAgentWidget\Plugin\Provider\CompanyUserAgentWidgetControllerProvider;
 use SprykerShop\Yves\CompanyUserInvitationPage\Plugin\Provider\CompanyUserInvitationPageControllerProvider;
@@ -57,6 +55,8 @@ use SprykerShop\Yves\HomePage\Plugin\Provider\HomePageControllerProvider;
 use SprykerShop\Yves\MultiCartPage\Plugin\Provider\MultiCartPageControllerProvider;
 use SprykerShop\Yves\NewsletterPage\Plugin\Provider\NewsletterPageControllerProvider;
 use SprykerShop\Yves\NewsletterWidget\Plugin\Provider\NewsletterWidgetControllerProvider;
+use SprykerShop\Yves\PersistentCartSharePage\Plugin\Provider\PersistentCartSharePageControllerProvider;
+use SprykerShop\Yves\PersistentCartShareWidget\Plugin\Provider\ShareCartByLinkWidgetControllerProvider;
 use SprykerShop\Yves\PriceWidget\Plugin\Provider\PriceControllerProvider;
 use SprykerShop\Yves\ProductNewPage\Plugin\Provider\ProductNewPageControllerProvider;
 use SprykerShop\Yves\ProductReviewWidget\Plugin\Provider\ProductReviewControllerProvider;
@@ -68,6 +68,7 @@ use SprykerShop\Yves\QuoteRequestAgentPage\Plugin\Provider\QuoteRequestAgentPage
 use SprykerShop\Yves\QuoteRequestAgentWidget\Plugin\Provider\QuoteRequestAgentWidgetControllerProvider;
 use SprykerShop\Yves\QuoteRequestPage\Plugin\Provider\QuoteRequestPageControllerProvider;
 use SprykerShop\Yves\QuoteRequestWidget\Plugin\Provider\QuoteRequestWidgetControllerProvider;
+use SprykerShop\Yves\ResourceSharePage\Plugin\Provider\ResourceSharePageControllerProvider;
 use SprykerShop\Yves\SharedCartPage\Plugin\Provider\SharedCartPageControllerProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\AutoloaderCacheServiceProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\ShopControllerEventServiceProvider;
@@ -89,10 +90,6 @@ class YvesBootstrap extends SprykerYvesBootstrap
      */
     protected function registerServiceProviders()
     {
-        if (Environment::isDevelopment()) {
-            $this->application->register(new AssertUrlConfigurationServiceProvider());
-        }
-
         $this->application->register(new SslServiceProvider());
         $this->application->register(new StorageCacheServiceProvider());
         $this->application->register(new ZedRequestHeaderServiceProvider());
@@ -114,7 +111,6 @@ class YvesBootstrap extends SprykerYvesBootstrap
         $this->application->register(new FormServiceProvider());
         $this->application->register(new HttpFragmentServiceProvider());
         $this->application->register(new FlashMessengerServiceProvider());
-        $this->application->register(new HeadersSecurityServiceProvider());
         $this->application->register(new WebProfilerWidgetServiceProvider());
         $this->application->register(new AutoloaderCacheServiceProvider());
         $this->application->register(new YvesHstsServiceProvider());
@@ -195,6 +191,10 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new QuoteRequestAgentWidgetControllerProvider($isSsl),
             new QuoteRequestWidgetControllerProvider($isSsl),
             new CompanyUserAgentWidgetControllerProvider($isSsl),
+            new PersistentCartSharePageControllerProvider($isSsl), #UniqueUrlFeature
+            new ResourceSharePageControllerProvider($isSsl), #UniqueUrlFeature
+            new ShareCartByLinkWidgetControllerProvider($isSsl), #UniqueURLFeature
+            new CommentWidgetControllerProvider($isSsl),
         ];
     }
 }
