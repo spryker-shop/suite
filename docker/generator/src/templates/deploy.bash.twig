@@ -64,32 +64,32 @@ function showHelp()
 
     echo -e ""
     echo -e "${INFO}Possible commands are:${NC}"
-    echo -e " ${GREEN}build${NC}\t\t\t  - Build Spryker containers."
-    echo -e " ${GREEN}destroy|remove|clean${NC}\t  - Stop and removes all Spryker containers and volumes."
-    echo -e " ${GREEN}cli${NC}\t\t\t  - Start a new container where you can run cli commands."
-    echo -e " ${GREEN}cli${NC} <command>\t\t  - Run any cli command, e.g. \`${ITALIC}${SPRYKER_SELF_SCRIPT} cli composer install${NC}\`."
-    echo -e " ${GREEN}console${NC}\t\t  - Run Spryker console command, e.g. \`${ITALIC}${SPRYKER_SELF_SCRIPT} console code:test -vvv -g Acceptance\`${NC}."
-    echo -e " ${GREEN}codecept${NC}\t\t  - Start a new container where you can run Codeception commands in the test environment."
-    echo -e " ${GREEN}code-checks${NC}\t\t  - Run code-checks."
-    echo -e " ${GREEN}acceptance-tests${NC}\t  - Run acceptance-tests, e.g. \`${ITALIC}${SPRYKER_SELF_SCRIPT} acceptance-tests -v -g Acceptance\`${NC} or  \`${ITALIC}${SPRYKER_SELF_SCRIPT} acceptance-tests -h\`${NC}."
-    echo -e " ${GREEN}functional-tests${NC}\t  - Run functional-tests, e.g. \`${ITALIC}${SPRYKER_SELF_SCRIPT} functional-tests -v\`${NC} or \`${ITALIC}${SPRYKER_SELF_SCRIPT} functional-tests -h\`${NC}."
-    echo -e " ${GREEN}demo|demo_data|demo-data${NC} - Populate Spryker demo data."
-    echo -e " ${GREEN}down|stop${NC}\t\t  - Stop all Spryker containers."
-    echo -e " ${GREEN}jobs${NC}\t\t\t  - Generate and starts jobs."
-    echo -e " ${GREEN}help|''${NC}\t\t  - Show help page."
-    echo -e " ${GREEN}pull${NC}\t\t\t  - Pull external docker images."
-    echo -e " ${GREEN}clean-data${NC}\t\t  - Remove all Spryker volumes including all storages."
-    echo -e " ${GREEN}reset${NC}\t\t\t  - Remove and build all Spryker containers and volumes."
-    echo -e " ${GREEN}restart${NC}\t\t  - Restart Spryker containers."
-    echo -e " ${GREEN}run|start${NC}\t\t  - Run Spryker containers."
-    echo -e " ${GREEN}up${NC}\t\t\t  - Build and run Spryker apps based on demo data."
-    echo -e " ${GREEN}logs${NC}\t\t\t  - Tail all application exception logs."
+    echo -e " ${GREEN}build${NC}\t\t  - Build Spryker containers."
+    echo -e " ${GREEN}remove|clean${NC}\t  - Stop and removes all Spryker containers and volumes."
+    echo -e " ${GREEN}cli${NC}\t\t  - Start a new container where you can run cli commands."
+    echo -e " ${GREEN}cli${NC} <command>\t  - Run any cli command, e.g. \`${ITALIC}${SPRYKER_SELF_SCRIPT} cli composer install${NC}\`."
+    echo -e " ${GREEN}console${NC}\t  - Run Spryker console command, e.g. \`${ITALIC}${SPRYKER_SELF_SCRIPT} console code:test -vvv -g Acceptance\`${NC}."
+    echo -e " ${GREEN}codecept${NC}\t  - Start a new container where you can run Codeception commands in the test environment."
+    echo -e " ${GREEN}code-checks${NC}\t  - Run code-checks."
+    echo -e " ${GREEN}acceptance-tests${NC} - Run acceptance-tests, e.g. \`${ITALIC}${SPRYKER_SELF_SCRIPT} acceptance-tests -v -g Acceptance\`${NC} or  \`${ITALIC}${SPRYKER_SELF_SCRIPT} acceptance-tests -h\`${NC}."
+    echo -e " ${GREEN}functional-tests${NC} - Run functional-tests, e.g. \`${ITALIC}${SPRYKER_SELF_SCRIPT} functional-tests -v\`${NC} or \`${ITALIC}${SPRYKER_SELF_SCRIPT} functional-tests -h\`${NC}."
+    echo -e " ${GREEN}demo|demo-data${NC}   - Populate Spryker demo data."
+    echo -e " ${GREEN}down|stop${NC}\t  - Stop all Spryker containers."
+    echo -e " ${GREEN}jobs${NC}\t\t  - Generate and starts jobs."
+    echo -e " ${GREEN}help${NC}\t\t  - Show help page."
+    echo -e " ${GREEN}pull${NC}\t\t  - Pull external docker images."
+    echo -e " ${GREEN}clean-data${NC}\t  - Remove all Spryker volumes including all storages."
+    echo -e " ${GREEN}reset${NC}\t\t  - Remove and build all Spryker containers and volumes."
+    echo -e " ${GREEN}restart${NC}\t  - Restart Spryker containers."
+    echo -e " ${GREEN}run|start${NC}\t  - Run Spryker containers."
+    echo -e " ${GREEN}up${NC}\t\t  - Build and run Spryker apps based on demo data."
+    echo -e " ${GREEN}logs${NC}\t\t  - Tail all application exception logs."
 
     echo -e ""
     echo -e "${INFO}Possible options are:${NC}"
-    echo -e " ${GREEN}-v${NC}\t\t\t  - Enable verbose mode. You can set environment variable VERBOSE=1 instead of using this option."
-    echo -e " ${GREEN}-x${NC}\t\t\t  - Enable Xdebug. You can set environment variable SPRYKER_XDEBUG_ENABLE=1 instead of using this option."
-    echo -e " ${GREEN}-t${NC}\t\t\t  - Enable testing mode. You can set environment variable SPRYKER_TESTING_ENABLE=1 instead of using this option."
+    echo -e " ${GREEN}-v${NC}\t\t  - Enable verbose mode. You can set environment variable VERBOSE=1 instead of using this option."
+    echo -e " ${GREEN}-x${NC}\t\t  - Enable Xdebug. You can set environment variable SPRYKER_XDEBUG_ENABLE=1 instead of using this option."
+    echo -e " ${GREEN}-t${NC}\t\t  - Enable testing mode. You can set environment variable SPRYKER_TESTING_ENABLE=1 instead of using this option."
 }
 
 function showExecHelp()
@@ -597,7 +597,7 @@ case $1 in
     up)
         doUp
         ;;
-    demo|demo_data|demo-data)
+    demo|demo-data)
         runApp
         loadDemoData
         ;;
@@ -625,7 +625,7 @@ case $1 in
         destroyAssets
         doUp
         ;;
-    destroy|remove|clean)
+    remove|clean)
         destroyAppVolumesAndImages
         destroyAssets
         destroyImages
