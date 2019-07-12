@@ -12,10 +12,10 @@ use Spryker\Client\PriceProductStorage\Plugin\ProductViewPriceExpanderPlugin;
 use Spryker\Client\ProductDiscontinuedStorage\Plugin\ProductStorage\ProductDiscontinuedProductAvailabilityExpanderPlugin;
 use Spryker\Client\ProductDiscontinuedStorage\Plugin\ProductStorage\ProductViewDiscontinuedOptionsExpanderPlugin;
 use Spryker\Client\ProductImageStorage\Plugin\ProductViewImageExpanderPlugin;
+use Spryker\Client\ProductListStorage\Plugin\ProductStorageExtension\ProductAbstractListStorageRestrictionFilterPlugin;
 use Spryker\Client\ProductListStorage\Plugin\ProductStorageExtension\ProductAbstractRestrictionPlugin;
+use Spryker\Client\ProductListStorage\Plugin\ProductStorageExtension\ProductConcreteListStorageRestrictionFilterPlugin;
 use Spryker\Client\ProductListStorage\Plugin\ProductStorageExtension\ProductConcreteRestrictionPlugin;
-use Spryker\Client\ProductListStorage\Plugin\ProductStorageExtension\ProductListStorageAbstractRestrictionFilterPlugin;
-use Spryker\Client\ProductListStorage\Plugin\ProductStorageExtension\ProductListStorageConcreteRestrictionFilterPlugin;
 use Spryker\Client\ProductStorage\Plugin\ProductViewVariantExpanderPlugin;
 use Spryker\Client\ProductStorage\ProductStorageDependencyProvider as SprykerProductStorageDependencyProvider;
 
@@ -65,7 +65,7 @@ class ProductStorageDependencyProvider extends SprykerProductStorageDependencyPr
     protected function getProductAbstractRestrictionFilterPlugins(): array
     {
         return [
-            new ProductListStorageAbstractRestrictionFilterPlugin(),
+            new ProductAbstractListStorageRestrictionFilterPlugin(),
         ];
     }
 
@@ -75,7 +75,7 @@ class ProductStorageDependencyProvider extends SprykerProductStorageDependencyPr
     protected function getProductConcreteRestrictionFilterPlugins(): array
     {
         return [
-            new ProductListStorageConcreteRestrictionFilterPlugin(),
+            new ProductConcreteListStorageRestrictionFilterPlugin(),
         ];
     }
 }
