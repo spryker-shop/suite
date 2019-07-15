@@ -1,0 +1,10 @@
+{% for serviceName, serviceData in services %}
+{% for domain, domainData in serviceData['domain'] %}
+{% include "nginx/tcp/#{serviceData['engine']}.server.conf.twig" ignore missing with {
+    domain: domain,
+    domainData: domainData,
+    upstream: serviceName,
+    project: _context
+} %}
+{% endfor %}
+{% endfor %}

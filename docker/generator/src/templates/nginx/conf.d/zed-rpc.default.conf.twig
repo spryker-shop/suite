@@ -17,7 +17,7 @@ upstream {{ applicationName }} {
 
 {% for domain, domainData in applicationData['domain'] %}
 {# Ignoring custom port and SSL within internal networn #}
-{% include "nginx/rpc.server.conf.twig" with {
+{% include "nginx/http/rpc.server.conf.twig" with {
     domain: domain,
     domainData: domainData,
     upstream: applicationName,
