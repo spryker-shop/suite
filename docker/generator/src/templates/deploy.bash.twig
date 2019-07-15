@@ -317,8 +317,16 @@ function createSchedulerJobs()
 
     waitFor scheduler
 
-    echo -e "${INFO}Creating Scheduler jobs${NC}"
-    execSpryker "vendor/bin/install -r docker -s scheduler-setup"
+    for region in "${SPRYKER_STORES[@]}";
+    do
+        eval ${region};
+        for store in "${STORES[@]}";
+        do
+            export SPRYKER_STORE="${store}"
+            echo -e "${INFO}Creating scheduler jobs for ${SPRYKER_STORE} store.${NC}"
+            execSpryker "vendor/bin/install -r docker -s scheduler-setup"
+        done
+    done
 }
 
 function destroyAppAndVolumes()
