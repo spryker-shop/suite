@@ -11,15 +11,6 @@ $stores = require(APPLICATION_ROOT_DIR . '/config/Shared/stores.php');
 
 $allStores = array_keys($stores);
 
-/* -- MAIL QUEUE -- */
-$jobs[] = [
-    'name' => 'send-mails',
-    'command' => '$PHP_BIN vendor/bin/console mailqueue:registration:send',
-    'schedule' => '*/10 * * * *',
-    'enable' => false,
-    'stores' => $allStores,
-];
-
 /* ProductValidity */
 $jobs[] = [
     'name' => 'check-product-validity',
@@ -87,11 +78,11 @@ $jobs[] = [
 ];
 
 $jobs[] = [
-  'name' => 'event-trigger-timeout',
-  'command' => '$PHP_BIN vendor/bin/console event:trigger:timeout -vvv',
-  'schedule' => '*/5 * * * *',
-  'enable' => true,
-'stores' => $allStores,
+    'name' => 'event-trigger-timeout',
+    'command' => '$PHP_BIN vendor/bin/console event:trigger:timeout -vvv',
+    'schedule' => '*/5 * * * *',
+    'enable' => true,
+    'stores' => $allStores,
 ];
 
 $jobs[] = [
