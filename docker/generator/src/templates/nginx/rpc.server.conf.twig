@@ -10,8 +10,9 @@
     fastcgi_param SPRYKER_BE_HOST {{ host }};
     fastcgi_param SPRYKER_BE_PORT {{ port }};
 
-{% if project['_yvesEndpointMap'][domainData['store']] %}
+{% if project['_yvesEndpointMap'][domainData['store']] is not empty %}
     fastcgi_param SPRYKER_FE_HOST {{ project['_yvesEndpointMap'][domainData['store']] }};
+    fastcgi_param SPRYKER_FE_PORT {{ (project['_yvesEndpointMap'][domainData['store']] | split(':'))[1] | default(80) }};
 {% endif %}
 
     root /data/public/Zed;
