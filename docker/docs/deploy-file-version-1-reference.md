@@ -50,7 +50,7 @@ namespace: spryker_demo
 tag: '1.0'
 
 environment: docker
-php: 7.2
+image: spryker/php:7.2
 
 regions:
     EU:
