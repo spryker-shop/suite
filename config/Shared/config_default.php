@@ -11,6 +11,7 @@ use Spryker\Shared\Auth\AuthConstants;
 use Spryker\Shared\CmsGui\CmsGuiConstants;
 use Spryker\Shared\Collector\CollectorConstants;
 use Spryker\Shared\Customer\CustomerConstants;
+use Spryker\Shared\DocumentationGeneratorRestApi\DocumentationGeneratorRestApiConstants;
 use Spryker\Shared\DummyPayment\DummyPaymentConfig;
 use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebHtmlErrorRenderer;
@@ -529,3 +530,6 @@ $config[ApplicationConstants::TWIG_ENVIRONMENT_NAME]
     = APPLICATION_ENV;
 
 $config[ApplicationConstants::ENABLE_PRETTY_ERROR_HANDLER] = false;
+
+// ----------- Documentation generator
+$config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GENERATION] = false;
