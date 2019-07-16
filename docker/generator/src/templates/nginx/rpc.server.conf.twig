@@ -9,5 +9,10 @@
     fastcgi_param SPRYKER_SESSION_BE_NAMESPACE "{{ storeServices['session']['namespace'] | default(domainData['services']['session']['namespace']) }}";
     fastcgi_param SPRYKER_BE_HOST {{ host }};
     fastcgi_param SPRYKER_BE_PORT {{ port }};
+
+{% if project['_yvesEndpointMap'][domainData['store']] %}
+    fastcgi_param SPRYKER_FE_HOST {{ project['_yvesEndpointMap'][domainData['store']] }};
+{% endif %}
+
     root /data/public/Zed;
 {% endblock location %}
