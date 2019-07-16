@@ -33,9 +33,8 @@ readonly PROGRESS_TYPE=${PROGRESS_TYPE:-tty}
 VERBOSE=${VERBOSE:-0}
 
 # Predefined constants
-readonly SPRYKER_PHP_VERSION={{ php | default('7.2') }}
 readonly APPLICATION_ENV={{ environment | default('docker') }}
-readonly SPRYKER_PLATFORM_IMAGE=spryker/php:${SPRYKER_PHP_VERSION}
+readonly SPRYKER_PLATFORM_IMAGE={{ image | default('spryker/php:7.2') }}
 export SPRYKER_DOCKER_PREFIX=${COMPOSE_PROJECT_NAME}
 export SPRYKER_DOCKER_TAG={{ tag | default('1.0') }}
 export SPRYKER_LOG_DIRECTORY={{ docker['logs']['path'] | default('/var/log/spryker') }}
@@ -222,7 +221,7 @@ function buildBaseImage()
         -t ${SPRYKER_DOCKER_PREFIX}_app:${SPRYKER_DOCKER_TAG} \
         --progress=${PROGRESS_TYPE} \
         -f ${DEPLOYMENT_PATH}/images/{{ isDevelopment ? 'base_dev' : 'base_app' }}/Dockerfile \
-        --build-arg SPRYKER_PHP_VERSION=${SPRYKER_PHP_VERSION} \
+        --build-arg SPRYKER_PLATFORM_IMAGE=${SPRYKER_PLATFORM_IMAGE} \
         --build-arg SPRYKER_DOCKER_PREFIX=${SPRYKER_DOCKER_PREFIX} \
         --build-arg SPRYKER_DOCKER_TAG=${SPRYKER_DOCKER_TAG} \
         --build-arg USER_UID=${USER_UID:-1000} \

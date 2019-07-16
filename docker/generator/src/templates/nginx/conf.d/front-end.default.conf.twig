@@ -25,11 +25,11 @@ upstream {{ applicationName }} {
     server {{ applicationData['application'] == 'zed' ? 'rpc_server' : applicationName }}:9000;
 }
 
-{% for domain, domainData in applicationData['domain'] %}
+{% for endpoint, endpointData in applicationData['endpoints'] %}
 {% include "nginx/#{applicationData['application']}.server.conf.twig" with {
     ssl: docker['ssl']['enabled'] | default(false),
-    domain: domain,
-    domainData: domainData,
+    endpoint: endpoint,
+    endpointData: endpointData,
     upstream: applicationName,
     project: _context
 } %}
@@ -38,11 +38,11 @@ upstream {{ applicationName }} {
 {% endfor %}
 
 {% for serviceName, serviceData in services %}
-{% for domain, domainData in serviceData['domain'] %}
+{% for endpoint, endpointData in serviceData['endpoints'] %}
 {% include "nginx/#{serviceData['engine']}.server.conf.twig" with {
     ssl: docker['ssl']['enabled'] | default(false),
-    domain: domain,
-    domainData: domainData,
+    endpoint: endpoint,
+    endpointData: endpointData,
     upstream: serviceName ~ (serviceData['web-port'] ? ':' ~ serviceData['proxy-port'] : ''),
     project: _context
 } %}
