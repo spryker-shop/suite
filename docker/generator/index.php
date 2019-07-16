@@ -321,7 +321,7 @@ function getBrokerConnections(array $projectData): string
 }
 
 /**
- * @param string[] $projectGroups
+ * @param array $projectGroups
  *
  * @return string[]
  */
