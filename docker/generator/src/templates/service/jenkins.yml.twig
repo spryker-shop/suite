@@ -1,0 +1,18 @@
+  {{ serviceName }}:
+    image: spryker/jenkins:2.176
+    networks:
+      - services
+      - private
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "localhost", "8080" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    environment:
+      SPRYKER_DOCKER_RUN_ARGUMENTS: ${SPRYKER_DOCKER_RUN_ARGUMENTS}
+      SPRYKER_DOCKER_RUN_IMAGE: ${SPRYKER_DOCKER_RUN_IMAGE}
+      SPRYKER_REMOTE_DIR: ${SPRYKER_REMOTE_DIR}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - {{ serviceName }}-{{ serviceData['engine'] }}-data:/var/jenkins_home:rw
+      - ./${DEPLOYMENT_PATH}/env:${SPRYKER_REMOTE_DIR}/env:ro
