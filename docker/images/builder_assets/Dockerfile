@@ -16,12 +16,12 @@
 #   spryker_app_dependencies as it's an intermediate container from another Dockerfile, that would
 #   require merging the dockerfiles.
 
-ARG SPRYKER_PHP_VERSION=7.2
+ARG SPRYKER_PLATFORM_IMAGE=spryker/php:7.2
 ARG SPRYKER_DOCKER_TAG
 ARG SPRYKER_DOCKER_PREFIX
 
 # Intermediate container - project dependencies
-FROM spryker/php:${SPRYKER_PHP_VERSION} AS spryker_node_dependencies
+FROM ${SPRYKER_PLATFORM_IMAGE} AS spryker_node_dependencies
 RUN apk update && apk add \
   nodejs \
   npm \
