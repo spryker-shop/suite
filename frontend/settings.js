@@ -39,15 +39,6 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
         'views/*/index.ts'
     ];
 
-    const ignoreFiles = [
-        '!config',
-        '!data',
-        '!deploy',
-        '!node_modules',
-        '!public',
-        '!test'
-    ];
-
     // getting collection of entry points by pattern
     const entryPointsCollection = pathPattern => entryPointsParts.map(element => `${pathPattern}/${element}`);
 
@@ -64,6 +55,26 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
             .replace(/%namespace%/gi, namespaceConfig.namespace)
             .replace(/%theme%/gi, theme)
     );
+
+    const getModuleSuffixes = () => {
+        return namespaceJson.namespaces.map((namespace) => namespace.moduleSuffix);
+    };
+
+    const ignoredEntryPointsCollection = () => {
+        return getModuleSuffixes()
+                    .filter(suffix => suffix !== namespaceConfig.moduleSuffix)
+                    .map(suffix => `!**/*${suffix}/Theme/**`);
+    };
+
+    const ignoreFiles = [
+        '!config',
+        '!data',
+        '!deploy',
+        '!node_modules',
+        '!public',
+        '!test',
+        ...ignoredEntryPointsCollection()
+    ];
 
     // define relative urls to site host (/)
     const urls = {
