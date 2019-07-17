@@ -1,5 +1,5 @@
 {% extends "nginx/http/server.conf.twig" %}
-{% set rpcServer = "rpc_server_" ~ ( domainData['store'] | lower ) %}
+{% set rpcServer = "rpc_server_" ~ ( endpointData['store'] | lower ) %}
 {% block location %}
     include fastcgi.conf;
     fastcgi_pass {{ upstream }};
