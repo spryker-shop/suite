@@ -33,9 +33,8 @@ readonly PROGRESS_TYPE=${PROGRESS_TYPE:-tty}
 VERBOSE=${VERBOSE:-0}
 
 # Predefined constants
-readonly SPRYKER_PHP_VERSION={{ php | default('7.2') }}
 readonly APPLICATION_ENV={{ environment | default('docker') }}
-readonly SPRYKER_PLATFORM_IMAGE=spryker/php:${SPRYKER_PHP_VERSION}
+readonly SPRYKER_PLATFORM_IMAGE={{ image | default('spryker/php:7.2') }}
 export SPRYKER_DOCKER_PREFIX=${COMPOSE_PROJECT_NAME}
 export SPRYKER_DOCKER_TAG={{ tag | default('1.0') }}
 export SPRYKER_LOG_DIRECTORY={{ docker['logs']['path'] | default('/var/log/spryker') }}
@@ -65,23 +64,23 @@ function showHelp()
     echo -e ""
     echo -e "${INFO}Possible commands are:${NC}"
     echo -e " ${GREEN}build${NC}\t\t  - Build Spryker containers."
-    echo -e " ${GREEN}clean${NC}\t\t  - Stop and removes all Spryker containers and volumes."
+    echo -e " ${GREEN}remove|clean${NC}\t  - Stop and removes all Spryker containers and volumes."
     echo -e " ${GREEN}cli${NC}\t\t  - Start a new container where you can run cli commands."
     echo -e " ${GREEN}cli${NC} <command>\t  - Run any cli command, e.g. \`${ITALIC}${SPRYKER_SELF_SCRIPT} cli composer install${NC}\`."
-    echo -e " ${GREEN}console${NC} \t  - Run Spryker console command, e.g. \`${ITALIC}${SPRYKER_SELF_SCRIPT} console code:test -vvv -g Acceptance\`${NC}."
+    echo -e " ${GREEN}console${NC}\t  - Run Spryker console command, e.g. \`${ITALIC}${SPRYKER_SELF_SCRIPT} console code:test -vvv -g Acceptance\`${NC}."
     echo -e " ${GREEN}codecept${NC}\t  - Start a new container where you can run Codeception commands in the test environment."
     echo -e " ${GREEN}code-checks${NC}\t  - Run code-checks."
     echo -e " ${GREEN}acceptance-tests${NC} - Run acceptance-tests, e.g. \`${ITALIC}${SPRYKER_SELF_SCRIPT} acceptance-tests -v -g Acceptance\`${NC} or  \`${ITALIC}${SPRYKER_SELF_SCRIPT} acceptance-tests -h\`${NC}."
     echo -e " ${GREEN}functional-tests${NC} - Run functional-tests, e.g. \`${ITALIC}${SPRYKER_SELF_SCRIPT} functional-tests -v\`${NC} or \`${ITALIC}${SPRYKER_SELF_SCRIPT} functional-tests -h\`${NC}."
-    echo -e " ${GREEN}demo_data${NC}\t  - Populate Spryker demo data."
-    echo -e " ${GREEN}down${NC}\t\t  - Stop all Spryker containers."
+    echo -e " ${GREEN}demo|demo-data${NC}   - Populate Spryker demo data."
+    echo -e " ${GREEN}down|stop${NC}\t  - Stop all Spryker containers."
     echo -e " ${GREEN}jobs${NC}\t\t  - Generate and starts jobs."
     echo -e " ${GREEN}help${NC}\t\t  - Show help page."
     echo -e " ${GREEN}pull${NC}\t\t  - Pull external docker images."
     echo -e " ${GREEN}clean-data${NC}\t  - Remove all Spryker volumes including all storages."
     echo -e " ${GREEN}reset${NC}\t\t  - Remove and build all Spryker containers and volumes."
     echo -e " ${GREEN}restart${NC}\t  - Restart Spryker containers."
-    echo -e " ${GREEN}run${NC}\t\t  - Run Spryker containers."
+    echo -e " ${GREEN}run|start${NC}\t  - Run Spryker containers."
     echo -e " ${GREEN}up${NC}\t\t  - Build and run Spryker apps based on demo data."
     echo -e " ${GREEN}logs${NC}\t\t  - Tail all application exception logs."
 
@@ -222,7 +221,7 @@ function buildBaseImage()
         -t ${SPRYKER_DOCKER_PREFIX}_app:${SPRYKER_DOCKER_TAG} \
         --progress=${PROGRESS_TYPE} \
         -f ${DEPLOYMENT_PATH}/images/{{ isDevelopment ? 'base_dev' : 'base_app' }}/Dockerfile \
-        --build-arg SPRYKER_PHP_VERSION=${SPRYKER_PHP_VERSION} \
+        --build-arg SPRYKER_PLATFORM_IMAGE=${SPRYKER_PLATFORM_IMAGE} \
         --build-arg SPRYKER_DOCKER_PREFIX=${SPRYKER_DOCKER_PREFIX} \
         --build-arg SPRYKER_DOCKER_TAG=${SPRYKER_DOCKER_TAG} \
         --build-arg USER_UID=${USER_UID:-1000} \
@@ -597,7 +596,7 @@ case $1 in
     up)
         doUp
         ;;
-    demo|demo_data|demo-data)
+    demo|demo-data)
         runApp
         loadDemoData
         ;;
@@ -625,7 +624,7 @@ case $1 in
         destroyAssets
         doUp
         ;;
-    destroy|remove|clean)
+    remove|clean)
         destroyAppVolumesAndImages
         destroyAssets
         destroyImages
