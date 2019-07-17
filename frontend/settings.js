@@ -56,12 +56,10 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
             .replace(/%theme%/gi, theme)
     );
 
-    const getModuleSuffixes = () => {
-        return namespaceJson.namespaces.map((namespace) => namespace.moduleSuffix);
-    };
+    const getAllModuleSuffixes = () => namespaceJson.namespaces.map(namespace => namespace.moduleSuffix);
 
-    const ignoredEntryPointsCollection = () => {
-        return getModuleSuffixes()
+    const ignoreModulesCollection = () => {
+        return getAllModuleSuffixes()
                     .filter(suffix => suffix !== namespaceConfig.moduleSuffix)
                     .map(suffix => `!**/*${suffix}/Theme/**`);
     };
@@ -73,7 +71,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
         '!node_modules',
         '!public',
         '!test',
-        ...ignoredEntryPointsCollection()
+        ...ignoreModulesCollection()
     ];
 
     // define relative urls to site host (/)
