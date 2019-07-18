@@ -70,9 +70,9 @@ foreach ($projectData['groups'] ?? [] as $groupName => $groupData) {
         );
 
         if ($applicationData['application'] === 'zed') {
-            foreach ($applicationData['domain'] ?? [] as $domain => $domainData) {
+            foreach ($applicationData['endpoints'] ?? [] as $endpoint => $endpointData) {
                 file_put_contents(
-                    $deploymentDir . DS . 'env' . DS . 'cli' . DS . strtolower($domainData['store']) . '.env',
+                    $deploymentDir . DS . 'env' . DS . 'cli' . DS . strtolower($endpointData['store']) . '.env',
                     $twig->render('env/cli/store.env.twig', [
                         'applicationName' => $applicationName,
                         'applicationData' => $applicationData,
@@ -80,10 +80,10 @@ foreach ($projectData['groups'] ?? [] as $groupName => $groupData) {
                         'regionName' => $groupData['region'],
                         'regionData' => $projectData['regions'][$groupData['region']],
                         'brokerConnections' => getBrokerConnections($projectData),
-                        'storeName' => $domainData['store'],
+                        'storeName' => $endpointData['store'],
                         'services' => array_replace_recursive(
-                            $projectData['regions'][$groupData['region']]['stores'][$domainData['store']]['services'],
-                            $domainData['services'] ?? []
+                            $projectData['regions'][$groupData['region']]['stores'][$endpointData['store']]['services'],
+                            $endpointData['services'] ?? []
                         ),
                         'yvesEndpointMap' => $yvesEndpointMap,
                     ])
@@ -92,8 +92,8 @@ foreach ($projectData['groups'] ?? [] as $groupName => $groupData) {
         }
 
         if ($applicationData['application'] === 'yves') {
-            foreach ($applicationData['domain'] ?? [] as $domain => $domainData) {
-                if ($domainData['store'] !== ($projectData['docker']['testing']['store'] ?? '')) {
+            foreach ($applicationData['endpoints'] ?? [] as $endpoint => $endpointData) {
+                if ($endpointData['store'] !== ($projectData['docker']['testing']['store'] ?? '')) {
                     continue;
                 }
                 file_put_contents(
@@ -102,15 +102,15 @@ foreach ($projectData['groups'] ?? [] as $groupName => $groupData) {
                         'applicationName' => $applicationName,
                         'applicationData' => $applicationData,
                         'project' => $projectData,
-                        'domain' => strtok($domain, ':'),
-                        'port' => strtok($domain) ?: $defaultPort,
+                        'host' => strtok($endpoint, ':'),
+                        'port' => strtok($endpoint) ?: $defaultPort,
                         'regionName' => $groupData['region'],
                         'regionData' => $projectData['regions'][$groupData['region']],
                         'brokerConnections' => getBrokerConnections($projectData),
-                        'storeName' => $domainData['store'],
+                        'storeName' => $endpointData['store'],
                         'services' => array_replace_recursive(
-                            $projectData['regions'][$groupData['region']]['stores'][$domainData['store']]['services'],
-                            $domainData['services'] ?? []
+                            $projectData['regions'][$groupData['region']]['stores'][$endpointData['store']]['services'],
+                            $endpointData['services'] ?? []
                         ),
                     ])
                 );
@@ -157,7 +157,7 @@ echo shell_exec(sprintf(
     'PFX_PASSWORD="%s" DESTINATION=%s ./openssl/generate.sh %s',
     addslashes($projectData['docker']['ssl']['pfx-password'] ?? 'secret'),
     $sslDir,
-    implode(' ', retrieveDomainNames($projectData))
+    implode(' ', retrieveHostNames($projectData))
 ));
 
 copy($sslDir . DS . 'ca.pfx', $deploymentDir . DS . 'spryker.pfx');
@@ -200,8 +200,8 @@ function retrieveUniquePorts(array $projectData)
         80 => 80,
     ];
 
-    foreach (retrieveEndpoints($projectData) as $domain => $domainData) {
-        $port = explode(':', $domain)[1];
+    foreach (retrieveEndpoints($projectData) as $endpoint => $endpointData) {
+        $port = explode(':', $endpoint)[1];
         $ports[$port] = $port;
     }
 
@@ -223,40 +223,40 @@ function retrieveEndpoints(array $projectData): array
 
     foreach ($projectData['groups'] ?? [] as $groupName => $groupData) {
         foreach ($groupData['applications'] ?? [] as $applicationName => $applicationData) {
-            foreach ($applicationData['domain'] ?? [] as $domain => $domainData) {
-                if (strpos($domain, ':') === false) {
-                    $domain .= ':' . $defaultPort;
+            foreach ($applicationData['endpoints'] ?? [] as $endpoint => $endpointData) {
+                if (strpos($endpoint, ':') === false) {
+                    $endpoint .= ':' . $defaultPort;
                 }
 
-                if (array_key_exists($domain, $endpoints)) {
+                if (array_key_exists($endpoint, $endpoints)) {
                     throw new Exception(sprintf(
-                        '`%s` domain is used for different applications. Please, make sure domains are unique',
-                        $domain
+                        '`%s` endpoint is used for different applications. Please, make sure endpoints are unique',
+                        $endpoint
                     ));
                 }
 
-                $domainData['region'] = $groupData['region'];
-                $domainData['application'] = $applicationName;
-                $endpoints[$domain] = $domainData;
+                $endpointData['region'] = $groupData['region'];
+                $endpointData['application'] = $applicationName;
+                $endpoints[$endpoint] = $endpointData;
             }
         }
     }
 
     foreach ($projectData['services'] as $serviceName => $serviceData) {
-        foreach ($serviceData['domain'] ?? [] as $domain => $domainData) {
-            if (strpos($domain, ':') === false) {
-                $domain .= ':' . $defaultPort;
+        foreach ($serviceData['endpoints'] ?? [] as $endpoint => $endpointData) {
+            if (strpos($endpoint, ':') === false) {
+                $endpoint .= ':' . $defaultPort;
             }
 
-            if (array_key_exists($domain, $endpoints)) {
+            if (array_key_exists($endpoint, $endpoints)) {
                 throw new Exception(sprintf(
-                    '`%s` domain is used for different applications. Please, make sure domains are unique',
-                    $domain
+                    '`%s` endpoint is used for different applications. Please, make sure endpoints are unique',
+                    $endpoint
                 ));
             }
 
-            $domainData['service'] = $serviceName;
-            $endpoints[$domain] = $domainData;
+            $endpointData['service'] = $serviceName;
+            $endpoints[$endpoint] = $endpointData;
         }
     }
 
@@ -268,16 +268,16 @@ function retrieveEndpoints(array $projectData): array
  *
  * @return string[]
  */
-function retrieveDomainNames(array $projectData): array
+function retrieveHostNames(array $projectData): array
 {
-    $domains = [];
+    $hosts = [];
 
     foreach (retrieveEndpoints($projectData) as $endpoint => $endpointData) {
         $host = strtok($endpoint, ':');
-        $domains[$host] = $host;
+        $hosts[$host] = $host;
     }
 
-    return $domains;
+    return $hosts;
 }
 
 /**
