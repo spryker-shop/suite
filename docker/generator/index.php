@@ -339,7 +339,7 @@ function buildYvesEndpointMapByStore(array $projectGroups): array
                 continue;
             }
 
-            foreach ($application['domain'] as $endpoint => $endpointData) {
+            foreach ($application['endpoints'] as $endpoint => $endpointData) {
                 $storeName = $endpointData['store'];
                 $yvesEndpointMap[$storeName] = $endpoint;
             }
