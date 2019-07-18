@@ -1,5 +1,5 @@
 const stylelint = require('stylelint');
-const appSettings = require('../settings');
+const { globalSettings } = require('../settings');
 
 stylelint.lint({
     files: [`${appSettings.paths.project.modules}/**/*.scss`],

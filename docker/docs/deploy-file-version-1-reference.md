@@ -30,11 +30,6 @@ This is the newest version.
 The key format: "domain[:port]". By default port is 80 for HTTP endpoints.
 The port is mandatory for TCP endpoints. 
 
-## Backward compatibility
-
-All version of the Deploy file format will be supported by Spryker tools until a version is marked as deprecated 
-in change log and the fact of deprecation is shared via public channels.
-
 ## Deploy file structure
 
 The topics here are organized alphabetically for top-level keys along with sub-level keys to describe the hierarchy.
