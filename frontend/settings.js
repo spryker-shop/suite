@@ -20,21 +20,10 @@ const globalSettings = {
         namespaceConfig: './config/Yves/frontend-build-config.json',
 
         // core folders
-        core: './vendor/spryker/spryker-shop/Bundles',
+        core: './vendor/spryker-shop',
 
-    // core folders
-    core: {
-        // all modules
-        modules: './vendor/spryker-shop',
-        // ShopUi source folder
-        shopUiModule: `./vendor/spryker-shop/shop-ui/src/SprykerShop/Yves/ShopUi/Theme/${theme}`
-    },
-
-    // eco folders
-    eco: {
-        // all modules
-        modules: './vendor/spryker-eco'
-    },
+        // eco folders
+        eco: './vendor/spryker-eco',
 
         // project folders
         project: './src/Pyz/Yves'
