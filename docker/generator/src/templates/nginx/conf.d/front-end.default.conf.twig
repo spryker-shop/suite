@@ -39,12 +39,15 @@ upstream {{ applicationName }} {
 
 {% for serviceName, serviceData in services %}
 {% for endpoint, endpointData in serviceData['endpoints'] %}
-{% include "nginx/http/#{serviceData['engine']}.server.conf.twig" with {
+{% set protocol = endpointData['protocol'] | default('http') %}
+{% if protocol is same as ('http') %}
+{% include "nginx/#{protocol}/#{serviceData['engine']}.server.conf.twig" with {
     ssl: docker['ssl']['enabled'] | default(false),
     endpoint: endpoint,
     endpointData: endpointData,
     upstream: serviceName ~ (serviceData['web-port'] ? ':' ~ serviceData['proxy-port'] : ''),
     project: _context
 } %}
+{% endif %}
 {% endfor %}
 {% endfor %}

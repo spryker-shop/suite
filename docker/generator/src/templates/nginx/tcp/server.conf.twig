@@ -1,5 +1,4 @@
-{% set port = (domain | split(':'))[1] %}
-{% set host = domain | split(':') | first %}
+{% set port = (endpoint | split(':'))[1] %}
 server {
   listen {% block port %}{{ port }}{% endblock port %};
   proxy_pass {% block upstream %}{{ serviceName }}{% endblock upstream %};

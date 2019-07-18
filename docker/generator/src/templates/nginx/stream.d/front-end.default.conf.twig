@@ -1,10 +1,13 @@
 {% for serviceName, serviceData in services %}
-{% for domain, domainData in serviceData['domain'] %}
-{% include "nginx/tcp/#{serviceData['engine']}.server.conf.twig" ignore missing with {
-    domain: domain,
-    domainData: domainData,
+{% for endpoint, endpointData in serviceData['endpoints'] %}
+{% set protocol = endpointData['protocol'] | default('http') %}
+{% if protocol is same as ('tcp') %}
+{% include "nginx/#{protocol}/#{serviceData['engine']}.server.conf.twig" with {
+    endpoint: endpoint,
+    endpointData: endpointData,
     upstream: serviceName,
     project: _context
 } %}
+{% endif %}
 {% endfor %}
 {% endfor %}

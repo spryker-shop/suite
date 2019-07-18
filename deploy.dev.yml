@@ -113,8 +113,9 @@ services:
         root:
             username: "root"
             password: "secret"
-        domain:
+        endpoints:
             localhost:5432:
+                protocol: tcp
     broker:
         engine: rabbitmq
         api:
