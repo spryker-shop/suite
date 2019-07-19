@@ -7,6 +7,7 @@ use Spryker\Shared\GlueApplication\GlueApplicationConstants;
 use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\ProductManagement\ProductManagementConstants;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
+use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 
@@ -100,4 +101,11 @@ $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
         RabbitMqEnv::RABBITMQ_STORE_NAMES => ['US'],
         RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => true,
     ],
+];
+
+// ----------- Search
+$config[SearchConstants::INDEX_NAME_MAP] = [
+    'page' => 'de_page',
+    'product-review' => 'de_product-review',
+    'customer-page' => 'de_customer-page',
 ];

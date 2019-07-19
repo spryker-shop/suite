@@ -62,6 +62,7 @@ use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
 use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
 use SprykerShop\Shared\ShopUi\ShopUiConstants;
 use Twig\Cache\FilesystemCache;
+use Spryker\Shared\SearchElasticsearch\SearchElasticsearchConstants;
 
 $CURRENT_STORE = Store::getInstance()->getStoreName();
 
@@ -166,25 +167,40 @@ $config[AclConstants::ACL_DEFAULT_CREDENTIALS] = [
 
 // ---------- Elasticsearch
 $ELASTICA_HOST = 'localhost';
-$config[SearchConstants::ELASTICA_PARAMETER__HOST] = $ELASTICA_HOST;
 $ELASTICA_TRANSPORT_PROTOCOL = 'http';
-$config[SearchConstants::ELASTICA_PARAMETER__TRANSPORT] = $ELASTICA_TRANSPORT_PROTOCOL;
 $ELASTICA_PORT = '10005';
-$config[SearchConstants::ELASTICA_PARAMETER__PORT] = $ELASTICA_PORT;
 $ELASTICA_AUTH_HEADER = null;
-$config[SearchConstants::ELASTICA_PARAMETER__AUTH_HEADER] = $ELASTICA_AUTH_HEADER;
 $ELASTICA_INDEX_NAME = null;// Store related config
+$ELASTICA_DOCUMENT_TYPE = 'page';
+$ELASTICA_PARAMETER__EXTRA = [];
+
+$config[SearchConstants::ELASTICA_PARAMETER__HOST]
+    = $config[SearchElasticsearchConstants::HOST]
+    = $ELASTICA_HOST;
+
+$config[SearchConstants::ELASTICA_PARAMETER__TRANSPORT]
+    = $config[SearchElasticsearchConstants::TRANSPORT]
+    = $ELASTICA_TRANSPORT_PROTOCOL;
+
+$config[SearchConstants::ELASTICA_PARAMETER__PORT]
+    = $config[SearchElasticsearchConstants::PORT]
+    = $ELASTICA_PORT;
+
+$config[SearchConstants::ELASTICA_PARAMETER__AUTH_HEADER]
+    = $config[SearchElasticsearchConstants::AUTH_HEADER]
+    = $ELASTICA_AUTH_HEADER;
+
+$config[SearchConstants::ELASTICA_PARAMETER__EXTRA]
+    = $config[SearchElasticsearchConstants::EXTRA]
+    = $ELASTICA_PARAMETER__EXTRA;
+
 $config[SearchConstants::ELASTICA_PARAMETER__INDEX_NAME] = $ELASTICA_INDEX_NAME;
 $config[CollectorConstants::ELASTICA_PARAMETER__INDEX_NAME] = $ELASTICA_INDEX_NAME;
-$ELASTICA_DOCUMENT_TYPE = 'page';
 $config[SearchConstants::ELASTICA_PARAMETER__DOCUMENT_TYPE] = $ELASTICA_DOCUMENT_TYPE;
 $config[CollectorConstants::ELASTICA_PARAMETER__DOCUMENT_TYPE] = $ELASTICA_DOCUMENT_TYPE;
-$ELASTICA_PARAMETER__EXTRA = [];
-$config[SearchConstants::ELASTICA_PARAMETER__EXTRA] = $ELASTICA_PARAMETER__EXTRA;
 
 // ---------- Page search
 $config[SearchConstants::FULL_TEXT_BOOSTED_BOOSTING_VALUE] = 3;
-$config[SearchConstants::SEARCH_INDEX_NAME_SUFFIX] = '';
 
 // ---------- Twig
 $config[TwigConstants::YVES_TWIG_OPTIONS] = [

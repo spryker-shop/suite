@@ -10,6 +10,7 @@ use Spryker\Shared\ProductManagement\ProductManagementConstants;
 use Spryker\Shared\Queue\QueueConfig;
 use Spryker\Shared\Queue\QueueConstants;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
+use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 
@@ -112,3 +113,11 @@ $config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION_DEFAULT] = [
 ];
 
 $config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION][EventConstants::EVENT_QUEUE][QueueConfig::CONFIG_MAX_WORKER_NUMBER] = 5;
+
+
+// ----------- Search
+$config[SearchConstants::INDEX_NAME_MAP] = [
+    'page' => 'de_page',
+    'product-review' => 'de_product-review',
+    'customer-page' => 'de_customer-page',
+];

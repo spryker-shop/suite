@@ -77,6 +77,13 @@ $config[SearchConstants::ELASTICA_PARAMETER__INDEX_NAME]
     = $config[CollectorConstants::ELASTICA_PARAMETER__INDEX_NAME]
     = 'de_search_devtest';
 
+// ----------- Search
+$config[SearchConstants::INDEX_NAME_MAP] = [
+    'page' => 'de_page',
+    'product-review' => 'de_product-review',
+    'customer-page' => 'de_customer-page',
+];
+
 // ---------- RabbitMq
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['DE'][RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION] = true;
 $config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = '/DE_devtest_zed';
