@@ -25,6 +25,7 @@ $projectData['_platform'] = $platform;
 $mountMode = $projectData['_mountMode'] = retrieveMountMode($projectData, $platform);
 $projectData['_ports'] = retrieveUniquePorts($projectData);
 $defaultPort = $projectData['_defaultPort'] = getDefaultPort($projectData);
+$yvesEndpointMap = $projectData['_yvesEndpointMap'] = buildYvesEndpointMapByStore($projectData['groups']);
 
 mkdir($deploymentDir . DS . 'env' . DS . 'cli', 0777, true);
 mkdir($deploymentDir . DS . 'context' . DS . 'nginx' . DS . 'conf.d', 0777, true);
@@ -89,6 +90,7 @@ foreach ($projectData['groups'] ?? [] as $groupName => $groupData) {
                             $projectData['regions'][$groupData['region']]['stores'][$endpointData['store']]['services'],
                             $endpointData['services'] ?? []
                         ),
+                        'yvesEndpointMap' => $yvesEndpointMap,
                     ])
                 );
             }
@@ -321,4 +323,33 @@ function getBrokerConnections(array $projectData): string
     }
 
     return json_encode($connections);
+}
+
+/**
+ * @param array $projectGroups
+ *
+ * @return string[]
+ */
+function buildYvesEndpointMapByStore(array $projectGroups): array
+{
+    $yvesEndpointMap = [];
+
+    foreach ($projectGroups as $projectGroup) {
+        $applicationsPerRegion = $projectGroup['applications'];
+
+        foreach ($applicationsPerRegion as $application) {
+            $applicationName = $application['application'];
+
+            if ($applicationName !== 'yves') {
+                continue;
+            }
+
+            foreach ($application['endpoints'] as $endpoint => $endpointData) {
+                $storeName = $endpointData['store'];
+                $yvesEndpointMap[$storeName] = $endpoint;
+            }
+        }
+    }
+
+    return $yvesEndpointMap;
 }
