@@ -47,16 +47,6 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
     /**
      * {@inheritdoc}
      *
-     * @return \Spryker\Zed\PriceProductExtension\Dependency\Plugin\PriceProductStorePreDeletePluginInterface[]
-     */
-    protected function getPriceProductStorePreDeletePlugins(): array
-    {
-        return [];
-    }
-
-    /**
-     * {@inheritdoc}
-     *
      * @return \Spryker\Zed\PriceProductExtension\Dependency\Plugin\PriceDimensionConcreteSaverPluginInterface[]
      */
     protected function getPriceDimensionConcreteSaverPlugins(): array
