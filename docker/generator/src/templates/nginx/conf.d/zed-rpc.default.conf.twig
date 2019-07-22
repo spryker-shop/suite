@@ -17,7 +17,7 @@ upstream {{ applicationName }} {
 
 {% for endpoint, endpointData in applicationData['endpoints'] %}
 {# Ignoring custom port and SSL within internal networn #}
-{% include "nginx/rpc.server.conf.twig" with {
+{% include "nginx/http/rpc.server.conf.twig" with {
     endpoint: endpoint,
     endpointData: endpointData,
     upstream: applicationName,
