@@ -2,6 +2,7 @@
     image: postgres:9.6-alpine
     networks:
       - private
+      - services
     healthcheck:
       test: [ "CMD", "pg_isready" ]
       interval: 10s
