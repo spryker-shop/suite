@@ -1,0 +1,3 @@
+{% extends "nginx/tcp/server.conf.twig" %}
+{% block port %}{{ port | default(5432) }}{% endblock port %}
+{% block upstream %}{{ upstream }}:5432{% endblock upstream %}
