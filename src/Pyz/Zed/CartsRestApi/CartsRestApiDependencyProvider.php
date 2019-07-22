@@ -10,6 +10,8 @@ namespace Pyz\Zed\CartsRestApi;
 use Spryker\Zed\CartsRestApi\CartsRestApiDependencyProvider as SprykerCartsRestApiDependencyProvider;
 use Spryker\Zed\CartsRestApiExtension\Dependency\Plugin\QuoteCreatorPluginInterface;
 use Spryker\Zed\PersistentCart\Communication\Plugin\CartsRestApi\QuoteCreatorPlugin;
+use Spryker\Zed\SharedCart\Communication\Plugin\CartsRestApi\SharedCartQuoteCollectionExpanderPlugin;
+use Spryker\Zed\SharedCartsRestApi\Communication\Plugin\CartsRestApi\QuotePermissionGroupQuoteExpanderPlugin;
 
 class CartsRestApiDependencyProvider extends SprykerCartsRestApiDependencyProvider
 {
@@ -19,5 +21,25 @@ class CartsRestApiDependencyProvider extends SprykerCartsRestApiDependencyProvid
     protected function getQuoteCreatorPlugin(): QuoteCreatorPluginInterface
     {
         return new QuoteCreatorPlugin();
+    }
+
+    /**
+     * @return \Spryker\Zed\CartsRestApiExtension\Dependency\Plugin\QuoteCollectionExpanderPluginInterface[]
+     */
+    protected function getQuoteCollectionExpanderPlugins(): array
+    {
+        return [
+            new SharedCartQuoteCollectionExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\CartsRestApiExtension\Dependency\Plugin\QuoteExpanderPluginInterface[]
+     */
+    protected function getQuoteExpanderPlugins(): array
+    {
+        return [
+            new QuotePermissionGroupQuoteExpanderPlugin(),
+        ];
     }
 }
