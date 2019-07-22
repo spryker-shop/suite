@@ -45,7 +45,11 @@ function bootDeployment()
     cp -rf ${SOURCE_DIR}/bin ${DEPLOYMENT_DIR}/bin
     cp -rf ${SOURCE_DIR}/context ${DEPLOYMENT_DIR}/context
     cp -rf ${SOURCE_DIR}/images ${DEPLOYMENT_DIR}/images
-    cp -rf ${PROJECT_YAML} ${DEPLOYMENT_DIR}/project.yml
+    cp ${PROJECT_YAML} ${DEPLOYMENT_DIR}/project.yml
+
+    USER_UID=1000
+    USER_GID=1000
+    [ "$(getPlatform)" == "linux" ] && USER_UID=$(id -u) && USER_GID=$(id -g)
 
     verbose "${INFO}Running generator${NC}"
     docker run -i --rm \
@@ -54,10 +58,10 @@ function bootDeployment()
         -e SPRYKER_DOCKER_SDK_DEPLOYMENT_DIR="/data/deployment" \
         -e SPRYKER_DOCKER_SDK_PLATFORM="$(getPlatform)" \
         -v ${DEPLOYMENT_DIR}:/data/deployment:rw \
+        -u ${USER_UID}:${USER_GID} \
         spryker_docker_sdk
 
     chmod +x ${DEPLOYMENT_DIR}/deploy
-    touch ${DEPLOYMENT_DIR}/context/php/conf.d/xdebug.custom.ini
 }
 
 validateParameters
