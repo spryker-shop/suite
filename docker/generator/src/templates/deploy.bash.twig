@@ -28,6 +28,7 @@ export COMPOSE_PROJECT_NAME={{ namespace | default('spryker') }}
 {% if _platform == 'windows' %}
 export COMPOSE_CONVERT_WINDOWS_PATHS=1
 {% endif %}
+export DOCKER_GID={% if _platform == 'linux' %}$(ls -n /var/run/docker.sock | awk '{print $4}'){% else %}0{% endif %}
 
 readonly PROGRESS_TYPE=${PROGRESS_TYPE:-tty}
 VERBOSE=${VERBOSE:-0}
@@ -316,8 +317,16 @@ function createSchedulerJobs()
 
     waitFor scheduler
 
-    echo -e "${INFO}Creating Scheduler jobs${NC}"
-    execSpryker "vendor/bin/install -r docker -s scheduler-setup"
+    for region in "${SPRYKER_STORES[@]}";
+    do
+        eval ${region};
+        for store in "${STORES[@]}";
+        do
+            export SPRYKER_STORE="${store}"
+            echo -e "${INFO}Creating scheduler jobs for ${SPRYKER_STORE} store.${NC}"
+            execSpryker "vendor/bin/install -r docker -s scheduler-setup"
+        done
+    done
 }
 
 function destroyAppAndVolumes()
@@ -481,6 +490,7 @@ function execDockerCompose()
     runArguments="${runArguments/${DEPLOYMENT_PATH}/${SPRYKER_REMOTE_DIR}}"
 
     DEPLOYMENT_PATH=${DEPLOYMENT_PATH} \
+    DOCKER_GID=${DOCKER_GID} \
     SPRYKER_LOG_DIRECTORY=${SPRYKER_LOG_DIRECTORY} \
     SPRYKER_DOCKER_PREFIX=${SPRYKER_DOCKER_PREFIX} \
     SPRYKER_DOCKER_TAG=${SPRYKER_DOCKER_TAG} \

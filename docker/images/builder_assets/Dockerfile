@@ -49,6 +49,7 @@ RUN mkdir -p /assets/Zed \
 RUN --mount=type=cache,target=/root/.npm \
     --mount=type=bind,from=spryker_app,source=/data/vendor,target=/data/vendor,readwrite \
     --mount=type=bind,from=spryker_app,source=/data/src,target=/data/src,readwrite \
+    --mount=type=bind,from=spryker_app,source=/data/config,target=/data/config,readonly \
     find vendor -name package.json | while read file; do ( \
         cd $(dirname $file); \
         npm install \
