@@ -69,9 +69,9 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
         $productImageSetEntity = $query->findOneOrCreate();
         if ($productImageSetEntity->isNew() || $productImageSetEntity->isModified()) {
             $productImageSetEntity->save();
-
-            $this->addImagePublishEvents($productImageSetEntity);
         }
+
+        $this->addImagePublishEvents($productImageSetEntity);
 
         return $productImageSetEntity;
     }
