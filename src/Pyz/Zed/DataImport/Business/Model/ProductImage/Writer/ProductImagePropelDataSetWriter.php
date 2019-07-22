@@ -31,9 +31,11 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
      */
     public function write(DataSetInterface $dataSet): void
     {
-        $productProductImageSetEntity = $this->createOrUpdateProductImageSet($dataSet);
+        $productImageSetEntity = $this->createOrUpdateProductImageSet($dataSet);
         $productProductImageEntity = $this->createOrUpdateProductImage($dataSet);
-        $this->createOrUpdateImageToImageSetRelation($productProductImageSetEntity, $productProductImageEntity, $dataSet);
+        $this->createOrUpdateImageToImageSetRelation($productImageSetEntity, $productProductImageEntity, $dataSet);
+
+        $this->addImagePublishEvents($productImageSetEntity);
     }
 
     /**
@@ -70,8 +72,6 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
         if ($productImageSetEntity->isNew() || $productImageSetEntity->isModified()) {
             $productImageSetEntity->save();
         }
-
-        $this->addImagePublishEvents($productImageSetEntity);
 
         return $productImageSetEntity;
     }
