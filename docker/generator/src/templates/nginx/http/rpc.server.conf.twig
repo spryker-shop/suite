@@ -1,4 +1,4 @@
-{% extends "nginx/application.server.conf.twig" %}
+{% extends "nginx/http/application.server.conf.twig" %}
 {% block host %}
   server_name {{ host }} {{ rpcServer }};
   listen 80;
