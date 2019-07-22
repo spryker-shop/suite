@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "51437ca3a6e2312c6137076a1602180d",
+    "content-hash": "313699e75ea08ea1541c4b797f09fc47",
     "packages": [
         {
             "name": "codeception/phpunit-wrapper",
@@ -1419,9 +1419,9 @@
             "authors": [
                 {
                     "name": "Mandrill Devs",
-                    "role": "Developer",
                     "email": "community@mandrill.com",
-                    "homepage": "http://mandrill.com"
+                    "homepage": "http://mandrill.com",
+                    "role": "Developer"
                 }
             ],
             "description": "API client library for the Mandrill email as a service platform",
@@ -2486,8 +2486,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "The PHP Unit Testing framework.",
@@ -3842,11 +3842,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-bugfix/ps-9922-product-set-publishing-issue",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "9cd5be3e03bd90dd87279808d3ae4174b98c58ac"
+                "reference": "cb429695353231ce77bfb290dfc448bd5efa3073"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -4116,7 +4116,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-07-19T08:54:14+00:00"
+            "time": "2019-07-18T17:17:55+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -7147,16 +7147,16 @@
         },
         {
             "name": "codeception/codeception",
-            "version": "3.0.2",
+            "version": "3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Codeception.git",
-                "reference": "aead7eb0a53b040390a927dc84a0e6e37ffa8a2b"
+                "reference": "feb566a9dc26993611602011ae3834d8e3c1dd7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/aead7eb0a53b040390a927dc84a0e6e37ffa8a2b",
-                "reference": "aead7eb0a53b040390a927dc84a0e6e37ffa8a2b",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/feb566a9dc26993611602011ae3834d8e3c1dd7f",
+                "reference": "feb566a9dc26993611602011ae3834d8e3c1dd7f",
                 "shasum": ""
             },
             "require": {
@@ -7181,6 +7181,8 @@
             },
             "require-dev": {
                 "codeception/specify": "~0.3",
+                "doctrine/annotations": "^1",
+                "doctrine/orm": "^2",
                 "flow/jsonpath": "~0.2",
                 "monolog/monolog": "~1.8",
                 "pda/pheanstalk": "~3.0",
@@ -7235,7 +7237,7 @@
                 "functional testing",
                 "unit testing"
             ],
-            "time": "2019-06-22T19:16:46+00:00"
+            "time": "2019-07-18T16:21:08+00:00"
         },
         {
             "name": "codeception/stub",
@@ -8877,20 +8879,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
-                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler"
+                    "homepage": "https://github.com/manuelpichler",
+                    "role": "Project Founder"
                 },
                 {
                     "name": "Other contributors",
-                    "role": "Contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
+                    "role": "Contributors"
                 },
                 {
                     "name": "Marc Würth",
-                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84"
+                    "homepage": "https://github.com/ravage84",
+                    "role": "Project Maintainer"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
