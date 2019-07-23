@@ -26,26 +26,37 @@
 
 {% block filterBar %}
     {{parent()}}
-
     {% if data.categoryId %}
-        <div class="box">
-            {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'middle', data.categoryId) }}
-        </div>
+        {% include molecule('catalog-cms-block', 'CmsBlockWidget') ignore missing with {
+            class: 'box',
+            data: {
+                idCategory: data.categoryId,
+                position: 'middle'
+            }
+        } only %}
     {% endif %}
 {% endblock %}
 
 {% block content %}
     {% if data.categoryId %}
-        <div class="box">
-            {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'top', data.categoryId) }}
-        </div>
+        {% include molecule('catalog-cms-block', 'CmsBlockWidget') ignore missing with {
+            class: 'box',
+            data: {
+                idCategory: data.categoryId,
+                position: 'top'
+            }
+        } only %}
     {% endif %}
 
     {{parent()}}
 
     {% if data.categoryId %}
-        <div class="box">
-            {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'bottom', data.categoryId) }}
-        </div>
+        {% include molecule('catalog-cms-block', 'CmsBlockWidget') ignore missing with {
+            class: 'box',
+            data: {
+                idCategory: data.categoryId,
+                position: 'bottom'
+            }
+        } only %}
     {% endif %}
 {% endblock %}

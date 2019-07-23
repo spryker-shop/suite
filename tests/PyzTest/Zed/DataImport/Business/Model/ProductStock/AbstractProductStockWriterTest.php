@@ -56,12 +56,13 @@ abstract class AbstractProductStockWriterTest extends AbstractWriterTest
 
             $dataSet[ProductStockHydratorStep::KEY_IS_BUNDLE] = 0;
             $dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU] = $sku;
+            $dataSet[ProductStockHydratorStep::KEY_IS_NEVER_OUT_OF_STOCK] = 0;
             $dataSet[ProductStockHydratorStep::STOCK_ENTITY_TRANSFER] = (new SpyStockEntityTransfer())
                 ->setName($warehouses[$index] ?? $warehouses[0]);
 
             $dataSet[ProductStockHydratorStep::STOCK_PRODUCT_ENTITY_TRANSFER] = (new SpyStockProductEntityTransfer())
                 ->setQuantity(static::WAREHOUSES_QTY[$index])
-                ->setIsNeverOutOfStock(0);
+                ->setIsNeverOutOfStock($dataSet[ProductStockHydratorStep::KEY_IS_NEVER_OUT_OF_STOCK]);
 
             $result[$sku] = $dataSet;
         }

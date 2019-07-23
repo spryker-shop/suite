@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\DataImport;
 
+use Generated\Shared\Transfer\DataImporterQueueWriterConfigurationTransfer;
 use Spryker\Zed\DataImport\DataImportConfig as SprykerDataImportConfig;
 
 /**
@@ -37,7 +38,6 @@ class DataImportConfig extends SprykerDataImportConfig
     public const IMPORT_TYPE_PRODUCT_SEARCH_ATTRIBUTE_MAP = 'product-search-attribute-map';
     public const IMPORT_TYPE_PRODUCT_SEARCH_ATTRIBUTE = 'product-search-attribute';
     public const IMPORT_TYPE_CMS_TEMPLATE = 'cms-template';
-    public const IMPORT_TYPE_CMS_PAGE = 'cms-page';
     public const IMPORT_TYPE_CMS_BLOCK = 'cms-block';
     public const IMPORT_TYPE_CMS_BLOCK_STORE = 'cms-block-store';
     public const IMPORT_TYPE_CMS_BLOCK_CATEGORY_POSITION = 'cms-block-category-position';
@@ -53,6 +53,17 @@ class DataImportConfig extends SprykerDataImportConfig
     public const IMPORT_TYPE_CURRENCY = 'currency';
     public const IMPORT_TYPE_STORE = 'store';
     public const IMPORT_TYPE_ORDER_SOURCE = 'order-source';
+    public const IMPORT_TYPE_ABSTRACT_GIFT_CARD_CONFIGURATION = 'gift-card-abstract-configuration';
+    public const IMPORT_TYPE_CONCRETE_GIFT_CARD_CONFIGURATION = 'gift-card-concrete-configuration';
+
+    public const PRODUCT_ABSTRACT_QUEUE = 'import.product_abstract';
+    public const PRODUCT_ABSTRACT_QUEUE_ERROR = 'import.product_abstract.error';
+    public const PRODUCT_CONCRETE_QUEUE = 'import.product_concrete';
+    public const PRODUCT_CONCRETE_QUEUE_ERROR = 'import.product_concrete.error';
+    public const PRODUCT_IMAGE_QUEUE = 'import.product_image';
+    public const PRODUCT_IMAGE_QUEUE_ERROR = 'import.product_image.error';
+    public const PRODUCT_PRICE_QUEUE = 'import.product_price';
+    public const PRODUCT_PRICE_QUEUE_ERROR = 'import.product_price.error';
 
     /**
      * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
@@ -297,14 +308,6 @@ class DataImportConfig extends SprykerDataImportConfig
     /**
      * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
      */
-    public function getCmsPageDataImporterConfiguration()
-    {
-        return $this->buildImporterConfiguration('cms_page.csv', static::IMPORT_TYPE_CMS_PAGE);
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
-     */
     public function getCmsBlockDataImporterConfiguration()
     {
         return $this->buildImporterConfiguration('cms_block.csv', static::IMPORT_TYPE_CMS_BLOCK);
@@ -364,5 +367,61 @@ class DataImportConfig extends SprykerDataImportConfig
     public function getDiscountVoucherDataImporterConfiguration()
     {
         return $this->buildImporterConfiguration('discount_voucher.csv', static::IMPORT_TYPE_DISCOUNT_VOUCHER);
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\DataImporterQueueWriterConfigurationTransfer
+     */
+    public function getProductAbstractQueueWriterConfiguration(): DataImporterQueueWriterConfigurationTransfer
+    {
+        return (new DataImporterQueueWriterConfigurationTransfer())
+            ->setQueueName(static::PRODUCT_ABSTRACT_QUEUE)
+            ->setChunkSize($this->getQueueWriterChunkSize());
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\DataImporterQueueWriterConfigurationTransfer
+     */
+    public function getProductConcreteQueueWriterConfiguration(): DataImporterQueueWriterConfigurationTransfer
+    {
+        return (new DataImporterQueueWriterConfigurationTransfer())
+            ->setQueueName(static::PRODUCT_CONCRETE_QUEUE)
+            ->setChunkSize($this->getQueueWriterChunkSize());
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\DataImporterQueueWriterConfigurationTransfer
+     */
+    public function getProductImageQueueWriterConfiguration(): DataImporterQueueWriterConfigurationTransfer
+    {
+        return (new DataImporterQueueWriterConfigurationTransfer())
+            ->setQueueName(static::PRODUCT_IMAGE_QUEUE)
+            ->setChunkSize($this->getQueueWriterChunkSize());
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\DataImporterQueueWriterConfigurationTransfer
+     */
+    public function getProductPriceQueueWriterConfiguration(): DataImporterQueueWriterConfigurationTransfer
+    {
+        return (new DataImporterQueueWriterConfigurationTransfer())
+            ->setQueueName(static::PRODUCT_PRICE_QUEUE)
+            ->setChunkSize($this->getQueueWriterChunkSize());
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
+     */
+    public function getAbstractGiftCardProductConfigurationDataImporterConfiguration()
+    {
+        return $this->buildImporterConfiguration('gift_card_abstract_configuration.csv', static::IMPORT_TYPE_ABSTRACT_GIFT_CARD_CONFIGURATION);
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
+     */
+    public function getConcreteGiftCardProductConfigurationDataImporterConfiguration()
+    {
+        return $this->buildImporterConfiguration('gift_card_concrete_configuration.csv', static::IMPORT_TYPE_CONCRETE_GIFT_CARD_CONFIGURATION);
     }
 }

@@ -9,6 +9,7 @@ namespace PyzTest\Zed\DataImport\Business\Model\ProductImage;
 
 use Generated\Shared\DataBuilder\SpyProductImageEntityBuilder;
 use Generated\Shared\DataBuilder\SpyProductImageSetEntityBuilder;
+use Generated\Shared\Transfer\SpyLocaleEntityTransfer;
 use Generated\Shared\Transfer\SpyProductImageSetToProductImageEntityTransfer;
 use Orm\Zed\Locale\Persistence\SpyLocale;
 use Orm\Zed\Locale\Persistence\SpyLocaleQuery;
@@ -57,9 +58,14 @@ abstract class AbstractProductImageWriterTest extends AbstractWriterTest
              * @var \Generated\Shared\Transfer\SpyProductImageSetEntityTransfer
              */
             $spyProductImageSetEntityTransfer = (new SpyProductImageSetEntityBuilder())->build();
+
             $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_SET_TRANSFER] = $spyProductImageSetEntityTransfer
                 ->setFkLocale($locale->getIdLocale())
                 ->setFkProductAbstract($product[SpyProductAbstractTableMap::COL_ID_PRODUCT_ABSTRACT]);
+
+            $localeEntityTransfer = (new SpyLocaleEntityTransfer())->setLocaleName($dataSet[ProductImageHydratorStep::KEY_LOCALE]);
+            $spyProductImageSetEntityTransfer->setSpyLocale($localeEntityTransfer);
+
             $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_TRANSFER] = (new SpyProductImageEntityBuilder())->build();
             $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER] = (new SpyProductImageSetToProductImageEntityTransfer())
                 ->setSortOrder(0);

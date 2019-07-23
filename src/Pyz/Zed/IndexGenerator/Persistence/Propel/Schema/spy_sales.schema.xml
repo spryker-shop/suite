@@ -4,9 +4,6 @@
     <index name="index-spy_sales_order-fk_order_source">
       <index-column name="fk_order_source"/>
     </index>
-    <index name="index-spy_sales_order-fk_sales_reclamation">
-      <index-column name="fk_sales_reclamation"/>
-    </index>
     <index name="index-spy_sales_order-fk_sales_order_address_billing">
       <index-column name="fk_sales_order_address_billing"/>
     </index>
@@ -91,11 +88,6 @@
   </table>
   <table name="spy_sales_order_comment">
     <index name="index-spy_sales_order_comment-fk_sales_order">
-      <index-column name="fk_sales_order"/>
-    </index>
-  </table>
-  <table name="spy_sales_expense">
-    <index name="index-spy_sales_expense-fk_sales_order">
       <index-column name="fk_sales_order"/>
     </index>
   </table>
