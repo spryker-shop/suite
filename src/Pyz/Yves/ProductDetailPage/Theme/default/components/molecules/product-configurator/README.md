@@ -1,0 +1,1 @@
+Extends product-configurator molecule. Introduced PriceWidgetPlugin and ExampleProductColorSelectorWidget.
