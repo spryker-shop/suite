@@ -1,1 +1,1 @@
-Extends product-cart-item molecule. Hided color selector functionality.
+Extends product-cart-item molecule. Removed color selector functionality.

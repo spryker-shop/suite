@@ -1,1 +1,1 @@
-Extends product-item-list molecule. Hided color selector functionality.
+Extends product-item-list molecule. Removed color selector functionality.
