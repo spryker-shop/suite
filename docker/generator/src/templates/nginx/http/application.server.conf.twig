@@ -1,12 +1,12 @@
-{% extends "nginx/server.conf.twig" %}
+{% extends "nginx/http/server.conf.twig" %}
 {% set rpcServer = "rpc_server_" ~ ( endpointData['store'] | lower ) %}
 {% block location %}
     include fastcgi.conf;
     fastcgi_pass {{ upstream }};
 
-{% include "nginx/default.location.conf.twig" with _context %}
+{% include "nginx/http/default.location.conf.twig" with _context %}
 
-{% include "nginx/store.params.conf.twig" with _context %}
+{% include "nginx/http/store.params.conf.twig" with _context %}
 
     fastcgi_param SPRYKER_ZED_HOST {{ rpcServer }};
     fastcgi_param SPRYKER_ZED_PORT 80;
