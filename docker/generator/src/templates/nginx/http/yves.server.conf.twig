@@ -1,4 +1,4 @@
-{% extends "nginx/application.server.conf.twig" %}
+{% extends "nginx/http/application.server.conf.twig" %}
 {% block server %}
 {{ parent() }}
 
@@ -7,7 +7,7 @@
 {% block location %}
 {{ parent() }}
 
-    fastcgi_param SPRYKER_SESSION_FE_NAMESPACE "{{ storeServices['session']['namespace'] | default(domainData['services']['session']['namespace']) }}";
+    fastcgi_param SPRYKER_SESSION_FE_NAMESPACE "{{ storeServices['session']['namespace'] | default(endpointData['services']['session']['namespace']) }}";
     fastcgi_param SPRYKER_FE_HOST {{ host }};
     fastcgi_param SPRYKER_FE_PORT {{ port }};
 

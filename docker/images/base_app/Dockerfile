@@ -1,12 +1,12 @@
 # syntax = docker/dockerfile:experimental
-ARG SPRYKER_PHP_VERSION=7.2
+ARG SPRYKER_PLATFORM_IMAGE=spryker/php:7.2
 
 ### Intermediate container - base for composer cache
 FROM alpine:3.9 AS composer_cache
 RUN mkdir -p /cache && chmod 0777 /cache
 
 # Intermediate container - base for app, with composer deps
-FROM spryker/php:${SPRYKER_PHP_VERSION} AS spryker_app_dependencies
+FROM ${SPRYKER_PLATFORM_IMAGE} AS spryker_app_dependencies
 
 # Create log directory
 ARG SPRYKER_LOG_DIRECTORY
