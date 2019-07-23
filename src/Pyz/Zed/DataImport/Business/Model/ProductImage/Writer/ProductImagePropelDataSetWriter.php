@@ -32,10 +32,8 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
     public function write(DataSetInterface $dataSet): void
     {
         $productImageSetEntity = $this->createOrUpdateProductImageSet($dataSet);
-        $productProductImageEntity = $this->createOrUpdateProductImage($dataSet);
-        $this->createOrUpdateImageToImageSetRelation($productImageSetEntity, $productProductImageEntity, $dataSet);
-
-        $this->addImagePublishEvents($productImageSetEntity);
+        $productImageEntity = $this->createOrUpdateProductImage($dataSet, $productImageSetEntity);
+        $this->createOrUpdateImageToImageSetRelation($productImageSetEntity, $productImageEntity, $dataSet);
     }
 
     /**
@@ -71,6 +69,8 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
         $productImageSetEntity = $query->findOneOrCreate();
         if ($productImageSetEntity->isNew() || $productImageSetEntity->isModified()) {
             $productImageSetEntity->save();
+
+            $this->addImagePublishEvents($productImageSetEntity);
         }
 
         return $productImageSetEntity;
@@ -78,11 +78,14 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     * @param \Orm\Zed\ProductImage\Persistence\SpyProductImageSet $productImageSetEntity
      *
      * @return \Orm\Zed\ProductImage\Persistence\SpyProductImage
      */
-    protected function createOrUpdateProductImage(DataSetInterface $dataSet): SpyProductImage
-    {
+    protected function createOrUpdateProductImage(
+        DataSetInterface $dataSet,
+        SpyProductImageSet $productImageSetEntity
+    ): SpyProductImage {
         $productImageEntityTransfer = $this->getProductImageTransfer($dataSet);
         $productImageEntity = SpyProductImageQuery::create()
             ->filterByExternalUrlLarge($productImageEntityTransfer->getExternalUrlLarge())
@@ -93,25 +96,27 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
 
         if ($productImageEntity->isNew() || $productImageEntity->isModified()) {
             $productImageEntity->save();
+
+            $this->addImagePublishEvents($productImageSetEntity);
         }
 
         return $productImageEntity;
     }
 
     /**
-     * @param \Orm\Zed\ProductImage\Persistence\SpyProductImageSet $imageSetEntity
+     * @param \Orm\Zed\ProductImage\Persistence\SpyProductImageSet $productImageSetEntity
      * @param \Orm\Zed\ProductImage\Persistence\SpyProductImage $productImageEntity
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
      * @return void
      */
     protected function createOrUpdateImageToImageSetRelation(
-        SpyProductImageSet $imageSetEntity,
+        SpyProductImageSet $productImageSetEntity,
         SpyProductImage $productImageEntity,
         DataSetInterface $dataSet
     ): void {
         $productImageSetToProductImageEntity = SpyProductImageSetToProductImageQuery::create()
-            ->filterByFkProductImageSet($imageSetEntity->getIdProductImageSet())
+            ->filterByFkProductImageSet($productImageSetEntity->getIdProductImageSet())
             ->filterByFkProductImage($productImageEntity->getIdProductImage())
             ->findOneOrCreate();
 
@@ -120,6 +125,8 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
 
         if ($productImageSetToProductImageEntity->isNew() || $productImageSetToProductImageEntity->isModified()) {
             $productImageSetToProductImageEntity->save();
+
+            $this->addImagePublishEvents($productImageSetEntity);
         }
     }
 
