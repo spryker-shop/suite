@@ -2,6 +2,7 @@
     image: mysql:5.7
     networks:
       - private
+      - services
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "--silent"]
       interval: 10s

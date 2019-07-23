@@ -1,0 +1,6 @@
+{% set port = (endpoint | split(':'))[1] %}
+server {
+  listen {% block port %}{{ port }}{% endblock port %};
+  proxy_pass {% block upstream %}{{ serviceName }}{% endblock upstream %};
+  proxy_connect_timeout 10s;
+}
