@@ -43,7 +43,7 @@ class CategoriesRestApiCest
      *
      * @return void
      */
-    public function testCategoriesResourceHasUrlAttribute(CategoriesRestApiTester $I): void
+    public function testCategoryNodesResourceHasUrlAttribute(CategoriesRestApiTester $I): void
     {
         //act
         $I->sendGET(
@@ -59,5 +59,23 @@ class CategoriesRestApiCest
         $I->amSure('Returned resource contains `url` attribute')
             ->whenI()
             ->seeSingleResourceHasAttribute('url');
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Categories\CategoriesRestApiTester $I
+     *
+     * @return void
+     */
+    public function testCategoryTreesResourceHasUrlAttribute(CategoriesRestApiTester $I): void
+    {
+        //act
+        $I->sendGET($I->formatUrl('category-trees'));
+
+        //assert
+        $I->amSure('Returned resource contains `url` attribute')
+            ->whenI()
+            ->seeResourceCollectionHasAttribute('categoryNodesStorage[*].url');
     }
 }
