@@ -3,7 +3,7 @@
 {% define data = {
     idProductAbstract: _widget.idProductAbstract | default,
     wrapper: _widget.wrapper | default,
-    items: _widget.productGroupItems | default([])
+    items: _widget.productGroupItems | default([]),
 } %}
 
 {% block body %}
@@ -20,7 +20,7 @@
         data: {
             items: data.items
         },
-        attributes: attributes
+        attributes: attributes,
     } only %}
         {% block body %}
             <hr />{{parent()}}<hr />
