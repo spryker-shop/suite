@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a62f6b0d65043641cc52cdd758bef97a",
+    "content-hash": "313699e75ea08ea1541c4b797f09fc47",
     "packages": [
         {
             "name": "codeception/phpunit-wrapper",
@@ -377,16 +377,16 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.9",
+            "version": "2.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/EmailValidator.git",
-                "reference": "128cc721d771ec2c46ce59698f4ca42b73f71b25"
+                "reference": "a6c8d7101b19a451c1707b1b79bbbc56e4bdb7ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/128cc721d771ec2c46ce59698f4ca42b73f71b25",
-                "reference": "128cc721d771ec2c46ce59698f4ca42b73f71b25",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/a6c8d7101b19a451c1707b1b79bbbc56e4bdb7ec",
+                "reference": "a6c8d7101b19a451c1707b1b79bbbc56e4bdb7ec",
                 "shasum": ""
             },
             "require": {
@@ -396,7 +396,8 @@
             "require-dev": {
                 "dominicsayers/isemail": "dev-master",
                 "phpunit/phpunit": "^4.8.35||^5.7||^6.0",
-                "satooshi/php-coveralls": "^1.0.1"
+                "satooshi/php-coveralls": "^1.0.1",
+                "symfony/phpunit-bridge": "^4.4@dev"
             },
             "suggest": {
                 "ext-intl": "PHP Internationalization Libraries are required to use the SpoofChecking validation"
@@ -430,7 +431,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2019-06-23T10:14:27+00:00"
+            "time": "2019-07-19T20:52:08+00:00"
         },
         {
             "name": "elasticsearch/elasticsearch",
@@ -1419,9 +1420,9 @@
             "authors": [
                 {
                     "name": "Mandrill Devs",
+                    "role": "Developer",
                     "email": "community@mandrill.com",
-                    "homepage": "http://mandrill.com",
-                    "role": "Developer"
+                    "homepage": "http://mandrill.com"
                 }
             ],
             "description": "API client library for the Mandrill email as a service platform",
@@ -1470,8 +1471,8 @@
             "authors": [
                 {
                     "name": "Frank Kleine",
-                    "homepage": "http://frankkleine.de/",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "homepage": "http://frankkleine.de/"
                 }
             ],
             "description": "Virtual file system to mock the real file system in unit tests.",
@@ -2486,8 +2487,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "The PHP Unit Testing framework.",
@@ -3602,12 +3603,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "47c0ce46ec82b70a103f532cc50695f24e664248"
+                "reference": "115feccb66b6ffc50417b874a039a1a22bebf610"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/47c0ce46ec82b70a103f532cc50695f24e664248",
-                "reference": "47c0ce46ec82b70a103f532cc50695f24e664248",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/115feccb66b6ffc50417b874a039a1a22bebf610",
+                "reference": "115feccb66b6ffc50417b874a039a1a22bebf610",
                 "shasum": ""
             },
             "require": {
@@ -3652,7 +3653,7 @@
                 "proprietary"
             ],
             "description": "EventBehavior module",
-            "time": "2019-07-10T15:47:28+00:00"
+            "time": "2019-07-22T12:36:32+00:00"
         },
         {
             "name": "spryker/install",
@@ -3846,7 +3847,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "31b44006db4844299bc483725af0d0aad90b6902"
+                "reference": "2df937f98a767100b474d3483bfc7a55f148ddaa"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -4116,15 +4117,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-07-11T11:31:08+00:00"
+            "time": "2019-07-24T08:37:56+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-bugfix/cc-5044-checkout-success-page-still-shows-cart-item-count",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "830466a74e5195081ff3d6749ea6443482af7ce5"
+                "reference": "693b0624c93b1fc2f29f30ddc7df365dc128ad88"
             },
             "require": {
                 "php": ">=7.1"
@@ -4199,7 +4200,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-07-16T09:51:57+00:00"
+            "time": "2019-07-23T15:24:23+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -7147,16 +7148,16 @@
         },
         {
             "name": "codeception/codeception",
-            "version": "3.0.2",
+            "version": "3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Codeception.git",
-                "reference": "aead7eb0a53b040390a927dc84a0e6e37ffa8a2b"
+                "reference": "feb566a9dc26993611602011ae3834d8e3c1dd7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/aead7eb0a53b040390a927dc84a0e6e37ffa8a2b",
-                "reference": "aead7eb0a53b040390a927dc84a0e6e37ffa8a2b",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/feb566a9dc26993611602011ae3834d8e3c1dd7f",
+                "reference": "feb566a9dc26993611602011ae3834d8e3c1dd7f",
                 "shasum": ""
             },
             "require": {
@@ -7181,6 +7182,8 @@
             },
             "require-dev": {
                 "codeception/specify": "~0.3",
+                "doctrine/annotations": "^1",
+                "doctrine/orm": "^2",
                 "flow/jsonpath": "~0.2",
                 "monolog/monolog": "~1.8",
                 "pda/pheanstalk": "~3.0",
@@ -7235,7 +7238,7 @@
                 "functional testing",
                 "unit testing"
             ],
-            "time": "2019-06-22T19:16:46+00:00"
+            "time": "2019-07-18T16:21:08+00:00"
         },
         {
             "name": "codeception/stub",
@@ -8877,20 +8880,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
+                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler",
-                    "role": "Project Founder"
+                    "homepage": "https://github.com/manuelpichler"
                 },
                 {
                     "name": "Other contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
                 },
                 {
                     "name": "Marc Würth",
+                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84",
-                    "role": "Project Maintainer"
+                    "homepage": "https://github.com/ravage84"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -9220,7 +9223,7 @@
         },
         {
             "name": "sensiolabs/security-checker",
-            "version": "v6.0.1",
+            "version": "v6.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/security-checker.git",
@@ -10548,8 +10551,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
