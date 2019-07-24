@@ -111,7 +111,7 @@ class ProductAbstractRestApiCest
      *
      * @return void
      */
-    public function testProductAbstractHasUrlAttribute(ProductsApiTester $I): void
+    public function requestProductAbstractHasUrlAttribute(ProductsApiTester $I): void
     {
         //act
         $I->sendGET(

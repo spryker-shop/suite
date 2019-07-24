@@ -43,7 +43,7 @@ class CategoriesRestApiCest
      *
      * @return void
      */
-    public function testCategoryNodesResourceHasUrlAttribute(CategoriesRestApiTester $I): void
+    public function requestCategoryNodeHasUrlAttribute(CategoriesRestApiTester $I): void
     {
         //act
         $I->sendGET(
@@ -68,7 +68,7 @@ class CategoriesRestApiCest
      *
      * @return void
      */
-    public function testCategoryTreesResourceHasUrlAttribute(CategoriesRestApiTester $I): void
+    public function requestCategoryTreeHasUrlAttribute(CategoriesRestApiTester $I): void
     {
         //act
         $I->sendGET($I->formatUrl('category-trees'));
