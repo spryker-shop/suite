@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "313699e75ea08ea1541c4b797f09fc47",
+    "content-hash": "e4bcf9293342d2125229a0f135f00d43",
     "packages": [
         {
             "name": "codeception/phpunit-wrapper",
@@ -1420,9 +1420,9 @@
             "authors": [
                 {
                     "name": "Mandrill Devs",
-                    "role": "Developer",
                     "email": "community@mandrill.com",
-                    "homepage": "http://mandrill.com"
+                    "homepage": "http://mandrill.com",
+                    "role": "Developer"
                 }
             ],
             "description": "API client library for the Mandrill email as a service platform",
@@ -1434,7 +1434,7 @@
             "time": "2015-09-22T13:58:03+00:00"
         },
         {
-            "name": "mikey179/vfsstream",
+            "name": "mikey179/vfsStream",
             "version": "v1.6.6",
             "source": {
                 "type": "git",
@@ -1471,8 +1471,8 @@
             "authors": [
                 {
                     "name": "Frank Kleine",
-                    "role": "Developer",
-                    "homepage": "http://frankkleine.de/"
+                    "homepage": "http://frankkleine.de/",
+                    "role": "Developer"
                 }
             ],
             "description": "Virtual file system to mock the real file system in unit tests.",
@@ -3843,11 +3843,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-bugfix/ps-9977-company-user-deleting-exception",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "82bae825edfa00cf5a940b993546430e1cd659c3"
+                "reference": "990479ad8b89707121f9c73ad81f7af4b4448d3f"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -4117,7 +4117,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-07-23T13:11:02+00:00"
+            "time": "2019-07-24T07:38:03+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -4125,7 +4125,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "4749c643993e13f91f103a8bf44301b1bc1be3be"
+                "reference": "693b0624c93b1fc2f29f30ddc7df365dc128ad88"
             },
             "require": {
                 "php": ">=7.1"
@@ -4200,7 +4200,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-07-23T09:24:10+00:00"
+            "time": "2019-07-23T15:24:23+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8375,7 +8375,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette Finder: find files and directories with an intuitive API.",
+            "description": "🔍 Nette Finder: find files and directories with an intuitive API.",
             "homepage": "https://nette.org",
             "keywords": [
                 "filesystem",
@@ -8435,7 +8435,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette NEON: encodes and decodes NEON file format.",
+            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -10551,8 +10551,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "lead",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "lead"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
