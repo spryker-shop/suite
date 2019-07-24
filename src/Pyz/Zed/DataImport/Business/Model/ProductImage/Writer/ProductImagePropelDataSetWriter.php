@@ -29,9 +29,9 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
      */
     public function write(DataSetInterface $dataSet): void
     {
-        $productProductImageSetEntity = $this->createOrUpdateProductImageSet($dataSet);
-        $productProductImageEntity = $this->createProductImage($dataSet);
-        $this->createOrUpdateImageToImageSetRelation($productProductImageSetEntity, $productProductImageEntity, $dataSet);
+        $productImageSetEntity = $this->createOrUpdateProductImageSet($dataSet);
+        $productImageEntity = $this->createProductImage($dataSet);
+        $this->createOrUpdateImageToImageSetRelation($productImageSetEntity, $productImageEntity, $dataSet);
     }
 
     /**
@@ -88,19 +88,19 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
     }
 
     /**
-     * @param \Orm\Zed\ProductImage\Persistence\SpyProductImageSet $imageSetEntity
+     * @param \Orm\Zed\ProductImage\Persistence\SpyProductImageSet $productImageSetEntity
      * @param \Orm\Zed\ProductImage\Persistence\SpyProductImage $productImageEntity
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
      * @return void
      */
     protected function createOrUpdateImageToImageSetRelation(
-        SpyProductImageSet $imageSetEntity,
+        SpyProductImageSet $productImageSetEntity,
         SpyProductImage $productImageEntity,
         DataSetInterface $dataSet
     ): void {
         $productImageSetToProductImageEntity = SpyProductImageSetToProductImageQuery::create()
-            ->filterByFkProductImageSet($imageSetEntity->getIdProductImageSet())
+            ->filterByFkProductImageSet($productImageSetEntity->getIdProductImageSet())
             ->filterByFkProductImage($productImageEntity->getIdProductImage())
             ->findOneOrCreate();
 
@@ -109,6 +109,8 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
 
         if ($productImageSetToProductImageEntity->isNew() || $productImageSetToProductImageEntity->isModified()) {
             $productImageSetToProductImageEntity->save();
+
+            $this->addImagePublishEvents($productImageSetEntity);
         }
     }
 
