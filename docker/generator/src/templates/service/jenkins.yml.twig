@@ -12,6 +12,7 @@
       SPRYKER_DOCKER_RUN_ARGUMENTS: ${SPRYKER_DOCKER_RUN_ARGUMENTS}
       SPRYKER_DOCKER_RUN_IMAGE: ${SPRYKER_DOCKER_RUN_IMAGE}
       SPRYKER_REMOTE_DIR: ${SPRYKER_REMOTE_DIR}
+    user: "1000:${DOCKER_GID}"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - {{ serviceName }}-{{ serviceData['engine'] }}-data:/var/jenkins_home:rw

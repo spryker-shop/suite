@@ -40,7 +40,9 @@ services:
       DHPARAM_GENERATION: "false"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./${DEPLOYMENT_PATH}/context/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./${DEPLOYMENT_PATH}/context/nginx/conf.d/front-end.default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./${DEPLOYMENT_PATH}/context/nginx/stream.d/front-end.default.conf:/etc/nginx/stream.d/default.conf:ro
       - ./${DEPLOYMENT_PATH}/context/nginx/vhost.d:/etc/nginx/vhost.d:ro
       - ./${DEPLOYMENT_PATH}/context/nginx/ssl:/etc/nginx/ssl:ro
       - ./public/Yves/favicon.ico:/public/favicon.ico:ro
