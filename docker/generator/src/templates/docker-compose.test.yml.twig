@@ -1,35 +1,9 @@
 version: "3.5"
 
-x-volumes:
-  &app-volumes
-  volumes:
-    - logs:${SPRYKER_LOG_DIRECTORY}:rw
-    - ./${DEPLOYMENT_PATH}/context/php/php-fpm.d/worker.conf:/usr/local/etc/php-fpm.d/worker.conf:ro
-    - ./${DEPLOYMENT_PATH}/context/php/php.ini:/usr/local/etc/php.ini:ro
-{% if _mountMode != 'baked' %}
-    - ./${DEPLOYMENT_PATH}/context/php/conf.d/opcache_dev.ini:/usr/local/etc/php/conf.d/opcache.ini:ro
-{% if _mountMode == 'native' %}
-    - ./:/data
-{% else %}
-    - ${SPRYKER_DOCKER_PREFIX}_${SPRYKER_DOCKER_TAG}_data_sync:/data
-{% endif %}
-{% endif %}
-
 x-env_file:
   &test-envfile
   env_file:
     - ${DEPLOYMENT_PATH}/env/testing.env
-
-x-links:
-  &test-links
-  links:
-{% for group in groups %}
-{% for applicationName, applicationData in group['applications'] %}
-{% for endpoint, endpointData in applicationData['endpoints'] %}
-      - frontend:{{ endpoint | split(':') | first }}
-{% endfor %}
-{% endfor %}
-{% endfor %}
 
 services:
 {% for group in groups %}
@@ -49,33 +23,16 @@ services:
     ports:
       - 4444:4444
     command: "phantomjs --webdriver=4444 --disk-cache=true --load-images=false --webdriver-loglevel=DEBUG"
-    <<: *test-links
-
-  codecept:
-    image: ${SPRYKER_DOCKER_PREFIX}_cli:${SPRYKER_DOCKER_TAG}
-    networks:
-      - services
-      - public
-      - private
-    depends_on:
-      - database
-      - broker
-      - key_value_store
-      - session
-      - search
-    env_file:
-      - ${DEPLOYMENT_PATH}/env/cli/{{ docker['testing']['store'] | lower }}.env
-      - ${DEPLOYMENT_PATH}/env/cli/testing.env
-    <<: *app-volumes
-    <<: *test-links
-    tty: true
-    command:
-      - "nc"
-      - "-l"
-      - "9000"
+    links:
+{% for group in groups %}
+{% for applicationName, applicationData in group['applications'] %}
+{% for endpoint, endpointData in applicationData['endpoints'] %}
+      - frontend:{{ endpoint | split(':') | first }}
+{% endfor %}
+{% endfor %}
+{% endfor %}
 
   scheduler:
     image: nginx:alpine
-    user: "0:0"
     volumes:
       - ./${DEPLOYMENT_PATH}/context/nginx/dummy/scheduler.conf:/etc/nginx/conf.d/default.conf:ro
