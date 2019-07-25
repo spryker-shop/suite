@@ -25,7 +25,7 @@ $projectData['_platform'] = $platform;
 $mountMode = $projectData['_mountMode'] = retrieveMountMode($projectData, $platform);
 $projectData['_ports'] = retrieveUniquePorts($projectData);
 $defaultPort = $projectData['_defaultPort'] = getDefaultPort($projectData);
-$yvesEndpointMap = $projectData['_yvesEndpointMap'] = buildYvesEndpointMapByStore($projectData['groups']);
+$endpointMap = $projectData['_endpointMap'] = buildEndpointMapByStore($projectData['groups']);
 
 mkdir($deploymentDir . DS . 'env' . DS . 'cli', 0777, true);
 mkdir($deploymentDir . DS . 'context' . DS . 'nginx' . DS . 'conf.d', 0777, true);
@@ -90,7 +90,7 @@ foreach ($projectData['groups'] ?? [] as $groupName => $groupData) {
                             $projectData['regions'][$groupData['region']]['stores'][$endpointData['store']]['services'],
                             $endpointData['services'] ?? []
                         ),
-                        'yvesEndpointMap' => $yvesEndpointMap,
+                        'endpointMap' => $endpointMap,
                     ])
                 );
             }
@@ -117,6 +117,7 @@ foreach ($projectData['groups'] ?? [] as $groupName => $groupData) {
                             $projectData['regions'][$groupData['region']]['stores'][$endpointData['store']]['services'],
                             $endpointData['services'] ?? []
                         ),
+                        'endpointMap' => $endpointMap,
                     ])
                 );
             }
@@ -330,9 +331,9 @@ function getBrokerConnections(array $projectData): string
  *
  * @return string[]
  */
-function buildYvesEndpointMapByStore(array $projectGroups): array
+function buildEndpointMapByStore(array $projectGroups): array
 {
-    $yvesEndpointMap = [];
+    $endpointMap = [];
 
     foreach ($projectGroups as $projectGroup) {
         $applicationsPerRegion = $projectGroup['applications'];
@@ -340,16 +341,12 @@ function buildYvesEndpointMapByStore(array $projectGroups): array
         foreach ($applicationsPerRegion as $application) {
             $applicationName = $application['application'];
 
-            if ($applicationName !== 'yves') {
-                continue;
-            }
-
             foreach ($application['endpoints'] as $endpoint => $endpointData) {
                 $storeName = $endpointData['store'];
-                $yvesEndpointMap[$storeName] = $endpoint;
+                $endpointMap[$storeName][$applicationName] = $endpoint;
             }
         }
     }
 
-    return $yvesEndpointMap;
+    return $endpointMap;
 }

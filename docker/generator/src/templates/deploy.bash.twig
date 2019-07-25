@@ -466,6 +466,27 @@ function execSpryker()
         ${SPRYKER_DOCKER_PREFIX}_cli:${SPRYKER_DOCKER_TAG} /usr/local/bin/execute.sh
 }
 
+function execCodecept()
+{
+    waitFor database
+    waitFor broker
+    waitFor search
+    waitFor key_value_store
+    waitFor session
+
+    local tty
+    [ -t -0 ] && tty='' || tty='-T'
+
+    local binary=/usr/local/bin/execute.sh
+    [ -z "${*}" ] && binary=bash
+
+    execDockerCompose exec \
+    -e COMMAND="${*}" \
+    -e PS1="spryker@codecept\$" \
+    codecept \
+    ${binary}
+}
+
 function execSprykerMultiString()
 {
     setExtraEnvFiles
@@ -501,7 +522,7 @@ function execDockerCompose()
         --project-directory ${PROJECT_DIR} \
         --project-name ${SPRYKER_DOCKER_PREFIX} \
         ${DOCKER_COMPOSE_FILES} \
-        $@
+        "$@"
 }
 
 function doUp()
@@ -703,16 +724,20 @@ case $1 in
         ;;
     codecept)
         ensureTestingMode
-        PS1="spryker-codecept@\u\$ " # TODO what is it?
-        doCli $2 ${@:3}
+        execCodecept "${@:2}"
         ;;
     functional-tests)
         ensureTestingMode
-        doCli console code:test:functional ${@:2}
+        execCodecept console code:test:functional "${@:2}"
         ;;
     acceptance-tests)
         ensureTestingMode
-        doCli console code:test:acceptance ${@:2}
+        execCodecept console code:test:acceptance "${@:2}"
+        ;;
+    api-tests)
+        ensureTestingMode
+        execCodecept console code:fixtures "${@:2}"
+        execCodecept console code:test:api "${@:2}"
         ;;
     logs)
         execSpryker "find ${SPRYKER_LOG_DIRECTORY} -type f \( -name \"exception.log\" \) -exec tail -f \"$file\" {} +"
