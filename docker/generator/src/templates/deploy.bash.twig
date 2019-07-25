@@ -481,10 +481,10 @@ function execCodecept()
     [ -z "${*}" ] && binary=bash
 
     execDockerCompose exec \
-    -e COMMAND="${*}" \
-    -e PS1="spryker@codecept\$" \
-    codecept \
-    ${binary}
+        -e COMMAND="${*}" \
+        -e PS1="spryker@codecept\$" \
+        codecept \
+        ${binary}
 }
 
 function execSprykerMultiString()
@@ -737,6 +737,7 @@ case $1 in
     api-tests)
         ensureTestingMode
         execCodecept console code:fixtures "${@:2}"
+        execCodecept console queue:worker:start
         execCodecept console code:test:api "${@:2}"
         ;;
     logs)

@@ -15,5 +15,10 @@
     fastcgi_param SPRYKER_FE_PORT {{ (project['_endpointMap'][endpointData['store']]['yves'] | split(':'))[1] | default(80) }};
 {% endif %}
 
+{% if project['_endpointMap'][endpointData['store']]['glue'] is not empty %}
+    fastcgi_param SPRYKER_API_HOST {{ project['_endpointMap'][endpointData['store']]['glue'] }};
+    fastcgi_param SPRYKER_API_PORT {{ (project['_endpointMap'][endpointData['store']]['glue'] | split(':'))[1] | default(80) }};
+{% endif %}
+
     root /data/public/Zed;
 {% endblock location %}

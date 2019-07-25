@@ -81,9 +81,9 @@ sections:
             command: "vendor/bin/console propel:diff"
 
         propel-migrate:
-            command: "vendor/bin/console propel:migrate"
+            command: "vendor/bin/console propel:migrate"docker-compose.test.yml.twig
 
-        propel-migration-cleanu-up:
+        propel-migration-cleanup:
             command: "vendor/bin/console propel:migration:delete"
 
         init-database:
