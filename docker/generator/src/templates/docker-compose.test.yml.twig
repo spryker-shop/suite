@@ -26,8 +26,8 @@ services:
     links:
 {% for group in groups %}
 {% for applicationName, applicationData in group['applications'] %}
-{% for domain, domainData in applicationData['domain'] %}
-      - frontend:{{ domain | split(':') | first }}
+{% for endpoint, endpointData in applicationData['endpoints'] %}
+      - frontend:{{ endpoint | split(':') | first }}
 {% endfor %}
 {% endfor %}
 {% endfor %}
