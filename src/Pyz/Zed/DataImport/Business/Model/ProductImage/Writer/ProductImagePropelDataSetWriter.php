@@ -12,7 +12,7 @@ use Generated\Shared\Transfer\SpyProductImageSetToProductImageEntityTransfer;
 use Orm\Zed\ProductImage\Persistence\SpyProductImage;
 use Orm\Zed\ProductImage\Persistence\SpyProductImageSet;
 use Orm\Zed\ProductImage\Persistence\SpyProductImageSetQuery;
-use Orm\Zed\ProductImage\Persistence\SpyProductImageSetToProductImageQuery;
+use Orm\Zed\ProductImage\Persistence\SpyProductImageSetToProductImage;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\ProductImageHydratorStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
@@ -31,7 +31,7 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
     {
         $productImageSetEntity = $this->createOrUpdateProductImageSet($dataSet);
         $productImageEntity = $this->createProductImage($dataSet);
-        $this->createOrUpdateImageToImageSetRelation($productImageSetEntity, $productImageEntity, $dataSet);
+        $this->createImageToImageSetRelation($productImageSetEntity, $productImageEntity, $dataSet);
     }
 
     /**
@@ -67,8 +67,6 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
         $productImageSetEntity = $query->findOneOrCreate();
         if ($productImageSetEntity->isNew() || $productImageSetEntity->isModified()) {
             $productImageSetEntity->save();
-
-            $this->addImagePublishEvents($productImageSetEntity);
         }
 
         return $productImageSetEntity;
@@ -94,24 +92,20 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
      *
      * @return void
      */
-    protected function createOrUpdateImageToImageSetRelation(
+    protected function createImageToImageSetRelation(
         SpyProductImageSet $productImageSetEntity,
         SpyProductImage $productImageEntity,
         DataSetInterface $dataSet
     ): void {
-        $productImageSetToProductImageEntity = SpyProductImageSetToProductImageQuery::create()
-            ->filterByFkProductImageSet($productImageSetEntity->getIdProductImageSet())
-            ->filterByFkProductImage($productImageEntity->getIdProductImage())
-            ->findOneOrCreate();
-
+        $productImageSetToProductImageEntity = new SpyProductImageSetToProductImage();
+        $productImageSetToProductImageEntity->setFkProductImageSet($productImageSetEntity->getIdProductImageSet());
+        $productImageSetToProductImageEntity->setFkProductImage($productImageEntity->getIdProductImage());
         $productImageToImageSetRelationTransfer = $this->getProductImageToImageSetRelationTransfer($dataSet);
         $productImageSetToProductImageEntity->setSortOrder($productImageToImageSetRelationTransfer->getSortOrder());
 
-        if ($productImageSetToProductImageEntity->isNew() || $productImageSetToProductImageEntity->isModified()) {
-            $productImageSetToProductImageEntity->save();
+        $productImageSetToProductImageEntity->save();
 
-            $this->addImagePublishEvents($productImageSetEntity);
-        }
+        $this->addImagePublishEvents($productImageSetEntity);
     }
 
     /**
