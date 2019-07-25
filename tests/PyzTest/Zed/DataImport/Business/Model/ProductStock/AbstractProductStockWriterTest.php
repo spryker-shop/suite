@@ -124,7 +124,9 @@ abstract class AbstractProductStockWriterTest extends AbstractWriterTest
      */
     protected function assertImportedData(array $dataSets, array $fetchedResult): void
     {
-        $this->assertCount(count($dataSets), $fetchedResult['stockProducts']);
+        $dataSetsCount = count($dataSets);
+        $this->assertCount($dataSetsCount, $fetchedResult['stockProducts']);
+        $this->assertCount($dataSetsCount, $fetchedResult['availability']);
 
         foreach ($fetchedResult['stockProducts'] as $stockProduct) {
             $dataSetStock = $dataSets[$stockProduct[SpyProductTableMap::COL_SKU]][ProductStockHydratorStep::STOCK_ENTITY_TRANSFER];
