@@ -15,11 +15,11 @@ upstream {{ applicationName }} {
     server {{ applicationName }}:9000;
 }
 
-{% for domain, domainData in applicationData['domain'] %}
+{% for endpoint, endpointData in applicationData['endpoints'] %}
 {# Ignoring custom port and SSL within internal networn #}
-{% include "nginx/rpc.server.conf.twig" with {
-    domain: domain,
-    domainData: domainData,
+{% include "nginx/http/rpc.server.conf.twig" with {
+    endpoint: endpoint,
+    endpointData: endpointData,
     upstream: applicationName,
     project: _context
 } %}
