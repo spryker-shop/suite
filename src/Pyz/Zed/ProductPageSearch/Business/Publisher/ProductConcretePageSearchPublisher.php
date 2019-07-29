@@ -21,6 +21,7 @@ use Spryker\Zed\ProductPageSearch\Business\ProductConcretePageSearchWriter\Produ
 use Spryker\Zed\ProductPageSearch\Business\Publisher\ProductConcretePageSearchPublisher as SprykerProductConcretePageSearchPublisher;
 use Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToProductInterface;
 use Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToSearchInterface;
+use Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToStoreFacadeInterface;
 use Spryker\Zed\ProductPageSearch\Dependency\Service\ProductPageSearchToUtilEncodingInterface;
 
 /**
@@ -59,6 +60,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      * @param \Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToProductInterface $productFacade
      * @param \Spryker\Zed\ProductPageSearch\Dependency\Service\ProductPageSearchToUtilEncodingInterface $utilEncoding
      * @param \Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToSearchInterface $searchFacade
+     * @param \Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToStoreFacadeInterface $storeFacade
      * @param \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductConcretePageDataExpanderPluginInterface[] $pageDataExpanderPlugins
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
@@ -69,6 +71,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
         ProductPageSearchToProductInterface $productFacade,
         ProductPageSearchToUtilEncodingInterface $utilEncoding,
         ProductPageSearchToSearchInterface $searchFacade,
+        ProductPageSearchToStoreFacadeInterface $storeFacade,
         array $pageDataExpanderPlugins,
         SynchronizationServiceInterface $synchronizationService,
         QueueClientInterface $queueClient
@@ -79,6 +82,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
             $productFacade,
             $utilEncoding,
             $searchFacade,
+            $storeFacade,
             $pageDataExpanderPlugins
         );
 
@@ -127,6 +131,14 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
     ): void {
         if (!$productConcreteTransfer->getIsActive() && $productConcretePageSearchTransfer->getIdProductConcretePageSearch() !== null) {
             $this->deleteProductConcretePageSearch($productConcretePageSearchTransfer);
+
+            return;
+        }
+
+        if (!$this->isValidStoreLocale($storeTransfer->getName(), $localizedAttributesTransfer->getLocale()->getLocaleName())) {
+            if ($productConcretePageSearchTransfer->getIdProductConcretePageSearch() !== null) {
+                $this->deleteProductConcretePageSearch($productConcretePageSearchTransfer);
+            }
 
             return;
         }

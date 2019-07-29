@@ -19,6 +19,7 @@ use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotio
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotionPostCreatePlugin;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotionPostUpdatePlugin;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotionViewBlockProviderPlugin;
+use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\PromotionCollectedDiscountGroupingStrategyPlugin;
 use Spryker\Zed\GiftCard\Communication\Plugin\GiftCardDiscountableItemFilterPlugin;
 use Spryker\Zed\ProductDiscountConnector\Communication\Plugin\Collector\ProductAttributeCollectorPlugin;
 use Spryker\Zed\ProductDiscountConnector\Communication\Plugin\DecisionRule\ProductAttributeDecisionRulePlugin;
@@ -72,6 +73,16 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
         return [
             new DiscountPromotionFilterCollectedItemsPlugin(),
             new GiftCardDiscountableItemFilterPlugin(), #GiftCardFeature
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\DiscountExtension\Dependency\Plugin\CollectedDiscountGroupingStrategyPluginInterface[]
+     */
+    protected function getCollectedDiscountGroupingPlugins(): array
+    {
+        return [
+            new PromotionCollectedDiscountGroupingStrategyPlugin(),
         ];
     }
 
