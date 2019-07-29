@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "c0d292894b4e6b2bd5b0981d0e098cd9",
+=======
+    "content-hash": "e57ccb4128fe1daf27cc9a077c378455",
+>>>>>>> TE-1216 Updated composer.lock.
     "packages": [
         {
             "name": "codeception/phpunit-wrapper",
@@ -1362,15 +1366,15 @@
             "authors": [
                 {
                     "name": "Alex Bilbie",
-                    "role": "Developer",
                     "email": "hello@alexbilbie.com",
-                    "homepage": "http://www.alexbilbie.com"
+                    "homepage": "http://www.alexbilbie.com",
+                    "role": "Developer"
                 },
                 {
                     "name": "Andy Millington",
-                    "role": "Developer",
                     "email": "andrew@noexceptions.io",
-                    "homepage": "https://www.noexceptions.io"
+                    "homepage": "https://www.noexceptions.io",
+                    "role": "Developer"
                 }
             ],
             "description": "A lightweight and powerful OAuth 2.0 authorization and resource server library with support for all the core specification grants. This library will allow you to secure your API with OAuth and allow your applications users to approve apps that want to access their data from your API.",
@@ -1422,9 +1426,9 @@
             "authors": [
                 {
                     "name": "Mandrill Devs",
-                    "role": "Developer",
                     "email": "community@mandrill.com",
-                    "homepage": "http://mandrill.com"
+                    "homepage": "http://mandrill.com",
+                    "role": "Developer"
                 }
             ],
             "description": "API client library for the Mandrill email as a service platform",
@@ -1436,7 +1440,7 @@
             "time": "2015-09-22T13:58:03+00:00"
         },
         {
-            "name": "mikey179/vfsstream",
+            "name": "mikey179/vfsStream",
             "version": "v1.6.6",
             "source": {
                 "type": "git",
@@ -1473,8 +1477,8 @@
             "authors": [
                 {
                     "name": "Frank Kleine",
-                    "role": "Developer",
-                    "homepage": "http://frankkleine.de/"
+                    "homepage": "http://frankkleine.de/",
+                    "role": "Developer"
                 }
             ],
             "description": "Virtual file system to mock the real file system in unit tests.",
@@ -1887,18 +1891,18 @@
                 },
                 {
                     "name": "John Kelly",
-                    "role": "Maintainer",
-                    "email": "johnmkelly86@gmail.com"
+                    "email": "johnmkelly86@gmail.com",
+                    "role": "Maintainer"
                 },
                 {
                     "name": "Raúl Araya",
-                    "role": "Maintainer",
-                    "email": "nubeiro@gmail.com"
+                    "email": "nubeiro@gmail.com",
+                    "role": "Maintainer"
                 },
                 {
                     "name": "Luke Bakken",
-                    "role": "Maintainer",
-                    "email": "luke@bakken.io"
+                    "email": "luke@bakken.io",
+                    "role": "Maintainer"
                 }
             ],
             "description": "Formerly videlalvaro/php-amqplib.  This library is a pure PHP implementation of the AMQP protocol. It's been tested against RabbitMQ.",
@@ -2216,8 +2220,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Library that provides collection, processing, and rendering functionality for PHP code coverage information.",
@@ -2489,8 +2493,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "The PHP Unit Testing framework.",
@@ -3767,16 +3771,16 @@
         },
         {
             "name": "spryker/silexphp",
-            "version": "dev-master",
+            "version": "dev-feature/te-1216/master/add-translation-global-service",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/silexphp.git",
-                "reference": "1ed79869e5e68647ae2e87d2067b5cdccfb0a49a"
+                "reference": "f1da4f82d895ff4a5dee874e54f67055159ae29f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/silexphp/zipball/1ed79869e5e68647ae2e87d2067b5cdccfb0a49a",
-                "reference": "1ed79869e5e68647ae2e87d2067b5cdccfb0a49a",
+                "url": "https://api.github.com/repos/spryker/silexphp/zipball/f1da4f82d895ff4a5dee874e54f67055159ae29f",
+                "reference": "f1da4f82d895ff4a5dee874e54f67055159ae29f",
                 "shasum": ""
             },
             "require": {
@@ -3841,15 +3845,23 @@
             "keywords": [
                 "microframework"
             ],
-            "time": "2019-07-04T11:16:48+00:00"
+            "time": "2019-07-29T12:53:21+00:00"
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/te-1216/master/add-translation-global-service",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
+<<<<<<< HEAD
                 "reference": "75ce881c740c961b41fb690d242fa9ecb0b108a9"
+=======
+<<<<<<< HEAD
+                "reference": "3ee5ccd2d1522c2ac9bbc6b593536aa160198020"
+=======
+                "reference": "a7f14561ee62a389cdf0035457aaa0da5399a144"
+>>>>>>> TE-1216 Updated composer.lock.
+>>>>>>> TE-1216 Updated composer.lock.
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -4119,15 +4131,23 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
+<<<<<<< HEAD
             "time": "2019-07-31T17:38:21+00:00"
+=======
+<<<<<<< HEAD
+            "time": "2019-07-30T13:01:27+00:00"
+=======
+            "time": "2019-07-29T12:28:12+00:00"
+>>>>>>> TE-1216 Updated composer.lock.
+>>>>>>> TE-1216 Updated composer.lock.
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/te-1216/master/add-translation-global-service",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "7aee2353326a718d47e55834da0cbed0baf01c44"
+                "reference": "33e023a0432258a8ed94edf72642cf3c184ed0d5"
             },
             "require": {
                 "php": ">=7.1"
@@ -4202,7 +4222,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-07-25T12:11:31+00:00"
+            "time": "2019-07-29T12:25:45+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -5429,7 +5449,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "BackEndTea@gmail.com"
+                    "email": "backendtea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
@@ -8884,20 +8904,32 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
-                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler"
+                    "homepage": "https://github.com/manuelpichler",
+                    "role": "Project Founder"
                 },
                 {
+<<<<<<< HEAD
+=======
+                    "name": "Other contributors",
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
+                    "role": "Contributors"
+                },
+                {
+>>>>>>> TE-1216 Updated composer.lock.
                     "name": "Marc Würth",
-                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
+<<<<<<< HEAD
                     "homepage": "https://github.com/ravage84"
                 },
                 {
                     "name": "Other contributors",
                     "role": "Contributors",
                     "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
+=======
+                    "homepage": "https://github.com/ravage84",
+                    "role": "Project Maintainer"
+>>>>>>> TE-1216 Updated composer.lock.
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -10555,8 +10587,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "lead",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "lead"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
