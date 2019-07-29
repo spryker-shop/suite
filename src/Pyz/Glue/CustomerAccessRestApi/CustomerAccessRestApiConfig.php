@@ -16,6 +16,7 @@ use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
 use Spryker\Glue\CustomerAccessRestApi\CustomerAccessRestApiConfig as SprykerCustomerAccessRestApiConfig;
 use Spryker\Glue\ProductPricesRestApi\ProductPricesRestApiConfig;
 use Spryker\Glue\WishlistsRestApi\WishlistsRestApiConfig;
+use Spryker\Shared\CustomerAccess\CustomerAccessConfig;
 
 class CustomerAccessRestApiConfig extends SprykerCustomerAccessRestApiConfig
 {
@@ -27,5 +28,23 @@ class CustomerAccessRestApiConfig extends SprykerCustomerAccessRestApiConfig
         CartsRestApiConfig::RESOURCE_CART_ITEMS => SeeAddToCartPermissionPlugin::KEY,
         WishlistsRestApiConfig::RESOURCE_WISHLISTS => SeeWishlistPermissionPlugin::KEY,
         WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS => SeeWishlistPermissionPlugin::KEY,
+    ];
+
+    protected const CUSTOMER_ACCESS_CONTENT_TYPE_RESOURCE_TYPE = [
+        CustomerAccessConfig::CONTENT_TYPE_PRICE => [
+            ProductPricesRestApiConfig::RESOURCE_ABSTRACT_PRODUCT_PRICES,
+            ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
+        ],
+        CustomerAccessConfig::CONTENT_TYPE_ORDER_PLACE_SUBMIT => [
+            CheckoutRestApiConfig::RESOURCE_CHECKOUT,
+            CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
+        ],
+        CustomerAccessConfig::CONTENT_TYPE_ADD_TO_CART => [
+            CartsRestApiConfig::RESOURCE_CART_ITEMS,
+        ],
+        CustomerAccessConfig::CONTENT_TYPE_WISHLIST => [
+            WishlistsRestApiConfig::RESOURCE_WISHLISTS,
+            WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
+        ],
     ];
 }
