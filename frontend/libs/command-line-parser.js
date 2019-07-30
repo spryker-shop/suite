@@ -25,32 +25,33 @@ commandLineParser
     .option('-c, --config <path>', 'path to JSON file with namespace config', globalSettings.paths.namespaceConfig)
     .arguments('<mode>')
     .action(function (modeValue) {
-        console.log(this);
-        const { remain: args } = JSON.parse(process.env.npm_config_argv);
-        const passedOptions = args.filter(arg => !arg.indexOf('-'));
-        const allowedOptions = this.options.reduce((options, currentOption) => {
-            const { short } = currentOption;
-            const { long } = currentOption;
+        const modeIndexInArgs = process.argv.findIndex(element => element === modeValue);
+        console.log(modeIndexInArgs);
 
-            if ( short ) {
-                options.push(short);
-            };
-
-            if ( long ) {
-                options.push(long);
-            };
-
-            return options;
-        }, []);
-
-        passedOptions.forEach(opt => {
-            if (!allowedOptions.includes(opt)) {
-                //throw new Error(`option ${opt} is not allowed`);
-            }
-        });
+        // const { remain: args } = JSON.parse(process.env.npm_config_argv);
+        // const passedOptions = args.filter(arg => !arg.indexOf('-'));
+        // const allowedOptions = this.options.reduce((options, currentOption) => {
+        //     const { short } = currentOption;
+        //     const { long } = currentOption;
+        //
+        //     if ( short ) {
+        //         options.push(short);
+        //     };
+        //
+        //     if ( long ) {
+        //         options.push(long);
+        //     };
+        //
+        //     return options;
+        // }, []);
+        //
+        // passedOptions.forEach(opt => {
+        //     if (!allowedOptions.includes(opt)) {
+        //         //throw new Error(`option ${opt} is not allowed`);
+        //     }
+        //});
 
         mode = getMode(modeValue);
-        console.log(mode);
     })
     .parse(process.argv);
 
