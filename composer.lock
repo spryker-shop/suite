@@ -3706,12 +3706,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "358e41a937ca689e7007baaf4e36ab794b6969ff"
+                "reference": "2a4212901a6a2862e23604bab4edde6131427476"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/358e41a937ca689e7007baaf4e36ab794b6969ff",
-                "reference": "358e41a937ca689e7007baaf4e36ab794b6969ff",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/2a4212901a6a2862e23604bab4edde6131427476",
+                "reference": "2a4212901a6a2862e23604bab4edde6131427476",
                 "shasum": ""
             },
             "require": {
@@ -3737,7 +3737,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Client\\RabbitMq\\Helper\\": "tests/SprykerTest/Client/RabbitMq/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3761,7 +3762,7 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "time": "2019-07-30T10:07:05+00:00"
+            "time": "2019-07-30T11:02:53+00:00"
         },
         {
             "name": "spryker/silexphp",
