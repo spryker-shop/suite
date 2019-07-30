@@ -7,8 +7,6 @@
 
 namespace PyzTest\Glue\CustomerAccess\RestApi;
 
-use Generated\Shared\Transfer\ContentTypeAccessTransfer;
-use Generated\Shared\Transfer\CustomerAccessTransfer;
 use PyzTest\Glue\CustomerAccess\CustomerAccessApiTester;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
@@ -63,16 +61,7 @@ class CustomerAccessRestApiFixtures implements FixturesBuilderInterface, Fixture
      */
     protected function createCustomerAccessContentTypeResourceType(CustomerAccessApiTester $I): void
     {
-        $I->haveCustomerAccess([
-            CustomerAccessTransfer::CONTENT_TYPE_ACCESS => [
-                ContentTypeAccessTransfer::IS_RESTRICTED => true,
-                ContentTypeAccessTransfer::CONTENT_TYPE => static::TEST_CUSTOMER_ACCESS_RESOURCE_RESTRICTED,
-            ],
-            [
-                ContentTypeAccessTransfer::IS_RESTRICTED => false,
-                ContentTypeAccessTransfer::CONTENT_TYPE => static::TEST_CUSTOMER_ACCESS_RESOURCE_NOT_RESTRICTED,
-            ],
-        ]);
+        $I->haveCustomerAccess();
 
         $this->customerAccessContentTypeResourceType = [
             static::TEST_CUSTOMER_ACCESS_RESOURCE_RESTRICTED => [
