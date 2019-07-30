@@ -381,6 +381,11 @@ $config[KernelConstants::DEPENDENCY_INJECTOR_ZED] = [
         GiftCardConfig::PROVIDER_NAME,
     ],
 ];
+$config[KernelConstants::DEPENDENCY_INJECTOR_GLUE] = [
+    'GlueApplication' => [
+        'ProductsRestApi',
+    ],
+];
 
 $config[NopaymentConstants::NO_PAYMENT_METHODS] = [
     NopaymentConfig::PAYMENT_PROVIDER_NAME,

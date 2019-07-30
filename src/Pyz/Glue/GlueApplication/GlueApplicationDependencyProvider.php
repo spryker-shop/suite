@@ -95,7 +95,6 @@ use Spryker\Glue\ProductsCategoriesResourceRelationship\Plugin\AbstractProductsC
 use Spryker\Glue\ProductsRestApi\Plugin\AbstractProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\ConcreteProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\GlueApplication\ConcreteProductBySkuResourceRelationshipPlugin;
-use Spryker\Glue\ProductsRestApi\Plugin\GlueApplication\ConcreteProductsByProductConcreteIdsResourceRelationshipPlugin;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
 use Spryker\Glue\ProductTaxSetsRestApi\Plugin\GlueApplication\ProductTaxSetByProductAbstractSkuResourceRelationshipPlugin;
 use Spryker\Glue\ProductTaxSetsRestApi\Plugin\GlueApplication\ProductTaxSetsResourceRoutePlugin;
@@ -339,10 +338,6 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         $resourceRelationshipCollection->addRelationship(
             NavigationsRestApiConfig::RESOURCE_NAVIGATIONS,
             new CategoryNodeByResourceIdResourceRelationshipPlugin()
-        );
-        $resourceRelationshipCollection->addRelationship(
-            ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
-            new ConcreteProductsByProductConcreteIdsResourceRelationshipPlugin()
         );
         $resourceRelationshipCollection->addRelationship(
             CompanyRolesRestApiConfig::RESOURCE_COMPANY_ROLES,
