@@ -23,11 +23,11 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  */
 class CustomerAccessRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    public const TEST_REST_RESOURCE_RESTRICTED = 'rest-resource-1';
-    public const TEST_REST_RESOURCE_NOT_RESTRICTED = 'rest-resource-2';
+    protected const TEST_REST_RESOURCE_RESTRICTED = 'rest-resource-1';
+    protected const TEST_REST_RESOURCE_NOT_RESTRICTED = 'rest-resource-2';
 
-    public const TEST_CUSTOMER_ACCESS_RESOURCE_RESTRICTED = 'test-customer-access-resource-1';
-    public const TEST_CUSTOMER_ACCESS_RESOURCE_NOT_RESTRICTED = 'test-customer-access-resource-2';
+    protected const TEST_CUSTOMER_ACCESS_RESOURCE_RESTRICTED = 'test content 1';
+    protected const TEST_CUSTOMER_ACCESS_RESOURCE_NOT_RESTRICTED = 'test content 2';
 
     /**
      * @var string[][]
