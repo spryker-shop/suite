@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\CmsSlot\Persistence;
 
-use Orm\Zed\CmsSlot\Persistence\Base\SpyCmsSlotToCmsSlotTemplateQuery as BaseSpyCmsSlotToCmsSlotTemplateQuery;
+use Spryker\Zed\CmsSlot\Persistence\Propel\AbstractSpyCmsSlotToCmsSlotTemplateQuery as BaseSpyCmsSlotToCmsSlotTemplateQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_cms_slot_to_cms_slot_template' table.

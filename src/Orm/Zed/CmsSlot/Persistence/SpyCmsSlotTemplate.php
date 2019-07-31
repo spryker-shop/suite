@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\CmsSlot\Persistence;
 
-use Orm\Zed\CmsSlot\Persistence\Base\SpyCmsSlotTemplate as BaseSpyCmsSlotTemplate;
+use Spryker\Zed\CmsSlot\Persistence\Propel\AbstractSpyCmsSlotTemplate as BaseSpyCmsSlotTemplate;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_cms_slot_template' table.

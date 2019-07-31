@@ -200,10 +200,10 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     {
         return [
             [new CategoryDataImportPlugin(), DataImportConfig::IMPORT_TYPE_CATEGORY_TEMPLATE],
-            new CmsSlotTemplateDataImportPlugin(),
-            new CmsSlotDataImportPlugin(),
             new CmsPageDataImportPlugin(),
             new CmsPageStoreDataImportPlugin(),
+            new CmsSlotTemplateDataImportPlugin(),
+            new CmsSlotDataImportPlugin(),
             new CompanyDataImportPlugin(),
             new CompanyBusinessUnitDataImportPlugin(),
             new CompanyUnitAddressDataImportPlugin(),
