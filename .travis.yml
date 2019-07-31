@@ -59,7 +59,7 @@ before_install:
 
 install:
   - chmod -R a+x config/Shared/ci/travis/
-  - composer install --optimize-autoloader --no-interaction --quiet
+  - composer install --optimize-autoloader --no-interaction
   - config/Shared/ci/travis/install_elasticsearch.sh
   - config/Shared/ci/travis/install_mailcatcher.sh
 
