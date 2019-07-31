@@ -12,8 +12,8 @@ use Spryker\Zed\CmsPageSearch\Communication\Plugin\Search\CmsDataPageMapBuilder;
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\Search\ProductConcretePageMapPlugin;
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\Search\ProductPageMapPlugin;
 use Spryker\Zed\ProductSetPageSearch\Communication\Plugin\Search\ProductSetPageMapPlugin;
-use Spryker\Zed\Search\Communication\Plugin\Search\ElasticsearchIndexInstallerPlugin;
 use Spryker\Zed\Search\SearchDependencyProvider as SprykerSearchDependencyProvider;
+use Spryker\Zed\SearchElasticsearch\Communication\Plugin\Search\ElasticsearchIndexInstallerPlugin;
 
 class SearchDependencyProvider extends SprykerSearchDependencyProvider
 {
@@ -32,7 +32,7 @@ class SearchDependencyProvider extends SprykerSearchDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\SearchExtension\Dependency\Plugin\SearchPluginInterface[]
+     * @return \Spryker\Zed\SearchExtension\Dependency\Plugin\InstallPluginInterface[]
      */
     protected function getSearchInstallerPlugins(): array
     {

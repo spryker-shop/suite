@@ -10,10 +10,8 @@ namespace Pyz\Client\Search;
 use Spryker\Client\Catalog\Plugin\Config\CatalogSearchConfigBuilder;
 use Spryker\Client\Kernel\Container;
 use Spryker\Client\ProductSearchConfigStorage\Plugin\Config\ProductSearchConfigExpanderPlugin;
-use Spryker\Client\Search\Plugin\Search\ElasticsearchSearchPlugin;
 use Spryker\Client\Search\SearchDependencyProvider as SprykerSearchDependencyProvider;
 use Spryker\Client\SearchElasticsearch\Plugin\ElasticsearchClientAdapterPlugin;
-use Spryker\Client\SearchExtension\Dependency\Plugin\ClientAdapterPluginInterface;
 
 class SearchDependencyProvider extends SprykerSearchDependencyProvider
 {
@@ -42,7 +40,7 @@ class SearchDependencyProvider extends SprykerSearchDependencyProvider
     }
 
     /**
-     * @return ClientAdapterPluginInterface[]
+     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\ClientAdapterPluginInterface[]
      */
     protected function getClientAdapterPlugins(): array
     {
