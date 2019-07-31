@@ -23,23 +23,6 @@ use PyzTest\Glue\CustomerAccess\CustomerAccessApiTester;
 class CustomerAccessRestApiCest
 {
     /**
-     * @var \PyzTest\Glue\CustomerAccess\RestApi\CustomerAccessRestApiFixtures
-     */
-    protected $fixtures;
-
-    /**
-     * @param \PyzTest\Glue\CustomerAccess\CustomerAccessApiTester $I
-     *
-     * @return void
-     */
-    public function loadFixtures(CustomerAccessApiTester $I): void
-    {
-        $this->fixtures = $I->loadFixtures(CustomerAccessRestApiFixtures::class);
-    }
-
-    /**
-     * @depends loadFixtures
-     *
      * @param \PyzTest\Glue\CustomerAccess\CustomerAccessApiTester $I
      *
      * @return void

@@ -25,7 +25,7 @@ class CustomerAccessRestApiConfig extends SprykerCustomerAccessRestApiConfig
         ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES => SeePricePermissionPlugin::KEY,
         CheckoutRestApiConfig::RESOURCE_CHECKOUT => SeeOrderPlaceSubmitPermissionPlugin::KEY,
         CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA => SeeOrderPlaceSubmitPermissionPlugin::KEY,
-        CartsRestApiConfig::RESOURCE_CART_ITEMS => SeeAddToCartPermissionPlugin::KEY,
+        CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS => SeeAddToCartPermissionPlugin::KEY,
         WishlistsRestApiConfig::RESOURCE_WISHLISTS => SeeWishlistPermissionPlugin::KEY,
         WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS => SeeWishlistPermissionPlugin::KEY,
     ];
