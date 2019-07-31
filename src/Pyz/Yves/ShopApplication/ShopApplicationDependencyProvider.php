@@ -28,6 +28,8 @@ use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyBusinessUnitContr
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyUserRestrictionHandlerPlugin;
 use SprykerShop\Yves\CompanyWidget\Widget\CompanyBusinessUnitAddressWidget;
 use SprykerShop\Yves\CompanyWidget\Widget\CompanyMenuItemWidget;
+use SprykerShop\Yves\ConfigurableBundleWidget\Widget\OrderConfiguredBundleWidget;
+use SprykerShop\Yves\ConfigurableBundleWidget\Widget\QuoteConfiguredBundleWidget;
 use SprykerShop\Yves\CurrencyWidget\Widget\CurrencyWidget;
 use SprykerShop\Yves\CustomerPage\Widget\CustomerNavigationWidget;
 use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderItemCheckboxWidget;
@@ -203,6 +205,8 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             QuoteRequestAgentOverviewWidget::class,
             QuoteRequestAgentCancelWidget::class,
             CommentThreadWidget::class,
+            QuoteConfiguredBundleWidget::class,
+            OrderConfiguredBundleWidget::class,
         ];
     }
 
