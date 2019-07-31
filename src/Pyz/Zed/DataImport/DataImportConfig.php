@@ -8,7 +8,58 @@
 namespace Pyz\Zed\DataImport;
 
 use Generated\Shared\Transfer\DataImporterQueueWriterConfigurationTransfer;
+use Spryker\Zed\BusinessOnBehalfDataImport\Communication\Plugin\DataImport\BusinessOnBehalfCompanyUserDataImportPlugin;
+use Spryker\Zed\CategoryDataImport\Communication\Plugin\CategoryDataImportPlugin;
+use Spryker\Zed\CmsPageDataImport\Communication\Plugin\CmsPageDataImportPlugin;
+use Spryker\Zed\CmsPageDataImport\Communication\Plugin\CmsPageStoreDataImportPlugin;
+use Spryker\Zed\CommentDataImport\Communication\Plugin\CommentDataImportPlugin;
+use Spryker\Zed\CompanyBusinessUnitDataImport\Communication\Plugin\CompanyBusinessUnitAddressDataImportPlugin;
+use Spryker\Zed\CompanyBusinessUnitDataImport\Communication\Plugin\CompanyBusinessUnitDataImportPlugin;
+use Spryker\Zed\CompanyBusinessUnitDataImport\Communication\Plugin\CompanyBusinessUnitUserDataImportPlugin;
+use Spryker\Zed\CompanyDataImport\Communication\Plugin\CompanyDataImportPlugin;
+use Spryker\Zed\CompanyRoleDataImport\Communication\Plugin\DataImport\CompanyRoleDataImportPlugin;
+use Spryker\Zed\CompanyRoleDataImport\Communication\Plugin\DataImport\CompanyRolePermissionDataImportPlugin;
+use Spryker\Zed\CompanyRoleDataImport\Communication\Plugin\DataImport\CompanyUserRoleDataImportPlugin;
+use Spryker\Zed\CompanySupplierDataImport\Communication\Plugin\CompanySupplierDataImportPlugin;
+use Spryker\Zed\CompanySupplierDataImport\Communication\Plugin\CompanySupplierProductPriceDataImportPlugin;
+use Spryker\Zed\CompanySupplierDataImport\Communication\Plugin\CompanyTypeDataImportPlugin;
+use Spryker\Zed\CompanyUnitAddressDataImport\Communication\Plugin\CompanyUnitAddressDataImportPlugin;
+use Spryker\Zed\CompanyUnitAddressLabelDataImport\Communication\Plugin\CompanyUnitAddressLabelDataImportPlugin;
+use Spryker\Zed\CompanyUnitAddressLabelDataImport\Communication\Plugin\CompanyUnitAddressLabelRelationDataImportPlugin;
+use Spryker\Zed\CompanyUserDataImport\Communication\Plugin\DataImport\CompanyUserDataImportPlugin;
+use Spryker\Zed\ContentBannerDataImport\Communication\Plugin\ContentBannerDataImportPlugin;
+use Spryker\Zed\ContentProductDataImport\Communication\Plugin\ContentProductAbstractListDataImportPlugin;
+use Spryker\Zed\ContentProductSetDataImport\Communication\Plugin\ContentProductSetDataImportPlugin;
 use Spryker\Zed\DataImport\DataImportConfig as SprykerDataImportConfig;
+use Spryker\Zed\FileManagerDataImport\Communication\Plugin\FileManagerDataImportPlugin;
+use Spryker\Zed\MerchantDataImport\Communication\Plugin\MerchantDataImportPlugin;
+use Spryker\Zed\MerchantRelationshipDataImport\Communication\Plugin\MerchantRelationshipDataImportPlugin;
+use Spryker\Zed\MerchantRelationshipProductListDataImport\Communication\Plugin\MerchantRelationshipProductListDataImportPlugin;
+use Spryker\Zed\MerchantRelationshipSalesOrderThresholdDataImport\Communication\Plugin\DataImport\MerchantRelationshipSalesOrderThresholdDataImportPlugin;
+use Spryker\Zed\MultiCartDataImport\Communication\Plugin\MultiCartDataImportPlugin;
+use Spryker\Zed\PriceProductDataImport\Communication\Plugin\PriceProductDataImportPlugin;
+use Spryker\Zed\PriceProductMerchantRelationshipDataImport\Communication\Plugin\PriceProductMerchantRelationshipDataImportPlugin;
+use Spryker\Zed\PriceProductScheduleDataImport\Communication\Plugin\PriceProductScheduleDataImportPlugin;
+use Spryker\Zed\ProductAlternativeDataImport\Communication\Plugin\ProductAlternativeDataImportPlugin;
+use Spryker\Zed\ProductDiscontinuedDataImport\Communication\Plugin\ProductDiscontinuedDataImportPlugin;
+use Spryker\Zed\ProductListDataImport\Communication\Plugin\ProductListCategoryDataImportPlugin;
+use Spryker\Zed\ProductListDataImport\Communication\Plugin\ProductListDataImportPlugin;
+use Spryker\Zed\ProductListDataImport\Communication\Plugin\ProductListProductConcreteDataImportPlugin;
+use Spryker\Zed\ProductMeasurementUnitDataImport\Communication\Plugin\ProductMeasurementBaseUnitDataImportPlugin;
+use Spryker\Zed\ProductMeasurementUnitDataImport\Communication\Plugin\ProductMeasurementSalesUnitDataImportPlugin;
+use Spryker\Zed\ProductMeasurementUnitDataImport\Communication\Plugin\ProductMeasurementSalesUnitStoreDataImportPlugin;
+use Spryker\Zed\ProductMeasurementUnitDataImport\Communication\Plugin\ProductMeasurementUnitDataImportPlugin;
+use Spryker\Zed\ProductPackagingUnitDataImport\Communication\Plugin\DataImport\ProductPackagingUnitDataImportPlugin;
+use Spryker\Zed\ProductPackagingUnitDataImport\Communication\Plugin\DataImport\ProductPackagingUnitTypeDataImportPlugin;
+use Spryker\Zed\ProductQuantityDataImport\Communication\Plugin\ProductQuantityDataImportPlugin;
+use Spryker\Zed\QuoteRequestDataImport\Communication\Plugin\QuoteRequestDataImportPlugin;
+use Spryker\Zed\QuoteRequestDataImport\Communication\Plugin\QuoteRequestVersionDataImportPlugin;
+use Spryker\Zed\SalesOrderThresholdDataImport\Communication\Plugin\DataImport\SalesOrderThresholdDataImportPlugin;
+use Spryker\Zed\SharedCartDataImport\Communication\Plugin\SharedCartDataImportPlugin;
+use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListCompanyBusinessUnitDataImportPlugin;
+use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListCompanyUserDataImportPlugin;
+use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListDataImportPlugin;
+use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListItemDataImportPlugin;
 
 /**
  * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
@@ -423,5 +474,65 @@ class DataImportConfig extends SprykerDataImportConfig
     public function getConcreteGiftCardProductConfigurationDataImporterConfiguration()
     {
         return $this->buildImporterConfiguration('gift_card_concrete_configuration.csv', static::IMPORT_TYPE_CONCRETE_GIFT_CARD_CONFIGURATION);
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getFullImportPlugins(): array
+    {
+        return [
+            CmsPageStoreDataImportPlugin::class,
+            CmsPageDataImportPlugin::class,
+            CompanyDataImportPlugin::class,
+            CategoryDataImportPlugin::class,
+            MerchantDataImportPlugin::class,
+            MultiCartDataImportPlugin::class,
+            SharedCartDataImportPlugin::class,
+            CompanyUserRoleDataImportPlugin::class,
+            CompanyRolePermissionDataImportPlugin::class,
+            CompanyRoleDataImportPlugin::class,
+            CompanyUserDataImportPlugin::class,
+            FileManagerDataImportPlugin::class,
+            ProductListCategoryDataImportPlugin::class,
+            ProductListProductConcreteDataImportPlugin::class,
+            ProductListDataImportPlugin::class,
+            PriceProductDataImportPlugin::class,
+            QuoteRequestDataImportPlugin::class,
+            QuoteRequestVersionDataImportPlugin::class,
+            ShoppingListCompanyUserDataImportPlugin::class,
+            ShoppingListItemDataImportPlugin::class,
+            ShoppingListDataImportPlugin::class,
+            ShoppingListCompanyBusinessUnitDataImportPlugin::class,
+            ContentBannerDataImportPlugin::class,
+            ContentProductAbstractListDataImportPlugin::class,
+            CompanySupplierDataImportPlugin::class,
+            CompanySupplierProductPriceDataImportPlugin::class,
+            CompanyTypeDataImportPlugin::class,
+            ProductQuantityDataImportPlugin::class,
+            BusinessOnBehalfCompanyUserDataImportPlugin::class,
+            ContentProductSetDataImportPlugin::class,
+            CompanyUnitAddressDataImportPlugin::class,
+            ProductAlternativeDataImportPlugin::class,
+            CompanyBusinessUnitUserDataImportPlugin::class,
+            CompanyBusinessUnitAddressDataImportPlugin::class,
+            CompanyBusinessUnitDataImportPlugin::class,
+            ProductDiscontinuedDataImportPlugin::class,
+            SalesOrderThresholdDataImportPlugin::class,
+            MerchantRelationshipDataImportPlugin::class,
+            PriceProductScheduleDataImportPlugin::class,
+            ProductPackagingUnitTypeDataImportPlugin::class,
+            ProductPackagingUnitDataImportPlugin::class,
+            ProductMeasurementSalesUnitStoreDataImportPlugin::class,
+            ProductMeasurementSalesUnitDataImportPlugin::class,
+            ProductMeasurementUnitDataImportPlugin::class,
+            ProductMeasurementBaseUnitDataImportPlugin::class,
+            CompanyUnitAddressLabelDataImportPlugin::class,
+            CompanyUnitAddressLabelRelationDataImportPlugin::class,
+            MerchantRelationshipProductListDataImportPlugin::class,
+            PriceProductMerchantRelationshipDataImportPlugin::class,
+            MerchantRelationshipSalesOrderThresholdDataImportPlugin::class,
+            CommentDataImportPlugin::class,
+        ];
     }
 }
