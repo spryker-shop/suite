@@ -1,6 +1,8 @@
 const commandLineParser = require('commander');
 const { join } = require('path');
 const { globalSettings } = require('../settings');
+const { scripts } = require('../../package.json');
+let mode;
 
 const collectArguments = (argument, argumentCollection) => {
     argumentCollection.push(argument);
@@ -8,16 +10,76 @@ const collectArguments = (argument, argumentCollection) => {
 };
 
 const getMode = requestedMode => {
-    for (const mode in globalSettings.modes) {
-        if (globalSettings.modes[mode] === requestedMode) {
-            return requestedMode;
+    const { modes } = globalSettings;
+    let modeValue = null;
+
+    Object.keys(modes).forEach( key => {
+        if (modes[key] === requestedMode) {
+            modeValue = requestedMode;
         }
-    }
-    console.warn(`Mode "${commandLineParser.mode}" is not available`);
-    process.exit(1);
+    });
+
+    if (modeValue) {
+        return modeValue;
+    };
 };
 
-let mode;
+const checkMode = requestedMode => {
+    const mode = getMode(requestedMode);
+
+    if (!mode) {
+        throw new Error(`Mode "${requestedMode}" is not available`);
+    }
+}
+
+const formDataOfAllowedFlags = (parserObject, configData) => {
+    const allowedFlagsData = {};
+    parserObject.options.forEach(option => {
+        allowedFlagsData[option.short] = {
+            required: option.required,
+        };
+
+        allowedFlagsData[option.long] = {
+            required: option.required,
+        };
+    });
+
+    Object.keys(configData).forEach(key => {
+        const flagsData = configData[key].match(/--[a-z]{1,}/g);
+
+        if (flagsData) {
+            flagsData.forEach( flag => {
+                allowedFlagsData[flag] = {
+                    required: false,
+                };
+            })
+        }
+    });
+
+    return allowedFlagsData
+};
+
+const checkValidFlag = (flag, allowedFlagsData) => {
+    if (!flag.indexOf('-') && !allowedFlagsData[flag]) {
+        throw new Error(`Flag "${flag}" is not available`);
+    }
+};
+
+const checkCommand = (allowedFlagsData, args, ind) => {
+    const previousParam = args[ind - 1];
+    const currentParam = args[ind];
+
+    if (currentParam.indexOf('-')) {
+        if (previousParam.indexOf('-') || (!previousParam.indexOf('-') && !allowedFlagsData[previousParam].required)) {
+            if (scripts[currentParam] || currentParam === 'node') {
+                return currentParam;
+            }
+
+            throw new Error(`Command "${args[ind]}" is not available`);
+        };
+    };
+};
+
 commandLineParser
     .option('-n, --namespace <namespace name>', 'build the requested namespace. Multiple arguments are allowed.', collectArguments, [])
     .option('-t, --theme <theme name>', 'build the requested theme. Multiple arguments are allowed.', collectArguments, [])
@@ -25,31 +87,37 @@ commandLineParser
     .option('-c, --config <path>', 'path to JSON file with namespace config', globalSettings.paths.namespaceConfig)
     .arguments('<mode>')
     .action(function (modeValue) {
+        const { argv, env } = process;
         const modeIndexInArgs = process.argv.findIndex(element => element === modeValue);
-        console.log(modeIndexInArgs);
+        const allowedFlagsData = formDataOfAllowedFlags(this, scripts);
 
-        // const { remain: args } = JSON.parse(process.env.npm_config_argv);
-        // const passedOptions = args.filter(arg => !arg.indexOf('-'));
-        // const allowedOptions = this.options.reduce((options, currentOption) => {
-        //     const { short } = currentOption;
-        //     const { long } = currentOption;
-        //
-        //     if ( short ) {
-        //         options.push(short);
-        //     };
-        //
-        //     if ( long ) {
-        //         options.push(long);
-        //     };
-        //
-        //     return options;
-        // }, []);
-        //
-        // passedOptions.forEach(opt => {
-        //     if (!allowedOptions.includes(opt)) {
-        //         //throw new Error(`option ${opt} is not allowed`);
-        //     }
-        //});
+        if (env && env.npm_config_argv) {
+            const originalArgumentsString = env.npm_config_argv;
+            const {original: originalArguments} = JSON.parse(originalArgumentsString);
+
+            originalArguments.forEach(argument => {
+                if (!argument.indexOf('-') && !originalArguments.includes('--')) {
+                    throw new Error('It is not possible to use flags without "--" indentifier if you use "npm" package');
+                }
+            })
+        }
+
+        argv.forEach((arg, index) => {
+            if (index <= modeIndexInArgs) {
+                return
+            };
+
+            checkMode(modeValue);
+            checkValidFlag(arg, allowedFlagsData);
+
+            const nextAvailableCommand = checkCommand(allowedFlagsData, argv, index);
+
+            if (nextAvailableCommand) {
+                console.warn('It is not possible to use few commands. All commands and parameters will be ignored after second command');
+
+                return;
+            }
+        });
 
         mode = getMode(modeValue);
     })
