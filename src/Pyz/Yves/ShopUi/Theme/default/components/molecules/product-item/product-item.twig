@@ -1,0 +1,43 @@
+{% extends molecule('product-item', '@SprykerShop:ShopUi') %}
+
+{% block class -%}
+    {{ parent() }} {{config.jsName}}
+{%- endblock %}
+
+
+{% block body %}
+    {% block imageContainer %}
+        <a href="{{ path(data.url) }}">
+            {% block image %}
+                {% include atom('thumbnail') with {
+                    class: 'js-product-color-group__image-' ~ data.idProductAbstract,
+                    attributes: {
+                        src: data.image,
+                        alt: data.name,
+                    },
+                } only %}
+            {% endblock %}
+        </a>
+    {% endblock %}
+
+    {% block labels %}
+        {{ parent() }}
+    {% endblock %}
+
+    {% block groups %}
+        {{ parent() }}
+    {% endblock %}
+
+    {% block colors %}
+        {% widget 'ExampleProductColorSelectorWidget' args [data.idProductAbstract, '.' ~ config.jsName] use view('product-color-selector',
+            'ExampleProductColorGroupWidget') only %}{% endwidget %}
+    {% endblock %}
+
+    {% block content %}
+        {{ parent() }}
+    {% endblock %}
+
+    {% block actionsContainer %}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}
