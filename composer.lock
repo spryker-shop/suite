@@ -7380,26 +7380,28 @@
         },
         {
             "name": "spryker-shop/shop-translator",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/shop-translator.git",
-                "reference": "edb83e7920975e78b82c4fa229e60fcde3d5ee1b"
+                "reference": "6d91e7ce7563255089557644325bc76579de7828"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/shop-translator/zipball/edb83e7920975e78b82c4fa229e60fcde3d5ee1b",
-                "reference": "edb83e7920975e78b82c4fa229e60fcde3d5ee1b",
+                "url": "https://api.github.com/repos/spryker-shop/shop-translator/zipball/6d91e7ce7563255089557644325bc76579de7828",
+                "reference": "6d91e7ce7563255089557644325bc76579de7828",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/glossary-storage": "^1.0.0",
-                "spryker/kernel": "^3.16.0",
+                "spryker/kernel": "^3.30.0",
                 "spryker/symfony": "^3.1.0"
             },
             "require-dev": {
-                "spryker/silex": "*"
+                "spryker/code-sniffer": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
             },
             "suggest": {
                 "spryker/silex": "Use this module when using plugins that need Silex dependencies."
@@ -7420,7 +7422,7 @@
                 "proprietary"
             ],
             "description": "ShopTranslator module",
-            "time": "2018-06-13T15:26:14+00:00"
+            "time": "2019-07-29T12:25:45+00:00"
         },
         {
             "name": "spryker-shop/shop-ui",
@@ -18576,16 +18578,16 @@
         },
         {
             "name": "spryker/kernel",
-            "version": "3.37.3",
+            "version": "3.37.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/kernel.git",
-                "reference": "aff3f4da01445f0280c919d1093b775bb02fa3ff"
+                "reference": "2cae7c7b4fab1e789e4039651f911a48e9afc06e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/kernel/zipball/aff3f4da01445f0280c919d1093b775bb02fa3ff",
-                "reference": "aff3f4da01445f0280c919d1093b775bb02fa3ff",
+                "url": "https://api.github.com/repos/spryker/kernel/zipball/2cae7c7b4fab1e789e4039651f911a48e9afc06e",
+                "reference": "2cae7c7b4fab1e789e4039651f911a48e9afc06e",
                 "shasum": ""
             },
             "require": {
@@ -18621,7 +18623,7 @@
                 "proprietary"
             ],
             "description": "Kernel module",
-            "time": "2019-07-30T13:25:25+00:00"
+            "time": "2019-08-01T10:39:11+00:00"
         },
         {
             "name": "spryker/key-builder",
@@ -30694,16 +30696,16 @@
         },
         {
             "name": "spryker/silexphp",
-            "version": "0.2.3",
+            "version": "0.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/silexphp.git",
-                "reference": "1ed79869e5e68647ae2e87d2067b5cdccfb0a49a"
+                "reference": "2ab91b65ebc882dbb04179dc8bc8c0e1d44a85e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/silexphp/zipball/1ed79869e5e68647ae2e87d2067b5cdccfb0a49a",
-                "reference": "1ed79869e5e68647ae2e87d2067b5cdccfb0a49a",
+                "url": "https://api.github.com/repos/spryker/silexphp/zipball/2ab91b65ebc882dbb04179dc8bc8c0e1d44a85e3",
+                "reference": "2ab91b65ebc882dbb04179dc8bc8c0e1d44a85e3",
                 "shasum": ""
             },
             "require": {
@@ -30768,7 +30770,7 @@
             "keywords": [
                 "microframework"
             ],
-            "time": "2019-07-04T11:16:48+00:00"
+            "time": "2019-08-01T10:39:08+00:00"
         },
         {
             "name": "spryker/sql-criteria-builder",
@@ -31746,22 +31748,23 @@
         },
         {
             "name": "spryker/translator",
-            "version": "1.1.2",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/translator.git",
-                "reference": "6f745b28d10075727897642399bab2f5ef3b590c"
+                "reference": "f9d3826091192e2f0fed504f57fb802924308f83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/translator/zipball/6f745b28d10075727897642399bab2f5ef3b590c",
-                "reference": "6f745b28d10075727897642399bab2f5ef3b590c",
+                "url": "https://api.github.com/repos/spryker/translator/zipball/f9d3826091192e2f0fed504f57fb802924308f83",
+                "reference": "f9d3826091192e2f0fed504f57fb802924308f83",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/application-extension": "^1.0.0",
-                "spryker/kernel": "^3.0.0",
+                "spryker/glossary-storage": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/messenger-extension": "^1.0.0",
                 "spryker/silexphp": "^0.2.2",
@@ -31796,7 +31799,7 @@
                 "proprietary"
             ],
             "description": "Translator module",
-            "time": "2019-07-05T10:56:13+00:00"
+            "time": "2019-08-01T08:53:27+00:00"
         },
         {
             "name": "spryker/translator-extension",
@@ -31843,16 +31846,16 @@
         },
         {
             "name": "spryker/twig",
-            "version": "3.7.0",
+            "version": "3.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/twig.git",
-                "reference": "c9bcda6b55f118fa44f282cb545867d650035d0f"
+                "reference": "55091dff85b0a174ec4605dfa3c25e9edbc96b0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/twig/zipball/c9bcda6b55f118fa44f282cb545867d650035d0f",
-                "reference": "c9bcda6b55f118fa44f282cb545867d650035d0f",
+                "url": "https://api.github.com/repos/spryker/twig/zipball/55091dff85b0a174ec4605dfa3c25e9edbc96b0d",
+                "reference": "55091dff85b0a174ec4605dfa3c25e9edbc96b0d",
                 "shasum": ""
             },
             "require": {
@@ -31896,7 +31899,7 @@
                 "proprietary"
             ],
             "description": "Twig module",
-            "time": "2019-07-09T10:51:30+00:00"
+            "time": "2019-08-01T08:53:25+00:00"
         },
         {
             "name": "spryker/twig-extension",
