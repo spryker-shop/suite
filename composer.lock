@@ -4,19 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "content-hash": "c0d292894b4e6b2bd5b0981d0e098cd9",
-=======
-<<<<<<< HEAD
-    "content-hash": "cb719b7885e77b64072d7acf8c4a9529",
-=======
-    "content-hash": "ac3e0872dda9fa3e37bace398a69120b",
->>>>>>> TE-1195 Replaced usage of deprecated PropelServiceProvider with PropelApplicationPlugin.
->>>>>>> TE-1195 Replaced usage of deprecated PropelServiceProvider with PropelApplicationPlugin.
-=======
-    "content-hash": "8fbff8fcac124c15cc0a44229c98c74c",
->>>>>>> TE-1195 Updated composer.lock.
+    "content-hash": "8a75e3aa3fc25dcab45192761827600c",
     "packages": [
         {
             "name": "codeception/phpunit-wrapper",
@@ -1448,24 +1436,24 @@
             "time": "2015-09-22T13:58:03+00:00"
         },
         {
-            "name": "mikey179/vfsStream",
-            "version": "v1.6.6",
+            "name": "mikey179/vfsstream",
+            "version": "v1.6.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bovigo/vfsStream.git",
-                "reference": "095238a0711c974ae5b4ebf4c4534a23f3f6c99d"
+                "reference": "2b544ac3a21bcc4dde5d90c4ae8d06f4319055fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bovigo/vfsStream/zipball/095238a0711c974ae5b4ebf4c4534a23f3f6c99d",
-                "reference": "095238a0711c974ae5b4ebf4c4534a23f3f6c99d",
+                "url": "https://api.github.com/repos/bovigo/vfsStream/zipball/2b544ac3a21bcc4dde5d90c4ae8d06f4319055fb",
+                "reference": "2b544ac3a21bcc4dde5d90c4ae8d06f4319055fb",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.5"
+                "phpunit/phpunit": "^4.5|^5.0"
             },
             "type": "library",
             "extra": {
@@ -1485,13 +1473,13 @@
             "authors": [
                 {
                     "name": "Frank Kleine",
-                    "homepage": "http://frankkleine.de/",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "homepage": "http://frankkleine.de/"
                 }
             ],
             "description": "Virtual file system to mock the real file system in unit tests.",
             "homepage": "http://vfs.bovigo.org/",
-            "time": "2019-04-08T13:54:32+00:00"
+            "time": "2019-08-01T01:38:37+00:00"
         },
         {
             "name": "moneyphp/money",
@@ -1831,18 +1819,18 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "role": "Developer",
-                    "email": "sebastian@phpeople.de"
+                    "email": "sebastian@phpeople.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "Developer",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "Developer"
                 }
             ],
             "description": "Library for handling version information and constraints",
@@ -3861,19 +3849,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-<<<<<<< HEAD
-<<<<<<< HEAD
-                "reference": "75ce881c740c961b41fb690d242fa9ecb0b108a9"
-=======
-<<<<<<< HEAD
-                "reference": "3ee5ccd2d1522c2ac9bbc6b593536aa160198020"
-=======
-                "reference": "30eb482545e3903b0cbf8dd15e65f96b7e0d61cc"
->>>>>>> TE-1195 Replaced usage of deprecated PropelServiceProvider with PropelApplicationPlugin.
->>>>>>> TE-1195 Replaced usage of deprecated PropelServiceProvider with PropelApplicationPlugin.
-=======
-                "reference": "045304768467c1c21263444c0f40aca62b22bb2d"
->>>>>>> TE-1195 Updated composer.lock.
+                "reference": "5d7c5f744ec8b488085d78c231cd4da88f793efd"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -4143,19 +4119,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-<<<<<<< HEAD
-<<<<<<< HEAD
-            "time": "2019-07-31T17:38:21+00:00"
-=======
-<<<<<<< HEAD
-            "time": "2019-07-30T13:01:27+00:00"
-=======
-            "time": "2019-07-26T12:55:55+00:00"
->>>>>>> TE-1195 Replaced usage of deprecated PropelServiceProvider with PropelApplicationPlugin.
->>>>>>> TE-1195 Replaced usage of deprecated PropelServiceProvider with PropelApplicationPlugin.
-=======
-            "time": "2019-07-30T13:42:00+00:00"
->>>>>>> TE-1195 Updated composer.lock.
+            "time": "2019-08-01T09:10:02+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -8920,32 +8884,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
+                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler",
-                    "role": "Project Founder"
+                    "homepage": "https://github.com/manuelpichler"
                 },
                 {
-<<<<<<< HEAD
-=======
-                    "name": "Other contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
-                    "role": "Contributors"
-                },
-                {
->>>>>>> TE-1195 Updated composer.lock.
                     "name": "Marc Würth",
+                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-<<<<<<< HEAD
                     "homepage": "https://github.com/ravage84"
                 },
                 {
                     "name": "Other contributors",
                     "role": "Contributors",
                     "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
-=======
-                    "homepage": "https://github.com/ravage84",
-                    "role": "Project Maintainer"
->>>>>>> TE-1195 Updated composer.lock.
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
