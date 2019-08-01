@@ -17,8 +17,8 @@ class ValidatorDependencyProvider extends SprykerValidatorDependencyProvider
      */
     protected function getValidatorPlugins(): array
     {
-        return array_merge(parent::getValidatorPlugins(), [
+        return [
             new TranslatorValidatorPlugin(),
-        ]);
+        ];
     }
 }

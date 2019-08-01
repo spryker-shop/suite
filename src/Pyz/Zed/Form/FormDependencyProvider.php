@@ -7,9 +7,9 @@
 
 namespace Pyz\Zed\Form;
 
-use Spryker\Shared\Form\Plugin\Form\DoubleSubmitProtectionFormPlugin;
-use Spryker\Shared\Security\Plugin\Form\CsrfFormPlugin;
 use Spryker\Shared\WebProfiler\Plugin\Form\WebProfilerFormPlugin;
+use Spryker\Zed\Form\Communication\Plugin\Form\CsrfFormPlugin;
+use Spryker\Zed\Form\Communication\Plugin\Form\DoubleSubmitProtectionFormPlugin;
 use Spryker\Zed\Form\FormDependencyProvider as SprykerFormDependencyProvider;
 use Spryker\Zed\Gui\Communication\Plugin\Form\NoValidateTypeFormPlugin;
 
@@ -20,11 +20,11 @@ class FormDependencyProvider extends SprykerFormDependencyProvider
      */
     protected function getFormPlugins(): array
     {
-        return array_merge(parent::getFormPlugins(), [
+        return [
             new DoubleSubmitProtectionFormPlugin(),
             new CsrfFormPlugin(),
             new NoValidateTypeFormPlugin(),
             new WebProfilerFormPlugin(),
-        ]);
+        ];
     }
 }

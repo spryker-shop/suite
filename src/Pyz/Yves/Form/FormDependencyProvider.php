@@ -7,10 +7,9 @@
 
 namespace Pyz\Yves\Form;
 
-use Spryker\Shared\Form\Plugin\Form\DoubleSubmitProtectionFormPlugin;
-use Spryker\Shared\Security\Plugin\Form\CsrfFormPlugin;
 use Spryker\Shared\WebProfiler\Plugin\Form\WebProfilerFormPlugin;
 use Spryker\Yves\Form\FormDependencyProvider as SprykerFormDependencyProvider;
+use Spryker\Yves\Form\Plugin\Form\CsrfFormPlugin;
 
 class FormDependencyProvider extends SprykerFormDependencyProvider
 {
@@ -19,10 +18,9 @@ class FormDependencyProvider extends SprykerFormDependencyProvider
      */
     protected function getFormPlugins(): array
     {
-        return array_merge(parent::getFormPlugins(), [
-            new DoubleSubmitProtectionFormPlugin(),
+        return [
             new CsrfFormPlugin(),
             new WebProfilerFormPlugin(),
-        ]);
+        ];
     }
 }
