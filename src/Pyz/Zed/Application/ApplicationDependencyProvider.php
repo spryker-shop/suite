@@ -11,7 +11,6 @@ use Silex\Provider\HttpFragmentServiceProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\SessionServiceProvider;
 use Spryker\Shared\ErrorHandler\Plugin\ServiceProvider\WhoopsErrorHandlerServiceProvider;
-use Spryker\Shared\Security\Plugin\Application\CsrfFormApplicationPlugin;
 use Spryker\Zed\Acl\Communication\Plugin\Bootstrap\AclBootstrapProvider;
 use Spryker\Zed\Api\Communication\Plugin\ApiServiceProviderPlugin;
 use Spryker\Zed\Api\Communication\Plugin\ServiceProvider\ApiRoutingServiceProvider;
@@ -165,7 +164,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new TranslatorApplicationPlugin(),
             new FormApplicationPlugin(),
             new ValidatorApplicationPlugin(),
-            new CsrfFormApplicationPlugin(),
         ];
     }
 }
