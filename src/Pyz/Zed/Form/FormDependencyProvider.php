@@ -7,11 +7,11 @@
 
 namespace Pyz\Zed\Form;
 
-use Spryker\Shared\WebProfiler\Plugin\Form\WebProfilerFormPlugin;
 use Spryker\Zed\Form\Communication\Plugin\Form\CsrfFormPlugin;
 use Spryker\Zed\Form\Communication\Plugin\Form\DoubleSubmitProtectionFormPlugin;
 use Spryker\Zed\Form\FormDependencyProvider as SprykerFormDependencyProvider;
 use Spryker\Zed\Gui\Communication\Plugin\Form\NoValidateTypeFormPlugin;
+use Spryker\Zed\WebProfiler\Communication\Plugin\Form\WebProfilerFormPlugin;
 
 class FormDependencyProvider extends SprykerFormDependencyProvider
 {

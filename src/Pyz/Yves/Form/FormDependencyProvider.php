@@ -7,9 +7,9 @@
 
 namespace Pyz\Yves\Form;
 
-use Spryker\Shared\WebProfiler\Plugin\Form\WebProfilerFormPlugin;
 use Spryker\Yves\Form\FormDependencyProvider as SprykerFormDependencyProvider;
 use Spryker\Yves\Form\Plugin\Form\CsrfFormPlugin;
+use SprykerShop\Yves\WebProfilerWidget\Plugin\Form\WebProfilerFormPlugin;
 
 class FormDependencyProvider extends SprykerFormDependencyProvider
 {
