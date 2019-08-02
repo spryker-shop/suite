@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8b5077c1ecbf7ef1afa061f3ea004368",
+    "content-hash": "d44ee3678fa318849449bb3b7c4bfe55",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -2387,21 +2387,22 @@
         },
         {
             "name": "spryker/event-behavior",
-            "version": "dev-master",
+            "version": "dev-feature/te-3900/master/refactor-event-behavior-service-provider-to-event-behavior-event-dispatcher-plugin",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "508be9aa339feb4038f77972f62d5f0f633b90f9"
+                "reference": "832ad9bb45317120d7dc7dd2c951bdbf68089519"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/508be9aa339feb4038f77972f62d5f0f633b90f9",
-                "reference": "508be9aa339feb4038f77972f62d5f0f633b90f9",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/832ad9bb45317120d7dc7dd2c951bdbf68089519",
+                "reference": "832ad9bb45317120d7dc7dd2c951bdbf68089519",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/event": "^2.4.0",
+                "spryker/event-dispatcher-extension": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/propel-orm": "^1.6.0",
                 "spryker/symfony": "^3.1.0",
@@ -2412,12 +2413,16 @@
                 "spryker/code-sniffer": "*",
                 "spryker/config": "^3.1.0",
                 "spryker/console": "^3.1.0 || ^4.0.0",
+                "spryker/container": "^1.4.0",
+                "spryker/event-dispatcher": "^1.0.0",
                 "spryker/propel": "^3.0.0",
                 "spryker/silex": "^2.0.0",
                 "spryker/testify": "*"
             },
             "suggest": {
                 "spryker/console": "*",
+                "spryker/container": "Install this module when you want to use the EventBehaviorEventDispatcherPlugin",
+                "spryker/event-dispatcher": "Install this module when you want to use the EventBehaviorEventDispatcherPlugin",
                 "spryker/silex": "^2.0.0"
             },
             "type": "propel-behavior",
@@ -2441,7 +2446,53 @@
                 "proprietary"
             ],
             "description": "EventBehavior module",
-            "time": "2019-08-12T13:58:02+00:00"
+            "time": "2019-09-11T08:28:13+00:00"
+        },
+        {
+            "name": "spryker/event-dispatcher-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/event-dispatcher-extension.git",
+                "reference": "866c63e861aa67af34f70629924ae06b0dcafd14"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/event-dispatcher-extension/zipball/866c63e861aa67af34f70629924ae06b0dcafd14",
+                "reference": "866c63e861aa67af34f70629924ae06b0dcafd14",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/event-dispatcher": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/container": "If you want to use EventDispatcherPlugin.",
+                "spryker/event-dispatcher": "If you want to use EventDispatcherPlugin.",
+                "spryker/symfony": "If you want to use EventDispatcherPlugin."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "EventDispatcherExtension module",
+            "time": "2019-03-26T15:19:37+00:00"
         },
         {
             "name": "spryker/install",
@@ -2494,12 +2545,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "0fdd94a3428eb22c10627f375352f1706f9a2300"
+                "reference": "386ab9871a48917dbf4ae2db7f2050e6bfa1e682"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/0fdd94a3428eb22c10627f375352f1706f9a2300",
-                "reference": "0fdd94a3428eb22c10627f375352f1706f9a2300",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/386ab9871a48917dbf4ae2db7f2050e6bfa1e682",
+                "reference": "386ab9871a48917dbf4ae2db7f2050e6bfa1e682",
                 "shasum": ""
             },
             "require": {
@@ -2525,7 +2576,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Client\\RabbitMq\\Helper\\": "tests/SprykerTest/Client/RabbitMq/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2549,7 +2601,7 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "time": "2019-08-19T12:12:16+00:00"
+            "time": "2019-09-10T15:15:46+00:00"
         },
         {
             "name": "spryker/silexphp",
@@ -7881,20 +7933,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
+                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler",
-                    "role": "Project Founder"
+                    "homepage": "https://github.com/manuelpichler"
                 },
                 {
                     "name": "Marc Würth",
+                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84",
-                    "role": "Project Maintainer"
+                    "homepage": "https://github.com/ravage84"
                 },
                 {
                     "name": "Other contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -10523,8 +10575,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "lead",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "lead"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
@@ -10564,8 +10616,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
