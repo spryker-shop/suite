@@ -31,7 +31,7 @@ use Spryker\Zed\EventDispatcher\Communication\Plugin\Application\EventDispatcher
 use Spryker\Zed\Form\Communication\Plugin\Application\FormApplicationPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Locale\Communication\Plugin\Application\LocaleApplicationPlugin;
-use Spryker\Zed\Messenger\Communication\Plugin\ServiceProvider\MessengerServiceProvider;
+use Spryker\Zed\Messenger\Communication\Plugin\Application\MessengerApplicationPlugin;
 use Spryker\Zed\Monitoring\Communication\Plugin\ServiceProvider\MonitoringRequestTransactionServiceProvider;
 use Spryker\Zed\Propel\Communication\Plugin\ServiceProvider\PropelServiceProvider;
 use Spryker\Zed\Session\Communication\Plugin\ServiceProvider\SessionServiceProvider as SprykerSessionServiceProvider;
@@ -63,7 +63,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new SubRequestServiceProvider(),
             new WebProfilerServiceProvider(),
             new ZedHstsServiceProvider(),
-            new MessengerServiceProvider(),
             new MonitoringRequestTransactionServiceProvider(),
             new RedirectAfterLoginProvider(),
             new PropelServiceProvider(),
@@ -162,6 +161,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new EventDispatcherApplicationPlugin(),
             new LocaleApplicationPlugin(),
             new TranslatorApplicationPlugin(),
+            new MessengerApplicationPlugin(),
             new FormApplicationPlugin(),
             new ValidatorApplicationPlugin(),
         ];

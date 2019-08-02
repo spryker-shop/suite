@@ -76,7 +76,6 @@ use SprykerShop\Yves\ShoppingListPage\Plugin\Provider\ShoppingListPageController
 use SprykerShop\Yves\ShoppingListWidget\Plugin\Provider\ShoppingListWidgetControllerProvider;
 use SprykerShop\Yves\ShopRouter\Plugin\Router\SilexRouter;
 use SprykerShop\Yves\ShopRouter\Plugin\Router\StorageRouter;
-use SprykerShop\Yves\ShopTranslator\Plugin\Provider\TranslationServiceProvider;
 use SprykerShop\Yves\WebProfilerWidget\Plugin\ServiceProvider\WebProfilerWidgetServiceProvider;
 use SprykerShop\Yves\WishlistPage\Plugin\Provider\WishlistPageControllerProvider;
 
@@ -103,7 +102,6 @@ class YvesBootstrap extends SprykerYvesBootstrap
         $this->application->register(new UrlGeneratorServiceProvider());
         $this->application->register(new RememberMeServiceProvider());
         $this->application->register(new RoutingServiceProvider());
-        $this->application->register(new TranslationServiceProvider());
         $this->application->register(new HttpFragmentServiceProvider());
         $this->application->register(new FlashMessengerServiceProvider());
         $this->application->register(new WebProfilerWidgetServiceProvider());

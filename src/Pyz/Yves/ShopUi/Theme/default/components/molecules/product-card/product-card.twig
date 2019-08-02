@@ -16,6 +16,8 @@
     currencyIsoCode: null,
 } %}
 
+{% block cardClass %}{{config.jsName}}__container {{parent()}}{% endblock %}
+
 {% block image %}
     <a href="{{data.url}}">
         {% include atom('thumbnail') with {
@@ -37,7 +39,7 @@
     {% endblock %}
 
     {% block groups %}
-        {% widget 'ExampleProductColorSelectorWidget' args [data.abstractId] use view('product-color-selector', 'ExampleProductColorGroupWidget') only %}
+        {% widget 'ExampleProductColorSelectorWidget' args [data.abstractId, '.js-product-card__container'] use view('product-color-selector', 'ExampleProductColorGroupWidget') only %}
         {% elsewidget 'ExampleProductColorGroupWidgetPlugin' args [data.abstractId] only %} {# @deprecated Use ExampleProductColorSelectorWidget or ProductGroupWidget instead. #}
         {% endwidget %}
     {% endblock %}
