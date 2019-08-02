@@ -11,6 +11,7 @@ use Pyz\Yves\ExampleProductColorGroupWidget\Widget\ExampleProductColorSelectorWi
 use Spryker\Yves\EventDispatcher\Plugin\Application\EventDispatcherApplicationPlugin;
 use Spryker\Yves\Locale\Plugin\Application\LocaleApplicationPlugin;
 use Spryker\Yves\Store\Plugin\Application\StoreApplicationPlugin;
+use Spryker\Yves\Translator\Plugin\Application\TranslatorApplicationPlugin;
 use Spryker\Yves\Twig\Plugin\Application\TwigApplicationPlugin;
 use SprykerShop\Yves\AgentWidget\Widget\AgentControlBarWidget;
 use SprykerShop\Yves\AvailabilityNotificationWidget\Widget\AvailabilityNotificationSubscriptionWidget;
@@ -88,7 +89,7 @@ use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCartWidget;
 use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCreateWidget;
 use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestMenuItemWidget;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Widget\SalesOrderThresholdWidget;
-use SprykerShop\Yves\SharedCartWidget\Widget\CartDeleteCompanyUsersListWidget;
+use SprykerShop\Yves\SharedCartWidget\Widget\CartDeleteSharingCompanyUsersListWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartListPermissionGroupWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartDetailsWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartOperationsWidget;
@@ -118,7 +119,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             AddToShoppingListWidget::class,
             AgentControlBarWidget::class,
             BusinessOnBehalfStatusWidget::class,
-            CartDeleteCompanyUsersListWidget::class,
+            CartDeleteSharingCompanyUsersListWidget::class,
             CartDiscountPromotionProductListWidget::class,
             CartCodeFormWidget::class,
             CartItemNoteFormWidget::class,
@@ -229,6 +230,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new ShopApplicationApplicationPlugin(),
             new StoreApplicationPlugin(),
             new LocaleApplicationPlugin(),
+            new TranslatorApplicationPlugin(),
         ];
     }
 }
