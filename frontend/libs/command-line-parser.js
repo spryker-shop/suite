@@ -9,24 +9,21 @@ const collectArguments = (argument, argumentCollection) => {
     return argumentCollection;
 };
 
-const getMode = requestedMode => {
+const isModeAvailable = requestedMode => {
     const { modes } = globalSettings;
-    const isAvailableMode = Object.values(modes).find(mode => mode === requestedMode);
 
-    if (isAvailableMode) {
-        return requestedMode;
-    }
+    return Object.values(modes).find(mode => mode === requestedMode);
 };
 
 const checkMode = requestedMode => {
-    const mode = getMode(requestedMode);
+    const mode = isModeAvailable(requestedMode);
 
     if (!mode) {
         throw new Error(`Mode "${requestedMode}" is not available`);
     }
 }
 
-const formDataOfAllowedFlags = (parserObject, configData) => {
+const collectDataOfAllowedFlags = (parserObject, configData) => {
     const allowedFlagsData = {};
     parserObject.options.forEach(option => {
         const {short, long, required} = option;
@@ -52,7 +49,7 @@ const formDataOfAllowedFlags = (parserObject, configData) => {
         }
     });
 
-    return allowedFlagsData
+    return allowedFlagsData;
 };
 
 const checkValidFlag = (flag, allowedFlagsData) => {
@@ -61,12 +58,12 @@ const checkValidFlag = (flag, allowedFlagsData) => {
     }
 };
 
-const checkCommand = (allowedFlagsData, args, ind) => {
-    const previousParam = args[ind - 1];
-    const currentParam = args[ind];
-    const isParameterAFlag = !currentParam.indexOf('-') ? true : false;
-    const isParameterAValueOfFlag = (!previousParam.indexOf('-') && allowedFlagsData[previousParam].required) ? true : false;
-    const isParameterAValidCommand = (scripts[currentParam] || currentParam === 'node') ? true : false;
+const checkCommand = (allowedFlagsData, args, indexOfCurrentParameter) => {
+    const previousParam = args[indexOfCurrentParameter - 1];
+    const currentParam = args[indexOfCurrentParameter];
+    const isParameterAFlag = !currentParam.indexOf('-');
+    const isParameterAValueOfFlag = !previousParam.indexOf('-') && allowedFlagsData[previousParam].required;
+    const isParameterAValidCommand = !!scripts[currentParam] || currentParam === 'node';
 
     if (isParameterAFlag || isParameterAValueOfFlag) {
         return '';
@@ -76,7 +73,7 @@ const checkCommand = (allowedFlagsData, args, ind) => {
         return currentParam;
     };
 
-    throw new Error(`Command "${args[ind]}" is not available`);
+    throw new Error(`Command "${args[indexOfCurrentParameter]}" is not available`);
 };
 
 commandLineParser
@@ -88,7 +85,7 @@ commandLineParser
     .action(function (modeValue) {
         const { argv, env } = process;
         const modeIndexInArgs = process.argv.findIndex(element => element === modeValue);
-        const allowedFlagsData = formDataOfAllowedFlags(this, scripts);
+        const allowedFlagsData = collectDataOfAllowedFlags(this, scripts);
 
         if (env && env.npm_config_argv) {
             const originalArgumentsString = env.npm_config_argv;
@@ -118,7 +115,7 @@ commandLineParser
             }
         });
 
-        mode = getMode(modeValue);
+        mode = modeValue;
     })
     .parse(process.argv);
 
