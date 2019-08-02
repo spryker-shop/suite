@@ -27,6 +27,7 @@ use Spryker\Zed\NavigationStorage\Communication\Plugin\Event\Subscriber\Navigati
 use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Event\Subscriber\PriceProductMerchantRelationshipStorageEventSubscriber;
 use Spryker\Zed\PriceProductStorage\Communication\Plugin\Event\Subscriber\PriceProductStorageEventSubscriber;
 use Spryker\Zed\ProductAlternativeStorage\Communication\Plugin\Event\Subscriber\ProductAlternativeStorageEventSubscriber;
+use Spryker\Zed\ProductBundle\Communication\Plugin\Event\Subscriber\ProductBundleEventSubscriber;
 use Spryker\Zed\ProductCategoryFilterStorage\Communication\Plugin\Event\Subscriber\ProductCategoryFilterStorageEventSubscriber;
 use Spryker\Zed\ProductCategoryStorage\Communication\Plugin\Event\Subscriber\ProductCategoryStorageEventSubscriber;
 use Spryker\Zed\ProductDiscontinuedStorage\Communication\Plugin\Event\Subscriber\ProductDiscontinuedStorageEventSubscriber;
@@ -113,6 +114,7 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new TaxStorageSubscriber());
         $eventSubscriberCollection->add(new TaxProductStorageSubscriber());
         $eventSubscriberCollection->add(new AvailabilityNotificationSubscriber());
+        $eventSubscriberCollection->add(new ProductBundleEventSubscriber());
 
         /**
          * Search Events
