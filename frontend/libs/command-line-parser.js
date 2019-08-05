@@ -11,29 +11,25 @@ const collectArguments = (argument, argumentCollection) => {
 
 const isModeAvailable = requestedMode => {
     const { modes } = globalSettings;
+    const isValidMode = Object.values(modes).find(mode => mode === requestedMode);
 
-    return Object.values(modes).find(mode => mode === requestedMode);
-};
-
-const checkIsModeAvailable = requestedMode => {
-    const mode = isModeAvailable(requestedMode);
-
-    if (!mode) {
+    if (!isValidMode) {
         throw new Error(`Mode "${requestedMode}" is not available`);
     }
-}
+};
 
-const collectDataOfAllowedFlags = (parserObject, configData) => {
+const getAllowedFlagsData = (commandLineParserInfo, configData) => {
     const allowedFlagsData = {};
-    parserObject.options.forEach(option => {
-        const {short, long, required} = option;
 
-        allowedFlagsData[short] = {
-            required: required,
+    commandLineParserInfo.options.forEach(option => {
+        const {short: shortFlagName, long: longFlagName, required: isValueOfFlagRequired} = option;
+
+        allowedFlagsData[shortFlagName] = {
+            required: isValueOfFlagRequired,
         };
 
-        allowedFlagsData[long] = {
-            required: required,
+        allowedFlagsData[longFlagName] = {
+            required: isValueOfFlagRequired,
         };
     });
 
@@ -41,7 +37,7 @@ const collectDataOfAllowedFlags = (parserObject, configData) => {
         const flagsData = value.match(/--[a-z]{1,}/g);
 
         if (flagsData) {
-            flagsData.forEach( flag => {
+            flagsData.forEach(flag => {
                 allowedFlagsData[flag] = {
                     required: false,
                 };
@@ -52,28 +48,41 @@ const collectDataOfAllowedFlags = (parserObject, configData) => {
     return allowedFlagsData;
 };
 
-const checkValidFlag = (flag, allowedFlagsData) => {
+const validateFlag = (flag, allowedFlagsData) => {
     if (!flag.indexOf('-') && !allowedFlagsData[flag]) {
         throw new Error(`Flag "${flag}" is not available`);
     }
 };
 
 const checkCommand = (allowedFlagsData, args, index) => {
-    const previousParam = args[index - 1];
-    const currentParam = args[index];
-    const isParameterAFlag = !currentParam.indexOf('-');
-    const isParameterAValueOfFlag = !previousParam.indexOf('-') && allowedFlagsData[previousParam].required;
-    const isParameterAValidCommand = !!scripts[currentParam] || currentParam === 'node';
+    const previousParameter = args[index - 1];
+    const currentParameter = args[index];
+    const isFlag = !currentParameter.indexOf('-');
+    const isFlagValue = !previousParameter.indexOf('-') && allowedFlagsData[previousParameter].required;
+    const isValidCommand = !!scripts[currentParameter] || currentParameter === 'node';
 
-    if (isParameterAFlag || isParameterAValueOfFlag) {
+    if (isFlag || isFlagValue) {
         return '';
     };
 
-    if (isParameterAValidCommand) {
-        return currentParam;
+    if (isValidCommand) {
+        return currentParameter;
     };
 
     throw new Error(`Command "${args[index]}" is not available`);
+};
+
+const areParametersPassedCorrectly = (env) => {
+    if (env && env.npm_config_argv) {
+        const originalArgumentsString = env.npm_config_argv;
+        const {original: originalArguments} = JSON.parse(originalArgumentsString);
+
+        originalArguments.forEach(argument => {
+            if (!argument.indexOf('-') && !originalArguments.includes('--')) {
+                throw new Error('It is not possible to use flags without "--" indentifier if you use "npm" package');
+            }
+        })
+    }
 };
 
 commandLineParser
@@ -85,26 +94,17 @@ commandLineParser
     .action(function (modeValue) {
         const { argv, env } = process;
         const modeIndexInArgs = process.argv.findIndex(element => element === modeValue);
-        const allowedFlagsData = collectDataOfAllowedFlags(this, scripts);
+        const allowedFlagsData = getAllowedFlagsData(this, scripts);
 
-        if (env && env.npm_config_argv) {
-            const originalArgumentsString = env.npm_config_argv;
-            const {original: originalArguments} = JSON.parse(originalArgumentsString);
-
-            originalArguments.forEach(argument => {
-                if (!argument.indexOf('-') && !originalArguments.includes('--')) {
-                    throw new Error('It is not possible to use flags without "--" indentifier if you use "npm" package');
-                }
-            })
-        }
+        areParametersPassedCorrectly(env);
 
         argv.forEach((arg, index) => {
             if (index <= modeIndexInArgs) {
-                return
+                return;
             };
 
-            checkIsModeAvailable(modeValue);
-            checkValidFlag(arg, allowedFlagsData);
+            isModeAvailable(modeValue);
+            validateFlag(arg, allowedFlagsData);
 
             const nextAvailableCommand = checkCommand(allowedFlagsData, argv, index);
 
