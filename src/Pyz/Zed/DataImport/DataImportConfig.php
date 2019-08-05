@@ -45,6 +45,7 @@ use Spryker\Zed\ShoppingListDataImport\ShoppingListDataImportConfig;
 
 /**
  * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
+ * @SuppressWarnings(PHPMD.ExcessiveClassLength)
  */
 class DataImportConfig extends SprykerDataImportConfig
 {
