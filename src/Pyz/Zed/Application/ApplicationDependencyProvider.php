@@ -160,6 +160,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new LocaleApplicationPlugin(),
             new TranslatorApplicationPlugin(),
             new MessengerApplicationPlugin(),
+            new PropelApplicationPlugin(),
         ];
     }
 }
