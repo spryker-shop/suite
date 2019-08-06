@@ -20,7 +20,7 @@ use Spryker\Shared\CustomerAccess\CustomerAccessConfig;
 
 class CustomerAccessRestApiConfig extends SprykerCustomerAccessRestApiConfig
 {
-    protected const RESOURCE_TYPE_PERMISSION_PLUGIN = [
+    protected const RESOURCE_TYPE_TO_PERMISSION_PLUGIN_MAPPING = [
         ProductPricesRestApiConfig::RESOURCE_ABSTRACT_PRODUCT_PRICES => SeePricePermissionPlugin::KEY,
         ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES => SeePricePermissionPlugin::KEY,
         CheckoutRestApiConfig::RESOURCE_CHECKOUT => SeeOrderPlaceSubmitPermissionPlugin::KEY,
@@ -30,7 +30,7 @@ class CustomerAccessRestApiConfig extends SprykerCustomerAccessRestApiConfig
         WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS => SeeWishlistPermissionPlugin::KEY,
     ];
 
-    protected const CUSTOMER_ACCESS_CONTENT_TYPE_RESOURCE_TYPE = [
+    protected const CUSTOMER_ACCESS_CONTENT_TYPE_TO_RESOURCE_TYPE_MAPPING = [
         CustomerAccessConfig::CONTENT_TYPE_PRICE => [
             ProductPricesRestApiConfig::RESOURCE_ABSTRACT_PRODUCT_PRICES,
             ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
@@ -40,7 +40,7 @@ class CustomerAccessRestApiConfig extends SprykerCustomerAccessRestApiConfig
             CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
         ],
         CustomerAccessConfig::CONTENT_TYPE_ADD_TO_CART => [
-            CartsRestApiConfig::RESOURCE_CART_ITEMS,
+            CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
         ],
         CustomerAccessConfig::CONTENT_TYPE_WISHLIST => [
             WishlistsRestApiConfig::RESOURCE_WISHLISTS,
