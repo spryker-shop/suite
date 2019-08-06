@@ -14,8 +14,8 @@ use Spryker\Shared\Twig\Plugin\HttpKernelTwigPlugin;
 use Spryker\Shared\Twig\Plugin\RoutingTwigPlugin;
 use Spryker\Shared\Twig\Plugin\RuntimeLoaderTwigPlugin;
 use Spryker\Shared\Twig\Plugin\SecurityTwigPlugin;
-use Spryker\Shared\Twig\Plugin\TranslationTwigPlugin;
 use Spryker\Yves\CmsContentWidget\Plugin\Twig\CmsContentWidgetTwigPlugin;
+use Spryker\Yves\Translator\Plugin\Twig\TranslatorTwigPlugin;
 use Spryker\Yves\Twig\Plugin\FilesystemTwigLoaderPlugin;
 use Spryker\Yves\Twig\Plugin\FormFilesystemTwigLoaderPlugin;
 use Spryker\Yves\Twig\TwigDependencyProvider as SprykerTwigDependencyProvider;
@@ -53,7 +53,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new HttpKernelTwigPlugin(),
             new RoutingTwigPlugin(),
             new SecurityTwigPlugin(),
-            new TranslationTwigPlugin(),
+            new TranslatorTwigPlugin(),
             new RuntimeLoaderTwigPlugin(),
             new ShopApplicationTwigPlugin(),
             new TwigFormRuntimeLoaderPlugin(),
