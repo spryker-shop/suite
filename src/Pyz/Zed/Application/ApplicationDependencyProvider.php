@@ -34,6 +34,7 @@ use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Locale\Communication\Plugin\Application\LocaleApplicationPlugin;
 use Spryker\Zed\Messenger\Communication\Plugin\Application\MessengerApplicationPlugin;
 use Spryker\Zed\Monitoring\Communication\Plugin\ServiceProvider\MonitoringRequestTransactionServiceProvider;
+use Spryker\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
 use Spryker\Zed\Session\Communication\Plugin\ServiceProvider\SessionServiceProvider as SprykerSessionServiceProvider;
 use Spryker\Zed\Translator\Communication\Plugin\Application\TranslatorApplicationPlugin;
 use Spryker\Zed\Twig\Communication\Plugin\Application\TwigApplicationPlugin;
@@ -159,6 +160,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new LocaleApplicationPlugin(),
             new TranslatorApplicationPlugin(),
             new MessengerApplicationPlugin(),
+            new PropelApplicationPlugin(),
         ];
     }
 }
