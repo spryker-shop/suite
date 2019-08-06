@@ -388,5 +388,4 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
         return $applicationPlugins;
     }
-
 }
