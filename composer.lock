@@ -6850,26 +6850,29 @@
         },
         {
             "name": "spryker-shop/redirect-page",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/redirect-page.git",
-                "reference": "aadf9e52f53a4ce21f266bd5add387fca20b2102"
+                "reference": "2ef2a86c1b824c5cb414a8fecc222117bb1e4173"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/redirect-page/zipball/aadf9e52f53a4ce21f266bd5add387fca20b2102",
-                "reference": "aadf9e52f53a4ce21f266bd5add387fca20b2102",
+                "url": "https://api.github.com/repos/spryker-shop/redirect-page/zipball/2ef2a86c1b824c5cb414a8fecc222117bb1e4173",
+                "reference": "2ef2a86c1b824c5cb414a8fecc222117bb1e4173",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker-shop/shop-application": "^1.0.0",
                 "spryker-shop/shop-router-extension": "^1.0.0",
-                "spryker/kernel": "^3.16.0",
-                "spryker/storage": "^3.4.0"
+                "spryker/kernel": "^3.30.0",
+                "spryker/storage": "^3.4.0",
+                "spryker/symfony": "^3.1.0"
             },
             "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*",
                 "spryker/url-storage": "*"
             },
             "suggest": {
@@ -6891,7 +6894,7 @@
                 "proprietary"
             ],
             "description": "RedirectPage module",
-            "time": "2018-06-13T13:42:55+00:00"
+            "time": "2019-08-06T09:23:44+00:00"
         },
         {
             "name": "spryker-shop/resource-share-page",
