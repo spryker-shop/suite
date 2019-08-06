@@ -11,7 +11,7 @@ use Spryker\Client\Catalog\Plugin\Config\CatalogSearchConfigBuilder;
 use Spryker\Client\Kernel\Container;
 use Spryker\Client\ProductSearchConfigStorage\Plugin\Config\ProductSearchConfigExpanderPlugin;
 use Spryker\Client\Search\SearchDependencyProvider as SprykerSearchDependencyProvider;
-use Spryker\Client\SearchElasticsearch\Plugin\ElasticsearchClientAdapterPlugin;
+use Spryker\Client\SearchElasticsearch\Plugin\ElasticsearchSearchAdapterPlugin;
 
 class SearchDependencyProvider extends SprykerSearchDependencyProvider
 {
@@ -40,12 +40,12 @@ class SearchDependencyProvider extends SprykerSearchDependencyProvider
     }
 
     /**
-     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\ClientAdapterPluginInterface[]
+     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\SearchAdapterPluginInterface[]
      */
     protected function getClientAdapterPlugins(): array
     {
         return [
-            new ElasticsearchClientAdapterPlugin(),
+            new ElasticsearchSearchAdapterPlugin(),
         ];
     }
 }

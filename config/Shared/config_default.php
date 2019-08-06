@@ -37,6 +37,7 @@ use Spryker\Shared\Queue\QueueConstants;
 use Spryker\Shared\Quote\QuoteConstants;
 use Spryker\Shared\Sales\SalesConstants;
 use Spryker\Shared\Search\SearchConstants;
+use Spryker\Shared\SearchElasticsearch\SearchElasticsearchConstants;
 use Spryker\Shared\SequenceNumber\SequenceNumberConstants;
 use Spryker\Shared\Session\SessionConfig;
 use Spryker\Shared\Session\SessionConstants;
@@ -62,7 +63,6 @@ use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
 use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
 use SprykerShop\Shared\ShopUi\ShopUiConstants;
 use Twig\Cache\FilesystemCache;
-use Spryker\Shared\SearchElasticsearch\SearchElasticsearchConstants;
 
 $CURRENT_STORE = Store::getInstance()->getStoreName();
 
@@ -551,3 +551,9 @@ $config[ApplicationConstants::ENABLE_PRETTY_ERROR_HANDLER] = false;
 
 // ----------- Documentation generator
 $config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GENERATION] = false;
+
+$config[SearchElasticsearchConstants::INDEX_NAME_MAP] = [
+    'customer-page' => 'de_customer-page',
+    'page' => 'de_page',
+    'product-review' => 'de_product-review',
+];
