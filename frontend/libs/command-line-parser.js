@@ -108,8 +108,6 @@ commandLineParser
 
             if (isCommand(allowedFlagsData, argv, index)) {
                 console.warn('It is not possible to use few commands. All commands and parameters will be ignored after second command');
-
-                return;
             }
         });
 
