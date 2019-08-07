@@ -14,13 +14,13 @@ use Spryker\Shared\Twig\Plugin\HttpKernelTwigPlugin;
 use Spryker\Shared\Twig\Plugin\RoutingTwigPlugin;
 use Spryker\Shared\Twig\Plugin\RuntimeLoaderTwigPlugin;
 use Spryker\Shared\Twig\Plugin\SecurityTwigPlugin;
-use Spryker\Shared\Twig\Plugin\TranslationTwigPlugin;
 use Spryker\Zed\Application\Communication\Plugin\Twig\ApplicationTwigPlugin;
 use Spryker\Zed\Chart\Communication\Plugin\Twig\ChartTwigPlugin;
 use Spryker\Zed\Currency\Communication\Plugin\Twig\CurrencyTwigPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\Twig\FormRuntimeLoaderTwigPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\Twig\GuiTwigLoaderPlugin;
 use Spryker\Zed\Money\Communication\Plugin\Twig\MoneyTwigPlugin;
+use Spryker\Zed\Scheduler\Communication\Plugin\Twig\SchedulerTwigPlugin;
 use Spryker\Zed\Translator\Communication\Plugin\Twig\TranslatorTwigPlugin;
 use Spryker\Zed\Twig\Communication\Plugin\FilesystemTwigLoaderPlugin;
 use Spryker\Zed\Twig\Communication\Plugin\FormFilesystemTwigLoaderPlugin;
@@ -42,7 +42,6 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new HttpKernelTwigPlugin(),
             new RoutingTwigPlugin(),
             new SecurityTwigPlugin(),
-            new TranslationTwigPlugin(),
             new RuntimeLoaderTwigPlugin(),
             new FormRuntimeLoaderTwigPlugin(),
             new ApplicationTwigPlugin(),
@@ -53,6 +52,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new ZedNavigationTwigPlugin(),
             new TranslatorTwigPlugin(),
             new DateTimeFormatterTwigPlugin(),
+            new SchedulerTwigPlugin(),
         ];
     }
 
