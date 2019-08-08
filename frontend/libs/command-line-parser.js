@@ -72,17 +72,19 @@ const isCommand = (allowedFlagsData, args, index) => {
     throw new Error(`Command "${args[index]}" is not available`);
 }
 
-const validateParameters = (env) => {
-    if (env && env.npm_config_argv) {
-        const originalArgumentsString = env.npm_config_argv;
-        const {original: originalArguments} = JSON.parse(originalArgumentsString);
-
-        originalArguments.forEach(argument => {
-            if (!argument.indexOf('-') && !originalArguments.includes('--')) {
-                throw new Error('It is not possible to use flags without "--" indentifier if you use "npm" script');
-            }
-        })
+const validateParameters = env => {
+    if (!env || !env.npm_config_argv) {
+        return;
     }
+
+    const originalArgumentsString = env.npm_config_argv;
+    const {original: originalArguments} = JSON.parse(originalArgumentsString);
+
+    originalArguments.forEach(argument => {
+        if (!argument.indexOf('-') && !originalArguments.includes('--')) {
+            throw new Error('It is not possible to use flags without "--" indentifier if you use "npm" script');
+        }
+    });
 };
 
 commandLineParser
