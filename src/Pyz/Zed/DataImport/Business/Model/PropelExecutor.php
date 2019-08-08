@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\DataImport\Business\Model;
 
+use PDO;
 use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Propel;
 
@@ -24,7 +25,7 @@ class PropelExecutor implements PropelExecutorInterface
         $stmt = $connection->prepare($sql);
         $stmt->execute($parameters);
 
-        return $stmt->fetchAll();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     /**
