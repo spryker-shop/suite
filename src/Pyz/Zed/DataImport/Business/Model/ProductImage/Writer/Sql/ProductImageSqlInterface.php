@@ -17,10 +17,15 @@ interface ProductImageSqlInterface
     /**
      * @return string
      */
-    public function createProductImageSQL(): string;
+    public function createOrUpdateProductImageSQL(): string;
 
     /**
      * @return string
      */
     public function createProductImageSetRelationSQL(): string;
+
+    /**
+     * @return string
+     */
+    public function findProductImageSetsByProductImageIds(): string;
 }

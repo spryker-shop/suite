@@ -92,6 +92,7 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
             $productImageEntityTransfer->getExternalUrlLarge()
         );
 
+        $productImageEntity->setExternalUrlLarge($productImageEntityTransfer->getExternalUrlLarge());
         $productImageEntity->setExternalUrlSmall($productImageEntityTransfer->getExternalUrlSmall());
 
         if ($productImageEntity->isNew() || $productImageEntity->isModified()) {
