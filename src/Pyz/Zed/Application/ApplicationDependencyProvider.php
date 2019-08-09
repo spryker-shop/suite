@@ -32,9 +32,9 @@ use Spryker\Zed\EventDispatcher\Communication\Plugin\Application\EventDispatcher
 use Spryker\Zed\Gui\Communication\Plugin\ServiceProvider\GuiTwigExtensionServiceProvider;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Locale\Communication\Plugin\Application\LocaleApplicationPlugin;
-use Spryker\Zed\Messenger\Communication\Plugin\ServiceProvider\MessengerServiceProvider;
+use Spryker\Zed\Messenger\Communication\Plugin\Application\MessengerApplicationPlugin;
 use Spryker\Zed\Monitoring\Communication\Plugin\ServiceProvider\MonitoringRequestTransactionServiceProvider;
-use Spryker\Zed\Propel\Communication\Plugin\ServiceProvider\PropelServiceProvider;
+use Spryker\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
 use Spryker\Zed\Session\Communication\Plugin\ServiceProvider\SessionServiceProvider as SprykerSessionServiceProvider;
 use Spryker\Zed\Translator\Communication\Plugin\Application\TranslatorApplicationPlugin;
 use Spryker\Zed\Twig\Communication\Plugin\Application\TwigApplicationPlugin;
@@ -64,11 +64,9 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new WebProfilerServiceProvider(),
             new ZedHstsServiceProvider(),
             new FormFactoryServiceProvider(),
-            new MessengerServiceProvider(),
             new MonitoringRequestTransactionServiceProvider(),
             new GuiTwigExtensionServiceProvider(),
             new RedirectAfterLoginProvider(),
-            new PropelServiceProvider(),
             new EventBehaviorServiceProvider(),
             new SaveSessionServiceProvider(),
         ];
@@ -93,7 +91,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new RoutingServiceProvider(),
             new ApiServiceProviderPlugin(),
             new ApiRoutingServiceProvider(),
-            new PropelServiceProvider(),
             new EventBehaviorServiceProvider(),
         ];
 
@@ -112,7 +109,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
     protected function getInternalCallServiceProviders(Container $container)
     {
         return [
-            new PropelServiceProvider(),
             new RequestServiceProvider(),
             new SslServiceProvider(),
             new ServiceControllerServiceProvider(),
@@ -135,7 +131,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
     protected function getInternalCallServiceProvidersWithAuthentication(Container $container)
     {
         return [
-            new PropelServiceProvider(),
             new RequestServiceProvider(),
             new SessionServiceProvider(),
             new SprykerSessionServiceProvider(),
@@ -164,6 +159,8 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new EventDispatcherApplicationPlugin(),
             new LocaleApplicationPlugin(),
             new TranslatorApplicationPlugin(),
+            new MessengerApplicationPlugin(),
+            new PropelApplicationPlugin(),
         ];
     }
 }
