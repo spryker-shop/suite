@@ -5,9 +5,9 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\ConfigurableBundle\Persistence;
+namespace Orm\Zed\SalesConfigurableBundle\Persistence;
 
-use Orm\Zed\ConfigurableBundle\Persistence\Base\SpySalesOrderConfiguredBundleItemQuery as BaseSpySalesOrderConfiguredBundleItemQuery;
+use Spryker\Zed\SalesConfigurableBundle\Persistence\Propel\AbstractSpySalesOrderConfiguredBundleItemQuery as BaseSpySalesOrderConfiguredBundleItemQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_sales_order_configured_bundle_item' table.

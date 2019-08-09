@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\ConfigurableBundle\Persistence;
 
-use Orm\Zed\ConfigurableBundle\Persistence\Base\SpyConfigurableBundleTemplateSlot as BaseSpyConfigurableBundleTemplateSlot;
+use Spryker\Zed\ConfigurableBundle\Persistence\Propel\AbstractSpyConfigurableBundleTemplateSlot as BaseSpyConfigurableBundleTemplateSlot;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_configurable_bundle_template_slot' table.

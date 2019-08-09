@@ -5,9 +5,9 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\ConfigurableBundle\Persistence;
+namespace Orm\Zed\SalesConfigurableBundle\Persistence;
 
-use Orm\Zed\ConfigurableBundle\Persistence\Base\SpySalesOrderConfiguredBundle as BaseSpySalesOrderConfiguredBundle;
+use Spryker\Zed\SalesConfigurableBundle\Persistence\Propel\AbstractSpySalesOrderConfiguredBundle as BaseSpySalesOrderConfiguredBundle;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_sales_order_configured_bundle' table.

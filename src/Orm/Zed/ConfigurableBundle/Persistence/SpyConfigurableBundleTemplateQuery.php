@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\ConfigurableBundle\Persistence;
 
-use Orm\Zed\ConfigurableBundle\Persistence\Base\SpyConfigurableBundleTemplateQuery as BaseSpyConfigurableBundleTemplateQuery;
+use Spryker\Zed\ConfigurableBundle\Persistence\Propel\AbstractSpyConfigurableBundleTemplateQuery as BaseSpyConfigurableBundleTemplateQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_configurable_bundle_template' table.
