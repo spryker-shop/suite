@@ -15,12 +15,13 @@ use Elastica\Query\Term;
 use Generated\Shared\Search\PageIndexMap;
 use Spryker\Client\Kernel\AbstractPlugin;
 use Spryker\Client\ProductLabel\Plugin\ProductLabelFacetConfigTransferBuilderPlugin;
-use Spryker\Client\Search\Dependency\Plugin\QueryInterface;
+use Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface;
+use Spryker\Client\SearchExtension\Dependency\Plugin\NamedQueryInterface;
 
 /**
  * @method \Pyz\Client\ExampleProductSalePage\ExampleProductSalePageFactory getFactory()
  */
-class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface
+class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface, NamedQueryInterface
 {
     /**
      * @var \Elastica\Query
@@ -33,11 +34,27 @@ class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface
     }
 
     /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
      * @return \Elastica\Query
      */
     public function getSearchQuery()
     {
         return $this->query;
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
+     * @return string
+     */
+    public function getIndexName(): string
+    {
+        return 'page';
     }
 
     /**
