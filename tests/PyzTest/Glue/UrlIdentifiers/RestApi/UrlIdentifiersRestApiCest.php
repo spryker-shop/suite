@@ -90,14 +90,22 @@ class UrlIdentifiersRestApiCest
      *
      * @return void
      */
-    public function requestExistingProductAbstract(UrlIdentifiersRestApiTester $I): void
+    public function requestExistingProductAbstractUrl(UrlIdentifiersRestApiTester $I): void
     {
+        $currentLocale = $I->getLocator()->locale()->client()->getCurrentLocale();
+        $localizedUrl = '';
+        foreach ($this->fixtures->getProductUrlTransfer()->getUrls() as $localizedUrlTransfer) {
+            if ($localizedUrlTransfer->getLocale()->getLocaleName() === $currentLocale) {
+                $localizedUrl = $localizedUrlTransfer->getUrl();
+            }
+        }
+
         //act
         $I->sendGET(
             $I->formatUrl(
                 'url-identifiers?url={url}',
                 [
-                    'url' => $this->fixtures->getProductUrlTransfer()->getUrls()->offsetGet(1)->getUrl(),
+                    'url' => $localizedUrl,
                 ]
             )
         );
@@ -119,7 +127,7 @@ class UrlIdentifiersRestApiCest
      *
      * @return void
      */
-    public function requestExistingCategory(UrlIdentifiersRestApiTester $I): void
+    public function requestExistingCategoryUrl(UrlIdentifiersRestApiTester $I): void
     {
         //act
         $I->sendGET(
