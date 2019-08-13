@@ -540,7 +540,7 @@ $config[ApplicationConstants::ENABLE_PRETTY_ERROR_HANDLER] = false;
 $config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GENERATION] = false;
 
 // ---------- Synchronization
-$config[SynchronizationConstants::STORAGE_SYNC_ENABLED] = true;
+$config[SynchronizationConstants::STORAGE_SYNC_ENABLED] = false;
 $config[SynchronizationConstants::SEARCH_SYNC_ENABLED] = true;
 
 // ---------- Database storage
