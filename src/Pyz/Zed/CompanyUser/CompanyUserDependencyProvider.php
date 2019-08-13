@@ -8,6 +8,7 @@
 namespace Pyz\Zed\CompanyUser;
 
 use Spryker\Zed\CompanyBusinessUnit\Communication\Plugin\CompanyUser\AssignDefaultBusinessUnitToCompanyUserPlugin;
+use Spryker\Zed\CompanyBusinessUnit\Communication\Plugin\CompanyUser\CheckCompanyUserUniquenessCompanyUserSavePreCheckPlugin;
 use Spryker\Zed\CompanyBusinessUnit\Communication\Plugin\CompanyUser\CompanyBusinessUnitHydratePlugin;
 use Spryker\Zed\CompanyRole\Communication\Plugin\CompanyUser\AssignDefaultCompanyUserRolePlugin;
 use Spryker\Zed\CompanyRole\Communication\Plugin\CompanyUser\AssignRolesCompanyUserPostCreatePlugin;
@@ -15,6 +16,7 @@ use Spryker\Zed\CompanyRole\Communication\Plugin\CompanyUser\AssignRolesCompanyU
 use Spryker\Zed\CompanyRole\Communication\Plugin\CompanyUser\CompanyRoleCollectionHydratePlugin;
 use Spryker\Zed\CompanyUser\CompanyUserDependencyProvider as SprykerCompanyUserDependencyProvider;
 use Spryker\Zed\MerchantRelationship\Communication\Plugin\CompanyUser\MerchantRelationshipHydratePlugin;
+use Spryker\Zed\QuoteRequest\Communication\Plugin\CompanyUserExtension\QuoteRequestCompanyUserPreDeletePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\CompanyUserExtension\SharedCartCompanyUserPreDeletePlugin;
 use Spryker\Zed\ShoppingList\Communication\Plugin\CompanyUserExtension\ShoppingListCompanyUserPreDeletePlugin;
 
@@ -71,6 +73,17 @@ class CompanyUserDependencyProvider extends SprykerCompanyUserDependencyProvider
         return [
             new ShoppingListCompanyUserPreDeletePlugin(),
             new SharedCartCompanyUserPreDeletePlugin(),
+            new QuoteRequestCompanyUserPreDeletePlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\CompanyUserExtension\Dependency\Plugin\CompanyUserSavePreCheckPluginInterface[]
+     */
+    protected function getCompanyUserSavePreCheckPlugins(): array
+    {
+        return [
+            new CheckCompanyUserUniquenessCompanyUserSavePreCheckPlugin(),
         ];
     }
 }
