@@ -1,5 +1,0 @@
-{% set storeServices = project['regions'][groupData['region']]['stores'][endpointData['store']]['services'] | default([]) %}
-    fastcgi_param APPLICATION_STORE "{{ endpointData['store'] }}";
-    fastcgi_param SPRYKER_SEARCH_NAMESPACE "{{ storeServices['search']['namespace'] | default(endpointData['services']['search']['namespace'])  }}";
-    fastcgi_param SPRYKER_KEY_VALUE_STORE_NAMESPACE "{{ storeServices['key_value_store']['namespace'] | default(endpointData['services']['key_value_store']['namespace'])  }}";
-    fastcgi_param SPRYKER_BROKER_NAMESPACE "{{ storeServices['broker']['namespace'] | default(endpointData['services']['broker']['namespace'])  }}";

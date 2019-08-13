@@ -14,8 +14,8 @@ use Spryker\Shared\Twig\Plugin\HttpKernelTwigPlugin;
 use Spryker\Shared\Twig\Plugin\RoutingTwigPlugin;
 use Spryker\Shared\Twig\Plugin\RuntimeLoaderTwigPlugin;
 use Spryker\Shared\Twig\Plugin\SecurityTwigPlugin;
-use Spryker\Shared\Twig\Plugin\TranslationTwigPlugin;
 use Spryker\Yves\CmsContentWidget\Plugin\Twig\CmsContentWidgetTwigPlugin;
+use Spryker\Yves\Translator\Plugin\Twig\TranslatorTwigPlugin;
 use Spryker\Yves\Twig\Plugin\FilesystemTwigLoaderPlugin;
 use Spryker\Yves\Twig\Plugin\FormFilesystemTwigLoaderPlugin;
 use Spryker\Yves\Twig\TwigDependencyProvider as SprykerTwigDependencyProvider;
@@ -37,6 +37,7 @@ use SprykerShop\Yves\ShopApplication\Plugin\Twig\WidgetTagTwigPlugin;
 use SprykerShop\Yves\ShopApplication\Plugin\Twig\WidgetTwigPlugin;
 use SprykerShop\Yves\ShopApplication\Plugin\TwigFormRuntimeLoaderPlugin;
 use SprykerShop\Yves\ShopPermission\Plugin\Twig\ShopPermissionTwigPlugin;
+use SprykerShop\Yves\ShopUi\Plugin\Twig\FunctionTwigPlugin;
 use SprykerShop\Yves\ShopUi\Plugin\Twig\ShopUiTwigPlugin;
 use SprykerShop\Yves\WebProfilerWidget\Plugin\Twig\WebProfilerTwigLoaderPlugin;
 
@@ -53,7 +54,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new HttpKernelTwigPlugin(),
             new RoutingTwigPlugin(),
             new SecurityTwigPlugin(),
-            new TranslationTwigPlugin(),
+            new TranslatorTwigPlugin(),
             new RuntimeLoaderTwigPlugin(),
             new ShopApplicationTwigPlugin(),
             new TwigFormRuntimeLoaderPlugin(),
@@ -75,6 +76,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new ContentProductAbstractListTwigPlugin(),
             new ContentProductSetTwigPlugin(),
             new ContentFileListTwigPlugin(),
+            new FunctionTwigPlugin(),
         ];
     }
 
