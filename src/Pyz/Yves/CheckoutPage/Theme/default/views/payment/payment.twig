@@ -55,8 +55,7 @@
                                         required: false,
                                         component: molecule('toggler-radio'),
                                         attributes: {
-                                            'target-selector': '.js-payment-method-' ~ embed.index,
-                                            'class-to-toggle': 'is-hidden'
+                                            'target-class-name': 'js-payment-method-' ~ embed.index,
                                         }
                                     }) }}
                                     <div class="col col--sm-12 is-hidden js-payment-method-{{embed.index}}">
