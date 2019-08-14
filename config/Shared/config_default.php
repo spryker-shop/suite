@@ -31,7 +31,6 @@ use Spryker\Shared\Nopayment\NopaymentConfig;
 use Spryker\Shared\Nopayment\NopaymentConstants;
 use Spryker\Shared\Oauth\OauthConstants;
 use Spryker\Shared\Oms\OmsConstants;
-use Spryker\Shared\PriceProduct\PriceProductConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Queue\QueueConfig;
 use Spryker\Shared\Queue\QueueConstants;
@@ -536,6 +535,3 @@ $config[ApplicationConstants::ENABLE_PRETTY_ERROR_HANDLER] = false;
 
 // ----------- Documentation generator
 $config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GENERATION] = false;
-
-// ----------- PriceProduct
-$config[PriceProductConstants::DELETE_ORPHAN_PRICES_MODE_ENABLED] = true;
