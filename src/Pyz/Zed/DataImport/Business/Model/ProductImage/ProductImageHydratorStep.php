@@ -67,7 +67,6 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
     {
         $imageSetEntityTransfer = new SpyProductImageSetEntityTransfer();
         $imageSetEntityTransfer->setName($dataSet[static::KEY_IMAGE_SET_NAME]);
-        $dataSet[static::KEY_PRODUCT_IMAGE_KEY] = $this->buildProductImageKey($dataSet);
 
         if (!empty($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT])) {
             $imageSetEntityTransfer->setFkProductAbstract($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT]);
@@ -104,6 +103,7 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
         $imageEntityTransfer = new SpyProductImageEntityTransfer();
         $imageEntityTransfer->setExternalUrlLarge($dataSet[static::KEY_EXTERNAL_URL_LARGE]);
         $imageEntityTransfer->setExternalUrlSmall($dataSet[static::KEY_EXTERNAL_URL_SMALL]);
+        $imageEntityTransfer->setProductImageKey($dataSet[static::KEY_PRODUCT_IMAGE_KEY]);
 
         $dataSet[static::DATA_PRODUCT_IMAGE_TRANSFER] = $imageEntityTransfer;
     }
@@ -133,24 +133,5 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
         }
 
         return static::IMAGE_TO_IMAGE_SET_RELATION_ORDER;
-    }
-
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return string
-     */
-    protected function buildProductImageKey(DataSetInterface $dataSet): string
-    {
-        $productImageKey = sprintf(
-            '%s:%d:%d:%d:%s',
-            $dataSet[static::KEY_IMAGE_SET_NAME],
-            $dataSet[static::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT] ?? 0,
-            $dataSet[static::KEY_IMAGE_SET_FK_PRODUCT] ?? 0,
-            $dataSet[static::KEY_IMAGE_SET_FK_LOCALE] ?? $dataSet[static::KEY_LOCALE],
-            $dataSet[static::KEY_EXTERNAL_URL_LARGE]
-        );
-
-        return md5($productImageKey);
     }
 }
