@@ -11,6 +11,7 @@ use Generated\Shared\Transfer\DataImporterQueueWriterConfigurationTransfer;
 use Spryker\Zed\BusinessOnBehalfDataImport\BusinessOnBehalfDataImportConfig;
 use Spryker\Zed\CategoryDataImport\CategoryDataImportConfig;
 use Spryker\Zed\CmsPageDataImport\CmsPageDataImportConfig;
+use Spryker\Zed\CmsSlotDataImport\CmsSlotDataImportConfig;
 use Spryker\Zed\CommentDataImport\CommentDataImportConfig;
 use Spryker\Zed\CompanyBusinessUnitDataImport\CompanyBusinessUnitDataImportConfig;
 use Spryker\Zed\CompanyDataImport\CompanyDataImportConfig;
@@ -556,6 +557,8 @@ class DataImportConfig extends SprykerDataImportConfig
             PriceProductMerchantRelationshipDataImportConfig::IMPORT_TYPE_PRICE_PRODUCT_MERCHANT_RELATIONSHIP,
             MerchantRelationshipSalesOrderThresholdDataImportConfig::IMPORT_TYPE_MERCHANT_RELATIONSHIP_SALES_ORDER_THRESHOLD,
             CommentDataImportConfig::IMPORT_TYPE_COMMENT,
+            CmsSlotDataImportConfig::IMPORT_TYPE_CMS_SLOT_TEMPLATE,
+            CmsSlotDataImportConfig::IMPORT_TYPE_CMS_SLOT,
         ];
     }
 }
