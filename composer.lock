@@ -7629,16 +7629,16 @@
         },
         {
             "name": "spryker-shop/shopping-list-widget",
-            "version": "0.6.1",
+            "version": "0.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/shopping-list-widget.git",
-                "reference": "a3088662e42958b34c6e67b620662f45688b4a73"
+                "reference": "b016f8039deb87bf5c552d108946df1067c70b75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/shopping-list-widget/zipball/a3088662e42958b34c6e67b620662f45688b4a73",
-                "reference": "a3088662e42958b34c6e67b620662f45688b4a73",
+                "url": "https://api.github.com/repos/spryker-shop/shopping-list-widget/zipball/b016f8039deb87bf5c552d108946df1067c70b75",
+                "reference": "b016f8039deb87bf5c552d108946df1067c70b75",
                 "shasum": ""
             },
             "require": {
@@ -7654,18 +7654,18 @@
             },
             "require-dev": {
                 "spryker-shop/customer-page": "*",
+                "spryker-shop/product-detail-page": "*",
                 "spryker-shop/shopping-list-page": "*",
                 "spryker/code-sniffer": "*",
-                "spryker/product-detail-page": "*",
                 "spryker/silex": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
                 "spryker-shop/customer-page": "Widget plugins are available for this module.",
                 "spryker-shop/multi-cart-page": "If you want to use CartToShoppingListWidgetPlugin: ^1.0.0",
+                "spryker-shop/product-detail-page": "To use ShoppingListWidget plugin, ShoppingListWidgetPluginInterface from product-detail-page v0.2.2 is needed",
                 "spryker-shop/quick-order-page": "If you want to use ShoppingListQuickOrderPageWidgetPlugin: ^1.0.0",
                 "spryker-shop/shopping-list-page": "Use this module if you want see shopping list pages",
-                "spryker/product-detail-page": "To use ShoppingListWidget plugin, ShoppingListWidgetPluginInterface from product-detail-page v0.2.2 is needed",
                 "spryker/silex": "Use this module when using plugins that need Silex dependencies."
             },
             "type": "library",
@@ -7684,7 +7684,7 @@
                 "proprietary"
             ],
             "description": "ShoppingListWidget module",
-            "time": "2019-08-09T15:43:43+00:00"
+            "time": "2019-08-14T13:48:21+00:00"
         },
         {
             "name": "spryker-shop/tabs-widget",
