@@ -19,6 +19,7 @@ class CmsBlockStoreWriterStep extends PublishAwareStep implements DataImportStep
 {
     public const BULK_SIZE = 100;
     public const KEY_BLOCK_NAME = 'block_name';
+    public const KEY_BLOCK_KEY = 'block_key';
     public const KEY_STORE_NAME = 'store_name';
 
     /**
@@ -38,7 +39,7 @@ class CmsBlockStoreWriterStep extends PublishAwareStep implements DataImportStep
      */
     public function execute(DataSetInterface $dataSet)
     {
-        $idCmsBlock = $this->getIdCmsBlockByName($dataSet[static::KEY_BLOCK_NAME]);
+        $idCmsBlock = $this->getIdCmsBlockByKey($dataSet[static::KEY_BLOCK_KEY]);
 
         (new SpyCmsBlockStoreQuery())
             ->filterByFkCmsBlock($idCmsBlock)
@@ -50,6 +51,8 @@ class CmsBlockStoreWriterStep extends PublishAwareStep implements DataImportStep
     }
 
     /**
+     * @deprecated Use getIdCmsBlockByKey instead
+     *
      * @param string $cmsBlockName
      *
      * @return int
@@ -62,6 +65,21 @@ class CmsBlockStoreWriterStep extends PublishAwareStep implements DataImportStep
         }
 
         return static::$idCmsBlockBuffer[$cmsBlockName];
+    }
+
+    /**
+     * @param string $cmsBlockKey
+     *
+     * @return int
+     */
+    protected function getIdCmsBlockByKey(string $cmsBlockKey): int
+    {
+        if (!isset(static::$idCmsBlockBuffer[$cmsBlockKey])) {
+            static::$idCmsBlockBuffer[$cmsBlockKey] =
+                SpyCmsBlockQuery::create()->findOneByKey($cmsBlockKey)->getIdCmsBlock();
+        }
+
+        return static::$idCmsBlockBuffer[$cmsBlockKey];
     }
 
     /**

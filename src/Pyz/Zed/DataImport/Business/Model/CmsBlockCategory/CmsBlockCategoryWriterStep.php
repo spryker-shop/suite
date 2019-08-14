@@ -21,6 +21,7 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 class CmsBlockCategoryWriterStep extends PublishAwareStep implements DataImportStepInterface
 {
     public const KEY_BLOCK_NAME = 'block_name';
+    public const KEY_BLOCK_KEY = 'block_key';
     public const KEY_CATEGORY_KEY = 'category_key';
     public const KEY_CATEGORY_TEMPLATE_NAME = 'template_name';
     public const KEY_CMS_BLOCK_CATEGORY_POSITION_NAME = 'cms_block_category_position_name';
@@ -34,9 +35,9 @@ class CmsBlockCategoryWriterStep extends PublishAwareStep implements DataImportS
      */
     public function execute(DataSetInterface $dataSet)
     {
-        $cmsBlockEntity = SpyCmsBlockQuery::create()->findOneByName($dataSet[static::KEY_BLOCK_NAME]);
+        $cmsBlockEntity = SpyCmsBlockQuery::create()->findOneByKey($dataSet[static::KEY_BLOCK_KEY]);
         if (!$cmsBlockEntity) {
-              throw new EntityNotFoundException(sprintf('CmsBlock not found by block name "%s"', $dataSet[static::KEY_BLOCK_NAME]));
+              throw new EntityNotFoundException(sprintf('CmsBlock not found by block key "%s"', $dataSet[static::KEY_BLOCK_KEY]));
         }
 
         $categoryEntity = SpyCategoryQuery::create()->findOneByCategoryKey($dataSet[static::KEY_CATEGORY_KEY]);
