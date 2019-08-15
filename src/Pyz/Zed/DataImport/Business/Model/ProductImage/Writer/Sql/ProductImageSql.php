@@ -102,14 +102,14 @@ class ProductImageSql implements ProductImageSqlInterface
         RETURNING id_product_image
     ),
     updated as (
-    UPDATE spy_product_image
-    SET external_url_small = externalUrlSmall
-    FROM records
-    WHERE idProductImage IS NOT NULL AND
-    product_image_key = productImageKey AND
-    external_url_large = externalUrlLarge AND 
-    external_url_small != externalUrlSmall
-    RETURNING id_product_image
+        UPDATE spy_product_image
+        SET external_url_small = externalUrlSmall
+        FROM records
+        WHERE idProductImage IS NOT NULL 
+            AND product_image_key = productImageKey 
+            AND external_url_large = externalUrlLarge 
+            AND external_url_small != externalUrlSmall
+        RETURNING id_product_image
     )
     SELECT id_product_image
     FROM inserted
@@ -183,21 +183,21 @@ class ProductImageSql implements ProductImageSqlInterface
      */
     public function findProductImageSetsByProductImageIds(): string
     {
-        $sql = "WITH touched_product_images as (
-            SELECT unnest((? :: INTEGER [])) as id_product_image
-        )
-        SELECT DISTINCT
-      name,
-      fk_locale,
-      fk_product,
-      fk_product_abstract
+        $sql = "WITH 
+    touched_product_images as (
+        SELECT unnest((? :: INTEGER [])) as id_product_image
+    )
+    SELECT DISTINCT
+        name,
+        fk_locale,
+        fk_product,
+        fk_product_abstract
     FROM spy_product_image_set
     INNER JOIN spy_product_image_set_to_product_image ON
         id_product_image_set = fk_product_image_set
     WHERE fk_product_image IN (
         SELECT id_product_image FROM touched_product_images
-    )
- ";
+    )";
 
         return $sql;
     }
