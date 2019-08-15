@@ -143,8 +143,10 @@ class ProductImageRepository implements ProductImageRepositoryInterface
     }
 
     /**
-     * @param int|string $productImageId
-     * @param string|int $externalUrlLarge
+     * @param string $name
+     * @param int $localeId
+     * @param int|null $productAbstractId
+     * @param int|null $productConcreteId
      *
      * @return string
      */

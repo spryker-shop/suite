@@ -27,6 +27,9 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
      */
     protected $productImageRepository;
 
+    /**
+     * @param \Pyz\Zed\DataImport\Business\Model\ProductImage\Repository\ProductImageRepositoryInterface $productImageRepository
+     */
     public function __construct(ProductImageRepositoryInterface $productImageRepository)
     {
         $this->productImageRepository = $productImageRepository;
