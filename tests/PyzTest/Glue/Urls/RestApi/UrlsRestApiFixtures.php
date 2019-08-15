@@ -5,13 +5,13 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace PyzTest\Glue\UrlIdentifiers\RestApi;
+namespace PyzTest\Glue\Urls\RestApi;
 
 use Generated\Shared\Transfer\ProductAbstractTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\ProductUrlTransfer;
 use Generated\Shared\Transfer\UrlTransfer;
-use PyzTest\Glue\UrlIdentifiers\UrlIdentifiersRestApiTester;
+use PyzTest\Glue\Urls\UrlsRestApiTester;
 use Spryker\Zed\Locale\Business\LocaleFacade;
 use Spryker\Zed\Url\Business\UrlFacade;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
@@ -21,13 +21,13 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  * Auto-generated group annotations
  * @group PyzTest
  * @group Glue
- * @group UrlIdentifiers
+ * @group Urls
  * @group RestApi
- * @group UrlIdentifiersRestApiFixtures
+ * @group UrlsRestApiFixtures
  * Add your own group annotations below this line
  * @group EndToEnd
  */
-class UrlIdentifiersRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
+class UrlsRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
     /**
      * @var \Generated\Shared\Transfer\ProductConcreteTransfer
@@ -69,11 +69,11 @@ class UrlIdentifiersRestApiFixtures implements FixturesBuilderInterface, Fixture
     }
 
     /**
-     * @param \PyzTest\Glue\UrlIdentifiers\UrlIdentifiersRestApiTester $I
+     * @param \PyzTest\Glue\Urls\UrlsRestApiTester $I
      *
      * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
-    public function buildFixtures(UrlIdentifiersRestApiTester $I): FixturesContainerInterface
+    public function buildFixtures(UrlsRestApiTester $I): FixturesContainerInterface
     {
         $this->createProductConcrete($I);
         $this->createProductUrl($I);
@@ -83,21 +83,21 @@ class UrlIdentifiersRestApiFixtures implements FixturesBuilderInterface, Fixture
     }
 
     /**
-     * @param \PyzTest\Glue\UrlIdentifiers\UrlIdentifiersRestApiTester $I
+     * @param \PyzTest\Glue\Urls\UrlsRestApiTester $I
      *
      * @return void
      */
-    protected function createProductConcrete(UrlIdentifiersRestApiTester $I): void
+    protected function createProductConcrete(UrlsRestApiTester $I): void
     {
         $this->productConcreteTransfer = $I->haveFullProduct();
     }
 
     /**
-     * @param \PyzTest\Glue\UrlIdentifiers\UrlIdentifiersRestApiTester $I
+     * @param \PyzTest\Glue\Urls\UrlsRestApiTester $I
      *
      * @return void
      */
-    protected function createProductUrl(UrlIdentifiersRestApiTester $I): void
+    protected function createProductUrl(UrlsRestApiTester $I): void
     {
         $productAbstractTransfer = (new ProductAbstractTransfer())
             ->setIdProductAbstract($this->productConcreteTransfer->getFkProductAbstract());
@@ -106,11 +106,11 @@ class UrlIdentifiersRestApiFixtures implements FixturesBuilderInterface, Fixture
     }
 
     /**
-     * @param \PyzTest\Glue\UrlIdentifiers\UrlIdentifiersRestApiTester $I
+     * @param \PyzTest\Glue\Urls\UrlsRestApiTester $I
      *
      * @return void
      */
-    protected function createCategoryUrl(UrlIdentifiersRestApiTester $I): void
+    protected function createCategoryUrl(UrlsRestApiTester $I): void
     {
         $categoryTransfer = $I->haveLocalizedCategory();
         $this->categoryUrlTransfer = (new UrlFacade())

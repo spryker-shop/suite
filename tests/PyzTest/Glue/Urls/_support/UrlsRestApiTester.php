@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace PyzTest\Glue\UrlIdentifiers;
+namespace PyzTest\Glue\Urls;
 
 use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
 
@@ -24,9 +24,9 @@ use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
  *
  * @SuppressWarnings(PHPMD)
  */
-class UrlIdentifiersRestApiTester extends ApiEndToEndTester
+class UrlsRestApiTester extends ApiEndToEndTester
 {
-    use _generated\UrlIdentifiersRestApiTesterActions;
+    use _generated\UrlsRestApiTesterActions;
 
    /**
     * Define custom actions here

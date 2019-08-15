@@ -5,51 +5,51 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace PyzTest\Glue\UrlIdentifiers\RestApi;
+namespace PyzTest\Glue\Urls\RestApi;
 
 use Codeception\Util\HttpCode;
-use PyzTest\Glue\UrlIdentifiers\UrlIdentifiersRestApiTester;
+use PyzTest\Glue\Urls\UrlsRestApiTester;
 
 /**
  * Auto-generated group annotations
  * @group PyzTest
  * @group Glue
- * @group UrlIdentifiers
+ * @group Urls
  * @group RestApi
- * @group UrlIdentifiersRestApiCest
+ * @group UrlsRestApiCest
  * Add your own group annotations below this line
  * @group EndToEnd
  */
-class UrlIdentifiersRestApiCest
+class UrlsRestApiCest
 {
     /**
-     * @var \PyzTest\Glue\UrlIdentifiers\RestApi\UrlIdentifiersRestApiFixtures
+     * @var \PyzTest\Glue\Urls\RestApi\UrlsRestApiFixtures
      */
     protected $fixtures;
 
     /**
-     * @param \PyzTest\Glue\UrlIdentifiers\UrlIdentifiersRestApiTester $I
+     * @param \PyzTest\Glue\Urls\UrlsRestApiTester $I
      *
      * @return void
      */
-    public function loadFixtures(UrlIdentifiersRestApiTester $I): void
+    public function loadFixtures(UrlsRestApiTester $I): void
     {
-        $this->fixtures = $I->loadFixtures(UrlIdentifiersRestApiFixtures::class);
+        $this->fixtures = $I->loadFixtures(UrlsRestApiFixtures::class);
     }
 
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\UrlIdentifiers\UrlIdentifiersRestApiTester $I
+     * @param \PyzTest\Glue\Urls\UrlsRestApiTester $I
      *
      * @return void
      */
-    public function requestNonExistingUrl(UrlIdentifiersRestApiTester $I): void
+    public function requestNonExistingUrl(UrlsRestApiTester $I): void
     {
         //act
         $I->sendGET(
             $I->formatUrl(
-                'url-identifiers?url={url}',
+                'urls?url={url}',
                 [
                     'url' => 'none',
                 ]
@@ -65,16 +65,16 @@ class UrlIdentifiersRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\UrlIdentifiers\UrlIdentifiersRestApiTester $I
+     * @param \PyzTest\Glue\UrlIdentifiers\UrlsRestApiTester $I
      *
      * @return void
      */
-    public function requestUrlWithoutUrlParameter(UrlIdentifiersRestApiTester $I): void
+    public function requestUrlWithoutUrlParameter(UrlsRestApiTester $I): void
     {
         //act
         $I->sendGET(
             $I->formatUrl(
-                'url-identifiers'
+                'urls'
             )
         );
 
@@ -86,11 +86,11 @@ class UrlIdentifiersRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\UrlIdentifiers\UrlIdentifiersRestApiTester $I
+     * @param \PyzTest\Glue\Urls\UrlsRestApiTester $I
      *
      * @return void
      */
-    public function requestExistingProductAbstractUrl(UrlIdentifiersRestApiTester $I): void
+    public function requestExistingProductAbstractUrl(UrlsRestApiTester $I): void
     {
         $currentLocale = $I->getLocator()->locale()->client()->getCurrentLocale();
         $localizedUrl = '';
@@ -103,7 +103,7 @@ class UrlIdentifiersRestApiCest
         //act
         $I->sendGET(
             $I->formatUrl(
-                'url-identifiers?url={url}',
+                'urls?url={url}',
                 [
                     'url' => $localizedUrl,
                 ]
@@ -115,24 +115,24 @@ class UrlIdentifiersRestApiCest
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSure('Returned resource collection consists of 1 item of type url-identifiers')
+        $I->amSure('Returned resource collection consists of 1 item of type urls')
             ->whenI()
-            ->seeResponseDataContainsResourceCollectionOfTypeWithSizeOf('url-identifiers', 1);
+            ->seeResponseDataContainsResourceCollectionOfTypeWithSizeOf('urls', 1);
     }
 
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\UrlIdentifiers\UrlIdentifiersRestApiTester $I
+     * @param \PyzTest\Glue\Urls\UrlsRestApiTester $I
      *
      * @return void
      */
-    public function requestExistingCategoryUrl(UrlIdentifiersRestApiTester $I): void
+    public function requestExistingCategoryUrl(UrlsRestApiTester $I): void
     {
         //act
         $I->sendGET(
             $I->formatUrl(
-                'url-identifiers?url={url}',
+                'urls?url={url}',
                 [
                     'url' => $this->fixtures->getCategoryUrlTransfer()->getUrl(),
                 ]
@@ -144,8 +144,8 @@ class UrlIdentifiersRestApiCest
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSure('Returned resource collection consists of 1 item of type url-identifiers')
+        $I->amSure('Returned resource collection consists of 1 item of type urls')
             ->whenI()
-            ->seeResponseDataContainsResourceCollectionOfTypeWithSizeOf('url-identifiers', 1);
+            ->seeResponseDataContainsResourceCollectionOfTypeWithSizeOf('urls', 1);
     }
 }

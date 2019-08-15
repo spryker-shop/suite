@@ -1,4 +1,4 @@
-namespace: PyzTest\Glue\UrlIdentifiers
+namespace: PyzTest\Glue\Urls
 
 paths:
     tests: .
@@ -13,7 +13,7 @@ coverage:
 
 suites:
     RestApi:
-        class_name: UrlIdentifiersRestApiTester
+        class_name: UrlsRestApiTester
         modules:
             enabled:
                 - \PyzTest\Shared\Testify\Helper\Environment
