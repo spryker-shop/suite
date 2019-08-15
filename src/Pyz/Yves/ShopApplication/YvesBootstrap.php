@@ -39,6 +39,7 @@ use SprykerShop\Yves\CommentWidget\Plugin\Provider\CommentWidgetControllerProvid
 use SprykerShop\Yves\CompanyPage\Plugin\Provider\CompanyPageControllerProvider;
 use SprykerShop\Yves\CompanyUserAgentWidget\Plugin\Provider\CompanyUserAgentWidgetControllerProvider;
 use SprykerShop\Yves\CompanyUserInvitationPage\Plugin\Provider\CompanyUserInvitationPageControllerProvider;
+use SprykerShop\Yves\ConfigurableBundleWidget\Plugin\Provider\ConfigurableBundleWidgetControllerProvider;
 use SprykerShop\Yves\CurrencyWidget\Plugin\Provider\CurrencyWidgetControllerProvider;
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerPageControllerProvider;
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerSecurityServiceProvider;
@@ -185,6 +186,7 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new ResourceSharePageControllerProvider($isSsl), #UniqueUrlFeature
             new ShareCartByLinkWidgetControllerProvider($isSsl), #UniqueURLFeature
             new CommentWidgetControllerProvider($isSsl),
+            new ConfigurableBundleWidgetControllerProvider($isSsl),
         ];
     }
 }
