@@ -9,7 +9,6 @@ namespace Pyz\Yves\ShopApplication;
 
 use Pyz\Yves\ExampleProductSalePage\Plugin\Provider\ExampleProductSaleControllerProvider;
 use Silex\Provider\FormServiceProvider;
-use Silex\Provider\HttpFragmentServiceProvider;
 use Silex\Provider\RememberMeServiceProvider;
 use Silex\Provider\SecurityServiceProvider;
 use Silex\Provider\SessionServiceProvider;
@@ -17,9 +16,6 @@ use Silex\Provider\ValidatorServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\FormFactoryServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\RoutingServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\UrlGeneratorServiceProvider;
-use Spryker\Yves\Application\Plugin\Provider\CookieServiceProvider;
-use Spryker\Yves\Application\Plugin\Provider\YvesHstsServiceProvider;
-use Spryker\Yves\Application\Plugin\ServiceProvider\SslServiceProvider;
 use Spryker\Yves\Messenger\Plugin\Provider\FlashMessengerServiceProvider;
 use Spryker\Yves\Monitoring\Plugin\ServiceProvider\MonitoringRequestTransactionServiceProvider;
 use Spryker\Yves\Session\Plugin\ServiceProvider\SessionServiceProvider as SprykerSessionServiceProvider;
@@ -89,7 +85,6 @@ class YvesBootstrap extends SprykerYvesBootstrap
      */
     protected function registerServiceProviders()
     {
-        $this->application->register(new SslServiceProvider());
         $this->application->register(new StorageCacheServiceProvider());
         $this->application->register(new ZedRequestHeaderServiceProvider());
         $this->application->register(new ShopControllerEventServiceProvider());
@@ -101,17 +96,14 @@ class YvesBootstrap extends SprykerYvesBootstrap
         $this->application->register(new YvesExceptionServiceProvider());
         $this->application->register(new ErrorPageServiceProvider());
         $this->application->register(new MonitoringRequestTransactionServiceProvider());
-        $this->application->register(new CookieServiceProvider());
         $this->application->register(new UrlGeneratorServiceProvider());
         $this->application->register(new RememberMeServiceProvider());
         $this->application->register(new RoutingServiceProvider());
         $this->application->register(new ValidatorServiceProvider());
         $this->application->register(new FormServiceProvider());
-        $this->application->register(new HttpFragmentServiceProvider());
         $this->application->register(new FlashMessengerServiceProvider());
         $this->application->register(new WebProfilerWidgetServiceProvider());
         $this->application->register(new AutoloaderCacheServiceProvider());
-        $this->application->register(new YvesHstsServiceProvider());
         $this->application->register(new FormFactoryServiceProvider());
         $this->application->register(new AgentPageSecurityServiceProvider()); # AgentFeature
     }

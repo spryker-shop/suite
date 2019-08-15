@@ -9,6 +9,11 @@ namespace Pyz\Zed\EventDispatcher;
 
 use Spryker\Zed\Application\Communication\Plugin\EventDispatcher\HeadersSecurityEventDispatcherPlugin;
 use Spryker\Zed\EventDispatcher\EventDispatcherDependencyProvider as SprykerEventDispatcherDependencyProvider;
+use Spryker\Zed\Http\Communication\Plugin\EventDispatcher\CookieEventDispatcherPlugin;
+use Spryker\Zed\Http\Communication\Plugin\EventDispatcher\FragmentEventDispatcherPlugin;
+use Spryker\Zed\Http\Communication\Plugin\EventDispatcher\HeaderEventDispatcherPlugin;
+use Spryker\Zed\Http\Communication\Plugin\EventDispatcher\HstsHeaderEventDispatcher;
+use Spryker\Zed\Http\Communication\Plugin\EventDispatcher\SslEventDispatcherPlugin;
 use Spryker\Zed\Locale\Communication\Plugin\EventDispatcher\LocaleEventDispatcherPlugin;
 use Spryker\Zed\Router\Communication\Plugin\EventDispatcher\RouterLocaleEventDispatcherPlugin;
 use Spryker\Zed\Twig\Communication\Plugin\EventDispatcher\TwigEventDispatcherPlugin;
@@ -25,6 +30,11 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
             new LocaleEventDispatcherPlugin(),
             new RouterLocaleEventDispatcherPlugin(),
             new HeadersSecurityEventDispatcherPlugin(),
+            new CookieEventDispatcherPlugin(),
+            new FragmentEventDispatcherPlugin(),
+            new HeaderEventDispatcherPlugin(),
+            new HstsHeaderEventDispatcher(),
+            new SslEventDispatcherPlugin(),
         ];
     }
 }

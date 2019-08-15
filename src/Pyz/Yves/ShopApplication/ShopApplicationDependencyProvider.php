@@ -9,6 +9,7 @@ namespace Pyz\Yves\ShopApplication;
 
 use Pyz\Yves\ExampleProductColorGroupWidget\Widget\ExampleProductColorSelectorWidget;
 use Spryker\Yves\EventDispatcher\Plugin\Application\EventDispatcherApplicationPlugin;
+use Spryker\Yves\Http\Plugin\Application\HttpApplicationPlugin;
 use Spryker\Yves\Locale\Plugin\Application\LocaleApplicationPlugin;
 use Spryker\Yves\Store\Plugin\Application\StoreApplicationPlugin;
 use Spryker\Yves\Translator\Plugin\Application\TranslatorApplicationPlugin;
@@ -231,6 +232,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new StoreApplicationPlugin(),
             new LocaleApplicationPlugin(),
             new TranslatorApplicationPlugin(),
+            new HttpApplicationPlugin(),
         ];
     }
 }

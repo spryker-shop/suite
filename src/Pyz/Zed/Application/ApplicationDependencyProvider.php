@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\Application;
 
-use Silex\Provider\HttpFragmentServiceProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\SessionServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\FormFactoryServiceProvider;
@@ -23,13 +22,13 @@ use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\SaveSessionServ
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\SilexRoutingServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\SslServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\SubRequestServiceProvider;
-use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\ZedHstsServiceProvider;
 use Spryker\Zed\Assertion\Communication\Plugin\ServiceProvider\AssertionServiceProvider;
 use Spryker\Zed\Auth\Communication\Plugin\Bootstrap\AuthBootstrapProvider;
 use Spryker\Zed\Auth\Communication\Plugin\ServiceProvider\RedirectAfterLoginProvider;
 use Spryker\Zed\EventBehavior\Communication\Plugin\ServiceProvider\EventBehaviorServiceProvider;
 use Spryker\Zed\EventDispatcher\Communication\Plugin\Application\EventDispatcherApplicationPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\ServiceProvider\GuiTwigExtensionServiceProvider;
+use Spryker\Zed\Http\Communication\Plugin\Application\HttpApplicationPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Locale\Communication\Plugin\Application\LocaleApplicationPlugin;
 use Spryker\Zed\Messenger\Communication\Plugin\Application\MessengerApplicationPlugin;
@@ -55,14 +54,12 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
         $providers = [
             new SessionServiceProvider(),
             new SprykerSessionServiceProvider(),
-            new SslServiceProvider(),
             new AuthBootstrapProvider(),
             new AclBootstrapProvider(),
             new GatewayServiceProviderPlugin(),
             new AssertionServiceProvider(),
             new SubRequestServiceProvider(),
             new WebProfilerServiceProvider(),
-            new ZedHstsServiceProvider(),
             new FormFactoryServiceProvider(),
             new MonitoringRequestTransactionServiceProvider(),
             new GuiTwigExtensionServiceProvider(),
@@ -110,14 +107,12 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
     {
         return [
             new RequestServiceProvider(),
-            new SslServiceProvider(),
             new ServiceControllerServiceProvider(),
             new RoutingServiceProvider(),
             new MvcRoutingServiceProvider(),
             new SilexRoutingServiceProvider(),
             new GatewayServiceProviderPlugin(),
             new MonitoringRequestTransactionServiceProvider(),
-            new HttpFragmentServiceProvider(),
             new SubRequestServiceProvider(),
             new EventBehaviorServiceProvider(),
         ];
@@ -134,7 +129,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new RequestServiceProvider(),
             new SessionServiceProvider(),
             new SprykerSessionServiceProvider(),
-            new SslServiceProvider(),
             new AuthBootstrapProvider(),
             new AclBootstrapProvider(),
             new ServiceControllerServiceProvider(),
@@ -143,7 +137,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new SilexRoutingServiceProvider(),
             new GatewayServiceProviderPlugin(),
             new MonitoringRequestTransactionServiceProvider(),
-            new HttpFragmentServiceProvider(),
             new SubRequestServiceProvider(),
             new EventBehaviorServiceProvider(),
         ];
@@ -161,6 +154,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new TranslatorApplicationPlugin(),
             new MessengerApplicationPlugin(),
             new PropelApplicationPlugin(),
+            new HttpApplicationPlugin(),
         ];
     }
 }
