@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "44aa0957b30ff92364d15e6e598bb672",
+    "content-hash": "928a1ff434a6e0b6ccad154744d25345",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.109.3",
+            "version": "3.109.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "4da1e39c7a41c13eed8b7be47b7e47f43a0c80de"
+                "reference": "c3c6772a7e975d763a232af118da3eaef8bf96b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/4da1e39c7a41c13eed8b7be47b7e47f43a0c80de",
-                "reference": "4da1e39c7a41c13eed8b7be47b7e47f43a0c80de",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/c3c6772a7e975d763a232af118da3eaef8bf96b9",
+                "reference": "c3c6772a7e975d763a232af118da3eaef8bf96b9",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-08-13T18:13:20+00:00"
+            "time": "2019-08-14T18:14:46+00:00"
         },
         {
             "name": "codeitnowin/barcode",
@@ -2485,6 +2485,52 @@
             ],
             "description": "Loggly module",
             "time": "2019-07-08T08:22:53+00:00"
+        },
+        {
+            "name": "spryker-sdk/composer-constrainer",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-sdk/composer-constrainer.git",
+                "reference": "afd1f1d056200e021f28b3776a0e4b6d4fcaff97"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-sdk/composer-constrainer/zipball/afd1f1d056200e021f28b3776a0e4b6d4fcaff97",
+                "reference": "afd1f1d056200e021f28b3776a0e4b6d4fcaff97",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.33.0",
+                "spryker/module-finder": "^1.0.0",
+                "spryker/symfony": "^3.2.2",
+                "spryker/zend": "^2.1.0"
+            },
+            "require-dev": {
+                "sllh/composer-versions-check": "^2.0.2",
+                "spryker/code-sniffer": "*",
+                "spryker/console": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerSdk\\": "src/SprykerSdk/",
+                    "SprykerSdkTest\\Zed\\ComposerConstrainer\\Helper\\": "tests/SprykerSdkTest/Zed/ComposerConstrainer/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ComposerConstrainer module",
+            "time": "2019-08-15T09:03:37+00:00"
         },
         {
             "name": "spryker-shop/agent-page",
