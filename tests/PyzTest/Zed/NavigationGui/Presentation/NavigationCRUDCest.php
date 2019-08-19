@@ -7,6 +7,7 @@
 
 namespace PyzTest\Zed\NavigationGui\Presentation;
 
+use Facebook\WebDriver\Remote\RemoteWebElement;
 use PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester;
 use PyzTest\Zed\NavigationGui\PageObject\NavigationCreatePage;
 use PyzTest\Zed\NavigationGui\PageObject\NavigationDeletePage;
@@ -107,10 +108,16 @@ class NavigationCRUDCest
     {
         $i->wantTo('Activate navigation.');
         $i->expect('New navigation status persisted in Zed.');
-
         $i->amOnPage(NavigationPage::URL);
         $i->waitForElementVisible(NavigationPage::PAGE_LIST_TABLE_XPATH, 5);
+        $i->waitForElementChange('html', function (RemoteWebElement $el) {
+            return $el->getText();
+        });
+        $i->switchToIFrame('navigation-node-form-iframe');
+        $i->waitForJS('return document.readyState == "complete"');
+        $i->switchToIFrame();
         $i->activateFirstNavigationRow();
+        $i->waitForElementVisible(NavigationPage::PAGE_LIST_TABLE_XPATH, 5);
         $i->seeSuccessMessage(NavigationStatusTogglePage::MESSAGE_ACTIVE_SUCCESS);
         $i->seeCurrentUrlEquals(NavigationPage::URL);
     }
@@ -127,7 +134,12 @@ class NavigationCRUDCest
 
         $i->amOnPage(NavigationPage::URL);
         $i->waitForElementVisible(NavigationPage::PAGE_LIST_TABLE_XPATH, 5);
-        $i->wait(1); // TODO: remove "wait" once flash messages show up consistently.
+        $i->waitForElementChange('html', function (RemoteWebElement $el) {
+            return $el->getText();
+        });
+        $i->switchToIFrame('navigation-node-form-iframe');
+        $i->waitForJS('return document.readyState == "complete"');
+        $i->switchToIFrame();
         $i->deleteFirstNavigationRow();
         $i->seeSuccessMessage(NavigationDeletePage::MESSAGE_SUCCESS);
         $i->seeCurrentUrlEquals(NavigationPage::URL);

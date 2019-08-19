@@ -16,9 +16,13 @@ use Spryker\Zed\CmsBlockProductStorage\Communication\Plugin\Event\CmsBlockProduc
 use Spryker\Zed\CmsBlockStorage\Communication\Plugin\Event\CmsBlockEventResourceQueryContainerPlugin;
 use Spryker\Zed\CmsPageSearch\Communication\Plugin\Event\CmsPageEventResourceQueryContainerPlugin;
 use Spryker\Zed\CmsStorage\Communication\Plugin\Event\CmsEventResourceQueryContainerPlugin;
+use Spryker\Zed\ConfigurableBundleStorage\Communication\Plugin\Event\ConfigurableBundleTemplateEventResourceBulkRepositoryPlugin;
+use Spryker\Zed\ContentStorage\Communication\Plugin\Event\ContentStorageEventResourceRepositoryPlugin;
 use Spryker\Zed\EventBehavior\EventBehaviorDependencyProvider as SprykerEventBehaviorDependencyProvider;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Event\GlossaryEventResourceQueryContainerPlugin;
 use Spryker\Zed\NavigationStorage\Communication\Plugin\Event\NavigationEventResourceQueryContainerPlugin;
+use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Event\PriceProductAbstractMerchantRelationEventResourceBulkRepositoryPlugin;
+use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Event\PriceProductConcreteMerchantRelationEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\PriceProductStorage\Communication\Plugin\Event\PriceProductAbstractEventResourceQueryContainerPlugin;
 use Spryker\Zed\PriceProductStorage\Communication\Plugin\Event\PriceProductConcreteEventResourceQueryContainerPlugin;
 use Spryker\Zed\ProductCategoryFilterStorage\Communication\Plugin\Event\ProductCategoryFilterEventResourceQueryContainerPlugin;
@@ -28,12 +32,13 @@ use Spryker\Zed\ProductImageStorage\Communication\Plugin\Event\ProductAbstractIm
 use Spryker\Zed\ProductImageStorage\Communication\Plugin\Event\ProductConcreteImageEventResourceQueryContainerPlugin;
 use Spryker\Zed\ProductLabelStorage\Communication\Plugin\Event\ProductAbstractLabelEventResourceQueryContainerPlugin;
 use Spryker\Zed\ProductLabelStorage\Communication\Plugin\Event\ProductLabelDictionaryEventResourceQueryContainerPlugin;
-use Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Event\ProductConcreteMeasurementUnitEventResourceRepositoryPlugin;
-use Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Event\ProductMeasurementUnitEventResourceRepositoryPlugin;
+use Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Event\ProductConcreteMeasurementUnitEventResourceBulkRepositoryPlugin;
+use Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Event\ProductMeasurementUnitEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\ProductOptionStorage\Communication\Plugin\Event\ProductOptionEventResourceQueryContainerPlugin;
+use Spryker\Zed\ProductPackagingUnitStorage\Communication\Plugin\Event\ProductAbstractPackagingEventResourceRepositoryPlugin;
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\Event\ProductConcretePageSearchEventResourceRepositoryPlugin;
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\Event\ProductPageEventResourceQueryContainerPlugin;
-use Spryker\Zed\ProductQuantityStorage\Communication\Plugin\Event\ProductQuantityEventResourceRepositoryPlugin;
+use Spryker\Zed\ProductQuantityStorage\Communication\Plugin\Event\ProductQuantityEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\ProductRelationStorage\Communication\Plugin\Event\ProductRelationEventResourceQueryContainerPlugin;
 use Spryker\Zed\ProductReviewSearch\Communication\Plugin\Event\ProductReviewEventResourceQueryContainerPlugin as ProductReviewSearchEventResourceQueryContainerPlugin;
 use Spryker\Zed\ProductReviewStorage\Communication\Plugin\Event\ProductReviewEventResourceQueryContainerPlugin;
@@ -65,10 +70,13 @@ class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProv
             new CmsBlockProductEventResourceQueryContainerPlugin(),
             new CmsBlockEventResourceQueryContainerPlugin(),
             new CmsEventResourceQueryContainerPlugin(),
+            new ConfigurableBundleTemplateEventResourceBulkRepositoryPlugin(),
             new GlossaryEventResourceQueryContainerPlugin(),
             new NavigationEventResourceQueryContainerPlugin(),
             new PriceProductConcreteEventResourceQueryContainerPlugin(),
             new PriceProductAbstractEventResourceQueryContainerPlugin(),
+            new PriceProductAbstractMerchantRelationEventResourceBulkRepositoryPlugin(),
+            new PriceProductConcreteMerchantRelationEventResourceBulkRepositoryPlugin(),
             new ProductCategoryFilterEventResourceQueryContainerPlugin(),
             new ProductCategoryEventResourceQueryContainerPlugin(),
             new ProductGroupEventResourceQueryContainerPlugin(),
@@ -85,10 +93,12 @@ class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProv
             new ProductConcreteEventResourceQueryContainerPlugin(),
             new UrlEventResourceQueryContainerPlugin(),
             new RedirectEventResourceQueryContainerPlugin(),
-            new ProductMeasurementUnitEventResourceRepositoryPlugin(),
-            new ProductConcreteMeasurementUnitEventResourceRepositoryPlugin(),
-            new ProductQuantityEventResourceRepositoryPlugin(),
+            new ProductMeasurementUnitEventResourceBulkRepositoryPlugin(),
+            new ProductConcreteMeasurementUnitEventResourceBulkRepositoryPlugin(),
+            new ProductQuantityEventResourceBulkRepositoryPlugin(),
             new ProductConcretePageSearchEventResourceRepositoryPlugin(),
+            new ProductAbstractPackagingEventResourceRepositoryPlugin(),
+            new ContentStorageEventResourceRepositoryPlugin(),
         ];
     }
 }

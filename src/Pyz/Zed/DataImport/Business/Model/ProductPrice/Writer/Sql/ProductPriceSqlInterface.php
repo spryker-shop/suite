@@ -16,7 +16,20 @@ interface ProductPriceSqlInterface
      *
      * @return string
      */
-    public function createProductPriceSQL(string $idProduct, string $productTable, string $productFkKey): string;
+    public function createPriceProductSQL(string $idProduct, string $productTable, string $productFkKey): string;
+
+    /**
+     * @param string $idProduct
+     * @param string $productFkKey
+     *
+     * @return string
+     */
+    public function selectProductPriceSQL(string $idProduct, string $productFkKey): string;
+
+    /**
+     * @return string
+     */
+    public function collectPriceTypes(): string;
 
     /**
      * @return string
@@ -36,4 +49,22 @@ interface ProductPriceSqlInterface
      * @return string
      */
     public function createPriceProductDefaultSql(): string;
+
+    /**
+     * @return string
+     */
+    public function convertStoreNameToId(): string;
+
+    /**
+     * @return string
+     */
+    public function convertCurrencyNameToId(): string;
+
+    /**
+     * @param string $tableName
+     * @param string $fieldName
+     *
+     * @return string
+     */
+    public function convertProductSkuToId(string $tableName, string $fieldName): string;
 }
