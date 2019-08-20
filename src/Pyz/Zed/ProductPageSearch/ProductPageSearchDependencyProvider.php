@@ -11,8 +11,6 @@ use Spryker\Shared\ProductLabelSearch\ProductLabelSearchConfig;
 use Spryker\Shared\ProductListSearch\ProductListSearchConfig;
 use Spryker\Shared\ProductPageSearch\ProductPageSearchConfig;
 use Spryker\Shared\ProductReviewSearch\ProductReviewSearchConfig;
-use Spryker\Zed\ProductDiscontinuedSearch\Communication\Plugin\ProductPageSearch\ProductConcreteProductDiscontinuedPageDataExpanderPlugin;
-use Spryker\Zed\ProductDiscontinuedSearch\Communication\Plugin\ProductPageSearch\ProductConcreteProductDiscontinuedPageMapExpanderPlugin;
 use Spryker\Zed\ProductLabelSearch\Communication\Plugin\PageDataExpander\ProductLabelDataLoaderExpanderPlugin;
 use Spryker\Zed\ProductLabelSearch\Communication\Plugin\PageDataLoader\ProductLabelDataLoaderPlugin;
 use Spryker\Zed\ProductLabelSearch\Communication\Plugin\PageMapExpander\ProductLabelMapExpanderPlugin;
@@ -93,7 +91,6 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     {
         return [
             new ProductConcreteProductListPageMapExpanderPlugin(),
-            new ProductConcreteProductDiscontinuedPageMapExpanderPlugin(),
         ];
     }
 
@@ -104,7 +101,6 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     {
         return [
             new ProductConcreteProductListPageDataExpanderPlugin(),
-            new ProductConcreteProductDiscontinuedPageDataExpanderPlugin(),
         ];
     }
 }
