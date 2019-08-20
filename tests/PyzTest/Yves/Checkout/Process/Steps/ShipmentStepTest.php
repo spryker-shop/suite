@@ -68,15 +68,6 @@ class ShipmentStepTest extends Unit
     }
 
     /**
-     * @return void
-     */
-    public function testShipmentRequireInputShouldReturnTrue()
-    {
-        $shipmentStep = $this->createShipmentStep(new StepHandlerPluginCollection());
-        $this->assertTrue($shipmentStep->requireInput(new QuoteTransfer()));
-    }
-
-    /**
      * @param \Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection $shipmentPlugins
      *
      * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\ShipmentStep

@@ -29,8 +29,8 @@ class ProductStockPdoTest extends AbstractProductStockWriterTest
      */
     public function testProductStockWriter(): void
     {
-        // This test is randomly failed, this should be fixed with followup ticket for https://spryker.atlassian.net/browse/CC-116
-        $this->markTestSkipped(true);
+        $this->markTestSkipped('Assertion fails on availability count randomly. Hard to reproduce, but error is somewhere there.');
+
         $writer = $this->getDataImportBusinessFactoryStub()->createProductStockBulkPdoWriter();
 
         $productSkus = $this->getProductsSkus();

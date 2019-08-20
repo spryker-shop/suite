@@ -47,6 +47,7 @@ abstract class AbstractProductAbstractStoreWriterTest extends AbstractWriterTest
 
             $result[$abstractProductSku] = $dataSet;
         }
+
         return $result;
     }
 

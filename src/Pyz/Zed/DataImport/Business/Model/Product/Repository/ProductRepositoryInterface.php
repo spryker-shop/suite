@@ -34,6 +34,16 @@ interface ProductRepositoryInterface
     public function getIdProductAbstractByAbstractSku($sku);
 
     /**
+     * @return string[]
+     */
+    public function getSkuProductAbstractList(): array;
+
+    /**
+     * @return string[]
+     */
+    public function getSkuProductConcreteList(): array;
+
+    /**
      * @param \Orm\Zed\Product\Persistence\SpyProductAbstract $productAbstractEntity
      *
      * @return void
