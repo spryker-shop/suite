@@ -109,7 +109,7 @@ commandLineParser
             validateFlag(arg, allowedFlagsData);
 
             if (isCommand(allowedFlagsData, argv, index)) {
-                console.warn('It is not possible to use few commands. All commands and parameters will be ignored after second command');
+                console.warn('It is impossible to use several commands. All commands and parameters entered after the second command are ignored.');
             }
         });
 
