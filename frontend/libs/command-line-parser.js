@@ -82,7 +82,7 @@ const validateParameters = env => {
 
     originalArguments.forEach(argument => {
         if (!argument.indexOf('-') && !originalArguments.includes('--')) {
-            throw new Error('It is not possible to use flags without "--" indentifier if you use "npm" script');
+            throw new Error('It is impossible to use flags without "--" indentifier if you use "npm" script.');
         }
     });
 };
