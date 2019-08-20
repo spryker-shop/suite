@@ -157,6 +157,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
         return [
             new StoreQueryExpanderPlugin(),
             new LocalizedQueryExpanderPlugin(),
+            new ProductPriceQueryExpanderPlugin(),
             new IsActiveQueryExpanderPlugin(),
             new IsActiveInDateRangeQueryExpanderPlugin(),
             new ProductListQueryExpanderPlugin(),
