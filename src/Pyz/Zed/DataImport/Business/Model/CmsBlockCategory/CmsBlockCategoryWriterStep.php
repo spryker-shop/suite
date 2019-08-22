@@ -23,7 +23,7 @@ class CmsBlockCategoryWriterStep extends PublishAwareStep implements DataImportS
 {
     public const KEY_BLOCK_KEY = 'block_key';
     public const KEY_CATEGORY_KEY = 'category_key';
-    public const KEY_CATEGORY_TEMPLATE_NAME = 'template_name';
+    public const KEY_CATEGORY_TEMPLATE_NAME = 'category_template_name';
     public const KEY_CMS_BLOCK_CATEGORY_POSITION_NAME = 'cms_block_category_position_name';
 
     /**
