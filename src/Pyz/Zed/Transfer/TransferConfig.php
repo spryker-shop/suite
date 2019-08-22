@@ -23,6 +23,7 @@ class TransferConfig extends SprykerTransferConfig
         $directoryGlobPatterns[] = APPLICATION_VENDOR_DIR . '/spryker/spryker-shop/Bundles/*/src/SprykerShop/Shared/*/Transfer/';
         $directoryGlobPatterns[] = APPLICATION_VENDOR_DIR . '/spryker/rabbit-mq/src/*/Shared/*/Transfer/';
         $directoryGlobPatterns[] = APPLICATION_VENDOR_DIR . '/spryker-eco/*/src/*/Shared/*/Transfer/';
+        $directoryGlobPatterns[] = APPLICATION_VENDOR_DIR . '/spryker-sdk/*/src/*/Shared/*/Transfer/';
 
         return $directoryGlobPatterns;
     }
@@ -48,5 +49,16 @@ class TransferConfig extends SprykerTransferConfig
         return [
             APPLICATION_SOURCE_DIR . '/Orm/Propel/*/Schema/',
         ];
+    }
+
+    /**
+     * We use strict name validation for core internal usage and enable this by default for all
+     * new projects.
+     *
+     * @return bool
+     */
+    public function isTransferNameValidated(): bool
+    {
+        return true;
     }
 }
