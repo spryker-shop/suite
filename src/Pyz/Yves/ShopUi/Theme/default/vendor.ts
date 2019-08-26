@@ -7,6 +7,8 @@ import 'core-js/fn/promise';
 import 'core-js/fn/array';
 import 'core-js/fn/set';
 import 'core-js/fn/map';
+import 'classlist-polyfill';
+import 'string.prototype.startswith';
 
 // check if the browser natively supports webcomponents (and es6)
 const hasNativeCustomElements = !!window.customElements;
