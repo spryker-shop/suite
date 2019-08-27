@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a48688a10c3f9a5336e12df246eddf69",
+    "content-hash": "8b5077c1ecbf7ef1afa061f3ea004368",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -1002,8 +1002,8 @@
             "authors": [
                 {
                     "name": "Luís Otávio Cobucci Oblonczyk",
-                    "email": "lcobucci@gmail.com",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "lcobucci@gmail.com"
                 }
             ],
             "description": "A simple library to work with JSON Web Token and JSON Web Signature",
@@ -1263,15 +1263,15 @@
             "authors": [
                 {
                     "name": "Alex Bilbie",
+                    "role": "Developer",
                     "email": "hello@alexbilbie.com",
-                    "homepage": "http://www.alexbilbie.com",
-                    "role": "Developer"
+                    "homepage": "http://www.alexbilbie.com"
                 },
                 {
                     "name": "Andy Millington",
+                    "role": "Developer",
                     "email": "andrew@noexceptions.io",
-                    "homepage": "https://www.noexceptions.io",
-                    "role": "Developer"
+                    "homepage": "https://www.noexceptions.io"
                 }
             ],
             "description": "A lightweight and powerful OAuth 2.0 authorization and resource server library with support for all the core specification grants. This library will allow you to secure your API with OAuth and allow your applications users to approve apps that want to access their data from your API.",
@@ -1323,9 +1323,9 @@
             "authors": [
                 {
                     "name": "Mandrill Devs",
+                    "role": "Developer",
                     "email": "community@mandrill.com",
-                    "homepage": "http://mandrill.com",
-                    "role": "Developer"
+                    "homepage": "http://mandrill.com"
                 }
             ],
             "description": "API client library for the Mandrill email as a service platform",
@@ -1955,7 +1955,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -2631,11 +2631,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/te-3953/master/the-command-code-constraint-modules-modifies-the-composer-json-with-some-issues",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "867a863c34f7e91148ab5f4f11e27c4708537552"
+                "reference": "9eff2d8253176360a4d1ad0ce4e997556499eee2"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2905,7 +2905,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-08-27T08:42:43+00:00"
+            "time": "2019-08-27T12:28:47+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2913,7 +2913,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "e0098f009dc0c4917399ce2723df82affba88fe5"
+                "reference": "2428f2b64f0302ce41ef02b0908eed9010c2548a"
             },
             "require": {
                 "php": ">=7.1"
@@ -2988,7 +2988,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-08-19T14:34:38+00:00"
+            "time": "2019-08-27T10:17:38+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -3840,8 +3840,14 @@
             "version": "v3.4.31",
             "source": {
                 "type": "git",
-                "url": "git@github.com:spryker/spryker.git",
-                "reference": "c36adfc093d1481698241f5b5f40d3b81de013e9"
+                "url": "https://github.com/symfony/http-kernel.git",
+                "reference": "f6d35bb306b26812df007525f5757a8b0e95857e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/f6d35bb306b26812df007525f5757a8b0e95857e",
+                "reference": "f6d35bb306b26812df007525f5757a8b0e95857e",
+                "shasum": ""
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -4260,16 +4266,34 @@
             "license": [
                 "MIT"
             ],
-            "description": "Spryker Framework",
-            "time": "2019-08-27T11:08:57+00:00"
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for the Iconv extension",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "iconv",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2019-08-06T08:03:45+00:00"
         },
         {
             "name": "symfony/polyfill-intl-icu",
             "version": "v1.12.0",
             "source": {
                 "type": "git",
-                "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "2428f2b64f0302ce41ef02b0908eed9010c2548a"
+                "url": "https://github.com/symfony/polyfill-intl-icu.git",
+                "reference": "66810b9d6eb4af54d543867909d65ab9af654d7e"
             },
             "dist": {
                 "type": "zip",
@@ -4299,8 +4323,27 @@
             "license": [
                 "MIT"
             ],
-            "description": "Spryker Shop page and widget modules",
-            "time": "2019-08-27T10:17:38+00:00"
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for intl's ICU-related data and classes",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "icu",
+                "intl",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2019-08-06T08:03:45+00:00"
         },
         {
             "name": "symfony/polyfill-intl-idn",
@@ -4537,17 +4580,17 @@
             "time": "2019-08-06T08:03:45+00:00"
         },
         {
-            "name": "symfony/config",
+            "name": "symfony/process",
             "version": "v4.3.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/config.git",
-                "reference": "07d49c0f823e0bc367c6d84e35b61419188a5ece"
+                "url": "https://github.com/symfony/process.git",
+                "reference": "e89969c00d762349f078db1128506f7f3dcc0d4a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/07d49c0f823e0bc367c6d84e35b61419188a5ece",
-                "reference": "07d49c0f823e0bc367c6d84e35b61419188a5ece",
+                "url": "https://api.github.com/repos/symfony/process/zipball/e89969c00d762349f078db1128506f7f3dcc0d4a",
+                "reference": "e89969c00d762349f078db1128506f7f3dcc0d4a",
                 "shasum": ""
             },
             "require": {
@@ -4586,17 +4629,17 @@
             "time": "2019-08-26T08:26:39+00:00"
         },
         {
-            "name": "symfony/console",
+            "name": "symfony/property-access",
             "version": "v4.3.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/console.git",
-                "reference": "de63799239b3881b8a08f8481b22348f77ed7b36"
+                "url": "https://github.com/symfony/property-access.git",
+                "reference": "bb0c302375ffeef60c31e72a4539611b7f787565"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/de63799239b3881b8a08f8481b22348f77ed7b36",
-                "reference": "de63799239b3881b8a08f8481b22348f77ed7b36",
+                "url": "https://api.github.com/repos/symfony/property-access/zipball/bb0c302375ffeef60c31e72a4539611b7f787565",
+                "reference": "bb0c302375ffeef60c31e72a4539611b7f787565",
                 "shasum": ""
             },
             "require": {
@@ -4639,6 +4682,17 @@
             ],
             "description": "Symfony PropertyAccess Component",
             "homepage": "https://symfony.com",
+            "keywords": [
+                "access",
+                "array",
+                "extraction",
+                "index",
+                "injection",
+                "object",
+                "property",
+                "property path",
+                "reflection"
+            ],
             "time": "2019-08-26T08:26:39+00:00"
         },
         {
@@ -4718,17 +4772,17 @@
             "time": "2019-08-26T08:26:39+00:00"
         },
         {
-            "name": "symfony/debug",
-            "version": "v4.3.4",
+            "name": "symfony/security",
+            "version": "v4.2.11",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/debug.git",
-                "reference": "afcdea44a2e399c1e4b52246ec8d54c715393ced"
+                "url": "https://github.com/symfony/security.git",
+                "reference": "fda257c4166fe0eae1dd415919a60dc15f225033"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/debug/zipball/afcdea44a2e399c1e4b52246ec8d54c715393ced",
-                "reference": "afcdea44a2e399c1e4b52246ec8d54c715393ced",
+                "url": "https://api.github.com/repos/symfony/security/zipball/fda257c4166fe0eae1dd415919a60dc15f225033",
+                "reference": "fda257c4166fe0eae1dd415919a60dc15f225033",
                 "shasum": ""
             },
             "require": {
@@ -4797,20 +4851,20 @@
             ],
             "description": "Symfony Security Component",
             "homepage": "https://symfony.com",
-            "time": "2019-08-20T14:27:59+00:00"
+            "time": "2019-07-21T17:35:01+00:00"
         },
         {
-            "name": "symfony/event-dispatcher",
+            "name": "symfony/serializer",
             "version": "v4.3.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "429d0a1451d4c9c4abe1959b2986b88794b9b7d2"
+                "url": "https://github.com/symfony/serializer.git",
+                "reference": "702900654e0ceed9ca7a9eccffb1d6ec69d7c8b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/429d0a1451d4c9c4abe1959b2986b88794b9b7d2",
-                "reference": "429d0a1451d4c9c4abe1959b2986b88794b9b7d2",
+                "url": "https://api.github.com/repos/symfony/serializer/zipball/702900654e0ceed9ca7a9eccffb1d6ec69d7c8b6",
+                "reference": "702900654e0ceed9ca7a9eccffb1d6ec69d7c8b6",
                 "shasum": ""
             },
             "require": {
@@ -4938,17 +4992,17 @@
             "time": "2019-08-20T14:44:19+00:00"
         },
         {
-            "name": "symfony/filesystem",
+            "name": "symfony/translation",
             "version": "v4.3.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/filesystem.git",
-                "reference": "9abbb7ef96a51f4d7e69627bc6f63307994e4263"
+                "url": "https://github.com/symfony/translation.git",
+                "reference": "28498169dd334095fa981827992f3a24d50fed0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/9abbb7ef96a51f4d7e69627bc6f63307994e4263",
-                "reference": "9abbb7ef96a51f4d7e69627bc6f63307994e4263",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/28498169dd334095fa981827992f3a24d50fed0f",
+                "reference": "28498169dd334095fa981827992f3a24d50fed0f",
                 "shasum": ""
             },
             "require": {
@@ -4961,37 +5015,20 @@
                 "symfony/dependency-injection": "<3.4",
                 "symfony/yaml": "<3.4"
             },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony Filesystem Component",
-            "homepage": "https://symfony.com",
-            "time": "2019-08-20T14:07:54+00:00"
-        },
-        {
-            "name": "symfony/finder",
-            "version": "v4.3.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/finder.git",
-                "reference": "86c1c929f0a4b24812e1eb109262fc3372c8e9f2"
+            "provide": {
+                "symfony/translation-implementation": "1.0"
             },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/86c1c929f0a4b24812e1eb109262fc3372c8e9f2",
-                "reference": "86c1c929f0a4b24812e1eb109262fc3372c8e9f2",
-                "shasum": ""
+            "require-dev": {
+                "psr/log": "~1.0",
+                "symfony/config": "~3.4|~4.0",
+                "symfony/console": "~3.4|~4.0",
+                "symfony/dependency-injection": "~3.4|~4.0",
+                "symfony/finder": "~2.8|~3.0|~4.0",
+                "symfony/http-kernel": "~3.4|~4.0",
+                "symfony/intl": "~3.4|~4.0",
+                "symfony/service-contracts": "^1.1.2",
+                "symfony/var-dumper": "~3.4|~4.0",
+                "symfony/yaml": "~3.4|~4.0"
             },
             "suggest": {
                 "psr/log-implementation": "To use logging capability in translator",
@@ -5028,20 +5065,20 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2019-08-14T12:26:46+00:00"
+            "time": "2019-08-26T08:55:16+00:00"
         },
         {
-            "name": "symfony/form",
-            "version": "v3.4.31",
+            "name": "symfony/translation-contracts",
+            "version": "v1.1.6",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/form.git",
-                "reference": "4b22637710be10c57df7f1cd702a083e7b697001"
+                "url": "https://github.com/symfony/translation-contracts.git",
+                "reference": "325b17c24f3ee23cbecfa63ba809c6d89b5fa04a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/form/zipball/4b22637710be10c57df7f1cd702a083e7b697001",
-                "reference": "4b22637710be10c57df7f1cd702a083e7b697001",
+                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/325b17c24f3ee23cbecfa63ba809c6d89b5fa04a",
+                "reference": "325b17c24f3ee23cbecfa63ba809c6d89b5fa04a",
                 "shasum": ""
             },
             "require": {
@@ -5075,22 +5112,30 @@
                     "homepage": "https://symfony.com/contributors"
                 }
             ],
-            "description": "Symfony Form Component",
+            "description": "Generic abstractions related to translation",
             "homepage": "https://symfony.com",
-            "time": "2019-08-26T07:52:58+00:00"
+            "keywords": [
+                "abstractions",
+                "contracts",
+                "decoupling",
+                "interfaces",
+                "interoperability",
+                "standards"
+            ],
+            "time": "2019-08-02T12:15:04+00:00"
         },
         {
-            "name": "symfony/http-foundation",
-            "version": "v4.3.4",
+            "name": "symfony/twig-bridge",
+            "version": "v4.0.15",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "d804bea118ff340a12e22a79f9c7e7eb56b35adc"
+                "url": "https://github.com/symfony/twig-bridge.git",
+                "reference": "ff8f4e0b1e496d7b1f0bf99b56288a76e80b0d43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/d804bea118ff340a12e22a79f9c7e7eb56b35adc",
-                "reference": "d804bea118ff340a12e22a79f9c7e7eb56b35adc",
+                "url": "https://api.github.com/repos/symfony/twig-bridge/zipball/ff8f4e0b1e496d7b1f0bf99b56288a76e80b0d43",
+                "reference": "ff8f4e0b1e496d7b1f0bf99b56288a76e80b0d43",
                 "shasum": ""
             },
             "require": {
@@ -5167,20 +5212,20 @@
             ],
             "description": "Symfony Twig Bridge",
             "homepage": "https://symfony.com",
-            "time": "2019-08-26T08:55:16+00:00"
+            "time": "2018-07-26T11:22:46+00:00"
         },
         {
-            "name": "symfony/http-kernel",
-            "version": "v3.4.31",
+            "name": "symfony/validator",
+            "version": "v4.3.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/http-kernel.git",
-                "reference": "f6d35bb306b26812df007525f5757a8b0e95857e"
+                "url": "https://github.com/symfony/validator.git",
+                "reference": "173b483999c2acad8e040633105733318dcc8a83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/f6d35bb306b26812df007525f5757a8b0e95857e",
-                "reference": "f6d35bb306b26812df007525f5757a8b0e95857e",
+                "url": "https://api.github.com/repos/symfony/validator/zipball/173b483999c2acad8e040633105733318dcc8a83",
+                "reference": "173b483999c2acad8e040633105733318dcc8a83",
                 "shasum": ""
             },
             "require": {
@@ -5260,20 +5305,20 @@
             ],
             "description": "Symfony Validator Component",
             "homepage": "https://symfony.com",
-            "time": "2019-08-26T16:36:29+00:00"
+            "time": "2019-08-26T09:28:48+00:00"
         },
         {
-            "name": "symfony/inflector",
+            "name": "symfony/yaml",
             "version": "v4.3.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/inflector.git",
-                "reference": "b25a8dc15fada858432efa083c1ecd2cef5991a7"
+                "url": "https://github.com/symfony/yaml.git",
+                "reference": "5a0b7c32dc3ec56fd4abae8a4a71b0cf05013686"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/inflector/zipball/b25a8dc15fada858432efa083c1ecd2cef5991a7",
-                "reference": "b25a8dc15fada858432efa083c1ecd2cef5991a7",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/5a0b7c32dc3ec56fd4abae8a4a71b0cf05013686",
+                "reference": "5a0b7c32dc3ec56fd4abae8a4a71b0cf05013686",
                 "shasum": ""
             },
             "require": {
@@ -5319,28 +5364,20 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "keywords": [
-                "inflection",
-                "pluralize",
-                "singularize",
-                "string",
-                "symfony",
-                "words"
-            ],
-            "time": "2019-08-06T18:44:23+00:00"
+            "time": "2019-08-20T14:27:59+00:00"
         },
         {
-            "name": "symfony/intl",
-            "version": "v4.3.4",
+            "name": "twig/twig",
+            "version": "v1.42.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/intl.git",
-                "reference": "8db5505703c5bdb23d524fd994dad2f781966538"
+                "url": "https://github.com/twigphp/Twig.git",
+                "reference": "201baee843e0ffe8b0b956f336dd42b2a92fae4e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/intl/zipball/8db5505703c5bdb23d524fd994dad2f781966538",
-                "reference": "8db5505703c5bdb23d524fd994dad2f781966538",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/201baee843e0ffe8b0b956f336dd42b2a92fae4e",
+                "reference": "201baee843e0ffe8b0b956f336dd42b2a92fae4e",
                 "shasum": ""
             },
             "require": {
@@ -5393,20 +5430,20 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2019-08-26T08:26:39+00:00"
+            "time": "2019-08-24T12:51:03+00:00"
         },
         {
-            "name": "symfony/mime",
-            "version": "v4.3.4",
+            "name": "webmozart/assert",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/mime.git",
-                "reference": "987a05df1c6ac259b34008b932551353f4f408df"
+                "url": "https://github.com/webmozart/assert.git",
+                "reference": "88e6d84706d09a236046d686bbea96f07b3a34f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mime/zipball/987a05df1c6ac259b34008b932551353f4f408df",
-                "reference": "987a05df1c6ac259b34008b932551353f4f408df",
+                "url": "https://api.github.com/repos/webmozart/assert/zipball/88e6d84706d09a236046d686bbea96f07b3a34f4",
+                "reference": "88e6d84706d09a236046d686bbea96f07b3a34f4",
                 "shasum": ""
             },
             "require": {
@@ -5414,8 +5451,7 @@
                 "symfony/polyfill-ctype": "^1.8"
             },
             "require-dev": {
-                "egulias/email-validator": "^2.1.10",
-                "symfony/dependency-injection": "~3.4|^4.1"
+                "phpunit/phpunit": "^4.8.36 || ^7.5.13"
             },
             "type": "library",
             "extra": {
@@ -5444,20 +5480,20 @@
                 "check",
                 "validate"
             ],
-            "time": "2019-08-22T08:16:11+00:00"
+            "time": "2019-08-24T08:43:50+00:00"
         },
         {
-            "name": "symfony/options-resolver",
-            "version": "v4.3.4",
+            "name": "willdurand/negotiation",
+            "version": "v2.3.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/options-resolver.git",
-                "reference": "81c2e120522a42f623233968244baebd6b36cb6a"
+                "url": "https://github.com/willdurand/Negotiation.git",
+                "reference": "03436ededa67c6e83b9b12defac15384cb399dc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/81c2e120522a42f623233968244baebd6b36cb6a",
-                "reference": "81c2e120522a42f623233968244baebd6b36cb6a",
+                "url": "https://api.github.com/repos/willdurand/Negotiation/zipball/03436ededa67c6e83b9b12defac15384cb399dc9",
+                "reference": "03436ededa67c6e83b9b12defac15384cb399dc9",
                 "shasum": ""
             },
             "require": {
@@ -5496,7 +5532,7 @@
                 "header",
                 "negotiation"
             ],
-            "time": "2019-08-08T09:29:19+00:00"
+            "time": "2017-05-14T17:21:12+00:00"
         },
         {
             "name": "zendframework/zend-config",
@@ -5785,9 +5821,9 @@
             "authors": [
                 {
                     "name": "Antonio J. García Lagar",
+                    "role": "developer",
                     "email": "aj@garcialagar.es",
-                    "homepage": "http://aj.garcialagar.es",
-                    "role": "developer"
+                    "homepage": "http://aj.garcialagar.es"
                 }
             ],
             "description": "Twig extension to set breakpoints",
@@ -5954,17 +5990,17 @@
             "time": "2019-08-18T16:44:20+00:00"
         },
         {
-            "name": "symfony/process",
-            "version": "v4.3.4",
+            "name": "codeception/phpunit-wrapper",
+            "version": "7.7.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/process.git",
-                "reference": "e89969c00d762349f078db1128506f7f3dcc0d4a"
+                "url": "https://github.com/Codeception/phpunit-wrapper.git",
+                "reference": "ab04a956264291505ea84998f43cf91639b4575d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/e89969c00d762349f078db1128506f7f3dcc0d4a",
-                "reference": "e89969c00d762349f078db1128506f7f3dcc0d4a",
+                "url": "https://api.github.com/repos/Codeception/phpunit-wrapper/zipball/ab04a956264291505ea84998f43cf91639b4575d",
+                "reference": "ab04a956264291505ea84998f43cf91639b4575d",
                 "shasum": ""
             },
             "require": {
@@ -5993,22 +6029,21 @@
                     "email": "davert.php@resend.cc"
                 }
             ],
-            "description": "Symfony Process Component",
-            "homepage": "https://symfony.com",
-            "time": "2019-08-26T08:26:39+00:00"
+            "description": "PHPUnit classes used by Codeception",
+            "time": "2019-02-26T20:35:32+00:00"
         },
         {
-            "name": "symfony/property-access",
-            "version": "v4.3.4",
+            "name": "codeception/stub",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/property-access.git",
-                "reference": "bb0c302375ffeef60c31e72a4539611b7f787565"
+                "url": "https://github.com/Codeception/Stub.git",
+                "reference": "eea518711d736eab838c1274593c4568ec06b23d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/property-access/zipball/bb0c302375ffeef60c31e72a4539611b7f787565",
-                "reference": "bb0c302375ffeef60c31e72a4539611b7f787565",
+                "url": "https://api.github.com/repos/Codeception/Stub/zipball/eea518711d736eab838c1274593c4568ec06b23d",
+                "reference": "eea518711d736eab838c1274593c4568ec06b23d",
                 "shasum": ""
             },
             "require": {
@@ -6025,43 +6060,21 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony PropertyAccess Component",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "access",
-                "array",
-                "extraction",
-                "index",
-                "injection",
-                "object",
-                "property",
-                "property path",
-                "reflection"
-            ],
-            "time": "2019-08-26T08:26:39+00:00"
+            "description": "Flexible Stub wrapper for PHPUnit's Mock Builder",
+            "time": "2019-08-10T16:20:53+00:00"
         },
         {
-            "name": "symfony/routing",
-            "version": "v4.3.4",
+            "name": "composer/xdebug-handler",
+            "version": "1.3.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/routing.git",
-                "reference": "ff1049f6232dc5b6023b1ff1c6de56f82bcd264f"
+                "url": "https://github.com/composer/xdebug-handler.git",
+                "reference": "46867cbf8ca9fb8d60c506895449eb799db1184f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/routing/zipball/ff1049f6232dc5b6023b1ff1c6de56f82bcd264f",
-                "reference": "ff1049f6232dc5b6023b1ff1c6de56f82bcd264f",
+                "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/46867cbf8ca9fb8d60c506895449eb799db1184f",
+                "reference": "46867cbf8ca9fb8d60c506895449eb799db1184f",
                 "shasum": ""
             },
             "require": {
@@ -6092,7 +6105,7 @@
                 "Xdebug",
                 "performance"
             ],
-            "time": "2019-08-26T08:26:39+00:00"
+            "time": "2019-05-27T17:52:04+00:00"
         },
         {
             "name": "doctrine/instantiator",
@@ -6151,17 +6164,17 @@
             "time": "2019-03-17T17:37:11+00:00"
         },
         {
-            "name": "symfony/serializer",
-            "version": "v4.3.4",
+            "name": "facebook/webdriver",
+            "version": "1.7.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/serializer.git",
-                "reference": "702900654e0ceed9ca7a9eccffb1d6ec69d7c8b6"
+                "url": "https://github.com/facebook/php-webdriver.git",
+                "reference": "e43de70f3c7166169d0f14a374505392734160e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/serializer/zipball/702900654e0ceed9ca7a9eccffb1d6ec69d7c8b6",
-                "reference": "702900654e0ceed9ca7a9eccffb1d6ec69d7c8b6",
+                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/e43de70f3c7166169d0f14a374505392734160e5",
+                "reference": "e43de70f3c7166169d0f14a374505392734160e5",
                 "shasum": ""
             },
             "require": {
@@ -6246,26 +6259,30 @@
             "authors": [
                 {
                     "name": "Alessio Linares",
-                    "email": "alessio.linares@skyscanner.net",
-                    "role": "Software Engineer"
+                    "role": "Software Engineer",
+                    "email": "alessio.linares@skyscanner.net"
                 }
             ],
-            "description": "Symfony Serializer Component",
-            "homepage": "https://symfony.com",
-            "time": "2019-08-26T08:55:16+00:00"
+            "description": "JSONPath implementation for querying and updating JSON objects",
+            "keywords": [
+                "json",
+                "jsonpath",
+                "path"
+            ],
+            "time": "2017-09-13T09:14:46+00:00"
         },
         {
-            "name": "symfony/service-contracts",
-            "version": "v1.1.6",
+            "name": "hoa/consistency",
+            "version": "1.17.05.02",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/service-contracts.git",
-                "reference": "ea7263d6b6d5f798b56a45a5b8d686725f2719a3"
+                "url": "https://github.com/hoaproject/Consistency.git",
+                "reference": "fd7d0adc82410507f332516faf655b6ed22e4c2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/ea7263d6b6d5f798b56a45a5b8d686725f2719a3",
-                "reference": "ea7263d6b6d5f798b56a45a5b8d686725f2719a3",
+                "url": "https://api.github.com/repos/hoaproject/Consistency/zipball/fd7d0adc82410507f332516faf655b6ed22e4c2f",
+                "reference": "fd7d0adc82410507f332516faf655b6ed22e4c2f",
                 "shasum": ""
             },
             "require": {
@@ -6315,34 +6332,30 @@
                 "keyword",
                 "library"
             ],
-            "time": "2019-08-20T14:44:19+00:00"
+            "time": "2017-05-02T12:18:12+00:00"
         },
         {
-            "name": "symfony/translation",
-            "version": "v4.3.4",
+            "name": "hoa/console",
+            "version": "3.17.05.02",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/translation.git",
-                "reference": "28498169dd334095fa981827992f3a24d50fed0f"
+                "url": "https://github.com/hoaproject/Console.git",
+                "reference": "e231fd3ea70e6d773576ae78de0bdc1daf331a66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/28498169dd334095fa981827992f3a24d50fed0f",
-                "reference": "28498169dd334095fa981827992f3a24d50fed0f",
+                "url": "https://api.github.com/repos/hoaproject/Console/zipball/e231fd3ea70e6d773576ae78de0bdc1daf331a66",
+                "reference": "e231fd3ea70e6d773576ae78de0bdc1daf331a66",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1.3",
-                "symfony/polyfill-mbstring": "~1.0",
-                "symfony/translation-contracts": "^1.1.6"
-            },
-            "conflict": {
-                "symfony/config": "<3.4",
-                "symfony/dependency-injection": "<3.4",
-                "symfony/yaml": "<3.4"
-            },
-            "provide": {
-                "symfony/translation-implementation": "1.0"
+                "hoa/consistency": "~1.0",
+                "hoa/event": "~1.0",
+                "hoa/exception": "~1.0",
+                "hoa/file": "~1.0",
+                "hoa/protocol": "~1.0",
+                "hoa/stream": "~1.0",
+                "hoa/ustring": "~4.0"
             },
             "require-dev": {
                 "hoa/test": "~2.0"
@@ -6377,22 +6390,38 @@
                     "homepage": "https://hoa-project.net/"
                 }
             ],
-            "description": "Symfony Translation Component",
-            "homepage": "https://symfony.com",
-            "time": "2019-08-26T08:55:16+00:00"
+            "description": "The Hoa\\Console library.",
+            "homepage": "https://hoa-project.net/",
+            "keywords": [
+                "autocompletion",
+                "chrome",
+                "cli",
+                "console",
+                "cursor",
+                "getoption",
+                "library",
+                "option",
+                "parser",
+                "processus",
+                "readline",
+                "terminfo",
+                "tput",
+                "window"
+            ],
+            "time": "2017-05-02T12:26:19+00:00"
         },
         {
-            "name": "symfony/translation-contracts",
-            "version": "v1.1.6",
+            "name": "hoa/event",
+            "version": "1.17.01.13",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/translation-contracts.git",
-                "reference": "325b17c24f3ee23cbecfa63ba809c6d89b5fa04a"
+                "url": "https://github.com/hoaproject/Event.git",
+                "reference": "6c0060dced212ffa3af0e34bb46624f990b29c54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/325b17c24f3ee23cbecfa63ba809c6d89b5fa04a",
-                "reference": "325b17c24f3ee23cbecfa63ba809c6d89b5fa04a",
+                "url": "https://api.github.com/repos/hoaproject/Event/zipball/6c0060dced212ffa3af0e34bb46624f990b29c54",
+                "reference": "6c0060dced212ffa3af0e34bb46624f990b29c54",
                 "shasum": ""
             },
             "require": {
@@ -6435,7 +6464,7 @@
                 "listener",
                 "observer"
             ],
-            "time": "2019-08-02T12:15:04+00:00"
+            "time": "2017-01-13T15:30:50+00:00"
         },
         {
             "name": "hoa/exception",
@@ -6492,65 +6521,28 @@
             "time": "2017-01-16T07:53:27+00:00"
         },
         {
-            "name": "symfony/validator",
-            "version": "v4.3.4",
+            "name": "hoa/file",
+            "version": "1.17.07.11",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/validator.git",
-                "reference": "173b483999c2acad8e040633105733318dcc8a83"
+                "url": "https://github.com/hoaproject/File.git",
+                "reference": "35cb979b779bc54918d2f9a4e02ed6c7a1fa67ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/validator/zipball/173b483999c2acad8e040633105733318dcc8a83",
-                "reference": "173b483999c2acad8e040633105733318dcc8a83",
+                "url": "https://api.github.com/repos/hoaproject/File/zipball/35cb979b779bc54918d2f9a4e02ed6c7a1fa67ca",
+                "reference": "35cb979b779bc54918d2f9a4e02ed6c7a1fa67ca",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1.3",
-                "symfony/polyfill-ctype": "~1.8",
-                "symfony/polyfill-mbstring": "~1.0",
-                "symfony/translation-contracts": "^1.1"
-            },
-            "conflict": {
-                "doctrine/lexer": "<1.0.2",
-                "phpunit/phpunit": "<4.8.35|<5.4.3,>=5.0",
-                "symfony/dependency-injection": "<3.4",
-                "symfony/http-kernel": "<3.4",
-                "symfony/intl": "<4.3",
-                "symfony/translation": "<4.2",
-                "symfony/yaml": "<3.4"
+                "hoa/consistency": "~1.0",
+                "hoa/event": "~1.0",
+                "hoa/exception": "~1.0",
+                "hoa/iterator": "~2.0",
+                "hoa/stream": "~1.0"
             },
             "require-dev": {
-                "doctrine/annotations": "~1.7",
-                "doctrine/cache": "~1.0",
-                "egulias/email-validator": "^2.1.10",
-                "symfony/cache": "~3.4|~4.0",
-                "symfony/config": "~3.4|~4.0",
-                "symfony/dependency-injection": "~3.4|~4.0",
-                "symfony/expression-language": "~3.4|~4.0",
-                "symfony/http-client": "^4.3",
-                "symfony/http-foundation": "~4.1",
-                "symfony/http-kernel": "~3.4|~4.0",
-                "symfony/intl": "^4.3",
-                "symfony/property-access": "~3.4|~4.0",
-                "symfony/property-info": "~3.4|~4.0",
-                "symfony/translation": "~4.2",
-                "symfony/var-dumper": "~3.4|~4.0",
-                "symfony/yaml": "~3.4|~4.0"
-            },
-            "suggest": {
-                "doctrine/annotations": "For using the annotation mapping. You will also need doctrine/cache.",
-                "doctrine/cache": "For using the default cached annotation reader and metadata cache.",
-                "egulias/email-validator": "Strict (RFC compliant) email validation",
-                "psr/cache-implementation": "For using the metadata cache.",
-                "symfony/config": "",
-                "symfony/expression-language": "For using the Expression validator",
-                "symfony/http-foundation": "",
-                "symfony/intl": "",
-                "symfony/property-access": "For accessing properties within comparison constraints",
-                "symfony/property-info": "To automatically add NotNull and Type constraints",
-                "symfony/translation": "For translating validation errors.",
-                "symfony/yaml": ""
+                "hoa/test": "~2.0"
             },
             "type": "library",
             "extra": {
@@ -6577,22 +6569,31 @@
                     "homepage": "https://hoa-project.net/"
                 }
             ],
-            "description": "Symfony Validator Component",
-            "homepage": "https://symfony.com",
-            "time": "2019-08-26T09:28:48+00:00"
+            "description": "The Hoa\\File library.",
+            "homepage": "https://hoa-project.net/",
+            "keywords": [
+                "Socket",
+                "directory",
+                "file",
+                "finder",
+                "library",
+                "link",
+                "temporary"
+            ],
+            "time": "2017-07-11T07:42:15+00:00"
         },
         {
-            "name": "symfony/yaml",
-            "version": "v4.3.4",
+            "name": "hoa/iterator",
+            "version": "2.17.01.10",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/yaml.git",
-                "reference": "5a0b7c32dc3ec56fd4abae8a4a71b0cf05013686"
+                "url": "https://github.com/hoaproject/Iterator.git",
+                "reference": "d1120ba09cb4ccd049c86d10058ab94af245f0cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/5a0b7c32dc3ec56fd4abae8a4a71b0cf05013686",
-                "reference": "5a0b7c32dc3ec56fd4abae8a4a71b0cf05013686",
+                "url": "https://api.github.com/repos/hoaproject/Iterator/zipball/d1120ba09cb4ccd049c86d10058ab94af245f0cc",
+                "reference": "d1120ba09cb4ccd049c86d10058ab94af245f0cc",
                 "shasum": ""
             },
             "require": {
@@ -6627,9 +6628,13 @@
                     "homepage": "https://hoa-project.net/"
                 }
             ],
-            "description": "Symfony Yaml Component",
-            "homepage": "https://symfony.com",
-            "time": "2019-08-20T14:27:59+00:00"
+            "description": "The Hoa\\Iterator library.",
+            "homepage": "https://hoa-project.net/",
+            "keywords": [
+                "iterator",
+                "library"
+            ],
+            "time": "2017-01-10T10:34:47+00:00"
         },
         {
             "name": "hoa/protocol",
@@ -6692,27 +6697,27 @@
             "time": "2017-01-14T12:26:10+00:00"
         },
         {
-            "name": "twig/twig",
-            "version": "v1.42.3",
+            "name": "hoa/stream",
+            "version": "1.17.02.21",
             "source": {
                 "type": "git",
-                "url": "https://github.com/twigphp/Twig.git",
-                "reference": "201baee843e0ffe8b0b956f336dd42b2a92fae4e"
+                "url": "https://github.com/hoaproject/Stream.git",
+                "reference": "3293cfffca2de10525df51436adf88a559151d82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/201baee843e0ffe8b0b956f336dd42b2a92fae4e",
-                "reference": "201baee843e0ffe8b0b956f336dd42b2a92fae4e",
+                "url": "https://api.github.com/repos/hoaproject/Stream/zipball/3293cfffca2de10525df51436adf88a559151d82",
+                "reference": "3293cfffca2de10525df51436adf88a559151d82",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.0",
-                "symfony/polyfill-ctype": "^1.8"
+                "hoa/consistency": "~1.0",
+                "hoa/event": "~1.0",
+                "hoa/exception": "~1.0",
+                "hoa/protocol": "~1.0"
             },
             "require-dev": {
-                "psr/container": "^1.0",
-                "symfony/debug": "^3.4|^4.2",
-                "symfony/phpunit-bridge": "^4.4@dev|^5.0"
+                "hoa/test": "~2.0"
             },
             "type": "library",
             "extra": {
@@ -6731,20 +6736,12 @@
             ],
             "authors": [
                 {
-                    "name": "Fabien Potencier",
-                    "role": "Lead Developer",
-                    "email": "fabien@symfony.com",
-                    "homepage": "http://fabien.potencier.org"
+                    "name": "Ivan Enderlin",
+                    "email": "ivan.enderlin@hoa-project.net"
                 },
                 {
-                    "name": "Twig Team",
-                    "role": "Contributors",
-                    "homepage": "https://twig.symfony.com/contributors"
-                },
-                {
-                    "name": "Armin Ronacher",
-                    "role": "Project Founder",
-                    "email": "armin.ronacher@active-4.com"
+                    "name": "Hoa community",
+                    "homepage": "https://hoa-project.net/"
                 }
             ],
             "description": "The Hoa\\Stream library.",
@@ -6761,20 +6758,20 @@
                 "stream",
                 "wrapper"
             ],
-            "time": "2019-08-24T12:51:03+00:00"
+            "time": "2017-02-21T16:01:06+00:00"
         },
         {
-            "name": "webmozart/assert",
-            "version": "1.5.0",
+            "name": "hoa/ustring",
+            "version": "4.17.01.16",
             "source": {
                 "type": "git",
-                "url": "https://github.com/webmozart/assert.git",
-                "reference": "88e6d84706d09a236046d686bbea96f07b3a34f4"
+                "url": "https://github.com/hoaproject/Ustring.git",
+                "reference": "e6326e2739178799b1fe3fdd92029f9517fa17a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/88e6d84706d09a236046d686bbea96f07b3a34f4",
-                "reference": "88e6d84706d09a236046d686bbea96f07b3a34f4",
+                "url": "https://api.github.com/repos/hoaproject/Ustring/zipball/e6326e2739178799b1fe3fdd92029f9517fa17a0",
+                "reference": "e6326e2739178799b1fe3fdd92029f9517fa17a0",
                 "shasum": ""
             },
             "require": {
@@ -6782,7 +6779,11 @@
                 "hoa/exception": "~1.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.8.36 || ^7.5.13"
+                "hoa/test": "~2.0"
+            },
+            "suggest": {
+                "ext-iconv": "ext/iconv must be present (or a third implementation) to use Hoa\\Ustring::transcode().",
+                "ext-intl": "To get a better Hoa\\Ustring::toAscii() and Hoa\\Ustring::compareTo()."
             },
             "type": "library",
             "extra": {
@@ -6817,7 +6818,7 @@
                 "string",
                 "unicode"
             ],
-            "time": "2019-08-24T08:43:50+00:00"
+            "time": "2017-01-16T07:08:25+00:00"
         },
         {
             "name": "jakoch/phantomjs-installer",
@@ -7271,7 +7272,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🔍 Nette Finder: find files and directories with an intuitive API.",
+            "description": "? Nette Finder: find files and directories with an intuitive API.",
             "homepage": "https://nette.org",
             "keywords": [
                 "filesystem",
@@ -7331,7 +7332,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
+            "description": "? Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -7735,7 +7736,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-12T17:28:44+00:00"
+            "time": "2017-12-13T13:21:38+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -7775,18 +7776,18 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "email": "sebastian@phpeople.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "sebastian@phpeople.de"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Component for reading phar.io manifest information from a PHP Archive (PHAR)",
@@ -7822,18 +7823,18 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "email": "sebastian@phpeople.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "sebastian@phpeople.de"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Library for handling version information and constraints",
@@ -8193,8 +8194,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "FilterIterator implementation that filters files based on a list of suffixes.",
@@ -8235,8 +8236,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Simple template engine.",
@@ -8284,8 +8285,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Utility class for timing",
@@ -8846,8 +8847,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "FinderFacade is a convenience wrapper for Symfony's Finder component.",
@@ -9040,8 +9041,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Copy/Paste Detector (CPD) for PHP code.",
@@ -9178,8 +9179,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
@@ -9369,11 +9370,11 @@
         },
         {
             "name": "spryker-sdk/composer-constrainer",
-            "version": "dev-feature/te-3953/master/the-command-code-constraint-modules-modifies-the-composer-json-with-some-issues",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker-sdk/composer-constrainer.git",
-                "reference": "9a731abc85a8504b8177588d41bd84ced45ae7ee"
+                "reference": "618fb2adb6974e6cf0f71ff5499b352d5cbdb6ef"
             },
             "require": {
                 "php": ">=7.1",
@@ -9385,7 +9386,7 @@
                 "sllh/composer-versions-check": "^2.0.2",
                 "spryker/code-sniffer": "*",
                 "spryker/console": "*",
-                "spryker/testify": "*"
+                "spryker/testify": "^3.15.0"
             },
             "type": "library",
             "extra": {
@@ -9415,7 +9416,7 @@
                 "proprietary"
             ],
             "description": "ComposerConstrainer module",
-            "time": "2019-08-26T13:15:09+00:00"
+            "time": "2019-08-27T12:18:42+00:00"
         },
         {
             "name": "spryker-sdk/phpstan-spryker",
@@ -10522,8 +10523,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
@@ -10563,8 +10564,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
