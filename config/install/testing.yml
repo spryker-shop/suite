@@ -110,7 +110,7 @@ sections:
 
     queue:
         run-worker:
-            command: "vendor/bin/console queue:worker:start"
+            command: "vendor/bin/console queue:worker:start --stop-only-when-empty"
 
 
     frontend:
