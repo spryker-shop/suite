@@ -2141,6 +2141,7 @@
                     "dev-master": "1.0.x-dev"
                 }
             },
+            "type": "library",
             "autoload": {
                 "psr-4": {
                     "Psr\\Http\\Message\\": "src/"
@@ -2185,6 +2186,9 @@
             "require": {
                 "php": ">=5.3.0"
             },
+            "bin": [
+                "bin/propel"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -2674,8 +2678,22 @@
                 "spryker-shop/product-detail-page": "If you want to see AvailabilityNotificationWidget on pdp",
                 "spryker/silex": "If you want to use silex"
             },
-            "type": "library",
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/config": "^3.1.0",
+                "spryker/console": "^3.1.0 || ^4.0.0",
+                "spryker/propel": "^3.0.0",
+                "spryker/silex": "^2.0.0",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/console": "*",
+                "spryker/silex": "^2.0.0"
+            },
+            "type": "propel-behavior",
             "extra": {
+                "name": "event",
+                "class": "\\Spryker\\Zed\\EventBehavior\\Persistence\\Propel\\Behavior\\EventBehavior",
                 "branch-alias": {
                     "dev-master": "1.0.x-dev"
                 }
@@ -2719,6 +2737,9 @@
             "suggest": {
                 "spryker-shop/product-detail-page": "Widget plugins are available for this module."
             },
+            "bin": [
+                "bin/install"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -2778,6 +2799,9 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "src/"
+            ],
             "license": [
                 "proprietary"
             ],
@@ -3112,8 +3136,10 @@
                 "spryker/permission": "If you want to use permissions plugins.",
                 "spryker/silex": "Use this module when using plugins that need Silex dependencies."
             },
-            "type": "library",
+            "type": "propel-behavior",
             "extra": {
+                "name": "synchronization",
+                "class": "\\Spryker\\Zed\\SynchronizationBehavior\\Persistence\\Propel\\Behavior\\SynchronizationBehavior",
                 "branch-alias": {
                     "dev-master": "1.0.x-dev"
                 }
@@ -3153,8 +3179,10 @@
                 "spryker/code-sniffer": "*",
                 "spryker/testify": "*"
             },
-            "type": "library",
+            "type": "propel-behavior",
             "extra": {
+                "name": "uuid",
+                "class": "\\Spryker\\Zed\\UuidBehavior\\Persistence\\Propel\\Behavior\\UuidBehavior",
                 "branch-alias": {
                     "dev-master": "1.0.x-dev"
                 }
@@ -3528,7 +3556,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "4.3-dev"
                 }
             },
             "autoload": {
@@ -3538,7 +3566,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "proprietary"
+                "MIT"
             ],
             "description": "CmsContentWidgetProductConnector module",
             "time": "2019-03-22T06:59:44+00:00"
@@ -3636,7 +3664,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.1-dev"
                 }
             },
             "autoload": {
@@ -3646,7 +3674,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "proprietary"
+                "MIT"
             ],
             "description": "CmsPage module",
             "time": "2019-07-23T13:43:51+00:00"
@@ -3735,7 +3763,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "4.3-dev"
                 }
             },
             "autoload": {
@@ -3901,7 +3929,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "proprietary"
+                "MIT"
             ],
             "description": "CompanyUserAgentWidget module",
             "time": "2019-06-10T14:26:37+00:00"
@@ -3956,7 +3984,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "proprietary"
+                "MIT"
             ],
             "description": "CompanyUserInvitationPage module",
             "time": "2019-07-11T10:40:18+00:00"
@@ -3991,7 +4019,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.12-dev"
                 }
             },
             "autoload": {
@@ -4001,7 +4029,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "proprietary"
+                "MIT"
             ],
             "description": "CompanyWidget module",
             "time": "2019-08-12T08:23:11+00:00"
@@ -4042,7 +4070,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.12-dev"
                 }
             },
             "autoload": {
@@ -4052,7 +4080,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "proprietary"
+                "MIT"
             ],
             "description": "ConfigurableBundleWidget module",
             "time": "2019-08-14T14:03:36+00:00"
@@ -4273,6 +4301,11 @@
                 "spryker/currency": "^3.4.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/symfony": "^3.1.0"
+            },
+            "conflict": {
+                "symfony/config": "<4.2",
+                "symfony/dependency-injection": "<3.4",
+                "symfony/yaml": "<3.4"
             },
             "require-dev": {
                 "spryker-shop/shop-application": "*",
@@ -4560,6 +4593,9 @@
                 "spryker-shop/cart-code-widget": "If you want to use components from module CartCodeWidget.",
                 "spryker/silex": "Use this module when using plugins that need Silex dependencies."
             },
+            "suggest": {
+                "symfony/translation-implementation": ""
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -4608,7 +4644,7 @@
                 "spryker-shop/shop-application": "Use this module when using plugins that need ShopApplication dependencies.",
                 "spryker/silex": "Use this module when using plugins that need Silex dependencies."
             },
-            "type": "library",
+            "type": "symfony-bridge",
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.0.x-dev"
@@ -5010,6 +5046,10 @@
                 "spryker/permission": "If you want to use permissions plugins",
                 "spryker/silex": "Use this module when using plugins that need Silex dependencies."
             },
+            "bin": [
+                "bin/generate-deps-for-config-factory",
+                "bin/generate-factory-for-class"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -5205,6 +5245,9 @@
                 "spryker-shop/discount-widget": "If you want to use components from module DiscountWidget or DiscountSummaryWidgetPlugin",
                 "spryker/silex": "Use this module when using plugins that need Silex dependencies."
             },
+            "bin": [
+                "codecept"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -5259,6 +5302,7 @@
                     "dev-master": "1.0.x-dev"
                 }
             },
+            "type": "library",
             "autoload": {
                 "psr-4": {
                     "SprykerShop\\": "src/SprykerShop/"
@@ -6004,6 +6048,7 @@
                     "dev-master": "1.0.x-dev"
                 }
             },
+            "type": "custom-installer",
             "autoload": {
                 "psr-4": {
                     "SprykerShop\\": "src/SprykerShop/"
@@ -6474,6 +6519,11 @@
                     "SprykerShop\\": "src/SprykerShop/"
                 }
             },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
@@ -6569,6 +6619,11 @@
                 "psr-4": {
                     "SprykerShop\\": "src/SprykerShop/"
                 }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -6667,6 +6722,9 @@
             "suggest": {
                 "spryker/symfony": "If you want to use QuoteRequestAgentPage form expander plugins."
             },
+            "bin": [
+                "bin/php-parse"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -6720,8 +6778,9 @@
                 "spryker-shop/quote-request-agent-page": "Use this module if you want see quote request agent pages.",
                 "spryker/silex": "Use this module when using plugins that need Silex dependencies."
             },
-            "type": "library",
+            "type": "composer-plugin",
             "extra": {
+                "class": "PackageVersions\\Installer",
                 "branch-alias": {
                     "dev-master": "1.0.x-dev"
                 }
@@ -6785,6 +6844,9 @@
                 "spryker-shop/product-packaging-unit-widget": "If you want to use product packaging unit widget functionality",
                 "spryker/silex": "Use this module when using plugins that need Silex dependencies."
             },
+            "bin": [
+                "src/bin/pdepend"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -6930,6 +6992,9 @@
             "suggest": {
                 "spryker/url-storage": "Use this module when using plugins that need UrlStorage dependencies."
             },
+            "bin": [
+                "src/bin/phpmd"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -7371,6 +7436,9 @@
                 "spryker/silex": ">2.0.0 If you want to use the permission plugin for Twig",
                 "spryker/twig": ">3.0.0 If you want to use the permission plugin for Twig"
             },
+            "bin": [
+                "phpunit"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -7812,6 +7880,11 @@
                 "psr-4": {
                     "SprykerShop\\": "src/SprykerShop/"
                 }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -39634,7 +39707,6 @@
             "require": {
                 "php": ">=7.1",
                 "spryker/kernel": "^3.33.0",
-                "spryker/module-finder": "^1.0.0",
                 "spryker/symfony": "^3.2.2",
                 "spryker/zend": "^2.1.0"
             },
@@ -39642,7 +39714,7 @@
                 "sllh/composer-versions-check": "^2.0.2",
                 "spryker/code-sniffer": "*",
                 "spryker/console": "*",
-                "spryker/testify": "*"
+                "spryker/testify": "^3.15.0"
             },
             "type": "library",
             "extra": {
@@ -39652,8 +39724,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "SprykerSdk\\": "src/SprykerSdk/",
-                    "SprykerSdkTest\\Zed\\ComposerConstrainer\\Helper\\": "tests/SprykerSdkTest/Zed/ComposerConstrainer/_support/Helper/"
+                    "SprykerSdk\\": "src/SprykerSdk/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -39661,7 +39732,7 @@
                 "proprietary"
             ],
             "description": "ComposerConstrainer module",
-            "time": "2019-08-15T09:03:37+00:00"
+            "time": "2019-08-27T12:18:42+00:00"
         },
         {
             "name": "spryker-sdk/phpstan-spryker",
