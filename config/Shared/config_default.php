@@ -535,3 +535,6 @@ $config[ApplicationConstants::ENABLE_PRETTY_ERROR_HANDLER] = false;
 
 // ----------- Documentation generator
 $config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GENERATION] = false;
+
+// ----------- HTTP Security
+$config[KernelConstants::STRICT_DOMAIN_REDIRECT] = true;
