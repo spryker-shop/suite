@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ab79cf5f85e89f0c28d92720f4a894ab",
+    "content-hash": "f65475f138200c161262066c1e8e3f23",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -31379,6 +31379,49 @@
             ],
             "description": "Stock module",
             "time": "2019-06-27T10:59:33+00:00"
+        },
+        {
+            "name": "spryker/stock-gui",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/stock-gui.git",
+                "reference": "5a54f488fb6b20704a70006c712d916ec6c3181a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/stock-gui/zipball/5a54f488fb6b20704a70006c712d916ec6c3181a",
+                "reference": "5a54f488fb6b20704a70006c712d916ec6c3181a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/gui": "^3.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/stock": "^7.0.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "StockGui module",
+            "time": "2019-08-27T09:53:12+00:00"
         },
         {
             "name": "spryker/stock-sales-connector",
