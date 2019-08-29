@@ -26,6 +26,8 @@ use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Sales\AmountSalesUnitH
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\SalesExtension\AmountSalesUnitOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\SalesExtension\ProductPackagingUnitOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\Sales\SalesDependencyProvider as SprykerSalesDependencyProvider;
+use Spryker\Zed\SalesConfigurableBundle\Communication\Plugin\Sales\ConfiguredBundleOrderExpanderPlugin;
+use Spryker\Zed\SalesConfigurableBundle\Communication\Plugin\Sales\ConfiguredBundlesOrderPostSavePlugin;
 use Spryker\Zed\SalesMerchantConnector\Communication\Plugin\OrderItemReferenceExpanderPreSavePlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ItemMetadataHydratorPlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ProductIdHydratorPlugin;
@@ -67,6 +69,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new AmountLeadProductHydrateOrderPlugin(),
             new AmountSalesUnitHydrateOrderPlugin(),
             new CommentThreadOrderExpanderPlugin(),
+            new ConfiguredBundleOrderExpanderPlugin(),
         ];
     }
 
@@ -112,6 +115,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     {
         return [
             new CommentThreadAttachedCommentOrderPostSavePlugin(),
+            new ConfiguredBundlesOrderPostSavePlugin(),
         ];
     }
 }
