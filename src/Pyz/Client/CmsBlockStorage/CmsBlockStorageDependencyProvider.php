@@ -7,20 +7,20 @@
 
 namespace Pyz\Client\CmsBlockStorage;
 
+use Spryker\Client\CmsBlockCategoryStorage\Plugin\CmsBlockStorage\CmsBlockCategoryCmsBlockStorageBlocksFinderPlugin;
+use Spryker\Client\CmsBlockProductStorage\Plugin\CmsBlockStorage\CmsBlockProductCmsBlockStorageBlocksFinderPlugin;
 use Spryker\Client\CmsBlockStorage\CmsBlockStorageDependencyProvider as SprykerCmsBlockStorageDependencyProvider;
-use Spryker\Zed\CmsBlockCategoryStorage\Communication\Plugin\CmsBlockStorage\CmsBlockCategoryCmsBlockStorageRelatedBlocksFinderPlugin;
-use Spryker\Zed\CmsBlockProductStorage\Communication\Plugin\CmsBlockStorage\CmsBlockProductCmsBlockStorageRelatedBlocksFinderPlugin;
 
 class CmsBlockStorageDependencyProvider extends SprykerCmsBlockStorageDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\CmsBlockStorageExtension\Dependency\Plugin\CmsBlockStorageRelatedBlocksFinderPluginInterface[]
+     * @return \Spryker\Client\CmsBlockStorageExtension\Dependency\Plugin\CmsBlockStorageBlocksFinderPluginInterface[]
      */
-    protected function getCmsBlockStorageRelatedBlocksFinderPlugins(): array
+    protected function getCmsBlockStorageBlocksFinderPlugins(): array
     {
         return [
-            new CmsBlockCategoryCmsBlockStorageRelatedBlocksFinderPlugin(),
-            new CmsBlockProductCmsBlockStorageRelatedBlocksFinderPlugin(),
+            new CmsBlockCategoryCmsBlockStorageBlocksFinderPlugin(),
+            new CmsBlockProductCmsBlockStorageBlocksFinderPlugin(),
         ];
     }
 }
