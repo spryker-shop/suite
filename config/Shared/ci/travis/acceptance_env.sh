@@ -17,7 +17,7 @@ FE_YVES_BUNDLE_PKGJSON_PATTERN=".+/assets/Yves/package.json$"
 FE_ZED_SCRIPT='zed'
 FE_ZED_BUNDLE_PKGJSON_PATTERN=".+/assets/Zed/package.json$"
 
-sudo apt-get install apache2 libapache2-mod-fastcgi
+sudo apt-get install apache2 libapache2-mod-fastcgi > /dev/null
 
 sudo chmod -R 755 $HOME
 sudo chmod 600 config/Zed/dev_only_private.key
@@ -51,4 +51,4 @@ sudo service apache2 restart
 # node 6 is required
 # installed by '- nvm install 6' in .travis.yml
 
-wget https://raw.github.com/Codeception/c3/2.0/c3.php
+wget https://raw.github.com/Codeception/c3/2.0/c3.php > /dev/null
