@@ -39,6 +39,7 @@ class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface, Se
 
     /**
      * {@inheritdoc}
+     * - Returns a query object for sale search.
      *
      * @api
      *
@@ -51,6 +52,7 @@ class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface, Se
 
     /**
      * {@inheritdoc}
+     * - Defines a context for sale search.
      *
      * @api
      *
