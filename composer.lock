@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f65475f138200c161262066c1e8e3f23",
+    "content-hash": "39b1530a72c5fb72a3eff9622a03daa6",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -31647,6 +31647,49 @@
             ],
             "description": "Store module",
             "time": "2019-07-09T12:37:23+00:00"
+        },
+        {
+            "name": "spryker/store-gui",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/store-gui.git",
+                "reference": "65d0a42da91afe7c93fddcedb5bfe8a31ee7090f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/store-gui/zipball/65d0a42da91afe7c93fddcedb5bfe8a31ee7090f",
+                "reference": "65d0a42da91afe7c93fddcedb5bfe8a31ee7090f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/gui": "^3.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/store": "^1.0.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "StoreGui module",
+            "time": "2019-08-27T08:34:53+00:00"
         },
         {
             "name": "spryker/stores-rest-api",
