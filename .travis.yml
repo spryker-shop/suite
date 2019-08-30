@@ -179,4 +179,5 @@ notifications:
   webhooks:
     - https://release.spryker.com/ci-webhooks/add
 
-import: .travis.docker.yml
+include:
+    - .travis.docker.yml
