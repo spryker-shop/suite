@@ -78,7 +78,6 @@ abstract class AbstractProductStockWriterTest extends AbstractWriterTest
      */
     protected function queryDataFromDB(array $skus, array $warehouses): array
     {
-
         $stockProducts = SpyStockProductQuery::create()
             ->filterByQuantity_In(static::WAREHOUSES_QTY)
             ->useStockQuery()
