@@ -336,16 +336,16 @@
         },
         {
             "name": "elasticsearch/elasticsearch",
-            "version": "v5.3.2",
+            "version": "v5.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/elastic/elasticsearch-php.git",
-                "reference": "4b29a4121e790bbfe690d5ee77da348b62d48eb8"
+                "reference": "d3c5b55ad94f5053ca76c48585b4cde2cdc6bc59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elastic/elasticsearch-php/zipball/4b29a4121e790bbfe690d5ee77da348b62d48eb8",
-                "reference": "4b29a4121e790bbfe690d5ee77da348b62d48eb8",
+                "url": "https://api.github.com/repos/elastic/elasticsearch-php/zipball/d3c5b55ad94f5053ca76c48585b4cde2cdc6bc59",
+                "reference": "d3c5b55ad94f5053ca76c48585b4cde2cdc6bc59",
                 "shasum": ""
             },
             "require": {
@@ -387,7 +387,7 @@
                 "elasticsearch",
                 "search"
             ],
-            "time": "2017-11-08T17:04:47+00:00"
+            "time": "2019-01-08T18:57:00+00:00"
         },
         {
             "name": "everon/collection",
@@ -2284,20 +2284,20 @@
         },
         {
             "name": "ruflin/elastica",
-            "version": "5.3.5",
+            "version": "5.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ruflin/Elastica.git",
-                "reference": "e90badce02229505cd34a67beb6bb8bd10881b7f"
+                "reference": "1ed6f587a38d4d6455b688ffc9a9d370d4ae60e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ruflin/Elastica/zipball/e90badce02229505cd34a67beb6bb8bd10881b7f",
-                "reference": "e90badce02229505cd34a67beb6bb8bd10881b7f",
+                "url": "https://api.github.com/repos/ruflin/Elastica/zipball/1ed6f587a38d4d6455b688ffc9a9d370d4ae60e9",
+                "reference": "1ed6f587a38d4d6455b688ffc9a9d370d4ae60e9",
                 "shasum": ""
             },
             "require": {
-                "elasticsearch/elasticsearch": "5.3.*",
+                "elasticsearch/elasticsearch": "5.4.*",
                 "php": ">=5.6.0",
                 "psr/log": "~1.0"
             },
@@ -2338,7 +2338,7 @@
                 "client",
                 "search"
             ],
-            "time": "2019-01-28T13:37:00+00:00"
+            "time": "2019-08-29T06:34:21+00:00"
         },
         {
             "name": "spryker-eco/loggly",
@@ -2635,7 +2635,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "014559f6b08b3db1366b24b87ba6120dfaab2132"
+                "reference": "641f08f9460fc4e4acd993161f40f38943c50585"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2905,7 +2905,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-08-28T09:06:48+00:00"
+            "time": "2019-09-02T09:03:12+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2913,7 +2913,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "6750f48ac2bb3cf3e1db32bb7e72ebc66e3ba27f"
+                "reference": "b005c0ac3de09cd53a2f5aabfee52f56b784c87e"
             },
             "require": {
                 "php": ">=7.1"
@@ -2981,14 +2981,14 @@
             },
             "scripts": {
                 "cs-check": [
-                    "phpcs Bundles --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -p -v"
+                    "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -p --ignore=/node_modules/ Bundles/"
                 ]
             },
             "license": [
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-08-28T08:19:51+00:00"
+            "time": "2019-08-29T14:34:42+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -7599,16 +7599,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.2.3",
+            "version": "v4.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "e612609022e935f3d0337c1295176505b41188c8"
+                "reference": "97e59c7a16464196a8b9c77c47df68e4a39a45c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/e612609022e935f3d0337c1295176505b41188c8",
-                "reference": "e612609022e935f3d0337c1295176505b41188c8",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/97e59c7a16464196a8b9c77c47df68e4a39a45c4",
+                "reference": "97e59c7a16464196a8b9c77c47df68e4a39a45c4",
                 "shasum": ""
             },
             "require": {
@@ -7646,7 +7646,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2019-08-12T20:17:41+00:00"
+            "time": "2019-09-01T07:51:21+00:00"
         },
         {
             "name": "ocramius/package-versions",
@@ -9586,12 +9586,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/architecture-sniffer.git",
-                "reference": "db5f56a25e9903c0409fd3053e8e4bda4af91977"
+                "reference": "d9c3cc6217114c910945c1caaa2535d02e702f12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/db5f56a25e9903c0409fd3053e8e4bda4af91977",
-                "reference": "db5f56a25e9903c0409fd3053e8e4bda4af91977",
+                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/d9c3cc6217114c910945c1caaa2535d02e702f12",
+                "reference": "d9c3cc6217114c910945c1caaa2535d02e702f12",
                 "shasum": ""
             },
             "require": {
@@ -9636,7 +9636,7 @@
                 "sniffer",
                 "standards"
             ],
-            "time": "2019-03-14T14:56:25+00:00"
+            "time": "2019-08-20T15:47:30+00:00"
         },
         {
             "name": "spryker/code-generator",
@@ -9688,12 +9688,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "993b6ea69c6993e17071d65f720ee71d58144a1f"
+                "reference": "b515e288ec714c2ff1e8072c65eca2d86933c6fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/993b6ea69c6993e17071d65f720ee71d58144a1f",
-                "reference": "993b6ea69c6993e17071d65f720ee71d58144a1f",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/b515e288ec714c2ff1e8072c65eca2d86933c6fe",
+                "reference": "b515e288ec714c2ff1e8072c65eca2d86933c6fe",
                 "shasum": ""
             },
             "require": {
@@ -9733,7 +9733,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-08-27T11:05:10+00:00"
+            "time": "2019-08-30T16:15:26+00:00"
         },
         {
             "name": "spryker/development-core",
