@@ -128,7 +128,7 @@ services:
     key_value_store:
         engine: redis
         endpoints:
-            localhost:8081:
+            localhost:6379:
                 protocol: tcp
     search:
         engine: elastic
