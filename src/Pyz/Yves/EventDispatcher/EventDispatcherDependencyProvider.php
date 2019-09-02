@@ -11,6 +11,7 @@ use Spryker\Yves\Application\Communication\Plugin\EventDispatcher\HeadersSecurit
 use Spryker\Yves\EventDispatcher\EventDispatcherDependencyProvider as SprykerEventDispatcherDependencyProvider;
 use Spryker\Yves\Locale\Plugin\EventDispatcher\LocaleEventDispatcherPlugin;
 use Spryker\Yves\Router\Plugin\EventDispatcher\RouterLocaleEventDispatcherPlugin;
+use Spryker\Yves\Session\Plugin\EventDispatcher\SessionEventDispatcherPlugin;
 use SprykerShop\Yves\ShopApplication\Plugin\EventDispatcher\ShopApplicationEventDispatcherPlugin;
 
 class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependencyProvider
@@ -25,6 +26,7 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
             new LocaleEventDispatcherPlugin(),
             new RouterLocaleEventDispatcherPlugin(),
             new HeadersSecurityEventDispatcherPlugin(),
+            new SessionEventDispatcherPlugin(),
         ];
     }
 }

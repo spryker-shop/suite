@@ -19,7 +19,6 @@ use Spryker\Zed\Application\ApplicationDependencyProvider as SprykerApplicationD
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\MvcRoutingServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\RequestServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\RoutingServiceProvider;
-use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\SaveSessionServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\SilexRoutingServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\SslServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\SubRequestServiceProvider;
@@ -35,6 +34,7 @@ use Spryker\Zed\Locale\Communication\Plugin\Application\LocaleApplicationPlugin;
 use Spryker\Zed\Messenger\Communication\Plugin\Application\MessengerApplicationPlugin;
 use Spryker\Zed\Monitoring\Communication\Plugin\ServiceProvider\MonitoringRequestTransactionServiceProvider;
 use Spryker\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
+use Spryker\Zed\Session\Communication\Plugin\Application\SessionApplicationPlugin;
 use Spryker\Zed\Session\Communication\Plugin\ServiceProvider\SessionServiceProvider as SprykerSessionServiceProvider;
 use Spryker\Zed\Translator\Communication\Plugin\Application\TranslatorApplicationPlugin;
 use Spryker\Zed\Twig\Communication\Plugin\Application\TwigApplicationPlugin;
@@ -53,8 +53,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
         $coreProviders = parent::getServiceProviders($container);
 
         $providers = [
-            new SessionServiceProvider(),
-            new SprykerSessionServiceProvider(),
             new SslServiceProvider(),
             new AuthBootstrapProvider(),
             new AclBootstrapProvider(),
@@ -68,7 +66,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new GuiTwigExtensionServiceProvider(),
             new RedirectAfterLoginProvider(),
             new EventBehaviorServiceProvider(),
-            new SaveSessionServiceProvider(),
         ];
 
         $providers = array_merge($providers, $coreProviders);
@@ -161,6 +158,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new TranslatorApplicationPlugin(),
             new MessengerApplicationPlugin(),
             new PropelApplicationPlugin(),
+            new SessionApplicationPlugin(),
         ];
     }
 }
