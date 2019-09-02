@@ -9,6 +9,7 @@ namespace PyzTest\Glue\Urls\RestApi;
 
 use Codeception\Util\HttpCode;
 use PyzTest\Glue\Urls\UrlsRestApiTester;
+use Spryker\Glue\UrlsRestApi\UrlsRestApiConfig;
 
 /**
  * Auto-generated group annotations
@@ -49,8 +50,9 @@ class UrlsRestApiCest
         //act
         $I->sendGET(
             $I->formatUrl(
-                'urls?url={url}',
+                '{resource}?url={url}',
                 [
+                    'resource' => UrlsRestApiConfig::RESOURCE_URL_SEARCH,
                     'url' => 'none',
                 ]
             )
@@ -65,7 +67,7 @@ class UrlsRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\UrlIdentifiers\UrlsRestApiTester $I
+     * @param \PyzTest\Glue\Urls\UrlsRestApiTester $I
      *
      * @return void
      */
@@ -74,7 +76,10 @@ class UrlsRestApiCest
         //act
         $I->sendGET(
             $I->formatUrl(
-                'urls'
+                '{resource}',
+                [
+                    'resource' => UrlsRestApiConfig::RESOURCE_URL_SEARCH,
+                ]
             )
         );
 
@@ -103,8 +108,9 @@ class UrlsRestApiCest
         //act
         $I->sendGET(
             $I->formatUrl(
-                'urls?url={url}',
+                '{resource}?url={url}',
                 [
+                    'resource' => UrlsRestApiConfig::RESOURCE_URL_SEARCH,
                     'url' => $localizedUrl,
                 ]
             )
@@ -117,7 +123,7 @@ class UrlsRestApiCest
 
         $I->amSure('Returned resource collection consists of 1 item of type urls')
             ->whenI()
-            ->seeResponseDataContainsResourceCollectionOfTypeWithSizeOf('urls', 1);
+            ->seeResponseDataContainsResourceCollectionOfTypeWithSizeOf(UrlsRestApiConfig::RESOURCE_URL_SEARCH, 1);
     }
 
     /**
@@ -132,8 +138,9 @@ class UrlsRestApiCest
         //act
         $I->sendGET(
             $I->formatUrl(
-                'urls?url={url}',
+                '{resource}?url={url}',
                 [
+                    'resource' => UrlsRestApiConfig::RESOURCE_URL_SEARCH,
                     'url' => $this->fixtures->getCategoryUrlTransfer()->getUrl(),
                 ]
             )
@@ -144,8 +151,8 @@ class UrlsRestApiCest
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSure('Returned resource collection consists of 1 item of type urls')
+        $I->amSure('Returned resource collection consists of 1 item of type url-search')
             ->whenI()
-            ->seeResponseDataContainsResourceCollectionOfTypeWithSizeOf('urls', 1);
+            ->seeResponseDataContainsResourceCollectionOfTypeWithSizeOf(UrlsRestApiConfig::RESOURCE_URL_SEARCH, 1);
     }
 }
