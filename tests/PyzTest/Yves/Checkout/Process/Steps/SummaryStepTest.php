@@ -119,7 +119,6 @@ class SummaryStepTest extends Unit
     protected function createCheckoutPageConfigMock()
     {
         $mock = $this->getMockBuilder(CheckoutPageConfig::class)->getMock();
-        $mock->method('isMultiShipmentEnabled')->willReturnArgument(false);
 
         return $mock;
     }
