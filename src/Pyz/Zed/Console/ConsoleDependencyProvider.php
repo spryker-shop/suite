@@ -82,6 +82,7 @@ use Spryker\Zed\ProductValidity\Communication\Console\ProductValidityConsole;
 use Spryker\Zed\Propel\Communication\Console\DatabaseDropConsole;
 use Spryker\Zed\Propel\Communication\Console\DatabaseDropTablesConsole;
 use Spryker\Zed\Propel\Communication\Console\DeleteMigrationFilesConsole;
+use Spryker\Zed\Propel\Communication\Console\EntityTransferGeneratorConsole;
 use Spryker\Zed\Propel\Communication\Console\PropelSchemaValidatorConsole;
 use Spryker\Zed\Propel\Communication\Console\PropelSchemaXmlNameValidatorConsole;
 use Spryker\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
@@ -127,13 +128,11 @@ use Spryker\Zed\StateMachine\Communication\Console\CheckConditionConsole as Stat
 use Spryker\Zed\StateMachine\Communication\Console\CheckTimeoutConsole as StateMachineCheckTimeoutConsole;
 use Spryker\Zed\StateMachine\Communication\Console\ClearLocksConsole as StateMachineClearLocksConsole;
 use Spryker\Zed\Storage\Communication\Console\StorageDeleteAllConsole;
-use Spryker\Zed\Storage\Communication\Console\StorageExportRdbConsole;
-use Spryker\Zed\Storage\Communication\Console\StorageImportRdbConsole;
 use Spryker\Zed\StorageRedis\Communication\Console\StorageRedisExportRdbConsole;
 use Spryker\Zed\StorageRedis\Communication\Console\StorageRedisImportRdbConsole;
 use Spryker\Zed\Synchronization\Communication\Console\ExportSynchronizedDataConsole;
 use Spryker\Zed\Transfer\Communication\Console\DataBuilderGeneratorConsole;
-use Spryker\Zed\Transfer\Communication\Console\GeneratorConsole;
+use Spryker\Zed\Transfer\Communication\Console\TransferGeneratorConsole;
 use Spryker\Zed\Transfer\Communication\Console\ValidatorConsole;
 use Spryker\Zed\Translator\Communication\Console\CleanTranslationCacheConsole;
 use Spryker\Zed\Translator\Communication\Console\GenerateTranslationCacheConsole;
@@ -165,7 +164,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new BuildNavigationConsole(),
             new BuildValidationCacheConsole(),
             new EmptyAllCachesConsole(),
-            new GeneratorConsole(),
+            new TransferGeneratorConsole(),
+            new EntityTransferGeneratorConsole(),
             new InitializeDatabaseConsole(),
             new SearchConsole(),
             new GenerateIndexMapConsole(),
@@ -259,9 +259,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new DeleteMigrationFilesConsole(),
 
             new DeleteLogFilesConsole(),
-            new StorageExportRdbConsole(),
             new StorageRedisExportRdbConsole(),
-            new StorageImportRdbConsole(),
             new StorageRedisImportRdbConsole(),
             new StorageDeleteAllConsole(),
             new SearchDeleteIndexConsole(),

@@ -137,7 +137,6 @@ before_script:
 
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:generate --quiet ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:install --quiet ; fi
-  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:generate --quiet ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console dev:ide:generate-auto-completion --quiet ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/codecept build --ansi --quiet ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:databuilder:generate --quiet ; fi
