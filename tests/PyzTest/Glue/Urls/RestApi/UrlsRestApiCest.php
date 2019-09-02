@@ -52,7 +52,7 @@ class UrlsRestApiCest
             $I->formatUrl(
                 '{resource}?url={url}',
                 [
-                    'resource' => UrlsRestApiConfig::RESOURCE_URL_SEARCH,
+                    'resource' => UrlsRestApiConfig::RESOURCE_URL_RESOLVER,
                     'url' => 'none',
                 ]
             )
@@ -78,7 +78,7 @@ class UrlsRestApiCest
             $I->formatUrl(
                 '{resource}',
                 [
-                    'resource' => UrlsRestApiConfig::RESOURCE_URL_SEARCH,
+                    'resource' => UrlsRestApiConfig::RESOURCE_URL_RESOLVER,
                 ]
             )
         );
@@ -110,7 +110,7 @@ class UrlsRestApiCest
             $I->formatUrl(
                 '{resource}?url={url}',
                 [
-                    'resource' => UrlsRestApiConfig::RESOURCE_URL_SEARCH,
+                    'resource' => UrlsRestApiConfig::RESOURCE_URL_RESOLVER,
                     'url' => $localizedUrl,
                 ]
             )
@@ -121,9 +121,9 @@ class UrlsRestApiCest
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSure('Returned resource collection consists of 1 item of type urls')
+        $I->amSure('Returned resource collection consists of 1 item of type url-resolver')
             ->whenI()
-            ->seeResponseDataContainsResourceCollectionOfTypeWithSizeOf(UrlsRestApiConfig::RESOURCE_URL_SEARCH, 1);
+            ->seeResponseDataContainsResourceCollectionOfTypeWithSizeOf(UrlsRestApiConfig::RESOURCE_URL_RESOLVER, 1);
     }
 
     /**
@@ -140,7 +140,7 @@ class UrlsRestApiCest
             $I->formatUrl(
                 '{resource}?url={url}',
                 [
-                    'resource' => UrlsRestApiConfig::RESOURCE_URL_SEARCH,
+                    'resource' => UrlsRestApiConfig::RESOURCE_URL_RESOLVER,
                     'url' => $this->fixtures->getCategoryUrlTransfer()->getUrl(),
                 ]
             )
@@ -151,8 +151,8 @@ class UrlsRestApiCest
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSure('Returned resource collection consists of 1 item of type url-search')
+        $I->amSure('Returned resource collection consists of 1 item of type url-resolver')
             ->whenI()
-            ->seeResponseDataContainsResourceCollectionOfTypeWithSizeOf(UrlsRestApiConfig::RESOURCE_URL_SEARCH, 1);
+            ->seeResponseDataContainsResourceCollectionOfTypeWithSizeOf(UrlsRestApiConfig::RESOURCE_URL_RESOLVER, 1);
     }
 }

@@ -7,20 +7,20 @@
 
 namespace Pyz\Glue\UrlsRestApi;
 
-use Spryker\Glue\CategoriesRestApi\Plugin\UrlsRestApi\CategoryNodeResourceIdentifierProviderPlugin;
-use Spryker\Glue\ProductsRestApi\Plugin\UrlsRestApi\ProductAbstractResourceIdentifierProviderPlugin;
+use Spryker\Glue\CategoriesRestApi\Plugin\UrlsRestApi\CategoryNodeRestUrlResolverAttributesTransferProviderPlugin;
+use Spryker\Glue\ProductsRestApi\Plugin\UrlsRestApi\ProductAbstractRestUrlResolverAttributesTransferProviderPlugin;
 use Spryker\Glue\UrlsRestApi\UrlsRestApiDependencyProvider as SprykerUrlsRestApiDependencyProvider;
 
 class UrlsRestApiDependencyProvider extends SprykerUrlsRestApiDependencyProvider
 {
     /**
-     * @return \Spryker\Glue\UrlsRestApiExtension\Dependency\Plugin\ResourceIdentifierProviderPluginInterface[]
+     * @return \Spryker\Glue\UrlsRestApiExtension\Dependency\Plugin\RestUrlResolverAttributesTransferProviderPluginInterface[]
      */
-    protected function getResourceIdentifierProviderPlugins(): array
+    protected function getRestUrlResolverAttributesTransferProviderPlugins(): array
     {
         return [
-            new ProductAbstractResourceIdentifierProviderPlugin(),
-            new CategoryNodeResourceIdentifierProviderPlugin(),
+            new ProductAbstractRestUrlResolverAttributesTransferProviderPlugin(),
+            new CategoryNodeRestUrlResolverAttributesTransferProviderPlugin(),
         ];
     }
 }
