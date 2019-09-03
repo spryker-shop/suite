@@ -47,19 +47,21 @@ class ShipmentStepTest extends Unit
      */
     public function testShipmentStepExecuteShouldTriggerPlugins()
     {
-        $shipmentPluginMock = $this->createShipmentMock();
-        $shipmentPluginMock->expects($this->once())->method('addToDataClass');
-
-        $shipmentStepHandler = new StepHandlerPluginCollection();
-        $shipmentStepHandler->add($shipmentPluginMock, CheckoutPageDependencyProvider::PLUGIN_SHIPMENT_STEP_HANDLER);
-        $shipmentStep = $this->createShipmentStep($shipmentStepHandler);
-
+        // Arrange
         $quoteTransfer = new QuoteTransfer();
 
         $shipmentTransfer = new ShipmentTransfer();
         $shipmentTransfer->setShipmentSelection(CheckoutPageDependencyProvider::PLUGIN_SHIPMENT_STEP_HANDLER);
         $quoteTransfer->setShipment($shipmentTransfer);
 
+        $shipmentPluginMock = $this->createShipmentMock();
+        $shipmentPluginMock->expects($this->once())->method('addToDataClass')->willReturn($quoteTransfer);
+
+        $shipmentStepHandler = new StepHandlerPluginCollection();
+        $shipmentStepHandler->add($shipmentPluginMock, CheckoutPageDependencyProvider::PLUGIN_SHIPMENT_STEP_HANDLER);
+        $shipmentStep = $this->createShipmentStep($shipmentStepHandler);
+
+        // Act
         $shipmentStep->execute($this->createRequest(), $quoteTransfer);
     }
 
@@ -68,18 +70,20 @@ class ShipmentStepTest extends Unit
      */
     public function testShipmentStepExecuteShouldTriggerPluginsWithItemLevelShipments()
     {
-        $shipmentPluginMock = $this->createShipmentMock();
-        $shipmentPluginMock->expects($this->once())->method('addToDataClass');
-
-        $shipmentStepHandler = new StepHandlerPluginCollection();
-        $shipmentStepHandler->add($shipmentPluginMock, CheckoutPageDependencyProvider::PLUGIN_SHIPMENT_STEP_HANDLER);
-        $shipmentStep = $this->createShipmentStep($shipmentStepHandler);
-
+        // Arrange
         $shipmentBuilder = new ShipmentBuilder([ShipmentTransfer::SHIPMENT_SELECTION => CheckoutPageDependencyProvider::PLUGIN_SHIPMENT_STEP_HANDLER]);
         $quoteTransfer = (new QuoteBuilder())
             ->withItem((new ItemBuilder())->withShipment($shipmentBuilder))
             ->build();
 
+        $shipmentPluginMock = $this->createShipmentMock();
+        $shipmentPluginMock->expects($this->once())->method('addToDataClass')->willReturn($quoteTransfer);
+
+        $shipmentStepHandler = new StepHandlerPluginCollection();
+        $shipmentStepHandler->add($shipmentPluginMock, CheckoutPageDependencyProvider::PLUGIN_SHIPMENT_STEP_HANDLER);
+        $shipmentStep = $this->createShipmentStep($shipmentStepHandler);
+
+        // Act
         $shipmentStep->execute($this->createRequest(), $quoteTransfer);
     }
 
