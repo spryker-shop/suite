@@ -18,7 +18,7 @@ class Environment extends Module
     {
         $rootDir = realpath(__DIR__ . '/../../../../../../');
 
-        defined('APPLICATION_ENV') || define('APPLICATION_ENV', 'devtest');
+        defined('APPLICATION_ENV') || define('APPLICATION_ENV', getenv('SPRYKER_TESTING_ENABLED') ? 'docker' : 'devtest');
         defined('APPLICATION_STORE') || define('APPLICATION_STORE', (isset($_SERVER['APPLICATION_STORE'])) ? $_SERVER['APPLICATION_STORE'] : 'DE');
         defined('APPLICATION') || define('APPLICATION', '');
 
