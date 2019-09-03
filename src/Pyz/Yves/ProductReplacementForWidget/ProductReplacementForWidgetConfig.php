@@ -14,7 +14,7 @@ class ProductReplacementForWidgetConfig extends SprykerShopProductReplacementFor
     /**
      * @return bool
      */
-    public function isReplacementsVisibleForProductsWithAlternativesApplicableOnly(): bool
+    public function isProductReplacementFilterActive(): bool
     {
         return true;
     }
