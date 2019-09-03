@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "39b1530a72c5fb72a3eff9622a03daa6",
+    "content-hash": "7093dc92e8338534397ca10bba7fffce",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1199,8 +1199,8 @@
             "authors": [
                 {
                     "name": "Luís Otávio Cobucci Oblonczyk",
-                    "role": "Developer",
-                    "email": "lcobucci@gmail.com"
+                    "email": "lcobucci@gmail.com",
+                    "role": "Developer"
                 }
             ],
             "description": "A simple library to work with JSON Web Token and JSON Web Signature",
@@ -2056,7 +2056,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -10194,16 +10194,16 @@
         },
         {
             "name": "spryker/categories-rest-api",
-            "version": "1.1.3",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/categories-rest-api.git",
-                "reference": "e0489b8a3b393603974bb4bfa636c50b56a5a4e4"
+                "reference": "f995dec2a829bd90cf89c7188381f8a13ad95e50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/categories-rest-api/zipball/e0489b8a3b393603974bb4bfa636c50b56a5a4e4",
-                "reference": "e0489b8a3b393603974bb4bfa636c50b56a5a4e4",
+                "url": "https://api.github.com/repos/spryker/categories-rest-api/zipball/f995dec2a829bd90cf89c7188381f8a13ad95e50",
+                "reference": "f995dec2a829bd90cf89c7188381f8a13ad95e50",
                 "shasum": ""
             },
             "require": {
@@ -10211,8 +10211,9 @@
                 "spryker/category-storage": "^1.0.0",
                 "spryker/glue-application": "^1.0.0",
                 "spryker/glue-application-extension": "^1.0.0",
-                "spryker/kernel": "^3.22.0",
-                "spryker/symfony": "^3.0.0"
+                "spryker/kernel": "^3.30.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/urls-rest-api-extension": "^1.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -10234,20 +10235,20 @@
                 "proprietary"
             ],
             "description": "CategoriesRestApi module",
-            "time": "2019-02-11T11:18:54+00:00"
+            "time": "2019-09-02T14:04:17+00:00"
         },
         {
             "name": "spryker/category",
-            "version": "4.16.1",
+            "version": "4.16.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/category.git",
-                "reference": "b68b733e48eff2411e4c5e6ff89cc1756a7b205f"
+                "reference": "742c946d73f018fc5ed27c04762fa3c3ab6f0b49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/category/zipball/b68b733e48eff2411e4c5e6ff89cc1756a7b205f",
-                "reference": "b68b733e48eff2411e4c5e6ff89cc1756a7b205f",
+                "url": "https://api.github.com/repos/spryker/category/zipball/742c946d73f018fc5ed27c04762fa3c3ab6f0b49",
+                "reference": "742c946d73f018fc5ed27c04762fa3c3ab6f0b49",
                 "shasum": ""
             },
             "require": {
@@ -10285,7 +10286,8 @@
             "autoload": {
                 "psr-4": {
                     "Spryker\\": "src/Spryker/",
-                    "SprykerTest\\Zed\\Category\\Helper\\": "tests/SprykerTest/Zed/Category/_support/Helper/"
+                    "SprykerTest\\Zed\\Category\\Helper\\": "tests/SprykerTest/Zed/Category/_support/Helper/",
+                    "SprykerTest\\Zed\\Category\\PageObject\\": "tests/SprykerTest/Zed/Category/_support/PageObject/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -10293,7 +10295,7 @@
                 "proprietary"
             ],
             "description": "Category module",
-            "time": "2019-08-12T16:11:05+00:00"
+            "time": "2019-09-03T14:10:08+00:00"
         },
         {
             "name": "spryker/category-data-feed",
@@ -27862,16 +27864,16 @@
         },
         {
             "name": "spryker/products-rest-api",
-            "version": "2.5.0",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/products-rest-api.git",
-                "reference": "e8374744309a4ee8dc3efd8c30e0e5f54033ad6d"
+                "reference": "58c75aa83dc71b91b3a699a736e6808ec4e12982"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/products-rest-api/zipball/e8374744309a4ee8dc3efd8c30e0e5f54033ad6d",
-                "reference": "e8374744309a4ee8dc3efd8c30e0e5f54033ad6d",
+                "url": "https://api.github.com/repos/spryker/products-rest-api/zipball/58c75aa83dc71b91b3a699a736e6808ec4e12982",
+                "reference": "58c75aa83dc71b91b3a699a736e6808ec4e12982",
                 "shasum": ""
             },
             "require": {
@@ -27883,7 +27885,8 @@
                 "spryker/product-storage": "^1.2.0",
                 "spryker/products-rest-api-extension": "^1.0.0",
                 "spryker/symfony": "^3.0.0",
-                "spryker/synchronization-behavior": "^1.0.0"
+                "spryker/synchronization-behavior": "^1.0.0",
+                "spryker/urls-rest-api-extension": "^1.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -27905,7 +27908,7 @@
                 "proprietary"
             ],
             "description": "ProductsRestApi module",
-            "time": "2019-08-01T08:59:10+00:00"
+            "time": "2019-09-02T14:04:17+00:00"
         },
         {
             "name": "spryker/products-rest-api-extension",
@@ -32614,16 +32617,16 @@
         },
         {
             "name": "spryker/url-storage",
-            "version": "1.5.1",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/url-storage.git",
-                "reference": "859cb7b135cad56243afb9b9d2aacb704b080124"
+                "reference": "474e1c21f6ea7a605bc5e44125c6eb5776ac14d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/url-storage/zipball/859cb7b135cad56243afb9b9d2aacb704b080124",
-                "reference": "859cb7b135cad56243afb9b9d2aacb704b080124",
+                "url": "https://api.github.com/repos/spryker/url-storage/zipball/474e1c21f6ea7a605bc5e44125c6eb5776ac14d8",
+                "reference": "474e1c21f6ea7a605bc5e44125c6eb5776ac14d8",
                 "shasum": ""
             },
             "require": {
@@ -32665,7 +32668,91 @@
                 "proprietary"
             ],
             "description": "UrlStorage module",
-            "time": "2019-07-25T12:42:08+00:00"
+            "time": "2019-08-29T10:49:40+00:00"
+        },
+        {
+            "name": "spryker/urls-rest-api",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/urls-rest-api.git",
+                "reference": "c42e33c5c37a672c13a794ee1ea00bb77787ed74"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/urls-rest-api/zipball/c42e33c5c37a672c13a794ee1ea00bb77787ed74",
+                "reference": "c42e33c5c37a672c13a794ee1ea00bb77787ed74",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/glue-application": "^1.0.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/url-storage": "^1.6.0",
+                "spryker/urls-rest-api-extension": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "UrlsRestApi module",
+            "time": "2019-09-03T13:08:16+00:00"
+        },
+        {
+            "name": "spryker/urls-rest-api-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/urls-rest-api-extension.git",
+                "reference": "8ef126f244301388b6147e46499ce4446764595a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/urls-rest-api-extension/zipball/8ef126f244301388b6147e46499ce4446764595a",
+                "reference": "8ef126f244301388b6147e46499ce4446764595a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "UrlsRestApiExtension module",
+            "time": "2019-09-02T13:37:59+00:00"
         },
         {
             "name": "spryker/user",
@@ -37955,18 +38042,18 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "role": "Developer",
-                    "email": "sebastian@phpeople.de"
+                    "email": "sebastian@phpeople.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "Developer",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "Developer"
                 }
             ],
             "description": "Component for reading phar.io manifest information from a PHP Archive (PHAR)",
@@ -38212,20 +38299,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
-                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler"
+                    "homepage": "https://github.com/manuelpichler",
+                    "role": "Project Founder"
                 },
                 {
                     "name": "Marc Würth",
-                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84"
+                    "homepage": "https://github.com/ravage84",
+                    "role": "Project Maintainer"
                 },
                 {
                     "name": "Other contributors",
-                    "role": "Contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
+                    "role": "Contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -40116,16 +40203,16 @@
         },
         {
             "name": "spryker/testify",
-            "version": "3.15.0",
+            "version": "3.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/testify.git",
-                "reference": "bf977bb5cfd832827f680021e3db03bbdb76d1d7"
+                "reference": "00e8d99494ff6b4eefd6aa3025fbabb9d3375a03"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/testify/zipball/bf977bb5cfd832827f680021e3db03bbdb76d1d7",
-                "reference": "bf977bb5cfd832827f680021e3db03bbdb76d1d7",
+                "url": "https://api.github.com/repos/spryker/testify/zipball/00e8d99494ff6b4eefd6aa3025fbabb9d3375a03",
+                "reference": "00e8d99494ff6b4eefd6aa3025fbabb9d3375a03",
                 "shasum": ""
             },
             "require": {
@@ -40176,7 +40263,7 @@
                 "proprietary"
             ],
             "description": "Testify module",
-            "time": "2019-08-27T08:42:43+00:00"
+            "time": "2019-08-30T14:10:00+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -40552,8 +40639,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "lead",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "lead"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
