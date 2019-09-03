@@ -136,4 +136,29 @@ class ProductAbstractRestApiCest
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId('concrete-products', $this->fixtures->getProductConcreteTransfer()->getSku());
     }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     *
+     * @return void
+     */
+    public function requestProductAbstractHasUrlAttribute(ProductsApiTester $I): void
+    {
+        //act
+        $I->sendGET(
+            $I->formatUrl(
+                'abstract-products/{ProductAbstractSku}',
+                [
+                    'ProductAbstractSku' => $this->fixtures->getProductConcreteTransfer()->getAbstractSku(),
+                ]
+            )
+        );
+
+        //assert
+        $I->amSure('Returned resource contains `url` attribute')
+            ->whenI()
+            ->seeSingleResourceHasAttribute('url');
+    }
 }
