@@ -440,7 +440,6 @@ $config[LogglyConstants::ERROR_QUEUE_NAME] = 'loggly-log-queue.error';
 
 // ---------- Event
 $config[EventConstants::EVENT_CHUNK] = 500;
-$config[EventConstants::EVENT_QUEUE_RETRY_ACTIVE] = true;
 
 // ---------- EventBehavior
 $config[EventBehaviorConstants::EVENT_BEHAVIOR_TRIGGERING_ACTIVE] = true;
