@@ -27,6 +27,10 @@ class CartRestApiCest
 
     protected const TEST_PASSWORD = 'test password';
 
+    protected const NON_EXISTING_CUSTOMER_EMAIL = 'test_non_existing_email@spryker.com';
+
+    protected const NON_EXISTING_CART_UUID = 'non-existing-cart-uuid';
+
     /**
      * @var \PyzTest\Glue\Carts\RestApi\CartsRestApiFixtures
      */
@@ -55,15 +59,258 @@ class CartRestApiCest
 
         $this->requestCustomerCreate($I, $customerEmail);
 
-        $cartUuid = $this->requestCreateCart($I);
+        $cartUuid = $this->requestCreateGuestCart($I);
 
         $I->amUnauthorizedGlueUser(static::ANONYMOUS_CUSTOMER_REFERENCE);
 
-        $token = $this->requestCustomerAccessToken($I, $customerEmail);
-
-        $this->requestCustomerLogin($I, $token);
+        $this->requestCustomerLogin($I, $customerEmail);
 
         $this->requestFindCartByUuid($I, $cartUuid);
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     * @param string $customerEmail
+     *
+     * @return void
+     */
+    public function requestCustomerCreateWithoutEmail(CartsApiTester $I): void
+    {
+        // Arrange
+        $customerTransfer = (new CustomerTransfer())
+            ->setFirstName('John')
+            ->setLastName('Doe')
+            ->setSalutation('Mr')
+            ->setNewPassword(static::TEST_PASSWORD);
+
+        // Act
+        $I->sendPOST('customers', [
+            'data' => [
+                'type' => 'customers',
+                'attributes' => [
+                    'salutation' => $customerTransfer->getSalutation(),
+                    'firstName' => $customerTransfer->getFirstName(),
+                    'lastName' => $customerTransfer->getLastName(),
+                    'password' => $customerTransfer->getNewPassword(),
+                    'confirmPassword' => $customerTransfer->getNewPassword(),
+                    'acceptedTerms' => true,
+                ],
+            ],
+        ]);
+
+        //assert
+        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     * @param string $customerEmail
+     *
+     * @return void
+     */
+    public function requestCustomerCreateWithoutPassword(CartsApiTester $I): void
+    {
+        // Arrange
+        $customerTransfer = (new CustomerTransfer())
+            ->setFirstName('John')
+            ->setLastName('Doe')
+            ->setSalutation('Mr')
+            ->setEmail(static::NON_EXISTING_CUSTOMER_EMAIL);
+
+        // Act
+        $I->sendPOST('customers', [
+            'data' => [
+                'type' => 'customers',
+                'attributes' => [
+                    'salutation' => $customerTransfer->getSalutation(),
+                    'firstName' => $customerTransfer->getFirstName(),
+                    'lastName' => $customerTransfer->getLastName(),
+                    'email' => $customerTransfer->getEmail(),
+                    'confirmPassword' => $customerTransfer->getNewPassword(),
+                    'acceptedTerms' => true,
+                ],
+            ],
+        ]);
+
+        //assert
+        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     * @param string $customerEmail
+     *
+     * @return void
+     */
+    public function requestCustomerCreateWithNonAcceptedTerms(CartsApiTester $I): void
+    {
+        // Arrange
+        $customerTransfer = (new CustomerTransfer())
+            ->setFirstName('John')
+            ->setLastName('Doe')
+            ->setSalutation('Mr')
+            ->setNewPassword(static::TEST_PASSWORD)
+            ->setEmail('test_email@spryker.com');
+
+        // Act
+        $I->sendPOST('customers', [
+            'data' => [
+                'type' => 'customers',
+                'attributes' => [
+                    'salutation' => $customerTransfer->getSalutation(),
+                    'firstName' => $customerTransfer->getFirstName(),
+                    'lastName' => $customerTransfer->getLastName(),
+                    'email' => $customerTransfer->getEmail(),
+                    'password' => $customerTransfer->getNewPassword(),
+                    'confirmPassword' => $customerTransfer->getNewPassword(),
+                    'acceptedTerms' => false,
+                ],
+            ],
+        ]);
+
+        //assert
+        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    public function requestCreateGuestCartWithoutAnonymousCustomerUniqueId(CartsApiTester $I): void
+    {
+        // Act
+        $I->sendPOST('guest-cart-items',
+            [
+                'data' => [
+                    'type' => 'guest-cart-items',
+                    'attributes' => [
+                        'sku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
+                        'quantity' => 1,
+                    ],
+                ],
+            ]);
+
+        //assert
+        $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
+        $I->seeResponseIsJson();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    public function requestCreateGuestCartWithoutSku(CartsApiTester $I): void
+    {
+        $I->amUnauthorizedGlueUser(static::ANONYMOUS_CUSTOMER_REFERENCE);
+
+        // Act
+        $I->sendPOST('guest-cart-items',
+            [
+                'data' => [
+                    'type' => 'guest-cart-items',
+                    'attributes' => [
+                        'quantity' => 1,
+                    ],
+                ],
+            ]);
+
+        //assert
+        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
+        $I->seeResponseIsJson();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    public function requestCreateGuestCartWithoutQuantity(CartsApiTester $I): void
+    {
+        $I->amUnauthorizedGlueUser(static::ANONYMOUS_CUSTOMER_REFERENCE);
+
+        // Act
+        $I->sendPOST('guest-cart-items',
+            [
+                'data' => [
+                    'type' => 'guest-cart-items',
+                    'attributes' => [
+                        'sku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
+                    ],
+                ],
+            ]);
+
+        //assert
+        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
+        $I->seeResponseIsJson();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    public function requestCustomerLoginWithNonExistingCustomer(CartsApiTester $I): void
+    {
+        // Arrange
+        $customerTransfer = (new CustomerTransfer())
+            ->setEmail(static::NON_EXISTING_CUSTOMER_EMAIL)
+            ->setNewPassword('');
+
+        // Act
+        $I->haveAuthorizationToGlue($customerTransfer);
+
+        //assert
+        $I->seeResponseCodeIs(HttpCode::UNAUTHORIZED);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     * @param string $cartUuid
+     *
+     * @return void
+     */
+    protected function requestFindCartByUuidWithNonExistingCartUuid(CartsApiTester $I, string $cartUuid): void
+    {
+        //act
+        $I->sendGET(
+            $I->formatUrl(
+                'carts/{cartUuid}',
+                [
+                    'cartUuid' => static::NON_EXISTING_CART_UUID,
+                ]
+            )
+        );
+
+        //assert
+        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -73,7 +320,7 @@ class CartRestApiCest
      *
      * @return string
      */
-    protected function requestCreateCart(CartsApiTester $I): string
+    protected function requestCreateGuestCart(CartsApiTester $I): string
     {
         // Arrange
         $I->amUnauthorizedGlueUser(static::ANONYMOUS_CUSTOMER_REFERENCE);
@@ -93,6 +340,10 @@ class CartRestApiCest
         //assert
         $I->seeResponseCodeIs(HttpCode::CREATED);
         $I->seeResponseIsJson();
+
+        $I->amSure('Returned resource is of type guest-carts')
+            ->whenI()
+            ->seeResponseDataContainsSingleResourceOfType('guest-carts');
 
         return $I->grabDataFromResponseByJsonPath('$.data')[0]['id'];
     }
@@ -136,8 +387,11 @@ class CartRestApiCest
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
 
-        return $I->grabDataFromResponseByJsonPath('$.data')[0]['id'];
+        $I->amSure('Returned resource is of type customers')
+            ->whenI()
+            ->seeResponseDataContainsSingleResourceOfType('customers');
 
+        return $I->grabDataFromResponseByJsonPath('$.data')[0]['id'];
     }
 
     /**
@@ -148,45 +402,28 @@ class CartRestApiCest
      *
      * @return string
      */
-    protected function requestCustomerAccessToken(CartsApiTester $I, string $customerEmail): string
+    protected function requestCustomerLogin(CartsApiTester $I, string $customerEmail): string
     {
+        // Arrange
         $customerTransfer = (new CustomerTransfer())
             ->setEmail($customerEmail)
             ->setNewPassword(static::TEST_PASSWORD);
 
         $token = $I->haveAuthorizationToGlue($customerTransfer)['accessToken'];
+
+        // Act
         $I->amAuthorizedGlueUser($token);
 
         //assert
         $I->seeResponseCodeIs(HttpCode::CREATED);
         $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
 
         $I->amSure('Returned resource is of type access-tokens')
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType('access-tokens');
 
         return $token;
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     * @param string $token
-     *
-     * @return void
-     */
-    protected function requestCustomerLogin(CartsApiTester $I, string $token): void
-    {
-        $I->amAuthorizedGlueUser($token);
-
-        //assert
-        $I->seeResponseCodeIs(HttpCode::CREATED);
-        $I->seeResponseIsJson();
-
-        $I->amSure('Returned resource is of type access-tokens')
-            ->whenI()
-            ->seeResponseDataContainsSingleResourceOfType('access-tokens');
     }
 
     /**
@@ -212,9 +449,14 @@ class CartRestApiCest
         //assert
         $I->seeResponseCodeIs(HttpCode::OK);
         $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
 
         $I->amSure('Returned resource is of type carts')
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType('carts');
+
+        $I->amSure('Returned resource has correct id')
+            ->whenI()
+            ->seeSingleResourceIdEqualTo($cartUuid);
     }
 }
