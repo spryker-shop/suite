@@ -8,11 +8,7 @@
 namespace PyzTest\Glue\Carts\RestApi;
 
 use Codeception\Util\HttpCode;
-use Generated\Shared\Transfer\CurrencyTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
-use Generated\Shared\Transfer\MoneyValueTransfer;
-use Generated\Shared\Transfer\PriceProductTransfer;
-use Generated\Shared\Transfer\StockProductTransfer;
 use PyzTest\Glue\Carts\CartsApiTester;
 
 /**
@@ -27,6 +23,8 @@ use PyzTest\Glue\Carts\CartsApiTester;
  */
 class CartRestApiCest
 {
+    protected const ANONYMOUS_CUSTOMER_REFERENCE = '666';
+
     protected const TEST_PASSWORD = 'test password';
 
     /**
@@ -59,7 +57,7 @@ class CartRestApiCest
 
         $cartUuid = $this->requestCreateCart($I);
 
-        $I->amUnauthorizedGlueUser($this->fixtures::ANONYMOUS_CUSTOMER_REFERENCE);
+        $I->amUnauthorizedGlueUser(static::ANONYMOUS_CUSTOMER_REFERENCE);
 
         $token = $this->requestCustomerAccessToken($I, $customerEmail);
 
@@ -78,23 +76,7 @@ class CartRestApiCest
     protected function requestCreateCart(CartsApiTester $I): string
     {
         // Arrange
-        $I->amUnauthorizedGlueUser($this->fixtures::ANONYMOUS_CUSTOMER_REFERENCE);
-
-        $productConcreteTransfer = $I->haveFullProduct();
-        $I->haveProductInStock([StockProductTransfer::SKU => $productConcreteTransfer->getSku()]);
-
-        $priceProductOverride = [
-            PriceProductTransfer::ID_PRICE_PRODUCT => $productConcreteTransfer->getFkProductAbstract(),
-            PriceProductTransfer::SKU_PRODUCT_ABSTRACT => $productConcreteTransfer->getAbstractSku(),
-            PriceProductTransfer::ID_PRODUCT => $productConcreteTransfer->getIdProductConcrete(),
-            PriceProductTransfer::PRICE_TYPE_NAME => 'DEFAULT',
-            PriceProductTransfer::MONEY_VALUE => [
-                MoneyValueTransfer::NET_AMOUNT => 666,
-                MoneyValueTransfer::GROSS_AMOUNT => 999,
-            ],
-        ];
-
-        $I->havePriceProduct($priceProductOverride);
+        $I->amUnauthorizedGlueUser(static::ANONYMOUS_CUSTOMER_REFERENCE);
 
         // Act
         $I->sendPOST('guest-cart-items',
@@ -102,7 +84,7 @@ class CartRestApiCest
                 'data' => [
                     'type' => 'guest-cart-items',
                     'attributes' => [
-                        'sku' => $productConcreteTransfer->getSku(),
+                        'sku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
                         'quantity' => 1,
                     ],
                 ],

@@ -7,8 +7,10 @@
 
 namespace PyzTest\Glue\Carts\RestApi;
 
-use Generated\Shared\Transfer\CustomerTransfer;
-use Generated\Shared\Transfer\QuoteTransfer;
+use Generated\Shared\Transfer\MoneyValueTransfer;
+use Generated\Shared\Transfer\PriceProductTransfer;
+use Generated\Shared\Transfer\ProductConcreteTransfer;
+use Generated\Shared\Transfer\StockProductTransfer;
 use PyzTest\Glue\Carts\CartsApiTester;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
@@ -28,16 +30,16 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
     public const ANONYMOUS_CUSTOMER_REFERENCE = '666';
 
     /**
-     * @var \Generated\Shared\Transfer\QuoteTransfer
+     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
      */
-    protected $quoteTransfer;
+    protected $productConcreteTransfer;
 
     /**
-     * @return \Generated\Shared\Transfer\QuoteTransfer
+     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
      */
-    public function getQuoteTransfer(): QuoteTransfer
+    public function getProductConcreteTransfer(): ProductConcreteTransfer
     {
-        return $this->quoteTransfer;
+        return $this->productConcreteTransfer;
     }
 
     /**
@@ -47,7 +49,7 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
      */
     public function buildFixtures(CartsApiTester $I): FixturesContainerInterface
     {
-        $this->createQuote($I);
+        $this->createProduct($I);
 
         return $this;
     }
@@ -57,13 +59,22 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
      *
      * @return void
      */
-    protected function createQuote(CartsApiTester $I): void
+    protected function createProduct(CartsApiTester $I): void
     {
-        $this->quoteTransfer = $I->havePersistentQuote(
-            [
-                QuoteTransfer::CUSTOMER => (new CustomerTransfer())
-                    ->setCustomerReference('anonymous:' . static::ANONYMOUS_CUSTOMER_REFERENCE),
-            ]
-        );
+        $this->productConcreteTransfer = $I->haveFullProduct();
+        $I->haveProductInStock([StockProductTransfer::SKU => $this->productConcreteTransfer->getSku()]);
+
+        $priceProductOverride = [
+            PriceProductTransfer::ID_PRICE_PRODUCT => $this->productConcreteTransfer->getFkProductAbstract(),
+            PriceProductTransfer::SKU_PRODUCT_ABSTRACT => $this->productConcreteTransfer->getAbstractSku(),
+            PriceProductTransfer::ID_PRODUCT => $this->productConcreteTransfer->getIdProductConcrete(),
+            PriceProductTransfer::PRICE_TYPE_NAME => 'DEFAULT',
+            PriceProductTransfer::MONEY_VALUE => [
+                MoneyValueTransfer::NET_AMOUNT => 666,
+                MoneyValueTransfer::GROSS_AMOUNT => 999,
+            ],
+        ];
+
+        $I->havePriceProduct($priceProductOverride);
     }
 }
