@@ -82,7 +82,7 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
         $this->persistProductImageSetRelations();
 
         $this->flushCollectedData();
-        $this->triggeREventsForUpdatedImageSets($touchedProductImages);
+        $this->triggerEventsForUpdatedImageSets($touchedProductImages);
     }
 
     /**
@@ -218,7 +218,7 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
      *
      * @return void
      */
-    protected function triggeREventsForUpdatedImageSets(array $touchedProductImages): void
+    protected function triggerEventsForUpdatedImageSets(array $touchedProductImages): void
     {
         $parameters = [
             $this->dataFormatter->formatPostgresArray($touchedProductImages),

@@ -24,12 +24,11 @@ interface ProductImageRepositoryInterface
     public function getProductImageSetEntity(string $name, int $localeId, ?int $productAbstractId = null, ?int $productConcreteId = null): SpyProductImageSet;
 
     /**
-     * @param string $externalUrlLarge
-     * @param int $productImageSetId
+     * @param string $productImageKey
      *
      * @return \Orm\Zed\ProductImage\Persistence\SpyProductImage
      */
-    public function getProductImageEntity(string $externalUrlLarge, int $productImageSetId): SpyProductImage;
+    public function getProductImageEntity(string $productImageKey): SpyProductImage;
 
     /**
      * @param int $productImageSetId

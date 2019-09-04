@@ -15,7 +15,7 @@ class ProductImageSql implements ProductImageSqlInterface
     public function createProductImageSetSQL(): string
     {
         $sql = "WITH records AS (
-    SELECT
+    SELECT DISTINCT
       input.name,
       input.fkLocale,
       input.fkProduct,
@@ -28,9 +28,9 @@ class ProductImageSql implements ProductImageSqlInterface
          unnest(? :: INTEGER []) AS fkProductAbstract
       ) input
       LEFT JOIN spy_product_image_set ON
-        spy_product_image_set.name = input.name AND
-        spy_product_image_set.fk_locale = input.fkLocale AND
-        (spy_product_image_set.fk_product_abstract = input.fkProductAbstract OR spy_product_image_set.fk_product = input.fkProduct)
+        spy_product_image_set.name = input.name 
+        AND spy_product_image_set.fk_locale = input.fkLocale 
+        AND (spy_product_image_set.fk_product_abstract = input.fkProductAbstract OR spy_product_image_set.fk_product = input.fkProduct)
       WHERE spy_product_image_set.id_product_image_set IS NULL
 )
     INSERT INTO spy_product_image_set (
@@ -75,13 +75,10 @@ class ProductImageSql implements ProductImageSqlInterface
                 unnest(?::VARCHAR[]) AS externalUrlSmall,
                 unnest(?::VARCHAR[]) AS productImageKey
             ) input
-            LEFT JOIN spy_product_image ON
-                spy_product_image.external_url_large = externalUrlLarge AND
-                spy_product_image.external_url_small = externalUrlSmall AND
-                spy_product_image.product_image_key = productImageKey
+            LEFT JOIN spy_product_image ON spy_product_image.product_image_key = productImageKey
         ),
     inserted as (
-    INSERT INTO spy_product_image (
+        INSERT INTO spy_product_image (
           id_product_image,
           external_url_large,
           external_url_small,
@@ -103,12 +100,11 @@ class ProductImageSql implements ProductImageSqlInterface
     ),
     updated as (
         UPDATE spy_product_image
-        SET external_url_small = externalUrlSmall
+        SET external_url_large = externalUrlLarge,
+            external_url_small = externalUrlSmall
         FROM records
         WHERE idProductImage IS NOT NULL 
-            AND product_image_key = productImageKey 
-            AND external_url_large = externalUrlLarge 
-            AND external_url_small != externalUrlSmall
+            AND product_image_key = productImageKey
         RETURNING id_product_image
     )
     SELECT id_product_image

@@ -51,20 +51,17 @@ class ProductImageRepository implements ProductImageRepositoryInterface
     }
 
     /**
-     * @param string $externalUrlLarge
-     * @param int $productImageSetId
+     * @param string $productImageKey
      *
      * @return \Orm\Zed\ProductImage\Persistence\SpyProductImage
      */
-    public function getProductImageEntity(string $externalUrlLarge, int $productImageSetId): SpyProductImage
+    public function getProductImageEntity(string $productImageKey): SpyProductImage
     {
-        $key = $this->buildProductImageKey($externalUrlLarge, $productImageSetId);
-
-        if (!isset($this->resolvedProductImages[$key])) {
-            $this->resolvedProductImages[$key] = $this->getProductImage($externalUrlLarge, $productImageSetId);
+        if (!isset($this->resolvedProductImages[$productImageKey])) {
+            $this->resolvedProductImages[$productImageKey] = $this->getProductImage($productImageKey);
         }
 
-        return $this->resolvedProductImages[$key];
+        return $this->resolvedProductImages[$productImageKey];
     }
 
     /**
@@ -85,29 +82,14 @@ class ProductImageRepository implements ProductImageRepositoryInterface
     }
 
     /**
-     * @param string $externalUrlLarge
-     * @param int $productImageSetId
-     *
-     * @return string
-     */
-    protected function buildProductImageKey(string $externalUrlLarge, int $productImageSetId): string
-    {
-        return sprintf('%d:%s', $productImageSetId, $externalUrlLarge);
-    }
-
-    /**
-     * @param string $imageUrlLarge
-     * @param int $productImageSetId
+     * @param string $productImageKey
      *
      * @return \Orm\Zed\ProductImage\Persistence\SpyProductImage
      */
-    protected function getProductImage(string $imageUrlLarge, int $productImageSetId): SpyProductImage
+    protected function getProductImage(string $productImageKey): SpyProductImage
     {
         $productImageEntity = SpyProductImageQuery::create()
-            ->useSpyProductImageSetToProductImageQuery()
-                ->filterByFkProductImageSet($productImageSetId)
-            ->endUse()
-            ->filterByExternalUrlLarge($imageUrlLarge)
+            ->filterByProductImageKey($productImageKey)
             ->findOne();
 
         if ($productImageEntity) {
