@@ -96,20 +96,19 @@ matrix:
       script:
         - docker/sdk boot
         - docker/sdk up
-        - docker/sdk cli
-        - vendor/bin/phpstan analyze -c phpstan.neon -l 4 src/
-        - vendor/bin/console code:phpstan -m Spryker.all
-        - vendor/bin/console code:phpstan -m SprykerShop.all
-        - vendor/bin/console code:propel:validate-abstract
-        - vendor/bin/console propel:schema:validate
-        - vendor/bin/console propel:schema:validate-xml-names
-        - vendor/bin/console transfer:validate
-        - vendor/bin/console code:sniff:style
-        - vendor/bin/console dev:dependency:find
-        - vendor/bin/console dev:composer:update-json-files -d -v
-        - vendor/bin/console dev:composer:validate-json-files
-        - vendor/bin/phpmd src/ text vendor/spryker/spryker/Bundles/Development/src/Spryker/Zed/Development/Business/PhpMd/ruleset.xml
-        - vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2
+        - docker/sdk cli vendor/bin/phpstan analyze -c phpstan.neon -l 4 src/
+        - docker/sdk cli vendor/bin/console code:phpstan -m Spryker.all
+        - docker/sdk cli vendor/bin/console code:phpstan -m SprykerShop.all
+        - docker/sdk cli vendor/bin/console code:propel:validate-abstract
+        - docker/sdk cli vendor/bin/console propel:schema:validate
+        - docker/sdk cli vendor/bin/console propel:schema:validate-xml-names
+        - docker/sdk cli vendor/bin/console transfer:validate
+        - docker/sdk cli vendor/bin/console code:sniff:style
+        - docker/sdk cli vendor/bin/console dev:dependency:find
+        - docker/sdk cli vendor/bin/console dev:composer:update-json-files -d -v
+        - docker/sdk cli vendor/bin/console dev:composer:validate-json-files
+        - docker/sdk cli vendor/bin/phpmd src/ text vendor/spryker/spryker/Bundles/Development/src/Spryker/Zed/Development/Business/PhpMd/ruleset.xml
+        - docker/sdk cli vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2
       before_install: skip
       before_script: skip
       after_script: skip
