@@ -8,7 +8,6 @@
 namespace Pyz\Glue\AuthRestApi;
 
 use Spryker\Glue\AuthRestApi\AuthRestApiDependencyProvider as SprykerAuthRestApiDependencyProvider;
-use Spryker\Glue\CartsRestApi\Plugin\AuthRestApi\TransformGuestCartToRegularCartPostAuthPlugin;
 use Spryker\Glue\CompanyUserAuthRestApi\Plugin\AuthRestApi\CompanyUserRestUserMapperPlugin;
 
 /**
@@ -23,16 +22,6 @@ class AuthRestApiDependencyProvider extends SprykerAuthRestApiDependencyProvider
     {
         return [
             new CompanyUserRestUserMapperPlugin(),
-        ];
-    }
-
-    /**
-     * @return \Spryker\Glue\AuthRestApiExtension\Dependency\Plugin\PostAuthPluginInterface[]
-     */
-    protected function getPostAuthPlugins(): array
-    {
-        return [
-            new TransformGuestCartToRegularCartPostAuthPlugin(),
         ];
     }
 }
