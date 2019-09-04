@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "10bcb9f260a0f9fc835892096d226a48",
+    "content-hash": "8cbbfc53d78b9ff97cd516909b02f5f5",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -1002,8 +1002,8 @@
             "authors": [
                 {
                     "name": "Luís Otávio Cobucci Oblonczyk",
-                    "role": "Developer",
-                    "email": "lcobucci@gmail.com"
+                    "email": "lcobucci@gmail.com",
+                    "role": "Developer"
                 }
             ],
             "description": "A simple library to work with JSON Web Token and JSON Web Signature",
@@ -1065,9 +1065,9 @@
             "authors": [
                 {
                     "name": "Ignace Nyamagana Butera",
+                    "role": "Developer",
                     "email": "nyamsprod@gmail.com",
-                    "homepage": "https://github.com/nyamsprod/",
-                    "role": "Developer"
+                    "homepage": "https://github.com/nyamsprod/"
                 }
             ],
             "description": "Csv data manipulation made easy in PHP",
@@ -1955,7 +1955,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -2386,6 +2386,54 @@
             "time": "2019-07-08T08:22:53+00:00"
         },
         {
+            "name": "spryker/decimal-object",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/decimal-object.git",
+                "reference": "d47d9ec24075ec6899e99057305699273052084b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/decimal-object/zipball/d47d9ec24075ec6899e99057305699273052084b",
+                "reference": "d47d9ec24075ec6899e99057305699273052084b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-bcmath": "*",
+                "ext-json": "*",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "phpstan/phpstan-shim": "^0.11",
+                "phpunit/phpunit": "^7.0.0 || ^8.0.0",
+                "spryker/code-sniffer": "@stable"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\DecimalObject\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Spryker Systems GmbH",
+                    "homepage": "https://spryker.com"
+                }
+            ],
+            "description": "PHP decimal handling as value object",
+            "time": "2019-08-29T11:07:52+00:00"
+        },
+        {
             "name": "spryker/event-behavior",
             "version": "dev-master",
             "source": {
@@ -2635,7 +2683,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "636d032cc1de7a6551111d5c6e0a40b4e11ad134"
+                "reference": "e675c037cd0047cbd938d3aeb0d1faca8fed42e6"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2905,7 +2953,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-09-04T12:01:52+00:00"
+            "time": "2019-09-04T13:30:38+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5821,9 +5869,9 @@
             "authors": [
                 {
                     "name": "Antonio J. García Lagar",
-                    "role": "developer",
                     "email": "aj@garcialagar.es",
-                    "homepage": "http://aj.garcialagar.es"
+                    "homepage": "http://aj.garcialagar.es",
+                    "role": "developer"
                 }
             ],
             "description": "Twig extension to set breakpoints",
@@ -6259,8 +6307,8 @@
             "authors": [
                 {
                     "name": "Alessio Linares",
-                    "role": "Software Engineer",
-                    "email": "alessio.linares@skyscanner.net"
+                    "email": "alessio.linares@skyscanner.net",
+                    "role": "Software Engineer"
                 }
             ],
             "description": "JSONPath implementation for querying and updating JSON objects",
@@ -7272,7 +7320,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette Finder: find files and directories with an intuitive API.",
+            "description": "🔍 Nette Finder: find files and directories with an intuitive API.",
             "homepage": "https://nette.org",
             "keywords": [
                 "filesystem",
@@ -7332,7 +7380,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette NEON: encodes and decodes NEON file format.",
+            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -7776,18 +7824,18 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "role": "Developer",
-                    "email": "sebastian@phpeople.de"
+                    "email": "sebastian@phpeople.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "Developer",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "Developer"
                 }
             ],
             "description": "Component for reading phar.io manifest information from a PHP Archive (PHAR)",
@@ -7881,20 +7929,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
+                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler",
-                    "role": "Project Founder"
+                    "homepage": "https://github.com/manuelpichler"
                 },
                 {
                     "name": "Marc Würth",
+                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84",
-                    "role": "Project Maintainer"
+                    "homepage": "https://github.com/ravage84"
                 },
                 {
                     "name": "Other contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -8416,8 +8464,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "The PHP Unit Testing framework.",
@@ -10523,8 +10571,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "lead",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "lead"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
@@ -10564,8 +10612,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -10591,6 +10639,7 @@
         "spryker/synchronization-behavior": 20,
         "spryker/uuid-behavior": 20,
         "spryker/silexphp": 20,
+        "spryker/decimal-object": 20,
         "spryker/architecture-sniffer": 20,
         "spryker/development-core": 20,
         "spryker/code-generator": 20,
