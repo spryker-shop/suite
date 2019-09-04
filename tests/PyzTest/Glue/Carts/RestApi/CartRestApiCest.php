@@ -12,6 +12,7 @@ use Generated\Shared\Transfer\CurrencyTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\MoneyValueTransfer;
 use Generated\Shared\Transfer\PriceProductTransfer;
+use Generated\Shared\Transfer\StockProductTransfer;
 use PyzTest\Glue\Carts\CartsApiTester;
 
 /**
@@ -80,22 +81,20 @@ class CartRestApiCest
         $I->amUnauthorizedGlueUser($this->fixtures::ANONYMOUS_CUSTOMER_REFERENCE);
 
         $productConcreteTransfer = $I->haveFullProduct();
-        $priceTypeTransfer = $I->havePriceType();
-        $currencyId = $I->haveCurrency();
+        $I->haveProductInStock([StockProductTransfer::SKU => $productConcreteTransfer->getSku()]);
 
-//        $priceProductOverride = [
-//            PriceProductTransfer::ID_PRICE_PRODUCT => $productConcreteTransfer->getFkProductAbstract(),
-//            PriceProductTransfer::SKU_PRODUCT_ABSTRACT => $productConcreteTransfer->getAbstractSku(),
-//            PriceProductTransfer::ID_PRODUCT => $productConcreteTransfer->getIdProductConcrete(),
-//            PriceProductTransfer::PRICE_TYPE => $priceTypeTransfer,
-//            PriceProductTransfer::MONEY_VALUE => [
-//                MoneyValueTransfer::NET_AMOUNT => 100,
-//                MoneyValueTransfer::GROSS_AMOUNT => 125,
-//                MoneyValueTransfer::FK_CURRENCY => $currencyId,
-//            ],
-//        ];
-//
-//        $I->havePriceProduct($priceProductOverride);
+        $priceProductOverride = [
+            PriceProductTransfer::ID_PRICE_PRODUCT => $productConcreteTransfer->getFkProductAbstract(),
+            PriceProductTransfer::SKU_PRODUCT_ABSTRACT => $productConcreteTransfer->getAbstractSku(),
+            PriceProductTransfer::ID_PRODUCT => $productConcreteTransfer->getIdProductConcrete(),
+            PriceProductTransfer::PRICE_TYPE_NAME => 'DEFAULT',
+            PriceProductTransfer::MONEY_VALUE => [
+                MoneyValueTransfer::NET_AMOUNT => 666,
+                MoneyValueTransfer::GROSS_AMOUNT => 999,
+            ],
+        ];
+
+        $I->havePriceProduct($priceProductOverride);
 
         // Act
         $I->sendPOST('guest-cart-items',
@@ -103,8 +102,7 @@ class CartRestApiCest
                 'data' => [
                     'type' => 'guest-cart-items',
                     'attributes' => [
-                        //'sku' => $productConcreteTransfer->getSku(),
-                        'sku' => '013_25904584',
+                        'sku' => $productConcreteTransfer->getSku(),
                         'quantity' => 1,
                     ],
                 ],
