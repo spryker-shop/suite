@@ -2635,7 +2635,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "c9226fdd8c89e9c138a39c7069561abf9a4305a8"
+                "reference": "59d94e3dd4bbb16b32874a808d6b6aa120fbc745"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2898,14 +2898,14 @@
             },
             "scripts": {
                 "cs-check": [
-                    "vendor/bin/phpcs Bundles --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -p"
+                    "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -p --ignore=/node_modules/ Bundles/"
                 ]
             },
             "license": [
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-08-28T08:50:26+00:00"
+            "time": "2019-09-03T09:35:04+00:00"
         },
         {
             "name": "spryker/spryker-shop",
