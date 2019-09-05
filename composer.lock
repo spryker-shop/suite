@@ -2635,7 +2635,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "a593b019aa4a9ae00d3ecf354140c8919adbd82e"
+                "reference": "8c47011450eca28b4f6919242a7cc31ce434f6ed"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2898,14 +2898,14 @@
             },
             "scripts": {
                 "cs-check": [
-                    "vendor/bin/phpcs Bundles --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -p"
+                    "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -p --ignore=/node_modules/ Bundles/"
                 ]
             },
             "license": [
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-08-29T09:03:34+00:00"
+            "time": "2019-08-29T12:48:41+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2913,7 +2913,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "6750f48ac2bb3cf3e1db32bb7e72ebc66e3ba27f"
+                "reference": "b005c0ac3de09cd53a2f5aabfee52f56b784c87e"
             },
             "require": {
                 "php": ">=7.1"
@@ -2981,14 +2981,14 @@
             },
             "scripts": {
                 "cs-check": [
-                    "phpcs Bundles --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -p -v"
+                    "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -p --ignore=/node_modules/ Bundles/"
                 ]
             },
             "license": [
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-08-28T08:19:51+00:00"
+            "time": "2019-08-29T14:34:42+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
