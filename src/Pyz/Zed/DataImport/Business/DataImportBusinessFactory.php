@@ -62,6 +62,8 @@ use Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\Sql\ProductConcrete
 use Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\Sql\ProductConcreteSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\ProductGroup\ProductGroupWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\ProductImageHydratorStep;
+use Pyz\Zed\DataImport\Business\Model\ProductImage\Repository\ProductImageRepository;
+use Pyz\Zed\DataImport\Business\Model\ProductImage\Repository\ProductImageRepositoryInterface;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\ProductImageBulkPdoDataSetWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\ProductImagePropelDataSetWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\Sql\ProductImageSql;
@@ -366,7 +368,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     public function createProductImagePropelWriter(): DataSetWriterInterface
     {
-        return new ProductImagePropelDataSetWriter();
+        return new ProductImagePropelDataSetWriter(
+            $this->createProductImageRepository()
+        );
     }
 
     /**
@@ -1504,5 +1508,13 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     protected function createAddLocalesStep(): DataImportStepInterface
     {
         return new AddLocalesStep($this->getStore());
+    }
+
+    /**
+     * @return \Pyz\Zed\DataImport\Business\Model\ProductImage\Repository\ProductImageRepositoryInterface
+     */
+    public function createProductImageRepository(): ProductImageRepositoryInterface
+    {
+        return new ProductImageRepository();
     }
 }
