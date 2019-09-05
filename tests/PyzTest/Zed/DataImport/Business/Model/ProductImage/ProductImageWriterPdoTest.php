@@ -65,7 +65,11 @@ class ProductImageWriterPdoTest extends AbstractProductImageWriterTest
 
         // Arrange
         $writer = $this->getDataImportBusinessFactoryStub()->createProductImageBulkPdoWriter();
-        $productImageEntityTransfer = $this->createProductImageEntityTransfer(static::DEFAULT_EXTERNAL_URL_LARGE, static::DEFAULT_EXTERNAL_URL_SMALL);
+        $productImageEntityTransfer = $this->createProductImageEntityTransfer(
+            static::DEFAULT_EXTERNAL_URL_LARGE,
+            static::DEFAULT_EXTERNAL_URL_SMALL,
+            uniqid('', true)
+        );
         $abstractProducts = $this->getAbstractProducts(2);
         $locale = $this->getLocale();
         $dataSets = [];

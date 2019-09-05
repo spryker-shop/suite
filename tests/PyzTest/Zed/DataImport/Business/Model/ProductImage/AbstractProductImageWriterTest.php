@@ -71,11 +71,12 @@ abstract class AbstractProductImageWriterTest extends AbstractWriterTest
     protected function createDataSet(array $product, SpyLocale $locale, ?SpyProductImageEntityTransfer $productImageEntityTransfer = null): DataSet
     {
         $dataSet = new DataSet();
+        $productImageKey = $productImageEntityTransfer ? $productImageEntityTransfer->getProductImageKey() : uniqid('', true);
         $dataSet[ProductImageHydratorStep::KEY_ABSTRACT_SKU] = $product[SpyProductAbstractTableMap::COL_SKU];
         $dataSet[ProductImageHydratorStep::KEY_CONCRETE_SKU] = '';
         $dataSet[ProductImageHydratorStep::KEY_LOCALE] = $locale->getLocaleName();
         $dataSet[ProductImageHydratorStep::KEY_SORT_ORDER] = 0;
-        $dataSet[ProductImageHydratorStep::KEY_PRODUCT_IMAGE_KEY] = uniqid('', true);
+        $dataSet[ProductImageHydratorStep::KEY_PRODUCT_IMAGE_KEY] = $productImageKey;
         /**
          * @var \Generated\Shared\Transfer\SpyProductImageSetEntityTransfer
          */
@@ -89,7 +90,7 @@ abstract class AbstractProductImageWriterTest extends AbstractWriterTest
         $spyProductImageSetEntityTransfer->setSpyLocale($localeEntityTransfer);
 
         if (!$productImageEntityTransfer) {
-            $productImageEntityTransfer = (new SpyProductImageEntityBuilder())->build();
+            $productImageEntityTransfer = (new SpyProductImageEntityBuilder(['product_image_key' => $productImageKey]))->build();
         }
 
         $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_TRANSFER] = $productImageEntityTransfer;
@@ -102,14 +103,16 @@ abstract class AbstractProductImageWriterTest extends AbstractWriterTest
     /**
      * @param string $externalUrlLarge
      * @param string $externalUrlSmall
+     * @param string $productImageKey
      *
      * @return \Generated\Shared\Transfer\SpyProductImageEntityTransfer
      */
-    protected function createProductImageEntityTransfer(string $externalUrlLarge, string $externalUrlSmall): SpyProductImageEntityTransfer
+    protected function createProductImageEntityTransfer(string $externalUrlLarge, string $externalUrlSmall, string $productImageKey): SpyProductImageEntityTransfer
     {
         return (new SpyProductImageEntityTransfer())
             ->setExternalUrlLarge($externalUrlLarge)
-            ->setExternalUrlSmall($externalUrlSmall);
+            ->setExternalUrlSmall($externalUrlSmall)
+            ->setProductImageKey($productImageKey);
     }
 
     /**

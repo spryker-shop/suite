@@ -90,7 +90,7 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
         SpyProductImageSet $productImageSetEntity
     ): SpyProductImage {
         $productImageEntityTransfer = $this->getProductImageTransfer($dataSet);
-        $productImageEntity = $this->findOrCreateProductImageEntityByProductImageSetAndImageUrlLarge(
+        $productImageEntity = $this->findOrCreateProductImageEntityByProductImageKey(
             $productImageEntityTransfer->getProductImageKey()
         );
 
@@ -193,7 +193,7 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
      *
      * @return \Orm\Zed\ProductImage\Persistence\SpyProductImage
      */
-    protected function findOrCreateProductImageEntityByProductImageSetAndImageUrlLarge(string $productImageKey): SpyProductImage
+    protected function findOrCreateProductImageEntityByProductImageKey(string $productImageKey): SpyProductImage
     {
         return $this->productImageRepository->getProductImageEntity($productImageKey);
     }
