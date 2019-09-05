@@ -121,7 +121,6 @@ $config[KernelConstants::DOMAIN_WHITELIST] = [
     $config[ApplicationConstants::HOST_ZED],
 ];
 
-
 // ----------- Search
 $config[SearchConstants::INDEX_NAME_MAP] = [
     'page' => 'de_page',
