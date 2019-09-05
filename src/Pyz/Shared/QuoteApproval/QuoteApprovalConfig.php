@@ -8,7 +8,7 @@
 namespace Pyz\Shared\QuoteApproval;
 
 use Generated\Shared\Transfer\QuoteTransfer;
-use Spryker\Zed\QuoteApproval\QuoteApprovalConfig as SprykerQuoteApprovalConfig;
+use Spryker\Shared\QuoteApproval\QuoteApprovalConfig as SprykerQuoteApprovalConfig;
 
 class QuoteApprovalConfig extends SprykerQuoteApprovalConfig
 {
