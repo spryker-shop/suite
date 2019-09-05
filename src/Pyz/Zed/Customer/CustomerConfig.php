@@ -11,6 +11,8 @@ use Spryker\Zed\Customer\CustomerConfig as SprykerCustomerConfig;
 
 class CustomerConfig extends SprykerCustomerConfig
 {
+    protected const MIN_LENGTH_CUSTOMER_PASSWORD = 6;
+
     /**
      * {@inheritdoc}
      *
