@@ -138,7 +138,7 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
     /**
      * @return \Spryker\Zed\QuoteExtension\Dependency\Plugin\QuoteFieldsAllowedForSavingProviderPluginInterface[]
      */
-    protected function getQuoteFieldsExpanderPlugins(): array
+    protected function getQuoteFieldsAllowedForSavingProviderPlugins(): array
     {
         return [
             new QuoteFieldsAllowedForSavingProviderPlugin(),
