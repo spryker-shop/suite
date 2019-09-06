@@ -136,4 +136,43 @@ class ProductAbstractRestApiCest
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId('concrete-products', $this->fixtures->getProductConcreteTransfer()->getSku());
     }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     *
+     * @return void
+     */
+    public function requestExistingProductAbstractWithProductLabelRelationship(ProductsApiTester $I): void
+    {
+        //act
+        $I->sendGET(
+            $I->formatUrl(
+                'abstract-products/{ProductAbstractSku}?include=product-labels',
+                [
+                    'ProductAbstractSku' => $this->fixtures->getProductConcreteTransfer()->getAbstractSku(),
+                ]
+            )
+        );
+
+        //assert
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+
+        $I->amSure('Returned resource has include of type product-labels')
+            ->whenI()
+            ->seeSingleResourceHasRelationshipByTypeAndId(
+                'product-labels',
+                $this->fixtures->getProductLabelTransfer()->getIdProductLabel()
+            );
+
+        $I->amSure('Returned resource has include of type product-labels')
+            ->whenI()
+            ->seeIncludesContainsResourceByTypeAndId(
+                'product-labels',
+                $this->fixtures->getProductLabelTransfer()->getIdProductLabel()
+            );
+    }
 }
