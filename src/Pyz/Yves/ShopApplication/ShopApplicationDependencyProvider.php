@@ -11,6 +11,7 @@ use Pyz\Yves\ExampleProductColorGroupWidget\Widget\ExampleProductColorSelectorWi
 use Spryker\Yves\EventDispatcher\Plugin\Application\EventDispatcherApplicationPlugin;
 use Spryker\Yves\Locale\Plugin\Application\LocaleApplicationPlugin;
 use Spryker\Yves\Store\Plugin\Application\StoreApplicationPlugin;
+use Spryker\Yves\Translator\Plugin\Application\TranslatorApplicationPlugin;
 use Spryker\Yves\Twig\Plugin\Application\TwigApplicationPlugin;
 use SprykerShop\Yves\AgentWidget\Widget\AgentControlBarWidget;
 use SprykerShop\Yves\AvailabilityNotificationWidget\Widget\AvailabilityNotificationSubscriptionWidget;
@@ -28,6 +29,7 @@ use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyBusinessUnitContr
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyUserRestrictionHandlerPlugin;
 use SprykerShop\Yves\CompanyWidget\Widget\CompanyBusinessUnitAddressWidget;
 use SprykerShop\Yves\CompanyWidget\Widget\CompanyMenuItemWidget;
+use SprykerShop\Yves\ConfigurableBundleWidget\Widget\QuoteConfiguredBundleWidget;
 use SprykerShop\Yves\CurrencyWidget\Widget\CurrencyWidget;
 use SprykerShop\Yves\CustomerPage\Widget\CustomerNavigationWidget;
 use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderItemCheckboxWidget;
@@ -87,6 +89,7 @@ use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCancelWidget;
 use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCartWidget;
 use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCreateWidget;
 use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestMenuItemWidget;
+use SprykerShop\Yves\SalesConfigurableBundleWidget\Widget\OrderConfiguredBundleWidget;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Widget\SalesOrderThresholdWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartDeleteSharingCompanyUsersListWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartListPermissionGroupWidget;
@@ -203,6 +206,8 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             QuoteRequestAgentOverviewWidget::class,
             QuoteRequestAgentCancelWidget::class,
             CommentThreadWidget::class,
+            QuoteConfiguredBundleWidget::class,
+            OrderConfiguredBundleWidget::class,
         ];
     }
 
@@ -229,6 +234,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new ShopApplicationApplicationPlugin(),
             new StoreApplicationPlugin(),
             new LocaleApplicationPlugin(),
+            new TranslatorApplicationPlugin(),
         ];
     }
 }
