@@ -193,6 +193,8 @@ catalog.filter.rating_up,& Up,en_US
 catalog.filter.rating_up,& mehr,de_DE
 catalog.filter.active_rating_up,Stars & Up,en_US
 catalog.filter.active_rating_up,Sterne & mehr,de_DE
+catalog.filter.show_hide_button,Show/Hide filters,en_US
+catalog.filter.show_hide_button,Filter ein-/ausblenden,de_DE
 catalog.itemsFound,Artikel gefunden,de_DE
 catalog.itemsFound,Items found,en_US
 catalog.loading,Loading,de_DE
@@ -457,6 +459,10 @@ customer.password.restore,Set a new password,en_US
 customer.password.restore,Neues Passwort erstellen,de_DE
 customer.password.changed,Your password was changed successfully,en_US
 customer.password.changed,Ihr Passwort wurde erfolgreich geändert,de_DE
+customer.password.error.min_length,Password must be at least {{ limit }} characters long.,en_US
+customer.password.error.min_length,Das Passwort muss mindestens {{ limit }} Zeichen lang sein.,de_DE
+customer.password.error.max_length,Password is too long. It should have {{ limit }} characters or less.,en_US
+customer.password.error.max_length,Das Passwort ist zu lang. Es darf höchstens {{ limit }} Zeichen enthalten.,de_DE
 customer.token.invalid,Token is invalid,en_US
 customer.token.invalid,Token ist ungültig,de_DE
 customer.forgotten-password.description,Enter the e-mail address associated with your account.,en_US
@@ -703,8 +709,8 @@ discount.quote_change.discount.amount_changed,The discounts you selected for the
 discount.quote_change.discount.amount_changed,The discounts you selected for the following items skus have changed,de_DE
 discount.quote_change.does_not_apply_for_currency,"Voucher ""%code%"" was disabled because it does not apply for this currency.",en_US
 discount.quote_change.does_not_apply_for_currency,"Der Gutschein mit dem Namen ""%code%"" wurde deaktiviert, da er nicht auf diese Währung anwendbar ist.",de_DE
-discount.voucher_code.usage_limit.reached,Voucher code usage limit reached,en_US
-discount.voucher_code.usage_limit.reached,Gutscheincode-Nutzungslimit erreicht,de_DE
+discount.voucher_code.usage_limit.reached,"Voucher ""%code%"" reached usage limit",en_US
+discount.voucher_code.usage_limit.reached,"Nutzungslimit der Gutschein ""%code%"" erreicht",de_DE
 product.unavailable,Product '%sku%' is not available at the moment,en_US
 product.unavailable,Das Produkt '%sku%' ist momentan nicht verfügbar,de_DE
 product.access.denied,"Sorry, this product is not available.",en_US
@@ -1105,8 +1111,10 @@ product_review.submit.description,Description,en_US
 product_review.submit.description,Rezension,de_DE
 product_review.submit.nickname,Name,en_US
 product_review.submit.nickname,Name,de_DE
-product_review.submit.success,Thank you for your review. We are processing it. It will be live in the shop soon.,en_US
-product_review.submit.success,Vielen Dank für Ihre Bewertung. Wir verarbeiten es. Es wird bald im Laden.,de_DE
+product_review.submit.success,Product review was successfully submitted.,en_US
+product_review.submit.success,Produktrezension wurde erfolgreich versendet.,de_DE
+product_review.error.no_customer,Please login to access this feature.,en_US
+product_review.error.no_customer,"Bitte melden Sie sich an, um Zugiff auf dieses Feature zu erhalten.",de_DE
 cart.promotion.items,Promotional products,en_US
 cart.promotion.items,Werbeprodukte,de_DE
 checkout.payment.provider.DummyPayment,Dummy Payment,en_US
@@ -2205,8 +2213,8 @@ product_discontinued.message.product_discontinued,"Product is discontinued, plea
 product_discontinued.message.product_discontinued,"Produkt ist nicht mehr verfügbar, bitte wählen Sie eine Alternative.",de_DE
 shopping_list.pre.check.product_discontinued,"Product %sku% is discontinued, please choose an alternative one.",en_US
 shopping_list.pre.check.product_discontinued,"Produkt %sku% ist nicht mehr verfügbar, bitte wählen Sie eine Alternative.",de_DE
-cart.pre.check.product_discontinued,"Product %sku% is discontinued, please choose an alternative one.",en_US
-cart.pre.check.product_discontinued,"Produkt %sku% ist nicht mehr verfügbar, bitte wählen Sie eine Alternative.",de_DE
+cart.pre.check.product_discontinued,"Product '%name%' is discontinued, please choose an alternative one.",en_US
+cart.pre.check.product_discontinued,"Produkt '%name%' ist nicht mehr verfügbar, bitte wählen Sie eine Alternative.",de_DE
 replacement_for_widget.replacement_for,Replacement for,en_US
 replacement_for_widget.replacement_for,Ersatz für,de_DE
 product_alternative_widget.product_alternative,Alternative products,en_US
@@ -2223,8 +2231,8 @@ product_alternative_widget.show_all,Show all,en_US
 product_alternative_widget.show_all,Zeige alles,de_DE
 product_alternative_widget.not_applicable,N/A,en_US
 product_alternative_widget.not_applicable,N/A,de_DE
-place_order.pre_check.product_discontinued,"Product is discontinued, please choose an alternative one",en_US
-place_order.pre_check.product_discontinued,"Produkt ist abgekündigt, bitte wählen Sie eine Alternative",de_DE
+place_order.pre_check.product_discontinued,"Product '%name%' is discontinued, please choose an alternative one",en_US
+place_order.pre_check.product_discontinued,"Produkt '%name%' ist abgekündigt, bitte wählen Sie eine Alternative",de_DE
 page.detail.volume_price.quantity,Quantity,en_US
 page.detail.volume_price.quantity,Anzahl,de_DE
 page.detail.volume_price.price,Price,en_US
@@ -2397,6 +2405,8 @@ permission.name.RequestQuoteApprovalPermissionPlugin,Send cart for approval (Req
 permission.name.RequestQuoteApprovalPermissionPlugin,Einkaufswagen zur Genehmigung senden (erfordert “Bis zur Gesamtsumme kaufen”),de_DE
 permission.name.ApproveQuotePermissionPlugin,Approve up to grand total,en_US
 permission.name.ApproveQuotePermissionPlugin,Bis zur Gesamtsumme genehmigen,de_DE
+permission.name.AlterCartUpToAmountPermissionPlugin,Alter Cart Up To Amount,en_US
+permission.name.AlterCartUpToAmountPermissionPlugin,Warenkorb bis zum Betrag ändern,de_DE
 company_page.multi_currency_type.name.cent_amount.EUR,Cent Amount,en_US
 company_page.multi_currency_type.name.cent_amount.EUR,Cent Betrag,de_DE
 company_page.multi_currency_type.name.cent_amount.CHF,Centime Amount,en_US
@@ -2437,8 +2447,8 @@ validation.max_length.plural,This value is too long. It should have {{ limit }} 
 validation.max_length.plural,Dieser Wert ist zu lang. Es sollte maximal {{ limit }} Zeichen oder weniger haben.,de_DE
 validation.email,This value is not a valid email address.,en_US
 validation.email,Dieser Wert ist keine gültige E-Mail-Adresse.,de_DE
-validation.choice,This value is not valid,en_US
-validation.choice,Dieser Wert ist nicht gültig,de_DE
+validation.choice,Product rating should be selected.,en_US
+validation.choice,Produktbewertung soll ausgewählt werden.,de_DE
 shopping_list_widget.items,Items,en_US
 shopping_list_widget.items,Artikel,de_DE
 shopping_list_widget.full_access,Full access,en_US
@@ -2517,12 +2527,14 @@ availability_notification_subscription.mail.notification.subject,%name% is avail
 availability_notification_subscription.mail.notification.subject,%name% ist wieder verfügbar!,de_DE
 availability_notification_subscription.mail.notification.head,%name% is available again!,en_US
 availability_notification_subscription.mail.notification.head,%name% ist wieder verfügbar,de_DE
-availability_notification_subscription.mail.notification.body,"The wait is over, you can not add this product inside your cart.",en_US
-availability_notification_subscription.mail.notification.body,"Das Warten hat ein Ende, Sie können dieses Produkt nicht in Ihren Warenkorb legen.",de_DE
+availability_notification_subscription.mail.notification.body,"The wait is over, you can now add this product inside your cart.",en_US
+availability_notification_subscription.mail.notification.body,"Das Warten hat ein Ende, Sie können dieses Produkt jetzt in Ihren Warenkorb legen.",de_DE
 availability_notification_subscription.mail.copyright,"<em>Copyright © current year company name, All rights reserved.</em><br><br>",en_US
 availability_notification_subscription.mail.copyright,"<em>Copyright © Name des aktuellen Jahres, Alle Rechte vorbehalten.</em><br><br>",de_DE
 availability_notification_subscription.mail.unsubscribe,"Want to change how you receive these emails?<br>You can <a target=""_blank"" href=""%link%"" style=""mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #656565;font-weight: normal;text-decoration: underline;"">unsubscribe from this list</a>.",en_US
 availability_notification_subscription.mail.unsubscribe,"Möchten Sie ändern, wie Sie diese E-Mails erhalten?<br>Sie können <a target=""_blank"" href=""%link%"" style=""mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #656565;font-weight: normal;text-decoration: underline;"">aus dieser Liste austragen</a>.",de_DE
+availability_notification_subscription.mail.unsubscribe_text,"Want to change how you receive these emails? You can %link% unsubscribe from this list.",en_US
+availability_notification_subscription.mail.unsubscribe_text,"Möchten Sie ändern, wie Sie diese E-Mails erhalten? Sie können %link% aus dieser Liste austragen.",de_DE
 availability_notification.email_address,Email address,en_US
 availability_notification.email_address,E-Mail-Addresse,de_DE
 product-quantity.notification.quantity.min.failed,The ordered quantity was adjusted to the next possible quantity for the article because minimum quantity is %min%.,en_US
@@ -2542,7 +2554,7 @@ quote_request_page.quote_request.create,Erstellen,de_DE
 quote_request_page.quote_request_version.created,Quote Request have got new version,en_US
 quote_request_page.quote_request_version.created,Angebotsanfrage hat neue Version bekommen,de_DE
 quote_request_page.quote_request.submit,Submit Request,en_US
-quote_request_page.quote_request.submit,Anfrage Einreichen,de_DE
+quote_request_page.quote_request.submit,Anfrage einreichen,de_DE
 quote_request_page.quote_request.metadata.label.note,Notes,en_US
 quote_request_page.quote_request.metadata.label.note,Anmerkungen,de_DE
 quote_request_page.quote_request.metadata.label.delivery_date,Do not ship later than,en_US
@@ -2582,7 +2594,7 @@ quote_request_page.quote_request.labels.latest_version_is_hidden,Die letzte Vers
 quote_request_page.quote_request.labels.latest_version_is_visible,The latest version is visible to the customer,en_US
 quote_request_page.quote_request.labels.latest_version_is_visible,Die letzte Version ist für den Kunden sichtbar,de_DE
 quote_request_page.quote_request.labels.history,History,en_US
-quote_request_page.quote_request.labels.history,Geschichte,de_DE
+quote_request_page.quote_request.labels.history,Historie,de_DE
 quote_request_page.quote_request.labels.customer,Customer,en_US
 quote_request_page.quote_request.labels.customer,Kunde,de_DE
 quote_request_page.quote_request.labels.company,Company,en_US
@@ -2695,6 +2707,10 @@ quote_request_agent_widget.form.select_customer,Select customer,en_US
 quote_request_agent_widget.form.select_customer,"Wählen Sie den Kunden aus",de_DE
 quote_request_agent_page.form.invalid_price,Invalid price.,en_US
 quote_request_agent_page.form.invalid_price,Ungültiger Preis.,de_DE
+configurable_bundle.template.name.1,"Configurable Bundle ""All in""",en_US
+configurable_bundle.template.name.1,"Konfigurierbares Bündel ""All in""",de_DE
+configurable_bundle.template.name.2,Smartstation Kit,en_US
+configurable_bundle.template.name.2,Smartstation-Kit,de_DE
 cart.total.price_to_pay,Zu bezahlender Betrag,de_DE
 cart.total.price_to_pay,Price to pay,en_US
 cart.giftcard.label,Gift card,en_US
@@ -2827,3 +2843,21 @@ billing.address.country.validation.not_found,Billing address country not found f
 billing.address.country.validation.not_found,Rechnungsadresse Land für Ländercode nicht gefunden: %code%,de_DE
 shipping.address.country.validation.not_found,Shipping address country not found for country code: %code%,en_US
 shipping.address.country.validation.not_found,Lieferadresse Land für Ländercode nicht gefunden: %code%,de_DE
+configured_bundle.quantity,Quantity:,en_US
+configured_bundle.quantity,Anzahl:,de_DE
+configured_bundle.price,Item price:,en_US
+configured_bundle.price,Stückpreis:,de_DE
+configured_bundle.bundle_total,Bundle total:,en_US
+configured_bundle.bundle_total,Bündel Gesamt:,de_DE
+configured_bundle.total,Item total:,en_US
+configured_bundle.total,Artikel Gesamt:,de_DE
+configured_bundle.remove,"&times; remove",en_US
+configured_bundle.remove,"&times; entfernen",de_DE
+configured_bundle.order.items,Items in the bundle:,en_US
+configured_bundle.order.items,Produkte in diesem Bündel:,de_DE
+configured_bundle.item_sku,SKU:,en_US
+configured_bundle.item_sku,SKU:,de_DE
+catalog.page.not_found,Page not found.,en_US
+catalog.page.not_found,Seite nicht gefunden.,de_DE
+product_search_widget.search.product_discontinued_prefix,[Discontinued],en_US
+product_search_widget.search.product_discontinued_prefix,[Abgesetzt],de_DE

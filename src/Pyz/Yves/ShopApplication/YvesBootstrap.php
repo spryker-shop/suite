@@ -43,6 +43,7 @@ use SprykerShop\Yves\CommentWidget\Plugin\Provider\CommentWidgetControllerProvid
 use SprykerShop\Yves\CompanyPage\Plugin\Provider\CompanyPageControllerProvider;
 use SprykerShop\Yves\CompanyUserAgentWidget\Plugin\Provider\CompanyUserAgentWidgetControllerProvider;
 use SprykerShop\Yves\CompanyUserInvitationPage\Plugin\Provider\CompanyUserInvitationPageControllerProvider;
+use SprykerShop\Yves\ConfigurableBundleWidget\Plugin\Provider\ConfigurableBundleWidgetControllerProvider;
 use SprykerShop\Yves\CurrencyWidget\Plugin\Provider\CurrencyWidgetControllerProvider;
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerPageControllerProvider;
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerSecurityServiceProvider;
@@ -79,7 +80,6 @@ use SprykerShop\Yves\ShoppingListPage\Plugin\Provider\ShoppingListPageController
 use SprykerShop\Yves\ShoppingListWidget\Plugin\Provider\ShoppingListWidgetControllerProvider;
 use SprykerShop\Yves\ShopRouter\Plugin\Router\SilexRouter;
 use SprykerShop\Yves\ShopRouter\Plugin\Router\StorageRouter;
-use SprykerShop\Yves\ShopTranslator\Plugin\Provider\TranslationServiceProvider;
 use SprykerShop\Yves\WebProfilerWidget\Plugin\ServiceProvider\WebProfilerWidgetServiceProvider;
 use SprykerShop\Yves\WishlistPage\Plugin\Provider\WishlistPageControllerProvider;
 
@@ -106,7 +106,6 @@ class YvesBootstrap extends SprykerYvesBootstrap
         $this->application->register(new UrlGeneratorServiceProvider());
         $this->application->register(new RememberMeServiceProvider());
         $this->application->register(new RoutingServiceProvider());
-        $this->application->register(new TranslationServiceProvider());
         $this->application->register(new ValidatorServiceProvider());
         $this->application->register(new FormServiceProvider());
         $this->application->register(new HttpFragmentServiceProvider());
@@ -195,6 +194,7 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new ResourceSharePageControllerProvider($isSsl), #UniqueUrlFeature
             new ShareCartByLinkWidgetControllerProvider($isSsl), #UniqueURLFeature
             new CommentWidgetControllerProvider($isSsl),
+            new ConfigurableBundleWidgetControllerProvider($isSsl),
         ];
     }
 }

@@ -1,0 +1,61 @@
+{% extends template('widget') %}
+
+{% define data = {
+    productAbstractViewCollection: productAbstractViewCollection,
+} %}
+
+{% block body %}
+    <div class="grid grid--stretch">
+        {% for productAbstractView in data.productAbstractViewCollection %}
+            <div class="col col--sm-12 col--md-6 col--lg-4">
+                {% embed molecule('product-item') with {
+                    class: 'box--stretch',
+                    data: {
+                        product: productAbstractView,
+                        sku: '',
+                    },
+                } only %}
+                    {% block body %}
+                        {% block content %}
+                            {% block name %}
+                                {{ parent() }}
+                            {% endblock %}
+
+                            {% block priceContainer %}
+                                {{ parent() }}
+                            {% endblock %}
+
+                            {% block imageContainer %}
+                                {{ parent() }}
+                            {% endblock %}
+
+                            {% block labels %}
+                                {{ parent() }}
+                            {% endblock %}
+
+                            {% block groups %}
+                                {{ parent() }}
+                            {% endblock %}
+
+                            {% block colors %}
+                                {{ parent() }}
+                            {% endblock %}
+
+                            {% block sku %}
+                                {{ parent() }}
+                            {% endblock %}
+
+                            {% block rating %}
+                                {{ parent() }}
+                            {% endblock %}
+                        {% endblock %}
+
+                        {% block actionsContainer %}
+                            {{ parent() }}
+                        {% endblock %}
+                    {% endblock %}
+                {% endembed %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
