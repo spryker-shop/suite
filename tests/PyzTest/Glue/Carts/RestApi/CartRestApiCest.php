@@ -23,12 +23,13 @@ use PyzTest\Glue\Carts\CartsApiTester;
  */
 class CartRestApiCest
 {
+    protected const RESOURCE_TYPE_ACCESS_TOKENS = 'access-tokens';
+    protected const RESOURCE_TYPE_GUEST_CART_ITEMS = 'guest-cart-items';
+    protected const RESOURCE_TYPE_CARTS = 'carts';
+
     protected const ANONYMOUS_CUSTOMER_REFERENCE = '666';
-
     protected const TEST_PASSWORD = 'test password';
-
     protected const NON_EXISTING_CUSTOMER_EMAIL = 'test_non_existing_email@spryker.com';
-
     protected const NON_EXISTING_CART_UUID = 'non-existing-cart-uuid';
 
     /**
@@ -180,10 +181,10 @@ class CartRestApiCest
     {
         // Act
         $I->sendPOST(
-            'guest-cart-items',
+            static::RESOURCE_TYPE_GUEST_CART_ITEMS,
             [
                 'data' => [
-                    'type' => 'guest-cart-items',
+                    'type' => static::RESOURCE_TYPE_GUEST_CART_ITEMS,
                     'attributes' => [
                         'sku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
                         'quantity' => 1,
@@ -210,10 +211,10 @@ class CartRestApiCest
 
         // Act
         $I->sendPOST(
-            'guest-cart-items',
+            static::RESOURCE_TYPE_GUEST_CART_ITEMS,
             [
                 'data' => [
-                    'type' => 'guest-cart-items',
+                    'type' => static::RESOURCE_TYPE_GUEST_CART_ITEMS,
                     'attributes' => [
                         'quantity' => 1,
                     ],
@@ -239,10 +240,10 @@ class CartRestApiCest
 
         // Act
         $I->sendPOST(
-            'guest-cart-items',
+            static::RESOURCE_TYPE_GUEST_CART_ITEMS,
             [
                 'data' => [
-                    'type' => 'guest-cart-items',
+                    'type' => static::RESOURCE_TYPE_GUEST_CART_ITEMS,
                     'attributes' => [
                         'sku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
                     ],
@@ -282,11 +283,10 @@ class CartRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     * @param string $cartUuid
      *
      * @return void
      */
-    protected function requestFindCartByUuidWithNonExistingCartUuid(CartsApiTester $I, string $cartUuid): void
+    protected function requestFindCartByUuidWithNonExistingCartUuid(CartsApiTester $I): void
     {
         //act
         $I->sendGET(
@@ -318,10 +318,10 @@ class CartRestApiCest
 
         // Act
         $I->sendPOST(
-            'guest-cart-items',
+            static::RESOURCE_TYPE_GUEST_CART_ITEMS,
             [
                 'data' => [
-                    'type' => 'guest-cart-items',
+                    'type' => static::RESOURCE_TYPE_GUEST_CART_ITEMS,
                     'attributes' => [
                         'sku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
                         'quantity' => 1,
@@ -408,9 +408,9 @@ class CartRestApiCest
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSure('Returned resource is of type access-tokens')
+        $I->amSure(sprintf('Returned resource is of type %s', static::RESOURCE_TYPE_ACCESS_TOKENS))
             ->whenI()
-            ->seeResponseDataContainsSingleResourceOfType('access-tokens');
+            ->seeResponseDataContainsSingleResourceOfType(static::RESOURCE_TYPE_ACCESS_TOKENS);
 
         return $token;
     }
@@ -428,7 +428,7 @@ class CartRestApiCest
         //act
         $I->sendGET(
             $I->formatUrl(
-                'carts/{cartUuid}',
+                sprintf('%s/{cartUuid}', static::RESOURCE_TYPE_CARTS),
                 [
                     'cartUuid' => $cartUuid,
                 ]
@@ -440,9 +440,9 @@ class CartRestApiCest
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSure('Returned resource is of type carts')
+        $I->amSure(sprintf('Returned resource is of type %s', static::RESOURCE_TYPE_CARTS))
             ->whenI()
-            ->seeResponseDataContainsSingleResourceOfType('carts');
+            ->seeResponseDataContainsSingleResourceOfType(static::RESOURCE_TYPE_CARTS);
 
         $I->amSure('Returned resource has correct id')
             ->whenI()
