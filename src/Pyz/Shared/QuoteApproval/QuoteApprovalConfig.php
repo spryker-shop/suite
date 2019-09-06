@@ -13,7 +13,7 @@ use Spryker\Shared\QuoteApproval\QuoteApprovalConfig as SprykerQuoteApprovalConf
 class QuoteApprovalConfig extends SprykerQuoteApprovalConfig
 {
     /**
-     * @return array
+     * @return string[]
      */
     public function getRequiredQuoteFields(): array
     {
