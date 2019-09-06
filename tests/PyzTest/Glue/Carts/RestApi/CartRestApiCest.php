@@ -72,18 +72,13 @@ class CartRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     * @param string $customerEmail
      *
      * @return void
      */
     public function requestCustomerCreateWithoutEmail(CartsApiTester $I): void
     {
         // Arrange
-        $customerTransfer = (new CustomerTransfer())
-            ->setFirstName('John')
-            ->setLastName('Doe')
-            ->setSalutation('Mr')
-            ->setNewPassword(static::TEST_PASSWORD);
+        $customerTransfer = $this->createCustomerTransfer();
 
         // Act
         $I->sendPOST('customers', [
@@ -110,18 +105,14 @@ class CartRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     * @param string $customerEmail
      *
      * @return void
      */
     public function requestCustomerCreateWithoutPassword(CartsApiTester $I): void
     {
         // Arrange
-        $customerTransfer = (new CustomerTransfer())
-            ->setFirstName('John')
-            ->setLastName('Doe')
-            ->setSalutation('Mr')
-            ->setEmail(static::NON_EXISTING_CUSTOMER_EMAIL);
+        $customerTransfer = $this->createCustomerTransfer();
+        $customerTransfer->setEmail(static::NON_EXISTING_CUSTOMER_EMAIL);
 
         // Act
         $I->sendPOST('customers', [
@@ -148,19 +139,13 @@ class CartRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     * @param string $customerEmail
      *
      * @return void
      */
     public function requestCustomerCreateWithNonAcceptedTerms(CartsApiTester $I): void
     {
         // Arrange
-        $customerTransfer = (new CustomerTransfer())
-            ->setFirstName('John')
-            ->setLastName('Doe')
-            ->setSalutation('Mr')
-            ->setNewPassword(static::TEST_PASSWORD)
-            ->setEmail('test_email@spryker.com');
+        $customerTransfer = $this->createCustomerTransfer();
 
         // Act
         $I->sendPOST('customers', [
@@ -194,7 +179,8 @@ class CartRestApiCest
     public function requestCreateGuestCartWithoutAnonymousCustomerUniqueId(CartsApiTester $I): void
     {
         // Act
-        $I->sendPOST('guest-cart-items',
+        $I->sendPOST(
+            'guest-cart-items',
             [
                 'data' => [
                     'type' => 'guest-cart-items',
@@ -203,7 +189,8 @@ class CartRestApiCest
                         'quantity' => 1,
                     ],
                 ],
-            ]);
+            ]
+        );
 
         //assert
         $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
@@ -222,7 +209,8 @@ class CartRestApiCest
         $I->amUnauthorizedGlueUser(static::ANONYMOUS_CUSTOMER_REFERENCE);
 
         // Act
-        $I->sendPOST('guest-cart-items',
+        $I->sendPOST(
+            'guest-cart-items',
             [
                 'data' => [
                     'type' => 'guest-cart-items',
@@ -230,7 +218,8 @@ class CartRestApiCest
                         'quantity' => 1,
                     ],
                 ],
-            ]);
+            ]
+        );
 
         //assert
         $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
@@ -249,7 +238,8 @@ class CartRestApiCest
         $I->amUnauthorizedGlueUser(static::ANONYMOUS_CUSTOMER_REFERENCE);
 
         // Act
-        $I->sendPOST('guest-cart-items',
+        $I->sendPOST(
+            'guest-cart-items',
             [
                 'data' => [
                     'type' => 'guest-cart-items',
@@ -257,7 +247,8 @@ class CartRestApiCest
                         'sku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
                     ],
                 ],
-            ]);
+            ]
+        );
 
         //assert
         $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
@@ -326,7 +317,8 @@ class CartRestApiCest
         $I->amUnauthorizedGlueUser(static::ANONYMOUS_CUSTOMER_REFERENCE);
 
         // Act
-        $I->sendPOST('guest-cart-items',
+        $I->sendPOST(
+            'guest-cart-items',
             [
                 'data' => [
                     'type' => 'guest-cart-items',
@@ -335,7 +327,8 @@ class CartRestApiCest
                         'quantity' => 1,
                     ],
                 ],
-            ]);
+            ]
+        );
 
         //assert
         $I->seeResponseCodeIs(HttpCode::CREATED);
@@ -359,12 +352,8 @@ class CartRestApiCest
     protected function requestCustomerCreate(CartsApiTester $I, string $customerEmail): string
     {
         // Arrange
-        $customerTransfer = (new CustomerTransfer())
-            ->setFirstName('John')
-            ->setLastName('Doe')
-            ->setSalutation('Mr')
-            ->setEmail($customerEmail)
-            ->setNewPassword(static::TEST_PASSWORD);
+        $customerTransfer = $this->createCustomerTransfer();
+        $customerTransfer->setEmail($customerEmail);
 
         // Act
         $I->sendPOST('customers', [
@@ -458,5 +447,17 @@ class CartRestApiCest
         $I->amSure('Returned resource has correct id')
             ->whenI()
             ->seeSingleResourceIdEqualTo($cartUuid);
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\CustomerTransfer
+     */
+    protected function createCustomerTransfer(): CustomerTransfer
+    {
+        return (new CustomerTransfer())
+            ->setFirstName('John')
+            ->setLastName('Doe')
+            ->setSalutation('Mr')
+            ->setNewPassword(static::TEST_PASSWORD);
     }
 }
