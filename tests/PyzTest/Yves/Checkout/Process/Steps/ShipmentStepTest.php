@@ -15,7 +15,7 @@ use Generated\Shared\DataBuilder\ShipmentBuilder;
 use Generated\Shared\Transfer\ExpenseTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\ShipmentTransfer;
-use Spryker\Shared\Shipment\ShipmentConstants;
+use Spryker\Shared\CheckoutPage\CheckoutConfig;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageDependencyProvider;
@@ -94,7 +94,7 @@ class ShipmentStepTest extends Unit
     {
         $quoteTransfer = new QuoteTransfer();
         $expenseTransfer = new ExpenseTransfer();
-        $expenseTransfer->setType(ShipmentConstants::SHIPMENT_EXPENSE_TYPE);
+        $expenseTransfer->setType(CheckoutConfig::SHIPMENT_EXPENSE_TYPE);
         $quoteTransfer->addExpense($expenseTransfer);
 
         $shipmentStep = $this->createShipmentStep(new StepHandlerPluginCollection());
@@ -112,7 +112,7 @@ class ShipmentStepTest extends Unit
         ]))->build();
 
         $quoteTransfer = (new QuoteBuilder())
-            ->withExpense((new ExpenseBuilder([ExpenseTransfer::TYPE => ShipmentConstants::SHIPMENT_EXPENSE_TYPE])))
+            ->withExpense((new ExpenseBuilder([ExpenseTransfer::TYPE => CheckoutConfig::SHIPMENT_EXPENSE_TYPE])))
             ->withItem((new ItemBuilder()))
             ->build();
 
