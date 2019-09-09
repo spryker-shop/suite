@@ -22,7 +22,7 @@ use Spryker\Shared\SessionRedis\SessionRedisConstants;
 use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 
-$domain = getenv('VM_PROJECT') ?: 'suite-nonsplit';
+$domain = getenv('VM_PROJECT') ?: 'nonsplit';
 
 // ---------- Yves host
 $config[ApplicationConstants::HOST_YVES] = sprintf('www-test.de.%s.local', $domain);
