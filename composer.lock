@@ -1466,16 +1466,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.24.0",
+            "version": "1.25.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "bfc9ebb28f97e7a24c45bdc3f0ff482e47bb0266"
+                "reference": "70e65a5470a42cfec1a7da00d30edb6e617e8dcf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/bfc9ebb28f97e7a24c45bdc3f0ff482e47bb0266",
-                "reference": "bfc9ebb28f97e7a24c45bdc3f0ff482e47bb0266",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/70e65a5470a42cfec1a7da00d30edb6e617e8dcf",
+                "reference": "70e65a5470a42cfec1a7da00d30edb6e617e8dcf",
                 "shasum": ""
             },
             "require": {
@@ -1540,7 +1540,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2018-11-05T09:00:11+00:00"
+            "time": "2019-09-06T13:49:17+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -2635,7 +2635,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "52a2d2f3abbf53be385838557105cda6cee9cb0d"
+                "reference": "21ef439150ba575dbc2e6a3e9caad4fbd92e5cad"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2898,14 +2898,14 @@
             },
             "scripts": {
                 "cs-check": [
-                    "vendor/bin/phpcs Bundles --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -p"
+                    "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -p --ignore=/node_modules/ Bundles/"
                 ]
             },
             "license": [
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-09-02T12:55:53+00:00"
+            "time": "2019-09-09T07:48:25+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2913,7 +2913,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "b005c0ac3de09cd53a2f5aabfee52f56b784c87e"
+                "reference": "9741accb26e61737a81997a732fa409555acbfa5"
             },
             "require": {
                 "php": ">=7.1"
@@ -2988,7 +2988,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-08-29T14:34:42+00:00"
+            "time": "2019-09-05T10:47:54+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -9688,12 +9688,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "b515e288ec714c2ff1e8072c65eca2d86933c6fe"
+                "reference": "348b9f59fce25a90126b8ca9c41731e62df4da1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/b515e288ec714c2ff1e8072c65eca2d86933c6fe",
-                "reference": "b515e288ec714c2ff1e8072c65eca2d86933c6fe",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/348b9f59fce25a90126b8ca9c41731e62df4da1c",
+                "reference": "348b9f59fce25a90126b8ca9c41731e62df4da1c",
                 "shasum": ""
             },
             "require": {
@@ -9703,7 +9703,7 @@
             "require-dev": {
                 "dereuromark/composer-prefer-lowest": "^0.1.2",
                 "phpstan/phpstan-shim": "^0.11.1",
-                "phpunit/phpunit": "<5.0"
+                "phpunit/phpunit": "^7.0 || ^8.0"
             },
             "bin": [
                 "bin/tokenize"
@@ -9733,7 +9733,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-08-30T16:15:26+00:00"
+            "time": "2019-09-05T15:48:04+00:00"
         },
         {
             "name": "spryker/development-core",
