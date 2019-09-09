@@ -542,7 +542,7 @@ $config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GE
 $config[KernelConstants::STRICT_DOMAIN_REDIRECT] = true;
 
 // ---------- Synchronization
-$config[SynchronizationConstants::STORAGE_SYNC_ENABLED] = false;
+$config[SynchronizationConstants::STORAGE_SYNC_ENABLED] = true;
 $config[SynchronizationConstants::SEARCH_SYNC_ENABLED] = true;
 
 // ---------- Database storage
