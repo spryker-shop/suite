@@ -12,12 +12,12 @@ env:
     - ARTIFACTS_SECRET=$AWS_S3_SECRET_ACCESS_KEY
     - ARTIFACTS_BUCKET=spryker-ci
 
-#branches:
-#  only:
-#    - master
-#    - /feature\/[a-z]+-\d+\/(master|dev).+/
-#    - /(bugfix|hotfix)\/.+/
-#    - /beta\/.+/
+branches:
+  only:
+    - master
+    - /feature\/[a-z]+-\d+\/(master|dev).+/
+    - /(bugfix|hotfix)\/.+/
+    - /beta\/.+/
 
 #Possible travis events (push, pull_request, cron, or api)
 matrix:
@@ -58,61 +58,6 @@ matrix:
         - ON_EVENTS=cron,push
         - DB=mysql
 
-    - name: Docker / PHP 7.3 / Validation
-      os:
-        - linux
-      dist: bionic
-      language: minimal
-      env:
-        - PROGRESS_TYPE=plain
-        - SPRYKER_PHP_VERSION=7.3
-        - SPRYKER_DB_ENGINE=PGSQL
-        - SPRYKER_TEST_IN_BROWSER=phantomjs
-        - TRAVIS=1
-      addons:
-        hosts:
-          - yves.de.demo-spryker.com
-          - zed.de.demo-spryker.com
-          - glue.de.demo-spryker.com
-          - queue.demo-spryker.com
-          - scheduler.demo-spryker.com
-        apt:
-          packages:
-            - apache2-utils
-            - apt-transport-https
-            - ca-certificates
-            - curl
-            - gnupg-agent
-            - pigz
-            - software-properties-common
-          sources:
-            - sourceline: "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-              key_url: https://download.docker.com/linux/ubuntu/gpg
-      install:
-        - echo eyAiZXhwZXJpbWVudGFsIiA6IHRydWUsICJmZWF0dXJlcyIgOiB7ICJidWlsZGtpdCI6IHRydWUgfSB9Cg==|base64 -d|sudo tee /etc/docker/daemon.json
-        - sudo apt-get install --only-upgrade docker-ce -y
-        - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-        - sudo chmod +x /usr/local/bin/docker-compose
-      script:
-        - docker/sdk boot
-        - docker/sdk up
-        - travis_wait 15 docker/sdk cli vendor/bin/phpstan analyze -c phpstan.neon -l 4 src/
-        - travis_wait 15 docker/sdk cli vendor/bin/console code:phpstan -m Spryker.all
-        - travis_wait 15 docker/sdk cli vendor/bin/console code:phpstan -m SprykerShop.all
-        - travis_wait 15 docker/sdk cli vendor/bin/console code:propel:validate-abstract
-        - travis_wait 15 docker/sdk cli vendor/bin/console propel:schema:validate
-        - travis_wait 15 docker/sdk cli vendor/bin/console propel:schema:validate-xml-names
-        - travis_wait 15 docker/sdk cli vendor/bin/console transfer:validate
-        - travis_wait 15 docker/sdk cli vendor/bin/console code:sniff:style
-        - travis_wait 15 docker/sdk cli vendor/bin/console dev:dependency:find
-        - travis_wait 15 docker/sdk cli vendor/bin/console dev:composer:update-json-files -d -v
-        - travis_wait 15 docker/sdk cli vendor/bin/console dev:composer:validate-json-files
-        - travis_wait 15 docker/sdk cli vendor/bin/phpmd src/ text vendor/spryker/spryker/Bundles/Development/src/Spryker/Zed/Development/Business/PhpMd/ruleset.xml
-        - travis_wait 15 docker/sdk cli vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2
-      before_install: skip
-      before_script: skip
-      after_script: skip
-
     - name: Docker / PHP 7.3 / PostgreSQL / Functional
       os:
         - linux
@@ -126,11 +71,11 @@ matrix:
         - TRAVIS=1
       addons:
         hosts:
-          - yves.de.demo-spryker.com
-          - zed.de.demo-spryker.com
-          - glue.de.demo-spryker.com
-          - queue.demo-spryker.com
-          - scheduler.demo-spryker.com
+          - yves.de.spryker.local
+          - zed.de.spryker.local
+          - glue.de.spryker.local
+          - queue.spryker.local
+          - scheduler.spryker.local
         apt:
           packages:
             - apache2-utils
@@ -151,7 +96,50 @@ matrix:
       script:
         - docker/sdk boot
         - docker/sdk up
-        - 'docker/sdk codecept codecept run -c codeception.functional.yml -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: inclusive: [PyzTest]\"" -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: exclusive: [Api, Glue]\""'
+        - 'docker/sdk testing codecept run -c codeception.functional.yml -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: inclusive: [PyzTest]\"" -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: exclusive: [Api, Glue]\""'
+      before_install: skip
+      before_script: skip
+      after_script: skip
+
+    - name: Docker / PHP 7.1 / PostgreSQL / Functional
+      os:
+        - linux
+      dist: bionic
+      language: minimal
+      env:
+        - PROGRESS_TYPE=plain
+        - SPRYKER_PHP_VERSION=7.1
+        - SPRYKER_DB_ENGINE=PGSQL
+        - SPRYKER_TEST_IN_BROWSER=phantomjs
+        - TRAVIS=1
+      addons:
+        hosts:
+          - yves.de.spryker.local
+          - zed.de.spryker.local
+          - glue.de.spryker.local
+          - queue.spryker.local
+          - scheduler.spryker.local
+        apt:
+          packages:
+            - apache2-utils
+            - apt-transport-https
+            - ca-certificates
+            - curl
+            - gnupg-agent
+            - pigz
+            - software-properties-common
+          sources:
+            - sourceline: "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+              key_url: https://download.docker.com/linux/ubuntu/gpg
+      install:
+        - echo eyAiZXhwZXJpbWVudGFsIiA6IHRydWUsICJmZWF0dXJlcyIgOiB7ICJidWlsZGtpdCI6IHRydWUgfSB9Cg==|base64 -d|sudo tee /etc/docker/daemon.json
+        - sudo apt-get install --only-upgrade docker-ce -y
+        - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        - sudo chmod +x /usr/local/bin/docker-compose
+      script:
+        - docker/sdk boot
+        - docker/sdk up
+        - 'docker/sdk testing codecept run -c codeception.functional.yml -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: inclusive: [PyzTest]\"" -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: exclusive: [Api, Glue]\""'
       before_install: skip
       before_script: skip
       after_script: skip
@@ -169,11 +157,11 @@ matrix:
         - TRAVIS=1
       addons:
         hosts:
-          - yves.de.demo-spryker.com
-          - zed.de.demo-spryker.com
-          - glue.de.demo-spryker.com
-          - queue.demo-spryker.com
-          - scheduler.demo-spryker.com
+          - yves.de.spryker.local
+          - zed.de.spryker.local
+          - glue.de.spryker.local
+          - queue.spryker.local
+          - scheduler.spryker.local
         apt:
           packages:
             - apache2-utils
@@ -194,9 +182,54 @@ matrix:
       script:
         - docker/sdk boot
         - docker/sdk up
-        - docker/sdk codecept codecept fixtures
-        - docker/sdk codecept console queue:worker:start --stop-when-empty
-        - docker/sdk codecept codecept run -c codeception.api.yml
+        - docker/sdk testing codecept fixtures
+        - docker/sdk testing console queue:worker:start --stop-when-empty
+        - docker/sdk testing codecept run -c codeception.api.yml
+      before_install: skip
+      before_script: skip
+      after_script: skip
+
+    - name: Docker / PHP 7.1 / PostgreSQL / Glue
+      os:
+        - linux
+      dist: bionic
+      language: minimal
+      env:
+        - PROGRESS_TYPE=plain
+        - SPRYKER_PHP_VERSION=7.1
+        - SPRYKER_DB_ENGINE=PGSQL
+        - SPRYKER_TEST_IN_BROWSER=phantomjs
+        - TRAVIS=1
+      addons:
+        hosts:
+          - yves.de.spryker.local
+          - zed.de.spryker.local
+          - glue.de.spryker.local
+          - queue.spryker.local
+          - scheduler.spryker.local
+        apt:
+          packages:
+            - apache2-utils
+            - apt-transport-https
+            - ca-certificates
+            - curl
+            - gnupg-agent
+            - pigz
+            - software-properties-common
+          sources:
+            - sourceline: "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+              key_url: https://download.docker.com/linux/ubuntu/gpg
+      install:
+        - echo eyAiZXhwZXJpbWVudGFsIiA6IHRydWUsICJmZWF0dXJlcyIgOiB7ICJidWlsZGtpdCI6IHRydWUgfSB9Cg==|base64 -d|sudo tee /etc/docker/daemon.json
+        - sudo apt-get install --only-upgrade docker-ce -y
+        - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        - sudo chmod +x /usr/local/bin/docker-compose
+      script:
+        - docker/sdk boot
+        - docker/sdk up
+        - docker/sdk testing codecept fixtures
+        - docker/sdk testing console queue:worker:start --stop-when-empty
+        - docker/sdk testing codecept run -c codeception.api.yml
       before_install: skip
       before_script: skip
       after_script: skip
@@ -214,11 +247,11 @@ matrix:
         - TRAVIS=1
       addons:
         hosts:
-          - yves.de.demo-spryker.com
-          - zed.de.demo-spryker.com
-          - glue.de.demo-spryker.com
-          - queue.demo-spryker.com
-          - scheduler.demo-spryker.com
+          - yves.de.spryker.local
+          - zed.de.spryker.local
+          - glue.de.spryker.local
+          - queue.spryker.local
+          - scheduler.spryker.local
         apt:
           packages:
             - apache2-utils
@@ -239,7 +272,50 @@ matrix:
       script:
         - docker/sdk boot
         - docker/sdk up
-        - 'docker/sdk codecept codecept run -c codeception.functional.yml -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: inclusive: [PyzTest]\"" -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: exclusive: [Api, Glue]\""'
+        - 'docker/sdk testing codecept run -c codeception.functional.yml -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: inclusive: [PyzTest]\"" -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: exclusive: [Api, Glue]\""'
+      before_install: skip
+      before_script: skip
+      after_script: skip
+
+    - name: Docker / PHP 7.1 / MySQL / Functional
+      os:
+        - linux
+      dist: bionic
+      language: minimal
+      env:
+        - PROGRESS_TYPE=plain
+        - SPRYKER_PHP_VERSION=7.1
+        - SPRYKER_DB_ENGINE=MYSQL
+        - SPRYKER_TEST_IN_BROWSER=phantomjs
+        - TRAVIS=1
+      addons:
+        hosts:
+          - yves.de.spryker.local
+          - zed.de.spryker.local
+          - glue.de.spryker.local
+          - queue.spryker.local
+          - scheduler.spryker.local
+        apt:
+          packages:
+            - apache2-utils
+            - apt-transport-https
+            - ca-certificates
+            - curl
+            - gnupg-agent
+            - pigz
+            - software-properties-common
+          sources:
+            - sourceline: "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+              key_url: https://download.docker.com/linux/ubuntu/gpg
+      install:
+        - echo eyAiZXhwZXJpbWVudGFsIiA6IHRydWUsICJmZWF0dXJlcyIgOiB7ICJidWlsZGtpdCI6IHRydWUgfSB9Cg==|base64 -d|sudo tee /etc/docker/daemon.json
+        - sudo apt-get install --only-upgrade docker-ce -y
+        - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        - sudo chmod +x /usr/local/bin/docker-compose
+      script:
+        - docker/sdk boot
+        - docker/sdk up
+        - 'docker/sdk testing codecept run -c codeception.functional.yml -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: inclusive: [PyzTest]\"" -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: exclusive: [Api, Glue]\""'
       before_install: skip
       before_script: skip
       after_script: skip
