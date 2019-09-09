@@ -7,18 +7,18 @@
 
 namespace Pyz\Yves\QuoteApprovalWidget;
 
-use SprykerShop\Yves\CartPage\Plugin\QuoteApprovalWidget\QuoteApprovalExpanderPlugin;
+use SprykerShop\Yves\CartPage\Plugin\QuoteApprovalWidget\QuoteApprovalAfterOperationPlugin;
 use SprykerShop\Yves\QuoteApprovalWidget\QuoteApprovalWidgetDependencyProvider as SprykerQuoteApprovalWidgetDependencyProvider;
 
 class QuoteApprovalWidgetDependencyProvider extends SprykerQuoteApprovalWidgetDependencyProvider
 {
     /**
-     * @return \SprykerShop\Yves\QuoteApprovalWidgetExtension\Dependency\Plugin\QuoteApprovalExpanderPluginInterface[]
+     * @return \SprykerShop\Yves\QuoteApprovalWidgetExtension\Dependency\Plugin\QuoteApprovalAfterOperationPluginInterface[]
      */
-    protected function getQuoteApprovalExpanderPlugins(): array
+    protected function getQuoteApprovalAfterOperationPlugins(): array
     {
         return [
-            new QuoteApprovalExpanderPlugin(),
+            new QuoteApprovalAfterOperationPlugin(),
         ];
     }
 }
