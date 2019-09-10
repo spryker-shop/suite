@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "27a5d3c7178811a9701617aab3a6fca8",
+    "content-hash": "8b5077c1ecbf7ef1afa061f3ea004368",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -1065,9 +1065,9 @@
             "authors": [
                 {
                     "name": "Ignace Nyamagana Butera",
-                    "role": "Developer",
                     "email": "nyamsprod@gmail.com",
-                    "homepage": "https://github.com/nyamsprod/"
+                    "homepage": "https://github.com/nyamsprod/",
+                    "role": "Developer"
                 }
             ],
             "description": "Csv data manipulation made easy in PHP",
@@ -1955,7 +1955,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -2490,16 +2490,16 @@
         },
         {
             "name": "spryker/rabbit-mq",
-            "version": "dev-bugfix/te-3870-performance-issues-due-to-queue-connection-for-all-stores",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "1097d9665ea4982e2f2647317d5baa98dd249cca"
+                "reference": "0fdd94a3428eb22c10627f375352f1706f9a2300"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/1097d9665ea4982e2f2647317d5baa98dd249cca",
-                "reference": "1097d9665ea4982e2f2647317d5baa98dd249cca",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/0fdd94a3428eb22c10627f375352f1706f9a2300",
+                "reference": "0fdd94a3428eb22c10627f375352f1706f9a2300",
                 "shasum": ""
             },
             "require": {
@@ -2525,8 +2525,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/",
-                    "SprykerTest\\Client\\RabbitMq\\Helper\\": "tests/SprykerTest/Client/RabbitMq/_support/Helper/"
+                    "Spryker\\": "src/Spryker/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2550,7 +2549,7 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "time": "2019-09-02T13:12:11+00:00"
+            "time": "2019-08-19T12:12:16+00:00"
         },
         {
             "name": "spryker/silexphp",
@@ -2636,7 +2635,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "c08a0f1b93ddf02db6f6a5f0c5c1f5d82a52de35"
+                "reference": "450a26b9ef7ac645fecaf86b2b4668f6148eb654"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2906,7 +2905,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-09-10T12:51:41+00:00"
+            "time": "2019-09-10T13:52:56+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -8417,8 +8416,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "The PHP Unit Testing framework.",
@@ -10524,8 +10523,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
@@ -10565,8 +10564,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
