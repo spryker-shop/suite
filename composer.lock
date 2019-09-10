@@ -28621,23 +28621,23 @@
         },
         {
             "name": "spryker/rabbit-mq",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "db3f4a90ffa4d8351016494ee0acea7c5b707012"
+                "reference": "386ab9871a48917dbf4ae2db7f2050e6bfa1e682"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/db3f4a90ffa4d8351016494ee0acea7c5b707012",
-                "reference": "db3f4a90ffa4d8351016494ee0acea7c5b707012",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/386ab9871a48917dbf4ae2db7f2050e6bfa1e682",
+                "reference": "386ab9871a48917dbf4ae2db7f2050e6bfa1e682",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "php-amqplib/php-amqplib": "^2.6",
                 "spryker/guzzle": "^2.0.0",
-                "spryker/kernel": "^3.20.0",
+                "spryker/kernel": "^3.30.0",
                 "spryker/log": "^3.0.0",
                 "spryker/queue": "^1.4.0",
                 "spryker/store": "^1.9.0",
@@ -28656,7 +28656,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Client\\RabbitMq\\Helper\\": "tests/SprykerTest/Client/RabbitMq/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -28680,7 +28681,7 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "time": "2019-06-19T13:33:23+00:00"
+            "time": "2019-09-10T15:15:46+00:00"
         },
         {
             "name": "spryker/ramsey-uuid",
