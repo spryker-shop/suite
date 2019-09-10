@@ -80,7 +80,7 @@ class CartRestApiCest
     public function requestCustomerCreateWithoutEmail(CartsApiTester $I): void
     {
         // Arrange
-        $customerTransfer = $this->createCustomerTransfer();
+        $customerTransfer = $I->createCustomerTransfer('', '');
 
         // Act
         $I->sendPOST(CustomersRestApiConfig::RESOURCE_CUSTOMERS, [
@@ -113,8 +113,7 @@ class CartRestApiCest
     public function requestCustomerCreateWithoutPassword(CartsApiTester $I): void
     {
         // Arrange
-        $customerTransfer = $this->createCustomerTransfer();
-        $customerTransfer->setEmail(static::NON_EXISTING_CUSTOMER_EMAIL);
+        $customerTransfer = $I->createCustomerTransfer(static::NON_EXISTING_CUSTOMER_EMAIL, '');
 
         // Act
         $I->sendPOST(CustomersRestApiConfig::RESOURCE_CUSTOMERS, [
@@ -147,7 +146,7 @@ class CartRestApiCest
     public function requestCustomerCreateWithNonAcceptedTerms(CartsApiTester $I): void
     {
         // Arrange
-        $customerTransfer = $this->createCustomerTransfer();
+        $customerTransfer = $I->createCustomerTransfer('', '');
 
         // Act
         $I->sendPOST(CustomersRestApiConfig::RESOURCE_CUSTOMERS, [
@@ -353,8 +352,7 @@ class CartRestApiCest
     protected function requestCustomerCreate(CartsApiTester $I, string $customerEmail): string
     {
         // Arrange
-        $customerTransfer = $this->createCustomerTransfer();
-        $customerTransfer->setEmail($customerEmail);
+        $customerTransfer = $I->createCustomerTransfer($customerEmail, static::TEST_PASSWORD);
 
         // Act
         $I->sendPOST(CustomersRestApiConfig::RESOURCE_CUSTOMERS, [
@@ -483,17 +481,5 @@ class CartRestApiCest
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
         $I->seeResponseDataIsEmpty();
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
-    protected function createCustomerTransfer(): CustomerTransfer
-    {
-        return (new CustomerTransfer())
-            ->setFirstName('John')
-            ->setLastName('Doe')
-            ->setSalutation('Mr')
-            ->setNewPassword(static::TEST_PASSWORD);
     }
 }
