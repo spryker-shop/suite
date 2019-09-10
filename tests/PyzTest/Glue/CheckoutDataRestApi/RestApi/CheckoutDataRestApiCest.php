@@ -147,6 +147,55 @@ class CheckoutDataRestApiCest
     }
 
     /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\CheckoutDataRestApi\CheckoutDataRestApiTester $I
+     *
+     * @return void
+     */
+    public function requestCheckoutDataWithIncludedShipmentMethods(CheckoutDataRestApiTester $I): void
+    {
+        $idCart = $I->createCartWithItems(
+            $this->fixtures->getCustomerTransfer(),
+            $this->fixtures->getProductConcreteTransfer()
+        );
+
+        $I->sendPOST('checkout-data?include=shipment-methods', [
+            'data' => [
+                'type' => 'checkout-data',
+                'attributes' => [
+                    'idCart' => $idCart,
+                ],
+            ],
+        ]);
+
+        $this->assertCheckoutDataRequestWithIncludedShipmentMethods($I);
+    }
+
+    /**
+     * @param \PyzTest\Glue\CheckoutDataRestApi\CheckoutDataRestApiTester $I
+     *
+     * @return void
+     */
+    protected function assertCheckoutDataRequestWithIncludedShipmentMethods(
+        CheckoutDataRestApiTester $I
+    ): void {
+        $idShipmentMethod = $this->fixtures->getShipmentMethodTransfer()->getIdShipmentMethod();
+
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+
+        $I->amSure('Returned resource has shipment method in `relationships` section.')
+            ->whenI()
+            ->seeSingleResourceHasRelationshipByTypeAndId('shipment-methods', $idShipmentMethod);
+
+        $I->amSure('Returned resource has shipment method in `included` section.')
+            ->whenI()
+            ->seeIncludesContainsResourceByTypeAndId('shipment-methods', $idShipmentMethod);
+    }
+
+    /**
      * @param \PyzTest\Glue\CheckoutDataRestApi\CheckoutDataRestApiTester $I
      * @param int $responseCode
      *
