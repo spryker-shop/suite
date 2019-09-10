@@ -10,6 +10,9 @@ namespace PyzTest\Glue\Carts\RestApi;
 use Codeception\Util\HttpCode;
 use Generated\Shared\Transfer\CustomerTransfer;
 use PyzTest\Glue\Carts\CartsApiTester;
+use Spryker\Glue\AuthRestApi\AuthRestApiConfig;
+use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
+use Spryker\Glue\CustomersRestApi\CustomersRestApiConfig;
 
 /**
  * Auto-generated group annotations
@@ -23,10 +26,6 @@ use PyzTest\Glue\Carts\CartsApiTester;
  */
 class CartRestApiCest
 {
-    protected const RESOURCE_TYPE_ACCESS_TOKENS = 'access-tokens';
-    protected const RESOURCE_TYPE_GUEST_CART_ITEMS = 'guest-cart-items';
-    protected const RESOURCE_TYPE_CARTS = 'carts';
-
     protected const ANONYMOUS_CUSTOMER_REFERENCE = '666';
     protected const TEST_PASSWORD = 'test password';
     protected const NON_EXISTING_CUSTOMER_EMAIL = 'test_non_existing_email@spryker.com';
@@ -67,6 +66,8 @@ class CartRestApiCest
         $this->requestCustomerLogin($I, $customerEmail);
 
         $this->requestFindCartByUuid($I, $cartUuid);
+
+        $this->requestGuestCartCollectionIsEmpty($I);
     }
 
     /**
@@ -82,9 +83,9 @@ class CartRestApiCest
         $customerTransfer = $this->createCustomerTransfer();
 
         // Act
-        $I->sendPOST('customers', [
+        $I->sendPOST(CustomersRestApiConfig::RESOURCE_CUSTOMERS, [
             'data' => [
-                'type' => 'customers',
+                'type' => CustomersRestApiConfig::RESOURCE_CUSTOMERS,
                 'attributes' => [
                     'salutation' => $customerTransfer->getSalutation(),
                     'firstName' => $customerTransfer->getFirstName(),
@@ -116,9 +117,9 @@ class CartRestApiCest
         $customerTransfer->setEmail(static::NON_EXISTING_CUSTOMER_EMAIL);
 
         // Act
-        $I->sendPOST('customers', [
+        $I->sendPOST(CustomersRestApiConfig::RESOURCE_CUSTOMERS, [
             'data' => [
-                'type' => 'customers',
+                'type' => CustomersRestApiConfig::RESOURCE_CUSTOMERS,
                 'attributes' => [
                     'salutation' => $customerTransfer->getSalutation(),
                     'firstName' => $customerTransfer->getFirstName(),
@@ -149,9 +150,9 @@ class CartRestApiCest
         $customerTransfer = $this->createCustomerTransfer();
 
         // Act
-        $I->sendPOST('customers', [
+        $I->sendPOST(CustomersRestApiConfig::RESOURCE_CUSTOMERS, [
             'data' => [
-                'type' => 'customers',
+                'type' => CustomersRestApiConfig::RESOURCE_CUSTOMERS,
                 'attributes' => [
                     'salutation' => $customerTransfer->getSalutation(),
                     'firstName' => $customerTransfer->getFirstName(),
@@ -181,10 +182,10 @@ class CartRestApiCest
     {
         // Act
         $I->sendPOST(
-            static::RESOURCE_TYPE_GUEST_CART_ITEMS,
+            CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
             [
                 'data' => [
-                    'type' => static::RESOURCE_TYPE_GUEST_CART_ITEMS,
+                    'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
                     'attributes' => [
                         'sku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
                         'quantity' => 1,
@@ -211,10 +212,10 @@ class CartRestApiCest
 
         // Act
         $I->sendPOST(
-            static::RESOURCE_TYPE_GUEST_CART_ITEMS,
+            CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
             [
                 'data' => [
-                    'type' => static::RESOURCE_TYPE_GUEST_CART_ITEMS,
+                    'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
                     'attributes' => [
                         'quantity' => 1,
                     ],
@@ -240,10 +241,10 @@ class CartRestApiCest
 
         // Act
         $I->sendPOST(
-            static::RESOURCE_TYPE_GUEST_CART_ITEMS,
+            CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
             [
                 'data' => [
-                    'type' => static::RESOURCE_TYPE_GUEST_CART_ITEMS,
+                    'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
                     'attributes' => [
                         'sku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
                     ],
@@ -318,10 +319,10 @@ class CartRestApiCest
 
         // Act
         $I->sendPOST(
-            static::RESOURCE_TYPE_GUEST_CART_ITEMS,
+            CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
             [
                 'data' => [
-                    'type' => static::RESOURCE_TYPE_GUEST_CART_ITEMS,
+                    'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
                     'attributes' => [
                         'sku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
                         'quantity' => 1,
@@ -356,9 +357,9 @@ class CartRestApiCest
         $customerTransfer->setEmail($customerEmail);
 
         // Act
-        $I->sendPOST('customers', [
+        $I->sendPOST(CustomersRestApiConfig::RESOURCE_CUSTOMERS, [
             'data' => [
-                'type' => 'customers',
+                'type' => CustomersRestApiConfig::RESOURCE_CUSTOMERS,
                 'attributes' => [
                     'salutation' => $customerTransfer->getSalutation(),
                     'firstName' => $customerTransfer->getFirstName(),
@@ -378,9 +379,9 @@ class CartRestApiCest
 
         $I->amSure('Returned resource is of type customers')
             ->whenI()
-            ->seeResponseDataContainsSingleResourceOfType('customers');
+            ->seeResponseDataContainsSingleResourceOfType(CustomersRestApiConfig::RESOURCE_CUSTOMERS);
 
-        return $I->grabDataFromResponseByJsonPath('$.data')[0]['id'];
+        return $I->grabDataFromResponseByJsonPath('$.data[0].id');
     }
 
     /**
@@ -408,9 +409,9 @@ class CartRestApiCest
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSure(sprintf('Returned resource is of type %s', static::RESOURCE_TYPE_ACCESS_TOKENS))
+        $I->amSure(sprintf('Returned resource is of type %s', AuthRestApiConfig::RESOURCE_ACCESS_TOKENS))
             ->whenI()
-            ->seeResponseDataContainsSingleResourceOfType(static::RESOURCE_TYPE_ACCESS_TOKENS);
+            ->seeResponseDataContainsSingleResourceOfType(AuthRestApiConfig::RESOURCE_ACCESS_TOKENS);
 
         return $token;
     }
@@ -428,9 +429,11 @@ class CartRestApiCest
         //act
         $I->sendGET(
             $I->formatUrl(
-                sprintf('%s/{cartUuid}', static::RESOURCE_TYPE_CARTS),
+                '{resourceCarts}/{cartUuid}?include={relationshipItems}',
                 [
                     'cartUuid' => $cartUuid,
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'relationshipItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
                 ]
             )
         );
@@ -440,13 +443,46 @@ class CartRestApiCest
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSure(sprintf('Returned resource is of type %s', static::RESOURCE_TYPE_CARTS))
+        $I->amSure(sprintf('Returned resource is of type %s', CartsRestApiConfig::RESOURCE_CARTS))
             ->whenI()
-            ->seeResponseDataContainsSingleResourceOfType(static::RESOURCE_TYPE_CARTS);
+            ->seeResponseDataContainsSingleResourceOfType(CartsRestApiConfig::RESOURCE_CARTS);
+
+        $I->amSure('Returned resource has include of type items')
+            ->whenI()
+            ->seeSingleResourceHasRelationshipByTypeAndId('items', $this->fixtures->getProductConcreteTransfer()->getSku());
 
         $I->amSure('Returned resource has correct id')
             ->whenI()
             ->seeSingleResourceIdEqualTo($cartUuid);
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    protected function requestGuestCartCollectionIsEmpty(CartsApiTester $I): void
+    {
+        // Arrange
+        $I->deleteHeader(AuthRestApiConfig::HEADER_AUTHORIZATION);
+
+        //act
+        $I->sendGET(
+            $I->formatUrl(
+                '{resourceGuestCarts}',
+                [
+                    'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                ]
+            )
+        );
+
+        //assert
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+        $I->seeResponseDataIsEmpty();
     }
 
     /**

@@ -21,14 +21,12 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  * @group Glue
  * @group Carts
  * @group RestApi
- * @group ProductAbstractRestFixtures
+ * @group CartsRestApiFixtures
  * Add your own group annotations below this line
  * @group EndToEnd
  */
 class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    public const ANONYMOUS_CUSTOMER_REFERENCE = '666';
-
     /**
      * @var \Generated\Shared\Transfer\ProductConcreteTransfer
      */
