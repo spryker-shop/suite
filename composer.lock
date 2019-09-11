@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.111.0",
+            "version": "3.111.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "a31376012346118b2b88df6d2f0c185af71e3096"
+                "reference": "08d3993286be11009809295e0ebfc7b909294dcc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/a31376012346118b2b88df6d2f0c185af71e3096",
-                "reference": "a31376012346118b2b88df6d2f0c185af71e3096",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/08d3993286be11009809295e0ebfc7b909294dcc",
+                "reference": "08d3993286be11009809295e0ebfc7b909294dcc",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-09-09T18:13:28+00:00"
+            "time": "2019-09-10T18:12:46+00:00"
         },
         {
             "name": "codeitnowin/barcode",
@@ -17540,21 +17540,22 @@
         },
         {
             "name": "spryker/event-behavior",
-            "version": "1.11.0",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "115feccb66b6ffc50417b874a039a1a22bebf610"
+                "reference": "d8f6622f2a477c231a07da40b446db8959c8703d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/115feccb66b6ffc50417b874a039a1a22bebf610",
-                "reference": "115feccb66b6ffc50417b874a039a1a22bebf610",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/d8f6622f2a477c231a07da40b446db8959c8703d",
+                "reference": "d8f6622f2a477c231a07da40b446db8959c8703d",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/event": "^2.4.0",
+                "spryker/event-dispatcher-extension": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/propel-orm": "^1.6.0",
                 "spryker/symfony": "^3.1.0",
@@ -17565,12 +17566,16 @@
                 "spryker/code-sniffer": "*",
                 "spryker/config": "^3.1.0",
                 "spryker/console": "^3.1.0 || ^4.0.0",
+                "spryker/container": "^1.4.0",
+                "spryker/event-dispatcher": "^1.0.0",
                 "spryker/propel": "^3.0.0",
                 "spryker/silex": "^2.0.0",
                 "spryker/testify": "*"
             },
             "suggest": {
                 "spryker/console": "*",
+                "spryker/container": "Install this module when you want to use the EventBehaviorEventDispatcherPlugin",
+                "spryker/event-dispatcher": "Install this module when you want to use the EventBehaviorEventDispatcherPlugin",
                 "spryker/silex": "^2.0.0"
             },
             "type": "propel-behavior",
@@ -17594,7 +17599,7 @@
                 "proprietary"
             ],
             "description": "EventBehavior module",
-            "time": "2019-07-22T12:36:32+00:00"
+            "time": "2019-09-11T12:19:36+00:00"
         },
         {
             "name": "spryker/event-dispatcher",
