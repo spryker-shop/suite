@@ -8,6 +8,7 @@
 namespace PyzTest\Glue\CheckoutRestApi\RestApi;
 
 use Codeception\Util\HttpCode;
+use Generated\Shared\Transfer\CustomerTransfer;
 use PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester;
 use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig;
 use Spryker\Glue\ShipmentsRestApi\ShipmentsRestApiConfig;
@@ -18,13 +19,15 @@ use Spryker\Glue\ShipmentsRestApi\ShipmentsRestApiConfig;
  * @group Glue
  * @group CheckoutRestApi
  * @group RestApi
- * @group CheckoutRestApiCest
+ * @group CheckoutDataRestApiCest
  * Add your own group annotations below this line
  * @group EndToEnd
  */
 class CheckoutDataRestApiCest
 {
     protected const NOT_EXISTED_ID_CART = 'NOT_EXISTED_ID_CART';
+
+    protected const KEY_ACCESS_TOKEN = 'accessToken';
 
     /**
      * @var \PyzTest\Glue\CheckoutRestApi\RestApi\CheckoutDataRestApiFixtures
@@ -71,10 +74,9 @@ class CheckoutDataRestApiCest
      */
     public function requestCheckoutDataByIdCartShouldBeSuccessful(CheckoutRestApiTester $I): void
     {
-        $idCart = $I->createCartWithItems(
-            $this->fixtures->getCustomerTransfer(),
-            $this->fixtures->getProductConcreteTransfer()
-        );
+        $this->customerLogIn($I, $this->fixtures->getCustomerTransfer());
+
+        $idCart = $this->fixtures->getQuoteTransfer()->getUuid();
 
         $I->sendPOST(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, [
             'data' => [
@@ -97,7 +99,7 @@ class CheckoutDataRestApiCest
      */
     public function requestCheckoutDataByIncorrectIdCartShouldBeFailed(CheckoutRestApiTester $I): void
     {
-        $I->customerLogIn($this->fixtures->getCustomerTransfer());
+        $this->customerLogIn($I, $this->fixtures->getCustomerTransfer());
 
         $I->sendPOST(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, [
             'data' => [
@@ -121,10 +123,9 @@ class CheckoutDataRestApiCest
     public function requestCheckoutDataByIdCartWithSelectedShipmentMethodShouldGetShipmentMethodDetails(
         CheckoutRestApiTester $I
     ): void {
-        $idCart = $I->createCartWithItems(
-            $this->fixtures->getCustomerTransfer(),
-            $this->fixtures->getProductConcreteTransfer()
-        );
+        $this->customerLogIn($I, $this->fixtures->getCustomerTransfer());
+
+        $idCart = $this->fixtures->getQuoteTransfer()->getUuid();
 
         $I->sendPOST(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, [
             'data' => [
@@ -157,10 +158,9 @@ class CheckoutDataRestApiCest
      */
     public function requestCheckoutDataWithIncludedShipmentMethods(CheckoutRestApiTester $I): void
     {
-        $idCart = $I->createCartWithItems(
-            $this->fixtures->getCustomerTransfer(),
-            $this->fixtures->getProductConcreteTransfer()
-        );
+        $this->customerLogIn($I, $this->fixtures->getCustomerTransfer());
+
+        $idCart = $this->fixtures->getQuoteTransfer()->getUuid();
 
         $url = sprintf('%s?include=%s', CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, ShipmentsRestApiConfig::RESOURCE_SHIPMENT_METHODS);
 
@@ -172,6 +172,10 @@ class CheckoutDataRestApiCest
                 ],
             ],
         ]);
+
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
 
         $this->assertCheckoutDataRequestWithIncludedShipmentMethods($I);
     }
@@ -185,10 +189,6 @@ class CheckoutDataRestApiCest
         CheckoutRestApiTester $I
     ): void {
         $idShipmentMethod = $this->fixtures->getShipmentMethodTransfer()->getIdShipmentMethod();
-
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
 
         $I->amSure('Returned resource has shipment method in `relationships` section.')
             ->whenI()
@@ -212,5 +212,18 @@ class CheckoutDataRestApiCest
         $I->seeResponseCodeIs($responseCode);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
+    }
+
+    /**
+     * @param \PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester $I
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     *
+     * @return void
+     */
+    protected function customerLogIn(CheckoutRestApiTester $I, CustomerTransfer $customerTransfer): void
+    {
+        $accessToken = $I->haveAuthorizationToGlue($customerTransfer)[static::KEY_ACCESS_TOKEN];
+
+        $I->amAuthorizedGlueUser($accessToken);
     }
 }

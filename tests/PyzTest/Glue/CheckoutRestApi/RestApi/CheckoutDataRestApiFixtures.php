@@ -8,10 +8,14 @@
 namespace PyzTest\Glue\CheckoutRestApi\RestApi;
 
 use Generated\Shared\Transfer\CustomerTransfer;
+use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\PriceProductTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
+use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
 use Generated\Shared\Transfer\StockProductTransfer;
+use Generated\Shared\Transfer\StoreTransfer;
+use Generated\Shared\Transfer\TotalsTransfer;
 use PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
@@ -46,6 +50,11 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
     protected $shipmentMethodTransfer;
 
     /**
+     * @var \Generated\Shared\Transfer\QuoteTransfer
+     */
+    protected $quoteTransfer;
+
+    /**
      * @return \Generated\Shared\Transfer\CustomerTransfer
      */
     public function getCustomerTransfer(): CustomerTransfer
@@ -70,15 +79,24 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
     }
 
     /**
+     * @return \Generated\Shared\Transfer\QuoteTransfer
+     */
+    public function getQuoteTransfer(): QuoteTransfer
+    {
+        return $this->quoteTransfer;
+    }
+
+    /**
      * @param \PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester $I
      *
      * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
     public function buildFixtures(CheckoutRestApiTester $I): FixturesContainerInterface
     {
-        $this->createCustomer($I);
-        $this->createProductConcrete($I);
-        $this->createShipmentMethod($I);
+        $this->createCustomerTransfer($I);
+        $this->createProductConcreteTransfer($I);
+        $this->createShipmentMethodTransfer($I);
+        $this->createQuoteTransfer($I);
 
         return $this;
     }
@@ -88,7 +106,7 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
      *
      * @return void
      */
-    protected function createCustomer(CheckoutRestApiTester $I): void
+    protected function createCustomerTransfer(CheckoutRestApiTester $I): void
     {
         $customerTransfer = $I->haveCustomer([
             'password' => static::TEST_PASSWORD,
@@ -104,7 +122,7 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
      *
      * @return void
      */
-    protected function createProductConcrete(CheckoutRestApiTester $I): void
+    protected function createProductConcreteTransfer(CheckoutRestApiTester $I): void
     {
         $this->productConcreteTransfer = $I->haveFullProduct();
         $I->haveProductInStock([
@@ -122,8 +140,33 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
      *
      * @return void
      */
-    protected function createShipmentMethod(CheckoutRestApiTester $I): void
+    protected function createShipmentMethodTransfer(CheckoutRestApiTester $I): void
     {
-        $this->shipmentMethodTransfer = $I->haveShipmentMethod();
+        $this->shipmentMethodTransfer = $I->haveShipmentMethod(['is_active' => true]);
+    }
+
+    /**
+     * @param \PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester $I
+     *
+     * @return void
+     */
+    protected function createQuoteTransfer(CheckoutRestApiTester $I): void
+    {
+        $totalsTransfer = new TotalsTransfer();
+        $totalsTransfer->setPriceToPay(random_int(1000, 10000));
+
+        $this->quoteTransfer = $I->havePersistentQuote([
+            QuoteTransfer::CUSTOMER => $this->customerTransfer,
+            QuoteTransfer::TOTALS => $totalsTransfer,
+            QuoteTransfer::ITEMS => [
+                [
+                    ItemTransfer::SKU => $this->productConcreteTransfer->getSku(),
+                    ItemTransfer::UNIT_PRICE => random_int(100, 1000),
+                ],
+            ],
+            QuoteTransfer::STORE => [
+                StoreTransfer::NAME => 'DE',
+            ],
+        ]);
     }
 }
