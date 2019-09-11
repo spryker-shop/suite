@@ -77,7 +77,7 @@ class CheckoutDataRestApiCest
     public function requestCheckoutDataByIdCartShouldBeSuccessful(CheckoutRestApiTester $I): void
     {
         //Arrange
-        $this->customerLogIn($I, $this->fixtures->getCustomerTransfer());
+        $this->requestCustomerLogin($I, $this->fixtures->getCustomerTransfer());
 
         $idCart = $this->fixtures->getQuoteTransfer()->getUuid();
 
@@ -105,7 +105,7 @@ class CheckoutDataRestApiCest
     public function requestCheckoutDataByIncorrectIdCartShouldBeFailed(CheckoutRestApiTester $I): void
     {
         //Arrange
-        $this->customerLogIn($I, $this->fixtures->getCustomerTransfer());
+        $this->requestCustomerLogin($I, $this->fixtures->getCustomerTransfer());
 
         //Act
         $I->sendPOST(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, [
@@ -132,7 +132,7 @@ class CheckoutDataRestApiCest
         CheckoutRestApiTester $I
     ): void {
         //Arrange
-        $this->customerLogIn($I, $this->fixtures->getCustomerTransfer());
+        $this->requestCustomerLogin($I, $this->fixtures->getCustomerTransfer());
 
         $idCart = $this->fixtures->getQuoteTransfer()->getUuid();
 
@@ -170,7 +170,7 @@ class CheckoutDataRestApiCest
     public function requestCheckoutDataWithIncludedShipmentMethods(CheckoutRestApiTester $I): void
     {
         //Arrange
-        $this->customerLogIn($I, $this->fixtures->getCustomerTransfer());
+        $this->requestCustomerLogin($I, $this->fixtures->getCustomerTransfer());
 
         $idCart = $this->fixtures->getQuoteTransfer()->getUuid();
 
@@ -234,7 +234,7 @@ class CheckoutDataRestApiCest
      *
      * @return void
      */
-    protected function customerLogIn(CheckoutRestApiTester $I, CustomerTransfer $customerTransfer): void
+    protected function requestCustomerLogin(CheckoutRestApiTester $I, CustomerTransfer $customerTransfer): void
     {
         $accessToken = $I->haveAuthorizationToGlue($customerTransfer)[static::KEY_ACCESS_TOKEN];
 

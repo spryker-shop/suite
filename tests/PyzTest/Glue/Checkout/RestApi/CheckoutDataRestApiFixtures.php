@@ -93,10 +93,10 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
      */
     public function buildFixtures(CheckoutRestApiTester $I): FixturesContainerInterface
     {
-        $this->createCustomerTransfer($I);
-        $this->createProductConcreteTransfer($I);
-        $this->createShipmentMethodTransfer($I);
-        $this->createQuoteTransfer($I);
+        $this->createCustomer($I);
+        $this->createProductConcrete($I);
+        $this->createShipmentMethod($I);
+        $this->createQuote($I);
 
         return $this;
     }
@@ -106,7 +106,7 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
      *
      * @return void
      */
-    protected function createCustomerTransfer(CheckoutRestApiTester $I): void
+    protected function createCustomer(CheckoutRestApiTester $I): void
     {
         $customerTransfer = $I->haveCustomer([
             'password' => static::TEST_PASSWORD,
@@ -122,7 +122,7 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
      *
      * @return void
      */
-    protected function createProductConcreteTransfer(CheckoutRestApiTester $I): void
+    protected function createProductConcrete(CheckoutRestApiTester $I): void
     {
         $this->productConcreteTransfer = $I->haveFullProduct();
         $I->haveProductInStock([
@@ -140,7 +140,7 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
      *
      * @return void
      */
-    protected function createShipmentMethodTransfer(CheckoutRestApiTester $I): void
+    protected function createShipmentMethod(CheckoutRestApiTester $I): void
     {
         $this->shipmentMethodTransfer = $I->haveShipmentMethod(['is_active' => true]);
     }
@@ -150,7 +150,7 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
      *
      * @return void
      */
-    protected function createQuoteTransfer(CheckoutRestApiTester $I): void
+    protected function createQuote(CheckoutRestApiTester $I): void
     {
         $totalsTransfer = new TotalsTransfer();
         $totalsTransfer->setPriceToPay(random_int(1000, 10000));
