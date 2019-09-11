@@ -17,6 +17,12 @@ use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
  */
 class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implements ExampleProductSalePageQueryContainerInterface
 {
+    protected const PATTERN_SQL_AND_IS_NULL = '(%1$s IS NULL AND %2$s IS NULL)';
+    protected const PATTERN_SQL_OR_IS_NULL = '(%1$s IS NULL OR %2$s IS NULL)';
+
+    protected const PATTERN_SQL_AND_IS_NOT_NULL = '(%1$s IS NOT NULL AND %2$s IS NOT NULL)';
+    protected const PATTERN_SQL_OR_IS_NOT_NULL = '(%1$s IS NOT NULL OR %2$s IS NOT NULL)';
+
     /**
      * @api
      *
@@ -40,7 +46,7 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
      */
     public function queryRelationsBecomingInactive($idProductLabel)
     {
-        $query = $this->getFactory()
+        return $this->getFactory()
             ->getProductLabelQueryContainer()
             ->queryProductAbstractRelationsByIdProductLabel($idProductLabel)
             ->useSpyProductAbstractQuery(null, Criteria::LEFT_JOIN)
@@ -52,7 +58,7 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
                             ->condition(
                                 "no gross and net prices",
                                 sprintf(
-                                    '(%1$s IS NULL AND %2$s IS NULL)',
+                                    static::PATTERN_SQL_AND_IS_NULL,
                                     SpyPriceProductStoreTableMap::COL_GROSS_PRICE,
                                     SpyPriceProductStoreTableMap::COL_NET_PRICE
                                 )
@@ -60,7 +66,7 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
                             ->condition(
                                 "no gross or net prices",
                                 sprintf(
-                                    '(%1$s IS NULL OR %2$s IS NULL)',
+                                    static::PATTERN_SQL_OR_IS_NULL,
                                     SpyPriceProductStoreTableMap::COL_GROSS_PRICE,
                                     SpyPriceProductStoreTableMap::COL_NET_PRICE
                                 )
@@ -76,8 +82,6 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
                         ->endUse()
                 ->endUse()
             ->endUse();
-
-        return $query;
     }
 
     /**
@@ -89,7 +93,7 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
      */
     public function queryRelationsBecomingActive($idProductLabel)
     {
-        $query = $this->getFactory()
+        return $this->getFactory()
             ->getProductQueryContainer()
             ->queryProductAbstract()
             ->usePriceProductQuery()
@@ -113,7 +117,7 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
             ->condition(
                 'has gross and net prices',
                 sprintf(
-                    '(%1$s IS NOT NULL AND %2$s IS NOT NULL)',
+                    static::PATTERN_SQL_AND_IS_NOT_NULL,
                     SpyPriceProductStoreTableMap::COL_GROSS_PRICE,
                     SpyPriceProductStoreTableMap::COL_NET_PRICE
                 )
@@ -121,14 +125,12 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
             ->condition(
                 'has gross or net prices',
                 sprintf(
-                    '(%1$s IS NOT NULL OR %2$s IS NOT NULL)',
+                    static::PATTERN_SQL_OR_IS_NOT_NULL,
                     SpyPriceProductStoreTableMap::COL_GROSS_PRICE,
                     SpyPriceProductStoreTableMap::COL_NET_PRICE
                 )
             )
             ->where(['has gross and net prices', 'has gross or net prices'], Criteria::LOGICAL_OR, 'has prices')
             ->addGroupByColumn('id_product_abstract');
-
-        return $query;
     }
 }
