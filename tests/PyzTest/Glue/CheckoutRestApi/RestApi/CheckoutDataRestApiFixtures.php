@@ -5,14 +5,14 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace PyzTest\Glue\CheckoutDataRestApi\RestApi;
+namespace PyzTest\Glue\CheckoutRestApi\RestApi;
 
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\PriceProductTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
 use Generated\Shared\Transfer\StockProductTransfer;
-use PyzTest\Glue\CheckoutDataRestApi\CheckoutDataRestApiTester;
+use PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
@@ -20,9 +20,9 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  * Auto-generated group annotations
  * @group PyzTest
  * @group Glue
- * @group CheckoutDataRestApi
+ * @group CheckoutRestApi
  * @group RestApi
- * @group CheckoutDataRestApiFixtures
+ * @group CheckoutRestApiFixtures
  * Add your own group annotations below this line
  * @group EndToEnd
  */
@@ -70,11 +70,11 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
     }
 
     /**
-     * @param \PyzTest\Glue\CheckoutDataRestApi\CheckoutDataRestApiTester $I
+     * @param \PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester $I
      *
      * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
-    public function buildFixtures(CheckoutDataRestApiTester $I): FixturesContainerInterface
+    public function buildFixtures(CheckoutRestApiTester $I): FixturesContainerInterface
     {
         $this->createCustomer($I);
         $this->createProductConcrete($I);
@@ -84,11 +84,11 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
     }
 
     /**
-     * @param \PyzTest\Glue\CheckoutDataRestApi\CheckoutDataRestApiTester $I
+     * @param \PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester $I
      *
      * @return void
      */
-    protected function createCustomer(CheckoutDataRestApiTester $I): void
+    protected function createCustomer(CheckoutRestApiTester $I): void
     {
         $customerTransfer = $I->haveCustomer([
             'password' => static::TEST_PASSWORD,
@@ -100,11 +100,11 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
     }
 
     /**
-     * @param \PyzTest\Glue\CheckoutDataRestApi\CheckoutDataRestApiTester $I
+     * @param \PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester $I
      *
      * @return void
      */
-    protected function createProductConcrete(CheckoutDataRestApiTester $I): void
+    protected function createProductConcrete(CheckoutRestApiTester $I): void
     {
         $this->productConcreteTransfer = $I->haveFullProduct();
         $I->haveProductInStock([
@@ -118,11 +118,11 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
     }
 
     /**
-     * @param \PyzTest\Glue\CheckoutDataRestApi\CheckoutDataRestApiTester $I
+     * @param \PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester $I
      *
      * @return void
      */
-    protected function createShipmentMethod(CheckoutDataRestApiTester $I): void
+    protected function createShipmentMethod(CheckoutRestApiTester $I): void
     {
         $this->shipmentMethodTransfer = $I->haveShipmentMethod();
     }

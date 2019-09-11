@@ -1,11 +1,6 @@
 <?php
 
-/**
- * This file is part of the Spryker Suite.
- * For full license information, please view the LICENSE file that was distributed with this source code.
- */
-
-namespace PyzTest\Glue\CheckoutDataRestApi;
+namespace PyzTest\Glue\CheckoutRestApi;
 
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
@@ -26,10 +21,10 @@ use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
  * @method void pause()
  *
  * @SuppressWarnings(PHPMD)
- */
-class CheckoutDataRestApiTester extends ApiEndToEndTester
+*/
+class CheckoutRestApiTester extends ApiEndToEndTester
 {
-    use _generated\CheckoutDataRestApiTesterActions;
+    use _generated\CheckoutRestApiTesterActions;
 
     protected const PRODUCT_AMOUNT_IN_CART = 1;
 

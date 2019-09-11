@@ -1,4 +1,4 @@
-namespace: PyzTest\Glue\CheckoutDataRestApi
+namespace: PyzTest\Glue\CheckoutRestApi
 paths:
     tests: .
     data: _data
@@ -12,7 +12,7 @@ coverage:
 
 suites:
     RestApi:
-        class_name: CheckoutDataRestApiTester
+        class_name: CheckoutRestApiTester
         modules:
             enabled:
                 - Asserts

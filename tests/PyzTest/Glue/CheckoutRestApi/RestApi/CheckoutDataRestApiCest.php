@@ -5,10 +5,10 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace PyzTest\Glue\CheckoutDataRestApi\RestApi;
+namespace PyzTest\Glue\CheckoutRestApi\RestApi;
 
 use Codeception\Util\HttpCode;
-use PyzTest\Glue\CheckoutDataRestApi\CheckoutDataRestApiTester;
+use PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester;
 use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig;
 use Spryker\Glue\ShipmentsRestApi\ShipmentsRestApiConfig;
 
@@ -16,9 +16,9 @@ use Spryker\Glue\ShipmentsRestApi\ShipmentsRestApiConfig;
  * Auto-generated group annotations
  * @group PyzTest
  * @group Glue
- * @group CheckoutDataRestApi
+ * @group CheckoutRestApi
  * @group RestApi
- * @group CheckoutDataRestApiCest
+ * @group CheckoutRestApiCest
  * Add your own group annotations below this line
  * @group EndToEnd
  */
@@ -27,16 +27,16 @@ class CheckoutDataRestApiCest
     protected const NOT_EXISTED_ID_CART = 'NOT_EXISTED_ID_CART';
 
     /**
-     * @var \PyzTest\Glue\CheckoutDataRestApi\RestApi\CheckoutDataRestApiFixtures
+     * @var \PyzTest\Glue\CheckoutRestApi\RestApi\CheckoutDataRestApiFixtures
      */
     protected $fixtures;
 
     /**
-     * @param \PyzTest\Glue\CheckoutDataRestApi\CheckoutDataRestApiTester $I
+     * @param \PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester $I
      *
      * @return void
      */
-    public function loadFixtures(CheckoutDataRestApiTester $I): void
+    public function loadFixtures(CheckoutRestApiTester $I): void
     {
         $this->fixtures = $I->loadFixtures(CheckoutDataRestApiFixtures::class);
     }
@@ -44,11 +44,11 @@ class CheckoutDataRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\CheckoutDataRestApi\CheckoutDataRestApiTester $I
+     * @param \PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester $I
      *
      * @return void
      */
-    public function requestCheckoutDataByWhenCustomerIsNotLoggedInShouldBeFailed(CheckoutDataRestApiTester $I): void
+    public function requestCheckoutDataByWhenCustomerIsNotLoggedInShouldBeFailed(CheckoutRestApiTester $I): void
     {
         $I->sendPOST(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, [
             'data' => [
@@ -65,11 +65,11 @@ class CheckoutDataRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\CheckoutDataRestApi\CheckoutDataRestApiTester $I
+     * @param \PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester $I
      *
      * @return void
      */
-    public function requestCheckoutDataByIdCartShouldBeSuccessful(CheckoutDataRestApiTester $I): void
+    public function requestCheckoutDataByIdCartShouldBeSuccessful(CheckoutRestApiTester $I): void
     {
         $idCart = $I->createCartWithItems(
             $this->fixtures->getCustomerTransfer(),
@@ -91,11 +91,11 @@ class CheckoutDataRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\CheckoutDataRestApi\CheckoutDataRestApiTester $I
+     * @param \PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester $I
      *
      * @return void
      */
-    public function requestCheckoutDataByIncorrectIdCartShouldBeFailed(CheckoutDataRestApiTester $I): void
+    public function requestCheckoutDataByIncorrectIdCartShouldBeFailed(CheckoutRestApiTester $I): void
     {
         $I->customerLogIn($this->fixtures->getCustomerTransfer());
 
@@ -114,12 +114,12 @@ class CheckoutDataRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\CheckoutDataRestApi\CheckoutDataRestApiTester $I
+     * @param \PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester $I
      *
      * @return void
      */
     public function requestCheckoutDataByIdCartWithSelectedShipmentMethodShouldGetShipmentMethodDetails(
-        CheckoutDataRestApiTester $I
+        CheckoutRestApiTester $I
     ): void {
         $idCart = $I->createCartWithItems(
             $this->fixtures->getCustomerTransfer(),
@@ -151,11 +151,11 @@ class CheckoutDataRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\CheckoutDataRestApi\CheckoutDataRestApiTester $I
+     * @param \PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester $I
      *
      * @return void
      */
-    public function requestCheckoutDataWithIncludedShipmentMethods(CheckoutDataRestApiTester $I): void
+    public function requestCheckoutDataWithIncludedShipmentMethods(CheckoutRestApiTester $I): void
     {
         $idCart = $I->createCartWithItems(
             $this->fixtures->getCustomerTransfer(),
@@ -177,12 +177,12 @@ class CheckoutDataRestApiCest
     }
 
     /**
-     * @param \PyzTest\Glue\CheckoutDataRestApi\CheckoutDataRestApiTester $I
+     * @param \PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester $I
      *
      * @return void
      */
     protected function assertCheckoutDataRequestWithIncludedShipmentMethods(
-        CheckoutDataRestApiTester $I
+        CheckoutRestApiTester $I
     ): void {
         $idShipmentMethod = $this->fixtures->getShipmentMethodTransfer()->getIdShipmentMethod();
 
@@ -200,13 +200,13 @@ class CheckoutDataRestApiCest
     }
 
     /**
-     * @param \PyzTest\Glue\CheckoutDataRestApi\CheckoutDataRestApiTester $I
+     * @param \PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester $I
      * @param int $responseCode
      *
      * @return void
      */
     protected function assertCheckoutDataRequest(
-        CheckoutDataRestApiTester $I,
+        CheckoutRestApiTester $I,
         int $responseCode
     ): void {
         $I->seeResponseCodeIs($responseCode);
