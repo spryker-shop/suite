@@ -16,7 +16,7 @@ use Generated\Shared\Transfer\ShipmentMethodTransfer;
 use Generated\Shared\Transfer\StockProductTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
-use \PyzTest\Glue\Checkout\CheckoutRestApiTester;
+use PyzTest\Glue\Checkout\CheckoutRestApiTester;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 

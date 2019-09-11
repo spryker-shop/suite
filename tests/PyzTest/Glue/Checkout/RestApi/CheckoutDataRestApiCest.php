@@ -17,7 +17,7 @@ use Spryker\Glue\ShipmentsRestApi\ShipmentsRestApiConfig;
  * Auto-generated group annotations
  * @group PyzTest
  * @group Glue
- * @group CheckoutRestApi
+ * @group Checkout
  * @group RestApi
  * @group CheckoutDataRestApiCest
  * Add your own group annotations below this line
