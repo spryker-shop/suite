@@ -106,28 +106,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
      *
      * @return \Silex\ServiceProviderInterface[]
      */
-    protected function getInternalCallServiceProviders(Container $container)
-    {
-        return [
-            new RequestServiceProvider(),
-            new SslServiceProvider(),
-            new ServiceControllerServiceProvider(),
-            new RoutingServiceProvider(),
-            new MvcRoutingServiceProvider(),
-            new SilexRoutingServiceProvider(),
-            new GatewayServiceProviderPlugin(),
-            new MonitoringRequestTransactionServiceProvider(),
-            new HttpFragmentServiceProvider(),
-            new SubRequestServiceProvider(),
-            new EventBehaviorServiceProvider(),
-        ];
-    }
-
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Silex\ServiceProviderInterface[]
-     */
     protected function getInternalCallServiceProvidersWithAuthentication(Container $container)
     {
         return [
