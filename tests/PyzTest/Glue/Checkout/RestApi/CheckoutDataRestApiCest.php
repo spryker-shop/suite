@@ -5,11 +5,11 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace PyzTest\Glue\CheckoutRestApi\RestApi;
+namespace PyzTest\Glue\Checkout\RestApi;
 
 use Codeception\Util\HttpCode;
 use Generated\Shared\Transfer\CustomerTransfer;
-use PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester;
+use PyzTest\Glue\Checkout\CheckoutRestApiTester;
 use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig;
 use Spryker\Glue\ShipmentsRestApi\ShipmentsRestApiConfig;
 
@@ -30,12 +30,12 @@ class CheckoutDataRestApiCest
     protected const KEY_ACCESS_TOKEN = 'accessToken';
 
     /**
-     * @var \PyzTest\Glue\CheckoutRestApi\RestApi\CheckoutDataRestApiFixtures
+     * @var \PyzTest\Glue\Checkout\RestApi\CheckoutDataRestApiFixtures
      */
     protected $fixtures;
 
     /**
-     * @param \PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester $I
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
      *
      * @return void
      */
@@ -47,7 +47,7 @@ class CheckoutDataRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester $I
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
      *
      * @return void
      */
@@ -70,7 +70,7 @@ class CheckoutDataRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester $I
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
      *
      * @return void
      */
@@ -98,7 +98,7 @@ class CheckoutDataRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester $I
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
      *
      * @return void
      */
@@ -124,7 +124,7 @@ class CheckoutDataRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester $I
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
      *
      * @return void
      */
@@ -163,7 +163,7 @@ class CheckoutDataRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester $I
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
      *
      * @return void
      */
@@ -195,7 +195,7 @@ class CheckoutDataRestApiCest
     }
 
     /**
-     * @param \PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester $I
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
      *
      * @return void
      */
@@ -214,7 +214,7 @@ class CheckoutDataRestApiCest
     }
 
     /**
-     * @param \PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester $I
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
      * @param int $responseCode
      *
      * @return void
@@ -229,7 +229,7 @@ class CheckoutDataRestApiCest
     }
 
     /**
-     * @param \PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester $I
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
      * @return void

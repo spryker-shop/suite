@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace PyzTest\Glue\CheckoutRestApi\RestApi;
+namespace PyzTest\Glue\Checkout\RestApi;
 
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
@@ -16,7 +16,7 @@ use Generated\Shared\Transfer\ShipmentMethodTransfer;
 use Generated\Shared\Transfer\StockProductTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
-use PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester;
+use \PyzTest\Glue\Checkout\CheckoutRestApiTester;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
@@ -87,7 +87,7 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
     }
 
     /**
-     * @param \PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester $I
+     * @param \\PyzTest\Glue\Checkout\CheckoutRestApiTester $I
      *
      * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
@@ -102,7 +102,7 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
     }
 
     /**
-     * @param \PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester $I
+     * @param \\PyzTest\Glue\Checkout\CheckoutRestApiTester $I
      *
      * @return void
      */
@@ -118,7 +118,7 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
     }
 
     /**
-     * @param \PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester $I
+     * @param \\PyzTest\Glue\Checkout\CheckoutRestApiTester $I
      *
      * @return void
      */
@@ -136,7 +136,7 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
     }
 
     /**
-     * @param \PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester $I
+     * @param \\PyzTest\Glue\Checkout\CheckoutRestApiTester $I
      *
      * @return void
      */
@@ -146,7 +146,7 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
     }
 
     /**
-     * @param \PyzTest\Glue\CheckoutRestApi\CheckoutRestApiTester $I
+     * @param \\PyzTest\Glue\Checkout\CheckoutRestApiTester $I
      *
      * @return void
      */
