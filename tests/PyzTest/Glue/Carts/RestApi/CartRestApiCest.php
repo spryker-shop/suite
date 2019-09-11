@@ -111,7 +111,10 @@ class CartRestApiCest
 
         $I->amSure(sprintf('Returned resource has include of type $s', CartsRestApiConfig::RESOURCE_CART_ITEMS))
             ->whenI()
-            ->seeSingleResourceHasRelationshipByTypeAndId(CartsRestApiConfig::RESOURCE_CART_ITEMS, $this->fixtures->getProductConcreteTransfer()->getSku());
+            ->seeSingleResourceHasRelationshipByTypeAndId(
+                CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                $this->fixtures->getProductConcreteTransfer()->getSku()
+            );
 
         $I->amSure('Returned resource has correct id')
             ->whenI()
