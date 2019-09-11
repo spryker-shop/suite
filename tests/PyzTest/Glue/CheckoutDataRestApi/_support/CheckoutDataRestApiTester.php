@@ -9,6 +9,7 @@ namespace PyzTest\Glue\CheckoutDataRestApi;
 
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
+use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
 use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
 
 /**
@@ -44,9 +45,11 @@ class CheckoutDataRestApiTester extends ApiEndToEndTester
     ): string {
         $idCart = $this->createCart($customerTransfer);
 
-        $this->sendPOST($this->formatUrl('carts/{idCart}/items', ['idCart' => $idCart]), [
+        $url = sprintf('%s/%s/%s', CartsRestApiConfig::RESOURCE_CARTS, $idCart, CartsRestApiConfig::RESOURCE_CART_ITEMS);
+
+        $this->sendPOST($this->formatUrl($url), [
             'data' => [
-                'type' => 'items',
+                'type' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
                 'attributes' => [
                     'sku' => $productConcreteTransfer->getSku(),
                     'quantity' => static::PRODUCT_AMOUNT_IN_CART,
@@ -66,9 +69,9 @@ class CheckoutDataRestApiTester extends ApiEndToEndTester
     {
         $this->customerLogIn($customerTransfer);
 
-        $this->sendPOST('carts', [
+        $this->sendPOST(CartsRestApiConfig::RESOURCE_CARTS, [
             'data' => [
-                'type' => 'carts',
+                'type' => CartsRestApiConfig::RESOURCE_CARTS,
                 'attributes' => [
                     'priceMode' => 'GROSS_MODE',
                     'currency' => 'EUR',

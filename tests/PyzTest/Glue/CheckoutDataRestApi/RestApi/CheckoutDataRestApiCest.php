@@ -9,6 +9,8 @@ namespace PyzTest\Glue\CheckoutDataRestApi\RestApi;
 
 use Codeception\Util\HttpCode;
 use PyzTest\Glue\CheckoutDataRestApi\CheckoutDataRestApiTester;
+use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig;
+use Spryker\Glue\ShipmentsRestApi\ShipmentsRestApiConfig;
 
 /**
  * Auto-generated group annotations
@@ -48,9 +50,9 @@ class CheckoutDataRestApiCest
      */
     public function requestCheckoutDataByWhenCustomerIsNotLoggedInShouldBeFailed(CheckoutDataRestApiTester $I): void
     {
-        $I->sendPOST('checkout-data', [
+        $I->sendPOST(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, [
             'data' => [
-                'type' => 'checkout-data',
+                'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
                 'attributes' => [
                     'idCart' => static::NOT_EXISTED_ID_CART,
                 ],
@@ -74,9 +76,9 @@ class CheckoutDataRestApiCest
             $this->fixtures->getProductConcreteTransfer()
         );
 
-        $I->sendPOST('checkout-data', [
+        $I->sendPOST(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, [
             'data' => [
-                'type' => 'checkout-data',
+                'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
                 'attributes' => [
                     'idCart' => $idCart,
                 ],
@@ -97,9 +99,9 @@ class CheckoutDataRestApiCest
     {
         $I->customerLogIn($this->fixtures->getCustomerTransfer());
 
-        $I->sendPOST('checkout-data', [
+        $I->sendPOST(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, [
             'data' => [
-                'type' => 'checkout-data',
+                'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
                 'attributes' => [
                     'idCart' => static::NOT_EXISTED_ID_CART,
                 ],
@@ -124,9 +126,9 @@ class CheckoutDataRestApiCest
             $this->fixtures->getProductConcreteTransfer()
         );
 
-        $I->sendPOST('checkout-data', [
+        $I->sendPOST(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, [
             'data' => [
-                'type' => 'checkout-data',
+                'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
                 'attributes' => [
                     'idCart' => $idCart,
                     'shipment' => [
@@ -160,9 +162,11 @@ class CheckoutDataRestApiCest
             $this->fixtures->getProductConcreteTransfer()
         );
 
-        $I->sendPOST('checkout-data?include=shipment-methods', [
+        $url = sprintf('%s?include=%s', CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, ShipmentsRestApiConfig::RESOURCE_SHIPMENT_METHODS);
+
+        $I->sendPOST($url, [
             'data' => [
-                'type' => 'checkout-data',
+                'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
                 'attributes' => [
                     'idCart' => $idCart,
                 ],
@@ -192,7 +196,7 @@ class CheckoutDataRestApiCest
 
         $I->amSure('Returned resource has shipment method in `included` section.')
             ->whenI()
-            ->seeIncludesContainsResourceByTypeAndId('shipment-methods', $idShipmentMethod);
+            ->seeIncludesContainsResourceByTypeAndId(ShipmentsRestApiConfig::RESOURCE_SHIPMENT_METHODS, $idShipmentMethod);
     }
 
     /**
