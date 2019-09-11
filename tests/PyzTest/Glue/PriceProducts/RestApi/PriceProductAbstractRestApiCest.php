@@ -17,11 +17,11 @@ use PyzTest\Glue\PriceProducts\PriceProductsApiTester;
  * @group Glue
  * @group PriceProducts
  * @group RestApi
- * @group PriceProductConcreteRestApiCest
+ * @group PriceProductAbstractRestApiCest
  * Add your own group annotations below this line
  * @group EndToEnd
  */
-class PriceProductConcreteRestApiCest
+class PriceProductAbstractRestApiCest
 {
     /**
      * @var \PyzTest\Glue\PriceProducts\RestApi\PriceProductsRestApiFixtures
@@ -45,10 +45,10 @@ class PriceProductConcreteRestApiCest
      *
      * @return void
      */
-    public function requestTheNonExistingProductConcretePrices(PriceProductsApiTester $I): void
+    public function requestTheNonExistingProductAbstractPrices(PriceProductsApiTester $I): void
     {
         //act
-        $I->sendGET('concrete-products/non-exist/concrete-product-prices');
+        $I->sendGET('abstract-products/non-exist/abstract-product-prices');
 
         //assert
         $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
@@ -63,10 +63,10 @@ class PriceProductConcreteRestApiCest
      *
      * @return void
      */
-    public function requestProductConcretePricesWithoutId(PriceProductsApiTester $I): void
+    public function requestProductAbstractPricesWithoutId(PriceProductsApiTester $I): void
     {
         //act
-        $I->sendGET('concrete-product-prices');
+        $I->sendGET('abstract-product-prices');
 
         //assert
         $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
@@ -80,14 +80,14 @@ class PriceProductConcreteRestApiCest
      *
      * @return void
      */
-    public function requestExistingProductConcretePrices(PriceProductsApiTester $I): void
+    public function requestExistingProductAbstractPrices(PriceProductsApiTester $I): void
     {
         //act
         $I->sendGET(
             $I->formatUrl(
-                'concrete-products/{ProductConcreteSku}/concrete-product-prices',
+                'abstract-products/{ProductAbstractSku}/abstract-product-prices',
                 [
-                    'ProductConcreteSku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
+                    'ProductAbstractSku' => $this->fixtures->getProductConcreteTransfer()->getAbstractSku(),
                 ]
             )
         );
@@ -97,13 +97,13 @@ class PriceProductConcreteRestApiCest
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSure('Returned resource is of type concrete-product-prices')
+        $I->amSure('Returned resource is of type abstract-product-prices')
             ->whenI()
-            ->seeResponseDataContainsResourceCollectionOfTypeWithSizeOf('concrete-product-prices', 1);
+            ->seeResponseDataContainsResourceCollectionOfTypeWithSizeOf('abstract-product-prices', 1);
 
         $I->amSure('Returned resource has correct id')
             ->whenI()
-            ->seeResourceCollectionHasResourceWithId($this->fixtures->getProductConcreteTransfer()->getSku());
+            ->seeResourceCollectionHasResourceWithId($this->fixtures->getProductConcreteTransfer()->getAbstractSku());
     }
 
     /**
@@ -113,16 +113,16 @@ class PriceProductConcreteRestApiCest
      *
      * @return void
      */
-    public function requestExistingProductConcretePricesByCustomerWithoutAccess(PriceProductsApiTester $I): void
+    public function requestExistingProductAbstractPricesByCustomerWithoutAccess(PriceProductsApiTester $I): void
     {
         Assert::markTestSkipped('Permissions have to be setup correctly.');
 
         //act
         $I->sendGET(
             $I->formatUrl(
-                'concrete-products/{ProductConcreteSku}?include=concrete-product-prices&XDEBUG_SESSION_START=PHPSTORM',
+                'abstract-products/{ProductAbstractSku}/abstract-product-prices',
                 [
-                    'ProductConcreteSku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
+                    'ProductAbstractSku' => $this->fixtures->getProductConcreteTransfer()->getAbstractSku(),
                 ]
             )
         );
@@ -132,12 +132,12 @@ class PriceProductConcreteRestApiCest
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSure('Returned resource has no concrete-product-prices relationship')
+        $I->amSure('Returned resource has no abstract-product-prices relationship')
             ->whenI()
-            ->dontSeeSingleResourceHasRelationshipByType('concrete-product-prices');
+            ->dontSeeSingleResourceHasRelationshipByType('abstract-product-prices');
 
-        $I->amSure('Returned includes do not have concrete-product-prices resource')
+        $I->amSure('Returned includes do not have abstract-product-prices resource')
             ->whenI()
-            ->dontSeeIncludesContainsResourceByType('concrete-product-prices');
+            ->dontSeeIncludesContainsResourceByType('abstract-product-prices');
     }
 }
