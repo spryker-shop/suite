@@ -53,6 +53,7 @@ class CheckoutDataRestApiCest
      */
     public function requestCheckoutDataByWhenCustomerIsNotLoggedInShouldBeFailed(CheckoutRestApiTester $I): void
     {
+        //Act
         $I->sendPOST(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, [
             'data' => [
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
@@ -62,6 +63,7 @@ class CheckoutDataRestApiCest
             ],
         ]);
 
+        //Assert
         $this->assertCheckoutDataRequest($I, HttpCode::BAD_REQUEST);
     }
 
@@ -74,10 +76,12 @@ class CheckoutDataRestApiCest
      */
     public function requestCheckoutDataByIdCartShouldBeSuccessful(CheckoutRestApiTester $I): void
     {
+        //Arrange
         $this->customerLogIn($I, $this->fixtures->getCustomerTransfer());
 
         $idCart = $this->fixtures->getQuoteTransfer()->getUuid();
 
+        //Act
         $I->sendPOST(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, [
             'data' => [
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
@@ -87,6 +91,7 @@ class CheckoutDataRestApiCest
             ],
         ]);
 
+        //Assert
         $this->assertCheckoutDataRequest($I, HttpCode::OK);
     }
 
@@ -99,8 +104,10 @@ class CheckoutDataRestApiCest
      */
     public function requestCheckoutDataByIncorrectIdCartShouldBeFailed(CheckoutRestApiTester $I): void
     {
+        //Arrange
         $this->customerLogIn($I, $this->fixtures->getCustomerTransfer());
 
+        //Act
         $I->sendPOST(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, [
             'data' => [
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
@@ -110,6 +117,7 @@ class CheckoutDataRestApiCest
             ],
         ]);
 
+        //Assert
         $this->assertCheckoutDataRequest($I, HttpCode::UNPROCESSABLE_ENTITY);
     }
 
@@ -123,10 +131,12 @@ class CheckoutDataRestApiCest
     public function requestCheckoutDataByIdCartWithSelectedShipmentMethodShouldGetShipmentMethodDetails(
         CheckoutRestApiTester $I
     ): void {
+        //Arrange
         $this->customerLogIn($I, $this->fixtures->getCustomerTransfer());
 
         $idCart = $this->fixtures->getQuoteTransfer()->getUuid();
 
+        //Act
         $I->sendPOST(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, [
             'data' => [
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
@@ -139,6 +149,7 @@ class CheckoutDataRestApiCest
             ],
         ]);
 
+        //Assert
         $this->assertCheckoutDataRequest($I, HttpCode::OK);
         $selectedShipmentMethods = $I
             ->grabDataFromResponseByJsonPath('$.data.attributes.selectedShipmentMethods')[0];
@@ -158,12 +169,14 @@ class CheckoutDataRestApiCest
      */
     public function requestCheckoutDataWithIncludedShipmentMethods(CheckoutRestApiTester $I): void
     {
+        //Arrange
         $this->customerLogIn($I, $this->fixtures->getCustomerTransfer());
 
         $idCart = $this->fixtures->getQuoteTransfer()->getUuid();
 
         $url = sprintf('%s?include=%s', CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, ShipmentsRestApiConfig::RESOURCE_SHIPMENT_METHODS);
 
+        //Act
         $I->sendPOST($url, [
             'data' => [
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
@@ -173,6 +186,7 @@ class CheckoutDataRestApiCest
             ],
         ]);
 
+        //Assert
         $I->seeResponseCodeIs(HttpCode::OK);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
