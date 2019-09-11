@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e531bfdc9537aae0e8ba1e2473c68afb",
+    "content-hash": "8b5077c1ecbf7ef1afa061f3ea004368",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -604,8 +604,8 @@
             "authors": [
                 {
                     "name": "Filipe Dobreira",
-                    "role": "Developer",
-                    "homepage": "https://github.com/filp"
+                    "homepage": "https://github.com/filp",
+                    "role": "Developer"
                 }
             ],
             "description": "php error handling for cool kids",
@@ -1065,9 +1065,9 @@
             "authors": [
                 {
                     "name": "Ignace Nyamagana Butera",
-                    "role": "Developer",
                     "email": "nyamsprod@gmail.com",
-                    "homepage": "https://github.com/nyamsprod/"
+                    "homepage": "https://github.com/nyamsprod/",
+                    "role": "Developer"
                 }
             ],
             "description": "Csv data manipulation made easy in PHP",
@@ -1466,16 +1466,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.25.0",
+            "version": "1.25.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "c5dcc05defbaf8780c728c1ea31b1a0704d44f56"
+                "reference": "70e65a5470a42cfec1a7da00d30edb6e617e8dcf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/c5dcc05defbaf8780c728c1ea31b1a0704d44f56",
-                "reference": "c5dcc05defbaf8780c728c1ea31b1a0704d44f56",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/70e65a5470a42cfec1a7da00d30edb6e617e8dcf",
+                "reference": "70e65a5470a42cfec1a7da00d30edb6e617e8dcf",
                 "shasum": ""
             },
             "require": {
@@ -1540,7 +1540,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2019-09-06T12:21:24+00:00"
+            "time": "2019-09-06T13:49:17+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -1955,7 +1955,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -2391,17 +2391,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "508be9aa339feb4038f77972f62d5f0f633b90f9"
+                "reference": "d8f6622f2a477c231a07da40b446db8959c8703d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/508be9aa339feb4038f77972f62d5f0f633b90f9",
-                "reference": "508be9aa339feb4038f77972f62d5f0f633b90f9",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/d8f6622f2a477c231a07da40b446db8959c8703d",
+                "reference": "d8f6622f2a477c231a07da40b446db8959c8703d",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/event": "^2.4.0",
+                "spryker/event-dispatcher-extension": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/propel-orm": "^1.6.0",
                 "spryker/symfony": "^3.1.0",
@@ -2412,12 +2413,16 @@
                 "spryker/code-sniffer": "*",
                 "spryker/config": "^3.1.0",
                 "spryker/console": "^3.1.0 || ^4.0.0",
+                "spryker/container": "^1.4.0",
+                "spryker/event-dispatcher": "^1.0.0",
                 "spryker/propel": "^3.0.0",
                 "spryker/silex": "^2.0.0",
                 "spryker/testify": "*"
             },
             "suggest": {
                 "spryker/console": "*",
+                "spryker/container": "Install this module when you want to use the EventBehaviorEventDispatcherPlugin",
+                "spryker/event-dispatcher": "Install this module when you want to use the EventBehaviorEventDispatcherPlugin",
                 "spryker/silex": "^2.0.0"
             },
             "type": "propel-behavior",
@@ -2441,7 +2446,53 @@
                 "proprietary"
             ],
             "description": "EventBehavior module",
-            "time": "2019-08-12T13:58:02+00:00"
+            "time": "2019-09-11T12:19:36+00:00"
+        },
+        {
+            "name": "spryker/event-dispatcher-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/event-dispatcher-extension.git",
+                "reference": "866c63e861aa67af34f70629924ae06b0dcafd14"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/event-dispatcher-extension/zipball/866c63e861aa67af34f70629924ae06b0dcafd14",
+                "reference": "866c63e861aa67af34f70629924ae06b0dcafd14",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/event-dispatcher": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/container": "If you want to use EventDispatcherPlugin.",
+                "spryker/event-dispatcher": "If you want to use EventDispatcherPlugin.",
+                "spryker/symfony": "If you want to use EventDispatcherPlugin."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "EventDispatcherExtension module",
+            "time": "2019-03-26T15:19:37+00:00"
         },
         {
             "name": "spryker/install",
@@ -2494,12 +2545,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "0fdd94a3428eb22c10627f375352f1706f9a2300"
+                "reference": "386ab9871a48917dbf4ae2db7f2050e6bfa1e682"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/0fdd94a3428eb22c10627f375352f1706f9a2300",
-                "reference": "0fdd94a3428eb22c10627f375352f1706f9a2300",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/386ab9871a48917dbf4ae2db7f2050e6bfa1e682",
+                "reference": "386ab9871a48917dbf4ae2db7f2050e6bfa1e682",
                 "shasum": ""
             },
             "require": {
@@ -2525,7 +2576,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Client\\RabbitMq\\Helper\\": "tests/SprykerTest/Client/RabbitMq/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2549,7 +2601,7 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "time": "2019-08-19T12:12:16+00:00"
+            "time": "2019-09-10T15:15:46+00:00"
         },
         {
             "name": "spryker/silexphp",
@@ -2631,11 +2683,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/te-663/dev-pass-by-kv-storage",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "e19e59b7b2ffa3850340d1041ba9789825148c7a"
+                "reference": "450a26b9ef7ac645fecaf86b2b4668f6148eb654"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2905,7 +2957,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-09-09T16:03:33+00:00"
+            "time": "2019-09-10T13:52:56+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2992,16 +3044,16 @@
         },
         {
             "name": "spryker/synchronization-behavior",
-            "version": "dev-feature/te-663/dev-pass-by-kv-storage",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/synchronization-behavior.git",
-                "reference": "4c9762ee3c99d7303df3e7d6b9068a4b9dde27bf"
+                "reference": "5539792c5e36a367a47aa2ab323ad25f0a34a670"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/4c9762ee3c99d7303df3e7d6b9068a4b9dde27bf",
-                "reference": "4c9762ee3c99d7303df3e7d6b9068a4b9dde27bf",
+                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/5539792c5e36a367a47aa2ab323ad25f0a34a670",
+                "reference": "5539792c5e36a367a47aa2ab323ad25f0a34a670",
                 "shasum": ""
             },
             "require": {
@@ -3037,7 +3089,7 @@
                 "proprietary"
             ],
             "description": "SynchronizationBehavior module",
-            "time": "2019-08-30T09:03:14+00:00"
+            "time": "2019-08-19T12:12:54+00:00"
         },
         {
             "name": "spryker/uuid-behavior",
@@ -5410,19 +5462,19 @@
             "authors": [
                 {
                     "name": "Fabien Potencier",
-                    "role": "Lead Developer",
                     "email": "fabien@symfony.com",
-                    "homepage": "http://fabien.potencier.org"
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
                 },
                 {
                     "name": "Twig Team",
-                    "role": "Contributors",
-                    "homepage": "https://twig.symfony.com/contributors"
+                    "homepage": "https://twig.symfony.com/contributors",
+                    "role": "Contributors"
                 },
                 {
                     "name": "Armin Ronacher",
-                    "role": "Project Founder",
-                    "email": "armin.ronacher@active-4.com"
+                    "email": "armin.ronacher@active-4.com",
+                    "role": "Project Founder"
                 }
             ],
             "description": "Twig, the flexible, fast, and secure template language for PHP",
@@ -7881,20 +7933,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
-                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler"
+                    "homepage": "https://github.com/manuelpichler",
+                    "role": "Project Founder"
                 },
                 {
                     "name": "Marc Würth",
-                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84"
+                    "homepage": "https://github.com/ravage84",
+                    "role": "Project Maintainer"
                 },
                 {
                     "name": "Other contributors",
-                    "role": "Contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
+                    "role": "Contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -8416,8 +8468,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "The PHP Unit Testing framework.",
@@ -9688,12 +9740,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "348b9f59fce25a90126b8ca9c41731e62df4da1c"
+                "reference": "b83579c8e33b39414d10693d20d72d67982795ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/348b9f59fce25a90126b8ca9c41731e62df4da1c",
-                "reference": "348b9f59fce25a90126b8ca9c41731e62df4da1c",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/b83579c8e33b39414d10693d20d72d67982795ac",
+                "reference": "b83579c8e33b39414d10693d20d72d67982795ac",
                 "shasum": ""
             },
             "require": {
@@ -9733,7 +9785,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-09-05T15:48:04+00:00"
+            "time": "2019-09-11T12:11:54+00:00"
         },
         {
             "name": "spryker/development-core",
@@ -10523,8 +10575,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
@@ -10564,8 +10616,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
