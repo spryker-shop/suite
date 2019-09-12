@@ -8,7 +8,6 @@
 namespace Pyz\Zed\ProductListGui;
 
 use Spryker\Zed\MerchantRelationshipProductListGui\Communication\Plugin\ProductListGuiExtension\MerchantRelationshipProductListOwnerTypeFormExpanderPlugin;
-use Spryker\Zed\MerchantRelationshipProductListGui\Communication\Plugin\ProductListGuiExtension\MerchantRelationshipTableExpanderPlugin;
 use Spryker\Zed\ProductListGui\ProductListGuiDependencyProvider as SprykerProductListGuiDependencyProvider;
 
 class ProductListGuiDependencyProvider extends SprykerProductListGuiDependencyProvider
@@ -28,9 +27,7 @@ class ProductListGuiDependencyProvider extends SprykerProductListGuiDependencyPr
      */
     protected function getProductListTableConfigExpanderPlugins(): array
     {
-        return [
-            new MerchantRelationshipTableExpanderPlugin(),
-        ];
+        return [];
     }
 
     /**
@@ -38,9 +35,7 @@ class ProductListGuiDependencyProvider extends SprykerProductListGuiDependencyPr
      */
     protected function getProductListTableQueryCriteriaExpanderPlugins(): array
     {
-        return [
-            new MerchantRelationshipTableExpanderPlugin(),
-        ];
+        return [];
     }
 
     /**
@@ -48,9 +43,7 @@ class ProductListGuiDependencyProvider extends SprykerProductListGuiDependencyPr
      */
     protected function getProductListTableDataExpanderPlugins(): array
     {
-        return [
-            new MerchantRelationshipTableExpanderPlugin(),
-        ];
+        return [];
     }
 
     /**
@@ -58,8 +51,6 @@ class ProductListGuiDependencyProvider extends SprykerProductListGuiDependencyPr
      */
     protected function getProductListTableHeaderExpanderPlugins(): array
     {
-        return [
-            new MerchantRelationshipTableExpanderPlugin(),
-        ];
+        return [];
     }
 }
