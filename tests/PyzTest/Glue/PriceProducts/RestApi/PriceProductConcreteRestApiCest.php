@@ -7,9 +7,16 @@
 
 namespace PyzTest\Glue\PriceProducts\RestApi;
 
+use Codeception\Test\Unit;
 use Codeception\Util\HttpCode;
+use Generated\Shared\Transfer\PermissionCollectionTransfer;
+use Generated\Shared\Transfer\PermissionTransfer;
 use PHPUnit\Framework\Assert;
+use PHPUnit\Framework\MockObject\MockBuilder;
 use PyzTest\Glue\PriceProducts\PriceProductsApiTester;
+use Spryker\Shared\PermissionExtension\Dependency\Plugin\PermissionPluginInterface;
+use Spryker\Zed\Permission\PermissionDependencyProvider;
+use Spryker\Zed\PermissionExtension\Dependency\Plugin\PermissionStoragePluginInterface;
 
 /**
  * Auto-generated group annotations
@@ -139,5 +146,37 @@ class PriceProductConcreteRestApiCest
         $I->amSure('Returned includes do not have concrete-product-prices resource')
             ->whenI()
             ->dontSeeIncludesContainsResourceByType('concrete-product-prices');
+    }
+
+    /**
+     * @param \PyzTest\Glue\PriceProducts\PriceProductsApiTester $I
+     *
+     * @return void
+     */
+    protected function setPermissionsDependency(PriceProductsApiTester $I): void
+    {
+        $permissionStoragePluginStub = (new MockBuilder(new Unit(), PermissionStoragePluginInterface::class))
+            ->setMethods(['getPermissionCollection'])
+            ->getMock();
+
+        $permissionStoragePluginStub
+            ->method('getPermissionCollection')
+            ->willReturn($this->createPermissionCollectionTransfer());
+
+        $I->setDependency(
+            PermissionDependencyProvider::PLUGINS_PERMISSION_STORAGE,
+            [$permissionStoragePluginStub]
+        );
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\PermissionCollectionTransfer
+     */
+    protected function createPermissionCollectionTransfer(): PermissionCollectionTransfer
+    {
+        $permissionPluginStub = (new MockBuilder(new Unit(), PermissionPluginInterface::class))->getMock();
+        $permissionTransfer = (new PermissionTransfer())->setKey($permissionPluginStub);
+
+        return (new PermissionCollectionTransfer())->addPermission($permissionTransfer);
     }
 }
