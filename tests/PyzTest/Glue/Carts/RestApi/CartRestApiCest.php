@@ -27,9 +27,6 @@ use Spryker\Glue\CustomersRestApi\CustomersRestApiConfig;
 class CartRestApiCest
 {
     protected const VALUE_FOR_ANONYMOUS = '666';
-    protected const TEST_PASSWORD = 'test password';
-    protected const NON_EXISTING_CUSTOMER_EMAIL = 'test_non_existing_email@spryker.com';
-    protected const NON_EXISTING_CART_UUID = 'non-existing-cart-uuid';
 
     /**
      * @var \PyzTest\Glue\Carts\RestApi\CartsRestApiFixtures
@@ -56,9 +53,7 @@ class CartRestApiCest
     public function requestGuestCartBecomesCustomerCartAfterCustomerLogin(CartsApiTester $I): void
     {
         $this->requestCustomerLoginWithXAnonymousCustomerUniqueIdHeader($I);
-
         $this->requestFindCartByUuid($I, $this->fixtures->getQuoteTransfer()->getUuid());
-
         $this->requestGuestCartCollectionIsEmpty($I);
     }
 
@@ -72,9 +67,7 @@ class CartRestApiCest
     protected function requestCustomerLoginWithXAnonymousCustomerUniqueIdHeader(CartsApiTester $I): void
     {
         $I->amUnauthorizedGlueUser(static::VALUE_FOR_ANONYMOUS);
-
         $token = $I->haveAuthorizationToGlue($this->fixtures->getCustomerTransfer())['accessToken'];
-
         $I->amAuthorizedGlueUser($token);
     }
 
