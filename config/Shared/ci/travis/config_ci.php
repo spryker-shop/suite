@@ -24,6 +24,8 @@ use Spryker\Shared\Scheduler\SchedulerConstants;
 use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\SessionRedis\SessionRedisConstants;
+use Spryker\Shared\StorageDatabase\StorageDatabaseConfig;
+use Spryker\Shared\StorageDatabase\StorageDatabaseConstants;
 use Spryker\Shared\StorageRedis\StorageRedisConstants;
 use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\Twig\TwigConstants;
@@ -196,3 +198,10 @@ $config[KernelConstants::DOMAIN_WHITELIST] = [
     $config[ApplicationConstants::HOST_YVES],
     $config[ApplicationConstants::HOST_ZED],
 ];
+
+// ---------- Database storage
+$config[StorageDatabaseConstants::DB_DEBUG] = false;
+$config[StorageDatabaseConstants::DB_DATABASE] = 'DE_test_zed';
+$config[StorageDatabaseConstants::DB_ENGINE] = StorageDatabaseConfig::DB_ENGINE_PGSQL;
+$config[StorageDatabaseConstants::DB_HOST] = '127.0.0.1';
+$config[StorageDatabaseConstants::DB_PASSWORD] = '';
