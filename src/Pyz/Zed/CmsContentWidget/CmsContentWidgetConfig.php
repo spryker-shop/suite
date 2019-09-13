@@ -20,7 +20,7 @@ class CmsContentWidgetConfig extends SprykerCmsContentConfig
     /**
      * {@inheritdoc}
      *
-     * @return array|\Spryker\Shared\CmsContentWidget\Dependency\CmsContentWidgetConfigurationProviderInterface[]
+     * @return \Spryker\Shared\CmsContentWidget\Dependency\CmsContentWidgetConfigurationProviderInterface[]
      */
     public function getCmsContentWidgetConfigurationProviders()
     {
