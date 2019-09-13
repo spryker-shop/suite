@@ -20,6 +20,7 @@ use SprykerShop\Yves\CustomerPage\Form\DataProvider\CheckoutAddressFormDataProvi
 use SprykerShop\Yves\CustomerPage\Form\GuestForm;
 use SprykerShop\Yves\CustomerPage\Form\LoginForm;
 use SprykerShop\Yves\CustomerPage\Form\RegisterForm;
+use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\AddressStepHideBreadcrumbItemPlugin;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThresholdWidgetPlugin;
 
 class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyProvider
@@ -122,6 +123,16 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     {
         return [
             new PaymentFormFilterPlugin(),
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\QuoteApprovalWidgetExtension\Dependency\Plugin\HideBreadcrumbItemPluginInterface[]
+     */
+    protected function getAddressStepHideBreadcrumbItemPlugins(): array
+    {
+        return [
+            new AddressStepHideBreadcrumbItemPlugin(),
         ];
     }
 
