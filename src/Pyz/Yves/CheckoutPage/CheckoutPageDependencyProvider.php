@@ -21,6 +21,7 @@ use SprykerShop\Yves\CustomerPage\Form\GuestForm;
 use SprykerShop\Yves\CustomerPage\Form\LoginForm;
 use SprykerShop\Yves\CustomerPage\Form\RegisterForm;
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\AddressStepHideBreadcrumbItemPlugin;
+use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\ShipmentStepHideBreadcrumbItemPlugin;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThresholdWidgetPlugin;
 
 class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyProvider
@@ -133,6 +134,16 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     {
         return [
             new AddressStepHideBreadcrumbItemPlugin(),
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\QuoteApprovalWidgetExtension\Dependency\Plugin\HideBreadcrumbItemPluginInterface[]
+     */
+    protected function getShipmentStepHideBreadcrumbItemPlugins(): array
+    {
+        return [
+            new ShipmentStepHideBreadcrumbItemPlugin(),
         ];
     }
 
