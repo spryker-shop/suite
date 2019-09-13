@@ -38,8 +38,6 @@ class CheckoutDataRestApiCest
     /**
      * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
      *
-     * @group test1
-     *
      * @return void
      */
     public function loadFixtures(CheckoutRestApiTester $I): void
@@ -235,8 +233,6 @@ class CheckoutDataRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
-     *
-     * @group test1
      *
      * @return void
      */
