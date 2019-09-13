@@ -17,12 +17,6 @@ use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
  */
 class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implements ExampleProductSalePageQueryContainerInterface
 {
-    protected const PATTERN_SQL_AND_IS_NULL = '(%1$s IS NULL AND %2$s IS NULL)';
-    protected const PATTERN_SQL_OR_IS_NULL = '(%1$s IS NULL OR %2$s IS NULL)';
-
-    protected const PATTERN_SQL_AND_IS_NOT_NULL = '(%1$s IS NOT NULL AND %2$s IS NOT NULL)';
-    protected const PATTERN_SQL_OR_IS_NOT_NULL = '(%1$s IS NOT NULL OR %2$s IS NOT NULL)';
-
     /**
      * @api
      *
@@ -55,26 +49,12 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
                     ->addJoinCondition('priceType', 'priceType.name = ?', ExampleProductSalePageConfig::PRICE_TYPE_ORIGINAL)
                     ->joinPriceProductStore()
                         ->usePriceProductStoreQuery(null, Criteria::INNER_JOIN)
-                            ->condition(
-                                "no gross and net prices",
-                                sprintf(
-                                    static::PATTERN_SQL_AND_IS_NULL,
-                                    SpyPriceProductStoreTableMap::COL_GROSS_PRICE,
-                                    SpyPriceProductStoreTableMap::COL_NET_PRICE
-                                )
-                            )
-                            ->condition(
-                                "no gross or net prices",
-                                sprintf(
-                                    static::PATTERN_SQL_OR_IS_NULL,
-                                    SpyPriceProductStoreTableMap::COL_GROSS_PRICE,
-                                    SpyPriceProductStoreTableMap::COL_NET_PRICE
-                                )
-                            )
                             ->where(
-                                ["no gross and net price", "no gross or net price"],
-                                Criteria::LOGICAL_OR,
-                                "has no prices"
+                                sprintf(
+                                    '(%1$s IS NULL OR %2$s IS NULL)',
+                                    SpyPriceProductStoreTableMap::COL_GROSS_PRICE,
+                                    SpyPriceProductStoreTableMap::COL_NET_PRICE
+                                )
                             )
                             ->joinPriceProductDefault()
                                 ->usePriceProductDefaultQuery(null, Criteria::INNER_JOIN)
@@ -114,23 +94,13 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
                 ->filterByFkProductLabel(null, Criteria::ISNULL)
             ->endUse()
             ->addJoinCondition('rel', sprintf('rel.fk_product_label = %d', $idProductLabel))
-            ->condition(
-                'has gross and net prices',
+            ->where(
                 sprintf(
-                    static::PATTERN_SQL_AND_IS_NOT_NULL,
+                    '(%1$s IS NOT NULL OR %2$s IS NOT NULL)',
                     SpyPriceProductStoreTableMap::COL_GROSS_PRICE,
                     SpyPriceProductStoreTableMap::COL_NET_PRICE
                 )
             )
-            ->condition(
-                'has gross or net prices',
-                sprintf(
-                    static::PATTERN_SQL_OR_IS_NOT_NULL,
-                    SpyPriceProductStoreTableMap::COL_GROSS_PRICE,
-                    SpyPriceProductStoreTableMap::COL_NET_PRICE
-                )
-            )
-            ->where(['has gross and net prices', 'has gross or net prices'], Criteria::LOGICAL_OR, 'has prices')
             ->addGroupByColumn('id_product_abstract');
     }
 }
