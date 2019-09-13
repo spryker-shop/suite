@@ -9,6 +9,7 @@ namespace PyzTest\Glue\Checkout\RestApi;
 
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
+use Generated\Shared\Transfer\PaymentMethodTransfer;
 use Generated\Shared\Transfer\PriceProductTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
@@ -87,7 +88,15 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
     }
 
     /**
-     * @param \\PyzTest\Glue\Checkout\CheckoutRestApiTester $I
+     * @return \Generated\Shared\Transfer\PaymentMethodTransfer
+     */
+    public function getPaymentMethodTransfer(): PaymentMethodTransfer
+    {
+        return $this->paymentMethodTransfer;
+    }
+
+    /**
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
      *
      * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
@@ -102,7 +111,7 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
     }
 
     /**
-     * @param \\PyzTest\Glue\Checkout\CheckoutRestApiTester $I
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
      *
      * @return void
      */
@@ -118,7 +127,7 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
     }
 
     /**
-     * @param \\PyzTest\Glue\Checkout\CheckoutRestApiTester $I
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
      *
      * @return void
      */
@@ -136,7 +145,7 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
     }
 
     /**
-     * @param \\PyzTest\Glue\Checkout\CheckoutRestApiTester $I
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
      *
      * @return void
      */
@@ -146,7 +155,7 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
     }
 
     /**
-     * @param \\PyzTest\Glue\Checkout\CheckoutRestApiTester $I
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
      *
      * @return void
      */
