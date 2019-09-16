@@ -20,8 +20,9 @@ use SprykerShop\Yves\CustomerPage\Form\DataProvider\CheckoutAddressFormDataProvi
 use SprykerShop\Yves\CustomerPage\Form\GuestForm;
 use SprykerShop\Yves\CustomerPage\Form\LoginForm;
 use SprykerShop\Yves\CustomerPage\Form\RegisterForm;
-use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\AddressStepHideBreadcrumbItemPlugin;
-use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\ShipmentStepHideBreadcrumbItemPlugin;
+use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\CheckoutAddressStepBreadcrumbItemHiderPlugin;
+use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\CheckoutPaymentStepBreadcrumbItemHiderPlugin;
+use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\CheckoutShipmentStepBreadcrumbItemHiderPlugin;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThresholdWidgetPlugin;
 
 class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyProvider
@@ -128,22 +129,32 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     }
 
     /**
-     * @return \SprykerShop\Yves\QuoteApprovalWidgetExtension\Dependency\Plugin\HideBreadcrumbItemPluginInterface[]
+     * @return \SprykerShop\Yves\QuoteApprovalWidgetExtension\Dependency\Plugin\CheckoutAddressStepBreadcrumbItemHiderPluginInterface[]
      */
     protected function getAddressStepHideBreadcrumbItemPlugins(): array
     {
         return [
-            new AddressStepHideBreadcrumbItemPlugin(),
+            new CheckoutAddressStepBreadcrumbItemHiderPlugin(),
         ];
     }
 
     /**
-     * @return \SprykerShop\Yves\QuoteApprovalWidgetExtension\Dependency\Plugin\HideBreadcrumbItemPluginInterface[]
+     * @return \SprykerShop\Yves\QuoteApprovalWidgetExtension\Dependency\Plugin\CheckoutShipmentStepBreadcrumbItemHiderPluginInterface[]
      */
     protected function getShipmentStepHideBreadcrumbItemPlugins(): array
     {
         return [
-            new ShipmentStepHideBreadcrumbItemPlugin(),
+            new CheckoutShipmentStepBreadcrumbItemHiderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\QuoteApprovalWidgetExtension\Dependency\Plugin\CheckoutPaymentStepBreadcrumbItemHiderPluginInterface[]
+     */
+    protected function getPaymentStepHideBreadcrumbItemPlugins(): array
+    {
+        return [
+            new CheckoutPaymentStepBreadcrumbItemHiderPlugin(),
         ];
     }
 
