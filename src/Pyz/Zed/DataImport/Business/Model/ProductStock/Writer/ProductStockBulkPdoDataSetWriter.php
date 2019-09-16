@@ -21,6 +21,7 @@ use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInter
 use Pyz\Zed\DataImport\Business\Model\ProductStock\ProductStockHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
+use Spryker\DecimalObject\Decimal;
 use Spryker\Zed\Availability\Dependency\AvailabilityEvents;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
@@ -255,9 +256,10 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
         $availabilityQueryParams = [
             $this->dataFormatter->formatPostgresArrayString(array_column($concreteAvailabilityData, static::KEY_SKU)),
             $this->dataFormatter->formatPostgresArray(array_column($concreteAvailabilityData, static::KEY_QUANTITY)),
-            $this->dataFormatter->formatPostgresArray(array_column($concreteAvailabilityData, static::KEY_IS_NEVER_OUT_OF_STOCK)),
+            $this->dataFormatter->formatPostgresArrayBoolean(array_column($concreteAvailabilityData, static::KEY_IS_NEVER_OUT_OF_STOCK)),
             $this->dataFormatter->formatPostgresArray(array_fill(0, count($concreteAvailabilityData), $storeTransfer->getIdStore())),
         ];
+
         $this->propelExecutor->execute($this->productStockSql->createAvailabilitySQL(), $availabilityQueryParams);
     }
 
@@ -299,10 +301,9 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
         foreach ($stockProducts as $stockProduct) {
             $sku = $stockProduct[SpyProductTableMap::COL_SKU];
             $result[$sku][static::KEY_SKU] = $sku;
-            $result[$sku][static::KEY_QUANTITY] = $stockProduct[SpyStockProductTableMap::COL_QUANTITY];
-            $result[$sku][static::KEY_IS_NEVER_OUT_OF_STOCK] = (int)$stockProduct[SpyStockProductTableMap::COL_IS_NEVER_OUT_OF_STOCK];
+            $result[$sku][static::KEY_IS_NEVER_OUT_OF_STOCK] = (bool)$stockProduct[SpyStockProductTableMap::COL_IS_NEVER_OUT_OF_STOCK];
 
-            $quantity = 0;
+            $quantity = '0';
             if (in_array($stockProduct[SpyStockTableMap::COL_NAME], $stocks[$storeTransfer->getName()])) {
                 $quantity = $stockProduct[SpyStockProductTableMap::COL_QUANTITY];
             }
@@ -329,7 +330,7 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
             ->toArray();
         $result = [];
         foreach ($reservations as $reservation) {
-            $result[$reservation[SpyOmsProductReservationTableMap::COL_SKU]] = ($result[$reservation[SpyOmsProductReservationTableMap::COL_SKU]] ?? 0) + $reservation[SpyOmsProductReservationTableMap::COL_RESERVATION_QUANTITY];
+            $result[$reservation[SpyOmsProductReservationTableMap::COL_SKU]] = (new Decimal($result[$reservation[SpyOmsProductReservationTableMap::COL_SKU]] ?? '0'))->add($reservation[SpyOmsProductReservationTableMap::COL_RESERVATION_QUANTITY])->toString();
         }
 
         return $result;
@@ -366,8 +367,8 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
     {
         foreach ($stockProducts as $stock) {
             $sku = $stock[static::KEY_SKU];
-            $stockProducts[$sku][static::KEY_QUANTITY] = $stock[static::KEY_QUANTITY] - ($reservations[$sku] ?? 0);
-            $stockProducts[$sku][static::KEY_QUANTITY] = $stockProducts[$sku][static::KEY_QUANTITY] >= 0 ? $stockProducts[$sku][static::KEY_QUANTITY] : 0;
+            $quantity = (new Decimal($stock[static::KEY_QUANTITY]))->subtract($reservations[$sku] ?? 0);
+            $stockProducts[$sku][static::KEY_QUANTITY] = $quantity->greatherThanOrEquals(0) ? $quantity->toString() : '0';
         }
 
         return $stockProducts;
@@ -388,7 +389,7 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
                 continue;
             }
             $abstractAvailabilityData[$abstractSku][static::KEY_SKU] = $abstractSku;
-            $abstractAvailabilityData[$abstractSku][static::KEY_QUANTITY] = ($abstractAvailabilityData[$abstractSku][static::KEY_QUANTITY] ?? 0) + $concreteAvailability[static::KEY_QUANTITY];
+            $abstractAvailabilityData[$abstractSku][static::KEY_QUANTITY] = (new Decimal($abstractAvailabilityData[$abstractSku][static::KEY_QUANTITY] ?? 0))->add($concreteAvailability[static::KEY_QUANTITY])->toString();
         }
 
         return $abstractAvailabilityData;
@@ -462,6 +463,7 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
             $this->availabilityAbstractIds,
             array_column($availabilityAbstractIds, SpyAvailabilityAbstractTableMap::COL_ID_AVAILABILITY_ABSTRACT)
         );
+
         $this->availabilityAbstractIds = array_unique($availabilityAbstractIds);
     }
 
