@@ -8,11 +8,9 @@
 namespace PyzTest\Glue\Carts\RestApi;
 
 use Codeception\Util\HttpCode;
-use Generated\Shared\Transfer\CustomerTransfer;
 use PyzTest\Glue\Carts\CartsApiTester;
 use Spryker\Glue\AuthRestApi\AuthRestApiConfig;
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
-use Spryker\Glue\CustomersRestApi\CustomersRestApiConfig;
 
 /**
  * Auto-generated group annotations

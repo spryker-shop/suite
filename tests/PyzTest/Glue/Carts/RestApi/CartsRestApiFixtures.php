@@ -9,8 +9,11 @@ namespace PyzTest\Glue\Carts\RestApi;
 
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
+use Generated\Shared\Transfer\MoneyValueTransfer;
+use Generated\Shared\Transfer\PriceProductTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
+use Generated\Shared\Transfer\StockProductTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
 use PyzTest\Glue\Carts\CartsApiTester;
@@ -86,6 +89,14 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
     }
 
     /**
+     * @return string
+     */
+    public function getTestPassword(): string
+    {
+        return static::TEST_PASSWORD;
+    }
+
+    /**
      * @param \PyzTest\Glue\Carts\CartsApiTester $I
      *
      * @return void
@@ -93,6 +104,24 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
     protected function createProduct(CartsApiTester $I): void
     {
         $this->productConcreteTransfer = $I->haveFullProduct();
+
+        $I->haveProductInStock([
+            StockProductTransfer::SKU => $this->productConcreteTransfer->getSku(),
+            StockProductTransfer::QUANTITY => 99,
+        ]);
+
+        $priceProductOverride = [
+            PriceProductTransfer::ID_PRICE_PRODUCT => $this->productConcreteTransfer->getFkProductAbstract(),
+            PriceProductTransfer::SKU_PRODUCT_ABSTRACT => $this->productConcreteTransfer->getAbstractSku(),
+            PriceProductTransfer::ID_PRODUCT => $this->productConcreteTransfer->getIdProductConcrete(),
+            PriceProductTransfer::PRICE_TYPE_NAME => 'DEFAULT',
+            PriceProductTransfer::MONEY_VALUE => [
+                MoneyValueTransfer::NET_AMOUNT => 666,
+                MoneyValueTransfer::GROSS_AMOUNT => 999,
+            ],
+        ];
+
+        $I->havePriceProduct($priceProductOverride);
     }
 
     /**
