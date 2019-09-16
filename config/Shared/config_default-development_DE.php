@@ -2,7 +2,6 @@
 
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Collector\CollectorConstants;
-use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\Mail\MailConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Queue\QueueConstants;
@@ -24,9 +23,6 @@ $config[CollectorConstants::ELASTICA_PARAMETER__INDEX_NAME] = $ELASTICA_INDEX_NA
 $config[QueueConstants::QUEUE_WORKER_INTERVAL_MILLISECONDS] = 1000;
 $config[QueueConstants::QUEUE_WORKER_LOG_ACTIVE] = false;
 $config[QueueConstants::QUEUE_WORKER_OUTPUT_FILE_NAME] = 'data/DE/logs/ZED/queue.out';
-
-// ---------- Event
-$config[EventConstants::MAX_RETRY_ON_FAIL] = 5;
 
 // ---------- RabbitMQ
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['DE'][RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION] = true;
