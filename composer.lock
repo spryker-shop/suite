@@ -1758,26 +1758,26 @@
         },
         {
             "name": "phpdocumentor/reflection-docblock",
-            "version": "4.3.1",
+            "version": "4.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "bdd9f737ebc2a01c06ea7ff4308ec6697db9b53c"
+                "reference": "b83ff7cfcfee7827e1e78b637a5904fe6a96698e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/bdd9f737ebc2a01c06ea7ff4308ec6697db9b53c",
-                "reference": "bdd9f737ebc2a01c06ea7ff4308ec6697db9b53c",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/b83ff7cfcfee7827e1e78b637a5904fe6a96698e",
+                "reference": "b83ff7cfcfee7827e1e78b637a5904fe6a96698e",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.0",
-                "phpdocumentor/reflection-common": "^1.0.0",
-                "phpdocumentor/type-resolver": "^0.4.0",
+                "phpdocumentor/reflection-common": "^1.0.0 || ^2.0.0",
+                "phpdocumentor/type-resolver": "~0.4 || ^1.0.0",
                 "webmozart/assert": "^1.0"
             },
             "require-dev": {
-                "doctrine/instantiator": "~1.0.5",
+                "doctrine/instantiator": "^1.0.5",
                 "mockery/mockery": "^1.0",
                 "phpunit/phpunit": "^6.4"
             },
@@ -1805,7 +1805,7 @@
                 }
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
-            "time": "2019-04-30T17:48:53+00:00"
+            "time": "2019-09-12T14:27:41+00:00"
         },
         {
             "name": "phpdocumentor/type-resolver",
@@ -2391,17 +2391,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "508be9aa339feb4038f77972f62d5f0f633b90f9"
+                "reference": "d8f6622f2a477c231a07da40b446db8959c8703d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/508be9aa339feb4038f77972f62d5f0f633b90f9",
-                "reference": "508be9aa339feb4038f77972f62d5f0f633b90f9",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/d8f6622f2a477c231a07da40b446db8959c8703d",
+                "reference": "d8f6622f2a477c231a07da40b446db8959c8703d",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/event": "^2.4.0",
+                "spryker/event-dispatcher-extension": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/propel-orm": "^1.6.0",
                 "spryker/symfony": "^3.1.0",
@@ -2412,12 +2413,16 @@
                 "spryker/code-sniffer": "*",
                 "spryker/config": "^3.1.0",
                 "spryker/console": "^3.1.0 || ^4.0.0",
+                "spryker/container": "^1.4.0",
+                "spryker/event-dispatcher": "^1.0.0",
                 "spryker/propel": "^3.0.0",
                 "spryker/silex": "^2.0.0",
                 "spryker/testify": "*"
             },
             "suggest": {
                 "spryker/console": "*",
+                "spryker/container": "Install this module when you want to use the EventBehaviorEventDispatcherPlugin",
+                "spryker/event-dispatcher": "Install this module when you want to use the EventBehaviorEventDispatcherPlugin",
                 "spryker/silex": "^2.0.0"
             },
             "type": "propel-behavior",
@@ -2441,7 +2446,53 @@
                 "proprietary"
             ],
             "description": "EventBehavior module",
-            "time": "2019-08-12T13:58:02+00:00"
+            "time": "2019-09-11T12:19:36+00:00"
+        },
+        {
+            "name": "spryker/event-dispatcher-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/event-dispatcher-extension.git",
+                "reference": "866c63e861aa67af34f70629924ae06b0dcafd14"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/event-dispatcher-extension/zipball/866c63e861aa67af34f70629924ae06b0dcafd14",
+                "reference": "866c63e861aa67af34f70629924ae06b0dcafd14",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/event-dispatcher": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/container": "If you want to use EventDispatcherPlugin.",
+                "spryker/event-dispatcher": "If you want to use EventDispatcherPlugin.",
+                "spryker/symfony": "If you want to use EventDispatcherPlugin."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "EventDispatcherExtension module",
+            "time": "2019-03-26T15:19:37+00:00"
         },
         {
             "name": "spryker/install",
@@ -2494,12 +2545,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "0fdd94a3428eb22c10627f375352f1706f9a2300"
+                "reference": "386ab9871a48917dbf4ae2db7f2050e6bfa1e682"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/0fdd94a3428eb22c10627f375352f1706f9a2300",
-                "reference": "0fdd94a3428eb22c10627f375352f1706f9a2300",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/386ab9871a48917dbf4ae2db7f2050e6bfa1e682",
+                "reference": "386ab9871a48917dbf4ae2db7f2050e6bfa1e682",
                 "shasum": ""
             },
             "require": {
@@ -2525,7 +2576,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Client\\RabbitMq\\Helper\\": "tests/SprykerTest/Client/RabbitMq/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2549,7 +2601,7 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "time": "2019-08-19T12:12:16+00:00"
+            "time": "2019-09-10T15:15:46+00:00"
         },
         {
             "name": "spryker/silexphp",
@@ -2635,7 +2687,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "5315a2b4ebe6ba2c13338dd869cb2d5e3eb5b916"
+                "reference": "bf033e44993fbe41099f38f3c74e6b28faadea78"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2905,7 +2957,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-09-09T15:43:18+00:00"
+            "time": "2019-09-16T12:48:09+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2913,7 +2965,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "9741accb26e61737a81997a732fa409555acbfa5"
+                "reference": "ecb2b3b8a3a0f1ceb53ec5d359e2ae22124a9c85"
             },
             "require": {
                 "php": ">=7.1"
@@ -2988,7 +3040,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-09-05T10:47:54+00:00"
+            "time": "2019-09-13T11:38:58+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -5896,16 +5948,16 @@
         },
         {
             "name": "codeception/codeception",
-            "version": "3.1.0",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Codeception.git",
-                "reference": "9ed9146567770e564fdd2b656edb385330f7fae7"
+                "reference": "afc52609e590998fd293028699ad4a61d6afd7bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/9ed9146567770e564fdd2b656edb385330f7fae7",
-                "reference": "9ed9146567770e564fdd2b656edb385330f7fae7",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/afc52609e590998fd293028699ad4a61d6afd7bc",
+                "reference": "afc52609e590998fd293028699ad4a61d6afd7bc",
                 "shasum": ""
             },
             "require": {
@@ -5987,7 +6039,7 @@
                 "functional testing",
                 "unit testing"
             ],
-            "time": "2019-08-18T16:44:20+00:00"
+            "time": "2019-09-14T13:53:56+00:00"
         },
         {
             "name": "codeception/phpunit-wrapper",
@@ -7222,16 +7274,16 @@
         },
         {
             "name": "nette/finder",
-            "version": "v2.5.0",
+            "version": "v2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/finder.git",
-                "reference": "6be1b83ea68ac558aff189d640abe242e0306fe2"
+                "reference": "14164e1ddd69e9c5f627ff82a10874b3f5bba5fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/finder/zipball/6be1b83ea68ac558aff189d640abe242e0306fe2",
-                "reference": "6be1b83ea68ac558aff189d640abe242e0306fe2",
+                "url": "https://api.github.com/repos/nette/finder/zipball/14164e1ddd69e9c5f627ff82a10874b3f5bba5fe",
+                "reference": "14164e1ddd69e9c5f627ff82a10874b3f5bba5fe",
                 "shasum": ""
             },
             "require": {
@@ -7280,7 +7332,7 @@
                 "iterator",
                 "nette"
             ],
-            "time": "2019-02-28T18:13:25+00:00"
+            "time": "2019-07-11T18:02:17+00:00"
         },
         {
             "name": "nette/neon",
@@ -8347,16 +8399,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "7.5.15",
+            "version": "7.5.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "d79c053d972856b8b941bb233e39dc521a5093f0"
+                "reference": "316afa6888d2562e04aeb67ea7f2017a0eb41661"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/d79c053d972856b8b941bb233e39dc521a5093f0",
-                "reference": "d79c053d972856b8b941bb233e39dc521a5093f0",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/316afa6888d2562e04aeb67ea7f2017a0eb41661",
+                "reference": "316afa6888d2562e04aeb67ea7f2017a0eb41661",
                 "shasum": ""
             },
             "require": {
@@ -8416,8 +8468,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "The PHP Unit Testing framework.",
@@ -8427,7 +8479,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-08-21T07:05:16+00:00"
+            "time": "2019-09-14T09:08:39+00:00"
         },
         {
             "name": "roave/better-reflection",
@@ -8751,16 +8803,16 @@
         },
         {
             "name": "sebastian/exporter",
-            "version": "3.1.1",
+            "version": "3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/exporter.git",
-                "reference": "06a9a5947f47b3029d76118eb5c22802e5869687"
+                "reference": "68609e1261d215ea5b21b7987539cbfbe156ec3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/exporter/zipball/06a9a5947f47b3029d76118eb5c22802e5869687",
-                "reference": "06a9a5947f47b3029d76118eb5c22802e5869687",
+                "url": "https://api.github.com/repos/sebastianbergmann/exporter/zipball/68609e1261d215ea5b21b7987539cbfbe156ec3e",
+                "reference": "68609e1261d215ea5b21b7987539cbfbe156ec3e",
                 "shasum": ""
             },
             "require": {
@@ -8814,7 +8866,7 @@
                 "export",
                 "exporter"
             ],
-            "time": "2019-08-11T12:43:14+00:00"
+            "time": "2019-09-14T09:02:43+00:00"
         },
         {
             "name": "sebastian/finder-facade",
@@ -9690,12 +9742,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "7b156b91c2b3652615279c919c9f0e8629da1bf4"
+                "reference": "964a7c952e9ee25411e283320dfedfd3f1933f0e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/7b156b91c2b3652615279c919c9f0e8629da1bf4",
-                "reference": "7b156b91c2b3652615279c919c9f0e8629da1bf4",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/964a7c952e9ee25411e283320dfedfd3f1933f0e",
+                "reference": "964a7c952e9ee25411e283320dfedfd3f1933f0e",
                 "shasum": ""
             },
             "require": {
@@ -9735,7 +9787,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-09-10T09:20:12+00:00"
+            "time": "2019-09-12T13:58:31+00:00"
         },
         {
             "name": "spryker/development-core",
