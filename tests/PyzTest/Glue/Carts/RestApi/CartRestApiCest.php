@@ -8,11 +8,9 @@
 namespace PyzTest\Glue\Carts\RestApi;
 
 use Codeception\Util\HttpCode;
-use Generated\Shared\Transfer\CustomerTransfer;
 use PyzTest\Glue\Carts\CartsApiTester;
 use Spryker\Glue\AuthRestApi\AuthRestApiConfig;
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
-use Spryker\Glue\CustomersRestApi\CustomersRestApiConfig;
 
 /**
  * Auto-generated group annotations
@@ -102,7 +100,7 @@ class CartRestApiCest
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType(CartsRestApiConfig::RESOURCE_CARTS);
 
-        $I->amSure(sprintf('Returned resource has include of type $s', CartsRestApiConfig::RESOURCE_CART_ITEMS))
+        $I->amSure(sprintf('Returned resource has include of type %s', CartsRestApiConfig::RESOURCE_CART_ITEMS))
             ->whenI()
             ->seeSingleResourceHasRelationshipByTypeAndId(
                 CartsRestApiConfig::RESOURCE_CART_ITEMS,
@@ -140,6 +138,6 @@ class CartRestApiCest
         $I->seeResponseCodeIs(HttpCode::OK);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
-        $I->dontSeeResponseMatchesJsonPath('$.data[*]');
+        $I->seeResponseDataContainsEmptyCollection();
     }
 }
