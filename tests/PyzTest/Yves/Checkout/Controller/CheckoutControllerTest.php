@@ -20,9 +20,9 @@ use ReflectionProperty;
 use Spryker\Client\Cart\CartClient;
 use Spryker\Client\Session\SessionClient;
 use Spryker\Client\ZedRequest\Client\HttpClient;
+use Spryker\Shared\CheckoutPage\CheckoutConfig;
 use Spryker\Shared\DummyPayment\DummyPaymentConfig;
 use Spryker\Shared\Price\PriceConfig;
-use Spryker\Shared\Shipment\ShipmentConstants;
 use Spryker\Yves\DummyPayment\Form\AbstractSubForm;
 use SprykerShop\Yves\CheckoutPage\Controller\CheckoutController;
 use SprykerShop\Yves\CheckoutPage\Form\Steps\PaymentForm;
@@ -467,7 +467,7 @@ class CheckoutControllerTest extends Unit
         $quoteTransfer->setShippingAddress($addressTransfer);
 
         $expenseTransfer = new ExpenseTransfer();
-        $expenseTransfer->setType(ShipmentConstants::SHIPMENT_EXPENSE_TYPE);
+        $expenseTransfer->setType(CheckoutConfig::SHIPMENT_EXPENSE_TYPE);
         $quoteTransfer->addExpense($expenseTransfer);
 
         $totalsTransfer = new TotalsTransfer();
@@ -513,7 +513,7 @@ class CheckoutControllerTest extends Unit
         $quoteTransfer->setShippingAddress($addressTransfer);
 
         $expenseTransfer = new ExpenseTransfer();
-        $expenseTransfer->setType(ShipmentConstants::SHIPMENT_EXPENSE_TYPE);
+        $expenseTransfer->setType(CheckoutConfig::SHIPMENT_EXPENSE_TYPE);
         $expenseTransfer->setUnitGrossPrice(1000);
         $expenseTransfer->setQuantity(1);
         $quoteTransfer->addExpense($expenseTransfer);
