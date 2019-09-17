@@ -316,7 +316,7 @@ class MultiCartsRestApiCest
      *
      * @return void
      */
-    public function requestFindCartByUuid(CartsApiTester $I): void
+    public function requestFindCarts(CartsApiTester $I): void
     {
         // Arrange
         $token = $I->haveAuthorizationToGlue($this->fixtures->getCustomerTransfer())['accessToken'];
@@ -336,7 +336,6 @@ class MultiCartsRestApiCest
         $I->seeResponseCodeIs(HttpCode::OK);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
-
-        $I->seeResponseMatchesJsonPath('$.data[*]');
+        $I->seeResponseDataContainsNonEmptyCollection();
     }
 }

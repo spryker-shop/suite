@@ -100,7 +100,7 @@ class CartRestApiCest
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType(CartsRestApiConfig::RESOURCE_CARTS);
 
-        $I->amSure(sprintf('Returned resource has include of type $s', CartsRestApiConfig::RESOURCE_CART_ITEMS))
+        $I->amSure(sprintf('Returned resource has include of type %s', CartsRestApiConfig::RESOURCE_CART_ITEMS))
             ->whenI()
             ->seeSingleResourceHasRelationshipByTypeAndId(
                 CartsRestApiConfig::RESOURCE_CART_ITEMS,
@@ -138,6 +138,6 @@ class CartRestApiCest
         $I->seeResponseCodeIs(HttpCode::OK);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
-        $I->dontSeeResponseMatchesJsonPath('$.data[*]');
+        $I->seeResponseDataContainsEmptyCollection();
     }
 }
