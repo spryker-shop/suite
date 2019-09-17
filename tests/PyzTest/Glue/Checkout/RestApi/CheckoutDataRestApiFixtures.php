@@ -165,7 +165,7 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
                 ],
             ],
             QuoteTransfer::STORE => [
-                StoreTransfer::NAME => 'DE',
+                StoreTransfer::NAME => $I->getLocator()->store()->client()->getCurrentStore()->getName(),
             ],
         ]);
     }
