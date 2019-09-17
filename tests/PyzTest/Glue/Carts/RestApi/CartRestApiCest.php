@@ -104,7 +104,7 @@ class CartRestApiCest
             ->whenI()
             ->seeSingleResourceHasRelationshipByTypeAndId(
                 CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                $this->fixtures->getProductConcreteTransfer()->getSku()
+                $this->fixtures->getProductConcreteTransfer1()->getSku()
             );
 
         $I->amSure('Returned resource has correct id')

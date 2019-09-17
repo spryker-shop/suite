@@ -69,7 +69,62 @@ class MultiCartsRestApiCest
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
                     'attributes' => [
-                        'sku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
+                        'sku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
+                        'quantity' => 1,
+                    ],
+                ],
+            ]
+        );
+
+        //assert
+        $I->seeResponseCodeIs(HttpCode::CREATED);
+        $I->seeResponseIsJson();
+
+        $I->amSure('Returned resource is of type guest-carts')
+            ->whenI()
+            ->seeResponseDataContainsSingleResourceOfType('guest-carts');
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    public function requestCreateGuestCartWhenGuestCartAlreadyExists(CartsApiTester $I): void
+    {
+        $this->requestCreateGuestCart($I);
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    public function requestAddItemsToGuestCart(CartsApiTester $I): void
+    {
+        // Arrange
+        $I->amUnauthorizedGlueUser(static::VALUE_FOR_ANONYMOUS);
+        $I->sendGET(CartsRestApiConfig::RESOURCE_GUEST_CARTS);
+        $guestCartUuid = $I->grabDataFromResponseByJsonPath('$.data[0]')[0]['id'];
+
+        // Act
+        $I->sendPOST($I->formatUrl(
+            '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}',
+            [
+                'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                'guestCartUuid' => $guestCartUuid,
+                'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+            ]
+        ),
+            [
+                'data' => [
+                    'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+                    'attributes' => [
+                        'sku' => $this->fixtures->getProductConcreteTransfer2()->getSku(),
                         'quantity' => 1,
                     ],
                 ],
@@ -239,7 +294,7 @@ class MultiCartsRestApiCest
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
                     'attributes' => [
-                        'sku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
+                        'sku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
                         'quantity' => 1,
                     ],
                 ],
@@ -298,7 +353,7 @@ class MultiCartsRestApiCest
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
                     'attributes' => [
-                        'sku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
+                        'sku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
                     ],
                 ],
             ]

@@ -38,7 +38,12 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
     /**
      * @var \Generated\Shared\Transfer\ProductConcreteTransfer
      */
-    protected $productConcreteTransfer;
+    protected $productConcreteTransfer1;
+
+    /**
+     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
+     */
+    protected $productConcreteTransfer2;
 
     /**
      * @var \Generated\Shared\Transfer\CustomerTransfer
@@ -53,9 +58,17 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
     /**
      * @return \Generated\Shared\Transfer\ProductConcreteTransfer
      */
-    public function getProductConcreteTransfer(): ProductConcreteTransfer
+    public function getProductConcreteTransfer1(): ProductConcreteTransfer
     {
-        return $this->productConcreteTransfer;
+        return $this->productConcreteTransfer1;
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
+     */
+    public function getProductConcreteTransfer2(): ProductConcreteTransfer
+    {
+        return $this->productConcreteTransfer2;
     }
 
     /**
@@ -81,7 +94,8 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
      */
     public function buildFixtures(CartsApiTester $I): FixturesContainerInterface
     {
-        $this->createProduct($I);
+        $this->createProductConcrete1($I);
+        $this->createProductConcrete2($I);
         $this->createCustomer($I);
         $this->createQuote($I);
 
@@ -101,23 +115,44 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
      *
      * @return void
      */
-    protected function createProduct(CartsApiTester $I): void
+    protected function createProductConcrete1(CartsApiTester $I): void
     {
-        $this->productConcreteTransfer = $I->haveFullProduct();
+        $this->productConcreteTransfer1 = $I->haveFullProduct();
+        $this->createProductRelatedData($I, $this->productConcreteTransfer1);
+    }
 
+    /**
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    protected function createProductConcrete2(CartsApiTester $I): void
+    {
+        $this->productConcreteTransfer2 = $I->haveFullProduct();
+        $this->createProductRelatedData($I, $this->productConcreteTransfer2);
+    }
+
+    /**
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
+     *
+     * @return void
+     */
+    protected function createProductRelatedData(CartsApiTester $I, ProductConcreteTransfer $productConcreteTransfer): void
+    {
         $I->haveProductInStock([
-            StockProductTransfer::SKU => $this->productConcreteTransfer->getSku(),
-            StockProductTransfer::QUANTITY => 99,
+            StockProductTransfer::SKU => $productConcreteTransfer->getSku(),
+            StockProductTransfer::IS_NEVER_OUT_OF_STOCK => 1,
         ]);
 
         $priceProductOverride = [
-            PriceProductTransfer::ID_PRICE_PRODUCT => $this->productConcreteTransfer->getFkProductAbstract(),
-            PriceProductTransfer::SKU_PRODUCT_ABSTRACT => $this->productConcreteTransfer->getAbstractSku(),
-            PriceProductTransfer::ID_PRODUCT => $this->productConcreteTransfer->getIdProductConcrete(),
+            PriceProductTransfer::ID_PRICE_PRODUCT => $productConcreteTransfer->getFkProductAbstract(),
+            PriceProductTransfer::SKU_PRODUCT_ABSTRACT => $productConcreteTransfer->getAbstractSku(),
+            PriceProductTransfer::ID_PRODUCT => $productConcreteTransfer->getIdProductConcrete(),
             PriceProductTransfer::PRICE_TYPE_NAME => 'DEFAULT',
             PriceProductTransfer::MONEY_VALUE => [
-                MoneyValueTransfer::NET_AMOUNT => 666,
-                MoneyValueTransfer::GROSS_AMOUNT => 999,
+                MoneyValueTransfer::NET_AMOUNT => 777,
+                MoneyValueTransfer::GROSS_AMOUNT => 888,
             ],
         ];
 
@@ -155,10 +190,10 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
             QuoteTransfer::TOTALS => $totalsTransfer,
             QuoteTransfer::ITEMS => [
                 [
-                    ItemTransfer::SKU => $this->productConcreteTransfer->getSku(),
-                    ItemTransfer::GROUP_KEY => $this->productConcreteTransfer->getSku(),
-                    ItemTransfer::ABSTRACT_SKU => $this->productConcreteTransfer->getAbstractSku(),
-                    ItemTransfer::ID => $this->productConcreteTransfer->getIdProductConcrete(),
+                    ItemTransfer::SKU => $this->productConcreteTransfer1->getSku(),
+                    ItemTransfer::GROUP_KEY => $this->productConcreteTransfer1->getSku(),
+                    ItemTransfer::ABSTRACT_SKU => $this->productConcreteTransfer1->getAbstractSku(),
+                    ItemTransfer::ID => $this->productConcreteTransfer1->getIdProductConcrete(),
                     ItemTransfer::UNIT_PRICE => random_int(100, 1000),
                     ItemTransfer::QUANTITY => 5,
                 ]
