@@ -26,7 +26,7 @@ use Spryker\Glue\ShipmentsRestApi\ShipmentsRestApiConfig;
  */
 class CheckoutDataRestApiCest
 {
-    protected const NOT_EXISTED_ID_CART = 'NOT_EXISTED_ID_CART';
+    protected const NOT_EXISTING_ID_CART = 'NOT_EXISTING_ID_CART';
 
     protected const KEY_ACCESS_TOKEN = 'accessToken';
 
@@ -52,14 +52,14 @@ class CheckoutDataRestApiCest
      *
      * @return void
      */
-    public function requestCheckoutDataByWhenCustomerIsNotLoggedInShouldBeFailed(CheckoutRestApiTester $I): void
+    public function requestCheckoutDataWhenCustomerIsNotLoggedInShouldFail(CheckoutRestApiTester $I): void
     {
         //Act
         $I->sendPOST(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, [
             'data' => [
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
                 'attributes' => [
-                    'idCart' => static::NOT_EXISTED_ID_CART,
+                    'idCart' => static::NOT_EXISTING_ID_CART,
                 ],
             ],
         ]);
@@ -75,7 +75,7 @@ class CheckoutDataRestApiCest
      *
      * @return void
      */
-    public function requestCheckoutDataByIdCartShouldBeSuccessful(CheckoutRestApiTester $I): void
+    public function requestCheckoutDataWithIdCartShouldBeSuccessful(CheckoutRestApiTester $I): void
     {
         //Arrange
         $this->requestCustomerLogin($I, $this->fixtures->getCustomerTransfer());
@@ -103,7 +103,7 @@ class CheckoutDataRestApiCest
      *
      * @return void
      */
-    public function requestCheckoutDataByIncorrectIdCartShouldBeFailed(CheckoutRestApiTester $I): void
+    public function requestCheckoutDataWithIncorrectIdCartShouldFail(CheckoutRestApiTester $I): void
     {
         //Arrange
         $this->requestCustomerLogin($I, $this->fixtures->getCustomerTransfer());
@@ -113,7 +113,7 @@ class CheckoutDataRestApiCest
             'data' => [
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
                 'attributes' => [
-                    'idCart' => static::NOT_EXISTED_ID_CART,
+                    'idCart' => static::NOT_EXISTING_ID_CART,
                 ],
             ],
         ]);
@@ -129,7 +129,7 @@ class CheckoutDataRestApiCest
      *
      * @return void
      */
-    public function requestCheckoutDataByIdCartWithSelectedShipmentMethodShouldGetShipmentMethodDetails(
+    public function requestCheckoutDataWithIdCartWithSelectedShipmentMethodShouldGetShipmentMethodDetails(
         CheckoutRestApiTester $I
     ): void {
         //Arrange
@@ -175,7 +175,13 @@ class CheckoutDataRestApiCest
 
         $idCart = $this->fixtures->getQuoteTransfer()->getUuid();
 
-        $url = sprintf('%s?include=%s', CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, ShipmentsRestApiConfig::RESOURCE_SHIPMENT_METHODS);
+        $url = $I->formatUrl(
+            '{resource}?include={relationship}',
+            [
+                'resource' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
+                'relationship' => ShipmentsRestApiConfig::RESOURCE_SHIPMENT_METHODS,
+            ]
+        );
 
         //Act
         $I->sendPOST($url, [

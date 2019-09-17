@@ -33,6 +33,7 @@ suites:
                 - \SprykerTest\Shared\Shipment\Helper\ShipmentMethodDataHelper
                 - \SprykerTest\Shared\Quote\Helper\PersistentQuoteHelper
                 - \SprykerTest\Glue\Payment\Helper\AvailablePaymentMethodsHelper
+                - \SprykerTest\Shared\Testify\Helper\LocatorHelper
             config:
                 \SprykerTest\Glue\Testify\Helper\GlueRest:
                     depends: PhpBrowser
