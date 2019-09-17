@@ -129,7 +129,7 @@ class CheckoutDataRestApiCest
      *
      * @return void
      */
-    public function requestCheckoutDataWithIdCartWithSelectedShipmentMethodShouldGetShipmentMethodDetails(
+    public function requestCheckoutDataWithSelectedShipmentMethodShouldGetShipmentMethodDetails(
         CheckoutRestApiTester $I
     ): void {
         //Arrange
@@ -215,7 +215,10 @@ class CheckoutDataRestApiCest
 
         $idCart = $this->fixtures->getQuoteTransfer()->getUuid();
 
-        $url = sprintf('%s?include=%s', CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, PaymentsRestApiConfig::RESOURCE_PAYMENT_METHODS);
+        $url = $I->formatUrl('{resource}?include={relationship}', [
+            'resource' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
+            'relationship' => PaymentsRestApiConfig::RESOURCE_PAYMENT_METHODS
+        ]);
 
         //Act
         $I->sendPOST($url, [
@@ -242,7 +245,7 @@ class CheckoutDataRestApiCest
      *
      * @return void
      */
-    public function requestCheckoutDataByIdCartWithSelectedPaymentMethodShouldGetPaymentMethodDetails(
+    public function requestCheckoutDataWithSelectedPaymentMethodShouldGetPaymentMethodDetails(
         CheckoutRestApiTester $I
     ): void {
         //Arrange
