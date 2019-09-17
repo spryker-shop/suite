@@ -2687,7 +2687,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "33285caf6cbebf18c76ab16a3fa117d6fb6182ff"
+                "reference": "6d414777ab38db7513a5b99d033d62a7d7ab937c"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2957,7 +2957,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-09-16T15:20:22+00:00"
+            "time": "2019-09-17T13:44:39+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2965,7 +2965,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "ecb2b3b8a3a0f1ceb53ec5d359e2ae22124a9c85"
+                "reference": "e3a1992e9c94857d238ff66d4ca31c095182ea6b"
             },
             "require": {
                 "php": ">=7.1"
@@ -3014,6 +3014,7 @@
                 "spryker-shop/redirect-page": "*",
                 "spryker-shop/shop-application": "*",
                 "spryker-shop/shop-application-extension": "*",
+                "spryker-shop/shop-cms-slot-extension": "*",
                 "spryker-shop/shop-layout": "*",
                 "spryker-shop/shop-router": "*",
                 "spryker-shop/shop-translator": "*",
@@ -3040,7 +3041,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-09-13T11:38:58+00:00"
+            "time": "2019-09-17T13:44:42+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8072,16 +8073,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.11.15",
+            "version": "0.11.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "1be5b3a706db16ac472a4c40ec03cf4c810b118d"
+                "reference": "635cf20f3b92ce34ee94a8d2f282d62eb9dc6e1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/1be5b3a706db16ac472a4c40ec03cf4c810b118d",
-                "reference": "1be5b3a706db16ac472a4c40ec03cf4c810b118d",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/635cf20f3b92ce34ee94a8d2f282d62eb9dc6e1b",
+                "reference": "635cf20f3b92ce34ee94a8d2f282d62eb9dc6e1b",
                 "shasum": ""
             },
             "require": {
@@ -8133,8 +8134,7 @@
             "autoload": {
                 "psr-4": {
                     "PHPStan\\": [
-                        "src/",
-                        "build/PHPStan"
+                        "src/"
                     ]
                 }
             },
@@ -8143,7 +8143,7 @@
                 "MIT"
             ],
             "description": "PHPStan - PHP Static Analysis Tool",
-            "time": "2019-08-18T20:51:53+00:00"
+            "time": "2019-09-17T11:19:51+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -8350,16 +8350,16 @@
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "3.1.0",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "e899757bb3df5ff6e95089132f32cd59aac2220a"
+                "reference": "995192df77f63a59e47f025390d2d1fdf8f425ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/e899757bb3df5ff6e95089132f32cd59aac2220a",
-                "reference": "e899757bb3df5ff6e95089132f32cd59aac2220a",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/995192df77f63a59e47f025390d2d1fdf8f425ff",
+                "reference": "995192df77f63a59e47f025390d2d1fdf8f425ff",
                 "shasum": ""
             },
             "require": {
@@ -8395,7 +8395,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2019-07-25T05:29:42+00:00"
+            "time": "2019-09-17T06:23:10+00:00"
         },
         {
             "name": "phpunit/phpunit",
@@ -9740,12 +9740,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "964a7c952e9ee25411e283320dfedfd3f1933f0e"
+                "reference": "feba74bb1219ae2f6312defe3c549f8a62d741d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/964a7c952e9ee25411e283320dfedfd3f1933f0e",
-                "reference": "964a7c952e9ee25411e283320dfedfd3f1933f0e",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/feba74bb1219ae2f6312defe3c549f8a62d741d4",
+                "reference": "feba74bb1219ae2f6312defe3c549f8a62d741d4",
                 "shasum": ""
             },
             "require": {
@@ -9785,7 +9785,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-09-12T13:58:31+00:00"
+            "time": "2019-09-17T12:12:20+00:00"
         },
         {
             "name": "spryker/development-core",
@@ -9793,7 +9793,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "0e022e691b462c1bd8fe024090e779114e63f809"
+                "reference": "806e5fea40193a6050ec49377267e7cad0a7bd2e"
             },
             "require": {
                 "php": ">=7.1",
@@ -9834,7 +9834,7 @@
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2019-07-26T10:26:41+00:00"
+            "time": "2019-09-17T12:33:53+00:00"
         },
         {
             "name": "spryker/git-hook",
