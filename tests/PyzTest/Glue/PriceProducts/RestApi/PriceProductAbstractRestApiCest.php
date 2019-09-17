@@ -8,7 +8,6 @@
 namespace PyzTest\Glue\PriceProducts\RestApi;
 
 use Codeception\Util\HttpCode;
-use PHPUnit\Framework\Assert;
 use PyzTest\Glue\PriceProducts\PriceProductsApiTester;
 
 /**
@@ -104,40 +103,5 @@ class PriceProductAbstractRestApiCest
         $I->amSure('Returned resource has correct id')
             ->whenI()
             ->seeResourceCollectionHasResourceWithId($this->fixtures->getProductConcreteTransfer()->getAbstractSku());
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\PriceProducts\PriceProductsApiTester $I
-     *
-     * @return void
-     */
-    public function requestExistingProductAbstractPricesByCustomerWithoutAccess(PriceProductsApiTester $I): void
-    {
-        Assert::markTestSkipped('Permissions have to be setup correctly.');
-
-        //act
-        $I->sendGET(
-            $I->formatUrl(
-                'abstract-products/{ProductAbstractSku}/abstract-product-prices',
-                [
-                    'ProductAbstractSku' => $this->fixtures->getProductConcreteTransfer()->getAbstractSku(),
-                ]
-            )
-        );
-
-        //assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
-
-        $I->amSure('Returned resource has no abstract-product-prices relationship')
-            ->whenI()
-            ->dontSeeSingleResourceHasRelationshipByType('abstract-product-prices');
-
-        $I->amSure('Returned includes do not have abstract-product-prices resource')
-            ->whenI()
-            ->dontSeeIncludesContainsResourceByType('abstract-product-prices');
     }
 }

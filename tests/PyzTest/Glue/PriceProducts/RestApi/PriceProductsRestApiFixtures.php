@@ -7,13 +7,10 @@
 
 namespace PyzTest\Glue\PriceProducts\RestApi;
 
-use Generated\Shared\Transfer\ContentTypeAccessTransfer;
-use Generated\Shared\Transfer\CustomerAccessTransfer;
 use Generated\Shared\Transfer\MoneyValueTransfer;
 use Generated\Shared\Transfer\PriceProductTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use PyzTest\Glue\PriceProducts\PriceProductsApiTester;
-use Spryker\Shared\CustomerAccess\CustomerAccessConfig;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
@@ -40,16 +37,6 @@ class PriceProductsRestApiFixtures implements FixturesBuilderInterface, Fixtures
     protected $priceProductTransfer;
 
     /**
-     * @var \Generated\Shared\Transfer\CustomerAccessTransfer|null
-     */
-    protected $customerAccessTransfer;
-
-    /**
-     * @var \Generated\Shared\Transfer\CustomerAccessTransfer|null
-     */
-    protected $restrictedCustomerAccessTransfer;
-
-    /**
      * @return \Generated\Shared\Transfer\ProductConcreteTransfer
      */
     public function getProductConcreteTransfer(): ProductConcreteTransfer
@@ -66,22 +53,6 @@ class PriceProductsRestApiFixtures implements FixturesBuilderInterface, Fixtures
     }
 
     /**
-     * @return \Generated\Shared\Transfer\CustomerAccessTransfer
-     */
-    public function getCustomerAccessTransfer(): CustomerAccessTransfer
-    {
-        return $this->customerAccessTransfer;
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\CustomerAccessTransfer
-     */
-    public function getRestrictedCustomerAccessTransfer(): CustomerAccessTransfer
-    {
-        return $this->restrictedCustomerAccessTransfer;
-    }
-
-    /**
      * @param \PyzTest\Glue\PriceProducts\PriceProductsApiTester $I
      *
      * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
@@ -90,7 +61,6 @@ class PriceProductsRestApiFixtures implements FixturesBuilderInterface, Fixtures
     {
         $this->createProductConcrete($I);
         $this->createPriceProduct($I);
-        $this->createCustomerAccess($I);
 
         return $this;
     }
@@ -128,46 +98,5 @@ class PriceProductsRestApiFixtures implements FixturesBuilderInterface, Fixtures
                 MoneyValueTransfer::CURRENCY => $currencyTransfer,
             ],
         ]);
-    }
-
-    /**
-     * @param \PyzTest\Glue\PriceProducts\PriceProductsApiTester $I
-     *
-     * @return void
-     */
-    protected function createCustomerAccess(PriceProductsApiTester $I): void
-    {
-        $allCustomerAccessTransfer = $I->getLocator()->customerAccess()->facade()->getAllContentTypes();
-
-        foreach ($allCustomerAccessTransfer->getContentTypeAccess() as $contentTypeAccessTransfer) {
-            if ($contentTypeAccessTransfer->getContentType() === CustomerAccessConfig::CONTENT_TYPE_PRICE) {
-                $contentTypeAccessTransfer->setIsRestricted(false);
-                $this->customerAccessTransfer = (new CustomerAccessTransfer())->addContentTypeAccess($contentTypeAccessTransfer);
-                $contentTypeAccessTransfer->setIsRestricted(true);
-                $this->restrictedCustomerAccessTransfer = (new CustomerAccessTransfer())->addContentTypeAccess($contentTypeAccessTransfer);
-
-                break;
-            }
-        }
-
-        if (!$this->customerAccessTransfer) {
-            $this->customerAccessTransfer = $I->haveCustomerAccess([
-                CustomerAccessTransfer::CONTENT_TYPE_ACCESS => [
-                    ContentTypeAccessTransfer::ID_UNAUTHENTICATED_CUSTOMER_ACCESS => rand(),
-                    ContentTypeAccessTransfer::CONTENT_TYPE => CustomerAccessConfig::CONTENT_TYPE_PRICE,
-                    ContentTypeAccessTransfer::IS_RESTRICTED => false,
-                ],
-            ]);
-        }
-
-        if (!$this->restrictedCustomerAccessTransfer) {
-            $this->customerAccessTransfer = $I->haveCustomerAccess([
-                CustomerAccessTransfer::CONTENT_TYPE_ACCESS => [
-                    ContentTypeAccessTransfer::ID_UNAUTHENTICATED_CUSTOMER_ACCESS => rand(),
-                    ContentTypeAccessTransfer::CONTENT_TYPE => CustomerAccessConfig::CONTENT_TYPE_PRICE,
-                    ContentTypeAccessTransfer::IS_RESTRICTED => true,
-                ],
-            ]);
-        }
     }
 }

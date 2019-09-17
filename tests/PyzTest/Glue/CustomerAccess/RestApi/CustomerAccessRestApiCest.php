@@ -29,8 +29,10 @@ class CustomerAccessRestApiCest
      */
     public function requestCustomerAccess(CustomerAccessApiTester $I): void
     {
+        //act
         $I->sendGET('customer-access');
 
+        //assert
         $I->seeResponseCodeIs(HttpCode::OK);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
