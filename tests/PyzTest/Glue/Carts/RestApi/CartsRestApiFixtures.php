@@ -112,7 +112,7 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
     }
 
     /**
-     * @param CartsApiTester $I
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
      *
      * @return void
      */
@@ -132,7 +132,7 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
                     ItemTransfer::ID => $this->productConcreteTransfer->getIdProductConcrete(),
                     ItemTransfer::UNIT_PRICE => random_int(100, 1000),
                     ItemTransfer::QUANTITY => 5,
-                ]
+                ],
             ],
             QuoteTransfer::STORE => [StoreTransfer::NAME => 'DE'],
         ]);
