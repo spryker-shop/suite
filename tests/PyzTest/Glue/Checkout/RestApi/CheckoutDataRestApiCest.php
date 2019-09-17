@@ -128,7 +128,7 @@ class CheckoutDataRestApiCest
      *
      * @return void
      */
-    public function requestCheckoutDataWithIdCartWithSelectedShipmentMethodShouldGetShipmentMethodDetails(
+    public function requestCheckoutDataWithSelectedShipmentMethodShouldGetShipmentMethodDetails(
         CheckoutRestApiTester $I
     ): void {
         //Arrange
