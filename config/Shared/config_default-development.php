@@ -14,6 +14,7 @@ use Spryker\Shared\Config\ConfigConstants;
 use Spryker\Shared\DocumentationGeneratorRestApi\DocumentationGeneratorRestApiConstants;
 use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebExceptionErrorRenderer;
+use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\GlueApplication\GlueApplicationConstants;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Kernel\Store;
@@ -129,6 +130,9 @@ $config[OauthConstants::OAUTH_CLIENT_SECRET] = 'abc123';
 
 // ---------- Api
 $config[ApiConstants::ENABLE_API_DEBUG] = true;
+
+// ---------- Event
+$config[EventConstants::LOGGER_ACTIVE] = true;
 
 // ---------- Calculation page
 $config[CalculationPageConstants::ENABLE_CART_DEBUG] = true;
