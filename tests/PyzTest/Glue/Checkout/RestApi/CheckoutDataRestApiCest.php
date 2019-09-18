@@ -80,14 +80,12 @@ class CheckoutDataRestApiCest
         //Arrange
         $this->requestCustomerLogin($I, $this->fixtures->getCustomerTransfer());
 
-        $idCart = $this->fixtures->getQuoteTransfer()->getUuid();
-
         //Act
         $I->sendPOST(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, [
             'data' => [
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
                 'attributes' => [
-                    'idCart' => $idCart,
+                    'idCart' => $this->fixtures->getQuoteTransfer()->getUuid(),
                 ],
             ],
         ]);
@@ -135,14 +133,12 @@ class CheckoutDataRestApiCest
         //Arrange
         $this->requestCustomerLogin($I, $this->fixtures->getCustomerTransfer());
 
-        $idCart = $this->fixtures->getQuoteTransfer()->getUuid();
-
         //Act
         $I->sendPOST(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, [
             'data' => [
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
                 'attributes' => [
-                    'idCart' => $idCart,
+                    'idCart' => $this->fixtures->getQuoteTransfer()->getUuid(),
                     'shipment' => [
                         'idShipmentMethod' => $this->fixtures->getShipmentMethodTransfer()->getIdShipmentMethod(),
                     ],
@@ -173,7 +169,6 @@ class CheckoutDataRestApiCest
         //Arrange
         $this->requestCustomerLogin($I, $this->fixtures->getCustomerTransfer());
 
-        $idCart = $this->fixtures->getQuoteTransfer()->getUuid();
 
         $url = $I->formatUrl(
             '{resource}?include={relationship}',
@@ -188,16 +183,13 @@ class CheckoutDataRestApiCest
             'data' => [
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
                 'attributes' => [
-                    'idCart' => $idCart,
+                    'idCart' => $this->fixtures->getQuoteTransfer()->getUuid(),
                 ],
             ],
         ]);
 
         //Assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
-
+        $this->assertCheckoutDataRequest($I, HttpCode::OK);
         $this->assertCheckoutDataRequestWithIncludedShipmentMethods($I);
     }
 
@@ -213,8 +205,6 @@ class CheckoutDataRestApiCest
         //Arrange
         $this->requestCustomerLogin($I, $this->fixtures->getCustomerTransfer());
 
-        $idCart = $this->fixtures->getQuoteTransfer()->getUuid();
-
         $url = $I->formatUrl('{resource}?include={relationship}', [
             'resource' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
             'relationship' => PaymentsRestApiConfig::RESOURCE_PAYMENT_METHODS
@@ -225,16 +215,13 @@ class CheckoutDataRestApiCest
             'data' => [
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
                 'attributes' => [
-                    'idCart' => $idCart,
+                    'idCart' => $this->fixtures->getQuoteTransfer()->getUuid(),
                 ],
             ],
         ]);
 
         //Assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
-
+        $this->assertCheckoutDataRequest($I, HttpCode::OK);
         $this->assertCheckoutDataRequestWithIncludedPaymentMethods($I);
     }
 
@@ -251,7 +238,6 @@ class CheckoutDataRestApiCest
         //Arrange
         $this->requestCustomerLogin($I, $this->fixtures->getCustomerTransfer());
 
-        $idCart = $this->fixtures->getQuoteTransfer()->getUuid();
         $paymentProviderTransfer = $I->haveAvailablePaymentProvider();
         $paymentMethodTransfer = current($paymentProviderTransfer->getPaymentMethods());
 
@@ -260,7 +246,7 @@ class CheckoutDataRestApiCest
             'data' => [
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
                 'attributes' => [
-                    'idCart' => $idCart,
+                    'idCart' => $this->fixtures->getQuoteTransfer()->getUuid(),
                     'payments' => [
                         [
                             'paymentProviderName' => $paymentProviderTransfer->getName(),
@@ -282,6 +268,38 @@ class CheckoutDataRestApiCest
         $I->assertNotEmpty($selectedPaymentMethods);
         $I->assertNotEmpty($selectedPaymentMethod);
         $I->assertSame($selectedPaymentMethod['paymentMethodName'], $paymentMethodTransfer->getMethodName());
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
+     *
+     * @return void
+     */
+    public function requestCheckoutDataWithoutSelectedPaymentMethodShouldNotGetSelectedPaymentMethodDetails(
+        CheckoutRestApiTester $I
+    ): void {
+        //Arrange
+        $this->requestCustomerLogin($I, $this->fixtures->getCustomerTransfer());
+
+        //Act
+        $I->sendPOST(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, [
+            'data' => [
+                'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
+                'attributes' => [
+                    'idCart' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                ],
+            ],
+        ]);
+
+        //Assert
+        $this->assertCheckoutDataRequest($I, HttpCode::OK);
+        $selectedPaymentMethods = $I
+            ->grabDataFromResponseByJsonPath('$.data.attributes.selectedPaymentMethods');
+
+        $I->assertIsArray($selectedPaymentMethods);
+        $I->assertEmpty(current($selectedPaymentMethods));
     }
 
     /**
