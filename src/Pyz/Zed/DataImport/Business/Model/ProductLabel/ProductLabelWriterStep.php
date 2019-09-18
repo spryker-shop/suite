@@ -142,7 +142,7 @@ class ProductLabelWriterStep extends PublishAwareStep implements DataImportStepI
         }
 
         foreach ($productAbstractSkus as $productAbstractSku) {
-            $idProductAbstract = trim($dataSet[AddProductAbstractSkusStep::KEY_PRODUCT_ABSTRACT_SKUS][$productAbstractSku]);
+            $idProductAbstract = (int)trim($dataSet[AddProductAbstractSkusStep::KEY_PRODUCT_ABSTRACT_SKUS][$productAbstractSku]);
             $productLabelAbstractProductEntity = SpyProductLabelProductAbstractQuery::create()
                 ->filterByFkProductLabel($productLabelEntity->getIdProductLabel())
                 ->filterByFkProductAbstract($idProductAbstract)
