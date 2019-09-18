@@ -24,6 +24,7 @@ use Spryker\Zed\PriceProduct\Business\PriceProductFacade;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Zed
  * @group DataImport

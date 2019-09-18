@@ -25,6 +25,7 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Zed
  * @group DataImport
@@ -78,7 +79,6 @@ abstract class AbstractProductStockWriterTest extends AbstractWriterTest
      */
     protected function queryDataFromDB(array $skus, array $warehouses): array
     {
-
         $stockProducts = SpyStockProductQuery::create()
             ->filterByQuantity_In(static::WAREHOUSES_QTY)
             ->useStockQuery()
