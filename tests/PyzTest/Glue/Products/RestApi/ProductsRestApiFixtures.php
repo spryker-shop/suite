@@ -7,7 +7,9 @@
 
 namespace PyzTest\Glue\Products\RestApi;
 
+use Generated\Shared\DataBuilder\ProductLabelLocalizedAttributesBuilder;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
+use Generated\Shared\Transfer\ProductLabelLocalizedAttributesTransfer;
 use Generated\Shared\Transfer\ProductLabelTransfer;
 use PyzTest\Glue\Products\ProductsApiTester;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
@@ -31,6 +33,11 @@ class ProductsRestApiFixtures implements FixturesBuilderInterface, FixturesConta
     protected $productConcreteTransfer;
 
     /**
+     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
+     */
+    protected $productConcreteTransferWithLabel;
+
+    /**
      * @var \Generated\Shared\Transfer\ProductLabelTransfer
      */
     protected $productLabelTransfer;
@@ -41,6 +48,14 @@ class ProductsRestApiFixtures implements FixturesBuilderInterface, FixturesConta
     public function getProductConcreteTransfer(): ProductConcreteTransfer
     {
         return $this->productConcreteTransfer;
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
+     */
+    public function getProductConcreteTransferWithLabel(): ProductConcreteTransfer
+    {
+        return $this->productConcreteTransferWithLabel;
     }
 
     /**
@@ -58,13 +73,10 @@ class ProductsRestApiFixtures implements FixturesBuilderInterface, FixturesConta
      */
     public function buildFixtures(ProductsApiTester $I): FixturesContainerInterface
     {
-        $this->createProductConcrete($I);
-        $this->createProductLabel($I);
-
-        $I->haveProductLabelToAbstractProductRelation(
-            $this->productLabelTransfer->getIdProductLabel(),
-            $this->productConcreteTransfer->getFkProductAbstract()
-        );
+        $this->productConcreteTransfer = $this->createProductConcrete($I);
+        $this->productConcreteTransferWithLabel = $this->createProductConcrete($I);
+        $this->productLabelTransfer = $this->createProductLabel($I);
+        $this->assignLabelToProduct($I, $this->productLabelTransfer, $this->productConcreteTransferWithLabel);
 
         return $this;
     }
@@ -72,20 +84,50 @@ class ProductsRestApiFixtures implements FixturesBuilderInterface, FixturesConta
     /**
      * @param \PyzTest\Glue\Products\ProductsApiTester $I
      *
-     * @return void
+     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
      */
-    protected function createProductConcrete(ProductsApiTester $I): void
+    protected function createProductConcrete(ProductsApiTester $I): ProductConcreteTransfer
     {
-        $this->productConcreteTransfer = $I->haveFullProduct();
+        return $I->haveFullProduct();
     }
 
     /**
      * @param \PyzTest\Glue\Products\ProductsApiTester $I
      *
+     * @return \Generated\Shared\Transfer\ProductLabelTransfer
+     */
+    protected function createProductLabel(ProductsApiTester $I): ProductLabelTransfer
+    {
+        return $I->haveProductLabel([
+            ProductLabelTransfer::VALID_FROM => null,
+            ProductLabelTransfer::VALID_TO => null,
+        ]);
+    }
+
+    /**
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     * @param \Generated\Shared\Transfer\ProductLabelTransfer $productLabelTransfer
+     * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
+     *
      * @return void
      */
-    protected function createProductLabel(ProductsApiTester $I): void
-    {
-        $this->productLabelTransfer = $I->haveProductLabel();
+    protected function assignLabelToProduct(
+        ProductsApiTester $I,
+        ProductLabelTransfer $productLabelTransfer,
+        ProductConcreteTransfer $productConcreteTransfer
+    ): void {
+        $productLabelLocalizedAttributesTransfer = (new ProductLabelLocalizedAttributesBuilder([
+            ProductLabelLocalizedAttributesTransfer::FK_LOCALE => $I->getLocator()->locale()->facade()->getCurrentLocale()->getIdLocale(),
+            ProductLabelLocalizedAttributesTransfer::FK_PRODUCT_LABEL => $productLabelTransfer->getIdProductLabel(),
+        ]))->build();
+
+        $productLabelTransfer->addLocalizedAttributes($productLabelLocalizedAttributesTransfer);
+
+        $I->getLocator()->productLabel()->facade()->updateLabel($productLabelTransfer);
+
+        $I->haveProductLabelToAbstractProductRelation(
+            $productLabelTransfer->getIdProductLabel(),
+            $productConcreteTransfer->getFkProductAbstract()
+        );
     }
 }

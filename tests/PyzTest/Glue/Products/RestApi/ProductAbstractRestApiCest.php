@@ -146,12 +146,14 @@ class ProductAbstractRestApiCest
      */
     public function requestExistingProductAbstractWithProductLabelRelationship(ProductsApiTester $I): void
     {
+        $productConcreteTransfer = $this->fixtures->getProductConcreteTransferWithLabel();
+        $productLabelTransfer = $this->fixtures->getProductLabelTransfer();
         //act
         $I->sendGET(
             $I->formatUrl(
                 'abstract-products/{ProductAbstractSku}?include=product-labels',
                 [
-                    'ProductAbstractSku' => $this->fixtures->getProductConcreteTransfer()->getAbstractSku(),
+                    'ProductAbstractSku' => $productConcreteTransfer->getAbstractSku(),
                 ]
             )
         );
@@ -165,14 +167,93 @@ class ProductAbstractRestApiCest
             ->whenI()
             ->seeSingleResourceHasRelationshipByTypeAndId(
                 'product-labels',
-                $this->fixtures->getProductLabelTransfer()->getIdProductLabel()
+                $productLabelTransfer->getIdProductLabel()
             );
 
         $I->amSure('Returned resource has include of type product-labels')
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 'product-labels',
-                $this->fixtures->getProductLabelTransfer()->getIdProductLabel()
+                $productLabelTransfer->getIdProductLabel()
             );
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     *
+     * @return void
+     */
+    public function requestExistingProductAbstractWithoutProductLabelRelationship(ProductsApiTester $I): void
+    {
+        $productConcreteTransfer = $this->fixtures->getProductConcreteTransfer();
+        //act
+        $I->sendGET(
+            $I->formatUrl(
+                'abstract-products/{ProductAbstractSku}?include=product-labels',
+                [
+                    'ProductAbstractSku' => $productConcreteTransfer->getAbstractSku(),
+                ]
+            )
+        );
+
+        //assert
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+        $I->dontSeeResponseMatchesJsonPath('$.included[*]');
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     *
+     * @return void
+     */
+    public function requestNotExistingProductAbstractWithProductLabelRelationship(ProductsApiTester $I): void
+    {
+        //act
+        $I->sendGET(
+            $I->formatUrl(
+                'abstract-products/{ProductAbstractSku}?include=product-labels',
+                [
+                    'ProductAbstractSku' => 'NotExistingSku',
+                ]
+            )
+        );
+
+        //assert
+        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+        $I->dontSeeResponseMatchesJsonPath('$.data[*]');
+        $I->dontSeeResponseMatchesJsonPath('$.included[*]');
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     *
+     * @return void
+     */
+    public function requestExistingProductAbstractWithProductLabelRelationshipByPost(ProductsApiTester $I): void
+    {
+        $productConcreteTransfer = $this->fixtures->getProductConcreteTransferWithLabel();
+        //act
+        $I->sendPOST(
+            $I->formatUrl(
+                'abstract-products/{ProductAbstractSku}?include=product-labels',
+                [
+                    'ProductAbstractSku' => $productConcreteTransfer->getAbstractSku(),
+                ]
+            )
+        );
+
+        //assert
+        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
+        $I->seeResponseIsJson();
     }
 }
