@@ -7,6 +7,8 @@
 
 namespace Pyz\Zed\ProductListGui;
 
+use Spryker\Zed\ConfigurableBundleGui\Communication\Plugin\ProductListGuiExtension\ConfigurableBundleTemplateListProductListTopButtonsExpanderPlugin;
+use Spryker\Zed\MerchantRelationshipGui\Communication\Plugin\ProductListGuiExtension\MerchantRelationListProductListTopButtonsExpanderPlugin;
 use Spryker\Zed\MerchantRelationshipProductListGui\Communication\Plugin\ProductListGuiExtension\MerchantRelationshipProductListOwnerTypeFormExpanderPlugin;
 use Spryker\Zed\ProductListGui\ProductListGuiDependencyProvider as SprykerProductListGuiDependencyProvider;
 
@@ -52,5 +54,16 @@ class ProductListGuiDependencyProvider extends SprykerProductListGuiDependencyPr
     protected function getProductListTableHeaderExpanderPlugins(): array
     {
         return [];
+    }
+
+    /**
+     * @return \Spryker\Zed\ProductListGuiExtension\Dependency\Plugin\ProductListTopButtonsExpanderPluginInterface[]
+     */
+    protected function getProductListTopButtonsExpanderPlugins(): array
+    {
+        return [
+            new ConfigurableBundleTemplateListProductListTopButtonsExpanderPlugin(),
+            new MerchantRelationListProductListTopButtonsExpanderPlugin(),
+        ];
     }
 }
