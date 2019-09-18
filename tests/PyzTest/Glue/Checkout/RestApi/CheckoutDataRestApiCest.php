@@ -187,10 +187,7 @@ class CheckoutDataRestApiCest
         ]);
 
         //Assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
-
+        $this->assertCheckoutDataRequest($I, HttpCode::OK);
         $this->assertCheckoutDataRequestWithIncludedShipmentMethods($I);
     }
 
