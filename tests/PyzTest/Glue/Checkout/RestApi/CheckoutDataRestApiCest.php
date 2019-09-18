@@ -79,14 +79,12 @@ class CheckoutDataRestApiCest
         //Arrange
         $this->requestCustomerLogin($I, $this->fixtures->getCustomerTransfer());
 
-        $idCart = $this->fixtures->getQuoteTransfer()->getUuid();
-
         //Act
         $I->sendPOST(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, [
             'data' => [
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
                 'attributes' => [
-                    'idCart' => $idCart,
+                    'idCart' => $this->fixtures->getQuoteTransfer()->getUuid(),
                 ],
             ],
         ]);
@@ -134,14 +132,12 @@ class CheckoutDataRestApiCest
         //Arrange
         $this->requestCustomerLogin($I, $this->fixtures->getCustomerTransfer());
 
-        $idCart = $this->fixtures->getQuoteTransfer()->getUuid();
-
         //Act
         $I->sendPOST(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, [
             'data' => [
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
                 'attributes' => [
-                    'idCart' => $idCart,
+                    'idCart' => $this->fixtures->getQuoteTransfer()->getUuid(),
                     'shipment' => [
                         'idShipmentMethod' => $this->fixtures->getShipmentMethodTransfer()->getIdShipmentMethod(),
                     ],
@@ -172,8 +168,6 @@ class CheckoutDataRestApiCest
         //Arrange
         $this->requestCustomerLogin($I, $this->fixtures->getCustomerTransfer());
 
-        $idCart = $this->fixtures->getQuoteTransfer()->getUuid();
-
         $url = $I->formatUrl(
             '{resource}?include={relationship}',
             [
@@ -187,7 +181,7 @@ class CheckoutDataRestApiCest
             'data' => [
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
                 'attributes' => [
-                    'idCart' => $idCart,
+                    'idCart' => $this->fixtures->getQuoteTransfer()->getUuid(),
                 ],
             ],
         ]);
@@ -212,7 +206,7 @@ class CheckoutDataRestApiCest
 
         $I->amSure('Returned resource has shipment method in `relationships` section.')
             ->whenI()
-            ->seeSingleResourceHasRelationshipByTypeAndId('shipment-methods', $idShipmentMethod);
+            ->seeSingleResourceHasRelationshipByTypeAndId(ShipmentsRestApiConfig::RESOURCE_SHIPMENT_METHODS, $idShipmentMethod);
 
         $I->amSure('Returned resource has shipment method in `included` section.')
             ->whenI()

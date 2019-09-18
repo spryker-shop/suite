@@ -87,7 +87,7 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
     }
 
     /**
-     * @param \\PyzTest\Glue\Checkout\CheckoutRestApiTester $I
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
      *
      * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
@@ -102,7 +102,7 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
     }
 
     /**
-     * @param \\PyzTest\Glue\Checkout\CheckoutRestApiTester $I
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
      *
      * @return void
      */
@@ -118,7 +118,7 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
     }
 
     /**
-     * @param \\PyzTest\Glue\Checkout\CheckoutRestApiTester $I
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
      *
      * @return void
      */
@@ -136,7 +136,7 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
     }
 
     /**
-     * @param \\PyzTest\Glue\Checkout\CheckoutRestApiTester $I
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
      *
      * @return void
      */
@@ -146,7 +146,7 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
     }
 
     /**
-     * @param \\PyzTest\Glue\Checkout\CheckoutRestApiTester $I
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
      *
      * @return void
      */
