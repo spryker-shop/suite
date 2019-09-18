@@ -9,6 +9,7 @@ namespace PyzTest\Zed\DataImport\Business\Model\ProductImage;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Zed
  * @group DataImport

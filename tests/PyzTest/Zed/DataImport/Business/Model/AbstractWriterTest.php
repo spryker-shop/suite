@@ -32,6 +32,7 @@ use Spryker\Zed\Store\Business\StoreFacadeInterface;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Zed
  * @group DataImport
