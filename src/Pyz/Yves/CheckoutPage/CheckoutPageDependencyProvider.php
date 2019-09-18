@@ -55,7 +55,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     }
 
     /**
-     * @return mixed[]
+     * @return \Symfony\Component\Form\FormTypeInterface[]
      */
     protected function getCustomerStepSubForms()
     {
@@ -67,7 +67,9 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     }
 
     /**
-     * @return mixed[]
+     * @deprecated Not used anymore.
+     *
+     * @return \Symfony\Component\Form\FormTypeInterface[]
      */
     protected function getCustomerFormTypes()
     {
