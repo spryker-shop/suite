@@ -131,7 +131,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     /**
      * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutAddressStepPreCheckPluginInterface[]
      */
-    protected function getAddressStepHideBreadcrumbItemPlugins(): array
+    protected function getAddressStepPreCheckPlugins(): array
     {
         return [
             new CheckoutAddressStepPreCheckPlugin(),
@@ -151,7 +151,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     /**
      * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutPaymentStepPreCheckPluginInterface[]
      */
-    protected function getPaymentStepHideBreadcrumbItemPlugins(): array
+    protected function getPaymentStepPreCheckPlugins(): array
     {
         return [
             new CheckoutPaymentStepPreCheckPlugin(),
