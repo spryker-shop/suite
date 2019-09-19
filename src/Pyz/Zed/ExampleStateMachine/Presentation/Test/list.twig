@@ -23,10 +23,10 @@
                 {% if exampleItem.FkStateMachineItemState is empty %}
                     {{ render(controller('/state-machine/render-form/event-item', {
                         identifier: exampleItem.IdExampleStateMachineItem,
-                        stateMachineName: 'Test',
-                        processName: 'Invoice01',
+                        'state-machine-name': 'Test',
+                        'process-name': 'Invoice01',
                         redirect: '/example-state-machine/test/list',
-                        eventName: 'Initialise state machine'
+                        'event-name': 'Initialise state machine'
                     })) }}
                 {% else %}
                     {% if stateMachineItems | length > 0 and stateMachineItems[exampleItem.IdExampleStateMachineItem] is defined %}
@@ -49,7 +49,7 @@
                         {{ render(controller('/state-machine/render-form/event', {
                             events : manualEvents[exampleItem.IdExampleStateMachineItem],
                             identifier: exampleItem.IdExampleStateMachineItem,
-                            idState : exampleItem.FkStateMachineItemState,
+                            'id-state' : exampleItem.FkStateMachineItemState,
                             redirect : '/example-state-machine/test/list'
                         })) }}
                 {% else -%}
