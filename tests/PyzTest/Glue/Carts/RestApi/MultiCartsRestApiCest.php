@@ -9,7 +9,6 @@ namespace PyzTest\Glue\Carts\RestApi;
 
 use Codeception\Util\HttpCode;
 use PyzTest\Glue\Carts\CartsApiTester;
-use Spryker\Glue\AuthRestApi\AuthRestApiConfig;
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
 
 /**
