@@ -47,7 +47,6 @@ use Spryker\Shared\Storage\StorageConstants;
 use Spryker\Shared\StorageDatabase\StorageDatabaseConfig;
 use Spryker\Shared\StorageDatabase\StorageDatabaseConstants;
 use Spryker\Shared\StorageRedis\StorageRedisConstants;
-use Spryker\Shared\Synchronization\SynchronizationConstants;
 use Spryker\Shared\Tax\TaxConstants;
 use Spryker\Shared\Translator\TranslatorConstants;
 use Spryker\Shared\Twig\TwigConstants;
@@ -541,10 +540,6 @@ $config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GE
 
 // ----------- HTTP Security
 $config[KernelConstants::STRICT_DOMAIN_REDIRECT] = true;
-
-// ---------- Synchronization
-$config[SynchronizationConstants::STORAGE_SYNC_ENABLED] = true;
-$config[SynchronizationConstants::SEARCH_SYNC_ENABLED] = true;
 
 // ---------- Database storage
 $config[StorageDatabaseConstants::DB_DEBUG] = false;
