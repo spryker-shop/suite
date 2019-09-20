@@ -28,7 +28,7 @@ use Spryker\Zed\Assertion\Communication\Plugin\ServiceProvider\AssertionServiceP
 use Spryker\Zed\Auth\Communication\Plugin\Bootstrap\AuthBootstrapProvider;
 use Spryker\Zed\Auth\Communication\Plugin\ServiceProvider\RedirectAfterLoginProvider;
 use Spryker\Zed\EventDispatcher\Communication\Plugin\Application\EventDispatcherApplicationPlugin;
-use Spryker\Zed\Gui\Communication\Plugin\ServiceProvider\GuiTwigExtensionServiceProvider;
+use Spryker\Zed\Form\Communication\Plugin\Application\FormApplicationPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Locale\Communication\Plugin\Application\LocaleApplicationPlugin;
 use Spryker\Zed\Messenger\Communication\Plugin\Application\MessengerApplicationPlugin;
@@ -37,6 +37,7 @@ use Spryker\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
 use Spryker\Zed\Session\Communication\Plugin\ServiceProvider\SessionServiceProvider as SprykerSessionServiceProvider;
 use Spryker\Zed\Translator\Communication\Plugin\Application\TranslatorApplicationPlugin;
 use Spryker\Zed\Twig\Communication\Plugin\Application\TwigApplicationPlugin;
+use Spryker\Zed\Validator\Communication\Plugin\Application\ValidatorApplicationPlugin;
 use Spryker\Zed\WebProfiler\Communication\Plugin\ServiceProvider\WebProfilerServiceProvider;
 use Spryker\Zed\ZedRequest\Communication\Plugin\GatewayServiceProviderPlugin;
 
@@ -64,7 +65,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new ZedHstsServiceProvider(),
             new FormFactoryServiceProvider(),
             new MonitoringRequestTransactionServiceProvider(),
-            new GuiTwigExtensionServiceProvider(),
             new RedirectAfterLoginProvider(),
             new SaveSessionServiceProvider(),
         ];
@@ -124,7 +124,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
     }
 
     /**
-     * @return array
+     * @return \Spryker\Shared\ApplicationExtension\Dependency\Plugin\ApplicationPluginInterface[]
      */
     protected function getApplicationPlugins(): array
     {
