@@ -31,8 +31,8 @@ use Spryker\Zed\Gui\Communication\Plugin\Twig\Buttons\Table\EditTableButtonTwigP
 use Spryker\Zed\Gui\Communication\Plugin\Twig\Buttons\Table\RemoveTableButtonTwigPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\Twig\Buttons\Table\ViewTableButtonTwigPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\Twig\FormRuntimeLoaderTwigPlugin;
+use Spryker\Zed\Gui\Communication\Plugin\Twig\GuiFilterTwigPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\Twig\GuiTwigLoaderPlugin;
-use Spryker\Zed\Gui\Communication\Plugin\Twig\GuiTwigPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\Twig\TabsTwigPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\Twig\UrlDecodeTwigPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\Twig\UrlTwigPlugin;
@@ -70,6 +70,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new TranslatorTwigPlugin(),
             new DateTimeFormatterTwigPlugin(),
             new SchedulerTwigPlugin(),
+
             new AssetsPathTwigPlugin(),
             new TabsTwigPlugin(),
             new UrlTwigPlugin(),
@@ -89,7 +90,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new RemoveTableButtonTwigPlugin(),
             // Form buttons
             new SubmitButtonTwigPlugin(),
-            new GuiTwigPlugin(),
+            new GuiFilterTwigPlugin(),
         ];
     }
 
