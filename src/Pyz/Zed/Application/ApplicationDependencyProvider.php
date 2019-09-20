@@ -27,7 +27,6 @@ use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\ZedHstsServiceP
 use Spryker\Zed\Assertion\Communication\Plugin\ServiceProvider\AssertionServiceProvider;
 use Spryker\Zed\Auth\Communication\Plugin\Bootstrap\AuthBootstrapProvider;
 use Spryker\Zed\Auth\Communication\Plugin\ServiceProvider\RedirectAfterLoginProvider;
-use Spryker\Zed\EventBehavior\Communication\Plugin\ServiceProvider\EventBehaviorServiceProvider;
 use Spryker\Zed\EventDispatcher\Communication\Plugin\Application\EventDispatcherApplicationPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\ServiceProvider\GuiTwigExtensionServiceProvider;
 use Spryker\Zed\Kernel\Container;
@@ -67,7 +66,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new MonitoringRequestTransactionServiceProvider(),
             new GuiTwigExtensionServiceProvider(),
             new RedirectAfterLoginProvider(),
-            new EventBehaviorServiceProvider(),
             new SaveSessionServiceProvider(),
         ];
 
@@ -91,7 +89,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new RoutingServiceProvider(),
             new ApiServiceProviderPlugin(),
             new ApiRoutingServiceProvider(),
-            new EventBehaviorServiceProvider(),
         ];
 
         if ($this->getConfig()->isPrettyErrorHandlerEnabled()) {
@@ -99,28 +96,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
         }
 
         return $providers;
-    }
-
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Silex\ServiceProviderInterface[]
-     */
-    protected function getInternalCallServiceProviders(Container $container)
-    {
-        return [
-            new RequestServiceProvider(),
-            new SslServiceProvider(),
-            new ServiceControllerServiceProvider(),
-            new RoutingServiceProvider(),
-            new MvcRoutingServiceProvider(),
-            new SilexRoutingServiceProvider(),
-            new GatewayServiceProviderPlugin(),
-            new MonitoringRequestTransactionServiceProvider(),
-            new HttpFragmentServiceProvider(),
-            new SubRequestServiceProvider(),
-            new EventBehaviorServiceProvider(),
-        ];
     }
 
     /**
@@ -145,7 +120,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new MonitoringRequestTransactionServiceProvider(),
             new HttpFragmentServiceProvider(),
             new SubRequestServiceProvider(),
-            new EventBehaviorServiceProvider(),
         ];
     }
 
