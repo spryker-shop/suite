@@ -7,10 +7,10 @@
 
 namespace Orm\Zed\ProductPackagingUnitStorage\Persistence;
 
-use Spryker\Zed\ProductPackagingUnitStorage\Persistence\Propel\AbstractSpyProductAbstractPackagingStorageQuery;
+use Spryker\Zed\ProductPackagingUnitStorage\Persistence\Propel\AbstractSpyProductConcretePackagingStorage;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_product_abstract_packaging_storage' table.
+ * Skeleton subclass for representing a row from the 'spy_product_concrete_packaging_storage' table.
  *
  *
  *
@@ -19,6 +19,6 @@ use Spryker\Zed\ProductPackagingUnitStorage\Persistence\Propel\AbstractSpyProduc
  * long as it does not already exist in the output directory.
  *
  */
-class SpyProductAbstractPackagingStorageQuery extends AbstractSpyProductAbstractPackagingStorageQuery
+class SpyProductConcretePackagingStorage extends AbstractSpyProductConcretePackagingStorage
 {
 }
