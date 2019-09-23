@@ -8,10 +8,12 @@
 namespace PyzTest\Glue\Products\RestApi;
 
 use Generated\Shared\DataBuilder\ProductLabelLocalizedAttributesBuilder;
+use Generated\Shared\Transfer\ProductAbstractTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\ProductLabelLocalizedAttributesTransfer;
 use Generated\Shared\Transfer\ProductLabelTransfer;
 use PyzTest\Glue\Products\ProductsApiTester;
+use Spryker\Shared\ProductRelation\ProductRelationTypes;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
@@ -77,6 +79,8 @@ class ProductsRestApiFixtures implements FixturesBuilderInterface, FixturesConta
         $this->productConcreteTransferWithLabel = $this->createProductConcrete($I);
         $this->productLabelTransfer = $this->createProductLabel($I);
         $this->assignLabelToProduct($I, $this->productLabelTransfer, $this->productConcreteTransferWithLabel);
+        $this->assignProductToProduct($I, $this->productConcreteTransfer, $this->productConcreteTransferWithLabel);
+        $this->assignProductToProduct($I, $this->productConcreteTransferWithLabel, $this->productConcreteTransfer);
 
         return $this;
     }
@@ -129,5 +133,52 @@ class ProductsRestApiFixtures implements FixturesBuilderInterface, FixturesConta
             $productLabelTransfer->getIdProductLabel(),
             $productConcreteTransfer->getFkProductAbstract()
         );
+    }
+
+    /**
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
+     * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransferRelated
+     *
+     * @return void
+     */
+    protected function assignProductToProduct(
+        ProductsApiTester $I,
+        ProductConcreteTransfer $productConcreteTransfer,
+        ProductConcreteTransfer $productConcreteTransferRelated
+    ): void {
+        $localizedAttributes = $I->generateLocalizedAttributes();
+        $productAbstractTransfer = $this->getProductAbstractFromStorageByIdForCurrentLocale($I, $productConcreteTransfer->getFkProductAbstract());
+        $productAbstractTransferRelated = $this->getProductAbstractFromStorageByIdForCurrentLocale($I, $productConcreteTransferRelated->getFkProductAbstract());
+        $I->addLocalizedAttributesToProductAbstract($productAbstractTransfer, $localizedAttributes);
+        $I->addLocalizedAttributesToProductAbstract($productAbstractTransferRelated, $localizedAttributes);
+
+        $productRelationTransfer = $I->haveProductRelation(
+            $productAbstractTransferRelated->getSku(),
+            $productAbstractTransfer->getIdProductAbstract(),
+            ProductRelationTypes::TYPE_RELATED_PRODUCTS
+        );
+        $productRelationTransfer->setIsRebuildScheduled(true);
+        $I->getLocator()->productRelation()->facade()->updateProductRelation($productRelationTransfer);
+    }
+
+    /**
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     * @param int $idProductAbstract
+     *
+     * @return \Generated\Shared\Transfer\ProductAbstractTransfer
+     */
+    protected function getProductAbstractFromStorageByIdForCurrentLocale(
+        ProductsApiTester $I,
+        int $idProductAbstract
+    ): ProductAbstractTransfer {
+        $productAbstractData = $I
+            ->getLocator()
+            ->product()
+            ->facade()
+            ->findProductAbstractById($idProductAbstract);
+
+        return (new ProductAbstractTransfer())
+            ->fromArray($productAbstractData->toArray());
     }
 }

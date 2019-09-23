@@ -27,6 +27,8 @@ suites:
                 - \SprykerTest\Shared\Product\Helper\ProductDataHelper
                 - \SprykerTest\Zed\ProductLabel\Helper\ProductLabelDataHelper
                 - \SprykerTest\Shared\ProductRelation\Helper\ProductRelationDataHelper
+                - \SprykerTest\Zed\ProductAttribute\Helper\ProductAttributeDataHelper
+                - \SprykerTest\Shared\Tax\Helper\TaxSetDataHelper
             config:
                 \SprykerTest\Glue\Testify\Helper\GlueRest:
                     depends: PhpBrowser
