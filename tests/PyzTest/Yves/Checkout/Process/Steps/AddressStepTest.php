@@ -274,7 +274,7 @@ class AddressStepTest extends Unit
     /**
      * @return void
      */
-    public function testPostConditionIfEmptyAddressesIsSetShouldReturnFalse()
+    public function testPostConditionIfEmptyAddressesIsSetShouldReturnFalse(): void
     {
         // Arrange
         $addressStep = $this->createAddressStep(new CustomerTransfer());
@@ -292,7 +292,7 @@ class AddressStepTest extends Unit
     /**
      * @return void
      */
-    public function testPostConditionIfNotEmptyAddressesIsSetShouldReturnTrue()
+    public function testPostConditionIfNotEmptyAddressesIsSetShouldReturnTrue(): void
     {
         // Arrange
         $addressStep = $this->createAddressStep(new CustomerTransfer());
@@ -312,7 +312,7 @@ class AddressStepTest extends Unit
     /**
      * @return void
      */
-    public function testPostConditionIfAddressesIsSetShouldReturnTrueWithItemLevelShippingAddresses()
+    public function testPostConditionIfAddressesIsSetShouldReturnTrueWithItemLevelShippingAddresses(): void
     {
         // Arrange
         $addressStep = $this->createAddressStep(new CustomerTransfer());
