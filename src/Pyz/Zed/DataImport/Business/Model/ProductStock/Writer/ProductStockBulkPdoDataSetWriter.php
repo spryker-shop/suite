@@ -316,7 +316,7 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
     /**
      * @param array $skus
      *
-     * @return array
+     * @return \Spryker\DecimalObject\Decimal[]
      */
     protected function getReservationsBySkus(array $skus): array
     {
@@ -330,7 +330,7 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
             ->toArray();
         $result = [];
         foreach ($reservations as $reservation) {
-            $result[$reservation[SpyOmsProductReservationTableMap::COL_SKU]] = (new Decimal($result[$reservation[SpyOmsProductReservationTableMap::COL_SKU]] ?? '0'))->add($reservation[SpyOmsProductReservationTableMap::COL_RESERVATION_QUANTITY])->toString();
+            $result[$reservation[SpyOmsProductReservationTableMap::COL_SKU]] = (new Decimal($result[$reservation[SpyOmsProductReservationTableMap::COL_SKU]] ?? '0'))->add($reservation[SpyOmsProductReservationTableMap::COL_RESERVATION_QUANTITY]);
         }
 
         return $result;
@@ -361,14 +361,14 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
      * @param array $stockProducts
      * @param array $reservations
      *
-     * @return array
+     * @return \Spryker\DecimalObject\Decimal[]
      */
     protected function prepareConcreteAvailabilityData(array $stockProducts, array $reservations): array
     {
         foreach ($stockProducts as $stock) {
             $sku = $stock[static::KEY_SKU];
             $quantity = (new Decimal($stock[static::KEY_QUANTITY]))->subtract($reservations[$sku] ?? 0);
-            $stockProducts[$sku][static::KEY_QUANTITY] = $quantity->greatherThanOrEquals(0) ? $quantity->toString() : '0';
+            $stockProducts[$sku][static::KEY_QUANTITY] = $quantity->greatherThanOrEquals(0) ? $quantity : new Decimal(0);
         }
 
         return $stockProducts;
@@ -389,7 +389,7 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
                 continue;
             }
             $abstractAvailabilityData[$abstractSku][static::KEY_SKU] = $abstractSku;
-            $abstractAvailabilityData[$abstractSku][static::KEY_QUANTITY] = (new Decimal($abstractAvailabilityData[$abstractSku][static::KEY_QUANTITY] ?? 0))->add($concreteAvailability[static::KEY_QUANTITY])->toString();
+            $abstractAvailabilityData[$abstractSku][static::KEY_QUANTITY] = (new Decimal($abstractAvailabilityData[$abstractSku][static::KEY_QUANTITY] ?? 0))->add($concreteAvailability[static::KEY_QUANTITY]);
         }
 
         return $abstractAvailabilityData;

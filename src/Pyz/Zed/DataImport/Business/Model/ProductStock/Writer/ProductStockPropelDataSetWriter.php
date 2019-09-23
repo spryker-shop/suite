@@ -242,7 +242,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
         $availabilityAbstractEntity = $this->getAvailabilityAbstract($abstractSku, $idStore);
         $this->persistAvailabilityData([
             static::KEY_AVAILABILITY_SKU => $concreteSku,
-            static::KEY_AVAILABILITY_QUANTITY => $stockProductQuantity->toString(),
+            static::KEY_AVAILABILITY_QUANTITY => $stockProductQuantity,
             static::KEY_AVAILABILITY_ID_AVAILABILITY_ABSTRACT => $availabilityAbstractEntity->getIdAvailabilityAbstract(),
             static::KEY_AVAILABILITY_ID_STORE => $idStore,
             static::KEY_AVAILABILITY_IS_NEVER_OUT_OF_STOCK => $dataSet[ProductStockHydratorStep::KEY_IS_NEVER_OUT_OF_STOCK],
@@ -277,7 +277,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
         $idProductConcrete = $this->productRepository->getIdProductByConcreteSku($concreteSku);
         $stockNames = $this->getStoreWarehouses($storeTransfer->getName());
 
-        return new Decimal($this->getStockProductQuantityByIdProductAndStockNames($idProductConcrete, $stockNames));
+        return $this->getStockProductQuantityByIdProductAndStockNames($idProductConcrete, $stockNames);
     }
 
     /**
@@ -294,9 +294,9 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
      * @param int $idProductConcrete
      * @param string[] $stockNames
      *
-     * @return string
+     * @return \Spryker\DecimalObject\Decimal
      */
-    protected function getStockProductQuantityByIdProductAndStockNames(int $idProductConcrete, array $stockNames): string
+    protected function getStockProductQuantityByIdProductAndStockNames(int $idProductConcrete, array $stockNames): Decimal
     {
         $stockProductTotalQuantity = SpyStockProductQuery::create()
             ->filterByFkProduct($idProductConcrete)
@@ -307,7 +307,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
             ->select([static::COL_STOCK_PRODUCT_TOTAL_QUANTITY])
             ->findOne();
 
-        return (string)$stockProductTotalQuantity;
+        return new Decimal($stockProductTotalQuantity);
     }
 
     /**
