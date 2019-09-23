@@ -12,7 +12,6 @@ use Generated\Shared\DataBuilder\QuoteBuilder;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
-use Generated\Shared\Transfer\SaveOrderTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
 use PyzTest\Glue\Orders\OrdersRestApiTester;
@@ -35,7 +34,7 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
     protected const TEST_PASSWORD = 'Test password';
 
     /**
-     * @var SaveOrderTransfer
+     * @var \Generated\Shared\Transfer\SaveOrderTransfer
      */
     protected $saveOrderTransfer;
 
@@ -50,7 +49,7 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
     protected $shipmentMethodTransfer;
 
     /**
-     * @return SaveOrderTransfer
+     * @return \Generated\Shared\Transfer\SaveOrderTransfer
      */
     public function getSaveOrderTransfer()
     {
@@ -101,7 +100,6 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
         $I->haveShipment($this->saveOrderTransfer->getIdSalesOrder(), [
             'method' => $this->shipmentMethodTransfer,
         ]);
-
     }
 
     /**

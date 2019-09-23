@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * This file is part of the Spryker Suite.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace PyzTest\Glue\Orders;
 
 use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
@@ -17,7 +23,7 @@ use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
  * @method void pause()
  *
  * @SuppressWarnings(PHPMD)
-*/
+ */
 class OrdersRestApiTester extends ApiEndToEndTester
 {
     use _generated\OrdersRestApiTesterActions;

@@ -42,7 +42,7 @@ class OrdersRestApiCest
     }
 
     /**
-     * @param OrdersRestApiTester $I
+     * @param \PyzTest\Glue\Orders\OrdersRestApiTester $I
      *
      * @return void
      */
@@ -54,7 +54,8 @@ class OrdersRestApiCest
 
         //Act
         $I->sendGET($I->formatUrl(
-            '{resource}/{reference}', [
+            '{resource}/{reference}',
+            [
                 'resource' => OrdersRestApiConfig::RESOURCE_ORDERS,
                 'reference' => $orderTransfer->getOrderReference(),
             ]
@@ -72,7 +73,7 @@ class OrdersRestApiCest
     }
 
     /**
-     * @param OrdersRestApiTester $I
+     * @param \PyzTest\Glue\Orders\OrdersRestApiTester $I
      *
      * @return void
      */
@@ -83,7 +84,8 @@ class OrdersRestApiCest
 
         //Act
         $I->sendGET($I->formatUrl(
-            '{resource}/{reference}', [
+            '{resource}/{reference}',
+            [
                 'resource' => OrdersRestApiConfig::RESOURCE_ORDERS,
                 'reference' => $orderTransfer->getOrderReference(),
             ]
@@ -95,9 +97,9 @@ class OrdersRestApiCest
     }
 
     /**
-     * @param OrdersRestApiTester $I
+     * @param \PyzTest\Glue\Orders\OrdersRestApiTester $I
      *
-     * @return OrderTransfer
+     * @return \Generated\Shared\Transfer\OrderTransfer
      */
     protected function getOrderTransfer(OrdersRestApiTester $I): OrderTransfer
     {
@@ -107,8 +109,8 @@ class OrdersRestApiCest
     }
 
     /**
-     * @param OrdersRestApiTester $I
-     * @param CustomerTransfer $customerTransfer
+     * @param \PyzTest\Glue\Orders\OrdersRestApiTester $I
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
      * @return void
      */
