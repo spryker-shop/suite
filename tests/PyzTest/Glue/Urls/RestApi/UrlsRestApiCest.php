@@ -13,6 +13,7 @@ use Spryker\Glue\UrlsRestApi\UrlsRestApiConfig;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Glue
  * @group Urls
