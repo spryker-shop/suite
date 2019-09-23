@@ -27,6 +27,7 @@ use Spryker\Zed\ContentProductSetDataImport\ContentProductSetDataImportConfig;
 use Spryker\Zed\DataImport\DataImportConfig as SprykerDataImportConfig;
 use Spryker\Zed\FileManagerDataImport\FileManagerDataImportConfig;
 use Spryker\Zed\MerchantDataImport\MerchantDataImportConfig;
+use Spryker\Zed\MerchantProfileDataImport\MerchantProfileDataImportConfig;
 use Spryker\Zed\MerchantRelationshipDataImport\MerchantRelationshipDataImportConfig;
 use Spryker\Zed\MerchantRelationshipProductListDataImport\MerchantRelationshipProductListDataImportConfig;
 use Spryker\Zed\MerchantRelationshipSalesOrderThresholdDataImport\MerchantRelationshipSalesOrderThresholdDataImportConfig;
@@ -514,6 +515,7 @@ class DataImportConfig extends SprykerDataImportConfig
             CategoryDataImportConfig::IMPORT_TYPE_CATEGORY,
             MerchantDataImportConfig::IMPORT_TYPE_MERCHANT,
             MerchantDataImportConfig::IMPORT_TYPE_MERCHANT_ADDRESS,
+            MerchantProfileDataImportConfig::IMPORT_TYPE_MERCHANT_PROFILE,
             MultiCartDataImportConfig::IMPORT_TYPE_MULTI_CART,
             SharedCartDataImportConfig::IMPORT_TYPE_SHARED_CART,
             CompanyRoleDataImportConfig::IMPORT_TYPE_COMPANY_USER_ROLE,
