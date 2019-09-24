@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "39a9f28d070e3fd6da5bbb54add80d84",
+    "content-hash": "e4b3f98afbc9390fc184bb76dd308050",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -2687,7 +2687,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "3614fb731581b4ada5a830b6b3762e5a47ad70ea"
+                "reference": "d77688fd96411453d37de565c5cfbb59389ab5c8"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2957,7 +2957,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-09-18T10:47:02+00:00"
+            "time": "2019-09-24T12:43:57+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2965,7 +2965,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "b2f2fa90a1332ea48c19830e710dc4ca0babe701"
+                "reference": "d27a0e33cb59db455e4f4e9a8d71ff4b94638f1a"
             },
             "require": {
                 "php": ">=7.1"
@@ -3041,7 +3041,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-09-18T11:06:36+00:00"
+            "time": "2019-09-24T12:43:56+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -7894,64 +7894,6 @@
             "time": "2018-07-08T19:19:57+00:00"
         },
         {
-            "name": "phpcompatibility/php-compatibility",
-            "version": "9.3.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/PHPCompatibility/PHPCompatibility.git",
-                "reference": "9999344e47e7af6b00e1a898eacc4e4368fb7196"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/PHPCompatibility/PHPCompatibility/zipball/9999344e47e7af6b00e1a898eacc4e4368fb7196",
-                "reference": "9999344e47e7af6b00e1a898eacc4e4368fb7196",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3",
-                "squizlabs/php_codesniffer": "^2.3 || ^3.0.2"
-            },
-            "conflict": {
-                "squizlabs/php_codesniffer": "2.6.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.5 || ^5.0 || ^6.0 || ^7.0"
-            },
-            "suggest": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.5 || This Composer plugin will sort out the PHPCS 'installed_paths' automatically.",
-                "roave/security-advisories": "dev-master || Helps prevent installing dependencies with known security issues."
-            },
-            "type": "phpcodesniffer-standard",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL-3.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Wim Godden",
-                    "homepage": "https://github.com/wimg",
-                    "role": "lead"
-                },
-                {
-                    "name": "Juliette Reinders Folmer",
-                    "homepage": "https://github.com/jrfnl",
-                    "role": "lead"
-                },
-                {
-                    "name": "Contributors",
-                    "homepage": "https://github.com/PHPCompatibility/PHPCompatibility/graphs/contributors"
-                }
-            ],
-            "description": "A set of sniffs for PHP_CodeSniffer that checks for PHP cross-version compatibility.",
-            "homepage": "http://techblog.wimgodden.be/tag/codesniffer/",
-            "keywords": [
-                "compatibility",
-                "phpcs",
-                "standards"
-            ],
-            "time": "2019-09-05T18:36:49+00:00"
-        },
-        {
             "name": "phpmd/phpmd",
             "version": "2.7.0",
             "source": {
@@ -8538,41 +8480,6 @@
                 "xunit"
             ],
             "time": "2019-09-14T09:08:39+00:00"
-        },
-        {
-            "name": "psalm/phar",
-            "version": "3.5.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/psalm/phar.git",
-                "reference": "208a083cbe50a43ba837e7a57afe3e597b80261e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/psalm/phar/zipball/208a083cbe50a43ba837e7a57afe3e597b80261e",
-                "reference": "208a083cbe50a43ba837e7a57afe3e597b80261e",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.1"
-            },
-            "conflict": {
-                "vimeo/psalm": "*"
-            },
-            "bin": [
-                "psalm.phar",
-                "psalm",
-                "psalter",
-                "psalm-language-server",
-                "psalm-plugin"
-            ],
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Composer-based Psalm Phar",
-            "time": "2019-09-10T01:57:16+00:00"
         },
         {
             "name": "roave/better-reflection",
