@@ -12,6 +12,7 @@ use Generated\Shared\DataBuilder\QuoteBuilder;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
+use Generated\Shared\Transfer\SaveOrderTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
 use PyzTest\Glue\Orders\OrdersRestApiTester;
@@ -51,7 +52,7 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
     /**
      * @return \Generated\Shared\Transfer\SaveOrderTransfer
      */
-    public function getSaveOrderTransfer()
+    public function getSaveOrderTransfer(): SaveOrderTransfer
     {
         return $this->saveOrderTransfer;
     }
