@@ -22,6 +22,7 @@ use Orm\Zed\Stock\Persistence\SpyStockProductQuery;
 use Orm\Zed\Stock\Persistence\SpyStockQuery;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\ProductStockHydratorStep;
+use Spryker\DecimalObject\Decimal;
 use Spryker\Zed\Availability\Dependency\AvailabilityEvents;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
@@ -254,24 +255,24 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
      * @param string $concreteSku
      * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
      *
-     * @return int
+     * @return \Spryker\DecimalObject\Decimal
      */
-    protected function getStockProductQuantityForStore(string $concreteSku, StoreTransfer $storeTransfer): int
+    protected function getStockProductQuantityForStore(string $concreteSku, StoreTransfer $storeTransfer): Decimal
     {
         $physicalItems = $this->calculateProductStockForSkuAndStore($concreteSku, $storeTransfer);
         $reservedItems = $this->getReservationQuantityForStore($concreteSku, $storeTransfer);
-        $stockProductQuantity = $physicalItems - $reservedItems;
+        $stockProductQuantity = $physicalItems->subtract($reservedItems);
 
-        return $stockProductQuantity > 0 ? $stockProductQuantity : 0;
+        return $stockProductQuantity->greatherThanOrEquals(0) ? $stockProductQuantity : new Decimal(0);
     }
 
     /**
      * @param string $concreteSku
      * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
      *
-     * @return int
+     * @return \Spryker\DecimalObject\Decimal
      */
-    protected function calculateProductStockForSkuAndStore(string $concreteSku, StoreTransfer $storeTransfer): int
+    protected function calculateProductStockForSkuAndStore(string $concreteSku, StoreTransfer $storeTransfer): Decimal
     {
         $idProductConcrete = $this->productRepository->getIdProductByConcreteSku($concreteSku);
         $stockNames = $this->getStoreWarehouses($storeTransfer->getName());
@@ -293,9 +294,9 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
      * @param int $idProductConcrete
      * @param string[] $stockNames
      *
-     * @return int
+     * @return \Spryker\DecimalObject\Decimal
      */
-    protected function getStockProductQuantityByIdProductAndStockNames(int $idProductConcrete, array $stockNames): int
+    protected function getStockProductQuantityByIdProductAndStockNames(int $idProductConcrete, array $stockNames): Decimal
     {
         $stockProductTotalQuantity = SpyStockProductQuery::create()
             ->filterByFkProduct($idProductConcrete)
@@ -306,16 +307,16 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
             ->select([static::COL_STOCK_PRODUCT_TOTAL_QUANTITY])
             ->findOne();
 
-        return (int)$stockProductTotalQuantity;
+        return new Decimal($stockProductTotalQuantity);
     }
 
     /**
      * @param string $sku
      * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
      *
-     * @return int
+     * @return \Spryker\DecimalObject\Decimal
      */
-    protected function getReservationQuantityForStore(string $sku, StoreTransfer $storeTransfer): int
+    protected function getReservationQuantityForStore(string $sku, StoreTransfer $storeTransfer): Decimal
     {
         $idStore = $this->getIdStore($storeTransfer);
 
@@ -328,13 +329,13 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
             ->find()
             ->toArray();
 
-        $reservationQuantity = 0;
+        $reservationQuantity = new Decimal(0);
 
         foreach ($reservations as $reservation) {
-            $reservationQuantity += $reservation[SpyOmsProductReservationTableMap::COL_RESERVATION_QUANTITY];
+            $reservationQuantity = $reservationQuantity->add($reservation[SpyOmsProductReservationTableMap::COL_RESERVATION_QUANTITY]);
         }
 
-        $reservationQuantity += $this->getReservationsFromOtherStores($sku, $storeTransfer);
+        $reservationQuantity = $reservationQuantity->add($this->getReservationsFromOtherStores($sku, $storeTransfer));
 
         return $reservationQuantity;
     }
@@ -343,11 +344,11 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
      * @param string $sku
      * @param \Generated\Shared\Transfer\StoreTransfer $currentStoreTransfer
      *
-     * @return int
+     * @return \Spryker\DecimalObject\Decimal
      */
-    protected function getReservationsFromOtherStores(string $sku, StoreTransfer $currentStoreTransfer): int
+    protected function getReservationsFromOtherStores(string $sku, StoreTransfer $currentStoreTransfer): Decimal
     {
-        $reservationQuantity = 0;
+        $reservationQuantity = new Decimal(0);
         $reservationStores = SpyOmsProductReservationStoreQuery::create()
             ->filterBySku($sku)
             ->find();
@@ -356,7 +357,8 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
             if ($omsProductReservationStoreEntity->getStore() === $currentStoreTransfer->getName()) {
                 continue;
             }
-            $reservationQuantity += $omsProductReservationStoreEntity->getReservationQuantity();
+
+            $reservationQuantity = $reservationQuantity->add($omsProductReservationStoreEntity->getReservationQuantity());
         }
 
         return $reservationQuantity;
@@ -451,7 +453,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
             ->findOne();
 
         $availabilityAbstractEntity->setFkStore($idStore);
-        $availabilityAbstractEntity->setQuantity((int)$sumQuantity);
+        $availabilityAbstractEntity->setQuantity($sumQuantity);
         $availabilityAbstractEntity->save();
 
         return $availabilityAbstractEntity;
