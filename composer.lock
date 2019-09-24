@@ -2683,7 +2683,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "3d64bca4bd117254cb3c42e7c444661a1ff94e40"
+                "reference": "c0a53e7651218b94823094cc35bd2b88d6d899ce"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2953,7 +2953,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-09-06T18:01:03+00:00"
+            "time": "2019-09-23T08:17:11+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5458,19 +5458,19 @@
             "authors": [
                 {
                     "name": "Fabien Potencier",
-                    "role": "Lead Developer",
                     "email": "fabien@symfony.com",
-                    "homepage": "http://fabien.potencier.org"
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
                 },
                 {
                     "name": "Twig Team",
-                    "role": "Contributors",
-                    "homepage": "https://twig.symfony.com/contributors"
+                    "homepage": "https://twig.symfony.com/contributors",
+                    "role": "Contributors"
                 },
                 {
                     "name": "Armin Ronacher",
-                    "role": "Project Founder",
-                    "email": "armin.ronacher@active-4.com"
+                    "email": "armin.ronacher@active-4.com",
+                    "role": "Project Founder"
                 }
             ],
             "description": "Twig, the flexible, fast, and secure template language for PHP",
@@ -7320,7 +7320,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🔍 Nette Finder: find files and directories with an intuitive API.",
+            "description": "? Nette Finder: find files and directories with an intuitive API.",
             "homepage": "https://nette.org",
             "keywords": [
                 "filesystem",
@@ -8464,8 +8464,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "The PHP Unit Testing framework.",
@@ -9831,6 +9831,52 @@
             ],
             "description": "DevelopmentCore module",
             "time": "2019-07-26T10:26:41+00:00"
+        },
+        {
+            "name": "spryker/event-dispatcher-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/event-dispatcher-extension.git",
+                "reference": "866c63e861aa67af34f70629924ae06b0dcafd14"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/event-dispatcher-extension/zipball/866c63e861aa67af34f70629924ae06b0dcafd14",
+                "reference": "866c63e861aa67af34f70629924ae06b0dcafd14",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/event-dispatcher": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/container": "If you want to use EventDispatcherPlugin.",
+                "spryker/event-dispatcher": "If you want to use EventDispatcherPlugin.",
+                "spryker/symfony": "If you want to use EventDispatcherPlugin."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "EventDispatcherExtension module",
+            "time": "2019-03-26T15:19:37+00:00"
         },
         {
             "name": "spryker/git-hook",
