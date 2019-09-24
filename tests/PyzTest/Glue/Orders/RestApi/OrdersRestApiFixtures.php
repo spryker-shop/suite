@@ -53,6 +53,11 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
     protected $shipmentMethodTransfer;
 
     /**
+     * @var \Generated\Shared\Transfer\QuoteTransfer
+     */
+    protected $quoteTransfer;
+
+    /**
      * @return \Generated\Shared\Transfer\SaveOrderTransfer
      */
     public function getSaveOrderTransfer(): SaveOrderTransfer
@@ -77,15 +82,26 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
     }
 
     /**
+     * @return \Generated\Shared\Transfer\QuoteTransfer
+     */
+    public function getQuoteTransfer(): QuoteTransfer
+    {
+        return $this->quoteTransfer;
+    }
+
+    /**
      * @param \PyzTest\Glue\Orders\OrdersRestApiTester $I
      *
      * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
     public function buildFixtures(OrdersRestApiTester $I): FixturesContainerInterface
     {
-        $this->createCustomer($I);
-        $this->createShipmentMethod($I);
-        $this->createSaveOrder($I);
+        $this->customerTransfer = $this->createCustomerTransfer($I);
+        $this->shipmentMethodTransfer = $this->createShipmentMethodTransfer($I);
+        $this->quoteTransfer = $this->createQuoteTransfer();
+        $this->saveOrderTransfer = $this->createSaveOrderTransfer($I);
+
+        $this->saveOrderShipment($I);
 
         return $this;
     }
@@ -93,49 +109,42 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
     /**
      * @param \PyzTest\Glue\Orders\OrdersRestApiTester $I
      *
-     * @return void
+     * @return \Generated\Shared\Transfer\SaveOrderTransfer
      */
-    protected function createSaveOrder(OrdersRestApiTester $I): void
+    protected function createSaveOrderTransfer(OrdersRestApiTester $I): SaveOrderTransfer
     {
         $I->configureTestStateMachine([static::DEFAULT_STATE_MACHINE]);
 
-        $saveOrderTransfer = $I->haveOrderFromQuote($this->getQuoteTransfer(), static::DEFAULT_STATE_MACHINE);
-        $quoteTransfer = $this->getQuoteTransfer();
-
-        $I->getLocator()->shipment()->facade()->saveOrderShipment($quoteTransfer, $saveOrderTransfer);
-
-        $this->saveOrderTransfer = $saveOrderTransfer;
+        return $I->haveOrderFromQuote($this->quoteTransfer, static::DEFAULT_STATE_MACHINE);
     }
 
     /**
      * @param \PyzTest\Glue\Orders\OrdersRestApiTester $I
      *
-     * @return void
+     * @return \Generated\Shared\Transfer\CustomerTransfer
      */
-    protected function createCustomer(OrdersRestApiTester $I): void
+    protected function createCustomerTransfer(OrdersRestApiTester $I): CustomerTransfer
     {
-        $customerTransfer = $I->haveCustomer([
+        return $I->haveCustomer([
             'password' => static::TEST_PASSWORD,
-            'newPassword' => static::TEST_PASSWORD
+            'newPassword' => static::TEST_PASSWORD,
         ]);
-
-        $this->customerTransfer = $customerTransfer;
     }
 
     /**
      * @param \PyzTest\Glue\Orders\OrdersRestApiTester $I
      *
-     * @return void
+     * @return \Generated\Shared\Transfer\ShipmentMethodTransfer
      */
-    protected function createShipmentMethod(OrdersRestApiTester $I): void
+    protected function createShipmentMethodTransfer(OrdersRestApiTester $I): ShipmentMethodTransfer
     {
-        $this->shipmentMethodTransfer = $I->haveShipmentMethod(['is_active' => true]);
+        return $I->haveShipmentMethod(['is_active' => true]);
     }
 
     /**
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
-    protected function getQuoteTransfer(): QuoteTransfer
+    protected function createQuoteTransfer(): QuoteTransfer
     {
         $quoteTransfer = (new QuoteBuilder())
             ->withItem([
@@ -151,7 +160,7 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
             ->withShippingAddress()
             ->withBillingAddress()
             ->withShipment([
-                ShipmentTransfer::METHOD => $this->shipmentMethodTransfer
+                ShipmentTransfer::METHOD => $this->shipmentMethodTransfer,
             ])
             ->withCurrency()
             ->withTotals([
@@ -178,5 +187,18 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
         $expenseTransfer->setQuantity(1);
 
         return $expenseTransfer;
+    }
+
+    /**
+     * @param \PyzTest\Glue\Orders\OrdersRestApiTester $I
+     *
+     * @return void
+     */
+    protected function saveOrderShipment(OrdersRestApiTester $I): void
+    {
+        $I->getLocator()->shipment()->facade()->saveOrderShipment(
+            $this->quoteTransfer,
+            $this->saveOrderTransfer
+        );
     }
 }
