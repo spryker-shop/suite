@@ -79,8 +79,12 @@ class ProductsRestApiFixtures implements FixturesBuilderInterface, FixturesConta
         $this->productConcreteTransferWithLabel = $this->createProductConcrete($I);
         $this->productLabelTransfer = $this->createProductLabel($I);
         $this->assignLabelToProduct($I, $this->productLabelTransfer, $this->productConcreteTransferWithLabel);
-        $this->assignProductToProduct($I, $this->productConcreteTransfer, $this->productConcreteTransferWithLabel);
-        $this->assignProductToProduct($I, $this->productConcreteTransferWithLabel, $this->productConcreteTransfer);
+
+        $this->assignProductRelated($I, $this->productConcreteTransfer, $this->productConcreteTransferWithLabel);
+        $this->assignProductRelated($I, $this->productConcreteTransferWithLabel, $this->productConcreteTransfer);
+
+        $this->assignProductAlternative($I, $this->productConcreteTransfer, $this->productConcreteTransferWithLabel);
+        $this->assignProductAlternative($I, $this->productConcreteTransferWithLabel, $this->productConcreteTransfer);
 
         return $this;
     }
@@ -142,7 +146,7 @@ class ProductsRestApiFixtures implements FixturesBuilderInterface, FixturesConta
      *
      * @return void
      */
-    protected function assignProductToProduct(
+    protected function assignProductRelated(
         ProductsApiTester $I,
         ProductConcreteTransfer $productConcreteTransfer,
         ProductConcreteTransfer $productConcreteTransferRelated
@@ -160,6 +164,24 @@ class ProductsRestApiFixtures implements FixturesBuilderInterface, FixturesConta
         );
         $productRelationTransfer->setIsRebuildScheduled(true);
         $I->getLocator()->productRelation()->facade()->updateProductRelation($productRelationTransfer);
+    }
+
+    /**
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
+     * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransferRelated
+     *
+     * @return void
+     */
+    protected function assignProductAlternative(
+        ProductsApiTester $I,
+        ProductConcreteTransfer $productConcreteTransfer,
+        ProductConcreteTransfer $productConcreteTransferRelated
+    ): void {
+        $I->haveProductAlternative(
+            $productConcreteTransfer,
+            $productConcreteTransferRelated->getSku()
+        );
     }
 
     /**

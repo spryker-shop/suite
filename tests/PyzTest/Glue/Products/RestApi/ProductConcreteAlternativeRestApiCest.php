@@ -16,11 +16,11 @@ use PyzTest\Glue\Products\ProductsApiTester;
  * @group Glue
  * @group Products
  * @group RestApi
- * @group ProductRelatedRestApiCest
+ * @group ProductConcreteAlternativeRestApiCest
  * Add your own group annotations below this line
  * @group EndToEnd
  */
-class ProductRelatedRestApiCest
+class ProductConcreteAlternativeRestApiCest
 {
     /**
      * @var \PyzTest\Glue\Products\RestApi\ProductsRestApiFixtures
@@ -44,14 +44,14 @@ class ProductRelatedRestApiCest
      *
      * @return void
      */
-    public function requestExistingProductRelated(ProductsApiTester $I): void
+    public function requestExistingConcreteAlternativeProduct(ProductsApiTester $I): void
     {
         //act
         $I->sendGET(
             $I->formatUrl(
-                'abstract-products/{ProductAbstractSku}/related-products',
+                'concrete-products/{ProductConcreteSku}/concrete-alternative-products',
                 [
-                    'ProductAbstractSku' => $this->fixtures->getProductConcreteTransfer()->getAbstractSku(),
+                    'ProductConcreteSku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
                 ]
             )
         );
@@ -61,13 +61,13 @@ class ProductRelatedRestApiCest
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSure('Returned resource is of type abstract-products')
+        $I->amSure('Returned resource is of type concrete-products')
             ->whenI()
-            ->seeResponseDataContainsResourceCollectionOfType('abstract-products');
+            ->seeResponseDataContainsResourceCollectionOfType('concrete-products');
 
         $I->amSure('Returned resource has correct id')
             ->whenI()
-            ->seeResourceCollectionHasResourceWithId($this->fixtures->getProductConcreteTransferWithLabel()->getAbstractSku());
+            ->seeResourceCollectionHasResourceWithId($this->fixtures->getProductConcreteTransferWithLabel()->getSku());
     }
 
     /**
@@ -77,7 +77,7 @@ class ProductRelatedRestApiCest
      *
      * @return void
      */
-    public function requestExistingProductRelatedWithProductLabelRelationship(ProductsApiTester $I): void
+    public function requestExistingConcreteAlternativeProductWithProductLabelRelationship(ProductsApiTester $I): void
     {
         $productConcreteTransfer = $this->fixtures->getProductConcreteTransfer();
         $productConcreteTransferWithLabel = $this->fixtures->getProductConcreteTransferWithLabel();
@@ -85,9 +85,9 @@ class ProductRelatedRestApiCest
         //act
         $I->sendGET(
             $I->formatUrl(
-                'abstract-products/{ProductAbstractSku}/related-products?include=product-labels',
+                'concrete-products/{ProductConcreteSku}/concrete-alternative-products?include=product-labels',
                 [
-                    'ProductAbstractSku' => $productConcreteTransfer->getAbstractSku(),
+                    'ProductConcreteSku' => $productConcreteTransfer->getSku(),
                 ]
             )
         );
@@ -100,7 +100,7 @@ class ProductRelatedRestApiCest
         $I->amSure('Returned resource has include of type product-labels')
             ->whenI()
             ->seeResourceByIdHasRelationshipByTypeAndId(
-                $productConcreteTransferWithLabel->getAbstractSku(),
+                $productConcreteTransferWithLabel->getSku(),
                 'product-labels',
                 $productLabelTransfer->getIdProductLabel()
             );
@@ -120,15 +120,15 @@ class ProductRelatedRestApiCest
      *
      * @return void
      */
-    public function requestExistingProductRelatedWithoutProductLabelRelationship(ProductsApiTester $I): void
+    public function requestExistingConcreteAlternativeProductWithoutProductLabelRelationship(ProductsApiTester $I): void
     {
         $productConcreteTransfer = $this->fixtures->getProductConcreteTransferWithLabel();
         //act
         $I->sendGET(
             $I->formatUrl(
-                'abstract-products/{ProductAbstractSku}/related-products?include=product-labels',
+                'concrete-products/{ProductConcreteSku}/concrete-alternative-products?include=product-labels',
                 [
-                    'ProductAbstractSku' => $productConcreteTransfer->getAbstractSku(),
+                    'ProductConcreteSku' => $productConcreteTransfer->getSku(),
                 ]
             )
         );
@@ -147,14 +147,14 @@ class ProductRelatedRestApiCest
      *
      * @return void
      */
-    public function requestNotExistingProductRelatedWithProductLabelRelationship(ProductsApiTester $I): void
+    public function requestNotExistingConcreteAlternativeProductWithProductLabelRelationship(ProductsApiTester $I): void
     {
         //act
         $I->sendGET(
             $I->formatUrl(
-                'abstract-products/{ProductAbstractSku}/related-products?include=product-labels',
+                'concrete-products/{ProductConcreteSku}/concrete-alternative-products?include=product-labels',
                 [
-                    'ProductAbstractSku' => 'NotExistingSku',
+                    'ProductConcreteSku' => 'NotExistingSku',
                 ]
             )
         );
@@ -174,15 +174,15 @@ class ProductRelatedRestApiCest
      *
      * @return void
      */
-    public function requestExistingProductRelatedWithProductLabelRelationshipByPost(ProductsApiTester $I): void
+    public function requestExistingConcreteAlternativeProductWithProductLabelRelationshipByPost(ProductsApiTester $I): void
     {
         $productConcreteTransfer = $this->fixtures->getProductConcreteTransferWithLabel();
         //act
         $I->sendPOST(
             $I->formatUrl(
-                'abstract-products/{ProductAbstractSku}?include=product-labels',
+                'concrete-products/{ProductConcreteSku}/concrete-alternative-products?include=product-labels',
                 [
-                    'ProductAbstractSku' => $productConcreteTransfer->getAbstractSku(),
+                    'ProductConcreteSku' => $productConcreteTransfer->getAbstractSku(),
                 ]
             )
         );
