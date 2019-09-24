@@ -7,17 +7,17 @@
 
 namespace Pyz\Client\StorageDatabase;
 
-use Spryker\Client\StorageDatabase\Plugin\PostgreSqlStorageReaderProviderPlugin;
+use Spryker\Client\StorageDatabase\Plugin\PostgreSqlStorageReaderPlugin;
 use Spryker\Client\StorageDatabase\StorageDatabaseDependencyProvider as SprykerStorageDatabaseDependencyProvider;
-use Spryker\Client\StorageDatabaseExtension\Dependency\Plugin\StorageReaderProviderPluginInterface;
+use Spryker\Client\StorageDatabaseExtension\Dependency\Plugin\StorageReaderPluginInterface;
 
 class StorageDatabaseDependencyProvider extends SprykerStorageDatabaseDependencyProvider
 {
     /**
-     * @return \Spryker\Client\StorageDatabaseExtension\Dependency\Plugin\StorageReaderProviderPluginInterface|null
+     * @return \Spryker\Client\StorageDatabaseExtension\Dependency\Plugin\StorageReaderPluginInterface|null
      */
-    protected function getStorageReaderProviderPlugin(): ?StorageReaderProviderPluginInterface
+    protected function getStorageReaderProviderPlugin(): ?StorageReaderPluginInterface
     {
-        return new PostgreSqlStorageReaderProviderPlugin();
+        return new PostgreSqlStorageReaderPlugin();
     }
 }
