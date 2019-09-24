@@ -10,12 +10,15 @@ namespace PyzTest\Glue\Orders\RestApi;
 use Generated\Shared\DataBuilder\ProductConcreteBuilder;
 use Generated\Shared\DataBuilder\QuoteBuilder;
 use Generated\Shared\Transfer\CustomerTransfer;
+use Generated\Shared\Transfer\ExpenseTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\SaveOrderTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
+use Generated\Shared\Transfer\ShipmentTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
 use PyzTest\Glue\Orders\OrdersRestApiTester;
+use Spryker\Shared\Shipment\ShipmentConstants;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
@@ -96,11 +99,12 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
     {
         $I->configureTestStateMachine([static::DEFAULT_STATE_MACHINE]);
 
-        $this->saveOrderTransfer = $I->haveOrderFromQuote($this->getQuote(), static::DEFAULT_STATE_MACHINE);
+        $saveOrderTransfer = $I->haveOrderFromQuote($this->getQuoteTransfer(), static::DEFAULT_STATE_MACHINE);
+        $quoteTransfer = $this->getQuoteTransfer();
 
-        $I->haveShipment($this->saveOrderTransfer->getIdSalesOrder(), [
-            'method' => $this->shipmentMethodTransfer,
-        ]);
+        $I->getLocator()->shipment()->facade()->saveOrderShipment($quoteTransfer, $saveOrderTransfer);
+
+        $this->saveOrderTransfer = $saveOrderTransfer;
     }
 
     /**
@@ -110,9 +114,12 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
      */
     protected function createCustomer(OrdersRestApiTester $I): void
     {
-        $this->customerTransfer = $I->haveCustomer([
+        $customerTransfer = $I->haveCustomer([
             'password' => static::TEST_PASSWORD,
+            'newPassword' => static::TEST_PASSWORD
         ]);
+
+        $this->customerTransfer = $customerTransfer;
     }
 
     /**
@@ -128,7 +135,7 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
     /**
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
-    protected function getQuote(): QuoteTransfer
+    protected function getQuoteTransfer(): QuoteTransfer
     {
         $quoteTransfer = (new QuoteBuilder())
             ->withItem([
@@ -143,7 +150,9 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
             ])
             ->withShippingAddress()
             ->withBillingAddress()
-            ->withShipment()
+            ->withShipment([
+                ShipmentTransfer::METHOD => $this->shipmentMethodTransfer
+            ])
             ->withCurrency()
             ->withTotals([
                 TotalsTransfer::GRAND_TOTAL => random_int(1000, 10000),
@@ -151,7 +160,23 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
             ->build();
 
         $quoteTransfer->setCustomer($this->customerTransfer);
+        $quoteTransfer->addExpense($this->createShipmentExpenseTransfer());
 
         return $quoteTransfer;
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\ExpenseTransfer
+     */
+    protected function createShipmentExpenseTransfer(): ExpenseTransfer
+    {
+        $expenseTransfer = new ExpenseTransfer();
+        $expenseTransfer->setType(ShipmentConstants::SHIPMENT_EXPENSE_TYPE);
+        $expenseTransfer->setName($this->shipmentMethodTransfer->getName());
+        $expenseTransfer->setSumGrossPrice(random_int(1000, 10000));
+        $expenseTransfer->setUnitGrossPrice(random_int(1000, 10000));
+        $expenseTransfer->setQuantity(1);
+
+        return $expenseTransfer;
     }
 }
