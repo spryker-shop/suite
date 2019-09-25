@@ -29,6 +29,7 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  */
 class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
+    protected const TEST_USERNAME = 'test username';
     protected const TEST_PASSWORD = 'test password';
     protected const ANONYMOUS_CUSTOMER_REFERENCE = 'anonymous:666';
 
@@ -103,6 +104,7 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
     protected function createCustomer(CartsApiTester $I): void
     {
         $customerTransfer = $I->haveCustomer([
+            'username' => static::TEST_USERNAME,
             'password' => static::TEST_PASSWORD,
         ]);
 
