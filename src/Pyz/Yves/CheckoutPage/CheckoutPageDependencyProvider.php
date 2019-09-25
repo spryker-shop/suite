@@ -12,8 +12,11 @@ use Spryker\Yves\Kernel\Container;
 use Spryker\Yves\Kernel\Plugin\Pimple;
 use Spryker\Yves\Nopayment\Plugin\NopaymentHandlerPlugin;
 use Spryker\Yves\Payment\Plugin\PaymentFormFilterPlugin;
+use Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageDependencyProvider as SprykerShopCheckoutPageDependencyProvider;
+use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToShipmentClientInterface;
+use SprykerShop\Yves\CompanyPage\Plugin\CheckoutPage\CompanyUnitAddressExpanderPlugin;
 use SprykerShop\Yves\CustomerPage\Form\CheckoutAddressCollectionForm;
 use SprykerShop\Yves\CustomerPage\Form\CustomerCheckoutForm;
 use SprykerShop\Yves\CustomerPage\Form\DataProvider\CheckoutAddressFormDataProvider;
@@ -23,8 +26,12 @@ use SprykerShop\Yves\CustomerPage\Form\RegisterForm;
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\CheckoutAddressStepPreCheckPlugin;
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\CheckoutPaymentStepPreCheckPlugin;
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\CheckoutShipmentStepPreCheckPlugin;
+use SprykerShop\Yves\CustomerPage\Plugin\CheckoutPage\CustomerAddressExpanderPlugin;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThresholdWidgetPlugin;
 
+/**
+ * @method \Pyz\Yves\CheckoutPage\CheckoutPageConfig getConfig()
+ */
 class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyProvider
 {
     /**
@@ -113,9 +120,24 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
      *
      * @return \Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface|null
      */
-    protected function getAddressStepFormDataProvider(Container $container)
+    protected function getAddressStepFormDataProvider(Container $container): ?StepEngineFormDataProviderInterface
     {
-        return new CheckoutAddressFormDataProvider($this->getCustomerClient($container), $this->getStore());
+        return new CheckoutAddressFormDataProvider(
+            $this->getCustomerClient($container),
+            $this->getStore(),
+            $this->getCustomerService($container),
+            $this->getShipmentClient($container)
+        );
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToShipmentClientInterface
+     */
+    public function getShipmentClient(Container $container): CheckoutPageToShipmentClientInterface
+    {
+        return $container->get(static::CLIENT_SHIPMENT);
     }
 
     /**
@@ -172,5 +194,16 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
         });
 
         return $container;
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\AddressTransferExpanderPluginInterface[]
+     */
+    protected function getAddressStepExecutorAddressExpanderPlugins(): array
+    {
+        return [
+            new CustomerAddressExpanderPlugin(),
+            new CompanyUnitAddressExpanderPlugin(),
+        ];
     }
 }
