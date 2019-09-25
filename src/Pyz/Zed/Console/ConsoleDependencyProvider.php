@@ -48,7 +48,6 @@ use Spryker\Zed\Development\Communication\Console\ModuleBridgeCreateConsole;
 use Spryker\Zed\Development\Communication\Console\ModuleCreateConsole;
 use Spryker\Zed\Development\Communication\Console\PluginUsageFinderConsole;
 use Spryker\Zed\Development\Communication\Console\PropelAbstractValidateConsole;
-use Spryker\Zed\DevelopmentCore\Communication\Console\AdjustPhpstanConsole;
 use Spryker\Zed\DocumentationGeneratorRestApi\Communication\Console\GenerateRestApiDocumentationConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventBehaviorTriggerTimeoutConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventTriggerConsole;
@@ -407,8 +406,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
      */
     protected function addProjectNonsplitOnlyCommands(array $commands): array
     {
-        $commands[] = new AdjustPhpstanConsole();
-
         $commands[] = new SprykRunConsole();
         $commands[] = new SprykDumpConsole();
         $commands[] = new SprykBuildConsole();
