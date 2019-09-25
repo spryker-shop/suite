@@ -18,6 +18,7 @@ use Spryker\Zed\MultiCart\Communication\Plugin\ResolveQuoteNameBeforeQuoteCreate
 use Spryker\Zed\Price\Communication\Plugin\Quote\QuotePriceModeValidatorPlugin;
 use Spryker\Zed\Quote\QuoteDependencyProvider as SprykerQuoteDependencyProvider;
 use Spryker\Zed\QuoteApproval\Communication\Plugin\Quote\QuoteApprovalExpanderPlugin;
+use Spryker\Zed\QuoteApproval\Communication\Plugin\Quote\QuoteApprovalQuoteFieldsAllowedForSavingProviderPlugin;
 use Spryker\Zed\QuoteApproval\Communication\Plugin\Quote\RemoveQuoteApprovalsBeforeQuoteDeletePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\CleanQuoteShareBeforeQuoteCreatePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\DeactivateSharedQuotesBeforeQuoteSavePlugin;
@@ -131,6 +132,16 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
     {
         return [
             new DefaultCurrencyQuoteExpandBeforeCreatePlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\QuoteExtension\Dependency\Plugin\QuoteFieldsAllowedForSavingProviderPluginInterface[]
+     */
+    protected function getQuoteFieldsAllowedForSavingProviderPlugins(): array
+    {
+        return [
+            new QuoteApprovalQuoteFieldsAllowedForSavingProviderPlugin(),
         ];
     }
 }
