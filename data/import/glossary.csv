@@ -101,8 +101,10 @@ page.checkout.address.option_group.customer,Customer addresses,en_US
 page.checkout.address.option_group.customer,Kundenaddresse,de_DE
 page.checkout.address.option_group.company_business_unit,Business addresses,en_US
 page.checkout.address.option_group.company_business_unit,Addresse der Geschäftseinheit,de_DE
-page.checkout.address.address_select,Please select an address,en_US
-page.checkout.address.address_select,Bitte wählen Sie eine Addresse aus,de_DE
+page.checkout.address.delivery.address_select,Select a delivery address,en_US
+page.checkout.address.delivery.address_select,Wählen Sie eine Lieferadresse,de_DE
+page.checkout.address.billing.address_select,Select a billing address,en_US
+page.checkout.address.billing.address_select,Wählen Sie eine Rechnungsadresse,de_DE
 page.checkout.shipment.heading,2. Lieferart wählen,de_DE
 page.checkout.shipment.heading,2. Shipping Method,en_US
 shipment.standart.name,Standard,de_DE
@@ -125,6 +127,20 @@ page.checkout.shipment.edit,Lieferart bearbeiten,de_DE
 page.checkout.shipment.edit,edit Shipment Method,en_US
 page.checkout.shipment.next-step,Weiter - Zahlungsart wählen,de_DE
 page.checkout.shipment.next-step,Continue to Payment Method,en_US
+page.checkout.shipment.item.quantity,Amount,de_DE
+page.checkout.shipment.item.quantity,Amount,en_US
+page.checkout.shipment.item.price,Price,de_DE
+page.checkout.shipment.item.price,Price,en_US
+page.checkout.shipment.shipping_address.title,Delivery address,de_DE
+page.checkout.shipment.shipping_address.title,Delivery address,en_US
+page.checkout.shipment.requested_delivery_date.label,Requested delivery date,de_DE
+page.checkout.shipment.requested_delivery_date.label,Requested delivery date,en_US
+page.checkout.shipment.requested_delivery_date.placeholder,Leave it empty if you want it ASAP,de_DE
+page.checkout.shipment.requested_delivery_date.placeholder,Leave it empty if you want it ASAP,en_US
+page.checkout.shipment.requested_delivery_date.title,When do you want to be delivered?,de_DE
+page.checkout.shipment.requested_delivery_date.title,When do you want to be delivered?,en_US
+page.checkout.shipping.delivery_time,Delivery time,de_DE
+page.checkout.shipping.delivery_time,Delivery time,en_US
 page.checkout.payment.heading,3. Zahlungsart wählen,de_DE
 page.checkout.payment.heading,3. Payment Method,en_US
 page.checkout.payment.edit,Zahlungsart bearbeiten,de_DE
@@ -135,6 +151,18 @@ page.checkout.summary.billing,Rechnungsadresse,de_DE
 page.checkout.summary.billing,Invoice Address,en_US
 page.checkout.summary.shipping,Lieferadresse,de_DE
 page.checkout.summary.shipping,Shipping Address,en_US
+page.checkout.summary.date_of_birth,Date of Birth,en_US
+page.checkout.summary.date_of_birth,Geburtsdatum,de_DE
+page.checkout.summary.card_type,Card Type,en_US
+page.checkout.summary.card_type,Kartentyp,de_DE
+page.checkout.summary.card_number,Card Number,en_US
+page.checkout.summary.card_number,Nummer,de_DE
+page.checkout.summary.name_on_card,Name on the Card,en_US
+page.checkout.summary.name_on_card,Name auf der Karte,de_DE
+page.checkout.summary.card_expires,Expiry Date,en_US
+page.checkout.summary.card_expires,Gültig bis,de_DE
+page.checkout.summary.complete_checkout,Complete checkout,en_US
+page.checkout.summary.complete_checkout,Gesamtsumme,de_DE
 page.checkout.finalize.heading,4. Prüfen und Kauf abschließen,de_DE
 page.checkout.finalize.heading,4. Check and finalise order,en_US
 shipment.international.parcel.service,International Parcel Services,de_DE
@@ -405,8 +433,12 @@ customer.account.edit_address_information,Edit Address Information,en_US
 customer.account.edit_address_information,Ändern,de_DE
 customer.account.additional_addresses,Additional Addresses,en_US
 customer.account.additional_addresses,Zusätzliche Adressen,de_DE
-customer.account.add_new_address,Add new address,en_US
-customer.account.add_new_address,Neue adresse hinzufügen,de_DE
+customer.account.button.add_new_address,Add new address,en_US
+customer.account.button.add_new_address,Neue adresse hinzufügen,de_DE
+customer.account.add_new_address,Define new address,en_US
+customer.account.add_new_address,Definieren Sie eine neue Adresse,de_DE
+customer.account.deliver_to_multiple_addresses,Deliver to multiple addresses,en_US
+customer.account.deliver_to_multiple_addresses,Deliver to multiple addresses,de_DE
 customer.newsletter.not_subscribed,No newsletter subscription,en_US
 customer.newsletter.not_subscribed,Newsletter nicht abonniert.,de_DE
 customer.profile.order_history,Last Orders,en_US
@@ -503,6 +535,10 @@ customer.order.item_sum,Item total,de_DE
 customer.order.item_sum,Item total,en_US
 customer.order.subTotal,Zwischensumme,de_DE
 customer.order.subTotal,Subtotal,en_US
+customer.order.taxTotal,Mehrwertsteuer,de_DE
+customer.order.taxTotal,Tax,en_US
+customer.order.expenseTotal,"Versandkosten (insgesamt)",de_DE
+customer.order.expenseTotal,"Shipment costs (total)",en_US
 customer.order.shipment,Versand,de_DE
 customer.order.shipment,Shipment,en_US
 customer.order.discount.total,Rabatt,de_DE
@@ -517,6 +553,16 @@ customer.order.shipment_method,Versand,de_DE
 customer.order.shipment_method,Shipment,en_US
 customer.order.payment_method,Zahlungsmethode,de_DE
 customer.order.payment_method,Payment method,en_US
+customer.order.products,Produkte,de_DE
+customer.order.products,Products,en_US
+customer.order.delivery_method,Zustellungsmethode,de_DE
+customer.order.delivery_method,Delivery method,en_US
+customer.order.requested_delivery_date,Angefordertes Lieferdatum,de_DE
+customer.order.requested_delivery_date,Requested delivery date,en_US
+customer.order.payment,Zahlung,de_DE
+customer.order.payment,Payment,en_US
+customer.order.complete_checkout,Gesamtsumme,de_DE
+customer.order.complete_checkout,Complete checkout,en_US
 customer.newsletter.subscription,Newsletter settings,en_US
 customer.newsletter.subscription,Meine Newsletter Einstellungen,de_DE
 customer.newsletter.subscription_agreement,I agree to newsletter subscription,en_US
@@ -571,6 +617,8 @@ customer.customer_id,ID,en_US
 customer.customer_id,ID,de_DE
 forms.submit-btn,Submit,en_US
 forms.submit-btn,Speichern,de_DE
+forms.save-btn,Save,en_US
+forms.save-btn,Sparen,de_DE
 forms.submit.login,Login,en_US
 forms.submit.login,Einloggen,de_DE
 forms.submit.register,Register,en_US
@@ -695,6 +743,8 @@ checkout.step.error.title,Your order has not been placed.,en_US
 checkout.step.error.title,Ihre Bestellung konnte leider nicht durchgeführt werden.,de_DE
 checkout.step.error.text,Something went wrong. Sorry.,en_US
 checkout.step.error.text,Leider ging etwas schief. Tut uns leid.,de_DE
+checkout.step.summary.billing_address,Billing Address,en_US
+checkout.step.summary.billing_address,Rechnungsadresse,de_DE
 customer.password.change.success,Password change successful,en_US
 customer.password.change.success,Passwort erfolgreich geändert,de_DE
 customer.newsletter.subscribed,Newsletter subscribed,en_US
@@ -981,6 +1031,24 @@ mail.order.confirmation.footer.text_line_1,Viele Grüße,de_DE
 mail.order.confirmation.footer.text_line_1,Have a great day!,en_US
 mail.order.confirmation.footer.text_line_2,Dein Spryker Shop,de_DE
 mail.order.confirmation.footer.text_line_2,Your Spryker Shop,en_US
+mail.order.confirmation.shipment_details,Versanddetails,de_DE
+mail.order.confirmation.shipment_details,Shipment details,en_US
+mail.order.confirmation.shipment_number,Lieferungsnummer,de_DE
+mail.order.confirmation.shipment_number,Shipment number,en_US
+mail.order.confirmation.shipping_method,Versandmethode,de_DE
+mail.order.confirmation.shipping_method,Shipment method,en_US
+mail.order.confirmation.delivery_date,Angefordertes Lieferdatum,de_DE
+mail.order.confirmation.delivery_date,Requested delivery date,en_US
+mail.order.confirmation.products_in_shipment,Produkte nach Versand,de_DE
+mail.order.confirmation.products_in_shipment,Products by shipment,en_US
+mail.order.confirmation.product_title,Produktname,de_DE
+mail.order.confirmation.product_title,Product title,en_US
+mail.order.confirmation.item_quantity,Artikel Menge,de_DE
+mail.order.confirmation.item_quantity,Item quantity,en_US
+mail.order.confirmation.item_sku,Artikel Menge,de_DE
+mail.order.confirmation.item_sku,Artikel SKU,en_US
+mail.order.confirmation.item_price_including_tax,Artikelpreis insgesamt inklusive Steuern,de_DE
+mail.order.confirmation.item_price_including_tax,Total item price including taxes,en_US
 mail.order.shipped.subject,Ihre Bestellung %orderReference% ist schon auf dem Weg,de_DE
 mail.order.shipped.subject,Your order %orderReference% is on its way,en_US
 mail.order.shipped.salutation,Hallo,de_DE
@@ -1111,8 +1179,10 @@ product_review.submit.description,Description,en_US
 product_review.submit.description,Rezension,de_DE
 product_review.submit.nickname,Name,en_US
 product_review.submit.nickname,Name,de_DE
-product_review.submit.success,Thank you for your review. We are processing it. It will be live in the shop soon.,en_US
-product_review.submit.success,Vielen Dank für Ihre Bewertung. Wir verarbeiten es. Es wird bald im Laden.,de_DE
+product_review.submit.success,Product review was successfully submitted.,en_US
+product_review.submit.success,Produktrezension wurde erfolgreich versendet.,de_DE
+product_review.error.no_customer,Please login to access this feature.,en_US
+product_review.error.no_customer,"Bitte melden Sie sich an, um Zugiff auf dieses Feature zu erhalten.",de_DE
 cart.promotion.items,Promotional products,en_US
 cart.promotion.items,Werbeprodukte,de_DE
 checkout.payment.provider.DummyPayment,Dummy Payment,en_US
@@ -1305,8 +1375,8 @@ mail.company.user.invitation.body.html,"Hi %name%, Sie wurden eingeladen, einem 
 mail.company.user.invitation.body.text,"Hi %name%, You have been invited to join a Company Account on the Spryker Demo-shop, please follow this link %invitationLink% to complete your registration",en_US
 mail.company.user.invitation.body.text,"Hi %name%, Sie wurden eingeladen, einem Unternehmenskonto im Spryker Demo-Shop beizutreten. Bitte folgen Sie diesem Link %invitationLink%, um Ihre Registrierung abzuschließen",de_DE
 company.account.overview,Übersicht,de_DE
-company.account.add_new_address,Add new address,en_US
-company.account.add_new_address,Neue adresse hinzufügen,de_DE
+company.account.add_new_address,Define new address,en_US
+company.account.add_new_address,Definieren Sie eine neue Adresse,de_DE
 company.account.table.actions,Actions,en_US
 company.account.table.actions,Aktion,de_DE
 company.account.business_unit.view,View,en_US
@@ -1511,8 +1581,8 @@ quick-order.input-quantity.message.error,Die bestellte Anzahl wurde auf die näc
 quick-order.input-quantity.message.error,The ordered quantity was adjusted to the next possible quantity for the article.,en_US
 quick-order.upload-order.errors.upload-order-invalid-sku-item,Product with this SKU is not found.,en_US
 quick-order.upload-order.errors.upload-order-invalid-sku-item,Produkt mit dieser SKU wurde nicht gefunden.,de_DE
-checkout.pre.check.shipment.failed,Invalid shipping method.,en_US
-checkout.pre.check.shipment.failed,Ungültige Versandmethode,de_DE
+checkout.pre.check.shipment.failed,Invalid shipping method %method_name$ (%carrier_name%).,en_US
+checkout.pre.check.shipment.failed,Ungültige Versandmethode %method_name$ (%carrier_name%).,de_DE
 measurement_units.item.name,Item,en_US
 measurement_units.item.name,Stück,de_DE
 measurement_units.standard.weight.kilo.name,Kilo,en_US
@@ -2433,6 +2503,8 @@ customer.account.shopping_list.remove_all,Remove all,en_US
 customer.account.shopping_list.remove_all,Alles entfernen,de_DE
 validation.not_blank,This value should not be blank.,en_US
 validation.not_blank,Dieses Feld sollte nicht leer sein.,de_DE
+validation.invalid_date,Date should be in correct format %s.,en_US
+validation.invalid_date,Datum sollte im richtigen Format vorliegen %s.,de_DE
 validation.address_number,This value is not valid (accepted format e.g.: 12c).,en_US
 validation.address_number,Dieser Wert ist nicht gültig (akzeptiertes Format z. B. 12c).,de_DE
 validation.zip_code,This field should contain exactly 5 digits.,en_US
@@ -2445,8 +2517,8 @@ validation.max_length.plural,This value is too long. It should have {{ limit }} 
 validation.max_length.plural,Dieser Wert ist zu lang. Es sollte maximal {{ limit }} Zeichen oder weniger haben.,de_DE
 validation.email,This value is not a valid email address.,en_US
 validation.email,Dieser Wert ist keine gültige E-Mail-Adresse.,de_DE
-validation.choice,This value is not valid,en_US
-validation.choice,Dieser Wert ist nicht gültig,de_DE
+validation.choice,Product rating should be selected.,en_US
+validation.choice,Produktbewertung soll ausgewählt werden.,de_DE
 shopping_list_widget.items,Items,en_US
 shopping_list_widget.items,Artikel,de_DE
 shopping_list_widget.full_access,Full access,en_US
@@ -2831,6 +2903,24 @@ comment_widget.tags.delivery,Delivery,en_US
 comment_widget.tags.delivery,Lieferung,de_DE
 comment_widget.tags.important,Important,en_US
 comment_widget.tags.important,Wichtig,de_DE
+checkout.step.summary.shipment_costs_total,"Shipment costs(total)",en_US
+checkout.step.summary.shipment_costs_total,"Versandkosten (insgesamt)",de_DE
+checkout.step.summary.delivery_method,Zustellungsmethode,de_DE
+checkout.step.summary.delivery_method,Delivery method,en_US
+checkout.step.summary.requested_delivery_date,Angefordertes Lieferdatum,de_DE
+checkout.step.summary.requested_delivery_date,Requested delivery date,en_US
+checkout.step.summary.delivery_address,Lieferadresse,de_DE
+checkout.step.summary.delivery_address,Delivery Address,en_US
+checkout.step.summary.products,"Products",en_US
+checkout.step.summary.products,"Produkte",de_DE
+page.checkout.address.manage_your_addresses,"Manage your addresses",en_US
+page.checkout.address.manage_your_addresses,"Verwalten Sie Ihre Adressen",de_DE
+page.checkout.address.address_select.label,Select a delivery address,en_US
+page.checkout.address.address_select.label,Wählen Sie eine Lieferadresse,de_DE
+page.checkout.address.address_select.placeholder,Select an address,en_US
+page.checkout.address.address_select.placeholder,Wählen Sie eine Adresse,de_DE
+customer.order.delivery_address,Lieferadresse,de_DE
+customer.order.delivery_address,Delivery address,en_US
 shipment.validation.not_found,Shipment method not found.,en_US
 shipment.validation.not_found,Versandart nicht gefunden.,de_DE
 billing.address.validation.is_missing,Billing address is missing,en_US
