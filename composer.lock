@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "8b5077c1ecbf7ef1afa061f3ea004368",
@@ -5463,19 +5463,19 @@
             "authors": [
                 {
                     "name": "Fabien Potencier",
+                    "role": "Lead Developer",
                     "email": "fabien@symfony.com",
-                    "homepage": "http://fabien.potencier.org",
-                    "role": "Lead Developer"
+                    "homepage": "http://fabien.potencier.org"
                 },
                 {
                     "name": "Twig Team",
-                    "homepage": "https://twig.symfony.com/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://twig.symfony.com/contributors"
                 },
                 {
                     "name": "Armin Ronacher",
-                    "email": "armin.ronacher@active-4.com",
-                    "role": "Project Founder"
+                    "role": "Project Founder",
+                    "email": "armin.ronacher@active-4.com"
                 }
             ],
             "description": "Twig, the flexible, fast, and secure template language for PHP",
@@ -7385,7 +7385,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette NEON: encodes and decodes NEON file format.",
+            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -7789,7 +7789,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-13T13:21:38+00:00"
+            "time": "2017-12-12T17:28:44+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -8195,8 +8195,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Library that provides collection, processing, and rendering functionality for PHP code coverage information.",
@@ -9696,12 +9696,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-generator.git",
-                "reference": "c3162a5f88950a0ec403d1fc44d91c846ef425fb"
+                "reference": "3edb5fda352764ed0cda3e9d2133e127cbfec747"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-generator/zipball/c3162a5f88950a0ec403d1fc44d91c846ef425fb",
-                "reference": "c3162a5f88950a0ec403d1fc44d91c846ef425fb",
+                "url": "https://api.github.com/repos/spryker/code-generator/zipball/3edb5fda352764ed0cda3e9d2133e127cbfec747",
+                "reference": "3edb5fda352764ed0cda3e9d2133e127cbfec747",
                 "shasum": ""
             },
             "require": {
@@ -9732,7 +9732,7 @@
                 "MIT"
             ],
             "description": "CodeGenerator module",
-            "time": "2019-07-08T08:22:52+00:00"
+            "time": "2019-09-25T12:21:57+00:00"
         },
         {
             "name": "spryker/code-sniffer",
@@ -9793,7 +9793,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "806e5fea40193a6050ec49377267e7cad0a7bd2e"
+                "reference": "6b8760e40f9836dbd9609da3bf32b690f30f5563"
             },
             "require": {
                 "php": ">=7.1",
@@ -9806,7 +9806,7 @@
                 "spryker/zend": "^2.0.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*"
+                "spryker/code-sniffer": "dev-master"
             },
             "bin": [
                 "bin/spryker-dev-console"
@@ -9824,17 +9824,17 @@
             },
             "scripts": {
                 "cs-check": [
-                    "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/"
+                    "phpcs --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml -p -s src/"
                 ],
                 "cs-fix": [
-                    "phpcbf --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/"
+                    "phpcbf --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml -p src/"
                 ]
             },
             "license": [
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2019-09-17T12:33:53+00:00"
+            "time": "2019-09-25T13:04:01+00:00"
         },
         {
             "name": "spryker/git-hook",
