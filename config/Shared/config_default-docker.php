@@ -183,10 +183,6 @@ $config[KernelConstants::CORE_NAMESPACES] = [
 $config[UserConstants::USER_SYSTEM_USERS] = [
     'yves_system',
 ];
-// For a better performance you can turn off Zed authentication
-$AUTH_ZED_ENABLED = false;
-$config[AuthConstants::AUTH_ZED_ENABLED] = $AUTH_ZED_ENABLED;
-$config[ZedRequestConstants::AUTH_ZED_ENABLED] = $AUTH_ZED_ENABLED;
 $config[AuthConstants::AUTH_DEFAULT_CREDENTIALS] = [
     'yves_system' => [
         'rules' => [
@@ -477,7 +473,6 @@ $config[QueueConstants::QUEUE_SERVER_ID] = (gethostname()) ?: php_uname('n');
 $config[QueueConstants::QUEUE_WORKER_INTERVAL_MILLISECONDS] = 1000;
 $config[QueueConstants::QUEUE_PROCESS_TRIGGER_INTERVAL_MICROSECONDS] = 1001;
 $config[QueueConstants::QUEUE_WORKER_MAX_THRESHOLD_SECONDS] = 59;
-$config[QueueConstants::QUEUE_WORKER_LOG_ACTIVE] = false;
 
 /*
  * Queues can have different adapters and maximum worker number

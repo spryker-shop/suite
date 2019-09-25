@@ -8,6 +8,7 @@
 namespace Pyz\Zed\EventDispatcher;
 
 use Spryker\Zed\Application\Communication\Plugin\EventDispatcher\HeadersSecurityEventDispatcherPlugin;
+use Spryker\Zed\EventBehavior\Communication\Plugin\EventDispatcher\EventBehaviorEventDispatcherPlugin;
 use Spryker\Zed\EventDispatcher\EventDispatcherDependencyProvider as SprykerEventDispatcherDependencyProvider;
 use Spryker\Zed\Locale\Communication\Plugin\EventDispatcher\LocaleEventDispatcherPlugin;
 use Spryker\Zed\Router\Communication\Plugin\EventDispatcher\RouterLocaleEventDispatcherPlugin;
@@ -25,6 +26,7 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
             new LocaleEventDispatcherPlugin(),
             new RouterLocaleEventDispatcherPlugin(),
             new HeadersSecurityEventDispatcherPlugin(),
+            new EventBehaviorEventDispatcherPlugin(),
         ];
     }
 }
