@@ -17,7 +17,8 @@ use Spryker\Service\Synchronization\SynchronizationServiceInterface;
 use Spryker\Zed\UrlStorage\Business\Storage\UrlStorageWriter as SprykerUrlStorageWriter;
 use Spryker\Zed\UrlStorage\Dependency\Facade\UrlStorageToStoreFacadeInterface;
 use Spryker\Zed\UrlStorage\Dependency\Service\UrlStorageToUtilSanitizeServiceInterface;
-use Spryker\Zed\UrlStorage\Persistence\UrlStorageQueryContainerInterface;
+use Spryker\Zed\UrlStorage\Persistence\UrlStorageEntityManagerInterface;
+use Spryker\Zed\UrlStorage\Persistence\UrlStorageRepositoryInterface;
 
 /**
  * @example
@@ -51,21 +52,23 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
 
     /**
      * @param \Spryker\Zed\UrlStorage\Dependency\Service\UrlStorageToUtilSanitizeServiceInterface $utilSanitize
-     * @param \Spryker\Zed\UrlStorage\Persistence\UrlStorageQueryContainerInterface $queryContainer
-     * @param bool $isSendingToQueue
+     * @param \Spryker\Zed\UrlStorage\Persistence\UrlStorageRepositoryInterface $urlStorageRepository
+     * @param \Spryker\Zed\UrlStorage\Persistence\UrlStorageEntityManagerInterface $urlStorageEntityManager
      * @param \Spryker\Zed\UrlStorage\Dependency\Facade\UrlStorageToStoreFacadeInterface $storeFacade
+     * @param bool $isSendingToQueue
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
      */
     public function __construct(
         UrlStorageToUtilSanitizeServiceInterface $utilSanitize,
-        UrlStorageQueryContainerInterface $queryContainer,
-        bool $isSendingToQueue,
+        UrlStorageRepositoryInterface $urlStorageRepository,
+        UrlStorageEntityManagerInterface $urlStorageEntityManager,
         UrlStorageToStoreFacadeInterface $storeFacade,
+        bool $isSendingToQueue,
         SynchronizationServiceInterface $synchronizationService,
         QueueClientInterface $queueClient
     ) {
-        parent::__construct($utilSanitize, $queryContainer, $isSendingToQueue, $storeFacade);
+        parent::__construct($utilSanitize, $urlStorageRepository, $urlStorageEntityManager, $storeFacade, $isSendingToQueue);
 
         $this->synchronizationService = $synchronizationService;
         $this->queueClient = $queueClient;
