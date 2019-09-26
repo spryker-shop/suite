@@ -8,17 +8,23 @@
 namespace PyzTest\Yves\Checkout\Process\Steps;
 
 use Codeception\Test\Unit;
+use Generated\Shared\DataBuilder\ItemBuilder;
+use Generated\Shared\DataBuilder\PaymentBuilder;
+use Generated\Shared\DataBuilder\QuoteBuilder;
 use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\PaymentTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\ShipmentTransfer;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface;
+use SprykerShop\Yves\CheckoutPage\CheckoutPageConfig;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToProductBundleClientInterface;
+use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\SummaryStep;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Yves
  * @group Checkout
@@ -51,6 +57,24 @@ class SummaryStepTest extends Unit
     /**
      * @return void
      */
+    public function testPostConditionShouldReturnWhenQuoteReadyForSummaryDisplayWithItemLevelShipment()
+    {
+        $summaryStep = $this->createSummaryStep();
+
+        $quoteTransfer = (new QuoteBuilder())
+            ->withBillingAddress()
+            ->withItem((new ItemBuilder())->withShipment())
+            ->build();
+
+        $paymentTransfer = (new PaymentBuilder([PaymentTransfer::PAYMENT_PROVIDER => 'test']))->build();
+        $quoteTransfer->setPayment($paymentTransfer);
+
+        $this->assertTrue($summaryStep->postCondition($quoteTransfer));
+    }
+
+    /**
+     * @return void
+     */
     public function testRequireInputShouldBeTrue()
     {
         $summaryStep = $this->createSummaryStep();
@@ -67,6 +91,8 @@ class SummaryStepTest extends Unit
 
         return new SummaryStep(
             $productBundleClient,
+            $this->createShipmentServiceMock(),
+            $this->createCheckoutPageConfigMock(),
             'shipment',
             'escape_route'
         );
@@ -78,6 +104,24 @@ class SummaryStepTest extends Unit
     protected function createProductBundleClient()
     {
         return $this->getMockBuilder(CheckoutPageToProductBundleClientInterface::class)->getMock();
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceInterface
+     */
+    protected function createShipmentServiceMock()
+    {
+        return $this->getMockBuilder(CheckoutPageToShipmentServiceInterface::class)->getMock();
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\CheckoutPageConfig
+     */
+    protected function createCheckoutPageConfigMock()
+    {
+        $mock = $this->getMockBuilder(CheckoutPageConfig::class)->getMock();
+
+        return $mock;
     }
 
     /**
