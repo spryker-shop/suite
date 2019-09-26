@@ -19,10 +19,10 @@ use Generated\Shared\Transfer\QuoteTransfer;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageConfig;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCustomerClientInterface;
-use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToCustomerServiceInterface;
+use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToCustomerServiceBridge;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep\AddressStepExecutor;
-use SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface;
+use SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep\PostConditionChecker;
 use SprykerShop\Yves\CompanyPage\Plugin\CheckoutPage\CompanyUnitAddressExpanderPlugin;
 use SprykerShop\Yves\CustomerPage\Plugin\CheckoutPage\CustomerAddressExpanderPlugin;
 use Symfony\Component\HttpFoundation\Request;
@@ -40,6 +40,11 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class AddressStepTest extends Unit
 {
+    /**
+     * @var \PyzTest\Yves\Checkout\CheckoutBusinessTester
+     */
+    public $tester;
+
     /**
      * @return void
      */
@@ -269,21 +274,47 @@ class AddressStepTest extends Unit
     /**
      * @return void
      */
-    public function testPostConditionIfAddressesIsSetShouldReturnTrue()
+    public function testPostConditionIfEmptyAddressesIsSetShouldReturnFalse(): void
     {
+        // Arrange
         $addressStep = $this->createAddressStep(new CustomerTransfer());
         $quoteTransfer = new QuoteTransfer();
         $quoteTransfer->setShippingAddress(new AddressTransfer());
         $quoteTransfer->setBillingAddress(new AddressTransfer());
 
-        $this->assertFalse($addressStep->postCondition($quoteTransfer));
+        // Act
+        $result = $addressStep->postCondition($quoteTransfer);
+
+        // Assert
+        $this->assertFalse($result);
     }
 
     /**
      * @return void
      */
-    public function testPostConditionIfAddressesIsSetShouldReturnTrueWithItemLevelShippingAddresses()
+    public function testPostConditionIfNotEmptyAddressesIsSetShouldReturnTrue(): void
     {
+        // Arrange
+        $addressStep = $this->createAddressStep(new CustomerTransfer());
+
+        $quoteTransfer = (new QuoteBuilder())
+            ->withShippingAddress()
+            ->withAnotherBillingAddress()
+            ->build();
+
+        // Act
+        $result = $addressStep->postCondition($quoteTransfer);
+
+        // Assert
+        $this->assertTrue($result);
+    }
+
+    /**
+     * @return void
+     */
+    public function testPostConditionIfAddressesIsSetShouldReturnTrueWithItemLevelShippingAddresses(): void
+    {
+        // Arrange
         $addressStep = $this->createAddressStep(new CustomerTransfer());
 
         $shipmentBuilder = (new ShipmentBuilder())
@@ -295,7 +326,11 @@ class AddressStepTest extends Unit
             ->withItem($itemBuilder)
             ->build();
 
-        $this->assertFalse($addressStep->postCondition($quoteTransfer));
+        // Act
+        $result = $addressStep->postCondition($quoteTransfer);
+
+        // Assert
+        $this->assertTrue($result);
     }
 
     /**
@@ -349,7 +384,10 @@ class AddressStepTest extends Unit
      */
     protected function createCustomerServiceMock()
     {
-        return $this->getMockBuilder(CheckoutPageToCustomerServiceInterface::class)->getMock();
+        return $this->getMockBuilder(CheckoutPageToCustomerServiceBridge::class)
+            ->setConstructorArgs([$this->tester->getCustomerService()])
+            ->enableProxyingToOriginalMethods()
+            ->getMock();
     }
 
     /**
@@ -422,7 +460,10 @@ class AddressStepTest extends Unit
      */
     protected function createPostConditionCheckerMock()
     {
-        return $this->getMockBuilder(PostConditionCheckerInterface::class)->getMock();
+        return $this->getMockBuilder(PostConditionChecker::class)
+            ->setConstructorArgs([$this->createCustomerServiceMock()])
+            ->enableProxyingToOriginalMethods()
+            ->getMock();
     }
 
     /**
