@@ -32,6 +32,7 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  */
 class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
+    protected const TEST_USERNAME = 'test username';
     protected const TEST_PASSWORD = 'test password';
     protected const ANONYMOUS_CUSTOMER_REFERENCE = 'anonymous:666';
 
@@ -167,16 +168,16 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
     protected function createCustomer(CartsApiTester $I): void
     {
         $customerTransfer = $I->haveCustomer([
-            'password' => static::TEST_PASSWORD,
+            CustomerTransfer::USERNAME => static::TEST_USERNAME,
+            CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
+            CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,
         ]);
-
-        $customerTransfer->setNewPassword(static::TEST_PASSWORD);
 
         $this->customerTransfer = $customerTransfer;
     }
 
     /**
-     * @param CartsApiTester $I
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
      *
      * @return void
      */
@@ -196,7 +197,7 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
                     ItemTransfer::ID => $this->productConcreteTransfer1->getIdProductConcrete(),
                     ItemTransfer::UNIT_PRICE => random_int(100, 1000),
                     ItemTransfer::QUANTITY => 5,
-                ]
+                ],
             ],
             QuoteTransfer::STORE => [StoreTransfer::NAME => 'DE'],
         ]);

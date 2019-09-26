@@ -3,7 +3,7 @@
   "description": "Spryker Suite (internal)",
   "license": "MIT",
   "require": {
-    "spryker/spryker": "dev-feature/glue-7922-guest-cart-becomes-user-cart-when-customer-logs-in",
+    "spryker/spryker": "dev-feature/glue-7681/dev-convert-guest-cart-to-customer-cart-on-login",
     "spryker/spryker-shop": "dev-master",
     "spryker-eco/loggly": "dev-master",
     "spryker/rabbit-mq": "dev-master",
@@ -159,7 +159,7 @@
       "GitHook\\Composer\\Scripts\\HookInstaller::installProjectHooks"
     ],
     "phpstan": [
-      "php -d memory_limit=1024M vendor/bin/phpstan analyze -c phpstan.neon src/ -l 4"
+      "php -d memory_limit=1024M vendor/bin/phpstan analyze -l 5 -c phpstan.neon src/"
     ],
     "phpstan-setup": "vendor/bin/console dev:ide:generate-auto-completion"
   }

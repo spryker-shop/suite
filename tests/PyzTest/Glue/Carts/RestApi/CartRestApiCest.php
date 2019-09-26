@@ -64,9 +64,13 @@ class CartRestApiCest
      */
     protected function requestCustomerLoginWithXAnonymousCustomerUniqueIdHeader(CartsApiTester $I): void
     {
-        $I->amUnauthorizedGlueUser(static::VALUE_FOR_ANONYMOUS);
-        $token = $I->haveAuthorizationToGlue($this->fixtures->getCustomerTransfer())['accessToken'];
-        $I->amAuthorizedGlueUser($token);
+        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', static::VALUE_FOR_ANONYMOUS);
+        $token = $I->haveAuthorizationToGlue(
+            $this->fixtures->getCustomerTransfer(),
+            'anonymous:' . static::VALUE_FOR_ANONYMOUS)
+            ->getAccessToken();
+
+        $I->amBearerAuthenticated($token);
     }
 
     /**
