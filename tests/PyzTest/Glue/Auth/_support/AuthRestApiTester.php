@@ -1,10 +1,17 @@
 <?php
+
+/**
+ * This file is part of the Spryker Suite.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace PyzTest\Glue\Auth;
 
 use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
 
 /**
  * Inherited Methods
+ *
  * @method void wantToTest($text)
  * @method void wantTo($text)
  * @method void execute($callable)
@@ -17,7 +24,7 @@ use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
  * @method void pause()
  *
  * @SuppressWarnings(PHPMD)
-*/
+ */
 class AuthRestApiTester extends ApiEndToEndTester
 {
     use _generated\AuthRestApiTesterActions;

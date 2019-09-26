@@ -1,15 +1,29 @@
 <?php
 
+/**
+ * This file is part of the Spryker Suite.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace PyzTest\Glue\Auth\RestApi;
 
 use Codeception\Util\HttpCode;
 use PyzTest\Glue\Auth\AuthRestApiTester;
 use Spryker\Glue\AuthRestApi\AuthRestApiConfig;
 
+/**
+ * Auto-generated group annotations
+ *
+ * @group PyzTest
+ * @group Glue
+ * @group Auth
+ * @group RestApi
+ * @group AccessTokensApiCest
+ * Add your own group annotations below this line
+ * @group EndToEnd
+ */
 class AccessTokensApiCest
 {
-    protected const KEY_ACCESS_TOKEN = 'accessToken';
-
     /**
      * @var \PyzTest\Glue\Auth\RestApi\AccessTokensApiFixtures
      */
@@ -26,7 +40,7 @@ class AccessTokensApiCest
     }
 
     /**
-     * @param AuthRestApiTester $I
+     * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
      *
      * @return void
      */
@@ -38,9 +52,9 @@ class AccessTokensApiCest
                 'type' => AuthRestApiConfig::RESOURCE_ACCESS_TOKENS,
                 'attributes' => [
                     'username' => $this->fixtures->getCustomerTransfer()->getEmail(),
-                    'password' => AccessTokensApiFixtures::TEST_PASSWORD
-                ]
-            ]
+                    'password' => AccessTokensApiFixtures::TEST_PASSWORD,
+                ],
+            ],
         ]);
 
         //Arrange
@@ -49,7 +63,7 @@ class AccessTokensApiCest
     }
 
     /**
-     * @param AuthRestApiTester $I
+     * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
      *
      * @return void
      */
@@ -61,9 +75,9 @@ class AccessTokensApiCest
                 'type' => AuthRestApiConfig::RESOURCE_ACCESS_TOKENS,
                 'attributes' => [
                     'username' => uniqid($this->fixtures->getCustomerTransfer()->getEmail()),
-                    'password' => AccessTokensApiFixtures::TEST_PASSWORD
-                ]
-            ]
+                    'password' => AccessTokensApiFixtures::TEST_PASSWORD,
+                ],
+            ],
         ]);
 
         //Arrange
@@ -71,7 +85,7 @@ class AccessTokensApiCest
     }
 
     /**
-     * @param AuthRestApiTester $I
+     * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
      *
      * @return void
      */
@@ -83,9 +97,9 @@ class AccessTokensApiCest
                 'type' => AuthRestApiConfig::RESOURCE_ACCESS_TOKENS,
                 'attributes' => [
                     'username' => uniqid($this->fixtures->getCustomerTransfer()->getEmail()),
-                    'password' => uniqid(AccessTokensApiFixtures::TEST_PASSWORD)
-                ]
-            ]
+                    'password' => uniqid(AccessTokensApiFixtures::TEST_PASSWORD),
+                ],
+            ],
         ]);
 
         //Arrange
@@ -93,7 +107,7 @@ class AccessTokensApiCest
     }
 
     /**
-     * @param AuthRestApiTester $I
+     * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
      *
      * @return void
      */
@@ -106,8 +120,8 @@ class AccessTokensApiCest
                 'attributes' => [
                     'username' => $this->fixtures->getCustomerTransfer()->getEmail(),
                     'password' => '',
-                ]
-            ]
+                ],
+            ],
         ]);
 
         //Arrange
@@ -115,7 +129,7 @@ class AccessTokensApiCest
     }
 
     /**
-     * @param AuthRestApiTester $I
+     * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
      *
      * @return void
      */
@@ -128,8 +142,8 @@ class AccessTokensApiCest
                 'attributes' => [
                     'username' => '',
                     'password' => AccessTokensApiFixtures::TEST_PASSWORD,
-                ]
-            ]
+                ],
+            ],
         ]);
 
         //Arrange
@@ -137,7 +151,7 @@ class AccessTokensApiCest
     }
 
     /**
-     * @param AuthRestApiTester $I
+     * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
      *
      * @return void
      */
@@ -149,7 +163,7 @@ class AccessTokensApiCest
             'attributes' => [
                 'username' => $this->fixtures->getCustomerTransfer()->getEmail(),
                 'password' => AccessTokensApiFixtures::TEST_PASSWORD,
-            ]
+            ],
         ]);
 
         //Arrange
@@ -157,22 +171,21 @@ class AccessTokensApiCest
     }
 
     /**
-     * @param AuthRestApiTester $I
+     * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
      *
      * @return void
      */
     public function invalidAccessTokenRequestType(AuthRestApiTester $I): void
     {
-        //Assert
-        $customerTransfer = $this->fixtures->getCustomerTransfer();
-
         //Act
         $I->sendPOST(AuthRestApiConfig::RESOURCE_ACCESS_TOKENS, [
-            'type' => AuthRestApiConfig::RESOURCE_REFRESH_TOKENS,
-            'attributes' => [
-                'username' => $customerTransfer->getEmail(),
-                'password' => AccessTokensApiFixtures::TEST_PASSWORD,
-            ]
+            'data' => [
+                'type' => AuthRestApiConfig::RESOURCE_REFRESH_TOKENS,
+                'attributes' => [
+                    'username' => $this->fixtures->getCustomerTransfer()->getEmail(),
+                    'password' => AccessTokensApiFixtures::TEST_PASSWORD,
+                ],
+            ],
         ]);
 
         //Arrange

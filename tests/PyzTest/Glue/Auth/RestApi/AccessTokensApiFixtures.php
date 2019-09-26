@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This file is part of the Spryker Suite.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace PyzTest\Glue\Auth\RestApi;
 
 use Generated\Shared\Transfer\CustomerTransfer;
@@ -16,10 +21,10 @@ class AccessTokensApiFixtures implements FixturesBuilderInterface, FixturesConta
      */
     protected $customerTransfer;
 
-    /**i
-     * @param AuthRestApiTester $I
+    /**
+     * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
      *
-     * @return FixturesContainerInterface
+     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
     public function buildFixtures(AuthRestApiTester $I): FixturesContainerInterface
     {
