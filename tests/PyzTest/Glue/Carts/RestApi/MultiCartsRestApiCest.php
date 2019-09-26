@@ -59,7 +59,7 @@ class MultiCartsRestApiCest
     public function requestCreateGuestCart(CartsApiTester $I): void
     {
         // Arrange
-        $I->amUnauthorizedGlueUser(static::VALUE_FOR_ANONYMOUS);
+        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', static::VALUE_FOR_ANONYMOUS);
 
         // Act
         $I->sendPOST(
@@ -106,7 +106,7 @@ class MultiCartsRestApiCest
     public function requestAddItemsToGuestCart(CartsApiTester $I): void
     {
         // Arrange
-        $I->amUnauthorizedGlueUser(static::VALUE_FOR_ANONYMOUS);
+        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', static::VALUE_FOR_ANONYMOUS);
         $I->sendGET(CartsRestApiConfig::RESOURCE_GUEST_CARTS);
         $guestCartUuid = $I->grabDataFromResponseByJsonPath('$.data[0]')[0]['id'];
 
@@ -149,8 +149,7 @@ class MultiCartsRestApiCest
     public function requestCreateCart(CartsApiTester $I): void
     {
         // Arrange
-        $token = $I->haveAuthorizationToGlue($this->fixtures->getCustomerTransfer())['accessToken'];
-        $I->amAuthorizedGlueUser($token);
+        $this->authorizeCustomer($I);
 
         // Act
         $I->sendPOST(
@@ -219,8 +218,7 @@ class MultiCartsRestApiCest
     public function requestCreateCartWithoutPriceMode(CartsApiTester $I): void
     {
         // Arrange
-        $token = $I->haveAuthorizationToGlue($this->fixtures->getCustomerTransfer())['accessToken'];
-        $I->amAuthorizedGlueUser($token);
+        $this->authorizeCustomer($I);
 
         // Act
         $I->sendPOST(
@@ -253,8 +251,7 @@ class MultiCartsRestApiCest
     public function requestCreateCartWithoutPriceCurrency(CartsApiTester $I): void
     {
         // Arrange
-        $token = $I->haveAuthorizationToGlue($this->fixtures->getCustomerTransfer())['accessToken'];
-        $I->amAuthorizedGlueUser($token);
+        $this->authorizeCustomer($I);
 
         // Act
         $I->sendPOST(
@@ -314,7 +311,7 @@ class MultiCartsRestApiCest
      */
     public function requestCreateGuestCartWithoutSku(CartsApiTester $I): void
     {
-        $I->amUnauthorizedGlueUser(static::VALUE_FOR_ANONYMOUS);
+        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', static::VALUE_FOR_ANONYMOUS);
 
         // Act
         $I->sendPOST(
@@ -343,7 +340,7 @@ class MultiCartsRestApiCest
      */
     public function requestCreateGuestCartWithoutQuantity(CartsApiTester $I): void
     {
-        $I->amUnauthorizedGlueUser(static::VALUE_FOR_ANONYMOUS);
+        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', static::VALUE_FOR_ANONYMOUS);
 
         // Act
         $I->sendPOST(
@@ -373,8 +370,7 @@ class MultiCartsRestApiCest
     public function requestFindCarts(CartsApiTester $I): void
     {
         // Arrange
-        $token = $I->haveAuthorizationToGlue($this->fixtures->getCustomerTransfer())['accessToken'];
-        $I->amAuthorizedGlueUser($token);
+        $this->authorizeCustomer($I);
 
         // Act
         $I->sendGET(
@@ -391,5 +387,20 @@ class MultiCartsRestApiCest
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
         $I->seeResponseDataContainsNonEmptyCollection();
+    }
+
+    /**
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    protected function authorizeCustomer(CartsApiTester $I): void
+    {
+        $token = $I->haveAuthorizationToGlue(
+            $this->fixtures->getCustomerTransfer(),
+            'anonymous:' . static::VALUE_FOR_ANONYMOUS)
+            ->getAccessToken();
+
+        $I->amBearerAuthenticated($token);
     }
 }
