@@ -14,6 +14,7 @@ use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Glue
  * @group Carts
@@ -67,8 +68,8 @@ class CartRestApiCest
         $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', static::VALUE_FOR_ANONYMOUS);
         $token = $I->haveAuthorizationToGlue(
             $this->fixtures->getCustomerTransfer(),
-            'anonymous:' . static::VALUE_FOR_ANONYMOUS)
-            ->getAccessToken();
+            'anonymous:' . static::VALUE_FOR_ANONYMOUS
+        )->getAccessToken();
 
         $I->amBearerAuthenticated($token);
     }
