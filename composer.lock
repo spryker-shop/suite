@@ -604,8 +604,8 @@
             "authors": [
                 {
                     "name": "Filipe Dobreira",
-                    "role": "Developer",
-                    "homepage": "https://github.com/filp"
+                    "homepage": "https://github.com/filp",
+                    "role": "Developer"
                 }
             ],
             "description": "php error handling for cool kids",
@@ -1065,9 +1065,9 @@
             "authors": [
                 {
                     "name": "Ignace Nyamagana Butera",
-                    "role": "Developer",
                     "email": "nyamsprod@gmail.com",
-                    "homepage": "https://github.com/nyamsprod/"
+                    "homepage": "https://github.com/nyamsprod/",
+                    "role": "Developer"
                 }
             ],
             "description": "Csv data manipulation made easy in PHP",
@@ -1374,8 +1374,8 @@
             "authors": [
                 {
                     "name": "Frank Kleine",
-                    "role": "Developer",
-                    "homepage": "http://frankkleine.de/"
+                    "homepage": "http://frankkleine.de/",
+                    "role": "Developer"
                 }
             ],
             "description": "Virtual file system to mock the real file system in unit tests.",
@@ -1638,18 +1638,18 @@
                 },
                 {
                     "name": "John Kelly",
-                    "role": "Maintainer",
-                    "email": "johnmkelly86@gmail.com"
+                    "email": "johnmkelly86@gmail.com",
+                    "role": "Maintainer"
                 },
                 {
                     "name": "Raúl Araya",
-                    "role": "Maintainer",
-                    "email": "nubeiro@gmail.com"
+                    "email": "nubeiro@gmail.com",
+                    "role": "Maintainer"
                 },
                 {
                     "name": "Luke Bakken",
-                    "role": "Maintainer",
-                    "email": "luke@bakken.io"
+                    "email": "luke@bakken.io",
+                    "role": "Maintainer"
                 }
             ],
             "description": "Formerly videlalvaro/php-amqplib.  This library is a pure PHP implementation of the AMQP protocol. It's been tested against RabbitMQ.",
@@ -1955,7 +1955,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -2609,21 +2609,23 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/silexphp.git",
-                "reference": "2ab91b65ebc882dbb04179dc8bc8c0e1d44a85e3"
+                "reference": "1cfd9e3aae1354289f5b1677aee5d28e2b45d97e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/silexphp/zipball/2ab91b65ebc882dbb04179dc8bc8c0e1d44a85e3",
-                "reference": "2ab91b65ebc882dbb04179dc8bc8c0e1d44a85e3",
+                "url": "https://api.github.com/repos/spryker/silexphp/zipball/1cfd9e3aae1354289f5b1677aee5d28e2b45d97e",
+                "reference": "1cfd9e3aae1354289f5b1677aee5d28e2b45d97e",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/container": "^1.1.0",
                 "symfony/event-dispatcher": "^3.0.0 || ^4.0.0",
-                "symfony/http-foundation": "^3.0.0 || ^4.0.0",
                 "symfony/http-kernel": "^3.0.0 || ^4.0.0",
                 "symfony/routing": "^3.0.0 || ^4.0.0"
+            },
+            "conflict": {
+                "silexphp/silex": "<3.0.0"
             },
             "require-dev": {
                 "doctrine/dbal": "~2.2",
@@ -2679,7 +2681,7 @@
             "keywords": [
                 "microframework"
             ],
-            "time": "2019-08-01T10:39:08+00:00"
+            "time": "2019-09-26T07:14:44+00:00"
         },
         {
             "name": "spryker/spryker",
@@ -2687,7 +2689,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "89351d3f8a2d6c6ddc71bbdc1ed3f244e93d2625"
+                "reference": "417d85af802e47162cbdd2e1c5fa42507aac1c98"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2957,7 +2959,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-09-26T10:39:59+00:00"
+            "time": "2019-09-26T12:55:16+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2965,7 +2967,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "94d96d8bde3cb0553c2a8ad19985229554f40337"
+                "reference": "f18a125d2cf371e0f6b89ef6b244d659ee54456b"
             },
             "require": {
                 "php": ">=7.1"
@@ -3041,7 +3043,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-09-24T16:13:36+00:00"
+            "time": "2019-09-26T11:24:45+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -5463,19 +5465,19 @@
             "authors": [
                 {
                     "name": "Fabien Potencier",
-                    "role": "Lead Developer",
                     "email": "fabien@symfony.com",
-                    "homepage": "http://fabien.potencier.org"
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
                 },
                 {
                     "name": "Twig Team",
-                    "role": "Contributors",
-                    "homepage": "https://twig.symfony.com/contributors"
+                    "homepage": "https://twig.symfony.com/contributors",
+                    "role": "Contributors"
                 },
                 {
                     "name": "Armin Ronacher",
-                    "role": "Project Founder",
-                    "email": "armin.ronacher@active-4.com"
+                    "email": "armin.ronacher@active-4.com",
+                    "role": "Project Founder"
                 }
             ],
             "description": "Twig, the flexible, fast, and secure template language for PHP",
@@ -7934,20 +7936,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
-                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler"
+                    "homepage": "https://github.com/manuelpichler",
+                    "role": "Project Founder"
                 },
                 {
                     "name": "Marc Würth",
-                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84"
+                    "homepage": "https://github.com/ravage84",
+                    "role": "Project Maintainer"
                 },
                 {
                     "name": "Other contributors",
-                    "role": "Contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
+                    "role": "Contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -9696,12 +9698,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-generator.git",
-                "reference": "c3162a5f88950a0ec403d1fc44d91c846ef425fb"
+                "reference": "3edb5fda352764ed0cda3e9d2133e127cbfec747"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-generator/zipball/c3162a5f88950a0ec403d1fc44d91c846ef425fb",
-                "reference": "c3162a5f88950a0ec403d1fc44d91c846ef425fb",
+                "url": "https://api.github.com/repos/spryker/code-generator/zipball/3edb5fda352764ed0cda3e9d2133e127cbfec747",
+                "reference": "3edb5fda352764ed0cda3e9d2133e127cbfec747",
                 "shasum": ""
             },
             "require": {
@@ -9732,7 +9734,7 @@
                 "MIT"
             ],
             "description": "CodeGenerator module",
-            "time": "2019-07-08T08:22:52+00:00"
+            "time": "2019-09-25T12:21:57+00:00"
         },
         {
             "name": "spryker/code-sniffer",
@@ -9740,12 +9742,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "ed59c5c012990ea565485c2301366fc6664531d6"
+                "reference": "35be960769529911a152bd0edcf9c82e5b2c78dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/ed59c5c012990ea565485c2301366fc6664531d6",
-                "reference": "ed59c5c012990ea565485c2301366fc6664531d6",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/35be960769529911a152bd0edcf9c82e5b2c78dd",
+                "reference": "35be960769529911a152bd0edcf9c82e5b2c78dd",
                 "shasum": ""
             },
             "require": {
@@ -9785,7 +9787,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-09-24T17:15:33+00:00"
+            "time": "2019-09-26T10:23:08+00:00"
         },
         {
             "name": "spryker/development-core",
@@ -9793,7 +9795,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "806e5fea40193a6050ec49377267e7cad0a7bd2e"
+                "reference": "2bce0b3bd807c9321b70c7e7f12fc8036aa3d879"
             },
             "require": {
                 "php": ">=7.1",
@@ -9806,7 +9808,7 @@
                 "spryker/zend": "^2.0.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*"
+                "spryker/code-sniffer": "dev-master"
             },
             "bin": [
                 "bin/spryker-dev-console"
@@ -9824,17 +9826,17 @@
             },
             "scripts": {
                 "cs-check": [
-                    "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/"
+                    "phpcs --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml -p -s src/"
                 ],
                 "cs-fix": [
-                    "phpcbf --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/"
+                    "phpcbf --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml -p src/"
                 ]
             },
             "license": [
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2019-09-17T12:33:53+00:00"
+            "time": "2019-09-26T08:38:34+00:00"
         },
         {
             "name": "spryker/git-hook",
