@@ -104,11 +104,10 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
     protected function createCustomer(CartsApiTester $I): void
     {
         $customerTransfer = $I->haveCustomer([
-            'username' => static::TEST_USERNAME,
-            'password' => static::TEST_PASSWORD,
+            CustomerTransfer::USERNAME => static::TEST_USERNAME,
+            CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
+            CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,
         ]);
-
-        $customerTransfer->setNewPassword(static::TEST_PASSWORD);
 
         $this->customerTransfer = $customerTransfer;
     }
