@@ -7,10 +7,8 @@
 
 namespace PyzTest\Glue\Products\RestApi;
 
-use Generated\Shared\DataBuilder\ProductLabelLocalizedAttributesBuilder;
 use Generated\Shared\Transfer\ProductAbstractTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
-use Generated\Shared\Transfer\ProductLabelLocalizedAttributesTransfer;
 use Generated\Shared\Transfer\ProductLabelTransfer;
 use PyzTest\Glue\Products\ProductsApiTester;
 use Spryker\Shared\ProductRelation\ProductRelationTypes;
@@ -106,10 +104,7 @@ class ProductsRestApiFixtures implements FixturesBuilderInterface, FixturesConta
      */
     protected function createProductLabel(ProductsApiTester $I): ProductLabelTransfer
     {
-        return $I->haveProductLabel([
-            ProductLabelTransfer::VALID_FROM => null,
-            ProductLabelTransfer::VALID_TO => null,
-        ]);
+        return $I->haveProductLabel();
     }
 
     /**
@@ -124,15 +119,6 @@ class ProductsRestApiFixtures implements FixturesBuilderInterface, FixturesConta
         ProductLabelTransfer $productLabelTransfer,
         ProductConcreteTransfer $productConcreteTransfer
     ): void {
-        $productLabelLocalizedAttributesTransfer = (new ProductLabelLocalizedAttributesBuilder([
-            ProductLabelLocalizedAttributesTransfer::FK_LOCALE => $I->getLocator()->locale()->facade()->getCurrentLocale()->getIdLocale(),
-            ProductLabelLocalizedAttributesTransfer::FK_PRODUCT_LABEL => $productLabelTransfer->getIdProductLabel(),
-        ]))->build();
-
-        $productLabelTransfer->addLocalizedAttributes($productLabelLocalizedAttributesTransfer);
-
-        $I->getLocator()->productLabel()->facade()->updateLabel($productLabelTransfer);
-
         $I->haveProductLabelToAbstractProductRelation(
             $productLabelTransfer->getIdProductLabel(),
             $productConcreteTransfer->getFkProductAbstract()

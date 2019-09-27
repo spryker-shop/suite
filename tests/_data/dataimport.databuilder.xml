@@ -50,5 +50,9 @@
         <property name="grossPrice" type="integer" dataBuilderRule="numberBetween(100, 9999)" />
     </transfer>
 
+    <transfer name="Wishlist">
+        <property name="name" type="string" dataBuilderRule="isbn10" />
+    </transfer>
+
 </transfers>
 
