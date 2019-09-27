@@ -21,7 +21,6 @@ $config[CollectorConstants::ELASTICA_PARAMETER__INDEX_NAME] = $ELASTICA_INDEX_NA
 
 // ---------- Queue
 $config[QueueConstants::QUEUE_WORKER_INTERVAL_MILLISECONDS] = 1000;
-$config[QueueConstants::QUEUE_WORKER_LOG_ACTIVE] = false;
 $config[QueueConstants::QUEUE_WORKER_OUTPUT_FILE_NAME] = 'data/DE/logs/ZED/queue.out';
 
 // ---------- RabbitMQ
