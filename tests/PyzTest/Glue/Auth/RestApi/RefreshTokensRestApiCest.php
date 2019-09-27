@@ -18,16 +18,16 @@ use Spryker\Glue\AuthRestApi\AuthRestApiConfig;
  * @group Glue
  * @group Auth
  * @group RestApi
- * @group RefreshTokensApiCest
+ * @group RefreshTokensRestApiCest
  * Add your own group annotations below this line
  * @group EndToEnd
  */
-class RefreshTokensApiCest
+class RefreshTokensRestApiCest
 {
     protected const INVALID_REFRESH_TOKEN = 'invalid refresh token';
 
     /**
-     * @var \PyzTest\Glue\Auth\RestApi\RefreshTokensApiFixtures
+     * @var \PyzTest\Glue\Auth\RestApi\RefreshTokensRestApiFixtures
      */
     protected $fixtures;
 
@@ -38,7 +38,7 @@ class RefreshTokensApiCest
      */
     public function loadFixtures(AuthRestApiTester $I): void
     {
-        $this->fixtures = $I->loadFixtures(RefreshTokensApiFixtures::class);
+        $this->fixtures = $I->loadFixtures(RefreshTokensRestApiFixtures::class);
     }
 
     /**

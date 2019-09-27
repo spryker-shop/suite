@@ -12,7 +12,7 @@ use PyzTest\Glue\Auth\AuthRestApiTester;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
-class AccessTokensApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
+class AccessTokensRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
     public const TEST_PASSWORD = 'Test password';
 

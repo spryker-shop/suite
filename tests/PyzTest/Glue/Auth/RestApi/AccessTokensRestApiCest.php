@@ -18,14 +18,14 @@ use Spryker\Glue\AuthRestApi\AuthRestApiConfig;
  * @group Glue
  * @group Auth
  * @group RestApi
- * @group AccessTokensApiCest
+ * @group AccessTokensRestApiCest
  * Add your own group annotations below this line
  * @group EndToEnd
  */
-class AccessTokensApiCest
+class AccessTokensRestApiCest
 {
     /**
-     * @var \PyzTest\Glue\Auth\RestApi\AccessTokensApiFixtures
+     * @var \PyzTest\Glue\Auth\RestApi\AccessTokensRestApiFixtures
      */
     protected $fixtures;
 
@@ -36,7 +36,7 @@ class AccessTokensApiCest
      */
     public function loadFixtures(AuthRestApiTester $I): void
     {
-        $this->fixtures = $I->loadFixtures(AccessTokensApiFixtures::class);
+        $this->fixtures = $I->loadFixtures(AccessTokensRestApiFixtures::class);
     }
 
     /**
@@ -52,7 +52,7 @@ class AccessTokensApiCest
                 'type' => AuthRestApiConfig::RESOURCE_ACCESS_TOKENS,
                 'attributes' => [
                     'username' => $this->fixtures->getCustomerTransfer()->getEmail(),
-                    'password' => AccessTokensApiFixtures::TEST_PASSWORD,
+                    'password' => AccessTokensRestApiFixtures::TEST_PASSWORD,
                 ],
             ],
         ]);
@@ -75,7 +75,7 @@ class AccessTokensApiCest
                 'type' => AuthRestApiConfig::RESOURCE_ACCESS_TOKENS,
                 'attributes' => [
                     'username' => uniqid($this->fixtures->getCustomerTransfer()->getEmail()),
-                    'password' => AccessTokensApiFixtures::TEST_PASSWORD,
+                    'password' => AccessTokensRestApiFixtures::TEST_PASSWORD,
                 ],
             ],
         ]);
@@ -97,7 +97,7 @@ class AccessTokensApiCest
                 'type' => AuthRestApiConfig::RESOURCE_ACCESS_TOKENS,
                 'attributes' => [
                     'username' => uniqid($this->fixtures->getCustomerTransfer()->getEmail()),
-                    'password' => uniqid(AccessTokensApiFixtures::TEST_PASSWORD),
+                    'password' => uniqid(AccessTokensRestApiFixtures::TEST_PASSWORD),
                 ],
             ],
         ]);
@@ -141,7 +141,7 @@ class AccessTokensApiCest
                 'type' => AuthRestApiConfig::RESOURCE_ACCESS_TOKENS,
                 'attributes' => [
                     'username' => '',
-                    'password' => AccessTokensApiFixtures::TEST_PASSWORD,
+                    'password' => AccessTokensRestApiFixtures::TEST_PASSWORD,
                 ],
             ],
         ]);
@@ -162,7 +162,7 @@ class AccessTokensApiCest
             'type' => AuthRestApiConfig::RESOURCE_ACCESS_TOKENS,
             'attributes' => [
                 'username' => $this->fixtures->getCustomerTransfer()->getEmail(),
-                'password' => AccessTokensApiFixtures::TEST_PASSWORD,
+                'password' => AccessTokensRestApiFixtures::TEST_PASSWORD,
             ],
         ]);
 
@@ -183,7 +183,7 @@ class AccessTokensApiCest
                 'type' => AuthRestApiConfig::RESOURCE_REFRESH_TOKENS,
                 'attributes' => [
                     'username' => $this->fixtures->getCustomerTransfer()->getEmail(),
-                    'password' => AccessTokensApiFixtures::TEST_PASSWORD,
+                    'password' => AccessTokensRestApiFixtures::TEST_PASSWORD,
                 ],
             ],
         ]);
