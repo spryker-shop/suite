@@ -18,7 +18,7 @@ use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
  * @group Carts
  * @group RestApi
  * @group CartRestApiCest
- * @group MultiCartRestApiCest
+ * @group MultiCartsRestApiCest
  * Add your own group annotations below this line
  * @group EndToEnd
  */
@@ -33,6 +33,8 @@ class MultiCartsRestApiCest
     protected const CURRENCY = 'EUR';
 
     protected const STORE_DE = 'DE';
+
+    protected const TEST_QUANTITY_FOR_ITEM_UPDATE = 33;
 
     /**
      * @var \PyzTest\Glue\Carts\RestApi\CartsRestApiFixtures
@@ -212,6 +214,162 @@ class MultiCartsRestApiCest
                     'attributes' => [
                         'sku' => $this->fixtures->getProductConcreteTransfer2()->getSku(),
                         'quantity' => 1,
+                    ],
+                ],
+            ]
+        );
+
+        //assert
+        $I->seeResponseCodeIs(HttpCode::CREATED);
+        $I->seeResponseIsJson();
+
+        $I->amSure('Returned resource is of type guest-carts')
+            ->whenI()
+            ->seeResponseDataContainsSingleResourceOfType('guest-carts');
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    public function requestAddItemsToGuestCartWithoutAnonymousCustomerUniqueId(CartsApiTester $I): void
+    {
+        // Arrange
+        $I->sendGET(CartsRestApiConfig::RESOURCE_GUEST_CARTS);
+        $guestCartUuid = $I->grabDataFromResponseByJsonPath('$.data[0]')[0]['id'];
+
+        // Act
+        $I->sendPOST($I->formatUrl(
+            '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}',
+            [
+                'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                'guestCartUuid' => $guestCartUuid,
+                'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+            ]
+        ),
+            [
+                'data' => [
+                    'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+                    'attributes' => [
+                        'sku' => $this->fixtures->getProductConcreteTransfer2()->getSku(),
+                        'quantity' => 1,
+                    ],
+                ],
+            ]
+        );
+
+        //assert
+        $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
+        $I->seeResponseIsJson();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    public function requestAddItemsToGuestCartWithoutItemSku(CartsApiTester $I): void
+    {
+        // Arrange
+        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', static::VALUE_FOR_ANONYMOUS);
+        $I->sendGET(CartsRestApiConfig::RESOURCE_GUEST_CARTS);
+        $guestCartUuid = $I->grabDataFromResponseByJsonPath('$.data[0]')[0]['id'];
+
+        // Act
+        $I->sendPOST($I->formatUrl(
+            '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}',
+            [
+                'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                'guestCartUuid' => $guestCartUuid,
+                'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+            ]
+        ),
+            [
+                'data' => [
+                    'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+                    'attributes' => [
+                        'quantity' => 1,
+                    ],
+                ],
+            ]
+        );
+
+        //assert
+        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
+        $I->seeResponseIsJson();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    public function requestAddItemsToGuestCartWithoutItemQuantity(CartsApiTester $I): void
+    {
+        // Arrange
+        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', static::VALUE_FOR_ANONYMOUS);
+        $I->sendGET(CartsRestApiConfig::RESOURCE_GUEST_CARTS);
+        $guestCartUuid = $I->grabDataFromResponseByJsonPath('$.data[0]')[0]['id'];
+
+        // Act
+        $I->sendPOST($I->formatUrl(
+            '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}',
+            [
+                'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                'guestCartUuid' => $guestCartUuid,
+                'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+            ]
+        ),
+            [
+                'data' => [
+                    'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+                    'attributes' => [
+                        'sku' => $this->fixtures->getProductConcreteTransfer2()->getSku(),
+                    ],
+                ],
+            ]
+        );
+
+        //assert
+        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
+        $I->seeResponseIsJson();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    public function requestUpdateItemsInGuestCart(CartsApiTester $I): void
+    {
+        // Arrange
+        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', static::VALUE_FOR_ANONYMOUS);
+        $I->sendGET(CartsRestApiConfig::RESOURCE_GUEST_CARTS);
+        $guestCartUuid = $I->grabDataFromResponseByJsonPath('$.data[0]')[0]['id'];
+
+        // Act
+        $I->sendPATCH($I->formatUrl(
+            '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}',
+            [
+                'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                'guestCartUuid' => $guestCartUuid,
+                'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+            ]
+        ),
+            [
+                'data' => [
+                    'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+                    'attributes' => [
+                        'quantity' => static::TEST_QUANTITY_FOR_ITEM_UPDATE,
                     ],
                 ],
             ]
