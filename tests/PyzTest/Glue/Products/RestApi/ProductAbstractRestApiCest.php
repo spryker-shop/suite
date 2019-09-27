@@ -12,6 +12,7 @@ use PyzTest\Glue\Products\ProductsApiTester;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Glue
  * @group Products
@@ -102,5 +103,63 @@ class ProductAbstractRestApiCest
         $I->amSure('Returned resource has correct id')
             ->whenI()
             ->seeSingleResourceIdEqualTo($this->fixtures->getProductConcreteTransfer()->getAbstractSku());
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     *
+     * @return void
+     */
+    public function requestExistingProductAbstractWithProductConcreteRelationship(ProductsApiTester $I): void
+    {
+        //act
+        $I->sendGET(
+            $I->formatUrl(
+                'abstract-products/{ProductAbstractSku}?include=concrete-products',
+                [
+                    'ProductAbstractSku' => $this->fixtures->getProductConcreteTransfer()->getAbstractSku(),
+                ]
+            )
+        );
+
+        //assert
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+
+        $I->amSure('Returned resource has include of type concrete-products')
+            ->whenI()
+            ->seeSingleResourceHasRelationshipByTypeAndId('concrete-products', $this->fixtures->getProductConcreteTransfer()->getSku());
+
+        $I->amSure('Returned resource has include of type concrete-products')
+            ->whenI()
+            ->seeIncludesContainsResourceByTypeAndId('concrete-products', $this->fixtures->getProductConcreteTransfer()->getSku());
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     *
+     * @return void
+     */
+    public function requestProductAbstractHasUrlAttribute(ProductsApiTester $I): void
+    {
+        //act
+        $I->sendGET(
+            $I->formatUrl(
+                'abstract-products/{ProductAbstractSku}',
+                [
+                    'ProductAbstractSku' => $this->fixtures->getProductConcreteTransfer()->getAbstractSku(),
+                ]
+            )
+        );
+
+        //assert
+        $I->amSure('Returned resource contains `url` attribute')
+            ->whenI()
+            ->seeSingleResourceHasAttribute('url');
     }
 }

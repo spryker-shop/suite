@@ -21,6 +21,7 @@ use Spryker\Zed\Gui\Communication\Plugin\Twig\FormRuntimeLoaderTwigPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\Twig\GuiTwigLoaderPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\Twig\GuiTwigPlugin;
 use Spryker\Zed\Money\Communication\Plugin\Twig\MoneyTwigPlugin;
+use Spryker\Zed\Scheduler\Communication\Plugin\Twig\SchedulerTwigPlugin;
 use Spryker\Zed\Translator\Communication\Plugin\Twig\TranslatorTwigPlugin;
 use Spryker\Zed\Twig\Communication\Plugin\FilesystemTwigLoaderPlugin;
 use Spryker\Zed\Twig\Communication\Plugin\FormFilesystemTwigLoaderPlugin;
@@ -52,6 +53,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new ZedNavigationTwigPlugin(),
             new TranslatorTwigPlugin(),
             new DateTimeFormatterTwigPlugin(),
+            new SchedulerTwigPlugin(),
             new GuiTwigPlugin(),
         ];
     }

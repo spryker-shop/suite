@@ -48,7 +48,6 @@ use Spryker\Zed\Development\Communication\Console\ModuleBridgeCreateConsole;
 use Spryker\Zed\Development\Communication\Console\ModuleCreateConsole;
 use Spryker\Zed\Development\Communication\Console\PluginUsageFinderConsole;
 use Spryker\Zed\Development\Communication\Console\PropelAbstractValidateConsole;
-use Spryker\Zed\DevelopmentCore\Communication\Console\AdjustPhpstanConsole;
 use Spryker\Zed\DocumentationGeneratorRestApi\Communication\Console\GenerateRestApiDocumentationConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventBehaviorTriggerTimeoutConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventTriggerConsole;
@@ -61,7 +60,6 @@ use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Log\Communication\Console\DeleteLogFilesConsole;
 use Spryker\Zed\Maintenance\Communication\Console\MaintenanceDisableConsole;
 use Spryker\Zed\Maintenance\Communication\Console\MaintenanceEnableConsole;
-use Spryker\Zed\Money\Communication\Plugin\ServiceProvider\TwigMoneyServiceProvider;
 use Spryker\Zed\MultiCartDataImport\MultiCartDataImportConfig;
 use Spryker\Zed\Oms\Communication\Console\CheckConditionConsole as OmsCheckConditionConsole;
 use Spryker\Zed\Oms\Communication\Console\CheckTimeoutConsole as OmsCheckTimeoutConsole;
@@ -83,9 +81,10 @@ use Spryker\Zed\ProductValidity\Communication\Console\ProductValidityConsole;
 use Spryker\Zed\Propel\Communication\Console\DatabaseDropConsole;
 use Spryker\Zed\Propel\Communication\Console\DatabaseDropTablesConsole;
 use Spryker\Zed\Propel\Communication\Console\DeleteMigrationFilesConsole;
+use Spryker\Zed\Propel\Communication\Console\EntityTransferGeneratorConsole;
 use Spryker\Zed\Propel\Communication\Console\PropelSchemaValidatorConsole;
 use Spryker\Zed\Propel\Communication\Console\PropelSchemaXmlNameValidatorConsole;
-use Spryker\Zed\Propel\Communication\Plugin\ServiceProvider\PropelServiceProvider;
+use Spryker\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
 use Spryker\Zed\Queue\Communication\Console\QueueDumpConsole;
 use Spryker\Zed\Queue\Communication\Console\QueueTaskConsole;
 use Spryker\Zed\Queue\Communication\Console\QueueWorkerConsole;
@@ -96,11 +95,11 @@ use Spryker\Zed\RabbitMq\Communication\Console\DeleteAllQueuesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\PurgeAllQueuesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\SetUserPermissionsConsole;
 use Spryker\Zed\RestRequestValidator\Communication\Console\BuildValidationCacheConsole;
+use Spryker\Zed\Router\Communication\Plugin\Console\RouterDebugZedConsole;
 use Spryker\Zed\Scheduler\Communication\Console\SchedulerCleanConsole;
 use Spryker\Zed\Scheduler\Communication\Console\SchedulerResumeConsole;
 use Spryker\Zed\Scheduler\Communication\Console\SchedulerSetupConsole;
 use Spryker\Zed\Scheduler\Communication\Console\SchedulerSuspendConsole;
-use Spryker\Zed\Scheduler\Communication\Plugin\ServiceProvider\SchedulerTwigServiceProvider;
 use Spryker\Zed\Search\Communication\Console\GenerateIndexMapConsole;
 use Spryker\Zed\Search\Communication\Console\SearchCloseIndexConsole;
 use Spryker\Zed\Search\Communication\Console\SearchConsole;
@@ -129,18 +128,17 @@ use Spryker\Zed\StateMachine\Communication\Console\CheckConditionConsole as Stat
 use Spryker\Zed\StateMachine\Communication\Console\CheckTimeoutConsole as StateMachineCheckTimeoutConsole;
 use Spryker\Zed\StateMachine\Communication\Console\ClearLocksConsole as StateMachineClearLocksConsole;
 use Spryker\Zed\Storage\Communication\Console\StorageDeleteAllConsole;
-use Spryker\Zed\Storage\Communication\Console\StorageExportRdbConsole;
-use Spryker\Zed\Storage\Communication\Console\StorageImportRdbConsole;
 use Spryker\Zed\StorageRedis\Communication\Console\StorageRedisExportRdbConsole;
 use Spryker\Zed\StorageRedis\Communication\Console\StorageRedisImportRdbConsole;
 use Spryker\Zed\Synchronization\Communication\Console\ExportSynchronizedDataConsole;
+use Spryker\Zed\Testify\Communication\Console\CleanOutputConsole;
 use Spryker\Zed\Transfer\Communication\Console\DataBuilderGeneratorConsole;
-use Spryker\Zed\Transfer\Communication\Console\GeneratorConsole;
+use Spryker\Zed\Transfer\Communication\Console\TransferGeneratorConsole;
 use Spryker\Zed\Transfer\Communication\Console\ValidatorConsole;
 use Spryker\Zed\Translator\Communication\Console\CleanTranslationCacheConsole;
 use Spryker\Zed\Translator\Communication\Console\GenerateTranslationCacheConsole;
 use Spryker\Zed\Twig\Communication\Console\CacheWarmerConsole;
-use Spryker\Zed\Twig\Communication\Plugin\ServiceProvider\TwigServiceProvider as SprykerTwigServiceProvider;
+use Spryker\Zed\Twig\Communication\Plugin\Application\TwigApplicationPlugin;
 use Spryker\Zed\Uuid\Communication\Console\UuidGeneratorConsole;
 use Spryker\Zed\ZedNavigation\Communication\Console\BuildNavigationConsole;
 use SprykerSdk\Spryk\Console\SprykBuildConsole;
@@ -167,7 +165,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new BuildNavigationConsole(),
             new BuildValidationCacheConsole(),
             new EmptyAllCachesConsole(),
-            new GeneratorConsole(),
+            new TransferGeneratorConsole(),
+            new EntityTransferGeneratorConsole(),
             new InitializeDatabaseConsole(),
             new SearchConsole(),
             new GenerateIndexMapConsole(),
@@ -261,9 +260,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new DeleteMigrationFilesConsole(),
 
             new DeleteLogFilesConsole(),
-            new StorageExportRdbConsole(),
             new StorageRedisExportRdbConsole(),
-            new StorageImportRdbConsole(),
             new StorageRedisImportRdbConsole(),
             new StorageDeleteAllConsole(),
             new SearchDeleteIndexConsole(),
@@ -320,6 +317,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
         if ($this->getConfig()->isDevelopmentConsoleCommandsEnabled()) {
             $commands = $this->addProjectNonsplitOnlyCommands($commands);
 
+            $commands[] = new RouterDebugZedConsole();
             $commands[] = new CodeTestConsole();
             $commands[] = new CodeFixturesConsole();
             $commands[] = new AcceptanceCodeTestConsole();
@@ -357,6 +355,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new QueueDumpConsole();
             $commands[] = new EventTriggerListenerConsole();
             $commands[] = new ComposerConstraintConsole();
+            $commands[] = new CleanOutputConsole();
         }
 
         return $commands;
@@ -382,13 +381,24 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
     public function getServiceProviders(Container $container)
     {
         $serviceProviders = parent::getServiceProviders($container);
-        $serviceProviders[] = new PropelServiceProvider();
         $serviceProviders[] = new SilexTwigServiceProvider();
-        $serviceProviders[] = new SprykerTwigServiceProvider();
-        $serviceProviders[] = new TwigMoneyServiceProvider();
-        $serviceProviders[] = new SchedulerTwigServiceProvider();
 
         return $serviceProviders;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Shared\ApplicationExtension\Dependency\Plugin\ApplicationPluginInterface[]
+     */
+    public function getApplicationPlugins(Container $container): array
+    {
+        $applicationPlugins = parent::getApplicationPlugins($container);
+
+        $applicationPlugins[] = new PropelApplicationPlugin();
+        $applicationPlugins[] = new TwigApplicationPlugin();
+
+        return $applicationPlugins;
     }
 
     /**
@@ -400,8 +410,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
      */
     protected function addProjectNonsplitOnlyCommands(array $commands): array
     {
-        $commands[] = new AdjustPhpstanConsole();
-
         $commands[] = new SprykRunConsole();
         $commands[] = new SprykDumpConsole();
         $commands[] = new SprykBuildConsole();
