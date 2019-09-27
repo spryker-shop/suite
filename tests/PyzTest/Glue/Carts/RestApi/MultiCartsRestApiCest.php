@@ -96,6 +96,93 @@ class MultiCartsRestApiCest
         $this->requestCreateGuestCart($I);
     }
 
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    public function requestCreateGuestCartWithoutAnonymousCustomerUniqueId(CartsApiTester $I): void
+    {
+        // Act
+        $I->sendPOST(
+            CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+            [
+                'data' => [
+                    'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+                    'attributes' => [
+                        'sku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
+                        'quantity' => 1,
+                    ],
+                ],
+            ]
+        );
+
+        //assert
+        $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
+        $I->seeResponseIsJson();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    public function requestCreateGuestCartWithoutSku(CartsApiTester $I): void
+    {
+        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', static::VALUE_FOR_ANONYMOUS);
+
+        // Act
+        $I->sendPOST(
+            CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+            [
+                'data' => [
+                    'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+                    'attributes' => [
+                        'quantity' => 1,
+                    ],
+                ],
+            ]
+        );
+
+        //assert
+        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
+        $I->seeResponseIsJson();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    public function requestCreateGuestCartWithoutQuantity(CartsApiTester $I): void
+    {
+        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', static::VALUE_FOR_ANONYMOUS);
+
+        // Act
+        $I->sendPOST(
+            CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+            [
+                'data' => [
+                    'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+                    'attributes' => [
+                        'sku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
+                    ],
+                ],
+            ]
+        );
+
+        //assert
+        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
+        $I->seeResponseIsJson();
+    }
+
     /**
      * @depends loadFixtures
      *
@@ -272,92 +359,6 @@ class MultiCartsRestApiCest
         $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
-    }
-    
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     *
-     * @return void
-     */
-    public function requestCreateGuestCartWithoutAnonymousCustomerUniqueId(CartsApiTester $I): void
-    {
-        // Act
-        $I->sendPOST(
-            CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-            [
-                'data' => [
-                    'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                    'attributes' => [
-                        'sku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
-                        'quantity' => 1,
-                    ],
-                ],
-            ]
-        );
-
-        //assert
-        $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
-        $I->seeResponseIsJson();
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     *
-     * @return void
-     */
-    public function requestCreateGuestCartWithoutSku(CartsApiTester $I): void
-    {
-        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', static::VALUE_FOR_ANONYMOUS);
-
-        // Act
-        $I->sendPOST(
-            CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-            [
-                'data' => [
-                    'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                    'attributes' => [
-                        'quantity' => 1,
-                    ],
-                ],
-            ]
-        );
-
-        //assert
-        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
-        $I->seeResponseIsJson();
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     *
-     * @return void
-     */
-    public function requestCreateGuestCartWithoutQuantity(CartsApiTester $I): void
-    {
-        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', static::VALUE_FOR_ANONYMOUS);
-
-        // Act
-        $I->sendPOST(
-            CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-            [
-                'data' => [
-                    'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                    'attributes' => [
-                        'sku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
-                    ],
-                ],
-            ]
-        );
-
-        //assert
-        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
-        $I->seeResponseIsJson();
     }
 
     /**
