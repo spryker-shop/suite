@@ -19,11 +19,11 @@ use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
  * @group Glue
  * @group Carts
  * @group RestApi
- * @group CartRestApiCest
+ * @group ConvertGuestCartToCustomerCartRestApiCest
  * Add your own group annotations below this line
  * @group EndToEnd
  */
-class CartRestApiCest
+class ConvertGuestCartToCustomerCartRestApiCest
 {
     protected const VALUE_FOR_ANONYMOUS = '666';
 
@@ -52,7 +52,7 @@ class CartRestApiCest
     public function requestGuestCartBecomesCustomerCartAfterCustomerLogin(CartsApiTester $I): void
     {
         $this->requestCustomerLoginWithXAnonymousCustomerUniqueIdHeader($I);
-        $this->requestFindCartByUuid($I, $this->fixtures->getQuoteTransfer()->getUuid());
+        $this->requestFindCartByUuid($I, $this->fixtures->getGuestQuoteTransfer()->getUuid());
         $this->requestGuestCartCollectionIsEmpty($I);
     }
 

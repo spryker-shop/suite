@@ -47,7 +47,7 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
     /**
      * @var \Generated\Shared\Transfer\QuoteTransfer
      */
-    protected $quoteTransfer;
+    protected $guestQuoteTransfer;
 
     /**
      * @return \Generated\Shared\Transfer\ProductConcreteTransfer
@@ -68,9 +68,9 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
     /**
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
-    public function getQuoteTransfer(): QuoteTransfer
+    public function getGuestQuoteTransfer(): QuoteTransfer
     {
-        return $this->quoteTransfer;
+        return $this->guestQuoteTransfer;
     }
 
     /**
@@ -82,7 +82,7 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
     {
         $this->createProduct($I);
         $this->createCustomer($I);
-        $this->createQuote($I);
+        $this->createGuestQuote($I);
 
         return $this;
     }
@@ -118,12 +118,12 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
      *
      * @return void
      */
-    protected function createQuote(CartsApiTester $I): void
+    protected function createGuestQuote(CartsApiTester $I): void
     {
         $totalsTransfer = new TotalsTransfer();
         $totalsTransfer->setPriceToPay(random_int(1000, 10000));
 
-        $this->quoteTransfer = $I->havePersistentQuote([
+        $this->guestQuoteTransfer = $I->havePersistentQuote([
             QuoteTransfer::CUSTOMER => (new CustomerTransfer())->setCustomerReference(static::ANONYMOUS_CUSTOMER_REFERENCE),
             QuoteTransfer::TOTALS => $totalsTransfer,
             QuoteTransfer::ITEMS => [
