@@ -39,6 +39,8 @@ class TwigConfig extends SprykerTwigConfig
             parent::getZedDirectoryPathPatterns()
         );
 
+        sort($directories);
+
         return $directories;
     }
 
