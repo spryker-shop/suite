@@ -42,6 +42,8 @@ class RefreshTokensRestApiCest
     }
 
     /**
+     * @depends loadFixtures
+     *
      * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
      *
      * @return void
@@ -63,6 +65,8 @@ class RefreshTokensRestApiCest
     }
 
     /**
+     * @depends loadFixtures
+     *
      * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
      *
      * @return void
@@ -107,6 +111,8 @@ class RefreshTokensRestApiCest
     }
 
     /**
+     * @depends loadFixtures
+     *
      * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
      *
      * @return void
@@ -128,6 +134,8 @@ class RefreshTokensRestApiCest
     }
 
     /**
+     * @depends loadFixtures
+     *
      * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
      *
      * @return void
@@ -149,6 +157,8 @@ class RefreshTokensRestApiCest
     }
 
     /**
+     * @depends loadFixtures
+     *
      * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
      *
      * @return void
@@ -168,6 +178,8 @@ class RefreshTokensRestApiCest
     }
 
     /**
+     * @depends loadFixtures
+     *
      * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
      *
      * @return void
@@ -189,6 +201,8 @@ class RefreshTokensRestApiCest
     }
 
     /**
+     * @depends loadFixtures
+     *
      * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
      *
      * @return void
