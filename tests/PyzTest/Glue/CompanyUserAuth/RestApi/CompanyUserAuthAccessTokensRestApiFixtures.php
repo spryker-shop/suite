@@ -52,6 +52,8 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
      */
     public function buildFixtures(CompanyUserAuthRestApiTester $I): FixturesContainerInterface
     {
+        $I->haveCompanyMailConnectorToMailDependency();
+
         $this->customerTransferWithCompanyUser = $this->createCustomerTransfer($I);
         $this->anotherCustomerTransferWithoutCompanyUser = $this->createCustomerTransfer($I);
         $this->companyUserTransfer = $this->createCompanyUserTransfer($I);
