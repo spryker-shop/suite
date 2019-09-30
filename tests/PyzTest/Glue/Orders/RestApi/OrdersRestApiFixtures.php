@@ -141,8 +141,8 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
     protected function createCustomerTransfer(OrdersRestApiTester $I): CustomerTransfer
     {
         return $I->haveCustomer([
-            'password' => static::TEST_PASSWORD,
-            'newPassword' => static::TEST_PASSWORD,
+            CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
+            CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,
         ]);
     }
 
@@ -153,7 +153,7 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
      */
     protected function createShipmentMethodTransfer(OrdersRestApiTester $I): ShipmentMethodTransfer
     {
-        return $I->haveShipmentMethod(['is_active' => true]);
+        return $I->haveShipmentMethod([ShipmentMethodTransfer::IS_ACTIVE => true]);
     }
 
     /**
