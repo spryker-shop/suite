@@ -51,40 +51,11 @@ class ConvertGuestCartToCustomerCartRestApiCest
      */
     public function requestGuestCartBecomesCustomerCartAfterCustomerLogin(CartsApiTester $I): void
     {
+        // Arrange
         $this->requestCustomerLoginWithXAnonymousCustomerUniqueIdHeader($I);
-        $this->requestFindCartByUuid($I, $this->fixtures->getGuestQuoteTransfer()->getUuid());
-        $this->requestGuestCartCollectionIsEmpty($I);
-    }
+        $cartUuid = $this->fixtures->getGuestQuoteTransfer()->getUuid();
 
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     *
-     * @return void
-     */
-    protected function requestCustomerLoginWithXAnonymousCustomerUniqueIdHeader(CartsApiTester $I): void
-    {
-        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', static::VALUE_FOR_ANONYMOUS);
-        $token = $I->haveAuthorizationToGlue(
-            $this->fixtures->getCustomerTransfer(),
-            'anonymous:' . static::VALUE_FOR_ANONYMOUS
-        )->getAccessToken();
-
-        $I->amBearerAuthenticated($token);
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     * @param string $cartUuid
-     *
-     * @return void
-     */
-    protected function requestFindCartByUuid(CartsApiTester $I, string $cartUuid): void
-    {
-        //act
+        // Act
         $I->sendGET(
             $I->formatUrl(
                 '{resourceCarts}/{cartUuid}?include={relationshipItems}',
@@ -96,7 +67,7 @@ class ConvertGuestCartToCustomerCartRestApiCest
             )
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::OK);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
@@ -124,12 +95,12 @@ class ConvertGuestCartToCustomerCartRestApiCest
      *
      * @return void
      */
-    protected function requestGuestCartCollectionIsEmpty(CartsApiTester $I): void
+    public function requestGuestCartCollectionIsEmpty(CartsApiTester $I): void
     {
         // Arrange
-        $I->deleteHeader(AuthRestApiConfig::HEADER_AUTHORIZATION);
+        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', static::VALUE_FOR_ANONYMOUS);
 
-        //act
+        // Act
         $I->sendGET(
             $I->formatUrl(
                 '{resourceGuestCarts}',
@@ -139,10 +110,28 @@ class ConvertGuestCartToCustomerCartRestApiCest
             )
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::OK);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
         $I->seeResponseDataContainsEmptyCollection();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    protected function requestCustomerLoginWithXAnonymousCustomerUniqueIdHeader(CartsApiTester $I): void
+    {
+        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', static::VALUE_FOR_ANONYMOUS);
+        $token = $I->haveAuthorizationToGlue(
+            $this->fixtures->getCustomerTransfer(),
+            'anonymous:' . static::VALUE_FOR_ANONYMOUS
+        )->getAccessToken();
+
+        $I->amBearerAuthenticated($token);
     }
 }
