@@ -15,7 +15,7 @@
   </Directory>
 
   AddHandler php7-fcgi .php
-  Action php7-fcgi /php7-fcgi virtual
-  Alias /php7-fcgi /usr/lib/cgi-bin/php7-fcgi
-  FastCgiExternalServer /usr/lib/cgi-bin/php7-fcgi -host 127.0.0.1:9001 -pass-header Authorization
+  Action php7-fcgi /php7-fcgi-yves virtual
+  Alias /php7-fcgi-yves /usr/lib/cgi-bin/php7-fcgi-yves
+  FastCgiExternalServer /usr/lib/cgi-bin/php7-fcgi-yves -host 127.0.0.1:9001 -pass-header Authorization
 </VirtualHost>
