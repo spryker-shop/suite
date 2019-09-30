@@ -14,4 +14,8 @@
       Require all granted
   </Directory>
 
+  AddHandler php7-fcgi .php
+  Action php7-fcgi /php7-fcgi
+  Alias /php7-fcgi /usr/lib/cgi-bin/php7-fcgi
+  FastCgiExternalServer /usr/lib/cgi-bin/php7-fcgi -host 127.0.0.1:9002 -pass-header Authorization
 </VirtualHost>

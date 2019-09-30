@@ -36,136 +36,136 @@ matrix:
         - ON_EVENTS=push,cron
 
 
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
+    # - php: "7.3"
+    #   dist: trusty
+    #   env:
+    #     - TEST_GROUP=acceptance
+    #     - ON_EVENTS=push,cron
 
 
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
+    # - php: "7.3"
+    #   dist: trusty
+    #   env:
+    #     - TEST_GROUP=acceptance
+    #     - ON_EVENTS=push,cron
 
 
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
+    # - php: "7.3"
+    #   dist: trusty
+    #   env:
+    #     - TEST_GROUP=acceptance
+    #     - ON_EVENTS=push,cron
 
 
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
+    # - php: "7.3"
+    #   dist: trusty
+    #   env:
+    #     - TEST_GROUP=acceptance
+    #     - ON_EVENTS=push,cron
 
 
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
+    # - php: "7.3"
+    #   dist: trusty
+    #   env:
+    #     - TEST_GROUP=acceptance
+    #     - ON_EVENTS=push,cron
 
 
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
+    # - php: "7.3"
+    #   dist: trusty
+    #   env:
+    #     - TEST_GROUP=acceptance
+    #     - ON_EVENTS=push,cron
 
 
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
+    # - php: "7.3"
+    #   dist: trusty
+    #   env:
+    #     - TEST_GROUP=acceptance
+    #     - ON_EVENTS=push,cron
 
 
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
+    # - php: "7.3"
+    #   dist: trusty
+    #   env:
+    #     - TEST_GROUP=acceptance
+    #     - ON_EVENTS=push,cron
 
 
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
+    # - php: "7.3"
+    #   dist: trusty
+    #   env:
+    #     - TEST_GROUP=acceptance
+    #     - ON_EVENTS=push,cron
 
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
-
-
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
+    # - php: "7.3"
+    #   dist: trusty
+    #   env:
+    #     - TEST_GROUP=acceptance
+    #     - ON_EVENTS=push,cron
 
 
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
+    # - php: "7.3"
+    #   dist: trusty
+    #   env:
+    #     - TEST_GROUP=acceptance
+    #     - ON_EVENTS=push,cron
 
 
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
+    # - php: "7.3"
+    #   dist: trusty
+    #   env:
+    #     - TEST_GROUP=acceptance
+    #     - ON_EVENTS=push,cron
 
 
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
+    # - php: "7.3"
+    #   dist: trusty
+    #   env:
+    #     - TEST_GROUP=acceptance
+    #     - ON_EVENTS=push,cron
 
 
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
+    # - php: "7.3"
+    #   dist: trusty
+    #   env:
+    #     - TEST_GROUP=acceptance
+    #     - ON_EVENTS=push,cron
 
 
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
+    # - php: "7.3"
+    #   dist: trusty
+    #   env:
+    #     - TEST_GROUP=acceptance
+    #     - ON_EVENTS=push,cron
 
 
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
+    # - php: "7.3"
+    #   dist: trusty
+    #   env:
+    #     - TEST_GROUP=acceptance
+    #     - ON_EVENTS=push,cron
 
 
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
+    # - php: "7.3"
+    #   dist: trusty
+    #   env:
+    #     - TEST_GROUP=acceptance
+    #     - ON_EVENTS=push,cron
 
 
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
+    # - php: "7.3"
+    #   dist: trusty
+    #   env:
+    #     - TEST_GROUP=acceptance
+    #     - ON_EVENTS=push,cron
+
+
+    # - php: "7.3"
+    #   dist: trusty
+    #   env:
+    #     - TEST_GROUP=acceptance
+    #     - ON_EVENTS=push,cron
 
 addons:
   postgresql: 9.6
@@ -216,6 +216,10 @@ before_install:
   - ( awk '1;/@hook travis-ci/{exit}' config/Shared/stores.php ; awk 'NR>1' config/Shared/ci/travis/stores.php ; awk '/@hook travis-ci/,0' config/Shared/stores.php ) > config/Shared/stores_tmp.php ; mv config/Shared/stores_tmp.php config/Shared/stores.php
 
 install:
+# wip
+  - sudo dpkg -l | grep php
+  -
+# wip
   - chmod -R a+x config/Shared/ci/travis/
   - composer install --optimize-autoloader --no-interaction
   - config/Shared/ci/travis/install_elasticsearch.sh
