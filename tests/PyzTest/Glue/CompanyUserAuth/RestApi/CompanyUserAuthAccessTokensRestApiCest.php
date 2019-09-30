@@ -74,6 +74,7 @@ class CompanyUserAuthAccessTokensRestApiCest
      */
     public function requestAccessTokenForExistingCustomerWithWrongType(CompanyUserAuthRestApiTester $I): void
     {
+        //Arrange
         $I->amBearerAuthenticated($this->fixtures->getOauthResponseTransferForCompanyUser()->getAccessToken());
 
         //Act
@@ -99,6 +100,7 @@ class CompanyUserAuthAccessTokensRestApiCest
      */
     public function requestAccessTokenForExistingCustomerWithWrongBody(CompanyUserAuthRestApiTester $I): void
     {
+        //Arrange
         $I->amBearerAuthenticated($this->fixtures->getOauthResponseTransferForCompanyUser()->getAccessToken());
 
         //Act
@@ -122,6 +124,7 @@ class CompanyUserAuthAccessTokensRestApiCest
      */
     public function requestAccessTokenWithUuidOfAnotherCompanyUser(CompanyUserAuthRestApiTester $I): void
     {
+        //Arrange
         $I->amBearerAuthenticated($this->fixtures->getOauthResponseTransferForNonCompanyUser()->getAccessToken());
 
         //Act
@@ -147,6 +150,7 @@ class CompanyUserAuthAccessTokensRestApiCest
      */
     public function requestAccessTokenWithNoExistedIdCompanyUser(CompanyUserAuthRestApiTester $I): void
     {
+        //Arrange
         $I->amBearerAuthenticated($this->fixtures->getOauthResponseTransferForCompanyUser()->getAccessToken());
 
         //Act
