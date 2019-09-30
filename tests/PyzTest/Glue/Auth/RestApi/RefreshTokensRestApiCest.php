@@ -75,39 +75,21 @@ class RefreshTokensRestApiCest
     {
         //Arrange
         $refreshToken = $this->fixtures->getOauthResponseTransfer()->getRefreshToken();
+        $refreshedToken = $this->getRefreshedToken($I, $refreshToken);
 
         //Act
         $I->sendPOST(AuthRestApiConfig::RESOURCE_REFRESH_TOKENS, [
             'data' => [
                 'type' => AuthRestApiConfig::RESOURCE_REFRESH_TOKENS,
                 'attributes' => [
-                    'refreshToken' => $refreshToken,
+                    'refreshToken' => $refreshedToken,
                 ],
             ],
         ]);
 
         //Assert
         $this->assertResponse($I, HttpCode::CREATED);
-
-        //Arrange
-        $newRefreshToken = current($I->grabDataFromResponseByJsonPath('$.data.attributes.refreshToken'));
-
-        //Assert
-        $this->assertResponse($I, HttpCode::CREATED);
-        $I->assertNotEquals($refreshToken, $newRefreshToken);
-
-        //Act
-        $I->sendPOST(AuthRestApiConfig::RESOURCE_REFRESH_TOKENS, [
-            'data' => [
-                'type' => AuthRestApiConfig::RESOURCE_REFRESH_TOKENS,
-                'attributes' => [
-                    'refreshToken' => $newRefreshToken,
-                ],
-            ],
-        ]);
-
-        //Assert
-        $this->assertResponse($I, HttpCode::CREATED);
+        $I->assertNotEquals($refreshToken, $refreshedToken);
     }
 
     /**
@@ -234,5 +216,27 @@ class RefreshTokensRestApiCest
         $I->seeResponseCodeIs($responseCode);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
+    }
+
+    /**
+     * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
+     * @param string $refreshToken
+     *
+     * @return string
+     */
+    protected function getRefreshedToken(AuthRestApiTester $I, string $refreshToken): string
+    {
+        $I->sendPOST(AuthRestApiConfig::RESOURCE_REFRESH_TOKENS, [
+            'data' => [
+                'type' => AuthRestApiConfig::RESOURCE_REFRESH_TOKENS,
+                'attributes' => [
+                    'refreshToken' => $refreshToken,
+                ],
+            ],
+        ]);
+
+        $this->assertResponse($I, HttpCode::CREATED);
+
+        return current($I->grabDataFromResponseByJsonPath('$.data.attributes.refreshToken'));
     }
 }

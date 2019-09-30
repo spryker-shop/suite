@@ -53,9 +53,9 @@ class CompanyUserAuthAccessTokensRestApiCest
 
         //Act
         $I->sendPOST(CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS, [
-            'data' => [
-                'type' => CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS,
-                'attributes' => [
+            "data" => [
+                "type" => CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS,
+                "attributes" => [
                     "idCompanyUser" => $this->fixtures->getOauthResponseTransferForCompanyUser()->getIdCompanyUser(),
                 ],
             ],
@@ -78,9 +78,9 @@ class CompanyUserAuthAccessTokensRestApiCest
 
         //Act
         $I->sendPOST(CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS, [
-            'data' => [
-                'type' => uniqid(CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS),
-                'attributes' => [
+            "data" => [
+                "type" => uniqid(CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS),
+                "attributes" => [
                     "idCompanyUser" => $this->fixtures->getOauthResponseTransferForCompanyUser()->getIdCompanyUser(),
                 ],
             ],
@@ -103,8 +103,8 @@ class CompanyUserAuthAccessTokensRestApiCest
 
         //Act
         $I->sendPOST(CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS, [
-                'type' => uniqid(CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS),
-                'attributes' => [
+                "type" => uniqid(CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS),
+                "attributes" => [
                     "idCompanyUser" => $this->fixtures->getOauthResponseTransferForCompanyUser()->getIdCompanyUser(),
                 ],
         ]);
@@ -126,9 +126,9 @@ class CompanyUserAuthAccessTokensRestApiCest
 
         //Act
         $I->sendPOST(CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS, [
-            'data' => [
-                'type' => CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS,
-                'attributes' => [
+            "data" => [
+                "type" => CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS,
+                "attributes" => [
                     "idCompanyUser" => $this->fixtures->getOauthResponseTransferForCompanyUser()->getIdCompanyUser(),
                 ],
             ],
@@ -151,9 +151,9 @@ class CompanyUserAuthAccessTokensRestApiCest
 
         //Act
         $I->sendPOST(CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS, [
-            'data' => [
-                'type' => CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS,
-                'attributes' => [
+            "data" => [
+                "type" => CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS,
+                "attributes" => [
                     "idCompanyUser" => uniqid(),
                 ],
             ],
@@ -174,9 +174,9 @@ class CompanyUserAuthAccessTokensRestApiCest
     {
         //Act
         $I->sendPOST(CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS, [
-            'data' => [
-                'type' => CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS,
-                'attributes' => [
+            "data" => [
+                "type" => CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS,
+                "attributes" => [
                     "idCompanyUser" => "",
                 ],
             ],

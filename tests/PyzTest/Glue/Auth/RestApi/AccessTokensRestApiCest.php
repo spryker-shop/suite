@@ -59,7 +59,7 @@ class AccessTokensRestApiCest
             ],
         ]);
 
-        //Arrange
+        //Assert
         $this->assertResponse($I, HttpCode::CREATED);
         $I->assertNotEmpty($I->grabDataFromResponseByJsonPath('$.data.attributes.accessToken'));
     }
@@ -84,7 +84,7 @@ class AccessTokensRestApiCest
             ],
         ]);
 
-        //Arrange
+        //Assert
         $this->assertResponse($I, HttpCode::UNAUTHORIZED);
     }
 
@@ -108,7 +108,7 @@ class AccessTokensRestApiCest
             ],
         ]);
 
-        //Arrange
+        //Assert
         $this->assertResponse($I, HttpCode::UNAUTHORIZED);
     }
 
@@ -132,7 +132,7 @@ class AccessTokensRestApiCest
             ],
         ]);
 
-        //Arrange
+        //Assert
         $this->assertResponse($I, HttpCode::UNPROCESSABLE_ENTITY);
     }
 
@@ -156,7 +156,7 @@ class AccessTokensRestApiCest
             ],
         ]);
 
-        //Arrange
+        //Assert
         $this->assertResponse($I, HttpCode::UNPROCESSABLE_ENTITY);
     }
 
@@ -178,7 +178,7 @@ class AccessTokensRestApiCest
             ],
         ]);
 
-        //Arrange
+        //Assert
         $this->assertResponse($I, HttpCode::BAD_REQUEST);
     }
 
@@ -202,7 +202,7 @@ class AccessTokensRestApiCest
             ],
         ]);
 
-        //Arrange
+        //Assert
         $this->assertResponse($I, HttpCode::BAD_REQUEST);
     }
 
