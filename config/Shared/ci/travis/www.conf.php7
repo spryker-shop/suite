@@ -30,7 +30,7 @@ group = www-data
 ;                            specific port;
 ;   '/path/to/unix/socket' - to listen on a unix socket.
 ; Note: This value is mandatory.
-listen = 127.0.0.1:900
+listen = 127.0.0.1:8999
 
 ; Set listen(2) backlog. A value of '-1' means unlimited.
 ; Default Value: 128 (-1 on FreeBSD and OpenBSD)
@@ -388,8 +388,6 @@ chdir = /
 ;
 
 [yves]
-user = www-data
-group = www-data
 listen = 127.0.0.1:9001
 pm = static
 pm.max_children = 1
@@ -402,8 +400,6 @@ pm.min_spare_servers = 0
 pm.max_spare_servers = 0
 
 [glue]
-user = www-data
-group = www-data
 listen = 127.0.0.1:9002
 pm = static
 pm.max_children = 1
@@ -416,8 +412,6 @@ pm.min_spare_servers = 0
 pm.max_spare_servers = 0
 
 [zed]
-user = www-data
-group = www-data
 listen = 127.0.0.1:9003
 pm = static
 pm.max_children = 1

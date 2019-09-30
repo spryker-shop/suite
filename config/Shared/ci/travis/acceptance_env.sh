@@ -1,23 +1,23 @@
-#!/bin/bash
+#!/bin/bash -e
 
-# provide antelope legacy
-FE_ANTELOPE_LEGACY=false
+# # provide antelope legacy
+# FE_ANTELOPE_LEGACY=false
 
-# package manager (npm|yarn)
-FE_PACKAGE_MANAGER='npm'
+# # package manager (npm|yarn)
+# FE_PACKAGE_MANAGER='npm'
 
-# install command (add flags/args here if you need)
-FE_INSTALL_COMMAND='install'
+# # install command (add flags/args here if you need)
+# FE_INSTALL_COMMAND='install'
 
-# yves
-FE_YVES_SCRIPT='yves'
-FE_YVES_BUNDLE_PKGJSON_PATTERN=".+/assets/Yves/package.json$"
+# # yves
+# FE_YVES_SCRIPT='yves'
+# FE_YVES_BUNDLE_PKGJSON_PATTERN=".+/assets/Yves/package.json$"
 
-# zed
-FE_ZED_SCRIPT='zed'
-FE_ZED_BUNDLE_PKGJSON_PATTERN=".+/assets/Zed/package.json$"
+# # zed
+# FE_ZED_SCRIPT='zed'
+# FE_ZED_BUNDLE_PKGJSON_PATTERN=".+/assets/Zed/package.json$"
 
-sudo apt-get install apache2 libapache2-mod-fastcgi > /dev/null
+sudo apt-get -qqy install apache2 libapache2-mod-fastcgi
 
 sudo chmod -R 755 $HOME
 sudo chmod 600 config/Zed/dev_only_private.key
@@ -26,15 +26,15 @@ sudo chmod 600 config/Zed/dev_only_public.key
 # setup php-fpm
 if [[ ${TRAVIS_PHP_VERSION:0:1} = "7" ]]; then sudo cp config/Shared/ci/travis/www.conf.php7 ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.d/www.conf; fi
 sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
-sudo a2enmod rewrite actions fastcgi alias
 echo "session.save_path = '/tmp'" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 echo "cgi.fix_pathinfo = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
 
-# apache rewrites
+# apache: modules and rewrite configuration
+sudo a2enmod rewrite actions fastcgi alias
 sudo cp -f config/Shared/ci/travis/.htaccess .htaccess
 
-# configure apache virtual hosts
+# apache: virtual hosts configuration
 sudo cp -f config/Shared/ci/travis/travis-ci-apache-yves /etc/apache2/sites-available/yves.conf
 sudo cp -f config/Shared/ci/travis/travis-ci-apache-zed /etc/apache2/sites-available/zed.conf
 sudo cp -f config/Shared/ci/travis/travis-ci-apache-glue /etc/apache2/sites-available/glue.conf
@@ -45,18 +45,14 @@ sudo ln -s /etc/apache2/sites-available/yves.conf /etc/apache2/sites-enabled/yve
 sudo ln -s /etc/apache2/sites-available/zed.conf /etc/apache2/sites-enabled/zed.conf
 sudo ln -s /etc/apache2/sites-available/glue.conf /etc/apache2/sites-enabled/glue.conf
 
-# configure apache fastcgi/php-fpm
+# apache: fastcgi/php-fpm configuration
 sudo cp -f config/Shared/ci/travis/php7-fpm.conf /etc/apache2/conf-enabled/php7-fpm.conf
-sudo mkdir -p /var/lib/apache2/fastcgi
-sudo chown -R 2000:2000 /var/lib/apache2/fastcgi
-sudo chmod 777 /var/lib/apache2/fastcgi
+
+# apache: check configuration and start service
+sudo apachectl configtest
 sudo service apache2 restart
 
-# node 6 is required
-# installed by '- nvm install 6' in .travis.yml
+# node.js is required - it is installed by '- nvm install (...)' in .travis.yml
 
+# codeception
 wget https://raw.github.com/Codeception/c3/2.0/c3.php > /dev/null
-
-# Verify configuration
-set -ex
-sudo apachectl configtest
