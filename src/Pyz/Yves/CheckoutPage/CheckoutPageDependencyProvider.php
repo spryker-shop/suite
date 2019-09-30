@@ -24,9 +24,9 @@ use SprykerShop\Yves\CustomerPage\Form\GuestForm;
 use SprykerShop\Yves\CustomerPage\Form\LoginForm;
 use SprykerShop\Yves\CustomerPage\Form\RegisterForm;
 use SprykerShop\Yves\CustomerPage\Plugin\CheckoutPage\CustomerAddressExpanderPlugin;
-use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\CheckoutAddressStepPreCheckPlugin;
-use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\CheckoutPaymentStepPreCheckPlugin;
-use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\CheckoutShipmentStepPreCheckPlugin;
+use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutAddressStepEnterPreCheckPlugin;
+use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutPaymentStepEnterPreCheckPlugin;
+use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutShipmentStepEnterPreCheckPlugin;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThresholdWidgetPlugin;
 
 /**
@@ -151,32 +151,32 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     }
 
     /**
-     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutAddressStepPreCheckPluginInterface[]
+     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutAddressStepEnterPreCheckPluginInterface[]
      */
-    protected function getAddressStepPreCheckPlugins(): array
+    protected function getCheckoutAddressStepEnterPreCheckPlugins(): array
     {
         return [
-            new CheckoutAddressStepPreCheckPlugin(),
+            new QuoteApprovalCheckerCheckoutAddressStepEnterPreCheckPlugin(),
         ];
     }
 
     /**
-     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutShipmentStepPreCheckPluginInterface[]
+     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutShipmentStepEnterPreCheckPluginInterface[]
      */
-    protected function getShipmentStepPreCheckPlugins(): array
+    protected function getCheckoutShipmentStepEnterPreCheckPlugins(): array
     {
         return [
-            new CheckoutShipmentStepPreCheckPlugin(),
+            new QuoteApprovalCheckerCheckoutShipmentStepEnterPreCheckPlugin(),
         ];
     }
 
     /**
-     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutPaymentStepPreCheckPluginInterface[]
+     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutPaymentStepEnterPreCheckPluginInterface[]
      */
-    protected function getPaymentStepPreCheckPlugins(): array
+    protected function getCheckoutPaymentStepEnterPreCheckPlugins(): array
     {
         return [
-            new CheckoutPaymentStepPreCheckPlugin(),
+            new QuoteApprovalCheckerCheckoutPaymentStepEnterPreCheckPlugin(),
         ];
     }
 
