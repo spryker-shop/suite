@@ -10,6 +10,9 @@ namespace Pyz\Zed\Cart;
 use Spryker\Zed\Cart\CartDependencyProvider as SprykerCartDependencyProvider;
 use Spryker\Zed\Cart\Communication\Plugin\CleanUpItemsPreReloadPlugin;
 use Spryker\Zed\Cart\Communication\Plugin\SkuGroupKeyPlugin;
+use Spryker\Zed\ConfigurableBundleCart\Communication\Plugin\Cart\ConfiguredBundleQuantityPerSlotPreReloadItemsPlugin;
+use Spryker\Zed\ConfigurableBundleCart\Communication\Plugin\Cart\ConfiguredBundleQuantityPostSavePlugin;
+use Spryker\Zed\ConfigurableBundleCart\Communication\Plugin\Cart\ConfiguredBundleQuantityTerminationPlugin;
 use Spryker\Zed\Discount\Communication\Plugin\Cart\DiscountQuoteChangeObserverPlugin;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Cart\CartGroupPromotionItems;
 use Spryker\Zed\GiftCard\Communication\Plugin\GiftCardMetadataExpanderPlugin;
@@ -135,7 +138,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return \Spryker\Zed\Cart\Dependency\PostSavePluginInterface[]
+     * @return \Spryker\Zed\CartExtension\Dependency\Plugin\PostSavePluginInterface[]
      */
     protected function getPostSavePlugins(Container $container)
     {
@@ -145,6 +148,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new RemovePaymentCartPostSavePlugin(),
             new QuantitySalesUnitValuePostSavePlugin(),
             new AmountSalesUnitValuePostSavePlugin(), #ProductPackagingUnit
+            new ConfiguredBundleQuantityPostSavePlugin(),
         ];
     }
 
@@ -161,6 +165,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new RemoveRestrictedItemsPreReloadPlugin(),
             new CleanUpItemsPreReloadPlugin(),
             new FilterItemsWithoutPricePlugin(),
+            new ConfiguredBundleQuantityPerSlotPreReloadItemsPlugin(),
         ];
     }
 
@@ -183,7 +188,9 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
      */
     protected function getTerminationPlugins(Container $container)
     {
-        return [];
+        return [
+            new ConfiguredBundleQuantityTerminationPlugin(),
+        ];
     }
 
     /**
