@@ -60,6 +60,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new SprykerSessionServiceProvider(),
             new SubRequestServiceProvider(),
             new MonitoringRequestTransactionServiceProvider(),
+            new WebProfilerServiceProvider(),
             new ZedHstsServiceProvider(),
         ];
 
@@ -100,7 +101,11 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new AclBootstrapProvider(),
             new GatewayServiceProviderPlugin(),
             new HttpFragmentServiceProvider(),
+<<<<<<< HEAD
             new MonitoringRequestTransactionServiceProvider(),
+=======
+            new RequestServiceProvider(),
+>>>>>>> TE-1190 Replaced usage of deprecated AutoloaderCacheServiceProvider with AutoloaderCacheEventDispatcherPlugin.
             new SessionServiceProvider(),
             new SubRequestServiceProvider(),
             new SprykerSessionServiceProvider(),

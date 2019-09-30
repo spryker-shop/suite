@@ -22,7 +22,6 @@ use Spryker\Yves\Session\Plugin\ServiceProvider\SessionServiceProvider as Spryke
 use Spryker\Yves\ZedRequest\Plugin\ServiceProvider\ZedRequestHeaderServiceProvider;
 use SprykerShop\Yves\AgentPage\Plugin\Provider\AgentPageSecurityServiceProvider;
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerSecurityServiceProvider;
-use SprykerShop\Yves\ShopApplication\Plugin\Provider\AutoloaderCacheServiceProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\YvesSecurityServiceProvider;
 use SprykerShop\Yves\ShopApplication\YvesBootstrap as SprykerYvesBootstrap;
 
@@ -47,6 +46,7 @@ class YvesBootstrap extends SprykerYvesBootstrap
         $this->application->register(new HttpFragmentServiceProvider());
         $this->application->register(new FlashMessengerServiceProvider());
         $this->application->register(new AutoloaderCacheServiceProvider());
+        $this->application->register(new WebProfilerWidgetServiceProvider());
         $this->application->register(new YvesHstsServiceProvider());
         $this->application->register(new FormFactoryServiceProvider());
         $this->application->register(new AgentPageSecurityServiceProvider()); # AgentFeature
