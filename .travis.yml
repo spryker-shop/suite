@@ -283,6 +283,15 @@ script:
 after_script:
   - if [[ $TRAVIS_TEST_RESULT == 0 ]] ; then rm /tmp/phantomjs.log ; fi
   - if [[ $TRAVIS_TEST_RESULT == 1 ]] ; then gzip --best /tmp/phantomjs.log ; fi
+  - cat /tmp/yves-error.log
+  - cat /tmp/glue-error.log
+  - cat /tmp/zed-error.log
+  - ps axuf
+  - netstat -an
+  - apache2ctl configtest
+  - apache2ctl fullstatus
+
+
 
 notifications:
   email: false
