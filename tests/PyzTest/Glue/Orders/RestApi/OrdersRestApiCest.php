@@ -26,6 +26,7 @@ use Spryker\Glue\OrdersRestApi\OrdersRestApiConfig;
 class OrdersRestApiCest
 {
     protected const KEY_ACCESS_TOKEN = 'accessToken';
+
     /**
      * @var \PyzTest\Glue\Orders\RestApi\OrdersRestApiFixtures
      */
@@ -42,14 +43,15 @@ class OrdersRestApiCest
     }
 
     /**
+     * @depends loadFixtures
+     *
      * @param \PyzTest\Glue\Orders\OrdersRestApiTester $I
      *
      * @return void
      */
-    public function gettingOrderDataAsAuthorizedCustomerShouldBeSuccessful(OrdersRestApiTester $I): void
+    public function requestOrderDataAsAuthorizedCustomerShouldBeSuccessful(OrdersRestApiTester $I): void
     {
         //Arrange
-        $orderTransfer = $this->getOrderTransfer($I);
         $this->authorizeCustomer($I, $this->fixtures->getCustomerTransfer());
 
         //Act
@@ -57,7 +59,7 @@ class OrdersRestApiCest
             '{resource}/{reference}',
             [
                 'resource' => OrdersRestApiConfig::RESOURCE_ORDERS,
-                'reference' => $orderTransfer->getOrderReference(),
+                'reference' => $this->fixtures->getOrderTransfer()->getOrderReference(),
             ]
         ));
 
@@ -73,39 +75,26 @@ class OrdersRestApiCest
     }
 
     /**
+     * @depends loadFixtures
+     *
      * @param \PyzTest\Glue\Orders\OrdersRestApiTester $I
      *
      * @return void
      */
-    public function gettingOrderDataAsNonAuthorizedCustomerShouldFail(OrdersRestApiTester $I): void
+    public function requestOrderDataAsNonAuthorizedCustomerShouldFail(OrdersRestApiTester $I): void
     {
-        //Arrange
-        $orderTransfer = $this->getOrderTransfer($I);
-
         //Act
         $I->sendGET($I->formatUrl(
             '{resource}/{reference}',
             [
                 'resource' => OrdersRestApiConfig::RESOURCE_ORDERS,
-                'reference' => $orderTransfer->getOrderReference(),
+                'reference' => $this->fixtures->getOrderTransfer()->getOrderReference(),
             ]
         ));
 
         //Assert
         $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
         $I->seeResponseIsJson();
-    }
-
-    /**
-     * @param \PyzTest\Glue\Orders\OrdersRestApiTester $I
-     *
-     * @return \Generated\Shared\Transfer\OrderTransfer
-     */
-    protected function getOrderTransfer(OrdersRestApiTester $I): OrderTransfer
-    {
-        $saveOrderTransfer = $this->fixtures->getSaveOrderTransfer();
-
-        return $I->getLocator()->sales()->facade()->getOrderByIdSalesOrder($saveOrderTransfer->getIdSalesOrder());
     }
 
     /**

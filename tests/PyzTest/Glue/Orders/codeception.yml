@@ -27,15 +27,10 @@ suites:
                 - \SprykerTest\Glue\Testify\Helper\JsonPath
                 - \SprykerTest\Glue\Testify\Helper\GlueRest
                 - \SprykerTest\Glue\AuthRestApi\Helper\AuthRestApiHelper
-                - \SprykerTest\Shared\Product\Helper\ProductDataHelper
-                - \SprykerTest\Shared\PriceProduct\Helper\PriceProductDataHelper
-                - \SprykerTest\Shared\Stock\Helper\StockDataHelper
                 - \SprykerTest\Shared\Shipment\Helper\ShipmentMethodDataHelper
-                - \SprykerTest\Shared\Quote\Helper\PersistentQuoteHelper
-                - \SprykerTest\Shared\Testify\Helper\LocatorHelper
-                - \SprykerTest\Shared\Sales\Helper\SalesDataHelper
                 - \SprykerTest\Zed\Oms\Helper\OmsHelper
                 - \SprykerTest\Shared\Testify\Helper\ConfigHelper
+                - \SprykerTest\Shared\Sales\Helper\SalesDataHelper
             config:
                 \SprykerTest\Glue\Testify\Helper\GlueRest:
                     depends: PhpBrowser

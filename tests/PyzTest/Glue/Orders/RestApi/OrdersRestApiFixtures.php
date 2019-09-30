@@ -12,6 +12,7 @@ use Generated\Shared\DataBuilder\QuoteBuilder;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\ExpenseTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
+use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\SaveOrderTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
@@ -58,6 +59,11 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
     protected $quoteTransfer;
 
     /**
+     * @var \Generated\Shared\Transfer\OrderTransfer
+     */
+    protected $orderTransfer;
+
+    /**
      * @return \Generated\Shared\Transfer\SaveOrderTransfer
      */
     public function getSaveOrderTransfer(): SaveOrderTransfer
@@ -90,6 +96,14 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
     }
 
     /**
+     * @return \Generated\Shared\Transfer\OrderTransfer
+     */
+    public function getOrderTransfer(): OrderTransfer
+    {
+        return $this->orderTransfer;
+    }
+
+    /**
      * @param \PyzTest\Glue\Orders\OrdersRestApiTester $I
      *
      * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
@@ -100,6 +114,7 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
         $this->shipmentMethodTransfer = $this->createShipmentMethodTransfer($I);
         $this->quoteTransfer = $this->createQuoteTransfer();
         $this->saveOrderTransfer = $this->createSaveOrderTransfer($I);
+        $this->orderTransfer = $this->createOrderTransfer($I);
 
         $this->saveOrderShipment($I);
 
@@ -200,5 +215,15 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
             $this->quoteTransfer,
             $this->saveOrderTransfer
         );
+    }
+
+    /**
+     * @param \PyzTest\Glue\Orders\OrdersRestApiTester $I
+     *
+     * @return \Generated\Shared\Transfer\OrderTransfer
+     */
+    protected function createOrderTransfer(OrdersRestApiTester $I): OrderTransfer
+    {
+        return $I->getLocator()->sales()->facade()->getOrderByIdSalesOrder($this->saveOrderTransfer->getIdSalesOrder());
     }
 }
