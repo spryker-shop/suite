@@ -58,21 +58,9 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     }
 
     /**
-     * @return mixed[]
+     * @return (\Symfony\Component\Form\FormTypeInterface|string)[]
      */
     protected function getCustomerStepSubForms()
-    {
-        return [
-            LoginForm::class,
-            $this->getCustomerCheckoutForm(RegisterForm::class, RegisterForm::BLOCK_PREFIX),
-            $this->getCustomerCheckoutForm(GuestForm::class, GuestForm::BLOCK_PREFIX),
-        ];
-    }
-
-    /**
-     * @return mixed[]
-     */
-    protected function getCustomerFormTypes()
     {
         return [
             LoginForm::class,
@@ -100,7 +88,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     /**
      * @return \Symfony\Component\Form\FormFactory
      */
-    private function getFormFactory()
+    protected function getFormFactory()
     {
         return (new Pimple())->getApplication()['form.factory'];
     }
