@@ -154,7 +154,7 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
                 [$sku, $quantity] = explode('/', $bundleProduct);
 
                 $productBundleEntityTransfer = new SpyProductBundleEntityTransfer();
-                $productBundleEntityTransfer->setQuantity($quantity);
+                $productBundleEntityTransfer->setQuantity((int)$quantity);
                 $productBundleTransfer[] = [
                     static::KEY_PRODUCT_BUNDLE_TRANSFER => $productBundleEntityTransfer,
                     static::KEY_SKU => $dataSet[static::KEY_CONCRETE_SKU],
