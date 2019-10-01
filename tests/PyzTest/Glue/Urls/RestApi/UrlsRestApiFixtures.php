@@ -19,6 +19,7 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Glue
  * @group Urls
