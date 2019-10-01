@@ -12,6 +12,7 @@ use PyzTest\Glue\PriceProducts\PriceProductsApiTester;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Glue
  * @group PriceProducts

@@ -12,6 +12,7 @@ use PyzTest\Glue\CustomerAccess\CustomerAccessApiTester;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Glue
  * @group CustomerAccess
