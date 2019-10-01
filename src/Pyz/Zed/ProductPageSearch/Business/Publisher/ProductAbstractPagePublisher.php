@@ -191,7 +191,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
      */
     public function buildSynchronizedData(ProductPageSearchTransfer $productPageSearchTransfer, array $data, string $resourceName): array
     {
-        $key = $this->generateResourceKey($data, $productPageSearchTransfer->getIdProductAbstract(), $resourceName);
+        $key = $this->generateResourceKey($data, (string)$productPageSearchTransfer->getIdProductAbstract(), $resourceName);
         $encodedData = json_encode($data);
         $data['key'] = $key;
         $data['data'] = $encodedData;
