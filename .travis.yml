@@ -12,12 +12,18 @@ env:
     - ARTIFACTS_SECRET=$AWS_S3_SECRET_ACCESS_KEY
     - ARTIFACTS_BUCKET=spryker-ci
 
+# Only branches matching the following patterns will be run on travis.
+# "master"
+# "feature/ab-123/master/*"
+# "feature/ab-123/dev/*"
+# "feature/ab-123/ab-234/master/*"
+# "feature/ab-123/ab-234/dev/*"
+# "bugfix/*", "hotfix/*" and "beta/*"
 branches:
   only:
-  - master
-  - /feature\/[a-z]+-\d+\/(master|dev).+/
-  - /(bugfix|hotfix)\/.+/
-  - /beta\/.+/
+    - master
+    - /feature\/[a-z]+-\d+\/(master|dev).+|feature\/[a-z]+-\d+\/[a-z]+-\d+\/(master|dev).+/
+    - /(bugfix|hotfix|beta)\/.+/
 
 #Possible travis events (push, pull_request, cron, or api)
 matrix:
@@ -27,70 +33,10 @@ matrix:
 
   include:
 
-
-
     - php: "7.3"
       dist: trusty
       env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
-
-
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
-
-
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
-
-
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
-
-
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
-
-
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
-
-
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
-
-
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
-
-
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
-
+        - VALIDATION=1
 
     - php: "7.3"
       dist: trusty
@@ -101,71 +47,154 @@ matrix:
     - php: "7.3"
       dist: trusty
       env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
+        - TEST_GROUP=without-acceptance
+        - ON_EVENTS=cron,push
 
-
-    - php: "7.3"
+    - php: "7.1"
       dist: trusty
       env:
         - TEST_GROUP=acceptance
         - ON_EVENTS=push,cron
+        - DB=mysql
 
-
-    - php: "7.3"
+    - php: "7.1"
       dist: trusty
       env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
+        - TEST_GROUP=without-acceptance
+        - ON_EVENTS=cron,push
+        - DB=mysql
 
-
-    - php: "7.3"
-      dist: trusty
+    - name: Docker / PHP 7.3 / PostgreSQL / Functional
+      os:
+        - linux
+      dist: bionic
+      language: minimal
       env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
+        - PROGRESS_TYPE=plain
+        - SPRYKER_PHP_VERSION=7.3
+        - SPRYKER_DB_ENGINE=PGSQL
+        - SPRYKER_TEST_IN_BROWSER=phantomjs
+        - TRAVIS=1
+      addons:
+        hosts:
+          - yves.de.spryker.local
+          - zed.de.spryker.local
+          - glue.de.spryker.local
+          - queue.spryker.local
+          - scheduler.spryker.local
+        apt:
+          packages:
+            - apache2-utils
+            - apt-transport-https
+            - ca-certificates
+            - curl
+            - gnupg-agent
+            - pigz
+            - software-properties-common
+          sources:
+            - sourceline: "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+              key_url: https://download.docker.com/linux/ubuntu/gpg
+      install:
+        - echo eyAiZXhwZXJpbWVudGFsIiA6IHRydWUsICJmZWF0dXJlcyIgOiB7ICJidWlsZGtpdCI6IHRydWUgfSB9Cg==|base64 -d|sudo tee /etc/docker/daemon.json
+        - sudo apt-get install --only-upgrade docker-ce -y
+        - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        - sudo chmod +x /usr/local/bin/docker-compose
+      script:
+        - docker/sdk boot
+        - docker/sdk up
+        - 'docker/sdk testing codecept run -c codeception.functional.yml -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: inclusive: [PyzTest]\"" -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: exclusive: [Api, Glue]\""'
+      before_install: skip
+      before_script: skip
+      after_script: skip
 
-
-    - php: "7.3"
-      dist: trusty
+    - name: Docker / PHP 7.3 / PostgreSQL / Glue
+      os:
+        - linux
+      dist: bionic
+      language: minimal
       env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
+        - PROGRESS_TYPE=plain
+        - SPRYKER_PHP_VERSION=7.3
+        - SPRYKER_DB_ENGINE=PGSQL
+        - SPRYKER_TEST_IN_BROWSER=phantomjs
+        - TRAVIS=1
+      addons:
+        hosts:
+          - yves.de.spryker.local
+          - zed.de.spryker.local
+          - glue.de.spryker.local
+          - queue.spryker.local
+          - scheduler.spryker.local
+        apt:
+          packages:
+            - apache2-utils
+            - apt-transport-https
+            - ca-certificates
+            - curl
+            - gnupg-agent
+            - pigz
+            - software-properties-common
+          sources:
+            - sourceline: "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+              key_url: https://download.docker.com/linux/ubuntu/gpg
+      install:
+        - echo eyAiZXhwZXJpbWVudGFsIiA6IHRydWUsICJmZWF0dXJlcyIgOiB7ICJidWlsZGtpdCI6IHRydWUgfSB9Cg==|base64 -d|sudo tee /etc/docker/daemon.json
+        - sudo apt-get install --only-upgrade docker-ce -y
+        - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        - sudo chmod +x /usr/local/bin/docker-compose
+      script:
+        - docker/sdk boot
+        - docker/sdk up
+        - docker/sdk testing codecept fixtures
+        - docker/sdk testing console queue:worker:start --stop-when-empty
+        - docker/sdk testing codecept run -c codeception.api.yml
+      before_install: skip
+      before_script: skip
+      after_script: skip
 
-
-    - php: "7.3"
-      dist: trusty
+    - name: Docker / PHP 7.3 / MySQL / Functional
+      os:
+        - linux
+      dist: bionic
+      language: minimal
       env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
+        - PROGRESS_TYPE=plain
+        - SPRYKER_PHP_VERSION=7.3
+        - SPRYKER_DB_ENGINE=MYSQL
+        - SPRYKER_TEST_IN_BROWSER=phantomjs
+        - TRAVIS=1
+      addons:
+        hosts:
+          - yves.de.spryker.local
+          - zed.de.spryker.local
+          - glue.de.spryker.local
+          - queue.spryker.local
+          - scheduler.spryker.local
+        apt:
+          packages:
+            - apache2-utils
+            - apt-transport-https
+            - ca-certificates
+            - curl
+            - gnupg-agent
+            - pigz
+            - software-properties-common
+          sources:
+            - sourceline: "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+              key_url: https://download.docker.com/linux/ubuntu/gpg
+      install:
+        - echo eyAiZXhwZXJpbWVudGFsIiA6IHRydWUsICJmZWF0dXJlcyIgOiB7ICJidWlsZGtpdCI6IHRydWUgfSB9Cg==|base64 -d|sudo tee /etc/docker/daemon.json
+        - sudo apt-get install --only-upgrade docker-ce -y
+        - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        - sudo chmod +x /usr/local/bin/docker-compose
+      script:
+        - docker/sdk boot
+        - docker/sdk up
+        - 'docker/sdk testing codecept run -c codeception.functional.yml -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: inclusive: [PyzTest]\"" -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: exclusive: [Api, Glue]\""'
+      before_install: skip
+      before_script: skip
+      after_script: skip
 
-
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
-
-
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
-
-
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
-
-
-    - php: "7.3"
-      dist: trusty
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
 
 addons:
   postgresql: 9.6
@@ -179,6 +208,9 @@ addons:
       - $(find ./tests/PyzTest/*/*/_output/* -not -empty | tr "\n" ":")
       - $(find ./vendor/spryker/spryker/Bundles/*/tests/_output/* -not -empty | tr "\n" ":")
       - /tmp/phantomjs.log.gz
+      - /tmp/yves-error.log
+      - /tmp/glue-error.log
+      - /tmp/zed-error.log
 
   apt:
     packages:
@@ -283,14 +315,6 @@ script:
 after_script:
   - if [[ $TRAVIS_TEST_RESULT == 0 ]] ; then rm /tmp/phantomjs.log ; fi
   - if [[ $TRAVIS_TEST_RESULT == 1 ]] ; then gzip --best /tmp/phantomjs.log ; fi
-  - cat /tmp/yves-error.log
-  - cat /tmp/glue-error.log
-  - cat /tmp/zed-error.log
-  - ps axuf
-  - netstat -an
-  - apache2ctl configtest
-  - apache2ctl fullstatus
-
 
 
 notifications:
