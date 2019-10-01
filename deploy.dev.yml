@@ -140,6 +140,14 @@ services:
         engine: mailhog
         endpoints:
             mail.spryker.local:
+    swagger:
+        engine: swagger-ui
+        document:
+            name: spryker_rest_api.schema.yml
+            path: src/Generated/Glue/Specification
+        endpoints:
+            swagger.spryker.local:
+
 
 docker:
 
