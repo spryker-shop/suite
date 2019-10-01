@@ -195,7 +195,6 @@ matrix:
       before_script: skip
       after_script: skip
 
-
 addons:
   postgresql: 9.6
   mysql: 5.7
@@ -222,9 +221,9 @@ addons:
     - glue.de.spryker.test
 
 cache:
-    directories:
-        - $HOME/.composer/cache
-        - /home/travis/.rvm/gems # Mailcatcher is a ruby gem, takes 5 minutes to install.
+  directories:
+    - $HOME/.composer/cache
+    - /home/travis/.rvm/gems # Mailcatcher is a ruby gem, takes 5 minutes to install.
 
 services:
   - postgresql
