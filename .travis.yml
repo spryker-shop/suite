@@ -21,16 +21,9 @@ env:
 # "bugfix/*", "hotfix/*" and "beta/*"
 branches:
   only:
-<<<<<<< HEAD
     - master
     - /feature\/[a-z]+-\d+\/(master|dev).+|feature\/[a-z]+-\d+\/[a-z]+-\d+\/(master|dev).+/
     - /(bugfix|hotfix|beta)\/.+/
-=======
-  - mastera
-  - /feature\/[a-z]+-\d+\/(master|dev).+/
-  - /(bugfix|hotfix)\/.+/
-  - /beta\/.+/
->>>>>>> TE-1190 Removed usage of ErrorPageServiceProvider and added ErrorPageEventDispatcherPlugin.
 
 #Possible travis events (push, pull_request, cron, or api)
 matrix:

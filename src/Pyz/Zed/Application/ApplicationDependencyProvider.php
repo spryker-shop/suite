@@ -46,7 +46,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
         $coreProviders = parent::getServiceProviders($container);
 
         $providers = [
-            new AuthBootstrapProvider(),
             new AclBootstrapProvider(),
             new AssertionServiceProvider(),
             new SubRequestServiceProvider(),
@@ -97,15 +96,11 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
     protected function getInternalCallServiceProvidersWithAuthentication(Container $container)
     {
         return [
-            new AuthBootstrapProvider(),
             new AclBootstrapProvider(),
             new GatewayServiceProviderPlugin(),
             new HttpFragmentServiceProvider(),
-<<<<<<< HEAD
             new MonitoringRequestTransactionServiceProvider(),
-=======
             new RequestServiceProvider(),
->>>>>>> TE-1190 Replaced usage of deprecated AutoloaderCacheServiceProvider with AutoloaderCacheEventDispatcherPlugin.
             new SessionServiceProvider(),
             new SubRequestServiceProvider(),
             new SprykerSessionServiceProvider(),
