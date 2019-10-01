@@ -12,6 +12,7 @@ use PyzTest\Glue\Products\ProductsApiTester;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Glue
  * @group Products
@@ -135,5 +136,30 @@ class ProductAbstractRestApiCest
         $I->amSure('Returned resource has include of type concrete-products')
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId('concrete-products', $this->fixtures->getProductConcreteTransfer()->getSku());
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     *
+     * @return void
+     */
+    public function requestProductAbstractHasUrlAttribute(ProductsApiTester $I): void
+    {
+        //act
+        $I->sendGET(
+            $I->formatUrl(
+                'abstract-products/{ProductAbstractSku}',
+                [
+                    'ProductAbstractSku' => $this->fixtures->getProductConcreteTransfer()->getAbstractSku(),
+                ]
+            )
+        );
+
+        //assert
+        $I->amSure('Returned resource contains `url` attribute')
+            ->whenI()
+            ->seeSingleResourceHasAttribute('url');
     }
 }
