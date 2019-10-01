@@ -9,6 +9,9 @@ namespace PyzTest\Glue\Products\RestApi;
 
 use Codeception\Util\HttpCode;
 use PyzTest\Glue\Products\ProductsApiTester;
+use Spryker\Glue\AlternativeProductsRestApi\AlternativeProductsRestApiConfig;
+use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
+use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
 
 /**
  * Auto-generated group annotations
@@ -46,24 +49,24 @@ class ProductConcreteAlternativeRestApiCest
      */
     public function requestExistingConcreteAlternativeProduct(ProductsApiTester $I): void
     {
-        //act
+        //Act
         $I->sendGET(
             $I->formatUrl(
-                'concrete-products/{ProductConcreteSku}/concrete-alternative-products',
+                '{resourceConcreteProducts}/{productConcreteSku}/{resourceConcreteAlternativeProducts}',
                 [
-                    'ProductConcreteSku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
+                    'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                    'resourceConcreteAlternativeProducts' => AlternativeProductsRestApiConfig::CONTROLLER_CONCRETE_ALTERNATIVE_PRODUCTS,
+                    'productConcreteSku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
                 ]
             )
         );
 
-        //assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        //Assert
+        $I->assertResponse(HttpCode::OK);
 
         $I->amSure('Returned resource is of type concrete-products')
             ->whenI()
-            ->seeResponseDataContainsResourceCollectionOfType('concrete-products');
+            ->seeResponseDataContainsResourceCollectionOfType(ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS);
 
         $I->amSure('Returned resource has correct id')
             ->whenI()
@@ -82,33 +85,35 @@ class ProductConcreteAlternativeRestApiCest
         $productConcreteTransfer = $this->fixtures->getProductConcreteTransfer();
         $productConcreteTransferWithLabel = $this->fixtures->getProductConcreteTransferWithLabel();
         $productLabelTransfer = $this->fixtures->getProductLabelTransfer();
-        //act
+
+        //Act
         $I->sendGET(
             $I->formatUrl(
-                'concrete-products/{ProductConcreteSku}/concrete-alternative-products?include=product-labels',
+                '{resourceConcreteProducts}/{productConcreteSku}/{resourceConcreteAlternativeProducts}?include={relationshipProductLabels}',
                 [
-                    'ProductConcreteSku' => $productConcreteTransfer->getSku(),
+                    'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                    'resourceConcreteAlternativeProducts' => AlternativeProductsRestApiConfig::CONTROLLER_CONCRETE_ALTERNATIVE_PRODUCTS,
+                    'relationshipProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+                    'productConcreteSku' => $productConcreteTransfer->getSku(),
                 ]
             )
         );
 
-        //assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        //Assert
+        $I->assertResponse(HttpCode::OK);
 
-        $I->amSure('Returned resource has include of type product-labels')
+        $I->amSure('Returned resource has relation of type product-labels')
             ->whenI()
             ->seeResourceByIdHasRelationshipByTypeAndId(
                 $productConcreteTransferWithLabel->getSku(),
-                'product-labels',
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
                 $productLabelTransfer->getIdProductLabel()
             );
 
         $I->amSure('Returned resource has include of type product-labels')
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
-                'product-labels',
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
                 $productLabelTransfer->getIdProductLabel()
             );
     }
@@ -123,20 +128,22 @@ class ProductConcreteAlternativeRestApiCest
     public function requestExistingConcreteAlternativeProductWithoutProductLabelRelationship(ProductsApiTester $I): void
     {
         $productConcreteTransfer = $this->fixtures->getProductConcreteTransferWithLabel();
-        //act
+
+        //Act
         $I->sendGET(
             $I->formatUrl(
-                'concrete-products/{ProductConcreteSku}/concrete-alternative-products?include=product-labels',
+                '{resourceConcreteProducts}/{productConcreteSku}/{resourceConcreteAlternativeProducts}?include={relationshipProductLabels}',
                 [
-                    'ProductConcreteSku' => $productConcreteTransfer->getSku(),
+                    'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                    'resourceConcreteAlternativeProducts' => AlternativeProductsRestApiConfig::CONTROLLER_CONCRETE_ALTERNATIVE_PRODUCTS,
+                    'relationshipProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+                    'productConcreteSku' => $productConcreteTransfer->getSku(),
                 ]
             )
         );
 
-        //assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        //Assert
+        $I->assertResponse(HttpCode::OK);
         $I->dontSeeResponseMatchesJsonPath('$.included[*]');
     }
 
@@ -149,20 +156,21 @@ class ProductConcreteAlternativeRestApiCest
      */
     public function requestNotExistingConcreteAlternativeProductWithProductLabelRelationship(ProductsApiTester $I): void
     {
-        //act
+        //Act
         $I->sendGET(
             $I->formatUrl(
-                'concrete-products/{ProductConcreteSku}/concrete-alternative-products?include=product-labels',
+                '{resourceConcreteProducts}/{productConcreteSku}/{resourceConcreteAlternativeProducts}?include={relationshipProductLabels}',
                 [
-                    'ProductConcreteSku' => 'NotExistingSku',
+                    'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                    'resourceConcreteAlternativeProducts' => AlternativeProductsRestApiConfig::CONTROLLER_CONCRETE_ALTERNATIVE_PRODUCTS,
+                    'relationshipProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+                    'productConcreteSku' => 'NotExistingSku',
                 ]
             )
         );
 
-        //assert
-        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        //Assert
+        $I->assertResponse(HttpCode::NOT_FOUND);
         $I->dontSeeResponseMatchesJsonPath('$.data[*]');
         $I->dontSeeResponseMatchesJsonPath('$.included[*]');
     }
@@ -177,17 +185,21 @@ class ProductConcreteAlternativeRestApiCest
     public function requestExistingConcreteAlternativeProductWithProductLabelRelationshipByPost(ProductsApiTester $I): void
     {
         $productConcreteTransfer = $this->fixtures->getProductConcreteTransferWithLabel();
-        //act
+
+        //Act
         $I->sendPOST(
             $I->formatUrl(
-                'concrete-products/{ProductConcreteSku}/concrete-alternative-products?include=product-labels',
+                '{resourceConcreteProducts}/{productConcreteSku}/{resourceConcreteAlternativeProducts}?include={relationshipProductLabels}',
                 [
-                    'ProductConcreteSku' => $productConcreteTransfer->getAbstractSku(),
+                    'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                    'resourceConcreteAlternativeProducts' => AlternativeProductsRestApiConfig::CONTROLLER_CONCRETE_ALTERNATIVE_PRODUCTS,
+                    'relationshipProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+                    'productConcreteSku' => $productConcreteTransfer->getAbstractSku(),
                 ]
             )
         );
 
-        //assert
+        //Assert
         $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
         $I->seeResponseIsJson();
     }

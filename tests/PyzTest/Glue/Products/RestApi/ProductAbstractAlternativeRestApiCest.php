@@ -9,9 +9,9 @@ namespace PyzTest\Glue\Products\RestApi;
 
 use Codeception\Util\HttpCode;
 use PyzTest\Glue\Products\ProductsApiTester;
+use Spryker\Glue\AlternativeProductsRestApi\AlternativeProductsRestApiConfig;
 use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
-use Spryker\Glue\RelatedProductsRestApi\RelatedProductsRestApiConfig;
 
 /**
  * Auto-generated group annotations
@@ -19,11 +19,11 @@ use Spryker\Glue\RelatedProductsRestApi\RelatedProductsRestApiConfig;
  * @group Glue
  * @group Products
  * @group RestApi
- * @group ProductRelatedRestApiCest
+ * @group ProductAbstractAlternativeRestApiCest
  * Add your own group annotations below this line
  * @group EndToEnd
  */
-class ProductRelatedRestApiCest
+class ProductAbstractAlternativeRestApiCest
 {
     /**
      * @var \PyzTest\Glue\Products\RestApi\ProductsRestApiFixtures
@@ -47,16 +47,16 @@ class ProductRelatedRestApiCest
      *
      * @return void
      */
-    public function requestExistingProductRelated(ProductsApiTester $I): void
+    public function requestExistingAbstractAlternativeProduct(ProductsApiTester $I): void
     {
         //Act
         $I->sendGET(
             $I->formatUrl(
-                '{resourceAbstractProducts}/{productAbstractSku}/{resourceRelatedProducts}',
+                '{resourceConcreteProducts}/{productConcreteSku}/{resourceAbstractAlternativeProducts}',
                 [
-                    'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
-                    'resourceRelatedProducts' => RelatedProductsRestApiConfig::CONTROLLER_RELATED_PRODUCTS,
-                    'productAbstractSku' => $this->fixtures->getProductConcreteTransfer()->getAbstractSku(),
+                    'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                    'resourceAbstractAlternativeProducts' => AlternativeProductsRestApiConfig::CONTROLLER_ABSTRACT_ALTERNATIVE_PRODUCTS,
+                    'productConcreteSku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
                 ]
             )
         );
@@ -80,7 +80,7 @@ class ProductRelatedRestApiCest
      *
      * @return void
      */
-    public function requestExistingProductRelatedWithProductLabelRelationship(ProductsApiTester $I): void
+    public function requestExistingAbstractAlternativeProductWithProductLabelRelationship(ProductsApiTester $I): void
     {
         $productConcreteTransfer = $this->fixtures->getProductConcreteTransfer();
         $productConcreteTransferWithLabel = $this->fixtures->getProductConcreteTransferWithLabel();
@@ -89,12 +89,12 @@ class ProductRelatedRestApiCest
         //Act
         $I->sendGET(
             $I->formatUrl(
-                '{resourceAbstractProducts}/{productAbstractSku}/{resourceRelatedProducts}?include={relationshipProductLabels}',
+                '{resourceConcreteProducts}/{productConcreteSku}/{resourceAbstractAlternativeProducts}?include={relationshipProductLabels}',
                 [
-                    'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
-                    'resourceRelatedProducts' => RelatedProductsRestApiConfig::CONTROLLER_RELATED_PRODUCTS,
+                    'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                    'resourceAbstractAlternativeProducts' => AlternativeProductsRestApiConfig::CONTROLLER_ABSTRACT_ALTERNATIVE_PRODUCTS,
                     'relationshipProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                    'productAbstractSku' => $productConcreteTransfer->getAbstractSku(),
+                    'productConcreteSku' => $productConcreteTransfer->getSku(),
                 ]
             )
         );
@@ -125,19 +125,19 @@ class ProductRelatedRestApiCest
      *
      * @return void
      */
-    public function requestExistingProductRelatedWithoutProductLabelRelationship(ProductsApiTester $I): void
+    public function requestExistingAbstractAlternativeProductWithoutProductLabelRelationship(ProductsApiTester $I): void
     {
         $productConcreteTransfer = $this->fixtures->getProductConcreteTransferWithLabel();
 
         //Act
         $I->sendGET(
             $I->formatUrl(
-                '{resourceAbstractProducts}/{productAbstractSku}/{resourceRelatedProducts}?include={relationshipProductLabels}',
+                '{resourceConcreteProducts}/{productConcreteSku}/{resourceAbstractAlternativeProducts}?include={relationshipProductLabels}',
                 [
-                    'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
-                    'resourceRelatedProducts' => RelatedProductsRestApiConfig::CONTROLLER_RELATED_PRODUCTS,
+                    'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                    'resourceAbstractAlternativeProducts' => AlternativeProductsRestApiConfig::CONTROLLER_ABSTRACT_ALTERNATIVE_PRODUCTS,
                     'relationshipProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                    'productAbstractSku' => $productConcreteTransfer->getAbstractSku(),
+                    'productConcreteSku' => $productConcreteTransfer->getSku(),
                 ]
             )
         );
@@ -154,17 +154,17 @@ class ProductRelatedRestApiCest
      *
      * @return void
      */
-    public function requestNotExistingProductRelatedWithProductLabelRelationship(ProductsApiTester $I): void
+    public function requestNotExistingAbstractAlternativeProductWithProductLabelRelationship(ProductsApiTester $I): void
     {
         //Act
         $I->sendGET(
             $I->formatUrl(
-                '{resourceAbstractProducts}/{productAbstractSku}/{resourceRelatedProducts}?include={relationshipProductLabels}',
+                '{resourceConcreteProducts}/{productConcreteSku}/{resourceAbstractAlternativeProducts}?include={relationshipProductLabels}',
                 [
-                    'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
-                    'resourceRelatedProducts' => RelatedProductsRestApiConfig::CONTROLLER_RELATED_PRODUCTS,
+                    'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                    'resourceAbstractAlternativeProducts' => AlternativeProductsRestApiConfig::CONTROLLER_ABSTRACT_ALTERNATIVE_PRODUCTS,
                     'relationshipProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                    'productAbstractSku' => 'NotExistingSku',
+                    'productConcreteSku' => 'NotExistingSku',
                 ]
             )
         );
@@ -182,19 +182,19 @@ class ProductRelatedRestApiCest
      *
      * @return void
      */
-    public function requestExistingProductRelatedWithProductLabelRelationshipByPost(ProductsApiTester $I): void
+    public function requestExistingAbstractAlternativeProductWithProductLabelRelationshipByPost(ProductsApiTester $I): void
     {
         $productConcreteTransfer = $this->fixtures->getProductConcreteTransferWithLabel();
 
         //Act
         $I->sendPOST(
             $I->formatUrl(
-                '{resourceAbstractProducts}/{productAbstractSku}/{resourceRelatedProducts}?include={relationshipProductLabels}',
+                '{resourceConcreteProducts}/{productConcreteSku}/{resourceAbstractAlternativeProducts}?include={relationshipProductLabels}',
                 [
-                    'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
-                    'resourceRelatedProducts' => RelatedProductsRestApiConfig::CONTROLLER_RELATED_PRODUCTS,
+                    'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                    'resourceAbstractAlternativeProducts' => AlternativeProductsRestApiConfig::CONTROLLER_ABSTRACT_ALTERNATIVE_PRODUCTS,
                     'relationshipProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                    'productAbstractSku' => $productConcreteTransfer->getAbstractSku(),
+                    'productConcreteSku' => $productConcreteTransfer->getAbstractSku(),
                 ]
             )
         );

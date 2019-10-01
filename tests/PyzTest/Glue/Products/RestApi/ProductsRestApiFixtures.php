@@ -7,7 +7,6 @@
 
 namespace PyzTest\Glue\Products\RestApi;
 
-use Generated\Shared\Transfer\ProductAbstractTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\ProductLabelTransfer;
 use PyzTest\Glue\Products\ProductsApiTester;
@@ -81,8 +80,11 @@ class ProductsRestApiFixtures implements FixturesBuilderInterface, FixturesConta
         $this->assignProductRelated($I, $this->productConcreteTransfer, $this->productConcreteTransferWithLabel);
         $this->assignProductRelated($I, $this->productConcreteTransferWithLabel, $this->productConcreteTransfer);
 
-        $this->assignProductAlternative($I, $this->productConcreteTransfer, $this->productConcreteTransferWithLabel);
-        $this->assignProductAlternative($I, $this->productConcreteTransferWithLabel, $this->productConcreteTransfer);
+        $this->assignProductAlternative($I, $this->productConcreteTransfer, $this->productConcreteTransferWithLabel->getSku());
+        $this->assignProductAlternative($I, $this->productConcreteTransferWithLabel, $this->productConcreteTransfer->getSku());
+
+        $this->assignProductAlternative($I, $this->productConcreteTransfer, $this->productConcreteTransferWithLabel->getAbstractSku());
+        $this->assignProductAlternative($I, $this->productConcreteTransferWithLabel, $this->productConcreteTransfer->getAbstractSku());
 
         return $this;
     }
@@ -137,56 +139,28 @@ class ProductsRestApiFixtures implements FixturesBuilderInterface, FixturesConta
         ProductConcreteTransfer $productConcreteTransfer,
         ProductConcreteTransfer $productConcreteTransferRelated
     ): void {
-        $localizedAttributes = $I->generateLocalizedAttributes();
-        $productAbstractTransfer = $this->getProductAbstractFromStorageByIdForCurrentLocale($I, $productConcreteTransfer->getFkProductAbstract());
-        $productAbstractTransferRelated = $this->getProductAbstractFromStorageByIdForCurrentLocale($I, $productConcreteTransferRelated->getFkProductAbstract());
-        $I->addLocalizedAttributesToProductAbstract($productAbstractTransfer, $localizedAttributes);
-        $I->addLocalizedAttributesToProductAbstract($productAbstractTransferRelated, $localizedAttributes);
-
-        $productRelationTransfer = $I->haveProductRelation(
-            $productAbstractTransferRelated->getSku(),
-            $productAbstractTransfer->getIdProductAbstract(),
+        $I->haveProductRelation(
+            $productConcreteTransferRelated->getAbstractSku(),
+            $productConcreteTransfer->getFkProductAbstract(),
             ProductRelationTypes::TYPE_RELATED_PRODUCTS
         );
-        $productRelationTransfer->setIsRebuildScheduled(true);
-        $I->getLocator()->productRelation()->facade()->updateProductRelation($productRelationTransfer);
     }
 
     /**
      * @param \PyzTest\Glue\Products\ProductsApiTester $I
      * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
-     * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransferRelated
+     * @param string $productAlternativeSku
      *
      * @return void
      */
     protected function assignProductAlternative(
         ProductsApiTester $I,
         ProductConcreteTransfer $productConcreteTransfer,
-        ProductConcreteTransfer $productConcreteTransferRelated
+        string $productAlternativeSku
     ): void {
         $I->haveProductAlternative(
             $productConcreteTransfer,
-            $productConcreteTransferRelated->getSku()
+            $productAlternativeSku
         );
-    }
-
-    /**
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
-     * @param int $idProductAbstract
-     *
-     * @return \Generated\Shared\Transfer\ProductAbstractTransfer
-     */
-    protected function getProductAbstractFromStorageByIdForCurrentLocale(
-        ProductsApiTester $I,
-        int $idProductAbstract
-    ): ProductAbstractTransfer {
-        $productAbstractData = $I
-            ->getLocator()
-            ->product()
-            ->facade()
-            ->findProductAbstractById($idProductAbstract);
-
-        return (new ProductAbstractTransfer())
-            ->fromArray($productAbstractData->toArray());
     }
 }

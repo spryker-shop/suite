@@ -9,6 +9,9 @@ namespace PyzTest\Glue\Wishlists\RestApi;
 
 use Codeception\Util\HttpCode;
 use PyzTest\Glue\Wishlists\WishlistsApiTester;
+use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
+use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
+use Spryker\Glue\WishlistsRestApi\WishlistsRestApiConfig;
 
 /**
  * Auto-generated group annotations
@@ -46,9 +49,8 @@ class WishlistRestApiCest
      */
     protected function requestCustomerLogin(WishlistsApiTester $I): void
     {
-        $token = $I->haveAuth(
-            $this->fixtures->getCustomerTransfer()
-        )
+        $token = $I
+            ->haveAuth($this->fixtures->getCustomerTransfer())
             ->getAccessToken();
         $I->amBearerAuthenticated($token);
     }
@@ -63,25 +65,26 @@ class WishlistRestApiCest
     public function requestExistingWishlist(WishlistsApiTester $I): void
     {
         $wishlistTransfer = $this->fixtures->getWishlistTransfer();
-        //act
+
+        //Act
         $this->requestCustomerLogin($I);
         $I->sendGET(
             $I->formatUrl(
-                'wishlists/{IdWishlist}',
+                '{resourceWishlists}/{wishlistUuid}',
                 [
-                    'IdWishlist' => $wishlistTransfer->getUuid(),
+                    'resourceWishlists' => WishlistsRestApiConfig::RESOURCE_WISHLISTS,
+                    'wishlistUuid' => $wishlistTransfer->getUuid(),
                 ]
             )
         );
 
-        //assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        //Assert
+        $I->assertResponse(HttpCode::OK);
 
         $I->amSure('Returned resource is of type wishlists')
             ->whenI()
-            ->seeResponseDataContainsSingleResourceOfType('wishlists');
+            ->seeResponseDataContainsSingleResourceOfType(WishlistsRestApiConfig::RESOURCE_WISHLISTS);
+
         $I->amSure('Returned resource has correct id')
             ->whenI()
             ->seeSingleResourceIdEqualTo($wishlistTransfer->getUuid());
@@ -98,26 +101,28 @@ class WishlistRestApiCest
     {
         $wishlistTransfer = $this->fixtures->getWishlistTransfer();
         $productConcreteTransfer = $this->fixtures->getProductConcreteTransfer();
-        //act
+
+        //Act
         $this->requestCustomerLogin($I);
         $I->sendGET(
             $I->formatUrl(
-                'wishlists/{IdWishlist}?include=wishlist-items,concrete-products',
+                '{resourceWishlists}/{wishlistUuid}?include={relationWishlistItems},{relationConcreteProducts}',
                 [
-                    'IdWishlist' => $wishlistTransfer->getUuid(),
+                    'resourceWishlists' => WishlistsRestApiConfig::RESOURCE_WISHLISTS,
+                    'relationWishlistItems' => WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
+                    'relationConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                    'wishlistUuid' => $wishlistTransfer->getUuid(),
                 ]
             )
         );
 
-        //assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        //Assert
+        $I->assertResponse(HttpCode::OK);
 
         $I->amSure('Returned resource has include of type concrete-products')
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
-                'concrete-products',
+                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 $productConcreteTransfer->getSku()
             );
     }
@@ -134,33 +139,36 @@ class WishlistRestApiCest
         $wishlistTransfer = $this->fixtures->getWishlistTransferWithLabel();
         $productConcreteTransfer = $this->fixtures->getProductConcreteTransferWithLabel();
         $productLabelTransfer = $this->fixtures->getProductLabelTransfer();
-        //act
+
+        //Act
         $this->requestCustomerLogin($I);
         $I->sendGET(
             $I->formatUrl(
-                'wishlists/{IdWishlist}?include=wishlist-items,concrete-products,product-labels',
+                '{resourceWishlists}/{wishlistUuid}?include={relationWishlistItems},{relationConcreteProducts},{relationshipProductLabels}',
                 [
-                    'IdWishlist' => $wishlistTransfer->getUuid(),
+                    'resourceWishlists' => WishlistsRestApiConfig::RESOURCE_WISHLISTS,
+                    'relationWishlistItems' => WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
+                    'relationConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                    'relationshipProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+                    'wishlistUuid' => $wishlistTransfer->getUuid(),
                 ]
             )
         );
 
-        //assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        //Assert
+        $I->assertResponse(HttpCode::OK);
 
         $I->amSure('Returned resource has include of type concrete-products')
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
-                'concrete-products',
+                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 $productConcreteTransfer->getSku()
             );
 
         $I->amSure('Returned resource has include of type product-labels')
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
-                'product-labels',
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
                 $productLabelTransfer->getIdProductLabel()
             );
     }
@@ -176,29 +184,33 @@ class WishlistRestApiCest
     {
         $wishlistTransfer = $this->fixtures->getWishlistTransfer();
         $productConcreteTransfer = $this->fixtures->getProductConcreteTransfer();
-        //act
+
+        //Act
         $this->requestCustomerLogin($I);
         $I->sendGET(
             $I->formatUrl(
-                'wishlists/{IdWishlist}?include=wishlist-items,concrete-products,product-labels',
+                '{resourceWishlists}/{wishlistUuid}?include={relationWishlistItems},{relationConcreteProducts},{relationshipProductLabels}',
                 [
-                    'IdWishlist' => $wishlistTransfer->getUuid(),
+                    'resourceWishlists' => WishlistsRestApiConfig::RESOURCE_WISHLISTS,
+                    'relationWishlistItems' => WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
+                    'relationConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                    'relationshipProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+                    'wishlistUuid' => $wishlistTransfer->getUuid(),
                 ]
             )
         );
 
-        //assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        //Assert
+        $I->assertResponse(HttpCode::OK);
 
         $I->amSure('Returned resource has include of type concrete-products')
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
-                'concrete-products',
+                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 $productConcreteTransfer->getSku()
             );
-        $I->dontSeeResponseContains('"product-labels"');
+
+        $I->dontSeeResponseContains('"' . ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS . '"');
     }
 
     /**
@@ -210,21 +222,23 @@ class WishlistRestApiCest
      */
     public function requestNotExistingWishlistItemsWithoutProductLabelRelationship(WishlistsApiTester $I): void
     {
-        //act
+        //Act
         $this->requestCustomerLogin($I);
         $I->sendGET(
             $I->formatUrl(
-                'wishlists/{IdWishlist}?include=wishlist-items,concrete-products,product-labels',
+                '{resourceWishlists}/{wishlistUuid}?include={relationWishlistItems},{relationConcreteProducts},{relationshipProductLabels}',
                 [
-                    'IdWishlist' => 'NotExistingUuid',
+                    'resourceWishlists' => WishlistsRestApiConfig::RESOURCE_WISHLISTS,
+                    'relationWishlistItems' => WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
+                    'relationConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                    'relationshipProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+                    'wishlistUuid' => 'NotExistingUuid',
                 ]
             )
         );
 
-        //assert
-        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        //Assert
+        $I->assertResponse(HttpCode::NOT_FOUND);
         $I->dontSeeResponseMatchesJsonPath('$.data[*]');
         $I->dontSeeResponseMatchesJsonPath('$.included[*]');
     }
@@ -239,19 +253,23 @@ class WishlistRestApiCest
     public function requestExistingWishlistItemsWithoutProductLabelRelationshipByPost(WishlistsApiTester $I): void
     {
         $wishlistTransfer = $this->fixtures->getWishlistTransfer();
-        $productConcreteTransfer = $this->fixtures->getProductConcreteTransfer();
-        //act
+
+        //Act
         $this->requestCustomerLogin($I);
         $I->sendPOST(
             $I->formatUrl(
-                'wishlists/{IdWishlist}?include=wishlist-items,concrete-products,product-labels',
+                '{resourceWishlists}/{wishlistUuid}?include={relationWishlistItems},{relationConcreteProducts},{relationshipProductLabels}',
                 [
-                    'IdWishlist' => $wishlistTransfer->getUuid(),
+                    'resourceWishlists' => WishlistsRestApiConfig::RESOURCE_WISHLISTS,
+                    'relationWishlistItems' => WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
+                    'relationConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                    'relationshipProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+                    'wishlistUuid' => $wishlistTransfer->getUuid(),
                 ]
             )
         );
 
-        //assert
+        //Assert
         $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
         $I->seeResponseIsJson();
     }

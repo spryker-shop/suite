@@ -9,6 +9,8 @@ namespace PyzTest\Glue\Products\RestApi;
 
 use Codeception\Util\HttpCode;
 use PyzTest\Glue\Products\ProductsApiTester;
+use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
+use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
 
 /**
  * Auto-generated group annotations
@@ -46,13 +48,19 @@ class ProductAbstractRestApiCest
      */
     public function requestTheNonExistedProductAbstract(ProductsApiTester $I): void
     {
-        //act
-        $I->sendGET('abstract-products/non-exist');
+        //Act
+        $I->sendGET(
+            $I->formatUrl(
+                '{resourceAbstractProducts}/{productAbstractSku}',
+                [
+                    'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
+                    'productAbstractSku' => 'non-exist',
+                ]
+            )
+        );
 
-        //assert
-        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        //Assert
+        $I->assertResponse(HttpCode::NOT_FOUND);
     }
 
     /**
@@ -64,10 +72,17 @@ class ProductAbstractRestApiCest
      */
     public function requestProductAbstractWithoutId(ProductsApiTester $I): void
     {
-        //act
-        $I->sendGET('abstract-products');
+        //Act
+        $I->sendGET(
+            $I->formatUrl(
+                '{resourceAbstractProducts}',
+                [
+                    'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
+                ]
+            )
+        );
 
-        //assert
+        //Assert
         $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
         $I->seeResponseIsJson();
     }
@@ -81,27 +96,29 @@ class ProductAbstractRestApiCest
      */
     public function requestExistingProductAbstract(ProductsApiTester $I): void
     {
-        //act
+        $productConcreteTransfer = $this->fixtures->getProductConcreteTransfer();
+
+        //Act
         $I->sendGET(
             $I->formatUrl(
-                'abstract-products/{ProductAbstractSku}',
+                '{resourceAbstractProducts}/{productAbstractSku}',
                 [
-                    'ProductAbstractSku' => $this->fixtures->getProductConcreteTransfer()->getAbstractSku(),
+                    'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
+                    'productAbstractSku' => $productConcreteTransfer->getAbstractSku(),
                 ]
             )
         );
 
-        //assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        //Assert
+        $I->assertResponse(HttpCode::OK);
 
         $I->amSure('Returned resource is of type abstract-products')
             ->whenI()
-            ->seeResponseDataContainsSingleResourceOfType('abstract-products');
+            ->seeResponseDataContainsSingleResourceOfType(ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS);
+
         $I->amSure('Returned resource has correct id')
             ->whenI()
-            ->seeSingleResourceIdEqualTo($this->fixtures->getProductConcreteTransfer()->getAbstractSku());
+            ->seeSingleResourceIdEqualTo($productConcreteTransfer->getAbstractSku());
     }
 
     /**
@@ -113,28 +130,36 @@ class ProductAbstractRestApiCest
      */
     public function requestExistingProductAbstractWithProductConcreteRelationship(ProductsApiTester $I): void
     {
-        //act
+        $productConcreteTransfer = $this->fixtures->getProductConcreteTransfer();
+
+        //Act
         $I->sendGET(
             $I->formatUrl(
-                'abstract-products/{ProductAbstractSku}?include=concrete-products',
+                '{resourceAbstractProducts}/{productAbstractSku}?include={relationshipConcreteProducts}',
                 [
-                    'ProductAbstractSku' => $this->fixtures->getProductConcreteTransfer()->getAbstractSku(),
+                    'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
+                    'relationshipConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                    'productAbstractSku' => $productConcreteTransfer->getAbstractSku(),
                 ]
             )
         );
 
-        //assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        //Assert
+        $I->assertResponse(HttpCode::OK);
+
+        $I->amSure('Returned resource has relation of type concrete-products')
+            ->whenI()
+            ->seeSingleResourceHasRelationshipByTypeAndId(
+                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                $productConcreteTransfer->getSku()
+            );
 
         $I->amSure('Returned resource has include of type concrete-products')
             ->whenI()
-            ->seeSingleResourceHasRelationshipByTypeAndId('concrete-products', $this->fixtures->getProductConcreteTransfer()->getSku());
-
-        $I->amSure('Returned resource has include of type concrete-products')
-            ->whenI()
-            ->seeIncludesContainsResourceByTypeAndId('concrete-products', $this->fixtures->getProductConcreteTransfer()->getSku());
+            ->seeIncludesContainsResourceByTypeAndId(
+                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                $productConcreteTransfer->getSku()
+            );
     }
 
     /**
@@ -148,32 +173,33 @@ class ProductAbstractRestApiCest
     {
         $productConcreteTransfer = $this->fixtures->getProductConcreteTransferWithLabel();
         $productLabelTransfer = $this->fixtures->getProductLabelTransfer();
-        //act
+
+        //Act
         $I->sendGET(
             $I->formatUrl(
-                'abstract-products/{ProductAbstractSku}?include=product-labels',
+                '{resourceAbstractProducts}/{productAbstractSku}?include={relationshipProductLabels}',
                 [
-                    'ProductAbstractSku' => $productConcreteTransfer->getAbstractSku(),
+                    'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
+                    'relationshipProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+                    'productAbstractSku' => $productConcreteTransfer->getAbstractSku(),
                 ]
             )
         );
 
-        //assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        //Assert
+        $I->assertResponse(HttpCode::OK);
 
-        $I->amSure('Returned resource has include of type product-labels')
+        $I->amSure('Returned resource has relation of type product-labels')
             ->whenI()
             ->seeSingleResourceHasRelationshipByTypeAndId(
-                'product-labels',
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
                 $productLabelTransfer->getIdProductLabel()
             );
 
         $I->amSure('Returned resource has include of type product-labels')
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
-                'product-labels',
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
                 $productLabelTransfer->getIdProductLabel()
             );
     }
@@ -188,20 +214,21 @@ class ProductAbstractRestApiCest
     public function requestExistingProductAbstractWithoutProductLabelRelationship(ProductsApiTester $I): void
     {
         $productConcreteTransfer = $this->fixtures->getProductConcreteTransfer();
-        //act
+
+        //Act
         $I->sendGET(
             $I->formatUrl(
-                'abstract-products/{ProductAbstractSku}?include=product-labels',
+                '{resourceAbstractProducts}/{productAbstractSku}?include={relationshipProductLabels}',
                 [
-                    'ProductAbstractSku' => $productConcreteTransfer->getAbstractSku(),
+                    'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
+                    'relationshipProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+                    'productAbstractSku' => $productConcreteTransfer->getAbstractSku(),
                 ]
             )
         );
 
-        //assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        //Assert
+        $I->assertResponse(HttpCode::OK);
         $I->dontSeeResponseMatchesJsonPath('$.included[*]');
     }
 
@@ -214,20 +241,20 @@ class ProductAbstractRestApiCest
      */
     public function requestNotExistingProductAbstractWithProductLabelRelationship(ProductsApiTester $I): void
     {
-        //act
+        //Act
         $I->sendGET(
             $I->formatUrl(
-                'abstract-products/{ProductAbstractSku}?include=product-labels',
+                '{resourceAbstractProducts}/{productAbstractSku}?include={relationshipProductLabels}',
                 [
-                    'ProductAbstractSku' => 'NotExistingSku',
+                    'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
+                    'relationshipProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+                    'productAbstractSku' => 'NotExistingSku',
                 ]
             )
         );
 
-        //assert
-        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        //Assert
+        $I->assertResponse(HttpCode::NOT_FOUND);
         $I->dontSeeResponseMatchesJsonPath('$.data[*]');
         $I->dontSeeResponseMatchesJsonPath('$.included[*]');
     }
@@ -242,17 +269,20 @@ class ProductAbstractRestApiCest
     public function requestExistingProductAbstractWithProductLabelRelationshipByPost(ProductsApiTester $I): void
     {
         $productConcreteTransfer = $this->fixtures->getProductConcreteTransferWithLabel();
-        //act
+
+        //Act
         $I->sendPOST(
             $I->formatUrl(
-                'abstract-products/{ProductAbstractSku}?include=product-labels',
+                '{resourceAbstractProducts}/{productAbstractSku}?include={relationshipProductLabels}',
                 [
-                    'ProductAbstractSku' => $productConcreteTransfer->getAbstractSku(),
+                    'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
+                    'relationshipProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+                    'productAbstractSku' => $productConcreteTransfer->getAbstractSku(),
                 ]
             )
         );
 
-        //assert
+        //Assert
         $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
         $I->seeResponseIsJson();
     }
