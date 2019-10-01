@@ -2689,7 +2689,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "273769d7500c3aef07bfe7c17de6a27597d4fc64"
+                "reference": "c05a0ee4e49beb9b9c7bd9de595b7dcf6bf17c07"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2952,14 +2952,14 @@
             },
             "scripts": {
                 "cs-check": [
-                    "vendor/bin/phpcs Bundles --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -p"
+                    "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -p --ignore=/node_modules/ Bundles/"
                 ]
             },
             "license": [
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-01T06:25:00+00:00"
+            "time": "2019-10-01T08:28:35+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2967,7 +2967,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "2fa343649a4c44ad9ad81e5fe33c71cf70591dde"
+                "reference": "1ed3a7768cae31aba00382f3330facd316c9c4d1"
             },
             "require": {
                 "php": ">=7.1"
@@ -3016,6 +3016,7 @@
                 "spryker-shop/redirect-page": "*",
                 "spryker-shop/shop-application": "*",
                 "spryker-shop/shop-application-extension": "*",
+                "spryker-shop/shop-cms-slot-extension": "*",
                 "spryker-shop/shop-layout": "*",
                 "spryker-shop/shop-router": "*",
                 "spryker-shop/shop-translator": "*",
@@ -3035,14 +3036,14 @@
             },
             "scripts": {
                 "cs-check": [
-                    "phpcs Bundles --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -p -v"
+                    "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -p --ignore=/node_modules/ Bundles/"
                 ]
             },
             "license": [
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-10-01T06:39:59+00:00"
+            "time": "2019-10-01T08:23:15+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
