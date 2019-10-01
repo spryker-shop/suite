@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\Shipment\Persistence;
 
-use Orm\Zed\Shipment\Persistence\Base\SpyShipmentMethodStore as BaseSpyShipmentMethodStore;
+use Spryker\Zed\Shipment\Persistence\Propel\AbstractSpyShipmentMethodStore as BaseSpyShipmentMethodStore;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_shipment_method_store' table.
