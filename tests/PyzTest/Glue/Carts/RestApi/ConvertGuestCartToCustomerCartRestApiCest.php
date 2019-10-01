@@ -24,8 +24,6 @@ use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
  */
 class ConvertGuestCartToCustomerCartRestApiCest
 {
-    protected const VALUE_FOR_ANONYMOUS = '666';
-
     /**
      * @var \PyzTest\Glue\Carts\RestApi\CartsRestApiFixtures
      */
@@ -52,7 +50,7 @@ class ConvertGuestCartToCustomerCartRestApiCest
     {
         // Arrange
         $this->requestCustomerLoginWithXAnonymousCustomerUniqueIdHeader($I);
-        $cartUuid = $this->fixtures->getGuestQuoteTransfer()->getUuid();
+        $cartUuid = $this->fixtures->getGuestQuoteTransfer1()->getUuid();
 
         // Act
         $I->sendGET(
@@ -97,7 +95,7 @@ class ConvertGuestCartToCustomerCartRestApiCest
     public function requestGuestCartCollectionIsEmpty(CartsApiTester $I): void
     {
         // Arrange
-        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', static::VALUE_FOR_ANONYMOUS);
+        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS1);
 
         // Act
         $I->sendGET(
@@ -125,10 +123,10 @@ class ConvertGuestCartToCustomerCartRestApiCest
      */
     protected function requestCustomerLoginWithXAnonymousCustomerUniqueIdHeader(CartsApiTester $I): void
     {
-        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', static::VALUE_FOR_ANONYMOUS);
+        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS1);
         $token = $I->haveAuthorizationToGlue(
             $this->fixtures->getCustomerTransfer(),
-            'anonymous:' . static::VALUE_FOR_ANONYMOUS
+            'anonymous:' . $I::VALUE_FOR_ANONYMOUS1
         )->getAccessToken();
 
         $I->amBearerAuthenticated($token);

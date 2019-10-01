@@ -33,10 +33,6 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  */
 class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    protected const TEST_USERNAME = 'test username';
-    protected const TEST_PASSWORD = 'test password';
-    protected const ANONYMOUS_CUSTOMER_REFERENCE = 'anonymous:666';
-
     /**
      * @var \Generated\Shared\Transfer\ProductConcreteTransfer
      */
@@ -55,7 +51,27 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
     /**
      * @var \Generated\Shared\Transfer\QuoteTransfer
      */
-    protected $guestQuoteTransfer;
+    protected $guestQuoteTransfer1;
+
+    /**
+     * @var \Generated\Shared\Transfer\QuoteTransfer
+     */
+    protected $guestQuoteTransfer2;
+
+    /**
+     * @var \Generated\Shared\Transfer\QuoteTransfer
+     */
+    protected $emptyGuestQuoteTransfer;
+
+    /**
+     * @var \Generated\Shared\Transfer\QuoteTransfer
+     */
+    protected $quoteTransfer;
+
+    /**
+     * @var \Generated\Shared\Transfer\QuoteTransfer
+     */
+    protected $emptyQuoteTransfer;
 
     /**
      * @return \Generated\Shared\Transfer\ProductConcreteTransfer
@@ -84,9 +100,41 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
     /**
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
-    public function getGuestQuoteTransfer(): QuoteTransfer
+    public function getGuestQuoteTransfer1(): QuoteTransfer
     {
-        return $this->guestQuoteTransfer;
+        return $this->guestQuoteTransfer1;
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\QuoteTransfer
+     */
+    public function getQuoteTransfer(): QuoteTransfer
+    {
+        return $this->quoteTransfer;
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\QuoteTransfer
+     */
+    public function getEmptyQuoteTransfer(): QuoteTransfer
+    {
+        return $this->emptyQuoteTransfer;
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\QuoteTransfer
+     */
+    public function getGuestQuoteTransfer2(): QuoteTransfer
+    {
+        return $this->guestQuoteTransfer2;
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\QuoteTransfer
+     */
+    public function getEmptyGuestQuoteTransfer(): QuoteTransfer
+    {
+        return $this->emptyGuestQuoteTransfer;
     }
 
     /**
@@ -96,52 +144,27 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
      */
     public function buildFixtures(CartsApiTester $I): FixturesContainerInterface
     {
-        $this->createProductConcrete1($I);
-        $this->createProductConcrete2($I);
         $this->createCustomer($I);
-        $this->createGuestQuote($I);
+        $this->productConcreteTransfer1 = $this->createProductData($I);
+        $this->productConcreteTransfer2 = $this->createProductData($I);
+        $this->emptyQuoteTransfer = $this->createEmptyQuote($I, $this->getCustomerTransfer()->getCustomerReference());
+        $this->quoteTransfer = $this->createQuote($I, $this->getCustomerTransfer()->getCustomerReference());
+        $this->guestQuoteTransfer1 = $this->createQuote($I, $I::ANONYMOUS_CUSTOMER_REFERENCE1);
+        $this->guestQuoteTransfer2 = $this->createQuote($I, $I::ANONYMOUS_CUSTOMER_REFERENCE2);
+        $this->emptyGuestQuoteTransfer = $this->createEmptyQuote($I, $I::ANONYMOUS_CUSTOMER_REFERENCE3);
 
         return $this;
     }
 
     /**
-     * @return string
-     */
-    public function getTestPassword(): string
-    {
-        return static::TEST_PASSWORD;
-    }
-
-    /**
      * @param \PyzTest\Glue\Carts\CartsApiTester $I
      *
-     * @return void
+     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
      */
-    protected function createProductConcrete1(CartsApiTester $I): void
+    protected function createProductData(CartsApiTester $I): ProductConcreteTransfer
     {
-        $this->productConcreteTransfer1 = $I->haveFullProduct();
-        $this->createProductRelatedData($I, $this->productConcreteTransfer1);
-    }
+        $productConcreteTransfer = $I->haveFullProduct();
 
-    /**
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     *
-     * @return void
-     */
-    protected function createProductConcrete2(CartsApiTester $I): void
-    {
-        $this->productConcreteTransfer2 = $I->haveFullProduct();
-        $this->createProductRelatedData($I, $this->productConcreteTransfer2);
-    }
-
-    /**
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
-     *
-     * @return void
-     */
-    protected function createProductRelatedData(CartsApiTester $I, ProductConcreteTransfer $productConcreteTransfer): void
-    {
         $I->haveProductInStock([
             StockProductTransfer::SKU => $productConcreteTransfer->getSku(),
             StockProductTransfer::IS_NEVER_OUT_OF_STOCK => 1,
@@ -159,6 +182,8 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
         ];
 
         $I->havePriceProduct($priceProductOverride);
+
+        return $productConcreteTransfer;
     }
 
     /**
@@ -169,9 +194,9 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
     protected function createCustomer(CartsApiTester $I): void
     {
         $customerTransfer = $I->haveCustomer([
-            CustomerTransfer::USERNAME => static::TEST_USERNAME,
-            CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
-            CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,
+            CustomerTransfer::USERNAME => $I::TEST_USERNAME,
+            CustomerTransfer::PASSWORD => $I::TEST_PASSWORD,
+            CustomerTransfer::NEW_PASSWORD => $I::TEST_PASSWORD,
         ]);
 
         $this->customerTransfer = $customerTransfer;
@@ -179,16 +204,17 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
 
     /**
      * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     * @param string $customerReference
      *
-     * @return void
+     * @return \Generated\Shared\Transfer\QuoteTransfer
      */
-    protected function createGuestQuote(CartsApiTester $I): void
+    protected function createQuote(CartsApiTester $I, string $customerReference): QuoteTransfer
     {
         $totalsTransfer = new TotalsTransfer();
         $totalsTransfer->setPriceToPay(random_int(1000, 10000));
 
-        $this->guestQuoteTransfer = $I->havePersistentQuote([
-            QuoteTransfer::CUSTOMER => (new CustomerTransfer())->setCustomerReference(static::ANONYMOUS_CUSTOMER_REFERENCE),
+        return $I->havePersistentQuote([
+            QuoteTransfer::CUSTOMER => (new CustomerTransfer())->setCustomerReference($customerReference),
             QuoteTransfer::TOTALS => $totalsTransfer,
             QuoteTransfer::ITEMS => [
                 [
@@ -200,6 +226,20 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
                     ItemTransfer::QUANTITY => 5,
                 ],
             ],
+            QuoteTransfer::STORE => [StoreTransfer::NAME => 'DE'],
+        ]);
+    }
+
+    /**
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     * @param string $customerReference
+     *
+     * @return \Generated\Shared\Transfer\QuoteTransfer
+     */
+    protected function createEmptyQuote(CartsApiTester $I, string $customerReference): QuoteTransfer
+    {
+        return $I->havePersistentQuote([
+            QuoteTransfer::CUSTOMER => (new CustomerTransfer())->setCustomerReference($customerReference),
             QuoteTransfer::STORE => [StoreTransfer::NAME => 'DE'],
         ]);
     }

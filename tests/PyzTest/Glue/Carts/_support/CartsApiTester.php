@@ -29,7 +29,42 @@ class CartsApiTester extends ApiEndToEndTester
 {
     use _generated\CartsApiTesterActions;
 
+    public const TEST_USERNAME = 'test username';
+    public const TEST_PASSWORD = 'test password';
+
+    public const QUANTITY_FOR_ITEM_UPDATE = 33;
+    public const STORE_DE = 'DE';
+    public const TEST_CART_NAME = 'Test cart name';
+    public const TEST_GUEST_CART_NAME = 'Test guest cart name';
+    public const CURRENCY_EUR = 'EUR';
+    public const GROSS_MODE = 'GROSS_MODE';
+
+    public const ANONYMOUS_CUSTOMER_REFERENCE1 = 'anonymous:666';
+    public const ANONYMOUS_CUSTOMER_REFERENCE2 = 'anonymous:777';
+    public const ANONYMOUS_CUSTOMER_REFERENCE3 = 'anonymous:888';
+
+    public const VALUE_FOR_ANONYMOUS1 = '666';
+    public const VALUE_FOR_ANONYMOUS2 = '777';
+    public const VALUE_FOR_ANONYMOUS3 = '888';
+
     /**
-    * Define custom actions here
-    */
+     * @part json
+     *
+     * @param int $quantity
+     * @param string $itemSku
+     *
+     * @return void
+     */
+    public function seeCartItemQuantityEqualsToQuantityInRequest(int $quantity, string $itemSku): void
+    {
+        $jsonPath = sprintf(
+            '$..included[?(@.type == \'guest-cart-items\' and @.id == \'%s\')].attributes.quantity',
+            $itemSku
+        );
+
+        $this->seeValueEqualsTo(
+            $quantity,
+            $this->grabDataFromResponseByJsonPath($jsonPath)[0]
+        );
+    }
 }
