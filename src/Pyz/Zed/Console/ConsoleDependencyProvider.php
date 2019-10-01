@@ -48,7 +48,6 @@ use Spryker\Zed\Development\Communication\Console\ModuleBridgeCreateConsole;
 use Spryker\Zed\Development\Communication\Console\ModuleCreateConsole;
 use Spryker\Zed\Development\Communication\Console\PluginUsageFinderConsole;
 use Spryker\Zed\Development\Communication\Console\PropelAbstractValidateConsole;
-use Spryker\Zed\DevelopmentCore\Communication\Console\AdjustPhpstanConsole;
 use Spryker\Zed\DocumentationGeneratorRestApi\Communication\Console\GenerateRestApiDocumentationConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventBehaviorTriggerTimeoutConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventTriggerConsole;
@@ -96,6 +95,7 @@ use Spryker\Zed\RabbitMq\Communication\Console\DeleteAllQueuesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\PurgeAllQueuesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\SetUserPermissionsConsole;
 use Spryker\Zed\RestRequestValidator\Communication\Console\BuildValidationCacheConsole;
+use Spryker\Zed\Router\Communication\Plugin\Console\RouterDebugZedConsole;
 use Spryker\Zed\Scheduler\Communication\Console\SchedulerCleanConsole;
 use Spryker\Zed\Scheduler\Communication\Console\SchedulerResumeConsole;
 use Spryker\Zed\Scheduler\Communication\Console\SchedulerSetupConsole;
@@ -128,11 +128,10 @@ use Spryker\Zed\StateMachine\Communication\Console\CheckConditionConsole as Stat
 use Spryker\Zed\StateMachine\Communication\Console\CheckTimeoutConsole as StateMachineCheckTimeoutConsole;
 use Spryker\Zed\StateMachine\Communication\Console\ClearLocksConsole as StateMachineClearLocksConsole;
 use Spryker\Zed\Storage\Communication\Console\StorageDeleteAllConsole;
-use Spryker\Zed\Storage\Communication\Console\StorageExportRdbConsole;
-use Spryker\Zed\Storage\Communication\Console\StorageImportRdbConsole;
 use Spryker\Zed\StorageRedis\Communication\Console\StorageRedisExportRdbConsole;
 use Spryker\Zed\StorageRedis\Communication\Console\StorageRedisImportRdbConsole;
 use Spryker\Zed\Synchronization\Communication\Console\ExportSynchronizedDataConsole;
+use Spryker\Zed\Testify\Communication\Console\CleanOutputConsole;
 use Spryker\Zed\Transfer\Communication\Console\DataBuilderGeneratorConsole;
 use Spryker\Zed\Transfer\Communication\Console\TransferGeneratorConsole;
 use Spryker\Zed\Transfer\Communication\Console\ValidatorConsole;
@@ -261,9 +260,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new DeleteMigrationFilesConsole(),
 
             new DeleteLogFilesConsole(),
-            new StorageExportRdbConsole(),
             new StorageRedisExportRdbConsole(),
-            new StorageImportRdbConsole(),
             new StorageRedisImportRdbConsole(),
             new StorageDeleteAllConsole(),
             new SearchDeleteIndexConsole(),
@@ -320,6 +317,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
         if ($this->getConfig()->isDevelopmentConsoleCommandsEnabled()) {
             $commands = $this->addProjectNonsplitOnlyCommands($commands);
 
+            $commands[] = new RouterDebugZedConsole();
             $commands[] = new CodeTestConsole();
             $commands[] = new CodeFixturesConsole();
             $commands[] = new AcceptanceCodeTestConsole();
@@ -357,6 +355,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new QueueDumpConsole();
             $commands[] = new EventTriggerListenerConsole();
             $commands[] = new ComposerConstraintConsole();
+            $commands[] = new CleanOutputConsole();
         }
 
         return $commands;
@@ -411,8 +410,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
      */
     protected function addProjectNonsplitOnlyCommands(array $commands): array
     {
-        $commands[] = new AdjustPhpstanConsole();
-
         $commands[] = new SprykRunConsole();
         $commands[] = new SprykDumpConsole();
         $commands[] = new SprykBuildConsole();

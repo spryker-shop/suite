@@ -14,6 +14,7 @@ use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Glue
  * @group Products
@@ -285,5 +286,30 @@ class ProductAbstractRestApiCest
         //Assert
         $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
         $I->seeResponseIsJson();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     *
+     * @return void
+     */
+    public function requestProductAbstractHasUrlAttribute(ProductsApiTester $I): void
+    {
+        //act
+        $I->sendGET(
+            $I->formatUrl(
+                'abstract-products/{ProductAbstractSku}',
+                [
+                    'ProductAbstractSku' => $this->fixtures->getProductConcreteTransfer()->getAbstractSku(),
+                ]
+            )
+        );
+
+        //assert
+        $I->amSure('Returned resource contains `url` attribute')
+            ->whenI()
+            ->seeSingleResourceHasAttribute('url');
     }
 }
