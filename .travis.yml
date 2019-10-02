@@ -207,6 +207,9 @@ addons:
       - $(find ./tests/PyzTest/*/*/_output/* -not -empty | tr "\n" ":")
       - $(find ./vendor/spryker/spryker/Bundles/*/tests/_output/* -not -empty | tr "\n" ":")
       - /tmp/phantomjs.log.gz
+      - /tmp/yves-error.log
+      - /tmp/glue-error.log
+      - /tmp/zed-error.log
 
   apt:
     packages:
