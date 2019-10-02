@@ -807,14 +807,15 @@ class CartsRestApiCest
         $this->authorizeCustomer($I);
 
         // Act
-        $I->sendDelete($I->formatUrl(
-            '{resourceCarts}//{resourceCartItems}/{itemSku}',
-            [
-                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
-            ]
-        ));
+        $I->sendDelete(
+            $I->formatUrl(
+                '{resourceCarts}//{resourceCartItems}/{itemSku}',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
+                ]
+            ));
 
         //assert
         $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
@@ -831,15 +832,16 @@ class CartsRestApiCest
     public function requestDeleteItemsFromCartWithoutAuthorizationToken(CartsApiTester $I): void
     {
         // Act
-        $I->sendDelete($I->formatUrl(
-            '{resourceCarts}/{cartUuid}/{resourceCartItems}/{itemSku}',
-            [
-                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
-                'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
-            ]
-        ));
+        $I->sendDelete(
+            $I->formatUrl(
+                '{resourceCarts}/{cartUuid}/{resourceCartItems}/{itemSku}',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                    'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
+                ]
+            ));
 
         //assert
         $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
@@ -859,14 +861,15 @@ class CartsRestApiCest
         $this->authorizeCustomer($I);
 
         // Act
-        $I->sendDelete($I->formatUrl(
-            '{resourceCarts}/{cartUuid}/{resourceCartItems}/',
-            [
-                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
-                'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-            ]
-        ));
+        $I->sendDelete(
+            $I->formatUrl(
+                '{resourceCarts}/{cartUuid}/{resourceCartItems}/',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                    'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                ]
+            ));
 
         //assert
         $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
@@ -886,13 +889,14 @@ class CartsRestApiCest
         $this->authorizeCustomer($I);
 
         // Act
-        $I->sendDelete($I->formatUrl(
-            '{resourceCarts}/{cartUuid}',
-            [
-                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
-            ]
-        ));
+        $I->sendDelete(
+            $I->formatUrl(
+                '{resourceCarts}/{cartUuid}',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                ]
+            ));
 
         //assert
         $I->seeResponseCodeIs(HttpCode::NO_CONTENT);
@@ -911,12 +915,13 @@ class CartsRestApiCest
         $this->authorizeCustomer($I);
 
         // Act
-        $I->sendDelete($I->formatUrl(
-            '{resourceCarts}/',
-            [
-                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-            ]
-        ));
+        $I->sendDelete(
+            $I->formatUrl(
+                '{resourceCarts}/',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                ]
+            ));
 
         //assert
         $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
@@ -932,13 +937,14 @@ class CartsRestApiCest
     public function requestDeleteCartWithoutAuthorizationToken(CartsApiTester $I): void
     {
         // Act
-        $I->sendDelete($I->formatUrl(
-            '{resourceCarts}/{cartUuid}',
-            [
-                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
-            ]
-        ));
+        $I->sendDelete(
+            $I->formatUrl(
+                '{resourceCarts}/{cartUuid}',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                ]
+            ));
 
         //assert
         $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
