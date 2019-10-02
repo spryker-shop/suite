@@ -67,9 +67,4 @@ class CartsApiTester extends ApiEndToEndTester
             $this->grabDataFromResponseByJsonPath($jsonPath)[0]
         );
     }
-
-    public function s()
-    {
-
-    }
 }

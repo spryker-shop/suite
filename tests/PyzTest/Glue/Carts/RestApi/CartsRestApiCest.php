@@ -589,7 +589,7 @@ class CartsRestApiCest
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
                     'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
                     'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                    'itemSku' => $this->fixtures->getProductConcreteTransfer2()->getSku()
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer2()->getSku(),
                 ]
             ),
             [
@@ -672,7 +672,7 @@ class CartsRestApiCest
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
                     'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
                     'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
                 ]
             ),
             [
@@ -711,7 +711,7 @@ class CartsRestApiCest
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
                     'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
                     'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
                 ]
             ),
             [
@@ -785,7 +785,7 @@ class CartsRestApiCest
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
                     'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
                     'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                    'itemSku' => $this->fixtures->getProductConcreteTransfer2()->getSku()
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer2()->getSku(),
                 ]
             )
         );
@@ -814,7 +814,7 @@ class CartsRestApiCest
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
                     'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
                 ]
             )
         );
@@ -841,7 +841,7 @@ class CartsRestApiCest
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
                     'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
                     'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
                 ]
             )
         );

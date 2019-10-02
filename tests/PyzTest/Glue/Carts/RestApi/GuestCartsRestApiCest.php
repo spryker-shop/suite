@@ -13,6 +13,7 @@ use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Glue
  * @group Carts
@@ -526,7 +527,7 @@ class GuestCartsRestApiCest
                     'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                     'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
                     'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                    'itemSku' => $this->fixtures->getProductConcreteTransfer2()->getSku()
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer2()->getSku(),
                 ]
             ),
             [
@@ -607,7 +608,7 @@ class GuestCartsRestApiCest
                     'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                     'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
                     'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
                 ]
             ),
             [
@@ -645,7 +646,7 @@ class GuestCartsRestApiCest
                     'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                     'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
                     'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
                 ]
             ),
             [
@@ -719,7 +720,7 @@ class GuestCartsRestApiCest
                     'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                     'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
                     'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                    'itemSku' => $this->fixtures->getProductConcreteTransfer2()->getSku()
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer2()->getSku(),
                 ]
             )
         );
@@ -747,7 +748,7 @@ class GuestCartsRestApiCest
                 [
                     'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                     'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
                 ]
             )
         );
@@ -774,7 +775,7 @@ class GuestCartsRestApiCest
                     'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                     'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
                     'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
                 ]
             )
         );
