@@ -223,6 +223,7 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
                     ItemTransfer::ABSTRACT_SKU => $this->productConcreteTransfer1->getAbstractSku(),
                     ItemTransfer::ID => $this->productConcreteTransfer1->getIdProductConcrete(),
                     ItemTransfer::UNIT_PRICE => random_int(100, 1000),
+                    ItemTransfer::UNIT_GROSS_PRICE => random_int(100, 1000),
                     ItemTransfer::QUANTITY => 5,
                 ],
             ],

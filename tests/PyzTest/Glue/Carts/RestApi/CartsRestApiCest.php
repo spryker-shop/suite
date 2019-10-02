@@ -239,6 +239,34 @@ class CartsRestApiCest
      *
      * @return void
      */
+    public function requestFindCartWithNonExistingUuid(CartsApiTester $I): void
+    {
+        // Arrange
+        $this->authorizeCustomer($I);
+
+        // Act
+        $I->sendGET(
+            $I->formatUrl(
+                '{resourceCarts}/{cartUuid}',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'cartUuid' => 'test wrong uuid',
+                ]
+            )
+        );
+
+        //assert
+        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
+        $I->seeResponseIsJson();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
     public function requestFindCartWithoutAuthorizationToken(CartsApiTester $I): void
     {
         // Act
@@ -254,6 +282,43 @@ class CartsRestApiCest
 
         //assert
         $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    public function requestFindCartWithItemRelationship(CartsApiTester $I): void
+    {
+        // Arrange
+        $this->authorizeCustomer($I);
+
+        // Act
+        $I->sendGET(
+            $I->formatUrl(
+                '{resourceCarts}/{cartUuid}?include=items',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                ]
+            )
+        );
+
+        //assert
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+
+        $I->amSure('Returned resource has include of type items')
+            ->whenI()
+            ->seeSingleResourceHasRelationshipByTypeAndId('items', $this->fixtures->getProductConcreteTransfer1()->getSku());
+
+        $I->amSure('Returned resource has include of type items')
+            ->whenI()
+            ->seeIncludesContainsResourceByTypeAndId('items', $this->fixtures->getProductConcreteTransfer1()->getSku());
     }
 
     /**
@@ -589,7 +654,7 @@ class CartsRestApiCest
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
                     'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
                     'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                    'itemSku' => $this->fixtures->getProductConcreteTransfer2()->getSku(),
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
                 ]
             ),
             [
@@ -613,6 +678,7 @@ class CartsRestApiCest
 
         $I->seeCartItemQuantityEqualsToQuantityInRequest(
             $I::QUANTITY_FOR_ITEM_UPDATE,
+            CartsRestApiConfig::RESOURCE_CART_ITEMS,
             $this->fixtures->getProductConcreteTransfer1()->getSku()
         );
     }
@@ -785,14 +851,13 @@ class CartsRestApiCest
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
                     'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
                     'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                    'itemSku' => $this->fixtures->getProductConcreteTransfer2()->getSku(),
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
                 ]
             )
         );
 
         //assert
         $I->seeResponseCodeIs(HttpCode::NO_CONTENT);
-        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**

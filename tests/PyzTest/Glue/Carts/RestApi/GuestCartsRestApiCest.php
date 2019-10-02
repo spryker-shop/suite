@@ -196,6 +196,43 @@ class GuestCartsRestApiCest
      *
      * @return void
      */
+    public function requestFindGuestCartWithItemRelationship(CartsApiTester $I): void
+    {
+        // Arrange
+        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS2);
+
+        // Act
+        $I->sendGET(
+            $I->formatUrl(
+                '{resourceGuestCarts}/{guestCartUuid}?include=guest-cart-items',
+                [
+                    'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                    'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
+                ]
+            )
+        );
+
+        //assert
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+
+        $I->amSure('Returned resource has include of type guest-cart-items')
+            ->whenI()
+            ->seeSingleResourceHasRelationshipByTypeAndId('guest-cart-items', $this->fixtures->getProductConcreteTransfer1()->getSku());
+
+        $I->amSure('Returned resource has include of type guest-cart-items')
+            ->whenI()
+            ->seeIncludesContainsResourceByTypeAndId('guest-cart-items', $this->fixtures->getProductConcreteTransfer1()->getSku());
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
     public function requestFindGuestCartWithoutAnonymousCustomerUniqueId(CartsApiTester $I): void
     {
         // Act
@@ -527,7 +564,7 @@ class GuestCartsRestApiCest
                     'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                     'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
                     'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                    'itemSku' => $this->fixtures->getProductConcreteTransfer2()->getSku(),
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
                 ]
             ),
             [
@@ -550,6 +587,7 @@ class GuestCartsRestApiCest
 
         $I->seeCartItemQuantityEqualsToQuantityInRequest(
             $I::QUANTITY_FOR_ITEM_UPDATE,
+            CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
             $this->fixtures->getProductConcreteTransfer1()->getSku()
         );
     }
@@ -720,7 +758,7 @@ class GuestCartsRestApiCest
                     'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                     'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
                     'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                    'itemSku' => $this->fixtures->getProductConcreteTransfer2()->getSku(),
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
                 ]
             )
         );

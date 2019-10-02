@@ -51,14 +51,16 @@ class CartsApiTester extends ApiEndToEndTester
      * @part json
      *
      * @param int $quantity
+     * @param string $resourceName
      * @param string $itemSku
      *
      * @return void
      */
-    public function seeCartItemQuantityEqualsToQuantityInRequest(int $quantity, string $itemSku): void
+    public function seeCartItemQuantityEqualsToQuantityInRequest(int $quantity, string $resourceName, string $itemSku): void
     {
         $jsonPath = sprintf(
-            '$..included[?(@.type == \'guest-cart-items\' and @.id == \'%s\')].attributes.quantity',
+            '$..included[?(@.type == \'%s\' and @.id == \'%s\')].attributes.quantity',
+            $resourceName,
             $itemSku
         );
 
