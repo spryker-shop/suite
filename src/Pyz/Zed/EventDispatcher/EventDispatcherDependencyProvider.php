@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\EventDispatcher;
 
+use Spryker\Zed\Acl\Communication\Plugin\EventDispatcher\AccessControlEventDispatcherPlugin;
 use Spryker\Zed\Application\Communication\Plugin\EventDispatcher\HeadersSecurityEventDispatcherPlugin;
 use Spryker\Zed\Auth\Communication\Plugin\EventDispatcher\AuthorizationEventDispatcherPlugin;
 use Spryker\Zed\Auth\Communication\Plugin\EventDispatcher\RedirectAfterLoginEventDispatcherPlugin;
@@ -28,6 +29,7 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
     {
         return [
             new AuthorizationEventDispatcherPlugin(),
+            new AccessControlEventDispatcherPlugin(),
             new RedirectAfterLoginEventDispatcherPlugin(),
             new TwigEventDispatcherPlugin(),
             new LocaleEventDispatcherPlugin(),

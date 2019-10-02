@@ -11,7 +11,6 @@ use Silex\Provider\HttpFragmentServiceProvider;
 use Silex\Provider\SessionServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\FormFactoryServiceProvider;
 use Spryker\Shared\ErrorHandler\Plugin\ServiceProvider\WhoopsErrorHandlerServiceProvider;
-use Spryker\Zed\Acl\Communication\Plugin\Bootstrap\AclBootstrapProvider;
 use Spryker\Zed\Api\Communication\Plugin\ApiServiceProviderPlugin;
 use Spryker\Zed\Api\Communication\Plugin\ServiceProvider\ApiRoutingServiceProvider;
 use Spryker\Zed\Application\ApplicationDependencyProvider as SprykerApplicationDependencyProvider;
@@ -44,7 +43,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
         $coreProviders = parent::getServiceProviders($container);
 
         $providers = [
-            new AclBootstrapProvider(),
             new AssertionServiceProvider(),
             new SubRequestServiceProvider(),
             new ZedHstsServiceProvider(),
@@ -93,7 +91,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
     protected function getInternalCallServiceProvidersWithAuthentication(Container $container)
     {
         return [
-            new AclBootstrapProvider(),
             new GatewayServiceProviderPlugin(),
             new HttpFragmentServiceProvider(),
             new MonitoringRequestTransactionServiceProvider(),
