@@ -30,6 +30,7 @@ use Spryker\Zed\Translator\Communication\Plugin\Application\TranslatorApplicatio
 use Spryker\Zed\Twig\Communication\Plugin\Application\TwigApplicationPlugin;
 use Spryker\Zed\WebProfiler\Communication\Plugin\Application\WebProfilerApplicationPlugin;
 use Spryker\Zed\ZedRequest\Communication\Plugin\GatewayServiceProviderPlugin;
+use Spryker\Zed\WebProfiler\Communication\Plugin\ServiceProvider\WebProfilerServiceProvider;
 
 class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
 {
@@ -47,7 +48,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new SubRequestServiceProvider(),
             new ZedHstsServiceProvider(),
             new FormFactoryServiceProvider(),
-            new GatewayServiceProviderPlugin(),
             new GuiTwigExtensionServiceProvider(),
             new SaveSessionServiceProvider(),
             new SessionServiceProvider(),
@@ -91,7 +91,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
     protected function getInternalCallServiceProvidersWithAuthentication(Container $container)
     {
         return [
-            new GatewayServiceProviderPlugin(),
             new HttpFragmentServiceProvider(),
             new MonitoringRequestTransactionServiceProvider(),
             new RequestServiceProvider(),
@@ -102,7 +101,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
     }
 
     /**
-     * @return array
+     * @return \Spryker\Shared\ApplicationExtension\Dependency\Plugin\ApplicationPluginInterface[]
      */
     protected function getApplicationPlugins(): array
     {

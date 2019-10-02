@@ -19,6 +19,7 @@ use Spryker\Zed\Router\Communication\Plugin\EventDispatcher\RouterListenerEventD
 use Spryker\Zed\Router\Communication\Plugin\EventDispatcher\RouterLocaleEventDispatcherPlugin;
 use Spryker\Zed\Router\Communication\Plugin\EventDispatcher\RouterSslRedirectEventDispatcherPlugin;
 use Spryker\Zed\Twig\Communication\Plugin\EventDispatcher\TwigEventDispatcherPlugin;
+use Spryker\Zed\ZedRequest\Communication\Plugin\EventDispatcher\GatewayControllerEventDispatcherPlugin;
 
 class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependencyProvider
 {
@@ -30,15 +31,16 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
         return [
             new AuthorizationEventDispatcherPlugin(),
             new AccessControlEventDispatcherPlugin(),
-            new RedirectAfterLoginEventDispatcherPlugin(),
-            new TwigEventDispatcherPlugin(),
-            new LocaleEventDispatcherPlugin(),
-            new RouterLocaleEventDispatcherPlugin(),
-            new HeadersSecurityEventDispatcherPlugin(),
             new EventBehaviorEventDispatcherPlugin(),
+            new GatewayControllerEventDispatcherPlugin(),
+            new HeadersSecurityEventDispatcherPlugin(),
+            new LocaleEventDispatcherPlugin(),
+            new MonitoringRequestTransactionEventDispatcherPlugin(),
+            new RedirectAfterLoginEventDispatcherPlugin(),
+            new RouterLocaleEventDispatcherPlugin(),
             new RouterListenerEventDispatcherPlugin(),
             new RouterSslRedirectEventDispatcherPlugin(),
-            new MonitoringRequestTransactionEventDispatcherPlugin(),
+            new TwigEventDispatcherPlugin(),
         ];
     }
 }
