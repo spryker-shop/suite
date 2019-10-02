@@ -7,30 +7,20 @@
 
 namespace Pyz\Zed\ProductListGui;
 
-use Spryker\Zed\MerchantRelationshipProductListGui\Communication\Plugin\ProductListGuiExtension\MerchantRelationshipProductListOwnerTypeFormExpanderPlugin;
-use Spryker\Zed\MerchantRelationshipProductListGui\Communication\Plugin\ProductListGuiExtension\MerchantRelationshipTableExpanderPlugin;
+use Spryker\Zed\ConfigurableBundleGui\Communication\Plugin\ProductListGui\ConfigurableBundleTemplateListProductListTopButtonsExpanderPlugin;
+use Spryker\Zed\ConfigurableBundleGui\Communication\Plugin\ProductListGui\ConfigurableBundleTemplateProductListUsedByTableDataExpanderPlugin;
+use Spryker\Zed\MerchantRelationshipProductListGui\Communication\Plugin\ProductListGui\MerchantRelationListProductListTopButtonsExpanderPlugin;
+use Spryker\Zed\MerchantRelationshipProductListGui\Communication\Plugin\ProductListGui\MerchantRelationshipProductListUsedByTableDataExpanderPlugin;
 use Spryker\Zed\ProductListGui\ProductListGuiDependencyProvider as SprykerProductListGuiDependencyProvider;
 
 class ProductListGuiDependencyProvider extends SprykerProductListGuiDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\ProductListGuiExtension\Dependency\Plugin\ProductListOwnerTypeFormExpanderPluginInterface[]
-     */
-    protected function getProductListOwnerTypeFormExpanderPlugins(): array
-    {
-        return [
-            new MerchantRelationshipProductListOwnerTypeFormExpanderPlugin(),
-        ];
-    }
-
-    /**
      * @return \Spryker\Zed\ProductListGuiExtension\Dependency\Plugin\ProductListTableConfigExpanderPluginInterface[]
      */
     protected function getProductListTableConfigExpanderPlugins(): array
     {
-        return [
-            new MerchantRelationshipTableExpanderPlugin(),
-        ];
+        return [];
     }
 
     /**
@@ -38,9 +28,7 @@ class ProductListGuiDependencyProvider extends SprykerProductListGuiDependencyPr
      */
     protected function getProductListTableQueryCriteriaExpanderPlugins(): array
     {
-        return [
-            new MerchantRelationshipTableExpanderPlugin(),
-        ];
+        return [];
     }
 
     /**
@@ -48,9 +36,7 @@ class ProductListGuiDependencyProvider extends SprykerProductListGuiDependencyPr
      */
     protected function getProductListTableDataExpanderPlugins(): array
     {
-        return [
-            new MerchantRelationshipTableExpanderPlugin(),
-        ];
+        return [];
     }
 
     /**
@@ -58,8 +44,28 @@ class ProductListGuiDependencyProvider extends SprykerProductListGuiDependencyPr
      */
     protected function getProductListTableHeaderExpanderPlugins(): array
     {
+        return [];
+    }
+
+    /**
+     * @return \Spryker\Zed\ProductListGuiExtension\Dependency\Plugin\ProductListTopButtonsExpanderPluginInterface[]
+     */
+    protected function getProductListTopButtonsExpanderPlugins(): array
+    {
         return [
-            new MerchantRelationshipTableExpanderPlugin(),
+            new ConfigurableBundleTemplateListProductListTopButtonsExpanderPlugin(),
+            new MerchantRelationListProductListTopButtonsExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\ProductListGuiExtension\Dependency\Plugin\ProductListUsedByTableDataExpanderPluginInterface[]
+     */
+    protected function getProductListUsedByTableDataExpanderPlugins(): array
+    {
+        return [
+            new ConfigurableBundleTemplateProductListUsedByTableDataExpanderPlugin(),
+            new MerchantRelationshipProductListUsedByTableDataExpanderPlugin(),
         ];
     }
 }
