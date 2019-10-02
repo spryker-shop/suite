@@ -733,20 +733,5 @@
       "php -d memory_limit=1024M vendor/bin/phpstan analyze -c phpstan.neon src/ -l 4"
     ],
     "phpstan-setup": "vendor/bin/console dev:ide:generate-auto-completion"
-  },
-  "extra": {
-    "merge-plugin": {
-      "include": [
-        "vendor/spryker/spryker/Bundles/*/composer.json",
-        "vendor/spryker/spryker-shop/Bundles/*/composer.json"
-      ],
-      "recurse": true,
-      "replace": false,
-      "ignore-duplicates": false,
-      "merge-dev": true,
-      "merge-extra": false,
-      "merge-extra-deep": false,
-      "merge-scripts": false
-    }
   }
 }
