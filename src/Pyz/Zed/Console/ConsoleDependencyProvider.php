@@ -145,6 +145,7 @@ use SprykerSdk\Spryk\Console\SprykBuildConsole;
 use SprykerSdk\Spryk\Console\SprykDumpConsole;
 use SprykerSdk\Spryk\Console\SprykRunConsole;
 use SprykerSdk\Zed\ComposerConstrainer\Communication\Console\ComposerConstraintConsole;
+use SprykerSdk\Zed\ComposerReplace\Communication\Console\ComposerReplaceConsole;
 use Stecman\Component\Symfony\Console\BashCompletion\CompletionCommand;
 
 /**
@@ -413,14 +414,12 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
         $commands[] = new SprykRunConsole();
         $commands[] = new SprykDumpConsole();
         $commands[] = new SprykBuildConsole();
-
         $commands[] = new DependencyTreeBuilderConsole();
         $commands[] = new DependencyViolationFinderConsole();
         $commands[] = new DependencyViolationFixConsole();
-
         $commands[] = new ComposerJsonValidatorConsole();
-
         $commands[] = new PropelAbstractValidateConsole();
+        $commands[] = new ComposerReplaceConsole();
 
         return $commands;
     }
