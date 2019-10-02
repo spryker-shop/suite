@@ -9,11 +9,11 @@ namespace PyzTest\Glue\Carts\RestApi;
 
 use Codeception\Util\HttpCode;
 use PyzTest\Glue\Carts\CartsApiTester;
-use Spryker\Client\EntityTag\EntityTagClient;
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Glue
  * @group Carts
@@ -273,13 +273,14 @@ class CartsRestApiCest
         $I->haveHttpHeader('If-Match', $entityTag);
 
         // Act
-        $I->sendPATCH($I->formatUrl(
-            '{resourceCarts}/{cartUuid}',
-            [
-                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                'cartUuid' => $cartUuid,
-            ]
-        ),
+        $I->sendPATCH(
+            $I->formatUrl(
+                '{resourceCarts}/{cartUuid}',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'cartUuid' => $cartUuid,
+                ]
+            ),
             [
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_CARTS,
@@ -315,13 +316,14 @@ class CartsRestApiCest
         $I->haveHttpHeader('If-Match', $entityTag);
 
         // Act
-        $I->sendPATCH($I->formatUrl(
-            '{resourceCarts}/{cartUuid}',
-            [
-                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                'cartUuid' => $cartUuid,
-            ]
-        ),
+        $I->sendPATCH(
+            $I->formatUrl(
+                '{resourceCarts}/{cartUuid}',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'cartUuid' => $cartUuid,
+                ]
+            ),
             [
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_CARTS,
@@ -386,13 +388,14 @@ class CartsRestApiCest
     public function requestUpdateCartWithoutAuthorizationToken(CartsApiTester $I): void
     {
         // Act
-        $I->sendPATCH($I->formatUrl(
-            '{resourceCarts}/{cartUuid}',
-            [
-                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
-            ]
-        ),
+        $I->sendPATCH(
+            $I->formatUrl(
+                '{resourceCarts}/{cartUuid}',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                ]
+            ),
             [
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_CARTS,
@@ -424,14 +427,15 @@ class CartsRestApiCest
         $this->authorizeCustomer($I);
 
         // Act
-        $I->sendPOST($I->formatUrl(
-            '{resourceCarts}/{cartUuid}/{resourceCartItems}',
-            [
-                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
-                'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-            ]
-        ),
+        $I->sendPOST(
+            $I->formatUrl(
+                '{resourceCarts}/{cartUuid}/{resourceCartItems}',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                    'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                ]
+            ),
             [
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
@@ -463,14 +467,15 @@ class CartsRestApiCest
     public function requestAddItemsToCartWithoutAuthorizationToken(CartsApiTester $I): void
     {
         // Act
-        $I->sendPOST($I->formatUrl(
-            '{resourceCarts}/{cartUuid}/{resourceCartItems}',
-            [
-                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
-                'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-            ]
-        ),
+        $I->sendPOST(
+            $I->formatUrl(
+                '{resourceCarts}/{cartUuid}/{resourceCartItems}',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                    'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                ]
+            ),
             [
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
@@ -501,14 +506,15 @@ class CartsRestApiCest
         $this->authorizeCustomer($I);
 
         // Act
-        $I->sendPOST($I->formatUrl(
-            '{resourceCarts}/{cartUuid}/{resourceCartItems}',
-            [
-                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
-                'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-            ]
-        ),
+        $I->sendPOST(
+            $I->formatUrl(
+                '{resourceCarts}/{cartUuid}/{resourceCartItems}',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                    'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                ]
+            ),
             [
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
@@ -538,14 +544,15 @@ class CartsRestApiCest
         $this->authorizeCustomer($I);
 
         // Act
-        $I->sendPOST($I->formatUrl(
-            '{resourceCarts}/{cartUuid}/{resourceCartItems}',
-            [
-                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
-                'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-            ]
-        ),
+        $I->sendPOST(
+            $I->formatUrl(
+                '{resourceCarts}/{cartUuid}/{resourceCartItems}',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                    'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                ]
+            ),
             [
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
@@ -575,15 +582,16 @@ class CartsRestApiCest
         $this->authorizeCustomer($I);
 
         // Act
-        $I->sendPATCH($I->formatUrl(
-            '{resourceCarts}/{cartUuid}/{resourceCartItems}/{itemSku}',
-            [
-                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
-                'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                'itemSku' => $this->fixtures->getProductConcreteTransfer2()->getSku()
-            ]
-        ),
+        $I->sendPATCH(
+            $I->formatUrl(
+                '{resourceCarts}/{cartUuid}/{resourceCartItems}/{itemSku}',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                    'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer2()->getSku()
+                ]
+            ),
             [
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
@@ -622,14 +630,15 @@ class CartsRestApiCest
         $this->authorizeCustomer($I);
 
         // Act
-        $I->sendPATCH($I->formatUrl(
-            '{resourceCarts}//{resourceCartItems}/{cartItemSku}',
-            [
-                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                'cartItemSku' => $this->fixtures->getProductConcreteTransfer2()->getSku(),
-            ]
-        ),
+        $I->sendPATCH(
+            $I->formatUrl(
+                '{resourceCarts}//{resourceCartItems}/{cartItemSku}',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                    'cartItemSku' => $this->fixtures->getProductConcreteTransfer2()->getSku(),
+                ]
+            ),
             [
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
@@ -656,15 +665,16 @@ class CartsRestApiCest
     public function requestUpdateItemsInCartWithoutAuthorizationToken(CartsApiTester $I): void
     {
         // Act
-        $I->sendPATCH($I->formatUrl(
-            '{resourceCarts}/{cartUuid}/{resourceCartItems}/{itemSku}',
-            [
-                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
-                'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
-            ]
-        ),
+        $I->sendPATCH(
+            $I->formatUrl(
+                '{resourceCarts}/{cartUuid}/{resourceCartItems}/{itemSku}',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                    'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
+                ]
+            ),
             [
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
@@ -694,15 +704,16 @@ class CartsRestApiCest
         $this->authorizeCustomer($I);
 
         // Act
-        $I->sendPATCH($I->formatUrl(
-            '{resourceCarts}/{cartUuid}/{resourceCartItems}/{itemSku}',
-            [
-                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
-                'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
-            ]
-        ),
+        $I->sendPATCH(
+            $I->formatUrl(
+                '{resourceCarts}/{cartUuid}/{resourceCartItems}/{itemSku}',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                    'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
+                ]
+            ),
             [
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
@@ -730,14 +741,15 @@ class CartsRestApiCest
         $this->authorizeCustomer($I);
 
         // Act
-        $I->sendPATCH($I->formatUrl(
-            '{resourceCarts}/{cartUuid}/{resourceCartItems}/',
-            [
-                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
-                'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-            ]
-        ),
+        $I->sendPATCH(
+            $I->formatUrl(
+                '{resourceCarts}/{cartUuid}/{resourceCartItems}/',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                    'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                ]
+            ),
             [
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
@@ -766,15 +778,16 @@ class CartsRestApiCest
         $this->authorizeCustomer($I);
 
         // Act
-        $I->sendDelete($I->formatUrl(
-            '{resourceCarts}/{cartUuid}/{resourceCartItems}/{itemSku}',
-            [
-                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
-                'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                'itemSku' => $this->fixtures->getProductConcreteTransfer2()->getSku()
-            ]
-        ));
+        $I->sendDelete(
+            $I->formatUrl(
+                '{resourceCarts}/{cartUuid}/{resourceCartItems}/{itemSku}',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                    'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer2()->getSku()
+                ]
+            ));
 
         //assert
         $I->seeResponseCodeIs(HttpCode::NO_CONTENT);
@@ -794,14 +807,15 @@ class CartsRestApiCest
         $this->authorizeCustomer($I);
 
         // Act
-        $I->sendDelete($I->formatUrl(
-            '{resourceCarts}//{resourceCartItems}/{itemSku}',
-            [
-                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
-            ]
-        ));
+        $I->sendDelete(
+            $I->formatUrl(
+                '{resourceCarts}//{resourceCartItems}/{itemSku}',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
+                ]
+            ));
 
         //assert
         $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
@@ -818,15 +832,16 @@ class CartsRestApiCest
     public function requestDeleteItemsFromCartWithoutAuthorizationToken(CartsApiTester $I): void
     {
         // Act
-        $I->sendDelete($I->formatUrl(
-            '{resourceCarts}/{cartUuid}/{resourceCartItems}/{itemSku}',
-            [
-                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
-                'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
-            ]
-        ));
+        $I->sendDelete(
+            $I->formatUrl(
+                '{resourceCarts}/{cartUuid}/{resourceCartItems}/{itemSku}',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                    'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
+                ]
+            ));
 
         //assert
         $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
@@ -846,14 +861,15 @@ class CartsRestApiCest
         $this->authorizeCustomer($I);
 
         // Act
-        $I->sendDelete($I->formatUrl(
-            '{resourceCarts}/{cartUuid}/{resourceCartItems}/',
-            [
-                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
-                'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-            ]
-        ));
+        $I->sendDelete(
+            $I->formatUrl(
+                '{resourceCarts}/{cartUuid}/{resourceCartItems}/',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                    'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                ]
+            ));
 
         //assert
         $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
@@ -873,13 +889,14 @@ class CartsRestApiCest
         $this->authorizeCustomer($I);
 
         // Act
-        $I->sendDelete($I->formatUrl(
-            '{resourceCarts}/{cartUuid}',
-            [
-                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
-            ]
-        ));
+        $I->sendDelete(
+            $I->formatUrl(
+                '{resourceCarts}/{cartUuid}',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                ]
+            ));
 
         //assert
         $I->seeResponseCodeIs(HttpCode::NO_CONTENT);
@@ -898,12 +915,13 @@ class CartsRestApiCest
         $this->authorizeCustomer($I);
 
         // Act
-        $I->sendDelete($I->formatUrl(
-            '{resourceCarts}/',
-            [
-                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-            ]
-        ));
+        $I->sendDelete(
+            $I->formatUrl(
+                '{resourceCarts}/',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                ]
+            ));
 
         //assert
         $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
@@ -919,13 +937,14 @@ class CartsRestApiCest
     public function requestDeleteCartWithoutAuthorizationToken(CartsApiTester $I): void
     {
         // Act
-        $I->sendDelete($I->formatUrl(
-            '{resourceCarts}/{cartUuid}',
-            [
-                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
-            ]
-        ));
+        $I->sendDelete(
+            $I->formatUrl(
+                '{resourceCarts}/{cartUuid}',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                ]
+            ));
 
         //assert
         $I->seeResponseCodeIs(HttpCode::FORBIDDEN);

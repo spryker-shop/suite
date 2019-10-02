@@ -225,13 +225,14 @@ class GuestCartsRestApiCest
         $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS3);
 
         // Act
-        $I->sendPATCH($I->formatUrl(
-            '{resourceGuestCarts}/{guestCartUuid}',
-            [
-                'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-                'guestCartUuid' => $this->fixtures->getEmptyGuestQuoteTransfer()->getUuid(),
-            ]
-        ),
+        $I->sendPATCH(
+            $I->formatUrl(
+                '{resourceGuestCarts}/{guestCartUuid}',
+                [
+                    'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                    'guestCartUuid' => $this->fixtures->getEmptyGuestQuoteTransfer()->getUuid(),
+                ]
+            ),
             [
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
@@ -262,13 +263,14 @@ class GuestCartsRestApiCest
         $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS2);
 
         // Act
-        $I->sendPATCH($I->formatUrl(
-            '{resourceGuestCarts}/{guestCartUuid}',
-            [
-                'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-                'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
-            ]
-        ),
+        $I->sendPATCH(
+            $I->formatUrl(
+                '{resourceGuestCarts}/{guestCartUuid}',
+                [
+                    'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                    'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
+                ]
+            ),
             [
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
@@ -328,13 +330,14 @@ class GuestCartsRestApiCest
     public function requestUpdateGuestCartWithoutAnonymousCustomerUniqueId(CartsApiTester $I): void
     {
         // Act
-        $I->sendPATCH($I->formatUrl(
-            '{resourceGuestCarts}/{guestCartUuid}',
-            [
-                'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-                'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
-            ]
-        ),
+        $I->sendPATCH(
+            $I->formatUrl(
+                '{resourceGuestCarts}/{guestCartUuid}',
+                [
+                    'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                    'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
+                ]
+            ),
             [
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
@@ -365,14 +368,15 @@ class GuestCartsRestApiCest
         $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS2);
 
         // Act
-        $I->sendPOST($I->formatUrl(
-            '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}',
-            [
-                'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-                'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
-                'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-            ]
-        ),
+        $I->sendPOST(
+            $I->formatUrl(
+                '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}',
+                [
+                    'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                    'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
+                    'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+                ]
+            ),
             [
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
@@ -403,14 +407,15 @@ class GuestCartsRestApiCest
     public function requestAddItemsToGuestCartWithoutAnonymousCustomerUniqueId(CartsApiTester $I): void
     {
         // Act
-        $I->sendPOST($I->formatUrl(
-            '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}',
-            [
-                'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-                'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
-                'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-            ]
-        ),
+        $I->sendPOST(
+            $I->formatUrl(
+                '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}',
+                [
+                    'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                    'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
+                    'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+                ]
+            ),
             [
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
@@ -440,14 +445,15 @@ class GuestCartsRestApiCest
         $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS2);
 
         // Act
-        $I->sendPOST($I->formatUrl(
-            '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}',
-            [
-                'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-                'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
-                'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-            ]
-        ),
+        $I->sendPOST(
+            $I->formatUrl(
+                '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}',
+                [
+                    'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                    'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
+                    'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+                ]
+            ),
             [
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
@@ -476,14 +482,15 @@ class GuestCartsRestApiCest
         $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS2);
 
         // Act
-        $I->sendPOST($I->formatUrl(
-            '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}',
-            [
-                'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-                'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
-                'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-            ]
-        ),
+        $I->sendPOST(
+            $I->formatUrl(
+                '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}',
+                [
+                    'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                    'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
+                    'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+                ]
+            ),
             [
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
@@ -512,15 +519,16 @@ class GuestCartsRestApiCest
         $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS2);
 
         // Act
-        $I->sendPATCH($I->formatUrl(
-            '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}/{itemSku}',
-            [
-                'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-                'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
-                'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                'itemSku' => $this->fixtures->getProductConcreteTransfer2()->getSku()
-            ]
-        ),
+        $I->sendPATCH(
+            $I->formatUrl(
+                '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}/{itemSku}',
+                [
+                    'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                    'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
+                    'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer2()->getSku()
+                ]
+            ),
             [
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
@@ -558,14 +566,15 @@ class GuestCartsRestApiCest
         $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS2);
 
         // Act
-        $I->sendPATCH($I->formatUrl(
-            '{resourceGuestCarts}//{resourceGuestCartItems}/{guestCartItemSku}',
-            [
-                'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-                'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                'guestCartItemSku' => $this->fixtures->getProductConcreteTransfer2()->getSku(),
-            ]
-        ),
+        $I->sendPATCH(
+            $I->formatUrl(
+                '{resourceGuestCarts}//{resourceGuestCartItems}/{guestCartItemSku}',
+                [
+                    'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                    'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+                    'guestCartItemSku' => $this->fixtures->getProductConcreteTransfer2()->getSku(),
+                ]
+            ),
             [
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
@@ -591,15 +600,16 @@ class GuestCartsRestApiCest
     public function requestUpdateItemsInGuestCartWithoutAnonymousCustomerUniqueId(CartsApiTester $I): void
     {
         // Act
-        $I->sendPATCH($I->formatUrl(
-            '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}/{itemSku}',
-            [
-                'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-                'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
-                'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
-            ]
-        ),
+        $I->sendPATCH(
+            $I->formatUrl(
+                '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}/{itemSku}',
+                [
+                    'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                    'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
+                    'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
+                ]
+            ),
             [
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
@@ -628,15 +638,16 @@ class GuestCartsRestApiCest
         $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS2);
 
         // Act
-        $I->sendPATCH($I->formatUrl(
-            '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}/{itemSku}',
-            [
-                'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-                'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
-                'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
-            ]
-        ),
+        $I->sendPATCH(
+            $I->formatUrl(
+                '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}/{itemSku}',
+                [
+                    'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                    'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
+                    'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
+                ]
+            ),
             [
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
@@ -664,14 +675,15 @@ class GuestCartsRestApiCest
         $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS2);
 
         // Act
-        $I->sendPATCH($I->formatUrl(
-            '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}/',
-            [
-                'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-                'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
-                'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-            ]
-        ),
+        $I->sendPATCH(
+            $I->formatUrl(
+                '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}/',
+                [
+                    'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                    'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
+                    'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+                ]
+            ),
             [
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
@@ -700,15 +712,16 @@ class GuestCartsRestApiCest
         $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS2);
 
         // Act
-        $I->sendDelete($I->formatUrl(
-            '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}/{itemSku}',
-            [
-                'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-                'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
-                'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                'itemSku' => $this->fixtures->getProductConcreteTransfer2()->getSku()
-            ]
-        ));
+        $I->sendDelete(
+            $I->formatUrl(
+                '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}/{itemSku}',
+                [
+                    'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                    'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
+                    'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer2()->getSku()
+                ]
+            ));
 
         //assert
         $I->seeResponseCodeIs(HttpCode::NO_CONTENT);
@@ -727,14 +740,15 @@ class GuestCartsRestApiCest
         $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS2);
 
         // Act
-        $I->sendDelete($I->formatUrl(
-            '{resourceGuestCarts}//{resourceGuestCartItems}/{itemSku}',
-            [
-                'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-                'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
-            ]
-        ));
+        $I->sendDelete(
+            $I->formatUrl(
+                '{resourceGuestCarts}//{resourceGuestCartItems}/{itemSku}',
+                [
+                    'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                    'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
+                ]
+            ));
 
         //assert
         $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
@@ -751,15 +765,16 @@ class GuestCartsRestApiCest
     public function requestDeleteItemsFromGuestCartWithoutAnonymousCustomerUniqueId(CartsApiTester $I): void
     {
         // Act
-        $I->sendDelete($I->formatUrl(
-            '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}/{itemSku}',
-            [
-                'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-                'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
-                'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
-            ]
-        ));
+        $I->sendDelete(
+            $I->formatUrl(
+                '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}/{itemSku}',
+                [
+                    'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                    'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
+                    'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
+                ]
+            ));
 
         //assert
         $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
@@ -779,14 +794,15 @@ class GuestCartsRestApiCest
         $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS2);
 
         // Act
-        $I->sendDelete($I->formatUrl(
-            '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}/',
-            [
-                'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-                'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
-                'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-            ]
-        ));
+        $I->sendDelete(
+            $I->formatUrl(
+                '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}/',
+                [
+                    'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                    'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
+                    'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+                ]
+            ));
 
         //assert
         $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
