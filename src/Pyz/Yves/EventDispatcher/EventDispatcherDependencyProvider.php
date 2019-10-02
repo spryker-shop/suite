@@ -15,7 +15,9 @@ use Spryker\Yves\Http\Plugin\EventDispatcher\HeaderEventDispatcherPlugin;
 use Spryker\Yves\Http\Plugin\EventDispatcher\HstsHeaderEventDispatcher;
 use Spryker\Yves\Http\Plugin\EventDispatcher\SslEventDispatcherPlugin;
 use Spryker\Yves\Locale\Plugin\EventDispatcher\LocaleEventDispatcherPlugin;
+use Spryker\Yves\Router\Plugin\EventDispatcher\RouterListenerEventDispatcherPlugin;
 use Spryker\Yves\Router\Plugin\EventDispatcher\RouterLocaleEventDispatcherPlugin;
+use Spryker\Yves\Router\Plugin\EventDispatcher\RouterSslRedirectEventDispatcherPlugin;
 use SprykerShop\Yves\ShopApplication\Plugin\EventDispatcher\ShopApplicationEventDispatcherPlugin;
 
 class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependencyProvider
@@ -30,6 +32,8 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
             new LocaleEventDispatcherPlugin(),
             new RouterLocaleEventDispatcherPlugin(),
             new HeadersSecurityEventDispatcherPlugin(),
+            new RouterListenerEventDispatcherPlugin(),
+            new RouterSslRedirectEventDispatcherPlugin(),
             new CookieEventDispatcherPlugin(),
             new FragmentEventDispatcherPlugin(),
             new HeaderEventDispatcherPlugin(),
