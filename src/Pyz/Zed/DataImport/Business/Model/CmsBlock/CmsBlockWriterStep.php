@@ -36,6 +36,7 @@ class CmsBlockWriterStep extends PublishAwareStep implements DataImportStepInter
     public const BULK_SIZE = 100;
 
     public const KEY_BLOCK_NAME = 'block_name';
+    public const KEY_BLOCK_KEY = 'block_key';
     public const KEY_BLOCK_TYPE = 'type';
     public const KEY_BLOCK_VALUE = 'value';
     public const KEY_TEMPLATE_NAME = 'template_name';
@@ -113,6 +114,7 @@ class CmsBlockWriterStep extends PublishAwareStep implements DataImportStepInter
     {
         $cmsBlockEntity = SpyCmsBlockQuery::create()
             ->filterByFkTemplate($templateEntity->getIdCmsBlockTemplate())
+            ->filterByKey($dataSet[static::KEY_BLOCK_KEY])
             ->filterByName($dataSet[static::KEY_BLOCK_NAME])
             ->findOneOrCreate();
 
