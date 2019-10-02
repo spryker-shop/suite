@@ -62,6 +62,7 @@ use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListCompanyB
 use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListCompanyUserDataImportPlugin;
 use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListDataImportPlugin;
 use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListItemDataImportPlugin;
+use Spryker\Zed\StockDataImport\Communication\Plugin\StockDataImportPlugin;
 
 class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
 {
@@ -252,6 +253,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new ContentProductAbstractListDataImportPlugin(),
             new ContentProductSetDataImportPlugin(),
             new CommentDataImportPlugin(),
+            new StockDataImportPlugin(),
         ];
     }
 
