@@ -16,6 +16,7 @@ suites:
         class_name: CartsApiTester
         modules:
             enabled:
+                - Asserts
                 - \PyzTest\Shared\Testify\Helper\Environment
                 - \SprykerTest\Shared\Testify\Helper\LocatorHelper:
                       projectNamespaces: ['Pyz']

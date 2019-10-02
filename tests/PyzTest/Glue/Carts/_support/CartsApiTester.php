@@ -64,7 +64,7 @@ class CartsApiTester extends ApiEndToEndTester
             $itemSku
         );
 
-        $this->seeValueEqualsTo(
+        $this->assertEquals(
             $quantity,
             $this->grabDataFromResponseByJsonPath($jsonPath)[0]
         );
