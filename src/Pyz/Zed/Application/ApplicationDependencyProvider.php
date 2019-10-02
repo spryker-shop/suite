@@ -19,7 +19,6 @@ use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\SaveSessionServ
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\SubRequestServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\ZedHstsServiceProvider;
 use Spryker\Zed\Assertion\Communication\Plugin\ServiceProvider\AssertionServiceProvider;
-use Spryker\Zed\Auth\Communication\Plugin\ServiceProvider\RedirectAfterLoginProvider;
 use Spryker\Zed\EventDispatcher\Communication\Plugin\Application\EventDispatcherApplicationPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\ServiceProvider\GuiTwigExtensionServiceProvider;
 use Spryker\Zed\Kernel\Container;
@@ -52,7 +51,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new FormFactoryServiceProvider(),
             new GatewayServiceProviderPlugin(),
             new GuiTwigExtensionServiceProvider(),
-            new RedirectAfterLoginProvider(),
             new SaveSessionServiceProvider(),
             new SessionServiceProvider(),
             new SprykerSessionServiceProvider(),
