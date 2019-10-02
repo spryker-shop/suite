@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ddc3238b1108a28827625b85fda5ee3a",
+    "content-hash": "714ba77d4c99b2dfa7269f426917cc19",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -604,8 +604,8 @@
             "authors": [
                 {
                     "name": "Filipe Dobreira",
-                    "role": "Developer",
-                    "homepage": "https://github.com/filp"
+                    "homepage": "https://github.com/filp",
+                    "role": "Developer"
                 }
             ],
             "description": "php error handling for cool kids",
@@ -1002,8 +1002,8 @@
             "authors": [
                 {
                     "name": "Luís Otávio Cobucci Oblonczyk",
-                    "role": "Developer",
-                    "email": "lcobucci@gmail.com"
+                    "email": "lcobucci@gmail.com",
+                    "role": "Developer"
                 }
             ],
             "description": "A simple library to work with JSON Web Token and JSON Web Signature",
@@ -1374,8 +1374,8 @@
             "authors": [
                 {
                     "name": "Frank Kleine",
-                    "role": "Developer",
-                    "homepage": "http://frankkleine.de/"
+                    "homepage": "http://frankkleine.de/",
+                    "role": "Developer"
                 }
             ],
             "description": "Virtual file system to mock the real file system in unit tests.",
@@ -1638,18 +1638,18 @@
                 },
                 {
                     "name": "John Kelly",
-                    "role": "Maintainer",
-                    "email": "johnmkelly86@gmail.com"
+                    "email": "johnmkelly86@gmail.com",
+                    "role": "Maintainer"
                 },
                 {
                     "name": "Raúl Araya",
-                    "role": "Maintainer",
-                    "email": "nubeiro@gmail.com"
+                    "email": "nubeiro@gmail.com",
+                    "role": "Maintainer"
                 },
                 {
                     "name": "Luke Bakken",
-                    "role": "Maintainer",
-                    "email": "luke@bakken.io"
+                    "email": "luke@bakken.io",
+                    "role": "Maintainer"
                 }
             ],
             "description": "Formerly videlalvaro/php-amqplib.  This library is a pure PHP implementation of the AMQP protocol. It's been tested against RabbitMQ.",
@@ -1955,7 +1955,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -2386,54 +2386,6 @@
             "time": "2019-07-08T08:22:53+00:00"
         },
         {
-            "name": "spryker/decimal-object",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/decimal-object.git",
-                "reference": "d47d9ec24075ec6899e99057305699273052084b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/decimal-object/zipball/d47d9ec24075ec6899e99057305699273052084b",
-                "reference": "d47d9ec24075ec6899e99057305699273052084b",
-                "shasum": ""
-            },
-            "require": {
-                "ext-bcmath": "*",
-                "ext-json": "*",
-                "php": ">=7.1"
-            },
-            "require-dev": {
-                "phpstan/phpstan-shim": "^0.11",
-                "phpunit/phpunit": "^7.0.0 || ^8.0.0",
-                "spryker/code-sniffer": "@stable"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\DecimalObject\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Spryker Systems GmbH",
-                    "homepage": "https://spryker.com"
-                }
-            ],
-            "description": "PHP decimal handling as value object",
-            "time": "2019-08-29T11:07:52+00:00"
-        },
-        {
             "name": "spryker/event-behavior",
             "version": "dev-master",
             "source": {
@@ -2733,11 +2685,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/cc-6194/cc-6315-enabler",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "8eeca013f6b66fbd185116e992a2de17acf3c64b"
+                "reference": "2df59aa90b7639e9c27e7ac12a69d07633e76da4"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -3007,7 +2959,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-01T11:08:10+00:00"
+            "time": "2019-10-02T10:51:50+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -3015,7 +2967,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "18f0724b6d890c2f64d69ec8e062b1fc8caf4867"
+                "reference": "4106afa5cfa4fa98f3eaef2bf3327b129f22efe6"
             },
             "require": {
                 "php": ">=7.1"
@@ -3091,7 +3043,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-09-30T14:23:49+00:00"
+            "time": "2019-10-02T09:28:12+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -5459,19 +5411,19 @@
             "authors": [
                 {
                     "name": "Fabien Potencier",
-                    "role": "Lead Developer",
                     "email": "fabien@symfony.com",
-                    "homepage": "http://fabien.potencier.org"
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
                 },
                 {
                     "name": "Twig Team",
-                    "role": "Contributors",
-                    "homepage": "https://twig.symfony.com/contributors"
+                    "homepage": "https://twig.symfony.com/contributors",
+                    "role": "Contributors"
                 },
                 {
                     "name": "Armin Ronacher",
-                    "role": "Project Founder",
-                    "email": "armin.ronacher@active-4.com"
+                    "email": "armin.ronacher@active-4.com",
+                    "role": "Project Founder"
                 }
             ],
             "description": "Twig, the flexible, fast, and secure template language for PHP",
@@ -5870,9 +5822,9 @@
             "authors": [
                 {
                     "name": "Antonio J. García Lagar",
-                    "role": "developer",
                     "email": "aj@garcialagar.es",
-                    "homepage": "http://aj.garcialagar.es"
+                    "homepage": "http://aj.garcialagar.es",
+                    "role": "developer"
                 }
             ],
             "description": "Twig extension to set breakpoints",
@@ -6308,8 +6260,8 @@
             "authors": [
                 {
                     "name": "Alessio Linares",
-                    "role": "Software Engineer",
-                    "email": "alessio.linares@skyscanner.net"
+                    "email": "alessio.linares@skyscanner.net",
+                    "role": "Software Engineer"
                 }
             ],
             "description": "JSONPath implementation for querying and updating JSON objects",
@@ -9692,12 +9644,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-generator.git",
-                "reference": "3edb5fda352764ed0cda3e9d2133e127cbfec747"
+                "reference": "12bf17f8f8438087a073f39cb0a4241ebc60c923"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-generator/zipball/3edb5fda352764ed0cda3e9d2133e127cbfec747",
-                "reference": "3edb5fda352764ed0cda3e9d2133e127cbfec747",
+                "url": "https://api.github.com/repos/spryker/code-generator/zipball/12bf17f8f8438087a073f39cb0a4241ebc60c923",
+                "reference": "12bf17f8f8438087a073f39cb0a4241ebc60c923",
                 "shasum": ""
             },
             "require": {
@@ -9728,7 +9680,7 @@
                 "MIT"
             ],
             "description": "CodeGenerator module",
-            "time": "2019-09-25T12:21:57+00:00"
+            "time": "2019-10-01T14:33:01+00:00"
         },
         {
             "name": "spryker/code-sniffer",
@@ -9736,12 +9688,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "953955ce883af5cbf5805963d1dec22ae2b7e0c1"
+                "reference": "90b017c43578391b3b7deec7e87b69f1f788e52f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/953955ce883af5cbf5805963d1dec22ae2b7e0c1",
-                "reference": "953955ce883af5cbf5805963d1dec22ae2b7e0c1",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/90b017c43578391b3b7deec7e87b69f1f788e52f",
+                "reference": "90b017c43578391b3b7deec7e87b69f1f788e52f",
                 "shasum": ""
             },
             "require": {
@@ -9781,7 +9733,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-10-01T09:26:56+00:00"
+            "time": "2019-10-02T08:49:58+00:00"
         },
         {
             "name": "spryker/development-core",
@@ -9789,7 +9741,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "a109dd4e34573b028cae3d139b56602083983c64"
+                "reference": "ae113f60f9362e7e85f73dd43d9477f76a4fd089"
             },
             "require": {
                 "php": ">=7.1",
@@ -9830,7 +9782,7 @@
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2019-09-27T12:43:27+00:00"
+            "time": "2019-10-01T17:06:21+00:00"
         },
         {
             "name": "spryker/git-hook",
@@ -10689,8 +10641,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -10709,7 +10661,6 @@
     "stability-flags": {
         "spryker/spryker": 20,
         "spryker/spryker-shop": 20,
-        "spryker/decimal-object": 20,
         "spryker-eco/loggly": 20,
         "spryker/rabbit-mq": 20,
         "spryker/install": 20,
