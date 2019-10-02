@@ -787,7 +787,8 @@ class CartsRestApiCest
                     'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
                     'itemSku' => $this->fixtures->getProductConcreteTransfer2()->getSku()
                 ]
-            ));
+            )
+        );
 
         //assert
         $I->seeResponseCodeIs(HttpCode::NO_CONTENT);
@@ -815,7 +816,8 @@ class CartsRestApiCest
                     'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
                     'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
                 ]
-            ));
+            )
+        );
 
         //assert
         $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
@@ -841,7 +843,8 @@ class CartsRestApiCest
                     'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
                     'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
                 ]
-            ));
+            )
+        );
 
         //assert
         $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
@@ -869,7 +872,8 @@ class CartsRestApiCest
                     'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
                     'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
                 ]
-            ));
+            )
+        );
 
         //assert
         $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
@@ -896,7 +900,8 @@ class CartsRestApiCest
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
                     'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
                 ]
-            ));
+            )
+        );
 
         //assert
         $I->seeResponseCodeIs(HttpCode::NO_CONTENT);
@@ -921,7 +926,8 @@ class CartsRestApiCest
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
                 ]
-            ));
+            )
+        );
 
         //assert
         $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
@@ -944,7 +950,8 @@ class CartsRestApiCest
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
                     'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
                 ]
-            ));
+            )
+        );
 
         //assert
         $I->seeResponseCodeIs(HttpCode::FORBIDDEN);

@@ -721,7 +721,8 @@ class GuestCartsRestApiCest
                     'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
                     'itemSku' => $this->fixtures->getProductConcreteTransfer2()->getSku()
                 ]
-            ));
+            )
+        );
 
         //assert
         $I->seeResponseCodeIs(HttpCode::NO_CONTENT);
@@ -748,7 +749,8 @@ class GuestCartsRestApiCest
                     'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
                     'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
                 ]
-            ));
+            )
+        );
 
         //assert
         $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
@@ -774,7 +776,8 @@ class GuestCartsRestApiCest
                     'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
                     'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku()
                 ]
-            ));
+            )
+        );
 
         //assert
         $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
@@ -802,7 +805,8 @@ class GuestCartsRestApiCest
                     'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
                     'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
                 ]
-            ));
+            )
+        );
 
         //assert
         $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
