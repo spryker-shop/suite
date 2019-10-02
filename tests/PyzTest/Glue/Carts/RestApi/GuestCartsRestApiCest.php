@@ -18,7 +18,6 @@ use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
  * @group Glue
  * @group Carts
  * @group RestApi
- * @group CartRestApiCest
  * @group GuestCartsRestApiCest
  * Add your own group annotations below this line
  * @group EndToEnd
