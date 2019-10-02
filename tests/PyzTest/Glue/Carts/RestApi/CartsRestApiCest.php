@@ -9,6 +9,7 @@ namespace PyzTest\Glue\Carts\RestApi;
 
 use Codeception\Util\HttpCode;
 use PyzTest\Glue\Carts\CartsApiTester;
+use Spryker\Client\EntityTag\EntityTagClient;
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
 
 /**
@@ -266,13 +267,17 @@ class CartsRestApiCest
     {
         // Arrange
         $this->authorizeCustomer($I);
+        $emptyQuoteTransfer = $this->fixtures->getEmptyQuoteTransfer();
+        $cartUuid = $emptyQuoteTransfer->getUuid();
+        $entityTag = $I->haveEntityTag(CartsRestApiConfig::RESOURCE_CARTS, $cartUuid, $emptyQuoteTransfer->toArray());
+        $I->haveHttpHeader('If-Match', $entityTag);
 
         // Act
         $I->sendPATCH($I->formatUrl(
             '{resourceCarts}/{cartUuid}',
             [
                 'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                'cartUuid' => $this->fixtures->getEmptyQuoteTransfer()->getUuid(),
+                'cartUuid' => $cartUuid,
             ]
         ),
             [
@@ -303,13 +308,18 @@ class CartsRestApiCest
     {
         // Arrange
         $this->authorizeCustomer($I);
+        $quoteTransfer = $this->fixtures->getQuoteTransfer();
+        $cartUuid = $quoteTransfer->getUuid();
+        $entityTag = $I->findResourceEntityTag(CartsRestApiConfig::RESOURCE_CARTS, $cartUuid);
+
+        $I->haveHttpHeader('If-Match', $entityTag);
 
         // Act
         $I->sendPATCH($I->formatUrl(
             '{resourceCarts}/{cartUuid}',
             [
                 'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                'cartUuid' => $cartUuid,
             ]
         ),
             [
@@ -340,6 +350,11 @@ class CartsRestApiCest
     {
         // Arrange
         $this->authorizeCustomer($I);
+        $entityTag = $I->findResourceEntityTag(
+            CartsRestApiConfig::RESOURCE_CARTS,
+            $this->fixtures->getEmptyQuoteTransfer()->getUuid()
+        );
+        $I->haveHttpHeader('If-Match', $entityTag);
 
         // Act
         $I->sendPATCH(
