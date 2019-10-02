@@ -12,6 +12,7 @@ use Codeception\Scenario;
 
 /**
  * Inherited Methods
+ *
  * @method void wantToTest($text)
  * @method void wantTo($text)
  * @method void execute($callable)
@@ -34,6 +35,10 @@ class AvailabilityPresentationTester extends Actor
     public const FUJITSU2_PRODUCT_PAGE = '/en/fujitsu-esprimo-e920-119';
     public const ADD_FUJITSU2_PRODUCT_TO_CART_URL = '/cart/add/119_29804808';
 
+    /**
+     * @uses \Spryker\Zed\AvailabilityCartConnector\Business\Cart\CheckCartAvailability::CART_PRE_CHECK_AVAILABILITY_FAILED
+     * @uses \Spryker\Zed\ProductBundle\Business\ProductBundle\Availability\PreCheck\ProductBundleCartAvailabilityCheck::CART_PRE_CHECK_ITEM_AVAILABILITY_FAILED
+     */
     public const CART_PRE_CHECK_AVAILABILITY_ERROR_MESSAGE = 'Item 119_29804808 only has availability of 10.';
 
     /**
