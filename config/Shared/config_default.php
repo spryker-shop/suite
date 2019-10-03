@@ -35,6 +35,7 @@ use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Queue\QueueConfig;
 use Spryker\Shared\Queue\QueueConstants;
 use Spryker\Shared\Quote\QuoteConstants;
+use Spryker\Shared\Router\RouterConstants;
 use Spryker\Shared\Sales\SalesConstants;
 use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\SearchElasticsearch\SearchElasticsearchConstants;
@@ -203,9 +204,10 @@ $config[SearchElasticsearchConstants::FULL_TEXT_BOOSTED_BOOSTING_VALUE] = 3;
 $config[TwigConstants::YVES_TWIG_OPTIONS] = [
     'cache' => new FilesystemCache(
         sprintf(
-            '%s/data/%s/cache/Yves/twig',
+            '%s/data/%s/cache/%s/twig',
             APPLICATION_ROOT_DIR,
-            $CURRENT_STORE
+            $CURRENT_STORE,
+            APPLICATION
         ),
         FilesystemCache::FORCE_BYTECODE_INVALIDATION
     ),
@@ -213,20 +215,21 @@ $config[TwigConstants::YVES_TWIG_OPTIONS] = [
 $config[TwigConstants::ZED_TWIG_OPTIONS] = [
     'cache' => new FilesystemCache(
         sprintf(
-            '%s/data/%s/cache/Zed/twig',
+            '%s/data/%s/cache/%s/twig',
             APPLICATION_ROOT_DIR,
-            $CURRENT_STORE
+            $CURRENT_STORE,
+            APPLICATION
         ),
         FilesystemCache::FORCE_BYTECODE_INVALIDATION
     ),
 ];
 $config[TwigConstants::YVES_PATH_CACHE_FILE] = sprintf(
-    '%s/data/%s/cache/Yves/twig/.pathCache',
+    '%s/data/%s/cache/YVES/twig/.pathCache',
     APPLICATION_ROOT_DIR,
     $CURRENT_STORE
 );
 $config[TwigConstants::ZED_PATH_CACHE_FILE] = sprintf(
-    '%s/data/%s/cache/Zed/twig/.pathCache',
+    '%s/data/%s/cache/ZED/twig/.pathCache',
     APPLICATION_ROOT_DIR,
     $CURRENT_STORE
 );
@@ -322,20 +325,15 @@ $HSTS_CONFIG = [
 $config[ApplicationConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG] = $HSTS_CONFIG;
 $config[ApplicationConstants::YVES_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG] = $HSTS_CONFIG;
 
-// ---------- SSL
-$config[SessionConstants::YVES_SSL_ENABLED] = false;
-$config[ApplicationConstants::YVES_SSL_ENABLED] =
-$config[SessionConstants::YVES_SSL_ENABLED]
-    = false;
-$config[ApplicationConstants::YVES_SSL_EXCLUDED] = [
+// ---------- Router
+$config[RouterConstants::YVES_SSL_EXCLUDED_ROUTE_NAMES] = [
     'heartbeat' => '/heartbeat',
 ];
+$config[RouterConstants::ZED_SSL_EXCLUDED_ROUTE_NAMES] = ['heartbeat/index'];
 
+// ---------- SSL
+$config[SessionConstants::YVES_SSL_ENABLED] = false;
 $config[ZedRequestConstants::ZED_API_SSL_ENABLED] = false;
-$config[ApplicationConstants::ZED_SSL_ENABLED] =
-    $config[SessionConstants::ZED_SSL_ENABLED]
-    = false;
-$config[ApplicationConstants::ZED_SSL_EXCLUDED] = ['heartbeat/index'];
 
 // ---------- Error handling
 $config[ErrorHandlerConstants::YVES_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Yves/errorpage/error.html';
