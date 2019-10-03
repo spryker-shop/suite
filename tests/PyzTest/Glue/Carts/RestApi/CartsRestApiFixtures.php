@@ -75,6 +75,16 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
     protected $emptyQuoteTransfer;
 
     /**
+     * @var string
+     */
+    protected $cartResourceEntityTag;
+
+    /**
+     * @var string
+     */
+    protected $emptyCartResourceEntityTag;
+
+    /**
      * @return \Generated\Shared\Transfer\ProductConcreteTransfer
      */
     public function getProductConcreteTransfer1(): ProductConcreteTransfer
@@ -139,6 +149,22 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
     }
 
     /**
+     * @return string
+     */
+    public function getCartResourceEntityTag(): string
+    {
+        return $this->cartResourceEntityTag;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmptyCartResourceEntityTag(): string
+    {
+        return $this->emptyCartResourceEntityTag;
+    }
+
+    /**
      * @param \PyzTest\Glue\Carts\CartsApiTester $I
      *
      * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
@@ -149,7 +175,17 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
         $this->productConcreteTransfer1 = $this->createProductData($I);
         $this->productConcreteTransfer2 = $this->createProductData($I);
         $this->emptyQuoteTransfer = $this->createEmptyQuote($I, $this->getCustomerTransfer()->getCustomerReference());
+        $this->emptyCartResourceEntityTag = $this->createCartResourceEntityTag(
+            $I,
+            $this->emptyQuoteTransfer->getUuid(),
+            $this->emptyQuoteTransfer->toArray()
+        );
         $this->quoteTransfer = $this->createQuote($I, $this->getCustomerTransfer()->getCustomerReference());
+        $this->cartResourceEntityTag = $this->createCartResourceEntityTag(
+            $I,
+            $this->quoteTransfer->getUuid(),
+            $this->quoteTransfer->toArray()
+        );
         $this->guestQuoteTransfer1 = $this->createQuote($I, $I::ANONYMOUS_CUSTOMER_REFERENCE1);
         $this->guestQuoteTransfer2 = $this->createQuote($I, $I::ANONYMOUS_CUSTOMER_REFERENCE2);
         $this->emptyGuestQuoteTransfer = $this->createEmptyQuote($I, $I::ANONYMOUS_CUSTOMER_REFERENCE3);
@@ -228,7 +264,6 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
                     ItemTransfer::QUANTITY => 5,
                 ],
             ],
-            QuoteTransfer::STORE => [StoreTransfer::NAME => 'DE'],
         ]);
     }
 
@@ -242,7 +277,25 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
     {
         return $I->havePersistentQuote([
             QuoteTransfer::CUSTOMER => (new CustomerTransfer())->setCustomerReference($customerReference),
-            QuoteTransfer::STORE => [StoreTransfer::NAME => 'DE'],
         ]);
+    }
+
+    /**
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     * @param string $cartUuid
+     * @param array $attributes
+     *
+     * @return string
+     */
+    protected function createCartResourceEntityTag(
+        CartsApiTester $I,
+        string $cartUuid,
+        array $attributes
+    ): string {
+        return $I->haveEntityTag(
+            CartsRestApiConfig::RESOURCE_CARTS,
+            $cartUuid,
+            $attributes
+        );
     }
 }

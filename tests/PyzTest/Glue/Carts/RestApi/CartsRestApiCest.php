@@ -335,7 +335,7 @@ class CartsRestApiCest
         // Arrange
         $this->authorizeCustomer($I);
         $emptyQuoteTransfer = $this->fixtures->getEmptyQuoteTransfer();
-        $entityTag = $I->findResourceEntityTag(CartsRestApiConfig::RESOURCE_CARTS, $emptyQuoteTransfer->getUuid());
+        $entityTag = $this->fixtures->getEmptyCartResourceEntityTag();
         $I->haveHttpHeader('If-Match', $entityTag);
 
         // Act
@@ -377,7 +377,8 @@ class CartsRestApiCest
         $this->authorizeCustomer($I);
         $quoteTransfer = $this->fixtures->getQuoteTransfer();
         $cartUuid = $quoteTransfer->getUuid();
-        $entityTag = $I->findResourceEntityTag(CartsRestApiConfig::RESOURCE_CARTS, $quoteTransfer->getUuid());
+        $entityTag = $this->fixtures->getCartResourceEntityTag();
+
         $I->haveHttpHeader('If-Match', $entityTag);
 
         // Act
@@ -417,7 +418,7 @@ class CartsRestApiCest
     {
         // Arrange
         $this->authorizeCustomer($I);
-        $entityTag = $I->findResourceEntityTag(CartsRestApiConfig::RESOURCE_CARTS, $this->fixtures->getQuoteTransfer()->getUuid());
+        $entityTag = $this->fixtures->getCartResourceEntityTag();
         $I->haveHttpHeader('If-Match', $entityTag);
 
         // Act
