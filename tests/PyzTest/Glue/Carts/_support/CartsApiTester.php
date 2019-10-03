@@ -48,8 +48,6 @@ class CartsApiTester extends ApiEndToEndTester
     public const VALUE_FOR_ANONYMOUS3 = '888';
 
     /**
-     * @part json
-     *
      * @param int $quantity
      * @param string $resourceName
      * @param string $itemSku
