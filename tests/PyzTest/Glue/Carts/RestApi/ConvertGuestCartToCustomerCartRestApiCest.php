@@ -65,9 +65,7 @@ class ConvertGuestCartToCustomerCartRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        $I->assertResponse(HttpCode::OK);
 
         $I->amSure(sprintf('Returned resource is of type %s', CartsRestApiConfig::RESOURCE_CARTS))
             ->whenI()
@@ -108,9 +106,7 @@ class ConvertGuestCartToCustomerCartRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        $I->assertResponse(HttpCode::OK);
         $I->seeResponseDataContainsEmptyCollection();
     }
 

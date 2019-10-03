@@ -176,9 +176,7 @@ class GuestCartsRestApiCest
         $I->sendGET(CartsRestApiConfig::RESOURCE_GUEST_CARTS);
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        $I->assertResponse(HttpCode::OK);
     }
 
     /**
@@ -206,9 +204,7 @@ class GuestCartsRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        $I->assertResponse(HttpCode::OK);
 
         $I->amSure('Returned resource has include of type guest-cart-items')
             ->whenI()
@@ -283,8 +279,7 @@ class GuestCartsRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
+        $I->assertResponse(HttpCode::OK);
     }
 
     /**
@@ -321,8 +316,7 @@ class GuestCartsRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
-        $I->seeResponseIsJson();
+        $I->assertResponse(HttpCode::UNPROCESSABLE_ENTITY);
     }
 
     /**
@@ -426,8 +420,7 @@ class GuestCartsRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::CREATED);
-        $I->seeResponseIsJson();
+        $I->assertResponse(HttpCode::CREATED);
 
         $I->amSure('Returned resource is of type guest-carts')
             ->whenI()
@@ -539,8 +532,7 @@ class GuestCartsRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
-        $I->seeResponseIsJson();
+        $I->assertResponse(HttpCode::UNPROCESSABLE_ENTITY);
     }
 
     /**
@@ -577,8 +569,7 @@ class GuestCartsRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
+        $I->assertResponse(HttpCode::OK);
 
         $I->amSure('Returned resource is of type guest-carts')
             ->whenI()
@@ -696,8 +687,7 @@ class GuestCartsRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
-        $I->seeResponseIsJson();
+        $I->assertResponse(HttpCode::UNPROCESSABLE_ENTITY);
     }
 
     /**

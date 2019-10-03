@@ -68,9 +68,7 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::CREATED);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        $I->assertResponse(HttpCode::CREATED);
 
         $I->amSure(sprintf('Returned resource is of type %s', CartsRestApiConfig::RESOURCE_CARTS))
             ->whenI()
@@ -103,9 +101,7 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        $I->assertResponse(HttpCode::FORBIDDEN);
     }
 
     /**
@@ -136,9 +132,7 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        $I->assertResponse(HttpCode::UNPROCESSABLE_ENTITY);
     }
 
     /**
@@ -169,9 +163,7 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        $I->assertResponse(HttpCode::UNPROCESSABLE_ENTITY);
     }
 
     /**
@@ -190,9 +182,7 @@ class CartsRestApiCest
         $I->sendGET(CartsRestApiConfig::RESOURCE_CARTS);
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        $I->assertResponse(HttpCode::OK);
         $I->seeResponseDataContainsNonEmptyCollection();
     }
 
@@ -220,9 +210,7 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        $I->assertResponse(HttpCode::OK);
     }
 
     /**
@@ -249,9 +237,7 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        $I->assertResponse(HttpCode::NOT_FOUND);
     }
 
     /**
@@ -275,8 +261,7 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
-        $I->seeResponseMatchesOpenApiSchema();
+        $I->assertResponse(HttpCode::FORBIDDEN);
     }
 
     /**
@@ -304,9 +289,7 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        $I->assertResponse(HttpCode::OK);
 
         $I->amSure('Returned resource has include of type items')
             ->whenI()
@@ -360,8 +343,7 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
+        $I->assertResponse(HttpCode::OK);
     }
 
     /**
@@ -403,8 +385,7 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
-        $I->seeResponseIsJson();
+        $I->assertResponse(HttpCode::UNPROCESSABLE_ENTITY);
     }
 
     /**
@@ -472,9 +453,7 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        $I->assertResponse(HttpCode::FORBIDDEN);
     }
 
     /**
@@ -511,9 +490,7 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::CREATED);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        $I->assertResponse(HttpCode::CREATED);
 
         $I->amSure('Returned resource is of type carts')
             ->whenI()
@@ -551,9 +528,7 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        $I->assertResponse(HttpCode::FORBIDDEN);
     }
 
     /**
@@ -589,9 +564,7 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        $I->assertResponse(HttpCode::UNPROCESSABLE_ENTITY);
     }
 
     /**
@@ -627,9 +600,7 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        $I->assertResponse(HttpCode::UNPROCESSABLE_ENTITY);
     }
 
     /**
@@ -666,9 +637,7 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        $I->assertResponse(HttpCode::OK);
 
         $I->amSure('Returned resource is of type carts')
             ->whenI()
@@ -714,9 +683,7 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        $I->assertResponse(HttpCode::BAD_REQUEST);
     }
 
     /**
@@ -750,9 +717,7 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        $I->assertResponse(HttpCode::FORBIDDEN);
     }
 
     /**
@@ -788,8 +753,7 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
-        $I->seeResponseIsJson();
+        $I->assertResponse(HttpCode::UNPROCESSABLE_ENTITY);
     }
 
     /**
@@ -883,8 +847,7 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
-        $I->seeResponseIsJson();
+        $I->assertResponse(HttpCode::BAD_REQUEST);
     }
 
     /**
@@ -910,8 +873,7 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
-        $I->seeResponseIsJson();
+        $I->assertResponse(HttpCode::FORBIDDEN);
     }
 
     /**
@@ -994,6 +956,7 @@ class CartsRestApiCest
 
         // Assert
         $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
+        $I->seeResponseIsJson();
     }
 
     /**
@@ -1017,7 +980,7 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
+        $I->assertResponse(HttpCode::FORBIDDEN);
     }
 
     /**
