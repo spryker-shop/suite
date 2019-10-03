@@ -14,7 +14,6 @@ use Generated\Shared\Transfer\PriceProductTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\StockProductTransfer;
-use Generated\Shared\Transfer\StoreTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
 use PyzTest\Glue\Carts\CartsApiTester;
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
