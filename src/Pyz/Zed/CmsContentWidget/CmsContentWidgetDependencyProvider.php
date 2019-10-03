@@ -18,7 +18,7 @@ use Spryker\Zed\Kernel\Container;
 class CmsContentWidgetDependencyProvider extends SprykerCmsContentWidgetDependencyProvider
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @param \Spryker\Zed\Kernel\Container $container
      *
