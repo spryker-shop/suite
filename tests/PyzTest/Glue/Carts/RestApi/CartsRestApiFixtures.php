@@ -85,6 +85,21 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
     protected $emptyCartResourceEntityTag;
 
     /**
+     * @var string
+     */
+    protected $valueForAnonymousCustomerReference1;
+
+    /**
+     * @var string
+     */
+    protected $valueForAnonymousCustomerReference2;
+
+    /**
+     * @var string
+     */
+    protected $valueForAnonymousCustomerReference3;
+
+    /**
      * @return \Generated\Shared\Transfer\ProductConcreteTransfer
      */
     public function getProductConcreteTransfer1(): ProductConcreteTransfer
@@ -165,6 +180,30 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
     }
 
     /**
+     * @return string
+     */
+    public function getValueForAnonymousCustomerReference1(): string
+    {
+        return $this->valueForAnonymousCustomerReference1;
+    }
+
+    /**
+     * @return string
+     */
+    public function getValueForAnonymousCustomerReference2(): string
+    {
+        return $this->valueForAnonymousCustomerReference2;
+    }
+
+    /**
+     * @return string
+     */
+    public function getValueForAnonymousCustomerReference3(): string
+    {
+        return $this->valueForAnonymousCustomerReference3;
+    }
+
+    /**
      * @param \PyzTest\Glue\Carts\CartsApiTester $I
      *
      * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
@@ -186,9 +225,21 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
             $this->quoteTransfer->getUuid(),
             $this->quoteTransfer->toArray()
         );
-        $this->guestQuoteTransfer1 = $this->createQuote($I, $I::ANONYMOUS_CUSTOMER_REFERENCE1);
-        $this->guestQuoteTransfer2 = $this->createQuote($I, $I::ANONYMOUS_CUSTOMER_REFERENCE2);
-        $this->emptyGuestQuoteTransfer = $this->createEmptyQuote($I, $I::ANONYMOUS_CUSTOMER_REFERENCE3);
+        $this->valueForAnonymousCustomerReference1 = $this->createValueForAnonymousCustomerReference();
+        $this->valueForAnonymousCustomerReference2 = $this->createValueForAnonymousCustomerReference();
+        $this->valueForAnonymousCustomerReference3 = $this->createValueForAnonymousCustomerReference();
+        $this->guestQuoteTransfer1 = $this->createQuote(
+            $I,
+            $I::ANONYMOUS_PREFIX . $this->valueForAnonymousCustomerReference1
+        );
+        $this->guestQuoteTransfer2 = $this->createQuote(
+            $I,
+            $I::ANONYMOUS_PREFIX . $this->valueForAnonymousCustomerReference2
+        );
+        $this->emptyGuestQuoteTransfer = $this->createEmptyQuote(
+            $I,
+            $I::ANONYMOUS_PREFIX . $this->valueForAnonymousCustomerReference3
+        );
 
         return $this;
     }
@@ -297,5 +348,13 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
             $cartUuid,
             $attributes
         );
+    }
+
+    /**
+     * @return string
+     */
+    protected function createValueForAnonymousCustomerReference(): string
+    {
+        return uniqid('testReference', true);
     }
 }

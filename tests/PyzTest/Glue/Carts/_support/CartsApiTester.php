@@ -39,13 +39,7 @@ class CartsApiTester extends ApiEndToEndTester
     public const CURRENCY_EUR = 'EUR';
     public const GROSS_MODE = 'GROSS_MODE';
 
-    public const ANONYMOUS_CUSTOMER_REFERENCE1 = 'anonymous:666';
-    public const ANONYMOUS_CUSTOMER_REFERENCE2 = 'anonymous:777';
-    public const ANONYMOUS_CUSTOMER_REFERENCE3 = 'anonymous:888';
-
-    public const VALUE_FOR_ANONYMOUS1 = '666';
-    public const VALUE_FOR_ANONYMOUS2 = '777';
-    public const VALUE_FOR_ANONYMOUS3 = '888';
+    public const ANONYMOUS_PREFIX = 'anonymous:';
 
     /**
      * @param int $quantity

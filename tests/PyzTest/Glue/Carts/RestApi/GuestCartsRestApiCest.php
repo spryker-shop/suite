@@ -49,7 +49,7 @@ class GuestCartsRestApiCest
     public function requestCreateGuestCart(CartsApiTester $I): void
     {
         // Arrange
-        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', '123');
+        $I->haveHttpHeader(CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID, uniqid(123, true));
 
         // Act
         $I->sendPOST(
@@ -111,7 +111,10 @@ class GuestCartsRestApiCest
      */
     public function requestCreateGuestCartWithoutSku(CartsApiTester $I): void
     {
-        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS2);
+        $I->haveHttpHeader(
+            CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
+            $this->fixtures->getValueForAnonymousCustomerReference2()
+        );
 
         // Act
         $I->sendPOST(
@@ -140,7 +143,10 @@ class GuestCartsRestApiCest
      */
     public function requestCreateGuestCartWithoutQuantity(CartsApiTester $I): void
     {
-        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS2);
+        $I->haveHttpHeader(
+            CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
+            $this->fixtures->getValueForAnonymousCustomerReference2()
+        );
 
         // Act
         $I->sendPOST(
@@ -170,7 +176,10 @@ class GuestCartsRestApiCest
     public function requestFindGuestCart(CartsApiTester $I): void
     {
         // Arrange
-        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS2);
+        $I->haveHttpHeader(
+            CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
+            $this->fixtures->getValueForAnonymousCustomerReference2()
+        );
 
         // Act
         $I->sendGET(CartsRestApiConfig::RESOURCE_GUEST_CARTS);
@@ -189,7 +198,10 @@ class GuestCartsRestApiCest
     public function requestFindGuestCartWithItemRelationship(CartsApiTester $I): void
     {
         // Arrange
-        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS2);
+        $I->haveHttpHeader(
+            CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
+            $this->fixtures->getValueForAnonymousCustomerReference2()
+        );
 
         // Act
         $I->sendGET(
@@ -255,7 +267,10 @@ class GuestCartsRestApiCest
     public function requestUpdateGuestCart(CartsApiTester $I): void
     {
         // Arrange
-        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS3);
+        $I->haveHttpHeader(
+            CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
+            $this->fixtures->getValueForAnonymousCustomerReference3()
+        );
 
         // Act
         $I->sendPATCH(
@@ -292,7 +307,10 @@ class GuestCartsRestApiCest
     public function requestUpdatePriceModeOfNonEmptyGuestCart(CartsApiTester $I): void
     {
         // Arrange
-        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS2);
+        $I->haveHttpHeader(
+            CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
+            $this->fixtures->getValueForAnonymousCustomerReference2()
+        );
 
         // Act
         $I->sendPATCH(
@@ -329,7 +347,10 @@ class GuestCartsRestApiCest
     public function requestUpdateGuestCartWithoutGuestCartUuid(CartsApiTester $I): void
     {
         // Arrange
-        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS2);
+        $I->haveHttpHeader(
+            CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
+            $this->fixtures->getValueForAnonymousCustomerReference2()
+        );
 
         // Act
         $I->sendPATCH(
@@ -396,7 +417,10 @@ class GuestCartsRestApiCest
     public function requestAddItemsToGuestCart(CartsApiTester $I): void
     {
         // Arrange
-        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS2);
+        $I->haveHttpHeader(
+            CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
+            $this->fixtures->getValueForAnonymousCustomerReference2()
+        );
 
         // Act
         $I->sendPOST(
@@ -472,7 +496,10 @@ class GuestCartsRestApiCest
     public function requestAddItemsToGuestCartWithoutItemSku(CartsApiTester $I): void
     {
         // Arrange
-        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS2);
+        $I->haveHttpHeader(
+            CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
+            $this->fixtures->getValueForAnonymousCustomerReference2()
+        );
 
         // Act
         $I->sendPOST(
@@ -509,7 +536,10 @@ class GuestCartsRestApiCest
     public function requestAddItemsToGuestCartWithoutItemQuantity(CartsApiTester $I): void
     {
         // Arrange
-        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS2);
+        $I->haveHttpHeader(
+            CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
+            $this->fixtures->getValueForAnonymousCustomerReference2()
+        );
 
         // Act
         $I->sendPOST(
@@ -545,7 +575,10 @@ class GuestCartsRestApiCest
     public function requestUpdateItemsInGuestCart(CartsApiTester $I): void
     {
         // Arrange
-        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS2);
+        $I->haveHttpHeader(
+            CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
+            $this->fixtures->getValueForAnonymousCustomerReference2()
+        );
 
         // Act
         $I->sendPATCH(
@@ -592,7 +625,10 @@ class GuestCartsRestApiCest
     public function requestUpdateItemsInGuestCartWithoutGuestCartUuid(CartsApiTester $I): void
     {
         // Arrange
-        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS2);
+        $I->haveHttpHeader(
+            CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
+            $this->fixtures->getValueForAnonymousCustomerReference2()
+        );
 
         // Act
         $I->sendPATCH(
@@ -664,7 +700,10 @@ class GuestCartsRestApiCest
     public function requestUpdateItemsInGuestCartWithoutQuantity(CartsApiTester $I): void
     {
         // Arrange
-        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS2);
+        $I->haveHttpHeader(
+            CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
+            $this->fixtures->getValueForAnonymousCustomerReference2()
+        );
 
         // Act
         $I->sendPATCH(
@@ -700,7 +739,10 @@ class GuestCartsRestApiCest
     public function requestUpdateItemsInGuestCartWithoutItemSku(CartsApiTester $I): void
     {
         // Arrange
-        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS2);
+        $I->haveHttpHeader(
+            CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
+            $this->fixtures->getValueForAnonymousCustomerReference2()
+        );
 
         // Act
         $I->sendPATCH(
@@ -737,7 +779,10 @@ class GuestCartsRestApiCest
     public function requestDeleteItemsFromGuestCart(CartsApiTester $I): void
     {
         // Arrange
-        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS2);
+        $I->haveHttpHeader(
+            CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
+            $this->fixtures->getValueForAnonymousCustomerReference2()
+        );
 
         // Act
         $I->sendDelete(
@@ -766,7 +811,10 @@ class GuestCartsRestApiCest
     public function requestDeleteItemsFromGuestCartWithoutGuestCartUuid(CartsApiTester $I): void
     {
         // Arrange
-        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS2);
+        $I->haveHttpHeader(
+            CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
+            $this->fixtures->getValueForAnonymousCustomerReference2()
+        );
 
         // Act
         $I->sendDelete(
@@ -822,7 +870,10 @@ class GuestCartsRestApiCest
     public function requestDeleteItemsFromGuestCartWithoutItemSku(CartsApiTester $I): void
     {
         // Arrange
-        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', $I::VALUE_FOR_ANONYMOUS2);
+        $I->haveHttpHeader(
+            CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
+            $this->fixtures->getValueForAnonymousCustomerReference2()
+        );
 
         // Act
         $I->sendDelete(
