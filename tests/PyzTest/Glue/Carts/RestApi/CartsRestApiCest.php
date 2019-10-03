@@ -67,7 +67,7 @@ class CartsRestApiCest
             ]
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::CREATED);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
@@ -102,7 +102,7 @@ class CartsRestApiCest
             ]
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
@@ -135,7 +135,7 @@ class CartsRestApiCest
             ]
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
@@ -168,7 +168,7 @@ class CartsRestApiCest
             ]
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
@@ -187,16 +187,9 @@ class CartsRestApiCest
         $this->authorizeCustomer($I);
 
         // Act
-        $I->sendGET(
-            $I->formatUrl(
-                '{resourceCarts}',
-                [
-                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                ]
-            )
-        );
+        $I->sendGET(CartsRestApiConfig::RESOURCE_CARTS);
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::OK);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
@@ -226,7 +219,7 @@ class CartsRestApiCest
             )
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::OK);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
@@ -255,9 +248,10 @@ class CartsRestApiCest
             )
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
         $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -280,8 +274,9 @@ class CartsRestApiCest
             )
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -299,26 +294,33 @@ class CartsRestApiCest
         // Act
         $I->sendGET(
             $I->formatUrl(
-                '{resourceCarts}/{cartUuid}?include=items',
+                '{resourceCarts}/{cartUuid}?include={items}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
                     'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                    CartsRestApiConfig::RESOURCE_CART_ITEMS => CartsRestApiConfig::RESOURCE_CART_ITEMS,
                 ]
             )
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::OK);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
 
         $I->amSure('Returned resource has include of type items')
             ->whenI()
-            ->seeSingleResourceHasRelationshipByTypeAndId('items', $this->fixtures->getProductConcreteTransfer1()->getSku());
+            ->seeSingleResourceHasRelationshipByTypeAndId(
+                CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                $this->fixtures->getProductConcreteTransfer1()->getSku()
+            );
 
         $I->amSure('Returned resource has include of type items')
             ->whenI()
-            ->seeIncludesContainsResourceByTypeAndId('items', $this->fixtures->getProductConcreteTransfer1()->getSku());
+            ->seeIncludesContainsResourceByTypeAndId(
+                CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                $this->fixtures->getProductConcreteTransfer1()->getSku()
+            );
     }
 
     /**
@@ -333,8 +335,7 @@ class CartsRestApiCest
         // Arrange
         $this->authorizeCustomer($I);
         $emptyQuoteTransfer = $this->fixtures->getEmptyQuoteTransfer();
-        $cartUuid = $emptyQuoteTransfer->getUuid();
-        $entityTag = $I->haveEntityTag(CartsRestApiConfig::RESOURCE_CARTS, $cartUuid, $emptyQuoteTransfer->toArray());
+        $entityTag = $I->findResourceEntityTag(CartsRestApiConfig::RESOURCE_CARTS, $emptyQuoteTransfer->getUuid());
         $I->haveHttpHeader('If-Match', $entityTag);
 
         // Act
@@ -343,7 +344,7 @@ class CartsRestApiCest
                 '{resourceCarts}/{cartUuid}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $cartUuid,
+                    'cartUuid' => $emptyQuoteTransfer->getUuid(),
                 ]
             ),
             [
@@ -358,7 +359,7 @@ class CartsRestApiCest
             ]
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::OK);
         $I->seeResponseIsJson();
     }
@@ -376,8 +377,7 @@ class CartsRestApiCest
         $this->authorizeCustomer($I);
         $quoteTransfer = $this->fixtures->getQuoteTransfer();
         $cartUuid = $quoteTransfer->getUuid();
-        $entityTag = $I->findResourceEntityTag(CartsRestApiConfig::RESOURCE_CARTS, $cartUuid);
-
+        $entityTag = $I->findResourceEntityTag(CartsRestApiConfig::RESOURCE_CARTS, $quoteTransfer->getUuid());
         $I->haveHttpHeader('If-Match', $entityTag);
 
         // Act
@@ -401,7 +401,7 @@ class CartsRestApiCest
             ]
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
         $I->seeResponseIsJson();
     }
@@ -417,10 +417,7 @@ class CartsRestApiCest
     {
         // Arrange
         $this->authorizeCustomer($I);
-        $entityTag = $I->findResourceEntityTag(
-            CartsRestApiConfig::RESOURCE_CARTS,
-            $this->fixtures->getEmptyQuoteTransfer()->getUuid()
-        );
+        $entityTag = $I->findResourceEntityTag(CartsRestApiConfig::RESOURCE_CARTS, $this->fixtures->getQuoteTransfer()->getUuid());
         $I->haveHttpHeader('If-Match', $entityTag);
 
         // Act
@@ -438,7 +435,7 @@ class CartsRestApiCest
             ]
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
         $I->seeResponseIsJson();
     }
@@ -473,7 +470,7 @@ class CartsRestApiCest
             ]
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
@@ -512,14 +509,14 @@ class CartsRestApiCest
             ]
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::CREATED);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
 
         $I->amSure('Returned resource is of type carts')
             ->whenI()
-            ->seeResponseDataContainsSingleResourceOfType('carts');
+            ->seeResponseDataContainsSingleResourceOfType(CartsRestApiConfig::RESOURCE_CARTS);
     }
 
     /**
@@ -552,7 +549,7 @@ class CartsRestApiCest
             ]
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
@@ -590,7 +587,7 @@ class CartsRestApiCest
             ]
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
@@ -628,7 +625,7 @@ class CartsRestApiCest
             ]
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
@@ -667,14 +664,14 @@ class CartsRestApiCest
             ]
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::OK);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
 
         $I->amSure('Returned resource is of type carts')
             ->whenI()
-            ->seeResponseDataContainsSingleResourceOfType('carts');
+            ->seeResponseDataContainsSingleResourceOfType(CartsRestApiConfig::RESOURCE_CARTS);
 
         $I->seeCartItemQuantityEqualsToQuantityInRequest(
             $I::QUANTITY_FOR_ITEM_UPDATE,
@@ -715,7 +712,7 @@ class CartsRestApiCest
             ]
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
@@ -751,7 +748,7 @@ class CartsRestApiCest
             ]
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
@@ -789,7 +786,7 @@ class CartsRestApiCest
             ]
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
         $I->seeResponseIsJson();
     }
@@ -809,7 +806,7 @@ class CartsRestApiCest
         // Act
         $I->sendPATCH(
             $I->formatUrl(
-                '{resourceCarts}/{cartUuid}/{resourceCartItems}/',
+                '{resourceCarts}/{cartUuid}/{resourceCartItems}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
                     'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
@@ -826,7 +823,7 @@ class CartsRestApiCest
             ]
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
         $I->seeResponseIsJson();
     }
@@ -856,7 +853,7 @@ class CartsRestApiCest
             )
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::NO_CONTENT);
     }
 
@@ -884,7 +881,7 @@ class CartsRestApiCest
             )
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
         $I->seeResponseIsJson();
     }
@@ -911,7 +908,7 @@ class CartsRestApiCest
             )
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
         $I->seeResponseIsJson();
     }
@@ -931,7 +928,7 @@ class CartsRestApiCest
         // Act
         $I->sendDelete(
             $I->formatUrl(
-                '{resourceCarts}/{cartUuid}/{resourceCartItems}/',
+                '{resourceCarts}/{cartUuid}/{resourceCartItems}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
                     'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
@@ -940,7 +937,7 @@ class CartsRestApiCest
             )
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
         $I->seeResponseIsJson();
     }
@@ -968,7 +965,7 @@ class CartsRestApiCest
             )
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::NO_CONTENT);
     }
 
@@ -987,14 +984,14 @@ class CartsRestApiCest
         // Act
         $I->sendDelete(
             $I->formatUrl(
-                '{resourceCarts}/',
+                '{resourceCarts}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
                 ]
             )
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
     }
 
@@ -1018,7 +1015,7 @@ class CartsRestApiCest
             )
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
     }
 

@@ -17,6 +17,7 @@ use Generated\Shared\Transfer\StockProductTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
 use PyzTest\Glue\Carts\CartsApiTester;
+use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
