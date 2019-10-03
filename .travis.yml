@@ -234,6 +234,7 @@ services:
 sudo: required
 
 before_install:
+  - phpenv config-add config/Shared/ci/travis/travis.php.ini
   - if [[ $VALIDATION != 1 && $ON_EVENTS != *$TRAVIS_EVENT_TYPE* ]] ; then exit ; fi
   - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - phpenv config-rm xdebug.ini
@@ -289,6 +290,8 @@ script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpstan analyze -c phpstan.neon -l 5 src/ ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:phpstan -m Spryker.all ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:phpstan -m SprykerShop.all ; fi
+
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console dev:composer:replace -d -v ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:propel:validate-abstract ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:schema:validate ; fi
