@@ -19,4 +19,15 @@ class StockDataImportConfig extends SprykerStockDataImportConfig
     {
         return $this->buildImporterConfiguration('warehouse.csv', static::IMPORT_TYPE_STOCK);
     }
+
+    /**
+     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
+     */
+    public function getStockStoreDataImporterConfiguration(): DataImporterConfigurationTransfer
+    {
+        return $this->buildImporterConfiguration(
+            'warehouse_store.csv',
+            static::IMPORT_TYPE_STOCK_STORE
+        );
+    }
 }
