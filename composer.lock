@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0ee3416d99a3151288dd05e40b629e37",
+    "content-hash": "3f9355b708073c0dcc2e489a5c45f3c0",
     "packages": [
         {
             "name": "monolog/monolog",
@@ -557,7 +557,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "99550147f75a25623aa9b34ec614e190522b1973"
+                "reference": "1fd51d606594ee25fa81765cada4607829e48466"
             },
             "require": {
                 "php": ">=7.1"
@@ -1134,7 +1134,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-02T14:03:50+00:00"
+            "time": "2019-10-03T11:46:08+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -8242,8 +8242,14 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@github.com:spryker-sdk/composer-constrainer.git",
+                "url": "https://github.com/spryker-sdk/composer-constrainer.git",
                 "reference": "f76c8762c29995043be6fc7873830a9ec1619296"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-sdk/composer-constrainer/zipball/f76c8762c29995043be6fc7873830a9ec1619296",
+                "reference": "f76c8762c29995043be6fc7873830a9ec1619296",
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
@@ -8268,19 +8274,7 @@
                     "SprykerSdk\\": "src/SprykerSdk/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "SprykerSdkTest\\": "tests/SprykerSdkTest/"
-                }
-            },
-            "scripts": {
-                "cs-check": [
-                    "phpcs --colors -v -p -s --extensions=php --standard=vendor/spryker/code-sniffer/SprykerStrict src/ tests/"
-                ],
-                "cs-fix": [
-                    "phpcbf --colors -v --extensions=php --standard=vendor/spryker/code-sniffer/SprykerStrict src/ tests/"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
@@ -8292,8 +8286,14 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@github.com:spryker-sdk/composer-replace.git",
-                "reference": "02dbc7efa77b0dbe1a56665de04cf666f8f3af21"
+                "url": "https://github.com/spryker-sdk/composer-replace.git",
+                "reference": "b55a8adc15b2afab8368ff26871f75750221d320"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-sdk/composer-replace/zipball/b55a8adc15b2afab8368ff26871f75750221d320",
+                "reference": "b55a8adc15b2afab8368ff26871f75750221d320",
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
@@ -8310,21 +8310,12 @@
                     "SprykerSdk\\": "src/SprykerSdk/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "SprykerSdkTest\\": "tests/SprykerSdkTest/"
-                }
-            },
-            "scripts": {
-                "cs-check": [
-                    "phpcs --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml -p src/ tests/"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "ComposerReplace module",
-            "time": "2019-10-02T14:03:41+00:00"
+            "time": "2019-10-02T14:49:02+00:00"
         },
         {
             "name": "spryker-sdk/phpstan-spryker",
@@ -8596,17 +8587,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "90b017c43578391b3b7deec7e87b69f1f788e52f"
+                "reference": "76d3716be3fce5e3652c0479a0ce4d46f5f9bad7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/90b017c43578391b3b7deec7e87b69f1f788e52f",
-                "reference": "90b017c43578391b3b7deec7e87b69f1f788e52f",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/76d3716be3fce5e3652c0479a0ce4d46f5f9bad7",
+                "reference": "76d3716be3fce5e3652c0479a0ce4d46f5f9bad7",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "slevomat/coding-standard": "^4.8.3 || ^5.0.2"
+                "slevomat/coding-standard": "^4.8.7 || ^5.0.4",
+                "squizlabs/php_codesniffer": "^3.5.0"
             },
             "require-dev": {
                 "dereuromark/composer-prefer-lowest": "^0.1.2",
@@ -8641,7 +8633,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-10-02T08:49:58+00:00"
+            "time": "2019-10-02T15:41:05+00:00"
         },
         {
             "name": "spryker/development-core",
