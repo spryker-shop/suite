@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1c66076364d4532a4657eff24c29e6ad",
+    "content-hash": "3f9355b708073c0dcc2e489a5c45f3c0",
     "packages": [
         {
             "name": "monolog/monolog",
@@ -135,18 +135,18 @@
                 },
                 {
                     "name": "John Kelly",
-                    "role": "Maintainer",
-                    "email": "johnmkelly86@gmail.com"
+                    "email": "johnmkelly86@gmail.com",
+                    "role": "Maintainer"
                 },
                 {
                     "name": "Raúl Araya",
-                    "role": "Maintainer",
-                    "email": "nubeiro@gmail.com"
+                    "email": "nubeiro@gmail.com",
+                    "role": "Maintainer"
                 },
                 {
                     "name": "Luke Bakken",
-                    "role": "Maintainer",
-                    "email": "luke@bakken.io"
+                    "email": "luke@bakken.io",
+                    "role": "Maintainer"
                 }
             ],
             "description": "Formerly videlalvaro/php-amqplib.  This library is a pure PHP implementation of the AMQP protocol. It's been tested against RabbitMQ.",
@@ -553,11 +553,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/glue-7681/dev-convert-guest-cart-to-customer-cart-on-login",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "849ae8b857ecdd4182754d8acb08e490c5e35d58"
+                "reference": "1fd51d606594ee25fa81765cada4607829e48466"
             },
             "require": {
                 "php": ">=7.1"
@@ -1134,7 +1134,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-03T11:37:59+00:00"
+            "time": "2019-10-03T11:46:08+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5123,8 +5123,8 @@
             "authors": [
                 {
                     "name": "Frank Kleine",
-                    "role": "Developer",
-                    "homepage": "http://frankkleine.de/"
+                    "homepage": "http://frankkleine.de/",
+                    "role": "Developer"
                 }
             ],
             "description": "Virtual file system to mock the real file system in unit tests.",
@@ -7009,7 +7009,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -8242,8 +8242,14 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@github.com:spryker-sdk/composer-constrainer.git",
+                "url": "https://github.com/spryker-sdk/composer-constrainer.git",
                 "reference": "f76c8762c29995043be6fc7873830a9ec1619296"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-sdk/composer-constrainer/zipball/f76c8762c29995043be6fc7873830a9ec1619296",
+                "reference": "f76c8762c29995043be6fc7873830a9ec1619296",
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
@@ -8268,19 +8274,7 @@
                     "SprykerSdk\\": "src/SprykerSdk/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "SprykerSdkTest\\": "tests/SprykerSdkTest/"
-                }
-            },
-            "scripts": {
-                "cs-check": [
-                    "phpcs --colors -v -p -s --extensions=php --standard=vendor/spryker/code-sniffer/SprykerStrict src/ tests/"
-                ],
-                "cs-fix": [
-                    "phpcbf --colors -v --extensions=php --standard=vendor/spryker/code-sniffer/SprykerStrict src/ tests/"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
@@ -8593,17 +8587,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "90b017c43578391b3b7deec7e87b69f1f788e52f"
+                "reference": "76d3716be3fce5e3652c0479a0ce4d46f5f9bad7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/90b017c43578391b3b7deec7e87b69f1f788e52f",
-                "reference": "90b017c43578391b3b7deec7e87b69f1f788e52f",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/76d3716be3fce5e3652c0479a0ce4d46f5f9bad7",
+                "reference": "76d3716be3fce5e3652c0479a0ce4d46f5f9bad7",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "slevomat/coding-standard": "^4.8.3 || ^5.0.2"
+                "slevomat/coding-standard": "^4.8.7 || ^5.0.4",
+                "squizlabs/php_codesniffer": "^3.5.0"
             },
             "require-dev": {
                 "dereuromark/composer-prefer-lowest": "^0.1.2",
@@ -8638,7 +8633,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-10-02T08:49:58+00:00"
+            "time": "2019-10-02T15:41:05+00:00"
         },
         {
             "name": "spryker/development-core",
@@ -10774,8 +10769,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
