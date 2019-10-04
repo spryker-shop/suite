@@ -5400,7 +5400,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "d9205702ca33f7cf43ed2dee54961cbcf02e7cef"
+                "reference": "b8b9b56fd567b4d36c08c3421c06eaeee350977e"
             },
             "require": {
                 "php": ">=7.1"
@@ -5977,7 +5977,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-03T06:01:16+00:00"
+            "time": "2019-10-04T14:18:40+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -10362,6 +10362,12 @@
                 "url": "https://github.com/spryker-sdk/composer-constrainer.git",
                 "reference": "f76c8762c29995043be6fc7873830a9ec1619296"
             },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-sdk/composer-constrainer/zipball/f76c8762c29995043be6fc7873830a9ec1619296",
+                "reference": "f76c8762c29995043be6fc7873830a9ec1619296",
+                "shasum": ""
+            },
             "require": {
                 "php": ">=7.1",
                 "spryker/kernel": "^3.33.0",
@@ -10385,19 +10391,7 @@
                     "SprykerSdk\\": "src/SprykerSdk/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "SprykerSdkTest\\": "tests/SprykerSdkTest/"
-                }
-            },
-            "scripts": {
-                "cs-check": [
-                    "phpcs --colors -v -p -s --extensions=php --standard=vendor/spryker/code-sniffer/SprykerStrict src/ tests/"
-                ],
-                "cs-fix": [
-                    "phpcbf --colors -v --extensions=php --standard=vendor/spryker/code-sniffer/SprykerStrict src/ tests/"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
