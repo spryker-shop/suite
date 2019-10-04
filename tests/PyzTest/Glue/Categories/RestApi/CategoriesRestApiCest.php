@@ -11,6 +11,7 @@ use PyzTest\Glue\Categories\CategoriesRestApiTester;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Glue
  * @group Categories
