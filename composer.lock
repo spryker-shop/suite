@@ -12068,22 +12068,22 @@
         },
         {
             "name": "spryker/cms-content-widget-product-connector",
-            "version": "1.0.4",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cms-content-widget-product-connector.git",
-                "reference": "e05f35a4902c90ac9f246246b332aa61a492e684"
+                "reference": "86f7956310d3e5c54fc9e8c8a00db0bedcf1e751"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-content-widget-product-connector/zipball/e05f35a4902c90ac9f246246b332aa61a492e684",
-                "reference": "e05f35a4902c90ac9f246246b332aa61a492e684",
+                "url": "https://api.github.com/repos/spryker/cms-content-widget-product-connector/zipball/86f7956310d3e5c54fc9e8c8a00db0bedcf1e751",
+                "reference": "86f7956310d3e5c54fc9e8c8a00db0bedcf1e751",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/cms-content-widget": "^1.0.0",
-                "spryker/kernel": "^3.0.0",
+                "spryker/kernel": "^3.30.0",
                 "spryker/product": "^5.0.0 || ^6.0.0",
                 "spryker/propel-orm": "^1.0.0"
             },
@@ -12112,31 +12112,29 @@
                 "proprietary"
             ],
             "description": "CmsContentWidgetProductConnector module",
-            "time": "2019-03-22T06:59:01+00:00"
+            "time": "2019-10-04T10:57:24+00:00"
         },
         {
             "name": "spryker/cms-content-widget-product-group-connector",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/CmsContentWidgetProductGroupConnector.git",
-                "reference": "7016123ac7906a40b84ba28a12d463eb9962397f"
+                "url": "https://github.com/spryker/cms-content-widget-product-group-connector.git",
+                "reference": "5bb563d6e33228e4b029bfdf13eacf77dc20d699"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/CmsContentWidgetProductGroupConnector/zipball/7016123ac7906a40b84ba28a12d463eb9962397f",
-                "reference": "7016123ac7906a40b84ba28a12d463eb9962397f",
+                "url": "https://api.github.com/repos/spryker/cms-content-widget-product-group-connector/zipball/5bb563d6e33228e4b029bfdf13eacf77dc20d699",
+                "reference": "5bb563d6e33228e4b029bfdf13eacf77dc20d699",
                 "shasum": ""
             },
             "require": {
+                "php": ">=7.1",
                 "spryker/cms-content-widget": "^1.0.0",
-                "spryker/kernel": "^3.0.0"
+                "spryker/kernel": "^3.30.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
-                "spryker/propel": "*",
-                "spryker/propel-orm": "^1.0.0",
-                "spryker/silex": "*",
                 "spryker/testify": "*"
             },
             "type": "library",
@@ -12146,8 +12144,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Spryker": "src/"
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -12155,26 +12153,26 @@
                 "proprietary"
             ],
             "description": "CmsContentWidgetProductGroupConnector module",
-            "time": "2017-07-11T09:55:44+00:00"
+            "time": "2019-09-25T11:02:16+00:00"
         },
         {
             "name": "spryker/cms-content-widget-product-set-connector",
-            "version": "1.0.4",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cms-content-widget-product-set-connector.git",
-                "reference": "39ee66a1ee0583f44895fab95ba0a82193f8f58c"
+                "reference": "364958872dbe2a36ada6c327b1b8176af5a1629b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-content-widget-product-set-connector/zipball/39ee66a1ee0583f44895fab95ba0a82193f8f58c",
-                "reference": "39ee66a1ee0583f44895fab95ba0a82193f8f58c",
+                "url": "https://api.github.com/repos/spryker/cms-content-widget-product-set-connector/zipball/364958872dbe2a36ada6c327b1b8176af5a1629b",
+                "reference": "364958872dbe2a36ada6c327b1b8176af5a1629b",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/cms-content-widget": "^1.0.0",
-                "spryker/kernel": "^3.0.0",
+                "spryker/kernel": "^3.30.0",
                 "spryker/product": "^5.0.0 || ^6.0.0",
                 "spryker/product-set": "^1.0.0",
                 "spryker/propel-orm": "^1.0.0"
@@ -12204,7 +12202,7 @@
                 "proprietary"
             ],
             "description": "CmsContentWidgetProductSetConnector module",
-            "time": "2019-03-22T06:59:01+00:00"
+            "time": "2019-10-04T10:57:24+00:00"
         },
         {
             "name": "spryker/cms-extension",
