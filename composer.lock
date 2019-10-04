@@ -33632,6 +33632,9 @@
                 }
             },
             "autoload": {
+                "files": [
+                    "src/functions_include.php"
+                ],
                 "psr-4": {
                     "Spryker\\": "src/Spryker/"
                 }
@@ -34205,6 +34208,7 @@
                     "dev-master": "1.0.x-dev"
                 }
             },
+            "type": "custom-installer",
             "autoload": {
                 "psr-4": {
                     "Spryker\\": "src/Spryker/"
@@ -34336,6 +34340,9 @@
                 "spryker/code-sniffer": "*",
                 "spryker/testify": "*"
             },
+            "bin": [
+                "bin/validate-json"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -34539,6 +34546,11 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
@@ -34580,7 +34592,9 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "BSD-3-Clause",
+                "GPL-2.0",
+                "GPL-3.0"
             ],
             "authors": [
                 {
@@ -34707,7 +34721,9 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "BSD-3-Clause",
+                "GPL-2.0",
+                "GPL-3.0"
             ],
             "authors": [
                 {
@@ -34838,7 +34854,9 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "BSD-3-Clause",
+                "GPL-2.0",
+                "GPL-3.0"
             ],
             "authors": [
                 {
@@ -34892,6 +34910,9 @@
                 "symfony/dependency-injection": "",
                 "symfony/http-kernel": ""
             },
+            "bin": [
+                "bin/php-parse"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -34908,7 +34929,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "BSD-3-Clause"
             ],
             "authors": [
                 {
@@ -34945,10 +34966,11 @@
                 "psr/event-dispatcher": "",
                 "symfony/event-dispatcher-implementation": ""
             },
-            "type": "library",
+            "type": "composer-plugin",
             "extra": {
+                "class": "PackageVersions\\Installer",
                 "branch-alias": {
-                    "dev-master": "1.1-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -35000,6 +35022,9 @@
                 "php": "^7.1.3",
                 "symfony/polyfill-ctype": "~1.8"
             },
+            "bin": [
+                "src/bin/pdepend"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -35063,9 +35088,14 @@
                     "/Tests/"
                 ]
             },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "BSD-3-Clause"
             ],
             "authors": [
                 {
@@ -35394,6 +35424,9 @@
             "suggest": {
                 "ext-intl": "to use the component with locales other than \"en\""
             },
+            "bin": [
+                "src/bin/phpmd"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -35413,7 +35446,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "BSD-3-Clause"
             ],
             "authors": [
                 {
@@ -35578,6 +35611,9 @@
             "suggest": {
                 "ext-ctype": "For best performance"
             },
+            "bin": [
+                "bin/phpstan"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -36230,6 +36266,9 @@
                 "symfony/property-info": "To deserialize relations.",
                 "symfony/yaml": "For using the default YAML mapping loader."
             },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7 || ^6.0"
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -36354,7 +36393,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "BSD-3-Clause"
             ],
             "authors": [
                 {
@@ -36430,7 +36469,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "BSD-3-Clause"
             ],
             "authors": [
                 {
@@ -36479,7 +36518,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "BSD-3-Clause"
             ],
             "authors": [
                 {
@@ -36588,7 +36627,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "BSD-3-Clause"
             ],
             "authors": [
                 {
@@ -36758,7 +36797,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "BSD-3-Clause"
             ],
             "authors": [
                 {
@@ -37129,6 +37168,9 @@
                 "zendframework/zend-i18n": "^2.7.4; install if you want to use the Translator processor",
                 "zendframework/zend-servicemanager": "^2.7.8 || ^3.3; if you need an extensible plugin manager for use with the Config Factory"
             },
+            "bin": [
+                "security-checker"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -37143,7 +37185,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "MIT"
             ],
             "description": "provides a nested object property based user interface for accessing this configuration data within application code",
             "keywords": [
@@ -37201,6 +37243,7 @@
                     "config-provider": "Zend\\Filter\\ConfigProvider"
                 }
             },
+            "type": "phpcodesniffer-standard",
             "autoload": {
                 "psr-4": {
                     "Zend\\Filter\\": "src/"
@@ -37546,6 +37589,11 @@
                 "codeception/phpunit-wrapper": ">6.0.15 <6.1.0 | ^6.6.1 | ^7.7.1 | ^8.0.3"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Codeception\\": "src/"
@@ -37642,6 +37690,9 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "src/"
+            ],
             "license": [
                 "MIT"
             ],
@@ -37755,6 +37806,10 @@
                     "dev-community": "1.5-dev"
                 }
             },
+            "bin": [
+                "bin/tokenize"
+            ],
+            "type": "phpcodesniffer-standard",
             "autoload": {
                 "psr-4": {
                     "Facebook\\WebDriver\\": "lib/"
@@ -37806,7 +37861,6 @@
                     "PhantomInstaller\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
