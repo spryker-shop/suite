@@ -2155,9 +2155,9 @@
             "authors": [
                 {
                     "name": "Ignace Nyamagana Butera",
-                    "role": "Developer",
                     "email": "nyamsprod@gmail.com",
-                    "homepage": "https://github.com/nyamsprod/"
+                    "homepage": "https://github.com/nyamsprod/",
+                    "role": "Developer"
                 }
             ],
             "description": "Csv data manipulation made easy in PHP",
@@ -5400,7 +5400,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "f00938bd67e29b38800dd877ff476c0876c51ce8"
+                "reference": "3ed2f6f8c3772abd866c1ba31bf253d5df01f21a"
             },
             "require": {
                 "php": ">=7.1"
@@ -5977,7 +5977,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-04T09:06:20+00:00"
+            "time": "2019-10-04T12:48:20+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5985,7 +5985,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "cca396e8120fd0f7060b3090998af8111a142599"
+                "reference": "8c4e5086dd50e31e78a3e971494a5dc50cb948bf"
             },
             "require": {
                 "php": ">=7.1"
@@ -6119,7 +6119,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-10-04T09:04:32+00:00"
+            "time": "2019-10-04T09:44:07+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -10362,6 +10362,12 @@
                 "url": "https://github.com/spryker-sdk/composer-constrainer.git",
                 "reference": "f76c8762c29995043be6fc7873830a9ec1619296"
             },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-sdk/composer-constrainer/zipball/f76c8762c29995043be6fc7873830a9ec1619296",
+                "reference": "f76c8762c29995043be6fc7873830a9ec1619296",
+                "shasum": ""
+            },
             "require": {
                 "php": ">=7.1",
                 "spryker/kernel": "^3.33.0",
@@ -10385,19 +10391,7 @@
                     "SprykerSdk\\": "src/SprykerSdk/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "SprykerSdkTest\\": "tests/SprykerSdkTest/"
-                }
-            },
-            "scripts": {
-                "cs-check": [
-                    "phpcs --colors -v -p -s --extensions=php --standard=vendor/spryker/code-sniffer/SprykerStrict src/ tests/"
-                ],
-                "cs-fix": [
-                    "phpcbf --colors -v --extensions=php --standard=vendor/spryker/code-sniffer/SprykerStrict src/ tests/"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
@@ -10713,17 +10707,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "90b017c43578391b3b7deec7e87b69f1f788e52f"
+                "reference": "76d3716be3fce5e3652c0479a0ce4d46f5f9bad7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/90b017c43578391b3b7deec7e87b69f1f788e52f",
-                "reference": "90b017c43578391b3b7deec7e87b69f1f788e52f",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/76d3716be3fce5e3652c0479a0ce4d46f5f9bad7",
+                "reference": "76d3716be3fce5e3652c0479a0ce4d46f5f9bad7",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "slevomat/coding-standard": "^4.8.3 || ^5.0.2"
+                "slevomat/coding-standard": "^4.8.7 || ^5.0.4",
+                "squizlabs/php_codesniffer": "^3.5.0"
             },
             "require-dev": {
                 "dereuromark/composer-prefer-lowest": "^0.1.2",
@@ -10758,7 +10753,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-10-02T08:49:58+00:00"
+            "time": "2019-10-02T15:41:05+00:00"
         },
         {
             "name": "spryker/development-core",
