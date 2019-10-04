@@ -1002,8 +1002,8 @@
             "authors": [
                 {
                     "name": "Luís Otávio Cobucci Oblonczyk",
-                    "role": "Developer",
-                    "email": "lcobucci@gmail.com"
+                    "email": "lcobucci@gmail.com",
+                    "role": "Developer"
                 }
             ],
             "description": "A simple library to work with JSON Web Token and JSON Web Signature",
@@ -1015,16 +1015,16 @@
         },
         {
             "name": "league/csv",
-            "version": "9.3.0",
+            "version": "9.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/csv.git",
-                "reference": "d16f85d1f958a765844db4bc7174017edf2dd637"
+                "reference": "e7225b6cc853942caef1c9c4d8889b716c34bc04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/csv/zipball/d16f85d1f958a765844db4bc7174017edf2dd637",
-                "reference": "d16f85d1f958a765844db4bc7174017edf2dd637",
+                "url": "https://api.github.com/repos/thephpleague/csv/zipball/e7225b6cc853942caef1c9c4d8889b716c34bc04",
+                "reference": "e7225b6cc853942caef1c9c4d8889b716c34bc04",
                 "shasum": ""
             },
             "require": {
@@ -1080,7 +1080,7 @@
                 "read",
                 "write"
             ],
-            "time": "2019-07-30T14:39:11+00:00"
+            "time": "2019-10-02T18:32:54+00:00"
         },
         {
             "name": "league/event",
@@ -2391,12 +2391,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/decimal-object.git",
-                "reference": "d47d9ec24075ec6899e99057305699273052084b"
+                "reference": "475dc44b75812f3fcc093aeb42db01b0d8776469"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/decimal-object/zipball/d47d9ec24075ec6899e99057305699273052084b",
-                "reference": "d47d9ec24075ec6899e99057305699273052084b",
+                "url": "https://api.github.com/repos/spryker/decimal-object/zipball/475dc44b75812f3fcc093aeb42db01b0d8776469",
+                "reference": "475dc44b75812f3fcc093aeb42db01b0d8776469",
                 "shasum": ""
             },
             "require": {
@@ -2431,7 +2431,7 @@
                 }
             ],
             "description": "PHP decimal handling as value object",
-            "time": "2019-08-29T11:07:52+00:00"
+            "time": "2019-10-02T08:02:53+00:00"
         },
         {
             "name": "spryker/event-behavior",
@@ -2737,7 +2737,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "971b5c5009c0924afa3dd7095295cf4ae1832ef4"
+                "reference": "6d165734515b63875a0d29394b66230f76377c47"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -3007,7 +3007,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-03T07:35:28+00:00"
+            "time": "2019-10-04T09:59:02+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -3015,73 +3015,131 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "4106afa5cfa4fa98f3eaef2bf3327b129f22efe6"
+                "reference": "55b5890d3f3d46c0aff5d3ed32ce9bcc4cc37d03"
             },
             "require": {
                 "php": ">=7.1"
             },
             "replace": {
+                "spryker-shop/agent-page": "*",
+                "spryker-shop/agent-widget": "*",
+                "spryker-shop/availability-notification-page": "*",
+                "spryker-shop/availability-notification-widget": "*",
                 "spryker-shop/availability-widget": "*",
                 "spryker-shop/business-on-behalf-widget": "*",
                 "spryker-shop/calculation-page": "*",
+                "spryker-shop/cart-code-widget": "*",
+                "spryker-shop/cart-note-widget": "*",
                 "spryker-shop/cart-page": "*",
+                "spryker-shop/cart-to-shopping-list-widget": "*",
                 "spryker-shop/catalog-page": "*",
+                "spryker-shop/category-image-storage-widget": "*",
                 "spryker-shop/category-widget": "*",
+                "spryker-shop/chart-widget": "*",
                 "spryker-shop/checkout-page": "*",
+                "spryker-shop/checkout-page-extension": "*",
                 "spryker-shop/checkout-widget": "*",
                 "spryker-shop/cms-block-widget": "*",
+                "spryker-shop/cms-content-widget-chart-connector": "*",
                 "spryker-shop/cms-content-widget-product-connector": "*",
                 "spryker-shop/cms-content-widget-product-set-connector": "*",
                 "spryker-shop/cms-page": "*",
+                "spryker-shop/cms-search-page": "*",
+                "spryker-shop/comment-widget": "*",
+                "spryker-shop/comment-widget-extension": "*",
                 "spryker-shop/company-page": "*",
+                "spryker-shop/company-user-agent-widget": "*",
+                "spryker-shop/company-user-invitation-page": "*",
+                "spryker-shop/company-widget": "*",
+                "spryker-shop/configurable-bundle-widget": "*",
+                "spryker-shop/content-banner-widget": "*",
+                "spryker-shop/content-file-widget": "*",
+                "spryker-shop/content-product-set-widget": "*",
+                "spryker-shop/content-product-widget": "*",
                 "spryker-shop/currency-widget": "*",
                 "spryker-shop/customer-page": "*",
+                "spryker-shop/customer-page-extension": "*",
+                "spryker-shop/customer-reorder-widget": "*",
                 "spryker-shop/discount-promotion-widget": "*",
                 "spryker-shop/discount-widget": "*",
                 "spryker-shop/error-page": "*",
+                "spryker-shop/file-manager-widget": "*",
+                "spryker-shop/gift-card-widget": "*",
                 "spryker-shop/heartbeat-page": "*",
                 "spryker-shop/home-page": "*",
+                "spryker-shop/language-switcher-widget": "*",
                 "spryker-shop/money-widget": "*",
+                "spryker-shop/multi-cart-page": "*",
+                "spryker-shop/multi-cart-widget": "*",
                 "spryker-shop/navigation-widget": "*",
                 "spryker-shop/newsletter-page": "*",
                 "spryker-shop/newsletter-widget": "*",
+                "spryker-shop/persistent-cart-share-page": "*",
+                "spryker-shop/persistent-cart-share-widget": "*",
+                "spryker-shop/price-product-volume-widget": "*",
                 "spryker-shop/price-widget": "*",
+                "spryker-shop/product-alternative-widget": "*",
+                "spryker-shop/product-barcode-widget": "*",
                 "spryker-shop/product-bundle-widget": "*",
                 "spryker-shop/product-category-widget": "*",
                 "spryker-shop/product-detail-page": "*",
+                "spryker-shop/product-discontinued-widget": "*",
                 "spryker-shop/product-group-widget": "*",
                 "spryker-shop/product-image-widget": "*",
                 "spryker-shop/product-label-widget": "*",
+                "spryker-shop/product-measurement-unit-widget": "*",
                 "spryker-shop/product-new-page": "*",
                 "spryker-shop/product-option-widget": "*",
+                "spryker-shop/product-packaging-unit-widget": "*",
                 "spryker-shop/product-relation-widget": "*",
+                "spryker-shop/product-replacement-for-widget": "*",
                 "spryker-shop/product-review-widget": "*",
+                "spryker-shop/product-search-widget": "*",
                 "spryker-shop/product-set-detail-page": "*",
                 "spryker-shop/product-set-list-page": "*",
                 "spryker-shop/product-set-widget": "*",
                 "spryker-shop/product-widget": "*",
                 "spryker-shop/quick-order-page": "*",
+                "spryker-shop/quick-order-page-extension": "*",
+                "spryker-shop/quote-approval-widget": "*",
+                "spryker-shop/quote-request-agent-page": "*",
+                "spryker-shop/quote-request-agent-page-extension": "*",
+                "spryker-shop/quote-request-agent-widget": "*",
+                "spryker-shop/quote-request-page": "*",
+                "spryker-shop/quote-request-page-extension": "*",
+                "spryker-shop/quote-request-widget": "*",
                 "spryker-shop/redirect-page": "*",
+                "spryker-shop/resource-share-page": "*",
+                "spryker-shop/resource-share-page-extension": "*",
+                "spryker-shop/sales-configurable-bundle-widget": "*",
+                "spryker-shop/sales-order-threshold-widget": "*",
+                "spryker-shop/shared-cart-page": "*",
+                "spryker-shop/shared-cart-widget": "*",
                 "spryker-shop/shop-application": "*",
                 "spryker-shop/shop-application-extension": "*",
+                "spryker-shop/shop-cms-slot": "*",
                 "spryker-shop/shop-cms-slot-extension": "*",
-                "spryker-shop/shop-layout": "*",
+                "spryker-shop/shop-permission": "*",
                 "spryker-shop/shop-router": "*",
+                "spryker-shop/shop-router-extension": "*",
                 "spryker-shop/shop-translator": "*",
+                "spryker-shop/shop-ui": "*",
+                "spryker-shop/shopping-list-note-widget": "*",
+                "spryker-shop/shopping-list-page": "*",
+                "spryker-shop/shopping-list-page-extension": "*",
+                "spryker-shop/shopping-list-widget": "*",
+                "spryker-shop/storage-router": "*",
+                "spryker-shop/storage-router-extension": "*",
+                "spryker-shop/tabs-widget": "*",
+                "spryker-shop/tabs-widget-extension": "*",
                 "spryker-shop/web-profiler-widget": "*",
                 "spryker-shop/wishlist-page": "*",
                 "spryker-shop/wishlist-widget": "*"
             },
             "require-dev": {
-                "spryker/code-sniffer": "dev-master",
-                "spryker/spryker": "dev-master"
+                "spryker/code-sniffer": "dev-master"
             },
             "type": "library",
-            "autoload": {
-                "files": [
-                    "autoload.php"
-                ]
-            },
             "scripts": {
                 "cs-check": [
                     "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -p --ignore=/node_modules/ Bundles/"
@@ -3091,7 +3149,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-10-02T09:28:12+00:00"
+            "time": "2019-10-02T14:03:54+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -5870,9 +5928,9 @@
             "authors": [
                 {
                     "name": "Antonio J. García Lagar",
-                    "role": "developer",
                     "email": "aj@garcialagar.es",
-                    "homepage": "http://aj.garcialagar.es"
+                    "homepage": "http://aj.garcialagar.es",
+                    "role": "developer"
                 }
             ],
             "description": "Twig extension to set breakpoints",
@@ -6308,8 +6366,8 @@
             "authors": [
                 {
                     "name": "Alessio Linares",
-                    "role": "Software Engineer",
-                    "email": "alessio.linares@skyscanner.net"
+                    "email": "alessio.linares@skyscanner.net",
+                    "role": "Software Engineer"
                 }
             ],
             "description": "JSONPath implementation for querying and updating JSON objects",
@@ -7930,20 +7988,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
+                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler",
-                    "role": "Project Founder"
+                    "homepage": "https://github.com/manuelpichler"
                 },
                 {
                     "name": "Marc Würth",
+                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84",
-                    "role": "Project Maintainer"
+                    "homepage": "https://github.com/ravage84"
                 },
                 {
                     "name": "Other contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -7959,22 +8017,22 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.8.1",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "1927e75f4ed19131ec9bcc3b002e07fb1173ee76"
+                "reference": "f6811d96d97bdf400077a0cc100ae56aa32b9203"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/1927e75f4ed19131ec9bcc3b002e07fb1173ee76",
-                "reference": "1927e75f4ed19131ec9bcc3b002e07fb1173ee76",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/f6811d96d97bdf400077a0cc100ae56aa32b9203",
+                "reference": "f6811d96d97bdf400077a0cc100ae56aa32b9203",
                 "shasum": ""
             },
             "require": {
                 "doctrine/instantiator": "^1.0.2",
                 "php": "^5.3|^7.0",
-                "phpdocumentor/reflection-docblock": "^2.0|^3.0.2|^4.0",
+                "phpdocumentor/reflection-docblock": "^2.0|^3.0.2|^4.0|^5.0",
                 "sebastian/comparator": "^1.1|^2.0|^3.0",
                 "sebastian/recursion-context": "^1.0|^2.0|^3.0"
             },
@@ -8018,7 +8076,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2019-06-13T12:50:23+00:00"
+            "time": "2019-10-03T11:07:50+00:00"
         },
         {
             "name": "phpstan/phpdoc-parser",
@@ -9364,7 +9422,7 @@
             ],
             "authors": [
                 {
-                    "name": "Sullivan SENECHAL",
+                    "name": "Sullivan Sénéchal",
                     "email": "soullivaneuh@gmail.com"
                 }
             ],
@@ -9736,17 +9794,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "90b017c43578391b3b7deec7e87b69f1f788e52f"
+                "reference": "76d3716be3fce5e3652c0479a0ce4d46f5f9bad7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/90b017c43578391b3b7deec7e87b69f1f788e52f",
-                "reference": "90b017c43578391b3b7deec7e87b69f1f788e52f",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/76d3716be3fce5e3652c0479a0ce4d46f5f9bad7",
+                "reference": "76d3716be3fce5e3652c0479a0ce4d46f5f9bad7",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "slevomat/coding-standard": "^4.8.3 || ^5.0.2"
+                "slevomat/coding-standard": "^4.8.7 || ^5.0.4",
+                "squizlabs/php_codesniffer": "^3.5.0"
             },
             "require-dev": {
                 "dereuromark/composer-prefer-lowest": "^0.1.2",
@@ -9781,7 +9840,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-10-02T08:49:58+00:00"
+            "time": "2019-10-02T15:41:05+00:00"
         },
         {
             "name": "spryker/development-core",
@@ -10689,8 +10748,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
