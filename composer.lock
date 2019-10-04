@@ -12068,22 +12068,22 @@
         },
         {
             "name": "spryker/cms-content-widget-product-connector",
-            "version": "1.0.4",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cms-content-widget-product-connector.git",
-                "reference": "e05f35a4902c90ac9f246246b332aa61a492e684"
+                "reference": "86f7956310d3e5c54fc9e8c8a00db0bedcf1e751"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-content-widget-product-connector/zipball/e05f35a4902c90ac9f246246b332aa61a492e684",
-                "reference": "e05f35a4902c90ac9f246246b332aa61a492e684",
+                "url": "https://api.github.com/repos/spryker/cms-content-widget-product-connector/zipball/86f7956310d3e5c54fc9e8c8a00db0bedcf1e751",
+                "reference": "86f7956310d3e5c54fc9e8c8a00db0bedcf1e751",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/cms-content-widget": "^1.0.0",
-                "spryker/kernel": "^3.0.0",
+                "spryker/kernel": "^3.30.0",
                 "spryker/product": "^5.0.0 || ^6.0.0",
                 "spryker/propel-orm": "^1.0.0"
             },
@@ -12112,31 +12112,29 @@
                 "proprietary"
             ],
             "description": "CmsContentWidgetProductConnector module",
-            "time": "2019-03-22T06:59:01+00:00"
+            "time": "2019-10-04T10:57:24+00:00"
         },
         {
             "name": "spryker/cms-content-widget-product-group-connector",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/CmsContentWidgetProductGroupConnector.git",
-                "reference": "7016123ac7906a40b84ba28a12d463eb9962397f"
+                "url": "https://github.com/spryker/cms-content-widget-product-group-connector.git",
+                "reference": "5bb563d6e33228e4b029bfdf13eacf77dc20d699"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/CmsContentWidgetProductGroupConnector/zipball/7016123ac7906a40b84ba28a12d463eb9962397f",
-                "reference": "7016123ac7906a40b84ba28a12d463eb9962397f",
+                "url": "https://api.github.com/repos/spryker/cms-content-widget-product-group-connector/zipball/5bb563d6e33228e4b029bfdf13eacf77dc20d699",
+                "reference": "5bb563d6e33228e4b029bfdf13eacf77dc20d699",
                 "shasum": ""
             },
             "require": {
+                "php": ">=7.1",
                 "spryker/cms-content-widget": "^1.0.0",
-                "spryker/kernel": "^3.0.0"
+                "spryker/kernel": "^3.30.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
-                "spryker/propel": "*",
-                "spryker/propel-orm": "^1.0.0",
-                "spryker/silex": "*",
                 "spryker/testify": "*"
             },
             "type": "library",
@@ -12146,8 +12144,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Spryker": "src/"
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -12155,26 +12153,26 @@
                 "proprietary"
             ],
             "description": "CmsContentWidgetProductGroupConnector module",
-            "time": "2017-07-11T09:55:44+00:00"
+            "time": "2019-09-25T11:02:16+00:00"
         },
         {
             "name": "spryker/cms-content-widget-product-set-connector",
-            "version": "1.0.4",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cms-content-widget-product-set-connector.git",
-                "reference": "39ee66a1ee0583f44895fab95ba0a82193f8f58c"
+                "reference": "364958872dbe2a36ada6c327b1b8176af5a1629b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-content-widget-product-set-connector/zipball/39ee66a1ee0583f44895fab95ba0a82193f8f58c",
-                "reference": "39ee66a1ee0583f44895fab95ba0a82193f8f58c",
+                "url": "https://api.github.com/repos/spryker/cms-content-widget-product-set-connector/zipball/364958872dbe2a36ada6c327b1b8176af5a1629b",
+                "reference": "364958872dbe2a36ada6c327b1b8176af5a1629b",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/cms-content-widget": "^1.0.0",
-                "spryker/kernel": "^3.0.0",
+                "spryker/kernel": "^3.30.0",
                 "spryker/product": "^5.0.0 || ^6.0.0",
                 "spryker/product-set": "^1.0.0",
                 "spryker/propel-orm": "^1.0.0"
@@ -12204,7 +12202,7 @@
                 "proprietary"
             ],
             "description": "CmsContentWidgetProductSetConnector module",
-            "time": "2019-03-22T06:59:01+00:00"
+            "time": "2019-10-04T10:57:24+00:00"
         },
         {
             "name": "spryker/cms-extension",
@@ -33632,9 +33630,6 @@
                 }
             },
             "autoload": {
-                "files": [
-                    "src/functions_include.php"
-                ],
                 "psr-4": {
                     "Spryker\\": "src/Spryker/"
                 }
@@ -34208,7 +34203,6 @@
                     "dev-master": "1.0.x-dev"
                 }
             },
-            "type": "custom-installer",
             "autoload": {
                 "psr-4": {
                     "Spryker\\": "src/Spryker/"
@@ -34340,9 +34334,6 @@
                 "spryker/code-sniffer": "*",
                 "spryker/testify": "*"
             },
-            "bin": [
-                "bin/validate-json"
-            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -34546,11 +34537,6 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
@@ -34592,9 +34578,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause",
-                "GPL-2.0",
-                "GPL-3.0"
+                "MIT"
             ],
             "authors": [
                 {
@@ -34721,9 +34705,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause",
-                "GPL-2.0",
-                "GPL-3.0"
+                "MIT"
             ],
             "authors": [
                 {
@@ -34854,9 +34836,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause",
-                "GPL-2.0",
-                "GPL-3.0"
+                "MIT"
             ],
             "authors": [
                 {
@@ -34910,9 +34890,6 @@
                 "symfony/dependency-injection": "",
                 "symfony/http-kernel": ""
             },
-            "bin": [
-                "bin/php-parse"
-            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -34929,7 +34906,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "MIT"
             ],
             "authors": [
                 {
@@ -34966,11 +34943,10 @@
                 "psr/event-dispatcher": "",
                 "symfony/event-dispatcher-implementation": ""
             },
-            "type": "composer-plugin",
+            "type": "library",
             "extra": {
-                "class": "PackageVersions\\Installer",
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "1.1-dev"
                 }
             },
             "autoload": {
@@ -35022,9 +34998,6 @@
                 "php": "^7.1.3",
                 "symfony/polyfill-ctype": "~1.8"
             },
-            "bin": [
-                "src/bin/pdepend"
-            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -35088,14 +35061,9 @@
                     "/Tests/"
                 ]
             },
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "MIT"
             ],
             "authors": [
                 {
@@ -35424,9 +35392,6 @@
             "suggest": {
                 "ext-intl": "to use the component with locales other than \"en\""
             },
-            "bin": [
-                "src/bin/phpmd"
-            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -35446,7 +35411,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "MIT"
             ],
             "authors": [
                 {
@@ -35611,9 +35576,6 @@
             "suggest": {
                 "ext-ctype": "For best performance"
             },
-            "bin": [
-                "bin/phpstan"
-            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -36266,9 +36228,6 @@
                 "symfony/property-info": "To deserialize relations.",
                 "symfony/yaml": "For using the default YAML mapping loader."
             },
-            "require-dev": {
-                "phpunit/phpunit": "^5.7 || ^6.0"
-            },
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -36393,7 +36352,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "MIT"
             ],
             "authors": [
                 {
@@ -36469,7 +36428,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "MIT"
             ],
             "authors": [
                 {
@@ -36518,7 +36477,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "MIT"
             ],
             "authors": [
                 {
@@ -36627,7 +36586,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "MIT"
             ],
             "authors": [
                 {
@@ -36797,7 +36756,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "MIT"
             ],
             "authors": [
                 {
@@ -37168,9 +37127,6 @@
                 "zendframework/zend-i18n": "^2.7.4; install if you want to use the Translator processor",
                 "zendframework/zend-servicemanager": "^2.7.8 || ^3.3; if you need an extensible plugin manager for use with the Config Factory"
             },
-            "bin": [
-                "security-checker"
-            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -37185,7 +37141,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "BSD-3-Clause"
             ],
             "description": "provides a nested object property based user interface for accessing this configuration data within application code",
             "keywords": [
@@ -37243,7 +37199,6 @@
                     "config-provider": "Zend\\Filter\\ConfigProvider"
                 }
             },
-            "type": "phpcodesniffer-standard",
             "autoload": {
                 "psr-4": {
                     "Zend\\Filter\\": "src/"
@@ -37589,11 +37544,6 @@
                 "codeception/phpunit-wrapper": ">6.0.15 <6.1.0 | ^6.6.1 | ^7.7.1 | ^8.0.3"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Codeception\\": "src/"
@@ -37690,9 +37640,6 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "include-path": [
-                "src/"
-            ],
             "license": [
                 "MIT"
             ],
@@ -37806,10 +37753,6 @@
                     "dev-community": "1.5-dev"
                 }
             },
-            "bin": [
-                "bin/tokenize"
-            ],
-            "type": "phpcodesniffer-standard",
             "autoload": {
                 "psr-4": {
                     "Facebook\\WebDriver\\": "lib/"
@@ -37861,6 +37804,7 @@
                     "PhantomInstaller\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
