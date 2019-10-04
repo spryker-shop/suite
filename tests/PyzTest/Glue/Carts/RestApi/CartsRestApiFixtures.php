@@ -33,8 +33,21 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
 {
     protected const TEST_USERNAME = 'test username';
     protected const TEST_PASSWORD = 'test password';
-    protected const ANONYMOUS_CUSTOMER_REFERENCE = 'anonymous:666';
-    protected const ANONYMOUS_CUSTOMER_REFERENCE_WITH_LABEL = 'anonymous:999';
+
+    /**
+     * @var string
+     */
+    protected $valueForAnonymousCustomerReference;
+
+    /**
+     * @var string
+     */
+    protected $valueForAnonymousCustomerReferenceWithLabel;
+
+    /**
+     * @var string
+     */
+    protected $valueForAnonymousCustomerReferenceWithLabelWithEmptyCart;
 
     /**
      * @var \Generated\Shared\Transfer\ProductConcreteTransfer
@@ -75,6 +88,30 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
      * @var \Generated\Shared\Transfer\QuoteTransfer
      */
     protected $quoteTransferWithLabel;
+
+    /**
+     * @return string
+     */
+    public function getValueForAnonymousCustomerReference(): string
+    {
+        return $this->valueForAnonymousCustomerReference;
+    }
+
+    /**
+     * @return string
+     */
+    public function getValueForAnonymousCustomerReferenceWithLabel(): string
+    {
+        return $this->valueForAnonymousCustomerReferenceWithLabel;
+    }
+
+    /**
+     * @return string
+     */
+    public function getValueForAnonymousCustomerReferenceWithEmptyCart(): string
+    {
+        return $this->valueForAnonymousCustomerReferenceWithLabelWithEmptyCart;
+    }
 
     /**
      * @return \Generated\Shared\Transfer\ProductConcreteTransfer
@@ -156,9 +193,15 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
         $this->assignProductUpSelling($I, $this->productConcreteTransfer, $this->productConcreteTransferWithLabel);
         $this->assignProductUpSelling($I, $this->productConcreteTransferWithLabel, $this->productConcreteTransfer);
 
+        $this->valueForAnonymousCustomerReference = $this->createValueForAnonymousCustomerReference();
+        $this->valueForAnonymousCustomerReferenceWithLabel = $this->createValueForAnonymousCustomerReference();
+        $this->valueForAnonymousCustomerReferenceWithLabelWithEmptyCart = $this->createValueForAnonymousCustomerReference();
+
         $this->customerTransfer = $this->createCustomer($I);
-        $customerTransferAnonymous = (new CustomerTransfer())->setCustomerReference(static::ANONYMOUS_CUSTOMER_REFERENCE);
-        $customerTransferAnonymousWithLabel = (new CustomerTransfer())->setCustomerReference(static::ANONYMOUS_CUSTOMER_REFERENCE_WITH_LABEL);
+        $customerTransferAnonymous = (new CustomerTransfer())
+            ->setCustomerReference($I::ANONYMOUS_PREFIX . $this->valueForAnonymousCustomerReference);
+        $customerTransferAnonymousWithLabel = (new CustomerTransfer())
+            ->setCustomerReference($I::ANONYMOUS_PREFIX . $this->valueForAnonymousCustomerReferenceWithLabel);
 
         $this->quoteTransferAnonymous = $this->createQuote($I, $customerTransferAnonymous, [$this->productConcreteTransfer]);
         $this->quoteTransfer = $this->createQuote($I, $this->customerTransfer, [$this->productConcreteTransfer]);
@@ -277,5 +320,13 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
             $productConcreteTransferRelated->getAbstractSku(),
             $productConcreteTransfer->getFkProductAbstract()
         );
+    }
+
+    /**
+     * @return string
+     */
+    protected function createValueForAnonymousCustomerReference(): string
+    {
+        return uniqid('testReference', true);
     }
 }

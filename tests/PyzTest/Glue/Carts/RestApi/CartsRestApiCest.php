@@ -50,8 +50,7 @@ class CartsRestApiCest
      */
     protected function requestCustomerLogin(CartsApiTester $I): void
     {
-        $token = $I
-            ->haveAuth($this->fixtures->getCustomerTransfer())
+        $token = $I->haveAuth($this->fixtures->getCustomerTransfer())
             ->getAccessToken();
         $I->amBearerAuthenticated($token);
     }
@@ -65,12 +64,13 @@ class CartsRestApiCest
      */
     public function requestExistingCartItemsWithProductLabelRelationship(CartsApiTester $I): void
     {
+        // Arrange
         $quoteTransfer = $this->fixtures->getQuoteTransferWithLabel();
         $productConcreteTransfer = $this->fixtures->getProductConcreteTransferWithLabel();
         $productLabelTransfer = $this->fixtures->getProductLabelTransfer();
-
-        //Act
         $this->requestCustomerLogin($I);
+
+        // Act
         $I->sendGET(
             $I->formatUrl(
                 '{resourceCarts}/{cartUuid}?include={relationshipItems},{relationshipConcreteProducts},{relationshipProductLabels}',
@@ -84,7 +84,7 @@ class CartsRestApiCest
             )
         );
 
-        //Assert
+        // Assert
         $I->assertResponse(HttpCode::OK);
 
         $I->amSure('Returned resource has include of type concrete-products')
@@ -111,11 +111,12 @@ class CartsRestApiCest
      */
     public function requestExistingCartItemsWithoutProductLabelRelationship(CartsApiTester $I): void
     {
+        // Arrange
         $quoteTransfer = $this->fixtures->getQuoteTransfer();
         $productConcreteTransfer = $this->fixtures->getProductConcreteTransfer();
-
-        //Act
         $this->requestCustomerLogin($I);
+
+        // Act
         $I->sendGET(
             $I->formatUrl(
                 '{resourceCarts}/{cartUuid}?include={relationshipItems},{relationshipConcreteProducts},{relationshipProductLabels}',
@@ -129,7 +130,7 @@ class CartsRestApiCest
             )
         );
 
-        //Assert
+        // Assert
         $I->assertResponse(HttpCode::OK);
 
         $I->amSure('Returned resource has include of type concrete-products')
@@ -151,8 +152,10 @@ class CartsRestApiCest
      */
     public function requestNotExistingCartItemsWithProductLabelRelationship(CartsApiTester $I): void
     {
-        //Act
+        // Arrange
         $this->requestCustomerLogin($I);
+
+        // Act
         $I->sendGET(
             $I->formatUrl(
                 '{resourceCarts}/{cartUuid}?include={relationshipItems},{relationshipConcreteProducts},{relationshipProductLabels}',
@@ -166,7 +169,7 @@ class CartsRestApiCest
             )
         );
 
-        //Assert
+        // Assert
         $I->assertResponse(HttpCode::NOT_FOUND);
 
         $I->dontSeeResponseMatchesJsonPath('$.data[*]');
@@ -182,10 +185,11 @@ class CartsRestApiCest
      */
     public function requestExistingCartItemsWithProductLabelRelationshipByPost(CartsApiTester $I): void
     {
+        // Arrange
         $quoteTransfer = $this->fixtures->getQuoteTransferWithLabel();
-
-        //Act
         $this->requestCustomerLogin($I);
+
+        // Act
         $I->sendPOST(
             $I->formatUrl(
                 '{resourceCarts}/{cartUuid}?include={relationshipItems},{relationshipConcreteProducts},{relationshipProductLabels}',
@@ -199,7 +203,7 @@ class CartsRestApiCest
             )
         );
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
         $I->seeResponseIsJson();
     }

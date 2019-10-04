@@ -49,7 +49,7 @@ class ProductAbstractRestApiCest
      */
     public function requestTheNonExistedProductAbstract(ProductsApiTester $I): void
     {
-        //Act
+        // Act
         $I->sendGET(
             $I->formatUrl(
                 '{resourceAbstractProducts}/{productAbstractSku}',
@@ -60,7 +60,7 @@ class ProductAbstractRestApiCest
             )
         );
 
-        //Assert
+        // Assert
         $I->assertResponse(HttpCode::NOT_FOUND);
     }
 
@@ -73,7 +73,7 @@ class ProductAbstractRestApiCest
      */
     public function requestProductAbstractWithoutId(ProductsApiTester $I): void
     {
-        //Act
+        // Act
         $I->sendGET(
             $I->formatUrl(
                 '{resourceAbstractProducts}',
@@ -83,7 +83,7 @@ class ProductAbstractRestApiCest
             )
         );
 
-        //Assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
         $I->seeResponseIsJson();
     }
@@ -97,9 +97,10 @@ class ProductAbstractRestApiCest
      */
     public function requestExistingProductAbstract(ProductsApiTester $I): void
     {
+        // Arrange
         $productConcreteTransfer = $this->fixtures->getProductConcreteTransfer();
 
-        //Act
+        // Act
         $I->sendGET(
             $I->formatUrl(
                 '{resourceAbstractProducts}/{productAbstractSku}',
@@ -110,7 +111,7 @@ class ProductAbstractRestApiCest
             )
         );
 
-        //Assert
+        // Assert
         $I->assertResponse(HttpCode::OK);
 
         $I->amSure('Returned resource is of type abstract-products')
@@ -131,9 +132,10 @@ class ProductAbstractRestApiCest
      */
     public function requestExistingProductAbstractWithProductConcreteRelationship(ProductsApiTester $I): void
     {
+        // Arrange
         $productConcreteTransfer = $this->fixtures->getProductConcreteTransfer();
 
-        //Act
+        // Act
         $I->sendGET(
             $I->formatUrl(
                 '{resourceAbstractProducts}/{productAbstractSku}?include={relationshipConcreteProducts}',
@@ -145,7 +147,7 @@ class ProductAbstractRestApiCest
             )
         );
 
-        //Assert
+        // Assert
         $I->assertResponse(HttpCode::OK);
 
         $I->amSure('Returned resource has relation of type concrete-products')
@@ -172,10 +174,11 @@ class ProductAbstractRestApiCest
      */
     public function requestExistingProductAbstractWithProductLabelRelationship(ProductsApiTester $I): void
     {
+        // Arrange
         $productConcreteTransfer = $this->fixtures->getProductConcreteTransferWithLabel();
         $productLabelTransfer = $this->fixtures->getProductLabelTransfer();
 
-        //Act
+        // Act
         $I->sendGET(
             $I->formatUrl(
                 '{resourceAbstractProducts}/{productAbstractSku}?include={relationshipProductLabels}',
@@ -187,7 +190,7 @@ class ProductAbstractRestApiCest
             )
         );
 
-        //Assert
+        // Assert
         $I->assertResponse(HttpCode::OK);
 
         $I->amSure('Returned resource has relation of type product-labels')
@@ -214,9 +217,10 @@ class ProductAbstractRestApiCest
      */
     public function requestExistingProductAbstractWithoutProductLabelRelationship(ProductsApiTester $I): void
     {
+        // Arrange
         $productConcreteTransfer = $this->fixtures->getProductConcreteTransfer();
 
-        //Act
+        // Act
         $I->sendGET(
             $I->formatUrl(
                 '{resourceAbstractProducts}/{productAbstractSku}?include={relationshipProductLabels}',
@@ -228,7 +232,7 @@ class ProductAbstractRestApiCest
             )
         );
 
-        //Assert
+        // Assert
         $I->assertResponse(HttpCode::OK);
         $I->dontSeeResponseMatchesJsonPath('$.included[*]');
     }
@@ -242,7 +246,7 @@ class ProductAbstractRestApiCest
      */
     public function requestNotExistingProductAbstractWithProductLabelRelationship(ProductsApiTester $I): void
     {
-        //Act
+        // Act
         $I->sendGET(
             $I->formatUrl(
                 '{resourceAbstractProducts}/{productAbstractSku}?include={relationshipProductLabels}',
@@ -254,7 +258,7 @@ class ProductAbstractRestApiCest
             )
         );
 
-        //Assert
+        // Assert
         $I->assertResponse(HttpCode::NOT_FOUND);
         $I->dontSeeResponseMatchesJsonPath('$.data[*]');
         $I->dontSeeResponseMatchesJsonPath('$.included[*]');
@@ -269,9 +273,10 @@ class ProductAbstractRestApiCest
      */
     public function requestExistingProductAbstractWithProductLabelRelationshipByPost(ProductsApiTester $I): void
     {
+        // Arrange
         $productConcreteTransfer = $this->fixtures->getProductConcreteTransferWithLabel();
 
-        //Act
+        // Act
         $I->sendPOST(
             $I->formatUrl(
                 '{resourceAbstractProducts}/{productAbstractSku}?include={relationshipProductLabels}',
@@ -283,7 +288,7 @@ class ProductAbstractRestApiCest
             )
         );
 
-        //Assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
         $I->seeResponseIsJson();
     }
@@ -297,7 +302,7 @@ class ProductAbstractRestApiCest
      */
     public function requestProductAbstractHasUrlAttribute(ProductsApiTester $I): void
     {
-        //act
+        // Act
         $I->sendGET(
             $I->formatUrl(
                 'abstract-products/{ProductAbstractSku}',
@@ -307,7 +312,7 @@ class ProductAbstractRestApiCest
             )
         );
 
-        //assert
+        // Assert
         $I->amSure('Returned resource contains `url` attribute')
             ->whenI()
             ->seeSingleResourceHasAttribute('url');

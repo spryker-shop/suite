@@ -26,10 +26,6 @@ use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
  */
 class GuestCartsRestApiCest
 {
-    protected const VALUE_FOR_ANONYMOUS = '666';
-    protected const VALUE_FOR_ANONYMOUS_WITH_LABEL = '999';
-    protected const VALUE_FOR_ANONYMOUS_WITH_EMPTY_CART = '333';
-
     /**
      * @var \PyzTest\Glue\Carts\RestApi\CartsRestApiFixtures
      */
@@ -54,14 +50,16 @@ class GuestCartsRestApiCest
      */
     public function requestExistingGuestCartItemsWithProductLabelRelationship(CartsApiTester $I): void
     {
+        // Arrange
         $quoteTransfer = $this->fixtures->getQuoteTransferAnonymousWithLabel();
         $productConcreteTransfer = $this->fixtures->getProductConcreteTransferWithLabel();
         $productLabelTransfer = $this->fixtures->getProductLabelTransfer();
+        $I->haveHttpHeader(
+            CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
+            $this->fixtures->getValueForAnonymousCustomerReferenceWithLabel()
+        );
 
-        //Arrange
-        $I->haveHttpHeader(CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID, static::VALUE_FOR_ANONYMOUS_WITH_LABEL);
-
-        //Act
+        // Act
         $I->sendGET(
             $I->formatUrl(
                 '{resourceGuestCarts}/{cartUuid}?include={relationshipItems},{relationshipConcreteProducts},{relationshipProductLabels}',
@@ -75,7 +73,7 @@ class GuestCartsRestApiCest
             )
         );
 
-        //Assert
+        // Assert
         $I->assertResponse(HttpCode::OK);
 
         $I->amSure('Returned resource has include of type concrete-products')
@@ -102,13 +100,15 @@ class GuestCartsRestApiCest
      */
     public function requestExistingGuestCartItemsWithoutProductLabelRelationship(CartsApiTester $I): void
     {
+        // Arrange
         $quoteTransfer = $this->fixtures->getQuoteTransferAnonymous();
         $productConcreteTransfer = $this->fixtures->getProductConcreteTransfer();
+        $I->haveHttpHeader(
+            CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
+            $this->fixtures->getValueForAnonymousCustomerReference()
+        );
 
-        //Arrange
-        $I->haveHttpHeader(CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID, static::VALUE_FOR_ANONYMOUS);
-
-        //Act
+        // Act
         $I->sendGET(
             $I->formatUrl(
                 '{resourceGuestCarts}/{cartUuid}?include={relationshipItems},{relationshipConcreteProducts},{relationshipProductLabels}',
@@ -122,7 +122,7 @@ class GuestCartsRestApiCest
             )
         );
 
-        //Assert
+        // Assert
         $I->assertResponse(HttpCode::OK);
 
         $I->amSure('Returned resource has include of type concrete-products')
@@ -144,10 +144,13 @@ class GuestCartsRestApiCest
      */
     public function requestNotExistingCartItemsWithProductLabelRelationship(CartsApiTester $I): void
     {
-        //Arrange
-        $I->haveHttpHeader(CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID, static::VALUE_FOR_ANONYMOUS_WITH_EMPTY_CART);
+        // Arrange
+        $I->haveHttpHeader(
+            CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
+            $this->fixtures->getValueForAnonymousCustomerReferenceWithEmptyCart()
+        );
 
-        //Act
+        // Act
         $I->sendGET(
             $I->formatUrl(
                 '{resourceGuestCarts}/{cartUuid}?include={relationshipItems},{relationshipConcreteProducts},{relationshipProductLabels}',
@@ -161,7 +164,7 @@ class GuestCartsRestApiCest
             )
         );
 
-        //Assert
+        // Assert
         $I->assertResponse(HttpCode::NOT_FOUND);
         $I->dontSeeResponseMatchesJsonPath('$.data[*]');
         $I->dontSeeResponseMatchesJsonPath('$.included[*]');
@@ -176,12 +179,14 @@ class GuestCartsRestApiCest
      */
     public function requestExistingCartItemsWithProductLabelRelationshipByPost(CartsApiTester $I): void
     {
+        // Arrange
         $quoteTransfer = $this->fixtures->getQuoteTransferAnonymousWithLabel();
+        $I->haveHttpHeader(
+            CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
+            $this->fixtures->getValueForAnonymousCustomerReferenceWithLabel()
+        );
 
-        //Arrange
-        $I->haveHttpHeader(CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID, static::VALUE_FOR_ANONYMOUS_WITH_LABEL);
-
-        //Act
+        // Act
         $I->sendPOST(
             $I->formatUrl(
                 '{resourceGuestCarts}/{cartUuid}?include={relationshipItems},{relationshipConcreteProducts},{relationshipProductLabels}',
@@ -195,7 +200,7 @@ class GuestCartsRestApiCest
             )
         );
 
-        // assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
         $I->seeResponseIsJson();
     }

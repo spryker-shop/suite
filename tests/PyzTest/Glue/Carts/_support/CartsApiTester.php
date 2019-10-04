@@ -29,6 +29,8 @@ class CartsApiTester extends ApiEndToEndTester
 {
     use _generated\CartsApiTesterActions;
 
+    public const ANONYMOUS_PREFIX = 'anonymous:';
+
     /**
     * Define custom actions here
     */
