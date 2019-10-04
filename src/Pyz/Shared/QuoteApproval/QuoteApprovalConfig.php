@@ -27,7 +27,7 @@ class QuoteApprovalConfig extends SprykerQuoteApprovalConfig
     /**
      * @return bool
      */
-    public function getIsPermissionCalculationIncludeShipment(): bool
+    public function isPermissionCalculationIncludeShipment(): bool
     {
         return true;
     }
