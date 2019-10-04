@@ -177,14 +177,6 @@ class DataImportConfig extends SprykerDataImportConfig
     /**
      * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
      */
-    public function getStockDataImporterConfiguration()
-    {
-        return $this->buildImporterConfiguration('stock.csv', static::IMPORT_TYPE_STOCK);
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
-     */
     public function getShipmentDataImporterConfiguration()
     {
         return $this->buildImporterConfiguration('shipment.csv', static::IMPORT_TYPE_SHIPMENT);
