@@ -19,10 +19,16 @@ class QuoteApprovalConfig extends SprykerQuoteApprovalConfig
     {
         return [
             QuoteTransfer::BILLING_ADDRESS,
-            QuoteTransfer::SHIPPING_ADDRESS,
             QuoteTransfer::PAYMENTS,
             QuoteTransfer::PAYMENT,
-            QuoteTransfer::SHIPMENT,
         ];
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPermissionCalculationIncludeShipment(): bool
+    {
+        return true;
     }
 }
