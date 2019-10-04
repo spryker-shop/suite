@@ -25,6 +25,7 @@ use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\FileManagerStorage\FileManagerStorageConstants;
 use Spryker\Shared\GlossaryStorage\GlossaryStorageConstants;
 use Spryker\Shared\Log\LogConstants;
+use Spryker\Shared\MerchantProfileStorage\MerchantProfileStorageConfig;
 use Spryker\Shared\PriceProductStorage\PriceProductStorageConstants;
 use Spryker\Shared\ProductPackagingUnitStorage\ProductPackagingUnitStorageConfig;
 use Spryker\Shared\ProductPageSearch\ProductPageSearchConstants;
@@ -70,6 +71,12 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
             $this->createQueueOption(
                 $this->get(LogConstants::LOG_QUEUE_NAME),
                 $this->get(LogConstants::LOG_ERROR_QUEUE_NAME)
+            )
+        );
+        $queueOptionCollection->append(
+            $this->createQueueOption(
+                MerchantProfileStorageConfig::MERCHANT_PROFILE_SYNC_STORAGE_QUEUE,
+                MerchantProfileStorageConfig::MERCHANT_PROFILE_SYNC_STORAGE_ERROR_QUEUE
             )
         );
 
