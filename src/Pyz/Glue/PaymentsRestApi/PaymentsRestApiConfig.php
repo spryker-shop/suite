@@ -32,4 +32,17 @@ class PaymentsRestApiConfig extends SprykerPaymentsRestApiConfig
             ]
         ],
     ];
+
+    /**
+     * @return array
+     */
+    public function getPaymentProviderMethodToStateMachineMapping(): array
+    {
+        return [
+            DummyPaymentConfig::PROVIDER_NAME => [
+                DummyPaymentConfig::PAYMENT_METHOD_NAME_CREDIT_CARD => DummyPaymentConfig::PAYMENT_METHOD_CREDIT_CARD,
+                DummyPaymentConfig::PAYMENT_METHOD_NAME_INVOICE => DummyPaymentConfig::PAYMENT_METHOD_INVOICE,
+            ],
+        ];
+    }
 }
