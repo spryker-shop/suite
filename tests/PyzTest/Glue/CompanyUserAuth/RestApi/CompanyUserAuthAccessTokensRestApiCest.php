@@ -46,7 +46,7 @@ class CompanyUserAuthAccessTokensRestApiCest
      *
      * @return void
      */
-    public function requestAccessTokenForExistingCustomerWithCompanyUser(CompanyUserAuthRestApiTester $I): void
+    public function requestCompanyUserAccessTokenForExistingCustomerWithCompanyUser(CompanyUserAuthRestApiTester $I): void
     {
         //Arrange
         $I->amBearerAuthenticated($this->fixtures->getOauthResponseTransferForCompanyUser()->getAccessToken());
@@ -72,7 +72,7 @@ class CompanyUserAuthAccessTokensRestApiCest
      *
      * @return void
      */
-    public function requestAccessTokenForExistingCustomerWithWrongType(CompanyUserAuthRestApiTester $I): void
+    public function requestCompanyUserAccessTokenForExistingCustomerWithWrongType(CompanyUserAuthRestApiTester $I): void
     {
         //Arrange
         $I->amBearerAuthenticated($this->fixtures->getOauthResponseTransferForCompanyUser()->getAccessToken());
@@ -98,17 +98,17 @@ class CompanyUserAuthAccessTokensRestApiCest
      *
      * @return void
      */
-    public function requestAccessTokenForExistingCustomerWithWrongBody(CompanyUserAuthRestApiTester $I): void
+    public function requestCompanyUserAccessTokenForExistingCustomerWithInvalidPostData(CompanyUserAuthRestApiTester $I): void
     {
         //Arrange
         $I->amBearerAuthenticated($this->fixtures->getOauthResponseTransferForCompanyUser()->getAccessToken());
 
         //Act
         $I->sendPOST(CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS, [
-                'type' => uniqid(CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS),
-                'attributes' => [
-                    'idCompanyUser' => $this->fixtures->getOauthResponseTransferForCompanyUser()->getIdCompanyUser(),
-                ],
+            'type' => uniqid(CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS),
+            'attributes' => [
+                'idCompanyUser' => $this->fixtures->getOauthResponseTransferForCompanyUser()->getIdCompanyUser(),
+            ],
         ]);
 
         //Assert
@@ -122,7 +122,7 @@ class CompanyUserAuthAccessTokensRestApiCest
      *
      * @return void
      */
-    public function requestAccessTokenWithUuidOfAnotherCompanyUser(CompanyUserAuthRestApiTester $I): void
+    public function requestCompanyUserAccessTokenWithUuidOfAnotherCompanyUser(CompanyUserAuthRestApiTester $I): void
     {
         //Arrange
         $I->amBearerAuthenticated($this->fixtures->getOauthResponseTransferForNonCompanyUser()->getAccessToken());
@@ -148,7 +148,7 @@ class CompanyUserAuthAccessTokensRestApiCest
      *
      * @return void
      */
-    public function requestAccessTokenWithNoExistedIdCompanyUser(CompanyUserAuthRestApiTester $I): void
+    public function requestCompanyUserAccessTokenWithNoExistingIdCompanyUser(CompanyUserAuthRestApiTester $I): void
     {
         //Arrange
         $I->amBearerAuthenticated($this->fixtures->getOauthResponseTransferForCompanyUser()->getAccessToken());
@@ -174,8 +174,11 @@ class CompanyUserAuthAccessTokensRestApiCest
      *
      * @return void
      */
-    public function requestAccessTokenWithEmptyIdCompanyUser(CompanyUserAuthRestApiTester $I): void
+    public function requestCompanyUserAccessTokenWithEmptyIdCompanyUser(CompanyUserAuthRestApiTester $I): void
     {
+        //Arrange
+        $I->amBearerAuthenticated($this->fixtures->getOauthResponseTransferForCompanyUser()->getAccessToken());
+
         //Act
         $I->sendPOST(CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS, [
             'data' => [
@@ -187,7 +190,7 @@ class CompanyUserAuthAccessTokensRestApiCest
         ]);
 
         //Assert
-        $this->assertResponse($I, HttpCode::FORBIDDEN);
+        $this->assertResponse($I, HttpCode::UNPROCESSABLE_ENTITY);
     }
 
     /**

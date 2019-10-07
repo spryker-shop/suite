@@ -13,6 +13,7 @@ use Generated\Shared\Transfer\CompanyUserTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\OauthResponseTransfer;
 use PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester;
+use PyzTest\Yves\Customer\PageObject\Customer;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
@@ -31,21 +32,6 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
     protected $oauthResponseTransferForNonCompanyUser;
 
     /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
-    protected $customerTransferWithCompanyUser;
-
-    /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
-    protected $anotherCustomerTransferWithoutCompanyUser;
-
-    /**
-     * @var \Generated\Shared\Transfer\CompanyUserTransfer
-     */
-    protected $companyUserTransfer;
-
-    /**
      * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
      *
      * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
@@ -54,11 +40,8 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
     {
         $I->haveCompanyMailConnectorToMailDependency();
 
-        $this->customerTransferWithCompanyUser = $this->createCustomerTransfer($I);
-        $this->anotherCustomerTransferWithoutCompanyUser = $this->createCustomerTransfer($I);
-        $this->companyUserTransfer = $this->createCompanyUserTransfer($I);
-        $this->oauthResponseTransferForCompanyUser = $this->createOauthResponseTransfer($I, $this->customerTransferWithCompanyUser);
-        $this->oauthResponseTransferForNonCompanyUser = $this->createOauthResponseTransfer($I, $this->anotherCustomerTransferWithoutCompanyUser);
+        $this->oauthResponseTransferForCompanyUser = $this->createOauthResponseTransferForCompanyUser($I);
+        $this->oauthResponseTransferForNonCompanyUser = $this->createOauthResponseTransferForNotCompanyUser($I);
 
         return $this;
     }
@@ -80,37 +63,26 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
     }
 
     /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
+     * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
+     *
+     * @return \Generated\Shared\Transfer\OauthResponseTransfer
      */
-    public function getCustomerTransferWithCompanyUser(): CustomerTransfer
+    protected function createOauthResponseTransferForCompanyUser(CompanyUserAuthRestApiTester $I): OauthResponseTransfer
     {
-        return $this->customerTransferWithCompanyUser;
-    }
+        $customerTransfer = $this->createCustomerTransferWithCompanyUser($I);
 
-    /**
-     * @return \Generated\Shared\Transfer\CompanyUserTransfer
-     */
-    public function getCompanyUserTransfer(): CompanyUserTransfer
-    {
-        return $this->companyUserTransfer;
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
-    public function getAnotherCustomerTransferWithoutCompanyUser(): CustomerTransfer
-    {
-        return $this->anotherCustomerTransferWithoutCompanyUser;
+        return $I->haveAuth($customerTransfer);
     }
 
     /**
      * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
      * @return \Generated\Shared\Transfer\OauthResponseTransfer
      */
-    protected function createOauthResponseTransfer(CompanyUserAuthRestApiTester $I, CustomerTransfer $customerTransfer): OauthResponseTransfer
+    protected function createOauthResponseTransferForNotCompanyUser(CompanyUserAuthRestApiTester $I): OauthResponseTransfer
     {
+        $customerTransfer = $this->createCustomerTransferWithoutCompanyUser($I);
+
         return $I->haveAuth($customerTransfer);
     }
 
@@ -119,28 +91,45 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
      *
      * @return \Generated\Shared\Transfer\CustomerTransfer
      */
-    protected function createCustomerTransfer(CompanyUserAuthRestApiTester $I): CustomerTransfer
+    protected function createCustomerTransferWithCompanyUser(CompanyUserAuthRestApiTester $I): CustomerTransfer
     {
-        return $I->haveCustomer([
-            'password' => static::TEST_PASSWORD,
-            'newPassword' => static::TEST_PASSWORD,
+        $customerTransfer = $I->haveCustomer([
+            CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
+            CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,
         ]);
+
+        $this->createCompanyUserTransfer($I, $customerTransfer);
+
+        return $customerTransfer;
     }
 
     /**
      * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
      *
+     * @return \Generated\Shared\Transfer\CustomerTransfer
+     */
+    protected function createCustomerTransferWithoutCompanyUser(CompanyUserAuthRestApiTester $I): CustomerTransfer
+    {
+        return $I->haveCustomer([
+            CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
+            CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,
+        ]);
+    }
+
+    /**
+     * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     *
      * @return \Generated\Shared\Transfer\CompanyUserTransfer
      */
-    protected function createCompanyUserTransfer(CompanyUserAuthRestApiTester $I): CompanyUserTransfer
+    protected function createCompanyUserTransfer(CompanyUserAuthRestApiTester $I, CustomerTransfer $customerTransfer): CompanyUserTransfer
     {
-        $companyTransfer = $I->haveCompany([
-            CompanyTransfer::IS_ACTIVE => true,
+        $companyTransfer = $I->haveActiveCompany([
             CompanyTransfer::STATUS => 'approved',
         ]);
 
         return $I->haveCompanyUser([
-            CompanyUserTransfer::CUSTOMER => $this->customerTransferWithCompanyUser,
+            CompanyUserTransfer::CUSTOMER => $customerTransfer,
             CompanyUserTransfer::FK_COMPANY => $companyTransfer->getIdCompany(),
             CompanyUserTransfer::FK_COMPANY_BUSINESS_UNIT => $this->createCompanyBusinessUnit($companyTransfer, $I)->getIdCompanyBusinessUnit(),
         ]);
@@ -152,7 +141,7 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
      *
      * @return \Generated\Shared\Transfer\CompanyBusinessUnitTransfer
      */
-    public function createCompanyBusinessUnit(CompanyTransfer $companyTransfer, CompanyUserAuthRestApiTester $I): CompanyBusinessUnitTransfer
+    protected function createCompanyBusinessUnit(CompanyTransfer $companyTransfer, CompanyUserAuthRestApiTester $I): CompanyBusinessUnitTransfer
     {
         return $I->haveCompanyBusinessUnit(
             [

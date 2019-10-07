@@ -23,18 +23,12 @@ class RefreshTokensRestApiFixtures implements FixturesBuilderInterface, Fixtures
     protected $oauthResponseTransfer;
 
     /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
-    protected $customerTransfer;
-
-    /**
      * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
      *
      * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
     public function buildFixtures(AuthRestApiTester $I): FixturesContainerInterface
     {
-        $this->customerTransfer = $this->createCustomerTransfer($I);
         $this->oauthResponseTransfer = $this->createOauthResponseTransfer($I);
 
         return $this;
@@ -49,21 +43,15 @@ class RefreshTokensRestApiFixtures implements FixturesBuilderInterface, Fixtures
     }
 
     /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
-    public function getCustomerTransfer(): CustomerTransfer
-    {
-        return $this->customerTransfer;
-    }
-
-    /**
      * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
      *
      * @return \Generated\Shared\Transfer\OauthResponseTransfer
      */
     protected function createOauthResponseTransfer(AuthRestApiTester $I): OauthResponseTransfer
     {
-        return $I->haveAuth($this->customerTransfer);
+        $customerTransfer = $this->createCustomerTransfer($I);
+
+        return $I->haveAuth($customerTransfer);
     }
 
     /**
@@ -74,8 +62,8 @@ class RefreshTokensRestApiFixtures implements FixturesBuilderInterface, Fixtures
     protected function createCustomerTransfer(AuthRestApiTester $I): CustomerTransfer
     {
         return $I->haveCustomer([
-            'password' => static::TEST_PASSWORD,
-            'newPassword' => static::TEST_PASSWORD,
+            CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
+            CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,
         ]);
     }
 }

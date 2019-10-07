@@ -53,7 +53,7 @@ class AccessTokensRestApiCest
             'data' => [
                 'type' => AuthRestApiConfig::RESOURCE_ACCESS_TOKENS,
                 'attributes' => [
-                    'username' => $this->fixtures->getCustomerTransferWithCompanyUser()->getEmail(),
+                    'username' => $this->fixtures->getCustomerTransfer()->getEmail(),
                     'password' => AccessTokensRestApiFixtures::TEST_PASSWORD,
                 ],
             ],
@@ -78,7 +78,7 @@ class AccessTokensRestApiCest
             'data' => [
                 'type' => AuthRestApiConfig::RESOURCE_ACCESS_TOKENS,
                 'attributes' => [
-                    'username' => uniqid($this->fixtures->getCustomerTransferWithCompanyUser()->getEmail()),
+                    'username' => uniqid($this->fixtures->getCustomerTransfer()->getEmail()),
                     'password' => AccessTokensRestApiFixtures::TEST_PASSWORD,
                 ],
             ],
@@ -102,7 +102,7 @@ class AccessTokensRestApiCest
             'data' => [
                 'type' => AuthRestApiConfig::RESOURCE_ACCESS_TOKENS,
                 'attributes' => [
-                    'username' => uniqid($this->fixtures->getCustomerTransferWithCompanyUser()->getEmail()),
+                    'username' => uniqid($this->fixtures->getCustomerTransfer()->getEmail()),
                     'password' => uniqid(AccessTokensRestApiFixtures::TEST_PASSWORD),
                 ],
             ],
@@ -126,7 +126,7 @@ class AccessTokensRestApiCest
             'data' => [
                 'type' => AuthRestApiConfig::RESOURCE_ACCESS_TOKENS,
                 'attributes' => [
-                    'username' => $this->fixtures->getCustomerTransferWithCompanyUser()->getEmail(),
+                    'username' => $this->fixtures->getCustomerTransfer()->getEmail(),
                     'password' => '',
                 ],
             ],
@@ -173,7 +173,7 @@ class AccessTokensRestApiCest
         $I->sendPOST(AuthRestApiConfig::RESOURCE_ACCESS_TOKENS, [
             'type' => AuthRestApiConfig::RESOURCE_ACCESS_TOKENS,
             'attributes' => [
-                'username' => $this->fixtures->getCustomerTransferWithCompanyUser()->getEmail(),
+                'username' => $this->fixtures->getCustomerTransfer()->getEmail(),
                 'password' => AccessTokensRestApiFixtures::TEST_PASSWORD,
             ],
         ]);
@@ -196,7 +196,7 @@ class AccessTokensRestApiCest
             'data' => [
                 'type' => AuthRestApiConfig::RESOURCE_REFRESH_TOKENS,
                 'attributes' => [
-                    'username' => $this->fixtures->getCustomerTransferWithCompanyUser()->getEmail(),
+                    'username' => $this->fixtures->getCustomerTransfer()->getEmail(),
                     'password' => AccessTokensRestApiFixtures::TEST_PASSWORD,
                 ],
             ],
@@ -204,56 +204,6 @@ class AccessTokensRestApiCest
 
         //Assert
         $this->assertResponse($I, HttpCode::BAD_REQUEST);
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
-     *
-     * @return void
-     */
-    public function requestAccessTokenForExistingCustomerWithoutCompanyUser(AuthRestApiTester $I): void
-    {
-        //Act
-        $I->sendPOST(AuthRestApiConfig::RESOURCE_ACCESS_TOKENS, [
-            'data' => [
-                'type' => AuthRestApiConfig::RESOURCE_ACCESS_TOKENS,
-                'attributes' => [
-                    'username' => $this->fixtures->getCustomerTransferWithoutCompanyUser()->getEmail(),
-                    'password' => AccessTokensRestApiFixtures::TEST_PASSWORD,
-                ],
-            ],
-        ]);
-
-        //Assert
-        $this->assertResponse($I, HttpCode::CREATED);
-        $I->assertNull(current($I->grabDataFromResponseByJsonPath('$.data.attributes.idCompanyUser')));
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
-     *
-     * @return void
-     */
-    public function requestAccessTokenForExistingCustomerWithCompanyUser(AuthRestApiTester $I): void
-    {
-        //Act
-        $I->sendPOST(AuthRestApiConfig::RESOURCE_ACCESS_TOKENS, [
-            'data' => [
-                'type' => AuthRestApiConfig::RESOURCE_ACCESS_TOKENS,
-                'attributes' => [
-                    'username' => $this->fixtures->getCustomerTransferWithCompanyUser()->getEmail(),
-                    'password' => AccessTokensRestApiFixtures::TEST_PASSWORD,
-                ],
-            ],
-        ]);
-
-        //Assert
-        $this->assertResponse($I, HttpCode::CREATED);
-        $I->assertNotNull(current($I->grabDataFromResponseByJsonPath('$.data.attributes.idCompanyUser')));
     }
 
     /**
