@@ -18,14 +18,18 @@ class PaymentsRestApiConfig extends SprykerPaymentsRestApiConfig
     ];
 
     protected const PAYMENT_METHOD_REQUIRED_FIELDS = [
-        'dummyPaymentInvoice' => ['dummyPaymentInvoice.dateOfBirth'],
-        'dummyPaymentCreditCard' => [
-            'dummyPaymentCreditCard.cardType',
-            'dummyPaymentCreditCard.cardNumber',
-            'dummyPaymentCreditCard.nameOnCard',
-            'dummyPaymentCreditCard.cardExpiresMonth',
-            'dummyPaymentCreditCard.cardExpiresYear',
-            'dummyPaymentCreditCard.cardSecurityCode',
+        DummyPaymentConfig::PROVIDER_NAME => [
+            DummyPaymentConfig::PAYMENT_METHOD_NAME_INVOICE => [
+                'dummyPaymentInvoice.dateOfBirth'
+            ],
+            DummyPaymentConfig::PAYMENT_METHOD_NAME_CREDIT_CARD => [
+                'dummyPaymentCreditCard.cardType',
+                'dummyPaymentCreditCard.cardNumber',
+                'dummyPaymentCreditCard.nameOnCard',
+                'dummyPaymentCreditCard.cardExpiresMonth',
+                'dummyPaymentCreditCard.cardExpiresYear',
+                'dummyPaymentCreditCard.cardSecurityCode',
+            ]
         ],
     ];
 }
