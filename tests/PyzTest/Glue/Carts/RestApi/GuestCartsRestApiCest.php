@@ -10,6 +10,7 @@ namespace PyzTest\Glue\Carts\RestApi;
 use Codeception\Util\HttpCode;
 use PyzTest\Glue\Carts\CartsApiTester;
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
+use Spryker\Shared\Calculation\CalculationPriceMode;
 
 /**
  * Auto-generated group annotations
@@ -72,6 +73,16 @@ class GuestCartsRestApiCest
         $I->amSure('Returned resource is of type guest-carts')
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType(CartsRestApiConfig::RESOURCE_GUEST_CARTS);
+
+        $I->seeSingleResourceHasSelfLink(
+            $I->formatFullUrl(
+                '{resourceGuestCarts}/{guestCartUuid}',
+                [
+                    'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                    'guestCartUuid' => $I->findResourceIdFromResponseByJsonPath(),
+                ]
+            )
+        );
     }
 
     /**
@@ -173,7 +184,7 @@ class GuestCartsRestApiCest
      *
      * @return void
      */
-    public function requestFindGuestCart(CartsApiTester $I): void
+    public function requestGetGuestCarts(CartsApiTester $I): void
     {
         // Arrange
         $I->haveHttpHeader(
@@ -186,6 +197,8 @@ class GuestCartsRestApiCest
 
         // Assert
         $I->assertResponse(HttpCode::OK);
+        $I->seeResourceCollectionHasResourceWithId($this->fixtures->getGuestQuoteTransfer2()->getUuid());
+        $I->canSeeResponseLinksContainsSelfLink($I->formatFullUrl(CartsRestApiConfig::RESOURCE_GUEST_CARTS));
     }
 
     /**
@@ -195,7 +208,7 @@ class GuestCartsRestApiCest
      *
      * @return void
      */
-    public function requestFindGuestCartWithItemRelationship(CartsApiTester $I): void
+    public function requestGetGuestCart(CartsApiTester $I): void
     {
         // Arrange
         $I->haveHttpHeader(
@@ -203,13 +216,64 @@ class GuestCartsRestApiCest
             $this->fixtures->getValueForAnonymousCustomerReference2()
         );
 
+        $guestQuoteUuid = $this->fixtures->getGuestQuoteTransfer2()->getUuid();
+
+        // Act
+        $I->sendGET(
+            $I->formatUrl(
+                '{resourceGuestCarts}/{guestCartUuid}',
+                [
+                    'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                    'guestCartUuid' => $guestQuoteUuid,
+                ]
+            )
+        );
+
+        // Assert
+        $I->assertResponse(HttpCode::OK);
+
+        $I->amSure(sprintf('Returned resource is of type %s', CartsRestApiConfig::RESOURCE_GUEST_CARTS))
+            ->whenI()
+            ->seeResponseDataContainsSingleResourceOfType(CartsRestApiConfig::RESOURCE_GUEST_CARTS);
+
+        $I->amSure('Returned resource has correct id')
+            ->whenI()
+            ->seeSingleResourceIdEqualTo($guestQuoteUuid);
+
+        $I->seeSingleResourceHasSelfLink(
+            $I->formatFullUrl(
+                '{resourceGuestCarts}/{guestCartUuid}',
+                [
+                    'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                    'guestCartUuid' => $guestQuoteUuid,
+                ]
+            )
+        );
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    public function requestGetGuestCartWithItemRelationship(CartsApiTester $I): void
+    {
+        // Arrange
+        $I->haveHttpHeader(
+            CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
+            $this->fixtures->getValueForAnonymousCustomerReference2()
+        );
+        $guestQuoteUuid = $this->fixtures->getGuestQuoteTransfer2()->getUuid();
+
         // Act
         $I->sendGET(
             $I->formatUrl(
                 '{resourceGuestCarts}/{guestCartUuid}?include={guestCartItems}',
                 [
                     'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-                    'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
+                    'guestCartUuid' => $guestQuoteUuid,
                     'guestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
                 ]
             )
@@ -217,6 +281,10 @@ class GuestCartsRestApiCest
 
         // Assert
         $I->assertResponse(HttpCode::OK);
+
+        $I->amSure('Returned resource has correct id')
+            ->whenI()
+            ->seeSingleResourceIdEqualTo($guestQuoteUuid);
 
         $I->amSure('Returned resource has include of type guest-cart-items')
             ->whenI()
@@ -231,6 +299,17 @@ class GuestCartsRestApiCest
                 CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
                 $this->fixtures->getProductConcreteTransfer1()->getSku()
             );
+
+        $I->seeSingleResourceHasSelfLink(
+            $I->formatFullUrl(
+                '{resourceGuestCarts}/{guestCartUuid}?include={guestCartItems}',
+                [
+                    'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                    'guestCartUuid' => $guestQuoteUuid,
+                    'guestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+                ]
+            )
+        );
     }
 
     /**
@@ -240,7 +319,7 @@ class GuestCartsRestApiCest
      *
      * @return void
      */
-    public function requestFindGuestCartWithoutAnonymousCustomerUniqueId(CartsApiTester $I): void
+    public function requestGetGuestCartWithoutAnonymousCustomerUniqueId(CartsApiTester $I): void
     {
         // Act
         $I->sendGET(
@@ -271,23 +350,25 @@ class GuestCartsRestApiCest
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
             $this->fixtures->getValueForAnonymousCustomerReference3()
         );
+        $guestQuoteUuid = $this->fixtures->getEmptyGuestQuoteTransfer()->getUuid();
+        $formattedUrl = $I->formatUrl(
+            '{resourceGuestCarts}/{guestCartUuid}',
+            [
+                'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                'guestCartUuid' => $guestQuoteUuid,
+            ]
+        );
 
         // Act
         $I->sendPATCH(
-            $I->formatUrl(
-                '{resourceGuestCarts}/{guestCartUuid}',
-                [
-                    'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-                    'guestCartUuid' => $this->fixtures->getEmptyGuestQuoteTransfer()->getUuid(),
-                ]
-            ),
+            $formattedUrl,
             [
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                     'attributes' => [
                         'name' => $I::TEST_GUEST_CART_NAME,
                         'currency' => $I::CURRENCY_EUR,
-                        'priceMode' => $I::GROSS_MODE,
+                        'priceMode' => CalculationPriceMode::PRICE_MODE_GROSS,
                     ],
                 ],
             ]
@@ -295,6 +376,24 @@ class GuestCartsRestApiCest
 
         // Assert
         $I->assertResponse(HttpCode::OK);
+
+        $I->amSure('Returned resource has correct id')
+            ->whenI()
+            ->seeSingleResourceIdEqualTo($guestQuoteUuid);
+
+        $I->amSure(sprintf('Returned resource is of type %s', CartsRestApiConfig::RESOURCE_GUEST_CARTS))
+            ->whenI()
+            ->seeResponseDataContainsSingleResourceOfType(CartsRestApiConfig::RESOURCE_GUEST_CARTS);
+
+        $I->seeSingleResourceHasSelfLink(
+            $I->formatFullUrl(
+                '{resourceGuestCarts}/{guestCartUuid}',
+                [
+                    'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                    'guestCartUuid' => $I->findResourceIdFromResponseByJsonPath(),
+                ]
+            )
+        );
     }
 
     /**
@@ -327,7 +426,7 @@ class GuestCartsRestApiCest
                     'attributes' => [
                         'name' => $I::TEST_GUEST_CART_NAME,
                         'currency' => $I::CURRENCY_EUR,
-                        'priceMode' => $I::GROSS_MODE,
+                        'priceMode' => CalculationPriceMode::PRICE_MODE_GROSS,
                     ],
                 ],
             ]
@@ -361,7 +460,7 @@ class GuestCartsRestApiCest
                     'attributes' => [
                         'name' => $I::TEST_GUEST_CART_NAME,
                         'currency' => $I::CURRENCY_EUR,
-                        'priceMode' => $I::GROSS_MODE,
+                        'priceMode' => CalculationPriceMode::PRICE_MODE_GROSS,
                     ],
                 ],
             ]
@@ -396,7 +495,7 @@ class GuestCartsRestApiCest
                     'attributes' => [
                         'name' => $I::TEST_GUEST_CART_NAME,
                         'currency' => $I::CURRENCY_EUR,
-                        'priceMode' => $I::GROSS_MODE,
+                        'priceMode' => CalculationPriceMode::PRICE_MODE_GROSS,
                     ],
                 ],
             ]
@@ -421,6 +520,7 @@ class GuestCartsRestApiCest
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
             $this->fixtures->getValueForAnonymousCustomerReference2()
         );
+        $guestQuoteUuid = $this->fixtures->getGuestQuoteTransfer2()->getUuid();
 
         // Act
         $I->sendPOST(
@@ -428,7 +528,7 @@ class GuestCartsRestApiCest
                 '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}',
                 [
                     'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-                    'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
+                    'guestCartUuid' => $guestQuoteUuid,
                     'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
                 ]
             ),
@@ -446,9 +546,23 @@ class GuestCartsRestApiCest
         // Assert
         $I->assertResponse(HttpCode::CREATED);
 
-        $I->amSure('Returned resource is of type guest-carts')
+        $I->amSure('Returned resource has correct id')
+            ->whenI()
+            ->seeSingleResourceIdEqualTo($guestQuoteUuid);
+
+        $I->amSure(sprintf('Returned resource is of type %s', CartsRestApiConfig::RESOURCE_GUEST_CARTS))
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType(CartsRestApiConfig::RESOURCE_GUEST_CARTS);
+
+        $I->seeSingleResourceHasSelfLink(
+            $I->formatFullUrl(
+                '{resourceGuestCarts}/{guestCartUuid}',
+                [
+                    'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                    'guestCartUuid' => $guestQuoteUuid,
+                ]
+            )
+        );
     }
 
     /**
@@ -579,6 +693,7 @@ class GuestCartsRestApiCest
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
             $this->fixtures->getValueForAnonymousCustomerReference2()
         );
+        $guestQuoteUuid = $this->fixtures->getGuestQuoteTransfer2()->getUuid();
 
         // Act
         $I->sendPATCH(
@@ -586,7 +701,7 @@ class GuestCartsRestApiCest
                 '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}/{itemSku}',
                 [
                     'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-                    'guestCartUuid' => $this->fixtures->getGuestQuoteTransfer2()->getUuid(),
+                    'guestCartUuid' => $guestQuoteUuid,
                     'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
                     'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
                 ]
@@ -604,14 +719,24 @@ class GuestCartsRestApiCest
         // Assert
         $I->assertResponse(HttpCode::OK);
 
-        $I->amSure('Returned resource is of type guest-carts')
+        $I->amSure('Returned resource has correct id')
             ->whenI()
-            ->seeResponseDataContainsSingleResourceOfType(CartsRestApiConfig::RESOURCE_GUEST_CARTS);
+            ->seeSingleResourceIdEqualTo($guestQuoteUuid);
 
         $I->seeCartItemQuantityEqualsToQuantityInRequest(
             $I::QUANTITY_FOR_ITEM_UPDATE,
             CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
             $this->fixtures->getProductConcreteTransfer1()->getSku()
+        );
+
+        $I->seeSingleResourceHasSelfLink(
+            $I->formatFullUrl(
+                '{resourceGuestCarts}/{guestCartUuid}',
+                [
+                    'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                    'guestCartUuid' => $guestQuoteUuid,
+                ]
+            )
         );
     }
 

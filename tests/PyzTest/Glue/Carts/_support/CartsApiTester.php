@@ -29,15 +29,11 @@ class CartsApiTester extends ApiEndToEndTester
 {
     use _generated\CartsApiTesterActions;
 
-    public const TEST_USERNAME = 'test username';
-    public const TEST_PASSWORD = 'test password';
-
     public const QUANTITY_FOR_ITEM_UPDATE = 33;
     public const STORE_DE = 'DE';
     public const TEST_CART_NAME = 'Test cart name';
     public const TEST_GUEST_CART_NAME = 'Test guest cart name';
     public const CURRENCY_EUR = 'EUR';
-    public const GROSS_MODE = 'GROSS_MODE';
 
     public const ANONYMOUS_PREFIX = 'anonymous:';
 
@@ -60,5 +56,13 @@ class CartsApiTester extends ApiEndToEndTester
             $quantity,
             $this->grabDataFromResponseByJsonPath($jsonPath)[0]
         );
+    }
+
+    /**
+     * @return string|null
+     */
+    public function findResourceIdFromResponseByJsonPath(): ?string
+    {
+        return $this->grabDataFromResponseByJsonPath('$.data')[0]['id'];
     }
 }

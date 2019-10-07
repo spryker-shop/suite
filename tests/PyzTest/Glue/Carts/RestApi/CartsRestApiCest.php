@@ -10,6 +10,8 @@ namespace PyzTest\Glue\Carts\RestApi;
 use Codeception\Util\HttpCode;
 use PyzTest\Glue\Carts\CartsApiTester;
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
+use Spryker\Glue\GlueApplication\Rest\RequestConstantsInterface;
+use Spryker\Shared\Calculation\CalculationPriceMode;
 
 /**
  * Auto-generated group annotations
@@ -58,7 +60,7 @@ class CartsRestApiCest
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_CARTS,
                     'attributes' => [
-                        'priceMode' => $I::GROSS_MODE,
+                        'priceMode' => CalculationPriceMode::PRICE_MODE_GROSS,
                         'currency' => $I::CURRENCY_EUR,
                         'store' => $I::STORE_DE,
                         'name' => $I::TEST_CART_NAME,
@@ -69,6 +71,16 @@ class CartsRestApiCest
 
         // Assert
         $I->assertResponse(HttpCode::CREATED);
+
+        $I->seeSingleResourceHasSelfLink(
+            $I->formatFullUrl(
+                '{resourceCarts}/{cartUuid}',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'cartUuid' => $I->findResourceIdFromResponseByJsonPath(),
+                ]
+            )
+        );
 
         $I->amSure(sprintf('Returned resource is of type %s', CartsRestApiConfig::RESOURCE_CARTS))
             ->whenI()
@@ -91,7 +103,7 @@ class CartsRestApiCest
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_CARTS,
                     'attributes' => [
-                        'priceMode' => $I::GROSS_MODE,
+                        'priceMode' => CalculationPriceMode::PRICE_MODE_GROSS,
                         'currency' => $I::CURRENCY_EUR,
                         'store' => $I::STORE_DE,
                         'name' => $I::TEST_CART_NAME,
@@ -154,7 +166,7 @@ class CartsRestApiCest
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_CARTS,
                     'attributes' => [
-                        'priceMode' => $I::GROSS_MODE,
+                        'priceMode' => CalculationPriceMode::PRICE_MODE_GROSS,
                         'store' => $I::STORE_DE,
                         'name' => $I::TEST_CART_NAME,
                     ],
@@ -173,7 +185,7 @@ class CartsRestApiCest
      *
      * @return void
      */
-    public function requestFindCarts(CartsApiTester $I): void
+    public function requestGetCarts(CartsApiTester $I): void
     {
         // Arrange
         $this->authorizeCustomer($I);
@@ -184,6 +196,8 @@ class CartsRestApiCest
         // Assert
         $I->assertResponse(HttpCode::OK);
         $I->seeResponseDataContainsNonEmptyCollection();
+        $I->seeResourceCollectionHasResourceWithId($this->fixtures->getQuoteTransfer()->getUuid());
+        $I->canSeeResponseLinksContainsSelfLink($I->formatFullUrl(CartsRestApiConfig::RESOURCE_CARTS));
     }
 
     /**
@@ -193,10 +207,11 @@ class CartsRestApiCest
      *
      * @return void
      */
-    public function requestFindCart(CartsApiTester $I): void
+    public function requestGetCart(CartsApiTester $I): void
     {
         // Arrange
         $this->authorizeCustomer($I);
+        $quoteUuid = $this->fixtures->getQuoteTransfer()->getUuid();
 
         // Act
         $I->sendGET(
@@ -204,13 +219,31 @@ class CartsRestApiCest
                 '{resourceCarts}/{cartUuid}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                    'cartUuid' => $quoteUuid,
                 ]
             )
         );
 
         // Assert
         $I->assertResponse(HttpCode::OK);
+
+        $I->amSure(sprintf('Returned resource is of type %s', CartsRestApiConfig::RESOURCE_CARTS))
+            ->whenI()
+            ->seeResponseDataContainsSingleResourceOfType(CartsRestApiConfig::RESOURCE_CARTS);
+
+        $I->amSure('Returned resource has correct id')
+            ->whenI()
+            ->seeSingleResourceIdEqualTo($quoteUuid);
+
+        $I->seeSingleResourceHasSelfLink(
+            $I->formatFullUrl(
+                '{resourceCarts}/{cartUuid}',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'cartUuid' => $quoteUuid,
+                ]
+            )
+        );
     }
 
     /**
@@ -220,7 +253,7 @@ class CartsRestApiCest
      *
      * @return void
      */
-    public function requestFindCartWithNonExistingUuid(CartsApiTester $I): void
+    public function requestGetCartWithNonExistingUuid(CartsApiTester $I): void
     {
         // Arrange
         $this->authorizeCustomer($I);
@@ -247,7 +280,7 @@ class CartsRestApiCest
      *
      * @return void
      */
-    public function requestFindCartWithoutAuthorizationToken(CartsApiTester $I): void
+    public function requestGetCartWithoutAuthorizationToken(CartsApiTester $I): void
     {
         // Act
         $I->sendGET(
@@ -271,10 +304,11 @@ class CartsRestApiCest
      *
      * @return void
      */
-    public function requestFindCartWithItemRelationship(CartsApiTester $I): void
+    public function requestGetCartWithItemRelationship(CartsApiTester $I): void
     {
         // Arrange
         $this->authorizeCustomer($I);
+        $quoteUuid = $this->fixtures->getQuoteTransfer()->getUuid();
 
         // Act
         $I->sendGET(
@@ -282,14 +316,22 @@ class CartsRestApiCest
                 '{resourceCarts}/{cartUuid}?include={items}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
-                    CartsRestApiConfig::RESOURCE_CART_ITEMS => CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                    'cartUuid' => $quoteUuid,
+                    'items' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
                 ]
             )
         );
 
         // Assert
         $I->assertResponse(HttpCode::OK);
+
+        $I->amSure('Returned resource has correct id')
+            ->whenI()
+            ->seeSingleResourceIdEqualTo($quoteUuid);
+
+        $I->amSure(sprintf('Returned resource is of type %s', CartsRestApiConfig::RESOURCE_CARTS))
+            ->whenI()
+            ->seeResponseDataContainsSingleResourceOfType(CartsRestApiConfig::RESOURCE_CARTS);
 
         $I->amSure('Returned resource has include of type items')
             ->whenI()
@@ -304,6 +346,17 @@ class CartsRestApiCest
                 CartsRestApiConfig::RESOURCE_CART_ITEMS,
                 $this->fixtures->getProductConcreteTransfer1()->getSku()
             );
+
+        $I->seeSingleResourceHasSelfLink(
+            $I->formatFullUrl(
+                '{resourceCarts}/{cartUuid}?include={items}',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'cartUuid' => $quoteUuid,
+                    'items' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                ]
+            )
+        );
     }
 
     /**
@@ -319,7 +372,8 @@ class CartsRestApiCest
         $this->authorizeCustomer($I);
         $emptyQuoteTransfer = $this->fixtures->getEmptyQuoteTransfer();
         $entityTag = $this->fixtures->getEmptyCartResourceEntityTag();
-        $I->haveHttpHeader('If-Match', $entityTag);
+        $I->haveHttpHeader(RequestConstantsInterface::HEADER_IF_MATCH, $entityTag);
+        $emptyQuoteUuid = $emptyQuoteTransfer->getUuid();
 
         // Act
         $I->sendPATCH(
@@ -327,7 +381,7 @@ class CartsRestApiCest
                 '{resourceCarts}/{cartUuid}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $emptyQuoteTransfer->getUuid(),
+                    'cartUuid' => $emptyQuoteUuid,
                 ]
             ),
             [
@@ -336,7 +390,7 @@ class CartsRestApiCest
                     'attributes' => [
                         'name' => $I::TEST_CART_NAME,
                         'currency' => $I::CURRENCY_EUR,
-                        'priceMode' => $I::GROSS_MODE,
+                        'priceMode' => CalculationPriceMode::PRICE_MODE_GROSS,
                     ],
                 ],
             ]
@@ -344,6 +398,24 @@ class CartsRestApiCest
 
         // Assert
         $I->assertResponse(HttpCode::OK);
+
+        $I->amSure('Returned resource has correct id')
+            ->whenI()
+            ->seeSingleResourceIdEqualTo($emptyQuoteUuid);
+
+        $I->amSure(sprintf('Returned resource is of type %s', CartsRestApiConfig::RESOURCE_CARTS))
+            ->whenI()
+            ->seeResponseDataContainsSingleResourceOfType(CartsRestApiConfig::RESOURCE_CARTS);
+
+        $I->seeSingleResourceHasSelfLink(
+            $I->formatFullUrl(
+                '{resourceCarts}/{cartUuid}',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'cartUuid' => $I->findResourceIdFromResponseByJsonPath(),
+                ]
+            )
+        );
     }
 
     /**
@@ -361,7 +433,7 @@ class CartsRestApiCest
         $cartUuid = $quoteTransfer->getUuid();
         $entityTag = $this->fixtures->getCartResourceEntityTag();
 
-        $I->haveHttpHeader('If-Match', $entityTag);
+        $I->haveHttpHeader(RequestConstantsInterface::HEADER_IF_MATCH, $entityTag);
 
         // Act
         $I->sendPATCH(
@@ -378,7 +450,7 @@ class CartsRestApiCest
                     'attributes' => [
                         'name' => $I::TEST_CART_NAME,
                         'currency' => $I::CURRENCY_EUR,
-                        'priceMode' => $I::GROSS_MODE,
+                        'priceMode' => CalculationPriceMode::PRICE_MODE_GROSS,
                     ],
                 ],
             ]
@@ -400,7 +472,7 @@ class CartsRestApiCest
         // Arrange
         $this->authorizeCustomer($I);
         $entityTag = $this->fixtures->getCartResourceEntityTag();
-        $I->haveHttpHeader('If-Match', $entityTag);
+        $I->haveHttpHeader(RequestConstantsInterface::HEADER_IF_MATCH, $entityTag);
 
         // Act
         $I->sendPATCH(
@@ -411,7 +483,7 @@ class CartsRestApiCest
                     'attributes' => [
                         'name' => $I::TEST_CART_NAME,
                         'currency' => $I::CURRENCY_EUR,
-                        'priceMode' => $I::GROSS_MODE,
+                        'priceMode' => CalculationPriceMode::PRICE_MODE_GROSS,
                     ],
                 ],
             ]
@@ -446,7 +518,7 @@ class CartsRestApiCest
                     'attributes' => [
                         'name' => $I::TEST_CART_NAME,
                         'currency' => $I::CURRENCY_EUR,
-                        'priceMode' => $I::GROSS_MODE,
+                        'priceMode' => CalculationPriceMode::PRICE_MODE_GROSS,
                     ],
                 ],
             ]
@@ -467,6 +539,7 @@ class CartsRestApiCest
     {
         // Arrange
         $this->authorizeCustomer($I);
+        $quoteUuid = $this->fixtures->getQuoteTransfer()->getUuid();
 
         // Act
         $I->sendPOST(
@@ -474,7 +547,7 @@ class CartsRestApiCest
                 '{resourceCarts}/{cartUuid}/{resourceCartItems}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                    'cartUuid' => $quoteUuid,
                     'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
                 ]
             ),
@@ -492,9 +565,30 @@ class CartsRestApiCest
         // Assert
         $I->assertResponse(HttpCode::CREATED);
 
-        $I->amSure('Returned resource is of type carts')
+        $I->amSure('Returned resource has correct id')
+            ->whenI()
+            ->seeSingleResourceIdEqualTo($quoteUuid);
+
+        $I->amSure(sprintf('Returned resource is of type %s', CartsRestApiConfig::RESOURCE_CARTS))
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType(CartsRestApiConfig::RESOURCE_CARTS);
+
+        $I->amSure('Returned resource has include of type items')
+            ->whenI()
+            ->seeIncludesContainsResourceByTypeAndId(
+                CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                $this->fixtures->getProductConcreteTransfer1()->getSku()
+            );
+
+        $I->seeSingleResourceHasSelfLink(
+            $I->formatFullUrl(
+                '{resourceCarts}/{cartUuid}',
+                [
+                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                    'cartUuid' => $I->findResourceIdFromResponseByJsonPath(),
+                ]
+            )
+        );
     }
 
     /**
@@ -639,7 +733,7 @@ class CartsRestApiCest
         // Assert
         $I->assertResponse(HttpCode::OK);
 
-        $I->amSure('Returned resource is of type carts')
+        $I->amSure(sprintf('Returned resource is of type %s', CartsRestApiConfig::RESOURCE_CARTS))
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType(CartsRestApiConfig::RESOURCE_CARTS);
 
