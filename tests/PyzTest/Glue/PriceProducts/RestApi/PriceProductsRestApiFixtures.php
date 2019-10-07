@@ -85,8 +85,7 @@ class PriceProductsRestApiFixtures implements FixturesBuilderInterface, Fixtures
     protected function createPriceProduct(PriceProductsApiTester $I): void
     {
         $priceTypeTransfer = $I->havePriceType([PriceTypeTransfer::NAME => 'PRICE_TYPE_NAME']);
-        $currencyId = $I->haveCurrency();
-        $currencyTransfer = $I->getLocator()->currency()->facade()->getByIdCurrency($currencyId);
+        $currencyTransfer = $I->getLocator()->currency()->facade()->getCurrent();
 
         $this->priceProductTransfer = $I->havePriceProduct([
             PriceProductTransfer::ID_PRODUCT => $this->productConcreteTransfer->getIdProductConcrete(),
