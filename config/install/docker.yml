@@ -30,9 +30,6 @@ sections:
         translator-generate-cache:
             command: "vendor/bin/console translator:generate-cache"
 
-        rest-api-generate-documentation:
-            command: "vendor/bin/console rest-api:generate:documentation"
-
     build-development:
         generate-transfer-databuilders:
             command: "vendor/bin/console transfer:databuilder:generate"
