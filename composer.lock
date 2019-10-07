@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "554de023eb27a674f23e1685eb5627a9",
+    "content-hash": "178bfbe6406d855e1a438a1b91cb932d",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5396,11 +5396,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/ps-9892/dev-bugfixing-and-refactoring",
+            "version": "dev-feature/ps-9892/dev-adding-shipment-cost-to-approval-request",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "3ed2f6f8c3772abd866c1ba31bf253d5df01f21a"
+                "reference": "a5d8592bc0a31fdeba91cbd537e870100abd335a"
             },
             "require": {
                 "php": ">=7.1"
@@ -5838,6 +5838,7 @@
                 "spryker/quote": "*",
                 "spryker/quote-approval": "*",
                 "spryker/quote-approval-extension": "*",
+                "spryker/quote-approval-shipment-connector": "*",
                 "spryker/quote-extension": "*",
                 "spryker/quote-request": "*",
                 "spryker/quote-request-agent": "*",
@@ -5977,15 +5978,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-04T12:48:20+00:00"
+            "time": "2019-10-07T09:06:59+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/ps-9892/dev-bugfixing-and-refactoring",
+            "version": "dev-feature/ps-9892/dev-adding-shipment-cost-to-approval-request",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "8c4e5086dd50e31e78a3e971494a5dc50cb948bf"
+                "reference": "5fa00c67b93b26d41722c69e6d6baa8eb953c7c1"
             },
             "require": {
                 "php": ">=7.1"
@@ -6072,6 +6073,7 @@
                 "spryker-shop/quick-order-page": "*",
                 "spryker-shop/quick-order-page-extension": "*",
                 "spryker-shop/quote-approval-widget": "*",
+                "spryker-shop/quote-approval-widget-extension": "*",
                 "spryker-shop/quote-request-agent-page": "*",
                 "spryker-shop/quote-request-agent-page-extension": "*",
                 "spryker-shop/quote-request-agent-widget": "*",
@@ -6119,7 +6121,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-10-04T09:44:07+00:00"
+            "time": "2019-10-07T09:07:16+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
