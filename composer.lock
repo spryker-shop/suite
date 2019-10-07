@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.112.14",
+            "version": "3.112.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "491960b26d7c02d8d9c9c998646d25a99e10fd16"
+                "reference": "ccbfadde0ea60c5396e0408711a927200cb1898c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/491960b26d7c02d8d9c9c998646d25a99e10fd16",
-                "reference": "491960b26d7c02d8d9c9c998646d25a99e10fd16",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/ccbfadde0ea60c5396e0408711a927200cb1898c",
+                "reference": "ccbfadde0ea60c5396e0408711a927200cb1898c",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-10-03T18:12:08+00:00"
+            "time": "2019-10-04T18:08:52+00:00"
         },
         {
             "name": "codeitnowin/barcode",
@@ -40557,22 +40557,24 @@
         },
         {
             "name": "spryker-sdk/spryk",
-            "version": "0.2.2",
+            "version": "0.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/spryk.git",
-                "reference": "51c0d0c98257ea5d63acad3a7f791ca6c59215c9"
+                "reference": "55acb93313e0b957c3009c0629043e7aa20c9dc8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/51c0d0c98257ea5d63acad3a7f791ca6c59215c9",
-                "reference": "51c0d0c98257ea5d63acad3a7f791ca6c59215c9",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/55acb93313e0b957c3009c0629043e7aa20c9dc8",
+                "reference": "55acb93313e0b957c3009c0629043e7aa20c9dc8",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "roave/better-reflection": "^2.0 || ^3.0",
                 "spryker/config": "^3.0.0",
+                "spryker/doctrine-inflector": "^1.0.0",
+                "spryker/glue-application-extension": "^1.1.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/twig": "^3.0.0",
@@ -40594,7 +40596,7 @@
                 "phpstan/phpstan-strict-rules": "^0.11.0",
                 "spryker/code-sniffer": "*",
                 "spryker/testify": "*",
-                "symfony/var-dumper": "^4.0.9"
+                "symfony/var-dumper": "*"
             },
             "type": "library",
             "extra": {
@@ -40612,20 +40614,20 @@
                 "proprietary"
             ],
             "description": "Spryk module",
-            "time": "2019-07-25T10:02:28+00:00"
+            "time": "2019-10-07T07:44:55+00:00"
         },
         {
             "name": "spryker-sdk/spryk-gui",
-            "version": "0.1.4",
+            "version": "0.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/spryk-gui.git",
-                "reference": "5ce761d3a6c21661c8d85408e19c85edb383faed"
+                "reference": "3664ca09e586425e865cc54a3f9e3cb943afadcf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk-gui/zipball/5ce761d3a6c21661c8d85408e19c85edb383faed",
-                "reference": "5ce761d3a6c21661c8d85408e19c85edb383faed",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk-gui/zipball/3664ca09e586425e865cc54a3f9e3cb943afadcf",
+                "reference": "3664ca09e586425e865cc54a3f9e3cb943afadcf",
                 "shasum": ""
             },
             "require": {
@@ -40660,7 +40662,7 @@
                 "proprietary"
             ],
             "description": "SprykGui module",
-            "time": "2019-07-26T10:26:49+00:00"
+            "time": "2019-10-07T07:45:13+00:00"
         },
         {
             "name": "spryker/architecture-sniffer",
