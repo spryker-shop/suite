@@ -7,7 +7,6 @@
 
 namespace PyzTest\Glue\PriceProducts\RestApi;
 
-use Generated\Shared\Transfer\CurrencyTransfer;
 use Generated\Shared\Transfer\MoneyValueTransfer;
 use Generated\Shared\Transfer\PriceProductTransfer;
 use Generated\Shared\Transfer\PriceTypeTransfer;
@@ -85,8 +84,8 @@ class PriceProductsRestApiFixtures implements FixturesBuilderInterface, Fixtures
      */
     protected function createPriceProduct(PriceProductsApiTester $I): void
     {
-        $priceTypeTransfer = $I->havePriceType([PriceTypeTransfer::NAME => 'GROSS_MODE']);
-        $currencyTransfer = $I->haveCurrencyTransfer([CurrencyTransfer::CODE => 'EUR']);
+        $priceTypeTransfer = $I->havePriceType([PriceTypeTransfer::NAME => 'DEFAULT']);
+        $currencyTransfer = $I->getLocator()->currency()->facade()->getDefaultCurrencyForCurrentStore();
 
         $this->priceProductTransfer = $I->havePriceProduct([
             PriceProductTransfer::ID_PRODUCT => $this->productConcreteTransfer->getIdProductConcrete(),
