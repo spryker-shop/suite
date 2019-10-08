@@ -14,7 +14,6 @@ use Spryker\Zed\Acl\Communication\Plugin\Bootstrap\AclBootstrapProvider;
 use Spryker\Zed\Api\Communication\Plugin\ApiServiceProviderPlugin;
 use Spryker\Zed\Api\Communication\Plugin\ServiceProvider\ApiRoutingServiceProvider;
 use Spryker\Zed\Application\ApplicationDependencyProvider as SprykerApplicationDependencyProvider;
-use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\RequestServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\SaveSessionServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\SubRequestServiceProvider;
 use Spryker\Zed\Assertion\Communication\Plugin\ServiceProvider\AssertionServiceProvider;
@@ -60,7 +59,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new SubRequestServiceProvider(),
             new MonitoringRequestTransactionServiceProvider(),
             new WebProfilerServiceProvider(),
-            new ZedHstsServiceProvider(),
         ];
 
         $providers = array_merge($providers, $coreProviders);
@@ -99,9 +97,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new AuthBootstrapProvider(),
             new AclBootstrapProvider(),
             new GatewayServiceProviderPlugin(),
-            new HttpFragmentServiceProvider(),
             new MonitoringRequestTransactionServiceProvider(),
-            new RequestServiceProvider(),
             new SessionServiceProvider(),
             new SubRequestServiceProvider(),
             new SprykerSessionServiceProvider(),
