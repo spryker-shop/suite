@@ -326,13 +326,8 @@ $config[RouterConstants::ZED_SSL_EXCLUDED_ROUTE_NAMES] = ['heartbeat/index'];
 // ---------- SSL
 $config[SessionConstants::YVES_SSL_ENABLED] = false;
 $config[ZedRequestConstants::ZED_API_SSL_ENABLED] = false;
-$config[ApplicationConstants::ZED_SSL_ENABLED] =
-    $config[SessionConstants::ZED_SSL_ENABLED]
-    = $config[HttpConstants::ZED_SSL_ENABLED]
-    = false;
-$config[ApplicationConstants::ZED_SSL_EXCLUDED]
-    = $config[HttpConstants::ZED_SSL_EXCLUDED]
-    = ['heartbeat/index'];
+$config[ApplicationConstants::ZED_SSL_ENABLED] = $config[SessionConstants::ZED_SSL_ENABLED] = false;
+$config[ApplicationConstants::ZED_SSL_EXCLUDED] = ['heartbeat/index'];
 
 // ---------- Error handling
 $config[ErrorHandlerConstants::YVES_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Yves/errorpage/error.html';

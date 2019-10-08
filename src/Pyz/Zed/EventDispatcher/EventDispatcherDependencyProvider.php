@@ -14,7 +14,6 @@ use Spryker\Zed\Http\Communication\Plugin\EventDispatcher\CookieEventDispatcherP
 use Spryker\Zed\Http\Communication\Plugin\EventDispatcher\FragmentEventDispatcherPlugin;
 use Spryker\Zed\Http\Communication\Plugin\EventDispatcher\HeaderEventDispatcherPlugin;
 use Spryker\Zed\Http\Communication\Plugin\EventDispatcher\HstsHeaderEventDispatcher;
-use Spryker\Zed\Http\Communication\Plugin\EventDispatcher\SslEventDispatcherPlugin;
 use Spryker\Zed\Locale\Communication\Plugin\EventDispatcher\LocaleEventDispatcherPlugin;
 use Spryker\Zed\Router\Communication\Plugin\EventDispatcher\RouterListenerEventDispatcherPlugin;
 use Spryker\Zed\Router\Communication\Plugin\EventDispatcher\RouterLocaleEventDispatcherPlugin;
@@ -40,7 +39,6 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
             new FragmentEventDispatcherPlugin(),
             new HeaderEventDispatcherPlugin(),
             new HstsHeaderEventDispatcher(),
-            new SslEventDispatcherPlugin(),
         ];
     }
 }

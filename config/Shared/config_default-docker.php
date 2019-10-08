@@ -79,7 +79,9 @@ $CURRENT_STORE = Store::getInstance()->getStoreName();
 /* ZED */
 $config[ApplicationConstants::HOST_ZED] = getenv('SPRYKER_ZED_HOST');
 $config[SessionConstants::ZED_SESSION_COOKIE_DOMAIN] = getenv('SPRYKER_BE_HOST');
-$config[ApplicationConstants::ZED_TRUSTED_HOSTS] = $config[HttpConstants::ZED_TRUSTED_HOSTS] = [];
+$config[ApplicationConstants::ZED_TRUSTED_HOSTS]
+    = $config[HttpConstants::ZED_TRUSTED_HOSTS]
+    = [];
 $config[ApplicationConstants::PORT_ZED] = getenv('SPRYKER_ZED_PORT') ? ':' . getenv('SPRYKER_ZED_PORT') : '';
 $config[ApplicationConstants::PORT_SSL_ZED] = '';
 $config[ApplicationConstants::BASE_URL_ZED] = sprintf(
@@ -144,13 +146,9 @@ $config[ApplicationConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG]
     = $HSTS_CONFIG;
 
 $config[ZedRequestConstants::ZED_API_SSL_ENABLED] = false;
-$config[ApplicationConstants::ZED_SSL_ENABLED]
-    = $config[HttpConstants::ZED_SSL_ENABLED]
-    = false;
+$config[ApplicationConstants::ZED_SSL_ENABLED] = false;
 $config[SessionConstants::ZED_SSL_ENABLED] = (bool)getenv('SPRYKER_SSL_ENABLE');
-$config[ApplicationConstants::ZED_SSL_EXCLUDED]
-    = $config[HttpConstants::ZED_SSL_EXCLUDED]
-    = ['heartbeat/index'];
+$config[ApplicationConstants::ZED_SSL_EXCLUDED] = ['heartbeat/index'];
 
 $config[ErrorHandlerConstants::DISPLAY_ERRORS] = true;
 $config[ErrorHandlerConstants::ZED_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Zed/errorpage/error.html';
@@ -414,13 +412,9 @@ $config[ApplicationConstants::YVES_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG]
     = $HSTS_CONFIG;
 
 $config[SessionConstants::YVES_SSL_ENABLED] = false;
-$config[ApplicationConstants::YVES_SSL_ENABLED]
-    = $config[HttpConstants::YVES_SSL_ENABLED]
-    = (bool)getenv('SPRYKER_SSL_ENABLE');
+$config[ApplicationConstants::YVES_SSL_ENABLED] = (bool)getenv('SPRYKER_SSL_ENABLE');
 $config[SessionConstants::YVES_SSL_ENABLED] = (bool)getenv('SPRYKER_SSL_ENABLE');
-$config[ApplicationConstants::YVES_SSL_EXCLUDED]
-    = $config[HttpConstants::YVES_SSL_EXCLUDED]
-    = [
+$config[ApplicationConstants::YVES_SSL_EXCLUDED] = [
         'heartbeat' => '/heartbeat',
     ];
 

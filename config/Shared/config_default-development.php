@@ -16,7 +16,6 @@ use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebExceptionErrorRenderer;
 use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\GlueApplication\GlueApplicationConstants;
-use Spryker\Shared\Http\HttpConstants;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
@@ -55,12 +54,8 @@ $config[WebProfilerConstants::ENABLE_WEB_PROFILER]
 
 $config[RouterConstants::YVES_IS_SSL_ENABLED] = false;
 $config[RouterConstants::ZED_IS_SSL_ENABLED] = false;
-$config[ApplicationConstants::ZED_SSL_ENABLED]
-    = $config[HttpConstants::ZED_SSL_ENABLED]
-    = false;
-$config[ApplicationConstants::YVES_SSL_ENABLED]
-    = $config[HttpConstants::YVES_SSL_ENABLED]
-    = false;
+$config[ApplicationConstants::ZED_SSL_ENABLED] = false;
+$config[ApplicationConstants::YVES_SSL_ENABLED] = false;
 
 // ---------- Propel
 $config[PropelConstants::PROPEL_DEBUG] = false;
