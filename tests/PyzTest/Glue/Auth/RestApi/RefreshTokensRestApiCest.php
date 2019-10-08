@@ -62,6 +62,7 @@ class RefreshTokensRestApiCest
 
         //Assert
         $this->assertResponse($I, HttpCode::CREATED);
+        $I->seeSingleResourceHasSelfLink($I->formatFullUrl(AuthRestApiConfig::RESOURCE_REFRESH_TOKENS));
     }
 
     /**

@@ -13,7 +13,6 @@ use Generated\Shared\Transfer\CompanyUserTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\OauthResponseTransfer;
 use PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester;
-use PyzTest\Yves\Customer\PageObject\Customer;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
@@ -32,6 +31,16 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
     protected $oauthResponseTransferForNonCompanyUser;
 
     /**
+     * @var \Generated\Shared\Transfer\OauthResponseTransfer
+     */
+    protected $oauthResponseTransferForCustomerWithTwoCompanyUsers;
+
+    /**
+     * @var \Generated\Shared\Transfer\CompanyUserTransfer
+     */
+    protected $nonDefaultCompanyUserTransfer;
+
+    /**
      * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
      *
      * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
@@ -42,6 +51,7 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
 
         $this->oauthResponseTransferForCompanyUser = $this->createOauthResponseTransferForCompanyUser($I);
         $this->oauthResponseTransferForNonCompanyUser = $this->createOauthResponseTransferForNotCompanyUser($I);
+        $this->oauthResponseTransferForCustomerWithTwoCompanyUsers = $this->createOauthResponseTransferForCustomerWithTwoCompanyUsers($I);
 
         return $this;
     }
@@ -60,6 +70,22 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
     public function getOauthResponseTransferForNonCompanyUser(): OauthResponseTransfer
     {
         return $this->oauthResponseTransferForNonCompanyUser;
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\OauthResponseTransfer
+     */
+    public function getOauthResponseTransferForCustomerWithTwoCompanyUsers(): OauthResponseTransfer
+    {
+        return $this->oauthResponseTransferForCustomerWithTwoCompanyUsers;
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\CompanyUserTransfer
+     */
+    public function getNonDefaultCompanyUserTransfer(): CompanyUserTransfer
+    {
+        return $this->nonDefaultCompanyUserTransfer;
     }
 
     /**
@@ -89,6 +115,18 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
     /**
      * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
      *
+     * @return \Generated\Shared\Transfer\OauthResponseTransfer
+     */
+    protected function createOauthResponseTransferForCustomerWithTwoCompanyUsers(CompanyUserAuthRestApiTester $I): OauthResponseTransfer
+    {
+        $customerTransfer = $this->createCustomerTransferWithTwoCompanyUsers($I);
+
+        return $I->haveAuth($customerTransfer);
+    }
+
+    /**
+     * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
+     *
      * @return \Generated\Shared\Transfer\CustomerTransfer
      */
     protected function createCustomerTransferWithCompanyUser(CompanyUserAuthRestApiTester $I): CustomerTransfer
@@ -99,6 +137,27 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
         ]);
 
         $this->createCompanyUserTransfer($I, $customerTransfer);
+
+        return $customerTransfer;
+    }
+
+    /**
+     * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
+     *
+     * @return \Generated\Shared\Transfer\CustomerTransfer
+     */
+    protected function createCustomerTransferWithTwoCompanyUsers(CompanyUserAuthRestApiTester $I): CustomerTransfer
+    {
+        $customerTransfer = $I->haveCustomer([
+            CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
+            CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,
+        ]);
+
+        $this->createCompanyUserTransfer($I, $customerTransfer, [
+            CompanyUserTransfer::IS_DEFAULT => true,
+        ]);
+
+        $this->nonDefaultCompanyUserTransfer = $this->createCompanyUserTransfer($I, $customerTransfer);
 
         return $customerTransfer;
     }
@@ -119,10 +178,11 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
     /**
      * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     * @param array $seed
      *
      * @return \Generated\Shared\Transfer\CompanyUserTransfer
      */
-    protected function createCompanyUserTransfer(CompanyUserAuthRestApiTester $I, CustomerTransfer $customerTransfer): CompanyUserTransfer
+    protected function createCompanyUserTransfer(CompanyUserAuthRestApiTester $I, CustomerTransfer $customerTransfer, array $seed = []): CompanyUserTransfer
     {
         $companyTransfer = $I->haveActiveCompany([
             CompanyTransfer::STATUS => 'approved',
@@ -132,7 +192,7 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
             CompanyUserTransfer::CUSTOMER => $customerTransfer,
             CompanyUserTransfer::FK_COMPANY => $companyTransfer->getIdCompany(),
             CompanyUserTransfer::FK_COMPANY_BUSINESS_UNIT => $this->createCompanyBusinessUnit($companyTransfer, $I)->getIdCompanyBusinessUnit(),
-        ]);
+        ] + $seed);
     }
 
     /**

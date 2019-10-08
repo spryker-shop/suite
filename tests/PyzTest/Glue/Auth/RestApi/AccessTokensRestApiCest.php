@@ -62,6 +62,7 @@ class AccessTokensRestApiCest
         //Assert
         $this->assertResponse($I, HttpCode::CREATED);
         $I->assertNotEmpty($I->grabDataFromResponseByJsonPath('$.data.attributes.accessToken'));
+        $I->seeSingleResourceHasSelfLink($I->formatFullUrl(AuthRestApiConfig::RESOURCE_ACCESS_TOKENS));
     }
 
     /**

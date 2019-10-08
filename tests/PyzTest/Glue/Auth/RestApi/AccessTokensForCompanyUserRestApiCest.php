@@ -62,6 +62,7 @@ class AccessTokensForCompanyUserRestApiCest
         //Assert
         $this->assertResponse($I, HttpCode::CREATED);
         $I->assertNull(current($I->grabDataFromResponseByJsonPath('$.data.attributes.idCompanyUser')));
+        $I->seeSingleResourceHasSelfLink($I->formatFullUrl(AuthRestApiConfig::RESOURCE_ACCESS_TOKENS));
     }
 
     /**
@@ -87,6 +88,59 @@ class AccessTokensForCompanyUserRestApiCest
         //Assert
         $this->assertResponse($I, HttpCode::CREATED);
         $I->assertNotNull(current($I->grabDataFromResponseByJsonPath('$.data.attributes.idCompanyUser')));
+        $I->seeSingleResourceHasSelfLink($I->formatFullUrl(AuthRestApiConfig::RESOURCE_ACCESS_TOKENS));
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
+     *
+     * @return void
+     */
+    public function requestAccessTokenForCustomerWithTwoCompanyUserWithoutDefaultOne(AuthRestApiTester $I): void
+    {
+        //Act
+        $I->sendPOST(AuthRestApiConfig::RESOURCE_ACCESS_TOKENS, [
+            'data' => [
+                'type' => AuthRestApiConfig::RESOURCE_ACCESS_TOKENS,
+                'attributes' => [
+                    'username' => $this->fixtures->getCustomerTransferWithTwoCompanyUsersWithoutDefaultOne()->getEmail(),
+                    'password' => AccessTokensRestApiFixtures::TEST_PASSWORD,
+                ],
+            ],
+        ]);
+
+        //Assert
+        $this->assertResponse($I, HttpCode::CREATED);
+        $I->assertNull(current($I->grabDataFromResponseByJsonPath('$.data.attributes.idCompanyUser')));
+        $I->seeSingleResourceHasSelfLink($I->formatFullUrl(AuthRestApiConfig::RESOURCE_ACCESS_TOKENS));
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
+     *
+     * @return void
+     */
+    public function requestAccessTokenForCustomerWithTwoCompanyUserWithDefaultOne(AuthRestApiTester $I): void
+    {
+        //Act
+        $I->sendPOST(AuthRestApiConfig::RESOURCE_ACCESS_TOKENS, [
+            'data' => [
+                'type' => AuthRestApiConfig::RESOURCE_ACCESS_TOKENS,
+                'attributes' => [
+                    'username' => $this->fixtures->getCustomerTransferWithTwoCompanyUsersWithDefaultOne()->getEmail(),
+                    'password' => AccessTokensRestApiFixtures::TEST_PASSWORD,
+                ],
+            ],
+        ]);
+
+        //Assert
+        $this->assertResponse($I, HttpCode::CREATED);
+        $I->assertNotNull(current($I->grabDataFromResponseByJsonPath('$.data.attributes.idCompanyUser')));
+        $I->seeSingleResourceHasSelfLink($I->formatFullUrl(AuthRestApiConfig::RESOURCE_ACCESS_TOKENS));
     }
 
     /**
