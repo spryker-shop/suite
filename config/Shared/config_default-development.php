@@ -10,7 +10,6 @@ use Pyz\Shared\Scheduler\SchedulerConfig;
 use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Api\ApiConstants;
 use Spryker\Shared\Application\ApplicationConstants;
-use Spryker\Shared\Config\ConfigConstants;
 use Spryker\Shared\DocumentationGeneratorRestApi\DocumentationGeneratorRestApiConstants;
 use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebExceptionErrorRenderer;
@@ -38,6 +37,7 @@ use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use SprykerShop\Shared\CalculationPage\CalculationPageConstants;
 use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
 use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
+use SprykerShop\Shared\WebProfilerWidget\WebProfilerWidgetConstants;
 
 $CURRENT_STORE = Store::getInstance()->getStoreName();
 
@@ -48,9 +48,8 @@ $config[ApplicationConstants::ENABLE_APPLICATION_DEBUG]
     = $config[ShopApplicationConstants::ENABLE_APPLICATION_DEBUG]
     = true;
 
-$config[WebProfilerConstants::ENABLE_WEB_PROFILER]
-    = $config[ConfigConstants::ENABLE_WEB_PROFILER]
-    = true;
+$config[WebProfilerConstants::IS_WEB_PROFILER_ENABLED] = true;
+$config[WebProfilerWidgetConstants::IS_WEB_PROFILER_ENABLED] = true;
 
 $config[ApplicationConstants::YVES_SSL_ENABLED] = false;
 $config[ApplicationConstants::ZED_SSL_ENABLED] = false;
