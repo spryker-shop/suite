@@ -29,7 +29,6 @@ use Spryker\Zed\Session\Communication\Plugin\ServiceProvider\SessionServiceProvi
 use Spryker\Zed\Translator\Communication\Plugin\Application\TranslatorApplicationPlugin;
 use Spryker\Zed\Twig\Communication\Plugin\Application\TwigApplicationPlugin;
 use Spryker\Zed\WebProfiler\Communication\Plugin\Application\WebProfilerApplicationPlugin;
-use Spryker\Zed\ZedRequest\Communication\Plugin\GatewayServiceProviderPlugin;
 use Spryker\Zed\WebProfiler\Communication\Plugin\ServiceProvider\WebProfilerServiceProvider;
 
 class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
@@ -53,7 +52,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new SessionServiceProvider(),
             new SprykerSessionServiceProvider(),
             new SubRequestServiceProvider(),
-            new MonitoringRequestTransactionServiceProvider(),
             new WebProfilerServiceProvider(),
             new ZedHstsServiceProvider(),
         ];
@@ -92,8 +90,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
     {
         return [
             new HttpFragmentServiceProvider(),
-            new MonitoringRequestTransactionServiceProvider(),
-            new RequestServiceProvider(),
             new SessionServiceProvider(),
             new SubRequestServiceProvider(),
             new SprykerSessionServiceProvider(),

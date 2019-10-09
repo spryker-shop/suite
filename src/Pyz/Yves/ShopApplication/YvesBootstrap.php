@@ -43,8 +43,6 @@ class YvesBootstrap extends SprykerYvesBootstrap
         $this->application->register(new FormServiceProvider());
         $this->application->register(new HttpFragmentServiceProvider());
         $this->application->register(new FlashMessengerServiceProvider());
-        $this->application->register(new AutoloaderCacheServiceProvider());
-        $this->application->register(new WebProfilerWidgetServiceProvider());
         $this->application->register(new YvesHstsServiceProvider());
         $this->application->register(new FormFactoryServiceProvider());
         $this->application->register(new AgentPageSecurityServiceProvider()); # AgentFeature
