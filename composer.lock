@@ -35700,6 +35700,7 @@
                     "dev-master": "1.12-dev"
                 }
             },
+            "type": "library",
             "autoload": {
                 "psr-4": {
                     "Symfony\\Polyfill\\Intl\\Idn\\": ""
@@ -35710,7 +35711,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "Apache-2.0"
             ],
             "authors": [
                 {
@@ -36288,6 +36289,9 @@
                 }
             },
             "autoload": {
+                "files": [
+                    "src/functions_include.php"
+                ],
                 "psr-4": {
                     "Symfony\\Contracts\\Service\\": ""
                 }
@@ -36663,7 +36667,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "BSD-3-Clause"
             ],
             "authors": [
                 {
@@ -36756,7 +36760,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "BSD-3-Clause"
             ],
             "authors": [
                 {
@@ -36898,7 +36902,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "BSD-3-Clause"
             ],
             "authors": [
                 {
@@ -36957,7 +36961,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "BSD-3-Clause"
             ],
             "authors": [
                 {
@@ -37127,6 +37131,9 @@
                 "zendframework/zend-i18n": "^2.7.4; install if you want to use the Translator processor",
                 "zendframework/zend-servicemanager": "^2.7.8 || ^3.3; if you need an extensible plugin manager for use with the Config Factory"
             },
+            "bin": [
+                "bin/phpstan"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -37586,6 +37593,7 @@
                     "dev-master": "1.x-dev"
                 }
             },
+            "type": "library",
             "autoload": {
                 "psr-4": {
                     "Composer\\CaBundle\\": "src"
@@ -37634,6 +37642,11 @@
                 "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.5"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Composer\\XdebugHandler\\": "src"
@@ -38619,7 +38632,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "BSD-3-Clause"
             ],
             "authors": [
                 {
@@ -38658,6 +38671,11 @@
                 "src/bin/pdepend"
             ],
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.0-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "PDepend\\": "src/main/php/PDepend"
@@ -38748,6 +38766,11 @@
                     "src/"
                 ]
             },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
@@ -38795,7 +38818,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -38851,6 +38874,9 @@
                 "mockery/mockery": "^1.0",
                 "phpunit/phpunit": "^6.4"
             },
+            "bin": [
+                "security-checker"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -38899,8 +38925,9 @@
                 "mockery/mockery": "^0.9.4",
                 "phpunit/phpunit": "^5.2||^4.8.24"
             },
-            "type": "library",
+            "type": "composer-plugin",
             "extra": {
+                "class": "SLLH\\ComposerVersionsCheck\\VersionsCheckPlugin",
                 "branch-alias": {
                     "dev-master": "1.0.x-dev"
                 }
@@ -39215,9 +39242,9 @@
                 }
             },
             "autoload": {
-                "classmap": [
-                    "src/"
-                ]
+                "psr-4": {
+                    "SprykerSdk\\": "src/SprykerSdk/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -39266,9 +39293,9 @@
                 }
             },
             "autoload": {
-                "classmap": [
-                    "src/"
-                ]
+                "psr-4": {
+                    "SprykerSdk\\": "src/SprykerSdk/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -39308,19 +39335,21 @@
             },
             "type": "library",
             "autoload": {
-                "classmap": [
-                    "src/"
-                ]
+                "psr-4": {
+                    "ArchitectureSniffer\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "src/"
+            ],
             "license": [
-                "BSD-3-Clause"
+                "MIT"
             ],
             "authors": [
                 {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "name": "Spryker",
+                    "homepage": "https://spryker.com"
                 }
             ],
             "description": "Simple template engine.",
@@ -39357,9 +39386,9 @@
                 }
             },
             "autoload": {
-                "classmap": [
-                    "src/"
-                ]
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -39406,19 +39435,24 @@
                     "dev-master": "3.1-dev"
                 }
             },
+            "bin": [
+                "bin/tokenize"
+            ],
+            "type": "phpcodesniffer-standard",
             "autoload": {
-                "classmap": [
-                    "src/"
-                ]
+                "psr-4": {
+                    "Spryker\\": "Spryker",
+                    "SprykerStrict\\": "SprykerStrict"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "MIT"
             ],
             "authors": [
                 {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de"
+                    "name": "Spryker",
+                    "homepage": "http://spryker.com"
                 }
             ],
             "description": "Wrapper around PHP's tokenizer extension.",
@@ -39488,20 +39522,20 @@
                 }
             },
             "autoload": {
-                "classmap": [
-                    "src/"
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "scripts": {
+                "cs-check": [
+                    "phpcs --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml -p -s src/"
+                ],
+                "cs-fix": [
+                    "phpcbf --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml -p src/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
-                }
+                "proprietary"
             ],
             "description": "The PHP Unit Testing framework.",
             "homepage": "https://phpunit.de/",
@@ -39547,6 +39581,7 @@
                     "dev-master": "4.0-dev"
                 }
             },
+            "type": "library",
             "autoload": {
                 "psr-4": {
                     "Roave\\BetterReflection\\": "src"
@@ -40215,7 +40250,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "MIT"
             ],
             "authors": [
                 {
@@ -41437,6 +41472,8 @@
         "ext-gmp": "*",
         "ext-intl": "*",
         "ext-json": "*",
+        "ext-libxml": "*",
+        "ext-openssl": "*",
         "ext-pdo_pgsql": "*",
         "ext-pgsql": "*",
         "ext-readline": "*",
