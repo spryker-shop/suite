@@ -7,7 +7,7 @@
 
 namespace Pyz\Client\SearchElasticsearch;
 
-use Spryker\Catalog\src\Spryker\Client\Catalog\Plugin\Config\CatalogSearchConfigBuilderPlugin;
+use Spryker\Client\Catalog\Plugin\Config\CatalogSearchConfigBuilderPlugin;
 use Spryker\Client\Kernel\Container;
 use Spryker\Client\ProductSearchConfigStorage\Plugin\Config\ProductSearchConfigExpanderPlugin;
 use Spryker\Client\SearchElasticsearch\SearchElasticsearchDependencyProvider as SprykerSearchElasticsearchDependencyProvider;
