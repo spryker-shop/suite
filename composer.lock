@@ -1002,8 +1002,8 @@
             "authors": [
                 {
                     "name": "Luís Otávio Cobucci Oblonczyk",
-                    "role": "Developer",
-                    "email": "lcobucci@gmail.com"
+                    "email": "lcobucci@gmail.com",
+                    "role": "Developer"
                 }
             ],
             "description": "A simple library to work with JSON Web Token and JSON Web Signature",
@@ -2737,7 +2737,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "6d165734515b63875a0d29394b66230f76377c47"
+                "reference": "e8496502ffe06ab3fa5493346e28e3210a3f6e70"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -3007,7 +3007,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-04T09:59:02+00:00"
+            "time": "2019-10-09T09:58:50+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -9424,6 +9424,12 @@
                 "url": "git@github.com:spryker-sdk/composer-constrainer.git",
                 "reference": "f76c8762c29995043be6fc7873830a9ec1619296"
             },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-sdk/composer-constrainer/zipball/f76c8762c29995043be6fc7873830a9ec1619296",
+                "reference": "f76c8762c29995043be6fc7873830a9ec1619296",
+                "shasum": ""
+            },
             "require": {
                 "php": ">=7.1",
                 "spryker/kernel": "^3.33.0",
@@ -9447,19 +9453,7 @@
                     "SprykerSdk\\": "src/SprykerSdk/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "SprykerSdkTest\\": "tests/SprykerSdkTest/"
-                }
-            },
-            "scripts": {
-                "cs-check": [
-                    "phpcs --colors -v -p -s --extensions=php --standard=vendor/spryker/code-sniffer/SprykerStrict src/ tests/"
-                ],
-                "cs-fix": [
-                    "phpcbf --colors -v --extensions=php --standard=vendor/spryker/code-sniffer/SprykerStrict src/ tests/"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
