@@ -27,7 +27,6 @@ use SprykerShop\Yves\ShopApplication\Plugin\Provider\ShopControllerEventServiceP
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\YvesExceptionServiceProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\YvesSecurityServiceProvider;
 use SprykerShop\Yves\ShopApplication\YvesBootstrap as SprykerYvesBootstrap;
-use SprykerShop\Yves\WebProfilerWidget\Plugin\ServiceProvider\WebProfilerWidgetServiceProvider;
 
 class YvesBootstrap extends SprykerYvesBootstrap
 {
@@ -52,7 +51,6 @@ class YvesBootstrap extends SprykerYvesBootstrap
         $this->application->register(new ValidatorServiceProvider());
         $this->application->register(new FormServiceProvider());
         $this->application->register(new FlashMessengerServiceProvider());
-        $this->application->register(new WebProfilerWidgetServiceProvider());
         $this->application->register(new AutoloaderCacheServiceProvider());
         $this->application->register(new FormFactoryServiceProvider());
         $this->application->register(new AgentPageSecurityServiceProvider()); # AgentFeature

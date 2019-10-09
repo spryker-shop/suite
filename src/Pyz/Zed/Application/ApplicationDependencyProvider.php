@@ -31,7 +31,7 @@ use Spryker\Zed\Router\Communication\Plugin\Application\RouterApplicationPlugin;
 use Spryker\Zed\Session\Communication\Plugin\ServiceProvider\SessionServiceProvider as SprykerSessionServiceProvider;
 use Spryker\Zed\Translator\Communication\Plugin\Application\TranslatorApplicationPlugin;
 use Spryker\Zed\Twig\Communication\Plugin\Application\TwigApplicationPlugin;
-use Spryker\Zed\WebProfiler\Communication\Plugin\ServiceProvider\WebProfilerServiceProvider;
+use Spryker\Zed\WebProfiler\Communication\Plugin\Application\WebProfilerApplicationPlugin;
 use Spryker\Zed\ZedRequest\Communication\Plugin\GatewayServiceProviderPlugin;
 
 class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
@@ -49,6 +49,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new AuthBootstrapProvider(),
             new AclBootstrapProvider(),
             new AssertionServiceProvider(),
+            new SubRequestServiceProvider(),
             new FormFactoryServiceProvider(),
             new GatewayServiceProviderPlugin(),
             new GuiTwigExtensionServiceProvider(),
@@ -58,7 +59,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new SprykerSessionServiceProvider(),
             new SubRequestServiceProvider(),
             new MonitoringRequestTransactionServiceProvider(),
-            new WebProfilerServiceProvider(),
         ];
 
         $providers = array_merge($providers, $coreProviders);
@@ -117,6 +117,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new MessengerApplicationPlugin(),
             new PropelApplicationPlugin(),
             new RouterApplicationPlugin(),
+            new WebProfilerApplicationPlugin(),
             new HttpApplicationPlugin(),
         ];
     }
