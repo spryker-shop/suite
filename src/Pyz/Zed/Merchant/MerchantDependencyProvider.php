@@ -8,7 +8,7 @@
 namespace Pyz\Zed\Merchant;
 
 use Spryker\Zed\Merchant\MerchantDependencyProvider as SprykerMerchantDependencyProvider;
-use Spryker\Zed\MerchantProfile\Communication\Plugin\Merchant\MerchantProfileHydratePlugin;
+use Spryker\Zed\MerchantProfile\Communication\Plugin\Merchant\MerchantProfileHydrationPlugin;
 use Spryker\Zed\MerchantProfile\Communication\Plugin\Merchant\MerchantProfilePostSavePlugin;
 
 class MerchantDependencyProvider extends SprykerMerchantDependencyProvider
@@ -26,10 +26,10 @@ class MerchantDependencyProvider extends SprykerMerchantDependencyProvider
     /**
      * @return \Spryker\Zed\MerchantExtension\Dependency\Plugin\MerchantHydrationPluginInterface[]
      */
-    protected function getMerchantHydratePlugins(): array
+    protected function getMerchantHydrationPlugins(): array
     {
         return [
-            new MerchantProfileHydratePlugin(),
+            new MerchantProfileHydrationPlugin(),
         ];
     }
 }
