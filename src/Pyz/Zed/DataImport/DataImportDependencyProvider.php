@@ -58,6 +58,9 @@ use Spryker\Zed\QuoteRequestDataImport\Communication\Plugin\QuoteRequestDataImpo
 use Spryker\Zed\QuoteRequestDataImport\Communication\Plugin\QuoteRequestVersionDataImportPlugin;
 use Spryker\Zed\SalesOrderThresholdDataImport\Communication\Plugin\DataImport\SalesOrderThresholdDataImportPlugin;
 use Spryker\Zed\SharedCartDataImport\Communication\Plugin\SharedCartDataImportPlugin;
+use Spryker\Zed\ShipmentDataImport\Communication\Plugin\ShipmentDataImportPlugin;
+use Spryker\Zed\ShipmentDataImport\Communication\Plugin\ShipmentPriceDataImportPlugin;
+use Spryker\Zed\ShipmentDataImport\Communication\Plugin\ShipmentStoreDataImportPlugin;
 use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListCompanyBusinessUnitDataImportPlugin;
 use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListCompanyUserDataImportPlugin;
 use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListDataImportPlugin;
@@ -252,6 +255,9 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new ContentProductAbstractListDataImportPlugin(),
             new ContentProductSetDataImportPlugin(),
             new CommentDataImportPlugin(),
+            new ShipmentStoreDataImportPlugin(),
+            new ShipmentDataImportPlugin(),
+            new ShipmentPriceDataImportPlugin(),
         ];
     }
 
