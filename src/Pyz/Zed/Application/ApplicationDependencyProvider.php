@@ -15,7 +15,6 @@ use Spryker\Zed\Acl\Communication\Plugin\Bootstrap\AclBootstrapProvider;
 use Spryker\Zed\Api\Communication\Plugin\ApiServiceProviderPlugin;
 use Spryker\Zed\Api\Communication\Plugin\ServiceProvider\ApiRoutingServiceProvider;
 use Spryker\Zed\Application\ApplicationDependencyProvider as SprykerApplicationDependencyProvider;
-use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\RequestServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\SaveSessionServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\SubRequestServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\ZedHstsServiceProvider;
@@ -33,7 +32,7 @@ use Spryker\Zed\Router\Communication\Plugin\Application\RouterApplicationPlugin;
 use Spryker\Zed\Session\Communication\Plugin\ServiceProvider\SessionServiceProvider as SprykerSessionServiceProvider;
 use Spryker\Zed\Translator\Communication\Plugin\Application\TranslatorApplicationPlugin;
 use Spryker\Zed\Twig\Communication\Plugin\Application\TwigApplicationPlugin;
-use Spryker\Zed\WebProfiler\Communication\Plugin\ServiceProvider\WebProfilerServiceProvider;
+use Spryker\Zed\WebProfiler\Communication\Plugin\Application\WebProfilerApplicationPlugin;
 use Spryker\Zed\ZedRequest\Communication\Plugin\GatewayServiceProviderPlugin;
 
 class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
@@ -51,6 +50,8 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new AuthBootstrapProvider(),
             new AclBootstrapProvider(),
             new AssertionServiceProvider(),
+            new SubRequestServiceProvider(),
+            new ZedHstsServiceProvider(),
             new FormFactoryServiceProvider(),
             new GatewayServiceProviderPlugin(),
             new GuiTwigExtensionServiceProvider(),
@@ -60,7 +61,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new SprykerSessionServiceProvider(),
             new SubRequestServiceProvider(),
             new MonitoringRequestTransactionServiceProvider(),
-            new WebProfilerServiceProvider(),
             new ZedHstsServiceProvider(),
         ];
 
@@ -102,7 +102,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new GatewayServiceProviderPlugin(),
             new HttpFragmentServiceProvider(),
             new MonitoringRequestTransactionServiceProvider(),
-            new RequestServiceProvider(),
             new SessionServiceProvider(),
             new SubRequestServiceProvider(),
             new SprykerSessionServiceProvider(),
@@ -122,6 +121,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new MessengerApplicationPlugin(),
             new PropelApplicationPlugin(),
             new RouterApplicationPlugin(),
+            new WebProfilerApplicationPlugin(),
         ];
     }
 }
