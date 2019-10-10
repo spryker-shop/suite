@@ -8,7 +8,7 @@
 namespace Pyz\Client\QuoteApproval;
 
 use Spryker\Client\QuoteApproval\QuoteApprovalDependencyProvider as SprykerQuoteApprovalDependencyProvider;
-use Spryker\Client\QuoteApprovalShipmentConnector\Plugin\ShipmentQuoteApplicableForApprovalCheckPlugin;
+use Spryker\Client\QuoteApprovalShipmentConnector\Plugin\ShipmentApplicableForQuoteApprovalCheckPlugin;
 
 class QuoteApprovalDependencyProvider extends SprykerQuoteApprovalDependencyProvider
 {
@@ -18,7 +18,7 @@ class QuoteApprovalDependencyProvider extends SprykerQuoteApprovalDependencyProv
     protected function getQuoteApplicableForApprovalCheckPlugins(): array
     {
         return [
-            new ShipmentQuoteApplicableForApprovalCheckPlugin(),
+            new ShipmentApplicableForQuoteApprovalCheckPlugin(),
         ];
     }
 }
