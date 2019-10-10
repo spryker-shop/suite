@@ -14,6 +14,7 @@ use Spryker\Glue\AuthRestApi\Plugin\AccessTokensResourceRoutePlugin;
 use Spryker\Glue\AuthRestApi\Plugin\FormatAuthenticationErrorResponseHeadersPlugin;
 use Spryker\Glue\AuthRestApi\Plugin\RefreshTokensResourceRoutePlugin;
 use Spryker\Glue\AuthRestApi\Plugin\RestUserFinderByAccessTokenPlugin;
+use Spryker\Glue\CartCodesRestApi\Plugin\GlueApplication\DiscountsResourceRoutePlugin;
 use Spryker\Glue\CartPermissionGroupsRestApi\Plugin\GlueApplication\CartPermissionGroupByQuoteResourceRelationshipPlugin;
 use Spryker\Glue\CartPermissionGroupsRestApi\Plugin\GlueApplication\CartPermissionGroupByShareDetailResourceRelationshipPlugin;
 use Spryker\Glue\CartPermissionGroupsRestApi\Plugin\GlueApplication\CartPermissionGroupsResourceRoutePlugin;
@@ -177,6 +178,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new CompanyBusinessUnitsResourcePlugin(),
             new SharedCartsResourceRoutePlugin(),
             new UrlResolverResourceRoutePlugin(),
+            new DiscountsResourceRoutePlugin()
         ];
     }
 
