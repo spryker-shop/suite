@@ -307,7 +307,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
             ->select([static::COL_STOCK_PRODUCT_TOTAL_QUANTITY])
             ->findOne();
 
-        return new Decimal($stockProductTotalQuantity);
+        return new Decimal($stockProductTotalQuantity ?? 0);
     }
 
     /**
