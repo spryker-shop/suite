@@ -100,7 +100,7 @@ use Spryker\Zed\Scheduler\Communication\Console\SchedulerCleanConsole;
 use Spryker\Zed\Scheduler\Communication\Console\SchedulerResumeConsole;
 use Spryker\Zed\Scheduler\Communication\Console\SchedulerSetupConsole;
 use Spryker\Zed\Scheduler\Communication\Console\SchedulerSuspendConsole;
-use Spryker\Zed\Search\Communication\Console\GenerateIndexMapConsole;
+use Spryker\Zed\Search\Communication\Console\GenerateSourceMapConsole;
 use Spryker\Zed\Search\Communication\Console\SearchCloseIndexConsole;
 use Spryker\Zed\Search\Communication\Console\SearchConsole;
 use Spryker\Zed\Search\Communication\Console\SearchCopyIndexConsole;
@@ -170,7 +170,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new EntityTransferGeneratorConsole(),
             new InitializeDatabaseConsole(),
             new SearchConsole(),
-            new GenerateIndexMapConsole(),
+            new GenerateSourceMapConsole(),
             new OmsCheckConditionConsole(),
             new OmsCheckTimeoutConsole(),
             new OmsClearLocksConsole(),
