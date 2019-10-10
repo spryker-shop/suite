@@ -34219,23 +34219,23 @@
         },
         {
             "name": "spryker/wishlist",
-            "version": "8.0.0",
+            "version": "8.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/wishlist.git",
-                "reference": "cecc7bcc821439088f9df6657b4b7c85dfaf6831"
+                "reference": "0e4dcddca51adfbd09a3d82e4386b29ecfb8e810"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/wishlist/zipball/cecc7bcc821439088f9df6657b4b7c85dfaf6831",
-                "reference": "cecc7bcc821439088f9df6657b4b7c85dfaf6831",
+                "url": "https://api.github.com/repos/spryker/wishlist/zipball/0e4dcddca51adfbd09a3d82e4386b29ecfb8e810",
+                "reference": "0e4dcddca51adfbd09a3d82e4386b29ecfb8e810",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/cart": "^5.0.0 || ^7.0.0",
                 "spryker/customer": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0",
-                "spryker/kernel": "^3.0.0",
+                "spryker/kernel": "^3.30.0",
                 "spryker/price-product": "^1.0.0 || ^2.0.0 || ^4.0.0",
                 "spryker/product": "^5.0.0 || ^6.0.0",
                 "spryker/propel-orm": "^1.1.0",
@@ -34244,7 +34244,6 @@
             },
             "require-dev": {
                 "spryker/propel": "*",
-                "spryker/stock": "*",
                 "spryker/testify": "*"
             },
             "type": "library",
@@ -34255,7 +34254,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Shared\\Wishlist\\Helper\\": "tests/SprykerTest/Shared/Wishlist/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -34263,7 +34263,7 @@
                 "proprietary"
             ],
             "description": "Wishlist module",
-            "time": "2019-06-27T10:59:33+00:00"
+            "time": "2019-10-03T14:49:45+00:00"
         },
         {
             "name": "spryker/wishlist-extension",
@@ -34306,16 +34306,16 @@
         },
         {
             "name": "spryker/wishlists-rest-api",
-            "version": "1.3.5",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/wishlists-rest-api.git",
-                "reference": "c53ef0e585fa3edbfe552de62333fbf19b7c299f"
+                "reference": "3167fa5af4c6d1192b839713f8db55dceb4f25c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/wishlists-rest-api/zipball/c53ef0e585fa3edbfe552de62333fbf19b7c299f",
-                "reference": "c53ef0e585fa3edbfe552de62333fbf19b7c299f",
+                "url": "https://api.github.com/repos/spryker/wishlists-rest-api/zipball/3167fa5af4c6d1192b839713f8db55dceb4f25c6",
+                "reference": "3167fa5af4c6d1192b839713f8db55dceb4f25c6",
                 "shasum": ""
             },
             "require": {
@@ -34326,10 +34326,14 @@
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/uuid-behavior": "^1.0.0",
-                "spryker/wishlist": "^6.2.0 || ^8.0.0"
+                "spryker/wishlist": "^6.5.0 || ^8.1.0",
+                "spryker/zed-request": "^3.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/customer": "*",
+                "spryker/product": "*",
+                "spryker/propel": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
@@ -34353,7 +34357,7 @@
                 "proprietary"
             ],
             "description": "WishlistsRestApi module",
-            "time": "2019-07-18T10:14:27+00:00"
+            "time": "2019-10-08T06:35:56+00:00"
         },
         {
             "name": "spryker/zed-navigation",
