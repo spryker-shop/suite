@@ -430,7 +430,7 @@ class CartsRestApiCest
         // Arrange
         $this->authorizeCustomer($I);
         $quoteTransfer = $this->fixtures->getQuoteTransfer();
-        $cartUuid = $quoteTransfer->getUuid();
+        $emptyQuoteUuid = $quoteTransfer->getUuid();
         $entityTag = $this->fixtures->getCartResourceEntityTag();
 
         $I->haveHttpHeader(RequestConstantsInterface::HEADER_IF_MATCH, $entityTag);
@@ -441,7 +441,7 @@ class CartsRestApiCest
                 '{resourceCarts}/{cartUuid}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $cartUuid,
+                    'cartUuid' => $emptyQuoteUuid,
                 ]
             ),
             [

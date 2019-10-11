@@ -390,7 +390,7 @@ class GuestCartsRestApiCest
                 '{resourceGuestCarts}/{guestCartUuid}',
                 [
                     'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-                    'guestCartUuid' => $I->findResourceIdFromResponseByJsonPath(),
+                    'guestCartUuid' => $guestQuoteUuid,
                 ]
             )
         );
