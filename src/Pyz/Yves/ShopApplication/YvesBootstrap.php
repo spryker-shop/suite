@@ -8,14 +8,11 @@
 namespace Pyz\Yves\ShopApplication;
 
 use Silex\Provider\FormServiceProvider;
-use Silex\Provider\HttpFragmentServiceProvider;
 use Silex\Provider\RememberMeServiceProvider;
 use Silex\Provider\SecurityServiceProvider;
 use Silex\Provider\SessionServiceProvider;
 use Silex\Provider\ValidatorServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\FormFactoryServiceProvider;
-use Spryker\Yves\Application\Plugin\Provider\CookieServiceProvider;
-use Spryker\Yves\Application\Plugin\Provider\YvesHstsServiceProvider;
 use Spryker\Yves\Messenger\Plugin\Provider\FlashMessengerServiceProvider;
 use Spryker\Yves\Session\Plugin\ServiceProvider\SessionServiceProvider as SprykerSessionServiceProvider;
 use Spryker\Yves\ZedRequest\Plugin\ServiceProvider\ZedRequestHeaderServiceProvider;
@@ -37,13 +34,10 @@ class YvesBootstrap extends SprykerYvesBootstrap
         $this->application->register(new SecurityServiceProvider());
         $this->application->register(new CustomerSecurityServiceProvider());
         $this->application->register(new YvesSecurityServiceProvider());
-        $this->application->register(new CookieServiceProvider());
         $this->application->register(new RememberMeServiceProvider());
         $this->application->register(new ValidatorServiceProvider());
         $this->application->register(new FormServiceProvider());
-        $this->application->register(new HttpFragmentServiceProvider());
         $this->application->register(new FlashMessengerServiceProvider());
-        $this->application->register(new YvesHstsServiceProvider());
         $this->application->register(new FormFactoryServiceProvider());
         $this->application->register(new AgentPageSecurityServiceProvider()); # AgentFeature
     }
