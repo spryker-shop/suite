@@ -7,20 +7,20 @@
 
 namespace Pyz\Client\CmsBlockStorage;
 
-use Spryker\Client\CmsBlockCategoryStorage\Plugin\CmsBlockStorage\CmsBlockCategoryCmsBlockStorageBlocksFinderPlugin;
-use Spryker\Client\CmsBlockProductStorage\Plugin\CmsBlockStorage\CmsBlockProductCmsBlockStorageBlocksFinderPlugin;
+use Spryker\Client\CmsBlockCategoryStorage\Plugin\CmsBlockStorage\CmsBlockCategoryCmsBlockStorageReaderPlugin;
+use Spryker\Client\CmsBlockProductStorage\Plugin\CmsBlockStorage\CmsBlockProductCmsBlockStorageReaderPlugin;
 use Spryker\Client\CmsBlockStorage\CmsBlockStorageDependencyProvider as SprykerCmsBlockStorageDependencyProvider;
 
 class CmsBlockStorageDependencyProvider extends SprykerCmsBlockStorageDependencyProvider
 {
     /**
-     * @return \Spryker\Client\CmsBlockStorageExtension\Dependency\Plugin\CmsBlockStorageBlocksFinderPluginInterface[]
+     * @return \Spryker\Client\CmsBlockStorageExtension\Dependency\Plugin\CmsBlockStorageReaderPluginInterface[]
      */
     protected function getCmsBlockStorageBlocksFinderPlugins(): array
     {
         return [
-            new CmsBlockCategoryCmsBlockStorageBlocksFinderPlugin(),
-            new CmsBlockProductCmsBlockStorageBlocksFinderPlugin(),
+            new CmsBlockCategoryCmsBlockStorageReaderPlugin(),
+            new CmsBlockProductCmsBlockStorageReaderPlugin(),
         ];
     }
 }
