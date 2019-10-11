@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa1d46cafb18b1b70fa68c042d07f5f4",
+    "content-hash": "460fa35b746e026510dffa2d99b0b0f7",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1031,8 +1031,8 @@
             "authors": [
                 {
                     "name": "Filipe Dobreira",
-                    "homepage": "https://github.com/filp",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "homepage": "https://github.com/filp"
                 }
             ],
             "description": "php error handling for cool kids",
@@ -1133,8 +1133,8 @@
             "authors": [
                 {
                     "name": "Alessio Linares",
-                    "email": "alessio.linares@skyscanner.net",
-                    "role": "Software Engineer"
+                    "role": "Software Engineer",
+                    "email": "alessio.linares@skyscanner.net"
                 }
             ],
             "description": "JSONPath implementation for querying and updating JSON objects",
@@ -2511,8 +2511,8 @@
             "authors": [
                 {
                     "name": "Frank Kleine",
-                    "homepage": "http://frankkleine.de/",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "homepage": "http://frankkleine.de/"
                 }
             ],
             "description": "Virtual file system to mock the real file system in unit tests.",
@@ -2967,7 +2967,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
+            "description": "? Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -3758,8 +3758,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Library that provides collection, processing, and rendering functionality for PHP code coverage information.",
@@ -4145,7 +4145,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -5142,6 +5142,54 @@
             "time": "2019-10-10T13:04:51+00:00"
         },
         {
+            "name": "spryker/decimal-object",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/decimal-object.git",
+                "reference": "475dc44b75812f3fcc093aeb42db01b0d8776469"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/decimal-object/zipball/475dc44b75812f3fcc093aeb42db01b0d8776469",
+                "reference": "475dc44b75812f3fcc093aeb42db01b0d8776469",
+                "shasum": ""
+            },
+            "require": {
+                "ext-bcmath": "*",
+                "ext-json": "*",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "phpstan/phpstan-shim": "^0.11",
+                "phpunit/phpunit": "^7.0.0 || ^8.0.0",
+                "spryker/code-sniffer": "@stable"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\DecimalObject\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Spryker Systems GmbH",
+                    "homepage": "https://spryker.com"
+                }
+            ],
+            "description": "PHP decimal handling as value object",
+            "time": "2019-10-02T08:02:53+00:00"
+        },
+        {
             "name": "spryker/event-behavior",
             "version": "dev-master",
             "source": {
@@ -5395,11 +5443,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/cc-6194/dev-warehouse-per-store",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "c209a20f370817024586b13675d34c9858132034"
+                "reference": "56d22fcfe04076f341a9ee189d21bc3e434797ab"
             },
             "require": {
                 "php": ">=7.1"
@@ -5977,7 +6025,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-10T15:21:10+00:00"
+            "time": "2019-10-10T15:09:42+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -8918,8 +8966,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -9380,9 +9428,9 @@
             "authors": [
                 {
                     "name": "Antonio J. García Lagar",
+                    "role": "developer",
                     "email": "aj@garcialagar.es",
-                    "homepage": "http://aj.garcialagar.es",
-                    "role": "developer"
+                    "homepage": "http://aj.garcialagar.es"
                 }
             ],
             "description": "Twig extension to set breakpoints",
@@ -9790,7 +9838,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-12T17:28:44+00:00"
+            "time": "2017-12-13T13:21:38+00:00"
         },
         {
             "name": "phpmd/phpmd",
@@ -9833,20 +9881,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
-                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler"
+                    "homepage": "https://github.com/manuelpichler",
+                    "role": "Project Founder"
                 },
                 {
                     "name": "Marc Würth",
-                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84"
+                    "homepage": "https://github.com/ravage84",
+                    "role": "Project Maintainer"
                 },
                 {
                     "name": "Other contributors",
-                    "role": "Contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
+                    "role": "Contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -11265,6 +11313,7 @@
     "stability-flags": {
         "spryker/spryker": 20,
         "spryker/spryker-shop": 20,
+        "spryker/decimal-object": 20,
         "spryker-eco/loggly": 20,
         "spryker/rabbit-mq": 20,
         "spryker/install": 20,
