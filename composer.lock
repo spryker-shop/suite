@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5af0e3c0b8303b0cd2ef85c7f1639714",
+    "content-hash": "e26a36b153865525b44a9c07856fcced",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -8578,16 +8578,16 @@
         },
         {
             "name": "spryker/application",
-            "version": "3.20.1",
+            "version": "3.20.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/application.git",
-                "reference": "e4d07443a85d45f200c5b5e2fcf6c4b491d0580d"
+                "reference": "a1bf45ad4820a00d8ceeb8eaa3f6ef5fac9c0474"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/application/zipball/e4d07443a85d45f200c5b5e2fcf6c4b491d0580d",
-                "reference": "e4d07443a85d45f200c5b5e2fcf6c4b491d0580d",
+                "url": "https://api.github.com/repos/spryker/application/zipball/a1bf45ad4820a00d8ceeb8eaa3f6ef5fac9c0474",
+                "reference": "a1bf45ad4820a00d8ceeb8eaa3f6ef5fac9c0474",
                 "shasum": ""
             },
             "require": {
@@ -8635,7 +8635,7 @@
                 "proprietary"
             ],
             "description": "Application module",
-            "time": "2019-09-26T05:14:12+00:00"
+            "time": "2019-10-09T10:35:26+00:00"
         },
         {
             "name": "spryker/application-extension",
@@ -19191,6 +19191,104 @@
             ],
             "description": "Heartbeat module",
             "time": "2019-05-23T10:18:05+00:00"
+        },
+        {
+            "name": "spryker/http",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/http.git",
+                "reference": "98a788cb498977ff0cda237c4656d8162a810ee0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/http/zipball/98a788cb498977ff0cda237c4656d8162a810ee0",
+                "reference": "98a788cb498977ff0cda237c4656d8162a810ee0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/application-extension": "^1.0.0",
+                "spryker/event-dispatcher-extension": "^1.0.0",
+                "spryker/http-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/locale": "^3.2.0",
+                "spryker/symfony": "^3.3.0",
+                "spryker/twig": "^3.7.0",
+                "spryker/twig-extension": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/event-dispatcher": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/container": "If you want to use Http plugins.",
+                "spryker/event-dispatcher": "If you want to use Http plugins."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Http module",
+            "time": "2019-10-10T08:46:02+00:00"
+        },
+        {
+            "name": "spryker/http-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/http-extension.git",
+                "reference": "481c2990a1a75e3119cbf8741dbd22a8c1743157"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/http-extension/zipball/481c2990a1a75e3119cbf8741dbd22a8c1743157",
+                "reference": "481c2990a1a75e3119cbf8741dbd22a8c1743157",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/symfony": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/container": "If you want to use a FragmentHandlerPluginInterface.",
+                "spryker/symfony": "If you want to use a FragmentHandlerPluginInterface."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "HttpExtension module",
+            "time": "2019-08-15T16:09:16+00:00"
         },
         {
             "name": "spryker/index-generator",
@@ -31800,7 +31898,7 @@
         },
         {
             "name": "spryker/silexphp",
-            "version": "0.3.1",
+            "version": "0.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/silexphp.git",
@@ -33043,16 +33141,16 @@
         },
         {
             "name": "spryker/twig",
-            "version": "3.8.0",
+            "version": "3.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/twig.git",
-                "reference": "d4f3d374abb3b45b792989866bd1758bfa7d954d"
+                "reference": "5b87495683005e50923c436e825a78dbb930a7a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/twig/zipball/d4f3d374abb3b45b792989866bd1758bfa7d954d",
-                "reference": "d4f3d374abb3b45b792989866bd1758bfa7d954d",
+                "url": "https://api.github.com/repos/spryker/twig/zipball/5b87495683005e50923c436e825a78dbb930a7a9",
+                "reference": "5b87495683005e50923c436e825a78dbb930a7a9",
                 "shasum": ""
             },
             "require": {
@@ -33096,7 +33194,7 @@
                 "proprietary"
             ],
             "description": "Twig module",
-            "time": "2019-09-26T05:14:08+00:00"
+            "time": "2019-10-08T10:46:09+00:00"
         },
         {
             "name": "spryker/twig-extension",
