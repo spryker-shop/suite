@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.112.18",
+            "version": "3.112.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "462398dcebaa4586089ce30d44750dcf7179b844"
+                "reference": "8e69a518ff058612b94d328c2cde644621a4c0cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/462398dcebaa4586089ce30d44750dcf7179b844",
-                "reference": "462398dcebaa4586089ce30d44750dcf7179b844",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/8e69a518ff058612b94d328c2cde644621a4c0cc",
+                "reference": "8e69a518ff058612b94d328c2cde644621a4c0cc",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-10-09T18:13:06+00:00"
+            "time": "2019-10-10T18:23:11+00:00"
         },
         {
             "name": "codeitnowin/barcode",
@@ -4673,33 +4673,38 @@
         },
         {
             "name": "spryker-shop/error-page",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/error-page.git",
-                "reference": "14c21dbb95e15f665f83a5966ab5a4e0f5d3e680"
+                "reference": "7fe3c74709d8d141238703626abcaf0ab2ff3192"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/error-page/zipball/14c21dbb95e15f665f83a5966ab5a4e0f5d3e680",
-                "reference": "14c21dbb95e15f665f83a5966ab5a4e0f5d3e680",
+                "url": "https://api.github.com/repos/spryker-shop/error-page/zipball/7fe3c74709d8d141238703626abcaf0ab2ff3192",
+                "reference": "7fe3c74709d8d141238703626abcaf0ab2ff3192",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker-shop/shop-ui": "^1.0.0",
+                "spryker/event-dispatcher-extension": "^1.0.0",
                 "spryker/kernel": "^3.35.0",
                 "spryker/symfony": "^3.1.0"
             },
             "require-dev": {
                 "spryker-shop/shop-application": "*",
                 "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/event-dispatcher": "*",
                 "spryker/router": "*",
                 "spryker/silex": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
                 "spryker-shop/shop-application": "Use this module when using plugins that need ShopApplication dependencies.",
+                "spryker/container": "Use this module when you want to use the ErrorPageEventDispatcherPlugin.",
+                "spryker/event-dispatcher": "Use this module when you want to use the ErrorPageEventDispatcherPlugin.",
                 "spryker/router": "If you want to use RouteProviderPlugins to be added to the Route Module.",
                 "spryker/silex": "Use this module when using plugins that need Silex dependencies."
             },
@@ -4719,7 +4724,7 @@
                 "proprietary"
             ],
             "description": "ErrorPage module",
-            "time": "2019-09-26T05:02:15+00:00"
+            "time": "2019-10-10T11:22:34+00:00"
         },
         {
             "name": "spryker-shop/file-manager-widget",
@@ -7378,16 +7383,16 @@
         },
         {
             "name": "spryker-shop/shop-application",
-            "version": "1.6.2",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/shop-application.git",
-                "reference": "45c11708474a83242371cd1cc881314603112c44"
+                "reference": "732af873fc1cfa7d02a46bd8d7d45bb66cbb6c2a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/shop-application/zipball/45c11708474a83242371cd1cc881314603112c44",
-                "reference": "45c11708474a83242371cd1cc881314603112c44",
+                "url": "https://api.github.com/repos/spryker-shop/shop-application/zipball/732af873fc1cfa7d02a46bd8d7d45bb66cbb6c2a",
+                "reference": "732af873fc1cfa7d02a46bd8d7d45bb66cbb6c2a",
                 "shasum": ""
             },
             "require": {
@@ -7433,7 +7438,7 @@
                 "proprietary"
             ],
             "description": "ShopApplication module",
-            "time": "2019-09-26T05:02:17+00:00"
+            "time": "2019-10-10T11:22:34+00:00"
         },
         {
             "name": "spryker-shop/shop-application-extension",
@@ -8283,21 +8288,22 @@
         },
         {
             "name": "spryker/acl",
-            "version": "3.2.5",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/acl.git",
-                "reference": "1df92eba01da95764a2755bde62cf27e4a75ee5a"
+                "reference": "844c0de0e87c2b604ddd8580e15418db9d28f78f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/acl/zipball/1df92eba01da95764a2755bde62cf27e4a75ee5a",
-                "reference": "1df92eba01da95764a2755bde62cf27e4a75ee5a",
+                "url": "https://api.github.com/repos/spryker/acl/zipball/844c0de0e87c2b604ddd8580e15418db9d28f78f",
+                "reference": "844c0de0e87c2b604ddd8580e15418db9d28f78f",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/config": "^3.0.0",
+                "spryker/event-dispatcher-extension": "^1.0.0",
                 "spryker/gui": "^3.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/propel-orm": "^1.0.0",
@@ -8308,6 +8314,8 @@
             },
             "require-dev": {
                 "spryker/application": "*",
+                "spryker/container": "*",
+                "spryker/event-dispatcher": "*",
                 "spryker/installer": "*",
                 "spryker/propel": "*",
                 "spryker/silex": "*",
@@ -8315,6 +8323,8 @@
                 "spryker/zed-navigation": "*"
             },
             "suggest": {
+                "spryker/container": "Add this module when you want to use the Container.",
+                "spryker/event-dispatcher": "Add this module when you want to use the EVentDispatcher.",
                 "spryker/installer": "If you want to use Installer plugins.",
                 "spryker/silex": "If you want to use ServiceProvider."
             },
@@ -8334,7 +8344,7 @@
                 "proprietary"
             ],
             "description": "Acl module",
-            "time": "2019-09-26T05:13:49+00:00"
+            "time": "2019-10-11T04:49:09+00:00"
         },
         {
             "name": "spryker/agent",
@@ -8715,20 +8725,21 @@
         },
         {
             "name": "spryker/auth",
-            "version": "3.4.0",
+            "version": "3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/auth.git",
-                "reference": "58fcf13a2c6346200ebbbf89a42f4ec082856ab7"
+                "reference": "7e286d905ae30201b8cc81642ebe88cc4986ea2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/auth/zipball/58fcf13a2c6346200ebbbf89a42f4ec082856ab7",
-                "reference": "58fcf13a2c6346200ebbbf89a42f4ec082856ab7",
+                "url": "https://api.github.com/repos/spryker/auth/zipball/7e286d905ae30201b8cc81642ebe88cc4986ea2f",
+                "reference": "7e286d905ae30201b8cc81642ebe88cc4986ea2f",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
+                "spryker/event-dispatcher-extension": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/session": "^3.0.0 || ^4.0.0",
                 "spryker/symfony": "^3.0.0",
@@ -8738,12 +8749,17 @@
             "require-dev": {
                 "spryker/application": "*",
                 "spryker/config": "*",
+                "spryker/container": "*",
                 "spryker/discount": "*",
+                "spryker/event-dispatcher": "*",
                 "spryker/propel": "*",
                 "spryker/silex": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
+                "spryker/config": "Add this module when you want to use the EventDispatcherPlugins.",
+                "spryker/container": "Add this module when you want to use the EventDispatcherPlugins.",
+                "spryker/event-dispatcher": "Add this module when you want to use the EventDispatcherPlugins.",
                 "spryker/silex": "If you want to use ServiceProvider."
             },
             "type": "library",
@@ -8762,7 +8778,7 @@
                 "proprietary"
             ],
             "description": "Auth module",
-            "time": "2019-09-18T11:52:47+00:00"
+            "time": "2019-10-11T04:49:11+00:00"
         },
         {
             "name": "spryker/auth-mail-connector",
@@ -19411,16 +19427,16 @@
         },
         {
             "name": "spryker/kernel",
-            "version": "3.38.0",
+            "version": "3.39.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/kernel.git",
-                "reference": "943acbca3a54f739bdd87f58fa0a2fa67cc84874"
+                "reference": "0ead9824dd3f6f1fb82f8d21d47e776a55704f86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/kernel/zipball/943acbca3a54f739bdd87f58fa0a2fa67cc84874",
-                "reference": "943acbca3a54f739bdd87f58fa0a2fa67cc84874",
+                "url": "https://api.github.com/repos/spryker/kernel/zipball/0ead9824dd3f6f1fb82f8d21d47e776a55704f86",
+                "reference": "0ead9824dd3f6f1fb82f8d21d47e776a55704f86",
                 "shasum": ""
             },
             "require": {
@@ -19429,6 +19445,7 @@
                 "spryker/config": "^3.0.0",
                 "spryker/container": "^1.1.0",
                 "spryker/error-handler": "^2.2.0",
+                "spryker/event-dispatcher-extension": "^1.0.0",
                 "spryker/propel-orm": "^1.6.0",
                 "spryker/silex": "^2.0.0",
                 "spryker/symfony": "^3.0.0",
@@ -19437,8 +19454,12 @@
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/event-dispatcher": "*",
                 "spryker/propel": "*",
                 "spryker/testify": "^3.3.0"
+            },
+            "suggest": {
+                "spryker/event-dispatcher": "Add this module when you want to use the EventDispatcher."
             },
             "type": "library",
             "extra": {
@@ -19456,7 +19477,7 @@
                 "proprietary"
             ],
             "description": "Kernel module",
-            "time": "2019-09-26T05:14:09+00:00"
+            "time": "2019-10-11T04:49:11+00:00"
         },
         {
             "name": "spryker/key-builder",
@@ -20746,21 +20767,22 @@
         },
         {
             "name": "spryker/monitoring",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/monitoring.git",
-                "reference": "52c384c12344fb7bd58a4554498e4be8208f7526"
+                "reference": "c0964a7ce6d73a154d62197052baffdb7557c0c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/monitoring/zipball/52c384c12344fb7bd58a4554498e4be8208f7526",
-                "reference": "52c384c12344fb7bd58a4554498e4be8208f7526",
+                "url": "https://api.github.com/repos/spryker/monitoring/zipball/c0964a7ce6d73a154d62197052baffdb7557c0c9",
+                "reference": "c0964a7ce6d73a154d62197052baffdb7557c0c9",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "spryker/kernel": "^3.0.0",
+                "spryker/event-dispatcher-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/monitoring-extension": "^1.0.0",
                 "spryker/store": "^1.0.0",
@@ -20768,13 +20790,17 @@
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/event-dispatcher": "*",
                 "spryker/silex": "^2.0.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/testify": "*"
             },
             "suggest": {
-                "spryker/silex": "If you want to use the Monitoring ServiceProvider, please add spryker/silex",
-                "spryker/symfony": "If you want to use the Monitoring ServiceProvider, please add spryker/symfony"
+                "spryker/container": "Add this module when you want to use the EventDispatcher plugins.",
+                "spryker/event-dispatcher": "Add this module when you want to use the EventDispatcher plugins.",
+                "spryker/silex": "If you want to use the Monitoring ServiceProvider, please add spryker/silex.",
+                "spryker/symfony": "If you want to use the Monitoring ServiceProvider, please add spryker/symfony."
             },
             "type": "library",
             "extra": {
@@ -20792,7 +20818,7 @@
                 "proprietary"
             ],
             "description": "Monitoring module",
-            "time": "2018-10-29T12:36:27+00:00"
+            "time": "2019-10-11T04:49:07+00:00"
         },
         {
             "name": "spryker/monitoring-extension",
@@ -31774,16 +31800,16 @@
         },
         {
             "name": "spryker/silexphp",
-            "version": "0.3.0",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/silexphp.git",
-                "reference": "1cfd9e3aae1354289f5b1677aee5d28e2b45d97e"
+                "reference": "7ce92e0e9fa3f533f69797c1aa8e0fd1f0f8dae0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/silexphp/zipball/1cfd9e3aae1354289f5b1677aee5d28e2b45d97e",
-                "reference": "1cfd9e3aae1354289f5b1677aee5d28e2b45d97e",
+                "url": "https://api.github.com/repos/spryker/silexphp/zipball/7ce92e0e9fa3f533f69797c1aa8e0fd1f0f8dae0",
+                "reference": "7ce92e0e9fa3f533f69797c1aa8e0fd1f0f8dae0",
                 "shasum": ""
             },
             "require": {
@@ -31850,7 +31876,7 @@
             "keywords": [
                 "microframework"
             ],
-            "time": "2019-09-26T07:14:44+00:00"
+            "time": "2019-10-11T05:30:39+00:00"
         },
         {
             "name": "spryker/sql-criteria-builder",
@@ -32111,21 +32137,22 @@
         },
         {
             "name": "spryker/storage",
-            "version": "3.10.0",
+            "version": "3.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/storage.git",
-                "reference": "ecd8c32fbb6f83c66462dec46af7ce31a4d42bd6"
+                "reference": "ad8b95b0e35b07df489f014303c524a67ab92919"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/storage/zipball/ecd8c32fbb6f83c66462dec46af7ce31a4d42bd6",
-                "reference": "ecd8c32fbb6f83c66462dec46af7ce31a4d42bd6",
+                "url": "https://api.github.com/repos/spryker/storage/zipball/ad8b95b0e35b07df489f014303c524a67ab92919",
+                "reference": "ad8b95b0e35b07df489f014303c524a67ab92919",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/config": "^3.0.0",
+                "spryker/event-dispatcher-extension": "^1.0.0",
                 "spryker/gui": "^3.0.0",
                 "spryker/kernel": "^3.33.0",
                 "spryker/locale": "^3.0.0",
@@ -32139,10 +32166,14 @@
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/event-dispatcher": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
-                "spryker/collector-storage-connector": "If you want to use dropStorageTimestamps functionality from Collector module"
+                "spryker/collector-storage-connector": "If you want to use dropStorageTimestamps functionality from Collector module.",
+                "spryker/container": "If you want to use StorageCacheEventDispatcherPlugin.",
+                "spryker/event-dispatcher": "If you want to use StorageCacheEventDispatcherPlugin."
             },
             "type": "library",
             "extra": {
@@ -32161,7 +32192,7 @@
                 "proprietary"
             ],
             "description": "Storage module",
-            "time": "2019-08-28T09:07:33+00:00"
+            "time": "2019-10-11T04:49:10+00:00"
         },
         {
             "name": "spryker/storage-extension",
@@ -34460,22 +34491,23 @@
         },
         {
             "name": "spryker/zed-request",
-            "version": "3.9.1",
+            "version": "3.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/zed-request.git",
-                "reference": "bc2ae71f7e3c6cbb7edb840903af4ee7e16abced"
+                "reference": "d629046edb5e6838f51070a3774b5a2775e5a55f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/zed-request/zipball/bc2ae71f7e3c6cbb7edb840903af4ee7e16abced",
-                "reference": "bc2ae71f7e3c6cbb7edb840903af4ee7e16abced",
+                "url": "https://api.github.com/repos/spryker/zed-request/zipball/d629046edb5e6838f51070a3774b5a2775e5a55f",
+                "reference": "d629046edb5e6838f51070a3774b5a2775e5a55f",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/application": "^3.2.0",
                 "spryker/config": "^3.0.0",
+                "spryker/event-dispatcher-extension": "^1.0.0",
                 "spryker/guzzle": "^2.1.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/messenger": "^3.0.0",
@@ -34485,12 +34517,16 @@
                 "spryker/util-text": "^1.1.0"
             },
             "require-dev": {
+                "spryker/container": "*",
+                "spryker/event-dispatcher": "*",
                 "spryker/log": "*",
                 "spryker/propel": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
-                "spryker/log": "Required for using the Log middleware"
+                "spryker/container": "Add this module when you want to use the Container.",
+                "spryker/event-dispatcher": "Add this module when you want to use the EventDispatcher.",
+                "spryker/log": "Required for using the Log middleware."
             },
             "type": "library",
             "extra": {
@@ -34509,7 +34545,7 @@
                 "proprietary"
             ],
             "description": "ZedRequest module",
-            "time": "2019-09-26T05:14:09+00:00"
+            "time": "2019-10-11T04:49:10+00:00"
         },
         {
             "name": "spryker/zend",
@@ -40704,16 +40740,16 @@
         },
         {
             "name": "spryker/testify",
-            "version": "3.18.0",
+            "version": "3.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/testify.git",
-                "reference": "7585ee82caab976a9a2f9a09d0638598b141f7cc"
+                "reference": "862ce80d6f4b1c10a4b153d5d21bd49ea0ea0919"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/testify/zipball/7585ee82caab976a9a2f9a09d0638598b141f7cc",
-                "reference": "7585ee82caab976a9a2f9a09d0638598b141f7cc",
+                "url": "https://api.github.com/repos/spryker/testify/zipball/862ce80d6f4b1c10a4b153d5d21bd49ea0ea0919",
+                "reference": "862ce80d6f4b1c10a4b153d5d21bd49ea0ea0919",
                 "shasum": ""
             },
             "require": {
@@ -40766,7 +40802,7 @@
                 "proprietary"
             ],
             "description": "Testify module",
-            "time": "2019-09-27T08:21:46+00:00"
+            "time": "2019-10-11T04:49:09+00:00"
         },
         {
             "name": "spryker/web-profiler",
