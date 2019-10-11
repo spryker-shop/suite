@@ -8,6 +8,7 @@
 namespace PyzTest\Glue\Products\RestApi;
 
 use Codeception\Util\HttpCode;
+use Pyz\Glue\ProductPricesRestApi\ProductPricesRestApiConfig;
 use PyzTest\Glue\Products\ProductsApiTester;
 use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
@@ -38,6 +39,79 @@ class ProductConcreteRestApiCest
     public function loadFixtures(ProductsApiTester $I): void
     {
         $this->fixtures = $I->loadFixtures(ProductsRestApiFixtures::class);
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     *
+     * @return void
+     */
+    public function requestExistingProductConcrete(ProductsApiTester $I): void
+    {
+        // Arrange
+        $productConcreteTransfer = $this->fixtures->getProductConcreteTransfer();
+
+        // Act
+        $I->sendGET(
+            $I->formatUrl(
+                '{resourceConcreteProducts}/{ProductConcreteSku}',
+                [
+                    'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                    'ProductConcreteSku' => $productConcreteTransfer->getSku(),
+                ]
+            )
+        );
+
+        // Assert
+        $I->assertResponse(HttpCode::OK);
+        $I->amSure('Returned resource is of type concrete-products')
+            ->whenI()
+            ->seeResponseDataContainsSingleResourceOfType(ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS);
+        $I->amSure('Returned resource has correct id')
+            ->whenI()
+            ->seeSingleResourceIdEqualTo($productConcreteTransfer->getSku());
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     *
+     * @return void
+     */
+    public function requestExistingProductConcreteWithPrices(ProductsApiTester $I): void
+    {
+        // Arrange
+        $productConcreteTransfer = $this->fixtures->getProductConcreteTransfer();
+
+        // Act
+        $I->sendGET(
+            $I->formatUrl(
+                '{resourceConcreteProducts}/{ProductConcreteSku}?include={relationshipConcreteProductPrices}',
+                [
+                    'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                    'relationshipConcreteProductPrices' => ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
+                    'ProductConcreteSku' => $productConcreteTransfer->getSku(),
+                ]
+            )
+        );
+
+        // Assert
+        $I->assertResponse(HttpCode::OK);
+        $I->amSure('Returned resource is of type concrete-products')
+            ->whenI()
+            ->seeSingleResourceHasRelationshipByTypeAndId(
+                ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
+                $productConcreteTransfer->getSku()
+            );
+        $I->amSure('Returned resource has correct id')
+            ->whenI()
+            ->seeIncludesContainsResourceByTypeAndId(
+                ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
+                $productConcreteTransfer->getSku()
+            );
     }
 
     /**

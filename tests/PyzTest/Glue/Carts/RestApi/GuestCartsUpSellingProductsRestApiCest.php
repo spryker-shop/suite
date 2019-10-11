@@ -52,12 +52,12 @@ class GuestCartsUpSellingProductsRestApiCest
     public function requestExistingGuestCartItemsWithProductLabelRelationship(CartsApiTester $I): void
     {
         // Arrange
-        $quoteTransfer = $this->fixtures->getQuoteTransferAnonymous();
+        $quoteTransfer = $this->fixtures->getGuestQuoteTransfer();
         $productConcreteTransfer = $this->fixtures->getProductConcreteTransferWithLabel();
         $productLabelTransfer = $this->fixtures->getProductLabelTransfer();
         $I->haveHttpHeader(
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $this->fixtures->getValueForAnonymousCustomerReference()
+            $this->fixtures->getValueForGuestCustomerReference()
         );
 
         // Act
@@ -102,11 +102,11 @@ class GuestCartsUpSellingProductsRestApiCest
     public function requestExistingGuestCartItemsWithoutProductLabelRelationship(CartsApiTester $I): void
     {
         // Arrange
-        $quoteTransfer = $this->fixtures->getQuoteTransferAnonymousWithLabel();
+        $quoteTransfer = $this->fixtures->getGuestQuoteTransferWithLabel();
         $productConcreteTransfer = $this->fixtures->getProductConcreteTransfer();
         $I->haveHttpHeader(
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $this->fixtures->getValueForAnonymousCustomerReferenceWithLabel()
+            $this->fixtures->getValueForGuestCustomerReferenceWithLabel()
         );
 
         // Act
@@ -148,7 +148,7 @@ class GuestCartsUpSellingProductsRestApiCest
         // Arrange
         $I->haveHttpHeader(
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $this->fixtures->getValueForAnonymousCustomerReferenceWithEmptyCart()
+            $this->fixtures->getValueForGuestCustomerReferenceWithLabelWithEmptyCart()
         );
 
         // Act
@@ -182,10 +182,10 @@ class GuestCartsUpSellingProductsRestApiCest
     public function requestExistingCartItemsWithProductLabelRelationshipByPost(CartsApiTester $I): void
     {
         // Arrange
-        $quoteTransfer = $this->fixtures->getQuoteTransferAnonymous();
+        $quoteTransfer = $this->fixtures->getGuestQuoteTransfer();
         $I->haveHttpHeader(
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $this->fixtures->getValueForAnonymousCustomerReference()
+            $this->fixtures->getValueForGuestCustomerReference()
         );
 
         // Act
