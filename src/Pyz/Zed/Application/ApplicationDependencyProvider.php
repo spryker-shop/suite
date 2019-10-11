@@ -11,7 +11,6 @@ use Silex\Provider\HttpFragmentServiceProvider;
 use Silex\Provider\SessionServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\FormFactoryServiceProvider;
 use Spryker\Shared\ErrorHandler\Plugin\ServiceProvider\WhoopsErrorHandlerServiceProvider;
-use Spryker\Zed\Acl\Communication\Plugin\Bootstrap\AclBootstrapProvider;
 use Spryker\Zed\Api\Communication\Plugin\ApiServiceProviderPlugin;
 use Spryker\Zed\Api\Communication\Plugin\ServiceProvider\ApiRoutingServiceProvider;
 use Spryker\Zed\Application\ApplicationDependencyProvider as SprykerApplicationDependencyProvider;
@@ -19,21 +18,18 @@ use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\SaveSessionServ
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\SubRequestServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\ZedHstsServiceProvider;
 use Spryker\Zed\Assertion\Communication\Plugin\ServiceProvider\AssertionServiceProvider;
-use Spryker\Zed\Auth\Communication\Plugin\Bootstrap\AuthBootstrapProvider;
-use Spryker\Zed\Auth\Communication\Plugin\ServiceProvider\RedirectAfterLoginProvider;
 use Spryker\Zed\EventDispatcher\Communication\Plugin\Application\EventDispatcherApplicationPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\ServiceProvider\GuiTwigExtensionServiceProvider;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Locale\Communication\Plugin\Application\LocaleApplicationPlugin;
 use Spryker\Zed\Messenger\Communication\Plugin\Application\MessengerApplicationPlugin;
-use Spryker\Zed\Monitoring\Communication\Plugin\ServiceProvider\MonitoringRequestTransactionServiceProvider;
 use Spryker\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
 use Spryker\Zed\Router\Communication\Plugin\Application\RouterApplicationPlugin;
 use Spryker\Zed\Session\Communication\Plugin\ServiceProvider\SessionServiceProvider as SprykerSessionServiceProvider;
 use Spryker\Zed\Translator\Communication\Plugin\Application\TranslatorApplicationPlugin;
 use Spryker\Zed\Twig\Communication\Plugin\Application\TwigApplicationPlugin;
 use Spryker\Zed\WebProfiler\Communication\Plugin\Application\WebProfilerApplicationPlugin;
-use Spryker\Zed\ZedRequest\Communication\Plugin\GatewayServiceProviderPlugin;
+use Spryker\Zed\WebProfiler\Communication\Plugin\ServiceProvider\WebProfilerServiceProvider;
 
 class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
 {
@@ -47,20 +43,16 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
         $coreProviders = parent::getServiceProviders($container);
 
         $providers = [
-            new AuthBootstrapProvider(),
-            new AclBootstrapProvider(),
             new AssertionServiceProvider(),
             new SubRequestServiceProvider(),
             new ZedHstsServiceProvider(),
             new FormFactoryServiceProvider(),
-            new GatewayServiceProviderPlugin(),
             new GuiTwigExtensionServiceProvider(),
-            new RedirectAfterLoginProvider(),
             new SaveSessionServiceProvider(),
             new SessionServiceProvider(),
             new SprykerSessionServiceProvider(),
             new SubRequestServiceProvider(),
-            new MonitoringRequestTransactionServiceProvider(),
+            new WebProfilerServiceProvider(),
             new ZedHstsServiceProvider(),
         ];
 
@@ -97,11 +89,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
     protected function getInternalCallServiceProvidersWithAuthentication(Container $container)
     {
         return [
-            new AuthBootstrapProvider(),
-            new AclBootstrapProvider(),
-            new GatewayServiceProviderPlugin(),
             new HttpFragmentServiceProvider(),
-            new MonitoringRequestTransactionServiceProvider(),
             new SessionServiceProvider(),
             new SubRequestServiceProvider(),
             new SprykerSessionServiceProvider(),
@@ -109,7 +97,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
     }
 
     /**
-     * @return array
+     * @return \Spryker\Shared\ApplicationExtension\Dependency\Plugin\ApplicationPluginInterface[]
      */
     protected function getApplicationPlugins(): array
     {
