@@ -298,7 +298,6 @@ $config[AclConstants::ACL_USER_RULE_WHITELIST][] = [
 ];
 
 $config[KernelConstants::AUTO_LOADER_CACHE_FILE_NO_LOCK] = false;
-$config[KernelConstants::AUTO_LOADER_UNRESOLVABLE_CACHE_ENABLED] = false;
 $config[KernelConstants::AUTO_LOADER_UNRESOLVABLE_CACHE_PROVIDER] = File::class;
 
 $config[OmsConstants::ACTIVE_PROCESSES] = [
