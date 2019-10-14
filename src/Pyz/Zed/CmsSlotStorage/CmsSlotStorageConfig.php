@@ -15,7 +15,7 @@ class CmsSlotStorageConfig extends SprykerCmsSlotStorageConfig
     /**
      * @return string|null
      */
-    public function getCmsStorageSynchronizationPoolName(): ?string
+    public function getCmsSlotSynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
