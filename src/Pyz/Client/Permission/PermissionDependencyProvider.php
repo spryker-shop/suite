@@ -16,9 +16,6 @@ use Spryker\Client\CustomerAccessPermission\Plugin\SeeShoppingListPermissionPlug
 use Spryker\Client\CustomerAccessPermission\Plugin\SeeWishlistPermissionPlugin;
 use Spryker\Client\OauthPermission\Plugin\Permission\OauthPermissionStoragePlugin;
 use Spryker\Client\Permission\PermissionDependencyProvider as SprykerPermissionDependencyProvider;
-use Spryker\Client\QuoteApproval\Plugin\Permission\ApproveQuotePermissionPlugin;
-use Spryker\Client\QuoteApproval\Plugin\Permission\PlaceOrderPermissionPlugin;
-use Spryker\Client\QuoteApproval\Plugin\Permission\RequestQuoteApprovalPermissionPlugin;
 use Spryker\Client\SharedCart\Plugin\ReadSharedCartPermissionPlugin;
 use Spryker\Client\SharedCart\Plugin\WriteSharedCartPermissionPlugin;
 use Spryker\Client\ShoppingList\Plugin\ReadShoppingListPermissionPlugin;
@@ -53,9 +50,6 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new SeeAddToCartPermissionPlugin(), #CustomerAccessFeature
             new SeeWishlistPermissionPlugin(), #CustomerAccessFeature
             new SeeShoppingListPermissionPlugin(), #CustomerAccessFeature
-            new ApproveQuotePermissionPlugin(),
-            new PlaceOrderPermissionPlugin(),
-            new RequestQuoteApprovalPermissionPlugin(),
         ];
     }
 }
