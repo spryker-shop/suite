@@ -168,7 +168,7 @@ class AccessTokensRestApiCest
      *
      * @return void
      */
-    public function invalidAccessTokenRequest(AuthRestApiTester $I): void
+    public function requestAccessTokenWithInvalidPostData(AuthRestApiTester $I): void
     {
         //Act
         $I->sendPOST(AuthRestApiConfig::RESOURCE_ACCESS_TOKENS, [
@@ -190,7 +190,7 @@ class AccessTokensRestApiCest
      *
      * @return void
      */
-    public function invalidAccessTokenRequestType(AuthRestApiTester $I): void
+    public function requestAccessTokenWithInvalidType(AuthRestApiTester $I): void
     {
         //Act
         $I->sendPOST(AuthRestApiConfig::RESOURCE_ACCESS_TOKENS, [

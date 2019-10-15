@@ -86,8 +86,12 @@ class AccessTokensForCompanyUserRestApiCest
         ]);
 
         //Assert
+        $idCompanyUser = current($I->grabDataFromResponseByJsonPath('$.data.attributes.idCompanyUser'));
+
         $this->assertResponse($I, HttpCode::CREATED);
-        $I->assertNotNull(current($I->grabDataFromResponseByJsonPath('$.data.attributes.idCompanyUser')));
+
+        $I->assertNotNull($idCompanyUser);
+        $I->assertEquals($idCompanyUser, $this->fixtures->getCompanyUserTransfer()->getUuid());
         $I->seeSingleResourceHasSelfLink($I->formatFullUrl(AuthRestApiConfig::RESOURCE_ACCESS_TOKENS));
     }
 
@@ -113,6 +117,7 @@ class AccessTokensForCompanyUserRestApiCest
 
         //Assert
         $this->assertResponse($I, HttpCode::CREATED);
+
         $I->assertNull(current($I->grabDataFromResponseByJsonPath('$.data.attributes.idCompanyUser')));
         $I->seeSingleResourceHasSelfLink($I->formatFullUrl(AuthRestApiConfig::RESOURCE_ACCESS_TOKENS));
     }
@@ -138,8 +143,12 @@ class AccessTokensForCompanyUserRestApiCest
         ]);
 
         //Assert
+        $idCompanyUser = current($I->grabDataFromResponseByJsonPath('$.data.attributes.idCompanyUser'));
+
         $this->assertResponse($I, HttpCode::CREATED);
-        $I->assertNotNull(current($I->grabDataFromResponseByJsonPath('$.data.attributes.idCompanyUser')));
+
+        $I->assertNotNull($idCompanyUser);
+        $I->assertEquals($idCompanyUser, $this->fixtures->getDefaultCompanyUserTransfer()->getUuid());
         $I->seeSingleResourceHasSelfLink($I->formatFullUrl(AuthRestApiConfig::RESOURCE_ACCESS_TOKENS));
     }
 

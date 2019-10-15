@@ -18,7 +18,7 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
 class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    public const TEST_PASSWORD = 'Test password';
+    protected const TEST_PASSWORD = 'Test password';
 
     /**
      * @var \Generated\Shared\Transfer\OauthResponseTransfer
@@ -203,13 +203,8 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
      */
     protected function createCompanyBusinessUnit(CompanyTransfer $companyTransfer, CompanyUserAuthRestApiTester $I): CompanyBusinessUnitTransfer
     {
-        return $I->haveCompanyBusinessUnit(
-            [
-                CompanyBusinessUnitTransfer::NAME => 'test business unit',
-                CompanyBusinessUnitTransfer::EMAIL => 'test@spryker.com',
-                CompanyBusinessUnitTransfer::PHONE => '1234567890',
-                CompanyBusinessUnitTransfer::FK_COMPANY => $companyTransfer->getIdCompany(),
-            ]
-        );
+        return $I->haveCompanyBusinessUnit([
+            CompanyBusinessUnitTransfer::FK_COMPANY => $companyTransfer->getIdCompany(),
+        ]);
     }
 }

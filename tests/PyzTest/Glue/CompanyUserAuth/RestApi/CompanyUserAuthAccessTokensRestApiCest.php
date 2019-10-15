@@ -204,9 +204,9 @@ class CompanyUserAuthAccessTokensRestApiCest
     public function requestCompanyUserAccessTokenForCustomerWithTwoCompanyUsers(CompanyUserAuthRestApiTester $I): void
     {
         //Arrange
-        $I->amBearerAuthenticated($this->fixtures->getOauthResponseTransferForCustomerWithTwoCompanyUsers()->getAccessToken());
+        $firstCompanyUserAccessToken = $this->fixtures->getOauthResponseTransferForCustomerWithTwoCompanyUsers()->getAccessToken();
 
-        $defaultCompanyUserAccessToken = $this->getAccessTokenForDefaultCompanyUser($I);
+        $I->amBearerAuthenticated($firstCompanyUserAccessToken);
 
         //Act
         $I->sendPOST(CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS, [
@@ -218,13 +218,13 @@ class CompanyUserAuthAccessTokensRestApiCest
             ],
         ]);
 
-        $nonDefaultCompanyUserAccessToken = current($I->grabDataFromResponseByJsonPath('$.data.attributes.accessToken'));
+        $secondCompanyUserAccessToken = current($I->grabDataFromResponseByJsonPath('$.data.attributes.accessToken'));
 
         //Assert
         $this->assertResponse($I, HttpCode::CREATED);
-        $I->assertNotNull($defaultCompanyUserAccessToken);
-        $I->assertNotNull($nonDefaultCompanyUserAccessToken);
-        $I->assertNotEquals($defaultCompanyUserAccessToken, $nonDefaultCompanyUserAccessToken);
+
+        $I->assertNotNull($secondCompanyUserAccessToken);
+        $I->assertNotEquals($firstCompanyUserAccessToken, $secondCompanyUserAccessToken);
         $I->seeSingleResourceHasSelfLink($I->formatFullUrl(CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS));
     }
 
@@ -239,29 +239,5 @@ class CompanyUserAuthAccessTokensRestApiCest
         $I->seeResponseCodeIs($responseCode);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
-     *
-     * @return string
-     */
-    protected function getAccessTokenForDefaultCompanyUser(CompanyUserAuthRestApiTester $I): string
-    {
-        $I->sendPOST(CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS, [
-            'data' => [
-                'type' => CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS,
-                'attributes' => [
-                    'idCompanyUser' => $this->fixtures->getOauthResponseTransferForCustomerWithTwoCompanyUsers()->getIdCompanyUser(),
-                ],
-            ],
-        ]);
-
-        $this->assertResponse($I, HttpCode::CREATED);
-        $I->seeSingleResourceHasSelfLink($I->formatFullUrl(CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS));
-
-        return current($I->grabDataFromResponseByJsonPath('$.data.attributes.accessToken'));
     }
 }

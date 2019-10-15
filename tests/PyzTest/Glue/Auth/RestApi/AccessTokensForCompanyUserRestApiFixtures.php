@@ -17,7 +17,17 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
 class AccessTokensForCompanyUserRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    public const TEST_PASSWORD = 'Test password';
+    protected const TEST_PASSWORD = 'Test password';
+
+    /**
+     * @var \Generated\Shared\Transfer\CompanyUserTransfer
+     */
+    protected $companyUserTransfer;
+
+    /**
+     * @var \Generated\Shared\Transfer\CompanyUserTransfer
+     */
+    protected $defaultCompanyUserTransfer;
 
     /**
      * @var \Generated\Shared\Transfer\CustomerTransfer
@@ -48,15 +58,10 @@ class AccessTokensForCompanyUserRestApiFixtures implements FixturesBuilderInterf
     {
         $I->haveCompanyMailConnectorToMailDependency();
 
-        $this->customerTransferWithCompanyUser = $this->createCompanyUserTransfer($I, $this->createCustomerTransfer($I))->getCustomer();
-        $this->customerTransferWithoutCompanyUser = $this->createCustomerTransfer($I);
-        $this->customerTransferWithTwoCompanyUsersWithoutDefaultOne = $this->createCompanyUserTransfer($I, $this->createCustomerTransfer($I))->getCustomer();
-        $this->customerTransferWithTwoCompanyUsersWithDefaultOne = $this->createCompanyUserTransfer($I, $this->createCustomerTransfer($I))->getCustomer();
-
-        $this->createCompanyUserTransfer($I, $this->customerTransferWithTwoCompanyUsersWithoutDefaultOne);
-        $this->createCompanyUserTransfer($I, $this->customerTransferWithTwoCompanyUsersWithDefaultOne, [
-            CompanyUserTransfer::IS_DEFAULT => true,
-        ]);
+        $this->initCustomerTransferWithCompanyUser($I);
+        $this->initCustomerTransferWithoutCompanyUser($I);
+        $this->initCustomerTransferWithTwoCompanyUsersWithoutDefaultOne($I);
+        $this->initCustomerTransferWithTwoCompanyUsersWithDefaultOne($I);
 
         return $this;
     }
@@ -94,6 +99,78 @@ class AccessTokensForCompanyUserRestApiFixtures implements FixturesBuilderInterf
     }
 
     /**
+     * @return \Generated\Shared\Transfer\CompanyUserTransfer
+     */
+    public function getCompanyUserTransfer(): CompanyUserTransfer
+    {
+        return $this->companyUserTransfer;
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\CompanyUserTransfer
+     */
+    public function getDefaultCompanyUserTransfer(): CompanyUserTransfer
+    {
+        return $this->defaultCompanyUserTransfer;
+    }
+
+    /**
+     * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
+     *
+     * @return void
+     */
+    protected function initCustomerTransferWithCompanyUser(AuthRestApiTester $I): void
+    {
+        $customerTransfer = $this->createCustomerTransfer($I);
+        $companyUserTransfer = $this->createCompanyUserTransfer($I, $customerTransfer);
+
+        $this->companyUserTransfer = $companyUserTransfer;
+        $this->customerTransferWithCompanyUser = $customerTransfer;
+    }
+
+    /**
+     * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
+     *
+     * @return void
+     */
+    protected function initCustomerTransferWithoutCompanyUser(AuthRestApiTester $I): void
+    {
+        $this->customerTransferWithoutCompanyUser = $this->createCustomerTransfer($I);
+    }
+
+    /**
+     * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
+     *
+     * @return void
+     */
+    protected function initCustomerTransferWithTwoCompanyUsersWithoutDefaultOne(AuthRestApiTester $I): void
+    {
+        $customerTransfer = $this->createCustomerTransfer($I);
+
+        $this->createCompanyUserTransfer($I, $customerTransfer);
+        $this->createCompanyUserTransfer($I, $customerTransfer);
+
+        $this->customerTransferWithTwoCompanyUsersWithoutDefaultOne = $customerTransfer;
+    }
+
+    /**
+     * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
+     *
+     * @return void
+     */
+    protected function initCustomerTransferWithTwoCompanyUsersWithDefaultOne(AuthRestApiTester $I): void
+    {
+        $customerTransfer = $this->createCustomerTransfer($I);
+
+        $this->defaultCompanyUserTransfer = $this->createCompanyUserTransfer($I, $customerTransfer, [
+            CompanyUserTransfer::IS_DEFAULT => true,
+        ]);
+        $this->createCompanyUserTransfer($I, $customerTransfer);
+
+        $this->customerTransferWithTwoCompanyUsersWithDefaultOne = $customerTransfer;
+    }
+
+    /**
      * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
      *
      * @return \Generated\Shared\Transfer\CustomerTransfer
@@ -115,8 +192,7 @@ class AccessTokensForCompanyUserRestApiFixtures implements FixturesBuilderInterf
      */
     protected function createCompanyUserTransfer(AuthRestApiTester $I, CustomerTransfer $customerTransfer, array $seed = []): CompanyUserTransfer
     {
-        $companyTransfer = $I->haveCompany([
-            CompanyTransfer::IS_ACTIVE => true,
+        $companyTransfer = $I->haveActiveCompany([
             CompanyTransfer::STATUS => 'approved',
         ]);
 
@@ -133,15 +209,10 @@ class AccessTokensForCompanyUserRestApiFixtures implements FixturesBuilderInterf
      *
      * @return \Generated\Shared\Transfer\CompanyBusinessUnitTransfer
      */
-    public function createCompanyBusinessUnit(CompanyTransfer $companyTransfer, AuthRestApiTester $I): CompanyBusinessUnitTransfer
+    protected function createCompanyBusinessUnit(CompanyTransfer $companyTransfer, AuthRestApiTester $I): CompanyBusinessUnitTransfer
     {
-        return $I->haveCompanyBusinessUnit(
-            [
-                CompanyBusinessUnitTransfer::NAME => 'test business unit',
-                CompanyBusinessUnitTransfer::EMAIL => 'test@spryker.com',
-                CompanyBusinessUnitTransfer::PHONE => '1234567890',
-                CompanyBusinessUnitTransfer::FK_COMPANY => $companyTransfer->getIdCompany(),
-            ]
-        );
+        return $I->haveCompanyBusinessUnit([
+            CompanyBusinessUnitTransfer::FK_COMPANY => $companyTransfer->getIdCompany(),
+        ]);
     }
 }
