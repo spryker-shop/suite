@@ -31,6 +31,11 @@ class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface, Se
      */
     protected $query;
 
+    /**
+     * @var \Generated\Shared\Transfer\SearchContextTransfer
+     */
+    protected $searchContextTransfer;
+
     public function __construct()
     {
         $this->query = $this->createSearchQuery();
@@ -59,10 +64,35 @@ class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface, Se
      */
     public function getSearchContext(): SearchContextTransfer
     {
-        $searchContextTransfer = new SearchContextTransfer();
-        $searchContextTransfer->setSourceIdentifier(static::SOURCE_IDENTIFIER);
+        if (!$this->searchContextTransfer) {
+            $this->setupSearchContext();
+        }
 
-        return $searchContextTransfer;
+        return $this->searchContextTransfer;
+    }
+
+    /**
+     * {@inheritDoc}
+     * - Sets a context for sale search.
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\SearchContextTransfer $searchContextTransfer
+     *
+     * @return void
+     */
+    public function setSearchContext(SearchContextTransfer $searchContextTransfer): void
+    {
+        $this->searchContextTransfer = $searchContextTransfer;
+    }
+
+    /**
+     * @return void
+     */
+    protected function setupSearchContext(): void
+    {
+        $this->searchContextTransfer = new SearchContextTransfer();
+        $this->searchContextTransfer->setSourceIdentifier(static::SOURCE_IDENTIFIER);
     }
 
     /**
