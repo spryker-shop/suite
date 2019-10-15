@@ -4,7 +4,10 @@
 
 ###### Optional
 
-- Core PR: URL_HERE
+Reference all core PRs for auto-link back-references.
+
+Core PRs
+- URL_HERE
 
 ###### Change log
 
