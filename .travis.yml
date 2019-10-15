@@ -33,18 +33,18 @@ matrix:
 
   include:
 
-    - php: "7.3"
+    - php: "7.4snapshot"
       dist: trusty
       env:
         - VALIDATION=1
 
-    - php: "7.3"
+    - php: "7.4snapshot"
       dist: trusty
       env:
         - TEST_GROUP=acceptance
         - ON_EVENTS=push,cron
 
-    - php: "7.3"
+    - php: "7.4snapshot"
       dist: trusty
       env:
         - TEST_GROUP=without-acceptance
