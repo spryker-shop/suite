@@ -5253,51 +5253,6 @@
             "time": "2019-10-14T14:44:08+00:00"
         },
         {
-            "name": "spryker/http-extension",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/http-extension.git",
-                "reference": "481c2990a1a75e3119cbf8741dbd22a8c1743157"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/http-extension/zipball/481c2990a1a75e3119cbf8741dbd22a8c1743157",
-                "reference": "481c2990a1a75e3119cbf8741dbd22a8c1743157",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/container": "*",
-                "spryker/symfony": "*",
-                "spryker/testify": "*"
-            },
-            "suggest": {
-                "spryker/container": "If you want to use a FragmentHandlerPluginInterface.",
-                "spryker/symfony": "If you want to use a FragmentHandlerPluginInterface."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "HttpExtension module",
-            "time": "2019-08-15T16:09:16+00:00"
-        },
-        {
             "name": "spryker/install",
             "version": "dev-master",
             "source": {
@@ -5492,7 +5447,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "a9140b941b9e57f6c6cf4221f11c3979a18413c9"
+                "reference": "a19e5531bd3936a053ff834c0bfaee99bddb952e"
             },
             "require": {
                 "php": ">=7.1"
@@ -5730,6 +5685,8 @@
                 "spryker/gui": "*",
                 "spryker/guzzle": "*",
                 "spryker/heartbeat": "*",
+                "spryker/http": "*",
+                "spryker/http-extension": "*",
                 "spryker/index-generator": "*",
                 "spryker/installer": "*",
                 "spryker/invoice": "*",
@@ -6070,7 +6027,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-15T08:35:21+00:00"
+            "time": "2019-10-15T09:46:35+00:00"
         },
         {
             "name": "spryker/spryker-shop",
