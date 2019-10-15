@@ -273,17 +273,17 @@ before_script:
   - if [[ $DB == 'mysql' ]] ; then sudo service mysql restart ; fi
 
   - if [[ $TEST_GROUP == 'acceptance' ]] ; then config/Shared/ci/travis/acceptance_env.sh ; fi
-  - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/install DE -r testing -v  --quiet ; fi
-  - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/install DE -r testing -x frontend -x fixtures --quiet ; fi
+  - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/install DE -r testing -v ; fi
+  - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/install DE -r testing -x frontend -x fixtures -v ; fi
 
-  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:generate --quiet ; fi
-  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:install --quiet ; fi
-  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console dev:ide:generate-auto-completion --quiet ; fi
-  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/codecept build --ansi --quiet ; fi
-  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:databuilder:generate --quiet ; fi
-  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console setup:search --quiet ; fi
-  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console frontend:project:install-dependencies --quiet ; fi
-  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console frontend:yves:install-dependencies --quiet ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:generate ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:install ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console dev:ide:generate-auto-completion ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/codecept build --ansi ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:databuilder:generate ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console setup:search ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console frontend:project:install-dependencies ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console frontend:yves:install-dependencies ; fi
 
 script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpstan analyze -c phpstan.neon -l 5 src/ ; fi
