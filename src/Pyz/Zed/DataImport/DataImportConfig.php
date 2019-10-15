@@ -86,6 +86,7 @@ class DataImportConfig extends SprykerDataImportConfig
     public const IMPORT_TYPE_SHIPMENT = 'shipment';
     public const IMPORT_TYPE_SHIPMENT_PRICE = 'shipment-price';
     public const IMPORT_TYPE_STOCK = 'stock';
+    public const IMPORT_TYPE_STOCK_STORE = 'stock-store';
     public const IMPORT_TYPE_TAX = 'tax';
     public const IMPORT_TYPE_CURRENCY = 'currency';
     public const IMPORT_TYPE_STORE = 'store';
@@ -494,6 +495,7 @@ class DataImportConfig extends SprykerDataImportConfig
             static::IMPORT_TYPE_SHIPMENT,
             static::IMPORT_TYPE_SHIPMENT_PRICE,
             static::IMPORT_TYPE_STOCK,
+            static::IMPORT_TYPE_STOCK_STORE,
             static::IMPORT_TYPE_TAX,
             static::IMPORT_TYPE_CURRENCY,
             static::IMPORT_TYPE_STORE,
