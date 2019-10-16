@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa1d46cafb18b1b70fa68c042d07f5f4",
+    "content-hash": "5cc56e7e415702a6c90a241cc04cbeed",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -2967,7 +2967,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
+            "description": "? Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -3758,8 +3758,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Library that provides collection, processing, and rendering functionality for PHP code coverage information.",
@@ -5395,11 +5395,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/te-663/dev-pass-by-kv-storage",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "57fe507def8a338f43ff6cbe3932fdba932548e1"
+                "reference": "1b3be530d2640d7d6656b7ec2bbe8aba1e037a86"
             },
             "require": {
                 "php": ">=7.1"
@@ -5907,6 +5907,8 @@
                 "spryker/stock-gui": "*",
                 "spryker/stock-sales-connector": "*",
                 "spryker/storage": "*",
+                "spryker/storage-database": "*",
+                "spryker/storage-database-extension": "*",
                 "spryker/storage-extension": "*",
                 "spryker/storage-redis": "*",
                 "spryker/store": "*",
@@ -5980,7 +5982,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-15T15:25:17+00:00"
+            "time": "2019-10-16T09:44:55+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5988,7 +5990,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "ef081a7e5bed6739d81a9d2e20e89be4ddd78ad6"
+                "reference": "9f6075415ec1a2087f597369dd948d829972ed2d"
             },
             "require": {
                 "php": ">=7.1"
@@ -6122,20 +6124,20 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-10-15T15:25:20+00:00"
+            "time": "2019-10-15T17:03:24+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
-            "version": "dev-master",
+            "version": "dev-feature/te-663/dev-pass-by-kv-storage",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/synchronization-behavior.git",
-                "reference": "a595249fbbec4cae4a45da8f2fa20aaff7440276"
+                "reference": "5144ed29483fafbf02e1f26c32b2c348256121f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/a595249fbbec4cae4a45da8f2fa20aaff7440276",
-                "reference": "a595249fbbec4cae4a45da8f2fa20aaff7440276",
+                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/5144ed29483fafbf02e1f26c32b2c348256121f9",
+                "reference": "5144ed29483fafbf02e1f26c32b2c348256121f9",
                 "shasum": ""
             },
             "require": {
@@ -6171,7 +6173,7 @@
                 "proprietary"
             ],
             "description": "SynchronizationBehavior module",
-            "time": "2019-10-07T20:54:20+00:00"
+            "time": "2019-10-16T08:13:32+00:00"
         },
         {
             "name": "spryker/uuid-behavior",
@@ -9793,7 +9795,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-12T17:28:44+00:00"
+            "time": "2017-12-13T13:21:38+00:00"
         },
         {
             "name": "phpmd/phpmd",
@@ -9836,20 +9838,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
-                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler"
+                    "homepage": "https://github.com/manuelpichler",
+                    "role": "Project Founder"
                 },
                 {
                     "name": "Marc Würth",
-                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84"
+                    "homepage": "https://github.com/ravage84",
+                    "role": "Project Maintainer"
                 },
                 {
                     "name": "Other contributors",
-                    "role": "Contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
+                    "role": "Contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -10763,7 +10765,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "1214c1d473210aaba7316d21ee2f8be84c80da68"
+                "reference": "b36ed481f4aa6e91620ce478695afe39c89c861c"
             },
             "require": {
                 "php": ">=7.1",
@@ -10804,7 +10806,7 @@
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2019-10-15T14:11:49+00:00"
+            "time": "2019-10-16T09:13:20+00:00"
         },
         {
             "name": "spryker/git-hook",
@@ -11244,6 +11246,12 @@
             "alias_normalized": "1.13.0.0",
             "version": "9999999-dev",
             "package": "spryker/event-behavior"
+        },
+        {
+            "alias": "1.4.0",
+            "alias_normalized": "1.4.0.0",
+            "version": "dev-feature/te-663/dev-pass-by-kv-storage",
+            "package": "spryker/synchronization-behavior"
         },
         {
             "alias": "1.1.0",
