@@ -188,23 +188,14 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
             CompanyTransfer::STATUS => 'approved',
         ]);
 
-        return $I->haveCompanyUser([
+        $companyBusinessUnitTransfer = $I->haveCompanyBusinessUnit([
+            CompanyBusinessUnitTransfer::FK_COMPANY => $companyTransfer->getIdCompany(),
+        ]);
+
+        return $I->haveCompanyUser($seed + [
             CompanyUserTransfer::CUSTOMER => $customerTransfer,
             CompanyUserTransfer::FK_COMPANY => $companyTransfer->getIdCompany(),
-            CompanyUserTransfer::FK_COMPANY_BUSINESS_UNIT => $this->createCompanyBusinessUnit($companyTransfer, $I)->getIdCompanyBusinessUnit(),
-        ] + $seed);
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
-     * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
-     *
-     * @return \Generated\Shared\Transfer\CompanyBusinessUnitTransfer
-     */
-    protected function createCompanyBusinessUnit(CompanyTransfer $companyTransfer, CompanyUserAuthRestApiTester $I): CompanyBusinessUnitTransfer
-    {
-        return $I->haveCompanyBusinessUnit([
-            CompanyBusinessUnitTransfer::FK_COMPANY => $companyTransfer->getIdCompany(),
+            CompanyUserTransfer::FK_COMPANY_BUSINESS_UNIT => $companyBusinessUnitTransfer->getIdCompanyBusinessUnit(),
         ]);
     }
 }
