@@ -22,6 +22,7 @@ use Spryker\Shared\FileManagerGui\FileManagerGuiConstants;
 use Spryker\Shared\FileSystem\FileSystemConstants;
 use Spryker\Shared\Flysystem\FlysystemConstants;
 use Spryker\Shared\GlueApplication\GlueApplicationConstants;
+use Spryker\Shared\Http\HttpConstants;
 use Spryker\Shared\Kernel\ClassResolver\Cache\Provider\File;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Kernel\Store;
@@ -300,15 +301,23 @@ $config[ApplicationConstants::YVES_COOKIE_VISITOR_ID_VALID_FOR] = '+30 minute';
 
 // ---------- HTTP strict transport security
 $HSTS_ENABLED = false;
-$config[ApplicationConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_ENABLED] = $HSTS_ENABLED;
-$config[ApplicationConstants::YVES_HTTP_STRICT_TRANSPORT_SECURITY_ENABLED] = $HSTS_ENABLED;
+$config[ApplicationConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_ENABLED]
+    = $config[HttpConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_ENABLED]
+    = $HSTS_ENABLED;
+$config[ApplicationConstants::YVES_HTTP_STRICT_TRANSPORT_SECURITY_ENABLED]
+    = $config[HttpConstants::YVES_HTTP_STRICT_TRANSPORT_SECURITY_ENABLED]
+    = $HSTS_ENABLED;
 $HSTS_CONFIG = [
     'max_age' => 31536000,
     'include_sub_domains' => true,
     'preload' => true,
 ];
-$config[ApplicationConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG] = $HSTS_CONFIG;
-$config[ApplicationConstants::YVES_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG] = $HSTS_CONFIG;
+$config[ApplicationConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG]
+    = $config[HttpConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG]
+    = $HSTS_CONFIG;
+$config[ApplicationConstants::YVES_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG]
+    = $config[HttpConstants::YVES_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG]
+    = $HSTS_CONFIG;
 
 // ---------- Router
 $config[RouterConstants::YVES_SSL_EXCLUDED_ROUTE_NAMES] = [
@@ -319,6 +328,8 @@ $config[RouterConstants::ZED_SSL_EXCLUDED_ROUTE_NAMES] = ['heartbeat/index'];
 // ---------- SSL
 $config[SessionConstants::YVES_SSL_ENABLED] = false;
 $config[ZedRequestConstants::ZED_API_SSL_ENABLED] = false;
+$config[ApplicationConstants::ZED_SSL_ENABLED] = $config[SessionConstants::ZED_SSL_ENABLED] = false;
+$config[ApplicationConstants::ZED_SSL_EXCLUDED] = ['heartbeat/index'];
 
 // ---------- Error handling
 $config[ErrorHandlerConstants::YVES_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Yves/errorpage/error.html';
@@ -356,7 +367,6 @@ $config[LogConstants::LOG_ERROR_QUEUE_NAME] = 'error-log-queue';
 
 // ---------- Auto-loader
 $config[KernelConstants::AUTO_LOADER_CACHE_FILE_NO_LOCK] = false;
-$config[KernelConstants::AUTO_LOADER_UNRESOLVABLE_CACHE_ENABLED] = false;
 $config[KernelConstants::AUTO_LOADER_UNRESOLVABLE_CACHE_PROVIDER] = File::class;
 
 // ---------- Dependency injector

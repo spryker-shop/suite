@@ -207,6 +207,9 @@ addons:
       - $(find ./tests/PyzTest/*/*/_output/* -not -empty | tr "\n" ":")
       - $(find ./vendor/spryker/spryker/Bundles/*/tests/_output/* -not -empty | tr "\n" ":")
       - /tmp/phantomjs.log.gz
+      - /tmp/yves-error.log
+      - /tmp/glue-error.log
+      - /tmp/zed-error.log
 
   apt:
     packages:
@@ -231,6 +234,7 @@ services:
 sudo: required
 
 before_install:
+  - phpenv config-add config/Shared/ci/travis/travis.php.ini
   - if [[ $VALIDATION != 1 && $ON_EVENTS != *$TRAVIS_EVENT_TYPE* ]] ; then exit ; fi
   - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - phpenv config-rm xdebug.ini
@@ -270,8 +274,8 @@ before_script:
   - if [[ $DB == 'mysql' ]] ; then sudo service mysql restart ; fi
 
   - if [[ $TEST_GROUP == 'acceptance' ]] ; then config/Shared/ci/travis/acceptance_env.sh ; fi
-  - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/install DE -r testing -v  --quiet ; fi
-  - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/install DE -r testing -x frontend -x fixtures --quiet ; fi
+  - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/install DE -r testing ; fi
+  - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/install DE -r testing -x frontend -x fixtures ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:generate --quiet ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:install --quiet ; fi
@@ -286,6 +290,8 @@ script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpstan analyze -c phpstan.neon -l 5 src/ ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:phpstan -m Spryker.all ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:phpstan -m SprykerShop.all ; fi
+
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console dev:composer:replace -d -v ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:propel:validate-abstract ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:schema:validate ; fi
