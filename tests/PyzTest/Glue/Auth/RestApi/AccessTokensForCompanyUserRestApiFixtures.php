@@ -58,10 +58,10 @@ class AccessTokensForCompanyUserRestApiFixtures implements FixturesBuilderInterf
     {
         $I->haveCompanyMailConnectorToMailDependency();
 
-        $this->initCustomerTransferWithCompanyUser($I);
-        $this->initCustomerTransferWithoutCompanyUser($I);
-        $this->initCustomerTransferWithTwoCompanyUsersWithoutDefaultOne($I);
-        $this->initCustomerTransferWithTwoCompanyUsersWithDefaultOne($I);
+        $this->createCustomerTransferWithCompanyUser($I);
+        $this->createCustomerTransferWithoutCompanyUser($I);
+        $this->createCustomerTransferWithTwoCompanyUsersWithoutDefaultOne($I);
+        $this->createCustomerTransferWithTwoCompanyUsersWithDefaultOne($I);
 
         return $this;
     }
@@ -119,7 +119,7 @@ class AccessTokensForCompanyUserRestApiFixtures implements FixturesBuilderInterf
      *
      * @return void
      */
-    protected function initCustomerTransferWithCompanyUser(AuthRestApiTester $I): void
+    protected function createCustomerTransferWithCompanyUser(AuthRestApiTester $I): void
     {
         $customerTransfer = $this->createCustomerTransfer($I);
         $companyUserTransfer = $this->createCompanyUserTransfer($I, $customerTransfer);
@@ -133,7 +133,7 @@ class AccessTokensForCompanyUserRestApiFixtures implements FixturesBuilderInterf
      *
      * @return void
      */
-    protected function initCustomerTransferWithoutCompanyUser(AuthRestApiTester $I): void
+    protected function createCustomerTransferWithoutCompanyUser(AuthRestApiTester $I): void
     {
         $this->customerTransferWithoutCompanyUser = $this->createCustomerTransfer($I);
     }
@@ -143,7 +143,7 @@ class AccessTokensForCompanyUserRestApiFixtures implements FixturesBuilderInterf
      *
      * @return void
      */
-    protected function initCustomerTransferWithTwoCompanyUsersWithoutDefaultOne(AuthRestApiTester $I): void
+    protected function createCustomerTransferWithTwoCompanyUsersWithoutDefaultOne(AuthRestApiTester $I): void
     {
         $customerTransfer = $this->createCustomerTransfer($I);
 
@@ -158,7 +158,7 @@ class AccessTokensForCompanyUserRestApiFixtures implements FixturesBuilderInterf
      *
      * @return void
      */
-    protected function initCustomerTransferWithTwoCompanyUsersWithDefaultOne(AuthRestApiTester $I): void
+    protected function createCustomerTransferWithTwoCompanyUsersWithDefaultOne(AuthRestApiTester $I): void
     {
         $customerTransfer = $this->createCustomerTransfer($I);
 
