@@ -121,11 +121,8 @@ class AccessTokensForCompanyUserRestApiFixtures implements FixturesBuilderInterf
      */
     protected function createCustomerTransferWithCompanyUser(AuthRestApiTester $I): void
     {
-        $customerTransfer = $this->createCustomerTransfer($I);
-        $companyUserTransfer = $this->createCompanyUserTransfer($I, $customerTransfer);
-
-        $this->companyUserTransfer = $companyUserTransfer;
-        $this->customerTransferWithCompanyUser = $customerTransfer;
+        $this->customerTransferWithCompanyUser = $this->createCustomerTransfer($I);
+        $this->companyUserTransfer = $this->createCompanyUserTransfer($I, $this->customerTransferWithCompanyUser);
     }
 
     /**
