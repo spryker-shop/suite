@@ -198,8 +198,8 @@ $config[SearchConstants::ELASTICA_PARAMETER__DOCUMENT_TYPE] = $ELASTICA_DOCUMENT
 $config[CollectorConstants::ELASTICA_PARAMETER__DOCUMENT_TYPE] = $ELASTICA_DOCUMENT_TYPE;
 
 // ---------- Page search
-$config[SearchConstants::FULL_TEXT_BOOSTED_BOOSTING_VALUE] = 3;
-$config[SearchElasticsearchConstants::FULL_TEXT_BOOSTED_BOOSTING_VALUE] = 3;
+$config[SearchConstants::FULL_TEXT_BOOSTED_BOOSTING_VALUE]
+    = $config[SearchElasticsearchConstants::FULL_TEXT_BOOSTED_BOOSTING_VALUE] = 3;
 
 // ---------- Twig
 $config[TwigConstants::YVES_TWIG_OPTIONS] = [
