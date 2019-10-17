@@ -36,7 +36,7 @@ class PaymentsRestApiConfig extends SprykerPaymentsRestApiConfig
     /**
      * @return array
      */
-    public function getPaymentProviderMethodToStateMachineMapping(): array
+    public function getPaymentProviderMethodToPaymentSelectionMapping(): array
     {
         return [
             DummyPaymentConfig::PROVIDER_NAME => [
