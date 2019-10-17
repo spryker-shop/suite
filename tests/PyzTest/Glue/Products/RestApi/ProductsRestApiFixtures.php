@@ -66,11 +66,11 @@ class ProductsRestApiFixtures implements FixturesBuilderInterface, FixturesConta
     }
 
     /**
-     * @param \PyzTest\Glue\PriceProducts\PriceProductsApiTester $I
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
      *
      * @return void
      */
-    protected function createPriceProduct(PriceProductsApiTester $I): void
+    protected function createPriceProduct(ProductsApiTester $I): void
     {
         $priceTypeTransfer = $I->havePriceType([PriceTypeTransfer::NAME => 'DEFAULT']);
         $currencyTransfer = $I->getLocator()->currency()->facade()->getDefaultCurrencyForCurrentStore();
