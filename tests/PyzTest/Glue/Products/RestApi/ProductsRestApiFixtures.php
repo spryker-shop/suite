@@ -86,7 +86,7 @@ class ProductsRestApiFixtures implements FixturesBuilderInterface, FixturesConta
     {
         $priceTypeTransfer = $I->havePriceType([PriceTypeTransfer::NAME => 'DEFAULT']);
         $currencyTransfer = $I->getLocator()->currency()->facade()->getDefaultCurrencyForCurrentStore();
-        $priceProductTransfer = $I->havePriceProduct([
+        $this->priceProductTransfer = $I->havePriceProduct([
             PriceProductTransfer::ID_PRODUCT => $this->productConcreteTransfer->getIdProductConcrete(),
             PriceProductTransfer::SKU_PRODUCT => $this->productConcreteTransfer->getSku(),
             PriceProductTransfer::ID_PRICE_PRODUCT => $this->productConcreteTransfer->getFkProductAbstract(),
