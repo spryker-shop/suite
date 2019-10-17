@@ -50,6 +50,7 @@ class ProductsRestApiFixtures implements FixturesBuilderInterface, FixturesConta
     public function buildFixtures(ProductsApiTester $I): FixturesContainerInterface
     {
         $this->createProductConcrete($I);
+        $this->createPriceProduct($I);
 
         return $this;
     }
