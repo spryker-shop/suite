@@ -21,6 +21,8 @@ use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Locale\Communication\Plugin\Application\LocaleApplicationPlugin;
 use Spryker\Zed\Messenger\Communication\Plugin\Application\MessengerApplicationPlugin;
 use Spryker\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
+use Spryker\Zed\Router\Communication\Plugin\Application\RouterApplicationPlugin;
+use Spryker\Zed\Session\Communication\Plugin\Application\SessionApplicationPlugin;
 use Spryker\Zed\Translator\Communication\Plugin\Application\TranslatorApplicationPlugin;
 use Spryker\Zed\Twig\Communication\Plugin\Application\TwigApplicationPlugin;
 use Spryker\Zed\WebProfiler\Communication\Plugin\Application\WebProfilerApplicationPlugin;
