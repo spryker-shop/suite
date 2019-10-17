@@ -232,4 +232,26 @@ class CartUpSellingProductsRestApiCest
         $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
         $I->seeResponseIsJson();
     }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    public function requestCartUpSellingProductsLabelRelationshipByDelete(CartsApiTester $I): void
+    {
+        // Arrange
+        $quoteUuid = $this->fixtures->getQuoteTransferWithLabel()->getUuid();
+        $I->requestCustomerLogin($this->fixtures->getCustomerTransferWithLabel());
+        $url = $I->buildCartUpSellingProductsUrl($quoteUuid, static::INCLUDE_RESOURCES);
+
+        // Act
+        $I->sendDELETE($url);
+
+        // Assert
+        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
+        $I->seeResponseIsJson();
+    }
 }

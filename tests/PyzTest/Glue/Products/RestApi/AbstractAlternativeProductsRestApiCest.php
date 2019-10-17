@@ -197,4 +197,25 @@ class AbstractAlternativeProductsRestApiCest
         $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
         $I->seeResponseIsJson();
     }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     *
+     * @return void
+     */
+    public function requestExistingAbstractAlternativeProductsWithProductLabelRelationshipByDelete(ProductsApiTester $I): void
+    {
+        // Arrange
+        $productConcreteSku = $this->fixtures->getProductConcreteTransfer()->getSku();
+        $url = $I->buildAbstractAlternativeProductsUrl($productConcreteSku, static::INCLUDE_RESOURCES);
+
+        // Act
+        $I->sendDELETE($url);
+
+        // Assert
+        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
+        $I->seeResponseIsJson();
+    }
 }

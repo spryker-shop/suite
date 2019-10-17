@@ -197,4 +197,25 @@ class RelatedProductsRestApiCest
         $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
         $I->seeResponseIsJson();
     }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     *
+     * @return void
+     */
+    public function requestExistingProductRelatedWithProductLabelRelationshipByDelete(ProductsApiTester $I): void
+    {
+        // Arrange
+        $productAbstractSku = $this->fixtures->getProductConcreteTransfer()->getAbstractSku();
+        $url = $I->buildRelatedProductsUrl($productAbstractSku, static::INCLUDE_RESOURCES);
+
+        // Act
+        $I->sendDELETE($url);
+
+        // Assert
+        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
+        $I->seeResponseIsJson();
+    }
 }

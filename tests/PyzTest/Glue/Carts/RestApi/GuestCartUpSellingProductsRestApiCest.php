@@ -248,4 +248,29 @@ class GuestCartUpSellingProductsRestApiCest
         $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
         $I->seeResponseIsJson();
     }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    public function requestGuestCartUpSellingProductsWithProductLabelRelationshipByDelete(CartsApiTester $I): void
+    {
+        // Arrange
+        $quoteUuid = $this->fixtures->getGuestQuoteTransferWithLabel()->getUuid();
+        $I->haveHttpHeader(
+            CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
+            $this->fixtures->getValueForGuestCustomerReferenceWithLabel()
+        );
+        $url = $I->buildCartUpSellingProductsUrl($quoteUuid, static::INCLUDE_RESOURCES);
+
+        // Act
+        $I->sendDELETE($url);
+
+        // Assert
+        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
+        $I->seeResponseIsJson();
+    }
 }
