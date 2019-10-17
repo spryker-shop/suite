@@ -11,15 +11,9 @@ use Spryker\Shared\SearchElasticsearch\SearchElasticsearchConfig as SprykerSearc
 
 class SearchElasticsearchConfig extends SprykerSearchElasticsearchConfig
 {
-    /**
-     * @return string[]
-     */
-    public function getSupportedSourceNames(): array
-    {
-        return [
-            'customer-page',
-            'page',
-            'product-review',
-        ];
-    }
+    protected const SUPPORTED_SOURCE_IDENTIFIERS = [
+        'customer-page',
+        'page',
+        'product-review',
+    ];
 }
