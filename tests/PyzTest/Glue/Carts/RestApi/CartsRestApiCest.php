@@ -10,6 +10,7 @@ namespace PyzTest\Glue\Carts\RestApi;
 use Codeception\Util\HttpCode;
 use Pyz\Glue\ProductsRestApi\ProductsRestApiConfig;
 use PyzTest\Glue\Carts\CartsApiTester;
+use PyzTest\Glue\Carts\RestApi\Fixtures\CartsRestApiFixtures;
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
 use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
 
@@ -26,8 +27,14 @@ use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
  */
 class CartsRestApiCest
 {
+    protected const INCLUDE_RESOURCES = [
+        CartsRestApiConfig::RESOURCE_CART_ITEMS,
+        ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+        ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+    ];
+
     /**
-     * @var \PyzTest\Glue\Carts\RestApi\CartsRestApiFixtures
+     * @var \PyzTest\Glue\Carts\RestApi\Fixtures\CartsRestApiFixtures
      */
     protected $fixtures;
 
@@ -48,57 +55,111 @@ class CartsRestApiCest
      *
      * @return void
      */
-    protected function requestCustomerLogin(CartsApiTester $I): void
-    {
-        $token = $I->haveAuth($this->fixtures->getCustomerTransfer())
-            ->getAccessToken();
-        $I->amBearerAuthenticated($token);
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     *
-     * @return void
-     */
-    public function requestExistingCartItemsWithProductLabelRelationship(CartsApiTester $I): void
+    public function requestCartByUuidWithItemsWithProductLabelRelationship(CartsApiTester $I): void
     {
         // Arrange
-        $quoteTransfer = $this->fixtures->getQuoteTransferWithLabel();
-        $productConcreteTransfer = $this->fixtures->getProductConcreteTransferWithLabel();
-        $productLabelTransfer = $this->fixtures->getProductLabelTransfer();
-        $this->requestCustomerLogin($I);
+        $quoteUuid = $this->fixtures->getQuoteTransferWithLabel()->getUuid();
+        $productConcreteSku = $this->fixtures->getProductConcreteTransferWithLabel()->getSku();
+        $idProductLabel = $this->fixtures->getProductLabelTransfer()->getIdProductLabel();
+        $I->requestCustomerLogin($this->fixtures->getCustomerTransferWithLabel());
+        $url = $I->buildCartUrl($quoteUuid, static::INCLUDE_RESOURCES);
 
         // Act
-        $I->sendGET(
-            $I->formatUrl(
-                '{resourceCarts}/{cartUuid}?include={relationshipItems},{relationshipConcreteProducts},{relationshipProductLabels}',
-                [
-                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'relationshipItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                    'relationshipConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                    'relationshipProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                    'cartUuid' => $quoteTransfer->getUuid(),
-                ]
-            )
-        );
+        $I->sendGET($url);
 
         // Assert
         $I->assertResponse(HttpCode::OK);
 
-        $I->amSure('Returned resource has include of type concrete-products')
+        $I->amSureResponseDataContainsSingleResourceOfType(CartsRestApiConfig::RESOURCE_CARTS)
+            ->whenI()
+            ->seeResponseDataContainsSingleResourceOfType(CartsRestApiConfig::RESOURCE_CARTS);
+
+        $I->amSureSingleResourceIdEqualTo()
+            ->whenI()
+            ->seeSingleResourceIdEqualTo($quoteUuid);
+
+        $I->amSureSingleResourceHasSelfLink()
+            ->whenI()
+            ->seeSingleResourceHasSelfLink($url);
+
+        $I->amSureSingleResourceHasRelationshipByTypeAndId(
+            CartsRestApiConfig::RESOURCE_CART_ITEMS,
+            $productConcreteSku
+        )
+            ->whenI()
+            ->seeSingleResourceHasRelationshipByTypeAndId(
+                CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                $productConcreteSku
+            );
+
+        $I->amSureIncludedResourceByTypeAndIdHasRelationshipByTypeAndId(
+            CartsRestApiConfig::RESOURCE_CART_ITEMS,
+            $productConcreteSku,
+            ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+            $productConcreteSku
+        )
+            ->whenI()
+            ->seeIncludedResourceByTypeAndIdHasRelationshipByTypeAndId(
+                CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                $productConcreteSku,
+                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                $productConcreteSku
+            );
+
+        $I->amSureIncludesContainsResourceByTypeAndId(
+            ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+            $productConcreteSku
+        )
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                $productConcreteTransfer->getSku()
+                $productConcreteSku
             );
 
-        $I->amSure('Returned resource has include of type product-labels')
+        $I->amSureIncludedResourceByTypeAndIdHasSelfLink(
+            ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+            $productConcreteSku
+        )
+            ->whenI()
+            ->seeIncludedResourceByTypeAndIdHasSelfLink(
+                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                $productConcreteSku,
+                $I->buildProductConcreteUrl($productConcreteSku)
+            );
+
+        $I->amSureIncludedResourceByTypeAndIdHasRelationshipByTypeAndId(
+            ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+            $productConcreteSku,
+            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            $idProductLabel
+        )
+            ->whenI()
+            ->seeIncludedResourceByTypeAndIdHasRelationshipByTypeAndId(
+                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                $productConcreteSku,
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+                $idProductLabel
+            );
+
+        $I->amSureIncludesContainsResourceByTypeAndId(
+            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            $idProductLabel
+        )
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                $productLabelTransfer->getIdProductLabel()
+                $idProductLabel
+            );
+
+        $I->amSureIncludedResourceByTypeAndIdHasSelfLink(
+            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            $idProductLabel
+        )
+            ->whenI()
+            ->seeIncludedResourceByTypeAndIdHasSelfLink(
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+                $idProductLabel,
+                $I->buildProductLabelUrl($idProductLabel)
             );
     }
 
@@ -109,38 +170,114 @@ class CartsRestApiCest
      *
      * @return void
      */
-    public function requestExistingCartItemsWithoutProductLabelRelationship(CartsApiTester $I): void
+    public function requestCartWithItemsWithProductLabelRelationship(CartsApiTester $I): void
     {
         // Arrange
-        $quoteTransfer = $this->fixtures->getQuoteTransfer();
-        $productConcreteTransfer = $this->fixtures->getProductConcreteTransfer();
-        $this->requestCustomerLogin($I);
+        $quoteUuid = $this->fixtures->getQuoteTransferWithLabel()->getUuid();
+        $productConcreteSku = $this->fixtures->getProductConcreteTransferWithLabel()->getSku();
+        $idProductLabel = $this->fixtures->getProductLabelTransfer()->getIdProductLabel();
+        $I->requestCustomerLogin($this->fixtures->getCustomerTransferWithLabel());
+        $url = $I->buildCartsUrl(static::INCLUDE_RESOURCES);
 
         // Act
-        $I->sendGET(
-            $I->formatUrl(
-                '{resourceCarts}/{cartUuid}?include={relationshipItems},{relationshipConcreteProducts},{relationshipProductLabels}',
-                [
-                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'relationshipItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                    'relationshipConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                    'relationshipProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                    'cartUuid' => $quoteTransfer->getUuid(),
-                ]
-            )
-        );
+        $I->sendGET($url);
 
         // Assert
         $I->assertResponse(HttpCode::OK);
 
-        $I->amSure('Returned resource has include of type concrete-products')
+        $I->amSureResponseDataContainsResourceCollectionOfType(CartsRestApiConfig::RESOURCE_CARTS)
+            ->whenI()
+            ->seeResponseDataContainsResourceCollectionOfType(CartsRestApiConfig::RESOURCE_CARTS);
+
+        $I->amSureResourceCollectionHasResourceWithId($quoteUuid)
+            ->whenI()
+            ->seeResourceCollectionHasResourceWithId($quoteUuid);
+
+        $I->amSureResourceByIdHasSelfLink($quoteUuid)
+            ->whenI()
+            ->seeResourceByIdHasSelfLink($quoteUuid, $I->buildCartUrl($quoteUuid, static::INCLUDE_RESOURCES));
+
+        $I->amSureResourceByIdHasRelationshipByTypeAndId(
+            $quoteUuid,
+            CartsRestApiConfig::RESOURCE_CART_ITEMS,
+            $productConcreteSku
+        )
+            ->whenI()
+            ->seeResourceByIdHasRelationshipByTypeAndId(
+                $quoteUuid,
+                CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                $productConcreteSku
+            );
+
+        $I->amSureIncludedResourceByTypeAndIdHasRelationshipByTypeAndId(
+            CartsRestApiConfig::RESOURCE_CART_ITEMS,
+            $productConcreteSku,
+            ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+            $productConcreteSku
+        )
+            ->whenI()
+            ->seeIncludedResourceByTypeAndIdHasRelationshipByTypeAndId(
+                CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                $productConcreteSku,
+                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                $productConcreteSku
+            );
+
+        $I->amSureIncludesContainsResourceByTypeAndId(
+            ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+            $productConcreteSku
+        )
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                $productConcreteTransfer->getSku()
+                $productConcreteSku
             );
 
-        $I->dontSeeResponseContains('"' . ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS . '"');
+        $I->amSureIncludedResourceByTypeAndIdHasSelfLink(
+            ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+            $productConcreteSku
+        )
+            ->whenI()
+            ->seeIncludedResourceByTypeAndIdHasSelfLink(
+                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                $productConcreteSku,
+                $I->buildProductConcreteUrl($productConcreteSku)
+            );
+
+        $I->amSureIncludedResourceByTypeAndIdHasRelationshipByTypeAndId(
+            ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+            $productConcreteSku,
+            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            $idProductLabel
+        )
+            ->whenI()
+            ->seeIncludedResourceByTypeAndIdHasRelationshipByTypeAndId(
+                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                $productConcreteSku,
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+                $idProductLabel
+            );
+
+        $I->amSureIncludesContainsResourceByTypeAndId(
+            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            $idProductLabel
+        )
+            ->whenI()
+            ->seeIncludesContainsResourceByTypeAndId(
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+                $idProductLabel
+            );
+
+        $I->amSureIncludedResourceByTypeAndIdHasSelfLink(
+            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            $idProductLabel
+        )
+            ->whenI()
+            ->seeIncludedResourceByTypeAndIdHasSelfLink(
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+                $idProductLabel,
+                $I->buildProductLabelUrl($idProductLabel)
+            );
     }
 
     /**
@@ -150,30 +287,43 @@ class CartsRestApiCest
      *
      * @return void
      */
-    public function requestNotExistingCartItemsWithProductLabelRelationship(CartsApiTester $I): void
+    public function requestCartWithItemsWithoutProductLabelRelationship(CartsApiTester $I): void
     {
         // Arrange
-        $this->requestCustomerLogin($I);
+        $quoteUuid = $this->fixtures->getQuoteTransfer()->getUuid();
+        $I->requestCustomerLogin($this->fixtures->getCustomerTransfer());
+        $url = $I->buildCartUrl($quoteUuid, static::INCLUDE_RESOURCES);
 
         // Act
-        $I->sendGET(
-            $I->formatUrl(
-                '{resourceCarts}/{cartUuid}?include={relationshipItems},{relationshipConcreteProducts},{relationshipProductLabels}',
-                [
-                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'relationshipItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                    'relationshipConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                    'relationshipProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                    'cartUuid' => 'NotExistingUuid',
-                ]
-            )
+        $I->sendGET($url);
+
+        // Assert
+        $I->assertResponse(HttpCode::OK);
+
+        $I->dontSeeResponseMatchesJsonPath(
+            sprintf('$.included[?(@.type == %s$s)]', ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS)
         );
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    public function requestCartByNotExistingCartUuid(CartsApiTester $I): void
+    {
+        // Arrange
+        $I->requestCustomerLogin($this->fixtures->getCustomerTransferWithLabel());
+        $url = $I->buildCartUrl('NotExistingUuid');
+
+        // Act
+        $I->sendGET($url);
 
         // Assert
         $I->assertResponse(HttpCode::NOT_FOUND);
-
-        $I->dontSeeResponseMatchesJsonPath('$.data[*]');
-        $I->dontSeeResponseMatchesJsonPath('$.included[*]');
+        $I->seeResponseDataContainsEmptyCollection();
     }
 
     /**
@@ -183,28 +333,40 @@ class CartsRestApiCest
      *
      * @return void
      */
-    public function requestExistingCartItemsWithProductLabelRelationshipByPost(CartsApiTester $I): void
+    public function requestCartWithItemsWithProductLabelRelationshipByPost(CartsApiTester $I): void
     {
         // Arrange
-        $quoteTransfer = $this->fixtures->getQuoteTransferWithLabel();
-        $this->requestCustomerLogin($I);
+        $quoteUuid = $this->fixtures->getQuoteTransferWithLabel()->getUuid();
+        $I->requestCustomerLogin($this->fixtures->getCustomerTransferWithLabel());
+        $url = $I->buildCartUrl($quoteUuid, static::INCLUDE_RESOURCES);
 
         // Act
-        $I->sendPOST(
-            $I->formatUrl(
-                '{resourceCarts}/{cartUuid}?include={relationshipItems},{relationshipConcreteProducts},{relationshipProductLabels}',
-                [
-                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'relationshipItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                    'relationshipConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                    'relationshipProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                    'cartUuid' => $quoteTransfer->getUuid(),
-                ]
-            )
-        );
+        $I->sendPOST($url);
 
         // Assert
         $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
+        $I->seeResponseIsJson();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    public function requestCartWithItemsWithProductLabelRelationshipByPatch(CartsApiTester $I): void
+    {
+        // Arrange
+        $quoteUuid = $this->fixtures->getQuoteTransferWithLabel()->getUuid();
+        $I->requestCustomerLogin($this->fixtures->getCustomerTransferWithLabel());
+        $url = $I->buildCartUrl($quoteUuid, static::INCLUDE_RESOURCES);
+
+        // Act
+        $I->sendPATCH($url);
+
+        // Assert
+        $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
         $I->seeResponseIsJson();
     }
 }

@@ -7,6 +7,7 @@
 
 namespace PyzTest\Glue\Wishlists;
 
+use Generated\Shared\Transfer\CustomerTransfer;
 use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
 
 /**
@@ -32,4 +33,16 @@ class WishlistsApiTester extends ApiEndToEndTester
    /**
     * Define custom actions here
     */
+
+    /**
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     *
+     * @return void
+     */
+    public function requestCustomerLogin(CustomerTransfer $customerTransfer): void
+    {
+        $token = $this->haveAuth($customerTransfer)
+            ->getAccessToken();
+        $this->amBearerAuthenticated($token);
+    }
 }

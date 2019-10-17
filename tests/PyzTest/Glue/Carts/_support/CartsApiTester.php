@@ -7,6 +7,7 @@
 
 namespace PyzTest\Glue\Carts;
 
+use Generated\Shared\Transfer\CustomerTransfer;
 use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
 
 /**
@@ -31,7 +32,19 @@ class CartsApiTester extends ApiEndToEndTester
 
     public const ANONYMOUS_PREFIX = 'anonymous:';
 
-    /**
+   /**
     * Define custom actions here
     */
+
+    /**
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     *
+     * @return void
+     */
+    public function requestCustomerLogin(CustomerTransfer $customerTransfer): void
+    {
+        $token = $this->haveAuth($customerTransfer)
+            ->getAccessToken();
+        $this->amBearerAuthenticated($token);
+    }
 }

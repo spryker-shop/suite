@@ -10,6 +10,7 @@ namespace PyzTest\Glue\Products\RestApi;
 use Codeception\Util\HttpCode;
 use Pyz\Glue\ProductPricesRestApi\ProductPricesRestApiConfig;
 use PyzTest\Glue\Products\ProductsApiTester;
+use PyzTest\Glue\Products\RestApi\Fixtures\ProductsRestApiFixtures;
 use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
 
@@ -27,7 +28,7 @@ use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
 class ProductConcreteRestApiCest
 {
     /**
-     * @var \PyzTest\Glue\Products\RestApi\ProductsRestApiFixtures
+     * @var \PyzTest\Glue\Products\RestApi\Fixtures\ProductsRestApiFixtures
      */
     protected $fixtures;
 
@@ -48,30 +49,29 @@ class ProductConcreteRestApiCest
      *
      * @return void
      */
-    public function requestExistingProductConcrete(ProductsApiTester $I): void
+    public function requestProductConcrete(ProductsApiTester $I): void
     {
         // Arrange
-        $productConcreteTransfer = $this->fixtures->getProductConcreteTransfer();
+        $productConcreteSku = $this->fixtures->getProductConcreteTransfer()->getSku();
+        $url = $I->buildProductConcreteUrl($productConcreteSku);
 
         // Act
-        $I->sendGET(
-            $I->formatUrl(
-                '{resourceConcreteProducts}/{ProductConcreteSku}',
-                [
-                    'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                    'ProductConcreteSku' => $productConcreteTransfer->getSku(),
-                ]
-            )
-        );
+        $I->sendGET($url);
 
         // Assert
         $I->assertResponse(HttpCode::OK);
-        $I->amSure('Returned resource is of type concrete-products')
+
+        $I->amSureResponseDataContainsSingleResourceOfType(ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS)
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType(ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS);
-        $I->amSure('Returned resource has correct id')
+
+        $I->amSureSingleResourceIdEqualTo()
             ->whenI()
-            ->seeSingleResourceIdEqualTo($productConcreteTransfer->getSku());
+            ->seeSingleResourceIdEqualTo($productConcreteSku);
+
+        $I->amSureSingleResourceHasSelfLink()
+            ->whenI()
+            ->seeSingleResourceHasSelfLink($url);
     }
 
     /**
@@ -81,36 +81,36 @@ class ProductConcreteRestApiCest
      *
      * @return void
      */
-    public function requestExistingProductConcreteWithPrices(ProductsApiTester $I): void
+    public function requestProductConcreteWithProductPriceRelationship(ProductsApiTester $I): void
     {
         // Arrange
-        $productConcreteTransfer = $this->fixtures->getProductConcreteTransfer();
+        $productConcreteSku = $this->fixtures->getProductConcreteTransfer()->getSku();
+        $url = $I->buildProductConcreteUrl($productConcreteSku, [ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES]);
 
-        // Act
-        $I->sendGET(
-            $I->formatUrl(
-                '{resourceConcreteProducts}/{ProductConcreteSku}?include={relationshipConcreteProductPrices}',
-                [
-                    'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                    'relationshipConcreteProductPrices' => ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
-                    'ProductConcreteSku' => $productConcreteTransfer->getSku(),
-                ]
-            )
-        );
+        //act
+        $I->sendGET($url);
 
-        // Assert
+        //assert
         $I->assertResponse(HttpCode::OK);
-        $I->amSure('Returned resource is of type concrete-products')
+
+        $I->amSureSingleResourceHasRelationshipByTypeAndId(
+            ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
+            $productConcreteSku
+        )
             ->whenI()
             ->seeSingleResourceHasRelationshipByTypeAndId(
                 ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
-                $productConcreteTransfer->getSku()
+                $productConcreteSku
             );
-        $I->amSure('Returned resource has correct id')
+
+        $I->amSureIncludesContainsResourceByTypeAndId(
+            ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
+            $productConcreteSku
+        )
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
-                $productConcreteTransfer->getSku()
+                $productConcreteSku
             );
     }
 
@@ -121,39 +121,48 @@ class ProductConcreteRestApiCest
      *
      * @return void
      */
-    public function requestExistingProductConcreteWithProductLabelRelationship(ProductsApiTester $I): void
+    public function requestProductConcreteWithProductLabelRelationship(ProductsApiTester $I): void
     {
         // Arrange
-        $productConcreteTransfer = $this->fixtures->getProductConcreteTransferWithLabel();
-        $productLabelTransfer = $this->fixtures->getProductLabelTransfer();
+        $productConcreteSku = $this->fixtures->getProductConcreteTransferWithLabel()->getSku();
+        $idProductLabel = $this->fixtures->getProductLabelTransfer()->getIdProductLabel();
+        $url = $I->buildProductConcreteUrl($productConcreteSku, [ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS]);
 
         // Act
-        $I->sendGET(
-            $I->formatUrl(
-                '{resourceConcreteProducts}/{productConcreteSku}?include={relationshipProductLabels}',
-                [
-                    'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                    'relationshipProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                    'productConcreteSku' => $productConcreteTransfer->getSku(),
-                ]
-            )
-        );
+        $I->sendGET($url);
 
         // Assert
         $I->assertResponse(HttpCode::OK);
 
-        $I->amSure('Returned resource has relation of type product-labels')
+        $I->amSureSingleResourceHasRelationshipByTypeAndId(
+            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            $idProductLabel
+        )
             ->whenI()
             ->seeSingleResourceHasRelationshipByTypeAndId(
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                $productLabelTransfer->getIdProductLabel()
+                $idProductLabel
             );
 
-        $I->amSure('Returned resource has include of type product-labels')
+        $I->amSureIncludesContainsResourceByTypeAndId(
+            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            $idProductLabel
+        )
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                $productLabelTransfer->getIdProductLabel()
+                $idProductLabel
+            );
+
+        $I->amSureIncludedResourceByTypeAndIdHasSelfLink(
+            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            $idProductLabel
+        )
+            ->whenI()
+            ->seeIncludedResourceByTypeAndIdHasSelfLink(
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+                $idProductLabel,
+                $I->buildProductLabelUrl($idProductLabel)
             );
     }
 
@@ -164,26 +173,21 @@ class ProductConcreteRestApiCest
      *
      * @return void
      */
-    public function requestExistingProductConcreteWithoutProductLabelRelationship(ProductsApiTester $I): void
+    public function requestProductConcreteWithoutProductLabelRelationship(ProductsApiTester $I): void
     {
         // Arrange
-        $productConcreteTransfer = $this->fixtures->getProductConcreteTransfer();
+        $productConcreteSku = $this->fixtures->getProductConcreteTransfer()->getSku();
+        $url = $I->buildProductConcreteUrl($productConcreteSku, [ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS]);
 
         // Act
-        $I->sendGET(
-            $I->formatUrl(
-                '{resourceConcreteProducts}/{productConcreteSku}?include={relationshipProductLabels}',
-                [
-                    'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                    'relationshipProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                    'productConcreteSku' => $productConcreteTransfer->getSku(),
-                ]
-            )
-        );
+        $I->sendGET($url);
 
         // Assert
         $I->assertResponse(HttpCode::OK);
-        $I->dontSeeResponseMatchesJsonPath('$.included[*]');
+
+        $I->dontSeeResponseMatchesJsonPath(
+            sprintf('$.included[?(@.type == %s$s)]', ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS)
+        );
     }
 
     /**
@@ -193,24 +197,17 @@ class ProductConcreteRestApiCest
      *
      * @return void
      */
-    public function requestNotExistingProductConcreteWithProductLabelRelationship(ProductsApiTester $I): void
+    public function requestProductConcreteByNotExistingProductConcreteSku(ProductsApiTester $I): void
     {
+        // Arrange
+        $url = $I->buildProductConcreteUrl('NotExistingSku');
+
         // Act
-        $I->sendGET(
-            $I->formatUrl(
-                '{resourceConcreteProducts}/{productConcreteSku}?include={relationshipProductLabels}',
-                [
-                    'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                    'relationshipProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                    'productConcreteSku' => 'NotExistingSku',
-                ]
-            )
-        );
+        $I->sendGET($url);
 
         // Assert
         $I->assertResponse(HttpCode::NOT_FOUND);
-        $I->dontSeeResponseMatchesJsonPath('$.data[*]');
-        $I->dontSeeResponseMatchesJsonPath('$.included[*]');
+        $I->seeResponseDataContainsEmptyCollection();
     }
 
     /**
@@ -220,22 +217,35 @@ class ProductConcreteRestApiCest
      *
      * @return void
      */
-    public function requestExistingProductConcreteWithProductLabelRelationshipByPost(ProductsApiTester $I): void
+    public function requestProductConcreteWithProductLabelRelationshipByPost(ProductsApiTester $I): void
     {
         // Arrange
-        $productConcreteTransfer = $this->fixtures->getProductConcreteTransferWithLabel();
+        $productConcreteSku = $this->fixtures->getProductConcreteTransferWithLabel()->getSku();
+        $url = $I->buildProductConcreteUrl($productConcreteSku, [ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS]);
 
         // Act
-        $I->sendPost(
-            $I->formatUrl(
-                '{resourceConcreteProducts}/{productConcreteSku}?include={relationshipProductLabels}',
-                [
-                    'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                    'relationshipProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                    'productConcreteSku' => $productConcreteTransfer->getSku(),
-                ]
-            )
-        );
+        $I->sendPOST($url);
+
+        // Assert
+        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
+        $I->seeResponseIsJson();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     *
+     * @return void
+     */
+    public function requestProductConcreteWithProductLabelRelationshipByPatch(ProductsApiTester $I): void
+    {
+        // Arrange
+        $productConcreteSku = $this->fixtures->getProductConcreteTransferWithLabel()->getSku();
+        $url = $I->buildProductConcreteUrl($productConcreteSku, [ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS]);
+
+        // Act
+        $I->sendPATCH($url);
 
         // Assert
         $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
