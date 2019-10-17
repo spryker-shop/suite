@@ -11,7 +11,6 @@ use Generated\Shared\Transfer\MoneyValueTransfer;
 use Generated\Shared\Transfer\PriceProductTransfer;
 use Generated\Shared\Transfer\PriceTypeTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
-use PyzTest\Glue\PriceProducts\PriceProductsApiTester;
 use PyzTest\Glue\Products\ProductsApiTester;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
@@ -35,11 +34,24 @@ class ProductsRestApiFixtures implements FixturesBuilderInterface, FixturesConta
     protected $productConcreteTransfer;
 
     /**
+     * @var \Generated\Shared\Transfer\PriceProductTransfer
+     */
+    protected $priceProductTransfer;
+
+    /**
      * @return \Generated\Shared\Transfer\ProductConcreteTransfer
      */
     public function getProductConcreteTransfer(): ProductConcreteTransfer
     {
         return $this->productConcreteTransfer;
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\PriceProductTransfer
+     */
+    public function getPriceProductTransfer(): PriceProductTransfer
+    {
+        return $this->priceProductTransfer;
     }
 
     /**
@@ -74,7 +86,7 @@ class ProductsRestApiFixtures implements FixturesBuilderInterface, FixturesConta
     {
         $priceTypeTransfer = $I->havePriceType([PriceTypeTransfer::NAME => 'DEFAULT']);
         $currencyTransfer = $I->getLocator()->currency()->facade()->getDefaultCurrencyForCurrentStore();
-        $I->havePriceProduct([
+        $priceProductTransfer = $I->havePriceProduct([
             PriceProductTransfer::ID_PRODUCT => $this->productConcreteTransfer->getIdProductConcrete(),
             PriceProductTransfer::SKU_PRODUCT => $this->productConcreteTransfer->getSku(),
             PriceProductTransfer::ID_PRICE_PRODUCT => $this->productConcreteTransfer->getFkProductAbstract(),

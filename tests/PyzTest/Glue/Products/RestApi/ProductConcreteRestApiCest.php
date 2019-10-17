@@ -97,10 +97,10 @@ class ProductConcreteRestApiCest
 
         $I->amSure('Returned resource is of type concrete-products')
             ->whenI()
-            ->seeSingleResourceHasRelationshipByTypeAndId('concrete-product-prices', $this->fixtures->getProductConcreteTransfer()->getSku());
+            ->seeSingleResourceHasRelationshipByTypeAndId('concrete-product-prices', $this->fixtures->getPriceProductTransfer()->getSkuProduct());
 
         $I->amSure('Returned resource has correct id')
             ->whenI()
-            ->seeIncludesContainsResourceByTypeAndId('concrete-product-prices', $this->fixtures->getProductConcreteTransfer()->getSku());
+            ->seeIncludesContainsResourceByTypeAndId('concrete-product-prices', $this->fixtures->getPriceProductTransfer()->getSkuProduct());
     }
 }
