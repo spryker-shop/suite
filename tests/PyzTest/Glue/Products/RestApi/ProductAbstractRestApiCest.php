@@ -189,10 +189,10 @@ class ProductAbstractRestApiCest
 
         $I->amSure('Returned resource has include of type abstract-product-prices')
             ->whenI()
-            ->seeSingleResourceHasRelationshipByTypeAndId('abstract-product-prices', $this->fixtures->getPriceProductTransfer()->getIdProductAbstract());
+            ->seeSingleResourceHasRelationshipByTypeAndId('abstract-product-prices', $this->fixtures->getProductConcreteTransfer()->getAbstractSku());
 
         $I->amSure('Returned resource has include of type abstract-product-prices')
             ->whenI()
-            ->seeIncludesContainsResourceByTypeAndId('abstract-product-prices', $this->fixtures->getPriceProductTransfer()->getIdProductAbstract());
+            ->seeIncludesContainsResourceByTypeAndId('abstract-product-prices', $this->fixtures->getProductConcreteTransfer()->getAbstractSku());
     }
 }
