@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.112.23",
+            "version": "3.112.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "11f8ebab922a8875f8a5b3927f946341eeae8ec2"
+                "reference": "6997f23a47714d084cd2d40b6348b99e10439d64"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/11f8ebab922a8875f8a5b3927f946341eeae8ec2",
-                "reference": "11f8ebab922a8875f8a5b3927f946341eeae8ec2",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/6997f23a47714d084cd2d40b6348b99e10439d64",
+                "reference": "6997f23a47714d084cd2d40b6348b99e10439d64",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-10-16T18:13:31+00:00"
+            "time": "2019-10-17T18:10:45+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -5399,7 +5399,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "c02084c07aabad906b601e5999babbd4eedd5248"
+                "reference": "f0ae100943a4b32f2b7249ab0657ab9432ef4a5f"
             },
             "require": {
                 "php": ">=7.1"
@@ -5964,7 +5964,8 @@
                 "spryker/code-sniffer": "dev-master"
             },
             "bin": [
-                "Bundles/Console/bin/console"
+                "Bundles/Console/bin/console",
+                "Bundles/Console/bin/yves"
             ],
             "type": "library",
             "autoload": {
@@ -5981,7 +5982,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-17T16:31:36+00:00"
+            "time": "2019-10-18T11:48:54+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5989,7 +5990,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "bd982449773e4cf3b709888ccfafd0f39e0f02e3"
+                "reference": "3678a8a50ffee57714e8fe84cb87395808398343"
             },
             "require": {
                 "php": ">=7.1"
@@ -6123,7 +6124,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-10-17T16:31:25+00:00"
+            "time": "2019-10-18T11:50:10+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
