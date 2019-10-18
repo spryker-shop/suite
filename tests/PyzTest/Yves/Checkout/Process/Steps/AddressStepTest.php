@@ -363,6 +363,7 @@ class AddressStepTest extends Unit
                 $checkoutPageConfigMock,
                 'checkout-address',
                 'home',
+                [],
             ])
             ->getMock();
 
