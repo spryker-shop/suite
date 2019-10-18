@@ -169,7 +169,6 @@ class CheckoutDataRestApiCest
         //Arrange
         $this->requestCustomerLogin($I, $this->fixtures->getCustomerTransfer());
 
-
         $url = $I->formatUrl(
             '{resource}?include={relationship}',
             [
