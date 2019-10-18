@@ -147,8 +147,6 @@ matrix:
         - docker/sdk boot docker/ci/deploy.yml
         - docker/sdk build images
         - docker/sdk demo-data
-        - docker/sdk testing
-        - console data:import:store && console data:import:currency && console data:import:category && console data:import:customer && console data:import:glossary
         - docker/sdk testing codecept fixtures
         - docker/sdk testing console queue:worker:start --stop-when-empty
         - docker/sdk testing codecept run -c codeception.api.yml
