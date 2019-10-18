@@ -146,7 +146,7 @@ matrix:
       script:
         - docker/sdk boot docker/ci/deploy.yml
         - docker/sdk build images
-        - docker/sdk demo-data
+        - docker/sdk demo-data fixtures
         - docker/sdk testing codecept fixtures
         - docker/sdk testing console queue:worker:start --stop-when-empty
         - docker/sdk testing codecept run -c codeception.api.yml
