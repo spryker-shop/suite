@@ -10,10 +10,10 @@ use Pyz\Shared\Scheduler\SchedulerConfig;
 use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Api\ApiConstants;
 use Spryker\Shared\Application\ApplicationConstants;
-use Spryker\Shared\Config\ConfigConstants;
 use Spryker\Shared\DocumentationGeneratorRestApi\DocumentationGeneratorRestApiConstants;
 use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebExceptionErrorRenderer;
+use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\GlueApplication\GlueApplicationConstants;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Kernel\Store;
@@ -23,6 +23,7 @@ use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\PropelOrm\PropelOrmConstants;
 use Spryker\Shared\PropelQueryBuilder\PropelQueryBuilderConstants;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
+use Spryker\Shared\Router\RouterConstants;
 use Spryker\Shared\Scheduler\SchedulerConstants;
 use Spryker\Shared\SchedulerJenkins\SchedulerJenkinsConfig;
 use Spryker\Shared\SchedulerJenkins\SchedulerJenkinsConstants;
@@ -36,6 +37,7 @@ use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use SprykerShop\Shared\CalculationPage\CalculationPageConstants;
 use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
 use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
+use SprykerShop\Shared\WebProfilerWidget\WebProfilerWidgetConstants;
 
 $CURRENT_STORE = Store::getInstance()->getStoreName();
 
@@ -45,10 +47,12 @@ $config[KernelConstants::STORE_PREFIX] = 'DEV';
 $config[ApplicationConstants::ENABLE_APPLICATION_DEBUG]
     = $config[ShopApplicationConstants::ENABLE_APPLICATION_DEBUG]
     = true;
-$config[WebProfilerConstants::ENABLE_WEB_PROFILER]
-    = $config[ConfigConstants::ENABLE_WEB_PROFILER]
-    = true;
 
+$config[WebProfilerConstants::IS_WEB_PROFILER_ENABLED] = true;
+$config[WebProfilerWidgetConstants::IS_WEB_PROFILER_ENABLED] = true;
+
+$config[RouterConstants::YVES_IS_SSL_ENABLED] = false;
+$config[RouterConstants::ZED_IS_SSL_ENABLED] = false;
 $config[ApplicationConstants::ZED_SSL_ENABLED] = false;
 $config[ApplicationConstants::YVES_SSL_ENABLED] = false;
 
@@ -105,9 +109,6 @@ $config[AclConstants::ACL_USER_RULE_WHITELIST][] = [
     'type' => 'allow',
 ];
 
-// ---------- Auto-loader
-$config[KernelConstants::AUTO_LOADER_UNRESOLVABLE_CACHE_ENABLED] = false;
-
 // ---------- Logging
 $config[LogConstants::LOG_LEVEL] = Logger::INFO;
 
@@ -128,6 +129,9 @@ $config[OauthConstants::OAUTH_CLIENT_SECRET] = 'abc123';
 
 // ---------- Api
 $config[ApiConstants::ENABLE_API_DEBUG] = true;
+
+// ---------- Event
+$config[EventConstants::LOGGER_ACTIVE] = true;
 
 // ---------- Calculation page
 $config[CalculationPageConstants::ENABLE_CART_DEBUG] = true;

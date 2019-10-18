@@ -12,6 +12,7 @@ use PyzTest\Glue\Products\ProductsApiTester;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Glue
  * @group Products
@@ -160,5 +161,38 @@ class ProductAbstractRestApiCest
         $I->amSure('Returned resource contains `url` attribute')
             ->whenI()
             ->seeSingleResourceHasAttribute('url');
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     *
+     * @return void
+     */
+    public function requestExistingProductAbstractWithProductPriceRelationship(ProductsApiTester $I): void
+    {
+        //act
+        $I->sendGET(
+            $I->formatUrl(
+                'abstract-products/{ProductAbstractSku}?include=abstract-product-prices',
+                [
+                    'ProductAbstractSku' => $this->fixtures->getProductConcreteTransfer()->getAbstractSku(),
+                ]
+            )
+        );
+
+        //assert
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+
+        $I->amSure('Returned resource has include of type abstract-product-prices')
+            ->whenI()
+            ->seeSingleResourceHasRelationshipByTypeAndId('abstract-product-prices', $this->fixtures->getProductConcreteTransfer()->getAbstractSku());
+
+        $I->amSure('Returned resource has include of type abstract-product-prices')
+            ->whenI()
+            ->seeIncludesContainsResourceByTypeAndId('abstract-product-prices', $this->fixtures->getProductConcreteTransfer()->getAbstractSku());
     }
 }

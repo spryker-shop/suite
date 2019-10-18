@@ -5,7 +5,9 @@ include:
     - tests/PyzTest/*/*
     - vendor/spryker/spryker/Bundles/*/*
     - vendor/spryker/spryker-shop/Bundles/*/*
+    - vendor/spryker/rabbit-mq/*/*
     - vendor/spryker-sdk/composer-constrainer
+    - vendor/spryker-sdk/composer-replace/
 
 paths:
     tests: tests
@@ -15,7 +17,6 @@ paths:
     envs: tests/_envs
 
 settings:
-    bootstrap: _bootstrap.php
     suite_class: \PHPUnit_Framework_TestSuite
     colors: true
     memory_limit: 1024M
