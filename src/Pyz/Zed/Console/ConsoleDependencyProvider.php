@@ -298,6 +298,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new SchedulerCleanConsole(),
             new SchedulerSuspendConsole(),
             new SchedulerResumeConsole(),
+
+            new RouterCacheWarmUpConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
