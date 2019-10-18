@@ -11,6 +11,7 @@ use Codeception\Util\HttpCode;
 use Generated\Shared\Transfer\CustomerTransfer;
 use PyzTest\Glue\Checkout\CheckoutRestApiTester;
 use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig;
+use Spryker\Glue\PaymentsRestApi\PaymentsRestApiConfig;
 use Spryker\Glue\ShipmentsRestApi\ShipmentsRestApiConfig;
 
 /**
@@ -192,6 +193,115 @@ class CheckoutDataRestApiCest
     }
 
     /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
+     *
+     * @return void
+     */
+    public function requestCheckoutDataWithIncludedPaymentMethods(CheckoutRestApiTester $I): void
+    {
+        //Arrange
+        $this->requestCustomerLogin($I, $this->fixtures->getCustomerTransfer());
+
+        $url = $I->formatUrl('{resource}?include={relationship}', [
+            'resource' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
+            'relationship' => PaymentsRestApiConfig::RESOURCE_PAYMENT_METHODS
+        ]);
+
+        //Act
+        $I->sendPOST($url, [
+            'data' => [
+                'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
+                'attributes' => [
+                    'idCart' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                ],
+            ],
+        ]);
+
+        //Assert
+        $this->assertCheckoutDataRequest($I, HttpCode::OK);
+        $this->assertCheckoutDataRequestWithIncludedPaymentMethods($I);
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
+     *
+     * @return void
+     */
+    public function requestCheckoutDataWithSelectedPaymentMethodShouldGetPaymentMethodDetails(
+        CheckoutRestApiTester $I
+    ): void {
+        //Arrange
+        $this->requestCustomerLogin($I, $this->fixtures->getCustomerTransfer());
+
+        $paymentProviderTransfer = $I->haveAvailablePaymentProvider();
+        $paymentMethodTransfer = current($paymentProviderTransfer->getPaymentMethods());
+
+        //Act
+        $I->sendPOST(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, [
+            'data' => [
+                'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
+                'attributes' => [
+                    'idCart' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                    'payments' => [
+                        [
+                            'paymentProviderName' => $paymentProviderTransfer->getName(),
+                            'paymentMethodName' => $paymentMethodTransfer->getMethodName(),
+                        ]
+                    ],
+                ],
+            ],
+        ]);
+
+
+        //Assert
+        $this->assertCheckoutDataRequest($I, HttpCode::OK);
+        $selectedPaymentMethods = $I
+            ->grabDataFromResponseByJsonPath('$.data.attributes.selectedPaymentMethods')[0];
+
+        $selectedPaymentMethod = $selectedPaymentMethods[0];
+
+        $I->assertNotEmpty($selectedPaymentMethods);
+        $I->assertNotEmpty($selectedPaymentMethod);
+        $I->assertSame($selectedPaymentMethod['paymentMethodName'], $paymentMethodTransfer->getMethodName());
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
+     *
+     * @return void
+     */
+    public function requestCheckoutDataWithoutSelectedPaymentMethodShouldNotGetSelectedPaymentMethodDetails(
+        CheckoutRestApiTester $I
+    ): void {
+        //Arrange
+        $this->requestCustomerLogin($I, $this->fixtures->getCustomerTransfer());
+
+        //Act
+        $I->sendPOST(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, [
+            'data' => [
+                'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
+                'attributes' => [
+                    'idCart' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                ],
+            ],
+        ]);
+
+        //Assert
+        $this->assertCheckoutDataRequest($I, HttpCode::OK);
+        $selectedPaymentMethods = $I
+            ->grabDataFromResponseByJsonPath('$.data.attributes.selectedPaymentMethods');
+
+        $I->assertIsArray($selectedPaymentMethods);
+        $I->assertEmpty(current($selectedPaymentMethods));
+    }
+
+    /**
      * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
      *
      * @return void
@@ -208,6 +318,25 @@ class CheckoutDataRestApiCest
         $I->amSure('Returned resource has shipment method in `included` section.')
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(ShipmentsRestApiConfig::RESOURCE_SHIPMENT_METHODS, $idShipmentMethod);
+    }
+
+    /**
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
+     * @param array $pamentMethods
+     *
+     * @return void
+     */
+    protected function assertCheckoutDataRequestWithIncludedPaymentMethods(
+        CheckoutRestApiTester $I
+    ): void {
+        $idPaymentMethod = current($I->haveAvailablePaymentProvider()->getPaymentMethods())->getIdSalesPaymentMethodType();
+        $I->amSure('Returned resource has payment method in `relationships` section.')
+            ->whenI()
+            ->seeSingleResourceHasRelationshipByTypeAndId(PaymentsRestApiConfig::RESOURCE_PAYMENT_METHODS, $idPaymentMethod);
+
+        $I->amSure('Returned resource has payment method in `included` section.')
+            ->whenI()
+            ->seeIncludesContainsResourceByTypeAndId(PaymentsRestApiConfig::RESOURCE_PAYMENT_METHODS, $idPaymentMethod);
     }
 
     /**

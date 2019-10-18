@@ -9,6 +9,7 @@ namespace PyzTest\Glue\Checkout\RestApi;
 
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
+use Generated\Shared\Transfer\PaymentMethodTransfer;
 use Generated\Shared\Transfer\PriceProductTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
@@ -84,6 +85,14 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
     public function getQuoteTransfer(): QuoteTransfer
     {
         return $this->quoteTransfer;
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\PaymentMethodTransfer
+     */
+    public function getPaymentMethodTransfer(): PaymentMethodTransfer
+    {
+        return $this->paymentMethodTransfer;
     }
 
     /**
