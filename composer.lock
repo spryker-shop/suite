@@ -15308,16 +15308,16 @@
         },
         {
             "name": "spryker/console",
-            "version": "4.3.0",
+            "version": "4.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/console.git",
-                "reference": "8cb56e59b4ea907ae3b3e7980203e7d16e466f15"
+                "reference": "95f5883cd9b070849bcbca74d3ab9cbe04f86756"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/console/zipball/8cb56e59b4ea907ae3b3e7980203e7d16e466f15",
-                "reference": "8cb56e59b4ea907ae3b3e7980203e7d16e466f15",
+                "url": "https://api.github.com/repos/spryker/console/zipball/95f5883cd9b070849bcbca74d3ab9cbe04f86756",
+                "reference": "95f5883cd9b070849bcbca74d3ab9cbe04f86756",
                 "shasum": ""
             },
             "require": {
@@ -15337,7 +15337,8 @@
                 "spryker/log": "If you want to use the Log feature in console commands, install this package and add ConsoleLogPlugin to the list of EventSubscriber in your ConsoleDependencyProvider."
             },
             "bin": [
-                "bin/console"
+                "bin/console",
+                "bin/yves"
             ],
             "type": "library",
             "extra": {
@@ -15356,7 +15357,7 @@
                 "proprietary"
             ],
             "description": "Console module",
-            "time": "2019-08-06T10:09:38+00:00"
+            "time": "2019-10-18T05:09:51+00:00"
         },
         {
             "name": "spryker/container",
@@ -19573,16 +19574,16 @@
         },
         {
             "name": "spryker/kernel",
-            "version": "3.39.1",
+            "version": "3.40.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/kernel.git",
-                "reference": "fb334ad683defde46f9bc7c0946e14873bbc70c4"
+                "reference": "34599f729a374271c98b6c22247b0d7c5b373f42"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/kernel/zipball/fb334ad683defde46f9bc7c0946e14873bbc70c4",
-                "reference": "fb334ad683defde46f9bc7c0946e14873bbc70c4",
+                "url": "https://api.github.com/repos/spryker/kernel/zipball/34599f729a374271c98b6c22247b0d7c5b373f42",
+                "reference": "34599f729a374271c98b6c22247b0d7c5b373f42",
                 "shasum": ""
             },
             "require": {
@@ -19592,6 +19593,7 @@
                 "spryker/container": "^1.1.0",
                 "spryker/error-handler": "^2.2.0",
                 "spryker/event-dispatcher-extension": "^1.0.0",
+                "spryker/log": "^3.7.0",
                 "spryker/propel-orm": "^1.6.0",
                 "spryker/silex": "^2.0.0",
                 "spryker/symfony": "^3.0.0",
@@ -19623,7 +19625,7 @@
                 "proprietary"
             ],
             "description": "Kernel module",
-            "time": "2019-10-14T10:22:10+00:00"
+            "time": "2019-10-18T05:06:26+00:00"
         },
         {
             "name": "spryker/key-builder",
@@ -29719,16 +29721,16 @@
         },
         {
             "name": "spryker/router",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/router.git",
-                "reference": "5b7c8cdd4e62099a6806618d8380a426b1d096c2"
+                "reference": "9f7d1d1551de49767989f16ad3ff3c7d84c806f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/router/zipball/5b7c8cdd4e62099a6806618d8380a426b1d096c2",
-                "reference": "5b7c8cdd4e62099a6806618d8380a426b1d096c2",
+                "url": "https://api.github.com/repos/spryker/router/zipball/9f7d1d1551de49767989f16ad3ff3c7d84c806f4",
+                "reference": "9f7d1d1551de49767989f16ad3ff3c7d84c806f4",
                 "shasum": ""
             },
             "require": {
@@ -29736,7 +29738,7 @@
                 "spryker/application-extension": "^1.0.0",
                 "spryker/container": "^1.1.0",
                 "spryker/event-dispatcher-extension": "^1.0.0",
-                "spryker/kernel": "^3.30.0",
+                "spryker/kernel": "^3.40.0",
                 "spryker/log": "^3.0.0",
                 "spryker/router-extension": "^1.0.0",
                 "spryker/symfony": "^3.0.0",
@@ -29770,7 +29772,7 @@
                 "proprietary"
             ],
             "description": "Router module",
-            "time": "2019-09-26T05:14:14+00:00"
+            "time": "2019-10-18T05:09:51+00:00"
         },
         {
             "name": "spryker/router-extension",
