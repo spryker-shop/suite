@@ -26,6 +26,8 @@ suites:
                 - \SprykerTest\Glue\Testify\Helper\JsonPath
                 - \SprykerTest\Shared\Product\Helper\ProductDataHelper
                 - \SprykerTest\Shared\PriceProduct\Helper\PriceProductDataHelper
+                - \SprykerTest\Shared\Currency\Helper\CurrencyDataHelper
+                - \SprykerTest\Shared\Testify\Helper\DependencyHelper
             config:
                 \SprykerTest\Glue\Testify\Helper\GlueRest:
                     depends: PhpBrowser
