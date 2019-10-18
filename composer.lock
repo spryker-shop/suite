@@ -5400,7 +5400,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "51594f1f16fa85b49d747e7d927865c2e526a9c0"
+                "reference": "c4eddc9e306f5541be4db124b38fbdf013f22685"
             },
             "require": {
                 "php": ">=7.1"
@@ -5982,7 +5982,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-10T09:07:31+00:00"
+            "time": "2019-10-18T13:21:07+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6220,6 +6220,51 @@
             ],
             "description": "UuidBehavior module",
             "time": "2019-10-07T20:54:24+00:00"
+        },
+        {
+            "name": "spryker/web-profiler-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/web-profiler-extension.git",
+                "reference": "fa7c5b30a89c14fc5aae6dda57182b4676b4bd59"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/web-profiler-extension/zipball/fa7c5b30a89c14fc5aae6dda57182b4676b4bd59",
+                "reference": "fa7c5b30a89c14fc5aae6dda57182b4676b4bd59",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/symfony": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/container": "If you want to use the Container module.",
+                "spryker/symfony": "If you want to use the Symfony component."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "WebProfilerExtension module",
+            "time": "2019-10-09T04:52:31+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
