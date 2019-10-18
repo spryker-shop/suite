@@ -16,6 +16,7 @@ use Spryker\Glue\ShipmentsRestApi\ShipmentsRestApiConfig;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Glue
  * @group Checkout
@@ -206,7 +207,7 @@ class CheckoutDataRestApiCest
 
         $url = $I->formatUrl('{resource}?include={relationship}', [
             'resource' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
-            'relationship' => PaymentsRestApiConfig::RESOURCE_PAYMENT_METHODS
+            'relationship' => PaymentsRestApiConfig::RESOURCE_PAYMENT_METHODS,
         ]);
 
         //Act
@@ -250,12 +251,11 @@ class CheckoutDataRestApiCest
                         [
                             'paymentProviderName' => $paymentProviderTransfer->getName(),
                             'paymentMethodName' => $paymentMethodTransfer->getMethodName(),
-                        ]
+                        ],
                     ],
                 ],
             ],
         ]);
-
 
         //Assert
         $this->assertCheckoutDataRequest($I, HttpCode::OK);
@@ -322,7 +322,6 @@ class CheckoutDataRestApiCest
 
     /**
      * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
-     * @param array $pamentMethods
      *
      * @return void
      */

@@ -9,12 +9,12 @@ namespace PyzTest\Glue\Orders\RestApi;
 
 use Codeception\Util\HttpCode;
 use Generated\Shared\Transfer\CustomerTransfer;
-use Generated\Shared\Transfer\OrderTransfer;
 use PyzTest\Glue\Orders\OrdersRestApiTester;
 use Spryker\Glue\OrdersRestApi\OrdersRestApiConfig;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Glue
  * @group Orders
