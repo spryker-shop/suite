@@ -363,6 +363,6 @@ class CheckoutDataRestApiCest
     {
         $accessToken = $I->haveAuthorizationToGlue($customerTransfer)[static::KEY_ACCESS_TOKEN];
 
-        $I->amAuthorizedGlueUser($accessToken);
+        $I->amBearerAuthenticated($accessToken);
     }
 }
