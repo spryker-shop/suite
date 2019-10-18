@@ -5447,7 +5447,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "d6c12d09e4a61e585bf31496dcb70906baf1775d"
+                "reference": "9e78853b227e8403392c2c96caa50490aa85a119"
             },
             "require": {
                 "php": ">=7.1"
@@ -5600,6 +5600,7 @@
                 "spryker/company-users-rest-api": "*",
                 "spryker/config": "*",
                 "spryker/configurable-bundle": "*",
+                "spryker/configurable-bundle-cart": "*",
                 "spryker/configurable-bundle-data-import": "*",
                 "spryker/configurable-bundle-storage": "*",
                 "spryker/console": "*",
@@ -6011,7 +6012,8 @@
                 "spryker/code-sniffer": "dev-master"
             },
             "bin": [
-                "Bundles/Console/bin/console"
+                "Bundles/Console/bin/console",
+                "Bundles/Console/bin/yves"
             ],
             "type": "library",
             "autoload": {
@@ -6028,7 +6030,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-17T14:24:03+00:00"
+            "time": "2019-10-18T09:02:04+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6036,7 +6038,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "882a9e19e6547b8e615cabfe5d7fb8fcf9eed00a"
+                "reference": "b479a32acfed70da4fdad6c2a8e7e6cc00719fd2"
             },
             "require": {
                 "php": ">=7.1"
@@ -6170,7 +6172,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-10-18T08:22:05+00:00"
+            "time": "2019-10-18T09:03:01+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
