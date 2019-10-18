@@ -9,7 +9,7 @@ namespace Pyz\Zed\Merchant;
 
 use Spryker\Zed\Merchant\MerchantDependencyProvider as SprykerMerchantDependencyProvider;
 use Spryker\Zed\MerchantProfile\Communication\Plugin\Merchant\MerchantProfileExpanderPlugin;
-use Spryker\Zed\MerchantProfile\Communication\Plugin\Merchant\MerchantProfilePostSavePlugin;
+use Spryker\Zed\MerchantProfile\Communication\Plugin\Merchant\MerchantProfileMerchantPostSavePlugin;
 
 class MerchantDependencyProvider extends SprykerMerchantDependencyProvider
 {
@@ -19,7 +19,7 @@ class MerchantDependencyProvider extends SprykerMerchantDependencyProvider
     protected function getMerchantPostSavePlugins(): array
     {
         return [
-            new MerchantProfilePostSavePlugin(),
+            new MerchantProfileMerchantPostSavePlugin(),
         ];
     }
 

@@ -9,7 +9,10 @@ namespace Pyz\Zed\MerchantGui;
 
 use Spryker\Zed\MerchantGui\MerchantGuiDependencyProvider as SprykerMerchantGuiDependencyProvider;
 use Spryker\Zed\MerchantProfileGui\Communication\Plugin\MerchantGui\MerchantProfileFormExpanderPlugin;
-use Spryker\Zed\MerchantProfileGui\Communication\Plugin\MerchantGui\Table\MerchantTableProfilePlugin;
+use Spryker\Zed\MerchantProfileGui\Communication\Plugin\MerchantGui\Table\MerchantProfileMerchantTableActionExpanderPlugin;
+use Spryker\Zed\MerchantProfileGui\Communication\Plugin\MerchantGui\Table\MerchantProfileMerchantTableConfigExpanderPlugin;
+use Spryker\Zed\MerchantProfileGui\Communication\Plugin\MerchantGui\Table\MerchantProfileMerchantTableDataExpanderPlugin;
+use Spryker\Zed\MerchantProfileGui\Communication\Plugin\MerchantGui\Table\MerchantProfileMerchantTableHeaderExpanderPlugin;
 use Spryker\Zed\MerchantProfileGui\Communication\Plugin\MerchantGui\Tabs\MerchantProfileContactPersonFormTabExpanderPlugin;
 use Spryker\Zed\MerchantProfileGui\Communication\Plugin\MerchantGui\Tabs\MerchantProfileFormTabExpanderPlugin;
 use Spryker\Zed\MerchantProfileGui\Communication\Plugin\MerchantGui\Tabs\MerchantProfileLegalInformationFormTabExpanderPlugin;
@@ -32,17 +35,17 @@ class MerchantGuiDependencyProvider extends SprykerMerchantGuiDependencyProvider
     protected function getMerchantTableDataExpanderPlugins(): array
     {
         return [
-            new MerchantTableProfilePlugin(),
+            new MerchantProfileMerchantTableDataExpanderPlugin(),
         ];
     }
 
     /**
-     * @return \Spryker\Zed\MerchantGuiExtension\Dependency\Plugin\MerchantTableDataExpanderPluginInterface[]
+     * @return \Spryker\Zed\MerchantGuiExtension\Dependency\Plugin\MerchantTableActionExpanderPluginInterface[]
      */
     protected function getMerchantTableActionExpanderPlugins(): array
     {
         return [
-            new MerchantTableProfilePlugin(),
+            new MerchantProfileMerchantTableActionExpanderPlugin(),
         ];
     }
 
@@ -52,7 +55,7 @@ class MerchantGuiDependencyProvider extends SprykerMerchantGuiDependencyProvider
     protected function getMerchantTableHeaderExpanderPlugins(): array
     {
         return [
-            new MerchantTableProfilePlugin(),
+            new MerchantProfileMerchantTableHeaderExpanderPlugin(),
         ];
     }
 
@@ -62,7 +65,7 @@ class MerchantGuiDependencyProvider extends SprykerMerchantGuiDependencyProvider
     protected function getMerchantTableConfigExpanderPlugins(): array
     {
         return [
-            new MerchantTableProfilePlugin(),
+            new MerchantProfileMerchantTableConfigExpanderPlugin(),
         ];
     }
 
