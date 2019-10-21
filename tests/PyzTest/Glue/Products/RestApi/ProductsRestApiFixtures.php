@@ -7,7 +7,6 @@
 
 namespace PyzTest\Glue\Products\RestApi;
 
-use Generated\Shared\Transfer\PriceProductTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use PyzTest\Glue\Products\ProductsApiTester;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
@@ -32,24 +31,11 @@ class ProductsRestApiFixtures implements FixturesBuilderInterface, FixturesConta
     protected $productConcreteTransfer;
 
     /**
-     * @var \Generated\Shared\Transfer\PriceProductTransfer
-     */
-    protected $priceProductTransfer;
-
-    /**
      * @return \Generated\Shared\Transfer\ProductConcreteTransfer
      */
     public function getProductConcreteTransfer(): ProductConcreteTransfer
     {
         return $this->productConcreteTransfer;
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\PriceProductTransfer
-     */
-    public function getPriceProductTransfer(): PriceProductTransfer
-    {
-        return $this->priceProductTransfer;
     }
 
     /**
