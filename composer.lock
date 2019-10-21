@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ac51cdcb26e2e1f028b539a761382142",
+    "content-hash": "bf1785902d8eb43e01ca0a3623b665f3",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -1065,9 +1065,9 @@
             "authors": [
                 {
                     "name": "Ignace Nyamagana Butera",
-                    "role": "Developer",
                     "email": "nyamsprod@gmail.com",
-                    "homepage": "https://github.com/nyamsprod/"
+                    "homepage": "https://github.com/nyamsprod/",
+                    "role": "Developer"
                 }
             ],
             "description": "Csv data manipulation made easy in PHP",
@@ -1638,18 +1638,18 @@
                 },
                 {
                     "name": "John Kelly",
-                    "role": "Maintainer",
-                    "email": "johnmkelly86@gmail.com"
+                    "email": "johnmkelly86@gmail.com",
+                    "role": "Maintainer"
                 },
                 {
                     "name": "Raúl Araya",
-                    "role": "Maintainer",
-                    "email": "nubeiro@gmail.com"
+                    "email": "nubeiro@gmail.com",
+                    "role": "Maintainer"
                 },
                 {
                     "name": "Luke Bakken",
-                    "role": "Maintainer",
-                    "email": "luke@bakken.io"
+                    "email": "luke@bakken.io",
+                    "role": "Maintainer"
                 }
             ],
             "description": "Formerly videlalvaro/php-amqplib.  This library is a pure PHP implementation of the AMQP protocol. It's been tested against RabbitMQ.",
@@ -2689,7 +2689,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "30a8dc61fc1618d2709291c21510af350f68c2a7"
+                "reference": "27d2e3863bad59f244a007c69d7a5d09fd4f2ac8"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2959,15 +2959,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-07T12:26:18+00:00"
+            "time": "2019-10-21T12:30:48+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/sc-1927/master-cdn-usage-for-static-assets",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "18f0724b6d890c2f64d69ec8e062b1fc8caf4867"
+                "reference": "b3bae4bdd00f3ab4b2ac10c8d23ee6047e2a2d00"
             },
             "require": {
                 "php": ">=7.1"
@@ -3043,7 +3043,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-09-30T14:23:49+00:00"
+            "time": "2019-10-21T11:43:51+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -9783,6 +9783,41 @@
             ],
             "description": "DevelopmentCore module",
             "time": "2019-09-27T12:43:27+00:00"
+        },
+        {
+            "name": "spryker/doctrine-inflector",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/doctrine-inflector.git",
+                "reference": "8004cf3694607af22631a1e8efd08547deefe510"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/doctrine-inflector/zipball/8004cf3694607af22631a1e8efd08547deefe510",
+                "reference": "8004cf3694607af22631a1e8efd08547deefe510",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/inflector": "~1.3.0",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "DoctrineInflector module",
+            "time": "2018-09-28T12:44:27+00:00"
         },
         {
             "name": "spryker/git-hook",

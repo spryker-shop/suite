@@ -7,11 +7,11 @@
 
 namespace Pyz\Zed\Chart;
 
-use Pyz\Zed\ExampleChart\Plugin\ExampleChart;
+use Pyz\Zed\ExampleChart\Communication\Plugin\ExampleChartPlugin;
 use Spryker\Zed\Chart\ChartDependencyProvider as SprykerChartDependencyProvider;
-use Spryker\Zed\SalesStatistics\Communication\Plugin\CountOrderChartPlugin;
-use Spryker\Zed\SalesStatistics\Communication\Plugin\StatusOrderChartPlugin;
-use Spryker\Zed\SalesStatistics\Communication\Plugin\TopOrdersChartPlugin;
+use Spryker\Zed\SalesStatistics\Communication\Plugin\Chart\CountOrderChartPlugin;
+use Spryker\Zed\SalesStatistics\Communication\Plugin\Chart\StatusOrderChartPlugin;
+use Spryker\Zed\SalesStatistics\Communication\Plugin\Chart\TopOrdersChartPlugin;
 
 class ChartDependencyProvider extends SprykerChartDependencyProvider
 {
@@ -24,7 +24,15 @@ class ChartDependencyProvider extends SprykerChartDependencyProvider
             new CountOrderChartPlugin(),
             new StatusOrderChartPlugin(),
             new TopOrdersChartPlugin(),
-            new ExampleChart(),
+            new ExampleChartPlugin(),
         ];
+    }
+
+    /**
+     * @return \Spryker\Shared\ChartExtension\Dependency\Plugin\ChartTwigFunctionPluginInterface[]
+     */
+    protected function geChartTwigFunctionPlugins(): array
+    {
+        return [];
     }
 }

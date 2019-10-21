@@ -7,7 +7,11 @@
 
 namespace Pyz\Yves\ChartWidget;
 
-use Pyz\Yves\ExampleChart\Plugin\ExampleChart;
+use Pyz\Zed\ExampleChart\Communication\Plugin\ExampleChartPlugin;
+use SprykerShop\ChartWidget\src\SprykerShop\Yves\ChartWidget\Plugin\Twig\BarChartTwigPlugin;
+use SprykerShop\ChartWidget\src\SprykerShop\Yves\ChartWidget\Plugin\Twig\LineChartTwigPlugin;
+use SprykerShop\ChartWidget\src\SprykerShop\Yves\ChartWidget\Plugin\Twig\MainChartTwigPlugin;
+use SprykerShop\ChartWidget\src\SprykerShop\Yves\ChartWidget\Plugin\Twig\PieChartTwigPlugin;
 use SprykerShop\Yves\ChartWidget\ChartWidgetDependencyProvider as SprykerShopChartDependencyProvider;
 
 class ChartWidgetDependencyProvider extends SprykerShopChartDependencyProvider
@@ -18,7 +22,20 @@ class ChartWidgetDependencyProvider extends SprykerShopChartDependencyProvider
     protected function getChartPlugins(): array
     {
         return [
-            new ExampleChart(),
+            new ExampleChartPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Shared\ChartExtension\Dependency\Plugin\ChartTwigFunctionPluginInterface[]
+     */
+    protected function getChartTwigFunctionPlugins(): array
+    {
+        return [
+            new PieChartTwigPlugin(),
+            new BarChartTwigPlugin(),
+            new LineChartTwigPlugin(),
+            new MainChartTwigPlugin(),
         ];
     }
 }
