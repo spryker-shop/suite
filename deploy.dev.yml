@@ -140,6 +140,11 @@ services:
         engine: mailhog
         endpoints:
             mail.spryker.local:
+    swagger:
+        engine: swagger-ui
+        endpoints:
+            swagger.spryker.local:
+
 
 docker:
 
