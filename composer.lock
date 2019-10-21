@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa1d46cafb18b1b70fa68c042d07f5f4",
+    "content-hash": "7bb58a3fe332b62d486f8229314704e3",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -2967,7 +2967,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette NEON: encodes and decodes NEON file format.",
+            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -3758,8 +3758,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Library that provides collection, processing, and rendering functionality for PHP code coverage information.",
@@ -5142,6 +5142,50 @@
             "time": "2019-10-10T13:04:51+00:00"
         },
         {
+            "name": "spryker/configurable-bundle-cart",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/configurable-bundle-cart.git",
+                "reference": "a94a95f0e99d9688f907054eb9cca480fab7e605"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/configurable-bundle-cart/zipball/a94a95f0e99d9688f907054eb9cca480fab7e605",
+                "reference": "a94a95f0e99d9688f907054eb9cca480fab7e605",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/cart": "^7.3.0",
+                "spryker/cart-extension": "^1.9.0 || ^2.5.0 || ^4.1.0",
+                "spryker/configurable-bundle": "^1.0.0",
+                "spryker/kernel": "^3.33.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ConfigurableBundleCart module",
+            "time": "2019-10-17T05:55:16+00:00"
+        },
+        {
             "name": "spryker/event-behavior",
             "version": "dev-master",
             "source": {
@@ -5395,11 +5439,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-bugfix/cc-6552-conf-bundles-with-split-delivery",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "a93845130372400352eba010dc0b2c68ae7f2335"
+                "reference": "b26165ffc2a854cf6f86ab01af59a0b9512a7af7"
             },
             "require": {
                 "php": ">=7.1"
@@ -5552,7 +5596,6 @@
                 "spryker/company-users-rest-api": "*",
                 "spryker/config": "*",
                 "spryker/configurable-bundle": "*",
-                "spryker/configurable-bundle-cart": "*",
                 "spryker/configurable-bundle-data-import": "*",
                 "spryker/configurable-bundle-storage": "*",
                 "spryker/console": "*",
@@ -5840,7 +5883,6 @@
                 "spryker/quote": "*",
                 "spryker/quote-approval": "*",
                 "spryker/quote-approval-extension": "*",
-                "spryker/quote-approval-shipment-connector": "*",
                 "spryker/quote-extension": "*",
                 "spryker/quote-request": "*",
                 "spryker/quote-request-agent": "*",
@@ -5964,8 +6006,7 @@
                 "spryker/code-sniffer": "dev-master"
             },
             "bin": [
-                "Bundles/Console/bin/console",
-                "Bundles/Console/bin/yves"
+                "Bundles/Console/bin/console"
             ],
             "type": "library",
             "autoload": {
@@ -5982,15 +6023,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-18T05:44:54+00:00"
+            "time": "2019-10-11T14:48:20+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-bugfix/cc-6552-conf-bundles-with-split-delivery",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "8b70348ab02fbf934675d5c03260bff8a7d830b0"
+                "reference": "5cf088cac978a736c82733e59086ffa455656412"
             },
             "require": {
                 "php": ">=7.1"
@@ -6124,7 +6165,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-10-18T04:48:47+00:00"
+            "time": "2019-10-21T06:53:11+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -9795,7 +9836,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-13T13:21:38+00:00"
+            "time": "2017-12-12T17:28:44+00:00"
         },
         {
             "name": "phpmd/phpmd",
@@ -9838,20 +9879,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
+                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler",
-                    "role": "Project Founder"
+                    "homepage": "https://github.com/manuelpichler"
                 },
                 {
                     "name": "Marc Würth",
+                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84",
-                    "role": "Project Maintainer"
+                    "homepage": "https://github.com/ravage84"
                 },
                 {
                     "name": "Other contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
