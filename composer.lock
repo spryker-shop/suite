@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.112.24",
+            "version": "3.112.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "6997f23a47714d084cd2d40b6348b99e10439d64"
+                "reference": "f91e264e3cbf8ced5c93f5f786c9e0f079926749"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/6997f23a47714d084cd2d40b6348b99e10439d64",
-                "reference": "6997f23a47714d084cd2d40b6348b99e10439d64",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/f91e264e3cbf8ced5c93f5f786c9e0f079926749",
+                "reference": "f91e264e3cbf8ced5c93f5f786c9e0f079926749",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-10-17T18:10:45+00:00"
+            "time": "2019-10-18T18:08:55+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -150,16 +150,16 @@
         },
         {
             "name": "codeception/codeception",
-            "version": "3.1.1",
+            "version": "3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Codeception.git",
-                "reference": "afc52609e590998fd293028699ad4a61d6afd7bc"
+                "reference": "5ea172de7b1b2e61dcdd50d73f8368886c549fb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/afc52609e590998fd293028699ad4a61d6afd7bc",
-                "reference": "afc52609e590998fd293028699ad4a61d6afd7bc",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/5ea172de7b1b2e61dcdd50d73f8368886c549fb4",
+                "reference": "5ea172de7b1b2e61dcdd50d73f8368886c549fb4",
                 "shasum": ""
             },
             "require": {
@@ -192,6 +192,7 @@
                 "pda/pheanstalk": "~3.0",
                 "php-amqplib/php-amqplib": "~2.4",
                 "predis/predis": "^1.0",
+                "ramsey/uuid-doctrine": "^1.5",
                 "squizlabs/php_codesniffer": "~2.0",
                 "symfony/process": ">=2.7 <5.0",
                 "vlucas/phpdotenv": "^3.0"
@@ -241,7 +242,7 @@
                 "functional testing",
                 "unit testing"
             ],
-            "time": "2019-09-14T13:53:56+00:00"
+            "time": "2019-10-19T13:15:55+00:00"
         },
         {
             "name": "codeception/phpunit-wrapper",
@@ -1031,8 +1032,8 @@
             "authors": [
                 {
                     "name": "Filipe Dobreira",
-                    "role": "Developer",
-                    "homepage": "https://github.com/filp"
+                    "homepage": "https://github.com/filp",
+                    "role": "Developer"
                 }
             ],
             "description": "php error handling for cool kids",
@@ -2511,8 +2512,8 @@
             "authors": [
                 {
                     "name": "Frank Kleine",
-                    "role": "Developer",
-                    "homepage": "http://frankkleine.de/"
+                    "homepage": "http://frankkleine.de/",
+                    "role": "Developer"
                 }
             ],
             "description": "Virtual file system to mock the real file system in unit tests.",
@@ -2967,7 +2968,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
+            "description": "? Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -4145,7 +4146,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -5102,12 +5103,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-eco/loggly.git",
-                "reference": "adfab12537e302e62bb6133c535d1f4dd0f72a84"
+                "reference": "c02f02ecda7ef4ed9c3db97ea67aa6a06d623c69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-eco/loggly/zipball/adfab12537e302e62bb6133c535d1f4dd0f72a84",
-                "reference": "adfab12537e302e62bb6133c535d1f4dd0f72a84",
+                "url": "https://api.github.com/repos/spryker-eco/loggly/zipball/c02f02ecda7ef4ed9c3db97ea67aa6a06d623c69",
+                "reference": "c02f02ecda7ef4ed9c3db97ea67aa6a06d623c69",
                 "shasum": ""
             },
             "require": {
@@ -5139,7 +5140,7 @@
                 "proprietary"
             ],
             "description": "Loggly module",
-            "time": "2019-10-10T13:04:51+00:00"
+            "time": "2019-10-21T09:49:34+00:00"
         },
         {
             "name": "spryker/decimal-object",
@@ -6038,7 +6039,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "53250e0311083e99985efba7fe7167f248723330"
+                "reference": "74ce2e168406bd9a4c2642a52f47b84851312fa4"
             },
             "require": {
                 "php": ">=7.1"
@@ -6172,7 +6173,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-10-18T12:37:59+00:00"
+            "time": "2019-10-21T09:21:11+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -9962,16 +9963,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.11.16",
+            "version": "0.11.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "635cf20f3b92ce34ee94a8d2f282d62eb9dc6e1b"
+                "reference": "4e8ea97406bcf8eb58f670489e80b1f86e43d3b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/635cf20f3b92ce34ee94a8d2f282d62eb9dc6e1b",
-                "reference": "635cf20f3b92ce34ee94a8d2f282d62eb9dc6e1b",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/4e8ea97406bcf8eb58f670489e80b1f86e43d3b1",
+                "reference": "4e8ea97406bcf8eb58f670489e80b1f86e43d3b1",
                 "shasum": ""
             },
             "require": {
@@ -9979,6 +9980,7 @@
                 "jean85/pretty-package-versions": "^1.0.3",
                 "nette/bootstrap": "^2.4 || ^3.0",
                 "nette/di": "^2.4.7 || ^3.0",
+                "nette/neon": "^2.4.3 || ^3.0",
                 "nette/robot-loader": "^3.0.1",
                 "nette/schema": "^1.0",
                 "nette/utils": "^2.4.5 || ^3.0",
@@ -10032,7 +10034,7 @@
                 "MIT"
             ],
             "description": "PHPStan - PHP Static Analysis Tool",
-            "time": "2019-09-17T11:19:51+00:00"
+            "time": "2019-10-19T20:02:55+00:00"
         },
         {
             "name": "roave/better-reflection",
