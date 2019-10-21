@@ -13,6 +13,10 @@ use Spryker\Zed\Auth\Communication\Plugin\EventDispatcher\AuthorizationEventDisp
 use Spryker\Zed\Auth\Communication\Plugin\EventDispatcher\RedirectAfterLoginEventDispatcherPlugin;
 use Spryker\Zed\EventBehavior\Communication\Plugin\EventDispatcher\EventBehaviorEventDispatcherPlugin;
 use Spryker\Zed\EventDispatcher\EventDispatcherDependencyProvider as SprykerEventDispatcherDependencyProvider;
+use Spryker\Zed\Http\Communication\Plugin\EventDispatcher\CookieEventDispatcherPlugin;
+use Spryker\Zed\Http\Communication\Plugin\EventDispatcher\FragmentEventDispatcherPlugin;
+use Spryker\Zed\Http\Communication\Plugin\EventDispatcher\HeaderEventDispatcherPlugin;
+use Spryker\Zed\Http\Communication\Plugin\EventDispatcher\HstsHeaderEventDispatcher;
 use Spryker\Zed\Locale\Communication\Plugin\EventDispatcher\LocaleEventDispatcherPlugin;
 use Spryker\Zed\Monitoring\Communication\Plugin\EventDispatcher\MonitoringRequestTransactionEventDispatcherPlugin;
 use Spryker\Zed\Router\Communication\Plugin\EventDispatcher\RouterListenerEventDispatcherPlugin;
@@ -40,6 +44,10 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
             new RouterLocaleEventDispatcherPlugin(),
             new RouterListenerEventDispatcherPlugin(),
             new RouterSslRedirectEventDispatcherPlugin(),
+            new CookieEventDispatcherPlugin(),
+            new FragmentEventDispatcherPlugin(),
+            new HeaderEventDispatcherPlugin(),
+            new HstsHeaderEventDispatcher(),
             new TwigEventDispatcherPlugin(),
         ];
     }
