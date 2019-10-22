@@ -125,4 +125,4 @@ sections:
             command: "vendor/bin/console code:fixtures"
 
         queue-worker:
-            command: "console queue:worker:start --stop-when-empty"
+            command: "vendor/bin/console queue:worker:start --stop-when-empty"
