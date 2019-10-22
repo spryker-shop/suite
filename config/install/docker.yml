@@ -122,7 +122,7 @@ sections:
             command: "vendor/bin/console data:import:glossary"
 
         fixtures-load:
-            command: "vendor/bin/console code:fixtures"
+            command: "vendor/bin/codecept fixtures"
 
         queue-worker:
             command: "vendor/bin/console queue:worker:start --stop-when-empty"
