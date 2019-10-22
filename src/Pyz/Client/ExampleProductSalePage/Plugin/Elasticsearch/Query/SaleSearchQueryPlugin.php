@@ -17,7 +17,7 @@ use Generated\Shared\Transfer\ElasticsearchSearchContextTransfer;
 use Generated\Shared\Transfer\SearchContextTransfer;
 use Spryker\Client\Kernel\AbstractPlugin;
 use Spryker\Client\ProductLabel\Plugin\ProductLabelFacetConfigTransferBuilderPlugin;
-use Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface;
+use Spryker\Client\Search\Dependency\Plugin\QueryInterface;
 use Spryker\Client\SearchExtension\Dependency\Plugin\SearchContextAwareQueryInterface;
 
 /**
@@ -38,7 +38,7 @@ class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface, Se
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      * - Returns a query object for sale search.
      *
      * @api
@@ -51,7 +51,7 @@ class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface, Se
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      * - Defines a context for sale search.
      *
      * @api

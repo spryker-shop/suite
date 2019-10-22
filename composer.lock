@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa1d46cafb18b1b70fa68c042d07f5f4",
+    "content-hash": "9d0fa0163b04c10ac93940720ac9c047",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1031,8 +1031,8 @@
             "authors": [
                 {
                     "name": "Filipe Dobreira",
-                    "homepage": "https://github.com/filp",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "homepage": "https://github.com/filp"
                 }
             ],
             "description": "php error handling for cool kids",
@@ -1133,8 +1133,8 @@
             "authors": [
                 {
                     "name": "Alessio Linares",
-                    "email": "alessio.linares@skyscanner.net",
-                    "role": "Software Engineer"
+                    "role": "Software Engineer",
+                    "email": "alessio.linares@skyscanner.net"
                 }
             ],
             "description": "JSONPath implementation for querying and updating JSON objects",
@@ -2400,15 +2400,15 @@
             "authors": [
                 {
                     "name": "Alex Bilbie",
+                    "role": "Developer",
                     "email": "hello@alexbilbie.com",
-                    "homepage": "http://www.alexbilbie.com",
-                    "role": "Developer"
+                    "homepage": "http://www.alexbilbie.com"
                 },
                 {
                     "name": "Andy Millington",
+                    "role": "Developer",
                     "email": "andrew@noexceptions.io",
-                    "homepage": "https://www.noexceptions.io",
-                    "role": "Developer"
+                    "homepage": "https://www.noexceptions.io"
                 }
             ],
             "description": "A lightweight and powerful OAuth 2.0 authorization and resource server library with support for all the core specification grants. This library will allow you to secure your API with OAuth and allow your applications users to approve apps that want to access their data from your API.",
@@ -2460,9 +2460,9 @@
             "authors": [
                 {
                     "name": "Mandrill Devs",
+                    "role": "Developer",
                     "email": "community@mandrill.com",
-                    "homepage": "http://mandrill.com",
-                    "role": "Developer"
+                    "homepage": "http://mandrill.com"
                 }
             ],
             "description": "API client library for the Mandrill email as a service platform",
@@ -2511,8 +2511,8 @@
             "authors": [
                 {
                     "name": "Frank Kleine",
-                    "homepage": "http://frankkleine.de/",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "homepage": "http://frankkleine.de/"
                 }
             ],
             "description": "Virtual file system to mock the real file system in unit tests.",
@@ -3362,18 +3362,18 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "email": "sebastian@phpeople.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "sebastian@phpeople.de"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Library for handling version information and constraints",
@@ -3758,8 +3758,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Library that provides collection, processing, and rendering functionality for PHP code coverage information.",
@@ -3809,8 +3809,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "FilterIterator implementation that filters files based on a list of suffixes.",
@@ -3851,8 +3851,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Simple template engine.",
@@ -3900,8 +3900,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Utility class for timing",
@@ -5088,8 +5088,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
@@ -5142,17 +5142,61 @@
             "time": "2019-10-10T13:04:51+00:00"
         },
         {
+            "name": "spryker/configurable-bundle-cart",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/configurable-bundle-cart.git",
+                "reference": "a94a95f0e99d9688f907054eb9cca480fab7e605"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/configurable-bundle-cart/zipball/a94a95f0e99d9688f907054eb9cca480fab7e605",
+                "reference": "a94a95f0e99d9688f907054eb9cca480fab7e605",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/cart": "^7.3.0",
+                "spryker/cart-extension": "^1.9.0 || ^2.5.0 || ^4.1.0",
+                "spryker/configurable-bundle": "^1.0.0",
+                "spryker/kernel": "^3.33.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ConfigurableBundleCart module",
+            "time": "2019-10-17T05:55:16+00:00"
+        },
+        {
             "name": "spryker/event-behavior",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "cf3382348961dd2b407144b44a70912dd1474c04"
+                "reference": "f39340f832606e19d7eef58218523d03fd630cfa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/cf3382348961dd2b407144b44a70912dd1474c04",
-                "reference": "cf3382348961dd2b407144b44a70912dd1474c04",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/f39340f832606e19d7eef58218523d03fd630cfa",
+                "reference": "f39340f832606e19d7eef58218523d03fd630cfa",
                 "shasum": ""
             },
             "require": {
@@ -5202,7 +5246,7 @@
                 "proprietary"
             ],
             "description": "EventBehavior module",
-            "time": "2019-10-14T14:44:08+00:00"
+            "time": "2019-10-15T13:40:18+00:00"
         },
         {
             "name": "spryker/install",
@@ -5255,12 +5299,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "bdbb1eee3eb217b8027b78c49174c7e109b76b39"
+                "reference": "0c145e68de66337c2c802256c28e7f30f2cc96d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/bdbb1eee3eb217b8027b78c49174c7e109b76b39",
-                "reference": "bdbb1eee3eb217b8027b78c49174c7e109b76b39",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/0c145e68de66337c2c802256c28e7f30f2cc96d0",
+                "reference": "0c145e68de66337c2c802256c28e7f30f2cc96d0",
                 "shasum": ""
             },
             "require": {
@@ -5311,7 +5355,7 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "time": "2019-10-14T16:05:52+00:00"
+            "time": "2019-10-15T13:40:19+00:00"
         },
         {
             "name": "spryker/silexphp",
@@ -5395,11 +5439,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/te-1070/te-3980-as-a-visitor-i-want-to-search-for-information",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "8c817d5fcb862be63c3d27d8e7cd57760185d313"
+                "reference": "d3fab4e3abd7112120866c44ce22074a22e8e558"
             },
             "require": {
                 "php": ">=7.1"
@@ -5582,6 +5626,7 @@
                 "spryker/customer-access": "*",
                 "spryker/customer-access-gui": "*",
                 "spryker/customer-access-permission": "*",
+                "spryker/customer-access-rest-api": "*",
                 "spryker/customer-access-storage": "*",
                 "spryker/customer-api": "*",
                 "spryker/customer-catalog": "*",
@@ -5872,6 +5917,8 @@
                 "spryker/scheduler-extension": "*",
                 "spryker/scheduler-jenkins": "*",
                 "spryker/search": "*",
+                "spryker/search-elasticsearch": "*",
+                "spryker/search-extension": "*",
                 "spryker/sequence-number": "*",
                 "spryker/session": "*",
                 "spryker/session-extension": "*",
@@ -5979,7 +6026,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-14T12:38:45+00:00"
+            "time": "2019-10-18T10:19:14+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5987,7 +6034,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "15e51e7c9eceda3386d204f5d9830311df002e53"
+                "reference": "8b70348ab02fbf934675d5c03260bff8a7d830b0"
             },
             "require": {
                 "php": ">=7.1"
@@ -6121,7 +6168,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-10-14T12:38:48+00:00"
+            "time": "2019-10-18T04:48:47+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -9835,20 +9882,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
+                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler",
-                    "role": "Project Founder"
+                    "homepage": "https://github.com/manuelpichler"
                 },
                 {
                     "name": "Marc Würth",
+                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84",
-                    "role": "Project Maintainer"
+                    "homepage": "https://github.com/ravage84"
                 },
                 {
                     "name": "Other contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -10116,8 +10163,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "FinderFacade is a convenience wrapper for Symfony's Finder component.",
@@ -10167,8 +10214,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Copy/Paste Detector (CPD) for PHP code.",
@@ -10664,12 +10711,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-generator.git",
-                "reference": "69cbb9a046fec693d1b1727d12f069819e2ab1bc"
+                "reference": "2030ad5b5e33ac4f12249c762852ad57a6eb37e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-generator/zipball/69cbb9a046fec693d1b1727d12f069819e2ab1bc",
-                "reference": "69cbb9a046fec693d1b1727d12f069819e2ab1bc",
+                "url": "https://api.github.com/repos/spryker/code-generator/zipball/2030ad5b5e33ac4f12249c762852ad57a6eb37e6",
+                "reference": "2030ad5b5e33ac4f12249c762852ad57a6eb37e6",
                 "shasum": ""
             },
             "require": {
@@ -10700,7 +10747,7 @@
                 "MIT"
             ],
             "description": "CodeGenerator module",
-            "time": "2019-10-07T10:01:20+00:00"
+            "time": "2019-10-16T09:56:04+00:00"
         },
         {
             "name": "spryker/code-sniffer",
@@ -10708,18 +10755,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "76d3716be3fce5e3652c0479a0ce4d46f5f9bad7"
+                "reference": "d1a9ce6af293c8c71b78bcc1061c1df5cc3212d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/76d3716be3fce5e3652c0479a0ce4d46f5f9bad7",
-                "reference": "76d3716be3fce5e3652c0479a0ce4d46f5f9bad7",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/d1a9ce6af293c8c71b78bcc1061c1df5cc3212d9",
+                "reference": "d1a9ce6af293c8c71b78bcc1061c1df5cc3212d9",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "slevomat/coding-standard": "^4.8.7 || ^5.0.4",
-                "squizlabs/php_codesniffer": "^3.5.0"
+                "squizlabs/php_codesniffer": "3.5.0"
             },
             "require-dev": {
                 "dereuromark/composer-prefer-lowest": "^0.1.2",
@@ -10754,7 +10801,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-10-02T15:41:05+00:00"
+            "time": "2019-10-17T08:26:40+00:00"
         },
         {
             "name": "spryker/development-core",
@@ -10762,7 +10809,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "70227ae5b3e409ff4f45ca9de28b056175d15a79"
+                "reference": "fc2c4dfea0a72829bbe8f5f15702faa901c8fd3f"
             },
             "require": {
                 "php": ">=7.1",
@@ -10803,7 +10850,7 @@
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2019-10-14T08:38:44+00:00"
+            "time": "2019-10-16T12:45:41+00:00"
         },
         {
             "name": "spryker/git-hook",
@@ -11179,8 +11226,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
