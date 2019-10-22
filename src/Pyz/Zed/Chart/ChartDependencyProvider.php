@@ -9,6 +9,10 @@ namespace Pyz\Zed\Chart;
 
 use Pyz\Zed\ExampleChart\Communication\Plugin\ExampleChartPlugin;
 use Spryker\Zed\Chart\ChartDependencyProvider as SprykerChartDependencyProvider;
+use Spryker\Zed\Chart\Communication\Plugin\Twig\TwigBarChartPlugin;
+use Spryker\Zed\Chart\Communication\Plugin\Twig\TwigChartPlugin;
+use Spryker\Zed\Chart\Communication\Plugin\Twig\TwigLineChartPlugin;
+use Spryker\Zed\Chart\Communication\Plugin\Twig\TwigPieChartPlugin;
 use Spryker\Zed\SalesStatistics\Communication\Plugin\Chart\CountOrderChartPlugin;
 use Spryker\Zed\SalesStatistics\Communication\Plugin\Chart\StatusOrderChartPlugin;
 use Spryker\Zed\SalesStatistics\Communication\Plugin\Chart\TopOrdersChartPlugin;
@@ -16,9 +20,9 @@ use Spryker\Zed\SalesStatistics\Communication\Plugin\Chart\TopOrdersChartPlugin;
 class ChartDependencyProvider extends SprykerChartDependencyProvider
 {
      /**
-      * @return \Spryker\Shared\Chart\Dependency\Plugin\ChartPluginInterface[]
+      * @return \Spryker\Shared\ChartExtension\Dependency\Plugin\ChartPluginInterface[]
       */
-    protected function getChartPlugins(): array
+    protected function getChartTwigPlugins(): array
     {
         return [
             new CountOrderChartPlugin(),
@@ -33,6 +37,11 @@ class ChartDependencyProvider extends SprykerChartDependencyProvider
      */
     protected function geChartTwigFunctionPlugins(): array
     {
-        return [];
+        return [
+            new TwigBarChartPlugin(),
+            new TwigLineChartPlugin(),
+            new TwigPieChartPlugin(),
+            new TwigChartPlugin(),
+        ];
     }
 }
