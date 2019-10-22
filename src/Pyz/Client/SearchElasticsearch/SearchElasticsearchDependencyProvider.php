@@ -7,7 +7,7 @@
 
 namespace Pyz\Client\SearchElasticsearch;
 
-use Spryker\Client\Catalog\Plugin\Search\ElasticsearchCatalogSearchConfigBuilderPlugin;
+use Spryker\Client\Catalog\Plugin\SearchElasticsearch\ElasticsearchCatalogSearchConfigBuilderPlugin;
 use Spryker\Client\Kernel\Container;
 use Spryker\Client\ProductSearchConfigStorage\Plugin\Config\ProductSearchConfigExpanderPlugin;
 use Spryker\Client\SearchElasticsearch\SearchElasticsearchDependencyProvider as SprykerSearchElasticsearchDependencyProvider;
@@ -18,11 +18,13 @@ class SearchElasticsearchDependencyProvider extends SprykerSearchElasticsearchDe
     /**
      * @param \Spryker\Client\Kernel\Container $container
      *
-     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\SearchConfigBuilderPluginInterface|null
+     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\SearchConfigBuilderPluginInterface[]
      */
-    protected function getSearchConfigBuilderPlugin(Container $container): ?SearchConfigBuilderPluginInterface
+    protected function getSearchConfigBuilderPlugins(Container $container): array
     {
-        return new ElasticsearchCatalogSearchConfigBuilderPlugin();
+        return [
+            new ElasticsearchCatalogSearchConfigBuilderPlugin(),
+        ];
     }
 
     /**
