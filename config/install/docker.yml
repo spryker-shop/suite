@@ -122,7 +122,7 @@ sections:
             command: "vendor/bin/console data:import:glossary"
 
         fixtures-load:
-            command: "vendor/bin/codecept fixtures"
+            command: "SPRYKER_TESTING_ENABLED=1 vendor/bin/console code:fixtures"
 
         queue-worker:
             command: "vendor/bin/console queue:worker:start --stop-when-empty"
