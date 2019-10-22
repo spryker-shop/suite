@@ -27,12 +27,6 @@ use Spryker\Glue\WishlistsRestApi\WishlistsRestApiConfig;
  */
 class WishlistRestApiCest
 {
-    protected const INCLUDE_RESOURCES = [
-        WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
-        ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-        ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-    ];
-
     /**
      * @var \PyzTest\Glue\Wishlists\RestApi\Fixtures\WishlistsRestApiFixtures
      */
@@ -55,7 +49,7 @@ class WishlistRestApiCest
      *
      * @return void
      */
-    public function requestWishlist(WishlistsApiTester $I): void
+    public function requestWishlistByUuid(WishlistsApiTester $I): void
     {
         // Arrange
         $wishlistUuid = $this->fixtures->getWishlistTransfer()->getUuid();
@@ -68,15 +62,15 @@ class WishlistRestApiCest
         // Assert
         $I->assertResponse(HttpCode::OK);
 
-        $I->amSureResponseDataContainsSingleResourceOfType(WishlistsRestApiConfig::RESOURCE_WISHLISTS)
+        $I->amSureSeeResponseDataContainsSingleResourceOfType(WishlistsRestApiConfig::RESOURCE_WISHLISTS)
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType(WishlistsRestApiConfig::RESOURCE_WISHLISTS);
 
-        $I->amSureSingleResourceIdEqualTo()
+        $I->amSureSeeSingleResourceIdEqualTo($wishlistUuid)
             ->whenI()
             ->seeSingleResourceIdEqualTo($wishlistUuid);
 
-        $I->amSureSingleResourceHasSelfLink()
+        $I->amSureSeeSingleResourceHasSelfLink()
             ->whenI()
             ->seeSingleResourceHasSelfLink($url);
     }
@@ -88,14 +82,48 @@ class WishlistRestApiCest
      *
      * @return void
      */
-    public function requestWishlistItemsWithProductLabelRelationship(WishlistsApiTester $I): void
+    public function requestWishlists(WishlistsApiTester $I): void
+    {
+        $I->requestCustomerLogin($this->fixtures->getCustomerTransfer());
+        $wishlistUuid = $this->fixtures->getWishlistTransfer()->getUuid();
+
+        // Act
+        $I->sendGET($I->buildWishlistsUrl());
+
+        // Assert
+        $I->assertResponse(HttpCode::OK);
+
+        $I->amSureSeeResponseDataContainsResourceCollectionOfType(WishlistsRestApiConfig::RESOURCE_WISHLISTS)
+            ->whenI()
+            ->seeResponseDataContainsResourceCollectionOfType(WishlistsRestApiConfig::RESOURCE_WISHLISTS);
+
+        $I->amSureSeeResourceCollectionHasResourceWithId($wishlistUuid)
+            ->whenI()
+            ->seeResourceCollectionHasResourceWithId($wishlistUuid);
+
+        $I->amSureSeeResourceByIdHasSelfLink($wishlistUuid)
+            ->whenI()
+            ->seeResourceByIdHasSelfLink($wishlistUuid, $I->buildWishlistUrl($wishlistUuid));
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Wishlists\WishlistsApiTester $I
+     *
+     * @return void
+     */
+    public function requestWishlistByUuidWithWishlistItemsRelationship(WishlistsApiTester $I): void
     {
         // Arrange
-        $wishlistUuid = $this->fixtures->getWishlistTransferWithLabel()->getUuid();
-        $productConcreteSku = $this->fixtures->getProductConcreteTransferWithLabel()->getSku();
-        $idProductLabel = $this->fixtures->getProductLabelTransfer()->getIdProductLabel();
+        $productConcreteSku = $this->fixtures->getProductConcreteTransfer()->getSku();
         $I->requestCustomerLogin($this->fixtures->getCustomerTransfer());
-        $url = $I->buildWishlistUrl($wishlistUuid, static::INCLUDE_RESOURCES);
+        $url = $I->buildWishlistUrl(
+            $this->fixtures->getWishlistTransfer()->getUuid(),
+            [
+                WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
+            ]
+        );
 
         // Act
         $I->sendGET($url);
@@ -103,19 +131,7 @@ class WishlistRestApiCest
         // Assert
         $I->assertResponse(HttpCode::OK);
 
-        $I->amSureResponseDataContainsSingleResourceOfType(WishlistsRestApiConfig::RESOURCE_WISHLISTS)
-            ->whenI()
-            ->seeResponseDataContainsSingleResourceOfType(WishlistsRestApiConfig::RESOURCE_WISHLISTS);
-
-        $I->amSureSingleResourceIdEqualTo()
-            ->whenI()
-            ->seeSingleResourceIdEqualTo($wishlistUuid);
-
-        $I->amSureSingleResourceHasSelfLink()
-            ->whenI()
-            ->seeSingleResourceHasSelfLink($url);
-
-        $I->amSureSingleResourceHasRelationshipByTypeAndId(
+        $I->amSureSeeSingleResourceHasRelationshipByTypeAndId(
             WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
             $productConcreteSku
         )
@@ -125,7 +141,44 @@ class WishlistRestApiCest
                 $productConcreteSku
             );
 
-        $I->amSureIncludedResourceByTypeAndIdHasRelationshipByTypeAndId(
+        $I->amSureSeeIncludesContainsResourceByTypeAndId(
+            WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
+            $productConcreteSku
+        )
+            ->whenI()
+            ->seeIncludesContainsResourceByTypeAndId(
+                WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
+                $productConcreteSku
+            );
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Wishlists\WishlistsApiTester $I
+     *
+     * @return void
+     */
+    public function requestWishlistByUuidWithProductConcreteRelationship(WishlistsApiTester $I): void
+    {
+        // Arrange
+        $productConcreteSku = $this->fixtures->getProductConcreteTransfer()->getSku();
+        $I->requestCustomerLogin($this->fixtures->getCustomerTransfer());
+        $url = $I->buildWishlistUrl(
+            $this->fixtures->getWishlistTransfer()->getUuid(),
+            [
+                WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
+                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+            ]
+        );
+
+        // Act
+        $I->sendGET($url);
+
+        // Assert
+        $I->assertResponse(HttpCode::OK);
+
+        $I->amSureSeeIncludedResourceByTypeAndIdHasRelationshipByTypeAndId(
             WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
             $productConcreteSku,
             ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
@@ -139,7 +192,7 @@ class WishlistRestApiCest
                 $productConcreteSku
             );
 
-        $I->amSureIncludesContainsResourceByTypeAndId(
+        $I->amSureSeeIncludesContainsResourceByTypeAndId(
             ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
             $productConcreteSku
         )
@@ -149,7 +202,7 @@ class WishlistRestApiCest
                 $productConcreteSku
             );
 
-        $I->amSureIncludedResourceByTypeAndIdHasSelfLink(
+        $I->amSureSeeIncludedResourceByTypeAndIdHasSelfLink(
             ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
             $productConcreteSku
         )
@@ -159,8 +212,37 @@ class WishlistRestApiCest
                 $productConcreteSku,
                 $I->buildProductConcreteUrl($productConcreteSku)
             );
+    }
 
-        $I->amSureIncludedResourceByTypeAndIdHasRelationshipByTypeAndId(
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Wishlists\WishlistsApiTester $I
+     *
+     * @return void
+     */
+    public function requestWishlistByUuidWithProductLabelsRelationship(WishlistsApiTester $I): void
+    {
+        // Arrange
+        $productConcreteSku = $this->fixtures->getProductConcreteTransferWithLabel()->getSku();
+        $idProductLabel = $this->fixtures->getProductLabelTransfer()->getIdProductLabel();
+        $I->requestCustomerLogin($this->fixtures->getCustomerTransferWithLabel());
+        $url = $I->buildWishlistUrl(
+            $this->fixtures->getWishlistTransferWithLabel()->getUuid(),
+            [
+                WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
+                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            ]
+        );
+
+        // Act
+        $I->sendGET($url);
+
+        // Assert
+        $I->assertResponse(HttpCode::OK);
+
+        $I->amSureSeeIncludedResourceByTypeAndIdHasRelationshipByTypeAndId(
             ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
             $productConcreteSku,
             ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
@@ -174,7 +256,7 @@ class WishlistRestApiCest
                 $idProductLabel
             );
 
-        $I->amSureIncludesContainsResourceByTypeAndId(
+        $I->amSureSeeIncludesContainsResourceByTypeAndId(
             ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
             $idProductLabel
         )
@@ -184,7 +266,7 @@ class WishlistRestApiCest
                 $idProductLabel
             );
 
-        $I->amSureIncludedResourceByTypeAndIdHasSelfLink(
+        $I->amSureSeeIncludedResourceByTypeAndIdHasSelfLink(
             ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
             $idProductLabel
         )
@@ -203,12 +285,18 @@ class WishlistRestApiCest
      *
      * @return void
      */
-    public function requestWishlistItemsWithoutProductLabelRelationship(WishlistsApiTester $I): void
+    public function requestWishlistByUuidWithoutProductLabelsRelationship(WishlistsApiTester $I): void
     {
         // Arrange
-        $wishlistUuid = $this->fixtures->getWishlistTransfer()->getUuid();
         $I->requestCustomerLogin($this->fixtures->getCustomerTransfer());
-        $url = $I->buildWishlistUrl($wishlistUuid, static::INCLUDE_RESOURCES);
+        $url = $I->buildWishlistUrl(
+            $this->fixtures->getWishlistTransfer()->getUuid(),
+            [
+                WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
+                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            ]
+        );
 
         // Act
         $I->sendGET($url);
@@ -216,9 +304,9 @@ class WishlistRestApiCest
         // Assert
         $I->assertResponse(HttpCode::OK);
 
-        $I->dontSeeResponseMatchesJsonPath(
-            sprintf('$.included[?(@.type == %s$s)]', ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS)
-        );
+        $I->amSureDontSeeIncludesContainsResourcesOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS)
+            ->whenI()
+            ->dontSeeIncludesContainsResourcesOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS);
     }
 
     /**
@@ -228,18 +316,17 @@ class WishlistRestApiCest
      *
      * @return void
      */
-    public function requestgWishlistByNotExistingWishlistUuid(WishlistsApiTester $I): void
+    public function requestWishlistByNotExistingWishlistUuid(WishlistsApiTester $I): void
     {
         // Arrange
         $I->requestCustomerLogin($this->fixtures->getCustomerTransfer());
-        $url = $I->buildWishlistUrl('NotExistingUuid');
 
         // Act
-        $I->sendGET($url);
+        $I->sendGET($I->buildWishlistUrl('NotExistingUuid'));
 
         // Assert
         $I->assertResponse(HttpCode::NOT_FOUND);
-        $I->seeResponseDataContainsEmptyCollection();
+        $I->seeResponseIsJson();
     }
 
     /**
@@ -249,12 +336,18 @@ class WishlistRestApiCest
      *
      * @return void
      */
-    public function requestWishlistItemsWithProductLabelRelationshipByPost(WishlistsApiTester $I): void
+    public function requestWishlistByUuidWithProductLabelsRelationshipByPost(WishlistsApiTester $I): void
     {
         // Arrange
-        $wishlistUuid = $this->fixtures->getWishlistTransferWithLabel()->getUuid();
-        $I->requestCustomerLogin($this->fixtures->getCustomerTransfer());
-        $url = $I->buildWishlistUrl($wishlistUuid, static::INCLUDE_RESOURCES);
+        $I->requestCustomerLogin($this->fixtures->getCustomerTransferWithLabel());
+        $url = $I->buildWishlistUrl(
+            $this->fixtures->getWishlistTransferWithLabel()->getUuid(),
+            [
+                WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
+                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            ]
+        );
 
         // Act
         $I->sendPOST($url);
@@ -271,12 +364,18 @@ class WishlistRestApiCest
      *
      * @return void
      */
-    public function requestWishlistItemsWithProductLabelRelationshipByPatch(WishlistsApiTester $I): void
+    public function requestWishlistByUuidWithProductLabelsRelationshipByPatch(WishlistsApiTester $I): void
     {
         // Arrange
-        $wishlistUuid = $this->fixtures->getWishlistTransferWithLabel()->getUuid();
-        $I->requestCustomerLogin($this->fixtures->getCustomerTransfer());
-        $url = $I->buildWishlistUrl($wishlistUuid, static::INCLUDE_RESOURCES);
+        $I->requestCustomerLogin($this->fixtures->getCustomerTransferWithLabel());
+        $url = $I->buildWishlistUrl(
+            $this->fixtures->getWishlistTransferWithLabel()->getUuid(),
+            [
+                WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
+                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            ]
+        );
 
         // Act
         $I->sendPATCH($url);

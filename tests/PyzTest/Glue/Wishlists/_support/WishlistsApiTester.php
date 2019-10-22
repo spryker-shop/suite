@@ -8,6 +8,10 @@
 namespace PyzTest\Glue\Wishlists;
 
 use Generated\Shared\Transfer\CustomerTransfer;
+use Spryker\Glue\GlueApplication\Rest\RequestConstantsInterface;
+use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
+use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
+use Spryker\Glue\WishlistsRestApi\WishlistsRestApiConfig;
 use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
 
 /**
@@ -30,10 +34,6 @@ class WishlistsApiTester extends ApiEndToEndTester
 {
     use _generated\WishlistsApiTesterActions;
 
-   /**
-    * Define custom actions here
-    */
-
     /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
@@ -44,5 +44,85 @@ class WishlistsApiTester extends ApiEndToEndTester
         $token = $this->haveAuth($customerTransfer)
             ->getAccessToken();
         $this->amBearerAuthenticated($token);
+    }
+
+    /**
+     * @param string[] $includes
+     *
+     * @return string
+     */
+    public function formatQueryInclude(array $includes = []): string
+    {
+        if (!$includes) {
+            return '';
+        }
+
+        return '?' . RequestConstantsInterface::QUERY_INCLUDE . '=' . implode(',', $includes);
+    }
+
+    /**
+     * @param string $productConcreteSku
+     * @param string[] $includes
+     *
+     * @return string
+     */
+    public function buildProductConcreteUrl(string $productConcreteSku, array $includes = []): string
+    {
+        return $this->formatFullUrl(
+            '{resourceConcreteProducts}/{productConcreteSku}' . $this->formatQueryInclude($includes),
+            [
+                'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                'productConcreteSku' => $productConcreteSku,
+            ]
+        );
+    }
+
+    /**
+     * @param int $idProductLabel
+     * @param string[] $includes
+     *
+     * @return string
+     */
+    public function buildProductLabelUrl(int $idProductLabel, array $includes = []): string
+    {
+        return $this->formatFullUrl(
+            '{resourceProductLabels}/{idProductLabel}' . $this->formatQueryInclude($includes),
+            [
+                'resourceProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+                'idProductLabel' => $idProductLabel,
+            ]
+        );
+    }
+
+    /**
+     * @param string $wishlistUuid
+     * @param string[] $includes
+     *
+     * @return string
+     */
+    public function buildWishlistUrl(string $wishlistUuid, array $includes = []): string
+    {
+        return $this->formatFullUrl(
+            '{resourceWishlists}/{wishlistUuid}' . $this->formatQueryInclude($includes),
+            [
+                'resourceWishlists' => WishlistsRestApiConfig::RESOURCE_WISHLISTS,
+                'wishlistUuid' => $wishlistUuid,
+            ]
+        );
+    }
+
+    /**
+     * @param string[] $includes
+     *
+     * @return string
+     */
+    public function buildWishlistsUrl(array $includes = []): string
+    {
+        return $this->formatFullUrl(
+            '{resourceWishlists}' . $this->formatQueryInclude($includes),
+            [
+                'resourceWishlists' => WishlistsRestApiConfig::RESOURCE_WISHLISTS,
+            ]
+        );
     }
 }

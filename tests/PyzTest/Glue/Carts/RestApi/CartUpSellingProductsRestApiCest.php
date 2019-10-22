@@ -26,11 +26,6 @@ use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
  */
 class CartUpSellingProductsRestApiCest
 {
-    protected const INCLUDE_RESOURCES = [
-        ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-        ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-    ];
-
     /**
      * @var \PyzTest\Glue\Carts\RestApi\Fixtures\CartUpSellingProductsRestApiFixtures
      */
@@ -53,16 +48,51 @@ class CartUpSellingProductsRestApiCest
      *
      * @return void
      */
-    public function requestCartUpSellingProductsWithProductLabelRelationship(CartsApiTester $I): void
+    public function requestCartUpSellingProducts(CartsApiTester $I): void
     {
         // Arrange
-        $quoteUuid = $this->fixtures->getQuoteTransferWithLabel()->getUuid();
-        $productConcreteTransfer = $this->fixtures->getProductConcreteTransferWithLabel();
+        $quoteTransfer = $this->fixtures->getQuoteTransfer();
+        $productAbstractSku = $this->fixtures->getProductConcreteTransfer()->getAbstractSku();
+        $I->requestCustomerLogin($quoteTransfer->getCustomer());
+
+        // Act
+        $I->sendGET($I->buildCartUpSellingProductsUrl($quoteTransfer->getUuid()));
+
+        // Assert
+        $I->assertResponse(HttpCode::OK);
+
+        $I->amSureSeeResponseDataContainsResourceCollectionOfType(ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS)
+            ->whenI()
+            ->seeResponseDataContainsResourceCollectionOfType(ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS);
+
+        $I->amSureSeeResourceCollectionHasResourceWithId($productAbstractSku)
+            ->whenI()
+            ->seeResourceCollectionHasResourceWithId($productAbstractSku);
+
+        $I->amSureSeeResourceByIdHasSelfLink($productAbstractSku)
+            ->whenI()
+            ->seeResourceByIdHasSelfLink(
+                $productAbstractSku,
+                $I->buildProductAbstractUrl($productAbstractSku)
+            );
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    public function requestCartUpSellingProductsWithProductConcreteRelationship(CartsApiTester $I): void
+    {
+        // Arrange
+        $quoteTransfer = $this->fixtures->getQuoteTransfer();
+        $productConcreteTransfer = $this->fixtures->getProductConcreteTransfer();
         $productAbstractSku = $productConcreteTransfer->getAbstractSku();
         $productConcreteSku = $productConcreteTransfer->getSku();
-        $idProductLabel = $this->fixtures->getProductLabelTransfer()->getIdProductLabel();
-        $I->requestCustomerLogin($this->fixtures->getCustomerTransferWithLabel());
-        $url = $I->buildCartUpSellingProductsUrl($quoteUuid, static::INCLUDE_RESOURCES);
+        $url = $I->buildCartUpSellingProductsUrl($quoteTransfer->getUuid(), [ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS]);
+        $I->requestCustomerLogin($quoteTransfer->getCustomer());
 
         // Act
         $I->sendGET($url);
@@ -70,22 +100,7 @@ class CartUpSellingProductsRestApiCest
         // Assert
         $I->assertResponse(HttpCode::OK);
 
-        $I->amSureResponseDataContainsResourceCollectionOfType(ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS)
-            ->whenI()
-            ->seeResponseDataContainsResourceCollectionOfType(ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS);
-
-        $I->amSureResourceCollectionHasResourceWithId($productAbstractSku)
-            ->whenI()
-            ->seeResourceCollectionHasResourceWithId($productAbstractSku);
-
-        $I->amSureResourceByIdHasSelfLink($productAbstractSku)
-            ->whenI()
-            ->seeResourceByIdHasSelfLink(
-                $productAbstractSku,
-                $I->buildProductAbstractUrl($productAbstractSku)
-            );
-
-        $I->amSureResourceByIdHasRelationshipByTypeAndId(
+        $I->amSureSeeResourceByIdHasRelationshipByTypeAndId(
             $productAbstractSku,
             ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
             $productConcreteSku
@@ -97,19 +112,7 @@ class CartUpSellingProductsRestApiCest
                 $productConcreteSku
             );
 
-        $I->amSureResourceByIdHasRelationshipByTypeAndId(
-            $productAbstractSku,
-            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            $idProductLabel
-        )
-            ->whenI()
-            ->seeResourceByIdHasRelationshipByTypeAndId(
-                $productAbstractSku,
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                $idProductLabel
-            );
-
-        $I->amSureIncludesContainsResourceByTypeAndId(
+        $I->amSureSeeIncludesContainsResourceByTypeAndId(
             ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
             $productConcreteSku
         )
@@ -119,17 +122,47 @@ class CartUpSellingProductsRestApiCest
                 $productConcreteSku
             );
 
-        $I->amSureIncludesContainsResourceByTypeAndId(
-            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            $idProductLabel
+        $I->amSureSeeIncludedResourceByTypeAndIdHasSelfLink(
+            ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+            $productConcreteSku
         )
             ->whenI()
-            ->seeIncludesContainsResourceByTypeAndId(
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                $idProductLabel
+            ->seeIncludedResourceByTypeAndIdHasSelfLink(
+                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                $productConcreteSku,
+                $I->buildProductConcreteUrl($productConcreteSku)
             );
+    }
 
-        $I->amSureIncludedResourceByTypeAndIdHasRelationshipByTypeAndId(
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    public function requestCartUpSellingProductsWithProductLabelsRelationship(CartsApiTester $I): void
+    {
+        // Arrange
+        $quoteTransfer = $this->fixtures->getQuoteTransferWithLabel();
+        $productConcreteSku = $this->fixtures->getProductConcreteTransferWithLabel()->getSku();
+        $idProductLabel = $this->fixtures->getProductLabelTransfer()->getIdProductLabel();
+        $url = $I->buildCartUpSellingProductsUrl(
+            $quoteTransfer->getUuid(),
+            [
+                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            ]
+        );
+        $I->requestCustomerLogin($quoteTransfer->getCustomer());
+
+        // Act
+        $I->sendGET($url);
+
+        // Assert
+        $I->assertResponse(HttpCode::OK);
+
+        $I->amSureSeeIncludedResourceByTypeAndIdHasRelationshipByTypeAndId(
             ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
             $productConcreteSku,
             ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
@@ -142,6 +175,27 @@ class CartUpSellingProductsRestApiCest
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
                 $idProductLabel
             );
+
+        $I->amSureSeeIncludesContainsResourceByTypeAndId(
+            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            $idProductLabel
+        )
+            ->whenI()
+            ->seeIncludesContainsResourceByTypeAndId(
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+                $idProductLabel
+            );
+
+        $I->amSureSeeIncludedResourceByTypeAndIdHasSelfLink(
+            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            $idProductLabel
+        )
+            ->whenI()
+            ->seeIncludedResourceByTypeAndIdHasSelfLink(
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+                $idProductLabel,
+                $I->buildProductLabelUrl($idProductLabel)
+            );
     }
 
     /**
@@ -151,21 +205,28 @@ class CartUpSellingProductsRestApiCest
      *
      * @return void
      */
-    public function requestCartUpSellingProductsWithoutProductLabelRelationship(CartsApiTester $I): void
+    public function requestCartUpSellingProductsWithoutProductLabelsRelationship(CartsApiTester $I): void
     {
         // Arrange
-        $quoteUuid = $this->fixtures->getQuoteTransfer()->getUuid();
-        $I->requestCustomerLogin($this->fixtures->getCustomerTransfer());
-        $url = $I->buildCartUpSellingProductsUrl($quoteUuid, static::INCLUDE_RESOURCES);
+        $quoteTransfer = $this->fixtures->getQuoteTransfer();
+        $url = $I->buildCartUpSellingProductsUrl(
+            $quoteTransfer->getUuid(),
+            [
+                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            ]
+        );
+        $I->requestCustomerLogin($quoteTransfer->getCustomer());
 
         // Act
         $I->sendGET($url);
 
         // Assert
         $I->assertResponse(HttpCode::OK);
-        $I->dontSeeResponseMatchesJsonPath(
-            sprintf('$.included[?(@.type == %s$s)]', ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS)
-        );
+
+        $I->amSureDontSeeIncludesContainsResourcesOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS)
+            ->whenI()
+            ->dontSeeIncludesContainsResourcesOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS);
     }
 
     /**
@@ -178,15 +239,14 @@ class CartUpSellingProductsRestApiCest
     public function requestCartUpSellingProductsByNotExistingCartUuid(CartsApiTester $I): void
     {
         // Arrange
-        $I->requestCustomerLogin($this->fixtures->getCustomerTransfer());
-        $url = $I->buildCartUpSellingProductsUrl('NotExistingUuid');
+        $I->requestCustomerLogin($this->fixtures->getQuoteTransfer()->getCustomer());
 
         // Act
-        $I->sendGET($url);
+        $I->sendGET($I->buildCartUpSellingProductsUrl('NotExistingUuid'));
 
         // Assert
         $I->assertResponse(HttpCode::NOT_FOUND);
-        $I->seeResponseDataContainsEmptyCollection();
+        $I->seeResponseIsJson();
     }
 
     /**
@@ -196,12 +256,18 @@ class CartUpSellingProductsRestApiCest
      *
      * @return void
      */
-    public function requestCartUpSellingProductsWithProductLabelRelationshipByPost(CartsApiTester $I): void
+    public function requestCartUpSellingProductsWithProductLabelsRelationshipByPost(CartsApiTester $I): void
     {
         // Arrange
-        $quoteUuid = $this->fixtures->getQuoteTransferWithLabel()->getUuid();
-        $I->requestCustomerLogin($this->fixtures->getCustomerTransferWithLabel());
-        $url = $I->buildCartUpSellingProductsUrl($quoteUuid, static::INCLUDE_RESOURCES);
+        $quoteTransfer = $this->fixtures->getQuoteTransferWithLabel();
+        $url = $I->buildCartUpSellingProductsUrl(
+            $quoteTransfer->getUuid(),
+            [
+                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            ]
+        );
+        $I->requestCustomerLogin($quoteTransfer->getCustomer());
 
         // Act
         $I->sendPOST($url);
@@ -218,12 +284,18 @@ class CartUpSellingProductsRestApiCest
      *
      * @return void
      */
-    public function requestCartUpSellingProductsLabelRelationshipByPatch(CartsApiTester $I): void
+    public function requestCartUpSellingProductsWithProductLabelsRelationshipByPatch(CartsApiTester $I): void
     {
         // Arrange
-        $quoteUuid = $this->fixtures->getQuoteTransferWithLabel()->getUuid();
-        $I->requestCustomerLogin($this->fixtures->getCustomerTransferWithLabel());
-        $url = $I->buildCartUpSellingProductsUrl($quoteUuid, static::INCLUDE_RESOURCES);
+        $quoteTransfer = $this->fixtures->getQuoteTransferWithLabel();
+        $url = $I->buildCartUpSellingProductsUrl(
+            $quoteTransfer->getUuid(),
+            [
+                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            ]
+        );
+        $I->requestCustomerLogin($quoteTransfer->getCustomer());
 
         // Act
         $I->sendPATCH($url);
@@ -240,12 +312,18 @@ class CartUpSellingProductsRestApiCest
      *
      * @return void
      */
-    public function requestCartUpSellingProductsLabelRelationshipByDelete(CartsApiTester $I): void
+    public function requestCartUpSellingProductsWithProductLabelsRelationshipByDelete(CartsApiTester $I): void
     {
         // Arrange
-        $quoteUuid = $this->fixtures->getQuoteTransferWithLabel()->getUuid();
-        $I->requestCustomerLogin($this->fixtures->getCustomerTransferWithLabel());
-        $url = $I->buildCartUpSellingProductsUrl($quoteUuid, static::INCLUDE_RESOURCES);
+        $quoteTransfer = $this->fixtures->getQuoteTransferWithLabel();
+        $url = $I->buildCartUpSellingProductsUrl(
+            $quoteTransfer->getUuid(),
+            [
+                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            ]
+        );
+        $I->requestCustomerLogin($quoteTransfer->getCustomer());
 
         // Act
         $I->sendDELETE($url);

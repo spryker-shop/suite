@@ -10,6 +10,7 @@ namespace PyzTest\Glue\Products\RestApi\Fixtures;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\ProductLabelTransfer;
 use PyzTest\Glue\Products\ProductsApiTester;
+use Spryker\Shared\ProductRelation\ProductRelationTypes;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
@@ -26,8 +27,6 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  */
 class RelatedProductsRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    use ProductsRestApiFixturesTrait;
-
     /**
      * @var \Generated\Shared\Transfer\ProductConcreteTransfer
      */
@@ -74,15 +73,54 @@ class RelatedProductsRestApiFixtures implements FixturesBuilderInterface, Fixtur
      */
     public function buildFixtures(ProductsApiTester $I): FixturesContainerInterface
     {
-        $this->productConcreteTransfer = $I->haveFullProduct();
-        $this->productConcreteTransferWithLabel = $I->haveFullProduct();
-
-        $this->productLabelTransfer = $I->haveProductLabel();
-        $this->assignLabelToProduct($I, $this->productLabelTransfer, $this->productConcreteTransferWithLabel);
-
-        $this->assignProductRelated($I, $this->productConcreteTransfer, $this->productConcreteTransferWithLabel);
-        $this->assignProductRelated($I, $this->productConcreteTransferWithLabel, $this->productConcreteTransfer);
+        $this->createProductConcrete($I);
+        $this->createProductConcreteWithProductLabelRelationship($I);
+        $this->createRelationBetweenProducts($I);
 
         return $this;
+    }
+
+    /**
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     *
+     * @return void
+     */
+    protected function createProductConcrete(ProductsApiTester $I): void
+    {
+        $this->productConcreteTransfer = $I->haveFullProduct();
+    }
+
+    /**
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     *
+     * @return void
+     */
+    protected function createProductConcreteWithProductLabelRelationship(ProductsApiTester $I): void
+    {
+        $this->productConcreteTransferWithLabel = $I->haveFullProduct();
+        $this->productLabelTransfer = $I->haveProductLabel();
+        $I->haveProductLabelToAbstractProductRelation(
+            $this->productLabelTransfer->getIdProductLabel(),
+            $this->productConcreteTransferWithLabel->getFkProductAbstract()
+        );
+    }
+
+    /**
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     *
+     * @return void
+     */
+    protected function createRelationBetweenProducts(ProductsApiTester $I): void
+    {
+        $I->haveProductRelation(
+            $this->productConcreteTransferWithLabel->getAbstractSku(),
+            $this->productConcreteTransfer->getFkProductAbstract(),
+            ProductRelationTypes::TYPE_RELATED_PRODUCTS
+        );
+        $I->haveProductRelation(
+            $this->productConcreteTransfer->getAbstractSku(),
+            $this->productConcreteTransferWithLabel->getFkProductAbstract(),
+            ProductRelationTypes::TYPE_RELATED_PRODUCTS
+        );
     }
 }

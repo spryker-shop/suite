@@ -91,13 +91,27 @@ class ConvertGuestCartToCustomerCartRestApiFixtures implements FixturesBuilderIn
      */
     public function buildFixtures(CartsApiTester $I): FixturesContainerInterface
     {
-        $this->productConcreteTransfer = $I->haveFullProduct();
-        $this->customerTransfer = $this->createCustomer($I, static::TEST_USERNAME, static::TEST_PASSWORD);
-        $this->valueForGuestCustomerReference = $this->createValueForGuestCustomerReference();
-        $guestCustomerTransfer = (new CustomerTransfer())
-            ->setCustomerReference($I::ANONYMOUS_PREFIX . $this->valueForGuestCustomerReference);
-        $this->guestQuoteTransfer = $this->createQuote($I, $guestCustomerTransfer, [$this->productConcreteTransfer]);
+        $this->createGuestQuote($I);
+        $this->customerTransfer = $I->haveCustomer([
+            CustomerTransfer::USERNAME => static::TEST_USERNAME,
+            CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
+            CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,
+        ]);
 
         return $this;
+    }
+
+    /**
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    protected function createGuestQuote(CartsApiTester $I): void
+    {
+        $this->productConcreteTransfer = $I->haveFullProduct();
+        $this->valueForGuestCustomerReference = $this->createGuestCustomerReference();
+        $guestCustomerTransfer = (new CustomerTransfer())
+            ->setCustomerReference($I::ANONYMOUS_PREFIX . $this->valueForGuestCustomerReference);
+        $this->guestQuoteTransfer = $this->createPersistentQuote($I, $guestCustomerTransfer, [$this->productConcreteTransfer]);
     }
 }

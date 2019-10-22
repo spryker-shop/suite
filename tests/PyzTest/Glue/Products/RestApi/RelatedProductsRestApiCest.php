@@ -26,10 +26,6 @@ use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
  */
 class RelatedProductsRestApiCest
 {
-    protected const INCLUDE_RESOURCES = [
-        ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-    ];
-
     /**
      * @var \PyzTest\Glue\Products\RestApi\Fixtures\RelatedProductsRestApiFixtures
      */
@@ -52,13 +48,11 @@ class RelatedProductsRestApiCest
      *
      * @return void
      */
-    public function requestRelatedProductsWithProductLabelRelationship(ProductsApiTester $I): void
+    public function requestRelatedProducts(ProductsApiTester $I): void
     {
         // Arrange
         $productAbstractSku = $this->fixtures->getProductConcreteTransfer()->getAbstractSku();
-        $productAbstractSkuWithLabel = $this->fixtures->getProductConcreteTransferWithLabel()->getAbstractSku();
-        $idProductLabel = $this->fixtures->getProductLabelTransfer()->getIdProductLabel();
-        $url = $I->buildRelatedProductsUrl($productAbstractSku, static::INCLUDE_RESOURCES);
+        $url = $I->buildRelatedProductsUrl($this->fixtures->getProductConcreteTransferWithLabel()->getAbstractSku());
 
         // Act
         $I->sendGET($url);
@@ -66,31 +60,57 @@ class RelatedProductsRestApiCest
         // Assert
         $I->assertResponse(HttpCode::OK);
 
-        $I->amSureResponseDataContainsResourceCollectionOfType(ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS)
+        $I->amSureSeeResponseDataContainsResourceCollectionOfType(ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS)
             ->whenI()
             ->seeResponseDataContainsResourceCollectionOfType(ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS);
 
-        $I->amSureResourceCollectionHasResourceWithId($productAbstractSkuWithLabel)
+        $I->amSureSeeResourceCollectionHasResourceWithId($productAbstractSku)
             ->whenI()
-            ->seeResourceCollectionHasResourceWithId($productAbstractSkuWithLabel);
+            ->seeResourceCollectionHasResourceWithId($productAbstractSku);
 
-        $I->amSureResourceByIdHasSelfLink($productAbstractSkuWithLabel)
+        $I->amSureSeeResourceByIdHasSelfLink($productAbstractSku)
             ->whenI()
-            ->seeResourceByIdHasSelfLink($productAbstractSkuWithLabel, $I->buildProductAbstractUrl($productAbstractSkuWithLabel));
+            ->seeResourceByIdHasSelfLink($productAbstractSku, $I->buildProductAbstractUrl($productAbstractSku));
+    }
 
-        $I->amSureResourceByIdHasRelationshipByTypeAndId(
-            $productAbstractSkuWithLabel,
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     *
+     * @return void
+     */
+    public function requestRelatedProductsWithProductLabelsRelationship(ProductsApiTester $I): void
+    {
+        // Arrange
+        $productAbstractSku = $this->fixtures->getProductConcreteTransferWithLabel()->getAbstractSku();
+        $idProductLabel = $this->fixtures->getProductLabelTransfer()->getIdProductLabel();
+        $url = $I->buildRelatedProductsUrl(
+            $this->fixtures->getProductConcreteTransfer()->getAbstractSku(),
+            [
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            ]
+        );
+
+        // Act
+        $I->sendGET($url);
+
+        // Assert
+        $I->assertResponse(HttpCode::OK);
+
+        $I->amSureSeeResourceByIdHasRelationshipByTypeAndId(
+            $productAbstractSku,
             ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
             $idProductLabel
         )
             ->whenI()
             ->seeResourceByIdHasRelationshipByTypeAndId(
-                $productAbstractSkuWithLabel,
+                $productAbstractSku,
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
                 $idProductLabel
             );
 
-        $I->amSureIncludesContainsResourceByTypeAndId(
+        $I->amSureSeeIncludesContainsResourceByTypeAndId(
             ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
             $idProductLabel
         )
@@ -100,7 +120,7 @@ class RelatedProductsRestApiCest
                 $idProductLabel
             );
 
-        $I->amSureIncludedResourceByTypeAndIdHasSelfLink(
+        $I->amSureSeeIncludedResourceByTypeAndIdHasSelfLink(
             ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
             $idProductLabel
         )
@@ -122,8 +142,12 @@ class RelatedProductsRestApiCest
     public function requestRelatedProductsWithoutProductLabelRelationship(ProductsApiTester $I): void
     {
         // Arrange
-        $productAbstractSku = $this->fixtures->getProductConcreteTransferWithLabel()->getAbstractSku();
-        $url = $I->buildRelatedProductsUrl($productAbstractSku, static::INCLUDE_RESOURCES);
+        $url = $I->buildRelatedProductsUrl(
+            $this->fixtures->getProductConcreteTransferWithLabel()->getAbstractSku(),
+            [
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            ]
+        );
 
         // Act
         $I->sendGET($url);
@@ -131,9 +155,9 @@ class RelatedProductsRestApiCest
         // Assert
         $I->assertResponse(HttpCode::OK);
 
-        $I->dontSeeResponseMatchesJsonPath(
-            sprintf('$.included[?(@.type == %s$s)]', ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS)
-        );
+        $I->amSureDontSeeIncludesContainsResourcesOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS)
+            ->whenI()
+            ->dontSeeIncludesContainsResourcesOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS);
     }
 
     /**
@@ -145,15 +169,12 @@ class RelatedProductsRestApiCest
      */
     public function requestRelatedProductsByNotExistingProductAbstractSku(ProductsApiTester $I): void
     {
-        // Arrange
-        $url = $I->buildRelatedProductsUrl('NotExistingSku');
-
         // Act
-        $I->sendGET($url);
+        $I->sendGET($I->buildRelatedProductsUrl('NotExistingSku'));
 
         // Assert
         $I->assertResponse(HttpCode::NOT_FOUND);
-        $I->seeResponseDataContainsEmptyCollection();
+        $I->seeResponseIsJson();
     }
 
     /**
@@ -163,11 +184,15 @@ class RelatedProductsRestApiCest
      *
      * @return void
      */
-    public function requestExistingProductRelatedWithProductLabelRelationshipByPost(ProductsApiTester $I): void
+    public function requestProductRelatedWithProductLabelsRelationshipByPost(ProductsApiTester $I): void
     {
         // Arrange
-        $productAbstractSku = $this->fixtures->getProductConcreteTransfer()->getAbstractSku();
-        $url = $I->buildRelatedProductsUrl($productAbstractSku, static::INCLUDE_RESOURCES);
+        $url = $I->buildRelatedProductsUrl(
+            $this->fixtures->getProductConcreteTransfer()->getAbstractSku(),
+            [
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            ]
+        );
 
         // Act
         $I->sendPOST($url);
@@ -187,8 +212,12 @@ class RelatedProductsRestApiCest
     public function requestExistingProductRelatedWithProductLabelRelationshipByPatch(ProductsApiTester $I): void
     {
         // Arrange
-        $productAbstractSku = $this->fixtures->getProductConcreteTransfer()->getAbstractSku();
-        $url = $I->buildRelatedProductsUrl($productAbstractSku, static::INCLUDE_RESOURCES);
+        $url = $I->buildRelatedProductsUrl(
+            $this->fixtures->getProductConcreteTransfer()->getAbstractSku(),
+            [
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            ]
+        );
 
         // Act
         $I->sendPATCH($url);
@@ -208,8 +237,12 @@ class RelatedProductsRestApiCest
     public function requestExistingProductRelatedWithProductLabelRelationshipByDelete(ProductsApiTester $I): void
     {
         // Arrange
-        $productAbstractSku = $this->fixtures->getProductConcreteTransfer()->getAbstractSku();
-        $url = $I->buildRelatedProductsUrl($productAbstractSku, static::INCLUDE_RESOURCES);
+        $url = $I->buildRelatedProductsUrl(
+            $this->fixtures->getProductConcreteTransfer()->getAbstractSku(),
+            [
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            ]
+        );
 
         // Act
         $I->sendDELETE($url);

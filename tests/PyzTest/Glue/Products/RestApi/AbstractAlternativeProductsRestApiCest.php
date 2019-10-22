@@ -26,10 +26,6 @@ use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
  */
 class AbstractAlternativeProductsRestApiCest
 {
-    protected const INCLUDE_RESOURCES = [
-        ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-    ];
-
     /**
      * @var \PyzTest\Glue\Products\RestApi\Fixtures\AbstractAlternativeProductsRestApiFixtures
      */
@@ -52,13 +48,13 @@ class AbstractAlternativeProductsRestApiCest
      *
      * @return void
      */
-    public function requestAbstractAlternativeProductsWithProductLabelRelationship(ProductsApiTester $I): void
+    public function requestAbstractAlternativeProducts(ProductsApiTester $I): void
     {
         // Arrange
-        $productConcreteSku = $this->fixtures->getProductConcreteTransfer()->getSku();
-        $productAbstractSku = $this->fixtures->getProductConcreteTransferWithLabel()->getAbstractSku();
-        $idProductLabel = $this->fixtures->getProductLabelTransfer()->getIdProductLabel();
-        $url = $I->buildAbstractAlternativeProductsUrl($productConcreteSku, static::INCLUDE_RESOURCES);
+        $productAbstractSku = $this->fixtures->getProductConcreteTransfer()->getAbstractSku();
+        $url = $I->buildAbstractAlternativeProductsUrl(
+            $this->fixtures->getProductConcreteTransferWithLabel()->getSku()
+        );
 
         // Act
         $I->sendGET($url);
@@ -66,19 +62,45 @@ class AbstractAlternativeProductsRestApiCest
         // Assert
         $I->assertResponse(HttpCode::OK);
 
-        $I->amSureResponseDataContainsResourceCollectionOfType(ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS)
+        $I->amSureSeeResponseDataContainsResourceCollectionOfType(ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS)
             ->whenI()
             ->seeResponseDataContainsResourceCollectionOfType(ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS);
 
-        $I->amSureResourceCollectionHasResourceWithId($productAbstractSku)
+        $I->amSureSeeResourceCollectionHasResourceWithId($productAbstractSku)
             ->whenI()
             ->seeResourceCollectionHasResourceWithId($productAbstractSku);
 
-        $I->amSureResourceByIdHasSelfLink($productAbstractSku)
+        $I->amSureSeeResourceByIdHasSelfLink($productAbstractSku)
             ->whenI()
             ->seeResourceByIdHasSelfLink($productAbstractSku, $I->buildProductAbstractUrl($productAbstractSku));
+    }
 
-        $I->amSureResourceByIdHasRelationshipByTypeAndId(
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     *
+     * @return void
+     */
+    public function requestAbstractAlternativeProductsWithProductLabelsRelationship(ProductsApiTester $I): void
+    {
+        // Arrange
+        $productAbstractSku = $this->fixtures->getProductConcreteTransferWithLabel()->getAbstractSku();
+        $idProductLabel = $this->fixtures->getProductLabelTransfer()->getIdProductLabel();
+        $url = $I->buildAbstractAlternativeProductsUrl(
+            $this->fixtures->getProductConcreteTransfer()->getSku(),
+            [
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            ]
+        );
+
+        // Act
+        $I->sendGET($url);
+
+        // Assert
+        $I->assertResponse(HttpCode::OK);
+
+        $I->amSureSeeResourceByIdHasRelationshipByTypeAndId(
             $productAbstractSku,
             ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
             $idProductLabel
@@ -90,7 +112,7 @@ class AbstractAlternativeProductsRestApiCest
                 $idProductLabel
             );
 
-        $I->amSureIncludesContainsResourceByTypeAndId(
+        $I->amSureSeeIncludesContainsResourceByTypeAndId(
             ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
             $idProductLabel
         )
@@ -100,7 +122,7 @@ class AbstractAlternativeProductsRestApiCest
                 $idProductLabel
             );
 
-        $I->amSureIncludedResourceByTypeAndIdHasSelfLink(
+        $I->amSureSeeIncludedResourceByTypeAndIdHasSelfLink(
             ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
             $idProductLabel
         )
@@ -119,11 +141,15 @@ class AbstractAlternativeProductsRestApiCest
      *
      * @return void
      */
-    public function requestAbstractAlternativeProductsWithoutProductLabelRelationship(ProductsApiTester $I): void
+    public function requestAbstractAlternativeProductsWithoutProductLabelsRelationship(ProductsApiTester $I): void
     {
         // Arrange
-        $productConcreteSku = $this->fixtures->getProductConcreteTransferWithLabel()->getSku();
-        $url = $I->buildAbstractAlternativeProductsUrl($productConcreteSku, static::INCLUDE_RESOURCES);
+        $url = $I->buildAbstractAlternativeProductsUrl(
+            $this->fixtures->getProductConcreteTransferWithLabel()->getSku(),
+            [
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            ]
+        );
 
         // Act
         $I->sendGET($url);
@@ -131,9 +157,9 @@ class AbstractAlternativeProductsRestApiCest
         // Assert
         $I->assertResponse(HttpCode::OK);
 
-        $I->dontSeeResponseMatchesJsonPath(
-            sprintf('$.included[?(@.type == %s$s)]', ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS)
-        );
+        $I->amSureDontSeeIncludesContainsResourcesOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS)
+            ->whenI()
+            ->dontSeeIncludesContainsResourcesOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS);
     }
 
     /**
@@ -145,15 +171,12 @@ class AbstractAlternativeProductsRestApiCest
      */
     public function requestAbstractAlternativeProductsByNotExistingProductConcreteSku(ProductsApiTester $I): void
     {
-        // Arrange
-        $url = $I->buildAbstractAlternativeProductsUrl('NotExistingSku');
-
         // Act
-        $I->sendGET($url);
+        $I->sendGET($I->buildAbstractAlternativeProductsUrl('NotExistingSku'));
 
         // Assert
         $I->assertResponse(HttpCode::NOT_FOUND);
-        $I->seeResponseDataContainsEmptyCollection();
+        $I->seeResponseIsJson();
     }
 
     /**
@@ -163,11 +186,15 @@ class AbstractAlternativeProductsRestApiCest
      *
      * @return void
      */
-    public function requestExistingAbstractAlternativeProductsWithProductLabelRelationshipByPost(ProductsApiTester $I): void
+    public function requestAbstractAlternativeProductsWithProductLabelsRelationshipByPost(ProductsApiTester $I): void
     {
         // Arrange
-        $productConcreteSku = $this->fixtures->getProductConcreteTransfer()->getSku();
-        $url = $I->buildAbstractAlternativeProductsUrl($productConcreteSku, static::INCLUDE_RESOURCES);
+        $url = $I->buildAbstractAlternativeProductsUrl(
+            $this->fixtures->getProductConcreteTransfer()->getSku(),
+            [
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            ]
+        );
 
         // Act
         $I->sendPOST($url);
@@ -184,11 +211,15 @@ class AbstractAlternativeProductsRestApiCest
      *
      * @return void
      */
-    public function requestExistingAbstractAlternativeProductsWithProductLabelRelationshipByPatch(ProductsApiTester $I): void
+    public function requestAbstractAlternativeProductsWithProductLabelsRelationshipByPatch(ProductsApiTester $I): void
     {
         // Arrange
-        $productConcreteSku = $this->fixtures->getProductConcreteTransfer()->getSku();
-        $url = $I->buildAbstractAlternativeProductsUrl($productConcreteSku, static::INCLUDE_RESOURCES);
+        $url = $I->buildAbstractAlternativeProductsUrl(
+            $this->fixtures->getProductConcreteTransfer()->getSku(),
+            [
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            ]
+        );
 
         // Act
         $I->sendPATCH($url);
@@ -205,11 +236,15 @@ class AbstractAlternativeProductsRestApiCest
      *
      * @return void
      */
-    public function requestExistingAbstractAlternativeProductsWithProductLabelRelationshipByDelete(ProductsApiTester $I): void
+    public function requestAbstractAlternativeProductsWithProductLabelsRelationshipByDelete(ProductsApiTester $I): void
     {
         // Arrange
-        $productConcreteSku = $this->fixtures->getProductConcreteTransfer()->getSku();
-        $url = $I->buildAbstractAlternativeProductsUrl($productConcreteSku, static::INCLUDE_RESOURCES);
+        $url = $I->buildAbstractAlternativeProductsUrl(
+            $this->fixtures->getProductConcreteTransfer()->getSku(),
+            [
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            ]
+        );
 
         // Act
         $I->sendDELETE($url);

@@ -61,15 +61,15 @@ class ConvertGuestCartToCustomerCartRestApiCest
         // Assert
         $I->assertResponse(HttpCode::OK);
 
-        $I->amSureResponseDataContainsSingleResourceOfType(CartsRestApiConfig::RESOURCE_CARTS)
+        $I->amSureSeeResponseDataContainsSingleResourceOfType(CartsRestApiConfig::RESOURCE_CARTS)
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType(CartsRestApiConfig::RESOURCE_CARTS);
 
-        $I->amSureSingleResourceIdEqualTo()
+        $I->amSureSeeSingleResourceIdEqualTo($quoteUuid)
             ->whenI()
             ->seeSingleResourceIdEqualTo($quoteUuid);
 
-        $I->amSureSingleResourceHasRelationshipByTypeAndId(
+        $I->amSureSeeSingleResourceHasRelationshipByTypeAndId(
             CartsRestApiConfig::RESOURCE_CART_ITEMS,
             $productConcreteSku
         )
@@ -93,14 +93,8 @@ class ConvertGuestCartToCustomerCartRestApiCest
         $I->haveHttpHeader(CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID, $this->fixtures->getValueForGuestCustomerReference());
 
         // Act
-        $I->sendGET(
-            $I->formatUrl(
-                '{resourceGuestCarts}',
-                [
-                    'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-                ]
-            )
-        );
+        $I->sendGET($I->buildGuestCartsUrl());
+
         // Assert
         $I->assertResponse(HttpCode::OK);
         $I->seeResponseDataContainsEmptyCollection();

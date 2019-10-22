@@ -33,17 +33,12 @@ class GuestCartsRestApiFixtures implements FixturesBuilderInterface, FixturesCon
     /**
      * @var string
      */
-    protected $valueForGuestCustomerReference;
+    protected $guestCustomerReference;
 
     /**
      * @var string
      */
-    protected $valueForGuestCustomerReferenceWithLabel;
-
-    /**
-     * @var string
-     */
-    protected $valueForGuestCustomerReferenceWithLabelWithEmptyCart;
+    protected $guestCustomerReferenceWithLabel;
 
     /**
      * @var \Generated\Shared\Transfer\ProductConcreteTransfer
@@ -73,25 +68,17 @@ class GuestCartsRestApiFixtures implements FixturesBuilderInterface, FixturesCon
     /**
      * @return string
      */
-    public function getValueForGuestCustomerReference(): string
+    public function getGuestCustomerReference(): string
     {
-        return $this->valueForGuestCustomerReference;
+        return $this->guestCustomerReference;
     }
 
     /**
      * @return string
      */
-    public function getValueForGuestCustomerReferenceWithLabel(): string
+    public function getGuestCustomerReferenceWithLabel(): string
     {
-        return $this->valueForGuestCustomerReferenceWithLabel;
-    }
-
-    /**
-     * @return string
-     */
-    public function getValueForGuestCustomerReferenceWithLabelWithEmptyCart(): string
-    {
-        return $this->valueForGuestCustomerReferenceWithLabelWithEmptyCart;
+        return $this->guestCustomerReferenceWithLabel;
     }
 
     /**
@@ -141,24 +128,44 @@ class GuestCartsRestApiFixtures implements FixturesBuilderInterface, FixturesCon
      */
     public function buildFixtures(CartsApiTester $I): FixturesContainerInterface
     {
-        $this->productConcreteTransfer = $I->haveFullProduct();
-        $this->productConcreteTransferWithLabel = $I->haveFullProduct();
-
-        $this->productLabelTransfer = $I->haveProductLabel();
-        $this->assignLabelToProduct($I, $this->productLabelTransfer, $this->productConcreteTransferWithLabel);
-
-        $this->valueForGuestCustomerReference = $this->createValueForGuestCustomerReference();
-        $this->valueForGuestCustomerReferenceWithLabel = $this->createValueForGuestCustomerReference();
-        $this->valueForGuestCustomerReferenceWithLabelWithEmptyCart = $this->createValueForGuestCustomerReference();
-
-        $guestCustomerTransfer = (new CustomerTransfer())
-            ->setCustomerReference($I::ANONYMOUS_PREFIX . $this->valueForGuestCustomerReference);
-        $guestCustomerTransferWithLabel = (new CustomerTransfer())
-            ->setCustomerReference($I::ANONYMOUS_PREFIX . $this->valueForGuestCustomerReferenceWithLabel);
-
-        $this->guestQuoteTransfer = $this->createQuote($I, $guestCustomerTransfer, [$this->productConcreteTransfer]);
-        $this->guestQuoteTransferWithLabel = $this->createQuote($I, $guestCustomerTransferWithLabel, [$this->productConcreteTransferWithLabel]);
+        $this->createGuestQuote($I);
+        $this->createQuoteWithProductLabelRelationship($I);
 
         return $this;
+    }
+
+    /**
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    protected function createGuestQuote(CartsApiTester $I): void
+    {
+        $this->productConcreteTransfer = $I->haveFullProduct();
+        $this->guestCustomerReference = $this->createGuestCustomerReference();
+        $guestCustomerTransfer = (new CustomerTransfer())
+            ->setCustomerReference($I::ANONYMOUS_PREFIX . $this->guestCustomerReference);
+        $this->guestQuoteTransfer = $this->createPersistentQuote($I, $guestCustomerTransfer, [$this->productConcreteTransfer]);
+    }
+
+    /**
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    public function createQuoteWithProductLabelRelationship(CartsApiTester $I): void
+    {
+        $this->productConcreteTransferWithLabel = $I->haveFullProduct();
+        $this->productLabelTransfer = $I->haveProductLabel();
+
+        $I->haveProductLabelToAbstractProductRelation(
+            $this->productLabelTransfer->getIdProductLabel(),
+            $this->productConcreteTransferWithLabel->getFkProductAbstract()
+        );
+
+        $this->guestCustomerReferenceWithLabel = $this->createGuestCustomerReference();
+        $guestCustomerTransferWithLabel = (new CustomerTransfer())
+            ->setCustomerReference($I::ANONYMOUS_PREFIX . $this->guestCustomerReferenceWithLabel);
+        $this->guestQuoteTransferWithLabel = $this->createPersistentQuote($I, $guestCustomerTransferWithLabel, [$this->productConcreteTransferWithLabel]);
     }
 }

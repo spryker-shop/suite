@@ -50,16 +50,6 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
     protected $productLabelTransfer;
 
     /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
-    protected $customerTransfer;
-
-    /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
-    protected $customerTransferWithLabel;
-
-    /**
      * @var \Generated\Shared\Transfer\QuoteTransfer
      */
     protected $quoteTransfer;
@@ -94,22 +84,6 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
     }
 
     /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
-    public function getCustomerTransfer(): CustomerTransfer
-    {
-        return $this->customerTransfer;
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
-    public function getCustomerTransferWithLabel(): CustomerTransfer
-    {
-        return $this->customerTransferWithLabel;
-    }
-
-    /**
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
     public function getQuoteTransfer(): QuoteTransfer
@@ -132,18 +106,48 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
      */
     public function buildFixtures(CartsApiTester $I): FixturesContainerInterface
     {
+        $this->createQuote($I);
+        $this->createQuoteWithProductLabelRelationship($I);
+
+        return $this;
+    }
+
+    /**
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    protected function createQuote(CartsApiTester $I): void
+    {
         $this->productConcreteTransfer = $I->haveFullProduct();
+        $customer = $I->haveCustomer([
+            CustomerTransfer::USERNAME => static::TEST_USERNAME,
+            CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
+            CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,
+        ]);
+        $this->quoteTransfer = $this->createPersistentQuote($I, $customer, [$this->productConcreteTransfer]);
+    }
+
+    /**
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    protected function createQuoteWithProductLabelRelationship(CartsApiTester $I): void
+    {
         $this->productConcreteTransferWithLabel = $I->haveFullProduct();
 
         $this->productLabelTransfer = $I->haveProductLabel();
-        $this->assignLabelToProduct($I, $this->productLabelTransfer, $this->productConcreteTransferWithLabel);
+        $I->haveProductLabelToAbstractProductRelation(
+            $this->productLabelTransfer->getIdProductLabel(),
+            $this->productConcreteTransferWithLabel->getFkProductAbstract()
+        );
 
-        $this->customerTransfer = $this->createCustomer($I, static::TEST_USERNAME, static::TEST_PASSWORD);
-        $this->customerTransferWithLabel = $this->createCustomer($I, static::TEST_USERNAME_WITH_LABEL, static::TEST_PASSWORD);
-
-        $this->quoteTransfer = $this->createQuote($I, $this->customerTransfer, [$this->productConcreteTransfer]);
-        $this->quoteTransferWithLabel = $this->createQuote($I, $this->customerTransferWithLabel, [$this->productConcreteTransferWithLabel]);
-
-        return $this;
+        $customer = $I->haveCustomer([
+            CustomerTransfer::USERNAME => static::TEST_USERNAME_WITH_LABEL,
+            CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
+            CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,
+        ]);
+        $this->quoteTransferWithLabel = $this->createPersistentQuote($I, $customer, [$this->productConcreteTransferWithLabel]);
     }
 }

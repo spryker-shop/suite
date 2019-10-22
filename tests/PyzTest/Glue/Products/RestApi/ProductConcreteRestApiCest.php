@@ -61,15 +61,15 @@ class ProductConcreteRestApiCest
         // Assert
         $I->assertResponse(HttpCode::OK);
 
-        $I->amSureResponseDataContainsSingleResourceOfType(ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS)
+        $I->amSureSeeResponseDataContainsSingleResourceOfType(ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS)
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType(ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS);
 
-        $I->amSureSingleResourceIdEqualTo()
+        $I->amSureSeeSingleResourceIdEqualTo($productConcreteSku)
             ->whenI()
             ->seeSingleResourceIdEqualTo($productConcreteSku);
 
-        $I->amSureSingleResourceHasSelfLink()
+        $I->amSureSeeSingleResourceHasSelfLink()
             ->whenI()
             ->seeSingleResourceHasSelfLink($url);
     }
@@ -93,7 +93,7 @@ class ProductConcreteRestApiCest
         //assert
         $I->assertResponse(HttpCode::OK);
 
-        $I->amSureSingleResourceHasRelationshipByTypeAndId(
+        $I->amSureSeeSingleResourceHasRelationshipByTypeAndId(
             ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
             $productConcreteSku
         )
@@ -103,7 +103,7 @@ class ProductConcreteRestApiCest
                 $productConcreteSku
             );
 
-        $I->amSureIncludesContainsResourceByTypeAndId(
+        $I->amSureSeeIncludesContainsResourceByTypeAndId(
             ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
             $productConcreteSku
         )
@@ -121,12 +121,16 @@ class ProductConcreteRestApiCest
      *
      * @return void
      */
-    public function requestProductConcreteWithProductLabelRelationship(ProductsApiTester $I): void
+    public function requestProductConcreteWithProductLabelsRelationship(ProductsApiTester $I): void
     {
         // Arrange
-        $productConcreteSku = $this->fixtures->getProductConcreteTransferWithLabel()->getSku();
         $idProductLabel = $this->fixtures->getProductLabelTransfer()->getIdProductLabel();
-        $url = $I->buildProductConcreteUrl($productConcreteSku, [ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS]);
+        $url = $I->buildProductConcreteUrl(
+            $this->fixtures->getProductConcreteTransferWithLabel()->getSku(),
+            [
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            ]
+        );
 
         // Act
         $I->sendGET($url);
@@ -134,7 +138,7 @@ class ProductConcreteRestApiCest
         // Assert
         $I->assertResponse(HttpCode::OK);
 
-        $I->amSureSingleResourceHasRelationshipByTypeAndId(
+        $I->amSureSeeSingleResourceHasRelationshipByTypeAndId(
             ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
             $idProductLabel
         )
@@ -144,7 +148,7 @@ class ProductConcreteRestApiCest
                 $idProductLabel
             );
 
-        $I->amSureIncludesContainsResourceByTypeAndId(
+        $I->amSureSeeIncludesContainsResourceByTypeAndId(
             ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
             $idProductLabel
         )
@@ -154,7 +158,7 @@ class ProductConcreteRestApiCest
                 $idProductLabel
             );
 
-        $I->amSureIncludedResourceByTypeAndIdHasSelfLink(
+        $I->amSureSeeIncludedResourceByTypeAndIdHasSelfLink(
             ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
             $idProductLabel
         )
@@ -176,8 +180,12 @@ class ProductConcreteRestApiCest
     public function requestProductConcreteWithoutProductLabelRelationship(ProductsApiTester $I): void
     {
         // Arrange
-        $productConcreteSku = $this->fixtures->getProductConcreteTransfer()->getSku();
-        $url = $I->buildProductConcreteUrl($productConcreteSku, [ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS]);
+        $url = $I->buildProductConcreteUrl(
+            $this->fixtures->getProductConcreteTransfer()->getSku(),
+            [
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            ]
+        );
 
         // Act
         $I->sendGET($url);
@@ -185,9 +193,9 @@ class ProductConcreteRestApiCest
         // Assert
         $I->assertResponse(HttpCode::OK);
 
-        $I->dontSeeResponseMatchesJsonPath(
-            sprintf('$.included[?(@.type == %s$s)]', ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS)
-        );
+        $I->amSureDontSeeIncludesContainsResourcesOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS)
+            ->whenI()
+            ->dontSeeIncludesContainsResourcesOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS);
     }
 
     /**
@@ -199,15 +207,12 @@ class ProductConcreteRestApiCest
      */
     public function requestProductConcreteByNotExistingProductConcreteSku(ProductsApiTester $I): void
     {
-        // Arrange
-        $url = $I->buildProductConcreteUrl('NotExistingSku');
-
         // Act
-        $I->sendGET($url);
+        $I->sendGET($I->buildProductConcreteUrl('NotExistingSku'));
 
         // Assert
         $I->assertResponse(HttpCode::NOT_FOUND);
-        $I->seeResponseDataContainsEmptyCollection();
+        $I->seeResponseIsJson();
     }
 
     /**
@@ -220,8 +225,12 @@ class ProductConcreteRestApiCest
     public function requestProductConcreteWithProductLabelRelationshipByPost(ProductsApiTester $I): void
     {
         // Arrange
-        $productConcreteSku = $this->fixtures->getProductConcreteTransferWithLabel()->getSku();
-        $url = $I->buildProductConcreteUrl($productConcreteSku, [ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS]);
+        $url = $I->buildProductConcreteUrl(
+            $this->fixtures->getProductConcreteTransferWithLabel()->getSku(),
+            [
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            ]
+        );
 
         // Act
         $I->sendPOST($url);
@@ -241,8 +250,12 @@ class ProductConcreteRestApiCest
     public function requestProductConcreteWithProductLabelRelationshipByPatch(ProductsApiTester $I): void
     {
         // Arrange
-        $productConcreteSku = $this->fixtures->getProductConcreteTransferWithLabel()->getSku();
-        $url = $I->buildProductConcreteUrl($productConcreteSku, [ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS]);
+        $url = $I->buildProductConcreteUrl(
+            $this->fixtures->getProductConcreteTransferWithLabel()->getSku(),
+            [
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            ]
+        );
 
         // Act
         $I->sendPATCH($url);

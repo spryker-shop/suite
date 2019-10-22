@@ -26,8 +26,6 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  */
 class AbstractAlternativeProductsRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    use ProductsRestApiFixturesTrait;
-
     /**
      * @var \Generated\Shared\Transfer\ProductConcreteTransfer
      */
@@ -74,15 +72,46 @@ class AbstractAlternativeProductsRestApiFixtures implements FixturesBuilderInter
      */
     public function buildFixtures(ProductsApiTester $I): FixturesContainerInterface
     {
-        $this->productConcreteTransfer = $I->haveFullProduct();
-        $this->productConcreteTransferWithLabel = $I->haveFullProduct();
-
-        $this->productLabelTransfer = $I->haveProductLabel();
-        $this->assignLabelToProduct($I, $this->productLabelTransfer, $this->productConcreteTransferWithLabel);
-
-        $I->haveProductAlternative($this->productConcreteTransfer, $this->productConcreteTransferWithLabel->getAbstractSku());
-        $I->haveProductAlternative($this->productConcreteTransferWithLabel, $this->productConcreteTransfer->getAbstractSku());
+        $this->createProductConcrete($I);
+        $this->createProductConcreteWithProductLabelRelationship($I);
+        $this->createAlternativeRelationBetweenProducts($I);
 
         return $this;
+    }
+
+    /**
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     *
+     * @return void
+     */
+    protected function createProductConcrete(ProductsApiTester $I): void
+    {
+        $this->productConcreteTransfer = $I->haveFullProduct();
+    }
+
+    /**
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     *
+     * @return void
+     */
+    protected function createProductConcreteWithProductLabelRelationship(ProductsApiTester $I): void
+    {
+        $this->productConcreteTransferWithLabel = $I->haveFullProduct();
+        $this->productLabelTransfer = $I->haveProductLabel();
+        $I->haveProductLabelToAbstractProductRelation(
+            $this->productLabelTransfer->getIdProductLabel(),
+            $this->productConcreteTransferWithLabel->getFkProductAbstract()
+        );
+    }
+
+    /**
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     *
+     * @return void
+     */
+    protected function createAlternativeRelationBetweenProducts(ProductsApiTester $I): void
+    {
+        $I->haveProductAlternative($this->productConcreteTransfer, $this->productConcreteTransferWithLabel->getAbstractSku());
+        $I->haveProductAlternative($this->productConcreteTransferWithLabel, $this->productConcreteTransfer->getAbstractSku());
     }
 }
