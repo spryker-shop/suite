@@ -10,7 +10,7 @@ namespace Pyz\Zed\ExampleChart\Communication\Plugin;
 use Generated\Shared\Transfer\ChartDataTraceTransfer;
 use Generated\Shared\Transfer\ChartDataTransfer;
 use Generated\Shared\Transfer\ChartLayoutTransfer;
-use Spryker\Shared\ChartExtension\Dependency\Plugin\ChartPluginInterface;
+use Spryker\Zed\ChartExtension\Dependency\Plugin\ChartPluginInterface;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 
 class ExampleChartPlugin extends AbstractPlugin implements ChartPluginInterface

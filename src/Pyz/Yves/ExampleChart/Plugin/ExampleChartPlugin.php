@@ -10,7 +10,7 @@ namespace Pyz\Yves\ExampleChart\Plugin;
 use Generated\Shared\Transfer\ChartDataTraceTransfer;
 use Generated\Shared\Transfer\ChartDataTransfer;
 use Generated\Shared\Transfer\ChartLayoutTransfer;
-use Spryker\Shared\ChartExtension\Dependency\Plugin\ChartPluginInterface;
+use Spryker\Yves\ChartExtension\Dependency\Plugin\ChartPluginInterface;
 use Spryker\Yves\Kernel\AbstractPlugin;
 
 class ExampleChartPlugin extends AbstractPlugin implements ChartPluginInterface
