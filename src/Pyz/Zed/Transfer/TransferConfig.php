@@ -31,4 +31,24 @@ class TransferConfig extends SprykerTransferConfig
     {
         return true;
     }
+
+    /**
+     * We use strict validation for case sensitive declaration for all new projects.
+     *
+     * @return bool
+     */
+    public function isCaseValidated(): bool
+    {
+        return true;
+    }
+
+    /**
+     * We use strict validation for collections and singular definition for all new projects.
+     *
+     * @return bool
+     */
+    public function isSingularRequired(): bool
+    {
+        return true;
+    }
 }
