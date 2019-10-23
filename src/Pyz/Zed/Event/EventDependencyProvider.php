@@ -24,6 +24,7 @@ use Spryker\Zed\CustomerAccessStorage\Communication\Plugin\Event\Subscriber\Cust
 use Spryker\Zed\Event\EventDependencyProvider as SprykerEventDependencyProvider;
 use Spryker\Zed\FileManagerStorage\Communication\Plugin\Event\Subscriber\FileManagerStorageSubscriber;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Event\Subscriber\GlossaryStorageEventSubscriber;
+use Spryker\Zed\MerchantProductOfferStorage\Communication\Plugin\Event\Subscriber\MerchantProductOfferStorageEventSubscriber;
 use Spryker\Zed\NavigationStorage\Communication\Plugin\Event\Subscriber\NavigationStorageEventSubscriber;
 use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Event\Subscriber\PriceProductMerchantRelationshipStorageEventSubscriber;
 use Spryker\Zed\PriceProductStorage\Communication\Plugin\Event\Subscriber\PriceProductStorageEventSubscriber;
@@ -107,6 +108,7 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new ProductAlternativeStorageEventSubscriber()); #ProductAlternativeFeature
         $eventSubscriberCollection->add(new ProductPackagingUnitStorageEventSubscriber());
         $eventSubscriberCollection->add(new PriceProductMerchantRelationshipStorageEventSubscriber());
+        $eventSubscriberCollection->add(new MerchantProductOfferStorageEventSubscriber());
         $eventSubscriberCollection->add(new FileManagerStorageSubscriber());
         $eventSubscriberCollection->add(new CustomerAccessStorageEventSubscriber());
         $eventSubscriberCollection->add(new ShoppingListStorageEventSubscriber()); #ShoppingListWidget feature
