@@ -72,6 +72,8 @@ services:
         engine: redis
     search:
         engine: elastic
+    scheduler:
+        engine: jenkins
     mail_catcher:
         engine: mailhog
 
