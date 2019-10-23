@@ -97,8 +97,8 @@ class CartsRestApiCest
         $I->assertResponse(HttpCode::OK);
 
         $I->amSureSeeResponseDataContainsResourceCollectionOfType(CartsRestApiConfig::RESOURCE_CARTS)
-        ->whenI()
-        ->seeResponseDataContainsResourceCollectionOfType(CartsRestApiConfig::RESOURCE_CARTS);
+            ->whenI()
+            ->seeResponseDataContainsResourceCollectionOfType(CartsRestApiConfig::RESOURCE_CARTS);
 
         $I->amSureSeeResourceCollectionHasResourceWithId($quoteUuid)
             ->whenI()
@@ -118,34 +118,47 @@ class CartsRestApiCest
      */
     public function requestCartByUuidWithCartItemsRelationship(CartsApiTester $I): void
     {
+        // Arrange
         $quoteTransfer = $this->fixtures->getQuoteTransfer();
-        $productConcreteSku = $this->fixtures->getProductConcreteTransfer()->getSku();
+        $quoteUuid = $quoteTransfer->getUuid();
+        $cartItemGroupKey = $quoteTransfer->getItems()->offsetGet(0)->getGroupKey();
         $I->requestCustomerLogin($quoteTransfer->getCustomer());
 
         // Act
-        $I->sendGET($I->buildCartUrl($quoteTransfer->getUuid(), [CartsRestApiConfig::RESOURCE_CART_ITEMS]));
+        $I->sendGET($I->buildCartUrl($quoteUuid, [CartsRestApiConfig::RESOURCE_CART_ITEMS]));
 
         // Assert
         $I->assertResponse(HttpCode::OK);
 
         $I->amSureSeeSingleResourceHasRelationshipByTypeAndId(
             CartsRestApiConfig::RESOURCE_CART_ITEMS,
-            $productConcreteSku
+            $cartItemGroupKey
         )
             ->whenI()
             ->seeSingleResourceHasRelationshipByTypeAndId(
                 CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                $productConcreteSku
+                $cartItemGroupKey
             );
 
         $I->amSureSeeIncludesContainsResourceByTypeAndId(
             CartsRestApiConfig::RESOURCE_CART_ITEMS,
-            $productConcreteSku
+            $cartItemGroupKey
         )
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                $productConcreteSku
+                $cartItemGroupKey
+            );
+
+        $I->amSureSeeIncludedResourceByTypeAndIdHasSelfLink(
+            CartsRestApiConfig::RESOURCE_CART_ITEMS,
+            $cartItemGroupKey
+        )
+            ->whenI()
+            ->seeIncludedResourceByTypeAndIdHasSelfLink(
+                CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                $cartItemGroupKey,
+                $I->buildCartItemUrl($quoteUuid, $cartItemGroupKey)
             );
     }
 
@@ -158,7 +171,9 @@ class CartsRestApiCest
      */
     public function requestCartByUuidWithProductConcreteRelationship(CartsApiTester $I): void
     {
+        // Arrange
         $quoteTransfer = $this->fixtures->getQuoteTransfer();
+        $cartItemGroupKey = $quoteTransfer->getItems()->offsetGet(0)->getGroupKey();
         $productConcreteSku = $this->fixtures->getProductConcreteTransfer()->getSku();
         $url = $I->buildCartUrl(
             $quoteTransfer->getUuid(),
@@ -177,14 +192,14 @@ class CartsRestApiCest
 
         $I->amSureSeeIncludedResourceByTypeAndIdHasRelationshipByTypeAndId(
             CartsRestApiConfig::RESOURCE_CART_ITEMS,
-            $productConcreteSku,
+            $cartItemGroupKey,
             ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
             $productConcreteSku
         )
             ->whenI()
             ->seeIncludedResourceByTypeAndIdHasRelationshipByTypeAndId(
                 CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                $productConcreteSku,
+                $cartItemGroupKey,
                 ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 $productConcreteSku
             );
@@ -220,6 +235,7 @@ class CartsRestApiCest
      */
     public function requestCartByUuidWithProductLabelsRelationship(CartsApiTester $I): void
     {
+        // Arrange
         $quoteTransfer = $this->fixtures->getQuoteTransferWithLabel();
         $productConcreteSku = $this->fixtures->getProductConcreteTransferWithLabel()->getSku();
         $idProductLabel = $this->fixtures->getProductLabelTransfer()->getIdProductLabel();
@@ -284,6 +300,7 @@ class CartsRestApiCest
      */
     public function requestCartByUuidWithoutProductLabelsRelationship(CartsApiTester $I): void
     {
+        // Arrange
         $quoteTransfer = $this->fixtures->getQuoteTransfer();
         $url = $I->buildCartUrl(
             $quoteTransfer->getUuid(),
@@ -323,7 +340,6 @@ class CartsRestApiCest
 
         // Assert
         $I->assertResponse(HttpCode::NOT_FOUND);
-        $I->seeResponseIsJson();
     }
 
     /**

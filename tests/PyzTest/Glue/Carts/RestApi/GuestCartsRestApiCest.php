@@ -123,13 +123,15 @@ class GuestCartsRestApiCest
     public function requestGuestCartByUuidWithGuestCartItemsRelationship(CartsApiTester $I): void
     {
         // Arrange
-        $productConcreteSku = $this->fixtures->getProductConcreteTransfer()->getSku();
+        $quoteTransfer = $this->fixtures->getGuestQuoteTransfer();
+        $quoteUuid = $this->fixtures->getGuestQuoteTransfer()->getUuid();
+        $guestCartItemGroupKey = $quoteTransfer->getItems()->offsetGet(0)->getGroupKey();
         $I->haveHttpHeader(
             CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
             $this->fixtures->getGuestCustomerReference()
         );
         $url = $I->buildGuestCartUrl(
-            $this->fixtures->getGuestQuoteTransfer()->getUuid(),
+            $quoteUuid,
             [
                 CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
             ]
@@ -143,22 +145,33 @@ class GuestCartsRestApiCest
 
         $I->amSureSeeSingleResourceHasRelationshipByTypeAndId(
             CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-            $productConcreteSku
+            $guestCartItemGroupKey
         )
             ->whenI()
             ->seeSingleResourceHasRelationshipByTypeAndId(
                 CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                $productConcreteSku
+                $guestCartItemGroupKey
             );
 
         $I->amSureSeeIncludesContainsResourceByTypeAndId(
             CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-            $productConcreteSku
+            $guestCartItemGroupKey
         )
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                $productConcreteSku
+                $guestCartItemGroupKey
+            );
+
+        $I->amSureSeeIncludedResourceByTypeAndIdHasSelfLink(
+            CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+            $guestCartItemGroupKey
+        )
+            ->whenI()
+            ->seeIncludedResourceByTypeAndIdHasSelfLink(
+                CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+                $guestCartItemGroupKey,
+                $I->buildGuestCartItemUrl($quoteUuid, $guestCartItemGroupKey)
             );
     }
 
@@ -172,9 +185,11 @@ class GuestCartsRestApiCest
     public function requestGuestCartByUuidWithProductConcreteRelationship(CartsApiTester $I): void
     {
         // Arrange
+        $quoteTransfer = $this->fixtures->getGuestQuoteTransfer();
+        $guestCartItemGroupKey = $quoteTransfer->getItems()->offsetGet(0)->getGroupKey();
         $productConcreteSku = $this->fixtures->getProductConcreteTransfer()->getSku();
         $url = $I->buildGuestCartUrl(
-            $this->fixtures->getGuestQuoteTransfer()->getUuid(),
+            $quoteTransfer->getUuid(),
             [
                 CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
                 ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
@@ -193,14 +208,14 @@ class GuestCartsRestApiCest
 
         $I->amSureSeeIncludedResourceByTypeAndIdHasRelationshipByTypeAndId(
             CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-            $productConcreteSku,
+            $guestCartItemGroupKey,
             ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
             $productConcreteSku
         )
             ->whenI()
             ->seeIncludedResourceByTypeAndIdHasRelationshipByTypeAndId(
                 CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                $productConcreteSku,
+                $guestCartItemGroupKey,
                 ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 $productConcreteSku
             );
@@ -348,7 +363,6 @@ class GuestCartsRestApiCest
 
         // Assert
         $I->assertResponse(HttpCode::NOT_FOUND);
-        $I->seeResponseIsJson();
     }
 
     /**

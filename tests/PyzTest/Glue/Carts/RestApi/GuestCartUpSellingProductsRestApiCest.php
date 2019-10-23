@@ -264,7 +264,6 @@ class GuestCartUpSellingProductsRestApiCest
 
         // Assert
         $I->assertResponse(HttpCode::NOT_FOUND);
-        $I->seeResponseIsJson();
     }
 
     /**

@@ -10,6 +10,7 @@ namespace PyzTest\Glue\Products;
 use Spryker\Glue\AlternativeProductsRestApi\AlternativeProductsRestApiConfig;
 use Spryker\Glue\GlueApplication\Rest\RequestConstantsInterface;
 use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
+use Spryker\Glue\ProductPricesRestApi\ProductPricesRestApiConfig;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
 use Spryker\Glue\RelatedProductsRestApi\RelatedProductsRestApiConfig;
 use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
@@ -45,7 +46,7 @@ class ProductsApiTester extends ApiEndToEndTester
             return '';
         }
 
-        return '?' . RequestConstantsInterface::QUERY_INCLUDE . '=' . implode(',', $includes);
+        return sprintf('?%s=%s', RequestConstantsInterface::QUERY_INCLUDE, implode(',', $includes));
     }
 
     /**
@@ -84,6 +85,24 @@ class ProductsApiTester extends ApiEndToEndTester
     }
 
     /**
+     * @param string $productAbstractSku
+     * @param string[] $includes
+     *
+     * @return string
+     */
+    public function buildProductAbstractPricesUrl(string $productAbstractSku, array $includes = []): string
+    {
+        return $this->formatFullUrl(
+            '{resourceAbstractProducts}/{productAbstractSku}/{resourceAbstractProductPrices}' . $this->formatQueryInclude($includes),
+            [
+                'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
+                'productAbstractSku' => $productAbstractSku,
+                'resourceAbstractProductPrices' => ProductPricesRestApiConfig::RESOURCE_ABSTRACT_PRODUCT_PRICES,
+            ]
+        );
+    }
+
+    /**
      * @param string $productConcreteSku
      * @param string[] $includes
      *
@@ -114,6 +133,24 @@ class ProductsApiTester extends ApiEndToEndTester
                 'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 'resourceConcreteAlternativeProducts' => AlternativeProductsRestApiConfig::RELATIONSHIP_NAME_CONCRETE_ALTERNATIVE_PRODUCTS,
                 'productConcreteSku' => $productConcreteSku,
+            ]
+        );
+    }
+
+    /**
+     * @param string $productConcreteSku
+     * @param string[] $includes
+     *
+     * @return string
+     */
+    public function buildProductConcretePricesUrl(string $productConcreteSku, array $includes = []): string
+    {
+        return $this->formatFullUrl(
+            '{resourceConcreteProducts}/{productConcreteSku}/{resourceConcreteProductPrices}' . $this->formatQueryInclude($includes),
+            [
+                'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                'productConcreteSku' => $productConcreteSku,
+                'resourceConcreteProductPrices' => ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
             ]
         );
     }

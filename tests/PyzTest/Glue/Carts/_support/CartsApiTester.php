@@ -60,7 +60,7 @@ class CartsApiTester extends ApiEndToEndTester
             return '';
         }
 
-        return '?' . RequestConstantsInterface::QUERY_INCLUDE . '=' . implode(',', $includes);
+        return sprintf('?%s=%s', RequestConstantsInterface::QUERY_INCLUDE, implode(',', $includes));
     }
 
     /**
@@ -148,6 +148,26 @@ class CartsApiTester extends ApiEndToEndTester
 
     /**
      * @param string $cartUuid
+     * @param string $cartItemGroupKey
+     * @param string[] $includes
+     *
+     * @return string
+     */
+    public function buildCartItemUrl(string $cartUuid, string $cartItemGroupKey, array $includes = []): string
+    {
+        return $this->formatFullUrl(
+            '{resourceCarts}/{cartUuid}/{resourceCartItems}/{cartItemGroupKey}' . $this->formatQueryInclude($includes),
+            [
+                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
+                'cartUuid' => $cartUuid,
+                'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                'cartItemGroupKey' => $cartItemGroupKey,
+            ]
+        );
+    }
+
+    /**
+     * @param string $cartUuid
      * @param string[] $includes
      *
      * @return string
@@ -192,6 +212,26 @@ class CartsApiTester extends ApiEndToEndTester
             [
                 'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
                 'guestCartUuid' => $guestCartUuid,
+            ]
+        );
+    }
+
+    /**
+     * @param string $guestCartUuid
+     * @param string $guestCartItemGroupKey
+     * @param string[] $includes
+     *
+     * @return string
+     */
+    public function buildGuestCartItemUrl(string $guestCartUuid, string $guestCartItemGroupKey, array $includes = []): string
+    {
+        return $this->formatFullUrl(
+            '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}/{guestCartItemGroupKey}' . $this->formatQueryInclude($includes),
+            [
+                'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+                'guestCartUuid' => $guestCartUuid,
+                'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
+                'guestCartItemGroupKey' => $guestCartItemGroupKey,
             ]
         );
     }

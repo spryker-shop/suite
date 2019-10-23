@@ -112,6 +112,17 @@ class ProductConcreteRestApiCest
                 ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
                 $productConcreteSku
             );
+
+        $I->amSureSeeIncludedResourceByTypeAndIdHasSelfLink(
+            ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
+            $productConcreteSku
+        )
+            ->whenI()
+            ->seeIncludedResourceByTypeAndIdHasSelfLink(
+                ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
+                $productConcreteSku,
+                $I->buildProductConcretePricesUrl($productConcreteSku)
+            );
     }
 
     /**
@@ -212,7 +223,6 @@ class ProductConcreteRestApiCest
 
         // Assert
         $I->assertResponse(HttpCode::NOT_FOUND);
-        $I->seeResponseIsJson();
     }
 
     /**

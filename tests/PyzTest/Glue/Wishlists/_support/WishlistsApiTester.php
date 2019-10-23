@@ -57,7 +57,7 @@ class WishlistsApiTester extends ApiEndToEndTester
             return '';
         }
 
-        return '?' . RequestConstantsInterface::QUERY_INCLUDE . '=' . implode(',', $includes);
+        return sprintf('?%s=%s', RequestConstantsInterface::QUERY_INCLUDE, implode(',', $includes));
     }
 
     /**
@@ -122,6 +122,26 @@ class WishlistsApiTester extends ApiEndToEndTester
             '{resourceWishlists}' . $this->formatQueryInclude($includes),
             [
                 'resourceWishlists' => WishlistsRestApiConfig::RESOURCE_WISHLISTS,
+            ]
+        );
+    }
+
+    /**
+     * @param string $wishlistUuid
+     * @param string $productConcreteSku
+     * @param string[] $includes
+     *
+     * @return string
+     */
+    public function buildWishlistItemUrl(string $wishlistUuid, string $productConcreteSku, array $includes = []): string
+    {
+        return $this->formatFullUrl(
+            '{resourceWishlists}/{wishlistUuid}/{resourceWishlistItems}/{productConcreteSku}' . $this->formatQueryInclude($includes),
+            [
+                'resourceWishlists' => WishlistsRestApiConfig::RESOURCE_WISHLISTS,
+                'wishlistUuid' => $wishlistUuid,
+                'resourceWishlistItems' => WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
+                'productConcreteSku' => $productConcreteSku,
             ]
         );
     }

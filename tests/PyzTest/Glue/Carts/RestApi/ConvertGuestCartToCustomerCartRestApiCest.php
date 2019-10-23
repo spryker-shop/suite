@@ -90,7 +90,7 @@ class ConvertGuestCartToCustomerCartRestApiCest
     public function requestGuestCartCollectionIsEmpty(CartsApiTester $I): void
     {
         // Arrange
-        $I->haveHttpHeader(CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID, $this->fixtures->getValueForGuestCustomerReference());
+        $I->haveHttpHeader(CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID, $this->fixtures->getGuestCustomerReference());
 
         // Act
         $I->sendGET($I->buildGuestCartsUrl());
@@ -109,10 +109,10 @@ class ConvertGuestCartToCustomerCartRestApiCest
      */
     protected function requestCustomerLoginWithXAnonymousCustomerUniqueIdHeader(CartsApiTester $I): void
     {
-        $I->haveHttpHeader(CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID, $this->fixtures->getValueForGuestCustomerReference());
+        $I->haveHttpHeader(CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID, $this->fixtures->getGuestCustomerReference());
         $token = $I->haveAuthorizationToGlue(
             $this->fixtures->getCustomerTransfer(),
-            $I::ANONYMOUS_PREFIX . $this->fixtures->getValueForGuestCustomerReference()
+            $I::ANONYMOUS_PREFIX . $this->fixtures->getGuestCustomerReference()
         )->getAccessToken();
 
         $I->amBearerAuthenticated($token);

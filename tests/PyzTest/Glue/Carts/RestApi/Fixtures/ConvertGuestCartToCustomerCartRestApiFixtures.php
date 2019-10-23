@@ -45,7 +45,7 @@ class ConvertGuestCartToCustomerCartRestApiFixtures implements FixturesBuilderIn
     /**
      * @var string
      */
-    protected $valueForGuestCustomerReference;
+    protected $guestCustomerReference;
 
     /**
      * @var \Generated\Shared\Transfer\QuoteTransfer
@@ -71,9 +71,9 @@ class ConvertGuestCartToCustomerCartRestApiFixtures implements FixturesBuilderIn
     /**
      * @return string
      */
-    public function getValueForGuestCustomerReference(): string
+    public function getGuestCustomerReference(): string
     {
-        return $this->valueForGuestCustomerReference;
+        return $this->guestCustomerReference;
     }
 
     /**
@@ -109,9 +109,9 @@ class ConvertGuestCartToCustomerCartRestApiFixtures implements FixturesBuilderIn
     protected function createGuestQuote(CartsApiTester $I): void
     {
         $this->productConcreteTransfer = $I->haveFullProduct();
-        $this->valueForGuestCustomerReference = $this->createGuestCustomerReference();
+        $this->guestCustomerReference = $this->createGuestCustomerReference();
         $guestCustomerTransfer = (new CustomerTransfer())
-            ->setCustomerReference($I::ANONYMOUS_PREFIX . $this->valueForGuestCustomerReference);
+            ->setCustomerReference($I::ANONYMOUS_PREFIX . $this->guestCustomerReference);
         $this->guestQuoteTransfer = $this->createPersistentQuote($I, $guestCustomerTransfer, [$this->productConcreteTransfer]);
     }
 }

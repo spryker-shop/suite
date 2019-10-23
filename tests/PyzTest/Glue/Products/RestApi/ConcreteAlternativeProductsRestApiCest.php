@@ -173,7 +173,6 @@ class ConcreteAlternativeProductsRestApiCest
 
         // Assert
         $I->assertResponse(HttpCode::NOT_FOUND);
-        $I->seeResponseIsJson();
     }
 
     /**

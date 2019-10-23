@@ -57,7 +57,6 @@ class ProductAbstractRestApiCest
 
         // Assert
         $I->assertResponse(HttpCode::NOT_FOUND);
-        $I->seeResponseIsJson();
     }
 
     /**
@@ -341,6 +340,17 @@ class ProductAbstractRestApiCest
             ->seeIncludesContainsResourceByTypeAndId(
                 ProductPricesRestApiConfig::RESOURCE_ABSTRACT_PRODUCT_PRICES,
                 $productAbstractSku
+            );
+
+        $I->amSureSeeIncludedResourceByTypeAndIdHasSelfLink(
+            ProductPricesRestApiConfig::RESOURCE_ABSTRACT_PRODUCT_PRICES,
+            $productAbstractSku
+        )
+            ->whenI()
+            ->seeIncludedResourceByTypeAndIdHasSelfLink(
+                ProductPricesRestApiConfig::RESOURCE_ABSTRACT_PRODUCT_PRICES,
+                $productAbstractSku,
+                $I->buildProductAbstractPricesUrl($productAbstractSku)
             );
     }
 }
