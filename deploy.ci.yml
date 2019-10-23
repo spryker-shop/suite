@@ -44,16 +44,34 @@ groups:
                 endpoints:
                     yves.de.spryker.local:
                         store: DE
+                        services:
+                            session:
+                                namespace: 1
+                    yves.at.spryker.local:
+                        store: AT
+                        services:
+                            session:
+                                namespace: 2
             glue_eu:
                 application: glue
                 endpoints:
                     glue.de.spryker.local:
                         store: DE
+                    glue.at.spryker.local:
+                        store: AT
             zed_eu:
                 application: zed
                 endpoints:
                     zed.de.spryker.local:
                         store: DE
+                        services:
+                            session:
+                                namespace: 3
+                    zed.at.spryker.local:
+                        store: AT
+                        services:
+                            session:
+                                namespace: 4
 
 services:
     database:
