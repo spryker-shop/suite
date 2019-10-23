@@ -51,6 +51,7 @@ use Spryker\Shared\Scheduler\SchedulerConstants;
 use Spryker\Shared\SchedulerJenkins\SchedulerJenkinsConfig;
 use Spryker\Shared\SchedulerJenkins\SchedulerJenkinsConstants;
 use Spryker\Shared\Search\SearchConstants;
+use Spryker\Shared\SearchElasticsearch\SearchElasticsearchConstants;
 use Spryker\Shared\SequenceNumber\SequenceNumberConstants;
 use Spryker\Shared\Session\SessionConfig;
 use Spryker\Shared\Session\SessionConstants;
@@ -561,7 +562,8 @@ $config[CollectorConstants::ELASTICA_PARAMETER__DOCUMENT_TYPE] = $ELASTICA_DOCUM
 $ELASTICA_PARAMETER__EXTRA = [];
 $config[SearchConstants::ELASTICA_PARAMETER__EXTRA] = $ELASTICA_PARAMETER__EXTRA;
 
-$config[SearchConstants::FULL_TEXT_BOOSTED_BOOSTING_VALUE] = 3;
+$config[SearchConstants::FULL_TEXT_BOOSTED_BOOSTING_VALUE]
+    = $config[SearchElasticsearchConstants::FULL_TEXT_BOOSTED_BOOSTING_VALUE] = 3;
 $config[SearchConstants::SEARCH_INDEX_NAME_SUFFIX] = '';
 /* End Search service */
 
