@@ -239,9 +239,9 @@ class GuestCartUpSellingProductsRestApiCest
         // Assert
         $I->assertResponse(HttpCode::OK);
 
-        $I->amSureDontSeeIncludesContainsResourcesOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS)
+        $I->amSureDontSeeIncludesContainResourceOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS)
             ->whenI()
-            ->dontSeeIncludesContainsResourcesOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS);
+            ->dontSeeIncludesContainResourceOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS);
     }
 
     /**
