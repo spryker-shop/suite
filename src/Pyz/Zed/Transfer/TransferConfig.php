@@ -49,6 +49,6 @@ class TransferConfig extends SprykerTransferConfig
      */
     public function isSingularRequired(): bool
     {
-        return true;
+        return false;
     }
 }
