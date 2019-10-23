@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa1d46cafb18b1b70fa68c042d07f5f4",
+    "content-hash": "1610774b7f11ebe6d6b1368d687fd304",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -2968,7 +2968,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
+            "description": "? Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -3364,18 +3364,18 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "role": "Developer",
-                    "email": "sebastian@phpeople.de"
+                    "email": "sebastian@phpeople.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "Developer",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "Developer"
                 }
             ],
             "description": "Library for handling version information and constraints",
@@ -3760,8 +3760,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Library that provides collection, processing, and rendering functionality for PHP code coverage information.",
@@ -3811,8 +3811,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "FilterIterator implementation that filters files based on a list of suffixes.",
@@ -3853,8 +3853,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Simple template engine.",
@@ -5090,8 +5090,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
@@ -5142,6 +5142,610 @@
             ],
             "description": "Loggly module",
             "time": "2019-10-21T09:49:34+00:00"
+        },
+        {
+            "name": "spryker-shop/cart-code-widget",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/cart-code-widget.git",
+                "reference": "5110cd9c2398c0b91cf0548801d4f303bbce4806"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/cart-code-widget/zipball/5110cd9c2398c0b91cf0548801d4f303bbce4806",
+                "reference": "5110cd9c2398c0b91cf0548801d4f303bbce4806",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/shop-application": "^1.0.0",
+                "spryker/application": "^3.8.0",
+                "spryker/cart-code": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/quote": "^2.8.0",
+                "spryker/symfony": "^3.1.0",
+                "spryker/zed-request": "^3.6.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/router": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/router": "Use this module when you want to use the RouteProviderPlugin.",
+                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CartCodeWidget module",
+            "time": "2019-10-14T10:22:33+00:00"
+        },
+        {
+            "name": "spryker-shop/checkout-page-extension",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/checkout-page-extension.git",
+                "reference": "e5e541c113b7851b06a1a083cab394f87fa32152"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/checkout-page-extension/zipball/e5e541c113b7851b06a1a083cab394f87fa32152",
+                "reference": "e5e541c113b7851b06a1a083cab394f87fa32152",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/symfony": "If you want to use CheckoutPage expander plugins."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CheckoutPageExtension module",
+            "time": "2019-10-09T08:02:23+00:00"
+        },
+        {
+            "name": "spryker-shop/comment-widget-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/comment-widget-extension.git",
+                "reference": "739701bbfb147007466c63e7cb0a6898cd5e7708"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/comment-widget-extension/zipball/739701bbfb147007466c63e7cb0a6898cd5e7708",
+                "reference": "739701bbfb147007466c63e7cb0a6898cd5e7708",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/symfony": "If you want to plugins with symfony components."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CommentWidgetExtension module",
+            "time": "2019-07-01T13:37:43+00:00"
+        },
+        {
+            "name": "spryker-shop/customer-page-extension",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/customer-page-extension.git",
+                "reference": "0d632b27a8a0860c1a5313dbc5cbc0a492b178a2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/customer-page-extension/zipball/0d632b27a8a0860c1a5313dbc5cbc0a492b178a2",
+                "reference": "0d632b27a8a0860c1a5313dbc5cbc0a492b178a2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CustomerPageExtension module",
+            "time": "2018-09-04T14:35:04+00:00"
+        },
+        {
+            "name": "spryker-shop/file-manager-widget",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/file-manager-widget.git",
+                "reference": "eb365ba66b971d8b6d300d083410f3dea7265803"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/file-manager-widget/zipball/eb365ba66b971d8b6d300d083410f3dea7265803",
+                "reference": "eb365ba66b971d8b6d300d083410f3dea7265803",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/cms-content-widget": "^1.0.0",
+                "spryker/file-manager": "^1.0.0",
+                "spryker/file-manager-storage": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker-shop/shop-application": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/router": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*",
+                "spryker/twig": "*"
+            },
+            "suggest": {
+                "spryker-shop/shop-application": "Use this module when using plugins that need Twig dependencies.",
+                "spryker/router": "If you want to use RouteProviderPlugins to be added to the Route Module.",
+                "spryker/silex": "Use this module when using plugins that need Silex dependencies.",
+                "spryker/twig": "Use this module when using plugins that need Twig dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "FileManagerWidget module",
+            "time": "2019-09-26T05:02:14+00:00"
+        },
+        {
+            "name": "spryker-shop/quick-order-page-extension",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/quick-order-page-extension.git",
+                "reference": "cde58666ec0af12d86e5851d7dc2cf230d5965fb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/quick-order-page-extension/zipball/cde58666ec0af12d86e5851d7dc2cf230d5965fb",
+                "reference": "cde58666ec0af12d86e5851d7dc2cf230d5965fb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/symfony": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/symfony": "If you want to use symfony forms"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "QuickOrderPageExtension module",
+            "time": "2019-03-28T16:50:38+00:00"
+        },
+        {
+            "name": "spryker-shop/quote-request-agent-page-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/quote-request-agent-page-extension.git",
+                "reference": "5d75565f470acb7ac6aa3485409bc2bf1bcda6ff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/quote-request-agent-page-extension/zipball/5d75565f470acb7ac6aa3485409bc2bf1bcda6ff",
+                "reference": "5d75565f470acb7ac6aa3485409bc2bf1bcda6ff",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/symfony": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/symfony": "If you want to use QuoteRequestAgentPage form expander plugins."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "QuoteRequestAgentPageExtension module",
+            "time": "2019-05-08T08:02:51+00:00"
+        },
+        {
+            "name": "spryker-shop/quote-request-page-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/quote-request-page-extension.git",
+                "reference": "65e452cd63d151575e724797e40123d097744fac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/quote-request-page-extension/zipball/65e452cd63d151575e724797e40123d097744fac",
+                "reference": "65e452cd63d151575e724797e40123d097744fac",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/symfony": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/symfony": "If you want to use QuoteRequestPage form expander plugins."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "QuoteRequestPageExtension module",
+            "time": "2019-05-08T08:02:51+00:00"
+        },
+        {
+            "name": "spryker-shop/resource-share-page-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/resource-share-page-extension.git",
+                "reference": "b839f5a256d553330254c797555991de0fe4ee20"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/resource-share-page-extension/zipball/b839f5a256d553330254c797555991de0fe4ee20",
+                "reference": "b839f5a256d553330254c797555991de0fe4ee20",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ResourceSharePageExtension module",
+            "time": "2019-05-29T13:35:37+00:00"
+        },
+        {
+            "name": "spryker-shop/shop-router-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/shop-router-extension.git",
+                "reference": "316515f09b3832be6d45b20a92da5dc8f2da2953"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/shop-router-extension/zipball/316515f09b3832be6d45b20a92da5dc8f2da2953",
+                "reference": "316515f09b3832be6d45b20a92da5dc8f2da2953",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/symfony": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ShopRouterExtension module",
+            "time": "2018-06-12T07:58:13+00:00"
+        },
+        {
+            "name": "spryker-shop/shop-ui",
+            "version": "1.30.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/shop-ui.git",
+                "reference": "95968e9051394c1a8d211f7974f58f55ef826dd5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/shop-ui/zipball/95968e9051394c1a8d211f7974f58f55ef826dd5",
+                "reference": "95968e9051394c1a8d211f7974f58f55ef826dd5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.30.0",
+                "spryker/twig": "^3.7.0",
+                "spryker/twig-extension": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/container": "If you want to use Twig Plugins",
+                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ShopUi module",
+            "time": "2019-09-25T15:15:47+00:00"
+        },
+        {
+            "name": "spryker-shop/shopping-list-page-extension",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/shopping-list-page-extension.git",
+                "reference": "8e4c1ab3e9ed596095c3920140c9c698e136b044"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/shopping-list-page-extension/zipball/8e4c1ab3e9ed596095c3920140c9c698e136b044",
+                "reference": "8e4c1ab3e9ed596095c3920140c9c698e136b044",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/symfony": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/symfony": "If you want to use ShoppingListPage form expander plugins."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ShoppingListPageExtension module",
+            "time": "2018-10-03T15:29:44+00:00"
+        },
+        {
+            "name": "spryker-shop/storage-router-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/storage-router-extension.git",
+                "reference": "2ebad3c8479230ba3e6f6ead76b276ace0aef8dc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/storage-router-extension/zipball/2ebad3c8479230ba3e6f6ead76b276ace0aef8dc",
+                "reference": "2ebad3c8479230ba3e6f6ead76b276ace0aef8dc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "StorageRouterExtension module",
+            "time": "2019-09-26T05:02:03+00:00"
+        },
+        {
+            "name": "spryker-shop/tabs-widget-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/tabs-widget-extension.git",
+                "reference": "0b183275068364c3c9fd484eb6c2f00f1f109322"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/tabs-widget-extension/zipball/0b183275068364c3c9fd484eb6c2f00f1f109322",
+                "reference": "0b183275068364c3c9fd484eb6c2f00f1f109322",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "TabsWidgetExtension module",
+            "time": "2018-11-23T16:11:33+00:00"
         },
         {
             "name": "spryker/event-behavior",
@@ -5397,11 +6001,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/sc-1927/master-cdn-usage-for-static-assets",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "93a74d51cea7f83690b42147f943d275263a721a"
+                "reference": "1eda474f8851066b540c2f40cf086a03b5aa4b14"
             },
             "require": {
                 "php": ">=7.1"
@@ -5984,139 +6588,81 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-23T13:14:50+00:00"
+            "time": "2019-10-23T12:41:38+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/sc-1927/master-shop-cdn-usage-for-static-assets",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "d329ebe5a8ca0cb6acfada115ba0850c64b4b30e"
+                "reference": "eec905bd4363d3bd4fc4159c9d93430fe2173a04"
             },
             "require": {
                 "php": ">=7.1"
             },
             "replace": {
-                "spryker-shop/agent-page": "*",
-                "spryker-shop/agent-widget": "*",
-                "spryker-shop/availability-notification-page": "*",
-                "spryker-shop/availability-notification-widget": "*",
                 "spryker-shop/availability-widget": "*",
                 "spryker-shop/business-on-behalf-widget": "*",
                 "spryker-shop/calculation-page": "*",
-                "spryker-shop/cart-code-widget": "*",
-                "spryker-shop/cart-note-widget": "*",
                 "spryker-shop/cart-page": "*",
-                "spryker-shop/cart-to-shopping-list-widget": "*",
                 "spryker-shop/catalog-page": "*",
-                "spryker-shop/category-image-storage-widget": "*",
                 "spryker-shop/category-widget": "*",
-                "spryker-shop/chart-widget": "*",
                 "spryker-shop/checkout-page": "*",
-                "spryker-shop/checkout-page-extension": "*",
                 "spryker-shop/checkout-widget": "*",
                 "spryker-shop/cms-block-widget": "*",
-                "spryker-shop/cms-content-widget-chart-connector": "*",
                 "spryker-shop/cms-content-widget-product-connector": "*",
                 "spryker-shop/cms-content-widget-product-set-connector": "*",
                 "spryker-shop/cms-page": "*",
-                "spryker-shop/cms-search-page": "*",
-                "spryker-shop/comment-widget": "*",
-                "spryker-shop/comment-widget-extension": "*",
                 "spryker-shop/company-page": "*",
-                "spryker-shop/company-user-agent-widget": "*",
-                "spryker-shop/company-user-invitation-page": "*",
-                "spryker-shop/company-widget": "*",
-                "spryker-shop/configurable-bundle-widget": "*",
-                "spryker-shop/content-banner-widget": "*",
-                "spryker-shop/content-file-widget": "*",
-                "spryker-shop/content-product-set-widget": "*",
-                "spryker-shop/content-product-widget": "*",
                 "spryker-shop/currency-widget": "*",
                 "spryker-shop/customer-page": "*",
-                "spryker-shop/customer-page-extension": "*",
-                "spryker-shop/customer-reorder-widget": "*",
                 "spryker-shop/discount-promotion-widget": "*",
                 "spryker-shop/discount-widget": "*",
                 "spryker-shop/error-page": "*",
-                "spryker-shop/file-manager-widget": "*",
-                "spryker-shop/gift-card-widget": "*",
                 "spryker-shop/heartbeat-page": "*",
                 "spryker-shop/home-page": "*",
-                "spryker-shop/language-switcher-widget": "*",
                 "spryker-shop/money-widget": "*",
-                "spryker-shop/multi-cart-page": "*",
-                "spryker-shop/multi-cart-widget": "*",
                 "spryker-shop/navigation-widget": "*",
                 "spryker-shop/newsletter-page": "*",
                 "spryker-shop/newsletter-widget": "*",
-                "spryker-shop/persistent-cart-share-page": "*",
-                "spryker-shop/persistent-cart-share-widget": "*",
-                "spryker-shop/price-product-volume-widget": "*",
                 "spryker-shop/price-widget": "*",
-                "spryker-shop/product-alternative-widget": "*",
-                "spryker-shop/product-barcode-widget": "*",
                 "spryker-shop/product-bundle-widget": "*",
                 "spryker-shop/product-category-widget": "*",
                 "spryker-shop/product-detail-page": "*",
-                "spryker-shop/product-discontinued-widget": "*",
                 "spryker-shop/product-group-widget": "*",
                 "spryker-shop/product-image-widget": "*",
                 "spryker-shop/product-label-widget": "*",
-                "spryker-shop/product-measurement-unit-widget": "*",
                 "spryker-shop/product-new-page": "*",
                 "spryker-shop/product-option-widget": "*",
-                "spryker-shop/product-packaging-unit-widget": "*",
                 "spryker-shop/product-relation-widget": "*",
-                "spryker-shop/product-replacement-for-widget": "*",
                 "spryker-shop/product-review-widget": "*",
-                "spryker-shop/product-search-widget": "*",
                 "spryker-shop/product-set-detail-page": "*",
                 "spryker-shop/product-set-list-page": "*",
                 "spryker-shop/product-set-widget": "*",
                 "spryker-shop/product-widget": "*",
                 "spryker-shop/quick-order-page": "*",
-                "spryker-shop/quick-order-page-extension": "*",
-                "spryker-shop/quote-approval-widget": "*",
-                "spryker-shop/quote-request-agent-page": "*",
-                "spryker-shop/quote-request-agent-page-extension": "*",
-                "spryker-shop/quote-request-agent-widget": "*",
-                "spryker-shop/quote-request-page": "*",
-                "spryker-shop/quote-request-page-extension": "*",
-                "spryker-shop/quote-request-widget": "*",
                 "spryker-shop/redirect-page": "*",
-                "spryker-shop/resource-share-page": "*",
-                "spryker-shop/resource-share-page-extension": "*",
-                "spryker-shop/sales-configurable-bundle-widget": "*",
-                "spryker-shop/sales-order-threshold-widget": "*",
-                "spryker-shop/shared-cart-page": "*",
-                "spryker-shop/shared-cart-widget": "*",
                 "spryker-shop/shop-application": "*",
                 "spryker-shop/shop-application-extension": "*",
-                "spryker-shop/shop-cms-slot": "*",
                 "spryker-shop/shop-cms-slot-extension": "*",
-                "spryker-shop/shop-permission": "*",
+                "spryker-shop/shop-layout": "*",
                 "spryker-shop/shop-router": "*",
-                "spryker-shop/shop-router-extension": "*",
                 "spryker-shop/shop-translator": "*",
-                "spryker-shop/shop-ui": "*",
-                "spryker-shop/shopping-list-note-widget": "*",
-                "spryker-shop/shopping-list-page": "*",
-                "spryker-shop/shopping-list-page-extension": "*",
-                "spryker-shop/shopping-list-widget": "*",
-                "spryker-shop/storage-router": "*",
-                "spryker-shop/storage-router-extension": "*",
-                "spryker-shop/tabs-widget": "*",
-                "spryker-shop/tabs-widget-extension": "*",
                 "spryker-shop/web-profiler-widget": "*",
                 "spryker-shop/wishlist-page": "*",
                 "spryker-shop/wishlist-widget": "*"
             },
             "require-dev": {
-                "spryker/code-sniffer": "dev-master"
+                "spryker/code-sniffer": "dev-master",
+                "spryker/spryker": "dev-master"
             },
             "type": "library",
+            "autoload": {
+                "files": [
+                    "autoload.php"
+                ]
+            },
             "scripts": {
                 "cs-check": [
                     "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -p --ignore=/node_modules/ Bundles/"
@@ -6126,7 +6672,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-10-23T13:14:53+00:00"
+            "time": "2019-10-23T13:29:15+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -9800,7 +10346,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-12T17:28:44+00:00"
+            "time": "2017-12-13T13:21:38+00:00"
         },
         {
             "name": "phpmd/phpmd",
@@ -9843,20 +10389,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
-                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler"
+                    "homepage": "https://github.com/manuelpichler",
+                    "role": "Project Founder"
                 },
                 {
                     "name": "Marc Würth",
-                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84"
+                    "homepage": "https://github.com/ravage84",
+                    "role": "Project Maintainer"
                 },
                 {
                     "name": "Other contributors",
-                    "role": "Contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
+                    "role": "Contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -10125,8 +10671,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "FinderFacade is a convenience wrapper for Symfony's Finder component.",
@@ -10176,8 +10722,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Copy/Paste Detector (CPD) for PHP code.",
@@ -10608,6 +11154,1093 @@
             ],
             "description": "SprykGui module",
             "time": "2019-10-07T12:14:42+00:00"
+        },
+        {
+            "name": "spryker-shop/agent-page",
+            "version": "1.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/agent-page.git",
+                "reference": "f651fb14b4b4b99e4d5b96c4c8a2412f0193bc72"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/agent-page/zipball/f651fb14b4b4b99e4d5b96c4c8a2412f0193bc72",
+                "reference": "f651fb14b4b4b99e4d5b96c4c8a2412f0193bc72",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/customer-page": "^1.4.0 || ^2.0.0",
+                "spryker-shop/customer-page-extension": "^1.2.0",
+                "spryker-shop/shop-application": "^1.1.0",
+                "spryker-shop/shop-ui": "^1.3.0",
+                "spryker/agent": "^1.0.0",
+                "spryker/application": "^3.9.0",
+                "spryker/customer": "^7.10.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/messenger": "^3.1.0",
+                "spryker/quote": "^2.0.0",
+                "spryker/symfony": "^3.1.0"
+            },
+            "require-dev": {
+                "spryker-shop/quote-request-agent-widget": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/router": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/quote-request-agent-widget": "If you want to use quote quote-request-menu-item.twig molecule.",
+                "spryker/router": "Use this module when you want to use the Router.",
+                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "AgentPage module",
+            "time": "2019-10-14T10:22:33+00:00"
+        },
+        {
+            "name": "spryker-shop/cart-note-widget",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/cart-note-widget.git",
+                "reference": "c3b6ac3c9b0aba7d499c1dc0deb4757643d676b5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/cart-note-widget/zipball/c3b6ac3c9b0aba7d499c1dc0deb4757643d676b5",
+                "reference": "c3b6ac3c9b0aba7d499c1dc0deb4757643d676b5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/cart-page": "^1.0.0 || ^3.0.0",
+                "spryker-shop/shop-ui": "^1.0.0",
+                "spryker/application": "^3.8.0",
+                "spryker/cart-note": "^0.1.0",
+                "spryker/glossary-storage": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/symfony": "^3.1.0"
+            },
+            "require-dev": {
+                "spryker-shop/checkout-page": "*",
+                "spryker-shop/customer-page": "*",
+                "spryker-shop/shop-application": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/router": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/checkout-page": "Widget plugins are available for this module.",
+                "spryker-shop/customer-page": "Widget plugins are available for this module.",
+                "spryker-shop/shop-application": "Use this module when using plugins that need ShopApplication dependencies.",
+                "spryker/router": "Use this module when using plugins that need Router dependencies.",
+                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CartNoteWidget module",
+            "time": "2019-09-26T05:02:14+00:00"
+        },
+        {
+            "name": "spryker-shop/cms-content-widget-chart-connector",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/cms-content-widget-chart-connector.git",
+                "reference": "7aeda4e717b603d7e56abaf5712653ec0f1e6a9c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/cms-content-widget-chart-connector/zipball/7aeda4e717b603d7e56abaf5712653ec0f1e6a9c",
+                "reference": "7aeda4e717b603d7e56abaf5712653ec0f1e6a9c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/cms-content-widget": "^1.0.0",
+                "spryker/kernel": "^3.24.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*",
+                "spryker/twig": "*"
+            },
+            "suggest": {
+                "spryker-shop/chart-widget": "If you want to use ChartWidgetPlugin: ^0.1.0",
+                "spryker/twig": "If you want to use CmsChartContentWidgetPlugin: ^3.2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsContentWidgetChartConnector module",
+            "time": "2019-03-22T06:59:44+00:00"
+        },
+        {
+            "name": "spryker-shop/company-user-invitation-page",
+            "version": "2.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/company-user-invitation-page.git",
+                "reference": "29248f2bda8fcff457c8510abe041eac2011a679"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/company-user-invitation-page/zipball/29248f2bda8fcff457c8510abe041eac2011a679",
+                "reference": "29248f2bda8fcff457c8510abe041eac2011a679",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/customer-page-extension": "^1.0.0",
+                "spryker-shop/shop-application": "^1.0.0",
+                "spryker-shop/shop-ui": "^1.13.0",
+                "spryker/application": "^3.8.0",
+                "spryker/company-user-invitation": "^1.0.0",
+                "spryker/csv": "^3.0.0",
+                "spryker/customer": "^7.7.1",
+                "spryker/kernel": "^3.30.0",
+                "spryker/session": "^3.2.4 || ^4.0.0",
+                "spryker/symfony": "^3.1.4"
+            },
+            "require-dev": {
+                "spryker-shop/company-page": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/router": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/company-page": "Use this module when you want to use the CompanyPage plugins.",
+                "spryker/router": "Use this module when you want to use the Router.",
+                "spryker/silex": "If you want to use the shops router provider"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CompanyUserInvitationPage module",
+            "time": "2019-09-26T05:02:17+00:00"
+        },
+        {
+            "name": "spryker-shop/company-widget",
+            "version": "1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/company-widget.git",
+                "reference": "4812ab2d26ab631d7d91e16becf813418ebfcdd3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/company-widget/zipball/4812ab2d26ab631d7d91e16becf813418ebfcdd3",
+                "reference": "4812ab2d26ab631d7d91e16becf813418ebfcdd3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/customer": "^7.0.0",
+                "spryker/kernel": "^3.30.0"
+            },
+            "require-dev": {
+                "spryker-shop/shop-ui": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/shop-ui": "To add widget customer navigation menu: ^1.28.1."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CompanyWidget module",
+            "time": "2019-10-22T09:01:14+00:00"
+        },
+        {
+            "name": "spryker-shop/configurable-bundle-widget",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/configurable-bundle-widget.git",
+                "reference": "97f0d98abcf5c3b91af6d3e2e1a0cec97c948fd3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/configurable-bundle-widget/zipball/97f0d98abcf5c3b91af6d3e2e1a0cec97c948fd3",
+                "reference": "97f0d98abcf5c3b91af6d3e2e1a0cec97c948fd3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/shop-application": "^1.2.0",
+                "spryker-shop/shop-ui": "^1.29.0",
+                "spryker/configurable-bundle": "^1.0.0",
+                "spryker/configurable-bundle-cart": "^1.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/quote": "^2.8.0",
+                "spryker/symfony": "^3.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/router": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/router": "Use this module if you want use the RouterProviderPlugin.",
+                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ConfigurableBundleWidget module",
+            "time": "2019-10-16T16:53:03+00:00"
+        },
+        {
+            "name": "spryker-shop/customer-reorder-widget",
+            "version": "6.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/customer-reorder-widget.git",
+                "reference": "4b3e005fa13e99d084106b5f81295b9ca9c9b2e0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/customer-reorder-widget/zipball/4b3e005fa13e99d084106b5f81295b9ca9c9b2e0",
+                "reference": "4b3e005fa13e99d084106b5f81295b9ca9c9b2e0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/shop-application": "^1.0.0",
+                "spryker-shop/shop-ui": "^1.0.0",
+                "spryker/availability-storage": "^1.0.0",
+                "spryker/cart": "^4.6.0 || ^5.0.0 || ^7.0.0",
+                "spryker/customer": "^7.4.0",
+                "spryker/glossary-storage": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/locale": "^3.0.0",
+                "spryker/messenger": "^3.1.0",
+                "spryker/product-bundle": "^4.1.0 || ^6.0.0",
+                "spryker/product-storage": "^1.1.0",
+                "spryker/sales": "^8.5.0 || ^10.0.0 || ^11.0.0",
+                "spryker/symfony": "^3.1.0",
+                "spryker/zed-request": "^3.6.0"
+            },
+            "require-dev": {
+                "spryker-shop/customer-page": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/router": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/cart-page": "The default widget redirect is heading to a cart controller. Please redefine the redirect URL if you would like to use a custom behavior.",
+                "spryker-shop/customer-page": "Module with interface to implement (^0.2.0), to use the reorder widget on a customer page",
+                "spryker/router": "Use this module when you want to use the Router.",
+                "spryker/silex": "If you want use the widget's router provider"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CustomerReorderWidget module",
+            "time": "2019-09-26T05:02:15+00:00"
+        },
+        {
+            "name": "spryker-shop/gift-card-widget",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/gift-card-widget.git",
+                "reference": "131f71e169bdc06791f4f13823994e255bfe85bd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/gift-card-widget/zipball/131f71e169bdc06791f4f13823994e255bfe85bd",
+                "reference": "131f71e169bdc06791f4f13823994e255bfe85bd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/cart-code-widget": "^1.0.0",
+                "spryker-shop/shop-ui": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "GiftCardWidget module",
+            "time": "2019-07-09T13:26:38+00:00"
+        },
+        {
+            "name": "spryker-shop/multi-cart-page",
+            "version": "2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/multi-cart-page.git",
+                "reference": "5f65fdc26a512ff33abdf4a10a30dcd442e327a4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/multi-cart-page/zipball/5f65fdc26a512ff33abdf4a10a30dcd442e327a4",
+                "reference": "5f65fdc26a512ff33abdf4a10a30dcd442e327a4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/shop-application": "^1.0.0",
+                "spryker-shop/shop-ui": "^1.6.0",
+                "spryker/application": "^3.0.0",
+                "spryker/cart": "^5.0.0 || ^7.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/multi-cart": "^1.0.0",
+                "spryker/quote": "^2.8.0",
+                "spryker/symfony": "^3.1.0"
+            },
+            "require-dev": {
+                "spryker-shop/customer-page": "*",
+                "spryker-shop/shared-cart-widget": "*",
+                "spryker-shop/shopping-list-widget": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/router": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/customer-page": "if you want to use customer layout templates: ^1.0.0",
+                "spryker-shop/shared-cart-widget": "If you want to use CartListPermissionGroupWidget",
+                "spryker-shop/shopping-list-widget": "If you want to use components from module ShoppingListWidget",
+                "spryker/permission": "If you want to use permissions plugins",
+                "spryker/router": "Use this module when you want to use the Router.",
+                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MultiCartPage module",
+            "time": "2019-10-14T10:22:33+00:00"
+        },
+        {
+            "name": "spryker-shop/multi-cart-widget",
+            "version": "1.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/multi-cart-widget.git",
+                "reference": "9c6f8f324712e9b475fb522728e02af5078d25ea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/multi-cart-widget/zipball/9c6f8f324712e9b475fb522728e02af5078d25ea",
+                "reference": "9c6f8f324712e9b475fb522728e02af5078d25ea",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/shop-ui": "^1.6.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/multi-cart": "^1.0.0",
+                "spryker/quote": "^2.8.0"
+            },
+            "require-dev": {
+                "spryker-shop/cart-page": "*",
+                "spryker-shop/customer-page": "*",
+                "spryker-shop/product-detail-page": "*",
+                "spryker-shop/quick-order-page": "*",
+                "spryker-shop/shared-cart-widget": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/cart-page": "Widget plugins are available for this module.",
+                "spryker-shop/customer-page": "If you want to use MultiCartMenuItemWidgetPlugin: ^1.3.1",
+                "spryker-shop/product-detail-page": "Widget plugins are available for this module.",
+                "spryker-shop/quick-order-page": "If you want to use quick order page widget",
+                "spryker-shop/shared-cart-widget": "If you want to use components from module SharedCartWidget or SharedCartAddSeparateProductWidgetPlugin.",
+                "spryker/permission": "If you want to use permissions plugins",
+                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MultiCartWidget module",
+            "time": "2019-08-09T15:43:43+00:00"
+        },
+        {
+            "name": "spryker-shop/product-alternative-widget",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/product-alternative-widget.git",
+                "reference": "dfd5f270caa7402771257214c6a0e8a8b0e0c42b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/product-alternative-widget/zipball/dfd5f270caa7402771257214c6a0e8a8b0e0c42b",
+                "reference": "dfd5f270caa7402771257214c6a0e8a8b0e0c42b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/shop-ui": "^1.28.1",
+                "spryker/kernel": "^3.30.0",
+                "spryker/product-alternative-storage": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker-shop/product-detail-page": "*",
+                "spryker-shop/shopping-list-page": "*",
+                "spryker-shop/wishlist-page": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/product-detail-page": "if you want to use ProductAlternativeWidgetPlugin: ^1.1.0",
+                "spryker-shop/shopping-list-page": "if you want to use ProductAlternativeWidgetPlugin: ^0.4.1",
+                "spryker-shop/wishlist-page": "if you want to use ProductAlternativeWidgetPlugin: ^1.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductAlternativeWidget module",
+            "time": "2019-08-12T08:23:11+00:00"
+        },
+        {
+            "name": "spryker-shop/product-discontinued-widget",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/product-discontinued-widget.git",
+                "reference": "c2b4be6848829e5f461099a83b0336bca687a46d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/product-discontinued-widget/zipball/c2b4be6848829e5f461099a83b0336bca687a46d",
+                "reference": "c2b4be6848829e5f461099a83b0336bca687a46d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.24.0",
+                "spryker/product-discontinued-storage": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker-shop/product-detail-page": "*",
+                "spryker-shop/shopping-list-page": "*",
+                "spryker-shop/wishlist-page": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/product-detail-page": "if you want to use ProductDiscontinuedWidgetPlugin: ^1.1.0",
+                "spryker-shop/shopping-list-page": "if you want to use ProductDiscontinuedWidgetPlugin: ^0.4.1",
+                "spryker-shop/wishlist-page": "if you want to use ProductDiscontinuedWidgetPlugin: ^1.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductDiscontinuedWidget module",
+            "time": "2018-10-11T17:28:11+00:00"
+        },
+        {
+            "name": "spryker-shop/product-measurement-unit-widget",
+            "version": "0.8.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/product-measurement-unit-widget.git",
+                "reference": "697260c3e620237e6ae1dcbea7b8d52675841885"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/product-measurement-unit-widget/zipball/697260c3e620237e6ae1dcbea7b8d52675841885",
+                "reference": "697260c3e620237e6ae1dcbea7b8d52675841885",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/shop-ui": "^1.13.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/product-measurement-unit-storage": "^1.1.0",
+                "spryker/product-quantity-storage": "^1.0.0 || ^3.0.0"
+            },
+            "require-dev": {
+                "spryker-shop/cart-page": "*",
+                "spryker-shop/product-detail-page": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/cart-page": "If you want to use QuantitySalesUnitWidgetPlugin.",
+                "spryker-shop/product-detail-page": "if you want to use ProductMeasurementUnitWidgetPlugin."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductMeasurementUnitWidget module",
+            "time": "2019-10-14T10:22:33+00:00"
+        },
+        {
+            "name": "spryker-shop/product-packaging-unit-widget",
+            "version": "0.4.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/product-packaging-unit-widget.git",
+                "reference": "dc5dc3c77b383274ca8f4b9534914d10f38b3586"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/product-packaging-unit-widget/zipball/dc5dc3c77b383274ca8f4b9534914d10f38b3586",
+                "reference": "dc5dc3c77b383274ca8f4b9534914d10f38b3586",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/quick-order-page-extension": "^1.0.0",
+                "spryker-shop/shop-ui": "^1.13.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/product-measurement-unit-storage": "^1.1.0",
+                "spryker/product-packaging-unit-storage": "^2.0.0 || ^4.0.0",
+                "spryker/product-quantity-storage": "^1.0.0 || ^3.0.0",
+                "spryker/util-encoding": "^2.0.0"
+            },
+            "require-dev": {
+                "spryker-shop/cart-page": "*",
+                "spryker-shop/checkout-page": "*",
+                "spryker-shop/customer-page": "*",
+                "spryker-shop/money-widget": "*",
+                "spryker-shop/product-detail-page": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/cart-page": "Widget plugins are available for this module.",
+                "spryker-shop/checkout-page": "Widget plugins are available for this module.",
+                "spryker-shop/customer-page": "Widget plugins are available for this module.",
+                "spryker-shop/money-widget": "For using moneySymbol twig function: ^1.1.0",
+                "spryker-shop/product-detail-page": "Widget plugins are available for this module."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductPackagingUnitWidget module",
+            "time": "2019-10-14T10:22:33+00:00"
+        },
+        {
+            "name": "spryker-shop/product-replacement-for-widget",
+            "version": "1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/product-replacement-for-widget.git",
+                "reference": "d3edfbfcf60e02cfbcee4032345245ba9daf3ac8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/product-replacement-for-widget/zipball/d3edfbfcf60e02cfbcee4032345245ba9daf3ac8",
+                "reference": "d3edfbfcf60e02cfbcee4032345245ba9daf3ac8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.30.0",
+                "spryker/product-alternative-storage": "^1.0.0",
+                "spryker/product-storage": "^1.14.0"
+            },
+            "require-dev": {
+                "spryker-shop/product-detail-page": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/product-detail-page": "if you want to use ProductReplacementForWidgetPlugin: ^1.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductReplacementForWidget module",
+            "time": "2019-09-27T14:03:05+00:00"
+        },
+        {
+            "name": "spryker-shop/quote-request-agent-widget",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/quote-request-agent-widget.git",
+                "reference": "570224d05306097e8f7301ea5cabd379430221cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/quote-request-agent-widget/zipball/570224d05306097e8f7301ea5cabd379430221cf",
+                "reference": "570224d05306097e8f7301ea5cabd379430221cf",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/shop-application": "^1.2.0",
+                "spryker-shop/shop-ui": "^1.0.0",
+                "spryker/application": "^3.8.0",
+                "spryker/customer": "^7.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/persistent-cart": "^1.8.0 || ^3.0.0",
+                "spryker/quote": "^2.0.0",
+                "spryker/quote-request-agent": "^2.0.0",
+                "spryker/symfony": "^3.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/router": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/quote-request-agent-page": "Use this module if you want see quote request agent pages.",
+                "spryker/router": "Use this module if you want use the RouterProviderPlugin.",
+                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "QuoteRequestAgentWidget module",
+            "time": "2019-09-26T05:02:15+00:00"
+        },
+        {
+            "name": "spryker-shop/quote-request-page",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/quote-request-page.git",
+                "reference": "2cf6d0e1098b65d479327df488091cde982e0ef0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/quote-request-page/zipball/2cf6d0e1098b65d479327df488091cde982e0ef0",
+                "reference": "2cf6d0e1098b65d479327df488091cde982e0ef0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/quote-request-page-extension": "^1.0.0",
+                "spryker-shop/shop-application": "^1.0.0",
+                "spryker-shop/shop-ui": "^1.0.0",
+                "spryker/application": "^3.8.0",
+                "spryker/cart": "^5.0.0 || ^7.0.0",
+                "spryker/company-user": "^2.10.0",
+                "spryker/customer": "^7.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/persistent-cart": "^1.8.0 || ^3.0.0",
+                "spryker/quote": "^2.0.0",
+                "spryker/quote-request": "^2.0.0",
+                "spryker/symfony": "^3.1.0",
+                "spryker/util-date-time": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker-shop/cart-page": "*",
+                "spryker-shop/customer-page": "*",
+                "spryker-shop/product-option-widget": "*",
+                "spryker-shop/product-packaging-unit-widget": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/router": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/cart-page": "If you want to use cart page molecules: ^3.2.0",
+                "spryker-shop/configurable-bundle-widget": "If you want to use configurable bundle widget functionality",
+                "spryker-shop/customer-page": "If you want to use customer layout templates: ^1.0.0",
+                "spryker-shop/discount-widget": "If you want to use discount widget functionality: ^1.2.0",
+                "spryker-shop/product-option-widget": "If you want to use product option widget functionality",
+                "spryker-shop/product-packaging-unit-widget": "If you want to use product packaging unit widget functionality",
+                "spryker/router": "Use this module if you want use the RouterProviderPlugin.",
+                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "QuoteRequestPage module",
+            "time": "2019-10-16T10:49:27+00:00"
+        },
+        {
+            "name": "spryker-shop/shared-cart-widget",
+            "version": "1.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/shared-cart-widget.git",
+                "reference": "95c2f10b82de4d7d1051c9ac2134f2b3539d86dd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/shared-cart-widget/zipball/95c2f10b82de4d7d1051c9ac2134f2b3539d86dd",
+                "reference": "95c2f10b82de4d7d1051c9ac2134f2b3539d86dd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/shop-ui": "^1.0.0",
+                "spryker/customer": "^7.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/multi-cart": "^1.3.0",
+                "spryker/quote": "^2.8.0",
+                "spryker/shared-cart": "^1.13.0"
+            },
+            "require-dev": {
+                "spryker-shop/multi-cart-widget": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/multi-cart-page": "If you want to use CartDeleteCompanyUsersListWidgetPlugin and CartListPermissionGroupWidgetPlugin: ^1.0.0",
+                "spryker-shop/multi-cart-widget": "Widget plugins are available for this module.",
+                "spryker/permission": "If you want to use permissions plugins",
+                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SharedCartWidget module",
+            "time": "2019-07-09T08:06:49+00:00"
+        },
+        {
+            "name": "spryker-shop/shopping-list-page",
+            "version": "0.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/shopping-list-page.git",
+                "reference": "bbd283ee85eea2b752258850b7a968b375cd5a4a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/shopping-list-page/zipball/bbd283ee85eea2b752258850b7a968b375cd5a4a",
+                "reference": "bbd283ee85eea2b752258850b7a968b375cd5a4a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/shop-application": "^1.2.0",
+                "spryker-shop/shop-ui": "^1.27.0",
+                "spryker-shop/shopping-list-page-extension": "^1.1.0",
+                "spryker/application": "^3.8.0",
+                "spryker/company-business-unit": "^1.5.0 || ^2.4.0",
+                "spryker/company-user": "^2.8.0",
+                "spryker/customer": "^7.4.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/multi-cart": "^1.1.0",
+                "spryker/product-storage": "^1.1.0",
+                "spryker/shopping-list": "^2.3.0 || ^4.0.0",
+                "spryker/symfony": "^3.1.0",
+                "spryker/util-encoding": "^2.0.0",
+                "spryker/zed-request": "^3.4.0"
+            },
+            "require-dev": {
+                "spryker-shop/customer-page": "*",
+                "spryker-shop/product-option-widget": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/router": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/customer-page": "Use this module when you want to show shopping lists on a customer page",
+                "spryker-shop/product-option-widget": "Use this module if you want to manage product options for shopping list items.",
+                "spryker/router": "Use this module when you want to use the Router.",
+                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ShoppingListPage module",
+            "time": "2019-09-26T05:02:17+00:00"
+        },
+        {
+            "name": "spryker-shop/shopping-list-widget",
+            "version": "0.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/shopping-list-widget.git",
+                "reference": "4a979a657a3c57335a3215614e5c520a41be7a33"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/shopping-list-widget/zipball/4a979a657a3c57335a3215614e5c520a41be7a33",
+                "reference": "4a979a657a3c57335a3215614e5c520a41be7a33",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/quick-order-page-extension": "^1.0.0",
+                "spryker-shop/shop-application": "^1.0.0",
+                "spryker-shop/shop-ui": "^1.0.0",
+                "spryker/customer": "^7.4.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/shopping-list": "^2.7.0 || ^4.0.0",
+                "spryker/shopping-list-session": "^1.0.0",
+                "spryker/symfony": "^3.1.0"
+            },
+            "require-dev": {
+                "spryker-shop/customer-page": "*",
+                "spryker-shop/product-detail-page": "*",
+                "spryker-shop/shopping-list-page": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/router": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/customer-page": "Widget plugins are available for this module.",
+                "spryker-shop/multi-cart-page": "If you want to use CartToShoppingListWidgetPlugin: ^1.0.0",
+                "spryker-shop/product-detail-page": "To use ShoppingListWidget plugin, ShoppingListWidgetPluginInterface from product-detail-page v0.2.2 is needed",
+                "spryker-shop/quick-order-page": "If you want to use ShoppingListQuickOrderPageWidgetPlugin: ^1.0.0",
+                "spryker-shop/shopping-list-page": "Use this module if you want see shopping list pages",
+                "spryker/router": "Use this module when you want to use the Router.",
+                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ShoppingListWidget module",
+            "time": "2019-10-14T10:22:33+00:00"
         },
         {
             "name": "spryker/architecture-sniffer",
@@ -11188,8 +12821,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "lead",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "lead"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
