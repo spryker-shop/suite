@@ -71,7 +71,7 @@ matrix:
       language: minimal
       env:
         - PROGRESS_TYPE=plain
-        - SPRYKER_PHP_VERSION=7.3
+        - SPRYKER_PLATFORM_IMAGE=spryker/php:7.3
         - SPRYKER_DB_ENGINE=PGSQL
         - SPRYKER_TEST_IN_BROWSER=phantomjs
         - TRAVIS=1
@@ -80,8 +80,6 @@ matrix:
           - yves.de.spryker.local
           - zed.de.spryker.local
           - glue.de.spryker.local
-          - queue.spryker.local
-          - scheduler.spryker.local
         apt:
           packages:
             - apache2-utils
@@ -115,7 +113,7 @@ matrix:
       language: minimal
       env:
         - PROGRESS_TYPE=plain
-        - SPRYKER_PHP_VERSION=7.3
+        - SPRYKER_PLATFORM_IMAGE=spryker/php:7.3
         - SPRYKER_DB_ENGINE=PGSQL
         - SPRYKER_TEST_IN_BROWSER=phantomjs
         - TRAVIS=1
@@ -124,8 +122,6 @@ matrix:
           - yves.de.spryker.local
           - zed.de.spryker.local
           - glue.de.spryker.local
-          - queue.spryker.local
-          - scheduler.spryker.local
         apt:
           packages:
             - apache2-utils
@@ -161,7 +157,7 @@ matrix:
       language: minimal
       env:
         - PROGRESS_TYPE=plain
-        - SPRYKER_PHP_VERSION=7.3
+        - SPRYKER_PLATFORM_IMAGE=spryker/php:7.3
         - SPRYKER_DB_ENGINE=MYSQL
         - SPRYKER_TEST_IN_BROWSER=phantomjs
         - TRAVIS=1
@@ -170,8 +166,6 @@ matrix:
           - yves.de.spryker.local
           - zed.de.spryker.local
           - glue.de.spryker.local
-          - queue.spryker.local
-          - scheduler.spryker.local
         apt:
           packages:
             - apache2-utils
