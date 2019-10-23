@@ -17,17 +17,7 @@ use SprykerShop\Yves\ChartWidget\Plugin\Twig\Chart\PieChartTwigPlugin;
 class ChartWidgetDependencyProvider extends SprykerShopChartDependencyProvider
 {
     /**
-     * @return \Spryker\Yves\ChartExtension\Dependency\Plugin\ChartPluginInterface[]
-     */
-    protected function getChartTwigPlugins(): array
-    {
-        return [
-            new ExampleChartPlugin(),
-        ];
-    }
-
-    /**
-     * @return \Spryker\Yves\ChartExtension\Dependency\Plugin\ChartTwigFunctionPluginInterface[]
+     * @return \SprykerShop\Yves\ChartWidgetExtension\Dependency\Plugin\ChartTwigFunctionPluginInterface[]
      */
     protected function getChartTwigFunctionPlugins(): array
     {
@@ -36,6 +26,16 @@ class ChartWidgetDependencyProvider extends SprykerShopChartDependencyProvider
             new ChartTwigPlugin(),
             new PieChartTwigPlugin(),
             new LineChartTwigPlugin(),
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\ChartWidgetExtension\Dependency\Plugin\ChartPluginInterface[]
+     */
+    protected function getChartTwigPlugins(): array
+    {
+        return [
+            new ExampleChartPlugin(),
         ];
     }
 }
