@@ -102,7 +102,7 @@ matrix:
       script:
         - docker/sdk boot deploy.ci.yml
         - docker/sdk build images
-        - docker/sdk demo-data
+        - docker/sdk demo-data -t
         - 'docker/sdk testing codecept run -c codeception.functional.yml -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: inclusive: [PyzTest]\"" -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: exclusive: [Api, Glue]\""'
       before_install: skip
       before_script: skip
@@ -146,7 +146,7 @@ matrix:
       script:
         - docker/sdk boot deploy.ci.yml
         - docker/sdk build -t images
-        - docker/sdk demo-data -t fixtures
+        - docker/sdk demo-data -t demo-minimal
         - docker/sdk testing codecept fixtures
         - docker/sdk testing console queue:worker:start --stop-when-empty
         - docker/sdk testing codecept run -c codeception.api.yml
@@ -192,7 +192,7 @@ matrix:
       script:
         - docker/sdk boot deploy.ci.yml
         - docker/sdk build images
-        - docker/sdk demo-data
+        - docker/sdk demo-data -t
         - 'docker/sdk testing codecept run -c codeception.functional.yml -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: inclusive: [PyzTest]\"" -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: exclusive: [Api, Glue]\""'
       before_install: skip
       before_script: skip
