@@ -9,6 +9,7 @@ namespace PyzTest\Glue\Products\RestApi;
 
 use Codeception\Util\HttpCode;
 use PyzTest\Glue\Products\ProductsApiTester;
+use Spryker\Glue\ProductPricesRestApi\ProductPricesRestApiConfig;
 
 /**
  * Auto-generated group annotations
@@ -161,5 +162,45 @@ class ProductAbstractRestApiCest
         $I->amSure('Returned resource contains `url` attribute')
             ->whenI()
             ->seeSingleResourceHasAttribute('url');
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     *
+     * @return void
+     */
+    public function requestExistingProductAbstractWithProductPriceRelationship(ProductsApiTester $I): void
+    {
+        //act
+        $I->sendGET(
+            $I->formatUrl(
+                'abstract-products/{ProductAbstractSku}?include={AbstractProducePrices}',
+                [
+                    'ProductAbstractSku' => $this->fixtures->getProductConcreteTransfer()->getAbstractSku(),
+                    'AbstractProducePrices' => ProductPricesRestApiConfig::RESOURCE_ABSTRACT_PRODUCT_PRICES,
+                ]
+            )
+        );
+
+        //assert
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+
+        $I->amSure('Returned resource has include of type abstract-product-prices')
+            ->whenI()
+            ->seeSingleResourceHasRelationshipByTypeAndId(
+                ProductPricesRestApiConfig::RESOURCE_ABSTRACT_PRODUCT_PRICES,
+                $this->fixtures->getProductConcreteTransfer()->getAbstractSku()
+            );
+
+        $I->amSure('Returned resource has include of type abstract-product-prices')
+            ->whenI()
+            ->seeIncludesContainsResourceByTypeAndId(
+                ProductPricesRestApiConfig::RESOURCE_ABSTRACT_PRODUCT_PRICES,
+                $this->fixtures->getProductConcreteTransfer()->getAbstractSku()
+            );
     }
 }

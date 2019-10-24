@@ -13,29 +13,29 @@
                 <flag>Flag1</flag>
                 <flag>Flag2</flag>
             </state>
-            <state name="invoice sent" />
-            <state name="order exported" />
-            <state name="order shipped" />
-            <state name="waiting for payment" />
-            <state name="payment received" />
-            <state name="reminder I sent" />
-            <state name="reminder II sent" />
-            <state name="dunning process started" />
-            <state name="ready for return" />
-            <state name="order export failed" />
-            <state name="completed" />
+            <state name="invoice sent"/>
+            <state name="order exported"/>
+            <state name="order shipped"/>
+            <state name="waiting for payment"/>
+            <state name="payment received"/>
+            <state name="reminder I sent"/>
+            <state name="reminder II sent"/>
+            <state name="dunning process started"/>
+            <state name="ready for return"/>
+            <state name="order export failed"/>
+            <state name="completed"/>
         </states>
 
         <events>
-            <event name="create invoice" onEnter="true" command="Test/Command" />
-            <event name="send invoice" onEnter="true" />
-            <event name="export order" onEnter="true" />
-            <event name="ship order" manual="true" />
-            <event name="waiting for payment" onEnter="true" />
-            <event name="payment not received" timeout="1hour" />
-            <event name="payment received" manual="true" />
-            <event name="ready for return"  onEnter="true" />
-            <event name="item not returned" timeout="14days" />
+            <event name="create invoice" onEnter="true" command="Test/Command"/>
+            <event name="send invoice" onEnter="true"/>
+            <event name="export order" onEnter="true"/>
+            <event name="ship order" manual="true"/>
+            <event name="waiting for payment" onEnter="true"/>
+            <event name="payment not received" timeout="1hour"/>
+            <event name="payment received" manual="true"/>
+            <event name="ready for return"  onEnter="true"/>
+            <event name="item not returned" timeout="14days"/>
         </events>
 
         <transitions>
