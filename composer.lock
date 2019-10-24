@@ -5142,6 +5142,50 @@
             "time": "2019-10-10T13:04:51+00:00"
         },
         {
+            "name": "spryker/configurable-bundle-cart",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/configurable-bundle-cart.git",
+                "reference": "a94a95f0e99d9688f907054eb9cca480fab7e605"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/configurable-bundle-cart/zipball/a94a95f0e99d9688f907054eb9cca480fab7e605",
+                "reference": "a94a95f0e99d9688f907054eb9cca480fab7e605",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/cart": "^7.3.0",
+                "spryker/cart-extension": "^1.9.0 || ^2.5.0 || ^4.1.0",
+                "spryker/configurable-bundle": "^1.0.0",
+                "spryker/kernel": "^3.33.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ConfigurableBundleCart module",
+            "time": "2019-10-17T05:55:16+00:00"
+        },
+        {
             "name": "spryker/event-behavior",
             "version": "dev-master",
             "source": {
@@ -5399,7 +5443,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "30d378b7561d2f9aa9687b7d7c2eea3d0f1f26f2"
+                "reference": "6a40ca84c3b042a18818e493714d2f6a7605f00d"
             },
             "require": {
                 "php": ">=7.1"
@@ -5980,7 +6024,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-23T08:11:38+00:00"
+            "time": "2019-10-24T14:45:18+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5988,7 +6032,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "15e51e7c9eceda3386d204f5d9830311df002e53"
+                "reference": "abdced5e423b323dd6b91d07da2148874cb1d0ef"
             },
             "require": {
                 "php": ">=7.1"
@@ -6122,7 +6166,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-10-14T12:38:48+00:00"
+            "time": "2019-10-24T11:32:31+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
