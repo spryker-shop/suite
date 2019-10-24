@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "722b8e2dc75690d4b2f045527d565185",
+    "content-hash": "dbdf2c031d4c28cc2db369ccf7f5e265",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5397,11 +5397,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/glue-8088/glue-8748-labels-to-concrete-product-relationships",
+            "version": "dev-feature/glue-8088/dev-product-label-api",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "f49f8d2ca031241a25b946aa0b18a1b611865762"
+                "reference": "3d48e75dbba9aa72c6b9450183f7d47141302ab1"
             },
             "require": {
                 "php": ">=7.1"
@@ -5554,6 +5554,7 @@
                 "spryker/company-users-rest-api": "*",
                 "spryker/config": "*",
                 "spryker/configurable-bundle": "*",
+                "spryker/configurable-bundle-cart": "*",
                 "spryker/configurable-bundle-data-import": "*",
                 "spryker/configurable-bundle-storage": "*",
                 "spryker/console": "*",
@@ -5841,6 +5842,7 @@
                 "spryker/quote": "*",
                 "spryker/quote-approval": "*",
                 "spryker/quote-approval-extension": "*",
+                "spryker/quote-approval-shipment-connector": "*",
                 "spryker/quote-extension": "*",
                 "spryker/quote-request": "*",
                 "spryker/quote-request-agent": "*",
@@ -5964,7 +5966,8 @@
                 "spryker/code-sniffer": "dev-master"
             },
             "bin": [
-                "Bundles/Console/bin/console"
+                "Bundles/Console/bin/console",
+                "Bundles/Console/bin/yves"
             ],
             "type": "library",
             "autoload": {
@@ -5981,7 +5984,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-23T11:41:50+00:00"
+            "time": "2019-10-24T14:12:34+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -10768,7 +10771,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "fc2c4dfea0a72829bbe8f5f15702faa901c8fd3f"
+                "reference": "53ac4594f44ae403129954f8576728709f103eea"
             },
             "require": {
                 "php": ">=7.1",
@@ -10809,7 +10812,7 @@
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2019-10-16T12:45:41+00:00"
+            "time": "2019-10-24T16:16:47+00:00"
         },
         {
             "name": "spryker/git-hook",
