@@ -9,6 +9,7 @@ namespace PyzTest\Glue\Products\RestApi;
 
 use Codeception\Util\HttpCode;
 use PyzTest\Glue\Products\ProductsApiTester;
+use Spryker\Glue\ProductPricesRestApi\ProductPricesRestApiConfig;
 
 /**
  * Auto-generated group annotations
@@ -83,9 +84,10 @@ class ProductConcreteRestApiCest
         //act
         $I->sendGET(
             $I->formatUrl(
-                'concrete-products/{ProductConcreteSku}?include=concrete-product-prices',
+                'concrete-products/{ProductConcreteSku}?include={ConcreteProducePrices}',
                 [
                     'ProductConcreteSku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
+                    'ConcreteProducePrices' => ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
                 ]
             )
         );
@@ -97,10 +99,16 @@ class ProductConcreteRestApiCest
 
         $I->amSure('Returned resource is of type concrete-products')
             ->whenI()
-            ->seeSingleResourceHasRelationshipByTypeAndId('concrete-product-prices', $this->fixtures->getProductConcreteTransfer()->getSku());
+            ->seeSingleResourceHasRelationshipByTypeAndId(
+                ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
+                $this->fixtures->getProductConcreteTransfer()->getSku()
+            );
 
         $I->amSure('Returned resource has correct id')
             ->whenI()
-            ->seeIncludesContainsResourceByTypeAndId('concrete-product-prices', $this->fixtures->getProductConcreteTransfer()->getSku());
+            ->seeIncludesContainsResourceByTypeAndId(
+                ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
+                $this->fixtures->getProductConcreteTransfer()->getSku()
+            );
     }
 }
