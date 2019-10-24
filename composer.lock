@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "56d7b6b1380bbc43f76922190a559984",
+    "content-hash": "aa1d46cafb18b1b70fa68c042d07f5f4",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.112.26",
+            "version": "3.112.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "eda066813388de5ab8584f06707dacd0b15908b0"
+                "reference": "fab980dbc5dc57e9c14a9ce26f55b6ad88b5b979"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/eda066813388de5ab8584f06707dacd0b15908b0",
-                "reference": "eda066813388de5ab8584f06707dacd0b15908b0",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/fab980dbc5dc57e9c14a9ce26f55b6ad88b5b979",
+                "reference": "fab980dbc5dc57e9c14a9ce26f55b6ad88b5b979",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-10-22T18:17:52+00:00"
+            "time": "2019-10-23T18:13:05+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -1032,8 +1032,8 @@
             "authors": [
                 {
                     "name": "Filipe Dobreira",
-                    "role": "Developer",
-                    "homepage": "https://github.com/filp"
+                    "homepage": "https://github.com/filp",
+                    "role": "Developer"
                 }
             ],
             "description": "php error handling for cool kids",
@@ -1134,8 +1134,8 @@
             "authors": [
                 {
                     "name": "Alessio Linares",
-                    "role": "Software Engineer",
-                    "email": "alessio.linares@skyscanner.net"
+                    "email": "alessio.linares@skyscanner.net",
+                    "role": "Software Engineer"
                 }
             ],
             "description": "JSONPath implementation for querying and updating JSON objects",
@@ -2401,15 +2401,15 @@
             "authors": [
                 {
                     "name": "Alex Bilbie",
-                    "role": "Developer",
                     "email": "hello@alexbilbie.com",
-                    "homepage": "http://www.alexbilbie.com"
+                    "homepage": "http://www.alexbilbie.com",
+                    "role": "Developer"
                 },
                 {
                     "name": "Andy Millington",
-                    "role": "Developer",
                     "email": "andrew@noexceptions.io",
-                    "homepage": "https://www.noexceptions.io"
+                    "homepage": "https://www.noexceptions.io",
+                    "role": "Developer"
                 }
             ],
             "description": "A lightweight and powerful OAuth 2.0 authorization and resource server library with support for all the core specification grants. This library will allow you to secure your API with OAuth and allow your applications users to approve apps that want to access their data from your API.",
@@ -2461,9 +2461,9 @@
             "authors": [
                 {
                     "name": "Mandrill Devs",
-                    "role": "Developer",
                     "email": "community@mandrill.com",
-                    "homepage": "http://mandrill.com"
+                    "homepage": "http://mandrill.com",
+                    "role": "Developer"
                 }
             ],
             "description": "API client library for the Mandrill email as a service platform",
@@ -2512,8 +2512,8 @@
             "authors": [
                 {
                     "name": "Frank Kleine",
-                    "role": "Developer",
-                    "homepage": "http://frankkleine.de/"
+                    "homepage": "http://frankkleine.de/",
+                    "role": "Developer"
                 }
             ],
             "description": "Virtual file system to mock the real file system in unit tests.",
@@ -2968,7 +2968,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette NEON: encodes and decodes NEON file format.",
+            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -3902,8 +3902,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Utility class for timing",
@@ -5397,11 +5397,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/te-1070/dev-update-to-elasticsearch-v6",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "06cac74b465558c0e0bfd58bd5a8eff0921897c7"
+                "reference": "2865e1d70e5bb795eab000d04da66ea00b1b7c81"
             },
             "require": {
                 "php": ">=7.1"
@@ -5585,7 +5585,6 @@
                 "spryker/customer-access": "*",
                 "spryker/customer-access-gui": "*",
                 "spryker/customer-access-permission": "*",
-                "spryker/customer-access-rest-api": "*",
                 "spryker/customer-access-storage": "*",
                 "spryker/customer-api": "*",
                 "spryker/customer-catalog": "*",
@@ -5877,8 +5876,6 @@
                 "spryker/scheduler-extension": "*",
                 "spryker/scheduler-jenkins": "*",
                 "spryker/search": "*",
-                "spryker/search-elasticsearch": "*",
-                "spryker/search-extension": "*",
                 "spryker/sequence-number": "*",
                 "spryker/session": "*",
                 "spryker/session-extension": "*",
@@ -5987,7 +5984,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-23T09:57:27+00:00"
+            "time": "2019-10-24T13:26:16+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5995,7 +5992,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "8b70348ab02fbf934675d5c03260bff8a7d830b0"
+                "reference": "abdced5e423b323dd6b91d07da2148874cb1d0ef"
             },
             "require": {
                 "php": ">=7.1"
@@ -6129,7 +6126,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-10-18T04:48:47+00:00"
+            "time": "2019-10-24T11:32:31+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -9803,7 +9800,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-13T13:21:38+00:00"
+            "time": "2017-12-12T17:28:44+00:00"
         },
         {
             "name": "phpmd/phpmd",
