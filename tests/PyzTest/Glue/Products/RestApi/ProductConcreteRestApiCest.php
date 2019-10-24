@@ -272,6 +272,5 @@ class ProductConcreteRestApiCest
 
         // Assert
         $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
-        $I->seeResponseIsJson();
     }
 }
