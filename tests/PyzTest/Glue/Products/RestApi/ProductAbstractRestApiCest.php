@@ -8,8 +8,12 @@
 namespace PyzTest\Glue\Products\RestApi;
 
 use Codeception\Util\HttpCode;
+use Generated\Shared\Transfer\AbstractProductsRestAttributesTransfer;
 use PyzTest\Glue\Products\ProductsApiTester;
+use PyzTest\Glue\Products\RestApi\Fixtures\ProductsRestApiFixtures;
+use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
 use Spryker\Glue\ProductPricesRestApi\ProductPricesRestApiConfig;
+use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
 
 /**
  * Auto-generated group annotations
@@ -25,7 +29,7 @@ use Spryker\Glue\ProductPricesRestApi\ProductPricesRestApiConfig;
 class ProductAbstractRestApiCest
 {
     /**
-     * @var \PyzTest\Glue\Products\RestApi\ProductsRestApiFixtures
+     * @var \PyzTest\Glue\Products\RestApi\Fixtures\ProductsRestApiFixtures
      */
     protected $fixtures;
 
@@ -46,15 +50,13 @@ class ProductAbstractRestApiCest
      *
      * @return void
      */
-    public function requestTheNonExistedProductAbstract(ProductsApiTester $I): void
+    public function requestProductAbstractByNotExistingProductAbstractSku(ProductsApiTester $I): void
     {
-        //act
-        $I->sendGET('abstract-products/non-exist');
+        // Act
+        $I->sendGET($I->buildProductAbstractUrl('NotExistingSku'));
 
-        //assert
-        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        // Assert
+        $I->assertResponse(HttpCode::NOT_FOUND);
     }
 
     /**
@@ -66,10 +68,10 @@ class ProductAbstractRestApiCest
      */
     public function requestProductAbstractWithoutId(ProductsApiTester $I): void
     {
-        //act
-        $I->sendGET('abstract-products');
+        // Act
+        $I->sendGET($I->buildProductAbstractUrl(''));
 
-        //assert
+        // Assert
         $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
         $I->seeResponseIsJson();
     }
@@ -81,29 +83,33 @@ class ProductAbstractRestApiCest
      *
      * @return void
      */
-    public function requestExistingProductAbstract(ProductsApiTester $I): void
+    public function requestProductAbstract(ProductsApiTester $I): void
     {
-        //act
-        $I->sendGET(
-            $I->formatUrl(
-                'abstract-products/{ProductAbstractSku}',
-                [
-                    'ProductAbstractSku' => $this->fixtures->getProductConcreteTransfer()->getAbstractSku(),
-                ]
-            )
-        );
+        // Arrange
+        $productAbstractSku = $this->fixtures->getProductConcreteTransfer()->getAbstractSku();
+        $url = $I->buildProductAbstractUrl($productAbstractSku);
 
-        //assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        // Act
+        $I->sendGET($url);
 
-        $I->amSure('Returned resource is of type abstract-products')
+        // Assert
+        $I->assertResponse(HttpCode::OK);
+
+        $I->amSureSeeResponseDataContainsSingleResourceOfType(ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS)
             ->whenI()
-            ->seeResponseDataContainsSingleResourceOfType('abstract-products');
-        $I->amSure('Returned resource has correct id')
+            ->seeResponseDataContainsSingleResourceOfType(ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS);
+
+        $I->amSureSeeSingleResourceIdEqualTo($productAbstractSku)
             ->whenI()
-            ->seeSingleResourceIdEqualTo($this->fixtures->getProductConcreteTransfer()->getAbstractSku());
+            ->seeSingleResourceIdEqualTo($productAbstractSku);
+
+        $I->amSureSeeSingleResourceHasSelfLink()
+            ->whenI()
+            ->seeSingleResourceHasSelfLink($url);
+
+        $I->amSureSeeSingleResourceHasAttribute(AbstractProductsRestAttributesTransfer::URL)
+            ->whenI()
+            ->seeSingleResourceHasAttribute(AbstractProductsRestAttributesTransfer::URL);
     }
 
     /**
@@ -113,30 +119,54 @@ class ProductAbstractRestApiCest
      *
      * @return void
      */
-    public function requestExistingProductAbstractWithProductConcreteRelationship(ProductsApiTester $I): void
+    public function requestProductAbstractWithProductConcreteRelationship(ProductsApiTester $I): void
     {
-        //act
-        $I->sendGET(
-            $I->formatUrl(
-                'abstract-products/{ProductAbstractSku}?include=concrete-products',
-                [
-                    'ProductAbstractSku' => $this->fixtures->getProductConcreteTransfer()->getAbstractSku(),
-                ]
-            )
+        // Arrange
+        $productConcreteTransfer = $this->fixtures->getProductConcreteTransferWithLabel();
+        $productConcreteSku = $productConcreteTransfer->getSku();
+        $url = $I->buildProductAbstractUrl(
+            $productConcreteTransfer->getAbstractSku(),
+            [
+                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+            ]
         );
 
-        //assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        // Act
+        $I->sendGET($url);
 
-        $I->amSure('Returned resource has include of type concrete-products')
-            ->whenI()
-            ->seeSingleResourceHasRelationshipByTypeAndId('concrete-products', $this->fixtures->getProductConcreteTransfer()->getSku());
+        // Assert
+        $I->assertResponse(HttpCode::OK);
 
-        $I->amSure('Returned resource has include of type concrete-products')
+        $I->amSureSeeSingleResourceHasRelationshipByTypeAndId(
+            ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+            $productConcreteSku
+        )
             ->whenI()
-            ->seeIncludesContainsResourceByTypeAndId('concrete-products', $this->fixtures->getProductConcreteTransfer()->getSku());
+            ->seeSingleResourceHasRelationshipByTypeAndId(
+                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                $productConcreteSku
+            );
+
+        $I->amSureSeeIncludesContainsResourceByTypeAndId(
+            ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+            $productConcreteSku
+        )
+            ->whenI()
+            ->seeIncludesContainsResourceByTypeAndId(
+                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                $productConcreteSku
+            );
+
+        $I->amSureSeeIncludedResourceByTypeAndIdHasSelfLink(
+            ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+            $productConcreteSku
+        )
+            ->whenI()
+            ->seeIncludedResourceByTypeAndIdHasSelfLink(
+                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                $productConcreteSku,
+                $I->buildProductConcreteUrl($productConcreteSku)
+            );
     }
 
     /**
@@ -146,22 +176,53 @@ class ProductAbstractRestApiCest
      *
      * @return void
      */
-    public function requestProductAbstractHasUrlAttribute(ProductsApiTester $I): void
+    public function requestProductAbstractWithProductLabelsRelationship(ProductsApiTester $I): void
     {
-        //act
-        $I->sendGET(
-            $I->formatUrl(
-                'abstract-products/{ProductAbstractSku}',
-                [
-                    'ProductAbstractSku' => $this->fixtures->getProductConcreteTransfer()->getAbstractSku(),
-                ]
-            )
+        // Arrange
+        $idProductLabel = $this->fixtures->getProductLabelTransfer()->getIdProductLabel();
+        $url = $I->buildProductAbstractUrl(
+            $this->fixtures->getProductConcreteTransferWithLabel()->getAbstractSku(),
+            [
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            ]
         );
 
-        //assert
-        $I->amSure('Returned resource contains `url` attribute')
+        // Act
+        $I->sendGET($url);
+
+        // Assert
+        $I->assertResponse(HttpCode::OK);
+
+        $I->amSureSeeSingleResourceHasRelationshipByTypeAndId(
+            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            $idProductLabel
+        )
             ->whenI()
-            ->seeSingleResourceHasAttribute('url');
+            ->seeSingleResourceHasRelationshipByTypeAndId(
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+                $idProductLabel
+            );
+
+        $I->amSureSeeIncludesContainsResourceByTypeAndId(
+            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            $idProductLabel
+        )
+            ->whenI()
+            ->seeIncludesContainsResourceByTypeAndId(
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+                $idProductLabel
+            );
+
+        $I->amSureSeeIncludedResourceByTypeAndIdHasSelfLink(
+            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            $idProductLabel
+        )
+            ->whenI()
+            ->seeIncludedResourceByTypeAndIdHasSelfLink(
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+                $idProductLabel,
+                $I->buildProductLabelUrl($idProductLabel)
+            );
     }
 
     /**
@@ -171,36 +232,125 @@ class ProductAbstractRestApiCest
      *
      * @return void
      */
-    public function requestExistingProductAbstractWithProductPriceRelationship(ProductsApiTester $I): void
+    public function requestProductAbstractWithoutProductLabelsRelationship(ProductsApiTester $I): void
     {
-        //act
-        $I->sendGET(
-            $I->formatUrl(
-                'abstract-products/{ProductAbstractSku}?include={AbstractProducePrices}',
-                [
-                    'ProductAbstractSku' => $this->fixtures->getProductConcreteTransfer()->getAbstractSku(),
-                    'AbstractProducePrices' => ProductPricesRestApiConfig::RESOURCE_ABSTRACT_PRODUCT_PRICES,
-                ]
-            )
+        // Arrange
+        $url = $I->buildProductAbstractUrl(
+            $this->fixtures->getProductConcreteTransfer()->getAbstractSku(),
+            [
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            ]
         );
 
-        //assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        // Act
+        $I->sendGET($url);
 
-        $I->amSure('Returned resource has include of type abstract-product-prices')
+        // Assert
+        $I->assertResponse(HttpCode::OK);
+
+        $I->amSureDontSeeIncludesContainResourceOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS)
+            ->whenI()
+            ->dontSeeIncludesContainResourceOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS);
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     *
+     * @return void
+     */
+    public function requestProductAbstractWithProductLabelsRelationshipByPost(ProductsApiTester $I): void
+    {
+        // Arrange
+        $url = $I->buildProductAbstractUrl(
+            $this->fixtures->getProductConcreteTransferWithLabel()->getAbstractSku(),
+            [
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            ]
+        );
+
+        // Act
+        $I->sendPOST($url);
+
+        // Assert
+        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
+        $I->seeResponseIsJson();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     *
+     * @return void
+     */
+    public function requestProductAbstractWithProductLabelRelationshipByPatch(ProductsApiTester $I): void
+    {
+        // Arrange
+        $url = $I->buildProductAbstractUrl(
+            $this->fixtures->getProductConcreteTransferWithLabel()->getAbstractSku(),
+            [
+                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+            ]
+        );
+
+        // Act
+        $I->sendPATCH($url);
+
+        // Assert
+        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
+        $I->seeResponseIsJson();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     *
+     * @return void
+     */
+    public function requestProductAbstractWithProductPriceRelationship(ProductsApiTester $I): void
+    {
+        // Arrange
+        $productAbstractSku = $this->fixtures->getProductConcreteTransfer()->getAbstractSku();
+        $url = $I->buildProductAbstractUrl($productAbstractSku, [ProductPricesRestApiConfig::RESOURCE_ABSTRACT_PRODUCT_PRICES]);
+
+        //act
+        $I->sendGET($url);
+
+        //assert
+        $I->assertResponse(HttpCode::OK);
+
+        $I->amSureSeeSingleResourceHasRelationshipByTypeAndId(
+            ProductPricesRestApiConfig::RESOURCE_ABSTRACT_PRODUCT_PRICES,
+            $productAbstractSku
+        )
             ->whenI()
             ->seeSingleResourceHasRelationshipByTypeAndId(
                 ProductPricesRestApiConfig::RESOURCE_ABSTRACT_PRODUCT_PRICES,
-                $this->fixtures->getProductConcreteTransfer()->getAbstractSku()
+                $productAbstractSku
             );
 
-        $I->amSure('Returned resource has include of type abstract-product-prices')
+        $I->amSureSeeIncludesContainsResourceByTypeAndId(
+            ProductPricesRestApiConfig::RESOURCE_ABSTRACT_PRODUCT_PRICES,
+            $productAbstractSku
+        )
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 ProductPricesRestApiConfig::RESOURCE_ABSTRACT_PRODUCT_PRICES,
-                $this->fixtures->getProductConcreteTransfer()->getAbstractSku()
+                $productAbstractSku
+            );
+
+        $I->amSureSeeIncludedResourceByTypeAndIdHasSelfLink(
+            ProductPricesRestApiConfig::RESOURCE_ABSTRACT_PRODUCT_PRICES,
+            $productAbstractSku
+        )
+            ->whenI()
+            ->seeIncludedResourceByTypeAndIdHasSelfLink(
+                ProductPricesRestApiConfig::RESOURCE_ABSTRACT_PRODUCT_PRICES,
+                $productAbstractSku,
+                $I->buildProductAbstractPricesUrl($productAbstractSku)
             );
     }
 }
