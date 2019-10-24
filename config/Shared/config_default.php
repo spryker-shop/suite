@@ -558,9 +558,3 @@ $config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GE
 
 // ----------- HTTP Security
 $config[KernelConstants::STRICT_DOMAIN_REDIRECT] = true;
-
-$config[SearchElasticsearchConstants::INDEX_NAME_MAP] = [
-    'customer-page' => 'de_customer-page',
-    'page' => 'de_page',
-    'product-review' => 'de_product-review',
-];
