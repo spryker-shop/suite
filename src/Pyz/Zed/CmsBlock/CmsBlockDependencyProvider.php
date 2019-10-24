@@ -16,7 +16,7 @@ class CmsBlockDependencyProvider extends CmsBlockCmsBlockDependencyProvider
     /**
      * @return array
      */
-    protected function getCmsBlockUpdatePlugins()
+    protected function getCmsBlockUpdatePlugins(): array
     {
         $plugins = parent::getCmsBlockUpdatePlugins();
 
