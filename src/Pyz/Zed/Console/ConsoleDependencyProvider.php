@@ -105,6 +105,7 @@ use Spryker\Zed\Search\Communication\Console\GenerateIndexMapConsole;
 use Spryker\Zed\Search\Communication\Console\SearchCloseIndexConsole;
 use Spryker\Zed\Search\Communication\Console\SearchConsole;
 use Spryker\Zed\Search\Communication\Console\SearchCopyIndexConsole;
+use Spryker\Zed\Search\Communication\Console\SearchCreateIndexConsole;
 use Spryker\Zed\Search\Communication\Console\SearchCreateSnapshotConsole;
 use Spryker\Zed\Search\Communication\Console\SearchDeleteIndexConsole;
 use Spryker\Zed\Search\Communication\Console\SearchDeleteSnapshotConsole;
@@ -273,6 +274,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new SearchCreateSnapshotConsole(),
             new SearchRestoreSnapshotConsole(),
             new SearchCopyIndexConsole(),
+            new SearchCreateIndexConsole(),
 
             new InstallPackageManagerConsole(),
             new CleanUpDependenciesConsole(),
