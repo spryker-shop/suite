@@ -35,7 +35,7 @@ class ChartDependencyProvider extends SprykerChartDependencyProvider
     /**
      * @return \Spryker\Zed\ChartExtension\Dependency\Plugin\ChartTwigFunctionPluginInterface[]
      */
-    protected function geChartTwigFunctionPlugins(): array
+    protected function getChartTwigFunctionPlugins(): array
     {
         return [
             new TwigBarChartPlugin(),
