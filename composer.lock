@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a0af8003254e2b64b5cc5672578f676d",
+    "content-hash": "59f61a93734bf87be702fb18b43a3d57",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.112.25",
+            "version": "3.112.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "f91e264e3cbf8ced5c93f5f786c9e0f079926749"
+                "reference": "dabae6df3fd53b470da8806d641d05dbb66859da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/f91e264e3cbf8ced5c93f5f786c9e0f079926749",
-                "reference": "f91e264e3cbf8ced5c93f5f786c9e0f079926749",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/dabae6df3fd53b470da8806d641d05dbb66859da",
+                "reference": "dabae6df3fd53b470da8806d641d05dbb66859da",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-10-18T18:08:55+00:00"
+            "time": "2019-10-24T18:14:24+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -5397,11 +5397,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/cms-2467/cms-2932-visibility-conditions-to-slot-block-relationship",
+            "version": "dev-feature/cms-2467/cms-2932/cms-2956-product-category-condition-plugin",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "e8161a85ba17d071cccc8998a713aa16b7be9208"
+                "reference": "ba7235f05a99571f729cf8e3f1eb525162987238"
             },
             "require": {
                 "php": ">=7.1"
@@ -5759,6 +5759,7 @@
                 "spryker/product-category-filter-collector": "*",
                 "spryker/product-category-filter-gui": "*",
                 "spryker/product-category-filter-storage": "*",
+                "spryker/product-category-gui": "*",
                 "spryker/product-category-storage": "*",
                 "spryker/product-customer-permission": "*",
                 "spryker/product-customer-permission-collector": "*",
@@ -5985,7 +5986,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-22T15:01:16+00:00"
+            "time": "2019-10-24T16:59:17+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -9588,22 +9589,25 @@
         },
         {
             "name": "nette/bootstrap",
-            "version": "v3.0.0",
+            "version": "v3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/bootstrap.git",
-                "reference": "e1075af05c211915e03e0c86542f3ba5433df4a3"
+                "reference": "b45a1e33b6a44beb307756522396551e5a9ff249"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/bootstrap/zipball/e1075af05c211915e03e0c86542f3ba5433df4a3",
-                "reference": "e1075af05c211915e03e0c86542f3ba5433df4a3",
+                "url": "https://api.github.com/repos/nette/bootstrap/zipball/b45a1e33b6a44beb307756522396551e5a9ff249",
+                "reference": "b45a1e33b6a44beb307756522396551e5a9ff249",
                 "shasum": ""
             },
             "require": {
                 "nette/di": "^3.0",
                 "nette/utils": "^3.0",
                 "php": ">=7.1"
+            },
+            "conflict": {
+                "tracy/tracy": "<2.6"
             },
             "require-dev": {
                 "latte/latte": "^2.2",
@@ -9657,7 +9661,7 @@
                 "configurator",
                 "nette"
             ],
-            "time": "2019-03-26T12:59:07+00:00"
+            "time": "2019-09-30T08:19:38+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -9917,16 +9921,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.11.18",
+            "version": "0.11.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "ca0218c7caea1f17a63f6aca6100700eee3fd215"
+                "reference": "63cc502f6957b7f74efbac444b4cf219dcadffd7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/ca0218c7caea1f17a63f6aca6100700eee3fd215",
-                "reference": "ca0218c7caea1f17a63f6aca6100700eee3fd215",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/63cc502f6957b7f74efbac444b4cf219dcadffd7",
+                "reference": "63cc502f6957b7f74efbac444b4cf219dcadffd7",
                 "shasum": ""
             },
             "require": {
@@ -9988,7 +9992,7 @@
                 "MIT"
             ],
             "description": "PHPStan - PHP Static Analysis Tool",
-            "time": "2019-10-21T18:27:11+00:00"
+            "time": "2019-10-22T20:20:22+00:00"
         },
         {
             "name": "roave/better-reflection",
@@ -10769,7 +10773,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "fc2c4dfea0a72829bbe8f5f15702faa901c8fd3f"
+                "reference": "53ac4594f44ae403129954f8576728709f103eea"
             },
             "require": {
                 "php": ">=7.1",
@@ -10810,7 +10814,7 @@
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2019-10-16T12:45:41+00:00"
+            "time": "2019-10-24T16:16:47+00:00"
         },
         {
             "name": "spryker/git-hook",
