@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "78ace21b344f7f9efef432bdd78c6f23",
+    "content-hash": "b5ff0fc30cf546f112720beb2f4c7ca5",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5395,11 +5395,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/mp-716/mp-37-merchant-profile",
+            "version": "dev-feature/mp-706/mp-707-extended-merchant-profile-page",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "61b54aafdf8e0a4c3c7dba440799691eb44088a3"
+                "reference": "9c644b0992c4f526653051999b53c546a1dbba86"
             },
             "require": {
                 "php": ">=7.1"
@@ -5664,6 +5664,7 @@
                 "spryker/merchant-profile": "*",
                 "spryker/merchant-profile-data-import": "*",
                 "spryker/merchant-profile-gui": "*",
+                "spryker/merchant-profile-storage": "*",
                 "spryker/merchant-relationship": "*",
                 "spryker/merchant-relationship-data-import": "*",
                 "spryker/merchant-relationship-extension": "*",
@@ -5987,15 +5988,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-24T13:17:37+00:00"
+            "time": "2019-10-25T17:07:12+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/mp-706/mp-707-extended-merchant-profile-page",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "8b70348ab02fbf934675d5c03260bff8a7d830b0"
+                "reference": "66b88226de795be846f12c3fcb5ae680bec563d7"
             },
             "require": {
                 "php": ">=7.1"
@@ -6048,6 +6049,7 @@
                 "spryker-shop/heartbeat-page": "*",
                 "spryker-shop/home-page": "*",
                 "spryker-shop/language-switcher-widget": "*",
+                "spryker-shop/merchant-profile-page": "*",
                 "spryker-shop/money-widget": "*",
                 "spryker-shop/multi-cart-page": "*",
                 "spryker-shop/multi-cart-widget": "*",
@@ -6129,7 +6131,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-10-18T04:48:47+00:00"
+            "time": "2019-10-25T14:08:44+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
