@@ -9,6 +9,8 @@
     <table name="spy_product_offer" phpName="SpyProductOffer">
         <behavior name="event">
             <parameter name="spy_product_offer_all" column="*"/>
+            <parameter name="spy_product_offer_product_offer_reference" column="product_offer_reference" keep-additional="true"/>
+            <parameter name="spy_product_offer_concrete_sku" column="concrete_sku" keep-additional="true"/>
         </behavior>
     </table>
 </database>
