@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa1d46cafb18b1b70fa68c042d07f5f4",
+    "content-hash": "1f6f94a822113e2e7c9db7890f9b3d65",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -2968,7 +2968,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette NEON: encodes and decodes NEON file format.",
+            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -3759,8 +3759,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Library that provides collection, processing, and rendering functionality for PHP code coverage information.",
@@ -5396,11 +5396,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/ps-10211/dev-configurable-bundle-zed-gui",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "1a5824970a5d75053501001e01e6d55d6f6a7016"
+                "reference": "62dc72fc04e4d964816049deeac859356a746e33"
             },
             "require": {
                 "php": ">=7.1"
@@ -5555,6 +5555,8 @@
                 "spryker/configurable-bundle": "*",
                 "spryker/configurable-bundle-cart": "*",
                 "spryker/configurable-bundle-data-import": "*",
+                "spryker/configurable-bundle-gui": "*",
+                "spryker/configurable-bundle-gui-extension": "*",
                 "spryker/configurable-bundle-storage": "*",
                 "spryker/console": "*",
                 "spryker/container": "*",
@@ -5584,6 +5586,7 @@
                 "spryker/customer-access": "*",
                 "spryker/customer-access-gui": "*",
                 "spryker/customer-access-permission": "*",
+                "spryker/customer-access-rest-api": "*",
                 "spryker/customer-access-storage": "*",
                 "spryker/customer-api": "*",
                 "spryker/customer-catalog": "*",
@@ -5664,6 +5667,7 @@
                 "spryker/merchant-relationship-data-import": "*",
                 "spryker/merchant-relationship-extension": "*",
                 "spryker/merchant-relationship-gui": "*",
+                "spryker/merchant-relationship-gui-extension": "*",
                 "spryker/merchant-relationship-product-list": "*",
                 "spryker/merchant-relationship-product-list-data-import": "*",
                 "spryker/merchant-relationship-product-list-gui": "*",
@@ -5983,15 +5987,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-21T07:46:18+00:00"
+            "time": "2019-10-24T11:44:26+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/ps-10211/dev-configurable-bundle-zed-gui",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "8b70348ab02fbf934675d5c03260bff8a7d830b0"
+                "reference": "c7fa9f185b9acfc7fe812b7c9fc41da64ae83e4a"
             },
             "require": {
                 "php": ">=7.1"
@@ -6125,7 +6129,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-10-18T04:48:47+00:00"
+            "time": "2019-10-22T08:10:31+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -9796,7 +9800,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-13T13:21:38+00:00"
+            "time": "2017-12-12T17:28:44+00:00"
         },
         {
             "name": "phpmd/phpmd",
@@ -9839,20 +9843,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
+                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler",
-                    "role": "Project Founder"
+                    "homepage": "https://github.com/manuelpichler"
                 },
                 {
                     "name": "Marc Würth",
+                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84",
-                    "role": "Project Maintainer"
+                    "homepage": "https://github.com/ravage84"
                 },
                 {
                     "name": "Other contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
