@@ -71,7 +71,7 @@ matrix:
       language: minimal
       env:
         - PROGRESS_TYPE=plain
-        - SPRYKER_PHP_VERSION=7.3
+        - SPRYKER_PLATFORM_IMAGE=spryker/php:7.3
         - SPRYKER_DB_ENGINE=PGSQL
         - SPRYKER_TEST_IN_BROWSER=phantomjs
         - TRAVIS=1
@@ -80,8 +80,6 @@ matrix:
           - yves.de.spryker.local
           - zed.de.spryker.local
           - glue.de.spryker.local
-          - queue.spryker.local
-          - scheduler.spryker.local
         apt:
           packages:
             - apache2-utils
@@ -100,8 +98,9 @@ matrix:
         - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         - sudo chmod +x /usr/local/bin/docker-compose
       script:
-          - docker/sdk boot
-          - docker/sdk up
+        - docker/sdk boot deploy.ci.yml
+        - docker/sdk build images
+        - docker/sdk demo-data -t
         - 'docker/sdk testing codecept run -c codeception.functional.yml -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: inclusive: [PyzTest]\"" -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: exclusive: [Api, Glue]\""'
       before_install: skip
       before_script: skip
@@ -114,7 +113,7 @@ matrix:
       language: minimal
       env:
         - PROGRESS_TYPE=plain
-        - SPRYKER_PHP_VERSION=7.3
+        - SPRYKER_PLATFORM_IMAGE=spryker/php:7.3
         - SPRYKER_DB_ENGINE=PGSQL
         - SPRYKER_TEST_IN_BROWSER=phantomjs
         - TRAVIS=1
@@ -123,8 +122,6 @@ matrix:
           - yves.de.spryker.local
           - zed.de.spryker.local
           - glue.de.spryker.local
-          - queue.spryker.local
-          - scheduler.spryker.local
         apt:
           packages:
             - apache2-utils
@@ -143,8 +140,9 @@ matrix:
         - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         - sudo chmod +x /usr/local/bin/docker-compose
       script:
-          - docker/sdk boot
-          - docker/sdk up
+        - docker/sdk boot deploy.ci.yml
+        - docker/sdk build -t images
+        - docker/sdk demo-data -t demo-minimal
         - docker/sdk testing codecept fixtures
         - docker/sdk testing console queue:worker:start --stop-when-empty
         - docker/sdk testing codecept run -c codeception.api.yml
@@ -159,7 +157,7 @@ matrix:
       language: minimal
       env:
         - PROGRESS_TYPE=plain
-        - SPRYKER_PHP_VERSION=7.3
+        - SPRYKER_PLATFORM_IMAGE=spryker/php:7.3
         - SPRYKER_DB_ENGINE=MYSQL
         - SPRYKER_TEST_IN_BROWSER=phantomjs
         - TRAVIS=1
@@ -168,8 +166,6 @@ matrix:
           - yves.de.spryker.local
           - zed.de.spryker.local
           - glue.de.spryker.local
-          - queue.spryker.local
-          - scheduler.spryker.local
         apt:
           packages:
             - apache2-utils
@@ -188,8 +184,9 @@ matrix:
         - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         - sudo chmod +x /usr/local/bin/docker-compose
       script:
-          - docker/sdk boot
-          - docker/sdk up
+        - docker/sdk boot deploy.ci.yml
+        - docker/sdk build images
+        - docker/sdk demo-data -t
         - 'docker/sdk testing codecept run -c codeception.functional.yml -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: inclusive: [PyzTest]\"" -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: exclusive: [Api, Glue]\""'
       before_install: skip
       before_script: skip
@@ -224,6 +221,7 @@ cache:
   directories:
     - $HOME/.composer/cache
     - /home/travis/.rvm/gems # Mailcatcher is a ruby gem, takes 5 minutes to install.
+    - /home/travis/.nvm/.cache
 
 services:
   - postgresql
