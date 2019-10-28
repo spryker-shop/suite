@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6d9c429d56a874fba112e1f2d650f42c",
+    "content-hash": "a089f55db445aed8d19be211e209d37d",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.112.24",
+            "version": "3.112.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "6997f23a47714d084cd2d40b6348b99e10439d64"
+                "reference": "dabae6df3fd53b470da8806d641d05dbb66859da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/6997f23a47714d084cd2d40b6348b99e10439d64",
-                "reference": "6997f23a47714d084cd2d40b6348b99e10439d64",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/dabae6df3fd53b470da8806d641d05dbb66859da",
+                "reference": "dabae6df3fd53b470da8806d641d05dbb66859da",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-10-17T18:10:45+00:00"
+            "time": "2019-10-24T18:14:24+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -150,16 +150,16 @@
         },
         {
             "name": "codeception/codeception",
-            "version": "3.1.1",
+            "version": "3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Codeception.git",
-                "reference": "afc52609e590998fd293028699ad4a61d6afd7bc"
+                "reference": "5ea172de7b1b2e61dcdd50d73f8368886c549fb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/afc52609e590998fd293028699ad4a61d6afd7bc",
-                "reference": "afc52609e590998fd293028699ad4a61d6afd7bc",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/5ea172de7b1b2e61dcdd50d73f8368886c549fb4",
+                "reference": "5ea172de7b1b2e61dcdd50d73f8368886c549fb4",
                 "shasum": ""
             },
             "require": {
@@ -192,6 +192,7 @@
                 "pda/pheanstalk": "~3.0",
                 "php-amqplib/php-amqplib": "~2.4",
                 "predis/predis": "^1.0",
+                "ramsey/uuid-doctrine": "^1.5",
                 "squizlabs/php_codesniffer": "~2.0",
                 "symfony/process": ">=2.7 <5.0",
                 "vlucas/phpdotenv": "^3.0"
@@ -241,7 +242,7 @@
                 "functional testing",
                 "unit testing"
             ],
-            "time": "2019-09-14T13:53:56+00:00"
+            "time": "2019-10-19T13:15:55+00:00"
         },
         {
             "name": "codeception/phpunit-wrapper",
@@ -3158,16 +3159,16 @@
         },
         {
             "name": "nette/utils",
-            "version": "v3.0.1",
+            "version": "v3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/utils.git",
-                "reference": "bd961f49b211997202bda1d0fbc410905be370d4"
+                "reference": "c133e18c922dcf3ad07673077d92d92cef25a148"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/utils/zipball/bd961f49b211997202bda1d0fbc410905be370d4",
-                "reference": "bd961f49b211997202bda1d0fbc410905be370d4",
+                "url": "https://api.github.com/repos/nette/utils/zipball/c133e18c922dcf3ad07673077d92d92cef25a148",
+                "reference": "c133e18c922dcf3ad07673077d92d92cef25a148",
                 "shasum": ""
             },
             "require": {
@@ -3183,6 +3184,7 @@
                 "ext-intl": "to use Strings::webalize(), toAscii(), normalize() and compare()",
                 "ext-json": "to use Nette\\Utils\\Json",
                 "ext-mbstring": "to use Strings::lower() etc...",
+                "ext-tokenizer": "to use Nette\\Utils\\Reflection::getUseStatements()",
                 "ext-xml": "to use Strings::length() etc. when mbstring is not available"
             },
             "type": "library",
@@ -3230,7 +3232,7 @@
                 "utility",
                 "validation"
             ],
-            "time": "2019-03-22T01:00:30+00:00"
+            "time": "2019-10-21T20:40:16+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -4259,16 +4261,16 @@
         },
         {
             "name": "psr/log",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd"
+                "reference": "bf73deb2b3b896a9d9c75f3f0d88185d2faa27e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd",
-                "reference": "6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/bf73deb2b3b896a9d9c75f3f0d88185d2faa27e2",
+                "reference": "bf73deb2b3b896a9d9c75f3f0d88185d2faa27e2",
                 "shasum": ""
             },
             "require": {
@@ -4277,7 +4279,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
@@ -4302,7 +4304,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2018-11-20T15:27:04+00:00"
+            "time": "2019-10-25T08:06:51+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -5102,12 +5104,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-eco/loggly.git",
-                "reference": "adfab12537e302e62bb6133c535d1f4dd0f72a84"
+                "reference": "c02f02ecda7ef4ed9c3db97ea67aa6a06d623c69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-eco/loggly/zipball/adfab12537e302e62bb6133c535d1f4dd0f72a84",
-                "reference": "adfab12537e302e62bb6133c535d1f4dd0f72a84",
+                "url": "https://api.github.com/repos/spryker-eco/loggly/zipball/c02f02ecda7ef4ed9c3db97ea67aa6a06d623c69",
+                "reference": "c02f02ecda7ef4ed9c3db97ea67aa6a06d623c69",
                 "shasum": ""
             },
             "require": {
@@ -5139,7 +5141,7 @@
                 "proprietary"
             ],
             "description": "Loggly module",
-            "time": "2019-10-10T13:04:51+00:00"
+            "time": "2019-10-21T09:49:34+00:00"
         },
         {
             "name": "spryker/event-behavior",
@@ -5147,12 +5149,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "f39340f832606e19d7eef58218523d03fd630cfa"
+                "reference": "2d1ff34dfde9945e34aed152413f4c74f1183fcd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/f39340f832606e19d7eef58218523d03fd630cfa",
-                "reference": "f39340f832606e19d7eef58218523d03fd630cfa",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/2d1ff34dfde9945e34aed152413f4c74f1183fcd",
+                "reference": "2d1ff34dfde9945e34aed152413f4c74f1183fcd",
                 "shasum": ""
             },
             "require": {
@@ -5202,7 +5204,7 @@
                 "proprietary"
             ],
             "description": "EventBehavior module",
-            "time": "2019-10-15T13:40:18+00:00"
+            "time": "2019-10-25T18:42:46+00:00"
         },
         {
             "name": "spryker/install",
@@ -5395,11 +5397,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/cms-2467/dev-blocks-to-slots-assignment-rendering",
+            "version": "dev-feature/cms-2467/master-blocks-to-slots-assignment-rendering",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "19cd486b083aeeadc7b650854ccf8d5f9089e967"
+                "reference": "b5c40c969302146362d53df9c613eb81e666abd2"
             },
             "require": {
                 "php": ">=7.1"
@@ -5494,8 +5496,6 @@
                 "spryker/cms-page-data-import": "*",
                 "spryker/cms-page-search": "*",
                 "spryker/cms-slot": "*",
-                "spryker/cms-slot-block": "*",
-                "spryker/cms-slot-block-gui-extension": "*",
                 "spryker/cms-slot-data-import": "*",
                 "spryker/cms-slot-extension": "*",
                 "spryker/cms-slot-gui": "*",
@@ -5554,6 +5554,7 @@
                 "spryker/company-users-rest-api": "*",
                 "spryker/config": "*",
                 "spryker/configurable-bundle": "*",
+                "spryker/configurable-bundle-cart": "*",
                 "spryker/configurable-bundle-data-import": "*",
                 "spryker/configurable-bundle-storage": "*",
                 "spryker/console": "*",
@@ -5584,7 +5585,6 @@
                 "spryker/customer-access": "*",
                 "spryker/customer-access-gui": "*",
                 "spryker/customer-access-permission": "*",
-                "spryker/customer-access-rest-api": "*",
                 "spryker/customer-access-storage": "*",
                 "spryker/customer-api": "*",
                 "spryker/customer-catalog": "*",
@@ -5842,6 +5842,7 @@
                 "spryker/quote": "*",
                 "spryker/quote-approval": "*",
                 "spryker/quote-approval-extension": "*",
+                "spryker/quote-approval-shipment-connector": "*",
                 "spryker/quote-extension": "*",
                 "spryker/quote-request": "*",
                 "spryker/quote-request-agent": "*",
@@ -5965,7 +5966,8 @@
                 "spryker/code-sniffer": "dev-master"
             },
             "bin": [
-                "Bundles/Console/bin/console"
+                "Bundles/Console/bin/console",
+                "Bundles/Console/bin/yves"
             ],
             "type": "library",
             "autoload": {
@@ -5982,15 +5984,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-18T13:11:09+00:00"
+            "time": "2019-10-28T09:14:11+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/cms-2467/dev-blocks-to-slots-assignment-rendering",
+            "version": "dev-feature/cms-2467/master-blocks-to-slots-assignment-rendering",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "cb7012bf81e769d7e5d6eb3e02780c2ef2afaf86"
+                "reference": "73630e2f5dd045f32477fdc8458f3a257cf05e2d"
             },
             "require": {
                 "php": ">=7.1"
@@ -6124,7 +6126,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-10-15T14:09:28+00:00"
+            "time": "2019-10-28T09:14:28+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -9585,22 +9587,25 @@
         },
         {
             "name": "nette/bootstrap",
-            "version": "v3.0.0",
+            "version": "v3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/bootstrap.git",
-                "reference": "e1075af05c211915e03e0c86542f3ba5433df4a3"
+                "reference": "b45a1e33b6a44beb307756522396551e5a9ff249"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/bootstrap/zipball/e1075af05c211915e03e0c86542f3ba5433df4a3",
-                "reference": "e1075af05c211915e03e0c86542f3ba5433df4a3",
+                "url": "https://api.github.com/repos/nette/bootstrap/zipball/b45a1e33b6a44beb307756522396551e5a9ff249",
+                "reference": "b45a1e33b6a44beb307756522396551e5a9ff249",
                 "shasum": ""
             },
             "require": {
                 "nette/di": "^3.0",
                 "nette/utils": "^3.0",
                 "php": ">=7.1"
+            },
+            "conflict": {
+                "tracy/tracy": "<2.6"
             },
             "require-dev": {
                 "latte/latte": "^2.2",
@@ -9654,20 +9659,20 @@
                 "configurator",
                 "nette"
             ],
-            "time": "2019-03-26T12:59:07+00:00"
+            "time": "2019-09-30T08:19:38+00:00"
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.2.4",
+            "version": "v4.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "97e59c7a16464196a8b9c77c47df68e4a39a45c4"
+                "reference": "b76bbc3c51f22c570648de48e8c2d941ed5e2cf2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/97e59c7a16464196a8b9c77c47df68e4a39a45c4",
-                "reference": "97e59c7a16464196a8b9c77c47df68e4a39a45c4",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/b76bbc3c51f22c570648de48e8c2d941ed5e2cf2",
+                "reference": "b76bbc3c51f22c570648de48e8c2d941ed5e2cf2",
                 "shasum": ""
             },
             "require": {
@@ -9675,6 +9680,7 @@
                 "php": ">=7.0"
             },
             "require-dev": {
+                "ircmaxell/php-yacc": "0.0.4",
                 "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0"
             },
             "bin": [
@@ -9705,7 +9711,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2019-09-01T07:51:21+00:00"
+            "time": "2019-10-25T18:33:07+00:00"
         },
         {
             "name": "ocramius/package-versions",
@@ -9914,16 +9920,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.11.16",
+            "version": "0.11.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "635cf20f3b92ce34ee94a8d2f282d62eb9dc6e1b"
+                "reference": "63cc502f6957b7f74efbac444b4cf219dcadffd7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/635cf20f3b92ce34ee94a8d2f282d62eb9dc6e1b",
-                "reference": "635cf20f3b92ce34ee94a8d2f282d62eb9dc6e1b",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/63cc502f6957b7f74efbac444b4cf219dcadffd7",
+                "reference": "63cc502f6957b7f74efbac444b4cf219dcadffd7",
                 "shasum": ""
             },
             "require": {
@@ -9931,6 +9937,7 @@
                 "jean85/pretty-package-versions": "^1.0.3",
                 "nette/bootstrap": "^2.4 || ^3.0",
                 "nette/di": "^2.4.7 || ^3.0",
+                "nette/neon": "^2.4.3 || ^3.0",
                 "nette/robot-loader": "^3.0.1",
                 "nette/schema": "^1.0",
                 "nette/utils": "^2.4.5 || ^3.0",
@@ -9984,7 +9991,7 @@
                 "MIT"
             ],
             "description": "PHPStan - PHP Static Analysis Tool",
-            "time": "2019-09-17T11:19:51+00:00"
+            "time": "2019-10-22T20:20:22+00:00"
         },
         {
             "name": "roave/better-reflection",
@@ -10765,7 +10772,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "fc2c4dfea0a72829bbe8f5f15702faa901c8fd3f"
+                "reference": "53ac4594f44ae403129954f8576728709f103eea"
             },
             "require": {
                 "php": ">=7.1",
@@ -10806,7 +10813,7 @@
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2019-10-16T12:45:41+00:00"
+            "time": "2019-10-24T16:16:47+00:00"
         },
         {
             "name": "spryker/git-hook",
@@ -11242,8 +11249,8 @@
     ],
     "aliases": [
         {
-            "alias": "1.13.0",
-            "alias_normalized": "1.13.0.0",
+            "alias": "1.14.0",
+            "alias_normalized": "1.14.0.0",
             "version": "9999999-dev",
             "package": "spryker/event-behavior"
         },
