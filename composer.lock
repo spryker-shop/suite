@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a0af8003254e2b64b5cc5672578f676d",
+    "content-hash": "87e4f2b841183766379dfa7b9f0eded1",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5149,12 +5149,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "f39340f832606e19d7eef58218523d03fd630cfa"
+                "reference": "2d1ff34dfde9945e34aed152413f4c74f1183fcd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/f39340f832606e19d7eef58218523d03fd630cfa",
-                "reference": "f39340f832606e19d7eef58218523d03fd630cfa",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/2d1ff34dfde9945e34aed152413f4c74f1183fcd",
+                "reference": "2d1ff34dfde9945e34aed152413f4c74f1183fcd",
                 "shasum": ""
             },
             "require": {
@@ -5204,7 +5204,7 @@
                 "proprietary"
             ],
             "description": "EventBehavior module",
-            "time": "2019-10-15T13:40:18+00:00"
+            "time": "2019-10-25T18:42:46+00:00"
         },
         {
             "name": "spryker/install",
@@ -5401,7 +5401,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "987ea3f96e93d81065a4b6608ebe824011679d5b"
+                "reference": "3bc6dd68e3e785f0c8ad2ac689b7a506c5afcdb1"
             },
             "require": {
                 "php": ">=7.1"
@@ -5557,6 +5557,7 @@
                 "spryker/company-users-rest-api": "*",
                 "spryker/config": "*",
                 "spryker/configurable-bundle": "*",
+                "spryker/configurable-bundle-cart": "*",
                 "spryker/configurable-bundle-data-import": "*",
                 "spryker/configurable-bundle-storage": "*",
                 "spryker/console": "*",
@@ -5845,6 +5846,7 @@
                 "spryker/quote": "*",
                 "spryker/quote-approval": "*",
                 "spryker/quote-approval-extension": "*",
+                "spryker/quote-approval-shipment-connector": "*",
                 "spryker/quote-extension": "*",
                 "spryker/quote-request": "*",
                 "spryker/quote-request-agent": "*",
@@ -5968,7 +5970,8 @@
                 "spryker/code-sniffer": "dev-master"
             },
             "bin": [
-                "Bundles/Console/bin/console"
+                "Bundles/Console/bin/console",
+                "Bundles/Console/bin/yves"
             ],
             "type": "library",
             "autoload": {
@@ -5985,7 +5988,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-25T09:24:02+00:00"
+            "time": "2019-10-28T10:23:16+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5993,7 +5996,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "cb7012bf81e769d7e5d6eb3e02780c2ef2afaf86"
+                "reference": "73630e2f5dd045f32477fdc8458f3a257cf05e2d"
             },
             "require": {
                 "php": ">=7.1"
@@ -6127,7 +6130,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-10-15T14:09:28+00:00"
+            "time": "2019-10-28T09:14:28+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -9664,16 +9667,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.2.4",
+            "version": "v4.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "97e59c7a16464196a8b9c77c47df68e4a39a45c4"
+                "reference": "b76bbc3c51f22c570648de48e8c2d941ed5e2cf2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/97e59c7a16464196a8b9c77c47df68e4a39a45c4",
-                "reference": "97e59c7a16464196a8b9c77c47df68e4a39a45c4",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/b76bbc3c51f22c570648de48e8c2d941ed5e2cf2",
+                "reference": "b76bbc3c51f22c570648de48e8c2d941ed5e2cf2",
                 "shasum": ""
             },
             "require": {
@@ -9681,6 +9684,7 @@
                 "php": ">=7.0"
             },
             "require-dev": {
+                "ircmaxell/php-yacc": "0.0.4",
                 "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0"
             },
             "bin": [
@@ -9711,7 +9715,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2019-09-01T07:51:21+00:00"
+            "time": "2019-10-25T18:33:07+00:00"
         },
         {
             "name": "ocramius/package-versions",
@@ -11249,8 +11253,8 @@
     ],
     "aliases": [
         {
-            "alias": "1.13.0",
-            "alias_normalized": "1.13.0.0",
+            "alias": "1.14.0",
+            "alias_normalized": "1.14.0.0",
             "version": "9999999-dev",
             "package": "spryker/event-behavior"
         },
