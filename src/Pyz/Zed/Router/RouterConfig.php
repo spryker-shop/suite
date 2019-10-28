@@ -38,6 +38,7 @@ class RouterConfig extends SprykerRouterConfig
         }
 
         $controllerDirectories[] = sprintf('%s/spryker-sdk/*/src/*/Zed/*/Communication/Controller/', APPLICATION_VENDOR_DIR);
+        $controllerDirectories[] = sprintf('%s/spryker-eco/*/src/*/Zed/*/Communication/Controller/', APPLICATION_VENDOR_DIR);
 
         return array_filter($controllerDirectories, 'glob');
     }
