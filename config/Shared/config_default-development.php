@@ -51,10 +51,10 @@ $config[ApplicationConstants::ENABLE_APPLICATION_DEBUG]
 $config[WebProfilerConstants::IS_WEB_PROFILER_ENABLED] = true;
 $config[WebProfilerWidgetConstants::IS_WEB_PROFILER_ENABLED] = true;
 
-$config[ApplicationConstants::YVES_SSL_ENABLED] = false;
-$config[ApplicationConstants::ZED_SSL_ENABLED] = false;
 $config[RouterConstants::YVES_IS_SSL_ENABLED] = false;
 $config[RouterConstants::ZED_IS_SSL_ENABLED] = false;
+$config[ApplicationConstants::ZED_SSL_ENABLED] = false;
+$config[ApplicationConstants::YVES_SSL_ENABLED] = false;
 
 // ---------- Propel
 $config[PropelConstants::PROPEL_DEBUG] = false;
@@ -108,9 +108,6 @@ $config[AclConstants::ACL_USER_RULE_WHITELIST][] = [
     'action' => '*',
     'type' => 'allow',
 ];
-
-// ---------- Auto-loader
-$config[KernelConstants::AUTO_LOADER_UNRESOLVABLE_CACHE_ENABLED] = false;
 
 // ---------- Logging
 $config[LogConstants::LOG_LEVEL] = Logger::INFO;
