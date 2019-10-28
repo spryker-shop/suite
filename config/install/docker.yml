@@ -67,7 +67,7 @@ sections:
             command: "vendor/bin/console scheduler:setup"
 
     init-storages-per-store:
-        setup-search-create-indexes:
+        setup-search-create-indices:
             command: "vendor/bin/console search:setup:indices"
 
     init-storages-per-region:
