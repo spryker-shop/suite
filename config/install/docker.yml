@@ -68,7 +68,7 @@ sections:
 
     init-storages-per-store:
         setup-search-create-indexes:
-            command: "vendor/bin/console search:create-indexes"
+            command: "vendor/bin/console search:setup:indices"
 
     init-storages-per-region:
         propel-copy-schema:

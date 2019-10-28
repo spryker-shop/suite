@@ -102,10 +102,10 @@ use Spryker\Zed\Scheduler\Communication\Console\SchedulerResumeConsole;
 use Spryker\Zed\Scheduler\Communication\Console\SchedulerSetupConsole;
 use Spryker\Zed\Scheduler\Communication\Console\SchedulerSuspendConsole;
 use Spryker\Zed\Search\Communication\Console\GenerateIndexMapConsole;
+use Spryker\Zed\Search\Communication\Console\GenerateIndicesConsole;
 use Spryker\Zed\Search\Communication\Console\SearchCloseIndexConsole;
 use Spryker\Zed\Search\Communication\Console\SearchConsole;
 use Spryker\Zed\Search\Communication\Console\SearchCopyIndexConsole;
-use Spryker\Zed\Search\Communication\Console\SearchCreateIndexConsole;
 use Spryker\Zed\Search\Communication\Console\SearchCreateSnapshotConsole;
 use Spryker\Zed\Search\Communication\Console\SearchDeleteIndexConsole;
 use Spryker\Zed\Search\Communication\Console\SearchDeleteSnapshotConsole;
@@ -173,6 +173,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new InitializeDatabaseConsole(),
             new SearchConsole(),
             new GenerateIndexMapConsole(),
+            new GenerateIndicesConsole(),
             new OmsCheckConditionConsole(),
             new OmsCheckTimeoutConsole(),
             new OmsClearLocksConsole(),
@@ -274,7 +275,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new SearchCreateSnapshotConsole(),
             new SearchRestoreSnapshotConsole(),
             new SearchCopyIndexConsole(),
-            new SearchCreateIndexConsole(),
 
             new InstallPackageManagerConsole(),
             new CleanUpDependenciesConsole(),
