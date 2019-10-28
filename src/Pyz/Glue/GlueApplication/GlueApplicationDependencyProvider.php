@@ -180,7 +180,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new CompanyBusinessUnitsResourcePlugin(),
             new SharedCartsResourceRoutePlugin(),
             new UrlResolverResourceRoutePlugin(),
-            new DiscountsResourceRoutePlugin()
+            new DiscountsResourceRoutePlugin(),
             new CustomerAccessResourceRoutePlugin(),
         ];
     }
