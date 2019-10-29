@@ -13,7 +13,7 @@ use Spryker\Zed\CmsSlotBlock\CmsSlotBlockConfig as SprykerCmsSlotBlockConfig;
 class CmsSlotBlockConfig extends SprykerCmsSlotBlockConfig
 {
     /**
-     * @return array
+     * @return string[][]
      */
     public function getTemplateConditionsAssignment(): array
     {
