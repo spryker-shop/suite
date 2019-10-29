@@ -121,6 +121,9 @@
                 </div>
             {% endwidget %}
         {% endif %}
+        <div class="col col--sm-12 col--lg-12 col--xl-12">
+            {% widget 'MerchantProductOfferWidget' args [data.product] only %}{% endwidget %}
+        </div>
 
         {% widget 'AddToMultiCartWidget' args [isDisabled] only %}
         {% elsewidget 'MultiCartWidgetPlugin' args [data.product, isDisabled] only %} {# @deprecated Use AddToMultiCartWidget instead. #}

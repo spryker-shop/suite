@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b5ff0fc30cf546f112720beb2f4c7ca5",
+    "content-hash": "995a7c06c073ae6f78c9cf6154ba02d9",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5147,12 +5147,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "f39340f832606e19d7eef58218523d03fd630cfa"
+                "reference": "2d1ff34dfde9945e34aed152413f4c74f1183fcd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/f39340f832606e19d7eef58218523d03fd630cfa",
-                "reference": "f39340f832606e19d7eef58218523d03fd630cfa",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/2d1ff34dfde9945e34aed152413f4c74f1183fcd",
+                "reference": "2d1ff34dfde9945e34aed152413f4c74f1183fcd",
                 "shasum": ""
             },
             "require": {
@@ -5202,7 +5202,7 @@
                 "proprietary"
             ],
             "description": "EventBehavior module",
-            "time": "2019-10-15T13:40:18+00:00"
+            "time": "2019-10-25T18:42:46+00:00"
         },
         {
             "name": "spryker/install",
@@ -5395,11 +5395,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/mp-706/mp-707-extended-merchant-profile-page",
+            "version": "dev-feature/mp-1057-create-offer-and-show-it-on-pdp",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "9c644b0992c4f526653051999b53c546a1dbba86"
+                "reference": "42f965762afe631e3ddda5f075a4619c65f8732d"
             },
             "require": {
                 "php": ">=7.1"
@@ -5661,6 +5661,9 @@
                 "spryker/merchant-extension": "*",
                 "spryker/merchant-gui": "*",
                 "spryker/merchant-gui-extension": "*",
+                "spryker/merchant-product-offer": "*",
+                "spryker/merchant-product-offer-data-import": "*",
+                "spryker/merchant-product-offer-storage": "*",
                 "spryker/merchant-profile": "*",
                 "spryker/merchant-profile-data-import": "*",
                 "spryker/merchant-profile-gui": "*",
@@ -5800,6 +5803,7 @@
                 "spryker/product-measurement-unit-storage": "*",
                 "spryker/product-merchant-connector": "*",
                 "spryker/product-new": "*",
+                "spryker/product-offer": "*",
                 "spryker/product-option": "*",
                 "spryker/product-option-cart-connector": "*",
                 "spryker/product-option-extension": "*",
@@ -5988,15 +5992,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-25T17:07:12+00:00"
+            "time": "2019-10-29T10:13:29+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/mp-706/mp-707-extended-merchant-profile-page",
+            "version": "dev-feature/mp-1057-create-offer-and-show-it-on-pdp",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "66b88226de795be846f12c3fcb5ae680bec563d7"
+                "reference": "1b64ef0db64ea5da53390da9c39dcca4cbfe9afa"
             },
             "require": {
                 "php": ">=7.1"
@@ -6131,7 +6135,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-10-25T14:08:44+00:00"
+            "time": "2019-10-29T10:23:20+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -11249,8 +11253,8 @@
     ],
     "aliases": [
         {
-            "alias": "1.13.0",
-            "alias_normalized": "1.13.0.0",
+            "alias": "1.14.0",
+            "alias_normalized": "1.14.0.0",
             "version": "9999999-dev",
             "package": "spryker/event-behavior"
         },
