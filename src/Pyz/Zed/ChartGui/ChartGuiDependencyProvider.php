@@ -1,20 +1,37 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * This file is part of the Spryker Suite.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Zed\ChartGui;
 
+use Pyz\Zed\ExampleChart\Plugin\ExampleChart;
 use Spryker\Zed\ChartGui\ChartGuiDependencyProvider as SprykerChartGuiDependencyProvider;
 use Spryker\Zed\ChartGui\Communication\Plugin\Twig\Chart\BartChartTwigPlugin;
 use Spryker\Zed\ChartGui\Communication\Plugin\Twig\Chart\ChartTwigPlugin;
 use Spryker\Zed\ChartGui\Communication\Plugin\Twig\Chart\LineChartTwigPlugin;
 use Spryker\Zed\ChartGui\Communication\Plugin\Twig\Chart\PieChartTwigPlugin;
+use Spryker\Zed\SalesStatistics\Communication\Plugin\CountOrderChartPlugin;
+use Spryker\Zed\SalesStatistics\Communication\Plugin\StatusOrderChartPlugin;
+use Spryker\Zed\SalesStatistics\Communication\Plugin\TopOrdersChartPlugin;
 
 class ChartGuiDependencyProvider extends SprykerChartGuiDependencyProvider
 {
+    /**
+     * @return \Spryker\Shared\Chart\Dependency\Plugin\ChartPluginInterface[]
+     */
+    protected function getChartPlugins(): array
+    {
+        return [
+            new CountOrderChartPlugin(),
+            new StatusOrderChartPlugin(),
+            new TopOrdersChartPlugin(),
+            new ExampleChart(),
+        ];
+    }
+
     /**
      * @return \Spryker\Shared\Chart\Dependency\Plugin\TwigChartFunctionPluginInterface[]
      */
