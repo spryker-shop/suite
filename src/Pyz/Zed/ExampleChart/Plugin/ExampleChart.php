@@ -5,15 +5,14 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\ExampleChart\Communication\Plugin;
+namespace Pyz\Zed\ExampleChart\Plugin;
 
 use Generated\Shared\Transfer\ChartDataTraceTransfer;
 use Generated\Shared\Transfer\ChartDataTransfer;
 use Generated\Shared\Transfer\ChartLayoutTransfer;
-use Spryker\Zed\ChartExtension\Dependency\Plugin\ChartPluginInterface;
-use Spryker\Zed\Kernel\Communication\AbstractPlugin;
+use Spryker\Shared\Chart\Dependency\Plugin\ChartPluginInterface;
 
-class ExampleChartPlugin extends AbstractPlugin implements ChartPluginInterface
+class ExampleChart implements ChartPluginInterface
 {
     /**
      * @return string

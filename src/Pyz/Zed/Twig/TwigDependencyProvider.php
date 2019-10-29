@@ -13,7 +13,7 @@ use Spryker\Shared\Twig\Plugin\FormTwigPlugin;
 use Spryker\Shared\Twig\Plugin\RoutingTwigPlugin;
 use Spryker\Shared\Twig\Plugin\SecurityTwigPlugin;
 use Spryker\Zed\Application\Communication\Plugin\Twig\ApplicationTwigPlugin;
-use Spryker\Zed\Chart\Communication\Plugin\Twig\ChartTwigPlugin;
+use Spryker\Zed\ChartGui\Communication\Plugin\Twig\Chart\ChartGuiTwigPlugin;
 use Spryker\Zed\Currency\Communication\Plugin\Twig\CurrencyTwigPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\Twig\AssetsPathTwigPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\Twig\Buttons\Action\BackActionButtonTwigPlugin;
@@ -62,7 +62,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new RuntimeLoaderTwigPlugin(),
             new FormRuntimeLoaderTwigPlugin(),
             new ApplicationTwigPlugin(),
-            new ChartTwigPlugin(),
+            new ChartGuiTwigPlugin(),
             new UserTwigPlugin(),
             new MoneyTwigPlugin(),
             new CurrencyTwigPlugin(),
