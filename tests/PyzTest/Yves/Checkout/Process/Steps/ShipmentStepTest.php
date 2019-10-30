@@ -142,7 +142,8 @@ class ShipmentStepTest extends Unit
             $this->createPostConditionChecker(),
             $this->createGiftCardItemsChecker(),
             'checkout-shipment',
-            'home'
+            'home',
+            []
         );
     }
 

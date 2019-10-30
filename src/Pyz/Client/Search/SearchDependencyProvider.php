@@ -12,7 +12,7 @@ use Spryker\Client\Kernel\Container;
 use Spryker\Client\ProductSearchConfigStorage\Plugin\Config\ProductSearchConfigExpanderPlugin;
 use Spryker\Client\Search\SearchDependencyProvider as SprykerSearchDependencyProvider;
 use Spryker\Client\SearchElasticsearch\Plugin\ElasticsearchSearchAdapterPlugin;
-use Spryker\Client\SearchElasticsearch\Plugin\ElasticsearchSourceIdentifiertMapperPlugin;
+use Spryker\Client\SearchElasticsearch\Plugin\ElasticsearchSourceIdentifierMapperPlugin;
 
 class SearchDependencyProvider extends SprykerSearchDependencyProvider
 {
@@ -51,12 +51,12 @@ class SearchDependencyProvider extends SprykerSearchDependencyProvider
     }
 
     /**
-     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\SourceIdentifiertMapperPluginInterface[]
+     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\SourceIdentifierMapperPluginInterface[]
      */
-    protected function getSearchContextMapperPlugins(): array
+    protected function getSourceIdentifierMapperPlugins(): array
     {
         return [
-            new ElasticsearchSourceIdentifiertMapperPlugin(),
+            new ElasticsearchSourceIdentifierMapperPlugin(),
         ];
     }
 }
