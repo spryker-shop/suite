@@ -29,7 +29,7 @@ class CmsBlockCategoryWriterStep extends PublishAwareStep implements DataImportS
     /**
      * @var \Orm\Zed\CmsBlock\Persistence\SpyCmsBlock[]
      */
-    protected static $cmsBlockCache = [];
+    protected static $cmsBlockBuffer = [];
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
@@ -38,7 +38,7 @@ class CmsBlockCategoryWriterStep extends PublishAwareStep implements DataImportS
      *
      * @return void
      */
-    public function execute(DataSetInterface $dataSet)
+    public function execute(DataSetInterface $dataSet): void
     {
         $cmsBlockEntity = $this->getCmsBlockById($dataSet[static::KEY_BLOCK_KEY]);
 
@@ -80,8 +80,8 @@ class CmsBlockCategoryWriterStep extends PublishAwareStep implements DataImportS
      */
     protected function getCmsBlockById(string $cmsBlockKey): SpyCmsBlock
     {
-        if (isset(static::$cmsBlockCache[$cmsBlockKey])) {
-            return static::$cmsBlockCache[$cmsBlockKey];
+        if (isset(static::$cmsBlockBuffer[$cmsBlockKey])) {
+            return static::$cmsBlockBuffer[$cmsBlockKey];
         }
 
         $cmsBlockEntity = SpyCmsBlockQuery::create()->findOneByKey($cmsBlockKey);
@@ -90,8 +90,8 @@ class CmsBlockCategoryWriterStep extends PublishAwareStep implements DataImportS
             throw new EntityNotFoundException(sprintf('CmsBlock not found by block key "%s"', $cmsBlockKey));
         }
 
-        static::$cmsBlockCache[$cmsBlockKey] = $cmsBlockEntity;
+        static::$cmsBlockBuffer[$cmsBlockKey] = $cmsBlockEntity;
 
-        return static::$cmsBlockCache[$cmsBlockKey];
+        return static::$cmsBlockBuffer[$cmsBlockKey];
     }
 }
