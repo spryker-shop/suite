@@ -9,6 +9,7 @@ namespace Pyz\Glue\EventDispatcher;
 
 use Spryker\Glue\EventDispatcher\EventDispatcherDependencyProvider as SprykerEventDispatcherDependencyProvider;
 use Spryker\Glue\GlueApplication\Plugin\EventDispatcher\GlueRestControllerListenerEventDispatcherPlugin;
+use Spryker\Glue\Kernel\Plugin\EventDispatcher\AutoloaderCacheEventDispatcherPlugin;
 use Spryker\Glue\Storage\Plugin\EventDispatcher\StorageKeyCacheEventDispatcherPlugin;
 
 class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependencyProvider
@@ -21,6 +22,7 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
         return [
             new GlueRestControllerListenerEventDispatcherPlugin(),
             new StorageKeyCacheEventDispatcherPlugin(),
+            new AutoloaderCacheEventDispatcherPlugin(),
         ];
     }
 }
