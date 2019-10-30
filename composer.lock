@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "77b04417faecd14d147f8c378905dffe",
+    "content-hash": "7873e24161918d57c312b48b79b0f9cf",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5395,11 +5395,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/mp-1191/dev-merchant-opening-hours",
+            "version": "dev-feature/mp-1191/mp-1192-add-opening-hours-to-merchant",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "f0bfa914ce6ada7b7cb9a84a01ee236e9fe29f8e"
+                "reference": "0d4bcdfc721fb3d70b72733453a572d7a41a89d3"
             },
             "require": {
                 "php": ">=7.1"
@@ -5583,6 +5583,7 @@
                 "spryker/customer-access": "*",
                 "spryker/customer-access-gui": "*",
                 "spryker/customer-access-permission": "*",
+                "spryker/customer-access-rest-api": "*",
                 "spryker/customer-access-storage": "*",
                 "spryker/customer-api": "*",
                 "spryker/customer-catalog": "*",
@@ -5661,6 +5662,8 @@
                 "spryker/merchant-extension": "*",
                 "spryker/merchant-gui": "*",
                 "spryker/merchant-gui-extension": "*",
+                "spryker/merchant-opening-hours": "*",
+                "spryker/merchant-opening-hours-data-import": "*",
                 "spryker/merchant-profile": "*",
                 "spryker/merchant-profile-data-import": "*",
                 "spryker/merchant-profile-gui": "*",
@@ -5958,6 +5961,7 @@
                 "spryker/vault": "*",
                 "spryker/web-profiler": "*",
                 "spryker/web-profiler-extension": "*",
+                "spryker/weekday-schedule": "*",
                 "spryker/wishlist": "*",
                 "spryker/wishlist-extension": "*",
                 "spryker/wishlists-rest-api": "*",
@@ -5987,7 +5991,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-24T13:31:25+00:00"
+            "time": "2019-10-30T15:48:08+00:00"
         },
         {
             "name": "spryker/spryker-shop",
