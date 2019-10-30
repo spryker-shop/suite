@@ -51,6 +51,7 @@ use Spryker\Shared\Scheduler\SchedulerConstants;
 use Spryker\Shared\SchedulerJenkins\SchedulerJenkinsConfig;
 use Spryker\Shared\SchedulerJenkins\SchedulerJenkinsConstants;
 use Spryker\Shared\Search\SearchConstants;
+use Spryker\Shared\SearchElasticsearch\SearchElasticsearchConstants;
 use Spryker\Shared\SequenceNumber\SequenceNumberConstants;
 use Spryker\Shared\Session\SessionConfig;
 use Spryker\Shared\Session\SessionConstants;
@@ -312,9 +313,6 @@ $config[EventConstants::LOGGER_ACTIVE] = true;
 
 $config[EventBehaviorConstants::EVENT_BEHAVIOR_TRIGGERING_ACTIVE] = true;
 
-$config[CustomerConstants::CUSTOMER_SECURED_PATTERN] = '(^/login_check$|^(/en|/de)?/customer|^(/en|/de)?/wishlist|^(/en|/de)?/shopping-list|^(/en|/de)?/company(?!/register)|^(/en|/de)?/multi-cart|^(/en|/de)?/shared-cart)';
-$config[CustomerConstants::CUSTOMER_ANONYMOUS_PATTERN] = '^/.*';
-
 $config[TaxConstants::DEFAULT_TAX_RATE] = 19;
 
 $config[FileSystemConstants::FILESYSTEM_SERVICE] = [];
@@ -452,6 +450,7 @@ $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = sprintf(
     $gluePort !== 80 ? ':' . $gluePort : ''
 );
 $config[GlueApplicationConstants::GLUE_APPLICATION_REST_DEBUG] = false;
+$config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = getenv('SPRYKER_GLUE_APPLICATION_CORS_ALLOW_ORIGIN') ?: '';
 
 $config[TestifyConstants::GLUE_APPLICATION_DOMAIN] = $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN];
 $config[TestifyConstants::GLUE_OPEN_API_SCHEMA] = APPLICATION_SOURCE_DIR . '/Generated/Glue/Specification/spryker_rest_api.schema.yml';
@@ -560,7 +559,8 @@ $config[CollectorConstants::ELASTICA_PARAMETER__DOCUMENT_TYPE] = $ELASTICA_DOCUM
 $ELASTICA_PARAMETER__EXTRA = [];
 $config[SearchConstants::ELASTICA_PARAMETER__EXTRA] = $ELASTICA_PARAMETER__EXTRA;
 
-$config[SearchConstants::FULL_TEXT_BOOSTED_BOOSTING_VALUE] = 3;
+$config[SearchConstants::FULL_TEXT_BOOSTED_BOOSTING_VALUE]
+    = $config[SearchElasticsearchConstants::FULL_TEXT_BOOSTED_BOOSTING_VALUE] = 3;
 $config[SearchConstants::SEARCH_INDEX_NAME_SUFFIX] = '';
 /* End Search service */
 
