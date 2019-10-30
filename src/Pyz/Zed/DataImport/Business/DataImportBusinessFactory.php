@@ -152,7 +152,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             ->addDataImporter($this->createProductAbstractStoreImporter())
             ->addDataImporter($this->createProductConcreteImporter())
             ->addDataImporter($this->createProductImageImporter())
-            ->addDataImporter($this->createProductStockImporter())
             ->addDataImporter($this->createProductOptionImporter())
             ->addDataImporter($this->createProductOptionPriceImporter())
             ->addDataImporter($this->createProductGroupImporter())
@@ -175,6 +174,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         $dataImporterCollection->addDataImporterPlugins($this->getDataImporterPlugins());
 
         $dataImporterCollection
+            ->addDataImporter($this->createProductStockImporter())
             ->addDataImporter($this->createNavigationImporter())
             ->addDataImporter($this->createNavigationNodeImporter());
 
