@@ -7,7 +7,7 @@ validateModuleTransfers() {
 
   for module in $MODULES
       do
-          vendor/bin/spryker-dev-console dev:validate-module-transfers -s -v --merge -m $2.$module
+          vendor/bin/spryker-dev-console dev:validate-module-transfers -v -m $2.$module
           if [ $? -ne 0 ]; then
               EXITCODE=1
           fi
