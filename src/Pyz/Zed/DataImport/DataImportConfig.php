@@ -39,6 +39,7 @@ use Spryker\Zed\ProductAlternativeDataImport\ProductAlternativeDataImportConfig;
 use Spryker\Zed\ProductDiscontinuedDataImport\ProductDiscontinuedDataImportConfig;
 use Spryker\Zed\ProductListDataImport\ProductListDataImportConfig;
 use Spryker\Zed\ProductMeasurementUnitDataImport\ProductMeasurementUnitDataImportConfig;
+use Spryker\Zed\ProductOfferStockDataImport\ProductOfferStockDataImportConfig;
 use Spryker\Zed\ProductPackagingUnitDataImport\ProductPackagingUnitDataImportConfig;
 use Spryker\Zed\ProductQuantityDataImport\ProductQuantityDataImportConfig;
 use Spryker\Zed\QuoteRequestDataImport\QuoteRequestDataImportConfig;
@@ -516,6 +517,7 @@ class DataImportConfig extends SprykerDataImportConfig
             MerchantDataImportConfig::IMPORT_TYPE_MERCHANT,
             MerchantDataImportConfig::IMPORT_TYPE_MERCHANT_ADDRESS,
             MerchantProductOfferDataImportConfig::IMPORT_TYPE_MERCHANT_PRODUCT_OFFER,
+            ProductOfferStockDataImportConfig::IMPORT_TYPE_PRODUCT_OFFER_STOCK,
             MultiCartDataImportConfig::IMPORT_TYPE_MULTI_CART,
             SharedCartDataImportConfig::IMPORT_TYPE_SHARED_CART,
             CompanyRoleDataImportConfig::IMPORT_TYPE_COMPANY_USER_ROLE,

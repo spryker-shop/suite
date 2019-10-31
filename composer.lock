@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b703ec98b7b1ae4d7bc2b22d462f8328",
+    "content-hash": "6dd9c66c1cee4fad0f5891f6d43a553c",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5396,11 +5396,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/mp-1057-create-offer-and-show-it-on-pdp",
+            "version": "dev-feature/mp-1116/master-connect-offer-with-warehouse",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "dfaa676277d92623efe414325b0aa86714d78c9f"
+                "reference": "8139493cc09bad1e129f127a1d931f4907ddaa0a"
             },
             "require": {
                 "php": ">=7.1"
@@ -5553,6 +5553,7 @@
                 "spryker/company-users-rest-api": "*",
                 "spryker/config": "*",
                 "spryker/configurable-bundle": "*",
+                "spryker/configurable-bundle-cart": "*",
                 "spryker/configurable-bundle-data-import": "*",
                 "spryker/configurable-bundle-storage": "*",
                 "spryker/console": "*",
@@ -5638,6 +5639,8 @@
                 "spryker/gui": "*",
                 "spryker/guzzle": "*",
                 "spryker/heartbeat": "*",
+                "spryker/http": "*",
+                "spryker/http-extension": "*",
                 "spryker/index-generator": "*",
                 "spryker/installer": "*",
                 "spryker/invoice": "*",
@@ -5656,10 +5659,15 @@
                 "spryker/manual-order-entry-gui-extension": "*",
                 "spryker/merchant": "*",
                 "spryker/merchant-data-import": "*",
+                "spryker/merchant-extension": "*",
                 "spryker/merchant-gui": "*",
+                "spryker/merchant-gui-extension": "*",
                 "spryker/merchant-product-offer": "*",
                 "spryker/merchant-product-offer-data-import": "*",
                 "spryker/merchant-product-offer-storage": "*",
+                "spryker/merchant-profile": "*",
+                "spryker/merchant-profile-data-import": "*",
+                "spryker/merchant-profile-gui": "*",
                 "spryker/merchant-relationship": "*",
                 "spryker/merchant-relationship-data-import": "*",
                 "spryker/merchant-relationship-extension": "*",
@@ -5842,6 +5850,7 @@
                 "spryker/quote": "*",
                 "spryker/quote-approval": "*",
                 "spryker/quote-approval-extension": "*",
+                "spryker/quote-approval-shipment-connector": "*",
                 "spryker/quote-extension": "*",
                 "spryker/quote-request": "*",
                 "spryker/quote-request-agent": "*",
@@ -5965,7 +5974,8 @@
                 "spryker/code-sniffer": "dev-master"
             },
             "bin": [
-                "Bundles/Console/bin/console"
+                "Bundles/Console/bin/console",
+                "Bundles/Console/bin/yves"
             ],
             "type": "library",
             "autoload": {
@@ -5982,7 +5992,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-22T13:19:57+00:00"
+            "time": "2019-10-25T07:54:26+00:00"
         },
         {
             "name": "spryker/spryker-shop",
