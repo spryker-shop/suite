@@ -82,7 +82,8 @@ class PaymentStepTest extends Unit
             'payment',
             'escape_route',
             $this->getFlashMessengerMock(),
-            $this->getCalculationClientMock()
+            $this->getCalculationClientMock(),
+            []
         );
     }
 
