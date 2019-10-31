@@ -14,7 +14,7 @@ use Spryker\Zed\CmsBlockProductConnector\Communication\Plugin\CmsBlockProductAbs
 class CmsBlockDependencyProvider extends CmsBlockCmsBlockDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\CmsBlock\Communication\Plugin\CmsBlockUpdatePluginInterface[]
+     * @return \Spryker\Zed\CmsBlockExtension\Dependency\Plugin\CmsBlockUpdatePluginInterface[]
      */
     protected function getCmsBlockUpdatePlugins(): array
     {
