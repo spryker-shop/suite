@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\CmsSlotStorage\Persistence;
 
-use Orm\Zed\CmsSlotStorage\Persistence\Base\SpyCmsSlotStorageQuery as BaseSpyCmsSlotStorageQuery;
+use Spryker\Zed\CmsSlotStorage\Persistence\Propel\AbstractSpyCmsSlotStorageQuery as BaseSpyCmsSlotStorageQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_cms_slot_storage' table.
