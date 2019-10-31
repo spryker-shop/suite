@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.112.30",
+            "version": "3.112.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "6d56cc8372e66a99c68f3e9d4bfe26fc485269bc"
+                "reference": "1e211dcb7dcf757b041890f072bbaa593b39512a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/6d56cc8372e66a99c68f3e9d4bfe26fc485269bc",
-                "reference": "6d56cc8372e66a99c68f3e9d4bfe26fc485269bc",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/1e211dcb7dcf757b041890f072bbaa593b39512a",
+                "reference": "1e211dcb7dcf757b041890f072bbaa593b39512a",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-10-28T21:23:42+00:00"
+            "time": "2019-10-30T18:37:36+00:00"
         },
         {
             "name": "codeitnowin/barcode",
@@ -3810,7 +3810,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
@@ -8581,16 +8581,16 @@
         },
         {
             "name": "spryker/application",
-            "version": "3.20.3",
+            "version": "3.20.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/application.git",
-                "reference": "a95124894a68fe112e8e9325eb9a9a9cafd8a18d"
+                "reference": "41c191b3620e25857f1cefa19e24a2a8d74cd895"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/application/zipball/a95124894a68fe112e8e9325eb9a9a9cafd8a18d",
-                "reference": "a95124894a68fe112e8e9325eb9a9a9cafd8a18d",
+                "url": "https://api.github.com/repos/spryker/application/zipball/41c191b3620e25857f1cefa19e24a2a8d74cd895",
+                "reference": "41c191b3620e25857f1cefa19e24a2a8d74cd895",
                 "shasum": ""
             },
             "require": {
@@ -8638,7 +8638,7 @@
                 "proprietary"
             ],
             "description": "Application module",
-            "time": "2019-10-14T10:22:10+00:00"
+            "time": "2019-10-15T13:23:18+00:00"
         },
         {
             "name": "spryker/application-extension",
@@ -30768,21 +30768,23 @@
         },
         {
             "name": "spryker/session",
-            "version": "4.4.0",
+            "version": "4.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/session.git",
-                "reference": "e95105b4da2aaaadc7415c8c11f40ad41cb1d5b6"
+                "reference": "10c31c6fc42f8b140eb5eab58f353418c611a2b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/session/zipball/e95105b4da2aaaadc7415c8c11f40ad41cb1d5b6",
-                "reference": "e95105b4da2aaaadc7415c8c11f40ad41cb1d5b6",
+                "url": "https://api.github.com/repos/spryker/session/zipball/10c31c6fc42f8b140eb5eab58f353418c611a2b9",
+                "reference": "10c31c6fc42f8b140eb5eab58f353418c611a2b9",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
+                "spryker/application-extension": "^1.0.0",
                 "spryker/config": "^3.0.0",
+                "spryker/event-dispatcher-extension": "^1.0.0",
                 "spryker/kernel": "^3.33.0",
                 "spryker/monitoring": "^1.0.0 || ^2.0.0",
                 "spryker/redis": "^2.0.0",
@@ -30792,8 +30794,14 @@
             },
             "require-dev": {
                 "spryker/application": "*",
+                "spryker/container": "*",
+                "spryker/event-dispatcher": "*",
                 "spryker/propel": "*",
                 "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/container": "If you want to use application plugins and event dispatcher plugins.",
+                "spryker/event-dispatcher": "If you want to use application plugins and event dispatcher plugins."
             },
             "type": "library",
             "extra": {
@@ -30812,7 +30820,7 @@
                 "proprietary"
             ],
             "description": "Session module",
-            "time": "2019-06-20T17:35:06+00:00"
+            "time": "2019-10-24T14:45:18+00:00"
         },
         {
             "name": "spryker/session-extension",
@@ -32002,16 +32010,16 @@
         },
         {
             "name": "spryker/silexphp",
-            "version": "0.3.3",
+            "version": "0.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/silexphp.git",
-                "reference": "8f47d7440748cb52af3ddfbe7152a9b837e6cf5c"
+                "reference": "92a23eaa5f51ea990b53c18f4f7513b33e54e458"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/silexphp/zipball/8f47d7440748cb52af3ddfbe7152a9b837e6cf5c",
-                "reference": "8f47d7440748cb52af3ddfbe7152a9b837e6cf5c",
+                "url": "https://api.github.com/repos/spryker/silexphp/zipball/92a23eaa5f51ea990b53c18f4f7513b33e54e458",
+                "reference": "92a23eaa5f51ea990b53c18f4f7513b33e54e458",
                 "shasum": ""
             },
             "require": {
@@ -32078,7 +32086,7 @@
             "keywords": [
                 "microframework"
             ],
-            "time": "2019-10-11T08:08:31+00:00"
+            "time": "2019-10-31T07:41:48+00:00"
         },
         {
             "name": "spryker/sql-criteria-builder",
@@ -32170,21 +32178,21 @@
         },
         {
             "name": "spryker/step-engine",
-            "version": "3.2.0",
+            "version": "3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/step-engine.git",
-                "reference": "7b4ed82876fd5f02e5d51375eb7c8f8849a8cad0"
+                "reference": "ea8f62bf32179ae7e40e5a8d1add88da259f081f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/step-engine/zipball/7b4ed82876fd5f02e5d51375eb7c8f8849a8cad0",
-                "reference": "7b4ed82876fd5f02e5d51375eb7c8f8849a8cad0",
+                "url": "https://api.github.com/repos/spryker/step-engine/zipball/ea8f62bf32179ae7e40e5a8d1add88da259f081f",
+                "reference": "ea8f62bf32179ae7e40e5a8d1add88da259f081f",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "spryker/kernel": "^3.0.0",
+                "spryker/kernel": "^3.30.0",
                 "spryker/symfony": "^3.0.0"
             },
             "require-dev": {
@@ -32210,7 +32218,7 @@
                 "proprietary"
             ],
             "description": "StepEngine module",
-            "time": "2018-11-13T15:09:10+00:00"
+            "time": "2019-09-24T15:47:24+00:00"
         },
         {
             "name": "spryker/stock",
@@ -37931,16 +37939,16 @@
         },
         {
             "name": "mikey179/vfsstream",
-            "version": "v1.6.7",
+            "version": "v1.6.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bovigo/vfsStream.git",
-                "reference": "2b544ac3a21bcc4dde5d90c4ae8d06f4319055fb"
+                "reference": "231c73783ebb7dd9ec77916c10037eff5a2b6efe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bovigo/vfsStream/zipball/2b544ac3a21bcc4dde5d90c4ae8d06f4319055fb",
-                "reference": "2b544ac3a21bcc4dde5d90c4ae8d06f4319055fb",
+                "url": "https://api.github.com/repos/bovigo/vfsStream/zipball/231c73783ebb7dd9ec77916c10037eff5a2b6efe",
+                "reference": "231c73783ebb7dd9ec77916c10037eff5a2b6efe",
                 "shasum": ""
             },
             "require": {
@@ -37973,7 +37981,7 @@
             ],
             "description": "Virtual file system to mock the real file system in unit tests.",
             "homepage": "http://vfs.bovigo.org/",
-            "time": "2019-08-01T01:38:37+00:00"
+            "time": "2019-10-30T15:31:00+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -40288,8 +40296,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
@@ -40848,12 +40856,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "78c98d4ecc5fa840ebced1afd6628801ff1adc7f"
+                "reference": "e0972b4a84c078818eef17c9c7542014bccbacb1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/78c98d4ecc5fa840ebced1afd6628801ff1adc7f",
-                "reference": "78c98d4ecc5fa840ebced1afd6628801ff1adc7f",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/e0972b4a84c078818eef17c9c7542014bccbacb1",
+                "reference": "e0972b4a84c078818eef17c9c7542014bccbacb1",
                 "shasum": ""
             },
             "require": {
@@ -40894,7 +40902,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-10-28T14:18:34+00:00"
+            "time": "2019-10-29T15:09:20+00:00"
         },
         {
             "name": "spryker/development",
@@ -41663,8 +41671,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "lead",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "lead"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
