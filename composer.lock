@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.112.32",
+            "version": "3.112.33",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "1e211dcb7dcf757b041890f072bbaa593b39512a"
+                "reference": "9d8735e4eb252ea8fa3dd1bc11bfcd01f3fa6d6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/1e211dcb7dcf757b041890f072bbaa593b39512a",
-                "reference": "1e211dcb7dcf757b041890f072bbaa593b39512a",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/9d8735e4eb252ea8fa3dd1bc11bfcd01f3fa6d6c",
+                "reference": "9d8735e4eb252ea8fa3dd1bc11bfcd01f3fa6d6c",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-10-30T18:37:36+00:00"
+            "time": "2019-10-31T18:10:59+00:00"
         },
         {
             "name": "codeitnowin/barcode",
@@ -18121,16 +18121,16 @@
         },
         {
             "name": "spryker/event-dispatcher",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-dispatcher.git",
-                "reference": "57028ad4bea5176c29134948d03b92a5af051204"
+                "reference": "80a30d6af54f67a6f5851c43ac2e8508d753327a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-dispatcher/zipball/57028ad4bea5176c29134948d03b92a5af051204",
-                "reference": "57028ad4bea5176c29134948d03b92a5af051204",
+                "url": "https://api.github.com/repos/spryker/event-dispatcher/zipball/80a30d6af54f67a6f5851c43ac2e8508d753327a",
+                "reference": "80a30d6af54f67a6f5851c43ac2e8508d753327a",
                 "shasum": ""
             },
             "require": {
@@ -18164,7 +18164,7 @@
                 "proprietary"
             ],
             "description": "EventDispatcher module",
-            "time": "2019-10-29T09:31:46+00:00"
+            "time": "2019-10-31T16:44:47+00:00"
         },
         {
             "name": "spryker/event-dispatcher-extension",
@@ -18939,16 +18939,16 @@
         },
         {
             "name": "spryker/glue-application",
-            "version": "1.21.0",
+            "version": "1.22.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/glue-application.git",
-                "reference": "71f96b5dd63a859bccd5252d4bf61aa20965f9bc"
+                "reference": "78d1df23807edafcfb242389f260c08c9aff05d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/glue-application/zipball/71f96b5dd63a859bccd5252d4bf61aa20965f9bc",
-                "reference": "71f96b5dd63a859bccd5252d4bf61aa20965f9bc",
+                "url": "https://api.github.com/repos/spryker/glue-application/zipball/78d1df23807edafcfb242389f260c08c9aff05d6",
+                "reference": "78d1df23807edafcfb242389f260c08c9aff05d6",
                 "shasum": ""
             },
             "require": {
@@ -18956,6 +18956,7 @@
                 "spryker/application": "^3.13.0",
                 "spryker/container": "^1.0.0",
                 "spryker/documentation-generator-rest-api-extension": "^1.0.0",
+                "spryker/event-dispatcher-extension": "^1.0.0",
                 "spryker/glue-application-extension": "^1.2.0",
                 "spryker/kernel": "^3.31.0",
                 "spryker/log": "^3.0.0",
@@ -18968,11 +18969,13 @@
             "require-dev": {
                 "spryker/code-sniffer": "*",
                 "spryker/config": "*",
+                "spryker/event-dispatcher": "*",
                 "spryker/silex": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
                 "spryker/config": "If you want to use Config.",
+                "spryker/event-dispatcher": "If you want to use the EventDispatcher plugin.",
                 "spryker/silex": "If you want to use ServiceProvider."
             },
             "type": "library",
@@ -18991,7 +18994,7 @@
                 "proprietary"
             ],
             "description": "GlueApplication module",
-            "time": "2019-07-09T12:27:26+00:00"
+            "time": "2019-10-22T11:56:21+00:00"
         },
         {
             "name": "spryker/glue-application-extension",
@@ -19576,16 +19579,16 @@
         },
         {
             "name": "spryker/kernel",
-            "version": "3.40.0",
+            "version": "3.41.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/kernel.git",
-                "reference": "34599f729a374271c98b6c22247b0d7c5b373f42"
+                "reference": "06736012626b234523cab5f6772edb0effde6098"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/kernel/zipball/34599f729a374271c98b6c22247b0d7c5b373f42",
-                "reference": "34599f729a374271c98b6c22247b0d7c5b373f42",
+                "url": "https://api.github.com/repos/spryker/kernel/zipball/06736012626b234523cab5f6772edb0effde6098",
+                "reference": "06736012626b234523cab5f6772edb0effde6098",
                 "shasum": ""
             },
             "require": {
@@ -19627,7 +19630,7 @@
                 "proprietary"
             ],
             "description": "Kernel module",
-            "time": "2019-10-18T05:06:26+00:00"
+            "time": "2019-10-30T16:21:17+00:00"
         },
         {
             "name": "spryker/key-builder",
@@ -32348,16 +32351,16 @@
         },
         {
             "name": "spryker/storage",
-            "version": "3.11.0",
+            "version": "3.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/storage.git",
-                "reference": "ad8b95b0e35b07df489f014303c524a67ab92919"
+                "reference": "de85274a5eb8c45dc0c03a1ae8980442462e9eaa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/storage/zipball/ad8b95b0e35b07df489f014303c524a67ab92919",
-                "reference": "ad8b95b0e35b07df489f014303c524a67ab92919",
+                "url": "https://api.github.com/repos/spryker/storage/zipball/de85274a5eb8c45dc0c03a1ae8980442462e9eaa",
+                "reference": "de85274a5eb8c45dc0c03a1ae8980442462e9eaa",
                 "shasum": ""
             },
             "require": {
@@ -32365,7 +32368,7 @@
                 "spryker/config": "^3.0.0",
                 "spryker/event-dispatcher-extension": "^1.0.0",
                 "spryker/gui": "^3.0.0",
-                "spryker/kernel": "^3.33.0",
+                "spryker/kernel": "^3.41.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/redis": "^2.2.0",
                 "spryker/silex": "^2.0.0",
@@ -32403,7 +32406,7 @@
                 "proprietary"
             ],
             "description": "Storage module",
-            "time": "2019-10-11T04:49:10+00:00"
+            "time": "2019-10-30T16:28:20+00:00"
         },
         {
             "name": "spryker/storage-extension",
@@ -38427,16 +38430,16 @@
         },
         {
             "name": "nette/schema",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/schema.git",
-                "reference": "6241d8d4da39e825dd6cb5bfbe4242912f4d7e4d"
+                "reference": "337117df1dade22e2ba1fdc4a4b832c1e9b06b76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/schema/zipball/6241d8d4da39e825dd6cb5bfbe4242912f4d7e4d",
-                "reference": "6241d8d4da39e825dd6cb5bfbe4242912f4d7e4d",
+                "url": "https://api.github.com/repos/nette/schema/zipball/337117df1dade22e2ba1fdc4a4b832c1e9b06b76",
+                "reference": "337117df1dade22e2ba1fdc4a4b832c1e9b06b76",
                 "shasum": ""
             },
             "require": {
@@ -38480,7 +38483,7 @@
                 "config",
                 "nette"
             ],
-            "time": "2019-04-03T15:53:25+00:00"
+            "time": "2019-10-31T20:52:19+00:00"
         },
         {
             "name": "nette/utils",
