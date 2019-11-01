@@ -9,7 +9,7 @@ namespace Pyz\Zed\CmsSlotBlockGui;
 
 use Spryker\Zed\CategoryGui\Communication\Plugin\CategorySlotBlockConditionFormPlugin;
 use Spryker\Zed\CmsSlotBlockGui\CmsSlotBlockGuiDependencyProvider as SprykerCmsSlotBlockGuiDependencyProvider;
-use Spryker\Zed\ProductCategoryGui\Communication\Plugin\ProductCategorySlotBlockConditionFormPlugin;
+use Spryker\Zed\CmsSlotBlockProductCategoryGui\Communication\Plugin\ProductCategorySlotBlockConditionFormPlugin;
 
 class CmsSlotBlockGuiDependencyProvider extends SprykerCmsSlotBlockGuiDependencyProvider
 {
