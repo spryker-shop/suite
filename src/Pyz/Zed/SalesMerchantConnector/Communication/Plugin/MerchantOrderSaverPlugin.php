@@ -7,7 +7,9 @@
 
 namespace Pyz\Zed\SalesMerchantConnector\Communication\Plugin;
 
+use Generated\Shared\Transfer\OfferTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
+use Generated\Shared\Transfer\SalesOrderMerchantSaveTransfer;
 use Generated\Shared\Transfer\SaveOrderTransfer;
 use Spryker\Zed\CheckoutExtension\Dependency\Plugin\CheckoutDoSaveOrderInterface;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
@@ -30,7 +32,36 @@ class MerchantOrderSaverPlugin extends AbstractPlugin implements CheckoutDoSaveO
      */
     public function saveOrder(QuoteTransfer $quoteTransfer, SaveOrderTransfer $saveOrderTransfer)
     {
-        $this->getFacade()
-            ->saveSalesOrderMerchants($quoteTransfer, $saveOrderTransfer);
+        foreach ($quoteTransfer->getItems() as $itemTransfer) {
+            $offerTransfer = $itemTransfer->getOffer();
+            if (!$offerTransfer || !$offerTransfer->getProductOfferReference()) {
+                //TODO: Should be removed when MP-1301 is done.
+                //continue;
+                $offerTransfer = new OfferTransfer();
+                $offerTransfer->setProductOfferReference('offer1');
+                $itemTransfer->setOffer($offerTransfer);
+            }
+
+            $this->getFacade()->createSalesOrderMerchant(
+                $this->createSalesOrderMerchantSaveTransfer($offerTransfer, $saveOrderTransfer)
+            );
+        }
+    }
+
+    /**4
+     * @param OfferTransfer $offerTransfer
+     * @param SaveOrderTransfer $saveOrderTransfer
+     *
+     * @return SalesOrderMerchantSaveTransfer
+     */
+    protected function createSalesOrderMerchantSaveTransfer(
+        OfferTransfer $offerTransfer,
+        SaveOrderTransfer $saveOrderTransfer
+    ): SalesOrderMerchantSaveTransfer {
+        $salesOrderMerchantSaveTransfer = new SalesOrderMerchantSaveTransfer();
+        $salesOrderMerchantSaveTransfer->setOfferReference($offerTransfer->getProductOfferReference());
+        $salesOrderMerchantSaveTransfer->setIdSalesOrder($saveOrderTransfer->getIdSalesOrder());
+
+        return  $salesOrderMerchantSaveTransfer;
     }
 }
