@@ -31,6 +31,7 @@ use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyBusinessUnitContr
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyUserRestrictionHandlerPlugin;
 use SprykerShop\Yves\CompanyWidget\Widget\CompanyBusinessUnitAddressWidget;
 use SprykerShop\Yves\CompanyWidget\Widget\CompanyMenuItemWidget;
+use SprykerShop\Yves\ConfigurableBundleCartNoteWidget\Widget\ConfigurableBundleCartNoteDisplayWidget;
 use SprykerShop\Yves\ConfigurableBundleCartNoteWidget\Widget\ConfigurableBundleCartNoteFormWidget;
 use SprykerShop\Yves\ConfigurableBundleWidget\Widget\QuoteConfiguredBundleWidget;
 use SprykerShop\Yves\CurrencyWidget\Widget\CurrencyWidget;
@@ -213,6 +214,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             QuoteConfiguredBundleWidget::class,
             OrderConfiguredBundleWidget::class,
             ConfigurableBundleCartNoteFormWidget::class,
+            ConfigurableBundleCartNoteDisplayWidget::class,
         ];
     }
 
