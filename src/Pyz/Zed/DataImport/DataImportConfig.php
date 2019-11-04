@@ -35,6 +35,7 @@ use Spryker\Zed\MerchantRelationshipSalesOrderThresholdDataImport\MerchantRelati
 use Spryker\Zed\MultiCartDataImport\MultiCartDataImportConfig;
 use Spryker\Zed\PriceProductDataImport\PriceProductDataImportConfig;
 use Spryker\Zed\PriceProductMerchantRelationshipDataImport\PriceProductMerchantRelationshipDataImportConfig;
+use Spryker\Zed\PriceProductOfferDataImport\PriceProductOfferDataImportConfig;
 use Spryker\Zed\PriceProductScheduleDataImport\PriceProductScheduleDataImportConfig;
 use Spryker\Zed\ProductAlternativeDataImport\ProductAlternativeDataImportConfig;
 use Spryker\Zed\ProductDiscontinuedDataImport\ProductDiscontinuedDataImportConfig;
@@ -518,6 +519,7 @@ class DataImportConfig extends SprykerDataImportConfig
             MerchantProfileDataImportConfig::IMPORT_TYPE_MERCHANT_PROFILE,
             MerchantProfileDataImportConfig::IMPORT_TYPE_MERCHANT_PROFILE_ADDRESS,
             MerchantProductOfferDataImportConfig::IMPORT_TYPE_MERCHANT_PRODUCT_OFFER,
+            PriceProductOfferDataImportConfig::IMPORT_TYPE_PRICE_PRODUCT_OFFER,
             MultiCartDataImportConfig::IMPORT_TYPE_MULTI_CART,
             SharedCartDataImportConfig::IMPORT_TYPE_SHARED_CART,
             CompanyRoleDataImportConfig::IMPORT_TYPE_COMPANY_USER_ROLE,
