@@ -30,7 +30,7 @@ class MerchantOrderSaverPlugin extends AbstractPlugin implements CheckoutDoSaveO
      *
      * @return void
      */
-    public function saveOrder(QuoteTransfer $quoteTransfer, SaveOrderTransfer $saveOrderTransfer)
+    public function saveOrder(QuoteTransfer $quoteTransfer, SaveOrderTransfer $saveOrderTransfer): void
     {
         foreach ($quoteTransfer->getItems() as $itemTransfer) {
             $offerTransfer = $itemTransfer->getOffer();
@@ -48,7 +48,7 @@ class MerchantOrderSaverPlugin extends AbstractPlugin implements CheckoutDoSaveO
         }
     }
 
-    /**4
+    /**
      * @param OfferTransfer $offerTransfer
      * @param SaveOrderTransfer $saveOrderTransfer
      *
