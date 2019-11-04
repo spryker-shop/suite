@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "78ace21b344f7f9efef432bdd78c6f23",
+    "content-hash": "b5ff0fc30cf546f112720beb2f4c7ca5",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -2092,8 +2092,8 @@
             "authors": [
                 {
                     "name": "Luís Otávio Cobucci Oblonczyk",
-                    "role": "Developer",
-                    "email": "lcobucci@gmail.com"
+                    "email": "lcobucci@gmail.com",
+                    "role": "Developer"
                 }
             ],
             "description": "A simple library to work with JSON Web Token and JSON Web Signature",
@@ -2400,15 +2400,15 @@
             "authors": [
                 {
                     "name": "Alex Bilbie",
+                    "role": "Developer",
                     "email": "hello@alexbilbie.com",
-                    "homepage": "http://www.alexbilbie.com",
-                    "role": "Developer"
+                    "homepage": "http://www.alexbilbie.com"
                 },
                 {
                     "name": "Andy Millington",
+                    "role": "Developer",
                     "email": "andrew@noexceptions.io",
-                    "homepage": "https://www.noexceptions.io",
-                    "role": "Developer"
+                    "homepage": "https://www.noexceptions.io"
                 }
             ],
             "description": "A lightweight and powerful OAuth 2.0 authorization and resource server library with support for all the core specification grants. This library will allow you to secure your API with OAuth and allow your applications users to approve apps that want to access their data from your API.",
@@ -2460,9 +2460,9 @@
             "authors": [
                 {
                     "name": "Mandrill Devs",
+                    "role": "Developer",
                     "email": "community@mandrill.com",
-                    "homepage": "http://mandrill.com",
-                    "role": "Developer"
+                    "homepage": "http://mandrill.com"
                 }
             ],
             "description": "API client library for the Mandrill email as a service platform",
@@ -3362,18 +3362,18 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "email": "sebastian@phpeople.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "sebastian@phpeople.de"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Library for handling version information and constraints",
@@ -3758,8 +3758,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Library that provides collection, processing, and rendering functionality for PHP code coverage information.",
@@ -4145,7 +4145,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -5395,11 +5395,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/mp-716/mp-37-merchant-profile",
+            "version": "dev-feature/mp-706/mp-707-extended-merchant-profile-page",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "61b54aafdf8e0a4c3c7dba440799691eb44088a3"
+                "reference": "d513b6328e3546e5270408f7a0d26ce917091adf"
             },
             "require": {
                 "php": ">=7.1"
@@ -5664,6 +5664,7 @@
                 "spryker/merchant-profile": "*",
                 "spryker/merchant-profile-data-import": "*",
                 "spryker/merchant-profile-gui": "*",
+                "spryker/merchant-profile-storage": "*",
                 "spryker/merchant-relationship": "*",
                 "spryker/merchant-relationship-data-import": "*",
                 "spryker/merchant-relationship-extension": "*",
@@ -5987,15 +5988,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-24T13:17:37+00:00"
+            "time": "2019-11-01T14:37:17+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/mp-706/mp-707-extended-merchant-profile-page",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "8b70348ab02fbf934675d5c03260bff8a7d830b0"
+                "reference": "d928215877c6ecf64520019b8ce5f0d660aa02cc"
             },
             "require": {
                 "php": ">=7.1"
@@ -6048,6 +6049,7 @@
                 "spryker-shop/heartbeat-page": "*",
                 "spryker-shop/home-page": "*",
                 "spryker-shop/language-switcher-widget": "*",
+                "spryker-shop/merchant-profile-page": "*",
                 "spryker-shop/money-widget": "*",
                 "spryker-shop/multi-cart-page": "*",
                 "spryker-shop/multi-cart-widget": "*",
@@ -6129,7 +6131,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-10-18T04:48:47+00:00"
+            "time": "2019-10-31T16:46:29+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8928,8 +8930,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -9390,9 +9392,9 @@
             "authors": [
                 {
                     "name": "Antonio J. García Lagar",
-                    "role": "developer",
                     "email": "aj@garcialagar.es",
-                    "homepage": "http://aj.garcialagar.es"
+                    "homepage": "http://aj.garcialagar.es",
+                    "role": "developer"
                 }
             ],
             "description": "Twig extension to set breakpoints",
@@ -9843,20 +9845,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
+                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler",
-                    "role": "Project Founder"
+                    "homepage": "https://github.com/manuelpichler"
                 },
                 {
                     "name": "Marc Würth",
+                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84",
-                    "role": "Project Maintainer"
+                    "homepage": "https://github.com/ravage84"
                 },
                 {
                     "name": "Other contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -11187,8 +11189,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",

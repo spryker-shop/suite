@@ -514,7 +514,7 @@ class DataImportConfig extends SprykerDataImportConfig
             CompanyDataImportConfig::IMPORT_TYPE_COMPANY,
             CategoryDataImportConfig::IMPORT_TYPE_CATEGORY,
             MerchantDataImportConfig::IMPORT_TYPE_MERCHANT,
-            MerchantDataImportConfig::IMPORT_TYPE_MERCHANT_ADDRESS,
+            MerchantProfileDataImportConfig::IMPORT_TYPE_MERCHANT_PROFILE_ADDRESS,
             MerchantProfileDataImportConfig::IMPORT_TYPE_MERCHANT_PROFILE,
             MultiCartDataImportConfig::IMPORT_TYPE_MULTI_CART,
             SharedCartDataImportConfig::IMPORT_TYPE_SHARED_CART,
