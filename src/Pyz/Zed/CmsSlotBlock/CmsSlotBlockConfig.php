@@ -7,20 +7,20 @@
 
 namespace Pyz\Zed\CmsSlotBlock;
 
-use Spryker\Shared\CategoryGui\CategoryGuiConstants;
+use Spryker\Shared\CmsSlotBlockCategoryConnector\CmsSlotBlockCategoryConnectorConfig;
 use Spryker\Shared\CmsSlotBlockProductCategoryConnector\CmsSlotBlockProductCategoryConnectorConfig;
 use Spryker\Zed\CmsSlotBlock\CmsSlotBlockConfig as SprykerCmsSlotBlockConfig;
 
 class CmsSlotBlockConfig extends SprykerCmsSlotBlockConfig
 {
     /**
-     * @return array
+     * @return string[][]
      */
     public function getTemplateConditionsAssignment(): array
     {
         return [
             '@CatalogPage/views/catalog/catalog.twig' => [
-                CategoryGuiConstants::CONDITION_KEY,
+                CmsSlotBlockCategoryConnectorConfig::CONDITION_KEY,
             ],
             '@ProductDetailPage/views/pdp/pdp.twig' => [
                 CmsSlotBlockProductCategoryConnectorConfig::CONDITION_KEY,
