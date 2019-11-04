@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bf34ae3268a7b558c720da5fadcec2bc",
+    "content-hash": "a48f6dcd5e1054046437dce958e17eb6",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.112.33",
+            "version": "3.112.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "9d8735e4eb252ea8fa3dd1bc11bfcd01f3fa6d6c"
+                "reference": "5918919b64550f7436a01738ea49e56703c83799"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/9d8735e4eb252ea8fa3dd1bc11bfcd01f3fa6d6c",
-                "reference": "9d8735e4eb252ea8fa3dd1bc11bfcd01f3fa6d6c",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/5918919b64550f7436a01738ea49e56703c83799",
+                "reference": "5918919b64550f7436a01738ea49e56703c83799",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-10-31T18:10:59+00:00"
+            "time": "2019-11-01T18:08:35+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -3364,18 +3364,18 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "email": "sebastian@phpeople.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "sebastian@phpeople.de"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Library for handling version information and constraints",
@@ -3811,8 +3811,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "FilterIterator implementation that filters files based on a list of suffixes.",
@@ -3853,8 +3853,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Simple template engine.",
@@ -5090,8 +5090,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
@@ -5397,11 +5397,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/cms-2627/master-slot-is-active-inactive",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "5d629405dcb2d0829d322f157d409beff39a6786"
+                "reference": "3a9e79252d068236b7d3c81796a253c0e87d1368"
             },
             "require": {
                 "php": ">=7.1"
@@ -5500,6 +5500,7 @@
                 "spryker/cms-slot-extension": "*",
                 "spryker/cms-slot-gui": "*",
                 "spryker/cms-slot-locale-connector": "*",
+                "spryker/cms-slot-storage": "*",
                 "spryker/cms-slot-store-connector": "*",
                 "spryker/cms-storage": "*",
                 "spryker/cms-user-connector": "*",
@@ -5985,15 +5986,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-11-01T17:32:35+00:00"
+            "time": "2019-11-04T12:23:17+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/cms-2627/master-slot-is-active-inactive",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "5479d799049eeb1abe4d59b885799b527b7769cd"
+                "reference": "b49cff5344fd08b4297ffeb1bff324a0d11cd669"
             },
             "require": {
                 "php": ">=7.1"
@@ -6127,7 +6128,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-10-31T09:18:52+00:00"
+            "time": "2019-11-01T08:36:31+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -9845,20 +9846,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
+                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler",
-                    "role": "Project Founder"
+                    "homepage": "https://github.com/manuelpichler"
                 },
                 {
                     "name": "Marc Würth",
+                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84",
-                    "role": "Project Maintainer"
+                    "homepage": "https://github.com/ravage84"
                 },
                 {
                     "name": "Other contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -10127,8 +10128,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "FinderFacade is a convenience wrapper for Symfony's Finder component.",
@@ -10178,8 +10179,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Copy/Paste Detector (CPD) for PHP code.",
@@ -11190,8 +11191,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
