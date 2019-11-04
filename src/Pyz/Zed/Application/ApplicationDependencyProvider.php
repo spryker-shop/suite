@@ -7,13 +7,11 @@
 
 namespace Pyz\Zed\Application;
 
-use Silex\Provider\SessionServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\FormFactoryServiceProvider;
 use Spryker\Shared\ErrorHandler\Plugin\ServiceProvider\WhoopsErrorHandlerServiceProvider;
 use Spryker\Zed\Api\Communication\Plugin\ApiServiceProviderPlugin;
 use Spryker\Zed\Api\Communication\Plugin\ServiceProvider\ApiRoutingServiceProvider;
 use Spryker\Zed\Application\ApplicationDependencyProvider as SprykerApplicationDependencyProvider;
-use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\SaveSessionServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\SubRequestServiceProvider;
 use Spryker\Zed\Assertion\Communication\Plugin\ServiceProvider\AssertionServiceProvider;
 use Spryker\Zed\EventDispatcher\Communication\Plugin\Application\EventDispatcherApplicationPlugin;
@@ -25,7 +23,7 @@ use Spryker\Zed\Locale\Communication\Plugin\Application\LocaleApplicationPlugin;
 use Spryker\Zed\Messenger\Communication\Plugin\Application\MessengerApplicationPlugin;
 use Spryker\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
 use Spryker\Zed\Router\Communication\Plugin\Application\RouterApplicationPlugin;
-use Spryker\Zed\Session\Communication\Plugin\ServiceProvider\SessionServiceProvider as SprykerSessionServiceProvider;
+use Spryker\Zed\Session\Communication\Plugin\Application\SessionApplicationPlugin;
 use Spryker\Zed\Translator\Communication\Plugin\Application\TranslatorApplicationPlugin;
 use Spryker\Zed\Twig\Communication\Plugin\Application\TwigApplicationPlugin;
 use Spryker\Zed\WebProfiler\Communication\Plugin\Application\WebProfilerApplicationPlugin;
@@ -46,9 +44,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new SubRequestServiceProvider(),
             new FormFactoryServiceProvider(),
             new GuiTwigExtensionServiceProvider(),
-            new SaveSessionServiceProvider(),
-            new SessionServiceProvider(),
-            new SprykerSessionServiceProvider(),
             new SubRequestServiceProvider(),
             new FormTypeExtensionServiceProvider(),
         ];
@@ -86,9 +81,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
     protected function getInternalCallServiceProvidersWithAuthentication(Container $container)
     {
         return [
-            new SessionServiceProvider(),
             new SubRequestServiceProvider(),
-            new SprykerSessionServiceProvider(),
         ];
     }
 
@@ -107,6 +100,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new RouterApplicationPlugin(),
             new WebProfilerApplicationPlugin(),
             new HttpApplicationPlugin(),
+            new SessionApplicationPlugin(),
         ];
     }
 }
