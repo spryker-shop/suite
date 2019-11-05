@@ -67,8 +67,8 @@ sections:
             command: "vendor/bin/console scheduler:setup"
 
     init-storages-per-store:
-        setup-search-create-indices:
-            command: "vendor/bin/console search:setup:indices"
+        setup-search-create-indexes:
+            command: "vendor/bin/console search:setup:indexes"
 
     init-storages-per-region:
         propel-copy-schema:

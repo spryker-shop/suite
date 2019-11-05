@@ -91,8 +91,8 @@ sections:
         init-database:
             command: "vendor/bin/console setup:init-db"
 
-        setup-search-create-indices:
-            command: "vendor/bin/console search:setup:indices"
+        setup-search-create-indexes:
+            command: "vendor/bin/console search:setup:indexes"
 
         setup-seach-create-index-map:
             command: "vendor/bin/console search:setup:index-map"
