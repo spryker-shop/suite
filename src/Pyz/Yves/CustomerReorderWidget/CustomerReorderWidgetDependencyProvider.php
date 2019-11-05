@@ -7,10 +7,10 @@
 
 namespace Pyz\Yves\CustomerReorderWidget;
 
-use SprykerShop\Yves\CustomerReorderWidget\CustomerReorderWidgetDependencyProvider as SprykerShopCustomerReorderWidgetDependencyProvider;
+use SprykerShop\Yves\CustomerReorderWidget\CustomerReorderWidgetDependencyProvider as SprykerCustomerReorderWidgetDependencyProvider;
 use SprykerShop\Yves\SalesConfigurableBundleWidget\Plugin\CustomerReorder\ConfiguredBundlePostReorderPlugin;
 
-class CustomerReorderWidgetDependencyProvider extends SprykerShopCustomerReorderWidgetDependencyProvider
+class CustomerReorderWidgetDependencyProvider extends SprykerCustomerReorderWidgetDependencyProvider
 {
     /**
      * @return \SprykerShop\Yves\CustomerReorderWidgetExtension\Dependency\Plugin\PostReorderPluginInterface[]
