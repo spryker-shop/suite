@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b6a448196e18f2e8a0c166f7ce67d448",
+    "content-hash": "eab48852567c84fe144c010cbf3419e5",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1032,8 +1032,8 @@
             "authors": [
                 {
                     "name": "Filipe Dobreira",
-                    "homepage": "https://github.com/filp",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "homepage": "https://github.com/filp"
                 }
             ],
             "description": "php error handling for cool kids",
@@ -4147,7 +4147,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -5397,11 +5397,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/mp-716/master-tmp-merchant-release",
+            "version": "dev-feature/mp-1116/master-connect-offer-with-warehouse",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "c45277962c6be8d3dbcee7ed062fc16221112e0d"
+                "reference": "03f8097699bdda8e225528d22b0e1f6240e63b59"
             },
             "require": {
                 "php": ">=7.1"
@@ -5670,7 +5670,6 @@
                 "spryker/merchant-profile": "*",
                 "spryker/merchant-profile-data-import": "*",
                 "spryker/merchant-profile-gui": "*",
-                "spryker/merchant-profile-storage": "*",
                 "spryker/merchant-relationship": "*",
                 "spryker/merchant-relationship-data-import": "*",
                 "spryker/merchant-relationship-extension": "*",
@@ -5807,6 +5806,8 @@
                 "spryker/product-merchant-connector": "*",
                 "spryker/product-new": "*",
                 "spryker/product-offer": "*",
+                "spryker/product-offer-stock": "*",
+                "spryker/product-offer-stock-data-import": "*",
                 "spryker/product-option": "*",
                 "spryker/product-option-cart-connector": "*",
                 "spryker/product-option-extension": "*",
@@ -5995,7 +5996,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-11-05T09:56:35+00:00"
+            "time": "2019-10-31T16:11:55+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6003,7 +6004,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "be9eaa92538031e47ed1d7ff7e1e417d3e53ae24"
+                "reference": "82d208554bbe9f4bcf1c1bd7aeb6c54516ff22a7"
             },
             "require": {
                 "php": ">=7.1"
@@ -6138,7 +6139,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-11-05T08:36:51+00:00"
+            "time": "2019-11-05T13:09:43+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8937,8 +8938,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -8988,19 +8989,19 @@
             "authors": [
                 {
                     "name": "Fabien Potencier",
+                    "role": "Lead Developer",
                     "email": "fabien@symfony.com",
-                    "homepage": "http://fabien.potencier.org",
-                    "role": "Lead Developer"
+                    "homepage": "http://fabien.potencier.org"
                 },
                 {
                     "name": "Twig Team",
-                    "homepage": "https://twig.symfony.com/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://twig.symfony.com/contributors"
                 },
                 {
                     "name": "Armin Ronacher",
-                    "email": "armin.ronacher@active-4.com",
-                    "role": "Project Founder"
+                    "role": "Project Founder",
+                    "email": "armin.ronacher@active-4.com"
                 }
             ],
             "description": "Twig, the flexible, fast, and secure template language for PHP",
@@ -11201,8 +11202,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "lead",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "lead"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
