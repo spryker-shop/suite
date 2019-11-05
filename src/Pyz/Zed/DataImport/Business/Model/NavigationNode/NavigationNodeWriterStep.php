@@ -91,9 +91,9 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
                 $navigationNodeLocalizedAttributesEntity->setExternalUrl($this->getExternalUrl($navigationNodeLocalizedAttributesEntity, $localizedAttributes));
             }
 
-            if ($navigationNodeEntity->getNodeType() === static::NODE_TYPE_CATEGORY
-                || $navigationNodeEntity->getNodeType() === static::NODE_TYPE_CMS_PAGE
-                || $navigationNodeEntity->getNodeType() === static::NODE_TYPE_MERCHANT
+            if (in_array(
+                $navigationNodeEntity->getNodeType(),
+                [static::NODE_TYPE_CATEGORY, static::NODE_TYPE_CMS_PAGE, static::NODE_TYPE_MERCHANT])
             ) {
                 $navigationNodeLocalizedAttributesEntity->setFkUrl($this->getFkUrl($navigationNodeLocalizedAttributesEntity, $localizedAttributes, $idLocale));
             }
