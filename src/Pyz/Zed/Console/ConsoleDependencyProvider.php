@@ -103,10 +103,10 @@ use Spryker\Zed\Scheduler\Communication\Console\SchedulerSetupConsole;
 use Spryker\Zed\Scheduler\Communication\Console\SchedulerSuspendConsole;
 use Spryker\Zed\Search\Communication\Console\GenerateSourceMapConsole;
 use Spryker\Zed\Search\Communication\Console\SearchConsole;
-use Spryker\Zed\Search\Communication\Console\SearchCreateSnapshotConsole;
-use Spryker\Zed\Search\Communication\Console\SearchDeleteSnapshotConsole;
-use Spryker\Zed\Search\Communication\Console\SearchRegisterSnapshotRepositoryConsole;
-use Spryker\Zed\Search\Communication\Console\SearchRestoreSnapshotConsole;
+use Spryker\Zed\SearchElasticsearch\Communication\Console\ElasticsearchSnapshotCreateConsole;
+use Spryker\Zed\SearchElasticsearch\Communication\Console\ElasticsearchSnapshotDeleteConsole;
+use Spryker\Zed\SearchElasticsearch\Communication\Console\ElasticsearchSnapshotRegisterRepositoryConsole;
+use Spryker\Zed\SearchElasticsearch\Communication\Console\ElasticsearchSnapshotRestoreConsole;
 use Spryker\Zed\SearchElasticsearch\Communication\Console\SearchElasticsearchCloseIndexConsole;
 use Spryker\Zed\SearchElasticsearch\Communication\Console\SearchElasticsearchCopyIndexConsole;
 use Spryker\Zed\SearchElasticsearch\Communication\Console\SearchElasticsearchDeleteIndexConsole;
@@ -269,10 +269,10 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new SearchElasticsearchCopyIndexConsole(),
             new SearchElasticsearchDeleteIndexConsole(),
             new SearchElasticsearchOpenIndexConsole(),
-            new SearchRegisterSnapshotRepositoryConsole(),
-            new SearchDeleteSnapshotConsole(),
-            new SearchCreateSnapshotConsole(),
-            new SearchRestoreSnapshotConsole(),
+            new ElasticsearchSnapshotRegisterRepositoryConsole(),
+            new ElasticsearchSnapshotDeleteConsole(),
+            new ElasticsearchSnapshotCreateConsole(),
+            new ElasticsearchSnapshotRestoreConsole(),
 
             new InstallPackageManagerConsole(),
             new CleanUpDependenciesConsole(),
