@@ -15,6 +15,7 @@ use Spryker\Zed\Application\ApplicationDependencyProvider as SprykerApplicationD
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\SubRequestServiceProvider;
 use Spryker\Zed\Assertion\Communication\Plugin\ServiceProvider\AssertionServiceProvider;
 use Spryker\Zed\EventDispatcher\Communication\Plugin\Application\EventDispatcherApplicationPlugin;
+use Spryker\Zed\Gui\Communication\Plugin\ServiceProvider\FormTypeExtensionServiceProvider;
 use Spryker\Zed\Gui\Communication\Plugin\ServiceProvider\GuiTwigExtensionServiceProvider;
 use Spryker\Zed\Http\Communication\Plugin\Application\HttpApplicationPlugin;
 use Spryker\Zed\Kernel\Container;
@@ -44,6 +45,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new FormFactoryServiceProvider(),
             new GuiTwigExtensionServiceProvider(),
             new SubRequestServiceProvider(),
+            new FormTypeExtensionServiceProvider(),
         ];
 
         $providers = array_merge($providers, $coreProviders);
