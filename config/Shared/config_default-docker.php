@@ -27,6 +27,7 @@ use Spryker\Shared\FileManagerGui\FileManagerGuiConstants;
 use Spryker\Shared\FileSystem\FileSystemConstants;
 use Spryker\Shared\Flysystem\FlysystemConstants;
 use Spryker\Shared\GlueApplication\GlueApplicationConstants;
+use Spryker\Shared\Http\HttpConstants;
 use Spryker\Shared\Kernel\ClassResolver\Cache\Provider\File;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Kernel\Store;
@@ -78,7 +79,9 @@ $CURRENT_STORE = Store::getInstance()->getStoreName();
 /* ZED */
 $config[ApplicationConstants::HOST_ZED] = getenv('SPRYKER_ZED_HOST');
 $config[SessionConstants::ZED_SESSION_COOKIE_DOMAIN] = getenv('SPRYKER_BE_HOST');
-$config[ApplicationConstants::ZED_TRUSTED_HOSTS] = [];
+$config[ApplicationConstants::ZED_TRUSTED_HOSTS]
+    = $config[HttpConstants::ZED_TRUSTED_HOSTS]
+    = [];
 $config[ApplicationConstants::PORT_ZED] = getenv('SPRYKER_ZED_PORT') ? ':' . getenv('SPRYKER_ZED_PORT') : '';
 $config[ApplicationConstants::PORT_SSL_ZED] = '';
 $config[ApplicationConstants::BASE_URL_ZED] = sprintf(
@@ -130,13 +133,17 @@ $config[ZedRequestConstants::SET_REPEAT_DATA] = true;
 $config[ZedRequestConstants::YVES_REQUEST_REPEAT_DATA_PATH] = APPLICATION_ROOT_DIR . '/data/' . Store::getInstance()->getStoreName() . '/' . APPLICATION_ENV . '/yves-requests';
 
 $HSTS_ENABLED = false;
-$config[ApplicationConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_ENABLED] = $HSTS_ENABLED;
+$config[ApplicationConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_ENABLED]
+    = $config[HttpConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_ENABLED]
+    = $HSTS_ENABLED;
 $HSTS_CONFIG = [
     'max_age' => 31536000,
     'include_sub_domains' => true,
     'preload' => true,
 ];
-$config[ApplicationConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG] = $HSTS_CONFIG;
+$config[ApplicationConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG]
+    = $config[HttpConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG]
+    = $HSTS_CONFIG;
 
 $config[ZedRequestConstants::ZED_API_SSL_ENABLED] = false;
 $config[ApplicationConstants::ZED_SSL_ENABLED] = false;
@@ -291,7 +298,6 @@ $config[AclConstants::ACL_USER_RULE_WHITELIST][] = [
 ];
 
 $config[KernelConstants::AUTO_LOADER_CACHE_FILE_NO_LOCK] = false;
-$config[KernelConstants::AUTO_LOADER_UNRESOLVABLE_CACHE_ENABLED] = false;
 $config[KernelConstants::AUTO_LOADER_UNRESOLVABLE_CACHE_PROVIDER] = File::class;
 
 $config[OmsConstants::ACTIVE_PROCESSES] = [
@@ -305,9 +311,6 @@ $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
 $config[EventConstants::LOGGER_ACTIVE] = true;
 
 $config[EventBehaviorConstants::EVENT_BEHAVIOR_TRIGGERING_ACTIVE] = true;
-
-$config[CustomerConstants::CUSTOMER_SECURED_PATTERN] = '(^/login_check$|^(/en|/de)?/customer|^(/en|/de)?/wishlist|^(/en|/de)?/shopping-list|^(/en|/de)?/company(?!/register)|^(/en|/de)?/multi-cart|^(/en|/de)?/shared-cart)';
-$config[CustomerConstants::CUSTOMER_ANONYMOUS_PATTERN] = '^/.*';
 
 $config[TaxConstants::DEFAULT_TAX_RATE] = 19;
 
@@ -344,7 +347,9 @@ $config[MailConstants::MAILCATCHER_GUI] = sprintf('http://%s:1080', $config[Appl
 /* Yves */
 $config[ApplicationConstants::HOST_YVES] = getenv('SPRYKER_FE_HOST');
 $config[SessionConstants::YVES_SESSION_COOKIE_DOMAIN] = $config[ApplicationConstants::HOST_YVES];
-$config[ApplicationConstants::YVES_TRUSTED_HOSTS] = [];
+$config[ApplicationConstants::YVES_TRUSTED_HOSTS]
+    = $config[HttpConstants::YVES_TRUSTED_HOSTS]
+    = [];
 $config[ApplicationConstants::PORT_YVES] = getenv('SPRYKER_FE_PORT');
 $config[ApplicationConstants::PORT_SSL_YVES] = '';
 $config[ApplicationConstants::BASE_URL_YVES] = sprintf(
@@ -384,22 +389,30 @@ $config[ApplicationConstants::YVES_COOKIE_VISITOR_ID_NAME] = 'vid';
 $config[ApplicationConstants::YVES_COOKIE_VISITOR_ID_VALID_FOR] = '+30 minute';
 
 $HSTS_ENABLED = false;
-$config[ApplicationConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_ENABLED] = $HSTS_ENABLED;
-$config[ApplicationConstants::YVES_HTTP_STRICT_TRANSPORT_SECURITY_ENABLED] = $HSTS_ENABLED;
+$config[ApplicationConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_ENABLED]
+    = $config[HttpConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_ENABLED]
+    = $HSTS_ENABLED;
+$config[ApplicationConstants::YVES_HTTP_STRICT_TRANSPORT_SECURITY_ENABLED]
+    = $config[HttpConstants::YVES_HTTP_STRICT_TRANSPORT_SECURITY_ENABLED]
+    = $HSTS_ENABLED;
 $HSTS_CONFIG = [
     'max_age' => 31536000,
     'include_sub_domains' => true,
     'preload' => true,
 ];
-$config[ApplicationConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG] = $HSTS_CONFIG;
-$config[ApplicationConstants::YVES_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG] = $HSTS_CONFIG;
+$config[ApplicationConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG]
+    = $config[HttpConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG]
+    = $HSTS_CONFIG;
+$config[ApplicationConstants::YVES_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG]
+    = $config[HttpConstants::YVES_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG]
+    = $HSTS_CONFIG;
 
 $config[SessionConstants::YVES_SSL_ENABLED] = false;
 $config[ApplicationConstants::YVES_SSL_ENABLED] = (bool)getenv('SPRYKER_SSL_ENABLE');
 $config[SessionConstants::YVES_SSL_ENABLED] = (bool)getenv('SPRYKER_SSL_ENABLE');
 $config[ApplicationConstants::YVES_SSL_EXCLUDED] = [
-    'heartbeat' => '/heartbeat',
-];
+        'heartbeat' => '/heartbeat',
+    ];
 
 $YVES_THEME = 'default';
 $config[TwigConstants::YVES_THEME] = $YVES_THEME;
@@ -436,6 +449,7 @@ $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = sprintf(
     $gluePort !== 80 ? ':' . $gluePort : ''
 );
 $config[GlueApplicationConstants::GLUE_APPLICATION_REST_DEBUG] = false;
+$config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = getenv('SPRYKER_GLUE_APPLICATION_CORS_ALLOW_ORIGIN') ?: '';
 
 $config[TestifyConstants::GLUE_APPLICATION_DOMAIN] = $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN];
 $config[TestifyConstants::GLUE_OPEN_API_SCHEMA] = APPLICATION_SOURCE_DIR . '/Generated/Glue/Specification/spryker_rest_api.schema.yml';
