@@ -102,15 +102,15 @@ use Spryker\Zed\Scheduler\Communication\Console\SchedulerResumeConsole;
 use Spryker\Zed\Scheduler\Communication\Console\SchedulerSetupConsole;
 use Spryker\Zed\Scheduler\Communication\Console\SchedulerSuspendConsole;
 use Spryker\Zed\Search\Communication\Console\GenerateSourceMapConsole;
-use Spryker\Zed\Search\Communication\Console\SearchCloseIndexConsole;
 use Spryker\Zed\Search\Communication\Console\SearchConsole;
-use Spryker\Zed\Search\Communication\Console\SearchCopyIndexConsole;
 use Spryker\Zed\Search\Communication\Console\SearchCreateSnapshotConsole;
-use Spryker\Zed\Search\Communication\Console\SearchDeleteIndexConsole;
 use Spryker\Zed\Search\Communication\Console\SearchDeleteSnapshotConsole;
-use Spryker\Zed\Search\Communication\Console\SearchOpenIndexConsole;
 use Spryker\Zed\Search\Communication\Console\SearchRegisterSnapshotRepositoryConsole;
 use Spryker\Zed\Search\Communication\Console\SearchRestoreSnapshotConsole;
+use Spryker\Zed\SearchElasticsearch\Communication\Console\SearchElasticsearchCloseIndexConsole;
+use Spryker\Zed\SearchElasticsearch\Communication\Console\SearchElasticsearchCopyIndexConsole;
+use Spryker\Zed\SearchElasticsearch\Communication\Console\SearchElasticsearchDeleteIndexConsole;
+use Spryker\Zed\SearchElasticsearch\Communication\Console\SearchElasticsearchOpenIndexConsole;
 use Spryker\Zed\Session\Communication\Console\SessionRemoveLockConsole;
 use Spryker\Zed\Setup\Communication\Console\DeployPreparePropelConsole;
 use Spryker\Zed\Setup\Communication\Console\EmptyGeneratedDirectoryConsole;
@@ -265,14 +265,14 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new StorageRedisExportRdbConsole(),
             new StorageRedisImportRdbConsole(),
             new StorageDeleteAllConsole(),
-            new SearchDeleteIndexConsole(),
-            new SearchCloseIndexConsole(),
-            new SearchOpenIndexConsole(),
+            new SearchElasticsearchCloseIndexConsole(),
+            new SearchElasticsearchCopyIndexConsole(),
+            new SearchElasticsearchDeleteIndexConsole(),
+            new SearchElasticsearchOpenIndexConsole(),
             new SearchRegisterSnapshotRepositoryConsole(),
             new SearchDeleteSnapshotConsole(),
             new SearchCreateSnapshotConsole(),
             new SearchRestoreSnapshotConsole(),
-            new SearchCopyIndexConsole(),
 
             new InstallPackageManagerConsole(),
             new CleanUpDependenciesConsole(),
