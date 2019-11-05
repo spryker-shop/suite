@@ -64,7 +64,7 @@ class CmsDependencyProvider extends SprykerCmsDependencyProvider
     /**
      * @return \Spryker\Zed\CmsExtension\Dependency\Plugin\CmsPageBeforeDeletePluginInterface[]
      */
-    protected function getPreCmsPageRelationDeletePlugins(): array
+    protected function getCmsPageBeforeDeletePlugins(): array
     {
         return [
             new CmsPageBeforeDeleteNavigationPlugin(),
