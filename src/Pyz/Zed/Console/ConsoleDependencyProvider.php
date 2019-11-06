@@ -111,6 +111,7 @@ use Spryker\Zed\SearchElasticsearch\Communication\Console\SearchElasticsearchClo
 use Spryker\Zed\SearchElasticsearch\Communication\Console\SearchElasticsearchCopyIndexConsole;
 use Spryker\Zed\SearchElasticsearch\Communication\Console\SearchElasticsearchDeleteIndexConsole;
 use Spryker\Zed\SearchElasticsearch\Communication\Console\SearchElasticsearchOpenIndexConsole;
+use Spryker\Zed\Search\Communication\Console\SearchSetupIndexesConsole;
 use Spryker\Zed\Session\Communication\Console\SessionRemoveLockConsole;
 use Spryker\Zed\Setup\Communication\Console\DeployPreparePropelConsole;
 use Spryker\Zed\Setup\Communication\Console\EmptyGeneratedDirectoryConsole;
@@ -172,6 +173,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new InitializeDatabaseConsole(),
             new SearchConsole(),
             new GenerateSourceMapConsole(),
+            new SearchSetupIndexesConsole(),
             new OmsCheckConditionConsole(),
             new OmsCheckTimeoutConsole(),
             new OmsClearLocksConsole(),
