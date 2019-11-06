@@ -34,11 +34,11 @@ class MerchantOrderSaverPlugin extends AbstractPlugin implements CheckoutDoSaveO
     {
         foreach ($quoteTransfer->getItems() as $itemTransfer) {
             $offerTransfer = $itemTransfer->getOffer();
-            if (!$offerTransfer || !$offerTransfer->getProductOfferReference()) {
+            if (!$offerTransfer) {
                 //TODO: Should be removed when MP-1301 is done.
                 //continue;
                 $offerTransfer = new OfferTransfer();
-                $offerTransfer->setProductOfferReference('offer1');
+                $offerTransfer->setMerchantReference('roan-gmbh-und-co-k-g');
                 $itemTransfer->setOffer($offerTransfer);
             }
 
@@ -49,19 +49,20 @@ class MerchantOrderSaverPlugin extends AbstractPlugin implements CheckoutDoSaveO
     }
 
     /**
-     * @param OfferTransfer $offerTransfer
-     * @param SaveOrderTransfer $saveOrderTransfer
+     * @param \Generated\Shared\Transfer\OfferTransfer $offerTransfer
+     * @param \Generated\Shared\Transfer\SaveOrderTransfer $saveOrderTransfer
      *
-     * @return SalesOrderMerchantSaveTransfer
+     * @return \Generated\Shared\Transfer\SalesOrderMerchantSaveTransfer
      */
     protected function createSalesOrderMerchantSaveTransfer(
         OfferTransfer $offerTransfer,
         SaveOrderTransfer $saveOrderTransfer
     ): SalesOrderMerchantSaveTransfer {
         $salesOrderMerchantSaveTransfer = new SalesOrderMerchantSaveTransfer();
-        $salesOrderMerchantSaveTransfer->setOfferReference($offerTransfer->getProductOfferReference());
+        $salesOrderMerchantSaveTransfer->setMerchantReference($offerTransfer->getMerchantReference());
         $salesOrderMerchantSaveTransfer->setIdSalesOrder($saveOrderTransfer->getIdSalesOrder());
+        $salesOrderMerchantSaveTransfer->setOrderReference($saveOrderTransfer->getOrderReference());
 
-        return  $salesOrderMerchantSaveTransfer;
+        return $salesOrderMerchantSaveTransfer;
     }
 }
