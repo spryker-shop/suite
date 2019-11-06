@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dc651200ac7e2e3fa3684742abf8c358",
+    "content-hash": "c295338a0389323950474d0a3203ce65",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -586,28 +586,30 @@
         },
         {
             "name": "doctrine/lexer",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/lexer.git",
-                "reference": "1febd6c3ef84253d7c815bed85fc622ad207a9f8"
+                "reference": "e17f069ede36f7534b95adec71910ed1b49c74ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/lexer/zipball/1febd6c3ef84253d7c815bed85fc622ad207a9f8",
-                "reference": "1febd6c3ef84253d7c815bed85fc622ad207a9f8",
+                "url": "https://api.github.com/repos/doctrine/lexer/zipball/e17f069ede36f7534b95adec71910ed1b49c74ea",
+                "reference": "e17f069ede36f7534b95adec71910ed1b49c74ea",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.2"
+                "php": "^7.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.5"
+                "doctrine/coding-standard": "^6.0",
+                "phpstan/phpstan": "^0.11.8",
+                "phpunit/phpunit": "^8.2"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
@@ -621,12 +623,12 @@
             ],
             "authors": [
                 {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
-                },
-                {
                     "name": "Guilherme Blanco",
                     "email": "guilhermeblanco@gmail.com"
+                },
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
                 },
                 {
                     "name": "Johannes Schmitt",
@@ -642,7 +644,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2019-06-08T11:03:04+00:00"
+            "time": "2019-07-30T19:33:28+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -1134,8 +1136,8 @@
             "authors": [
                 {
                     "name": "Alessio Linares",
-                    "role": "Software Engineer",
-                    "email": "alessio.linares@skyscanner.net"
+                    "email": "alessio.linares@skyscanner.net",
+                    "role": "Software Engineer"
                 }
             ],
             "description": "JSONPath implementation for querying and updating JSON objects",
@@ -2968,7 +2970,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette NEON: encodes and decodes NEON file format.",
+            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -5449,7 +5451,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "96791487e607122e18e6780270d4c00ad7ec21b4"
+                "reference": "a0cf7e71eace9f692dae6bc47c3ff5e0a6422a6b"
             },
             "require": {
                 "php": ">=7.1"
@@ -6035,7 +6037,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-11-06T13:04:48+00:00"
+            "time": "2019-11-06T16:13:38+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -8976,8 +8978,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -9438,9 +9440,9 @@
             "authors": [
                 {
                     "name": "Antonio J. García Lagar",
-                    "role": "developer",
                     "email": "aj@garcialagar.es",
-                    "homepage": "http://aj.garcialagar.es"
+                    "homepage": "http://aj.garcialagar.es",
+                    "role": "developer"
                 }
             ],
             "description": "Twig extension to set breakpoints",
@@ -9895,20 +9897,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
+                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler",
-                    "role": "Project Founder"
+                    "homepage": "https://github.com/manuelpichler"
                 },
                 {
                     "name": "Marc Würth",
+                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84",
-                    "role": "Project Maintainer"
+                    "homepage": "https://github.com/ravage84"
                 },
                 {
                     "name": "Other contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -10046,29 +10048,30 @@
         },
         {
             "name": "roave/better-reflection",
-            "version": "3.3.0",
+            "version": "3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/BetterReflection.git",
-                "reference": "df78b556a7280c4145d4ed5edd2ca6a7e7e22716"
+                "reference": "a93d26f6f08add54943d752dad1da64c464c2e69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/BetterReflection/zipball/df78b556a7280c4145d4ed5edd2ca6a7e7e22716",
-                "reference": "df78b556a7280c4145d4ed5edd2ca6a7e7e22716",
+                "url": "https://api.github.com/repos/Roave/BetterReflection/zipball/a93d26f6f08add54943d752dad1da64c464c2e69",
+                "reference": "a93d26f6f08add54943d752dad1da64c464c2e69",
                 "shasum": ""
             },
             "require": {
+                "ext-json": "*",
                 "jetbrains/phpstorm-stubs": "2019.1",
-                "nikic/php-parser": "^4.0.4",
-                "php": ">=7.1.0,<7.4.0",
+                "nikic/php-parser": "^4.2.1",
+                "php": ">=7.2.0,<7.5.0",
                 "phpdocumentor/reflection-docblock": "^4.1.1",
                 "phpdocumentor/type-resolver": "^0.4.0",
                 "roave/signature": "^1.0"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^5.0",
-                "phpunit/phpunit": "^7.0.0"
+                "doctrine/coding-standard": "^6.0",
+                "phpunit/phpunit": "^8.1.0"
             },
             "suggest": {
                 "composer/composer": "Required to use the ComposerSourceLocator"
@@ -10111,7 +10114,7 @@
                 }
             ],
             "description": "Better Reflection - an improved code reflection API",
-            "time": "2019-04-20T07:54:38+00:00"
+            "time": "2019-05-28T00:00:03+00:00"
         },
         {
             "name": "roave/signature",
@@ -10558,16 +10561,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/spryk.git",
-                "reference": "472c63c5ec4d957909bfb12608bc7d9fe55529bb"
+                "reference": "34f28af92fa73b45e25b0c6aecc23c6f1ba37099"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/472c63c5ec4d957909bfb12608bc7d9fe55529bb",
-                "reference": "472c63c5ec4d957909bfb12608bc7d9fe55529bb",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/34f28af92fa73b45e25b0c6aecc23c6f1ba37099",
+                "reference": "34f28af92fa73b45e25b0c6aecc23c6f1ba37099",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "roave/better-reflection": "^2.0 || ^3.0",
                 "spryker/config": "^3.0.0",
                 "spryker/doctrine-inflector": "^1.0.0",
@@ -10611,7 +10614,7 @@
                 "proprietary"
             ],
             "description": "Spryk module",
-            "time": "2019-10-07T12:15:54+00:00"
+            "time": "2019-11-06T14:22:15+00:00"
         },
         {
             "name": "spryker-sdk/spryk-gui",
@@ -10793,8 +10796,8 @@
             "type": "phpcodesniffer-standard",
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "Spryker",
-                    "SprykerStrict\\": "SprykerStrict"
+                    "Spryker\\": "Spryker/",
+                    "SprykerStrict\\": "SprykerStrict/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -10804,11 +10807,11 @@
             "authors": [
                 {
                     "name": "Spryker",
-                    "homepage": "http://spryker.com"
+                    "homepage": "https://spryker.com"
                 }
             ],
             "description": "Spryker Code Sniffer Standards",
-            "homepage": "http://spryker.com",
+            "homepage": "https://spryker.com",
             "keywords": [
                 "codesniffer",
                 "framework",
@@ -11356,7 +11359,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.1",
+        "php": ">=7.2",
         "ext-bcmath": "*",
         "ext-curl": "*",
         "ext-gd": "*",
@@ -11372,6 +11375,6 @@
     },
     "platform-dev": [],
     "platform-overrides": {
-        "php": "7.1.11"
+        "php": "7.2.15"
     }
 }
