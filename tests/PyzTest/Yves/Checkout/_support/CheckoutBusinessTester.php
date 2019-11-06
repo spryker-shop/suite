@@ -23,7 +23,7 @@ use Spryker\Service\Shipment\ShipmentServiceInterface;
  * @method void am($role)
  * @method void lookForwardTo($achieveValue)
  * @method void comment($description)
- * @method \Codeception\Lib\Friend haveFriend($name, $actorClass = NULL)
+ * @method \Codeception\Lib\Friend haveFriend($name, $actorClass = null)
  *
  * @SuppressWarnings(PHPMD)
  */
@@ -32,11 +32,10 @@ class CheckoutBusinessTester extends Actor
     use _generated\CheckoutBusinessTesterActions;
 
    /**
-    * Define custom actions here
-    */
-
+     * Define custom actions here
+     */
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\Spryker\Service\Customer\CustomerServiceInterface
+     * @return \PHPUnit\Framework\MockObject\MockObject|\Spryker\Service\Customer\CustomerServiceInterface
      */
     public function getCustomerService(): CustomerServiceInterface
     {
@@ -44,7 +43,7 @@ class CheckoutBusinessTester extends Actor
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\Spryker\Service\Shipment\ShipmentServiceInterface
+     * @return \PHPUnit\Framework\MockObject\MockObject|\Spryker\Service\Shipment\ShipmentServiceInterface
      */
     public function getShipmentService(): ShipmentServiceInterface
     {
