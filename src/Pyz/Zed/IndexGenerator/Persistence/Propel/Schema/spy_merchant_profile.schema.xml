@@ -1,10 +1,5 @@
 <?xml version="1.0"?>
 <database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\MerchantProfile\Persistence" package="src.Orm.Zed.MerchantProfile.Persistence">
-  <table name="spy_merchant_profile">
-    <index name="index-spy_merchant_profile-fk_merchant">
-      <index-column name="fk_merchant"/>
-    </index>
-  </table>
   <table name="spy_merchant_profile_address">
     <index name="index-spy_merchant_profile_address-fk_country">
       <index-column name="fk_country"/>
@@ -13,4 +8,9 @@
       <index-column name="fk_merchant_profile"/>
     </index>
   </table>
+    <table name="spy_merchant_profile">
+        <index name="index-spy_merchant_profile-fk_merchant">
+            <index-column name="fk_merchant"/>
+        </index>
+    </table>
 </database>
