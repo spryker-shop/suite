@@ -28,8 +28,4 @@ use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
 class CustomerApiTester extends ApiEndToEndTester
 {
     use _generated\CustomerApiTesterActions;
-
-   /**
-    * Define custom actions here
-    */
 }

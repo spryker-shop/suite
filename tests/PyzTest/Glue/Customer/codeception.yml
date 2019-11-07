@@ -31,7 +31,6 @@ suites:
             config:
                 \SprykerTest\Glue\Testify\Helper\GlueRest:
                     depends: PhpBrowser
-                    url: http://glue-test.de.nonsplit.local
                     part: Json
                 \SprykerTest\Shared\Testify\Helper\DataCleanupHelper:
                     cleanup: false

@@ -9,6 +9,7 @@ namespace PyzTest\Glue\Customer\RestApi;
 
 use Generated\Shared\Transfer\CustomerTransfer;
 use PyzTest\Glue\Customer\CustomerApiTester;
+use RuntimeException;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
@@ -25,18 +26,22 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  */
 class CustomerRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    protected const TEST_PASSWORD = 'test password';
-
     /**
      * @var \Generated\Shared\Transfer\CustomerTransfer
      */
     protected $customerTransfer;
 
     /**
+     * @throws \RuntimeException
+     *
      * @return \Generated\Shared\Transfer\CustomerTransfer
      */
     public function getCustomerTransfer(): CustomerTransfer
     {
+        if (!$this->customerTransfer instanceof CustomerTransfer) {
+            throw new RuntimeException('Customer is empty, run `codecept fixtures` first');
+        }
+
         return $this->customerTransfer;
     }
 
@@ -59,9 +64,7 @@ class CustomerRestApiFixtures implements FixturesBuilderInterface, FixturesConta
      */
     protected function createCustomer(CustomerApiTester $I): void
     {
-        $customerTransfer = $I->haveCustomer([
-            CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
-        ]);
+        $customerTransfer = $I->haveCustomer([]);
 
         $this->customerTransfer = $customerTransfer;
     }

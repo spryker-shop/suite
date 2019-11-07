@@ -7,6 +7,7 @@
 
 namespace PyzTest\Glue\Customer\RestApi;
 
+use Codeception\Util\HttpCode;
 use PyzTest\Glue\Carts\CartsApiTester;
 use PyzTest\Glue\Customer\CustomerApiTester;
 
@@ -59,9 +60,10 @@ class DeleteMethodRestApiCest
             "Content-Type: application/json",
         ];
 
-        /** @var \SprykerTest\Glue\Testify\Helper\GlueRest $glueModule */
-        $glueModule = $I->findModule('\SprykerTest\Glue\Testify\Helper\GlueRest');
-        $url = sprintf('%s/customers/%s', $glueModule->_getConfig('url'), $this->fixtures->getCustomerTransfer()->getCustomerReference());
+        $url = $I->formatFullUrl(
+            'customers/{CustomerReference}',
+            ['CustomerReference' => $this->fixtures->getCustomerTransfer()->getCustomerReference()]
+        );
         $result = file_get_contents(
             $url,
             false,
@@ -74,6 +76,9 @@ class DeleteMethodRestApiCest
                 ]
             )
         );
-        $I->assertSame('', $result);
+        $responseCode = substr($http_response_header[0], 9, 3);
+
+        $I->assertEquals(HttpCode::NO_CONTENT, $responseCode);
+        $I->assertSame('', $result, 'Content in 204 response');
     }
 }
