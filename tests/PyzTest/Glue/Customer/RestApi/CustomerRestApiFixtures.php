@@ -26,6 +26,7 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  */
 class CustomerRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
+    private const TEST_PASSWORD = 'test_password';
     /**
      * @var \Generated\Shared\Transfer\CustomerTransfer
      */
@@ -64,7 +65,10 @@ class CustomerRestApiFixtures implements FixturesBuilderInterface, FixturesConta
      */
     protected function createCustomer(CustomerApiTester $I): void
     {
-        $customerTransfer = $I->haveCustomer([]);
+        $customerTransfer = $I->haveCustomer([
+            CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
+            CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,
+        ]);
 
         $this->customerTransfer = $customerTransfer;
     }
