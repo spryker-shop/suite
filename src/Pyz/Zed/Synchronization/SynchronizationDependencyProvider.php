@@ -29,6 +29,7 @@ use Spryker\Zed\MerchantProfileStorage\Communication\Plugin\Synchronization\Merc
 use Spryker\Zed\NavigationStorage\Communication\Plugin\Synchronization\NavigationSynchronizationDataPlugin;
 use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Synchronization\PriceProductAbstractMerchantRelationSynchronizationDataBulkPlugin;
 use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Synchronization\PriceProductConcreteMerchantRelationSynchronizationDataBulkPlugin;
+use Spryker\Zed\PriceProductOfferStorage\Communication\Plugin\Synchronization\PriceProductOfferSynchronizationDataPlugin;
 use Spryker\Zed\PriceProductStorage\Communication\Plugin\Synchronization\PriceProductAbstractSynchronizationDataPlugin;
 use Spryker\Zed\PriceProductStorage\Communication\Plugin\Synchronization\PriceProductConcreteSynchronizationDataPlugin;
 use Spryker\Zed\ProductAlternativeStorage\Communication\Plugin\Synchronization\ProductAlternativeSynchronizationDataPlugin;
@@ -131,6 +132,7 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
             new MerchantProfileSynchronizationDataPlugin(),
             new ProductOfferSynchronizationDataPlugin(),
             new ProductConcreteProductOffersSynchronizationDataPlugin(),
+            new PriceProductOfferSynchronizationDataPlugin(),
         ];
     }
 }
