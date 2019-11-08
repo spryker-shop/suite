@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e6595afac53035161ec319f3ae8d5909",
+    "content-hash": "a10380feaf0222a146d491d86bc79b52",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5397,11 +5397,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/mp-1191/dev-merchant-opening-hours",
+            "version": "dev-feature/mp-1191/mp-1192-add-opening-hours-to-merchant",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "237ea4e75d982ce76f331e690816cf05fc976f24"
+                "reference": "73db0e001403448e5e4cfcd727add3cbbb29e4bb"
             },
             "require": {
                 "php": ">=7.1"
@@ -5664,6 +5664,8 @@
                 "spryker/merchant-extension": "*",
                 "spryker/merchant-gui": "*",
                 "spryker/merchant-gui-extension": "*",
+                "spryker/merchant-opening-hours": "*",
+                "spryker/merchant-opening-hours-data-import": "*",
                 "spryker/merchant-product-offer": "*",
                 "spryker/merchant-product-offer-data-import": "*",
                 "spryker/merchant-product-offer-storage": "*",
@@ -5966,6 +5968,7 @@
                 "spryker/vault": "*",
                 "spryker/web-profiler": "*",
                 "spryker/web-profiler-extension": "*",
+                "spryker/weekday-schedule": "*",
                 "spryker/wishlist": "*",
                 "spryker/wishlist-extension": "*",
                 "spryker/wishlists-rest-api": "*",
@@ -5995,7 +5998,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-11-05T11:40:17+00:00"
+            "time": "2019-11-06T15:22:14+00:00"
         },
         {
             "name": "spryker/spryker-shop",
