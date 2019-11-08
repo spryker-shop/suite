@@ -148,7 +148,7 @@ $config[ApplicationConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG]
 $config[ZedRequestConstants::ZED_API_SSL_ENABLED] = false;
 $config[ApplicationConstants::ZED_SSL_ENABLED] = false;
 $config[SessionConstants::ZED_SSL_ENABLED] = (bool)getenv('SPRYKER_SSL_ENABLE');
-$config[ApplicationConstants::ZED_SSL_EXCLUDED] = ['heartbeat/index'];
+$config[ApplicationConstants::ZED_SSL_EXCLUDED] = ['health-check/index'];
 
 $config[ErrorHandlerConstants::DISPLAY_ERRORS] = true;
 $config[ErrorHandlerConstants::ZED_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Zed/errorpage/error.html';
@@ -244,7 +244,7 @@ $config[AclConstants::ACL_DEFAULT_RULES] = [
         'type' => 'allow',
     ],
     [
-        'bundle' => 'heartbeat',
+        'bundle' => 'healthCheck',
         'controller' => 'index',
         'action' => 'index',
         'type' => 'allow',
@@ -271,8 +271,8 @@ $config[AclConstants::ACL_USER_RULE_WHITELIST] = [
         'type' => 'allow',
     ],
     [
-        'bundle' => 'heartbeat',
-        'controller' => 'heartbeat',
+        'bundle' => 'healthCheck',
+        'controller' => 'healthCheck',
         'action' => 'index',
         'type' => 'allow',
     ],
@@ -411,7 +411,7 @@ $config[SessionConstants::YVES_SSL_ENABLED] = false;
 $config[ApplicationConstants::YVES_SSL_ENABLED] = (bool)getenv('SPRYKER_SSL_ENABLE');
 $config[SessionConstants::YVES_SSL_ENABLED] = (bool)getenv('SPRYKER_SSL_ENABLE');
 $config[ApplicationConstants::YVES_SSL_EXCLUDED] = [
-        'heartbeat' => '/heartbeat',
+        'healthcheck' => '/health-check',
     ];
 
 $YVES_THEME = 'default';

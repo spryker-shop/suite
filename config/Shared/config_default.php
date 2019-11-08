@@ -133,7 +133,7 @@ $config[AclConstants::ACL_DEFAULT_RULES] = [
         'type' => 'allow',
     ],
     [
-        'bundle' => 'heartbeat',
+        'bundle' => 'healthCheck',
         'controller' => 'index',
         'action' => 'index',
         'type' => 'allow',
@@ -319,15 +319,15 @@ $config[ApplicationConstants::YVES_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG]
 
 // ---------- Router
 $config[RouterConstants::YVES_SSL_EXCLUDED_ROUTE_NAMES] = [
-    'heartbeat' => '/heartbeat',
+    'healthCheck' => '/health-check',
 ];
-$config[RouterConstants::ZED_SSL_EXCLUDED_ROUTE_NAMES] = ['heartbeat/index'];
+$config[RouterConstants::ZED_SSL_EXCLUDED_ROUTE_NAMES] = ['health-check/index'];
 
 // ---------- SSL
 $config[SessionConstants::YVES_SSL_ENABLED] = false;
 $config[ZedRequestConstants::ZED_API_SSL_ENABLED] = false;
 $config[ApplicationConstants::ZED_SSL_ENABLED] = $config[SessionConstants::ZED_SSL_ENABLED] = false;
-$config[ApplicationConstants::ZED_SSL_EXCLUDED] = ['heartbeat/index'];
+$config[ApplicationConstants::ZED_SSL_EXCLUDED] = ['health-check/index'];
 
 // ---------- Error handling
 $config[ErrorHandlerConstants::YVES_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Yves/errorpage/error.html';
