@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9155877386c2717f80351d7affdd49c1",
+    "content-hash": "9bef6644048d5420ce02df388078554b",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -2444,16 +2444,16 @@
         },
         {
             "name": "spryker-eco/loggly",
-            "version": "dev-master",
+            "version": "0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-eco/loggly.git",
-                "reference": "5345ad24970374e2371348eb8c08626cf3b8c21d"
+                "reference": "c02f02ecda7ef4ed9c3db97ea67aa6a06d623c69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-eco/loggly/zipball/5345ad24970374e2371348eb8c08626cf3b8c21d",
-                "reference": "5345ad24970374e2371348eb8c08626cf3b8c21d",
+                "url": "https://api.github.com/repos/spryker-eco/loggly/zipball/c02f02ecda7ef4ed9c3db97ea67aa6a06d623c69",
+                "reference": "c02f02ecda7ef4ed9c3db97ea67aa6a06d623c69",
                 "shasum": ""
             },
             "require": {
@@ -2485,7 +2485,7 @@
                 "proprietary"
             ],
             "description": "Loggly module",
-            "time": "2019-11-07T14:39:47+00:00"
+            "time": "2019-10-21T09:49:34+00:00"
         },
         {
             "name": "spryker-shop/agent-page",
@@ -41138,6 +41138,45 @@
             "time": "2017-06-16T09:29:23+00:00"
         },
         {
+            "name": "spryker-sdk/codeception-phantoman",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-sdk/codeception-phantoman.git",
+                "reference": "ccac099587199bbcf6fa9738dd2e6b84ee54f9a3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-sdk/codeception-phantoman/zipball/ccac099587199bbcf6fa9738dd2e6b84ee54f9a3",
+                "reference": "ccac099587199bbcf6fa9738dd2e6b84ee54f9a3",
+                "shasum": ""
+            },
+            "require": {
+                "codeception/codeception": "^2.0.0 || ^3.0.0",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "sprxyker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Codeception\\Extension\\": "src/Codeception/Extension/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CodeceptionExtension module for auto start phantom.",
+            "time": "2019-05-03T08:24:57+00:00"
+        },
+        {
             "name": "spryker-sdk/composer-constrainer",
             "version": "0.1.1",
             "source": {
@@ -42537,10 +42576,10 @@
     ],
     "aliases": [
         {
-            "alias": "1.0.0",
-            "alias_normalized": "1.0.0.0",
+            "alias": "0.1.0",
+            "alias_normalized": "0.1.0.0",
             "version": "9999999-dev",
-            "package": "spryker-eco/loggly"
+            "package": "spryker-sdk/codeception-phantoman"
         },
         {
             "alias": "0.14.0",
@@ -42551,7 +42590,7 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "spryker-eco/loggly": 20,
+        "spryker-sdk/codeception-phantoman": 20,
         "spryker/code-sniffer": 20
     },
     "prefer-stable": true,
