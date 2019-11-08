@@ -54,6 +54,7 @@ use Spryker\Zed\ProductMeasurementUnitDataImport\Communication\Plugin\ProductMea
 use Spryker\Zed\ProductMeasurementUnitDataImport\Communication\Plugin\ProductMeasurementSalesUnitDataImportPlugin;
 use Spryker\Zed\ProductMeasurementUnitDataImport\Communication\Plugin\ProductMeasurementSalesUnitStoreDataImportPlugin;
 use Spryker\Zed\ProductMeasurementUnitDataImport\Communication\Plugin\ProductMeasurementUnitDataImportPlugin;
+use Spryker\Zed\ProductOfferStockDataImport\Communication\ProductOfferStockDataImportPlugin;
 use Spryker\Zed\ProductPackagingUnitDataImport\Communication\Plugin\DataImport\ProductPackagingUnitDataImportPlugin;
 use Spryker\Zed\ProductPackagingUnitDataImport\Communication\Plugin\DataImport\ProductPackagingUnitTypeDataImportPlugin;
 use Spryker\Zed\ProductQuantityDataImport\Communication\Plugin\ProductQuantityDataImportPlugin;
@@ -258,6 +259,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new ContentProductAbstractListDataImportPlugin(),
             new ContentProductSetDataImportPlugin(),
             new CommentDataImportPlugin(),
+            new ProductOfferStockDataImportPlugin(),
         ];
     }
 
