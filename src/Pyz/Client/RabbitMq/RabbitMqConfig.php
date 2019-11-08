@@ -96,7 +96,7 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
         $queueConfigurations = $this->getQueueConfiguration();
         $this->queueOptionCollection = new ArrayObject();
 
-        foreach ($queueConfigurations as $QueueNameKey => $queueConfiguration) {
+        foreach ($queueConfigurations as $queueNameKey => $queueConfiguration) {
             if (!is_array($queueConfiguration)) {
                 $this->queueOptionCollection->append($this->createQueueOption($queueConfiguration, sprintf('%s.error', $queueConfiguration), 'error'));
 
@@ -104,7 +104,7 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
             }
 
             foreach ($queueConfiguration as $routingKey => $queueName) {
-                $this->queueOptionCollection->append($this->createQueueOption($QueueNameKey, $queueName, $routingKey));
+                $this->queueOptionCollection->append($this->createQueueOption($queueNameKey, $queueName, $routingKey));
             }
         }
 
