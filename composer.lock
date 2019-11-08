@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6a3260e1fed2be0d804b45e55dbef620",
+    "content-hash": "bb56b5d568a74fa16eaf69d87de826ec",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -357,7 +357,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2019-07-30T19:33:28+00:00"
+            "time": "2019-06-08T11:03:04+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -687,8 +687,8 @@
             "authors": [
                 {
                     "name": "Filipe Dobreira",
-                    "role": "Developer",
-                    "homepage": "https://github.com/filp"
+                    "homepage": "https://github.com/filp",
+                    "role": "Developer"
                 }
             ],
             "description": "php error handling for cool kids",
@@ -789,8 +789,8 @@
             "authors": [
                 {
                     "name": "Alessio Linares",
-                    "role": "Software Engineer",
-                    "email": "alessio.linares@skyscanner.net"
+                    "email": "alessio.linares@skyscanner.net",
+                    "role": "Software Engineer"
                 }
             ],
             "description": "JSONPath implementation for querying and updating JSON objects",
@@ -7485,23 +7485,24 @@
         },
         {
             "name": "spryker-shop/shop-cms-slot",
-            "version": "0.4.0",
+            "version": "0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/shop-cms-slot.git",
-                "reference": "0ee0d34caf895f119092df35520ad579862cf741"
+                "reference": "4fa0003a4d7d6dfa1897d5fa7739655a178a332f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/shop-cms-slot/zipball/0ee0d34caf895f119092df35520ad579862cf741",
-                "reference": "0ee0d34caf895f119092df35520ad579862cf741",
+                "url": "https://api.github.com/repos/spryker-shop/shop-cms-slot/zipball/4fa0003a4d7d6dfa1897d5fa7739655a178a332f",
+                "reference": "4fa0003a4d7d6dfa1897d5fa7739655a178a332f",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker-shop/shop-application": "^1.5.0",
                 "spryker-shop/shop-cms-slot-extension": "^0.2.0",
-                "spryker/cms-slot": "^0.4.0",
+                "spryker/cms-slot": "^0.5.0",
+                "spryker/cms-slot-storage": "^0.1.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/transfer": "^3.8.0",
                 "spryker/twig": "^3.2.3"
@@ -7531,7 +7532,7 @@
                 "proprietary"
             ],
             "description": "ShopCmsSlot module",
-            "time": "2019-10-29T06:29:59+00:00"
+            "time": "2019-11-07T13:37:35+00:00"
         },
         {
             "name": "spryker-shop/shop-cms-slot-extension",
@@ -12592,22 +12593,23 @@
         },
         {
             "name": "spryker/cms-slot",
-            "version": "0.4.0",
+            "version": "0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cms-slot.git",
-                "reference": "cbdeb3db177fbb169d955b99eaa073bd9c55f381"
+                "reference": "6a516c63ca301996e61af198779e7a2f921c17fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-slot/zipball/cbdeb3db177fbb169d955b99eaa073bd9c55f381",
-                "reference": "cbdeb3db177fbb169d955b99eaa073bd9c55f381",
+                "url": "https://api.github.com/repos/spryker/cms-slot/zipball/6a516c63ca301996e61af198779e7a2f921c17fc",
+                "reference": "6a516c63ca301996e61af198779e7a2f921c17fc",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/cms-slot-extension": "^0.2.0",
                 "spryker/kernel": "^3.37.0",
+                "spryker/propel-orm": "^1.0.0",
                 "spryker/symfony": "^3.3.0",
                 "spryker/transfer": "^3.8.0"
             },
@@ -12633,25 +12635,25 @@
                 "proprietary"
             ],
             "description": "CmsSlot module",
-            "time": "2019-10-27T12:59:28+00:00"
+            "time": "2019-11-04T10:41:36+00:00"
         },
         {
             "name": "spryker/cms-slot-data-import",
-            "version": "0.4.0",
+            "version": "0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cms-slot-data-import.git",
-                "reference": "c337ae7ee7a2aa979868d7eaeef0e60093b6eaf7"
+                "reference": "d1a62ece4d13897ced4fc04ba2638efd6aa9f081"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-slot-data-import/zipball/c337ae7ee7a2aa979868d7eaeef0e60093b6eaf7",
-                "reference": "c337ae7ee7a2aa979868d7eaeef0e60093b6eaf7",
+                "url": "https://api.github.com/repos/spryker/cms-slot-data-import/zipball/d1a62ece4d13897ced4fc04ba2638efd6aa9f081",
+                "reference": "d1a62ece4d13897ced4fc04ba2638efd6aa9f081",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "spryker/cms-slot": "^0.4.0",
+                "spryker/cms-slot": "^0.5.0",
                 "spryker/data-import": "^1.6.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/util-text": "^1.1.0"
@@ -12678,7 +12680,7 @@
                 "MIT"
             ],
             "description": "CmsSlotDataImport module",
-            "time": "2019-10-29T08:25:28+00:00"
+            "time": "2019-10-31T15:36:03+00:00"
         },
         {
             "name": "spryker/cms-slot-extension",
@@ -12721,21 +12723,21 @@
         },
         {
             "name": "spryker/cms-slot-gui",
-            "version": "0.4.1",
+            "version": "0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cms-slot-gui.git",
-                "reference": "8945126005c29eee8610cad0c0f9855e50381321"
+                "reference": "77a6172a9b2386bfb929ce79b63b34e9b89f2fa4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-slot-gui/zipball/8945126005c29eee8610cad0c0f9855e50381321",
-                "reference": "8945126005c29eee8610cad0c0f9855e50381321",
+                "url": "https://api.github.com/repos/spryker/cms-slot-gui/zipball/77a6172a9b2386bfb929ce79b63b34e9b89f2fa4",
+                "reference": "77a6172a9b2386bfb929ce79b63b34e9b89f2fa4",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "spryker/cms-slot": "^0.4.0",
+                "spryker/cms-slot": "^0.5.0",
                 "spryker/gui": "^3.24.0",
                 "spryker/kernel": "^3.37.0",
                 "spryker/symfony": "^3.3.0",
@@ -12761,7 +12763,7 @@
                 "proprietary"
             ],
             "description": "CmsSlotGui module",
-            "time": "2019-11-04T12:32:49+00:00"
+            "time": "2019-11-08T15:07:12+00:00"
         },
         {
             "name": "spryker/cms-slot-locale-connector",
@@ -12804,6 +12806,58 @@
             ],
             "description": "CmsSlotLocaleConnector module",
             "time": "2019-09-27T09:39:29+00:00"
+        },
+        {
+            "name": "spryker/cms-slot-storage",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-slot-storage.git",
+                "reference": "692acf0368a9027b6be4398bb17966035c5da660"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-slot-storage/zipball/692acf0368a9027b6be4398bb17966035c5da660",
+                "reference": "692acf0368a9027b6be4398bb17966035c5da660",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/cms-slot": "^0.5.0",
+                "spryker/event-behavior": "^1.8.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/storage": "^3.0.0",
+                "spryker/synchronization": "^1.0.0",
+                "spryker/synchronization-behavior": "^1.0.0",
+                "spryker/synchronization-extension": "^1.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/event": "*",
+                "spryker/propel": "*",
+                "spryker/queue": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/event": "If you want to use Event plugins, minimum required version: 2.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsSlotStorage module",
+            "time": "2019-11-04T12:08:47+00:00"
         },
         {
             "name": "spryker/cms-slot-store-connector",
@@ -38699,16 +38753,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.2.5",
+            "version": "v4.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "b76bbc3c51f22c570648de48e8c2d941ed5e2cf2"
+                "reference": "9a9981c347c5c49d6dfe5cf826bb882b824080dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/b76bbc3c51f22c570648de48e8c2d941ed5e2cf2",
-                "reference": "b76bbc3c51f22c570648de48e8c2d941ed5e2cf2",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/9a9981c347c5c49d6dfe5cf826bb882b824080dc",
+                "reference": "9a9981c347c5c49d6dfe5cf826bb882b824080dc",
                 "shasum": ""
             },
             "require": {
@@ -38716,7 +38770,7 @@
                 "php": ">=7.0"
             },
             "require-dev": {
-                "ircmaxell/php-yacc": "0.0.4",
+                "ircmaxell/php-yacc": "0.0.5",
                 "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0"
             },
             "bin": [
@@ -38725,7 +38779,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.2-dev"
+                    "dev-master": "4.3-dev"
                 }
             },
             "autoload": {
@@ -38747,7 +38801,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2019-10-25T18:33:07+00:00"
+            "time": "2019-11-08T13:50:10+00:00"
         },
         {
             "name": "ocramius/package-versions",
@@ -39975,7 +40029,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.3-dev"
+                    "dev-master": "4.2-dev"
                 }
             },
             "autoload": {
@@ -40740,7 +40794,7 @@
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.1",
                 "roave/better-reflection": "^2.0 || ^3.0",
                 "spryker/config": "^3.0.0",
                 "spryker/doctrine-inflector": "^1.0.0",
