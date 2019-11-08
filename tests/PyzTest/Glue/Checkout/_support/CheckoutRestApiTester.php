@@ -7,6 +7,8 @@
 
 namespace PyzTest\Glue\Checkout;
 
+use Orm\Zed\Payment\Persistence\SpySalesPaymentMethodType;
+use Orm\Zed\Payment\Persistence\SpySalesPaymentMethodTypeQuery;
 use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
 
 /**
@@ -30,6 +32,22 @@ class CheckoutRestApiTester extends ApiEndToEndTester
     use _generated\CheckoutRestApiTesterActions;
 
     /**
-     * Define custom actions here
+     * @param string $providerName
+     * @param string $methodName
+     *
+     * @return \Orm\Zed\Payment\Persistence\SpySalesPaymentMethodType
      */
+    public function grabPaymentMethod(string $providerName, string $methodName): SpySalesPaymentMethodType
+    {
+        $paymentMethod = SpySalesPaymentMethodTypeQuery::create()
+            ->filterByPaymentProvider($providerName)
+            ->filterByPaymentMethod($methodName)
+            ->findOne();
+
+        if ($paymentMethod) {
+            return $paymentMethod;
+        }
+
+        $this->fail(sprintf('Payment method %s:%s not found', $providerName, $methodName));
+    }
 }

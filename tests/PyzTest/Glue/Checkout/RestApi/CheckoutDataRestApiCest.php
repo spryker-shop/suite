@@ -13,6 +13,7 @@ use PyzTest\Glue\Checkout\CheckoutRestApiTester;
 use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig;
 use Spryker\Glue\PaymentsRestApi\PaymentsRestApiConfig;
 use Spryker\Glue\ShipmentsRestApi\ShipmentsRestApiConfig;
+use Spryker\Shared\DummyPayment\DummyPaymentConfig;
 
 /**
  * Auto-generated group annotations
@@ -238,8 +239,7 @@ class CheckoutDataRestApiCest
         //Arrange
         $this->requestCustomerLogin($I, $this->fixtures->getCustomerTransfer());
 
-        $paymentProviderTransfer = $I->haveAvailablePaymentProvider();
-        $paymentMethodTransfer = current($paymentProviderTransfer->getPaymentMethods());
+        $cardPaymentMethodTransfer = $I->grabPaymentMethod(DummyPaymentConfig::PROVIDER_NAME, DummyPaymentConfig::PAYMENT_METHOD_NAME_CREDIT_CARD);
 
         //Act
         $I->sendPOST(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, [
@@ -249,8 +249,8 @@ class CheckoutDataRestApiCest
                     'idCart' => $this->fixtures->getQuoteTransfer()->getUuid(),
                     'payments' => [
                         [
-                            'paymentProviderName' => $paymentProviderTransfer->getName(),
-                            'paymentMethodName' => $paymentMethodTransfer->getMethodName(),
+                            'paymentProviderName' => DummyPaymentConfig::PROVIDER_NAME,
+                            'paymentMethodName' => $cardPaymentMethodTransfer->getPaymentMethod(),
                         ],
                     ],
                 ],
@@ -266,7 +266,7 @@ class CheckoutDataRestApiCest
 
         $I->assertNotEmpty($selectedPaymentMethods);
         $I->assertNotEmpty($selectedPaymentMethod);
-        $I->assertSame($selectedPaymentMethod['paymentMethodName'], $paymentMethodTransfer->getMethodName());
+        $I->assertSame($selectedPaymentMethod['paymentMethodName'], $cardPaymentMethodTransfer->getPaymentMethod());
     }
 
     /**
@@ -328,7 +328,10 @@ class CheckoutDataRestApiCest
     protected function assertCheckoutDataRequestWithIncludedPaymentMethods(
         CheckoutRestApiTester $I
     ): void {
-        $idPaymentMethod = current($I->haveAvailablePaymentProvider()->getPaymentMethods())->getIdSalesPaymentMethodType();
+        $idPaymentMethod = $I
+            ->grabPaymentMethod(DummyPaymentConfig::PROVIDER_NAME, DummyPaymentConfig::PAYMENT_METHOD_NAME_CREDIT_CARD)
+            ->getIdSalesPaymentMethodType();
+
         $I->amSure('Returned resource has payment method in `relationships` section.')
             ->whenI()
             ->seeSingleResourceHasRelationshipByTypeAndId(PaymentsRestApiConfig::RESOURCE_PAYMENT_METHODS, $idPaymentMethod);
