@@ -103,6 +103,7 @@ use Spryker\Zed\Scheduler\Communication\Console\SchedulerSetupConsole;
 use Spryker\Zed\Scheduler\Communication\Console\SchedulerSuspendConsole;
 use Spryker\Zed\Search\Communication\Console\GenerateSourceMapConsole;
 use Spryker\Zed\Search\Communication\Console\SearchConsole;
+use Spryker\Zed\Search\Communication\Console\SearchSetupSourcesConsole;
 use Spryker\Zed\SearchElasticsearch\Communication\Console\ElasticsearchSnapshotCreateConsole;
 use Spryker\Zed\SearchElasticsearch\Communication\Console\ElasticsearchSnapshotDeleteConsole;
 use Spryker\Zed\SearchElasticsearch\Communication\Console\ElasticsearchSnapshotRegisterRepositoryConsole;
@@ -111,7 +112,6 @@ use Spryker\Zed\SearchElasticsearch\Communication\Console\SearchElasticsearchClo
 use Spryker\Zed\SearchElasticsearch\Communication\Console\SearchElasticsearchCopyIndexConsole;
 use Spryker\Zed\SearchElasticsearch\Communication\Console\SearchElasticsearchDeleteIndexConsole;
 use Spryker\Zed\SearchElasticsearch\Communication\Console\SearchElasticsearchOpenIndexConsole;
-use Spryker\Zed\Search\Communication\Console\SearchSetupIndexesConsole;
 use Spryker\Zed\Session\Communication\Console\SessionRemoveLockConsole;
 use Spryker\Zed\Setup\Communication\Console\DeployPreparePropelConsole;
 use Spryker\Zed\Setup\Communication\Console\EmptyGeneratedDirectoryConsole;
@@ -173,7 +173,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new InitializeDatabaseConsole(),
             new SearchConsole(),
             new GenerateSourceMapConsole(),
-            new SearchSetupIndexesConsole(),
+            new SearchSetupSourcesConsole(),
             new OmsCheckConditionConsole(),
             new OmsCheckTimeoutConsole(),
             new OmsClearLocksConsole(),
