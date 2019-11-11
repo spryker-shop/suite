@@ -422,7 +422,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new PromotionItemByQuoteTransferResourceRelationshipPlugin()
         );
         $resourceRelationshipCollection->addRelationship(
-            CartCodesRestApiConfig::RESOURCE_DISCOUNTS,
+            CartCodesRestApiConfig::RESOURCE_PROMOTIONAL_ITEMS,
             new ProductAbstractBySkuResourceRelationshipPlugin()
         );
 
