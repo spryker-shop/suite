@@ -24,6 +24,7 @@ use Spryker\Zed\CustomerAccessStorage\Communication\Plugin\Event\Subscriber\Cust
 use Spryker\Zed\Event\EventDependencyProvider as SprykerEventDependencyProvider;
 use Spryker\Zed\FileManagerStorage\Communication\Plugin\Event\Subscriber\FileManagerStorageSubscriber;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Event\Subscriber\GlossaryStorageEventSubscriber;
+use Spryker\Zed\MerchantOpeningHoursStorage\Communication\Plugin\Event\Subscriber\MerchantOpeningHoursStorageEventSubscriber;
 use Spryker\Zed\MerchantProductOfferStorage\Communication\Plugin\Event\Subscriber\MerchantProductOfferStorageEventSubscriber;
 use Spryker\Zed\MerchantProfileStorage\Communication\Plugin\Event\Subscriber\MerchantProfileStorageEventSubscriber;
 use Spryker\Zed\NavigationStorage\Communication\Plugin\Event\Subscriber\NavigationStorageEventSubscriber;
@@ -119,6 +120,7 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new AvailabilityNotificationSubscriber());
         $eventSubscriberCollection->add(new MerchantProfileStorageEventSubscriber());
         $eventSubscriberCollection->add(new MerchantProductOfferStorageEventSubscriber());
+        $eventSubscriberCollection->add(new MerchantOpeningHoursStorageEventSubscriber());
 
         /**
          * Search Events
