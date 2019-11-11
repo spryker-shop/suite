@@ -5401,7 +5401,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "014a86c651a67744c93e07f8bb7d0b293df4ac9e"
+                "reference": "8ba378949287074badaa330ee9130780d3188c64"
             },
             "require": {
                 "php": ">=7.1"
@@ -5985,7 +5985,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-11-07T11:36:08+00:00"
+            "time": "2019-11-11T12:04:46+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -10668,6 +10668,58 @@
                 "standards"
             ],
             "time": "2019-10-29T11:51:41+00:00"
+        },
+        {
+            "name": "spryker/cms-slot-storage",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-slot-storage.git",
+                "reference": "692acf0368a9027b6be4398bb17966035c5da660"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-slot-storage/zipball/692acf0368a9027b6be4398bb17966035c5da660",
+                "reference": "692acf0368a9027b6be4398bb17966035c5da660",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/cms-slot": "^0.5.0",
+                "spryker/event-behavior": "^1.8.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/storage": "^3.0.0",
+                "spryker/synchronization": "^1.0.0",
+                "spryker/synchronization-behavior": "^1.0.0",
+                "spryker/synchronization-extension": "^1.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/event": "*",
+                "spryker/propel": "*",
+                "spryker/queue": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/event": "If you want to use Event plugins, minimum required version: 2.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsSlotStorage module",
+            "time": "2019-11-04T12:08:47+00:00"
         },
         {
             "name": "spryker/code-generator",
