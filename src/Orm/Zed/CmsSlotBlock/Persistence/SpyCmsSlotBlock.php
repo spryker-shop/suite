@@ -1,13 +1,8 @@
 <?php
 
-/**
- * This file is part of the Spryker Suite.
- * For full license information, please view the LICENSE file that was distributed with this source code.
- */
-
 namespace Orm\Zed\CmsSlotBlock\Persistence;
 
-use Orm\Zed\CmsSlotBlock\Persistence\Base\SpyCmsSlotBlock as BaseSpyCmsSlotBlock;
+use Spryker\Zed\CmsSlotBlock\Persistence\Propel\AbstractSpyCmsSlotBlock as BaseSpyCmsSlotBlock;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_cms_slot_block' table.
@@ -15,9 +10,11 @@ use Orm\Zed\CmsSlotBlock\Persistence\Base\SpyCmsSlotBlock as BaseSpyCmsSlotBlock
  *
  *
  * You should add additional methods to this class to meet the
- * application requirements. This class will only be generated as
+ * application requirements.  This class will only be generated as
  * long as it does not already exist in the output directory.
+ *
  */
 class SpyCmsSlotBlock extends BaseSpyCmsSlotBlock
 {
+
 }
