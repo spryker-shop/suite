@@ -95,6 +95,7 @@ use Spryker\Zed\RabbitMq\Communication\Console\DeleteAllQueuesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\PurgeAllQueuesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\SetUserPermissionsConsole;
 use Spryker\Zed\RestRequestValidator\Communication\Console\BuildValidationCacheConsole;
+use Spryker\Zed\Router\Communication\Plugin\Console\RouterCacheWarmUpConsole;
 use Spryker\Zed\Router\Communication\Plugin\Console\RouterDebugZedConsole;
 use Spryker\Zed\Scheduler\Communication\Console\SchedulerCleanConsole;
 use Spryker\Zed\Scheduler\Communication\Console\SchedulerResumeConsole;
@@ -110,6 +111,7 @@ use Spryker\Zed\Search\Communication\Console\SearchDeleteSnapshotConsole;
 use Spryker\Zed\Search\Communication\Console\SearchOpenIndexConsole;
 use Spryker\Zed\Search\Communication\Console\SearchRegisterSnapshotRepositoryConsole;
 use Spryker\Zed\Search\Communication\Console\SearchRestoreSnapshotConsole;
+use Spryker\Zed\Search\Communication\Console\SearchSetupIndexesConsole;
 use Spryker\Zed\Session\Communication\Console\SessionRemoveLockConsole;
 use Spryker\Zed\Setup\Communication\Console\DeployPreparePropelConsole;
 use Spryker\Zed\Setup\Communication\Console\EmptyGeneratedDirectoryConsole;
@@ -145,6 +147,7 @@ use SprykerSdk\Spryk\Console\SprykBuildConsole;
 use SprykerSdk\Spryk\Console\SprykDumpConsole;
 use SprykerSdk\Spryk\Console\SprykRunConsole;
 use SprykerSdk\Zed\ComposerConstrainer\Communication\Console\ComposerConstraintConsole;
+use SprykerSdk\Zed\ComposerReplace\Communication\Console\ComposerReplaceConsole;
 use Stecman\Component\Symfony\Console\BashCompletion\CompletionCommand;
 
 /**
@@ -170,6 +173,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new InitializeDatabaseConsole(),
             new SearchConsole(),
             new GenerateIndexMapConsole(),
+            new SearchSetupIndexesConsole(),
             new OmsCheckConditionConsole(),
             new OmsCheckTimeoutConsole(),
             new OmsClearLocksConsole(),
@@ -309,6 +313,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new SchedulerCleanConsole(),
             new SchedulerSuspendConsole(),
             new SchedulerResumeConsole(),
+
+            new RouterCacheWarmUpConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
@@ -413,14 +419,12 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
         $commands[] = new SprykRunConsole();
         $commands[] = new SprykDumpConsole();
         $commands[] = new SprykBuildConsole();
-
         $commands[] = new DependencyTreeBuilderConsole();
         $commands[] = new DependencyViolationFinderConsole();
         $commands[] = new DependencyViolationFixConsole();
-
         $commands[] = new ComposerJsonValidatorConsole();
-
         $commands[] = new PropelAbstractValidateConsole();
+        $commands[] = new ComposerReplaceConsole();
 
         return $commands;
     }

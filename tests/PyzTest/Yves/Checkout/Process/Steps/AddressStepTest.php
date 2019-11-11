@@ -345,7 +345,7 @@ class AddressStepTest extends Unit
     /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
-     * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep|\PHPUnit_Framework_MockObject_MockObject
+     * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep|\PHPUnit\Framework\MockObject\MockObject
      */
     protected function createAddressStep(CustomerTransfer $customerTransfer)
     {
@@ -363,6 +363,7 @@ class AddressStepTest extends Unit
                 $checkoutPageConfigMock,
                 'checkout-address',
                 'home',
+                [],
             ])
             ->getMock();
 
@@ -372,7 +373,7 @@ class AddressStepTest extends Unit
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface
      */
     protected function createCalculationClientMock()
     {
@@ -380,7 +381,7 @@ class AddressStepTest extends Unit
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToCustomerServiceInterface
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToCustomerServiceInterface
      */
     protected function createCustomerServiceMock()
     {
@@ -391,7 +392,7 @@ class AddressStepTest extends Unit
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\AddressTransferExpanderPluginInterface
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\AddressTransferExpanderPluginInterface
      */
     protected function createCustomerAddressExpanderPluginMock()
     {
@@ -401,7 +402,7 @@ class AddressStepTest extends Unit
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\AddressTransferExpanderPluginInterface
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\AddressTransferExpanderPluginInterface
      */
     protected function createCompanyUnitAddressExpanderPluginMock()
     {
@@ -413,7 +414,7 @@ class AddressStepTest extends Unit
     /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep\AddressStepExecutor
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep\AddressStepExecutor
      */
     protected function createStepExecutorMock(CustomerTransfer $customerTransfer)
     {
@@ -444,7 +445,7 @@ class AddressStepTest extends Unit
     /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCustomerClientInterface
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCustomerClientInterface
      */
     protected function createCustomerClientMock(CustomerTransfer $customerTransfer)
     {
@@ -456,7 +457,7 @@ class AddressStepTest extends Unit
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface
      */
     protected function createPostConditionCheckerMock()
     {
@@ -467,7 +468,7 @@ class AddressStepTest extends Unit
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\CheckoutPageConfig
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerShop\Yves\CheckoutPage\CheckoutPageConfig
      */
     protected function createCheckoutPageConfigMock()
     {

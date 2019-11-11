@@ -82,7 +82,8 @@ class PaymentStepTest extends Unit
             'payment',
             'escape_route',
             $this->getFlashMessengerMock(),
-            $this->getCalculationClientMock()
+            $this->getCalculationClientMock(),
+            []
         );
     }
 
@@ -95,7 +96,7 @@ class PaymentStepTest extends Unit
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface
+     * @return \PHPUnit\Framework\MockObject\MockObject|\Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface
      */
     protected function createPaymentPluginMock()
     {
@@ -103,7 +104,7 @@ class PaymentStepTest extends Unit
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface
      */
     protected function getCalculationClientMock()
     {
@@ -111,7 +112,7 @@ class PaymentStepTest extends Unit
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface
+     * @return \PHPUnit\Framework\MockObject\MockObject|\Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface
      */
     protected function getFlashMessengerMock()
     {
