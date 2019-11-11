@@ -40,7 +40,7 @@ use SprykerShop\Yves\CustomerReorderWidget\Plugin\Router\CustomerReorderWidgetRo
 use SprykerShop\Yves\DiscountWidget\Plugin\Router\DiscountWidgetRouteProviderPlugin;
 use SprykerShop\Yves\ErrorPage\Plugin\Router\ErrorPageRouteProviderPlugin;
 use SprykerShop\Yves\FileManagerWidget\Plugin\Router\FileManagerWidgetRouteProviderPlugin;
-use SprykerShop\Yves\HeartbeatPage\Plugin\Router\HeartbeatPageRouteProviderPlugin;
+use SprykerShop\Yves\HealthCheckPage\Plugin\Router\HealthCheckPageRouteProviderPlugin;
 use SprykerShop\Yves\HomePage\Plugin\Router\HomePageRouteProviderPlugin;
 use SprykerShop\Yves\MultiCartPage\Plugin\Router\MultiCartPageRouteProviderPlugin;
 use SprykerShop\Yves\NewsletterPage\Plugin\Router\NewsletterPageRouteProviderPlugin;
@@ -94,7 +94,7 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new NewsletterPageRouteProviderPlugin(),
             new CartPageRouteProviderPlugin(),
             new WishlistPageRouteProviderPlugin(),
-            new HeartbeatPageRouteProviderPlugin(),
+            new HealthCheckPageRouteProviderPlugin(),
             new NewsletterWidgetRouteProviderPlugin(),
             new CatalogPageRouteProviderPlugin(),
             new CalculationPageRouteProviderPlugin(),
