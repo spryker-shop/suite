@@ -7,7 +7,7 @@ use Spryker\Zed\Discount\Communication\Plugin\CartCode\VoucherCartCodePlugin;
 
 class CartCodeDependencyProvider extends SprykerCartCodeDependencyProvider
 {
-    protected function getCartCodePluginCollection(): array
+    protected function getCartCodePlugins(): array
     {
         return [
             new VoucherCartCodePlugin(),
