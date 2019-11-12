@@ -20,26 +20,38 @@ class HealthCheckDependencyProvider extends SprykerHealthCheckDependencyProvider
     /**
      * @return \Spryker\Service\HealthCheckExtension\Dependency\Plugin\HealthCheckPluginInterface[]
      */
-    protected function getHealthCheckPlugins(): array
+    protected function getYvesHealthCheckPlugins(): array
     {
         return [
-            'ZED' => [
-                new DatabaseHealthCheckPlugin(),
-                new KeyValueStoreHealthCheckPlugin(),
-                new SearchHealthCheckPlugin(),
-                new ZedSessionHealthCheckPlugin(),
-            ],
-            'YVES' => [
-                new KeyValueStoreHealthCheckPlugin(),
-                new SearchHealthCheckPlugin(),
-                new ZedRequestHealthCheckPlugin(),
-                new YvesSessionHealthCheckPlugin(),
-            ],
-            'GLUE' => [
-                new KeyValueStoreHealthCheckPlugin(),
-                new SearchHealthCheckPlugin(),
-                new ZedRequestHealthCheckPlugin(),
-            ],
+            new KeyValueStoreHealthCheckPlugin(),
+            new SearchHealthCheckPlugin(),
+            new ZedRequestHealthCheckPlugin(),
+            new YvesSessionHealthCheckPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Service\HealthCheckExtension\Dependency\Plugin\HealthCheckPluginInterface[]
+     */
+    protected function getZedHealthCheckPlugins(): array
+    {
+        return [
+            new DatabaseHealthCheckPlugin(),
+            new KeyValueStoreHealthCheckPlugin(),
+            new SearchHealthCheckPlugin(),
+            new ZedSessionHealthCheckPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Service\HealthCheckExtension\Dependency\Plugin\HealthCheckPluginInterface[]
+     */
+    protected function getGlueHealthCheckPlugins(): array
+    {
+        return [
+            new KeyValueStoreHealthCheckPlugin(),
+            new SearchHealthCheckPlugin(),
+            new ZedRequestHealthCheckPlugin(),
         ];
     }
 }
