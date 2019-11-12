@@ -535,8 +535,6 @@ $config[ApplicationConstants::TWIG_ENVIRONMENT_NAME]
     = $config[ShopApplicationConstants::TWIG_ENVIRONMENT_NAME]
     = APPLICATION_ENV;
 
-$config[ApplicationConstants::ENABLE_PRETTY_ERROR_HANDLER] = false;
-
 // ----------- Documentation generator
 $config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GENERATION] = false;
 
