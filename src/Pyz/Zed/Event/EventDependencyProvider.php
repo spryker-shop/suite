@@ -78,7 +78,6 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         /**
          * Storage Events
          */
-        $eventSubscriberCollection->add(new GlossaryStorageEventSubscriber());
         $eventSubscriberCollection->add(new UrlStorageEventSubscriber());
         $eventSubscriberCollection->add(new AvailabilityStorageEventSubscriber());
         $eventSubscriberCollection->add(new CategoryStorageEventSubscriber());
