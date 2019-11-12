@@ -47,25 +47,25 @@ class CustomerRestApiFixtures implements FixturesBuilderInterface, FixturesConta
     }
 
     /**
-     * @param \PyzTest\Glue\Customer\CustomerApiTester $I
+     * @param \PyzTest\Glue\Customer\CustomerApiTester $i
      *
      * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
-    public function buildFixtures(CustomerApiTester $I): FixturesContainerInterface
+    public function buildFixtures(CustomerApiTester $i): FixturesContainerInterface
     {
-        $this->createCustomer($I);
+        $this->createCustomer($i);
 
         return $this;
     }
 
     /**
-     * @param \PyzTest\Glue\Customer\CustomerApiTester $I
+     * @param \PyzTest\Glue\Customer\CustomerApiTester $i
      *
      * @return void
      */
-    protected function createCustomer(CustomerApiTester $I): void
+    protected function createCustomer(CustomerApiTester $i): void
     {
-        $customerTransfer = $I->haveCustomer([
+        $customerTransfer = $i->haveCustomer([
             CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
             CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,
         ]);

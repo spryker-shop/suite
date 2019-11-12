@@ -30,26 +30,26 @@ class DeleteMethodRestApiCest
     protected $fixtures;
 
     /**
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     * @param \PyzTest\Glue\Carts\CartsApiTester $i
      *
      * @return void
      */
-    public function _before(CartsApiTester $I): void
+    public function _before(CartsApiTester $i): void
     {
-        $this->fixtures = $I->loadFixtures(CustomerRestApiFixtures::class);
+        $this->fixtures = $i->loadFixtures(CustomerRestApiFixtures::class);
     }
 
     /**
-     * @param \PyzTest\Glue\Customer\CustomerApiTester $I
+     * @param \PyzTest\Glue\Customer\CustomerApiTester $i
      *
      * When SymfonyListener is not enabled Glue returns 204 with content inside, this test is to check it doesn't happen
      * Jira ticket GLUE-9691
      *
      * @return void
      */
-    public function ensureDeleteRequestHasNoBody(CustomerApiTester $I): void
+    public function ensureDeleteRequestHasNoBody(CustomerApiTester $i): void
     {
-        $token = $I->haveAuthorizationToGlue(
+        $token = $i->haveAuthorizationToGlue(
             $this->fixtures->getCustomerTransfer()
         )->getAccessToken();
 
@@ -60,7 +60,7 @@ class DeleteMethodRestApiCest
             "Content-Type: application/json",
         ];
 
-        $url = $I->formatFullUrl(
+        $url = $i->formatFullUrl(
             'customers/{CustomerReference}',
             ['CustomerReference' => $this->fixtures->getCustomerTransfer()->getCustomerReference()]
         );
@@ -78,7 +78,7 @@ class DeleteMethodRestApiCest
         );
         $responseCode = substr($http_response_header[0], 9, 3);
 
-        $I->assertEquals(HttpCode::NO_CONTENT, $responseCode);
-        $I->assertSame('', $result, 'Content in 204 response');
+        $i->assertEquals(HttpCode::NO_CONTENT, $responseCode);
+        $i->assertSame('', $result, 'Content in 204 response');
     }
 }
