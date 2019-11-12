@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\EventBehavior;
 
+use Pyz\Zed\Publisher\PublisherDependencyProvider;
 use Spryker\Zed\AvailabilityStorage\Communication\Plugin\Event\AvailabilityEventResourceQueryContainerPlugin;
 use Spryker\Zed\CategoryPageSearch\Communication\Plugin\Event\CategoryPageEventResourceQueryContainerPlugin;
 use Spryker\Zed\CategoryStorage\Communication\Plugin\Event\CategoryNodeEventResourceQueryContainerPlugin;
@@ -19,7 +20,6 @@ use Spryker\Zed\CmsStorage\Communication\Plugin\Event\CmsEventResourceQueryConta
 use Spryker\Zed\ConfigurableBundleStorage\Communication\Plugin\Event\ConfigurableBundleTemplateEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\ContentStorage\Communication\Plugin\Event\ContentStorageEventResourceRepositoryPlugin;
 use Spryker\Zed\EventBehavior\EventBehaviorDependencyProvider as SprykerEventBehaviorDependencyProvider;
-use Spryker\Zed\GlossaryStorage\Communication\Plugin\EventBehaviour\GlossaryEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\NavigationStorage\Communication\Plugin\Event\NavigationEventResourceQueryContainerPlugin;
 use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Event\PriceProductAbstractMerchantRelationEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Event\PriceProductConcreteMerchantRelationEventResourceBulkRepositoryPlugin;
@@ -57,7 +57,7 @@ class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProv
      */
     protected function getEventTriggerResourcePlugins()
     {
-        return [
+        $eventBehaviorPlugins = [
             new CmsPageEventResourceQueryContainerPlugin(),
             new CategoryPageEventResourceQueryContainerPlugin(),
             new ProductPageEventResourceQueryContainerPlugin(),
@@ -71,7 +71,6 @@ class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProv
             new CmsBlockEventResourceQueryContainerPlugin(),
             new CmsEventResourceQueryContainerPlugin(),
             new ConfigurableBundleTemplateEventResourceBulkRepositoryPlugin(),
-            new GlossaryEventResourceBulkRepositoryPlugin(),
             new NavigationEventResourceQueryContainerPlugin(),
             new PriceProductConcreteEventResourceQueryContainerPlugin(),
             new PriceProductAbstractEventResourceQueryContainerPlugin(),
@@ -100,5 +99,19 @@ class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProv
             new ProductAbstractPackagingEventResourceRepositoryPlugin(),
             new ContentStorageEventResourceRepositoryPlugin(),
         ];
+
+        $publisherResourcePlugins = $this->getPublisherResourcePlugins();
+
+        return array_merge($publisherResourcePlugins, $eventBehaviorPlugins);
+    }
+
+    /**
+     * @deprecated This was added only for BC reasons and will be removed in the next major without replacement.
+     *
+     * @return \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherDataPluginInterface[]
+     */
+    protected function getPublisherResourcePlugins()
+    {
+        return (new PublisherDependencyProvider())->getPublisherResourcePluginsForEventBehavior();
     }
 }
