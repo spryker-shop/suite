@@ -8,10 +8,10 @@
 namespace Pyz\Yves\ShopCmsSlot;
 
 use SprykerShop\Yves\CmsSlotBlockWidget\Plugin\CmsSlotBlockWidgetCmsSlotContentPlugin;
-use SprykerShop\Yves\ShopCmsSlot\ShopCmsSlotDependencyProvider as SprykerShopCmsSlotDependencyProvider;
+use SprykerShop\Yves\ShopCmsSlot\ShopCmsSlotDependencyProvider as SprykerShopShopCmsSlotDependencyProvider;
 use SprykerShop\Yves\ShopCmsSlotExtension\Dependency\Plugin\CmsSlotContentPluginInterface;
 
-class ShopCmsSlotDependencyProvider extends SprykerShopCmsSlotDependencyProvider
+class ShopCmsSlotDependencyProvider extends SprykerShopShopCmsSlotDependencyProvider
 {
     /**
      * @return \SprykerShop\Yves\ShopCmsSlotExtension\Dependency\Plugin\CmsSlotContentPluginInterface
