@@ -71,6 +71,7 @@ use Spryker\Glue\GlueApplication\GlueApplicationDependencyProvider as SprykerGlu
 use Spryker\Glue\GlueApplication\Plugin\GlueApplication\PaginationParametersValidateHttpRequestPlugin;
 use Spryker\Glue\GlueApplication\Plugin\Rest\SetStoreCurrentLocaleBeforeActionPlugin;
 use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationshipCollectionInterface;
+use Spryker\Glue\HealthCheckRestApi\Plugin\HealthCheckResourceRoutePlugin;
 use Spryker\Glue\NavigationsCategoryNodesResourceRelationship\Plugin\GlueApplication\CategoryNodeByResourceIdResourceRelationshipPlugin;
 use Spryker\Glue\NavigationsRestApi\NavigationsRestApiConfig;
 use Spryker\Glue\NavigationsRestApi\Plugin\ResourceRoute\NavigationsResourceRoutePlugin;
@@ -182,6 +183,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new SharedCartsResourceRoutePlugin(),
             new UrlResolverResourceRoutePlugin(),
             new CustomerAccessResourceRoutePlugin(),
+            new HealthCheckResourceRoutePlugin(),
         ];
     }
 

@@ -10,8 +10,10 @@ namespace Pyz\Service\HealthCheck;
 use Spryker\Service\HealthCheck\HealthCheckDependencyProvider as SprykerHealthCheckDependencyProvider;
 use Spryker\Service\Propel\Plugin\HealthCheck\DatabaseHealthCheckPlugin;
 use Spryker\Service\Search\Plugin\HealthCheck\SearchHealthCheckPlugin;
+use Spryker\Service\Session\Plugin\HealthCheck\YvesSessionHealthCheckPlugin;
 use Spryker\Service\Session\Plugin\HealthCheck\ZedSessionHealthCheckPlugin;
 use Spryker\Service\Storage\Plugin\HealthCheck\KeyValueStoreHealthCheckPlugin;
+use Spryker\Service\ZedRequest\Plugin\HealthCheck\ZedRequestHealthCheckPlugin;
 
 class HealthCheckDependencyProvider extends SprykerHealthCheckDependencyProvider
 {
@@ -30,7 +32,14 @@ class HealthCheckDependencyProvider extends SprykerHealthCheckDependencyProvider
             'YVES' => [
                 new KeyValueStoreHealthCheckPlugin(),
                 new SearchHealthCheckPlugin(),
-            ]
+                new ZedRequestHealthCheckPlugin(),
+                new YvesSessionHealthCheckPlugin(),
+            ],
+            'GLUE' => [
+                new KeyValueStoreHealthCheckPlugin(),
+                new SearchHealthCheckPlugin(),
+                new ZedRequestHealthCheckPlugin(),
+            ],
         ];
     }
 }
