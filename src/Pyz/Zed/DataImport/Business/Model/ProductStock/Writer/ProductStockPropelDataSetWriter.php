@@ -238,11 +238,11 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
         $abstractSku = $this->productRepository->getAbstractSkuByConcreteSku($concreteSku);
         $idStore = $this->getIdStore($storeTransfer);
 
-        $stockProductQuantity = $this->getStockProductQuantityForStore($concreteSku, $storeTransfer);
+        $availabilityQuantity = $this->getProductAvailabilityForStore($concreteSku, $storeTransfer);
         $availabilityAbstractEntity = $this->getAvailabilityAbstract($abstractSku, $idStore);
         $this->persistAvailabilityData([
             static::KEY_AVAILABILITY_SKU => $concreteSku,
-            static::KEY_AVAILABILITY_QUANTITY => $stockProductQuantity,
+            static::KEY_AVAILABILITY_QUANTITY => $availabilityQuantity,
             static::KEY_AVAILABILITY_ID_AVAILABILITY_ABSTRACT => $availabilityAbstractEntity->getIdAvailabilityAbstract(),
             static::KEY_AVAILABILITY_ID_STORE => $idStore,
             static::KEY_AVAILABILITY_IS_NEVER_OUT_OF_STOCK => $dataSet[ProductStockHydratorStep::KEY_IS_NEVER_OUT_OF_STOCK],
@@ -257,7 +257,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
      *
      * @return \Spryker\DecimalObject\Decimal
      */
-    protected function getStockProductQuantityForStore(string $concreteSku, StoreTransfer $storeTransfer): Decimal
+    protected function getProductAvailabilityForStore(string $concreteSku, StoreTransfer $storeTransfer): Decimal
     {
         $physicalItems = $this->calculateProductStockForSkuAndStore($concreteSku, $storeTransfer);
         $reservedItems = $this->getReservationQuantityForStore($concreteSku, $storeTransfer);
