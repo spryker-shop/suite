@@ -12,7 +12,6 @@ use Pyz\Zed\Development\Communication\Console\AcceptanceCodeTestConsole;
 use Pyz\Zed\Development\Communication\Console\ApiCodeTestConsole;
 use Pyz\Zed\Development\Communication\Console\FunctionalCodeTestConsole;
 use Silex\Provider\TwigServiceProvider as SilexTwigServiceProvider;
-use Spryker\HealthCheck\src\Spryker\Zed\HealthCheck\Console\ZedHealthCheckConsole;
 use Spryker\Zed\BusinessOnBehalfDataImport\BusinessOnBehalfDataImportConfig;
 use Spryker\Zed\Cache\Communication\Console\EmptyAllCachesConsole;
 use Spryker\Zed\CodeGenerator\Communication\Console\BundleClientCodeGeneratorConsole;
@@ -54,6 +53,7 @@ use Spryker\Zed\EventBehavior\Communication\Console\EventBehaviorTriggerTimeoutC
 use Spryker\Zed\EventBehavior\Communication\Console\EventTriggerConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventTriggerListenerConsole;
 use Spryker\Zed\EventBehavior\Communication\Plugin\Console\EventBehaviorPostHookPlugin;
+use Spryker\Zed\HealthCheck\Communication\Console\ZedHealthCheckConsole;
 use Spryker\Zed\IndexGenerator\Communication\Console\PostgresIndexGeneratorConsole;
 use Spryker\Zed\IndexGenerator\Communication\Console\PostgresIndexRemoverConsole;
 use Spryker\Zed\Installer\Communication\Console\InitializeDatabaseConsole;

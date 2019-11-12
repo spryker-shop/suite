@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * This file is part of the Spryker Suite.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Service\HealthCheck;
@@ -10,7 +10,6 @@ namespace Pyz\Service\HealthCheck;
 use Spryker\Service\HealthCheck\HealthCheckDependencyProvider as SprykerHealthCheckDependencyProvider;
 use Spryker\Service\Propel\Plugin\HealthCheck\DatabaseHealthCheckPlugin;
 use Spryker\Service\Search\Plugin\HealthCheck\SearchHealthCheckPlugin;
-use Spryker\Service\Session\Plugin\HealthCheck\YvesSessionHealthCheckPlugin;
 use Spryker\Service\Session\Plugin\HealthCheck\ZedSessionHealthCheckPlugin;
 use Spryker\Service\Storage\Plugin\HealthCheck\KeyValueStoreHealthCheckPlugin;
 use Spryker\Service\ZedRequest\Plugin\HealthCheck\ZedRequestHealthCheckPlugin;
@@ -25,8 +24,6 @@ class HealthCheckDependencyProvider extends SprykerHealthCheckDependencyProvider
         return [
             new KeyValueStoreHealthCheckPlugin(),
             new SearchHealthCheckPlugin(),
-            new ZedRequestHealthCheckPlugin(),
-            new YvesSessionHealthCheckPlugin(),
         ];
     }
 

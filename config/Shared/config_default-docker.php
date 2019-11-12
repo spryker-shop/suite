@@ -272,7 +272,7 @@ $config[AclConstants::ACL_USER_RULE_WHITELIST] = [
     ],
     [
         'bundle' => 'healthCheck',
-        'controller' => 'healthCheck',
+        'controller' => 'index',
         'action' => 'index',
         'type' => 'allow',
     ],
