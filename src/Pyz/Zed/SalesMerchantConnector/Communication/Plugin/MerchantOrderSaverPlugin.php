@@ -35,11 +35,7 @@ class MerchantOrderSaverPlugin extends AbstractPlugin implements CheckoutDoSaveO
         foreach ($quoteTransfer->getItems() as $itemTransfer) {
             $offerTransfer = $itemTransfer->getOffer();
             if (!$offerTransfer) {
-                //TODO: Should be removed when MP-1301 is done.
-                //continue;
-                $offerTransfer = new OfferTransfer();
-                $offerTransfer->setMerchantReference('roan-gmbh-und-co-k-g');
-                $itemTransfer->setOffer($offerTransfer);
+                continue;
             }
 
             $this->getFacade()->createSalesOrderMerchant(
