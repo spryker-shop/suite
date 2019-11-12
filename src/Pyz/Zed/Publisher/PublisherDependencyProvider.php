@@ -16,9 +16,9 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
     /**
      * @return \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherDataPluginInterface[]
      */
-    public function getPublisherResourcePluginsForEventBehavior()
+    public function getPublisherDataPluginsForEventBehavior()
     {
-        return $this->getPublisherResourcePlugins();
+        return $this->getPublisherDataPlugins();
     }
 
     /**
@@ -34,7 +34,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
     /**
      * @return \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherDataPluginInterface[]
      */
-    protected function getPublisherResourcePlugins(): array
+    protected function getPublisherDataPlugins(): array
     {
         return [
             new GlossaryPublisherDataPlugin(),

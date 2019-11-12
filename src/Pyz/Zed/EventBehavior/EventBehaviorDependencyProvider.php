@@ -114,6 +114,6 @@ class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProv
      */
     protected function getPublisherResourcePlugins()
     {
-        return (new PublisherDependencyProvider())->getPublisherResourcePluginsForEventBehavior();
+        return (new PublisherDependencyProvider())->getPublisherDataPluginsForEventBehavior();
     }
 }
