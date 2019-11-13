@@ -7,7 +7,7 @@
 
 namespace Pyz\Yves\Validator;
 
-use Spryker\Shared\Translator\Plugin\Validator\TranslatorValidatorPlugin;
+use Spryker\Yves\Translator\Plugin\Validator\TranslatorValidatorPlugin;
 use Spryker\Yves\Validator\ValidatorDependencyProvider as SprykerValidatorDependencyProvider;
 
 class ValidatorDependencyProvider extends SprykerValidatorDependencyProvider

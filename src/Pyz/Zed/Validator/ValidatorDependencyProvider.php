@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\Validator;
 
-use Spryker\Shared\Translator\Plugin\Validator\TranslatorValidatorPlugin;
+use Spryker\Zed\Translator\Communication\Plugin\Validator\TranslatorValidatorPlugin;
 use Spryker\Zed\Validator\ValidatorDependencyProvider as SprykerValidatorDependencyProvider;
 
 class ValidatorDependencyProvider extends SprykerValidatorDependencyProvider
