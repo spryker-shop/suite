@@ -94,8 +94,6 @@ use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSql;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\PropelExecutor;
 use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
-use Pyz\Zed\DataImport\Business\Model\Shipment\ShipmentWriterStep;
-use Pyz\Zed\DataImport\Business\Model\ShipmentPrice\ShipmentPriceWriterStep;
 use Pyz\Zed\DataImport\Business\Model\Stock\StockWriterStep;
 use Pyz\Zed\DataImport\Business\Model\Store\StoreReader;
 use Pyz\Zed\DataImport\Business\Model\Store\StoreWriterStep;
@@ -143,8 +141,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             ->addDataImporter($this->createCustomerImporter())
             ->addDataImporter($this->createGlossaryImporter())
             ->addDataImporter($this->createTaxImporter())
-            ->addDataImporter($this->createShipmentImporter())
-            ->addDataImporter($this->createShipmentPriceImporter())
             ->addDataImporter($this->createDiscountImporter())
             ->addDataImporter($this->createDiscountStoreImporter())
             ->addDataImporter($this->createDiscountVoucherImporter())
@@ -891,39 +887,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker();
         $dataSetStepBroker
             ->addStep(new StockWriterStep());
-
-        $dataImporter->addDataSetStepBroker($dataSetStepBroker);
-
-        return $dataImporter;
-    }
-
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
-     */
-    protected function createShipmentImporter()
-    {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getShipmentDataImporterConfiguration());
-
-        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ShipmentWriterStep::BULK_SIZE);
-        $dataSetStepBroker
-            ->addStep($this->createTaxSetNameToIdTaxSetStep())
-            ->addStep(new ShipmentWriterStep());
-
-        $dataImporter->addDataSetStepBroker($dataSetStepBroker);
-
-        return $dataImporter;
-    }
-
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
-     */
-    protected function createShipmentPriceImporter()
-    {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getShipmentPriceDataImporterConfiguration());
-
-        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ShipmentWriterStep::BULK_SIZE);
-        $dataSetStepBroker
-            ->addStep(new ShipmentPriceWriterStep());
 
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
 
