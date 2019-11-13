@@ -8,12 +8,12 @@
 namespace Pyz\Zed\Application;
 
 use Spryker\Shared\Application\ServiceProvider\FormFactoryServiceProvider;
-use Spryker\Shared\ErrorHandler\Plugin\ServiceProvider\WhoopsErrorHandlerServiceProvider;
 use Spryker\Zed\Api\Communication\Plugin\ApiServiceProviderPlugin;
 use Spryker\Zed\Api\Communication\Plugin\ServiceProvider\ApiRoutingServiceProvider;
 use Spryker\Zed\Application\ApplicationDependencyProvider as SprykerApplicationDependencyProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\SubRequestServiceProvider;
 use Spryker\Zed\Assertion\Communication\Plugin\ServiceProvider\AssertionServiceProvider;
+use Spryker\Zed\ErrorHandler\Communication\Plugin\Application\ErrorHandlerApplicationPlugin;
 use Spryker\Zed\EventDispatcher\Communication\Plugin\Application\EventDispatcherApplicationPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\ServiceProvider\FormTypeExtensionServiceProvider;
 use Spryker\Zed\Gui\Communication\Plugin\ServiceProvider\GuiTwigExtensionServiceProvider;
@@ -66,10 +66,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new ApiRoutingServiceProvider(),
         ];
 
-        if ($this->getConfig()->isPrettyErrorHandlerEnabled()) {
-            $providers[] = new WhoopsErrorHandlerServiceProvider();
-        }
-
         return $providers;
     }
 
@@ -101,6 +97,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new WebProfilerApplicationPlugin(),
             new HttpApplicationPlugin(),
             new SessionApplicationPlugin(),
+            new ErrorHandlerApplicationPlugin(),
         ];
     }
 }

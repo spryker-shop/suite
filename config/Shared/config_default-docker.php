@@ -422,6 +422,8 @@ $config[CmsConstants::YVES_THEME] = $YVES_THEME;
 $config[ErrorHandlerConstants::DISPLAY_ERRORS] = true;
 $config[ErrorHandlerConstants::YVES_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Yves/errorpage/error.html';
 $config[ErrorHandlerConstants::ERROR_RENDERER] = WebHtmlErrorRenderer::class;
+$config[ErrorHandlerConstants::IS_PRETTY_ERROR_HANDLER_ENABLED] = (bool)getenv('SPRYKER_DEBUG_ENABLED');
+
 // Due to some deprecation notices we silence all deprecations for the time being
 // To only log e.g. deprecations instead of throwing exceptions here use
 //$config[ErrorHandlerConstants::ERROR_LEVEL] = E_ALL
@@ -676,8 +678,6 @@ $config[CalculationPageConstants::ENABLE_CART_DEBUG] = (bool)getenv('SPRYKER_DEB
 
 // ----------- Error page
 $config[ErrorPageConstants::ENABLE_ERROR_404_STACK_TRACE] = (bool)getenv('SPRYKER_DEBUG_ENABLED');
-
-$config[ApplicationConstants::ENABLE_PRETTY_ERROR_HANDLER] = (bool)getenv('SPRYKER_DEBUG_ENABLED');
 
 // ----------- Console
 $config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = (bool)getenv('DEVELOPMENT_CONSOLE_COMMANDS');
