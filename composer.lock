@@ -2434,49 +2434,6 @@
             "time": "2019-05-05T09:22:01+00:00"
         },
         {
-            "name": "mandrill/mandrill",
-            "version": "1.0.55",
-            "source": {
-                "type": "git",
-                "url": "https://bitbucket.org/mailchimp/mandrill-api-php.git",
-                "reference": "da3adc10042eafac2e53de141b358a52b8e53596"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://bitbucket.org/mailchimp/mandrill-api-php/get/da3adc10042eafac2e53de141b358a52b8e53596.zip",
-                "reference": "da3adc10042eafac2e53de141b358a52b8e53596",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Mandrill": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Mandrill Devs",
-                    "email": "community@mandrill.com",
-                    "homepage": "http://mandrill.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "API client library for the Mandrill email as a service platform",
-            "homepage": "https://bitbucket.org/mailchimp/mandrill-api-php",
-            "keywords": [
-                "api",
-                "email"
-            ],
-            "time": "2015-09-22T13:58:03+00:00"
-        },
-        {
             "name": "mikey179/vfsstream",
             "version": "v1.6.8",
             "source": {
@@ -5307,16 +5264,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "be83724ffd905e58d0ca1bd38de4e9d7a4b35565"
+                "reference": "811a9e3ac26ec86c0eaa18a2828bd658f729c16e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/be83724ffd905e58d0ca1bd38de4e9d7a4b35565",
-                "reference": "be83724ffd905e58d0ca1bd38de4e9d7a4b35565",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/811a9e3ac26ec86c0eaa18a2828bd658f729c16e",
+                "reference": "811a9e3ac26ec86c0eaa18a2828bd658f729c16e",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "php-amqplib/php-amqplib": "^2.6",
                 "spryker/guzzle": "^2.0.0",
                 "spryker/kernel": "^3.30.0",
@@ -5363,7 +5320,7 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "time": "2019-11-07T13:30:02+00:00"
+            "time": "2019-11-13T11:31:34+00:00"
         },
         {
             "name": "spryker/silexphp",
@@ -5371,12 +5328,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/silexphp.git",
-                "reference": "92a23eaa5f51ea990b53c18f4f7513b33e54e458"
+                "reference": "7a32b90bfd08ffc476fbc4b4cbf126c225d8d94e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/silexphp/zipball/92a23eaa5f51ea990b53c18f4f7513b33e54e458",
-                "reference": "92a23eaa5f51ea990b53c18f4f7513b33e54e458",
+                "url": "https://api.github.com/repos/spryker/silexphp/zipball/7a32b90bfd08ffc476fbc4b4cbf126c225d8d94e",
+                "reference": "7a32b90bfd08ffc476fbc4b4cbf126c225d8d94e",
                 "shasum": ""
             },
             "require": {
@@ -5443,7 +5400,7 @@
             "keywords": [
                 "microframework"
             ],
-            "time": "2019-10-31T07:41:48+00:00"
+            "time": "2019-11-13T09:26:44+00:00"
         },
         {
             "name": "spryker/spryker",
@@ -5451,7 +5408,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "fb326980a8cbac34fa1171189c21d686afcb71b3"
+                "reference": "295813d4d5d0a4ef0abad883416b4d1772af4903"
             },
             "require": {
                 "php": ">=7.1"
@@ -5552,6 +5509,7 @@
                 "spryker/cms-slot-extension": "*",
                 "spryker/cms-slot-gui": "*",
                 "spryker/cms-slot-locale-connector": "*",
+                "spryker/cms-slot-storage": "*",
                 "spryker/cms-slot-store-connector": "*",
                 "spryker/cms-storage": "*",
                 "spryker/cms-user-connector": "*",
@@ -5707,7 +5665,6 @@
                 "spryker/log": "*",
                 "spryker/mail": "*",
                 "spryker/maintenance": "*",
-                "spryker/mandrill": "*",
                 "spryker/manual-order-entry": "*",
                 "spryker/manual-order-entry-gui": "*",
                 "spryker/manual-order-entry-gui-extension": "*",
@@ -6037,7 +5994,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-11-12T14:14:47+00:00"
+            "time": "2019-11-13T12:12:52+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6045,7 +6002,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "e90da268e6d5d65edbb0841fda9723de8f334fe6"
+                "reference": "5d1811fe83280b4a5591bb57327beb8f24fc24b6"
             },
             "require": {
                 "php": ">=7.1"
@@ -6179,7 +6136,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-11-12T14:19:22+00:00"
+            "time": "2019-11-13T12:13:43+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -9637,6 +9594,49 @@
                 "type"
             ],
             "time": "2019-03-25T16:59:23+00:00"
+        },
+        {
+            "name": "mandrill/mandrill",
+            "version": "1.0.55",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/mailchimp/mandrill-api-php.git",
+                "reference": "da3adc10042eafac2e53de141b358a52b8e53596"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/mailchimp/mandrill-api-php/get/da3adc10042eafac2e53de141b358a52b8e53596.zip",
+                "reference": "da3adc10042eafac2e53de141b358a52b8e53596",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Mandrill": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Mandrill Devs",
+                    "email": "community@mandrill.com",
+                    "homepage": "http://mandrill.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "API client library for the Mandrill email as a service platform",
+            "homepage": "https://bitbucket.org/mailchimp/mandrill-api-php",
+            "keywords": [
+                "api",
+                "email"
+            ],
+            "time": "2015-09-22T13:58:03+00:00"
         },
         {
             "name": "nette/bootstrap",
