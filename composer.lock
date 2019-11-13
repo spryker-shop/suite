@@ -2432,6 +2432,49 @@
             "time": "2019-05-05T09:22:01+00:00"
         },
         {
+            "name": "mandrill/mandrill",
+            "version": "1.0.55",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/mailchimp/mandrill-api-php.git",
+                "reference": "da3adc10042eafac2e53de141b358a52b8e53596"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/mailchimp/mandrill-api-php/get/da3adc10042eafac2e53de141b358a52b8e53596.zip",
+                "reference": "da3adc10042eafac2e53de141b358a52b8e53596",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Mandrill": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Mandrill Devs",
+                    "email": "community@mandrill.com",
+                    "homepage": "http://mandrill.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "API client library for the Mandrill email as a service platform",
+            "homepage": "https://bitbucket.org/mailchimp/mandrill-api-php",
+            "keywords": [
+                "api",
+                "email"
+            ],
+            "time": "2015-09-22T13:58:03+00:00"
+        },
+        {
             "name": "mikey179/vfsstream",
             "version": "v1.6.7",
             "source": {
@@ -5101,136 +5144,6 @@
             "time": "2019-10-21T09:49:34+00:00"
         },
         {
-            "name": "spryker/cms-block-extension",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/cms-block-extension.git",
-                "reference": "2ae954789090bbe5b4aa8513c81da979dfa0c798"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-block-extension/zipball/2ae954789090bbe5b4aa8513c81da979dfa0c798",
-                "reference": "2ae954789090bbe5b4aa8513c81da979dfa0c798",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "CmsBlockExtension module",
-            "time": "2019-10-31T13:30:01+00:00"
-        },
-        {
-            "name": "spryker/cms-block-storage-extension",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/cms-block-storage-extension.git",
-                "reference": "78475e941f58a9063903d6d6cfe4b9e5b245aff2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-block-storage-extension/zipball/78475e941f58a9063903d6d6cfe4b9e5b245aff2",
-                "reference": "78475e941f58a9063903d6d6cfe4b9e5b245aff2",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "CmsBlockStorageExtension module",
-            "time": "2019-10-31T13:30:01+00:00"
-        },
-        {
-            "name": "spryker/cms-slot-storage",
-            "version": "0.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/cms-slot-storage.git",
-                "reference": "692acf0368a9027b6be4398bb17966035c5da660"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-slot-storage/zipball/692acf0368a9027b6be4398bb17966035c5da660",
-                "reference": "692acf0368a9027b6be4398bb17966035c5da660",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1",
-                "spryker/cms-slot": "^0.5.0",
-                "spryker/event-behavior": "^1.8.0",
-                "spryker/kernel": "^3.30.0",
-                "spryker/storage": "^3.0.0",
-                "spryker/synchronization": "^1.0.0",
-                "spryker/synchronization-behavior": "^1.0.0",
-                "spryker/synchronization-extension": "^1.1.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/event": "*",
-                "spryker/propel": "*",
-                "spryker/queue": "*",
-                "spryker/testify": "*"
-            },
-            "suggest": {
-                "spryker/event": "If you want to use Event plugins, minimum required version: 2.1.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "CmsSlotStorage module",
-            "time": "2019-11-04T12:08:47+00:00"
-        },
-        {
             "name": "spryker/event-behavior",
             "version": "dev-master",
             "source": {
@@ -5488,7 +5401,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "f9b20f445d7ba1e7eeb1922896ac751e6051fce7"
+                "reference": "f0a28fdf4784266fd7dd5f9ce7824c8680e30b58"
             },
             "require": {
                 "php": ">=7.1"
@@ -6071,7 +5984,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-10-25T13:21:41+00:00"
+            "time": "2019-11-13T08:59:27+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -9673,49 +9586,6 @@
             "time": "2019-03-25T16:59:23+00:00"
         },
         {
-            "name": "mandrill/mandrill",
-            "version": "1.0.55",
-            "source": {
-                "type": "git",
-                "url": "https://bitbucket.org/mailchimp/mandrill-api-php.git",
-                "reference": "da3adc10042eafac2e53de141b358a52b8e53596"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://bitbucket.org/mailchimp/mandrill-api-php/get/da3adc10042eafac2e53de141b358a52b8e53596.zip",
-                "reference": "da3adc10042eafac2e53de141b358a52b8e53596",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Mandrill": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Mandrill Devs",
-                    "email": "community@mandrill.com",
-                    "homepage": "http://mandrill.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "API client library for the Mandrill email as a service platform",
-            "homepage": "https://bitbucket.org/mailchimp/mandrill-api-php",
-            "keywords": [
-                "api",
-                "email"
-            ],
-            "time": "2015-09-22T13:58:03+00:00"
-        },
-        {
             "name": "nette/bootstrap",
             "version": "v3.0.1",
             "source": {
@@ -10796,6 +10666,136 @@
                 "standards"
             ],
             "time": "2019-09-11T09:28:41+00:00"
+        },
+        {
+            "name": "spryker/cms-block-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-block-extension.git",
+                "reference": "2ae954789090bbe5b4aa8513c81da979dfa0c798"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-block-extension/zipball/2ae954789090bbe5b4aa8513c81da979dfa0c798",
+                "reference": "2ae954789090bbe5b4aa8513c81da979dfa0c798",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsBlockExtension module",
+            "time": "2019-10-31T13:30:01+00:00"
+        },
+        {
+            "name": "spryker/cms-block-storage-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-block-storage-extension.git",
+                "reference": "78475e941f58a9063903d6d6cfe4b9e5b245aff2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-block-storage-extension/zipball/78475e941f58a9063903d6d6cfe4b9e5b245aff2",
+                "reference": "78475e941f58a9063903d6d6cfe4b9e5b245aff2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsBlockStorageExtension module",
+            "time": "2019-10-31T13:30:01+00:00"
+        },
+        {
+            "name": "spryker/cms-slot-storage",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-slot-storage.git",
+                "reference": "692acf0368a9027b6be4398bb17966035c5da660"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-slot-storage/zipball/692acf0368a9027b6be4398bb17966035c5da660",
+                "reference": "692acf0368a9027b6be4398bb17966035c5da660",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/cms-slot": "^0.5.0",
+                "spryker/event-behavior": "^1.8.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/storage": "^3.0.0",
+                "spryker/synchronization": "^1.0.0",
+                "spryker/synchronization-behavior": "^1.0.0",
+                "spryker/synchronization-extension": "^1.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/event": "*",
+                "spryker/propel": "*",
+                "spryker/queue": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/event": "If you want to use Event plugins, minimum required version: 2.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsSlotStorage module",
+            "time": "2019-11-04T12:08:47+00:00"
         },
         {
             "name": "spryker/code-generator",
