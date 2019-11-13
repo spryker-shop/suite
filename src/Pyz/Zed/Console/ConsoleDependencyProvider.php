@@ -108,10 +108,10 @@ use Spryker\Zed\SearchElasticsearch\Communication\Console\ElasticsearchSnapshotC
 use Spryker\Zed\SearchElasticsearch\Communication\Console\ElasticsearchSnapshotDeleteConsole;
 use Spryker\Zed\SearchElasticsearch\Communication\Console\ElasticsearchSnapshotRegisterRepositoryConsole;
 use Spryker\Zed\SearchElasticsearch\Communication\Console\ElasticsearchSnapshotRestoreConsole;
-use Spryker\Zed\SearchElasticsearch\Communication\Console\SearchElasticsearchCloseIndexConsole;
-use Spryker\Zed\SearchElasticsearch\Communication\Console\SearchElasticsearchCopyIndexConsole;
-use Spryker\Zed\SearchElasticsearch\Communication\Console\SearchElasticsearchDeleteIndexConsole;
-use Spryker\Zed\SearchElasticsearch\Communication\Console\SearchElasticsearchOpenIndexConsole;
+use Spryker\Zed\SearchElasticsearch\Communication\Console\ElasticsearchCloseIndexConsole;
+use Spryker\Zed\SearchElasticsearch\Communication\Console\ElasticsearchCopyIndexConsole;
+use Spryker\Zed\SearchElasticsearch\Communication\Console\ElasticsearchDeleteIndexConsole;
+use Spryker\Zed\SearchElasticsearch\Communication\Console\ElasticsearchOpenIndexConsole;
 use Spryker\Zed\Session\Communication\Console\SessionRemoveLockConsole;
 use Spryker\Zed\Setup\Communication\Console\DeployPreparePropelConsole;
 use Spryker\Zed\Setup\Communication\Console\EmptyGeneratedDirectoryConsole;
@@ -267,10 +267,10 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new StorageRedisExportRdbConsole(),
             new StorageRedisImportRdbConsole(),
             new StorageDeleteAllConsole(),
-            new SearchElasticsearchCloseIndexConsole(),
-            new SearchElasticsearchCopyIndexConsole(),
-            new SearchElasticsearchDeleteIndexConsole(),
-            new SearchElasticsearchOpenIndexConsole(),
+            new ElasticsearchCloseIndexConsole(),
+            new ElasticsearchCopyIndexConsole(),
+            new ElasticsearchDeleteIndexConsole(),
+            new ElasticsearchOpenIndexConsole(),
             new ElasticsearchSnapshotRegisterRepositoryConsole(),
             new ElasticsearchSnapshotDeleteConsole(),
             new ElasticsearchSnapshotCreateConsole(),
