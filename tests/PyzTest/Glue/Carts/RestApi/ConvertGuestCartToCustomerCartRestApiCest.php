@@ -65,7 +65,8 @@ class ConvertGuestCartToCustomerCartRestApiCest
         );
 
         // Assert
-        $I->assertResponse(HttpCode::OK);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseMatchesOpenApiSchema();
 
         $I->amSure(sprintf('Returned resource is of type %s', CartsRestApiConfig::RESOURCE_CARTS))
             ->whenI()
@@ -109,8 +110,8 @@ class ConvertGuestCartToCustomerCartRestApiCest
         );
 
         // Assert
-        $I->assertResponse(HttpCode::OK);
-        $I->seeResponseDataContainsEmptyCollection();
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -128,7 +129,7 @@ class ConvertGuestCartToCustomerCartRestApiCest
         );
         $token = $I->haveAuthorizationToGlue(
             $this->fixtures->getCustomerTransfer(),
-            $I::ANONYMOUS_PREFIX . $this->fixtures->getValueForAnonymousCustomerReference1()
+            $this->fixtures::ANONYMOUS_PREFIX . $this->fixtures->getValueForAnonymousCustomerReference1()
         )->getAccessToken();
 
         $I->amBearerAuthenticated($token);

@@ -33,6 +33,13 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  */
 class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
+    public const QUANTITY_FOR_ITEM_UPDATE = 33;
+    public const STORE_DE = 'DE';
+    public const TEST_CART_NAME = 'Test cart name';
+    public const TEST_GUEST_CART_NAME = 'Test guest cart name';
+    public const CURRENCY_EUR = 'EUR';
+    public const ANONYMOUS_PREFIX = 'anonymous:';
+
     protected const TEST_USERNAME = 'test username';
     protected const TEST_PASSWORD = 'test password';
 
@@ -232,15 +239,15 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
         $this->valueForAnonymousCustomerReference3 = $this->createValueForAnonymousCustomerReference();
         $this->guestQuoteTransfer1 = $this->createQuote(
             $I,
-            $I::ANONYMOUS_PREFIX . $this->valueForAnonymousCustomerReference1
+            static::ANONYMOUS_PREFIX . $this->valueForAnonymousCustomerReference1
         );
         $this->guestQuoteTransfer2 = $this->createQuote(
             $I,
-            $I::ANONYMOUS_PREFIX . $this->valueForAnonymousCustomerReference2
+            static::ANONYMOUS_PREFIX . $this->valueForAnonymousCustomerReference2
         );
         $this->emptyGuestQuoteTransfer = $this->createEmptyQuote(
             $I,
-            $I::ANONYMOUS_PREFIX . $this->valueForAnonymousCustomerReference3
+            static::ANONYMOUS_PREFIX . $this->valueForAnonymousCustomerReference3
         );
 
         return $this;

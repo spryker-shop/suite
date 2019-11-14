@@ -61,23 +61,24 @@ class CartsRestApiCest
                     'type' => CartsRestApiConfig::RESOURCE_CARTS,
                     'attributes' => [
                         'priceMode' => CalculationPriceMode::PRICE_MODE_GROSS,
-                        'currency' => $I::CURRENCY_EUR,
-                        'store' => $I::STORE_DE,
-                        'name' => $I::TEST_CART_NAME,
+                        'currency' => $this->fixtures::CURRENCY_EUR,
+                        'store' => $this->fixtures::STORE_DE,
+                        'name' => $this->fixtures::TEST_CART_NAME,
                     ],
                 ],
             ]
         );
 
         // Assert
-        $I->assertResponse(HttpCode::CREATED);
+        $I->seeResponseCodeIs(HttpCode::CREATED);
+        $I->seeResponseMatchesOpenApiSchema();
 
         $I->seeSingleResourceHasSelfLink(
             $I->formatFullUrl(
                 '{resourceCarts}/{cartUuid}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $I->findResourceIdFromResponseByJsonPath(),
+                    'cartUuid' => $I->grabDataFromResponseByJsonPath('$.data')[0]['id'],
                 ]
             )
         );
@@ -104,16 +105,17 @@ class CartsRestApiCest
                     'type' => CartsRestApiConfig::RESOURCE_CARTS,
                     'attributes' => [
                         'priceMode' => CalculationPriceMode::PRICE_MODE_GROSS,
-                        'currency' => $I::CURRENCY_EUR,
-                        'store' => $I::STORE_DE,
-                        'name' => $I::TEST_CART_NAME,
+                        'currency' => $this->fixtures::CURRENCY_EUR,
+                        'store' => $this->fixtures::STORE_DE,
+                        'name' => $this->fixtures::TEST_CART_NAME,
                     ],
                 ],
             ]
         );
 
         // Assert
-        $I->assertResponse(HttpCode::FORBIDDEN);
+        $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -135,16 +137,17 @@ class CartsRestApiCest
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_CARTS,
                     'attributes' => [
-                        'currency' => $I::CURRENCY_EUR,
-                        'store' => $I::STORE_DE,
-                        'name' => $I::TEST_CART_NAME,
+                        'currency' => $this->fixtures::CURRENCY_EUR,
+                        'store' => $this->fixtures::STORE_DE,
+                        'name' => $this->fixtures::TEST_CART_NAME,
                     ],
                 ],
             ]
         );
 
         // Assert
-        $I->assertResponse(HttpCode::UNPROCESSABLE_ENTITY);
+        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -167,15 +170,16 @@ class CartsRestApiCest
                     'type' => CartsRestApiConfig::RESOURCE_CARTS,
                     'attributes' => [
                         'priceMode' => CalculationPriceMode::PRICE_MODE_GROSS,
-                        'store' => $I::STORE_DE,
-                        'name' => $I::TEST_CART_NAME,
+                        'store' => $this->fixtures::STORE_DE,
+                        'name' => $this->fixtures::TEST_CART_NAME,
                     ],
                 ],
             ]
         );
 
         // Assert
-        $I->assertResponse(HttpCode::UNPROCESSABLE_ENTITY);
+        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -194,7 +198,8 @@ class CartsRestApiCest
         $I->sendGET(CartsRestApiConfig::RESOURCE_CARTS);
 
         // Assert
-        $I->assertResponse(HttpCode::OK);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseMatchesOpenApiSchema();
         $I->seeResponseDataContainsNonEmptyCollection();
         $I->seeResourceCollectionHasResourceWithId($this->fixtures->getQuoteTransfer()->getUuid());
         $I->canSeeResponseLinksContainsSelfLink($I->formatFullUrl(CartsRestApiConfig::RESOURCE_CARTS));
@@ -225,7 +230,8 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->assertResponse(HttpCode::OK);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseMatchesOpenApiSchema();
 
         $I->amSure(sprintf('Returned resource is of type %s', CartsRestApiConfig::RESOURCE_CARTS))
             ->whenI()
@@ -270,7 +276,8 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->assertResponse(HttpCode::NOT_FOUND);
+        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -294,7 +301,7 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->assertResponse(HttpCode::FORBIDDEN);
+        $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
     }
 
     /**
@@ -323,7 +330,8 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->assertResponse(HttpCode::OK);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseMatchesOpenApiSchema();
 
         $I->amSure('Returned resource has correct id')
             ->whenI()
@@ -388,8 +396,8 @@ class CartsRestApiCest
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_CARTS,
                     'attributes' => [
-                        'name' => $I::TEST_CART_NAME,
-                        'currency' => $I::CURRENCY_EUR,
+                        'name' => $this->fixtures::TEST_CART_NAME,
+                        'currency' => $this->fixtures::CURRENCY_EUR,
                         'priceMode' => CalculationPriceMode::PRICE_MODE_GROSS,
                     ],
                 ],
@@ -397,7 +405,8 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->assertResponse(HttpCode::OK);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseMatchesOpenApiSchema();
 
         $I->amSure('Returned resource has correct id')
             ->whenI()
@@ -448,8 +457,8 @@ class CartsRestApiCest
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_CARTS,
                     'attributes' => [
-                        'name' => $I::TEST_CART_NAME,
-                        'currency' => $I::CURRENCY_EUR,
+                        'name' => $this->fixtures::TEST_CART_NAME,
+                        'currency' => $this->fixtures::CURRENCY_EUR,
                         'priceMode' => CalculationPriceMode::PRICE_MODE_GROSS,
                     ],
                 ],
@@ -457,7 +466,8 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->assertResponse(HttpCode::UNPROCESSABLE_ENTITY);
+        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -481,8 +491,8 @@ class CartsRestApiCest
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_CARTS,
                     'attributes' => [
-                        'name' => $I::TEST_CART_NAME,
-                        'currency' => $I::CURRENCY_EUR,
+                        'name' => $this->fixtures::TEST_CART_NAME,
+                        'currency' => $this->fixtures::CURRENCY_EUR,
                         'priceMode' => CalculationPriceMode::PRICE_MODE_GROSS,
                     ],
                 ],
@@ -516,8 +526,8 @@ class CartsRestApiCest
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_CARTS,
                     'attributes' => [
-                        'name' => $I::TEST_CART_NAME,
-                        'currency' => $I::CURRENCY_EUR,
+                        'name' => $this->fixtures::TEST_CART_NAME,
+                        'currency' => $this->fixtures::CURRENCY_EUR,
                         'priceMode' => CalculationPriceMode::PRICE_MODE_GROSS,
                     ],
                 ],
@@ -525,7 +535,8 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->assertResponse(HttpCode::FORBIDDEN);
+        $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -563,7 +574,8 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->assertResponse(HttpCode::CREATED);
+        $I->seeResponseCodeIs(HttpCode::CREATED);
+        $I->seeResponseMatchesOpenApiSchema();
 
         $I->amSure('Returned resource has correct id')
             ->whenI()
@@ -585,7 +597,7 @@ class CartsRestApiCest
                 '{resourceCarts}/{cartUuid}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $I->findResourceIdFromResponseByJsonPath(),
+                    'cartUuid' => $I->grabDataFromResponseByJsonPath('$.data')[0]['id'],
                 ]
             )
         );
@@ -622,7 +634,8 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->assertResponse(HttpCode::FORBIDDEN);
+        $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -658,7 +671,8 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->assertResponse(HttpCode::UNPROCESSABLE_ENTITY);
+        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -694,7 +708,8 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->assertResponse(HttpCode::UNPROCESSABLE_ENTITY);
+        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -724,21 +739,22 @@ class CartsRestApiCest
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
                     'attributes' => [
-                        'quantity' => $I::QUANTITY_FOR_ITEM_UPDATE,
+                        'quantity' => $this->fixtures::QUANTITY_FOR_ITEM_UPDATE,
                     ],
                 ],
             ]
         );
 
         // Assert
-        $I->assertResponse(HttpCode::OK);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseMatchesOpenApiSchema();
 
         $I->amSure(sprintf('Returned resource is of type %s', CartsRestApiConfig::RESOURCE_CARTS))
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType(CartsRestApiConfig::RESOURCE_CARTS);
 
         $I->seeCartItemQuantityEqualsToQuantityInRequest(
-            $I::QUANTITY_FOR_ITEM_UPDATE,
+            $this->fixtures::QUANTITY_FOR_ITEM_UPDATE,
             CartsRestApiConfig::RESOURCE_CART_ITEMS,
             $this->fixtures->getProductConcreteTransfer1()->getSku()
         );
@@ -770,14 +786,15 @@ class CartsRestApiCest
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
                     'attributes' => [
-                        'quantity' => $I::QUANTITY_FOR_ITEM_UPDATE,
+                        'quantity' => $this->fixtures::QUANTITY_FOR_ITEM_UPDATE,
                     ],
                 ],
             ]
         );
 
         // Assert
-        $I->assertResponse(HttpCode::BAD_REQUEST);
+        $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -804,14 +821,15 @@ class CartsRestApiCest
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
                     'attributes' => [
-                        'quantity' => $I::QUANTITY_FOR_ITEM_UPDATE,
+                        'quantity' => $this->fixtures::QUANTITY_FOR_ITEM_UPDATE,
                     ],
                 ],
             ]
         );
 
         // Assert
-        $I->assertResponse(HttpCode::FORBIDDEN);
+        $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -847,7 +865,8 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->assertResponse(HttpCode::UNPROCESSABLE_ENTITY);
+        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -876,7 +895,7 @@ class CartsRestApiCest
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
                     'attributes' => [
-                        'quantity' => $I::QUANTITY_FOR_ITEM_UPDATE,
+                        'quantity' => $this->fixtures::QUANTITY_FOR_ITEM_UPDATE,
                     ],
                 ],
             ]
@@ -941,7 +960,8 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->assertResponse(HttpCode::BAD_REQUEST);
+        $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -967,7 +987,8 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->assertResponse(HttpCode::FORBIDDEN);
+        $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -1074,7 +1095,8 @@ class CartsRestApiCest
         );
 
         // Assert
-        $I->assertResponse(HttpCode::FORBIDDEN);
+        $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
