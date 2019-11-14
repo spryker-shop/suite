@@ -41,11 +41,13 @@ use Spryker\Zed\ProductAlternativeDataImport\ProductAlternativeDataImportConfig;
 use Spryker\Zed\ProductDiscontinuedDataImport\ProductDiscontinuedDataImportConfig;
 use Spryker\Zed\ProductListDataImport\ProductListDataImportConfig;
 use Spryker\Zed\ProductMeasurementUnitDataImport\ProductMeasurementUnitDataImportConfig;
+use Spryker\Zed\ProductOfferStockDataImport\ProductOfferStockDataImportConfig;
 use Spryker\Zed\ProductPackagingUnitDataImport\ProductPackagingUnitDataImportConfig;
 use Spryker\Zed\ProductQuantityDataImport\ProductQuantityDataImportConfig;
 use Spryker\Zed\QuoteRequestDataImport\QuoteRequestDataImportConfig;
 use Spryker\Zed\SalesOrderThresholdDataImport\SalesOrderThresholdDataImportConfig;
 use Spryker\Zed\SharedCartDataImport\SharedCartDataImportConfig;
+use Spryker\Zed\ShipmentDataImport\ShipmentDataImportConfig;
 use Spryker\Zed\ShoppingListDataImport\ShoppingListDataImportConfig;
 
 /**
@@ -183,22 +185,6 @@ class DataImportConfig extends SprykerDataImportConfig
     public function getStockDataImporterConfiguration()
     {
         return $this->buildImporterConfiguration('stock.csv', static::IMPORT_TYPE_STOCK);
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
-     */
-    public function getShipmentDataImporterConfiguration()
-    {
-        return $this->buildImporterConfiguration('shipment.csv', static::IMPORT_TYPE_SHIPMENT);
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
-     */
-    public function getShipmentPriceDataImporterConfiguration()
-    {
-        return $this->buildImporterConfiguration('shipment_price.csv', static::IMPORT_TYPE_SHIPMENT_PRICE);
     }
 
     /**
@@ -502,8 +488,6 @@ class DataImportConfig extends SprykerDataImportConfig
             static::IMPORT_TYPE_DISCOUNT_STORE,
             static::IMPORT_TYPE_DISCOUNT_AMOUNT,
             static::IMPORT_TYPE_DISCOUNT_VOUCHER,
-            static::IMPORT_TYPE_SHIPMENT,
-            static::IMPORT_TYPE_SHIPMENT_PRICE,
             static::IMPORT_TYPE_STOCK,
             static::IMPORT_TYPE_TAX,
             static::IMPORT_TYPE_CURRENCY,
@@ -520,6 +504,7 @@ class DataImportConfig extends SprykerDataImportConfig
             MerchantProfileDataImportConfig::IMPORT_TYPE_MERCHANT_PROFILE_ADDRESS,
             MerchantProductOfferDataImportConfig::IMPORT_TYPE_MERCHANT_PRODUCT_OFFER,
             PriceProductOfferDataImportConfig::IMPORT_TYPE_PRICE_PRODUCT_OFFER,
+            ProductOfferStockDataImportConfig::IMPORT_TYPE_PRODUCT_OFFER_STOCK,
             MultiCartDataImportConfig::IMPORT_TYPE_MULTI_CART,
             SharedCartDataImportConfig::IMPORT_TYPE_SHARED_CART,
             CompanyRoleDataImportConfig::IMPORT_TYPE_COMPANY_USER_ROLE,
@@ -570,6 +555,9 @@ class DataImportConfig extends SprykerDataImportConfig
             ConfigurableBundleDataImportConfig::IMPORT_TYPE_CONFIGURABLE_BUNDLE_TEMPLATE_SLOT,
             CmsSlotDataImportConfig::IMPORT_TYPE_CMS_SLOT_TEMPLATE,
             CmsSlotDataImportConfig::IMPORT_TYPE_CMS_SLOT,
+            ShipmentDataImportConfig::IMPORT_TYPE_SHIPMENT,
+            ShipmentDataImportConfig::IMPORT_TYPE_SHIPMENT_PRICE,
+            ShipmentDataImportConfig::IMPORT_TYPE_SHIPMENT_METHOD_STORE,
         ];
     }
 }
