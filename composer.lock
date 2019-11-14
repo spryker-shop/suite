@@ -8684,28 +8684,30 @@
         },
         {
             "name": "spryker/assertion",
-            "version": "3.0.0",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/Assertion.git",
-                "reference": "bd42cb51f8dc432a859e0ae396d9bf6b1924bcdf"
+                "url": "https://github.com/spryker/assertion.git",
+                "reference": "d84d73055cdddd658879e31fa2bba49bbd363d56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/Assertion/zipball/bd42cb51f8dc432a859e0ae396d9bf6b1924bcdf",
-                "reference": "bd42cb51f8dc432a859e0ae396d9bf6b1924bcdf",
+                "url": "https://api.github.com/repos/spryker/assertion/zipball/d84d73055cdddd658879e31fa2bba49bbd363d56",
+                "reference": "d84d73055cdddd658879e31fa2bba49bbd363d56",
                 "shasum": ""
             },
             "require": {
-                "spryker/kernel": "^3.0.0"
+                "php": ">=7.2",
+                "spryker/kernel": "^3.30.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*",
+                "spryker/application": "*",
+                "spryker/propel": "*",
                 "spryker/silex": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
-                "spryker/silex": "If you want to use ServiceProvider you need to install spryker/silex."
+                "spryker/silex": "If you want to use ServiceProvider."
             },
             "type": "library",
             "extra": {
@@ -8714,16 +8716,16 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Spryker": "src/"
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
-            "description": "Assertion bundle",
-            "time": "2017-02-22T12:08:46+00:00"
+            "description": "Assertion module",
+            "time": "2019-11-14T07:54:49+00:00"
         },
         {
             "name": "spryker/auth",
