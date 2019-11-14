@@ -12,7 +12,6 @@ use Spryker\Zed\Api\Communication\Plugin\ApiServiceProviderPlugin;
 use Spryker\Zed\Api\Communication\Plugin\ServiceProvider\ApiRoutingServiceProvider;
 use Spryker\Zed\Application\ApplicationDependencyProvider as SprykerApplicationDependencyProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\SubRequestServiceProvider;
-use Spryker\Zed\Assertion\Communication\Plugin\ServiceProvider\AssertionServiceProvider;
 use Spryker\Zed\ErrorHandler\Communication\Plugin\Application\ErrorHandlerApplicationPlugin;
 use Spryker\Zed\EventDispatcher\Communication\Plugin\Application\EventDispatcherApplicationPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\ServiceProvider\FormTypeExtensionServiceProvider;
@@ -40,7 +39,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
         $coreProviders = parent::getServiceProviders($container);
 
         $providers = [
-            new AssertionServiceProvider(),
             new SubRequestServiceProvider(),
             new FormFactoryServiceProvider(),
             new GuiTwigExtensionServiceProvider(),
