@@ -7,17 +7,19 @@
 
 namespace Pyz\Yves\ShopCmsSlot;
 
+use Spryker\Shared\CmsSlotBlock\CmsSlotBlockConfig;
 use SprykerShop\Yves\CmsSlotBlockWidget\Plugin\CmsSlotBlockWidgetCmsSlotContentPlugin;
 use SprykerShop\Yves\ShopCmsSlot\ShopCmsSlotDependencyProvider as SprykerShopShopCmsSlotDependencyProvider;
-use SprykerShop\Yves\ShopCmsSlotExtension\Dependency\Plugin\CmsSlotContentPluginInterface;
 
 class ShopCmsSlotDependencyProvider extends SprykerShopShopCmsSlotDependencyProvider
 {
     /**
-     * @return \SprykerShop\Yves\ShopCmsSlotExtension\Dependency\Plugin\CmsSlotContentPluginInterface
+     * @return \SprykerShop\Yves\ShopCmsSlotExtension\Dependency\Plugin\CmsSlotContentPluginInterface[]
      */
-    protected function getCmsSlotContentPlugin(): CmsSlotContentPluginInterface
+    protected function getCmsSlotContentPlugins(): array
     {
-        return new CmsSlotBlockWidgetCmsSlotContentPlugin();
+        return [
+            CmsSlotBlockConfig::CMS_SLOT_CONTENT_PROVIDER_TYPE => new CmsSlotBlockWidgetCmsSlotContentPlugin(),
+        ];
     }
 }
