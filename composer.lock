@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fffb609f19fed35bc6b15635080cd365",
+    "content-hash": "bc03bc8df70c61fb2b49e6d87499b942",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5405,11 +5405,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-bugfix/phpunit8",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "128b80421ab7aa883ce32035db767a8adbe0095c"
+                "reference": "c344fe7f07d9bfb417ec12760e3ff357d5243906"
             },
             "require": {
                 "php": ">=7.1"
@@ -5995,7 +5995,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-11-14T07:54:49+00:00"
+            "time": "2019-11-14T10:07:18+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -9455,6 +9455,47 @@
                 "performance"
             ],
             "time": "2019-11-06T16:40:04+00:00"
+        },
+        {
+            "name": "dms/phpunit-arraysubset-asserts",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rdohms/phpunit-arraysubset-asserts.git",
+                "reference": "d618ece5d53e05be87eba835b079377eaafbd7c8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rdohms/phpunit-arraysubset-asserts/zipball/d618ece5d53e05be87eba835b079377eaafbd7c8",
+                "reference": "d618ece5d53e05be87eba835b079377eaafbd7c8",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2",
+                "phpunit/phpunit": "^8.0"
+            },
+            "require-dev": {
+                "dms/coding-standard": "^1.0",
+                "squizlabs/php_codesniffer": "^3.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DMS\\PHPUnitExtensions\\ArraySubset\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rafael Dohms",
+                    "email": "rdohms@gmail.com"
+                }
+            ],
+            "description": "This package provides Array Subset and related asserts once depracated in PHPunit 8",
+            "time": "2019-02-17T14:29:58+00:00"
         },
         {
             "name": "jakoch/phantomjs-installer",
