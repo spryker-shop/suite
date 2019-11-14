@@ -8,17 +8,17 @@
 namespace Pyz\Glue\OrdersRestApi;
 
 use Spryker\Glue\OrdersRestApi\OrdersRestApiDependencyProvider as SprykerOrdersRestApiDependencyProvider;
-use Spryker\Glue\ProductOptionsRestApi\Plugin\OrdersRestApi\ItemOrdersToRestOrderItemsAttributesOptionMapperPlugin;
+use Spryker\Glue\ProductOptionsRestApi\Plugin\OrdersRestApi\OrderRestOrderItemsAttributesOptionMapperPlugin;
 
 class OrdersRestApiDependencyProvider extends SprykerOrdersRestApiDependencyProvider
 {
     /**
-     * @return \Spryker\Glue\OrdersRestApiExtension\Dependency\Plugin\ItemToRestOrderItemsAttributesMapperPluginInterface[]
+     * @return \Spryker\Glue\OrdersRestApiExtension\Dependency\Plugin\RestOrderItemsAttributesMapperPluginInterface[]
      */
     protected function getItemToRestOrderItemsAttributesMapperPlugins(): array
     {
         return [
-            new ItemOrdersToRestOrderItemsAttributesOptionMapperPlugin(),
+            new OrderRestOrderItemsAttributesOptionMapperPlugin(),
         ];
     }
 }
