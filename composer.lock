@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b6a448196e18f2e8a0c166f7ce67d448",
+    "content-hash": "b70dc8727fda78fe0c0cba63b0cf764e",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1032,8 +1032,8 @@
             "authors": [
                 {
                     "name": "Filipe Dobreira",
-                    "homepage": "https://github.com/filp",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "homepage": "https://github.com/filp"
                 }
             ],
             "description": "php error handling for cool kids",
@@ -2093,8 +2093,8 @@
             "authors": [
                 {
                     "name": "Luís Otávio Cobucci Oblonczyk",
-                    "email": "lcobucci@gmail.com",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "lcobucci@gmail.com"
                 }
             ],
             "description": "A simple library to work with JSON Web Token and JSON Web Signature",
@@ -2430,49 +2430,6 @@
                 "server"
             ],
             "time": "2019-05-05T09:22:01+00:00"
-        },
-        {
-            "name": "mandrill/mandrill",
-            "version": "1.0.55",
-            "source": {
-                "type": "git",
-                "url": "https://bitbucket.org/mailchimp/mandrill-api-php.git",
-                "reference": "da3adc10042eafac2e53de141b358a52b8e53596"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://bitbucket.org/mailchimp/mandrill-api-php/get/da3adc10042eafac2e53de141b358a52b8e53596.zip",
-                "reference": "da3adc10042eafac2e53de141b358a52b8e53596",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Mandrill": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Mandrill Devs",
-                    "email": "community@mandrill.com",
-                    "homepage": "http://mandrill.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "API client library for the Mandrill email as a service platform",
-            "homepage": "https://bitbucket.org/mailchimp/mandrill-api-php",
-            "keywords": [
-                "api",
-                "email"
-            ],
-            "time": "2015-09-22T13:58:03+00:00"
         },
         {
             "name": "mikey179/vfsstream",
@@ -4147,7 +4104,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -5397,11 +5354,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/mp-716/master-tmp-merchant-release",
+            "version": "dev-feature/mp-1175/mp-1176/master-create-price-product-offer",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "267219ee81112627d66083c0d517ab340eab4b0a"
+                "reference": "799e54b3e1b6fc0cb41ac30bb007f7135dd4330e"
             },
             "require": {
                 "php": ">=7.1"
@@ -5477,11 +5434,13 @@
                 "spryker/cms-block-category-connector": "*",
                 "spryker/cms-block-category-storage": "*",
                 "spryker/cms-block-collector": "*",
+                "spryker/cms-block-extension": "*",
                 "spryker/cms-block-gui": "*",
                 "spryker/cms-block-gui-extension": "*",
                 "spryker/cms-block-product-connector": "*",
                 "spryker/cms-block-product-storage": "*",
                 "spryker/cms-block-storage": "*",
+                "spryker/cms-block-storage-extension": "*",
                 "spryker/cms-collector": "*",
                 "spryker/cms-content-widget": "*",
                 "spryker/cms-content-widget-cms-block-connector": "*",
@@ -5500,6 +5459,7 @@
                 "spryker/cms-slot-extension": "*",
                 "spryker/cms-slot-gui": "*",
                 "spryker/cms-slot-locale-connector": "*",
+                "spryker/cms-slot-storage": "*",
                 "spryker/cms-slot-store-connector": "*",
                 "spryker/cms-storage": "*",
                 "spryker/cms-user-connector": "*",
@@ -5655,7 +5615,6 @@
                 "spryker/log": "*",
                 "spryker/mail": "*",
                 "spryker/maintenance": "*",
-                "spryker/mandrill": "*",
                 "spryker/manual-order-entry": "*",
                 "spryker/manual-order-entry-gui": "*",
                 "spryker/manual-order-entry-gui-extension": "*",
@@ -5667,6 +5626,7 @@
                 "spryker/merchant-product-offer": "*",
                 "spryker/merchant-product-offer-data-import": "*",
                 "spryker/merchant-product-offer-storage": "*",
+                "spryker/merchant-product-offer-storage-extension": "*",
                 "spryker/merchant-profile": "*",
                 "spryker/merchant-profile-data-import": "*",
                 "spryker/merchant-profile-gui": "*",
@@ -5736,6 +5696,9 @@
                 "spryker/price-product-merchant-relationship-data-import": "*",
                 "spryker/price-product-merchant-relationship-gui": "*",
                 "spryker/price-product-merchant-relationship-storage": "*",
+                "spryker/price-product-offer": "*",
+                "spryker/price-product-offer-data-import": "*",
+                "spryker/price-product-offer-storage": "*",
                 "spryker/price-product-schedule": "*",
                 "spryker/price-product-schedule-data-import": "*",
                 "spryker/price-product-schedule-gui": "*",
@@ -5997,15 +5960,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-11-08T09:23:26+00:00"
+            "time": "2019-11-14T14:30:06+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/mp-716/master-tmp-merchant-release",
+            "version": "dev-feature/mp-1175/mp-1176/master-create-price-product-offer",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "f770b4f240e366baaa06e2955c9c1e97b480cb64"
+                "reference": "b839b3199919ff792d35ca4da638cfc4759e49ff"
             },
             "require": {
                 "php": ">=7.1"
@@ -6058,6 +6021,7 @@
                 "spryker-shop/heartbeat-page": "*",
                 "spryker-shop/home-page": "*",
                 "spryker-shop/language-switcher-widget": "*",
+                "spryker-shop/merchant-product-offer-widget": "*",
                 "spryker-shop/merchant-profile-page": "*",
                 "spryker-shop/money-widget": "*",
                 "spryker-shop/multi-cart-page": "*",
@@ -6140,7 +6104,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-11-05T13:23:09+00:00"
+            "time": "2019-11-14T14:28:20+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8939,8 +8903,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -8990,19 +8954,19 @@
             "authors": [
                 {
                     "name": "Fabien Potencier",
+                    "role": "Lead Developer",
                     "email": "fabien@symfony.com",
-                    "homepage": "http://fabien.potencier.org",
-                    "role": "Lead Developer"
+                    "homepage": "http://fabien.potencier.org"
                 },
                 {
                     "name": "Twig Team",
-                    "homepage": "https://twig.symfony.com/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://twig.symfony.com/contributors"
                 },
                 {
                     "name": "Armin Ronacher",
-                    "email": "armin.ronacher@active-4.com",
-                    "role": "Project Founder"
+                    "role": "Project Founder",
+                    "email": "armin.ronacher@active-4.com"
                 }
             ],
             "description": "Twig, the flexible, fast, and secure template language for PHP",
@@ -9401,9 +9365,9 @@
             "authors": [
                 {
                     "name": "Antonio J. García Lagar",
+                    "role": "developer",
                     "email": "aj@garcialagar.es",
-                    "homepage": "http://aj.garcialagar.es",
-                    "role": "developer"
+                    "homepage": "http://aj.garcialagar.es"
                 }
             ],
             "description": "Twig extension to set breakpoints",
@@ -9598,6 +9562,49 @@
                 "type"
             ],
             "time": "2019-03-25T16:59:23+00:00"
+        },
+        {
+            "name": "mandrill/mandrill",
+            "version": "1.0.55",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/mailchimp/mandrill-api-php.git",
+                "reference": "da3adc10042eafac2e53de141b358a52b8e53596"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/mailchimp/mandrill-api-php/get/da3adc10042eafac2e53de141b358a52b8e53596.zip",
+                "reference": "da3adc10042eafac2e53de141b358a52b8e53596",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Mandrill": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Mandrill Devs",
+                    "email": "community@mandrill.com",
+                    "homepage": "http://mandrill.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "API client library for the Mandrill email as a service platform",
+            "homepage": "https://bitbucket.org/mailchimp/mandrill-api-php",
+            "keywords": [
+                "api",
+                "email"
+            ],
+            "time": "2015-09-22T13:58:03+00:00"
         },
         {
             "name": "nette/bootstrap",
@@ -10683,84 +10690,6 @@
             "time": "2019-10-29T11:51:41+00:00"
         },
         {
-            "name": "spryker/cms-block-extension",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/cms-block-extension.git",
-                "reference": "2ae954789090bbe5b4aa8513c81da979dfa0c798"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-block-extension/zipball/2ae954789090bbe5b4aa8513c81da979dfa0c798",
-                "reference": "2ae954789090bbe5b4aa8513c81da979dfa0c798",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "CmsBlockExtension module",
-            "time": "2019-10-31T13:30:01+00:00"
-        },
-        {
-            "name": "spryker/cms-block-storage-extension",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/cms-block-storage-extension.git",
-                "reference": "78475e941f58a9063903d6d6cfe4b9e5b245aff2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-block-storage-extension/zipball/78475e941f58a9063903d6d6cfe4b9e5b245aff2",
-                "reference": "78475e941f58a9063903d6d6cfe4b9e5b245aff2",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "CmsBlockStorageExtension module",
-            "time": "2019-10-31T13:30:01+00:00"
-        },
-        {
             "name": "spryker/code-generator",
             "version": "dev-master",
             "source": {
@@ -11391,7 +11320,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.1",
+        "php": ">=7.2",
         "ext-bcmath": "*",
         "ext-curl": "*",
         "ext-gd": "*",
@@ -11407,6 +11336,6 @@
     },
     "platform-dev": [],
     "platform-overrides": {
-        "php": "7.1.11"
+        "php": "7.2.15"
     }
 }
