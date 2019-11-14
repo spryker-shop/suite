@@ -10,7 +10,6 @@ use Pyz\Shared\Scheduler\SchedulerConfig;
 use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Api\ApiConstants;
 use Spryker\Shared\Application\ApplicationConstants;
-use Spryker\Shared\Config\ConfigConstants;
 use Spryker\Shared\DocumentationGeneratorRestApi\DocumentationGeneratorRestApiConstants;
 use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebExceptionErrorRenderer;
@@ -38,6 +37,7 @@ use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use SprykerShop\Shared\CalculationPage\CalculationPageConstants;
 use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
 use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
+use SprykerShop\Shared\WebProfilerWidget\WebProfilerWidgetConstants;
 
 $CURRENT_STORE = Store::getInstance()->getStoreName();
 
@@ -48,14 +48,13 @@ $config[ApplicationConstants::ENABLE_APPLICATION_DEBUG]
     = $config[ShopApplicationConstants::ENABLE_APPLICATION_DEBUG]
     = true;
 
-$config[WebProfilerConstants::ENABLE_WEB_PROFILER]
-    = $config[ConfigConstants::ENABLE_WEB_PROFILER]
-    = true;
+$config[WebProfilerConstants::IS_WEB_PROFILER_ENABLED] = true;
+$config[WebProfilerWidgetConstants::IS_WEB_PROFILER_ENABLED] = true;
 
-$config[ApplicationConstants::YVES_SSL_ENABLED] = false;
-$config[ApplicationConstants::ZED_SSL_ENABLED] = false;
 $config[RouterConstants::YVES_IS_SSL_ENABLED] = false;
 $config[RouterConstants::ZED_IS_SSL_ENABLED] = false;
+$config[ApplicationConstants::ZED_SSL_ENABLED] = false;
+$config[ApplicationConstants::YVES_SSL_ENABLED] = false;
 
 // ---------- Propel
 $config[PropelConstants::PROPEL_DEBUG] = false;
@@ -101,6 +100,7 @@ $config[ZedNavigationConstants::ZED_NAVIGATION_CACHE_ENABLED] = true;
 // ---------- Error handling
 $config[ErrorHandlerConstants::DISPLAY_ERRORS] = true;
 $config[ErrorHandlerConstants::ERROR_RENDERER] = WebExceptionErrorRenderer::class;
+$config[ErrorHandlerConstants::IS_PRETTY_ERROR_HANDLER_ENABLED] = true;
 
 // ---------- ACL
 $config[AclConstants::ACL_USER_RULE_WHITELIST][] = [
@@ -109,9 +109,6 @@ $config[AclConstants::ACL_USER_RULE_WHITELIST][] = [
     'action' => '*',
     'type' => 'allow',
 ];
-
-// ---------- Auto-loader
-$config[KernelConstants::AUTO_LOADER_UNRESOLVABLE_CACHE_ENABLED] = false;
 
 // ---------- Logging
 $config[LogConstants::LOG_LEVEL] = Logger::INFO;
@@ -142,9 +139,6 @@ $config[CalculationPageConstants::ENABLE_CART_DEBUG] = true;
 
 // ---------- Error page
 $config[ErrorPageConstants::ENABLE_ERROR_404_STACK_TRACE] = true;
-
-// ----------- Application
-$config[ApplicationConstants::ENABLE_PRETTY_ERROR_HANDLER] = true;
 
 // ---------- Console
 $config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = true;
