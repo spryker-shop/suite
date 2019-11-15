@@ -2432,49 +2432,6 @@
             "time": "2019-05-05T09:22:01+00:00"
         },
         {
-            "name": "mandrill/mandrill",
-            "version": "1.0.55",
-            "source": {
-                "type": "git",
-                "url": "https://bitbucket.org/mailchimp/mandrill-api-php.git",
-                "reference": "da3adc10042eafac2e53de141b358a52b8e53596"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://bitbucket.org/mailchimp/mandrill-api-php/get/da3adc10042eafac2e53de141b358a52b8e53596.zip",
-                "reference": "da3adc10042eafac2e53de141b358a52b8e53596",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Mandrill": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Mandrill Devs",
-                    "email": "community@mandrill.com",
-                    "homepage": "http://mandrill.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "API client library for the Mandrill email as a service platform",
-            "homepage": "https://bitbucket.org/mailchimp/mandrill-api-php",
-            "keywords": [
-                "api",
-                "email"
-            ],
-            "time": "2015-09-22T13:58:03+00:00"
-        },
-        {
             "name": "mikey179/vfsstream",
             "version": "v1.6.8",
             "source": {
@@ -5144,58 +5101,6 @@
             "time": "2019-11-13T16:02:20+00:00"
         },
         {
-            "name": "spryker/cms-slot-storage",
-            "version": "0.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/cms-slot-storage.git",
-                "reference": "692acf0368a9027b6be4398bb17966035c5da660"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-slot-storage/zipball/692acf0368a9027b6be4398bb17966035c5da660",
-                "reference": "692acf0368a9027b6be4398bb17966035c5da660",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1",
-                "spryker/cms-slot": "^0.5.0",
-                "spryker/event-behavior": "^1.8.0",
-                "spryker/kernel": "^3.30.0",
-                "spryker/storage": "^3.0.0",
-                "spryker/synchronization": "^1.0.0",
-                "spryker/synchronization-behavior": "^1.0.0",
-                "spryker/synchronization-extension": "^1.1.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/event": "*",
-                "spryker/propel": "*",
-                "spryker/queue": "*",
-                "spryker/testify": "*"
-            },
-            "suggest": {
-                "spryker/event": "If you want to use Event plugins, minimum required version: 2.1.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "CmsSlotStorage module",
-            "time": "2019-11-04T12:08:47+00:00"
-        },
-        {
             "name": "spryker/event-behavior",
             "version": "dev-master",
             "source": {
@@ -5453,10 +5358,10 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "ec017d63f31c8fac7e2423e382446d0e7ea61b9f"
+                "reference": "00611c1b89a1f2cb8622b801557764573243cb76"
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=7.2"
             },
             "replace": {
                 "spryker/acl": "*",
@@ -5529,11 +5434,13 @@
                 "spryker/cms-block-category-connector": "*",
                 "spryker/cms-block-category-storage": "*",
                 "spryker/cms-block-collector": "*",
+                "spryker/cms-block-extension": "*",
                 "spryker/cms-block-gui": "*",
                 "spryker/cms-block-gui-extension": "*",
                 "spryker/cms-block-product-connector": "*",
                 "spryker/cms-block-product-storage": "*",
                 "spryker/cms-block-storage": "*",
+                "spryker/cms-block-storage-extension": "*",
                 "spryker/cms-collector": "*",
                 "spryker/cms-content-widget": "*",
                 "spryker/cms-content-widget-cms-block-connector": "*",
@@ -5552,6 +5459,7 @@
                 "spryker/cms-slot-extension": "*",
                 "spryker/cms-slot-gui": "*",
                 "spryker/cms-slot-locale-connector": "*",
+                "spryker/cms-slot-storage": "*",
                 "spryker/cms-slot-store-connector": "*",
                 "spryker/cms-storage": "*",
                 "spryker/cms-user-connector": "*",
@@ -5637,6 +5545,7 @@
                 "spryker/customer-access": "*",
                 "spryker/customer-access-gui": "*",
                 "spryker/customer-access-permission": "*",
+                "spryker/customer-access-rest-api": "*",
                 "spryker/customer-access-storage": "*",
                 "spryker/customer-api": "*",
                 "spryker/customer-catalog": "*",
@@ -5706,7 +5615,6 @@
                 "spryker/log": "*",
                 "spryker/mail": "*",
                 "spryker/maintenance": "*",
-                "spryker/mandrill": "*",
                 "spryker/manual-order-entry": "*",
                 "spryker/manual-order-entry-gui": "*",
                 "spryker/manual-order-entry-gui-extension": "*",
@@ -6036,7 +5944,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-11-15T08:07:32+00:00"
+            "time": "2019-11-15T08:34:13+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -9636,6 +9544,49 @@
                 "type"
             ],
             "time": "2019-03-25T16:59:23+00:00"
+        },
+        {
+            "name": "mandrill/mandrill",
+            "version": "1.0.55",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/mailchimp/mandrill-api-php.git",
+                "reference": "da3adc10042eafac2e53de141b358a52b8e53596"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/mailchimp/mandrill-api-php/get/da3adc10042eafac2e53de141b358a52b8e53596.zip",
+                "reference": "da3adc10042eafac2e53de141b358a52b8e53596",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Mandrill": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Mandrill Devs",
+                    "email": "community@mandrill.com",
+                    "homepage": "http://mandrill.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "API client library for the Mandrill email as a service platform",
+            "homepage": "https://bitbucket.org/mailchimp/mandrill-api-php",
+            "keywords": [
+                "api",
+                "email"
+            ],
+            "time": "2015-09-22T13:58:03+00:00"
         },
         {
             "name": "nette/bootstrap",
