@@ -31,7 +31,6 @@ use Spryker\Shared\Session\SessionConfig;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\SessionFile\SessionFileConstants;
 use Spryker\Shared\SessionRedis\SessionRedisConstants;
-use Spryker\Shared\StorageDatabase\StorageDatabaseConstants;
 use Spryker\Shared\WebProfiler\WebProfilerConstants;
 use Spryker\Shared\ZedNavigation\ZedNavigationConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
@@ -148,9 +147,3 @@ $config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = true;
 
 // ----------- Documentation generator
 $config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GENERATION] = true;
-
-// ---------- Database storage
-$config[StorageDatabaseConstants::DB_HOST] = '127.0.0.1';
-$config[StorageDatabaseConstants::DB_PORT] = 5432;
-$config[StorageDatabaseConstants::DB_USERNAME] = 'development';
-$config[StorageDatabaseConstants::DB_PASSWORD] = 'mate20mg';

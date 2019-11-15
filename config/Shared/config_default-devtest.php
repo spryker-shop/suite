@@ -28,6 +28,7 @@ use Spryker\Shared\SchedulerJenkins\SchedulerJenkinsConstants;
 use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\SessionRedis\SessionRedisConfig;
+use Spryker\Shared\StorageDatabase\StorageDatabaseConfig;
 use Spryker\Shared\StorageDatabase\StorageDatabaseConstants;
 use Spryker\Shared\StorageRedis\StorageRedisConstants;
 use Spryker\Shared\Testify\TestifyConstants;
@@ -116,5 +117,7 @@ $config[RouterConstants::YVES_IS_SSL_ENABLED] = false;
 $config[RouterConstants::ZED_IS_SSL_ENABLED] = false;
 
 // ---------- Database storage
+$config[StorageDatabaseConstants::DB_ENGINE] = StorageDatabaseConfig::DB_ENGINE_PGSQL;
 $config[StorageDatabaseConstants::DB_HOST] = '127.0.0.1';
 $config[StorageDatabaseConstants::DB_PORT] = 5432;
+$config[StorageDatabaseConstants::DB_DEBUG] = false;
