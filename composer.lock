@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "40e32a28ac555a0d05e236c00e536c0f",
+    "content-hash": "9c30b6814d5d6ed48b1896cbb72ef671",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5354,11 +5354,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/te-663/dev-pass-by-kv-storage",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "1df3c5ccaba48f1b53980bfa7758ce3e9587318f"
+                "reference": "8502089d01546960065554a63721e949125db27c"
             },
             "require": {
                 "php": ">=7.2"
@@ -5870,6 +5870,8 @@
                 "spryker/stock-gui": "*",
                 "spryker/stock-sales-connector": "*",
                 "spryker/storage": "*",
+                "spryker/storage-database": "*",
+                "spryker/storage-database-extension": "*",
                 "spryker/storage-extension": "*",
                 "spryker/storage-redis": "*",
                 "spryker/store": "*",
@@ -5944,7 +5946,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-11-14T15:17:58+00:00"
+            "time": "2019-11-15T11:22:43+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6090,20 +6092,20 @@
         },
         {
             "name": "spryker/synchronization-behavior",
-            "version": "dev-master",
+            "version": "dev-feature/te-663/dev-pass-by-kv-storage",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/synchronization-behavior.git",
-                "reference": "c2f21d3ceb50b926c3d9719d3b8959429984190a"
+                "reference": "b0ddf59de0c49db766e6be589f5185e969fa339f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/c2f21d3ceb50b926c3d9719d3b8959429984190a",
-                "reference": "c2f21d3ceb50b926c3d9719d3b8959429984190a",
+                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/b0ddf59de0c49db766e6be589f5185e969fa339f",
+                "reference": "b0ddf59de0c49db766e6be589f5185e969fa339f",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.1",
                 "spryker/kernel": "^3.30.0",
                 "spryker/propel-orm": "^1.6.0",
                 "spryker/queue": "^1.1.2",
@@ -6135,7 +6137,7 @@
                 "proprietary"
             ],
             "description": "SynchronizationBehavior module",
-            "time": "2019-11-13T15:57:56+00:00"
+            "time": "2019-11-11T11:41:08+00:00"
         },
         {
             "name": "spryker/uuid-behavior",
@@ -9804,20 +9806,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
-                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler"
+                    "homepage": "https://github.com/manuelpichler",
+                    "role": "Project Founder"
                 },
                 {
                     "name": "Marc Würth",
-                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84"
+                    "homepage": "https://github.com/ravage84",
+                    "role": "Project Maintainer"
                 },
                 {
                     "name": "Other contributors",
-                    "role": "Contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
+                    "role": "Contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -11214,6 +11216,12 @@
             "alias_normalized": "1.14.0.0",
             "version": "9999999-dev",
             "package": "spryker/event-behavior"
+        },
+        {
+            "alias": "1.4.0",
+            "alias_normalized": "1.4.0.0",
+            "version": "dev-feature/te-663/dev-pass-by-kv-storage",
+            "package": "spryker/synchronization-behavior"
         },
         {
             "alias": "1.1.0",
