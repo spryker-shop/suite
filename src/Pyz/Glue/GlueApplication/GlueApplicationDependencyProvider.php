@@ -14,11 +14,9 @@ use Spryker\Glue\AuthRestApi\Plugin\AccessTokensResourceRoutePlugin;
 use Spryker\Glue\AuthRestApi\Plugin\FormatAuthenticationErrorResponseHeadersPlugin;
 use Spryker\Glue\AuthRestApi\Plugin\RefreshTokensResourceRoutePlugin;
 use Spryker\Glue\AuthRestApi\Plugin\RestUserFinderByAccessTokenPlugin;
-use Spryker\Glue\CartCodesRestApi\CartCodesRestApiConfig;
 use Spryker\Glue\CartCodesRestApi\Plugin\GlueApplication\CartDiscountsResourceRoutePlugin;
 use Spryker\Glue\CartCodesRestApi\Plugin\GlueApplication\DiscountByCartResourceRelationshipPlugin;
 use Spryker\Glue\CartCodesRestApi\Plugin\GlueApplication\GuestCartDiscountsResourceRoutePlugin;
-use Spryker\Glue\CartCodesRestApi\Plugin\GlueApplication\PromotionItemByQuoteTransferResourceRelationshipPlugin;
 use Spryker\Glue\CartPermissionGroupsRestApi\Plugin\GlueApplication\CartPermissionGroupByQuoteResourceRelationshipPlugin;
 use Spryker\Glue\CartPermissionGroupsRestApi\Plugin\GlueApplication\CartPermissionGroupByShareDetailResourceRelationshipPlugin;
 use Spryker\Glue\CartPermissionGroupsRestApi\Plugin\GlueApplication\CartPermissionGroupsResourceRoutePlugin;
@@ -187,8 +185,8 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new SharedCartsResourceRoutePlugin(),
             new UrlResolverResourceRoutePlugin(),
             new CartDiscountsResourceRoutePlugin(),
-            new CustomerAccessResourceRoutePlugin(),
             new GuestCartDiscountsResourceRoutePlugin(),
+            new CustomerAccessResourceRoutePlugin(),
         ];
     }
 
