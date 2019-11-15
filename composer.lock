@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "40e32a28ac555a0d05e236c00e536c0f",
+    "content-hash": "2bc84d6bc87a44815c079338f25013c9",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -2925,7 +2925,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette NEON: encodes and decodes NEON file format.",
+            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -3717,8 +3717,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Library that provides collection, processing, and rendering functionality for PHP code coverage information.",
@@ -5354,11 +5354,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/ps-10211/dev-configurable-bundle-zed-gui",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "1df3c5ccaba48f1b53980bfa7758ce3e9587318f"
+                "reference": "f68055a0258d415f07670b735d844ff9e2d80a6c"
             },
             "require": {
                 "php": ">=7.2"
@@ -5516,6 +5516,8 @@
                 "spryker/configurable-bundle": "*",
                 "spryker/configurable-bundle-cart": "*",
                 "spryker/configurable-bundle-data-import": "*",
+                "spryker/configurable-bundle-gui": "*",
+                "spryker/configurable-bundle-gui-extension": "*",
                 "spryker/configurable-bundle-storage": "*",
                 "spryker/console": "*",
                 "spryker/container": "*",
@@ -5625,6 +5627,7 @@
                 "spryker/merchant-relationship-data-import": "*",
                 "spryker/merchant-relationship-extension": "*",
                 "spryker/merchant-relationship-gui": "*",
+                "spryker/merchant-relationship-gui-extension": "*",
                 "spryker/merchant-relationship-product-list": "*",
                 "spryker/merchant-relationship-product-list-data-import": "*",
                 "spryker/merchant-relationship-product-list-gui": "*",
@@ -5944,15 +5947,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-11-14T15:17:58+00:00"
+            "time": "2019-11-15T11:10:36+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/ps-10211/dev-configurable-bundle-zed-gui",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "ec613582e9ef872414337411cb74cc133339f2a4"
+                "reference": "496a6e11bbb6bd5657b06ccd917f9e065d8fa1d1"
             },
             "require": {
                 "php": ">=7.2"
@@ -6086,7 +6089,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-11-15T07:12:45+00:00"
+            "time": "2019-11-15T11:10:45+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -9761,7 +9764,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-13T13:21:38+00:00"
+            "time": "2017-12-12T17:28:44+00:00"
         },
         {
             "name": "phpmd/phpmd",
