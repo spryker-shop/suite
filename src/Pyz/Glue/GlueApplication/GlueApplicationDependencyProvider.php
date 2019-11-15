@@ -414,11 +414,11 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new DiscountByCartResourceRelationshipPlugin()
         );
         $resourceRelationshipCollection->addRelationship(
-            CartsRestApiConfig::RESOURCE_GUEST_CARTS,
+            CartsRestApiConfig::RESOURCE_CARTS,
             new PromotionItemByQuoteTransferResourceRelationshipPlugin()
         );
         $resourceRelationshipCollection->addRelationship(
-            CartsRestApiConfig::RESOURCE_CARTS,
+            CartsRestApiConfig::RESOURCE_GUEST_CARTS,
             new PromotionItemByQuoteTransferResourceRelationshipPlugin()
         );
         $resourceRelationshipCollection->addRelationship(
