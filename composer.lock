@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c295338a0389323950474d0a3203ce65",
+    "content-hash": "01b878a5a5e8f656ab5731596f23fda9",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5102,7 +5102,7 @@
         },
         {
             "name": "spryker/decimal-object",
-            "version": "0.1.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/decimal-object.git",
@@ -5402,11 +5402,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/cc-5412/master-pu-decimal",
+            "version": "dev-feature/cc-6194/master-warehouse-per-store",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "b96aeb3a06ac7d82b72fb96be9b037ccb89bfb3e"
+                "reference": "f9e48ca0ce5d0a1f1c9dc3479d38956937a58385"
             },
             "require": {
                 "php": ">=7.2"
@@ -5593,7 +5593,6 @@
                 "spryker/customer-access": "*",
                 "spryker/customer-access-gui": "*",
                 "spryker/customer-access-permission": "*",
-                "spryker/customer-access-rest-api": "*",
                 "spryker/customer-access-storage": "*",
                 "spryker/customer-api": "*",
                 "spryker/customer-catalog": "*",
@@ -5915,6 +5914,7 @@
                 "spryker/state-machine": "*",
                 "spryker/step-engine": "*",
                 "spryker/stock": "*",
+                "spryker/stock-extension": "*",
                 "spryker/stock-gui": "*",
                 "spryker/stock-sales-connector": "*",
                 "spryker/storage": "*",
@@ -5992,15 +5992,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-11-15T10:00:42+00:00"
+            "time": "2019-11-15T10:12:10+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/cc-5412/master-pu-decimal",
+            "version": "dev-feature/cc-6194/master-warehouse-per-store",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "81f168a7b465a153626be3754a2586f75ffb718d"
+                "reference": "b1ab87c5cd809bcae82b19e05389d5184eabed72"
             },
             "require": {
                 "php": ">=7.2"
@@ -6134,7 +6134,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-11-15T10:01:01+00:00"
+            "time": "2019-11-15T10:12:40+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -11258,9 +11258,9 @@
     ],
     "aliases": [
         {
-            "alias": "1.0",
-            "alias_normalized": "1.0.0.0",
-            "version": "0.1.0.0",
+            "alias": "0.1.0",
+            "alias_normalized": "0.1.0.0",
+            "version": "9999999-dev",
             "package": "spryker/decimal-object"
         },
         {
@@ -11292,6 +11292,7 @@
     "stability-flags": {
         "spryker/spryker": 20,
         "spryker/spryker-shop": 20,
+        "spryker/decimal-object": 20,
         "spryker-eco/loggly": 20,
         "spryker/rabbit-mq": 20,
         "spryker/install": 20,
