@@ -95,9 +95,9 @@ use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\CurrencyParameterVa
 use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\PriceModeParameterValidatorPlugin;
 use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\SetCurrencyBeforeActionPlugin;
 use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\SetPriceModeBeforeActionPlugin;
+use Spryker\Glue\ProductReviewsRestApi\Plugin\GlueApplication\AbstractProductReviewsResourceRoutePlugin;
 use Spryker\Glue\ProductReviewsRestApi\Plugin\GlueApplication\ProductReviewsRelationshipByProductAbstractSkuPlugin;
 use Spryker\Glue\ProductReviewsRestApi\Plugin\GlueApplication\ProductReviewsRelationshipByProductConcreteSkuPlugin;
-use Spryker\Glue\ProductReviewsRestApi\Plugin\GlueApplication\ProductReviewsResourceRoutePlugin;
 use Spryker\Glue\ProductsCategoriesResourceRelationship\Plugin\AbstractProductsCategoriesResourceRelationshipPlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\AbstractProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\ConcreteProductsResourceRoutePlugin;
@@ -185,7 +185,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new SharedCartsResourceRoutePlugin(),
             new UrlResolverResourceRoutePlugin(),
             new CustomerAccessResourceRoutePlugin(),
-            new ProductReviewsResourceRoutePlugin(),
+            new AbstractProductReviewsResourceRoutePlugin(),
         ];
     }
 
