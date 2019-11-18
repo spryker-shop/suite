@@ -44,7 +44,9 @@ class CheckoutDataRestApiCest
      */
     public function loadFixtures(CheckoutRestApiTester $I): void
     {
-        $this->fixtures = $I->loadFixtures(CheckoutDataRestApiFixtures::class);
+        /** @var \PyzTest\Glue\Checkout\RestApi\CheckoutDataRestApiFixtures $fixtures */
+        $fixtures = $I->loadFixtures(CheckoutDataRestApiFixtures::class);
+        $this->fixtures = $fixtures;
     }
 
     /**
@@ -150,8 +152,10 @@ class CheckoutDataRestApiCest
 
         //Assert
         $this->assertCheckoutDataRequest($I, HttpCode::OK);
-        $selectedShipmentMethods = $I
-            ->grabDataFromResponseByJsonPath('$.data.attributes.selectedShipmentMethods')[0];
+
+        $selectedShipmentMethods = $I->grabDataFromResponseByJsonPathSmartGet('$.data.attributes.selectedShipmentMethods');
+        $I->assertIsArray($selectedShipmentMethods, 'Selected methods were not returned');
+        $I->assertCount(1, $selectedShipmentMethods);
         $selectedShipmentMethod = $selectedShipmentMethods[0];
 
         $I->assertNotEmpty($selectedShipmentMethods);
