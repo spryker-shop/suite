@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f265295bb047f387533c7211cd57eafd",
+    "content-hash": "45c2f0fc8bc7ec69494aba37a38a7eeb",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -2926,7 +2926,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
+            "description": "? Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -5403,11 +5403,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/mp-716/master-tmp-merchant-release",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "63fa39940a8540a152dd4853fac7bb473035572d"
+                "reference": "fbb00801a501c67402180d84fd06438574d29047"
             },
             "require": {
                 "php": ">=7.2"
@@ -5669,7 +5669,16 @@
                 "spryker/manual-order-entry-gui-extension": "*",
                 "spryker/merchant": "*",
                 "spryker/merchant-data-import": "*",
+                "spryker/merchant-extension": "*",
                 "spryker/merchant-gui": "*",
+                "spryker/merchant-gui-extension": "*",
+                "spryker/merchant-product-offer": "*",
+                "spryker/merchant-product-offer-data-import": "*",
+                "spryker/merchant-product-offer-storage": "*",
+                "spryker/merchant-profile": "*",
+                "spryker/merchant-profile-data-import": "*",
+                "spryker/merchant-profile-gui": "*",
+                "spryker/merchant-profile-storage": "*",
                 "spryker/merchant-relationship": "*",
                 "spryker/merchant-relationship-data-import": "*",
                 "spryker/merchant-relationship-extension": "*",
@@ -5805,6 +5814,9 @@
                 "spryker/product-measurement-unit-storage": "*",
                 "spryker/product-merchant-connector": "*",
                 "spryker/product-new": "*",
+                "spryker/product-offer": "*",
+                "spryker/product-offer-stock": "*",
+                "spryker/product-offer-stock-data-import": "*",
                 "spryker/product-option": "*",
                 "spryker/product-option-cart-connector": "*",
                 "spryker/product-option-extension": "*",
@@ -5993,15 +6005,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-11-18T13:57:03+00:00"
+            "time": "2019-11-18T21:37:34+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/mp-716/master-tmp-merchant-release",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "1f20edd012a1929e486efc216d98814697f78725"
+                "reference": "abad8a582fdf0c3e688ff330b0f9aee9cdd1d535"
             },
             "require": {
                 "php": ">=7.2"
@@ -6054,6 +6066,7 @@
                 "spryker-shop/heartbeat-page": "*",
                 "spryker-shop/home-page": "*",
                 "spryker-shop/language-switcher-widget": "*",
+                "spryker-shop/merchant-profile-page": "*",
                 "spryker-shop/money-widget": "*",
                 "spryker-shop/multi-cart-page": "*",
                 "spryker-shop/multi-cart-widget": "*",
@@ -6135,7 +6148,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-11-15T13:21:20+00:00"
+            "time": "2019-11-18T21:38:31+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8934,8 +8947,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -9851,7 +9864,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-12T17:28:44+00:00"
+            "time": "2017-12-13T13:21:38+00:00"
         },
         {
             "name": "phpmd/phpmd",
@@ -9894,20 +9907,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
-                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler"
+                    "homepage": "https://github.com/manuelpichler",
+                    "role": "Project Founder"
                 },
                 {
                     "name": "Marc Würth",
-                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84"
+                    "homepage": "https://github.com/ravage84",
+                    "role": "Project Maintainer"
                 },
                 {
                     "name": "Other contributors",
-                    "role": "Contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
+                    "role": "Contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -11240,8 +11253,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
