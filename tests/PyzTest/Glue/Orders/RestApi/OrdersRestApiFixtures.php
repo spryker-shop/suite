@@ -19,7 +19,7 @@ use Generated\Shared\Transfer\ShipmentMethodTransfer;
 use Generated\Shared\Transfer\ShipmentTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
 use PyzTest\Glue\Orders\OrdersRestApiTester;
-use Spryker\Shared\Shipment\ShipmentConstants;
+use Spryker\Shared\Shipment\ShipmentConfig;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
@@ -196,7 +196,7 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
     protected function createShipmentExpenseTransfer(): ExpenseTransfer
     {
         $expenseTransfer = new ExpenseTransfer();
-        $expenseTransfer->setType(ShipmentConstants::SHIPMENT_EXPENSE_TYPE);
+        $expenseTransfer->setType(ShipmentConfig::SHIPMENT_EXPENSE_TYPE);
         $expenseTransfer->setName($this->shipmentMethodTransfer->getName());
         $expenseTransfer->setSumGrossPrice(random_int(1000, 10000));
         $expenseTransfer->setUnitGrossPrice(random_int(1000, 10000));
