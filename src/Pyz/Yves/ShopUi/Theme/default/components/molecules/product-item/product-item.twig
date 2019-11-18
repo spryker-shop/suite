@@ -7,17 +7,18 @@
 
 {% block body %}
     {% block imageContainer %}
-        <a href="{{ path(data.url) }}">
-            {% block image %}
-                {% include atom('thumbnail') with {
-                    class: 'js-product-color-group__image-' ~ data.idProductAbstract,
-                    attributes: {
-                        src: data.image,
-                        alt: data.name,
-                    },
-                } only %}
-            {% endblock %}
-        </a>
+        {#<a href="{{ path(data.url) }}">#}
+            {#{% block image %}#}
+                {#{% include atom('thumbnail') with {#}
+                    {#class: 'js-product-color-group__image-' ~ data.idProductAbstract,#}
+                    {#attributes: {#}
+                        {#src: data.image,#}
+                        {#alt: data.name,#}
+                    {#},#}
+                {#} only %}#}
+            {#{% endblock %}#}
+        {#</a>#}
+        {{ parent() }}
     {% endblock %}
 
     {% block labels %}
