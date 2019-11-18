@@ -19,5 +19,9 @@ elementClosestPolyfill(window);
 require('@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js');
 
 // add webcomponents polyfill
-require('@webcomponents/custom-elements/custom-elements.min');
+try {
+    require('@webcomponents/custom-elements/custom-elements.min');
+} catch(e) {
+    require('@webcomponents/webcomponentsjs/webcomponents-bundle');
+}
 /* tslint:enable */
