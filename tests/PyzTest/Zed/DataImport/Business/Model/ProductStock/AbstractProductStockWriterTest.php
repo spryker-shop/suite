@@ -174,6 +174,7 @@ abstract class AbstractProductStockWriterTest extends AbstractWriterTest
         return SpyStockQuery::create()
             ->limit(count(static::WAREHOUSES_QTY))
             ->select(SpyStockTableMap::COL_NAME)
+            ->orderByIdStock()
             ->find()
             ->toArray();
     }
