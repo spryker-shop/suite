@@ -76,6 +76,7 @@ use SprykerShop\Yves\ProductReviewWidget\Widget\ProductDetailPageReviewWidget;
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductRatingFilterWidget;
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductReviewDisplayWidget;
 use SprykerShop\Yves\ProductSearchWidget\Widget\ProductConcreteAddWidget;
+use SprykerShop\Yves\ProductSearchWidget\Widget\ProductConcreteSearchGridWidget;
 use SprykerShop\Yves\ProductSearchWidget\Widget\ProductConcreteSearchWidget;
 use SprykerShop\Yves\ProductWidget\Widget\CatalogPageProductWidget;
 use SprykerShop\Yves\ProductWidget\Widget\CmsProductGroupWidget;
@@ -200,6 +201,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ProceedToCheckoutButtonWidget::class,
             QuoteApprovalWidget::class,
             ProductConcreteSearchWidget::class,
+            ProductConcreteSearchGridWidget::class,
             AddItemsToShoppingListWidget::class,
             CategoryImageStorageWidget::class,
             AvailabilityNotificationSubscriptionWidget::class,
