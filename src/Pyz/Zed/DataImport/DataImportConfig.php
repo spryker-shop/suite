@@ -31,6 +31,7 @@ use Spryker\Zed\MerchantRelationshipDataImport\MerchantRelationshipDataImportCon
 use Spryker\Zed\MerchantRelationshipProductListDataImport\MerchantRelationshipProductListDataImportConfig;
 use Spryker\Zed\MerchantRelationshipSalesOrderThresholdDataImport\MerchantRelationshipSalesOrderThresholdDataImportConfig;
 use Spryker\Zed\MultiCartDataImport\MultiCartDataImportConfig;
+use Spryker\Zed\PaymentDataImport\PaymentDataImportConfig;
 use Spryker\Zed\PriceProductDataImport\PriceProductDataImportConfig;
 use Spryker\Zed\PriceProductMerchantRelationshipDataImport\PriceProductMerchantRelationshipDataImportConfig;
 use Spryker\Zed\PriceProductScheduleDataImport\PriceProductScheduleDataImportConfig;
@@ -549,6 +550,7 @@ class DataImportConfig extends SprykerDataImportConfig
             ShipmentDataImportConfig::IMPORT_TYPE_SHIPMENT,
             ShipmentDataImportConfig::IMPORT_TYPE_SHIPMENT_PRICE,
             ShipmentDataImportConfig::IMPORT_TYPE_SHIPMENT_METHOD_STORE,
+            PaymentDataImportConfig::IMPORT_TYPE_PAYMENT_METHOD,
         ];
     }
 }
