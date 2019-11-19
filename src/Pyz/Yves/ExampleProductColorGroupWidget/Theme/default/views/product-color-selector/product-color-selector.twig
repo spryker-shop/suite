@@ -22,8 +22,8 @@
         },
         attributes: attributes,
     } only %}
-        {% block body %}
-            <hr />{{parent()}}<hr />
+        {% block list %}
+            <hr>{{ parent() }}<hr>
         {% endblock %}
     {% endembed %}
 {% endblock %}

@@ -3,7 +3,7 @@ $color-selector-size: 1.5rem;
 .color-selector {
     cursor: default;
 
-    &__item {
+    &__color {
         @include helper-effect-transition(border-color opacity);
         display: inline-block;
         width: $color-selector-size;
