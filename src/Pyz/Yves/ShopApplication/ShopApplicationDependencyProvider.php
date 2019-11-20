@@ -60,6 +60,7 @@ use SprykerShop\Yves\ProductBundleWidget\Widget\ProductBundleItemCounterWidget;
 use SprykerShop\Yves\ProductBundleWidget\Widget\ProductBundleItemsMultiCartItemsListWidget;
 use SprykerShop\Yves\ProductBundleWidget\Widget\ProductBundleMultiCartItemsListWidget;
 use SprykerShop\Yves\ProductCategoryWidget\Widget\ProductBreadcrumbsWithCategoriesWidget;
+use SprykerShop\Yves\ProductColorGroupWidget\Widget\ProductColorGroupWidget;
 use SprykerShop\Yves\ProductDiscontinuedWidget\Widget\ProductDiscontinuedNoteWidget;
 use SprykerShop\Yves\ProductDiscontinuedWidget\Widget\ProductDiscontinuedWidget;
 use SprykerShop\Yves\ProductGroupWidget\Widget\ProductGroupWidget;
@@ -145,6 +146,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CustomerReorderItemCheckboxWidget::class,
             DisplayProductAbstractReviewWidget::class,
             ExampleProductColorSelectorWidget::class,
+            ProductColorGroupWidget::class,
             LanguageSwitcherWidget::class,
             ManageProductMeasurementUnitWidget::class,
             MiniCartWidget::class,
