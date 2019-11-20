@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.118.0",
+            "version": "3.119.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "e4600c22cb69c94d1aa65bf91af5c225f2a109fd"
+                "reference": "f9baeb6efe99318956d9924696bd2d51ae5ba338"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/e4600c22cb69c94d1aa65bf91af5c225f2a109fd",
-                "reference": "e4600c22cb69c94d1aa65bf91af5c225f2a109fd",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/f9baeb6efe99318956d9924696bd2d51ae5ba338",
+                "reference": "f9baeb6efe99318956d9924696bd2d51ae5ba338",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-11-18T19:13:19+00:00"
+            "time": "2019-11-19T19:47:09+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -397,6 +397,7 @@
             ],
             "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
             "homepage": "https://github.com/container-interop/container-interop",
+            "abandoned": "psr/container",
             "time": "2017-02-14T19:40:03+00:00"
         },
         {
@@ -3341,22 +3342,23 @@
         },
         {
             "name": "php-amqplib/php-amqplib",
-            "version": "v2.10.1",
+            "version": "v2.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-amqplib/php-amqplib.git",
-                "reference": "6e2b2501e021e994fb64429e5a78118f83b5c200"
+                "reference": "9ee212baced63442ca1ab029acde38e1144a00b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/6e2b2501e021e994fb64429e5a78118f83b5c200",
-                "reference": "6e2b2501e021e994fb64429e5a78118f83b5c200",
+                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/9ee212baced63442ca1ab029acde38e1144a00b8",
+                "reference": "9ee212baced63442ca1ab029acde38e1144a00b8",
                 "shasum": ""
             },
             "require": {
-                "ext-bcmath": "*",
+                "ext-mbstring": "*",
                 "ext-sockets": "*",
-                "php": ">=5.6"
+                "php": ">=5.6.3",
+                "phpseclib/phpseclib": "^2.0.0"
             },
             "replace": {
                 "videlalvaro/php-amqplib": "self.version"
@@ -3370,7 +3372,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.10-dev"
+                    "dev-master": "2.11-dev"
                 }
             },
             "autoload": {
@@ -3410,7 +3412,7 @@
                 "queue",
                 "rabbitmq"
             ],
-            "time": "2019-10-10T13:23:40+00:00"
+            "time": "2019-11-19T15:15:19+00:00"
         },
         {
             "name": "phpdocumentor/graphviz",
@@ -3606,6 +3608,98 @@
             "time": "2017-07-14T14:27:02+00:00"
         },
         {
+            "name": "phpseclib/phpseclib",
+            "version": "2.0.23",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpseclib/phpseclib.git",
+                "reference": "c78eb5058d5bb1a183133c36d4ba5b6675dfa099"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/c78eb5058d5bb1a183133c36d4ba5b6675dfa099",
+                "reference": "c78eb5058d5bb1a183133c36d4ba5b6675dfa099",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phing/phing": "~2.7",
+                "phpunit/phpunit": "^4.8.35|^5.7|^6.0",
+                "sami/sami": "~2.0",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "suggest": {
+                "ext-gmp": "Install the GMP (GNU Multiple Precision) extension in order to speed up arbitrary precision integer arithmetic operations.",
+                "ext-libsodium": "SSH2/SFTP can make use of some algorithms provided by the libsodium-php extension.",
+                "ext-mcrypt": "Install the Mcrypt extension in order to speed up a few other cryptographic operations.",
+                "ext-openssl": "Install the OpenSSL extension in order to speed up a wide variety of cryptographic operations."
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "phpseclib/bootstrap.php"
+                ],
+                "psr-4": {
+                    "phpseclib\\": "phpseclib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jim Wigginton",
+                    "email": "terrafrost@php.net",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Patrick Monnerat",
+                    "email": "pm@datasphere.ch",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Andreas Fischer",
+                    "email": "bantu@phpbb.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Hans-Jürgen Petrich",
+                    "email": "petrich@tronic-media.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Graham Campbell",
+                    "email": "graham@alt-three.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP Secure Communications Library - Pure-PHP implementations of RSA, AES, SSH2, SFTP, X.509 etc.",
+            "homepage": "http://phpseclib.sourceforge.net",
+            "keywords": [
+                "BigInteger",
+                "aes",
+                "asn.1",
+                "asn1",
+                "blowfish",
+                "crypto",
+                "cryptography",
+                "encryption",
+                "rsa",
+                "security",
+                "sftp",
+                "signature",
+                "signing",
+                "ssh",
+                "twofish",
+                "x.509",
+                "x509"
+            ],
+            "time": "2019-09-17T03:41:22+00:00"
+        },
+        {
             "name": "phpspec/prophecy",
             "version": "1.9.0",
             "source": {
@@ -3670,16 +3764,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "7.0.8",
+            "version": "7.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "aa0d179a13284c7420fc281fc32750e6cc7c9e2f"
+                "reference": "075572dd777ea8317196838f8b59b1de2a642abc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/aa0d179a13284c7420fc281fc32750e6cc7c9e2f",
-                "reference": "aa0d179a13284c7420fc281fc32750e6cc7c9e2f",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/075572dd777ea8317196838f8b59b1de2a642abc",
+                "reference": "075572dd777ea8317196838f8b59b1de2a642abc",
                 "shasum": ""
             },
             "require": {
@@ -3729,7 +3823,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-09-17T06:24:36+00:00"
+            "time": "2019-11-20T08:52:29+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -4656,16 +4750,16 @@
         },
         {
             "name": "sebastian/environment",
-            "version": "4.2.2",
+            "version": "4.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/environment.git",
-                "reference": "f2a2c8e1c97c11ace607a7a667d73d47c19fe404"
+                "reference": "464c90d7bdf5ad4e8a6aea15c091fec0603d4368"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/f2a2c8e1c97c11ace607a7a667d73d47c19fe404",
-                "reference": "f2a2c8e1c97c11ace607a7a667d73d47c19fe404",
+                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/464c90d7bdf5ad4e8a6aea15c091fec0603d4368",
+                "reference": "464c90d7bdf5ad4e8a6aea15c091fec0603d4368",
                 "shasum": ""
             },
             "require": {
@@ -4705,7 +4799,7 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2019-05-05T09:05:15+00:00"
+            "time": "2019-11-20T08:46:58+00:00"
         },
         {
             "name": "sebastian/exporter",
@@ -5263,12 +5357,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "811a9e3ac26ec86c0eaa18a2828bd658f729c16e"
+                "reference": "258c526f21d5c176fbc5310932a1cababdafe867"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/811a9e3ac26ec86c0eaa18a2828bd658f729c16e",
-                "reference": "811a9e3ac26ec86c0eaa18a2828bd658f729c16e",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/258c526f21d5c176fbc5310932a1cababdafe867",
+                "reference": "258c526f21d5c176fbc5310932a1cababdafe867",
                 "shasum": ""
             },
             "require": {
@@ -5319,7 +5413,7 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "time": "2019-11-13T11:31:34+00:00"
+            "time": "2019-11-19T14:36:18+00:00"
         },
         {
             "name": "spryker/silexphp",
@@ -5407,7 +5501,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "c32428740a38d6cd63e83765beb350dda52c0a6e"
+                "reference": "b899329fae92dddd7c5191b56a170fc9e74f4f68"
             },
             "require": {
                 "php": ">=7.2"
@@ -5993,7 +6087,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-11-19T13:28:12+00:00"
+            "time": "2019-11-20T13:26:22+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -10725,12 +10819,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-generator.git",
-                "reference": "2030ad5b5e33ac4f12249c762852ad57a6eb37e6"
+                "reference": "6b77c94be33a03aebff2010a6fadf8d85c51ba08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-generator/zipball/2030ad5b5e33ac4f12249c762852ad57a6eb37e6",
-                "reference": "2030ad5b5e33ac4f12249c762852ad57a6eb37e6",
+                "url": "https://api.github.com/repos/spryker/code-generator/zipball/6b77c94be33a03aebff2010a6fadf8d85c51ba08",
+                "reference": "6b77c94be33a03aebff2010a6fadf8d85c51ba08",
                 "shasum": ""
             },
             "require": {
@@ -10761,7 +10855,7 @@
                 "MIT"
             ],
             "description": "CodeGenerator module",
-            "time": "2019-10-16T09:56:04+00:00"
+            "time": "2019-11-19T14:02:50+00:00"
         },
         {
             "name": "spryker/code-sniffer",
@@ -10769,12 +10863,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "c9ae16b1c8fdfeb08ea6841fa924d66fbb335589"
+                "reference": "0d0bc25ab78a2f519939b1c16d4682307a712ede"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/c9ae16b1c8fdfeb08ea6841fa924d66fbb335589",
-                "reference": "c9ae16b1c8fdfeb08ea6841fa924d66fbb335589",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/0d0bc25ab78a2f519939b1c16d4682307a712ede",
+                "reference": "0d0bc25ab78a2f519939b1c16d4682307a712ede",
                 "shasum": ""
             },
             "require": {
@@ -10815,7 +10909,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-11-18T16:35:24+00:00"
+            "time": "2019-11-19T17:01:58+00:00"
         },
         {
             "name": "spryker/development-core",
