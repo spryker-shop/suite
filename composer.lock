@@ -9466,22 +9466,22 @@
         },
         {
             "name": "spryker/barcode",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/barcode.git",
-                "reference": "4a7cc3af5dd768b318eaf697dc988525d35dba31"
+                "reference": "8ec21d7b1a9d3b2012a8dccf1e9697cbfcc53833"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/barcode/zipball/4a7cc3af5dd768b318eaf697dc988525d35dba31",
-                "reference": "4a7cc3af5dd768b318eaf697dc988525d35dba31",
+                "url": "https://api.github.com/repos/spryker/barcode/zipball/8ec21d7b1a9d3b2012a8dccf1e9697cbfcc53833",
+                "reference": "8ec21d7b1a9d3b2012a8dccf1e9697cbfcc53833",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/barcode-extension": "^1.0.0",
-                "spryker/kernel": "^3.0.0"
+                "spryker/kernel": "^3.30.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -9495,7 +9495,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Service\\Barcode\\Helper\\": "tests/SprykerTest/Service/Barcode/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -9503,7 +9504,7 @@
                 "proprietary"
             ],
             "description": "Barcode module",
-            "time": "2018-05-16T13:57:10+00:00"
+            "time": "2019-11-20T13:00:42+00:00"
         },
         {
             "name": "spryker/barcode-extension",
