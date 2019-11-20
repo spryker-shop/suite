@@ -1,52 +1,36 @@
 import Component from 'ShopUi/models/component';
 
 export default class ColorSelector extends Component {
-    colors: HTMLAnchorElement[];
-    images: HTMLImageElement[];
-    wrap: HTMLElement | HTMLBodyElement;
+    protected triggers: HTMLElement[];
 
     protected readyCallback(): void {
-        this.wrap = <HTMLElement | HTMLBodyElement>this.closest(this.targetParentWrapper);
-        this.colors = <HTMLAnchorElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__color`));
-        this.images = <HTMLImageElement[]>Array.from(this.wrap.querySelectorAll(this.targetImageSelector));
+        this.triggers = <HTMLElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__item`));
+
         this.mapEvents();
     }
 
     protected mapEvents(): void {
-        this.colors.forEach((color: HTMLAnchorElement) => {
-            color.addEventListener('mouseenter', (event: Event) => this.onColorSelection(event));
+        this.triggers.forEach((element: HTMLElement) => {
+            element.addEventListener('mouseenter', (event: Event) => this.onTriggerSelection(event));
         });
     }
 
-    protected onColorSelection(event: Event): void {
+    protected onTriggerSelection(event: Event): void {
         event.preventDefault();
-        const color = <HTMLAnchorElement>event.currentTarget;
-        const imageSrc = color.getAttribute('data-image-src');
-        this.changeActiveColor(color);
-        this.changeImage(imageSrc);
+        const currentSelection = <HTMLElement>event.currentTarget;
+
+        this.setActiveItemSelection(currentSelection);
     }
 
-    changeActiveColor(newColor: HTMLAnchorElement): void {
-        this.colors.forEach((color: HTMLAnchorElement) => {
-            color.classList.remove(`${this.name}__color--active`);
+    protected setActiveItemSelection(currentSelection: HTMLElement): void {
+        this.triggers.forEach((element: HTMLElement) => {
+            element.classList.remove(this.activeItemClassName);
         });
 
-        newColor.classList.add(`${this.name}__color--active`);
+        currentSelection.classList.add(this.activeItemClassName);
     }
 
-    changeImage(newImageSrc: string): void {
-        this.images.forEach((image: HTMLImageElement) => {
-            if (image.src !== newImageSrc) {
-                image.src = newImageSrc;
-            }
-        });
-    }
-
-    get targetImageSelector(): string {
-        return this.getAttribute('target-image-selector');
-    }
-
-    get targetParentWrapper(): string {
-        return this.getAttribute('target-parent-wrapper-selector');
+    protected get activeItemClassName(): string {
+        return this.getAttribute('active-item-class-name');
     }
 }

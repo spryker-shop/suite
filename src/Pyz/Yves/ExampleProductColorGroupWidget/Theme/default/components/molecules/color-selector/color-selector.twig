@@ -9,6 +9,10 @@
     items: required,
 } %}
 
+{% define attributes = {
+    'active-item-class-name': config.name ~ '__item--active',
+} %}
+
 {% block component %}
     {% if data.items is not empty %}
         {{ parent() }}
@@ -20,13 +24,14 @@
         <div class="{{ config.name }}__list">
             {% for item in data.items %}
                 {% block item %}
-                    {% set activeClass = loop.first ? config.name ~ '__item--active' %}
-                    {% set backgroundColor = item.colorCode ? 'background-color: ' ~ item.colorCode ~ '; ' %}
+                    {% set activeClassName = loop.first ? attributes['active-item-class-name'] %}
+                    {% set backgroundColor = item.colorCode ? 'background-color: ' ~ item.colorCode ~ ';' %}
 
                     <button
-                            class="{{ config.name }}__item {{ activeClass }} {{ config.jsName }}__item"
+                            type="button"
+                            class="{{ config.name }}__item {{ activeClassName }} {{ config.jsName }}__item"
                             style="{{ backgroundColor }}"
-                            {% block listAttributes %}{% endblock %}>
+                            {% block listDataAttributes %}{% endblock %}>
                     </button>
                 {% endblock %}
             {% endfor %}

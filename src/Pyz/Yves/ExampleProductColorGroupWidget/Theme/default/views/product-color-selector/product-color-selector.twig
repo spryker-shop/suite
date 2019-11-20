@@ -16,13 +16,13 @@
     {% endif %}
 
     {% embed molecule('color-selector', 'ExampleProductColorGroupWidget') with {
-        class: 'text-center',
+        modifiers: ['center'],
         data: {
             items: data.items
         },
         attributes: attributes,
     } only %}
-        {% block list %}
+        {% block body %}
             <hr>{{ parent() }}<hr>
         {% endblock %}
     {% endembed %}

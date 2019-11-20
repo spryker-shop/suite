@@ -1,1 +1,1 @@
-Displays product's colors with functionality switching of the product image by hover on the color.
+Displays the product's colors with functionality switching of the active state by hover on the color.
