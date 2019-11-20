@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\SalesMerchantConnector\Persistence;
+namespace Orm\Zed\Shipment\Persistence;
 
-use Spryker\Zed\SalesMerchantConnector\Persistence\Propel\AbstractSpySalesOrderMerchant;
+use Spryker\Zed\Shipment\Persistence\Propel\AbstractSpyShipmentMethodStoreQuery as BaseSpyShipmentMethodStoreQuery;
 
 /**
- * Skeleton subclass for representing a row from the 'spy_sales_order_merchant' table.
+ * Skeleton subclass for performing query and update operations on the 'spy_shipment_method_store' table.
  *
  *
  *
@@ -18,6 +18,6 @@ use Spryker\Zed\SalesMerchantConnector\Persistence\Propel\AbstractSpySalesOrderM
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpySalesOrderMerchant extends AbstractSpySalesOrderMerchant
+class SpyShipmentMethodStoreQuery extends BaseSpyShipmentMethodStoreQuery
 {
 }
