@@ -3,10 +3,20 @@ declare const require: any;
 /* tslint:enable */
 
 // add polyfills
-import 'core-js/fn/promise';
-import 'core-js/fn/array';
-import 'core-js/fn/set';
-import 'core-js/fn/map';
+let coreJsPath = 'fn';
+/* tslint:disable: no-var-requires no-require-imports */
+try {
+    require('core-js/features');
+    coreJsPath = 'features';
+} catch (e) {
+    console.info('Please update the "core-js" version to >=3');
+}
+require(`core-js/${coreJsPath}/promise`);
+require(`core-js/${coreJsPath}/array`);
+require(`core-js/${coreJsPath}/set`);
+require(`core-js/${coreJsPath}/map`);
+/* tslint:enable */
+
 import 'classlist-polyfill';
 import 'string.prototype.startswith';
 import 'date-input-polyfill';
