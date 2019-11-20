@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f265295bb047f387533c7211cd57eafd",
+    "content-hash": "9b094b29eebca708ac19178a02df8be5",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5498,11 +5498,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/mp-1191/dev-merchant-opening-hours",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "f4140984461c87b39f90f1b2b1cc9344a42ebee6"
+                "reference": "1589d8dafd5755345a0c00fb3b40f216b4b8c0c0"
             },
             "require": {
                 "php": ">=7.2"
@@ -5767,6 +5767,9 @@
                 "spryker/merchant-extension": "*",
                 "spryker/merchant-gui": "*",
                 "spryker/merchant-gui-extension": "*",
+                "spryker/merchant-opening-hours": "*",
+                "spryker/merchant-opening-hours-data-import": "*",
+                "spryker/merchant-opening-hours-storage": "*",
                 "spryker/merchant-product-offer": "*",
                 "spryker/merchant-product-offer-data-import": "*",
                 "spryker/merchant-product-offer-storage": "*",
@@ -6071,6 +6074,7 @@
                 "spryker/vault": "*",
                 "spryker/web-profiler": "*",
                 "spryker/web-profiler-extension": "*",
+                "spryker/weekday-schedule": "*",
                 "spryker/wishlist": "*",
                 "spryker/wishlist-extension": "*",
                 "spryker/wishlists-rest-api": "*",
@@ -6100,15 +6104,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-11-20T16:50:56+00:00"
+            "time": "2019-11-20T17:14:10+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/mp-1191/dev-merchant-opening-hours",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "d4f6b732e10d4c7846563cf78c2679cf5caf9508"
+                "reference": "f4837cee8a2c21491650e28e98ec408351c2f3d8"
             },
             "require": {
                 "php": ">=7.2"
@@ -6243,7 +6247,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-11-20T16:50:58+00:00"
+            "time": "2019-11-20T17:12:30+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -9042,8 +9046,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -11348,8 +11352,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "lead",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "lead"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
