@@ -39,6 +39,7 @@ use SprykerShop\Yves\CustomerPage\Widget\CustomerNavigationWidget;
 use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderItemCheckboxWidget;
 use SprykerShop\Yves\DiscountPromotionWidget\Widget\CartDiscountPromotionProductListWidget;
 use SprykerShop\Yves\LanguageSwitcherWidget\Widget\LanguageSwitcherWidget;
+use SprykerShop\Yves\MerchantProductOfferWidget\Widget\MerchantProductOfferWidget;
 use SprykerShop\Yves\MultiCartWidget\Widget\AddToMultiCartWidget;
 use SprykerShop\Yves\MultiCartWidget\Widget\CartOperationsWidget;
 use SprykerShop\Yves\MultiCartWidget\Widget\MiniCartWidget;
@@ -213,6 +214,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CommentThreadWidget::class,
             QuoteConfiguredBundleWidget::class,
             OrderConfiguredBundleWidget::class,
+            MerchantProductOfferWidget::class,
         ];
     }
 
