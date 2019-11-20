@@ -29,7 +29,66 @@ class AuthRestApiTester extends ApiEndToEndTester
 {
     use _generated\AuthRestApiTesterActions;
 
-   /**
-    * Define custom actions here
-    */
+    private const ACCESS_TOKEN_JSON_PATH = '$.data.attributes.accessToken';
+    private const REFRESH_TOKEN_JSON_PATH = '$.data.attributes.refreshToken';
+
+    /**
+     * @return void
+     */
+    public function seeResponseHasAccessToken(): void
+    {
+        $this->assertNotEmpty($this->grabDataFromResponseByJsonPathSmart(self::ACCESS_TOKEN_JSON_PATH));
+    }
+
+    /**
+     * @return void
+     */
+    public function seeResponseHasRefreshToken(): void
+    {
+        $this->assertNotEmpty($this->grabDataFromResponseByJsonPathSmart(self::REFRESH_TOKEN_JSON_PATH));
+    }
+
+    /**
+     * @return void
+     */
+    public function dontSeeResponseHasAccessToken(): void
+    {
+        $this->assertFalse($this->grabDataFromResponseByJsonPathSmart(self::ACCESS_TOKEN_JSON_PATH));
+    }
+
+    /**
+     * @return void
+     */
+    public function dontSeeResponseHasRefreshToken(): void
+    {
+        $this->assertFalse($this->grabDataFromResponseByJsonPathSmart(self::REFRESH_TOKEN_JSON_PATH));
+    }
+
+    /**
+     * @param string $expectedIdCompanyUser
+     *
+     * @return void
+     */
+    public function seeIdCompanyUserEquals(string $expectedIdCompanyUser): void
+    {
+        $idCompanyUser = $this->grabIdCompanyUser();
+        $this->assertNotNull($idCompanyUser);
+        $this->assertEquals($idCompanyUser, $expectedIdCompanyUser);
+    }
+
+    /**
+     * @return void
+     */
+    public function seeIdCompanyUserIsNull(): void
+    {
+        $this->assertNull($this->grabIdCompanyUser());
+    }
+
+    /**
+     * @return string|null
+     */
+    private function grabIdCompanyUser(): ?string
+    {
+        return $this->grabDataFromResponseByJsonPathSmart('$.data.attributes.idCompanyUser');
+    }
 }

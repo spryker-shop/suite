@@ -60,9 +60,11 @@ class AccessTokensRestApiCest
         ]);
 
         //Assert
-        $this->assertResponse($I, HttpCode::CREATED);
-        $I->assertNotEmpty($I->grabDataFromResponseByJsonPath('$.data.attributes.accessToken'));
-        $I->seeSingleResourceHasSelfLink($I->formatFullUrl(AuthRestApiConfig::RESOURCE_ACCESS_TOKENS));
+        $I->seeResponseCodeIs(HttpCode::CREATED);
+
+        $I->seeResponseHasAccessToken();
+        $I->seeResponseHasRefreshToken();
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -86,7 +88,10 @@ class AccessTokensRestApiCest
         ]);
 
         //Assert
-        $this->assertResponse($I, HttpCode::UNAUTHORIZED);
+        $I->seeResponseCodeIs(HttpCode::UNAUTHORIZED);
+        $I->dontSeeResponseHasAccessToken();
+        $I->dontSeeResponseHasRefreshToken();
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -110,7 +115,10 @@ class AccessTokensRestApiCest
         ]);
 
         //Assert
-        $this->assertResponse($I, HttpCode::UNAUTHORIZED);
+        $I->seeResponseCodeIs(HttpCode::UNAUTHORIZED);
+        $I->dontSeeResponseHasAccessToken();
+        $I->dontSeeResponseHasRefreshToken();
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -134,7 +142,11 @@ class AccessTokensRestApiCest
         ]);
 
         //Assert
-        $this->assertResponse($I, HttpCode::UNPROCESSABLE_ENTITY);
+
+        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
+        $I->dontSeeResponseHasAccessToken();
+        $I->dontSeeResponseHasRefreshToken();
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -158,7 +170,10 @@ class AccessTokensRestApiCest
         ]);
 
         //Assert
-        $this->assertResponse($I, HttpCode::UNPROCESSABLE_ENTITY);
+        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
+        $I->dontSeeResponseHasAccessToken();
+        $I->dontSeeResponseHasRefreshToken();
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -180,7 +195,10 @@ class AccessTokensRestApiCest
         ]);
 
         //Assert
-        $this->assertResponse($I, HttpCode::BAD_REQUEST);
+        $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
+        $I->dontSeeResponseHasAccessToken();
+        $I->dontSeeResponseHasRefreshToken();
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -204,19 +222,9 @@ class AccessTokensRestApiCest
         ]);
 
         //Assert
-        $this->assertResponse($I, HttpCode::BAD_REQUEST);
-    }
-
-    /**
-     * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
-     * @param int $responseCode
-     *
-     * @return void
-     */
-    protected function assertResponse(AuthRestApiTester $I, int $responseCode): void
-    {
-        $I->seeResponseCodeIs($responseCode);
-        $I->seeResponseIsJson();
+        $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
+        $I->dontSeeResponseHasAccessToken();
+        $I->dontSeeResponseHasRefreshToken();
         $I->seeResponseMatchesOpenApiSchema();
     }
 }

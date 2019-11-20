@@ -218,7 +218,7 @@ class CompanyUserAuthAccessTokensRestApiCest
             ],
         ]);
 
-        $secondCompanyUserAccessToken = current($I->grabDataFromResponseByJsonPath('$.data.attributes.accessToken'));
+        $secondCompanyUserAccessToken = $I->grabDataFromResponseByJsonPathSmart('$.data.attributes.accessToken');
 
         //Assert
         $this->assertResponse($I, HttpCode::CREATED);

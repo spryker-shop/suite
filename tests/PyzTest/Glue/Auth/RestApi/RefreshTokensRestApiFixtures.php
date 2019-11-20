@@ -51,7 +51,7 @@ class RefreshTokensRestApiFixtures implements FixturesBuilderInterface, Fixtures
     {
         $customerTransfer = $this->createCustomerTransfer($I);
 
-        return $I->haveAuth($customerTransfer);
+        return $I->haveAuthorizationToGlue($customerTransfer);
     }
 
     /**

@@ -60,9 +60,13 @@ class AccessTokensForCompanyUserRestApiCest
         ]);
 
         //Assert
-        $this->assertResponse($I, HttpCode::CREATED);
-        $I->assertNull(current($I->grabDataFromResponseByJsonPath('$.data.attributes.idCompanyUser')));
-        $I->seeSingleResourceHasSelfLink($I->formatFullUrl(AuthRestApiConfig::RESOURCE_ACCESS_TOKENS));
+        $I->seeResponseCodeIs(HttpCode::CREATED);
+
+        $I->seeIdCompanyUserIsNull();
+        $I->seeResponseHasRefreshToken();
+        $I->seeResponseHasAccessToken();
+
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -86,13 +90,13 @@ class AccessTokensForCompanyUserRestApiCest
         ]);
 
         //Assert
-        $idCompanyUser = current($I->grabDataFromResponseByJsonPath('$.data.attributes.idCompanyUser'));
+        $I->seeResponseCodeIs(HttpCode::CREATED);
 
-        $this->assertResponse($I, HttpCode::CREATED);
+        $I->seeIdCompanyUserEquals($this->fixtures->getCompanyUserTransfer()->getUuid());
+        $I->seeResponseHasRefreshToken();
+        $I->seeResponseHasAccessToken();
 
-        $I->assertNotNull($idCompanyUser);
-        $I->assertEquals($idCompanyUser, $this->fixtures->getCompanyUserTransfer()->getUuid());
-        $I->seeSingleResourceHasSelfLink($I->formatFullUrl(AuthRestApiConfig::RESOURCE_ACCESS_TOKENS));
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -116,10 +120,13 @@ class AccessTokensForCompanyUserRestApiCest
         ]);
 
         //Assert
-        $this->assertResponse($I, HttpCode::CREATED);
+        $I->seeResponseCodeIs(HttpCode::CREATED);
 
-        $I->assertNull(current($I->grabDataFromResponseByJsonPath('$.data.attributes.idCompanyUser')));
-        $I->seeSingleResourceHasSelfLink($I->formatFullUrl(AuthRestApiConfig::RESOURCE_ACCESS_TOKENS));
+        $I->seeIdCompanyUserIsNull();
+        $I->seeResponseHasRefreshToken();
+        $I->seeResponseHasAccessToken();
+
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -143,25 +150,12 @@ class AccessTokensForCompanyUserRestApiCest
         ]);
 
         //Assert
-        $idCompanyUser = current($I->grabDataFromResponseByJsonPath('$.data.attributes.idCompanyUser'));
+        $I->seeResponseCodeIs(HttpCode::CREATED);
 
-        $this->assertResponse($I, HttpCode::CREATED);
+        $I->seeIdCompanyUserEquals($this->fixtures->getDefaultCompanyUserTransfer()->getUuid());
+        $I->seeResponseHasRefreshToken();
+        $I->seeResponseHasAccessToken();
 
-        $I->assertNotNull($idCompanyUser);
-        $I->assertEquals($idCompanyUser, $this->fixtures->getDefaultCompanyUserTransfer()->getUuid());
-        $I->seeSingleResourceHasSelfLink($I->formatFullUrl(AuthRestApiConfig::RESOURCE_ACCESS_TOKENS));
-    }
-
-    /**
-     * @param \PyzTest\Glue\Auth\AuthRestApiTester $I
-     * @param int $responseCode
-     *
-     * @return void
-     */
-    protected function assertResponse(AuthRestApiTester $I, int $responseCode): void
-    {
-        $I->seeResponseCodeIs($responseCode);
-        $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
     }
 }
