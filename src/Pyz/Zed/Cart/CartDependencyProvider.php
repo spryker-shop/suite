@@ -74,7 +74,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return \Spryker\Zed\Cart\Dependency\ItemExpanderPluginInterface[]
+     * @return \Spryker\Zed\CartExtension\Dependency\Plugin\ItemExpanderPluginInterface[]
      */
     protected function getExpanderPlugins(Container $container)
     {

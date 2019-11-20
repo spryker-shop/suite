@@ -396,6 +396,7 @@
             ],
             "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
             "homepage": "https://github.com/container-interop/container-interop",
+            "abandoned": "psr/container",
             "time": "2017-02-14T19:40:03+00:00"
         },
         {
@@ -5144,84 +5145,6 @@
             "time": "2019-10-21T09:49:34+00:00"
         },
         {
-            "name": "spryker/cms-block-extension",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/cms-block-extension.git",
-                "reference": "2ae954789090bbe5b4aa8513c81da979dfa0c798"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-block-extension/zipball/2ae954789090bbe5b4aa8513c81da979dfa0c798",
-                "reference": "2ae954789090bbe5b4aa8513c81da979dfa0c798",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "CmsBlockExtension module",
-            "time": "2019-10-31T13:30:01+00:00"
-        },
-        {
-            "name": "spryker/cms-block-storage-extension",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/cms-block-storage-extension.git",
-                "reference": "78475e941f58a9063903d6d6cfe4b9e5b245aff2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-block-storage-extension/zipball/78475e941f58a9063903d6d6cfe4b9e5b245aff2",
-                "reference": "78475e941f58a9063903d6d6cfe4b9e5b245aff2",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "CmsBlockStorageExtension module",
-            "time": "2019-10-31T13:30:01+00:00"
-        },
-        {
             "name": "spryker/event-behavior",
             "version": "dev-master",
             "source": {
@@ -5479,7 +5402,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "2816b0cee91c5e62caa57f44e7dc38260de54abc"
+                "reference": "c8d9f8d961c723e97621887b9a8bd0f2bb07b1b0"
             },
             "require": {
                 "php": ">=7.1"
@@ -6068,7 +5991,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-11-19T07:39:43+00:00"
+            "time": "2019-11-20T11:20:02+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6076,7 +5999,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "e9dbdde91dbbdffa5fdf1f7778f057759a2a723c"
+                "reference": "fff46a669829fa523f4f765831a269211a141402"
             },
             "require": {
                 "php": ">=7.1"
@@ -6211,7 +6134,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-11-18T13:49:09+00:00"
+            "time": "2019-11-19T14:51:59+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -10752,6 +10675,84 @@
                 "standards"
             ],
             "time": "2019-10-29T11:51:41+00:00"
+        },
+        {
+            "name": "spryker/cms-block-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-block-extension.git",
+                "reference": "2ae954789090bbe5b4aa8513c81da979dfa0c798"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-block-extension/zipball/2ae954789090bbe5b4aa8513c81da979dfa0c798",
+                "reference": "2ae954789090bbe5b4aa8513c81da979dfa0c798",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsBlockExtension module",
+            "time": "2019-10-31T13:30:01+00:00"
+        },
+        {
+            "name": "spryker/cms-block-storage-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-block-storage-extension.git",
+                "reference": "78475e941f58a9063903d6d6cfe4b9e5b245aff2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-block-storage-extension/zipball/78475e941f58a9063903d6d6cfe4b9e5b245aff2",
+                "reference": "78475e941f58a9063903d6d6cfe4b9e5b245aff2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsBlockStorageExtension module",
+            "time": "2019-10-31T13:30:01+00:00"
         },
         {
             "name": "spryker/code-generator",
