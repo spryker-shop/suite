@@ -7,6 +7,7 @@
 
 {% define data = {
     items: required,
+    selectionTag: 'button',
 } %}
 
 {% define attributes = {
@@ -27,12 +28,11 @@
                     {% set activeClassName = loop.first ? attributes['active-item-class-name'] %}
                     {% set backgroundColor = item.colorCode ? 'background-color: ' ~ item.colorCode ~ ';' %}
 
-                    <button
-                            type="button"
+                    <{{ data.selectionTag }}
                             class="{{ config.name }}__item {{ activeClassName }} {{ config.jsName }}__item"
                             style="{{ backgroundColor }}"
                             {% block listDataAttributes %}{% endblock %}>
-                    </button>
+                    </{{ data.selectionTag }}>
                 {% endblock %}
             {% endfor %}
         </div>
