@@ -41,6 +41,7 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
     public const KEY_FK_PRODUCT_ABSTRACT = 'fk_product_abstract';
     public const KEY_SORT_ORDER = 'sort_order';
     public const KEY_PRODUCT_IMAGE_KEY = 'product_image_key';
+    public const KEY_PRODUCT_IMAGE_SET_KEY = 'product_image_set_key';
     public const IMAGE_TO_IMAGE_SET_RELATION_ORDER = 0;
     public const DATA_PRODUCT_IMAGE_SET_TRANSFER = 'DATA_PRODUCT_IMAGE_SET_TRANSFER';
     public const DATA_PRODUCT_IMAGE_TRANSFER = 'DATA_PRODUCT_IMAGE_TRANSFER';
@@ -67,6 +68,7 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
     {
         $imageSetEntityTransfer = new SpyProductImageSetEntityTransfer();
         $imageSetEntityTransfer->setName($dataSet[static::KEY_IMAGE_SET_NAME]);
+        $imageSetEntityTransfer->setProductImageSetKey($dataSet[static::KEY_PRODUCT_IMAGE_SET_KEY]);
 
         if (!empty($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT])) {
             $imageSetEntityTransfer->setFkProductAbstract($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT]);
@@ -76,6 +78,10 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
         if (!empty($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT])) {
             $imageSetEntityTransfer->setFkProduct($dataSet[static::KEY_IMAGE_SET_FK_PRODUCT]);
             $imageSetEntityTransfer->setFkProductAbstract(null);
+        }
+
+        if (!empty($dataSet[static::KEY_PRODUCT_IMAGE_SET_KEY])) {
+            $imageSetEntityTransfer->setProductImageSetKey($dataSet[static::KEY_PRODUCT_IMAGE_SET_KEY]);
         }
 
         if (isset($dataSet[static::KEY_IMAGE_SET_FK_LOCALE])) {

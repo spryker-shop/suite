@@ -9,4 +9,12 @@
         </index>
     </table>
 
+    <table name="spy_product_image_set" idMethod="native">
+        <column name="product_image_set_key" type="VARCHAR" size="32" required="false"/>
+
+        <index>
+            <index-column name="product_image_set_key"/>
+        </index>
+    </table>
+
 </database>
