@@ -1,0 +1,11 @@
+{% extends view('summary', '@SprykerShop:CheckoutPage') %}
+
+{% block payment %}
+    {{ parent() }}
+
+    {% include molecule('payment-card-information', 'CheckoutPage') with {
+        data: {
+            payment: data.transfer.payment,
+        },
+    } only %}
+{% endblock %}
