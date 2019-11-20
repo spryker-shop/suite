@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dc41d8dddc8a40d627cb4d4c8bc78912",
+    "content-hash": "7a47644fbb647e7bc4600512724ee1c8",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -690,8 +690,8 @@
             "authors": [
                 {
                     "name": "Filipe Dobreira",
-                    "role": "Developer",
-                    "homepage": "https://github.com/filp"
+                    "homepage": "https://github.com/filp",
+                    "role": "Developer"
                 }
             ],
             "description": "php error handling for cool kids",
@@ -2150,7 +2150,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -5060,6 +5060,92 @@
             "time": "2019-05-24T11:01:07+00:00"
         },
         {
+            "name": "spryker-shop/merchant-product-offer-widget",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/merchant-product-offer-widget.git",
+                "reference": "eae3c785de874f17b017228338e83157b27502f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/merchant-product-offer-widget/zipball/eae3c785de874f17b017228338e83157b27502f3",
+                "reference": "eae3c785de874f17b017228338e83157b27502f3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.33.0",
+                "spryker/merchant-product-offer-storage": "^0.1.0",
+                "spryker/merchant-profile-storage": "^0.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantProductOfferWidget module",
+            "time": "2019-11-19T17:31:43+00:00"
+        },
+        {
+            "name": "spryker-shop/merchant-profile-page",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/merchant-profile-page.git",
+                "reference": "83e1a69ffcfc926a481870a44e05fc48ec6c7c2d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/merchant-profile-page/zipball/83e1a69ffcfc926a481870a44e05fc48ec6c7c2d",
+                "reference": "83e1a69ffcfc926a481870a44e05fc48ec6c7c2d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/shop-application": "^1.0.0",
+                "spryker-shop/storage-router-extension": "^1.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/merchant-profile-storage": "^0.1.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantProfilePage module",
+            "time": "2019-11-19T17:31:43+00:00"
+        },
+        {
             "name": "spryker-shop/money-widget",
             "version": "1.2.1",
             "source": {
@@ -5775,20 +5861,20 @@
         },
         {
             "name": "spryker-shop/product-detail-page",
-            "version": "3.1.0",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/product-detail-page.git",
-                "reference": "10808ad2a167d2896cf0fe4716a5f286f3bce1ae"
+                "reference": "bb1f14b776ee0f48d4823ea2ed61e55bf54492ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/product-detail-page/zipball/10808ad2a167d2896cf0fe4716a5f286f3bce1ae",
-                "reference": "10808ad2a167d2896cf0fe4716a5f286f3bce1ae",
+                "url": "https://api.github.com/repos/spryker-shop/product-detail-page/zipball/bb1f14b776ee0f48d4823ea2ed61e55bf54492ea",
+                "reference": "bb1f14b776ee0f48d4823ea2ed61e55bf54492ea",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker-shop/shop-application": "^1.0.0",
                 "spryker-shop/shop-router-extension": "^1.0.0",
                 "spryker-shop/shop-ui": "^1.27.0",
@@ -5828,7 +5914,7 @@
                 "proprietary"
             ],
             "description": "ProductDetailPage module",
-            "time": "2019-09-26T05:02:16+00:00"
+            "time": "2019-11-14T10:53:02+00:00"
         },
         {
             "name": "spryker-shop/product-discontinued-widget",
@@ -6173,20 +6259,20 @@
         },
         {
             "name": "spryker-shop/product-packaging-unit-widget",
-            "version": "0.4.5",
+            "version": "0.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/product-packaging-unit-widget.git",
-                "reference": "dc5dc3c77b383274ca8f4b9534914d10f38b3586"
+                "reference": "f859e705c5ffc0f97a66b6f8d5f681c1979e5af9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/product-packaging-unit-widget/zipball/dc5dc3c77b383274ca8f4b9534914d10f38b3586",
-                "reference": "dc5dc3c77b383274ca8f4b9534914d10f38b3586",
+                "url": "https://api.github.com/repos/spryker-shop/product-packaging-unit-widget/zipball/f859e705c5ffc0f97a66b6f8d5f681c1979e5af9",
+                "reference": "f859e705c5ffc0f97a66b6f8d5f681c1979e5af9",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker-shop/quick-order-page-extension": "^1.0.0",
                 "spryker-shop/shop-ui": "^1.13.0",
                 "spryker/kernel": "^3.30.0",
@@ -6227,7 +6313,7 @@
                 "proprietary"
             ],
             "description": "ProductPackagingUnitWidget module",
-            "time": "2019-10-14T10:22:33+00:00"
+            "time": "2019-11-14T10:53:02+00:00"
         },
         {
             "name": "spryker-shop/product-relation-widget",
@@ -20370,21 +20456,23 @@
         },
         {
             "name": "spryker/merchant",
-            "version": "1.1.2",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant.git",
-                "reference": "9bc6bbd830e7f11fbd7438e8d65e6893792fa607"
+                "reference": "7a783103959cb012d91ff0aa3fcf8e2f4abc8033"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant/zipball/9bc6bbd830e7f11fbd7438e8d65e6893792fa607",
-                "reference": "9bc6bbd830e7f11fbd7438e8d65e6893792fa607",
+                "url": "https://api.github.com/repos/spryker/merchant/zipball/7a783103959cb012d91ff0aa3fcf8e2f4abc8033",
+                "reference": "7a783103959cb012d91ff0aa3fcf8e2f4abc8033",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
-                "spryker/kernel": "^3.30.0",
+                "php": ">=7.2",
+                "spryker/kernel": "^3.33.0",
+                "spryker/merchant-extension": "^1.0.0",
+                "spryker/propel-orm": "^1.0.0",
                 "spryker/util-text": "^1.0.0"
             },
             "require-dev": {
@@ -20409,27 +20497,27 @@
                 "proprietary"
             ],
             "description": "Merchant module",
-            "time": "2019-08-26T15:14:58+00:00"
+            "time": "2019-11-18T17:11:14+00:00"
         },
         {
             "name": "spryker/merchant-data-import",
-            "version": "0.1.3",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-data-import.git",
-                "reference": "9937c714a116ff5bbc3bab3046240a69f90be9d8"
+                "reference": "48423b4ab29c8715207617e7e6a894d3657d3a84"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-data-import/zipball/9937c714a116ff5bbc3bab3046240a69f90be9d8",
-                "reference": "9937c714a116ff5bbc3bab3046240a69f90be9d8",
+                "url": "https://api.github.com/repos/spryker/merchant-data-import/zipball/48423b4ab29c8715207617e7e6a894d3657d3a84",
+                "reference": "48423b4ab29c8715207617e7e6a894d3657d3a84",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/data-import": "^1.3.0",
-                "spryker/kernel": "^3.0.0",
-                "spryker/merchant": "^1.0.0"
+                "spryker/kernel": "^3.30.0",
+                "spryker/merchant": "^2.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -20453,27 +20541,67 @@
                 "MIT"
             ],
             "description": "MerchantDataImport module",
-            "time": "2018-10-02T07:35:34+00:00"
+            "time": "2019-11-18T18:04:39+00:00"
         },
         {
-            "name": "spryker/merchant-gui",
-            "version": "1.2.0",
+            "name": "spryker/merchant-extension",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/merchant-gui.git",
-                "reference": "237e487f81b90a958dcaf62c5a7aa080c7e13cf5"
+                "url": "https://github.com/spryker/merchant-extension.git",
+                "reference": "941af2a0e7cdd54af684449e3acbea5b1297b79f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-gui/zipball/237e487f81b90a958dcaf62c5a7aa080c7e13cf5",
-                "reference": "237e487f81b90a958dcaf62c5a7aa080c7e13cf5",
+                "url": "https://api.github.com/repos/spryker/merchant-extension/zipball/941af2a0e7cdd54af684449e3acbea5b1297b79f",
+                "reference": "941af2a0e7cdd54af684449e3acbea5b1297b79f",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantExtension module",
+            "time": "2019-11-05T13:22:08+00:00"
+        },
+        {
+            "name": "spryker/merchant-gui",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-gui.git",
+                "reference": "5c7b75a1e9256e8a59a45a527fa6fd76231e3106"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-gui/zipball/5c7b75a1e9256e8a59a45a527fa6fd76231e3106",
+                "reference": "5c7b75a1e9256e8a59a45a527fa6fd76231e3106",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
                 "spryker/gui": "^3.0.0",
-                "spryker/kernel": "^3.0.0",
-                "spryker/merchant": "^1.1.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/merchant": "^2.0.0",
+                "spryker/merchant-gui-extension": "^1.0.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/util-text": "^1.1.0"
             },
@@ -20497,28 +20625,427 @@
                 "proprietary"
             ],
             "description": "MerchantGui module",
-            "time": "2019-01-21T15:36:52+00:00"
+            "time": "2019-11-18T13:17:23+00:00"
         },
         {
-            "name": "spryker/merchant-relationship",
-            "version": "1.6.2",
+            "name": "spryker/merchant-gui-extension",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/merchant-relationship.git",
-                "reference": "ea184745cab5dedbba92c3f38a71659d1d6a8d9a"
+                "url": "https://github.com/spryker/merchant-gui-extension.git",
+                "reference": "1bc3ed871055fd5a8bb50c0fe97b63632c3b3758"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-relationship/zipball/ea184745cab5dedbba92c3f38a71659d1d6a8d9a",
-                "reference": "ea184745cab5dedbba92c3f38a71659d1d6a8d9a",
+                "url": "https://api.github.com/repos/spryker/merchant-gui-extension/zipball/1bc3ed871055fd5a8bb50c0fe97b63632c3b3758",
+                "reference": "1bc3ed871055fd5a8bb50c0fe97b63632c3b3758",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/gui": "*",
+                "spryker/symfony": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/gui": "Required to use gui in plugins.",
+                "spryker/symfony": "Required to use form in plugins."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantGuiExtension module",
+            "time": "2019-11-05T13:22:08+00:00"
+        },
+        {
+            "name": "spryker/merchant-product-offer",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-product-offer.git",
+                "reference": "fde492e759f565cf4dff69589dac2e8f89cc4b9a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-product-offer/zipball/fde492e759f565cf4dff69589dac2e8f89cc4b9a",
+                "reference": "fde492e759f565cf4dff69589dac2e8f89cc4b9a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
+                "spryker/merchant": "^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantProductOffer module",
+            "time": "2019-11-19T17:35:43+00:00"
+        },
+        {
+            "name": "spryker/merchant-product-offer-data-import",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-product-offer-data-import.git",
+                "reference": "29362f37f41af26c0916b7eff0e3cb9bedac82d9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-product-offer-data-import/zipball/29362f37f41af26c0916b7eff0e3cb9bedac82d9",
+                "reference": "29362f37f41af26c0916b7eff0e3cb9bedac82d9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/data-import": "^1.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/merchant": "^2.0.0",
+                "spryker/merchant-product-offer": "^0.1.0",
+                "spryker/product": "^6.0.0",
+                "spryker/product-offer": "^0.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\MerchantProductOfferDataImport\\Helper\\": "tests/SprykerTest/Zed/MerchantProductOfferDataImport/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "MerchantProductOfferDataImport module",
+            "time": "2019-11-20T09:39:28+00:00"
+        },
+        {
+            "name": "spryker/merchant-product-offer-storage",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-product-offer-storage.git",
+                "reference": "ef523ff5e24ad4230a73029df7c7cdac63dd6ec4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-product-offer-storage/zipball/ef523ff5e24ad4230a73029df7c7cdac63dd6ec4",
+                "reference": "ef523ff5e24ad4230a73029df7c7cdac63dd6ec4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/event-behavior": "^1.14.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/product-offer": "^0.1.0",
+                "spryker/storage": "^3.4.0",
+                "spryker/synchronization": "^1.0.0",
+                "spryker/synchronization-behavior": "^1.0.0",
+                "spryker/synchronization-extension": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/event": "*",
+                "spryker/merchant": "*",
+                "spryker/merchant-product-offer": "*",
+                "spryker/propel": "*",
+                "spryker/propel-orm": "*",
+                "spryker/queue": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/event": "Required for using the Listeners",
+                "spryker/merchant-product-offer": "Required for using the Listeners",
+                "spryker/propel-orm": "Required for using the synchronization data plugins"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantProductOfferStorage module",
+            "time": "2019-11-19T17:35:43+00:00"
+        },
+        {
+            "name": "spryker/merchant-profile",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-profile.git",
+                "reference": "4efbbc03360066d677abf93e35c918e837b4bf36"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-profile/zipball/4efbbc03360066d677abf93e35c918e837b4bf36",
+                "reference": "4efbbc03360066d677abf93e35c918e837b4bf36",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/country": "^3.0.0",
+                "spryker/event": "^2.0.0",
+                "spryker/glossary": "^3.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/locale": "^3.0.0",
+                "spryker/merchant": "^2.0.0",
+                "spryker/merchant-extension": "^1.0.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/url": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\MerchantProfile\\Helper\\": "tests/SprykerTest/Zed/MerchantProfile/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantProfile module",
+            "time": "2019-11-19T17:35:43+00:00"
+        },
+        {
+            "name": "spryker/merchant-profile-data-import",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-profile-data-import.git",
+                "reference": "a5313820b95652ce5b39a69e316e35c4246fbde1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-profile-data-import/zipball/a5313820b95652ce5b39a69e316e35c4246fbde1",
+                "reference": "a5313820b95652ce5b39a69e316e35c4246fbde1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/country": "^3.0.0",
+                "spryker/data-import": "^1.3.0",
+                "spryker/glossary": "^3.3.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/merchant": "^2.0.0",
+                "spryker/merchant-profile": "^0.1.0",
+                "spryker/url": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/merchant-data-import": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\MerchantProfileDataImport\\Helper\\": "tests/SprykerTest/Zed/MerchantProfileDataImport/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "MerchantProfileDataImport module",
+            "time": "2019-11-15T05:06:08+00:00"
+        },
+        {
+            "name": "spryker/merchant-profile-gui",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-profile-gui.git",
+                "reference": "71221b2f4ebd20ca8b2d715c695df8c1f00f83b4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-profile-gui/zipball/71221b2f4ebd20ca8b2d715c695df8c1f00f83b4",
+                "reference": "71221b2f4ebd20ca8b2d715c695df8c1f00f83b4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/country": "^3.0.0",
+                "spryker/glossary": "^3.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/locale": "^3.0.0",
+                "spryker/merchant-gui-extension": "^1.0.0",
+                "spryker/merchant-profile": "^0.1.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/twig": "^3.0.0",
+                "spryker/url": "^3.0.0",
+                "spryker/util-text": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/gui": "*",
+                "spryker/merchant": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/gui": "Required to use util text in plugins.",
+                "spryker/merchant": "Required to use merchant in plugins."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantProfileGui module",
+            "time": "2019-11-19T17:35:43+00:00"
+        },
+        {
+            "name": "spryker/merchant-profile-storage",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-profile-storage.git",
+                "reference": "73bbf41d3ddc6b555ceff5af403fb1df84ac6ec9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-profile-storage/zipball/73bbf41d3ddc6b555ceff5af403fb1df84ac6ec9",
+                "reference": "73bbf41d3ddc6b555ceff5af403fb1df84ac6ec9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/event-behavior": "^1.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/merchant-profile": "^0.1.0",
+                "spryker/storage": "^3.4.0",
+                "spryker/synchronization": "^1.0.0",
+                "spryker/synchronization-behavior": "^1.0.0",
+                "spryker/synchronization-extension": "^1.0.0",
+                "spryker/util-encoding": "^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/event": "*",
+                "spryker/merchant": "*",
+                "spryker/propel": "*",
+                "spryker/queue": "*",
+                "spryker/testify": "*",
+                "spryker/url-storage": "*"
+            },
+            "suggest": {
+                "spryker/event": "To use event behavior.",
+                "spryker/url-storage": "To use shop route plugin."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantProfileStorage module",
+            "time": "2019-11-19T17:35:43+00:00"
+        },
+        {
+            "name": "spryker/merchant-relationship",
+            "version": "1.6.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-relationship.git",
+                "reference": "9eb16d950177ddd81fa9abfd0a1bfda3fb23fa08"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-relationship/zipball/9eb16d950177ddd81fa9abfd0a1bfda3fb23fa08",
+                "reference": "9eb16d950177ddd81fa9abfd0a1bfda3fb23fa08",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
                 "spryker/company-business-unit": "^1.0.0 || ^2.0.0",
                 "spryker/company-user-extension": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
-                "spryker/merchant": "^1.1.0",
+                "spryker/merchant": "^1.1.0 || ^2.0.0",
                 "spryker/merchant-relationship-extension": "^1.0.0",
                 "spryker/propel-orm": "^1.0.0"
             },
@@ -20545,28 +21072,28 @@
                 "proprietary"
             ],
             "description": "MerchantRelationship module",
-            "time": "2019-08-19T08:25:45+00:00"
+            "time": "2019-11-18T21:37:34+00:00"
         },
         {
             "name": "spryker/merchant-relationship-data-import",
-            "version": "0.1.5",
+            "version": "0.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-relationship-data-import.git",
-                "reference": "8d3c89a4221e45e73019cb9fb6eaf85dfb14672c"
+                "reference": "41914f7918e2db2bf9afdce52aff43b63ceed536"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-relationship-data-import/zipball/8d3c89a4221e45e73019cb9fb6eaf85dfb14672c",
-                "reference": "8d3c89a4221e45e73019cb9fb6eaf85dfb14672c",
+                "url": "https://api.github.com/repos/spryker/merchant-relationship-data-import/zipball/41914f7918e2db2bf9afdce52aff43b63ceed536",
+                "reference": "41914f7918e2db2bf9afdce52aff43b63ceed536",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/company-business-unit": "^1.0.0 || ^2.0.0",
                 "spryker/data-import": "^1.3.0",
-                "spryker/kernel": "^3.0.0",
-                "spryker/merchant": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/merchant": "^1.0.0 || ^2.0.0",
                 "spryker/merchant-relationship": "^1.0.0"
             },
             "require-dev": {
@@ -20592,7 +21119,7 @@
                 "MIT"
             ],
             "description": "MerchantRelationshipDataImport module",
-            "time": "2018-10-02T07:35:34+00:00"
+            "time": "2019-11-15T10:41:12+00:00"
         },
         {
             "name": "spryker/merchant-relationship-extension",
@@ -20635,25 +21162,25 @@
         },
         {
             "name": "spryker/merchant-relationship-gui",
-            "version": "1.2.3",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-relationship-gui.git",
-                "reference": "2a506b39b46b9d87d514e9f6536f2b6a03f34b9d"
+                "reference": "1884e7c6333c65ea754384af3ae8c40287f0529f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-relationship-gui/zipball/2a506b39b46b9d87d514e9f6536f2b6a03f34b9d",
-                "reference": "2a506b39b46b9d87d514e9f6536f2b6a03f34b9d",
+                "url": "https://api.github.com/repos/spryker/merchant-relationship-gui/zipball/1884e7c6333c65ea754384af3ae8c40287f0529f",
+                "reference": "1884e7c6333c65ea754384af3ae8c40287f0529f",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/company": "^1.0.0",
                 "spryker/company-business-unit": "^1.0.0 || ^2.0.0",
                 "spryker/gui": "^3.13.0",
                 "spryker/kernel": "^3.30.0",
-                "spryker/merchant": "^1.1.0",
+                "spryker/merchant": "^1.1.0 || ^2.0.0",
                 "spryker/merchant-relationship": "^1.6.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/symfony": "^3.0.0",
@@ -20679,7 +21206,7 @@
                 "proprietary"
             ],
             "description": "MerchantRelationshipGui module",
-            "time": "2019-10-22T08:42:46+00:00"
+            "time": "2019-11-18T13:42:20+00:00"
         },
         {
             "name": "spryker/merchant-relationship-product-list",
@@ -20933,27 +21460,27 @@
         },
         {
             "name": "spryker/merchant-relationship-sales-order-threshold-gui",
-            "version": "1.4.3",
+            "version": "1.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-relationship-sales-order-threshold-gui.git",
-                "reference": "1f5ad35a056c566dcde0f572a76276c041e006cf"
+                "reference": "c205ec19960fca2782ad663eb47672ebffd26c23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-relationship-sales-order-threshold-gui/zipball/1f5ad35a056c566dcde0f572a76276c041e006cf",
-                "reference": "1f5ad35a056c566dcde0f572a76276c041e006cf",
+                "url": "https://api.github.com/repos/spryker/merchant-relationship-sales-order-threshold-gui/zipball/c205ec19960fca2782ad663eb47672ebffd26c23",
+                "reference": "c205ec19960fca2782ad663eb47672ebffd26c23",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/company": "^1.0.0",
                 "spryker/company-business-unit": "^1.0.0 || ^2.0.0",
                 "spryker/currency": "^3.1.0",
                 "spryker/gui": "^3.1.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^3.0.0",
-                "spryker/merchant": "^1.0.0",
+                "spryker/merchant": "^1.0.0 || ^2.0.0",
                 "spryker/merchant-relationship": "^1.0.0",
                 "spryker/merchant-relationship-sales-order-threshold": "^1.0.0",
                 "spryker/merchant-relationship-sales-order-threshold-gui-extension": "^1.1.0",
@@ -20983,7 +21510,7 @@
                 "proprietary"
             ],
             "description": "MerchantRelationshipSalesOrderThresholdGui module",
-            "time": "2019-10-22T08:42:46+00:00"
+            "time": "2019-11-18T21:37:34+00:00"
         },
         {
             "name": "spryker/merchant-relationship-sales-order-threshold-gui-extension",
@@ -21025,6 +21552,51 @@
             ],
             "description": "MerchantRelationshipSalesOrderThresholdGuiExtension module",
             "time": "2019-02-06T10:10:03+00:00"
+        },
+        {
+            "name": "spryker/merchant-sales-order",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-sales-order.git",
+                "reference": "c2b8c024b0b15da89f8cc166d0e6c0877bd96096"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-sales-order/zipball/c2b8c024b0b15da89f8cc166d0e6c0877bd96096",
+                "reference": "c2b8c024b0b15da89f8cc166d0e6c0877bd96096",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/kernel": "^3.33.0",
+                "spryker/sales": "^11.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/merchant": "*",
+                "spryker/oms": "*",
+                "spryker/product-offer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantSalesOrder module",
+            "time": "2019-11-19T17:35:43+00:00"
         },
         {
             "name": "spryker/messenger",
@@ -26910,22 +27482,22 @@
         },
         {
             "name": "spryker/product-merchant-connector",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-merchant-connector.git",
-                "reference": "1e70cc4fe8d87d3cc509da71d425956e2ee195f3"
+                "reference": "d6d3301c52a0d8062d485a31f60b0bedafeb1412"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-merchant-connector/zipball/1e70cc4fe8d87d3cc509da71d425956e2ee195f3",
-                "reference": "1e70cc4fe8d87d3cc509da71d425956e2ee195f3",
+                "url": "https://api.github.com/repos/spryker/product-merchant-connector/zipball/d6d3301c52a0d8062d485a31f60b0bedafeb1412",
+                "reference": "d6d3301c52a0d8062d485a31f60b0bedafeb1412",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/kernel": "^3.33.0",
-                "spryker/merchant": "^1.0.0",
+                "spryker/merchant": "^1.0.0 || ^2.0.0",
                 "spryker/product": "^6.10.0"
             },
             "require-dev": {
@@ -26948,7 +27520,7 @@
                 "proprietary"
             ],
             "description": "ProductMerchantConnector module",
-            "time": "2019-05-28T06:44:04+00:00"
+            "time": "2019-11-15T10:05:59+00:00"
         },
         {
             "name": "spryker/product-new",
@@ -26999,6 +27571,137 @@
             ],
             "description": "ProductNew module",
             "time": "2018-10-04T15:21:15+00:00"
+        },
+        {
+            "name": "spryker/product-offer",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-offer.git",
+                "reference": "cfc1acb36cc4a405b0ec43ae080b5d82dd80c726"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-offer/zipball/cfc1acb36cc4a405b0ec43ae080b5d82dd80c726",
+                "reference": "cfc1acb36cc4a405b0ec43ae080b5d82dd80c726",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.33.0",
+                "spryker/propel-orm": "^1.3.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/merchant": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\ProductOffer\\Helper\\": "tests/SprykerTest/Zed/ProductOffer/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductOffer module",
+            "time": "2019-11-19T17:35:43+00:00"
+        },
+        {
+            "name": "spryker/product-offer-stock",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-offer-stock.git",
+                "reference": "66014a7addab3e287c2abdf59ca575cfc949f1e6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-offer-stock/zipball/66014a7addab3e287c2abdf59ca575cfc949f1e6",
+                "reference": "66014a7addab3e287c2abdf59ca575cfc949f1e6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.30.0",
+                "spryker/product-offer": "^0.1.0",
+                "spryker/stock": "^7.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductOfferStock module",
+            "time": "2019-11-19T17:35:43+00:00"
+        },
+        {
+            "name": "spryker/product-offer-stock-data-import",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-offer-stock-data-import.git",
+                "reference": "0bb574013436b2f2063412e0f776391e408dcebc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-offer-stock-data-import/zipball/0bb574013436b2f2063412e0f776391e408dcebc",
+                "reference": "0bb574013436b2f2063412e0f776391e408dcebc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/data-import": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/product-offer": "^0.1.0",
+                "spryker/product-offer-stock": "^0.1.0",
+                "spryker/stock": "^7.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "ProductOfferStockDataImport module",
+            "time": "2019-11-20T09:39:28+00:00"
         },
         {
             "name": "spryker/product-option",
@@ -32562,21 +33265,21 @@
         },
         {
             "name": "spryker/stock",
-            "version": "7.0.0",
+            "version": "7.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/stock.git",
-                "reference": "509e23337593b93e3c0028735cfafd9a86776343"
+                "reference": "3c6d71c46f0c854af2ef38f4fbf1e870591ecbd5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/stock/zipball/509e23337593b93e3c0028735cfafd9a86776343",
-                "reference": "509e23337593b93e3c0028735cfafd9a86776343",
+                "url": "https://api.github.com/repos/spryker/stock/zipball/3c6d71c46f0c854af2ef38f4fbf1e870591ecbd5",
+                "reference": "3c6d71c46f0c854af2ef38f4fbf1e870591ecbd5",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
-                "spryker/kernel": "^3.17.0",
+                "php": ">=7.2",
+                "spryker/kernel": "^3.30.0",
                 "spryker/product": "^5.0.0 || ^6.0.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/store": "^1.5.0",
@@ -32603,7 +33306,7 @@
                 "proprietary"
             ],
             "description": "Stock module",
-            "time": "2019-06-27T10:59:33+00:00"
+            "time": "2019-11-14T10:52:42+00:00"
         },
         {
             "name": "spryker/stock-gui",
@@ -39131,7 +39834,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
+            "description": "? Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -39252,7 +39955,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🍀 Nette RobotLoader: high performance and comfortable autoloader that will search and autoload classes within your application.",
+            "description": "? Nette RobotLoader: high performance and comfortable autoloader that will search and autoload classes within your application.",
             "homepage": "https://nette.org",
             "keywords": [
                 "autoload",
@@ -39834,20 +40537,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
-                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler"
+                    "homepage": "https://github.com/manuelpichler",
+                    "role": "Project Founder"
                 },
                 {
                     "name": "Marc Würth",
-                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84"
+                    "homepage": "https://github.com/ravage84",
+                    "role": "Project Maintainer"
                 },
                 {
                     "name": "Other contributors",
-                    "role": "Contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
+                    "role": "Contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -40048,16 +40751,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "7.0.9",
+            "version": "7.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "075572dd777ea8317196838f8b59b1de2a642abc"
+                "reference": "f1884187926fbb755a9aaf0b3836ad3165b478bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/075572dd777ea8317196838f8b59b1de2a642abc",
-                "reference": "075572dd777ea8317196838f8b59b1de2a642abc",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/f1884187926fbb755a9aaf0b3836ad3165b478bf",
+                "reference": "f1884187926fbb755a9aaf0b3836ad3165b478bf",
                 "shasum": ""
             },
             "require": {
@@ -40107,7 +40810,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-11-20T08:52:29+00:00"
+            "time": "2019-11-20T13:55:58+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
