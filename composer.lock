@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "291d763d08a4f89ddcc2d8e4789d0944",
+    "content-hash": "701ab5d936f900a64d63bca261bf6897",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -3324,18 +3324,18 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "email": "sebastian@phpeople.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "sebastian@phpeople.de"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Library for handling version information and constraints",
@@ -3864,8 +3864,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "FilterIterator implementation that filters files based on a list of suffixes.",
@@ -3906,8 +3906,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Simple template engine.",
@@ -5191,8 +5191,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
@@ -5498,11 +5498,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/cms-2467/dev-blocks-to-slots-assignment-rendering",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "e30c66bed4d21e41f2def5105e72baf135c1f1f4"
+                "reference": "6a05d296acb7510bcb388b8ba0fde9f221ac62f9"
             },
             "require": {
                 "php": ">=7.2"
@@ -5569,6 +5569,7 @@
                 "spryker/category-page-search": "*",
                 "spryker/category-storage": "*",
                 "spryker/chart": "*",
+                "spryker/chart-gui": "*",
                 "spryker/checkout": "*",
                 "spryker/checkout-extension": "*",
                 "spryker/checkout-rest-api": "*",
@@ -5599,6 +5600,18 @@
                 "spryker/cms-page-data-import": "*",
                 "spryker/cms-page-search": "*",
                 "spryker/cms-slot": "*",
+                "spryker/cms-slot-block": "*",
+                "spryker/cms-slot-block-category-connector": "*",
+                "spryker/cms-slot-block-category-gui": "*",
+                "spryker/cms-slot-block-cms-connector": "*",
+                "spryker/cms-slot-block-cms-gui": "*",
+                "spryker/cms-slot-block-data-import": "*",
+                "spryker/cms-slot-block-extension": "*",
+                "spryker/cms-slot-block-gui": "*",
+                "spryker/cms-slot-block-gui-extension": "*",
+                "spryker/cms-slot-block-product-category-connector": "*",
+                "spryker/cms-slot-block-product-category-gui": "*",
+                "spryker/cms-slot-block-storage": "*",
                 "spryker/cms-slot-data-import": "*",
                 "spryker/cms-slot-extension": "*",
                 "spryker/cms-slot-gui": "*",
@@ -6100,15 +6113,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-11-21T10:21:30+00:00"
+            "time": "2019-11-21T12:28:43+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/cms-2467/dev-blocks-to-slots-assignment-rendering",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "97ad59e962b11795d1b129fced7df6ffb4f6a5ac"
+                "reference": "99e26480c8b694e9074166589a6140f16bf360b0"
             },
             "require": {
                 "php": ">=7.2"
@@ -6138,6 +6151,7 @@
                 "spryker-shop/cms-content-widget-product-set-connector": "*",
                 "spryker-shop/cms-page": "*",
                 "spryker-shop/cms-search-page": "*",
+                "spryker-shop/cms-slot-block-widget": "*",
                 "spryker-shop/comment-widget": "*",
                 "spryker-shop/comment-widget-extension": "*",
                 "spryker-shop/company-page": "*",
@@ -6243,7 +6257,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-11-20T16:53:53+00:00"
+            "time": "2019-11-21T12:22:34+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -10347,8 +10361,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "FinderFacade is a convenience wrapper for Symfony's Finder component.",
@@ -10398,8 +10412,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Copy/Paste Detector (CPD) for PHP code.",
@@ -11420,8 +11434,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
