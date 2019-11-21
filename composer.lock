@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.119.0",
+            "version": "3.120.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "f9baeb6efe99318956d9924696bd2d51ae5ba338"
+                "reference": "289d716c7a418fc30a530ca83107e738f8dd1ebc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/f9baeb6efe99318956d9924696bd2d51ae5ba338",
-                "reference": "f9baeb6efe99318956d9924696bd2d51ae5ba338",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/289d716c7a418fc30a530ca83107e738f8dd1ebc",
+                "reference": "289d716c7a418fc30a530ca83107e738f8dd1ebc",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-11-19T19:47:09+00:00"
+            "time": "2019-11-20T19:17:55+00:00"
         },
         {
             "name": "codeitnowin/barcode",
@@ -39596,6 +39596,9 @@
             "conflict": {
                 "tracy/tracy": "<2.6"
             },
+            "conflict": {
+                "symfony/mailer": "<4.4"
+            },
             "require-dev": {
                 "latte/latte": "^2.2",
                 "nette/application": "^3.0",
@@ -43239,7 +43242,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.3-dev"
+                    "dev-master": "4.4-dev"
                 }
             },
             "autoload": {
