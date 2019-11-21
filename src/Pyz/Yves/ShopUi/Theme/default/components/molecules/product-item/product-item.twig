@@ -6,18 +6,12 @@
 
 
 {% block body %}
-    {% block imageContainer %}
-        <a href="{{ path(data.url) }}">
-            {% block image %}
-                {% include atom('thumbnail') with {
-                    class: 'js-product-color-group__image-' ~ data.idProductAbstract,
-                    attributes: {
-                        src: data.image,
-                        alt: data.name,
-                    },
-                } only %}
-            {% endblock %}
-        </a>
+    {% block thumbnailWrapper %}
+        {% set extraClass = 'js-product-color-group__image-' ~ data.idProductAbstract %}
+
+        {% block imageContainer %}
+            {{ parent() }}
+        {% endblock %}
     {% endblock %}
 
     {% block labels %}
@@ -29,8 +23,10 @@
     {% endblock %}
 
     {% block colors %}
-        {% widget 'ExampleProductColorSelectorWidget' args [data.idProductAbstract, '.' ~ config.jsName] use view('product-color-selector',
-            'ExampleProductColorGroupWidget') only %}{% endwidget %}
+        {% if data.idProductAbstract %}
+            {% widget 'ExampleProductColorSelectorWidget' args [data.idProductAbstract, '.' ~ config.jsName] use view('product-color-selector',
+                'ExampleProductColorGroupWidget') only %}{% endwidget %}
+        {% endif %}
     {% endblock %}
 
     {% block content %}
