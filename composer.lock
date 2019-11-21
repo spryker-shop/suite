@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7a0c757e47b44b5bb518e47d14f8aa74",
+    "content-hash": "cfbb184877389baced07b511f5e22fd9",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5544,11 +5544,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/ps-10484/dev-config-bundle-reorder-and-notes",
+            "version": "dev-feature/ps-10484/ps-10487-configurable-bundle-notes",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "e7d5a98a0cc69f6de7e3678802dcf07e4383596b"
+                "reference": "4bb853721de8402f2b233d0d462efe64e31cdc3f"
             },
             "require": {
                 "php": ">=7.2"
@@ -5615,6 +5615,7 @@
                 "spryker/category-page-search": "*",
                 "spryker/category-storage": "*",
                 "spryker/chart": "*",
+                "spryker/chart-gui": "*",
                 "spryker/checkout": "*",
                 "spryker/checkout-extension": "*",
                 "spryker/checkout-rest-api": "*",
@@ -5705,6 +5706,7 @@
                 "spryker/config": "*",
                 "spryker/configurable-bundle": "*",
                 "spryker/configurable-bundle-cart": "*",
+                "spryker/configurable-bundle-cart-note": "*",
                 "spryker/configurable-bundle-data-import": "*",
                 "spryker/configurable-bundle-storage": "*",
                 "spryker/console": "*",
@@ -6021,6 +6023,7 @@
                 "spryker/router-extension": "*",
                 "spryker/sales": "*",
                 "spryker/sales-configurable-bundle": "*",
+                "spryker/sales-configurable-bundle-cart-note-gui": "*",
                 "spryker/sales-extension": "*",
                 "spryker/sales-merchant-connector": "*",
                 "spryker/sales-order-threshold": "*",
@@ -6052,6 +6055,7 @@
                 "spryker/shipment": "*",
                 "spryker/shipment-cart-connector": "*",
                 "spryker/shipment-checkout-connector": "*",
+                "spryker/shipment-data-import": "*",
                 "spryker/shipment-discount-connector": "*",
                 "spryker/shipment-extension": "*",
                 "spryker/shipment-gui": "*",
@@ -6146,15 +6150,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-11-21T09:38:53+00:00"
+            "time": "2019-11-21T13:27:15+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/ps-10484/dev-config-bundle-reorder-and-notes",
+            "version": "dev-feature/ps-10484/ps-10487-configurable-bundle-notes",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "33435bda912375fe4bebbf9e08dfa4a5a8bab486"
+                "reference": "4501658160e9600076f30eca8f5292ead5aa790b"
             },
             "require": {
                 "php": ">=7.2"
@@ -6190,6 +6194,7 @@
                 "spryker-shop/company-user-agent-widget": "*",
                 "spryker-shop/company-user-invitation-page": "*",
                 "spryker-shop/company-widget": "*",
+                "spryker-shop/configurable-bundle-cart-note-widget": "*",
                 "spryker-shop/configurable-bundle-widget": "*",
                 "spryker-shop/content-banner-widget": "*",
                 "spryker-shop/content-file-widget": "*",
@@ -6290,7 +6295,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-11-21T09:40:00+00:00"
+            "time": "2019-11-21T13:28:09+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
