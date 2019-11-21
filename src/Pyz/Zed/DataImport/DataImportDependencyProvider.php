@@ -264,12 +264,12 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new ContentProductAbstractListDataImportPlugin(),
             new ContentProductSetDataImportPlugin(),
             new CommentDataImportPlugin(),
-            new ProductOfferStockDataImportPlugin(),
             new ShipmentDataImportPlugin(),
             new ShipmentMethodPriceDataImportPlugin(),
             new ShipmentMethodStoreDataImportPlugin(),
             new StockDataImportPlugin(),
             new StockStoreDataImportPlugin(),
+            new ProductOfferStockDataImportPlugin(),
         ];
     }
 
