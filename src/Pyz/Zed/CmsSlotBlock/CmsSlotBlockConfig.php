@@ -20,10 +20,10 @@ class CmsSlotBlockConfig extends SprykerCmsSlotBlockConfig
     public function getTemplateConditionsAssignment(): array
     {
         return [
-            '@CatalogPage/views/catalog/catalog.twig' => [
+            '@CatalogPage/views/catalog-with-cms-slot/catalog-with-cms-slot.twig' => [
                 CmsSlotBlockCategoryConnectorConfig::CONDITION_KEY,
             ],
-            '@HomePage/views/home/home.twig' => [
+            '@Cms/templates/placeholders-title-content-slot/placeholders-title-content-slot.twig' => [
                 CmsSlotBlockCmsConnectorConfig::CONDITION_KEY,
             ],
             '@ProductDetailPage/views/pdp/pdp.twig' => [
