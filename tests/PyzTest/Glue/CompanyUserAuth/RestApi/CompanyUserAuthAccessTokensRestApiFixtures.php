@@ -97,7 +97,7 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
     {
         $customerTransfer = $this->createCustomerTransferWithCompanyUser($I);
 
-        return $I->haveAuth($customerTransfer);
+        return $I->haveAuthorizationToGlue($customerTransfer);
     }
 
     /**
@@ -109,7 +109,7 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
     {
         $customerTransfer = $this->createCustomerTransferWithoutCompanyUser($I);
 
-        return $I->haveAuth($customerTransfer);
+        return $I->haveAuthorizationToGlue($customerTransfer);
     }
 
     /**
@@ -121,7 +121,7 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
     {
         $customerTransfer = $this->createCustomerTransferWithTwoCompanyUsers($I);
 
-        return $I->haveAuth($customerTransfer);
+        return $I->haveAuthorizationToGlue($customerTransfer);
     }
 
     /**

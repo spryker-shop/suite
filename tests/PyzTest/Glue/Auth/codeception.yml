@@ -29,9 +29,10 @@ suites:
         - \SprykerTest\Shared\Testify\Helper\DependencyHelper
         - \SprykerTest\Glue\AuthRestApi\Helper\AuthRestApiHelper
         - \SprykerTest\Shared\CompanyUser\Helper\CompanyUserHelper
+        - \PyzTest\Glue\Auth\Helper\CompanyMailConnectorDependencyHelper
         - \SprykerTest\Zed\Company\Helper\CompanyHelper
         - \SprykerTest\Zed\CompanyBusinessUnit\Helper\CompanyBusinessUnitHelper
-        - \SprykerTest\Zed\CompanyMailConnector\Helper\CompanyMailConnectorDependencyHelper
+        - \PyzTest\Glue\Auth\Helper\CompanyMailConnectorDependencyHelper
       config:
         \SprykerTest\Glue\Testify\Helper\GlueRest:
           depends: PhpBrowser
