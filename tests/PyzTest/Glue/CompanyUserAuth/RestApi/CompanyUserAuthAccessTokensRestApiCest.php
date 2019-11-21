@@ -62,8 +62,11 @@ class CompanyUserAuthAccessTokensRestApiCest
         ]);
 
         //Assert
-        $this->assertResponse($I, HttpCode::CREATED);
-        $I->seeSingleResourceHasSelfLink($I->formatFullUrl(CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS));
+        $I->seeResponseCodeIs(HttpCode::CREATED);
+        $I->seeResponseHasAccessToken();
+        $I->seeResponseHasRefreshToken();
+
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -89,7 +92,11 @@ class CompanyUserAuthAccessTokensRestApiCest
         ]);
 
         //Assert
-        $this->assertResponse($I, HttpCode::BAD_REQUEST);
+        $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
+        $I->dontSeeResponseHasRefreshToken();
+        $I->dontSeeResponseHasAccessToken();
+
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -113,7 +120,11 @@ class CompanyUserAuthAccessTokensRestApiCest
         ]);
 
         //Assert
-        $this->assertResponse($I, HttpCode::BAD_REQUEST);
+        $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
+        $I->dontSeeResponseHasRefreshToken();
+        $I->dontSeeResponseHasAccessToken();
+
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -139,7 +150,11 @@ class CompanyUserAuthAccessTokensRestApiCest
         ]);
 
         //Assert
-        $this->assertResponse($I, HttpCode::UNAUTHORIZED);
+        $I->seeResponseCodeIs(HttpCode::UNAUTHORIZED);
+        $I->dontSeeResponseHasRefreshToken();
+        $I->dontSeeResponseHasAccessToken();
+
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -165,7 +180,11 @@ class CompanyUserAuthAccessTokensRestApiCest
         ]);
 
         //Assert
-        $this->assertResponse($I, HttpCode::UNPROCESSABLE_ENTITY);
+        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
+        $I->dontSeeResponseHasRefreshToken();
+        $I->dontSeeResponseHasAccessToken();
+
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -191,7 +210,11 @@ class CompanyUserAuthAccessTokensRestApiCest
         ]);
 
         //Assert
-        $this->assertResponse($I, HttpCode::UNPROCESSABLE_ENTITY);
+        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
+        $I->dontSeeResponseHasRefreshToken();
+        $I->dontSeeResponseHasAccessToken();
+
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -201,7 +224,7 @@ class CompanyUserAuthAccessTokensRestApiCest
      *
      * @return void
      */
-    public function requestCompanyUserAccessTokenForCustomerWithTwoCompanyUsers(CompanyUserAuthRestApiTester $I): void
+    public function requestAccessTokenForNonDefaultCompanyUser(CompanyUserAuthRestApiTester $I): void
     {
         //Arrange
         $firstCompanyUserAccessToken = $this->fixtures->getOauthResponseTransferForCustomerWithTwoCompanyUsers()->getAccessToken();
@@ -218,26 +241,15 @@ class CompanyUserAuthAccessTokensRestApiCest
             ],
         ]);
 
-        $secondCompanyUserAccessToken = $I->grabDataFromResponseByJsonPathSmart('$.data.attributes.accessToken');
-
         //Assert
-        $this->assertResponse($I, HttpCode::CREATED);
+        $I->seeResponseCodeIs(HttpCode::CREATED);
+        $I->seeResponseHasRefreshToken();
+        $I->seeResponseHasAccessToken();
 
+        $secondCompanyUserAccessToken = $I->grabAccessTokenFromResponse();
         $I->assertNotNull($secondCompanyUserAccessToken);
         $I->assertNotEquals($firstCompanyUserAccessToken, $secondCompanyUserAccessToken);
-        $I->seeSingleResourceHasSelfLink($I->formatFullUrl(CompanyUserAuthRestApiConfig::RESOURCE_COMPANY_USER_ACCESS_TOKENS));
-    }
 
-    /**
-     * @param \PyzTest\Glue\CompanyUserAuth\CompanyUserAuthRestApiTester $I
-     * @param int $responseCode
-     *
-     * @return void
-     */
-    protected function assertResponse(CompanyUserAuthRestApiTester $I, int $responseCode): void
-    {
-        $I->seeResponseCodeIs($responseCode);
-        $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
     }
 }

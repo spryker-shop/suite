@@ -8,6 +8,7 @@
 namespace PyzTest\Glue\Auth\Helper;
 
 use Codeception\Module;
+use Spryker\Zed\CompanyMailConnector\Business\CompanyMailConnectorBusinessFactory;
 use Spryker\Zed\CompanyMailConnector\CompanyMailConnectorDependencyProvider;
 use Spryker\Zed\CompanyMailConnector\Dependency\Facade\CompanyMailConnectorToMailFacadeBridge;
 use SprykerTest\Shared\Testify\Helper\DependencyHelperTrait;

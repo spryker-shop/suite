@@ -49,9 +49,9 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
     {
         $I->haveCompanyMailConnectorToMailDependency();
 
-        $this->oauthResponseTransferForCompanyUser = $this->createOauthResponseTransferForCompanyUser($I);
-        $this->oauthResponseTransferForNonCompanyUser = $this->createOauthResponseTransferForNotCompanyUser($I);
-        $this->oauthResponseTransferForCustomerWithTwoCompanyUsers = $this->createOauthResponseTransferForCustomerWithTwoCompanyUsers($I);
+        $this->oauthResponseTransferForCompanyUser = $this->createOauthResponseForCompanyUser($I);
+        $this->oauthResponseTransferForNonCompanyUser = $this->createOauthResponseForNotCompanyUser($I);
+        $this->oauthResponseTransferForCustomerWithTwoCompanyUsers = $this->createOauthResponseForCustomerWithTwoCompanyUsers($I);
 
         return $this;
     }
@@ -93,9 +93,9 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
      *
      * @return \Generated\Shared\Transfer\OauthResponseTransfer
      */
-    protected function createOauthResponseTransferForCompanyUser(CompanyUserAuthRestApiTester $I): OauthResponseTransfer
+    protected function createOauthResponseForCompanyUser(CompanyUserAuthRestApiTester $I): OauthResponseTransfer
     {
-        $customerTransfer = $this->createCustomerTransferWithCompanyUser($I);
+        $customerTransfer = $this->createCustomerWithCompanyUser($I);
 
         return $I->haveAuthorizationToGlue($customerTransfer);
     }
@@ -105,9 +105,9 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
      *
      * @return \Generated\Shared\Transfer\OauthResponseTransfer
      */
-    protected function createOauthResponseTransferForNotCompanyUser(CompanyUserAuthRestApiTester $I): OauthResponseTransfer
+    protected function createOauthResponseForNotCompanyUser(CompanyUserAuthRestApiTester $I): OauthResponseTransfer
     {
-        $customerTransfer = $this->createCustomerTransferWithoutCompanyUser($I);
+        $customerTransfer = $this->createCustomer($I);
 
         return $I->haveAuthorizationToGlue($customerTransfer);
     }
@@ -117,9 +117,9 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
      *
      * @return \Generated\Shared\Transfer\OauthResponseTransfer
      */
-    protected function createOauthResponseTransferForCustomerWithTwoCompanyUsers(CompanyUserAuthRestApiTester $I): OauthResponseTransfer
+    protected function createOauthResponseForCustomerWithTwoCompanyUsers(CompanyUserAuthRestApiTester $I): OauthResponseTransfer
     {
-        $customerTransfer = $this->createCustomerTransferWithTwoCompanyUsers($I);
+        $customerTransfer = $this->createCustomerWithTwoCompanyUsers($I);
 
         return $I->haveAuthorizationToGlue($customerTransfer);
     }
@@ -129,14 +129,14 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
      *
      * @return \Generated\Shared\Transfer\CustomerTransfer
      */
-    protected function createCustomerTransferWithCompanyUser(CompanyUserAuthRestApiTester $I): CustomerTransfer
+    protected function createCustomerWithCompanyUser(CompanyUserAuthRestApiTester $I): CustomerTransfer
     {
         $customerTransfer = $I->haveCustomer([
             CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
             CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,
         ]);
 
-        $this->createCompanyUserTransfer($I, $customerTransfer);
+        $this->createCompanyUser($I, $customerTransfer);
 
         return $customerTransfer;
     }
@@ -146,18 +146,18 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
      *
      * @return \Generated\Shared\Transfer\CustomerTransfer
      */
-    protected function createCustomerTransferWithTwoCompanyUsers(CompanyUserAuthRestApiTester $I): CustomerTransfer
+    protected function createCustomerWithTwoCompanyUsers(CompanyUserAuthRestApiTester $I): CustomerTransfer
     {
         $customerTransfer = $I->haveCustomer([
             CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
             CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,
         ]);
 
-        $this->createCompanyUserTransfer($I, $customerTransfer, [
+        $this->createCompanyUser($I, $customerTransfer, [
             CompanyUserTransfer::IS_DEFAULT => true,
         ]);
 
-        $this->nonDefaultCompanyUserTransfer = $this->createCompanyUserTransfer($I, $customerTransfer);
+        $this->nonDefaultCompanyUserTransfer = $this->createCompanyUser($I, $customerTransfer);
 
         return $customerTransfer;
     }
@@ -167,7 +167,7 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
      *
      * @return \Generated\Shared\Transfer\CustomerTransfer
      */
-    protected function createCustomerTransferWithoutCompanyUser(CompanyUserAuthRestApiTester $I): CustomerTransfer
+    protected function createCustomer(CompanyUserAuthRestApiTester $I): CustomerTransfer
     {
         return $I->haveCustomer([
             CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
@@ -182,7 +182,7 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
      *
      * @return \Generated\Shared\Transfer\CompanyUserTransfer
      */
-    protected function createCompanyUserTransfer(CompanyUserAuthRestApiTester $I, CustomerTransfer $customerTransfer, array $seed = []): CompanyUserTransfer
+    protected function createCompanyUser(CompanyUserAuthRestApiTester $I, CustomerTransfer $customerTransfer, array $seed = []): CompanyUserTransfer
     {
         $companyTransfer = $I->haveActiveCompany([
             CompanyTransfer::STATUS => 'approved',
