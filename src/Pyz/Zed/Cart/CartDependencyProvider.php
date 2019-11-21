@@ -97,7 +97,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new ProductPackagingUnitItemExpanderPlugin(), #ProductPackagingUnit
             new CustomAmountPriceItemExpanderPlugin(), #ProductPackagingUnit
             new GiftCardMetadataExpanderPlugin(), #GiftCardFeature
-            new ProductUrlCartPlugin(), #GiftCardFeature
+            new ProductUrlCartPlugin(),
         ];
     }
 
