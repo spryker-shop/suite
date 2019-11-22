@@ -8,7 +8,6 @@ use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Queue\QueueConfig;
 use Spryker\Shared\Queue\QueueConstants;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
-use Spryker\Shared\Search\SearchConstants;
 
 // ---------- Propel
 $config[PropelConstants::ZED_DB_DATABASE] = 'US_development_zed';
