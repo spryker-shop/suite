@@ -9,7 +9,7 @@ namespace Pyz\Yves\ProductColorGroupWidget;
 
 use SprykerShop\Yves\CartPage\Plugin\ProductColorGroupWidget\AddToCartUrlProductViewExpanderPlugin;
 use SprykerShop\Yves\ProductColorGroupWidget\ProductColorGroupWidgetDependencyProvider as SprykerShopProductColorGroupWidgetDependencyProvider;
-use SprykerShop\Yves\ProductReviewWidget\Plugin\ProductColorGroupWidget\ProductReviewPageProductViewExpanderPlugin;
+use SprykerShop\Yves\ProductReviewWidget\Plugin\ProductColorGroupWidget\ProductReviewSummaryProductViewExpanderPlugin;
 
 class ProductColorGroupWidgetDependencyProvider extends SprykerShopProductColorGroupWidgetDependencyProvider
 {
@@ -20,7 +20,7 @@ class ProductColorGroupWidgetDependencyProvider extends SprykerShopProductColorG
     {
         return [
             new AddToCartUrlProductViewExpanderPlugin(),
-            new ProductReviewPageProductViewExpanderPlugin(),
+            new ProductReviewSummaryProductViewExpanderPlugin(),
         ];
     }
 }
