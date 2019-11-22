@@ -8,7 +8,6 @@
 namespace PyzTest\Glue\AlternativeProducts\RestApi;
 
 use Generated\Shared\Transfer\ProductConcreteTransfer;
-use Generated\Shared\Transfer\ProductLabelTransfer;
 use Generated\Shared\Transfer\StockProductTransfer;
 use PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
@@ -35,12 +34,7 @@ class ConcreteAlternativeProductsRestApiFixtures implements FixturesBuilderInter
     /**
      * @var \Generated\Shared\Transfer\ProductConcreteTransfer
      */
-    protected $productConcreteTransferWithLabel;
-
-    /**
-     * @var \Generated\Shared\Transfer\ProductLabelTransfer
-     */
-    protected $productLabelTransfer;
+    protected $alternativeProductConcreteTransfer;
 
     /**
      * @return \Generated\Shared\Transfer\ProductConcreteTransfer
@@ -53,17 +47,9 @@ class ConcreteAlternativeProductsRestApiFixtures implements FixturesBuilderInter
     /**
      * @return \Generated\Shared\Transfer\ProductConcreteTransfer
      */
-    public function getProductConcreteTransferWithLabel(): ProductConcreteTransfer
+    public function getAlternativeProductConcreteTransfer(): ProductConcreteTransfer
     {
-        return $this->productConcreteTransferWithLabel;
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\ProductLabelTransfer
-     */
-    public function getProductLabelTransfer(): ProductLabelTransfer
-    {
-        return $this->productLabelTransfer;
+        return $this->alternativeProductConcreteTransfer;
     }
 
     /**
@@ -73,8 +59,6 @@ class ConcreteAlternativeProductsRestApiFixtures implements FixturesBuilderInter
      */
     public function buildFixtures(AlternativeProductsRestApiTester $I): FixturesContainerInterface
     {
-        $this->createProductConcrete($I);
-        $this->createProductConcreteWithProductLabelRelationship($I);
         $this->createAlternativeRelationBetweenProducts($I);
 
         return $this;
@@ -85,36 +69,14 @@ class ConcreteAlternativeProductsRestApiFixtures implements FixturesBuilderInter
      *
      * @return void
      */
-    protected function createProductConcrete(AlternativeProductsRestApiTester $I): void
+    protected function createAlternativeRelationBetweenProducts(AlternativeProductsRestApiTester $I): void
     {
         $this->productConcreteTransfer = $I->haveFullProduct();
         $I->haveProductInStock([StockProductTransfer::SKU => $this->productConcreteTransfer->getSku()]);
-    }
 
-    /**
-     * @param \PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester $I
-     *
-     * @return void
-     */
-    protected function createProductConcreteWithProductLabelRelationship(AlternativeProductsRestApiTester $I): void
-    {
-        $this->productConcreteTransferWithLabel = $I->haveFullProduct();
-        $I->haveProductInStock([StockProductTransfer::SKU => $this->productConcreteTransferWithLabel->getSku()]);
-        $this->productLabelTransfer = $I->haveProductLabel();
-        $I->haveProductLabelToAbstractProductRelation(
-            $this->productLabelTransfer->getIdProductLabel(),
-            $this->productConcreteTransferWithLabel->getFkProductAbstract()
-        );
-    }
+        $this->alternativeProductConcreteTransfer = $I->haveFullProduct();
+        $I->haveProductInStock([StockProductTransfer::SKU => $this->alternativeProductConcreteTransfer->getSku()]);
 
-    /**
-     * @param \PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester $I
-     *
-     * @return void
-     */
-    protected function createAlternativeRelationBetweenProducts(AlternativeProductsRestApiTester $I): void
-    {
-        $I->haveProductAlternative($this->productConcreteTransfer, $this->productConcreteTransferWithLabel->getSku());
-        $I->haveProductAlternative($this->productConcreteTransferWithLabel, $this->productConcreteTransfer->getSku());
+        $I->haveProductAlternative($this->productConcreteTransfer, $this->alternativeProductConcreteTransfer->getSku());
     }
 }

@@ -8,7 +8,6 @@
 namespace PyzTest\Glue\Products\RestApi\Fixtures;
 
 use Generated\Shared\Transfer\ProductConcreteTransfer;
-use Generated\Shared\Transfer\ProductLabelTransfer;
 use PyzTest\Glue\Products\ProductsApiTester;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
@@ -32,37 +31,11 @@ class ProductsRestApiFixtures implements FixturesBuilderInterface, FixturesConta
     protected $productConcreteTransfer;
 
     /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
-    protected $productConcreteTransferWithLabel;
-
-    /**
-     * @var \Generated\Shared\Transfer\ProductLabelTransfer
-     */
-    protected $productLabelTransfer;
-
-    /**
      * @return \Generated\Shared\Transfer\ProductConcreteTransfer
      */
     public function getProductConcreteTransfer(): ProductConcreteTransfer
     {
         return $this->productConcreteTransfer;
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
-    public function getProductConcreteTransferWithLabel(): ProductConcreteTransfer
-    {
-        return $this->productConcreteTransferWithLabel;
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\ProductLabelTransfer
-     */
-    public function getProductLabelTransfer(): ProductLabelTransfer
-    {
-        return $this->productLabelTransfer;
     }
 
     /**
@@ -73,7 +46,6 @@ class ProductsRestApiFixtures implements FixturesBuilderInterface, FixturesConta
     public function buildFixtures(ProductsApiTester $I): FixturesContainerInterface
     {
         $this->createProductConcrete($I);
-        $this->createProductConcreteWithProductLabelRelationship($I);
 
         return $this;
     }
@@ -86,20 +58,5 @@ class ProductsRestApiFixtures implements FixturesBuilderInterface, FixturesConta
     protected function createProductConcrete(ProductsApiTester $I): void
     {
         $this->productConcreteTransfer = $I->haveFullProduct();
-    }
-
-    /**
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
-     *
-     * @return void
-     */
-    protected function createProductConcreteWithProductLabelRelationship(ProductsApiTester $I): void
-    {
-        $this->productConcreteTransferWithLabel = $I->haveFullProduct();
-        $this->productLabelTransfer = $I->haveProductLabel();
-        $I->haveProductLabelToAbstractProductRelation(
-            $this->productLabelTransfer->getIdProductLabel(),
-            $this->productConcreteTransferWithLabel->getFkProductAbstract()
-        );
     }
 }

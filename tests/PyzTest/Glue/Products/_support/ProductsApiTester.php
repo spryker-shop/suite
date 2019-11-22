@@ -8,7 +8,6 @@
 namespace PyzTest\Glue\Products;
 
 use Spryker\Glue\GlueApplication\Rest\RequestConstantsInterface;
-use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
 use Spryker\Glue\ProductPricesRestApi\ProductPricesRestApiConfig;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
 use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
@@ -113,23 +112,6 @@ class ProductsApiTester extends ApiEndToEndTester
                 'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 'productConcreteSku' => $productConcreteSku,
                 'resourceConcreteProductPrices' => ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
-            ]
-        );
-    }
-
-    /**
-     * @param int $idProductLabel
-     * @param string[] $includes
-     *
-     * @return string
-     */
-    public function buildProductLabelUrl(int $idProductLabel, array $includes = []): string
-    {
-        return $this->formatFullUrl(
-            '{resourceProductLabels}/{idProductLabel}' . $this->formatQueryInclude($includes),
-            [
-                'resourceProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                'idProductLabel' => $idProductLabel,
             ]
         );
     }

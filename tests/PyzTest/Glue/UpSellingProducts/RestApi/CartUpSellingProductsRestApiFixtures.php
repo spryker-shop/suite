@@ -10,7 +10,6 @@ namespace PyzTest\Glue\UpSellingProducts\RestApi;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
-use Generated\Shared\Transfer\ProductLabelTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
@@ -32,7 +31,6 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
     protected const TEST_USERNAME = 'UserCartsUpSellingProductsRestApiFixtures';
-    protected const TEST_USERNAME_WITH_LABEL = 'UserCartsUpSellingProductsRestApiFixturesWithLabel';
     protected const TEST_PASSWORD = 'password';
 
     /**
@@ -43,22 +41,12 @@ class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, 
     /**
      * @var \Generated\Shared\Transfer\ProductConcreteTransfer
      */
-    protected $productConcreteTransferWithLabel;
-
-    /**
-     * @var \Generated\Shared\Transfer\ProductLabelTransfer
-     */
-    protected $productLabelTransfer;
+    protected $upSellingProductConcreteTransfer;
 
     /**
      * @var \Generated\Shared\Transfer\QuoteTransfer
      */
     protected $quoteTransfer;
-
-    /**
-     * @var \Generated\Shared\Transfer\QuoteTransfer
-     */
-    protected $quoteTransferWithLabel;
 
     /**
      * @return \Generated\Shared\Transfer\ProductConcreteTransfer
@@ -71,17 +59,9 @@ class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, 
     /**
      * @return \Generated\Shared\Transfer\ProductConcreteTransfer
      */
-    public function getProductConcreteTransferWithLabel(): ProductConcreteTransfer
+    public function getUpSellingProductConcreteTransfer(): ProductConcreteTransfer
     {
-        return $this->productConcreteTransferWithLabel;
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\ProductLabelTransfer
-     */
-    public function getProductLabelTransfer(): ProductLabelTransfer
-    {
-        return $this->productLabelTransfer;
+        return $this->upSellingProductConcreteTransfer;
     }
 
     /**
@@ -93,22 +73,14 @@ class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, 
     }
 
     /**
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
-    public function getQuoteTransferWithLabel(): QuoteTransfer
-    {
-        return $this->quoteTransferWithLabel;
-    }
-
-    /**
      * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
      *
      * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
     public function buildFixtures(UpSellingProductsApiTester $I): FixturesContainerInterface
     {
-        $this->createQuoteWithUpSellingProduct($I);
-        $this->createQuoteWithUpSellingProductWithProductLabelRelationship($I);
+        $this->createQuoteWithProduct($I);
+        $this->createUpSellingProductConcrete($I);
         $this->createRelationBetweenProducts($I);
 
         return $this;
@@ -119,22 +91,17 @@ class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, 
      *
      * @return void
      */
-    protected function createQuoteWithUpSellingProduct(UpSellingProductsApiTester $I): void
+    protected function createQuoteWithProduct(UpSellingProductsApiTester $I): void
     {
-        $this->productConcreteTransferWithLabel = $I->haveFullProduct();
-
-        $this->productLabelTransfer = $I->haveProductLabel();
-        $I->haveProductLabelToAbstractProductRelation(
-            $this->productLabelTransfer->getIdProductLabel(),
-            $this->productConcreteTransferWithLabel->getFkProductAbstract()
-        );
+        $this->productConcreteTransfer = $I->haveFullProduct();
 
         $customerTransfer = $I->haveCustomer([
-            CustomerTransfer::USERNAME => static::TEST_USERNAME_WITH_LABEL,
+            CustomerTransfer::USERNAME => static::TEST_USERNAME,
             CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
             CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,
         ]);
-        $this->quoteTransfer = $this->createPersistentQuote($I, $customerTransfer, [$this->productConcreteTransferWithLabel]);
+
+        $this->quoteTransfer = $this->createPersistentQuote($I, $customerTransfer, [$this->productConcreteTransfer]);
     }
 
     /**
@@ -142,15 +109,9 @@ class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, 
      *
      * @return void
      */
-    protected function createQuoteWithUpSellingProductWithProductLabelRelationship(UpSellingProductsApiTester $I): void
+    protected function createUpSellingProductConcrete(UpSellingProductsApiTester $I): void
     {
-        $this->productConcreteTransfer = $I->haveFullProduct();
-        $customerTransfer = $I->haveCustomer([
-            CustomerTransfer::USERNAME => static::TEST_USERNAME,
-            CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
-            CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,
-        ]);
-        $this->quoteTransferWithLabel = $this->createPersistentQuote($I, $customerTransfer, [$this->productConcreteTransfer]);
+        $this->upSellingProductConcreteTransfer = $I->haveFullProduct();
     }
 
     /**
@@ -161,11 +122,7 @@ class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, 
     protected function createRelationBetweenProducts(UpSellingProductsApiTester $I): void
     {
         $I->haveProductRelation(
-            $this->productConcreteTransfer->getAbstractSku(),
-            $this->productConcreteTransferWithLabel->getFkProductAbstract()
-        );
-        $I->haveProductRelation(
-            $this->productConcreteTransferWithLabel->getAbstractSku(),
+            $this->upSellingProductConcreteTransfer->getAbstractSku(),
             $this->productConcreteTransfer->getFkProductAbstract()
         );
     }

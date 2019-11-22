@@ -10,7 +10,6 @@ namespace PyzTest\Glue\UpSellingProducts\RestApi;
 use Codeception\Util\HttpCode;
 use Pyz\Glue\ProductsRestApi\ProductsRestApiConfig;
 use PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester;
-use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
 
 /**
  * Auto-generated group annotations
@@ -52,6 +51,7 @@ class CartUpSellingProductsRestApiCest
         // Arrange
         $quoteTransfer = $this->fixtures->getQuoteTransfer();
         $productAbstractSku = $this->fixtures->getProductConcreteTransfer()->getAbstractSku();
+
         $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
         $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
 
@@ -69,154 +69,14 @@ class CartUpSellingProductsRestApiCest
 
         $I->amSure('Resource collection has resource')
             ->whenI()
-            ->seeResourceCollectionHasResourceWithId($productAbstractSku);
+            ->seeResourceCollectionHasResourceWithId($this->fixtures->getUpSellingProductConcreteTransfer()->getAbstractSku());
 
         $I->amSure('Resource has correct self-link')
             ->whenI()
             ->seeResourceByIdHasSelfLink(
-                $productAbstractSku,
-                $I->buildProductAbstractUrl($productAbstractSku)
+                $this->fixtures->getUpSellingProductConcreteTransfer()->getAbstractSku(),
+                $I->buildProductAbstractUrl($this->fixtures->getUpSellingProductConcreteTransfer()->getAbstractSku())
             );
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
-     *
-     * @return void
-     */
-    public function requestCartUpSellingProductsWithProductConcreteRelationship(UpSellingProductsApiTester $I): void
-    {
-        // Arrange
-        $quoteTransfer = $this->fixtures->getQuoteTransfer();
-        $productConcreteTransfer = $this->fixtures->getProductConcreteTransfer();
-        $productAbstractSku = $productConcreteTransfer->getAbstractSku();
-        $productConcreteSku = $productConcreteTransfer->getSku();
-        $url = $I->buildCartUpSellingProductsUrl($quoteTransfer->getUuid(), [ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS]);
-        $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
-        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
-
-        // Act
-        $I->sendGET($url);
-
-        // Assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
-
-        $I->amSure('Resource has a relationship')
-            ->whenI()
-            ->seeResourceByIdHasRelationshipByTypeAndId(
-                $productAbstractSku,
-                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                $productConcreteSku
-            );
-
-        $I->amSure('The returned resource has include')
-            ->whenI()
-            ->seeIncludesContainsResourceByTypeAndId(
-                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                $productConcreteSku
-            );
-
-        $I->amSure('The include has correct self-link')
-            ->whenI()
-            ->seeIncludedResourceByTypeAndIdHasSelfLink(
-                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                $productConcreteSku,
-                $I->buildProductConcreteUrl($productConcreteSku)
-            );
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
-     *
-     * @return void
-     */
-    public function requestCartUpSellingProductsWithProductLabelsRelationship(UpSellingProductsApiTester $I): void
-    {
-        // Arrange
-        $quoteTransfer = $this->fixtures->getQuoteTransferWithLabel();
-        $productConcreteSku = $this->fixtures->getProductConcreteTransferWithLabel()->getSku();
-        $idProductLabel = $this->fixtures->getProductLabelTransfer()->getIdProductLabel();
-        $url = $I->buildCartUpSellingProductsUrl(
-            $quoteTransfer->getUuid(),
-            [
-                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            ]
-        );
-        $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
-        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
-
-        // Act
-        $I->sendGET($url);
-
-        // Assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
-
-        $I->amSure('The included resource has a relationship')
-            ->whenI()
-            ->seeIncludedResourceByTypeAndIdHasRelationshipByTypeAndId(
-                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                $productConcreteSku,
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                $idProductLabel
-            );
-
-        $I->amSure('The returned resource has include')
-            ->whenI()
-            ->seeIncludesContainsResourceByTypeAndId(
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                $idProductLabel
-            );
-
-        $I->amSure('The include has correct self-link')
-            ->whenI()
-            ->seeIncludedResourceByTypeAndIdHasSelfLink(
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                $idProductLabel,
-                $I->buildProductLabelUrl($idProductLabel)
-            );
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
-     *
-     * @return void
-     */
-    public function requestCartUpSellingProductsWithoutProductLabelsRelationship(UpSellingProductsApiTester $I): void
-    {
-        // Arrange
-        $quoteTransfer = $this->fixtures->getQuoteTransfer();
-        $url = $I->buildCartUpSellingProductsUrl(
-            $quoteTransfer->getUuid(),
-            [
-                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            ]
-        );
-        $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
-        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
-
-        // Act
-        $I->sendGET($url);
-
-        // Assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
-
-        $I->amSure('The returned resource does not have includes')
-            ->whenI()
-            ->dontSeeIncludesContainResourceOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS);
     }
 
     /**
@@ -239,92 +99,5 @@ class CartUpSellingProductsRestApiCest
         $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
-     *
-     * @return void
-     */
-    public function requestCartUpSellingProductsWithProductLabelsRelationshipByPost(UpSellingProductsApiTester $I): void
-    {
-        // Arrange
-        $quoteTransfer = $this->fixtures->getQuoteTransferWithLabel();
-        $url = $I->buildCartUpSellingProductsUrl(
-            $quoteTransfer->getUuid(),
-            [
-                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            ]
-        );
-        $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
-        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
-
-        // Act
-        $I->sendPOST($url);
-
-        // Assert
-        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
-        $I->seeResponseIsJson();
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
-     *
-     * @return void
-     */
-    public function requestCartUpSellingProductsWithProductLabelsRelationshipByPatch(UpSellingProductsApiTester $I): void
-    {
-        // Arrange
-        $quoteTransfer = $this->fixtures->getQuoteTransferWithLabel();
-        $url = $I->buildCartUpSellingProductsUrl(
-            $quoteTransfer->getUuid(),
-            [
-                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            ]
-        );
-        $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
-        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
-
-        // Act
-        $I->sendPATCH($url);
-
-        // Assert
-        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
-        $I->seeResponseIsJson();
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
-     *
-     * @return void
-     */
-    public function requestCartUpSellingProductsWithProductLabelsRelationshipByDelete(UpSellingProductsApiTester $I): void
-    {
-        // Arrange
-        $quoteTransfer = $this->fixtures->getQuoteTransferWithLabel();
-        $url = $I->buildCartUpSellingProductsUrl(
-            $quoteTransfer->getUuid(),
-            [
-                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            ]
-        );
-        $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
-        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
-
-        // Act
-        $I->sendDELETE($url);
-
-        // Assert
-        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
-        $I->seeResponseIsJson();
     }
 }

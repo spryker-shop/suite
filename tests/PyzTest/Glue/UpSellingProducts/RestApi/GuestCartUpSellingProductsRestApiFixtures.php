@@ -10,7 +10,6 @@ namespace PyzTest\Glue\UpSellingProducts\RestApi;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
-use Generated\Shared\Transfer\ProductLabelTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
@@ -39,11 +38,6 @@ class GuestCartUpSellingProductsRestApiFixtures implements FixturesBuilderInterf
     protected $guestCustomerReference;
 
     /**
-     * @var string
-     */
-    protected $guestCustomerReferenceWithLabel;
-
-    /**
      * @var \Generated\Shared\Transfer\ProductConcreteTransfer
      */
     protected $productConcreteTransfer;
@@ -51,12 +45,7 @@ class GuestCartUpSellingProductsRestApiFixtures implements FixturesBuilderInterf
     /**
      * @var \Generated\Shared\Transfer\ProductConcreteTransfer
      */
-    protected $productConcreteTransferWithLabel;
-
-    /**
-     * @var \Generated\Shared\Transfer\ProductLabelTransfer
-     */
-    protected $productLabelTransfer;
+    protected $upSellingProductConcreteTransfer;
 
     /**
      * @var \Generated\Shared\Transfer\QuoteTransfer
@@ -64,24 +53,11 @@ class GuestCartUpSellingProductsRestApiFixtures implements FixturesBuilderInterf
     protected $guestQuoteTransfer;
 
     /**
-     * @var \Generated\Shared\Transfer\QuoteTransfer
-     */
-    protected $guestQuoteTransferWithLabel;
-
-    /**
      * @return string
      */
     public function getGuestCustomerReference(): string
     {
         return $this->guestCustomerReference;
-    }
-
-    /**
-     * @return string
-     */
-    public function getGuestCustomerReferenceWithLabel(): string
-    {
-        return $this->guestCustomerReferenceWithLabel;
     }
 
     /**
@@ -95,17 +71,9 @@ class GuestCartUpSellingProductsRestApiFixtures implements FixturesBuilderInterf
     /**
      * @return \Generated\Shared\Transfer\ProductConcreteTransfer
      */
-    public function getProductConcreteTransferWithLabel(): ProductConcreteTransfer
+    public function getUpSellingProductConcreteTransfer(): ProductConcreteTransfer
     {
-        return $this->productConcreteTransferWithLabel;
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\ProductLabelTransfer
-     */
-    public function getProductLabelTransfer(): ProductLabelTransfer
-    {
-        return $this->productLabelTransfer;
+        return $this->upSellingProductConcreteTransfer;
     }
 
     /**
@@ -117,22 +85,14 @@ class GuestCartUpSellingProductsRestApiFixtures implements FixturesBuilderInterf
     }
 
     /**
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
-    public function getGuestQuoteTransferWithLabel(): QuoteTransfer
-    {
-        return $this->guestQuoteTransferWithLabel;
-    }
-
-    /**
      * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
      *
      * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
     public function buildFixtures(UpSellingProductsApiTester $I): FixturesContainerInterface
     {
-        $this->createGuestQuoteWithUpSellingProduct($I);
-        $this->createGuestQuoteWithUpSellingProductWithProductLabelRelationship($I);
+        $this->createGuestQuoteWithProduct($I);
+        $this->createUpSellingProduct($I);
         $this->createRelationBetweenProducts($I);
 
         return $this;
@@ -143,20 +103,14 @@ class GuestCartUpSellingProductsRestApiFixtures implements FixturesBuilderInterf
      *
      * @return void
      */
-    protected function createGuestQuoteWithUpSellingProduct(UpSellingProductsApiTester $I): void
+    protected function createGuestQuoteWithProduct(UpSellingProductsApiTester $I): void
     {
-        $this->productConcreteTransferWithLabel = $I->haveFullProduct();
+        $this->productConcreteTransfer = $I->haveFullProduct();
 
-        $this->productLabelTransfer = $I->haveProductLabel();
-        $I->haveProductLabelToAbstractProductRelation(
-            $this->productLabelTransfer->getIdProductLabel(),
-            $this->productConcreteTransferWithLabel->getFkProductAbstract()
-        );
-
-        $this->guestCustomerReference = $this->createGuestCustomerReference();
+        $this->guestCustomerReference = uniqid('testReference', true);
         $customerTransfer = (new CustomerTransfer())
             ->setCustomerReference(static::ANONYMOUS_PREFIX . $this->guestCustomerReference);
-        $this->guestQuoteTransfer = $this->createPersistentQuote($I, $customerTransfer, [$this->productConcreteTransferWithLabel]);
+        $this->guestQuoteTransfer = $this->createPersistentQuote($I, $customerTransfer, [$this->productConcreteTransfer]);
     }
 
     /**
@@ -164,13 +118,9 @@ class GuestCartUpSellingProductsRestApiFixtures implements FixturesBuilderInterf
      *
      * @return void
      */
-    protected function createGuestQuoteWithUpSellingProductWithProductLabelRelationship(UpSellingProductsApiTester $I): void
+    protected function createUpSellingProduct(UpSellingProductsApiTester $I): void
     {
-        $this->productConcreteTransfer = $I->haveFullProduct();
-        $this->guestCustomerReferenceWithLabel = $this->createGuestCustomerReference();
-        $customerTransfer = (new CustomerTransfer())
-            ->setCustomerReference(static::ANONYMOUS_PREFIX . $this->guestCustomerReferenceWithLabel);
-        $this->guestQuoteTransferWithLabel = $this->createPersistentQuote($I, $customerTransfer, [$this->productConcreteTransfer]);
+        $this->upSellingProductConcreteTransfer = $I->haveFullProduct();
     }
 
     /**
@@ -181,21 +131,9 @@ class GuestCartUpSellingProductsRestApiFixtures implements FixturesBuilderInterf
     protected function createRelationBetweenProducts(UpSellingProductsApiTester $I): void
     {
         $I->haveProductRelation(
-            $this->productConcreteTransfer->getAbstractSku(),
-            $this->productConcreteTransferWithLabel->getFkProductAbstract()
-        );
-        $I->haveProductRelation(
-            $this->productConcreteTransferWithLabel->getAbstractSku(),
+            $this->upSellingProductConcreteTransfer->getAbstractSku(),
             $this->productConcreteTransfer->getFkProductAbstract()
         );
-    }
-
-    /**
-     * @return string
-     */
-    protected function createGuestCustomerReference(): string
-    {
-        return uniqid('testReference', true);
     }
 
     /**

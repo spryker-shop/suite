@@ -9,7 +9,6 @@ namespace PyzTest\Glue\Wishlists\RestApi;
 
 use Codeception\Util\HttpCode;
 use PyzTest\Glue\Wishlists\WishlistsApiTester;
-use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
 use Spryker\Glue\WishlistsRestApi\WishlistsRestApiConfig;
 
@@ -224,96 +223,6 @@ class WishlistRestApiCest
      *
      * @return void
      */
-    public function requestWishlistByUuidWithProductLabelsRelationship(WishlistsApiTester $I): void
-    {
-        // Arrange
-        $productConcreteSku = $this->fixtures->getProductConcreteTransferWithLabel()->getSku();
-        $idProductLabel = $this->fixtures->getProductLabelTransfer()->getIdProductLabel();
-        $oauthResponseTransfer = $I->haveAuthorizationToGlue($this->fixtures->getCustomerTransferWithLabel());
-        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
-        $url = $I->buildWishlistUrl(
-            $this->fixtures->getWishlistTransferWithLabel()->getUuid(),
-            [
-                WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
-                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            ]
-        );
-
-        // Act
-        $I->sendGET($url);
-
-        // Assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
-
-        $I->amSure('included resource has a relationship')
-            ->whenI()
-            ->seeIncludedResourceByTypeAndIdHasRelationshipByTypeAndId(
-                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                $productConcreteSku,
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                $idProductLabel
-            );
-
-        $I->amSure('returned resource has include')
-            ->whenI()
-            ->seeIncludesContainsResourceByTypeAndId(
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                $idProductLabel
-            );
-
-        $I->amSure('include has correct self-link')
-            ->whenI()
-            ->seeIncludedResourceByTypeAndIdHasSelfLink(
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                $idProductLabel,
-                $I->buildProductLabelUrl($idProductLabel)
-            );
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\Wishlists\WishlistsApiTester $I
-     *
-     * @return void
-     */
-    public function requestWishlistByUuidWithoutProductLabelsRelationship(WishlistsApiTester $I): void
-    {
-        // Arrange
-        $oauthResponseTransfer = $I->haveAuthorizationToGlue($this->fixtures->getCustomerTransfer());
-        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
-        $url = $I->buildWishlistUrl(
-            $this->fixtures->getWishlistTransfer()->getUuid(),
-            [
-                WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
-                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            ]
-        );
-
-        // Act
-        $I->sendGET($url);
-
-        // Assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
-
-        $I->amSure('returned resource does not have includes')
-            ->whenI()
-            ->dontSeeIncludesContainResourceOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS);
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\Wishlists\WishlistsApiTester $I
-     *
-     * @return void
-     */
     public function requestWishlistByNotExistingWishlistUuid(WishlistsApiTester $I): void
     {
         // Arrange
@@ -327,63 +236,5 @@ class WishlistRestApiCest
         $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\Wishlists\WishlistsApiTester $I
-     *
-     * @return void
-     */
-    public function requestWishlistByUuidWithProductLabelsRelationshipByPost(WishlistsApiTester $I): void
-    {
-        // Arrange
-        $oauthResponseTransfer = $I->haveAuthorizationToGlue($this->fixtures->getCustomerTransferWithLabel());
-        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
-        $url = $I->buildWishlistUrl(
-            $this->fixtures->getWishlistTransferWithLabel()->getUuid(),
-            [
-                WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
-                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            ]
-        );
-
-        // Act
-        $I->sendPOST($url);
-
-        // Assert
-        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
-        $I->seeResponseIsJson();
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\Wishlists\WishlistsApiTester $I
-     *
-     * @return void
-     */
-    public function requestWishlistByUuidWithProductLabelsRelationshipByPatch(WishlistsApiTester $I): void
-    {
-        // Arrange
-        $oauthResponseTransfer = $I->haveAuthorizationToGlue($this->fixtures->getCustomerTransferWithLabel());
-        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
-        $url = $I->buildWishlistUrl(
-            $this->fixtures->getWishlistTransferWithLabel()->getUuid(),
-            [
-                WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
-                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            ]
-        );
-
-        // Act
-        $I->sendPATCH($url);
-
-        // Assert
-        $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
-        $I->seeResponseIsJson();
     }
 }

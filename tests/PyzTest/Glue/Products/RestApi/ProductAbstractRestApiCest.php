@@ -11,7 +11,6 @@ use Codeception\Util\HttpCode;
 use Generated\Shared\Transfer\AbstractProductsRestAttributesTransfer;
 use PyzTest\Glue\Products\ProductsApiTester;
 use PyzTest\Glue\Products\RestApi\Fixtures\ProductsRestApiFixtures;
-use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
 use Spryker\Glue\ProductPricesRestApi\ProductPricesRestApiConfig;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
 
@@ -88,8 +87,7 @@ class ProductAbstractRestApiCest
     public function requestProductAbstract(ProductsApiTester $I): void
     {
         // Arrange
-        $productAbstractSku = $this->fixtures->getProductConcreteTransfer()->getAbstractSku();
-        $url = $I->buildProductAbstractUrl($productAbstractSku);
+        $url = $I->buildProductAbstractUrl($this->fixtures->getProductConcreteTransfer()->getAbstractSku());
 
         // Act
         $I->sendGET($url);
@@ -105,7 +103,7 @@ class ProductAbstractRestApiCest
 
         $I->amSure('The returned resource has correct id')
             ->whenI()
-            ->seeSingleResourceIdEqualTo($productAbstractSku);
+            ->seeSingleResourceIdEqualTo($this->fixtures->getProductConcreteTransfer()->getAbstractSku());
 
         $I->amSure('The returned resource has correct self-link')
             ->whenI()
@@ -126,8 +124,7 @@ class ProductAbstractRestApiCest
     public function requestProductAbstractWithProductConcreteRelationship(ProductsApiTester $I): void
     {
         // Arrange
-        $productConcreteTransfer = $this->fixtures->getProductConcreteTransferWithLabel();
-        $productConcreteSku = $productConcreteTransfer->getSku();
+        $productConcreteTransfer = $this->fixtures->getProductConcreteTransfer();
         $url = $I->buildProductAbstractUrl(
             $productConcreteTransfer->getAbstractSku(),
             [
@@ -147,152 +144,23 @@ class ProductAbstractRestApiCest
             ->whenI()
             ->seeSingleResourceHasRelationshipByTypeAndId(
                 ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                $productConcreteSku
+                $productConcreteTransfer->getSku()
             );
 
         $I->amSure('The returned resource has include')
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                $productConcreteSku
+                $productConcreteTransfer->getSku()
             );
 
         $I->amSure('The include has correct self-link')
             ->whenI()
             ->seeIncludedResourceByTypeAndIdHasSelfLink(
                 ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                $productConcreteSku,
-                $I->buildProductConcreteUrl($productConcreteSku)
+                $productConcreteTransfer->getSku(),
+                $I->buildProductConcreteUrl($productConcreteTransfer->getSku())
             );
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
-     *
-     * @return void
-     */
-    public function requestProductAbstractWithProductLabelsRelationship(ProductsApiTester $I): void
-    {
-        // Arrange
-        $idProductLabel = $this->fixtures->getProductLabelTransfer()->getIdProductLabel();
-        $url = $I->buildProductAbstractUrl(
-            $this->fixtures->getProductConcreteTransferWithLabel()->getAbstractSku(),
-            [
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            ]
-        );
-
-        // Act
-        $I->sendGET($url);
-
-        // Assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
-
-        $I->amSure('The returned resource has relationship')
-            ->whenI()
-            ->seeSingleResourceHasRelationshipByTypeAndId(
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                $idProductLabel
-            );
-
-        $I->amSure('The returned resource has include')
-            ->whenI()
-            ->seeIncludesContainsResourceByTypeAndId(
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                $idProductLabel
-            );
-
-        $I->amSure('The include has correct self-link')
-            ->whenI()
-            ->seeIncludedResourceByTypeAndIdHasSelfLink(
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                $idProductLabel,
-                $I->buildProductLabelUrl($idProductLabel)
-            );
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
-     *
-     * @return void
-     */
-    public function requestProductAbstractWithoutProductLabelsRelationship(ProductsApiTester $I): void
-    {
-        // Arrange
-        $url = $I->buildProductAbstractUrl(
-            $this->fixtures->getProductConcreteTransfer()->getAbstractSku(),
-            [
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            ]
-        );
-
-        // Act
-        $I->sendGET($url);
-
-        // Assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
-
-        $I->amSure('The returned resource does not have includes')
-            ->whenI()
-            ->dontSeeIncludesContainResourceOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS);
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
-     *
-     * @return void
-     */
-    public function requestProductAbstractWithProductLabelsRelationshipByPost(ProductsApiTester $I): void
-    {
-        // Arrange
-        $url = $I->buildProductAbstractUrl(
-            $this->fixtures->getProductConcreteTransferWithLabel()->getAbstractSku(),
-            [
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            ]
-        );
-
-        // Act
-        $I->sendPOST($url);
-
-        // Assert
-        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
-        $I->seeResponseIsJson();
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
-     *
-     * @return void
-     */
-    public function requestProductAbstractWithProductLabelRelationshipByPatch(ProductsApiTester $I): void
-    {
-        // Arrange
-        $url = $I->buildProductAbstractUrl(
-            $this->fixtures->getProductConcreteTransferWithLabel()->getAbstractSku(),
-            [
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            ]
-        );
-
-        // Act
-        $I->sendPATCH($url);
-
-        // Assert
-        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
-        $I->seeResponseIsJson();
     }
 
     /**

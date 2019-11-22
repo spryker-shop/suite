@@ -12,7 +12,6 @@ use Pyz\Glue\ProductsRestApi\ProductsRestApiConfig;
 use PyzTest\Glue\Carts\CartsApiTester;
 use PyzTest\Glue\Carts\RestApi\Fixtures\GuestCartsRestApiFixtures;
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
-use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
 
 /**
  * Auto-generated group annotations
@@ -237,100 +236,6 @@ class GuestCartsRestApiCest
      *
      * @return void
      */
-    public function requestGuestCartByUuidWithProductLabelsRelationship(CartsApiTester $I): void
-    {
-        // Arrange
-        $productConcreteSku = $this->fixtures->getProductConcreteTransferWithLabel()->getSku();
-        $idProductLabel = $this->fixtures->getProductLabelTransfer()->getIdProductLabel();
-        $url = $I->buildGuestCartUrl(
-            $this->fixtures->getGuestQuoteTransferWithLabel()->getUuid(),
-            [
-                CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            ]
-        );
-        $I->haveHttpHeader(
-            CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $this->fixtures->getGuestCustomerReferenceWithLabel()
-        );
-
-        // Act
-        $I->sendGET($url);
-
-        // Assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
-
-        $I->amSure('The included resource has a relationship')
-            ->whenI()
-            ->seeIncludedResourceByTypeAndIdHasRelationshipByTypeAndId(
-                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                $productConcreteSku,
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                $idProductLabel
-            );
-
-        $I->amSure('The returned resource has include')
-            ->whenI()
-            ->seeIncludesContainsResourceByTypeAndId(
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                $idProductLabel
-            );
-
-        $I->amSure('The include has correct self-link')
-            ->whenI()
-            ->seeIncludedResourceByTypeAndIdHasSelfLink(
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                $idProductLabel,
-                $I->buildProductLabelUrl($idProductLabel)
-            );
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     *
-     * @return void
-     */
-    public function requestGuestCartByUuidWithoutProductLabelsRelationship(CartsApiTester $I): void
-    {
-        // Arrange
-        $url = $I->buildGuestCartUrl(
-            $this->fixtures->getGuestQuoteTransfer()->getUuid(),
-            [
-                CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            ]
-        );
-        $I->haveHttpHeader(
-            CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $this->fixtures->getGuestCustomerReference()
-        );
-
-        // Act
-        $I->sendGET($url);
-
-        // Assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
-
-        $I->amSure('The returned resource does not have includes')
-            ->whenI()
-            ->dontSeeIncludesContainResourceOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS);
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     *
-     * @return void
-     */
     public function requestGuestCartByNotExistingGuestCartUuid(CartsApiTester $I): void
     {
         // Arrange
@@ -346,67 +251,5 @@ class GuestCartsRestApiCest
         $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     *
-     * @return void
-     */
-    public function requestGuestCartByUuidWithProductLabelsRelationshipByPost(CartsApiTester $I): void
-    {
-        // Arrange
-        $url = $I->buildGuestCartUrl(
-            $this->fixtures->getGuestQuoteTransferWithLabel()->getUuid(),
-            [
-                CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            ]
-        );
-        $I->haveHttpHeader(
-            CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $this->fixtures->getGuestCustomerReferenceWithLabel()
-        );
-
-        // Act
-        $I->sendPOST($url);
-
-        // Assert
-        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
-        $I->seeResponseIsJson();
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     *
-     * @return void
-     */
-    public function requestGuestCartByUuidWithProductLabelsRelationshipByPatch(CartsApiTester $I): void
-    {
-        // Arrange
-        $url = $I->buildGuestCartUrl(
-            $this->fixtures->getGuestQuoteTransferWithLabel()->getUuid(),
-            [
-                CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            ]
-        );
-        $I->haveHttpHeader(
-            CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
-            $this->fixtures->getGuestCustomerReferenceWithLabel()
-        );
-
-        // Act
-        $I->sendPATCH($url);
-
-        // Assert
-        $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
-        $I->seeResponseIsJson();
     }
 }

@@ -65,23 +65,6 @@ class CartsApiTester extends ApiEndToEndTester
     }
 
     /**
-     * @param int $idProductLabel
-     * @param string[] $includes
-     *
-     * @return string
-     */
-    public function buildProductLabelUrl(int $idProductLabel, array $includes = []): string
-    {
-        return $this->formatFullUrl(
-            '{resourceProductLabels}/{idProductLabel}' . $this->formatQueryInclude($includes),
-            [
-                'resourceProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                'idProductLabel' => $idProductLabel,
-            ]
-        );
-    }
-
-    /**
      * @param string[] $includes
      *
      * @return string

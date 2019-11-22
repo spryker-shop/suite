@@ -9,7 +9,6 @@ namespace PyzTest\Glue\AlternativeProducts\RestApi;
 
 use Codeception\Util\HttpCode;
 use PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester;
-use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
 
 /**
@@ -50,7 +49,7 @@ class ConcreteAlternativeProductsRestApiCest
     public function requestConcreteAlternativeProducts(AlternativeProductsRestApiTester $I): void
     {
         // Arrange
-        $productConcreteSku = $this->fixtures->getProductConcreteTransferWithLabel()->getSku();
+        $productConcreteSku = $this->fixtures->getAlternativeProductConcreteTransfer()->getSku();
         $url = $I->buildConcreteAlternativeProductsUrl($this->fixtures->getProductConcreteTransfer()->getSku());
 
         // Act
@@ -80,87 +79,6 @@ class ConcreteAlternativeProductsRestApiCest
      *
      * @return void
      */
-    public function requestConcreteAlternativeProductsWithProductLabelsRelationship(AlternativeProductsRestApiTester $I): void
-    {
-        // Arrange
-        $productConcreteSku = $this->fixtures->getProductConcreteTransferWithLabel()->getSku();
-        $idProductLabel = $this->fixtures->getProductLabelTransfer()->getIdProductLabel();
-        $url = $I->buildConcreteAlternativeProductsUrl(
-            $this->fixtures->getProductConcreteTransfer()->getSku(),
-            [
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            ]
-        );
-
-        // Act
-        $I->sendGET($url);
-
-        // Assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
-
-        $I->amSure('Resource has a relationship')
-            ->whenI()
-            ->seeResourceByIdHasRelationshipByTypeAndId(
-                $productConcreteSku,
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                $idProductLabel
-            );
-
-        $I->amSure('The returned resource has include')
-            ->whenI()
-            ->seeIncludesContainsResourceByTypeAndId(
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                $idProductLabel
-            );
-
-        $I->amSure('The include has correct self-link')
-            ->whenI()
-            ->seeIncludedResourceByTypeAndIdHasSelfLink(
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                $idProductLabel,
-                $I->buildProductLabelUrl($idProductLabel)
-            );
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester $I
-     *
-     * @return void
-     */
-    public function requestConcreteAlternativeProductsWithoutProductLabelsRelationship(AlternativeProductsRestApiTester $I): void
-    {
-        // Arrange
-        $url = $I->buildConcreteAlternativeProductsUrl(
-            $this->fixtures->getProductConcreteTransferWithLabel()->getSku(),
-            [
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            ]
-        );
-
-        // Act
-        $I->sendGET($url);
-
-        // Assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
-
-        $I->amSure('The returned resource does not have includes')
-            ->whenI()
-            ->dontSeeIncludesContainResourceOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS);
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester $I
-     *
-     * @return void
-     */
     public function requestConcreteAlternativeProductsByNotExistingProductConcreteSku(AlternativeProductsRestApiTester $I): void
     {
         // Act
@@ -170,80 +88,5 @@ class ConcreteAlternativeProductsRestApiCest
         $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester $I
-     *
-     * @return void
-     */
-    public function requestConcreteAlternativeProductsWithProductLabelsRelationshipByPost(AlternativeProductsRestApiTester $I): void
-    {
-        // Arrange
-        $url = $I->buildConcreteAlternativeProductsUrl(
-            $this->fixtures->getProductConcreteTransfer()->getSku(),
-            [
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            ]
-        );
-
-        // Act
-        $I->sendPOST($url);
-
-        // Assert
-        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
-        $I->seeResponseIsJson();
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester $I
-     *
-     * @return void
-     */
-    public function requestConcreteAlternativeProductsWithProductLabelsRelationshipByPatch(AlternativeProductsRestApiTester $I): void
-    {
-        // Arrange
-        $url = $I->buildConcreteAlternativeProductsUrl(
-            $this->fixtures->getProductConcreteTransfer()->getSku(),
-            [
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            ]
-        );
-
-        // Act
-        $I->sendPATCH($url);
-
-        // Assert
-        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
-        $I->seeResponseIsJson();
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester $I
-     *
-     * @return void
-     */
-    public function requestConcreteAlternativeProductsWithProductLabelsRelationshipByDelete(AlternativeProductsRestApiTester $I): void
-    {
-        // Arrange
-        $url = $I->buildConcreteAlternativeProductsUrl(
-            $this->fixtures->getProductConcreteTransfer()->getSku(),
-            [
-                ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            ]
-        );
-
-        // Act
-        $I->sendDELETE($url);
-
-        // Assert
-        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
-        $I->seeResponseIsJson();
     }
 }

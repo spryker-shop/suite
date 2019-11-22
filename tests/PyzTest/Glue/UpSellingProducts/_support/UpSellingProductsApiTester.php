@@ -9,7 +9,6 @@ namespace PyzTest\Glue\UpSellingProducts;
 
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
 use Spryker\Glue\GlueApplication\Rest\RequestConstantsInterface;
-use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
 use Spryker\Glue\UpSellingProductsRestApi\UpSellingProductsRestApiConfig;
 use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
@@ -97,40 +96,6 @@ class UpSellingProductsApiTester extends ApiEndToEndTester
             [
                 'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
                 'productAbstractSku' => $productAbstractSku,
-            ]
-        );
-    }
-
-    /**
-     * @param string $productConcreteSku
-     * @param string[] $includes
-     *
-     * @return string
-     */
-    public function buildProductConcreteUrl(string $productConcreteSku, array $includes = []): string
-    {
-        return $this->formatFullUrl(
-            '{resourceConcreteProducts}/{productConcreteSku}' . $this->formatQueryInclude($includes),
-            [
-                'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                'productConcreteSku' => $productConcreteSku,
-            ]
-        );
-    }
-
-    /**
-     * @param int $idProductLabel
-     * @param string[] $includes
-     *
-     * @return string
-     */
-    public function buildProductLabelUrl(int $idProductLabel, array $includes = []): string
-    {
-        return $this->formatFullUrl(
-            '{resourceProductLabels}/{idProductLabel}' . $this->formatQueryInclude($includes),
-            [
-                'resourceProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-                'idProductLabel' => $idProductLabel,
             ]
         );
     }
