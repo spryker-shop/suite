@@ -7,8 +7,6 @@
 
 namespace Pyz\Zed\Application;
 
-use Spryker\Zed\Api\Communication\Plugin\ApiServiceProviderPlugin;
-use Spryker\Zed\Api\Communication\Plugin\ServiceProvider\ApiRoutingServiceProvider;
 use Spryker\Zed\Application\ApplicationDependencyProvider as SprykerApplicationDependencyProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\SubRequestServiceProvider;
 use Spryker\Zed\ErrorHandler\Communication\Plugin\Application\ErrorHandlerApplicationPlugin;
@@ -43,22 +41,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
         ];
 
         $providers = array_merge($providers, $coreProviders);
-
-        return $providers;
-    }
-
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Silex\ServiceProviderInterface[]
-     */
-    protected function getApiServiceProviders(Container $container)
-    {
-        $providers = [
-            // Add Auth service providers
-            new ApiServiceProviderPlugin(),
-            new ApiRoutingServiceProvider(),
-        ];
 
         return $providers;
     }

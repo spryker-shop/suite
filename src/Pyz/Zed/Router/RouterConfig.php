@@ -18,7 +18,7 @@ class RouterConfig extends SprykerRouterConfig
     /**
      * @project Only required for nonsplit-repositories, do not use this in project.
      *
-     * @return array
+     * @return string[]
      */
     public function getControllerDirectories(): array
     {
