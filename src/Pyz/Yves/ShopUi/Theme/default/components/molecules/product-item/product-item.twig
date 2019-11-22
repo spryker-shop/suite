@@ -8,10 +8,7 @@
 {% block body %}
     {% block thumbnailWrapper %}
         {% set extraClass = 'js-product-color-group__image-' ~ data.idProductAbstract %}
-
-        {% block imageContainer %}
-            {{ parent() }}
-        {% endblock %}
+        {{ parent() }}
     {% endblock %}
 
     {% block labels %}
