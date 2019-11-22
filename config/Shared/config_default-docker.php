@@ -547,23 +547,21 @@ foreach ($rabbitConnections as $key => $connection) {
 /* End Broker */
 
 /* Search service */
-$config[SearchConstants::ELASTICA_PARAMETER__HOST] = getenv('SPRYKER_SEARCH_HOST');
+$config[SearchElasticsearchConstants::HOST] = getenv('SPRYKER_SEARCH_HOST');
 $ELASTICA_TRANSPORT_PROTOCOL = 'http';
-$config[SearchConstants::ELASTICA_PARAMETER__TRANSPORT] = $ELASTICA_TRANSPORT_PROTOCOL;
-$config[SearchConstants::ELASTICA_PARAMETER__PORT] = getenv('SPRYKER_SEARCH_PORT');
+$config[SearchElasticsearchConstants::TRANSPORT] = $ELASTICA_TRANSPORT_PROTOCOL;
+$config[SearchElasticsearchConstants::PORT] = getenv('SPRYKER_SEARCH_PORT');
 $ELASTICA_AUTH_HEADER = null;
-$config[SearchConstants::ELASTICA_PARAMETER__AUTH_HEADER] = $ELASTICA_AUTH_HEADER;
-$config[SearchConstants::ELASTICA_PARAMETER__INDEX_NAME] = getenv('SPRYKER_SEARCH_NAMESPACE');
+$config[SearchElasticsearchConstants::AUTH_HEADER] = $ELASTICA_AUTH_HEADER;
+$config[SearchElasticsearchConstants::EXTRA] = getenv('SPRYKER_SEARCH_NAMESPACE');
 $config[CollectorConstants::ELASTICA_PARAMETER__INDEX_NAME] = getenv('SPRYKER_SEARCH_NAMESPACE');
 $ELASTICA_DOCUMENT_TYPE = 'page';
-$config[SearchConstants::ELASTICA_PARAMETER__DOCUMENT_TYPE] = $ELASTICA_DOCUMENT_TYPE;
 $config[CollectorConstants::ELASTICA_PARAMETER__DOCUMENT_TYPE] = $ELASTICA_DOCUMENT_TYPE;
 $ELASTICA_PARAMETER__EXTRA = [];
-$config[SearchConstants::ELASTICA_PARAMETER__EXTRA] = $ELASTICA_PARAMETER__EXTRA;
+$config[SearchElasticsearchConstants::EXTRA] = $ELASTICA_PARAMETER__EXTRA;
 
 $config[SearchConstants::FULL_TEXT_BOOSTED_BOOSTING_VALUE]
     = $config[SearchElasticsearchConstants::FULL_TEXT_BOOSTED_BOOSTING_VALUE] = 3;
-$config[SearchConstants::SEARCH_INDEX_NAME_SUFFIX] = '';
 /* End Search service */
 
 // ---------- KV storage
