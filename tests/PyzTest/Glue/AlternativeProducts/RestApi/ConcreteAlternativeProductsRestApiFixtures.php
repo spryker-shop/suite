@@ -5,11 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace PyzTest\Glue\Products\RestApi\Fixtures;
+namespace PyzTest\Glue\AlternativeProducts\RestApi;
 
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\ProductLabelTransfer;
-use PyzTest\Glue\Products\ProductsApiTester;
+use Generated\Shared\Transfer\StockProductTransfer;
+use PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
@@ -18,7 +19,7 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  *
  * @group PyzTest
  * @group Glue
- * @group Products
+ * @group AlternativeProducts
  * @group RestApi
  * @group ConcreteAlternativeProductsRestApiFixtures
  * Add your own group annotations below this line
@@ -66,11 +67,11 @@ class ConcreteAlternativeProductsRestApiFixtures implements FixturesBuilderInter
     }
 
     /**
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     * @param \PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester $I
      *
      * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
-    public function buildFixtures(ProductsApiTester $I): FixturesContainerInterface
+    public function buildFixtures(AlternativeProductsRestApiTester $I): FixturesContainerInterface
     {
         $this->createProductConcrete($I);
         $this->createProductConcreteWithProductLabelRelationship($I);
@@ -80,23 +81,25 @@ class ConcreteAlternativeProductsRestApiFixtures implements FixturesBuilderInter
     }
 
     /**
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     * @param \PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester $I
      *
      * @return void
      */
-    protected function createProductConcrete(ProductsApiTester $I): void
+    protected function createProductConcrete(AlternativeProductsRestApiTester $I): void
     {
         $this->productConcreteTransfer = $I->haveFullProduct();
+        $I->haveProductInStock([StockProductTransfer::SKU => $this->productConcreteTransfer->getSku()]);
     }
 
     /**
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     * @param \PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester $I
      *
      * @return void
      */
-    protected function createProductConcreteWithProductLabelRelationship(ProductsApiTester $I): void
+    protected function createProductConcreteWithProductLabelRelationship(AlternativeProductsRestApiTester $I): void
     {
         $this->productConcreteTransferWithLabel = $I->haveFullProduct();
+        $I->haveProductInStock([StockProductTransfer::SKU => $this->productConcreteTransferWithLabel->getSku()]);
         $this->productLabelTransfer = $I->haveProductLabel();
         $I->haveProductLabelToAbstractProductRelation(
             $this->productLabelTransfer->getIdProductLabel(),
@@ -105,11 +108,11 @@ class ConcreteAlternativeProductsRestApiFixtures implements FixturesBuilderInter
     }
 
     /**
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     * @param \PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester $I
      *
      * @return void
      */
-    protected function createAlternativeRelationBetweenProducts(ProductsApiTester $I): void
+    protected function createAlternativeRelationBetweenProducts(AlternativeProductsRestApiTester $I): void
     {
         $I->haveProductAlternative($this->productConcreteTransfer, $this->productConcreteTransferWithLabel->getSku());
         $I->haveProductAlternative($this->productConcreteTransferWithLabel, $this->productConcreteTransfer->getSku());

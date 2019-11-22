@@ -5,13 +5,16 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace PyzTest\Glue\Carts\RestApi\Fixtures;
+namespace PyzTest\Glue\UpSellingProducts\RestApi;
 
 use Generated\Shared\Transfer\CustomerTransfer;
+use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\ProductLabelTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
-use PyzTest\Glue\Carts\CartsApiTester;
+use Generated\Shared\Transfer\StoreTransfer;
+use Generated\Shared\Transfer\TotalsTransfer;
+use PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
@@ -20,7 +23,7 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  *
  * @group PyzTest
  * @group Glue
- * @group Carts
+ * @group UpSellingProducts
  * @group RestApi
  * @group GuestCartsUpSellingProductsRestApiFixtures
  * Add your own group annotations below this line
@@ -28,8 +31,6 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  */
 class GuestCartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    use CartsRestApiFixturesTrait;
-
     /**
      * @var string
      */
@@ -122,11 +123,11 @@ class GuestCartUpSellingProductsRestApiFixtures implements FixturesBuilderInterf
     }
 
     /**
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
      *
      * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
-    public function buildFixtures(CartsApiTester $I): FixturesContainerInterface
+    public function buildFixtures(UpSellingProductsApiTester $I): FixturesContainerInterface
     {
         $this->createGuestQuoteWithUpSellingProduct($I);
         $this->createGuestQuoteWithUpSellingProductWithProductLabelRelationship($I);
@@ -136,11 +137,11 @@ class GuestCartUpSellingProductsRestApiFixtures implements FixturesBuilderInterf
     }
 
     /**
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
      *
      * @return void
      */
-    protected function createGuestQuoteWithUpSellingProduct(CartsApiTester $I): void
+    protected function createGuestQuoteWithUpSellingProduct(UpSellingProductsApiTester $I): void
     {
         $this->productConcreteTransferWithLabel = $I->haveFullProduct();
 
@@ -157,11 +158,11 @@ class GuestCartUpSellingProductsRestApiFixtures implements FixturesBuilderInterf
     }
 
     /**
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
      *
      * @return void
      */
-    protected function createGuestQuoteWithUpSellingProductWithProductLabelRelationship(CartsApiTester $I): void
+    protected function createGuestQuoteWithUpSellingProductWithProductLabelRelationship(UpSellingProductsApiTester $I): void
     {
         $this->productConcreteTransfer = $I->haveFullProduct();
         $this->guestCustomerReferenceWithLabel = $this->createGuestCustomerReference();
@@ -171,11 +172,11 @@ class GuestCartUpSellingProductsRestApiFixtures implements FixturesBuilderInterf
     }
 
     /**
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
      *
      * @return void
      */
-    protected function createRelationBetweenProducts(CartsApiTester $I): void
+    protected function createRelationBetweenProducts(UpSellingProductsApiTester $I): void
     {
         $I->haveProductRelation(
             $this->productConcreteTransfer->getAbstractSku(),
@@ -185,5 +186,53 @@ class GuestCartUpSellingProductsRestApiFixtures implements FixturesBuilderInterf
             $this->productConcreteTransferWithLabel->getAbstractSku(),
             $this->productConcreteTransfer->getFkProductAbstract()
         );
+    }
+
+    /**
+     * @return string
+     */
+    protected function createGuestCustomerReference(): string
+    {
+        return uniqid('testReference', true);
+    }
+
+    /**
+     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     * @param \Generated\Shared\Transfer\ProductConcreteTransfer[] $productConcreteTransfers
+     *
+     * @return \Generated\Shared\Transfer\QuoteTransfer
+     */
+    protected function createPersistentQuote(UpSellingProductsApiTester $I, CustomerTransfer $customerTransfer, array $productConcreteTransfers): QuoteTransfer
+    {
+        return $I->havePersistentQuote([
+            QuoteTransfer::CUSTOMER => $customerTransfer,
+            QuoteTransfer::TOTALS => (new TotalsTransfer())->setPriceToPay(random_int(1000, 10000)),
+            QuoteTransfer::ITEMS => $this->mapProductConcreteTransfersToQuoteTransferItems($productConcreteTransfers),
+            QuoteTransfer::STORE => [StoreTransfer::NAME => 'DE'],
+        ]);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ProductConcreteTransfer[] $productConcreteTransfers
+     *
+     * @return array
+     */
+    protected function mapProductConcreteTransfersToQuoteTransferItems(array $productConcreteTransfers): array
+    {
+        $quoteTransferItems = [];
+
+        foreach ($productConcreteTransfers as $productConcreteTransfer) {
+            $quoteTransferItems[] = [
+                ItemTransfer::SKU => $productConcreteTransfer->getSku(),
+                ItemTransfer::GROUP_KEY => $productConcreteTransfer->getSku(),
+                ItemTransfer::ABSTRACT_SKU => $productConcreteTransfer->getAbstractSku(),
+                ItemTransfer::ID_PRODUCT_ABSTRACT => $productConcreteTransfer->getFkProductAbstract(),
+                ItemTransfer::UNIT_PRICE => random_int(100, 1000),
+                ItemTransfer::QUANTITY => 5,
+            ];
+        }
+
+        return $quoteTransferItems;
     }
 }

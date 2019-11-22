@@ -5,12 +5,11 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace PyzTest\Glue\Carts\RestApi;
+namespace PyzTest\Glue\UpSellingProducts\RestApi;
 
 use Codeception\Util\HttpCode;
 use Pyz\Glue\ProductsRestApi\ProductsRestApiConfig;
-use PyzTest\Glue\Carts\CartsApiTester;
-use PyzTest\Glue\Carts\RestApi\Fixtures\CartUpSellingProductsRestApiFixtures;
+use PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester;
 use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
 
 /**
@@ -18,7 +17,7 @@ use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
  *
  * @group PyzTest
  * @group Glue
- * @group Carts
+ * @group UpSellingProducts
  * @group RestApi
  * @group CartUpSellingProductsRestApiCest
  * Add your own group annotations below this line
@@ -27,16 +26,16 @@ use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
 class CartUpSellingProductsRestApiCest
 {
     /**
-     * @var \PyzTest\Glue\Carts\RestApi\Fixtures\CartUpSellingProductsRestApiFixtures
+     * @var \PyzTest\Glue\UpSellingProducts\RestApi\CartUpSellingProductsRestApiFixtures
      */
     protected $fixtures;
 
     /**
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
      *
      * @return void
      */
-    public function loadFixtures(CartsApiTester $I): void
+    public function loadFixtures(UpSellingProductsApiTester $I): void
     {
         $this->fixtures = $I->loadFixtures(CartUpSellingProductsRestApiFixtures::class);
     }
@@ -44,11 +43,11 @@ class CartUpSellingProductsRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
      *
      * @return void
      */
-    public function requestCartUpSellingProducts(CartsApiTester $I): void
+    public function requestCartUpSellingProducts(UpSellingProductsApiTester $I): void
     {
         // Arrange
         $quoteTransfer = $this->fixtures->getQuoteTransfer();
@@ -59,17 +58,19 @@ class CartUpSellingProductsRestApiCest
         $I->sendGET($I->buildCartUpSellingProductsUrl($quoteTransfer->getUuid()));
 
         // Assert
-        $I->assertResponse(HttpCode::OK);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSureSeeResponseDataContainsResourceCollectionOfType(ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS)
+        $I->amSure('Response data contains resource collection')
             ->whenI()
             ->seeResponseDataContainsResourceCollectionOfType(ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS);
 
-        $I->amSureSeeResourceCollectionHasResourceWithId($productAbstractSku)
+        $I->amSure('Resource collection has resource')
             ->whenI()
             ->seeResourceCollectionHasResourceWithId($productAbstractSku);
 
-        $I->amSureSeeResourceByIdHasSelfLink($productAbstractSku)
+        $I->amSure('Resource has correct self-link')
             ->whenI()
             ->seeResourceByIdHasSelfLink(
                 $productAbstractSku,
@@ -80,11 +81,11 @@ class CartUpSellingProductsRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
      *
      * @return void
      */
-    public function requestCartUpSellingProductsWithProductConcreteRelationship(CartsApiTester $I): void
+    public function requestCartUpSellingProductsWithProductConcreteRelationship(UpSellingProductsApiTester $I): void
     {
         // Arrange
         $quoteTransfer = $this->fixtures->getQuoteTransfer();
@@ -98,13 +99,11 @@ class CartUpSellingProductsRestApiCest
         $I->sendGET($url);
 
         // Assert
-        $I->assertResponse(HttpCode::OK);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSureSeeResourceByIdHasRelationshipByTypeAndId(
-            $productAbstractSku,
-            ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-            $productConcreteSku
-        )
+        $I->amSure('Resource has a relationship')
             ->whenI()
             ->seeResourceByIdHasRelationshipByTypeAndId(
                 $productAbstractSku,
@@ -112,20 +111,14 @@ class CartUpSellingProductsRestApiCest
                 $productConcreteSku
             );
 
-        $I->amSureSeeIncludesContainsResourceByTypeAndId(
-            ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-            $productConcreteSku
-        )
+        $I->amSure('The returned resource has include')
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 $productConcreteSku
             );
 
-        $I->amSureSeeIncludedResourceByTypeAndIdHasSelfLink(
-            ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-            $productConcreteSku
-        )
+        $I->amSure('The include has correct self-link')
             ->whenI()
             ->seeIncludedResourceByTypeAndIdHasSelfLink(
                 ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
@@ -137,11 +130,11 @@ class CartUpSellingProductsRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
      *
      * @return void
      */
-    public function requestCartUpSellingProductsWithProductLabelsRelationship(CartsApiTester $I): void
+    public function requestCartUpSellingProductsWithProductLabelsRelationship(UpSellingProductsApiTester $I): void
     {
         // Arrange
         $quoteTransfer = $this->fixtures->getQuoteTransferWithLabel();
@@ -160,14 +153,11 @@ class CartUpSellingProductsRestApiCest
         $I->sendGET($url);
 
         // Assert
-        $I->assertResponse(HttpCode::OK);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSureSeeIncludedResourceByTypeAndIdHasRelationshipByTypeAndId(
-            ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-            $productConcreteSku,
-            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            $idProductLabel
-        )
+        $I->amSure('The included resource has a relationship')
             ->whenI()
             ->seeIncludedResourceByTypeAndIdHasRelationshipByTypeAndId(
                 ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
@@ -176,20 +166,14 @@ class CartUpSellingProductsRestApiCest
                 $idProductLabel
             );
 
-        $I->amSureSeeIncludesContainsResourceByTypeAndId(
-            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            $idProductLabel
-        )
+        $I->amSure('The returned resource has include')
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
                 $idProductLabel
             );
 
-        $I->amSureSeeIncludedResourceByTypeAndIdHasSelfLink(
-            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            $idProductLabel
-        )
+        $I->amSure('The include has correct self-link')
             ->whenI()
             ->seeIncludedResourceByTypeAndIdHasSelfLink(
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
@@ -201,11 +185,11 @@ class CartUpSellingProductsRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
      *
      * @return void
      */
-    public function requestCartUpSellingProductsWithoutProductLabelsRelationship(CartsApiTester $I): void
+    public function requestCartUpSellingProductsWithoutProductLabelsRelationship(UpSellingProductsApiTester $I): void
     {
         // Arrange
         $quoteTransfer = $this->fixtures->getQuoteTransfer();
@@ -222,9 +206,11 @@ class CartUpSellingProductsRestApiCest
         $I->sendGET($url);
 
         // Assert
-        $I->assertResponse(HttpCode::OK);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSureDontSeeIncludesContainResourceOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS)
+        $I->amSure('The returned resource does not have includes')
             ->whenI()
             ->dontSeeIncludesContainResourceOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS);
     }
@@ -232,11 +218,11 @@ class CartUpSellingProductsRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
      *
      * @return void
      */
-    public function requestCartUpSellingProductsByNotExistingCartUuid(CartsApiTester $I): void
+    public function requestCartUpSellingProductsByNotExistingCartUuid(UpSellingProductsApiTester $I): void
     {
         // Arrange
         $I->requestCustomerLogin($this->fixtures->getQuoteTransfer()->getCustomer());
@@ -245,17 +231,19 @@ class CartUpSellingProductsRestApiCest
         $I->sendGET($I->buildCartUpSellingProductsUrl('NotExistingUuid'));
 
         // Assert
-        $I->assertResponse(HttpCode::NOT_FOUND);
+        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
      *
      * @return void
      */
-    public function requestCartUpSellingProductsWithProductLabelsRelationshipByPost(CartsApiTester $I): void
+    public function requestCartUpSellingProductsWithProductLabelsRelationshipByPost(UpSellingProductsApiTester $I): void
     {
         // Arrange
         $quoteTransfer = $this->fixtures->getQuoteTransferWithLabel();
@@ -279,11 +267,11 @@ class CartUpSellingProductsRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
      *
      * @return void
      */
-    public function requestCartUpSellingProductsWithProductLabelsRelationshipByPatch(CartsApiTester $I): void
+    public function requestCartUpSellingProductsWithProductLabelsRelationshipByPatch(UpSellingProductsApiTester $I): void
     {
         // Arrange
         $quoteTransfer = $this->fixtures->getQuoteTransferWithLabel();
@@ -307,11 +295,11 @@ class CartUpSellingProductsRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
      *
      * @return void
      */
-    public function requestCartUpSellingProductsWithProductLabelsRelationshipByDelete(CartsApiTester $I): void
+    public function requestCartUpSellingProductsWithProductLabelsRelationshipByDelete(UpSellingProductsApiTester $I): void
     {
         // Arrange
         $quoteTransfer = $this->fixtures->getQuoteTransferWithLabel();

@@ -5,11 +5,11 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace PyzTest\Glue\Products\RestApi\Fixtures;
+namespace PyzTest\Glue\RelatedProducts\RestApi;
 
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\ProductLabelTransfer;
-use PyzTest\Glue\Products\ProductsApiTester;
+use PyzTest\Glue\RelatedProducts\RelatedProductsApiTester;
 use Spryker\Shared\ProductRelation\ProductRelationTypes;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
@@ -19,7 +19,7 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  *
  * @group PyzTest
  * @group Glue
- * @group Products
+ * @group RelatedProducts
  * @group RestApi
  * @group RelatedProductsRestApiFixtures
  * Add your own group annotations below this line
@@ -67,11 +67,11 @@ class RelatedProductsRestApiFixtures implements FixturesBuilderInterface, Fixtur
     }
 
     /**
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     * @param \PyzTest\Glue\RelatedProducts\RelatedProductsApiTester $I
      *
      * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
-    public function buildFixtures(ProductsApiTester $I): FixturesContainerInterface
+    public function buildFixtures(RelatedProductsApiTester $I): FixturesContainerInterface
     {
         $this->createProductConcrete($I);
         $this->createProductConcreteWithProductLabelRelationship($I);
@@ -81,21 +81,21 @@ class RelatedProductsRestApiFixtures implements FixturesBuilderInterface, Fixtur
     }
 
     /**
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     * @param \PyzTest\Glue\RelatedProducts\RelatedProductsApiTester $I
      *
      * @return void
      */
-    protected function createProductConcrete(ProductsApiTester $I): void
+    protected function createProductConcrete(RelatedProductsApiTester $I): void
     {
         $this->productConcreteTransfer = $I->haveFullProduct();
     }
 
     /**
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     * @param \PyzTest\Glue\RelatedProducts\RelatedProductsApiTester $I
      *
      * @return void
      */
-    protected function createProductConcreteWithProductLabelRelationship(ProductsApiTester $I): void
+    protected function createProductConcreteWithProductLabelRelationship(RelatedProductsApiTester $I): void
     {
         $this->productConcreteTransferWithLabel = $I->haveFullProduct();
         $this->productLabelTransfer = $I->haveProductLabel();
@@ -106,11 +106,11 @@ class RelatedProductsRestApiFixtures implements FixturesBuilderInterface, Fixtur
     }
 
     /**
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     * @param \PyzTest\Glue\RelatedProducts\RelatedProductsApiTester $I
      *
      * @return void
      */
-    protected function createRelationBetweenProducts(ProductsApiTester $I): void
+    protected function createRelationBetweenProducts(RelatedProductsApiTester $I): void
     {
         $I->haveProductRelation(
             $this->productConcreteTransferWithLabel->getAbstractSku(),

@@ -59,17 +59,19 @@ class ProductConcreteRestApiCest
         $I->sendGET($url);
 
         // Assert
-        $I->assertResponse(HttpCode::OK);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSureSeeResponseDataContainsSingleResourceOfType(ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS)
+        $I->amSure('The returned resource is of correct type')
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType(ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS);
 
-        $I->amSureSeeSingleResourceIdEqualTo($productConcreteSku)
+        $I->amSure('The returned resource has correct id')
             ->whenI()
             ->seeSingleResourceIdEqualTo($productConcreteSku);
 
-        $I->amSureSeeSingleResourceHasSelfLink()
+        $I->amSure('The returned resource has correct self-link')
             ->whenI()
             ->seeSingleResourceHasSelfLink($url);
     }
@@ -91,32 +93,25 @@ class ProductConcreteRestApiCest
         $I->sendGET($url);
 
         //assert
-        $I->assertResponse(HttpCode::OK);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSureSeeSingleResourceHasRelationshipByTypeAndId(
-            ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
-            $productConcreteSku
-        )
+        $I->amSure('The returned resource has relationship')
             ->whenI()
             ->seeSingleResourceHasRelationshipByTypeAndId(
                 ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
                 $productConcreteSku
             );
 
-        $I->amSureSeeIncludesContainsResourceByTypeAndId(
-            ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
-            $productConcreteSku
-        )
+        $I->amSure('The returned resource has include')
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
                 $productConcreteSku
             );
 
-        $I->amSureSeeIncludedResourceByTypeAndIdHasSelfLink(
-            ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
-            $productConcreteSku
-        )
+        $I->amSure('The include has correct self-link')
             ->whenI()
             ->seeIncludedResourceByTypeAndIdHasSelfLink(
                 ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
@@ -147,32 +142,25 @@ class ProductConcreteRestApiCest
         $I->sendGET($url);
 
         // Assert
-        $I->assertResponse(HttpCode::OK);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSureSeeSingleResourceHasRelationshipByTypeAndId(
-            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            $idProductLabel
-        )
+        $I->amSure('The returned resource has relationship')
             ->whenI()
             ->seeSingleResourceHasRelationshipByTypeAndId(
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
                 $idProductLabel
             );
 
-        $I->amSureSeeIncludesContainsResourceByTypeAndId(
-            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            $idProductLabel
-        )
+        $I->amSure('The returned resource has include')
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
                 $idProductLabel
             );
 
-        $I->amSureSeeIncludedResourceByTypeAndIdHasSelfLink(
-            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            $idProductLabel
-        )
+        $I->amSure('The include has correct self-link')
             ->whenI()
             ->seeIncludedResourceByTypeAndIdHasSelfLink(
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
@@ -202,9 +190,11 @@ class ProductConcreteRestApiCest
         $I->sendGET($url);
 
         // Assert
-        $I->assertResponse(HttpCode::OK);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSureDontSeeIncludesContainResourceOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS)
+        $I->amSure('The returned resource does not have includes')
             ->whenI()
             ->dontSeeIncludesContainResourceOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS);
     }
@@ -222,7 +212,9 @@ class ProductConcreteRestApiCest
         $I->sendGET($I->buildProductConcreteUrl('NotExistingSku'));
 
         // Assert
-        $I->assertResponse(HttpCode::NOT_FOUND);
+        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**

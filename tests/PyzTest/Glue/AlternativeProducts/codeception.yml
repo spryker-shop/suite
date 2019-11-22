@@ -1,4 +1,4 @@
-namespace: PyzTest\Glue\Wishlists
+namespace: PyzTest\Glue\AlternativeProducts
 
 paths:
     tests: .
@@ -13,7 +13,7 @@ coverage:
 
 suites:
     RestApi:
-        class_name: WishlistsApiTester
+        class_name: AlternativeProductsRestApiTester
         modules:
             enabled:
                 - \PyzTest\Shared\Testify\Helper\Environment
@@ -26,10 +26,9 @@ suites:
                 - \SprykerTest\Glue\Testify\Helper\JsonPath
                 - \SprykerTest\Shared\Product\Helper\ProductDataHelper
                 - \SprykerTest\Zed\ProductLabel\Helper\ProductLabelDataHelper
-                - \SprykerTest\Shared\Wishlist\Helper\WishlistDataHelper
-                - \SprykerTest\Shared\Customer\Helper\CustomerDataHelper
-                - \SprykerTest\Shared\Testify\Helper\DependencyHelper
-                - \SprykerTest\Glue\AuthRestApi\Helper\AuthRestApiHelper
+                - \SprykerTest\Zed\ProductAttribute\Helper\ProductAttributeDataHelper
+                - \SprykerTest\Shared\ProductAlternative\Helper\ProductAlternativeDataHelper
+                - \SprykerTest\Shared\Stock\Helper\StockDataHelper
             config:
                 \SprykerTest\Glue\Testify\Helper\GlueRest:
                     depends: PhpBrowser

@@ -61,17 +61,19 @@ class WishlistRestApiCest
         $I->sendGET($url);
 
         // Assert
-        $I->assertResponse(HttpCode::OK);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSureSeeResponseDataContainsSingleResourceOfType(WishlistsRestApiConfig::RESOURCE_WISHLISTS)
+        $I->amSure('The returned resource is of correct type')
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType(WishlistsRestApiConfig::RESOURCE_WISHLISTS);
 
-        $I->amSureSeeSingleResourceIdEqualTo($wishlistUuid)
+        $I->amSure('The returned resource has correct id')
             ->whenI()
             ->seeSingleResourceIdEqualTo($wishlistUuid);
 
-        $I->amSureSeeSingleResourceHasSelfLink()
+        $I->amSure('The returned resource has correct self-link')
             ->whenI()
             ->seeSingleResourceHasSelfLink($url);
     }
@@ -92,17 +94,19 @@ class WishlistRestApiCest
         $I->sendGET($I->buildWishlistsUrl());
 
         // Assert
-        $I->assertResponse(HttpCode::OK);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSureSeeResponseDataContainsResourceCollectionOfType(WishlistsRestApiConfig::RESOURCE_WISHLISTS)
+        $I->amSure('Response data contains resource collection')
             ->whenI()
             ->seeResponseDataContainsResourceCollectionOfType(WishlistsRestApiConfig::RESOURCE_WISHLISTS);
 
-        $I->amSureSeeResourceCollectionHasResourceWithId($wishlistUuid)
+        $I->amSure('Resource collection has resource')
             ->whenI()
             ->seeResourceCollectionHasResourceWithId($wishlistUuid);
 
-        $I->amSureSeeResourceByIdHasSelfLink($wishlistUuid)
+        $I->amSure('Resource has correct self-link')
             ->whenI()
             ->seeResourceByIdHasSelfLink($wishlistUuid, $I->buildWishlistUrl($wishlistUuid));
     }
@@ -132,32 +136,25 @@ class WishlistRestApiCest
         $I->sendGET($url);
 
         // Assert
-        $I->assertResponse(HttpCode::OK);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSureSeeSingleResourceHasRelationshipByTypeAndId(
-            WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
-            $productConcreteSku
-        )
+        $I->amSure('The returned resource has relationship')
             ->whenI()
             ->seeSingleResourceHasRelationshipByTypeAndId(
                 WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
                 $productConcreteSku
             );
 
-        $I->amSureSeeIncludesContainsResourceByTypeAndId(
-            WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
-            $productConcreteSku
-        )
+        $I->amSure('The returned resource has include')
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
                 $productConcreteSku
             );
 
-        $I->amSureSeeIncludedResourceByTypeAndIdHasSelfLink(
-            WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
-            $productConcreteSku
-        )
+        $I->amSure('The include has correct self-link')
             ->whenI()
             ->seeIncludedResourceByTypeAndIdHasSelfLink(
                 WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
@@ -190,14 +187,11 @@ class WishlistRestApiCest
         $I->sendGET($url);
 
         // Assert
-        $I->assertResponse(HttpCode::OK);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSureSeeIncludedResourceByTypeAndIdHasRelationshipByTypeAndId(
-            WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
-            $productConcreteSku,
-            ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-            $productConcreteSku
-        )
+        $I->amSure('The included resource has a relationship')
             ->whenI()
             ->seeIncludedResourceByTypeAndIdHasRelationshipByTypeAndId(
                 WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
@@ -206,20 +200,14 @@ class WishlistRestApiCest
                 $productConcreteSku
             );
 
-        $I->amSureSeeIncludesContainsResourceByTypeAndId(
-            ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-            $productConcreteSku
-        )
+        $I->amSure('The returned resource has include')
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 $productConcreteSku
             );
 
-        $I->amSureSeeIncludedResourceByTypeAndIdHasSelfLink(
-            ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-            $productConcreteSku
-        )
+        $I->amSure('The include has correct self-link')
             ->whenI()
             ->seeIncludedResourceByTypeAndIdHasSelfLink(
                 ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
@@ -254,14 +242,11 @@ class WishlistRestApiCest
         $I->sendGET($url);
 
         // Assert
-        $I->assertResponse(HttpCode::OK);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSureSeeIncludedResourceByTypeAndIdHasRelationshipByTypeAndId(
-            ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-            $productConcreteSku,
-            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            $idProductLabel
-        )
+        $I->amSure('The included resource has a relationship')
             ->whenI()
             ->seeIncludedResourceByTypeAndIdHasRelationshipByTypeAndId(
                 ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
@@ -270,20 +255,14 @@ class WishlistRestApiCest
                 $idProductLabel
             );
 
-        $I->amSureSeeIncludesContainsResourceByTypeAndId(
-            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            $idProductLabel
-        )
+        $I->amSure('The returned resource has include')
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
                 $idProductLabel
             );
 
-        $I->amSureSeeIncludedResourceByTypeAndIdHasSelfLink(
-            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            $idProductLabel
-        )
+        $I->amSure('The include has correct self-link')
             ->whenI()
             ->seeIncludedResourceByTypeAndIdHasSelfLink(
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
@@ -316,9 +295,11 @@ class WishlistRestApiCest
         $I->sendGET($url);
 
         // Assert
-        $I->assertResponse(HttpCode::OK);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSureDontSeeIncludesContainResourceOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS)
+        $I->amSure('The returned resource does not have includes')
             ->whenI()
             ->dontSeeIncludesContainResourceOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS);
     }
@@ -339,7 +320,9 @@ class WishlistRestApiCest
         $I->sendGET($I->buildWishlistUrl('NotExistingUuid'));
 
         // Assert
-        $I->assertResponse(HttpCode::NOT_FOUND);
+        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**

@@ -59,20 +59,19 @@ class ConvertGuestCartToCustomerCartRestApiCest
         $I->sendGET($url);
 
         // Assert
-        $I->assertResponse(HttpCode::OK);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSureSeeResponseDataContainsSingleResourceOfType(CartsRestApiConfig::RESOURCE_CARTS)
+        $I->amSure('The returned resource is of correct type')
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType(CartsRestApiConfig::RESOURCE_CARTS);
 
-        $I->amSureSeeSingleResourceIdEqualTo($quoteUuid)
+        $I->amSure('The returned resource has correct id')
             ->whenI()
             ->seeSingleResourceIdEqualTo($quoteUuid);
 
-        $I->amSureSeeSingleResourceHasRelationshipByTypeAndId(
-            CartsRestApiConfig::RESOURCE_CART_ITEMS,
-            $productConcreteSku
-        )
+        $I->amSure('The returned resource has relationship')
             ->whenI()
             ->seeSingleResourceHasRelationshipByTypeAndId(
                 CartsRestApiConfig::RESOURCE_CART_ITEMS,
@@ -96,7 +95,9 @@ class ConvertGuestCartToCustomerCartRestApiCest
         $I->sendGET($I->buildGuestCartsUrl());
 
         // Assert
-        $I->assertResponse(HttpCode::OK);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
         $I->seeResponseDataContainsEmptyCollection();
     }
 

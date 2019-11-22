@@ -5,11 +5,10 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace PyzTest\Glue\Products\RestApi;
+namespace PyzTest\Glue\AlternativeProducts\RestApi;
 
 use Codeception\Util\HttpCode;
-use PyzTest\Glue\Products\ProductsApiTester;
-use PyzTest\Glue\Products\RestApi\Fixtures\ConcreteAlternativeProductsRestApiFixtures;
+use PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester;
 use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
 
@@ -18,7 +17,7 @@ use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
  *
  * @group PyzTest
  * @group Glue
- * @group Products
+ * @group AlternativeProducts
  * @group RestApi
  * @group ConcreteAlternativeProductsRestApiCest
  * Add your own group annotations below this line
@@ -27,16 +26,16 @@ use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
 class ConcreteAlternativeProductsRestApiCest
 {
     /**
-     * @var \PyzTest\Glue\Products\RestApi\Fixtures\ConcreteAlternativeProductsRestApiFixtures
+     * @var \PyzTest\Glue\AlternativeProducts\RestApi\ConcreteAlternativeProductsRestApiFixtures
      */
     protected $fixtures;
 
     /**
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     * @param \PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester $I
      *
      * @return void
      */
-    public function loadFixtures(ProductsApiTester $I): void
+    public function loadFixtures(AlternativeProductsRestApiTester $I): void
     {
         $this->fixtures = $I->loadFixtures(ConcreteAlternativeProductsRestApiFixtures::class);
     }
@@ -44,11 +43,11 @@ class ConcreteAlternativeProductsRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     * @param \PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester $I
      *
      * @return void
      */
-    public function requestConcreteAlternativeProducts(ProductsApiTester $I): void
+    public function requestConcreteAlternativeProducts(AlternativeProductsRestApiTester $I): void
     {
         // Arrange
         $productConcreteSku = $this->fixtures->getProductConcreteTransferWithLabel()->getSku();
@@ -57,17 +56,19 @@ class ConcreteAlternativeProductsRestApiCest
         // Act
         $I->sendGET($url);
 
-        $I->assertResponse(HttpCode::OK);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSureSeeResponseDataContainsResourceCollectionOfType(ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS)
+        $I->amSure('Response data contains resource collection')
             ->whenI()
             ->seeResponseDataContainsResourceCollectionOfType(ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS);
 
-        $I->amSureSeeResourceCollectionHasResourceWithId($productConcreteSku)
+        $I->amSure('Resource collection has resource')
             ->whenI()
             ->seeResourceCollectionHasResourceWithId($productConcreteSku);
 
-        $I->amSureSeeResourceByIdHasSelfLink($productConcreteSku)
+        $I->amSure('Resource has correct self-link')
             ->whenI()
             ->seeResourceByIdHasSelfLink($productConcreteSku, $I->buildProductConcreteUrl($productConcreteSku));
     }
@@ -75,11 +76,11 @@ class ConcreteAlternativeProductsRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     * @param \PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester $I
      *
      * @return void
      */
-    public function requestConcreteAlternativeProductsWithProductLabelsRelationship(ProductsApiTester $I): void
+    public function requestConcreteAlternativeProductsWithProductLabelsRelationship(AlternativeProductsRestApiTester $I): void
     {
         // Arrange
         $productConcreteSku = $this->fixtures->getProductConcreteTransferWithLabel()->getSku();
@@ -95,13 +96,11 @@ class ConcreteAlternativeProductsRestApiCest
         $I->sendGET($url);
 
         // Assert
-        $I->assertResponse(HttpCode::OK);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSureSeeResourceByIdHasRelationshipByTypeAndId(
-            $productConcreteSku,
-            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            $idProductLabel
-        )
+        $I->amSure('Resource has a relationship')
             ->whenI()
             ->seeResourceByIdHasRelationshipByTypeAndId(
                 $productConcreteSku,
@@ -109,20 +108,14 @@ class ConcreteAlternativeProductsRestApiCest
                 $idProductLabel
             );
 
-        $I->amSureSeeIncludesContainsResourceByTypeAndId(
-            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            $idProductLabel
-        )
+        $I->amSure('The returned resource has include')
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
                 $idProductLabel
             );
 
-        $I->amSureSeeIncludedResourceByTypeAndIdHasSelfLink(
-            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            $idProductLabel
-        )
+        $I->amSure('The include has correct self-link')
             ->whenI()
             ->seeIncludedResourceByTypeAndIdHasSelfLink(
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
@@ -134,11 +127,11 @@ class ConcreteAlternativeProductsRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     * @param \PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester $I
      *
      * @return void
      */
-    public function requestConcreteAlternativeProductsWithoutProductLabelsRelationship(ProductsApiTester $I): void
+    public function requestConcreteAlternativeProductsWithoutProductLabelsRelationship(AlternativeProductsRestApiTester $I): void
     {
         // Arrange
         $url = $I->buildConcreteAlternativeProductsUrl(
@@ -152,9 +145,11 @@ class ConcreteAlternativeProductsRestApiCest
         $I->sendGET($url);
 
         // Assert
-        $I->assertResponse(HttpCode::OK);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSureDontSeeIncludesContainResourceOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS)
+        $I->amSure('The returned resource does not have includes')
             ->whenI()
             ->dontSeeIncludesContainResourceOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS);
     }
@@ -162,27 +157,29 @@ class ConcreteAlternativeProductsRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     * @param \PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester $I
      *
      * @return void
      */
-    public function requestConcreteAlternativeProductsByNotExistingProductConcreteSku(ProductsApiTester $I): void
+    public function requestConcreteAlternativeProductsByNotExistingProductConcreteSku(AlternativeProductsRestApiTester $I): void
     {
         // Act
         $I->sendGET($I->buildConcreteAlternativeProductsUrl('NotExistingSku'));
 
         // Assert
-        $I->assertResponse(HttpCode::NOT_FOUND);
+        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     * @param \PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester $I
      *
      * @return void
      */
-    public function requestConcreteAlternativeProductsWithProductLabelsRelationshipByPost(ProductsApiTester $I): void
+    public function requestConcreteAlternativeProductsWithProductLabelsRelationshipByPost(AlternativeProductsRestApiTester $I): void
     {
         // Arrange
         $url = $I->buildConcreteAlternativeProductsUrl(
@@ -203,11 +200,11 @@ class ConcreteAlternativeProductsRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     * @param \PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester $I
      *
      * @return void
      */
-    public function requestConcreteAlternativeProductsWithProductLabelsRelationshipByPatch(ProductsApiTester $I): void
+    public function requestConcreteAlternativeProductsWithProductLabelsRelationshipByPatch(AlternativeProductsRestApiTester $I): void
     {
         // Arrange
         $url = $I->buildConcreteAlternativeProductsUrl(
@@ -228,11 +225,11 @@ class ConcreteAlternativeProductsRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     * @param \PyzTest\Glue\AlternativeProducts\AlternativeProductsRestApiTester $I
      *
      * @return void
      */
-    public function requestConcreteAlternativeProductsWithProductLabelsRelationshipByDelete(ProductsApiTester $I): void
+    public function requestConcreteAlternativeProductsWithProductLabelsRelationshipByDelete(AlternativeProductsRestApiTester $I): void
     {
         // Arrange
         $url = $I->buildConcreteAlternativeProductsUrl(

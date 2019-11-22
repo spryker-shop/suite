@@ -5,11 +5,10 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace PyzTest\Glue\Products\RestApi;
+namespace PyzTest\Glue\RelatedProducts\RestApi;
 
 use Codeception\Util\HttpCode;
-use PyzTest\Glue\Products\ProductsApiTester;
-use PyzTest\Glue\Products\RestApi\Fixtures\RelatedProductsRestApiFixtures;
+use PyzTest\Glue\RelatedProducts\RelatedProductsApiTester;
 use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
 
@@ -18,7 +17,7 @@ use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
  *
  * @group PyzTest
  * @group Glue
- * @group Products
+ * @group RelatedProducts
  * @group RestApi
  * @group RelatedProductsRestApiCest
  * Add your own group annotations below this line
@@ -27,16 +26,16 @@ use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
 class RelatedProductsRestApiCest
 {
     /**
-     * @var \PyzTest\Glue\Products\RestApi\Fixtures\RelatedProductsRestApiFixtures
+     * @var \PyzTest\Glue\RelatedProducts\RestApi\RelatedProductsRestApiFixtures
      */
     protected $fixtures;
 
     /**
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     * @param \PyzTest\Glue\RelatedProducts\RelatedProductsApiTester $I
      *
      * @return void
      */
-    public function loadFixtures(ProductsApiTester $I): void
+    public function loadFixtures(RelatedProductsApiTester $I): void
     {
         $this->fixtures = $I->loadFixtures(RelatedProductsRestApiFixtures::class);
     }
@@ -44,11 +43,11 @@ class RelatedProductsRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     * @param \PyzTest\Glue\RelatedProducts\RelatedProductsApiTester $I
      *
      * @return void
      */
-    public function requestRelatedProducts(ProductsApiTester $I): void
+    public function requestRelatedProducts(RelatedProductsApiTester $I): void
     {
         // Arrange
         $productAbstractSku = $this->fixtures->getProductConcreteTransfer()->getAbstractSku();
@@ -58,17 +57,19 @@ class RelatedProductsRestApiCest
         $I->sendGET($url);
 
         // Assert
-        $I->assertResponse(HttpCode::OK);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSureSeeResponseDataContainsResourceCollectionOfType(ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS)
+        $I->amSure('Response data contains resource collection')
             ->whenI()
             ->seeResponseDataContainsResourceCollectionOfType(ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS);
 
-        $I->amSureSeeResourceCollectionHasResourceWithId($productAbstractSku)
+        $I->amSure('Resource collection has resource')
             ->whenI()
             ->seeResourceCollectionHasResourceWithId($productAbstractSku);
 
-        $I->amSureSeeResourceByIdHasSelfLink($productAbstractSku)
+        $I->amSure('Resource has correct self-link')
             ->whenI()
             ->seeResourceByIdHasSelfLink($productAbstractSku, $I->buildProductAbstractUrl($productAbstractSku));
     }
@@ -76,11 +77,11 @@ class RelatedProductsRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     * @param \PyzTest\Glue\RelatedProducts\RelatedProductsApiTester $I
      *
      * @return void
      */
-    public function requestRelatedProductsWithProductLabelsRelationship(ProductsApiTester $I): void
+    public function requestRelatedProductsWithProductLabelsRelationship(RelatedProductsApiTester $I): void
     {
         // Arrange
         $productAbstractSku = $this->fixtures->getProductConcreteTransferWithLabel()->getAbstractSku();
@@ -96,13 +97,11 @@ class RelatedProductsRestApiCest
         $I->sendGET($url);
 
         // Assert
-        $I->assertResponse(HttpCode::OK);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSureSeeResourceByIdHasRelationshipByTypeAndId(
-            $productAbstractSku,
-            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            $idProductLabel
-        )
+        $I->amSure('Resource has a relationship')
             ->whenI()
             ->seeResourceByIdHasRelationshipByTypeAndId(
                 $productAbstractSku,
@@ -110,20 +109,14 @@ class RelatedProductsRestApiCest
                 $idProductLabel
             );
 
-        $I->amSureSeeIncludesContainsResourceByTypeAndId(
-            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            $idProductLabel
-        )
+        $I->amSure('The returned resource has include')
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
                 $idProductLabel
             );
 
-        $I->amSureSeeIncludedResourceByTypeAndIdHasSelfLink(
-            ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
-            $idProductLabel
-        )
+        $I->amSure('The include has correct self-link')
             ->whenI()
             ->seeIncludedResourceByTypeAndIdHasSelfLink(
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
@@ -135,11 +128,11 @@ class RelatedProductsRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     * @param \PyzTest\Glue\RelatedProducts\RelatedProductsApiTester $I
      *
      * @return void
      */
-    public function requestRelatedProductsWithoutProductLabelRelationship(ProductsApiTester $I): void
+    public function requestRelatedProductsWithoutProductLabelRelationship(RelatedProductsApiTester $I): void
     {
         // Arrange
         $url = $I->buildRelatedProductsUrl(
@@ -153,9 +146,11 @@ class RelatedProductsRestApiCest
         $I->sendGET($url);
 
         // Assert
-        $I->assertResponse(HttpCode::OK);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSureDontSeeIncludesContainResourceOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS)
+        $I->amSure('The returned resource does not have includes')
             ->whenI()
             ->dontSeeIncludesContainResourceOfType(ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS);
     }
@@ -163,27 +158,29 @@ class RelatedProductsRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     * @param \PyzTest\Glue\RelatedProducts\RelatedProductsApiTester $I
      *
      * @return void
      */
-    public function requestRelatedProductsByNotExistingProductAbstractSku(ProductsApiTester $I): void
+    public function requestRelatedProductsByNotExistingProductAbstractSku(RelatedProductsApiTester $I): void
     {
         // Act
         $I->sendGET($I->buildRelatedProductsUrl('NotExistingSku'));
 
         // Assert
-        $I->assertResponse(HttpCode::NOT_FOUND);
+        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     * @param \PyzTest\Glue\RelatedProducts\RelatedProductsApiTester $I
      *
      * @return void
      */
-    public function requestProductRelatedWithProductLabelsRelationshipByPost(ProductsApiTester $I): void
+    public function requestProductRelatedWithProductLabelsRelationshipByPost(RelatedProductsApiTester $I): void
     {
         // Arrange
         $url = $I->buildRelatedProductsUrl(
@@ -204,11 +201,11 @@ class RelatedProductsRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     * @param \PyzTest\Glue\RelatedProducts\RelatedProductsApiTester $I
      *
      * @return void
      */
-    public function requestExistingProductRelatedWithProductLabelRelationshipByPatch(ProductsApiTester $I): void
+    public function requestExistingProductRelatedWithProductLabelRelationshipByPatch(RelatedProductsApiTester $I): void
     {
         // Arrange
         $url = $I->buildRelatedProductsUrl(
@@ -229,11 +226,11 @@ class RelatedProductsRestApiCest
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\Products\ProductsApiTester $I
+     * @param \PyzTest\Glue\RelatedProducts\RelatedProductsApiTester $I
      *
      * @return void
      */
-    public function requestExistingProductRelatedWithProductLabelRelationshipByDelete(ProductsApiTester $I): void
+    public function requestExistingProductRelatedWithProductLabelRelationshipByDelete(RelatedProductsApiTester $I): void
     {
         // Arrange
         $url = $I->buildRelatedProductsUrl(

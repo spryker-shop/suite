@@ -41,8 +41,7 @@ class WishlistsApiTester extends ApiEndToEndTester
      */
     public function requestCustomerLogin(CustomerTransfer $customerTransfer): void
     {
-        $token = $this->haveAuth($customerTransfer)
-            ->getAccessToken();
+        $token = $this->haveAuthorizationToGlue($customerTransfer)->getAccessToken();
         $this->amBearerAuthenticated($token);
     }
 

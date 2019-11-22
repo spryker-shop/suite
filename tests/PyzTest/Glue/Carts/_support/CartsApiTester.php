@@ -12,7 +12,6 @@ use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
 use Spryker\Glue\GlueApplication\Rest\RequestConstantsInterface;
 use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
-use Spryker\Glue\UpSellingProductsRestApi\UpSellingProductsRestApiConfig;
 use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
 
 /**
@@ -44,8 +43,7 @@ class CartsApiTester extends ApiEndToEndTester
      */
     public function requestCustomerLogin(CustomerTransfer $customerTransfer): void
     {
-        $token = $this->haveAuth($customerTransfer)
-            ->getAccessToken();
+        $token = $this->haveAuthorizationToGlue($customerTransfer)->getAccessToken();
         $this->amBearerAuthenticated($token);
     }
 
@@ -61,23 +59,6 @@ class CartsApiTester extends ApiEndToEndTester
         }
 
         return sprintf('?%s=%s', RequestConstantsInterface::QUERY_INCLUDE, implode(',', $includes));
-    }
-
-    /**
-     * @param string $productAbstractSku
-     * @param string[] $includes
-     *
-     * @return string
-     */
-    public function buildProductAbstractUrl(string $productAbstractSku, array $includes = []): string
-    {
-        return $this->formatFullUrl(
-            '{resourceAbstractProducts}/{productAbstractSku}' . $this->formatQueryInclude($includes),
-            [
-                'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
-                'productAbstractSku' => $productAbstractSku,
-            ]
-        );
     }
 
     /**
@@ -167,24 +148,6 @@ class CartsApiTester extends ApiEndToEndTester
     }
 
     /**
-     * @param string $cartUuid
-     * @param string[] $includes
-     *
-     * @return string
-     */
-    public function buildCartUpSellingProductsUrl(string $cartUuid, array $includes = []): string
-    {
-        return $this->formatFullUrl(
-            '{resourceCarts}/{cartUuid}/{resourceUpSellingProducts}' . $this->formatQueryInclude($includes),
-            [
-                'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                'resourceUpSellingProducts' => UpSellingProductsRestApiConfig::RELATIONSHIP_NAME_UP_SELLING_PRODUCTS,
-                'cartUuid' => $cartUuid,
-            ]
-        );
-    }
-
-    /**
      * @param string[] $includes
      *
      * @return string
@@ -232,24 +195,6 @@ class CartsApiTester extends ApiEndToEndTester
                 'guestCartUuid' => $guestCartUuid,
                 'resourceGuestCartItems' => CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
                 'guestCartItemGroupKey' => $guestCartItemGroupKey,
-            ]
-        );
-    }
-
-    /**
-     * @param string $cartUuid
-     * @param string[] $includes
-     *
-     * @return string
-     */
-    public function buildGuestCartUpSellingProductsUrl(string $cartUuid, array $includes = []): string
-    {
-        return $this->formatFullUrl(
-            '{resourceGuestCarts}/{cartUuid}/{resourceUpSellingProducts}' . $this->formatQueryInclude($includes),
-            [
-                'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-                'resourceUpSellingProducts' => UpSellingProductsRestApiConfig::RELATIONSHIP_NAME_UP_SELLING_PRODUCTS,
-                'cartUuid' => $cartUuid,
             ]
         );
     }
