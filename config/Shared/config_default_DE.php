@@ -123,10 +123,3 @@ $config[KernelConstants::DOMAIN_WHITELIST] = [
     $config[ApplicationConstants::HOST_YVES],
     $config[ApplicationConstants::HOST_ZED],
 ];
-
-// ----------- Search
-$config[SearchConstants::INDEX_NAME_MAP] = [
-    'page' => 'de_page',
-    'product-review' => 'de_product-review',
-    'customer-page' => 'de_customer-page',
-];
