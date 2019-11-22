@@ -55,7 +55,8 @@ class CartsRestApiCest
         $quoteTransfer = $this->fixtures->getQuoteTransfer();
         $quoteUuid = $quoteTransfer->getUuid();
         $url = $I->buildCartUrl($quoteUuid);
-        $I->requestCustomerLogin($quoteTransfer->getCustomer());
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
 
         // Act
         $I->sendGET($url);
@@ -90,7 +91,8 @@ class CartsRestApiCest
         // Arrange
         $quoteTransfer = $this->fixtures->getQuoteTransfer();
         $quoteUuid = $quoteTransfer->getUuid();
-        $I->requestCustomerLogin($quoteTransfer->getCustomer());
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
 
         // Act
         $I->sendGET($I->buildCartsUrl());
@@ -126,7 +128,8 @@ class CartsRestApiCest
         $quoteTransfer = $this->fixtures->getQuoteTransfer();
         $quoteUuid = $quoteTransfer->getUuid();
         $cartItemGroupKey = $quoteTransfer->getItems()->offsetGet(0)->getGroupKey();
-        $I->requestCustomerLogin($quoteTransfer->getCustomer());
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
 
         // Act
         $I->sendGET($I->buildCartUrl($quoteUuid, [CartsRestApiConfig::RESOURCE_CART_ITEMS]));
@@ -179,7 +182,8 @@ class CartsRestApiCest
                 ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
             ]
         );
-        $I->requestCustomerLogin($quoteTransfer->getCustomer());
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
 
         // Act
         $I->sendGET($url);
@@ -235,7 +239,8 @@ class CartsRestApiCest
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
             ]
         );
-        $I->requestCustomerLogin($quoteTransfer->getCustomer());
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
 
         // Act
         $I->sendGET($url);
@@ -289,7 +294,8 @@ class CartsRestApiCest
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
             ]
         );
-        $I->requestCustomerLogin($quoteTransfer->getCustomer());
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
 
         // Act
         $I->sendGET($url);
@@ -314,7 +320,8 @@ class CartsRestApiCest
     public function requestCartByNotExistingCartUuid(CartsApiTester $I): void
     {
         // Arrange
-        $I->requestCustomerLogin($this->fixtures->getQuoteTransferWithLabel()->getCustomer());
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($this->fixtures->getQuoteTransferWithLabel()->getCustomer());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
 
         // Act
         $I->sendGET($I->buildCartUrl('NotExistingUuid'));
@@ -344,7 +351,8 @@ class CartsRestApiCest
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
             ]
         );
-        $I->requestCustomerLogin($quoteTransfer->getCustomer());
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
 
         // Act
         $I->sendPOST($url);
@@ -373,7 +381,8 @@ class CartsRestApiCest
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
             ]
         );
-        $I->requestCustomerLogin($quoteTransfer->getCustomer());
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
 
         // Act
         $I->sendPATCH($url);

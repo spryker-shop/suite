@@ -52,7 +52,8 @@ class CartUpSellingProductsRestApiCest
         // Arrange
         $quoteTransfer = $this->fixtures->getQuoteTransfer();
         $productAbstractSku = $this->fixtures->getProductConcreteTransfer()->getAbstractSku();
-        $I->requestCustomerLogin($quoteTransfer->getCustomer());
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
 
         // Act
         $I->sendGET($I->buildCartUpSellingProductsUrl($quoteTransfer->getUuid()));
@@ -93,7 +94,8 @@ class CartUpSellingProductsRestApiCest
         $productAbstractSku = $productConcreteTransfer->getAbstractSku();
         $productConcreteSku = $productConcreteTransfer->getSku();
         $url = $I->buildCartUpSellingProductsUrl($quoteTransfer->getUuid(), [ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS]);
-        $I->requestCustomerLogin($quoteTransfer->getCustomer());
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
 
         // Act
         $I->sendGET($url);
@@ -147,7 +149,8 @@ class CartUpSellingProductsRestApiCest
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
             ]
         );
-        $I->requestCustomerLogin($quoteTransfer->getCustomer());
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
 
         // Act
         $I->sendGET($url);
@@ -200,7 +203,8 @@ class CartUpSellingProductsRestApiCest
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
             ]
         );
-        $I->requestCustomerLogin($quoteTransfer->getCustomer());
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
 
         // Act
         $I->sendGET($url);
@@ -225,7 +229,8 @@ class CartUpSellingProductsRestApiCest
     public function requestCartUpSellingProductsByNotExistingCartUuid(UpSellingProductsApiTester $I): void
     {
         // Arrange
-        $I->requestCustomerLogin($this->fixtures->getQuoteTransfer()->getCustomer());
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($this->fixtures->getQuoteTransfer()->getCustomer());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
 
         // Act
         $I->sendGET($I->buildCartUpSellingProductsUrl('NotExistingUuid'));
@@ -254,7 +259,8 @@ class CartUpSellingProductsRestApiCest
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
             ]
         );
-        $I->requestCustomerLogin($quoteTransfer->getCustomer());
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
 
         // Act
         $I->sendPOST($url);
@@ -282,7 +288,8 @@ class CartUpSellingProductsRestApiCest
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
             ]
         );
-        $I->requestCustomerLogin($quoteTransfer->getCustomer());
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
 
         // Act
         $I->sendPATCH($url);
@@ -310,7 +317,8 @@ class CartUpSellingProductsRestApiCest
                 ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
             ]
         );
-        $I->requestCustomerLogin($quoteTransfer->getCustomer());
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
 
         // Act
         $I->sendDELETE($url);

@@ -30,6 +30,8 @@ class GuestCartsRestApiFixtures implements FixturesBuilderInterface, FixturesCon
 {
     use CartsRestApiFixturesTrait;
 
+    protected const ANONYMOUS_PREFIX = 'anonymous:';
+
     /**
      * @var string
      */
@@ -144,7 +146,7 @@ class GuestCartsRestApiFixtures implements FixturesBuilderInterface, FixturesCon
         $this->productConcreteTransfer = $I->haveFullProduct();
         $this->guestCustomerReference = $this->createGuestCustomerReference();
         $guestCustomerTransfer = (new CustomerTransfer())
-            ->setCustomerReference($I::ANONYMOUS_PREFIX . $this->guestCustomerReference);
+            ->setCustomerReference(static::ANONYMOUS_PREFIX . $this->guestCustomerReference);
         $this->guestQuoteTransfer = $this->createPersistentQuote($I, $guestCustomerTransfer, [$this->productConcreteTransfer]);
     }
 
@@ -165,7 +167,7 @@ class GuestCartsRestApiFixtures implements FixturesBuilderInterface, FixturesCon
 
         $this->guestCustomerReferenceWithLabel = $this->createGuestCustomerReference();
         $guestCustomerTransferWithLabel = (new CustomerTransfer())
-            ->setCustomerReference($I::ANONYMOUS_PREFIX . $this->guestCustomerReferenceWithLabel);
+            ->setCustomerReference(static::ANONYMOUS_PREFIX . $this->guestCustomerReferenceWithLabel);
         $this->guestQuoteTransferWithLabel = $this->createPersistentQuote($I, $guestCustomerTransferWithLabel, [$this->productConcreteTransferWithLabel]);
     }
 }

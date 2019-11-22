@@ -25,6 +25,8 @@ use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
  */
 class ConvertGuestCartToCustomerCartRestApiCest
 {
+    protected const ANONYMOUS_PREFIX = 'anonymous:';
+
     /**
      * @var \PyzTest\Glue\Carts\RestApi\Fixtures\ConvertGuestCartToCustomerCartRestApiFixtures
      */
@@ -113,7 +115,7 @@ class ConvertGuestCartToCustomerCartRestApiCest
         $I->haveHttpHeader(CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID, $this->fixtures->getGuestCustomerReference());
         $token = $I->haveAuthorizationToGlue(
             $this->fixtures->getCustomerTransfer(),
-            $I::ANONYMOUS_PREFIX . $this->fixtures->getGuestCustomerReference()
+            static::ANONYMOUS_PREFIX . $this->fixtures->getGuestCustomerReference()
         )->getAccessToken();
 
         $I->amBearerAuthenticated($token);

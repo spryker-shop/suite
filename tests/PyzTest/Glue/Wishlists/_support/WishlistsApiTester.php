@@ -7,7 +7,6 @@
 
 namespace PyzTest\Glue\Wishlists;
 
-use Generated\Shared\Transfer\CustomerTransfer;
 use Spryker\Glue\GlueApplication\Rest\RequestConstantsInterface;
 use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
@@ -35,17 +34,6 @@ class WishlistsApiTester extends ApiEndToEndTester
     use _generated\WishlistsApiTesterActions;
 
     /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return void
-     */
-    public function requestCustomerLogin(CustomerTransfer $customerTransfer): void
-    {
-        $token = $this->haveAuthorizationToGlue($customerTransfer)->getAccessToken();
-        $this->amBearerAuthenticated($token);
-    }
-
-    /**
      * @param string[] $includes
      *
      * @return string
@@ -57,6 +45,58 @@ class WishlistsApiTester extends ApiEndToEndTester
         }
 
         return sprintf('?%s=%s', RequestConstantsInterface::QUERY_INCLUDE, implode(',', $includes));
+    }
+
+    /**
+     * @param string[] $includes
+     *
+     * @return string
+     */
+    public function buildWishlistsUrl(array $includes = []): string
+    {
+        return $this->formatFullUrl(
+            '{resourceWishlists}' . $this->formatQueryInclude($includes),
+            [
+                'resourceWishlists' => WishlistsRestApiConfig::RESOURCE_WISHLISTS,
+            ]
+        );
+    }
+
+    /**
+     * @param string $wishlistUuid
+     * @param string[] $includes
+     *
+     * @return string
+     */
+    public function buildWishlistUrl(string $wishlistUuid, array $includes = []): string
+    {
+        return $this->formatFullUrl(
+            '{resourceWishlists}/{wishlistUuid}' . $this->formatQueryInclude($includes),
+            [
+                'resourceWishlists' => WishlistsRestApiConfig::RESOURCE_WISHLISTS,
+                'wishlistUuid' => $wishlistUuid,
+            ]
+        );
+    }
+
+    /**
+     * @param string $wishlistUuid
+     * @param string $productConcreteSku
+     * @param string[] $includes
+     *
+     * @return string
+     */
+    public function buildWishlistItemUrl(string $wishlistUuid, string $productConcreteSku, array $includes = []): string
+    {
+        return $this->formatFullUrl(
+            '{resourceWishlists}/{wishlistUuid}/{resourceWishlistItems}/{productConcreteSku}' . $this->formatQueryInclude($includes),
+            [
+                'resourceWishlists' => WishlistsRestApiConfig::RESOURCE_WISHLISTS,
+                'wishlistUuid' => $wishlistUuid,
+                'resourceWishlistItems' => WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
+                'productConcreteSku' => $productConcreteSku,
+            ]
+        );
     }
 
     /**
@@ -89,58 +129,6 @@ class WishlistsApiTester extends ApiEndToEndTester
             [
                 'resourceProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
                 'idProductLabel' => $idProductLabel,
-            ]
-        );
-    }
-
-    /**
-     * @param string $wishlistUuid
-     * @param string[] $includes
-     *
-     * @return string
-     */
-    public function buildWishlistUrl(string $wishlistUuid, array $includes = []): string
-    {
-        return $this->formatFullUrl(
-            '{resourceWishlists}/{wishlistUuid}' . $this->formatQueryInclude($includes),
-            [
-                'resourceWishlists' => WishlistsRestApiConfig::RESOURCE_WISHLISTS,
-                'wishlistUuid' => $wishlistUuid,
-            ]
-        );
-    }
-
-    /**
-     * @param string[] $includes
-     *
-     * @return string
-     */
-    public function buildWishlistsUrl(array $includes = []): string
-    {
-        return $this->formatFullUrl(
-            '{resourceWishlists}' . $this->formatQueryInclude($includes),
-            [
-                'resourceWishlists' => WishlistsRestApiConfig::RESOURCE_WISHLISTS,
-            ]
-        );
-    }
-
-    /**
-     * @param string $wishlistUuid
-     * @param string $productConcreteSku
-     * @param string[] $includes
-     *
-     * @return string
-     */
-    public function buildWishlistItemUrl(string $wishlistUuid, string $productConcreteSku, array $includes = []): string
-    {
-        return $this->formatFullUrl(
-            '{resourceWishlists}/{wishlistUuid}/{resourceWishlistItems}/{productConcreteSku}' . $this->formatQueryInclude($includes),
-            [
-                'resourceWishlists' => WishlistsRestApiConfig::RESOURCE_WISHLISTS,
-                'wishlistUuid' => $wishlistUuid,
-                'resourceWishlistItems' => WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
-                'productConcreteSku' => $productConcreteSku,
             ]
         );
     }

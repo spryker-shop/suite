@@ -52,7 +52,8 @@ class WishlistRestApiCest
     {
         // Arrange
         $wishlistUuid = $this->fixtures->getWishlistTransfer()->getUuid();
-        $I->requestCustomerLogin($this->fixtures->getCustomerTransfer());
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($this->fixtures->getCustomerTransfer());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
         $url = $I->buildWishlistUrl($wishlistUuid);
 
         // Act
@@ -85,7 +86,8 @@ class WishlistRestApiCest
      */
     public function requestWishlists(WishlistsApiTester $I): void
     {
-        $I->requestCustomerLogin($this->fixtures->getCustomerTransfer());
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($this->fixtures->getCustomerTransfer());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
         $wishlistUuid = $this->fixtures->getWishlistTransfer()->getUuid();
 
         // Act
@@ -121,7 +123,8 @@ class WishlistRestApiCest
         // Arrange
         $wishlistUuid = $this->fixtures->getWishlistTransfer()->getUuid();
         $productConcreteSku = $this->fixtures->getProductConcreteTransfer()->getSku();
-        $I->requestCustomerLogin($this->fixtures->getCustomerTransfer());
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($this->fixtures->getCustomerTransfer());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
         $url = $I->buildWishlistUrl(
             $wishlistUuid,
             [
@@ -171,7 +174,8 @@ class WishlistRestApiCest
     {
         // Arrange
         $productConcreteSku = $this->fixtures->getProductConcreteTransfer()->getSku();
-        $I->requestCustomerLogin($this->fixtures->getCustomerTransfer());
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($this->fixtures->getCustomerTransfer());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
         $url = $I->buildWishlistUrl(
             $this->fixtures->getWishlistTransfer()->getUuid(),
             [
@@ -225,7 +229,8 @@ class WishlistRestApiCest
         // Arrange
         $productConcreteSku = $this->fixtures->getProductConcreteTransferWithLabel()->getSku();
         $idProductLabel = $this->fixtures->getProductLabelTransfer()->getIdProductLabel();
-        $I->requestCustomerLogin($this->fixtures->getCustomerTransferWithLabel());
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($this->fixtures->getCustomerTransferWithLabel());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
         $url = $I->buildWishlistUrl(
             $this->fixtures->getWishlistTransferWithLabel()->getUuid(),
             [
@@ -278,7 +283,8 @@ class WishlistRestApiCest
     public function requestWishlistByUuidWithoutProductLabelsRelationship(WishlistsApiTester $I): void
     {
         // Arrange
-        $I->requestCustomerLogin($this->fixtures->getCustomerTransfer());
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($this->fixtures->getCustomerTransfer());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
         $url = $I->buildWishlistUrl(
             $this->fixtures->getWishlistTransfer()->getUuid(),
             [
@@ -311,7 +317,8 @@ class WishlistRestApiCest
     public function requestWishlistByNotExistingWishlistUuid(WishlistsApiTester $I): void
     {
         // Arrange
-        $I->requestCustomerLogin($this->fixtures->getCustomerTransfer());
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($this->fixtures->getCustomerTransfer());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
 
         // Act
         $I->sendGET($I->buildWishlistUrl('NotExistingUuid'));
@@ -332,7 +339,8 @@ class WishlistRestApiCest
     public function requestWishlistByUuidWithProductLabelsRelationshipByPost(WishlistsApiTester $I): void
     {
         // Arrange
-        $I->requestCustomerLogin($this->fixtures->getCustomerTransferWithLabel());
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($this->fixtures->getCustomerTransferWithLabel());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
         $url = $I->buildWishlistUrl(
             $this->fixtures->getWishlistTransferWithLabel()->getUuid(),
             [
@@ -360,7 +368,8 @@ class WishlistRestApiCest
     public function requestWishlistByUuidWithProductLabelsRelationshipByPatch(WishlistsApiTester $I): void
     {
         // Arrange
-        $I->requestCustomerLogin($this->fixtures->getCustomerTransferWithLabel());
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($this->fixtures->getCustomerTransferWithLabel());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
         $url = $I->buildWishlistUrl(
             $this->fixtures->getWishlistTransferWithLabel()->getUuid(),
             [

@@ -7,7 +7,6 @@
 
 namespace PyzTest\Glue\Carts;
 
-use Generated\Shared\Transfer\CustomerTransfer;
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
 use Spryker\Glue\GlueApplication\Rest\RequestConstantsInterface;
 use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
@@ -33,19 +32,6 @@ use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
 class CartsApiTester extends ApiEndToEndTester
 {
     use _generated\CartsApiTesterActions;
-
-    public const ANONYMOUS_PREFIX = 'anonymous:';
-
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return void
-     */
-    public function requestCustomerLogin(CustomerTransfer $customerTransfer): void
-    {
-        $token = $this->haveAuthorizationToGlue($customerTransfer)->getAccessToken();
-        $this->amBearerAuthenticated($token);
-    }
 
     /**
      * @param string[] $includes

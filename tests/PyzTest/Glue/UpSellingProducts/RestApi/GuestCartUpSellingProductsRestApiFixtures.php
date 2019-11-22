@@ -31,6 +31,8 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  */
 class GuestCartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
+    protected const ANONYMOUS_PREFIX = 'anonymous:';
+
     /**
      * @var string
      */
@@ -153,7 +155,7 @@ class GuestCartUpSellingProductsRestApiFixtures implements FixturesBuilderInterf
 
         $this->guestCustomerReference = $this->createGuestCustomerReference();
         $customerTransfer = (new CustomerTransfer())
-            ->setCustomerReference($I::ANONYMOUS_PREFIX . $this->guestCustomerReference);
+            ->setCustomerReference(static::ANONYMOUS_PREFIX . $this->guestCustomerReference);
         $this->guestQuoteTransfer = $this->createPersistentQuote($I, $customerTransfer, [$this->productConcreteTransferWithLabel]);
     }
 
@@ -167,7 +169,7 @@ class GuestCartUpSellingProductsRestApiFixtures implements FixturesBuilderInterf
         $this->productConcreteTransfer = $I->haveFullProduct();
         $this->guestCustomerReferenceWithLabel = $this->createGuestCustomerReference();
         $customerTransfer = (new CustomerTransfer())
-            ->setCustomerReference($I::ANONYMOUS_PREFIX . $this->guestCustomerReferenceWithLabel);
+            ->setCustomerReference(static::ANONYMOUS_PREFIX . $this->guestCustomerReferenceWithLabel);
         $this->guestQuoteTransferWithLabel = $this->createPersistentQuote($I, $customerTransfer, [$this->productConcreteTransfer]);
     }
 
