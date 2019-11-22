@@ -7,7 +7,7 @@
 
 namespace Pyz\Yves\ProductColorGroupWidget;
 
-use SprykerShop\Yves\CartPage\Plugin\ProductColorGroupWidget\CartPageProductViewExpanderPlugin;
+use SprykerShop\Yves\CartPage\Plugin\ProductColorGroupWidget\AddToCartUrlProductViewExpanderPlugin;
 use SprykerShop\Yves\ProductColorGroupWidget\ProductColorGroupWidgetDependencyProvider as SprykerShopProductColorGroupWidgetDependencyProvider;
 use SprykerShop\Yves\ProductReviewWidget\Plugin\ProductColorGroupWidget\ProductReviewPageProductViewExpanderPlugin;
 
@@ -19,7 +19,7 @@ class ProductColorGroupWidgetDependencyProvider extends SprykerShopProductColorG
     protected function getProductViewExpanderPlugins(): array
     {
         return [
-            new CartPageProductViewExpanderPlugin(),
+            new AddToCartUrlProductViewExpanderPlugin(),
             new ProductReviewPageProductViewExpanderPlugin(),
         ];
     }
