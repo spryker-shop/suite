@@ -9,7 +9,6 @@ namespace PyzTest\Glue\Carts;
 
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
 use Spryker\Glue\GlueApplication\Rest\RequestConstantsInterface;
-use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
 use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
 
