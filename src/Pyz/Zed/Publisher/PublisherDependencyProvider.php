@@ -8,7 +8,7 @@
 namespace Pyz\Zed\Publisher;
 
 use Pyz\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryStoragePublisherRegistryPlugin;
-use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryResourcePublisherPlugin;
+use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryKey\GlossaryPublisherTriggerPlugin;
 use Spryker\Zed\Publisher\PublisherDependencyProvider as SprykerPublisherDependencyProvider;
 
 class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
@@ -24,12 +24,12 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\PublisherExtension\Dependency\Plugin\ResourcePublisherPluginInterface[]
+     * @return \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherTriggerPluginInterface[]
      */
     protected function getResourcePublisherPlugins(): array
     {
         return [
-            new GlossaryResourcePublisherPlugin(),
+            new GlossaryPublisherTriggerPlugin(),
         ];
     }
 }

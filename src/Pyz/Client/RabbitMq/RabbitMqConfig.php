@@ -61,7 +61,7 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
                 EventConfig::EVENT_ROUTING_KEY_RETRY => EventConstants::EVENT_QUEUE_RETRY,
                 EventConfig::EVENT_ROUTING_KEY_ERROR => EventConstants::EVENT_QUEUE_ERROR,
             ],
-            GlossaryStorageConfig::SYNC_QUEUE,
+            GlossaryStorageConfig::SYNC_QUEUE_NAME,
             UrlStorageConstants::URL_SYNC_STORAGE_QUEUE,
             AvailabilityStorageConstants::AVAILABILITY_SYNC_STORAGE_QUEUE,
             CustomerAccessStorageConstants::CUSTOMER_ACCESS_SYNC_STORAGE_QUEUE,
