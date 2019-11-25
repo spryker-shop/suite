@@ -13,6 +13,7 @@ use Spryker\Zed\ProductPageSearch\Communication\Plugin\Search\ProductConcretePag
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\Search\ProductPageMapPlugin;
 use Spryker\Zed\ProductSetPageSearch\Communication\Plugin\Search\ProductSetPageMapPlugin;
 use Spryker\Zed\Search\SearchDependencyProvider as SprykerSearchDependencyProvider;
+use Spryker\Zed\SearchElasticsearch\Communication\Plugin\Search\ElasticsearchDataMapperPlugin;
 use Spryker\Zed\SearchElasticsearch\Communication\Plugin\Search\ElasticsearchIndexInstallerPlugin;
 use Spryker\Zed\SearchElasticsearch\Communication\Plugin\Search\ElasticsearchIndexMapInstallerPlugin;
 
@@ -49,6 +50,16 @@ class SearchDependencyProvider extends SprykerSearchDependencyProvider
     {
         return [
             new ElasticsearchIndexMapInstallerPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\SearchExtension\Dependency\Plugin\DataMapperPluginInterface[]
+     */
+    protected function getSearchDataMapperPlugins(): array
+    {
+        return [
+            new ElasticsearchDataMapperPlugin(),
         ];
     }
 }
