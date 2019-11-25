@@ -9,6 +9,8 @@ namespace Pyz\Yves\Form;
 
 use Spryker\Yves\Form\FormDependencyProvider as SprykerFormDependencyProvider;
 use Spryker\Yves\Form\Plugin\Form\CsrfFormPlugin;
+use Spryker\Yves\Http\Plugin\Form\HttpFoundationTypeExtensionFormPlugin;
+use Spryker\Yves\Validator\Plugin\Form\ValidatorExtensionFormPlugin;
 use SprykerShop\Yves\WebProfilerWidget\Plugin\Form\WebProfilerFormPlugin;
 
 class FormDependencyProvider extends SprykerFormDependencyProvider
@@ -19,6 +21,8 @@ class FormDependencyProvider extends SprykerFormDependencyProvider
     protected function getFormPlugins(): array
     {
         return [
+            new ValidatorExtensionFormPlugin(),
+            new HttpFoundationTypeExtensionFormPlugin(),
             new CsrfFormPlugin(),
             new WebProfilerFormPlugin(),
         ];
