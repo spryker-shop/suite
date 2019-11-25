@@ -9,7 +9,7 @@ namespace Pyz\Service\PriceProduct;
 
 use Spryker\Service\PriceProduct\PriceProductDependencyProvider as SprykerPriceProductDependencyProvider;
 use Spryker\Service\PriceProductMerchantRelationship\Plugin\PriceProductExtension\MerchantRelationshipPriceProductFilterPlugin;
-use Spryker\Service\PriceProductOfferStorage\Plugin\PriceProductExtension\OfferPriceProductFilterPlugin;
+use Spryker\Service\PriceProductOfferStorage\Plugin\PriceProductExtension\ProductOfferPriceProductFilterPlugin;
 use Spryker\Service\PriceProductVolume\Plugin\PriceProductExtension\PriceProductVolumeFilterPlugin;
 
 class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvider
@@ -26,7 +26,7 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
 
             // Should be placed after PriceProductVolumeFilterPlugin
             new MerchantRelationshipPriceProductFilterPlugin(),
-            new OfferPriceProductFilterPlugin(),
+            new ProductOfferPriceProductFilterPlugin(),
         ], parent::getPriceProductDecisionPlugins());
     }
 }
