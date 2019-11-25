@@ -9,7 +9,6 @@ use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\ProductManagement\ProductManagementConstants;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
-use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 
@@ -113,11 +112,4 @@ $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
 $config[KernelConstants::DOMAIN_WHITELIST] = [
     $config[ApplicationConstants::HOST_YVES],
     $config[ApplicationConstants::HOST_ZED],
-];
-
-// ----------- Search
-$config[SearchConstants::INDEX_NAME_MAP] = [
-    'page' => 'at_page',
-    'product-review' => 'at_product-review',
-    'customer-page' => 'at_customer-page',
 ];

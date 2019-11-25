@@ -73,7 +73,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     }
 
     /**
-     * @return \Spryker\Client\Search\Dependency\Plugin\QueryInterface
+     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface
      */
     protected function createCatalogSearchQueryPlugin()
     {
@@ -81,7 +81,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     }
 
     /**
-     * @return \Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface[]
+     * @return \Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface[]|\Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface[]
      */
     protected function createCatalogSearchQueryExpanderPlugins()
     {
@@ -121,7 +121,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     }
 
     /**
-     * @return \Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface[]
+     * @return \Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface[]|\Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface[]
      */
     protected function createSuggestionQueryExpanderPlugins()
     {
@@ -150,7 +150,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     }
 
     /**
-     * @return \Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface[]
+     * @return \Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface[]|\Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface[]
      */
     protected function createCatalogSearchCountQueryExpanderPlugins(): array
     {
@@ -175,7 +175,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     }
 
     /**
-     * @return \Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface[]
+     * @return \Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface[]|\Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface[]
      */
     protected function getProductConcreteCatalogSearchQueryExpanderPlugins(): array
     {
