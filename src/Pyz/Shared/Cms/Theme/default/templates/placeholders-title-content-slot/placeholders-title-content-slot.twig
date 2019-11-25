@@ -1,6 +1,7 @@
 {% extends template('page-layout-main') %}
 
 {% define data = {
+    idCmsPage: _view.idCmsPage,
     title: _view.pageTitle | default('global.spryker.shop' | trans),
     metaTitle: _view.pageTitle | default('global.spryker.shop' | trans),
     metaDescription: _view.pageDescription | default(''),
@@ -19,6 +20,8 @@
     </div>
 
     <div class="box">
-        {% cms_slot "slt-6" %}
+        {% cms_slot "slt-6" with {
+            idCmsPage: data.idCmsPage
+        } %}
     </div>
 {% endblock %}
