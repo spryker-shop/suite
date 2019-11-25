@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "095c6573b2c17c5da05692b2d92cf5ae",
+    "content-hash": "291d763d08a4f89ddcc2d8e4789d0944",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.120.0",
+            "version": "3.121.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "289d716c7a418fc30a530ca83107e738f8dd1ebc"
+                "reference": "d766697d06ee0abff255f6c6d522c6e65a4cc767"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/289d716c7a418fc30a530ca83107e738f8dd1ebc",
-                "reference": "289d716c7a418fc30a530ca83107e738f8dd1ebc",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d766697d06ee0abff255f6c6d522c6e65a4cc767",
+                "reference": "d766697d06ee0abff255f6c6d522c6e65a4cc767",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-11-20T19:17:55+00:00"
+            "time": "2019-11-22T19:14:53+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -246,16 +246,16 @@
         },
         {
             "name": "codeception/phpunit-wrapper",
-            "version": "8.0.4",
+            "version": "8.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/phpunit-wrapper.git",
-                "reference": "7090736f36b4398cae6ef838b9a2bdfe8d8d104b"
+                "reference": "ee0c1fa08ef6e7f86e3592eccb57139110e5913d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/phpunit-wrapper/zipball/7090736f36b4398cae6ef838b9a2bdfe8d8d104b",
-                "reference": "7090736f36b4398cae6ef838b9a2bdfe8d8d104b",
+                "url": "https://api.github.com/repos/Codeception/phpunit-wrapper/zipball/ee0c1fa08ef6e7f86e3592eccb57139110e5913d",
+                "reference": "ee0c1fa08ef6e7f86e3592eccb57139110e5913d",
                 "shasum": ""
             },
             "require": {
@@ -286,24 +286,23 @@
                 }
             ],
             "description": "PHPUnit classes used by Codeception",
-            "time": "2019-02-27T12:58:57+00:00"
+            "time": "2019-11-24T15:30:35+00:00"
         },
         {
             "name": "codeception/stub",
-            "version": "3.5.0",
+            "version": "3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Stub.git",
-                "reference": "016a035c287c898745504f7f2916f4dae14265e0"
+                "reference": "94874f511ab1025b1f4cb927884cdda5004ece64"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Stub/zipball/016a035c287c898745504f7f2916f4dae14265e0",
-                "reference": "016a035c287c898745504f7f2916f4dae14265e0",
+                "url": "https://api.github.com/repos/Codeception/Stub/zipball/94874f511ab1025b1f4cb927884cdda5004ece64",
+                "reference": "94874f511ab1025b1f4cb927884cdda5004ece64",
                 "shasum": ""
             },
             "require": {
-                "codeception/phpunit-wrapper": "^8.0.4",
                 "phpunit/phpunit": "^8.4"
             },
             "type": "library",
@@ -317,7 +316,7 @@
                 "MIT"
             ],
             "description": "Flexible Stub wrapper for PHPUnit's Mock Builder",
-            "time": "2019-10-05T09:56:36+00:00"
+            "time": "2019-11-23T20:11:30+00:00"
         },
         {
             "name": "codeitnowin/barcode",
@@ -708,31 +707,29 @@
         },
         {
             "name": "elasticsearch/elasticsearch",
-            "version": "v6.7.2",
+            "version": "v5.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/elastic/elasticsearch-php.git",
-                "reference": "9ba89f905ebf699e72dacffa410331c7fecc8255"
+                "reference": "d3c5b55ad94f5053ca76c48585b4cde2cdc6bc59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elastic/elasticsearch-php/zipball/9ba89f905ebf699e72dacffa410331c7fecc8255",
-                "reference": "9ba89f905ebf699e72dacffa410331c7fecc8255",
+                "url": "https://api.github.com/repos/elastic/elasticsearch-php/zipball/d3c5b55ad94f5053ca76c48585b4cde2cdc6bc59",
+                "reference": "d3c5b55ad94f5053ca76c48585b4cde2cdc6bc59",
                 "shasum": ""
             },
             "require": {
-                "ext-json": ">=1.3.7",
                 "guzzlehttp/ringphp": "~1.0",
-                "php": "^7.0",
+                "php": "^5.6|^7.0",
                 "psr/log": "~1.0"
             },
             "require-dev": {
-                "cpliakas/git-wrapper": "^1.7 || ^2.1",
+                "cpliakas/git-wrapper": "~1.0",
                 "doctrine/inflector": "^1.1",
-                "mockery/mockery": "^1.2",
-                "phpstan/phpstan-shim": "^0.9 || ^0.11",
-                "phpunit/phpunit": "^5.7 || ^6.5",
-                "squizlabs/php_codesniffer": "^3.4",
+                "mockery/mockery": "0.9.4",
+                "phpunit/phpunit": "^4.7|^5.4",
+                "sami/sami": "~3.2",
                 "symfony/finder": "^2.8",
                 "symfony/yaml": "^2.8"
             },
@@ -753,9 +750,6 @@
             "authors": [
                 {
                     "name": "Zachary Tong"
-                },
-                {
-                    "name": "Enrico Zimuel"
                 }
             ],
             "description": "PHP Client for Elasticsearch",
@@ -764,7 +758,7 @@
                 "elasticsearch",
                 "search"
             ],
-            "time": "2019-07-19T14:48:24+00:00"
+            "time": "2019-01-08T18:57:00+00:00"
         },
         {
             "name": "everon/collection",
@@ -2933,7 +2927,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette NEON: encodes and decodes NEON file format.",
+            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -2946,16 +2940,16 @@
         },
         {
             "name": "nette/php-generator",
-            "version": "v3.2.3",
+            "version": "v3.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/php-generator.git",
-                "reference": "aea6e81437bb238e5f0e5b5ce06337433908e63b"
+                "reference": "4240fd7adf499138c07b814ef9b9a6df9f6d7187"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/php-generator/zipball/aea6e81437bb238e5f0e5b5ce06337433908e63b",
-                "reference": "aea6e81437bb238e5f0e5b5ce06337433908e63b",
+                "url": "https://api.github.com/repos/nette/php-generator/zipball/4240fd7adf499138c07b814ef9b9a6df9f6d7187",
+                "reference": "4240fd7adf499138c07b814ef9b9a6df9f6d7187",
                 "shasum": ""
             },
             "require": {
@@ -2969,7 +2963,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.2-dev"
+                    "dev-master": "3.3-dev"
                 }
             },
             "autoload": {
@@ -3001,7 +2995,7 @@
                 "php",
                 "scaffolding"
             ],
-            "time": "2019-07-05T13:01:56+00:00"
+            "time": "2019-11-22T11:12:11+00:00"
         },
         {
             "name": "nette/robot-loader",
@@ -4533,21 +4527,21 @@
         },
         {
             "name": "ruflin/elastica",
-            "version": "6.1.1",
+            "version": "5.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ruflin/Elastica.git",
-                "reference": "333dff62346adf835c0a0fd198e8c9f9ec8da65a"
+                "reference": "1ed6f587a38d4d6455b688ffc9a9d370d4ae60e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ruflin/Elastica/zipball/333dff62346adf835c0a0fd198e8c9f9ec8da65a",
-                "reference": "333dff62346adf835c0a0fd198e8c9f9ec8da65a",
+                "url": "https://api.github.com/repos/ruflin/Elastica/zipball/1ed6f587a38d4d6455b688ffc9a9d370d4ae60e9",
+                "reference": "1ed6f587a38d4d6455b688ffc9a9d370d4ae60e9",
                 "shasum": ""
             },
             "require": {
-                "elasticsearch/elasticsearch": "^6.0",
-                "php": "^7.0",
+                "elasticsearch/elasticsearch": "5.4.*",
+                "php": ">=5.6.0",
                 "psr/log": "~1.0"
             },
             "require-dev": {
@@ -4563,7 +4557,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "6.0.x-dev"
+                    "dev-master": "5.3.x-dev"
                 }
             },
             "autoload": {
@@ -4587,7 +4581,7 @@
                 "client",
                 "search"
             ],
-            "time": "2019-01-29T09:38:03+00:00"
+            "time": "2019-08-29T06:34:21+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -5210,12 +5204,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-eco/loggly.git",
-                "reference": "b5348c492bad20681a79c657ff070085e891c034"
+                "reference": "288242d22495efadf598d04634b8b1e0bf8e82cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-eco/loggly/zipball/b5348c492bad20681a79c657ff070085e891c034",
-                "reference": "b5348c492bad20681a79c657ff070085e891c034",
+                "url": "https://api.github.com/repos/spryker-eco/loggly/zipball/288242d22495efadf598d04634b8b1e0bf8e82cb",
+                "reference": "288242d22495efadf598d04634b8b1e0bf8e82cb",
                 "shasum": ""
             },
             "require": {
@@ -5247,7 +5241,7 @@
                 "proprietary"
             ],
             "description": "Loggly module",
-            "time": "2019-11-13T16:02:20+00:00"
+            "time": "2019-11-21T15:03:30+00:00"
         },
         {
             "name": "spryker/event-behavior",
@@ -5503,11 +5497,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/te-1070/dev-update-to-elasticsearch-v6",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "812e88483f9fb87db4737d1f685dc1199c8242cd"
+                "reference": "932b17d7005b33694bdb77d4a0f52cb0eb3733fb"
             },
             "require": {
                 "php": ">=7.2"
@@ -5997,8 +5991,6 @@
                 "spryker/scheduler-extension": "*",
                 "spryker/scheduler-jenkins": "*",
                 "spryker/search": "*",
-                "spryker/search-elasticsearch": "*",
-                "spryker/search-extension": "*",
                 "spryker/sequence-number": "*",
                 "spryker/session": "*",
                 "spryker/session-extension": "*",
@@ -6107,7 +6099,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-11-24T22:09:40+00:00"
+            "time": "2019-11-25T08:21:04+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -10027,7 +10019,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-13T13:21:38+00:00"
+            "time": "2017-12-12T17:28:44+00:00"
         },
         {
             "name": "phpmd/phpmd",
@@ -10070,20 +10062,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
+                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler",
-                    "role": "Project Founder"
+                    "homepage": "https://github.com/manuelpichler"
                 },
                 {
                     "name": "Marc Würth",
+                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84",
-                    "role": "Project Maintainer"
+                    "homepage": "https://github.com/ravage84"
                 },
                 {
                     "name": "Other contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
