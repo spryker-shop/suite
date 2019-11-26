@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ddb19e0c21a60ef0c2793bab91582c5",
+    "content-hash": "2d14f74db371e10e97695a765fdbedfd",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.121.1",
+            "version": "3.122.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "d766697d06ee0abff255f6c6d522c6e65a4cc767"
+                "reference": "43b4af8179c91d220f6e4bbe1e57588ed5ad4f27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d766697d06ee0abff255f6c6d522c6e65a4cc767",
-                "reference": "d766697d06ee0abff255f6c6d522c6e65a4cc767",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/43b4af8179c91d220f6e4bbe1e57588ed5ad4f27",
+                "reference": "43b4af8179c91d220f6e4bbe1e57588ed5ad4f27",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-11-22T19:14:53+00:00"
+            "time": "2019-11-25T19:13:38+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -5543,11 +5543,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/cc-5842/cc-7197/cc-7297-enabler-be-part",
+            "version": "dev-feature/cc-5842/cc-7197/cc-7344-refactoring-updated-soluition",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "fc974363f4266cea9fc72c912663d5bc855526b7"
+                "reference": "9fb091ade22d02ddaece6f9544074a11972f0d3f"
             },
             "require": {
                 "php": ">=7.2"
@@ -5614,6 +5614,7 @@
                 "spryker/category-page-search": "*",
                 "spryker/category-storage": "*",
                 "spryker/chart": "*",
+                "spryker/chart-gui": "*",
                 "spryker/checkout": "*",
                 "spryker/checkout-extension": "*",
                 "spryker/checkout-rest-api": "*",
@@ -5830,6 +5831,7 @@
                 "spryker/merchant-relationship-sales-order-threshold-data-import": "*",
                 "spryker/merchant-relationship-sales-order-threshold-gui": "*",
                 "spryker/merchant-relationship-sales-order-threshold-gui-extension": "*",
+                "spryker/merchant-sales-order": "*",
                 "spryker/messenger": "*",
                 "spryker/messenger-extension": "*",
                 "spryker/module-finder": "*",
@@ -6051,6 +6053,7 @@
                 "spryker/shipment": "*",
                 "spryker/shipment-cart-connector": "*",
                 "spryker/shipment-checkout-connector": "*",
+                "spryker/shipment-data-import": "*",
                 "spryker/shipment-discount-connector": "*",
                 "spryker/shipment-extension": "*",
                 "spryker/shipment-gui": "*",
@@ -6145,15 +6148,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-11-25T08:53:36+00:00"
+            "time": "2019-11-26T09:48:05+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/cc-5842/cc-7197/cc-7297-enabler-be-part",
+            "version": "dev-feature/cc-5842/cc-7197/cc-7344-refactoring-updated-soluition",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "6966f5111f2d96404293dabae22277450cfcb0b5"
+                "reference": "041eef05d01b0ef499e95acc1be43a45cdff1e76"
             },
             "require": {
                 "php": ">=7.2"
@@ -6206,6 +6209,7 @@
                 "spryker-shop/heartbeat-page": "*",
                 "spryker-shop/home-page": "*",
                 "spryker-shop/language-switcher-widget": "*",
+                "spryker-shop/merchant-product-offer-widget": "*",
                 "spryker-shop/merchant-profile-page": "*",
                 "spryker-shop/money-widget": "*",
                 "spryker-shop/multi-cart-page": "*",
@@ -6221,6 +6225,7 @@
                 "spryker-shop/product-barcode-widget": "*",
                 "spryker-shop/product-bundle-widget": "*",
                 "spryker-shop/product-category-widget": "*",
+                "spryker-shop/product-color-group-widget-extension": "*",
                 "spryker-shop/product-detail-page": "*",
                 "spryker-shop/product-discontinued-widget": "*",
                 "spryker-shop/product-group-widget": "*",
@@ -6288,7 +6293,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-11-25T09:00:28+00:00"
+            "time": "2019-11-26T09:48:04+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
