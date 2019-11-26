@@ -7,7 +7,6 @@
 
 namespace Pyz\Yves\ShopApplication;
 
-use Pyz\Yves\ExampleProductColorGroupWidget\Widget\ExampleProductColorSelectorWidget;
 use Spryker\Yves\ErrorHandler\Plugin\Application\ErrorHandlerApplicationPlugin;
 use Spryker\Yves\EventDispatcher\Plugin\Application\EventDispatcherApplicationPlugin;
 use Spryker\Yves\Http\Plugin\Application\HttpApplicationPlugin;
@@ -147,7 +146,6 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CustomerNavigationWidget::class,
             CustomerReorderItemCheckboxWidget::class,
             DisplayProductAbstractReviewWidget::class,
-            ExampleProductColorSelectorWidget::class,
             ProductColorGroupWidget::class,
             LanguageSwitcherWidget::class,
             ManageProductMeasurementUnitWidget::class,
