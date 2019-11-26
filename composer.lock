@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "291d763d08a4f89ddcc2d8e4789d0944",
+    "content-hash": "3b26acc33040bd4b7fbcc8d0bc5de3c9",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1035,8 +1035,8 @@
             "authors": [
                 {
                     "name": "Filipe Dobreira",
-                    "homepage": "https://github.com/filp",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "homepage": "https://github.com/filp"
                 }
             ],
             "description": "php error handling for cool kids",
@@ -4198,7 +4198,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -5244,6 +5244,54 @@
             "time": "2019-11-21T15:03:30+00:00"
         },
         {
+            "name": "spryker/decimal-object",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/decimal-object.git",
+                "reference": "03ec7aa5b3adb1bbb2790a493d49627360971a16"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/decimal-object/zipball/03ec7aa5b3adb1bbb2790a493d49627360971a16",
+                "reference": "03ec7aa5b3adb1bbb2790a493d49627360971a16",
+                "shasum": ""
+            },
+            "require": {
+                "ext-bcmath": "*",
+                "ext-json": "*",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "phpstan/phpstan-shim": "^0.11",
+                "phpunit/phpunit": "^7.0.0 || ^8.0.0",
+                "spryker/code-sniffer": "@stable"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\DecimalObject\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Spryker Systems GmbH",
+                    "homepage": "https://spryker.com"
+                }
+            ],
+            "description": "PHP decimal handling as value object",
+            "time": "2019-11-25T09:43:59+00:00"
+        },
+        {
             "name": "spryker/event-behavior",
             "version": "dev-master",
             "source": {
@@ -5501,7 +5549,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "209d39264ca1c440ba30d3c03d09b33d76249fca"
+                "reference": "1cb5786928ce3f5d1bc099773271be581cfa5896"
             },
             "require": {
                 "php": ">=7.2"
@@ -5688,7 +5736,6 @@
                 "spryker/customer-access": "*",
                 "spryker/customer-access-gui": "*",
                 "spryker/customer-access-permission": "*",
-                "spryker/customer-access-rest-api": "*",
                 "spryker/customer-access-storage": "*",
                 "spryker/customer-api": "*",
                 "spryker/customer-catalog": "*",
@@ -6022,6 +6069,7 @@
                 "spryker/state-machine": "*",
                 "spryker/step-engine": "*",
                 "spryker/stock": "*",
+                "spryker/stock-extension": "*",
                 "spryker/stock-gui": "*",
                 "spryker/stock-sales-connector": "*",
                 "spryker/storage": "*",
@@ -6099,7 +6147,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-11-26T10:45:46+00:00"
+            "time": "2019-11-26T11:08:46+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6107,7 +6155,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "d4cd79454089475eca33e287e191633d62c7a25c"
+                "reference": "273913748b94977badec224a5f875b27abbc8350"
             },
             "require": {
                 "php": ">=7.2"
@@ -6243,7 +6291,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-11-21T15:05:42+00:00"
+            "time": "2019-11-26T11:08:50+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
