@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\ProductPackagingUnitStorage\Persistence;
+namespace Orm\Zed\MerchantProfile\Persistence;
 
-use Spryker\Zed\ProductPackagingUnitStorage\Persistence\Propel\AbstractSpyProductAbstractPackagingStorage;
+use Spryker\Zed\MerchantProfile\Persistence\Propel\AbstractSpyMerchantProfileAddress as BaseSpyMerchantProfileAddress;
 
 /**
- * Skeleton subclass for representing a row from the 'spy_product_abstract_packaging_storage' table.
+ * Skeleton subclass for representing a row from the 'spy_merchant_profile_address' table.
  *
  *
  *
@@ -18,6 +18,6 @@ use Spryker\Zed\ProductPackagingUnitStorage\Persistence\Propel\AbstractSpyProduc
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyProductAbstractPackagingStorage extends AbstractSpyProductAbstractPackagingStorage
+class SpyMerchantProfileAddress extends BaseSpyMerchantProfileAddress
 {
 }

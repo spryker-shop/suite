@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\ProductPackagingUnit\Persistence;
+namespace Orm\Zed\ProductOffer\Persistence;
 
-use Spryker\Zed\ProductPackagingUnit\Persistence\Propel\AbstractSpyProductPackagingLeadProductQuery;
+use Spryker\Zed\ProductOffer\Persistence\Propel\AbstractSpyProductOffer;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_product_packaging_lead_product' table.
+ * Skeleton subclass for representing a row from the 'spy_product_offer' table.
  *
  *
  *
@@ -18,6 +18,6 @@ use Spryker\Zed\ProductPackagingUnit\Persistence\Propel\AbstractSpyProductPackag
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyProductPackagingLeadProductQuery extends AbstractSpyProductPackagingLeadProductQuery
+class SpyProductOffer extends AbstractSpyProductOffer
 {
 }
