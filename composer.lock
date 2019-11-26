@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3b26acc33040bd4b7fbcc8d0bc5de3c9",
+    "content-hash": "e35bb3c796a3656793ff81d3c42e5dfa",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5545,11 +5545,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/te-663/dev-pass-by-kv-storage",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "9d446f3e6df4e4054d8c3be391c4143ccc8ffa9b"
+                "reference": "32d8db11998af86f440968a7ac3bda2d6b4aa1a9"
             },
             "require": {
                 "php": ">=7.2"
@@ -6073,6 +6073,8 @@
                 "spryker/stock-gui": "*",
                 "spryker/stock-sales-connector": "*",
                 "spryker/storage": "*",
+                "spryker/storage-database": "*",
+                "spryker/storage-database-extension": "*",
                 "spryker/storage-extension": "*",
                 "spryker/storage-redis": "*",
                 "spryker/store": "*",
@@ -6147,7 +6149,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-11-26T14:21:23+00:00"
+            "time": "2019-11-26T14:49:00+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6155,7 +6157,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "d4cd79454089475eca33e287e191633d62c7a25c"
+                "reference": "273913748b94977badec224a5f875b27abbc8350"
             },
             "require": {
                 "php": ">=7.2"
@@ -6291,24 +6293,24 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-11-21T15:05:42+00:00"
+            "time": "2019-11-26T11:08:50+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
-            "version": "dev-master",
+            "version": "dev-feature/te-663/dev-pass-by-kv-storage",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/synchronization-behavior.git",
-                "reference": "c2f21d3ceb50b926c3d9719d3b8959429984190a"
+                "reference": "4f70548959fd9ee193812b85f61948b92aecfd81"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/c2f21d3ceb50b926c3d9719d3b8959429984190a",
-                "reference": "c2f21d3ceb50b926c3d9719d3b8959429984190a",
+                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/4f70548959fd9ee193812b85f61948b92aecfd81",
+                "reference": "4f70548959fd9ee193812b85f61948b92aecfd81",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.1",
                 "spryker/kernel": "^3.30.0",
                 "spryker/propel-orm": "^1.6.0",
                 "spryker/queue": "^1.1.2",
@@ -6340,7 +6342,7 @@
                 "proprietary"
             ],
             "description": "SynchronizationBehavior module",
-            "time": "2019-11-13T15:57:56+00:00"
+            "time": "2019-11-20T16:49:39+00:00"
         },
         {
             "name": "spryker/uuid-behavior",
@@ -11530,6 +11532,12 @@
             "alias_normalized": "1.14.0.0",
             "version": "9999999-dev",
             "package": "spryker/event-behavior"
+        },
+        {
+            "alias": "1.4.0",
+            "alias_normalized": "1.4.0.0",
+            "version": "dev-feature/te-663/dev-pass-by-kv-storage",
+            "package": "spryker/synchronization-behavior"
         },
         {
             "alias": "1.1.0",
