@@ -1,7 +1,7 @@
 {% extends molecule('product-item', '@SprykerShop:ShopUi') %}
 
 {% block colors %}
-    {% widget 'ProductColorGroupWidget' args [data.idProductAbstract] use view('product-item-color-selector', 'ProductColorGroupWidget') with {
+    {% widget 'ProductColorGroupWidget' args [data.idProductAbstract] use view('product-item-color-selector', 'ProductGroupWidget') with {
         data: {
             productItemJsName: config.jsName,
         },
