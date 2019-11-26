@@ -124,7 +124,7 @@ SELECT updated.idStockProduct FROM updated UNION ALL SELECT inserted.id_stock_pr
     FROM (
            SELECT
              unnest(? :: VARCHAR []) AS sku,
-             unnest(? :: INTEGER []) AS qty,
+             unnest(? :: NUMERIC []) AS qty,
              unnest(? :: INTEGER []) AS store
          ) input
     LEFT JOIN spy_availability_abstract ON spy_availability_abstract.abstract_sku = input.sku AND spy_availability_abstract.fk_store = input.store
@@ -175,7 +175,7 @@ SELECT updated.idAvailabilityAbstract FROM updated UNION ALL SELECT inserted.id_
     FROM (
            SELECT
              unnest(? :: VARCHAR []) AS sku,
-             unnest(? :: INTEGER []) AS qty,
+             unnest(? :: NUMERIC []) AS qty,
              unnest(? :: BOOLEAN []) AS is_never_out_of_stock,
              unnest(? :: INTEGER []) AS store
          ) input
