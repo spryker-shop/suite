@@ -75,8 +75,7 @@ $config[PropelConstants::ZED_DB_PASSWORD] = 'mate20mg';
 $config[PropelConstants::ZED_DB_DATABASE] = 'DE_devtest_zed';
 
 // ---------- Elasticsearch
-$config[CollectorConstants::ELASTICA_PARAMETER__INDEX_NAME]
-    = 'de_search_devtest';
+$config[CollectorConstants::ELASTICA_PARAMETER__INDEX_NAME] = 'de_search_devtest';
 
 // ---------- RabbitMq
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['DE'][RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION] = true;
