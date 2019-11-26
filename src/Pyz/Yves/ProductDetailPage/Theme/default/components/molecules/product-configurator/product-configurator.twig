@@ -65,7 +65,7 @@
         {{ widgetBlock('ProductReviewWidgetPlugin', 'rating', data.product.idProductAbstract) }} {# @deprecated Use ProductDetailPageReviewWidget instead. #}
     {% endwidget %}
 
-    {% widget 'ProductColorGroupWidget' args [data.product] only %}{% endwidget %}
+    {% widget 'ProductColorGroupWidget' args [data.product.idProductAbstract] only %}{% endwidget %}
 
     {% embed molecule('variant-configurator', 'ProductDetailPage') with {
         data: {
