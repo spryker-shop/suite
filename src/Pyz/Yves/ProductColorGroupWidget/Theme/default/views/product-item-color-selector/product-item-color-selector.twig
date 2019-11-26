@@ -1,0 +1,20 @@
+{% extends template('widget') %}
+
+{% define data = {
+    items: _widget.productGroupItems | default([]),
+    productItemJsName: '',
+} %}
+
+{% block body %}
+    {% embed molecule('product-item-color-selector', 'ProductColorGroupWidget') with {
+        modifiers: ['center'],
+        data: {
+            items: data.items,
+            productItemJsName: data.productItemJsName,
+        },
+    } only %}
+        {% block body %}
+            <hr>{{ parent() }}<hr>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
