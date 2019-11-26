@@ -5,7 +5,7 @@
     title: _view.pageTitle | default('global.spryker.shop' | trans),
     metaTitle: _view.pageTitle | default('global.spryker.shop' | trans),
     metaDescription: _view.pageDescription | default(''),
-    metaKeywords: _view.pageKeywords | default('')
+    metaKeywords: _view.pageKeywords | default(''),
 } %}
 
 {% block title %}
@@ -20,8 +20,8 @@
     </div>
 
     <div class="box">
-        {% cms_slot "slt-6" with {
-            idCmsPage: data.idCmsPage
+        {% cms_slot 'slt-6' with {
+            idCmsPage: data.idCmsPage,
         } %}
     </div>
 {% endblock %}

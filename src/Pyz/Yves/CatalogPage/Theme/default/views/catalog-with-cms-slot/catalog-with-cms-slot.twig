@@ -25,10 +25,10 @@
 } %}
 
 {% block filterBar %}
-    {{parent()}}
+    {{ parent() }}
     <div class="box">
-        {% cms_slot "slt-3" with {
-            idCategory: data.categoryId
+        {% cms_slot 'slt-3' with {
+            idCategory: data.categoryId,
         } %}
     </div>
 {% endblock %}
@@ -36,17 +36,17 @@
 {% block content %}
     {% if data.categoryId %}
         <div class="box">
-            {% cms_slot "slt-2" with {
-                idCategory: data.categoryId
+            {% cms_slot 'slt-2' with {
+                idCategory: data.categoryId,
             } %}
         </div>
     {% endif %}
 
-    {{parent()}}
+    {{ parent() }}
 
     <div class="box">
-        {% cms_slot "slt-4" with {
-            idCategory: data.categoryId
+        {% cms_slot 'slt-4' with {
+            idCategory: data.categoryId,
         } %}
     </div>
 {% endblock %}

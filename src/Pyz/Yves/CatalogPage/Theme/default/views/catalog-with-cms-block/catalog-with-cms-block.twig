@@ -25,7 +25,7 @@
 } %}
 
 {% block filterBar %}
-    {{parent()}}
+    {{ parent() }}
     {% if data.categoryId %}
         {% include molecule('catalog-cms-block', 'CmsBlockWidget') ignore missing with {
             class: 'box',
@@ -48,7 +48,7 @@
         } only %}
     {% endif %}
 
-    {{parent()}}
+    {{ parent() }}
 
     {% if data.categoryId %}
         {% include molecule('catalog-cms-block', 'CmsBlockWidget') ignore missing with {
