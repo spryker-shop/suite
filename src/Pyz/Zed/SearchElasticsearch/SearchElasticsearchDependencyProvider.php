@@ -13,6 +13,7 @@ use Spryker\Zed\ProductPageSearch\Communication\Plugin\Search\Elasticsearch\Prod
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\Search\Elasticsearch\ProductPageMapPlugin;
 use Spryker\Zed\ProductSetPageSearch\Communication\Plugin\Search\Elasticsearch\ProductSetPageMapPlugin;
 use Spryker\Zed\SearchElasticsearch\Communication\Plugin\Search\PageDataMapperPlugin;
+use Spryker\Zed\SearchElasticsearch\Communication\Plugin\Search\ProductReviewDataMapperPlugin;
 use Spryker\Zed\SearchElasticsearch\SearchElasticsearchDependencyProvider as SprykerSearchElasticsearchDependencyProvider;
 
 class SearchElasticsearchDependencyProvider extends SprykerSearchElasticsearchDependencyProvider
@@ -38,6 +39,7 @@ class SearchElasticsearchDependencyProvider extends SprykerSearchElasticsearchDe
     {
         return [
             new PageDataMapperPlugin(),
+            new ProductReviewDataMapperPlugin(),
         ];
     }
 }
