@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6bcc20faf6218a3ddfa7ba47bc282a08",
+    "content-hash": "3e7582247ca1f2f31f4cf68ff60f840c",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5545,11 +5545,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/cms-2467/master-blocks-to-slots-assignment-rendering",
+            "version": "dev-feature/cms-2467/dev-blocks-to-slots-assignment-rendering",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "9d446f3e6df4e4054d8c3be391c4143ccc8ffa9b"
+                "reference": "eafe424c0ae5525eb9b7b0fd1c79345adb04755c"
             },
             "require": {
                 "php": ">=7.2"
@@ -5616,6 +5616,7 @@
                 "spryker/category-page-search": "*",
                 "spryker/category-storage": "*",
                 "spryker/chart": "*",
+                "spryker/chart-gui": "*",
                 "spryker/checkout": "*",
                 "spryker/checkout-extension": "*",
                 "spryker/checkout-rest-api": "*",
@@ -5646,6 +5647,18 @@
                 "spryker/cms-page-data-import": "*",
                 "spryker/cms-page-search": "*",
                 "spryker/cms-slot": "*",
+                "spryker/cms-slot-block": "*",
+                "spryker/cms-slot-block-category-connector": "*",
+                "spryker/cms-slot-block-category-gui": "*",
+                "spryker/cms-slot-block-cms-connector": "*",
+                "spryker/cms-slot-block-cms-gui": "*",
+                "spryker/cms-slot-block-data-import": "*",
+                "spryker/cms-slot-block-extension": "*",
+                "spryker/cms-slot-block-gui": "*",
+                "spryker/cms-slot-block-gui-extension": "*",
+                "spryker/cms-slot-block-product-category-connector": "*",
+                "spryker/cms-slot-block-product-category-gui": "*",
+                "spryker/cms-slot-block-storage": "*",
                 "spryker/cms-slot-data-import": "*",
                 "spryker/cms-slot-extension": "*",
                 "spryker/cms-slot-gui": "*",
@@ -6147,15 +6160,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-11-26T14:21:23+00:00"
+            "time": "2019-11-26T16:01:42+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/cms-2467/master-blocks-to-slots-assignment-rendering",
+            "version": "dev-feature/cms-2467/dev-blocks-to-slots-assignment-rendering",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "d4cd79454089475eca33e287e191633d62c7a25c"
+                "reference": "191cf7162aac2c0d8b799ce19e82ec62fa721cf2"
             },
             "require": {
                 "php": ">=7.2"
@@ -6185,6 +6198,7 @@
                 "spryker-shop/cms-content-widget-product-set-connector": "*",
                 "spryker-shop/cms-page": "*",
                 "spryker-shop/cms-search-page": "*",
+                "spryker-shop/cms-slot-block-widget": "*",
                 "spryker-shop/comment-widget": "*",
                 "spryker-shop/comment-widget-extension": "*",
                 "spryker-shop/company-page": "*",
@@ -6291,7 +6305,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-11-21T15:05:42+00:00"
+            "time": "2019-11-26T16:01:34+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
