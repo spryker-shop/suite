@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3b26acc33040bd4b7fbcc8d0bc5de3c9",
+    "content-hash": "c29d777ebbfc1e64b20c57b164c1bbe3",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5465,16 +5465,16 @@
         },
         {
             "name": "spryker/silexphp",
-            "version": "dev-master",
+            "version": "dev-feature/te-963/dev-create-form-application-extension",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/silexphp.git",
-                "reference": "628ae1a4f7c17d018e7ed4909d1722ddd64d7972"
+                "reference": "c926c6fe0adae2b4a5c8905c7085d66ea0d114c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/silexphp/zipball/628ae1a4f7c17d018e7ed4909d1722ddd64d7972",
-                "reference": "628ae1a4f7c17d018e7ed4909d1722ddd64d7972",
+                "url": "https://api.github.com/repos/spryker/silexphp/zipball/c926c6fe0adae2b4a5c8905c7085d66ea0d114c1",
+                "reference": "c926c6fe0adae2b4a5c8905c7085d66ea0d114c1",
                 "shasum": ""
             },
             "require": {
@@ -5541,15 +5541,15 @@
             "keywords": [
                 "microframework"
             ],
-            "time": "2019-11-13T15:58:59+00:00"
+            "time": "2019-11-13T17:57:58+00:00"
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/te-963/dev-create-form-application-extension",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "9d446f3e6df4e4054d8c3be391c4143ccc8ffa9b"
+                "reference": "c1edd752ef54ad3dd1c945b017928784b65151eb"
             },
             "require": {
                 "php": ">=7.2"
@@ -5616,6 +5616,7 @@
                 "spryker/category-page-search": "*",
                 "spryker/category-storage": "*",
                 "spryker/chart": "*",
+                "spryker/chart-gui": "*",
                 "spryker/checkout": "*",
                 "spryker/checkout-extension": "*",
                 "spryker/checkout-rest-api": "*",
@@ -5779,6 +5780,8 @@
                 "spryker/flysystem-aws3v3-file-system": "*",
                 "spryker/flysystem-ftp-file-system": "*",
                 "spryker/flysystem-local-file-system": "*",
+                "spryker/form": "*",
+                "spryker/form-extension": "*",
                 "spryker/gift-card": "*",
                 "spryker/gift-card-balance": "*",
                 "spryker/gift-card-mail-connector": "*",
@@ -6038,6 +6041,7 @@
                 "spryker/scheduler-extension": "*",
                 "spryker/scheduler-jenkins": "*",
                 "spryker/search": "*",
+                "spryker/security": "*",
                 "spryker/sequence-number": "*",
                 "spryker/session": "*",
                 "spryker/session-extension": "*",
@@ -6115,6 +6119,8 @@
                 "spryker/util-uuid-generator": "*",
                 "spryker/util-validate": "*",
                 "spryker/uuid": "*",
+                "spryker/validator": "*",
+                "spryker/validator-extension": "*",
                 "spryker/vault": "*",
                 "spryker/web-profiler": "*",
                 "spryker/web-profiler-extension": "*",
@@ -6147,15 +6153,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-11-26T14:21:23+00:00"
+            "time": "2019-11-26T15:27:03+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/te-963/dev-create-form-application-extension",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "d4cd79454089475eca33e287e191633d62c7a25c"
+                "reference": "72416def0b68c358e66d150ebb83e30465cc0330"
             },
             "require": {
                 "php": ">=7.2"
@@ -6291,7 +6297,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-11-21T15:05:42+00:00"
+            "time": "2019-11-26T15:27:21+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -10110,20 +10116,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
+                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler",
-                    "role": "Project Founder"
+                    "homepage": "https://github.com/manuelpichler"
                 },
                 {
                     "name": "Marc Würth",
+                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84",
-                    "role": "Project Maintainer"
+                    "homepage": "https://github.com/ravage84"
                 },
                 {
                     "name": "Other contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -11540,7 +11546,7 @@
         {
             "alias": "0.3.0",
             "alias_normalized": "0.3.0.0",
-            "version": "9999999-dev",
+            "version": "dev-feature/te-963/dev-create-form-application-extension",
             "package": "spryker/silexphp"
         },
         {
