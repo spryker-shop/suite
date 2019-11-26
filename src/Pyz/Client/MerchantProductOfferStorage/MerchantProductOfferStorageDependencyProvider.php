@@ -9,12 +9,12 @@ namespace Pyz\Client\MerchantProductOfferStorage;
 
 use Spryker\Client\MerchantProductOfferStorage\MerchantProductOfferStorageDependencyProvider as SprykerMerchantProductOfferStorageDependencyProvider;
 use Spryker\Client\MerchantProductOfferStorage\Plugin\ProductOfferProviderPlugin;
-use Spryker\Client\MerchantProductOfferStorage\Plugin\ProductOfferProviderPluginInterface;
+use Spryker\Client\MerchantProductOfferStorageExtension\Dependency\Plugin\ProductOfferProviderPluginInterface;
 
 class MerchantProductOfferStorageDependencyProvider extends SprykerMerchantProductOfferStorageDependencyProvider
 {
     /**
-     * @return \Spryker\Client\MerchantProductOfferStorage\Plugin\ProductOfferProviderPluginInterface
+     * @return \Spryker\Client\MerchantProductOfferStorageExtension\Dependency\Plugin\ProductOfferProviderPluginInterface
      */
     protected function createProductOfferPlugin(): ProductOfferProviderPluginInterface
     {
