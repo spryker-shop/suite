@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Cart;
 
+use Spryker\Zed\AvailabilityCartConnector\Communication\Plugin\CheckAvailabilityPlugin;
 use Spryker\Zed\Cart\CartDependencyProvider as SprykerCartDependencyProvider;
 use Spryker\Zed\Cart\Communication\Plugin\CleanUpItemsPreReloadPlugin;
 use Spryker\Zed\Cart\Communication\Plugin\SkuGroupKeyPlugin;
@@ -92,9 +93,9 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new CartGroupPromotionItems(),
             new CartShipmentExpanderPlugin(),
             new QuantitySalesUnitItemExpanderPlugin(),
+            new ProductPackagingUnitItemExpanderPlugin(), #ProductPackagingUnit
             new AmountGroupKeyItemExpanderPlugin(), #ProductPackagingUnit
             new AmountSalesUnitItemExpanderPlugin(), #ProductPackagingUnit
-            new ProductPackagingUnitItemExpanderPlugin(), #ProductPackagingUnit
             new CustomAmountPriceItemExpanderPlugin(), #ProductPackagingUnit
             new GiftCardMetadataExpanderPlugin(), #GiftCardFeature
         ];
@@ -120,6 +121,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     protected function getCartPreCheckPlugins(Container $container)
     {
         return [
+            new CheckAvailabilityPlugin(),
             new ProductExistsCartPreCheckPlugin(),
             new CartItemPricePreCheckPlugin(),
             new CartBundlePricesPreCheckPlugin(),

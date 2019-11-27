@@ -12,6 +12,7 @@ use Spryker\Yves\ErrorHandler\Plugin\Application\ErrorHandlerApplicationPlugin;
 use Spryker\Yves\EventDispatcher\Plugin\Application\EventDispatcherApplicationPlugin;
 use Spryker\Yves\Http\Plugin\Application\HttpApplicationPlugin;
 use Spryker\Yves\Locale\Plugin\Application\LocaleApplicationPlugin;
+use Spryker\Yves\Messenger\Plugin\Application\FlashMessengerApplicationPlugin;
 use Spryker\Yves\Router\Plugin\Application\RouterApplicationPlugin;
 use Spryker\Yves\Session\Plugin\Application\SessionApplicationPlugin;
 use Spryker\Yves\Store\Plugin\Application\StoreApplicationPlugin;
@@ -39,6 +40,7 @@ use SprykerShop\Yves\CustomerPage\Widget\CustomerNavigationWidget;
 use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderItemCheckboxWidget;
 use SprykerShop\Yves\DiscountPromotionWidget\Widget\CartDiscountPromotionProductListWidget;
 use SprykerShop\Yves\LanguageSwitcherWidget\Widget\LanguageSwitcherWidget;
+use SprykerShop\Yves\MerchantProductOfferWidget\Widget\MerchantProductOfferWidget;
 use SprykerShop\Yves\MultiCartWidget\Widget\AddToMultiCartWidget;
 use SprykerShop\Yves\MultiCartWidget\Widget\CartOperationsWidget;
 use SprykerShop\Yves\MultiCartWidget\Widget\MiniCartWidget;
@@ -213,6 +215,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CommentThreadWidget::class,
             QuoteConfiguredBundleWidget::class,
             OrderConfiguredBundleWidget::class,
+            MerchantProductOfferWidget::class,
         ];
     }
 
@@ -245,6 +248,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new WebProfilerApplicationPlugin(),
             new HttpApplicationPlugin(),
             new ErrorHandlerApplicationPlugin(),
+            new FlashMessengerApplicationPlugin(),
         ];
     }
 }

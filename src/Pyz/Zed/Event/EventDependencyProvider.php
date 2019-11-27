@@ -26,8 +26,11 @@ use Spryker\Zed\CustomerAccessStorage\Communication\Plugin\Event\Subscriber\Cust
 use Spryker\Zed\Event\EventDependencyProvider as SprykerEventDependencyProvider;
 use Spryker\Zed\FileManagerStorage\Communication\Plugin\Event\Subscriber\FileManagerStorageSubscriber;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Event\Subscriber\GlossaryStorageEventSubscriber;
+use Spryker\Zed\MerchantProductOfferStorage\Communication\Plugin\Event\Subscriber\MerchantProductOfferStorageEventSubscriber;
+use Spryker\Zed\MerchantProfileStorage\Communication\Plugin\Event\Subscriber\MerchantProfileStorageEventSubscriber;
 use Spryker\Zed\NavigationStorage\Communication\Plugin\Event\Subscriber\NavigationStorageEventSubscriber;
 use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Event\Subscriber\PriceProductMerchantRelationshipStorageEventSubscriber;
+use Spryker\Zed\PriceProductOfferStorage\Communication\Plugin\Event\Subscriber\PriceProductOfferStorageEventSubscriber;
 use Spryker\Zed\PriceProductStorage\Communication\Plugin\Event\Subscriber\PriceProductStorageEventSubscriber;
 use Spryker\Zed\ProductAlternativeStorage\Communication\Plugin\Event\Subscriber\ProductAlternativeStorageEventSubscriber;
 use Spryker\Zed\ProductCategoryFilterStorage\Communication\Plugin\Event\Subscriber\ProductCategoryFilterStorageEventSubscriber;
@@ -118,7 +121,10 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new TaxStorageSubscriber());
         $eventSubscriberCollection->add(new TaxProductStorageSubscriber());
         $eventSubscriberCollection->add(new AvailabilityNotificationSubscriber());
+        $eventSubscriberCollection->add(new MerchantProfileStorageEventSubscriber());
+        $eventSubscriberCollection->add(new MerchantProductOfferStorageEventSubscriber());
         $eventSubscriberCollection->add(new CmsSlotStorageEventSubscriber());
+        $eventSubscriberCollection->add(new PriceProductOfferStorageEventSubscriber());
 
         /**
          * Search Events
