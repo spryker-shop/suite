@@ -47,7 +47,6 @@ use Spryker\Zed\ProductListStorage\Communication\Plugin\Synchronization\ProductC
 use Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Synchronization\ProductConcreteMeasurementUnitSynchronizationDataBulkPlugin;
 use Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Synchronization\ProductMeasurementUnitSynchronizationDataBulkPlugin;
 use Spryker\Zed\ProductOptionStorage\Communication\Plugin\Synchronization\ProductOptionSynchronizationDataPlugin;
-use Spryker\Zed\ProductPackagingUnitStorage\Communication\Plugin\Synchronization\ProductAbstractPackagingSynchronizationDataPlugin;
 use Spryker\Zed\ProductPackagingUnitStorage\Communication\Plugin\Synchronization\ProductPackagingUnitSynchronizationDataBulkPlugin;
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\Synchronization\ProductConcretePageSynchronizationDataPlugin;
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\Synchronization\ProductPageSynchronizationDataPlugin;
@@ -75,7 +74,6 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
     protected function getSynchronizationDataPlugins(): array
     {
         return [
-            new ProductAbstractPackagingSynchronizationDataPlugin(),
             new CategoryPageSynchronizationDataPlugin(),
             new CmsPageSynchronizationDataPlugin(),
             new ProductPageSynchronizationDataPlugin(),
