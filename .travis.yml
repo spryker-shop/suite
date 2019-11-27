@@ -193,6 +193,22 @@ matrix:
       after_script: skip
 
 addons:
+  apt:
+    update: true
+    sources:
+      - sourceline: ppa:chris-lea/redis-server
+      - sourceline: deb http://dl.bintray.com/rabbitmq-erlang/debian bionic erlang
+        key_url: https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+      - sourceline: deb https://dl.bintray.com/rabbitmq/debian bionic main
+        key_url: https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+      - sourceline: ppa:ondrej/php
+    packages:
+      - redis-tools
+      - redis-server
+      - rabbitmq-server
+      - graphviz
+      - libzip-dev
+      - php7.4-gd
   postgresql: 9.6
   mysql: 5.7
 
@@ -207,10 +223,6 @@ addons:
       - /tmp/yves-error.log
       - /tmp/glue-error.log
       - /tmp/zed-error.log
-
-  apt:
-    packages:
-      - graphviz
 
   hosts:
     - zed.de.spryker.test
@@ -227,7 +239,7 @@ services:
   - postgresql
   - mysql
   - redis
-  - rabbitmq
+  - rabbitmq-server
 
 sudo: required
 
@@ -235,6 +247,8 @@ before_install:
   - phpenv config-add config/Shared/ci/travis/travis.php.ini
   - if [[ $VALIDATION != 1 && $ON_EVENTS != *$TRAVIS_EVENT_TYPE* ]] ; then exit ; fi
   - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - echo "extension = zip.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - echo "extension = gd.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - if [[ ${TRAVIS_PHP_VERSION} != "7.4snapshot" ]]; then phpenv config-rm xdebug.ini ; fi
   - if [[ $DB == 'mysql' ]] ; then chmod +x ./config/Shared/ci/travis/mysql/* ; fi
   - if [[ $DB == 'mysql' ]] ; then ./config/Shared/ci/travis/mysql/travis_mysql_5.7.sh ; fi
