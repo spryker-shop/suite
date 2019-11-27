@@ -3,18 +3,18 @@ declare const require: any;
 /* tslint:enable */
 
 // add polyfills
-let coreJsPath = 'fn';
+let coreJsFeaturesFolder = 'fn';
 /* tslint:disable: no-var-requires no-require-imports */
 try {
     require('core-js/features');
-    coreJsPath = 'features';
+    coreJsFeaturesFolder = 'features';
 } catch (e) {
     console.info('Please update the "core-js" version to >=3');
 }
-require(`core-js/${coreJsPath}/promise`);
-require(`core-js/${coreJsPath}/array`);
-require(`core-js/${coreJsPath}/set`);
-require(`core-js/${coreJsPath}/map`);
+require(`core-js/${coreJsFeaturesFolder}/promise`);
+require(`core-js/${coreJsFeaturesFolder}/array`);
+require(`core-js/${coreJsFeaturesFolder}/set`);
+require(`core-js/${coreJsFeaturesFolder}/map`);
 /* tslint:enable */
 
 import 'classlist-polyfill';
