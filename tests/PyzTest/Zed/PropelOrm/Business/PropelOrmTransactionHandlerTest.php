@@ -112,7 +112,7 @@ class PropelOrmTransactionHandlerTest extends Unit
         );
 
         $this->expectException(Exception::class);
-        $this->expectExceptionMessage('DB error occured');
+        $this->expectExceptionMessage('DB error occurred');
 
         $productManager->addProductWithTransactionHandlingShouldRollbackAndThrowException(static::TEST_SKU, static::TEST_NAME);
 
