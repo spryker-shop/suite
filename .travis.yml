@@ -244,6 +244,7 @@ services:
 sudo: required
 
 before_install:
+  - pecl install zip
   - phpenv config-add config/Shared/ci/travis/travis.php.ini
   - if [[ $VALIDATION != 1 && $ON_EVENTS != *$TRAVIS_EVENT_TYPE* ]] ; then exit ; fi
   - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
