@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5b4492c0aabe04af3d41a30dbaae3199",
+    "content-hash": "3b26acc33040bd4b7fbcc8d0bc5de3c9",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.122.0",
+            "version": "3.123.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "43b4af8179c91d220f6e4bbe1e57588ed5ad4f27"
+                "reference": "3bf671629a3b2a5a5694f8dfee15686e586b33b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/43b4af8179c91d220f6e4bbe1e57588ed5ad4f27",
-                "reference": "43b4af8179c91d220f6e4bbe1e57588ed5ad4f27",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/3bf671629a3b2a5a5694f8dfee15686e586b33b6",
+                "reference": "3bf671629a3b2a5a5694f8dfee15686e586b33b6",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-11-25T19:13:38+00:00"
+            "time": "2019-11-26T19:08:40+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -3323,18 +3323,18 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "role": "Developer",
-                    "email": "sebastian@phpeople.de"
+                    "email": "sebastian@phpeople.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "Developer",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "Developer"
                 }
             ],
             "description": "Library for handling version information and constraints",
@@ -3863,8 +3863,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "FilterIterator implementation that filters files based on a list of suffixes.",
@@ -3905,8 +3905,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Simple template engine.",
@@ -5190,8 +5190,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
@@ -5242,6 +5242,54 @@
             ],
             "description": "Loggly module",
             "time": "2019-11-21T15:03:30+00:00"
+        },
+        {
+            "name": "spryker/decimal-object",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/decimal-object.git",
+                "reference": "03ec7aa5b3adb1bbb2790a493d49627360971a16"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/decimal-object/zipball/03ec7aa5b3adb1bbb2790a493d49627360971a16",
+                "reference": "03ec7aa5b3adb1bbb2790a493d49627360971a16",
+                "shasum": ""
+            },
+            "require": {
+                "ext-bcmath": "*",
+                "ext-json": "*",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "phpstan/phpstan-shim": "^0.11",
+                "phpunit/phpunit": "^7.0.0 || ^8.0.0",
+                "spryker/code-sniffer": "@stable"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\DecimalObject\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Spryker Systems GmbH",
+                    "homepage": "https://spryker.com"
+                }
+            ],
+            "description": "PHP decimal handling as value object",
+            "time": "2019-11-25T09:43:59+00:00"
         },
         {
             "name": "spryker/event-behavior",
@@ -5497,11 +5545,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/cc-5842/master-product-abstract-card",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "aa18e4010e7772f1d99b21d10b152d86f8b49ddc"
+                "reference": "3159a7c7dad43a01e4d3b8928c5dc09e299f3e42"
             },
             "require": {
                 "php": ">=7.2"
@@ -5568,6 +5616,7 @@
                 "spryker/category-page-search": "*",
                 "spryker/category-storage": "*",
                 "spryker/chart": "*",
+                "spryker/chart-gui": "*",
                 "spryker/checkout": "*",
                 "spryker/checkout-extension": "*",
                 "spryker/checkout-rest-api": "*",
@@ -5688,7 +5737,6 @@
                 "spryker/customer-access": "*",
                 "spryker/customer-access-gui": "*",
                 "spryker/customer-access-permission": "*",
-                "spryker/customer-access-rest-api": "*",
                 "spryker/customer-access-storage": "*",
                 "spryker/customer-api": "*",
                 "spryker/customer-catalog": "*",
@@ -5769,6 +5817,7 @@
                 "spryker/merchant-product-offer": "*",
                 "spryker/merchant-product-offer-data-import": "*",
                 "spryker/merchant-product-offer-storage": "*",
+                "spryker/merchant-product-offer-storage-extension": "*",
                 "spryker/merchant-profile": "*",
                 "spryker/merchant-profile-data-import": "*",
                 "spryker/merchant-profile-gui": "*",
@@ -5784,6 +5833,7 @@
                 "spryker/merchant-relationship-sales-order-threshold-data-import": "*",
                 "spryker/merchant-relationship-sales-order-threshold-gui": "*",
                 "spryker/merchant-relationship-sales-order-threshold-gui-extension": "*",
+                "spryker/merchant-sales-order": "*",
                 "spryker/messenger": "*",
                 "spryker/messenger-extension": "*",
                 "spryker/module-finder": "*",
@@ -5838,6 +5888,9 @@
                 "spryker/price-product-merchant-relationship-data-import": "*",
                 "spryker/price-product-merchant-relationship-gui": "*",
                 "spryker/price-product-merchant-relationship-storage": "*",
+                "spryker/price-product-offer": "*",
+                "spryker/price-product-offer-data-import": "*",
+                "spryker/price-product-offer-storage": "*",
                 "spryker/price-product-schedule": "*",
                 "spryker/price-product-schedule-data-import": "*",
                 "spryker/price-product-schedule-gui": "*",
@@ -6005,6 +6058,7 @@
                 "spryker/shipment": "*",
                 "spryker/shipment-cart-connector": "*",
                 "spryker/shipment-checkout-connector": "*",
+                "spryker/shipment-data-import": "*",
                 "spryker/shipment-discount-connector": "*",
                 "spryker/shipment-extension": "*",
                 "spryker/shipment-gui": "*",
@@ -6022,6 +6076,7 @@
                 "spryker/state-machine": "*",
                 "spryker/step-engine": "*",
                 "spryker/stock": "*",
+                "spryker/stock-extension": "*",
                 "spryker/stock-gui": "*",
                 "spryker/stock-sales-connector": "*",
                 "spryker/storage": "*",
@@ -6099,15 +6154,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-11-26T10:13:17+00:00"
+            "time": "2019-11-27T15:54:19+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/cc-5842/master-product-abstract-card",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "d4cd79454089475eca33e287e191633d62c7a25c"
+                "reference": "0563017fd063cac7c3a72e26e2d385691edf4003"
             },
             "require": {
                 "php": ">=7.2"
@@ -6160,6 +6215,7 @@
                 "spryker-shop/heartbeat-page": "*",
                 "spryker-shop/home-page": "*",
                 "spryker-shop/language-switcher-widget": "*",
+                "spryker-shop/merchant-product-offer-widget": "*",
                 "spryker-shop/merchant-profile-page": "*",
                 "spryker-shop/money-widget": "*",
                 "spryker-shop/multi-cart-page": "*",
@@ -6243,7 +6299,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-11-21T15:05:42+00:00"
+            "time": "2019-11-27T15:54:23+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -10345,8 +10401,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "FinderFacade is a convenience wrapper for Symfony's Finder component.",
@@ -10396,8 +10452,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Copy/Paste Detector (CPD) for PHP code.",
@@ -11418,8 +11474,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "lead",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "lead"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
