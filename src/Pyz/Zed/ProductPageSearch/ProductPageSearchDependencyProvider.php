@@ -13,7 +13,7 @@ use Spryker\Shared\ProductPageSearch\ProductPageSearchConfig;
 use Spryker\Shared\ProductReviewSearch\ProductReviewSearchConfig;
 use Spryker\Zed\ProductLabelSearch\Communication\Plugin\PageDataExpander\ProductLabelDataLoaderExpanderPlugin;
 use Spryker\Zed\ProductLabelSearch\Communication\Plugin\PageDataLoader\ProductLabelDataLoaderPlugin;
-use Spryker\Zed\ProductLabelSearch\Communication\Plugin\PageMapExpander\Elasticsearch\ProductLabelMapExpanderPlugin;
+use Spryker\Zed\ProductLabelSearch\Communication\Plugin\ProductPageSearch\Elasticsearch\ProductLabelMapExpanderPlugin;
 use Spryker\Zed\ProductListSearch\Communication\Plugin\ProductPageSearch\DataExpander\ProductListDataLoadExpanderPlugin;
 use Spryker\Zed\ProductListSearch\Communication\Plugin\ProductPageSearch\DataLoader\ProductListDataLoaderPlugin;
 use Spryker\Zed\ProductListSearch\Communication\Plugin\ProductPageSearch\Elasticsearch\ProductListMapExpanderPlugin;
@@ -25,13 +25,13 @@ use Spryker\Zed\ProductPageSearch\Communication\Plugin\PageDataExpander\ProductI
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\PageDataLoader\CategoryPageDataLoaderPlugin;
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\PageDataLoader\ImagePageDataLoaderPlugin;
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\PageDataLoader\PricePageDataLoaderPlugin;
-use Spryker\Zed\ProductPageSearch\Communication\Plugin\PageMapExpander\Elasticsearch\PricePageMapExpanderPlugin;
-use Spryker\Zed\ProductPageSearch\Communication\Plugin\PageMapExpander\Elasticsearch\ProductCategoryPageMapExpanderPlugin;
-use Spryker\Zed\ProductPageSearch\Communication\Plugin\PageMapExpander\Elasticsearch\ProductImagePageMapExpanderPlugin;
+use Spryker\Zed\ProductPageSearch\Communication\Plugin\ProductPageSearch\Elasticsearch\PricePageMapExpanderPlugin;
+use Spryker\Zed\ProductPageSearch\Communication\Plugin\ProductPageSearch\Elasticsearch\ProductCategoryPageMapExpanderPlugin;
+use Spryker\Zed\ProductPageSearch\Communication\Plugin\ProductPageSearch\Elasticsearch\ProductImagePageMapExpanderPlugin;
 use Spryker\Zed\ProductPageSearch\ProductPageSearchDependencyProvider as SprykerProductPageSearchDependencyProvider;
 use Spryker\Zed\ProductReviewSearch\Communication\Plugin\PageDataExpander\ProductReviewDataLoaderExpanderPlugin;
 use Spryker\Zed\ProductReviewSearch\Communication\Plugin\PageDataLoader\ProductReviewPageDataLoaderPlugin;
-use Spryker\Zed\ProductReviewSearch\Communication\Plugin\PageMapExpander\Elasticsearch\ProductReviewMapExpanderPlugin;
+use Spryker\Zed\ProductReviewSearch\Communication\Plugin\ProductPageSearch\Elasticsearch\ProductReviewMapExpanderPlugin;
 
 class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDependencyProvider
 {
