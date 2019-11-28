@@ -208,7 +208,6 @@ addons:
       - rabbitmq-server
       - graphviz
       - libzip-dev
-      - php7.4-gd
   postgresql: 9.6
   mysql: 5.7
 
@@ -248,8 +247,6 @@ before_install:
   - phpenv config-add config/Shared/ci/travis/travis.php.ini
   - if [[ $VALIDATION != 1 && $ON_EVENTS != *$TRAVIS_EVENT_TYPE* ]] ; then exit ; fi
   - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-  - echo "extension = zip.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-  - echo "extension = gd.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - if [[ ${TRAVIS_PHP_VERSION} != "7.4snapshot" ]]; then phpenv config-rm xdebug.ini ; fi
   - if [[ $DB == 'mysql' ]] ; then chmod +x ./config/Shared/ci/travis/mysql/* ; fi
   - if [[ $DB == 'mysql' ]] ; then ./config/Shared/ci/travis/mysql/travis_mysql_5.7.sh ; fi
@@ -261,6 +258,7 @@ before_install:
   - ( awk '1;/@hook travis-ci/{exit}' config/Shared/stores.php ; awk 'NR>1' config/Shared/ci/travis/stores.php ; awk '/@hook travis-ci/,0' config/Shared/stores.php ) > config/Shared/stores_tmp.php ; mv config/Shared/stores_tmp.php config/Shared/stores.php
 
 install:
+  - config/Shared/ci/travis/install_php_7_4-gd.sh
   - chmod -R a+x config/Shared/ci/travis/
   - composer install --optimize-autoloader --no-interaction
   - config/Shared/ci/travis/install_elasticsearch.sh
