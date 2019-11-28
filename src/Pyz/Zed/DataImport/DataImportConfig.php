@@ -547,6 +547,7 @@ class DataImportConfig extends SprykerDataImportConfig
             CommentDataImportConfig::IMPORT_TYPE_COMMENT,
             ConfigurableBundleDataImportConfig::IMPORT_TYPE_CONFIGURABLE_BUNDLE_TEMPLATE,
             ConfigurableBundleDataImportConfig::IMPORT_TYPE_CONFIGURABLE_BUNDLE_TEMPLATE_SLOT,
+            ConfigurableBundleDataImportConfig::IMPORT_TYPE_CONFIGURABLE_BUNDLE_TEMPLATE_IMAGE,
             CmsSlotDataImportConfig::IMPORT_TYPE_CMS_SLOT_TEMPLATE,
             CmsSlotDataImportConfig::IMPORT_TYPE_CMS_SLOT,
             ShipmentDataImportConfig::IMPORT_TYPE_SHIPMENT,
