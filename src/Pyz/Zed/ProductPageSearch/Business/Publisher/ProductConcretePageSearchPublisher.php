@@ -16,7 +16,7 @@ use Generated\Shared\Transfer\SynchronizationDataTransfer;
 use Propel\Runtime\Propel;
 use Spryker\Client\Queue\QueueClientInterface;
 use Spryker\Service\Synchronization\SynchronizationServiceInterface;
-use Spryker\Zed\ProductPageSearch\Business\DataMapper\Elasticsearch\AbstractProductSearchDataMapper;
+use Spryker\Zed\ProductPageSearch\Business\DataMapper\AbstractProductSearchDataMapper;
 use Spryker\Zed\ProductPageSearch\Business\ProductConcretePageSearchReader\ProductConcretePageSearchReaderInterface;
 use Spryker\Zed\ProductPageSearch\Business\ProductConcretePageSearchWriter\ProductConcretePageSearchWriterInterface;
 use Spryker\Zed\ProductPageSearch\Business\Publisher\ProductConcretePageSearchPublisher as SprykerProductConcretePageSearchPublisher;
@@ -59,7 +59,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      * @param \Spryker\Zed\ProductPageSearch\Business\ProductConcretePageSearchWriter\ProductConcretePageSearchWriterInterface $productConcretePageSearchWriter
      * @param \Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToProductInterface $productFacade
      * @param \Spryker\Zed\ProductPageSearch\Dependency\Service\ProductPageSearchToUtilEncodingInterface $utilEncoding
-     * @param \Spryker\Zed\ProductPageSearch\Business\DataMapper\Elasticsearch\AbstractProductSearchDataMapper $productConcreteSearchDataMapper
+     * @param \Spryker\Zed\ProductPageSearch\Business\DataMapper\AbstractProductSearchDataMapper $productConcreteSearchDataMapper
      * @param \Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToStoreFacadeInterface $storeFacade
      * @param \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductConcretePageDataExpanderPluginInterface[] $pageDataExpanderPlugins
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
