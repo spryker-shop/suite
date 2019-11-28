@@ -11,6 +11,7 @@ use Spryker\Zed\BusinessOnBehalfDataImport\Communication\Plugin\DataImport\Busin
 use Spryker\Zed\CategoryDataImport\Communication\Plugin\CategoryDataImportPlugin;
 use Spryker\Zed\CmsPageDataImport\Communication\Plugin\CmsPageDataImportPlugin;
 use Spryker\Zed\CmsPageDataImport\Communication\Plugin\CmsPageStoreDataImportPlugin;
+use Spryker\Zed\CmsSlotBlockDataImport\Communication\Plugin\CmsSlotBlockDataImportPlugin;
 use Spryker\Zed\CmsSlotDataImport\Communication\Plugin\CmsSlotDataImportPlugin;
 use Spryker\Zed\CmsSlotDataImport\Communication\Plugin\CmsSlotTemplateDataImportPlugin;
 use Spryker\Zed\CommentDataImport\Communication\Plugin\CommentDataImportPlugin;
@@ -215,6 +216,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new CmsPageStoreDataImportPlugin(),
             new CmsSlotTemplateDataImportPlugin(),
             new CmsSlotDataImportPlugin(),
+            new CmsSlotBlockDataImportPlugin(),
             new CompanyDataImportPlugin(),
             new CompanyBusinessUnitDataImportPlugin(),
             new CompanyUnitAddressDataImportPlugin(),

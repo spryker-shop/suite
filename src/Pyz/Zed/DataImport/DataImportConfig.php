@@ -11,6 +11,7 @@ use Generated\Shared\Transfer\DataImporterQueueWriterConfigurationTransfer;
 use Spryker\Zed\BusinessOnBehalfDataImport\BusinessOnBehalfDataImportConfig;
 use Spryker\Zed\CategoryDataImport\CategoryDataImportConfig;
 use Spryker\Zed\CmsPageDataImport\CmsPageDataImportConfig;
+use Spryker\Zed\CmsSlotBlockDataImport\CmsSlotBlockDataImportConfig;
 use Spryker\Zed\CmsSlotDataImport\CmsSlotDataImportConfig;
 use Spryker\Zed\CommentDataImport\CommentDataImportConfig;
 use Spryker\Zed\CompanyBusinessUnitDataImport\CompanyBusinessUnitDataImportConfig;
@@ -547,6 +548,7 @@ class DataImportConfig extends SprykerDataImportConfig
             ConfigurableBundleDataImportConfig::IMPORT_TYPE_CONFIGURABLE_BUNDLE_TEMPLATE_SLOT,
             CmsSlotDataImportConfig::IMPORT_TYPE_CMS_SLOT_TEMPLATE,
             CmsSlotDataImportConfig::IMPORT_TYPE_CMS_SLOT,
+            CmsSlotBlockDataImportConfig::IMPORT_TYPE_CMS_SLOT_BLOCK,
             ShipmentDataImportConfig::IMPORT_TYPE_SHIPMENT,
             ShipmentDataImportConfig::IMPORT_TYPE_SHIPMENT_PRICE,
             ShipmentDataImportConfig::IMPORT_TYPE_SHIPMENT_METHOD_STORE,
