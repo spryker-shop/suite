@@ -27,22 +27,27 @@ use Spryker\Zed\ContentProductSetDataImport\ContentProductSetDataImportConfig;
 use Spryker\Zed\DataImport\DataImportConfig as SprykerDataImportConfig;
 use Spryker\Zed\FileManagerDataImport\FileManagerDataImportConfig;
 use Spryker\Zed\MerchantDataImport\MerchantDataImportConfig;
+use Spryker\Zed\MerchantProductOfferDataImport\MerchantProductOfferDataImportConfig;
+use Spryker\Zed\MerchantProfileDataImport\MerchantProfileDataImportConfig;
 use Spryker\Zed\MerchantRelationshipDataImport\MerchantRelationshipDataImportConfig;
 use Spryker\Zed\MerchantRelationshipProductListDataImport\MerchantRelationshipProductListDataImportConfig;
 use Spryker\Zed\MerchantRelationshipSalesOrderThresholdDataImport\MerchantRelationshipSalesOrderThresholdDataImportConfig;
 use Spryker\Zed\MultiCartDataImport\MultiCartDataImportConfig;
 use Spryker\Zed\PriceProductDataImport\PriceProductDataImportConfig;
 use Spryker\Zed\PriceProductMerchantRelationshipDataImport\PriceProductMerchantRelationshipDataImportConfig;
+use Spryker\Zed\PriceProductOfferDataImport\PriceProductOfferDataImportConfig;
 use Spryker\Zed\PriceProductScheduleDataImport\PriceProductScheduleDataImportConfig;
 use Spryker\Zed\ProductAlternativeDataImport\ProductAlternativeDataImportConfig;
 use Spryker\Zed\ProductDiscontinuedDataImport\ProductDiscontinuedDataImportConfig;
 use Spryker\Zed\ProductListDataImport\ProductListDataImportConfig;
 use Spryker\Zed\ProductMeasurementUnitDataImport\ProductMeasurementUnitDataImportConfig;
+use Spryker\Zed\ProductOfferStockDataImport\ProductOfferStockDataImportConfig;
 use Spryker\Zed\ProductPackagingUnitDataImport\ProductPackagingUnitDataImportConfig;
 use Spryker\Zed\ProductQuantityDataImport\ProductQuantityDataImportConfig;
 use Spryker\Zed\QuoteRequestDataImport\QuoteRequestDataImportConfig;
 use Spryker\Zed\SalesOrderThresholdDataImport\SalesOrderThresholdDataImportConfig;
 use Spryker\Zed\SharedCartDataImport\SharedCartDataImportConfig;
+use Spryker\Zed\ShipmentDataImport\ShipmentDataImportConfig;
 use Spryker\Zed\ShoppingListDataImport\ShoppingListDataImportConfig;
 
 /**
@@ -86,6 +91,7 @@ class DataImportConfig extends SprykerDataImportConfig
     public const IMPORT_TYPE_SHIPMENT = 'shipment';
     public const IMPORT_TYPE_SHIPMENT_PRICE = 'shipment-price';
     public const IMPORT_TYPE_STOCK = 'stock';
+    public const IMPORT_TYPE_STOCK_STORE = 'stock-store';
     public const IMPORT_TYPE_TAX = 'tax';
     public const IMPORT_TYPE_CURRENCY = 'currency';
     public const IMPORT_TYPE_STORE = 'store';
@@ -172,30 +178,6 @@ class DataImportConfig extends SprykerDataImportConfig
     public function getProductStockDataImporterConfiguration()
     {
         return $this->buildImporterConfiguration('product_stock.csv', static::IMPORT_TYPE_PRODUCT_STOCK);
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
-     */
-    public function getStockDataImporterConfiguration()
-    {
-        return $this->buildImporterConfiguration('stock.csv', static::IMPORT_TYPE_STOCK);
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
-     */
-    public function getShipmentDataImporterConfiguration()
-    {
-        return $this->buildImporterConfiguration('shipment.csv', static::IMPORT_TYPE_SHIPMENT);
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
-     */
-    public function getShipmentPriceDataImporterConfiguration()
-    {
-        return $this->buildImporterConfiguration('shipment_price.csv', static::IMPORT_TYPE_SHIPMENT_PRICE);
     }
 
     /**
@@ -474,7 +456,6 @@ class DataImportConfig extends SprykerDataImportConfig
             static::IMPORT_TYPE_NAVIGATION,
             static::IMPORT_TYPE_NAVIGATION_NODE,
             static::IMPORT_TYPE_PRODUCT_PRICE,
-            static::IMPORT_TYPE_PRODUCT_STOCK,
             static::IMPORT_TYPE_PRODUCT_ABSTRACT,
             static::IMPORT_TYPE_PRODUCT_ABSTRACT_STORE,
             static::IMPORT_TYPE_PRODUCT_CONCRETE,
@@ -499,12 +480,12 @@ class DataImportConfig extends SprykerDataImportConfig
             static::IMPORT_TYPE_DISCOUNT_STORE,
             static::IMPORT_TYPE_DISCOUNT_AMOUNT,
             static::IMPORT_TYPE_DISCOUNT_VOUCHER,
-            static::IMPORT_TYPE_SHIPMENT,
-            static::IMPORT_TYPE_SHIPMENT_PRICE,
-            static::IMPORT_TYPE_STOCK,
             static::IMPORT_TYPE_TAX,
             static::IMPORT_TYPE_CURRENCY,
             static::IMPORT_TYPE_STORE,
+            static::IMPORT_TYPE_STOCK,
+            static::IMPORT_TYPE_STOCK_STORE,
+            static::IMPORT_TYPE_PRODUCT_STOCK,
             static::IMPORT_TYPE_ORDER_SOURCE,
             static::IMPORT_TYPE_ABSTRACT_GIFT_CARD_CONFIGURATION,
             static::IMPORT_TYPE_CONCRETE_GIFT_CARD_CONFIGURATION,
@@ -513,6 +494,11 @@ class DataImportConfig extends SprykerDataImportConfig
             CompanyDataImportConfig::IMPORT_TYPE_COMPANY,
             CategoryDataImportConfig::IMPORT_TYPE_CATEGORY,
             MerchantDataImportConfig::IMPORT_TYPE_MERCHANT,
+            MerchantProfileDataImportConfig::IMPORT_TYPE_MERCHANT_PROFILE,
+            MerchantProfileDataImportConfig::IMPORT_TYPE_MERCHANT_PROFILE_ADDRESS,
+            MerchantProductOfferDataImportConfig::IMPORT_TYPE_MERCHANT_PRODUCT_OFFER,
+            PriceProductOfferDataImportConfig::IMPORT_TYPE_PRICE_PRODUCT_OFFER,
+            ProductOfferStockDataImportConfig::IMPORT_TYPE_PRODUCT_OFFER_STOCK,
             MultiCartDataImportConfig::IMPORT_TYPE_MULTI_CART,
             SharedCartDataImportConfig::IMPORT_TYPE_SHARED_CART,
             CompanyRoleDataImportConfig::IMPORT_TYPE_COMPANY_USER_ROLE,
@@ -561,8 +547,12 @@ class DataImportConfig extends SprykerDataImportConfig
             CommentDataImportConfig::IMPORT_TYPE_COMMENT,
             ConfigurableBundleDataImportConfig::IMPORT_TYPE_CONFIGURABLE_BUNDLE_TEMPLATE,
             ConfigurableBundleDataImportConfig::IMPORT_TYPE_CONFIGURABLE_BUNDLE_TEMPLATE_SLOT,
+            ConfigurableBundleDataImportConfig::IMPORT_TYPE_CONFIGURABLE_BUNDLE_TEMPLATE_IMAGE,
             CmsSlotDataImportConfig::IMPORT_TYPE_CMS_SLOT_TEMPLATE,
             CmsSlotDataImportConfig::IMPORT_TYPE_CMS_SLOT,
+            ShipmentDataImportConfig::IMPORT_TYPE_SHIPMENT,
+            ShipmentDataImportConfig::IMPORT_TYPE_SHIPMENT_PRICE,
+            ShipmentDataImportConfig::IMPORT_TYPE_SHIPMENT_METHOD_STORE,
         ];
     }
 }
