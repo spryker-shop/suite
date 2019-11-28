@@ -52,14 +52,4 @@ class SearchDependencyProvider extends SprykerSearchDependencyProvider
             new ElasticsearchIndexMapInstallerPlugin(),
         ];
     }
-
-    /**
-     * @return \Spryker\Zed\SearchExtension\Dependency\Plugin\DataMapperPluginInterface[]
-     */
-    protected function getSearchDataMapperPlugins(): array
-    {
-        return [
-            new ElasticsearchDataMapperPlugin(),
-        ];
-    }
 }
