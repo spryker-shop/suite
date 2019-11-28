@@ -9,6 +9,7 @@ namespace Pyz\Glue\CartsRestApi;
 
 use Spryker\Glue\CartsRestApi\CartsRestApiDependencyProvider as SprykerCartsRestApiDependencyProvider;
 use Spryker\Glue\CompanyUsersRestApi\Plugin\CartsRestApi\CompanyUserCustomerExpanderPlugin;
+use Spryker\Glue\ProductOptionsRestApi\Plugin\CartsRestApi\ProductOptionCartItemExpanderPlugin;
 use Spryker\Glue\ProductOptionsRestApi\Plugin\CartsRestApiExtension\ProductOptionRestCartItemsAttributesMapperPlugin;
 
 class CartsRestApiDependencyProvider extends SprykerCartsRestApiDependencyProvider
@@ -30,6 +31,16 @@ class CartsRestApiDependencyProvider extends SprykerCartsRestApiDependencyProvid
     {
         return [
             new ProductOptionRestCartItemsAttributesMapperPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Glue\CartsRestApiExtension\Dependency\Plugin\CartItemExpanderPluginInterface[]
+     */
+    protected function getCartItemExpanderPlugins(): array
+    {
+        return [
+            new ProductOptionCartItemExpanderPlugin(),
         ];
     }
 }
