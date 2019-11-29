@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6bcc20faf6218a3ddfa7ba47bc282a08",
+    "content-hash": "3b26acc33040bd4b7fbcc8d0bc5de3c9",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1035,8 +1035,8 @@
             "authors": [
                 {
                     "name": "Filipe Dobreira",
-                    "role": "Developer",
-                    "homepage": "https://github.com/filp"
+                    "homepage": "https://github.com/filp",
+                    "role": "Developer"
                 }
             ],
             "description": "php error handling for cool kids",
@@ -1135,8 +1135,8 @@
             "authors": [
                 {
                     "name": "Alessio Linares",
-                    "role": "Software Engineer",
-                    "email": "alessio.linares@skyscanner.net"
+                    "email": "alessio.linares@skyscanner.net",
+                    "role": "Software Engineer"
                 }
             ],
             "description": "JSONPath implementation for querying and updating JSON objects",
@@ -4198,7 +4198,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -5545,11 +5545,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/cms-2467/master-blocks-to-slots-assignment-rendering",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "7c3058152db9c38e62abae0efd22159a046ab92f"
+                "reference": "4bd4a4df7972d16436527cb723aac0f46aaaedab"
             },
             "require": {
                 "php": ">=7.2"
@@ -5647,18 +5647,6 @@
                 "spryker/cms-page-data-import": "*",
                 "spryker/cms-page-search": "*",
                 "spryker/cms-slot": "*",
-                "spryker/cms-slot-block": "*",
-                "spryker/cms-slot-block-category-connector": "*",
-                "spryker/cms-slot-block-category-gui": "*",
-                "spryker/cms-slot-block-cms-connector": "*",
-                "spryker/cms-slot-block-cms-gui": "*",
-                "spryker/cms-slot-block-data-import": "*",
-                "spryker/cms-slot-block-extension": "*",
-                "spryker/cms-slot-block-gui": "*",
-                "spryker/cms-slot-block-gui-extension": "*",
-                "spryker/cms-slot-block-product-category-connector": "*",
-                "spryker/cms-slot-block-product-category-gui": "*",
-                "spryker/cms-slot-block-storage": "*",
                 "spryker/cms-slot-data-import": "*",
                 "spryker/cms-slot-extension": "*",
                 "spryker/cms-slot-gui": "*",
@@ -5829,6 +5817,7 @@
                 "spryker/merchant-product-offer": "*",
                 "spryker/merchant-product-offer-data-import": "*",
                 "spryker/merchant-product-offer-storage": "*",
+                "spryker/merchant-product-offer-storage-extension": "*",
                 "spryker/merchant-profile": "*",
                 "spryker/merchant-profile-data-import": "*",
                 "spryker/merchant-profile-gui": "*",
@@ -5844,6 +5833,7 @@
                 "spryker/merchant-relationship-sales-order-threshold-data-import": "*",
                 "spryker/merchant-relationship-sales-order-threshold-gui": "*",
                 "spryker/merchant-relationship-sales-order-threshold-gui-extension": "*",
+                "spryker/merchant-sales-order": "*",
                 "spryker/messenger": "*",
                 "spryker/messenger-extension": "*",
                 "spryker/module-finder": "*",
@@ -5898,6 +5888,9 @@
                 "spryker/price-product-merchant-relationship-data-import": "*",
                 "spryker/price-product-merchant-relationship-gui": "*",
                 "spryker/price-product-merchant-relationship-storage": "*",
+                "spryker/price-product-offer": "*",
+                "spryker/price-product-offer-data-import": "*",
+                "spryker/price-product-offer-storage": "*",
                 "spryker/price-product-schedule": "*",
                 "spryker/price-product-schedule-data-import": "*",
                 "spryker/price-product-schedule-gui": "*",
@@ -6065,6 +6058,7 @@
                 "spryker/shipment": "*",
                 "spryker/shipment-cart-connector": "*",
                 "spryker/shipment-checkout-connector": "*",
+                "spryker/shipment-data-import": "*",
                 "spryker/shipment-discount-connector": "*",
                 "spryker/shipment-extension": "*",
                 "spryker/shipment-gui": "*",
@@ -6160,15 +6154,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-11-28T16:01:26+00:00"
+            "time": "2019-11-28T19:28:56+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/cms-2467/master-blocks-to-slots-assignment-rendering",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "5f5eac6a77c048c8ffab8a3f035a499dc19c201a"
+                "reference": "0563017fd063cac7c3a72e26e2d385691edf4003"
             },
             "require": {
                 "php": ">=7.2"
@@ -6198,7 +6192,6 @@
                 "spryker-shop/cms-content-widget-product-set-connector": "*",
                 "spryker-shop/cms-page": "*",
                 "spryker-shop/cms-search-page": "*",
-                "spryker-shop/cms-slot-block-widget": "*",
                 "spryker-shop/comment-widget": "*",
                 "spryker-shop/comment-widget-extension": "*",
                 "spryker-shop/company-page": "*",
@@ -6222,6 +6215,7 @@
                 "spryker-shop/heartbeat-page": "*",
                 "spryker-shop/home-page": "*",
                 "spryker-shop/language-switcher-widget": "*",
+                "spryker-shop/merchant-product-offer-widget": "*",
                 "spryker-shop/merchant-profile-page": "*",
                 "spryker-shop/money-widget": "*",
                 "spryker-shop/multi-cart-page": "*",
@@ -6305,7 +6299,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-11-28T16:01:01+00:00"
+            "time": "2019-11-27T15:54:23+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -10124,20 +10118,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
-                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler"
+                    "homepage": "https://github.com/manuelpichler",
+                    "role": "Project Founder"
                 },
                 {
                     "name": "Marc Würth",
-                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84"
+                    "homepage": "https://github.com/ravage84",
+                    "role": "Project Maintainer"
                 },
                 {
                     "name": "Other contributors",
-                    "role": "Contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
+                    "role": "Contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
