@@ -17,7 +17,7 @@
 # FE_ZED_SCRIPT='zed'
 # FE_ZED_BUNDLE_PKGJSON_PATTERN=".+/assets/Zed/package.json$"
 
-sudo apt-get -qqy install apache2 libapache2-mod-fastcgi
+sudo apt-get -qqy install apache2
 
 sudo chmod -R 755 $HOME
 sudo chmod 600 config/Zed/dev_only_private.key
@@ -31,7 +31,7 @@ echo "cgi.fix_pathinfo = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php
 ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
 
 # apache: modules and rewrite configuration
-sudo a2enmod rewrite actions fastcgi alias
+sudo a2enmod rewrite actions proxy_fcgi alias
 sudo cp -f config/Shared/ci/travis/.htaccess .htaccess
 
 # apache: virtual hosts configuration
