@@ -47,7 +47,6 @@ use Spryker\Zed\ProductSearchConfigStorage\Communication\Plugin\Event\ProductSea
 use Spryker\Zed\ProductSetPageSearch\Communication\Plugin\Event\ProductSetEventResourceQueryContainerPlugin as ProductSetPageSearchEventResourceQueryContainerPlugin;
 use Spryker\Zed\ProductSetStorage\Communication\Plugin\Event\ProductSetEventResourceQueryContainerPlugin;
 use Spryker\Zed\ProductStorage\Communication\Plugin\Event\ProductAbstractEventResourceQueryContainerPlugin;
-use Spryker\Zed\ProductStorage\Communication\Plugin\Event\ProductConcreteEventResourceQueryContainerPlugin;
 use Spryker\Zed\UrlStorage\Communication\Plugin\Event\RedirectEventResourceQueryContainerPlugin;
 use Spryker\Zed\UrlStorage\Communication\Plugin\Event\UrlEventResourceQueryContainerPlugin;
 
@@ -91,13 +90,12 @@ class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProv
             new ProductSearchConfigEventResourceQueryContainerPlugin(),
             new ProductSetEventResourceQueryContainerPlugin(),
             new ProductAbstractEventResourceQueryContainerPlugin(),
-            new ProductConcreteEventResourceQueryContainerPlugin(),
+            new ProductConcretePageSearchEventResourceBulkRepositoryPlugin(),
             new UrlEventResourceQueryContainerPlugin(),
             new RedirectEventResourceQueryContainerPlugin(),
             new ProductMeasurementUnitEventResourceBulkRepositoryPlugin(),
             new ProductConcreteMeasurementUnitEventResourceBulkRepositoryPlugin(),
             new ProductQuantityEventResourceBulkRepositoryPlugin(),
-            new ProductConcretePageSearchEventResourceBulkRepositoryPlugin(),
             new ProductPackagingUnitEventResourceBulkRepositoryPlugin(),
             new ContentStorageEventResourceRepositoryPlugin(),
             new CmsSlotEventResourceBulkRepositoryPlugin(),
