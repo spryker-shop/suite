@@ -35,6 +35,7 @@ use Spryker\Zed\MerchantRelationshipSalesOrderThresholdDataImport\MerchantRelati
 use Spryker\Zed\MultiCartDataImport\MultiCartDataImportConfig;
 use Spryker\Zed\PriceProductDataImport\PriceProductDataImportConfig;
 use Spryker\Zed\PriceProductMerchantRelationshipDataImport\PriceProductMerchantRelationshipDataImportConfig;
+use Spryker\Zed\PriceProductOfferDataImport\PriceProductOfferDataImportConfig;
 use Spryker\Zed\PriceProductScheduleDataImport\PriceProductScheduleDataImportConfig;
 use Spryker\Zed\ProductAlternativeDataImport\ProductAlternativeDataImportConfig;
 use Spryker\Zed\ProductDiscontinuedDataImport\ProductDiscontinuedDataImportConfig;
@@ -90,6 +91,7 @@ class DataImportConfig extends SprykerDataImportConfig
     public const IMPORT_TYPE_SHIPMENT = 'shipment';
     public const IMPORT_TYPE_SHIPMENT_PRICE = 'shipment-price';
     public const IMPORT_TYPE_STOCK = 'stock';
+    public const IMPORT_TYPE_STOCK_STORE = 'stock-store';
     public const IMPORT_TYPE_TAX = 'tax';
     public const IMPORT_TYPE_CURRENCY = 'currency';
     public const IMPORT_TYPE_STORE = 'store';
@@ -176,14 +178,6 @@ class DataImportConfig extends SprykerDataImportConfig
     public function getProductStockDataImporterConfiguration()
     {
         return $this->buildImporterConfiguration('product_stock.csv', static::IMPORT_TYPE_PRODUCT_STOCK);
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
-     */
-    public function getStockDataImporterConfiguration()
-    {
-        return $this->buildImporterConfiguration('stock.csv', static::IMPORT_TYPE_STOCK);
     }
 
     /**
@@ -462,7 +456,6 @@ class DataImportConfig extends SprykerDataImportConfig
             static::IMPORT_TYPE_NAVIGATION,
             static::IMPORT_TYPE_NAVIGATION_NODE,
             static::IMPORT_TYPE_PRODUCT_PRICE,
-            static::IMPORT_TYPE_PRODUCT_STOCK,
             static::IMPORT_TYPE_PRODUCT_ABSTRACT,
             static::IMPORT_TYPE_PRODUCT_ABSTRACT_STORE,
             static::IMPORT_TYPE_PRODUCT_CONCRETE,
@@ -487,10 +480,12 @@ class DataImportConfig extends SprykerDataImportConfig
             static::IMPORT_TYPE_DISCOUNT_STORE,
             static::IMPORT_TYPE_DISCOUNT_AMOUNT,
             static::IMPORT_TYPE_DISCOUNT_VOUCHER,
-            static::IMPORT_TYPE_STOCK,
             static::IMPORT_TYPE_TAX,
             static::IMPORT_TYPE_CURRENCY,
             static::IMPORT_TYPE_STORE,
+            static::IMPORT_TYPE_STOCK,
+            static::IMPORT_TYPE_STOCK_STORE,
+            static::IMPORT_TYPE_PRODUCT_STOCK,
             static::IMPORT_TYPE_ORDER_SOURCE,
             static::IMPORT_TYPE_ABSTRACT_GIFT_CARD_CONFIGURATION,
             static::IMPORT_TYPE_CONCRETE_GIFT_CARD_CONFIGURATION,
@@ -502,6 +497,7 @@ class DataImportConfig extends SprykerDataImportConfig
             MerchantProfileDataImportConfig::IMPORT_TYPE_MERCHANT_PROFILE,
             MerchantProfileDataImportConfig::IMPORT_TYPE_MERCHANT_PROFILE_ADDRESS,
             MerchantProductOfferDataImportConfig::IMPORT_TYPE_MERCHANT_PRODUCT_OFFER,
+            PriceProductOfferDataImportConfig::IMPORT_TYPE_PRICE_PRODUCT_OFFER,
             ProductOfferStockDataImportConfig::IMPORT_TYPE_PRODUCT_OFFER_STOCK,
             MultiCartDataImportConfig::IMPORT_TYPE_MULTI_CART,
             SharedCartDataImportConfig::IMPORT_TYPE_SHARED_CART,
