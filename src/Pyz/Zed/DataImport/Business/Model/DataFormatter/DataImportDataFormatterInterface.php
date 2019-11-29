@@ -36,6 +36,13 @@ interface DataImportDataFormatterInterface
      *
      * @return string
      */
+    public function formatPostgresArrayBoolean(array $values): string;
+
+    /**
+     * @param array $values
+     *
+     * @return string
+     */
     public function formatPostgresArrayFromJson(array $values): string;
 
     /**
