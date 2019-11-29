@@ -8,12 +8,10 @@
 namespace Pyz\Yves\Console;
 
 use Spryker\Yves\Console\ConsoleDependencyProvider as SprykerConsoleDependencyProvider;
-use Spryker\Yves\HealthCheck\Plugin\Console\YvesHealthCheckConsole;
 use Spryker\Yves\Kernel\Container;
 use Spryker\Yves\Router\Plugin\Application\RouterApplicationPlugin;
 use Spryker\Yves\Router\Plugin\Console\RouterCacheWarmUpConsole;
 use Spryker\Yves\Router\Plugin\Console\RouterDebugYvesConsole;
-use Spryker\Yves\Session\Plugin\Application\Console\ConsoleSessionApplicationPlugin;
 
 class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 {
@@ -27,7 +25,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
         return [
             new RouterDebugYvesConsole(),
             new RouterCacheWarmUpConsole(),
-            new YvesHealthCheckConsole(),
         ];
     }
 
@@ -40,7 +37,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
     {
         return [
             new RouterApplicationPlugin(),
-            new ConsoleSessionApplicationPlugin(),
         ];
     }
 }

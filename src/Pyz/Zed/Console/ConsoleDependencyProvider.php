@@ -53,7 +53,6 @@ use Spryker\Zed\EventBehavior\Communication\Console\EventBehaviorTriggerTimeoutC
 use Spryker\Zed\EventBehavior\Communication\Console\EventTriggerConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventTriggerListenerConsole;
 use Spryker\Zed\EventBehavior\Communication\Plugin\Console\EventBehaviorPostHookPlugin;
-use Spryker\Zed\HealthCheck\Communication\Console\ZedHealthCheckConsole;
 use Spryker\Zed\IndexGenerator\Communication\Console\PostgresIndexGeneratorConsole;
 use Spryker\Zed\IndexGenerator\Communication\Console\PostgresIndexRemoverConsole;
 use Spryker\Zed\Installer\Communication\Console\InitializeDatabaseConsole;
@@ -318,8 +317,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new SchedulerResumeConsole(),
 
             new RouterCacheWarmUpConsole(),
-
-            new ZedHealthCheckConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
