@@ -7,3 +7,4 @@ phpize
 ./configure --enable-gd
 make
 sudo make install
+echo "extension = gd.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
