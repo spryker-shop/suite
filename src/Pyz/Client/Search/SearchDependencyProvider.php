@@ -53,7 +53,7 @@ class SearchDependencyProvider extends SprykerSearchDependencyProvider
     /**
      * @return \Spryker\Client\SearchExtension\Dependency\Plugin\SearchContextExpanderPluginInterface[]
      */
-    protected function getSourceIdentifierMapperPlugins(): array
+    protected function getSearchContextExpanderPlugins(): array
     {
         return [
             new ElasticsearchSearchContextExpanderPlugin(),
