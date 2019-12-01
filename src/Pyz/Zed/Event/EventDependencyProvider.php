@@ -19,6 +19,7 @@ use Spryker\Zed\CmsPageSearch\Communication\Plugin\Event\Subscriber\CmsPageSearc
 use Spryker\Zed\CmsSlotStorage\Communication\Plugin\Event\Subscriber\CmsSlotStorageEventSubscriber;
 use Spryker\Zed\CmsStorage\Communication\Plugin\Event\Subscriber\CmsStorageEventSubscriber;
 use Spryker\Zed\CompanyUserStorage\Communication\Plugin\Event\Subscriber\CompanyUserStorageEventSubscriber;
+use Spryker\Zed\ConfigurableBundlePageSearch\Communication\Plugin\Event\Subscriber\ConfigurableBundleTemplateImagePageSearchEventSubscriber;
 use Spryker\Zed\ConfigurableBundlePageSearch\Communication\Plugin\Event\Subscriber\ConfigurableBundleTemplatePageSearchEventSubscriber;
 use Spryker\Zed\ConfigurableBundleStorage\Communication\Plugin\Event\Subscriber\ConfigurableBundleStorageEventSubscriber;
 use Spryker\Zed\ConfigurableBundleStorage\Communication\Plugin\Event\Subscriber\ConfigurableBundleTemplateImageStorageEventSubscriber;
@@ -143,6 +144,7 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new ProductConcretePageSearchProductLocalizedAttributesEventSubscriber());
         $eventSubscriberCollection->add(new ProductConcretePageSearchProductImageEventSubscriber());
         $eventSubscriberCollection->add(new ConfigurableBundleTemplatePageSearchEventSubscriber());
+        $eventSubscriberCollection->add(new ConfigurableBundleTemplateImagePageSearchEventSubscriber());
 
         return $eventSubscriberCollection;
     }
