@@ -33,7 +33,7 @@ use SprykerShop\Yves\CommentWidget\Plugin\Router\CommentWidgetRouteProviderPlugi
 use SprykerShop\Yves\CompanyPage\Plugin\Router\CompanyPageRouteProviderPlugin;
 use SprykerShop\Yves\CompanyUserAgentWidget\Plugin\Router\CompanyUserAgentWidgetRouteProviderPlugin;
 use SprykerShop\Yves\CompanyUserInvitationPage\Plugin\Router\CompanyUserInvitationPageRouteProviderPlugin;
-use SprykerShop\Yves\ConfigurableBundleCartNoteWidget\Plugin\Router\ConfigurableBundleCartNoteWidgetRouteProviderPlugin;
+use SprykerShop\Yves\ConfigurableBundleNoteWidget\Plugin\Router\ConfigurableBundleNoteWidgetRouteProviderPlugin;
 use SprykerShop\Yves\ConfigurableBundleWidget\Plugin\Router\ConfigurableBundleWidgetRouteProviderPlugin;
 use SprykerShop\Yves\CurrencyWidget\Plugin\Router\CurrencyWidgetRouteProviderPlugin;
 use SprykerShop\Yves\CustomerPage\Plugin\Router\CustomerPageRouteProviderPlugin;
@@ -135,7 +135,7 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new CommentWidgetRouteProviderPlugin(),
             new ConfigurableBundleWidgetRouteProviderPlugin(),
             new CompanyUserAgentWidgetRouteProviderPlugin(),
-            new ConfigurableBundleCartNoteWidgetRouteProviderPlugin(),
+            new ConfigurableBundleNoteWidgetRouteProviderPlugin(),
         ];
     }
 
