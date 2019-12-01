@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a49523a448227539d9936c02e3cffe70",
+    "content-hash": "b002d1db9110a7170fbcf00cc86a3c12",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5355,6 +5355,51 @@
             "time": "2019-11-20T16:10:59+00:00"
         },
         {
+            "name": "spryker/form-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/form-extension.git",
+                "reference": "ff693cdea8b4de9aa331cb685bd9ca62de8ca001"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/form-extension/zipball/ff693cdea8b4de9aa331cb685bd9ca62de8ca001",
+                "reference": "ff693cdea8b4de9aa331cb685bd9ca62de8ca001",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/symfony": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/container": "If you want to use the FormPluginInterface.",
+                "spryker/symfony": "If you want to use the FormPluginInterface."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "FormExtension module",
+            "time": "2019-11-14T09:42:41+00:00"
+        },
+        {
             "name": "spryker/install",
             "version": "dev-master",
             "source": {
@@ -5545,11 +5590,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/ps-10938/dev-configurable-bundle-configurator",
+            "version": "dev-bugfix/ps-10938/configurator-epic-bigfix",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "6e28dbbaa42624bd69c914432bef50e3aa5f8a63"
+                "reference": "bcf5ef328407019d2279fab099b3e30e7bcd245d"
             },
             "require": {
                 "php": ">=7.2"
@@ -6159,7 +6204,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-12-01T11:13:44+00:00"
+            "time": "2019-12-01T14:22:57+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6167,7 +6212,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "91a5e10371b4a9af77a4c57a400bda1b0ac4e7bd"
+                "reference": "2c7b7860108eb980d92cfb03e8880610a58eb125"
             },
             "require": {
                 "php": ">=7.2"
@@ -6305,7 +6350,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-12-01T12:01:06+00:00"
+            "time": "2019-12-01T14:19:53+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
