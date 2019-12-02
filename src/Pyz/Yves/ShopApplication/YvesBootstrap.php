@@ -7,11 +7,8 @@
 
 namespace Pyz\Yves\ShopApplication;
 
-use Silex\Provider\FormServiceProvider;
 use Silex\Provider\RememberMeServiceProvider;
 use Silex\Provider\SecurityServiceProvider;
-use Silex\Provider\ValidatorServiceProvider;
-use Spryker\Shared\Application\ServiceProvider\FormFactoryServiceProvider;
 use SprykerShop\Yves\AgentPage\Plugin\Provider\AgentPageSecurityServiceProvider;
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerSecurityServiceProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\YvesSecurityServiceProvider;
@@ -28,9 +25,6 @@ class YvesBootstrap extends SprykerYvesBootstrap
         $this->application->register(new CustomerSecurityServiceProvider());
         $this->application->register(new YvesSecurityServiceProvider());
         $this->application->register(new RememberMeServiceProvider());
-        $this->application->register(new ValidatorServiceProvider());
-        $this->application->register(new FormServiceProvider());
-        $this->application->register(new FormFactoryServiceProvider());
         $this->application->register(new AgentPageSecurityServiceProvider()); # AgentFeature
     }
 }
