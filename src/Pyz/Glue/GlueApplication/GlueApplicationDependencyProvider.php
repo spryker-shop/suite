@@ -15,9 +15,9 @@ use Spryker\Glue\AuthRestApi\Plugin\FormatAuthenticationErrorResponseHeadersPlug
 use Spryker\Glue\AuthRestApi\Plugin\RefreshTokensResourceRoutePlugin;
 use Spryker\Glue\AuthRestApi\Plugin\RestUserFinderByAccessTokenPlugin;
 use Spryker\Glue\CartCodesRestApi\Plugin\GlueApplication\CartDiscountsResourceRoutePlugin;
-use Spryker\Glue\CartCodesRestApi\Plugin\GlueApplication\CartRuleByCartResourceRelationshipPlugin;
+use Spryker\Glue\CartCodesRestApi\Plugin\GlueApplication\CartRuleByQuoteResourceRelationshipPlugin;
 use Spryker\Glue\CartCodesRestApi\Plugin\GlueApplication\GuestCartDiscountsResourceRoutePlugin;
-use Spryker\Glue\CartCodesRestApi\Plugin\GlueApplication\VoucherByCartResourceRelationshipPlugin;
+use Spryker\Glue\CartCodesRestApi\Plugin\GlueApplication\VoucherByQuoteResourceRelationshipPlugin;
 use Spryker\Glue\CartPermissionGroupsRestApi\Plugin\GlueApplication\CartPermissionGroupByQuoteResourceRelationshipPlugin;
 use Spryker\Glue\CartPermissionGroupsRestApi\Plugin\GlueApplication\CartPermissionGroupByShareDetailResourceRelationshipPlugin;
 use Spryker\Glue\CartPermissionGroupsRestApi\Plugin\GlueApplication\CartPermissionGroupsResourceRoutePlugin;
@@ -405,19 +405,19 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         );
         $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_CARTS,
-            new VoucherByCartResourceRelationshipPlugin()
+            new VoucherByQuoteResourceRelationshipPlugin()
         );
         $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-            new VoucherByCartResourceRelationshipPlugin()
+            new VoucherByQuoteResourceRelationshipPlugin()
         );
         $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_CARTS,
-            new CartRuleByCartResourceRelationshipPlugin()
+            new CartRuleByQuoteResourceRelationshipPlugin()
         );
         $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-            new CartRuleByCartResourceRelationshipPlugin()
+            new CartRuleByQuoteResourceRelationshipPlugin()
         );
 
         return $resourceRelationshipCollection;
