@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.123.0",
+            "version": "3.124.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "3bf671629a3b2a5a5694f8dfee15686e586b33b6"
+                "reference": "6a8e621ac13b89a2cac8e36e7a1f29d396fba971"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/3bf671629a3b2a5a5694f8dfee15686e586b33b6",
-                "reference": "3bf671629a3b2a5a5694f8dfee15686e586b33b6",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/6a8e621ac13b89a2cac8e36e7a1f29d396fba971",
+                "reference": "6a8e621ac13b89a2cac8e36e7a1f29d396fba971",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-11-26T19:08:40+00:00"
+            "time": "2019-12-02T08:26:20+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -1035,8 +1035,8 @@
             "authors": [
                 {
                     "name": "Filipe Dobreira",
-                    "homepage": "https://github.com/filp",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "homepage": "https://github.com/filp"
                 }
             ],
             "description": "php error handling for cool kids",
@@ -1135,8 +1135,8 @@
             "authors": [
                 {
                     "name": "Alessio Linares",
-                    "email": "alessio.linares@skyscanner.net",
-                    "role": "Software Engineer"
+                    "role": "Software Engineer",
+                    "email": "alessio.linares@skyscanner.net"
                 }
             ],
             "description": "JSONPath implementation for querying and updating JSON objects",
@@ -4198,7 +4198,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -5554,7 +5554,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "8b838f0b08baa08e58ab63c424c39f6df2b18e2f"
+                "reference": "12b7a530d1711ae77b5bfc667ca5b5090b9e6f9f"
             },
             "require": {
                 "php": ">=7.2"
@@ -5652,6 +5652,18 @@
                 "spryker/cms-page-data-import": "*",
                 "spryker/cms-page-search": "*",
                 "spryker/cms-slot": "*",
+                "spryker/cms-slot-block": "*",
+                "spryker/cms-slot-block-category-connector": "*",
+                "spryker/cms-slot-block-category-gui": "*",
+                "spryker/cms-slot-block-cms-connector": "*",
+                "spryker/cms-slot-block-cms-gui": "*",
+                "spryker/cms-slot-block-data-import": "*",
+                "spryker/cms-slot-block-extension": "*",
+                "spryker/cms-slot-block-gui": "*",
+                "spryker/cms-slot-block-gui-extension": "*",
+                "spryker/cms-slot-block-product-category-connector": "*",
+                "spryker/cms-slot-block-product-category-gui": "*",
+                "spryker/cms-slot-block-storage": "*",
                 "spryker/cms-slot-data-import": "*",
                 "spryker/cms-slot-extension": "*",
                 "spryker/cms-slot-gui": "*",
@@ -6167,7 +6179,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-12-02T08:11:12+00:00"
+            "time": "2019-12-02T11:17:05+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6175,7 +6187,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "2f940ac054fda7a71d70592ce6bae9f275b89532"
+                "reference": "e939f36f7f717dddce229502b1c0b2649b174e71"
             },
             "require": {
                 "php": ">=7.2"
@@ -6205,6 +6217,7 @@
                 "spryker-shop/cms-content-widget-product-set-connector": "*",
                 "spryker-shop/cms-page": "*",
                 "spryker-shop/cms-search-page": "*",
+                "spryker-shop/cms-slot-block-widget": "*",
                 "spryker-shop/comment-widget": "*",
                 "spryker-shop/comment-widget-extension": "*",
                 "spryker-shop/company-page": "*",
@@ -6312,7 +6325,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-12-01T13:56:18+00:00"
+            "time": "2019-12-02T11:17:08+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -10131,20 +10144,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
+                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler",
-                    "role": "Project Founder"
+                    "homepage": "https://github.com/manuelpichler"
                 },
                 {
                     "name": "Marc Würth",
+                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84",
-                    "role": "Project Maintainer"
+                    "homepage": "https://github.com/ravage84"
                 },
                 {
                     "name": "Other contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
