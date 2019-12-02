@@ -8,10 +8,10 @@
 namespace Pyz\Client\HealthCheck;
 
 use Spryker\Client\HealthCheck\HealthCheckDependencyProvider as SprykerHealthCheckDependencyProvider;
-use Spryker\Client\HealthCheck\Plugin\ZedRequestHealthCheckPlugin;
 use Spryker\Client\Search\Plugin\HealthCheck\SearchHealthCheckPlugin;
 use Spryker\Client\Session\Plugin\HealthCheck\SessionHealthCheckPlugin;
 use Spryker\Client\Storage\Plugin\HealthCheck\KeyValueStoreHealthCheckPlugin;
+use Spryker\Client\ZedRequest\Plugin\ZedRequestHealthCheckPlugin;
 
 class HealthCheckDependencyProvider extends SprykerHealthCheckDependencyProvider
 {
