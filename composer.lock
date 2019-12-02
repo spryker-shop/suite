@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3b26acc33040bd4b7fbcc8d0bc5de3c9",
+    "content-hash": "a7f18ca1ba64b2425c4c4c69a742ef6c",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5244,6 +5244,181 @@
             "time": "2019-11-21T15:03:30+00:00"
         },
         {
+            "name": "spryker/cms-slot-block",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-slot-block.git",
+                "reference": "433eeefce71cb71b8db0d73720dacef21e0fbb45"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-slot-block/zipball/433eeefce71cb71b8db0d73720dacef21e0fbb45",
+                "reference": "433eeefce71cb71b8db0d73720dacef21e0fbb45",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/cms-block": "^2.0.0 || ^3.0.0",
+                "spryker/cms-slot": "^0.5.1",
+                "spryker/cms-slot-block-extension": "^0.1.0",
+                "spryker/event": "^2.3.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/transfer": "^3.8.0",
+                "spryker/util-encoding": "^1.0.0 || ^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/store": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\CmsSlotBlock\\Helper\\": "tests/SprykerTest/Zed/CmsSlotBlock/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsSlotBlock module",
+            "time": "2019-11-29T08:13:24+00:00"
+        },
+        {
+            "name": "spryker/cms-slot-block-extension",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-slot-block-extension.git",
+                "reference": "0716437042b462e468cfb046d54705a9826a6342"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-slot-block-extension/zipball/0716437042b462e468cfb046d54705a9826a6342",
+                "reference": "0716437042b462e468cfb046d54705a9826a6342",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsSlotBlockExtension module",
+            "time": "2019-11-27T14:34:46+00:00"
+        },
+        {
+            "name": "spryker/cms-slot-block-gui-extension",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-slot-block-gui-extension.git",
+                "reference": "40f0f0e2c4581e45efaaef350571f5493d619826"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-slot-block-gui-extension/zipball/40f0f0e2c4581e45efaaef350571f5493d619826",
+                "reference": "40f0f0e2c4581e45efaaef350571f5493d619826",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/symfony": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/symfony": "If you want to use symfony forms"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsSlotBlockGuiExtension module",
+            "time": "2019-11-27T14:34:46+00:00"
+        },
+        {
+            "name": "spryker/configurable-bundle-gui-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/configurable-bundle-gui-extension.git",
+                "reference": "0c59e82a1e26788b24f92b08a39d317878c0d4cc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/configurable-bundle-gui-extension/zipball/0c59e82a1e26788b24f92b08a39d317878c0d4cc",
+                "reference": "0c59e82a1e26788b24f92b08a39d317878c0d4cc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/symfony": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/symfony": "If you want to use ConfigurableBundleGui form expander plugins."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ConfigurableBundleGuiExtension module",
+            "time": "2019-11-28T12:02:34+00:00"
+        },
+        {
             "name": "spryker/decimal-object",
             "version": "1.0.0",
             "source": {
@@ -5355,6 +5530,51 @@
             "time": "2019-11-20T16:10:59+00:00"
         },
         {
+            "name": "spryker/form-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/form-extension.git",
+                "reference": "ff693cdea8b4de9aa331cb685bd9ca62de8ca001"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/form-extension/zipball/ff693cdea8b4de9aa331cb685bd9ca62de8ca001",
+                "reference": "ff693cdea8b4de9aa331cb685bd9ca62de8ca001",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/symfony": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/container": "If you want to use the FormPluginInterface.",
+                "spryker/symfony": "If you want to use the FormPluginInterface."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "FormExtension module",
+            "time": "2019-11-14T09:42:41+00:00"
+        },
+        {
             "name": "spryker/install",
             "version": "dev-master",
             "source": {
@@ -5398,6 +5618,49 @@
             ],
             "description": "Spryker install tool",
             "time": "2019-11-20T17:06:17+00:00"
+        },
+        {
+            "name": "spryker/merchant-relationship-gui-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-relationship-gui-extension.git",
+                "reference": "57e3610fd0b6d01686d93faa1d21099a9d13cb3c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-relationship-gui-extension/zipball/57e3610fd0b6d01686d93faa1d21099a9d13cb3c",
+                "reference": "57e3610fd0b6d01686d93faa1d21099a9d13cb3c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/symfony": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/symfony": "If you want to use Merchant Relationship form expander plugins."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantRelationshipGuiExtension module",
+            "time": "2019-11-15T11:52:00+00:00"
         },
         {
             "name": "spryker/rabbit-mq",
@@ -5545,11 +5808,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/mp-1444/dev-offer-status",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "3159a7c7dad43a01e4d3b8928c5dc09e299f3e42"
+                "reference": "6f605488fa1692d31e8e9fa259697cc5ca38efaa"
             },
             "require": {
                 "php": ">=7.2"
@@ -6154,7 +6417,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-11-27T15:54:19+00:00"
+            "time": "2019-12-02T17:34:36+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6395,6 +6658,51 @@
             ],
             "description": "UuidBehavior module",
             "time": "2019-11-13T15:58:25+00:00"
+        },
+        {
+            "name": "spryker/validator-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/validator-extension.git",
+                "reference": "ce937724ebcb10fa5dd4ab64ca239c1e2545d222"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/validator-extension/zipball/ce937724ebcb10fa5dd4ab64ca239c1e2545d222",
+                "reference": "ce937724ebcb10fa5dd4ab64ca239c1e2545d222",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/symfony": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/container": "If you want to use the ValidatorPluginInterface.",
+                "spryker/symfony": "If you want to use the ValidatorPluginInterface."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ValidatorExtension module",
+            "time": "2019-09-27T10:47:23+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
