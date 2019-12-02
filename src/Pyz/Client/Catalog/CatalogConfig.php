@@ -13,6 +13,6 @@ class CatalogConfig extends SprykerCatalogConfig
 {
     protected const PAGINATION_VALID_ITEMS_PER_PAGE = [
         10,
-        10000,
+        1000,
     ];
 }
