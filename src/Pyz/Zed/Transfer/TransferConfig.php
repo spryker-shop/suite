@@ -42,7 +42,7 @@ class TransferConfig extends SprykerTransferConfig
     }
 
     /**
-     * @return array
+     * @return string[]
      */
     public function getEntitiesSourceDirectories()
     {
