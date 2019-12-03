@@ -9,6 +9,7 @@ import 'core-js/fn/set';
 import 'core-js/fn/map';
 import 'classlist-polyfill';
 import 'string.prototype.startswith';
+import 'date-input-polyfill';
 import elementClosestPolyfill from 'element-closest';
 elementClosestPolyfill(window);
 
