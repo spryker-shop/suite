@@ -17,6 +17,7 @@ use Generated\Shared\Transfer\StockProductTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
 use PyzTest\Glue\Carts\CartsApiTester;
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
+use Spryker\Zed\Store\Business\StoreFacadeInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
@@ -262,7 +263,7 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
     {
         $productConcreteTransfer = $I->haveFullProduct();
 
-        $I->haveProductInStock([
+        $I->haveProductInStockForStore($this->getStoreFacade($I)->getCurrentStore(), [
             StockProductTransfer::SKU => $productConcreteTransfer->getSku(),
             StockProductTransfer::IS_NEVER_OUT_OF_STOCK => 1,
         ]);
@@ -365,5 +366,15 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
     protected function createValueForAnonymousCustomerReference(): string
     {
         return uniqid('testReference', true);
+    }
+
+    /**
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return \Spryker\Zed\Store\Business\StoreFacadeInterface
+     */
+    protected function getStoreFacade(CartsApiTester $I): StoreFacadeInterface
+    {
+        return $I->getLocator()->store()->facade();
     }
 }
