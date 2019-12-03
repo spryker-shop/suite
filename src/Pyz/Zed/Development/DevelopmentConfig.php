@@ -24,7 +24,7 @@ class DevelopmentConfig extends SprykerDevelopmentConfig
     /**
      * @project Only needed in Project, not in demoshop
      *
-     * @return array
+     * @return string[]
      */
     public function getIdeAutoCompletionSourceDirectoryGlobPatterns()
     {
