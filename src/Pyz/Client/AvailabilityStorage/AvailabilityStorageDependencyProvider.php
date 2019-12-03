@@ -8,7 +8,7 @@
 namespace Pyz\Client\AvailabilityStorage;
 
 use Spryker\Client\AvailabilityStorage\AvailabilityStorageDependencyProvider as SprykerAvailabilityStorageDependencyProvider;
-use Spryker\Client\ProductOfferAvailabilityStorage\Communication\Plugin\AvailabilityStorage\ProductOfferPostProductViewAvailabilityStorageExpandPluginPlugin;
+use Spryker\Client\ProductOfferAvailabilityStorage\Communication\Plugin\AvailabilityStorage\ProductOfferPostProductViewAvailabilityStorageExpandPlugin;
 
 class AvailabilityStorageDependencyProvider extends SprykerAvailabilityStorageDependencyProvider
 {
@@ -18,7 +18,7 @@ class AvailabilityStorageDependencyProvider extends SprykerAvailabilityStorageDe
     public function getPostProductViewAvailabilityStorageExpandPlugins(): array
     {
         return [
-            new ProductOfferPostProductViewAvailabilityStorageExpandPluginPlugin(),
+            new ProductOfferPostProductViewAvailabilityStorageExpandPlugin(),
         ];
     }
 }
