@@ -194,7 +194,7 @@ matrix:
 
 addons:
   apt:
-    update: true
+    update: false
     sources:
       - sourceline: ppa:chris-lea/redis-server
       - sourceline: deb http://dl.bintray.com/rabbitmq-erlang/debian bionic erlang
@@ -205,7 +205,7 @@ addons:
     packages:
       - redis-tools
       - redis-server
-      - rabbitmq-server
+      - rabbitmq-server=3.8
       - graphviz
       - libzip-dev
   postgresql: 9.6
