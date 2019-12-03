@@ -12,6 +12,7 @@ use Spryker\Client\Search\Plugin\HealthCheck\SearchHealthCheckPlugin;
 use Spryker\Client\Session\Plugin\HealthCheck\SessionHealthCheckPlugin;
 use Spryker\Client\Storage\Plugin\HealthCheck\KeyValueStoreHealthCheckPlugin;
 use Spryker\Client\ZedRequest\Plugin\ZedRequestHealthCheckPlugin;
+use Spryker\Shared\HealthCheck\HealthCheckConfig;
 
 class HealthCheckDependencyProvider extends SprykerHealthCheckDependencyProvider
 {
@@ -21,10 +22,10 @@ class HealthCheckDependencyProvider extends SprykerHealthCheckDependencyProvider
     protected function getHealthCheckPlugins(): array
     {
         return [
-            new KeyValueStoreHealthCheckPlugin(),
-            new SearchHealthCheckPlugin(),
-            new SessionHealthCheckPlugin(),
-            new ZedRequestHealthCheckPlugin(),
+            HealthCheckConfig::STORAGE_SERVICE_NAME => new KeyValueStoreHealthCheckPlugin(),
+            HealthCheckConfig::SEARCH_SERVICE_NAME => new SearchHealthCheckPlugin(),
+            HealthCheckConfig::SESSION_SERVICE_NAME => new SessionHealthCheckPlugin(),
+            HealthCheckConfig::ZED_REQUEST_SERVICE_NAME => new ZedRequestHealthCheckPlugin(),
         ];
     }
 }

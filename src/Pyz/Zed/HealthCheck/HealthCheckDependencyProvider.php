@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\HealthCheck;
 
+use Spryker\Shared\HealthCheck\HealthCheckConfig;
 use Spryker\Zed\HealthCheck\HealthCheckDependencyProvider as SprykerHealthCheckDependencyProvider;
 use Spryker\Zed\Propel\Communication\Plugin\HealthCheck\DatabaseHealthCheckPlugin;
 use Spryker\Zed\Search\Communication\Plugin\HealthCheck\SearchHealthCheckPlugin;
@@ -21,10 +22,10 @@ class HealthCheckDependencyProvider extends SprykerHealthCheckDependencyProvider
     protected function getHealthCheckPlugins(): array
     {
         return [
-            new SessionHealthCheckPlugin(),
-            new KeyValueStoreHealthCheckPlugin(),
-            new SearchHealthCheckPlugin(),
-            new DatabaseHealthCheckPlugin(),
+            HealthCheckConfig::SESSION_SERVICE_NAME => new SessionHealthCheckPlugin(),
+            HealthCheckConfig::STORAGE_SERVICE_NAME => new KeyValueStoreHealthCheckPlugin(),
+            HealthCheckConfig::SEARCH_SERVICE_NAME => new SearchHealthCheckPlugin(),
+            HealthCheckConfig::DATABASE_SERVICE_NAME => new DatabaseHealthCheckPlugin(),
         ];
     }
 }
