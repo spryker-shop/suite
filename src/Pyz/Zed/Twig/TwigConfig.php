@@ -49,7 +49,7 @@ class TwigConfig extends SprykerTwigConfig
      *
      * @return string[]
      */
-    public function getYvesDirectoryPathPatterns()
+    public function getYvesDirectoryPathPatterns(): array
     {
         $themeNameDefault = $this->getSharedConfig()->getYvesThemeNameDefault();
         $directories = glob(APPLICATION_VENDOR_DIR . '/*/*/Bundles/*/src/*/Yves/*/Theme/' . $themeNameDefault, GLOB_NOSORT | GLOB_ONLYDIR);
