@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\HealthCheck;
 
-use Spryker\Shared\HealthCheck\HealthCheckConfig;
+use Pyz\Shared\HealthCheck\HealthCheckConfig;
 use Spryker\Zed\HealthCheck\HealthCheckDependencyProvider as SprykerHealthCheckDependencyProvider;
 use Spryker\Zed\Propel\Communication\Plugin\HealthCheck\DatabaseHealthCheckPlugin;
 use Spryker\Zed\Search\Communication\Plugin\HealthCheck\SearchHealthCheckPlugin;
