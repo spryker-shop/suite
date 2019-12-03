@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Cart;
 
+use Spryker\ProductOffer\src\Spryker\Zed\ProductOffer\Communication\Plugin\ProductOfferPreReloadItemsPlugin;
 use Spryker\Zed\AvailabilityCartConnector\Communication\Plugin\CheckAvailabilityPlugin;
 use Spryker\Zed\Cart\CartDependencyProvider as SprykerCartDependencyProvider;
 use Spryker\Zed\Cart\Communication\Plugin\CleanUpItemsPreReloadPlugin;
@@ -43,6 +44,7 @@ use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\DefaultQuantity
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitGroupKeyItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitValuePostSavePlugin;
+use Spryker\Zed\ProductOffer\Communication\Plugin\ProductOfferCartChangeTransferNormalizerPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\Cart\CartItemOptionPreCheckPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\CartItemGroupKeyOptionPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\CartItemProductOptionPlugin;
@@ -109,6 +111,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     {
         return [
             new CartChangeTransferQuantityNormalizerPlugin(),
+            new ProductOfferCartChangeTransferNormalizerPlugin(),
         ];
     }
 
@@ -162,6 +165,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     protected function getPreReloadPlugins(Container $container)
     {
         return [
+            new ProductOfferPreReloadItemsPlugin(),
             new CartBundleItemsPreReloadPlugin(),
             new RemoveInactiveItemsPreReloadPlugin(),
             new RemoveRestrictedItemsPreReloadPlugin(),

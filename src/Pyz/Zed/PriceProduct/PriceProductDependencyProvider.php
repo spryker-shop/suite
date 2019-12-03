@@ -12,6 +12,8 @@ use Spryker\Zed\PriceProductMerchantRelationship\Communication\Plugin\PriceProdu
 use Spryker\Zed\PriceProductMerchantRelationship\Communication\Plugin\PriceProduct\MerchantRelationshipPriceDimensionConcreteWriterPlugin;
 use Spryker\Zed\PriceProductMerchantRelationship\Communication\Plugin\PriceProduct\MerchantRelationshipPriceProductDimensionExpanderStrategyPlugin;
 use Spryker\Zed\PriceProductMerchantRelationship\Communication\Plugin\PriceProduct\MerchantRelationshipPriceQueryCriteriaPlugin;
+use Spryker\Zed\PriceProductOffer\Communication\Plugin\PriceProduct\PriceProductOfferPriceProductMatcherStrategyPluginInterface;
+use Spryker\Zed\PriceProductOffer\Communication\Plugin\PriceProduct\PriceProductOfferPriceProductProviderPlugin;
 use Spryker\Zed\PriceProductVolume\Communication\Plugin\PriceProductExtension\PriceProductVolumeExtractorPlugin;
 
 /**
@@ -63,6 +65,26 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
     {
         return [
             new MerchantRelationshipPriceProductDimensionExpanderStrategyPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\PriceProductExtension\Dependency\Plugin\PriceProductProviderPluginInterface[]
+     */
+    public function getPriceProductProviderPlugins(): array
+    {
+        return [
+            new PriceProductOfferPriceProductProviderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\PriceProductExtension\Dependency\Plugin\PriceProductMatcherStrategyPluginInterface[]
+     */
+    public function getPriceProductMatcherStrategyPlugins(): array
+    {
+        return [
+            new PriceProductOfferPriceProductMatcherStrategyPluginInterface(),
         ];
     }
 
