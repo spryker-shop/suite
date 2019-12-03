@@ -1,0 +1,11 @@
+{% extends view('home','@SprykerShop:HomePage') %}
+
+{% block content %}
+    {% include molecule('jumbotron') with {
+        class: 'box'
+    } only %}
+
+    <div class="box">
+        {% cms_slot 'slt-1' %}
+    </div>
+{% endblock %}
