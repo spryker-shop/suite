@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d42ae705dc54f36016b1833be6675a49",
+    "content-hash": "c6884727c10e9f2be5105df94b540551",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.124.0",
+            "version": "3.125.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "6a8e621ac13b89a2cac8e36e7a1f29d396fba971"
+                "reference": "d9ffe7cf9cc93d3c49f4f6d2db6cf0c469686f9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/6a8e621ac13b89a2cac8e36e7a1f29d396fba971",
-                "reference": "6a8e621ac13b89a2cac8e36e7a1f29d396fba971",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d9ffe7cf9cc93d3c49f4f6d2db6cf0c469686f9c",
+                "reference": "d9ffe7cf9cc93d3c49f4f6d2db6cf0c469686f9c",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-12-02T08:26:20+00:00"
+            "time": "2019-12-02T23:15:42+00:00"
         },
         {
             "name": "codeitnowin/barcode",
@@ -3395,16 +3395,16 @@
         },
         {
             "name": "spryker-shop/checkout-page",
-            "version": "3.4.6",
+            "version": "3.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/checkout-page.git",
-                "reference": "dd51dc66b01264e056244b982492a0cbc79d3f96"
+                "reference": "222d4ef422d2cd670f0e8141ef05e5083b2384fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/checkout-page/zipball/dd51dc66b01264e056244b982492a0cbc79d3f96",
-                "reference": "dd51dc66b01264e056244b982492a0cbc79d3f96",
+                "url": "https://api.github.com/repos/spryker-shop/checkout-page/zipball/222d4ef422d2cd670f0e8141ef05e5083b2384fc",
+                "reference": "222d4ef422d2cd670f0e8141ef05e5083b2384fc",
                 "shasum": ""
             },
             "require": {
@@ -3472,7 +3472,7 @@
                 "proprietary"
             ],
             "description": "CheckoutPage module",
-            "time": "2019-11-21T13:11:06+00:00"
+            "time": "2019-11-27T11:47:20+00:00"
         },
         {
             "name": "spryker-shop/checkout-page-extension",
@@ -4234,17 +4234,67 @@
             "time": "2019-10-22T09:01:14+00:00"
         },
         {
-            "name": "spryker-shop/configurable-bundle-widget",
-            "version": "1.3.2",
+            "name": "spryker-shop/configurable-bundle-note-widget",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker-shop/configurable-bundle-widget.git",
-                "reference": "efd071c332e6585651d3be5e404d2da41b0a2291"
+                "url": "https://github.com/spryker-shop/configurable-bundle-note-widget.git",
+                "reference": "dca5266d518e4e0738966ba38a9c73ae4ce43f97"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/configurable-bundle-widget/zipball/efd071c332e6585651d3be5e404d2da41b0a2291",
-                "reference": "efd071c332e6585651d3be5e404d2da41b0a2291",
+                "url": "https://api.github.com/repos/spryker-shop/configurable-bundle-note-widget/zipball/dca5266d518e4e0738966ba38a9c73ae4ce43f97",
+                "reference": "dca5266d518e4e0738966ba38a9c73ae4ce43f97",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker-shop/shop-ui": "^1.0.0",
+                "spryker/application": "^3.8.0",
+                "spryker/configurable-bundle-note": "^1.0.0",
+                "spryker/glossary-storage": "^1.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/quote": "^2.0.0",
+                "spryker/symfony": "^3.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/router": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/router": "Use this module when using plugins that need Router dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ConfigurableBundleNoteWidget module",
+            "time": "2019-12-02T12:58:47+00:00"
+        },
+        {
+            "name": "spryker-shop/configurable-bundle-widget",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/configurable-bundle-widget.git",
+                "reference": "76167e26a3b61990fec0c72fd02b2e74e00e13d6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/configurable-bundle-widget/zipball/76167e26a3b61990fec0c72fd02b2e74e00e13d6",
+                "reference": "76167e26a3b61990fec0c72fd02b2e74e00e13d6",
                 "shasum": ""
             },
             "require": {
@@ -4258,12 +4308,14 @@
                 "spryker/symfony": "^3.1.0"
             },
             "require-dev": {
+                "spryker-shop/configurable-bundle-note-widget": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/router": "*",
                 "spryker/silex": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
+                "spryker-shop/configurable-bundle-note-widget": "If you want to use configurable bundle note feature.",
                 "spryker/router": "Use this module if you want use the RouterProviderPlugin.",
                 "spryker/silex": "Use this module when using plugins that need Silex dependencies."
             },
@@ -4283,7 +4335,7 @@
                 "proprietary"
             ],
             "description": "ConfigurableBundleWidget module",
-            "time": "2019-11-27T16:02:42+00:00"
+            "time": "2019-12-02T03:26:08+00:00"
         },
         {
             "name": "spryker-shop/content-banner-widget",
@@ -4652,27 +4704,28 @@
         },
         {
             "name": "spryker-shop/customer-reorder-widget",
-            "version": "6.3.1",
+            "version": "6.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/customer-reorder-widget.git",
-                "reference": "0634c294ab2b5a263cf05c676c16bd77cf90e993"
+                "reference": "73ec5ad14791b8f3d8db20039bab663f09e27f6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/customer-reorder-widget/zipball/0634c294ab2b5a263cf05c676c16bd77cf90e993",
-                "reference": "0634c294ab2b5a263cf05c676c16bd77cf90e993",
+                "url": "https://api.github.com/repos/spryker-shop/customer-reorder-widget/zipball/73ec5ad14791b8f3d8db20039bab663f09e27f6c",
+                "reference": "73ec5ad14791b8f3d8db20039bab663f09e27f6c",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
+                "spryker-shop/customer-reorder-widget-extension": "^1.0.0",
                 "spryker-shop/shop-application": "^1.0.0",
                 "spryker-shop/shop-ui": "^1.0.0",
                 "spryker/availability-storage": "^1.0.0 || ^2.0.0",
                 "spryker/cart": "^4.6.0 || ^5.0.0 || ^7.0.0",
                 "spryker/customer": "^7.4.0",
                 "spryker/glossary-storage": "^1.0.0",
-                "spryker/kernel": "^3.30.0",
+                "spryker/kernel": "^3.33.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/messenger": "^3.1.0",
                 "spryker/product-bundle": "^4.1.0 || ^6.0.0 || ^7.0.0",
@@ -4710,7 +4763,49 @@
                 "proprietary"
             ],
             "description": "CustomerReorderWidget module",
-            "time": "2019-11-15T09:55:08+00:00"
+            "time": "2019-11-27T11:47:20+00:00"
+        },
+        {
+            "name": "spryker-shop/customer-reorder-widget-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/customer-reorder-widget-extension.git",
+                "reference": "60dc78b022e1d0c61c195f21137f5bb3ca331846"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/customer-reorder-widget-extension/zipball/60dc78b022e1d0c61c195f21137f5bb3ca331846",
+                "reference": "60dc78b022e1d0c61c195f21137f5bb3ca331846",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/symfony": "If you want to plugins with symfony components."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CustomerReorderWidgetExtension module",
+            "time": "2019-11-26T19:52:19+00:00"
         },
         {
             "name": "spryker-shop/discount-promotion-widget",
@@ -7421,27 +7516,33 @@
         },
         {
             "name": "spryker-shop/sales-configurable-bundle-widget",
-            "version": "1.1.1",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/sales-configurable-bundle-widget.git",
-                "reference": "f262c2648ebd8bca3e465bf8893bf8476e79e2c2"
+                "reference": "cdd111e3fd503b23eba24f8cf97666cd58a0f618"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/sales-configurable-bundle-widget/zipball/f262c2648ebd8bca3e465bf8893bf8476e79e2c2",
-                "reference": "f262c2648ebd8bca3e465bf8893bf8476e79e2c2",
+                "url": "https://api.github.com/repos/spryker-shop/sales-configurable-bundle-widget/zipball/cdd111e3fd503b23eba24f8cf97666cd58a0f618",
+                "reference": "cdd111e3fd503b23eba24f8cf97666cd58a0f618",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
+                "spryker-shop/customer-reorder-widget-extension": "^1.0.0",
                 "spryker-shop/shop-ui": "^1.31.0",
                 "spryker/kernel": "^3.33.0",
+                "spryker/messenger": "^3.0.0",
                 "spryker/sales-configurable-bundle": "^1.0.0"
             },
             "require-dev": {
+                "spryker-shop/configurable-bundle-note-widget": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/configurable-bundle-note-widget": "If you want to use configurable bundle note feature."
             },
             "type": "library",
             "extra": {
@@ -7459,7 +7560,7 @@
                 "proprietary"
             ],
             "description": "SalesConfigurableBundleWidget module",
-            "time": "2019-11-11T13:46:48+00:00"
+            "time": "2019-12-01T11:20:53+00:00"
         },
         {
             "name": "spryker-shop/sales-order-threshold-widget",
@@ -16372,6 +16473,51 @@
             ],
             "description": "ConfigurableBundleGuiExtension module",
             "time": "2019-11-28T12:02:34+00:00"
+        },
+        {
+            "name": "spryker/configurable-bundle-note",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/configurable-bundle-note.git",
+                "reference": "4740b0bd9ecfb834a673a07ba86d624d7d1a7331"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/configurable-bundle-note/zipball/4740b0bd9ecfb834a673a07ba86d624d7d1a7331",
+                "reference": "4740b0bd9ecfb834a673a07ba86d624d7d1a7331",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/configurable-bundle": "^1.0.0 || ^2.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/quote": "^2.0.0",
+                "spryker/sales-configurable-bundle": "^1.0.0",
+                "spryker/zed-request": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ConfigurableBundleNote module",
+            "time": "2019-12-03T10:47:36+00:00"
         },
         {
             "name": "spryker/configurable-bundle-storage",
@@ -32025,16 +32171,16 @@
         },
         {
             "name": "spryker/sales",
-            "version": "11.2.1",
+            "version": "11.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales.git",
-                "reference": "9d705ec3e9183e73711d0600f291a96aaf6a159d"
+                "reference": "d742a86b5661c254706288a4057ab9478b1dafe8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales/zipball/9d705ec3e9183e73711d0600f291a96aaf6a159d",
-                "reference": "9d705ec3e9183e73711d0600f291a96aaf6a159d",
+                "url": "https://api.github.com/repos/spryker/sales/zipball/d742a86b5661c254706288a4057ab9478b1dafe8",
+                "reference": "d742a86b5661c254706288a4057ab9478b1dafe8",
                 "shasum": ""
             },
             "require": {
@@ -32043,13 +32189,13 @@
                 "spryker/country": "^3.0.0",
                 "spryker/customer": "^6.0.0 || ^7.0.0",
                 "spryker/gui": "^3.7.0",
-                "spryker/kernel": "^3.30.0",
+                "spryker/kernel": "^3.33.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/money": "^2.0.0",
                 "spryker/oms": "^10.3.0 || ^11.0.0",
                 "spryker/propel": "^3.0.0",
                 "spryker/propel-orm": "^1.0.0",
-                "spryker/sales-extension": "^1.3.0",
+                "spryker/sales-extension": "^1.4.0",
                 "spryker/sales-split": "^3.0.0 || ^5.0.0",
                 "spryker/sequence-number": "^3.0.0",
                 "spryker/symfony": "^3.0.0",
@@ -32092,20 +32238,20 @@
                 "proprietary"
             ],
             "description": "Sales module",
-            "time": "2019-11-28T13:51:45+00:00"
+            "time": "2019-12-02T03:24:25+00:00"
         },
         {
             "name": "spryker/sales-configurable-bundle",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales-configurable-bundle.git",
-                "reference": "f3afa82202f8bf32e4c918fe2e394ff3e43b6b7d"
+                "reference": "073bda592267e74ad8970fe513e5571c29a4f947"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales-configurable-bundle/zipball/f3afa82202f8bf32e4c918fe2e394ff3e43b6b7d",
-                "reference": "f3afa82202f8bf32e4c918fe2e394ff3e43b6b7d",
+                "url": "https://api.github.com/repos/spryker/sales-configurable-bundle/zipball/073bda592267e74ad8970fe513e5571c29a4f947",
+                "reference": "073bda592267e74ad8970fe513e5571c29a4f947",
                 "shasum": ""
             },
             "require": {
@@ -32115,7 +32261,7 @@
                 "spryker/kernel": "^3.33.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/sales": "^10.3.2 || ^11.2.1",
-                "spryker/sales-extension": "^1.3.0"
+                "spryker/sales-extension": "^1.4.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -32139,24 +32285,24 @@
                 "proprietary"
             ],
             "description": "SalesConfigurableBundle module",
-            "time": "2019-12-01T13:15:13+00:00"
+            "time": "2019-12-02T14:13:45+00:00"
         },
         {
             "name": "spryker/sales-extension",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales-extension.git",
-                "reference": "fe7836321501b4c7c15515349f2c39e3759641a5"
+                "reference": "fc3b3294a89fe8dd937e7662832984cad6a2f84e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales-extension/zipball/fe7836321501b4c7c15515349f2c39e3759641a5",
-                "reference": "fe7836321501b4c7c15515349f2c39e3759641a5",
+                "url": "https://api.github.com/repos/spryker/sales-extension/zipball/fc3b3294a89fe8dd937e7662832984cad6a2f84e",
+                "reference": "fc3b3294a89fe8dd937e7662832984cad6a2f84e",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=7.2"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -32178,7 +32324,7 @@
                 "proprietary"
             ],
             "description": "SalesExtension module",
-            "time": "2019-06-17T13:19:22+00:00"
+            "time": "2019-11-19T10:07:13+00:00"
         },
         {
             "name": "spryker/sales-merchant-connector",
