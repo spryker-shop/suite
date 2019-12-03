@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3b26acc33040bd4b7fbcc8d0bc5de3c9",
+    "content-hash": "e35bb3c796a3656793ff81d3c42e5dfa",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -2927,7 +2927,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
+            "description": "? Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -5550,11 +5550,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/te-663/dev-pass-by-kv-storage",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "f0814929a5fa5e6d422b2c8db12f30378fd7fc1f"
+                "reference": "a1aff67c1877e49a241e4250d8d9a12f310031de"
             },
             "require": {
                 "php": ">=7.2"
@@ -6105,6 +6105,8 @@
                 "spryker/stock-gui": "*",
                 "spryker/stock-sales-connector": "*",
                 "spryker/storage": "*",
+                "spryker/storage-database": "*",
+                "spryker/storage-database-extension": "*",
                 "spryker/storage-extension": "*",
                 "spryker/storage-redis": "*",
                 "spryker/store": "*",
@@ -6181,7 +6183,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-12-03T17:51:02+00:00"
+            "time": "2019-12-03T22:34:18+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6333,16 +6335,16 @@
         },
         {
             "name": "spryker/synchronization-behavior",
-            "version": "dev-master",
+            "version": "dev-feature/te-663/dev-pass-by-kv-storage",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/synchronization-behavior.git",
-                "reference": "c2f21d3ceb50b926c3d9719d3b8959429984190a"
+                "reference": "35de35d95b0eeb5b55c362bd8bed71a9e172eff7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/c2f21d3ceb50b926c3d9719d3b8959429984190a",
-                "reference": "c2f21d3ceb50b926c3d9719d3b8959429984190a",
+                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/35de35d95b0eeb5b55c362bd8bed71a9e172eff7",
+                "reference": "35de35d95b0eeb5b55c362bd8bed71a9e172eff7",
                 "shasum": ""
             },
             "require": {
@@ -6378,7 +6380,7 @@
                 "proprietary"
             ],
             "description": "SynchronizationBehavior module",
-            "time": "2019-11-13T15:57:56+00:00"
+            "time": "2019-12-02T11:35:47+00:00"
         },
         {
             "name": "spryker/uuid-behavior",
@@ -10105,7 +10107,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-12T17:28:44+00:00"
+            "time": "2017-12-13T13:21:38+00:00"
         },
         {
             "name": "phpmd/phpmd",
@@ -11564,6 +11566,12 @@
             "alias_normalized": "1.14.0.0",
             "version": "9999999-dev",
             "package": "spryker/event-behavior"
+        },
+        {
+            "alias": "1.4.0",
+            "alias_normalized": "1.4.0.0",
+            "version": "dev-feature/te-663/dev-pass-by-kv-storage",
+            "package": "spryker/synchronization-behavior"
         },
         {
             "alias": "1.1.0",
