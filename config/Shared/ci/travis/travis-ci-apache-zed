@@ -3,6 +3,7 @@
   DocumentRoot %TRAVIS_BUILD_DIR%/public/Zed
   ServerName zed.de.spryker.test
   SetEnv APPLICATION_ENV devtest
+  SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
 
   ErrorLog /tmp/zed-error.log
 
@@ -14,7 +15,7 @@
       Require all granted
   </Directory>
 
-<FilesMatch "\.php$">
-  SetHandler "proxy:fcgi://127.0.0.1:9003/"
-</FilesMatch>
+  <FilesMatch "\.php$">
+    SetHandler "proxy:fcgi://127.0.0.1:9003/"
+  </FilesMatch>
 </VirtualHost>
