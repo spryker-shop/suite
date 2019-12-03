@@ -5554,7 +5554,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "082851e3eaed9af8a89434e7414695a0685cee4c"
+                "reference": "b4b229d9d9810391a91488f06a4b9c0a300ac5f0"
             },
             "require": {
                 "php": ">=7.2"
@@ -5652,6 +5652,18 @@
                 "spryker/cms-page-data-import": "*",
                 "spryker/cms-page-search": "*",
                 "spryker/cms-slot": "*",
+                "spryker/cms-slot-block": "*",
+                "spryker/cms-slot-block-category-connector": "*",
+                "spryker/cms-slot-block-category-gui": "*",
+                "spryker/cms-slot-block-cms-connector": "*",
+                "spryker/cms-slot-block-cms-gui": "*",
+                "spryker/cms-slot-block-data-import": "*",
+                "spryker/cms-slot-block-extension": "*",
+                "spryker/cms-slot-block-gui": "*",
+                "spryker/cms-slot-block-gui-extension": "*",
+                "spryker/cms-slot-block-product-category-connector": "*",
+                "spryker/cms-slot-block-product-category-gui": "*",
+                "spryker/cms-slot-block-storage": "*",
                 "spryker/cms-slot-data-import": "*",
                 "spryker/cms-slot-extension": "*",
                 "spryker/cms-slot-gui": "*",
@@ -5715,6 +5727,7 @@
                 "spryker/configurable-bundle-data-import": "*",
                 "spryker/configurable-bundle-gui": "*",
                 "spryker/configurable-bundle-gui-extension": "*",
+                "spryker/configurable-bundle-note": "*",
                 "spryker/configurable-bundle-storage": "*",
                 "spryker/console": "*",
                 "spryker/container": "*",
@@ -6037,6 +6050,7 @@
                 "spryker/router-extension": "*",
                 "spryker/sales": "*",
                 "spryker/sales-configurable-bundle": "*",
+                "spryker/sales-configurable-bundle-cart-note-gui": "*",
                 "spryker/sales-extension": "*",
                 "spryker/sales-merchant-connector": "*",
                 "spryker/sales-order-threshold": "*",
@@ -6167,7 +6181,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-12-02T17:24:27+00:00"
+            "time": "2019-12-03T14:57:38+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6175,7 +6189,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "76e165f76653104353187e4a47ceeba8339ae42b"
+                "reference": "e06afb4353057c67bed6ac138acd12e943c78993"
             },
             "require": {
                 "php": ">=7.2"
@@ -6205,12 +6219,14 @@
                 "spryker-shop/cms-content-widget-product-set-connector": "*",
                 "spryker-shop/cms-page": "*",
                 "spryker-shop/cms-search-page": "*",
+                "spryker-shop/cms-slot-block-widget": "*",
                 "spryker-shop/comment-widget": "*",
                 "spryker-shop/comment-widget-extension": "*",
                 "spryker-shop/company-page": "*",
                 "spryker-shop/company-user-agent-widget": "*",
                 "spryker-shop/company-user-invitation-page": "*",
                 "spryker-shop/company-widget": "*",
+                "spryker-shop/configurable-bundle-note-widget": "*",
                 "spryker-shop/configurable-bundle-widget": "*",
                 "spryker-shop/content-banner-widget": "*",
                 "spryker-shop/content-file-widget": "*",
@@ -6220,6 +6236,7 @@
                 "spryker-shop/customer-page": "*",
                 "spryker-shop/customer-page-extension": "*",
                 "spryker-shop/customer-reorder-widget": "*",
+                "spryker-shop/customer-reorder-widget-extension": "*",
                 "spryker-shop/discount-promotion-widget": "*",
                 "spryker-shop/discount-widget": "*",
                 "spryker-shop/error-page": "*",
@@ -6313,7 +6330,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-12-03T11:12:02+00:00"
+            "time": "2019-12-03T17:04:25+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -10796,12 +10813,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/spryk.git",
-                "reference": "34f28af92fa73b45e25b0c6aecc23c6f1ba37099"
+                "reference": "95520a7f58cb1479377192667b2f1c828e099cce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/34f28af92fa73b45e25b0c6aecc23c6f1ba37099",
-                "reference": "34f28af92fa73b45e25b0c6aecc23c6f1ba37099",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/95520a7f58cb1479377192667b2f1c828e099cce",
+                "reference": "95520a7f58cb1479377192667b2f1c828e099cce",
                 "shasum": ""
             },
             "require": {
@@ -10849,7 +10866,7 @@
                 "proprietary"
             ],
             "description": "Spryk module",
-            "time": "2019-11-06T14:22:15+00:00"
+            "time": "2019-12-03T14:05:48+00:00"
         },
         {
             "name": "spryker-sdk/spryk-gui",
@@ -10857,16 +10874,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/spryk-gui.git",
-                "reference": "f9f3693f0baeff0d2e56a7961cf1dcc1f094e404"
+                "reference": "e24001b75dbc26e02be4d4c56a23e42336a2c5ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk-gui/zipball/f9f3693f0baeff0d2e56a7961cf1dcc1f094e404",
-                "reference": "f9f3693f0baeff0d2e56a7961cf1dcc1f094e404",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk-gui/zipball/e24001b75dbc26e02be4d4c56a23e42336a2c5ad",
+                "reference": "e24001b75dbc26e02be4d4c56a23e42336a2c5ad",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker-sdk/spryk": "^0.2.2",
                 "spryker/development": "^3.12.0",
                 "spryker/graph": "^3.0.0",
@@ -10897,7 +10914,7 @@
                 "proprietary"
             ],
             "description": "SprykGui module",
-            "time": "2019-11-06T18:31:09+00:00"
+            "time": "2019-12-03T15:57:27+00:00"
         },
         {
             "name": "spryker/architecture-sniffer",
@@ -10963,12 +10980,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-generator.git",
-                "reference": "cd882d885a9cc884bbe370b632f3979ef2913ba8"
+                "reference": "8027663df7ac184c4e98654cebb54eaeb8a32c51"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-generator/zipball/cd882d885a9cc884bbe370b632f3979ef2913ba8",
-                "reference": "cd882d885a9cc884bbe370b632f3979ef2913ba8",
+                "url": "https://api.github.com/repos/spryker/code-generator/zipball/8027663df7ac184c4e98654cebb54eaeb8a32c51",
+                "reference": "8027663df7ac184c4e98654cebb54eaeb8a32c51",
                 "shasum": ""
             },
             "require": {
@@ -10999,7 +11016,7 @@
                 "MIT"
             ],
             "description": "CodeGenerator module",
-            "time": "2019-11-20T17:04:45+00:00"
+            "time": "2019-12-03T13:56:28+00:00"
         },
         {
             "name": "spryker/code-sniffer",
