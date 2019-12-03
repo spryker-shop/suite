@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e35bb3c796a3656793ff81d3c42e5dfa",
+    "content-hash": "3b26acc33040bd4b7fbcc8d0bc5de3c9",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.124.0",
+            "version": "3.125.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "6a8e621ac13b89a2cac8e36e7a1f29d396fba971"
+                "reference": "d9ffe7cf9cc93d3c49f4f6d2db6cf0c469686f9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/6a8e621ac13b89a2cac8e36e7a1f29d396fba971",
-                "reference": "6a8e621ac13b89a2cac8e36e7a1f29d396fba971",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d9ffe7cf9cc93d3c49f4f6d2db6cf0c469686f9c",
+                "reference": "d9ffe7cf9cc93d3c49f4f6d2db6cf0c469686f9c",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-12-02T08:26:20+00:00"
+            "time": "2019-12-02T23:15:42+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -2927,7 +2927,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette NEON: encodes and decodes NEON file format.",
+            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -5550,11 +5550,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/te-663/dev-pass-by-kv-storage",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "6ce3bbc542504afb4b796cb39314a91c1302f57b"
+                "reference": "f0814929a5fa5e6d422b2c8db12f30378fd7fc1f"
             },
             "require": {
                 "php": ">=7.2"
@@ -5727,6 +5727,7 @@
                 "spryker/configurable-bundle-data-import": "*",
                 "spryker/configurable-bundle-gui": "*",
                 "spryker/configurable-bundle-gui-extension": "*",
+                "spryker/configurable-bundle-note": "*",
                 "spryker/configurable-bundle-storage": "*",
                 "spryker/console": "*",
                 "spryker/container": "*",
@@ -6049,6 +6050,7 @@
                 "spryker/router-extension": "*",
                 "spryker/sales": "*",
                 "spryker/sales-configurable-bundle": "*",
+                "spryker/sales-configurable-bundle-cart-note-gui": "*",
                 "spryker/sales-extension": "*",
                 "spryker/sales-merchant-connector": "*",
                 "spryker/sales-order-threshold": "*",
@@ -6103,8 +6105,6 @@
                 "spryker/stock-gui": "*",
                 "spryker/stock-sales-connector": "*",
                 "spryker/storage": "*",
-                "spryker/storage-database": "*",
-                "spryker/storage-database-extension": "*",
                 "spryker/storage-extension": "*",
                 "spryker/storage-redis": "*",
                 "spryker/store": "*",
@@ -6181,7 +6181,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-12-02T13:18:15+00:00"
+            "time": "2019-12-03T17:51:02+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6189,7 +6189,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "e939f36f7f717dddce229502b1c0b2649b174e71"
+                "reference": "cddc88ad274b3813bfe35fc9430f5bbdba3bd32d"
             },
             "require": {
                 "php": ">=7.2"
@@ -6226,6 +6226,7 @@
                 "spryker-shop/company-user-agent-widget": "*",
                 "spryker-shop/company-user-invitation-page": "*",
                 "spryker-shop/company-widget": "*",
+                "spryker-shop/configurable-bundle-note-widget": "*",
                 "spryker-shop/configurable-bundle-widget": "*",
                 "spryker-shop/content-banner-widget": "*",
                 "spryker-shop/content-file-widget": "*",
@@ -6235,6 +6236,7 @@
                 "spryker-shop/customer-page": "*",
                 "spryker-shop/customer-page-extension": "*",
                 "spryker-shop/customer-reorder-widget": "*",
+                "spryker-shop/customer-reorder-widget-extension": "*",
                 "spryker-shop/discount-promotion-widget": "*",
                 "spryker-shop/discount-widget": "*",
                 "spryker-shop/error-page": "*",
@@ -6327,20 +6329,20 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-12-02T11:17:08+00:00"
+            "time": "2019-12-03T16:33:46+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
-            "version": "dev-feature/te-663/dev-pass-by-kv-storage",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/synchronization-behavior.git",
-                "reference": "35de35d95b0eeb5b55c362bd8bed71a9e172eff7"
+                "reference": "c2f21d3ceb50b926c3d9719d3b8959429984190a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/35de35d95b0eeb5b55c362bd8bed71a9e172eff7",
-                "reference": "35de35d95b0eeb5b55c362bd8bed71a9e172eff7",
+                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/c2f21d3ceb50b926c3d9719d3b8959429984190a",
+                "reference": "c2f21d3ceb50b926c3d9719d3b8959429984190a",
                 "shasum": ""
             },
             "require": {
@@ -6376,7 +6378,7 @@
                 "proprietary"
             ],
             "description": "SynchronizationBehavior module",
-            "time": "2019-12-02T11:35:47+00:00"
+            "time": "2019-11-13T15:57:56+00:00"
         },
         {
             "name": "spryker/uuid-behavior",
@@ -10103,7 +10105,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-13T13:21:38+00:00"
+            "time": "2017-12-12T17:28:44+00:00"
         },
         {
             "name": "phpmd/phpmd",
@@ -10810,12 +10812,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/spryk.git",
-                "reference": "34f28af92fa73b45e25b0c6aecc23c6f1ba37099"
+                "reference": "95520a7f58cb1479377192667b2f1c828e099cce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/34f28af92fa73b45e25b0c6aecc23c6f1ba37099",
-                "reference": "34f28af92fa73b45e25b0c6aecc23c6f1ba37099",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/95520a7f58cb1479377192667b2f1c828e099cce",
+                "reference": "95520a7f58cb1479377192667b2f1c828e099cce",
                 "shasum": ""
             },
             "require": {
@@ -10863,7 +10865,7 @@
                 "proprietary"
             ],
             "description": "Spryk module",
-            "time": "2019-11-06T14:22:15+00:00"
+            "time": "2019-12-03T14:05:48+00:00"
         },
         {
             "name": "spryker-sdk/spryk-gui",
@@ -10871,16 +10873,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/spryk-gui.git",
-                "reference": "f9f3693f0baeff0d2e56a7961cf1dcc1f094e404"
+                "reference": "e24001b75dbc26e02be4d4c56a23e42336a2c5ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk-gui/zipball/f9f3693f0baeff0d2e56a7961cf1dcc1f094e404",
-                "reference": "f9f3693f0baeff0d2e56a7961cf1dcc1f094e404",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk-gui/zipball/e24001b75dbc26e02be4d4c56a23e42336a2c5ad",
+                "reference": "e24001b75dbc26e02be4d4c56a23e42336a2c5ad",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker-sdk/spryk": "^0.2.2",
                 "spryker/development": "^3.12.0",
                 "spryker/graph": "^3.0.0",
@@ -10911,7 +10913,7 @@
                 "proprietary"
             ],
             "description": "SprykGui module",
-            "time": "2019-11-06T18:31:09+00:00"
+            "time": "2019-12-03T15:57:27+00:00"
         },
         {
             "name": "spryker/architecture-sniffer",
@@ -10977,12 +10979,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-generator.git",
-                "reference": "cd882d885a9cc884bbe370b632f3979ef2913ba8"
+                "reference": "8027663df7ac184c4e98654cebb54eaeb8a32c51"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-generator/zipball/cd882d885a9cc884bbe370b632f3979ef2913ba8",
-                "reference": "cd882d885a9cc884bbe370b632f3979ef2913ba8",
+                "url": "https://api.github.com/repos/spryker/code-generator/zipball/8027663df7ac184c4e98654cebb54eaeb8a32c51",
+                "reference": "8027663df7ac184c4e98654cebb54eaeb8a32c51",
                 "shasum": ""
             },
             "require": {
@@ -11013,7 +11015,7 @@
                 "MIT"
             ],
             "description": "CodeGenerator module",
-            "time": "2019-11-20T17:04:45+00:00"
+            "time": "2019-12-03T13:56:28+00:00"
         },
         {
             "name": "spryker/code-sniffer",
@@ -11562,12 +11564,6 @@
             "alias_normalized": "1.14.0.0",
             "version": "9999999-dev",
             "package": "spryker/event-behavior"
-        },
-        {
-            "alias": "1.4.0",
-            "alias_normalized": "1.4.0.0",
-            "version": "dev-feature/te-663/dev-pass-by-kv-storage",
-            "package": "spryker/synchronization-behavior"
         },
         {
             "alias": "1.1.0",

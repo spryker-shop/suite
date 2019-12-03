@@ -126,7 +126,6 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new AvailabilityNotificationSubscriber());
         $eventSubscriberCollection->add(new MerchantProfileStorageEventSubscriber());
         $eventSubscriberCollection->add(new MerchantProductOfferStorageEventSubscriber());
-        $eventSubscriberCollection->add(new CmsSlotStorageEventSubscriber());
         $eventSubscriberCollection->add(new PriceProductOfferStorageEventSubscriber());
 
         /**
