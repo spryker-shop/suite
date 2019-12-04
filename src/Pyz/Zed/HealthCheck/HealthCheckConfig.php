@@ -14,7 +14,7 @@ class HealthCheckConfig extends SprykerHealthCheckConfig
     /**
      * @uses \Pyz\Shared\HealthCheck\HealthCheckConfig::STORAGE_SERVICE_NAME
      */
-    protected const STORAGE_SERVICE_NAME = 'storage';
+    public const STORAGE_SERVICE_NAME = 'storage';
 
     /**
      * @uses \Pyz\Shared\HealthCheck\HealthCheckConfig::SEARCH_SERVICE_NAME
