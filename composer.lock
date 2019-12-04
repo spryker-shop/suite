@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3b26acc33040bd4b7fbcc8d0bc5de3c9",
+    "content-hash": "1b345ecfb159e0c891c9fa69142d03a7",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -2928,7 +2928,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
+            "description": "? Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -5551,11 +5551,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/glue-8012/deprecation-of-client-plugin-interface",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "d3c7faa3925dd9fe4358ed729211902e07216413"
+                "reference": "5bb42d78f51326edd946303fa1c12d87482d4803"
             },
             "require": {
                 "php": ">=7.2"
@@ -5653,18 +5653,6 @@
                 "spryker/cms-page-data-import": "*",
                 "spryker/cms-page-search": "*",
                 "spryker/cms-slot": "*",
-                "spryker/cms-slot-block": "*",
-                "spryker/cms-slot-block-category-connector": "*",
-                "spryker/cms-slot-block-category-gui": "*",
-                "spryker/cms-slot-block-cms-connector": "*",
-                "spryker/cms-slot-block-cms-gui": "*",
-                "spryker/cms-slot-block-data-import": "*",
-                "spryker/cms-slot-block-extension": "*",
-                "spryker/cms-slot-block-gui": "*",
-                "spryker/cms-slot-block-gui-extension": "*",
-                "spryker/cms-slot-block-product-category-connector": "*",
-                "spryker/cms-slot-block-product-category-gui": "*",
-                "spryker/cms-slot-block-storage": "*",
                 "spryker/cms-slot-data-import": "*",
                 "spryker/cms-slot-extension": "*",
                 "spryker/cms-slot-gui": "*",
@@ -5726,9 +5714,6 @@
                 "spryker/configurable-bundle": "*",
                 "spryker/configurable-bundle-cart": "*",
                 "spryker/configurable-bundle-data-import": "*",
-                "spryker/configurable-bundle-gui": "*",
-                "spryker/configurable-bundle-gui-extension": "*",
-                "spryker/configurable-bundle-note": "*",
                 "spryker/configurable-bundle-storage": "*",
                 "spryker/console": "*",
                 "spryker/container": "*",
@@ -5801,8 +5786,6 @@
                 "spryker/flysystem-aws3v3-file-system": "*",
                 "spryker/flysystem-ftp-file-system": "*",
                 "spryker/flysystem-local-file-system": "*",
-                "spryker/form": "*",
-                "spryker/form-extension": "*",
                 "spryker/gift-card": "*",
                 "spryker/gift-card-balance": "*",
                 "spryker/gift-card-mail-connector": "*",
@@ -5849,7 +5832,6 @@
                 "spryker/merchant-relationship-data-import": "*",
                 "spryker/merchant-relationship-extension": "*",
                 "spryker/merchant-relationship-gui": "*",
-                "spryker/merchant-relationship-gui-extension": "*",
                 "spryker/merchant-relationship-product-list": "*",
                 "spryker/merchant-relationship-product-list-data-import": "*",
                 "spryker/merchant-relationship-product-list-gui": "*",
@@ -6051,7 +6033,6 @@
                 "spryker/router-extension": "*",
                 "spryker/sales": "*",
                 "spryker/sales-configurable-bundle": "*",
-                "spryker/sales-configurable-bundle-cart-note-gui": "*",
                 "spryker/sales-extension": "*",
                 "spryker/sales-merchant-connector": "*",
                 "spryker/sales-order-threshold": "*",
@@ -6069,7 +6050,6 @@
                 "spryker/scheduler-extension": "*",
                 "spryker/scheduler-jenkins": "*",
                 "spryker/search": "*",
-                "spryker/security": "*",
                 "spryker/sequence-number": "*",
                 "spryker/session": "*",
                 "spryker/session-extension": "*",
@@ -6148,8 +6128,6 @@
                 "spryker/util-uuid-generator": "*",
                 "spryker/util-validate": "*",
                 "spryker/uuid": "*",
-                "spryker/validator": "*",
-                "spryker/validator-extension": "*",
                 "spryker/vault": "*",
                 "spryker/web-profiler": "*",
                 "spryker/web-profiler-extension": "*",
@@ -6182,7 +6160,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-12-04T09:44:20+00:00"
+            "time": "2019-11-29T11:45:37+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6190,7 +6168,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "0f049aeeba7f06acba0560d5073d95afabb82edb"
+                "reference": "cddc88ad274b3813bfe35fc9430f5bbdba3bd32d"
             },
             "require": {
                 "php": ">=7.2"
@@ -6330,7 +6308,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-12-04T09:44:24+00:00"
+            "time": "2019-12-03T16:33:46+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -9191,8 +9169,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -10106,7 +10084,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-12T17:28:44+00:00"
+            "time": "2017-12-13T13:21:38+00:00"
         },
         {
             "name": "phpmd/phpmd",
