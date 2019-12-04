@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "86755d4ac207b2f67130a67433c9ffea",
+    "content-hash": "3b26acc33040bd4b7fbcc8d0bc5de3c9",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -2928,7 +2928,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette NEON: encodes and decodes NEON file format.",
+            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -5551,11 +5551,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/glue-8011/dev-discounts-api",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "f7f3cc9758202e7d8e1197fa29bde06740dfac70"
+                "reference": "207c37fb6562ce256f1acb259be9283fed075419"
             },
             "require": {
                 "php": ">=7.2"
@@ -5837,6 +5837,9 @@
                 "spryker/merchant-extension": "*",
                 "spryker/merchant-gui": "*",
                 "spryker/merchant-gui-extension": "*",
+                "spryker/merchant-opening-hours": "*",
+                "spryker/merchant-opening-hours-data-import": "*",
+                "spryker/merchant-opening-hours-storage": "*",
                 "spryker/merchant-product-offer": "*",
                 "spryker/merchant-product-offer-data-import": "*",
                 "spryker/merchant-product-offer-storage": "*",
@@ -6153,6 +6156,7 @@
                 "spryker/vault": "*",
                 "spryker/web-profiler": "*",
                 "spryker/web-profiler-extension": "*",
+                "spryker/weekday-schedule": "*",
                 "spryker/wishlist": "*",
                 "spryker/wishlist-extension": "*",
                 "spryker/wishlists-rest-api": "*",
@@ -6182,15 +6186,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-12-04T15:57:22+00:00"
+            "time": "2019-12-04T13:40:31+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/glue-8011/dev-discounts-api",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "c30d0d2942e325471bed57ccfac7ca2adbff3a8e"
+                "reference": "d016433450cf8249d90798752484290ce39d2fbb"
             },
             "require": {
                 "php": ">=7.2"
@@ -6330,7 +6334,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-12-04T12:22:22+00:00"
+            "time": "2019-12-04T13:40:46+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -10106,7 +10110,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-13T13:21:38+00:00"
+            "time": "2017-12-12T17:28:44+00:00"
         },
         {
             "name": "phpmd/phpmd",
@@ -10149,20 +10153,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
-                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler"
+                    "homepage": "https://github.com/manuelpichler",
+                    "role": "Project Founder"
                 },
                 {
                     "name": "Marc Würth",
-                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84"
+                    "homepage": "https://github.com/ravage84",
+                    "role": "Project Maintainer"
                 },
                 {
                     "name": "Other contributors",
-                    "role": "Contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
+                    "role": "Contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -11174,141 +11178,6 @@
                 "standards"
             ],
             "time": "2019-11-28T20:16:23+00:00"
-        },
-        {
-            "name": "spryker/merchant-opening-hours",
-            "version": "0.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/merchant-opening-hours.git",
-                "reference": "f4c97000d4ba1179bad90d85ed565fcd213d7261"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-opening-hours/zipball/f4c97000d4ba1179bad90d85ed565fcd213d7261",
-                "reference": "f4c97000d4ba1179bad90d85ed565fcd213d7261",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1",
-                "spryker/merchant": "^2.0.0",
-                "spryker/weekday-schedule": "^0.1.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "MerchantOpeningHours module",
-            "time": "2019-11-27T16:29:55+00:00"
-        },
-        {
-            "name": "spryker/merchant-opening-hours-storage",
-            "version": "0.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/merchant-opening-hours-storage.git",
-                "reference": "18ac8554a9b0c419fcd2aa02c06dfcd2a2479c82"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-opening-hours-storage/zipball/18ac8554a9b0c419fcd2aa02c06dfcd2a2479c82",
-                "reference": "18ac8554a9b0c419fcd2aa02c06dfcd2a2479c82",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1",
-                "spryker/event-behavior": "^1.0.0",
-                "spryker/kernel": "^3.33.0",
-                "spryker/merchant": "^2.0.0",
-                "spryker/merchant-opening-hours": "^0.1.0",
-                "spryker/propel-orm": "^1.5.0",
-                "spryker/storage": "^3.0.0",
-                "spryker/synchronization": "^1.0.0",
-                "spryker/synchronization-behavior": "^1.0.0",
-                "spryker/synchronization-extension": "^1.0.0",
-                "spryker/weekday-schedule": "^0.1.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/event": "*",
-                "spryker/propel": "*",
-                "spryker/queue": "*",
-                "spryker/testify": "*"
-            },
-            "suggest": {
-                "spryker/event": "If you want to use Event plugins: ^2.1.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "MerchantOpeningHoursStorage module",
-            "time": "2019-11-27T16:29:55+00:00"
-        },
-        {
-            "name": "spryker/weekday-schedule",
-            "version": "0.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/weekday-schedule.git",
-                "reference": "f7832aa817580c9dac91ffe952a80a245b98d1a4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/weekday-schedule/zipball/f7832aa817580c9dac91ffe952a80a245b98d1a4",
-                "reference": "f7832aa817580c9dac91ffe952a80a245b98d1a4",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "WeekdaySchedule module",
-            "time": "2019-11-06T15:22:14+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
