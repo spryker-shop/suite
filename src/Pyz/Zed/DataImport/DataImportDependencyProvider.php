@@ -11,6 +11,7 @@ use Spryker\Zed\BusinessOnBehalfDataImport\Communication\Plugin\DataImport\Busin
 use Spryker\Zed\CategoryDataImport\Communication\Plugin\CategoryDataImportPlugin;
 use Spryker\Zed\CmsPageDataImport\Communication\Plugin\CmsPageDataImportPlugin;
 use Spryker\Zed\CmsPageDataImport\Communication\Plugin\CmsPageStoreDataImportPlugin;
+use Spryker\Zed\CmsSlotBlockDataImport\Communication\Plugin\CmsSlotBlockDataImportPlugin;
 use Spryker\Zed\CmsSlotDataImport\Communication\Plugin\CmsSlotDataImportPlugin;
 use Spryker\Zed\CmsSlotDataImport\Communication\Plugin\CmsSlotTemplateDataImportPlugin;
 use Spryker\Zed\CommentDataImport\Communication\Plugin\CommentDataImportPlugin;
@@ -26,6 +27,7 @@ use Spryker\Zed\CompanyUnitAddressLabelDataImport\Communication\Plugin\CompanyUn
 use Spryker\Zed\CompanyUnitAddressLabelDataImport\Communication\Plugin\CompanyUnitAddressLabelRelationDataImportPlugin;
 use Spryker\Zed\CompanyUserDataImport\Communication\Plugin\DataImport\CompanyUserDataImportPlugin;
 use Spryker\Zed\ConfigurableBundleDataImport\Communication\Plugin\ConfigurableBundleTemplateDataImportPlugin;
+use Spryker\Zed\ConfigurableBundleDataImport\Communication\Plugin\ConfigurableBundleTemplateImageDataImportPlugin;
 use Spryker\Zed\ConfigurableBundleDataImport\Communication\Plugin\ConfigurableBundleTemplateSlotDataImportPlugin;
 use Spryker\Zed\ContentBannerDataImport\Communication\Plugin\ContentBannerDataImportPlugin;
 use Spryker\Zed\ContentProductDataImport\Communication\Plugin\ContentProductAbstractListDataImportPlugin;
@@ -43,6 +45,8 @@ use Spryker\Zed\MerchantRelationshipDataImport\Communication\Plugin\MerchantRela
 use Spryker\Zed\MerchantRelationshipProductListDataImport\Communication\Plugin\MerchantRelationshipProductListDataImportPlugin;
 use Spryker\Zed\MerchantRelationshipSalesOrderThresholdDataImport\Communication\Plugin\DataImport\MerchantRelationshipSalesOrderThresholdDataImportPlugin;
 use Spryker\Zed\MultiCartDataImport\Communication\Plugin\MultiCartDataImportPlugin;
+use Spryker\Zed\PaymentDataImport\Communication\Plugin\PaymentMethodDataImportPlugin;
+use Spryker\Zed\PaymentDataImport\Communication\Plugin\PaymentMethodStoreDataImportPlugin;
 use Spryker\Zed\PriceProductMerchantRelationshipDataImport\Communication\Plugin\PriceProductMerchantRelationshipDataImportPlugin;
 use Spryker\Zed\PriceProductOfferDataImport\Communication\Plugin\PriceProductOfferDataImportPlugin;
 use Spryker\Zed\PriceProductScheduleDataImport\Communication\Plugin\PriceProductScheduleDataImportPlugin;
@@ -216,6 +220,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new CmsPageStoreDataImportPlugin(),
             new CmsSlotTemplateDataImportPlugin(),
             new CmsSlotDataImportPlugin(),
+            new CmsSlotBlockDataImportPlugin(),
             new CompanyDataImportPlugin(),
             new CompanyBusinessUnitDataImportPlugin(),
             new CompanyUnitAddressDataImportPlugin(),
@@ -261,6 +266,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new QuoteRequestVersionDataImportPlugin(),
             new ConfigurableBundleTemplateDataImportPlugin(),
             new ConfigurableBundleTemplateSlotDataImportPlugin(),
+            new ConfigurableBundleTemplateImageDataImportPlugin(),
             new PriceProductScheduleDataImportPlugin(),
             new ContentBannerDataImportPlugin(),
             new ContentProductAbstractListDataImportPlugin(),
@@ -269,6 +275,8 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new ShipmentDataImportPlugin(),
             new ShipmentMethodPriceDataImportPlugin(),
             new ShipmentMethodStoreDataImportPlugin(),
+            new PaymentMethodDataImportPlugin(),
+            new PaymentMethodStoreDataImportPlugin(),
             new StockDataImportPlugin(),
             new StockStoreDataImportPlugin(),
             new ProductOfferStockDataImportPlugin(),
