@@ -233,6 +233,7 @@ cache:
     - $HOME/.composer/cache
     - /home/travis/.rvm/gems # Mailcatcher is a ruby gem, takes 5 minutes to install.
     - /home/travis/.nvm/.cache
+    - /tmp/pear/cache/
 
 services:
   - postgresql
