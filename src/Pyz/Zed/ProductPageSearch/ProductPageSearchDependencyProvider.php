@@ -25,7 +25,7 @@ use Spryker\Zed\ProductPageSearch\Communication\Plugin\PageDataExpander\ProductI
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\PageDataLoader\CategoryPageDataLoaderPlugin;
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\PageDataLoader\ImagePageDataLoaderPlugin;
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\PageDataLoader\PricePageDataLoaderPlugin;
-use Spryker\Zed\ProductPageSearch\Communication\Plugin\ProductPageSearch\Elasticsearch\PriceMapExpanderPlugin;
+use Spryker\Zed\ProductPageSearch\Communication\Plugin\ProductPageSearch\Elasticsearch\ProductPriceMapExpanderPlugin;
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\ProductPageSearch\Elasticsearch\ProductCategoryMapExpanderPlugin;
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\ProductPageSearch\Elasticsearch\ProductImageMapExpanderPlugin;
 use Spryker\Zed\ProductPageSearch\ProductPageSearchDependencyProvider as SprykerProductPageSearchDependencyProvider;
@@ -95,7 +95,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     protected function getProductAbstractMapExpanderPlugins(): array
     {
         return [
-            new PriceMapExpanderPlugin(),
+            new ProductPriceMapExpanderPlugin(),
             new ProductCategoryMapExpanderPlugin(),
             new ProductImageMapExpanderPlugin(),
             new ProductLabelMapExpanderPlugin(),
