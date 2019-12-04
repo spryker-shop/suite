@@ -5249,6 +5249,51 @@
             "time": "2019-11-21T15:03:30+00:00"
         },
         {
+            "name": "spryker/configurable-bundle-note",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/configurable-bundle-note.git",
+                "reference": "4740b0bd9ecfb834a673a07ba86d624d7d1a7331"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/configurable-bundle-note/zipball/4740b0bd9ecfb834a673a07ba86d624d7d1a7331",
+                "reference": "4740b0bd9ecfb834a673a07ba86d624d7d1a7331",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/configurable-bundle": "^1.0.0 || ^2.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/quote": "^2.0.0",
+                "spryker/sales-configurable-bundle": "^1.0.0",
+                "spryker/zed-request": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ConfigurableBundleNote module",
+            "time": "2019-12-03T10:47:36+00:00"
+        },
+        {
             "name": "spryker/decimal-object",
             "version": "1.0.0",
             "source": {
@@ -5554,7 +5599,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "92b15699faafe69d2951d1eb21c0060905b9cc90"
+                "reference": "fde3125a5ac73e584fe9e26855a744b1fc4555c6"
             },
             "require": {
                 "php": ">=7.2"
@@ -6179,7 +6224,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-12-03T09:26:10+00:00"
+            "time": "2019-12-04T18:57:56+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6187,7 +6232,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "e1a56a436eedf403056bbeb5a3b30347511d3345"
+                "reference": "da374be7c123f322e4a12db203f3f693a981b73f"
             },
             "require": {
                 "php": ">=7.2"
@@ -6224,6 +6269,7 @@
                 "spryker-shop/company-user-agent-widget": "*",
                 "spryker-shop/company-user-invitation-page": "*",
                 "spryker-shop/company-widget": "*",
+                "spryker-shop/configurable-bundle-note-widget": "*",
                 "spryker-shop/configurable-bundle-widget": "*",
                 "spryker-shop/content-banner-widget": "*",
                 "spryker-shop/content-file-widget": "*",
@@ -6233,6 +6279,7 @@
                 "spryker-shop/customer-page": "*",
                 "spryker-shop/customer-page-extension": "*",
                 "spryker-shop/customer-reorder-widget": "*",
+                "spryker-shop/customer-reorder-widget-extension": "*",
                 "spryker-shop/discount-promotion-widget": "*",
                 "spryker-shop/discount-widget": "*",
                 "spryker-shop/error-page": "*",
@@ -6325,7 +6372,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-12-02T17:32:58+00:00"
+            "time": "2019-11-30T11:37:22+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
