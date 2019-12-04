@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6c218fc1244106429ca9b0a5c21af9d8",
+    "content-hash": "0a2e6cef8ca597e62ff55312730cbfb5",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -691,8 +691,8 @@
             "authors": [
                 {
                     "name": "Filipe Dobreira",
-                    "homepage": "https://github.com/filp",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "homepage": "https://github.com/filp"
                 }
             ],
             "description": "php error handling for cool kids",
@@ -791,8 +791,8 @@
             "authors": [
                 {
                     "name": "Alessio Linares",
-                    "email": "alessio.linares@skyscanner.net",
-                    "role": "Software Engineer"
+                    "role": "Software Engineer",
+                    "email": "alessio.linares@skyscanner.net"
                 }
             ],
             "description": "JSONPath implementation for querying and updating JSON objects",
@@ -2151,7 +2151,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -5254,16 +5254,16 @@
         },
         {
             "name": "spryker-shop/merchant-profile-page",
-            "version": "0.1.1",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/merchant-profile-page.git",
-                "reference": "71f102555f006cdcd4c4f51a737ab28e346c874e"
+                "reference": "e32e8f11d396d6e99ff5abf4c63786112c60882d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/merchant-profile-page/zipball/71f102555f006cdcd4c4f51a737ab28e346c874e",
-                "reference": "71f102555f006cdcd4c4f51a737ab28e346c874e",
+                "url": "https://api.github.com/repos/spryker-shop/merchant-profile-page/zipball/e32e8f11d396d6e99ff5abf4c63786112c60882d",
+                "reference": "e32e8f11d396d6e99ff5abf4c63786112c60882d",
                 "shasum": ""
             },
             "require": {
@@ -5271,6 +5271,7 @@
                 "spryker-shop/shop-application": "^1.0.0",
                 "spryker-shop/storage-router-extension": "^1.0.0",
                 "spryker/kernel": "^3.33.0",
+                "spryker/merchant-opening-hours-storage": "^0.1.0",
                 "spryker/merchant-profile-storage": "^0.1.0",
                 "spryker/symfony": "^3.0.0"
             },
@@ -5294,7 +5295,7 @@
                 "proprietary"
             ],
             "description": "MerchantProfilePage module",
-            "time": "2019-11-27T15:39:20+00:00"
+            "time": "2019-11-27T16:48:16+00:00"
         },
         {
             "name": "spryker-shop/money-widget",
@@ -21719,6 +21720,149 @@
             "time": "2019-11-05T13:22:08+00:00"
         },
         {
+            "name": "spryker/merchant-opening-hours",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-opening-hours.git",
+                "reference": "f4c97000d4ba1179bad90d85ed565fcd213d7261"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-opening-hours/zipball/f4c97000d4ba1179bad90d85ed565fcd213d7261",
+                "reference": "f4c97000d4ba1179bad90d85ed565fcd213d7261",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/merchant": "^2.0.0",
+                "spryker/weekday-schedule": "^0.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantOpeningHours module",
+            "time": "2019-11-27T16:29:55+00:00"
+        },
+        {
+            "name": "spryker/merchant-opening-hours-data-import",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-opening-hours-data-import.git",
+                "reference": "ff94b042be0cdffb9f45585eb33401266bbe4772"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-opening-hours-data-import/zipball/ff94b042be0cdffb9f45585eb33401266bbe4772",
+                "reference": "ff94b042be0cdffb9f45585eb33401266bbe4772",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/data-import": "^1.3.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/merchant": "^2.0.0",
+                "spryker/merchant-opening-hours": "^0.1.0",
+                "spryker/weekday-schedule": "^0.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/merchant-data-import": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\MerchantOpeningHoursDataImport\\Helper\\": "tests/SprykerTest/Zed/MerchantOpeningHoursDataImport/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "MerchantOpeningHoursDataImport module",
+            "time": "2019-11-27T16:29:55+00:00"
+        },
+        {
+            "name": "spryker/merchant-opening-hours-storage",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-opening-hours-storage.git",
+                "reference": "18ac8554a9b0c419fcd2aa02c06dfcd2a2479c82"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-opening-hours-storage/zipball/18ac8554a9b0c419fcd2aa02c06dfcd2a2479c82",
+                "reference": "18ac8554a9b0c419fcd2aa02c06dfcd2a2479c82",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/event-behavior": "^1.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/merchant": "^2.0.0",
+                "spryker/merchant-opening-hours": "^0.1.0",
+                "spryker/propel-orm": "^1.5.0",
+                "spryker/storage": "^3.0.0",
+                "spryker/synchronization": "^1.0.0",
+                "spryker/synchronization-behavior": "^1.0.0",
+                "spryker/synchronization-extension": "^1.0.0",
+                "spryker/weekday-schedule": "^0.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/event": "*",
+                "spryker/propel": "*",
+                "spryker/queue": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/event": "If you want to use Event plugins: ^2.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantOpeningHoursStorage module",
+            "time": "2019-11-27T16:29:55+00:00"
+        },
+        {
             "name": "spryker/merchant-product-offer",
             "version": "0.2.0",
             "source": {
@@ -22060,16 +22204,16 @@
         },
         {
             "name": "spryker/merchant-profile-storage",
-            "version": "0.1.1",
+            "version": "0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-profile-storage.git",
-                "reference": "b07ad55dadf45b9be6370b19168d839e899ab353"
+                "reference": "4ec80e6854a8fb1dcc39d6a5d95018ace0397997"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-profile-storage/zipball/b07ad55dadf45b9be6370b19168d839e899ab353",
-                "reference": "b07ad55dadf45b9be6370b19168d839e899ab353",
+                "url": "https://api.github.com/repos/spryker/merchant-profile-storage/zipball/4ec80e6854a8fb1dcc39d6a5d95018ace0397997",
+                "reference": "4ec80e6854a8fb1dcc39d6a5d95018ace0397997",
                 "shasum": ""
             },
             "require": {
@@ -22112,7 +22256,7 @@
                 "proprietary"
             ],
             "description": "MerchantProfileStorage module",
-            "time": "2019-11-27T15:21:29+00:00"
+            "time": "2019-11-27T16:51:56+00:00"
         },
         {
             "name": "spryker/merchant-relationship",
@@ -37179,6 +37323,45 @@
             "time": "2019-10-09T04:52:31+00:00"
         },
         {
+            "name": "spryker/weekday-schedule",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/weekday-schedule.git",
+                "reference": "f7832aa817580c9dac91ffe952a80a245b98d1a4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/weekday-schedule/zipball/f7832aa817580c9dac91ffe952a80a245b98d1a4",
+                "reference": "f7832aa817580c9dac91ffe952a80a245b98d1a4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "WeekdaySchedule module",
+            "time": "2019-11-06T15:22:14+00:00"
+        },
+        {
             "name": "spryker/wishlist",
             "version": "8.1.0",
             "source": {
@@ -45113,8 +45296,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
