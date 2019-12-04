@@ -21,21 +21,4 @@ class GlossaryConfig extends SprykerGlossaryConfig
 
         return $paths;
     }
-
-    /**
-     * @project Only needed in Project, not in demoshop
-     *
-     * @param string[] $paths
-     *
-     * @return string[]
-     */
-    private function addSprykerFilePath($paths): array
-    {
-        $paths = array_merge(
-            $paths,
-            glob(APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/*/src/Spryker/*/*/Resources/glossary.yml')
-        );
-
-        return $paths;
-    }
 }
