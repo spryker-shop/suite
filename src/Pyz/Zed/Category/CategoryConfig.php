@@ -13,7 +13,7 @@ use Spryker\Zed\CmsBlockCategoryConnector\CmsBlockCategoryConnectorConfig;
 class CategoryConfig extends CategoryCategoryConfig
 {
     /**
-     * @return array
+     * @return string[]
      */
     public function getTemplateList()
     {

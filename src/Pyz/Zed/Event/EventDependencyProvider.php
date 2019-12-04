@@ -16,6 +16,7 @@ use Spryker\Zed\CmsBlockCategoryStorage\Communication\Plugin\Event\Subscriber\Cm
 use Spryker\Zed\CmsBlockProductStorage\Communication\Plugin\Event\Subscriber\CmsBlockProductStorageEventSubscriber;
 use Spryker\Zed\CmsBlockStorage\Communication\Plugin\Event\Subscriber\CmsBlockStorageEventSubscriber;
 use Spryker\Zed\CmsPageSearch\Communication\Plugin\Event\Subscriber\CmsPageSearchEventSubscriber;
+use Spryker\Zed\CmsSlotBlockStorage\Communication\Plugin\Event\Subscriber\CmsSlotBlockStorageEventSubscriber;
 use Spryker\Zed\CmsSlotStorage\Communication\Plugin\Event\Subscriber\CmsSlotStorageEventSubscriber;
 use Spryker\Zed\CmsStorage\Communication\Plugin\Event\Subscriber\CmsStorageEventSubscriber;
 use Spryker\Zed\CompanyUserStorage\Communication\Plugin\Event\Subscriber\CompanyUserStorageEventSubscriber;
@@ -28,6 +29,7 @@ use Spryker\Zed\CustomerAccessStorage\Communication\Plugin\Event\Subscriber\Cust
 use Spryker\Zed\Event\EventDependencyProvider as SprykerEventDependencyProvider;
 use Spryker\Zed\FileManagerStorage\Communication\Plugin\Event\Subscriber\FileManagerStorageSubscriber;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Event\Subscriber\GlossaryStorageEventSubscriber;
+use Spryker\Zed\MerchantOpeningHoursStorage\Communication\Plugin\Event\Subscriber\MerchantOpeningHoursStorageEventSubscriber;
 use Spryker\Zed\MerchantProductOfferStorage\Communication\Plugin\Event\Subscriber\MerchantProductOfferStorageEventSubscriber;
 use Spryker\Zed\MerchantProfileStorage\Communication\Plugin\Event\Subscriber\MerchantProfileStorageEventSubscriber;
 use Spryker\Zed\NavigationStorage\Communication\Plugin\Event\Subscriber\NavigationStorageEventSubscriber;
@@ -93,6 +95,8 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new CmsBlockStorageEventSubscriber());
         $eventSubscriberCollection->add(new CmsBlockCategoryStorageEventSubscriber());
         $eventSubscriberCollection->add(new CmsBlockProductStorageEventSubscriber());
+        $eventSubscriberCollection->add(new CmsSlotBlockStorageEventSubscriber());
+        $eventSubscriberCollection->add(new CmsSlotStorageEventSubscriber());
         $eventSubscriberCollection->add(new ConfigurableBundleStorageEventSubscriber());
         $eventSubscriberCollection->add(new ConfigurableBundleTemplateImageStorageEventSubscriber());
         $eventSubscriberCollection->add(new NavigationStorageEventSubscriber());
@@ -126,7 +130,7 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new AvailabilityNotificationSubscriber());
         $eventSubscriberCollection->add(new MerchantProfileStorageEventSubscriber());
         $eventSubscriberCollection->add(new MerchantProductOfferStorageEventSubscriber());
-        $eventSubscriberCollection->add(new CmsSlotStorageEventSubscriber());
+        $eventSubscriberCollection->add(new MerchantOpeningHoursStorageEventSubscriber());
         $eventSubscriberCollection->add(new PriceProductOfferStorageEventSubscriber());
 
         /**
