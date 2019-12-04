@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.125.0",
+            "version": "3.127.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "d9ffe7cf9cc93d3c49f4f6d2db6cf0c469686f9c"
+                "reference": "c7f8c962ad2bb1430e673f14505870d8573a55d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d9ffe7cf9cc93d3c49f4f6d2db6cf0c469686f9c",
-                "reference": "d9ffe7cf9cc93d3c49f4f6d2db6cf0c469686f9c",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/c7f8c962ad2bb1430e673f14505870d8573a55d6",
+                "reference": "c7f8c962ad2bb1430e673f14505870d8573a55d6",
                 "shasum": ""
             },
             "require": {
@@ -42,7 +42,8 @@
                 "nette/neon": "^2.3",
                 "phpunit/phpunit": "^4.8.35|^5.4.3",
                 "psr/cache": "^1.0",
-                "psr/simple-cache": "^1.0"
+                "psr/simple-cache": "^1.0",
+                "sebastian/comparator": "^1.2.3"
             },
             "suggest": {
                 "aws/aws-php-sns-message-validator": "To validate incoming SNS notifications",
@@ -87,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-12-02T23:15:42+00:00"
+            "time": "2019-12-04T01:40:14+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -1035,8 +1036,8 @@
             "authors": [
                 {
                     "name": "Filipe Dobreira",
-                    "role": "Developer",
-                    "homepage": "https://github.com/filp"
+                    "homepage": "https://github.com/filp",
+                    "role": "Developer"
                 }
             ],
             "description": "php error handling for cool kids",
@@ -1135,8 +1136,8 @@
             "authors": [
                 {
                     "name": "Alessio Linares",
-                    "role": "Software Engineer",
-                    "email": "alessio.linares@skyscanner.net"
+                    "email": "alessio.linares@skyscanner.net",
+                    "role": "Software Engineer"
                 }
             ],
             "description": "JSONPath implementation for querying and updating JSON objects",
@@ -2927,7 +2928,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette NEON: encodes and decodes NEON file format.",
+            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -4198,7 +4199,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -5554,7 +5555,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "17da35c08a6d8dace3284607678fd0bfdcd0dd81"
+                "reference": "207c37fb6562ce256f1acb259be9283fed075419"
             },
             "require": {
                 "php": ">=7.2"
@@ -5836,6 +5837,9 @@
                 "spryker/merchant-extension": "*",
                 "spryker/merchant-gui": "*",
                 "spryker/merchant-gui-extension": "*",
+                "spryker/merchant-opening-hours": "*",
+                "spryker/merchant-opening-hours-data-import": "*",
+                "spryker/merchant-opening-hours-storage": "*",
                 "spryker/merchant-product-offer": "*",
                 "spryker/merchant-product-offer-data-import": "*",
                 "spryker/merchant-product-offer-storage": "*",
@@ -6152,6 +6156,7 @@
                 "spryker/vault": "*",
                 "spryker/web-profiler": "*",
                 "spryker/web-profiler-extension": "*",
+                "spryker/weekday-schedule": "*",
                 "spryker/wishlist": "*",
                 "spryker/wishlist-extension": "*",
                 "spryker/wishlists-rest-api": "*",
@@ -6181,7 +6186,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-12-03T11:32:20+00:00"
+            "time": "2019-12-04T13:40:31+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6189,7 +6194,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "215871df509cf71b39a80659411e71842f4921d4"
+                "reference": "d016433450cf8249d90798752484290ce39d2fbb"
             },
             "require": {
                 "php": ">=7.2"
@@ -6329,7 +6334,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-12-03T11:32:24+00:00"
+            "time": "2019-12-04T13:40:46+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -9190,8 +9195,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -10105,7 +10110,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-13T13:21:38+00:00"
+            "time": "2017-12-12T17:28:44+00:00"
         },
         {
             "name": "phpmd/phpmd",
@@ -10148,20 +10153,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
-                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler"
+                    "homepage": "https://github.com/manuelpichler",
+                    "role": "Project Founder"
                 },
                 {
                     "name": "Marc Würth",
-                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84"
+                    "homepage": "https://github.com/ravage84",
+                    "role": "Project Maintainer"
                 },
                 {
                     "name": "Other contributors",
-                    "role": "Contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
+                    "role": "Contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -10812,12 +10817,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/spryk.git",
-                "reference": "34f28af92fa73b45e25b0c6aecc23c6f1ba37099"
+                "reference": "a005f9083f1959c9de9a2bce23e55db458afe186"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/34f28af92fa73b45e25b0c6aecc23c6f1ba37099",
-                "reference": "34f28af92fa73b45e25b0c6aecc23c6f1ba37099",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/a005f9083f1959c9de9a2bce23e55db458afe186",
+                "reference": "a005f9083f1959c9de9a2bce23e55db458afe186",
                 "shasum": ""
             },
             "require": {
@@ -10865,7 +10870,7 @@
                 "proprietary"
             ],
             "description": "Spryk module",
-            "time": "2019-11-06T14:22:15+00:00"
+            "time": "2019-12-03T23:58:32+00:00"
         },
         {
             "name": "spryker-sdk/spryk-gui",
@@ -10873,16 +10878,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/spryk-gui.git",
-                "reference": "f9f3693f0baeff0d2e56a7961cf1dcc1f094e404"
+                "reference": "e24001b75dbc26e02be4d4c56a23e42336a2c5ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk-gui/zipball/f9f3693f0baeff0d2e56a7961cf1dcc1f094e404",
-                "reference": "f9f3693f0baeff0d2e56a7961cf1dcc1f094e404",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk-gui/zipball/e24001b75dbc26e02be4d4c56a23e42336a2c5ad",
+                "reference": "e24001b75dbc26e02be4d4c56a23e42336a2c5ad",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker-sdk/spryk": "^0.2.2",
                 "spryker/development": "^3.12.0",
                 "spryker/graph": "^3.0.0",
@@ -10913,7 +10918,7 @@
                 "proprietary"
             ],
             "description": "SprykGui module",
-            "time": "2019-11-06T18:31:09+00:00"
+            "time": "2019-12-03T15:57:27+00:00"
         },
         {
             "name": "spryker/architecture-sniffer",
@@ -10979,12 +10984,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-generator.git",
-                "reference": "cd882d885a9cc884bbe370b632f3979ef2913ba8"
+                "reference": "8027663df7ac184c4e98654cebb54eaeb8a32c51"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-generator/zipball/cd882d885a9cc884bbe370b632f3979ef2913ba8",
-                "reference": "cd882d885a9cc884bbe370b632f3979ef2913ba8",
+                "url": "https://api.github.com/repos/spryker/code-generator/zipball/8027663df7ac184c4e98654cebb54eaeb8a32c51",
+                "reference": "8027663df7ac184c4e98654cebb54eaeb8a32c51",
                 "shasum": ""
             },
             "require": {
@@ -11015,7 +11020,7 @@
                 "MIT"
             ],
             "description": "CodeGenerator module",
-            "time": "2019-11-20T17:04:45+00:00"
+            "time": "2019-12-03T13:56:28+00:00"
         },
         {
             "name": "spryker/code-sniffer",
@@ -11176,16 +11181,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.5.2",
+            "version": "3.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "65b12cdeaaa6cd276d4c3033a95b9b88b12701e7"
+                "reference": "557a1fc7ac702c66b0bbfe16ab3d55839ef724cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/65b12cdeaaa6cd276d4c3033a95b9b88b12701e7",
-                "reference": "65b12cdeaaa6cd276d4c3033a95b9b88b12701e7",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/557a1fc7ac702c66b0bbfe16ab3d55839ef724cb",
+                "reference": "557a1fc7ac702c66b0bbfe16ab3d55839ef724cb",
                 "shasum": ""
             },
             "require": {
@@ -11223,7 +11228,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-10-28T04:36:32+00:00"
+            "time": "2019-12-04T04:46:47+00:00"
         },
         {
             "name": "stecman/symfony-console-completion",
