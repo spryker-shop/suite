@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3b26acc33040bd4b7fbcc8d0bc5de3c9",
+    "content-hash": "41ce451e1daf5def80ec56c50433d7ec",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5545,11 +5545,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-bugfix/ops-808-travis-bionic",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "3159a7c7dad43a01e4d3b8928c5dc09e299f3e42"
+                "reference": "3eee9082b8d57c1403ffd136c9fcf973c3fdbaa1"
             },
             "require": {
                 "php": ">=7.2"
@@ -5647,6 +5647,18 @@
                 "spryker/cms-page-data-import": "*",
                 "spryker/cms-page-search": "*",
                 "spryker/cms-slot": "*",
+                "spryker/cms-slot-block": "*",
+                "spryker/cms-slot-block-category-connector": "*",
+                "spryker/cms-slot-block-category-gui": "*",
+                "spryker/cms-slot-block-cms-connector": "*",
+                "spryker/cms-slot-block-cms-gui": "*",
+                "spryker/cms-slot-block-data-import": "*",
+                "spryker/cms-slot-block-extension": "*",
+                "spryker/cms-slot-block-gui": "*",
+                "spryker/cms-slot-block-gui-extension": "*",
+                "spryker/cms-slot-block-product-category-connector": "*",
+                "spryker/cms-slot-block-product-category-gui": "*",
+                "spryker/cms-slot-block-storage": "*",
                 "spryker/cms-slot-data-import": "*",
                 "spryker/cms-slot-extension": "*",
                 "spryker/cms-slot-gui": "*",
@@ -5708,6 +5720,9 @@
                 "spryker/configurable-bundle": "*",
                 "spryker/configurable-bundle-cart": "*",
                 "spryker/configurable-bundle-data-import": "*",
+                "spryker/configurable-bundle-gui": "*",
+                "spryker/configurable-bundle-gui-extension": "*",
+                "spryker/configurable-bundle-note": "*",
                 "spryker/configurable-bundle-storage": "*",
                 "spryker/console": "*",
                 "spryker/container": "*",
@@ -5780,6 +5795,8 @@
                 "spryker/flysystem-aws3v3-file-system": "*",
                 "spryker/flysystem-ftp-file-system": "*",
                 "spryker/flysystem-local-file-system": "*",
+                "spryker/form": "*",
+                "spryker/form-extension": "*",
                 "spryker/gift-card": "*",
                 "spryker/gift-card-balance": "*",
                 "spryker/gift-card-mail-connector": "*",
@@ -5814,6 +5831,9 @@
                 "spryker/merchant-extension": "*",
                 "spryker/merchant-gui": "*",
                 "spryker/merchant-gui-extension": "*",
+                "spryker/merchant-opening-hours": "*",
+                "spryker/merchant-opening-hours-data-import": "*",
+                "spryker/merchant-opening-hours-storage": "*",
                 "spryker/merchant-product-offer": "*",
                 "spryker/merchant-product-offer-data-import": "*",
                 "spryker/merchant-product-offer-storage": "*",
@@ -5826,6 +5846,7 @@
                 "spryker/merchant-relationship-data-import": "*",
                 "spryker/merchant-relationship-extension": "*",
                 "spryker/merchant-relationship-gui": "*",
+                "spryker/merchant-relationship-gui-extension": "*",
                 "spryker/merchant-relationship-product-list": "*",
                 "spryker/merchant-relationship-product-list-data-import": "*",
                 "spryker/merchant-relationship-product-list-gui": "*",
@@ -6027,6 +6048,7 @@
                 "spryker/router-extension": "*",
                 "spryker/sales": "*",
                 "spryker/sales-configurable-bundle": "*",
+                "spryker/sales-configurable-bundle-cart-note-gui": "*",
                 "spryker/sales-extension": "*",
                 "spryker/sales-merchant-connector": "*",
                 "spryker/sales-order-threshold": "*",
@@ -6044,6 +6066,7 @@
                 "spryker/scheduler-extension": "*",
                 "spryker/scheduler-jenkins": "*",
                 "spryker/search": "*",
+                "spryker/security": "*",
                 "spryker/sequence-number": "*",
                 "spryker/session": "*",
                 "spryker/session-extension": "*",
@@ -6122,9 +6145,12 @@
                 "spryker/util-uuid-generator": "*",
                 "spryker/util-validate": "*",
                 "spryker/uuid": "*",
+                "spryker/validator": "*",
+                "spryker/validator-extension": "*",
                 "spryker/vault": "*",
                 "spryker/web-profiler": "*",
                 "spryker/web-profiler-extension": "*",
+                "spryker/weekday-schedule": "*",
                 "spryker/wishlist": "*",
                 "spryker/wishlist-extension": "*",
                 "spryker/wishlists-rest-api": "*",
@@ -6154,7 +6180,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-11-27T15:54:19+00:00"
+            "time": "2019-12-04T21:31:36+00:00"
         },
         {
             "name": "spryker/spryker-shop",
