@@ -37,7 +37,7 @@ class CompanyUserAuthRestApiTester extends ApiEndToEndTester
      */
     public function seeResponseHasAccessToken(): void
     {
-        $this->assertNotEmpty($this->grabDataFromResponseByJsonPathSmart(self::ACCESS_TOKEN_JSON_PATH));
+        $this->assertNotEmpty($this->grabDataFromResponseByJsonPath(self::ACCESS_TOKEN_JSON_PATH));
     }
 
     /**
@@ -45,7 +45,7 @@ class CompanyUserAuthRestApiTester extends ApiEndToEndTester
      */
     public function seeResponseHasRefreshToken(): void
     {
-        $this->assertNotEmpty($this->grabDataFromResponseByJsonPathSmart(self::REFRESH_TOKEN_JSON_PATH));
+        $this->assertNotEmpty($this->grabDataFromResponseByJsonPath(self::REFRESH_TOKEN_JSON_PATH));
     }
 
     /**
@@ -53,7 +53,7 @@ class CompanyUserAuthRestApiTester extends ApiEndToEndTester
      */
     public function dontSeeResponseHasAccessToken(): void
     {
-        $this->assertFalse($this->grabDataFromResponseByJsonPathSmart(self::ACCESS_TOKEN_JSON_PATH));
+        $this->assertFalse($this->grabDataFromResponseByJsonPath(self::ACCESS_TOKEN_JSON_PATH));
     }
 
     /**
@@ -61,7 +61,7 @@ class CompanyUserAuthRestApiTester extends ApiEndToEndTester
      */
     public function dontSeeResponseHasRefreshToken(): void
     {
-        $this->assertFalse($this->grabDataFromResponseByJsonPathSmart(self::REFRESH_TOKEN_JSON_PATH));
+        $this->assertFalse($this->grabDataFromResponseByJsonPath(self::REFRESH_TOKEN_JSON_PATH));
     }
 
     /**
@@ -69,6 +69,6 @@ class CompanyUserAuthRestApiTester extends ApiEndToEndTester
      */
     public function grabAccessTokenFromResponse(): ?string
     {
-        return $this->grabDataFromResponseByJsonPathSmart(self::ACCESS_TOKEN_JSON_PATH);
+        return $this->grabDataFromResponseByJsonPath(self::ACCESS_TOKEN_JSON_PATH);
     }
 }
