@@ -25,9 +25,9 @@ use Spryker\Zed\ProductPageSearch\Communication\Plugin\PageDataExpander\ProductI
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\PageDataLoader\CategoryPageDataLoaderPlugin;
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\PageDataLoader\ImagePageDataLoaderPlugin;
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\PageDataLoader\PricePageDataLoaderPlugin;
-use Spryker\Zed\ProductPageSearch\Communication\Plugin\ProductPageSearch\Elasticsearch\PricePageMapExpanderPlugin;
-use Spryker\Zed\ProductPageSearch\Communication\Plugin\ProductPageSearch\Elasticsearch\ProductCategoryPageMapExpanderPlugin;
-use Spryker\Zed\ProductPageSearch\Communication\Plugin\ProductPageSearch\Elasticsearch\ProductImagePageMapExpanderPlugin;
+use Spryker\Zed\ProductPageSearch\Communication\Plugin\ProductPageSearch\Elasticsearch\PriceMapExpanderPlugin;
+use Spryker\Zed\ProductPageSearch\Communication\Plugin\ProductPageSearch\Elasticsearch\ProductCategoryMapExpanderPlugin;
+use Spryker\Zed\ProductPageSearch\Communication\Plugin\ProductPageSearch\Elasticsearch\ProductImageMapExpanderPlugin;
 use Spryker\Zed\ProductPageSearch\ProductPageSearchDependencyProvider as SprykerProductPageSearchDependencyProvider;
 use Spryker\Zed\ProductReviewSearch\Communication\Plugin\PageDataExpander\ProductReviewDataLoaderExpanderPlugin;
 use Spryker\Zed\ProductReviewSearch\Communication\Plugin\PageDataLoader\ProductReviewPageDataLoaderPlugin;
@@ -72,7 +72,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     /**
      * @return \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductConcretePageMapExpanderPluginInterface[]
      */
-    protected function getConcreteProductPageMapExpanderPlugins(): array
+    protected function getConcreteProductMapExpanderPlugins(): array
     {
         return [
             new ProductConcreteProductListPageMapExpanderPlugin(),
@@ -90,14 +90,14 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     }
 
     /**
-     * @return \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductAbstractPageMapExpanderPluginInterface[]
+     * @return \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductAbstractMapExpanderPluginInterface[]
      */
-    protected function getProductAbstractPageMapExpanderPlugins(): array
+    protected function getProductAbstractMapExpanderPlugins(): array
     {
         return [
-            new PricePageMapExpanderPlugin(),
-            new ProductCategoryPageMapExpanderPlugin(),
-            new ProductImagePageMapExpanderPlugin(),
+            new PriceMapExpanderPlugin(),
+            new ProductCategoryMapExpanderPlugin(),
+            new ProductImageMapExpanderPlugin(),
             new ProductLabelMapExpanderPlugin(),
             new ProductReviewMapExpanderPlugin(),
             new ProductListMapExpanderPlugin(),
