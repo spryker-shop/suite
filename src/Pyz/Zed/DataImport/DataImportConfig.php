@@ -11,6 +11,7 @@ use Generated\Shared\Transfer\DataImporterQueueWriterConfigurationTransfer;
 use Spryker\Zed\BusinessOnBehalfDataImport\BusinessOnBehalfDataImportConfig;
 use Spryker\Zed\CategoryDataImport\CategoryDataImportConfig;
 use Spryker\Zed\CmsPageDataImport\CmsPageDataImportConfig;
+use Spryker\Zed\CmsSlotBlockDataImport\CmsSlotBlockDataImportConfig;
 use Spryker\Zed\CmsSlotDataImport\CmsSlotDataImportConfig;
 use Spryker\Zed\CommentDataImport\CommentDataImportConfig;
 use Spryker\Zed\CompanyBusinessUnitDataImport\CompanyBusinessUnitDataImportConfig;
@@ -27,12 +28,14 @@ use Spryker\Zed\ContentProductSetDataImport\ContentProductSetDataImportConfig;
 use Spryker\Zed\DataImport\DataImportConfig as SprykerDataImportConfig;
 use Spryker\Zed\FileManagerDataImport\FileManagerDataImportConfig;
 use Spryker\Zed\MerchantDataImport\MerchantDataImportConfig;
+use Spryker\Zed\MerchantOpeningHoursDataImport\MerchantOpeningHoursDataImportConfig;
 use Spryker\Zed\MerchantProductOfferDataImport\MerchantProductOfferDataImportConfig;
 use Spryker\Zed\MerchantProfileDataImport\MerchantProfileDataImportConfig;
 use Spryker\Zed\MerchantRelationshipDataImport\MerchantRelationshipDataImportConfig;
 use Spryker\Zed\MerchantRelationshipProductListDataImport\MerchantRelationshipProductListDataImportConfig;
 use Spryker\Zed\MerchantRelationshipSalesOrderThresholdDataImport\MerchantRelationshipSalesOrderThresholdDataImportConfig;
 use Spryker\Zed\MultiCartDataImport\MultiCartDataImportConfig;
+use Spryker\Zed\PaymentDataImport\PaymentDataImportConfig;
 use Spryker\Zed\PriceProductDataImport\PriceProductDataImportConfig;
 use Spryker\Zed\PriceProductMerchantRelationshipDataImport\PriceProductMerchantRelationshipDataImportConfig;
 use Spryker\Zed\PriceProductOfferDataImport\PriceProductOfferDataImportConfig;
@@ -497,6 +500,8 @@ class DataImportConfig extends SprykerDataImportConfig
             MerchantProfileDataImportConfig::IMPORT_TYPE_MERCHANT_PROFILE,
             MerchantProfileDataImportConfig::IMPORT_TYPE_MERCHANT_PROFILE_ADDRESS,
             MerchantProductOfferDataImportConfig::IMPORT_TYPE_MERCHANT_PRODUCT_OFFER,
+            MerchantOpeningHoursDataImportConfig::IMPORT_TYPE_MERCHANT_OPENING_HOURS_WEEKDAY_SCHEDULE,
+            MerchantOpeningHoursDataImportConfig::IMPORT_TYPE_MERCHANT_OPENING_HOURS_DATE_SCHEDULE,
             PriceProductOfferDataImportConfig::IMPORT_TYPE_PRICE_PRODUCT_OFFER,
             ProductOfferStockDataImportConfig::IMPORT_TYPE_PRODUCT_OFFER_STOCK,
             MultiCartDataImportConfig::IMPORT_TYPE_MULTI_CART,
@@ -547,11 +552,15 @@ class DataImportConfig extends SprykerDataImportConfig
             CommentDataImportConfig::IMPORT_TYPE_COMMENT,
             ConfigurableBundleDataImportConfig::IMPORT_TYPE_CONFIGURABLE_BUNDLE_TEMPLATE,
             ConfigurableBundleDataImportConfig::IMPORT_TYPE_CONFIGURABLE_BUNDLE_TEMPLATE_SLOT,
+            ConfigurableBundleDataImportConfig::IMPORT_TYPE_CONFIGURABLE_BUNDLE_TEMPLATE_IMAGE,
             CmsSlotDataImportConfig::IMPORT_TYPE_CMS_SLOT_TEMPLATE,
             CmsSlotDataImportConfig::IMPORT_TYPE_CMS_SLOT,
+            CmsSlotBlockDataImportConfig::IMPORT_TYPE_CMS_SLOT_BLOCK,
             ShipmentDataImportConfig::IMPORT_TYPE_SHIPMENT,
             ShipmentDataImportConfig::IMPORT_TYPE_SHIPMENT_PRICE,
             ShipmentDataImportConfig::IMPORT_TYPE_SHIPMENT_METHOD_STORE,
+            PaymentDataImportConfig::IMPORT_TYPE_PAYMENT_METHOD,
+            PaymentDataImportConfig::IMPORT_TYPE_PAYMENT_METHOD_STORE,
         ];
     }
 }
