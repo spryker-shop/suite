@@ -14,7 +14,7 @@ class DevelopmentConfig extends SprykerDevelopmentConfig
     /**
      * @project Only needed in Project, not in demoshop
      *
-     * @var array
+     * @var string[]
      */
     protected const INTERNAL_NAMESPACES_TO_PATH_MAPPING = [
         self::NAMESPACE_SPRYKER => APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR . 'vendor/spryker/spryker/Bundles/',
@@ -24,9 +24,9 @@ class DevelopmentConfig extends SprykerDevelopmentConfig
     /**
      * @project Only needed in Project, not in demoshop
      *
-     * @return array
+     * @return string[]
      */
-    public function getIdeAutoCompletionSourceDirectoryGlobPatterns()
+    public function getIdeAutoCompletionSourceDirectoryGlobPatterns(): array
     {
         $globPatterns = parent::getIdeAutoCompletionSourceDirectoryGlobPatterns();
         $globPatterns[APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/*/src/'] = 'Spryker/*/';
@@ -39,7 +39,7 @@ class DevelopmentConfig extends SprykerDevelopmentConfig
      *
      * @return string
      */
-    public function getPathToCore()
+    public function getPathToCore(): string
     {
         return $this->getPathToRoot() . 'vendor/spryker/spryker/Bundles/';
     }
@@ -49,7 +49,7 @@ class DevelopmentConfig extends SprykerDevelopmentConfig
      *
      * @return string
      */
-    public function getPathToShop()
+    public function getPathToShop(): string
     {
         return $this->getPathToRoot() . 'vendor/spryker/spryker-shop/Bundles/';
     }
