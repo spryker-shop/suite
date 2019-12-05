@@ -33,6 +33,21 @@ class CartsApiTester extends ApiEndToEndTester
     use _generated\CartsApiTesterActions;
 
     /**
+     * @param int $quantity
+     * @param string $resourceName
+     * @param string $itemSku
+     *
+     * @return void
+     */
+    public function seeCartItemQuantityEqualsToQuantityInRequest(int $quantity, string $resourceName, string $itemSku): void
+    {
+        $includedByTypeAndId = $this->grabIncludedByTypeAndId($resourceName, $itemSku);
+
+        $this->assertArrayHasKey('quantity', $includedByTypeAndId);
+        $this->assertEquals($quantity, $includedByTypeAndId['quantity']);
+    }
+
+    /**
      * @param string[] $includes
      *
      * @return string

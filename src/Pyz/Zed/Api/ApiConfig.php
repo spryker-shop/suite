@@ -12,7 +12,7 @@ use Spryker\Zed\Api\ApiConfig as SprykerApiConfig;
 class ApiConfig extends SprykerApiConfig
 {
     /**
-     * @return array
+     * @return string[]
      */
     public function getSafeHeaderDataKeys(): array
     {
@@ -35,7 +35,7 @@ class ApiConfig extends SprykerApiConfig
     }
 
     /**
-     * @return array
+     * @return string[]
      */
     public function getSafeServerDataKeys(): array
     {
