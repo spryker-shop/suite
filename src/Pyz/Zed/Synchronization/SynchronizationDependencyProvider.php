@@ -20,6 +20,7 @@ use Spryker\Zed\CmsSlotBlockStorage\Communication\Plugin\Synchronization\CmsSlot
 use Spryker\Zed\CmsSlotStorage\Communication\Plugin\Synchronization\CmsSlotSynchronizationDataBulkPlugin;
 use Spryker\Zed\CmsStorage\Communication\Plugin\Synchronization\CmsSynchronizationDataPlugin;
 use Spryker\Zed\CompanyUserStorage\Communication\Plugin\Synchronization\CompanyUserSynchronizationDataPlugin;
+use Spryker\Zed\ConfigurableBundlePageSearch\Communication\Plugin\Synchronization\ConfigurableBundleTemplatePageSynchronizationDataBulkPlugin;
 use Spryker\Zed\ConfigurableBundleStorage\Communication\Plugin\Synchronization\ConfigurableBundleTemplateImageSynchronizationDataBulkPlugin;
 use Spryker\Zed\ConfigurableBundleStorage\Communication\Plugin\Synchronization\ConfigurableBundleTemplateSynchronizationDataBulkPlugin;
 use Spryker\Zed\ContentStorage\Communication\Plugin\Synchronization\ContentStorageSynchronizationDataPlugin;
@@ -140,6 +141,7 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
             new CmsSlotSynchronizationDataBulkPlugin(),
             new MerchantOpeningHoursSynchronizationDataBulkPlugin(),
             new PriceProductOfferSynchronizationDataPlugin(),
+            new ConfigurableBundleTemplatePageSynchronizationDataBulkPlugin(),
         ];
     }
 }
