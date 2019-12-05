@@ -261,7 +261,6 @@ before_install:
 install:
   - chmod -R a+x config/Shared/ci/travis/
   - if [[ ${TRAVIS_PHP_VERSION} == "7.4" ]]; then config/Shared/ci/travis/install_php_7_4-gd.sh ; fi
-  - config/Shared/ci/travis/install_mod_fastcgi.sh
   - composer install --optimize-autoloader --no-interaction
   - config/Shared/ci/travis/install_elasticsearch.sh
   - config/Shared/ci/travis/install_mailcatcher.sh

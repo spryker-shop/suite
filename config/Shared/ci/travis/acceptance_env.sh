@@ -19,6 +19,8 @@
 
 sudo apt-get -qqy install apache2
 
+config/Shared/ci/travis/install_mod_fastcgi.sh
+
 sudo chmod -R 755 $HOME
 sudo chmod 600 config/Zed/dev_only_private.key
 sudo chmod 600 config/Zed/dev_only_public.key
@@ -31,7 +33,7 @@ echo "cgi.fix_pathinfo = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php
 ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
 
 # apache: modules and rewrite configuration
-sudo a2enmod rewrite actions proxy_fcgi alias
+sudo a2enmod rewrite actions fastcgi alias
 sudo cp -f config/Shared/ci/travis/.htaccess .htaccess
 
 # apache: virtual hosts configuration
