@@ -8,14 +8,10 @@
 namespace PyzTest\Glue\Carts\RestApi\Fixtures;
 
 use Generated\Shared\Transfer\CustomerTransfer;
-use Generated\Shared\Transfer\MoneyValueTransfer;
-use Generated\Shared\Transfer\PriceProductTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
-use Generated\Shared\Transfer\StockProductTransfer;
 use PyzTest\Glue\Carts\CartsApiTester;
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
-use Spryker\Zed\Store\Business\StoreFacadeInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
@@ -153,31 +149,15 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
      */
     public function buildFixtures(CartsApiTester $I): FixturesContainerInterface
     {
-        $this->createQuote($I);
-
-        return $this;
-    }
-
-    /**
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     *
-     * @return void
-     */
-    protected function createQuote(CartsApiTester $I): void
-    {
         $this->createCustomer($I);
-        $this->productConcreteTransfer = $this->createProductData($I);
 
+        $this->productConcreteTransfer = $this->createProduct($I);
         $this->quoteTransfer = $this->createPersistentQuote($I, $this->customerTransfer, [$this->productConcreteTransfer]);
-
         $this->cartResourceEntityTag = $this->createCartResourceEntityTag(
             $I,
             $this->quoteTransfer->getUuid(),
             $this->quoteTransfer->toArray()
         );
-
-        $this->productConcreteTransfer1 = $this->createProductData($I);
-        $this->productConcreteTransfer2 = $this->createProductData($I);
 
         $this->emptyQuoteTransfer = $this->createEmptyQuote($I, $this->getCustomerTransfer()->getCustomerReference());
         $this->emptyCartResourceEntityTag = $this->createCartResourceEntityTag(
@@ -185,6 +165,11 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
             $this->emptyQuoteTransfer->getUuid(),
             $this->emptyQuoteTransfer->toArray()
         );
+
+        $this->productConcreteTransfer1 = $this->createProduct($I);
+        $this->productConcreteTransfer2 = $this->createProduct($I);
+
+        return $this;
     }
 
     /**
@@ -204,35 +189,6 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
 
     /**
      * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     *
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
-    protected function createProductData(CartsApiTester $I): ProductConcreteTransfer
-    {
-        $productConcreteTransfer = $I->haveFullProduct();
-        $I->haveProductInStockForStore($this->getStoreFacade($I)->getCurrentStore(), [
-            StockProductTransfer::SKU => $productConcreteTransfer->getSku(),
-            StockProductTransfer::IS_NEVER_OUT_OF_STOCK => 1,
-        ]);
-        $priceProductOverride = [
-            PriceProductTransfer::SKU_PRODUCT_ABSTRACT => $productConcreteTransfer->getAbstractSku(),
-            PriceProductTransfer::SKU_PRODUCT => $productConcreteTransfer->getSku(),
-            PriceProductTransfer::ID_PRODUCT => $productConcreteTransfer->getIdProductConcrete(),
-            PriceProductTransfer::PRICE_TYPE_NAME => 'DEFAULT',
-            PriceProductTransfer::MONEY_VALUE => [
-                MoneyValueTransfer::NET_AMOUNT => 777,
-                MoneyValueTransfer::GROSS_AMOUNT => 888,
-                MoneyValueTransfer::FK_CURRENCY => $I->getLocator()->currency()->facade()->getDefaultCurrencyForCurrentStore()->getIdCurrency(),
-                MoneyValueTransfer::CURRENCY => $I->getLocator()->currency()->facade()->getDefaultCurrencyForCurrentStore(),
-            ],
-        ];
-        $I->havePriceProduct($priceProductOverride);
-
-        return $productConcreteTransfer;
-    }
-
-    /**
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
      * @param string $cartUuid
      * @param array $attributes
      *
@@ -248,28 +204,5 @@ class CartsRestApiFixtures implements FixturesBuilderInterface, FixturesContaine
             $cartUuid,
             $attributes
         );
-    }
-
-    /**
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     * @param string $customerReference
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
-    protected function createEmptyQuote(CartsApiTester $I, string $customerReference): QuoteTransfer
-    {
-        return $I->havePersistentQuote([
-            QuoteTransfer::CUSTOMER => (new CustomerTransfer())->setCustomerReference($customerReference),
-        ]);
-    }
-
-    /**
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     *
-     * @return \Spryker\Zed\Store\Business\StoreFacadeInterface
-     */
-    protected function getStoreFacade(CartsApiTester $I): StoreFacadeInterface
-    {
-        return $I->getLocator()->store()->facade();
     }
 }

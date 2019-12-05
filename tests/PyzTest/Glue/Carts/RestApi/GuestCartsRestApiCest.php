@@ -254,8 +254,6 @@ class GuestCartsRestApiCest
         $I->seeResponseMatchesOpenApiSchema();
     }
 
-
-
     /**
      * @depends loadFixtures
      *

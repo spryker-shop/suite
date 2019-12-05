@@ -8,15 +8,9 @@
 namespace PyzTest\Glue\Carts\RestApi\Fixtures;
 
 use Generated\Shared\Transfer\CustomerTransfer;
-use Generated\Shared\Transfer\ItemTransfer;
-use Generated\Shared\Transfer\MoneyValueTransfer;
-use Generated\Shared\Transfer\PriceProductTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
-use Generated\Shared\Transfer\StockProductTransfer;
-use Generated\Shared\Transfer\TotalsTransfer;
 use PyzTest\Glue\Carts\CartsApiTester;
-use Spryker\Zed\Store\Business\StoreFacadeInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
@@ -169,14 +163,22 @@ class GuestCartsRestApiFixtures implements FixturesBuilderInterface, FixturesCon
      */
     public function buildFixtures(CartsApiTester $I): FixturesContainerInterface
     {
-        $this->createGuestQuote($I);
-        $this->productConcreteTransfer1 = $this->createProductData($I);
-        $this->productConcreteTransfer2 = $this->createProductData($I);
+        $this->productConcreteTransfer = $I->haveFullProduct();
+        $this->guestCustomerReference = $this->createGuestCustomerReference();
+        $guestCustomerTransfer = (new CustomerTransfer())
+            ->setCustomerReference(static::ANONYMOUS_PREFIX . $this->guestCustomerReference);
+        $this->guestQuoteTransfer = $this->createPersistentQuote($I, $guestCustomerTransfer, [$this->productConcreteTransfer]);
+
+        $this->productConcreteTransfer1 = $this->createProduct($I);
+        $this->productConcreteTransfer2 = $this->createProduct($I);
+
         $this->valueForAnonymousCustomerReference2 = $this->createValueForAnonymousCustomerReference();
         $this->valueForAnonymousCustomerReference3 = $this->createValueForAnonymousCustomerReference();
-        $this->guestQuoteTransfer2 = $this->createQuote(
+
+        $this->guestQuoteTransfer2 = $this->createPersistentQuote(
             $I,
-            static::ANONYMOUS_PREFIX . $this->valueForAnonymousCustomerReference2
+            (new CustomerTransfer())->setCustomerReference(static::ANONYMOUS_PREFIX . $this->valueForAnonymousCustomerReference2),
+            [$this->productConcreteTransfer1]
         );
         $this->emptyGuestQuoteTransfer = $this->createEmptyQuote(
             $I,
@@ -184,99 +186,6 @@ class GuestCartsRestApiFixtures implements FixturesBuilderInterface, FixturesCon
         );
 
         return $this;
-    }
-
-    /**
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     * @param string $customerReference
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
-    protected function createQuote(CartsApiTester $I, string $customerReference): QuoteTransfer
-    {
-        $totalsTransfer = new TotalsTransfer();
-        $totalsTransfer->setPriceToPay(random_int(1000, 10000));
-        return $I->havePersistentQuote([
-            QuoteTransfer::CUSTOMER => (new CustomerTransfer())->setCustomerReference($customerReference),
-            QuoteTransfer::TOTALS => $totalsTransfer,
-            QuoteTransfer::ITEMS => [
-                [
-                    ItemTransfer::SKU => $this->productConcreteTransfer1->getSku(),
-                    ItemTransfer::GROUP_KEY => $this->productConcreteTransfer1->getSku(),
-                    ItemTransfer::ABSTRACT_SKU => $this->productConcreteTransfer1->getAbstractSku(),
-                    ItemTransfer::ID => $this->productConcreteTransfer1->getIdProductConcrete(),
-                    ItemTransfer::UNIT_PRICE => random_int(100, 1000),
-                    ItemTransfer::UNIT_GROSS_PRICE => random_int(100, 1000),
-                    ItemTransfer::QUANTITY => 5,
-                ],
-            ],
-        ]);
-    }
-
-    /**
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     *
-     * @return void
-     */
-    protected function createGuestQuote(CartsApiTester $I): void
-    {
-        $this->productConcreteTransfer = $I->haveFullProduct();
-        $this->guestCustomerReference = $this->createGuestCustomerReference();
-        $guestCustomerTransfer = (new CustomerTransfer())
-            ->setCustomerReference(static::ANONYMOUS_PREFIX . $this->guestCustomerReference);
-        $this->guestQuoteTransfer = $this->createPersistentQuote($I, $guestCustomerTransfer, [$this->productConcreteTransfer]);
-    }
-
-    /**
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     *
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
-    protected function createProductData(CartsApiTester $I): ProductConcreteTransfer
-    {
-        $productConcreteTransfer = $I->haveFullProduct();
-        $I->haveProductInStockForStore($this->getStoreFacade($I)->getCurrentStore(), [
-            StockProductTransfer::SKU => $productConcreteTransfer->getSku(),
-            StockProductTransfer::IS_NEVER_OUT_OF_STOCK => 1,
-        ]);
-        $priceProductOverride = [
-            PriceProductTransfer::SKU_PRODUCT_ABSTRACT => $productConcreteTransfer->getAbstractSku(),
-            PriceProductTransfer::SKU_PRODUCT => $productConcreteTransfer->getSku(),
-            PriceProductTransfer::ID_PRODUCT => $productConcreteTransfer->getIdProductConcrete(),
-            PriceProductTransfer::PRICE_TYPE_NAME => 'DEFAULT',
-            PriceProductTransfer::MONEY_VALUE => [
-                MoneyValueTransfer::NET_AMOUNT => 777,
-                MoneyValueTransfer::GROSS_AMOUNT => 888,
-                MoneyValueTransfer::FK_CURRENCY => $I->getLocator()->currency()->facade()->getDefaultCurrencyForCurrentStore()->getIdCurrency(),
-                MoneyValueTransfer::CURRENCY => $I->getLocator()->currency()->facade()->getDefaultCurrencyForCurrentStore(),
-            ],
-        ];
-        $I->havePriceProduct($priceProductOverride);
-
-        return $productConcreteTransfer;
-    }
-
-    /**
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     * @param string $customerReference
-     *
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
-    protected function createEmptyQuote(CartsApiTester $I, string $customerReference): QuoteTransfer
-    {
-        return $I->havePersistentQuote([
-            QuoteTransfer::CUSTOMER => (new CustomerTransfer())->setCustomerReference($customerReference),
-        ]);
-    }
-
-    /**
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     *
-     * @return \Spryker\Zed\Store\Business\StoreFacadeInterface
-     */
-    protected function getStoreFacade(CartsApiTester $I): StoreFacadeInterface
-    {
-        return $I->getLocator()->store()->facade();
     }
 
     /**

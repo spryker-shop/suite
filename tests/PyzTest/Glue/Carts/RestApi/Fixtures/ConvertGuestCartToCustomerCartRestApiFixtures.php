@@ -93,11 +93,7 @@ class ConvertGuestCartToCustomerCartRestApiFixtures implements FixturesBuilderIn
     public function buildFixtures(CartsApiTester $I): FixturesContainerInterface
     {
         $this->createGuestQuote($I);
-        $this->customerTransfer = $I->haveCustomer([
-            CustomerTransfer::USERNAME => static::TEST_USERNAME,
-            CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
-            CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,
-        ]);
+        $this->createCustomer($I);
 
         return $this;
     }
@@ -114,5 +110,19 @@ class ConvertGuestCartToCustomerCartRestApiFixtures implements FixturesBuilderIn
         $guestCustomerTransfer = (new CustomerTransfer())
             ->setCustomerReference(static::ANONYMOUS_PREFIX . $this->guestCustomerReference);
         $this->guestQuoteTransfer = $this->createPersistentQuote($I, $guestCustomerTransfer, [$this->productConcreteTransfer]);
+    }
+
+    /**
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    protected function createCustomer(CartsApiTester $I): void
+    {
+        $this->customerTransfer = $I->haveCustomer([
+            CustomerTransfer::USERNAME => static::TEST_USERNAME,
+            CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
+            CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,
+        ]);
     }
 }
