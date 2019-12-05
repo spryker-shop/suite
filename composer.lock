@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3517df402da77a2ee21b4d8e45205f04",
+    "content-hash": "7d4030cd0b7ee7c4f0a1eceb887cae84",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5551,11 +5551,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/ps-10938/dev-configurable-bundle-configurator",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "be474fa0b408e836763ac7ebd5e06f1f6fe154db"
+                "reference": "e854939e45478755a174757b968c867086cdcdb7"
             },
             "require": {
                 "php": ">=7.2"
@@ -5729,6 +5729,8 @@
                 "spryker/configurable-bundle-gui": "*",
                 "spryker/configurable-bundle-gui-extension": "*",
                 "spryker/configurable-bundle-note": "*",
+                "spryker/configurable-bundle-page-search": "*",
+                "spryker/configurable-bundle-page-search-extension": "*",
                 "spryker/configurable-bundle-storage": "*",
                 "spryker/console": "*",
                 "spryker/container": "*",
@@ -6186,15 +6188,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-12-05T10:56:53+00:00"
+            "time": "2019-12-05T12:08:15+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/ps-10938/dev-configurable-bundle-configurator",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "39e6b5a626c8f4654e3108917f342cf3458d051f"
+                "reference": "f80fdc3e3d46ec5db652e74ac43f296b3c99ac21"
             },
             "require": {
                 "php": ">=7.2"
@@ -6232,6 +6234,7 @@
                 "spryker-shop/company-user-invitation-page": "*",
                 "spryker-shop/company-widget": "*",
                 "spryker-shop/configurable-bundle-note-widget": "*",
+                "spryker-shop/configurable-bundle-page": "*",
                 "spryker-shop/configurable-bundle-widget": "*",
                 "spryker-shop/content-banner-widget": "*",
                 "spryker-shop/content-file-widget": "*",
@@ -6334,7 +6337,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-12-05T11:44:22+00:00"
+            "time": "2019-12-05T09:56:02+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
