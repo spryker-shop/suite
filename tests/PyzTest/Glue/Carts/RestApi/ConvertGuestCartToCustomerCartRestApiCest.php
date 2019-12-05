@@ -24,8 +24,6 @@ use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
  */
 class ConvertGuestCartToCustomerCartRestApiCest
 {
-    protected const VALUE_FOR_ANONYMOUS = '666';
-
     /**
      * @var \PyzTest\Glue\Carts\RestApi\CartsRestApiFixtures
      */
@@ -52,7 +50,7 @@ class ConvertGuestCartToCustomerCartRestApiCest
     {
         // Arrange
         $this->requestCustomerLoginWithXAnonymousCustomerUniqueIdHeader($I);
-        $cartUuid = $this->fixtures->getGuestQuoteTransfer()->getUuid();
+        $cartUuid = $this->fixtures->getGuestQuoteTransfer1()->getUuid();
 
         // Act
         $I->sendGET(
@@ -68,7 +66,6 @@ class ConvertGuestCartToCustomerCartRestApiCest
 
         // Assert
         $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
 
         $I->amSure(sprintf('Returned resource is of type %s', CartsRestApiConfig::RESOURCE_CARTS))
@@ -79,7 +76,7 @@ class ConvertGuestCartToCustomerCartRestApiCest
             ->whenI()
             ->seeSingleResourceHasRelationshipByTypeAndId(
                 CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                $this->fixtures->getProductConcreteTransfer()->getSku()
+                $this->fixtures->getProductConcreteTransfer1()->getSku()
             );
 
         $I->amSure('Returned resource has correct id')
@@ -97,7 +94,10 @@ class ConvertGuestCartToCustomerCartRestApiCest
     public function requestGuestCartCollectionIsEmpty(CartsApiTester $I): void
     {
         // Arrange
-        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', static::VALUE_FOR_ANONYMOUS);
+        $I->haveHttpHeader(
+            CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
+            $this->fixtures->getValueForAnonymousCustomerReference1()
+        );
 
         // Act
         $I->sendGET(
@@ -111,9 +111,7 @@ class ConvertGuestCartToCustomerCartRestApiCest
 
         // Assert
         $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
-        $I->seeResponseDataContainsEmptyCollection();
     }
 
     /**
@@ -125,10 +123,13 @@ class ConvertGuestCartToCustomerCartRestApiCest
      */
     protected function requestCustomerLoginWithXAnonymousCustomerUniqueIdHeader(CartsApiTester $I): void
     {
-        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', static::VALUE_FOR_ANONYMOUS);
+        $I->haveHttpHeader(
+            CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID,
+            $this->fixtures->getValueForAnonymousCustomerReference1()
+        );
         $token = $I->haveAuthorizationToGlue(
             $this->fixtures->getCustomerTransfer(),
-            'anonymous:' . static::VALUE_FOR_ANONYMOUS
+            $this->fixtures::ANONYMOUS_PREFIX . $this->fixtures->getValueForAnonymousCustomerReference1()
         )->getAccessToken();
 
         $I->amBearerAuthenticated($token);
