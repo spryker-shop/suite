@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3b26acc33040bd4b7fbcc8d0bc5de3c9",
+    "content-hash": "793bd886c92f16b67e28bbe20c4dad46",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5550,11 +5550,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/mp-1497/master-offer-validity-dates",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "27cdddb2f31606ec5bacfd0bb79bc9c1848b3dcc"
+                "reference": "c5320cbab4051c9f90450b33d7bd8413f0207e4b"
             },
             "require": {
                 "php": ">=7.2"
@@ -5757,6 +5757,7 @@
                 "spryker/customer-access": "*",
                 "spryker/customer-access-gui": "*",
                 "spryker/customer-access-permission": "*",
+                "spryker/customer-access-rest-api": "*",
                 "spryker/customer-access-storage": "*",
                 "spryker/customer-api": "*",
                 "spryker/customer-catalog": "*",
@@ -5987,6 +5988,8 @@
                 "spryker/product-offer": "*",
                 "spryker/product-offer-stock": "*",
                 "spryker/product-offer-stock-data-import": "*",
+                "spryker/product-offer-validity": "*",
+                "spryker/product-offer-validity-data-import": "*",
                 "spryker/product-option": "*",
                 "spryker/product-option-cart-connector": "*",
                 "spryker/product-option-extension": "*",
@@ -6010,6 +6013,7 @@
                 "spryker/product-review-gui": "*",
                 "spryker/product-review-search": "*",
                 "spryker/product-review-storage": "*",
+                "spryker/product-reviews-rest-api": "*",
                 "spryker/product-search": "*",
                 "spryker/product-search-config-storage": "*",
                 "spryker/product-set": "*",
@@ -6050,7 +6054,6 @@
                 "spryker/router-extension": "*",
                 "spryker/sales": "*",
                 "spryker/sales-configurable-bundle": "*",
-                "spryker/sales-configurable-bundle-cart-note-gui": "*",
                 "spryker/sales-extension": "*",
                 "spryker/sales-merchant-connector": "*",
                 "spryker/sales-order-threshold": "*",
@@ -6101,9 +6104,9 @@
                 "spryker/state-machine": "*",
                 "spryker/step-engine": "*",
                 "spryker/stock": "*",
+                "spryker/stock-data-import": "*",
                 "spryker/stock-extension": "*",
                 "spryker/stock-gui": "*",
-                "spryker/stock-sales-connector": "*",
                 "spryker/storage": "*",
                 "spryker/storage-extension": "*",
                 "spryker/storage-redis": "*",
@@ -6181,7 +6184,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-12-03T14:33:52+00:00"
+            "time": "2019-12-05T13:58:00+00:00"
         },
         {
             "name": "spryker/spryker-shop",
