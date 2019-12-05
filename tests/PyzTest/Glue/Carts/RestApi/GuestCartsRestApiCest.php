@@ -644,7 +644,7 @@ class GuestCartsRestApiCest
                     'attributes' => [
                         'name' => $this->fixtures::TEST_GUEST_CART_NAME,
                         'currency' => $this->fixtures::CURRENCY_EUR,
-                        'priceMode' => CalculationPriceMode::PRICE_MODE_GROSS,
+                        'priceMode' => CalculationPriceMode::PRICE_MODE_NET,
                     ],
                 ],
             ]
