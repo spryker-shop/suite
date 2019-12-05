@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\ExampleProductSalePage\Persistence;
 
-use Orm\Zed\PriceProduct\Persistence\Map\SpyPriceProductStoreTableMap;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Pyz\Shared\ExampleProductSalePage\ExampleProductSalePageConfig;
 use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
@@ -43,25 +42,44 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
         return $this->getFactory()
             ->getProductLabelQueryContainer()
             ->queryProductAbstractRelationsByIdProductLabel($idProductLabel)
+            ->distinct()
             ->useSpyProductAbstractQuery(null, Criteria::LEFT_JOIN)
-                ->usePriceProductQuery(null, Criteria::LEFT_JOIN)
-                    ->joinPriceType('priceType', Criteria::INNER_JOIN)
-                    ->addJoinCondition('priceType', 'priceType.name = ?', ExampleProductSalePageConfig::PRICE_TYPE_ORIGINAL)
-                    ->joinPriceProductStore()
-                        ->usePriceProductStoreQuery(null, Criteria::INNER_JOIN)
-                            ->where(
-                                sprintf(
-                                    '(%1$s IS NULL OR %2$s IS NULL)',
-                                    SpyPriceProductStoreTableMap::COL_GROSS_PRICE,
-                                    SpyPriceProductStoreTableMap::COL_NET_PRICE
-                                )
-                            )
-                            ->joinPriceProductDefault()
-                                ->usePriceProductDefaultQuery(null, Criteria::INNER_JOIN)
-                                ->endUse()
+                ->usePriceProductQuery('priceProductOrigin', Criteria::LEFT_JOIN)
+                    ->joinPriceType('priceTypeOrigin', Criteria::INNER_JOIN)
+                    ->addJoinCondition(
+                        'priceTypeOrigin',
+                        'priceTypeOrigin.name = ?',
+                        ExampleProductSalePageConfig::PRICE_TYPE_ORIGINAL
+                    )
+                    ->usePriceProductStoreQuery('priceProductStoreOrigin', Criteria::LEFT_JOIN)
+                        ->usePriceProductDefaultQuery('priceProductDefaultOriginal', Criteria::LEFT_JOIN)
                         ->endUse()
+                    ->endUse()
                 ->endUse()
-            ->endUse();
+                ->usePriceProductQuery('priceProductDefault', Criteria::INNER_JOIN)
+                    ->joinPriceType('priceTypeDefault', Criteria::LEFT_JOIN)
+                    ->addJoinCondition(
+                        'priceTypeDefault',
+                        'priceTypeDefault.name = ?',
+                        ExampleProductSalePageConfig::PRICE_TYPE_DEFAULT
+                    )
+                    ->usePriceProductStoreQuery('priceProductStoreDefault', Criteria::LEFT_JOIN)
+                        ->usePriceProductDefaultQuery('priceProductDefaultDefault', Criteria::LEFT_JOIN)
+                        ->endUse()
+                    ->endUse()
+                ->endUse()
+            ->endUse()
+            ->addAnd('priceProductDefaultOriginal.id_price_product_default', null, Criteria::ISNULL)
+            ->addAnd('priceProductDefaultDefault.id_price_product_default', null, Criteria::ISNOTNULL)
+            ->condition('cond1', 'priceProductStoreOrigin.fk_store = priceProductStoreDefault.fk_store')
+            ->condition('cond2', 'priceProductStoreOrigin.fk_currency = priceProductStoreDefault.fk_currency')
+            ->condition('cond3', 'priceProductStoreOrigin.gross_price < priceProductStoreDefault.gross_price')
+            ->condition('cond4', 'priceProductStoreOrigin.gross_price  ' . Criteria::ISNULL)
+            ->condition('cond5', 'priceProductStoreOrigin.net_price < priceProductStoreDefault.net_price')
+            ->condition('cond6', 'priceProductStoreDefault.net_price  ' . Criteria::ISNULL)
+            ->combine(['cond3', 'cond4', 'cond5', 'cond6'], Criteria::LOGICAL_OR, 'condOr')
+            ->combine(['cond1', 'cond2'], Criteria::LOGICAL_AND, 'condAnd')
+            ->where(['condOr', 'condAnd'], Criteria::LOGICAL_AND);
     }
 
     /**
@@ -76,31 +94,44 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
         return $this->getFactory()
             ->getProductQueryContainer()
             ->queryProductAbstract()
-            ->usePriceProductQuery()
-                ->joinPriceType('priceType', Criteria::INNER_JOIN)
+            ->distinct()
+            ->usePriceProductQuery('priceProductOrigin', Criteria::LEFT_JOIN)
+                ->joinPriceType('priceTypeOrigin', Criteria::INNER_JOIN)
                 ->addJoinCondition(
-                    'priceType',
-                    'priceType.name = ?',
+                    'priceTypeOrigin',
+                    'priceTypeOrigin.name = ?',
                     ExampleProductSalePageConfig::PRICE_TYPE_ORIGINAL
                 )
-                ->joinPriceProductStore()
-                ->usePriceProductStoreQuery(null, Criteria::INNER_JOIN)
-                    ->joinPriceProductDefault()
-                        ->usePriceProductDefaultQuery(null, Criteria::INNER_JOIN)
-                        ->endUse()
+                ->usePriceProductStoreQuery('priceProductStoreOrigin', Criteria::LEFT_JOIN)
+                    ->usePriceProductDefaultQuery('priceProductDefaultOriginal', Criteria::LEFT_JOIN)
+                    ->endUse()
+                ->endUse()
+            ->endUse()
+            ->usePriceProductQuery('priceProductDefault', Criteria::INNER_JOIN)
+                ->joinPriceType('priceTypeDefault', Criteria::LEFT_JOIN)
+                ->addJoinCondition(
+                    'priceTypeDefault',
+                    'priceTypeDefault.name = ?',
+                    ExampleProductSalePageConfig::PRICE_TYPE_DEFAULT
+                )
+                ->usePriceProductStoreQuery('priceProductStoreDefault', Criteria::LEFT_JOIN)
+                    ->usePriceProductDefaultQuery('priceProductDefaultDefault', Criteria::LEFT_JOIN)
+                    ->endUse()
                 ->endUse()
             ->endUse()
             ->useSpyProductLabelProductAbstractQuery('rel', Criteria::LEFT_JOIN)
                 ->filterByFkProductLabel(null, Criteria::ISNULL)
             ->endUse()
             ->addJoinCondition('rel', sprintf('rel.fk_product_label = %d', $idProductLabel))
-            ->where(
-                sprintf(
-                    '(%1$s IS NOT NULL OR %2$s IS NOT NULL)',
-                    SpyPriceProductStoreTableMap::COL_GROSS_PRICE,
-                    SpyPriceProductStoreTableMap::COL_NET_PRICE
-                )
-            )
-            ->addGroupByColumn('id_product_abstract');
+            ->addAnd('rel.fk_product_label', null, Criteria::ISNULL)
+            ->addAnd('priceProductDefaultOriginal.id_price_product_default', null, Criteria::ISNOTNULL)
+            ->addAnd('priceProductDefaultDefault.id_price_product_default', null, Criteria::ISNOTNULL)
+            ->addAnd('priceProductStoreOrigin.gross_price', null, Criteria::ISNOTNULL)
+            ->addAnd('priceProductStoreOrigin.net_price', null, Criteria::ISNOTNULL)
+            ->condition('cond1', 'priceProductStoreOrigin.fk_store = priceProductStoreDefault.fk_store')
+            ->condition('cond2', 'priceProductStoreOrigin.fk_currency = priceProductStoreDefault.fk_currency')
+            ->condition('cond3', 'priceProductStoreOrigin."gross_price" > priceProductStoreDefault."gross_price"')
+            ->condition('cond4', 'priceProductStoreOrigin."net_price" > priceProductStoreDefault."net_price"')
+            ->where([ 'cond1', 'cond2', 'cond3',  'cond4'], Criteria::LOGICAL_AND);
     }
 }

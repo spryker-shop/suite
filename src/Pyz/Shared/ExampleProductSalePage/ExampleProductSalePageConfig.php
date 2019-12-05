@@ -10,5 +10,6 @@ namespace Pyz\Shared\ExampleProductSalePage;
 interface ExampleProductSalePageConfig
 {
     public const PRICE_TYPE_ORIGINAL = 'ORIGINAL';
+    public const PRICE_TYPE_DEFAULT = 'DEFAULT';
     public const DEFAULT_LABEL_NAME = 'SALE';
 }
