@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "86755d4ac207b2f67130a67433c9ffea",
+    "content-hash": "296ada29dfd8f132e7b9f8ce52134361",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.127.0",
+            "version": "3.128.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "c7f8c962ad2bb1430e673f14505870d8573a55d6"
+                "reference": "811e55f20b6455a0cce07ecdebe1398b9668c255"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/c7f8c962ad2bb1430e673f14505870d8573a55d6",
-                "reference": "c7f8c962ad2bb1430e673f14505870d8573a55d6",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/811e55f20b6455a0cce07ecdebe1398b9668c255",
+                "reference": "811e55f20b6455a0cce07ecdebe1398b9668c255",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-12-04T01:40:14+00:00"
+            "time": "2019-12-05T01:33:15+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -5303,12 +5303,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "3a230777cc2b375c38a0f9431ea6a5db32d06da8"
+                "reference": "5f13e9bfc1e9fe94de0fa93f8316b792be5b1750"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/3a230777cc2b375c38a0f9431ea6a5db32d06da8",
-                "reference": "3a230777cc2b375c38a0f9431ea6a5db32d06da8",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/5f13e9bfc1e9fe94de0fa93f8316b792be5b1750",
+                "reference": "5f13e9bfc1e9fe94de0fa93f8316b792be5b1750",
                 "shasum": ""
             },
             "require": {
@@ -5358,7 +5358,7 @@
                 "proprietary"
             ],
             "description": "EventBehavior module",
-            "time": "2019-11-20T16:10:59+00:00"
+            "time": "2019-12-05T07:10:03+00:00"
         },
         {
             "name": "spryker/install",
@@ -5475,12 +5475,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/silexphp.git",
-                "reference": "628ae1a4f7c17d018e7ed4909d1722ddd64d7972"
+                "reference": "58cbc4d372b82c3d0a023fa1cb6b3ed130b5074a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/silexphp/zipball/628ae1a4f7c17d018e7ed4909d1722ddd64d7972",
-                "reference": "628ae1a4f7c17d018e7ed4909d1722ddd64d7972",
+                "url": "https://api.github.com/repos/spryker/silexphp/zipball/58cbc4d372b82c3d0a023fa1cb6b3ed130b5074a",
+                "reference": "58cbc4d372b82c3d0a023fa1cb6b3ed130b5074a",
                 "shasum": ""
             },
             "require": {
@@ -5496,7 +5496,8 @@
             "require-dev": {
                 "doctrine/dbal": "~2.2",
                 "monolog/monolog": "^1.4.1",
-                "phpunit/phpunit": "^5 || ^6 || ^7 || ^8",
+                "phpunit/phpunit": "^8",
+                "sllh/composer-versions-check": "^2.0",
                 "swiftmailer/swiftmailer": "~5",
                 "symfony/browser-kit": "^3.0.0 || ^4.0.0",
                 "symfony/config": "^3.0.0 || ^4.0.0",
@@ -5508,7 +5509,6 @@
                 "symfony/intl": "^3.0.0 || ^4.0.0",
                 "symfony/monolog-bridge": "^3.0.0 || ^4.0.0",
                 "symfony/options-resolver": "^3.0.0 || ^4.0.0",
-                "symfony/phpunit-bridge": "~2.7",
                 "symfony/process": "^3.0.0 || ^4.0.0",
                 "symfony/security": "^3.0.0 || ^4.0.0",
                 "symfony/serializer": "^3.0.0 || ^4.0.0",
@@ -5547,7 +5547,7 @@
             "keywords": [
                 "microframework"
             ],
-            "time": "2019-11-13T15:58:59+00:00"
+            "time": "2019-12-05T13:09:27+00:00"
         },
         {
             "name": "spryker/spryker",
@@ -5555,7 +5555,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "9f52cc18be2a8695d15aad4e9a7ef70c4dbf3ed1"
+                "reference": "b4728e52c76636e568d719a616c4232c328d487b"
             },
             "require": {
                 "php": ">=7.2"
@@ -5758,6 +5758,7 @@
                 "spryker/customer-access": "*",
                 "spryker/customer-access-gui": "*",
                 "spryker/customer-access-permission": "*",
+                "spryker/customer-access-rest-api": "*",
                 "spryker/customer-access-storage": "*",
                 "spryker/customer-api": "*",
                 "spryker/customer-catalog": "*",
@@ -6073,6 +6074,7 @@
                 "spryker/scheduler-jenkins": "*",
                 "spryker/search": "*",
                 "spryker/security": "*",
+                "spryker/security-extension": "*",
                 "spryker/sequence-number": "*",
                 "spryker/session": "*",
                 "spryker/session-extension": "*",
@@ -6105,9 +6107,9 @@
                 "spryker/state-machine": "*",
                 "spryker/step-engine": "*",
                 "spryker/stock": "*",
+                "spryker/stock-data-import": "*",
                 "spryker/stock-extension": "*",
                 "spryker/stock-gui": "*",
-                "spryker/stock-sales-connector": "*",
                 "spryker/storage": "*",
                 "spryker/storage-extension": "*",
                 "spryker/storage-redis": "*",
@@ -6186,7 +6188,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-12-04T17:10:54+00:00"
+            "time": "2019-12-05T13:33:56+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6194,7 +6196,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "4a748f48179d3a95a852892c3150edbde780eefa"
+                "reference": "bcea9d2b390bfe4d9d206293d3580bcdac1029a5"
             },
             "require": {
                 "php": ">=7.2"
@@ -6334,7 +6336,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-12-04T16:08:05+00:00"
+            "time": "2019-12-05T13:33:48+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -10682,16 +10684,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/composer-constrainer.git",
-                "reference": "97c9d4571ade85cadfe508ce7fa481af195f0203"
+                "reference": "191f3566190cf16ee9e1713c30b369eb56e8e126"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/composer-constrainer/zipball/97c9d4571ade85cadfe508ce7fa481af195f0203",
-                "reference": "97c9d4571ade85cadfe508ce7fa481af195f0203",
+                "url": "https://api.github.com/repos/spryker-sdk/composer-constrainer/zipball/191f3566190cf16ee9e1713c30b369eb56e8e126",
+                "reference": "191f3566190cf16ee9e1713c30b369eb56e8e126",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/kernel": "^3.33.0",
                 "spryker/symfony": "^3.2.2",
                 "spryker/zend": "^2.1.0"
@@ -10718,7 +10720,7 @@
                 "proprietary"
             ],
             "description": "ComposerConstrainer module",
-            "time": "2019-10-14T09:04:44+00:00"
+            "time": "2019-12-05T11:17:58+00:00"
         },
         {
             "name": "spryker-sdk/composer-replace",
@@ -11028,12 +11030,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "7f9a9d95309c0ca1eb007421c642ed142152e8ec"
+                "reference": "9f3a6410bb6b43b3d3aaba4eabab5e72e61df79a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/7f9a9d95309c0ca1eb007421c642ed142152e8ec",
-                "reference": "7f9a9d95309c0ca1eb007421c642ed142152e8ec",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/9f3a6410bb6b43b3d3aaba4eabab5e72e61df79a",
+                "reference": "9f3a6410bb6b43b3d3aaba4eabab5e72e61df79a",
                 "shasum": ""
             },
             "require": {
@@ -11074,7 +11076,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-11-28T21:15:24+00:00"
+            "time": "2019-12-05T12:06:30+00:00"
         },
         {
             "name": "spryker/development-core",
@@ -11565,8 +11567,8 @@
     ],
     "aliases": [
         {
-            "alias": "1.14.0",
-            "alias_normalized": "1.14.0.0",
+            "alias": "1.14.1",
+            "alias_normalized": "1.14.1.0",
             "version": "9999999-dev",
             "package": "spryker/event-behavior"
         },
@@ -11577,8 +11579,8 @@
             "package": "spryker/uuid-behavior"
         },
         {
-            "alias": "0.3.0",
-            "alias_normalized": "0.3.0.0",
+            "alias": "0.3.1",
+            "alias_normalized": "0.3.1.0",
             "version": "9999999-dev",
             "package": "spryker/silexphp"
         },
