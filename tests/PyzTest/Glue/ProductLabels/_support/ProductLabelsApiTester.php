@@ -5,10 +5,10 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace PyzTest\Glue\Products;
+namespace PyzTest\Glue\ProductLabels;
 
 use Spryker\Glue\GlueApplication\Rest\RequestConstantsInterface;
-use Spryker\Glue\ProductPricesRestApi\ProductPricesRestApiConfig;
+use Spryker\Glue\ProductLabelsRestApi\ProductLabelsRestApiConfig;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
 use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
 
@@ -24,13 +24,13 @@ use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
  * @method void am($role)
  * @method void lookForwardTo($achieveValue)
  * @method void comment($description)
- * @method \Codeception\Lib\Friend haveFriend($name, $actorClass = null)
+ * @method void pause()
  *
  * @SuppressWarnings(PHPMD)
  */
-class ProductsApiTester extends ApiEndToEndTester
+class ProductLabelsApiTester extends ApiEndToEndTester
 {
-    use _generated\ProductsApiTesterActions;
+    use _generated\ProductLabelsApiTesterActions;
 
     /**
      * @param string[] $includes
@@ -64,24 +64,6 @@ class ProductsApiTester extends ApiEndToEndTester
     }
 
     /**
-     * @param string $productAbstractSku
-     * @param string[] $includes
-     *
-     * @return string
-     */
-    public function buildProductAbstractPricesUrl(string $productAbstractSku, array $includes = []): string
-    {
-        return $this->formatFullUrl(
-            '{resourceAbstractProducts}/{productAbstractSku}/{resourceAbstractProductPrices}' . $this->formatQueryInclude($includes),
-            [
-                'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
-                'productAbstractSku' => $productAbstractSku,
-                'resourceAbstractProductPrices' => ProductPricesRestApiConfig::RESOURCE_ABSTRACT_PRODUCT_PRICES,
-            ]
-        );
-    }
-
-    /**
      * @param string $productConcreteSku
      * @param string[] $includes
      *
@@ -99,19 +81,18 @@ class ProductsApiTester extends ApiEndToEndTester
     }
 
     /**
-     * @param string $productConcreteSku
+     * @param int $idProductLabel
      * @param string[] $includes
      *
      * @return string
      */
-    public function buildProductConcretePricesUrl(string $productConcreteSku, array $includes = []): string
+    public function buildProductLabelUrl(int $idProductLabel, array $includes = []): string
     {
         return $this->formatFullUrl(
-            '{resourceConcreteProducts}/{productConcreteSku}/{resourceConcreteProductPrices}' . $this->formatQueryInclude($includes),
+            '{resourceProductLabels}/{idProductLabel}' . $this->formatQueryInclude($includes),
             [
-                'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                'productConcreteSku' => $productConcreteSku,
-                'resourceConcreteProductPrices' => ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
+                'resourceProductLabels' => ProductLabelsRestApiConfig::RESOURCE_PRODUCT_LABELS,
+                'idProductLabel' => $idProductLabel,
             ]
         );
     }
