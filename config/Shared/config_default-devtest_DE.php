@@ -20,6 +20,7 @@ use Spryker\Shared\RabbitMq\RabbitMqEnv;
 use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\SessionRedis\SessionRedisConstants;
+use Spryker\Shared\StorageDatabase\StorageDatabaseConstants;
 use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 
@@ -134,3 +135,8 @@ $config[SessionRedisConstants::ZED_SESSION_REDIS_DATABASE] = $config[SessionRedi
 $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = sprintf('http://glue-test.de.%s.local', $domain);
 $config[TestifyConstants::GLUE_APPLICATION_DOMAIN] = $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN];
 $config[TestifyConstants::GLUE_OPEN_API_SCHEMA] = APPLICATION_SOURCE_DIR . '/Generated/Glue/Specification/spryker_rest_api.schema.yml';
+
+// ---------- Database storage
+$config[StorageDatabaseConstants::DB_USERNAME] = 'devtest';
+$config[StorageDatabaseConstants::DB_PASSWORD] = 'mate20mg';
+$config[StorageDatabaseConstants::DB_DATABASE] = 'DE_devtest_zed';

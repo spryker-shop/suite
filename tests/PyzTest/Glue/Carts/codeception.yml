@@ -16,6 +16,7 @@ suites:
         class_name: CartsApiTester
         modules:
             enabled:
+                - Asserts
                 - \PyzTest\Shared\Testify\Helper\Environment
                 - \SprykerTest\Shared\Testify\Helper\LocatorHelper:
                       projectNamespaces: ['Pyz']
@@ -28,7 +29,11 @@ suites:
                 - \SprykerTest\Glue\Testify\Helper\JsonPath
                 - \SprykerTest\Glue\AuthRestApi\Helper\AuthRestApiHelper
                 - \SprykerTest\Shared\Product\Helper\ProductDataHelper
+                - \SprykerTest\Shared\PriceProduct\Helper\PriceProductDataHelper
+                - \SprykerTest\Shared\ProductOption\Helper\ProductOptionGroupDataHelper
+                - \SprykerTest\Shared\Stock\Helper\StockDataHelper
                 - \SprykerTest\Glue\Testify\Helper\GlueRest
+                - \SprykerTest\Shared\EntityTag\Helper\EntityTagHelper
             config:
                 \SprykerTest\Glue\Testify\Helper\GlueRest:
                     depends: PhpBrowser
