@@ -2,24 +2,37 @@
 declare const require: any;
 /* tslint:enable */
 
-// add webcomponents polyfill
-import 'core-js/fn/promise';
-import 'core-js/fn/array';
-import 'core-js/fn/set';
-import 'core-js/fn/map';
+// add polyfills
+let coreJsFeaturesFolder = 'fn';
+/* tslint:disable: no-var-requires no-require-imports */
+try {
+    require('core-js/features');
+    coreJsFeaturesFolder = 'features';
+} catch (e) {
+    console.info('Please update the "core-js" version to >=3');
+}
+require(`core-js/${coreJsFeaturesFolder}/promise`);
+require(`core-js/${coreJsFeaturesFolder}/array`);
+require(`core-js/${coreJsFeaturesFolder}/set`);
+require(`core-js/${coreJsFeaturesFolder}/map`);
+/* tslint:enable */
+
 import 'classlist-polyfill';
 import 'string.prototype.startswith';
-
-// check if the browser natively supports webcomponents (and es6)
-const hasNativeCustomElements = !!window.customElements;
+import 'date-input-polyfill';
+import elementClosestPolyfill from 'element-closest';
+elementClosestPolyfill(window);
 
 // then load a shim for es5 transpilers (typescript or babel)
 // https://github.com/webcomponents/webcomponentsjs#custom-elements-es5-adapterjs
-if (hasNativeCustomElements) {
-    import(/* webpackMode: "eager" */'@webcomponents/webcomponentsjs/custom-elements-es5-adapter');
-}
 /* tslint:disable: no-var-requires no-require-imports */
-require('@webcomponents/webcomponentsjs/webcomponents-bundle');
+require('@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js');
+
+// add webcomponents polyfill
+try {
+    require('@webcomponents/webcomponents-platform/webcomponents-platform');
+    require('@webcomponents/custom-elements/custom-elements.min');
+} catch (e) {
+    require('@webcomponents/webcomponentsjs/webcomponents-bundle');
+}
 /* tslint:enable */
-import elementClosestPolyfill from 'element-closest';
-elementClosestPolyfill(window);

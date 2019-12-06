@@ -9,7 +9,7 @@ namespace PyzTest\Yves\Customer\PageObject;
 
 class CustomerRegistrationPage extends Customer
 {
-    public const URL = '/register';
+    public const URL = '/en/register';
 
     public const TITLE_CREATE_ACCOUNT = 'Create account';
 

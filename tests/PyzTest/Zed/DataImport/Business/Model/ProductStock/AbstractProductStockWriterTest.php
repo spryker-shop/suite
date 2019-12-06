@@ -25,6 +25,7 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Zed
  * @group DataImport
@@ -173,6 +174,7 @@ abstract class AbstractProductStockWriterTest extends AbstractWriterTest
         return SpyStockQuery::create()
             ->limit(count(static::WAREHOUSES_QTY))
             ->select(SpyStockTableMap::COL_NAME)
+            ->orderByIdStock()
             ->find()
             ->toArray();
     }

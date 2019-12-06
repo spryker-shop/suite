@@ -12,6 +12,7 @@ use Spryker\Shared\Propel\PropelConstants;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Zed
  * @group DataImport

@@ -13,6 +13,7 @@ use PyzTest\Zed\DataImport\Communication\Plugin\AbstractWriterPluginTest;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Zed
  * @group DataImport

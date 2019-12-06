@@ -1,0 +1,178 @@
+<?php
+
+/**
+ * This file is part of the Spryker Suite.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
+namespace PyzTest\Glue\UpSellingProducts\RestApi;
+
+use Generated\Shared\Transfer\CustomerTransfer;
+use Generated\Shared\Transfer\ItemTransfer;
+use Generated\Shared\Transfer\ProductConcreteTransfer;
+use Generated\Shared\Transfer\QuoteTransfer;
+use Generated\Shared\Transfer\StoreTransfer;
+use Generated\Shared\Transfer\TotalsTransfer;
+use PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester;
+use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
+use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
+
+/**
+ * Auto-generated group annotations
+ *
+ * @group PyzTest
+ * @group Glue
+ * @group UpSellingProducts
+ * @group RestApi
+ * @group GuestCartsUpSellingProductsRestApiFixtures
+ * Add your own group annotations below this line
+ * @group EndToEnd
+ */
+class GuestCartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
+{
+    protected const ANONYMOUS_PREFIX = 'anonymous:';
+
+    /**
+     * @var string
+     */
+    protected $guestCustomerReference;
+
+    /**
+     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
+     */
+    protected $productConcreteTransfer;
+
+    /**
+     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
+     */
+    protected $upSellingProductConcreteTransfer;
+
+    /**
+     * @var \Generated\Shared\Transfer\QuoteTransfer
+     */
+    protected $guestQuoteTransfer;
+
+    /**
+     * @return string
+     */
+    public function getGuestCustomerReference(): string
+    {
+        return $this->guestCustomerReference;
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
+     */
+    public function getProductConcreteTransfer(): ProductConcreteTransfer
+    {
+        return $this->productConcreteTransfer;
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
+     */
+    public function getUpSellingProductConcreteTransfer(): ProductConcreteTransfer
+    {
+        return $this->upSellingProductConcreteTransfer;
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\QuoteTransfer
+     */
+    public function getGuestQuoteTransfer(): QuoteTransfer
+    {
+        return $this->guestQuoteTransfer;
+    }
+
+    /**
+     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
+     *
+     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
+     */
+    public function buildFixtures(UpSellingProductsApiTester $I): FixturesContainerInterface
+    {
+        $this->createGuestQuoteWithProduct($I);
+        $this->createUpSellingProduct($I);
+        $this->createRelationBetweenProducts($I);
+
+        return $this;
+    }
+
+    /**
+     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
+     *
+     * @return void
+     */
+    protected function createGuestQuoteWithProduct(UpSellingProductsApiTester $I): void
+    {
+        $this->productConcreteTransfer = $I->haveFullProduct();
+
+        $this->guestCustomerReference = uniqid('testReference', true);
+        $customerTransfer = (new CustomerTransfer())
+            ->setCustomerReference(static::ANONYMOUS_PREFIX . $this->guestCustomerReference);
+        $this->guestQuoteTransfer = $this->createPersistentQuote($I, $customerTransfer, [$this->productConcreteTransfer]);
+    }
+
+    /**
+     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
+     *
+     * @return void
+     */
+    protected function createUpSellingProduct(UpSellingProductsApiTester $I): void
+    {
+        $this->upSellingProductConcreteTransfer = $I->haveFullProduct();
+    }
+
+    /**
+     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
+     *
+     * @return void
+     */
+    protected function createRelationBetweenProducts(UpSellingProductsApiTester $I): void
+    {
+        $I->haveProductRelation(
+            $this->upSellingProductConcreteTransfer->getAbstractSku(),
+            $this->productConcreteTransfer->getFkProductAbstract()
+        );
+    }
+
+    /**
+     * @param \PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester $I
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     * @param \Generated\Shared\Transfer\ProductConcreteTransfer[] $productConcreteTransfers
+     *
+     * @return \Generated\Shared\Transfer\QuoteTransfer
+     */
+    protected function createPersistentQuote(UpSellingProductsApiTester $I, CustomerTransfer $customerTransfer, array $productConcreteTransfers): QuoteTransfer
+    {
+        return $I->havePersistentQuote([
+            QuoteTransfer::CUSTOMER => $customerTransfer,
+            QuoteTransfer::TOTALS => (new TotalsTransfer())->setPriceToPay(random_int(1000, 10000)),
+            QuoteTransfer::ITEMS => $this->mapProductConcreteTransfersToQuoteTransferItems($productConcreteTransfers),
+            QuoteTransfer::STORE => [StoreTransfer::NAME => 'DE'],
+        ]);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ProductConcreteTransfer[] $productConcreteTransfers
+     *
+     * @return array
+     */
+    protected function mapProductConcreteTransfersToQuoteTransferItems(array $productConcreteTransfers): array
+    {
+        $quoteTransferItems = [];
+
+        foreach ($productConcreteTransfers as $productConcreteTransfer) {
+            $quoteTransferItems[] = [
+                ItemTransfer::SKU => $productConcreteTransfer->getSku(),
+                ItemTransfer::GROUP_KEY => $productConcreteTransfer->getSku(),
+                ItemTransfer::ABSTRACT_SKU => $productConcreteTransfer->getAbstractSku(),
+                ItemTransfer::ID_PRODUCT_ABSTRACT => $productConcreteTransfer->getFkProductAbstract(),
+                ItemTransfer::UNIT_PRICE => random_int(100, 1000),
+                ItemTransfer::QUANTITY => 5,
+            ];
+        }
+
+        return $quoteTransferItems;
+    }
+}

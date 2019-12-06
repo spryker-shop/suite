@@ -8,11 +8,14 @@
 namespace Pyz\Client\ProductStorage;
 
 use Spryker\Client\AvailabilityStorage\Plugin\ProductViewAvailabilityStorageExpanderPlugin;
+use Spryker\Client\MerchantProductOfferStorage\Plugin\ProductStorage\ProductViewOfferExpanderPlugin;
 use Spryker\Client\PriceProductStorage\Plugin\ProductViewPriceExpanderPlugin;
 use Spryker\Client\ProductDiscontinuedStorage\Plugin\ProductStorage\ProductDiscontinuedProductAvailabilityExpanderPlugin;
 use Spryker\Client\ProductDiscontinuedStorage\Plugin\ProductStorage\ProductViewDiscontinuedOptionsExpanderPlugin;
 use Spryker\Client\ProductImageStorage\Plugin\ProductViewImageExpanderPlugin;
+use Spryker\Client\ProductListStorage\Plugin\ProductStorageExtension\ProductAbstractListStorageRestrictionFilterPlugin;
 use Spryker\Client\ProductListStorage\Plugin\ProductStorageExtension\ProductAbstractRestrictionPlugin;
+use Spryker\Client\ProductListStorage\Plugin\ProductStorageExtension\ProductConcreteListStorageRestrictionFilterPlugin;
 use Spryker\Client\ProductListStorage\Plugin\ProductStorageExtension\ProductConcreteRestrictionPlugin;
 use Spryker\Client\ProductStorage\Plugin\ProductViewVariantExpanderPlugin;
 use Spryker\Client\ProductStorage\ProductStorageDependencyProvider as SprykerProductStorageDependencyProvider;
@@ -28,6 +31,7 @@ class ProductStorageDependencyProvider extends SprykerProductStorageDependencyPr
         $plugins = [
             new ProductViewDiscontinuedOptionsExpanderPlugin(), #ProductDiscontinuedFeature
             new ProductViewVariantExpanderPlugin(),
+            new ProductViewOfferExpanderPlugin(),
             new ProductViewPriceExpanderPlugin(),
             new ProductViewAvailabilityStorageExpanderPlugin(),
             new ProductDiscontinuedProductAvailabilityExpanderPlugin(), #ProductDiscontinuedFeature
@@ -54,6 +58,26 @@ class ProductStorageDependencyProvider extends SprykerProductStorageDependencyPr
     {
         return [
             new ProductConcreteRestrictionPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Client\ProductStorageExtension\Dependency\Plugin\ProductAbstractRestrictionFilterPluginInterface[]
+     */
+    protected function getProductAbstractRestrictionFilterPlugins(): array
+    {
+        return [
+            new ProductAbstractListStorageRestrictionFilterPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Client\ProductStorageExtension\Dependency\Plugin\ProductConcreteRestrictionFilterPluginInterface[]
+     */
+    protected function getProductConcreteRestrictionFilterPlugins(): array
+    {
+        return [
+            new ProductConcreteListStorageRestrictionFilterPlugin(),
         ];
     }
 }

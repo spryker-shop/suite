@@ -17,6 +17,7 @@ use Spryker\Shared\CategoryStorage\CategoryStorageConstants;
 use Spryker\Shared\CmsPageSearch\CmsPageSearchConstants;
 use Spryker\Shared\CmsStorage\CmsStorageConstants;
 use Spryker\Shared\CompanyUserStorage\CompanyUserStorageConfig;
+use Spryker\Shared\ConfigurableBundlePageSearch\ConfigurableBundlePageSearchConfig;
 use Spryker\Shared\ConfigurableBundleStorage\ConfigurableBundleStorageConfig;
 use Spryker\Shared\ContentStorage\ContentStorageConfig;
 use Spryker\Shared\CustomerAccessStorage\CustomerAccessStorageConstants;
@@ -25,6 +26,10 @@ use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\FileManagerStorage\FileManagerStorageConstants;
 use Spryker\Shared\GlossaryStorage\GlossaryStorageConstants;
 use Spryker\Shared\Log\LogConstants;
+use Spryker\Shared\MerchantOpeningHoursStorage\MerchantOpeningHoursStorageConfig;
+use Spryker\Shared\MerchantProductOfferStorage\MerchantProductOfferStorageConfig;
+use Spryker\Shared\MerchantProfileStorage\MerchantProfileStorageConfig;
+use Spryker\Shared\PriceProductOfferStorage\PriceProductOfferStorageConfig;
 use Spryker\Shared\PriceProductStorage\PriceProductStorageConstants;
 use Spryker\Shared\ProductPackagingUnitStorage\ProductPackagingUnitStorageConfig;
 use Spryker\Shared\ProductPageSearch\ProductPageSearchConstants;
@@ -56,6 +61,7 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
         $queueOptionCollection->append($this->createQueueOption(PriceProductStorageConstants::PRICE_SYNC_STORAGE_QUEUE, PriceProductStorageConstants::PRICE_SYNC_STORAGE_ERROR_QUEUE));
         $queueOptionCollection->append($this->createQueueOption(ProductPackagingUnitStorageConfig::PRODUCT_PACKAGING_UNIT_SYNC_STORAGE_QUEUE, ProductPackagingUnitStorageConfig::PRODUCT_PACKAGING_UNIT_SYNC_STORAGE_ERROR_QUEUE));
         $queueOptionCollection->append($this->createQueueOption(ConfigurableBundleStorageConfig::CONFIGURABLE_BUNDLE_SYNC_STORAGE_QUEUE, ConfigurableBundleStorageConfig::CONFIGURABLE_BUNDLE_SYNC_STORAGE_ERROR_QUEUE));
+        $queueOptionCollection->append($this->createQueueOption(ConfigurableBundlePageSearchConfig::CONFIGURABLE_BUNDLE_SEARCH_QUEUE, ConfigurableBundlePageSearchConfig::CONFIGURABLE_BUNDLE_SEARCH_ERROR_QUEUE));
         $queueOptionCollection->append($this->createQueueOption(CmsStorageConstants::CMS_SYNC_STORAGE_QUEUE, CmsStorageConstants::CMS_SYNC_STORAGE_ERROR_QUEUE));
         $queueOptionCollection->append($this->createQueueOption(CategoryPageSearchConstants::CATEGORY_SYNC_SEARCH_QUEUE, CategoryPageSearchConstants::CATEGORY_SYNC_SEARCH_ERROR_QUEUE));
         $queueOptionCollection->append($this->createQueueOption(CmsPageSearchConstants::CMS_SYNC_SEARCH_QUEUE, CmsPageSearchConstants::CMS_SYNC_SEARCH_ERROR_QUEUE));
@@ -66,6 +72,10 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
         $queueOptionCollection->append($this->createQueueOption(ContentStorageConfig::CONTENT_SYNC_STORAGE_QUEUE, ContentStorageConfig::CONTENT_SYNC_STORAGE_ERROR_QUEUE));
         $queueOptionCollection->append($this->createQueueOption(TaxProductStorageConfig::PRODUCT_ABSTRACT_TAX_SET_SYNC_STORAGE_QUEUE, TaxProductStorageConfig::PRODUCT_ABSTRACT_TAX_SET_SYNC_STORAGE_ERROR_QUEUE));
         $queueOptionCollection->append($this->createQueueOption(TaxStorageConfig::TAX_SET_SYNC_STORAGE_QUEUE, TaxStorageConfig::TAX_SET_SYNC_STORAGE_ERROR_QUEUE));
+        $queueOptionCollection->append($this->createQueueOption(MerchantProfileStorageConfig::MERCHANT_PROFILE_SYNC_STORAGE_QUEUE, MerchantProfileStorageConfig::MERCHANT_PROFILE_SYNC_STORAGE_ERROR_QUEUE));
+        $queueOptionCollection->append($this->createQueueOption(MerchantOpeningHoursStorageConfig::MERCHANT_OPENING_HOURS_SYNC_STORAGE_QUEUE, MerchantOpeningHoursStorageConfig::MERCHANT_OPENING_HOURS_SYNC_STORAGE_ERROR_QUEUE));
+        $queueOptionCollection->append($this->createQueueOption(MerchantProductOfferStorageConfig::MERCHANT_PRODUCT_OFFER_SYNC_STORAGE_QUEUE, MerchantProductOfferStorageConfig::MERCHANT_PRODUCT_OFFER_SYNC_STORAGE_ERROR_QUEUE));
+        $queueOptionCollection->append($this->createQueueOption(PriceProductOfferStorageConfig::PRICE_PRODUCT_OFFER_OFFER_SYNC_STORAGE_QUEUE, PriceProductOfferStorageConfig::PRICE_PRODUCT_OFFER_OFFER_SYNC_STORAGE_ERROR_QUEUE));
         $queueOptionCollection->append(
             $this->createQueueOption(
                 $this->get(LogConstants::LOG_QUEUE_NAME),

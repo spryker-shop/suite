@@ -10,6 +10,7 @@ namespace PyzTest\Zed\DataImport\Business\Model\ProductImage;
 use Generated\Shared\DataBuilder\SpyProductImageEntityBuilder;
 use Generated\Shared\DataBuilder\SpyProductImageSetEntityBuilder;
 use Generated\Shared\Transfer\SpyLocaleEntityTransfer;
+use Generated\Shared\Transfer\SpyProductImageEntityTransfer;
 use Generated\Shared\Transfer\SpyProductImageSetToProductImageEntityTransfer;
 use Orm\Zed\Locale\Persistence\SpyLocale;
 use Orm\Zed\Locale\Persistence\SpyLocaleQuery;
@@ -26,6 +27,7 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSet;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Zed
  * @group DataImport
@@ -39,6 +41,9 @@ abstract class AbstractProductImageWriterTest extends AbstractWriterTest
 {
     protected const PRODUCTS_LIMIT = 2;
 
+    protected const DEFAULT_EXTERNAL_URL_LARGE = '/large.png';
+    protected const DEFAULT_EXTERNAL_URL_SMALL = '/small.png';
+
     /**
      * @param array $products
      * @param \Orm\Zed\Locale\Persistence\SpyLocale $locale
@@ -50,30 +55,65 @@ abstract class AbstractProductImageWriterTest extends AbstractWriterTest
         $result = [];
 
         foreach ($products as $product) {
-            $dataSet = new DataSet();
-            $dataSet[ProductImageHydratorStep::KEY_ABSTRACT_SKU] = $product[SpyProductAbstractTableMap::COL_SKU];
-            $dataSet[ProductImageHydratorStep::KEY_CONCRETE_SKU] = '';
-            $dataSet[ProductImageHydratorStep::KEY_LOCALE] = $locale->getLocaleName();
-            /**
-             * @var \Generated\Shared\Transfer\SpyProductImageSetEntityTransfer
-             */
-            $spyProductImageSetEntityTransfer = (new SpyProductImageSetEntityBuilder())->build();
-
-            $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_SET_TRANSFER] = $spyProductImageSetEntityTransfer
-                ->setFkLocale($locale->getIdLocale())
-                ->setFkProductAbstract($product[SpyProductAbstractTableMap::COL_ID_PRODUCT_ABSTRACT]);
-
-            $localeEntityTransfer = (new SpyLocaleEntityTransfer())->setLocaleName($dataSet[ProductImageHydratorStep::KEY_LOCALE]);
-            $spyProductImageSetEntityTransfer->setSpyLocale($localeEntityTransfer);
-
-            $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_TRANSFER] = (new SpyProductImageEntityBuilder())->build();
-            $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER] = (new SpyProductImageSetToProductImageEntityTransfer())
-                ->setSortOrder(0);
-
+            $dataSet = $this->createDataSet($product, $locale);
             $result[$product[SpyProductAbstractTableMap::COL_SKU]] = $dataSet;
         }
 
         return $result;
+    }
+
+    /**
+     * @param array $product
+     * @param \Orm\Zed\Locale\Persistence\SpyLocale $locale
+     * @param \Generated\Shared\Transfer\SpyProductImageEntityTransfer|null $productImageEntityTransfer
+     *
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSet
+     */
+    protected function createDataSet(array $product, SpyLocale $locale, ?SpyProductImageEntityTransfer $productImageEntityTransfer = null): DataSet
+    {
+        $dataSet = new DataSet();
+        $productImageKey = $productImageEntityTransfer ? $productImageEntityTransfer->getProductImageKey() : uniqid('', true);
+        $dataSet[ProductImageHydratorStep::KEY_ABSTRACT_SKU] = $product[SpyProductAbstractTableMap::COL_SKU];
+        $dataSet[ProductImageHydratorStep::KEY_CONCRETE_SKU] = '';
+        $dataSet[ProductImageHydratorStep::KEY_LOCALE] = $locale->getLocaleName();
+        $dataSet[ProductImageHydratorStep::KEY_SORT_ORDER] = 0;
+        $dataSet[ProductImageHydratorStep::KEY_PRODUCT_IMAGE_KEY] = $productImageKey;
+        /**
+         * @var \Generated\Shared\Transfer\SpyProductImageSetEntityTransfer
+         */
+        $spyProductImageSetEntityTransfer = (new SpyProductImageSetEntityBuilder())->build();
+
+        $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_SET_TRANSFER] = $spyProductImageSetEntityTransfer
+            ->setFkLocale($locale->getIdLocale())
+            ->setFkProductAbstract($product[SpyProductAbstractTableMap::COL_ID_PRODUCT_ABSTRACT]);
+
+        $localeEntityTransfer = (new SpyLocaleEntityTransfer())->setLocaleName($dataSet[ProductImageHydratorStep::KEY_LOCALE]);
+        $spyProductImageSetEntityTransfer->setSpyLocale($localeEntityTransfer);
+
+        if (!$productImageEntityTransfer) {
+            $productImageEntityTransfer = (new SpyProductImageEntityBuilder(['product_image_key' => $productImageKey]))->build();
+        }
+
+        $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_TRANSFER] = $productImageEntityTransfer;
+        $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER] = (new SpyProductImageSetToProductImageEntityTransfer())
+            ->setSortOrder(0);
+
+        return $dataSet;
+    }
+
+    /**
+     * @param string $externalUrlLarge
+     * @param string $externalUrlSmall
+     * @param string $productImageKey
+     *
+     * @return \Generated\Shared\Transfer\SpyProductImageEntityTransfer
+     */
+    protected function createProductImageEntityTransfer(string $externalUrlLarge, string $externalUrlSmall, string $productImageKey): SpyProductImageEntityTransfer
+    {
+        return (new SpyProductImageEntityTransfer())
+            ->setExternalUrlLarge($externalUrlLarge)
+            ->setExternalUrlSmall($externalUrlSmall)
+            ->setProductImageKey($productImageKey);
     }
 
     /**
@@ -139,16 +179,18 @@ abstract class AbstractProductImageWriterTest extends AbstractWriterTest
     }
 
     /**
+     * @param int|null $limit
+     *
      * @return array
      */
-    protected function getAbstractProducts(): array
+    protected function getAbstractProducts(?int $limit = null): array
     {
         return SpyProductAbstractQuery::create()
             ->select([
                 SpyProductAbstractTableMap::COL_SKU,
                 SpyProductAbstractTableMap::COL_ID_PRODUCT_ABSTRACT,
             ])
-            ->limit(static::PRODUCTS_LIMIT)
+            ->limit($limit ?? static::PRODUCTS_LIMIT)
             ->find()
             ->toArray();
     }

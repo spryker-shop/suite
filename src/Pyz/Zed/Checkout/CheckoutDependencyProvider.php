@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Checkout;
 
+use Pyz\Zed\MerchantSalesOrder\Communication\Plugin\MerchantOrderSaverPlugin;
 use Spryker\Zed\Availability\Communication\Plugin\ProductsAvailableCheckoutPreConditionPlugin;
 use Spryker\Zed\CartNote\Communication\Plugin\Checkout\CartNoteSaverPlugin;
 use Spryker\Zed\Checkout\CheckoutDependencyProvider as SprykerCheckoutDependencyProvider;
@@ -25,6 +26,7 @@ use Spryker\Zed\ProductBundle\Communication\Plugin\Checkout\ProductBundleOrderSa
 use Spryker\Zed\ProductDiscontinued\Communication\Plugin\Checkout\ProductDiscontinuedCheckoutPreConditionPlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Checkout\ProductOptionOrderSaverPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Checkout\AmountAvailabilityCheckoutPreConditionPlugin;
+use Spryker\Zed\QuoteApproval\Communication\Plugin\Checkout\QuoteApprovalCheckoutPreConditionPlugin;
 use Spryker\Zed\QuoteRequest\Communication\Plugin\Checkout\CloseQuoteRequestCheckoutPostSaveHookPlugin;
 use Spryker\Zed\QuoteRequest\Communication\Plugin\Checkout\QuoteRequestPreCheckPlugin;
 use Spryker\Zed\Sales\Communication\Plugin\Checkout\SalesOrderSaverPlugin;
@@ -55,6 +57,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new SalesOrderThresholdCheckoutPreConditionPlugin(), #SalesOrderThresholdFeature
             new VoucherDiscountMaxUsageCheckoutPreConditionPlugin(),
             new QuoteRequestPreCheckPlugin(),
+            new QuoteApprovalCheckoutPreConditionPlugin(),
         ];
     }
 
@@ -78,6 +81,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new ProductBundleOrderSaverPlugin(),
             new PaymentOrderSaverPlugin(),
             new SalesOrderThresholdExpenseSavePlugin(), #SalesOrderThresholdFeature
+            new MerchantOrderSaverPlugin(),
         ];
 
         return $plugins;

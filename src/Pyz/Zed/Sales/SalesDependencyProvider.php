@@ -19,13 +19,13 @@ use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Sales\QuantitySalesU
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\SalesExtension\QuantitySalesUnitOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionGroupIdHydratorPlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionOrderHydratePlugin;
-use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionSortHydratePlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Checkout\PackagingUnitSplittableItemTransformerStrategyPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Sales\AmountLeadProductHydrateOrderPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Sales\AmountSalesUnitHydrateOrderPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\SalesExtension\AmountSalesUnitOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\SalesExtension\ProductPackagingUnitOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\Sales\SalesDependencyProvider as SprykerSalesDependencyProvider;
+use Spryker\Zed\SalesConfigurableBundle\Communication\Plugin\Sales\ConfiguredBundleItemPreTransformerPlugin;
 use Spryker\Zed\SalesConfigurableBundle\Communication\Plugin\Sales\ConfiguredBundleOrderExpanderPlugin;
 use Spryker\Zed\SalesConfigurableBundle\Communication\Plugin\Sales\ConfiguredBundlesOrderPostSavePlugin;
 use Spryker\Zed\SalesMerchantConnector\Communication\Plugin\OrderItemReferenceExpanderPreSavePlugin;
@@ -56,7 +56,6 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
         return [
             new ProductIdHydratorPlugin(),
             new ProductOptionOrderHydratePlugin(),
-            new ProductOptionSortHydratePlugin(),
             new ProductBundleOrderHydratePlugin(),
             new DiscountOrderHydratePlugin(),
             new ShipmentOrderHydratePlugin(),
@@ -116,6 +115,16 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
         return [
             new CommentThreadAttachedCommentOrderPostSavePlugin(),
             new ConfiguredBundlesOrderPostSavePlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\ItemPreTransformerPluginInterface[]
+     */
+    protected function getItemPreTransformerPlugins(): array
+    {
+        return [
+            new ConfiguredBundleItemPreTransformerPlugin(),
         ];
     }
 }

@@ -6,6 +6,12 @@ sections:
         generate-transfers:
             command: "vendor/bin/console transfer:generate"
 
+        router-cache-warmup-yves:
+            command: "vendor/bin/yves router:cache:warm-up"
+
+        router-cache-warmup-zed:
+            command: "vendor/bin/console router:cache:warm-up"
+
         twig-cache-warmup:
             command: "vendor/bin/console twig:cache:warmer"
 
@@ -61,8 +67,8 @@ sections:
             command: "vendor/bin/console scheduler:setup"
 
     init-storages-per-store:
-        setup-search:
-            command: "vendor/bin/console setup:search"
+        setup-search-create-indexes:
+            command: "vendor/bin/console search:setup:indexes"
 
     init-storages-per-region:
         propel-copy-schema:
@@ -96,3 +102,21 @@ sections:
         update-product-labels:
             command: "vendor/bin/console product-label:relations:update"
 
+    demo-minimal:
+        store-import:
+            command: "vendor/bin/console data:import:store"
+
+        currency-import:
+            command: "vendor/bin/console data:import:currency"
+
+        category-template-import:
+            command: "vendor/bin/console data:import:category"
+
+        category-import:
+            command: "vendor/bin/console data:import category"
+
+        customer-import:
+            command: "vendor/bin/console data:import:customer"
+
+        glossary-import:
+            command: "vendor/bin/console data:import:glossary"
