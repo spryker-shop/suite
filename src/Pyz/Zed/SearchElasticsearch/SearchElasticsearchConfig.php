@@ -12,6 +12,8 @@ use Spryker\Zed\SearchElasticsearch\SearchElasticsearchConfig as SprykerSearchEl
 class SearchElasticsearchConfig extends SprykerSearchElasticsearchConfig
 {
     /**
+     * @project Only needed in internal nonsplit project, not in public split project.
+     *
      * @return array
      */
     public function getJsonSchemaDefinitionDirectories(): array
