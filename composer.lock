@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "215394d7dd965a3b50e23fcb9dbe0789",
+    "content-hash": "bc57855e74ded7bcb473d4a8a27807b3",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5250,47 +5250,6 @@
             "time": "2019-11-21T15:03:30+00:00"
         },
         {
-            "name": "spryker-shop/price-product-widget",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker-shop/price-product-widget.git",
-                "reference": "3ddaf5343514822bd610de24c3155a40a399c41c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/price-product-widget/zipball/3ddaf5343514822bd610de24c3155a40a399c41c",
-                "reference": "3ddaf5343514822bd610de24c3155a40a399c41c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2",
-                "spryker/kernel": "^3.33.0",
-                "spryker/price-product-storage": "^2.9.0 || ^4.0.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "SprykerShop\\": "src/SprykerShop/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "PriceProductWidget module",
-            "time": "2019-12-05T08:27:50+00:00"
-        },
-        {
             "name": "spryker/decimal-object",
             "version": "1.0.0",
             "source": {
@@ -5596,7 +5555,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "0f67be08f9c140fee357a7155c878935649da49e"
+                "reference": "0cad358e58624fec18378e08db85a570e17f46c5"
             },
             "require": {
                 "php": ">=7.2"
@@ -5939,6 +5898,7 @@
                 "spryker/order-payments-rest-api": "*",
                 "spryker/order-payments-rest-api-extension": "*",
                 "spryker/orders-rest-api": "*",
+                "spryker/orders-rest-api-extension": "*",
                 "spryker/payment": "*",
                 "spryker/payment-cart-connector": "*",
                 "spryker/payments-rest-api": "*",
@@ -6039,6 +5999,7 @@
                 "spryker/product-option-cart-connector": "*",
                 "spryker/product-option-extension": "*",
                 "spryker/product-option-storage": "*",
+                "spryker/product-options-rest-api": "*",
                 "spryker/product-packaging-unit": "*",
                 "spryker/product-packaging-unit-data-import": "*",
                 "spryker/product-packaging-unit-gui": "*",
@@ -6233,7 +6194,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-12-06T07:21:39+00:00"
+            "time": "2019-12-06T10:15:45+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6241,7 +6202,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "025fa3f7c89a0a14da7d6eb015699aefe575e724"
+                "reference": "58690f0eb6f06f614ce33939411e19ceeeb3e5df"
             },
             "require": {
                 "php": ">=7.2"
@@ -6289,6 +6250,7 @@
                 "spryker-shop/customer-page": "*",
                 "spryker-shop/customer-page-extension": "*",
                 "spryker-shop/customer-reorder-widget": "*",
+                "spryker-shop/customer-reorder-widget-extension": "*",
                 "spryker-shop/discount-promotion-widget": "*",
                 "spryker-shop/discount-widget": "*",
                 "spryker-shop/error-page": "*",
@@ -6381,7 +6343,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-12-04T13:47:26+00:00"
+            "time": "2019-12-06T10:20:28+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
