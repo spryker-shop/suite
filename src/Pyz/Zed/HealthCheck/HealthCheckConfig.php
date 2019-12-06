@@ -7,40 +7,24 @@
 
 namespace Pyz\Zed\HealthCheck;
 
+use Spryker\Shared\Propel\PropelConfig;
+use Spryker\Shared\Search\SearchConfig;
+use Spryker\Shared\Session\SessionConfig;
+use Spryker\Shared\Storage\StorageConfig;
 use Spryker\Zed\HealthCheck\HealthCheckConfig as SprykerHealthCheckConfig;
 
 class HealthCheckConfig extends SprykerHealthCheckConfig
 {
-    /**
-     * @uses \Pyz\Shared\HealthCheck\HealthCheckConfig::STORAGE_SERVICE_NAME
-     */
-    public const STORAGE_SERVICE_NAME = 'storage';
-
-    /**
-     * @uses \Pyz\Shared\HealthCheck\HealthCheckConfig::SEARCH_SERVICE_NAME
-     */
-    public const SEARCH_SERVICE_NAME = 'search';
-
-    /**
-     * @uses \Pyz\Shared\HealthCheck\HealthCheckConfig::SESSION_SERVICE_NAME
-     */
-    public const SESSION_SERVICE_NAME = 'session';
-
-    /**
-     * @uses \Pyz\Shared\HealthCheck\HealthCheckConfig::DATABASE_SERVICE_NAME
-     */
-    public const DATABASE_SERVICE_NAME = 'database';
-
     /**
      * @return string[]
      */
     public function getAvailableHealthCheckServices(): array
     {
         return [
-            static::STORAGE_SERVICE_NAME,
-            static::SEARCH_SERVICE_NAME,
-            static::SESSION_SERVICE_NAME,
-            static::DATABASE_SERVICE_NAME,
+            StorageConfig::STORAGE_SERVICE_NAME,
+            SearchConfig::SEARCH_SERVICE_NAME,
+            SessionConfig::SESSION_SERVICE_NAME,
+            PropelConfig::DATABASE_SERVICE_NAME,
         ];
     }
 }
