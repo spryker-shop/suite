@@ -14,9 +14,9 @@ class PropelConfig extends SprykerPropelConfig
     /**
      * @project Only needed in nonsplit projects.
      *
-     * @return array
+     * @return string[]
      */
-    public function getCorePropelSchemaPathPatterns()
+    public function getCorePropelSchemaPathPatterns(): array
     {
         return array_merge(
             parent::getCorePropelSchemaPathPatterns(),
