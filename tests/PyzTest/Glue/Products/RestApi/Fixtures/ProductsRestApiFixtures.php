@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace PyzTest\Glue\Products\RestApi;
+namespace PyzTest\Glue\Products\RestApi\Fixtures;
 
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use PyzTest\Glue\Products\ProductsApiTester;
@@ -19,7 +19,7 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  * @group Glue
  * @group Products
  * @group RestApi
- * @group ProductAbstractRestFixtures
+ * @group ProductAbstractRestApiFixtures
  * Add your own group annotations below this line
  * @group EndToEnd
  */
