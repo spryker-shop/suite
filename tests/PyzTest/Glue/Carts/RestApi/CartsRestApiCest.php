@@ -279,7 +279,7 @@ class CartsRestApiCest
                 '{resourceCarts}/{cartUuid}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $I->grabDataFromResponseByJsonPath('$.data')[0]['id'],
+                    'cartUuid' => $I->grabDataFromResponseByJsonPath('$.data')['id'],
                 ]
             )
         );
@@ -665,7 +665,7 @@ class CartsRestApiCest
                 '{resourceCarts}/{cartUuid}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $I->grabDataFromResponseByJsonPath('$.data')[0]['id'],
+                    'cartUuid' => $I->grabDataFromResponseByJsonPath('$.data')['id'],
                 ]
             )
         );
