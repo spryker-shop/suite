@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "296ada29dfd8f132e7b9f8ce52134361",
+    "content-hash": "010299cd2eb763fdae140cdc779092ff",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -4017,16 +4017,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "8.4.3",
+            "version": "8.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "67f9e35bffc0dd52d55d565ddbe4230454fd6a4e"
+                "reference": "3ee1c1fd6fc264480c25b6fb8285edefe1702dab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/67f9e35bffc0dd52d55d565ddbe4230454fd6a4e",
-                "reference": "67f9e35bffc0dd52d55d565ddbe4230454fd6a4e",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3ee1c1fd6fc264480c25b6fb8285edefe1702dab",
+                "reference": "3ee1c1fd6fc264480c25b6fb8285edefe1702dab",
                 "shasum": ""
             },
             "require": {
@@ -4070,7 +4070,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "8.4-dev"
+                    "dev-master": "8.5-dev"
                 }
             },
             "autoload": {
@@ -4096,7 +4096,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-11-06T09:42:23+00:00"
+            "time": "2019-12-06T05:41:38+00:00"
         },
         {
             "name": "predis/predis",
@@ -5291,107 +5291,6 @@
             "time": "2019-12-05T08:27:50+00:00"
         },
         {
-            "name": "spryker/configurable-bundle-page-search",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/configurable-bundle-page-search.git",
-                "reference": "50053e3c1b137f070057c030d141b0a4cfec1f50"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/configurable-bundle-page-search/zipball/50053e3c1b137f070057c030d141b0a4cfec1f50",
-                "reference": "50053e3c1b137f070057c030d141b0a4cfec1f50",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2",
-                "spryker/configurable-bundle": "^2.1.0",
-                "spryker/configurable-bundle-page-search-extension": "^1.0.0",
-                "spryker/event-behavior": "^1.0.0",
-                "spryker/kernel": "^3.33.0",
-                "spryker/product-image": "^3.8.0",
-                "spryker/propel-orm": "^1.5.0",
-                "spryker/search": "^8.0.0",
-                "spryker/synchronization-behavior": "^1.0.0",
-                "spryker/synchronization-extension": "^1.0.0",
-                "spryker/util-encoding": "^2.0.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/elastica": "*",
-                "spryker/event": "*",
-                "spryker/glossary": "*",
-                "spryker/propel": "*",
-                "spryker/queue": "*",
-                "spryker/testify": "*"
-            },
-            "suggest": {
-                "spryker/elastica": "If you want to use search functionality from ConfigurableBundlePageSearchClient.",
-                "spryker/event": "If you want to use Event plugins, minimum required version: 2.1.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "ConfigurableBundlePageSearch module",
-            "time": "2019-12-05T14:05:32+00:00"
-        },
-        {
-            "name": "spryker/configurable-bundle-page-search-extension",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/configurable-bundle-page-search-extension.git",
-                "reference": "7f73f66c0e349d87d0d050604911ed96fcf9ec23"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/configurable-bundle-page-search-extension/zipball/7f73f66c0e349d87d0d050604911ed96fcf9ec23",
-                "reference": "7f73f66c0e349d87d0d050604911ed96fcf9ec23",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/search": "*",
-                "spryker/testify": "*"
-            },
-            "suggest": {
-                "spryker/search": "If you want to use ProductConcretePageMapExpanderPluginInterface: ^1.0.0."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "ConfigurableBundlePageSearchExtension module",
-            "time": "2019-12-05T08:27:26+00:00"
-        },
-        {
             "name": "spryker/decimal-object",
             "version": "1.0.0",
             "source": {
@@ -5697,7 +5596,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "fc326cbc76e72880e86790ba0bc22b2d29e64f51"
+                "reference": "5ee6cd270258753b8cbf0e64c6166bf4e9053b2b"
             },
             "require": {
                 "php": ">=7.2"
@@ -5871,6 +5770,8 @@
                 "spryker/configurable-bundle-gui": "*",
                 "spryker/configurable-bundle-gui-extension": "*",
                 "spryker/configurable-bundle-note": "*",
+                "spryker/configurable-bundle-page-search": "*",
+                "spryker/configurable-bundle-page-search-extension": "*",
                 "spryker/configurable-bundle-storage": "*",
                 "spryker/console": "*",
                 "spryker/container": "*",
@@ -6253,6 +6154,8 @@
                 "spryker/stock-extension": "*",
                 "spryker/stock-gui": "*",
                 "spryker/storage": "*",
+                "spryker/storage-database": "*",
+                "spryker/storage-database-extension": "*",
                 "spryker/storage-extension": "*",
                 "spryker/storage-redis": "*",
                 "spryker/store": "*",
@@ -6330,7 +6233,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-12-06T06:58:35+00:00"
+            "time": "2019-12-06T08:03:23+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6338,7 +6241,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "bcea9d2b390bfe4d9d206293d3580bcdac1029a5"
+                "reference": "6c2b39b14f4455734d700f66317e7ea4877367dc"
             },
             "require": {
                 "php": ">=7.2"
@@ -6376,6 +6279,7 @@
                 "spryker-shop/company-user-invitation-page": "*",
                 "spryker-shop/company-widget": "*",
                 "spryker-shop/configurable-bundle-note-widget": "*",
+                "spryker-shop/configurable-bundle-page": "*",
                 "spryker-shop/configurable-bundle-widget": "*",
                 "spryker-shop/content-banner-widget": "*",
                 "spryker-shop/content-file-widget": "*",
@@ -6478,7 +6382,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-12-05T13:33:48+00:00"
+            "time": "2019-12-06T08:02:51+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -11713,6 +11617,12 @@
             "alias_normalized": "1.14.1.0",
             "version": "9999999-dev",
             "package": "spryker/event-behavior"
+        },
+        {
+            "alias": "1.4.0",
+            "alias_normalized": "1.4.0.0",
+            "version": "9999999-dev",
+            "package": "spryker/synchronization-behavior"
         },
         {
             "alias": "1.1.0",
