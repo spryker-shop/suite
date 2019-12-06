@@ -5,11 +5,11 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace PyzTest\Glue\Products;
+namespace PyzTest\Glue\Wishlists;
 
 use Spryker\Glue\GlueApplication\Rest\RequestConstantsInterface;
-use Spryker\Glue\ProductPricesRestApi\ProductPricesRestApiConfig;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
+use Spryker\Glue\WishlistsRestApi\WishlistsRestApiConfig;
 use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
 
 /**
@@ -24,13 +24,13 @@ use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
  * @method void am($role)
  * @method void lookForwardTo($achieveValue)
  * @method void comment($description)
- * @method \Codeception\Lib\Friend haveFriend($name, $actorClass = null)
+ * @method void pause()
  *
  * @SuppressWarnings(PHPMD)
  */
-class ProductsApiTester extends ApiEndToEndTester
+class WishlistsApiTester extends ApiEndToEndTester
 {
-    use _generated\ProductsApiTesterActions;
+    use _generated\WishlistsApiTesterActions;
 
     /**
      * @param string[] $includes
@@ -47,36 +47,53 @@ class ProductsApiTester extends ApiEndToEndTester
     }
 
     /**
-     * @param string $productAbstractSku
      * @param string[] $includes
      *
      * @return string
      */
-    public function buildProductAbstractUrl(string $productAbstractSku, array $includes = []): string
+    public function buildWishlistsUrl(array $includes = []): string
     {
         return $this->formatFullUrl(
-            '{resourceAbstractProducts}/{productAbstractSku}' . $this->formatQueryInclude($includes),
+            '{resourceWishlists}' . $this->formatQueryInclude($includes),
             [
-                'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
-                'productAbstractSku' => $productAbstractSku,
+                'resourceWishlists' => WishlistsRestApiConfig::RESOURCE_WISHLISTS,
             ]
         );
     }
 
     /**
-     * @param string $productAbstractSku
+     * @param string $wishlistUuid
      * @param string[] $includes
      *
      * @return string
      */
-    public function buildProductAbstractPricesUrl(string $productAbstractSku, array $includes = []): string
+    public function buildWishlistUrl(string $wishlistUuid, array $includes = []): string
     {
         return $this->formatFullUrl(
-            '{resourceAbstractProducts}/{productAbstractSku}/{resourceAbstractProductPrices}' . $this->formatQueryInclude($includes),
+            '{resourceWishlists}/{wishlistUuid}' . $this->formatQueryInclude($includes),
             [
-                'resourceAbstractProducts' => ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
-                'productAbstractSku' => $productAbstractSku,
-                'resourceAbstractProductPrices' => ProductPricesRestApiConfig::RESOURCE_ABSTRACT_PRODUCT_PRICES,
+                'resourceWishlists' => WishlistsRestApiConfig::RESOURCE_WISHLISTS,
+                'wishlistUuid' => $wishlistUuid,
+            ]
+        );
+    }
+
+    /**
+     * @param string $wishlistUuid
+     * @param string $productConcreteSku
+     * @param string[] $includes
+     *
+     * @return string
+     */
+    public function buildWishlistItemUrl(string $wishlistUuid, string $productConcreteSku, array $includes = []): string
+    {
+        return $this->formatFullUrl(
+            '{resourceWishlists}/{wishlistUuid}/{resourceWishlistItems}/{productConcreteSku}' . $this->formatQueryInclude($includes),
+            [
+                'resourceWishlists' => WishlistsRestApiConfig::RESOURCE_WISHLISTS,
+                'wishlistUuid' => $wishlistUuid,
+                'resourceWishlistItems' => WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
+                'productConcreteSku' => $productConcreteSku,
             ]
         );
     }
@@ -94,24 +111,6 @@ class ProductsApiTester extends ApiEndToEndTester
             [
                 'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
                 'productConcreteSku' => $productConcreteSku,
-            ]
-        );
-    }
-
-    /**
-     * @param string $productConcreteSku
-     * @param string[] $includes
-     *
-     * @return string
-     */
-    public function buildProductConcretePricesUrl(string $productConcreteSku, array $includes = []): string
-    {
-        return $this->formatFullUrl(
-            '{resourceConcreteProducts}/{productConcreteSku}/{resourceConcreteProductPrices}' . $this->formatQueryInclude($includes),
-            [
-                'resourceConcreteProducts' => ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
-                'productConcreteSku' => $productConcreteSku,
-                'resourceConcreteProductPrices' => ProductPricesRestApiConfig::RESOURCE_CONCRETE_PRODUCT_PRICES,
             ]
         );
     }
