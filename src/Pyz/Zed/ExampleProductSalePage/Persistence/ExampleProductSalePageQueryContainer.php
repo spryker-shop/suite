@@ -8,7 +8,6 @@
 namespace Pyz\Zed\ExampleProductSalePage\Persistence;
 
 use Propel\Runtime\ActiveQuery\Criteria;
-use Pyz\Shared\ExampleProductSalePage\ExampleProductSalePageConfig;
 use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
 
 /**
@@ -16,6 +15,9 @@ use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
  */
 class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implements ExampleProductSalePageQueryContainerInterface
 {
+    protected const PRICE_TYPE_ORIGINAL = 'ORIGINAL';
+    protected const PRICE_TYPE_DEFAULT = 'DEFAULT';
+
     /**
      * @api
      *
@@ -49,7 +51,7 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
                     ->addJoinCondition(
                         'priceTypeOrigin',
                         'priceTypeOrigin.name = ?',
-                        ExampleProductSalePageConfig::PRICE_TYPE_ORIGINAL
+                        static::PRICE_TYPE_ORIGINAL
                     )
                     ->usePriceProductStoreQuery('priceProductStoreOrigin', Criteria::LEFT_JOIN)
                         ->usePriceProductDefaultQuery('priceProductDefaultOriginal', Criteria::LEFT_JOIN)
@@ -61,7 +63,7 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
                     ->addJoinCondition(
                         'priceTypeDefault',
                         'priceTypeDefault.name = ?',
-                        ExampleProductSalePageConfig::PRICE_TYPE_DEFAULT
+                        static::PRICE_TYPE_DEFAULT
                     )
                     ->usePriceProductStoreQuery('priceProductStoreDefault', Criteria::LEFT_JOIN)
                         ->usePriceProductDefaultQuery('priceProductDefaultDefault', Criteria::LEFT_JOIN)
@@ -100,7 +102,7 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
                 ->addJoinCondition(
                     'priceTypeOrigin',
                     'priceTypeOrigin.name = ?',
-                    ExampleProductSalePageConfig::PRICE_TYPE_ORIGINAL
+                    static::PRICE_TYPE_ORIGINAL
                 )
                 ->usePriceProductStoreQuery('priceProductStoreOrigin', Criteria::LEFT_JOIN)
                     ->usePriceProductDefaultQuery('priceProductDefaultOriginal', Criteria::LEFT_JOIN)
@@ -112,7 +114,7 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
                 ->addJoinCondition(
                     'priceTypeDefault',
                     'priceTypeDefault.name = ?',
-                    ExampleProductSalePageConfig::PRICE_TYPE_DEFAULT
+                    static::PRICE_TYPE_DEFAULT
                 )
                 ->usePriceProductStoreQuery('priceProductStoreDefault', Criteria::LEFT_JOIN)
                     ->usePriceProductDefaultQuery('priceProductDefaultDefault', Criteria::LEFT_JOIN)
