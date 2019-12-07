@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a8a758c172aacfbe7ce47623a1446449",
+    "content-hash": "c661828fcc109dafa0c89e4ecf71fc58",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -2951,23 +2951,23 @@
         },
         {
             "name": "spryker-shop/cart-code-widget",
-            "version": "1.1.1",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/cart-code-widget.git",
-                "reference": "5110cd9c2398c0b91cf0548801d4f303bbce4806"
+                "reference": "aa1f22664f14caee910dfd9e9bbc94c7c31823c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/cart-code-widget/zipball/5110cd9c2398c0b91cf0548801d4f303bbce4806",
-                "reference": "5110cd9c2398c0b91cf0548801d4f303bbce4806",
+                "url": "https://api.github.com/repos/spryker-shop/cart-code-widget/zipball/aa1f22664f14caee910dfd9e9bbc94c7c31823c1",
+                "reference": "aa1f22664f14caee910dfd9e9bbc94c7c31823c1",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker-shop/shop-application": "^1.0.0",
                 "spryker/application": "^3.8.0",
-                "spryker/cart-code": "^1.0.0",
+                "spryker/cart-code": "^1.1.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/quote": "^2.8.0",
                 "spryker/symfony": "^3.1.0",
@@ -2999,7 +2999,7 @@
                 "proprietary"
             ],
             "description": "CartCodeWidget module",
-            "time": "2019-10-14T10:22:33+00:00"
+            "time": "2019-12-06T11:09:46+00:00"
         },
         {
             "name": "spryker-shop/cart-note-widget",
@@ -10245,27 +10245,29 @@
         },
         {
             "name": "spryker/cart-code",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cart-code.git",
-                "reference": "e5b5009733fede46911241be6a136526454b3865"
+                "reference": "140a64ecd28f8db0b1bf67567d5812ced7ab4b84"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cart-code/zipball/e5b5009733fede46911241be6a136526454b3865",
-                "reference": "e5b5009733fede46911241be6a136526454b3865",
+                "url": "https://api.github.com/repos/spryker/cart-code/zipball/140a64ecd28f8db0b1bf67567d5812ced7ab4b84",
+                "reference": "140a64ecd28f8db0b1bf67567d5812ced7ab4b84",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/calculation": "^4.0.0",
-                "spryker/cart-code-extension": "^1.0.0",
+                "spryker/cart-code-extension": "^1.1.0",
                 "spryker/kernel": "^3.30.0",
-                "spryker/quote": "^2.8.0"
+                "spryker/quote": "^2.8.0",
+                "spryker/zed-request": "^3.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/discount": "*",
                 "spryker/testify": "*"
             },
             "type": "library",
@@ -10284,24 +10286,24 @@
                 "proprietary"
             ],
             "description": "CartCode module",
-            "time": "2019-10-14T10:22:10+00:00"
+            "time": "2019-12-06T10:24:25+00:00"
         },
         {
             "name": "spryker/cart-code-extension",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cart-code-extension.git",
-                "reference": "bdb877a0bcd3569202b54e626d469b78b697634a"
+                "reference": "486d311261bdb1a96e519da69bd9f7a6b4df7010"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cart-code-extension/zipball/bdb877a0bcd3569202b54e626d469b78b697634a",
-                "reference": "bdb877a0bcd3569202b54e626d469b78b697634a",
+                "url": "https://api.github.com/repos/spryker/cart-code-extension/zipball/486d311261bdb1a96e519da69bd9f7a6b4df7010",
+                "reference": "486d311261bdb1a96e519da69bd9f7a6b4df7010",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=7.2"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -10323,7 +10325,57 @@
                 "proprietary"
             ],
             "description": "CartCodeExtension module",
-            "time": "2019-05-21T12:49:20+00:00"
+            "time": "2019-12-04T15:11:36+00:00"
+        },
+        {
+            "name": "spryker/cart-codes-rest-api",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cart-codes-rest-api.git",
+                "reference": "6e815d91e482f05395fa82e8e2f625325bcf25a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cart-codes-rest-api/zipball/6e815d91e482f05395fa82e8e2f625325bcf25a6",
+                "reference": "6e815d91e482f05395fa82e8e2f625325bcf25a6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/cart-code": "^1.1.0",
+                "spryker/carts-rest-api": "^5.7.0",
+                "spryker/glue-application": "^1.9.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/zed-request": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/customer": "*",
+                "spryker/discount": "*",
+                "spryker/propel": "*",
+                "spryker/quote": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CartCodesRestApi module",
+            "time": "2019-12-07T07:30:46+00:00"
         },
         {
             "name": "spryker/cart-currency-connector",
@@ -10668,16 +10720,16 @@
         },
         {
             "name": "spryker/carts-rest-api",
-            "version": "5.6.0",
+            "version": "5.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/carts-rest-api.git",
-                "reference": "e330ceff38f795a7e9702d2be922ee8b6590b56a"
+                "reference": "3d7a026116e5e06a9eb27038a81b7e4a2217155a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/carts-rest-api/zipball/e330ceff38f795a7e9702d2be922ee8b6590b56a",
-                "reference": "e330ceff38f795a7e9702d2be922ee8b6590b56a",
+                "url": "https://api.github.com/repos/spryker/carts-rest-api/zipball/3d7a026116e5e06a9eb27038a81b7e4a2217155a",
+                "reference": "3d7a026116e5e06a9eb27038a81b7e4a2217155a",
                 "shasum": ""
             },
             "require": {
@@ -10724,7 +10776,7 @@
                 "proprietary"
             ],
             "description": "CartsRestApi module",
-            "time": "2019-12-05T16:57:56+00:00"
+            "time": "2019-12-06T11:48:34+00:00"
         },
         {
             "name": "spryker/carts-rest-api-extension",
@@ -18969,21 +19021,21 @@
         },
         {
             "name": "spryker/discount",
-            "version": "9.6.3",
+            "version": "9.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/discount.git",
-                "reference": "61caa57ab7c7a7b6feb3786b2ddb800562b20c0d"
+                "reference": "eff59596ebc29ec023bb4f6857e6456f2f359bfe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/discount/zipball/61caa57ab7c7a7b6feb3786b2ddb800562b20c0d",
-                "reference": "61caa57ab7c7a7b6feb3786b2ddb800562b20c0d",
+                "url": "https://api.github.com/repos/spryker/discount/zipball/eff59596ebc29ec023bb4f6857e6456f2f359bfe",
+                "reference": "eff59596ebc29ec023bb4f6857e6456f2f359bfe",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
-                "spryker/cart-code-extension": "^1.0.1",
+                "spryker/cart-code-extension": "^1.1.0",
                 "spryker/cart-extension": "^1.0.0 || ^2.0.0 || ^4.0.0",
                 "spryker/currency": "^3.1.0",
                 "spryker/discount-extension": "^1.1.0",
@@ -19015,7 +19067,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.0.x-dev"
+                    "dev-master": "9.0.x-dev"
                 }
             },
             "autoload": {
@@ -19029,7 +19081,7 @@
                 "proprietary"
             ],
             "description": "Discount module",
-            "time": "2019-11-25T09:14:22+00:00"
+            "time": "2019-12-05T13:33:56+00:00"
         },
         {
             "name": "spryker/discount-calculation-connector",
@@ -20303,21 +20355,21 @@
         },
         {
             "name": "spryker/gift-card",
-            "version": "1.3.3",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/gift-card.git",
-                "reference": "f06157d916d578a69fb05920df249a31d99cb44d"
+                "reference": "fa38fa0fea91901af85de2be9fb538656e7e0828"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/gift-card/zipball/f06157d916d578a69fb05920df249a31d99cb44d",
-                "reference": "f06157d916d578a69fb05920df249a31d99cb44d",
+                "url": "https://api.github.com/repos/spryker/gift-card/zipball/fa38fa0fea91901af85de2be9fb538656e7e0828",
+                "reference": "fa38fa0fea91901af85de2be9fb538656e7e0828",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
-                "spryker/cart-code-extension": "^1.0.1",
+                "spryker/cart-code-extension": "^1.1.0",
                 "spryker/kernel": "^3.33.0",
                 "spryker/payment": "^4.0.0 || ^5.0.0",
                 "spryker/product": "^1.0.0 || ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0",
@@ -20363,7 +20415,7 @@
                 "proprietary"
             ],
             "description": "GiftCard module",
-            "time": "2019-12-04T09:44:20+00:00"
+            "time": "2019-12-04T15:39:40+00:00"
         },
         {
             "name": "spryker/gift-card-balance",
