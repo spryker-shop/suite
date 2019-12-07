@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "daaeb3e85073129afb2b5ec272d26bc6",
+    "content-hash": "7c3692d3c30c99bd209fc151f0826fe1",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -2928,7 +2928,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette NEON: encodes and decodes NEON file format.",
+            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -5250,47 +5250,6 @@
             "time": "2019-11-21T15:03:30+00:00"
         },
         {
-            "name": "spryker-shop/price-product-widget",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker-shop/price-product-widget.git",
-                "reference": "3ddaf5343514822bd610de24c3155a40a399c41c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/price-product-widget/zipball/3ddaf5343514822bd610de24c3155a40a399c41c",
-                "reference": "3ddaf5343514822bd610de24c3155a40a399c41c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2",
-                "spryker/kernel": "^3.33.0",
-                "spryker/price-product-storage": "^2.9.0 || ^4.0.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "SprykerShop\\": "src/SprykerShop/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "PriceProductWidget module",
-            "time": "2019-12-05T08:27:50+00:00"
-        },
-        {
             "name": "spryker/decimal-object",
             "version": "1.0.0",
             "source": {
@@ -5592,11 +5551,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/sc-1264/create-health-check-endpoints-for-applicaitons",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "f73d56e371686e0582f885cc5c328e6cd88c9b62"
+                "reference": "f89daebe1b87ddfb8e9da44e21b5ba89c9edd657"
             },
             "require": {
                 "php": ">=7.2"
@@ -6235,7 +6194,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-12-06T18:06:02+00:00"
+            "time": "2019-12-07T11:25:16+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -10160,7 +10119,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-13T13:21:38+00:00"
+            "time": "2017-12-12T17:28:44+00:00"
         },
         {
             "name": "phpmd/phpmd",
@@ -10203,20 +10162,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
+                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler",
-                    "role": "Project Founder"
+                    "homepage": "https://github.com/manuelpichler"
                 },
                 {
                     "name": "Marc Würth",
+                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84",
-                    "role": "Project Maintainer"
+                    "homepage": "https://github.com/ravage84"
                 },
                 {
                     "name": "Other contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -10969,6 +10928,47 @@
             ],
             "description": "SprykGui module",
             "time": "2019-12-03T15:57:27+00:00"
+        },
+        {
+            "name": "spryker-shop/price-product-widget",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/price-product-widget.git",
+                "reference": "3ddaf5343514822bd610de24c3155a40a399c41c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/price-product-widget/zipball/3ddaf5343514822bd610de24c3155a40a399c41c",
+                "reference": "3ddaf5343514822bd610de24c3155a40a399c41c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/kernel": "^3.33.0",
+                "spryker/price-product-storage": "^2.9.0 || ^4.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "PriceProductWidget module",
+            "time": "2019-12-05T08:27:50+00:00"
         },
         {
             "name": "spryker/architecture-sniffer",
