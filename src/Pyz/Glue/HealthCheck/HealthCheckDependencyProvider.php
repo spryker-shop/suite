@@ -10,6 +10,7 @@ namespace Pyz\Glue\HealthCheck;
 use Spryker\Glue\HealthCheck\HealthCheckDependencyProvider as SprykerHealthCheckDependencyProvider;
 use Spryker\Glue\Search\Plugin\HealthCheck\SearchHealthCheckPlugin;
 use Spryker\Glue\Storage\Plugin\HealthCheck\KeyValueStoreHealthCheckPlugin;
+use Spryker\Glue\ZedRequest\Plugin\HealthCheck\ZedRequestHealthCheckPlugin;
 
 class HealthCheckDependencyProvider extends SprykerHealthCheckDependencyProvider
 {
@@ -21,7 +22,7 @@ class HealthCheckDependencyProvider extends SprykerHealthCheckDependencyProvider
         return [
             new SearchHealthCheckPlugin(),
             new KeyValueStoreHealthCheckPlugin(),
-            new KeyValueStoreHealthCheckPlugin(),
+            new ZedRequestHealthCheckPlugin(),
         ];
     }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7c3692d3c30c99bd209fc151f0826fe1",
+    "content-hash": "07632c1829453bf39036a55245e5e875",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5250,6 +5250,47 @@
             "time": "2019-11-21T15:03:30+00:00"
         },
         {
+            "name": "spryker-shop/price-product-widget",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/price-product-widget.git",
+                "reference": "3ddaf5343514822bd610de24c3155a40a399c41c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/price-product-widget/zipball/3ddaf5343514822bd610de24c3155a40a399c41c",
+                "reference": "3ddaf5343514822bd610de24c3155a40a399c41c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/kernel": "^3.33.0",
+                "spryker/price-product-storage": "^2.9.0 || ^4.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "PriceProductWidget module",
+            "time": "2019-12-05T08:27:50+00:00"
+        },
+        {
             "name": "spryker/decimal-object",
             "version": "1.0.0",
             "source": {
@@ -5555,7 +5596,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "f89daebe1b87ddfb8e9da44e21b5ba89c9edd657"
+                "reference": "43474d0381feeec8009137df524ccab081d85ebb"
             },
             "require": {
                 "php": ">=7.2"
@@ -6194,15 +6235,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-12-07T11:25:16+00:00"
+            "time": "2019-12-07T17:40:55+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/sc-1264/dev-create-health-check-endpoints-for-applicaitons",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "832135aec4f11704968749fc8b3868eb5519d2ce"
+                "reference": "ba2bb92fa1e45e0ef8f1ac48ea8ffa432d0411d3"
             },
             "require": {
                 "php": ">=7.2"
@@ -6240,7 +6281,6 @@
                 "spryker-shop/company-user-invitation-page": "*",
                 "spryker-shop/company-widget": "*",
                 "spryker-shop/configurable-bundle-note-widget": "*",
-                "spryker-shop/configurable-bundle-page": "*",
                 "spryker-shop/configurable-bundle-widget": "*",
                 "spryker-shop/content-banner-widget": "*",
                 "spryker-shop/content-file-widget": "*",
@@ -6343,7 +6383,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-12-05T15:05:37+00:00"
+            "time": "2019-12-07T17:44:56+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -10928,47 +10968,6 @@
             ],
             "description": "SprykGui module",
             "time": "2019-12-03T15:57:27+00:00"
-        },
-        {
-            "name": "spryker-shop/price-product-widget",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker-shop/price-product-widget.git",
-                "reference": "3ddaf5343514822bd610de24c3155a40a399c41c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/price-product-widget/zipball/3ddaf5343514822bd610de24c3155a40a399c41c",
-                "reference": "3ddaf5343514822bd610de24c3155a40a399c41c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2",
-                "spryker/kernel": "^3.33.0",
-                "spryker/price-product-storage": "^2.9.0 || ^4.0.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "SprykerShop\\": "src/SprykerShop/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "PriceProductWidget module",
-            "time": "2019-12-05T08:27:50+00:00"
         },
         {
             "name": "spryker/architecture-sniffer",
