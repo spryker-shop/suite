@@ -7,8 +7,6 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\ProductImage\Writer;
 
-use Orm\Zed\Product\Persistence\Map\SpyProductAbstractTableMap;
-use Orm\Zed\Product\Persistence\Map\SpyProductTableMap;
 use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\ProductImageHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\Sql\ProductImageSqlInterface;
@@ -21,51 +19,6 @@ use Spryker\Zed\ProductImage\Dependency\ProductImageEvents;
 
 class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
 {
-    /**
-     * @var array
-     */
-    protected static $productAbstractImageSetCollection = [];
-
-    /**
-     * @var array
-     */
-    protected static $productConcreteImageSetCollection = [];
-
-    /**
-     * @var array
-     */
-    protected static $productAbstractImageCollection = [];
-
-    /**
-     * @var array
-     */
-    protected static $productConcreteImageCollection = [];
-
-    /**
-     * @var array
-     */
-    protected static $productUniqueImageCollection = [];
-
-    /**
-     * @var int[]
-     */
-    protected static $productImageLocaleIds = [];
-
-    /**
-     * @var int[]
-     */
-    protected static $productIds = [];
-
-    /**
-     * @var int[]
-     */
-    protected static $productImageIds = [];
-
-    /**
-     * @var array
-     */
-    protected static $productImageSetIds = [];
-
     /**
      * @var \Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\Sql\ProductImageSqlInterface
      */
@@ -80,6 +33,11 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
      * @var \Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface
      */
     protected $dataFormatter;
+
+    /**
+     * @var array
+     */
+    protected static $productImageDataCollection = [];
 
     /**
      * @param \Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\Sql\ProductImageSqlInterface $productImageSql
@@ -103,11 +61,9 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
      */
     public function write(DataSetInterface $dataSet): void
     {
-        $this->collectProductSetImage($dataSet);
+        $this->collectProductImageData($dataSet);
 
-        if (count(static::$productAbstractImageCollection) >= ProductImageHydratorStep::BULK_SIZE ||
-            count(static::$productConcreteImageCollection) >= ProductImageHydratorStep::BULK_SIZE
-        ) {
+        if (count(static::$productImageDataCollection) >= ProductImageHydratorStep::BULK_SIZE) {
             $this->flush();
         }
     }
@@ -117,279 +73,121 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
      */
     public function flush(): void
     {
-        if (static::$productAbstractImageCollection === [] && static::$productConcreteImageCollection === []) {
+        if (!static::$productImageDataCollection) {
             return;
         }
 
-        $this->persistProductImageEntities();
+        $this->persistProductImageSets();
+        $touchedProductImages = $this->persistProductImages();
+        $this->persistProductImageSetRelations();
 
-        $this->prepareProductAbstractImageSetLocaleIds();
-        $this->prepareProductAbstractIds();
-        $this->persistProductAbstractImageSetEntities();
-        $this->prepareAbstractProductImageIds();
-        $this->persistProductAbstractImageSetRelationEntities();
-
-        $this->flushProductImageAbstractMemory();
-
-        $this->prepareProductConcreteImageSetLocaleIds();
-        $this->prepareProductConcreteIds();
-        $this->persistProductConcreteImageSetEntities();
-        $this->prepareConcreteProductImageIds();
-        $this->persistProductConcreteImageSetRelationEntities();
-
-        $this->flushProductImageConcreteMemory();
-
-        DataImporterPublisher::triggerEvents();
+        $this->flushCollectedData();
+        $this->triggerEventsForUpdatedImageSets($touchedProductImages);
     }
 
     /**
      * @return void
      */
-    protected function persistProductImageEntities(): void
+    protected function persistProductImageSets(): void
     {
-        $externalUrlLargeCollection = $this->dataFormatter->getCollectionDataByKey(static::$productUniqueImageCollection, ProductImageHydratorStep::KEY_EXTERNAL_URL_LARGE);
-        $externalUrlSmallCollection = $this->dataFormatter->getCollectionDataByKey(static::$productUniqueImageCollection, ProductImageHydratorStep::KEY_EXTERNAL_URL_SMALL);
-        $externalUrlLarge = $this->dataFormatter->formatPostgresArrayString($externalUrlLargeCollection);
-        $externalUrlSmall = $this->dataFormatter->formatPostgresArrayString($externalUrlSmallCollection);
-        $orderKey = $this->dataFormatter->formatPostgresArray(array_keys($externalUrlLargeCollection));
-
-        $sql = $this->productImageSql->createProductImageSQL();
-
-        $parameters = [
-            $externalUrlLarge,
-            $externalUrlSmall,
-            $orderKey,
-        ];
-
-        $this->propelExecutor->execute($sql, $parameters);
-    }
-
-    /**
-     * @return void
-     */
-    protected function persistProductAbstractImageSetEntities(): void
-    {
-        if (!count(static::$productIds)) {
-            return;
-        }
-
-        $nameCollection = $this->dataFormatter->getCollectionDataByKey(static::$productAbstractImageSetCollection, ProductImageHydratorStep::KEY_IMAGE_SET_DB_NAME_COLUMN);
-        $name = $this->dataFormatter->formatPostgresArrayString($nameCollection);
-
-        $idLocale = $this->dataFormatter->formatPostgresArray(
-            $this->dataFormatter->getCollectionDataByKey(static::$productImageLocaleIds, ProductImageHydratorStep::KEY_ID_LOCALE)
-        );
-        $idProductAbstract = $this->dataFormatter->formatPostgresArray(
-            $this->dataFormatter->getCollectionDataByKey(static::$productIds, ProductImageHydratorStep::KEY_ID_PRODUCT_ABSTRACT)
-        );
-        $orderKey = $this->dataFormatter->formatPostgresArray(array_keys($nameCollection));
-
-        $parametersForProductAbstract = [
-            $name,
-            $idLocale,
-            $idProductAbstract,
-            $orderKey,
-        ];
-
-        $this->persistProductAbstractImageSet($parametersForProductAbstract);
-    }
-
-    /**
-     * @return void
-     */
-    protected function persistProductConcreteImageSetEntities(): void
-    {
-        if (!count(static::$productIds)) {
-            return;
-        }
-
-        $nameCollection = $this->dataFormatter->getCollectionDataByKey(static::$productConcreteImageSetCollection, ProductImageHydratorStep::KEY_IMAGE_SET_DB_NAME_COLUMN);
-        $name = $this->dataFormatter->formatPostgresArrayString($nameCollection);
-
-        $idLocale = $this->dataFormatter->formatPostgresArray(
-            $this->dataFormatter->getCollectionDataByKey(static::$productImageLocaleIds, ProductImageHydratorStep::KEY_ID_LOCALE)
-        );
-
-        $idProductConcrete = $this->dataFormatter->formatPostgresArray(
-            $this->dataFormatter->getCollectionDataByKey(static::$productIds, ProductImageHydratorStep::KEY_ID_PRODUCT)
-        );
-
-        $orderKey = $this->dataFormatter->formatPostgresArray(array_keys($nameCollection));
-
-        $parametersForProductConcrete = [
-            $name,
-            $idLocale,
-            $idProductConcrete,
-            $orderKey,
-        ];
-
-        $this->persistProductConcreteImageSet($parametersForProductConcrete);
-    }
-
-    /**
-     * @param array $parametersForProductAbstract
-     *
-     * @return void
-     */
-    protected function persistProductAbstractImageSet(array $parametersForProductAbstract): void
-    {
-        $sqlForProductAbstract = $this->productImageSql->createProductImageSetSQL(
-            ProductImageHydratorStep::KEY_ID_PRODUCT_ABSTRACT,
+        $productImageSetNames = $this->dataFormatter->getCollectionDataByKey(static::$productImageDataCollection, ProductImageHydratorStep::KEY_IMAGE_SET_DB_NAME_COLUMN);
+        $fkLocaleIds = $this->dataFormatter->getCollectionDataByKey(static::$productImageDataCollection, ProductImageHydratorStep::KEY_IMAGE_SET_FK_LOCALE);
+        $fkProductAbstractIds = $this->dataFormatter->getCollectionDataByKey(
+            static::$productImageDataCollection,
             ProductImageHydratorStep::KEY_FK_PRODUCT_ABSTRACT
         );
-
-        $result = $this->propelExecutor->execute($sqlForProductAbstract, $parametersForProductAbstract);
-
-        $this->addProductAbstractImageSetChangeEvent($result);
-    }
-
-    /**
-     * @param array $parametersForProductConcrete
-     *
-     * @return void
-     */
-    protected function persistProductConcreteImageSet(array $parametersForProductConcrete): void
-    {
-        $sqlForProductConcrete = $this->productImageSql->createProductImageSetSQL(
-            ProductImageHydratorStep::KEY_ID_PRODUCT,
+        $fkProductConcreteIds = $this->dataFormatter->getCollectionDataByKey(
+            static::$productImageDataCollection,
             ProductImageHydratorStep::KEY_FK_PRODUCT
         );
 
-        $result = $this->propelExecutor->execute($sqlForProductConcrete, $parametersForProductConcrete);
+        $queryParameters = [
+            $this->dataFormatter->formatPostgresArrayString($productImageSetNames),
+            $this->dataFormatter->formatPostgresArray($fkLocaleIds),
+            $this->dataFormatter->formatPostgresArray($fkProductConcreteIds),
+            $this->dataFormatter->formatPostgresArray($fkProductAbstractIds),
+        ];
 
-        $this->addProductConcreteImageSetChangeEvent($result);
+        $this->propelExecutor->execute(
+            $this->productImageSql->createProductImageSetSQL(),
+            $queryParameters
+        );
+    }
+
+    /**
+     * @return array
+     */
+    protected function persistProductImages(): array
+    {
+        $externalUrlLargeCollection = $this->dataFormatter->getCollectionDataByKey(static::$productImageDataCollection, ProductImageHydratorStep::KEY_EXTERNAL_URL_LARGE);
+        $externalUrlSmallCollection = $this->dataFormatter->getCollectionDataByKey(static::$productImageDataCollection, ProductImageHydratorStep::KEY_EXTERNAL_URL_SMALL);
+        $productImageKeys = $this->dataFormatter->getCollectionDataByKey(static::$productImageDataCollection, ProductImageHydratorStep::KEY_PRODUCT_IMAGE_KEY);
+
+        $parameters = [
+            $this->dataFormatter->formatPostgresArrayString($externalUrlLargeCollection),
+            $this->dataFormatter->formatPostgresArrayString($externalUrlSmallCollection),
+            $this->dataFormatter->formatPostgresArrayString($productImageKeys),
+        ];
+
+        $result = $this->propelExecutor->execute(
+            $this->productImageSql->createOrUpdateProductImageSQL(),
+            $parameters
+        );
+
+        return $this->dataFormatter->getCollectionDataByKey($result, ProductImageHydratorStep::KEY_IMAGE_SET_RELATION_ID_PRODUCT_IMAGE);
     }
 
     /**
      * @return void
      */
-    protected function persistProductAbstractImageSetRelationEntities(): void
+    protected function persistProductImageSetRelations(): void
     {
-        if (!count(static::$productImageIds)) {
-            return;
-        }
-
-        $productImageCollection = $this->dataFormatter->getCollectionDataByKey(static::$productImageIds, ProductImageHydratorStep::KEY_IMAGE_SET_RELATION_ID_PRODUCT_IMAGE);
-        $idProductImage = $this->dataFormatter->formatPostgresArray($productImageCollection);
-
-        $idProductImageSet = $this->dataFormatter->formatPostgresArray(
-            $this->dataFormatter->getCollectionDataByKey(static::$productImageSetIds, ProductImageHydratorStep::KEY_IMAGE_SET_RELATION_ID_PRODUCT_IMAGE_SET)
-        );
-        $sortOrder = $this->dataFormatter->formatPostgresArray(
-            $this->dataFormatter->getCollectionDataByKey(static::$productImageSetIds, ProductImageHydratorStep::KEY_SORT_ORDER)
-        );
-        $orderKey = $this->dataFormatter->formatPostgresArray(array_keys($productImageCollection));
-
-        $sql = $this->productImageSql->createProductImageSetRelationSQL();
+        $productImageSetNames = $this->dataFormatter->getCollectionDataByKey(static::$productImageDataCollection, ProductImageHydratorStep::KEY_IMAGE_SET_DB_NAME_COLUMN);
+        $fkLocaleIds = $this->dataFormatter->getCollectionDataByKey(static::$productImageDataCollection, ProductImageHydratorStep::KEY_IMAGE_SET_FK_LOCALE);
+        $fkProductConcreteIds = $this->dataFormatter->getCollectionDataByKey(static::$productImageDataCollection, ProductImageHydratorStep::KEY_FK_PRODUCT);
+        $fkProductAbstractIds = $this->dataFormatter->getCollectionDataByKey(static::$productImageDataCollection, ProductImageHydratorStep::KEY_FK_PRODUCT_ABSTRACT);
+        $sortOrder = $this->dataFormatter->getCollectionDataByKey(static::$productImageDataCollection, ProductImageHydratorStep::KEY_SORT_ORDER);
+        $productImageKeys = $this->dataFormatter->getCollectionDataByKey(static::$productImageDataCollection, ProductImageHydratorStep::KEY_PRODUCT_IMAGE_KEY);
 
         $parameters = [
-            $idProductImage,
-            $idProductImageSet,
-            $sortOrder,
-            $orderKey,
+            $this->dataFormatter->formatPostgresArrayString($productImageSetNames),
+            $this->dataFormatter->formatPostgresArray($fkLocaleIds),
+            $this->dataFormatter->formatPostgresArray($fkProductConcreteIds),
+            $this->dataFormatter->formatPostgresArray($fkProductAbstractIds),
+            $this->dataFormatter->formatPostgresArray($sortOrder),
+            $this->dataFormatter->formatPostgresArrayString($productImageKeys),
         ];
 
-        $this->propelExecutor->execute($sql, $parameters);
+        $this->propelExecutor->execute(
+            $this->productImageSql->createProductImageSetRelationSQL(),
+            $parameters
+        );
     }
 
     /**
-     * @return void
-     */
-    protected function persistProductConcreteImageSetRelationEntities(): void
-    {
-        if (!count(static::$productImageIds)) {
-            return;
-        }
-
-        $productImageCollection = $this->dataFormatter->getCollectionDataByKey(static::$productImageIds, ProductImageHydratorStep::KEY_IMAGE_SET_RELATION_ID_PRODUCT_IMAGE);
-        $idProductImage = $this->dataFormatter->formatPostgresArray($productImageCollection);
-        $idProductImageSet = $this->dataFormatter->formatPostgresArray(
-            $this->dataFormatter->getCollectionDataByKey(static::$productImageSetIds, ProductImageHydratorStep::KEY_IMAGE_SET_RELATION_ID_PRODUCT_IMAGE_SET)
-        );
-        $sortOrder = $this->dataFormatter->formatPostgresArray(
-            $this->dataFormatter->getCollectionDataByKey(static::$productImageSetIds, ProductImageHydratorStep::KEY_SORT_ORDER)
-        );
-        $orderKey = $this->dataFormatter->formatPostgresArray(array_keys($productImageCollection));
-
-        $sql = $this->productImageSql->createProductImageSetRelationSQL();
-
-        $parameters = [
-            $idProductImage,
-            $idProductImageSet,
-            $sortOrder,
-            $orderKey,
-        ];
-
-        $this->propelExecutor->execute($sql, $parameters);
-    }
-
-    /**
-     * @param array $insertedProductSetImage
+     * @param array $touchedProductSetImages
      *
      * @return void
      */
-    protected function addProductAbstractImageSetChangeEvent(array $insertedProductSetImage): void
+    protected function addProductImageSetChangeEvent(array $touchedProductSetImages): void
     {
-        foreach ($insertedProductSetImage as $productImageSet) {
-            DataImporterPublisher::addEvent(
-                ProductImageEvents::PRODUCT_IMAGE_PRODUCT_ABSTRACT_PUBLISH,
-                $productImageSet[ProductImageHydratorStep::KEY_FK_PRODUCT_ABSTRACT]
-            );
-            DataImporterPublisher::addEvent(
-                ProductEvents::PRODUCT_ABSTRACT_PUBLISH,
-                $productImageSet[ProductImageHydratorStep::KEY_FK_PRODUCT_ABSTRACT]
-            );
-            static::$productImageSetIds[] = [
-                ProductImageHydratorStep::KEY_IMAGE_SET_RELATION_ID_PRODUCT_IMAGE_SET => $productImageSet[ProductImageHydratorStep::KEY_IMAGE_SET_RELATION_ID_PRODUCT_IMAGE_SET],
-                ProductImageHydratorStep::KEY_SORT_ORDER => ProductImageHydratorStep::IMAGE_TO_IMAGE_SET_RELATION_ORDER,
-            ];
+        foreach ($touchedProductSetImages as $productImageSet) {
+            if (!empty($productImageSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT])) {
+                DataImporterPublisher::addEvent(
+                    ProductImageEvents::PRODUCT_IMAGE_PRODUCT_ABSTRACT_PUBLISH,
+                    $productImageSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT]
+                );
+                DataImporterPublisher::addEvent(
+                    ProductEvents::PRODUCT_ABSTRACT_PUBLISH,
+                    $productImageSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT]
+                );
+            } elseif (!empty($productImageSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT])) {
+                DataImporterPublisher::addEvent(
+                    ProductImageEvents::PRODUCT_IMAGE_PRODUCT_CONCRETE_PUBLISH,
+                    $productImageSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT]
+                );
+            }
         }
-    }
-
-    /**
-     * @param array $insertedProductSetImage
-     *
-     * @return void
-     */
-    protected function addProductConcreteImageSetChangeEvent(array $insertedProductSetImage): void
-    {
-        foreach ($insertedProductSetImage as $productImageSet) {
-            DataImporterPublisher::addEvent(
-                ProductImageEvents::PRODUCT_IMAGE_PRODUCT_CONCRETE_PUBLISH,
-                $productImageSet[ProductImageHydratorStep::KEY_FK_PRODUCT]
-            );
-            static::$productImageSetIds[] = [
-                ProductImageHydratorStep::KEY_IMAGE_SET_RELATION_ID_PRODUCT_IMAGE_SET => $productImageSet[ProductImageHydratorStep::KEY_IMAGE_SET_RELATION_ID_PRODUCT_IMAGE_SET],
-                ProductImageHydratorStep::KEY_SORT_ORDER => ProductImageHydratorStep::IMAGE_TO_IMAGE_SET_RELATION_ORDER,
-            ];
-        }
-    }
-
-    /**
-     * @return void
-     */
-    protected function flushProductImageAbstractMemory(): void
-    {
-        static::$productUniqueImageCollection = [];
-        static::$productAbstractImageSetCollection = [];
-        static::$productAbstractImageCollection = [];
-        static::$productImageLocaleIds = [];
-        static::$productIds = [];
-        static::$productImageIds = [];
-        static::$productImageSetIds = [];
-    }
-
-    /**
-     * @return void
-     */
-    protected function flushProductImageConcreteMemory(): void
-    {
-        static::$productConcreteImageSetCollection = [];
-        static::$productConcreteImageCollection = [];
-        static::$productImageLocaleIds = [];
-        static::$productIds = [];
-        static::$productImageIds = [];
-        static::$productImageSetIds = [];
     }
 
     /**
@@ -397,194 +195,40 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
      *
      * @return void
      */
-    protected function collectProductSetImage(DataSetInterface $dataSet): void
+    protected function collectProductImageData(DataSetInterface $dataSet): void
     {
-        $productImage = $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_SET_TRANSFER]->modifiedToArray();
-        $productImage[ProductImageHydratorStep::KEY_LOCALE] = $productImage[ProductImageHydratorStep::KEY_SPY_LOCALE][ProductImageHydratorStep::KEY_LOCALE_NAME];
-        $productImage[ProductImageHydratorStep::KEY_ABSTRACT_SKU] = $dataSet[ProductImageHydratorStep::KEY_ABSTRACT_SKU];
-        $productImage[ProductImageHydratorStep::KEY_CONCRETE_SKU] = $dataSet[ProductImageHydratorStep::KEY_CONCRETE_SKU];
+        $productImageData = $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_SET_TRANSFER]->modifiedToArray();
+        $productImageData = array_merge($productImageData, $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_TRANSFER]->modifiedToArray());
+        $productImageData[ProductImageHydratorStep::KEY_SORT_ORDER] = $dataSet[ProductImageHydratorStep::KEY_SORT_ORDER];
+        $productImageData[ProductImageHydratorStep::KEY_PRODUCT_IMAGE_KEY] = $dataSet[ProductImageHydratorStep::KEY_PRODUCT_IMAGE_KEY];
 
-        $isProductAbstract = $productImage[ProductImageHydratorStep::KEY_ABSTRACT_SKU] !== "";
-        if ($isProductAbstract) {
-            static::$productAbstractImageSetCollection[] = $productImage;
-        } else {
-            static::$productConcreteImageSetCollection[] = $productImage;
-        }
-
-        $this->collectProductImage($dataSet, $isProductAbstract);
+        static::$productImageDataCollection[] = $productImageData;
     }
 
     /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     * @param bool $isProductAbstract
-     *
      * @return void
      */
-    protected function collectProductImage(DataSetInterface $dataSet, bool $isProductAbstract): void
+    protected function flushCollectedData(): void
     {
-        $productImage = $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_TRANSFER]->modifiedToArray();
-
-        if ($isProductAbstract) {
-            static::$productAbstractImageCollection[] = $productImage;
-        } else {
-            static::$productConcreteImageCollection[] = $productImage;
-        }
-
-        $this->collectProductUniqueImage($productImage);
+        static::$productImageDataCollection = [];
     }
 
     /**
-     * @param array $productImage
+     * @param int[] $touchedProductImages
      *
      * @return void
      */
-    protected function collectProductUniqueImage(array $productImage): void
+    protected function triggerEventsForUpdatedImageSets(array $touchedProductImages): void
     {
-        $uniqueExternalUrlLargeCollection = array_column(
-            static::$productUniqueImageCollection,
-            ProductImageHydratorStep::KEY_EXTERNAL_URL_LARGE
+        $parameters = [
+            $this->dataFormatter->formatPostgresArray($touchedProductImages),
+        ];
+        $updatedProductImageSets = $this->propelExecutor->execute(
+            $this->productImageSql->findProductImageSetsByProductImageIds(),
+            $parameters
         );
 
-        if (!in_array($productImage[ProductImageHydratorStep::KEY_EXTERNAL_URL_LARGE], $uniqueExternalUrlLargeCollection)) {
-            static::$productUniqueImageCollection[] = $productImage;
-        }
-    }
-
-    /**
-     * @return void
-     */
-    protected function prepareProductAbstractImageSetLocaleIds(): void
-    {
-        $localeCollection = $this->dataFormatter->getCollectionDataByKey(static::$productAbstractImageSetCollection, ProductImageHydratorStep::KEY_LOCALE);
-        $locale = $this->dataFormatter->formatPostgresArray($localeCollection);
-        $orderKey = $this->dataFormatter->formatPostgresArray(array_keys($localeCollection));
-
-        $sql = $this->productImageSql->convertLocaleNameToId();
-
-        $parameters = [
-            $orderKey,
-            $locale,
-        ];
-
-        $result = $this->propelExecutor->execute($sql, $parameters);
-
-        foreach ($result as $idLocale) {
-            static::$productImageLocaleIds[] = $idLocale;
-        }
-    }
-
-    /**
-     * @return void
-     */
-    protected function prepareProductConcreteImageSetLocaleIds(): void
-    {
-        $localeCollection = $this->dataFormatter->getCollectionDataByKey(static::$productConcreteImageSetCollection, ProductImageHydratorStep::KEY_LOCALE);
-        $locale = $this->dataFormatter->formatPostgresArray($localeCollection);
-        $orderKey = $this->dataFormatter->formatPostgresArray(array_keys($localeCollection));
-
-        $sql = $this->productImageSql->convertLocaleNameToId();
-
-        $parameters = [
-            $orderKey,
-            $locale,
-        ];
-
-        $result = $this->propelExecutor->execute($sql, $parameters);
-
-        foreach ($result as $idLocale) {
-            static::$productImageLocaleIds[] = $idLocale;
-        }
-    }
-
-    /**
-     * @return void
-     */
-    protected function prepareProductAbstractIds(): void
-    {
-        $productAbstractCollection = $this->dataFormatter->getCollectionDataByKey(static::$productAbstractImageSetCollection, ProductImageHydratorStep::KEY_ABSTRACT_SKU);
-        $productAbstractSku = $this->dataFormatter->formatPostgresArray($productAbstractCollection);
-        $orderKey = $this->dataFormatter->formatPostgresArray(array_keys($productAbstractCollection));
-
-        $sql = $this->productImageSql->convertProductSkuToId(SpyProductAbstractTableMap::TABLE_NAME, ProductImageHydratorStep::KEY_ID_PRODUCT_ABSTRACT);
-
-        $parameters = [
-            $orderKey,
-            $productAbstractSku,
-        ];
-
-        $result = $this->propelExecutor->execute($sql, $parameters);
-
-        foreach ($result as $idProductAbstract) {
-            static::$productIds[] = $idProductAbstract;
-        }
-    }
-
-    /**
-     * @return void
-     */
-    protected function prepareProductConcreteIds(): void
-    {
-        $productConcreteCollection = $this->dataFormatter->getCollectionDataByKey(static::$productConcreteImageSetCollection, ProductImageHydratorStep::KEY_CONCRETE_SKU);
-        $productConcreteSku = $this->dataFormatter->formatPostgresArray($productConcreteCollection);
-        $orderKey = $this->dataFormatter->formatPostgresArray(array_keys($productConcreteCollection));
-
-        $sql = $this->productImageSql->convertProductSkuToId(SpyProductTableMap::TABLE_NAME, ProductImageHydratorStep::KEY_ID_PRODUCT);
-
-        $parameters = [
-            $orderKey,
-            $productConcreteSku,
-        ];
-
-        $result = $this->propelExecutor->execute($sql, $parameters);
-
-        foreach ($result as $idProductConcrete) {
-            static::$productIds[] = $idProductConcrete;
-        }
-    }
-
-    /**
-     * @return void
-     */
-    protected function prepareAbstractProductImageIds(): void
-    {
-        $productImageNamesCollection = $this->dataFormatter->getCollectionDataByKey(static::$productAbstractImageCollection, ProductImageHydratorStep::KEY_EXTERNAL_URL_LARGE);
-        $productImageNames = $this->dataFormatter->formatPostgresArray($productImageNamesCollection);
-        $orderKey = $this->dataFormatter->formatPostgresArray(array_keys($productImageNamesCollection));
-
-        $sql = $this->productImageSql->convertImageNameToId();
-
-        $parameters = [
-            $orderKey,
-            $productImageNames,
-        ];
-
-        $result = $this->propelExecutor->execute($sql, $parameters);
-
-        foreach ($result as $idProductImage) {
-            static::$productImageIds[] = $idProductImage;
-        }
-    }
-
-    /**
-     * @return void
-     */
-    protected function prepareConcreteProductImageIds(): void
-    {
-        $productImageNamesCollection = $this->dataFormatter->getCollectionDataByKey(static::$productConcreteImageCollection, ProductImageHydratorStep::KEY_EXTERNAL_URL_LARGE);
-        $productImageNames = $this->dataFormatter->formatPostgresArray($productImageNamesCollection);
-        $orderKey = $this->dataFormatter->formatPostgresArray(array_keys($productImageNamesCollection));
-
-        $sql = $this->productImageSql->convertImageNameToId();
-
-        $parameters = [
-            $orderKey,
-            $productImageNames,
-        ];
-
-        $result = $this->propelExecutor->execute($sql, $parameters);
-
-        foreach ($result as $idProductImage) {
-            static::$productImageIds[] = $idProductImage;
-        }
+        $this->addProductImageSetChangeEvent($updatedProductImageSets);
+        DataImporterPublisher::triggerEvents();
     }
 }

@@ -16,7 +16,7 @@ class TransferConfig extends SprykerTransferConfig
      *
      * @return string[]
      */
-    protected function getCoreSourceDirectoryGlobPatterns()
+    protected function getCoreSourceDirectoryGlobPatterns(): array
     {
         $directoryGlobPatterns = parent::getCoreSourceDirectoryGlobPatterns();
         $directoryGlobPatterns[] = APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/*/src/Spryker/Shared/*/Transfer/';
@@ -33,7 +33,7 @@ class TransferConfig extends SprykerTransferConfig
      *
      * @return string[]
      */
-    public function getDataBuilderSourceDirectories()
+    public function getDataBuilderSourceDirectories(): array
     {
         $globPatterns = parent::getDataBuilderSourceDirectories();
         $globPatterns[] = APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/*/tests/_data/';
@@ -42,7 +42,7 @@ class TransferConfig extends SprykerTransferConfig
     }
 
     /**
-     * @return array
+     * @return string[]
      */
     public function getEntitiesSourceDirectories()
     {
@@ -58,6 +58,26 @@ class TransferConfig extends SprykerTransferConfig
      * @return bool
      */
     public function isTransferNameValidated(): bool
+    {
+        return true;
+    }
+
+    /**
+     * We use strict validation for case sensitive declaration for all new projects.
+     *
+     * @return bool
+     */
+    public function isCaseValidated(): bool
+    {
+        return true;
+    }
+
+    /**
+     * We use strict validation for collections and singular definition for all new projects.
+     *
+     * @return bool
+     */
+    public function isSingularRequired(): bool
     {
         return true;
     }

@@ -12,9 +12,9 @@ use Spryker\Glue\NavigationsRestApi\NavigationsRestApiConfig as SprykerNavigatio
 class NavigationsRestApiConfig extends SprykerNavigationsRestApiConfigi
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
-     * @return array
+     * @return string[]
      */
     public function getNavigationTypeToUrlResourceIdFieldMapping(): array
     {

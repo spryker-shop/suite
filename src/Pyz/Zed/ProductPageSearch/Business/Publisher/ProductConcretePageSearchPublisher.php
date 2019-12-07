@@ -198,7 +198,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
         $syncTransferData = new SynchronizationDataTransfer();
         $syncTransferData->setStore($productPageSearchTransfer->getStore());
         $syncTransferData->setLocale($productPageSearchTransfer->getLocale());
-        $syncTransferData->setReference($productPageSearchTransfer->getFkProduct());
+        $syncTransferData->setReference((string)$productPageSearchTransfer->getFkProduct());
         $keyBuilder = $this->synchronizationService->getStorageKeyBuilder($resourceName);
 
         return $keyBuilder->generateKey($syncTransferData);

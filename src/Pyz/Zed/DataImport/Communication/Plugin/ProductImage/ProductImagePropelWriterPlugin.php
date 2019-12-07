@@ -13,6 +13,7 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 
 /**
  * There is a faster way to import data. You can use it instead of this class if you use PostgreSQL
+ *
  * @see \Pyz\Zed\DataImport\Communication\Plugin\ProductImage\ProductImageBulkPdoWriterPlugin
  *
  * @method \Pyz\Zed\DataImport\Business\DataImportFacadeInterface getFacade()

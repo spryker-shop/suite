@@ -42,6 +42,7 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
     public const NODE_TYPE_EXTERNAL_URL = 'external_url';
     public const NODE_TYPE_CATEGORY = 'category';
     public const NODE_TYPE_CMS_PAGE = 'cms_page';
+    public const NODE_TYPE_MERCHANT = 'merchant';
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
@@ -90,7 +91,11 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
                 $navigationNodeLocalizedAttributesEntity->setExternalUrl($this->getExternalUrl($navigationNodeLocalizedAttributesEntity, $localizedAttributes));
             }
 
-            if ($navigationNodeEntity->getNodeType() === static::NODE_TYPE_CATEGORY || $navigationNodeEntity->getNodeType() === static::NODE_TYPE_CMS_PAGE) {
+            if (in_array(
+                $navigationNodeEntity->getNodeType(),
+                [static::NODE_TYPE_CATEGORY, static::NODE_TYPE_CMS_PAGE, static::NODE_TYPE_MERCHANT]
+            )
+            ) {
                 $navigationNodeLocalizedAttributesEntity->setFkUrl($this->getFkUrl($navigationNodeLocalizedAttributesEntity, $localizedAttributes, $idLocale));
             }
 

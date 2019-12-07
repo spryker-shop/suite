@@ -13,6 +13,7 @@ use Spryker\Shared\ProductRelation\ProductRelationTypes;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Zed
  * @group ProductRelation
@@ -27,7 +28,7 @@ class ProductRelationCreateRelationCest
      *
      * @return void
      */
-    public function testICanCreateProductRelationAndSeeInYves(ProductRelationPresentationTester $i)
+    public function testICanCreateProductRelation(ProductRelationPresentationTester $i)
     {
         $i->wantTo('I want to create up selling relation');
         $i->expect('relation is persisted, exported to yves and carousel component is visible');
@@ -47,17 +48,6 @@ class ProductRelationCreateRelationCest
 
         $i->clickSaveButton();
 
-        $i->see(ProductRelationCreatePage::PRODUCT_SUCCESS_FULLY_CREATED_MESSAGE);
-
-        //$i->activateRelation();
-
-        // TODO re-enable
-        //$i->runCollectors();
-        //$i->wait(5);
-
-        //$i->amYves();
-        //$i->amOnPage('/en/samsung-bundle-214');
-        //$i->canSee('Similar products');
-        //$i->canSee('HP EliteDesk 800 G2');
+        $i->seeInPageSource(ProductRelationCreatePage::PRODUCT_SUCCESS_FULLY_CREATED_MESSAGE);
     }
 }

@@ -162,7 +162,6 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
      */
     protected function importProductUrls(DataSetInterface $dataSet): void
     {
-
         $urlsTransfer = [];
 
         foreach ($dataSet[ProductLocalizedAttributesExtractorStep::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $localizedAttributes) {
