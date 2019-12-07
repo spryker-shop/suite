@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "daaeb3e85073129afb2b5ec272d26bc6",
+    "content-hash": "07632c1829453bf39036a55245e5e875",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -2928,7 +2928,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette NEON: encodes and decodes NEON file format.",
+            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -5402,6 +5402,52 @@
             "time": "2019-12-05T07:10:03+00:00"
         },
         {
+            "name": "spryker/heartbeat",
+            "version": "3.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/heartbeat.git",
+                "reference": "f2dc9ddd331b427321dd31ba3878ffef7ba82607"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/heartbeat/zipball/f2dc9ddd331b427321dd31ba3878ffef7ba82607",
+                "reference": "f2dc9ddd331b427321dd31ba3878ffef7ba82607",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/application": "^3.4.0",
+                "spryker/config": "^3.0.0",
+                "spryker/elastica": "^2.0.0 || ^3.0.0 || ^4.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/storage": "^3.8.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Heartbeat module",
+            "time": "2019-05-23T10:18:05+00:00"
+        },
+        {
             "name": "spryker/install",
             "version": "dev-master",
             "source": {
@@ -5592,11 +5638,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/sc-1264/create-health-check-endpoints-for-applicaitons",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "df8cc95abfb37a995692e828d0bf5d2f88052376"
+                "reference": "42698e0c82314966edfe25baf8cc730d5da36e85"
             },
             "require": {
                 "php": ">=7.2"
@@ -5858,7 +5904,6 @@
                 "spryker/graphviz": "*",
                 "spryker/gui": "*",
                 "spryker/guzzle": "*",
-                "spryker/heartbeat": "*",
                 "spryker/http": "*",
                 "spryker/http-extension": "*",
                 "spryker/index-generator": "*",
@@ -6235,15 +6280,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-12-07T12:59:06+00:00"
+            "time": "2019-12-07T20:06:07+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/sc-1264/dev-create-health-check-endpoints-for-applicaitons",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "dd001b7905f744e871780f9af88ad1c35dc20749"
+                "reference": "968b8d34f393b76a59535f968fa4c579f57a1173"
             },
             "require": {
                 "php": ">=7.2"
@@ -6297,7 +6342,6 @@
                 "spryker-shop/error-page": "*",
                 "spryker-shop/file-manager-widget": "*",
                 "spryker-shop/gift-card-widget": "*",
-                "spryker-shop/heartbeat-page": "*",
                 "spryker-shop/home-page": "*",
                 "spryker-shop/language-switcher-widget": "*",
                 "spryker-shop/merchant-product-offer-widget": "*",
@@ -6384,7 +6428,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-12-07T12:59:09+00:00"
+            "time": "2019-12-07T19:54:41+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -10160,7 +10204,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-13T13:21:38+00:00"
+            "time": "2017-12-12T17:28:44+00:00"
         },
         {
             "name": "phpmd/phpmd",
@@ -10203,20 +10247,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
+                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler",
-                    "role": "Project Founder"
+                    "homepage": "https://github.com/manuelpichler"
                 },
                 {
                     "name": "Marc Würth",
+                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84",
-                    "role": "Project Maintainer"
+                    "homepage": "https://github.com/ravage84"
                 },
                 {
                     "name": "Other contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
