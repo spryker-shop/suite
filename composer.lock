@@ -5402,52 +5402,6 @@
             "time": "2019-12-05T07:10:03+00:00"
         },
         {
-            "name": "spryker/heartbeat",
-            "version": "3.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/heartbeat.git",
-                "reference": "f2dc9ddd331b427321dd31ba3878ffef7ba82607"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/heartbeat/zipball/f2dc9ddd331b427321dd31ba3878ffef7ba82607",
-                "reference": "f2dc9ddd331b427321dd31ba3878ffef7ba82607",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1",
-                "spryker/application": "^3.4.0",
-                "spryker/config": "^3.0.0",
-                "spryker/elastica": "^2.0.0 || ^3.0.0 || ^4.0.0",
-                "spryker/kernel": "^3.33.0",
-                "spryker/propel-orm": "^1.0.0",
-                "spryker/storage": "^3.8.0",
-                "spryker/symfony": "^3.0.0"
-            },
-            "require-dev": {
-                "spryker/propel": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "Heartbeat module",
-            "time": "2019-05-23T10:18:05+00:00"
-        },
-        {
             "name": "spryker/install",
             "version": "dev-master",
             "source": {
@@ -5642,7 +5596,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "1a9bc3a24d99f02eb6cb2845d7611d6ccdbaf8c5"
+                "reference": "fff1c44874f53c6ef9ab6c117b8e3d112885689e"
             },
             "require": {
                 "php": ">=7.2"
@@ -5904,6 +5858,7 @@
                 "spryker/graphviz": "*",
                 "spryker/gui": "*",
                 "spryker/guzzle": "*",
+                "spryker/heartbeat": "*",
                 "spryker/http": "*",
                 "spryker/http-extension": "*",
                 "spryker/index-generator": "*",
@@ -6280,7 +6235,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-12-08T18:52:29+00:00"
+            "time": "2019-12-08T19:21:00+00:00"
         },
         {
             "name": "spryker/spryker-shop",
