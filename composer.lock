@@ -5450,6 +5450,102 @@
             "time": "2019-11-20T17:06:17+00:00"
         },
         {
+            "name": "spryker/merchant-opening-hours",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-opening-hours.git",
+                "reference": "f2e1b2b875129ac55a7553c97c693195fc9c1511"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-opening-hours/zipball/f2e1b2b875129ac55a7553c97c693195fc9c1511",
+                "reference": "f2e1b2b875129ac55a7553c97c693195fc9c1511",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/merchant": "^2.0.0",
+                "spryker/weekday-schedule": "^0.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantOpeningHours module",
+            "time": "2019-12-05T08:53:54+00:00"
+        },
+        {
+            "name": "spryker/merchant-opening-hours-storage",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-opening-hours-storage.git",
+                "reference": "b607fc2ee31908e505e1f665752a85fa6821208e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-opening-hours-storage/zipball/b607fc2ee31908e505e1f665752a85fa6821208e",
+                "reference": "b607fc2ee31908e505e1f665752a85fa6821208e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/event-behavior": "^1.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/merchant": "^2.0.0",
+                "spryker/merchant-opening-hours": "^0.1.0",
+                "spryker/propel-orm": "^1.5.0",
+                "spryker/storage": "^3.0.0",
+                "spryker/synchronization": "^1.0.0",
+                "spryker/synchronization-behavior": "^1.0.0",
+                "spryker/synchronization-extension": "^1.0.0",
+                "spryker/weekday-schedule": "^0.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/event": "*",
+                "spryker/propel": "*",
+                "spryker/queue": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/event": "If you want to use Event plugins: ^2.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantOpeningHoursStorage module",
+            "time": "2019-12-05T08:53:54+00:00"
+        },
+        {
             "name": "spryker/rabbit-mq",
             "version": "dev-master",
             "source": {
@@ -5512,6 +5608,49 @@
                 "standards"
             ],
             "time": "2019-11-19T14:36:18+00:00"
+        },
+        {
+            "name": "spryker/security-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/security-extension.git",
+                "reference": "c105d16a270ab82f752ac53fcde76d08f83df60b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/security-extension/zipball/c105d16a270ab82f752ac53fcde76d08f83df60b",
+                "reference": "c105d16a270ab82f752ac53fcde76d08f83df60b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/container": "Add this module to use the Container."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SecurityExtension module",
+            "time": "2019-12-05T06:29:17+00:00"
         },
         {
             "name": "spryker/silexphp",
@@ -5599,7 +5738,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "7b4724ca51471406e45832035ec704089294aa74"
+                "reference": "6aa2e7310fcd9f48c81f3e501692f5cf6dc07232"
             },
             "require": {
                 "php": ">=7.2"
@@ -6224,7 +6363,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-12-03T13:09:23+00:00"
+            "time": "2019-12-09T08:25:24+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6232,7 +6371,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "215871df509cf71b39a80659411e71842f4921d4"
+                "reference": "dd001b7905f744e871780f9af88ad1c35dc20749"
             },
             "require": {
                 "php": ">=7.2"
@@ -6270,6 +6409,7 @@
                 "spryker-shop/company-user-invitation-page": "*",
                 "spryker-shop/company-widget": "*",
                 "spryker-shop/configurable-bundle-note-widget": "*",
+                "spryker-shop/configurable-bundle-page": "*",
                 "spryker-shop/configurable-bundle-widget": "*",
                 "spryker-shop/content-banner-widget": "*",
                 "spryker-shop/content-file-widget": "*",
@@ -6372,7 +6512,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-12-03T11:32:24+00:00"
+            "time": "2019-12-07T12:59:09+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -6468,6 +6608,45 @@
             ],
             "description": "UuidBehavior module",
             "time": "2019-11-13T15:58:25+00:00"
+        },
+        {
+            "name": "spryker/weekday-schedule",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/weekday-schedule.git",
+                "reference": "f7832aa817580c9dac91ffe952a80a245b98d1a4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/weekday-schedule/zipball/f7832aa817580c9dac91ffe952a80a245b98d1a4",
+                "reference": "f7832aa817580c9dac91ffe952a80a245b98d1a4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "WeekdaySchedule module",
+            "time": "2019-11-06T15:22:14+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
