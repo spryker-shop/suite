@@ -38,6 +38,8 @@ use Spryker\Zed\DataImport\DataImportDependencyProvider as SprykerDataImportDepe
 use Spryker\Zed\FileManagerDataImport\Communication\Plugin\FileManagerDataImportPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\MerchantDataImport\Communication\Plugin\MerchantDataImportPlugin;
+use Spryker\Zed\MerchantOpeningHoursDataImport\Communication\Plugin\MerchantOpeningHoursDateScheduleDataImportPlugin;
+use Spryker\Zed\MerchantOpeningHoursDataImport\Communication\Plugin\MerchantOpeningHoursWeekdayScheduleDataImportPlugin;
 use Spryker\Zed\MerchantProductOfferDataImport\Communication\Plugin\MerchantProductOfferDataImportPlugin;
 use Spryker\Zed\MerchantProductOfferDataImport\Communication\Plugin\MerchantProductOfferStoreDataImportPlugin;
 use Spryker\Zed\MerchantProfileDataImport\Communication\Plugin\MerchantProfileAddressDataImportPlugin;
@@ -46,6 +48,8 @@ use Spryker\Zed\MerchantRelationshipDataImport\Communication\Plugin\MerchantRela
 use Spryker\Zed\MerchantRelationshipProductListDataImport\Communication\Plugin\MerchantRelationshipProductListDataImportPlugin;
 use Spryker\Zed\MerchantRelationshipSalesOrderThresholdDataImport\Communication\Plugin\DataImport\MerchantRelationshipSalesOrderThresholdDataImportPlugin;
 use Spryker\Zed\MultiCartDataImport\Communication\Plugin\MultiCartDataImportPlugin;
+use Spryker\Zed\PaymentDataImport\Communication\Plugin\PaymentMethodDataImportPlugin;
+use Spryker\Zed\PaymentDataImport\Communication\Plugin\PaymentMethodStoreDataImportPlugin;
 use Spryker\Zed\PriceProductMerchantRelationshipDataImport\Communication\Plugin\PriceProductMerchantRelationshipDataImportPlugin;
 use Spryker\Zed\PriceProductOfferDataImport\Communication\Plugin\PriceProductOfferDataImportPlugin;
 use Spryker\Zed\PriceProductScheduleDataImport\Communication\Plugin\PriceProductScheduleDataImportPlugin;
@@ -241,6 +245,8 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new MerchantProfileAddressDataImportPlugin(),
             new MerchantProductOfferDataImportPlugin(),
             new MerchantProductOfferStoreDataImportPlugin(),
+            new MerchantOpeningHoursWeekdayScheduleDataImportPlugin(),
+            new MerchantOpeningHoursDateScheduleDataImportPlugin(),
             new PriceProductOfferDataImportPlugin(),
             new MerchantRelationshipDataImportPlugin(),
             new MerchantRelationshipSalesOrderThresholdDataImportPlugin(),
@@ -275,6 +281,8 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new ShipmentDataImportPlugin(),
             new ShipmentMethodPriceDataImportPlugin(),
             new ShipmentMethodStoreDataImportPlugin(),
+            new PaymentMethodDataImportPlugin(),
+            new PaymentMethodStoreDataImportPlugin(),
             new StockDataImportPlugin(),
             new StockStoreDataImportPlugin(),
             new ProductOfferStockDataImportPlugin(),
