@@ -12455,16 +12455,16 @@
         },
         {
             "name": "spryker/cms-block-storage",
-            "version": "2.0.1",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cms-block-storage.git",
-                "reference": "ae9323222d88a9055641c3684304f2f6a08a5179"
+                "reference": "f99faa95a1d6dce5885dcc163b8b9150c305687c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-block-storage/zipball/ae9323222d88a9055641c3684304f2f6a08a5179",
-                "reference": "ae9323222d88a9055641c3684304f2f6a08a5179",
+                "url": "https://api.github.com/repos/spryker/cms-block-storage/zipball/f99faa95a1d6dce5885dcc163b8b9150c305687c",
+                "reference": "f99faa95a1d6dce5885dcc163b8b9150c305687c",
                 "shasum": ""
             },
             "require": {
@@ -12475,6 +12475,7 @@
                 "spryker/kernel": "^3.30.0",
                 "spryker/propel-orm": "^1.5.0",
                 "spryker/storage": "^3.4.0",
+                "spryker/store": "^1.5.0",
                 "spryker/synchronization": "^0.2.0 || ^1.0.0",
                 "spryker/synchronization-behavior": "^1.0.0",
                 "spryker/synchronization-extension": "^1.0.0",
@@ -12484,7 +12485,9 @@
             "require-dev": {
                 "spryker/code-sniffer": "*",
                 "spryker/event": "*",
+                "spryker/locale": "*",
                 "spryker/propel": "*",
+                "spryker/queue": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
@@ -12506,7 +12509,7 @@
                 "proprietary"
             ],
             "description": "CmsBlockStorage module",
-            "time": "2019-12-05T12:55:51+00:00"
+            "time": "2019-12-09T13:12:36+00:00"
         },
         {
             "name": "spryker/cms-block-storage-extension",
