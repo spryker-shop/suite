@@ -8,7 +8,9 @@
 namespace PyzTest\Glue\Carts\RestApi;
 
 use Codeception\Util\HttpCode;
+use Pyz\Glue\ProductsRestApi\ProductsRestApiConfig;
 use PyzTest\Glue\Carts\CartsApiTester;
+use PyzTest\Glue\Carts\RestApi\Fixtures\CartsRestApiFixtures;
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
 use Spryker\Glue\GlueApplication\Rest\RequestConstantsInterface;
 use Spryker\Shared\Calculation\CalculationPriceMode;
@@ -27,7 +29,7 @@ use Spryker\Shared\Calculation\CalculationPriceMode;
 class CartsRestApiCest
 {
     /**
-     * @var \PyzTest\Glue\Carts\RestApi\CartsRestApiFixtures
+     * @var \PyzTest\Glue\Carts\RestApi\Fixtures\CartsRestApiFixtures
      */
     protected $fixtures;
 
@@ -39,6 +41,205 @@ class CartsRestApiCest
     public function loadFixtures(CartsApiTester $I): void
     {
         $this->fixtures = $I->loadFixtures(CartsRestApiFixtures::class);
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    public function requestCarts(CartsApiTester $I): void
+    {
+        // Arrange
+        $quoteTransfer = $this->fixtures->getQuoteTransfer();
+        $quoteUuid = $quoteTransfer->getUuid();
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
+
+        // Act
+        $I->sendGET($I->buildCartsUrl());
+
+        // Assert
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+
+        $I->amSure('Response data contains resource collection')
+            ->whenI()
+            ->seeResponseDataContainsResourceCollectionOfType(CartsRestApiConfig::RESOURCE_CARTS);
+
+        $I->amSure('Resource collection has resource')
+            ->whenI()
+            ->seeResourceCollectionHasResourceWithId($quoteUuid);
+
+        $I->amSure('Resource has correct self-link')
+            ->whenI()
+            ->seeResourceByIdHasSelfLink($quoteUuid, $I->buildCartUrl($quoteUuid));
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    public function requestCartByUuid(CartsApiTester $I): void
+    {
+        // Arrange
+        $quoteTransfer = $this->fixtures->getQuoteTransfer();
+        $quoteUuid = $quoteTransfer->getUuid();
+        $url = $I->buildCartUrl($quoteUuid);
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
+
+        // Act
+        $I->sendGET($url);
+
+        // Assert
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+
+        $I->amSure('The returned resource is of correct type')
+            ->whenI()
+            ->seeResponseDataContainsSingleResourceOfType(CartsRestApiConfig::RESOURCE_CARTS);
+
+        $I->amSure('The returned resource has correct id')
+            ->whenI()
+            ->seeSingleResourceIdEqualTo($quoteUuid);
+
+        $I->amSure('The returned resource has correct self-link')
+            ->whenI()
+            ->seeSingleResourceHasSelfLink($url);
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    public function requestCartByUuidWithCartItemsRelationship(CartsApiTester $I): void
+    {
+        // Arrange
+        $quoteTransfer = $this->fixtures->getQuoteTransfer();
+        $cartItemGroupKey = $quoteTransfer->getItems()->offsetGet(0)->getGroupKey();
+
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
+
+        // Act
+        $I->sendGET($I->buildCartUrl($quoteTransfer->getUuid(), [CartsRestApiConfig::RESOURCE_CART_ITEMS]));
+
+        // Assert
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+
+        $I->amSure('The returned resource has relationship')
+            ->whenI()
+            ->seeSingleResourceHasRelationshipByTypeAndId(
+                CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                $cartItemGroupKey
+            );
+
+        $I->amSure('The returned resource has include')
+            ->whenI()
+            ->seeIncludesContainsResourceByTypeAndId(
+                CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                $cartItemGroupKey
+            );
+
+        $I->amSure('The include has correct self-link')
+            ->whenI()
+            ->seeIncludedResourceByTypeAndIdHasSelfLink(
+                CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                $cartItemGroupKey,
+                $I->buildCartItemUrl($quoteTransfer->getUuid(), $cartItemGroupKey)
+            );
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    public function requestCartByUuidWithProductConcreteRelationship(CartsApiTester $I): void
+    {
+        // Arrange
+        $quoteTransfer = $this->fixtures->getQuoteTransfer();
+        $cartItemGroupKey = $quoteTransfer->getItems()->offsetGet(0)->getGroupKey();
+        $productConcreteSku = $this->fixtures->getProductConcreteTransfer()->getSku();
+        $url = $I->buildCartUrl(
+            $quoteTransfer->getUuid(),
+            [
+                CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+            ]
+        );
+
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
+
+        // Act
+        $I->sendGET($url);
+
+        // Assert
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+
+        $I->amSure('The included resource has a relationship')
+            ->whenI()
+            ->seeIncludedResourceByTypeAndIdHasRelationshipByTypeAndId(
+                CartsRestApiConfig::RESOURCE_CART_ITEMS,
+                $cartItemGroupKey,
+                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                $productConcreteSku
+            );
+
+        $I->amSure('The returned resource has include')
+            ->whenI()
+            ->seeIncludesContainsResourceByTypeAndId(
+                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                $productConcreteSku
+            );
+
+        $I->amSure('The include has correct self-link')
+            ->whenI()
+            ->seeIncludedResourceByTypeAndIdHasSelfLink(
+                ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+                $productConcreteSku,
+                $I->buildProductConcreteUrl($productConcreteSku)
+            );
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    public function requestCartByNotExistingCartUuid(CartsApiTester $I): void
+    {
+        // Arrange
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($this->fixtures->getQuoteTransfer()->getCustomer());
+        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
+
+        // Act
+        $I->sendGET($I->buildCartUrl('NotExistingUuid'));
+
+        // Assert
+        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -78,7 +279,7 @@ class CartsRestApiCest
                 '{resourceCarts}/{cartUuid}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $I->grabDataFromResponseByJsonPath('$.data')[0]['id'],
+                    'cartUuid' => $I->grabDataFromResponseByJsonPath('$.data')['id'],
                 ]
             )
         );
@@ -189,76 +390,6 @@ class CartsRestApiCest
      *
      * @return void
      */
-    public function requestGetCarts(CartsApiTester $I): void
-    {
-        // Arrange
-        $this->authorizeCustomer($I);
-
-        // Act
-        $I->sendGET(CartsRestApiConfig::RESOURCE_CARTS);
-
-        // Assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseMatchesOpenApiSchema();
-        $I->seeResponseDataContainsNonEmptyCollection();
-        $I->seeResourceCollectionHasResourceWithId($this->fixtures->getQuoteTransfer()->getUuid());
-        $I->canSeeResponseLinksContainsSelfLink($I->formatFullUrl(CartsRestApiConfig::RESOURCE_CARTS));
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     *
-     * @return void
-     */
-    public function requestGetCart(CartsApiTester $I): void
-    {
-        // Arrange
-        $this->authorizeCustomer($I);
-        $quoteUuid = $this->fixtures->getQuoteTransfer()->getUuid();
-
-        // Act
-        $I->sendGET(
-            $I->formatUrl(
-                '{resourceCarts}/{cartUuid}',
-                [
-                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $quoteUuid,
-                ]
-            )
-        );
-
-        // Assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseMatchesOpenApiSchema();
-
-        $I->amSure(sprintf('Returned resource is of type %s', CartsRestApiConfig::RESOURCE_CARTS))
-            ->whenI()
-            ->seeResponseDataContainsSingleResourceOfType(CartsRestApiConfig::RESOURCE_CARTS);
-
-        $I->amSure('Returned resource has correct id')
-            ->whenI()
-            ->seeSingleResourceIdEqualTo($quoteUuid);
-
-        $I->seeSingleResourceHasSelfLink(
-            $I->formatFullUrl(
-                '{resourceCarts}/{cartUuid}',
-                [
-                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $quoteUuid,
-                ]
-            )
-        );
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     *
-     * @return void
-     */
     public function requestGetCartWithNonExistingUuid(CartsApiTester $I): void
     {
         // Arrange
@@ -302,69 +433,6 @@ class CartsRestApiCest
 
         // Assert
         $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     *
-     * @return void
-     */
-    public function requestGetCartWithItemRelationship(CartsApiTester $I): void
-    {
-        // Arrange
-        $this->authorizeCustomer($I);
-        $quoteUuid = $this->fixtures->getQuoteTransfer()->getUuid();
-
-        // Act
-        $I->sendGET(
-            $I->formatUrl(
-                '{resourceCarts}/{cartUuid}?include={items}',
-                [
-                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $quoteUuid,
-                    'items' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                ]
-            )
-        );
-
-        // Assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseMatchesOpenApiSchema();
-
-        $I->amSure('Returned resource has correct id')
-            ->whenI()
-            ->seeSingleResourceIdEqualTo($quoteUuid);
-
-        $I->amSure(sprintf('Returned resource is of type %s', CartsRestApiConfig::RESOURCE_CARTS))
-            ->whenI()
-            ->seeResponseDataContainsSingleResourceOfType(CartsRestApiConfig::RESOURCE_CARTS);
-
-        $I->amSure('Returned resource has include of type items')
-            ->whenI()
-            ->seeSingleResourceHasRelationshipByTypeAndId(
-                CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                $this->fixtures->getProductConcreteTransfer1()->getSku()
-            );
-
-        $I->amSure('Returned resource has include of type items')
-            ->whenI()
-            ->seeIncludesContainsResourceByTypeAndId(
-                CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                $this->fixtures->getProductConcreteTransfer1()->getSku()
-            );
-
-        $I->seeSingleResourceHasSelfLink(
-            $I->formatFullUrl(
-                '{resourceCarts}/{cartUuid}?include={items}',
-                [
-                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $quoteUuid,
-                    'items' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                ]
-            )
-        );
     }
 
     /**
@@ -459,7 +527,7 @@ class CartsRestApiCest
                     'attributes' => [
                         'name' => $this->fixtures::TEST_CART_NAME,
                         'currency' => $this->fixtures::CURRENCY_EUR,
-                        'priceMode' => CalculationPriceMode::PRICE_MODE_GROSS,
+                        'priceMode' => CalculationPriceMode::PRICE_MODE_NET,
                     ],
                 ],
             ]
@@ -597,7 +665,7 @@ class CartsRestApiCest
                 '{resourceCarts}/{cartUuid}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $I->grabDataFromResponseByJsonPath('$.data')[0]['id'],
+                    'cartUuid' => $I->grabDataFromResponseByJsonPath('$.data')['id'],
                 ]
             )
         );
@@ -1033,15 +1101,7 @@ class CartsRestApiCest
         $this->authorizeCustomer($I);
 
         // Act
-        $I->sendDelete(
-            $I->formatUrl(
-                '{resourceCarts}/{cartUuid}',
-                [
-                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
-                ]
-            )
-        );
+        $I->sendDelete($I->buildCartUrl($this->fixtures->getQuoteTransfer()->getUuid()));
 
         // Assert
         $I->seeResponseCodeIs(HttpCode::NO_CONTENT);
@@ -1084,15 +1144,7 @@ class CartsRestApiCest
     public function requestDeleteCartWithoutAuthorizationToken(CartsApiTester $I): void
     {
         // Act
-        $I->sendDelete(
-            $I->formatUrl(
-                '{resourceCarts}/{cartUuid}',
-                [
-                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
-                ]
-            )
-        );
+        $I->sendDelete($I->buildCartUrl($this->fixtures->getQuoteTransfer()->getUuid()));
 
         // Assert
         $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
