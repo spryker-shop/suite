@@ -5554,12 +5554,13 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "25171e8a61f942609b0f6435d5d52b619d1ad871"
+                "reference": "23eeed5dde2f178bf29066339dcbb6aff5147cde"
             },
             "require": {
                 "php": ">=7.2"
             },
             "replace": {
+                "spryker-shop/cart-page-extension": "*",
                 "spryker/acl": "*",
                 "spryker/agent": "*",
                 "spryker/agent-gui": "*",
@@ -5576,10 +5577,12 @@
                 "spryker/availability": "*",
                 "spryker/availability-cart-connector": "*",
                 "spryker/availability-data-feed": "*",
+                "spryker/availability-extension": "*",
                 "spryker/availability-gui": "*",
                 "spryker/availability-notification": "*",
                 "spryker/availability-offer-connector": "*",
                 "spryker/availability-storage": "*",
+                "spryker/availability-storage-extension": "*",
                 "spryker/barcode": "*",
                 "spryker/barcode-extension": "*",
                 "spryker/business-on-behalf": "*",
@@ -5985,6 +5988,7 @@
                 "spryker/product-merchant-connector": "*",
                 "spryker/product-new": "*",
                 "spryker/product-offer": "*",
+                "spryker/product-offer-availability": "*",
                 "spryker/product-offer-stock": "*",
                 "spryker/product-offer-stock-data-import": "*",
                 "spryker/product-option": "*",
@@ -6181,7 +6185,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-12-03T14:39:28+00:00"
+            "time": "2019-12-12T14:20:45+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6189,7 +6193,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "9094b1262a3085bf7b545346b3eb3bfa929149d5"
+                "reference": "774ac94ea01c30cbf165a8577a09972ba807a9d0"
             },
             "require": {
                 "php": ">=7.2"
@@ -6329,7 +6333,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-12-03T14:41:56+00:00"
+            "time": "2019-12-10T18:40:16+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
