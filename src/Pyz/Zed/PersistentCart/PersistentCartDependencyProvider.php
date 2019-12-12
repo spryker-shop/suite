@@ -9,6 +9,7 @@ namespace Pyz\Zed\PersistentCart;
 
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\MultiCart\Communication\Plugin\CustomerCartQuoteResponseExpanderPlugin;
+use Spryker\Zed\MultiCart\Communication\Plugin\PersistentCart\ActiveCartChangedCartOperationAddAfterPlugin;
 use Spryker\Zed\PersistentCart\PersistentCartDependencyProvider as SprykerPersistentCartDependencyProvider;
 use Spryker\Zed\PersistentCartExtension\Dependency\Plugin\QuoteItemFinderPluginInterface;
 use Spryker\Zed\ProductBundle\Communication\Plugin\PersistentCart\BundleProductQuoteItemFinderPlugin;
@@ -56,6 +57,16 @@ class PersistentCartDependencyProvider extends SprykerPersistentCartDependencyPr
     {
         return [
             new ProductPackagingUnitCartAddItemStrategyPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\PersistentCartExtension\Dependency\Plugin\CartOperationAddAfterPluginInterface[]
+     */
+    protected function getCartOperationAddAfterPlugins(): array
+    {
+        return [
+            new ActiveCartChangedCartOperationAddAfterPlugin(),
         ];
     }
 }
