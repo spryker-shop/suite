@@ -10,10 +10,9 @@ namespace PyzTest\Glue\Checkout\RestApi;
 use Codeception\Util\HttpCode;
 use Generated\Shared\Transfer\CustomerTransfer;
 use PyzTest\Glue\Checkout\CheckoutRestApiTester;
-use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig;
+use Pyz\Glue\CheckoutRestApi\CheckoutRestApiConfig;
 use Spryker\Glue\PaymentsRestApi\PaymentsRestApiConfig;
 use Spryker\Glue\ShipmentsRestApi\ShipmentsRestApiConfig;
-use Spryker\Shared\DummyPayment\DummyPaymentConfig;
 
 /**
  * Auto-generated group annotations
@@ -40,6 +39,7 @@ class CheckoutDataRestApiCest
     /**
      * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
      *
+     * @group current
      * @return void
      */
     public function loadFixtures(CheckoutRestApiTester $I): void
@@ -234,7 +234,7 @@ class CheckoutDataRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
-     *
+     * @group current
      * @return void
      */
     public function requestCheckoutDataWithSelectedPaymentMethodShouldGetPaymentMethodDetails(
@@ -243,7 +243,7 @@ class CheckoutDataRestApiCest
         //Arrange
         $this->requestCustomerLogin($I, $this->fixtures->getCustomerTransfer());
 
-        $cardPaymentMethodTransfer = $I->grabPaymentMethod(DummyPaymentConfig::PROVIDER_NAME, DummyPaymentConfig::PAYMENT_METHOD_NAME_CREDIT_CARD);
+        $cardPaymentMethodTransfer = $I->grabPaymentMethod(CheckoutRestApiConfig::PAYMENT_METHOD_CREDIT_CARD);
 
         //Act
         $I->sendPOST(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, [
@@ -253,8 +253,8 @@ class CheckoutDataRestApiCest
                     'idCart' => $this->fixtures->getQuoteTransfer()->getUuid(),
                     'payments' => [
                         [
-                            'paymentProviderName' => DummyPaymentConfig::PROVIDER_NAME,
-                            'paymentMethodName' => $cardPaymentMethodTransfer->getPaymentMethod(),
+                            'paymentProviderName' => CheckoutRestApiConfig::DUMMY_PAYMENT_PROVIDER_NAME,
+                            'paymentMethodName' => $cardPaymentMethodTransfer->getName(),
                         ],
                     ],
                 ],
@@ -333,8 +333,8 @@ class CheckoutDataRestApiCest
         CheckoutRestApiTester $I
     ): void {
         $idPaymentMethod = $I
-            ->grabPaymentMethod(DummyPaymentConfig::PROVIDER_NAME, DummyPaymentConfig::PAYMENT_METHOD_NAME_CREDIT_CARD)
-            ->getIdSalesPaymentMethodType();
+            ->grabPaymentMethod(CheckoutRestApiConfig::PAYMENT_METHOD_INVOICE)
+            ->getIdPaymentMethod();
 
         $I->amSure('Returned resource has payment method in `relationships` section.')
             ->whenI()

@@ -34,9 +34,13 @@ suites:
                 - \SprykerTest\Shared\Quote\Helper\PersistentQuoteHelper
                 - \SprykerTest\Shared\Testify\Helper\LocatorHelper
                 - \SprykerTest\Shared\Shipment\Helper\ShipmentCarrierDataHelper
+                - \SprykerTest\Shared\Payment\Helper\PaymentDataHelper
+
             config:
                 \SprykerTest\Glue\Testify\Helper\GlueRest:
                     depends: PhpBrowser
                     part: Json
                 \SprykerTest\Shared\Testify\Helper\DataCleanupHelper:
                     cleanup: false
+                \SprykerTest\Shared\Payment\Helper\PaymentDataHelper:
+                    depends: \SprykerTest\Shared\Store\Helper\StoreDataHelper

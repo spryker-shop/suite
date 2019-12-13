@@ -38,6 +38,7 @@ class PaymentsRestApiConfig extends SprykerPaymentsRestApiConfig
      */
     public function getPaymentProviderMethodToPaymentSelectionMapping(): array
     {
+        xdebug_break();
         return [
             DummyPaymentConfig::PROVIDER_NAME => [
                 DummyPaymentConfig::PAYMENT_METHOD_NAME_CREDIT_CARD => DummyPaymentConfig::PAYMENT_METHOD_CREDIT_CARD,

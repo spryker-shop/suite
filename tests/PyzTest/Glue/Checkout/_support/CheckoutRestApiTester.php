@@ -7,8 +7,9 @@
 
 namespace PyzTest\Glue\Checkout;
 
-use Orm\Zed\Payment\Persistence\SpySalesPaymentMethodType;
-use Orm\Zed\Payment\Persistence\SpySalesPaymentMethodTypeQuery;
+use Orm\Zed\Payment\Persistence\Base\SpyPaymentMethod;
+use Orm\Zed\Payment\Persistence\SpyPaymentMethodType;
+use Orm\Zed\Payment\Persistence\SpyPaymentMethodQuery;
 use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
 
 /**
@@ -32,22 +33,21 @@ class CheckoutRestApiTester extends ApiEndToEndTester
     use _generated\CheckoutRestApiTesterActions;
 
     /**
-     * @param string $providerName
-     * @param string $methodName
+     * @param string $paymentMethodKey
+     * @return \Orm\Zed\Payment\Persistence\SpyPaymentMethodType
      *
-     * @return \Orm\Zed\Payment\Persistence\SpySalesPaymentMethodType
+     * @throws \Spryker\Zed\Propel\Business\Exception\AmbiguousComparisonException
      */
-    public function grabPaymentMethod(string $providerName, string $methodName): SpySalesPaymentMethodType
+    public function grabPaymentMethod(string $paymentMethodKey): SpyPaymentMethod
     {
-        $paymentMethod = SpySalesPaymentMethodTypeQuery::create()
-            ->filterByPaymentProvider($providerName)
-            ->filterByPaymentMethod($methodName)
+        $paymentMethod = SpyPaymentMethodQuery::create()
+            ->filterByPaymentMethodKey($paymentMethodKey)
             ->findOne();
 
         if ($paymentMethod) {
             return $paymentMethod;
         }
 
-        $this->fail(sprintf('Payment method %s:%s not found', $providerName, $methodName));
+        $this->fail(sprintf('Payment method %s not found', $paymentMethodKey));
     }
 }
