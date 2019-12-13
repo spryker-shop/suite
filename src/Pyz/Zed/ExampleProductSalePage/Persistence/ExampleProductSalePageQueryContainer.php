@@ -58,7 +58,7 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
                         ->endUse()
                     ->endUse()
                 ->endUse()
-                ->usePriceProductQuery('priceProductDefault', Criteria::INNER_JOIN)
+                ->usePriceProductQuery('priceProductDefault', Criteria::LEFT_JOIN)
                     ->joinPriceType('priceTypeDefault', Criteria::LEFT_JOIN)
                     ->addJoinCondition(
                         'priceTypeDefault',
@@ -71,16 +71,25 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
                     ->endUse()
                 ->endUse()
             ->endUse()
-            ->addAnd('priceProductDefaultOriginal.id_price_product_default', null, Criteria::ISNULL)
+            ->addAnd('priceProductDefaultOriginal.id_price_product_default', null, Criteria::ISNOTNULL)
             ->addAnd('priceProductDefaultDefault.id_price_product_default', null, Criteria::ISNOTNULL)
-            ->condition('cond1', 'priceProductStoreOrigin.fk_store = priceProductStoreDefault.fk_store')
-            ->condition('cond2', 'priceProductStoreOrigin.fk_currency = priceProductStoreDefault.fk_currency')
-            ->condition('cond3', 'priceProductStoreOrigin.gross_price < priceProductStoreDefault.gross_price')
-            ->condition('cond4', 'priceProductStoreOrigin.gross_price  ' . Criteria::ISNULL)
-            ->condition('cond5', 'priceProductStoreOrigin.net_price < priceProductStoreDefault.net_price')
-            ->condition('cond6', 'priceProductStoreDefault.net_price  ' . Criteria::ISNULL)
-            ->combine(['cond3', 'cond4', 'cond5', 'cond6'], Criteria::LOGICAL_OR, 'condOr')
-            ->combine(['cond1', 'cond2'], Criteria::LOGICAL_AND, 'condAnd')
+            ->condition('equalStore', 'priceProductStoreOrigin.fk_store = priceProductStoreDefault.fk_store')
+            ->condition('equalCurrency', 'priceProductStoreOrigin.fk_currency = priceProductStoreDefault.fk_currency')
+            ->condition('originGrossPriceLessThanDefaultPrice', 'priceProductStoreOrigin.gross_price < priceProductStoreDefault.gross_price')
+            ->condition('isNullOriginGrossPrice', 'priceProductStoreOrigin.gross_price  ' . Criteria::ISNULL)
+            ->condition('isNullOriginNetPrice', 'priceProductStoreOrigin.net_price  ' . Criteria::ISNULL)
+            ->condition('originNetPriceLessThanDefaultPrice', 'priceProductStoreOrigin.net_price < priceProductStoreDefault.net_price')
+            ->condition('isNullDefaultNetPrice', 'priceProductStoreDefault.net_price  ' . Criteria::ISNULL)
+            ->condition('isNullDefaultGrossPrice', 'priceProductStoreDefault.gross_price  ' . Criteria::ISNULL)
+            ->combine([
+                'originGrossPriceLessThanDefaultPrice',
+                'originNetPriceLessThanDefaultPrice',
+                'isNullOriginGrossPrice',
+                'isNullOriginNetPrice',
+                'isNullDefaultNetPrice',
+                'isNullDefaultGrossPrice',
+            ], Criteria::LOGICAL_OR, 'condOr')
+            ->combine(['equalStore', 'equalCurrency'], Criteria::LOGICAL_AND, 'condAnd')
             ->where(['condOr', 'condAnd'], Criteria::LOGICAL_AND);
     }
 
@@ -98,7 +107,7 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
             ->queryProductAbstract()
             ->distinct()
             ->usePriceProductQuery('priceProductOrigin', Criteria::LEFT_JOIN)
-                ->joinPriceType('priceTypeOrigin', Criteria::INNER_JOIN)
+                ->joinPriceType('priceTypeOrigin', Criteria::LEFT_JOIN)
                 ->addJoinCondition(
                     'priceTypeOrigin',
                     'priceTypeOrigin.name = ?',
@@ -109,7 +118,7 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
                     ->endUse()
                 ->endUse()
             ->endUse()
-            ->usePriceProductQuery('priceProductDefault', Criteria::INNER_JOIN)
+            ->usePriceProductQuery('priceProductDefault', Criteria::LEFT_JOIN)
                 ->joinPriceType('priceTypeDefault', Criteria::LEFT_JOIN)
                 ->addJoinCondition(
                     'priceTypeDefault',
@@ -130,10 +139,15 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
             ->addAnd('priceProductDefaultDefault.id_price_product_default', null, Criteria::ISNOTNULL)
             ->addAnd('priceProductStoreOrigin.gross_price', null, Criteria::ISNOTNULL)
             ->addAnd('priceProductStoreOrigin.net_price', null, Criteria::ISNOTNULL)
-            ->condition('cond1', 'priceProductStoreOrigin.fk_store = priceProductStoreDefault.fk_store')
-            ->condition('cond2', 'priceProductStoreOrigin.fk_currency = priceProductStoreDefault.fk_currency')
-            ->condition('cond3', 'priceProductStoreOrigin."gross_price" > priceProductStoreDefault."gross_price"')
-            ->condition('cond4', 'priceProductStoreOrigin."net_price" > priceProductStoreDefault."net_price"')
-            ->where([ 'cond1', 'cond2', 'cond3',  'cond4'], Criteria::LOGICAL_AND);
+            ->condition('equalStore', 'priceProductStoreOrigin.fk_store = priceProductStoreDefault.fk_store')
+            ->condition('equalCurrency', 'priceProductStoreOrigin.fk_currency = priceProductStoreDefault.fk_currency')
+            ->condition('originGrossPriceMoreThanDefaultPrice', 'priceProductStoreOrigin."gross_price" > priceProductStoreDefault."gross_price"')
+            ->condition('originNetPriceMoreThanDefaultPrice', 'priceProductStoreOrigin."net_price" > priceProductStoreDefault."net_price"')
+            ->where([
+                'equalStore',
+                'equalCurrency',
+                'originGrossPriceMoreThanDefaultPrice',
+                'originNetPriceMoreThanDefaultPrice',
+            ], Criteria::LOGICAL_AND);
     }
 }
