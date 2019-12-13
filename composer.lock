@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d049d7bab232869b0f503c595eee5bd3",
+    "content-hash": "daaeb3e85073129afb2b5ec272d26bc6",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.128.3",
+            "version": "3.128.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "9e46eae4974542b8e3e6107de857668b6968081d"
+                "reference": "eea8dbe60b23cbefdb3de7b635a0971a12067c6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/9e46eae4974542b8e3e6107de857668b6968081d",
-                "reference": "9e46eae4974542b8e3e6107de857668b6968081d",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/eea8dbe60b23cbefdb3de7b635a0971a12067c6f",
+                "reference": "eea8dbe60b23cbefdb3de7b635a0971a12067c6f",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-12-11T19:13:12+00:00"
+            "time": "2019-12-12T19:15:28+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -1059,16 +1059,16 @@
         },
         {
             "name": "fzaninotto/faker",
-            "version": "v1.9.0",
+            "version": "v1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "27a216cbe72327b2d6369fab721a5843be71e57d"
+                "reference": "fc10d778e4b84d5bd315dad194661e091d307c6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/27a216cbe72327b2d6369fab721a5843be71e57d",
-                "reference": "27a216cbe72327b2d6369fab721a5843be71e57d",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/fc10d778e4b84d5bd315dad194661e091d307c6f",
+                "reference": "fc10d778e4b84d5bd315dad194661e091d307c6f",
                 "shasum": ""
             },
             "require": {
@@ -1081,7 +1081,9 @@
             },
             "type": "library",
             "extra": {
-                "branch-alias": []
+                "branch-alias": {
+                    "dev-master": "1.9-dev"
+                }
             },
             "autoload": {
                 "psr-4": {
@@ -1103,7 +1105,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2019-11-14T13:13:06+00:00"
+            "time": "2019-12-12T13:22:17+00:00"
         },
         {
             "name": "galbar/jsonpath",
@@ -5561,7 +5563,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "575cd9664224c69bf0735286f09508e2f2380256"
+                "reference": "dd0e332bbff580fb926d9205fd9ab3d1b340b5d8"
             },
             "require": {
                 "php": ">=7.2"
@@ -6204,15 +6206,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-12-11T08:11:57+00:00"
+            "time": "2019-12-13T08:10:26+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-bugfix/cc-5809-category-url",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "0ed6a0a6f38affd32f85947ec6ddb4d5555f7dbf"
+                "reference": "534af3f28b9044c279e40544c9d0917e9b28193b"
             },
             "require": {
                 "php": ">=7.2"
@@ -6354,7 +6356,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-12-12T12:37:56+00:00"
+            "time": "2019-12-10T13:55:26+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -10173,20 +10175,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
-                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler"
+                    "homepage": "https://github.com/manuelpichler",
+                    "role": "Project Founder"
                 },
                 {
                     "name": "Marc Würth",
-                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84"
+                    "homepage": "https://github.com/ravage84",
+                    "role": "Project Maintainer"
                 },
                 {
                     "name": "Other contributors",
-                    "role": "Contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
+                    "role": "Contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
