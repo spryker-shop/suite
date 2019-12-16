@@ -13,7 +13,7 @@ matrix:
   fast_finish: true
   include:
     - php: "7.2"
-      dist: trusty
+      dist: bionic
       env:
         - TEST_GROUP=without-acceptance
     - php: "7.2"
@@ -21,7 +21,7 @@ matrix:
       env:
         - TEST_GROUP=acceptance
     - php: "7.4snapshot"
-      dist: trusty
+      dist: bionic
       env:
         - VALIDATION=1
 
