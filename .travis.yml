@@ -118,13 +118,14 @@ addons:
     update: false
     sources:
       - sourceline: ppa:chris-lea/redis-server
-      - sourceline: deb http://dl.bintray.com/rabbitmq-erlang/debian bionic erlang
+      - sourceline: deb http://dl.bintray.com/rabbitmq-erlang/debian bionic erlang-dev
         key_url: https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
       - sourceline: deb https://dl.bintray.com/rabbitmq/debian bionic main
         key_url: https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
       - sourceline: ppa:ondrej/php
     packages:
       - redis-tools
+      - erlang-dev
       - redis-server
       - rabbitmq-server=3.8.2-1
       - graphviz
