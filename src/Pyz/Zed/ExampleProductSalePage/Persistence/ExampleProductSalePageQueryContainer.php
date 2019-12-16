@@ -47,7 +47,7 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
             ->distinct()
             ->useSpyProductAbstractQuery(null, Criteria::LEFT_JOIN)
                 ->usePriceProductQuery('priceProductOrigin', Criteria::LEFT_JOIN)
-                    ->joinPriceType('priceTypeOrigin', Criteria::INNER_JOIN)
+                    ->joinPriceType('priceTypeOrigin', Criteria::LEFT_JOIN)
                     ->addJoinCondition(
                         'priceTypeOrigin',
                         'priceTypeOrigin.name = ?',
