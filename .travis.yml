@@ -115,7 +115,7 @@ matrix:
 
 addons:
   apt:
-    update: false
+    update: true
     sources:
       - sourceline: ppa:chris-lea/redis-server
       - sourceline: deb http://dl.bintray.com/rabbitmq-erlang/debian bionic erlang
@@ -124,38 +124,10 @@ addons:
         key_url: https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
       - sourceline: ppa:ondrej/php
     packages:
+      - erlang
       - redis-tools
-      - erlang-asn1
-      - erlang-base
-      - erlang-crypto
-      - erlang-eldap
-      - erlang-ftp
-      - erlang-inets
-      - erlang-mnesia
-      - erlang-os-mon
-      - erlang-parsetools
-      - erlang-public-key
-      - erlang-runtime-tools
-      - erlang-snmp
-      - erlang-ssl
-      - erlang-syntax-tools
-      - erlang-tftp
-      - erlang-tools
-      - erlang-xmerl
-      - libann0
-      - libcdt5
-      - libcgraph6
-      - libgd3
-      - libgts-0.7-5
-      - libgvc6
-      - libgvpr2
-      - liblab-gamut1
-      - libpathplan4
-      - libwebp6
-      - libzip4
-      - socat
       - redis-server
-      - rabbitmq-server
+      - rabbitmq-server=3.8.2-1
       - graphviz
       - libzip-dev
   postgresql: 9.6
