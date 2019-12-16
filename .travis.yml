@@ -115,7 +115,7 @@ matrix:
 
 addons:
   apt:
-    update: false
+    update: true
     sources:
       - sourceline: ppa:chris-lea/redis-server
       - sourceline: deb http://dl.bintray.com/rabbitmq-erlang/debian bionic erlang
@@ -131,10 +131,6 @@ addons:
       - libzip-dev
   postgresql: 9.6
   mysql: 5.7
-
-  apt:
-    packages:
-      - graphviz
 
   hosts:
     - zed.de.spryker.test
