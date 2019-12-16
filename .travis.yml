@@ -13,15 +13,15 @@ matrix:
   fast_finish: true
   include:
     - php: "7.2"
-      dist: trusty
+      dist: bionic
       env:
         - TEST_GROUP=without-acceptance
     - php: "7.2"
-      dist: trusty
+      dist: bionic
       env:
         - TEST_GROUP=acceptance
     - php: "7.4snapshot"
-      dist: trusty
+      dist: bionic
       env:
         - VALIDATION=1
 
@@ -114,12 +114,24 @@ matrix:
       after_script: skip
 
 addons:
+  apt:
+    update: true
+    sources:
+      - sourceline: ppa:chris-lea/redis-server
+      - sourceline: deb http://dl.bintray.com/rabbitmq-erlang/debian bionic erlang
+        key_url: https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+      - sourceline: deb https://dl.bintray.com/rabbitmq/debian bionic main
+        key_url: https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+      - sourceline: ppa:ondrej/php
+    packages:
+      - erlang
+      - redis-tools
+      - redis-server
+      - rabbitmq-server=3.8.2-1
+      - graphviz
+      - libzip-dev
   postgresql: 9.6
   mysql: 5.7
-
-  apt:
-    packages:
-      - graphviz
 
   hosts:
     - zed.de.spryker.test
@@ -131,16 +143,20 @@ cache:
     - $HOME/.composer/cache
     - /home/travis/.rvm/gems # Mailcatcher is a ruby gem, takes 5 minutes to install.
     - /home/travis/.nvm/.cache
+    - /tmp/pear/cache/
 
 services:
   - postgresql
   - mysql
   - redis
-  - rabbitmq
+  - rabbitmq-server
 
 sudo: required
 
 before_install:
+  - pecl install zip
+  - phpenv config-add config/Shared/ci/travis/travis.php.ini
+  - if [[ $VALIDATION != 1 && $ON_EVENTS != *$TRAVIS_EVENT_TYPE* ]]; then exit; fi
   - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - if [[ ${TRAVIS_PHP_VERSION} != "7.4snapshot" ]]; then phpenv config-rm xdebug.ini ; fi
   - if [[ $DB == 'mysql' ]]; then chmod +x ./config/Shared/ci/travis/mysql/* ; fi
@@ -149,6 +165,7 @@ before_install:
 
 install:
   - chmod -R a+x config/Shared/ci/travis/
+  - if [[ ${TRAVIS_PHP_VERSION} == "7.4" ]]; then config/Shared/ci/travis/install_php_7_4-gd.sh ; fi
   - composer install --optimize-autoloader --no-interaction
   - config/Shared/ci/travis/install_elasticsearch.sh
   - config/Shared/ci/travis/install_mailcatcher.sh
