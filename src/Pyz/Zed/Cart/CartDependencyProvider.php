@@ -12,9 +12,12 @@ use Spryker\Zed\Cart\CartDependencyProvider as SprykerCartDependencyProvider;
 use Spryker\Zed\Cart\Communication\Plugin\CleanUpItemsPreReloadPlugin;
 use Spryker\Zed\Cart\Communication\Plugin\SkuGroupKeyPlugin;
 use Spryker\Zed\ConfigurableBundle\Communication\Plugin\Cart\CartConfigurableBundlePreReloadPlugin;
+use Spryker\Zed\ConfigurableBundleCart\Communication\Plugin\Cart\ConfiguredBundleGroupKeyItemExpanderPlugin;
 use Spryker\Zed\ConfigurableBundleCart\Communication\Plugin\Cart\ConfiguredBundleQuantityCartTerminationPlugin;
+use Spryker\Zed\ConfigurableBundleCart\Communication\Plugin\Cart\ConfiguredBundleQuantityPerSlotItemExpanderPlugin;
 use Spryker\Zed\ConfigurableBundleCart\Communication\Plugin\Cart\ConfiguredBundleQuantityPerSlotPreReloadItemsPlugin;
 use Spryker\Zed\ConfigurableBundleCart\Communication\Plugin\Cart\ConfiguredBundleQuantityPostSavePlugin;
+use Spryker\Zed\ConfigurableBundleCart\Communication\Plugin\Cart\ConfiguredBundleTemplateSlotCombinationPreCheckPlugin;
 use Spryker\Zed\Discount\Communication\Plugin\Cart\DiscountQuoteChangeObserverPlugin;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Cart\CartGroupPromotionItems;
 use Spryker\Zed\GiftCard\Communication\Plugin\GiftCardMetadataExpanderPlugin;
@@ -76,7 +79,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return \Spryker\Zed\Cart\Dependency\ItemExpanderPluginInterface[]
+     * @return \Spryker\Zed\CartExtension\Dependency\Plugin\ItemExpanderPluginInterface[]
      */
     protected function getExpanderPlugins(Container $container)
     {
@@ -100,6 +103,9 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new AmountGroupKeyItemExpanderPlugin(), #ProductPackagingUnit
             new AmountSalesUnitItemExpanderPlugin(), #ProductPackagingUnit
             new CustomAmountPriceItemExpanderPlugin(), #ProductPackagingUnit
+            new GiftCardMetadataExpanderPlugin(), #GiftCardFeature,
+            new ConfiguredBundleQuantityPerSlotItemExpanderPlugin(),
+            new ConfiguredBundleGroupKeyItemExpanderPlugin(),
             new GiftCardMetadataExpanderPlugin(), #GiftCardFeature
             new ProductOfferGroupKeyItemExpanderPlugin(),
         ];
@@ -140,6 +146,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new ProductDiscontinuedCartPreCheckPlugin(), #ProductDiscontinuedFeature
             new AmountAvailabilityCartPreCheckPlugin(), #ProductPackagingUnit
             new AmountRestrictionCartPreCheckPlugin(), #ProductPackagingUnit
+            new ConfiguredBundleTemplateSlotCombinationPreCheckPlugin(),
         ];
     }
 
