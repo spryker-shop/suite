@@ -44,6 +44,7 @@ use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\DefaultQuantity
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitGroupKeyItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitValuePostSavePlugin;
+use Spryker\Zed\ProductOffer\Communication\Plugin\Cart\ProductOfferGroupKeyItemExpanderPlugin;
 use Spryker\Zed\ProductOffer\Communication\Plugin\ProductOfferCartChangeTransferNormalizerPlugin;
 use Spryker\Zed\ProductOffer\Communication\Plugin\ProductOfferPreReloadItemsPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\Cart\CartItemOptionPreCheckPlugin;
@@ -100,6 +101,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new AmountSalesUnitItemExpanderPlugin(), #ProductPackagingUnit
             new CustomAmountPriceItemExpanderPlugin(), #ProductPackagingUnit
             new GiftCardMetadataExpanderPlugin(), #GiftCardFeature
+            new ProductOfferGroupKeyItemExpanderPlugin(),
         ];
     }
 
