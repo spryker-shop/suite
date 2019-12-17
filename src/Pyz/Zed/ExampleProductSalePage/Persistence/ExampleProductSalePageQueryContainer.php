@@ -141,8 +141,8 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
             ->addAnd('priceProductStoreOrigin.net_price', null, Criteria::ISNOTNULL)
             ->condition('equalStore', 'priceProductStoreOrigin.fk_store = priceProductStoreDefault.fk_store')
             ->condition('equalCurrency', 'priceProductStoreOrigin.fk_currency = priceProductStoreDefault.fk_currency')
-            ->condition('originGrossPriceMoreThanDefaultPrice', 'priceProductStoreOrigin."gross_price" > priceProductStoreDefault."gross_price"')
-            ->condition('originNetPriceMoreThanDefaultPrice', 'priceProductStoreOrigin."net_price" > priceProductStoreDefault."net_price"')
+            ->condition('originGrossPriceMoreThanDefaultPrice', 'priceProductStoreOrigin.gross_price > priceProductStoreDefault.gross_price')
+            ->condition('originNetPriceMoreThanDefaultPrice', 'priceProductStoreOrigin.net_price > priceProductStoreDefault.net_price')
             ->where([
                 'equalStore',
                 'equalCurrency',
