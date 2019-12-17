@@ -106,7 +106,6 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new GiftCardMetadataExpanderPlugin(), #GiftCardFeature,
             new ConfiguredBundleQuantityPerSlotItemExpanderPlugin(),
             new ConfiguredBundleGroupKeyItemExpanderPlugin(),
-            new GiftCardMetadataExpanderPlugin(), #GiftCardFeature
             new ProductOfferGroupKeyItemExpanderPlugin(),
         ];
     }
