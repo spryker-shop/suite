@@ -33,32 +33,32 @@ matrix:
 
   include:
 
-    - php: "7.4snapshot"
-      dist: trusty
+    - php: "7.4"
+      dist: bionic
       env:
         - VALIDATION=1
 
-    - php: "7.4snapshot"
-      dist: trusty
+    - php: "7.4"
+      dist: bionic
       env:
         - TEST_GROUP=acceptance
         - ON_EVENTS=push,cron
 
-    - php: "7.4snapshot"
-      dist: trusty
+    - php: "7.4"
+      dist: bionic
       env:
         - TEST_GROUP=without-acceptance
         - ON_EVENTS=cron,push
 
     - php: "7.2"
-      dist: trusty
+      dist: bionic
       env:
         - TEST_GROUP=acceptance
         - ON_EVENTS=push,cron
         - DB=mysql
 
     - php: "7.2"
-      dist: trusty
+      dist: bionic
       env:
         - TEST_GROUP=without-acceptance
         - ON_EVENTS=cron,push
@@ -193,6 +193,21 @@ matrix:
       after_script: skip
 
 addons:
+  apt:
+    update: false
+    sources:
+      - sourceline: ppa:chris-lea/redis-server
+      - sourceline: deb http://dl.bintray.com/rabbitmq-erlang/debian bionic erlang
+        key_url: https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+      - sourceline: deb https://dl.bintray.com/rabbitmq/debian bionic main
+        key_url: https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+      - sourceline: ppa:ondrej/php
+    packages:
+      - redis-tools
+      - redis-server
+      - rabbitmq-server=3.8.2-1
+      - graphviz
+      - libzip-dev
   postgresql: 9.6
   mysql: 5.7
 
@@ -208,10 +223,6 @@ addons:
       - /tmp/glue-error.log
       - /tmp/zed-error.log
 
-  apt:
-    packages:
-      - graphviz
-
   hosts:
     - zed.de.spryker.test
     - www.de.spryker.test
@@ -222,20 +233,22 @@ cache:
     - $HOME/.composer/cache
     - /home/travis/.rvm/gems # Mailcatcher is a ruby gem, takes 5 minutes to install.
     - /home/travis/.nvm/.cache
+    - /tmp/pear/cache/
 
 services:
   - postgresql
   - mysql
   - redis
-  - rabbitmq
+  - rabbitmq-server
 
 sudo: required
 
 before_install:
+  - pecl install zip
   - phpenv config-add config/Shared/ci/travis/travis.php.ini
   - if [[ $VALIDATION != 1 && $ON_EVENTS != *$TRAVIS_EVENT_TYPE* ]] ; then exit ; fi
   - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-  - if [[ ${TRAVIS_PHP_VERSION} != "7.4snapshot" ]]; then phpenv config-rm xdebug.ini ; fi
+  - phpenv config-rm xdebug.ini
   - if [[ $DB == 'mysql' ]] ; then chmod +x ./config/Shared/ci/travis/mysql/* ; fi
   - if [[ $DB == 'mysql' ]] ; then ./config/Shared/ci/travis/mysql/travis_mysql_5.7.sh ; fi
   # Merges travis-ci/stores.php into the general stores.php at the defined "travis hook" line. Uses temporary file during the process.
