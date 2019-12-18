@@ -13,10 +13,4 @@
             <parameter name="spy_product_offer_concrete_sku" column="concrete_sku" keep-additional="true"/>
         </behavior>
     </table>
-
-    <table name="spy_product_offer_store" phpName="SpyProductOfferStore">
-        <behavior name="event">
-            <parameter name="spy_product_offer_store_all" column="*"/>
-        </behavior>
-    </table>
 </database>
