@@ -16,7 +16,7 @@ class CmsBlockCategoryConnectorConfig extends SprykerCmsBlockCategoryConnectorCo
     public const CMS_BLOCK_CATEGORY_POSITION_BOTTOM = 'Bottom';
 
     /**
-     * @return array
+     * @return string[]
      */
     public function getCmsBlockCategoryPositionList()
     {

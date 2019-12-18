@@ -15,6 +15,7 @@ use Spryker\Yves\Http\Plugin\Application\HttpApplicationPlugin;
 use Spryker\Yves\Locale\Plugin\Application\LocaleApplicationPlugin;
 use Spryker\Yves\Messenger\Plugin\Application\FlashMessengerApplicationPlugin;
 use Spryker\Yves\Router\Plugin\Application\RouterApplicationPlugin;
+use Spryker\Yves\Security\Plugin\Application\SecurityApplicationPlugin;
 use Spryker\Yves\Session\Plugin\Application\SessionApplicationPlugin;
 use Spryker\Yves\Store\Plugin\Application\StoreApplicationPlugin;
 use Spryker\Yves\Translator\Plugin\Application\TranslatorApplicationPlugin;
@@ -55,6 +56,7 @@ use SprykerShop\Yves\NewsletterWidget\Widget\NewsletterSubscriptionSummaryWidget
 use SprykerShop\Yves\NewsletterWidget\Widget\NewsletterSubscriptionWidget;
 use SprykerShop\Yves\PersistentCartShareWidget\Widget\ShareCartByLinkWidget;
 use SprykerShop\Yves\PriceProductVolumeWidget\Widget\ProductPriceVolumeWidget;
+use SprykerShop\Yves\PriceProductWidget\Widget\PriceProductWidget;
 use SprykerShop\Yves\PriceWidget\Widget\PriceModeSwitcherWidget;
 use SprykerShop\Yves\ProductAlternativeWidget\Widget\ProductAlternativeListWidget;
 use SprykerShop\Yves\ProductAlternativeWidget\Widget\ShoppingListProductAlternativeWidget;
@@ -82,6 +84,7 @@ use SprykerShop\Yves\ProductReviewWidget\Widget\ProductDetailPageReviewWidget;
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductRatingFilterWidget;
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductReviewDisplayWidget;
 use SprykerShop\Yves\ProductSearchWidget\Widget\ProductConcreteAddWidget;
+use SprykerShop\Yves\ProductSearchWidget\Widget\ProductConcreteSearchGridWidget;
 use SprykerShop\Yves\ProductSearchWidget\Widget\ProductConcreteSearchWidget;
 use SprykerShop\Yves\ProductWidget\Widget\CatalogPageProductWidget;
 use SprykerShop\Yves\ProductWidget\Widget\CmsProductGroupWidget;
@@ -119,6 +122,9 @@ use SprykerShop\Yves\TabsWidget\Widget\FullTextSearchTabsWidget;
 use SprykerShop\Yves\WebProfilerWidget\Plugin\Application\WebProfilerApplicationPlugin;
 use SprykerShop\Yves\WishlistWidget\Widget\WishlistMenuItemWidget;
 
+/**
+ * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+ */
 class ShopApplicationDependencyProvider extends SprykerShopApplicationDependencyProvider
 {
     /**
@@ -206,6 +212,8 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ProceedToCheckoutButtonWidget::class,
             QuoteApprovalWidget::class,
             ProductConcreteSearchWidget::class,
+            ProductConcreteSearchGridWidget::class,
+            PriceProductWidget::class,
             AddItemsToShoppingListWidget::class,
             CategoryImageStorageWidget::class,
             AvailabilityNotificationSubscriptionWidget::class,
@@ -249,12 +257,13 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new TranslatorApplicationPlugin(),
             new RouterApplicationPlugin(),
             new SessionApplicationPlugin(),
-            new WebProfilerApplicationPlugin(),
             new HttpApplicationPlugin(),
             new ErrorHandlerApplicationPlugin(),
             new FlashMessengerApplicationPlugin(),
             new FormApplicationPlugin(),
             new ValidatorApplicationPlugin(),
+            new SecurityApplicationPlugin(),
+            new WebProfilerApplicationPlugin(),
         ];
     }
 }

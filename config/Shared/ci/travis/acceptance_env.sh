@@ -17,7 +17,9 @@
 # FE_ZED_SCRIPT='zed'
 # FE_ZED_BUNDLE_PKGJSON_PATTERN=".+/assets/Zed/package.json$"
 
-sudo apt-get -qqy install apache2 libapache2-mod-fastcgi
+sudo apt-get -qqy install apache2
+
+config/Shared/ci/travis/install_mod_fastcgi.sh
 
 sudo chmod -R 755 $HOME
 sudo chmod 600 config/Zed/dev_only_private.key

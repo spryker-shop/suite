@@ -63,7 +63,7 @@ class ExampleProductSalePageFactory extends AbstractFactory
     }
 
     /**
-     * @return \Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface[]
+     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface[]
      */
     protected function getSaleSearchQueryExpanderPlugins()
     {
