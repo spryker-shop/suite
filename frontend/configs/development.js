@@ -2,6 +2,7 @@ const { join } = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const requestedArguments = require('../libs/command-line-parser');
 const { findComponentEntryPoints, findComponentStyles, findAppEntryPoint } = require('../libs/finder');
 const { getAliasList } = require('../libs/alias');
 const { getAssetsConfig } = require('../libs/assets-configurator');
@@ -18,6 +19,7 @@ const getConfiguration = async appSettings => {
     const basicScss = await findAppEntryPoint(appSettings.find.shopUiEntryPoints, './styles/basic.scss');
     const utilScss = await findAppEntryPoint(appSettings.find.shopUiEntryPoints, './styles/util.scss');
     const sharedScss = await findAppEntryPoint(appSettings.find.shopUiEntryPoints, './styles/shared.scss');
+    const isProduction = requestedArguments.mode === 'production';
 
     return {
         namespace: appSettings.namespaceConfig.namespace,
@@ -26,7 +28,7 @@ const getConfiguration = async appSettings => {
         stylesLength: styles.length,
         webpack: {
             context: appSettings.context,
-            mode: 'development',
+            mode: isProduction ? 'production' : 'development',
             devtool: 'inline-source-map',
 
             stats: {
@@ -125,7 +127,7 @@ const getConfiguration = async appSettings => {
             plugins: [
                 new webpack.DefinePlugin({
                     __NAME__: `'${appSettings.name}'`,
-                    __PRODUCTION__: false
+                    __PRODUCTION__: isProduction
                 }),
 
                 ...getAssetsConfig(appSettings),

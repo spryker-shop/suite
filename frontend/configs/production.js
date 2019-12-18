@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const merge = require('webpack-merge');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -8,8 +7,8 @@ const mergeWithStrategy = merge.smartStrategy({
     plugins: 'prepend'
 });
 
-const configurationProdMode = async appSettings => mergeWithStrategy(await getConfiguration(appSettings), {webpack: {
-        mode: 'production',
+const configurationProdMode = async appSettings => mergeWithStrategy(await getConfiguration(appSettings), {
+    webpack: {
         devtool: false,
 
         optimization: {
@@ -33,13 +32,8 @@ const configurationProdMode = async appSettings => mergeWithStrategy(await getCo
                     }
                 })
             ]
-        },
-
-        plugins: [
-            new webpack.DefinePlugin({
-                __PRODUCTION__: true
-            })
-        ]
-    }});
+        }
+    }
+});
 
 module.exports = configurationProdMode;
