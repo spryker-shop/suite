@@ -53,6 +53,9 @@ class OrdersRestApiCest
      */
     public function requestExistingProductConcrete(OrdersApiTester $I): void
     {
+        //arrange
+        $this->authorizeCustomer($I);
+
         //act
         $I->sendGET(
             $I->formatUrl(
@@ -66,15 +69,19 @@ class OrdersRestApiCest
         //assert
         $I->seeResponseCodeIs(HttpCode::OK);
         $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
 
-//        $I->amSure('Returned resource is of type concrete-products')
-//            ->whenI()
-//            ->seeResponseDataContainsSingleResourceOfType('concrete-products');
-//
-//        $I->amSure('Returned resource has correct id')
-//            ->whenI()
-//            ->seeSingleResourceIdEqualTo($this->fixtures->getProductConcreteTransfer()->getSku());
+    }
+
+    /**
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    protected function authorizeCustomer(OrdersApiTester $I): void
+    {
+        $token = $I->haveAuthorizationToGlue($this->fixtures->getCustomerTransfer())->getAccessToken();
+
+        $I->amBearerAuthenticated($token);
     }
 
 }
