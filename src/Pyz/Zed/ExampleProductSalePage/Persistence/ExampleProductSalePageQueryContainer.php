@@ -47,7 +47,7 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
             ->distinct()
             ->useSpyProductAbstractQuery(null, Criteria::LEFT_JOIN)
                 ->usePriceProductQuery('priceProductOrigin', Criteria::LEFT_JOIN)
-                    ->joinPriceType('priceTypeOrigin', Criteria::LEFT_JOIN)
+                    ->joinPriceType('priceTypeOrigin', Criteria::INNER_JOIN)
                     ->addJoinCondition(
                         'priceTypeOrigin',
                         'priceTypeOrigin.name = ?',
@@ -59,7 +59,7 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
                     ->endUse()
                 ->endUse()
                 ->usePriceProductQuery('priceProductDefault', Criteria::LEFT_JOIN)
-                    ->joinPriceType('priceTypeDefault', Criteria::LEFT_JOIN)
+                    ->joinPriceType('priceTypeDefault', Criteria::INNER_JOIN)
                     ->addJoinCondition(
                         'priceTypeDefault',
                         'priceTypeDefault.name = ?',
@@ -107,7 +107,7 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
             ->queryProductAbstract()
             ->distinct()
             ->usePriceProductQuery('priceProductOrigin', Criteria::LEFT_JOIN)
-                ->joinPriceType('priceTypeOrigin', Criteria::LEFT_JOIN)
+                ->joinPriceType('priceTypeOrigin', Criteria::INNER_JOIN)
                 ->addJoinCondition(
                     'priceTypeOrigin',
                     'priceTypeOrigin.name = ?',
@@ -119,7 +119,7 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
                 ->endUse()
             ->endUse()
             ->usePriceProductQuery('priceProductDefault', Criteria::LEFT_JOIN)
-                ->joinPriceType('priceTypeDefault', Criteria::LEFT_JOIN)
+                ->joinPriceType('priceTypeDefault', Criteria::INNER_JOIN)
                 ->addJoinCondition(
                     'priceTypeDefault',
                     'priceTypeDefault.name = ?',
