@@ -75,6 +75,23 @@ class DataImportDataFormatter implements DataImportDataFormatterInterface
      *
      * @return string
      */
+    public function formatPostgresArrayBoolean(array $values): string
+    {
+        $values = array_map(function ($value) {
+            return $value ? 'true' : 'false';
+        }, $values);
+
+        return sprintf(
+            '{%s}',
+            pg_escape_string(implode(',', $values))
+        );
+    }
+
+    /**
+     * @param array $values
+     *
+     * @return string
+     */
     public function formatPostgresArrayFromJson(array $values): string
     {
         return sprintf(

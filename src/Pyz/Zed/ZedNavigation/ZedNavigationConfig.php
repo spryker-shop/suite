@@ -14,9 +14,9 @@ class ZedNavigationConfig extends SprykerZedNavigationConfig
     /**
      * @project Only needed in Project, not in demoshop
      *
-     * @return array
+     * @return string[]
      */
-    public function getNavigationSchemaPathPattern()
+    public function getNavigationSchemaPathPattern(): array
     {
         $paths = parent::getNavigationSchemaPathPattern();
         $paths = $this->addSprykerFilePath($paths);
@@ -27,11 +27,11 @@ class ZedNavigationConfig extends SprykerZedNavigationConfig
     /**
      * @project Only needed in Project, not in demoshop
      *
-     * @param array $paths
+     * @param string[] $paths
      *
-     * @return array
+     * @return string[]
      */
-    private function addSprykerFilePath($paths)
+    private function addSprykerFilePath($paths): array
     {
         $paths[] = APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/*/src/*/Zed/*/Communication';
 

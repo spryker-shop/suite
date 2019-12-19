@@ -16,20 +16,25 @@ use Spryker\Zed\CmsBlockCategoryStorage\Communication\Plugin\Synchronization\Cms
 use Spryker\Zed\CmsBlockProductStorage\Communication\Plugin\Synchronization\CmsBlockProductSynchronizationDataPlugin;
 use Spryker\Zed\CmsBlockStorage\Communication\Plugin\Synchronization\CmsBlockSynchronizationDataPlugin;
 use Spryker\Zed\CmsPageSearch\Communication\Plugin\Synchronization\CmsPageSynchronizationDataPlugin;
+use Spryker\Zed\CmsSlotBlockStorage\Communication\Plugin\Synchronization\CmsSlotBlockSynchronizationDataBulkPlugin;
 use Spryker\Zed\CmsSlotStorage\Communication\Plugin\Synchronization\CmsSlotSynchronizationDataBulkPlugin;
 use Spryker\Zed\CmsStorage\Communication\Plugin\Synchronization\CmsSynchronizationDataPlugin;
 use Spryker\Zed\CompanyUserStorage\Communication\Plugin\Synchronization\CompanyUserSynchronizationDataPlugin;
+use Spryker\Zed\ConfigurableBundlePageSearch\Communication\Plugin\Synchronization\ConfigurableBundleTemplatePageSynchronizationDataBulkPlugin;
+use Spryker\Zed\ConfigurableBundleStorage\Communication\Plugin\Synchronization\ConfigurableBundleTemplateImageSynchronizationDataBulkPlugin;
 use Spryker\Zed\ConfigurableBundleStorage\Communication\Plugin\Synchronization\ConfigurableBundleTemplateSynchronizationDataBulkPlugin;
 use Spryker\Zed\ContentStorage\Communication\Plugin\Synchronization\ContentStorageSynchronizationDataPlugin;
 use Spryker\Zed\CustomerAccessStorage\Communication\Plugin\Synchronization\CustomerAccessSynchronizationDataBulkPlugin;
 use Spryker\Zed\FileManagerStorage\Communication\Plugin\Synchronization\FileSynchronizationDataBulkPlugin;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Synchronization\GlossarySynchronizationDataPlugin;
+use Spryker\Zed\MerchantOpeningHoursStorage\Communication\Plugin\Synchronization\MerchantOpeningHoursSynchronizationDataBulkPlugin;
 use Spryker\Zed\MerchantProductOfferStorage\Communication\Plugin\Synchronization\ProductConcreteProductOffersSynchronizationDataPlugin;
 use Spryker\Zed\MerchantProductOfferStorage\Communication\Plugin\Synchronization\ProductOfferSynchronizationDataPlugin;
 use Spryker\Zed\MerchantProfileStorage\Communication\Plugin\Synchronization\MerchantProfileSynchronizationDataPlugin;
 use Spryker\Zed\NavigationStorage\Communication\Plugin\Synchronization\NavigationSynchronizationDataPlugin;
 use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Synchronization\PriceProductAbstractMerchantRelationSynchronizationDataBulkPlugin;
 use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Synchronization\PriceProductConcreteMerchantRelationSynchronizationDataBulkPlugin;
+use Spryker\Zed\PriceProductOfferStorage\Communication\Plugin\Synchronization\PriceProductOfferSynchronizationDataPlugin;
 use Spryker\Zed\PriceProductStorage\Communication\Plugin\Synchronization\PriceProductAbstractSynchronizationDataPlugin;
 use Spryker\Zed\PriceProductStorage\Communication\Plugin\Synchronization\PriceProductConcreteSynchronizationDataPlugin;
 use Spryker\Zed\ProductAlternativeStorage\Communication\Plugin\Synchronization\ProductAlternativeSynchronizationDataPlugin;
@@ -47,7 +52,6 @@ use Spryker\Zed\ProductListStorage\Communication\Plugin\Synchronization\ProductC
 use Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Synchronization\ProductConcreteMeasurementUnitSynchronizationDataBulkPlugin;
 use Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Synchronization\ProductMeasurementUnitSynchronizationDataBulkPlugin;
 use Spryker\Zed\ProductOptionStorage\Communication\Plugin\Synchronization\ProductOptionSynchronizationDataPlugin;
-use Spryker\Zed\ProductPackagingUnitStorage\Communication\Plugin\Synchronization\ProductAbstractPackagingSynchronizationDataPlugin;
 use Spryker\Zed\ProductPackagingUnitStorage\Communication\Plugin\Synchronization\ProductPackagingUnitSynchronizationDataBulkPlugin;
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\Synchronization\ProductConcretePageSynchronizationDataPlugin;
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\Synchronization\ProductPageSynchronizationDataPlugin;
@@ -75,7 +79,6 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
     protected function getSynchronizationDataPlugins(): array
     {
         return [
-            new ProductAbstractPackagingSynchronizationDataPlugin(),
             new CategoryPageSynchronizationDataPlugin(),
             new CmsPageSynchronizationDataPlugin(),
             new ProductPageSynchronizationDataPlugin(),
@@ -88,7 +91,10 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
             new CmsBlockProductSynchronizationDataPlugin(),
             new CmsBlockSynchronizationDataPlugin(),
             new CmsSynchronizationDataPlugin(),
+            new CmsSlotBlockSynchronizationDataBulkPlugin(),
+            new CmsSlotSynchronizationDataBulkPlugin(),
             new ConfigurableBundleTemplateSynchronizationDataBulkPlugin(),
+            new ConfigurableBundleTemplateImageSynchronizationDataBulkPlugin(),
             new FileSynchronizationDataBulkPlugin(),
             new NavigationSynchronizationDataPlugin(),
             new GlossarySynchronizationDataPlugin(),
@@ -133,6 +139,9 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
             new ProductOfferSynchronizationDataPlugin(),
             new ProductConcreteProductOffersSynchronizationDataPlugin(),
             new CmsSlotSynchronizationDataBulkPlugin(),
+            new MerchantOpeningHoursSynchronizationDataBulkPlugin(),
+            new PriceProductOfferSynchronizationDataPlugin(),
+            new ConfigurableBundleTemplatePageSynchronizationDataBulkPlugin(),
         ];
     }
 }
