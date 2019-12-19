@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "daaeb3e85073129afb2b5ec272d26bc6",
+    "content-hash": "07632c1829453bf39036a55245e5e875",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5559,11 +5559,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/sc-1264/create-health-check-endpoints-for-applicaitons",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "184fcf45b284c5e3dc37893a5307079650527f4f"
+                "reference": "2b62a3c7dfd204a1210691b075a2b83d830061b1"
             },
             "require": {
                 "php": ">=7.2"
@@ -5825,7 +5825,8 @@
                 "spryker/graphviz": "*",
                 "spryker/gui": "*",
                 "spryker/guzzle": "*",
-                "spryker/heartbeat": "*",
+                "spryker/health-check": "*",
+                "spryker/health-check-extension": "*",
                 "spryker/http": "*",
                 "spryker/http-extension": "*",
                 "spryker/index-generator": "*",
@@ -6206,15 +6207,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-12-19T13:39:44+00:00"
+            "time": "2019-12-19T15:55:18+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/sc-1264/dev-create-health-check-endpoints-for-applicaitons",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "46d794e11ece0b0eb75385ace64fae518286b4cd"
+                "reference": "fc64d2d8a917969c356f6328af9ce6799b1c283a"
             },
             "require": {
                 "php": ">=7.2"
@@ -6268,7 +6269,6 @@
                 "spryker-shop/error-page": "*",
                 "spryker-shop/file-manager-widget": "*",
                 "spryker-shop/gift-card-widget": "*",
-                "spryker-shop/heartbeat-page": "*",
                 "spryker-shop/home-page": "*",
                 "spryker-shop/language-switcher-widget": "*",
                 "spryker-shop/merchant-product-offer-widget": "*",
@@ -6356,7 +6356,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-12-19T13:39:47+00:00"
+            "time": "2019-12-19T15:45:34+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -10177,20 +10177,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
+                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler",
-                    "role": "Project Founder"
+                    "homepage": "https://github.com/manuelpichler"
                 },
                 {
                     "name": "Marc Würth",
+                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84",
-                    "role": "Project Maintainer"
+                    "homepage": "https://github.com/ravage84"
                 },
                 {
                     "name": "Other contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
