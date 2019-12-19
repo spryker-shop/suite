@@ -9,6 +9,7 @@ const mergeWithStrategy = merge.smartStrategy({
 
 const configurationProdMode = async appSettings => mergeWithStrategy(await getConfiguration(appSettings), {
     webpack: {
+        mode: 'production',
         devtool: false,
 
         optimization: {

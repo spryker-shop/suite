@@ -28,7 +28,7 @@ const getConfiguration = async appSettings => {
         stylesLength: styles.length,
         webpack: {
             context: appSettings.context,
-            mode: isProduction ? 'production' : 'development',
+            mode: 'development',
             devtool: 'inline-source-map',
 
             stats: {
