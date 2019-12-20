@@ -101,7 +101,6 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new AmountGroupKeyItemExpanderPlugin(), #ProductPackagingUnit
             new AmountSalesUnitItemExpanderPlugin(), #ProductPackagingUnit
             new CustomAmountPriceItemExpanderPlugin(), #ProductPackagingUnit
-            new GiftCardMetadataExpanderPlugin(), #GiftCardFeature,
             new ConfiguredBundleQuantityPerSlotItemExpanderPlugin(),
             new ConfiguredBundleGroupKeyItemExpanderPlugin(),
             new GiftCardMetadataExpanderPlugin(), #GiftCardFeature
