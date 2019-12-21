@@ -25,9 +25,10 @@ use Spryker\Shared\RabbitMq\RabbitMqEnv;
 use Spryker\Shared\Router\RouterConstants;
 use Spryker\Shared\Scheduler\SchedulerConstants;
 use Spryker\Shared\SchedulerJenkins\SchedulerJenkinsConstants;
-use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\SessionRedis\SessionRedisConfig;
+use Spryker\Shared\StorageDatabase\StorageDatabaseConfig;
+use Spryker\Shared\StorageDatabase\StorageDatabaseConstants;
 use Spryker\Shared\StorageRedis\StorageRedisConstants;
 use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
@@ -58,9 +59,7 @@ $config[SessionConstants::YVES_SESSION_SAVE_HANDLER] = SessionRedisConfig::SESSI
 $config[SessionConstants::ZED_SESSION_COOKIE_SECURE] = false;
 $config[SessionConstants::ZED_SESSION_SAVE_HANDLER] = SessionRedisConfig::SESSION_HANDLER_REDIS;
 
-// ---------- Elasticsearch
-$config[SearchConstants::SEARCH_INDEX_NAME_SUFFIX] = '_devtest';
-
+// ---------- Queue
 $config[RabbitMqEnv::RABBITMQ_API_HOST] = 'localhost';
 $config[RabbitMqEnv::RABBITMQ_API_PORT] = '15672';
 $config[RabbitMqEnv::RABBITMQ_API_USERNAME] = 'admin';
@@ -113,3 +112,9 @@ $config[ApplicationConstants::ZED_SSL_ENABLED] = false;
 
 $config[RouterConstants::YVES_IS_SSL_ENABLED] = false;
 $config[RouterConstants::ZED_IS_SSL_ENABLED] = false;
+
+// ---------- Database storage
+$config[StorageDatabaseConstants::DB_ENGINE] = StorageDatabaseConfig::DB_ENGINE_PGSQL;
+$config[StorageDatabaseConstants::DB_HOST] = '127.0.0.1';
+$config[StorageDatabaseConstants::DB_PORT] = 5432;
+$config[StorageDatabaseConstants::DB_DEBUG] = false;
