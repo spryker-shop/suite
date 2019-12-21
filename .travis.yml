@@ -12,19 +12,6 @@ env:
     - ARTIFACTS_SECRET=$AWS_S3_SECRET_ACCESS_KEY
     - ARTIFACTS_BUCKET=spryker-ci
 
-# Only branches matching the following patterns will be run on travis.
-# "master"
-# "feature/ab-123/master/*"
-# "feature/ab-123/dev/*"
-# "feature/ab-123/ab-234/master/*"
-# "feature/ab-123/ab-234/dev/*"
-# "bugfix/*", "hotfix/*" and "beta/*"
-branches:
-  only:
-    - master
-    - /feature\/[a-z]+-\d+\/(master|dev).+|feature\/[a-z]+-\d+\/[a-z]+-\d+\/(master|dev).+/
-    - /(bugfix|hotfix|beta)\/.+/
-
 #Possible travis events (push, pull_request, cron, or api)
 matrix:
   fast_finish: true
@@ -244,7 +231,6 @@ services:
 sudo: required
 
 before_install:
-  - pecl install zip
   - phpenv config-add config/Shared/ci/travis/travis.php.ini
   - if [[ $VALIDATION != 1 && $ON_EVENTS != *$TRAVIS_EVENT_TYPE* ]] ; then exit ; fi
   - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
@@ -260,7 +246,6 @@ before_install:
 
 install:
   - chmod -R a+x config/Shared/ci/travis/
-  - if [[ ${TRAVIS_PHP_VERSION} == "7.4" ]]; then config/Shared/ci/travis/install_php_7_4-gd.sh ; fi
   - composer install --optimize-autoloader --no-interaction
   - config/Shared/ci/travis/install_elasticsearch.sh
   - config/Shared/ci/travis/install_mailcatcher.sh
@@ -309,7 +294,6 @@ script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:schema:validate ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:schema:validate-xml-names ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:validate ; fi
-  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:sniff:style ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console dev:dependency:find ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console dev:composer:update-json-files -d -v ; fi
@@ -318,6 +302,8 @@ script:
 
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpmd src/ text vendor/spryker/spryker/Bundles/Development/src/Spryker/Zed/Development/Business/PhpMd/ruleset.xml ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2 ; fi
+
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:sniff:style ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then ./tests/travis_check_untracked.sh ; fi
   - timeout 45m bash -c "vendor/bin/phantomjs --webdriver=4444 --disk-cache=true --load-images=false --webdriver-logfile=/tmp/phantomjs.log --webdriver-loglevel=DEBUG">/dev/null &
