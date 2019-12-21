@@ -5369,53 +5369,6 @@
             "time": "2019-12-19T11:01:46+00:00"
         },
         {
-            "name": "spryker/heartbeat",
-            "version": "3.3.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/heartbeat.git",
-                "reference": "91f360b05f3089459bb52a7e110994756b277afd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/heartbeat/zipball/91f360b05f3089459bb52a7e110994756b277afd",
-                "reference": "91f360b05f3089459bb52a7e110994756b277afd",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2",
-                "spryker/application": "^3.4.0",
-                "spryker/config": "^3.0.0",
-                "spryker/elastica": "^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0",
-                "spryker/kernel": "^3.33.0",
-                "spryker/propel-orm": "^1.0.0",
-                "spryker/storage": "^3.8.0",
-                "spryker/symfony": "^3.0.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/propel": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "Heartbeat module",
-            "time": "2019-12-19T16:07:25+00:00"
-        },
-        {
             "name": "spryker/install",
             "version": "dev-master",
             "source": {
@@ -5610,7 +5563,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "13eacfd3df74d2d1d2fb56eeee05150efbb00810"
+                "reference": "a57b1869c8549253869973abd1b2b86b52a25d1b"
             },
             "require": {
                 "php": ">=7.2"
@@ -6254,7 +6207,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-12-21T14:41:00+00:00"
+            "time": "2019-12-21T14:51:42+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -11248,6 +11201,53 @@
                 "standards"
             ],
             "time": "2019-11-28T20:16:23+00:00"
+        },
+        {
+            "name": "spryker/heartbeat",
+            "version": "3.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/heartbeat.git",
+                "reference": "91f360b05f3089459bb52a7e110994756b277afd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/heartbeat/zipball/91f360b05f3089459bb52a7e110994756b277afd",
+                "reference": "91f360b05f3089459bb52a7e110994756b277afd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/application": "^3.4.0",
+                "spryker/config": "^3.0.0",
+                "spryker/elastica": "^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/storage": "^3.8.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Heartbeat module",
+            "time": "2019-12-19T16:07:25+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
