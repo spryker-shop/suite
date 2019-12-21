@@ -5,4 +5,12 @@
       <index-column name="fk_merchant"/>
     </index>
   </table>
+  <table name="spy_product_offer_store">
+    <index name="index-spy_product_offer_store-fk_product_offer">
+      <index-column name="fk_product_offer"/>
+    </index>
+    <index name="index-spy_product_offer_store-fk_store">
+      <index-column name="fk_store"/>
+    </index>
+  </table>
 </database>
