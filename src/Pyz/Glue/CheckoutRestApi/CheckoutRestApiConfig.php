@@ -26,17 +26,17 @@ class CheckoutRestApiConfig extends SprykerCheckoutRestApiConfig
     /**
      * @uses \Spryker\Shared\DummyPayment\DummyPaymentConfig::PROVIDER_NAME
      */
-    protected const DUMMY_PAYMENT_PROVIDER_NAME = 'dummyPayment';
+    protected const DUMMY_PAYMENT_PROVIDER_NAME = 'DummyPayment';
 
     /**
      * @uses \Spryker\Shared\DummyPayment\DummyPaymentConfig::PAYMENT_METHOD_NAME_INVOICE
      */
-    protected const DUMMY_PAYMENT_PAYMENT_METHOD_NAME_INVOICE = 'dummyPaymentInvoice';
+    protected const DUMMY_PAYMENT_PAYMENT_METHOD_NAME_INVOICE = 'invoice';
 
     /**
      * @uses \Spryker\Shared\DummyPayment\DummyPaymentConfig::PAYMENT_METHOD_NAME_CREDIT_CARD
      */
-    protected const DUMMY_PAYMENT_PAYMENT_METHOD_NAME_CREDIT_CARD = 'dummyPaymentCreditCard';
+    protected const DUMMY_PAYMENT_PAYMENT_METHOD_NAME_CREDIT_CARD = 'credit card';
 
     /**
      * @uses \Spryker\Shared\DummyPayment\DummyPaymentConfig::PAYMENT_METHOD_INVOICE
