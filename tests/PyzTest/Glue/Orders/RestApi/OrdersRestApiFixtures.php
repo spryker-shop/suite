@@ -9,6 +9,7 @@ namespace PyzTest\Glue\Orders\RestApi;
 
 use Generated\Shared\DataBuilder\ProductConcreteBuilder;
 use Generated\Shared\DataBuilder\QuoteBuilder;
+use Generated\Shared\DataBuilder\ShipmentCarrierBuilder;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\ExpenseTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
@@ -154,7 +155,9 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
      */
     protected function createShipmentMethodTransfer(OrdersRestApiTester $I): ShipmentMethodTransfer
     {
-        return $I->haveShipmentMethod([ShipmentMethodTransfer::IS_ACTIVE => true]);
+        $shipmentCarrierTransfer = (new ShipmentCarrierBuilder())->build();
+
+        return $I->haveShipmentMethod([ShipmentMethodTransfer::IS_ACTIVE => true], $shipmentCarrierTransfer->toArray());
     }
 
     /**

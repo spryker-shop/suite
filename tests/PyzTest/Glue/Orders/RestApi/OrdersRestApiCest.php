@@ -66,7 +66,7 @@ class OrdersRestApiCest
         //Assert
         $this->assertOrderResponse($I, HttpCode::OK);
 
-        $shipmentsData = current($I->grabDataFromResponseByJsonPath('$.data.attributes.shipments'));
+        $shipmentsData = $I->grabDataFromResponseByJsonPath('$.data.attributes.shipments');
         $shipmentData = current($shipmentsData);
 
         $I->assertIsArray($shipmentsData);
