@@ -34,7 +34,8 @@ suites:
                 - \SprykerTest\Shared\Quote\Helper\PersistentQuoteHelper
                 - \SprykerTest\Shared\Testify\Helper\LocatorHelper
                 - \SprykerTest\Shared\Shipment\Helper\ShipmentCarrierDataHelper
-                - \SprykerTest\Shared\Payment\Helper\PaymentDataHelper
+                - \SprykerTest\Shared\Payment\Helper\PaymentDataHelper:
+                      depends: \SprykerTest\Shared\Store\Helper\StoreDataHelper
 
             config:
                 \SprykerTest\Glue\Testify\Helper\GlueRest:
@@ -42,5 +43,3 @@ suites:
                     part: Json
                 \SprykerTest\Shared\Testify\Helper\DataCleanupHelper:
                     cleanup: false
-                \SprykerTest\Shared\Payment\Helper\PaymentDataHelper:
-                    depends: \SprykerTest\Shared\Store\Helper\StoreDataHelper
