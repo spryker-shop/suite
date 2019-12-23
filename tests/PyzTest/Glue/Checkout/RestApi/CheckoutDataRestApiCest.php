@@ -9,8 +9,8 @@ namespace PyzTest\Glue\Checkout\RestApi;
 
 use Codeception\Util\HttpCode;
 use Generated\Shared\Transfer\CustomerTransfer;
-use PyzTest\Glue\Checkout\CheckoutRestApiTester;
 use Pyz\Glue\CheckoutRestApi\CheckoutRestApiConfig;
+use PyzTest\Glue\Checkout\CheckoutRestApiTester;
 use Spryker\Glue\PaymentsRestApi\PaymentsRestApiConfig;
 use Spryker\Glue\ShipmentsRestApi\ShipmentsRestApiConfig;
 
@@ -39,7 +39,6 @@ class CheckoutDataRestApiCest
     /**
      * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
      *
-     * @group current
      * @return void
      */
     public function loadFixtures(CheckoutRestApiTester $I): void
@@ -234,7 +233,7 @@ class CheckoutDataRestApiCest
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
-     * @group current
+     *
      * @return void
      */
     public function requestCheckoutDataWithSelectedPaymentMethodShouldGetPaymentMethodDetails(
@@ -270,7 +269,7 @@ class CheckoutDataRestApiCest
 
         $I->assertNotEmpty($selectedPaymentMethods);
         $I->assertNotEmpty($selectedPaymentMethod);
-        $I->assertSame($selectedPaymentMethod['paymentMethodName'], $cardPaymentMethodTransfer->getPaymentMethod());
+        $I->assertSame($selectedPaymentMethod['paymentMethodName'], $cardPaymentMethodTransfer->getName());
     }
 
     /**

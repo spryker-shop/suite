@@ -8,7 +8,6 @@
 namespace PyzTest\Glue\Checkout;
 
 use Orm\Zed\Payment\Persistence\Base\SpyPaymentMethod;
-use Orm\Zed\Payment\Persistence\SpyPaymentMethodType;
 use Orm\Zed\Payment\Persistence\SpyPaymentMethodQuery;
 use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
 
@@ -34,9 +33,8 @@ class CheckoutRestApiTester extends ApiEndToEndTester
 
     /**
      * @param string $paymentMethodKey
-     * @return \Orm\Zed\Payment\Persistence\SpyPaymentMethodType
      *
-     * @throws \Spryker\Zed\Propel\Business\Exception\AmbiguousComparisonException
+     * @return \Orm\Zed\Payment\Persistence\Base\SpyPaymentMethod
      */
     public function grabPaymentMethod(string $paymentMethodKey): SpyPaymentMethod
     {
