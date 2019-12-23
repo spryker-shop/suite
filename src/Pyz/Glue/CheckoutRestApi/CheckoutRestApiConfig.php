@@ -26,7 +26,7 @@ class CheckoutRestApiConfig extends SprykerCheckoutRestApiConfig
     /**
      * @uses \Spryker\Shared\DummyPayment\DummyPaymentConfig::PROVIDER_NAME
      */
-    public const DUMMY_PAYMENT_PROVIDER_NAME = 'dummyPayment';
+    public const DUMMY_PAYMENT_PROVIDER_NAME = 'DummyPayment';
 
     /**
      * @uses \Spryker\Shared\DummyPayment\DummyPaymentConfig::PAYMENT_METHOD_NAME_INVOICE
@@ -59,5 +59,29 @@ class CheckoutRestApiConfig extends SprykerCheckoutRestApiConfig
                 static::DUMMY_PAYMENT_PAYMENT_METHOD_NAME_INVOICE => static::PAYMENT_METHOD_INVOICE,
             ],
         ];
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPaymentProviderMethodToStateMachineMappingEnabled(): bool
+    {
+        return false;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getAllowShipmentMethodsInAttributes(): bool
+    {
+        return false;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getAllowPaymentProvidersInAttributes(): bool
+    {
+        return false;
     }
 }
