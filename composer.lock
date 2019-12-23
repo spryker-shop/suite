@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a3b8b1c59a3404ab9ac54672007d94b2",
+    "content-hash": "df257ef005b8ced46b7a1e2e56b3e529",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -11245,6 +11245,52 @@
             ],
             "description": "CategoryExtension module",
             "time": "2019-01-10T18:40:34+00:00"
+        },
+        {
+            "name": "spryker/category-gui",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/category-gui.git",
+                "reference": "ed041b67441c7cb055835a7c4044fae556a4af01"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/category-gui/zipball/ed041b67441c7cb055835a7c4044fae556a4af01",
+                "reference": "ed041b67441c7cb055835a7c4044fae556a4af01",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/category": "^4.0.0",
+                "spryker/gui": "^3.0.0",
+                "spryker/kernel": "^3.17.0",
+                "spryker/locale": "^3.0.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/util-text": "^1.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CategoryGui module",
+            "time": "2019-01-31T15:31:31+00:00"
         },
         {
             "name": "spryker/category-image",
