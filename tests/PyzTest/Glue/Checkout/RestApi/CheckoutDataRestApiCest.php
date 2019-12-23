@@ -153,7 +153,7 @@ class CheckoutDataRestApiCest
         //Assert
         $this->assertCheckoutDataRequest($I, HttpCode::OK);
 
-        $selectedShipmentMethods = $I->grabDataFromResponseByJsonPathSmartGet('$.data.attributes.selectedShipmentMethods');
+        $selectedShipmentMethods = $I->grabDataFromResponseByJsonPath('$.data.attributes.selectedShipmentMethods');
         $I->assertIsArray($selectedShipmentMethods, 'Selected methods were not returned');
         $I->assertCount(1, $selectedShipmentMethods);
         $selectedShipmentMethod = $selectedShipmentMethods[0];
