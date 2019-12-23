@@ -55,6 +55,199 @@ class CheckoutDataRestApiCest
      *
      * @return void
      */
+    public function requestCheckoutDataWhenCustomerIsNotLoggedInShouldFail(CheckoutRestApiTester $I): void
+    {
+        //Act
+        $I->sendPOST(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, [
+            'data' => [
+                'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
+                'attributes' => [
+                    'idCart' => static::NOT_EXISTING_ID_CART,
+                ],
+            ],
+        ]);
+
+        //Assert
+        $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
+     *
+     * @return void
+     */
+    public function requestCheckoutDataWithIdCartShouldBeSuccessful(CheckoutRestApiTester $I): void
+    {
+        //Arrange
+        $this->requestCustomerLogin($I, $this->fixtures->getCustomerTransfer());
+
+        //Act
+        $I->sendPOST(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, [
+            'data' => [
+                'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
+                'attributes' => [
+                    'idCart' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                ],
+            ],
+        ]);
+
+        //Assert
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
+     *
+     * @return void
+     */
+    public function requestCheckoutDataWithIncorrectIdCartShouldFail(CheckoutRestApiTester $I): void
+    {
+        //Arrange
+        $this->requestCustomerLogin($I, $this->fixtures->getCustomerTransfer());
+
+        //Act
+        $I->sendPOST(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, [
+            'data' => [
+                'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
+                'attributes' => [
+                    'idCart' => static::NOT_EXISTING_ID_CART,
+                ],
+            ],
+        ]);
+
+        //Assert
+        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
+     *
+     * @return void
+     */
+    public function requestCheckoutDataWithSelectedShipmentMethodShouldGetShipmentMethodDetails(
+        CheckoutRestApiTester $I
+    ): void {
+        //Arrange
+        $this->requestCustomerLogin($I, $this->fixtures->getCustomerTransfer());
+
+        //Act
+        $I->sendPOST(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, [
+            'data' => [
+                'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
+                'attributes' => [
+                    'idCart' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                    'shipment' => [
+                        'idShipmentMethod' => $this->fixtures->getShipmentMethodTransfer()->getIdShipmentMethod(),
+                    ],
+                ],
+            ],
+        ]);
+
+        //Assert
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+
+        $selectedShipmentMethods = $I->grabDataFromResponseByJsonPath('$.data.attributes.selectedShipmentMethods');
+        $I->assertIsArray($selectedShipmentMethods, 'Selected methods were not returned');
+        $I->assertCount(1, $selectedShipmentMethods);
+        $selectedShipmentMethod = $selectedShipmentMethods[0];
+
+        $I->assertNotEmpty($selectedShipmentMethods);
+        $I->assertNotEmpty($selectedShipmentMethod);
+        $I->assertSame($selectedShipmentMethod['name'], $this->fixtures->getShipmentMethodTransfer()->getName());
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
+     *
+     * @return void
+     */
+    public function requestCheckoutDataWithIncludedShipmentMethods(CheckoutRestApiTester $I): void
+    {
+        //Arrange
+        $this->requestCustomerLogin($I, $this->fixtures->getCustomerTransfer());
+
+        $url = $I->formatUrl(
+            '{resource}?include={relationship}',
+            [
+                'resource' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
+                'relationship' => ShipmentsRestApiConfig::RESOURCE_SHIPMENT_METHODS,
+            ]
+        );
+
+        //Act
+        $I->sendPOST($url, [
+            'data' => [
+                'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
+                'attributes' => [
+                    'idCart' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                ],
+            ],
+        ]);
+
+        //Assert
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+        $this->assertCheckoutDataRequestWithIncludedShipmentMethods($I);
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
+     *
+     * @return void
+     */
+    public function requestCheckoutDataWithIncludedPaymentMethods(CheckoutRestApiTester $I): void
+    {
+        //Arrange
+        $this->requestCustomerLogin($I, $this->fixtures->getCustomerTransfer());
+
+        $url = $I->formatUrl('{resource}?include={relationship}', [
+            'resource' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
+            'relationship' => PaymentsRestApiConfig::RESOURCE_PAYMENT_METHODS,
+        ]);
+
+        //Act
+        $I->sendPOST($url, [
+            'data' => [
+                'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
+                'attributes' => [
+                    'idCart' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                ],
+            ],
+        ]);
+
+        //Assert
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+        $this->assertCheckoutDataRequestWithIncludedPaymentMethods($I);
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
+     *
+     * @return void
+     */
     public function requestCheckoutDataWithSelectedPaymentMethodShouldGetPaymentMethodDetails(
         CheckoutRestApiTester $I
     ): void {
@@ -80,8 +273,11 @@ class CheckoutDataRestApiCest
         ]);
 
         //Assert
-        $this->assertCheckoutDataRequest($I, HttpCode::OK);
-        $selectedPaymentMethods = $I->grabDataFromResponseByJsonPath('$.data.attributes.selectedPaymentMethods');
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+        $selectedPaymentMethods = $I
+            ->grabDataFromResponseByJsonPath('$.data.attributes.selectedPaymentMethods');
 
         $selectedPaymentMethod = $selectedPaymentMethods[0];
 
@@ -114,7 +310,9 @@ class CheckoutDataRestApiCest
         ]);
 
         //Assert
-        $this->assertCheckoutDataRequest($I, HttpCode::OK);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
         $selectedPaymentMethods = $I
             ->grabDataFromResponseByJsonPath('$.data.attributes.selectedPaymentMethods');
 
@@ -172,9 +370,6 @@ class CheckoutDataRestApiCest
         CheckoutRestApiTester $I,
         int $responseCode
     ): void {
-        $I->seeResponseCodeIs($responseCode);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
