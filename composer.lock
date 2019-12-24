@@ -26945,20 +26945,20 @@
         },
         {
             "name": "spryker/product-attribute-gui",
-            "version": "1.2.6",
+            "version": "1.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-attribute-gui.git",
-                "reference": "83c6f0c078a16f5ad8c6e8682a08a927c0e7ee9e"
+                "reference": "663d3c833fa17368758d01468442b18d065b52c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-attribute-gui/zipball/83c6f0c078a16f5ad8c6e8682a08a927c0e7ee9e",
-                "reference": "83c6f0c078a16f5ad8c6e8682a08a927c0e7ee9e",
+                "url": "https://api.github.com/repos/spryker/product-attribute-gui/zipball/663d3c833fa17368758d01468442b18d065b52c6",
+                "reference": "663d3c833fa17368758d01468442b18d065b52c6",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/gui": "^3.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^3.0.0",
@@ -26969,6 +26969,7 @@
             },
             "require-dev": {
                 "spryker/application": "*",
+                "spryker/code-sniffer": "*",
                 "spryker/propel": "*",
                 "spryker/testify": "*",
                 "spryker/zed-navigation": "*"
@@ -26989,7 +26990,7 @@
                 "proprietary"
             ],
             "description": "ProductAttributeGui module",
-            "time": "2019-10-30T13:38:22+00:00"
+            "time": "2019-12-21T16:13:57+00:00"
         },
         {
             "name": "spryker/product-availabilities-rest-api",
@@ -43126,21 +43127,22 @@
         },
         {
             "name": "phpmd/phpmd",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpmd/phpmd.git",
-                "reference": "a05a999c644f4bc9a204846017db7bb7809fbe4c"
+                "reference": "9b9fbb3b9491957540cb313a459c09b30ae22450"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/a05a999c644f4bc9a204846017db7bb7809fbe4c",
-                "reference": "a05a999c644f4bc9a204846017db7bb7809fbe4c",
+                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/9b9fbb3b9491957540cb313a459c09b30ae22450",
+                "reference": "9b9fbb3b9491957540cb313a459c09b30ae22450",
                 "shasum": ""
             },
             "require": {
+                "composer/xdebug-handler": "^1.0",
                 "ext-xml": "*",
-                "pdepend/pdepend": "^2.5",
+                "pdepend/pdepend": "^2.6",
                 "php": ">=5.3.9"
             },
             "require-dev": {
@@ -43165,20 +43167,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
-                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler"
+                    "homepage": "https://github.com/manuelpichler",
+                    "role": "Project Founder"
                 },
                 {
                     "name": "Marc Würth",
-                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84"
+                    "homepage": "https://github.com/ravage84",
+                    "role": "Project Maintainer"
                 },
                 {
                     "name": "Other contributors",
-                    "role": "Contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
+                    "role": "Contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -43190,7 +43192,7 @@
                 "phpmd",
                 "pmd"
             ],
-            "time": "2019-07-30T21:13:32+00:00"
+            "time": "2019-12-16T11:15:39+00:00"
         },
         {
             "name": "phpspec/prophecy",
