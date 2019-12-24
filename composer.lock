@@ -3069,16 +3069,16 @@
         },
         {
             "name": "spryker-shop/cart-page",
-            "version": "3.9.2",
+            "version": "3.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/cart-page.git",
-                "reference": "0820485db1ab00f3c36d397dc0c6a25637fc23d1"
+                "reference": "388a78ac43144706f9e8757ce1de35696c60ca66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/cart-page/zipball/0820485db1ab00f3c36d397dc0c6a25637fc23d1",
-                "reference": "0820485db1ab00f3c36d397dc0c6a25637fc23d1",
+                "url": "https://api.github.com/repos/spryker-shop/cart-page/zipball/388a78ac43144706f9e8757ce1de35696c60ca66",
+                "reference": "388a78ac43144706f9e8757ce1de35696c60ca66",
                 "shasum": ""
             },
             "require": {
@@ -3142,7 +3142,7 @@
                 "proprietary"
             ],
             "description": "CartPage module",
-            "time": "2019-12-24T12:58:29+00:00"
+            "time": "2019-12-24T14:57:33+00:00"
         },
         {
             "name": "spryker-shop/cart-to-shopping-list-widget",
@@ -26431,16 +26431,16 @@
         },
         {
             "name": "spryker/product",
-            "version": "6.16.0",
+            "version": "6.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product.git",
-                "reference": "77265ab6a05530d8f82655df5a089b536cda546e"
+                "reference": "fa8de5f2c2d702da3ab9d4c9544215fbef832e11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product/zipball/77265ab6a05530d8f82655df5a089b536cda546e",
-                "reference": "77265ab6a05530d8f82655df5a089b536cda546e",
+                "url": "https://api.github.com/repos/spryker/product/zipball/fa8de5f2c2d702da3ab9d4c9544215fbef832e11",
+                "reference": "fa8de5f2c2d702da3ab9d4c9544215fbef832e11",
                 "shasum": ""
             },
             "require": {
@@ -26480,7 +26480,7 @@
                 "proprietary"
             ],
             "description": "Product module",
-            "time": "2019-12-23T12:43:44+00:00"
+            "time": "2019-12-24T08:50:33+00:00"
         },
         {
             "name": "spryker/product-abstract-data-feed",
@@ -27244,30 +27244,32 @@
         },
         {
             "name": "spryker/product-cart-connector",
-            "version": "4.5.1",
+            "version": "4.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-cart-connector.git",
-                "reference": "d4909f52720547a803bc96d41be10c23e5ffd0d5"
+                "reference": "dc7db9943eb0174fe054bdf2accd749c90e92f63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-cart-connector/zipball/d4909f52720547a803bc96d41be10c23e5ffd0d5",
-                "reference": "d4909f52720547a803bc96d41be10c23e5ffd0d5",
+                "url": "https://api.github.com/repos/spryker/product-cart-connector/zipball/dc7db9943eb0174fe054bdf2accd749c90e92f63",
+                "reference": "dc7db9943eb0174fe054bdf2accd749c90e92f63",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/messenger": "^3.0.0",
-                "spryker/product": "^6.14.0"
+                "spryker/product": "^6.17.0"
             },
             "require-dev": {
                 "spryker/cart": "*",
+                "spryker/code-sniffer": "*",
                 "spryker/propel": "*",
                 "spryker/tax": "*",
-                "spryker/testify": "*"
+                "spryker/testify": "*",
+                "spryker/url": "*"
             },
             "suggest": {
                 "spryker/cart": "If you want to use Cart plugins. Must be >= 4.0.2!"
@@ -27288,7 +27290,7 @@
                 "proprietary"
             ],
             "description": "ProductCartConnector module",
-            "time": "2019-10-14T10:22:10+00:00"
+            "time": "2019-12-24T08:51:46+00:00"
         },
         {
             "name": "spryker/product-category",
