@@ -8,6 +8,7 @@
 namespace Pyz\Yves\Router;
 
 use Pyz\Yves\ExampleProductSalePage\Plugin\Router\ExampleProductSaleRouteProviderPlugin;
+use Spryker\Yves\HealthCheck\Plugin\Router\HealthCheckRouteProviderPlugin;
 use Spryker\Yves\Router\Plugin\RouteManipulator\LanguageDefaultPostAddRouteManipulatorPlugin;
 use Spryker\Yves\Router\Plugin\RouteManipulator\SslPostAddRouteManipulatorPlugin;
 use Spryker\Yves\Router\Plugin\RouteManipulator\StoreDefaultPostAddRouteManipulatorPlugin;
@@ -41,7 +42,6 @@ use SprykerShop\Yves\CustomerReorderWidget\Plugin\Router\CustomerReorderWidgetRo
 use SprykerShop\Yves\DiscountWidget\Plugin\Router\DiscountWidgetRouteProviderPlugin;
 use SprykerShop\Yves\ErrorPage\Plugin\Router\ErrorPageRouteProviderPlugin;
 use SprykerShop\Yves\FileManagerWidget\Plugin\Router\FileManagerWidgetRouteProviderPlugin;
-use SprykerShop\Yves\HeartbeatPage\Plugin\Router\HeartbeatPageRouteProviderPlugin;
 use SprykerShop\Yves\HomePage\Plugin\Router\HomePageRouteProviderPlugin;
 use SprykerShop\Yves\MultiCartPage\Plugin\Router\MultiCartPageRouteProviderPlugin;
 use SprykerShop\Yves\NewsletterPage\Plugin\Router\NewsletterPageRouteProviderPlugin;
@@ -95,7 +95,7 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new NewsletterPageRouteProviderPlugin(),
             new CartPageRouteProviderPlugin(),
             new WishlistPageRouteProviderPlugin(),
-            new HeartbeatPageRouteProviderPlugin(),
+            new HealthCheckRouteProviderPlugin(),
             new NewsletterWidgetRouteProviderPlugin(),
             new CatalogPageRouteProviderPlugin(),
             new CalculationPageRouteProviderPlugin(),
