@@ -2,12 +2,11 @@ const { join } = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const requestedArguments = require('../libs/command-line-parser');
 const { findComponentEntryPoints, findComponentStyles, findAppEntryPoint } = require('../libs/finder');
 const { getAliasList } = require('../libs/alias');
 const { getAssetsConfig } = require('../libs/assets-configurator');
 
-const getConfiguration = async appSettings => {
+const getConfiguration = async (appSettings, isProduction = false) => {
     const componentEntryPointsPromise = findComponentEntryPoints(appSettings.find.componentEntryPoints);
     const stylesPromise = findComponentStyles(appSettings.find.componentStyles);
     const [componentEntryPoints, styles] = await Promise.all([componentEntryPointsPromise, stylesPromise]);
@@ -19,7 +18,6 @@ const getConfiguration = async appSettings => {
     const basicScss = await findAppEntryPoint(appSettings.find.shopUiEntryPoints, './styles/basic.scss');
     const utilScss = await findAppEntryPoint(appSettings.find.shopUiEntryPoints, './styles/util.scss');
     const sharedScss = await findAppEntryPoint(appSettings.find.shopUiEntryPoints, './styles/shared.scss');
-    const isProduction = requestedArguments.mode === 'production';
 
     return {
         namespace: appSettings.namespaceConfig.namespace,
