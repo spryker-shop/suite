@@ -20,6 +20,7 @@ use SprykerShop\Yves\CheckoutPage\CheckoutPageConfig;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCustomerClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToCustomerServiceBridge;
+use SprykerShop\Yves\CheckoutPage\GiftCard\GiftCardItemsChecker;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep\AddressStepExecutor;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep\PostConditionChecker;
@@ -353,6 +354,7 @@ class AddressStepTest extends Unit
         $stepExecutorMock = $this->createStepExecutorMock($customerTransfer);
         $postConditionMock = $this->createPostConditionCheckerMock();
         $checkoutPageConfigMock = $this->createCheckoutPageConfigMock();
+        $giftCardItemsCheckerMock = $this->createGiftCardItemsCheckerMock();
 
         $addressStepMock = $this->getMockBuilder(AddressStep::class)
             ->setMethods(['getDataClass'])
@@ -364,6 +366,7 @@ class AddressStepTest extends Unit
                 'checkout-address',
                 'home',
                 [],
+                $giftCardItemsCheckerMock,
             ])
             ->getMock();
 
@@ -473,5 +476,13 @@ class AddressStepTest extends Unit
     protected function createCheckoutPageConfigMock()
     {
         return $this->getMockBuilder(CheckoutPageConfig::class)->getMock();
+    }
+
+    /**
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerShop\Yves\CheckoutPage\GiftCard\GiftCardItemsChecker
+     */
+    protected function createGiftCardItemsCheckerMock()
+    {
+        return $this->getMockBuilder(GiftCardItemsChecker::class)->getMock();
     }
 }

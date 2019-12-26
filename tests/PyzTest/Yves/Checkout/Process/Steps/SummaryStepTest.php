@@ -20,6 +20,7 @@ use SprykerShop\Yves\CheckoutPage\CheckoutPageConfig;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCheckoutClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToProductBundleClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceInterface;
+use SprykerShop\Yves\CheckoutPage\GiftCard\GiftCardItemsChecker;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\SummaryStep;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -96,7 +97,8 @@ class SummaryStepTest extends Unit
             $this->createCheckoutPageConfigMock(),
             'shipment',
             'escape_route',
-            $this->createCheckoutClientMock()
+            $this->createCheckoutClientMock(),
+            $this->createGiftCardItemsCheckerMock()
         );
     }
 
@@ -148,5 +150,13 @@ class SummaryStepTest extends Unit
     protected function createCheckoutClientMock()
     {
         return $this->getMockBuilder(CheckoutPageToCheckoutClientInterface::class)->getMock();
+    }
+
+    /**
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerShop\Yves\CheckoutPage\GiftCard\GiftCardItemsChecker
+     */
+    protected function createGiftCardItemsCheckerMock()
+    {
+        return $this->getMockBuilder(GiftCardItemsChecker::class)->getMock();
     }
 }
