@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b37d7ead1ddba2961e0af4d6da869ad4",
+    "content-hash": "da0d8a37fc9051850529263a9dbf6c8e",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -2159,7 +2159,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -3143,60 +3143,6 @@
             ],
             "description": "CartPage module",
             "time": "2019-12-24T14:57:33+00:00"
-        },
-        {
-            "name": "spryker-shop/cart-to-shopping-list-widget",
-            "version": "0.5.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker-shop/cart-to-shopping-list-widget.git",
-                "reference": "5f50eb40b48544b65d6bf4b3b3914ccae011f7a0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/cart-to-shopping-list-widget/zipball/5f50eb40b48544b65d6bf4b3b3914ccae011f7a0",
-                "reference": "5f50eb40b48544b65d6bf4b3b3914ccae011f7a0",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1",
-                "spryker-shop/shop-application": "^1.0.0",
-                "spryker-shop/shop-ui": "^1.0.0",
-                "spryker/application": "^3.8.0",
-                "spryker/customer": "^7.4.0",
-                "spryker/kernel": "^3.30.0",
-                "spryker/shopping-list": "^1.0.0 || ^2.0.0 || ^4.0.0",
-                "spryker/symfony": "^3.1.0"
-            },
-            "require-dev": {
-                "spryker-shop/cart-page": "*",
-                "spryker/code-sniffer": "*",
-                "spryker/router": "*",
-                "spryker/silex": "*",
-                "spryker/testify": "*"
-            },
-            "suggest": {
-                "spryker-shop/cart-page": "If CartToShoppingListWidgetPlugin is to be used, minimum version is 0.5.2",
-                "spryker/router": "Use this module when you want to use the Router.",
-                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "SprykerShop\\": "src/SprykerShop/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "CartToShoppingListWidget module",
-            "time": "2019-10-14T10:22:33+00:00"
         },
         {
             "name": "spryker-shop/catalog-page",
@@ -6423,20 +6369,20 @@
         },
         {
             "name": "spryker-shop/product-option-widget",
-            "version": "1.4.3",
+            "version": "1.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/product-option-widget.git",
-                "reference": "373f8b88f3a70b84d8a53dc803a706de2c66f85b"
+                "reference": "d534dc8ac7491bf869d1488ae61dcaed38651dbd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/product-option-widget/zipball/373f8b88f3a70b84d8a53dc803a706de2c66f85b",
-                "reference": "373f8b88f3a70b84d8a53dc803a706de2c66f85b",
+                "url": "https://api.github.com/repos/spryker-shop/product-option-widget/zipball/d534dc8ac7491bf869d1488ae61dcaed38651dbd",
+                "reference": "d534dc8ac7491bf869d1488ae61dcaed38651dbd",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker-shop/shop-ui": "^1.0.0",
                 "spryker-shop/shopping-list-page-extension": "^1.1.0",
                 "spryker/kernel": "^3.30.0",
@@ -6447,8 +6393,7 @@
                 "spryker-shop/cart-page": "*",
                 "spryker-shop/product-detail-page": "*",
                 "spryker-shop/shopping-list-page": "*",
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
+                "spryker/code-sniffer": "*"
             },
             "suggest": {
                 "spryker-shop/cart-page": "Widget plugins are available for this module.",
@@ -6471,7 +6416,7 @@
                 "proprietary"
             ],
             "description": "ProductOptionWidget module",
-            "time": "2019-10-14T10:22:33+00:00"
+            "time": "2019-12-21T13:32:13+00:00"
         },
         {
             "name": "spryker-shop/product-packaging-unit-widget",
@@ -8254,20 +8199,20 @@
         },
         {
             "name": "spryker-shop/shopping-list-page",
-            "version": "0.9.0",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/shopping-list-page.git",
-                "reference": "bbd283ee85eea2b752258850b7a968b375cd5a4a"
+                "reference": "bbc02451f52fa15f6520f913019864d223c98322"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/shopping-list-page/zipball/bbd283ee85eea2b752258850b7a968b375cd5a4a",
-                "reference": "bbd283ee85eea2b752258850b7a968b375cd5a4a",
+                "url": "https://api.github.com/repos/spryker-shop/shopping-list-page/zipball/bbc02451f52fa15f6520f913019864d223c98322",
+                "reference": "bbc02451f52fa15f6520f913019864d223c98322",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker-shop/shop-application": "^1.2.0",
                 "spryker-shop/shop-ui": "^1.27.0",
                 "spryker-shop/shopping-list-page-extension": "^1.1.0",
@@ -8275,8 +8220,9 @@
                 "spryker/company-business-unit": "^1.5.0 || ^2.4.0",
                 "spryker/company-user": "^2.8.0",
                 "spryker/customer": "^7.4.0",
-                "spryker/kernel": "^3.30.0",
+                "spryker/kernel": "^3.33.0",
                 "spryker/multi-cart": "^1.1.0",
+                "spryker/price": "^5.0.0",
                 "spryker/product-storage": "^1.1.0",
                 "spryker/shopping-list": "^2.3.0 || ^4.0.0",
                 "spryker/symfony": "^3.1.0",
@@ -8287,9 +8233,7 @@
                 "spryker-shop/customer-page": "*",
                 "spryker-shop/product-option-widget": "*",
                 "spryker/code-sniffer": "*",
-                "spryker/router": "*",
-                "spryker/silex": "*",
-                "spryker/testify": "*"
+                "spryker/router": "*"
             },
             "suggest": {
                 "spryker-shop/customer-page": "Use this module when you want to show shopping lists on a customer page",
@@ -8313,7 +8257,7 @@
                 "proprietary"
             ],
             "description": "ShoppingListPage module",
-            "time": "2019-09-26T05:02:17+00:00"
+            "time": "2019-12-26T09:42:34+00:00"
         },
         {
             "name": "spryker-shop/shopping-list-page-extension",
@@ -8360,23 +8304,24 @@
         },
         {
             "name": "spryker-shop/shopping-list-widget",
-            "version": "0.7.1",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/shopping-list-widget.git",
-                "reference": "4a979a657a3c57335a3215614e5c520a41be7a33"
+                "reference": "2ce0b13b2389ae86fa0603eff9bfdce7c4113cd4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/shopping-list-widget/zipball/4a979a657a3c57335a3215614e5c520a41be7a33",
-                "reference": "4a979a657a3c57335a3215614e5c520a41be7a33",
+                "url": "https://api.github.com/repos/spryker-shop/shopping-list-widget/zipball/2ce0b13b2389ae86fa0603eff9bfdce7c4113cd4",
+                "reference": "2ce0b13b2389ae86fa0603eff9bfdce7c4113cd4",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker-shop/quick-order-page-extension": "^1.0.0",
                 "spryker-shop/shop-application": "^1.0.0",
                 "spryker-shop/shop-ui": "^1.0.0",
+                "spryker/application": "^3.8.0",
                 "spryker/customer": "^7.4.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/shopping-list": "^2.7.0 || ^4.0.0",
@@ -8384,19 +8329,14 @@
                 "spryker/symfony": "^3.1.0"
             },
             "require-dev": {
-                "spryker-shop/customer-page": "*",
-                "spryker-shop/product-detail-page": "*",
-                "spryker-shop/shopping-list-page": "*",
                 "spryker/code-sniffer": "*",
-                "spryker/router": "*",
-                "spryker/silex": "*",
-                "spryker/testify": "*"
+                "spryker/router": "*"
             },
             "suggest": {
-                "spryker-shop/customer-page": "Widget plugins are available for this module.",
-                "spryker-shop/multi-cart-page": "If you want to use CartToShoppingListWidgetPlugin: ^1.0.0",
-                "spryker-shop/product-detail-page": "To use ShoppingListWidget plugin, ShoppingListWidgetPluginInterface from product-detail-page v0.2.2 is needed",
-                "spryker-shop/quick-order-page": "If you want to use ShoppingListQuickOrderPageWidgetPlugin: ^1.0.0",
+                "spryker-shop/customer-page": "Widget are available for this module.",
+                "spryker-shop/multi-cart-page": "Widget are available for this module.",
+                "spryker-shop/product-detail-page": "Widget are available for this module.",
+                "spryker-shop/quick-order-page": "Widget are available for this module.",
                 "spryker-shop/shopping-list-page": "Use this module if you want see shopping list pages",
                 "spryker/router": "Use this module when you want to use the Router.",
                 "spryker/silex": "Use this module when using plugins that need Silex dependencies."
@@ -8417,7 +8357,7 @@
                 "proprietary"
             ],
             "description": "ShoppingListWidget module",
-            "time": "2019-10-14T10:22:33+00:00"
+            "time": "2019-12-21T13:32:13+00:00"
         },
         {
             "name": "spryker-shop/storage-router",
@@ -42456,7 +42396,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
+            "description": "? Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -42577,7 +42517,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🍀 Nette RobotLoader: high performance and comfortable autoloader that will search and autoload classes within your application.",
+            "description": "? Nette RobotLoader: high performance and comfortable autoloader that will search and autoload classes within your application.",
             "homepage": "https://nette.org",
             "keywords": [
                 "autoload",
