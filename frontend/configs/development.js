@@ -6,7 +6,7 @@ const { findComponentEntryPoints, findComponentStyles, findAppEntryPoint } = req
 const { getAliasList } = require('../libs/alias');
 const { getAssetsConfig } = require('../libs/assets-configurator');
 
-const getConfiguration = async (appSettings, isProduction = false) => {
+const getConfiguration = async appSettings => {
     const componentEntryPointsPromise = findComponentEntryPoints(appSettings.find.componentEntryPoints);
     const stylesPromise = findComponentStyles(appSettings.find.componentStyles);
     const [componentEntryPoints, styles] = await Promise.all([componentEntryPointsPromise, stylesPromise]);
@@ -125,7 +125,7 @@ const getConfiguration = async (appSettings, isProduction = false) => {
             plugins: [
                 new webpack.DefinePlugin({
                     __NAME__: `'${appSettings.name}'`,
-                    __PRODUCTION__: isProduction
+                    __PRODUCTION__: appSettings.isProductionMode
                 }),
 
                 ...getAssetsConfig(appSettings),
