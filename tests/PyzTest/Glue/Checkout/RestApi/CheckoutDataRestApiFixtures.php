@@ -7,14 +7,17 @@
 
 namespace PyzTest\Glue\Checkout\RestApi;
 
+use Generated\Shared\DataBuilder\StoreRelationBuilder;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\PaymentMethodTransfer;
+use Generated\Shared\Transfer\PaymentProviderTransfer;
 use Generated\Shared\Transfer\PriceProductTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
 use Generated\Shared\Transfer\StockProductTransfer;
+use Generated\Shared\Transfer\StoreRelationTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
 use PyzTest\Glue\Checkout\CheckoutRestApiTester;
@@ -57,6 +60,16 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
     protected $quoteTransfer;
 
     /**
+     * @var \Generated\Shared\Transfer\PaymentMethodTransfer
+     */
+    protected $paymentMethodTransfer;
+
+    /**
+     * @var \Generated\Shared\Transfer\PaymentProviderTransfer
+     */
+    protected $paymentProviderTransfer;
+
+    /**
      * @return \Generated\Shared\Transfer\CustomerTransfer
      */
     public function getCustomerTransfer(): CustomerTransfer
@@ -97,6 +110,14 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
     }
 
     /**
+     * @return \Generated\Shared\Transfer\PaymentProviderTransfer
+     */
+    public function getPaymentProviderTransfer(): PaymentProviderTransfer
+    {
+        return $this->paymentProviderTransfer;
+    }
+
+    /**
      * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
      *
      * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
@@ -106,6 +127,7 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
         $this->createCustomer($I);
         $this->createProductConcrete($I);
         $this->createShipmentMethod($I);
+        $this->createPaymentMethod($I);
         $this->createQuote($I);
 
         return $this;
@@ -153,6 +175,35 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
     protected function createShipmentMethod(CheckoutRestApiTester $I): void
     {
         $this->shipmentMethodTransfer = $I->haveShipmentMethod(['is_active' => true]);
+    }
+
+    /**
+     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
+     *
+     * @return void
+     */
+    protected function createPaymentMethod(CheckoutRestApiTester $I): void
+    {
+        $this->paymentProviderTransfer = $I->havePaymentProvider();
+
+        $storeTransfer = $I->haveStore([
+            StoreTransfer::NAME => 'DE',
+        ]);
+        $storeRelationTransfer = (new StoreRelationBuilder())->seed([
+            StoreRelationTransfer::ID_STORES => [
+                $storeTransfer->getIdStore(),
+            ],
+            StoreRelationTransfer::STORES => [
+                $storeTransfer,
+            ],
+        ])->build();
+
+        $this->paymentMethodTransfer = $I->havePaymentMethod([
+            PaymentMethodTransfer::IS_ACTIVE => true,
+            PaymentMethodTransfer::METHOD_NAME => uniqid($this->paymentProviderTransfer->getPaymentProviderKey()),
+            PaymentMethodTransfer::ID_PAYMENT_PROVIDER => $this->paymentProviderTransfer->getIdPaymentProvider(),
+            PaymentMethodTransfer::STORE_RELATION => $storeRelationTransfer,
+        ]);
     }
 
     /**

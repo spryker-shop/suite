@@ -204,7 +204,16 @@ class CheckoutDataRestApiCest
         $I->seeResponseCodeIs(HttpCode::OK);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
-        $this->assertCheckoutDataRequestWithIncludedShipmentMethods($I);
+
+        $idShipmentMethod = $this->fixtures->getShipmentMethodTransfer()->getIdShipmentMethod();
+
+        $I->amSure('Returned resource has shipment method in `relationships` section.')
+            ->whenI()
+            ->seeSingleResourceHasRelationshipByTypeAndId(ShipmentsRestApiConfig::RESOURCE_SHIPMENT_METHODS, $idShipmentMethod);
+
+        $I->amSure('Returned resource has shipment method in `included` section.')
+            ->whenI()
+            ->seeIncludesContainsResourceByTypeAndId(ShipmentsRestApiConfig::RESOURCE_SHIPMENT_METHODS, $idShipmentMethod);
     }
 
     /**
@@ -238,7 +247,16 @@ class CheckoutDataRestApiCest
         $I->seeResponseCodeIs(HttpCode::OK);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
-        $this->assertCheckoutDataRequestWithIncludedPaymentMethods($I);
+
+        $idPaymentMethod = $this->fixtures->getPaymentMethodTransfer()->getIdPaymentMethod();
+
+        $I->amSure('Returned resource has payment method in `relationships` section.')
+            ->whenI()
+            ->seeSingleResourceHasRelationshipByTypeAndId(PaymentsRestApiConfig::RESOURCE_PAYMENT_METHODS, $idPaymentMethod);
+
+        $I->amSure('Returned resource has payment method in `included` section.')
+            ->whenI()
+            ->seeIncludesContainsResourceByTypeAndId(PaymentsRestApiConfig::RESOURCE_PAYMENT_METHODS, $idPaymentMethod);
     }
 
     /**
@@ -254,7 +272,7 @@ class CheckoutDataRestApiCest
         //Arrange
         $this->requestCustomerLogin($I, $this->fixtures->getCustomerTransfer());
 
-        $cardPaymentMethodTransfer = $I->grabPaymentMethod(CheckoutRestApiConfig::PAYMENT_METHOD_CREDIT_CARD);
+        $invoicePaymentMethodTransfer = $I->grabPaymentMethod(CheckoutRestApiConfig::PAYMENT_METHOD_INVOICE);
 
         //Act
         $I->sendPOST(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, [
@@ -265,7 +283,7 @@ class CheckoutDataRestApiCest
                     'payments' => [
                         [
                             'paymentProviderName' => CheckoutRestApiConfig::DUMMY_PAYMENT_PROVIDER_NAME,
-                            'paymentMethodName' => $cardPaymentMethodTransfer->getName(),
+                            'paymentMethodName' => $invoicePaymentMethodTransfer->getName(),
                         ],
                     ],
                 ],
@@ -276,14 +294,15 @@ class CheckoutDataRestApiCest
         $I->seeResponseCodeIs(HttpCode::OK);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
+
         $selectedPaymentMethods = $I
             ->grabDataFromResponseByJsonPath('$.data.attributes.selectedPaymentMethods');
 
-        $selectedPaymentMethod = $selectedPaymentMethods[0];
-
         $I->assertNotEmpty($selectedPaymentMethods);
+
+        $selectedPaymentMethod = $selectedPaymentMethods[0];
         $I->assertNotEmpty($selectedPaymentMethod);
-        $I->assertSame($selectedPaymentMethod['paymentMethodName'], $cardPaymentMethodTransfer->getName());
+        $I->assertSame($selectedPaymentMethod['paymentMethodName'], $invoicePaymentMethodTransfer->getName());
     }
 
     /**
@@ -318,58 +337,6 @@ class CheckoutDataRestApiCest
 
         $I->assertIsArray($selectedPaymentMethods);
         $I->assertEmpty(current($selectedPaymentMethods));
-    }
-
-    /**
-     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
-     *
-     * @return void
-     */
-    protected function assertCheckoutDataRequestWithIncludedShipmentMethods(
-        CheckoutRestApiTester $I
-    ): void {
-        $idShipmentMethod = $this->fixtures->getShipmentMethodTransfer()->getIdShipmentMethod();
-
-        $I->amSure('Returned resource has shipment method in `relationships` section.')
-            ->whenI()
-            ->seeSingleResourceHasRelationshipByTypeAndId(ShipmentsRestApiConfig::RESOURCE_SHIPMENT_METHODS, $idShipmentMethod);
-
-        $I->amSure('Returned resource has shipment method in `included` section.')
-            ->whenI()
-            ->seeIncludesContainsResourceByTypeAndId(ShipmentsRestApiConfig::RESOURCE_SHIPMENT_METHODS, $idShipmentMethod);
-    }
-
-    /**
-     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
-     *
-     * @return void
-     */
-    protected function assertCheckoutDataRequestWithIncludedPaymentMethods(
-        CheckoutRestApiTester $I
-    ): void {
-        $idPaymentMethod = $I
-            ->grabPaymentMethod(CheckoutRestApiConfig::PAYMENT_METHOD_INVOICE)
-            ->getIdPaymentMethod();
-
-        $I->amSure('Returned resource has payment method in `relationships` section.')
-            ->whenI()
-            ->seeSingleResourceHasRelationshipByTypeAndId(PaymentsRestApiConfig::RESOURCE_PAYMENT_METHODS, $idPaymentMethod);
-
-        $I->amSure('Returned resource has payment method in `included` section.')
-            ->whenI()
-            ->seeIncludesContainsResourceByTypeAndId(PaymentsRestApiConfig::RESOURCE_PAYMENT_METHODS, $idPaymentMethod);
-    }
-
-    /**
-     * @param \PyzTest\Glue\Checkout\CheckoutRestApiTester $I
-     * @param int $responseCode
-     *
-     * @return void
-     */
-    protected function assertCheckoutDataRequest(
-        CheckoutRestApiTester $I,
-        int $responseCode
-    ): void {
     }
 
     /**

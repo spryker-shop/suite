@@ -34,8 +34,8 @@ suites:
                 - \SprykerTest\Shared\Quote\Helper\PersistentQuoteHelper
                 - \SprykerTest\Shared\Testify\Helper\LocatorHelper
                 - \SprykerTest\Shared\Shipment\Helper\ShipmentCarrierDataHelper
-                - \SprykerTest\Shared\Payment\Helper\PaymentDataHelper:
-                      depends: \SprykerTest\Shared\Store\Helper\StoreDataHelper
+                - \SprykerTest\Shared\Payment\Helper\PaymentDataHelper
+                - \SprykerTest\Shared\Store\Helper\StoreDataHelper
 
             config:
                 \SprykerTest\Glue\Testify\Helper\GlueRest:

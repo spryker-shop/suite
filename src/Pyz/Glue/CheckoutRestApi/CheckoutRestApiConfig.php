@@ -72,7 +72,7 @@ class CheckoutRestApiConfig extends SprykerCheckoutRestApiConfig
     /**
      * @return bool
      */
-    public function getAllowShipmentMethodsInAttributes(): bool
+    public function isAllowShipmentMethodsInAttributes(): bool
     {
         return false;
     }
@@ -80,7 +80,7 @@ class CheckoutRestApiConfig extends SprykerCheckoutRestApiConfig
     /**
      * @return bool
      */
-    public function getAllowPaymentProvidersInAttributes(): bool
+    public function isAllowPaymentProvidersInAttributes(): bool
     {
         return false;
     }
