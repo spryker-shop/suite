@@ -24547,16 +24547,16 @@
         },
         {
             "name": "spryker/oms",
-            "version": "11.0.0",
+            "version": "11.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/oms.git",
-                "reference": "2c47273b1a01baba34c8457eb539019a765ef2c8"
+                "reference": "bc4ef22769855b5e990681d2066d9e1b956f8dda"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/oms/zipball/2c47273b1a01baba34c8457eb539019a765ef2c8",
-                "reference": "2c47273b1a01baba34c8457eb539019a765ef2c8",
+                "url": "https://api.github.com/repos/spryker/oms/zipball/bc4ef22769855b5e990681d2066d9e1b956f8dda",
+                "reference": "bc4ef22769855b5e990681d2066d9e1b956f8dda",
                 "shasum": ""
             },
             "require": {
@@ -24589,7 +24589,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "6.0.x-dev"
+                    "dev-master": "11.0.x-dev"
                 }
             },
             "autoload": {
@@ -24603,7 +24603,7 @@
                 "proprietary"
             ],
             "description": "Oms module",
-            "time": "2019-11-21T13:38:49+00:00"
+            "time": "2019-12-27T16:09:38+00:00"
         },
         {
             "name": "spryker/oms-discount-connector",
@@ -35325,20 +35325,20 @@
         },
         {
             "name": "spryker/state-machine",
-            "version": "2.6.1",
+            "version": "2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/state-machine.git",
-                "reference": "335517b40ba259ab0a4ab3219cbf7c8dae6eb18d"
+                "reference": "b30097881c9a092a9ea2dfb85198afe4af6d83c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/state-machine/zipball/335517b40ba259ab0a4ab3219cbf7c8dae6eb18d",
-                "reference": "335517b40ba259ab0a4ab3219cbf7c8dae6eb18d",
+                "url": "https://api.github.com/repos/spryker/state-machine/zipball/b30097881c9a092a9ea2dfb85198afe4af6d83c9",
+                "reference": "b30097881c9a092a9ea2dfb85198afe4af6d83c9",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/graph": "^3.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/propel-orm": "^1.0.0",
@@ -35347,6 +35347,8 @@
                 "spryker/util-text": "^1.1.0"
             },
             "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/config": "*",
                 "spryker/propel": "*",
                 "spryker/testify": "*"
             },
@@ -35366,7 +35368,7 @@
                 "proprietary"
             ],
             "description": "StateMachine module",
-            "time": "2019-08-13T09:43:38+00:00"
+            "time": "2019-12-27T16:09:38+00:00"
         },
         {
             "name": "spryker/step-engine",
