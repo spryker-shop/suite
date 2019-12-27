@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8b218bf517b1ca5557f43c6b19891aa1",
+    "content-hash": "96ece899b42053d8bcdc3f85d074d07a",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -6265,34 +6265,33 @@
         },
         {
             "name": "spryker-shop/product-measurement-unit-widget",
-            "version": "0.8.2",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/product-measurement-unit-widget.git",
-                "reference": "697260c3e620237e6ae1dcbea7b8d52675841885"
+                "reference": "c89d5672ab8fdeb263c8df6fa33de0226e5b3382"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/product-measurement-unit-widget/zipball/697260c3e620237e6ae1dcbea7b8d52675841885",
-                "reference": "697260c3e620237e6ae1dcbea7b8d52675841885",
+                "url": "https://api.github.com/repos/spryker-shop/product-measurement-unit-widget/zipball/c89d5672ab8fdeb263c8df6fa33de0226e5b3382",
+                "reference": "c89d5672ab8fdeb263c8df6fa33de0226e5b3382",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker-shop/shop-ui": "^1.13.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/product-measurement-unit-storage": "^1.1.0",
-                "spryker/product-quantity-storage": "^1.0.0 || ^3.0.0"
+                "spryker/product-quantity-storage": "^1.0.0 || ^3.0.0",
+                "spryker/util-encoding": "^2.0.0"
             },
             "require-dev": {
                 "spryker-shop/cart-page": "*",
-                "spryker-shop/product-detail-page": "*",
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
+                "spryker/code-sniffer": "*"
             },
             "suggest": {
-                "spryker-shop/cart-page": "If you want to use QuantitySalesUnitWidgetPlugin.",
-                "spryker-shop/product-detail-page": "if you want to use ProductMeasurementUnitWidgetPlugin."
+                "spryker-shop/cart-page": "If you want to use CartProductMeasurementUnitQuantitySelectorWidget.",
+                "spryker-shop/product-detail-page": "if you want to use ManageProductMeasurementUnitWidget."
             },
             "type": "library",
             "extra": {
@@ -6310,7 +6309,7 @@
                 "proprietary"
             ],
             "description": "ProductMeasurementUnitWidget module",
-            "time": "2019-10-14T10:22:33+00:00"
+            "time": "2019-12-27T10:12:36+00:00"
         },
         {
             "name": "spryker-shop/product-new-page",
@@ -6420,16 +6419,16 @@
         },
         {
             "name": "spryker-shop/product-packaging-unit-widget",
-            "version": "0.5.2",
+            "version": "0.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/product-packaging-unit-widget.git",
-                "reference": "3737c2da900cd63e801f919f227e66d986fbe18c"
+                "reference": "980f359de52529421e9650b95506e67d29bf5bea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/product-packaging-unit-widget/zipball/3737c2da900cd63e801f919f227e66d986fbe18c",
-                "reference": "3737c2da900cd63e801f919f227e66d986fbe18c",
+                "url": "https://api.github.com/repos/spryker-shop/product-packaging-unit-widget/zipball/980f359de52529421e9650b95506e67d29bf5bea",
+                "reference": "980f359de52529421e9650b95506e67d29bf5bea",
                 "shasum": ""
             },
             "require": {
@@ -6474,7 +6473,7 @@
                 "proprietary"
             ],
             "description": "ProductPackagingUnitWidget module",
-            "time": "2019-12-23T08:54:44+00:00"
+            "time": "2019-12-26T11:53:59+00:00"
         },
         {
             "name": "spryker-shop/product-relation-widget",
