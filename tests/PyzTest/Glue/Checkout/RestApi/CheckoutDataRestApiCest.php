@@ -272,7 +272,8 @@ class CheckoutDataRestApiCest
         //Arrange
         $this->requestCustomerLogin($I, $this->fixtures->getCustomerTransfer());
 
-        $invoicePaymentMethodTransfer = $I->grabPaymentMethod(CheckoutRestApiConfig::PAYMENT_METHOD_INVOICE);
+        $paymentMethodTransfer = $this->fixtures->getPaymentMethodTransfer();
+        $paymentProviderTransfer = $this->fixtures->getPaymentProviderTransfer();
 
         //Act
         $I->sendPOST(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA, [
@@ -282,8 +283,8 @@ class CheckoutDataRestApiCest
                     'idCart' => $this->fixtures->getQuoteTransfer()->getUuid(),
                     'payments' => [
                         [
-                            'paymentProviderName' => CheckoutRestApiConfig::DUMMY_PAYMENT_PROVIDER_NAME,
-                            'paymentMethodName' => $invoicePaymentMethodTransfer->getName(),
+                            'paymentProviderName' => $paymentProviderTransfer->getPaymentProviderKey(),
+                            'paymentMethodName' => $paymentMethodTransfer->getName(),
                         ],
                     ],
                 ],
@@ -302,7 +303,7 @@ class CheckoutDataRestApiCest
 
         $selectedPaymentMethod = $selectedPaymentMethods[0];
         $I->assertNotEmpty($selectedPaymentMethod);
-        $I->assertSame($selectedPaymentMethod['paymentMethodName'], $invoicePaymentMethodTransfer->getName());
+        $I->assertSame($selectedPaymentMethod['paymentMethodName'], $paymentMethodTransfer->getName());
     }
 
     /**
