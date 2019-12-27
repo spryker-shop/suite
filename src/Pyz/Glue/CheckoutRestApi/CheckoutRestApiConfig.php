@@ -48,6 +48,8 @@ class CheckoutRestApiConfig extends SprykerCheckoutRestApiConfig
      */
     public const PAYMENT_METHOD_CREDIT_CARD = 'dummyPaymentCreditCard';
 
+    protected const IS_PAYMENT_PROVIDER_METHOD_TO_STATE_MACHINE_MAPPING_ENABLED = false;
+
     /**
      * @return array
      */
@@ -59,14 +61,6 @@ class CheckoutRestApiConfig extends SprykerCheckoutRestApiConfig
                 static::DUMMY_PAYMENT_PAYMENT_METHOD_NAME_INVOICE => static::PAYMENT_METHOD_INVOICE,
             ],
         ];
-    }
-
-    /**
-     * @return bool
-     */
-    public function isPaymentProviderMethodToStateMachineMappingEnabled(): bool
-    {
-        return false;
     }
 
     /**
