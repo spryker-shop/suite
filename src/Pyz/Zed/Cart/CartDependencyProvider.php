@@ -22,6 +22,7 @@ use Spryker\Zed\Discount\Communication\Plugin\Cart\DiscountQuoteChangeObserverPl
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Cart\CartGroupPromotionItems;
 use Spryker\Zed\GiftCard\Communication\Plugin\GiftCardMetadataExpanderPlugin;
 use Spryker\Zed\Kernel\Container;
+use Spryker\Zed\MerchantProfile\Communication\Plugin\Cart\MerchantProfileCartPreCheckPlugin;
 use Spryker\Zed\PaymentCartConnector\Communication\Plugin\Cart\RemovePaymentCartPostSavePlugin;
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\Cart\SanitizeSourcePricesQuoteLockPreResetPlugin;
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\CartItemPricePlugin;
@@ -145,6 +146,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new AmountAvailabilityCartPreCheckPlugin(), #ProductPackagingUnit
             new AmountRestrictionCartPreCheckPlugin(), #ProductPackagingUnit
             new ConfiguredBundleTemplateSlotCombinationPreCheckPlugin(),
+            new MerchantProfileCartPreCheckPlugin(),
         ];
     }
 
