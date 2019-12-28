@@ -49,8 +49,6 @@ use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUn
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitValuePostSavePlugin;
 use Spryker\Zed\ProductOffer\Communication\Plugin\Cart\ProductOfferGroupKeyItemExpanderPlugin;
-use Spryker\Zed\ProductOffer\Communication\Plugin\ProductOfferCartChangeTransferNormalizerPlugin;
-use Spryker\Zed\ProductOffer\Communication\Plugin\ProductOfferPreReloadItemsPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\Cart\CartItemOptionPreCheckPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\CartItemGroupKeyOptionPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\CartItemProductOptionPlugin;
@@ -121,7 +119,6 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     {
         return [
             new CartChangeTransferQuantityNormalizerPlugin(),
-            new ProductOfferCartChangeTransferNormalizerPlugin(),
         ];
     }
 
@@ -177,7 +174,6 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     {
         return [
             new CartConfigurableBundlePreReloadPlugin(),
-            new ProductOfferPreReloadItemsPlugin(),
             new CartBundleItemsPreReloadPlugin(),
             new RemoveInactiveItemsPreReloadPlugin(),
             new RemoveRestrictedItemsPreReloadPlugin(),
