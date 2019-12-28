@@ -9,7 +9,6 @@ namespace Pyz\Zed\Availability;
 
 use Spryker\Zed\Availability\AvailabilityDependencyProvider as SprykerAvailabilityDependencyProvider;
 use Spryker\Zed\ProductOfferAvailability\Communication\Plugin\Availability\ProductOfferAvailabilityProviderStrategyPlugin;
-use Spryker\Zed\ProductOfferAvailability\Communication\Plugin\Availability\ProductOfferAvailabilityStockProviderStrategyPlugin;
 
 class AvailabilityDependencyProvider extends SprykerAvailabilityDependencyProvider
 {
@@ -20,16 +19,6 @@ class AvailabilityDependencyProvider extends SprykerAvailabilityDependencyProvid
     {
         return [
             new ProductOfferAvailabilityProviderStrategyPlugin(),
-        ];
-    }
-
-    /**
-     * @return \Spryker\Zed\AvailabilityExtension\Dependency\Plugin\AvailabilityStockProviderStrategyPluginInterface[]
-     */
-    protected function getAvailabilityStockProviderStrategyPlugins(): array
-    {
-        return [
-            new ProductOfferAvailabilityStockProviderStrategyPlugin(),
         ];
     }
 }
