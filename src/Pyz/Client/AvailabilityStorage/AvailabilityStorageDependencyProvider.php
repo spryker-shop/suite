@@ -15,7 +15,7 @@ class AvailabilityStorageDependencyProvider extends SprykerAvailabilityStorageDe
     /**
      * @return \Spryker\Client\AvailabilityStorageExtension\Dependency\Plugin\AvailabilityProviderStoragePluginInterface[]
      */
-    public function getAvailabilityProviderStorageStrategyPlugins(): array
+    public function getAvailabilityStorageStrategyPlugins(): array
     {
         return [
             new ProductOfferAvailabilityStorageProviderPlugin(),
