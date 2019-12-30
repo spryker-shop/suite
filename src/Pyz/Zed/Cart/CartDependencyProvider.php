@@ -22,6 +22,7 @@ use Spryker\Zed\Discount\Communication\Plugin\Cart\DiscountQuoteChangeObserverPl
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Cart\CartGroupPromotionItems;
 use Spryker\Zed\GiftCard\Communication\Plugin\GiftCardMetadataExpanderPlugin;
 use Spryker\Zed\Kernel\Container;
+use Spryker\Zed\MerchantProfile\Communication\Plugin\Cart\MerchantProfileCartPreCheckPlugin;
 use Spryker\Zed\PaymentCartConnector\Communication\Plugin\Cart\RemovePaymentCartPostSavePlugin;
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\Cart\SanitizeSourcePricesQuoteLockPreResetPlugin;
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\CartItemPricePlugin;
@@ -48,6 +49,7 @@ use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\DefaultQuantity
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitGroupKeyItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitValuePostSavePlugin;
+use Spryker\Zed\ProductOffer\Communication\Plugin\Cart\ProductOfferGroupKeyItemExpanderPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\Cart\CartItemOptionPreCheckPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\CartItemGroupKeyOptionPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\CartItemProductOptionPlugin;
@@ -104,6 +106,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new GiftCardMetadataExpanderPlugin(), #GiftCardFeature
             new ConfiguredBundleQuantityPerSlotItemExpanderPlugin(),
             new ConfiguredBundleGroupKeyItemExpanderPlugin(),
+            new ProductOfferGroupKeyItemExpanderPlugin(),
             new ProductUrlItemExpanderPlugin(),
         ];
     }
@@ -143,6 +146,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new AmountAvailabilityCartPreCheckPlugin(), #ProductPackagingUnit
             new AmountRestrictionCartPreCheckPlugin(), #ProductPackagingUnit
             new ConfiguredBundleTemplateSlotCombinationPreCheckPlugin(),
+            new MerchantProfileCartPreCheckPlugin(),
         ];
     }
 
