@@ -4211,7 +4211,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -5567,7 +5567,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "b53f36d1221a5a814f84e3884441cfbcf718b651"
+                "reference": "bc4c831000f6ad50ecd3f2f8b231ad0a6a902194"
             },
             "require": {
                 "php": ">=7.2"
@@ -6216,7 +6216,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2019-12-30T15:11:18+00:00"
+            "time": "2020-01-02T07:34:26+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -9759,6 +9759,7 @@
                 "config",
                 "zf"
             ],
+            "abandoned": "laminas/laminas-config",
             "time": "2019-06-08T18:58:54+00:00"
         },
         {
@@ -9824,6 +9825,7 @@
                 "filter",
                 "zf"
             ],
+            "abandoned": "laminas/laminas-filter",
             "time": "2019-08-19T07:08:04+00:00"
         },
         {
@@ -9892,6 +9894,7 @@
                 "servicemanager",
                 "zf"
             ],
+            "abandoned": "laminas/laminas-servicemanager",
             "time": "2018-12-22T06:05:09+00:00"
         },
         {
@@ -9938,6 +9941,7 @@
                 "stdlib",
                 "zf"
             ],
+            "abandoned": "laminas/laminas-stdlib",
             "time": "2018-08-28T21:34:05+00:00"
         }
     ],
@@ -11517,53 +11521,6 @@
                 "standards"
             ],
             "time": "2019-11-28T20:16:23+00:00"
-        },
-        {
-            "name": "spryker/heartbeat",
-            "version": "3.3.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/heartbeat.git",
-                "reference": "91f360b05f3089459bb52a7e110994756b277afd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/heartbeat/zipball/91f360b05f3089459bb52a7e110994756b277afd",
-                "reference": "91f360b05f3089459bb52a7e110994756b277afd",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2",
-                "spryker/application": "^3.4.0",
-                "spryker/config": "^3.0.0",
-                "spryker/elastica": "^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0",
-                "spryker/kernel": "^3.33.0",
-                "spryker/propel-orm": "^1.0.0",
-                "spryker/storage": "^3.8.0",
-                "spryker/symfony": "^3.0.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/propel": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "Heartbeat module",
-            "time": "2019-12-19T16:07:25+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
