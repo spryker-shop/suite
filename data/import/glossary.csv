@@ -249,6 +249,8 @@ catalog.filter.activeFilters,Aktive Filter,de_DE
 catalog.filter.activeFilters,Active filters,en_US
 catalog.filter.resetAllFilters,Alle Filter zurücksetzen,de_DE
 catalog.filter.resetAllFilters,Reset all filters,en_US
+catalog.no-results,No results.,en_US
+catalog.no-results,Keine Ergebnisse.,de_DE
 product.filter.category,Kategorien,de_DE
 product.filter.category,Categories,en_US
 product.filter.price,Preisspanne,de_DE
@@ -535,6 +537,8 @@ customer.order.item_quantity,Anzahl,de_DE
 customer.order.item_quantity,Quantity,en_US
 customer.order.item_sum,Item total,de_DE
 customer.order.item_sum,Item total,en_US
+customer.order.item_amount,Amount,en_US
+customer.order.item_amount,Betrag,de_DE
 customer.order.subTotal,Zwischensumme,de_DE
 customer.order.subTotal,Subtotal,en_US
 customer.order.taxTotal,Mehrwertsteuer,de_DE
@@ -1195,8 +1199,8 @@ product-cart.validation.error.abstract-product-exists,"Product ""sku"" not found
 product-cart.validation.error.abstract-product-exists,"Produkt ""sku"" nicht gefunden",de_DE
 product-cart.validation.error.concrete-product-exists,"Product ""sku"" not found",en_US
 product-cart.validation.error.concrete-product-exists,"Produkt ""sku"" nicht gefunden",de_DE
-cart.item.option.pre.check.validation.error.exists,"You can not reorder the product %name% directly, please add it to your cart separately.",en_US
-cart.item.option.pre.check.validation.error.exists,"Sie können das Produkt %name% nicht direkt nachbestellen, fügen Sie es bitte separat in Ihren Warenkorb.",de_DE
+cart.item.option.pre.check.validation.error.exists,"Product option of %name% is not available anymore.",en_US
+cart.item.option.pre.check.validation.error.exists,"Produktoption von %name% ist nicht mehr verfügbar.",de_DE
 product-cart.validation.error.product-option-value-price-exists,Product option price not found for product '%sku%'.,en_US
 product-cart.validation.error.product-option-value-price-exists,Produktoptionspreis nicht gefunden für Produkt '%sku%'.,de_DE
 product-cart.validation.error.concrete-product-inactive,Product sku is not active.,en_US
@@ -3021,6 +3025,10 @@ sales_configured_bundle_widget.success.items_added_to_cart_as_individual_product
 sales_configured_bundle_widget.success.items_added_to_cart_as_individual_products,"Bitte beachten: Artikel aus dem konfigurierbaren Bündel wurden als einzelne Produkte in den Warenkorb gelegt.",de_DE
 configured_bundle_widget.items,Items,en_US
 configured_bundle_widget.items,Artikel,de_DE
+merchant_profile.message.removed,Product %sku% is not available at the moment.,en_US
+merchant_profile.message.removed,Das Produkt %sku% ist momentan nicht verfügbar.,de_DE
+merchant_profile.message.inactive,Product %sku% from merchant %merchant_name% is not available at the moment.,en_US
+merchant_profile.message.inactive,Artikel %sku% vom Händler %merchant_name% ist momentan nicht verfügbar.,de_DE
 merchant_weekday_schedule.new_year,New Year's Day,en_US
 merchant_weekday_schedule.new_year,Neujahrstag,de_DE
 merchant_weekday_schedule.good_friday,Good Friday,en_US
@@ -3111,3 +3119,11 @@ configurable_bundle_page.configurator.slot_became_unavailable,Configured slot wi
 configurable_bundle_page.configurator.slot_became_unavailable,Configured slot with ID '%id%' became unavailable.,de_DE
 configurable_bundle_page.configurator.product_became_unavailable,Product with SKU '%sku%' configured for slot with ID '%id%' became unavailable.,en_US
 configurable_bundle_page.configurator.product_became_unavailable,Product with SKU '%sku%' configured for slot with ID '%id%' became unavailable.,de_DE
+summary_node_bundle_items_summary,- %quantity% x %name%,en_US
+summary_node_bundle_items_summary,- %quantity% x %name%,de_DE
+summary_node_option_value,+ %value%,en_US
+summary_node_option_value,+ %value%,de_DE
+product_packaging_unit_node_summary,(= %summary%),en_US
+product_packaging_unit_node_summary,(= %summary%),de_DE
+product_packaging_unit_node_amount_summary,= %summary%,en_US
+product_packaging_unit_node_amount_summary,= %summary%,de_DE
