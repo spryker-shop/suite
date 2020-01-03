@@ -37,7 +37,6 @@ use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Eve
 use Spryker\Zed\PriceProductOfferStorage\Communication\Plugin\Event\Subscriber\PriceProductOfferStorageEventSubscriber;
 use Spryker\Zed\PriceProductStorage\Communication\Plugin\Event\Subscriber\PriceProductStorageEventSubscriber;
 use Spryker\Zed\ProductAlternativeStorage\Communication\Plugin\Event\Subscriber\ProductAlternativeStorageEventSubscriber;
-use Spryker\Zed\ProductBundle\Communication\Plugin\Event\Subscriber\ProductBundleEventSubscriber;
 use Spryker\Zed\ProductCategoryFilterStorage\Communication\Plugin\Event\Subscriber\ProductCategoryFilterStorageEventSubscriber;
 use Spryker\Zed\ProductCategoryStorage\Communication\Plugin\Event\Subscriber\ProductCategoryStorageEventSubscriber;
 use Spryker\Zed\ProductDiscontinuedStorage\Communication\Plugin\Event\Subscriber\ProductDiscontinuedStorageEventSubscriber;
@@ -129,7 +128,6 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new TaxStorageSubscriber());
         $eventSubscriberCollection->add(new TaxProductStorageSubscriber());
         $eventSubscriberCollection->add(new AvailabilityNotificationSubscriber());
-        $eventSubscriberCollection->add(new ProductBundleEventSubscriber());
         $eventSubscriberCollection->add(new MerchantProfileStorageEventSubscriber());
         $eventSubscriberCollection->add(new MerchantProductOfferStorageEventSubscriber());
         $eventSubscriberCollection->add(new MerchantOpeningHoursStorageEventSubscriber());
