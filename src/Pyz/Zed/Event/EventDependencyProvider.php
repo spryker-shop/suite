@@ -47,6 +47,7 @@ use Spryker\Zed\ProductLabelStorage\Communication\Plugin\Event\Subscriber\Produc
 use Spryker\Zed\ProductListSearch\Communication\Plugin\Event\Subscriber\ProductListSearchEventSubscriber;
 use Spryker\Zed\ProductListStorage\Communication\Plugin\Event\Subscriber\ProductListStorageEventSubscriber;
 use Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Event\Subscriber\ProductMeasurementUnitStorageEventSubscriber;
+use Spryker\Zed\ProductOfferAvailabilityStorage\Communication\Plugin\Event\Subscriber\ProductOfferAvailabilityStorageEventSubscriber;
 use Spryker\Zed\ProductOptionStorage\Communication\Plugin\Event\Subscriber\ProductOptionStorageEventSubscriber;
 use Spryker\Zed\ProductPackagingUnitStorage\Communication\Plugin\Event\Subscriber\ProductPackagingUnitStorageEventSubscriber;
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\Event\Subscriber\ProductConcretePageSearchProductAbstractEventSubscriber;
@@ -132,6 +133,7 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new MerchantProductOfferStorageEventSubscriber());
         $eventSubscriberCollection->add(new MerchantOpeningHoursStorageEventSubscriber());
         $eventSubscriberCollection->add(new PriceProductOfferStorageEventSubscriber());
+        $eventSubscriberCollection->add(new ProductOfferAvailabilityStorageEventSubscriber());
 
         /**
          * Search Events
