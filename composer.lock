@@ -5369,6 +5369,45 @@
             "time": "2019-12-05T07:10:03+00:00"
         },
         {
+            "name": "spryker/health-check-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/health-check-extension.git",
+                "reference": "a0cbb0f7d1c99da303f0f71eb060003563752cde"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/health-check-extension/zipball/a0cbb0f7d1c99da303f0f71eb060003563752cde",
+                "reference": "a0cbb0f7d1c99da303f0f71eb060003563752cde",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "HealthCheckExtension module",
+            "time": "2019-12-19T16:49:51+00:00"
+        },
+        {
             "name": "spryker/install",
             "version": "dev-master",
             "source": {
@@ -6216,7 +6255,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "534af3f28b9044c279e40544c9d0917e9b28193b"
+                "reference": "9f95854681add7e0868f38ce9fc365570535fcbf"
             },
             "require": {
                 "php": ">=7.2"
@@ -6232,7 +6271,6 @@
                 "spryker-shop/cart-code-widget": "*",
                 "spryker-shop/cart-note-widget": "*",
                 "spryker-shop/cart-page": "*",
-                "spryker-shop/cart-to-shopping-list-widget": "*",
                 "spryker-shop/catalog-page": "*",
                 "spryker-shop/category-image-storage-widget": "*",
                 "spryker-shop/category-widget": "*",
@@ -6270,7 +6308,6 @@
                 "spryker-shop/error-page": "*",
                 "spryker-shop/file-manager-widget": "*",
                 "spryker-shop/gift-card-widget": "*",
-                "spryker-shop/heartbeat-page": "*",
                 "spryker-shop/home-page": "*",
                 "spryker-shop/language-switcher-widget": "*",
                 "spryker-shop/merchant-product-offer-widget": "*",
@@ -6358,7 +6395,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2019-12-10T13:55:26+00:00"
+            "time": "2020-01-03T15:38:52+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -9450,6 +9487,7 @@
                 "config",
                 "zf"
             ],
+            "abandoned": "laminas/laminas-config",
             "time": "2019-06-08T18:58:54+00:00"
         },
         {
@@ -9515,6 +9553,7 @@
                 "filter",
                 "zf"
             ],
+            "abandoned": "laminas/laminas-filter",
             "time": "2019-08-19T07:08:04+00:00"
         },
         {
@@ -9583,6 +9622,7 @@
                 "servicemanager",
                 "zf"
             ],
+            "abandoned": "laminas/laminas-servicemanager",
             "time": "2018-12-22T06:05:09+00:00"
         },
         {
@@ -9629,6 +9669,7 @@
                 "stdlib",
                 "zf"
             ],
+            "abandoned": "laminas/laminas-stdlib",
             "time": "2018-08-28T21:34:05+00:00"
         }
     ],
