@@ -8,26 +8,26 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.130.3",
+            "version": "3.131.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "916356edb5c30fa564d02de94bde51a9c0bb4469"
+                "reference": "371ca02855c92c13e36fa5f6d38e68211354c979"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/916356edb5c30fa564d02de94bde51a9c0bb4469",
-                "reference": "916356edb5c30fa564d02de94bde51a9c0bb4469",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/371ca02855c92c13e36fa5f6d38e68211354c979",
+                "reference": "371ca02855c92c13e36fa5f6d38e68211354c979",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "ext-pcre": "*",
                 "ext-simplexml": "*",
-                "guzzlehttp/guzzle": "^5.3.3|^6.2.1",
-                "guzzlehttp/promises": "~1.0",
+                "guzzlehttp/guzzle": "^5.3.3|^6.2.1|^7.0",
+                "guzzlehttp/promises": "^1.0",
                 "guzzlehttp/psr7": "^1.4.1",
-                "mtdowling/jmespath.php": "~2.2",
+                "mtdowling/jmespath.php": "^2.5",
                 "php": ">=5.5"
             },
             "require-dev": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-01-02T19:13:50+00:00"
+            "time": "2020-01-06T19:10:20+00:00"
         },
         {
             "name": "codeitnowin/barcode",
@@ -34932,16 +34932,16 @@
         },
         {
             "name": "spryker/shipment-gui",
-            "version": "2.1.1",
+            "version": "2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/shipment-gui.git",
-                "reference": "e98259ced2f22101293380f444f3c65edbacb1fd"
+                "reference": "0eaeae7dc6b8371a2f399c88f32eebce7c796edd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/shipment-gui/zipball/e98259ced2f22101293380f444f3c65edbacb1fd",
-                "reference": "e98259ced2f22101293380f444f3c65edbacb1fd",
+                "url": "https://api.github.com/repos/spryker/shipment-gui/zipball/0eaeae7dc6b8371a2f399c88f32eebce7c796edd",
+                "reference": "0eaeae7dc6b8371a2f399c88f32eebce7c796edd",
                 "shasum": ""
             },
             "require": {
@@ -34975,7 +34975,7 @@
                 "proprietary"
             ],
             "description": "ShipmentGui module",
-            "time": "2019-12-21T11:35:47+00:00"
+            "time": "2020-01-06T13:37:42+00:00"
         },
         {
             "name": "spryker/shipments-rest-api",
@@ -43192,31 +43192,30 @@
         },
         {
             "name": "nette/schema",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/schema.git",
-                "reference": "337117df1dade22e2ba1fdc4a4b832c1e9b06b76"
+                "reference": "febf71fb4052c824046f5a33f4f769a6e7fa0cb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/schema/zipball/337117df1dade22e2ba1fdc4a4b832c1e9b06b76",
-                "reference": "337117df1dade22e2ba1fdc4a4b832c1e9b06b76",
+                "url": "https://api.github.com/repos/nette/schema/zipball/febf71fb4052c824046f5a33f4f769a6e7fa0cb4",
+                "reference": "febf71fb4052c824046f5a33f4f769a6e7fa0cb4",
                 "shasum": ""
             },
             "require": {
-                "nette/utils": "^3.0.1",
+                "nette/utils": "^3.1",
                 "php": ">=7.1"
             },
             "require-dev": {
                 "nette/tester": "^2.2",
+                "phpstan/phpstan-nette": "^0.12",
                 "tracy/tracy": "^2.3"
             },
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
+                "branch-alias": []
             },
             "autoload": {
                 "classmap": [
@@ -43245,7 +43244,7 @@
                 "config",
                 "nette"
             ],
-            "time": "2019-10-31T20:52:19+00:00"
+            "time": "2020-01-06T22:52:48+00:00"
         },
         {
             "name": "nette/utils",
@@ -45672,12 +45671,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "d7f0a2c489bb9fb83f112180a642739849d81c84"
+                "reference": "7b95a1238b1c14459c4b904ed2f441bd8ef32682"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/d7f0a2c489bb9fb83f112180a642739849d81c84",
-                "reference": "d7f0a2c489bb9fb83f112180a642739849d81c84",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/7b95a1238b1c14459c4b904ed2f441bd8ef32682",
+                "reference": "7b95a1238b1c14459c4b904ed2f441bd8ef32682",
                 "shasum": ""
             },
             "require": {
@@ -45718,7 +45717,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2020-01-03T18:14:49+00:00"
+            "time": "2020-01-06T22:45:34+00:00"
         },
         {
             "name": "spryker/development",
