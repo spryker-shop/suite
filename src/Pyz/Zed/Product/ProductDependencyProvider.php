@@ -166,10 +166,10 @@ class ProductDependencyProvider extends SprykerProductDependencyProvider
             new PriceProductConcreteAfterUpdatePlugin(),
             new ProductSearchProductConcreteAfterUpdatePlugin(),
             new ProductBundleProductConcreteAfterUpdatePlugin(),
-            new ProductBundleProductConcreteActivatorAfterUpdatePlugin(),
             new ProductValidityUpdatePlugin(),
             new SaveDiscontinuedNotesProductConcretePluginUpdate(),
             new DiscontinuedProductConcreteAfterUpdatePlugin(),
+            new ProductBundleProductConcreteActivatorAfterUpdatePlugin(),
         ];
     }
 }
