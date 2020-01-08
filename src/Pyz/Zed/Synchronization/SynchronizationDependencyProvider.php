@@ -38,7 +38,7 @@ use Spryker\Zed\PriceProductOfferStorage\Communication\Plugin\Synchronization\Pr
 use Spryker\Zed\PriceProductStorage\Communication\Plugin\Synchronization\PriceProductAbstractSynchronizationDataPlugin;
 use Spryker\Zed\PriceProductStorage\Communication\Plugin\Synchronization\PriceProductConcreteSynchronizationDataPlugin;
 use Spryker\Zed\ProductAlternativeStorage\Communication\Plugin\Synchronization\ProductAlternativeSynchronizationDataBulkPlugin;
-use Spryker\Zed\ProductAlternativeStorage\Communication\Plugin\Synchronization\ProductReplacementForSynchronizationDataPlugin;
+use Spryker\Zed\ProductAlternativeStorage\Communication\Plugin\Synchronization\ProductReplacementForSynchronizationDataBulkPlugin;
 use Spryker\Zed\ProductCategoryFilterStorage\Communication\Plugin\Synchronization\ProductCategoryFilterSynchronizationDataPlugin;
 use Spryker\Zed\ProductCategoryStorage\Communication\Plugin\Synchronization\ProductCategorySynchronizationDataPlugin;
 use Spryker\Zed\ProductDiscontinuedStorage\Communication\Plugin\Synchronization\ProductDiscontinuedSynchronizationDataBulkPlugin;
@@ -133,7 +133,7 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
             new ContentStorageSynchronizationDataPlugin(),
             new ProductAlternativeSynchronizationDataBulkPlugin(),
             new ProductOfferAvailabilitySynchronizationDataBulkPlugin(),
-            new ProductReplacementForSynchronizationDataPlugin(),
+            new ProductReplacementForSynchronizationDataBulkPlugin(),
             new TaxProductSynchronizationDataPlugin(),
             new TaxSynchronizationDataPlugin(),
             new CompanyUserSynchronizationDataBulkPlugin(),
