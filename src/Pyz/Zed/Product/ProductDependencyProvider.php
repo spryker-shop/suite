@@ -16,11 +16,11 @@ use Spryker\Zed\PriceProduct\Communication\Plugin\ProductConcrete\PriceProductCo
 use Spryker\Zed\PriceProduct\Communication\Plugin\ProductConcrete\PriceProductConcreteReadPlugin;
 use Spryker\Zed\Product\ProductDependencyProvider as SprykerProductDependencyProvider;
 use Spryker\Zed\ProductAlternativeGui\Communication\Plugin\Product\ProductConcretePluginUpdate as ProductAlternativeGuiProductConcretePluginUpdate;
-use Spryker\Zed\ProductBundle\Communication\Plugin\Product\ProductBundleProductConcreteActivatorAfterUpdatePlugin;
-use Spryker\Zed\ProductBundle\Communication\Plugin\Product\ProductBundleProductConcreteActivatorBeforeUpdatePlugin;
+use Spryker\Zed\ProductBundle\Communication\Plugin\Product\ProductBundleDeactivatorProductConcreteAfterUpdatePlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Product\ProductBundleProductConcreteAfterCreatePlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Product\ProductBundleProductConcreteAfterUpdatePlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Product\ProductBundleProductConcreteReadPlugin;
+use Spryker\Zed\ProductBundle\Communication\Plugin\Product\ProductBundleStatusExpanderProductConcreteBeforeUpdatePlugin;
 use Spryker\Zed\ProductDiscontinued\Communication\Plugin\SaveDiscontinuedNotesProductConcretePluginUpdate;
 use Spryker\Zed\ProductDiscontinuedProductBundleConnector\Communication\Plugin\Product\DiscontinuedProductConcreteAfterCreatePlugin;
 use Spryker\Zed\ProductDiscontinuedProductBundleConnector\Communication\Plugin\Product\DiscontinuedProductConcreteAfterUpdatePlugin;
@@ -151,7 +151,7 @@ class ProductDependencyProvider extends SprykerProductDependencyProvider
     {
         return [
             new ProductAlternativeGuiProductConcretePluginUpdate(), #ProductAlternativeFeature
-            new ProductBundleProductConcreteActivatorBeforeUpdatePlugin(),
+            new ProductBundleStatusExpanderProductConcreteBeforeUpdatePlugin(),
         ];
     }
 
@@ -171,7 +171,7 @@ class ProductDependencyProvider extends SprykerProductDependencyProvider
             new ProductValidityUpdatePlugin(),
             new SaveDiscontinuedNotesProductConcretePluginUpdate(),
             new DiscontinuedProductConcreteAfterUpdatePlugin(),
-            new ProductBundleProductConcreteActivatorAfterUpdatePlugin(),
+            new ProductBundleDeactivatorProductConcreteAfterUpdatePlugin(),
         ];
     }
 }
