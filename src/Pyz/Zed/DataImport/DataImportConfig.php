@@ -45,6 +45,7 @@ use Spryker\Zed\ProductDiscontinuedDataImport\ProductDiscontinuedDataImportConfi
 use Spryker\Zed\ProductListDataImport\ProductListDataImportConfig;
 use Spryker\Zed\ProductMeasurementUnitDataImport\ProductMeasurementUnitDataImportConfig;
 use Spryker\Zed\ProductOfferStockDataImport\ProductOfferStockDataImportConfig;
+use Spryker\Zed\ProductOfferValidityDataImport\ProductOfferValidityDataImportConfig;
 use Spryker\Zed\ProductPackagingUnitDataImport\ProductPackagingUnitDataImportConfig;
 use Spryker\Zed\ProductQuantityDataImport\ProductQuantityDataImportConfig;
 use Spryker\Zed\QuoteRequestDataImport\QuoteRequestDataImportConfig;
@@ -503,6 +504,7 @@ class DataImportConfig extends SprykerDataImportConfig
             MerchantProductOfferDataImportConfig::IMPORT_TYPE_MERCHANT_PRODUCT_OFFER_STORE,
             MerchantOpeningHoursDataImportConfig::IMPORT_TYPE_MERCHANT_OPENING_HOURS_WEEKDAY_SCHEDULE,
             MerchantOpeningHoursDataImportConfig::IMPORT_TYPE_MERCHANT_OPENING_HOURS_DATE_SCHEDULE,
+            ProductOfferValidityDataImportConfig::IMPORT_TYPE_PRODUCT_OFFER_VALIDITY,
             PriceProductOfferDataImportConfig::IMPORT_TYPE_PRICE_PRODUCT_OFFER,
             ProductOfferStockDataImportConfig::IMPORT_TYPE_PRODUCT_OFFER_STOCK,
             MultiCartDataImportConfig::IMPORT_TYPE_MULTI_CART,
