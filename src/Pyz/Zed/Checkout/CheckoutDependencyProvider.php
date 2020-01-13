@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Checkout;
 
+use Pyz\Zed\MerchantSalesOrder\Communication\Plugin\MerchantOrderSaverPlugin;
 use Spryker\Zed\Availability\Communication\Plugin\ProductsAvailableCheckoutPreConditionPlugin;
 use Spryker\Zed\CartNote\Communication\Plugin\Checkout\CartNoteSaverPlugin;
 use Spryker\Zed\Checkout\CheckoutDependencyProvider as SprykerCheckoutDependencyProvider;
@@ -17,6 +18,7 @@ use Spryker\Zed\Discount\Communication\Plugin\Checkout\VoucherDiscountMaxUsageCh
 use Spryker\Zed\GiftCard\Communication\Plugin\GiftCardOrderItemSaverPlugin;
 use Spryker\Zed\GiftCardMailConnector\Communication\Plugin\Checkout\SendEmailToGiftCardUser;
 use Spryker\Zed\Kernel\Container;
+use Spryker\Zed\MerchantProfile\Communication\Plugin\Checkout\MerchantProfileCheckoutPreConditionPlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Checkout\PaymentOrderSaverPlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Checkout\PaymentPostCheckPlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Checkout\PaymentPreCheckPlugin;
@@ -39,7 +41,7 @@ use Spryker\Zed\ShipmentCheckoutConnector\Communication\Plugin\Checkout\Shipment
 class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
 {
     /**
-     * @param \Spryker\Zed\Kernel\Container $container ’
+     * @param \Spryker\Zed\Kernel\Container $container
      *
      * @return \Spryker\Zed\CheckoutExtension\Dependency\Plugin\CheckoutPreConditionPluginInterface[]
      */
@@ -57,6 +59,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new VoucherDiscountMaxUsageCheckoutPreConditionPlugin(),
             new QuoteRequestPreCheckPlugin(),
             new QuoteApprovalCheckoutPreConditionPlugin(),
+            new MerchantProfileCheckoutPreConditionPlugin(),
         ];
     }
 
@@ -80,6 +83,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new ProductBundleOrderSaverPlugin(),
             new PaymentOrderSaverPlugin(),
             new SalesOrderThresholdExpenseSavePlugin(), #SalesOrderThresholdFeature
+            new MerchantOrderSaverPlugin(),
         ];
 
         return $plugins;

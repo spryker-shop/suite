@@ -165,6 +165,6 @@ class ProductManagerStub
      */
     protected function throwSampleException()
     {
-        throw new Exception('DB error occured');
+        throw new Exception('DB error occurred');
     }
 }

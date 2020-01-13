@@ -100,6 +100,7 @@ $config[ZedNavigationConstants::ZED_NAVIGATION_CACHE_ENABLED] = true;
 // ---------- Error handling
 $config[ErrorHandlerConstants::DISPLAY_ERRORS] = true;
 $config[ErrorHandlerConstants::ERROR_RENDERER] = WebExceptionErrorRenderer::class;
+$config[ErrorHandlerConstants::IS_PRETTY_ERROR_HANDLER_ENABLED] = true;
 
 // ---------- ACL
 $config[AclConstants::ACL_USER_RULE_WHITELIST][] = [
@@ -138,9 +139,6 @@ $config[CalculationPageConstants::ENABLE_CART_DEBUG] = true;
 
 // ---------- Error page
 $config[ErrorPageConstants::ENABLE_ERROR_404_STACK_TRACE] = true;
-
-// ----------- Application
-$config[ApplicationConstants::ENABLE_PRETTY_ERROR_HANDLER] = true;
 
 // ---------- Console
 $config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = true;
