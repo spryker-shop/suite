@@ -98,41 +98,41 @@ sections:
             command: "vendor/bin/console search:setup:source-map"
 
 
-#    setup-test:
-#        codeception-build:
-#            command: "vendor/bin/codecept build --ansi"
-#
-#        databuilder-generate:
-#            command: "vendor/bin/console transfer:databuilder:generate"
-#
-#    demodata:
-#        import:
-#            command: "vendor/bin/console data:import"
-#
-#        update-product-labels:
-#            command: "vendor/bin/console product-label:relations:update"
-#
-#    fixtures:
-#        fixtures:
-#            command: 'vendor/bin/console code:fixtures'
-#
-#    queue:
-#        run-worker:
-#            command: "vendor/bin/console queue:worker:start --stop-when-empty"
-#
-#
-#    frontend:
-#        dependencies-install:
-#            command: "vendor/bin/console frontend:project:install-dependencies"
-#
-#        yves-install-dependencies:
-#            command: "vendor/bin/console frontend:yves:install-dependencies"
-#
-#        yves-build-frontend:
-#            command: "vendor/bin/console frontend:yves:build"
-#
-#        zed-install-dependencies:
-#            command: "vendor/bin/console frontend:zed:install-dependencies"
-#
-#        zed-build-frontend:
-#            command: "vendor/bin/console frontend:zed:build"
+    setup-test:
+        codeception-build:
+            command: "vendor/bin/codecept build --ansi"
+
+        databuilder-generate:
+            command: "vendor/bin/console transfer:databuilder:generate"
+
+    demodata:
+        import:
+            command: "vendor/bin/console data:import"
+
+        update-product-labels:
+            command: "vendor/bin/console product-label:relations:update"
+
+    fixtures:
+        fixtures:
+            command: "vendor/bin/console code:fixtures"
+
+    queue:
+        run-worker:
+            command: "vendor/bin/console queue:worker:start --stop-when-empty"
+
+
+    frontend:
+        dependencies-install:
+            command: "vendor/bin/console frontend:project:install-dependencies"
+
+        yves-install-dependencies:
+            command: "vendor/bin/console frontend:yves:install-dependencies"
+
+        yves-build-frontend:
+            command: "vendor/bin/console frontend:yves:build"
+
+        zed-install-dependencies:
+            command: "vendor/bin/console frontend:zed:install-dependencies"
+
+        zed-build-frontend:
+            command: "vendor/bin/console frontend:zed:build"
