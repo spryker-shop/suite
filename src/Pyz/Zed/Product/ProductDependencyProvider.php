@@ -20,7 +20,6 @@ use Spryker\Zed\ProductBundle\Communication\Plugin\Product\ProductBundleDeactiva
 use Spryker\Zed\ProductBundle\Communication\Plugin\Product\ProductBundleProductConcreteAfterCreatePlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Product\ProductBundleProductConcreteAfterUpdatePlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Product\ProductBundleProductConcreteReadPlugin;
-use Spryker\Zed\ProductBundle\Communication\Plugin\Product\ProductBundleStatusExpanderProductConcreteBeforeUpdatePlugin;
 use Spryker\Zed\ProductDiscontinued\Communication\Plugin\SaveDiscontinuedNotesProductConcretePluginUpdate;
 use Spryker\Zed\ProductDiscontinuedProductBundleConnector\Communication\Plugin\Product\DiscontinuedProductConcreteAfterCreatePlugin;
 use Spryker\Zed\ProductDiscontinuedProductBundleConnector\Communication\Plugin\Product\DiscontinuedProductConcreteAfterUpdatePlugin;
@@ -151,7 +150,6 @@ class ProductDependencyProvider extends SprykerProductDependencyProvider
     {
         return [
             new ProductAlternativeGuiProductConcretePluginUpdate(), #ProductAlternativeFeature
-            new ProductBundleStatusExpanderProductConcreteBeforeUpdatePlugin(),
         ];
     }
 
