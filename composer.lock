@@ -5570,7 +5570,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "e9a6d4c9e0b5e878f4080eac7a9599cee7321ab6"
+                "reference": "939632fcf536876c218188df08869034e6bd2e8d"
             },
             "require": {
                 "php": ">=7.2"
@@ -6219,7 +6219,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-01-10T07:10:39+00:00"
+            "time": "2020-01-14T16:18:50+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -11524,6 +11524,52 @@
                 "standards"
             ],
             "time": "2019-11-28T20:16:23+00:00"
+        },
+        {
+            "name": "spryker/product-offer-validity",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-offer-validity.git",
+                "reference": "ac163ea22d47fd0f51a2fa0ba7fd43559897bcc7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-offer-validity/zipball/ac163ea22d47fd0f51a2fa0ba7fd43559897bcc7",
+                "reference": "ac163ea22d47fd0f51a2fa0ba7fd43559897bcc7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/kernel": "^3.33.0",
+                "spryker/product-offer": "^0.2.1",
+                "spryker/propel-orm": "^1.3.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/merchant": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\ProductOfferValidity\\Helper\\": "tests/SprykerTest/Zed/ProductOfferValidity/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductOfferValidity module",
+            "time": "2020-01-10T11:04:29+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
