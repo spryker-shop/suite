@@ -63,6 +63,7 @@ use Spryker\Zed\ProductMeasurementUnitDataImport\Communication\Plugin\ProductMea
 use Spryker\Zed\ProductMeasurementUnitDataImport\Communication\Plugin\ProductMeasurementSalesUnitStoreDataImportPlugin;
 use Spryker\Zed\ProductMeasurementUnitDataImport\Communication\Plugin\ProductMeasurementUnitDataImportPlugin;
 use Spryker\Zed\ProductOfferStockDataImport\Communication\ProductOfferStockDataImportPlugin;
+use Spryker\Zed\ProductOfferValidityDataImport\Communication\ProductOfferValidityDataImportPlugin;
 use Spryker\Zed\ProductPackagingUnitDataImport\Communication\Plugin\DataImport\ProductPackagingUnitDataImportPlugin;
 use Spryker\Zed\ProductPackagingUnitDataImport\Communication\Plugin\DataImport\ProductPackagingUnitTypeDataImportPlugin;
 use Spryker\Zed\ProductQuantityDataImport\Communication\Plugin\ProductQuantityDataImportPlugin;
@@ -247,6 +248,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new MerchantOpeningHoursWeekdayScheduleDataImportPlugin(),
             new MerchantOpeningHoursDateScheduleDataImportPlugin(),
             new PriceProductDataImportPlugin(),
+            new ProductOfferValidityDataImportPlugin(),
             new PriceProductOfferDataImportPlugin(),
             new MerchantRelationshipDataImportPlugin(),
             new MerchantRelationshipSalesOrderThresholdDataImportPlugin(),
