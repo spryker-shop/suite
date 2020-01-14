@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\MerchantUser\Persistence;
 
-use Orm\Zed\MerchantUser\Persistence\Base\SpyMerchantUserQuery as BaseSpyMerchantUserQuery;
+use Spryker\Zed\MerchantUser\Persistence\Propel\AbstractSpyMerchantUserQuery as BaseSpyMerchantUserQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_merchant_user' table.

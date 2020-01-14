@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\MerchantUser\Persistence;
 
-use Orm\Zed\MerchantUser\Persistence\Base\SpyMerchantUser as BaseSpyMerchantUser;
+use Spryker\Zed\MerchantUser\Persistence\Propel\AbstractSpyMerchantUser as BaseSpyMerchantUser;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_merchant_user' table.
