@@ -21,6 +21,7 @@ use Generated\Shared\Transfer\StoreRelationTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
 use PyzTest\Glue\Checkout\CheckoutRestApiTester;
+use SprykerTest\Shared\Shipment\Helper\ShipmentMethodDataHelper;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
@@ -174,7 +175,16 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
      */
     protected function createShipmentMethod(CheckoutRestApiTester $I): void
     {
-        $this->shipmentMethodTransfer = $I->haveShipmentMethod(['is_active' => true]);
+        $storeTransfer = $I->haveStore([
+            StoreTransfer::NAME => 'DE',
+        ]);
+
+        $this->shipmentMethodTransfer = $I->haveShipmentMethod(
+            ['is_active' => true],
+            [],
+            ShipmentMethodDataHelper::DEFAULT_PRICE_LIST,
+            [$storeTransfer->getIdStore()]
+        );
     }
 
     /**
