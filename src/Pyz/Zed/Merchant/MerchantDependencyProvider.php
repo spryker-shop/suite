@@ -9,20 +9,43 @@ namespace Pyz\Zed\Merchant;
 
 use Spryker\Zed\Merchant\MerchantDependencyProvider as SprykerMerchantDependencyProvider;
 use Spryker\Zed\MerchantProfile\Communication\Plugin\Merchant\MerchantProfileExpanderPlugin;
-use Spryker\Zed\MerchantProfile\Communication\Plugin\Merchant\MerchantProfileMerchantPostSavePlugin;
-use Spryker\Zed\MerchantUser\Communication\Plugin\Merchant\MerchantUserMerchantPostSavePlugin;
+use Spryker\Zed\MerchantProfile\Communication\Plugin\Merchant\MerchantProfileMerchantPostCreatePlugin;
+use Spryker\Zed\MerchantProfile\Communication\Plugin\Merchant\MerchantProfileMerchantPostUpdatePlugin;
+use Spryker\Zed\MerchantUser\Communication\Plugin\Merchant\MerchantUserMerchantPostCreatePlugin;
+use Spryker\Zed\MerchantUser\Communication\Plugin\Merchant\MerchantUserMerchantPostUpdatePlugin;
 
 class MerchantDependencyProvider extends SprykerMerchantDependencyProvider
 {
     /**
+     * @return \Spryker\Zed\MerchantExtension\Dependency\Plugin\MerchantPostCreatePluginInterface[]
+     */
+    protected function getMerchantPostCreatePlugins(): array
+    {
+        return [
+            new MerchantProfileMerchantPostCreatePlugin(),
+            new MerchantUserMerchantPostCreatePlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\MerchantExtension\Dependency\Plugin\MerchantPostUpdatePluginInterface[]
+     */
+    protected function getMerchantPostUpdatePlugins(): array
+    {
+        return [
+            new MerchantProfileMerchantPostUpdatePlugin(),
+            new MerchantUserMerchantPostUpdatePlugin(),
+        ];
+    }
+
+    /**
+     * @deprecated Use MerchantDependencyProvider::getMerchantPostCreatePlugins() instead.
+     *
      * @return \Spryker\Zed\MerchantExtension\Dependency\Plugin\MerchantPostSavePluginInterface[]
      */
     protected function getMerchantPostSavePlugins(): array
     {
-        return [
-            new MerchantProfileMerchantPostSavePlugin(),
-            new MerchantUserMerchantPostSavePlugin(),
-        ];
+        return [];
     }
 
     /**
