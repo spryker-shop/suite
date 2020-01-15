@@ -117,7 +117,6 @@ use Spryker\Zed\SearchElasticsearch\Communication\Console\ElasticsearchSnapshotR
 use Spryker\Zed\Session\Communication\Console\SessionRemoveLockConsole;
 use Spryker\Zed\Setup\Communication\Console\DeployPreparePropelConsole;
 use Spryker\Zed\Setup\Communication\Console\EmptyGeneratedDirectoryConsole;
-use Spryker\Zed\Setup\Communication\Console\InstallConsole;
 use Spryker\Zed\Setup\Communication\Console\Npm\RunnerConsole;
 use Spryker\Zed\SetupFrontend\Communication\Console\CleanUpDependenciesConsole;
 use Spryker\Zed\SetupFrontend\Communication\Console\InstallPackageManagerConsole;
@@ -265,7 +264,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             // Setup commands
             new RunnerConsole(),
             new EmptyGeneratedDirectoryConsole(),
-            new InstallConsole(),
             new DeployPreparePropelConsole(),
 
             new DatabaseDropConsole(),
