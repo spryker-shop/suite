@@ -548,5 +548,3 @@ $config[KernelConstants::STRICT_DOMAIN_REDIRECT] = true;
 
 // ----------- Xdebug profiler
 $config[ZedRequestConstants::XDEBUG_PROFILER_FORWARD_ENABLED] = true;
-$config[ZedRequestConstants::XDEBUG_PROFILER_NAME] = 'XDEBUG_PROFILE';
-$config[ZedRequestConstants::DEFAULT_XDEBUG_PROFILER_NAME] = 'XDEBUG_PROFILE';
