@@ -545,6 +545,3 @@ $config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GE
 
 // ----------- HTTP Security
 $config[KernelConstants::STRICT_DOMAIN_REDIRECT] = true;
-
-// ----------- Xdebug profiler
-$config[ZedRequestConstants::XDEBUG_PROFILER_FORWARD_ENABLED] = true;
