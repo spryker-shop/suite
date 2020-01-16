@@ -91,7 +91,7 @@ const validateParameters = env => {
     });
 };
 
-const parseCommandLine = () => {
+const parseCommandLine = () => (
     commandLineParser
         .option('-n, --namespace <namespace name>', 'build the requested namespace. Multiple arguments are allowed.', collectArguments, [])
         .option('-t, --theme <theme name>', 'build the requested theme. Multiple arguments are allowed.', collectArguments, [])
@@ -100,7 +100,7 @@ const parseCommandLine = () => {
         .arguments('<mode>')
         .action(function (modeValue) {
             const { argv, env } = process;
-            const modeIndexInArgs = process.argv.findIndex(element => element === modeValue);
+            const modeIndexInArgs = argv.findIndex(element => element === modeValue);
             const allowedFlagsData = getAllowedFlagsData(this, scripts);
 
             validateParameters(env);
@@ -120,10 +120,8 @@ const parseCommandLine = () => {
 
             mode = modeValue;
         })
-        .parse(process.argv);
-
-    return commandLineParser;
-};
+        .parse(process.argv)
+);
 
 const printAvailableNamespacesAndThemes = (commandLineParameters, pathToConfig) => {
     const namespaceJson = require(pathToConfig);
@@ -131,6 +129,7 @@ const printAvailableNamespacesAndThemes = (commandLineParameters, pathToConfig) 
     if (commandLineParameters.info !== true) {
         return;
     }
+
     console.log('Namespaces with available themes:');
     namespaceJson.namespaces.forEach(namespaceConfig => {
         console.log(`- ${namespaceConfig.namespace}`);
