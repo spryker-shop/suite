@@ -22,7 +22,11 @@ const getAllowedFlagsData = (commandLineParserInfo, configData) => {
     const allowedFlagsData = {};
 
     commandLineParserInfo.options.forEach(option => {
-        const {short: shortFlagName, long: longFlagName, required: isFlagValueRequired} = option;
+        const {
+            short: shortFlagName,
+            long: longFlagName,
+            required: isFlagValueRequired,
+        } = option;
 
         allowedFlagsData[shortFlagName] = {
             required: isFlagValueRequired,
@@ -63,14 +67,14 @@ const isCommand = (allowedFlagsData, args, index) => {
 
     if (isFlag || isFlagValue) {
         return false;
-    };
+    }
 
     if (isValidCommand) {
         return true;
-    };
+    }
 
     throw new Error(`Command "${args[index]}" is not available`);
-}
+};
 
 const validateParameters = env => {
     if (!env || !env.npm_config_argv) {
@@ -78,51 +82,55 @@ const validateParameters = env => {
     }
 
     const originalArgumentsString = env.npm_config_argv;
-    const {original: originalArguments} = JSON.parse(originalArgumentsString);
+    const { original: originalArguments } = JSON.parse(originalArgumentsString);
 
     originalArguments.forEach(argument => {
         if (!argument.indexOf('-') && !originalArguments.includes('--')) {
-            throw new Error('It is impossible to use flags without "--" indentifier if you use "npm" script.');
+            throw new Error('It is impossible to use flags without "--" identifier if you use "npm" script.');
         }
     });
 };
 
-commandLineParser
-    .option('-n, --namespace <namespace name>', 'build the requested namespace. Multiple arguments are allowed.', collectArguments, [])
-    .option('-t, --theme <theme name>', 'build the requested theme. Multiple arguments are allowed.', collectArguments, [])
-    .option('-i, --info', 'information about all namespaces and available themes')
-    .option('-c, --config <path>', 'path to JSON file with namespace config', globalSettings.paths.namespaceConfig)
-    .arguments('<mode>')
-    .action(function (modeValue) {
-        const { argv, env } = process;
-        const modeIndexInArgs = process.argv.findIndex(element => element === modeValue);
-        const allowedFlagsData = getAllowedFlagsData(this, scripts);
+const parseCommandLine = () => {
+    commandLineParser
+        .option('-n, --namespace <namespace name>', 'build the requested namespace. Multiple arguments are allowed.', collectArguments, [])
+        .option('-t, --theme <theme name>', 'build the requested theme. Multiple arguments are allowed.', collectArguments, [])
+        .option('-i, --info', 'information about all namespaces and available themes')
+        .option('-c, --config <path>', 'path to JSON file with namespace config', globalSettings.paths.namespaceConfig)
+        .arguments('<mode>')
+        .action(function (modeValue) {
+            const { argv, env } = process;
+            const modeIndexInArgs = process.argv.findIndex(element => element === modeValue);
+            const allowedFlagsData = getAllowedFlagsData(this, scripts);
 
-        validateParameters(env);
+            validateParameters(env);
 
-        argv.forEach((arg, index) => {
-            if (index <= modeIndexInArgs) {
-                return;
-            };
+            argv.forEach((arg, index) => {
+                if (index <= modeIndexInArgs) {
+                    return;
+                }
 
-            validateMode(modeValue);
-            validateFlag(arg, allowedFlagsData);
+                validateMode(modeValue);
+                validateFlag(arg, allowedFlagsData);
 
-            if (isCommand(allowedFlagsData, argv, index)) {
-                console.warn('It is impossible to use several commands. All commands and parameters entered after the second command are ignored.');
-            }
-        });
+                if (isCommand(allowedFlagsData, argv, index)) {
+                    console.warn('It is impossible to use several commands. All commands and parameters entered after the second command are ignored.');
+                }
+            });
 
-        mode = modeValue;
-    })
-    .parse(process.argv);
+            mode = modeValue;
+        })
+        .parse(process.argv);
 
-const namespaces = commandLineParser.namespace;
-const themes = commandLineParser.theme;
-const pathToConfig = join(globalSettings.context, commandLineParser.config);
+    return commandLineParser;
+};
 
-const namespaceJson = require(pathToConfig);
-if (commandLineParser.info === true) {
+const printAvailableNamespacesAndThemes = (commandLineParameters, pathToConfig) => {
+    const namespaceJson = require(pathToConfig);
+
+    if (commandLineParameters.info !== true) {
+        return;
+    }
     console.log('Namespaces with available themes:');
     namespaceJson.namespaces.forEach(namespaceConfig => {
         console.log(`- ${namespaceConfig.namespace}`);
@@ -133,11 +141,20 @@ if (commandLineParser.info === true) {
     });
     console.log('');
     process.exit();
-}
-
-module.exports = {
-    mode,
-    namespaces,
-    themes,
-    pathToConfig
 };
+
+const getAttributes = () => {
+    const commandLineParameters = parseCommandLine();
+    const pathToConfig = join(globalSettings.context, commandLineParameters.config);
+
+    printAvailableNamespacesAndThemes(commandLineParameters, pathToConfig);
+
+    return {
+        mode: mode,
+        namespaces: commandLineParameters.namespace,
+        themes: commandLineParameters.theme,
+        pathToConfig: pathToConfig,
+    };
+};
+
+module.exports = getAttributes;
