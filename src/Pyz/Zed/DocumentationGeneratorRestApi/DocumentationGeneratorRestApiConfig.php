@@ -14,7 +14,7 @@ class DocumentationGeneratorRestApiConfig extends SprykerDocumentationGeneratorR
     /**
      * @project Only needed internal non-split project, not in public split project.
      *
-     * @return array
+     * @return string[]
      */
     protected function getCoreAnnotationSourceDirectoryPatterns(): array
     {
