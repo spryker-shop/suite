@@ -1,5 +1,7 @@
 {% extends molecule('product-configurator', '@SprykerShop:ProductDetailPage') %}
 
-{% block colors %}
+{% block product_group_widget %}
+    {{ parent() }}
+
     {% widget 'ProductGroupColorWidget' args [data.product.idProductAbstract] use view('product-detail-color-selector', 'ProductGroupWidget') only %}{% endwidget %}
 {% endblock %}
