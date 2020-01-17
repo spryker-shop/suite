@@ -20,11 +20,17 @@ class FormDependencyProvider extends SprykerFormDependencyProvider
      */
     protected function getFormPlugins(): array
     {
-        return [
+        $formPlugins = [
             new ValidatorExtensionFormPlugin(),
             new HttpFoundationTypeExtensionFormPlugin(),
             new CsrfFormPlugin(),
             new WebProfilerFormPlugin(),
         ];
+
+        if (class_exists(WebProfilerFormPlugin::class)) {
+            $formPlugins[] = new WebProfilerFormPlugin();
+        }
+
+        return $formPlugins;
     }
 }
