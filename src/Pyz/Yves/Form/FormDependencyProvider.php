@@ -24,7 +24,6 @@ class FormDependencyProvider extends SprykerFormDependencyProvider
             new ValidatorExtensionFormPlugin(),
             new HttpFoundationTypeExtensionFormPlugin(),
             new CsrfFormPlugin(),
-            new WebProfilerFormPlugin(),
         ];
 
         if (class_exists(WebProfilerFormPlugin::class)) {

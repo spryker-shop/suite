@@ -37,7 +37,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new MessengerApplicationPlugin(),
             new PropelApplicationPlugin(),
             new RouterApplicationPlugin(),
-            new WebProfilerApplicationPlugin(),
             new HttpApplicationPlugin(),
             new SessionApplicationPlugin(),
             new ErrorHandlerApplicationPlugin(),

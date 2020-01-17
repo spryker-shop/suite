@@ -91,7 +91,6 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new FilesystemTwigLoaderPlugin(),
             new FormFilesystemTwigLoaderPlugin(),
             new ShopApplicationFormTwigLoaderPlugin(),
-            new WebProfilerTwigLoaderPlugin(),
         ];
 
         if (class_exists(WebProfilerTwigLoaderPlugin::class)) {
