@@ -993,6 +993,7 @@
                 "selenium",
                 "webdriver"
             ],
+            "abandoned": "php-webdriver/webdriver",
             "time": "2019-06-13T08:02:18+00:00"
         },
         {
@@ -5490,12 +5491,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/silexphp.git",
-                "reference": "58cbc4d372b82c3d0a023fa1cb6b3ed130b5074a"
+                "reference": "3f9610f0d883b7deb20094677b579b373a165d6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/silexphp/zipball/58cbc4d372b82c3d0a023fa1cb6b3ed130b5074a",
-                "reference": "58cbc4d372b82c3d0a023fa1cb6b3ed130b5074a",
+                "url": "https://api.github.com/repos/spryker/silexphp/zipball/3f9610f0d883b7deb20094677b579b373a165d6b",
+                "reference": "3f9610f0d883b7deb20094677b579b373a165d6b",
                 "shasum": ""
             },
             "require": {
@@ -5562,7 +5563,7 @@
             "keywords": [
                 "microframework"
             ],
-            "time": "2019-12-05T13:09:27+00:00"
+            "time": "2020-01-17T11:44:57+00:00"
         },
         {
             "name": "spryker/spryker",
@@ -6229,7 +6230,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "5753ad086ce9ad1547a1a4cbd09c2639f34ebd38"
+                "reference": "4f8505eee29c7faa18b35c77ad7c51e3942c46fc"
             },
             "require": {
                 "php": ">=7.2"
@@ -6370,7 +6371,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-01-17T09:43:09+00:00"
+            "time": "2020-01-17T12:21:18+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -10997,20 +10998,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/codeception-phantoman.git",
-                "reference": "ccac099587199bbcf6fa9738dd2e6b84ee54f9a3"
+                "reference": "256d9aae63efb5b373898cb891bbd9327f542e0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/codeception-phantoman/zipball/ccac099587199bbcf6fa9738dd2e6b84ee54f9a3",
-                "reference": "ccac099587199bbcf6fa9738dd2e6b84ee54f9a3",
+                "url": "https://api.github.com/repos/spryker-sdk/codeception-phantoman/zipball/256d9aae63efb5b373898cb891bbd9327f542e0d",
+                "reference": "256d9aae63efb5b373898cb891bbd9327f542e0d",
                 "shasum": ""
             },
             "require": {
-                "codeception/codeception": "^2.0.0 || ^3.0.0",
                 "php": ">=7.1"
             },
             "require-dev": {
-                "sprxyker/code-sniffer": "*"
+                "codeception/codeception": "^4.0",
+                "phpstan/phpstan": "^0.12.4",
+                "spryker/code-sniffer": "*"
             },
             "type": "library",
             "extra": {
@@ -11027,8 +11029,8 @@
             "license": [
                 "proprietary"
             ],
-            "description": "CodeceptionExtension module for auto start phantom.",
-            "time": "2019-05-03T08:24:57+00:00"
+            "description": "CodeceptionExtension for auto start phantom.",
+            "time": "2020-01-17T11:44:46+00:00"
         },
         {
             "name": "spryker-sdk/composer-constrainer",
