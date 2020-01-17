@@ -11,8 +11,7 @@ use Spryker\Zed\Merchant\MerchantDependencyProvider as SprykerMerchantDependency
 use Spryker\Zed\MerchantProfile\Communication\Plugin\Merchant\MerchantProfileExpanderPlugin;
 use Spryker\Zed\MerchantProfile\Communication\Plugin\Merchant\MerchantProfileMerchantPostCreatePlugin;
 use Spryker\Zed\MerchantProfile\Communication\Plugin\Merchant\MerchantProfileMerchantPostUpdatePlugin;
-use Spryker\Zed\MerchantUser\Communication\Plugin\Merchant\MerchantPortalAdminMerchantPostCreatePlugin;
-use Spryker\Zed\MerchantUser\Communication\Plugin\Merchant\MerchantPortalAdminMerchantPostUpdatePlugin;
+use Spryker\Zed\MerchantUser\Communication\Plugin\Merchant\MerchantPortalAdminMerchantPostSavePlugin;
 
 class MerchantDependencyProvider extends SprykerMerchantDependencyProvider
 {
@@ -23,7 +22,7 @@ class MerchantDependencyProvider extends SprykerMerchantDependencyProvider
     {
         return [
             new MerchantProfileMerchantPostCreatePlugin(),
-            new MerchantPortalAdminMerchantPostCreatePlugin(),
+            new MerchantPortalAdminMerchantPostSavePlugin(),
         ];
     }
 
@@ -34,7 +33,7 @@ class MerchantDependencyProvider extends SprykerMerchantDependencyProvider
     {
         return [
             new MerchantProfileMerchantPostUpdatePlugin(),
-            new MerchantPortalAdminMerchantPostUpdatePlugin(),
+            new MerchantPortalAdminMerchantPostSavePlugin(),
         ];
     }
 
