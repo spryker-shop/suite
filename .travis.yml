@@ -243,6 +243,8 @@ before_install:
   # - grabs the remaining lines from stores.php (including the hook line again)
   # - uses temporary file to avoid content loss because of the partial output writing of the operating system
   - ( awk '1;/@hook travis-ci/{exit}' config/Shared/stores.php ; awk 'NR>1' config/Shared/ci/travis/stores.php ; awk '/@hook travis-ci/,0' config/Shared/stores.php ) > config/Shared/stores_tmp.php ; mv config/Shared/stores_tmp.php config/Shared/stores.php
+  - sudo mkdir -p /var/lib/postgres/data
+  - sudo chown postgres:postgres /var/lib/postgres/data
 
 install:
   - chmod -R a+x config/Shared/ci/travis/
@@ -252,9 +254,6 @@ install:
 
 before_script:
   - nvm install 8 > /dev/null
-
-  - sudo mkdir -p /var/lib/postgres/data
-  - sudo chown postgres:postgres /var/lib/postgres/data
 
   - mkdir -p shared/data/common/jenkins
   - mkdir -p shared/data/common/jenkins/jobs
