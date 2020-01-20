@@ -18,7 +18,7 @@ class AclDependencyProvider extends SprykerAclDependencyProvider
     public function getAclInstallerPlugins(): array
     {
         return [
-            MerchantPortalAdminAclInstallerPlugin::class,
+            new MerchantPortalAdminAclInstallerPlugin(),
         ];
     }
 }
