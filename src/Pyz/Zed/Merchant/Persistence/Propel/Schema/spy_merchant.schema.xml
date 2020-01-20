@@ -3,7 +3,7 @@
           namespace="Orm\Zed\Merchant\Persistence"
           package="src.Orm.Zed.Merchant.Persistence">
 
-    <table name="spy_merchant" identifierQuoting="true">
+    <table name="spy_merchant">
         <behavior name="event">
             <parameter name="spy_merchant-name" column="name"/>
         </behavior>
