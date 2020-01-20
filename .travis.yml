@@ -253,7 +253,7 @@ install:
 before_script:
   - nvm install 8 > /dev/null
 
-  - mkdir /var/lib/postgres/data
+  - mkdir -p /var/lib/postgres/data
   - initdb -D '/var/lib/postgres/data'
 
   - mkdir -p shared/data/common/jenkins
