@@ -255,7 +255,6 @@ before_script:
 
   - sudo mkdir -p /var/lib/postgres/data
   - sudo chown postgres:postgres /var/lib/postgres/data
-  - sudo su - postgres -c "initdb -D '/var/lib/postgres/data'"
 
   - mkdir -p shared/data/common/jenkins
   - mkdir -p shared/data/common/jenkins/jobs
