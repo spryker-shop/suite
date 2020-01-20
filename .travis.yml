@@ -254,7 +254,8 @@ before_script:
   - nvm install 8 > /dev/null
 
   - sudo mkdir -p /var/lib/postgres/data
-  - initdb -D '/var/lib/postgres/data'
+  - chown postgres:postgres /var/lib/postgres/data
+  - su - postgres -c "initdb -D '/var/lib/postgres/data'"
 
   - mkdir -p shared/data/common/jenkins
   - mkdir -p shared/data/common/jenkins/jobs
