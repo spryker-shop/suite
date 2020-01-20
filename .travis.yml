@@ -253,6 +253,9 @@ install:
 before_script:
   - nvm install 8 > /dev/null
 
+  - mkdir /var/lib/postgres/data
+  - initdb -D '/var/lib/postgres/data'
+
   - mkdir -p shared/data/common/jenkins
   - mkdir -p shared/data/common/jenkins/jobs
   - mkdir -p data/DE/cache/Yves/twig -m 0777
