@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3e559dd8917e13558c7792b62a8a99de",
+    "content-hash": "beef704944c987ce0fadf28acfd39ccd",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -4989,11 +4989,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/te-723-prototype-publishing-module",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "05be3d512af48b0d144a44df39567044249f0dc7"
+                "reference": "6db61e359e00e1f63a0b8d4d64a774fee818b96f"
             },
             "require": {
                 "php": ">=7.2"
@@ -5484,6 +5484,8 @@
                 "spryker/propel": "*",
                 "spryker/propel-orm": "*",
                 "spryker/propel-query-builder": "*",
+                "spryker/publisher": "*",
+                "spryker/publisher-extension": "*",
                 "spryker/queue": "*",
                 "spryker/quick-order": "*",
                 "spryker/quick-order-extension": "*",
@@ -5644,7 +5646,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-01-21T11:58:51+00:00"
+            "time": "2020-01-21T13:53:56+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -10264,20 +10266,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
+                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler",
-                    "role": "Project Founder"
+                    "homepage": "https://github.com/manuelpichler"
                 },
                 {
                     "name": "Marc Würth",
+                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84",
-                    "role": "Project Maintainer"
+                    "homepage": "https://github.com/ravage84"
                 },
                 {
                     "name": "Other contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",

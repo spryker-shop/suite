@@ -23,7 +23,7 @@ use Spryker\Zed\ConfigurableBundleStorage\Communication\Plugin\Event\Configurabl
 use Spryker\Zed\ConfigurableBundleStorage\Communication\Plugin\Event\ConfigurableBundleTemplateImageEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\ContentStorage\Communication\Plugin\Event\ContentStorageEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\EventBehavior\EventBehaviorDependencyProvider as SprykerEventBehaviorDependencyProvider;
-use Spryker\Zed\GlossaryStorage\Communication\Plugin\Event\GlossaryEventResourceQueryContainerPlugin;
+use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryKey\GlossaryPublisherTriggerPlugin;
 use Spryker\Zed\MerchantOpeningHoursStorage\Communication\Plugin\Event\MerchantOpeningHoursEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\NavigationStorage\Communication\Plugin\Event\NavigationEventResourceQueryContainerPlugin;
 use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Event\PriceProductAbstractMerchantRelationEventResourceBulkRepositoryPlugin;
@@ -78,7 +78,9 @@ class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProv
             new CmsSlotBlockEventResourceBulkRepositoryPlugin(),
             new CmsSlotEventResourceBulkRepositoryPlugin(),
             new ConfigurableBundleTemplateEventResourceBulkRepositoryPlugin(),
-            new GlossaryEventResourceQueryContainerPlugin(),
+            new ProductOfferAvailabilityEventResourceBulkRepositoryPlugin(),
+            new ConfigurableBundleTemplateImageEventResourceBulkRepositoryPlugin(),
+            new ConfigurableBundleTemplatePageSearchEventResourceBulkRepositoryPlugin(),
             new NavigationEventResourceQueryContainerPlugin(),
             new PriceProductConcreteEventResourceQueryContainerPlugin(),
             new PriceProductAbstractEventResourceQueryContainerPlugin(),
@@ -103,10 +105,11 @@ class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProv
             new ProductMeasurementUnitEventResourceBulkRepositoryPlugin(),
             new ProductConcreteMeasurementUnitEventResourceBulkRepositoryPlugin(),
             new ProductQuantityEventResourceBulkRepositoryPlugin(),
-            new ProductConcretePageSearchEventResourceRepositoryPlugin(),
-            new ProductAbstractPackagingEventResourceRepositoryPlugin(),
-            new ContentStorageEventResourceRepositoryPlugin(),
-            new CmsSlotEventResourceBulkRepositoryPlugin(),
+            new ProductPackagingUnitEventResourceBulkRepositoryPlugin(),
+            new ContentStorageEventResourceBulkRepositoryPlugin(),
+            new MerchantOpeningHoursEventResourceBulkRepositoryPlugin(),
+
+            new GlossaryPublisherTriggerPlugin(),
         ];
     }
 }

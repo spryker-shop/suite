@@ -133,7 +133,6 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new MerchantOpeningHoursStorageEventSubscriber());
         $eventSubscriberCollection->add(new PriceProductOfferStorageEventSubscriber());
         $eventSubscriberCollection->add(new ProductOfferAvailabilityStorageEventSubscriber());
-        $eventSubscriberCollection->add(new CmsSlotStorageEventSubscriber());
 
         /**
          * Search Events
@@ -153,7 +152,6 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new ConfigurableBundleTemplateImagePageSearchEventSubscriber());
 
         $eventSubscriberCollection->add(new PublisherSubscriber());
-        $eventSubscriberCollection->add(new AvailabilityNotificationSubscriber());
 
         return $eventSubscriberCollection;
     }
