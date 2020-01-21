@@ -145,7 +145,7 @@
     {% endif %}
 
     {% if can('SeeShoppingListPermissionPlugin') and isProductAvailable %}
-        {% set isDisabled = data.product.idProductConcrete is empty %}
+        {% set isDisabled = data.product.idProductConcrete is empty or data.product.price is null %}
 
         {% widget 'AddToShoppingListWidget' args [sku, isDisabled] only %}
             {% block body %}
