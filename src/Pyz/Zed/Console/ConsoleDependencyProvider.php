@@ -84,6 +84,7 @@ use Spryker\Zed\Propel\Communication\Console\DatabaseDropConsole;
 use Spryker\Zed\Propel\Communication\Console\DatabaseDropTablesConsole;
 use Spryker\Zed\Propel\Communication\Console\DeleteMigrationFilesConsole;
 use Spryker\Zed\Propel\Communication\Console\EntityTransferGeneratorConsole;
+use Spryker\Zed\Propel\Communication\Console\EntityTransferRemoverConsole;
 use Spryker\Zed\Propel\Communication\Console\PropelSchemaValidatorConsole;
 use Spryker\Zed\Propel\Communication\Console\PropelSchemaXmlNameValidatorConsole;
 use Spryker\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
@@ -139,7 +140,9 @@ use Spryker\Zed\StorageRedis\Communication\Console\StorageRedisImportRdbConsole;
 use Spryker\Zed\Synchronization\Communication\Console\ExportSynchronizedDataConsole;
 use Spryker\Zed\Testify\Communication\Console\CleanOutputConsole;
 use Spryker\Zed\Transfer\Communication\Console\DataBuilderGeneratorConsole;
+use Spryker\Zed\Transfer\Communication\Console\DataBuilderRemoverConsole;
 use Spryker\Zed\Transfer\Communication\Console\TransferGeneratorConsole;
+use Spryker\Zed\Transfer\Communication\Console\TransferRemoverConsole;
 use Spryker\Zed\Transfer\Communication\Console\ValidatorConsole;
 use Spryker\Zed\Translator\Communication\Console\CleanTranslationCacheConsole;
 use Spryker\Zed\Translator\Communication\Console\GenerateTranslationCacheConsole;
@@ -173,7 +176,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new BuildValidationCacheConsole(),
             new EmptyAllCachesConsole(),
             new TransferGeneratorConsole(),
+            new TransferRemoverConsole(),
             new EntityTransferGeneratorConsole(),
+            new EntityTransferRemoverConsole(),
             new InitializeDatabaseConsole(),
             new SearchConsole(),
             new GenerateSourceMapConsole(),
@@ -358,6 +363,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new GenerateYvesIdeAutoCompletionConsole();
             $commands[] = new GenerateIdeAutoCompletionConsole();
             $commands[] = new DataBuilderGeneratorConsole();
+            $commands[] = new DataBuilderRemoverConsole();
             $commands[] = new CompletionCommand();
             $commands[] = new PropelSchemaValidatorConsole();
             $commands[] = new PropelSchemaXmlNameValidatorConsole();
