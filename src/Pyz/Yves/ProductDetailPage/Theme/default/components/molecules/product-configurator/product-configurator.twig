@@ -76,7 +76,7 @@
             availableAttributes: data.product.availableAttributes
         }
     } only %}
-        {% block body %}<hr />{{parent()}}{% endblock %}
+        {% block body %}<hr />{{ parent() }}{% endblock %}
     {% endembed %}
 
     <hr />
@@ -125,6 +125,8 @@
         {% widget 'AddToMultiCartWidget' args [isDisabled] only %}
         {% elsewidget 'MultiCartWidgetPlugin' args [data.product, isDisabled] only %} {# @deprecated Use AddToMultiCartWidget instead. #}
         {% endwidget %}
+
+        {% widget 'MerchantProductOfferWidget' args [data.product] only %}{% endwidget %}
 
         {% if widgetExists('AvailabilityWidgetPlugin') %}
             {{ widget('AvailabilityWidgetPlugin', data.product) }} {# @deprecated Use molecule('availability-product', 'AvailabilityWidget') instead. #}
