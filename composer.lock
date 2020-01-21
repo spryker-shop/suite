@@ -9663,16 +9663,16 @@
         },
         {
             "name": "spryker/availability-storage",
-            "version": "2.1.0",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/availability-storage.git",
-                "reference": "79b7b5e1eacfba8e0ca41d410a40f80d7d167c74"
+                "reference": "29768eda97fbd253d093d332f6561ef97ba290ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/availability-storage/zipball/79b7b5e1eacfba8e0ca41d410a40f80d7d167c74",
-                "reference": "79b7b5e1eacfba8e0ca41d410a40f80d7d167c74",
+                "url": "https://api.github.com/repos/spryker/availability-storage/zipball/29768eda97fbd253d093d332f6561ef97ba290ab",
+                "reference": "29768eda97fbd253d093d332f6561ef97ba290ab",
                 "shasum": ""
             },
             "require": {
@@ -9687,7 +9687,8 @@
                 "spryker/storage": "^3.4.0",
                 "spryker/synchronization": "^0.2.0 || ^1.0.0",
                 "spryker/synchronization-behavior": "^1.0.0",
-                "spryker/synchronization-extension": "^1.0.0"
+                "spryker/synchronization-extension": "^1.0.0",
+                "spryker/transfer": "^3.18.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -9717,7 +9718,7 @@
                 "proprietary"
             ],
             "description": "AvailabilityStorage module",
-            "time": "2019-12-28T23:42:16+00:00"
+            "time": "2020-01-17T13:14:53+00:00"
         },
         {
             "name": "spryker/availability-storage-extension",
@@ -19320,16 +19321,16 @@
         },
         {
             "name": "spryker/documentation-generator-rest-api",
-            "version": "1.8.0",
+            "version": "1.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/documentation-generator-rest-api.git",
-                "reference": "c4d8940d774c2cce4a90ff009f8f1347646fa56d"
+                "reference": "122556063b90e7dfbd2dec6d47c49f8fe5d225df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/documentation-generator-rest-api/zipball/c4d8940d774c2cce4a90ff009f8f1347646fa56d",
-                "reference": "c4d8940d774c2cce4a90ff009f8f1347646fa56d",
+                "url": "https://api.github.com/repos/spryker/documentation-generator-rest-api/zipball/122556063b90e7dfbd2dec6d47c49f8fe5d225df",
+                "reference": "122556063b90e7dfbd2dec6d47c49f8fe5d225df",
                 "shasum": ""
             },
             "require": {
@@ -19363,7 +19364,7 @@
                 "proprietary"
             ],
             "description": "DocumentationGeneratorRestApi module",
-            "time": "2020-01-16T12:28:08+00:00"
+            "time": "2020-01-21T11:58:51+00:00"
         },
         {
             "name": "spryker/documentation-generator-rest-api-extension",
@@ -27077,27 +27078,28 @@
         },
         {
             "name": "spryker/product-availabilities-rest-api",
-            "version": "4.0.0",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-availabilities-rest-api.git",
-                "reference": "7eb90d7a5419afdcfe0f853feabf6dcc3c0bba19"
+                "reference": "ad88eea96007f5a2faecf76332c9e1c142119218"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-availabilities-rest-api/zipball/7eb90d7a5419afdcfe0f853feabf6dcc3c0bba19",
-                "reference": "7eb90d7a5419afdcfe0f853feabf6dcc3c0bba19",
+                "url": "https://api.github.com/repos/spryker/product-availabilities-rest-api/zipball/ad88eea96007f5a2faecf76332c9e1c142119218",
+                "reference": "ad88eea96007f5a2faecf76332c9e1c142119218",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
-                "spryker/availability-storage": "^2.0.0",
+                "spryker/availability-storage": "^2.2.0",
                 "spryker/glue-application": "^1.8.0",
                 "spryker/glue-application-extension": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/product-storage": "^1.2.0",
                 "spryker/products-rest-api": "^2.0.0",
-                "spryker/symfony": "^3.0.0"
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.18.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -27107,7 +27109,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "4.0.x-dev"
                 }
             },
             "autoload": {
@@ -27120,7 +27122,7 @@
                 "proprietary"
             ],
             "description": "ProductAvailabilitiesRestApi module",
-            "time": "2019-11-15T10:00:42+00:00"
+            "time": "2020-01-20T12:39:07+00:00"
         },
         {
             "name": "spryker/product-barcode",
