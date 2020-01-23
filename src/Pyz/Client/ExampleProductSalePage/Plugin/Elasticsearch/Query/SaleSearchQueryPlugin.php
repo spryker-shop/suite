@@ -133,13 +133,18 @@ class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface, Se
         $localeName = $this->getFactory()
             ->getStore()
             ->getCurrentLocale();
+
         $labelName = $this->getFactory()
             ->getConfig()
             ->getLabelSaleName();
 
+        $storeName = $this->getFactory()
+            ->getStore()
+            ->getStoreName();
+
         $storageProductLabelTransfer = $this->getFactory()
             ->getProductLabelStorageClient()
-            ->findLabelByName($labelName, $localeName);
+            ->findLabelByName($labelName, $localeName, $storeName);
 
         $labelId = $storageProductLabelTransfer ? $storageProductLabelTransfer->getIdProductLabel() : 0;
 
