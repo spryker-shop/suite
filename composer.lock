@@ -1367,6 +1367,7 @@
                 }
             ],
             "description": "Provides a simple API and specification that abstracts away the details of HTTP into a single PHP function.",
+            "abandoned": true,
             "time": "2018-07-31T13:22:33+00:00"
         },
         {
@@ -4804,26 +4805,26 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/install.git",
-                "reference": "96a23fee8b5a44898a9acb25937035c917d1b688"
+                "reference": "6be2d89045820387cd9a6ab7fbf90e614ef2a111"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/install/zipball/96a23fee8b5a44898a9acb25937035c917d1b688",
-                "reference": "96a23fee8b5a44898a9acb25937035c917d1b688",
+                "url": "https://api.github.com/repos/spryker/install/zipball/6be2d89045820387cd9a6ab7fbf90e614ef2a111",
+                "reference": "6be2d89045820387cd9a6ab7fbf90e614ef2a111",
                 "shasum": ""
             },
             "require": {
-                "monolog/monolog": "^1.23",
+                "monolog/monolog": "^1.23 || ^2.0.0",
                 "php": ">=7.2",
-                "symfony/console": "^3.0.0 || ^4.0.0",
-                "symfony/process": "^3.0.0 || ^4.0.0",
-                "symfony/yaml": "^3.0.0 || ^4.0.0"
+                "symfony/console": "^3.3.0 || ^4.0.0 || ^5.0.0",
+                "symfony/process": "^3.3.0 || ^4.0.0 || ^5.0.0",
+                "symfony/yaml": "^3.0.0 || ^4.0.0 || ^5.0.0"
             },
             "require-dev": {
-                "codeception/codeception": "*",
-                "php-coveralls/php-coveralls": "^1.0",
-                "phpstan/phpstan": "^0.11.2",
-                "phpunit/phpunit": "<8",
+                "codeception/codeception": "^4.0.0",
+                "php-coveralls/php-coveralls": "*",
+                "phpstan/phpstan": "^0.12.0",
+                "sllh/composer-versions-check": "*",
                 "spryker/code-sniffer": "*",
                 "symfony/var-dumper": "*"
             },
@@ -4841,7 +4842,7 @@
                 "MIT"
             ],
             "description": "Spryker install tool",
-            "time": "2019-12-16T14:08:25+00:00"
+            "time": "2020-01-23T09:57:03+00:00"
         },
         {
             "name": "spryker/rabbit-mq",
@@ -4993,7 +4994,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "fdb0a2ebbff4a6583ea5465113812cac14c62cbd"
+                "reference": "4ee31a09787c0ce32c790d5918756a1fcd6dd36f"
             },
             "require": {
                 "php": ">=7.2"
@@ -5644,7 +5645,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-01-22T08:56:16+00:00"
+            "time": "2020-01-23T17:55:40+00:00"
         },
         {
             "name": "spryker/spryker-shop",
