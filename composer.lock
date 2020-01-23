@@ -1048,6 +1048,7 @@
                 }
             ],
             "description": "Provides a simple API and specification that abstracts away the details of HTTP into a single PHP function.",
+            "abandoned": true,
             "time": "2018-07-31T13:22:33+00:00"
         },
         {
@@ -1675,21 +1676,21 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.25.3",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "fa82921994db851a8becaf3787a9e73c5976b6f1"
+                "reference": "c861fcba2ca29404dc9e617eedd9eff4616986b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/fa82921994db851a8becaf3787a9e73c5976b6f1",
-                "reference": "fa82921994db851a8becaf3787a9e73c5976b6f1",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/c861fcba2ca29404dc9e617eedd9eff4616986b8",
+                "reference": "c861fcba2ca29404dc9e617eedd9eff4616986b8",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0",
-                "psr/log": "~1.0"
+                "php": "^7.2",
+                "psr/log": "^1.0.1"
             },
             "provide": {
                 "psr/log-implementation": "1.0.0"
@@ -1697,33 +1698,36 @@
             "require-dev": {
                 "aws/aws-sdk-php": "^2.4.9 || ^3.0",
                 "doctrine/couchdb": "~1.0@dev",
-                "graylog2/gelf-php": "~1.0",
-                "jakub-onderka/php-parallel-lint": "0.9",
+                "elasticsearch/elasticsearch": "^6.0",
+                "graylog2/gelf-php": "^1.4.2",
+                "jakub-onderka/php-parallel-lint": "^0.9",
                 "php-amqplib/php-amqplib": "~2.4",
                 "php-console/php-console": "^3.1.3",
-                "phpunit/phpunit": "~4.5",
-                "phpunit/phpunit-mock-objects": "2.3.0",
+                "phpspec/prophecy": "^1.6.1",
+                "phpunit/phpunit": "^8.3",
+                "predis/predis": "^1.1",
+                "rollbar/rollbar": "^1.3",
                 "ruflin/elastica": ">=0.90 <3.0",
-                "sentry/sentry": "^0.13",
                 "swiftmailer/swiftmailer": "^5.3|^6.0"
             },
             "suggest": {
                 "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
                 "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
+                "elasticsearch/elasticsearch": "Allow sending log messages to an Elasticsearch server via official client",
                 "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
-                "ext-mongo": "Allow sending log messages to a MongoDB server",
+                "ext-mbstring": "Allow to work properly with unicode symbols",
+                "ext-mongodb": "Allow sending log messages to a MongoDB server (via driver)",
                 "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
-                "mongodb/mongodb": "Allow sending log messages to a MongoDB server via PHP Driver",
+                "mongodb/mongodb": "Allow sending log messages to a MongoDB server (via library)",
                 "php-amqplib/php-amqplib": "Allow sending log messages to an AMQP server using php-amqplib",
                 "php-console/php-console": "Allow sending log messages to Google Chrome",
                 "rollbar/rollbar": "Allow sending log messages to Rollbar",
-                "ruflin/elastica": "Allow sending log messages to an Elastic Search server",
-                "sentry/sentry": "Allow sending log messages to a Sentry server"
+                "ruflin/elastica": "Allow sending log messages to an Elastic Search server"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "2.x-dev"
                 }
             },
             "autoload": {
@@ -1749,7 +1753,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2019-12-20T14:15:16+00:00"
+            "time": "2019-12-20T14:22:59+00:00"
         },
         {
             "name": "mtdowling/jmespath.php",
@@ -21186,30 +21190,30 @@
         },
         {
             "name": "spryker/install",
-            "version": "0.5.2",
+            "version": "0.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/install.git",
-                "reference": "cae9796f7e97b4e53104c6bbff767e3d2aa45ed1"
+                "reference": "6be2d89045820387cd9a6ab7fbf90e614ef2a111"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/install/zipball/cae9796f7e97b4e53104c6bbff767e3d2aa45ed1",
-                "reference": "cae9796f7e97b4e53104c6bbff767e3d2aa45ed1",
+                "url": "https://api.github.com/repos/spryker/install/zipball/6be2d89045820387cd9a6ab7fbf90e614ef2a111",
+                "reference": "6be2d89045820387cd9a6ab7fbf90e614ef2a111",
                 "shasum": ""
             },
             "require": {
-                "monolog/monolog": "^1.23",
-                "php": ">=7.1",
-                "symfony/console": "^3.0.0 || ^4.0.0",
-                "symfony/process": "^3.0.0 || ^4.0.0",
-                "symfony/yaml": "^3.0.0 || ^4.0.0"
+                "monolog/monolog": "^1.23 || ^2.0.0",
+                "php": ">=7.2",
+                "symfony/console": "^3.3.0 || ^4.0.0 || ^5.0.0",
+                "symfony/process": "^3.3.0 || ^4.0.0 || ^5.0.0",
+                "symfony/yaml": "^3.0.0 || ^4.0.0 || ^5.0.0"
             },
             "require-dev": {
-                "codeception/codeception": "*",
-                "php-coveralls/php-coveralls": "^1.0",
-                "phpstan/phpstan": "^0.11.2",
-                "phpunit/phpunit": "<8",
+                "codeception/codeception": "^4.0.0",
+                "php-coveralls/php-coveralls": "*",
+                "phpstan/phpstan": "^0.12.0",
+                "sllh/composer-versions-check": "*",
                 "spryker/code-sniffer": "*",
                 "symfony/var-dumper": "*"
             },
@@ -21227,7 +21231,7 @@
                 "MIT"
             ],
             "description": "Spryker install tool",
-            "time": "2019-07-04T11:16:45+00:00"
+            "time": "2020-01-23T09:57:03+00:00"
         },
         {
             "name": "spryker/installer",
@@ -21386,16 +21390,16 @@
         },
         {
             "name": "spryker/kernel",
-            "version": "3.42.3",
+            "version": "3.42.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/kernel.git",
-                "reference": "8ada9aa443a23d10ede2245c14ede291b81ba3f4"
+                "reference": "dcf5a13bfd3caeaaf4322e641db6bc8d39f8b05a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/kernel/zipball/8ada9aa443a23d10ede2245c14ede291b81ba3f4",
-                "reference": "8ada9aa443a23d10ede2245c14ede291b81ba3f4",
+                "url": "https://api.github.com/repos/spryker/kernel/zipball/dcf5a13bfd3caeaaf4322e641db6bc8d39f8b05a",
+                "reference": "dcf5a13bfd3caeaaf4322e641db6bc8d39f8b05a",
                 "shasum": ""
             },
             "require": {
@@ -21437,7 +21441,7 @@
                 "proprietary"
             ],
             "description": "Kernel module",
-            "time": "2020-01-20T09:10:10+00:00"
+            "time": "2020-01-20T12:01:33+00:00"
         },
         {
             "name": "spryker/key-builder",
@@ -21580,16 +21584,16 @@
         },
         {
             "name": "spryker/log",
-            "version": "3.8.0",
+            "version": "3.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/log.git",
-                "reference": "dda073e428176abb44aca5dc461eb305cb7123c1"
+                "reference": "2325304561a261334565c63feae6fc8c68afdcbc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/log/zipball/dda073e428176abb44aca5dc461eb305cb7123c1",
-                "reference": "dda073e428176abb44aca5dc461eb305cb7123c1",
+                "url": "https://api.github.com/repos/spryker/log/zipball/2325304561a261334565c63feae6fc8c68afdcbc",
+                "reference": "2325304561a261334565c63feae6fc8c68afdcbc",
                 "shasum": ""
             },
             "require": {
@@ -21619,7 +21623,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Shared\\Log\\Helper\\": "tests/SprykerTest/Shared/Log/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -21627,7 +21632,7 @@
                 "proprietary"
             ],
             "description": "Log module",
-            "time": "2019-12-27T10:31:27+00:00"
+            "time": "2020-01-20T12:01:33+00:00"
         },
         {
             "name": "spryker/mail",
@@ -23541,20 +23546,21 @@
         },
         {
             "name": "spryker/monolog",
-            "version": "2.0.3",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/Monolog.git",
-                "reference": "d1c75126c08cfc38831750df9f6b0b70e412e73d"
+                "url": "https://github.com/spryker/monolog.git",
+                "reference": "6e812e45b072be132e5332113e07fc40049a8b8b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/Monolog/zipball/d1c75126c08cfc38831750df9f6b0b70e412e73d",
-                "reference": "d1c75126c08cfc38831750df9f6b0b70e412e73d",
+                "url": "https://api.github.com/repos/spryker/monolog/zipball/6e812e45b072be132e5332113e07fc40049a8b8b",
+                "reference": "6e812e45b072be132e5332113e07fc40049a8b8b",
                 "shasum": ""
             },
             "require": {
-                "monolog/monolog": "^1.21.0"
+                "monolog/monolog": "^1.21.0 || ^2.0.0",
+                "php": ">=7.2"
             },
             "type": "library",
             "extra": {
@@ -23567,7 +23573,7 @@
                 "proprietary"
             ],
             "description": "Monolog module",
-            "time": "2017-08-02T16:31:17+00:00"
+            "time": "2020-01-20T12:01:33+00:00"
         },
         {
             "name": "spryker/multi-cart",
@@ -45769,16 +45775,16 @@
         },
         {
             "name": "spryker/testify",
-            "version": "3.22.1",
+            "version": "3.23.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/testify.git",
-                "reference": "ce40dc31b12852c8f2a0d1267701ad57aa903c2a"
+                "reference": "d8866dcd664892e198bd9faea9b2de5bdb4b05c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/testify/zipball/ce40dc31b12852c8f2a0d1267701ad57aa903c2a",
-                "reference": "ce40dc31b12852c8f2a0d1267701ad57aa903c2a",
+                "url": "https://api.github.com/repos/spryker/testify/zipball/d8866dcd664892e198bd9faea9b2de5bdb4b05c6",
+                "reference": "d8866dcd664892e198bd9faea9b2de5bdb4b05c6",
                 "shasum": ""
             },
             "require": {
@@ -45833,7 +45839,7 @@
                 "proprietary"
             ],
             "description": "Testify module",
-            "time": "2020-01-17T11:13:08+00:00"
+            "time": "2020-01-20T12:01:33+00:00"
         },
         {
             "name": "spryker/web-profiler",
