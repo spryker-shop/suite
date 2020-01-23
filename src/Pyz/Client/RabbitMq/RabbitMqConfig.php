@@ -7,6 +7,9 @@
 
 namespace Pyz\Client\RabbitMq;
 
+use ArrayObject;
+use Generated\Shared\Transfer\RabbitMqOptionTransfer;
+use Spryker\Client\RabbitMq\Model\Connection\Connection;
 use Spryker\Client\RabbitMq\RabbitMqConfig as SprykerRabbitMqConfig;
 use Spryker\Shared\AvailabilityStorage\AvailabilityStorageConstants;
 use Spryker\Shared\CategoryPageSearch\CategoryPageSearchConstants;
@@ -102,8 +105,78 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
             return $this->queueOptionCollection;
         }
 
-        $this->queueOptionCollection = parent::getQueueOptions();
+        $queueConfigurations = $this->getQueueConfiguration();
+        $this->queueOptionCollection = new ArrayObject();
+
+        foreach ($queueConfigurations as $queueNameKey => $queueConfiguration) {
+            if (!is_array($queueConfiguration)) {
+                $this->queueOptionCollection->append($this->createQueueOption($queueConfiguration, sprintf('%s.error', $queueConfiguration), 'error'));
+
+                continue;
+            }
+
+            foreach ($queueConfiguration as $routingKey => $queueName) {
+                $this->queueOptionCollection->append($this->createQueueOption($queueNameKey, $queueName, $routingKey));
+            }
+        }
 
         return $this->queueOptionCollection;
+    }
+
+    /**
+     * @param string $queueName
+     * @param string $boundQueueName
+     * @param string $routingKey
+     *
+     * @return \Generated\Shared\Transfer\RabbitMqOptionTransfer
+     */
+    protected function createQueueOption($queueName, $boundQueueName, $routingKey)
+    {
+        $queueOptionTransfer = new RabbitMqOptionTransfer();
+        $queueOptionTransfer
+            ->setQueueName($queueName)
+            ->setDurable(true)
+            ->setType('direct')
+            ->setDeclarationType(Connection::RABBIT_MQ_EXCHANGE)
+            ->addBindingQueueItem($this->createQueueBinding($queueName))
+            ->addBindingQueueItem($this->createBoundQueueBinding($boundQueueName, $routingKey));
+
+        return $queueOptionTransfer;
+    }
+
+    /**
+     * @param string $queueName
+     * @param string $routingKey
+     *
+     * @return \Generated\Shared\Transfer\RabbitMqOptionTransfer
+     */
+    protected function createQueueBinding($queueName, $routingKey = '')
+    {
+        $queueOptionTransfer = new RabbitMqOptionTransfer();
+        $queueOptionTransfer
+            ->setQueueName($queueName)
+            ->setDurable(true)
+            ->setNoWait(false)
+            ->addRoutingKey($routingKey);
+
+        return $queueOptionTransfer;
+    }
+
+    /**
+     * @param string $boundQueueName
+     * @param string $routingKey
+     *
+     * @return \Generated\Shared\Transfer\RabbitMqOptionTransfer
+     */
+    protected function createBoundQueueBinding($boundQueueName, $routingKey)
+    {
+        $queueOptionTransfer = new RabbitMqOptionTransfer();
+        $queueOptionTransfer
+            ->setQueueName($boundQueueName)
+            ->setDurable(true)
+            ->setNoWait(false)
+            ->addRoutingKey($routingKey);
+
+        return $queueOptionTransfer;
     }
 }
