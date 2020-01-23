@@ -28,6 +28,8 @@ use SprykerShop\Yves\CustomerPage\Plugin\CheckoutPage\CustomerAddressExpanderPlu
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutAddressStepEnterPreCheckPlugin;
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutPaymentStepEnterPreCheckPlugin;
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutShipmentStepEnterPreCheckPlugin;
+use SprykerShop\Yves\QuoteRequestPage\Plugin\CheckoutPage\QuoteRequestCheckerCheckoutShipmentStepEnterPreCheckPluginInterface;
+use SprykerShop\Yves\QuoteRequestPage\Plugin\CheckoutPage\QuoteRequestCheckerPageCheckoutAddressStepEnterPreCheckPlugin;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThresholdWidgetPlugin;
 
 /**
@@ -157,6 +159,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     {
         return [
             new QuoteApprovalCheckerCheckoutAddressStepEnterPreCheckPlugin(),
+            new QuoteRequestCheckerPageCheckoutAddressStepEnterPreCheckPlugin(),
         ];
     }
 
@@ -167,6 +170,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     {
         return [
             new QuoteApprovalCheckerCheckoutShipmentStepEnterPreCheckPlugin(),
+            new QuoteRequestCheckerCheckoutShipmentStepEnterPreCheckPluginInterface(),
         ];
     }
 
