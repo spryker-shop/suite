@@ -6,6 +6,10 @@ tag: 'dev'
 environment: docker
 image: spryker/php:7.2
 
+composer:
+    mode: --dev
+    autoload: --optimize
+
 regions:
     EU:
         services:

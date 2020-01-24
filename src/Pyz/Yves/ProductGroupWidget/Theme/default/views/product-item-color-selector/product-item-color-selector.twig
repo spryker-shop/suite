@@ -6,15 +6,13 @@
 } %}
 
 {% block body %}
-    {% embed molecule('product-item-color-selector', 'ProductGroupWidget') with {
+    <hr>
+    {% include molecule('product-item-color-selector', 'ProductGroupWidget') with {
         modifiers: ['center'],
         data: {
             items: data.items,
             productItemJsName: data.productItemJsName,
         },
     } only %}
-        {% block body %}
-            <hr>{{ parent() }}<hr>
-        {% endblock %}
-    {% endembed %}
+    <hr>
 {% endblock %}
