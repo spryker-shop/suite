@@ -7,18 +7,41 @@
 
 namespace Pyz\Zed\Publisher;
 
-use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryStoragePublisherRegistryPlugin;
+use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryKey\GlossaryDeletePublisherPlugin;
+use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryKey\GlossaryWritePublisherPlugin;
+use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryPublisherTriggerPlugin;
 use Spryker\Zed\Publisher\PublisherDependencyProvider as SprykerPublisherDependencyProvider;
 
 class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherRegistryPluginInterface[]
+     * @return \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface[]
      */
-    protected function getPublisherRegistryPlugins(): array
+    protected function getPublisherPlugins(): array
+    {
+        return array_merge(
+            $this->getStoragePlugins()
+        );
+    }
+
+    /**
+     * @return \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherTriggerPluginInterface[]
+     */
+    protected function getResourcePublisherPlugins(): array
     {
         return [
-            new GlossaryStoragePublisherRegistryPlugin(),
+            new GlossaryPublisherTriggerPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface[]
+     */
+    protected function getStoragePlugins(): array
+    {
+        return [
+            new GlossaryWritePublisherPlugin(),
+            new GlossaryDeletePublisherPlugin(),
         ];
     }
 }
