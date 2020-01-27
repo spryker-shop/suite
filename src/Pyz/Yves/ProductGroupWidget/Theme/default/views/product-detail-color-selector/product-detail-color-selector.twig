@@ -1,0 +1,15 @@
+{% extends template('widget') %}
+
+{% define data = {
+    items: _widget.productGroupItems | default([]),
+} %}
+
+{% block body %}
+    <hr>
+    {% include molecule('product-detail-color-selector', 'ProductGroupWidget') with {
+        data: {
+            items: data.items,
+            selectionTag: 'a',
+        },
+    } only %}
+{% endblock %}
