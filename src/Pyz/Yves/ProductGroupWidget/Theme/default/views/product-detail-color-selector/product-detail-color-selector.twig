@@ -5,11 +5,13 @@
 } %}
 
 {% block body %}
-    <hr>
-    {% include molecule('product-detail-color-selector', 'ProductGroupWidget') with {
-        data: {
-            items: data.items,
-            selectionTag: 'a',
-        },
-    } only %}
+    {% if data.items | length > 1 %}
+        <hr>
+        {% include molecule('product-detail-color-selector', 'ProductGroupWidget') with {
+            data: {
+                items: data.items,
+                selectionTag: 'a',
+            },
+        } only %}
+    {% endif %}
 {% endblock %}

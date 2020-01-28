@@ -6,13 +6,15 @@
 } %}
 
 {% block body %}
-    <hr>
-    {% include molecule('product-item-color-selector', 'ProductGroupWidget') with {
-        modifiers: ['center'],
-        data: {
-            items: data.items,
-            productItemJsName: data.productItemJsName,
-        },
-    } only %}
-    <hr>
+    {% if data.items | length > 1 %}
+        <hr>
+        {% include molecule('product-item-color-selector', 'ProductGroupWidget') with {
+            modifiers: ['center'],
+            data: {
+                items: data.items,
+                productItemJsName: data.productItemJsName,
+            },
+        } only %}
+        <hr>
+    {% endif %}
 {% endblock %}
