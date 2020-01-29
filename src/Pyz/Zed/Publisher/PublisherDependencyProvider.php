@@ -28,7 +28,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
     /**
      * @return \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherTriggerPluginInterface[]
      */
-    protected function getResourcePublisherPlugins(): array
+    protected function getPublisherTriggerPlugins(): array
     {
         return [
             new GlossaryPublisherTriggerPlugin(),
