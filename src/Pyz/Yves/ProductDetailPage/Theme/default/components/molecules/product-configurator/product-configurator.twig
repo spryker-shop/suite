@@ -3,5 +3,5 @@
 {% block product_group_widget %}
     {{ parent() }}
 
-    {% widget 'ProductGroupColorWidget' args [data.product.idProductAbstract] use view('product-detail-color-selector', 'ProductGroupWidget') only %}{% endwidget %}
+    {% widget 'ProductGroupColorWidget' args [data.product] use view('product-detail-color-selector', 'ProductGroupWidget') only %}{% endwidget %}
 {% endblock %}
