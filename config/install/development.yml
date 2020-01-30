@@ -43,8 +43,26 @@ sections:
         remove-cache:
             command: "vendor/bin/console cache:empty-all"
 
-        remove-generated-files:
-            command: "vendor/bin/console setup:empty-generated-directory"
+        remove-auto-completion:
+            command: "vendor/bin/console dev:ide:remove-auto-completion"
+
+        remove-request-validation-cache:
+            command: "vendor/bin/console glue:rest:remove-request-validation-cache"
+
+        remove-navigation-cache:
+            command: "vendor/bin/console navigation:remove-cache"
+
+        remove-source-map:
+            command: "vendor/bin/console search:setup:remove-source-map"
+
+        remove-databuilder:
+            command: "vendor/bin/console transfer:databuilder:remove"
+
+        remove-entity-transfer:
+            command: "vendor/bin/console transfer:entity:remove"
+
+        remove-transfer:
+            command: "vendor/bin/console transfer:remove"
 
     generate:
         generate-transfers:
