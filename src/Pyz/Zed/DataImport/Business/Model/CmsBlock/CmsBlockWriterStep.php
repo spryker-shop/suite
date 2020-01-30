@@ -18,6 +18,7 @@ use Orm\Zed\Glossary\Persistence\SpyGlossaryKeyQuery;
 use Orm\Zed\Glossary\Persistence\SpyGlossaryTranslationQuery;
 use Pyz\Zed\DataImport\Business\Model\CmsBlock\Category\Repository\CategoryRepositoryInterface;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface;
+use Spryker\Shared\GlossaryStorage\GlossaryStorageConfig;
 use Spryker\Zed\CmsBlock\Business\Model\CmsBlockGlossaryKeyGenerator;
 use Spryker\Zed\CmsBlock\Dependency\CmsBlockEvents;
 use Spryker\Zed\CmsBlockCategoryConnector\Dependency\CmsBlockCategoryConnectorEvents;
@@ -26,7 +27,6 @@ use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\LocalizedAttributesExtractorStep;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
-use Spryker\Zed\Glossary\Dependency\GlossaryEvents;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -227,7 +227,7 @@ class CmsBlockWriterStep extends PublishAwareStep implements DataImportStepInter
                     $pageKeyMappingEntity->save();
                 }
 
-                $this->addPublishEvents(GlossaryEvents::GLOSSARY_KEY_PUBLISH, $glossaryTranslationEntity->getFkGlossaryKey());
+                $this->addPublishEvents(GlossaryStorageConfig::GLOSSARY_KEY_PUBLISH_WRITE, $glossaryTranslationEntity->getFkGlossaryKey());
             }
         }
     }
