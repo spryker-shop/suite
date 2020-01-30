@@ -30,6 +30,7 @@ use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalChecke
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutShipmentStepEnterPreCheckPlugin;
 use SprykerShop\Yves\QuoteRequestPage\Plugin\CheckoutPage\QuoteRequestCheckerCheckoutPaymentStepEnterPreCheckPlugin;
 use SprykerShop\Yves\QuoteRequestPage\Plugin\CheckoutPage\QuoteRequestCheckerCheckoutSummaryStepEnterPreCheckPlugin;
+use SprykerShop\Yves\QuoteRequestWidget\Plugin\CheckoutPage\QuoteRequestWidgetCheckoutShipmentPostExecuteRedirectStrategyPlugin;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThresholdWidgetPlugin;
 
 /**
@@ -217,6 +218,16 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
         return [
             new CustomerAddressExpanderPlugin(),
             new CompanyUnitAddressExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutShipmentPostExecutionRedirectStrategyPluginInterface[]
+     */
+    protected function getCheckoutShipmentPostExecutionRedirectStrategyPlugins(): array
+    {
+        return [
+            new QuoteRequestWidgetCheckoutShipmentPostExecuteRedirectStrategyPlugin(),
         ];
     }
 }
