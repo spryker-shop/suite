@@ -1,1 +1,1 @@
-Extends product-item molecule. Introduced color selector functionality.
+Extends product-item molecule. Added usage of ProductGroupColorWidget.
