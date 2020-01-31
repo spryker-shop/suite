@@ -2,7 +2,7 @@
 
 {% block content %}
     {% block colors %}
-        {% widget 'ProductGroupColorWidget' args [data.product] use view('product-item-color-selector', 'ProductGroupWidget') with {
+        {% widget 'ProductGroupColorWidget' args [data.idProductAbstract, data.product.selectedAttributes ?? []] use view('product-item-color-selector', 'ProductGroupWidget') with {
             data: {
                 productItemJsName: config.jsName,
             },
