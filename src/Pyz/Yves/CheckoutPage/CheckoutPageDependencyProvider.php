@@ -222,9 +222,9 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     }
 
     /**
-     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutShipmentPostExecutionRedirectStrategyPluginInterface[]
+     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutShipmentPostExecuteRedirectStrategyPluginInterface[]
      */
-    protected function getCheckoutShipmentPostExecutionRedirectStrategyPlugins(): array
+    protected function getCheckoutShipmentPostExecuteRedirectStrategyPlugins(): array
     {
         return [
             new QuoteRequestWidgetCheckoutShipmentPostExecuteRedirectStrategyPlugin(),
