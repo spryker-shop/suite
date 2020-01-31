@@ -11,7 +11,8 @@ use Spryker\Zed\Merchant\MerchantDependencyProvider as SprykerMerchantDependency
 use Spryker\Zed\MerchantProfile\Communication\Plugin\Merchant\MerchantProfileExpanderPlugin;
 use Spryker\Zed\MerchantProfile\Communication\Plugin\Merchant\MerchantProfileMerchantPostCreatePlugin;
 use Spryker\Zed\MerchantProfile\Communication\Plugin\Merchant\MerchantProfileMerchantPostUpdatePlugin;
-use Spryker\Zed\MerchantUser\Communication\Plugin\Merchant\MerchantPortalAdminMerchantPostSavePlugin;
+use Spryker\Zed\MerchantUser\Communication\Plugin\Merchant\MerchantAdminMerchantPostCreatePlugin;
+use Spryker\Zed\MerchantUser\Communication\Plugin\Merchant\MerchantAdminMerchantPostUpdatePlugin;
 
 class MerchantDependencyProvider extends SprykerMerchantDependencyProvider
 {
@@ -22,7 +23,7 @@ class MerchantDependencyProvider extends SprykerMerchantDependencyProvider
     {
         return [
             new MerchantProfileMerchantPostCreatePlugin(),
-            new MerchantPortalAdminMerchantPostSavePlugin(),
+            new MerchantAdminMerchantPostCreatePlugin(),
         ];
     }
 
@@ -33,18 +34,8 @@ class MerchantDependencyProvider extends SprykerMerchantDependencyProvider
     {
         return [
             new MerchantProfileMerchantPostUpdatePlugin(),
-            new MerchantPortalAdminMerchantPostSavePlugin(),
+            new MerchantAdminMerchantPostUpdatePlugin(),
         ];
-    }
-
-    /**
-     * @deprecated Use MerchantDependencyProvider::getMerchantPostCreatePlugins() instead.
-     *
-     * @return \Spryker\Zed\MerchantExtension\Dependency\Plugin\MerchantPostSavePluginInterface[]
-     */
-    protected function getMerchantPostSavePlugins(): array
-    {
-        return [];
     }
 
     /**
