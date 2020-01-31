@@ -13,7 +13,7 @@ use Spryker\Zed\MerchantUser\Communication\Plugin\Acl\MerchantPortalAdminAclInst
 class AclDependencyProvider extends SprykerAclDependencyProvider
 {
     /**
-     * @return array
+     * @return \Spryker\Zed\AclExtension\Dependency\Plugin\AclInstallerPluginInterface[]
      */
     public function getAclInstallerPlugins(): array
     {
