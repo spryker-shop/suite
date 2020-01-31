@@ -25,7 +25,6 @@ use Spryker\Shared\FileManagerGui\FileManagerGuiConstants;
 use Spryker\Shared\FileSystem\FileSystemConstants;
 use Spryker\Shared\Flysystem\FlysystemConstants;
 use Spryker\Shared\GlueApplication\GlueApplicationConstants;
-use Spryker\Shared\HealthCheck\HealthCheckConstants;
 use Spryker\Shared\Http\HttpConstants;
 use Spryker\Shared\Kernel\ClassResolver\Cache\Provider\File;
 use Spryker\Shared\Kernel\KernelConstants;
@@ -600,5 +599,3 @@ $config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = (bool)getenv('D
 
 // ----------- Documentation generator
 $config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GENERATION] = true;
-
-$config[HealthCheckConstants::HEALTH_CHECK_ENABLED] = true;
