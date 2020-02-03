@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e67cb3e691cf68b0309e9cc954a677d2",
+    "content-hash": "5501192418d9f238595d579547b3e0c7",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -21883,22 +21883,22 @@
         },
         {
             "name": "spryker/merchant",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant.git",
-                "reference": "7a783103959cb012d91ff0aa3fcf8e2f4abc8033"
+                "reference": "df90d8a4d315cb9a582d005ca729ef0250ee8ba5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant/zipball/7a783103959cb012d91ff0aa3fcf8e2f4abc8033",
-                "reference": "7a783103959cb012d91ff0aa3fcf8e2f4abc8033",
+                "url": "https://api.github.com/repos/spryker/merchant/zipball/df90d8a4d315cb9a582d005ca729ef0250ee8ba5",
+                "reference": "df90d8a4d315cb9a582d005ca729ef0250ee8ba5",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
                 "spryker/kernel": "^3.33.0",
-                "spryker/merchant-extension": "^1.0.0",
+                "spryker/merchant-extension": "^1.1.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/util-text": "^1.0.0"
             },
@@ -21910,7 +21910,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -21924,7 +21924,7 @@
                 "proprietary"
             ],
             "description": "Merchant module",
-            "time": "2019-11-18T17:11:14+00:00"
+            "time": "2020-01-29T09:34:23+00:00"
         },
         {
             "name": "spryker/merchant-data-import",
@@ -21972,24 +21972,23 @@
         },
         {
             "name": "spryker/merchant-extension",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-extension.git",
-                "reference": "941af2a0e7cdd54af684449e3acbea5b1297b79f"
+                "reference": "a2e8d29c2fbabdbf6ebc7d33d8eb498223a883bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-extension/zipball/941af2a0e7cdd54af684449e3acbea5b1297b79f",
-                "reference": "941af2a0e7cdd54af684449e3acbea5b1297b79f",
+                "url": "https://api.github.com/repos/spryker/merchant-extension/zipball/a2e8d29c2fbabdbf6ebc7d33d8eb498223a883bf",
+                "reference": "a2e8d29c2fbabdbf6ebc7d33d8eb498223a883bf",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=7.2"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
+                "spryker/code-sniffer": "*"
             },
             "type": "library",
             "extra": {
@@ -22007,39 +22006,38 @@
                 "proprietary"
             ],
             "description": "MerchantExtension module",
-            "time": "2019-11-05T13:22:08+00:00"
+            "time": "2020-01-29T09:34:23+00:00"
         },
         {
             "name": "spryker/merchant-gui",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-gui.git",
-                "reference": "5c7b75a1e9256e8a59a45a527fa6fd76231e3106"
+                "reference": "0791d49d444144f4456088835c2c453327cf64c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-gui/zipball/5c7b75a1e9256e8a59a45a527fa6fd76231e3106",
-                "reference": "5c7b75a1e9256e8a59a45a527fa6fd76231e3106",
+                "url": "https://api.github.com/repos/spryker/merchant-gui/zipball/0791d49d444144f4456088835c2c453327cf64c9",
+                "reference": "0791d49d444144f4456088835c2c453327cf64c9",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
                 "spryker/gui": "^3.0.0",
                 "spryker/kernel": "^3.33.0",
-                "spryker/merchant": "^2.0.0",
+                "spryker/merchant": "^2.1.0",
                 "spryker/merchant-gui-extension": "^1.0.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/util-text": "^1.1.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
+                "spryker/code-sniffer": "*"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -22052,7 +22050,7 @@
                 "proprietary"
             ],
             "description": "MerchantGui module",
-            "time": "2019-11-18T13:17:23+00:00"
+            "time": "2020-01-24T09:13:53+00:00"
         },
         {
             "name": "spryker/merchant-gui-extension",
@@ -22431,16 +22429,16 @@
         },
         {
             "name": "spryker/merchant-profile",
-            "version": "0.1.3",
+            "version": "0.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-profile.git",
-                "reference": "885139c19a56f6926d6b793c13b2d2f418be1c61"
+                "reference": "884719f13bae929d0c97e300713442c1e08a333f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-profile/zipball/885139c19a56f6926d6b793c13b2d2f418be1c61",
-                "reference": "885139c19a56f6926d6b793c13b2d2f418be1c61",
+                "url": "https://api.github.com/repos/spryker/merchant-profile/zipball/884719f13bae929d0c97e300713442c1e08a333f",
+                "reference": "884719f13bae929d0c97e300713442c1e08a333f",
                 "shasum": ""
             },
             "require": {
@@ -22453,7 +22451,7 @@
                 "spryker/kernel": "^3.33.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/merchant": "^2.0.0",
-                "spryker/merchant-extension": "^1.0.0",
+                "spryker/merchant-extension": "^1.1.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/url": "^3.0.0"
             },
@@ -22479,7 +22477,7 @@
                 "proprietary"
             ],
             "description": "MerchantProfile module",
-            "time": "2020-01-06T16:01:55+00:00"
+            "time": "2020-01-30T16:05:34+00:00"
         },
         {
             "name": "spryker/merchant-profile-data-import",
@@ -22532,16 +22530,16 @@
         },
         {
             "name": "spryker/merchant-profile-gui",
-            "version": "0.1.1",
+            "version": "0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-profile-gui.git",
-                "reference": "d44a50c2b355082cedffb94226173a76415521cd"
+                "reference": "5c57b955f8d6f286443803c6927c601e1a29c191"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-profile-gui/zipball/d44a50c2b355082cedffb94226173a76415521cd",
-                "reference": "d44a50c2b355082cedffb94226173a76415521cd",
+                "url": "https://api.github.com/repos/spryker/merchant-profile-gui/zipball/5c57b955f8d6f286443803c6927c601e1a29c191",
+                "reference": "5c57b955f8d6f286443803c6927c601e1a29c191",
                 "shasum": ""
             },
             "require": {
@@ -22560,8 +22558,7 @@
             "require-dev": {
                 "spryker/code-sniffer": "*",
                 "spryker/gui": "*",
-                "spryker/merchant": "*",
-                "spryker/testify": "*"
+                "spryker/merchant": "*"
             },
             "suggest": {
                 "spryker/gui": "Required to use util text in plugins.",
@@ -22583,7 +22580,7 @@
                 "proprietary"
             ],
             "description": "MerchantProfileGui module",
-            "time": "2019-11-27T15:21:29+00:00"
+            "time": "2020-01-17T15:45:01+00:00"
         },
         {
             "name": "spryker/merchant-profile-storage",
@@ -23257,6 +23254,53 @@
             ],
             "description": "MerchantSalesOrder module",
             "time": "2019-12-28T20:03:35+00:00"
+        },
+        {
+            "name": "spryker/merchant-user",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-user.git",
+                "reference": "6d1077290e455ebd300f60f0ae3b9ae381ae4169"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-user/zipball/6d1077290e455ebd300f60f0ae3b9ae381ae4169",
+                "reference": "6d1077290e455ebd300f60f0ae3b9ae381ae4169",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/kernel": "^3.33.0",
+                "spryker/merchant": "^2.0.0",
+                "spryker/merchant-extension": "^1.1.0",
+                "spryker/user": "^3.3.0",
+                "spryker/util-text": "^1.3.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/merchant-profile": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\MerchantUser\\Helper\\": "tests/SprykerTest/Zed/MerchantUser/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantUser module",
+            "time": "2020-01-31T11:47:39+00:00"
         },
         {
             "name": "spryker/messenger",
