@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b2e9050e927a792a5973a32fe0fd98bf",
+    "content-hash": "3e559dd8917e13558c7792b62a8a99de",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.133.4",
+            "version": "3.133.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "6ecd907672784cca89584c7553fa38589c1efcb6"
+                "reference": "cd7bd2fdd159146ef6c7eeb90b73fae4fd11da57"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/6ecd907672784cca89584c7553fa38589c1efcb6",
-                "reference": "6ecd907672784cca89584c7553fa38589c1efcb6",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/cd7bd2fdd159146ef6c7eeb90b73fae4fd11da57",
+                "reference": "cd7bd2fdd159146ef6c7eeb90b73fae4fd11da57",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-01-21T19:14:39+00:00"
+            "time": "2020-01-24T19:11:35+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -151,16 +151,16 @@
         },
         {
             "name": "codeception/codeception",
-            "version": "4.0.2",
+            "version": "4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Codeception.git",
-                "reference": "e610c15ebb73b56722c67e1c799bf0565f062899"
+                "reference": "ffc951ed077eb48203e033675d32e9b8dcd80fc7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/e610c15ebb73b56722c67e1c799bf0565f062899",
-                "reference": "e610c15ebb73b56722c67e1c799bf0565f062899",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/ffc951ed077eb48203e033675d32e9b8dcd80fc7",
+                "reference": "ffc951ed077eb48203e033675d32e9b8dcd80fc7",
                 "shasum": ""
             },
             "require": {
@@ -232,7 +232,7 @@
                 "functional testing",
                 "unit testing"
             ],
-            "time": "2020-01-14T14:44:10+00:00"
+            "time": "2020-01-24T07:23:42+00:00"
         },
         {
             "name": "codeception/lib-asserts",
@@ -4994,16 +4994,17 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/mp-1701/dev-merchant-selector",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "38206f9b5b756b2929cd1e70ed0b0d401bbe4628"
+                "reference": "d9653beae2d449e58b03dbbb8f1d9e9781fb0a50"
             },
             "require": {
                 "php": ">=7.2"
             },
             "replace": {
+                "spryker-shop/cart-page-extension": "*",
                 "spryker/acl": "*",
                 "spryker/agent": "*",
                 "spryker/agent-gui": "*",
@@ -5039,7 +5040,6 @@
                 "spryker/cart": "*",
                 "spryker/cart-code": "*",
                 "spryker/cart-code-extension": "*",
-                "spryker/cart-codes-rest-api": "*",
                 "spryker/cart-currency-connector": "*",
                 "spryker/cart-extension": "*",
                 "spryker/cart-note": "*",
@@ -5311,7 +5311,6 @@
                 "spryker/merchant-relationship-sales-order-threshold-gui": "*",
                 "spryker/merchant-relationship-sales-order-threshold-gui-extension": "*",
                 "spryker/merchant-sales-order": "*",
-                "spryker/merchant-search": "*",
                 "spryker/messenger": "*",
                 "spryker/messenger-extension": "*",
                 "spryker/module-finder": "*",
@@ -5444,7 +5443,6 @@
                 "spryker/product-new": "*",
                 "spryker/product-offer": "*",
                 "spryker/product-offer-availability": "*",
-                "spryker/product-offer-availability-storage": "*",
                 "spryker/product-offer-stock": "*",
                 "spryker/product-offer-stock-data-import": "*",
                 "spryker/product-offer-validity": "*",
@@ -5651,15 +5649,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-01-31T11:20:39+00:00"
+            "time": "2020-01-30T16:16:06+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/mp-1701/dev-merchant-selector",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "be16572cd973c0232e64e44ccc85d728f6f5e60d"
+                "reference": "f25476d0d288ff44ee31da4f451d84460a8f18d1"
             },
             "require": {
                 "php": ">=7.2"
@@ -5675,7 +5673,6 @@
                 "spryker-shop/cart-code-widget": "*",
                 "spryker-shop/cart-note-widget": "*",
                 "spryker-shop/cart-page": "*",
-                "spryker-shop/cart-page-extension": "*",
                 "spryker-shop/catalog-page": "*",
                 "spryker-shop/category-image-storage-widget": "*",
                 "spryker-shop/category-widget": "*",
@@ -5717,7 +5714,6 @@
                 "spryker-shop/language-switcher-widget": "*",
                 "spryker-shop/merchant-product-offer-widget": "*",
                 "spryker-shop/merchant-profile-page": "*",
-                "spryker-shop/merchant-switcher-widget": "*",
                 "spryker-shop/money-widget": "*",
                 "spryker-shop/multi-cart-page": "*",
                 "spryker-shop/multi-cart-widget": "*",
@@ -5801,7 +5797,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-01-31T11:21:40+00:00"
+            "time": "2020-01-30T16:16:10+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8667,8 +8663,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -8799,16 +8795,16 @@
         },
         {
             "name": "voku/portable-ascii",
-            "version": "1.4.6",
+            "version": "1.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/portable-ascii.git",
-                "reference": "8b23920025c9b040301e3d1443b302547560f48d"
+                "reference": "a691852adbf7518370332fd7921292d8dad34e7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/portable-ascii/zipball/8b23920025c9b040301e3d1443b302547560f48d",
-                "reference": "8b23920025c9b040301e3d1443b302547560f48d",
+                "url": "https://api.github.com/repos/voku/portable-ascii/zipball/a691852adbf7518370332fd7921292d8dad34e7e",
+                "reference": "a691852adbf7518370332fd7921292d8dad34e7e",
                 "shasum": ""
             },
             "require": {
@@ -8844,20 +8840,20 @@
                 "clean",
                 "php"
             ],
-            "time": "2019-12-23T12:30:26+00:00"
+            "time": "2020-01-27T08:58:33+00:00"
         },
         {
             "name": "voku/portable-utf8",
-            "version": "5.4.38",
+            "version": "5.4.39",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/portable-utf8.git",
-                "reference": "0991729d5ca364078b00fe0e107f87ec0d53b0d7"
+                "reference": "e462e8985a80cbd927765fd7e09f52bb103c9797"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/0991729d5ca364078b00fe0e107f87ec0d53b0d7",
-                "reference": "0991729d5ca364078b00fe0e107f87ec0d53b0d7",
+                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/e462e8985a80cbd927765fd7e09f52bb103c9797",
+                "reference": "e462e8985a80cbd927765fd7e09f52bb103c9797",
                 "shasum": ""
             },
             "require": {
@@ -8918,7 +8914,7 @@
                 "utf-8",
                 "utf8"
             ],
-            "time": "2020-01-14T13:30:41+00:00"
+            "time": "2020-01-30T15:12:06+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -9327,16 +9323,16 @@
         },
         {
             "name": "codeception/lib-innerbrowser",
-            "version": "1.2.3",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/lib-innerbrowser.git",
-                "reference": "289028f011dcc954c530e946ea34bb7ce4ec2721"
+                "reference": "eb43279b3c1c34a10e1d4cda14e69924b0546ff2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/lib-innerbrowser/zipball/289028f011dcc954c530e946ea34bb7ce4ec2721",
-                "reference": "289028f011dcc954c530e946ea34bb7ce4ec2721",
+                "url": "https://api.github.com/repos/Codeception/lib-innerbrowser/zipball/eb43279b3c1c34a10e1d4cda14e69924b0546ff2",
+                "reference": "eb43279b3c1c34a10e1d4cda14e69924b0546ff2",
                 "shasum": ""
             },
             "require": {
@@ -9376,7 +9372,7 @@
             "keywords": [
                 "codeception"
             ],
-            "time": "2019-11-26T16:50:12+00:00"
+            "time": "2020-01-27T09:23:41+00:00"
         },
         {
             "name": "codeception/module-asserts",
@@ -9580,16 +9576,16 @@
         },
         {
             "name": "codeception/module-rest",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/module-rest.git",
-                "reference": "a34a92b3fb04adc35da0da0a3b5f7d4155963fbc"
+                "reference": "e6ef1cc7fcc20b392ed2fb73ad809c63dc609781"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/module-rest/zipball/a34a92b3fb04adc35da0da0a3b5f7d4155963fbc",
-                "reference": "a34a92b3fb04adc35da0da0a3b5f7d4155963fbc",
+                "url": "https://api.github.com/repos/Codeception/module-rest/zipball/e6ef1cc7fcc20b392ed2fb73ad809c63dc609781",
+                "reference": "e6ef1cc7fcc20b392ed2fb73ad809c63dc609781",
                 "shasum": ""
             },
             "require": {
@@ -9626,7 +9622,7 @@
                 "codeception",
                 "rest"
             ],
-            "time": "2020-01-06T08:01:38+00:00"
+            "time": "2020-01-24T08:55:04+00:00"
         },
         {
             "name": "codeception/module-webdriver",
@@ -10129,16 +10125,16 @@
         },
         {
             "name": "pdepend/pdepend",
-            "version": "2.6.1",
+            "version": "2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pdepend/pdepend.git",
-                "reference": "395b0f356bc0881ef88864bffb4ba1423ca0d111"
+                "reference": "cba74e118ce806f97fcb108c00d61ebf2a5a936e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/395b0f356bc0881ef88864bffb4ba1423ca0d111",
-                "reference": "395b0f356bc0881ef88864bffb4ba1423ca0d111",
+                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/cba74e118ce806f97fcb108c00d61ebf2a5a936e",
+                "reference": "cba74e118ce806f97fcb108c00d61ebf2a5a936e",
                 "shasum": ""
             },
             "require": {
@@ -10172,7 +10168,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2019-12-21T16:33:56+00:00"
+            "time": "2020-01-24T08:09:26+00:00"
         },
         {
             "name": "php-webdriver/webdriver",
@@ -11356,21 +11352,21 @@
         },
         {
             "name": "stecman/symfony-console-completion",
-            "version": "0.10.1",
+            "version": "0.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stecman/symfony-console-completion.git",
-                "reference": "7bfa9b93e216896419f2f8de659935d7e04fecd8"
+                "reference": "a9502dab59405e275a9f264536c4e1cb61fc3518"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stecman/symfony-console-completion/zipball/7bfa9b93e216896419f2f8de659935d7e04fecd8",
-                "reference": "7bfa9b93e216896419f2f8de659935d7e04fecd8",
+                "url": "https://api.github.com/repos/stecman/symfony-console-completion/zipball/a9502dab59405e275a9f264536c4e1cb61fc3518",
+                "reference": "a9502dab59405e275a9f264536c4e1cb61fc3518",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2",
-                "symfony/console": "~2.3 || ~3.0 || ~4.0"
+                "symfony/console": "~2.3 || ~3.0 || ~4.0 || ~5.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "~4.8.36 || ~5.7 || ~6.4"
@@ -11397,7 +11393,7 @@
                 }
             ],
             "description": "Automatic BASH completion for Symfony Console Component based applications.",
-            "time": "2019-04-29T03:20:18+00:00"
+            "time": "2019-11-24T17:03:06+00:00"
         },
         {
             "name": "symfony/browser-kit",
@@ -11749,8 +11745,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "lead",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "lead"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
