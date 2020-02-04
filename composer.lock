@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3e559dd8917e13558c7792b62a8a99de",
+    "content-hash": "b2e9050e927a792a5973a32fe0fd98bf",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5033,11 +5033,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/mp-1701/dev-merchant-selector",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "a6c905bfd53f0b5b00def4e30f8509047eb76b80"
+                "reference": "68225b5f100cb76926fb50cbfcee1f8c0363af85"
             },
             "require": {
                 "php": ">=7.2"
@@ -5350,6 +5350,7 @@
                 "spryker/merchant-relationship-sales-order-threshold-gui": "*",
                 "spryker/merchant-relationship-sales-order-threshold-gui-extension": "*",
                 "spryker/merchant-sales-order": "*",
+                "spryker/merchant-search": "*",
                 "spryker/merchant-user": "*",
                 "spryker/messenger": "*",
                 "spryker/messenger-extension": "*",
@@ -5690,15 +5691,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-02-04T15:09:38+00:00"
+            "time": "2020-02-04T15:13:54+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/mp-1701/dev-merchant-selector",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "8375df2eac86fcdd4dd9dcdfe8fde3dbe28e7cab"
+                "reference": "bcd51b753c614543c042f61e6926e1493dbc7ed4"
             },
             "require": {
                 "php": ">=7.2"
@@ -5838,7 +5839,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-02-04T10:08:34+00:00"
+            "time": "2020-02-04T14:53:44+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8704,8 +8705,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -11787,8 +11788,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
