@@ -134,7 +134,7 @@ $config[AclConstants::ACL_DEFAULT_RULES] = [
         'type' => 'allow',
     ],
     [
-        'bundle' => 'healthCheck',
+        'bundle' => 'health-check',
         'controller' => 'index',
         'action' => 'index',
         'type' => 'allow',
