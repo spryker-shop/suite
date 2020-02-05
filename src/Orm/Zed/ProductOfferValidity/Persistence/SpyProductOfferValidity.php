@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\Company\Persistence;
+namespace Orm\Zed\ProductOfferValidity\Persistence;
 
-use Spryker\Zed\Company\Persistence\Propel\AbstractSpyCompanyQuery;
+use Spryker\Zed\ProductOfferValidity\Persistence\Propel\AbstractSpyProductOfferValidity;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_company' table.
+ * Skeleton subclass for representing a row from the 'spy_product_offer_validity' table.
  *
  *
  *
@@ -18,6 +18,6 @@ use Spryker\Zed\Company\Persistence\Propel\AbstractSpyCompanyQuery;
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyCompanyQuery extends AbstractSpyCompanyQuery
+class SpyProductOfferValidity extends AbstractSpyProductOfferValidity
 {
 }

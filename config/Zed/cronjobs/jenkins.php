@@ -146,3 +146,12 @@ $jobs[] = [
     'enable' => true,
     'stores' => $allStores,
 ];
+
+/* ProductOfferValidity */
+$jobs[] = [
+    'name' => 'check-product-offer-validity',
+    'command' => '$PHP_BIN vendor/bin/console product-offer:check-validity',
+    'schedule' => '0 6 * * *',
+    'enable' => true,
+    'stores' => $allStores,
+];
