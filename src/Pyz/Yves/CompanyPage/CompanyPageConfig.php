@@ -7,17 +7,9 @@
 
 namespace Pyz\Yves\CompanyPage;
 
-use SprykerShop\Yves\CompanyPage\CompanyPageConfig as SprykerShopCompanyPageConfig;
+use SprykerShop\Yves\CompanyPage\CompanyPageConfig as SprykerCompanyPageConfig;
 
-class CompanyPageConfig extends SprykerShopCompanyPageConfig
+class CompanyPageConfig extends SprykerCompanyPageConfig
 {
     protected const ZIP_CODE_CONSTRAINT_PATTERN = '/^\d+$/';
-
-    /**
-     * @return string
-     */
-    public function getZipCodeConstraintPattern(): string
-    {
-        return static::ZIP_CODE_CONSTRAINT_PATTERN;
-    }
 }
