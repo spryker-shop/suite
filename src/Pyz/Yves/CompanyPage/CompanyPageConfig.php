@@ -11,11 +11,13 @@ use SprykerShop\Yves\CompanyPage\CompanyPageConfig as SprykerShopCompanyPageConf
 
 class CompanyPageConfig extends SprykerShopCompanyPageConfig
 {
+    protected const ZIP_CODE_CONSTRAINT_PATTERN = '/^\d+$/';
+
     /**
      * @return string
      */
     public function getZipCodeConstraintPattern(): string
     {
-        return '/^\d+$/';
+        return static::ZIP_CODE_CONSTRAINT_PATTERN;
     }
 }
