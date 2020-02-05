@@ -16,6 +16,6 @@ class CompanyPageConfig extends SprykerShopCompanyPageConfig
      */
     public function getZipCodeConstraintPattern(): string
     {
-        return '/^\d/';
+        return '/^\d+$/';
     }
 }
