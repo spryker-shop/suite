@@ -10,6 +10,7 @@ namespace PyzTest\Glue\Orders\RestApi;
 use Codeception\Util\HttpCode;
 use Generated\Shared\Transfer\CustomerTransfer;
 use PyzTest\Glue\Orders\OrdersApiTester;
+use Spryker\Glue\OrdersRestApi\OrdersRestApiConfig;
 
 /**
  * Auto-generated group annotations
@@ -48,15 +49,15 @@ class OrdersRestApiCest
      */
     public function requestGetEmptyListOfOrders(OrdersApiTester $I): void
     {
-        //arrange
+        //Arrange
         $this->authorizeCustomer($I, $this->fixtures->getCustomerTransfer1());
 
-        //act
+        //Act
         $I->sendGET(
-            $I->formatUrl('orders')
+            $I->formatUrl(OrdersRestApiConfig::RESOURCE_ORDERS)
         );
 
-        //assert
+        //Assert
         $I->seeResponseCodeIs(HttpCode::OK);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
@@ -66,7 +67,7 @@ class OrdersRestApiCest
             ->seeResponseDataContainsEmptyCollection();
 
         $I->seeResponseLinksContainsSelfLink(
-            $I->formatFullUrl('orders')
+            $I->formatFullUrl(OrdersRestApiConfig::RESOURCE_ORDERS)
         );
     }
 
@@ -77,15 +78,15 @@ class OrdersRestApiCest
      */
     public function requestGetListOfOrdersWithSingleOrder(OrdersApiTester $I): void
     {
-        //arrange
+        //Arrange
         $this->authorizeCustomer($I, $this->fixtures->getCustomerTransfer2());
 
-        //act
+        //Act
         $I->sendGET(
-            $I->formatUrl('orders')
+            $I->formatUrl(OrdersRestApiConfig::RESOURCE_ORDERS)
         );
 
-        //assert
+        //Assert
         $I->seeResponseCodeIs(HttpCode::OK);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
@@ -93,7 +94,7 @@ class OrdersRestApiCest
         $I->amSure('The returned resource has correct self-link')
             ->whenI()
             ->seeResponseLinksContainsSelfLink(
-                $I->formatFullUrl('orders')
+                $I->formatFullUrl(OrdersRestApiConfig::RESOURCE_ORDERS)
             );
 
         $I->amSure('The returned resource has not empty collection')
@@ -114,60 +115,24 @@ class OrdersRestApiCest
      *
      * @return void
      */
-    public function requestGetListOfOrdersWithMultipleOrders(OrdersApiTester $I): void
-    {
-        //arrange
-        $this->authorizeCustomer($I, $this->fixtures->getCustomerTransfer3());
-
-        //act
-        $I->sendGET(
-            $I->formatUrl('orders')
-        );
-        //assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
-
-        $I->amSure('The returned resource has correct self-link')
-            ->whenI()
-            ->seeResponseLinksContainsSelfLink(
-                $I->formatFullUrl('orders')
-            );
-
-        $I->amSure('The returned resource has not empty collection')
-            ->whenI()
-            ->seeResponseDataContainsNonEmptyCollection();
-
-        $I->amSure('The returned resource has correct resource collection type')
-            ->whenI()
-            ->seeResponseDataContainsResourceCollectionOfType('orders');
-
-        $I->amSure('The returned resource has correct size')
-            ->whenI()
-            ->seeResponseDataContainsResourceCollectionOfTypeWithSizeOf('orders', 2);
-    }
-
-    /**
-     * @param \PyzTest\Glue\Orders\OrdersApiTester $I
-     *
-     * @return void
-     */
     public function requestGetOrderDetails(OrdersApiTester $I): void
     {
-        //arrange
+        //Arrange
         $this->authorizeCustomer($I, $this->fixtures->getCustomerTransfer2());
-        $orderTransfer = $this->fixtures->getOrderTransfer();
+        $orderReference = $this->fixtures->getOrderTransfer()->getOrderReference();
 
-        //act
+        //Act
         $I->sendGET(
             $I->formatUrl(
-                'orders/{customerOrderReference}',
+                '{orders}/{customerOrderReference}',
                 [
-                    'customerOrderReference' => $orderTransfer->getOrderReference(),
+                    'orders' => OrdersRestApiConfig::RESOURCE_ORDERS,
+                    'customerOrderReference' => $orderReference,
                 ]
             )
         );
-        //assert
+
+        //Assert
         $I->seeResponseCodeIs(HttpCode::OK);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
@@ -182,7 +147,7 @@ class OrdersRestApiCest
 
         $I->amSure('The returned resource has correct id')
             ->whenI()
-            ->seeSingleResourceIdEqualTo($orderTransfer->getOrderReference());
+            ->seeSingleResourceIdEqualTo($orderReference);
     }
 
     /**
@@ -192,12 +157,15 @@ class OrdersRestApiCest
      */
     public function requestGetListOfOrderWithoutAuthorizationToken(OrdersApiTester $I): void
     {
-        //act
+        //Act
         $I->sendGET(
-            $I->formatUrl('orders')
+            $I->formatUrl(OrdersRestApiConfig::RESOURCE_ORDERS)
         );
-        //assert
+
+        //Assert
         $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -207,20 +175,24 @@ class OrdersRestApiCest
      */
     public function requestGetOrderDetailsWithoutAuthorizationToken(OrdersApiTester $I): void
     {
-        //arrange
-        $orderTransfer = $this->fixtures->getOrderTransfer();
+        //Arrange
+        $orderReference = $this->fixtures->getOrderTransfer()->getOrderReference();
 
-        //act
+        //Act
         $I->sendGET(
             $I->formatUrl(
-                'orders/{customerOrderReference}',
+                '{orders}/{customerOrderReference}',
                 [
-                    'customerOrderReference' => $orderTransfer->getOrderReference(),
+                    'orders' => OrdersRestApiConfig::RESOURCE_ORDERS,
+                    'customerOrderReference' => $orderReference,
                 ]
             )
         );
-        //assert
+
+        //Assert
         $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -230,20 +202,24 @@ class OrdersRestApiCest
      */
     public function requestGetOrderDetailsWithIncorrectOrderReference(OrdersApiTester $I): void
     {
-        //arrange
+        //Arrange
         $this->authorizeCustomer($I, $this->fixtures->getCustomerTransfer2());
 
-        //act
+        //Act
         $I->sendGET(
             $I->formatUrl(
-                'orders/{customerOrderReference}',
+                '{orders}/{customerOrderReference}',
                 [
+                    'orders' => OrdersRestApiConfig::RESOURCE_ORDERS,
                     'customerOrderReference' => 'test',
                 ]
             )
         );
-        //assert
+
+        //Assert
         $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**

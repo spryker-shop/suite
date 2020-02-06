@@ -9,6 +9,7 @@ namespace PyzTest\Glue\Orders\RestApi;
 
 use Generated\Shared\DataBuilder\QuoteBuilder;
 use Generated\Shared\Transfer\CustomerTransfer;
+use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\SaveOrderTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
 use PyzTest\Glue\Orders\OrdersApiTester;
@@ -47,11 +48,6 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
      * @var \Generated\Shared\Transfer\CustomerTransfer
      */
     protected $customerTransfer2;
-
-    /**
-     * @var \Generated\Shared\Transfer\CustomerTransfer
-     */
-    protected $customerTransfer3;
 
     /**
      * @var \Spryker\Shared\Kernel\Transfer\AbstractTransfer
@@ -93,17 +89,9 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
     }
 
     /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
-    public function getCustomerTransfer3(): CustomerTransfer
-    {
-        return $this->customerTransfer3;
-    }
-
-    /**
      * @return \Generated\Shared\Transfer\ProductConcreteTransfer[]
      */
-    protected function getProductTransfers()
+    protected function getProductTransfers(): array
     {
         return $this->productTransfers;
     }
@@ -111,7 +99,7 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
     /**
      * @return \Spryker\Shared\Kernel\Transfer\AbstractTransfer
      */
-    protected function getQuoteTransfer()
+    protected function getQuoteTransfer(): AbstractTransfer
     {
         return $this->quoteTransfer;
     }
@@ -119,7 +107,7 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
     /**
      * @return \Generated\Shared\Transfer\SaveOrderTransfer
      */
-    public function getOrderTransfer()
+    public function getOrderTransfer(): SaveOrderTransfer
     {
         return $this->saveOrderTransfer;
     }
@@ -134,20 +122,11 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
         $this->createStateMachine($I);
         $this->productTransfers[] = $this->createProduct($I);
 
-        //prepare data for empty order list response
         $this->customerTransfer1 = $this->createCustomer($I, static::TEST_USERNAME, static::TEST_PASSWORD);
 
-        //prepare data for single order list response
         $this->customerTransfer2 = $this->createCustomer($I, static::TEST_USERNAME, static::TEST_PASSWORD);
         $this->quoteTransfer = $this->createQuote($this->customerTransfer2);
         $this->saveOrderTransfer = $this->createOrderFromQuote($I);
-
-        //prepare data for multiply order list response
-        $this->customerTransfer3 = $this->createCustomer($I, static::TEST_USERNAME, static::TEST_PASSWORD);
-        $this->quoteTransfer = $this->createQuote($this->customerTransfer3);
-        $this->createOrderFromQuote($I);
-        $this->quoteTransfer = $this->createQuote($this->customerTransfer3);
-        $this->createOrderFromQuote($I);
 
         return $this;
     }
@@ -186,7 +165,7 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
      *
      * @return \Generated\Shared\Transfer\ProductConcreteTransfer
      */
-    public function createProduct(OrdersApiTester $I)
+    public function createProduct(OrdersApiTester $I): ProductConcreteTransfer
     {
         $productTransfer = $I->haveProduct();
 
