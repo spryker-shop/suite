@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "841fffc85ddd76c1919967d9a6d06627",
+    "content-hash": "3e559dd8917e13558c7792b62a8a99de",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.133.6",
+            "version": "3.133.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "cd7bd2fdd159146ef6c7eeb90b73fae4fd11da57"
+                "reference": "c564fcccd5fc7b5e8514d1cbe35558be1e3a11cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/cd7bd2fdd159146ef6c7eeb90b73fae4fd11da57",
-                "reference": "cd7bd2fdd159146ef6c7eeb90b73fae4fd11da57",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/c564fcccd5fc7b5e8514d1cbe35558be1e3a11cd",
+                "reference": "c564fcccd5fc7b5e8514d1cbe35558be1e3a11cd",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-01-24T19:11:35+00:00"
+            "time": "2020-02-05T19:12:47+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -1663,16 +1663,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.63",
+            "version": "1.0.64",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "8132daec326565036bc8e8d1876f77ec183a7bd6"
+                "reference": "d13c43dbd4b791f815215959105a008515d1a2e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/8132daec326565036bc8e8d1876f77ec183a7bd6",
-                "reference": "8132daec326565036bc8e8d1876f77ec183a7bd6",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/d13c43dbd4b791f815215959105a008515d1a2e0",
+                "reference": "d13c43dbd4b791f815215959105a008515d1a2e0",
                 "shasum": ""
             },
             "require": {
@@ -1684,7 +1684,7 @@
             },
             "require-dev": {
                 "phpspec/phpspec": "^3.4",
-                "phpunit/phpunit": "^5.7.10"
+                "phpunit/phpunit": "^5.7.26"
             },
             "suggest": {
                 "ext-fileinfo": "Required for MimeType",
@@ -1743,7 +1743,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2020-01-04T16:30:31+00:00"
+            "time": "2020-02-05T18:14:17+00:00"
         },
         {
             "name": "league/flysystem-aws-s3-v3",
@@ -4693,6 +4693,45 @@
             "time": "2019-12-19T13:39:03+00:00"
         },
         {
+            "name": "spryker-shop/cart-page-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/cart-page-extension.git",
+                "reference": "fcf3e71f620ff88d818ceaa3188c6c9f1c841be8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/cart-page-extension/zipball/fcf3e71f620ff88d818ceaa3188c6c9f1c841be8",
+                "reference": "fcf3e71f620ff88d818ceaa3188c6c9f1c841be8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CartPageExtension module",
+            "time": "2019-12-27T20:41:07+00:00"
+        },
+        {
             "name": "spryker/decimal-object",
             "version": "1.0.0",
             "source": {
@@ -4994,17 +5033,16 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/cc-5842/dev-product-abstract-card",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "d43ebf8140ae97f8570bc816d8837590076e0775"
+                "reference": "408d9b276eee94df5628adcab687d7a8603e95f9"
             },
             "require": {
                 "php": ">=7.2"
             },
             "replace": {
-                "spryker-shop/cart-page-extension": "*",
                 "spryker/acl": "*",
                 "spryker/agent": "*",
                 "spryker/agent-gui": "*",
@@ -5040,6 +5078,7 @@
                 "spryker/cart": "*",
                 "spryker/cart-code": "*",
                 "spryker/cart-code-extension": "*",
+                "spryker/cart-codes-rest-api": "*",
                 "spryker/cart-currency-connector": "*",
                 "spryker/cart-extension": "*",
                 "spryker/cart-note": "*",
@@ -5311,6 +5350,8 @@
                 "spryker/merchant-relationship-sales-order-threshold-gui": "*",
                 "spryker/merchant-relationship-sales-order-threshold-gui-extension": "*",
                 "spryker/merchant-sales-order": "*",
+                "spryker/merchant-search": "*",
+                "spryker/merchant-user": "*",
                 "spryker/messenger": "*",
                 "spryker/messenger-extension": "*",
                 "spryker/module-finder": "*",
@@ -5443,6 +5484,7 @@
                 "spryker/product-new": "*",
                 "spryker/product-offer": "*",
                 "spryker/product-offer-availability": "*",
+                "spryker/product-offer-availability-storage": "*",
                 "spryker/product-offer-stock": "*",
                 "spryker/product-offer-stock-data-import": "*",
                 "spryker/product-offer-validity": "*",
@@ -5649,15 +5691,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-01-31T13:14:09+00:00"
+            "time": "2020-02-06T10:18:52+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/cc-5842/dev-product-abstract-card",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "14226fc5b7204fb38c3aaa797a531625e01a0823"
+                "reference": "82bb6c6a61d9b30bb4fd159ee51520b72d6c3786"
             },
             "require": {
                 "php": ">=7.2"
@@ -5732,7 +5774,6 @@
                 "spryker-shop/product-detail-page": "*",
                 "spryker-shop/product-discontinued-widget": "*",
                 "spryker-shop/product-group-widget": "*",
-                "spryker-shop/product-group-widget-extension": "*",
                 "spryker-shop/product-image-widget": "*",
                 "spryker-shop/product-label-widget": "*",
                 "spryker-shop/product-measurement-unit-widget": "*",
@@ -5798,7 +5839,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-02-03T10:29:08+00:00"
+            "time": "2020-02-06T10:18:56+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8664,8 +8705,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -9628,16 +9669,16 @@
         },
         {
             "name": "codeception/module-webdriver",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/module-webdriver.git",
-                "reference": "51f95403af8a5d29f5e5a163491f8000b012c88e"
+                "reference": "a41fae6220cd6b1e9da1c4a0662f9ed854f60412"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/module-webdriver/zipball/51f95403af8a5d29f5e5a163491f8000b012c88e",
-                "reference": "51f95403af8a5d29f5e5a163491f8000b012c88e",
+                "url": "https://api.github.com/repos/Codeception/module-webdriver/zipball/a41fae6220cd6b1e9da1c4a0662f9ed854f60412",
+                "reference": "a41fae6220cd6b1e9da1c4a0662f9ed854f60412",
                 "shasum": ""
             },
             "require": {
@@ -9679,7 +9720,7 @@
                 "browser-testing",
                 "codeception"
             ],
-            "time": "2020-01-20T07:57:02+00:00"
+            "time": "2020-02-04T17:23:57+00:00"
         },
         {
             "name": "composer/xdebug-handler",
@@ -10941,12 +10982,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/spryk.git",
-                "reference": "4e84475d5f373ebb220a4cf724c04864d4f50f08"
+                "reference": "28809455b03bf89571dc4049e067390af7d1f1d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/4e84475d5f373ebb220a4cf724c04864d4f50f08",
-                "reference": "4e84475d5f373ebb220a4cf724c04864d4f50f08",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/28809455b03bf89571dc4049e067390af7d1f1d6",
+                "reference": "28809455b03bf89571dc4049e067390af7d1f1d6",
                 "shasum": ""
             },
             "require": {
@@ -10956,27 +10997,23 @@
                 "spryker/doctrine-inflector": "^1.0.0",
                 "spryker/glue-application-extension": "^1.1.0",
                 "spryker/kernel": "^3.30.0",
-                "spryker/symfony": "^3.0.0",
-                "spryker/twig": "^3.0.0",
-                "spryker/zend": "^2.0.0",
-                "symfony/console": "^3.4.0 || ^4.0.0",
-                "symfony/filesystem": "^3.4.0 || ^4.0.0",
-                "symfony/finder": "^3.4.0 || ^4.0.0",
-                "symfony/yaml": "^3.4.9 || ^4.0.0",
+                "symfony/console": "^3.4.0 || ^4.0.0 || ^5.0.0",
+                "symfony/filesystem": "^3.4.0 || ^4.0.0 || ^5.0.0",
+                "symfony/finder": "^3.4.0 || ^4.0.0 || ^5.0.0",
+                "symfony/yaml": "^3.4.9 || ^4.0.0 || ^5.0.0",
                 "twig/twig": "^1.34 || ^2.0.0",
                 "zendframework/zend-filter": "^2.8"
             },
             "require-dev": {
-                "codeception/codeception": "^2.4.1",
+                "codeception/codeception": "^4.0.0",
                 "nette/finder": "^2.4.0",
                 "nette/utils": "^2.5.0",
                 "php-coveralls/php-coveralls": "^1.0",
-                "phpstan/phpstan": "^0.11.0",
-                "phpstan/phpstan-phpunit": "^0.11.0",
-                "phpstan/phpstan-strict-rules": "^0.11.0",
+                "phpstan/phpstan": "^0.12.0",
+                "phpunit/phpunit": "^7.0.0",
+                "sllh/composer-versions-check": "^2.0",
                 "spryker/code-sniffer": "*",
-                "spryker/testify": "*",
-                "symfony/var-dumper": "*"
+                "spryker/testify": "*"
             },
             "type": "library",
             "extra": {
@@ -10994,7 +11031,7 @@
                 "proprietary"
             ],
             "description": "Spryk module",
-            "time": "2020-01-09T15:04:43+00:00"
+            "time": "2020-02-05T14:25:11+00:00"
         },
         {
             "name": "spryker-sdk/spryk-gui",
@@ -11206,7 +11243,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "84bbd235c4f4dc4203159e46508e7d155e32576a"
+                "reference": "d2205a3693af21ff3ed2b347598e1de5c58e3e7a"
             },
             "require": {
                 "php": ">=7.2",
@@ -11247,7 +11284,7 @@
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2020-01-14T11:41:50+00:00"
+            "time": "2020-02-05T12:41:08+00:00"
         },
         {
             "name": "spryker/git-hook",
@@ -11747,8 +11784,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
