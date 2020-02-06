@@ -46,6 +46,7 @@ use SprykerShop\Yves\HomePage\Plugin\Router\HomePageRouteProviderPlugin;
 use SprykerShop\Yves\MultiCartPage\Plugin\Router\MultiCartPageRouteProviderPlugin;
 use SprykerShop\Yves\NewsletterPage\Plugin\Router\NewsletterPageRouteProviderPlugin;
 use SprykerShop\Yves\NewsletterWidget\Plugin\Router\NewsletterWidgetRouteProviderPlugin;
+use SprykerShop\Yves\OrderCustomReferenceWidget\Plugin\Router\OrderCustomReferenceWidgetRouteProviderPlugin;
 use SprykerShop\Yves\PersistentCartSharePage\Plugin\Router\PersistentCartSharePageRouteProviderPlugin;
 use SprykerShop\Yves\PersistentCartShareWidget\Plugin\Router\PersistentCartShareWidgetRouteProviderPlugin;
 use SprykerShop\Yves\PriceWidget\Plugin\Router\PriceWidgetRouteProviderPlugin;
@@ -136,6 +137,7 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new CompanyUserAgentWidgetRouteProviderPlugin(),
             new ConfigurableBundleNoteWidgetRouteProviderPlugin(),
             new ConfigurableBundlePageRouteProviderPlugin(),
+            new OrderCustomReferenceWidgetRouteProviderPlugin(),
         ];
     }
 
