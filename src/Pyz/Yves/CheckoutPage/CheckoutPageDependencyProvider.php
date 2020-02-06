@@ -28,11 +28,12 @@ use SprykerShop\Yves\CustomerPage\Plugin\CheckoutPage\CustomerAddressExpanderPlu
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutAddressStepEnterPreCheckPlugin;
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutPaymentStepEnterPreCheckPlugin;
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutShipmentStepEnterPreCheckPlugin;
+use SprykerShop\Yves\QuoteRequestAgentWidget\Plugin\CheckoutPage\QuoteRequestAgentWidgetCheckoutShipmentStepRedirectStrategyPlugin;
 use SprykerShop\Yves\QuoteRequestPage\Plugin\CheckoutPage\QuoteRequestCheckerCheckoutAddressStepEnterPreCheckPlugin;
 use SprykerShop\Yves\QuoteRequestPage\Plugin\CheckoutPage\QuoteRequestCheckerCheckoutPaymentStepEnterPreCheckPlugin;
 use SprykerShop\Yves\QuoteRequestPage\Plugin\CheckoutPage\QuoteRequestCheckerCheckoutShipmentStepEnterPreCheckPlugin;
 use SprykerShop\Yves\QuoteRequestPage\Plugin\CheckoutPage\QuoteRequestCheckerCheckoutSummaryStepEnterPreCheckPlugin;
-use SprykerShop\Yves\QuoteRequestWidget\Plugin\CheckoutPage\QuoteRequestWidgetCheckoutShipmentPostExecuteRedirectStrategyPlugin;
+use SprykerShop\Yves\QuoteRequestWidget\Plugin\CheckoutPage\QuoteRequestWidgetCheckoutShipmentStepRedirectStrategyPlugin;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThresholdWidgetPlugin;
 
 /**
@@ -226,12 +227,13 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     }
 
     /**
-     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutShipmentPostExecuteRedirectStrategyPluginInterface[]
+     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutShipmentStepRedirectStrategyPluginInterface[]
      */
-    protected function getCheckoutShipmentPostExecuteRedirectStrategyPlugins(): array
+    protected function getCheckoutShipmentStepRedirectStrategyPlugins(): array
     {
         return [
-            new QuoteRequestWidgetCheckoutShipmentPostExecuteRedirectStrategyPlugin(),
+            new QuoteRequestAgentWidgetCheckoutShipmentStepRedirectStrategyPlugin(),
+            new QuoteRequestWidgetCheckoutShipmentStepRedirectStrategyPlugin(),
         ];
     }
 }
