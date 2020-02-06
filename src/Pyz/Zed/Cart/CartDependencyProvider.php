@@ -133,8 +133,8 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     protected function getCartPreCheckPlugins(Container $container)
     {
         return [
-            new CheckAvailabilityPlugin(),
             new ProductExistsCartPreCheckPlugin(),
+            new CheckAvailabilityPlugin(),
             new CartItemPricePreCheckPlugin(),
             new CartBundlePricesPreCheckPlugin(),
             new CartItemOptionPreCheckPlugin(),
