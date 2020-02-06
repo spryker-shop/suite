@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6282cc2e2a15184c3038e82d38c2465e",
+    "content-hash": "f75a2ffa0941155d1ea99f4ae579f2d0",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5308,6 +5308,52 @@
             "time": "2020-01-06T15:14:57+00:00"
         },
         {
+            "name": "spryker-shop/merchant-switcher-widget",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/merchant-switcher-widget.git",
+                "reference": "6c8ddd3f0540df926eabff09743de4ca5b86d069"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/merchant-switcher-widget/zipball/6c8ddd3f0540df926eabff09743de4ca5b86d069",
+                "reference": "6c8ddd3f0540df926eabff09743de4ca5b86d069",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker-shop/shop-application": "^1.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/merchant-search": "^0.1.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/router": "*"
+            },
+            "suggest": {
+                "spryker/router": "Use this module when you want to use the Router."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantSwitcherWidget module",
+            "time": "2020-02-05T11:02:14+00:00"
+        },
+        {
             "name": "spryker-shop/money-widget",
             "version": "1.2.1",
             "source": {
@@ -8142,16 +8188,16 @@
         },
         {
             "name": "spryker-shop/shop-ui",
-            "version": "1.33.3",
+            "version": "1.33.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/shop-ui.git",
-                "reference": "31641be501933e1eb45d2ee8c8702684fbca3010"
+                "reference": "a4cb47eac5f3b699b73d885c18f4f9d09c43decd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/shop-ui/zipball/31641be501933e1eb45d2ee8c8702684fbca3010",
-                "reference": "31641be501933e1eb45d2ee8c8702684fbca3010",
+                "url": "https://api.github.com/repos/spryker-shop/shop-ui/zipball/a4cb47eac5f3b699b73d885c18f4f9d09c43decd",
+                "reference": "a4cb47eac5f3b699b73d885c18f4f9d09c43decd",
                 "shasum": ""
             },
             "require": {
@@ -8185,7 +8231,7 @@
                 "proprietary"
             ],
             "description": "ShopUi module",
-            "time": "2020-01-23T10:32:37+00:00"
+            "time": "2020-01-31T09:23:48+00:00"
         },
         {
             "name": "spryker-shop/shopping-list-note-widget",
@@ -23254,6 +23300,47 @@
             ],
             "description": "MerchantSalesOrder module",
             "time": "2019-12-28T20:03:35+00:00"
+        },
+        {
+            "name": "spryker/merchant-search",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-search.git",
+                "reference": "e83cb18b6f37330203ff68242b2bc33eba2bc5ec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-search/zipball/e83cb18b6f37330203ff68242b2bc33eba2bc5ec",
+                "reference": "e83cb18b6f37330203ff68242b2bc33eba2bc5ec",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/kernel": "^3.33.0",
+                "spryker/merchant": "^2.0.0",
+                "spryker/zed-request": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantSearch module",
+            "time": "2020-02-05T12:11:54+00:00"
         },
         {
             "name": "spryker/merchant-user",
