@@ -37,7 +37,9 @@ class OrdersRestApiCest
      */
     public function loadFixtures(OrdersApiTester $I): void
     {
-        $this->fixtures = $I->loadFixtures(OrdersRestApiFixtures::class);
+        /** @var \PyzTest\Glue\Orders\RestApi\OrdersRestApiFixtures $fixtures */
+        $fixtures = $I->loadFixtures(OrdersRestApiFixtures::class);
+        $this->fixtures = $fixtures;
     }
 
     /**
