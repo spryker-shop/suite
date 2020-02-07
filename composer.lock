@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3e559dd8917e13558c7792b62a8a99de",
+    "content-hash": "07ce6e6b370e08386b52c2da6d229282",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5033,11 +5033,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-bugfix/te-4526-index-generator-creates-indexes-for-already-indexed-columns",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "1bdfbe6301ccd3a1078ee918a000549f92b04723"
+                "reference": "b8e56bd41a5b261572ae9bca74ed59fc4ff00dee"
             },
             "require": {
                 "php": ">=7.2"
@@ -5529,6 +5529,7 @@
                 "spryker/products-rest-api": "*",
                 "spryker/products-rest-api-extension": "*",
                 "spryker/propel": "*",
+                "spryker/propel-extension": "*",
                 "spryker/propel-orm": "*",
                 "spryker/propel-query-builder": "*",
                 "spryker/queue": "*",
@@ -5691,7 +5692,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-02-06T17:11:36+00:00"
+            "time": "2020-02-07T12:45:48+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -8705,8 +8706,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -10314,20 +10315,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
+                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler",
-                    "role": "Project Founder"
+                    "homepage": "https://github.com/manuelpichler"
                 },
                 {
                     "name": "Marc Würth",
+                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84",
-                    "role": "Project Maintainer"
+                    "homepage": "https://github.com/ravage84"
                 },
                 {
                     "name": "Other contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -11784,8 +11785,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "lead",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "lead"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
