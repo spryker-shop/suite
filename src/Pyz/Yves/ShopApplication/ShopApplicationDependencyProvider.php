@@ -99,6 +99,7 @@ use SprykerShop\Yves\QuoteRequestAgentWidget\Widget\QuoteRequestAgentCancelWidge
 use SprykerShop\Yves\QuoteRequestAgentWidget\Widget\QuoteRequestAgentOverviewWidget;
 use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCancelWidget;
 use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCartWidget;
+use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCheckoutWidget;
 use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCreateWidget;
 use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestMenuItemWidget;
 use SprykerShop\Yves\SalesConfigurableBundleWidget\Widget\OrderConfiguredBundleWidget;
@@ -230,6 +231,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             OrderConfiguredBundleWidget::class,
             MerchantProductOfferWidget::class,
             ConfiguredBundleNoteWidget::class,
+            QuoteRequestCheckoutWidget::class,
         ];
     }
 
