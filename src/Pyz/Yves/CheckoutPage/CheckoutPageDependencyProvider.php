@@ -30,7 +30,10 @@ use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalChecke
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutShipmentStepEnterPreCheckPlugin;
 use SprykerShop\Yves\QuoteRequestAgentWidget\Plugin\CheckoutPage\QuoteRequestAgentWidgetCheckoutShipmentStepRedirectStrategyPlugin;
 use SprykerShop\Yves\QuoteRequestPage\Plugin\CheckoutPage\QuoteRequestCheckerCheckoutAddressStepEnterPreCheckPlugin;
+use SprykerShop\Yves\QuoteRequestPage\Plugin\CheckoutPage\QuoteRequestCheckerCheckoutPaymentStepEnterPreCheckPlugin;
 use SprykerShop\Yves\QuoteRequestPage\Plugin\CheckoutPage\QuoteRequestCheckerCheckoutShipmentStepEnterPreCheckPlugin;
+use SprykerShop\Yves\QuoteRequestPage\Plugin\CheckoutPage\QuoteRequestCheckerCheckoutSummaryStepEnterPreCheckPlugin;
+use SprykerShop\Yves\QuoteRequestWidget\Plugin\CheckoutPage\QuoteRequestWidgetCheckoutShipmentStepRedirectStrategyPlugin;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThresholdWidgetPlugin;
 
 /**
@@ -182,6 +185,17 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     {
         return [
             new QuoteApprovalCheckerCheckoutPaymentStepEnterPreCheckPlugin(),
+            new QuoteRequestCheckerCheckoutPaymentStepEnterPreCheckPlugin(),
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutSummaryStepEnterPreCheckPluginInterface[]
+     */
+    protected function getCheckoutSummaryStepEnterPreCheckPlugins(): array
+    {
+        return [
+            new QuoteRequestCheckerCheckoutSummaryStepEnterPreCheckPlugin(),
         ];
     }
 
@@ -219,6 +233,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     {
         return [
             new QuoteRequestAgentWidgetCheckoutShipmentStepRedirectStrategyPlugin(),
+            new QuoteRequestWidgetCheckoutShipmentStepRedirectStrategyPlugin(),
         ];
     }
 }
