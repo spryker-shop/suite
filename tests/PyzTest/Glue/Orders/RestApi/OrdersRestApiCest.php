@@ -52,7 +52,7 @@ class OrdersRestApiCest
     public function requestGetEmptyListOfOrders(OrdersApiTester $I): void
     {
         //Arrange
-        $this->authorizeCustomer($I, $this->fixtures->getCustomerTransfer1());
+        $this->authorizeCustomer($I, $this->fixtures->getCustomerWithoutOrders());
 
         //Act
         $I->sendGET(
@@ -64,13 +64,15 @@ class OrdersRestApiCest
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSure('The returned resource has correct self-link')
+        $I->amSure('The returned resource contains empty collection')
             ->whenI()
             ->seeResponseDataContainsEmptyCollection();
 
-        $I->seeResponseLinksContainsSelfLink(
-            $I->formatFullUrl(OrdersRestApiConfig::RESOURCE_ORDERS)
-        );
+        $I->amSure('The returned resource has correct self-link')
+            ->whenI()
+            ->seeResponseLinksContainsSelfLink(
+                $I->formatFullUrl(OrdersRestApiConfig::RESOURCE_ORDERS)
+            );
     }
 
     /**
@@ -81,7 +83,7 @@ class OrdersRestApiCest
     public function requestGetListOfOrdersWithSingleOrder(OrdersApiTester $I): void
     {
         //Arrange
-        $this->authorizeCustomer($I, $this->fixtures->getCustomerTransfer2());
+        $this->authorizeCustomer($I, $this->fixtures->getCustomerWithOrders());
 
         //Act
         $I->sendGET(
@@ -120,8 +122,8 @@ class OrdersRestApiCest
     public function requestGetOrderDetails(OrdersApiTester $I): void
     {
         //Arrange
-        $this->authorizeCustomer($I, $this->fixtures->getCustomerTransfer2());
-        $orderReference = $this->fixtures->getOrderTransfer()->getOrderReference();
+        $this->authorizeCustomer($I, $this->fixtures->getCustomerWithOrders());
+        $orderReference = $this->fixtures->geSaveOrderTransfer()->getOrderReference();
 
         //Act
         $I->sendGET(
@@ -138,10 +140,6 @@ class OrdersRestApiCest
         $I->seeResponseCodeIs(HttpCode::OK);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
-
-        $I->amSure('The returned resource has not empty collection')
-            ->whenI()
-            ->seeResponseDataContainsNonEmptyCollection();
 
         $I->amSure('The returned resource is of correct type')
             ->whenI()
@@ -178,7 +176,7 @@ class OrdersRestApiCest
     public function requestGetOrderDetailsWithoutAuthorizationToken(OrdersApiTester $I): void
     {
         //Arrange
-        $orderReference = $this->fixtures->getOrderTransfer()->getOrderReference();
+        $orderReference = $this->fixtures->geSaveOrderTransfer()->getOrderReference();
 
         //Act
         $I->sendGET(
@@ -205,7 +203,7 @@ class OrdersRestApiCest
     public function requestGetOrderDetailsWithIncorrectOrderReference(OrdersApiTester $I): void
     {
         //Arrange
-        $this->authorizeCustomer($I, $this->fixtures->getCustomerTransfer2());
+        $this->authorizeCustomer($I, $this->fixtures->getCustomerWithOrders());
 
         //Act
         $I->sendGET(
