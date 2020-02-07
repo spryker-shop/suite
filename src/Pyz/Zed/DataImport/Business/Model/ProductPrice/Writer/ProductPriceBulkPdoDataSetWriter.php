@@ -100,7 +100,8 @@ class ProductPriceBulkPdoDataSetWriter implements DataSetWriterInterface
     {
         $this->collectProductPriceCollection($dataSet);
 
-        if (count(static::$priceProductAbstractCollection) >= ProductPriceHydratorStep::BULK_SIZE ||
+        if (
+            count(static::$priceProductAbstractCollection) >= ProductPriceHydratorStep::BULK_SIZE ||
             count(static::$priceProductConcreteCollection) >= ProductPriceHydratorStep::BULK_SIZE
         ) {
             $this->flush();
