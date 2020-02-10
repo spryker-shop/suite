@@ -7,9 +7,9 @@
 
 namespace Pyz\Zed\ShoppingList;
 
-use Spryker\Zed\Product\Communication\Plugin\ShoppingList\ProductShoppingListAddItemPreCheckPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\ShoppingList\ReplaceBundledQuoteItemsPreConvertPlugin;
 use Spryker\Zed\ProductDiscontinued\Communication\Plugin\ShoppingList\ProductDiscontinuedAddItemPreCheckPlugin;
+use Spryker\Zed\ShoppingList\Communication\Plugin\ShoppingList\ProductConcreteStatusShoppingListAddItemPreCheckPlugin;
 use Spryker\Zed\ShoppingList\ShoppingListDependencyProvider as SprykerShoppingListDependencyProvider;
 use Spryker\Zed\ShoppingListNote\Communication\Plugin\ItemCartNoteToShoppingListItemNoteMapperPlugin;
 use Spryker\Zed\ShoppingListNote\Communication\Plugin\ShoppingListItemNoteBeforeDeletePlugin;
@@ -28,7 +28,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     protected function getAddItemPreCheckPlugins(): array
     {
         return [
-            new ProductShoppingListAddItemPreCheckPlugin(),
+            new ProductConcreteStatusShoppingListAddItemPreCheckPlugin(),
             new ProductDiscontinuedAddItemPreCheckPlugin(), #ProductDiscontinuedFeature
         ];
     }
