@@ -18,6 +18,7 @@ use Spryker\Zed\CmsPageSearch\Communication\Plugin\Event\CmsPageEventResourceQue
 use Spryker\Zed\CmsSlotBlockStorage\Communication\Plugin\EventBehavior\CmsSlotBlockEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\CmsSlotStorage\Communication\Plugin\Event\CmsSlotEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\CmsStorage\Communication\Plugin\Event\CmsEventResourceQueryContainerPlugin;
+use Spryker\Zed\CompanyUserStorage\Communication\Plugin\Event\CompanyUserEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\ConfigurableBundlePageSearch\Communication\Plugin\Event\ConfigurableBundleTemplatePageSearchEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\ConfigurableBundleStorage\Communication\Plugin\Event\ConfigurableBundleTemplateEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\ConfigurableBundleStorage\Communication\Plugin\Event\ConfigurableBundleTemplateImageEventResourceBulkRepositoryPlugin;
@@ -110,6 +111,7 @@ class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProv
             new ProductPackagingUnitEventResourceBulkRepositoryPlugin(),
             new ContentStorageEventResourceBulkRepositoryPlugin(),
             new MerchantOpeningHoursEventResourceBulkRepositoryPlugin(),
+            new CompanyUserEventResourceBulkRepositoryPlugin(),
             new MerchantProfileEventResourceBulkRepositoryPlugin(),
         ];
     }
