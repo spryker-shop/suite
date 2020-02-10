@@ -6,7 +6,6 @@ use Pyz\Shared\Scheduler\SchedulerConfig;
 use Spryker\Client\RabbitMq\Model\RabbitMqAdapter;
 use Spryker\Glue\Log\Plugin\GlueLoggerConfigPlugin;
 use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBuilderPlugin;
-use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Api\ApiConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Application\Log\Config\SprykerLoggerConfig;
@@ -14,7 +13,6 @@ use Spryker\Shared\Auth\AuthConstants;
 use Spryker\Shared\Cms\CmsConstants;
 use Spryker\Shared\CmsGui\CmsGuiConstants;
 use Spryker\Shared\Collector\CollectorConstants;
-use Spryker\Shared\Config\ConfigConstants;
 use Spryker\Shared\Customer\CustomerConstants;
 use Spryker\Shared\DocumentationGeneratorRestApi\DocumentationGeneratorRestApiConstants;
 use Spryker\Shared\DummyPayment\DummyPaymentConfig;
@@ -73,6 +71,7 @@ use Spryker\Zed\Propel\PropelConfig;
 use SprykerEco\Shared\Loggly\LogglyConstants;
 use SprykerShop\Shared\CalculationPage\CalculationPageConstants;
 use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
+use SprykerShop\Shared\WebProfilerWidget\WebProfilerWidgetConstants;
 use Twig\Cache\FilesystemCache;
 
 $CURRENT_STORE = Store::getInstance()->getStoreName();
@@ -112,7 +111,7 @@ $config[ZedRequestConstants::BASE_URL_SSL_ZED_API] = sprintf(
 $config[TwigConstants::ZED_TWIG_OPTIONS] = [
     'cache' => new FilesystemCache(
         sprintf(
-            '%s/data/%s/cache/Zed/twig',
+            '%s/data/%s/cache/ZED/twig',
             APPLICATION_ROOT_DIR,
             $CURRENT_STORE
         ),
@@ -149,7 +148,7 @@ $config[ApplicationConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG]
 $config[ZedRequestConstants::ZED_API_SSL_ENABLED] = false;
 $config[ApplicationConstants::ZED_SSL_ENABLED] = false;
 $config[SessionConstants::ZED_SSL_ENABLED] = (bool)getenv('SPRYKER_SSL_ENABLE');
-$config[ApplicationConstants::ZED_SSL_EXCLUDED] = ['heartbeat/index'];
+$config[ApplicationConstants::ZED_SSL_EXCLUDED] = ['health-check/index'];
 
 $config[ErrorHandlerConstants::DISPLAY_ERRORS] = true;
 $config[ErrorHandlerConstants::ZED_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Zed/errorpage/error.html';
@@ -176,9 +175,10 @@ $config[ApplicationConstants::PROJECT_TIMEZONE] = 'UTC';
 $config[ApplicationConstants::ENABLE_WEB_PROFILER] = false;
 $config[KernelConstants::STORE_PREFIX] = 'DEV';
 $config[ApplicationConstants::ENABLE_APPLICATION_DEBUG] = true;
-$config[WebProfilerConstants::ENABLE_WEB_PROFILER]
-    = $config[ConfigConstants::ENABLE_WEB_PROFILER]
-    = true;
+
+$config[WebProfilerConstants::IS_WEB_PROFILER_ENABLED]
+    = $config[WebProfilerWidgetConstants::IS_WEB_PROFILER_ENABLED]
+    = getenv('SPRYKER_DEBUG_ENABLED') && !getenv('SPRYKER_TESTING_ENABLED');
 
 $ENVIRONMENT_PREFIX = '';
 $config[SequenceNumberConstants::ENVIRONMENT_PREFIX] = $ENVIRONMENT_PREFIX;
@@ -210,92 +210,6 @@ $config[AuthConstants::AUTH_DEFAULT_CREDENTIALS] = [
         // Please replace this token for your project
         'token' => 'JDJ5JDEwJFE0cXBwYnVVTTV6YVZXSnVmM2l1UWVhRE94WkQ4UjBUeHBEWTNHZlFRTEd4U2F6QVBqejQ2',
     ],
-];
-
-// ACL: Allow or disallow of urls for Zed Admin GUI for ALL users
-$config[AclConstants::ACL_DEFAULT_RULES] = [
-    [
-        'bundle' => 'auth',
-        'controller' => 'login',
-        'action' => 'index',
-        'type' => 'allow',
-    ],
-    [
-        'bundle' => 'auth',
-        'controller' => 'login',
-        'action' => 'check',
-        'type' => 'allow',
-    ],
-    [
-        'bundle' => 'auth',
-        'controller' => 'password',
-        'action' => 'reset',
-        'type' => 'allow',
-    ],
-    [
-        'bundle' => 'auth',
-        'controller' => 'password',
-        'action' => 'reset-request',
-        'type' => 'allow',
-    ],
-    [
-        'bundle' => 'acl',
-        'controller' => 'index',
-        'action' => 'denied',
-        'type' => 'allow',
-    ],
-    [
-        'bundle' => 'heartbeat',
-        'controller' => 'index',
-        'action' => 'index',
-        'type' => 'allow',
-    ],
-    [
-        'bundle' => 'auth',
-        'controller' => 'logout',
-        'action' => 'index',
-        'type' => 'allow',
-    ],
-];
-// ACL: Allow or disallow of urls for Zed Admin GUI
-$config[AclConstants::ACL_USER_RULE_WHITELIST] = [
-    [
-        'bundle' => 'application',
-        'controller' => '*',
-        'action' => '*',
-        'type' => 'allow',
-    ],
-    [
-        'bundle' => 'auth',
-        'controller' => '*',
-        'action' => '*',
-        'type' => 'allow',
-    ],
-    [
-        'bundle' => 'heartbeat',
-        'controller' => 'heartbeat',
-        'action' => 'index',
-        'type' => 'allow',
-    ],
-];
-// ACL: Special rules for specific users
-$config[AclConstants::ACL_DEFAULT_CREDENTIALS] = [
-    'yves_system' => [
-        'rules' => [
-            [
-                'bundle' => '*',
-                'controller' => 'gateway',
-                'action' => '*',
-                'type' => 'allow',
-            ],
-        ],
-    ],
-];
-$config[AclConstants::ACL_USER_RULE_WHITELIST][] = [
-    'bundle' => 'wdt',
-    'controller' => '*',
-    'action' => '*',
-    'type' => 'allow',
 ];
 
 $config[KernelConstants::AUTO_LOADER_CACHE_FILE_NO_LOCK] = false;
@@ -412,7 +326,7 @@ $config[SessionConstants::YVES_SSL_ENABLED] = false;
 $config[ApplicationConstants::YVES_SSL_ENABLED] = (bool)getenv('SPRYKER_SSL_ENABLE');
 $config[SessionConstants::YVES_SSL_ENABLED] = (bool)getenv('SPRYKER_SSL_ENABLE');
 $config[ApplicationConstants::YVES_SSL_EXCLUDED] = [
-        'heartbeat' => '/heartbeat',
+        'healthcheck' => '/health-check',
     ];
 
 $YVES_THEME = 'default';

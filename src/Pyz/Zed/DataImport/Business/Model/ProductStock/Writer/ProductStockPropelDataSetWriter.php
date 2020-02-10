@@ -320,7 +320,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
     {
         $idStore = $this->getIdStore($storeTransfer);
 
-        $reservations = SpyOmsProductReservationQuery::create()
+        $productReservations = SpyOmsProductReservationQuery::create()
             ->filterBySku($sku)
             ->filterByFkStore($idStore)
             ->select([
@@ -331,8 +331,8 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
 
         $reservationQuantity = new Decimal(0);
 
-        foreach ($reservations as $reservation) {
-            $reservationQuantity = $reservationQuantity->add($reservation[SpyOmsProductReservationTableMap::COL_RESERVATION_QUANTITY]);
+        foreach ($productReservations as $productReservationQuantity) {
+            $reservationQuantity = $reservationQuantity->add($productReservationQuantity);
         }
 
         $reservationQuantity = $reservationQuantity->add($this->getReservationsFromOtherStores($sku, $storeTransfer));
