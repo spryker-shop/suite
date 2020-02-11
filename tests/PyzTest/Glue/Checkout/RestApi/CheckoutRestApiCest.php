@@ -9,8 +9,6 @@ namespace PyzTest\Glue\Checkout\RestApi;
 
 use Codeception\Util\HttpCode;
 use Generated\Shared\DataBuilder\AddressBuilder;
-use Generated\Shared\Transfer\AddressTransfer;
-use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\RestCheckoutErrorTransfer;
 use Generated\Shared\Transfer\RestCheckoutResponseTransfer;
 use Generated\Shared\Transfer\RestPaymentTransfer;
@@ -65,10 +63,10 @@ class CheckoutRestApiCest
     {
         // Arrange
         $customerTransfer = $this->fixtures->getCustomerTransfer();
-        $this->authorizeCustomerToGlue($I, $customerTransfer);
+        $I->authorizeCustomerToGlue($customerTransfer);
 
         $quoteTransfer = $this->fixtures->getEmptyQuoteTransfer();
-        $shippingAddress = (new AddressBuilder())->build();
+        $shippingAddressTransfer = (new AddressBuilder())->build();
 
         $url = $I->buildCheckoutUrl();
         $urlParams = [
@@ -76,9 +74,9 @@ class CheckoutRestApiCest
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT,
                 'attributes' => [
                     'idCart' => $quoteTransfer->getUuid(),
-                    'billingAddress' => $this->getAddressParamData($quoteTransfer->getBillingAddress()),
-                    'shippingAddress' => $this->getAddressParamData($shippingAddress),
-                    'customer' => $this->getCustomerParamData($customerTransfer),
+                    'billingAddress' => $I->getAddressParamData($quoteTransfer->getBillingAddress()),
+                    'shippingAddress' => $I->getAddressParamData($shippingAddressTransfer),
+                    'customer' => $I->getCustomerParamData($customerTransfer),
                     'payments' => [
                         [
                             RestPaymentTransfer::PAYMENT_METHOD_NAME => 'invoice',
@@ -109,7 +107,7 @@ class CheckoutRestApiCest
         $I->sendPOST($url, $urlParams);
 
         // Assert
-        $this->assertResponseHasCorrectInfrastructure($I, HttpCode::UNPROCESSABLE_ENTITY);
+        $I->assertResponseHasCorrectInfrastructure(HttpCode::UNPROCESSABLE_ENTITY);
 
         $errors = $I->amSure('I\'m taking the error info from the returned resource')
             ->whenI()
@@ -130,13 +128,10 @@ class CheckoutRestApiCest
     {
         // Arrange
         $customerTransfer = $this->fixtures->getCustomerTransfer();
-        $this->authorizeCustomerToGlue($I, $customerTransfer);
+        $I->authorizeCustomerToGlue($customerTransfer);
 
         $quoteTransfer = $I->createPersistentQuote($customerTransfer, [$this->fixtures->getProductConcreteTransfer()]);
-        $shippingAddress = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
-
-        $quoteTransfer->getBillingAddress()->setEmail($customerTransfer->getEmail());
-        $shippingAddress->setEmail($customerTransfer->getEmail());
+        $shippingAddressTransfer = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
 
         $url = $I->buildCheckoutUrl();
         $urlParams = [
@@ -144,9 +139,9 @@ class CheckoutRestApiCest
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT,
                 'attributes' => [
                     'idCart' => $quoteTransfer->getUuid(),
-                    'billingAddress' => $this->getAddressParamData($quoteTransfer->getBillingAddress()),
-                    'shippingAddress' => $this->getAddressParamData($shippingAddress),
-                    'customer' => $this->getCustomerParamData($customerTransfer),
+                    'billingAddress' => $I->getAddressParamData($quoteTransfer->getBillingAddress()),
+                    'shippingAddress' => $I->getAddressParamData($shippingAddressTransfer),
+                    'customer' => $I->getCustomerParamData($customerTransfer),
                     'payments' => [
                         [
                             RestPaymentTransfer::PAYMENT_METHOD_NAME => 'invoice',
@@ -164,7 +159,7 @@ class CheckoutRestApiCest
         $I->sendPOST($url, $urlParams);
 
         // Assert
-        $this->assertResponseHasCorrectInfrastructure($I);
+        $I->assertResponseHasCorrectInfrastructure();
 
         $I->amSure('The returned resource is of correct type')
             ->whenI()
@@ -188,10 +183,10 @@ class CheckoutRestApiCest
     {
         // Arrange
         $customerTransfer = $this->fixtures->getCustomerTransfer();
-        $this->authorizeCustomerToGlue($I, $customerTransfer);
+        $I->authorizeCustomerToGlue($customerTransfer);
 
         $quoteTransfer = $I->createPersistentQuote($customerTransfer, [$this->fixtures->getProductConcreteTransfer()]);
-        $shippingAddress = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
+        $shippingAddressTransfer = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
 
         $url = $I->buildCheckoutUrl();
         $urlParams = [
@@ -199,9 +194,9 @@ class CheckoutRestApiCest
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT,
                 'attributes' => [
                     'idCart' => $quoteTransfer->getUuid(),
-                    'billingAddress' => $this->getAddressParamData($quoteTransfer->getBillingAddress()),
-                    'shippingAddress' => $this->getAddressParamData($shippingAddress),
-                    'customer' => $this->getCustomerParamData($customerTransfer),
+                    'billingAddress' => $I->getAddressParamData($quoteTransfer->getBillingAddress()),
+                    'shippingAddress' => $I->getAddressParamData($shippingAddressTransfer),
+                    'customer' => $I->getCustomerParamData($customerTransfer),
                     'payments' => [
                         [
                             RestPaymentTransfer::PAYMENT_METHOD_NAME => 'credit card',
@@ -219,7 +214,7 @@ class CheckoutRestApiCest
         $I->sendPOST($url, $urlParams);
 
         // Assert
-        $this->assertResponseHasCorrectInfrastructure($I);
+        $I->assertResponseHasCorrectInfrastructure();
 
         $I->amSure('The returned resource is of correct type')
             ->whenI()
@@ -243,13 +238,13 @@ class CheckoutRestApiCest
     {
         // Arrange
         $customerTransfer = $this->fixtures->getCustomerTransferWithPersistedAddress();
-        $this->authorizeCustomerToGlue($I, $customerTransfer);
+        $I->authorizeCustomerToGlue($customerTransfer);
 
         $quoteTransfer = $I->createPersistentQuote(
             $customerTransfer,
             [$this->fixtures->getProductConcreteTransfer()]
         );
-        $shippingAddress = $customerTransfer->getAddresses()->getAddresses()[0];
+        $persistedAddressTransfer = $customerTransfer->getAddresses()->getAddresses()[0];
 
         $url = $I->buildCheckoutUrl();
         $urlParams = [
@@ -257,9 +252,9 @@ class CheckoutRestApiCest
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT,
                 'attributes' => [
                     'idCart' => $quoteTransfer->getUuid(),
-                    'billingAddress' => $this->getAddressParamData($shippingAddress),
-                    'shippingAddress' => $this->getAddressParamData($shippingAddress),
-                    'customer' => $this->getCustomerParamData($customerTransfer),
+                    'billingAddress' => $I->getAddressParamData($persistedAddressTransfer),
+                    'shippingAddress' => $I->getAddressParamData($persistedAddressTransfer),
+                    'customer' => $I->getCustomerParamData($customerTransfer),
                     'payments' => [
                         [
                             RestPaymentTransfer::PAYMENT_METHOD_NAME => 'invoice',
@@ -277,7 +272,7 @@ class CheckoutRestApiCest
         $I->sendPOST($url, $urlParams);
 
         // Assert
-        $this->assertResponseHasCorrectInfrastructure($I);
+        $I->assertResponseHasCorrectInfrastructure();
 
         $I->amSure('The returned resource is of correct type')
             ->whenI()
@@ -288,74 +283,6 @@ class CheckoutRestApiCest
         $I->amSure('The returned resource has correct self link')
             ->whenI()
             ->seeSingleResourceHasSelfLink($I->buildCheckoutUrl());
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\AddressTransfer $addressTransfer
-     *
-     * @return array
-     */
-    protected function getAddressParamData(AddressTransfer $addressTransfer): array
-    {
-        return [
-            AddressTransfer::SALUTATION => $addressTransfer->getSalutation(),
-            AddressTransfer::FIRST_NAME => $addressTransfer->getFirstName(),
-            AddressTransfer::LAST_NAME => $addressTransfer->getLastName(),
-            AddressTransfer::ADDRESS1 => $addressTransfer->getAddress1(),
-            AddressTransfer::ADDRESS2 => $addressTransfer->getAddress2(),
-            AddressTransfer::ADDRESS3 => $addressTransfer->getAddress3(),
-            AddressTransfer::ZIP_CODE => $addressTransfer->getZipCode(),
-            AddressTransfer::CITY => $addressTransfer->getCity(),
-            AddressTransfer::ISO2_CODE => $addressTransfer->getIso2Code(),
-            AddressTransfer::PHONE => $addressTransfer->getPhone(),
-            AddressTransfer::EMAIL => $addressTransfer->getEmail(),
-            AddressTransfer::IS_DEFAULT_BILLING => $addressTransfer->getIsDefaultBilling(),
-            AddressTransfer::IS_DEFAULT_SHIPPING => $addressTransfer->getIsDefaultShipping(),
-        ];
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return array
-     */
-    protected function getCustomerParamData(CustomerTransfer $customerTransfer): array
-    {
-        return [
-            CustomerTransfer::SALUTATION => $customerTransfer->getSalutation(),
-            CustomerTransfer::FIRST_NAME => $customerTransfer->getFirstName(),
-            CustomerTransfer::LAST_NAME => $customerTransfer->getLastName(),
-            CustomerTransfer::EMAIL => $customerTransfer->getEmail(),
-        ];
-    }
-
-    /**
-     * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
-     * @param \Generated\Shared\Transfer\CustomerTransfer|null $customerTransfer
-     *
-     * @return void
-     */
-    protected function authorizeCustomerToGlue(CheckoutApiTester $I, ?CustomerTransfer $customerTransfer = null): void
-    {
-        if ($customerTransfer === null) {
-            $customerTransfer = $this->fixtures->getCustomerTransfer();
-        }
-
-        $oauthResponseTransfer = $I->haveAuthorizationToGlue($customerTransfer);
-        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
-    }
-
-    /**
-     * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
-     * @param int $httpCode
-     *
-     * @return void
-     */
-    protected function assertResponseHasCorrectInfrastructure(CheckoutApiTester $I, int $httpCode = HttpCode::CREATED): void
-    {
-        $I->seeResponseCodeIs($httpCode);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -373,8 +300,20 @@ class CheckoutRestApiCest
         $attributes = $I->amSure('I\'m taking the attributes from the returned resource')
             ->whenI()
             ->grabDataFromResponseByJsonPath('$.data.attributes');
-        $I->assertNotEmpty($attributes[RestCheckoutResponseTransfer::ORDER_REFERENCE], 'The returned resource attributes order reference should not be empty');
-        $I->assertArrayHasKey(RestCheckoutResponseTransfer::IS_EXTERNAL_REDIRECT, $attributes, 'The returned resource attributes should have an external redirect key');
-        $I->assertArrayHasKey(RestCheckoutResponseTransfer::REDIRECT_URL, $attributes, 'The returned resource attributes should have a redirect URL key');
+
+        $I->assertNotEmpty(
+            $attributes[RestCheckoutResponseTransfer::ORDER_REFERENCE],
+            'The returned resource attributes order reference should not be empty'
+        );
+        $I->assertArrayHasKey(
+            RestCheckoutResponseTransfer::IS_EXTERNAL_REDIRECT,
+            $attributes,
+            'The returned resource attributes should have an external redirect key'
+        );
+        $I->assertArrayHasKey(
+            RestCheckoutResponseTransfer::REDIRECT_URL,
+            $attributes,
+            'The returned resource attributes should have a redirect URL key'
+        );
     }
 }

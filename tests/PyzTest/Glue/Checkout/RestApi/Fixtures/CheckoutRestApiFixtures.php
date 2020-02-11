@@ -90,14 +90,14 @@ class CheckoutRestApiFixtures implements FixturesBuilderInterface, FixturesConta
      */
     public function buildFixtures(CheckoutApiTester $I): FixturesContainerInterface
     {
-        $this->customerTransfer = $I->createCustomer([
+        $this->customerTransfer = $I->haveCustomer([
             CustomerTransfer::USERNAME => static::TEST_USERNAME,
             CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
             CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,
         ]);
         $this->productConcreteTransfer = $I->createProduct();
 
-        $this->customerTransferWithPersistedAddress = $I->createCustomerWithPersistedAddress([
+        $this->customerTransferWithPersistedAddress = $I->haveCustomerWithPersistedAddress([
             CustomerTransfer::USERNAME => static::TEST_USERNAME_2,
             CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
             CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,

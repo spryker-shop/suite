@@ -7,6 +7,7 @@
 
 namespace PyzTest\Glue\Checkout;
 
+use Codeception\Util\HttpCode;
 use Generated\Shared\DataBuilder\AddressBuilder;
 use Generated\Shared\DataBuilder\CustomerBuilder;
 use Generated\Shared\DataBuilder\ItemBuilder;
@@ -47,20 +48,6 @@ use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
 class CheckoutApiTester extends ApiEndToEndTester
 {
     use _generated\CheckoutApiTesterActions;
-
-    /**
-     * @param string[] $includes
-     *
-     * @return string
-     */
-    public function formatQueryInclude(array $includes = []): string
-    {
-        if (!$includes) {
-            return '';
-        }
-
-        return sprintf('?%s=%s', RequestConstantsInterface::QUERY_INCLUDE, implode(',', $includes));
-    }
 
     /**
      * @param string[] $includes
@@ -113,6 +100,68 @@ class CheckoutApiTester extends ApiEndToEndTester
     }
 
     /**
+     * @param \Generated\Shared\Transfer\AddressTransfer $addressTransfer
+     *
+     * @return array
+     */
+    public function getAddressParamData(AddressTransfer $addressTransfer): array
+    {
+        return [
+            AddressTransfer::SALUTATION => $addressTransfer->getSalutation(),
+            AddressTransfer::FIRST_NAME => $addressTransfer->getFirstName(),
+            AddressTransfer::LAST_NAME => $addressTransfer->getLastName(),
+            AddressTransfer::ADDRESS1 => $addressTransfer->getAddress1(),
+            AddressTransfer::ADDRESS2 => $addressTransfer->getAddress2(),
+            AddressTransfer::ADDRESS3 => $addressTransfer->getAddress3(),
+            AddressTransfer::ZIP_CODE => $addressTransfer->getZipCode(),
+            AddressTransfer::CITY => $addressTransfer->getCity(),
+            AddressTransfer::ISO2_CODE => $addressTransfer->getIso2Code(),
+            AddressTransfer::PHONE => $addressTransfer->getPhone(),
+            AddressTransfer::EMAIL => $addressTransfer->getEmail(),
+            AddressTransfer::IS_DEFAULT_BILLING => $addressTransfer->getIsDefaultBilling(),
+            AddressTransfer::IS_DEFAULT_SHIPPING => $addressTransfer->getIsDefaultShipping(),
+        ];
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     *
+     * @return array
+     */
+    public function getCustomerParamData(CustomerTransfer $customerTransfer): array
+    {
+        return [
+            CustomerTransfer::SALUTATION => $customerTransfer->getSalutation(),
+            CustomerTransfer::FIRST_NAME => $customerTransfer->getFirstName(),
+            CustomerTransfer::LAST_NAME => $customerTransfer->getLastName(),
+            CustomerTransfer::EMAIL => $customerTransfer->getEmail(),
+        ];
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     *
+     * @return void
+     */
+    public function authorizeCustomerToGlue(CustomerTransfer $customerTransfer): void
+    {
+        $oauthResponseTransfer = $this->haveAuthorizationToGlue($customerTransfer);
+        $this->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
+    }
+
+    /**
+     * @param int $httpCode
+     *
+     * @return void
+     */
+    public function assertResponseHasCorrectInfrastructure(int $httpCode = HttpCode::CREATED): void
+    {
+        $this->seeResponseCodeIs($httpCode);
+        $this->seeResponseIsJson();
+        $this->seeResponseMatchesOpenApiSchema();
+    }
+
+    /**
      * @return string
      */
     public function createGuestCustomerReference(): string
@@ -136,32 +185,6 @@ class CheckoutApiTester extends ApiEndToEndTester
             QuoteTransfer::PRICE_MODE => PriceConfig::PRICE_MODE_GROSS,
             QuoteTransfer::BILLING_ADDRESS => (new AddressBuilder())->build(),
         ]);
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\ProductConcreteTransfer[] $productConcreteTransfers
-     *
-     * @return array
-     */
-    protected function mapProductConcreteTransfersToQuoteTransferItems(array $productConcreteTransfers): array
-    {
-        $quoteTransferItems = [];
-
-        foreach ($productConcreteTransfers as $productConcreteTransfer) {
-            $quoteTransferItems[] = (new ItemBuilder([
-                ItemTransfer::SKU => $productConcreteTransfer->getSku(),
-                ItemTransfer::GROUP_KEY => $productConcreteTransfer->getSku(),
-                ItemTransfer::ABSTRACT_SKU => $productConcreteTransfer->getAbstractSku(),
-                ItemTransfer::ID_PRODUCT_ABSTRACT => $productConcreteTransfer->getFkProductAbstract(),
-                ItemTransfer::QUANTITY => 1,
-            ]))->withShipment((new ShipmentBuilder())
-                ->withMethod()
-                ->withShippingAddress())
-                ->build()
-                ->modifiedToArray();
-        }
-
-        return $quoteTransferItems;
     }
 
     /**
@@ -209,16 +232,6 @@ class CheckoutApiTester extends ApiEndToEndTester
      *
      * @return \Generated\Shared\Transfer\CustomerTransfer
      */
-    public function createCustomer(array $override = []): CustomerTransfer
-    {
-        return $this->haveCustomer($override);
-    }
-
-    /**
-     * @param array $override
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
     public function createGuestCustomer(array $override = []): CustomerTransfer
     {
         return (new CustomerBuilder($override))->build();
@@ -229,11 +242,11 @@ class CheckoutApiTester extends ApiEndToEndTester
      *
      * @return \Generated\Shared\Transfer\CustomerTransfer
      */
-    public function createCustomerWithPersistedAddress(array $override = []): CustomerTransfer
+    public function haveCustomerWithPersistedAddress(array $override = []): CustomerTransfer
     {
         $customerTransfer = $this->haveCustomer($override);
 
-        return $this->createAddressForCustomer($customerTransfer);
+        return $this->haveAddressForCustomer($customerTransfer);
     }
 
     /***
@@ -241,7 +254,7 @@ class CheckoutApiTester extends ApiEndToEndTester
      *
      * @return \Generated\Shared\Transfer\CustomerTransfer
      */
-    protected function createAddressForCustomer(CustomerTransfer $customerTransfer): CustomerTransfer
+    protected function haveAddressForCustomer(CustomerTransfer $customerTransfer): CustomerTransfer
     {
         $addressTransfer = (new AddressBuilder([
             AddressTransfer::EMAIL => $customerTransfer->getEmail(),
@@ -253,5 +266,45 @@ class CheckoutApiTester extends ApiEndToEndTester
         $addressTransfer = $customerFacade->createAddress($addressTransfer);
 
         return $customerFacade->getCustomer($customerTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ProductConcreteTransfer[] $productConcreteTransfers
+     *
+     * @return array
+     */
+    protected function mapProductConcreteTransfersToQuoteTransferItems(array $productConcreteTransfers): array
+    {
+        $quoteTransferItems = [];
+
+        foreach ($productConcreteTransfers as $productConcreteTransfer) {
+            $quoteTransferItems[] = (new ItemBuilder([
+                ItemTransfer::SKU => $productConcreteTransfer->getSku(),
+                ItemTransfer::GROUP_KEY => $productConcreteTransfer->getSku(),
+                ItemTransfer::ABSTRACT_SKU => $productConcreteTransfer->getAbstractSku(),
+                ItemTransfer::ID_PRODUCT_ABSTRACT => $productConcreteTransfer->getFkProductAbstract(),
+                ItemTransfer::QUANTITY => 1,
+            ]))->withShipment((new ShipmentBuilder())
+                ->withMethod()
+                ->withShippingAddress())
+                ->build()
+                ->modifiedToArray();
+        }
+
+        return $quoteTransferItems;
+    }
+
+    /**
+     * @param string[] $includes
+     *
+     * @return string
+     */
+    protected function formatQueryInclude(array $includes = []): string
+    {
+        if (!$includes) {
+            return '';
+        }
+
+        return sprintf('?%s=%s', RequestConstantsInterface::QUERY_INCLUDE, implode(',', $includes));
     }
 }

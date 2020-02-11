@@ -76,7 +76,7 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
      */
     public function buildFixtures(CheckoutApiTester $I): FixturesContainerInterface
     {
-        $this->customerTransfer = $I->createCustomer([
+        $this->customerTransfer = $I->haveCustomer([
             CustomerTransfer::USERNAME => static::TEST_USERNAME,
             CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
             CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,

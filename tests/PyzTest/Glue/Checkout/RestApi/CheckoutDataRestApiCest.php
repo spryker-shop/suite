@@ -7,9 +7,6 @@
 
 namespace PyzTest\Glue\Checkout\RestApi;
 
-use Codeception\Util\HttpCode;
-use Generated\Shared\Transfer\AddressTransfer;
-use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\RestCheckoutDataTransfer;
 use Generated\Shared\Transfer\RestPaymentTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
@@ -59,7 +56,7 @@ class CheckoutDataRestApiCest
     public function requestEmptyRequestWithOneItemInQuote(CheckoutApiTester $I): void
     {
         // Arrange
-        $this->authorizeCustomerToGlue($I);
+        $I->authorizeCustomerToGlue($this->fixtures->getCustomerTransfer());
 
         $quoteTransfer = $this->fixtures->getQuoteTransfer();
 
@@ -78,7 +75,7 @@ class CheckoutDataRestApiCest
         $I->sendPOST($url, $urlParams);
 
         // Assert
-        $this->assertResponseHasCorrectInfrastructure($I);
+        $I->assertResponseHasCorrectInfrastructure();
 
         $I->amSure('The returned resource is of correct type')
             ->whenI()
@@ -101,7 +98,7 @@ class CheckoutDataRestApiCest
     public function requestEmptyRequestWithOneItemInQuoteAndEmptyBody(CheckoutApiTester $I): void
     {
         // Arrange
-        $this->authorizeCustomerToGlue($I);
+        $I->authorizeCustomerToGlue($this->fixtures->getCustomerTransfer());
 
         $quoteTransfer = $this->fixtures->getQuoteTransfer();
 
@@ -119,7 +116,7 @@ class CheckoutDataRestApiCest
         $I->sendPOST($url, $urlParams);
 
         // Assert
-        $this->assertResponseHasCorrectInfrastructure($I);
+        $I->assertResponseHasCorrectInfrastructure();
 
         $I->amSure('The returned resource is of correct type')
             ->whenI()
@@ -142,7 +139,7 @@ class CheckoutDataRestApiCest
     public function requestWithOneItemInQuoteAndBillingAddress(CheckoutApiTester $I): void
     {
         // Arrange
-        $this->authorizeCustomerToGlue($I);
+        $I->authorizeCustomerToGlue($this->fixtures->getCustomerTransfer());
 
         $quoteTransfer = $this->fixtures->getQuoteTransfer();
 
@@ -152,7 +149,7 @@ class CheckoutDataRestApiCest
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
                 'attributes' => [
                     'idCart' => $quoteTransfer->getUuid(),
-                    'billingAddress' => $this->getAddressParamData($quoteTransfer->getBillingAddress()),
+                    'billingAddress' => $I->getAddressParamData($quoteTransfer->getBillingAddress()),
                 ],
             ],
         ];
@@ -161,7 +158,7 @@ class CheckoutDataRestApiCest
         $I->sendPOST($url, $urlParams);
 
         // Assert
-        $this->assertResponseHasCorrectInfrastructure($I);
+        $I->assertResponseHasCorrectInfrastructure();
 
         $I->amSure('The returned resource is of correct type')
             ->whenI()
@@ -184,10 +181,10 @@ class CheckoutDataRestApiCest
     public function requestWithOneItemInQuoteWithoutPayment(CheckoutApiTester $I): void
     {
         // Arrange
-        $this->authorizeCustomerToGlue($I);
+        $I->authorizeCustomerToGlue($this->fixtures->getCustomerTransfer());
 
         $quoteTransfer = $this->fixtures->getQuoteTransfer();
-        $shippingAddress = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
+        $shippingAddressTransfer = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
 
         $url = $I->buildCheckoutDataUrl();
         $urlParams = [
@@ -195,8 +192,8 @@ class CheckoutDataRestApiCest
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
                 'attributes' => [
                     'idCart' => $quoteTransfer->getUuid(),
-                    'billingAddress' => $this->getAddressParamData($quoteTransfer->getBillingAddress()),
-                    'shippingAddress' => $this->getAddressParamData($shippingAddress),
+                    'billingAddress' => $I->getAddressParamData($quoteTransfer->getBillingAddress()),
+                    'shippingAddress' => $I->getAddressParamData($shippingAddressTransfer),
                     'shipment' => [ShipmentMethodTransfer::ID_SHIPMENT_METHOD => 1],
                 ],
             ],
@@ -206,7 +203,7 @@ class CheckoutDataRestApiCest
         $I->sendPOST($url, $urlParams);
 
         // Assert
-        $this->assertResponseHasCorrectInfrastructure($I);
+        $I->assertResponseHasCorrectInfrastructure();
 
         $I->amSure('The returned resource is of correct type')
             ->whenI()
@@ -229,10 +226,10 @@ class CheckoutDataRestApiCest
     public function requestWithOneItemInQuoteWithoutShipment(CheckoutApiTester $I): void
     {
         // Arrange
-        $this->authorizeCustomerToGlue($I);
+        $I->authorizeCustomerToGlue($this->fixtures->getCustomerTransfer());
 
         $quoteTransfer = $this->fixtures->getQuoteTransfer();
-        $shippingAddress = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
+        $shippingAddressTransfer = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
 
         $url = $I->buildCheckoutDataUrl();
         $urlParams = [
@@ -240,8 +237,8 @@ class CheckoutDataRestApiCest
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
                 'attributes' => [
                     'idCart' => $quoteTransfer->getUuid(),
-                    'billingAddress' => $this->getAddressParamData($quoteTransfer->getBillingAddress()),
-                    'shippingAddress' => $this->getAddressParamData($shippingAddress),
+                    'billingAddress' => $I->getAddressParamData($quoteTransfer->getBillingAddress()),
+                    'shippingAddress' => $I->getAddressParamData($shippingAddressTransfer),
                     'payments' => [
                         [
                             RestPaymentTransfer::PAYMENT_METHOD_NAME => 'invoice',
@@ -256,7 +253,7 @@ class CheckoutDataRestApiCest
         $I->sendPOST($url, $urlParams);
 
         // Assert
-        $this->assertResponseHasCorrectInfrastructure($I);
+        $I->assertResponseHasCorrectInfrastructure();
 
         $I->amSure('The returned resource is of correct type')
             ->whenI()
@@ -279,10 +276,10 @@ class CheckoutDataRestApiCest
     public function requestWithOneItemInQuoteWithoutVoucherCode(CheckoutApiTester $I): void
     {
         // Arrange
-        $this->authorizeCustomerToGlue($I);
+        $I->authorizeCustomerToGlue($this->fixtures->getCustomerTransfer());
 
         $quoteTransfer = $this->fixtures->getQuoteTransfer();
-        $shippingAddress = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
+        $shippingAddressTransfer = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
 
         $url = $I->buildCheckoutDataUrl();
         $urlParams = [
@@ -290,8 +287,8 @@ class CheckoutDataRestApiCest
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
                 'attributes' => [
                     'idCart' => $quoteTransfer->getUuid(),
-                    'billingAddress' => $this->getAddressParamData($quoteTransfer->getBillingAddress()),
-                    'shippingAddress' => $this->getAddressParamData($shippingAddress),
+                    'billingAddress' => $I->getAddressParamData($quoteTransfer->getBillingAddress()),
+                    'shippingAddress' => $I->getAddressParamData($shippingAddressTransfer),
                     'payments' => [],
                     'shipment' => [ShipmentMethodTransfer::ID_SHIPMENT_METHOD => 1],
                 ],
@@ -302,7 +299,7 @@ class CheckoutDataRestApiCest
         $I->sendPOST($url, $urlParams);
 
         // Assert
-        $this->assertResponseHasCorrectInfrastructure($I);
+        $I->assertResponseHasCorrectInfrastructure();
 
         $I->amSure('The returned resource is of correct type')
             ->whenI()
@@ -325,10 +322,10 @@ class CheckoutDataRestApiCest
     public function requestWithOneItemInQuoteAndCustomerAndBillingAndShippingAddressesAndCart(CheckoutApiTester $I): void
     {
         // Arrange
-        $this->authorizeCustomerToGlue($I);
+        $I->authorizeCustomerToGlue($this->fixtures->getCustomerTransfer());
 
         $quoteTransfer = $this->fixtures->getQuoteTransfer();
-        $shippingAddress = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
+        $shippingAddressTransfer = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
 
         $url = $I->buildCheckoutDataUrl();
         $urlParams = [
@@ -336,9 +333,9 @@ class CheckoutDataRestApiCest
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
                 'attributes' => [
                     'idCart' => $quoteTransfer->getUuid(),
-                    'billingAddress' => $this->getAddressParamData($quoteTransfer->getBillingAddress()),
-                    'shippingAddress' => $this->getAddressParamData($shippingAddress),
-                    'customer' => $this->getCustomerParamData($this->fixtures->getCustomerTransfer()),
+                    'billingAddress' => $I->getAddressParamData($quoteTransfer->getBillingAddress()),
+                    'shippingAddress' => $I->getAddressParamData($shippingAddressTransfer),
+                    'customer' => $I->getCustomerParamData($this->fixtures->getCustomerTransfer()),
                 ],
             ],
         ];
@@ -347,7 +344,7 @@ class CheckoutDataRestApiCest
         $I->sendPOST($url, $urlParams);
 
         // Assert
-        $this->assertResponseHasCorrectInfrastructure($I);
+        $I->assertResponseHasCorrectInfrastructure();
 
         $I->amSure('The returned resource is of correct type')
             ->whenI()
@@ -370,10 +367,10 @@ class CheckoutDataRestApiCest
     public function requestWithOneItemInQuoteAndFullBody(CheckoutApiTester $I): void
     {
         // Arrange
-        $this->authorizeCustomerToGlue($I);
+        $I->authorizeCustomerToGlue($this->fixtures->getCustomerTransfer());
 
         $quoteTransfer = $this->fixtures->getQuoteTransfer();
-        $shippingAddress = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
+        $shippingAddressTransfer = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
 
         $url = $I->buildCheckoutDataUrl();
         $urlParams = [
@@ -381,9 +378,9 @@ class CheckoutDataRestApiCest
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
                 'attributes' => [
                     'idCart' => $quoteTransfer->getUuid(),
-                    'billingAddress' => $this->getAddressParamData($quoteTransfer->getBillingAddress()),
-                    'shippingAddress' => $this->getAddressParamData($shippingAddress),
-                    'customer' => $this->getCustomerParamData($this->fixtures->getCustomerTransfer()),
+                    'billingAddress' => $I->getAddressParamData($quoteTransfer->getBillingAddress()),
+                    'shippingAddress' => $I->getAddressParamData($shippingAddressTransfer),
+                    'customer' => $I->getCustomerParamData($this->fixtures->getCustomerTransfer()),
                     'payments' => [
                         [
                             RestPaymentTransfer::PAYMENT_METHOD_NAME => 'invoice',
@@ -399,7 +396,7 @@ class CheckoutDataRestApiCest
         $I->sendPOST($url, $urlParams);
 
         // Assert
-        $this->assertResponseHasCorrectInfrastructure($I);
+        $I->assertResponseHasCorrectInfrastructure();
 
         $I->amSure('The returned resource is of correct type')
             ->whenI()
@@ -410,74 +407,6 @@ class CheckoutDataRestApiCest
         $I->amSure('The returned resource has correct self link')
             ->whenI()
             ->seeSingleResourceHasSelfLink($I->buildCheckoutDataUrl());
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\AddressTransfer $addressTransfer
-     *
-     * @return array
-     */
-    protected function getAddressParamData(AddressTransfer $addressTransfer): array
-    {
-        return [
-            AddressTransfer::SALUTATION => $addressTransfer->getSalutation(),
-            AddressTransfer::FIRST_NAME => $addressTransfer->getFirstName(),
-            AddressTransfer::LAST_NAME => $addressTransfer->getLastName(),
-            AddressTransfer::ADDRESS1 => $addressTransfer->getAddress1(),
-            AddressTransfer::ADDRESS2 => $addressTransfer->getAddress2(),
-            AddressTransfer::ADDRESS3 => $addressTransfer->getAddress3(),
-            AddressTransfer::ZIP_CODE => $addressTransfer->getZipCode(),
-            AddressTransfer::CITY => $addressTransfer->getCity(),
-            AddressTransfer::ISO2_CODE => $addressTransfer->getIso2Code(),
-            AddressTransfer::PHONE => $addressTransfer->getPhone(),
-            AddressTransfer::EMAIL => $addressTransfer->getEmail(),
-            AddressTransfer::IS_DEFAULT_BILLING => $addressTransfer->getIsDefaultBilling(),
-            AddressTransfer::IS_DEFAULT_SHIPPING => $addressTransfer->getIsDefaultShipping(),
-        ];
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return array
-     */
-    protected function getCustomerParamData(CustomerTransfer $customerTransfer): array
-    {
-        return [
-            CustomerTransfer::SALUTATION => $customerTransfer->getSalutation(),
-            CustomerTransfer::FIRST_NAME => $customerTransfer->getFirstName(),
-            CustomerTransfer::LAST_NAME => $customerTransfer->getLastName(),
-            CustomerTransfer::EMAIL => $customerTransfer->getEmail(),
-        ];
-    }
-
-    /**
-     * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
-     * @param \Generated\Shared\Transfer\CustomerTransfer|null $customerTransfer
-     *
-     * @return void
-     */
-    protected function authorizeCustomerToGlue(CheckoutApiTester $I, ?CustomerTransfer $customerTransfer = null): void
-    {
-        if ($customerTransfer === null) {
-            $customerTransfer = $this->fixtures->getCustomerTransfer();
-        }
-
-        $oauthResponseTransfer = $I->haveAuthorizationToGlue($customerTransfer);
-        $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
-    }
-
-    /**
-     * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
-     * @param int $httpCode
-     *
-     * @return void
-     */
-    protected function assertResponseHasCorrectInfrastructure(CheckoutApiTester $I, int $httpCode = HttpCode::CREATED): void
-    {
-        $I->seeResponseCodeIs($httpCode);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
@@ -495,8 +424,18 @@ class CheckoutDataRestApiCest
         $attributes = $I->amSure('I\'m taking the attributes from the returned resource')
             ->whenI()
             ->grabDataFromResponseByJsonPath('$.data.attributes');
-        $I->assertEmpty($attributes[RestCheckoutDataTransfer::ADDRESSES], 'The returned resource attributes addresses should be an empty array');
-        $I->assertNotEmpty($attributes[RestCheckoutDataTransfer::PAYMENT_PROVIDERS], 'The returned resource attributes payment providers should not be an empty array');
-        $I->assertNotEmpty($attributes[RestCheckoutDataTransfer::SHIPMENT_METHODS], 'The returned resource attributes shipment methods should not be an empty array');
+
+        $I->assertEmpty(
+            $attributes[RestCheckoutDataTransfer::ADDRESSES],
+            'The returned resource attributes addresses should be an empty array'
+        );
+        $I->assertNotEmpty(
+            $attributes[RestCheckoutDataTransfer::PAYMENT_PROVIDERS],
+            'The returned resource attributes payment providers should not be an empty array'
+        );
+        $I->assertNotEmpty(
+            $attributes[RestCheckoutDataTransfer::SHIPMENT_METHODS],
+            'The returned resource attributes shipment methods should not be an empty array'
+        );
     }
 }
