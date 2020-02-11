@@ -89,11 +89,11 @@ class GuestCheckoutDataRestApiFixtures implements FixturesBuilderInterface, Fixt
     public function buildFixtures(CheckoutApiTester $I): FixturesContainerInterface
     {
         $this->guestCustomerReference = $I->createGuestCustomerReference();
-        $this->productConcreteTransfer = $I->createProduct();
-        $this->guestCustomerTransfer = $I->createGuestCustomer([
+        $this->productConcreteTransfer = $I->haveProductWithStock();
+        $this->guestCustomerTransfer = $I->createCustomerTransfer([
             CustomerTransfer::CUSTOMER_REFERENCE => static::ANONYMOUS_PREFIX . $this->guestCustomerReference,
         ]);
-        $this->guestQuoteTransfer = $I->createPersistentQuote($this->guestCustomerTransfer, [$this->productConcreteTransfer]);
+        $this->guestQuoteTransfer = $I->havePersistentQuoteWithItems($this->guestCustomerTransfer, [$this->productConcreteTransfer]);
 
         return $this;
     }

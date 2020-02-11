@@ -81,8 +81,8 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
             CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
             CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,
         ]);
-        $this->productConcreteTransfer = $I->createProduct();
-        $this->quoteTransfer = $I->createPersistentQuote($this->customerTransfer, [$this->productConcreteTransfer]);
+        $this->productConcreteTransfer = $I->haveProductWithStock();
+        $this->quoteTransfer = $I->havePersistentQuoteWithItems($this->customerTransfer, [$this->productConcreteTransfer]);
 
         return $this;
     }

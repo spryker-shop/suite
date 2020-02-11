@@ -20,6 +20,10 @@ use Generated\Shared\Transfer\MoneyValueTransfer;
 use Generated\Shared\Transfer\PriceProductTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
+use Generated\Shared\Transfer\RestCheckoutDataTransfer;
+use Generated\Shared\Transfer\RestCheckoutResponseTransfer;
+use Generated\Shared\Transfer\RestPaymentTransfer;
+use Generated\Shared\Transfer\ShipmentMethodTransfer;
 use Generated\Shared\Transfer\StockProductTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
 use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig;
@@ -48,6 +52,10 @@ use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
 class CheckoutApiTester extends ApiEndToEndTester
 {
     use _generated\CheckoutApiTesterActions;
+
+    protected const REQUEST_PARAM_PAYMENT_METHOD_NAME_INVOICE = 'invoice';
+    protected const REQUEST_PARAM_PAYMENT_PROVIDER_NAME_DUMMY_PAYMENT = 'DummyPayment';
+    protected const REQUEST_PARAM_ID_SHIPMENT_METHOD_DEFAULT = 1;
 
     /**
      * @param string[] $includes
@@ -104,7 +112,7 @@ class CheckoutApiTester extends ApiEndToEndTester
      *
      * @return array
      */
-    public function getAddressParamData(AddressTransfer $addressTransfer): array
+    public function getAddressRequestParams(AddressTransfer $addressTransfer): array
     {
         return [
             AddressTransfer::SALUTATION => $addressTransfer->getSalutation(),
@@ -128,13 +136,44 @@ class CheckoutApiTester extends ApiEndToEndTester
      *
      * @return array
      */
-    public function getCustomerParamData(CustomerTransfer $customerTransfer): array
+    public function getCustomerRequestParams(CustomerTransfer $customerTransfer): array
     {
         return [
             CustomerTransfer::SALUTATION => $customerTransfer->getSalutation(),
             CustomerTransfer::FIRST_NAME => $customerTransfer->getFirstName(),
             CustomerTransfer::LAST_NAME => $customerTransfer->getLastName(),
             CustomerTransfer::EMAIL => $customerTransfer->getEmail(),
+        ];
+    }
+
+    /**
+     * @param string $paymentMethodName
+     * @param string $paymentProviderName
+     *
+     * @return array
+     */
+    public function getPaymentRequestParams(
+        string $paymentMethodName = self::REQUEST_PARAM_PAYMENT_METHOD_NAME_INVOICE,
+        string $paymentProviderName = self::REQUEST_PARAM_PAYMENT_PROVIDER_NAME_DUMMY_PAYMENT
+    ): array {
+        return [
+            [
+                RestPaymentTransfer::PAYMENT_METHOD_NAME => $paymentMethodName,
+                RestPaymentTransfer::PAYMENT_PROVIDER_NAME => $paymentProviderName,
+            ],
+        ];
+    }
+
+    /**
+     * @param int $idShipmentMethod
+     *
+     * @return array
+     */
+    public function getShipmentRequestParams(
+        int $idShipmentMethod = self::REQUEST_PARAM_ID_SHIPMENT_METHOD_DEFAULT
+    ): array {
+        return [
+            ShipmentMethodTransfer::ID_SHIPMENT_METHOD => $idShipmentMethod,
         ];
     }
 
@@ -162,6 +201,64 @@ class CheckoutApiTester extends ApiEndToEndTester
     }
 
     /**
+     * @return void
+     */
+    public function assertCheckoutResponseResourceHasCorrectData(): void
+    {
+        $idResource = $this->amSure('I\'m taking the the returned resource id')
+            ->whenI()
+            ->grabDataFromResponseByJsonPath('$.data.id');
+        $this->assertNull($idResource, 'The returned resource id should be null');
+
+        $attributes = $this->amSure('I\'m taking the attributes from the returned resource')
+            ->whenI()
+            ->grabDataFromResponseByJsonPath('$.data.attributes');
+
+        $this->assertNotEmpty(
+            $attributes[RestCheckoutResponseTransfer::ORDER_REFERENCE],
+            'The returned resource attributes order reference should not be empty'
+        );
+        $this->assertArrayHasKey(
+            RestCheckoutResponseTransfer::IS_EXTERNAL_REDIRECT,
+            $attributes,
+            'The returned resource attributes should have an external redirect key'
+        );
+        $this->assertArrayHasKey(
+            RestCheckoutResponseTransfer::REDIRECT_URL,
+            $attributes,
+            'The returned resource attributes should have a redirect URL key'
+        );
+    }
+
+    /**
+     * @return void
+     */
+    public function assertCheckoutDataResponseResourceHasCorrectData(): void
+    {
+        $idResource = $this->amSure('I\'m taking the the returned resource id')
+            ->whenI()
+            ->grabDataFromResponseByJsonPath('$.data.id');
+        $this->assertNull($idResource, 'The returned resource id should be null');
+
+        $attributes = $this->amSure('I\'m taking the attributes from the returned resource')
+            ->whenI()
+            ->grabDataFromResponseByJsonPath('$.data.attributes');
+
+        $this->assertEmpty(
+            $attributes[RestCheckoutDataTransfer::ADDRESSES],
+            'The returned resource attributes addresses should be an empty array'
+        );
+        $this->assertNotEmpty(
+            $attributes[RestCheckoutDataTransfer::PAYMENT_PROVIDERS],
+            'The returned resource attributes payment providers should not be an empty array'
+        );
+        $this->assertNotEmpty(
+            $attributes[RestCheckoutDataTransfer::SHIPMENT_METHODS],
+            'The returned resource attributes shipment methods should not be an empty array'
+        );
+    }
+
+    /**
      * @return string
      */
     public function createGuestCustomerReference(): string
@@ -175,7 +272,7 @@ class CheckoutApiTester extends ApiEndToEndTester
      *
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
-    public function createPersistentQuote(CustomerTransfer $customerTransfer, array $productConcreteTransfers): QuoteTransfer
+    public function havePersistentQuoteWithItems(CustomerTransfer $customerTransfer, array $productConcreteTransfers): QuoteTransfer
     {
         return $this->havePersistentQuote([
             QuoteTransfer::CUSTOMER => $customerTransfer,
@@ -192,7 +289,7 @@ class CheckoutApiTester extends ApiEndToEndTester
      *
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
-    public function createEmptyQuote(array $overrideCustomer = []): QuoteTransfer
+    public function haveEmptyPersistentQuote(array $overrideCustomer = []): QuoteTransfer
     {
         return $this->havePersistentQuote([
             QuoteTransfer::CUSTOMER => (new CustomerBuilder($overrideCustomer))->build(),
@@ -203,7 +300,7 @@ class CheckoutApiTester extends ApiEndToEndTester
     /**
      * @return \Generated\Shared\Transfer\ProductConcreteTransfer
      */
-    public function createProduct(): ProductConcreteTransfer
+    public function haveProductWithStock(): ProductConcreteTransfer
     {
         $productConcreteTransfer = $this->haveFullProduct();
 
@@ -232,7 +329,7 @@ class CheckoutApiTester extends ApiEndToEndTester
      *
      * @return \Generated\Shared\Transfer\CustomerTransfer
      */
-    public function createGuestCustomer(array $override = []): CustomerTransfer
+    public function createCustomerTransfer(array $override = []): CustomerTransfer
     {
         return (new CustomerBuilder($override))->build();
     }
@@ -242,7 +339,7 @@ class CheckoutApiTester extends ApiEndToEndTester
      *
      * @return \Generated\Shared\Transfer\CustomerTransfer
      */
-    public function haveCustomerWithPersistedAddress(array $override = []): CustomerTransfer
+    public function haveCustomerWithPersistentAddress(array $override = []): CustomerTransfer
     {
         $customerTransfer = $this->haveCustomer($override);
 

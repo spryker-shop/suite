@@ -10,7 +10,6 @@ namespace PyzTest\Glue\Checkout\RestApi;
 use Codeception\Util\HttpCode;
 use Generated\Shared\DataBuilder\AddressBuilder;
 use Generated\Shared\Transfer\RestCheckoutErrorTransfer;
-use Generated\Shared\Transfer\RestCheckoutResponseTransfer;
 use Generated\Shared\Transfer\RestPaymentTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
 use PyzTest\Glue\Checkout\CheckoutApiTester;
@@ -74,9 +73,9 @@ class CheckoutRestApiCest
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT,
                 'attributes' => [
                     'idCart' => $quoteTransfer->getUuid(),
-                    'billingAddress' => $I->getAddressParamData($quoteTransfer->getBillingAddress()),
-                    'shippingAddress' => $I->getAddressParamData($shippingAddressTransfer),
-                    'customer' => $I->getCustomerParamData($customerTransfer),
+                    'billingAddress' => $I->getAddressRequestParams($quoteTransfer->getBillingAddress()),
+                    'shippingAddress' => $I->getAddressRequestParams($shippingAddressTransfer),
+                    'customer' => $I->getCustomerRequestParams($customerTransfer),
                     'payments' => [
                         [
                             RestPaymentTransfer::PAYMENT_METHOD_NAME => 'invoice',
@@ -130,7 +129,7 @@ class CheckoutRestApiCest
         $customerTransfer = $this->fixtures->getCustomerTransfer();
         $I->authorizeCustomerToGlue($customerTransfer);
 
-        $quoteTransfer = $I->createPersistentQuote($customerTransfer, [$this->fixtures->getProductConcreteTransfer()]);
+        $quoteTransfer = $I->havePersistentQuoteWithItems($customerTransfer, [$this->fixtures->getProductConcreteTransfer()]);
         $shippingAddressTransfer = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
 
         $url = $I->buildCheckoutUrl();
@@ -139,18 +138,11 @@ class CheckoutRestApiCest
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT,
                 'attributes' => [
                     'idCart' => $quoteTransfer->getUuid(),
-                    'billingAddress' => $I->getAddressParamData($quoteTransfer->getBillingAddress()),
-                    'shippingAddress' => $I->getAddressParamData($shippingAddressTransfer),
-                    'customer' => $I->getCustomerParamData($customerTransfer),
-                    'payments' => [
-                        [
-                            RestPaymentTransfer::PAYMENT_METHOD_NAME => 'invoice',
-                            RestPaymentTransfer::PAYMENT_PROVIDER_NAME => 'DummyPayment',
-                        ],
-                    ],
-                    'shipment' => [
-                        ShipmentMethodTransfer::ID_SHIPMENT_METHOD => 1,
-                    ],
+                    'billingAddress' => $I->getAddressRequestParams($quoteTransfer->getBillingAddress()),
+                    'shippingAddress' => $I->getAddressRequestParams($shippingAddressTransfer),
+                    'customer' => $I->getCustomerRequestParams($customerTransfer),
+                    'payments' => $I->getPaymentRequestParams(),
+                    'shipment' => $I->getShipmentRequestParams(),
                 ],
             ],
         ];
@@ -165,7 +157,7 @@ class CheckoutRestApiCest
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType(CheckoutRestApiConfig::RESOURCE_CHECKOUT);
 
-        $this->assertResponseResourceHasCorrectData($I);
+        $I->assertCheckoutResponseResourceHasCorrectData();
 
         $I->amSure('The returned resource has correct self link')
             ->whenI()
@@ -185,7 +177,7 @@ class CheckoutRestApiCest
         $customerTransfer = $this->fixtures->getCustomerTransfer();
         $I->authorizeCustomerToGlue($customerTransfer);
 
-        $quoteTransfer = $I->createPersistentQuote($customerTransfer, [$this->fixtures->getProductConcreteTransfer()]);
+        $quoteTransfer = $I->havePersistentQuoteWithItems($customerTransfer, [$this->fixtures->getProductConcreteTransfer()]);
         $shippingAddressTransfer = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
 
         $url = $I->buildCheckoutUrl();
@@ -194,18 +186,11 @@ class CheckoutRestApiCest
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT,
                 'attributes' => [
                     'idCart' => $quoteTransfer->getUuid(),
-                    'billingAddress' => $I->getAddressParamData($quoteTransfer->getBillingAddress()),
-                    'shippingAddress' => $I->getAddressParamData($shippingAddressTransfer),
-                    'customer' => $I->getCustomerParamData($customerTransfer),
-                    'payments' => [
-                        [
-                            RestPaymentTransfer::PAYMENT_METHOD_NAME => 'credit card',
-                            RestPaymentTransfer::PAYMENT_PROVIDER_NAME => 'DummyPayment',
-                        ],
-                    ],
-                    'shipment' => [
-                        ShipmentMethodTransfer::ID_SHIPMENT_METHOD => 1,
-                    ],
+                    'billingAddress' => $I->getAddressRequestParams($quoteTransfer->getBillingAddress()),
+                    'shippingAddress' => $I->getAddressRequestParams($shippingAddressTransfer),
+                    'customer' => $I->getCustomerRequestParams($customerTransfer),
+                    'payments' => $I->getPaymentRequestParams('credit card'),
+                    'shipment' => $I->getShipmentRequestParams(),
                 ],
             ],
         ];
@@ -220,7 +205,7 @@ class CheckoutRestApiCest
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType(CheckoutRestApiConfig::RESOURCE_CHECKOUT);
 
-        $this->assertResponseResourceHasCorrectData($I);
+        $I->assertCheckoutResponseResourceHasCorrectData();
 
         $I->amSure('The returned resource has correct self link')
             ->whenI()
@@ -240,7 +225,7 @@ class CheckoutRestApiCest
         $customerTransfer = $this->fixtures->getCustomerTransferWithPersistedAddress();
         $I->authorizeCustomerToGlue($customerTransfer);
 
-        $quoteTransfer = $I->createPersistentQuote(
+        $quoteTransfer = $I->havePersistentQuoteWithItems(
             $customerTransfer,
             [$this->fixtures->getProductConcreteTransfer()]
         );
@@ -252,18 +237,11 @@ class CheckoutRestApiCest
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT,
                 'attributes' => [
                     'idCart' => $quoteTransfer->getUuid(),
-                    'billingAddress' => $I->getAddressParamData($persistedAddressTransfer),
-                    'shippingAddress' => $I->getAddressParamData($persistedAddressTransfer),
-                    'customer' => $I->getCustomerParamData($customerTransfer),
-                    'payments' => [
-                        [
-                            RestPaymentTransfer::PAYMENT_METHOD_NAME => 'invoice',
-                            RestPaymentTransfer::PAYMENT_PROVIDER_NAME => 'DummyPayment',
-                        ],
-                    ],
-                    'shipment' => [
-                        ShipmentMethodTransfer::ID_SHIPMENT_METHOD => 1,
-                    ],
+                    'billingAddress' => $I->getAddressRequestParams($persistedAddressTransfer),
+                    'shippingAddress' => $I->getAddressRequestParams($persistedAddressTransfer),
+                    'customer' => $I->getCustomerRequestParams($customerTransfer),
+                    'payments' => $I->getPaymentRequestParams(),
+                    'shipment' => $I->getShipmentRequestParams(),
                 ],
             ],
         ];
@@ -278,42 +256,10 @@ class CheckoutRestApiCest
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType(CheckoutRestApiConfig::RESOURCE_CHECKOUT);
 
-        $this->assertResponseResourceHasCorrectData($I);
+        $I->assertCheckoutResponseResourceHasCorrectData();
 
         $I->amSure('The returned resource has correct self link')
             ->whenI()
             ->seeSingleResourceHasSelfLink($I->buildCheckoutUrl());
-    }
-
-    /**
-     * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
-     *
-     * @return void
-     */
-    protected function assertResponseResourceHasCorrectData(CheckoutApiTester $I): void
-    {
-        $idResource = $I->amSure('I\'m taking the the returned resource id')
-            ->whenI()
-            ->grabDataFromResponseByJsonPath('$.data.id');
-        $I->assertNull($idResource, 'The returned resource id should be null');
-
-        $attributes = $I->amSure('I\'m taking the attributes from the returned resource')
-            ->whenI()
-            ->grabDataFromResponseByJsonPath('$.data.attributes');
-
-        $I->assertNotEmpty(
-            $attributes[RestCheckoutResponseTransfer::ORDER_REFERENCE],
-            'The returned resource attributes order reference should not be empty'
-        );
-        $I->assertArrayHasKey(
-            RestCheckoutResponseTransfer::IS_EXTERNAL_REDIRECT,
-            $attributes,
-            'The returned resource attributes should have an external redirect key'
-        );
-        $I->assertArrayHasKey(
-            RestCheckoutResponseTransfer::REDIRECT_URL,
-            $attributes,
-            'The returned resource attributes should have a redirect URL key'
-        );
     }
 }

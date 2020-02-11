@@ -7,9 +7,6 @@
 
 namespace PyzTest\Glue\Checkout\RestApi;
 
-use Generated\Shared\Transfer\RestCheckoutDataTransfer;
-use Generated\Shared\Transfer\RestPaymentTransfer;
-use Generated\Shared\Transfer\ShipmentMethodTransfer;
 use PyzTest\Glue\Checkout\CheckoutApiTester;
 use PyzTest\Glue\Checkout\RestApi\Fixtures\CheckoutDataRestApiFixtures;
 use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig;
@@ -81,7 +78,7 @@ class CheckoutDataRestApiCest
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA);
 
-        $this->assertResponseResourceHasCorrectData($I);
+        $I->assertCheckoutDataResponseResourceHasCorrectData();
 
         $I->amSure('The returned resource has correct self link')
             ->whenI()
@@ -122,7 +119,7 @@ class CheckoutDataRestApiCest
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA);
 
-        $this->assertResponseResourceHasCorrectData($I);
+        $I->assertCheckoutDataResponseResourceHasCorrectData();
 
         $I->amSure('The returned resource has correct self link')
             ->whenI()
@@ -149,7 +146,7 @@ class CheckoutDataRestApiCest
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
                 'attributes' => [
                     'idCart' => $quoteTransfer->getUuid(),
-                    'billingAddress' => $I->getAddressParamData($quoteTransfer->getBillingAddress()),
+                    'billingAddress' => $I->getAddressRequestParams($quoteTransfer->getBillingAddress()),
                 ],
             ],
         ];
@@ -164,7 +161,7 @@ class CheckoutDataRestApiCest
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA);
 
-        $this->assertResponseResourceHasCorrectData($I);
+        $I->assertCheckoutDataResponseResourceHasCorrectData();
 
         $I->amSure('The returned resource has correct self link')
             ->whenI()
@@ -192,9 +189,9 @@ class CheckoutDataRestApiCest
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
                 'attributes' => [
                     'idCart' => $quoteTransfer->getUuid(),
-                    'billingAddress' => $I->getAddressParamData($quoteTransfer->getBillingAddress()),
-                    'shippingAddress' => $I->getAddressParamData($shippingAddressTransfer),
-                    'shipment' => [ShipmentMethodTransfer::ID_SHIPMENT_METHOD => 1],
+                    'billingAddress' => $I->getAddressRequestParams($quoteTransfer->getBillingAddress()),
+                    'shippingAddress' => $I->getAddressRequestParams($shippingAddressTransfer),
+                    'shipment' => $I->getShipmentRequestParams(),
                 ],
             ],
         ];
@@ -209,7 +206,7 @@ class CheckoutDataRestApiCest
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA);
 
-        $this->assertResponseResourceHasCorrectData($I);
+        $I->assertCheckoutDataResponseResourceHasCorrectData();
 
         $I->amSure('The returned resource has correct self link')
             ->whenI()
@@ -237,14 +234,9 @@ class CheckoutDataRestApiCest
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
                 'attributes' => [
                     'idCart' => $quoteTransfer->getUuid(),
-                    'billingAddress' => $I->getAddressParamData($quoteTransfer->getBillingAddress()),
-                    'shippingAddress' => $I->getAddressParamData($shippingAddressTransfer),
-                    'payments' => [
-                        [
-                            RestPaymentTransfer::PAYMENT_METHOD_NAME => 'invoice',
-                            RestPaymentTransfer::PAYMENT_PROVIDER_NAME => 'DummyPayment',
-                        ],
-                    ],
+                    'billingAddress' => $I->getAddressRequestParams($quoteTransfer->getBillingAddress()),
+                    'shippingAddress' => $I->getAddressRequestParams($shippingAddressTransfer),
+                    'payments' => $I->getPaymentRequestParams(),
                 ],
             ],
         ];
@@ -259,7 +251,7 @@ class CheckoutDataRestApiCest
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA);
 
-        $this->assertResponseResourceHasCorrectData($I);
+        $I->assertCheckoutDataResponseResourceHasCorrectData();
 
         $I->amSure('The returned resource has correct self link')
             ->whenI()
@@ -287,10 +279,10 @@ class CheckoutDataRestApiCest
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
                 'attributes' => [
                     'idCart' => $quoteTransfer->getUuid(),
-                    'billingAddress' => $I->getAddressParamData($quoteTransfer->getBillingAddress()),
-                    'shippingAddress' => $I->getAddressParamData($shippingAddressTransfer),
+                    'billingAddress' => $I->getAddressRequestParams($quoteTransfer->getBillingAddress()),
+                    'shippingAddress' => $I->getAddressRequestParams($shippingAddressTransfer),
                     'payments' => [],
-                    'shipment' => [ShipmentMethodTransfer::ID_SHIPMENT_METHOD => 1],
+                    'shipment' => $I->getShipmentRequestParams(),
                 ],
             ],
         ];
@@ -305,7 +297,7 @@ class CheckoutDataRestApiCest
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA);
 
-        $this->assertResponseResourceHasCorrectData($I);
+        $I->assertCheckoutDataResponseResourceHasCorrectData();
 
         $I->amSure('The returned resource has correct self link')
             ->whenI()
@@ -333,9 +325,9 @@ class CheckoutDataRestApiCest
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
                 'attributes' => [
                     'idCart' => $quoteTransfer->getUuid(),
-                    'billingAddress' => $I->getAddressParamData($quoteTransfer->getBillingAddress()),
-                    'shippingAddress' => $I->getAddressParamData($shippingAddressTransfer),
-                    'customer' => $I->getCustomerParamData($this->fixtures->getCustomerTransfer()),
+                    'billingAddress' => $I->getAddressRequestParams($quoteTransfer->getBillingAddress()),
+                    'shippingAddress' => $I->getAddressRequestParams($shippingAddressTransfer),
+                    'customer' => $I->getCustomerRequestParams($this->fixtures->getCustomerTransfer()),
                 ],
             ],
         ];
@@ -350,7 +342,7 @@ class CheckoutDataRestApiCest
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA);
 
-        $this->assertResponseResourceHasCorrectData($I);
+        $I->assertCheckoutDataResponseResourceHasCorrectData();
 
         $I->amSure('The returned resource has correct self link')
             ->whenI()
@@ -378,16 +370,11 @@ class CheckoutDataRestApiCest
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
                 'attributes' => [
                     'idCart' => $quoteTransfer->getUuid(),
-                    'billingAddress' => $I->getAddressParamData($quoteTransfer->getBillingAddress()),
-                    'shippingAddress' => $I->getAddressParamData($shippingAddressTransfer),
-                    'customer' => $I->getCustomerParamData($this->fixtures->getCustomerTransfer()),
-                    'payments' => [
-                        [
-                            RestPaymentTransfer::PAYMENT_METHOD_NAME => 'invoice',
-                            RestPaymentTransfer::PAYMENT_PROVIDER_NAME => 'DummyPayment',
-                        ],
-                    ],
-                    'shipment' => [ShipmentMethodTransfer::ID_SHIPMENT_METHOD => 1],
+                    'billingAddress' => $I->getAddressRequestParams($quoteTransfer->getBillingAddress()),
+                    'shippingAddress' => $I->getAddressRequestParams($shippingAddressTransfer),
+                    'customer' => $I->getCustomerRequestParams($this->fixtures->getCustomerTransfer()),
+                    'payments' => $I->getPaymentRequestParams(),
+                    'shipment' => $I->getShipmentRequestParams(),
                 ],
             ],
         ];
@@ -402,40 +389,10 @@ class CheckoutDataRestApiCest
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA);
 
-        $this->assertResponseResourceHasCorrectData($I);
+        $I->assertCheckoutDataResponseResourceHasCorrectData();
 
         $I->amSure('The returned resource has correct self link')
             ->whenI()
             ->seeSingleResourceHasSelfLink($I->buildCheckoutDataUrl());
-    }
-
-    /**
-     * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
-     *
-     * @return void
-     */
-    protected function assertResponseResourceHasCorrectData(CheckoutApiTester $I): void
-    {
-        $idResource = $I->amSure('I\'m taking the the returned resource id')
-            ->whenI()
-            ->grabDataFromResponseByJsonPath('$.data.id');
-        $I->assertNull($idResource, 'The returned resource id should be null');
-
-        $attributes = $I->amSure('I\'m taking the attributes from the returned resource')
-            ->whenI()
-            ->grabDataFromResponseByJsonPath('$.data.attributes');
-
-        $I->assertEmpty(
-            $attributes[RestCheckoutDataTransfer::ADDRESSES],
-            'The returned resource attributes addresses should be an empty array'
-        );
-        $I->assertNotEmpty(
-            $attributes[RestCheckoutDataTransfer::PAYMENT_PROVIDERS],
-            'The returned resource attributes payment providers should not be an empty array'
-        );
-        $I->assertNotEmpty(
-            $attributes[RestCheckoutDataTransfer::SHIPMENT_METHODS],
-            'The returned resource attributes shipment methods should not be an empty array'
-        );
     }
 }
