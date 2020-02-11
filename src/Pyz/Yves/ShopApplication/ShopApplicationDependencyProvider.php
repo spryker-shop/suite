@@ -112,6 +112,7 @@ use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartPermissionGroupWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartShareWidget;
 use SprykerShop\Yves\ShopApplication\Plugin\Application\ShopApplicationApplicationPlugin;
 use SprykerShop\Yves\ShopApplication\ShopApplicationDependencyProvider as SprykerShopApplicationDependencyProvider;
+use SprykerShop\Yves\ShopContext\Communication\Plugin\ShopApplication\ShopContextApplicationPlugin;
 use SprykerShop\Yves\ShoppingListNoteWidget\Widget\ShoppingListItemNoteWidget;
 use SprykerShop\Yves\ShoppingListPage\Widget\ShoppingListDismissWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\AddItemsToShoppingListWidget;
@@ -268,6 +269,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new ValidatorApplicationPlugin(),
             new SecurityApplicationPlugin(),
             new WebProfilerApplicationPlugin(),
+            new ShopContextApplicationPlugin(),
         ];
     }
 }
