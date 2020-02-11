@@ -47,10 +47,6 @@ class GuestCheckoutRestApiCest
     public function loadFixtures(CheckoutApiTester $I): void
     {
         $this->fixtures = $I->loadFixtures(GuestCheckoutRestApiFixtures::class);
-        /**
-         * @todo Create available payment methods.
-         * Create available shipment methods.
-         */
     }
 
     /**
