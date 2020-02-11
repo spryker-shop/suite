@@ -195,7 +195,11 @@ addons:
       - rabbitmq-server=3.8.2-1
       - graphviz
       - libzip-dev
-  postgresql: 11
+  postgresql: 12
+  apt:
+    packages:
+      - postgresql-12
+      - postgresql-client-12
   mysql: 5.7
 
   artifacts:
