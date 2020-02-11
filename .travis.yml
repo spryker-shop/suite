@@ -200,6 +200,9 @@ addons:
     packages:
       - postgresql-12
       - postgresql-client-12
+      - postgresql-server-dev-12
+      env:
+          PGPORT: "5433"
   mysql: 5.7
 
   artifacts:
