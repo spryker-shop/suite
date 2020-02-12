@@ -13,7 +13,7 @@ use Spryker\Zed\ZedNavigation\ZedNavigationDependencyProvider as SprykerZedNavig
 class ZedNavigationDependencyProvider extends SprykerZedNavigationDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\NavigationExtension\Dependency\Plugin\NavigationItemFilterPluginInterface[]
+     * @return \Spryker\Zed\ZedNavigationExtension\Dependency\Plugin\NavigationItemFilterPluginInterface[]
      */
     protected function getNavigationItemFilterPlugins(): array
     {
