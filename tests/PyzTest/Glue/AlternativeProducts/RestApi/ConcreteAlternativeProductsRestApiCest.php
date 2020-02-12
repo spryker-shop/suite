@@ -36,7 +36,10 @@ class ConcreteAlternativeProductsRestApiCest
      */
     public function loadFixtures(AlternativeProductsRestApiTester $I): void
     {
-        $this->fixtures = $I->loadFixtures(ConcreteAlternativeProductsRestApiFixtures::class);
+        /** @var \PyzTest\Glue\AlternativeProducts\RestApi\ConcreteAlternativeProductsRestApiFixtures $fixtures */
+        $fixtures = $I->loadFixtures(ConcreteAlternativeProductsRestApiFixtures::class);
+
+        $this->fixtures = $fixtures;
     }
 
     /**
