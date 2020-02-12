@@ -17,6 +17,7 @@ use Spryker\Shared\Customer\CustomerConstants;
 use Spryker\Shared\DocumentationGeneratorRestApi\DocumentationGeneratorRestApiConstants;
 use Spryker\Shared\DummyPayment\DummyPaymentConfig;
 use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
+use Spryker\Shared\ErrorHandler\ErrorRenderer\WebExceptionErrorRenderer;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebHtmlErrorRenderer;
 use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\EventBehavior\EventBehaviorConstants;
@@ -71,6 +72,7 @@ use Spryker\Zed\Propel\PropelConfig;
 use SprykerEco\Shared\Loggly\LogglyConstants;
 use SprykerShop\Shared\CalculationPage\CalculationPageConstants;
 use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
+use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
 use SprykerShop\Shared\WebProfilerWidget\WebProfilerWidgetConstants;
 use Twig\Cache\FilesystemCache;
 
@@ -152,7 +154,7 @@ $config[ApplicationConstants::ZED_SSL_EXCLUDED] = ['health-check/index'];
 
 $config[ErrorHandlerConstants::DISPLAY_ERRORS] = true;
 $config[ErrorHandlerConstants::ZED_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Zed/errorpage/error.html';
-$config[ErrorHandlerConstants::ERROR_RENDERER] = WebHtmlErrorRenderer::class;
+$config[ErrorHandlerConstants::ERROR_RENDERER] = getenv('SPRYKER_DEBUG_ENABLED') ? WebExceptionErrorRenderer::class : WebHtmlErrorRenderer::class;
 $config[ErrorHandlerConstants::ERROR_LEVEL] = E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED;
 
 $config[KernelConstants::DEPENDENCY_INJECTOR_ZED] = [
@@ -172,9 +174,9 @@ $config[RouterConstants::ZED_IS_SSL_ENABLED] = (bool)getenv('SPRYKER_SSL_ENABLE'
 /* Backend */
 $config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker/spryker/Bundles';
 $config[ApplicationConstants::PROJECT_TIMEZONE] = 'UTC';
-$config[ApplicationConstants::ENABLE_WEB_PROFILER] = false;
-$config[KernelConstants::STORE_PREFIX] = 'DEV';
-$config[ApplicationConstants::ENABLE_APPLICATION_DEBUG] = true;
+$config[ApplicationConstants::ENABLE_APPLICATION_DEBUG]
+    = $config[ShopApplicationConstants::ENABLE_APPLICATION_DEBUG]
+    = (bool)getenv('SPRYKER_DEBUG_ENABLED');
 
 $config[WebProfilerConstants::IS_WEB_PROFILER_ENABLED]
     = $config[WebProfilerWidgetConstants::IS_WEB_PROFILER_ENABLED]
@@ -365,7 +367,7 @@ $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = sprintf(
     $glueHost, // TODO: refactor GlueControllerFilterPluginTest to avoid the knowledge of GLUE_APPLICATION_DOMAIN in Zed
     $gluePort !== 80 ? ':' . $gluePort : ''
 );
-$config[GlueApplicationConstants::GLUE_APPLICATION_REST_DEBUG] = false;
+$config[GlueApplicationConstants::GLUE_APPLICATION_REST_DEBUG] = (bool)getenv('SPRYKER_DEBUG_ENABLED');
 $config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = getenv('SPRYKER_GLUE_APPLICATION_CORS_ALLOW_ORIGIN') ?: '';
 
 $config[TestifyConstants::GLUE_APPLICATION_DOMAIN] = $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN];
