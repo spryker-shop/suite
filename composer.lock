@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.133.11",
+            "version": "3.133.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "4a43308b22c46df9948688f4ff05096c3a15ab7e"
+                "reference": "56606a630c442beccd8d4b5fd0ae72ffddc1a768"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/4a43308b22c46df9948688f4ff05096c3a15ab7e",
-                "reference": "4a43308b22c46df9948688f4ff05096c3a15ab7e",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/56606a630c442beccd8d4b5fd0ae72ffddc1a768",
+                "reference": "56606a630c442beccd8d4b5fd0ae72ffddc1a768",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-02-10T19:19:57+00:00"
+            "time": "2020-02-11T19:14:18+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -236,21 +236,21 @@
         },
         {
             "name": "codeception/lib-asserts",
-            "version": "1.10.1",
+            "version": "1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/lib-asserts.git",
-                "reference": "f052dfebad3e9bcafc66c22a7ef39cb1a30cebd2"
+                "reference": "1fdc310bf857c11d3703ae02689a2e482c71c5ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/lib-asserts/zipball/f052dfebad3e9bcafc66c22a7ef39cb1a30cebd2",
-                "reference": "f052dfebad3e9bcafc66c22a7ef39cb1a30cebd2",
+                "url": "https://api.github.com/repos/Codeception/lib-asserts/zipball/1fdc310bf857c11d3703ae02689a2e482c71c5ab",
+                "reference": "1fdc310bf857c11d3703ae02689a2e482c71c5ab",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.0 <8.0",
-                "phpunit/phpunit": "^8.4"
+                "phpunit/phpunit": "^8.4 | ^9.0"
             },
             "type": "library",
             "autoload": {
@@ -277,7 +277,7 @@
             "keywords": [
                 "codeception"
             ],
-            "time": "2019-11-23T20:16:40+00:00"
+            "time": "2020-02-11T10:45:21+00:00"
         },
         {
             "name": "codeception/phpunit-wrapper",
@@ -1117,8 +1117,8 @@
             "authors": [
                 {
                     "name": "Alessio Linares",
-                    "role": "Software Engineer",
-                    "email": "alessio.linares@skyscanner.net"
+                    "email": "alessio.linares@skyscanner.net",
+                    "role": "Software Engineer"
                 }
             ],
             "description": "JSONPath implementation for querying and updating JSON objects",
@@ -2319,16 +2319,16 @@
         },
         {
             "name": "nette/neon",
-            "version": "v3.1.0",
+            "version": "v3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/neon.git",
-                "reference": "0a18fc88801a14d66587932de133eeca01f7ce8e"
+                "reference": "bf658bafcf56e36cfa0922f4866869927672cf2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/neon/zipball/0a18fc88801a14d66587932de133eeca01f7ce8e",
-                "reference": "0a18fc88801a14d66587932de133eeca01f7ce8e",
+                "url": "https://api.github.com/repos/nette/neon/zipball/bf658bafcf56e36cfa0922f4866869927672cf2c",
+                "reference": "bf658bafcf56e36cfa0922f4866869927672cf2c",
                 "shasum": ""
             },
             "require": {
@@ -2355,8 +2355,8 @@
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause",
-                "GPL-2.0",
-                "GPL-3.0"
+                "GPL-2.0-only",
+                "GPL-3.0-only"
             ],
             "authors": [
                 {
@@ -2369,7 +2369,7 @@
                 }
             ],
             "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
-            "homepage": "http://ne-on.org",
+            "homepage": "https://ne-on.org",
             "keywords": [
                 "export",
                 "import",
@@ -2377,7 +2377,7 @@
                 "nette",
                 "yaml"
             ],
-            "time": "2019-12-27T04:00:04+00:00"
+            "time": "2020-02-12T11:15:48+00:00"
         },
         {
             "name": "nette/php-generator",
@@ -3642,7 +3642,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -5037,7 +5037,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "2b0d31967538a1104eb828c3fbaa945bad312d6a"
+                "reference": "337b5bdc6b452fea998801936610d7883f19b68c"
             },
             "require": {
                 "php": ">=7.2"
@@ -5692,7 +5692,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-02-11T09:16:20+00:00"
+            "time": "2020-02-12T14:01:16+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -8706,8 +8706,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -10321,20 +10321,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
-                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler"
+                    "homepage": "https://github.com/manuelpichler",
+                    "role": "Project Founder"
                 },
                 {
                     "name": "Marc Würth",
-                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84"
+                    "homepage": "https://github.com/ravage84",
+                    "role": "Project Maintainer"
                 },
                 {
                     "name": "Other contributors",
-                    "role": "Contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
+                    "role": "Contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -10717,30 +10717,31 @@
         },
         {
             "name": "slevomat/coding-standard",
-            "version": "5.0.4",
+            "version": "6.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/slevomat/coding-standard.git",
-                "reference": "287ac3347c47918c0bf5e10335e36197ea10894c"
+                "reference": "d767b5e302ff096327466c97fec3cb57f6d16086"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/287ac3347c47918c0bf5e10335e36197ea10894c",
-                "reference": "287ac3347c47918c0bf5e10335e36197ea10894c",
+                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/d767b5e302ff096327466c97fec3cb57f6d16086",
+                "reference": "d767b5e302ff096327466c97fec3cb57f6d16086",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1",
-                "phpstan/phpdoc-parser": "^0.3.1",
-                "squizlabs/php_codesniffer": "^3.4.1"
+                "phpstan/phpdoc-parser": "0.3.5 - 0.4.3",
+                "squizlabs/php_codesniffer": "^3.5.4"
             },
             "require-dev": {
-                "jakub-onderka/php-parallel-lint": "1.0.0",
-                "phing/phing": "2.16.1",
-                "phpstan/phpstan": "0.11.4",
-                "phpstan/phpstan-phpunit": "0.11",
-                "phpstan/phpstan-strict-rules": "0.11",
-                "phpunit/phpunit": "8.0.5"
+                "dealerdirect/phpcodesniffer-composer-installer": "0.6.2",
+                "grogy/php-parallel-lint": "1.1.0",
+                "phing/phing": "2.16.3",
+                "phpstan/phpstan": "0.11.19|0.12.9",
+                "phpstan/phpstan-phpunit": "0.11.2|0.12.6",
+                "phpstan/phpstan-strict-rules": "0.11.1|0.12.2",
+                "phpunit/phpunit": "7.5.18|8.5.2"
             },
             "type": "phpcodesniffer-standard",
             "autoload": {
@@ -10753,7 +10754,7 @@
                 "MIT"
             ],
             "description": "Slevomat Coding Standard for PHP_CodeSniffer complements Consistence Coding Standard by providing sniffs with additional checks.",
-            "time": "2019-03-22T19:10:53+00:00"
+            "time": "2020-02-05T21:17:34+00:00"
         },
         {
             "name": "sllh/composer-versions-check",
@@ -11196,22 +11197,22 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "a08e92d8f7ad0d68adfb60f29fd2335b77716874"
+                "reference": "69f63a8b2b10e79530707533715e8ece08630ec4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/a08e92d8f7ad0d68adfb60f29fd2335b77716874",
-                "reference": "a08e92d8f7ad0d68adfb60f29fd2335b77716874",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/69f63a8b2b10e79530707533715e8ece08630ec4",
+                "reference": "69f63a8b2b10e79530707533715e8ece08630ec4",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "slevomat/coding-standard": "^4.8.7 || ^5.0.4",
-                "squizlabs/php_codesniffer": "^3.5.2"
+                "slevomat/coding-standard": "^6.1.5",
+                "squizlabs/php_codesniffer": "^3.5.4"
             },
             "require-dev": {
                 "dereuromark/composer-prefer-lowest": "^0.1.2",
-                "phpstan/phpstan-shim": "^0.11.1",
+                "phpstan/phpstan": "^0.12.0",
                 "phpunit/phpunit": "^7.0 || ^8.0"
             },
             "bin": [
@@ -11242,7 +11243,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2020-02-06T17:11:43+00:00"
+            "time": "2020-02-11T16:49:52+00:00"
         },
         {
             "name": "spryker/development-core",
