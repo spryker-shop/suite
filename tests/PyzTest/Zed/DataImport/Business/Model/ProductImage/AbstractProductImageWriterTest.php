@@ -69,8 +69,11 @@ abstract class AbstractProductImageWriterTest extends AbstractWriterTest
      *
      * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSet
      */
-    protected function createDataSet(array $product, SpyLocale $locale, ?SpyProductImageEntityTransfer $productImageEntityTransfer = null): DataSet
-    {
+    protected function createDataSet(
+        array $product,
+        SpyLocale $locale,
+        ?SpyProductImageEntityTransfer $productImageEntityTransfer = null
+    ): DataSet {
         $dataSet = new DataSet();
         $productImageKey = $productImageEntityTransfer ? $productImageEntityTransfer->getProductImageKey() : uniqid('', true);
         $dataSet[ProductImageHydratorStep::KEY_ABSTRACT_SKU] = $product[SpyProductAbstractTableMap::COL_SKU];
@@ -108,8 +111,11 @@ abstract class AbstractProductImageWriterTest extends AbstractWriterTest
      *
      * @return \Generated\Shared\Transfer\SpyProductImageEntityTransfer
      */
-    protected function createProductImageEntityTransfer(string $externalUrlLarge, string $externalUrlSmall, string $productImageKey): SpyProductImageEntityTransfer
-    {
+    protected function createProductImageEntityTransfer(
+        string $externalUrlLarge,
+        string $externalUrlSmall,
+        string $productImageKey
+    ): SpyProductImageEntityTransfer {
         return (new SpyProductImageEntityTransfer())
             ->setExternalUrlLarge($externalUrlLarge)
             ->setExternalUrlSmall($externalUrlSmall)
