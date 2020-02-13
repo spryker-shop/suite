@@ -9,6 +9,7 @@ namespace Pyz\Client\SearchElasticsearch;
 
 use Spryker\Client\Catalog\Plugin\SearchElasticsearch\ElasticsearchCatalogSearchConfigBuilderPlugin;
 use Spryker\Client\Kernel\Container;
+use Spryker\Client\MerchantProductOfferSearch\Plugin\MerchantNameSearchConfigExpanderPlugin;
 use Spryker\Client\ProductSearchConfigStorage\Plugin\Config\ProductSearchConfigExpanderPlugin;
 use Spryker\Client\SearchElasticsearch\SearchElasticsearchDependencyProvider as SprykerSearchElasticsearchDependencyProvider;
 
@@ -35,6 +36,7 @@ class SearchElasticsearchDependencyProvider extends SprykerSearchElasticsearchDe
     {
         return [
             new ProductSearchConfigExpanderPlugin(),
+            new MerchantNameSearchConfigExpanderPlugin(),
         ];
     }
 }
