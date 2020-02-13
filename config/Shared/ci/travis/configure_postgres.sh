@@ -5,4 +5,4 @@ sudo sed -ie 's/md5/trust/g' /etc/postgresql/12/main/pg_hba.conf
 sudo sed -ie 's/peer/trust/g' /etc/postgresql/12/main/pg_hba.conf
 
 # Restart Postgres service
-sudo /etc/init.d/postgresql restart 12
+##sudo /etc/init.d/postgresql restart 12
