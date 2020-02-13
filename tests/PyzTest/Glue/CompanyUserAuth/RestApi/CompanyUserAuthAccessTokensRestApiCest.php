@@ -49,8 +49,9 @@ class CompanyUserAuthAccessTokensRestApiCest
      *
      * @return void
      */
-    public function requestCompanyUserAccessTokenForExistingCustomerWithCompanyUser(CompanyUserAuthRestApiTester $I): void
-    {
+    public function requestCompanyUserAccessTokenForExistingCustomerWithCompanyUser(
+        CompanyUserAuthRestApiTester $I
+    ): void {
         //Arrange
         $I->amBearerAuthenticated($this->fixtures->getOauthResponseTransferForCompanyUser()->getAccessToken());
 
@@ -109,8 +110,9 @@ class CompanyUserAuthAccessTokensRestApiCest
      *
      * @return void
      */
-    public function requestCompanyUserAccessTokenForExistingCustomerWithInvalidPostData(CompanyUserAuthRestApiTester $I): void
-    {
+    public function requestCompanyUserAccessTokenForExistingCustomerWithInvalidPostData(
+        CompanyUserAuthRestApiTester $I
+    ): void {
         //Arrange
         $I->amBearerAuthenticated($this->fixtures->getOauthResponseTransferForCompanyUser()->getAccessToken());
 
