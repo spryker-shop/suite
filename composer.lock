@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3e559dd8917e13558c7792b62a8a99de",
+    "content-hash": "99565eafbba562a07098c4c7108383c3",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1117,8 +1117,8 @@
             "authors": [
                 {
                     "name": "Alessio Linares",
-                    "role": "Software Engineer",
-                    "email": "alessio.linares@skyscanner.net"
+                    "email": "alessio.linares@skyscanner.net",
+                    "role": "Software Engineer"
                 }
             ],
             "description": "JSONPath implementation for querying and updating JSON objects",
@@ -1292,7 +1292,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "Apache 2.0"
+                "MIT"
             ],
             "authors": [
                 {
@@ -1436,16 +1436,7 @@
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.0",
-                "psr/http-message": "~1.0",
-                "ralouphie/getallheaders": "^2.0.5 || ^3.0.0"
-            },
-            "provide": {
-                "psr/http-message-implementation": "1.0"
-            },
-            "require-dev": {
-                "ext-zlib": "*",
-                "phpunit/phpunit": "~4.8.36 || ^5.7.27 || ^6.5.8"
+                "php": ">=5.3.3"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "~2.2.20||~2.15.1",
@@ -1641,14 +1632,6 @@
                 "henrikbjorn/phpspec-code-coverage": "~1.0.1",
                 "phpspec/phpspec": "^2.2"
             },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "~2.2.20||~2.15.1",
-                "json-schema/json-schema-test-suite": "1.2.0",
-                "phpunit/phpunit": "^4.8.35"
-            },
-            "bin": [
-                "bin/validate-json"
-            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1732,7 +1715,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "MIT"
             ],
             "authors": [
                 {
@@ -2136,7 +2119,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "MIT"
             ],
             "authors": [
                 {
@@ -2365,11 +2348,8 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "DeepCopy\\": "src/DeepCopy/"
-                },
-                "files": [
-                    "src/DeepCopy/deep_copy.php"
+                "classmap": [
+                    "src/"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2683,9 +2663,7 @@
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause",
-                "GPL-2.0",
-                "GPL-3.0"
+                "MIT"
             ],
             "authors": [
                 {
@@ -2776,11 +2754,6 @@
                 "php": "^5.6 || ^7.0"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.1-dev"
-                }
-            },
             "autoload": {
                 "classmap": [
                     "src/"
@@ -2850,7 +2823,6 @@
                     "PhpAmqpLib\\": "PhpAmqpLib/"
                 }
             },
-            "type": "library",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "LGPL-2.1-or-later"
@@ -2914,14 +2886,9 @@
                     ]
                 }
             },
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "MIT"
             ],
             "authors": [
                 {
@@ -2966,7 +2933,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "MIT"
             ],
             "authors": [
                 {
@@ -3026,7 +2993,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "LGPL-2.1-or-later"
+                "MIT"
             ],
             "authors": [
                 {
@@ -3114,11 +3081,6 @@
                 "ext-openssl": "Install the OpenSSL extension in order to speed up a wide variety of cryptographic operations."
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
             "autoload": {
                 "files": [
                     "phpseclib/bootstrap.php"
@@ -3322,7 +3284,7 @@
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "php": "^7.1"
             },
             "require-dev": {
                 "phpunit/phpunit": "^7.1"
@@ -3333,7 +3295,6 @@
                     "dev-master": "2.0.x-dev"
                 }
             },
-            "type": "library",
             "autoload": {
                 "classmap": [
                     "src/"
@@ -3610,14 +3571,9 @@
                     "Predis\\": "src/"
                 }
             },
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "MIT"
             ],
             "authors": [
                 {
@@ -3680,18 +3636,13 @@
                     "Propel": "src/"
                 }
             },
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "MIT"
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -3721,9 +3672,6 @@
             "require": {
                 "php": ">=5.3.0"
             },
-            "bin": [
-                "phpunit"
-            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -3735,14 +3683,9 @@
                     "Psr\\Container\\": "src/"
                 }
             },
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "MIT"
             ],
             "authors": [
                 {
@@ -3828,9 +3771,6 @@
             "require": {
                 "php": ">=5.3.0"
             },
-            "bin": [
-                "bin/propel"
-            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -4225,7 +4165,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "6.0.x-dev"
+                    "dev-master": "3.0-dev"
                 }
             },
             "autoload": {
@@ -4828,7 +4768,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "MIT"
             ],
             "authors": [
                 {
@@ -4935,11 +4875,6 @@
                 "bin/install"
             ],
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Spryker\\": "src/Spryker/"
@@ -5064,16 +4999,8 @@
                 "symfony/validator": "^3.0.0 || ^4.0.0",
                 "twig/twig": "~1.28|~2.0"
             },
-            "suggest": {
-                "spryker/console": "*",
-                "spryker/container": "Install this module when you want to use the EventBehaviorEventDispatcherPlugin",
-                "spryker/event-dispatcher": "Install this module when you want to use the EventBehaviorEventDispatcherPlugin",
-                "spryker/silex": "^2.0.0"
-            },
-            "type": "propel-behavior",
+            "type": "library",
             "extra": {
-                "name": "event",
-                "class": "\\Spryker\\Zed\\EventBehavior\\Persistence\\Propel\\Behavior\\EventBehavior",
                 "branch-alias": {
                     "dev-master": "1.3.x-dev"
                 }
@@ -5106,11 +5033,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/ps-9877/ps-10498-edit-shipment-price",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "6aed43fef563dc4eb16e9455dffb698ddcfc684b"
+                "reference": "d8423e1b5284f248a681ce5c17535e46bbd10ce3"
             },
             "require": {
                 "php": ">=7.2"
@@ -5765,15 +5692,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-02-13T14:21:42+00:00"
+            "time": "2020-02-13T16:19:28+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/ps-9877/ps-10498-edit-shipment-price",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "a461b98d3da647ef1476a44e7ef0cdb1ac518b8e"
+                "reference": "93fe0377505d5e5f72e6e65a5052557120dbbc83"
             },
             "require": {
                 "php": ">=7.2"
@@ -5903,10 +5830,6 @@
                 "spryker/code-sniffer": "dev-master",
                 "spryker/spryker": "dev-master"
             },
-            "bin": [
-                "Bundles/Console/bin/console",
-                "Bundles/Console/bin/yves"
-            ],
             "type": "library",
             "scripts": {
                 "cs-check": [
@@ -5917,7 +5840,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-02-13T15:19:23+00:00"
+            "time": "2020-02-13T16:30:07+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8783,8 +8706,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -10276,7 +10199,6 @@
             ],
             "type": "library",
             "extra": {
-                "class": "PackageVersions\\Installer",
                 "branch-alias": {
                     "dev-master": "2.x-dev"
                 }
@@ -10329,9 +10251,6 @@
             "suggest": {
                 "ext-SimpleXML": "For Firefox profile creation"
             },
-            "bin": [
-                "src/bin/pdepend"
-            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -10348,7 +10267,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "MIT"
             ],
             "description": "A PHP client for Selenium WebDriver. Previously facebook/webdriver.",
             "homepage": "https://github.com/php-webdriver/php-webdriver",
@@ -10402,20 +10321,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
-                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler"
+                    "homepage": "https://github.com/manuelpichler",
+                    "role": "Project Founder"
                 },
                 {
                     "name": "Marc Würth",
-                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84"
+                    "homepage": "https://github.com/ravage84",
+                    "role": "Project Maintainer"
                 },
                 {
                     "name": "Other contributors",
-                    "role": "Contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
+                    "role": "Contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
