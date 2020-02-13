@@ -9,9 +9,14 @@ namespace PyzTest\Glue\Checkout\RestApi;
 
 use Codeception\Util\HttpCode;
 use Generated\Shared\DataBuilder\AddressBuilder;
+use Generated\Shared\Transfer\DummyPaymentTransfer;
+use Generated\Shared\Transfer\OrderTransfer;
+use Generated\Shared\Transfer\PaymentTransfer;
 use Generated\Shared\Transfer\RestCheckoutErrorTransfer;
+use Generated\Shared\Transfer\RestCheckoutResponseTransfer;
 use Generated\Shared\Transfer\RestPaymentTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
+use Generated\Shared\Transfer\ShipmentTransfer;
 use PyzTest\Glue\Checkout\CheckoutApiTester;
 use PyzTest\Glue\Checkout\RestApi\Fixtures\CheckoutRestApiFixtures;
 use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig;
@@ -44,6 +49,7 @@ class CheckoutRestApiCest
      */
     public function loadFixtures(CheckoutApiTester $I): void
     {
+        /** @var \PyzTest\Glue\Checkout\RestApi\Fixtures\CheckoutRestApiFixtures $fixtures */
         $this->fixtures = $I->loadFixtures(CheckoutRestApiFixtures::class);
     }
 
@@ -64,23 +70,23 @@ class CheckoutRestApiCest
         $shippingAddressTransfer = (new AddressBuilder())->build();
 
         $url = $I->buildCheckoutUrl();
-        $urlParams = [
+        $requestPayload = [
             'data' => [
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT,
                 'attributes' => [
                     'idCart' => $quoteTransfer->getUuid(),
-                    'billingAddress' => $I->getAddressRequestParams($quoteTransfer->getBillingAddress()),
-                    'shippingAddress' => $I->getAddressRequestParams($shippingAddressTransfer),
-                    'customer' => $I->getCustomerRequestParams($customerTransfer),
+                    'billingAddress' => $I->getAddressRequestPayload($quoteTransfer->getBillingAddress()),
+                    'shippingAddress' => $I->getAddressRequestPayload($shippingAddressTransfer),
+                    'customer' => $I->getCustomerRequestPayload($customerTransfer),
                     'payments' => [
                         [
                             RestPaymentTransfer::PAYMENT_METHOD_NAME => 'invoice',
                             RestPaymentTransfer::PAYMENT_PROVIDER_NAME => 'DummyPayment',
                             RestPaymentTransfer::PAYMENT_SELECTION => 'dummyPaymentInvoice',
                             RestPaymentTransfer::DUMMY_PAYMENT_INVOICE => [
-                                'dateOfBirth' => '08.04.1986',
+                                DummyPaymentTransfer::DATE_OF_BIRTH => '08.04.1986',
                             ],
-                            'amount' => 899910,
+                            PaymentTransfer::AMOUNT => 899910,
                         ],
                     ],
                     'shipment' => [
@@ -90,8 +96,6 @@ class CheckoutRestApiCest
                             ShipmentMethodTransfer::CARRIER_NAME => 'Spryker Dummy Shipment',
                             ShipmentMethodTransfer::NAME => 'Standard',
                             ShipmentMethodTransfer::TAX_RATE => null,
-                            'price' => 490,
-                            'shipmentDeliveryTime' => null,
                         ],
                     ],
                 ],
@@ -99,14 +103,14 @@ class CheckoutRestApiCest
         ];
 
         // Act
-        $I->sendPOST($url, $urlParams);
+        $I->sendPOST($url, $requestPayload);
 
         // Assert
-        $I->assertResponseHasCorrectInfrastructure(HttpCode::UNPROCESSABLE_ENTITY);
+        $I->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
 
-        $errors = $I->amSure('I\'m taking the error info from the returned resource')
-            ->whenI()
-            ->grabDataFromResponseByJsonPath('$.errors[0]');
+        $errors = $I->grabDataFromResponseByJsonPath('$.errors[0]');
         $I->assertEquals($errors[RestCheckoutErrorTransfer::CODE], static::RESPONSE_CODE_CART_IS_EMPTY);
         $I->assertEquals($errors[RestCheckoutErrorTransfer::STATUS], HttpCode::UNPROCESSABLE_ENTITY);
         $I->assertEquals($errors[RestCheckoutErrorTransfer::DETAIL], static::RESPONSE_DETAILS_CART_IS_EMPTY);
@@ -129,35 +133,55 @@ class CheckoutRestApiCest
         $shippingAddressTransfer = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
 
         $url = $I->buildCheckoutUrl();
-        $urlParams = [
+        $requestPayload = [
             'data' => [
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT,
                 'attributes' => [
                     'idCart' => $quoteTransfer->getUuid(),
-                    'billingAddress' => $I->getAddressRequestParams($quoteTransfer->getBillingAddress()),
-                    'shippingAddress' => $I->getAddressRequestParams($shippingAddressTransfer),
-                    'customer' => $I->getCustomerRequestParams($customerTransfer),
-                    'payments' => $I->getPaymentRequestParams(),
-                    'shipment' => $I->getShipmentRequestParams(),
+                    'billingAddress' => $I->getAddressRequestPayload($quoteTransfer->getBillingAddress()),
+                    'shippingAddress' => $I->getAddressRequestPayload($shippingAddressTransfer),
+                    'customer' => $I->getCustomerRequestPayload($customerTransfer),
+                    'payments' => $I->getPaymentRequestPayload(),
+                    'shipment' => $I->getShipmentRequestPayload(),
                 ],
             ],
         ];
 
         // Act
-        $I->sendPOST($url, $urlParams);
+        $I->sendPOST($url, $requestPayload);
 
         // Assert
-        $I->assertResponseHasCorrectInfrastructure();
+        $I->seeResponseCodeIs(HttpCode::CREATED);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
 
         $I->amSure('The returned resource is of correct type')
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType(CheckoutRestApiConfig::RESOURCE_CHECKOUT);
 
-        $I->assertCheckoutResponseResourceHasCorrectData();
+        $idResource = $I->grabDataFromResponseByJsonPath('$.data.id');
+        $I->assertNull($idResource, 'The returned resource id should be null');
+
+        $attributes = $I->grabDataFromResponseByJsonPath('$.data.attributes');
+
+        $I->assertNotEmpty(
+            $attributes[RestCheckoutResponseTransfer::ORDER_REFERENCE],
+            'The returned resource attributes order reference should not be empty'
+        );
+        $I->assertArrayHasKey(
+            RestCheckoutResponseTransfer::IS_EXTERNAL_REDIRECT,
+            $attributes,
+            'The returned resource attributes should have an external redirect key'
+        );
+        $I->assertArrayHasKey(
+            RestCheckoutResponseTransfer::REDIRECT_URL,
+            $attributes,
+            'The returned resource attributes should have a redirect URL key'
+        );
 
         $I->amSure('The returned resource has correct self link')
             ->whenI()
-            ->seeSingleResourceHasSelfLink($I->buildCheckoutUrl());
+            ->seeSingleResourceHasSelfLink($url);
     }
 
     /**
@@ -177,35 +201,55 @@ class CheckoutRestApiCest
         $shippingAddressTransfer = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
 
         $url = $I->buildCheckoutUrl();
-        $urlParams = [
+        $requestPayload = [
             'data' => [
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT,
                 'attributes' => [
                     'idCart' => $quoteTransfer->getUuid(),
-                    'billingAddress' => $I->getAddressRequestParams($quoteTransfer->getBillingAddress()),
-                    'shippingAddress' => $I->getAddressRequestParams($shippingAddressTransfer),
-                    'customer' => $I->getCustomerRequestParams($customerTransfer),
-                    'payments' => $I->getPaymentRequestParams('credit card'),
-                    'shipment' => $I->getShipmentRequestParams(),
+                    'billingAddress' => $I->getAddressRequestPayload($quoteTransfer->getBillingAddress()),
+                    'shippingAddress' => $I->getAddressRequestPayload($shippingAddressTransfer),
+                    'customer' => $I->getCustomerRequestPayload($customerTransfer),
+                    'payments' => $I->getPaymentRequestPayload('credit card'),
+                    'shipment' => $I->getShipmentRequestPayload(),
                 ],
             ],
         ];
 
         // Act
-        $I->sendPOST($url, $urlParams);
+        $I->sendPOST($url, $requestPayload);
 
         // Assert
-        $I->assertResponseHasCorrectInfrastructure();
+        $I->seeResponseCodeIs(HttpCode::CREATED);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
 
         $I->amSure('The returned resource is of correct type')
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType(CheckoutRestApiConfig::RESOURCE_CHECKOUT);
 
-        $I->assertCheckoutResponseResourceHasCorrectData();
+        $idResource = $I->grabDataFromResponseByJsonPath('$.data.id');
+        $I->assertNull($idResource, 'The returned resource id should be null');
+
+        $attributes = $I->grabDataFromResponseByJsonPath('$.data.attributes');
+
+        $I->assertNotEmpty(
+            $attributes[RestCheckoutResponseTransfer::ORDER_REFERENCE],
+            'The returned resource attributes order reference should not be empty'
+        );
+        $I->assertArrayHasKey(
+            RestCheckoutResponseTransfer::IS_EXTERNAL_REDIRECT,
+            $attributes,
+            'The returned resource attributes should have an external redirect key'
+        );
+        $I->assertArrayHasKey(
+            RestCheckoutResponseTransfer::REDIRECT_URL,
+            $attributes,
+            'The returned resource attributes should have a redirect URL key'
+        );
 
         $I->amSure('The returned resource has correct self link')
             ->whenI()
-            ->seeSingleResourceHasSelfLink($I->buildCheckoutUrl());
+            ->seeSingleResourceHasSelfLink($url);
     }
 
     /**
@@ -228,34 +272,54 @@ class CheckoutRestApiCest
         $persistedAddressTransfer = $customerTransfer->getAddresses()->getAddresses()[0];
 
         $url = $I->buildCheckoutUrl();
-        $urlParams = [
+        $requestPayload = [
             'data' => [
                 'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT,
                 'attributes' => [
                     'idCart' => $quoteTransfer->getUuid(),
-                    'billingAddress' => $I->getAddressRequestParams($persistedAddressTransfer),
-                    'shippingAddress' => $I->getAddressRequestParams($persistedAddressTransfer),
-                    'customer' => $I->getCustomerRequestParams($customerTransfer),
-                    'payments' => $I->getPaymentRequestParams(),
-                    'shipment' => $I->getShipmentRequestParams(),
+                    'billingAddress' => $I->getAddressRequestPayload($persistedAddressTransfer),
+                    'shippingAddress' => $I->getAddressRequestPayload($persistedAddressTransfer),
+                    'customer' => $I->getCustomerRequestPayload($customerTransfer),
+                    'payments' => $I->getPaymentRequestPayload(),
+                    'shipment' => $I->getShipmentRequestPayload(),
                 ],
             ],
         ];
 
         // Act
-        $I->sendPOST($url, $urlParams);
+        $I->sendPOST($url, $requestPayload);
 
         // Assert
-        $I->assertResponseHasCorrectInfrastructure();
+        $I->seeResponseCodeIs(HttpCode::CREATED);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
 
         $I->amSure('The returned resource is of correct type')
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType(CheckoutRestApiConfig::RESOURCE_CHECKOUT);
 
-        $I->assertCheckoutResponseResourceHasCorrectData();
+        $idResource = $I->grabDataFromResponseByJsonPath('$.data.id');
+        $I->assertNull($idResource, 'The returned resource id should be null');
+
+        $attributes = $I->grabDataFromResponseByJsonPath('$.data.attributes');
+
+        $I->assertNotEmpty(
+            $attributes[RestCheckoutResponseTransfer::ORDER_REFERENCE],
+            'The returned resource attributes order reference should not be empty'
+        );
+        $I->assertArrayHasKey(
+            RestCheckoutResponseTransfer::IS_EXTERNAL_REDIRECT,
+            $attributes,
+            'The returned resource attributes should have an external redirect key'
+        );
+        $I->assertArrayHasKey(
+            RestCheckoutResponseTransfer::REDIRECT_URL,
+            $attributes,
+            'The returned resource attributes should have a redirect URL key'
+        );
 
         $I->amSure('The returned resource has correct self link')
             ->whenI()
-            ->seeSingleResourceHasSelfLink($I->buildCheckoutUrl());
+            ->seeSingleResourceHasSelfLink($url);
     }
 }

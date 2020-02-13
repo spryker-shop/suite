@@ -35,11 +35,6 @@ class GuestCheckoutDataRestApiFixtures implements FixturesBuilderInterface, Fixt
     protected $guestCustomerReference;
 
     /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
-    protected $productConcreteTransfer;
-
-    /**
      * @var \Generated\Shared\Transfer\CustomerTransfer
      */
     protected $guestCustomerTransfer;
@@ -55,14 +50,6 @@ class GuestCheckoutDataRestApiFixtures implements FixturesBuilderInterface, Fixt
     public function getGuestCustomerReference(): string
     {
         return $this->guestCustomerReference;
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
-    public function getProductConcreteTransfer(): ProductConcreteTransfer
-    {
-        return $this->productConcreteTransfer;
     }
 
     /**
@@ -89,11 +76,13 @@ class GuestCheckoutDataRestApiFixtures implements FixturesBuilderInterface, Fixt
     public function buildFixtures(CheckoutApiTester $I): FixturesContainerInterface
     {
         $this->guestCustomerReference = $I->createGuestCustomerReference();
-        $this->productConcreteTransfer = $I->haveProductWithStock();
         $this->guestCustomerTransfer = $I->createCustomerTransfer([
             CustomerTransfer::CUSTOMER_REFERENCE => static::ANONYMOUS_PREFIX . $this->guestCustomerReference,
         ]);
-        $this->guestQuoteTransfer = $I->havePersistentQuoteWithItems($this->guestCustomerTransfer, [$this->productConcreteTransfer]);
+        $this->guestQuoteTransfer = $I->havePersistentQuoteWithItems(
+            $this->guestCustomerTransfer,
+            [$I->haveProductWithStock()]
+        );
 
         return $this;
     }

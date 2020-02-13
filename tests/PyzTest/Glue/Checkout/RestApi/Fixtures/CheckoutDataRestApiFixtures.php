@@ -31,11 +31,6 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
     protected const TEST_PASSWORD = 'password';
 
     /**
-     * @var \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
-    protected $productConcreteTransfer;
-
-    /**
      * @var \Generated\Shared\Transfer\CustomerTransfer
      */
     protected $customerTransfer;
@@ -51,14 +46,6 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
     public function getQuoteTransfer(): QuoteTransfer
     {
         return $this->quoteTransfer;
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
-     */
-    public function getProductConcreteTransfer(): ProductConcreteTransfer
-    {
-        return $this->productConcreteTransfer;
     }
 
     /**
@@ -81,8 +68,10 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
             CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
             CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,
         ]);
-        $this->productConcreteTransfer = $I->haveProductWithStock();
-        $this->quoteTransfer = $I->havePersistentQuoteWithItems($this->customerTransfer, [$this->productConcreteTransfer]);
+        $this->quoteTransfer = $I->havePersistentQuoteWithItems(
+            $this->customerTransfer,
+            [$I->haveProductWithStock()]
+        );
 
         return $this;
     }

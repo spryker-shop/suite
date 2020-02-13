@@ -20,9 +20,12 @@ use Generated\Shared\Transfer\MoneyValueTransfer;
 use Generated\Shared\Transfer\PriceProductTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
+use Generated\Shared\Transfer\RestAddressTransfer;
 use Generated\Shared\Transfer\RestCheckoutDataTransfer;
 use Generated\Shared\Transfer\RestCheckoutResponseTransfer;
+use Generated\Shared\Transfer\RestCustomerTransfer;
 use Generated\Shared\Transfer\RestPaymentTransfer;
+use Generated\Shared\Transfer\RestShipmentTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
 use Generated\Shared\Transfer\StockProductTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
@@ -65,9 +68,9 @@ class CheckoutApiTester extends ApiEndToEndTester
     public function buildCheckoutUrl(array $includes = []): string
     {
         return $this->formatFullUrl(
-            '{resourceCarts}' . $this->formatQueryInclude($includes),
+            '{resourceCheckout}' . $this->formatQueryInclude($includes),
             [
-                'resourceCarts' => CheckoutRestApiConfig::RESOURCE_CHECKOUT,
+                'resourceCheckout' => CheckoutRestApiConfig::RESOURCE_CHECKOUT,
             ]
         );
     }
@@ -112,22 +115,22 @@ class CheckoutApiTester extends ApiEndToEndTester
      *
      * @return array
      */
-    public function getAddressRequestParams(AddressTransfer $addressTransfer): array
+    public function getAddressRequestPayload(AddressTransfer $addressTransfer): array
     {
         return [
-            AddressTransfer::SALUTATION => $addressTransfer->getSalutation(),
-            AddressTransfer::FIRST_NAME => $addressTransfer->getFirstName(),
-            AddressTransfer::LAST_NAME => $addressTransfer->getLastName(),
-            AddressTransfer::ADDRESS1 => $addressTransfer->getAddress1(),
-            AddressTransfer::ADDRESS2 => $addressTransfer->getAddress2(),
-            AddressTransfer::ADDRESS3 => $addressTransfer->getAddress3(),
-            AddressTransfer::ZIP_CODE => $addressTransfer->getZipCode(),
-            AddressTransfer::CITY => $addressTransfer->getCity(),
-            AddressTransfer::ISO2_CODE => $addressTransfer->getIso2Code(),
-            AddressTransfer::PHONE => $addressTransfer->getPhone(),
-            AddressTransfer::EMAIL => $addressTransfer->getEmail(),
-            AddressTransfer::IS_DEFAULT_BILLING => $addressTransfer->getIsDefaultBilling(),
-            AddressTransfer::IS_DEFAULT_SHIPPING => $addressTransfer->getIsDefaultShipping(),
+            RestAddressTransfer::SALUTATION => $addressTransfer->getSalutation(),
+            RestAddressTransfer::FIRST_NAME => $addressTransfer->getFirstName(),
+            RestAddressTransfer::LAST_NAME => $addressTransfer->getLastName(),
+            RestAddressTransfer::ADDRESS1 => $addressTransfer->getAddress1(),
+            RestAddressTransfer::ADDRESS2 => $addressTransfer->getAddress2(),
+            RestAddressTransfer::ADDRESS3 => $addressTransfer->getAddress3(),
+            RestAddressTransfer::ZIP_CODE => $addressTransfer->getZipCode(),
+            RestAddressTransfer::CITY => $addressTransfer->getCity(),
+            RestAddressTransfer::ISO2_CODE => $addressTransfer->getIso2Code(),
+            RestAddressTransfer::PHONE => $addressTransfer->getPhone(),
+            RestCustomerTransfer::EMAIL => $addressTransfer->getEmail(),
+            RestAddressTransfer::IS_DEFAULT_BILLING => $addressTransfer->getIsDefaultBilling(),
+            RestAddressTransfer::IS_DEFAULT_SHIPPING => $addressTransfer->getIsDefaultShipping(),
         ];
     }
 
@@ -136,13 +139,13 @@ class CheckoutApiTester extends ApiEndToEndTester
      *
      * @return array
      */
-    public function getCustomerRequestParams(CustomerTransfer $customerTransfer): array
+    public function getCustomerRequestPayload(CustomerTransfer $customerTransfer): array
     {
         return [
-            CustomerTransfer::SALUTATION => $customerTransfer->getSalutation(),
-            CustomerTransfer::FIRST_NAME => $customerTransfer->getFirstName(),
-            CustomerTransfer::LAST_NAME => $customerTransfer->getLastName(),
-            CustomerTransfer::EMAIL => $customerTransfer->getEmail(),
+            RestCustomerTransfer::SALUTATION => $customerTransfer->getSalutation(),
+            RestCustomerTransfer::FIRST_NAME => $customerTransfer->getFirstName(),
+            RestCustomerTransfer::LAST_NAME => $customerTransfer->getLastName(),
+            RestCustomerTransfer::EMAIL => $customerTransfer->getEmail(),
         ];
     }
 
@@ -152,7 +155,7 @@ class CheckoutApiTester extends ApiEndToEndTester
      *
      * @return array
      */
-    public function getPaymentRequestParams(
+    public function getPaymentRequestPayload(
         string $paymentMethodName = self::REQUEST_PARAM_PAYMENT_METHOD_NAME_INVOICE,
         string $paymentProviderName = self::REQUEST_PARAM_PAYMENT_PROVIDER_NAME_DUMMY_PAYMENT
     ): array {
@@ -169,11 +172,11 @@ class CheckoutApiTester extends ApiEndToEndTester
      *
      * @return array
      */
-    public function getShipmentRequestParams(
+    public function getShipmentRequestPayload(
         int $idShipmentMethod = self::REQUEST_PARAM_ID_SHIPMENT_METHOD_DEFAULT
     ): array {
         return [
-            ShipmentMethodTransfer::ID_SHIPMENT_METHOD => $idShipmentMethod,
+            RestShipmentTransfer::ID_SHIPMENT_METHOD => $idShipmentMethod,
         ];
     }
 
@@ -186,76 +189,6 @@ class CheckoutApiTester extends ApiEndToEndTester
     {
         $oauthResponseTransfer = $this->haveAuthorizationToGlue($customerTransfer);
         $this->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
-    }
-
-    /**
-     * @param int $httpCode
-     *
-     * @return void
-     */
-    public function assertResponseHasCorrectInfrastructure(int $httpCode = HttpCode::CREATED): void
-    {
-        $this->seeResponseCodeIs($httpCode);
-        $this->seeResponseIsJson();
-        $this->seeResponseMatchesOpenApiSchema();
-    }
-
-    /**
-     * @return void
-     */
-    public function assertCheckoutResponseResourceHasCorrectData(): void
-    {
-        $idResource = $this->amSure('I\'m taking the the returned resource id')
-            ->whenI()
-            ->grabDataFromResponseByJsonPath('$.data.id');
-        $this->assertNull($idResource, 'The returned resource id should be null');
-
-        $attributes = $this->amSure('I\'m taking the attributes from the returned resource')
-            ->whenI()
-            ->grabDataFromResponseByJsonPath('$.data.attributes');
-
-        $this->assertNotEmpty(
-            $attributes[RestCheckoutResponseTransfer::ORDER_REFERENCE],
-            'The returned resource attributes order reference should not be empty'
-        );
-        $this->assertArrayHasKey(
-            RestCheckoutResponseTransfer::IS_EXTERNAL_REDIRECT,
-            $attributes,
-            'The returned resource attributes should have an external redirect key'
-        );
-        $this->assertArrayHasKey(
-            RestCheckoutResponseTransfer::REDIRECT_URL,
-            $attributes,
-            'The returned resource attributes should have a redirect URL key'
-        );
-    }
-
-    /**
-     * @return void
-     */
-    public function assertCheckoutDataResponseResourceHasCorrectData(): void
-    {
-        $idResource = $this->amSure('I\'m taking the the returned resource id')
-            ->whenI()
-            ->grabDataFromResponseByJsonPath('$.data.id');
-        $this->assertNull($idResource, 'The returned resource id should be null');
-
-        $attributes = $this->amSure('I\'m taking the attributes from the returned resource')
-            ->whenI()
-            ->grabDataFromResponseByJsonPath('$.data.attributes');
-
-        $this->assertEmpty(
-            $attributes[RestCheckoutDataTransfer::ADDRESSES],
-            'The returned resource attributes addresses should be an empty array'
-        );
-        $this->assertNotEmpty(
-            $attributes[RestCheckoutDataTransfer::PAYMENT_PROVIDERS],
-            'The returned resource attributes payment providers should not be an empty array'
-        );
-        $this->assertNotEmpty(
-            $attributes[RestCheckoutDataTransfer::SHIPMENT_METHODS],
-            'The returned resource attributes shipment methods should not be an empty array'
-        );
     }
 
     /**
