@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "09bcbfc389f6e31c40684cdf80ae52cb",
+    "content-hash": "d0433752c86a7d7801f1bfa0fa39018d",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1117,8 +1117,8 @@
             "authors": [
                 {
                     "name": "Alessio Linares",
-                    "email": "alessio.linares@skyscanner.net",
-                    "role": "Software Engineer"
+                    "role": "Software Engineer",
+                    "email": "alessio.linares@skyscanner.net"
                 }
             ],
             "description": "JSONPath implementation for querying and updating JSON objects",
@@ -3642,7 +3642,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -5033,11 +5033,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/mp-1706/dev-selected-merchant-on-pdp",
+            "version": "dev-feature/mp-1706/mp-1708-offers-and-prices-on-concrete-pdp",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "1bdfbe6301ccd3a1078ee918a000549f92b04723"
+                "reference": "bde05ec319d7cc37b0efda02bc639731d648ad0d"
             },
             "require": {
                 "php": ">=7.2"
@@ -5594,6 +5594,8 @@
                 "spryker/shipment-extension": "*",
                 "spryker/shipment-gui": "*",
                 "spryker/shipments-rest-api": "*",
+                "spryker/shop-context": "*",
+                "spryker/shop-context-extension": "*",
                 "spryker/shopping-list": "*",
                 "spryker/shopping-list-data-import": "*",
                 "spryker/shopping-list-extension": "*",
@@ -5691,15 +5693,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-02-06T17:11:36+00:00"
+            "time": "2020-02-13T09:30:31+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/mp-1706/dev-selected-merchant-on-pdp",
+            "version": "dev-feature/mp-1706/mp-1708-offers-and-prices-on-concrete-pdp",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "6efebfa6d9eeb21bf5de8ad9371ffb1d3496573a"
+                "reference": "0ffdecefbd9a1de8d3b5323a43a4649b7b34b596"
             },
             "require": {
                 "php": ">=7.2"
@@ -5839,7 +5841,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-02-06T17:11:33+00:00"
+            "time": "2020-02-13T09:32:11+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8705,8 +8707,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -10314,20 +10316,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
+                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler",
-                    "role": "Project Founder"
+                    "homepage": "https://github.com/manuelpichler"
                 },
                 {
                     "name": "Marc Würth",
+                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84",
-                    "role": "Project Maintainer"
+                    "homepage": "https://github.com/ravage84"
                 },
                 {
                     "name": "Other contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
