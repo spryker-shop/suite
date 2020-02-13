@@ -59,8 +59,10 @@ class CmsBlockWriterStep extends PublishAwareStep implements DataImportStepInter
      * @param \Pyz\Zed\DataImport\Business\Model\CmsBlock\Category\Repository\CategoryRepositoryInterface $categoryRepository
      * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface $productRepository
      */
-    public function __construct(CategoryRepositoryInterface $categoryRepository, ProductRepositoryInterface $productRepository)
-    {
+    public function __construct(
+        CategoryRepositoryInterface $categoryRepository,
+        ProductRepositoryInterface $productRepository
+    ) {
         $this->categoryRepository = $categoryRepository;
         $this->productRepository = $productRepository;
     }
@@ -131,8 +133,10 @@ class CmsBlockWriterStep extends PublishAwareStep implements DataImportStepInter
      *
      * @return void
      */
-    protected function findOrCreateCmsBlockToCategoryRelation(DataSetInterface $dataSet, SpyCmsBlock $cmsBlockEntity): void
-    {
+    protected function findOrCreateCmsBlockToCategoryRelation(
+        DataSetInterface $dataSet,
+        SpyCmsBlock $cmsBlockEntity
+    ): void {
         if (empty($dataSet[static::KEY_CATEGORIES])) {
             return;
         }
@@ -158,8 +162,10 @@ class CmsBlockWriterStep extends PublishAwareStep implements DataImportStepInter
      *
      * @return void
      */
-    protected function findOrCreateCmsBlockToProductRelation(DataSetInterface $dataSet, SpyCmsBlock $cmsBlockEntity): void
-    {
+    protected function findOrCreateCmsBlockToProductRelation(
+        DataSetInterface $dataSet,
+        SpyCmsBlock $cmsBlockEntity
+    ): void {
         if (empty($dataSet[static::KEY_PRODUCTS])) {
             return;
         }
@@ -186,8 +192,10 @@ class CmsBlockWriterStep extends PublishAwareStep implements DataImportStepInter
      *
      * @return void
      */
-    protected function findOrCreateCmsBlockPlaceholderTranslation(DataSetInterface $dataSet, SpyCmsBlock $cmsBlockEntity)
-    {
+    protected function findOrCreateCmsBlockPlaceholderTranslation(
+        DataSetInterface $dataSet,
+        SpyCmsBlock $cmsBlockEntity
+    ) {
         foreach ($dataSet[LocalizedAttributesExtractorStep::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $placeholder) {
             foreach ($placeholder as $key => $value) {
                 $key = str_replace('placeholder.', '', $key);

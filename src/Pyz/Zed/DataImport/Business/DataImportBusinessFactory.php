@@ -944,8 +944,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      *
      * @return \Pyz\Zed\DataImport\Business\Model\Navigation\NavigationKeyToIdNavigationStep
      */
-    protected function createNavigationKeyToIdNavigationStep($source = NavigationKeyToIdNavigationStep::KEY_SOURCE, $target = NavigationKeyToIdNavigationStep::KEY_TARGET)
-    {
+    protected function createNavigationKeyToIdNavigationStep(
+        $source = NavigationKeyToIdNavigationStep::KEY_SOURCE,
+        $target = NavigationKeyToIdNavigationStep::KEY_TARGET
+    ) {
         return new NavigationKeyToIdNavigationStep($source, $target);
     }
 
@@ -1354,8 +1356,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      *
      * @return \Pyz\Zed\DataImport\Business\Model\Locale\LocaleNameToIdLocaleStep
      */
-    protected function createLocaleNameToIdStep($source = LocaleNameToIdLocaleStep::KEY_SOURCE, $target = LocaleNameToIdLocaleStep::KEY_TARGET)
-    {
+    protected function createLocaleNameToIdStep(
+        $source = LocaleNameToIdLocaleStep::KEY_SOURCE,
+        $target = LocaleNameToIdLocaleStep::KEY_TARGET
+    ) {
         return new LocaleNameToIdLocaleStep($source, $target);
     }
 
@@ -1391,8 +1395,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      *
      * @return \Pyz\Zed\DataImport\Business\Model\Tax\TaxSetNameToIdTaxSetStep
      */
-    protected function createTaxSetNameToIdTaxSetStep($source = TaxSetNameToIdTaxSetStep::KEY_SOURCE, $target = TaxSetNameToIdTaxSetStep::KEY_TARGET)
-    {
+    protected function createTaxSetNameToIdTaxSetStep(
+        $source = TaxSetNameToIdTaxSetStep::KEY_SOURCE,
+        $target = TaxSetNameToIdTaxSetStep::KEY_TARGET
+    ) {
         return new TaxSetNameToIdTaxSetStep($source, $target);
     }
 
