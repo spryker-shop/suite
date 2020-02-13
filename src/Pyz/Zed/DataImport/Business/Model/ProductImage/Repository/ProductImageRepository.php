@@ -40,8 +40,13 @@ class ProductImageRepository implements ProductImageRepositoryInterface
      *
      * @return \Orm\Zed\ProductImage\Persistence\SpyProductImageSet
      */
-    public function getProductImageSetEntity(string $name, int $localeId, ?int $productAbstractId = null, ?int $productConcreteId = null, ?string $productImageSetKey = null): SpyProductImageSet
-    {
+    public function getProductImageSetEntity(
+        string $name,
+        int $localeId,
+        ?int $productAbstractId = null,
+        ?int $productConcreteId = null,
+        ?string $productImageSetKey = null
+    ): SpyProductImageSet {
         $key = $this->buildProductImageSetKey($name, $localeId, $productAbstractId, $productConcreteId, $productImageSetKey);
 
         if (!isset($this->resolvedProductImageSets[$key])) {
@@ -71,8 +76,10 @@ class ProductImageRepository implements ProductImageRepositoryInterface
      *
      * @return \Orm\Zed\ProductImage\Persistence\SpyProductImageSetToProductImage
      */
-    public function getProductImageSetToProductImageRelationEntity(int $productImageSetId, int $productImageId): SpyProductImageSetToProductImage
-    {
+    public function getProductImageSetToProductImageRelationEntity(
+        int $productImageSetId,
+        int $productImageId
+    ): SpyProductImageSetToProductImage {
         $key = $this->buildProductImageSetToProductImageRelationKey($productImageSetId, $productImageId);
 
         if (!isset($this->resolvedProductImageSetToProductImageRelations[$key])) {
@@ -106,8 +113,10 @@ class ProductImageRepository implements ProductImageRepositoryInterface
      *
      * @return string
      */
-    protected function buildProductImageSetToProductImageRelationKey(int $productImageSetId, int $productImageId): string
-    {
+    protected function buildProductImageSetToProductImageRelationKey(
+        int $productImageSetId,
+        int $productImageId
+    ): string {
         return sprintf('%d:%d', $productImageSetId, $productImageId);
     }
 
@@ -117,8 +126,10 @@ class ProductImageRepository implements ProductImageRepositoryInterface
      *
      * @return \Orm\Zed\ProductImage\Persistence\SpyProductImageSetToProductImage
      */
-    protected function getProductImageSetToProductImageRelation(int $productImageSetId, int $productImageId): SpyProductImageSetToProductImage
-    {
+    protected function getProductImageSetToProductImageRelation(
+        int $productImageSetId,
+        int $productImageId
+    ): SpyProductImageSetToProductImage {
         return SpyProductImageSetToProductImageQuery::create()
             ->filterByFkProductImageSet($productImageSetId)
             ->filterByFkProductImage($productImageId)
@@ -134,8 +145,13 @@ class ProductImageRepository implements ProductImageRepositoryInterface
      *
      * @return string
      */
-    protected function buildProductImageSetKey(string $name, int $localeId, ?int $productAbstractId = null, ?int $productConcreteId = null, ?string $productImageSetKey = null): string
-    {
+    protected function buildProductImageSetKey(
+        string $name,
+        int $localeId,
+        ?int $productAbstractId = null,
+        ?int $productConcreteId = null,
+        ?string $productImageSetKey = null
+    ): string {
         return $productImageSetKey ?? sprintf(
             '%s:%d:%d:%d',
             $name,
@@ -154,8 +170,13 @@ class ProductImageRepository implements ProductImageRepositoryInterface
      *
      * @return \Orm\Zed\ProductImage\Persistence\SpyProductImageSet
      */
-    protected function getProductImageSet(string $name, int $localeId, ?int $productAbstractId = null, ?int $productConcreteId = null, ?string $productImageSetKey = null): SpyProductImageSet
-    {
+    protected function getProductImageSet(
+        string $name,
+        int $localeId,
+        ?int $productAbstractId = null,
+        ?int $productConcreteId = null,
+        ?string $productImageSetKey = null
+    ): SpyProductImageSet {
         $query = SpyProductImageSetQuery::create()
             ->filterByName($name)
             ->filterByFkLocale($localeId);
