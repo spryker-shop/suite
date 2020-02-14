@@ -122,6 +122,12 @@ $config[AuthConstants::AUTH_DEFAULT_CREDENTIALS] = [
 // ACL: Allow or disallow of urls for Zed Admin GUI for ALL users
 $config[AclConstants::ACL_DEFAULT_RULES] = [
     [
+        'bundle' => 'merchant-user-auth-gui-page',
+        'controller' => 'login',
+        'action' => 'index',
+        'type' => 'allow',
+    ],
+    [
         'bundle' => 'auth',
         'controller' => '*',
         'action' => '*',
