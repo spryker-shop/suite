@@ -19,9 +19,8 @@ class DataImportDataFormatter implements DataImportDataFormatterInterface
     /**
      * @param \Spryker\Zed\DataImport\Dependency\Service\DataImportToUtilEncodingServiceInterface $utilEncodingService
      */
-    public function __construct(
-        DataImportToUtilEncodingServiceInterface $utilEncodingService
-    ) {
+    public function __construct(DataImportToUtilEncodingServiceInterface $utilEncodingService)
+    {
         $this->utilEncodingService = $utilEncodingService;
     }
 
