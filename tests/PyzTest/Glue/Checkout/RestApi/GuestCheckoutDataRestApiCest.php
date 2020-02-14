@@ -87,17 +87,20 @@ class GuestCheckoutDataRestApiCest
 
         $attributes = $I->grabDataFromResponseByJsonPath('$.data.attributes');
 
-        $I->assertEmpty(
-            $attributes[RestCheckoutDataTransfer::ADDRESSES],
-            'The returned resource attributes addresses should be an empty array'
+        $I->assertArrayHasKey(
+            RestCheckoutDataTransfer::ADDRESSES,
+            $attributes,
+            'The returned resource attributes should have an addresses key'
         );
-        $I->assertNotEmpty(
-            $attributes[RestCheckoutDataTransfer::PAYMENT_PROVIDERS],
-            'The returned resource attributes payment providers should not be an empty array'
+        $I->assertArrayHasKey(
+            RestCheckoutDataTransfer::PAYMENT_PROVIDERS,
+            $attributes,
+            'The returned resource attributes should have an addresses key payment providers'
         );
-        $I->assertNotEmpty(
-            $attributes[RestCheckoutDataTransfer::SHIPMENT_METHODS],
-            'The returned resource attributes shipment methods should not be an empty array'
+        $I->assertArrayHasKey(
+            RestCheckoutDataTransfer::SHIPMENT_METHODS,
+            $attributes,
+            'The returned resource attributes should have an addresses key shipment methods'
         );
 
         $I->amSure('The returned resource has correct self link')
@@ -151,17 +154,20 @@ class GuestCheckoutDataRestApiCest
 
         $attributes = $I->grabDataFromResponseByJsonPath('$.data.attributes');
 
-        $I->assertEmpty(
-            $attributes[RestCheckoutDataTransfer::ADDRESSES],
-            'The returned resource attributes addresses should be an empty array'
+        $I->assertArrayHasKey(
+            RestCheckoutDataTransfer::ADDRESSES,
+            $attributes,
+            'The returned resource attributes should have an addresses key'
         );
-        $I->assertNotEmpty(
-            $attributes[RestCheckoutDataTransfer::PAYMENT_PROVIDERS],
-            'The returned resource attributes payment providers should not be an empty array'
+        $I->assertArrayHasKey(
+            RestCheckoutDataTransfer::PAYMENT_PROVIDERS,
+            $attributes,
+            'The returned resource attributes should have an addresses key payment providers'
         );
-        $I->assertNotEmpty(
-            $attributes[RestCheckoutDataTransfer::SHIPMENT_METHODS],
-            'The returned resource attributes shipment methods should not be an empty array'
+        $I->assertArrayHasKey(
+            RestCheckoutDataTransfer::SHIPMENT_METHODS,
+            $attributes,
+            'The returned resource attributes should have an addresses key shipment methods'
         );
 
         $I->amSure('The returned resource has correct self link')
@@ -216,17 +222,20 @@ class GuestCheckoutDataRestApiCest
 
         $attributes = $I->grabDataFromResponseByJsonPath('$.data.attributes');
 
-        $I->assertEmpty(
-            $attributes[RestCheckoutDataTransfer::ADDRESSES],
-            'The returned resource attributes addresses should be an empty array'
+        $I->assertArrayHasKey(
+            RestCheckoutDataTransfer::ADDRESSES,
+            $attributes,
+            'The returned resource attributes should have an addresses key'
         );
-        $I->assertNotEmpty(
-            $attributes[RestCheckoutDataTransfer::PAYMENT_PROVIDERS],
-            'The returned resource attributes payment providers should not be an empty array'
+        $I->assertArrayHasKey(
+            RestCheckoutDataTransfer::PAYMENT_PROVIDERS,
+            $attributes,
+            'The returned resource attributes should have an addresses key payment providers'
         );
-        $I->assertNotEmpty(
-            $attributes[RestCheckoutDataTransfer::SHIPMENT_METHODS],
-            'The returned resource attributes shipment methods should not be an empty array'
+        $I->assertArrayHasKey(
+            RestCheckoutDataTransfer::SHIPMENT_METHODS,
+            $attributes,
+            'The returned resource attributes should have an addresses key shipment methods'
         );
 
         $I->amSure('The returned resource has correct self link')
@@ -281,17 +290,20 @@ class GuestCheckoutDataRestApiCest
 
         $attributes = $I->grabDataFromResponseByJsonPath('$.data.attributes');
 
-        $I->assertEmpty(
-            $attributes[RestCheckoutDataTransfer::ADDRESSES],
-            'The returned resource attributes addresses should be an empty array'
+        $I->assertArrayHasKey(
+            RestCheckoutDataTransfer::ADDRESSES,
+            $attributes,
+            'The returned resource attributes should have an addresses key'
         );
-        $I->assertNotEmpty(
-            $attributes[RestCheckoutDataTransfer::PAYMENT_PROVIDERS],
-            'The returned resource attributes payment providers should not be an empty array'
+        $I->assertArrayHasKey(
+            RestCheckoutDataTransfer::PAYMENT_PROVIDERS,
+            $attributes,
+            'The returned resource attributes should have an addresses key payment providers'
         );
-        $I->assertNotEmpty(
-            $attributes[RestCheckoutDataTransfer::SHIPMENT_METHODS],
-            'The returned resource attributes shipment methods should not be an empty array'
+        $I->assertArrayHasKey(
+            RestCheckoutDataTransfer::SHIPMENT_METHODS,
+            $attributes,
+            'The returned resource attributes should have an addresses key shipment methods'
         );
 
         $I->amSure('The returned resource has correct self link')
@@ -346,17 +358,20 @@ class GuestCheckoutDataRestApiCest
 
         $attributes = $I->grabDataFromResponseByJsonPath('$.data.attributes');
 
-        $I->assertEmpty(
-            $attributes[RestCheckoutDataTransfer::ADDRESSES],
-            'The returned resource attributes addresses should be an empty array'
+        $I->assertArrayHasKey(
+            RestCheckoutDataTransfer::ADDRESSES,
+            $attributes,
+            'The returned resource attributes should have an addresses key'
         );
-        $I->assertNotEmpty(
-            $attributes[RestCheckoutDataTransfer::PAYMENT_PROVIDERS],
-            'The returned resource attributes payment providers should not be an empty array'
+        $I->assertArrayHasKey(
+            RestCheckoutDataTransfer::PAYMENT_PROVIDERS,
+            $attributes,
+            'The returned resource attributes should have an addresses key payment providers'
         );
-        $I->assertNotEmpty(
-            $attributes[RestCheckoutDataTransfer::SHIPMENT_METHODS],
-            'The returned resource attributes shipment methods should not be an empty array'
+        $I->assertArrayHasKey(
+            RestCheckoutDataTransfer::SHIPMENT_METHODS,
+            $attributes,
+            'The returned resource attributes should have an addresses key shipment methods'
         );
 
         $I->amSure('The returned resource has correct self link')
@@ -413,17 +428,20 @@ class GuestCheckoutDataRestApiCest
 
         $attributes = $I->grabDataFromResponseByJsonPath('$.data.attributes');
 
-        $I->assertEmpty(
-            $attributes[RestCheckoutDataTransfer::ADDRESSES],
-            'The returned resource attributes addresses should be an empty array'
+        $I->assertArrayHasKey(
+            RestCheckoutDataTransfer::ADDRESSES,
+            $attributes,
+            'The returned resource attributes should have an addresses key'
         );
-        $I->assertNotEmpty(
-            $attributes[RestCheckoutDataTransfer::PAYMENT_PROVIDERS],
-            'The returned resource attributes payment providers should not be an empty array'
+        $I->assertArrayHasKey(
+            RestCheckoutDataTransfer::PAYMENT_PROVIDERS,
+            $attributes,
+            'The returned resource attributes should have an addresses key payment providers'
         );
-        $I->assertNotEmpty(
-            $attributes[RestCheckoutDataTransfer::SHIPMENT_METHODS],
-            'The returned resource attributes shipment methods should not be an empty array'
+        $I->assertArrayHasKey(
+            RestCheckoutDataTransfer::SHIPMENT_METHODS,
+            $attributes,
+            'The returned resource attributes should have an addresses key shipment methods'
         );
 
         $I->amSure('The returned resource has correct self link')
