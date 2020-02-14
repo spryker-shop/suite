@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6f005336713cb34dd84265b7f67ef429",
+    "content-hash": "2478b208ebd05bb9a8abff0a334bf3f2",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -23403,20 +23403,21 @@
         },
         {
             "name": "spryker/merchant-user",
-            "version": "0.1.0",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-user.git",
-                "reference": "6d1077290e455ebd300f60f0ae3b9ae381ae4169"
+                "reference": "4cb2d96ce0cbd39846950f09f9b8c412e395f8d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-user/zipball/6d1077290e455ebd300f60f0ae3b9ae381ae4169",
-                "reference": "6d1077290e455ebd300f60f0ae3b9ae381ae4169",
+                "url": "https://api.github.com/repos/spryker/merchant-user/zipball/4cb2d96ce0cbd39846950f09f9b8c412e395f8d8",
+                "reference": "4cb2d96ce0cbd39846950f09f9b8c412e395f8d8",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
+                "spryker/auth": "^1.0.0 || ^2.0.0 || ^3.0.0",
                 "spryker/kernel": "^3.33.0",
                 "spryker/merchant": "^2.0.0",
                 "spryker/merchant-extension": "^1.1.0",
@@ -23446,7 +23447,49 @@
                 "proprietary"
             ],
             "description": "MerchantUser module",
-            "time": "2020-01-31T11:47:39+00:00"
+            "time": "2020-02-11T10:17:33+00:00"
+        },
+        {
+            "name": "spryker/merchant-user-auth-gui-page",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-user-auth-gui-page.git",
+                "reference": "035e6ca7c8afe7f412d4b3b699203aa1d8591fb6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-user-auth-gui-page/zipball/035e6ca7c8afe7f412d4b3b699203aa1d8591fb6",
+                "reference": "035e6ca7c8afe7f412d4b3b699203aa1d8591fb6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/auth": "^1.0.0 || ^2.0.0 || ^3.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/messenger": "^3.0.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantUserAuthGuiPage module",
+            "time": "2020-02-12T08:50:28+00:00"
         },
         {
             "name": "spryker/messenger",
@@ -46715,8 +46758,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "lead",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "lead"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
