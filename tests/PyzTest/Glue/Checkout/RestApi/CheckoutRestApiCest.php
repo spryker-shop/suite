@@ -66,6 +66,7 @@ class CheckoutRestApiCest
 
         $quoteTransfer = $this->fixtures->getEmptyQuoteTransfer();
         $shippingAddressTransfer = (new AddressBuilder())->build();
+        $shipmentMethodTransfer = $this->fixtures->getShipmentMethodTransfer();
 
         $url = $I->buildCheckoutUrl();
         $requestPayload = [
@@ -88,12 +89,12 @@ class CheckoutRestApiCest
                         ],
                     ],
                     'shipment' => [
-                        ShipmentMethodTransfer::ID_SHIPMENT_METHOD => 1,
+                        ShipmentMethodTransfer::ID_SHIPMENT_METHOD => $shipmentMethodTransfer->getIdShipmentMethod(),
                         [
-                            ShipmentMethodTransfer::ID => 1,
-                            ShipmentMethodTransfer::CARRIER_NAME => 'Spryker Dummy Shipment',
-                            ShipmentMethodTransfer::NAME => 'Standard',
-                            ShipmentMethodTransfer::TAX_RATE => null,
+                            ShipmentMethodTransfer::ID => $shipmentMethodTransfer->getIdShipmentMethod(),
+                            ShipmentMethodTransfer::CARRIER_NAME => $shipmentMethodTransfer->getCarrierName(),
+                            ShipmentMethodTransfer::NAME => $shipmentMethodTransfer->getName(),
+                            ShipmentMethodTransfer::TAX_RATE => $shipmentMethodTransfer->getTaxRate(),
                         ],
                     ],
                 ],
@@ -140,7 +141,7 @@ class CheckoutRestApiCest
                     'shippingAddress' => $I->getAddressRequestPayload($shippingAddressTransfer),
                     'customer' => $I->getCustomerRequestPayload($customerTransfer),
                     'payments' => $I->getPaymentRequestPayload(),
-                    'shipment' => $I->getShipmentRequestPayload(),
+                    'shipment' => $I->getShipmentRequestPayload($this->fixtures->getShipmentMethodTransfer()->getIdShipmentMethod()),
                 ],
             ],
         ];
@@ -208,7 +209,7 @@ class CheckoutRestApiCest
                     'shippingAddress' => $I->getAddressRequestPayload($shippingAddressTransfer),
                     'customer' => $I->getCustomerRequestPayload($customerTransfer),
                     'payments' => $I->getPaymentRequestPayload('credit card'),
-                    'shipment' => $I->getShipmentRequestPayload(),
+                    'shipment' => $I->getShipmentRequestPayload($this->fixtures->getShipmentMethodTransfer()->getIdShipmentMethod()),
                 ],
             ],
         ];
@@ -279,7 +280,7 @@ class CheckoutRestApiCest
                     'shippingAddress' => $I->getAddressRequestPayload($persistedAddressTransfer),
                     'customer' => $I->getCustomerRequestPayload($customerTransfer),
                     'payments' => $I->getPaymentRequestPayload(),
-                    'shipment' => $I->getShipmentRequestPayload(),
+                    'shipment' => $I->getShipmentRequestPayload($this->fixtures->getShipmentMethodTransfer()->getIdShipmentMethod()),
                 ],
             ],
         ];

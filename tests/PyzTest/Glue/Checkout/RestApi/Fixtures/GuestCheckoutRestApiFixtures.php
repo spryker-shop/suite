@@ -10,6 +10,7 @@ namespace PyzTest\Glue\Checkout\RestApi\Fixtures;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
+use Generated\Shared\Transfer\ShipmentMethodTransfer;
 use PyzTest\Glue\Checkout\CheckoutApiTester;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
@@ -50,6 +51,11 @@ class GuestCheckoutRestApiFixtures implements FixturesBuilderInterface, Fixtures
     protected $emptyGuestQuoteTransfer;
 
     /**
+     * @var \Generated\Shared\Transfer\ShipmentMethodTransfer
+     */
+    protected $shipmentMethodTransfer;
+
+    /**
      * @return string
      */
     public function getGuestCustomerReference(): string
@@ -82,6 +88,14 @@ class GuestCheckoutRestApiFixtures implements FixturesBuilderInterface, Fixtures
     }
 
     /**
+     * @return \Generated\Shared\Transfer\ShipmentMethodTransfer
+     */
+    public function getShipmentMethodTransfer(): ShipmentMethodTransfer
+    {
+        return $this->shipmentMethodTransfer;
+    }
+
+    /**
      * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
      *
      * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
@@ -95,6 +109,13 @@ class GuestCheckoutRestApiFixtures implements FixturesBuilderInterface, Fixtures
         ]);
         $this->emptyGuestQuoteTransfer = $I->haveEmptyPersistentQuote([
             CustomerTransfer::CUSTOMER_REFERENCE => $this->guestCustomerTransfer->getCustomerReference(),
+        ]);
+
+        $this->shipmentMethodTransfer = $I->haveShipmentMethod([
+            ShipmentMethodTransfer::ID => 1,
+            ShipmentMethodTransfer::CARRIER_NAME => 'Spryker Dummy Shipment',
+            ShipmentMethodTransfer::NAME => 'Standard',
+            ShipmentMethodTransfer::TAX_RATE => null,
         ]);
 
         return $this;
