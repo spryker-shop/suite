@@ -7,11 +7,18 @@
 
 {% block body %}
     {% if data.items | length > 1 %}
+        {% set colors = [] %}
+
+        {% for item in data.items %}
+            {% set colors = colors | merge([item.colorCode]) %}
+        {% endfor %}
+
         <hr>
         {% include molecule('product-item-color-selector', 'ProductGroupWidget') with {
             modifiers: ['center'],
             data: {
                 items: data.items,
+                colors: colors,
                 productItemJsName: data.productItemJsName,
             },
         } only %}
