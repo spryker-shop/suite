@@ -94,7 +94,7 @@ class GuestCheckoutRestApiFixtures implements FixturesBuilderInterface, Fixtures
             CustomerTransfer::CUSTOMER_REFERENCE => static::ANONYMOUS_PREFIX . $this->guestCustomerReference,
         ]);
         $this->emptyGuestQuoteTransfer = $I->haveEmptyPersistentQuote([
-            CustomerTransfer::CUSTOMER_REFERENCE => $this->guestCustomerReference,
+            CustomerTransfer::CUSTOMER_REFERENCE => $this->guestCustomerTransfer->getCustomerReference(),
         ]);
 
         return $this;
