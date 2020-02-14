@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3e559dd8917e13558c7792b62a8a99de",
+    "content-hash": "cc8528c3a83bbccd261815d0b722a5a0",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1117,8 +1117,8 @@
             "authors": [
                 {
                     "name": "Alessio Linares",
-                    "role": "Software Engineer",
-                    "email": "alessio.linares@skyscanner.net"
+                    "email": "alessio.linares@skyscanner.net",
+                    "role": "Software Engineer"
                 }
             ],
             "description": "JSONPath implementation for querying and updating JSON objects",
@@ -5033,11 +5033,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/bo-172/bo-203-successful-login-to-the-merchant-portal",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "7ea6a1443bce838ceb7a1fb9a0d6c0a387233bfb"
+                "reference": "13887a7818f1c5db8efc5fc331f960e917bfb966"
             },
             "require": {
                 "php": ">=7.2"
@@ -5353,6 +5353,7 @@
                 "spryker/merchant-sales-order": "*",
                 "spryker/merchant-search": "*",
                 "spryker/merchant-user": "*",
+                "spryker/merchant-user-auth-gui-page": "*",
                 "spryker/messenger": "*",
                 "spryker/messenger-extension": "*",
                 "spryker/module-finder": "*",
@@ -5668,6 +5669,7 @@
                 "spryker/wishlists-rest-api": "*",
                 "spryker/zed-navigation": "*",
                 "spryker/zed-request": "*",
+                "spryker/zed-ui": "*",
                 "spryker/zend": "*"
             },
             "require-dev": {
@@ -5692,7 +5694,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-02-14T09:43:45+00:00"
+            "time": "2020-02-14T14:13:18+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -8706,8 +8708,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -8959,16 +8961,16 @@
         },
         {
             "name": "webmozart/assert",
-            "version": "1.6.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozart/assert.git",
-                "reference": "573381c0a64f155a0d9a23f4b0c797194805b925"
+                "reference": "aed98a490f9a8f78468232db345ab9cf606cf598"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/573381c0a64f155a0d9a23f4b0c797194805b925",
-                "reference": "573381c0a64f155a0d9a23f4b0c797194805b925",
+                "url": "https://api.github.com/repos/webmozart/assert/zipball/aed98a490f9a8f78468232db345ab9cf606cf598",
+                "reference": "aed98a490f9a8f78468232db345ab9cf606cf598",
                 "shasum": ""
             },
             "require": {
@@ -9003,7 +9005,7 @@
                 "check",
                 "validate"
             ],
-            "time": "2019-11-24T13:36:37+00:00"
+            "time": "2020-02-14T12:15:55+00:00"
         },
         {
             "name": "willdurand/negotiation",
@@ -11251,7 +11253,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "d2205a3693af21ff3ed2b347598e1de5c58e3e7a"
+                "reference": "ea0efb7175b96f9f92ba9d228a878deaa624bd1e"
             },
             "require": {
                 "php": ">=7.2",
@@ -11292,7 +11294,7 @@
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2020-02-05T12:41:08+00:00"
+            "time": "2020-02-14T10:27:08+00:00"
         },
         {
             "name": "spryker/git-hook",
@@ -11792,8 +11794,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "lead",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "lead"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
