@@ -39,8 +39,11 @@ class CartsApiTester extends ApiEndToEndTester
      *
      * @return void
      */
-    public function seeCartItemQuantityEqualsToQuantityInRequest(int $quantity, string $resourceName, string $itemSku): void
-    {
+    public function seeCartItemQuantityEqualsToQuantityInRequest(
+        int $quantity,
+        string $resourceName,
+        string $itemSku
+    ): void {
         $includedByTypeAndId = $this->grabIncludedByTypeAndId($resourceName, $itemSku);
 
         $this->assertArrayHasKey('quantity', $includedByTypeAndId);
@@ -169,8 +172,11 @@ class CartsApiTester extends ApiEndToEndTester
      *
      * @return string
      */
-    public function buildGuestCartItemUrl(string $guestCartUuid, string $guestCartItemGroupKey, array $includes = []): string
-    {
+    public function buildGuestCartItemUrl(
+        string $guestCartUuid,
+        string $guestCartItemGroupKey,
+        array $includes = []
+    ): string {
         return $this->formatFullUrl(
             '{resourceGuestCarts}/{guestCartUuid}/{resourceGuestCartItems}/{guestCartItemGroupKey}' . $this->formatQueryInclude($includes),
             [
