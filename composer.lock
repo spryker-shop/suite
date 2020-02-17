@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.133.14",
+            "version": "3.133.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "80e9763a2883f39cd684e8136e93aa9ab01c32af"
+                "reference": "18289bf4a3fe68e9a0853f29d82b6cd4b1de2f9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/80e9763a2883f39cd684e8136e93aa9ab01c32af",
-                "reference": "80e9763a2883f39cd684e8136e93aa9ab01c32af",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/18289bf4a3fe68e9a0853f29d82b6cd4b1de2f9e",
+                "reference": "18289bf4a3fe68e9a0853f29d82b6cd4b1de2f9e",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-02-13T19:12:30+00:00"
+            "time": "2020-02-14T19:09:24+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -4998,7 +4998,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "00b70ff250813fd00e2998d5c8729162241f672a"
+                "reference": "34610d7cecb9385e8c07dfa03de60175bc480910"
             },
             "require": {
                 "php": ">=7.2"
@@ -5653,7 +5653,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-02-14T16:26:49+00:00"
+            "time": "2020-02-17T10:59:39+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5661,7 +5661,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "175f1d75ab347a546e2ee4f4e87f3e1e11c0e4d8"
+                "reference": "248bbd61d801b55468735330799d2a419adb536e"
             },
             "require": {
                 "php": ">=7.2"
@@ -5805,7 +5805,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-02-13T13:46:19+00:00"
+            "time": "2020-02-17T11:06:24+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -9636,16 +9636,16 @@
         },
         {
             "name": "codeception/module-webdriver",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/module-webdriver.git",
-                "reference": "a41fae6220cd6b1e9da1c4a0662f9ed854f60412"
+                "reference": "aa7c2d6baaaebc99fbb000386f05096dbe2c9b7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/module-webdriver/zipball/a41fae6220cd6b1e9da1c4a0662f9ed854f60412",
-                "reference": "a41fae6220cd6b1e9da1c4a0662f9ed854f60412",
+                "url": "https://api.github.com/repos/Codeception/module-webdriver/zipball/aa7c2d6baaaebc99fbb000386f05096dbe2c9b7f",
+                "reference": "aa7c2d6baaaebc99fbb000386f05096dbe2c9b7f",
                 "shasum": ""
             },
             "require": {
@@ -9687,7 +9687,7 @@
                 "browser-testing",
                 "codeception"
             ],
-            "time": "2020-02-04T17:23:57+00:00"
+            "time": "2020-02-15T19:59:06+00:00"
         },
         {
             "name": "composer/xdebug-handler",
@@ -10182,16 +10182,16 @@
         },
         {
             "name": "php-webdriver/webdriver",
-            "version": "1.8.0",
+            "version": "1.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-webdriver/php-webdriver.git",
-                "reference": "3e33ee3b8a688d719c55acdd7c6788e3006e1d3e"
+                "reference": "262ea0d209c292e0330be1041424887bbbffef04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-webdriver/php-webdriver/zipball/3e33ee3b8a688d719c55acdd7c6788e3006e1d3e",
-                "reference": "3e33ee3b8a688d719c55acdd7c6788e3006e1d3e",
+                "url": "https://api.github.com/repos/php-webdriver/php-webdriver/zipball/262ea0d209c292e0330be1041424887bbbffef04",
+                "reference": "262ea0d209c292e0330be1041424887bbbffef04",
                 "shasum": ""
             },
             "require": {
@@ -10223,12 +10223,12 @@
                 }
             },
             "autoload": {
-                "files": [
-                    "lib/Exception/TimeoutException.php"
-                ],
                 "psr-4": {
                     "Facebook\\WebDriver\\": "lib/"
-                }
+                },
+                "files": [
+                    "lib/Exception/TimeoutException.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -10243,7 +10243,7 @@
                 "selenium",
                 "webdriver"
             ],
-            "time": "2020-02-10T15:04:25+00:00"
+            "time": "2020-02-17T08:14:38+00:00"
         },
         {
             "name": "phpmd/phpmd",
@@ -11162,12 +11162,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "a6a63f8fbc1d8e18e7cb1e78353bb87413dbd2f0"
+                "reference": "4a78ed746e599c14acfa68e75521d13dbfc70071"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/a6a63f8fbc1d8e18e7cb1e78353bb87413dbd2f0",
-                "reference": "a6a63f8fbc1d8e18e7cb1e78353bb87413dbd2f0",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/4a78ed746e599c14acfa68e75521d13dbfc70071",
+                "reference": "4a78ed746e599c14acfa68e75521d13dbfc70071",
                 "shasum": ""
             },
             "require": {
@@ -11208,7 +11208,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2020-02-14T08:58:16+00:00"
+            "time": "2020-02-14T16:47:55+00:00"
         },
         {
             "name": "spryker/development-core",
