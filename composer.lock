@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "30ae09dea3d0c046537441de75e5c76d",
+    "content-hash": "bc10669e758f61e894083505f9e37d17",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -21970,16 +21970,16 @@
         },
         {
             "name": "spryker/merchant-data-import",
-            "version": "0.2.0",
+            "version": "0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-data-import.git",
-                "reference": "48423b4ab29c8715207617e7e6a894d3657d3a84"
+                "reference": "fe8f0c6f14aff4bcf6195c18beced7394a43d172"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-data-import/zipball/48423b4ab29c8715207617e7e6a894d3657d3a84",
-                "reference": "48423b4ab29c8715207617e7e6a894d3657d3a84",
+                "url": "https://api.github.com/repos/spryker/merchant-data-import/zipball/fe8f0c6f14aff4bcf6195c18beced7394a43d172",
+                "reference": "fe8f0c6f14aff4bcf6195c18beced7394a43d172",
                 "shasum": ""
             },
             "require": {
@@ -22010,7 +22010,7 @@
                 "MIT"
             ],
             "description": "MerchantDataImport module",
-            "time": "2019-11-18T18:04:39+00:00"
+            "time": "2020-01-28T10:17:43+00:00"
         },
         {
             "name": "spryker/merchant-extension",
@@ -22052,16 +22052,16 @@
         },
         {
             "name": "spryker/merchant-gui",
-            "version": "2.1.0",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-gui.git",
-                "reference": "0791d49d444144f4456088835c2c453327cf64c9"
+                "reference": "1edca12dedcdd7ae81a55101350503dcade97af0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-gui/zipball/0791d49d444144f4456088835c2c453327cf64c9",
-                "reference": "0791d49d444144f4456088835c2c453327cf64c9",
+                "url": "https://api.github.com/repos/spryker/merchant-gui/zipball/1edca12dedcdd7ae81a55101350503dcade97af0",
+                "reference": "1edca12dedcdd7ae81a55101350503dcade97af0",
                 "shasum": ""
             },
             "require": {
@@ -22092,7 +22092,7 @@
                 "proprietary"
             ],
             "description": "MerchantGui module",
-            "time": "2020-01-24T09:13:53+00:00"
+            "time": "2020-02-11T10:07:57+00:00"
         },
         {
             "name": "spryker/merchant-gui-extension",
@@ -23317,22 +23317,23 @@
         },
         {
             "name": "spryker/merchant-sales-order",
-            "version": "0.2.0",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-sales-order.git",
-                "reference": "8ecfef4f05191ed6c9b0d4cc1bf803f1ca9a4c8c"
+                "reference": "5dc2b058c38299aac9730ca2bbca7ac9e0c6c6f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-sales-order/zipball/8ecfef4f05191ed6c9b0d4cc1bf803f1ca9a4c8c",
-                "reference": "8ecfef4f05191ed6c9b0d4cc1bf803f1ca9a4c8c",
+                "url": "https://api.github.com/repos/spryker/merchant-sales-order/zipball/5dc2b058c38299aac9730ca2bbca7ac9e0c6c6f8",
+                "reference": "5dc2b058c38299aac9730ca2bbca7ac9e0c6c6f8",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
                 "spryker/kernel": "^3.33.0",
-                "spryker/sales": "^11.0.0"
+                "spryker/sales": "^11.0.0",
+                "spryker/sales-extension": "^1.1.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -23358,7 +23359,7 @@
                 "proprietary"
             ],
             "description": "MerchantSalesOrder module",
-            "time": "2019-12-28T20:03:35+00:00"
+            "time": "2020-02-06T11:35:42+00:00"
         },
         {
             "name": "spryker/merchant-search",
@@ -29928,6 +29929,47 @@
             ],
             "description": "ProductOfferAvailabilityStorage module",
             "time": "2020-02-13T18:02:44+00:00"
+        },
+        {
+            "name": "spryker/product-offer-sales",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-offer-sales.git",
+                "reference": "080254a01f3cec6dfd48277f9a41e0531f498911"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-offer-sales/zipball/080254a01f3cec6dfd48277f9a41e0531f498911",
+                "reference": "080254a01f3cec6dfd48277f9a41e0531f498911",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/kernel": "^3.30.0",
+                "spryker/sales-extension": "^1.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductOfferSales module",
+            "time": "2020-02-10T11:36:56+00:00"
         },
         {
             "name": "spryker/product-offer-stock",
