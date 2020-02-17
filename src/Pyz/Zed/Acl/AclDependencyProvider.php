@@ -8,7 +8,7 @@
 namespace Pyz\Zed\Acl;
 
 use Spryker\Zed\Acl\AclDependencyProvider as SprykerAclDependencyProvider;
-use Spryker\Zed\MerchantUser\Communication\Plugin\Acl\MerchantPortalAdminAclInstallerPlugin;
+use Spryker\Zed\MerchantUser\Communication\Plugin\Acl\MerchantUserAclInstallerPlugin;
 
 class AclDependencyProvider extends SprykerAclDependencyProvider
 {
@@ -18,7 +18,7 @@ class AclDependencyProvider extends SprykerAclDependencyProvider
     public function getAclInstallerPlugins(): array
     {
         return [
-            new MerchantPortalAdminAclInstallerPlugin(),
+            new MerchantUserAclInstallerPlugin(),
         ];
     }
 }
