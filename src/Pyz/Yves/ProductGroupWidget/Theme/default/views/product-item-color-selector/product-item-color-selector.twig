@@ -2,7 +2,7 @@
 
 {% define data = {
     items: _widget.productGroupItems | default([]),
-    productItemJsName: '',
+    parentJsName: '',
 } %}
 
 {% block body %}
@@ -19,7 +19,7 @@
             data: {
                 items: data.items,
                 colors: colors,
-                productItemJsName: data.productItemJsName,
+                parentJsName: data.parentJsName,
             },
         } only %}
         <hr>
