@@ -20,7 +20,7 @@ class MerchantOrderSaverPlugin extends AbstractPlugin implements CheckoutDoSaveO
 {
     /**
      * {@inheritDoc}
-     * - For every item with merchant offer save related data to `spy_merchant_sales_order`.
+     * - Creates a collection of merchant orders using the provided order data.
      *
      * @api
      *
@@ -31,7 +31,7 @@ class MerchantOrderSaverPlugin extends AbstractPlugin implements CheckoutDoSaveO
      */
     public function saveOrder(QuoteTransfer $quoteTransfer, SaveOrderTransfer $saveOrderTransfer): void
     {
-        $this->getFacade()->createMerchantSalesOrders(
+        $this->getFacade()->createMerchantOrderCollection(
             $this->getOrderTransfer($saveOrderTransfer)
         );
     }
