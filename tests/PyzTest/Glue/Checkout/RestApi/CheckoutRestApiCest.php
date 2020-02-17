@@ -128,7 +128,11 @@ class CheckoutRestApiCest
         $customerTransfer = $this->fixtures->getCustomerTransfer();
         $I->authorizeCustomerToGlue($customerTransfer);
 
-        $quoteTransfer = $I->havePersistentQuoteWithItems($customerTransfer, [$this->fixtures->getProductConcreteTransfer()]);
+        $shipmentMethodTransfer = $this->fixtures->getShipmentMethodTransfer();
+        $quoteTransfer = $I->havePersistentQuoteWithItemsAndItemLevelShipment(
+            $customerTransfer,
+            [$I->getQuoteItemOverrideData($this->fixtures->getProductConcreteTransfer(), $shipmentMethodTransfer, 10)]
+        );
         $shippingAddressTransfer = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
 
         $url = $I->buildCheckoutUrl();
@@ -141,7 +145,7 @@ class CheckoutRestApiCest
                     'shippingAddress' => $I->getAddressRequestPayload($shippingAddressTransfer),
                     'customer' => $I->getCustomerRequestPayload($customerTransfer),
                     'payments' => $I->getPaymentRequestPayload(),
-                    'shipment' => $I->getShipmentRequestPayload($this->fixtures->getShipmentMethodTransfer()->getIdShipmentMethod()),
+                    'shipment' => $I->getShipmentRequestPayload($shipmentMethodTransfer->getIdShipmentMethod()),
                 ],
             ],
         ];
@@ -196,7 +200,11 @@ class CheckoutRestApiCest
         $customerTransfer = $this->fixtures->getCustomerTransfer();
         $I->authorizeCustomerToGlue($customerTransfer);
 
-        $quoteTransfer = $I->havePersistentQuoteWithItems($customerTransfer, [$this->fixtures->getProductConcreteTransfer()]);
+        $shipmentMethodTransfer = $this->fixtures->getShipmentMethodTransfer();
+        $quoteTransfer = $I->havePersistentQuoteWithItemsAndItemLevelShipment(
+            $customerTransfer,
+            [$I->getQuoteItemOverrideData($this->fixtures->getProductConcreteTransfer(), $shipmentMethodTransfer, 10)]
+        );
         $shippingAddressTransfer = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
 
         $url = $I->buildCheckoutUrl();
@@ -209,7 +217,7 @@ class CheckoutRestApiCest
                     'shippingAddress' => $I->getAddressRequestPayload($shippingAddressTransfer),
                     'customer' => $I->getCustomerRequestPayload($customerTransfer),
                     'payments' => $I->getPaymentRequestPayload('credit card'),
-                    'shipment' => $I->getShipmentRequestPayload($this->fixtures->getShipmentMethodTransfer()->getIdShipmentMethod()),
+                    'shipment' => $I->getShipmentRequestPayload($shipmentMethodTransfer->getIdShipmentMethod()),
                 ],
             ],
         ];
@@ -264,9 +272,10 @@ class CheckoutRestApiCest
         $customerTransfer = $this->fixtures->getCustomerTransferWithPersistedAddress();
         $I->authorizeCustomerToGlue($customerTransfer);
 
-        $quoteTransfer = $I->havePersistentQuoteWithItems(
+        $shipmentMethodTransfer = $this->fixtures->getShipmentMethodTransfer();
+        $quoteTransfer = $I->havePersistentQuoteWithItemsAndItemLevelShipment(
             $customerTransfer,
-            [$this->fixtures->getProductConcreteTransfer()]
+            [$I->getQuoteItemOverrideData($this->fixtures->getProductConcreteTransfer(), $shipmentMethodTransfer, 10)]
         );
         $persistedAddressTransfer = $customerTransfer->getAddresses()->getAddresses()[0];
 
@@ -280,7 +289,7 @@ class CheckoutRestApiCest
                     'shippingAddress' => $I->getAddressRequestPayload($persistedAddressTransfer),
                     'customer' => $I->getCustomerRequestPayload($customerTransfer),
                     'payments' => $I->getPaymentRequestPayload(),
-                    'shipment' => $I->getShipmentRequestPayload($this->fixtures->getShipmentMethodTransfer()->getIdShipmentMethod()),
+                    'shipment' => $I->getShipmentRequestPayload($shipmentMethodTransfer->getIdShipmentMethod()),
                 ],
             ],
         ];

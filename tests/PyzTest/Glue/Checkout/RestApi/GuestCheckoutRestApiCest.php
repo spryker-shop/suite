@@ -136,7 +136,11 @@ class GuestCheckoutRestApiCest
             $this->fixtures->getGuestCustomerReference()
         );
 
-        $quoteTransfer = $I->havePersistentQuoteWithItems($customerTransfer, [$this->fixtures->getProductConcreteTransfer()]);
+        $shipmentMethodTransfer = $this->fixtures->getShipmentMethodTransfer();
+        $quoteTransfer = $I->havePersistentQuoteWithItemsAndItemLevelShipment(
+            $customerTransfer,
+            [$I->getQuoteItemOverrideData($this->fixtures->getProductConcreteTransfer(), $shipmentMethodTransfer, 10)]
+        );
         $shippingAddressTransfer = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
 
         $url = $I->buildCheckoutUrl();
@@ -149,7 +153,7 @@ class GuestCheckoutRestApiCest
                     'shippingAddress' => $I->getAddressRequestPayload($shippingAddressTransfer),
                     'customer' => $I->getCustomerRequestPayload($customerTransfer),
                     'payments' => $I->getPaymentRequestPayload(),
-                    'shipment' => $I->getShipmentRequestPayload($this->fixtures->getShipmentMethodTransfer()->getIdShipmentMethod()),
+                    'shipment' => $I->getShipmentRequestPayload($shipmentMethodTransfer->getIdShipmentMethod()),
                 ],
             ],
         ];
@@ -207,7 +211,11 @@ class GuestCheckoutRestApiCest
             $this->fixtures->getGuestCustomerReference()
         );
 
-        $quoteTransfer = $I->havePersistentQuoteWithItems($customerTransfer, [$this->fixtures->getProductConcreteTransfer()]);
+        $shipmentMethodTransfer = $this->fixtures->getShipmentMethodTransfer();
+        $quoteTransfer = $I->havePersistentQuoteWithItemsAndItemLevelShipment(
+            $customerTransfer,
+            [$I->getQuoteItemOverrideData($this->fixtures->getProductConcreteTransfer(), $shipmentMethodTransfer, 10)]
+        );
         $shippingAddressTransfer = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
 
         $url = $I->buildCheckoutUrl();
@@ -220,7 +228,7 @@ class GuestCheckoutRestApiCest
                     'shippingAddress' => $I->getAddressRequestPayload($shippingAddressTransfer),
                     'customer' => $I->getCustomerRequestPayload($customerTransfer),
                     'payments' => $I->getPaymentRequestPayload('credit card'),
-                    'shipment' => $I->getShipmentRequestPayload($this->fixtures->getShipmentMethodTransfer()->getIdShipmentMethod()),
+                    'shipment' => $I->getShipmentRequestPayload($shipmentMethodTransfer->getIdShipmentMethod()),
                 ],
             ],
         ];

@@ -8,6 +8,8 @@
 namespace PyzTest\Glue\Checkout\RestApi\Fixtures;
 
 use Generated\Shared\Transfer\CustomerTransfer;
+use Generated\Shared\Transfer\PaymentMethodTransfer;
+use Generated\Shared\Transfer\PaymentProviderTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
@@ -107,17 +109,43 @@ class GuestCheckoutRestApiFixtures implements FixturesBuilderInterface, Fixtures
         $this->guestCustomerTransfer = $I->createCustomerTransfer([
             CustomerTransfer::CUSTOMER_REFERENCE => static::ANONYMOUS_PREFIX . $this->guestCustomerReference,
         ]);
+
         $this->emptyGuestQuoteTransfer = $I->haveEmptyPersistentQuote([
             CustomerTransfer::CUSTOMER_REFERENCE => $this->guestCustomerTransfer->getCustomerReference(),
         ]);
 
         $this->shipmentMethodTransfer = $I->haveShipmentMethod([
-            ShipmentMethodTransfer::ID => 1,
             ShipmentMethodTransfer::CARRIER_NAME => 'Spryker Dummy Shipment',
             ShipmentMethodTransfer::NAME => 'Standard',
-            ShipmentMethodTransfer::TAX_RATE => null,
         ]);
 
+        $this->havePayments($I);
+
         return $this;
+    }
+
+    /**
+     * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
+     *
+     * @return void
+     */
+    protected function havePayments(CheckoutApiTester $I): void
+    {
+        $paymentProviderTransfer = $I->havePaymentProvider([
+            PaymentProviderTransfer::PAYMENT_PROVIDER_KEY => 'dummyPayment',
+            PaymentProviderTransfer::NAME => 'dummyPayment',
+        ]);
+        $I->havePaymentMethodWithStore([
+            PaymentMethodTransfer::IS_ACTIVE => true,
+            PaymentMethodTransfer::METHOD_NAME => 'invoice',
+            PaymentMethodTransfer::NAME => 'dummyPaymentInvoice',
+            PaymentMethodTransfer::ID_PAYMENT_PROVIDER => $paymentProviderTransfer->getIdPaymentProvider(),
+        ]);
+        $I->havePaymentMethodWithStore([
+            PaymentMethodTransfer::IS_ACTIVE => true,
+            PaymentMethodTransfer::METHOD_NAME => 'credit card',
+            PaymentMethodTransfer::NAME => 'dummyPaymentCreditCard',
+            PaymentMethodTransfer::ID_PAYMENT_PROVIDER => $paymentProviderTransfer->getIdPaymentProvider(),
+        ]);
     }
 }

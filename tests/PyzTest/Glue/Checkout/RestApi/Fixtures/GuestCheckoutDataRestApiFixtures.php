@@ -8,7 +8,10 @@
 namespace PyzTest\Glue\Checkout\RestApi\Fixtures;
 
 use Generated\Shared\Transfer\CustomerTransfer;
+use Generated\Shared\Transfer\PaymentMethodTransfer;
+use Generated\Shared\Transfer\PaymentProviderTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
+use Generated\Shared\Transfer\ShipmentMethodTransfer;
 use PyzTest\Glue\Checkout\CheckoutApiTester;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
@@ -44,6 +47,11 @@ class GuestCheckoutDataRestApiFixtures implements FixturesBuilderInterface, Fixt
     protected $guestQuoteTransfer;
 
     /**
+     * @var \Generated\Shared\Transfer\ShipmentMethodTransfer
+     */
+    protected $shipmentMethodTransfer;
+
+    /**
      * @return string
      */
     public function getGuestCustomerReference(): string
@@ -68,6 +76,14 @@ class GuestCheckoutDataRestApiFixtures implements FixturesBuilderInterface, Fixt
     }
 
     /**
+     * @return \Generated\Shared\Transfer\ShipmentMethodTransfer
+     */
+    public function getShipmentMethodTransfer(): ShipmentMethodTransfer
+    {
+        return $this->shipmentMethodTransfer;
+    }
+
+    /**
      * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
      *
      * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
@@ -78,11 +94,44 @@ class GuestCheckoutDataRestApiFixtures implements FixturesBuilderInterface, Fixt
         $this->guestCustomerTransfer = $I->createCustomerTransfer([
             CustomerTransfer::CUSTOMER_REFERENCE => static::ANONYMOUS_PREFIX . $this->guestCustomerReference,
         ]);
-        $this->guestQuoteTransfer = $I->havePersistentQuoteWithItems(
+
+        $this->shipmentMethodTransfer = $I->haveShipmentMethod([
+            ShipmentMethodTransfer::CARRIER_NAME => 'Spryker Dummy Shipment',
+            ShipmentMethodTransfer::NAME => 'Standard',
+        ]);
+
+        $this->guestQuoteTransfer = $I->havePersistentQuoteWithItemsAndItemLevelShipment(
             $this->guestCustomerTransfer,
-            [$I->haveProductWithStock()]
+            [$I->getQuoteItemOverrideData($I->haveProductWithStock(), $this->shipmentMethodTransfer, 10)]
         );
 
+        $this->havePayments($I);
+
         return $this;
+    }
+
+    /**
+     * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
+     *
+     * @return void
+     */
+    protected function havePayments(CheckoutApiTester $I): void
+    {
+        $paymentProviderTransfer = $I->havePaymentProvider([
+            PaymentProviderTransfer::PAYMENT_PROVIDER_KEY => 'dummyPayment',
+            PaymentProviderTransfer::NAME => 'dummyPayment',
+        ]);
+        $I->havePaymentMethodWithStore([
+            PaymentMethodTransfer::IS_ACTIVE => true,
+            PaymentMethodTransfer::METHOD_NAME => 'invoice',
+            PaymentMethodTransfer::NAME => 'dummyPaymentInvoice',
+            PaymentMethodTransfer::ID_PAYMENT_PROVIDER => $paymentProviderTransfer->getIdPaymentProvider(),
+        ]);
+        $I->havePaymentMethodWithStore([
+            PaymentMethodTransfer::IS_ACTIVE => true,
+            PaymentMethodTransfer::METHOD_NAME => 'credit card',
+            PaymentMethodTransfer::NAME => 'dummyPaymentCreditCard',
+            PaymentMethodTransfer::ID_PAYMENT_PROVIDER => $paymentProviderTransfer->getIdPaymentProvider(),
+        ]);
     }
 }

@@ -259,6 +259,7 @@ class GuestCheckoutDataRestApiCest
             $this->fixtures->getGuestCustomerReference()
         );
         $shippingAddressTransfer = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
+        $idShipmentMethod = $this->fixtures->getShipmentMethodTransfer()->getIdShipmentMethod();
 
         $url = $I->buildCheckoutDataUrl();
         $requestPayload = [
@@ -268,7 +269,7 @@ class GuestCheckoutDataRestApiCest
                     'idCart' => $quoteTransfer->getUuid(),
                     'billingAddress' => $I->getAddressRequestPayload($quoteTransfer->getBillingAddress()),
                     'shippingAddress' => $I->getAddressRequestPayload($shippingAddressTransfer),
-                    'shipment' => $I->getShipmentRequestPayload(),
+                    'shipment' => $I->getShipmentRequestPayload($idShipmentMethod),
                 ],
             ],
         ];
@@ -395,6 +396,7 @@ class GuestCheckoutDataRestApiCest
             $this->fixtures->getGuestCustomerReference()
         );
         $shippingAddressTransfer = $quoteTransfer->getItems()[0]->getShipment()->getShippingAddress();
+        $idShipmentMethod = $this->fixtures->getShipmentMethodTransfer()->getIdShipmentMethod();
 
         $url = $I->buildCheckoutDataUrl();
         $requestPayload = [
@@ -406,7 +408,7 @@ class GuestCheckoutDataRestApiCest
                     'shippingAddress' => $I->getAddressRequestPayload($shippingAddressTransfer),
                     'customer' => $I->getCustomerRequestPayload($this->fixtures->getGuestCustomerTransfer()),
                     'payments' => $I->getPaymentRequestPayload(),
-                    'shipment' => $I->getShipmentRequestPayload(),
+                    'shipment' => $I->getShipmentRequestPayload($idShipmentMethod),
                 ],
             ],
         ];

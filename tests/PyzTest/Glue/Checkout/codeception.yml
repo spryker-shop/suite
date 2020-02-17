@@ -33,6 +33,8 @@ suites:
                 - \SprykerTest\Glue\Testify\Helper\GlueRest
                 - \SprykerTest\Glue\AuthRestApi\Helper\AuthRestApiHelper
                 - \SprykerTest\Shared\Shipment\Helper\ShipmentMethodDataHelper
+                - \SprykerTest\Shared\Store\Helper\StoreDataHelper
+                - \SprykerTest\Shared\Payment\Helper\PaymentDataHelper
             config:
                 \SprykerTest\Glue\Testify\Helper\GlueRest:
                     depends: PhpBrowser

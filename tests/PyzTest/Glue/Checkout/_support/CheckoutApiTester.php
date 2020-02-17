@@ -11,11 +11,13 @@ use Generated\Shared\DataBuilder\AddressBuilder;
 use Generated\Shared\DataBuilder\CustomerBuilder;
 use Generated\Shared\DataBuilder\ItemBuilder;
 use Generated\Shared\DataBuilder\ShipmentBuilder;
+use Generated\Shared\DataBuilder\StoreRelationBuilder;
 use Generated\Shared\DataBuilder\TotalsBuilder;
 use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\MoneyValueTransfer;
+use Generated\Shared\Transfer\PaymentMethodTransfer;
 use Generated\Shared\Transfer\PriceProductTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
@@ -23,12 +25,16 @@ use Generated\Shared\Transfer\RestAddressTransfer;
 use Generated\Shared\Transfer\RestCustomerTransfer;
 use Generated\Shared\Transfer\RestPaymentTransfer;
 use Generated\Shared\Transfer\RestShipmentTransfer;
+use Generated\Shared\Transfer\ShipmentMethodTransfer;
+use Generated\Shared\Transfer\ShipmentTransfer;
 use Generated\Shared\Transfer\StockProductTransfer;
+use Generated\Shared\Transfer\StoreRelationTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
 use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig;
 use Spryker\Glue\GlueApplication\Rest\RequestConstantsInterface;
 use Spryker\Shared\Price\PriceConfig;
 use Spryker\Zed\Customer\Business\CustomerFacadeInterface;
+use Spryker\Zed\Payment\Business\PaymentFacadeInterface;
 use Spryker\Zed\Store\Business\StoreFacadeInterface;
 use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
 
@@ -54,7 +60,9 @@ class CheckoutApiTester extends ApiEndToEndTester
 
     protected const REQUEST_PARAM_PAYMENT_METHOD_NAME_INVOICE = 'invoice';
     protected const REQUEST_PARAM_PAYMENT_PROVIDER_NAME_DUMMY_PAYMENT = 'DummyPayment';
-    protected const REQUEST_PARAM_ID_SHIPMENT_METHOD_DEFAULT = 1;
+    protected const QUOTE_ITEM_OVERRIDE_DATA_PRODUCT = 'product';
+    protected const QUOTE_ITEM_OVERRIDE_DATA_SHIPMENT = 'shipment';
+    protected const QUOTE_ITEM_OVERRIDE_DATA_QUANTITY = 'quantity';
 
     /**
      * @param string[] $includes
@@ -103,6 +111,16 @@ class CheckoutApiTester extends ApiEndToEndTester
     {
         return $this->getLocator()
             ->customer()
+            ->facade();
+    }
+
+    /**
+     * @return \Spryker\Zed\Payment\Business\PaymentFacadeInterface
+     */
+    public function getPaymentFacade(): PaymentFacadeInterface
+    {
+        return $this->getLocator()
+            ->payment()
             ->facade();
     }
 
@@ -168,11 +186,31 @@ class CheckoutApiTester extends ApiEndToEndTester
      *
      * @return array
      */
-    public function getShipmentRequestPayload(
-        int $idShipmentMethod = self::REQUEST_PARAM_ID_SHIPMENT_METHOD_DEFAULT
-    ): array {
+    public function getShipmentRequestPayload(int $idShipmentMethod): array
+    {
         return [
             RestShipmentTransfer::ID_SHIPMENT_METHOD => $idShipmentMethod,
+        ];
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer
+     * @param \Generated\Shared\Transfer\ShipmentMethodTransfer $shipmentMethodTransfer
+     * @param int $quantity
+     *
+     * @return array
+     */
+    public function getQuoteItemOverrideData(
+        ProductConcreteTransfer $productConcreteTransfer,
+        ShipmentMethodTransfer $shipmentMethodTransfer,
+        int $quantity = 10
+    ): array {
+        return [
+            static::QUOTE_ITEM_OVERRIDE_DATA_PRODUCT => $productConcreteTransfer,
+            static::QUOTE_ITEM_OVERRIDE_DATA_SHIPMENT => [
+                ShipmentTransfer::METHOD => $shipmentMethodTransfer,
+            ],
+            static::QUOTE_ITEM_OVERRIDE_DATA_QUANTITY => $quantity,
         ];
     }
 
@@ -198,15 +236,42 @@ class CheckoutApiTester extends ApiEndToEndTester
     /**
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      * @param \Generated\Shared\Transfer\ProductConcreteTransfer[] $productConcreteTransfers
+     * @param array $overrideShipment
      *
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
-    public function havePersistentQuoteWithItems(CustomerTransfer $customerTransfer, array $productConcreteTransfers): QuoteTransfer
-    {
+    public function havePersistentQuoteWithItems(
+        CustomerTransfer $customerTransfer,
+        array $productConcreteTransfers,
+        array $overrideShipment = []
+    ): QuoteTransfer {
+        $shipmentTransfer = (new ShipmentBuilder($overrideShipment))
+            ->withMethod()
+            ->withShippingAddress();
+
         return $this->havePersistentQuote([
             QuoteTransfer::CUSTOMER => $customerTransfer,
             QuoteTransfer::TOTALS => (new TotalsBuilder())->build(),
             QuoteTransfer::ITEMS => $this->mapProductConcreteTransfersToQuoteTransferItems($productConcreteTransfers),
+            QuoteTransfer::STORE => [StoreTransfer::NAME => 'DE'],
+            QuoteTransfer::PRICE_MODE => PriceConfig::PRICE_MODE_GROSS,
+            QuoteTransfer::BILLING_ADDRESS => (new AddressBuilder())->build(),
+            QuoteTransfer::SHIPMENT => $shipmentTransfer,
+        ]);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     * @param array $overrideItems
+     *
+     * @return \Generated\Shared\Transfer\QuoteTransfer
+     */
+    public function havePersistentQuoteWithItemsAndItemLevelShipment(CustomerTransfer $customerTransfer, array $overrideItems = []): QuoteTransfer
+    {
+        return $this->havePersistentQuote([
+            QuoteTransfer::CUSTOMER => $customerTransfer,
+            QuoteTransfer::TOTALS => (new TotalsBuilder())->build(),
+            QuoteTransfer::ITEMS => $this->mapProductConcreteTransfersToQuoteTransferItemsWithItemLevelShipment($overrideItems),
             QuoteTransfer::STORE => [StoreTransfer::NAME => 'DE'],
             QuoteTransfer::PRICE_MODE => PriceConfig::PRICE_MODE_GROSS,
             QuoteTransfer::BILLING_ADDRESS => (new AddressBuilder())->build(),
@@ -244,8 +309,8 @@ class CheckoutApiTester extends ApiEndToEndTester
             PriceProductTransfer::ID_PRODUCT => $productConcreteTransfer->getIdProductConcrete(),
             PriceProductTransfer::PRICE_TYPE_NAME => 'DEFAULT',
             PriceProductTransfer::MONEY_VALUE => [
-                MoneyValueTransfer::NET_AMOUNT => 7770,
-                MoneyValueTransfer::GROSS_AMOUNT => 8880,
+                MoneyValueTransfer::NET_AMOUNT => 77700,
+                MoneyValueTransfer::GROSS_AMOUNT => 88800,
             ],
         ];
         $this->havePriceProduct($priceProductOverride);
@@ -273,6 +338,31 @@ class CheckoutApiTester extends ApiEndToEndTester
         $customerTransfer = $this->haveCustomer($override);
 
         return $this->haveAddressForCustomer($customerTransfer);
+    }
+
+    /**
+     * @param array $paymentMethodOverrideData
+     * @param array $storeOverrideData
+     *
+     * @return \Generated\Shared\Transfer\PaymentMethodTransfer
+     */
+    public function havePaymentMethodWithStore(
+        array $paymentMethodOverrideData = [],
+        array $storeOverrideData = [StoreTransfer::NAME => 'DE']
+    ): PaymentMethodTransfer {
+        $storeTransfer = $this->haveStore($storeOverrideData);
+        $storeRelationTransfer = (new StoreRelationBuilder())->seed([
+            StoreRelationTransfer::ID_STORES => [
+                $storeTransfer->getIdStore(),
+            ],
+            StoreRelationTransfer::STORES => [
+                $storeTransfer,
+            ],
+        ])->build();
+
+        $paymentMethodOverrideData = array_merge($paymentMethodOverrideData, [PaymentMethodTransfer::STORE_RELATION => $storeRelationTransfer]);
+
+        return $this->havePaymentMethod($paymentMethodOverrideData);
     }
 
     /***
@@ -309,8 +399,38 @@ class CheckoutApiTester extends ApiEndToEndTester
                 ItemTransfer::GROUP_KEY => $productConcreteTransfer->getSku(),
                 ItemTransfer::ABSTRACT_SKU => $productConcreteTransfer->getAbstractSku(),
                 ItemTransfer::ID_PRODUCT_ABSTRACT => $productConcreteTransfer->getFkProductAbstract(),
-                ItemTransfer::QUANTITY => 1,
-            ]))->withShipment((new ShipmentBuilder())
+                ItemTransfer::QUANTITY => 10,
+            ]))->build()
+                ->modifiedToArray();
+        }
+
+        return $quoteTransferItems;
+    }
+
+    /**
+     * @param array $overrideItems
+     *
+     * @return array
+     */
+    protected function mapProductConcreteTransfersToQuoteTransferItemsWithItemLevelShipment(array $overrideItems = []): array
+    {
+        $quoteTransferItems = [];
+
+        foreach ($overrideItems as $overrideItem) {
+            /** @var \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer */
+            $productConcreteTransfer = $overrideItem[static::QUOTE_ITEM_OVERRIDE_DATA_PRODUCT];
+            /** @var array $overrideShipment */
+            $overrideShipment = $overrideItem[static::QUOTE_ITEM_OVERRIDE_DATA_SHIPMENT];
+            /** @var int $quantity */
+            $quantity = $overrideItem[static::QUOTE_ITEM_OVERRIDE_DATA_QUANTITY] ?? 10;
+
+            $quoteTransferItems[] = (new ItemBuilder([
+                ItemTransfer::SKU => $productConcreteTransfer->getSku(),
+                ItemTransfer::GROUP_KEY => $productConcreteTransfer->getSku(),
+                ItemTransfer::ABSTRACT_SKU => $productConcreteTransfer->getAbstractSku(),
+                ItemTransfer::ID_PRODUCT_ABSTRACT => $productConcreteTransfer->getFkProductAbstract(),
+                ItemTransfer::QUANTITY => $quantity,
+            ]))->withShipment((new ShipmentBuilder($overrideShipment))
                 ->withMethod()
                 ->withShippingAddress())
                 ->build()
