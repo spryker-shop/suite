@@ -145,12 +145,14 @@
     {% endif %}
 
     {% if can('SeeShoppingListPermissionPlugin') and isProductAvailable %}
-        {% widget 'AddToShoppingListWidget' args [sku, isDisabled] only %}
+        {% set isAddingToShoppingListDisabled = data.product.idProductConcrete is empty or data.product.price is null %}
+
+        {% widget 'AddToShoppingListWidget' args [sku, isAddingToShoppingListDisabled] only %}
             {% block body %}
                 <hr />
                 {{ parent() }}
             {% endblock %}
-        {% elsewidget 'ShoppingListWidgetPlugin' args [sku, isDisabled] only %} {# @deprecated Use AddToShoppingListWidget instead. #}
+        {% elsewidget 'ShoppingListWidgetPlugin' args [sku, isAddingToShoppingListDisabled] only %} {# @deprecated Use AddToShoppingListWidget instead. #}
             {% block body %}
                 <hr />
                 {{ parent() }}
