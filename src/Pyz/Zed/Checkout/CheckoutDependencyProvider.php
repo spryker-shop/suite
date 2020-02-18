@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\Checkout;
 
-use Pyz\Zed\MerchantSalesOrder\Communication\Plugin\MerchantOrderSaverPlugin;
 use Spryker\Zed\Availability\Communication\Plugin\ProductsAvailableCheckoutPreConditionPlugin;
 use Spryker\Zed\CartNote\Communication\Plugin\Checkout\CartNoteSaverPlugin;
 use Spryker\Zed\Checkout\CheckoutDependencyProvider as SprykerCheckoutDependencyProvider;
@@ -83,7 +82,6 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new ProductBundleOrderSaverPlugin(),
             new PaymentOrderSaverPlugin(),
             new SalesOrderThresholdExpenseSavePlugin(), #SalesOrderThresholdFeature
-            new MerchantOrderSaverPlugin(),
         ];
 
         return $plugins;
