@@ -12,7 +12,8 @@ use Spryker\Zed\PriceProductMerchantRelationship\Communication\Plugin\PriceProdu
 use Spryker\Zed\PriceProductMerchantRelationship\Communication\Plugin\PriceProduct\MerchantRelationshipPriceDimensionConcreteWriterPlugin;
 use Spryker\Zed\PriceProductMerchantRelationship\Communication\Plugin\PriceProduct\MerchantRelationshipPriceProductDimensionExpanderStrategyPlugin;
 use Spryker\Zed\PriceProductMerchantRelationship\Communication\Plugin\PriceProduct\MerchantRelationshipPriceQueryCriteriaPlugin;
-use Spryker\Zed\PriceProductOffer\Communication\Plugin\PriceProduct\PriceProductOfferPriceProductExternalProviderPlugin;
+use Spryker\Zed\PriceProductOffer\Communication\Plugin\PriceProduct\PriceProductOfferPriceDimensionQueryCriteriaPlugin;
+use Spryker\Zed\PriceProductOffer\Communication\Plugin\PriceProduct\PriceProductOfferPriceProductDimensionExpanderStrategyPlugin;
 use Spryker\Zed\PriceProductVolume\Communication\Plugin\PriceProductExtension\PriceProductVolumeExtractorPlugin;
 
 /**
@@ -30,6 +31,7 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
     {
         return array_merge(parent::getPriceDimensionQueryCriteriaPlugins(), [
             new MerchantRelationshipPriceQueryCriteriaPlugin(),
+            new PriceProductOfferPriceDimensionQueryCriteriaPlugin(),
         ]);
     }
 
@@ -64,16 +66,7 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
     {
         return [
             new MerchantRelationshipPriceProductDimensionExpanderStrategyPlugin(),
-        ];
-    }
-
-    /**
-     * @return \Spryker\Zed\PriceProductExtension\Dependency\Plugin\PriceProductExternalProviderPluginInterface[]
-     */
-    public function getPriceProductExternalProviderPlugins(): array
-    {
-        return [
-            new PriceProductOfferPriceProductExternalProviderPlugin(),
+            new PriceProductOfferPriceProductDimensionExpanderStrategyPlugin(),
         ];
     }
 
