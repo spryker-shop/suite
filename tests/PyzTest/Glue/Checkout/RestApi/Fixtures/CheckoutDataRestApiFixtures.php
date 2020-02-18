@@ -13,6 +13,7 @@ use Generated\Shared\Transfer\PaymentProviderTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
 use PyzTest\Glue\Checkout\CheckoutApiTester;
+use SprykerTest\Shared\Shipment\Helper\ShipmentMethodDataHelper;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
@@ -84,11 +85,17 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
             CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,
         ]);
 
-        $this->shipmentMethodTransfer = $I->haveShipmentMethod([
-            ShipmentMethodTransfer::CARRIER_NAME => 'Spryker Dummy Shipment',
-            ShipmentMethodTransfer::FK_SHIPMENT_CARRIER => 10,
-            ShipmentMethodTransfer::NAME => 'Standard',
-        ]);
+        $this->shipmentMethodTransfer = $I->haveShipmentMethod(
+            [
+                ShipmentMethodTransfer::CARRIER_NAME => 'Spryker Dummy Shipment',
+                ShipmentMethodTransfer::NAME => 'Standard',
+            ],
+            [],
+            ShipmentMethodDataHelper::DEFAULT_PRICE_LIST,
+            [
+                $I->getLocator()->store()->facade()->getCurrentStore()->getIdStore(),
+            ]
+        );
 
         $this->quoteTransfer = $I->havePersistentQuoteWithItemsAndItemLevelShipment(
             $this->customerTransfer,
