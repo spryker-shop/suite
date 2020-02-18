@@ -12,7 +12,6 @@ use Generated\Shared\DataBuilder\AddressBuilder;
 use Generated\Shared\Transfer\DummyPaymentTransfer;
 use Generated\Shared\Transfer\PaymentTransfer;
 use Generated\Shared\Transfer\RestCheckoutErrorTransfer;
-use Generated\Shared\Transfer\RestCheckoutResponseTransfer;
 use Generated\Shared\Transfer\RestPaymentTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
 use PyzTest\Glue\Checkout\CheckoutApiTester;
@@ -50,7 +49,8 @@ class GuestCheckoutRestApiCest
     public function loadFixtures(CheckoutApiTester $I): void
     {
         /** @var \PyzTest\Glue\Checkout\RestApi\Fixtures\GuestCheckoutRestApiFixtures $fixtures */
-        $this->fixtures = $I->loadFixtures(GuestCheckoutRestApiFixtures::class);
+        $fixtures = $I->loadFixtures(GuestCheckoutRestApiFixtures::class);
+        $this->fixtures = $fixtures;
     }
 
     /**
@@ -166,29 +166,7 @@ class GuestCheckoutRestApiCest
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSure('The returned resource is of correct type')
-            ->whenI()
-            ->seeResponseDataContainsSingleResourceOfType(CheckoutRestApiConfig::RESOURCE_CHECKOUT);
-
-        $idResource = $I->grabDataFromResponseByJsonPath('$.data.id');
-        $I->assertNull($idResource, 'The returned resource id should be null');
-
-        $attributes = $I->grabDataFromResponseByJsonPath('$.data.attributes');
-
-        $I->assertNotEmpty(
-            $attributes[RestCheckoutResponseTransfer::ORDER_REFERENCE],
-            'The returned resource attributes order reference should not be empty'
-        );
-        $I->assertArrayHasKey(
-            RestCheckoutResponseTransfer::IS_EXTERNAL_REDIRECT,
-            $attributes,
-            'The returned resource attributes should have an external redirect key'
-        );
-        $I->assertArrayHasKey(
-            RestCheckoutResponseTransfer::REDIRECT_URL,
-            $attributes,
-            'The returned resource attributes should have a redirect URL key'
-        );
+        $I->assertCheckoutResponseResourceHasCorrectData();
 
         $I->amSure('The returned resource has correct self link')
             ->whenI()
@@ -241,29 +219,7 @@ class GuestCheckoutRestApiCest
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSure('The returned resource is of correct type')
-            ->whenI()
-            ->seeResponseDataContainsSingleResourceOfType(CheckoutRestApiConfig::RESOURCE_CHECKOUT);
-
-        $idResource = $I->grabDataFromResponseByJsonPath('$.data.id');
-        $I->assertNull($idResource, 'The returned resource id should be null');
-
-        $attributes = $I->grabDataFromResponseByJsonPath('$.data.attributes');
-
-        $I->assertNotEmpty(
-            $attributes[RestCheckoutResponseTransfer::ORDER_REFERENCE],
-            'The returned resource attributes order reference should not be empty'
-        );
-        $I->assertArrayHasKey(
-            RestCheckoutResponseTransfer::IS_EXTERNAL_REDIRECT,
-            $attributes,
-            'The returned resource attributes should have an external redirect key'
-        );
-        $I->assertArrayHasKey(
-            RestCheckoutResponseTransfer::REDIRECT_URL,
-            $attributes,
-            'The returned resource attributes should have a redirect URL key'
-        );
+        $I->assertCheckoutResponseResourceHasCorrectData();
 
         $I->amSure('The returned resource has correct self link')
             ->whenI()

@@ -8,7 +8,6 @@
 namespace PyzTest\Glue\Checkout\RestApi;
 
 use Codeception\Util\HttpCode;
-use Generated\Shared\Transfer\RestCheckoutDataTransfer;
 use PyzTest\Glue\Checkout\CheckoutApiTester;
 use PyzTest\Glue\Checkout\RestApi\Fixtures\CheckoutDataRestApiFixtures;
 use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig;
@@ -39,70 +38,8 @@ class CheckoutDataRestApiCest
     public function loadFixtures(CheckoutApiTester $I): void
     {
         /** @var \PyzTest\Glue\Checkout\RestApi\Fixtures\CheckoutDataRestApiFixtures $fixtures */
-        $this->fixtures = $I->loadFixtures(CheckoutDataRestApiFixtures::class);
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\Checkout\CheckoutApiTester $I
-     *
-     * @return void
-     */
-    public function requestEmptyRequestWithOneItemInQuote(CheckoutApiTester $I): void
-    {
-        // Arrange
-        $I->authorizeCustomerToGlue($this->fixtures->getCustomerTransfer());
-
-        $quoteTransfer = $this->fixtures->getQuoteTransfer();
-
-        $url = $I->buildCheckoutDataUrl();
-        $requestPayload = [
-            'data' => [
-                'type' => CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
-                'attributes' => [
-                    'idCart' => $quoteTransfer->getUuid(),
-                    'payments' => [],
-                ],
-            ],
-        ];
-
-        // Act
-        $I->sendPOST($url, $requestPayload);
-
-        // Assert
-        $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
-
-        $I->amSure('The returned resource is of correct type')
-            ->whenI()
-            ->seeResponseDataContainsSingleResourceOfType(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA);
-
-        $idResource = $I->grabDataFromResponseByJsonPath('$.data.id');
-        $I->assertNull($idResource, 'The returned resource id should be null');
-
-        $attributes = $I->grabDataFromResponseByJsonPath('$.data.attributes');
-
-        $I->assertArrayHasKey(
-            RestCheckoutDataTransfer::ADDRESSES,
-            $attributes,
-            'The returned resource attributes should have an addresses key'
-        );
-        $I->assertArrayHasKey(
-            RestCheckoutDataTransfer::PAYMENT_PROVIDERS,
-            $attributes,
-            'The returned resource attributes should have an addresses key payment providers'
-        );
-        $I->assertArrayHasKey(
-            RestCheckoutDataTransfer::SHIPMENT_METHODS,
-            $attributes,
-            'The returned resource attributes should have an addresses key shipment methods'
-        );
-
-        $I->amSure('The returned resource has correct self link')
-            ->whenI()
-            ->seeSingleResourceHasSelfLink($url);
+        $fixtures = $I->loadFixtures(CheckoutDataRestApiFixtures::class);
+        $this->fixtures = $fixtures;
     }
 
     /**
@@ -137,30 +74,7 @@ class CheckoutDataRestApiCest
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSure('The returned resource is of correct type')
-            ->whenI()
-            ->seeResponseDataContainsSingleResourceOfType(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA);
-
-        $idResource = $I->grabDataFromResponseByJsonPath('$.data.id');
-        $I->assertNull($idResource, 'The returned resource id should be null');
-
-        $attributes = $I->grabDataFromResponseByJsonPath('$.data.attributes');
-
-        $I->assertArrayHasKey(
-            RestCheckoutDataTransfer::ADDRESSES,
-            $attributes,
-            'The returned resource attributes should have an addresses key'
-        );
-        $I->assertArrayHasKey(
-            RestCheckoutDataTransfer::PAYMENT_PROVIDERS,
-            $attributes,
-            'The returned resource attributes should have an addresses key payment providers'
-        );
-        $I->assertArrayHasKey(
-            RestCheckoutDataTransfer::SHIPMENT_METHODS,
-            $attributes,
-            'The returned resource attributes should have an addresses key shipment methods'
-        );
+        $I->assertCheckoutDataResponseResourceHasCorrectData();
 
         $I->amSure('The returned resource has correct self link')
             ->whenI()
@@ -200,30 +114,7 @@ class CheckoutDataRestApiCest
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSure('The returned resource is of correct type')
-            ->whenI()
-            ->seeResponseDataContainsSingleResourceOfType(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA);
-
-        $idResource = $I->grabDataFromResponseByJsonPath('$.data.id');
-        $I->assertNull($idResource, 'The returned resource id should be null');
-
-        $attributes = $I->grabDataFromResponseByJsonPath('$.data.attributes');
-
-        $I->assertArrayHasKey(
-            RestCheckoutDataTransfer::ADDRESSES,
-            $attributes,
-            'The returned resource attributes should have an addresses key'
-        );
-        $I->assertArrayHasKey(
-            RestCheckoutDataTransfer::PAYMENT_PROVIDERS,
-            $attributes,
-            'The returned resource attributes should have an addresses key payment providers'
-        );
-        $I->assertArrayHasKey(
-            RestCheckoutDataTransfer::SHIPMENT_METHODS,
-            $attributes,
-            'The returned resource attributes should have an addresses key shipment methods'
-        );
+        $I->assertCheckoutDataResponseResourceHasCorrectData();
 
         $I->amSure('The returned resource has correct self link')
             ->whenI()
@@ -267,30 +158,7 @@ class CheckoutDataRestApiCest
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSure('The returned resource is of correct type')
-            ->whenI()
-            ->seeResponseDataContainsSingleResourceOfType(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA);
-
-        $idResource = $I->grabDataFromResponseByJsonPath('$.data.id');
-        $I->assertNull($idResource, 'The returned resource id should be null');
-
-        $attributes = $I->grabDataFromResponseByJsonPath('$.data.attributes');
-
-        $I->assertArrayHasKey(
-            RestCheckoutDataTransfer::ADDRESSES,
-            $attributes,
-            'The returned resource attributes should have an addresses key'
-        );
-        $I->assertArrayHasKey(
-            RestCheckoutDataTransfer::PAYMENT_PROVIDERS,
-            $attributes,
-            'The returned resource attributes should have an addresses key payment providers'
-        );
-        $I->assertArrayHasKey(
-            RestCheckoutDataTransfer::SHIPMENT_METHODS,
-            $attributes,
-            'The returned resource attributes should have an addresses key shipment methods'
-        );
+        $I->assertCheckoutDataResponseResourceHasCorrectData();
 
         $I->amSure('The returned resource has correct self link')
             ->whenI()
@@ -333,30 +201,7 @@ class CheckoutDataRestApiCest
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSure('The returned resource is of correct type')
-            ->whenI()
-            ->seeResponseDataContainsSingleResourceOfType(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA);
-
-        $idResource = $I->grabDataFromResponseByJsonPath('$.data.id');
-        $I->assertNull($idResource, 'The returned resource id should be null');
-
-        $attributes = $I->grabDataFromResponseByJsonPath('$.data.attributes');
-
-        $I->assertArrayHasKey(
-            RestCheckoutDataTransfer::ADDRESSES,
-            $attributes,
-            'The returned resource attributes should have an addresses key'
-        );
-        $I->assertArrayHasKey(
-            RestCheckoutDataTransfer::PAYMENT_PROVIDERS,
-            $attributes,
-            'The returned resource attributes should have an addresses key payment providers'
-        );
-        $I->assertArrayHasKey(
-            RestCheckoutDataTransfer::SHIPMENT_METHODS,
-            $attributes,
-            'The returned resource attributes should have an addresses key shipment methods'
-        );
+        $I->assertCheckoutDataResponseResourceHasCorrectData();
 
         $I->amSure('The returned resource has correct self link')
             ->whenI()
@@ -401,30 +246,7 @@ class CheckoutDataRestApiCest
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSure('The returned resource is of correct type')
-            ->whenI()
-            ->seeResponseDataContainsSingleResourceOfType(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA);
-
-        $idResource = $I->grabDataFromResponseByJsonPath('$.data.id');
-        $I->assertNull($idResource, 'The returned resource id should be null');
-
-        $attributes = $I->grabDataFromResponseByJsonPath('$.data.attributes');
-
-        $I->assertArrayHasKey(
-            RestCheckoutDataTransfer::ADDRESSES,
-            $attributes,
-            'The returned resource attributes should have an addresses key'
-        );
-        $I->assertArrayHasKey(
-            RestCheckoutDataTransfer::PAYMENT_PROVIDERS,
-            $attributes,
-            'The returned resource attributes should have an addresses key payment providers'
-        );
-        $I->assertArrayHasKey(
-            RestCheckoutDataTransfer::SHIPMENT_METHODS,
-            $attributes,
-            'The returned resource attributes should have an addresses key shipment methods'
-        );
+        $I->assertCheckoutDataResponseResourceHasCorrectData();
 
         $I->amSure('The returned resource has correct self link')
             ->whenI()
@@ -467,30 +289,7 @@ class CheckoutDataRestApiCest
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSure('The returned resource is of correct type')
-            ->whenI()
-            ->seeResponseDataContainsSingleResourceOfType(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA);
-
-        $idResource = $I->grabDataFromResponseByJsonPath('$.data.id');
-        $I->assertNull($idResource, 'The returned resource id should be null');
-
-        $attributes = $I->grabDataFromResponseByJsonPath('$.data.attributes');
-
-        $I->assertArrayHasKey(
-            RestCheckoutDataTransfer::ADDRESSES,
-            $attributes,
-            'The returned resource attributes should have an addresses key'
-        );
-        $I->assertArrayHasKey(
-            RestCheckoutDataTransfer::PAYMENT_PROVIDERS,
-            $attributes,
-            'The returned resource attributes should have an addresses key payment providers'
-        );
-        $I->assertArrayHasKey(
-            RestCheckoutDataTransfer::SHIPMENT_METHODS,
-            $attributes,
-            'The returned resource attributes should have an addresses key shipment methods'
-        );
+        $I->assertCheckoutDataResponseResourceHasCorrectData();
 
         $I->amSure('The returned resource has correct self link')
             ->whenI()
@@ -536,30 +335,7 @@ class CheckoutDataRestApiCest
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSure('The returned resource is of correct type')
-            ->whenI()
-            ->seeResponseDataContainsSingleResourceOfType(CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA);
-
-        $idResource = $I->grabDataFromResponseByJsonPath('$.data.id');
-        $I->assertNull($idResource, 'The returned resource id should be null');
-
-        $attributes = $I->grabDataFromResponseByJsonPath('$.data.attributes');
-
-        $I->assertArrayHasKey(
-            RestCheckoutDataTransfer::ADDRESSES,
-            $attributes,
-            'The returned resource attributes should have an addresses key'
-        );
-        $I->assertArrayHasKey(
-            RestCheckoutDataTransfer::PAYMENT_PROVIDERS,
-            $attributes,
-            'The returned resource attributes should have an addresses key payment providers'
-        );
-        $I->assertArrayHasKey(
-            RestCheckoutDataTransfer::SHIPMENT_METHODS,
-            $attributes,
-            'The returned resource attributes should have an addresses key shipment methods'
-        );
+        $I->assertCheckoutDataResponseResourceHasCorrectData();
 
         $I->amSure('The returned resource has correct self link')
             ->whenI()

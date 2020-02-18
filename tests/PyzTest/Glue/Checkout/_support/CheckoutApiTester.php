@@ -22,6 +22,8 @@ use Generated\Shared\Transfer\PriceProductTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\RestAddressTransfer;
+use Generated\Shared\Transfer\RestCheckoutDataTransfer;
+use Generated\Shared\Transfer\RestCheckoutResponseTransfer;
 use Generated\Shared\Transfer\RestCustomerTransfer;
 use Generated\Shared\Transfer\RestPaymentTransfer;
 use Generated\Shared\Transfer\RestShipmentTransfer;
@@ -63,6 +65,58 @@ class CheckoutApiTester extends ApiEndToEndTester
     protected const QUOTE_ITEM_OVERRIDE_DATA_PRODUCT = 'product';
     protected const QUOTE_ITEM_OVERRIDE_DATA_SHIPMENT = 'shipment';
     protected const QUOTE_ITEM_OVERRIDE_DATA_QUANTITY = 'quantity';
+
+    /**
+     * @return void
+     */
+    public function assertCheckoutResponseResourceHasCorrectData(): void
+    {
+        $this->amSure('The returned resource id should be null')
+            ->whenI()
+            ->seeSingleResourceIdEqualTo('');
+
+        $attributes = $this->grabDataFromResponseByJsonPath('$.data.attributes');
+
+        $this->assertNotEmpty(
+            $attributes[RestCheckoutResponseTransfer::ORDER_REFERENCE],
+            'The returned resource attributes order reference should not be empty'
+        );
+        $this->assertArrayHasKey(
+            RestCheckoutResponseTransfer::IS_EXTERNAL_REDIRECT,
+            $attributes,
+            'The returned resource attributes should have an external redirect key'
+        );
+        $this->assertArrayHasKey(
+            RestCheckoutResponseTransfer::REDIRECT_URL,
+            $attributes,
+            'The returned resource attributes should have a redirect URL key'
+        );
+    }
+
+    /**
+     * @return void
+     */
+    public function assertCheckoutDataResponseResourceHasCorrectData(): void
+    {
+        $this->amSure('The returned resource id should be null')
+            ->whenI()
+            ->seeSingleResourceIdEqualTo('');
+
+        $attributes = $this->grabDataFromResponseByJsonPath('$.data.attributes');
+
+        $this->assertEmpty(
+            $attributes[RestCheckoutDataTransfer::ADDRESSES],
+            'The returned resource attributes addresses should be an empty array'
+        );
+        $this->assertNotEmpty(
+            $attributes[RestCheckoutDataTransfer::PAYMENT_PROVIDERS],
+            'The returned resource attributes payment providers should not be an empty array'
+        );
+        $this->assertNotEmpty(
+            $attributes[RestCheckoutDataTransfer::SHIPMENT_METHODS],
+            'The returned resource attributes shipment methods should not be an empty array'
+        );
+    }
 
     /**
      * @param string[] $includes
