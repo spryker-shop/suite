@@ -86,6 +86,7 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
 
         $this->shipmentMethodTransfer = $I->haveShipmentMethod([
             ShipmentMethodTransfer::CARRIER_NAME => 'Spryker Dummy Shipment',
+            ShipmentMethodTransfer::FK_SHIPMENT_CARRIER => 10,
             ShipmentMethodTransfer::NAME => 'Standard',
         ]);
 
