@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3d84f76cc958ffab42949ddbf3b8a9bd",
+    "content-hash": "09bcbfc389f6e31c40684cdf80ae52cb",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.133.16",
+            "version": "3.133.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "69836088f178890c16f47bc1c67ca36ebcad22f8"
+                "reference": "18289bf4a3fe68e9a0853f29d82b6cd4b1de2f9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/69836088f178890c16f47bc1c67ca36ebcad22f8",
-                "reference": "69836088f178890c16f47bc1c67ca36ebcad22f8",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/18289bf4a3fe68e9a0853f29d82b6cd4b1de2f9e",
+                "reference": "18289bf4a3fe68e9a0853f29d82b6cd4b1de2f9e",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-02-17T19:13:12+00:00"
+            "time": "2020-02-14T19:09:24+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -1117,8 +1117,8 @@
             "authors": [
                 {
                     "name": "Alessio Linares",
-                    "email": "alessio.linares@skyscanner.net",
-                    "role": "Software Engineer"
+                    "role": "Software Engineer",
+                    "email": "alessio.linares@skyscanner.net"
                 }
             ],
             "description": "JSONPath implementation for querying and updating JSON objects",
@@ -3642,7 +3642,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -4693,6 +4693,45 @@
             "time": "2020-02-06T13:41:38+00:00"
         },
         {
+            "name": "spryker-shop/cart-page-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/cart-page-extension.git",
+                "reference": "fcf3e71f620ff88d818ceaa3188c6c9f1c841be8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/cart-page-extension/zipball/fcf3e71f620ff88d818ceaa3188c6c9f1c841be8",
+                "reference": "fcf3e71f620ff88d818ceaa3188c6c9f1c841be8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CartPageExtension module",
+            "time": "2019-12-27T20:41:07+00:00"
+        },
+        {
             "name": "spryker/decimal-object",
             "version": "1.0.0",
             "source": {
@@ -4994,11 +5033,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/mp-1918/mp-1919-merchant-products-in-catalog-and-search",
+            "version": "dev-feature/mp-1706/dev-selected-merchant-on-pdp",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "09d20b5b9c98db8d7f9f2144825101a96e1c2281"
+                "reference": "d33bacc71923a98c137f11c515422de07be160a3"
             },
             "require": {
                 "php": ">=7.2"
@@ -5557,6 +5596,8 @@
                 "spryker/shipment-extension": "*",
                 "spryker/shipment-gui": "*",
                 "spryker/shipments-rest-api": "*",
+                "spryker/shop-context": "*",
+                "spryker/shop-context-extension": "*",
                 "spryker/shopping-list": "*",
                 "spryker/shopping-list-data-import": "*",
                 "spryker/shopping-list-extension": "*",
@@ -5654,15 +5695,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-02-18T10:45:47+00:00"
+            "time": "2020-02-18T10:58:53+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/mp-1918/mp-1919-merchant-products-in-catalog-and-search",
+            "version": "dev-feature/mp-1706/dev-selected-merchant-on-pdp",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "bfc511271a9c3ccac7dc81673ded647db6086668"
+                "reference": "cf7976ecbf05d73edda1b856e835e1d097161b0f"
             },
             "require": {
                 "php": ">=7.2"
@@ -5678,7 +5719,6 @@
                 "spryker-shop/cart-code-widget": "*",
                 "spryker-shop/cart-note-widget": "*",
                 "spryker-shop/cart-page": "*",
-                "spryker-shop/cart-page-extension": "*",
                 "spryker-shop/catalog-page": "*",
                 "spryker-shop/category-image-storage-widget": "*",
                 "spryker-shop/category-widget": "*",
@@ -5720,7 +5760,6 @@
                 "spryker-shop/language-switcher-widget": "*",
                 "spryker-shop/merchant-product-offer-widget": "*",
                 "spryker-shop/merchant-profile-page": "*",
-                "spryker-shop/merchant-switcher-widget": "*",
                 "spryker-shop/money-widget": "*",
                 "spryker-shop/multi-cart-page": "*",
                 "spryker-shop/multi-cart-widget": "*",
@@ -5773,8 +5812,6 @@
                 "spryker-shop/shop-application-extension": "*",
                 "spryker-shop/shop-cms-slot": "*",
                 "spryker-shop/shop-cms-slot-extension": "*",
-                "spryker-shop/shop-context": "*",
-                "spryker-shop/shop-context-extension": "*",
                 "spryker-shop/shop-permission": "*",
                 "spryker-shop/shop-router": "*",
                 "spryker-shop/shop-router-extension": "*",
@@ -5806,7 +5843,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-02-18T10:46:16+00:00"
+            "time": "2020-02-17T11:13:02+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8672,8 +8709,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -10287,20 +10324,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
+                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler",
-                    "role": "Project Founder"
+                    "homepage": "https://github.com/manuelpichler"
                 },
                 {
                     "name": "Marc Würth",
+                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84",
-                    "role": "Project Maintainer"
+                    "homepage": "https://github.com/ravage84"
                 },
                 {
                     "name": "Other contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -11061,12 +11098,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/architecture-sniffer.git",
-                "reference": "ed1d90504ba419e27f56ffeee8f074282461d992"
+                "reference": "4fb8ffae93d7fa94e2027369f4c119be3f0be1c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/ed1d90504ba419e27f56ffeee8f074282461d992",
-                "reference": "ed1d90504ba419e27f56ffeee8f074282461d992",
+                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/4fb8ffae93d7fa94e2027369f4c119be3f0be1c5",
+                "reference": "4fb8ffae93d7fa94e2027369f4c119be3f0be1c5",
                 "shasum": ""
             },
             "require": {
@@ -11111,7 +11148,7 @@
                 "sniffer",
                 "standards"
             ],
-            "time": "2020-02-18T10:32:31+00:00"
+            "time": "2020-01-13T10:29:34+00:00"
         },
         {
             "name": "spryker/code-generator",
