@@ -279,11 +279,8 @@ class NavigationTreeCest
      */
     public function testDeleteNavigationNode(NavigationGuiPresentationTester $i)
     {
-        /**
-         * Test skipped because popup confirmation is not working as expected under phantomjs.
-         * TODO: once we have Selenium, enable this test case.
-         */
-        return;
+        // Test skipped because popup confirmation is not working as expected under phantomjs.
+        // TODO: once we have Selenium, enable this test case.
 //        $i->wantTo('Remove child node.');
 //        $i->expect('Node should be removed from Zed.');
 //
