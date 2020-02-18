@@ -122,8 +122,10 @@ class ProductConcretePropelDataSetWriter implements DataSetWriterInterface
      *
      * @return void
      */
-    protected function createOrUpdateProductConcreteLocalizedAttributesEntities(DataSetInterface $dataSet, int $idProduct): void
-    {
+    protected function createOrUpdateProductConcreteLocalizedAttributesEntities(
+        DataSetInterface $dataSet,
+        int $idProduct
+    ): void {
         $productConcreteLocalizedTransfers = $this->getProductConcreteLocalizedTransfers($dataSet);
 
         foreach ($productConcreteLocalizedTransfers as $productConcreteLocalizedArray) {
