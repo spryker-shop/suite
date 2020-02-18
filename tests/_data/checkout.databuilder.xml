@@ -56,23 +56,11 @@
 
     <transfer name="RestPayment">
         <property name="paymentProviderName" dataBuilderRule="=DummyPayment"/>
-        <property name="paymentMethodName" dataBuilderRule="=credit card"/>
+        <property name="paymentMethodName" dataBuilderRule="=invoice"/>
     </transfer>
 
     <transfer name="DummyPayment">
         <property name="dateOfBirth" dataBuilderRule="date('Y-m-d', '-20 years')"/>
-    </transfer>
-
-    <transfer name="PriceProduct">
-        <property name="skuProductAbstract" dataBuilderRule="isbn10"/>
-        <property name="skuProduct" dataBuilderRule="isbn10"/>
-        <property name="idProduct" dataBuilderRule="randomNumber(2)"/>
-        <property name="priceTypeName" dataBuilderRule="=DEFAULT"/>
-    </transfer>
-
-    <transfer name="MoneyValue">
-        <property name="netAmount" dataBuilderRule="numberBetween(1000, 10000)"/>
-        <property name="grossAmount" dataBuilderRule="numberBetween(1000, 10000)"/>
     </transfer>
 
     <transfer name="Currency">
