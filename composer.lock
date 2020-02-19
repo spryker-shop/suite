@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0628c9c710f32908da9ec2d24a2d46bd",
+    "content-hash": "9c1c19c8ed3e0bb4e49afcda3d6e21ef",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.133.15",
+            "version": "3.133.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "18289bf4a3fe68e9a0853f29d82b6cd4b1de2f9e"
+                "reference": "6f41bb144c415e89726eaad2ccdf4d0a54d6e7cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/18289bf4a3fe68e9a0853f29d82b6cd4b1de2f9e",
-                "reference": "18289bf4a3fe68e9a0853f29d82b6cd4b1de2f9e",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/6f41bb144c415e89726eaad2ccdf4d0a54d6e7cf",
+                "reference": "6f41bb144c415e89726eaad2ccdf4d0a54d6e7cf",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-02-14T19:09:24+00:00"
+            "time": "2020-02-19T19:12:22+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -151,16 +151,16 @@
         },
         {
             "name": "codeception/codeception",
-            "version": "4.1.0",
+            "version": "4.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Codeception.git",
-                "reference": "cbf03428bbc26dbe455169aec1ac138f53191a54"
+                "reference": "be584da4859baf34e05afd26fe4c587be4787ff0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/cbf03428bbc26dbe455169aec1ac138f53191a54",
-                "reference": "cbf03428bbc26dbe455169aec1ac138f53191a54",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/be584da4859baf34e05afd26fe4c587be4787ff0",
+                "reference": "be584da4859baf34e05afd26fe4c587be4787ff0",
                 "shasum": ""
             },
             "require": {
@@ -232,7 +232,7 @@
                 "functional testing",
                 "unit testing"
             ],
-            "time": "2020-02-07T20:33:23+00:00"
+            "time": "2020-02-19T16:56:20+00:00"
         },
         {
             "name": "codeception/lib-asserts",
@@ -5033,11 +5033,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/mp-1720/dev-merchant-warehouse-relation",
+            "version": "dev-feature/mp-1720/mp-1721-merchant-stock-and-dataimport",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "7ea6a1443bce838ceb7a1fb9a0d6c0a387233bfb"
+                "reference": "d8012b66192817a23d53cba74b5996b72bd44a1b"
             },
             "require": {
                 "php": ">=7.2"
@@ -5352,7 +5352,9 @@
                 "spryker/merchant-relationship-sales-order-threshold-gui-extension": "*",
                 "spryker/merchant-sales-order": "*",
                 "spryker/merchant-search": "*",
+                "spryker/merchant-stock": "*",
                 "spryker/merchant-user": "*",
+                "spryker/merchant-user-auth-gui-page": "*",
                 "spryker/messenger": "*",
                 "spryker/messenger-extension": "*",
                 "spryker/module-finder": "*",
@@ -5692,7 +5694,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-02-14T09:43:45+00:00"
+            "time": "2020-02-19T21:05:35+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -9770,21 +9772,21 @@
         },
         {
             "name": "dms/phpunit-arraysubset-asserts",
-            "version": "v0.1.0",
+            "version": "v0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rdohms/phpunit-arraysubset-asserts.git",
-                "reference": "d618ece5d53e05be87eba835b079377eaafbd7c8"
+                "reference": "1fc5a0f3db1d0c440a7c6b8834917888247f8f42"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rdohms/phpunit-arraysubset-asserts/zipball/d618ece5d53e05be87eba835b079377eaafbd7c8",
-                "reference": "d618ece5d53e05be87eba835b079377eaafbd7c8",
+                "url": "https://api.github.com/repos/rdohms/phpunit-arraysubset-asserts/zipball/1fc5a0f3db1d0c440a7c6b8834917888247f8f42",
+                "reference": "1fc5a0f3db1d0c440a7c6b8834917888247f8f42",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2",
-                "phpunit/phpunit": "^8.0"
+                "phpunit/phpunit": "^8.4"
             },
             "require-dev": {
                 "dms/coding-standard": "^1.0",
@@ -9807,7 +9809,7 @@
                 }
             ],
             "description": "This package provides Array Subset and related asserts once depracated in PHPunit 8",
-            "time": "2019-02-17T14:29:58+00:00"
+            "time": "2020-02-18T21:20:04+00:00"
         },
         {
             "name": "flow/jsonpath",
@@ -11095,12 +11097,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/architecture-sniffer.git",
-                "reference": "4fb8ffae93d7fa94e2027369f4c119be3f0be1c5"
+                "reference": "6b31d83b82b0c4c944e68e2b8565726899093a12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/4fb8ffae93d7fa94e2027369f4c119be3f0be1c5",
-                "reference": "4fb8ffae93d7fa94e2027369f4c119be3f0be1c5",
+                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/6b31d83b82b0c4c944e68e2b8565726899093a12",
+                "reference": "6b31d83b82b0c4c944e68e2b8565726899093a12",
                 "shasum": ""
             },
             "require": {
@@ -11114,7 +11116,7 @@
             "require-dev": {
                 "codeception/codeception": "^2.4",
                 "phpstan/phpstan": "^0.11.1",
-                "phpunit/phpunit": "~5.2",
+                "phpunit/phpunit": "^5.2",
                 "spryker/code-sniffer": "*",
                 "symfony/var-dumper": "^4.0"
             },
@@ -11145,7 +11147,7 @@
                 "sniffer",
                 "standards"
             ],
-            "time": "2020-01-13T10:29:34+00:00"
+            "time": "2020-02-18T10:48:59+00:00"
         },
         {
             "name": "spryker/code-generator",
