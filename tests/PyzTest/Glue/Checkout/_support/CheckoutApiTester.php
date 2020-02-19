@@ -65,6 +65,7 @@ class CheckoutApiTester extends ApiEndToEndTester
     protected const QUOTE_ITEM_OVERRIDE_DATA_PRODUCT = 'product';
     protected const QUOTE_ITEM_OVERRIDE_DATA_SHIPMENT = 'shipment';
     protected const QUOTE_ITEM_OVERRIDE_DATA_QUANTITY = 'quantity';
+    protected const DEFAULT_QUOTE_ITEM_QUANTITY = 10;
 
     /**
      * @return void
@@ -257,7 +258,7 @@ class CheckoutApiTester extends ApiEndToEndTester
     public function getQuoteItemOverrideData(
         ProductConcreteTransfer $productConcreteTransfer,
         ShipmentMethodTransfer $shipmentMethodTransfer,
-        int $quantity = 10
+        int $quantity = self::DEFAULT_QUOTE_ITEM_QUANTITY
     ): array {
         return [
             static::QUOTE_ITEM_OVERRIDE_DATA_PRODUCT => $productConcreteTransfer,
@@ -453,7 +454,7 @@ class CheckoutApiTester extends ApiEndToEndTester
                 ItemTransfer::GROUP_KEY => $productConcreteTransfer->getSku(),
                 ItemTransfer::ABSTRACT_SKU => $productConcreteTransfer->getAbstractSku(),
                 ItemTransfer::ID_PRODUCT_ABSTRACT => $productConcreteTransfer->getFkProductAbstract(),
-                ItemTransfer::QUANTITY => 10,
+                ItemTransfer::QUANTITY => static::DEFAULT_QUOTE_ITEM_QUANTITY,
             ]))->build()
                 ->modifiedToArray();
         }
@@ -471,19 +472,15 @@ class CheckoutApiTester extends ApiEndToEndTester
         $quoteTransferItems = [];
 
         foreach ($overrideItems as $overrideItem) {
-            /** @var \Generated\Shared\Transfer\ProductConcreteTransfer $productConcreteTransfer */
-            $productConcreteTransfer = $overrideItem[static::QUOTE_ITEM_OVERRIDE_DATA_PRODUCT];
-            /** @var array $overrideShipment */
-            $overrideShipment = $overrideItem[static::QUOTE_ITEM_OVERRIDE_DATA_SHIPMENT];
-            /** @var int $quantity */
-            $quantity = $overrideItem[static::QUOTE_ITEM_OVERRIDE_DATA_QUANTITY] ?? 10;
+            $productConcreteTransfer = $this->getProductConcreteTransferFromOverrideItemData($overrideItem);
+            $overrideShipment = $this->getOverrideShipmentDataFromOverrideItemData($overrideItem);
 
             $quoteTransferItems[] = (new ItemBuilder([
                 ItemTransfer::SKU => $productConcreteTransfer->getSku(),
                 ItemTransfer::GROUP_KEY => $productConcreteTransfer->getSku(),
                 ItemTransfer::ABSTRACT_SKU => $productConcreteTransfer->getAbstractSku(),
                 ItemTransfer::ID_PRODUCT_ABSTRACT => $productConcreteTransfer->getFkProductAbstract(),
-                ItemTransfer::QUANTITY => $quantity,
+                ItemTransfer::QUANTITY => $this->getQuoteItemQuantityFromOverrideItemData($overrideItem),
             ]))->withShipment((new ShipmentBuilder($overrideShipment))
                 ->withMethod()
                 ->withShippingAddress())
@@ -492,6 +489,36 @@ class CheckoutApiTester extends ApiEndToEndTester
         }
 
         return $quoteTransferItems;
+    }
+
+    /**
+     * @param array $overrideItem
+     *
+     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
+     */
+    protected function getProductConcreteTransferFromOverrideItemData(array $overrideItem): ProductConcreteTransfer
+    {
+        return $overrideItem[static::QUOTE_ITEM_OVERRIDE_DATA_PRODUCT];
+    }
+
+    /**
+     * @param array $overrideItem
+     *
+     * @return array
+     */
+    protected function getOverrideShipmentDataFromOverrideItemData(array $overrideItem): array
+    {
+        return $overrideItem[static::QUOTE_ITEM_OVERRIDE_DATA_SHIPMENT];
+    }
+
+    /**
+     * @param array $overrideItem
+     *
+     * @return int
+     */
+    protected function getQuoteItemQuantityFromOverrideItemData(array $overrideItem): int
+    {
+        return $overrideItem[static::QUOTE_ITEM_OVERRIDE_DATA_QUANTITY] ?? static::DEFAULT_QUOTE_ITEM_QUANTITY;
     }
 
     /**
