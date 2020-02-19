@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\DataImport\Business\Model\ProductRelation\Hook;
+namespace Pyz\Zed\ProductRelationDataImport\Business\Hook;
 
 use Spryker\Zed\DataImport\Business\Model\DataImporterAfterImportInterface;
 use Spryker\Zed\ProductRelation\Business\ProductRelationFacadeInterface;
@@ -28,7 +28,7 @@ class ProductRelationAfterImportHook implements DataImporterAfterImportInterface
     /**
      * @return void
      */
-    public function afterImport()
+    public function afterImport(): void
     {
         $this->productRelationFacade->rebuildRelations();
     }

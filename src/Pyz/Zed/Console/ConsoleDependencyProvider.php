@@ -79,6 +79,7 @@ use Spryker\Zed\ProductLabel\Communication\Console\ProductLabelValidityConsole;
 use Spryker\Zed\ProductOfferValidity\Communication\Console\ProductOfferValidityConsole;
 use Spryker\Zed\ProductPackagingUnitDataImport\ProductPackagingUnitDataImportConfig;
 use Spryker\Zed\ProductRelation\Communication\Console\ProductRelationUpdaterConsole;
+use Spryker\Zed\ProductRelationDataImport\ProductRelationDataImportConfig;
 use Spryker\Zed\ProductValidity\Communication\Console\ProductValidityConsole;
 use Spryker\Zed\Propel\Communication\Console\DatabaseDropConsole;
 use Spryker\Zed\Propel\Communication\Console\DatabaseDropTablesConsole;
@@ -218,7 +219,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . DataImportConfig::IMPORT_TYPE_PRODUCT_GROUP),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . DataImportConfig::IMPORT_TYPE_PRODUCT_OPTION),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . DataImportConfig::IMPORT_TYPE_PRODUCT_OPTION_PRICE),
-            new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . DataImportConfig::IMPORT_TYPE_PRODUCT_RELATION),
+            new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . ProductRelationDataImportConfig::IMPORT_TYPE_PRODUCT_RELATION),
+            new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . ProductRelationDataImportConfig::IMPORT_TYPE_PRODUCT_RELATION_STORE),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . DataImportConfig::IMPORT_TYPE_PRODUCT_REVIEW),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . DataImportConfig::IMPORT_TYPE_PRODUCT_LABEL),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . DataImportConfig::IMPORT_TYPE_PRODUCT_SET),
