@@ -296,8 +296,10 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
      *
      * @return \Spryker\DecimalObject\Decimal
      */
-    protected function getStockProductQuantityByIdProductAndStockNames(int $idProductConcrete, array $stockNames): Decimal
-    {
+    protected function getStockProductQuantityByIdProductAndStockNames(
+        int $idProductConcrete,
+        array $stockNames
+    ): Decimal {
         $stockProductTotalQuantity = SpyStockProductQuery::create()
             ->filterByFkProduct($idProductConcrete)
             ->useStockQuery()
@@ -443,8 +445,10 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
      *
      * @return \Orm\Zed\Availability\Persistence\SpyAvailabilityAbstract
      */
-    protected function updateAbstractAvailabilityQuantity(SpyAvailabilityAbstract $availabilityAbstractEntity, int $idStore): SpyAvailabilityAbstract
-    {
+    protected function updateAbstractAvailabilityQuantity(
+        SpyAvailabilityAbstract $availabilityAbstractEntity,
+        int $idStore
+    ): SpyAvailabilityAbstract {
         $sumQuantity = SpyAvailabilityQuery::create()
             ->filterByFkAvailabilityAbstract($availabilityAbstractEntity->getIdAvailabilityAbstract())
             ->filterByFkStore($idStore)
