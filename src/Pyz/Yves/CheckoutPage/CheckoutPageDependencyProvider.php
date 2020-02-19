@@ -14,12 +14,9 @@ use Spryker\Yves\Nopayment\Plugin\NopaymentHandlerPlugin;
 use Spryker\Yves\Payment\Plugin\PaymentFormFilterPlugin;
 use Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection;
-use SprykerShop\MerchantProductOfferWidget\src\SprykerShop\Yves\MerchantProductOfferWidget\Plugin\Checkout\MerchantCheckoutAddressStepPreRenderExecutePlugin;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageDependencyProvider as SprykerShopCheckoutPageDependencyProvider;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToProductBundleClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToShipmentClientInterface;
-use SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutAddressStepPreRenderExecutePluginInterface;
-use SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutShipmentStepPreRenderExecutePluginInterface;
 use SprykerShop\Yves\CompanyPage\Plugin\CheckoutPage\CompanyUnitAddressExpanderPlugin;
 use SprykerShop\Yves\CustomerPage\Form\CheckoutAddressCollectionForm;
 use SprykerShop\Yves\CustomerPage\Form\CustomerCheckoutForm;
@@ -28,7 +25,6 @@ use SprykerShop\Yves\CustomerPage\Form\GuestForm;
 use SprykerShop\Yves\CustomerPage\Form\LoginForm;
 use SprykerShop\Yves\CustomerPage\Form\RegisterForm;
 use SprykerShop\Yves\CustomerPage\Plugin\CheckoutPage\CustomerAddressExpanderPlugin;
-use SprykerShop\Yves\MerchantProductOfferWidget\Plugin\Checkout\MerchantCheckoutShipmentStepPreRenderExecutePlugin;
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutAddressStepEnterPreCheckPlugin;
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutPaymentStepEnterPreCheckPlugin;
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutShipmentStepEnterPreCheckPlugin;
@@ -208,26 +204,6 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
         return [
             new CustomerAddressExpanderPlugin(),
             new CompanyUnitAddressExpanderPlugin(),
-        ];
-    }
-
-    /**
-     * @return CheckoutAddressStepPreRenderExecutePluginInterface[]
-     */
-    protected function getCheckoutAddressStepPreRenderExecutePlugins(): array
-    {
-        return [
-            new MerchantCheckoutAddressStepPreRenderExecutePlugin(),
-        ];
-    }
-
-    /**
-     * @return CheckoutShipmentStepPreRenderExecutePluginInterface[]
-     */
-    protected function getCheckoutShipmentStepPreRenderExecutePlugins(): array
-    {
-        return [
-            new MerchantCheckoutShipmentStepPreRenderExecutePlugin(),
         ];
     }
 }
