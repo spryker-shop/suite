@@ -17,10 +17,10 @@
     "zed": "node ./node_modules/@spryker/oryx-for-zed/build",
     "zed:watch": "node ./node_modules/@spryker/oryx-for-zed/build --dev",
     "zed:production": "node ./node_modules/@spryker/oryx-for-zed/build --prod",
-    "bo:install": "run-s bo:install:*",
+    "bo:install:login": "run-s bo:install:*",
     "bo:install:zed-ui": "cd ./vendor/spryker/spryker/Bundles/ZedUi && npm install",
     "bo:install:mp-login": "cd ./vendor/spryker/spryker/Bundles/MerchantUserAuthGuiPage && npm install",
-    "bo:build": "run-s bo:build:*",
+    "bo:build:login": "run-s bo:build:*",
     "bo:build:zed-ui": "cd ./vendor/spryker/spryker/Bundles/ZedUi && npm run build",
     "bo:build:mp-login": "cd ./vendor/spryker/spryker/Bundles/MerchantUserAuthGuiPage && npm run build"
   },
