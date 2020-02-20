@@ -33,9 +33,8 @@ class ProductAbstractPropelDataSetWriter implements DataSetWriterInterface
     /**
      * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository $productRepository
      */
-    public function __construct(
-        ProductRepository $productRepository
-    ) {
+    public function __construct(ProductRepository $productRepository)
+    {
         $this->productRepository = $productRepository;
     }
 
@@ -87,8 +86,10 @@ class ProductAbstractPropelDataSetWriter implements DataSetWriterInterface
      *
      * @return void
      */
-    protected function createOrUpdateProductAbstractLocalizedAbstract(DataSetInterface $dataSet, int $idProductAbstract): void
-    {
+    protected function createOrUpdateProductAbstractLocalizedAbstract(
+        DataSetInterface $dataSet,
+        int $idProductAbstract
+    ): void {
         $productAbstractLocalizedTransfers = $this->getProductAbstractLocalizedTransfers($dataSet);
 
         foreach ($productAbstractLocalizedTransfers as $productAbstractLocalizedArray) {
