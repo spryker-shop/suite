@@ -91,9 +91,9 @@ use Spryker\Zed\Propel\Communication\Console\DatabaseDropTablesConsole;
 use Spryker\Zed\Propel\Communication\Console\DeleteMigrationFilesConsole;
 use Spryker\Zed\Propel\Communication\Console\DeployPreparePropelConsole;
 use Spryker\Zed\Propel\Communication\Console\EntityTransferGeneratorConsole;
-use Spryker\Zed\Propel\Communication\Console\EntityTransferRemoverConsole;
 use Spryker\Zed\Propel\Communication\Console\PropelSchemaValidatorConsole;
 use Spryker\Zed\Propel\Communication\Console\PropelSchemaXmlNameValidatorConsole;
+use Spryker\Zed\Propel\Communication\Console\RemoveEntityTransferConsole;
 use Spryker\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
 use Spryker\Zed\Queue\Communication\Console\QueueDumpConsole;
 use Spryker\Zed\Queue\Communication\Console\QueueTaskConsole;
@@ -148,9 +148,9 @@ use Spryker\Zed\StorageRedis\Communication\Console\StorageRedisImportRdbConsole;
 use Spryker\Zed\Synchronization\Communication\Console\ExportSynchronizedDataConsole;
 use Spryker\Zed\Testify\Communication\Console\CleanOutputConsole;
 use Spryker\Zed\Transfer\Communication\Console\DataBuilderGeneratorConsole;
-use Spryker\Zed\Transfer\Communication\Console\DataBuilderRemoverConsole;
+use Spryker\Zed\Transfer\Communication\Console\RemoveDataBuilderConsole;
+use Spryker\Zed\Transfer\Communication\Console\RemoveTransferConsole;
 use Spryker\Zed\Transfer\Communication\Console\TransferGeneratorConsole;
-use Spryker\Zed\Transfer\Communication\Console\TransferRemoverConsole;
 use Spryker\Zed\Transfer\Communication\Console\ValidatorConsole;
 use Spryker\Zed\Translator\Communication\Console\CleanTranslationCacheConsole;
 use Spryker\Zed\Translator\Communication\Console\GenerateTranslationCacheConsole;
@@ -187,9 +187,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new RemoveValidationCacheConsole(),
             new EmptyAllCachesConsole(),
             new TransferGeneratorConsole(),
-            new TransferRemoverConsole(),
+            new RemoveTransferConsole(),
             new EntityTransferGeneratorConsole(),
-            new EntityTransferRemoverConsole(),
+            new RemoveEntityTransferConsole(),
             new InitializeDatabaseConsole(),
             new SearchConsole(),
             new GenerateSourceMapConsole(),
@@ -380,7 +380,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new GenerateIdeAutoCompletionConsole();
             $commands[] = new RemoveIdeAutoCompletionConsole();
             $commands[] = new DataBuilderGeneratorConsole();
-            $commands[] = new DataBuilderRemoverConsole();
+            $commands[] = new RemoveDataBuilderConsole();
             $commands[] = new CompletionCommand();
             $commands[] = new PropelSchemaValidatorConsole();
             $commands[] = new PropelSchemaXmlNameValidatorConsole();
