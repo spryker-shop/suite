@@ -55,8 +55,8 @@ use Spryker\Glue\CompanyRolesRestApi\Plugin\GlueApplication\CompanyRolesResource
 use Spryker\Glue\CompanyUserAuthRestApi\Plugin\GlueApplication\CompanyUserAccessTokensResourceRoutePlugin;
 use Spryker\Glue\CompanyUsersRestApi\CompanyUsersRestApiConfig;
 use Spryker\Glue\CompanyUsersRestApi\Plugin\GlueApplication\CompanyUserByShareDetailResourceRelationshipPlugin;
+use Spryker\Glue\CompanyUsersRestApi\Plugin\GlueApplication\CompanyUserRestUserValidatorPlugin;
 use Spryker\Glue\CompanyUsersRestApi\Plugin\GlueApplication\CompanyUsersResourceRoutePlugin;
-use Spryker\Glue\CompanyUsersRestApi\Plugin\GlueApplication\CompanyUserValidatorPlugin;
 use Spryker\Glue\ContentBannersRestApi\Plugin\ContentBannerResourceRoutePlugin;
 use Spryker\Glue\ContentProductAbstractListsRestApi\Plugin\ContentProductAbstractListRoutePlugin;
 use Spryker\Glue\CustomerAccessRestApi\Plugin\GlueApplication\CustomerAccessFormatRequestPlugin;
@@ -246,7 +246,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     protected function getRestUserValidatorPlugins(): array
     {
         return [
-            new CompanyUserValidatorPlugin(),
+            new CompanyUserRestUserValidatorPlugin(),
         ];
     }
 
