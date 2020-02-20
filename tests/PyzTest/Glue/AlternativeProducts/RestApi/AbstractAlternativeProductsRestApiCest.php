@@ -36,7 +36,10 @@ class AbstractAlternativeProductsRestApiCest
      */
     public function loadFixtures(AlternativeProductsRestApiTester $I): void
     {
-        $this->fixtures = $I->loadFixtures(AbstractAlternativeProductsRestApiFixtures::class);
+        /** @var \PyzTest\Glue\AlternativeProducts\RestApi\AbstractAlternativeProductsRestApiFixtures $fixtures */
+        $fixtures = $I->loadFixtures(AbstractAlternativeProductsRestApiFixtures::class);
+
+        $this->fixtures = $fixtures;
     }
 
     /**
@@ -82,8 +85,9 @@ class AbstractAlternativeProductsRestApiCest
      *
      * @return void
      */
-    public function requestAbstractAlternativeProductsByNotExistingProductConcreteSku(AlternativeProductsRestApiTester $I): void
-    {
+    public function requestAbstractAlternativeProductsByNotExistingProductConcreteSku(
+        AlternativeProductsRestApiTester $I
+    ): void {
         // Act
         $I->sendGET($I->buildAbstractAlternativeProductsUrl('NotExistingSku'));
 
