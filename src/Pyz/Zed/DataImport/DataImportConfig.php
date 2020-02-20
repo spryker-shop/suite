@@ -565,7 +565,7 @@ class DataImportConfig extends SprykerDataImportConfig
             ShipmentDataImportConfig::IMPORT_TYPE_SHIPMENT_METHOD_STORE,
             PaymentDataImportConfig::IMPORT_TYPE_PAYMENT_METHOD,
             PaymentDataImportConfig::IMPORT_TYPE_PAYMENT_METHOD_STORE,
-            SalesReturnDataImportConfig::IMPORT_TYPE_SALES_RETURN_REASON,
+            SalesReturnDataImportConfig::IMPORT_TYPE_RETURN_REASON,
         ];
     }
 }
