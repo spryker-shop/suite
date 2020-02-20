@@ -36,7 +36,10 @@ class DeleteMethodRestApiCest
      */
     public function _before(CartsApiTester $i): void
     {
-        $this->fixtures = $i->loadFixtures(CustomerRestApiFixtures::class);
+        /** @var \PyzTest\Glue\Customer\RestApi\CustomerRestApiFixtures $fixtures */
+        $fixtures = $i->loadFixtures(CustomerRestApiFixtures::class);
+
+        $this->fixtures = $fixtures;
     }
 
     /**
