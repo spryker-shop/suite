@@ -33,7 +33,7 @@ class ProductLabelWriterStep extends PublishAwareStep implements DataImportStepI
     public const KEY_VALID_FROM = 'valid_from';
     public const KEY_VALID_TO = 'valid_to';
 
-    public const COL_MAX_POSITION = 'max_position';
+    public const COL_POSITION = 'position';
     public const KEY_PRODUCT_ABSTRACT_SKUS = 'product_abstract_skus';
 
     /**
@@ -64,7 +64,8 @@ class ProductLabelWriterStep extends PublishAwareStep implements DataImportStepI
             ->setIsActive($dataSet[static::KEY_IS_ACTIVE])
             ->setIsExclusive($dataSet[static::KEY_IS_EXCLUSIVE])
             ->setIsDynamic($dataSet[static::KEY_IS_DYNAMIC])
-            ->setFrontEndReference($dataSet[static::KEY_FRONT_END_REFERENCE]);
+            ->setFrontEndReference($dataSet[static::KEY_FRONT_END_REFERENCE])
+            ->setPosition($dataSet[static::COL_POSITION]);
 
         if ($dataSet[static::KEY_VALID_FROM]) {
             $productLabelEntity->setValidFrom($dataSet[static::KEY_VALID_FROM]);
@@ -74,31 +75,11 @@ class ProductLabelWriterStep extends PublishAwareStep implements DataImportStepI
             $productLabelEntity->setValidTo($dataSet[static::KEY_VALID_TO]);
         }
 
-        if ($productLabelEntity->isNew()) {
-            $productLabelEntity->setPosition($this->getPosition());
-        }
-
         if ($productLabelEntity->isNew() || $productLabelEntity->isModified()) {
             $productLabelEntity->save();
         }
 
         return $productLabelEntity;
-    }
-
-    /**
-     * @return mixed|\Orm\Zed\ProductLabel\Persistence\SpyProductLabel
-     */
-    protected function getPosition()
-    {
-        return SpyProductLabelQuery::create()
-            ->withColumn(
-                sprintf('MAX(%s)', SpyProductLabelTableMap::COL_POSITION),
-                static::COL_MAX_POSITION
-            )
-            ->select([
-                static::COL_MAX_POSITION,
-            ])
-            ->findOne() + 1;
     }
 
     /**
