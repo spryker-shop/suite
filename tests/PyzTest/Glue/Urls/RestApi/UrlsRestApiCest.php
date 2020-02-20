@@ -36,7 +36,10 @@ class UrlsRestApiCest
      */
     public function loadFixtures(UrlsRestApiTester $I): void
     {
-        $this->fixtures = $I->loadFixtures(UrlsRestApiFixtures::class);
+        /** @var \PyzTest\Glue\Urls\RestApi\UrlsRestApiFixtures $fixtures */
+        $fixtures = $I->loadFixtures(UrlsRestApiFixtures::class);
+
+        $this->fixtures = $fixtures;
     }
 
     /**
