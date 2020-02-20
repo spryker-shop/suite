@@ -11,12 +11,12 @@ use Spryker\Zed\ProductBundle\Communication\Plugin\ShoppingList\ReplaceBundledQu
 use Spryker\Zed\ProductDiscontinued\Communication\Plugin\ShoppingList\ProductDiscontinuedAddItemPreCheckPlugin;
 use Spryker\Zed\ShoppingList\ShoppingListDependencyProvider as SprykerShoppingListDependencyProvider;
 use Spryker\Zed\ShoppingListNote\Communication\Plugin\ItemCartNoteToShoppingListItemNoteMapperPlugin;
+use Spryker\Zed\ShoppingListNote\Communication\Plugin\ShoppingListItemCollectionNoteExpanderPlugin;
 use Spryker\Zed\ShoppingListNote\Communication\Plugin\ShoppingListItemNoteBeforeDeletePlugin;
-use Spryker\Zed\ShoppingListNote\Communication\Plugin\ShoppingListItemNoteExpanderPlugin;
 use Spryker\Zed\ShoppingListNote\Communication\Plugin\ShoppingListItemNotePostSavePlugin;
 use Spryker\Zed\ShoppingListProductOptionConnector\Communication\Plugin\ShoppingList\CartItemProductOptionToShoppingListItemProductOptionMapperPlugin;
+use Spryker\Zed\ShoppingListProductOptionConnector\Communication\Plugin\ShoppingList\ShoppingListItemCollectionProductOptionExpanderPlugin;
 use Spryker\Zed\ShoppingListProductOptionConnector\Communication\Plugin\ShoppingList\ShoppingListItemProductOptionBeforeDeletePlugin;
-use Spryker\Zed\ShoppingListProductOptionConnector\Communication\Plugin\ShoppingList\ShoppingListItemProductOptionExpanderPlugin;
 use Spryker\Zed\ShoppingListProductOptionConnector\Communication\Plugin\ShoppingList\ShoppingListItemProductOptionPostSavePlugin;
 
 class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvider
@@ -64,13 +64,23 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     }
 
     /**
+     * @deprecated Use `ShoppingListDependencyProvider::getItemCollectionExpanderPlugins()` instead.
+     *
      * @return \Spryker\Zed\ShoppingListExtension\Dependency\Plugin\ItemExpanderPluginInterface[]
      */
     protected function getItemExpanderPlugins(): array
     {
+        return [];
+    }
+
+    /**
+     * @return \Spryker\Zed\ShoppingListExtension\Dependency\Plugin\ShoppingListItemCollectionExpanderPluginInterface[]
+     */
+    protected function getItemCollectionExpanderPlugins(): array
+    {
         return [
-            new ShoppingListItemNoteExpanderPlugin(), #ShoppingListNoteFeature
-            new ShoppingListItemProductOptionExpanderPlugin(),
+            new ShoppingListItemCollectionNoteExpanderPlugin(),
+            new ShoppingListItemCollectionProductOptionExpanderPlugin(),
         ];
     }
 
