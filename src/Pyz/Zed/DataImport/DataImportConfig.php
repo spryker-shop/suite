@@ -50,6 +50,7 @@ use Spryker\Zed\ProductPackagingUnitDataImport\ProductPackagingUnitDataImportCon
 use Spryker\Zed\ProductQuantityDataImport\ProductQuantityDataImportConfig;
 use Spryker\Zed\QuoteRequestDataImport\QuoteRequestDataImportConfig;
 use Spryker\Zed\SalesOrderThresholdDataImport\SalesOrderThresholdDataImportConfig;
+use Spryker\Zed\SalesReturnDataImport\SalesReturnDataImportConfig;
 use Spryker\Zed\SharedCartDataImport\SharedCartDataImportConfig;
 use Spryker\Zed\ShipmentDataImport\ShipmentDataImportConfig;
 use Spryker\Zed\ShoppingListDataImport\ShoppingListDataImportConfig;
@@ -564,6 +565,7 @@ class DataImportConfig extends SprykerDataImportConfig
             ShipmentDataImportConfig::IMPORT_TYPE_SHIPMENT_METHOD_STORE,
             PaymentDataImportConfig::IMPORT_TYPE_PAYMENT_METHOD,
             PaymentDataImportConfig::IMPORT_TYPE_PAYMENT_METHOD_STORE,
+            SalesReturnDataImportConfig::IMPORT_TYPE_RETURN_REASON,
         ];
     }
 }
