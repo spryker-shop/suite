@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3e559dd8917e13558c7792b62a8a99de",
+    "content-hash": "dc63dcfc1773670c6d79179dd7a44de7",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1839,15 +1839,15 @@
             "authors": [
                 {
                     "name": "Alex Bilbie",
-                    "role": "Developer",
                     "email": "hello@alexbilbie.com",
-                    "homepage": "http://www.alexbilbie.com"
+                    "homepage": "http://www.alexbilbie.com",
+                    "role": "Developer"
                 },
                 {
                     "name": "Andy Millington",
-                    "role": "Developer",
                     "email": "andrew@noexceptions.io",
-                    "homepage": "https://www.noexceptions.io"
+                    "homepage": "https://www.noexceptions.io",
+                    "role": "Developer"
                 }
             ],
             "description": "A lightweight and powerful OAuth 2.0 authorization and resource server library with support for all the core specification grants. This library will allow you to secure your API with OAuth and allow your applications users to approve apps that want to access their data from your API.",
@@ -2766,18 +2766,18 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "role": "Developer",
-                    "email": "sebastian@phpeople.de"
+                    "email": "sebastian@phpeople.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "Developer",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "Developer"
                 }
             ],
             "description": "Library for handling version information and constraints",
@@ -3307,8 +3307,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "FilterIterator implementation that filters files based on a list of suffixes.",
@@ -3349,8 +3349,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Simple template engine.",
@@ -3398,8 +3398,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Utility class for timing",
@@ -4639,8 +4639,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
@@ -5037,7 +5037,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "160f58dfb27d6e335c6419c0be53520e3cc2e09b"
+                "reference": "b6c849612b020cef4a977433d428fb8f742a156f"
             },
             "require": {
                 "php": ">=7.2"
@@ -5596,6 +5596,8 @@
                 "spryker/shipment-extension": "*",
                 "spryker/shipment-gui": "*",
                 "spryker/shipments-rest-api": "*",
+                "spryker/shop-context": "*",
+                "spryker/shop-context-extension": "*",
                 "spryker/shopping-list": "*",
                 "spryker/shopping-list-data-import": "*",
                 "spryker/shopping-list-extension": "*",
@@ -5693,15 +5695,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-02-18T10:56:16+00:00"
+            "time": "2020-02-21T08:04:49+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-bugfix/cc-6396/cc-6876-separation-of-castomer-page-and-checkout-page",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "ec03da463421b5fd660be9efe469fd7b68ee543b"
+                "reference": "9030f2f32dafc35d4f180464775c0e7ca41a67fc"
             },
             "require": {
                 "php": ">=7.2"
@@ -5841,7 +5843,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-02-13T16:50:00+00:00"
+            "time": "2020-02-20T17:24:43+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -10660,8 +10662,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Copy/Paste Detector (CPD) for PHP code.",
@@ -11096,12 +11098,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/architecture-sniffer.git",
-                "reference": "6b31d83b82b0c4c944e68e2b8565726899093a12"
+                "reference": "886b4371134019ec4198ee684e2f35dc8e11e94c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/6b31d83b82b0c4c944e68e2b8565726899093a12",
-                "reference": "6b31d83b82b0c4c944e68e2b8565726899093a12",
+                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/886b4371134019ec4198ee684e2f35dc8e11e94c",
+                "reference": "886b4371134019ec4198ee684e2f35dc8e11e94c",
                 "shasum": ""
             },
             "require": {
@@ -11146,7 +11148,7 @@
                 "sniffer",
                 "standards"
             ],
-            "time": "2020-02-18T10:48:59+00:00"
+            "time": "2020-02-20T16:46:51+00:00"
         },
         {
             "name": "spryker/code-generator",
