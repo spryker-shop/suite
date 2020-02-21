@@ -115,7 +115,7 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
     protected function havePayments(CheckoutApiTester $I): void
     {
         $paymentProviderTransfer = $I->havePaymentProvider([
-            PaymentProviderTransfer::PAYMENT_PROVIDER_KEY => 'dummyPayment',
+            PaymentProviderTransfer::PAYMENT_PROVIDER_KEY => 'DummyPayment',
             PaymentProviderTransfer::NAME => 'dummyPayment',
         ]);
         $I->havePaymentMethodWithStore([
