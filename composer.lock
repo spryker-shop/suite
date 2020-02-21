@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9c1c19c8ed3e0bb4e49afcda3d6e21ef",
+    "content-hash": "c703e1c85772ba9eef137cd5166e66bb",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.133.18",
+            "version": "3.133.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "6f41bb144c415e89726eaad2ccdf4d0a54d6e7cf"
+                "reference": "e5a78b0704bba3024abac91a1009dde8f8ec1fa8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/6f41bb144c415e89726eaad2ccdf4d0a54d6e7cf",
-                "reference": "6f41bb144c415e89726eaad2ccdf4d0a54d6e7cf",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/e5a78b0704bba3024abac91a1009dde8f8ec1fa8",
+                "reference": "e5a78b0704bba3024abac91a1009dde8f8ec1fa8",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-02-19T19:12:22+00:00"
+            "time": "2020-02-20T19:10:17+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -2441,16 +2441,16 @@
         },
         {
             "name": "nette/robot-loader",
-            "version": "v3.2.1",
+            "version": "v3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/robot-loader.git",
-                "reference": "d2a100e1f5cab390c78bc88709abbc91249c3993"
+                "reference": "38e8a270567a4ad9fe716b40fcda5a6580afa3c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/robot-loader/zipball/d2a100e1f5cab390c78bc88709abbc91249c3993",
-                "reference": "d2a100e1f5cab390c78bc88709abbc91249c3993",
+                "url": "https://api.github.com/repos/nette/robot-loader/zipball/38e8a270567a4ad9fe716b40fcda5a6580afa3c0",
+                "reference": "38e8a270567a4ad9fe716b40fcda5a6580afa3c0",
                 "shasum": ""
             },
             "require": {
@@ -2478,8 +2478,8 @@
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause",
-                "GPL-2.0",
-                "GPL-3.0"
+                "GPL-2.0-only",
+                "GPL-3.0-only"
             ],
             "authors": [
                 {
@@ -2500,7 +2500,7 @@
                 "nette",
                 "trait"
             ],
-            "time": "2019-12-26T22:32:02+00:00"
+            "time": "2020-02-20T22:17:50+00:00"
         },
         {
             "name": "nette/schema",
@@ -3843,16 +3843,16 @@
         },
         {
             "name": "ramsey/uuid",
-            "version": "3.9.2",
+            "version": "3.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramsey/uuid.git",
-                "reference": "7779489a47d443f845271badbdcedfe4df8e06fb"
+                "reference": "7e1633a6964b48589b142d60542f9ed31bd37a92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/uuid/zipball/7779489a47d443f845271badbdcedfe4df8e06fb",
-                "reference": "7779489a47d443f845271badbdcedfe4df8e06fb",
+                "url": "https://api.github.com/repos/ramsey/uuid/zipball/7e1633a6964b48589b142d60542f9ed31bd37a92",
+                "reference": "7e1633a6964b48589b142d60542f9ed31bd37a92",
                 "shasum": ""
             },
             "require": {
@@ -3926,7 +3926,7 @@
                 "identifier",
                 "uuid"
             ],
-            "time": "2019-12-17T08:18:51+00:00"
+            "time": "2020-02-21T04:36:14+00:00"
         },
         {
             "name": "react/promise",
@@ -4952,6 +4952,44 @@
             "time": "2019-12-19T11:01:47+00:00"
         },
         {
+            "name": "spryker/shop-context-extension",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/shop-context-extension.git",
+                "reference": "0c9fa9eb8024dadc91f7851328a6b9abc96c76cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/shop-context-extension/zipball/0c9fa9eb8024dadc91f7851328a6b9abc96c76cb",
+                "reference": "0c9fa9eb8024dadc91f7851328a6b9abc96c76cb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ShopContextExtension module",
+            "time": "2020-02-20T08:21:35+00:00"
+        },
+        {
             "name": "spryker/silexphp",
             "version": "dev-master",
             "source": {
@@ -5033,11 +5071,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/mp-1720/mp-1721-merchant-stock-and-dataimport",
+            "version": "dev-feature/mp-1720/mp-1722-merchant-stock-zed-ui",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "42b6772ba0086e74a25149b64cb27612ac617056"
+                "reference": "78406d2f33ca1c07be9291b782ca7a66ba207066"
             },
             "require": {
                 "php": ">=7.2"
@@ -5694,7 +5732,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-02-20T12:29:03+00:00"
+            "time": "2020-02-21T15:24:15+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5702,7 +5740,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "27142f17235ae94bf97920b3b9846567cbd29ab7"
+                "reference": "2b67abc4bf00d4ab0576d9284344693575b9ee45"
             },
             "require": {
                 "php": ">=7.2"
@@ -5842,7 +5880,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-02-20T09:23:35+00:00"
+            "time": "2020-02-21T08:04:53+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -9366,16 +9404,16 @@
         },
         {
             "name": "codeception/lib-innerbrowser",
-            "version": "1.3.0",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/lib-innerbrowser.git",
-                "reference": "eb43279b3c1c34a10e1d4cda14e69924b0546ff2"
+                "reference": "2123542b1325cc349ac68868abe74638bcb32ab6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/lib-innerbrowser/zipball/eb43279b3c1c34a10e1d4cda14e69924b0546ff2",
-                "reference": "eb43279b3c1c34a10e1d4cda14e69924b0546ff2",
+                "url": "https://api.github.com/repos/Codeception/lib-innerbrowser/zipball/2123542b1325cc349ac68868abe74638bcb32ab6",
+                "reference": "2123542b1325cc349ac68868abe74638bcb32ab6",
                 "shasum": ""
             },
             "require": {
@@ -9415,7 +9453,7 @@
             "keywords": [
                 "codeception"
             ],
-            "time": "2020-01-27T09:23:41+00:00"
+            "time": "2020-02-20T14:46:50+00:00"
         },
         {
             "name": "codeception/module-asserts",
@@ -10858,12 +10896,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/composer-constrainer.git",
-                "reference": "13d92d63fc6225fffbc5248e73c15bc315c309f8"
+                "reference": "5eb01ad9cd6d6925a19a470c96284b0e9c8a5d9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/composer-constrainer/zipball/13d92d63fc6225fffbc5248e73c15bc315c309f8",
-                "reference": "13d92d63fc6225fffbc5248e73c15bc315c309f8",
+                "url": "https://api.github.com/repos/spryker-sdk/composer-constrainer/zipball/5eb01ad9cd6d6925a19a470c96284b0e9c8a5d9e",
+                "reference": "5eb01ad9cd6d6925a19a470c96284b0e9c8a5d9e",
                 "shasum": ""
             },
             "require": {
@@ -10893,7 +10931,7 @@
                 "proprietary"
             ],
             "description": "ComposerConstrainer module",
-            "time": "2019-12-19T16:44:51+00:00"
+            "time": "2020-02-20T14:11:02+00:00"
         },
         {
             "name": "spryker-sdk/composer-replace",
@@ -10992,12 +11030,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/spryk.git",
-                "reference": "28809455b03bf89571dc4049e067390af7d1f1d6"
+                "reference": "9098749a330c665c037501ce141ed7cdc75aa474"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/28809455b03bf89571dc4049e067390af7d1f1d6",
-                "reference": "28809455b03bf89571dc4049e067390af7d1f1d6",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/9098749a330c665c037501ce141ed7cdc75aa474",
+                "reference": "9098749a330c665c037501ce141ed7cdc75aa474",
                 "shasum": ""
             },
             "require": {
@@ -11041,7 +11079,7 @@
                 "proprietary"
             ],
             "description": "Spryk module",
-            "time": "2020-02-05T14:25:11+00:00"
+            "time": "2020-02-20T14:09:57+00:00"
         },
         {
             "name": "spryker-sdk/spryk-gui",
@@ -11049,12 +11087,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/spryk-gui.git",
-                "reference": "8ba537033974c2ae45b7db9ff848e8fa6aa3e7a5"
+                "reference": "d84b87710334535aa1717fd4c649fdea34895080"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk-gui/zipball/8ba537033974c2ae45b7db9ff848e8fa6aa3e7a5",
-                "reference": "8ba537033974c2ae45b7db9ff848e8fa6aa3e7a5",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk-gui/zipball/d84b87710334535aa1717fd4c649fdea34895080",
+                "reference": "d84b87710334535aa1717fd4c649fdea34895080",
                 "shasum": ""
             },
             "require": {
@@ -11089,7 +11127,7 @@
                 "proprietary"
             ],
             "description": "SprykGui module",
-            "time": "2019-12-19T14:29:36+00:00"
+            "time": "2020-02-20T14:09:48+00:00"
         },
         {
             "name": "spryker/architecture-sniffer",
@@ -11097,12 +11135,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/architecture-sniffer.git",
-                "reference": "6b31d83b82b0c4c944e68e2b8565726899093a12"
+                "reference": "886b4371134019ec4198ee684e2f35dc8e11e94c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/6b31d83b82b0c4c944e68e2b8565726899093a12",
-                "reference": "6b31d83b82b0c4c944e68e2b8565726899093a12",
+                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/886b4371134019ec4198ee684e2f35dc8e11e94c",
+                "reference": "886b4371134019ec4198ee684e2f35dc8e11e94c",
                 "shasum": ""
             },
             "require": {
@@ -11147,7 +11185,7 @@
                 "sniffer",
                 "standards"
             ],
-            "time": "2020-02-18T10:48:59+00:00"
+            "time": "2020-02-20T16:46:51+00:00"
         },
         {
             "name": "spryker/code-generator",
