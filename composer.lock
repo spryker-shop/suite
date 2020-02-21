@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d5989106c5b2d887ace47bd4e0470cf5",
+    "content-hash": "3d84f76cc958ffab42949ddbf3b8a9bd",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -4693,45 +4693,6 @@
             "time": "2020-02-06T13:41:38+00:00"
         },
         {
-            "name": "spryker-shop/cart-page-extension",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker-shop/cart-page-extension.git",
-                "reference": "fcf3e71f620ff88d818ceaa3188c6c9f1c841be8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/cart-page-extension/zipball/fcf3e71f620ff88d818ceaa3188c6c9f1c841be8",
-                "reference": "fcf3e71f620ff88d818ceaa3188c6c9f1c841be8",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "SprykerShop\\": "src/SprykerShop/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "CartPageExtension module",
-            "time": "2019-12-27T20:41:07+00:00"
-        },
-        {
             "name": "spryker/decimal-object",
             "version": "1.0.0",
             "source": {
@@ -5033,11 +4994,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/mp-1918/dev-merchant-products-in-catalog-and-search",
+            "version": "dev-feature/mp-1918/mp-1919-merchant-products-in-catalog-and-search",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "4094011cc98f15f94e420f26bd61745e690fbcac"
+                "reference": "31957de32411bd3f042a63a08fb3b42d8c3c6559"
             },
             "require": {
                 "php": ">=7.2"
@@ -5353,6 +5314,7 @@
                 "spryker/merchant-sales-order": "*",
                 "spryker/merchant-search": "*",
                 "spryker/merchant-user": "*",
+                "spryker/merchant-user-auth-gui-page": "*",
                 "spryker/messenger": "*",
                 "spryker/messenger-extension": "*",
                 "spryker/module-finder": "*",
@@ -5695,15 +5657,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-02-21T11:18:12+00:00"
+            "time": "2020-02-21T11:30:41+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/mp-1918/dev-merchant-products-in-catalog-and-search",
+            "version": "dev-feature/mp-1918/mp-1919-merchant-products-in-catalog-and-search",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "bb145def3e0672fdccde222b1ab0ff6814063daa"
+                "reference": "bc471380cadd525c3746e2808212f91a32708371"
             },
             "require": {
                 "php": ">=7.2"
@@ -5719,6 +5681,7 @@
                 "spryker-shop/cart-code-widget": "*",
                 "spryker-shop/cart-note-widget": "*",
                 "spryker-shop/cart-page": "*",
+                "spryker-shop/cart-page-extension": "*",
                 "spryker-shop/catalog-page": "*",
                 "spryker-shop/category-image-storage-widget": "*",
                 "spryker-shop/category-widget": "*",
@@ -5760,6 +5723,7 @@
                 "spryker-shop/language-switcher-widget": "*",
                 "spryker-shop/merchant-product-offer-widget": "*",
                 "spryker-shop/merchant-profile-page": "*",
+                "spryker-shop/merchant-switcher-widget": "*",
                 "spryker-shop/money-widget": "*",
                 "spryker-shop/multi-cart-page": "*",
                 "spryker-shop/multi-cart-widget": "*",
@@ -5843,7 +5807,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-02-21T11:18:31+00:00"
+            "time": "2020-02-21T11:35:07+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
