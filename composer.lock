@@ -5037,7 +5037,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "207000a6b91c542e80dcccf13fee330c6a12cef4"
+                "reference": "a0321bd20b0ee61442668f339d760ef21630150c"
             },
             "require": {
                 "php": ">=7.2"
@@ -5693,7 +5693,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-02-20T13:16:13+00:00"
+            "time": "2020-02-21T16:33:21+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -11346,6 +11346,44 @@
                 "standards"
             ],
             "time": "2020-01-21T07:59:37+00:00"
+        },
+        {
+            "name": "spryker/shop-context-extension",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/shop-context-extension.git",
+                "reference": "0c9fa9eb8024dadc91f7851328a6b9abc96c76cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/shop-context-extension/zipball/0c9fa9eb8024dadc91f7851328a6b9abc96c76cb",
+                "reference": "0c9fa9eb8024dadc91f7851328a6b9abc96c76cb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ShopContextExtension module",
+            "time": "2020-02-20T08:21:35+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
