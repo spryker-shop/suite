@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\ProductLabel;
 
-use Orm\Zed\ProductLabel\Persistence\Map\SpyProductLabelTableMap;
 use Orm\Zed\ProductLabel\Persistence\SpyProductLabel;
 use Orm\Zed\ProductLabel\Persistence\SpyProductLabelLocalizedAttributesQuery;
 use Orm\Zed\ProductLabel\Persistence\SpyProductLabelProductAbstractQuery;
