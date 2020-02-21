@@ -136,7 +136,7 @@ class CheckoutRestApiFixtures implements FixturesBuilderInterface, FixturesConta
             ]
         );
 
-        //$this->havePayments($I);
+        $this->havePayments($I);
 
         return $this;
     }
@@ -149,8 +149,8 @@ class CheckoutRestApiFixtures implements FixturesBuilderInterface, FixturesConta
     protected function havePayments(CheckoutApiTester $I): void
     {
         $paymentProviderTransfer = $I->havePaymentProvider([
-            PaymentProviderTransfer::PAYMENT_PROVIDER_KEY => 'dummyPayment',
-            PaymentProviderTransfer::NAME => 'dummyPayment',
+            PaymentProviderTransfer::PAYMENT_PROVIDER_KEY => 'DummyPayment',
+            PaymentProviderTransfer::NAME => 'Dummy Payment',
         ]);
         $I->havePaymentMethodWithStore([
             PaymentMethodTransfer::IS_ACTIVE => true,

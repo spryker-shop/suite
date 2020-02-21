@@ -102,7 +102,7 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
             [$I->getQuoteItemOverrideData($I->haveProductWithStock(), $this->shipmentMethodTransfer, 10)]
         );
 
-        //$this->havePayments($I);
+        $this->havePayments($I);
 
         return $this;
     }
@@ -115,8 +115,8 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
     protected function havePayments(CheckoutApiTester $I): void
     {
         $paymentProviderTransfer = $I->havePaymentProvider([
-            PaymentProviderTransfer::PAYMENT_PROVIDER_KEY => 'dummyPayment',
-            PaymentProviderTransfer::NAME => 'dummyPayment',
+            PaymentProviderTransfer::PAYMENT_PROVIDER_KEY => 'DummyPayment',
+            PaymentProviderTransfer::NAME => 'Dummy Payment',
         ]);
         $I->havePaymentMethodWithStore([
             PaymentMethodTransfer::IS_ACTIVE => true,
