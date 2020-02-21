@@ -7,10 +7,10 @@
 
 namespace Pyz\Yves\ShopContext;
 
-use Spryker\Yves\ShopContext\ShopContextDependencyProvider as SprykerShopShopContextDependencyProvider;
+use Spryker\Yves\ShopContext\ShopContextDependencyProvider as SprykerShopContextDependencyProvider;
 use SprykerShop\Yves\MerchantSwitcherWidget\Plugin\ShopApplication\MerchantShopContextExpanderPlugin;
 
-class ShopContextDependencyProvider extends SprykerShopShopContextDependencyProvider
+class ShopContextDependencyProvider extends SprykerShopContextDependencyProvider
 {
     /**
      * @return \Spryker\Shared\ShopContextExtension\Dependency\Plugin\ShopContextExpanderPluginInterface[]
