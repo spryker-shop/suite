@@ -28,6 +28,7 @@ use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Sales\AmountLeadProduc
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Sales\AmountSalesUnitHydrateOrderPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\SalesExtension\AmountSalesUnitOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\SalesExtension\ProductPackagingUnitOrderItemExpanderPreSavePlugin;
+use Spryker\Zed\Sales\Communication\Plugin\Sales\OrderReferenceOrderExpanderPlugin;
 use Spryker\Zed\Sales\SalesDependencyProvider as SprykerSalesDependencyProvider;
 use Spryker\Zed\SalesConfigurableBundle\Communication\Plugin\Sales\ConfiguredBundleItemPreTransformerPlugin;
 use Spryker\Zed\SalesConfigurableBundle\Communication\Plugin\Sales\ConfiguredBundleOrderExpanderPlugin;
@@ -74,6 +75,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new CommentThreadOrderExpanderPlugin(),
             new ConfiguredBundleOrderExpanderPlugin(),
             new ProductBundleOptionOrderExpanderPlugin(),
+            new OrderReferenceOrderExpanderPlugin(),
         ];
     }
 
