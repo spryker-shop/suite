@@ -136,7 +136,7 @@ class CheckoutRestApiFixtures implements FixturesBuilderInterface, FixturesConta
             ]
         );
 
-        $this->havePayments($I);
+        //$this->havePayments($I);
 
         return $this;
     }

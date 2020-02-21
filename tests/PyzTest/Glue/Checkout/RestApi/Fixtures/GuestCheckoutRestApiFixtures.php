@@ -127,7 +127,7 @@ class GuestCheckoutRestApiFixtures implements FixturesBuilderInterface, Fixtures
             ]
         );
 
-        $this->havePayments($I);
+        //$this->havePayments($I);
 
         return $this;
     }

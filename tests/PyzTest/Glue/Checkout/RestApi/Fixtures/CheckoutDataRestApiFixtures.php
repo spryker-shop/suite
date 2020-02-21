@@ -102,7 +102,7 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
             [$I->getQuoteItemOverrideData($I->haveProductWithStock(), $this->shipmentMethodTransfer, 10)]
         );
 
-        $this->havePayments($I);
+        //$this->havePayments($I);
 
         return $this;
     }

@@ -113,7 +113,7 @@ class GuestCheckoutDataRestApiFixtures implements FixturesBuilderInterface, Fixt
             [$I->getQuoteItemOverrideData($I->haveProductWithStock(), $this->shipmentMethodTransfer, 10)]
         );
 
-        $this->havePayments($I);
+        //$this->havePayments($I);
 
         return $this;
     }
