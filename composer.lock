@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "99c6dd3f6cedfe0c421c1c54d86f61c4",
+    "content-hash": "c146994547e975eb5d0b7e8421475d57",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -3642,7 +3642,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -5033,11 +5033,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/mr-185/mr-195-merchant-order-infrastructure",
+            "version": "dev-feature/mr-52/mr-363-create-merchant-oms-module",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "66250e13ef0876c1062fb1703ad1e9e22414cf22"
+                "reference": "838cfe9883d24641c916f3afd22058ab9afb2d27"
             },
             "require": {
                 "php": ">=7.2"
@@ -5326,6 +5326,8 @@
                 "spryker/merchant-extension": "*",
                 "spryker/merchant-gui": "*",
                 "spryker/merchant-gui-extension": "*",
+                "spryker/merchant-oms": "*",
+                "spryker/merchant-oms-data-import": "*",
                 "spryker/merchant-opening-hours": "*",
                 "spryker/merchant-opening-hours-data-import": "*",
                 "spryker/merchant-opening-hours-storage": "*",
@@ -5351,8 +5353,10 @@
                 "spryker/merchant-relationship-sales-order-threshold-gui": "*",
                 "spryker/merchant-relationship-sales-order-threshold-gui-extension": "*",
                 "spryker/merchant-sales-order": "*",
+                "spryker/merchant-sales-order-extension": "*",
                 "spryker/merchant-search": "*",
                 "spryker/merchant-user": "*",
+                "spryker/merchant-user-auth-gui-page": "*",
                 "spryker/messenger": "*",
                 "spryker/messenger-extension": "*",
                 "spryker/module-finder": "*",
@@ -5693,7 +5697,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-02-17T17:49:30+00:00"
+            "time": "2020-02-24T07:54:35+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -8707,8 +8711,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -11793,8 +11797,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",

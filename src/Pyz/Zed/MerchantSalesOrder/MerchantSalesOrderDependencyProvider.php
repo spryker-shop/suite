@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\MerchantSalesOrder;
 
-use Spryker\Zed\MerchantOms\Communication\Plugin\MerchantSalesOrder\MerchantOmsMerchantOrderPostCreatePlugin;
+use Spryker\Zed\MerchantOms\Communication\Plugin\MerchantSalesOrder\EventTriggerMerchantOrderPostCreatePlugin;
 use Spryker\Zed\MerchantSalesOrder\MerchantSalesOrderDependencyProvider as SprykerMerchantSalesOrderDependencyProvider;
 
 class MerchantSalesOrderDependencyProvider extends SprykerMerchantSalesOrderDependencyProvider
@@ -18,7 +18,7 @@ class MerchantSalesOrderDependencyProvider extends SprykerMerchantSalesOrderDepe
     protected function getMerchantOrderPostCreatePlugins(): array
     {
         return [
-            new MerchantOmsMerchantOrderPostCreatePlugin(),
+            new EventTriggerMerchantOrderPostCreatePlugin(),
         ];
     }
 }
