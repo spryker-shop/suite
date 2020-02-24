@@ -268,6 +268,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new FormApplicationPlugin(),
             new ValidatorApplicationPlugin(),
             new SecurityApplicationPlugin(),
+            new ShopContextApplicationPlugin(),
         ];
 
         if (class_exists(WebProfilerApplicationPlugin::class)) {
