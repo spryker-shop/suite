@@ -39,7 +39,6 @@ use Spryker\Zed\ProductBundle\Communication\Plugin\Calculation\CalculateBundlePr
 use Spryker\Zed\ProductOption\Communication\Plugin\ProductOptionTaxRateCalculatorPlugin;
 use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Calculation\AddSalesOrderThresholdExpenseCalculatorPlugin;
 use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Calculation\RemoveSalesOrderThresholdExpenseCalculatorPlugin;
-use Spryker\Zed\SalesReturn\Communication\Plugin\Calculation\RemunerationTotalCalculatorPlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\Calculation\FilterObsoleteShipmentExpensesCalculatorPlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\ShipmentTaxRateCalculatorPlugin;
 use Spryker\Zed\Tax\Communication\Plugin\Calculator\TaxAmountAfterCancellationCalculatorPlugin;
@@ -264,7 +263,6 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new TaxAmountAfterCancellationCalculatorPlugin(),
 
             new RefundableAmountCalculatorPlugin(),
-            new RemunerationTotalCalculatorPlugin(),
 
             new ExpenseTotalCalculatorPlugin(),
             new DiscountTotalCalculatorPlugin(),
