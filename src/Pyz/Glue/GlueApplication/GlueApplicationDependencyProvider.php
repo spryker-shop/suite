@@ -124,6 +124,7 @@ use Spryker\Glue\Session\Plugin\Application\SessionApplicationPlugin;
 use Spryker\Glue\SharedCartsRestApi\Plugin\GlueApplication\SharedCartByCartIdResourceRelationshipPlugin;
 use Spryker\Glue\SharedCartsRestApi\Plugin\GlueApplication\SharedCartsResourceRoutePlugin;
 use Spryker\Glue\SharedCartsRestApi\SharedCartsRestApiConfig;
+use Spryker\Glue\ShoppingListsRestApi\Plugin\GlueApplication\ShoppingListItemByShoppingListResourceRelationshipPlugin;
 use Spryker\Glue\ShoppingListsRestApi\Plugin\GlueApplication\ShoppingListItemsResourcePlugin;
 use Spryker\Glue\ShoppingListsRestApi\Plugin\GlueApplication\ShoppingListsResourcePlugin;
 use Spryker\Glue\ShoppingListsRestApi\ShoppingListsRestApiConfig;
@@ -476,6 +477,10 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         $resourceRelationshipCollection->addRelationship(
             ShoppingListsRestApiConfig::RESOURCE_SHOPPING_LIST_ITEMS,
             new ConcreteProductBySkuResourceRelationshipPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            ShoppingListsRestApiConfig::RESOURCE_SHOPPING_LISTS,
+            new ShoppingListItemByShoppingListResourceRelationshipPlugin()
         );
 
         return $resourceRelationshipCollection;
