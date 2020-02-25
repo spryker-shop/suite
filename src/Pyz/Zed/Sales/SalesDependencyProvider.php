@@ -39,7 +39,7 @@ use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ProductIdHydrat
 use Spryker\Zed\SalesQuantity\Communication\Plugin\SalesExtension\IsQuantitySplittableOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\SalesQuantity\Communication\Plugin\SalesExtension\NonSplittableItemTransformerStrategyPlugin;
 use Spryker\Zed\SalesReclamationGui\Communication\Plugin\Sales\ReclamationSalesTablePlugin;
-use Spryker\Zed\SalesReturn\Communication\Plugin\Sales\RemunerationTotalOrderExpanderPluginInterface;
+use Spryker\Zed\SalesReturn\Communication\Plugin\Sales\RemunerationTotalOrderExpanderPlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\ShipmentOrderHydratePlugin;
 
 class SalesDependencyProvider extends SprykerSalesDependencyProvider
@@ -77,7 +77,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new ConfiguredBundleOrderExpanderPlugin(),
             new ProductBundleOptionOrderExpanderPlugin(),
             new OrderReferenceOrderExpanderPlugin(),
-            new RemunerationTotalOrderExpanderPluginInterface(),
+            new RemunerationTotalOrderExpanderPlugin(),
         ];
     }
 
