@@ -52,8 +52,6 @@ class ReturnReasonsRestApiCest
      */
     public function requestReturnReasons(SalesReturnsApiTester $I): void
     {
-        // Arrange
-
         // Act
         $I->sendGET($I->buildGuestReturnReasonsUrl());
 
