@@ -66,7 +66,7 @@ class CheckoutRestApiConfig extends SprykerCheckoutRestApiConfig
     /**
      * @return bool
      */
-    public function isAllowShipmentMethodsInAttributes(): bool
+    public function isShipmentMethodsMappedToAttributes(): bool
     {
         return false;
     }
@@ -74,7 +74,7 @@ class CheckoutRestApiConfig extends SprykerCheckoutRestApiConfig
     /**
      * @return bool
      */
-    public function isAllowPaymentProvidersInAttributes(): bool
+    public function isPaymentProvidersMappedToAttributes(): bool
     {
         return false;
     }
