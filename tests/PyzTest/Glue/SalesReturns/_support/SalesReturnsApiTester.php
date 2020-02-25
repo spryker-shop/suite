@@ -31,21 +31,6 @@ class SalesReturnsApiTester extends ApiEndToEndTester
 {
     use _generated\SalesReturnsApiTesterActions;
 
-
-    /**
-     * @param string[] $includes
-     *
-     * @return string
-     */
-    public function formatQueryInclude(array $includes = []): string
-    {
-        if (!$includes) {
-            return '';
-        }
-
-        return sprintf('?%s=%s', RequestConstantsInterface::QUERY_INCLUDE, implode(',', $includes));
-    }
-
     /**
      * @param string[] $includes
      *
@@ -59,5 +44,19 @@ class SalesReturnsApiTester extends ApiEndToEndTester
                 'resourceReturnReasons' => SalesReturnsRestApiConfig::RESOURCE_RETURN_REASONS,
             ]
         );
+    }
+
+    /**
+     * @param string[] $includes
+     *
+     * @return string
+     */
+    public function formatQueryInclude(array $includes = []): string
+    {
+        if (!$includes) {
+            return '';
+        }
+
+        return sprintf('?%s=%s', RequestConstantsInterface::QUERY_INCLUDE, implode(',', $includes));
     }
 }
