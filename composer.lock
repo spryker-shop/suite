@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d5989106c5b2d887ace47bd4e0470cf5",
+    "content-hash": "3e559dd8917e13558c7792b62a8a99de",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.133.19",
+            "version": "3.133.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "e5a78b0704bba3024abac91a1009dde8f8ec1fa8"
+                "reference": "c5f84f9edafb6372dafdbc87cb588772761179ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/e5a78b0704bba3024abac91a1009dde8f8ec1fa8",
-                "reference": "e5a78b0704bba3024abac91a1009dde8f8ec1fa8",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/c5f84f9edafb6372dafdbc87cb588772761179ca",
+                "reference": "c5f84f9edafb6372dafdbc87cb588772761179ca",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-02-20T19:10:17+00:00"
+            "time": "2020-02-21T19:09:49+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -1747,16 +1747,16 @@
         },
         {
             "name": "league/flysystem-aws-s3-v3",
-            "version": "1.0.23",
+            "version": "1.0.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem-aws-s3-v3.git",
-                "reference": "15b0cdeab7240bf8e8bffa85ae5275bbc3692bf4"
+                "reference": "4382036bde5dc926f9b8b337e5bdb15e5ec7b570"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem-aws-s3-v3/zipball/15b0cdeab7240bf8e8bffa85ae5275bbc3692bf4",
-                "reference": "15b0cdeab7240bf8e8bffa85ae5275bbc3692bf4",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-aws-s3-v3/zipball/4382036bde5dc926f9b8b337e5bdb15e5ec7b570",
+                "reference": "4382036bde5dc926f9b8b337e5bdb15e5ec7b570",
                 "shasum": ""
             },
             "require": {
@@ -1790,7 +1790,7 @@
                 }
             ],
             "description": "Flysystem adapter for the AWS S3 SDK v3.x",
-            "time": "2019-06-05T17:18:29+00:00"
+            "time": "2020-02-23T13:31:58+00:00"
         },
         {
             "name": "league/oauth2-server",
@@ -3053,16 +3053,16 @@
         },
         {
             "name": "phpseclib/phpseclib",
-            "version": "2.0.23",
+            "version": "2.0.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "c78eb5058d5bb1a183133c36d4ba5b6675dfa099"
+                "reference": "40998159a0907cc523e1f2d1904d45765613a617"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/c78eb5058d5bb1a183133c36d4ba5b6675dfa099",
-                "reference": "c78eb5058d5bb1a183133c36d4ba5b6675dfa099",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/40998159a0907cc523e1f2d1904d45765613a617",
+                "reference": "40998159a0907cc523e1f2d1904d45765613a617",
                 "shasum": ""
             },
             "require": {
@@ -3141,7 +3141,7 @@
                 "x.509",
                 "x509"
             ],
-            "time": "2019-09-17T03:41:22+00:00"
+            "time": "2020-02-04T12:15:04+00:00"
         },
         {
             "name": "phpspec/prophecy",
@@ -4693,6 +4693,45 @@
             "time": "2020-02-06T13:41:38+00:00"
         },
         {
+            "name": "spryker-shop/cart-page-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/cart-page-extension.git",
+                "reference": "fcf3e71f620ff88d818ceaa3188c6c9f1c841be8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/cart-page-extension/zipball/fcf3e71f620ff88d818ceaa3188c6c9f1c841be8",
+                "reference": "fcf3e71f620ff88d818ceaa3188c6c9f1c841be8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CartPageExtension module",
+            "time": "2019-12-27T20:41:07+00:00"
+        },
+        {
             "name": "spryker/decimal-object",
             "version": "1.0.0",
             "source": {
@@ -4994,11 +5033,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/mp-1918/dev-merchant-products-in-catalog-and-search",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "5331bb793e1d8f35ba570ba8f43a7267799909d4"
+                "reference": "8bdc74d65a7c3a371ff0cb52d0e5b9c1844c1dfd"
             },
             "require": {
                 "php": ">=7.2"
@@ -5314,7 +5353,6 @@
                 "spryker/merchant-sales-order": "*",
                 "spryker/merchant-search": "*",
                 "spryker/merchant-user": "*",
-                "spryker/merchant-user-auth-gui-page": "*",
                 "spryker/messenger": "*",
                 "spryker/messenger-extension": "*",
                 "spryker/module-finder": "*",
@@ -5657,15 +5695,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-02-21T11:46:21+00:00"
+            "time": "2020-02-24T13:44:40+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/mp-1918/dev-merchant-products-in-catalog-and-search",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "56a797355d5c45367c5a41bce50e59a859dba032"
+                "reference": "3a3c65fcc6ebf778158b8a44147f276240ddc1b2"
             },
             "require": {
                 "php": ">=7.2"
@@ -5681,7 +5719,6 @@
                 "spryker-shop/cart-code-widget": "*",
                 "spryker-shop/cart-note-widget": "*",
                 "spryker-shop/cart-page": "*",
-                "spryker-shop/cart-page-extension": "*",
                 "spryker-shop/catalog-page": "*",
                 "spryker-shop/category-image-storage-widget": "*",
                 "spryker-shop/category-widget": "*",
@@ -5723,7 +5760,6 @@
                 "spryker-shop/language-switcher-widget": "*",
                 "spryker-shop/merchant-product-offer-widget": "*",
                 "spryker-shop/merchant-profile-page": "*",
-                "spryker-shop/merchant-switcher-widget": "*",
                 "spryker-shop/money-widget": "*",
                 "spryker-shop/multi-cart-page": "*",
                 "spryker-shop/multi-cart-widget": "*",
@@ -5807,7 +5843,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-02-21T11:46:14+00:00"
+            "time": "2020-02-24T13:33:46+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8673,8 +8709,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -8852,16 +8888,16 @@
         },
         {
             "name": "voku/portable-utf8",
-            "version": "5.4.39",
+            "version": "5.4.40",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/portable-utf8.git",
-                "reference": "e462e8985a80cbd927765fd7e09f52bb103c9797"
+                "reference": "1b558059a84d566843c8d0a2ba1d9c3051764565"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/e462e8985a80cbd927765fd7e09f52bb103c9797",
-                "reference": "e462e8985a80cbd927765fd7e09f52bb103c9797",
+                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/1b558059a84d566843c8d0a2ba1d9c3051764565",
+                "reference": "1b558059a84d566843c8d0a2ba1d9c3051764565",
                 "shasum": ""
             },
             "require": {
@@ -8922,7 +8958,7 @@
                 "utf-8",
                 "utf8"
             ],
-            "time": "2020-01-30T15:12:06+00:00"
+            "time": "2020-02-22T23:18:32+00:00"
         },
         {
             "name": "webmozart/assert",
