@@ -4885,47 +4885,6 @@
             "time": "2019-12-16T14:08:25+00:00"
         },
         {
-            "name": "spryker/merchant-search",
-            "version": "0.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/merchant-search.git",
-                "reference": "e83cb18b6f37330203ff68242b2bc33eba2bc5ec"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-search/zipball/e83cb18b6f37330203ff68242b2bc33eba2bc5ec",
-                "reference": "e83cb18b6f37330203ff68242b2bc33eba2bc5ec",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2",
-                "spryker/kernel": "^3.33.0",
-                "spryker/merchant": "^2.0.0",
-                "spryker/zed-request": "^3.0.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "MerchantSearch module",
-            "time": "2020-02-05T12:11:54+00:00"
-        },
-        {
             "name": "spryker/rabbit-mq",
             "version": "dev-master",
             "source": {
@@ -4988,44 +4947,6 @@
                 "standards"
             ],
             "time": "2019-12-19T11:01:47+00:00"
-        },
-        {
-            "name": "spryker/shop-context-extension",
-            "version": "0.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/shop-context-extension.git",
-                "reference": "0c9fa9eb8024dadc91f7851328a6b9abc96c76cb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/shop-context-extension/zipball/0c9fa9eb8024dadc91f7851328a6b9abc96c76cb",
-                "reference": "0c9fa9eb8024dadc91f7851328a6b9abc96c76cb",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "ShopContextExtension module",
-            "time": "2020-02-20T08:21:35+00:00"
         },
         {
             "name": "spryker/silexphp",
@@ -5113,7 +5034,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "72331044acff06b3c32b7c49c702f3beea9065fa"
+                "reference": "9a543572ca6c52d0fb682f4e4485d24b23390431"
             },
             "require": {
                 "php": ">=7.2"
@@ -5407,6 +5328,7 @@
                 "spryker/merchant-opening-hours-storage": "*",
                 "spryker/merchant-product-offer": "*",
                 "spryker/merchant-product-offer-data-import": "*",
+                "spryker/merchant-product-offer-search": "*",
                 "spryker/merchant-product-offer-storage": "*",
                 "spryker/merchant-product-offer-storage-extension": "*",
                 "spryker/merchant-profile": "*",
@@ -5426,6 +5348,7 @@
                 "spryker/merchant-relationship-sales-order-threshold-gui": "*",
                 "spryker/merchant-relationship-sales-order-threshold-gui-extension": "*",
                 "spryker/merchant-sales-order": "*",
+                "spryker/merchant-search": "*",
                 "spryker/merchant-user": "*",
                 "spryker/messenger": "*",
                 "spryker/messenger-extension": "*",
@@ -5560,6 +5483,7 @@
                 "spryker/product-offer": "*",
                 "spryker/product-offer-availability": "*",
                 "spryker/product-offer-availability-storage": "*",
+                "spryker/product-offer-sales": "*",
                 "spryker/product-offer-stock": "*",
                 "spryker/product-offer-stock-data-import": "*",
                 "spryker/product-offer-validity": "*",
@@ -5669,6 +5593,8 @@
                 "spryker/shipment-extension": "*",
                 "spryker/shipment-gui": "*",
                 "spryker/shipments-rest-api": "*",
+                "spryker/shop-context": "*",
+                "spryker/shop-context-extension": "*",
                 "spryker/shopping-list": "*",
                 "spryker/shopping-list-data-import": "*",
                 "spryker/shopping-list-extension": "*",
@@ -5766,7 +5692,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-02-24T14:32:35+00:00"
+            "time": "2020-02-25T15:22:36+00:00"
         },
         {
             "name": "spryker/spryker-shop",
