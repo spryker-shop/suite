@@ -450,8 +450,9 @@ class AddressStepTest extends Unit
      *
      * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCustomerClientInterface
      */
-    protected function createCustomerClientMock(CustomerTransfer $customerTransfer): CheckoutPageToCustomerClientInterface
-    {
+    protected function createCustomerClientMock(
+        CustomerTransfer $customerTransfer
+    ): CheckoutPageToCustomerClientInterface {
         $customerClientMock = $this->getMockBuilder(CheckoutPageToCustomerClientInterface::class)->getMock();
 
         $customerClientMock->method('getCustomer')->willReturn($customerTransfer);
