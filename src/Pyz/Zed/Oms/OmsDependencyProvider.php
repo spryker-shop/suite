@@ -20,6 +20,7 @@ use Spryker\Zed\Oms\OmsDependencyProvider as SprykerOmsDependencyProvider;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Oms\ProductBundleAvailabilityHandlerPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Oms\ProductPackagingUnitReservationAggregationStrategyPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Reservation\LeadProductReservationHandlerPlugin;
+use Spryker\Zed\SalesReturn\Communication\Plugin\Oms\Command\StartReturnCommandPlugin;
 use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentManualEventGrouperPlugin;
 use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentOrderMailExpanderPlugin;
 
@@ -51,6 +52,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             $commandCollection->add(new SendOrderShippedPlugin(), 'Oms/SendOrderShipped');
             $commandCollection->add(new ShipGiftCardByEmailCommandPlugin(), 'GiftCardMailConnector/ShipGiftCard');
             $commandCollection->add(new CreateGiftCardCommandPlugin(), 'GiftCard/CreateGiftCard');
+            $commandCollection->add(new StartReturnCommandPlugin(), 'Return/StartReturn');
 
             return $commandCollection;
         });
