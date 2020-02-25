@@ -73,8 +73,6 @@ class ReturnReasonsRestApiCest
      */
     public function requestReturnReasonsWithCorrectMapping(SalesReturnsApiTester $I): void
     {
-        // Arrange
-
         // Act
         $I->sendGET($I->buildGuestReturnReasonsUrl() . '?page[offset]=0&page[limit]=1');
 
@@ -91,8 +89,6 @@ class ReturnReasonsRestApiCest
      */
     public function requestReturnReasonsWithTranslatedReason(SalesReturnsApiTester $I): void
     {
-        // Arrange
-
         // Act
         $I->sendGET($I->buildGuestReturnReasonsUrl() . '?page[offset]=0&page[limit]=1');
 
