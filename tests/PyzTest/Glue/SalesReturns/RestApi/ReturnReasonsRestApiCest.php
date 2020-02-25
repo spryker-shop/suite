@@ -7,8 +7,10 @@
 
 namespace PyzTest\Glue\SalesReturns\RestApi;
 
+use Codeception\Util\HttpCode;
 use PyzTest\Glue\SalesReturns\RestApi\Fixtures\ReturnReasonsRestApiFixtures;
 use PyzTest\Glue\SalesReturns\SalesReturnsApiTester;
+use Spryker\Glue\SalesReturnsRestApi\SalesReturnsRestApiConfig;
 
 /**
  * Auto-generated group annotations
@@ -39,5 +41,37 @@ class ReturnReasonsRestApiCest
         $fixtures = $I->loadFixtures(ReturnReasonsRestApiFixtures::class);
 
         $this->fixtures = $fixtures;
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\SalesReturns\SalesReturnsApiTester $I
+     *
+     * @return void
+     */
+    public function requestReturnReasons(SalesReturnsApiTester $I): void
+    {
+        // Arrange
+
+        // Act
+        $I->sendGET($I->buildGuestReturnReasonsUrl());
+
+        // Assert
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+
+        $I->amSure('Response data contains resource collection')
+            ->whenI()
+            ->seeResponseDataContainsResourceCollectionOfType(SalesReturnsRestApiConfig::RESOURCE_RETURN_REASONS);
+
+        $I->amSure('Resource collection has resource')
+            ->whenI()
+            ->seeResourceCollectionHasResourceWithId(null);
+
+        $I->amSure('Resource has correct self-link')
+            ->whenI()
+            ->seeResourceByIdHasSelfLink(null, $I->buildGuestReturnReasonsUrl());
     }
 }

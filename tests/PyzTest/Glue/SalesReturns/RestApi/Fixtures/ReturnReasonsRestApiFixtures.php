@@ -7,6 +7,7 @@
 
 namespace PyzTest\Glue\SalesReturns\RestApi\Fixtures;
 
+use PyzTest\Glue\SalesReturns\SalesReturnsApiTester;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
@@ -17,11 +18,27 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  * @group Glue
  * @group SalesReturns
  * @group RestApi
- * @group GuestSalesReturnsRestApiFixtures
+ * @group ReturnReasonsRestApiFixtures
  * Add your own group annotations below this line
  * @group EndToEnd
  */
 class ReturnReasonsRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
     use ReturnReasonsRestApiFixturesTrait;
+
+    /**
+     * @param \PyzTest\Glue\SalesReturns\SalesReturnsApiTester $I
+     *
+     * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
+     */
+    public function buildFixtures(SalesReturnsApiTester $I): FixturesContainerInterface
+    {
+        $I->haveReturnReasons([
+            'return.return_reasons.fake_reason_1.name',
+            'return.return_reasons.fake_reason_2.name',
+            'return.return_reasons.fake_reason_3.name',
+        ]);
+
+        return $this;
+    }
 }
