@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.133.19",
+            "version": "3.133.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "e5a78b0704bba3024abac91a1009dde8f8ec1fa8"
+                "reference": "3501468a7ef894703141d1c4d68caa3b914cbd96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/e5a78b0704bba3024abac91a1009dde8f8ec1fa8",
-                "reference": "e5a78b0704bba3024abac91a1009dde8f8ec1fa8",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/3501468a7ef894703141d1c4d68caa3b914cbd96",
+                "reference": "3501468a7ef894703141d1c4d68caa3b914cbd96",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-02-20T19:10:17+00:00"
+            "time": "2020-02-24T19:15:07+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -1747,16 +1747,16 @@
         },
         {
             "name": "league/flysystem-aws-s3-v3",
-            "version": "1.0.23",
+            "version": "1.0.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem-aws-s3-v3.git",
-                "reference": "15b0cdeab7240bf8e8bffa85ae5275bbc3692bf4"
+                "reference": "4382036bde5dc926f9b8b337e5bdb15e5ec7b570"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem-aws-s3-v3/zipball/15b0cdeab7240bf8e8bffa85ae5275bbc3692bf4",
-                "reference": "15b0cdeab7240bf8e8bffa85ae5275bbc3692bf4",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-aws-s3-v3/zipball/4382036bde5dc926f9b8b337e5bdb15e5ec7b570",
+                "reference": "4382036bde5dc926f9b8b337e5bdb15e5ec7b570",
                 "shasum": ""
             },
             "require": {
@@ -1790,7 +1790,7 @@
                 }
             ],
             "description": "Flysystem adapter for the AWS S3 SDK v3.x",
-            "time": "2019-06-05T17:18:29+00:00"
+            "time": "2020-02-23T13:31:58+00:00"
         },
         {
             "name": "league/oauth2-server",
@@ -2785,16 +2785,16 @@
         },
         {
             "name": "php-amqplib/php-amqplib",
-            "version": "v2.11.0",
+            "version": "v2.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-amqplib/php-amqplib.git",
-                "reference": "9ee212baced63442ca1ab029acde38e1144a00b8"
+                "reference": "cfbfaf6262cd8d017f29862164f75e265d832434"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/9ee212baced63442ca1ab029acde38e1144a00b8",
-                "reference": "9ee212baced63442ca1ab029acde38e1144a00b8",
+                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/cfbfaf6262cd8d017f29862164f75e265d832434",
+                "reference": "cfbfaf6262cd8d017f29862164f75e265d832434",
                 "shasum": ""
             },
             "require": {
@@ -2802,6 +2802,9 @@
                 "ext-sockets": "*",
                 "php": ">=5.6.3",
                 "phpseclib/phpseclib": "^2.0.0"
+            },
+            "conflict": {
+                "php": "7.4.0 - 7.4.1"
             },
             "replace": {
                 "videlalvaro/php-amqplib": "self.version"
@@ -2855,7 +2858,7 @@
                 "queue",
                 "rabbitmq"
             ],
-            "time": "2019-11-19T15:15:19+00:00"
+            "time": "2020-02-24T17:37:52+00:00"
         },
         {
             "name": "phpdocumentor/graphviz",
@@ -3053,16 +3056,16 @@
         },
         {
             "name": "phpseclib/phpseclib",
-            "version": "2.0.23",
+            "version": "2.0.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "c78eb5058d5bb1a183133c36d4ba5b6675dfa099"
+                "reference": "c18159618ed7cd7ff721ac1a8fec7860a475d2f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/c78eb5058d5bb1a183133c36d4ba5b6675dfa099",
-                "reference": "c78eb5058d5bb1a183133c36d4ba5b6675dfa099",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/c18159618ed7cd7ff721ac1a8fec7860a475d2f0",
+                "reference": "c18159618ed7cd7ff721ac1a8fec7860a475d2f0",
                 "shasum": ""
             },
             "require": {
@@ -3141,7 +3144,7 @@
                 "x.509",
                 "x509"
             ],
-            "time": "2019-09-17T03:41:22+00:00"
+            "time": "2020-02-25T04:16:50+00:00"
         },
         {
             "name": "phpspec/prophecy",
@@ -5037,7 +5040,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "df9727318c2482d5a87dd2e033c8ae2716c84b6d"
+                "reference": "b1b946cc74848e3f9ba986d20b6917524d486311"
             },
             "require": {
                 "php": ">=7.2"
@@ -5695,7 +5698,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-02-21T15:44:59+00:00"
+            "time": "2020-02-25T11:16:52+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5703,7 +5706,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "2b67abc4bf00d4ab0576d9284344693575b9ee45"
+                "reference": "3a3c65fcc6ebf778158b8a44147f276240ddc1b2"
             },
             "require": {
                 "php": ">=7.2"
@@ -5843,7 +5846,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-02-21T08:04:53+00:00"
+            "time": "2020-02-24T13:33:46+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8888,16 +8891,16 @@
         },
         {
             "name": "voku/portable-utf8",
-            "version": "5.4.39",
+            "version": "5.4.40",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/portable-utf8.git",
-                "reference": "e462e8985a80cbd927765fd7e09f52bb103c9797"
+                "reference": "1b558059a84d566843c8d0a2ba1d9c3051764565"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/e462e8985a80cbd927765fd7e09f52bb103c9797",
-                "reference": "e462e8985a80cbd927765fd7e09f52bb103c9797",
+                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/1b558059a84d566843c8d0a2ba1d9c3051764565",
+                "reference": "1b558059a84d566843c8d0a2ba1d9c3051764565",
                 "shasum": ""
             },
             "require": {
@@ -8958,7 +8961,7 @@
                 "utf-8",
                 "utf8"
             ],
-            "time": "2020-01-30T15:12:06+00:00"
+            "time": "2020-02-22T23:18:32+00:00"
         },
         {
             "name": "webmozart/assert",
