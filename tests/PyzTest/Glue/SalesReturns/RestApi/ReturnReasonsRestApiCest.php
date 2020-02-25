@@ -45,6 +45,7 @@ class ReturnReasonsRestApiCest
 
     /**
      * @depends loadFixtures
+     * @group her
      *
      * @param \PyzTest\Glue\SalesReturns\SalesReturnsApiTester $I
      *
@@ -59,19 +60,8 @@ class ReturnReasonsRestApiCest
 
         // Assert
         $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
-
-        $I->amSure('Response data contains resource collection')
-            ->whenI()
-            ->seeResponseDataContainsResourceCollectionOfType(SalesReturnsRestApiConfig::RESOURCE_RETURN_REASONS);
-
-        $I->amSure('Resource collection has resource')
-            ->whenI()
-            ->seeResourceCollectionHasResourceWithId(null);
-
-        $I->amSure('Resource has correct self-link')
-            ->whenI()
-            ->seeResourceByIdHasSelfLink(null, $I->buildGuestReturnReasonsUrl());
+        $I->seeResponseIsJson();
+        $I->canSeeResponseLinksContainsSelfLink($I->formatFullUrl(SalesReturnsRestApiConfig::RESOURCE_RETURN_REASONS));
     }
 }
