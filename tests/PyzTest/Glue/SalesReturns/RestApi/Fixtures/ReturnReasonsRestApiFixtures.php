@@ -24,8 +24,6 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  */
 class ReturnReasonsRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    use ReturnReasonsRestApiFixturesTrait;
-
     /**
      * @param \PyzTest\Glue\SalesReturns\SalesReturnsApiTester $I
      *
@@ -34,9 +32,9 @@ class ReturnReasonsRestApiFixtures implements FixturesBuilderInterface, Fixtures
     public function buildFixtures(SalesReturnsApiTester $I): FixturesContainerInterface
     {
         $I->haveReturnReasons([
-            'return.return_reasons.fake_reason_1.name',
-            'return.return_reasons.fake_reason_2.name',
-            'return.return_reasons.fake_reason_3.name',
+            'return.return_reasons.damaged.name',
+            'return.return_reasons.wrong-item.name',
+            'return.return_reasons.no_longer_needed.name',
         ]);
 
         return $this;

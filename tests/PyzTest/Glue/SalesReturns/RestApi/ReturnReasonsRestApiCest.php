@@ -45,7 +45,6 @@ class ReturnReasonsRestApiCest
 
     /**
      * @depends loadFixtures
-     * @group her
      *
      * @param \PyzTest\Glue\SalesReturns\SalesReturnsApiTester $I
      *
@@ -63,5 +62,41 @@ class ReturnReasonsRestApiCest
         $I->seeResponseMatchesOpenApiSchema();
         $I->seeResponseIsJson();
         $I->canSeeResponseLinksContainsSelfLink($I->formatFullUrl(SalesReturnsRestApiConfig::RESOURCE_RETURN_REASONS));
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\SalesReturns\SalesReturnsApiTester $I
+     *
+     * @return void
+     */
+    public function requestReturnReasonsWithCorrectMapping(SalesReturnsApiTester $I): void
+    {
+        // Arrange
+
+        // Act
+        $I->sendGET($I->buildGuestReturnReasonsUrl() . '?page[offset]=0&page[limit]=1');
+
+        // Assert
+        $I->seeResponseJsonMatchesJsonPath('$.data[*].attributes.reason');
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\SalesReturns\SalesReturnsApiTester $I
+     *
+     * @return void
+     */
+    public function requestReturnReasonsWithTranslatedReason(SalesReturnsApiTester $I): void
+    {
+        // Arrange
+
+        // Act
+        $I->sendGET($I->buildGuestReturnReasonsUrl() . '?page[offset]=0&page[limit]=1');
+
+        // Assert
+        $I->assertSame('Damaged', $I->grabDataFromResponseByJsonPath('$.data')[0]['attributes']['reason']);
     }
 }
