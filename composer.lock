@@ -4952,44 +4952,6 @@
             "time": "2019-12-19T11:01:47+00:00"
         },
         {
-            "name": "spryker/shop-context-extension",
-            "version": "0.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/shop-context-extension.git",
-                "reference": "0c9fa9eb8024dadc91f7851328a6b9abc96c76cb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/shop-context-extension/zipball/0c9fa9eb8024dadc91f7851328a6b9abc96c76cb",
-                "reference": "0c9fa9eb8024dadc91f7851328a6b9abc96c76cb",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "ShopContextExtension module",
-            "time": "2020-02-20T08:21:35+00:00"
-        },
-        {
             "name": "spryker/silexphp",
             "version": "dev-master",
             "source": {
@@ -5075,7 +5037,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "f9d16a1dd15e07d369149542a598b0621a671305"
+                "reference": "25c6a37e01085fe93b848a1a599dd92bcd6b5c76"
             },
             "require": {
                 "php": ">=7.2"
@@ -5524,6 +5486,7 @@
                 "spryker/product-offer": "*",
                 "spryker/product-offer-availability": "*",
                 "spryker/product-offer-availability-storage": "*",
+                "spryker/product-offer-sales": "*",
                 "spryker/product-offer-stock": "*",
                 "spryker/product-offer-stock-data-import": "*",
                 "spryker/product-offer-validity": "*",
@@ -5633,6 +5596,8 @@
                 "spryker/shipment-extension": "*",
                 "spryker/shipment-gui": "*",
                 "spryker/shipments-rest-api": "*",
+                "spryker/shop-context": "*",
+                "spryker/shop-context-extension": "*",
                 "spryker/shopping-list": "*",
                 "spryker/shopping-list-data-import": "*",
                 "spryker/shopping-list-extension": "*",
@@ -5730,7 +5695,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-02-13T10:28:02+00:00"
+            "time": "2020-02-25T09:03:55+00:00"
         },
         {
             "name": "spryker/spryker-shop",
