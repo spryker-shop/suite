@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f816c6b9037f109419e976c67af134de",
+    "content-hash": "17afe23946a61f5fe1a327d3292a68f8",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -3194,16 +3194,16 @@
         },
         {
             "name": "spryker-shop/catalog-page",
-            "version": "1.14.1",
+            "version": "1.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/catalog-page.git",
-                "reference": "06bf73dd7a016a70d19fa413829f4d16476d27c5"
+                "reference": "eed3b076b3aac4947fe6cadf8a702e510404b8e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/catalog-page/zipball/06bf73dd7a016a70d19fa413829f4d16476d27c5",
-                "reference": "06bf73dd7a016a70d19fa413829f4d16476d27c5",
+                "url": "https://api.github.com/repos/spryker-shop/catalog-page/zipball/eed3b076b3aac4947fe6cadf8a702e510404b8e6",
+                "reference": "eed3b076b3aac4947fe6cadf8a702e510404b8e6",
                 "shasum": ""
             },
             "require": {
@@ -3254,7 +3254,7 @@
                 "proprietary"
             ],
             "description": "CatalogPage module",
-            "time": "2020-01-10T15:02:44+00:00"
+            "time": "2020-02-25T11:31:58+00:00"
         },
         {
             "name": "spryker-shop/category-image-storage-widget",
@@ -22376,16 +22376,16 @@
         },
         {
             "name": "spryker/merchant-product-offer-search",
-            "version": "0.1.0",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-product-offer-search.git",
-                "reference": "068c9872dedb0735e582dbb05c5a5a77f7d74a7f"
+                "reference": "2c9370368f02cdf37a51685384d1fd81f4e9fa41"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-product-offer-search/zipball/068c9872dedb0735e582dbb05c5a5a77f7d74a7f",
-                "reference": "068c9872dedb0735e582dbb05c5a5a77f7d74a7f",
+                "url": "https://api.github.com/repos/spryker/merchant-product-offer-search/zipball/2c9370368f02cdf37a51685384d1fd81f4e9fa41",
+                "reference": "2c9370368f02cdf37a51685384d1fd81f4e9fa41",
                 "shasum": ""
             },
             "require": {
@@ -22404,6 +22404,7 @@
             "require-dev": {
                 "spryker/category": "*",
                 "spryker/code-sniffer": "*",
+                "spryker/elastica": "*",
                 "spryker/event": "*",
                 "spryker/merchant-product-offer": "*",
                 "spryker/product-attribute": "*",
@@ -22414,6 +22415,7 @@
             },
             "suggest": {
                 "spryker/catalog": "If you want to use Catalog plugins, minimum required version: 5.2.0.",
+                "spryker/elastica": "If you want to use ElasticSearch query expander.",
                 "spryker/event": "To use event behavior.",
                 "spryker/merchant-product-offer": "Required for using the listeners.",
                 "spryker/search": "If you want to use Search plugins."
@@ -22434,7 +22436,7 @@
                 "proprietary"
             ],
             "description": "MerchantProductOfferSearch module",
-            "time": "2020-02-07T10:40:41+00:00"
+            "time": "2020-02-25T13:46:44+00:00"
         },
         {
             "name": "spryker/merchant-product-offer-storage",
