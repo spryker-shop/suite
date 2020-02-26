@@ -7,9 +7,6 @@
 
 namespace Pyz\Client\RabbitMq;
 
-use ArrayObject;
-use Generated\Shared\Transfer\RabbitMqOptionTransfer;
-use Spryker\Client\RabbitMq\Model\Connection\Connection;
 use Spryker\Client\RabbitMq\RabbitMqConfig as SprykerRabbitMqConfig;
 use Spryker\Shared\AvailabilityStorage\AvailabilityStorageConstants;
 use Spryker\Shared\CategoryPageSearch\CategoryPageSearchConstants;
@@ -46,14 +43,9 @@ use Spryker\Shared\UrlStorage\UrlStorageConstants;
 class RabbitMqConfig extends SprykerRabbitMqConfig
 {
     /**
-     * @var \ArrayObject|null
-     */
-    protected $queueOptionCollection;
-
-    /**
-     *  QueueNameFoo, // Queue and error queue will be created: QueueNameFoo and QueueNameFoo.error
+     *  QueueNameFoo, // Queue => QueueNameFoo, (Queue and error queue will be created: QueueNameFoo and QueueNameFoo.error)
      *  QueueNameBar => [
-     *       RoutingKeyFoo => QueueNameBaz, // additional queues can be defined by several routing keys
+     *       RoutingKeyFoo => QueueNameBaz, // (Additional queues can be defined by several routing keys)
      *   ],
      *
      * @see https://www.rabbitmq.com/tutorials/amqp-concepts.html
@@ -67,7 +59,7 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
                 EventConfig::EVENT_ROUTING_KEY_RETRY => EventConstants::EVENT_QUEUE_RETRY,
                 EventConfig::EVENT_ROUTING_KEY_ERROR => EventConstants::EVENT_QUEUE_ERROR,
             ],
-            GlossaryStorageConfig::SYNC_QUEUE_NAME,
+            GlossaryStorageConfig::SYNC_STORAGE_TRANSLATION,
             UrlStorageConstants::URL_SYNC_STORAGE_QUEUE,
             AvailabilityStorageConstants::AVAILABILITY_SYNC_STORAGE_QUEUE,
             CustomerAccessStorageConstants::CUSTOMER_ACCESS_SYNC_STORAGE_QUEUE,
@@ -94,89 +86,5 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
             ProductOfferAvailabilityStorageConfig::PRODUCT_OFFER_AVAILABILITY_SYNC_STORAGE_QUEUE,
             $this->get(LogConstants::LOG_QUEUE_NAME),
         ];
-    }
-
-    /**
-     * @return \ArrayObject
-     */
-    protected function getQueueOptions()
-    {
-        if ($this->queueOptionCollection !== null) {
-            return $this->queueOptionCollection;
-        }
-
-        $queueConfigurations = $this->getQueueConfiguration();
-        $this->queueOptionCollection = new ArrayObject();
-
-        foreach ($queueConfigurations as $queueNameKey => $queueConfiguration) {
-            if (!is_array($queueConfiguration)) {
-                $this->queueOptionCollection->append($this->createQueueOption($queueConfiguration, sprintf('%s.error', $queueConfiguration), 'error'));
-
-                continue;
-            }
-
-            foreach ($queueConfiguration as $routingKey => $queueName) {
-                $this->queueOptionCollection->append($this->createQueueOption($queueNameKey, $queueName, $routingKey));
-            }
-        }
-
-        return $this->queueOptionCollection;
-    }
-
-    /**
-     * @param string $queueName
-     * @param string $boundQueueName
-     * @param string $routingKey
-     *
-     * @return \Generated\Shared\Transfer\RabbitMqOptionTransfer
-     */
-    protected function createQueueOption($queueName, $boundQueueName, $routingKey)
-    {
-        $queueOptionTransfer = new RabbitMqOptionTransfer();
-        $queueOptionTransfer
-            ->setQueueName($queueName)
-            ->setDurable(true)
-            ->setType('direct')
-            ->setDeclarationType(Connection::RABBIT_MQ_EXCHANGE)
-            ->addBindingQueueItem($this->createQueueBinding($queueName))
-            ->addBindingQueueItem($this->createBoundQueueBinding($boundQueueName, $routingKey));
-
-        return $queueOptionTransfer;
-    }
-
-    /**
-     * @param string $queueName
-     * @param string $routingKey
-     *
-     * @return \Generated\Shared\Transfer\RabbitMqOptionTransfer
-     */
-    protected function createQueueBinding($queueName, $routingKey = '')
-    {
-        $queueOptionTransfer = new RabbitMqOptionTransfer();
-        $queueOptionTransfer
-            ->setQueueName($queueName)
-            ->setDurable(true)
-            ->setNoWait(false)
-            ->addRoutingKey($routingKey);
-
-        return $queueOptionTransfer;
-    }
-
-    /**
-     * @param string $boundQueueName
-     * @param string $routingKey
-     *
-     * @return \Generated\Shared\Transfer\RabbitMqOptionTransfer
-     */
-    protected function createBoundQueueBinding($boundQueueName, $routingKey)
-    {
-        $queueOptionTransfer = new RabbitMqOptionTransfer();
-        $queueOptionTransfer
-            ->setQueueName($boundQueueName)
-            ->setDurable(true)
-            ->setNoWait(false)
-            ->addRoutingKey($routingKey);
-
-        return $queueOptionTransfer;
     }
 }
