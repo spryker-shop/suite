@@ -35,7 +35,10 @@ class PriceProductConcreteRestApiCest
      */
     public function loadFixtures(PriceProductsApiTester $I): void
     {
-        $this->fixtures = $I->loadFixtures(PriceProductsRestApiFixtures::class);
+        /** @var \PyzTest\Glue\PriceProducts\RestApi\PriceProductsRestApiFixtures $fixtures */
+        $fixtures = $I->loadFixtures(PriceProductsRestApiFixtures::class);
+
+        $this->fixtures = $fixtures;
     }
 
     /**
