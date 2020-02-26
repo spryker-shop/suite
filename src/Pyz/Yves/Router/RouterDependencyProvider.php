@@ -25,7 +25,6 @@ use SprykerShop\Yves\CalculationPage\Plugin\Router\CalculationPageRouteProviderP
 use SprykerShop\Yves\CartCodeWidget\Plugin\Router\CartCodeWidgetRouteProviderPlugin;
 use SprykerShop\Yves\CartNoteWidget\Plugin\Router\CartNoteWidgetRouteProviderPlugin;
 use SprykerShop\Yves\CartPage\Plugin\Router\CartPageRouteProviderPlugin;
-use SprykerShop\Yves\CartToShoppingListWidget\Plugin\Router\CartToShoppingListWidgetRouteProviderPlugin;
 use SprykerShop\Yves\CatalogPage\Plugin\Router\CatalogPageRouteProviderPlugin;
 use SprykerShop\Yves\CheckoutPage\Plugin\Router\CheckoutPageRouteProviderPlugin;
 use SprykerShop\Yves\CmsPage\Plugin\Router\CmsPageRouteProviderPlugin;
@@ -44,6 +43,7 @@ use SprykerShop\Yves\DiscountWidget\Plugin\Router\DiscountWidgetRouteProviderPlu
 use SprykerShop\Yves\ErrorPage\Plugin\Router\ErrorPageRouteProviderPlugin;
 use SprykerShop\Yves\FileManagerWidget\Plugin\Router\FileManagerWidgetRouteProviderPlugin;
 use SprykerShop\Yves\HomePage\Plugin\Router\HomePageRouteProviderPlugin;
+use SprykerShop\Yves\MerchantSwitcherWidget\Plugin\Router\MerchantSwitcherWidgetRouteProviderPlugin;
 use SprykerShop\Yves\MultiCartPage\Plugin\Router\MultiCartPageRouteProviderPlugin;
 use SprykerShop\Yves\NewsletterPage\Plugin\Router\NewsletterPageRouteProviderPlugin;
 use SprykerShop\Yves\NewsletterWidget\Plugin\Router\NewsletterWidgetRouteProviderPlugin;
@@ -115,7 +115,6 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new MultiCartPageRouteProviderPlugin(), #MultiCartFeature
             new SharedCartPageRouteProviderPlugin(), #SharedCartFeature
             new ShoppingListPageRouteProviderPlugin(), #ShoppingListFeature
-            new CartToShoppingListWidgetRouteProviderPlugin(), #ShoppingListFeature
             new ShoppingListWidgetRouteProviderPlugin(), #ShoppingListFeature
             new CompanyUserInvitationPageRouteProviderPlugin(), #BulkImportCompanyUserInvitationsFeature
             new AgentPageRouteProviderPlugin(), #AgentFeature
@@ -138,6 +137,7 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new CompanyUserAgentWidgetRouteProviderPlugin(),
             new ConfigurableBundleNoteWidgetRouteProviderPlugin(),
             new ConfigurableBundlePageRouteProviderPlugin(),
+            new MerchantSwitcherWidgetRouteProviderPlugin(),
         ];
     }
 
