@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3e559dd8917e13558c7792b62a8a99de",
+    "content-hash": "be2471fd179a6b2f80e6a8588f94cbe2",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.133.20",
+            "version": "3.133.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "c5f84f9edafb6372dafdbc87cb588772761179ca"
+                "reference": "4dd1cc4416a997769b0c2fab95a586190318ad30"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/c5f84f9edafb6372dafdbc87cb588772761179ca",
-                "reference": "c5f84f9edafb6372dafdbc87cb588772761179ca",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/4dd1cc4416a997769b0c2fab95a586190318ad30",
+                "reference": "4dd1cc4416a997769b0c2fab95a586190318ad30",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-02-21T19:09:49+00:00"
+            "time": "2020-02-25T19:10:01+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -2785,16 +2785,16 @@
         },
         {
             "name": "php-amqplib/php-amqplib",
-            "version": "v2.11.0",
+            "version": "v2.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-amqplib/php-amqplib.git",
-                "reference": "9ee212baced63442ca1ab029acde38e1144a00b8"
+                "reference": "cfbfaf6262cd8d017f29862164f75e265d832434"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/9ee212baced63442ca1ab029acde38e1144a00b8",
-                "reference": "9ee212baced63442ca1ab029acde38e1144a00b8",
+                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/cfbfaf6262cd8d017f29862164f75e265d832434",
+                "reference": "cfbfaf6262cd8d017f29862164f75e265d832434",
                 "shasum": ""
             },
             "require": {
@@ -2802,6 +2802,9 @@
                 "ext-sockets": "*",
                 "php": ">=5.6.3",
                 "phpseclib/phpseclib": "^2.0.0"
+            },
+            "conflict": {
+                "php": "7.4.0 - 7.4.1"
             },
             "replace": {
                 "videlalvaro/php-amqplib": "self.version"
@@ -2855,7 +2858,7 @@
                 "queue",
                 "rabbitmq"
             ],
-            "time": "2019-11-19T15:15:19+00:00"
+            "time": "2020-02-24T17:37:52+00:00"
         },
         {
             "name": "phpdocumentor/graphviz",
@@ -3053,16 +3056,16 @@
         },
         {
             "name": "phpseclib/phpseclib",
-            "version": "2.0.24",
+            "version": "2.0.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "40998159a0907cc523e1f2d1904d45765613a617"
+                "reference": "c18159618ed7cd7ff721ac1a8fec7860a475d2f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/40998159a0907cc523e1f2d1904d45765613a617",
-                "reference": "40998159a0907cc523e1f2d1904d45765613a617",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/c18159618ed7cd7ff721ac1a8fec7860a475d2f0",
+                "reference": "c18159618ed7cd7ff721ac1a8fec7860a475d2f0",
                 "shasum": ""
             },
             "require": {
@@ -3141,7 +3144,7 @@
                 "x.509",
                 "x509"
             ],
-            "time": "2020-02-04T12:15:04+00:00"
+            "time": "2020-02-25T04:16:50+00:00"
         },
         {
             "name": "phpspec/prophecy",
@@ -5033,11 +5036,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/ps-11356/ps-11939-add-order-custom-reference",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "8bdc74d65a7c3a371ff0cb52d0e5b9c1844c1dfd"
+                "reference": "ad8dcff4d07a371864e82a8b636c61902a402628"
             },
             "require": {
                 "php": ">=7.2"
@@ -5384,6 +5387,7 @@
                 "spryker/oms": "*",
                 "spryker/oms-discount-connector": "*",
                 "spryker/oms-extension": "*",
+                "spryker/order-custom-reference": "*",
                 "spryker/order-payments-rest-api": "*",
                 "spryker/order-payments-rest-api-extension": "*",
                 "spryker/orders-rest-api": "*",
@@ -5695,15 +5699,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-02-24T13:44:40+00:00"
+            "time": "2020-02-26T10:26:56+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/ps-11356/ps-11939-add-order-custom-reference",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "3a3c65fcc6ebf778158b8a44147f276240ddc1b2"
+                "reference": "57e2fdb867979c1c074d669257dd54baaaff0f35"
             },
             "require": {
                 "php": ">=7.2"
@@ -5766,6 +5770,7 @@
                 "spryker-shop/navigation-widget": "*",
                 "spryker-shop/newsletter-page": "*",
                 "spryker-shop/newsletter-widget": "*",
+                "spryker-shop/order-custom-reference-widget": "*",
                 "spryker-shop/persistent-cart-share-page": "*",
                 "spryker-shop/persistent-cart-share-widget": "*",
                 "spryker-shop/price-product-volume-widget": "*",
@@ -5843,7 +5848,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-02-24T13:33:46+00:00"
+            "time": "2020-02-26T10:27:34+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8709,8 +8714,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
