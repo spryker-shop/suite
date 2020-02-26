@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3e559dd8917e13558c7792b62a8a99de",
+    "content-hash": "0549b919b2b96022aa6f373ec6d67cf5",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -3645,7 +3645,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -4997,17 +4997,18 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/mr-25/master-merchant-portal-navigation",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "f0fcc4ffce34863c887046985e9107a02835daa8"
+                "reference": "ddfee63f865e3756734360b26e33d452124e6d7e"
             },
             "require": {
                 "php": ">=7.2"
             },
             "replace": {
                 "spryker/acl": "*",
+                "spryker/acl-extension": "*",
                 "spryker/agent": "*",
                 "spryker/agent-gui": "*",
                 "spryker/alternative-products-rest-api": "*",
@@ -5636,6 +5637,7 @@
                 "spryker/wishlist-extension": "*",
                 "spryker/wishlists-rest-api": "*",
                 "spryker/zed-navigation": "*",
+                "spryker/zed-navigation-extension": "*",
                 "spryker/zed-request": "*",
                 "spryker/zend": "*"
             },
@@ -5661,7 +5663,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-02-26T13:42:36+00:00"
+            "time": "2020-02-26T15:28:14+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -8677,8 +8679,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -10292,20 +10294,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
-                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler"
+                    "homepage": "https://github.com/manuelpichler",
+                    "role": "Project Founder"
                 },
                 {
                     "name": "Marc Würth",
-                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84"
+                    "homepage": "https://github.com/ravage84",
+                    "role": "Project Maintainer"
                 },
                 {
                     "name": "Other contributors",
-                    "role": "Contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
+                    "role": "Contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -11183,7 +11185,7 @@
             },
             "require-dev": {
                 "dereuromark/composer-prefer-lowest": "^0.1.2",
-                "phpstan/phpstan-shim": "^0.11.1",
+                "phpstan/phpstan": "^0.12.0",
                 "phpunit/phpunit": "^7.0 || ^8.0"
             },
             "bin": [
@@ -11763,8 +11765,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
