@@ -47,8 +47,9 @@
     <small>{{ 'product.attribute.sku' | trans }}: {{sku}}</small>
 
     <hr />
-    {% widget 'ProductPriceVolumeWidget' args [data.product] only %}
-    {% elsewidget 'PriceProductVolumeWidgetPlugin' args [data.product] only %} {# @deprecated Use ProductPriceVolumeWidget instead. #}
+    {% widget 'CurrentProductPriceVolumeWidget' args [data.product.currentProductPrice] only %}
+    {% elsewidget 'ProductPriceVolumeWidget' args [data.product] only %} {# @deprecated Use CurrentProductPriceVolumeWidget instead. #}
+    {% elsewidget 'PriceProductVolumeWidgetPlugin' args [data.product] only %} {# @deprecated Use CurrentProductPriceVolumeWidget instead. #}
     {% nowidget %}
         <p>
             {% include molecule('money-price') with {
