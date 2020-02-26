@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3e559dd8917e13558c7792b62a8a99de",
+    "content-hash": "3f8cf52080ab5be1185649ac7a87ee7f",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -4696,45 +4696,6 @@
             "time": "2020-02-06T13:41:38+00:00"
         },
         {
-            "name": "spryker-shop/cart-page-extension",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker-shop/cart-page-extension.git",
-                "reference": "fcf3e71f620ff88d818ceaa3188c6c9f1c841be8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/cart-page-extension/zipball/fcf3e71f620ff88d818ceaa3188c6c9f1c841be8",
-                "reference": "fcf3e71f620ff88d818ceaa3188c6c9f1c841be8",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "SprykerShop\\": "src/SprykerShop/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "CartPageExtension module",
-            "time": "2019-12-27T20:41:07+00:00"
-        },
-        {
             "name": "spryker/decimal-object",
             "version": "1.0.0",
             "source": {
@@ -4784,16 +4745,16 @@
         },
         {
             "name": "spryker/event-behavior",
-            "version": "dev-master",
+            "version": "dev-feature/te-3485/poc-for-ps",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "2a3cff77792a66094eb54c9bb4ad63be2790f9bc"
+                "reference": "0ef159d0adbc4ec1b70d29d3f94b2ae57161a67e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/2a3cff77792a66094eb54c9bb4ad63be2790f9bc",
-                "reference": "2a3cff77792a66094eb54c9bb4ad63be2790f9bc",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/0ef159d0adbc4ec1b70d29d3f94b2ae57161a67e",
+                "reference": "0ef159d0adbc4ec1b70d29d3f94b2ae57161a67e",
                 "shasum": ""
             },
             "require": {
@@ -4843,7 +4804,7 @@
                 "proprietary"
             ],
             "description": "EventBehavior module",
-            "time": "2020-01-13T15:21:46+00:00"
+            "time": "2020-01-27T20:23:50+00:00"
         },
         {
             "name": "spryker/install",
@@ -4892,16 +4853,16 @@
         },
         {
             "name": "spryker/rabbit-mq",
-            "version": "dev-master",
+            "version": "dev-feature/te-3485/poc-for-ps",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "266155e2ab489d5ec994885f1bf6643ce4c7a472"
+                "reference": "f22edc406f76bf37ebc0abfe1010ccb8f080aab3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/266155e2ab489d5ec994885f1bf6643ce4c7a472",
-                "reference": "266155e2ab489d5ec994885f1bf6643ce4c7a472",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/f22edc406f76bf37ebc0abfe1010ccb8f080aab3",
+                "reference": "f22edc406f76bf37ebc0abfe1010ccb8f080aab3",
                 "shasum": ""
             },
             "require": {
@@ -4952,7 +4913,7 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "time": "2019-12-19T11:01:47+00:00"
+            "time": "2020-02-26T13:44:37+00:00"
         },
         {
             "name": "spryker/silexphp",
@@ -5036,11 +4997,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/te-723-prototype-publishing-module",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "b59aa421ee5684236b481754bced5e727fbcf0fd"
+                "reference": "40d439019031795d9303a856fcc46bb850766f10"
             },
             "require": {
                 "php": ">=7.2"
@@ -5356,6 +5317,7 @@
                 "spryker/merchant-sales-order": "*",
                 "spryker/merchant-search": "*",
                 "spryker/merchant-user": "*",
+                "spryker/merchant-user-auth-gui-page": "*",
                 "spryker/messenger": "*",
                 "spryker/messenger-extension": "*",
                 "spryker/module-finder": "*",
@@ -5536,6 +5498,8 @@
                 "spryker/propel": "*",
                 "spryker/propel-orm": "*",
                 "spryker/propel-query-builder": "*",
+                "spryker/publisher": "*",
+                "spryker/publisher-extension": "*",
                 "spryker/queue": "*",
                 "spryker/quick-order": "*",
                 "spryker/quick-order-extension": "*",
@@ -5699,7 +5663,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-02-26T11:33:14+00:00"
+            "time": "2020-02-26T13:48:55+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5707,7 +5671,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "3a3c65fcc6ebf778158b8a44147f276240ddc1b2"
+                "reference": "c8e10c4b1a7463fba264196a23d3daa6b3059558"
             },
             "require": {
                 "php": ">=7.2"
@@ -5723,6 +5687,7 @@
                 "spryker-shop/cart-code-widget": "*",
                 "spryker-shop/cart-note-widget": "*",
                 "spryker-shop/cart-page": "*",
+                "spryker-shop/cart-page-extension": "*",
                 "spryker-shop/catalog-page": "*",
                 "spryker-shop/category-image-storage-widget": "*",
                 "spryker-shop/category-widget": "*",
@@ -5764,6 +5729,7 @@
                 "spryker-shop/language-switcher-widget": "*",
                 "spryker-shop/merchant-product-offer-widget": "*",
                 "spryker-shop/merchant-profile-page": "*",
+                "spryker-shop/merchant-switcher-widget": "*",
                 "spryker-shop/money-widget": "*",
                 "spryker-shop/multi-cart-page": "*",
                 "spryker-shop/multi-cart-widget": "*",
@@ -5847,7 +5813,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-02-24T13:33:46+00:00"
+            "time": "2020-02-26T13:42:40+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -11861,7 +11827,7 @@
         {
             "alias": "1.15.0",
             "alias_normalized": "1.15.0.0",
-            "version": "9999999-dev",
+            "version": "dev-feature/te-3485/poc-for-ps",
             "package": "spryker/event-behavior"
         },
         {
