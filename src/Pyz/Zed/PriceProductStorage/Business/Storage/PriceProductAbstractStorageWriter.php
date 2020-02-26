@@ -201,8 +201,11 @@ class PriceProductAbstractStorageWriter extends SprykerPriceProductAbstractStora
      *
      * @return \Generated\Shared\Transfer\QueueSendMessageTransfer
      */
-    public function buildSynchronizedMessage(array $data, string $resourceName, array $params = []): QueueSendMessageTransfer
-    {
+    public function buildSynchronizedMessage(
+        array $data,
+        string $resourceName,
+        array $params = []
+    ): QueueSendMessageTransfer {
         $data['_timestamp'] = microtime(true);
         $payload = [
             'write' => [
