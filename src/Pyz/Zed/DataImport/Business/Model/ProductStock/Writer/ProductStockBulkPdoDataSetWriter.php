@@ -236,8 +236,12 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
      *
      * @return void
      */
-    protected function updateAvailability(array $skus, StoreTransfer $storeTransfer, array $concreteSkusToAbstractMap, array $reservationItems): void
-    {
+    protected function updateAvailability(
+        array $skus,
+        StoreTransfer $storeTransfer,
+        array $concreteSkusToAbstractMap,
+        array $reservationItems
+    ): void {
         $stockProductsForStore = $this->getStockProductBySkusAndStore($skus, $storeTransfer);
 
         $concreteAvailabilityData = $this->prepareConcreteAvailabilityData($stockProductsForStore, $reservationItems);
@@ -380,8 +384,10 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
      *
      * @return array
      */
-    protected function prepareAbstractAvailabilityData(array $concreteAvailabilityData, array $concreteSkusToAbstractMap): array
-    {
+    protected function prepareAbstractAvailabilityData(
+        array $concreteAvailabilityData,
+        array $concreteSkusToAbstractMap
+    ): array {
         $abstractAvailabilityData = [];
         foreach ($concreteAvailabilityData as $concreteAvailability) {
             $abstractSku = $concreteSkusToAbstractMap[$concreteAvailability[static::KEY_SKU]] ?? null;
