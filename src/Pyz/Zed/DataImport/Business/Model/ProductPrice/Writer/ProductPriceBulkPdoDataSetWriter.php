@@ -100,7 +100,8 @@ class ProductPriceBulkPdoDataSetWriter implements DataSetWriterInterface
     {
         $this->collectProductPriceCollection($dataSet);
 
-        if (count(static::$priceProductAbstractCollection) >= ProductPriceHydratorStep::BULK_SIZE ||
+        if (
+            count(static::$priceProductAbstractCollection) >= ProductPriceHydratorStep::BULK_SIZE ||
             count(static::$priceProductConcreteCollection) >= ProductPriceHydratorStep::BULK_SIZE
         ) {
             $this->flush();
@@ -328,8 +329,11 @@ class ProductPriceBulkPdoDataSetWriter implements DataSetWriterInterface
      *
      * @return void
      */
-    protected function prepareProductIdsCollection(array $priceProductCollection, string $tableName, string $productKey): void
-    {
+    protected function prepareProductIdsCollection(
+        array $priceProductCollection,
+        string $tableName,
+        string $productKey
+    ): void {
         $productConcreteSkuCollection = $this->dataFormatter->getCollectionDataByKey($priceProductCollection, ProductPriceHydratorStep::KEY_SKU);
         $productSku = $this->dataFormatter->formatPostgresArray($productConcreteSkuCollection);
         $orderKey = $this->dataFormatter->formatPostgresArrayString(array_keys($productConcreteSkuCollection));
@@ -379,8 +383,11 @@ class ProductPriceBulkPdoDataSetWriter implements DataSetWriterInterface
      *
      * @return void
      */
-    protected function persistPriceProductEntities(string $productIdKey, string $productTable, string $productFkKey): void
-    {
+    protected function persistPriceProductEntities(
+        string $productIdKey,
+        string $productTable,
+        string $productFkKey
+    ): void {
         if (!static::$productIds) {
             return;
         }
@@ -507,8 +514,12 @@ class ProductPriceBulkPdoDataSetWriter implements DataSetWriterInterface
      *
      * @return void
      */
-    protected function persistPriceProductStoreEntities(array $priceProductCollection, string $productTableName, string $productIdKey, string $productFkKey): void
-    {
+    protected function persistPriceProductStoreEntities(
+        array $priceProductCollection,
+        string $productTableName,
+        string $productIdKey,
+        string $productFkKey
+    ): void {
         $productCollection = $this->dataFormatter->getCollectionDataByKey(static::$productIds, $productIdKey);
         $product = $this->dataFormatter->formatPostgresArray($productCollection);
         $currency = $this->dataFormatter->formatPostgresArrayString(
