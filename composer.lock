@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e30ac6f4768ab79a7430e72af390e672",
+    "content-hash": "f816c6b9037f109419e976c67af134de",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1860,16 +1860,16 @@
         },
         {
             "name": "php-amqplib/php-amqplib",
-            "version": "v2.11.0",
+            "version": "v2.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-amqplib/php-amqplib.git",
-                "reference": "9ee212baced63442ca1ab029acde38e1144a00b8"
+                "reference": "cfbfaf6262cd8d017f29862164f75e265d832434"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/9ee212baced63442ca1ab029acde38e1144a00b8",
-                "reference": "9ee212baced63442ca1ab029acde38e1144a00b8",
+                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/cfbfaf6262cd8d017f29862164f75e265d832434",
+                "reference": "cfbfaf6262cd8d017f29862164f75e265d832434",
                 "shasum": ""
             },
             "require": {
@@ -1877,6 +1877,9 @@
                 "ext-sockets": "*",
                 "php": ">=5.6.3",
                 "phpseclib/phpseclib": "^2.0.0"
+            },
+            "conflict": {
+                "php": "7.4.0 - 7.4.1"
             },
             "replace": {
                 "videlalvaro/php-amqplib": "self.version"
@@ -1930,7 +1933,7 @@
                 "queue",
                 "rabbitmq"
             ],
-            "time": "2019-11-19T15:15:19+00:00"
+            "time": "2020-02-24T17:37:52+00:00"
         },
         {
             "name": "phpdocumentor/graphviz",
@@ -1975,16 +1978,16 @@
         },
         {
             "name": "phpseclib/phpseclib",
-            "version": "2.0.24",
+            "version": "2.0.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "40998159a0907cc523e1f2d1904d45765613a617"
+                "reference": "c18159618ed7cd7ff721ac1a8fec7860a475d2f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/40998159a0907cc523e1f2d1904d45765613a617",
-                "reference": "40998159a0907cc523e1f2d1904d45765613a617",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/c18159618ed7cd7ff721ac1a8fec7860a475d2f0",
+                "reference": "c18159618ed7cd7ff721ac1a8fec7860a475d2f0",
                 "shasum": ""
             },
             "require": {
@@ -2063,7 +2066,7 @@
                 "x.509",
                 "x509"
             ],
-            "time": "2020-02-04T12:15:04+00:00"
+            "time": "2020-02-25T04:16:50+00:00"
         },
         {
             "name": "predis/predis",
@@ -34238,16 +34241,16 @@
         },
         {
             "name": "spryker/search",
-            "version": "8.11.1",
+            "version": "8.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/search.git",
-                "reference": "ca0123fc2e70d9419b4ae6f89bbfbd1bf16ee184"
+                "reference": "9362608a53403fa344bd2216143d03847dcc29de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/search/zipball/ca0123fc2e70d9419b4ae6f89bbfbd1bf16ee184",
-                "reference": "ca0123fc2e70d9419b4ae6f89bbfbd1bf16ee184",
+                "url": "https://api.github.com/repos/spryker/search/zipball/9362608a53403fa344bd2216143d03847dcc29de",
+                "reference": "9362608a53403fa344bd2216143d03847dcc29de",
                 "shasum": ""
             },
             "require": {
@@ -34291,25 +34294,26 @@
                 "proprietary"
             ],
             "description": "Search module",
-            "time": "2020-01-15T10:05:21+00:00"
+            "time": "2020-02-26T09:26:24+00:00"
         },
         {
             "name": "spryker/search-elasticsearch",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/search-elasticsearch.git",
-                "reference": "55d647d764eaa5857b015248cc4de6ba3d6e2027"
+                "reference": "e8955c548f002a81c79f83792226706278c6e9f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/search-elasticsearch/zipball/55d647d764eaa5857b015248cc4de6ba3d6e2027",
-                "reference": "55d647d764eaa5857b015248cc4de6ba3d6e2027",
+                "url": "https://api.github.com/repos/spryker/search-elasticsearch/zipball/e8955c548f002a81c79f83792226706278c6e9f6",
+                "reference": "e8955c548f002a81c79f83792226706278c6e9f6",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
                 "spryker/elastica": "^5.0.0",
+                "spryker/error-handler": "^2.1.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/log": "^3.0.0",
@@ -34344,7 +34348,55 @@
                 "proprietary"
             ],
             "description": "SearchElasticsearch module",
-            "time": "2020-01-09T15:01:30+00:00"
+            "time": "2020-02-26T09:26:24+00:00"
+        },
+        {
+            "name": "spryker/search-elasticsearch-gui",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/search-elasticsearch-gui.git",
+                "reference": "493d214f98fcc8b94b44dc35dae5623f1262212e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/search-elasticsearch-gui/zipball/493d214f98fcc8b94b44dc35dae5623f1262212e",
+                "reference": "493d214f98fcc8b94b44dc35dae5623f1262212e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/gui": "^3.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/search-elasticsearch": "^1.2.0",
+                "spryker/search-extension": "^1.0.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/elastica": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/elastica": "If you want to use Elastica plugin to build GUI."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SearchElasticsearchGui module",
+            "time": "2020-02-26T09:29:51+00:00"
         },
         {
             "name": "spryker/search-extension",
