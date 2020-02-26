@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3e559dd8917e13558c7792b62a8a99de",
+    "content-hash": "3f8cf52080ab5be1185649ac7a87ee7f",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -3645,7 +3645,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -4745,16 +4745,16 @@
         },
         {
             "name": "spryker/event-behavior",
-            "version": "dev-master",
+            "version": "dev-feature/te-3485/poc-for-ps",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "2a3cff77792a66094eb54c9bb4ad63be2790f9bc"
+                "reference": "0ef159d0adbc4ec1b70d29d3f94b2ae57161a67e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/2a3cff77792a66094eb54c9bb4ad63be2790f9bc",
-                "reference": "2a3cff77792a66094eb54c9bb4ad63be2790f9bc",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/0ef159d0adbc4ec1b70d29d3f94b2ae57161a67e",
+                "reference": "0ef159d0adbc4ec1b70d29d3f94b2ae57161a67e",
                 "shasum": ""
             },
             "require": {
@@ -4804,7 +4804,7 @@
                 "proprietary"
             ],
             "description": "EventBehavior module",
-            "time": "2020-01-13T15:21:46+00:00"
+            "time": "2020-01-27T20:23:50+00:00"
         },
         {
             "name": "spryker/install",
@@ -4853,16 +4853,16 @@
         },
         {
             "name": "spryker/rabbit-mq",
-            "version": "dev-master",
+            "version": "dev-feature/te-3485/poc-for-ps",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "266155e2ab489d5ec994885f1bf6643ce4c7a472"
+                "reference": "f22edc406f76bf37ebc0abfe1010ccb8f080aab3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/266155e2ab489d5ec994885f1bf6643ce4c7a472",
-                "reference": "266155e2ab489d5ec994885f1bf6643ce4c7a472",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/f22edc406f76bf37ebc0abfe1010ccb8f080aab3",
+                "reference": "f22edc406f76bf37ebc0abfe1010ccb8f080aab3",
                 "shasum": ""
             },
             "require": {
@@ -4913,7 +4913,7 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "time": "2019-12-19T11:01:47+00:00"
+            "time": "2020-02-26T13:44:37+00:00"
         },
         {
             "name": "spryker/silexphp",
@@ -4997,11 +4997,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/te-723-prototype-publishing-module",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "f0fcc4ffce34863c887046985e9107a02835daa8"
+                "reference": "561ffdcb65dc08df4edf33ea985b3448b390a9b7"
             },
             "require": {
                 "php": ">=7.2"
@@ -5498,6 +5498,8 @@
                 "spryker/propel": "*",
                 "spryker/propel-orm": "*",
                 "spryker/propel-query-builder": "*",
+                "spryker/publisher": "*",
+                "spryker/publisher-extension": "*",
                 "spryker/queue": "*",
                 "spryker/quick-order": "*",
                 "spryker/quick-order-extension": "*",
@@ -5661,7 +5663,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-02-26T13:42:36+00:00"
+            "time": "2020-02-26T14:50:59+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -11183,7 +11185,7 @@
             },
             "require-dev": {
                 "dereuromark/composer-prefer-lowest": "^0.1.2",
-                "phpstan/phpstan-shim": "^0.11.1",
+                "phpstan/phpstan": "^0.12.0",
                 "phpunit/phpunit": "^7.0 || ^8.0"
             },
             "bin": [
@@ -11825,7 +11827,7 @@
         {
             "alias": "1.15.0",
             "alias_normalized": "1.15.0.0",
-            "version": "9999999-dev",
+            "version": "dev-feature/te-3485/poc-for-ps",
             "package": "spryker/event-behavior"
         },
         {
