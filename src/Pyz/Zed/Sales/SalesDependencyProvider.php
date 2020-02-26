@@ -148,4 +148,12 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new UniqueOrderBundleItemsExpanderPlugin(),
         ];
     }
+
+    /**
+     * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\OrderItemExpanderPluginInterface[]
+     */
+    protected function getOrderItemExpanderPlugins(): array
+    {
+        return [];
+    }
 }
