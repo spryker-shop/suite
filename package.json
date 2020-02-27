@@ -16,7 +16,13 @@
     "yves:tslint": "node ./frontend/libs/tslint",
     "zed": "node ./node_modules/@spryker/oryx-for-zed/build",
     "zed:watch": "node ./node_modules/@spryker/oryx-for-zed/build --dev",
-    "zed:production": "node ./node_modules/@spryker/oryx-for-zed/build --prod"
+    "zed:production": "node ./node_modules/@spryker/oryx-for-zed/build --prod",
+    "bo:install": "run-s bo:install:*",
+    "bo:install:zed-ui": "cd ./vendor/spryker/spryker/Bundles/ZedUi && npm install",
+    "bo:install:mp-dashboard": "cd ./vendor/spryker/spryker/Bundles/MerchantDashboardGuiPage && npm install",
+    "bo:build": "run-s bo:build:*",
+    "bo:build:zed-ui": "cd ./vendor/spryker/spryker/Bundles/ZedUi && npm run build",
+    "bo:build:mp-dashboard": "cd ./vendor/spryker/spryker/Bundles/MerchantDashboardGuiPage && npm run build"
   },
   "engines": {
     "node": ">=8.11.4",
@@ -43,6 +49,7 @@
     "fast-glob": "~3.1.0",
     "mini-css-extract-plugin": "~0.8.0",
     "node-sass": "~4.13.0",
+    "npm-run-all": "^4.1.5",
     "optimize-css-assets-webpack-plugin": "~5.0.1",
     "postcss-loader": "~3.0.0",
     "sass-loader": "~8.0.0",
