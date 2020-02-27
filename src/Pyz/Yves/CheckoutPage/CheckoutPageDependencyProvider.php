@@ -17,6 +17,7 @@ use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollectio
 use SprykerShop\Yves\CheckoutPage\CheckoutPageDependencyProvider as SprykerShopCheckoutPageDependencyProvider;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToProductBundleClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToShipmentClientInterface;
+use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceInterface;
 use SprykerShop\Yves\CompanyPage\Plugin\CheckoutPage\CompanyUnitAddressExpanderPlugin;
 use SprykerShop\Yves\CustomerPage\Form\CheckoutAddressCollectionForm;
 use SprykerShop\Yves\CustomerPage\Form\CustomerCheckoutForm;
@@ -122,7 +123,8 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
             $this->getStore(),
             $this->getCustomerService($container),
             $this->getShipmentClient($container),
-            $this->getProductBundleClient($container)
+            $this->getProductBundleClient($container),
+            $this->getShipmentService($container)
         );
     }
 
@@ -144,6 +146,16 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     public function getProductBundleClient(Container $container): CheckoutPageToProductBundleClientInterface
     {
         return $container->get(static::CLIENT_PRODUCT_BUNDLE);
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceInterface
+     */
+    protected function getShipmentService(Container $container): CheckoutPageToShipmentServiceInterface
+    {
+        return $container->get(static::SERVICE_SHIPMENT);
     }
 
     /**
