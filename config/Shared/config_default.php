@@ -70,6 +70,8 @@ $CURRENT_STORE = Store::getInstance()->getStoreName();
 
 // ---------- General environment
 $config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker/spryker/Bundles';
+$config[KernelConstants::AUTO_LOADER_CACHE_FILE_PATH] = APPLICATION_ROOT_DIR . '/data/' . $CURRENT_STORE . '/cache/' . APPLICATION . '/unresolvable.cache';
+
 $config[ApplicationConstants::PROJECT_TIMEZONE] = 'UTC';
 $config[ApplicationConstants::ENABLE_WEB_PROFILER] = false;
 
@@ -122,6 +124,12 @@ $config[AuthConstants::AUTH_DEFAULT_CREDENTIALS] = [
 // ACL: Allow or disallow of urls for Zed Admin GUI for ALL users
 $config[AclConstants::ACL_DEFAULT_RULES] = [
     [
+        'bundle' => 'merchant-user-auth-gui-page',
+        'controller' => 'login',
+        'action' => 'index',
+        'type' => 'allow',
+    ],
+    [
         'bundle' => 'auth',
         'controller' => '*',
         'action' => '*',
@@ -134,7 +142,7 @@ $config[AclConstants::ACL_DEFAULT_RULES] = [
         'type' => 'allow',
     ],
     [
-        'bundle' => 'healthCheck',
+        'bundle' => 'health-check',
         'controller' => 'index',
         'action' => 'index',
         'type' => 'allow',

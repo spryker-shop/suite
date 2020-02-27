@@ -282,8 +282,12 @@ class CalculationBusinessTester extends Actor
      *
      * @return \Generated\Shared\Transfer\ProductOptionTransfer
      */
-    public function createProductOptionTransfer(int $price, string $priceMode, float $taxRate, int $quantity): ProductOptionTransfer
-    {
+    public function createProductOptionTransfer(
+        int $price,
+        string $priceMode,
+        float $taxRate,
+        int $quantity
+    ): ProductOptionTransfer {
         $productOptionValueEntity = $this->createProductOptionValue($taxRate);
 
         $productOptionTransfer = (new ProductOptionTransfer())
