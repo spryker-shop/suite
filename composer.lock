@@ -36765,16 +36765,16 @@
         },
         {
             "name": "spryker/symfony",
-            "version": "3.3.5",
+            "version": "3.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/symfony.git",
-                "reference": "8f7ad1a2ce8bf919779c553b3feb6089d653a898"
+                "reference": "78be218fefdaf04e104aaada4f412fd75564e288"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/symfony/zipball/8f7ad1a2ce8bf919779c553b3feb6089d653a898",
-                "reference": "8f7ad1a2ce8bf919779c553b3feb6089d653a898",
+                "url": "https://api.github.com/repos/spryker/symfony/zipball/78be218fefdaf04e104aaada4f412fd75564e288",
+                "reference": "78be218fefdaf04e104aaada4f412fd75564e288",
                 "shasum": ""
             },
             "require": {
@@ -36791,7 +36791,7 @@
                 "symfony/process": "^3.0.0 || ^4.0.0",
                 "symfony/property-access": "^3.0.0 || ^4.0.0",
                 "symfony/routing": "^3.0.0 || ^4.0.0",
-                "symfony/security": "^3.0.0 || ^4.0.0",
+                "symfony/security": "^3.0.0 <3.4.0 || ^3.4.26 || ^4.0.0 <4.1.0 || ^4.1.12 <4.2.0 || ^4.2.7",
                 "symfony/serializer": "^3.0.0 || ^4.0.0",
                 "symfony/stopwatch": "^3.4.0 || ^4.0.0",
                 "symfony/translation": "^3.0.0 || ^4.0.0",
@@ -36800,6 +36800,7 @@
                 "symfony/yaml": "^3.0.0 || ^4.0.0"
             },
             "require-dev": {
+                "spryker/code-sniffer": "*",
                 "spryker/propel": "*",
                 "spryker/testify": "*"
             },
@@ -36819,7 +36820,7 @@
                 "proprietary"
             ],
             "description": "Symfony module",
-            "time": "2019-11-22T12:33:01+00:00"
+            "time": "2020-02-21T09:29:35+00:00"
         },
         {
             "name": "spryker/synchronization",
