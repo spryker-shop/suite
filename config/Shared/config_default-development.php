@@ -145,3 +145,6 @@ $config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = true;
 
 // ----------- Documentation generator
 $config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GENERATION] = true;
+
+// ----------- Xdebug profiler
+$config[ZedRequestConstants::XDEBUG_PROFILER_FORWARD_ENABLED] = false;
