@@ -30,6 +30,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
     protected function getApplicationPlugins(): array
     {
         $applicationPlugins = [
+            new SessionApplicationPlugin(),
             new TwigApplicationPlugin(),
             new EventDispatcherApplicationPlugin(),
             new LocaleApplicationPlugin(),
@@ -38,7 +39,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new PropelApplicationPlugin(),
             new RouterApplicationPlugin(),
             new HttpApplicationPlugin(),
-            new SessionApplicationPlugin(),
             new ErrorHandlerApplicationPlugin(),
             new FormApplicationPlugin(),
             new ValidatorApplicationPlugin(),

@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "17afe23946a61f5fe1a327d3292a68f8",
+    "content-hash": "f97b2f533e642ecaf0022f846ff8df78",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.133.22",
+            "version": "3.133.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "4dd1cc4416a997769b0c2fab95a586190318ad30"
+                "reference": "fd4a74aff537a4f6a7e9ed7efb14693ae5f3013a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/4dd1cc4416a997769b0c2fab95a586190318ad30",
-                "reference": "4dd1cc4416a997769b0c2fab95a586190318ad30",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/fd4a74aff537a4f6a7e9ed7efb14693ae5f3013a",
+                "reference": "fd4a74aff537a4f6a7e9ed7efb14693ae5f3013a",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-02-25T19:10:01+00:00"
+            "time": "2020-02-26T19:11:26+00:00"
         },
         {
             "name": "codeitnowin/barcode",
@@ -8714,20 +8714,21 @@
         },
         {
             "name": "spryker/acl",
-            "version": "3.3.2",
+            "version": "3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/acl.git",
-                "reference": "e993731a72c8d779535b489728e131c2c3b94313"
+                "reference": "8ff5210f6e717c7e19941fddc450621dbb153e01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/acl/zipball/e993731a72c8d779535b489728e131c2c3b94313",
-                "reference": "e993731a72c8d779535b489728e131c2c3b94313",
+                "url": "https://api.github.com/repos/spryker/acl/zipball/8ff5210f6e717c7e19941fddc450621dbb153e01",
+                "reference": "8ff5210f6e717c7e19941fddc450621dbb153e01",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
+                "spryker/acl-extension": "^1.0.0",
                 "spryker/config": "^3.0.0",
                 "spryker/event-dispatcher-extension": "^1.0.0",
                 "spryker/gui": "^3.0.0",
@@ -8736,7 +8737,8 @@
                 "spryker/symfony": "^3.0.0",
                 "spryker/user": "^3.0.0",
                 "spryker/util-date-time": "^1.0.0",
-                "spryker/util-text": "^1.1.0"
+                "spryker/util-text": "^1.1.0",
+                "spryker/zed-navigation-extension": "^1.0.0"
             },
             "require-dev": {
                 "spryker/application": "*",
@@ -8763,7 +8765,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\Acl\\Helper\\": "tests/SprykerTest/Zed/Acl/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -8771,7 +8774,45 @@
                 "proprietary"
             ],
             "description": "Acl module",
-            "time": "2019-12-21T16:01:40+00:00"
+            "time": "2020-02-26T14:29:19+00:00"
+        },
+        {
+            "name": "spryker/acl-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/acl-extension.git",
+                "reference": "335412ee87fcc8dc7cbdcdc70fd982c6ea814772"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/acl-extension/zipball/335412ee87fcc8dc7cbdcdc70fd982c6ea814772",
+                "reference": "335412ee87fcc8dc7cbdcdc70fd982c6ea814772",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "AclExtension module",
+            "time": "2020-02-04T11:54:50+00:00"
         },
         {
             "name": "spryker/agent",
@@ -23227,16 +23268,16 @@
         },
         {
             "name": "spryker/merchant-relationship-sales-order-threshold-gui",
-            "version": "1.4.4",
+            "version": "1.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-relationship-sales-order-threshold-gui.git",
-                "reference": "c205ec19960fca2782ad663eb47672ebffd26c23"
+                "reference": "cac114b9b8524ae4e5267bab29d32ff504663c09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-relationship-sales-order-threshold-gui/zipball/c205ec19960fca2782ad663eb47672ebffd26c23",
-                "reference": "c205ec19960fca2782ad663eb47672ebffd26c23",
+                "url": "https://api.github.com/repos/spryker/merchant-relationship-sales-order-threshold-gui/zipball/cac114b9b8524ae4e5267bab29d32ff504663c09",
+                "reference": "cac114b9b8524ae4e5267bab29d32ff504663c09",
                 "shasum": ""
             },
             "require": {
@@ -23258,8 +23299,7 @@
                 "spryker/util-text": "^1.1.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
+                "spryker/code-sniffer": "*"
             },
             "type": "library",
             "extra": {
@@ -23277,7 +23317,7 @@
                 "proprietary"
             ],
             "description": "MerchantRelationshipSalesOrderThresholdGui module",
-            "time": "2019-11-18T21:37:34+00:00"
+            "time": "2020-02-17T13:33:51+00:00"
         },
         {
             "name": "spryker/merchant-relationship-sales-order-threshold-gui-extension",
@@ -23409,20 +23449,22 @@
         },
         {
             "name": "spryker/merchant-user",
-            "version": "0.2.0",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-user.git",
-                "reference": "4cb2d96ce0cbd39846950f09f9b8c412e395f8d8"
+                "reference": "868358188d9ef70703d4e3a5f4197bfa6dd1fef2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-user/zipball/4cb2d96ce0cbd39846950f09f9b8c412e395f8d8",
-                "reference": "4cb2d96ce0cbd39846950f09f9b8c412e395f8d8",
+                "url": "https://api.github.com/repos/spryker/merchant-user/zipball/868358188d9ef70703d4e3a5f4197bfa6dd1fef2",
+                "reference": "868358188d9ef70703d4e3a5f4197bfa6dd1fef2",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
+                "spryker/acl": "^3.4.0",
+                "spryker/acl-extension": "^1.0.0",
                 "spryker/auth": "^1.0.0 || ^2.0.0 || ^3.0.0",
                 "spryker/kernel": "^3.33.0",
                 "spryker/merchant": "^2.0.0",
@@ -23453,7 +23495,7 @@
                 "proprietary"
             ],
             "description": "MerchantUser module",
-            "time": "2020-02-11T10:17:33+00:00"
+            "time": "2020-02-27T09:48:24+00:00"
         },
         {
             "name": "spryker/merchant-user-auth-gui-page",
@@ -38913,16 +38955,16 @@
         },
         {
             "name": "spryker/zed-navigation",
-            "version": "1.4.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/zed-navigation.git",
-                "reference": "9e23df40431500dd36445471edc41a9d8077f9d3"
+                "reference": "84a002b8d1b1695d49129a663642066b8335a0e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/zed-navigation/zipball/9e23df40431500dd36445471edc41a9d8077f9d3",
-                "reference": "9e23df40431500dd36445471edc41a9d8077f9d3",
+                "url": "https://api.github.com/repos/spryker/zed-navigation/zipball/84a002b8d1b1695d49129a663642066b8335a0e4",
+                "reference": "84a002b8d1b1695d49129a663642066b8335a0e4",
                 "shasum": ""
             },
             "require": {
@@ -38933,6 +38975,7 @@
                 "spryker/twig-extension": "^1.0.0",
                 "spryker/url": "^3.0.0",
                 "spryker/util-encoding": "^2.0.0",
+                "spryker/zed-navigation-extension": "^1.0.0",
                 "spryker/zend": "^2.0.0"
             },
             "require-dev": {
@@ -38965,7 +39008,45 @@
                 "proprietary"
             ],
             "description": "ZedNavigation module",
-            "time": "2019-11-19T10:17:28+00:00"
+            "time": "2020-02-26T13:11:43+00:00"
+        },
+        {
+            "name": "spryker/zed-navigation-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/zed-navigation-extension.git",
+                "reference": "40ae0f9af865234257efda310b09af604c5c0ab5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/zed-navigation-extension/zipball/40ae0f9af865234257efda310b09af604c5c0ab5",
+                "reference": "40ae0f9af865234257efda310b09af604c5c0ab5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ZedNavigationExtension module",
+            "time": "2020-02-26T13:11:43+00:00"
         },
         {
             "name": "spryker/zed-request",
