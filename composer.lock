@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "00afe72b170834c8b6b67b6276852dd9",
+    "content-hash": "52207929a4a73d823ca0cff4a5e57287",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5033,11 +5033,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/ps-9877/dev-rfq-shipment-cost",
+            "version": "dev-bugfix/ps-12193-address-and-shipment-data-should-be-removed-after-rfq-content-change",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "b8bbf32ce21123343274f3d6a3f7ee34b57e1141"
+                "reference": "a3c7259741cb1c6c9620079d6e9d944df764651b"
             },
             "require": {
                 "php": ">=7.2"
@@ -5695,15 +5695,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-02-25T11:16:33+00:00"
+            "time": "2020-02-27T16:29:43+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/ps-9877/dev-rfq-shipment-cost",
+            "version": "dev-bugfix/ps-12193-address-and-shipment-data-should-be-removed-after-rfq-content-change",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "0f3031af740ea82a5f79f00e3e2b2d59f54dce0b"
+                "reference": "5af9eb0fa7e790c8386aba66199826bc3a56efea"
             },
             "require": {
                 "php": ">=7.2"
@@ -5843,7 +5843,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-02-25T11:17:23+00:00"
+            "time": "2020-02-27T16:27:49+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8709,8 +8709,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
