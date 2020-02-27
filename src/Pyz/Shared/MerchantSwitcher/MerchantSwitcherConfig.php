@@ -11,5 +11,5 @@ use Spryker\Shared\MerchantSwitcher\MerchantSwitcherConfig as SprykerMerchantSwi
 
 class MerchantSwitcherConfig extends SprykerMerchantSwitcherConfig
 {
-    public const ENABLE_MERCHANT_SWITCHER = false;
+    public const ENABLE_MERCHANT_SWITCHER = true;
 }
