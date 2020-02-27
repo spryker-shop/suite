@@ -113,16 +113,6 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     }
 
     /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceInterface
-     */
-    protected function getShipmentService(Container $container): CheckoutPageToShipmentServiceInterface
-    {
-        return $container->get(static::SERVICE_SHIPMENT);
-    }
-
-    /**
      * @return \Spryker\Yves\Checkout\Dependency\Plugin\Form\SubFormFilterPluginInterface[]
      */
     protected function getSubFormFilterPlugins(): array
