@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f97b2f533e642ecaf0022f846ff8df78",
+    "content-hash": "2f2a435ff9a77ccc8689dd346249ab4c",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.133.23",
+            "version": "3.133.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "fd4a74aff537a4f6a7e9ed7efb14693ae5f3013a"
+                "reference": "726426e1514be5220d55ecf02eb1f938a3b4a105"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/fd4a74aff537a4f6a7e9ed7efb14693ae5f3013a",
-                "reference": "fd4a74aff537a4f6a7e9ed7efb14693ae5f3013a",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/726426e1514be5220d55ecf02eb1f938a3b4a105",
+                "reference": "726426e1514be5220d55ecf02eb1f938a3b4a105",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-02-26T19:11:26+00:00"
+            "time": "2020-02-27T19:13:45+00:00"
         },
         {
             "name": "codeitnowin/barcode",
@@ -5311,23 +5311,26 @@
         },
         {
             "name": "spryker-shop/merchant-switcher-widget",
-            "version": "0.1.3",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/merchant-switcher-widget.git",
-                "reference": "50c5e46a83210f8ba27b16b4a2d15d8f378e9947"
+                "reference": "4264d0f0e9623ce2ee164a1177051df2a32530cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/merchant-switcher-widget/zipball/50c5e46a83210f8ba27b16b4a2d15d8f378e9947",
-                "reference": "50c5e46a83210f8ba27b16b4a2d15d8f378e9947",
+                "url": "https://api.github.com/repos/spryker-shop/merchant-switcher-widget/zipball/4264d0f0e9623ce2ee164a1177051df2a32530cf",
+                "reference": "4264d0f0e9623ce2ee164a1177051df2a32530cf",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
+                "spryker-shop/customer-page-extension": "^1.2.0",
                 "spryker-shop/shop-application": "^1.0.0",
                 "spryker/kernel": "^3.33.0",
                 "spryker/merchant-search": "^0.1.0",
+                "spryker/merchant-switcher": "^0.1.0",
+                "spryker/quote": "^2.0.0",
                 "spryker/shop-context-extension": "^0.1.0",
                 "spryker/symfony": "^3.0.0"
             },
@@ -5354,7 +5357,7 @@
                 "proprietary"
             ],
             "description": "MerchantSwitcherWidget module",
-            "time": "2020-02-21T11:53:08+00:00"
+            "time": "2020-02-27T12:38:13+00:00"
         },
         {
             "name": "spryker-shop/money-widget",
@@ -22329,24 +22332,28 @@
         },
         {
             "name": "spryker/merchant-product-offer",
-            "version": "0.3.0",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-product-offer.git",
-                "reference": "3dd40da065acf06f291e8dc0d2dd308c28db0ee0"
+                "reference": "7852742db95123d256933c4ac12ed01682e83d08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-product-offer/zipball/3dd40da065acf06f291e8dc0d2dd308c28db0ee0",
-                "reference": "3dd40da065acf06f291e8dc0d2dd308c28db0ee0",
+                "url": "https://api.github.com/repos/spryker/merchant-product-offer/zipball/7852742db95123d256933c4ac12ed01682e83d08",
+                "reference": "7852742db95123d256933c4ac12ed01682e83d08",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
-                "spryker/merchant": "^2.0.0"
+                "spryker/kernel": "^3.33.0",
+                "spryker/merchant": "^2.0.0",
+                "spryker/product-offer": "^0.3.1"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*"
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
             },
             "type": "library",
             "extra": {
@@ -22364,20 +22371,20 @@
                 "proprietary"
             ],
             "description": "MerchantProductOffer module",
-            "time": "2020-02-04T14:23:41+00:00"
+            "time": "2020-02-27T12:38:55+00:00"
         },
         {
             "name": "spryker/merchant-product-offer-data-import",
-            "version": "0.5.0",
+            "version": "0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-product-offer-data-import.git",
-                "reference": "442f04b548f4b4b9493c7a3cdd422aecabcdb259"
+                "reference": "b298449c17b6ae9c6e4d794e8ed215ab4a3dfd09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-product-offer-data-import/zipball/442f04b548f4b4b9493c7a3cdd422aecabcdb259",
-                "reference": "442f04b548f4b4b9493c7a3cdd422aecabcdb259",
+                "url": "https://api.github.com/repos/spryker/merchant-product-offer-data-import/zipball/b298449c17b6ae9c6e4d794e8ed215ab4a3dfd09",
+                "reference": "b298449c17b6ae9c6e4d794e8ed215ab4a3dfd09",
                 "shasum": ""
             },
             "require": {
@@ -22385,7 +22392,7 @@
                 "spryker/data-import": "^1.0.0",
                 "spryker/kernel": "^3.33.0",
                 "spryker/merchant": "^2.0.0",
-                "spryker/merchant-product-offer": "^0.3.0",
+                "spryker/merchant-product-offer": "^0.4.0",
                 "spryker/product": "^6.0.0",
                 "spryker/product-offer": "^0.3.0",
                 "spryker/propel-orm": "^1.0.0",
@@ -22413,7 +22420,7 @@
                 "MIT"
             ],
             "description": "MerchantProductOfferDataImport module",
-            "time": "2020-02-04T14:23:41+00:00"
+            "time": "2020-02-25T10:51:02+00:00"
         },
         {
             "name": "spryker/merchant-product-offer-search",
@@ -23446,6 +23453,56 @@
             ],
             "description": "MerchantSearch module",
             "time": "2020-02-05T12:11:54+00:00"
+        },
+        {
+            "name": "spryker/merchant-switcher",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-switcher.git",
+                "reference": "1aadf1f6a5c504b4fb1b07ebc786082017d62fce"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-switcher/zipball/1aadf1f6a5c504b4fb1b07ebc786082017d62fce",
+                "reference": "1aadf1f6a5c504b4fb1b07ebc786082017d62fce",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/cart": "^7.0.0",
+                "spryker/cart-extension": "^4.0.0",
+                "spryker/checkout-extension": "^1.2.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/merchant-product-offer": "^0.4.0",
+                "spryker/quote": "^2.0.0",
+                "spryker/zed-request": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/customer": "*",
+                "spryker/merchant": "*",
+                "spryker/product-offer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantSwitcher module",
+            "time": "2020-02-27T15:14:54+00:00"
         },
         {
             "name": "spryker/merchant-user",
@@ -29819,16 +29876,16 @@
         },
         {
             "name": "spryker/product-offer",
-            "version": "0.3.0",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-offer.git",
-                "reference": "1b90778bfc9089ab2db0c7aba64fc599da346eac"
+                "reference": "bde3eb0c32b93f33d3000e901367aa4c5d799c30"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-offer/zipball/1b90778bfc9089ab2db0c7aba64fc599da346eac",
-                "reference": "1b90778bfc9089ab2db0c7aba64fc599da346eac",
+                "url": "https://api.github.com/repos/spryker/product-offer/zipball/bde3eb0c32b93f33d3000e901367aa4c5d799c30",
+                "reference": "bde3eb0c32b93f33d3000e901367aa4c5d799c30",
                 "shasum": ""
             },
             "require": {
@@ -29865,7 +29922,7 @@
                 "proprietary"
             ],
             "description": "ProductOffer module",
-            "time": "2020-01-21T09:27:36+00:00"
+            "time": "2020-02-13T11:50:30+00:00"
         },
         {
             "name": "spryker/product-offer-availability",
