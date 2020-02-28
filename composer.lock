@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.133.22",
+            "version": "3.133.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "4dd1cc4416a997769b0c2fab95a586190318ad30"
+                "reference": "fd4a74aff537a4f6a7e9ed7efb14693ae5f3013a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/4dd1cc4416a997769b0c2fab95a586190318ad30",
-                "reference": "4dd1cc4416a997769b0c2fab95a586190318ad30",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/fd4a74aff537a4f6a7e9ed7efb14693ae5f3013a",
+                "reference": "fd4a74aff537a4f6a7e9ed7efb14693ae5f3013a",
                 "shasum": ""
             },
             "require": {
@@ -88,20 +88,20 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-02-25T19:10:01+00:00"
+            "time": "2020-02-26T19:11:26+00:00"
         },
         {
             "name": "behat/gherkin",
-            "version": "v4.6.0",
+            "version": "v4.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Gherkin.git",
-                "reference": "ab0a02ea14893860bca00f225f5621d351a3ad07"
+                "reference": "25bdcaf37898b4a939fa3031d5d753ced97e4759"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Gherkin/zipball/ab0a02ea14893860bca00f225f5621d351a3ad07",
-                "reference": "ab0a02ea14893860bca00f225f5621d351a3ad07",
+                "url": "https://api.github.com/repos/Behat/Gherkin/zipball/25bdcaf37898b4a939fa3031d5d753ced97e4759",
+                "reference": "25bdcaf37898b4a939fa3031d5d753ced97e4759",
                 "shasum": ""
             },
             "require": {
@@ -147,7 +147,7 @@
                 "gherkin",
                 "parser"
             ],
-            "time": "2019-01-16T14:22:17+00:00"
+            "time": "2020-02-27T11:29:57+00:00"
         },
         {
             "name": "codeception/codeception",
@@ -5001,13 +5001,14 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "eab74cdfeb6add6363ab1c45fff113044c10f27d"
+                "reference": "8abad18784a202282f97e7d1d6b9c0d582d48f7c"
             },
             "require": {
                 "php": ">=7.2"
             },
             "replace": {
                 "spryker/acl": "*",
+                "spryker/acl-extension": "*",
                 "spryker/agent": "*",
                 "spryker/agent-gui": "*",
                 "spryker/alternative-products-rest-api": "*",
@@ -5637,6 +5638,7 @@
                 "spryker/wishlist-extension": "*",
                 "spryker/wishlists-rest-api": "*",
                 "spryker/zed-navigation": "*",
+                "spryker/zed-navigation-extension": "*",
                 "spryker/zed-request": "*",
                 "spryker/zend": "*"
             },
@@ -5662,7 +5664,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-02-27T15:14:54+00:00"
+            "time": "2020-02-27T15:31:09+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5670,7 +5672,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "d9b3075d2d5e9c09d90ee1402a40b570896c682a"
+                "reference": "c8e10c4b1a7463fba264196a23d3daa6b3059558"
             },
             "require": {
                 "php": ">=7.2"
@@ -5812,7 +5814,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-02-27T12:38:13+00:00"
+            "time": "2020-02-26T13:42:40+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
