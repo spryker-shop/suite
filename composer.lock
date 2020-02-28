@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.133.23",
+            "version": "3.133.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "fd4a74aff537a4f6a7e9ed7efb14693ae5f3013a"
+                "reference": "726426e1514be5220d55ecf02eb1f938a3b4a105"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/fd4a74aff537a4f6a7e9ed7efb14693ae5f3013a",
-                "reference": "fd4a74aff537a4f6a7e9ed7efb14693ae5f3013a",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/726426e1514be5220d55ecf02eb1f938a3b4a105",
+                "reference": "726426e1514be5220d55ecf02eb1f938a3b4a105",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-02-26T19:11:26+00:00"
+            "time": "2020-02-27T19:13:45+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -5001,7 +5001,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "8abad18784a202282f97e7d1d6b9c0d582d48f7c"
+                "reference": "0f6b14e79d01610bc208326dce2f9814c3bbf1c0"
             },
             "require": {
                 "php": ">=7.2"
@@ -5317,6 +5317,7 @@
                 "spryker/merchant-relationship-sales-order-threshold-gui-extension": "*",
                 "spryker/merchant-sales-order": "*",
                 "spryker/merchant-search": "*",
+                "spryker/merchant-switcher": "*",
                 "spryker/merchant-user": "*",
                 "spryker/merchant-user-auth-gui-page": "*",
                 "spryker/messenger": "*",
@@ -5663,7 +5664,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-02-27T15:31:09+00:00"
+            "time": "2020-02-28T08:24:30+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5671,7 +5672,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "c8e10c4b1a7463fba264196a23d3daa6b3059558"
+                "reference": "47e8bc8f9c7b33fa6672050332b08e24c5eff71e"
             },
             "require": {
                 "php": ">=7.2"
@@ -5813,7 +5814,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-02-26T13:42:40+00:00"
+            "time": "2020-02-28T08:24:34+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -11185,7 +11186,7 @@
             },
             "require-dev": {
                 "dereuromark/composer-prefer-lowest": "^0.1.2",
-                "phpstan/phpstan": "^0.12.0",
+                "phpstan/phpstan-shim": "^0.11.1",
                 "phpunit/phpunit": "^7.0 || ^8.0"
             },
             "bin": [
