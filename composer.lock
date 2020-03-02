@@ -3642,7 +3642,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -5037,13 +5037,14 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "a03f85894c797dda76908f78a05298e1ac777fca"
+                "reference": "3d8c757186158854a1f9aede216c6013f2ee7983"
             },
             "require": {
                 "php": ">=7.2"
             },
             "replace": {
                 "spryker/acl": "*",
+                "spryker/acl-extension": "*",
                 "spryker/agent": "*",
                 "spryker/agent-gui": "*",
                 "spryker/alternative-products-rest-api": "*",
@@ -5352,7 +5353,9 @@
                 "spryker/merchant-relationship-sales-order-threshold-gui-extension": "*",
                 "spryker/merchant-sales-order": "*",
                 "spryker/merchant-search": "*",
+                "spryker/merchant-switcher": "*",
                 "spryker/merchant-user": "*",
+                "spryker/merchant-user-auth-gui-page": "*",
                 "spryker/messenger": "*",
                 "spryker/messenger-extension": "*",
                 "spryker/module-finder": "*",
@@ -5574,6 +5577,7 @@
                 "spryker/scheduler-jenkins": "*",
                 "spryker/search": "*",
                 "spryker/search-elasticsearch": "*",
+                "spryker/search-elasticsearch-gui": "*",
                 "spryker/search-extension": "*",
                 "spryker/security": "*",
                 "spryker/security-extension": "*",
@@ -5670,6 +5674,7 @@
                 "spryker/wishlist-extension": "*",
                 "spryker/wishlists-rest-api": "*",
                 "spryker/zed-navigation": "*",
+                "spryker/zed-navigation-extension": "*",
                 "spryker/zed-request": "*",
                 "spryker/zend": "*"
             },
@@ -5695,7 +5700,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-02-26T05:54:24+00:00"
+            "time": "2020-03-02T13:27:45+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -8709,8 +8714,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -11795,8 +11800,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
