@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\DataImport\Business\Model\ProductLabel\Hook;
+namespace Pyz\Zed\ProductLabelDataImport\Business\Hook;
 
 use Spryker\Zed\DataImport\Business\Model\DataImporterAfterImportInterface;
 use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
@@ -18,7 +18,7 @@ class ProductLabelAfterImportPublishHook implements DataImporterAfterImportInter
     /**
      * @return void
      */
-    public function afterImport()
+    public function afterImport(): void
     {
         DataImporterPublisher::addEvent(ProductLabelEvents::PRODUCT_LABEL_DICTIONARY_PUBLISH, static::ID_DEFAULT);
     }
