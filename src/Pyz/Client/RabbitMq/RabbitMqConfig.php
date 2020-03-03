@@ -43,11 +43,6 @@ use Spryker\Shared\UrlStorage\UrlStorageConstants;
 class RabbitMqConfig extends SprykerRabbitMqConfig
 {
     /**
-     * @var \ArrayObject|null
-     */
-    protected $queueOptionCollection;
-
-    /**
      *  QueueNameFoo, // Queue => QueueNameFoo, (Queue and error queue will be created: QueueNameFoo and QueueNameFoo.error)
      *  QueueNameBar => [
      *       RoutingKeyFoo => QueueNameBaz, // (Additional queues can be defined by several routing keys)
@@ -91,5 +86,13 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
             ProductOfferAvailabilityStorageConfig::PRODUCT_OFFER_AVAILABILITY_SYNC_STORAGE_QUEUE,
             $this->get(LogConstants::LOG_QUEUE_NAME),
         ];
+    }
+
+    /**
+     * @return string
+     */
+    protected function getDefaultBoundQueueNamePrefix(): string
+    {
+        return 'error';
     }
 }
