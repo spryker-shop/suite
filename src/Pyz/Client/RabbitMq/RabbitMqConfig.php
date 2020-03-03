@@ -7,8 +7,6 @@
 
 namespace Pyz\Client\RabbitMq;
 
-use Generated\Shared\Transfer\RabbitMqOptionTransfer;
-use Spryker\Client\RabbitMq\Model\Connection\Connection;
 use Spryker\Client\RabbitMq\RabbitMqConfig as SprykerRabbitMqConfig;
 use Spryker\Shared\AvailabilityStorage\AvailabilityStorageConstants;
 use Spryker\Shared\CategoryPageSearch\CategoryPageSearchConstants;
@@ -93,26 +91,5 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
             ProductOfferAvailabilityStorageConfig::PRODUCT_OFFER_AVAILABILITY_SYNC_STORAGE_QUEUE,
             $this->get(LogConstants::LOG_QUEUE_NAME),
         ];
-    }
-
-    /**
-     * @param string $queueName
-     * @param string $boundQueueName
-     * @param string $routingKey
-     *
-     * @return \Generated\Shared\Transfer\RabbitMqOptionTransfer
-     */
-    protected function createQueueOptionWithBoundedQueueName($queueName, $boundQueueName, $routingKey = '')
-    {
-        $queueOptionTransfer = new RabbitMqOptionTransfer();
-        $queueOptionTransfer
-            ->setQueueName($queueName)
-            ->setDurable(true)
-            ->setType('direct')
-            ->setDeclarationType(Connection::RABBIT_MQ_EXCHANGE)
-            ->addBindingQueueItem($this->createQueueBinding($queueName))
-            ->addBindingQueueItem($this->createQueueBinding(sprintf('%s.error', $boundQueueName), 'error'));
-
-        return $queueOptionTransfer;
     }
 }
