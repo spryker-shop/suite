@@ -9,7 +9,8 @@ namespace Pyz\Zed\Sales;
 
 use Spryker\Zed\CommentSalesConnector\Communication\Plugin\Sales\CommentThreadAttachedCommentOrderPostSavePlugin;
 use Spryker\Zed\CommentSalesConnector\Communication\Plugin\Sales\CommentThreadOrderExpanderPlugin;
-use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Sales\SaveBusinessUnitUuidOrderPostSavePlugin;
+use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Sales\SaveCompanyBusinessUnitUuidOrderPostSavePlugin;
+use Spryker\Zed\CompanySalesConnector\Communication\Plugin\Sales\SaveCompanyUuidOrderPostSavePlugin;
 use Spryker\Zed\Customer\Communication\Plugin\Sales\CustomerOrderHydratePlugin;
 use Spryker\Zed\Discount\Communication\Plugin\Sales\DiscountOrderHydratePlugin;
 use Spryker\Zed\ManualOrderEntry\Communication\Plugin\Sales\OrderSourceExpanderPreSavePlugin;
@@ -123,7 +124,8 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
         return [
             new CommentThreadAttachedCommentOrderPostSavePlugin(),
             new ConfiguredBundlesOrderPostSavePlugin(),
-            new SaveBusinessUnitUuidOrderPostSavePlugin(),
+            new SaveCompanyBusinessUnitUuidOrderPostSavePlugin(),
+            new SaveCompanyUuidOrderPostSavePlugin(),
         ];
     }
 
