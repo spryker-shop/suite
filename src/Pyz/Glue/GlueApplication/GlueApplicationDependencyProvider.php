@@ -120,6 +120,7 @@ use Spryker\Glue\RelatedProductsRestApi\Plugin\GlueApplication\RelatedProductsRe
 use Spryker\Glue\RestRequestValidator\Plugin\ValidateRestRequestAttributesPlugin;
 use Spryker\Glue\Router\Plugin\Application\RouterApplicationPlugin;
 use Spryker\Glue\SalesReturnsRestApi\Plugin\ReturnReasonsResourceRoutePlugin;
+use Spryker\Glue\SalesReturnsRestApi\Plugin\ReturnsResourceRoutePlugin;
 use Spryker\Glue\Session\Plugin\Application\SessionApplicationPlugin;
 use Spryker\Glue\SharedCartsRestApi\Plugin\GlueApplication\SharedCartByCartIdResourceRelationshipPlugin;
 use Spryker\Glue\SharedCartsRestApi\Plugin\GlueApplication\SharedCartsResourceRoutePlugin;
@@ -202,6 +203,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new AbstractProductsProductReviewsResourceRoutePlugin(),
             new HealthCheckResourceRoutePlugin(),
             new ReturnReasonsResourceRoutePlugin(),
+            new ReturnsResourceRoutePlugin(),
         ];
     }
 
