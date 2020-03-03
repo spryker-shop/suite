@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3e559dd8917e13558c7792b62a8a99de",
+    "content-hash": "0c9527d45b99e26704cbd3bd153df54e",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5033,11 +5033,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/glue-8804/glue-9916-sniffer-warns-on-superset-rules",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "4882c57d1a524cec708e5f19d689e66bbb1837c5"
+                "reference": "edb0bdd09d0b698ac0c6d12d394c8f6be451e887"
             },
             "require": {
                 "php": ">=7.2"
@@ -5693,7 +5693,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-02-19T13:03:04+00:00"
+            "time": "2020-03-02T12:46:47+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -11346,6 +11346,44 @@
                 "standards"
             ],
             "time": "2020-01-21T07:59:37+00:00"
+        },
+        {
+            "name": "spryker/shop-context-extension",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/shop-context-extension.git",
+                "reference": "0c9fa9eb8024dadc91f7851328a6b9abc96c76cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/shop-context-extension/zipball/0c9fa9eb8024dadc91f7851328a6b9abc96c76cb",
+                "reference": "0c9fa9eb8024dadc91f7851328a6b9abc96c76cb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ShopContextExtension module",
+            "time": "2020-02-20T08:21:35+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
