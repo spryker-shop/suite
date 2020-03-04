@@ -7,23 +7,26 @@
 
 namespace Pyz\Yves\ShopApplication;
 
-use Pyz\Yves\ExampleProductColorGroupWidget\Widget\ExampleProductColorSelectorWidget;
 use Spryker\Yves\ErrorHandler\Plugin\Application\ErrorHandlerApplicationPlugin;
 use Spryker\Yves\EventDispatcher\Plugin\Application\EventDispatcherApplicationPlugin;
+use Spryker\Yves\Form\Plugin\Application\FormApplicationPlugin;
 use Spryker\Yves\Http\Plugin\Application\HttpApplicationPlugin;
 use Spryker\Yves\Locale\Plugin\Application\LocaleApplicationPlugin;
+use Spryker\Yves\Messenger\Plugin\Application\FlashMessengerApplicationPlugin;
 use Spryker\Yves\Router\Plugin\Application\RouterApplicationPlugin;
+use Spryker\Yves\Security\Plugin\Application\SecurityApplicationPlugin;
 use Spryker\Yves\Session\Plugin\Application\SessionApplicationPlugin;
+use Spryker\Yves\ShopContext\Communication\Plugin\ShopApplication\ShopContextApplicationPlugin;
 use Spryker\Yves\Store\Plugin\Application\StoreApplicationPlugin;
 use Spryker\Yves\Translator\Plugin\Application\TranslatorApplicationPlugin;
 use Spryker\Yves\Twig\Plugin\Application\TwigApplicationPlugin;
+use Spryker\Yves\Validator\Plugin\Application\ValidatorApplicationPlugin;
 use SprykerShop\Yves\AgentWidget\Widget\AgentControlBarWidget;
 use SprykerShop\Yves\AvailabilityNotificationWidget\Widget\AvailabilityNotificationSubscriptionWidget;
 use SprykerShop\Yves\BusinessOnBehalfWidget\Widget\BusinessOnBehalfStatusWidget;
 use SprykerShop\Yves\CartCodeWidget\Widget\CartCodeFormWidget;
 use SprykerShop\Yves\CartNoteWidget\Widget\CartItemNoteFormWidget;
 use SprykerShop\Yves\CartNoteWidget\Widget\CartNoteFormWidget;
-use SprykerShop\Yves\CartToShoppingListWidget\Widget\CreateShoppingListFromCartWidget;
 use SprykerShop\Yves\CategoryImageStorageWidget\Widget\CategoryImageStorageWidget;
 use SprykerShop\Yves\CheckoutWidget\Widget\CheckoutBreadcrumbWidget;
 use SprykerShop\Yves\CheckoutWidget\Widget\ProceedToCheckoutButtonWidget;
@@ -33,12 +36,16 @@ use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyBusinessUnitContr
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyUserRestrictionHandlerPlugin;
 use SprykerShop\Yves\CompanyWidget\Widget\CompanyBusinessUnitAddressWidget;
 use SprykerShop\Yves\CompanyWidget\Widget\CompanyMenuItemWidget;
+use SprykerShop\Yves\ConfigurableBundleNoteWidget\Widget\ConfiguredBundleNoteWidget;
 use SprykerShop\Yves\ConfigurableBundleWidget\Widget\QuoteConfiguredBundleWidget;
 use SprykerShop\Yves\CurrencyWidget\Widget\CurrencyWidget;
 use SprykerShop\Yves\CustomerPage\Widget\CustomerNavigationWidget;
 use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderItemCheckboxWidget;
 use SprykerShop\Yves\DiscountPromotionWidget\Widget\CartDiscountPromotionProductListWidget;
 use SprykerShop\Yves\LanguageSwitcherWidget\Widget\LanguageSwitcherWidget;
+use SprykerShop\Yves\MerchantProductOfferWidget\Widget\MerchantProductOfferWidget;
+use SprykerShop\Yves\MerchantProductOfferWidget\Widget\ProductOfferSoldByMerchantWidget;
+use SprykerShop\Yves\MerchantSwitcherWidget\Widget\MerchantSwitcherSelectorFormWidget;
 use SprykerShop\Yves\MultiCartWidget\Widget\AddToMultiCartWidget;
 use SprykerShop\Yves\MultiCartWidget\Widget\CartOperationsWidget;
 use SprykerShop\Yves\MultiCartWidget\Widget\MiniCartWidget;
@@ -50,6 +57,7 @@ use SprykerShop\Yves\NewsletterWidget\Widget\NewsletterSubscriptionSummaryWidget
 use SprykerShop\Yves\NewsletterWidget\Widget\NewsletterSubscriptionWidget;
 use SprykerShop\Yves\PersistentCartShareWidget\Widget\ShareCartByLinkWidget;
 use SprykerShop\Yves\PriceProductVolumeWidget\Widget\ProductPriceVolumeWidget;
+use SprykerShop\Yves\PriceProductWidget\Widget\PriceProductWidget;
 use SprykerShop\Yves\PriceWidget\Widget\PriceModeSwitcherWidget;
 use SprykerShop\Yves\ProductAlternativeWidget\Widget\ProductAlternativeListWidget;
 use SprykerShop\Yves\ProductAlternativeWidget\Widget\ShoppingListProductAlternativeWidget;
@@ -62,6 +70,7 @@ use SprykerShop\Yves\ProductBundleWidget\Widget\ProductBundleMultiCartItemsListW
 use SprykerShop\Yves\ProductCategoryWidget\Widget\ProductBreadcrumbsWithCategoriesWidget;
 use SprykerShop\Yves\ProductDiscontinuedWidget\Widget\ProductDiscontinuedNoteWidget;
 use SprykerShop\Yves\ProductDiscontinuedWidget\Widget\ProductDiscontinuedWidget;
+use SprykerShop\Yves\ProductGroupWidget\Widget\ProductGroupColorWidget;
 use SprykerShop\Yves\ProductGroupWidget\Widget\ProductGroupWidget;
 use SprykerShop\Yves\ProductLabelWidget\Widget\ProductAbstractLabelWidget;
 use SprykerShop\Yves\ProductLabelWidget\Widget\ProductConcreteLabelWidget;
@@ -77,6 +86,7 @@ use SprykerShop\Yves\ProductReviewWidget\Widget\ProductDetailPageReviewWidget;
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductRatingFilterWidget;
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductReviewDisplayWidget;
 use SprykerShop\Yves\ProductSearchWidget\Widget\ProductConcreteAddWidget;
+use SprykerShop\Yves\ProductSearchWidget\Widget\ProductConcreteSearchGridWidget;
 use SprykerShop\Yves\ProductSearchWidget\Widget\ProductConcreteSearchWidget;
 use SprykerShop\Yves\ProductWidget\Widget\CatalogPageProductWidget;
 use SprykerShop\Yves\ProductWidget\Widget\CmsProductGroupWidget;
@@ -107,6 +117,7 @@ use SprykerShop\Yves\ShoppingListNoteWidget\Widget\ShoppingListItemNoteWidget;
 use SprykerShop\Yves\ShoppingListPage\Widget\ShoppingListDismissWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\AddItemsToShoppingListWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\AddToShoppingListWidget;
+use SprykerShop\Yves\ShoppingListWidget\Widget\CreateShoppingListFromCartWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListMenuItemWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListNavigationMenuWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListSubtotalWidget;
@@ -114,6 +125,9 @@ use SprykerShop\Yves\TabsWidget\Widget\FullTextSearchTabsWidget;
 use SprykerShop\Yves\WebProfilerWidget\Plugin\Application\WebProfilerApplicationPlugin;
 use SprykerShop\Yves\WishlistWidget\Widget\WishlistMenuItemWidget;
 
+/**
+ * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+ */
 class ShopApplicationDependencyProvider extends SprykerShopApplicationDependencyProvider
 {
     /**
@@ -126,6 +140,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             AddToShoppingListWidget::class,
             AgentControlBarWidget::class,
             BusinessOnBehalfStatusWidget::class,
+            MerchantSwitcherSelectorFormWidget::class,
             CartDeleteSharingCompanyUsersListWidget::class,
             CartDiscountPromotionProductListWidget::class,
             CartCodeFormWidget::class,
@@ -144,7 +159,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CustomerNavigationWidget::class,
             CustomerReorderItemCheckboxWidget::class,
             DisplayProductAbstractReviewWidget::class,
-            ExampleProductColorSelectorWidget::class,
+            ProductGroupColorWidget::class,
             LanguageSwitcherWidget::class,
             ManageProductMeasurementUnitWidget::class,
             MiniCartWidget::class,
@@ -200,7 +215,10 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             QuoteApproveRequestWidget::class,
             ProceedToCheckoutButtonWidget::class,
             QuoteApprovalWidget::class,
+            ProductOfferSoldByMerchantWidget::class,
             ProductConcreteSearchWidget::class,
+            ProductConcreteSearchGridWidget::class,
+            PriceProductWidget::class,
             AddItemsToShoppingListWidget::class,
             CategoryImageStorageWidget::class,
             AvailabilityNotificationSubscriptionWidget::class,
@@ -213,6 +231,8 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CommentThreadWidget::class,
             QuoteConfiguredBundleWidget::class,
             OrderConfiguredBundleWidget::class,
+            MerchantProductOfferWidget::class,
+            ConfiguredBundleNoteWidget::class,
         ];
     }
 
@@ -242,9 +262,14 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new TranslatorApplicationPlugin(),
             new RouterApplicationPlugin(),
             new SessionApplicationPlugin(),
-            new WebProfilerApplicationPlugin(),
             new HttpApplicationPlugin(),
             new ErrorHandlerApplicationPlugin(),
+            new FlashMessengerApplicationPlugin(),
+            new FormApplicationPlugin(),
+            new ValidatorApplicationPlugin(),
+            new SecurityApplicationPlugin(),
+            new WebProfilerApplicationPlugin(),
+            new ShopContextApplicationPlugin(),
         ];
     }
 }

@@ -9,6 +9,7 @@ namespace PyzTest\Glue\Carts\RestApi;
 
 use Codeception\Util\HttpCode;
 use PyzTest\Glue\Carts\CartsApiTester;
+use PyzTest\Glue\Carts\RestApi\Fixtures\ConvertGuestCartToCustomerCartRestApiFixtures;
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
 
 /**
@@ -24,10 +25,10 @@ use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
  */
 class ConvertGuestCartToCustomerCartRestApiCest
 {
-    protected const VALUE_FOR_ANONYMOUS = '666';
+    protected const ANONYMOUS_PREFIX = 'anonymous:';
 
     /**
-     * @var \PyzTest\Glue\Carts\RestApi\CartsRestApiFixtures
+     * @var \PyzTest\Glue\Carts\RestApi\Fixtures\ConvertGuestCartToCustomerCartRestApiFixtures
      */
     protected $fixtures;
 
@@ -38,7 +39,10 @@ class ConvertGuestCartToCustomerCartRestApiCest
      */
     public function loadFixtures(CartsApiTester $I): void
     {
-        $this->fixtures = $I->loadFixtures(CartsRestApiFixtures::class);
+        /** @var \PyzTest\Glue\Carts\RestApi\Fixtures\ConvertGuestCartToCustomerCartRestApiFixtures $fixtures */
+        $fixtures = $I->loadFixtures(ConvertGuestCartToCustomerCartRestApiFixtures::class);
+
+        $this->fixtures = $fixtures;
     }
 
     /**
@@ -52,39 +56,32 @@ class ConvertGuestCartToCustomerCartRestApiCest
     {
         // Arrange
         $this->requestCustomerLoginWithXAnonymousCustomerUniqueIdHeader($I);
-        $cartUuid = $this->fixtures->getGuestQuoteTransfer()->getUuid();
+        $quoteUuid = $this->fixtures->getGuestQuoteTransfer()->getUuid();
+        $productConcreteSku = $this->fixtures->getProductConcreteTransfer()->getSku();
+        $url = $I->buildCartUrl($quoteUuid, [CartsRestApiConfig::RESOURCE_CART_ITEMS]);
 
         // Act
-        $I->sendGET(
-            $I->formatUrl(
-                '{resourceCarts}/{cartUuid}?include={relationshipItems}',
-                [
-                    'cartUuid' => $cartUuid,
-                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'relationshipItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                ]
-            )
-        );
+        $I->sendGET($url);
 
         // Assert
         $I->seeResponseCodeIs(HttpCode::OK);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
 
-        $I->amSure(sprintf('Returned resource is of type %s', CartsRestApiConfig::RESOURCE_CARTS))
+        $I->amSure('The returned resource is of correct type')
             ->whenI()
             ->seeResponseDataContainsSingleResourceOfType(CartsRestApiConfig::RESOURCE_CARTS);
 
-        $I->amSure(sprintf('Returned resource has include of type %s', CartsRestApiConfig::RESOURCE_CART_ITEMS))
+        $I->amSure('The returned resource has correct id')
+            ->whenI()
+            ->seeSingleResourceIdEqualTo($quoteUuid);
+
+        $I->amSure('The returned resource has relationship')
             ->whenI()
             ->seeSingleResourceHasRelationshipByTypeAndId(
                 CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                $this->fixtures->getProductConcreteTransfer()->getSku()
+                $productConcreteSku
             );
-
-        $I->amSure('Returned resource has correct id')
-            ->whenI()
-            ->seeSingleResourceIdEqualTo($cartUuid);
     }
 
     /**
@@ -97,17 +94,10 @@ class ConvertGuestCartToCustomerCartRestApiCest
     public function requestGuestCartCollectionIsEmpty(CartsApiTester $I): void
     {
         // Arrange
-        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', static::VALUE_FOR_ANONYMOUS);
+        $I->haveHttpHeader(CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID, $this->fixtures->getGuestCustomerReference());
 
         // Act
-        $I->sendGET(
-            $I->formatUrl(
-                '{resourceGuestCarts}',
-                [
-                    'resourceGuestCarts' => CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-                ]
-            )
-        );
+        $I->sendGET($I->buildGuestCartsUrl());
 
         // Assert
         $I->seeResponseCodeIs(HttpCode::OK);
@@ -125,10 +115,10 @@ class ConvertGuestCartToCustomerCartRestApiCest
      */
     protected function requestCustomerLoginWithXAnonymousCustomerUniqueIdHeader(CartsApiTester $I): void
     {
-        $I->haveHttpHeader('X-Anonymous-Customer-Unique-Id', static::VALUE_FOR_ANONYMOUS);
+        $I->haveHttpHeader(CartsRestApiConfig::HEADER_ANONYMOUS_CUSTOMER_UNIQUE_ID, $this->fixtures->getGuestCustomerReference());
         $token = $I->haveAuthorizationToGlue(
             $this->fixtures->getCustomerTransfer(),
-            'anonymous:' . static::VALUE_FOR_ANONYMOUS
+            static::ANONYMOUS_PREFIX . $this->fixtures->getGuestCustomerReference()
         )->getAccessToken();
 
         $I->amBearerAuthenticated($token);

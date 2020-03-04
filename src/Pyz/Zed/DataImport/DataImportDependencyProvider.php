@@ -11,6 +11,7 @@ use Spryker\Zed\BusinessOnBehalfDataImport\Communication\Plugin\DataImport\Busin
 use Spryker\Zed\CategoryDataImport\Communication\Plugin\CategoryDataImportPlugin;
 use Spryker\Zed\CmsPageDataImport\Communication\Plugin\CmsPageDataImportPlugin;
 use Spryker\Zed\CmsPageDataImport\Communication\Plugin\CmsPageStoreDataImportPlugin;
+use Spryker\Zed\CmsSlotBlockDataImport\Communication\Plugin\CmsSlotBlockDataImportPlugin;
 use Spryker\Zed\CmsSlotDataImport\Communication\Plugin\CmsSlotDataImportPlugin;
 use Spryker\Zed\CmsSlotDataImport\Communication\Plugin\CmsSlotTemplateDataImportPlugin;
 use Spryker\Zed\CommentDataImport\Communication\Plugin\CommentDataImportPlugin;
@@ -26,6 +27,7 @@ use Spryker\Zed\CompanyUnitAddressLabelDataImport\Communication\Plugin\CompanyUn
 use Spryker\Zed\CompanyUnitAddressLabelDataImport\Communication\Plugin\CompanyUnitAddressLabelRelationDataImportPlugin;
 use Spryker\Zed\CompanyUserDataImport\Communication\Plugin\DataImport\CompanyUserDataImportPlugin;
 use Spryker\Zed\ConfigurableBundleDataImport\Communication\Plugin\ConfigurableBundleTemplateDataImportPlugin;
+use Spryker\Zed\ConfigurableBundleDataImport\Communication\Plugin\ConfigurableBundleTemplateImageDataImportPlugin;
 use Spryker\Zed\ConfigurableBundleDataImport\Communication\Plugin\ConfigurableBundleTemplateSlotDataImportPlugin;
 use Spryker\Zed\ContentBannerDataImport\Communication\Plugin\ContentBannerDataImportPlugin;
 use Spryker\Zed\ContentProductDataImport\Communication\Plugin\ContentProductAbstractListDataImportPlugin;
@@ -36,11 +38,21 @@ use Spryker\Zed\DataImport\DataImportDependencyProvider as SprykerDataImportDepe
 use Spryker\Zed\FileManagerDataImport\Communication\Plugin\FileManagerDataImportPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\MerchantDataImport\Communication\Plugin\MerchantDataImportPlugin;
+use Spryker\Zed\MerchantOpeningHoursDataImport\Communication\Plugin\MerchantOpeningHoursDateScheduleDataImportPlugin;
+use Spryker\Zed\MerchantOpeningHoursDataImport\Communication\Plugin\MerchantOpeningHoursWeekdayScheduleDataImportPlugin;
+use Spryker\Zed\MerchantProductOfferDataImport\Communication\Plugin\MerchantProductOfferDataImportPlugin;
+use Spryker\Zed\MerchantProductOfferDataImport\Communication\Plugin\MerchantProductOfferStoreDataImportPlugin;
+use Spryker\Zed\MerchantProfileDataImport\Communication\Plugin\MerchantProfileAddressDataImportPlugin;
+use Spryker\Zed\MerchantProfileDataImport\Communication\Plugin\MerchantProfileDataImportPlugin;
 use Spryker\Zed\MerchantRelationshipDataImport\Communication\Plugin\MerchantRelationshipDataImportPlugin;
 use Spryker\Zed\MerchantRelationshipProductListDataImport\Communication\Plugin\MerchantRelationshipProductListDataImportPlugin;
 use Spryker\Zed\MerchantRelationshipSalesOrderThresholdDataImport\Communication\Plugin\DataImport\MerchantRelationshipSalesOrderThresholdDataImportPlugin;
 use Spryker\Zed\MultiCartDataImport\Communication\Plugin\MultiCartDataImportPlugin;
+use Spryker\Zed\PaymentDataImport\Communication\Plugin\PaymentMethodDataImportPlugin;
+use Spryker\Zed\PaymentDataImport\Communication\Plugin\PaymentMethodStoreDataImportPlugin;
+use Spryker\Zed\PriceProductDataImport\Communication\Plugin\PriceProductDataImportPlugin;
 use Spryker\Zed\PriceProductMerchantRelationshipDataImport\Communication\Plugin\PriceProductMerchantRelationshipDataImportPlugin;
+use Spryker\Zed\PriceProductOfferDataImport\Communication\Plugin\PriceProductOfferDataImportPlugin;
 use Spryker\Zed\PriceProductScheduleDataImport\Communication\Plugin\PriceProductScheduleDataImportPlugin;
 use Spryker\Zed\ProductAlternativeDataImport\Communication\Plugin\ProductAlternativeDataImportPlugin;
 use Spryker\Zed\ProductDiscontinuedDataImport\Communication\Plugin\ProductDiscontinuedDataImportPlugin;
@@ -51,6 +63,8 @@ use Spryker\Zed\ProductMeasurementUnitDataImport\Communication\Plugin\ProductMea
 use Spryker\Zed\ProductMeasurementUnitDataImport\Communication\Plugin\ProductMeasurementSalesUnitDataImportPlugin;
 use Spryker\Zed\ProductMeasurementUnitDataImport\Communication\Plugin\ProductMeasurementSalesUnitStoreDataImportPlugin;
 use Spryker\Zed\ProductMeasurementUnitDataImport\Communication\Plugin\ProductMeasurementUnitDataImportPlugin;
+use Spryker\Zed\ProductOfferStockDataImport\Communication\Plugin\ProductOfferStockDataImportPlugin;
+use Spryker\Zed\ProductOfferValidityDataImport\Communication\ProductOfferValidityDataImportPlugin;
 use Spryker\Zed\ProductPackagingUnitDataImport\Communication\Plugin\DataImport\ProductPackagingUnitDataImportPlugin;
 use Spryker\Zed\ProductPackagingUnitDataImport\Communication\Plugin\DataImport\ProductPackagingUnitTypeDataImportPlugin;
 use Spryker\Zed\ProductQuantityDataImport\Communication\Plugin\ProductQuantityDataImportPlugin;
@@ -58,10 +72,15 @@ use Spryker\Zed\QuoteRequestDataImport\Communication\Plugin\QuoteRequestDataImpo
 use Spryker\Zed\QuoteRequestDataImport\Communication\Plugin\QuoteRequestVersionDataImportPlugin;
 use Spryker\Zed\SalesOrderThresholdDataImport\Communication\Plugin\DataImport\SalesOrderThresholdDataImportPlugin;
 use Spryker\Zed\SharedCartDataImport\Communication\Plugin\SharedCartDataImportPlugin;
+use Spryker\Zed\ShipmentDataImport\Communication\Plugin\ShipmentDataImportPlugin;
+use Spryker\Zed\ShipmentDataImport\Communication\Plugin\ShipmentMethodPriceDataImportPlugin;
+use Spryker\Zed\ShipmentDataImport\Communication\Plugin\ShipmentMethodStoreDataImportPlugin;
 use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListCompanyBusinessUnitDataImportPlugin;
 use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListCompanyUserDataImportPlugin;
 use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListDataImportPlugin;
 use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListItemDataImportPlugin;
+use Spryker\Zed\StockDataImport\Communication\Plugin\StockDataImportPlugin;
+use Spryker\Zed\StockDataImport\Communication\Plugin\StockStoreDataImportPlugin;
 
 class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
 {
@@ -206,6 +225,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new CmsPageStoreDataImportPlugin(),
             new CmsSlotTemplateDataImportPlugin(),
             new CmsSlotDataImportPlugin(),
+            new CmsSlotBlockDataImportPlugin(),
             new CompanyDataImportPlugin(),
             new CompanyBusinessUnitDataImportPlugin(),
             new CompanyUnitAddressDataImportPlugin(),
@@ -223,6 +243,15 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new BusinessOnBehalfCompanyUserDataImportPlugin(),
             new SalesOrderThresholdDataImportPlugin(),
             new MerchantDataImportPlugin(),
+            new MerchantProfileDataImportPlugin(),
+            new MerchantProfileAddressDataImportPlugin(),
+            new MerchantProductOfferDataImportPlugin(),
+            new MerchantProductOfferStoreDataImportPlugin(),
+            new MerchantOpeningHoursWeekdayScheduleDataImportPlugin(),
+            new MerchantOpeningHoursDateScheduleDataImportPlugin(),
+            new PriceProductDataImportPlugin(),
+            new ProductOfferValidityDataImportPlugin(),
+            new PriceProductOfferDataImportPlugin(),
             new MerchantRelationshipDataImportPlugin(),
             new MerchantRelationshipSalesOrderThresholdDataImportPlugin(),
             new ProductListDataImportPlugin(),
@@ -247,11 +276,20 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new QuoteRequestVersionDataImportPlugin(),
             new ConfigurableBundleTemplateDataImportPlugin(),
             new ConfigurableBundleTemplateSlotDataImportPlugin(),
+            new ConfigurableBundleTemplateImageDataImportPlugin(),
             new PriceProductScheduleDataImportPlugin(),
             new ContentBannerDataImportPlugin(),
             new ContentProductAbstractListDataImportPlugin(),
             new ContentProductSetDataImportPlugin(),
             new CommentDataImportPlugin(),
+            new ShipmentDataImportPlugin(),
+            new ShipmentMethodPriceDataImportPlugin(),
+            new ShipmentMethodStoreDataImportPlugin(),
+            new PaymentMethodDataImportPlugin(),
+            new PaymentMethodStoreDataImportPlugin(),
+            new StockDataImportPlugin(),
+            new StockStoreDataImportPlugin(),
+            new ProductOfferStockDataImportPlugin(),
         ];
     }
 

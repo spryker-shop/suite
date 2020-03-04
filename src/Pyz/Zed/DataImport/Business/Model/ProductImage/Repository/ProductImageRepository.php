@@ -36,15 +36,21 @@ class ProductImageRepository implements ProductImageRepositoryInterface
      * @param int $localeId
      * @param int|null $productAbstractId
      * @param int|null $productConcreteId
+     * @param string|null $productImageSetKey
      *
      * @return \Orm\Zed\ProductImage\Persistence\SpyProductImageSet
      */
-    public function getProductImageSetEntity(string $name, int $localeId, ?int $productAbstractId = null, ?int $productConcreteId = null): SpyProductImageSet
-    {
-        $key = $this->buildProductImageSetKey($name, $localeId, $productAbstractId, $productConcreteId);
+    public function getProductImageSetEntity(
+        string $name,
+        int $localeId,
+        ?int $productAbstractId = null,
+        ?int $productConcreteId = null,
+        ?string $productImageSetKey = null
+    ): SpyProductImageSet {
+        $key = $this->buildProductImageSetKey($name, $localeId, $productAbstractId, $productConcreteId, $productImageSetKey);
 
         if (!isset($this->resolvedProductImageSets[$key])) {
-            $this->resolvedProductImageSets[$key] = $this->getProductImageSet($name, $localeId, $productAbstractId, $productConcreteId);
+            $this->resolvedProductImageSets[$key] = $this->getProductImageSet($name, $localeId, $productAbstractId, $productConcreteId, $productImageSetKey);
         }
 
         return $this->resolvedProductImageSets[$key];
@@ -70,8 +76,10 @@ class ProductImageRepository implements ProductImageRepositoryInterface
      *
      * @return \Orm\Zed\ProductImage\Persistence\SpyProductImageSetToProductImage
      */
-    public function getProductImageSetToProductImageRelationEntity(int $productImageSetId, int $productImageId): SpyProductImageSetToProductImage
-    {
+    public function getProductImageSetToProductImageRelationEntity(
+        int $productImageSetId,
+        int $productImageId
+    ): SpyProductImageSetToProductImage {
         $key = $this->buildProductImageSetToProductImageRelationKey($productImageSetId, $productImageId);
 
         if (!isset($this->resolvedProductImageSetToProductImageRelations[$key])) {
@@ -105,8 +113,10 @@ class ProductImageRepository implements ProductImageRepositoryInterface
      *
      * @return string
      */
-    protected function buildProductImageSetToProductImageRelationKey(int $productImageSetId, int $productImageId): string
-    {
+    protected function buildProductImageSetToProductImageRelationKey(
+        int $productImageSetId,
+        int $productImageId
+    ): string {
         return sprintf('%d:%d', $productImageSetId, $productImageId);
     }
 
@@ -116,8 +126,10 @@ class ProductImageRepository implements ProductImageRepositoryInterface
      *
      * @return \Orm\Zed\ProductImage\Persistence\SpyProductImageSetToProductImage
      */
-    protected function getProductImageSetToProductImageRelation(int $productImageSetId, int $productImageId): SpyProductImageSetToProductImage
-    {
+    protected function getProductImageSetToProductImageRelation(
+        int $productImageSetId,
+        int $productImageId
+    ): SpyProductImageSetToProductImage {
         return SpyProductImageSetToProductImageQuery::create()
             ->filterByFkProductImageSet($productImageSetId)
             ->filterByFkProductImage($productImageId)
@@ -129,12 +141,18 @@ class ProductImageRepository implements ProductImageRepositoryInterface
      * @param int $localeId
      * @param int|null $productAbstractId
      * @param int|null $productConcreteId
+     * @param string|null $productImageSetKey
      *
      * @return string
      */
-    protected function buildProductImageSetKey(string $name, int $localeId, ?int $productAbstractId = null, ?int $productConcreteId = null): string
-    {
-        return sprintf(
+    protected function buildProductImageSetKey(
+        string $name,
+        int $localeId,
+        ?int $productAbstractId = null,
+        ?int $productConcreteId = null,
+        ?string $productImageSetKey = null
+    ): string {
+        return $productImageSetKey ?? sprintf(
             '%s:%d:%d:%d',
             $name,
             $localeId,
@@ -148,11 +166,17 @@ class ProductImageRepository implements ProductImageRepositoryInterface
      * @param int $localeId
      * @param int|null $productAbstractId
      * @param int|null $productConcreteId
+     * @param string|null $productImageSetKey
      *
      * @return \Orm\Zed\ProductImage\Persistence\SpyProductImageSet
      */
-    protected function getProductImageSet(string $name, int $localeId, ?int $productAbstractId = null, ?int $productConcreteId = null): SpyProductImageSet
-    {
+    protected function getProductImageSet(
+        string $name,
+        int $localeId,
+        ?int $productAbstractId = null,
+        ?int $productConcreteId = null,
+        ?string $productImageSetKey = null
+    ): SpyProductImageSet {
         $query = SpyProductImageSetQuery::create()
             ->filterByName($name)
             ->filterByFkLocale($localeId);
@@ -163,6 +187,10 @@ class ProductImageRepository implements ProductImageRepositoryInterface
 
         if ($productConcreteId) {
             $query->filterByFkProduct($productConcreteId);
+        }
+
+        if ($productImageSetKey) {
+            $query->filterByProductImageSetKey($productImageSetKey);
         }
 
         return $query->findOneOrCreate();

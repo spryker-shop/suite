@@ -42,6 +42,7 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
     public const NODE_TYPE_EXTERNAL_URL = 'external_url';
     public const NODE_TYPE_CATEGORY = 'category';
     public const NODE_TYPE_CMS_PAGE = 'cms_page';
+    public const NODE_TYPE_MERCHANT = 'merchant';
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
@@ -90,7 +91,12 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
                 $navigationNodeLocalizedAttributesEntity->setExternalUrl($this->getExternalUrl($navigationNodeLocalizedAttributesEntity, $localizedAttributes));
             }
 
-            if ($navigationNodeEntity->getNodeType() === static::NODE_TYPE_CATEGORY || $navigationNodeEntity->getNodeType() === static::NODE_TYPE_CMS_PAGE) {
+            if (
+                in_array(
+                    $navigationNodeEntity->getNodeType(),
+                    [static::NODE_TYPE_CATEGORY, static::NODE_TYPE_CMS_PAGE, static::NODE_TYPE_MERCHANT]
+                )
+            ) {
                 $navigationNodeLocalizedAttributesEntity->setFkUrl($this->getFkUrl($navigationNodeLocalizedAttributesEntity, $localizedAttributes, $idLocale));
             }
 
@@ -181,8 +187,10 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
      *
      * @return string
      */
-    protected function getTitle(SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes, array $localizedAttributes)
-    {
+    protected function getTitle(
+        SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes,
+        array $localizedAttributes
+    ) {
         if (isset($localizedAttributes[static::KEY_TITLE]) && !empty($localizedAttributes[static::KEY_TITLE])) {
             return $localizedAttributes[static::KEY_TITLE];
         }
@@ -196,8 +204,10 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
      *
      * @return string
      */
-    protected function getLink(SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes, array $localizedAttributes)
-    {
+    protected function getLink(
+        SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes,
+        array $localizedAttributes
+    ) {
         if (isset($localizedAttributes[static::KEY_URL]) && !empty($localizedAttributes[static::KEY_URL])) {
             return $localizedAttributes[static::KEY_URL];
         }
@@ -211,8 +221,10 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
      *
      * @return string
      */
-    protected function getExternalUrl(SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes, array $localizedAttributes)
-    {
+    protected function getExternalUrl(
+        SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes,
+        array $localizedAttributes
+    ) {
         if (isset($localizedAttributes[static::KEY_URL]) && !empty($localizedAttributes[static::KEY_URL])) {
             return $localizedAttributes[static::KEY_URL];
         }
@@ -227,8 +239,11 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
      *
      * @return int
      */
-    protected function getFkUrl(SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes, array $localizedAttributes, $idLocale)
-    {
+    protected function getFkUrl(
+        SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes,
+        array $localizedAttributes,
+        $idLocale
+    ) {
         if (isset($localizedAttributes[static::KEY_URL]) && !empty($localizedAttributes[static::KEY_URL])) {
             $urlEntity = SpyUrlQuery::create()
                 ->filterByFkLocale($idLocale)
@@ -249,8 +264,10 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
      *
      * @return string
      */
-    protected function getCssClass(SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes, array $localizedAttributes)
-    {
+    protected function getCssClass(
+        SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes,
+        array $localizedAttributes
+    ) {
         if (isset($localizedAttributes[static::KEY_CSS_CLASS]) && !empty($localizedAttributes[static::KEY_CSS_CLASS])) {
             return $localizedAttributes[static::KEY_CSS_CLASS];
         }
