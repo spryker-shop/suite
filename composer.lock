@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5fc33cce92ddc2685aae41b3f8abde7f",
+    "content-hash": "44903472e377a3a825241b36da0bede2",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -19364,16 +19364,16 @@
         },
         {
             "name": "spryker/discount-promotion",
-            "version": "4.0.0",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/discount-promotion.git",
-                "reference": "c5d7d5f0772a2ecdc87ed19a346fffade17026f3"
+                "reference": "586520c0e55d3576aee4839c550f230782e3804c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/discount-promotion/zipball/c5d7d5f0772a2ecdc87ed19a346fffade17026f3",
-                "reference": "c5d7d5f0772a2ecdc87ed19a346fffade17026f3",
+                "url": "https://api.github.com/repos/spryker/discount-promotion/zipball/586520c0e55d3576aee4839c550f230782e3804c",
+                "reference": "586520c0e55d3576aee4839c550f230782e3804c",
                 "shasum": ""
             },
             "require": {
@@ -19385,7 +19385,6 @@
                 "spryker/kernel": "^3.30.0",
                 "spryker/persistent-cart-extension": "^1.0.0",
                 "spryker/product": "^5.0.0 || ^6.0.0",
-                "spryker/propel-orm": "^1.0.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/transfer": "^3.18.0"
             },
@@ -19393,8 +19392,6 @@
                 "spryker/calculation": "*",
                 "spryker/cart": "*",
                 "spryker/code-sniffer": "*",
-                "spryker/decimal-object": "*",
-                "spryker/locale": "*",
                 "spryker/propel": "*",
                 "spryker/stock": "*",
                 "spryker/store": "*",
@@ -19403,6 +19400,55 @@
             "suggest": {
                 "spryker/calculation": "Used by plugin to reset promotional items.",
                 "spryker/cart": "Used by plugin to add promotional item identifier to group key."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Shared\\DiscountPromotion\\Helper\\": "tests/SprykerTest/Shared/DiscountPromotion/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "DiscountPromotion module",
+            "time": "2020-02-18T09:22:00+00:00"
+        },
+        {
+            "name": "spryker/discount-promotions-rest-api",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/discount-promotions-rest-api.git",
+                "reference": "f61a574a209d9fdce071fe43f34358ae81a07893"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/discount-promotions-rest-api/zipball/f61a574a209d9fdce071fe43f34358ae81a07893",
+                "reference": "f61a574a209d9fdce071fe43f34358ae81a07893",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/carts-rest-api-extension": "^1.5.0",
+                "spryker/glue-application": "^1.15.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/transfer": "^3.18.0",
+                "spryker/uuid-behavior": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/discount": "*",
+                "spryker/discount-promotion": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
             },
             "type": "library",
             "extra": {
@@ -19419,8 +19465,8 @@
             "license": [
                 "proprietary"
             ],
-            "description": "DiscountPromotion module",
-            "time": "2019-11-21T15:12:20+00:00"
+            "description": "DiscountPromotionsRestApi module",
+            "time": "2020-02-04T14:19:44+00:00"
         },
         {
             "name": "spryker/doctrine-inflector",
@@ -32259,16 +32305,16 @@
         },
         {
             "name": "spryker/products-rest-api",
-            "version": "2.8.0",
+            "version": "2.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/products-rest-api.git",
-                "reference": "d13bb3331d5e1a6a08564afc2c9d78a63ccbd40b"
+                "reference": "f6ff752fdf5638256e0c1816670693c078a5d47e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/products-rest-api/zipball/d13bb3331d5e1a6a08564afc2c9d78a63ccbd40b",
-                "reference": "d13bb3331d5e1a6a08564afc2c9d78a63ccbd40b",
+                "url": "https://api.github.com/repos/spryker/products-rest-api/zipball/f6ff752fdf5638256e0c1816670693c078a5d47e",
+                "reference": "f6ff752fdf5638256e0c1816670693c078a5d47e",
                 "shasum": ""
             },
             "require": {
@@ -32284,13 +32330,12 @@
                 "spryker/urls-rest-api-extension": "^1.0.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
+                "spryker/code-sniffer": "*"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -32303,7 +32348,7 @@
                 "proprietary"
             ],
             "description": "ProductsRestApi module",
-            "time": "2019-11-29T12:22:44+00:00"
+            "time": "2020-02-14T16:07:06+00:00"
         },
         {
             "name": "spryker/products-rest-api-extension",
@@ -43525,16 +43570,16 @@
         },
         {
             "name": "nette/neon",
-            "version": "v3.1.1",
+            "version": "v3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/neon.git",
-                "reference": "bf658bafcf56e36cfa0922f4866869927672cf2c"
+                "reference": "3c3dcbc6bf6c80dc97b1fc4ba9a22ae67930fc0e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/neon/zipball/bf658bafcf56e36cfa0922f4866869927672cf2c",
-                "reference": "bf658bafcf56e36cfa0922f4866869927672cf2c",
+                "url": "https://api.github.com/repos/nette/neon/zipball/3c3dcbc6bf6c80dc97b1fc4ba9a22ae67930fc0e",
+                "reference": "3c3dcbc6bf6c80dc97b1fc4ba9a22ae67930fc0e",
                 "shasum": ""
             },
             "require": {
@@ -43583,7 +43628,7 @@
                 "nette",
                 "yaml"
             ],
-            "time": "2020-02-12T11:15:48+00:00"
+            "time": "2020-03-04T11:47:04+00:00"
         },
         {
             "name": "nette/php-generator",
@@ -45703,8 +45748,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
