@@ -23,6 +23,7 @@ use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\SalesExtension\Quant
 use Spryker\Zed\ProductOfferSales\Communication\Plugin\Sales\ProductOfferReferenceOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionGroupIdHydratorPlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionOrderHydratePlugin;
+use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionsOrderItemExpanderPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Checkout\PackagingUnitSplittableItemTransformerStrategyPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Sales\AmountLeadProductHydrateOrderPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Sales\AmountSalesUnitHydrateOrderPlugin;
@@ -155,6 +156,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     {
         return [
             new OrderReferenceOrderItemExpanderPlugin(),
+            new ProductOptionsOrderItemExpanderPlugin(),
         ];
     }
 }
