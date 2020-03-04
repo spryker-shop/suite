@@ -215,6 +215,7 @@ matrix:
       script:
         - docker/sdk boot deploy.ci.yml
         - docker/sdk build images
+        - docker/sdk build assets
         - docker/sdk demo-data -t
         - 'docker/sdk testing codecept run -c codeception.acceptance.yml -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: inclusive: [PyzTest]\"" -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: exclusive: [Api, Glue]\""'
       before_install: skip
