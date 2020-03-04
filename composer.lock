@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "44903472e377a3a825241b36da0bede2",
+    "content-hash": "6302817437e414b954100c4f16ca9135",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -23457,27 +23457,28 @@
         },
         {
             "name": "spryker/merchant-sales-order",
-            "version": "0.3.0",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-sales-order.git",
-                "reference": "5dc2b058c38299aac9730ca2bbca7ac9e0c6c6f8"
+                "reference": "43a3ec7a2f854011df1d28faba086c3e758982ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-sales-order/zipball/5dc2b058c38299aac9730ca2bbca7ac9e0c6c6f8",
-                "reference": "5dc2b058c38299aac9730ca2bbca7ac9e0c6c6f8",
+                "url": "https://api.github.com/repos/spryker/merchant-sales-order/zipball/43a3ec7a2f854011df1d28faba086c3e758982ab",
+                "reference": "43a3ec7a2f854011df1d28faba086c3e758982ab",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
                 "spryker/kernel": "^3.33.0",
+                "spryker/merchant": "^2.0.0",
+                "spryker/propel-orm": "^1.0.0",
                 "spryker/sales": "^11.0.0",
                 "spryker/sales-extension": "^1.1.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
-                "spryker/merchant": "*",
                 "spryker/oms": "*",
                 "spryker/product-offer": "*",
                 "spryker/propel": "*",
@@ -23491,7 +23492,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\MerchantSalesOrder\\Helper\\": "tests/SprykerTest/Zed/MerchantSalesOrder/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -23499,7 +23501,7 @@
                 "proprietary"
             ],
             "description": "MerchantSalesOrder module",
-            "time": "2020-02-06T11:35:42+00:00"
+            "time": "2020-03-03T10:48:23+00:00"
         },
         {
             "name": "spryker/merchant-search",
@@ -44140,16 +44142,16 @@
         },
         {
             "name": "php-webdriver/webdriver",
-            "version": "1.8.1",
+            "version": "1.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-webdriver/php-webdriver.git",
-                "reference": "262ea0d209c292e0330be1041424887bbbffef04"
+                "reference": "3308a70be084d6d7fd1ee5787b4c2e6eb4b70aab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-webdriver/php-webdriver/zipball/262ea0d209c292e0330be1041424887bbbffef04",
-                "reference": "262ea0d209c292e0330be1041424887bbbffef04",
+                "url": "https://api.github.com/repos/php-webdriver/php-webdriver/zipball/3308a70be084d6d7fd1ee5787b4c2e6eb4b70aab",
+                "reference": "3308a70be084d6d7fd1ee5787b4c2e6eb4b70aab",
                 "shasum": ""
             },
             "require": {
@@ -44201,7 +44203,7 @@
                 "selenium",
                 "webdriver"
             ],
-            "time": "2020-02-17T08:14:38+00:00"
+            "time": "2020-03-04T14:40:12+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
