@@ -156,7 +156,7 @@ $jobs[] = [
     'stores' => $allStores,
 ];
 
-/* ProductOfferValidity */
+/* Oauth */
 $jobs[] = [
     'name' => 'remove-expired-refresh-tokens',
     'command' => '$PHP_BIN vendor/bin/console oauth:refresh-token:remove-expired',
