@@ -51,7 +51,7 @@ matrix:
         - ON_EVENTS=cron,push
         - DB=mysql
 
-    - name: Docker / PHP 7.3 / PostgreSQL / Functional
+    - name: Docker / Alpine / PHP 7.3 / PostgreSQL / Functional
       os:
         - linux
       dist: bionic
@@ -93,7 +93,7 @@ matrix:
       before_script: skip
       after_script: skip
 
-    - name: Docker / PHP 7.3 / PostgreSQL / Glue
+    - name: Docker / Alpine / PHP 7.3 / PostgreSQL / Glue
       os:
         - linux
       dist: bionic
@@ -137,7 +137,7 @@ matrix:
       before_script: skip
       after_script: skip
 
-    - name: Docker / PHP 7.3 / MySQL / Functional
+    - name: Docker / Alpine / PHP 7.3 / MySQL / Functional
       os:
         - linux
       dist: bionic
