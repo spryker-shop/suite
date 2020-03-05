@@ -44,16 +44,16 @@ sections:
             command: "vendor/bin/console cache:empty-all"
 
         remove-auto-completion:
-            command: "vendor/bin/console dev:ide:remove-auto-completion"
+            command: "vendor/bin/console dev:ide-auto-completion:remove"
 
         remove-request-validation-cache:
-            command: "vendor/bin/console glue:rest:remove-request-validation-cache"
+            command: "vendor/bin/console glue:rest-request-validation-cache:remove"
 
         remove-navigation-cache:
             command: "vendor/bin/console navigation:remove-cache"
 
         remove-source-map:
-            command: "vendor/bin/console search:setup:remove-source-map"
+            command: "vendor/bin/console search:source-map:remove"
 
         remove-databuilder:
             command: "vendor/bin/console transfer:databuilder:remove"
