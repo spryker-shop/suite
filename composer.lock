@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3e559dd8917e13558c7792b62a8a99de",
+    "content-hash": "eabbd5eba95c1cb8f465c4b5366ec4f4",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1117,8 +1117,8 @@
             "authors": [
                 {
                     "name": "Alessio Linares",
-                    "email": "alessio.linares@skyscanner.net",
-                    "role": "Software Engineer"
+                    "role": "Software Engineer",
+                    "email": "alessio.linares@skyscanner.net"
                 }
             ],
             "description": "JSONPath implementation for querying and updating JSON objects",
@@ -3645,7 +3645,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -4997,11 +4997,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/ps-10749/dev-return-management",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "189784d4a6a125a4ed2fda36261f39ee400b5be1"
+                "reference": "b6929512e63f5feaed2ea8f6fd0dda917d68cdc3"
             },
             "require": {
                 "php": ">=7.2"
@@ -5519,6 +5519,7 @@
                 "spryker/resource-share": "*",
                 "spryker/resource-share-extension": "*",
                 "spryker/rest-request-validator": "*",
+                "spryker/returns-rest-api": "*",
                 "spryker/router": "*",
                 "spryker/router-extension": "*",
                 "spryker/sales": "*",
@@ -5534,6 +5535,9 @@
                 "spryker/sales-quantity": "*",
                 "spryker/sales-reclamation": "*",
                 "spryker/sales-reclamation-gui": "*",
+                "spryker/sales-return": "*",
+                "spryker/sales-return-data-import": "*",
+                "spryker/sales-return-extension": "*",
                 "spryker/sales-split": "*",
                 "spryker/sales-statistics": "*",
                 "spryker/scheduler": "*",
@@ -5664,11 +5668,11 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-03-04T15:43:54+00:00"
+            "time": "2020-03-05T07:57:46+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/ps-10749/dev-return-management",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
@@ -8683,8 +8687,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -10298,20 +10302,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
+                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler",
-                    "role": "Project Founder"
+                    "homepage": "https://github.com/manuelpichler"
                 },
                 {
                     "name": "Marc Würth",
+                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84",
-                    "role": "Project Maintainer"
+                    "homepage": "https://github.com/ravage84"
                 },
                 {
                     "name": "Other contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
