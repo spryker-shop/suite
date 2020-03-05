@@ -50,7 +50,7 @@ sections:
             command: "vendor/bin/console glue:rest-request-validation-cache:remove"
 
         remove-navigation-cache:
-            command: "vendor/bin/console navigation:remove-cache"
+            command: "vendor/bin/console navigation:cache:remove"
 
         remove-source-map:
             command: "vendor/bin/console search:source-map:remove"
