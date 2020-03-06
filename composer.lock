@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6302817437e414b954100c4f16ca9135",
+    "content-hash": "e9f1dd0fe216172f76556c8af89283f7",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -798,8 +798,8 @@
             "authors": [
                 {
                     "name": "Alessio Linares",
-                    "role": "Software Engineer",
-                    "email": "alessio.linares@skyscanner.net"
+                    "email": "alessio.linares@skyscanner.net",
+                    "role": "Software Engineer"
                 }
             ],
             "description": "JSONPath implementation for querying and updating JSON objects",
@@ -1212,8 +1212,8 @@
             "authors": [
                 {
                     "name": "Luís Otávio Cobucci Oblonczyk",
-                    "role": "Developer",
-                    "email": "lcobucci@gmail.com"
+                    "email": "lcobucci@gmail.com",
+                    "role": "Developer"
                 }
             ],
             "description": "A simple library to work with JSON Web Token and JSON Web Signature",
@@ -1520,15 +1520,15 @@
             "authors": [
                 {
                     "name": "Alex Bilbie",
-                    "role": "Developer",
                     "email": "hello@alexbilbie.com",
-                    "homepage": "http://www.alexbilbie.com"
+                    "homepage": "http://www.alexbilbie.com",
+                    "role": "Developer"
                 },
                 {
                     "name": "Andy Millington",
-                    "role": "Developer",
                     "email": "andrew@noexceptions.io",
-                    "homepage": "https://www.noexceptions.io"
+                    "homepage": "https://www.noexceptions.io",
+                    "role": "Developer"
                 }
             ],
             "description": "A lightweight and powerful OAuth 2.0 authorization and resource server library with support for all the core specification grants. This library will allow you to secure your API with OAuth and allow your applications users to approve apps that want to access their data from your API.",
@@ -1580,9 +1580,9 @@
             "authors": [
                 {
                     "name": "Mandrill Devs",
-                    "role": "Developer",
                     "email": "community@mandrill.com",
-                    "homepage": "http://mandrill.com"
+                    "homepage": "http://mandrill.com",
+                    "role": "Developer"
                 }
             ],
             "description": "API client library for the Mandrill email as a service platform",
@@ -5312,22 +5312,23 @@
         },
         {
             "name": "spryker-shop/merchant-switcher-widget",
-            "version": "0.2.0",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/merchant-switcher-widget.git",
-                "reference": "4264d0f0e9623ce2ee164a1177051df2a32530cf"
+                "reference": "0a139949abc1da86a701e33da295441a4932f7b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/merchant-switcher-widget/zipball/4264d0f0e9623ce2ee164a1177051df2a32530cf",
-                "reference": "4264d0f0e9623ce2ee164a1177051df2a32530cf",
+                "url": "https://api.github.com/repos/spryker-shop/merchant-switcher-widget/zipball/0a139949abc1da86a701e33da295441a4932f7b5",
+                "reference": "0a139949abc1da86a701e33da295441a4932f7b5",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
                 "spryker-shop/customer-page-extension": "^1.2.0",
                 "spryker-shop/shop-application": "^1.0.0",
+                "spryker-shop/shop-ui": "^1.27.0",
                 "spryker/kernel": "^3.33.0",
                 "spryker/merchant-search": "^0.1.0",
                 "spryker/merchant-switcher": "^0.1.0",
@@ -5358,7 +5359,7 @@
                 "proprietary"
             ],
             "description": "MerchantSwitcherWidget module",
-            "time": "2020-02-27T12:38:13+00:00"
+            "time": "2020-03-06T16:55:18+00:00"
         },
         {
             "name": "spryker-shop/money-widget",
@@ -14713,20 +14714,20 @@
         },
         {
             "name": "spryker/company-business-unit",
-            "version": "2.10.2",
+            "version": "2.10.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/company-business-unit.git",
-                "reference": "8c4c42ef7344a7037f1e40ff7e7bdb9a9acd9b75"
+                "reference": "1b71d037372b82d0c08042d407dbea5bc9607bad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/company-business-unit/zipball/8c4c42ef7344a7037f1e40ff7e7bdb9a9acd9b75",
-                "reference": "8c4c42ef7344a7037f1e40ff7e7bdb9a9acd9b75",
+                "url": "https://api.github.com/repos/spryker/company-business-unit/zipball/1b71d037372b82d0c08042d407dbea5bc9607bad",
+                "reference": "1b71d037372b82d0c08042d407dbea5bc9607bad",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/company": "^1.0.0",
                 "spryker/company-business-unit-extension": "^1.2.0",
                 "spryker/company-extension": "^1.0.0",
@@ -14745,7 +14746,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -14759,7 +14760,7 @@
                 "proprietary"
             ],
             "description": "CompanyBusinessUnit module",
-            "time": "2019-10-14T10:22:10+00:00"
+            "time": "2020-03-05T15:17:35+00:00"
         },
         {
             "name": "spryker/company-business-unit-addresses-rest-api",
@@ -37924,20 +37925,20 @@
         },
         {
             "name": "spryker/user",
-            "version": "3.8.4",
+            "version": "3.8.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/user.git",
-                "reference": "59ff2c3fb1c46da267b19b7a5c5809d007bb8a7f"
+                "reference": "373f8d0615d5530cbff5e2fbfc02f8c7ff4e476f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/user/zipball/59ff2c3fb1c46da267b19b7a5c5809d007bb8a7f",
-                "reference": "59ff2c3fb1c46da267b19b7a5c5809d007bb8a7f",
+                "url": "https://api.github.com/repos/spryker/user/zipball/373f8d0615d5530cbff5e2fbfc02f8c7ff4e476f",
+                "reference": "373f8d0615d5530cbff5e2fbfc02f8c7ff4e476f",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/gui": "^3.17.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/session": "^3.1.1 || ^4.0.0",
@@ -37949,6 +37950,7 @@
             },
             "require-dev": {
                 "spryker/application": "*",
+                "spryker/code-sniffer": "*",
                 "spryker/container": "*",
                 "spryker/installer": "*",
                 "spryker/propel": "*",
@@ -37981,7 +37983,7 @@
                 "proprietary"
             ],
             "description": "User module",
-            "time": "2019-10-21T13:32:39+00:00"
+            "time": "2020-03-05T15:17:35+00:00"
         },
         {
             "name": "spryker/user-extension",
@@ -38956,16 +38958,16 @@
         },
         {
             "name": "spryker/wishlist",
-            "version": "8.2.1",
+            "version": "8.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/wishlist.git",
-                "reference": "d69ec90b301ed791df5ea29456eb5e7b531be3fd"
+                "reference": "3af9a1e8e751336d0a5df3ad435d66c4480650bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/wishlist/zipball/d69ec90b301ed791df5ea29456eb5e7b531be3fd",
-                "reference": "d69ec90b301ed791df5ea29456eb5e7b531be3fd",
+                "url": "https://api.github.com/repos/spryker/wishlist/zipball/3af9a1e8e751336d0a5df3ad435d66c4480650bc",
+                "reference": "3af9a1e8e751336d0a5df3ad435d66c4480650bc",
                 "shasum": ""
             },
             "require": {
@@ -39001,7 +39003,7 @@
                 "proprietary"
             ],
             "description": "Wishlist module",
-            "time": "2020-01-16T12:24:24+00:00"
+            "time": "2020-03-05T12:34:38+00:00"
         },
         {
             "name": "spryker/wishlist-extension",
@@ -43692,16 +43694,16 @@
         },
         {
             "name": "nette/robot-loader",
-            "version": "v3.2.2",
+            "version": "v3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/robot-loader.git",
-                "reference": "38e8a270567a4ad9fe716b40fcda5a6580afa3c0"
+                "reference": "726c462e73e739e965ec654a667407074cfe83c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/robot-loader/zipball/38e8a270567a4ad9fe716b40fcda5a6580afa3c0",
-                "reference": "38e8a270567a4ad9fe716b40fcda5a6580afa3c0",
+                "url": "https://api.github.com/repos/nette/robot-loader/zipball/726c462e73e739e965ec654a667407074cfe83c0",
+                "reference": "726c462e73e739e965ec654a667407074cfe83c0",
                 "shasum": ""
             },
             "require": {
@@ -43751,7 +43753,7 @@
                 "nette",
                 "trait"
             ],
-            "time": "2020-02-20T22:17:50+00:00"
+            "time": "2020-02-28T13:10:07+00:00"
         },
         {
             "name": "nette/schema",
@@ -44074,18 +44076,18 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "role": "Developer",
-                    "email": "sebastian@phpeople.de"
+                    "email": "sebastian@phpeople.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "Developer",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "Developer"
                 }
             ],
             "description": "Component for reading phar.io manifest information from a PHP Archive (PHAR)",
@@ -44121,18 +44123,18 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "role": "Developer",
-                    "email": "sebastian@phpeople.de"
+                    "email": "sebastian@phpeople.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "Developer",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "Developer"
                 }
             ],
             "description": "Library for handling version information and constraints",
@@ -44397,20 +44399,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
-                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler"
+                    "homepage": "https://github.com/manuelpichler",
+                    "role": "Project Founder"
                 },
                 {
                     "name": "Marc Würth",
-                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84"
+                    "homepage": "https://github.com/ravage84",
+                    "role": "Project Maintainer"
                 },
                 {
                     "name": "Other contributors",
-                    "role": "Contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
+                    "role": "Contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -44710,8 +44712,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "FilterIterator implementation that filters files based on a list of suffixes.",
@@ -44752,8 +44754,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Simple template engine.",
@@ -44801,8 +44803,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Utility class for timing",
@@ -45564,8 +45566,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Copy/Paste Detector (CPD) for PHP code.",
@@ -45748,8 +45750,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
@@ -47163,8 +47165,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "lead",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "lead"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
@@ -47204,8 +47206,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
