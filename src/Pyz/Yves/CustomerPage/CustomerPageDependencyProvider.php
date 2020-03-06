@@ -14,6 +14,7 @@ use SprykerShop\Yves\CompanyUserInvitationPage\Plugin\CompanyUserInvitationPreRe
 use SprykerShop\Yves\CustomerPage\CustomerPageDependencyProvider as SprykerShopCustomerPageDependencyProvider;
 use SprykerShop\Yves\CustomerPage\Plugin\CustomerPage\RedirectUriCustomerRedirectStrategyPlugin;
 use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderWidgetPlugin;
+use SprykerShop\Yves\MerchantSwitcherWidget\Plugin\CustomerPage\MerchantSwitchCartAfterCustomerAuthenticationSuccessPlugin;
 
 class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyProvider
 {
@@ -75,6 +76,7 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     {
         return [
             new FixAgentTokenAfterCustomerAuthenticationSuccessPlugin(),
+            new MerchantSwitchCartAfterCustomerAuthenticationSuccessPlugin(),
         ];
     }
 
