@@ -160,7 +160,7 @@ $jobs[] = [
 $jobs[] = [
     'name' => 'remove-expired-refresh-tokens',
     'command' => '$PHP_BIN vendor/bin/console oauth:refresh-token:remove-expired',
-    'schedule' => '0 6 * * *',
+    'schedule' => '*/5 * * * *',
     'enable' => true,
     'stores' => $allStores,
 ];
