@@ -13,11 +13,11 @@ use Orm\Zed\ProductAttribute\Persistence\SpyProductManagementAttributeQuery;
 use Orm\Zed\ProductAttribute\Persistence\SpyProductManagementAttributeValueQuery;
 use Orm\Zed\ProductAttribute\Persistence\SpyProductManagementAttributeValueTranslation;
 use Pyz\Zed\DataImport\Business\Model\ProductAttributeKey\AddProductAttributeKeysStep;
+use Spryker\Shared\GlossaryStorage\GlossaryStorageConfig;
 use Spryker\Shared\ProductAttribute\ProductAttributeConfig;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
-use Spryker\Zed\Glossary\Dependency\GlossaryEvents;
 
 class ProductManagementAttributeWriter extends PublishAwareStep implements DataImportStepInterface
 {
@@ -68,7 +68,7 @@ class ProductManagementAttributeWriter extends PublishAwareStep implements DataI
                 ->setValue($attributes['key_translation'])
                 ->save();
 
-            $this->addPublishEvents(GlossaryEvents::GLOSSARY_KEY_PUBLISH, $glossaryTranslationEntity->getFkGlossaryKey());
+            $this->addPublishEvents(GlossaryStorageConfig::GLOSSARY_KEY_PUBLISH_WRITE, $glossaryTranslationEntity->getFkGlossaryKey());
 
             if (!empty($attributes['value_translations'])) {
                 foreach ($attributes['value_translations'] as $value => $translation) {
