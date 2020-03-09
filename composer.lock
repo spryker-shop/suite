@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e9f1dd0fe216172f76556c8af89283f7",
+    "content-hash": "e12fb29d5c68a250f5800028c41e2ccf",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.133.30",
+            "version": "3.133.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "1ae0cff5226ffdd9b8a1d7b1f69c65fbaa5cb4e1"
+                "reference": "330a696c1f1de0267921f732602e55fb3ddfd550"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/1ae0cff5226ffdd9b8a1d7b1f69c65fbaa5cb4e1",
-                "reference": "1ae0cff5226ffdd9b8a1d7b1f69c65fbaa5cb4e1",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/330a696c1f1de0267921f732602e55fb3ddfd550",
+                "reference": "330a696c1f1de0267921f732602e55fb3ddfd550",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-03-05T19:19:55+00:00"
+            "time": "2020-03-06T19:16:46+00:00"
         },
         {
             "name": "codeitnowin/barcode",
@@ -1344,16 +1344,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.64",
+            "version": "1.0.65",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "d13c43dbd4b791f815215959105a008515d1a2e0"
+                "reference": "8f17b3ba67097aafb8318cd5c553b1acf7c891c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/d13c43dbd4b791f815215959105a008515d1a2e0",
-                "reference": "d13c43dbd4b791f815215959105a008515d1a2e0",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/8f17b3ba67097aafb8318cd5c553b1acf7c891c8",
+                "reference": "8f17b3ba67097aafb8318cd5c553b1acf7c891c8",
                 "shasum": ""
             },
             "require": {
@@ -1424,7 +1424,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2020-02-05T18:14:17+00:00"
+            "time": "2020-03-08T18:53:20+00:00"
         },
         {
             "name": "league/flysystem-aws-s3-v3",
@@ -13211,16 +13211,16 @@
         },
         {
             "name": "spryker/cms-page-data-import",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cms-page-data-import.git",
-                "reference": "93186dd5f26bb238c9ff77a3811ba029f25c39f8"
+                "reference": "66af1a5bebf04b81b3e0816e399148b942cbaf71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-page-data-import/zipball/93186dd5f26bb238c9ff77a3811ba029f25c39f8",
-                "reference": "93186dd5f26bb238c9ff77a3811ba029f25c39f8",
+                "url": "https://api.github.com/repos/spryker/cms-page-data-import/zipball/66af1a5bebf04b81b3e0816e399148b942cbaf71",
+                "reference": "66af1a5bebf04b81b3e0816e399148b942cbaf71",
                 "shasum": ""
             },
             "require": {
@@ -13255,7 +13255,7 @@
                 "MIT"
             ],
             "description": "CmsPageDataImport module",
-            "time": "2019-12-02T09:40:44+00:00"
+            "time": "2020-03-09T10:01:38+00:00"
         },
         {
             "name": "spryker/cms-page-search",
@@ -19850,16 +19850,16 @@
         },
         {
             "name": "spryker/event",
-            "version": "2.6.0",
+            "version": "2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event.git",
-                "reference": "627b7019a5946ab7e15c013bee97174a8c58ab3f"
+                "reference": "5ed92daa96cbb7f3deecda0f11465c3cd8b23553"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event/zipball/627b7019a5946ab7e15c013bee97174a8c58ab3f",
-                "reference": "627b7019a5946ab7e15c013bee97174a8c58ab3f",
+                "url": "https://api.github.com/repos/spryker/event/zipball/5ed92daa96cbb7f3deecda0f11465c3cd8b23553",
+                "reference": "5ed92daa96cbb7f3deecda0f11465c3cd8b23553",
                 "shasum": ""
             },
             "require": {
@@ -19872,6 +19872,7 @@
                 "spryker/util-encoding": "^2.1.0"
             },
             "require-dev": {
+                "spryker/code-sniffer": "*",
                 "spryker/propel": "^3.0.0",
                 "spryker/testify": "*"
             },
@@ -19891,20 +19892,20 @@
                 "proprietary"
             ],
             "description": "Event module",
-            "time": "2019-12-03T11:12:25+00:00"
+            "time": "2020-03-09T10:01:38+00:00"
         },
         {
             "name": "spryker/event-behavior",
-            "version": "1.15.0",
+            "version": "1.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "2a3cff77792a66094eb54c9bb4ad63be2790f9bc"
+                "reference": "59abcd716dd2d99475413f6083b2ac9b07dbf2d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/2a3cff77792a66094eb54c9bb4ad63be2790f9bc",
-                "reference": "2a3cff77792a66094eb54c9bb4ad63be2790f9bc",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/59abcd716dd2d99475413f6083b2ac9b07dbf2d3",
+                "reference": "59abcd716dd2d99475413f6083b2ac9b07dbf2d3",
                 "shasum": ""
             },
             "require": {
@@ -19954,7 +19955,7 @@
                 "proprietary"
             ],
             "description": "EventBehavior module",
-            "time": "2020-01-13T15:21:46+00:00"
+            "time": "2020-03-09T10:01:31+00:00"
         },
         {
             "name": "spryker/event-dispatcher",
@@ -20816,26 +20817,27 @@
         },
         {
             "name": "spryker/glossary-storage",
-            "version": "1.5.0",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/glossary-storage.git",
-                "reference": "d29a1710d6caf7f5f35fe2846f96313a0f066dfc"
+                "reference": "4a21e06e9ff65b6e69dcd6f47ac2eee9d7c5f001"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/glossary-storage/zipball/d29a1710d6caf7f5f35fe2846f96313a0f066dfc",
-                "reference": "d29a1710d6caf7f5f35fe2846f96313a0f066dfc",
+                "url": "https://api.github.com/repos/spryker/glossary-storage/zipball/4a21e06e9ff65b6e69dcd6f47ac2eee9d7c5f001",
+                "reference": "4a21e06e9ff65b6e69dcd6f47ac2eee9d7c5f001",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
                 "spryker/event-behavior": "^1.1.0",
-                "spryker/glossary": "^3.3.0",
+                "spryker/glossary": "^3.7.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/propel-orm": "^1.5.0",
+                "spryker/publisher-extension": "^1.0.0",
                 "spryker/storage": "^3.4.0",
-                "spryker/synchronization": "^0.2.0 || ^1.0.0",
+                "spryker/synchronization": "^0.2.1 || ^1.8.0",
                 "spryker/synchronization-behavior": "^1.0.0",
                 "spryker/synchronization-extension": "^1.0.0",
                 "spryker/util-encoding": "^1.0.0 || ^2.0.0"
@@ -20866,7 +20868,7 @@
                 "proprietary"
             ],
             "description": "GlossaryStorage module",
-            "time": "2019-12-05T16:06:03+00:00"
+            "time": "2020-03-09T10:01:38+00:00"
         },
         {
             "name": "spryker/glue-application",
@@ -22727,16 +22729,16 @@
         },
         {
             "name": "spryker/merchant-profile-data-import",
-            "version": "0.1.2",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-profile-data-import.git",
-                "reference": "29f5f445916e670750c4ae31a8ea4f34055f7503"
+                "reference": "e4ce059bb4d126f2595a0a6f1dd3bb7e66036acd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-profile-data-import/zipball/29f5f445916e670750c4ae31a8ea4f34055f7503",
-                "reference": "29f5f445916e670750c4ae31a8ea4f34055f7503",
+                "url": "https://api.github.com/repos/spryker/merchant-profile-data-import/zipball/e4ce059bb4d126f2595a0a6f1dd3bb7e66036acd",
+                "reference": "e4ce059bb4d126f2595a0a6f1dd3bb7e66036acd",
                 "shasum": ""
             },
             "require": {
@@ -22772,7 +22774,7 @@
                 "MIT"
             ],
             "description": "MerchantProfileDataImport module",
-            "time": "2020-02-19T11:39:18+00:00"
+            "time": "2020-03-09T10:01:38+00:00"
         },
         {
             "name": "spryker/merchant-profile-gui",
@@ -32542,6 +32544,94 @@
             "time": "2019-10-24T14:14:15+00:00"
         },
         {
+            "name": "spryker/publisher",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/publisher.git",
+                "reference": "2b5750dd012cfceb68d502a777d76effa4286385"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/publisher/zipball/2b5750dd012cfceb68d502a777d76effa4286385",
+                "reference": "2b5750dd012cfceb68d502a777d76effa4286385",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/event": "^2.0.0",
+                "spryker/event-behavior": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/publisher-extension": "^1.0.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Publisher module",
+            "time": "2020-03-02T18:12:10+00:00"
+        },
+        {
+            "name": "spryker/publisher-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/publisher-extension.git",
+                "reference": "fc85a9c7e2ca66f1664c84aab6b53114ac670884"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/publisher-extension/zipball/fc85a9c7e2ca66f1664c84aab6b53114ac670884",
+                "reference": "fc85a9c7e2ca66f1664c84aab6b53114ac670884",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/event": "*",
+                "spryker/event-behavior": "*"
+            },
+            "suggest": {
+                "spryker/event": "*",
+                "spryker/event-behavior": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "PublisherExtension module",
+            "time": "2020-03-02T17:51:50+00:00"
+        },
+        {
             "name": "spryker/queue",
             "version": "1.7.1",
             "source": {
@@ -33109,20 +33199,20 @@
         },
         {
             "name": "spryker/rabbit-mq",
-            "version": "2.9.1",
+            "version": "2.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "be83724ffd905e58d0ca1bd38de4e9d7a4b35565"
+                "reference": "e42569e831313859151b0ddc20b8c927fe249cde"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/be83724ffd905e58d0ca1bd38de4e9d7a4b35565",
-                "reference": "be83724ffd905e58d0ca1bd38de4e9d7a4b35565",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/e42569e831313859151b0ddc20b8c927fe249cde",
+                "reference": "e42569e831313859151b0ddc20b8c927fe249cde",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "php-amqplib/php-amqplib": "^2.6",
                 "spryker/guzzle": "^2.0.0",
                 "spryker/kernel": "^3.30.0",
@@ -33169,7 +33259,7 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "time": "2019-11-07T13:30:02+00:00"
+            "time": "2020-03-09T10:01:35+00:00"
         },
         {
             "name": "spryker/ramsey-uuid",
@@ -36968,16 +37058,16 @@
         },
         {
             "name": "spryker/synchronization",
-            "version": "1.8.1",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/synchronization.git",
-                "reference": "2c4b89642b85fab45a09a154a4b076639601979f"
+                "reference": "54cf63f46185ed0d3ad2f71c598b402521b82182"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/synchronization/zipball/2c4b89642b85fab45a09a154a4b076639601979f",
-                "reference": "2c4b89642b85fab45a09a154a4b076639601979f",
+                "url": "https://api.github.com/repos/spryker/synchronization/zipball/54cf63f46185ed0d3ad2f71c598b402521b82182",
+                "reference": "54cf63f46185ed0d3ad2f71c598b402521b82182",
                 "shasum": ""
             },
             "require": {
@@ -37041,7 +37131,7 @@
                 "proprietary"
             ],
             "description": "Synchronization module",
-            "time": "2019-12-23T12:28:53+00:00"
+            "time": "2020-03-09T10:01:38+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -41885,16 +41975,16 @@
         },
         {
             "name": "voku/anti-xss",
-            "version": "4.1.23",
+            "version": "4.1.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/anti-xss.git",
-                "reference": "ba4b9d487d0f3add12d35b34fe074eb0658ead55"
+                "reference": "4c032aa1aedbf4934418520c61c00b8fad6ca8d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/anti-xss/zipball/ba4b9d487d0f3add12d35b34fe074eb0658ead55",
-                "reference": "ba4b9d487d0f3add12d35b34fe074eb0658ead55",
+                "url": "https://api.github.com/repos/voku/anti-xss/zipball/4c032aa1aedbf4934418520c61c00b8fad6ca8d5",
+                "reference": "4c032aa1aedbf4934418520c61c00b8fad6ca8d5",
                 "shasum": ""
             },
             "require": {
@@ -41938,7 +42028,7 @@
                 "security",
                 "xss"
             ],
-            "time": "2020-03-05T23:52:46+00:00"
+            "time": "2020-03-08T00:12:04+00:00"
         },
         {
             "name": "voku/portable-ascii",
@@ -46303,12 +46393,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "4a78ed746e599c14acfa68e75521d13dbfc70071"
+                "reference": "17b3e9770d6d12758b3978214bff57bff7feb1b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/4a78ed746e599c14acfa68e75521d13dbfc70071",
-                "reference": "4a78ed746e599c14acfa68e75521d13dbfc70071",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/17b3e9770d6d12758b3978214bff57bff7feb1b7",
+                "reference": "17b3e9770d6d12758b3978214bff57bff7feb1b7",
                 "shasum": ""
             },
             "require": {
@@ -46349,7 +46439,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2020-02-14T16:47:55+00:00"
+            "time": "2020-03-09T10:22:46+00:00"
         },
         {
             "name": "spryker/development",
