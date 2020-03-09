@@ -25,6 +25,8 @@ matrix:
       env:
         - FE_TEST=1
         - ON_EVENTS=push
+      addons:
+        chrome: stable
 
     - php: "7.4"
       dist: bionic

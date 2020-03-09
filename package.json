@@ -24,8 +24,8 @@
     "bo:build:zed-ui": "npm run cd:zed-ui -- npm run build",
     "bo:build:mp-login": "npm run cd:mp-login -- npm run build",
     "bo:test": "run-s bo:test:*",
-    "bo:test:zed-ui": "npm run cd:zed-ui -- npm run test",
-    "bo:test:mp-login": "npm run cd:mp-login -- npm run test",
+    "bo:test:zed-ui": "npm run cd:zed-ui -- npm run test -- --watch=false --browsers ChromeHeadless",
+    "bo:test:mp-login": "npm run cd:mp-login -- npm run test -- --watch=false --browsers ChromeHeadless",
     "cd:zed-ui": "cd ./vendor/spryker/spryker/Bundles/ZedUi &&",
     "cd:mp-login": "cd ./vendor/spryker/spryker/Bundles/MerchantUserAuthGuiPage &&"
   },
