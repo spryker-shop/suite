@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e12fb29d5c68a250f5800028c41e2ccf",
+    "content-hash": "72c53a5aba2284eb96b1f00dcef76854",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -23648,16 +23648,16 @@
         },
         {
             "name": "spryker/merchant-user-auth-gui-page",
-            "version": "0.1.0",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-user-auth-gui-page.git",
-                "reference": "035e6ca7c8afe7f412d4b3b699203aa1d8591fb6"
+                "reference": "4ac33d5c28be7df2b7687b343716c1d070aa0749"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-user-auth-gui-page/zipball/035e6ca7c8afe7f412d4b3b699203aa1d8591fb6",
-                "reference": "035e6ca7c8afe7f412d4b3b699203aa1d8591fb6",
+                "url": "https://api.github.com/repos/spryker/merchant-user-auth-gui-page/zipball/4ac33d5c28be7df2b7687b343716c1d070aa0749",
+                "reference": "4ac33d5c28be7df2b7687b343716c1d070aa0749",
                 "shasum": ""
             },
             "require": {
@@ -23665,7 +23665,8 @@
                 "spryker/auth": "^1.0.0 || ^2.0.0 || ^3.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/messenger": "^3.0.0",
-                "spryker/symfony": "^3.0.0"
+                "spryker/symfony": "^3.0.0",
+                "spryker/zed-ui": "^0.1.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*"
@@ -23686,7 +23687,7 @@
                 "proprietary"
             ],
             "description": "MerchantUserAuthGuiPage module",
-            "time": "2020-02-12T08:50:28+00:00"
+            "time": "2020-03-09T11:10:39+00:00"
         },
         {
             "name": "spryker/messenger",
@@ -39343,6 +39344,45 @@
             ],
             "description": "ZedRequest module",
             "time": "2020-02-15T14:25:52+00:00"
+        },
+        {
+            "name": "spryker/zed-ui",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/zed-ui.git",
+                "reference": "1b711e1b00d815267ad9397ba38f58a2084d58c1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/zed-ui/zipball/1b711e1b00d815267ad9397ba38f58a2084d58c1",
+                "reference": "1b711e1b00d815267ad9397ba38f58a2084d58c1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ZedUi module",
+            "time": "2020-03-06T08:41:08+00:00"
         },
         {
             "name": "spryker/zend",
