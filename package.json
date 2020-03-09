@@ -18,11 +18,16 @@
     "zed:watch": "node ./node_modules/@spryker/oryx-for-zed/build --dev",
     "zed:production": "node ./node_modules/@spryker/oryx-for-zed/build --prod",
     "bo:install": "run-s bo:install:*",
-    "bo:install:zed-ui": "cd ./vendor/spryker/spryker/Bundles/ZedUi && npm install",
-    "bo:install:mp-login": "cd ./vendor/spryker/spryker/Bundles/MerchantUserAuthGuiPage && npm install",
+    "bo:install:zed-ui": "npm run cd:zed-ui -- npm install",
+    "bo:install:mp-login": "npm run cd:mp-login -- npm install",
     "bo:build": "run-s bo:build:*",
-    "bo:build:zed-ui": "cd ./vendor/spryker/spryker/Bundles/ZedUi && npm run build",
-    "bo:build:mp-login": "cd ./vendor/spryker/spryker/Bundles/MerchantUserAuthGuiPage && npm run build"
+    "bo:build:zed-ui": "npm run cd:zed-ui -- npm run build",
+    "bo:build:mp-login": "npm run cd:mp-login -- npm run build",
+    "bo:test": "run-s bo:test:*",
+    "bo:test:zed-ui": "npm run cd:zed-ui -- npm run test",
+    "bo:test:mp-login": "npm run cd:mp-login -- npm run test",
+    "cd:zed-ui": "cd ./vendor/spryker/spryker/Bundles/ZedUi &&",
+    "cd:mp-login": "cd ./vendor/spryker/spryker/Bundles/MerchantUserAuthGuiPage &&"
   },
   "engines": {
     "node": ">=8.11.4",
