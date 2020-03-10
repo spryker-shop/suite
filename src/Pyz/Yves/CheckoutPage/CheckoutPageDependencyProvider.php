@@ -196,15 +196,6 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     }
 
     /**
-     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutSummaryStepEnterPreCheckPluginInterface[]
-     */
-    protected function getCheckoutSummaryStepEnterPreCheckPlugins(): array
-    {
-        return [
-        ];
-    }
-
-    /**
      * @param \Spryker\Yves\Kernel\Container $container
      *
      * @return \Spryker\Yves\Kernel\Container
@@ -228,15 +219,6 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
         return [
             new CustomerAddressExpanderPlugin(),
             new CompanyUnitAddressExpanderPlugin(),
-        ];
-    }
-
-    /**
-     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutShipmentStepRedirectStrategyPluginInterface[]
-     */
-    protected function getCheckoutShipmentStepRedirectStrategyPlugins(): array
-    {
-        return [
         ];
     }
 
