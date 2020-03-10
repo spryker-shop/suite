@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6d6eb77bd074f26abb8881515351c543",
+    "content-hash": "3ade4ac83aebaa167a9b13c0c788e7b0",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -4997,11 +4997,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/ps-11343/ps-11388-ps-11975-aa-refactoring",
+            "version": "dev-feature/ps-11343/ps-11982-company-orders-history",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "eb6d10c07416ff18faff11d3f8fd56135a073eac"
+                "reference": "97aa633fb8f0496a8b7cb616665ad3a0a3d4512d"
             },
             "require": {
                 "php": ">=7.2"
@@ -5138,6 +5138,7 @@
                 "spryker/company-business-unit-extension": "*",
                 "spryker/company-business-unit-gui": "*",
                 "spryker/company-business-unit-gui-extension": "*",
+                "spryker/company-business-unit-sales-connector": "*",
                 "spryker/company-business-unit-storage": "*",
                 "spryker/company-business-units-rest-api": "*",
                 "spryker/company-business-units-rest-api-extension": "*",
@@ -5150,6 +5151,7 @@
                 "spryker/company-role-data-import": "*",
                 "spryker/company-role-gui": "*",
                 "spryker/company-roles-rest-api": "*",
+                "spryker/company-sales-connector": "*",
                 "spryker/company-supplier": "*",
                 "spryker/company-supplier-data-import": "*",
                 "spryker/company-supplier-gui": "*",
@@ -5664,15 +5666,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-03-06T12:46:12+00:00"
+            "time": "2020-03-10T09:41:46+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/ps-11343/ps-11388-ps-11975-aa-refactoring",
+            "version": "dev-feature/ps-11343/ps-11982-company-orders-history",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "ff27cbc682b5b10c022c955f0ef063e5bc04c199"
+                "reference": "6540856276b35c40221f85371a5c8d09528f44cc"
             },
             "require": {
                 "php": ">=7.2"
@@ -5705,6 +5707,7 @@
                 "spryker-shop/cms-slot-block-widget": "*",
                 "spryker-shop/comment-widget": "*",
                 "spryker-shop/comment-widget-extension": "*",
+                "spryker-shop/company-business-unit-widget": "*",
                 "spryker-shop/company-page": "*",
                 "spryker-shop/company-user-agent-widget": "*",
                 "spryker-shop/company-user-invitation-page": "*",
@@ -5815,7 +5818,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-03-06T12:30:22+00:00"
+            "time": "2020-03-10T09:41:15+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",

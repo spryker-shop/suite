@@ -8,7 +8,7 @@
 namespace Pyz\Yves\CustomerPage;
 
 use SprykerShop\Yves\AgentPage\Plugin\FixAgentTokenAfterCustomerAuthenticationSuccessPlugin;
-use SprykerShop\Yves\CompanyBusinessUnitWidget\Plugin\CustomerPage\CompanyBusinessUnitOrderSearchFormFormExpanderPlugin;
+use SprykerShop\Yves\CompanyBusinessUnitWidget\Plugin\CustomerPage\CompanyBusinessUnitOrderSearchFormExpanderPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\CustomerPage\BusinessOnBehalfCompanyUserRedirectAfterLoginStrategyPlugin;
 use SprykerShop\Yves\CompanyUserInvitationPage\Plugin\CompanyUserInvitationPreRegistrationCustomerTransferExpanderPlugin;
 use SprykerShop\Yves\CustomerPage\CustomerPageDependencyProvider as SprykerShopCustomerPageDependencyProvider;
@@ -81,12 +81,12 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     }
 
     /**
-     * @return \SprykerShop\Yves\CustomerPageExtension\Dependency\Plugin\OrderSearchFormFormExpanderPluginInterface[]
+     * @return \SprykerShop\Yves\CustomerPageExtension\Dependency\Plugin\OrderSearchFormExpanderPluginInterface[]
      */
     protected function getOrderSearchFormExpanderPlugins(): array
     {
         return [
-            new CompanyBusinessUnitOrderSearchFormFormExpanderPlugin(),
+            new CompanyBusinessUnitOrderSearchFormExpanderPlugin(),
         ];
     }
 }
