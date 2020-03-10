@@ -1,0 +1,9 @@
+{% extends model('template') %}
+
+{% define data = {
+    form: form
+} %}
+
+{% block body %}
+    {{ form_widget(data.form.marketplacePaymentInvoice) }}
+{% endblock %}

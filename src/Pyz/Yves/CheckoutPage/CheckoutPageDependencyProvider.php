@@ -7,12 +7,16 @@
 
 namespace Pyz\Yves\CheckoutPage;
 
+use Pyz\Shared\MarketplacePayment\MarketplacePaymentConfig;
+use Pyz\Yves\MarketplacePayment\Plugin\StepEngine\MarketplacePaymentExpanderPlugin;
+use Pyz\Yves\MarketplacePayment\Plugin\StepEngine\SubForm\MarketplacePaymentInvoiceSubFormPlugin;
 use Spryker\Shared\Nopayment\NopaymentConfig;
 use Spryker\Yves\Kernel\Container;
 use Spryker\Yves\Kernel\Plugin\Pimple;
 use Spryker\Yves\Nopayment\Plugin\NopaymentHandlerPlugin;
 use Spryker\Yves\Payment\Plugin\PaymentFormFilterPlugin;
 use Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface;
+use Spryker\Yves\StepEngine\Dependency\Plugin\Form\SubFormPluginCollection;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageDependencyProvider as SprykerShopCheckoutPageDependencyProvider;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToProductBundleClientInterface;
@@ -201,8 +205,25 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     {
         $container->extend(static::PAYMENT_METHOD_HANDLER, function (StepHandlerPluginCollection $paymentMethodHandler) {
             $paymentMethodHandler->add(new NopaymentHandlerPlugin(), NopaymentConfig::PAYMENT_PROVIDER_NAME);
+            $paymentMethodHandler->add(new MarketplacePaymentExpanderPlugin(), MarketplacePaymentConfig::PAYMENT_METHOD_MARKETPLACE_PAYMENT_INVOICE);
 
             return $paymentMethodHandler;
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    protected function extendSubFormPluginCollection(Container $container): Container
+    {
+        $container->extend(static::PAYMENT_SUB_FORMS, function (SubFormPluginCollection $paymentSubFormPluginCollection) {
+            $paymentSubFormPluginCollection->add(new MarketplacePaymentInvoiceSubFormPlugin());
+
+            return $paymentSubFormPluginCollection;
         });
 
         return $container;
