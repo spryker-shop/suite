@@ -7,20 +7,13 @@
 
 namespace PyzTest\Glue\Orders\RestApi;
 
-use Generated\Shared\DataBuilder\ProductConcreteBuilder;
 use Generated\Shared\DataBuilder\QuoteBuilder;
-use Generated\Shared\DataBuilder\ShipmentCarrierBuilder;
 use Generated\Shared\Transfer\CustomerTransfer;
-use Generated\Shared\Transfer\ExpenseTransfer;
-use Generated\Shared\Transfer\ItemTransfer;
-use Generated\Shared\Transfer\OrderTransfer;
-use Generated\Shared\Transfer\QuoteTransfer;
+use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\SaveOrderTransfer;
-use Generated\Shared\Transfer\ShipmentMethodTransfer;
-use Generated\Shared\Transfer\ShipmentTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
-use PyzTest\Glue\Orders\OrdersRestApiTester;
-use Spryker\Shared\Shipment\ShipmentConfig;
+use PyzTest\Glue\Orders\OrdersApiTester;
+use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
 
@@ -29,16 +22,17 @@ use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
  *
  * @group PyzTest
  * @group Glue
- * @group OrdersRestApi
+ * @group Orders
  * @group RestApi
- * @group OrdersRestApiFixtures
  * Add your own group annotations below this line
  * @group EndToEnd
  */
 class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContainerInterface
 {
-    protected const DEFAULT_STATE_MACHINE = 'Test01';
-    protected const TEST_PASSWORD = 'Test password';
+    protected const TEST_USERNAME = 'test username';
+    protected const TEST_PASSWORD = 'test password';
+
+    protected const TEST_GRAND_TOTAL = 1;
 
     /**
      * @var \Generated\Shared\Transfer\SaveOrderTransfer
@@ -48,186 +42,119 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
     /**
      * @var \Generated\Shared\Transfer\CustomerTransfer
      */
-    protected $customerTransfer;
+    protected $customerWithoutOrders;
 
     /**
-     * @var \Generated\Shared\Transfer\ShipmentMethodTransfer
+     * @var \Generated\Shared\Transfer\CustomerTransfer
      */
-    protected $shipmentMethodTransfer;
+    protected $customerWithOrders;
 
     /**
-     * @var \Generated\Shared\Transfer\QuoteTransfer
+     * @return \Generated\Shared\Transfer\CustomerTransfer
      */
-    protected $quoteTransfer;
+    public function getCustomerWithoutOrders(): CustomerTransfer
+    {
+        return $this->customerWithoutOrders;
+    }
 
     /**
-     * @var \Generated\Shared\Transfer\OrderTransfer
+     * @return \Generated\Shared\Transfer\CustomerTransfer
      */
-    protected $orderTransfer;
+    public function getCustomerWithOrders(): CustomerTransfer
+    {
+        return $this->customerWithOrders;
+    }
 
     /**
      * @return \Generated\Shared\Transfer\SaveOrderTransfer
      */
-    public function getSaveOrderTransfer(): SaveOrderTransfer
+    public function geSaveOrderTransfer(): SaveOrderTransfer
     {
         return $this->saveOrderTransfer;
     }
 
     /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
-    public function getCustomerTransfer(): CustomerTransfer
-    {
-        return $this->customerTransfer;
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\ShipmentMethodTransfer
-     */
-    public function getShipmentMethodTransfer(): ShipmentMethodTransfer
-    {
-        return $this->shipmentMethodTransfer;
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\QuoteTransfer
-     */
-    public function getQuoteTransfer(): QuoteTransfer
-    {
-        return $this->quoteTransfer;
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\OrderTransfer
-     */
-    public function getOrderTransfer(): OrderTransfer
-    {
-        return $this->orderTransfer;
-    }
-
-    /**
-     * @param \PyzTest\Glue\Orders\OrdersRestApiTester $I
+     * @param \PyzTest\Glue\Orders\OrdersApiTester $I
      *
      * @return \SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface
      */
-    public function buildFixtures(OrdersRestApiTester $I): FixturesContainerInterface
+    public function buildFixtures(OrdersApiTester $I): FixturesContainerInterface
     {
-        $this->customerTransfer = $this->createCustomerTransfer($I);
-        $this->shipmentMethodTransfer = $this->createShipmentMethodTransfer($I);
-        $this->quoteTransfer = $this->createQuoteTransfer();
-        $this->saveOrderTransfer = $this->createSaveOrderTransfer($I);
-        $this->orderTransfer = $this->createOrderTransfer($I);
+        $this->customerWithoutOrders = $this->createCustomerTransfer($I, static::TEST_USERNAME, static::TEST_PASSWORD);
 
-        $this->saveOrderShipment($I);
+        $this->saveOrderTransfer = $this->createOrderTransfer($I);
 
         return $this;
     }
 
     /**
-     * @param \PyzTest\Glue\Orders\OrdersRestApiTester $I
+     * @param \PyzTest\Glue\Orders\OrdersApiTester $I
      *
      * @return \Generated\Shared\Transfer\SaveOrderTransfer
      */
-    protected function createSaveOrderTransfer(OrdersRestApiTester $I): SaveOrderTransfer
+    protected function createOrderTransfer(OrdersApiTester $I): SaveOrderTransfer
     {
-        $I->configureTestStateMachine([static::DEFAULT_STATE_MACHINE]);
+        $this->customerWithOrders = $this->createCustomerTransfer($I, static::TEST_USERNAME, static::TEST_PASSWORD);
+        $quote = $this->createQuoteTransfer($this->customerWithOrders, [$this->createProductTransfer($I)]);
 
-        return $I->haveOrderFromQuote($this->quoteTransfer, static::DEFAULT_STATE_MACHINE);
+        return $I->haveOrderFromQuote($quote, $this->createStateMachine($I));
     }
 
     /**
-     * @param \PyzTest\Glue\Orders\OrdersRestApiTester $I
+     * @param \PyzTest\Glue\Orders\OrdersApiTester $I
+     *
+     * @return string
+     */
+    protected function createStateMachine(OrdersApiTester $I): string
+    {
+        $testStateMachineProcessName = 'DummyPayment01';
+        $I->configureTestStateMachine([$testStateMachineProcessName]);
+
+        return $testStateMachineProcessName;
+    }
+
+    /**
+     * @param \PyzTest\Glue\Orders\OrdersApiTester $I
+     * @param string $name
+     * @param string $password
      *
      * @return \Generated\Shared\Transfer\CustomerTransfer
      */
-    protected function createCustomerTransfer(OrdersRestApiTester $I): CustomerTransfer
+    protected function createCustomerTransfer(OrdersApiTester $I, string $name, string $password): CustomerTransfer
     {
         return $I->haveCustomer([
-            CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
-            CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,
+            CustomerTransfer::USERNAME => $name,
+            CustomerTransfer::PASSWORD => $password,
+            CustomerTransfer::NEW_PASSWORD => $password,
         ]);
     }
 
     /**
-     * @param \PyzTest\Glue\Orders\OrdersRestApiTester $I
+     * @param \PyzTest\Glue\Orders\OrdersApiTester $I
      *
-     * @return \Generated\Shared\Transfer\ShipmentMethodTransfer
+     * @return \Generated\Shared\Transfer\ProductConcreteTransfer
      */
-    protected function createShipmentMethodTransfer(OrdersRestApiTester $I): ShipmentMethodTransfer
+    public function createProductTransfer(OrdersApiTester $I): ProductConcreteTransfer
     {
-        $shipmentCarrierTransfer = (new ShipmentCarrierBuilder())->build();
-
-        return $I->haveShipmentMethod([ShipmentMethodTransfer::IS_ACTIVE => true], $shipmentCarrierTransfer->toArray());
+        return $I->haveProduct();
     }
 
     /**
-     * @return \Generated\Shared\Transfer\QuoteTransfer
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     * @param array $productTransfers
+     *
+     * @return \Spryker\Shared\Kernel\Transfer\AbstractTransfer
      */
-    protected function createQuoteTransfer(): QuoteTransfer
+    public function createQuoteTransfer(CustomerTransfer $customerTransfer, array $productTransfers): AbstractTransfer
     {
-        $quoteTransfer = (new QuoteBuilder())
-            ->withItem([
-                ItemTransfer::SKU => (new ProductConcreteBuilder())->build()->getSku(),
-                ItemTransfer::UNIT_PRICE => 1,
-                ItemTransfer::QUANTITY => 1,
-            ])
-            ->withItem([
-                ItemTransfer::SKU => (new ProductConcreteBuilder())->build()->getSku(),
-                ItemTransfer::UNIT_PRICE => 1,
-                ItemTransfer::QUANTITY => 1,
-            ])
+        return (new QuoteBuilder())
+            ->withItem($productTransfers)
+            ->withCustomer([CustomerTransfer::CUSTOMER_REFERENCE => $customerTransfer->getCustomerReference()])
+            ->withTotals([TotalsTransfer::GRAND_TOTAL => static::TEST_GRAND_TOTAL])
             ->withShippingAddress()
             ->withBillingAddress()
-            ->withShipment([
-                ShipmentTransfer::METHOD => $this->shipmentMethodTransfer,
-            ])
             ->withCurrency()
-            ->withTotals([
-                TotalsTransfer::GRAND_TOTAL => random_int(1000, 10000),
-            ])
+            ->withPayment()
             ->build();
-
-        $quoteTransfer->setCustomer($this->customerTransfer);
-        $quoteTransfer->addExpense($this->createShipmentExpenseTransfer());
-
-        return $quoteTransfer;
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\ExpenseTransfer
-     */
-    protected function createShipmentExpenseTransfer(): ExpenseTransfer
-    {
-        $expenseTransfer = new ExpenseTransfer();
-        $expenseTransfer->setType(ShipmentConfig::SHIPMENT_EXPENSE_TYPE);
-        $expenseTransfer->setName($this->shipmentMethodTransfer->getName());
-        $expenseTransfer->setSumGrossPrice(random_int(1000, 10000));
-        $expenseTransfer->setUnitGrossPrice(random_int(1000, 10000));
-        $expenseTransfer->setQuantity(1);
-
-        return $expenseTransfer;
-    }
-
-    /**
-     * @param \PyzTest\Glue\Orders\OrdersRestApiTester $I
-     *
-     * @return void
-     */
-    protected function saveOrderShipment(OrdersRestApiTester $I): void
-    {
-        $I->getLocator()->shipment()->facade()->saveOrderShipment(
-            $this->quoteTransfer,
-            $this->saveOrderTransfer
-        );
-    }
-
-    /**
-     * @param \PyzTest\Glue\Orders\OrdersRestApiTester $I
-     *
-     * @return \Generated\Shared\Transfer\OrderTransfer
-     */
-    protected function createOrderTransfer(OrdersRestApiTester $I): OrderTransfer
-    {
-        return $I->getLocator()->sales()->facade()->getOrderByIdSalesOrder($this->saveOrderTransfer->getIdSalesOrder());
     }
 }

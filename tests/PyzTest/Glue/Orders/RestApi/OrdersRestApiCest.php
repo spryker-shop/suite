@@ -9,7 +9,7 @@ namespace PyzTest\Glue\Orders\RestApi;
 
 use Codeception\Util\HttpCode;
 use Generated\Shared\Transfer\CustomerTransfer;
-use PyzTest\Glue\Orders\OrdersRestApiTester;
+use PyzTest\Glue\Orders\OrdersApiTester;
 use Spryker\Glue\OrdersRestApi\OrdersRestApiConfig;
 
 /**
@@ -25,101 +25,213 @@ use Spryker\Glue\OrdersRestApi\OrdersRestApiConfig;
  */
 class OrdersRestApiCest
 {
-    protected const KEY_ACCESS_TOKEN = 'accessToken';
-
     /**
      * @var \PyzTest\Glue\Orders\RestApi\OrdersRestApiFixtures
      */
     protected $fixtures;
 
     /**
-     * @param \PyzTest\Glue\Orders\OrdersRestApiTester $I
+     * @param \PyzTest\Glue\Orders\OrdersApiTester $I
      *
      * @return void
      */
-    public function loadFixtures(OrdersRestApiTester $I): void
+    public function loadFixtures(OrdersApiTester $I): void
     {
-        $this->fixtures = $I->loadFixtures(OrdersRestApiFixtures::class);
+        /** @var \PyzTest\Glue\Orders\RestApi\OrdersRestApiFixtures $fixtures */
+        $fixtures = $I->loadFixtures(OrdersRestApiFixtures::class);
+        $this->fixtures = $fixtures;
     }
 
     /**
      * @depends loadFixtures
      *
-     * @param \PyzTest\Glue\Orders\OrdersRestApiTester $I
+     * @param \PyzTest\Glue\Orders\OrdersApiTester $I
      *
      * @return void
      */
-    public function requestOrderDataAsAuthorizedCustomerShouldBeSuccessful(OrdersRestApiTester $I): void
+    public function requestGetEmptyListOfOrders(OrdersApiTester $I): void
     {
         //Arrange
-        $this->authorizeCustomer($I, $this->fixtures->getCustomerTransfer());
+        $this->authorizeCustomer($I, $this->fixtures->getCustomerWithoutOrders());
 
         //Act
-        $I->sendGET($I->formatUrl(
-            '{resource}/{reference}',
-            [
-                'resource' => OrdersRestApiConfig::RESOURCE_ORDERS,
-                'reference' => $this->fixtures->getOrderTransfer()->getOrderReference(),
-            ]
-        ));
+        $I->sendGET(
+            $I->formatUrl(OrdersRestApiConfig::RESOURCE_ORDERS)
+        );
 
         //Assert
-        $this->assertOrderResponse($I, HttpCode::OK);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
 
-        $shipmentsData = $I->grabDataFromResponseByJsonPath('$.data.attributes.shipments');
-        $shipmentData = current($shipmentsData);
+        $I->amSure('The returned resource contains empty collection')
+            ->whenI()
+            ->seeResponseDataContainsEmptyCollection();
 
-        $I->assertIsArray($shipmentsData);
-        $I->assertIsArray($shipmentData);
-        $I->assertEquals($shipmentData['shipmentMethodName'], $this->fixtures->getShipmentMethodTransfer()->getName());
+        $I->amSure('The returned resource has correct self-link')
+            ->whenI()
+            ->seeResponseLinksContainsSelfLink(
+                $I->formatFullUrl(OrdersRestApiConfig::RESOURCE_ORDERS)
+            );
     }
 
     /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\Orders\OrdersRestApiTester $I
+     * @param \PyzTest\Glue\Orders\OrdersApiTester $I
      *
      * @return void
      */
-    public function requestOrderDataAsNonAuthorizedCustomerShouldFail(OrdersRestApiTester $I): void
+    public function requestGetListOfOrdersWithSingleOrder(OrdersApiTester $I): void
+    {
+        //Arrange
+        $this->authorizeCustomer($I, $this->fixtures->getCustomerWithOrders());
+
+        //Act
+        $I->sendGET(
+            $I->formatUrl(OrdersRestApiConfig::RESOURCE_ORDERS)
+        );
+
+        //Assert
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+
+        $I->amSure('The returned resource has correct self-link')
+            ->whenI()
+            ->seeResponseLinksContainsSelfLink(
+                $I->formatFullUrl(OrdersRestApiConfig::RESOURCE_ORDERS)
+            );
+
+        $I->amSure('The returned resource has not empty collection')
+            ->whenI()
+            ->seeResponseDataContainsNonEmptyCollection();
+
+        $I->amSure('The returned resource has correct resource collection type')
+            ->whenI()
+            ->seeResponseDataContainsResourceCollectionOfType('orders');
+
+        $I->amSure('The returned resource has correct size')
+            ->whenI()
+            ->seeResponseDataContainsResourceCollectionOfTypeWithSizeOf('orders', 1);
+    }
+
+    /**
+     * @param \PyzTest\Glue\Orders\OrdersApiTester $I
+     *
+     * @return void
+     */
+    public function requestGetOrderDetails(OrdersApiTester $I): void
+    {
+        //Arrange
+        $this->authorizeCustomer($I, $this->fixtures->getCustomerWithOrders());
+        $orderReference = $this->fixtures->geSaveOrderTransfer()->getOrderReference();
+
+        //Act
+        $I->sendGET(
+            $I->formatUrl(
+                '{orders}/{customerOrderReference}',
+                [
+                    'orders' => OrdersRestApiConfig::RESOURCE_ORDERS,
+                    'customerOrderReference' => $orderReference,
+                ]
+            )
+        );
+
+        //Assert
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+
+        $I->amSure('The returned resource is of correct type')
+            ->whenI()
+            ->seeResponseDataContainsSingleResourceOfType('orders');
+
+        $I->amSure('The returned resource has correct id')
+            ->whenI()
+            ->seeSingleResourceIdEqualTo($orderReference);
+    }
+
+    /**
+     * @param \PyzTest\Glue\Orders\OrdersApiTester $I
+     *
+     * @return void
+     */
+    public function requestGetListOfOrderWithoutAuthorizationToken(OrdersApiTester $I): void
     {
         //Act
-        $I->sendGET($I->formatUrl(
-            '{resource}/{reference}',
-            [
-                'resource' => OrdersRestApiConfig::RESOURCE_ORDERS,
-                'reference' => $this->fixtures->getOrderTransfer()->getOrderReference(),
-            ]
-        ));
+        $I->sendGET(
+            $I->formatUrl(OrdersRestApiConfig::RESOURCE_ORDERS)
+        );
 
         //Assert
         $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
         $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
     }
 
     /**
-     * @param \PyzTest\Glue\Orders\OrdersRestApiTester $I
+     * @param \PyzTest\Glue\Orders\OrdersApiTester $I
+     *
+     * @return void
+     */
+    public function requestGetOrderDetailsWithoutAuthorizationToken(OrdersApiTester $I): void
+    {
+        //Arrange
+        $orderReference = $this->fixtures->geSaveOrderTransfer()->getOrderReference();
+
+        //Act
+        $I->sendGET(
+            $I->formatUrl(
+                '{orders}/{customerOrderReference}',
+                [
+                    'orders' => OrdersRestApiConfig::RESOURCE_ORDERS,
+                    'customerOrderReference' => $orderReference,
+                ]
+            )
+        );
+
+        //Assert
+        $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+    }
+
+    /**
+     * @param \PyzTest\Glue\Orders\OrdersApiTester $I
+     *
+     * @return void
+     */
+    public function requestGetOrderDetailsWithIncorrectOrderReference(OrdersApiTester $I): void
+    {
+        //Arrange
+        $this->authorizeCustomer($I, $this->fixtures->getCustomerWithOrders());
+
+        //Act
+        $I->sendGET(
+            $I->formatUrl(
+                '{orders}/{customerOrderReference}',
+                [
+                    'orders' => OrdersRestApiConfig::RESOURCE_ORDERS,
+                    'customerOrderReference' => 'test',
+                ]
+            )
+        );
+
+        //Assert
+        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesOpenApiSchema();
+    }
+
+    /**
+     * @param \PyzTest\Glue\Orders\OrdersApiTester $I
      * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
      *
      * @return void
      */
-    protected function authorizeCustomer(OrdersRestApiTester $I, CustomerTransfer $customerTransfer): void
+    protected function authorizeCustomer(OrdersApiTester $I, CustomerTransfer $customerTransfer): void
     {
-        $accessToken = $I->haveAuthorizationToGlue($customerTransfer)[static::KEY_ACCESS_TOKEN];
+        $token = $I->haveAuthorizationToGlue($customerTransfer)->getAccessToken();
 
-        $I->amBearerAuthenticated($accessToken);
-    }
-
-    /**
-     * @param \PyzTest\Glue\Orders\OrdersRestApiTester $I
-     * @param int $responseCode
-     *
-     * @return void
-     */
-    protected function assertOrderResponse(OrdersRestApiTester $I, int $responseCode): void
-    {
-        $I->seeResponseCodeIs($responseCode);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesOpenApiSchema();
+        $I->amBearerAuthenticated($token);
     }
 }
