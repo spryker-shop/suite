@@ -74,9 +74,6 @@
     }
   },
   "autoload-dev": {
-    "psr-4": {
-      "PyzTest\\": "tests/PyzTest/"
-    },
     "files": [
       "test-autoload.php"
     ]
@@ -134,7 +131,7 @@
       "recurse": true,
       "replace": false,
       "ignore-duplicates": false,
-      "merge-dev": true,
+      "merge-dev": false,
       "merge-extra": false,
       "merge-extra-deep": false,
       "merge-scripts": false
