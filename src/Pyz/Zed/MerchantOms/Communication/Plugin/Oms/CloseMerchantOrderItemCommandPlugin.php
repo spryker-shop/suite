@@ -23,6 +23,9 @@ class CloseMerchantOrderItemCommandPlugin extends AbstractPlugin implements Comm
     protected const EVENT_NAME = 'close';
 
     /**
+     * {@inheritDoc}
+     * - Triggers close event on merchant order item.
+     *
      * @api
      *
      * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem $orderItem

@@ -40,7 +40,7 @@ class CreateMerchantOrdersCommandPlugin extends AbstractPlugin implements Comman
      *
      * @return array
      */
-    public function run(array $orderItems, SpySalesOrder $orderEntity, ReadOnlyArrayObject $data)
+    public function run(array $orderItems, SpySalesOrder $orderEntity, ReadOnlyArrayObject $data): array
     {
         $orderTransfer = (new OrderTransfer())
             ->setIdSalesOrder($orderEntity->getIdSalesOrder())
