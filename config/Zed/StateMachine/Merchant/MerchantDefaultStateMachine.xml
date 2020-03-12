@@ -8,6 +8,7 @@
 
         <states>
             <state name="new"/>
+            <state name="pending"/>
             <state name="canceled by merchant"/>
             <state name="shipped"/>
             <state name="delivered"/>
@@ -17,18 +18,24 @@
         <transitions>
             <transition happy="true">
                 <source>new</source>
+                <target>pending</target>
+                <event>initiate</event>
+            </transition>
+
+            <transition happy="true">
+                <source>pending</source>
                 <target>shipped</target>
                 <event>ship</event>
             </transition>
 
             <transition>
-                <source>new</source>
+                <source>pending</source>
                 <target>closed</target>
                 <event>close</event>
             </transition>
 
             <transition>
-                <source>new</source>
+                <source>pending</source>
                 <target>canceled by merchant</target>
                 <event>cancel by merchant</event>
             </transition>
@@ -53,6 +60,7 @@
         </transitions>
 
         <events>
+            <event name="initiate" onEnter="true"/>
             <event name="ship" manual="true"/>
             <event name="deliver" manual="true"/>
             <event name="close" manual="true"/>
