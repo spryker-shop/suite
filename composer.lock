@@ -20759,20 +20759,20 @@
         },
         {
             "name": "spryker/glossary",
-            "version": "3.8.0",
+            "version": "3.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/glossary.git",
-                "reference": "e56ae907bef951304716b9a338d6f94995c47439"
+                "reference": "48bec55b78706b9ff0220644e864618f44d57d1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/glossary/zipball/e56ae907bef951304716b9a338d6f94995c47439",
-                "reference": "e56ae907bef951304716b9a338d6f94995c47439",
+                "url": "https://api.github.com/repos/spryker/glossary/zipball/48bec55b78706b9ff0220644e864618f44d57d1f",
+                "reference": "48bec55b78706b9ff0220644e864618f44d57d1f",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/gui": "^3.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/key-builder": "^1.0.0",
@@ -20787,6 +20787,7 @@
             },
             "require-dev": {
                 "spryker/application": "*",
+                "spryker/code-sniffer": "*",
                 "spryker/installer": "*",
                 "spryker/propel": "*",
                 "spryker/testify": "*",
@@ -20805,7 +20806,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Shared\\Glossary\\Helper\\": "tests/SprykerTest/Shared/Glossary/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -20813,7 +20815,7 @@
                 "proprietary"
             ],
             "description": "Glossary module",
-            "time": "2019-11-06T12:57:17+00:00"
+            "time": "2020-03-11T14:13:59+00:00"
         },
         {
             "name": "spryker/glossary-storage",
@@ -33439,20 +33441,20 @@
         },
         {
             "name": "spryker/resource-share",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/resource-share.git",
-                "reference": "76788e7972883cd8aa548ef425971f2123222759"
+                "reference": "65bba3af82ad199e86c74678e35c393a31fb8ed3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/resource-share/zipball/76788e7972883cd8aa548ef425971f2123222759",
-                "reference": "76788e7972883cd8aa548ef425971f2123222759",
+                "url": "https://api.github.com/repos/spryker/resource-share/zipball/65bba3af82ad199e86c74678e35c393a31fb8ed3",
+                "reference": "65bba3af82ad199e86c74678e35c393a31fb8ed3",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/kernel": "^3.32.0",
                 "spryker/resource-share-extension": "^1.0.0",
                 "spryker/util-encoding": "^2.0.0",
@@ -33472,7 +33474,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\ResourceShare\\Helper\\": "tests/SprykerTest/Zed/ResourceShare/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -33480,7 +33483,7 @@
                 "proprietary"
             ],
             "description": "ResourceShare module",
-            "time": "2019-06-20T08:25:13+00:00"
+            "time": "2020-03-11T14:13:59+00:00"
         },
         {
             "name": "spryker/resource-share-extension",
@@ -37778,20 +37781,20 @@
         },
         {
             "name": "spryker/url",
-            "version": "3.6.0",
+            "version": "3.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/url.git",
-                "reference": "4d514bfcdb259b99c4fbc436ad8abca76f4518ba"
+                "reference": "9c212e4df50a46435aaac3e79f0c55a0a3c3688a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/url/zipball/4d514bfcdb259b99c4fbc436ad8abca76f4518ba",
-                "reference": "4d514bfcdb259b99c4fbc436ad8abca76f4518ba",
+                "url": "https://api.github.com/repos/spryker/url/zipball/9c212e4df50a46435aaac3e79f0c55a0a3c3688a",
+                "reference": "9c212e4df50a46435aaac3e79f0c55a0a3c3688a",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/kernel": "^3.30.0",
                 "spryker/key-builder": "^1.0.0",
                 "spryker/locale": "^3.0.0",
@@ -37801,6 +37804,7 @@
                 "spryker/touch": "^3.0.0 || ^4.0.0"
             },
             "require-dev": {
+                "spryker/code-sniffer": "*",
                 "spryker/propel": "*",
                 "spryker/silex": "*",
                 "spryker/testify": "*",
@@ -37819,7 +37823,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Shared\\Url\\Helper\\": "tests/SprykerTest/Shared/Url/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -37827,7 +37832,7 @@
                 "proprietary"
             ],
             "description": "Url module",
-            "time": "2019-07-25T05:45:42+00:00"
+            "time": "2020-03-12T07:51:01+00:00"
         },
         {
             "name": "spryker/url-collector",
