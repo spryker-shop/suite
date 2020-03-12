@@ -7,10 +7,10 @@
 
 namespace Pyz\Yves\CheckoutPage;
 
-use Pyz\Shared\MarketplacePayment\MarketplacePaymentConfig;
-use Pyz\Yves\MarketplacePayment\Plugin\StepEngine\MarketplacePaymentExpanderPlugin;
-use Pyz\Yves\MarketplacePayment\Plugin\StepEngine\SubForm\MarketplacePaymentInvoiceSubFormPlugin;
+use Spryker\Shared\DummyMarketplacePayment\DummyMarketplacePaymentConfig;
 use Spryker\Shared\Nopayment\NopaymentConfig;
+use Spryker\Yves\DummyMarketplacePayment\Plugin\StepEngine\DummyMarketplacePaymentExpanderPlugin;
+use Spryker\Yves\DummyMarketplacePayment\Plugin\StepEngine\SubForm\DummyMarketplacePaymentInvoiceSubFormPlugin;
 use Spryker\Yves\Kernel\Container;
 use Spryker\Yves\Kernel\Plugin\Pimple;
 use Spryker\Yves\Nopayment\Plugin\NopaymentHandlerPlugin;
@@ -49,6 +49,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     {
         $container = parent::provideDependencies($container);
         $container = $this->extendPaymentMethodHandler($container);
+        $container = $this->extendSubFormPluginCollection($container);
 
         return $container;
     }
@@ -205,7 +206,10 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     {
         $container->extend(static::PAYMENT_METHOD_HANDLER, function (StepHandlerPluginCollection $paymentMethodHandler) {
             $paymentMethodHandler->add(new NopaymentHandlerPlugin(), NopaymentConfig::PAYMENT_PROVIDER_NAME);
-            $paymentMethodHandler->add(new MarketplacePaymentExpanderPlugin(), MarketplacePaymentConfig::PAYMENT_METHOD_MARKETPLACE_PAYMENT_INVOICE);
+            $paymentMethodHandler->add(
+                new DummyMarketplacePaymentExpanderPlugin(),
+                DummyMarketplacePaymentConfig::PAYMENT_METHOD_DUMMY_MARKETPLACE_PAYMENT_INVOICE
+            );
 
             return $paymentMethodHandler;
         });
@@ -221,7 +225,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     protected function extendSubFormPluginCollection(Container $container): Container
     {
         $container->extend(static::PAYMENT_SUB_FORMS, function (SubFormPluginCollection $paymentSubFormPluginCollection) {
-            $paymentSubFormPluginCollection->add(new MarketplacePaymentInvoiceSubFormPlugin());
+            $paymentSubFormPluginCollection->add(new DummyMarketplacePaymentInvoiceSubFormPlugin());
 
             return $paymentSubFormPluginCollection;
         });
