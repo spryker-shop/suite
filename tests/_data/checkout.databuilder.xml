@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<transfers
+    xmlns="spryker:databuilder-01"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="spryker:databuilder-01 http://static.spryker.com/databuilder-01.xsd"
+>
+
+    <transfer name="Customer">
+        <property name="email" dataBuilderRule="unique()->email"/>
+        <property name="firstName" dataBuilderRule="firstName"/>
+        <property name="lastName" dataBuilderRule="lastName"/>
+        <property name="gender" dataBuilderRule="randomElement(['Male', 'Female'])"/>
+        <property name="dateOfBirth" dataBuilderRule="date('Y-m-d', '-20 years')"/>
+        <property name="salutation" dataBuilderRule="randomElement(['Mr', 'Mrs'])"/>
+    </transfer>
+
+    <transfer name="Item">
+        <property name="sku" dataBuilderRule="isbn10"/>
+        <property name="unitGrossPrice" dataBuilderRule="randomNumber(5)"/>
+        <property name="sumGrossPrice" dataBuilderRule="randomNumber(5)"/>
+        <property name="quantity" dataBuilderRule="=1"/>
+        <property name="name" dataBuilderRule="word"/>
+    </transfer>
+
+    <transfer name="Address">
+        <property name="salutation" dataBuilderRule="randomElement(['Mr', 'Mrs'])"/>
+        <property name="firstName" dataBuilderRule="firstName"/>
+        <property name="lastName" dataBuilderRule="lastName"/>
+        <property name="address1" dataBuilderRule="address"/>
+        <property name="address2" dataBuilderRule="address"/>
+        <property name="address3" dataBuilderRule="address"/>
+        <property name="company" dataBuilderRule="company"/>
+        <property name="city" dataBuilderRule="city"/>
+        <property name="zipCode" dataBuilderRule="postcode"/>
+        <property name="state" dataBuilderRule="country"/>
+        <property name="iso2Code" dataBuilderRule="=DE"/>
+    </transfer>
+
+    <transfer name="ShipmentMethod">
+        <property name="name" dataBuilderRule="word"/>
+        <property name="isActive" dataBuilderRule="=1"/>
+        <property name="carrierName" dataBuilderRule="word"/>
+        <property name="taxRate" dataBuilderRule="randomFloat(2, 0, 99)"/>
+        <property name="storeCurrencyPrice" dataBuilderRule="randomNumber(4)"/>
+    </transfer>
+
+    <transfer name="ShipmentCarrier">
+        <property name="name" dataBuilderRule="word(1)"/>
+        <property name="isActive" dataBuilderRule="=1"/>
+    </transfer>
+
+    <transfer name="Totals">
+        <property name="priceToPay" dataBuilderRule="randomNumber(5)"/>
+        <property name="subtotal" dataBuilderRule="randomNumber(5)"/>
+    </transfer>
+
+    <transfer name="RestPayment">
+        <property name="paymentProviderName" dataBuilderRule="=DummyPayment"/>
+        <property name="paymentMethodName" dataBuilderRule="=invoice"/>
+    </transfer>
+
+    <transfer name="DummyPayment">
+        <property name="dateOfBirth" dataBuilderRule="date('Y-m-d', '-20 years')"/>
+    </transfer>
+
+    <transfer name="Currency">
+        <property name="code" dataBuilderRule="=EUR"/>
+        <property name="name" dataBuilderRule="=EURO"/>
+        <property name="symbol" dataBuilderRule="=€"/>
+    </transfer>
+
+</transfers>
