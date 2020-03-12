@@ -60,8 +60,9 @@ class CheckoutApiTester extends ApiEndToEndTester
 {
     use _generated\CheckoutApiTesterActions;
 
-    protected const REQUEST_PARAM_PAYMENT_METHOD_NAME_INVOICE = 'invoice';
+    protected const REQUEST_PARAM_PAYMENT_METHOD_NAME_INVOICE = 'credit card';
     protected const REQUEST_PARAM_PAYMENT_PROVIDER_NAME_DUMMY_PAYMENT = 'DummyPayment';
+    protected const REQUEST_PARAM_PAYMENT_PAYMENT_SELECTION = 'dummyPaymentCreditCard';
     protected const QUOTE_ITEM_OVERRIDE_DATA_PRODUCT = 'product';
     protected const QUOTE_ITEM_OVERRIDE_DATA_SHIPMENT = 'shipment';
     protected const QUOTE_ITEM_OVERRIDE_DATA_QUANTITY = 'quantity';
@@ -108,14 +109,6 @@ class CheckoutApiTester extends ApiEndToEndTester
         $this->assertEmpty(
             $attributes[RestCheckoutDataTransfer::ADDRESSES],
             'The returned resource attributes addresses should be an empty array'
-        );
-        $this->assertNotEmpty(
-            $attributes[RestCheckoutDataTransfer::PAYMENT_PROVIDERS],
-            'The returned resource attributes payment providers should not be an empty array'
-        );
-        $this->assertNotEmpty(
-            $attributes[RestCheckoutDataTransfer::SHIPMENT_METHODS],
-            'The returned resource attributes shipment methods should not be an empty array'
         );
     }
 
@@ -221,17 +214,20 @@ class CheckoutApiTester extends ApiEndToEndTester
     /**
      * @param string $paymentMethodName
      * @param string $paymentProviderName
+     * @param string $paymentSelection
      *
      * @return array
      */
     public function getPaymentRequestPayload(
         string $paymentMethodName = self::REQUEST_PARAM_PAYMENT_METHOD_NAME_INVOICE,
-        string $paymentProviderName = self::REQUEST_PARAM_PAYMENT_PROVIDER_NAME_DUMMY_PAYMENT
+        string $paymentProviderName = self::REQUEST_PARAM_PAYMENT_PROVIDER_NAME_DUMMY_PAYMENT,
+        string $paymentSelection = self::REQUEST_PARAM_PAYMENT_PAYMENT_SELECTION
     ): array {
         return [
             [
                 RestPaymentTransfer::PAYMENT_METHOD_NAME => $paymentMethodName,
                 RestPaymentTransfer::PAYMENT_PROVIDER_NAME => $paymentProviderName,
+                RestPaymentTransfer::PAYMENT_SELECTION => $paymentSelection,
             ],
         ];
     }
@@ -434,7 +430,7 @@ class CheckoutApiTester extends ApiEndToEndTester
             AddressTransfer::LAST_NAME => $customerTransfer->getLastName(),
         ]))->build();
         $customerFacade = $this->getCustomerFacade();
-        $addressTransfer = $customerFacade->createAddress($addressTransfer);
+        $customerFacade->createAddress($addressTransfer);
 
         return $customerFacade->getCustomer($customerTransfer);
     }
