@@ -32,6 +32,7 @@ use Spryker\Shared\ProductOfferAvailabilityStorage\ProductOfferAvailabilityStora
 use Spryker\Shared\ProductPackagingUnitStorage\ProductPackagingUnitStorageConfig;
 use Spryker\Shared\ProductPageSearch\ProductPageSearchConstants;
 use Spryker\Shared\ProductStorage\ProductStorageConstants;
+use Spryker\Shared\Publisher\PublisherConfig;
 use Spryker\Shared\ShoppingListStorage\ShoppingListStorageConfig;
 use Spryker\Shared\TaxProductStorage\TaxProductStorageConfig;
 use Spryker\Shared\TaxStorage\TaxStorageConfig;
@@ -55,11 +56,13 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
     protected function getQueueConfiguration(): array
     {
         return [
-            EventConstants::EVENT_QUEUE => [
-                EventConfig::EVENT_ROUTING_KEY_RETRY => EventConstants::EVENT_QUEUE_RETRY,
-                EventConfig::EVENT_ROUTING_KEY_ERROR => EventConstants::EVENT_QUEUE_ERROR,
+            PublisherConfig::PUBLISH_QUEUE => [
+                PublisherConfig::PUBLISH_ROUTING_KEY_RETRY => PublisherConfig::PUBLISH_RETRY_QUEUE,
+                PublisherConfig::PUBLISH_ROUTING_KEY_ERROR => PublisherConfig::PUBLISH_ERROR_QUEUE,
             ],
+            GlossaryStorageConfig::PUBLISH_TRANSLATION,
             GlossaryStorageConfig::SYNC_STORAGE_TRANSLATION,
+            
             UrlStorageConstants::URL_SYNC_STORAGE_QUEUE,
             AvailabilityStorageConstants::AVAILABILITY_SYNC_STORAGE_QUEUE,
             CustomerAccessStorageConstants::CUSTOMER_ACCESS_SYNC_STORAGE_QUEUE,
