@@ -15,7 +15,7 @@ class PriceProductOfferStorageDependencyProvider extends SprykerPriceProductOffe
     /**
      * @return \Spryker\Client\PriceProductOfferStorageExtension\Dependency\Plugin\PriceProductOfferStoragePricesExtractorPluginInterface[]
      */
-    protected function getPriceProductOfferPricesExtractorPlugins(): array
+    protected function getPriceProductOfferPriceExtractorPlugins(): array
     {
         return [
             new PriceProductOfferVolumeExtractorPlugin(),
