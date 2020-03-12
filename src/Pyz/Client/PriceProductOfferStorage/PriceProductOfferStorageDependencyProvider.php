@@ -13,9 +13,9 @@ use Spryker\Client\PriceProductOfferVolume\Plugin\PriceProductOfferStorageExtens
 class PriceProductOfferStorageDependencyProvider extends SprykerPriceProductOfferStorageDependencyProvider
 {
     /**
-     * @return \Spryker\Client\PriceProductOfferStorageExtension\Dependency\Plugin\PriceProductOfferStoragePricesExtractorPluginInterface[]
+     * @return \Spryker\Client\PriceProductOfferStorageExtension\Dependency\Plugin\PriceProductOfferStoragePriceExtractorPluginInterface[]
      */
-    protected function getPriceProductOfferPriceExtractorPlugins(): array
+    protected function getPriceProductOfferStoragePriceExtractorPlugins(): array
     {
         return [
             new PriceProductOfferVolumeExtractorPlugin(),
