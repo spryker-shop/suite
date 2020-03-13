@@ -22,9 +22,9 @@ class CreateMerchantOrdersCommandPlugin extends AbstractPlugin implements Comman
 {
     /**
      * {@inheritDoc}
-     * - Requires OrderTransfer.idSalesOrder.
-     * - Requires OrderTransfer.orderReference.
-     * - Requires OrderTransfer.items.
+     * - Requires Order.idSalesOrder transfer field to be set.
+     * - Requires Order.orderReference transfer field to be set.
+     * - Requires Order.items transfer field to be set.
      * - Iterates through the order items of given order looking for merchant reference presence.
      * - Skips all the order items without merchant reference.
      * - Creates a new merchant order for each unique merchant reference found.
@@ -45,7 +45,7 @@ class CreateMerchantOrdersCommandPlugin extends AbstractPlugin implements Comman
         $orderTransfer = (new OrderTransfer())
             ->setIdSalesOrder($orderEntity->getIdSalesOrder())
             ->setOrderReference($orderEntity->getOrderReference())
-            ->setItems(new ArrayObject($this->convertOrderItemEntitiesToOrderItemTransfers($orderItems)));
+            ->setItems(new ArrayObject($this->mapOrderItemEntitiesToOrderItemTransfers($orderItems)));
 
         $this->getFacade()->createMerchantOrderCollection($orderTransfer);
 
@@ -57,7 +57,7 @@ class CreateMerchantOrdersCommandPlugin extends AbstractPlugin implements Comman
      *
      * @return \Generated\Shared\Transfer\ItemTransfer[]
      */
-    protected function convertOrderItemEntitiesToOrderItemTransfers(array $orderItemEntities): array
+    protected function mapOrderItemEntitiesToOrderItemTransfers(array $orderItemEntities): array
     {
         $itemTransfers = [];
 

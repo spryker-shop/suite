@@ -20,11 +20,11 @@ use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandByItemInterface;
  */
 class CloseMerchantOrderItemCommandPlugin extends AbstractPlugin implements CommandByItemInterface
 {
-    protected const EVENT_NAME = 'close';
+    protected const EVENT_CLOSE = 'close';
 
     /**
      * {@inheritDoc}
-     * - Triggers close event on merchant order item.
+     * - Triggers 'close' event on a merchant order item.
      *
      * @api
      *
@@ -39,7 +39,7 @@ class CloseMerchantOrderItemCommandPlugin extends AbstractPlugin implements Comm
         $merchantOrderItemTransfer = $this->getFactory()->getMerchantSalesOrderFacade()->findMerchantOrderItem($merchantOrderItemCriteriaTransfer);
 
         $merchantOmsTriggerRequestTransfer = (new MerchantOmsTriggerRequestTransfer())
-            ->setMerchantOmsEventName(static::EVENT_NAME)
+            ->setMerchantOmsEventName(static::EVENT_CLOSE)
             ->addMerchantOrderItem($merchantOrderItemTransfer);
 
         $this->getFacade()->triggerEventForMerchantOrderItems($merchantOmsTriggerRequestTransfer);
