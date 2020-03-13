@@ -122,6 +122,7 @@ use Spryker\Glue\ProductTaxSetsRestApi\Plugin\GlueApplication\ProductTaxSetsReso
 use Spryker\Glue\RelatedProductsRestApi\Plugin\GlueApplication\RelatedProductsResourceRoutePlugin;
 use Spryker\Glue\RestRequestValidator\Plugin\ValidateRestRequestAttributesPlugin;
 use Spryker\Glue\Router\Plugin\Application\RouterApplicationPlugin;
+use Spryker\Glue\SalesReturnsRestApi\Plugin\ReturnableItemsResourceRoutePlugin;
 use Spryker\Glue\SalesReturnsRestApi\Plugin\ReturnReasonsResourceRoutePlugin;
 use Spryker\Glue\SalesReturnsRestApi\Plugin\ReturnsResourceRoutePlugin;
 use Spryker\Glue\Session\Plugin\Application\SessionApplicationPlugin;
@@ -207,6 +208,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new HealthCheckResourceRoutePlugin(),
             new ReturnReasonsResourceRoutePlugin(),
             new ReturnsResourceRoutePlugin(),
+            new ReturnableItemsResourceRoutePlugin(),
         ];
     }
 
