@@ -626,7 +626,7 @@ class CartsRestApiCest
         // Act
         $I->sendPOST(
             $I->formatUrl(
-                '{resourceCarts}/{cartUuid}/{resourceCartItems}',
+                '{resourceCarts}/{cartUuid}/{resourceCartItems}?include={resourceCartItems}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
                     'cartUuid' => $quoteUuid,
@@ -798,7 +798,7 @@ class CartsRestApiCest
         // Act
         $I->sendPATCH(
             $I->formatUrl(
-                '{resourceCarts}/{cartUuid}/{resourceCartItems}/{itemSku}',
+                '{resourceCarts}/{cartUuid}/{resourceCartItems}/{itemSku}?include={resourceCartItems}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
                     'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
