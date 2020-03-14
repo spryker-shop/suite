@@ -10,6 +10,7 @@ namespace Pyz\Zed\Sales;
 use Spryker\Zed\CommentSalesConnector\Communication\Plugin\Sales\CommentThreadAttachedCommentOrderPostSavePlugin;
 use Spryker\Zed\CommentSalesConnector\Communication\Plugin\Sales\CommentThreadOrderExpanderPlugin;
 use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Sales\CompanyBusinessUnitFilterOrderSearchQueryExpanderPlugin;
+use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Sales\CompanyUserFilterOrderSearchQueryExpanderPlugin;
 use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Sales\SaveCompanyBusinessUnitUuidOrderPostSavePlugin;
 use Spryker\Zed\CompanySalesConnector\Communication\Plugin\Sales\CompanyFilterOrderSearchQueryExpanderPlugin;
 use Spryker\Zed\CompanySalesConnector\Communication\Plugin\Sales\SaveCompanyUuidOrderPostSavePlugin;
@@ -159,6 +160,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
         return [
             new CompanyBusinessUnitFilterOrderSearchQueryExpanderPlugin(),
             new CompanyFilterOrderSearchQueryExpanderPlugin(),
+            new CompanyUserFilterOrderSearchQueryExpanderPlugin(),
         ];
     }
 }
