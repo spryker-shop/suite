@@ -9,7 +9,7 @@ namespace Pyz\Yves\CheckoutPage;
 
 use Spryker\Shared\DummyMarketplacePayment\DummyMarketplacePaymentConfig;
 use Spryker\Shared\Nopayment\NopaymentConfig;
-use Spryker\Yves\DummyMarketplacePayment\Plugin\StepEngine\DummyMarketplacePaymentExpanderPlugin;
+use Spryker\Yves\DummyMarketplacePayment\Plugin\StepEngine\DummyMarketplacePaymentHandlerPlugin;
 use Spryker\Yves\DummyMarketplacePayment\Plugin\StepEngine\SubForm\DummyMarketplacePaymentInvoiceSubFormPlugin;
 use Spryker\Yves\Kernel\Container;
 use Spryker\Yves\Kernel\Plugin\Pimple;
@@ -207,7 +207,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
         $container->extend(static::PAYMENT_METHOD_HANDLER, function (StepHandlerPluginCollection $paymentMethodHandler) {
             $paymentMethodHandler->add(new NopaymentHandlerPlugin(), NopaymentConfig::PAYMENT_PROVIDER_NAME);
             $paymentMethodHandler->add(
-                new DummyMarketplacePaymentExpanderPlugin(),
+                new DummyMarketplacePaymentHandlerPlugin(),
                 DummyMarketplacePaymentConfig::PAYMENT_METHOD_DUMMY_MARKETPLACE_PAYMENT_INVOICE
             );
 
