@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b6aeea6caf976111b3b566e340b61bc3",
+    "content-hash": "78ce65bdb5e54dea6ddb6c3240170b37",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.133.30",
+            "version": "3.133.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "1ae0cff5226ffdd9b8a1d7b1f69c65fbaa5cb4e1"
+                "reference": "59e824e235220730a8e1d276d036a9f085486512"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/1ae0cff5226ffdd9b8a1d7b1f69c65fbaa5cb4e1",
-                "reference": "1ae0cff5226ffdd9b8a1d7b1f69c65fbaa5cb4e1",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/59e824e235220730a8e1d276d036a9f085486512",
+                "reference": "59e824e235220730a8e1d276d036a9f085486512",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-03-05T19:19:55+00:00"
+            "time": "2020-03-13T18:09:32+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -1663,16 +1663,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.64",
+            "version": "1.0.65",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "d13c43dbd4b791f815215959105a008515d1a2e0"
+                "reference": "8f17b3ba67097aafb8318cd5c553b1acf7c891c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/d13c43dbd4b791f815215959105a008515d1a2e0",
-                "reference": "d13c43dbd4b791f815215959105a008515d1a2e0",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/8f17b3ba67097aafb8318cd5c553b1acf7c891c8",
+                "reference": "8f17b3ba67097aafb8318cd5c553b1acf7c891c8",
                 "shasum": ""
             },
             "require": {
@@ -1743,7 +1743,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2020-02-05T18:14:17+00:00"
+            "time": "2020-03-08T18:53:20+00:00"
         },
         {
             "name": "league/flysystem-aws-s3-v3",
@@ -2441,16 +2441,16 @@
         },
         {
             "name": "nette/robot-loader",
-            "version": "v3.2.2",
+            "version": "v3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/robot-loader.git",
-                "reference": "38e8a270567a4ad9fe716b40fcda5a6580afa3c0"
+                "reference": "726c462e73e739e965ec654a667407074cfe83c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/robot-loader/zipball/38e8a270567a4ad9fe716b40fcda5a6580afa3c0",
-                "reference": "38e8a270567a4ad9fe716b40fcda5a6580afa3c0",
+                "url": "https://api.github.com/repos/nette/robot-loader/zipball/726c462e73e739e965ec654a667407074cfe83c0",
+                "reference": "726c462e73e739e965ec654a667407074cfe83c0",
                 "shasum": ""
             },
             "require": {
@@ -2500,7 +2500,7 @@
                 "nette",
                 "trait"
             ],
-            "time": "2020-02-20T22:17:50+00:00"
+            "time": "2020-02-28T13:10:07+00:00"
         },
         {
             "name": "nette/schema",
@@ -4696,45 +4696,6 @@
             "time": "2020-02-06T13:41:38+00:00"
         },
         {
-            "name": "spryker-shop/cart-page-extension",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker-shop/cart-page-extension.git",
-                "reference": "fcf3e71f620ff88d818ceaa3188c6c9f1c841be8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/cart-page-extension/zipball/fcf3e71f620ff88d818ceaa3188c6c9f1c841be8",
-                "reference": "fcf3e71f620ff88d818ceaa3188c6c9f1c841be8",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "SprykerShop\\": "src/SprykerShop/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "CartPageExtension module",
-            "time": "2019-12-27T20:41:07+00:00"
-        },
-        {
             "name": "spryker/decimal-object",
             "version": "1.0.0",
             "source": {
@@ -4788,12 +4749,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "2a3cff77792a66094eb54c9bb4ad63be2790f9bc"
+                "reference": "59abcd716dd2d99475413f6083b2ac9b07dbf2d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/2a3cff77792a66094eb54c9bb4ad63be2790f9bc",
-                "reference": "2a3cff77792a66094eb54c9bb4ad63be2790f9bc",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/59abcd716dd2d99475413f6083b2ac9b07dbf2d3",
+                "reference": "59abcd716dd2d99475413f6083b2ac9b07dbf2d3",
                 "shasum": ""
             },
             "require": {
@@ -4843,7 +4804,7 @@
                 "proprietary"
             ],
             "description": "EventBehavior module",
-            "time": "2020-01-13T15:21:46+00:00"
+            "time": "2020-03-09T10:01:31+00:00"
         },
         {
             "name": "spryker/install",
@@ -4896,12 +4857,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "266155e2ab489d5ec994885f1bf6643ce4c7a472"
+                "reference": "e42569e831313859151b0ddc20b8c927fe249cde"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/266155e2ab489d5ec994885f1bf6643ce4c7a472",
-                "reference": "266155e2ab489d5ec994885f1bf6643ce4c7a472",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/e42569e831313859151b0ddc20b8c927fe249cde",
+                "reference": "e42569e831313859151b0ddc20b8c927fe249cde",
                 "shasum": ""
             },
             "require": {
@@ -4952,7 +4913,7 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "time": "2019-12-19T11:01:47+00:00"
+            "time": "2020-03-09T10:01:35+00:00"
         },
         {
             "name": "spryker/silexphp",
@@ -5036,17 +4997,18 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/ps-11356/dev-order-custom-reference",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "a439136ec41df5c8ea211786baf2886a8d86b972"
+                "reference": "aa74dee18a8a0f5cdf37d79e3791b0bcc57eebed"
             },
             "require": {
                 "php": ">=7.2"
             },
             "replace": {
                 "spryker/acl": "*",
+                "spryker/acl-extension": "*",
                 "spryker/agent": "*",
                 "spryker/agent-gui": "*",
                 "spryker/alternative-products-rest-api": "*",
@@ -5355,7 +5317,9 @@
                 "spryker/merchant-relationship-sales-order-threshold-gui-extension": "*",
                 "spryker/merchant-sales-order": "*",
                 "spryker/merchant-search": "*",
+                "spryker/merchant-switcher": "*",
                 "spryker/merchant-user": "*",
+                "spryker/merchant-user-auth-gui-page": "*",
                 "spryker/messenger": "*",
                 "spryker/messenger-extension": "*",
                 "spryker/module-finder": "*",
@@ -5387,8 +5351,6 @@
                 "spryker/oms": "*",
                 "spryker/oms-discount-connector": "*",
                 "spryker/oms-extension": "*",
-                "spryker/order-custom-reference": "*",
-                "spryker/order-custom-reference-gui": "*",
                 "spryker/order-payments-rest-api": "*",
                 "spryker/order-payments-rest-api-extension": "*",
                 "spryker/orders-rest-api": "*",
@@ -5538,6 +5500,8 @@
                 "spryker/propel": "*",
                 "spryker/propel-orm": "*",
                 "spryker/propel-query-builder": "*",
+                "spryker/publisher": "*",
+                "spryker/publisher-extension": "*",
                 "spryker/queue": "*",
                 "spryker/quick-order": "*",
                 "spryker/quick-order-extension": "*",
@@ -5579,6 +5543,7 @@
                 "spryker/scheduler-jenkins": "*",
                 "spryker/search": "*",
                 "spryker/search-elasticsearch": "*",
+                "spryker/search-elasticsearch-gui": "*",
                 "spryker/search-extension": "*",
                 "spryker/security": "*",
                 "spryker/security-extension": "*",
@@ -5675,7 +5640,9 @@
                 "spryker/wishlist-extension": "*",
                 "spryker/wishlists-rest-api": "*",
                 "spryker/zed-navigation": "*",
+                "spryker/zed-navigation-extension": "*",
                 "spryker/zed-request": "*",
+                "spryker/zed-ui": "*",
                 "spryker/zend": "*"
             },
             "require-dev": {
@@ -5700,15 +5667,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-03-16T12:38:45+00:00"
+            "time": "2020-03-16T15:12:52+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/ps-11356/dev-order-custom-reference",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "1ab75aa6fbc8d3bb255a0c988158ea078187b3bc"
+                "reference": "1343a2d5441d4ba530231dcf5aa30bf60352f781"
             },
             "require": {
                 "php": ">=7.2"
@@ -5724,6 +5691,7 @@
                 "spryker-shop/cart-code-widget": "*",
                 "spryker-shop/cart-note-widget": "*",
                 "spryker-shop/cart-page": "*",
+                "spryker-shop/cart-page-extension": "*",
                 "spryker-shop/catalog-page": "*",
                 "spryker-shop/category-image-storage-widget": "*",
                 "spryker-shop/category-widget": "*",
@@ -5765,13 +5733,13 @@
                 "spryker-shop/language-switcher-widget": "*",
                 "spryker-shop/merchant-product-offer-widget": "*",
                 "spryker-shop/merchant-profile-page": "*",
+                "spryker-shop/merchant-switcher-widget": "*",
                 "spryker-shop/money-widget": "*",
                 "spryker-shop/multi-cart-page": "*",
                 "spryker-shop/multi-cart-widget": "*",
                 "spryker-shop/navigation-widget": "*",
                 "spryker-shop/newsletter-page": "*",
                 "spryker-shop/newsletter-widget": "*",
-                "spryker-shop/order-custom-reference-widget": "*",
                 "spryker-shop/persistent-cart-share-page": "*",
                 "spryker-shop/persistent-cart-share-widget": "*",
                 "spryker-shop/price-product-volume-widget": "*",
@@ -5784,6 +5752,7 @@
                 "spryker-shop/product-detail-page": "*",
                 "spryker-shop/product-discontinued-widget": "*",
                 "spryker-shop/product-group-widget": "*",
+                "spryker-shop/product-group-widget-extension": "*",
                 "spryker-shop/product-image-widget": "*",
                 "spryker-shop/product-label-widget": "*",
                 "spryker-shop/product-measurement-unit-widget": "*",
@@ -5849,7 +5818,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-03-16T12:01:02+00:00"
+            "time": "2020-03-16T09:54:31+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8790,16 +8759,16 @@
         },
         {
             "name": "voku/anti-xss",
-            "version": "4.1.23",
+            "version": "4.1.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/anti-xss.git",
-                "reference": "ba4b9d487d0f3add12d35b34fe074eb0658ead55"
+                "reference": "4c032aa1aedbf4934418520c61c00b8fad6ca8d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/anti-xss/zipball/ba4b9d487d0f3add12d35b34fe074eb0658ead55",
-                "reference": "ba4b9d487d0f3add12d35b34fe074eb0658ead55",
+                "url": "https://api.github.com/repos/voku/anti-xss/zipball/4c032aa1aedbf4934418520c61c00b8fad6ca8d5",
+                "reference": "4c032aa1aedbf4934418520c61c00b8fad6ca8d5",
                 "shasum": ""
             },
             "require": {
@@ -8843,20 +8812,20 @@
                 "security",
                 "xss"
             ],
-            "time": "2020-03-05T23:52:46+00:00"
+            "time": "2020-03-08T00:12:04+00:00"
         },
         {
             "name": "voku/portable-ascii",
-            "version": "1.4.9",
+            "version": "1.4.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/portable-ascii.git",
-                "reference": "9fd2b224c71448b5f84aef9d499a1428d79776a2"
+                "reference": "240e93829a5f985fab0984a6e55ae5e26b78a334"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/portable-ascii/zipball/9fd2b224c71448b5f84aef9d499a1428d79776a2",
-                "reference": "9fd2b224c71448b5f84aef9d499a1428d79776a2",
+                "url": "https://api.github.com/repos/voku/portable-ascii/zipball/240e93829a5f985fab0984a6e55ae5e26b78a334",
+                "reference": "240e93829a5f985fab0984a6e55ae5e26b78a334",
                 "shasum": ""
             },
             "require": {
@@ -8892,7 +8861,7 @@
                 "clean",
                 "php"
             ],
-            "time": "2020-03-06T02:47:42+00:00"
+            "time": "2020-03-13T01:23:26+00:00"
         },
         {
             "name": "voku/portable-utf8",
@@ -9015,6 +8984,55 @@
                 "validate"
             ],
             "time": "2020-02-14T12:15:55+00:00"
+        },
+        {
+            "name": "wikimedia/composer-merge-plugin",
+            "version": "v1.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wikimedia/composer-merge-plugin.git",
+                "reference": "81c6ac72a24a67383419c7eb9aa2b3437f2ab100"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wikimedia/composer-merge-plugin/zipball/81c6ac72a24a67383419c7eb9aa2b3437f2ab100",
+                "reference": "81c6ac72a24a67383419c7eb9aa2b3437f2ab100",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0",
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "composer/composer": "~1.0.0",
+                "jakub-onderka/php-parallel-lint": "~0.8",
+                "phpunit/phpunit": "~4.8|~5.0",
+                "squizlabs/php_codesniffer": "~2.1.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                },
+                "class": "Wikimedia\\Composer\\MergePlugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Wikimedia\\Composer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bryan Davis",
+                    "email": "bd808@wikimedia.org"
+                }
+            ],
+            "description": "Composer plugin to merge multiple composer.json files",
+            "time": "2017-04-25T02:31:25+00:00"
         },
         {
             "name": "willdurand/negotiation",
@@ -10332,20 +10350,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
-                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler"
+                    "homepage": "https://github.com/manuelpichler",
+                    "role": "Project Founder"
                 },
                 {
                     "name": "Marc Würth",
-                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84"
+                    "homepage": "https://github.com/ravage84",
+                    "role": "Project Maintainer"
                 },
                 {
                     "name": "Other contributors",
-                    "role": "Contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
+                    "role": "Contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -11208,12 +11226,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "4a78ed746e599c14acfa68e75521d13dbfc70071"
+                "reference": "759692fd1b4b31f7ad563d823d50eea2a3d22bbd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/4a78ed746e599c14acfa68e75521d13dbfc70071",
-                "reference": "4a78ed746e599c14acfa68e75521d13dbfc70071",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/759692fd1b4b31f7ad563d823d50eea2a3d22bbd",
+                "reference": "759692fd1b4b31f7ad563d823d50eea2a3d22bbd",
                 "shasum": ""
             },
             "require": {
@@ -11254,7 +11272,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2020-02-14T16:47:55+00:00"
+            "time": "2020-03-16T14:25:04+00:00"
         },
         {
             "name": "spryker/development-core",
@@ -11810,61 +11828,12 @@
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
             "homepage": "https://github.com/theseer/fDOMDocument",
             "time": "2017-06-30T11:53:12+00:00"
-        },
-        {
-            "name": "wikimedia/composer-merge-plugin",
-            "version": "v1.4.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/wikimedia/composer-merge-plugin.git",
-                "reference": "81c6ac72a24a67383419c7eb9aa2b3437f2ab100"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/wikimedia/composer-merge-plugin/zipball/81c6ac72a24a67383419c7eb9aa2b3437f2ab100",
-                "reference": "81c6ac72a24a67383419c7eb9aa2b3437f2ab100",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.0",
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "composer/composer": "~1.0.0",
-                "jakub-onderka/php-parallel-lint": "~0.8",
-                "phpunit/phpunit": "~4.8|~5.0",
-                "squizlabs/php_codesniffer": "~2.1.0"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.3.x-dev"
-                },
-                "class": "Wikimedia\\Composer\\MergePlugin"
-            },
-            "autoload": {
-                "psr-4": {
-                    "Wikimedia\\Composer\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Bryan Davis",
-                    "email": "bd808@wikimedia.org"
-                }
-            ],
-            "description": "Composer plugin to merge multiple composer.json files",
-            "time": "2017-04-25T02:31:25+00:00"
         }
     ],
     "aliases": [
         {
-            "alias": "1.15.0",
-            "alias_normalized": "1.15.0.0",
+            "alias": "1.16.0",
+            "alias_normalized": "1.16.0.0",
             "version": "9999999-dev",
             "package": "spryker/event-behavior"
         },
