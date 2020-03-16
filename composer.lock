@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "78ce65bdb5e54dea6ddb6c3240170b37",
+    "content-hash": "11349459efef879223f9085b28d64b77",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -4997,11 +4997,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/ps-11356/dev-order-custom-reference",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "aa74dee18a8a0f5cdf37d79e3791b0bcc57eebed"
+                "reference": "f29d149c538313a4c71df6532fec0c3e579da43b"
             },
             "require": {
                 "php": ">=7.2"
@@ -5351,6 +5351,8 @@
                 "spryker/oms": "*",
                 "spryker/oms-discount-connector": "*",
                 "spryker/oms-extension": "*",
+                "spryker/order-custom-reference": "*",
+                "spryker/order-custom-reference-gui": "*",
                 "spryker/order-payments-rest-api": "*",
                 "spryker/order-payments-rest-api-extension": "*",
                 "spryker/orders-rest-api": "*",
@@ -5667,15 +5669,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-03-16T15:12:52+00:00"
+            "time": "2020-03-16T15:38:01+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/ps-11356/dev-order-custom-reference",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "1343a2d5441d4ba530231dcf5aa30bf60352f781"
+                "reference": "a055cf47ba852cccdb6b3d390689e8a61b666008"
             },
             "require": {
                 "php": ">=7.2"
@@ -5740,6 +5742,7 @@
                 "spryker-shop/navigation-widget": "*",
                 "spryker-shop/newsletter-page": "*",
                 "spryker-shop/newsletter-widget": "*",
+                "spryker-shop/order-custom-reference-widget": "*",
                 "spryker-shop/persistent-cart-share-page": "*",
                 "spryker-shop/persistent-cart-share-widget": "*",
                 "spryker-shop/price-product-volume-widget": "*",
@@ -5818,7 +5821,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-03-16T09:54:31+00:00"
+            "time": "2020-03-16T15:40:19+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
