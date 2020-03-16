@@ -7,6 +7,8 @@
 
 namespace Pyz\Zed\Queue;
 
+use Pyz\Shared\AvailabilityStorage\AvailabilityStorageConfig;
+use Pyz\Shared\UrlStorage\UrlStorageConfig;
 use Spryker\Shared\AvailabilityStorage\AvailabilityStorageConstants;
 use Spryker\Shared\CategoryPageSearch\CategoryPageSearchConstants;
 use Spryker\Shared\CategoryStorage\CategoryStorageConstants;
@@ -18,7 +20,6 @@ use Spryker\Shared\ConfigurableBundlePageSearch\ConfigurableBundlePageSearchConf
 use Spryker\Shared\ConfigurableBundleStorage\ConfigurableBundleStorageConfig;
 use Spryker\Shared\ContentStorage\ContentStorageConfig;
 use Spryker\Shared\CustomerAccessStorage\CustomerAccessStorageConstants;
-use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\FileManagerStorage\FileManagerStorageConstants;
 use Spryker\Shared\GlossaryStorage\GlossaryStorageConfig;
 use Spryker\Shared\Log\LogConstants;
@@ -62,9 +63,15 @@ class QueueDependencyProvider extends SprykerDependencyProvider
             GlossaryStorageConfig::SYNC_STORAGE_TRANSLATION => new SynchronizationStorageQueueMessageProcessorPlugin(),
 
             CmsStorageConstants::CMS_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
+
+            AvailabilityStorageConfig::PUBLISH_AVAILABILITY => new EventQueueMessageProcessorPlugin(),
             AvailabilityStorageConstants::AVAILABILITY_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
+
             CustomerAccessStorageConstants::CUSTOMER_ACCESS_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
+
+            UrlStorageConfig::PUBLISH_URL => new EventQueueMessageProcessorPlugin(),
             UrlStorageConstants::URL_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
+
             ProductStorageConstants::PRODUCT_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
             ConfigurableBundleStorageConfig::CONFIGURABLE_BUNDLE_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
             ConfigurableBundlePageSearchConfig::CONFIGURABLE_BUNDLE_SEARCH_QUEUE => new SynchronizationSearchQueueMessageProcessorPlugin(),

@@ -7,6 +7,8 @@
 
 namespace Pyz\Client\RabbitMq;
 
+use Pyz\Shared\AvailabilityStorage\AvailabilityStorageConfig;
+use Pyz\Shared\UrlStorage\UrlStorageConfig;
 use Spryker\Client\RabbitMq\RabbitMqConfig as SprykerRabbitMqConfig;
 use Spryker\Shared\AvailabilityStorage\AvailabilityStorageConstants;
 use Spryker\Shared\CategoryPageSearch\CategoryPageSearchConstants;
@@ -18,8 +20,6 @@ use Spryker\Shared\ConfigurableBundlePageSearch\ConfigurableBundlePageSearchConf
 use Spryker\Shared\ConfigurableBundleStorage\ConfigurableBundleStorageConfig;
 use Spryker\Shared\ContentStorage\ContentStorageConfig;
 use Spryker\Shared\CustomerAccessStorage\CustomerAccessStorageConstants;
-use Spryker\Shared\Event\EventConfig;
-use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\FileManagerStorage\FileManagerStorageConstants;
 use Spryker\Shared\GlossaryStorage\GlossaryStorageConfig;
 use Spryker\Shared\Log\LogConstants;
@@ -60,11 +60,16 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
                 PublisherConfig::PUBLISH_ROUTING_KEY_RETRY => PublisherConfig::PUBLISH_RETRY_QUEUE,
                 PublisherConfig::PUBLISH_ROUTING_KEY_ERROR => PublisherConfig::PUBLISH_ERROR_QUEUE,
             ],
+
             GlossaryStorageConfig::PUBLISH_TRANSLATION,
             GlossaryStorageConfig::SYNC_STORAGE_TRANSLATION,
-            
+
+            UrlStorageConfig::PUBLISH_URL,
             UrlStorageConstants::URL_SYNC_STORAGE_QUEUE,
+
+            AvailabilityStorageConfig::PUBLISH_AVAILABILITY,
             AvailabilityStorageConstants::AVAILABILITY_SYNC_STORAGE_QUEUE,
+
             CustomerAccessStorageConstants::CUSTOMER_ACCESS_SYNC_STORAGE_QUEUE,
             CategoryStorageConstants::CATEGORY_SYNC_STORAGE_QUEUE,
             ProductStorageConstants::PRODUCT_SYNC_STORAGE_QUEUE,
