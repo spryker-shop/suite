@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "78ce65bdb5e54dea6ddb6c3240170b37",
+    "content-hash": "cdb356220e2730b7346c2ee83d3b67cc",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -4852,50 +4852,6 @@
             "time": "2020-01-23T09:57:03+00:00"
         },
         {
-            "name": "spryker/publisher-extension",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/publisher-extension.git",
-                "reference": "fc85a9c7e2ca66f1664c84aab6b53114ac670884"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/publisher-extension/zipball/fc85a9c7e2ca66f1664c84aab6b53114ac670884",
-                "reference": "fc85a9c7e2ca66f1664c84aab6b53114ac670884",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/event": "*",
-                "spryker/event-behavior": "*"
-            },
-            "suggest": {
-                "spryker/event": "*",
-                "spryker/event-behavior": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "PublisherExtension module",
-            "time": "2020-03-02T17:51:50+00:00"
-        },
-        {
             "name": "spryker/rabbit-mq",
             "version": "dev-master",
             "source": {
@@ -5045,7 +5001,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "5780abe6890985c729554fb73c0ecdb668e52daa"
+                "reference": "8fd51ee019042ca745b33b95716d13ed2fa76bc2"
             },
             "require": {
                 "php": ">=7.2"
@@ -5544,6 +5500,8 @@
                 "spryker/propel": "*",
                 "spryker/propel-orm": "*",
                 "spryker/propel-query-builder": "*",
+                "spryker/publisher": "*",
+                "spryker/publisher-extension": "*",
                 "spryker/queue": "*",
                 "spryker/quick-order": "*",
                 "spryker/quick-order-extension": "*",
@@ -5684,6 +5642,7 @@
                 "spryker/zed-navigation": "*",
                 "spryker/zed-navigation-extension": "*",
                 "spryker/zed-request": "*",
+                "spryker/zed-ui": "*",
                 "spryker/zend": "*"
             },
             "require-dev": {
@@ -5708,7 +5667,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-03-05T11:23:58+00:00"
+            "time": "2020-03-13T09:48:44+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5955,45 +5914,6 @@
             ],
             "description": "UuidBehavior module",
             "time": "2019-12-19T11:01:46+00:00"
-        },
-        {
-            "name": "spryker/zed-ui",
-            "version": "0.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/zed-ui.git",
-                "reference": "1b711e1b00d815267ad9397ba38f58a2084d58c1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/zed-ui/zipball/1b711e1b00d815267ad9397ba38f58a2084d58c1",
-                "reference": "1b711e1b00d815267ad9397ba38f58a2084d58c1",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "ZedUi module",
-            "time": "2020-03-06T08:41:08+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -8941,24 +8861,6 @@
                 "clean",
                 "php"
             ],
-            "funding": [
-                {
-                    "url": "https://www.paypal.me/moelleken",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/voku",
-                    "type": "github"
-                },
-                {
-                    "url": "https://www.patreon.com/voku",
-                    "type": "patreon"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/voku/portable-ascii",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-03-13T01:23:26+00:00"
         },
         {
@@ -10448,20 +10350,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
+                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler",
-                    "role": "Project Founder"
+                    "homepage": "https://github.com/manuelpichler"
                 },
                 {
                     "name": "Marc Würth",
+                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84",
-                    "role": "Project Maintainer"
+                    "homepage": "https://github.com/ravage84"
                 },
                 {
                     "name": "Other contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -12003,6 +11905,5 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    },
-    "plugin-api-version": "1.1.0"
+    }
 }
