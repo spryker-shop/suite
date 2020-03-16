@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3e559dd8917e13558c7792b62a8a99de",
+    "content-hash": "d9ead55a77094c2df29db2177222d2f9",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -4732,6 +4732,83 @@
             "time": "2019-12-27T20:41:07+00:00"
         },
         {
+            "name": "spryker-shop/product-group-widget-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/product-group-widget-extension.git",
+                "reference": "9c7a5b9d9fff00801be4dc190612df49294740ae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/product-group-widget-extension/zipball/9c7a5b9d9fff00801be4dc190612df49294740ae",
+                "reference": "9c7a5b9d9fff00801be4dc190612df49294740ae",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductGroupWidgetExtension module",
+            "time": "2020-01-24T08:34:54+00:00"
+        },
+        {
+            "name": "spryker/acl-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/acl-extension.git",
+                "reference": "335412ee87fcc8dc7cbdcdc70fd982c6ea814772"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/acl-extension/zipball/335412ee87fcc8dc7cbdcdc70fd982c6ea814772",
+                "reference": "335412ee87fcc8dc7cbdcdc70fd982c6ea814772",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "AclExtension module",
+            "time": "2020-02-04T11:54:50+00:00"
+        },
+        {
             "name": "spryker/decimal-object",
             "version": "1.0.0",
             "source": {
@@ -4888,6 +4965,100 @@
             "time": "2020-01-23T09:57:03+00:00"
         },
         {
+            "name": "spryker/merchant-switcher",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-switcher.git",
+                "reference": "1aadf1f6a5c504b4fb1b07ebc786082017d62fce"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-switcher/zipball/1aadf1f6a5c504b4fb1b07ebc786082017d62fce",
+                "reference": "1aadf1f6a5c504b4fb1b07ebc786082017d62fce",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/cart": "^7.0.0",
+                "spryker/cart-extension": "^4.0.0",
+                "spryker/checkout-extension": "^1.2.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/merchant-product-offer": "^0.4.0",
+                "spryker/quote": "^2.0.0",
+                "spryker/zed-request": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/customer": "*",
+                "spryker/merchant": "*",
+                "spryker/product-offer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantSwitcher module",
+            "time": "2020-02-27T15:14:54+00:00"
+        },
+        {
+            "name": "spryker/publisher-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/publisher-extension.git",
+                "reference": "fc85a9c7e2ca66f1664c84aab6b53114ac670884"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/publisher-extension/zipball/fc85a9c7e2ca66f1664c84aab6b53114ac670884",
+                "reference": "fc85a9c7e2ca66f1664c84aab6b53114ac670884",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/event": "*",
+                "spryker/event-behavior": "*"
+            },
+            "suggest": {
+                "spryker/event": "*",
+                "spryker/event-behavior": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "PublisherExtension module",
+            "time": "2020-03-02T17:51:50+00:00"
+        },
+        {
             "name": "spryker/rabbit-mq",
             "version": "dev-master",
             "source": {
@@ -5033,11 +5204,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/mr-323/dev-user-explicit-creation",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "8bdc74d65a7c3a371ff0cb52d0e5b9c1844c1dfd"
+                "reference": "51bbee78851109b77314de9d58b95783f0988378"
             },
             "require": {
                 "php": ">=7.2"
@@ -5695,7 +5866,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-02-24T13:44:40+00:00"
+            "time": "2020-03-06T07:20:41+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5939,6 +6110,83 @@
             ],
             "description": "UuidBehavior module",
             "time": "2019-12-19T11:01:46+00:00"
+        },
+        {
+            "name": "spryker/zed-navigation-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/zed-navigation-extension.git",
+                "reference": "40ae0f9af865234257efda310b09af604c5c0ab5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/zed-navigation-extension/zipball/40ae0f9af865234257efda310b09af604c5c0ab5",
+                "reference": "40ae0f9af865234257efda310b09af604c5c0ab5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ZedNavigationExtension module",
+            "time": "2020-02-26T13:11:43+00:00"
+        },
+        {
+            "name": "spryker/zed-ui",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/zed-ui.git",
+                "reference": "1b711e1b00d815267ad9397ba38f58a2084d58c1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/zed-ui/zipball/1b711e1b00d815267ad9397ba38f58a2084d58c1",
+                "reference": "1b711e1b00d815267ad9397ba38f58a2084d58c1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ZedUi module",
+            "time": "2020-03-06T08:41:08+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -8709,8 +8957,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
