@@ -8,9 +8,10 @@
 namespace Pyz\Zed\MerchantProfileStorage;
 
 use Pyz\Zed\Synchronization\SynchronizationConfig;
-use Spryker\Zed\MerchantProfileStorage\MerchantProfileStorageConfig as SpykerMerchantProfileStorageConfig;
+use Spryker\Shared\Publisher\PublisherConfig;
+use Spryker\Zed\MerchantProfileStorage\MerchantProfileStorageConfig as SprykerMerchantProfileStorageConfig;
 
-class MerchantProfileStorageConfig extends SpykerMerchantProfileStorageConfig
+class MerchantProfileStorageConfig extends SprykerMerchantProfileStorageConfig
 {
     /**
      * @return string|null
@@ -18,5 +19,13 @@ class MerchantProfileStorageConfig extends SpykerMerchantProfileStorageConfig
     public function getMerchantProfileSynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getMerchantProfileEventQueueName(): ?string
+    {
+        return PublisherConfig::PUBLISH_QUEUE;
     }
 }

@@ -7,8 +7,8 @@
 
 namespace Pyz\Zed\UrlStorage;
 
-use Pyz\Shared\UrlStorage\UrlStorageConfig as SprykerSharedUrlStorageConfig;
 use Pyz\Zed\Synchronization\SynchronizationConfig;
+use Spryker\Shared\UrlStorage\UrlStorageConfig as SprykerSharedUrlStorageConfig;
 use Spryker\Zed\UrlStorage\UrlStorageConfig as SprykerUrlStorageConfig;
 
 class UrlStorageConfig extends SprykerUrlStorageConfig

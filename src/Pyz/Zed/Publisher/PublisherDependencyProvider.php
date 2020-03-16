@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Publisher;
 
+use Spryker\Shared\GlossaryStorage\GlossaryStorageConfig;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryKey\GlossaryDeletePublisherPlugin as GlossaryKeyDeletePublisherPlugin;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryKey\GlossaryWritePublisherPlugin as GlossaryKeyWriterPublisherPlugin;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryPublisherTriggerPlugin;
@@ -41,11 +42,11 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
     protected function getGlossaryStoragePlugins(): array
     {
         return [
-//            GlossaryStorageConfig::PUBLISH_TRANSLATION => [
+            GlossaryStorageConfig::PUBLISH_TRANSLATION => [
                 new GlossaryKeyDeletePublisherPlugin(),
                 new GlossaryKeyWriterPublisherPlugin(),
                 new GlossaryTranslationWritePublisherPlugin(),
-//            ],
+            ],
         ];
     }
 }

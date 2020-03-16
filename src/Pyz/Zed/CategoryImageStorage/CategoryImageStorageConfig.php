@@ -8,7 +8,8 @@
 namespace Pyz\Zed\CategoryImageStorage;
 
 use Pyz\Zed\Synchronization\SynchronizationConfig;
-use Spryker\Zed\CategoryImageStorage\CategoryImageStorageConfig as SprykerCategoryImageSTorageConfig;
+use Spryker\Shared\Publisher\PublisherConfig;
+use Spryker\Zed\CategoryImageStorage\CategoryImageStorageConfig as SprykerCategoryImageStorageConfig;
 
 class CategoryImageStorageConfig extends SprykerCategoryImageSTorageConfig
 {
@@ -18,5 +19,13 @@ class CategoryImageStorageConfig extends SprykerCategoryImageSTorageConfig
     public function getCategoryImageSynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCategoryImageEventQueueName(): ?string
+    {
+        return PublisherConfig::PUBLISH_QUEUE;
     }
 }
