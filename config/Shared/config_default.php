@@ -385,7 +385,6 @@ $config[KernelConstants::AUTO_LOADER_UNRESOLVABLE_CACHE_PROVIDER] = File::class;
 // ---------- Dependency injector
 $config[KernelConstants::DEPENDENCY_INJECTOR_YVES] = [
     'CheckoutPage' => [
-        DummyMarketplacePaymentConfig::PAYMENT_PROVIDER_NAME,
         'DummyPayment',
         NopaymentConfig::PAYMENT_PROVIDER_NAME,
     ],
@@ -395,12 +394,10 @@ $config[KernelConstants::DEPENDENCY_INJECTOR_ZED] = [
         'DummyPayment',
         GiftCardConfig::PROVIDER_NAME,
         NopaymentConfig::PAYMENT_PROVIDER_NAME,
-        DummyMarketplacePaymentConfig::PAYMENT_PROVIDER_NAME,
     ],
     'Oms' => [
         'DummyPayment',
         GiftCardConfig::PROVIDER_NAME,
-        DummyMarketplacePaymentConfig::PAYMENT_PROVIDER_NAME,
     ],
 ];
 
