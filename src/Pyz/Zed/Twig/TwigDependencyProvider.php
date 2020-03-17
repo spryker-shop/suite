@@ -46,6 +46,7 @@ use Spryker\Zed\User\Communication\Plugin\Twig\UserTwigPlugin;
 use Spryker\Zed\WebProfiler\Communication\Plugin\Twig\WebProfilerTwigLoaderPlugin;
 use Spryker\Zed\ZedNavigation\Communication\Plugin\Twig\ZedNavigationTwigPlugin;
 use Spryker\Zed\ZedUi\Communication\Plugin\Twig\BooleanToStringTwigPlugin;
+use Spryker\Zed\ZedUi\Communication\Plugin\ZedUiNavigationTwigPlugin;
 
 class TwigDependencyProvider extends SprykerTwigDependencyProvider
 {
@@ -70,6 +71,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new ZedNavigationTwigPlugin(),
             new TranslatorTwigPlugin(),
             new DateTimeFormatterTwigPlugin(),
+            new ZedUiNavigationTwigPlugin(),
             new SchedulerTwigPlugin(),
 
             new AssetsPathTwigPlugin(),

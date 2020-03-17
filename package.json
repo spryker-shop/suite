@@ -20,10 +20,12 @@
     "bo:install": "run-s bo:install:*",
     "bo:install:zed-ui": "cd ./vendor/spryker/spryker/Bundles/ZedUi && npm install",
     "bo:install:mp-login": "cd ./vendor/spryker/spryker/Bundles/MerchantUserAuthGuiPage && npm install",
+    "bo:install:mp-dashboard": "cd ./vendor/spryker/spryker/Bundles/MerchantDashboardGuiPage && npm install",
     "bo:install:mp-profile": "cd ./vendor/spryker/spryker/Bundles/MerchantProfileGuiPage && npm install",
     "bo:build": "run-s bo:build:*",
     "bo:build:zed-ui": "cd ./vendor/spryker/spryker/Bundles/ZedUi && npm run build",
     "bo:build:mp-login": "cd ./vendor/spryker/spryker/Bundles/MerchantUserAuthGuiPage && npm run build",
+    "bo:build:mp-dashboard": "cd ./vendor/spryker/spryker/Bundles/MerchantDashboardGuiPage && npm run build",
     "bo:build:mp-profile": "cd ./vendor/spryker/spryker/Bundles/MerchantProfileGuiPage && npm run build"
   },
   "engines": {

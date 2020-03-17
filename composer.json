@@ -3,7 +3,7 @@
   "description": "Spryker Suite (internal)",
   "license": "MIT",
   "require": {
-    "spryker/spryker": "dev-master",
+    "spryker/spryker": "dev-feature/bo-171/master-merchant-portal-dashboard-page",
     "spryker/spryker-shop": "dev-master",
     "spryker/decimal-object": "^1.0.0",
     "spryker-eco/loggly": "dev-master",
@@ -29,6 +29,7 @@
     "wikimedia/composer-merge-plugin": "^1.4.1"
   },
   "require-dev": {
+    "codeception/codeception": "<4.1.2",
     "spryker/architecture-sniffer": "dev-master",
     "spryker/development-core": "dev-master",
     "spryker/code-generator": "dev-master",
@@ -84,7 +85,6 @@
       "/tests/",
       "vendor/spryker/spryker/Bundles/*/tests/",
       "vendor/spryker/spryker-shop/Bundles/*/tests/",
-      "vendor/spryker/code-sniffer/Spryker/tests/",
       "vendor/flow/jsonpath/tests/"
     ]
   },

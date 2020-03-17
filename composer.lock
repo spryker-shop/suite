@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a3b24ec9b34d5c1916838f02a109ae3f",
+    "content-hash": "5924740925f80e014db75d66bdbc00a9",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -151,16 +151,16 @@
         },
         {
             "name": "codeception/codeception",
-            "version": "4.1.2",
+            "version": "4.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Codeception.git",
-                "reference": "35224380f3033bd1778765fe3f114e8d1bc9a9dc"
+                "reference": "be584da4859baf34e05afd26fe4c587be4787ff0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/35224380f3033bd1778765fe3f114e8d1bc9a9dc",
-                "reference": "35224380f3033bd1778765fe3f114e8d1bc9a9dc",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/be584da4859baf34e05afd26fe4c587be4787ff0",
+                "reference": "be584da4859baf34e05afd26fe4c587be4787ff0",
                 "shasum": ""
             },
             "require": {
@@ -232,7 +232,7 @@
                 "functional testing",
                 "unit testing"
             ],
-            "time": "2020-03-14T16:36:25+00:00"
+            "time": "2020-02-19T16:56:20+00:00"
         },
         {
             "name": "codeception/lib-asserts",
@@ -3645,7 +3645,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -4997,11 +4997,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/bo-171/master-merchant-portal-dashboard-page",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "6d499419de0f2ee046b76bc198c5cbbc8faa0d05"
+                "reference": "34244ad1224017ef6ed12fbf63cc130c0e6eba7a"
             },
             "require": {
                 "php": ">=7.2"
@@ -5287,6 +5287,7 @@
                 "spryker/manual-order-entry-gui": "*",
                 "spryker/manual-order-entry-gui-extension": "*",
                 "spryker/merchant": "*",
+                "spryker/merchant-dashboard-gui-page": "*",
                 "spryker/merchant-data-import": "*",
                 "spryker/merchant-extension": "*",
                 "spryker/merchant-gui": "*",
@@ -5667,7 +5668,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-03-16T11:03:32+00:00"
+            "time": "2020-03-17T08:20:32+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -8686,8 +8687,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -11226,12 +11227,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "179c9afba2a9b307db32bf016a9cc96a4eeb2ae4"
+                "reference": "759692fd1b4b31f7ad563d823d50eea2a3d22bbd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/179c9afba2a9b307db32bf016a9cc96a4eeb2ae4",
-                "reference": "179c9afba2a9b307db32bf016a9cc96a4eeb2ae4",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/759692fd1b4b31f7ad563d823d50eea2a3d22bbd",
+                "reference": "759692fd1b4b31f7ad563d823d50eea2a3d22bbd",
                 "shasum": ""
             },
             "require": {
@@ -11272,7 +11273,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2020-03-11T17:09:05+00:00"
+            "time": "2020-03-16T14:25:04+00:00"
         },
         {
             "name": "spryker/development-core",
@@ -11821,8 +11822,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "lead",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "lead"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
