@@ -59,6 +59,7 @@ use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Log\Communication\Console\DeleteLogFilesConsole;
 use Spryker\Zed\Maintenance\Communication\Console\MaintenanceDisableConsole;
 use Spryker\Zed\Maintenance\Communication\Console\MaintenanceEnableConsole;
+use Spryker\Zed\MerchantOms\Communication\Console\TriggerEventFromFileConsole;
 use Spryker\Zed\MultiCartDataImport\MultiCartDataImportConfig;
 use Spryker\Zed\Oms\Communication\Console\CheckConditionConsole as OmsCheckConditionConsole;
 use Spryker\Zed\Oms\Communication\Console\CheckTimeoutConsole as OmsCheckTimeoutConsole;
@@ -324,6 +325,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new SchedulerResumeConsole(),
 
             new RouterCacheWarmUpConsole(),
+
+            new TriggerEventFromFileConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
