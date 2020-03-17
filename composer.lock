@@ -1225,33 +1225,33 @@
         },
         {
             "name": "league/csv",
-            "version": "9.5.0",
+            "version": "9.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/csv.git",
-                "reference": "b348d09d0d258a4f068efb50a2510dc63101c213"
+                "reference": "7351a74625601914409b42b32cabb91a93773b7b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/csv/zipball/b348d09d0d258a4f068efb50a2510dc63101c213",
-                "reference": "b348d09d0d258a4f068efb50a2510dc63101c213",
+                "url": "https://api.github.com/repos/thephpleague/csv/zipball/7351a74625601914409b42b32cabb91a93773b7b",
+                "reference": "7351a74625601914409b42b32cabb91a93773b7b",
                 "shasum": ""
             },
             "require": {
-                "ext-dom": "*",
                 "ext-json": "*",
                 "ext-mbstring": "*",
-                "php": ">=7.0.10"
+                "php": "^7.2.5"
             },
             "require-dev": {
                 "ext-curl": "*",
-                "friendsofphp/php-cs-fixer": "^2.12",
-                "phpstan/phpstan": "^0.9.2",
-                "phpstan/phpstan-phpunit": "^0.9.4",
-                "phpstan/phpstan-strict-rules": "^0.9.0",
-                "phpunit/phpunit": "^6.0"
+                "friendsofphp/php-cs-fixer": "^2.16",
+                "phpstan/phpstan": "^0.12.0",
+                "phpstan/phpstan-phpunit": "^0.12.0",
+                "phpstan/phpstan-strict-rules": "^0.12.0",
+                "phpunit/phpunit": "^8.0"
             },
             "suggest": {
+                "ext-dom": "Required to use the XMLConverter and or the HTMLConverter classes",
                 "ext-iconv": "Needed to ease transcoding CSV using iconv stream filters"
             },
             "type": "library",
@@ -1280,17 +1280,19 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Csv data manipulation made easy in PHP",
+            "description": "CSV data manipulation made easy in PHP",
             "homepage": "http://csv.thephpleague.com",
             "keywords": [
+                "convert",
                 "csv",
                 "export",
                 "filter",
                 "import",
                 "read",
+                "transform",
                 "write"
             ],
-            "time": "2019-12-15T19:51:41+00:00"
+            "time": "2020-03-17T15:15:35+00:00"
         },
         {
             "name": "league/event",
@@ -3403,16 +3405,16 @@
         },
         {
             "name": "spryker-shop/checkout-page",
-            "version": "3.8.0",
+            "version": "3.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/checkout-page.git",
-                "reference": "58e43dddd98eea44e2ef9c8f2f6e52b970b3fb91"
+                "reference": "837b33d99a353b280b623847860360a461c45114"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/checkout-page/zipball/58e43dddd98eea44e2ef9c8f2f6e52b970b3fb91",
-                "reference": "58e43dddd98eea44e2ef9c8f2f6e52b970b3fb91",
+                "url": "https://api.github.com/repos/spryker-shop/checkout-page/zipball/837b33d99a353b280b623847860360a461c45114",
+                "reference": "837b33d99a353b280b623847860360a461c45114",
                 "shasum": ""
             },
             "require": {
@@ -3478,7 +3480,7 @@
                 "proprietary"
             ],
             "description": "CheckoutPage module",
-            "time": "2020-03-06T10:06:30+00:00"
+            "time": "2020-03-16T11:19:11+00:00"
         },
         {
             "name": "spryker-shop/checkout-page-extension",
@@ -4192,27 +4194,26 @@
         },
         {
             "name": "spryker-shop/company-widget",
-            "version": "1.5.0",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/company-widget.git",
-                "reference": "4812ab2d26ab631d7d91e16becf813418ebfcdd3"
+                "reference": "b44437794a66fba0e5c3e96a81822c3a3d457322"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/company-widget/zipball/4812ab2d26ab631d7d91e16becf813418ebfcdd3",
-                "reference": "4812ab2d26ab631d7d91e16becf813418ebfcdd3",
+                "url": "https://api.github.com/repos/spryker-shop/company-widget/zipball/b44437794a66fba0e5c3e96a81822c3a3d457322",
+                "reference": "b44437794a66fba0e5c3e96a81822c3a3d457322",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/customer": "^7.0.0",
                 "spryker/kernel": "^3.30.0"
             },
             "require-dev": {
                 "spryker-shop/shop-ui": "*",
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
+                "spryker/code-sniffer": "*"
             },
             "suggest": {
                 "spryker-shop/shop-ui": "To add widget customer navigation menu: ^1.28.1."
@@ -4233,7 +4234,7 @@
                 "proprietary"
             ],
             "description": "CompanyWidget module",
-            "time": "2019-10-22T09:01:14+00:00"
+            "time": "2020-02-27T11:16:46+00:00"
         },
         {
             "name": "spryker-shop/configurable-bundle-note-widget",
@@ -4645,16 +4646,16 @@
         },
         {
             "name": "spryker-shop/customer-page",
-            "version": "2.9.0",
+            "version": "2.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/customer-page.git",
-                "reference": "dcc59281a523a29866a315d1831460ed59cbce9e"
+                "reference": "eaf5bc49e42c77309b1e5630ed6a77df0ff8cf1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/customer-page/zipball/dcc59281a523a29866a315d1831460ed59cbce9e",
-                "reference": "dcc59281a523a29866a315d1831460ed59cbce9e",
+                "url": "https://api.github.com/repos/spryker-shop/customer-page/zipball/eaf5bc49e42c77309b1e5630ed6a77df0ff8cf1b",
+                "reference": "eaf5bc49e42c77309b1e5630ed6a77df0ff8cf1b",
                 "shasum": ""
             },
             "require": {
@@ -4727,7 +4728,7 @@
                 "proprietary"
             ],
             "description": "CustomerPage module",
-            "time": "2020-03-06T10:06:30+00:00"
+            "time": "2020-03-16T11:44:38+00:00"
         },
         {
             "name": "spryker-shop/customer-page-extension",
