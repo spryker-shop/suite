@@ -5,17 +5,17 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\ProductOptionStorage;
+namespace Pyz\Zed\ProductLabelSearch;
 
 use Spryker\Shared\Publisher\PublisherConfig;
-use Spryker\Zed\ProductOptionStorage\ProductOptionStorageConfig as SprykerProductOptionStorageConfig;
+use Spryker\Zed\ProductLabelSearch\ProductLabelSearchConfig as SprykerProductLabelSearchConfig;
 
-class ProductOptionStorageConfig extends SprykerProductOptionStorageConfig
+class ProductLabelSearchConfig extends SprykerProductLabelSearchConfig
 {
     /**
      * @return string|null
      */
-    public function getProductOptionEventQueueName(): ?string
+    public function getProductLabelEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }

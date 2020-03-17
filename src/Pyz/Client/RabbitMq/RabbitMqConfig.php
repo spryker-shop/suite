@@ -7,8 +7,8 @@
 
 namespace Pyz\Client\RabbitMq;
 
-use Pyz\Shared\AvailabilityStorage\AvailabilityStorageConfig;
 use Spryker\Client\RabbitMq\RabbitMqConfig as SprykerRabbitMqConfig;
+use Spryker\Shared\AvailabilityStorage\AvailabilityStorageConfig;
 use Spryker\Shared\AvailabilityStorage\AvailabilityStorageConstants;
 use Spryker\Shared\CategoryPageSearch\CategoryPageSearchConstants;
 use Spryker\Shared\CategoryStorage\CategoryStorageConstants;
@@ -28,10 +28,14 @@ use Spryker\Shared\MerchantOpeningHoursStorage\MerchantOpeningHoursStorageConfig
 use Spryker\Shared\MerchantProductOfferStorage\MerchantProductOfferStorageConfig;
 use Spryker\Shared\MerchantProfileStorage\MerchantProfileStorageConfig;
 use Spryker\Shared\PriceProductOfferStorage\PriceProductOfferStorageConfig;
+use Spryker\Shared\PriceProductStorage\PriceProductStorageConfig;
 use Spryker\Shared\PriceProductStorage\PriceProductStorageConstants;
+use Spryker\Shared\ProductImageStorage\ProductImageStorageConfig;
 use Spryker\Shared\ProductOfferAvailabilityStorage\ProductOfferAvailabilityStorageConfig;
 use Spryker\Shared\ProductPackagingUnitStorage\ProductPackagingUnitStorageConfig;
+use Spryker\Shared\ProductPageSearch\ProductPageSearchConfig;
 use Spryker\Shared\ProductPageSearch\ProductPageSearchConstants;
+use Spryker\Shared\ProductStorage\ProductStorageConfig;
 use Spryker\Shared\ProductStorage\ProductStorageConstants;
 use Spryker\Shared\Publisher\PublisherConfig;
 use Spryker\Shared\ShoppingListStorage\ShoppingListStorageConfig;
@@ -57,6 +61,17 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
      */
     protected function getQueueConfiguration(): array
     {
+        return array_merge(
+            $this->getPublishQueueConfiguration(),
+            $this->getSynchronizationQueueConfiguration()
+        );
+    }
+
+    /**
+     * @return array
+     */
+    protected function getPublishQueueConfiguration(): array
+    {
         return [
             EventConstants::EVENT_QUEUE => [
                 EventConfig::EVENT_ROUTING_KEY_RETRY => EventConstants::EVENT_QUEUE_RETRY,
@@ -66,16 +81,30 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
                 PublisherConfig::PUBLISH_ROUTING_KEY_RETRY => PublisherConfig::PUBLISH_RETRY_QUEUE,
                 PublisherConfig::PUBLISH_ROUTING_KEY_ERROR => PublisherConfig::PUBLISH_ERROR_QUEUE,
             ],
-
             GlossaryStorageConfig::PUBLISH_TRANSLATION,
-            GlossaryStorageConfig::SYNC_STORAGE_TRANSLATION,
-
             UrlStorageConfig::PUBLISH_URL,
-            UrlStorageConstants::URL_SYNC_STORAGE_QUEUE,
-
             AvailabilityStorageConfig::PUBLISH_AVAILABILITY,
-            AvailabilityStorageConstants::AVAILABILITY_SYNC_STORAGE_QUEUE,
+            PriceProductStorageConfig::PUBLISH_PRICE_PRODUCT_ABSTRACT,
+            PriceProductStorageConfig::PUBLISH_PRICE_PRODUCT_CONCRETE,
+            ProductImageStorageConfig::PUBLISH_PRODUCT_ABSTRACT_IMAGE,
+            ProductImageStorageConfig::PUBLISH_PRODUCT_CONCRETE_IMAGE,
+            ProductPageSearchConfig::PUBLISH_PRODUCT,
+            ProductPageSearchConfig::PUBLISH_PRODUCT_CONCRETE,
+            ProductStorageConfig::PUBLISH_PRODUCT_ABSTRACT,
+            ProductStorageConfig::PUBLISH_PRODUCT_CONCRETE,
+            $this->get(LogConstants::LOG_QUEUE_NAME),
+        ];
+    }
 
+    /**
+     * @return array
+     */
+    protected function getSynchronizationQueueConfiguration(): array
+    {
+        return [
+            GlossaryStorageConfig::SYNC_STORAGE_TRANSLATION,
+            UrlStorageConstants::URL_SYNC_STORAGE_QUEUE,
+            AvailabilityStorageConstants::AVAILABILITY_SYNC_STORAGE_QUEUE,
             CustomerAccessStorageConstants::CUSTOMER_ACCESS_SYNC_STORAGE_QUEUE,
             CategoryStorageConstants::CATEGORY_SYNC_STORAGE_QUEUE,
             ProductStorageConstants::PRODUCT_SYNC_STORAGE_QUEUE,
@@ -98,7 +127,6 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
             MerchantProductOfferStorageConfig::MERCHANT_PRODUCT_OFFER_SYNC_STORAGE_QUEUE,
             PriceProductOfferStorageConfig::PRICE_PRODUCT_OFFER_OFFER_SYNC_STORAGE_QUEUE,
             ProductOfferAvailabilityStorageConfig::PRODUCT_OFFER_AVAILABILITY_SYNC_STORAGE_QUEUE,
-            $this->get(LogConstants::LOG_QUEUE_NAME),
         ];
     }
 
