@@ -144,4 +144,14 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new UniqueOrderBundleItemsExpanderPlugin(),
         ];
     }
+
+    /**
+     * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\OrderExpanderPluginInterface[]
+     */
+    protected function getSearchOrderExpanderPlugins(): array
+    {
+        return [
+            new ItemMetadataHydratorPlugin(),
+        ];
+    }
 }
