@@ -26,8 +26,9 @@
     "bo:test": "run-s bo:test:*",
     "bo:test:zed-ui": "npm run cd:zed-ui -- npm run test -- --watch=false --browsers ChromeHeadless",
     "bo:test:mp-login": "npm run cd:mp-login -- npm run test -- --watch=false --browsers ChromeHeadless",
-    "cd:zed-ui": "cd ./vendor/spryker/spryker/Bundles/ZedUi &&",
-    "cd:mp-login": "cd ./vendor/spryker/spryker/Bundles/MerchantUserAuthGuiPage &&"
+    "cd:zed-ui": "npm run fe:root && cd ./vendor/spryker/spryker/Bundles/ZedUi &&",
+    "cd:mp-login": "npm run fe:root && cd ./vendor/spryker/spryker/Bundles/MerchantUserAuthGuiPage &&",
+    "fe:root": "export FE_ROOT_DIR=\"../../../../..\""
   },
   "engines": {
     "node": ">=8.11.4",
