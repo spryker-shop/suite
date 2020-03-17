@@ -60,9 +60,9 @@ class CheckoutApiTester extends ApiEndToEndTester
 {
     use _generated\CheckoutApiTesterActions;
 
-    protected const REQUEST_PARAM_PAYMENT_METHOD_NAME_INVOICE = 'credit card';
+    protected const REQUEST_PARAM_PAYMENT_METHOD_NAME_INVOICE = 'invoice';
     protected const REQUEST_PARAM_PAYMENT_PROVIDER_NAME_DUMMY_PAYMENT = 'DummyPayment';
-    protected const REQUEST_PARAM_PAYMENT_PAYMENT_SELECTION = 'dummyPaymentCreditCard';
+    protected const REQUEST_PARAM_PAYMENT_PAYMENT_SELECTION = 'dummyPaymentInvoice';
     protected const QUOTE_ITEM_OVERRIDE_DATA_PRODUCT = 'product';
     protected const QUOTE_ITEM_OVERRIDE_DATA_SHIPMENT = 'shipment';
     protected const QUOTE_ITEM_OVERRIDE_DATA_QUANTITY = 'quantity';
