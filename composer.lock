@@ -5003,7 +5003,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "d883c355421af0f00b4d6d7d60dffd831c17faf5"
+                "reference": "91d1888e0dfaf1500b7ff6618757071018a78d4a"
             },
             "require": {
                 "php": ">=7.2"
@@ -5235,6 +5235,7 @@
                 "spryker/discount-calculation-connector": "*",
                 "spryker/discount-extension": "*",
                 "spryker/discount-promotion": "*",
+                "spryker/discount-promotions-rest-api": "*",
                 "spryker/doctrine-inflector": "*",
                 "spryker/documentation-generator-rest-api": "*",
                 "spryker/documentation-generator-rest-api-extension": "*",
@@ -5580,6 +5581,7 @@
                 "spryker/shopping-list-session": "*",
                 "spryker/shopping-list-session-extension": "*",
                 "spryker/shopping-list-storage": "*",
+                "spryker/shopping-lists-rest-api": "*",
                 "spryker/silex": "*",
                 "spryker/sql-criteria-builder": "*",
                 "spryker/state-machine": "*",
@@ -5625,6 +5627,7 @@
                 "spryker/util-date-time": "*",
                 "spryker/util-encoding": "*",
                 "spryker/util-encryption": "*",
+                "spryker/util-glob": "*",
                 "spryker/util-measurement-unit-conversion": "*",
                 "spryker/util-network": "*",
                 "spryker/util-price": "*",
@@ -5671,7 +5674,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-03-18T14:10:17+00:00"
+            "time": "2020-03-18T15:32:17+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -10933,12 +10936,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/composer-replace.git",
-                "reference": "7eea6c206685d11989b5e2cc1e0e936d42a21b11"
+                "reference": "17600f8866b72ad0c0f64fb97cc516103a45a230"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/composer-replace/zipball/7eea6c206685d11989b5e2cc1e0e936d42a21b11",
-                "reference": "7eea6c206685d11989b5e2cc1e0e936d42a21b11",
+                "url": "https://api.github.com/repos/spryker-sdk/composer-replace/zipball/17600f8866b72ad0c0f64fb97cc516103a45a230",
+                "reference": "17600f8866b72ad0c0f64fb97cc516103a45a230",
                 "shasum": ""
             },
             "require": {
@@ -10947,8 +10950,11 @@
                 "spryker/symfony": "^3.3.2"
             },
             "require-dev": {
+                "sllh/composer-versions-check": "^2.0",
                 "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
+                "spryker/testify": "*",
+                "spryker/transfer": "^3.21.0",
+                "webmozart/glob": "^4.1"
             },
             "type": "library",
             "autoload": {
@@ -10961,7 +10967,7 @@
                 "proprietary"
             ],
             "description": "ComposerReplace module",
-            "time": "2020-01-11T00:21:27+00:00"
+            "time": "2020-03-18T14:27:25+00:00"
         },
         {
             "name": "spryker-sdk/phpstan-spryker",
