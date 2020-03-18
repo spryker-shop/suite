@@ -12,6 +12,13 @@ env:
 matrix:
   fast_finish: true
   include:
+    - php: "7.4"
+      dist: bionic
+      env:
+        - FE_TEST=1
+      addons:
+        chrome: stable
+
     - php: "7.2"
       dist: bionic
       env:
@@ -260,6 +267,12 @@ script:
 
   - if [[ $VALIDATION == 1 ]] ; then node ./frontend/libs/stylelint ; fi
   - if [[ $VALIDATION == 1 ]] ; then node ./frontend/libs/tslint stylish ; fi
+
+  - if [[ $FE_TEST == 1 ]] ; then nvm install 12 && nvm use 12 ; fi
+  - if [[ $FE_TEST == 1 ]] ; then npm install ; fi
+  - if [[ $FE_TEST == 1 ]] ; then npm run bo:install ; fi
+  - if [[ $FE_TEST == 1 ]] ; then npm run bo:build ; fi
+  - if [[ $FE_TEST == 1 ]] ; then npm run bo:test ; fi
 
 notifications:
   email: false
