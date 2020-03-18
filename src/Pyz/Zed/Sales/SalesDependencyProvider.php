@@ -42,6 +42,7 @@ use Spryker\Zed\SalesQuantity\Communication\Plugin\SalesExtension\IsQuantitySpli
 use Spryker\Zed\SalesQuantity\Communication\Plugin\SalesExtension\NonSplittableItemTransformerStrategyPlugin;
 use Spryker\Zed\SalesReclamationGui\Communication\Plugin\Sales\ReclamationSalesTablePlugin;
 use Spryker\Zed\SalesReturn\Communication\Plugin\Sales\RemunerationTotalOrderExpanderPlugin;
+use Spryker\Zed\SalesReturn\Communication\Plugin\Sales\IsReturnableOrderItemExpanderPlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\ShipmentOrderHydratePlugin;
 
 class SalesDependencyProvider extends SprykerSalesDependencyProvider
@@ -158,6 +159,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
         return [
             new ProductOptionsOrderItemExpanderPlugin(),
             new StateHistoryOrderItemExpanderPlugin(),
+            new IsReturnableOrderItemExpanderPlugin(),
             new MetadataOrderItemExpanderPlugin(),
         ];
     }
