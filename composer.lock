@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.133.37",
+            "version": "3.133.39",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "94ced25e191a2a951edd5d9195820bbd2c1d8567"
+                "reference": "0e3b9e497bd39063cb504115c726d369d8f4d455"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/94ced25e191a2a951edd5d9195820bbd2c1d8567",
-                "reference": "94ced25e191a2a951edd5d9195820bbd2c1d8567",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/0e3b9e497bd39063cb504115c726d369d8f4d455",
+                "reference": "0e3b9e497bd39063cb504115c726d369d8f4d455",
                 "shasum": ""
             },
             "require": {
@@ -88,20 +88,20 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-03-16T18:10:35+00:00"
+            "time": "2020-03-18T18:13:04+00:00"
         },
         {
             "name": "behat/gherkin",
-            "version": "v4.6.1",
+            "version": "v4.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Gherkin.git",
-                "reference": "25bdcaf37898b4a939fa3031d5d753ced97e4759"
+                "reference": "51ac4500c4dc30cbaaabcd2f25694299df666a31"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Gherkin/zipball/25bdcaf37898b4a939fa3031d5d753ced97e4759",
-                "reference": "25bdcaf37898b4a939fa3031d5d753ced97e4759",
+                "url": "https://api.github.com/repos/Behat/Gherkin/zipball/51ac4500c4dc30cbaaabcd2f25694299df666a31",
+                "reference": "51ac4500c4dc30cbaaabcd2f25694299df666a31",
                 "shasum": ""
             },
             "require": {
@@ -147,7 +147,7 @@
                 "gherkin",
                 "parser"
             ],
-            "time": "2020-02-27T11:29:57+00:00"
+            "time": "2020-03-17T14:03:26+00:00"
         },
         {
             "name": "codeception/codeception",
@@ -1544,33 +1544,33 @@
         },
         {
             "name": "league/csv",
-            "version": "9.5.0",
+            "version": "9.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/csv.git",
-                "reference": "b348d09d0d258a4f068efb50a2510dc63101c213"
+                "reference": "7351a74625601914409b42b32cabb91a93773b7b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/csv/zipball/b348d09d0d258a4f068efb50a2510dc63101c213",
-                "reference": "b348d09d0d258a4f068efb50a2510dc63101c213",
+                "url": "https://api.github.com/repos/thephpleague/csv/zipball/7351a74625601914409b42b32cabb91a93773b7b",
+                "reference": "7351a74625601914409b42b32cabb91a93773b7b",
                 "shasum": ""
             },
             "require": {
-                "ext-dom": "*",
                 "ext-json": "*",
                 "ext-mbstring": "*",
-                "php": ">=7.0.10"
+                "php": "^7.2.5"
             },
             "require-dev": {
                 "ext-curl": "*",
-                "friendsofphp/php-cs-fixer": "^2.12",
-                "phpstan/phpstan": "^0.9.2",
-                "phpstan/phpstan-phpunit": "^0.9.4",
-                "phpstan/phpstan-strict-rules": "^0.9.0",
-                "phpunit/phpunit": "^6.0"
+                "friendsofphp/php-cs-fixer": "^2.16",
+                "phpstan/phpstan": "^0.12.0",
+                "phpstan/phpstan-phpunit": "^0.12.0",
+                "phpstan/phpstan-strict-rules": "^0.12.0",
+                "phpunit/phpunit": "^8.0"
             },
             "suggest": {
+                "ext-dom": "Required to use the XMLConverter and or the HTMLConverter classes",
                 "ext-iconv": "Needed to ease transcoding CSV using iconv stream filters"
             },
             "type": "library",
@@ -1599,17 +1599,19 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Csv data manipulation made easy in PHP",
+            "description": "CSV data manipulation made easy in PHP",
             "homepage": "http://csv.thephpleague.com",
             "keywords": [
+                "convert",
                 "csv",
                 "export",
                 "filter",
                 "import",
                 "read",
+                "transform",
                 "write"
             ],
-            "time": "2019-12-15T19:51:41+00:00"
+            "time": "2020-03-17T15:15:35+00:00"
         },
         {
             "name": "league/event",
@@ -1663,16 +1665,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.65",
+            "version": "1.0.66",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "8f17b3ba67097aafb8318cd5c553b1acf7c891c8"
+                "reference": "021569195e15f8209b1c4bebb78bd66aa4f08c21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/8f17b3ba67097aafb8318cd5c553b1acf7c891c8",
-                "reference": "8f17b3ba67097aafb8318cd5c553b1acf7c891c8",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/021569195e15f8209b1c4bebb78bd66aa4f08c21",
+                "reference": "021569195e15f8209b1c4bebb78bd66aa4f08c21",
                 "shasum": ""
             },
             "require": {
@@ -1743,7 +1745,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2020-03-08T18:53:20+00:00"
+            "time": "2020-03-17T18:58:12+00:00"
         },
         {
             "name": "league/flysystem-aws-s3-v3",
@@ -1917,16 +1919,16 @@
         },
         {
             "name": "moneyphp/money",
-            "version": "v3.3.0",
+            "version": "v3.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/moneyphp/money.git",
-                "reference": "2a9b09bb5435aa54a404f626b9284ae64cb88af2"
+                "reference": "122664c2621a95180a13c1ac81fea1d2ef20781e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/moneyphp/money/zipball/2a9b09bb5435aa54a404f626b9284ae64cb88af2",
-                "reference": "2a9b09bb5435aa54a404f626b9284ae64cb88af2",
+                "url": "https://api.github.com/repos/moneyphp/money/zipball/122664c2621a95180a13c1ac81fea1d2ef20781e",
+                "reference": "122664c2621a95180a13c1ac81fea1d2ef20781e",
                 "shasum": ""
             },
             "require": {
@@ -1995,7 +1997,7 @@
                 "money",
                 "vo"
             ],
-            "time": "2019-12-27T21:58:31+00:00"
+            "time": "2020-03-18T17:49:59+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -5001,7 +5003,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "d811114919af2dd401f2e8e492c021227462706e"
+                "reference": "a40e14545ab21b09991b0210bb5d301f20d31dec"
             },
             "require": {
                 "php": ">=7.2"
@@ -5669,7 +5671,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-03-16T22:28:59+00:00"
+            "time": "2020-03-18T19:24:41+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5677,7 +5679,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "1343a2d5441d4ba530231dcf5aa30bf60352f781"
+                "reference": "2dd2d8534f0908bd63e2f874f58cffad3b8135ed"
             },
             "require": {
                 "php": ">=7.2"
@@ -5742,6 +5744,7 @@
                 "spryker-shop/navigation-widget": "*",
                 "spryker-shop/newsletter-page": "*",
                 "spryker-shop/newsletter-widget": "*",
+                "spryker-shop/order-custom-reference-widget": "*",
                 "spryker-shop/persistent-cart-share-page": "*",
                 "spryker-shop/persistent-cart-share-widget": "*",
                 "spryker-shop/price-product-volume-widget": "*",
@@ -5820,7 +5823,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-03-16T09:54:31+00:00"
+            "time": "2020-03-18T16:51:09+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -10930,12 +10933,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/composer-replace.git",
-                "reference": "7eea6c206685d11989b5e2cc1e0e936d42a21b11"
+                "reference": "17600f8866b72ad0c0f64fb97cc516103a45a230"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/composer-replace/zipball/7eea6c206685d11989b5e2cc1e0e936d42a21b11",
-                "reference": "7eea6c206685d11989b5e2cc1e0e936d42a21b11",
+                "url": "https://api.github.com/repos/spryker-sdk/composer-replace/zipball/17600f8866b72ad0c0f64fb97cc516103a45a230",
+                "reference": "17600f8866b72ad0c0f64fb97cc516103a45a230",
                 "shasum": ""
             },
             "require": {
@@ -10944,8 +10947,11 @@
                 "spryker/symfony": "^3.3.2"
             },
             "require-dev": {
+                "sllh/composer-versions-check": "^2.0",
                 "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
+                "spryker/testify": "*",
+                "spryker/transfer": "^3.21.0",
+                "webmozart/glob": "^4.1"
             },
             "type": "library",
             "autoload": {
@@ -10958,7 +10964,7 @@
                 "proprietary"
             ],
             "description": "ComposerReplace module",
-            "time": "2020-01-11T00:21:27+00:00"
+            "time": "2020-03-18T14:27:25+00:00"
         },
         {
             "name": "spryker-sdk/phpstan-spryker",
