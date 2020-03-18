@@ -18,11 +18,14 @@
     "zed:watch": "node ./node_modules/@spryker/oryx-for-zed/build --dev",
     "zed:production": "node ./node_modules/@spryker/oryx-for-zed/build --prod",
     "bo:install": "run-s bo:install:*",
-    "bo:install:zed-ui": "cd ./vendor/spryker/zed-ui && npm install",
-    "bo:install:mp-login": "cd ./vendor/spryker/merchant-user-auth-gui-page && npm install",
-    "bo:build": "run-s bo:build:*",
-    "bo:build:zed-ui": "cd ./vendor/spryker/zed-ui && npm run build",
-    "bo:build:mp-login": "cd ./vendor/spryker/merchant-user-auth-gui-page && npm run build"
+    "bo:install:zed-ui": "npm run cd:zed-ui -- npm install",
+    "bo:install:mp-login": "npm run cd:mp-login -- npm install",
+    "bo:build": "npm run fe:root -- run-s bo:build:*",
+    "bo:build:zed-ui": "npm run cd:zed-ui -- npm run build",
+    "bo:build:mp-login": "npm run cd:mp-login -- npm run build",
+    "cd:zed-ui": "cd ./vendor/spryker/zed-ui && ",
+    "cd:mp-login": "cd ./vendor/spryker/merchant-user-auth-gui-page && ",
+    "fe:root": "export FE_ROOT_DIR=\"../../..\" && "
   },
   "engines": {
     "node": ">=8.11.4",
