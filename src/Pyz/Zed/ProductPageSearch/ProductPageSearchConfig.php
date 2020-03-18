@@ -17,7 +17,7 @@ class ProductPageSearchConfig extends SprykerProductPageSearchConfig
      */
     public function getProductPageEventQueueName(): ?string
     {
-        return SprykerSharedProductPageSearchConfig::PUBLISH_PRODUCT;
+        return SprykerSharedProductPageSearchConfig::PUBLISH_PRODUCT_ABSTRACT_PAGE;
     }
 
     /**
@@ -25,6 +25,6 @@ class ProductPageSearchConfig extends SprykerProductPageSearchConfig
      */
     public function getProductConcretePageEventQueueName(): ?string
     {
-        return SprykerSharedProductPageSearchConfig::PUBLISH_PRODUCT_CONCRETE;
+        return SprykerSharedProductPageSearchConfig::PUBLISH_PRODUCT_CONCRETE_PAGE;
     }
 }

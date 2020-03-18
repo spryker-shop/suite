@@ -62,6 +62,13 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
     protected function getQueueConfiguration(): array
     {
         return array_merge(
+            [
+                EventConstants::EVENT_QUEUE => [
+                    EventConfig::EVENT_ROUTING_KEY_RETRY => EventConstants::EVENT_QUEUE_RETRY,
+                    EventConfig::EVENT_ROUTING_KEY_ERROR => EventConstants::EVENT_QUEUE_ERROR,
+                ],
+                $this->get(LogConstants::LOG_QUEUE_NAME),
+            ],
             $this->getPublishQueueConfiguration(),
             $this->getSynchronizationQueueConfiguration()
         );
@@ -73,26 +80,54 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
     protected function getPublishQueueConfiguration(): array
     {
         return [
-            EventConstants::EVENT_QUEUE => [
-                EventConfig::EVENT_ROUTING_KEY_RETRY => EventConstants::EVENT_QUEUE_RETRY,
-                EventConfig::EVENT_ROUTING_KEY_ERROR => EventConstants::EVENT_QUEUE_ERROR,
-            ],
             PublisherConfig::PUBLISH_QUEUE => [
                 PublisherConfig::PUBLISH_ROUTING_KEY_RETRY => PublisherConfig::PUBLISH_RETRY_QUEUE,
                 PublisherConfig::PUBLISH_ROUTING_KEY_ERROR => PublisherConfig::PUBLISH_ERROR_QUEUE,
             ],
-            GlossaryStorageConfig::PUBLISH_TRANSLATION,
-            UrlStorageConfig::PUBLISH_URL,
-            AvailabilityStorageConfig::PUBLISH_AVAILABILITY,
-            PriceProductStorageConfig::PUBLISH_PRICE_PRODUCT_ABSTRACT,
-            PriceProductStorageConfig::PUBLISH_PRICE_PRODUCT_CONCRETE,
-            ProductImageStorageConfig::PUBLISH_PRODUCT_ABSTRACT_IMAGE,
-            ProductImageStorageConfig::PUBLISH_PRODUCT_CONCRETE_IMAGE,
-            ProductPageSearchConfig::PUBLISH_PRODUCT,
-            ProductPageSearchConfig::PUBLISH_PRODUCT_CONCRETE,
-            ProductStorageConfig::PUBLISH_PRODUCT_ABSTRACT,
-            ProductStorageConfig::PUBLISH_PRODUCT_CONCRETE,
-            $this->get(LogConstants::LOG_QUEUE_NAME),
+            GlossaryStorageConfig::PUBLISH_TRANSLATION => [
+                PublisherConfig::PUBLISH_ROUTING_KEY_RETRY => GlossaryStorageConfig::PUBLISH_TRANSLATION_RETRY_QUEUE,
+                PublisherConfig::PUBLISH_ROUTING_KEY_ERROR => GlossaryStorageConfig::PUBLISH_TRANSLATION_ERROR_QUEUE,
+            ],
+            UrlStorageConfig::PUBLISH_URL => [
+                PublisherConfig::PUBLISH_ROUTING_KEY_RETRY => UrlStorageConfig::PUBLISH_URL_RETRY_QUEUE,
+                PublisherConfig::PUBLISH_ROUTING_KEY_ERROR => UrlStorageConfig::PUBLISH_URL_ERROR_QUEUE,
+            ],
+            AvailabilityStorageConfig::PUBLISH_AVAILABILITY => [
+                PublisherConfig::PUBLISH_ROUTING_KEY_RETRY => AvailabilityStorageConfig::PUBLISH_AVAILABILITY_RETRY_QUEUE,
+                PublisherConfig::PUBLISH_ROUTING_KEY_ERROR => AvailabilityStorageConfig::PUBLISH_AVAILABILITY_ERROR_QUEUE,
+            ],
+            PriceProductStorageConfig::PUBLISH_PRICE_PRODUCT_ABSTRACT => [
+                PublisherConfig::PUBLISH_ROUTING_KEY_RETRY => PriceProductStorageConfig::PUBLISH_PRICE_PRODUCT_ABSTRACT_RETRY_QUEUE,
+                PublisherConfig::PUBLISH_ROUTING_KEY_ERROR => PriceProductStorageConfig::PUBLISH_PRICE_PRODUCT_ABSTRACT_ERROR_QUEUE,
+            ],
+            PriceProductStorageConfig::PUBLISH_PRICE_PRODUCT_CONCRETE => [
+                PublisherConfig::PUBLISH_ROUTING_KEY_RETRY => PriceProductStorageConfig::PUBLISH_PRICE_PRODUCT_CONCRETE_RETRY_QUEUE,
+                PublisherConfig::PUBLISH_ROUTING_KEY_ERROR => PriceProductStorageConfig::PUBLISH_PRICE_PRODUCT_CONCRETE_ERROR_QUEUE,
+            ],
+            ProductImageStorageConfig::PUBLISH_PRODUCT_ABSTRACT_IMAGE => [
+                PublisherConfig::PUBLISH_ROUTING_KEY_RETRY => ProductImageStorageConfig::PUBLISH_PRODUCT_ABSTRACT_IMAGE_RETRY_QUEUE,
+                PublisherConfig::PUBLISH_ROUTING_KEY_ERROR => ProductImageStorageConfig::PUBLISH_PRODUCT_ABSTRACT_IMAGE_ERROR_QUEUE,
+            ],
+            ProductImageStorageConfig::PUBLISH_PRODUCT_CONCRETE_IMAGE => [
+                PublisherConfig::PUBLISH_ROUTING_KEY_RETRY => ProductImageStorageConfig::PUBLISH_PRODUCT_CONCRETE_IMAGE_RETRY_QUEUE,
+                PublisherConfig::PUBLISH_ROUTING_KEY_ERROR => ProductImageStorageConfig::PUBLISH_PRODUCT_CONCRETE_IMAGE_RETRY_QUEUE,
+            ],
+            ProductPageSearchConfig::PUBLISH_PRODUCT_ABSTRACT_PAGE => [
+                PublisherConfig::PUBLISH_ROUTING_KEY_RETRY => ProductPageSearchConfig::PUBLISH_PRODUCT_ABSTRACT_PAGE_RETRY_QUEUE,
+                PublisherConfig::PUBLISH_ROUTING_KEY_ERROR => ProductPageSearchConfig::PUBLISH_PRODUCT_ABSTRACT_PAGE_ERROR_QUEUE,
+            ],
+            ProductPageSearchConfig::PUBLISH_PRODUCT_CONCRETE_PAGE => [
+                PublisherConfig::PUBLISH_ROUTING_KEY_RETRY => ProductPageSearchConfig::PUBLISH_PRODUCT_CONCRETE_PAGE_RETRY_QUEUE,
+                PublisherConfig::PUBLISH_ROUTING_KEY_ERROR => ProductPageSearchConfig::PUBLISH_PRODUCT_CONCRETE_PAGE_ERROR_QUEUE,
+            ],
+            ProductStorageConfig::PUBLISH_PRODUCT_ABSTRACT => [
+                PublisherConfig::PUBLISH_ROUTING_KEY_RETRY => ProductStorageConfig::PUBLISH_PRODUCT_ABSTRACT_RETRY_QUEUE,
+                PublisherConfig::PUBLISH_ROUTING_KEY_ERROR => ProductStorageConfig::PUBLISH_PRODUCT_ABSTRACT_ERROR_QUEUE,
+            ],
+            ProductStorageConfig::PUBLISH_PRODUCT_CONCRETE => [
+                PublisherConfig::PUBLISH_ROUTING_KEY_RETRY => ProductStorageConfig::PUBLISH_PRODUCT_CONCRETE_RETRY_QUEUE,
+                PublisherConfig::PUBLISH_ROUTING_KEY_ERROR => ProductStorageConfig::PUBLISH_PRODUCT_CONCRETE_RETRY_QUEUE,
+            ],
         ];
     }
 
