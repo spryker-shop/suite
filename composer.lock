@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "78ce65bdb5e54dea6ddb6c3240170b37",
+    "content-hash": "4f53d80836b4e9626d16bdc0802bdf6b",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -4999,11 +4999,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/mp-2179/dev-introduce-merchant-storage-module-and-cleanup",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "3a34fa44db85f18d599bd0aa56012ae34800bf4c"
+                "reference": "b2c83e06f786ea434981b89b96e238a14c8fea7d"
             },
             "require": {
                 "php": ">=7.2"
@@ -5319,6 +5319,7 @@
                 "spryker/merchant-relationship-sales-order-threshold-gui-extension": "*",
                 "spryker/merchant-sales-order": "*",
                 "spryker/merchant-search": "*",
+                "spryker/merchant-storage": "*",
                 "spryker/merchant-switcher": "*",
                 "spryker/merchant-user": "*",
                 "spryker/merchant-user-auth-gui-page": "*",
@@ -5669,15 +5670,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-03-17T16:42:00+00:00"
+            "time": "2020-03-18T08:49:57+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/mp-2179/dev-introduce-merchant-storage-module-and-cleanup",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "1dcf1b72be7d0cd4e9ca5a2a41debe60c9584f08"
+                "reference": "471397e129e9d11e92158fae16495dec2bde47d0"
             },
             "require": {
                 "php": ">=7.2"
@@ -5733,8 +5734,11 @@
                 "spryker-shop/gift-card-widget": "*",
                 "spryker-shop/home-page": "*",
                 "spryker-shop/language-switcher-widget": "*",
+                "spryker-shop/merchant-opening-hours-widget": "*",
+                "spryker-shop/merchant-page": "*",
                 "spryker-shop/merchant-product-offer-widget": "*",
                 "spryker-shop/merchant-profile-page": "*",
+                "spryker-shop/merchant-profile-widget": "*",
                 "spryker-shop/merchant-switcher-widget": "*",
                 "spryker-shop/money-widget": "*",
                 "spryker-shop/multi-cart-page": "*",
@@ -5820,7 +5824,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-03-17T15:25:37+00:00"
+            "time": "2020-03-18T08:45:08+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8688,8 +8692,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -11823,8 +11827,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
