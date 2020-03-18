@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "de8ba93ee6fd1d4f1d0fa90198b9cb44",
+    "content-hash": "d8fa4181dcfa88cc5322c5e4858eb777",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -37677,16 +37677,16 @@
         },
         {
             "name": "spryker/transfer",
-            "version": "3.20.1",
+            "version": "3.21.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/transfer.git",
-                "reference": "f45db62c93f4018de68dbf15ae26ce0c049e8f28"
+                "reference": "d7829c8a1325de3873670d7228b904d98f8c8cea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/transfer/zipball/f45db62c93f4018de68dbf15ae26ce0c049e8f28",
-                "reference": "f45db62c93f4018de68dbf15ae26ce0c049e8f28",
+                "url": "https://api.github.com/repos/spryker/transfer/zipball/d7829c8a1325de3873670d7228b904d98f8c8cea",
+                "reference": "d7829c8a1325de3873670d7228b904d98f8c8cea",
                 "shasum": ""
             },
             "require": {
@@ -37697,6 +37697,7 @@
                 "spryker/log": "^3.0.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/twig": "^3.0.0",
+                "spryker/util-glob": "^1.0.0",
                 "spryker/zend": "^2.0.0"
             },
             "require-dev": {
@@ -37721,7 +37722,7 @@
                 "proprietary"
             ],
             "description": "Transfer module",
-            "time": "2020-01-31T21:01:38+00:00"
+            "time": "2020-03-18T07:52:50+00:00"
         },
         {
             "name": "spryker/translator",
@@ -37824,20 +37825,20 @@
         },
         {
             "name": "spryker/twig",
-            "version": "3.8.2",
+            "version": "3.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/twig.git",
-                "reference": "d85ef915d40c806f6d44de54a37db9c41fc3ce1f"
+                "reference": "7474c0521be3bceba408c5e6540f05ab43280449"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/twig/zipball/d85ef915d40c806f6d44de54a37db9c41fc3ce1f",
-                "reference": "d85ef915d40c806f6d44de54a37db9c41fc3ce1f",
+                "url": "https://api.github.com/repos/spryker/twig/zipball/7474c0521be3bceba408c5e6540f05ab43280449",
+                "reference": "7474c0521be3bceba408c5e6540f05ab43280449",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/application-extension": "^1.0.0",
                 "spryker/container": "^1.1.0",
                 "spryker/event-dispatcher-extension": "^1.0.0",
@@ -37850,6 +37851,7 @@
             },
             "require-dev": {
                 "spryker/application": "*",
+                "spryker/code-sniffer": "*",
                 "spryker/config": "*",
                 "spryker/event-dispatcher": "*",
                 "spryker/propel": "*",
@@ -37877,7 +37879,7 @@
                 "proprietary"
             ],
             "description": "Twig module",
-            "time": "2019-10-31T08:59:52+00:00"
+            "time": "2020-03-18T06:08:52+00:00"
         },
         {
             "name": "spryker/twig-extension",
@@ -38620,6 +38622,47 @@
             ],
             "description": "UtilEncryption module",
             "time": "2019-12-30T10:10:23+00:00"
+        },
+        {
+            "name": "spryker/util-glob",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/util-glob.git",
+                "reference": "c412f3a3df170096cd174e18f5e83bf567c87cf4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/util-glob/zipball/c412f3a3df170096cd174e18f5e83bf567c87cf4",
+                "reference": "c412f3a3df170096cd174e18f5e83bf567c87cf4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/kernel": "^3.30.0",
+                "webmozart/glob": "^4.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "UtilGlob module",
+            "time": "2020-03-18T13:53:51+00:00"
         },
         {
             "name": "spryker/util-measurement-unit-conversion",
@@ -42390,6 +42433,147 @@
                 "utf8"
             ],
             "time": "2020-03-06T01:23:48+00:00"
+        },
+        {
+            "name": "webmozart/assert",
+            "version": "1.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webmozart/assert.git",
+                "reference": "aed98a490f9a8f78468232db345ab9cf606cf598"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webmozart/assert/zipball/aed98a490f9a8f78468232db345ab9cf606cf598",
+                "reference": "aed98a490f9a8f78468232db345ab9cf606cf598",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3.3 || ^7.0",
+                "symfony/polyfill-ctype": "^1.8"
+            },
+            "conflict": {
+                "vimeo/psalm": "<3.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.36 || ^7.5.13"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Webmozart\\Assert\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bernhard Schussek",
+                    "email": "bschussek@gmail.com"
+                }
+            ],
+            "description": "Assertions to validate method input/output with nice error messages.",
+            "keywords": [
+                "assert",
+                "check",
+                "validate"
+            ],
+            "time": "2020-02-14T12:15:55+00:00"
+        },
+        {
+            "name": "webmozart/glob",
+            "version": "4.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webmozart/glob.git",
+                "reference": "3cbf63d4973cf9d780b93d2da8eec7e4a9e63bbe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webmozart/glob/zipball/3cbf63d4973cf9d780b93d2da8eec7e4a9e63bbe",
+                "reference": "3cbf63d4973cf9d780b93d2da8eec7e4a9e63bbe",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3.3|^7.0",
+                "webmozart/path-util": "^2.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.6",
+                "sebastian/version": "^1.0.1",
+                "symfony/filesystem": "^2.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Webmozart\\Glob\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bernhard Schussek",
+                    "email": "bschussek@gmail.com"
+                }
+            ],
+            "description": "A PHP implementation of Ant's glob.",
+            "time": "2015-12-29T11:14:33+00:00"
+        },
+        {
+            "name": "webmozart/path-util",
+            "version": "2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webmozart/path-util.git",
+                "reference": "d939f7edc24c9a1bb9c0dee5cb05d8e859490725"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webmozart/path-util/zipball/d939f7edc24c9a1bb9c0dee5cb05d8e859490725",
+                "reference": "d939f7edc24c9a1bb9c0dee5cb05d8e859490725",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "webmozart/assert": "~1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.6",
+                "sebastian/version": "^1.0.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Webmozart\\PathUtil\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bernhard Schussek",
+                    "email": "bschussek@gmail.com"
+                }
+            ],
+            "description": "A robust cross-platform utility for normalizing, comparing and modifying file paths.",
+            "time": "2015-12-17T08:42:14+00:00"
         },
         {
             "name": "willdurand/negotiation",
@@ -46681,16 +46865,16 @@
         },
         {
             "name": "spryker/development",
-            "version": "3.23.2",
+            "version": "3.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/development.git",
-                "reference": "89b6f4851b84727d9e2411fc438653d4aca45cd9"
+                "reference": "754c3b3fe765fa95ad3eee7340f991f5fb220e35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/development/zipball/89b6f4851b84727d9e2411fc438653d4aca45cd9",
-                "reference": "89b6f4851b84727d9e2411fc438653d4aca45cd9",
+                "url": "https://api.github.com/repos/spryker/development/zipball/754c3b3fe765fa95ad3eee7340f991f5fb220e35",
+                "reference": "754c3b3fe765fa95ad3eee7340f991f5fb220e35",
                 "shasum": ""
             },
             "require": {
@@ -46729,20 +46913,20 @@
                 "proprietary"
             ],
             "description": "Development module",
-            "time": "2020-01-20T08:59:41+00:00"
+            "time": "2020-03-18T06:08:52+00:00"
         },
         {
             "name": "spryker/testify",
-            "version": "3.23.1",
+            "version": "3.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/testify.git",
-                "reference": "df336306f9fb788ff0f78eea9069f87c442bdb77"
+                "reference": "df1ebe88848837c36c1f40f8da5b1face3d01cbf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/testify/zipball/df336306f9fb788ff0f78eea9069f87c442bdb77",
-                "reference": "df336306f9fb788ff0f78eea9069f87c442bdb77",
+                "url": "https://api.github.com/repos/spryker/testify/zipball/df1ebe88848837c36c1f40f8da5b1face3d01cbf",
+                "reference": "df1ebe88848837c36c1f40f8da5b1face3d01cbf",
                 "shasum": ""
             },
             "require": {
@@ -46797,7 +46981,7 @@
                 "proprietary"
             ],
             "description": "Testify module",
-            "time": "2020-01-31T21:20:39+00:00"
+            "time": "2020-03-18T07:52:50+00:00"
         },
         {
             "name": "spryker/web-profiler",
@@ -47540,54 +47724,6 @@
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
             "time": "2019-06-13T22:48:21+00:00"
-        },
-        {
-            "name": "webmozart/assert",
-            "version": "1.7.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/webmozart/assert.git",
-                "reference": "aed98a490f9a8f78468232db345ab9cf606cf598"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/aed98a490f9a8f78468232db345ab9cf606cf598",
-                "reference": "aed98a490f9a8f78468232db345ab9cf606cf598",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.3.3 || ^7.0",
-                "symfony/polyfill-ctype": "^1.8"
-            },
-            "conflict": {
-                "vimeo/psalm": "<3.6.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8.36 || ^7.5.13"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Webmozart\\Assert\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Bernhard Schussek",
-                    "email": "bschussek@gmail.com"
-                }
-            ],
-            "description": "Assertions to validate method input/output with nice error messages.",
-            "keywords": [
-                "assert",
-                "check",
-                "validate"
-            ],
-            "time": "2020-02-14T12:15:55+00:00"
         }
     ],
     "aliases": [
