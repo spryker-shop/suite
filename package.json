@@ -16,7 +16,19 @@
     "yves:tslint": "node ./frontend/libs/tslint",
     "zed": "node ./node_modules/@spryker/oryx-for-zed/build",
     "zed:watch": "node ./node_modules/@spryker/oryx-for-zed/build --dev",
-    "zed:production": "node ./node_modules/@spryker/oryx-for-zed/build --prod"
+    "zed:production": "node ./node_modules/@spryker/oryx-for-zed/build --prod",
+    "bo:install": "run-s bo:install:*",
+    "bo:install:zed-ui": "npm run cd:zed-ui -- npm install",
+    "bo:install:mp-login": "npm run cd:mp-login -- npm install",
+    "bo:build": "npm run fe:root -- run-s bo:build:*",
+    "bo:build:zed-ui": "npm run cd:zed-ui -- npm run build",
+    "bo:build:mp-login": "npm run cd:mp-login -- npm run build",
+    "bo:test": "run-s bo:test:*",
+    "bo:test:zed-ui": "npm run cd:zed-ui -- npm run test -- --watch=false --browsers ChromeHeadless",
+    "bo:test:mp-login": "npm run cd:mp-login -- npm run test -- --watch=false --browsers ChromeHeadless",
+    "cd:zed-ui": "cd ./vendor/spryker/spryker/Bundles/ZedUi && ",
+    "cd:mp-login": "cd ./vendor/spryker/spryker/Bundles/MerchantUserAuthGuiPage && ",
+    "fe:root": "export FE_ROOT_DIR=\"../../../../..\" && "
   },
   "engines": {
     "node": ">=8.11.4",
@@ -34,7 +46,7 @@
     "string.prototype.startswith": "~0.2.0"
   },
   "devDependencies": {
-    "@spryker/oryx-for-zed": "^2.5.2",
+    "@spryker/oryx-for-zed": "^2.5.3",
     "autoprefixer": "~8.6.2",
     "clean-webpack-plugin": "~1.0.1",
     "commander": "~4.0.1",
@@ -43,10 +55,11 @@
     "fast-glob": "~3.1.0",
     "mini-css-extract-plugin": "~0.8.0",
     "node-sass": "~4.13.0",
+    "npm-run-all": "^4.1.5",
     "optimize-css-assets-webpack-plugin": "~5.0.1",
     "postcss-loader": "~3.0.0",
     "sass-loader": "~8.0.0",
-    "sass-resources-loader": "~2.0.1",
+    "@spryker/sass-resources-loader": "github:spryker/sass-resources-loader",
     "stylelint": "~12.0.0",
     "ts-loader": "~6.2.1",
     "tslint": "~5.20.1",
