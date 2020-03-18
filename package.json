@@ -23,6 +23,9 @@
     "bo:build": "npm run fe:root -- run-s bo:build:*",
     "bo:build:zed-ui": "npm run cd:zed-ui -- npm run build",
     "bo:build:mp-login": "npm run cd:mp-login -- npm run build",
+    "bo:test": "run-s bo:test:*",
+    "bo:test:zed-ui": "npm run cd:zed-ui -- npm run test -- --watch=false --browsers ChromeHeadless",
+    "bo:test:mp-login": "npm run cd:mp-login -- npm run test -- --watch=false --browsers ChromeHeadless",
     "cd:zed-ui": "cd ./vendor/spryker/zed-ui && ",
     "cd:mp-login": "cd ./vendor/spryker/merchant-user-auth-gui-page && ",
     "fe:root": "export FE_ROOT_DIR=\"../../..\" && "
