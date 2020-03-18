@@ -12,6 +12,7 @@ use Spryker\Zed\CommentSalesConnector\Communication\Plugin\Sales\CommentThreadOr
 use Spryker\Zed\Customer\Communication\Plugin\Sales\CustomerOrderHydratePlugin;
 use Spryker\Zed\Discount\Communication\Plugin\Sales\DiscountOrderHydratePlugin;
 use Spryker\Zed\ManualOrderEntry\Communication\Plugin\Sales\OrderSourceExpanderPreSavePlugin;
+use Spryker\Zed\MerchantSalesOrder\Communication\Plugin\Sales\MerchantReferenceOrderExpanderPlugin;
 use Spryker\Zed\MerchantSalesOrder\Communication\Plugin\Sales\MerchantReferenceOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Sales\PaymentOrderHydratePlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Sales\ProductBundleIdHydratorPlugin;
@@ -74,6 +75,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new CommentThreadOrderExpanderPlugin(),
             new ConfiguredBundleOrderExpanderPlugin(),
             new ProductBundleOptionOrderExpanderPlugin(),
+            new MerchantReferenceOrderExpanderPlugin(),
         ];
     }
 
