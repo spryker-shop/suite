@@ -22,9 +22,7 @@ class CreateMerchantOrdersCommandPlugin extends AbstractPlugin implements Comman
 {
     /**
      * {@inheritDoc}
-     * - Requires Order.idSalesOrder transfer field to be set.
-     * - Requires Order.orderReference transfer field to be set.
-     * - Requires Order.items transfer field to be set.
+     * - Requires Order.idSalesOrder, Order.orderReference, Order.items transfer fields to be set.
      * - Iterates through the order items of given order looking for merchant reference presence.
      * - Skips all the order items without merchant reference.
      * - Creates a new merchant order for each unique merchant reference found.

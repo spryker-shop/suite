@@ -38,6 +38,10 @@ class CloseMerchantOrderItemCommandPlugin extends AbstractPlugin implements Comm
         $merchantOrderItemCriteriaTransfer = (new MerchantOrderItemCriteriaTransfer())->setIdOrderItem($orderItem->getIdSalesOrderItem());
         $merchantOrderItemTransfer = $this->getFactory()->getMerchantSalesOrderFacade()->findMerchantOrderItem($merchantOrderItemCriteriaTransfer);
 
+        if (!$merchantOrderItemTransfer) {
+            return [];
+        }
+
         $merchantOmsTriggerRequestTransfer = (new MerchantOmsTriggerRequestTransfer())
             ->setMerchantOmsEventName(static::EVENT_CLOSE)
             ->addMerchantOrderItem($merchantOrderItemTransfer);
