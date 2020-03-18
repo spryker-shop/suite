@@ -4854,6 +4854,62 @@
             "time": "2020-01-23T09:57:03+00:00"
         },
         {
+            "name": "spryker/merchant-profile-storage",
+            "version": "0.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-profile-storage.git",
+                "reference": "71a4c157ad6764735e5cef3ab51e3c92535c7576"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-profile-storage/zipball/71a4c157ad6764735e5cef3ab51e3c92535c7576",
+                "reference": "71a4c157ad6764735e5cef3ab51e3c92535c7576",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/event-behavior": "^1.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/merchant-profile": "^0.1.5",
+                "spryker/storage": "^3.4.0",
+                "spryker/synchronization": "^1.0.0",
+                "spryker/synchronization-behavior": "^1.0.0",
+                "spryker/synchronization-extension": "^1.0.0",
+                "spryker/util-encoding": "^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/event": "*",
+                "spryker/merchant": "*",
+                "spryker/propel": "*",
+                "spryker/queue": "*",
+                "spryker/testify": "*",
+                "spryker/url-storage": "*"
+            },
+            "suggest": {
+                "spryker/event": "To use event behavior.",
+                "spryker/url-storage": "To use shop route plugin."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantProfileStorage module",
+            "time": "2020-02-11T09:16:20+00:00"
+        },
+        {
             "name": "spryker/rabbit-mq",
             "version": "dev-master",
             "source": {
@@ -5003,7 +5059,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "b2c83e06f786ea434981b89b96e238a14c8fea7d"
+                "reference": "abe42a7be4e27b7177b2ecf7051295c18ce0a9d1"
             },
             "require": {
                 "php": ">=7.2"
@@ -5304,7 +5360,6 @@
                 "spryker/merchant-profile": "*",
                 "spryker/merchant-profile-data-import": "*",
                 "spryker/merchant-profile-gui": "*",
-                "spryker/merchant-profile-storage": "*",
                 "spryker/merchant-relationship": "*",
                 "spryker/merchant-relationship-data-import": "*",
                 "spryker/merchant-relationship-extension": "*",
@@ -5670,7 +5725,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-03-18T08:49:57+00:00"
+            "time": "2020-03-18T11:28:42+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5678,7 +5733,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "e1c0c108e7094e1833f5de3392e9bb01a6ea8386"
+                "reference": "e37965f9974757ce8f79bdf2156f44fa2c0ea252"
             },
             "require": {
                 "php": ">=7.2"
@@ -5737,7 +5792,6 @@
                 "spryker-shop/merchant-opening-hours-widget": "*",
                 "spryker-shop/merchant-page": "*",
                 "spryker-shop/merchant-product-offer-widget": "*",
-                "spryker-shop/merchant-profile-page": "*",
                 "spryker-shop/merchant-profile-widget": "*",
                 "spryker-shop/merchant-switcher-widget": "*",
                 "spryker-shop/money-widget": "*",
@@ -5824,7 +5878,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-03-18T09:39:53+00:00"
+            "time": "2020-03-18T11:30:58+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
