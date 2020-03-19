@@ -126,7 +126,7 @@ const parseCommandLine = () => (
 const printAvailableNamespacesAndThemes = (commandLineParameters, pathToConfig) => {
     const namespaceJson = require(pathToConfig);
 
-    if (commandLineParameters.info !== true) {
+    if (!commandLineParameters.info) {
         return;
     }
 
