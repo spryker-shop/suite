@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\MerchantSalesOrder\Business;
 
-use Pyz\Zed\MerchantOms\Dependency\Facade\MerchantOmsToMerchantSalesOrderFacadeInterface;
+use Spryker\Zed\MerchantOms\Dependency\Facade\MerchantOmsToMerchantSalesOrderFacadeInterface;
 use Spryker\Zed\MerchantSalesOrder\Business\MerchantSalesOrderFacade as SprykerMerchantSalesOrderFacade;
 
 /**
@@ -15,6 +15,8 @@ use Spryker\Zed\MerchantSalesOrder\Business\MerchantSalesOrderFacade as SprykerM
  * @method \Spryker\Zed\MerchantSalesOrder\Persistence\MerchantSalesOrderEntityManagerInterface getEntityManager()
  * @method \Spryker\Zed\MerchantSalesOrder\Persistence\MerchantSalesOrderRepositoryInterface getRepository()
  */
-class MerchantSalesOrderFacade extends SprykerMerchantSalesOrderFacade implements MerchantOmsToMerchantSalesOrderFacadeInterface
+class MerchantSalesOrderFacade extends SprykerMerchantSalesOrderFacade implements
+    MerchantSalesOrderFacadeInterface,
+    MerchantOmsToMerchantSalesOrderFacadeInterface
 {
 }

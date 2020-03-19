@@ -3645,7 +3645,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -4850,6 +4850,52 @@
             ],
             "description": "Spryker install tool",
             "time": "2020-01-23T09:57:03+00:00"
+        },
+        {
+            "name": "spryker/order-custom-reference",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/order-custom-reference.git",
+                "reference": "3bae478cfff6b14c430a08ee9d9c37e392abadcc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/order-custom-reference/zipball/3bae478cfff6b14c430a08ee9d9c37e392abadcc",
+                "reference": "3bae478cfff6b14c430a08ee9d9c37e392abadcc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/kernel": "^3.33.0",
+                "spryker/persistent-cart": "^3.0.0",
+                "spryker/quote-extension": "^1.6.0",
+                "spryker/sales": "^11.0.0",
+                "spryker/sales-extension": "^1.3.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/oms": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "OrderCustomReference module",
+            "time": "2020-03-17T08:37:36+00:00"
         },
         {
             "name": "spryker/rabbit-mq",
@@ -8690,8 +8736,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -10354,20 +10400,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
+                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler",
-                    "role": "Project Founder"
+                    "homepage": "https://github.com/manuelpichler"
                 },
                 {
                     "name": "Marc Würth",
+                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84",
-                    "role": "Project Maintainer"
+                    "homepage": "https://github.com/ravage84"
                 },
                 {
                     "name": "Other contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -11123,6 +11169,57 @@
             "time": "2020-02-20T14:09:48+00:00"
         },
         {
+            "name": "spryker-shop/order-custom-reference-widget",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/order-custom-reference-widget.git",
+                "reference": "87ec679d4ba2803aea81bb783a4cf3cf54f0e725"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/order-custom-reference-widget/zipball/87ec679d4ba2803aea81bb783a4cf3cf54f0e725",
+                "reference": "87ec679d4ba2803aea81bb783a4cf3cf54f0e725",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker-shop/shop-ui": "^1.0.0",
+                "spryker/application": "^3.21.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/order-custom-reference": "^1.0.0",
+                "spryker/quote": "^2.0.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/router": "*"
+            },
+            "suggest": {
+                "spryker-shop/cart-page": "Widget plugins are available for this module, minimum required version: 3.15.0",
+                "spryker-shop/checkout-page": "Widget plugins are available for this module, minimum required version: 3.11.0",
+                "spryker-shop/customer-page": "Widget plugins are available for this module, minimum required version: 2.12.0",
+                "spryker/router": "Use this module when using plugins that need Router dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "OrderCustomReferenceWidget module",
+            "time": "2020-03-18T14:04:56+00:00"
+        },
+        {
             "name": "spryker/architecture-sniffer",
             "version": "dev-master",
             "source": {
@@ -11825,8 +11922,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "lead",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "lead"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
