@@ -74,8 +74,8 @@ use Spryker\Zed\QuoteRequest\Communication\Plugin\Cart\SanitizeQuoteRequestQuote
 use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Cart\AddThresholdMessagesCartPostReloadItemsPlugin;
 use Spryker\Zed\SalesQuantity\Communication\Plugin\Cart\IsQuantitySplittableItemExpanderPlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentCartOperationPostSavePlugin;
+use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentDataSanitizeItemExpanderPlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentPreCheckPlugin;
-use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\ShipmentCartConnectorItemExpanderPlugin;
 
 class CartDependencyProvider extends SprykerCartDependencyProvider
 {
@@ -110,7 +110,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new ConfiguredBundleGroupKeyItemExpanderPlugin(),
             new ProductOfferGroupKeyItemExpanderPlugin(),
             new ProductUrlItemExpanderPlugin(),
-            new ShipmentCartConnectorItemExpanderPlugin(),
+            new CartShipmentDataSanitizeItemExpanderPlugin(),
         ];
     }
 
