@@ -75,6 +75,7 @@ use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Cart\AddThresholdMessag
 use Spryker\Zed\SalesQuantity\Communication\Plugin\Cart\IsQuantitySplittableItemExpanderPlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentCartOperationPostSavePlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentPreCheckPlugin;
+use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\ShipmentCartConnectorItemExpanderPlugin;
 
 class CartDependencyProvider extends SprykerCartDependencyProvider
 {
@@ -109,6 +110,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new ConfiguredBundleGroupKeyItemExpanderPlugin(),
             new ProductOfferGroupKeyItemExpanderPlugin(),
             new ProductUrlItemExpanderPlugin(),
+            new ShipmentCartConnectorItemExpanderPlugin(),
         ];
     }
 
