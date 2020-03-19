@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\ZedNavigation;
 
-use Spryker\Zed\Acl\Communication\Plugin\Navigation\AclNavigationItemFilterPlugin;
+use Spryker\Zed\Acl\Communication\Plugin\Navigation\AclNavigationItemCollectionFilterPlugin;
 use Spryker\Zed\ZedNavigation\ZedNavigationDependencyProvider as SprykerZedNavigationDependencyProvider;
 
 class ZedNavigationDependencyProvider extends SprykerZedNavigationDependencyProvider
@@ -15,10 +15,10 @@ class ZedNavigationDependencyProvider extends SprykerZedNavigationDependencyProv
     /**
      * @return \Spryker\Zed\ZedNavigationExtension\Dependency\Plugin\NavigationItemFilterPluginInterface[]
      */
-    protected function getNavigationItemFilterPlugins(): array
+    protected function getNavigationItemCollectionFilterPlugins(): array
     {
         return [
-            new AclNavigationItemFilterPlugin(),
+            new AclNavigationItemCollectionFilterPlugin(),
         ];
     }
 }
