@@ -1117,8 +1117,8 @@
             "authors": [
                 {
                     "name": "Alessio Linares",
-                    "email": "alessio.linares@skyscanner.net",
-                    "role": "Software Engineer"
+                    "role": "Software Engineer",
+                    "email": "alessio.linares@skyscanner.net"
                 }
             ],
             "description": "JSONPath implementation for querying and updating JSON objects",
@@ -3645,7 +3645,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -4852,6 +4852,50 @@
             "time": "2020-01-23T09:57:03+00:00"
         },
         {
+            "name": "spryker/publisher-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/publisher-extension.git",
+                "reference": "fc85a9c7e2ca66f1664c84aab6b53114ac670884"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/publisher-extension/zipball/fc85a9c7e2ca66f1664c84aab6b53114ac670884",
+                "reference": "fc85a9c7e2ca66f1664c84aab6b53114ac670884",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/event": "*",
+                "spryker/event-behavior": "*"
+            },
+            "suggest": {
+                "spryker/event": "*",
+                "spryker/event-behavior": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "PublisherExtension module",
+            "time": "2020-03-02T17:51:50+00:00"
+        },
+        {
             "name": "spryker/rabbit-mq",
             "version": "dev-master",
             "source": {
@@ -5001,7 +5045,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "18933f0a4ff41153778093c358f5c20d8c7be64d"
+                "reference": "04541c3e5bfb41e24b4ef2459a68c44af118bab3"
             },
             "require": {
                 "php": ">=7.2"
@@ -5666,7 +5710,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-03-16T15:48:34+00:00"
+            "time": "2020-03-19T13:41:35+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5914,6 +5958,45 @@
             ],
             "description": "UuidBehavior module",
             "time": "2019-12-19T11:01:46+00:00"
+        },
+        {
+            "name": "spryker/zed-ui",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/zed-ui.git",
+                "reference": "099261212e56ef104a66cd63f010a84843d80db9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/zed-ui/zipball/099261212e56ef104a66cd63f010a84843d80db9",
+                "reference": "099261212e56ef104a66cd63f010a84843d80db9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ZedUi module",
+            "time": "2020-03-17T18:03:53+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -8686,8 +8769,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -10301,20 +10384,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
+                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler",
-                    "role": "Project Founder"
+                    "homepage": "https://github.com/manuelpichler"
                 },
                 {
                     "name": "Marc Würth",
+                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84",
-                    "role": "Project Maintainer"
+                    "homepage": "https://github.com/ravage84"
                 },
                 {
                     "name": "Other contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",

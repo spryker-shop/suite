@@ -11,6 +11,7 @@ use Spryker\Zed\CommentSalesConnector\Communication\Plugin\Sales\CommentThreadAt
 use Spryker\Zed\CommentSalesConnector\Communication\Plugin\Sales\CommentThreadOrderExpanderPlugin;
 use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Sales\CompanyBusinessUnitFilterOrderSearchQueryExpanderPlugin;
 use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Sales\CustomerFilterOrderSearchQueryExpanderPlugin;
+use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Sales\CustomerSortingOrderSearchQueryExpanderPlugin;
 use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Sales\SaveCompanyBusinessUnitUuidOrderPostSavePlugin;
 use Spryker\Zed\CompanySalesConnector\Communication\Plugin\Sales\CompanyFilterOrderSearchQueryExpanderPlugin;
 use Spryker\Zed\CompanySalesConnector\Communication\Plugin\Sales\SaveCompanyUuidOrderPostSavePlugin;
@@ -161,6 +162,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new CompanyBusinessUnitFilterOrderSearchQueryExpanderPlugin(),
             new CompanyFilterOrderSearchQueryExpanderPlugin(),
             new CustomerFilterOrderSearchQueryExpanderPlugin(),
+            new CustomerSortingOrderSearchQueryExpanderPlugin(),
         ];
     }
 }
