@@ -11,7 +11,7 @@ use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Shared\Publisher\PublisherConfig;
 use Spryker\Zed\CategoryImageStorage\CategoryImageStorageConfig as SprykerCategoryImageStorageConfig;
 
-class CategoryImageStorageConfig extends SprykerCategoryImageSTorageConfig
+class CategoryImageStorageConfig extends SprykerCategoryImageStorageConfig
 {
     /**
      * @return string|null

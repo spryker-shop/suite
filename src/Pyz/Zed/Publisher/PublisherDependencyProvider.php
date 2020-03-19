@@ -17,7 +17,7 @@ use Spryker\Zed\Publisher\PublisherDependencyProvider as SprykerPublisherDepende
 class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface[]
+     * @return array
      */
     protected function getPublisherPlugins(): array
     {
@@ -37,7 +37,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface[]
+     * @return array
      */
     protected function getGlossaryStoragePlugins(): array
     {
