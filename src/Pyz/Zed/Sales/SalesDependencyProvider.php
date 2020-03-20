@@ -23,7 +23,6 @@ use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Sales\QuantitySalesU
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\SalesExtension\QuantitySalesUnitOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\ProductOfferSales\Communication\Plugin\Sales\ProductOfferReferenceOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionGroupIdHydratorPlugin;
-use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionOrderHydratePlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionsOrderItemExpanderPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Checkout\PackagingUnitSplittableItemTransformerStrategyPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Sales\AmountLeadProductHydrateOrderPlugin;
@@ -35,12 +34,12 @@ use Spryker\Zed\SalesConfigurableBundle\Communication\Plugin\Sales\ConfiguredBun
 use Spryker\Zed\SalesConfigurableBundle\Communication\Plugin\Sales\ConfiguredBundleOrderExpanderPlugin;
 use Spryker\Zed\SalesConfigurableBundle\Communication\Plugin\Sales\ConfiguredBundlesOrderPostSavePlugin;
 use Spryker\Zed\SalesMerchantConnector\Communication\Plugin\OrderItemReferenceExpanderPreSavePlugin;
-use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ItemMetadataHydratorPlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\MetadataOrderItemExpanderPlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ProductIdHydratorPlugin;
 use Spryker\Zed\SalesQuantity\Communication\Plugin\SalesExtension\IsQuantitySplittableOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\SalesQuantity\Communication\Plugin\SalesExtension\NonSplittableItemTransformerStrategyPlugin;
 use Spryker\Zed\SalesReclamationGui\Communication\Plugin\Sales\ReclamationSalesTablePlugin;
+use Spryker\Zed\SalesReturn\Communication\Plugin\Sales\CheckReturnableStateOrderItemExpanderPlugin;
 use Spryker\Zed\SalesReturn\Communication\Plugin\Sales\IsReturnableOrderItemExpanderPlugin;
 use Spryker\Zed\SalesReturn\Communication\Plugin\Sales\RemunerationTotalOrderExpanderPlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\ShipmentOrderHydratePlugin;
@@ -64,13 +63,11 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     {
         return [
             new ProductIdHydratorPlugin(),
-            new ProductOptionOrderHydratePlugin(),
             new ProductBundleOrderHydratePlugin(),
             new DiscountOrderHydratePlugin(),
             new ShipmentOrderHydratePlugin(),
             new PaymentOrderHydratePlugin(),
             new CustomerOrderHydratePlugin(),
-            new ItemMetadataHydratorPlugin(),
             new ProductBundleIdHydratorPlugin(),
             new ProductOptionGroupIdHydratorPlugin(),
             new QuantitySalesUnitHydrateOrderPlugin(),
@@ -157,10 +154,11 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     protected function getOrderItemExpanderPlugins(): array
     {
         return [
-            new ProductOptionsOrderItemExpanderPlugin(),
             new StateHistoryOrderItemExpanderPlugin(),
-            new IsReturnableOrderItemExpanderPlugin(),
+            new ProductOptionsOrderItemExpanderPlugin(),
             new MetadataOrderItemExpanderPlugin(),
+            new CheckReturnableStateOrderItemExpanderPlugin(),
+            new IsReturnableOrderItemExpanderPlugin(),
         ];
     }
 }
