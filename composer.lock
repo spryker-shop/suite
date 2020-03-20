@@ -1,23 +1,23 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6ede595272f13da9595c98695664e3e3",
+    "content-hash": "f6235282744d432184e2f1d1b3aee9c8",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.133.38",
+            "version": "3.133.40",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "5ec9442162d83f94918bc17136a2b674a04784e5"
+                "reference": "f89562eaab7f9e5695b10960abb727b64df3da10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/5ec9442162d83f94918bc17136a2b674a04784e5",
-                "reference": "5ec9442162d83f94918bc17136a2b674a04784e5",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/f89562eaab7f9e5695b10960abb727b64df3da10",
+                "reference": "f89562eaab7f9e5695b10960abb727b64df3da10",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-03-17T18:16:01+00:00"
+            "time": "2020-03-19T18:10:38+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -1919,16 +1919,16 @@
         },
         {
             "name": "moneyphp/money",
-            "version": "v3.3.0",
+            "version": "v3.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/moneyphp/money.git",
-                "reference": "2a9b09bb5435aa54a404f626b9284ae64cb88af2"
+                "reference": "122664c2621a95180a13c1ac81fea1d2ef20781e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/moneyphp/money/zipball/2a9b09bb5435aa54a404f626b9284ae64cb88af2",
-                "reference": "2a9b09bb5435aa54a404f626b9284ae64cb88af2",
+                "url": "https://api.github.com/repos/moneyphp/money/zipball/122664c2621a95180a13c1ac81fea1d2ef20781e",
+                "reference": "122664c2621a95180a13c1ac81fea1d2ef20781e",
                 "shasum": ""
             },
             "require": {
@@ -1997,7 +1997,7 @@
                 "money",
                 "vo"
             ],
-            "time": "2019-12-27T21:58:31+00:00"
+            "time": "2020-03-18T17:49:59+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -4999,11 +4999,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-bugfix/mr-521-merchant-portal-navigation-performance-fix",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "89bd9e78c8098432c293f1fc75c4118797a440f5"
+                "reference": "adde5e2b277e311e736d494a77f25553e7b702b9"
             },
             "require": {
                 "php": ">=7.2"
@@ -5235,6 +5235,7 @@
                 "spryker/discount-calculation-connector": "*",
                 "spryker/discount-extension": "*",
                 "spryker/discount-promotion": "*",
+                "spryker/discount-promotions-rest-api": "*",
                 "spryker/doctrine-inflector": "*",
                 "spryker/documentation-generator-rest-api": "*",
                 "spryker/documentation-generator-rest-api-extension": "*",
@@ -5289,6 +5290,7 @@
                 "spryker/manual-order-entry-gui": "*",
                 "spryker/manual-order-entry-gui-extension": "*",
                 "spryker/merchant": "*",
+                "spryker/merchant-dashboard-gui-page": "*",
                 "spryker/merchant-data-import": "*",
                 "spryker/merchant-extension": "*",
                 "spryker/merchant-gui": "*",
@@ -5353,6 +5355,8 @@
                 "spryker/oms": "*",
                 "spryker/oms-discount-connector": "*",
                 "spryker/oms-extension": "*",
+                "spryker/order-custom-reference": "*",
+                "spryker/order-custom-reference-gui": "*",
                 "spryker/order-payments-rest-api": "*",
                 "spryker/order-payments-rest-api-extension": "*",
                 "spryker/orders-rest-api": "*",
@@ -5578,6 +5582,7 @@
                 "spryker/shopping-list-session": "*",
                 "spryker/shopping-list-session-extension": "*",
                 "spryker/shopping-list-storage": "*",
+                "spryker/shopping-lists-rest-api": "*",
                 "spryker/silex": "*",
                 "spryker/sql-criteria-builder": "*",
                 "spryker/state-machine": "*",
@@ -5623,6 +5628,7 @@
                 "spryker/util-date-time": "*",
                 "spryker/util-encoding": "*",
                 "spryker/util-encryption": "*",
+                "spryker/util-glob": "*",
                 "spryker/util-measurement-unit-conversion": "*",
                 "spryker/util-network": "*",
                 "spryker/util-price": "*",
@@ -5669,7 +5675,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-03-19T14:09:32+00:00"
+            "time": "2020-03-20T09:45:48+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5677,7 +5683,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "1dcf1b72be7d0cd4e9ca5a2a41debe60c9584f08"
+                "reference": "2dd2d8534f0908bd63e2f874f58cffad3b8135ed"
             },
             "require": {
                 "php": ">=7.2"
@@ -5742,6 +5748,7 @@
                 "spryker-shop/navigation-widget": "*",
                 "spryker-shop/newsletter-page": "*",
                 "spryker-shop/newsletter-widget": "*",
+                "spryker-shop/order-custom-reference-widget": "*",
                 "spryker-shop/persistent-cart-share-page": "*",
                 "spryker-shop/persistent-cart-share-widget": "*",
                 "spryker-shop/price-product-volume-widget": "*",
@@ -5820,7 +5827,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-03-17T15:25:37+00:00"
+            "time": "2020-03-18T16:51:09+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -5981,38 +5988,38 @@
         },
         {
             "name": "symfony-cmf/routing",
-            "version": "2.1.1",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony-cmf/Routing.git",
-                "reference": "fbba5ec9626f7a5eaa1c8c1a26e8bfa79c32356f"
+                "reference": "12f3f64a0ab89ee0dc5ead8802167de762eac024"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony-cmf/Routing/zipball/fbba5ec9626f7a5eaa1c8c1a26e8bfa79c32356f",
-                "reference": "fbba5ec9626f7a5eaa1c8c1a26e8bfa79c32356f",
+                "url": "https://api.github.com/repos/symfony-cmf/Routing/zipball/12f3f64a0ab89ee0dc5ead8802167de762eac024",
+                "reference": "12f3f64a0ab89ee0dc5ead8802167de762eac024",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1",
                 "psr/log": "^1.0",
-                "symfony/http-kernel": "^2.8 || ^3.3 || ^4.0",
-                "symfony/routing": "^2.8 || ^3.3 || ^4.0"
+                "symfony/http-kernel": "^3.4 || ^4.3",
+                "symfony/routing": "^3.4 || ^4.3"
             },
             "require-dev": {
-                "symfony-cmf/testing": "^2.1.0",
-                "symfony/config": "^2.8 || ^3.3 || ^4.0",
-                "symfony/dependency-injection": "^2.8 || ^3.3 || ^4.0",
-                "symfony/event-dispatcher": "^2.8 || ^3.3 || ^4.0",
+                "symfony-cmf/testing": "^3@dev",
+                "symfony/config": "^3.4 || ^4.3",
+                "symfony/dependency-injection": "^3.4 || ^4.3",
+                "symfony/event-dispatcher": "^3.4 || ^4.3",
                 "symfony/phpunit-bridge": "^4.2.2"
             },
             "suggest": {
-                "symfony/event-dispatcher": "DynamicRouter can optionally trigger an event at the start of matching. Minimal version (~2.1)"
+                "symfony/event-dispatcher": "DynamicRouter can optionally trigger an event at the start of matching. Minimal version (^3.4 || ^4.3)"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.1-dev"
+                    "dev-master": "2.2-dev"
                 }
             },
             "autoload": {
@@ -6036,7 +6043,7 @@
                 "database",
                 "routing"
             ],
-            "time": "2019-12-10T10:41:58+00:00"
+            "time": "2019-12-10T10:45:30+00:00"
         },
         {
             "name": "symfony/config",
@@ -8988,6 +8995,99 @@
             "time": "2020-02-14T12:15:55+00:00"
         },
         {
+            "name": "webmozart/glob",
+            "version": "4.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webmozart/glob.git",
+                "reference": "3cbf63d4973cf9d780b93d2da8eec7e4a9e63bbe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webmozart/glob/zipball/3cbf63d4973cf9d780b93d2da8eec7e4a9e63bbe",
+                "reference": "3cbf63d4973cf9d780b93d2da8eec7e4a9e63bbe",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3.3|^7.0",
+                "webmozart/path-util": "^2.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.6",
+                "sebastian/version": "^1.0.1",
+                "symfony/filesystem": "^2.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Webmozart\\Glob\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bernhard Schussek",
+                    "email": "bschussek@gmail.com"
+                }
+            ],
+            "description": "A PHP implementation of Ant's glob.",
+            "time": "2015-12-29T11:14:33+00:00"
+        },
+        {
+            "name": "webmozart/path-util",
+            "version": "2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webmozart/path-util.git",
+                "reference": "d939f7edc24c9a1bb9c0dee5cb05d8e859490725"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webmozart/path-util/zipball/d939f7edc24c9a1bb9c0dee5cb05d8e859490725",
+                "reference": "d939f7edc24c9a1bb9c0dee5cb05d8e859490725",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "webmozart/assert": "~1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.6",
+                "sebastian/version": "^1.0.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Webmozart\\PathUtil\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bernhard Schussek",
+                    "email": "bschussek@gmail.com"
+                }
+            ],
+            "description": "A robust cross-platform utility for normalizing, comparing and modifying file paths.",
+            "time": "2015-12-17T08:42:14+00:00"
+        },
+        {
             "name": "wikimedia/composer-merge-plugin",
             "version": "v1.4.1",
             "source": {
@@ -10930,12 +11030,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/composer-replace.git",
-                "reference": "7eea6c206685d11989b5e2cc1e0e936d42a21b11"
+                "reference": "17600f8866b72ad0c0f64fb97cc516103a45a230"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/composer-replace/zipball/7eea6c206685d11989b5e2cc1e0e936d42a21b11",
-                "reference": "7eea6c206685d11989b5e2cc1e0e936d42a21b11",
+                "url": "https://api.github.com/repos/spryker-sdk/composer-replace/zipball/17600f8866b72ad0c0f64fb97cc516103a45a230",
+                "reference": "17600f8866b72ad0c0f64fb97cc516103a45a230",
                 "shasum": ""
             },
             "require": {
@@ -10944,8 +11044,11 @@
                 "spryker/symfony": "^3.3.2"
             },
             "require-dev": {
+                "sllh/composer-versions-check": "^2.0",
                 "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
+                "spryker/testify": "*",
+                "spryker/transfer": "^3.21.0",
+                "webmozart/glob": "^4.1"
             },
             "type": "library",
             "autoload": {
@@ -10958,7 +11061,7 @@
                 "proprietary"
             ],
             "description": "ComposerReplace module",
-            "time": "2020-01-11T00:21:27+00:00"
+            "time": "2020-03-18T14:27:25+00:00"
         },
         {
             "name": "spryker-sdk/phpstan-spryker",
