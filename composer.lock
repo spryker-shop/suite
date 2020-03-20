@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
     "content-hash": "dd85c2b3ee9a1095d0d7c915e2f4bd6c",
@@ -5001,7 +5001,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "3100b724c74e7818651e42466afe3f80a4815c04"
+                "reference": "be7a5af4237e7a62a6d595f32e00e84b0ccbe654"
             },
             "require": {
                 "php": ">=7.2"
@@ -5673,7 +5673,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-03-20T12:42:38+00:00"
+            "time": "2020-03-20T13:17:37+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -11216,6 +11216,57 @@
             ],
             "description": "SprykGui module",
             "time": "2020-02-20T14:09:48+00:00"
+        },
+        {
+            "name": "spryker-shop/order-custom-reference-widget",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/order-custom-reference-widget.git",
+                "reference": "87ec679d4ba2803aea81bb783a4cf3cf54f0e725"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/order-custom-reference-widget/zipball/87ec679d4ba2803aea81bb783a4cf3cf54f0e725",
+                "reference": "87ec679d4ba2803aea81bb783a4cf3cf54f0e725",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker-shop/shop-ui": "^1.0.0",
+                "spryker/application": "^3.21.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/order-custom-reference": "^1.0.0",
+                "spryker/quote": "^2.0.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/router": "*"
+            },
+            "suggest": {
+                "spryker-shop/cart-page": "Widget plugins are available for this module, minimum required version: 3.15.0",
+                "spryker-shop/checkout-page": "Widget plugins are available for this module, minimum required version: 3.11.0",
+                "spryker-shop/customer-page": "Widget plugins are available for this module, minimum required version: 2.12.0",
+                "spryker/router": "Use this module when using plugins that need Router dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "OrderCustomReferenceWidget module",
+            "time": "2020-03-18T14:04:56+00:00"
         },
         {
             "name": "spryker/architecture-sniffer",
