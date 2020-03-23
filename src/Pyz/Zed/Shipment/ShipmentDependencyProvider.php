@@ -9,6 +9,7 @@ namespace Pyz\Zed\Shipment;
 
 use Spryker\Zed\GiftCard\Communication\Plugin\Shipment\GiftCardShipmentGroupMethodFilterPlugin;
 use Spryker\Zed\Kernel\Container;
+use Spryker\Zed\MerchantSalesOrder\Communication\Plugin\Shipment\MerchantReferenceShipmentExpenseExpanderPlugin;
 use Spryker\Zed\Shipment\ShipmentDependencyProvider as SprykerShipmentDependencyProvider;
 
 class ShipmentDependencyProvider extends SprykerShipmentDependencyProvider
@@ -52,6 +53,16 @@ class ShipmentDependencyProvider extends SprykerShipmentDependencyProvider
     {
         return [
             new GiftCardShipmentGroupMethodFilterPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\ShipmentExtension\Dependency\Plugin\ShipmentExpenseExpanderPluginInterface[]
+     */
+    protected function getShipmentExpenseExpanderPlugins(): array
+    {
+        return [
+            new MerchantReferenceShipmentExpenseExpanderPlugin(),
         ];
     }
 }
