@@ -23,6 +23,14 @@ matrix:
     - php: "7.4"
       dist: bionic
       env:
+        - FE_TEST=1
+        - ON_EVENTS=push
+      addons:
+        chrome: stable
+
+    - php: "7.4"
+      dist: bionic
+      env:
         - VALIDATION=1
 
     - php: "7.4"
@@ -354,6 +362,12 @@ script:
 
   - if [[ $VALIDATION == 1 ]] ; then node ./frontend/libs/stylelint ; fi
   - if [[ $VALIDATION == 1 ]] ; then node ./frontend/libs/tslint stylish ; fi
+
+  - if [[ $FE_TEST == 1 ]] ; then nvm install 12 && nvm use 12 ; fi
+  - if [[ $FE_TEST == 1 ]] ; then npm install ; fi
+  - if [[ $FE_TEST == 1 ]] ; then npm run bo:install ; fi
+  - if [[ $FE_TEST == 1 ]] ; then npm run bo:build ; fi
+  - if [[ $FE_TEST == 1 ]] ; then npm run bo:test ; fi
 
 after_script:
   - if [[ $TRAVIS_TEST_RESULT == 0 ]] ; then rm /tmp/phantomjs.log ; fi
