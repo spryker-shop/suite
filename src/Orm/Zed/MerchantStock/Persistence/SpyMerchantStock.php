@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\MerchantStock\Persistence;
 
-use Orm\Zed\MerchantStock\Persistence\Base\SpyMerchantStock as BaseSpyMerchantStock;
+use Spryker\Zed\MerchantStock\Persistence\Propel\AbstractSpyMerchantStock as BaseSpyMerchantStock;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_merchant_stock' table.

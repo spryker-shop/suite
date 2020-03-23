@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\MerchantStock\Persistence;
 
-use Orm\Zed\MerchantStock\Persistence\Base\SpyMerchantStockQuery as BaseSpyMerchantStockQuery;
+use Spryker\Zed\MerchantStock\Persistence\Propel\AbstractSpyMerchantStockQuery as BaseSpyMerchantStockQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_merchant_stock' table.
