@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "63dfedf421f70b413eb4f7e02a9e11ff",
+    "content-hash": "99105bd3cb2ac12212a2409c018ec2ba",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -10523,21 +10523,22 @@
         },
         {
             "name": "spryker/cart-codes-rest-api",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cart-codes-rest-api.git",
-                "reference": "f577f269720b9f5dbf48bcb1006b2c1746600f89"
+                "reference": "0784fed410b7a644c69232ac01183ebc3acfbb16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cart-codes-rest-api/zipball/f577f269720b9f5dbf48bcb1006b2c1746600f89",
-                "reference": "f577f269720b9f5dbf48bcb1006b2c1746600f89",
+                "url": "https://api.github.com/repos/spryker/cart-codes-rest-api/zipball/0784fed410b7a644c69232ac01183ebc3acfbb16",
+                "reference": "0784fed410b7a644c69232ac01183ebc3acfbb16",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
                 "spryker/cart-code": "^1.1.0",
+                "spryker/cart-codes-rest-api-extension": "^1.0.0",
                 "spryker/carts-rest-api": "^5.7.0",
                 "spryker/glue-application": "^1.9.0",
                 "spryker/glue-application-extension": "^1.0.0",
@@ -10569,7 +10570,45 @@
                 "proprietary"
             ],
             "description": "CartCodesRestApi module",
-            "time": "2020-01-16T12:30:38+00:00"
+            "time": "2020-03-13T11:56:08+00:00"
+        },
+        {
+            "name": "spryker/cart-codes-rest-api-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cart-codes-rest-api-extension.git",
+                "reference": "e98638213be5982b0df44707759e6716fde10338"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cart-codes-rest-api-extension/zipball/e98638213be5982b0df44707759e6716fde10338",
+                "reference": "e98638213be5982b0df44707759e6716fde10338",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CartCodesRestApiExtension module",
+            "time": "2020-03-13T12:31:59+00:00"
         },
         {
             "name": "spryker/cart-currency-connector",
@@ -19473,20 +19512,21 @@
         },
         {
             "name": "spryker/discount-promotions-rest-api",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/discount-promotions-rest-api.git",
-                "reference": "910c2cafaffc714d3d3c179c2adca33cc3282a21"
+                "reference": "984584ee21943ea07b62220fe76f137a75cef42d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/discount-promotions-rest-api/zipball/910c2cafaffc714d3d3c179c2adca33cc3282a21",
-                "reference": "910c2cafaffc714d3d3c179c2adca33cc3282a21",
+                "url": "https://api.github.com/repos/spryker/discount-promotions-rest-api/zipball/984584ee21943ea07b62220fe76f137a75cef42d",
+                "reference": "984584ee21943ea07b62220fe76f137a75cef42d",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
+                "spryker/cart-codes-rest-api-extension": "^1.0.0",
                 "spryker/carts-rest-api-extension": "^1.5.0",
                 "spryker/discount-promotion": "^4.1.0",
                 "spryker/glue-application": "^1.15.0",
@@ -19517,7 +19557,7 @@
                 "proprietary"
             ],
             "description": "DiscountPromotionsRestApi module",
-            "time": "2020-03-16T11:30:20+00:00"
+            "time": "2020-03-24T09:23:16+00:00"
         },
         {
             "name": "spryker/doctrine-inflector",
