@@ -58,7 +58,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
     // get array of available module suffixes
     const getAllModuleSuffixes = () => namespaceJson.namespaces.map(namespace => namespace.moduleSuffix);
 
-    // get pattern's array of ignored modules
+    // get array of ignored modules
     const ignoreModulesCollection = () => (
         getAllModuleSuffixes()
             .filter(suffix => suffix !== namespaceConfig.moduleSuffix)
@@ -160,7 +160,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
 
         // define settings for suite-frontend-builder finder
         find: {
-            // webpack entry points (components) finder settings
+            // entry point patterns (components)
             componentEntryPoints: {
                 // absolute dirs in which look for
                 dirs: [
@@ -193,7 +193,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
                 ]
             },
 
-            // webpack entry points (application files) finder settings
+            // entry point patterns (application files)
             shopUiEntryPoints: {
                 dirs: [
                     join(globalSettings.context, paths.project)
