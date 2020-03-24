@@ -84,6 +84,7 @@ use Spryker\Glue\HealthCheck\Plugin\HealthCheckResourceRoutePlugin;
 use Spryker\Glue\MerchantOpeningHoursRestApi\MerchantOpeningHoursRestApiConfig;
 use Spryker\Glue\MerchantOpeningHoursRestApi\Plugin\GlueApplication\MerchantOpeningHoursByMerchantReferenceResourceRelationshipPlugin;
 use Spryker\Glue\MerchantOpeningHoursRestApi\Plugin\GlueApplication\MerchantOpeningHoursResourceRoutePlugin;
+use Spryker\Glue\MerchantsRestApi\Plugin\GlueApplication\MerchantAddressesByMerchantReferenceResourceRelationshipPlugin;
 use Spryker\Glue\MerchantsRestApi\Plugin\GlueApplication\MerchantAddressesResourceRoutePlugin;
 use Spryker\Glue\MerchantsRestApi\Plugin\GlueApplication\MerchantsResourceRoutePlugin;
 use Spryker\Glue\NavigationsCategoryNodesResourceRelationship\Plugin\GlueApplication\CategoryNodeByResourceIdResourceRelationshipPlugin;
@@ -508,6 +509,10 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         $resourceRelationshipCollection->addRelationship(
             MerchantOpeningHoursRestApiConfig::RESOURCE_MERCHANTS,
             new MerchantOpeningHoursByMerchantReferenceResourceRelationshipPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            MerchantOpeningHoursRestApiConfig::RESOURCE_MERCHANTS,
+            new MerchantAddressesByMerchantReferenceResourceRelationshipPlugin()
         );
 
         return $resourceRelationshipCollection;
