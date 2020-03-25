@@ -12,7 +12,7 @@ use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterf
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
-class ProductConcreteAttributeUniqueCheckStep implements DataImportStepInterface
+class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterface
 {
     protected const KEY_CONCRETE_SKU = 'concrete_sku';
     protected const KEY_ABSTRACT_SKU = 'abstract_sku';

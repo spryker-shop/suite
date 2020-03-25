@@ -53,7 +53,7 @@ use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\Sql\ProductAbs
 use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\Sql\ProductAbstractStoreSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\ProductAttributeKey\AddProductAttributeKeysStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAttributeKey\ProductAttributeKeyWriter;
-use Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductConcreteAttributeUniqueCheckStep;
+use Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductConcreteAttributesUniqueCheckStep;
 use Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductConcreteCheckExistenceStep;
 use Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductConcreteHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductSkuToIdProductStep;
@@ -331,7 +331,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             ->addStep($this->createProductConcreteCheckExistenceStep())
             ->addStep($this->createAddLocalesStep())
             ->addStep($this->createAttributesExtractorStep())
-            ->addStep($this->createProductConcreteAttributeUniqueCheckStep())
+            ->addStep($this->createProductConcreteAttributesUniqueCheckStep())
             ->addStep($this->createProductLocalizedAttributesExtractorStep([
                 ProductConcreteHydratorStep::KEY_NAME,
                 ProductConcreteHydratorStep::KEY_DESCRIPTION,
@@ -350,9 +350,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     /**
      * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
      */
-    public function createProductConcreteAttributeUniqueCheckStep(): DataImportStepInterface
+    public function createProductConcreteAttributesUniqueCheckStep(): DataImportStepInterface
     {
-        return new ProductConcreteAttributeUniqueCheckStep(
+        return new ProductConcreteAttributesUniqueCheckStep(
             $this->createProductRepository()
         );
     }
