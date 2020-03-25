@@ -94,6 +94,10 @@ class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterfac
         string $dataSetConcreteProductSku,
         array $dataSetConcreteProductAttributes
     ): void {
+        if (!isset($this->concreteProductAttributesMap[$dataSetAbstractProductSku])) {
+            return;
+        }
+
         foreach ($this->concreteProductAttributesMap[$dataSetAbstractProductSku] as $concreteProductSku => $concreteProductAttributes) {
             if ($dataSetConcreteProductSku === $concreteProductSku) {
                 continue;
