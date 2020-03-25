@@ -67,7 +67,7 @@ class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterfac
 
             if ($dataSetConcreteProductAttributes === $concreteProductAttribute) {
                 throw new InvalidDataException(sprintf(
-                    'Product concrete must have unique attributes. Attributes "%s" of sku "%s" is equal to attributes "%s" of sku "%s".',
+                    'Product concrete must have unique attributes. Attributes "%s" of sku "%s" are equal to attributes "%s" of sku "%s".',
                     json_encode($dataSetConcreteProductAttributes),
                     $dataSetConcreteSku,
                     json_encode($concreteProductAttribute),
