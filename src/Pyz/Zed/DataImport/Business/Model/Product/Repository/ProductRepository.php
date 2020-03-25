@@ -20,6 +20,7 @@ class ProductRepository implements ProductRepositoryInterface
     public const ID_PRODUCT = 'idProduct';
     public const ID_PRODUCT_ABSTRACT = 'idProductAbstract';
     public const ABSTRACT_SKU = 'abstractSku';
+    public const ATTRIBUTES = 'attributes';
 
     /**
      * @var array
@@ -88,6 +89,32 @@ class ProductRepository implements ProductRepositoryInterface
             ->select([SpyProductTableMap::COL_SKU])
             ->find()
             ->toArray();
+    }
+
+    /**
+     * @param string $abstractSku
+     *
+     * @return array
+     */
+    public function getAttributesByAbstractSku(string $abstractSku): array
+    {
+        $idAbstractProduct = $this->getIdProductAbstractByAbstractSku($abstractSku);
+
+        $productAttributes = SpyProductQuery::create()
+            ->select([SpyProductTableMap::COL_ATTRIBUTES, SpyProductTableMap::COL_SKU])
+            ->filterByFkProductAbstract($idAbstractProduct)
+            ->find()
+            ->toArray();
+
+        $abstractProductAttributes = [];
+
+        foreach ($productAttributes as $productAttribute) {
+            $concreteProductSku = $productAttribute[SpyProductTableMap::COL_SKU];
+            $concreteProductAttributes = json_decode($productAttribute[SpyProductTableMap::COL_ATTRIBUTES], true);
+            $abstractProductAttributes[$concreteProductSku] = $concreteProductAttributes;
+        }
+
+        return $abstractProductAttributes;
     }
 
     /**
