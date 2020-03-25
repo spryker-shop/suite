@@ -18,8 +18,6 @@ class KernelConfig extends SprykerKernelConfig
     {
         return [
             APPLICATION_VENDOR_DIR . '/spryker/*/src/*/*/',
-            APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/*/src/*/*/',
-            APPLICATION_VENDOR_DIR . '/spryker/spryker-shop/Bundles/*/src/*/*/',
             APPLICATION_VENDOR_DIR . '/spryker-eco/*/src/*/*/',
         ];
     }
