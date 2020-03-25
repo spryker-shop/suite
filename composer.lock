@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bee78a160ed11393b3ff1ea6ac0cb157",
+    "content-hash": "1958e613cd47ad39358f7017f3c0e3c7",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.133.41",
+            "version": "3.133.39",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "9b4a110de75631339329a4ca45ebbaf7ddd1f7f9"
+                "reference": "0e3b9e497bd39063cb504115c726d369d8f4d455"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/9b4a110de75631339329a4ca45ebbaf7ddd1f7f9",
-                "reference": "9b4a110de75631339329a4ca45ebbaf7ddd1f7f9",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/0e3b9e497bd39063cb504115c726d369d8f4d455",
+                "reference": "0e3b9e497bd39063cb504115c726d369d8f4d455",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-03-20T18:10:54+00:00"
+            "time": "2020-03-18T18:13:04+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -3058,16 +3058,16 @@
         },
         {
             "name": "phpseclib/phpseclib",
-            "version": "2.0.26",
+            "version": "2.0.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "09655fcc1f8bab65727be036b28f6f20311c126c"
+                "reference": "c18159618ed7cd7ff721ac1a8fec7860a475d2f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/09655fcc1f8bab65727be036b28f6f20311c126c",
-                "reference": "09655fcc1f8bab65727be036b28f6f20311c126c",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/c18159618ed7cd7ff721ac1a8fec7860a475d2f0",
+                "reference": "c18159618ed7cd7ff721ac1a8fec7860a475d2f0",
                 "shasum": ""
             },
             "require": {
@@ -3146,7 +3146,7 @@
                 "x.509",
                 "x509"
             ],
-            "time": "2020-03-13T04:15:39+00:00"
+            "time": "2020-02-25T04:16:50+00:00"
         },
         {
             "name": "phpspec/prophecy",
@@ -4854,6 +4854,52 @@
             "time": "2020-01-23T09:57:03+00:00"
         },
         {
+            "name": "spryker/order-custom-reference",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/order-custom-reference.git",
+                "reference": "3bae478cfff6b14c430a08ee9d9c37e392abadcc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/order-custom-reference/zipball/3bae478cfff6b14c430a08ee9d9c37e392abadcc",
+                "reference": "3bae478cfff6b14c430a08ee9d9c37e392abadcc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/kernel": "^3.33.0",
+                "spryker/persistent-cart": "^3.0.0",
+                "spryker/quote-extension": "^1.6.0",
+                "spryker/sales": "^11.0.0",
+                "spryker/sales-extension": "^1.3.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/oms": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "OrderCustomReference module",
+            "time": "2020-03-17T08:37:36+00:00"
+        },
+        {
             "name": "spryker/rabbit-mq",
             "version": "dev-master",
             "source": {
@@ -4999,11 +5045,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/bo-297/bo-405-fe-list-of-product-page",
+            "version": "dev-feature/bo-297/bo-329-list-of-products-be",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "0d248f1691568f1403a1d5fbf0daffbf16dbe3a1"
+                "reference": "d41aa4712a6d4c9601f7d2d5903e27aa5c5ffbfa"
             },
             "require": {
                 "php": ">=7.2"
@@ -5235,7 +5281,6 @@
                 "spryker/discount-calculation-connector": "*",
                 "spryker/discount-extension": "*",
                 "spryker/discount-promotion": "*",
-                "spryker/discount-promotions-rest-api": "*",
                 "spryker/doctrine-inflector": "*",
                 "spryker/documentation-generator-rest-api": "*",
                 "spryker/documentation-generator-rest-api-extension": "*",
@@ -5290,7 +5335,6 @@
                 "spryker/manual-order-entry-gui": "*",
                 "spryker/manual-order-entry-gui-extension": "*",
                 "spryker/merchant": "*",
-                "spryker/merchant-dashboard-gui-page": "*",
                 "spryker/merchant-data-import": "*",
                 "spryker/merchant-extension": "*",
                 "spryker/merchant-gui": "*",
@@ -5321,9 +5365,6 @@
                 "spryker/merchant-relationship-sales-order-threshold-gui-extension": "*",
                 "spryker/merchant-sales-order": "*",
                 "spryker/merchant-search": "*",
-                "spryker/merchant-stock": "*",
-                "spryker/merchant-stock-data-import": "*",
-                "spryker/merchant-stock-gui": "*",
                 "spryker/merchant-switcher": "*",
                 "spryker/merchant-user": "*",
                 "spryker/merchant-user-auth-gui-page": "*",
@@ -5358,8 +5399,6 @@
                 "spryker/oms": "*",
                 "spryker/oms-discount-connector": "*",
                 "spryker/oms-extension": "*",
-                "spryker/order-custom-reference": "*",
-                "spryker/order-custom-reference-gui": "*",
                 "spryker/order-payments-rest-api": "*",
                 "spryker/order-payments-rest-api-extension": "*",
                 "spryker/orders-rest-api": "*",
@@ -5586,7 +5625,6 @@
                 "spryker/shopping-list-session": "*",
                 "spryker/shopping-list-session-extension": "*",
                 "spryker/shopping-list-storage": "*",
-                "spryker/shopping-lists-rest-api": "*",
                 "spryker/silex": "*",
                 "spryker/sql-criteria-builder": "*",
                 "spryker/state-machine": "*",
@@ -5632,7 +5670,6 @@
                 "spryker/util-date-time": "*",
                 "spryker/util-encoding": "*",
                 "spryker/util-encryption": "*",
-                "spryker/util-glob": "*",
                 "spryker/util-measurement-unit-conversion": "*",
                 "spryker/util-network": "*",
                 "spryker/util-price": "*",
@@ -5679,7 +5716,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-03-24T09:05:45+00:00"
+            "time": "2020-03-18T16:25:40+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5881,6 +5918,47 @@
             ],
             "description": "SynchronizationBehavior module",
             "time": "2020-01-10T09:04:32+00:00"
+        },
+        {
+            "name": "spryker/util-glob",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/util-glob.git",
+                "reference": "c412f3a3df170096cd174e18f5e83bf567c87cf4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/util-glob/zipball/c412f3a3df170096cd174e18f5e83bf567c87cf4",
+                "reference": "c412f3a3df170096cd174e18f5e83bf567c87cf4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/kernel": "^3.30.0",
+                "webmozart/glob": "^4.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "UtilGlob module",
+            "time": "2020-03-18T13:53:51+00:00"
         },
         {
             "name": "spryker/uuid-behavior",
