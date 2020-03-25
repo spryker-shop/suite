@@ -353,7 +353,8 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     public function createProductConcreteAttributesUniqueCheckStep(): DataImportStepInterface
     {
         return new ProductConcreteAttributesUniqueCheckStep(
-            $this->createProductRepository()
+            $this->createProductRepository(),
+            $this->getUtilEncodingService()
         );
     }
 

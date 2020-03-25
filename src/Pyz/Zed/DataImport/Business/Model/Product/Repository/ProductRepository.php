@@ -13,6 +13,7 @@ use Orm\Zed\Product\Persistence\SpyProduct;
 use Orm\Zed\Product\Persistence\SpyProductAbstract;
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Orm\Zed\Product\Persistence\SpyProductQuery;
+use Propel\Runtime\Collection\ArrayCollection;
 use Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException;
 
 class ProductRepository implements ProductRepositoryInterface
@@ -92,29 +93,14 @@ class ProductRepository implements ProductRepositoryInterface
     }
 
     /**
-     * @param string $abstractSku
-     *
-     * @return array
+     * @return \Propel\Runtime\Collection\ArrayCollection
      */
-    public function getAttributesByAbstractSku(string $abstractSku): array
+    public function getConcreteProductAttributes(): ArrayCollection
     {
-        $idAbstractProduct = $this->getIdProductAbstractByAbstractSku($abstractSku);
-
-        $productAttributes = SpyProductQuery::create()
-            ->select([SpyProductTableMap::COL_ATTRIBUTES, SpyProductTableMap::COL_SKU])
-            ->filterByFkProductAbstract($idAbstractProduct)
-            ->find()
-            ->toArray();
-
-        $abstractProductAttributes = [];
-
-        foreach ($productAttributes as $productAttribute) {
-            $concreteProductSku = $productAttribute[SpyProductTableMap::COL_SKU];
-            $concreteProductAttributes = json_decode($productAttribute[SpyProductTableMap::COL_ATTRIBUTES], true);
-            $abstractProductAttributes[$concreteProductSku] = $concreteProductAttributes;
-        }
-
-        return $abstractProductAttributes;
+        return SpyProductQuery::create()
+            ->joinWithSpyProductAbstract()
+            ->select([SpyProductTableMap::COL_ATTRIBUTES, SpyProductTableMap::COL_SKU, SpyProductAbstractTableMap::COL_SKU])
+            ->find();
     }
 
     /**
