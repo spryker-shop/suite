@@ -116,7 +116,7 @@ class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterfac
      */
     protected function prepareConcreteProductAttributesMap(): void
     {
-        $concreteProductCollection = $this->productRepository->getConcreteProductAttributes();
+        $concreteProductCollection = $this->productRepository->getConcreteProductCollection();
 
         foreach ($concreteProductCollection as $concreteProduct) {
             $concreteProductAttributes = $this->utilEncodingService->decodeJson($concreteProduct[static::CONCRETE_PRODUCT_COL_ATTRIBUTES], true);

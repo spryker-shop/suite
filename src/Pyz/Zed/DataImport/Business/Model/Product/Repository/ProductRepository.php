@@ -95,7 +95,7 @@ class ProductRepository implements ProductRepositoryInterface
     /**
      * @return \Propel\Runtime\Collection\ArrayCollection
      */
-    public function getConcreteProductAttributes(): ArrayCollection
+    public function getConcreteProductCollection(): ArrayCollection
     {
         return SpyProductQuery::create()
             ->joinWithSpyProductAbstract()
