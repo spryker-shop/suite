@@ -47,7 +47,7 @@ interface ProductRepositoryInterface
     /**
      * @return \Propel\Runtime\Collection\ArrayCollection
      */
-    public function getConcreteProductCollection(): ArrayCollection;
+    public function getProductConcreteAttributesCollection(): ArrayCollection;
 
     /**
      * @param \Orm\Zed\Product\Persistence\SpyProductAbstract $productAbstractEntity

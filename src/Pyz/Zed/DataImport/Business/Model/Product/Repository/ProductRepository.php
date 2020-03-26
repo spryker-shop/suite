@@ -21,7 +21,6 @@ class ProductRepository implements ProductRepositoryInterface
     public const ID_PRODUCT = 'idProduct';
     public const ID_PRODUCT_ABSTRACT = 'idProductAbstract';
     public const ABSTRACT_SKU = 'abstractSku';
-    public const ATTRIBUTES = 'attributes';
 
     /**
      * @var array
@@ -95,7 +94,7 @@ class ProductRepository implements ProductRepositoryInterface
     /**
      * @return \Propel\Runtime\Collection\ArrayCollection
      */
-    public function getConcreteProductCollection(): ArrayCollection
+    public function getProductConcreteAttributesCollection(): ArrayCollection
     {
         return SpyProductQuery::create()
             ->joinWithSpyProductAbstract()

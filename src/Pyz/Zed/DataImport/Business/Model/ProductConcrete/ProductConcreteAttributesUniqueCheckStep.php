@@ -22,15 +22,15 @@ class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterfac
     /**
      * @uses \Orm\Zed\Product\Persistence\Map\SpyProductTableMap::COL_ATTRIBUTES
      */
-    protected const CONCRETE_PRODUCT_COL_ATTRIBUTES = 'spy_product.attributes';
+    protected const PRODUCT_COL_ATTRIBUTES = 'spy_product.attributes';
     /**
      * @uses \Orm\Zed\Product\Persistence\Map\SpyProductTableMap::COL_SKU
      */
-    protected const CONCRETE_PRODUCT_COL_SKU = 'spy_product.sku';
+    protected const PRODUCT_COL_SKU = 'spy_product.sku';
     /**
      * @uses \Orm\Zed\Product\Persistence\Map\SpyProductAbstractTableMap::COL_SKU
      */
-    protected const ABSTRACT_PRODUCT_COL_SKU = 'spy_product_abstract.sku';
+    protected const PRODUCT_ABSTRACT_COL_SKU = 'spy_product_abstract.sku';
 
     /**
      * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface
@@ -45,7 +45,7 @@ class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterfac
     /**
      * @var array
      */
-    protected $concreteProductAttributesMap;
+    protected $productConcreteAttributesMap;
 
     /**
      * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface $productRepository
@@ -58,7 +58,7 @@ class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterfac
         $this->productRepository = $productRepository;
         $this->utilEncodingService = $utilEncodingService;
 
-        $this->prepareConcreteProductAttributesMap();
+        $this->prepareProductConcreteAttributesMap();
     }
 
     /**
@@ -68,48 +68,46 @@ class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterfac
      */
     public function execute(DataSetInterface $dataSet): void
     {
-        $dataSetConcreteProductSku = $dataSet[static::KEY_CONCRETE_SKU];
-        $dataSetAbstractProductSku = $dataSet[static::KEY_ABSTRACT_SKU];
-        $dataSetConcreteProductAttributes = $dataSet[static::KEY_ATTRIBUTES];
-        ksort($dataSetConcreteProductAttributes);
+        $dataSetProductConcreteSku = $dataSet[static::KEY_CONCRETE_SKU];
+        $dataSetProductAbstractSku = $dataSet[static::KEY_ABSTRACT_SKU];
+        $dataSetProductConcreteAttributes = $dataSet[static::KEY_ATTRIBUTES];
+        ksort($dataSetProductConcreteAttributes);
 
-        $this->checkProductConcreteAttributesUnique($dataSetAbstractProductSku, $dataSetConcreteProductSku, $dataSetConcreteProductAttributes);
+        $this->checkProductConcreteAttributesUnique($dataSetProductAbstractSku, $dataSetProductConcreteSku, $dataSetProductConcreteAttributes);
 
-        if (!isset($this->concreteProductAttributesMap[$dataSetAbstractProductSku][$dataSetConcreteProductSku])) {
-            $this->concreteProductAttributesMap[$dataSetAbstractProductSku][$dataSetConcreteProductSku] = $dataSetConcreteProductAttributes;
-        }
+        $this->productConcreteAttributesMap[$dataSetProductAbstractSku][$dataSetProductConcreteSku] = $dataSetProductConcreteAttributes;
     }
 
     /**
-     * @param string $dataSetAbstractProductSku
-     * @param string $dataSetConcreteProductSku
-     * @param array $dataSetConcreteProductAttributes
+     * @param string $dataSetProductAbstractSku
+     * @param string $dataSetProductConcreteSku
+     * @param array $dataSetProductConcreteAttributes
      *
      * @throws \Pyz\Zed\DataImport\Business\Exception\InvalidDataException
      *
      * @return void
      */
     protected function checkProductConcreteAttributesUnique(
-        string $dataSetAbstractProductSku,
-        string $dataSetConcreteProductSku,
-        array $dataSetConcreteProductAttributes
+        string $dataSetProductAbstractSku,
+        string $dataSetProductConcreteSku,
+        array $dataSetProductConcreteAttributes
     ): void {
-        if (!isset($this->concreteProductAttributesMap[$dataSetAbstractProductSku])) {
+        if (!isset($this->productConcreteAttributesMap[$dataSetProductAbstractSku])) {
             return;
         }
 
-        foreach ($this->concreteProductAttributesMap[$dataSetAbstractProductSku] as $concreteProductSku => $concreteProductAttributes) {
-            if ($dataSetConcreteProductSku === $concreteProductSku) {
+        foreach ($this->productConcreteAttributesMap[$dataSetProductAbstractSku] as $productConcreteSku => $productConcreteAttributes) {
+            if ($dataSetProductConcreteSku === $productConcreteSku) {
                 continue;
             }
 
-            if ($dataSetConcreteProductAttributes === $concreteProductAttributes) {
+            if ($dataSetProductConcreteAttributes === $productConcreteAttributes) {
                 throw new InvalidDataException(sprintf(
                     'Product concrete must have unique attributes. Attributes "%s" of sku "%s" are equal to attributes "%s" of sku "%s".',
-                    $this->utilEncodingService->encodeJson($dataSetConcreteProductAttributes),
-                    $dataSetConcreteProductSku,
-                    $this->utilEncodingService->encodeJson($concreteProductAttributes),
-                    $concreteProductSku
+                    $this->utilEncodingService->encodeJson($dataSetProductConcreteAttributes),
+                    $dataSetProductConcreteSku,
+                    $this->utilEncodingService->encodeJson($productConcreteAttributes),
+                    $productConcreteSku
                 ));
             }
         }
@@ -118,17 +116,19 @@ class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterfac
     /**
      * @return void
      */
-    protected function prepareConcreteProductAttributesMap(): void
+    protected function prepareProductConcreteAttributesMap(): void
     {
-        $concreteProductCollection = $this->productRepository->getConcreteProductCollection();
+        $productConcreteCollection = $this->productRepository->getProductConcreteAttributesCollection();
 
-        foreach ($concreteProductCollection as $concreteProduct) {
-            $concreteProductAttributes = $this->utilEncodingService->decodeJson($concreteProduct[static::CONCRETE_PRODUCT_COL_ATTRIBUTES], true);
-            ksort($concreteProductAttributes);
-            $concreteProductSku = $concreteProduct[static::CONCRETE_PRODUCT_COL_SKU];
-            $abstractProductSku = $concreteProduct[static::ABSTRACT_PRODUCT_COL_SKU];
+        foreach ($productConcreteCollection as $productConcrete) {
+            $productConcreteAttributes = $this->utilEncodingService->decodeJson($productConcrete[static::PRODUCT_COL_ATTRIBUTES], true);
+            if ($productConcreteAttributes) {
+                ksort($productConcreteAttributes);
+            }
+            $productConcreteSku = $productConcrete[static::PRODUCT_COL_SKU];
+            $productAbstractSku = $productConcrete[static::PRODUCT_ABSTRACT_COL_SKU];
 
-            $this->concreteProductAttributesMap[$abstractProductSku][$concreteProductSku] = $concreteProductAttributes;
+            $this->productConcreteAttributesMap[$productAbstractSku][$productConcreteSku] = $productConcreteAttributes;
         }
     }
 }
