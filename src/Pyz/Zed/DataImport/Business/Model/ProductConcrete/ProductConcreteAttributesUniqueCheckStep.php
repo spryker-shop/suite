@@ -75,7 +75,7 @@ class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterfac
 
         $this->checkProductConcreteAttributesUnique($dataSetProductAbstractSku, $dataSetProductConcreteSku, $dataSetProductConcreteAttributes);
 
-        $this->productConcreteAttributesMap[$dataSetProductAbstractSku][$dataSetProductConcreteSku] = $dataSetProductConcreteAttributes;
+        static::$productConcreteAttributesMap[$dataSetProductAbstractSku][$dataSetProductConcreteSku] = $dataSetProductConcreteAttributes;
     }
 
     /**
@@ -92,11 +92,11 @@ class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterfac
         string $dataSetProductConcreteSku,
         array $dataSetProductConcreteAttributes
     ): void {
-        if (!isset($this->productConcreteAttributesMap[$dataSetProductAbstractSku])) {
+        if (!isset(static::$productConcreteAttributesMap[$dataSetProductAbstractSku])) {
             return;
         }
 
-        foreach ($this->productConcreteAttributesMap[$dataSetProductAbstractSku] as $productConcreteSku => $productConcreteAttributes) {
+        foreach (static::$productConcreteAttributesMap[$dataSetProductAbstractSku] as $productConcreteSku => $productConcreteAttributes) {
             if ($dataSetProductConcreteSku === $productConcreteSku) {
                 continue;
             }
@@ -128,7 +128,7 @@ class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterfac
             $productConcreteSku = $productConcrete[static::PRODUCT_COL_SKU];
             $productAbstractSku = $productConcrete[static::PRODUCT_ABSTRACT_COL_SKU];
 
-            $this->productConcreteAttributesMap[$productAbstractSku][$productConcreteSku] = $productConcreteAttributes;
+            static::$productConcreteAttributesMap[$productAbstractSku][$productConcreteSku] = $productConcreteAttributes;
         }
     }
 }
