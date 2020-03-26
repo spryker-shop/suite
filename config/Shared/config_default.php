@@ -28,14 +28,17 @@ use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\Monitoring\MonitoringConstants;
+use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\Nopayment\NopaymentConfig;
 use Spryker\Shared\Nopayment\NopaymentConstants;
 use Spryker\Shared\Oauth\OauthConstants;
 use Spryker\Shared\Oms\OmsConstants;
+use Spryker\Shared\ProductManagement\ProductManagementConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Queue\QueueConfig;
 use Spryker\Shared\Queue\QueueConstants;
 use Spryker\Shared\Quote\QuoteConstants;
+use Spryker\Shared\RabbitMq\RabbitMqEnv;
 use Spryker\Shared\Router\RouterConstants;
 use Spryker\Shared\Sales\SalesConstants;
 use Spryker\Shared\Search\SearchConstants;
@@ -66,7 +69,9 @@ use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
 use SprykerShop\Shared\ShopUi\ShopUiConstants;
 use Twig\Cache\FilesystemCache;
 
+$domain = getenv('VM_PROJECT') ?: 'suite-nonsplit';
 $CURRENT_STORE = Store::getInstance()->getStoreName();
+$currentStoreLowerCase = strtolower($CURRENT_STORE);
 
 // ---------- General environment
 $config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker/spryker/Bundles';
@@ -439,15 +444,44 @@ $config[QueueConstants::QUEUE_WORKER_MAX_THRESHOLD_SECONDS] = 59;
  *
  *
  */
-$config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION_DEFAULT] = [
-    QueueConfig::CONFIG_QUEUE_ADAPTER => RabbitMqAdapter::class,
-    QueueConfig::CONFIG_MAX_WORKER_NUMBER => 1,
-];
-
 $config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION] = [
     EventConstants::EVENT_QUEUE => [
         QueueConfig::CONFIG_QUEUE_ADAPTER => RabbitMqAdapter::class,
-        QueueConfig::CONFIG_MAX_WORKER_NUMBER => 1,
+        QueueConfig::CONFIG_MAX_WORKER_NUMBER => 5,
+    ],
+];
+
+// ----------- RabbitMq
+$config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
+    'DE' => [
+        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'DE-connection',
+        RabbitMqEnv::RABBITMQ_HOST => 'localhost',
+        RabbitMqEnv::RABBITMQ_PORT => '5672',
+        RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
+        RabbitMqEnv::RABBITMQ_USERNAME => 'DE_development',
+        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/DE_development_zed',
+        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['DE'],
+        RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => $CURRENT_STORE === 'DE',
+    ],
+    'AT' => [
+        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'AT-connection',
+        RabbitMqEnv::RABBITMQ_HOST => 'localhost',
+        RabbitMqEnv::RABBITMQ_PORT => '5672',
+        RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
+        RabbitMqEnv::RABBITMQ_USERNAME => 'AT_development',
+        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/AT_development_zed',
+        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['AT'],
+        RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => $CURRENT_STORE === 'AT',
+    ],
+    'US' => [
+        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'US-connection',
+        RabbitMqEnv::RABBITMQ_HOST => 'localhost',
+        RabbitMqEnv::RABBITMQ_PORT => '5672',
+        RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
+        RabbitMqEnv::RABBITMQ_USERNAME => 'US_development',
+        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/US_development_zed',
+        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['US'],
+        RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => $CURRENT_STORE === 'US',
     ],
 ];
 
@@ -553,3 +587,70 @@ $config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GE
 
 // ----------- HTTP Security
 $config[KernelConstants::STRICT_DOMAIN_REDIRECT] = true;
+
+// ---------- Yves host
+$config[ApplicationConstants::HOST_YVES] = sprintf('www.%s.%s.local', $currentStoreLowerCase, $domain);
+$config[ApplicationConstants::PORT_YVES] = '';
+$config[ApplicationConstants::PORT_SSL_YVES] = '';
+$config[ApplicationConstants::BASE_URL_YVES] = sprintf(
+    'http://%s%s',
+    $config[ApplicationConstants::HOST_YVES],
+    $config[ApplicationConstants::PORT_YVES]
+);
+$config[ApplicationConstants::BASE_URL_SSL_YVES] = sprintf(
+    'https://%s%s',
+    $config[ApplicationConstants::HOST_YVES],
+    $config[ApplicationConstants::PORT_SSL_YVES]
+);
+$config[ProductManagementConstants::BASE_URL_YVES] = $config[ApplicationConstants::BASE_URL_YVES];
+$config[NewsletterConstants::BASE_URL_YVES] = $config[ApplicationConstants::BASE_URL_YVES];
+$config[CustomerConstants::BASE_URL_YVES] = $config[ApplicationConstants::BASE_URL_YVES];
+
+// ---------- Zed host
+$config[ApplicationConstants::HOST_ZED] = sprintf('zed.%s.%s.local', $currentStoreLowerCase, $domain);
+$config[ApplicationConstants::PORT_ZED] = '';
+$config[ApplicationConstants::PORT_SSL_ZED] = '';
+$config[ApplicationConstants::BASE_URL_ZED] = sprintf(
+    'http://%s%s',
+    $config[ApplicationConstants::HOST_ZED],
+    $config[ApplicationConstants::PORT_ZED]
+);
+$config[ApplicationConstants::BASE_URL_SSL_ZED] = sprintf(
+    'https://%s%s',
+    $config[ApplicationConstants::HOST_ZED],
+    $config[ApplicationConstants::PORT_SSL_ZED]
+);
+$config[ZedRequestConstants::HOST_ZED_API] = $config[ApplicationConstants::HOST_ZED];
+$config[ZedRequestConstants::BASE_URL_ZED_API] = $config[ApplicationConstants::BASE_URL_ZED];
+$config[ZedRequestConstants::BASE_URL_SSL_ZED_API] = $config[ApplicationConstants::BASE_URL_SSL_ZED];
+
+// ---------- Trusted hosts
+$config[ApplicationConstants::YVES_TRUSTED_HOSTS]
+    = $config[HttpConstants::YVES_TRUSTED_HOSTS]
+    = [
+    $config[ApplicationConstants::HOST_YVES],
+];
+
+// ---------- Assets / Media
+$config[ApplicationConstants::BASE_URL_STATIC_ASSETS] = $config[ApplicationConstants::BASE_URL_YVES];
+$config[ApplicationConstants::BASE_URL_STATIC_MEDIA] = $config[ApplicationConstants::BASE_URL_YVES];
+$config[ApplicationConstants::BASE_URL_SSL_STATIC_ASSETS] = $config[ApplicationConstants::BASE_URL_SSL_YVES];
+$config[ApplicationConstants::BASE_URL_SSL_STATIC_MEDIA] = $config[ApplicationConstants::BASE_URL_SSL_YVES];
+
+// ---------- Session
+$config[SessionConstants::YVES_SESSION_COOKIE_NAME] = $config[ApplicationConstants::HOST_YVES];
+$config[SessionConstants::YVES_SESSION_COOKIE_DOMAIN] = $config[ApplicationConstants::HOST_YVES];
+$config[SessionConstants::ZED_SESSION_COOKIE_NAME] = $config[ApplicationConstants::HOST_ZED];
+
+// ---------- Events
+$config[EventConstants::LOG_FILE_PATH] = APPLICATION_ROOT_DIR . sprintf('/data/%s/logs/application_events.log', $CURRENT_STORE);
+
+// ----------- Glue Application
+$config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = sprintf('http://glue.%s.%s.local', $currentStoreLowerCase, $domain);
+$config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = sprintf('http://glue.%s.%s.local', $currentStoreLowerCase, $domain);
+
+// ----------- HTTP Security
+$config[KernelConstants::DOMAIN_WHITELIST] = [
+    $config[ApplicationConstants::HOST_YVES],
+    $config[ApplicationConstants::HOST_ZED],
+];
