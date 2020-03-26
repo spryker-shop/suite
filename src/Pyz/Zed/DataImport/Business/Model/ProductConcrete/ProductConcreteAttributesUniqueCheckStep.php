@@ -45,7 +45,7 @@ class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterfac
     /**
      * @var array
      */
-    protected $productConcreteAttributesMap;
+    protected static $productConcreteAttributesMap = [];
 
     /**
      * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface $productRepository
