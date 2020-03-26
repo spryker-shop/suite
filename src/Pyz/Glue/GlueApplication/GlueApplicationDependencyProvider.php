@@ -55,6 +55,7 @@ use Spryker\Glue\CompanyRolesRestApi\Plugin\GlueApplication\CompanyRolesResource
 use Spryker\Glue\CompanyUserAuthRestApi\Plugin\GlueApplication\CompanyUserAccessTokensResourceRoutePlugin;
 use Spryker\Glue\CompanyUsersRestApi\CompanyUsersRestApiConfig;
 use Spryker\Glue\CompanyUsersRestApi\Plugin\GlueApplication\CompanyUserByShareDetailResourceRelationshipPlugin;
+use Spryker\Glue\CompanyUsersRestApi\Plugin\GlueApplication\CompanyUserRestUserValidatorPlugin;
 use Spryker\Glue\CompanyUsersRestApi\Plugin\GlueApplication\CompanyUsersResourceRoutePlugin;
 use Spryker\Glue\ContentBannersRestApi\Plugin\ContentBannerResourceRoutePlugin;
 use Spryker\Glue\ContentProductAbstractListsRestApi\Plugin\ContentProductAbstractListRoutePlugin;
@@ -86,6 +87,7 @@ use Spryker\Glue\NavigationsRestApi\Plugin\ResourceRoute\NavigationsResourceRout
 use Spryker\Glue\OrderPaymentsRestApi\Plugin\OrderPaymentsResourceRoutePlugin;
 use Spryker\Glue\OrdersRestApi\Plugin\OrderRelationshipByOrderReferencePlugin;
 use Spryker\Glue\OrdersRestApi\Plugin\OrdersResourceRoutePlugin;
+use Spryker\Glue\PaymentsRestApi\Plugin\GlueApplication\PaymentMethodsByCheckoutDataResourceRelationshipPlugin;
 use Spryker\Glue\ProductAvailabilitiesRestApi\Plugin\AbstractProductAvailabilitiesRoutePlugin;
 use Spryker\Glue\ProductAvailabilitiesRestApi\Plugin\ConcreteProductAvailabilitiesRoutePlugin;
 use Spryker\Glue\ProductAvailabilitiesRestApi\Plugin\GlueApplication\AbstractProductAvailabilitiesByResourceIdResourceRelationshipPlugin;
@@ -126,6 +128,11 @@ use Spryker\Glue\Session\Plugin\Application\SessionApplicationPlugin;
 use Spryker\Glue\SharedCartsRestApi\Plugin\GlueApplication\SharedCartByCartIdResourceRelationshipPlugin;
 use Spryker\Glue\SharedCartsRestApi\Plugin\GlueApplication\SharedCartsResourceRoutePlugin;
 use Spryker\Glue\SharedCartsRestApi\SharedCartsRestApiConfig;
+use Spryker\Glue\ShipmentsRestApi\Plugin\GlueApplication\ShipmentMethodsByCheckoutDataResourceRelationshipPlugin;
+use Spryker\Glue\ShoppingListsRestApi\Plugin\GlueApplication\ShoppingListItemByShoppingListResourceRelationshipPlugin;
+use Spryker\Glue\ShoppingListsRestApi\Plugin\GlueApplication\ShoppingListItemsResourcePlugin;
+use Spryker\Glue\ShoppingListsRestApi\Plugin\GlueApplication\ShoppingListsResourcePlugin;
+use Spryker\Glue\ShoppingListsRestApi\ShoppingListsRestApiConfig;
 use Spryker\Glue\StoresRestApi\Plugin\StoresResourceRoutePlugin;
 use Spryker\Glue\UpSellingProductsRestApi\Plugin\GlueApplication\CartUpSellingProductsResourceRoutePlugin;
 use Spryker\Glue\UpSellingProductsRestApi\Plugin\GlueApplication\GuestCartUpSellingProductsResourceRoutePlugin;
@@ -203,6 +210,8 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new CustomerAccessResourceRoutePlugin(),
             new AbstractProductsProductReviewsResourceRoutePlugin(),
             new HealthCheckResourceRoutePlugin(),
+            new ShoppingListsResourcePlugin(),
+            new ShoppingListItemsResourcePlugin(),
         ];
     }
 
@@ -232,6 +241,18 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new PriceModeParameterValidatorPlugin(),
             new EntityTagRestRequestValidatorPlugin(),
             new CatalogSearchRequestParametersIntegerRestRequestValidatorPlugin(),
+        ];
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\RestUserValidatorPluginInterface[]
+     */
+    protected function getRestUserValidatorPlugins(): array
+    {
+        return [
+            new CompanyUserRestUserValidatorPlugin(),
         ];
     }
 
@@ -457,6 +478,22 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
             new ProductReviewsRelationshipByProductConcreteSkuPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            ShoppingListsRestApiConfig::RESOURCE_SHOPPING_LIST_ITEMS,
+            new ConcreteProductBySkuResourceRelationshipPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            ShoppingListsRestApiConfig::RESOURCE_SHOPPING_LISTS,
+            new ShoppingListItemByShoppingListResourceRelationshipPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
+            new ShipmentMethodsByCheckoutDataResourceRelationshipPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
+            new PaymentMethodsByCheckoutDataResourceRelationshipPlugin()
         );
         $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_CARTS,
