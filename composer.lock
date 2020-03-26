@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f6235282744d432184e2f1d1b3aee9c8",
+    "content-hash": "c4587c38a9eabaa8ad15fd93ecab5d15",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -4999,11 +4999,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/te-4865/dev-large-cart-processing",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "adde5e2b277e311e736d494a77f25553e7b702b9"
+                "reference": "b87557c546a5865c9430163bbceebe1b385c72ca"
             },
             "require": {
                 "php": ">=7.2"
@@ -5046,6 +5046,7 @@
                 "spryker/cart-code": "*",
                 "spryker/cart-code-extension": "*",
                 "spryker/cart-codes-rest-api": "*",
+                "spryker/cart-codes-rest-api-extension": "*",
                 "spryker/cart-currency-connector": "*",
                 "spryker/cart-extension": "*",
                 "spryker/cart-note": "*",
@@ -5321,6 +5322,9 @@
                 "spryker/merchant-relationship-sales-order-threshold-gui-extension": "*",
                 "spryker/merchant-sales-order": "*",
                 "spryker/merchant-search": "*",
+                "spryker/merchant-stock": "*",
+                "spryker/merchant-stock-data-import": "*",
+                "spryker/merchant-stock-gui": "*",
                 "spryker/merchant-switcher": "*",
                 "spryker/merchant-user": "*",
                 "spryker/merchant-user-auth-gui-page": "*",
@@ -5675,7 +5679,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-03-20T09:45:48+00:00"
+            "time": "2020-03-26T14:10:05+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5683,7 +5687,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "2dd2d8534f0908bd63e2f874f58cffad3b8135ed"
+                "reference": "7b8c9123748d578426333b9f6cc7841db7d02041"
             },
             "require": {
                 "php": ">=7.2"
@@ -5827,7 +5831,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-03-18T16:51:09+00:00"
+            "time": "2020-03-23T16:58:53+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -10452,20 +10456,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
+                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler",
-                    "role": "Project Founder"
+                    "homepage": "https://github.com/manuelpichler"
                 },
                 {
                     "name": "Marc Würth",
+                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84",
-                    "role": "Project Maintainer"
+                    "homepage": "https://github.com/ravage84"
                 },
                 {
                     "name": "Other contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
