@@ -12,6 +12,7 @@ use Spryker\Zed\MerchantProfileGui\Communication\Plugin\MerchantGui\MerchantProf
 use Spryker\Zed\MerchantProfileGui\Communication\Plugin\MerchantGui\Tabs\MerchantProfileContactPersonFormTabExpanderPlugin;
 use Spryker\Zed\MerchantProfileGui\Communication\Plugin\MerchantGui\Tabs\MerchantProfileFormTabExpanderPlugin;
 use Spryker\Zed\MerchantProfileGui\Communication\Plugin\MerchantGui\Tabs\MerchantProfileLegalInformationFormTabExpanderPlugin;
+use Spryker\Zed\MerchantStockGui\Communication\Plugin\MerchantGui\MerchantStockMerchantFormExpanderPlugin;
 
 class MerchantGuiDependencyProvider extends SprykerMerchantGuiDependencyProvider
 {
@@ -22,6 +23,7 @@ class MerchantGuiDependencyProvider extends SprykerMerchantGuiDependencyProvider
     {
         return [
             new MerchantProfileFormExpanderPlugin(),
+            new MerchantStockMerchantFormExpanderPlugin(),
         ];
     }
 
