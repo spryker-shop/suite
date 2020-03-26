@@ -7,15 +7,14 @@
 
 namespace Pyz\Zed\MerchantSalesOrder\Communication\Plugin\Oms;
 
-use ArrayObject;
-use Generated\Shared\Transfer\ItemTransfer;
-use Generated\Shared\Transfer\OrderTransfer;
+use Generated\Shared\Transfer\MerchantOrderCriteriaTransfer;
 use Orm\Zed\Sales\Persistence\SpySalesOrder;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\Oms\Business\Util\ReadOnlyArrayObject;
 use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandByOrderInterface;
 
 /**
+ * @method \Pyz\Zed\MerchantSalesOrder\Communication\MerchantSalesOrderCommunicationFactory getFactory()
  * @method \Spryker\Zed\MerchantSalesOrder\Business\MerchantSalesOrderFacade getFacade()
  */
 class CreateMerchantOrdersCommandPlugin extends AbstractPlugin implements CommandByOrderInterface
@@ -39,31 +38,20 @@ class CreateMerchantOrdersCommandPlugin extends AbstractPlugin implements Comman
      */
     public function run(array $orderItems, SpySalesOrder $orderEntity, ReadOnlyArrayObject $data): array
     {
-        $orderTransfer = (new OrderTransfer())
-            ->setIdSalesOrder($orderEntity->getIdSalesOrder())
-            ->setOrderReference($orderEntity->getOrderReference())
-            ->setItems(new ArrayObject($this->mapOrderItemEntitiesToOrderItemTransfers($orderItems)));
+        $merchantOrderTransfer = $this->getFacade()
+            ->findMerchantOrder((new MerchantOrderCriteriaTransfer())
+                ->setIdOrder($orderEntity->getIdSalesOrder()));
+
+        // checks if order is already splitted
+        if ($merchantOrderTransfer) {
+            return [];
+        }
+
+        $salesFacade = $this->getFactory()->getSalesFacade();
+        $orderTransfer = $salesFacade->findOrderByIdSalesOrder($orderEntity->getIdSalesOrder());
 
         $this->getFacade()->createMerchantOrderCollection($orderTransfer);
 
         return [];
-    }
-
-    /**
-     * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem[] $orderItemEntities
-     *
-     * @return \Generated\Shared\Transfer\ItemTransfer[]
-     */
-    protected function mapOrderItemEntitiesToOrderItemTransfers(array $orderItemEntities): array
-    {
-        $itemTransfers = [];
-
-        foreach ($orderItemEntities as $orderItemEntity) {
-            $itemTransfers[] = (new ItemTransfer())
-                ->setMerchantReference($orderItemEntity->getMerchantReference())
-                ->setIdSalesOrderItem($orderItemEntity->getIdSalesOrderItem());
-        }
-
-        return $itemTransfers;
     }
 }
