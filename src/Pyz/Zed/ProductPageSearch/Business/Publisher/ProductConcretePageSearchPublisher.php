@@ -16,11 +16,11 @@ use Generated\Shared\Transfer\SynchronizationDataTransfer;
 use Propel\Runtime\Propel;
 use Spryker\Client\Queue\QueueClientInterface;
 use Spryker\Service\Synchronization\SynchronizationServiceInterface;
+use Spryker\Zed\ProductPageSearch\Business\DataMapper\AbstractProductSearchDataMapper;
 use Spryker\Zed\ProductPageSearch\Business\ProductConcretePageSearchReader\ProductConcretePageSearchReaderInterface;
 use Spryker\Zed\ProductPageSearch\Business\ProductConcretePageSearchWriter\ProductConcretePageSearchWriterInterface;
 use Spryker\Zed\ProductPageSearch\Business\Publisher\ProductConcretePageSearchPublisher as SprykerProductConcretePageSearchPublisher;
 use Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToProductInterface;
-use Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToSearchInterface;
 use Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToStoreFacadeInterface;
 use Spryker\Zed\ProductPageSearch\Dependency\Service\ProductPageSearchToUtilEncodingInterface;
 
@@ -59,7 +59,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      * @param \Spryker\Zed\ProductPageSearch\Business\ProductConcretePageSearchWriter\ProductConcretePageSearchWriterInterface $productConcretePageSearchWriter
      * @param \Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToProductInterface $productFacade
      * @param \Spryker\Zed\ProductPageSearch\Dependency\Service\ProductPageSearchToUtilEncodingInterface $utilEncoding
-     * @param \Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToSearchInterface $searchFacade
+     * @param \Spryker\Zed\ProductPageSearch\Business\DataMapper\AbstractProductSearchDataMapper $productConcreteSearchDataMapper
      * @param \Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToStoreFacadeInterface $storeFacade
      * @param \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductConcretePageDataExpanderPluginInterface[] $pageDataExpanderPlugins
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
@@ -70,7 +70,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
         ProductConcretePageSearchWriterInterface $productConcretePageSearchWriter,
         ProductPageSearchToProductInterface $productFacade,
         ProductPageSearchToUtilEncodingInterface $utilEncoding,
-        ProductPageSearchToSearchInterface $searchFacade,
+        AbstractProductSearchDataMapper $productConcreteSearchDataMapper,
         ProductPageSearchToStoreFacadeInterface $storeFacade,
         array $pageDataExpanderPlugins,
         SynchronizationServiceInterface $synchronizationService,
@@ -81,7 +81,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
             $productConcretePageSearchWriter,
             $productFacade,
             $utilEncoding,
-            $searchFacade,
+            $productConcreteSearchDataMapper,
             $storeFacade,
             $pageDataExpanderPlugins
         );
@@ -96,8 +96,10 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      *
      * @return void
      */
-    protected function executePublishTransaction(array $productConcreteTransfers, array $productConcretePageSearchTransfers): void
-    {
+    protected function executePublishTransaction(
+        array $productConcreteTransfers,
+        array $productConcretePageSearchTransfers
+    ): void {
         foreach ($productConcreteTransfers as $productConcreteTransfer) {
             foreach ($productConcreteTransfer->getStores() as $storeTransfer) {
                 $this->syncProductConcretePageSearchPerStore(
@@ -172,8 +174,10 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      *
      * @return array
      */
-    public function buildSynchronizedData(ProductConcretePageSearchTransfer $productPageSearchTransfer, string $resourceName): array
-    {
+    public function buildSynchronizedData(
+        ProductConcretePageSearchTransfer $productPageSearchTransfer,
+        string $resourceName
+    ): array {
         $data = [];
         $key = $this->generateResourceKey($productPageSearchTransfer, $resourceName);
         $encodedData = json_encode($productPageSearchTransfer->getData());
@@ -193,8 +197,10 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      *
      * @return string
      */
-    protected function generateResourceKey(ProductConcretePageSearchTransfer $productPageSearchTransfer, string $resourceName)
-    {
+    protected function generateResourceKey(
+        ProductConcretePageSearchTransfer $productPageSearchTransfer,
+        string $resourceName
+    ) {
         $syncTransferData = new SynchronizationDataTransfer();
         $syncTransferData->setStore($productPageSearchTransfer->getStore());
         $syncTransferData->setLocale($productPageSearchTransfer->getLocale());
@@ -211,8 +217,11 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      *
      * @return \Generated\Shared\Transfer\QueueSendMessageTransfer
      */
-    public function buildSynchronizedMessage(array $data, string $resourceName, array $params = []): QueueSendMessageTransfer
-    {
+    public function buildSynchronizedMessage(
+        array $data,
+        string $resourceName,
+        array $params = []
+    ): QueueSendMessageTransfer {
         $data['_timestamp'] = microtime(true);
         $payload = [
             'write' => [

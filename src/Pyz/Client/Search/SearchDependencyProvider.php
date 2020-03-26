@@ -9,8 +9,11 @@ namespace Pyz\Client\Search;
 
 use Spryker\Client\Catalog\Plugin\Config\CatalogSearchConfigBuilder;
 use Spryker\Client\Kernel\Container;
+use Spryker\Client\MerchantProductOfferSearch\Plugin\MerchantNameSearchConfigExpanderPlugin;
 use Spryker\Client\ProductSearchConfigStorage\Plugin\Config\ProductSearchConfigExpanderPlugin;
 use Spryker\Client\Search\SearchDependencyProvider as SprykerSearchDependencyProvider;
+use Spryker\Client\SearchElasticsearch\Plugin\ElasticsearchSearchAdapterPlugin;
+use Spryker\Client\SearchElasticsearch\Plugin\ElasticsearchSearchContextExpanderPlugin;
 
 class SearchDependencyProvider extends SprykerSearchDependencyProvider
 {
@@ -34,7 +37,28 @@ class SearchDependencyProvider extends SprykerSearchDependencyProvider
         $searchConfigExpanderPlugins = parent::createSearchConfigExpanderPlugins($container);
 
         $searchConfigExpanderPlugins[] = new ProductSearchConfigExpanderPlugin();
+        $searchConfigExpanderPlugins[] = new MerchantNameSearchConfigExpanderPlugin();
 
         return $searchConfigExpanderPlugins;
+    }
+
+    /**
+     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\SearchAdapterPluginInterface[]
+     */
+    protected function getClientAdapterPlugins(): array
+    {
+        return [
+            new ElasticsearchSearchAdapterPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\SearchContextExpanderPluginInterface[]
+     */
+    protected function getSearchContextExpanderPlugins(): array
+    {
+        return [
+            new ElasticsearchSearchContextExpanderPlugin(),
+        ];
     }
 }

@@ -103,7 +103,7 @@ class SummaryStepTest extends Unit
     /**
      * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToProductBundleClientInterface
      */
-    protected function createProductBundleClient()
+    protected function createProductBundleClient(): CheckoutPageToProductBundleClientInterface
     {
         return $this->getMockBuilder(CheckoutPageToProductBundleClientInterface::class)->getMock();
     }
@@ -111,7 +111,7 @@ class SummaryStepTest extends Unit
     /**
      * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceInterface
      */
-    protected function createShipmentServiceMock()
+    protected function createShipmentServiceMock(): CheckoutPageToShipmentServiceInterface
     {
         return $this->getMockBuilder(CheckoutPageToShipmentServiceInterface::class)->getMock();
     }
@@ -119,7 +119,7 @@ class SummaryStepTest extends Unit
     /**
      * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerShop\Yves\CheckoutPage\CheckoutPageConfig
      */
-    protected function createCheckoutPageConfigMock()
+    protected function createCheckoutPageConfigMock(): CheckoutPageConfig
     {
         $mock = $this->getMockBuilder(CheckoutPageConfig::class)->getMock();
 
@@ -137,7 +137,7 @@ class SummaryStepTest extends Unit
     /**
      * @return \PHPUnit\Framework\MockObject\MockObject|\Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface
      */
-    protected function createShipmentMock()
+    protected function createShipmentMock(): StepHandlerPluginInterface
     {
         return $this->getMockBuilder(StepHandlerPluginInterface::class)->getMock();
     }
@@ -145,7 +145,7 @@ class SummaryStepTest extends Unit
     /**
      * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCheckoutClientInterface
      */
-    protected function createCheckoutClientMock()
+    protected function createCheckoutClientMock(): CheckoutPageToCheckoutClientInterface
     {
         return $this->getMockBuilder(CheckoutPageToCheckoutClientInterface::class)->getMock();
     }

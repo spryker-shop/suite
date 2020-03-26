@@ -96,7 +96,7 @@ const getConfiguration = async appSettings => {
                             }, {
                                 loader: 'sass-loader'
                             }, {
-                                loader: 'sass-resources-loader',
+                                loader: '@spryker/sass-resources-loader',
                                 options: {
                                     resources: [
                                         sharedScss,
@@ -125,7 +125,7 @@ const getConfiguration = async appSettings => {
             plugins: [
                 new webpack.DefinePlugin({
                     __NAME__: `'${appSettings.name}'`,
-                    __PRODUCTION__: false
+                    __PRODUCTION__: appSettings.isProductionMode
                 }),
 
                 ...getAssetsConfig(appSettings),

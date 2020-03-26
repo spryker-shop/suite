@@ -131,6 +131,12 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
         ]
     );
 
+    // define if current mode is production
+    const isProductionMode = () => {
+        const currentMode = process.argv.slice(2)[0];
+        return currentMode === globalSettings.modes.prod;
+    };
+
     // return settings
     return {
         name,
@@ -140,6 +146,8 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
         urls,
 
         context: globalSettings.context,
+
+        isProductionMode: isProductionMode(),
 
         // define settings for suite-frontend-builder finder
         find: {
