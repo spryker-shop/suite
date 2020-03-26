@@ -4698,6 +4698,44 @@
             "time": "2020-02-06T13:41:38+00:00"
         },
         {
+            "name": "spryker/cart-codes-rest-api-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cart-codes-rest-api-extension.git",
+                "reference": "e98638213be5982b0df44707759e6716fde10338"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cart-codes-rest-api-extension/zipball/e98638213be5982b0df44707759e6716fde10338",
+                "reference": "e98638213be5982b0df44707759e6716fde10338",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CartCodesRestApiExtension module",
+            "time": "2020-03-13T12:31:59+00:00"
+        },
+        {
             "name": "spryker/decimal-object",
             "version": "1.0.0",
             "source": {
@@ -4854,6 +4892,51 @@
             "time": "2020-01-23T09:57:03+00:00"
         },
         {
+            "name": "spryker/merchant-stock",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-stock.git",
+                "reference": "15f3f7dcb05a5d73e7976179e143d80f3c81fa90"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-stock/zipball/15f3f7dcb05a5d73e7976179e143d80f3c81fa90",
+                "reference": "15f3f7dcb05a5d73e7976179e143d80f3c81fa90",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/kernel": "^3.33.0",
+                "spryker/merchant": "^2.0.0",
+                "spryker/merchant-extension": "^1.1.0",
+                "spryker/stock": "^8.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\MerchantStock\\Helper\\": "tests/SprykerTest/Zed/MerchantStock/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantStock module",
+            "time": "2020-03-23T09:38:58+00:00"
+        },
+        {
             "name": "spryker/rabbit-mq",
             "version": "dev-master",
             "source": {
@@ -5003,7 +5086,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "b940596905f6f18bdd7fe5fd5196bee4dbd9b068"
+                "reference": "fe28d355148553eaf41b6908b1e03e5254830c92"
             },
             "require": {
                 "php": ">=7.2"
@@ -5675,7 +5758,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-03-25T09:49:06+00:00"
+            "time": "2020-03-26T11:54:51+00:00"
         },
         {
             "name": "spryker/spryker-shop",
