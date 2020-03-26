@@ -32,21 +32,25 @@ class MerchantOrderSaverPlugin extends AbstractPlugin implements CheckoutDoSaveO
     public function saveOrder(QuoteTransfer $quoteTransfer, SaveOrderTransfer $saveOrderTransfer): void
     {
         $this->getFacade()->createMerchantOrderCollection(
-            $this->getOrderTransfer($saveOrderTransfer)
+            $this->getOrderTransfer($quoteTransfer, $saveOrderTransfer)
         );
     }
 
     /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      * @param \Generated\Shared\Transfer\SaveOrderTransfer $saveOrderTransfer
      *
      * @return \Generated\Shared\Transfer\OrderTransfer
      */
     protected function getOrderTransfer(
+        QuoteTransfer $quoteTransfer,
         SaveOrderTransfer $saveOrderTransfer
     ): OrderTransfer {
         $orderTransfer = new OrderTransfer();
         $orderTransfer->setIdSalesOrder($saveOrderTransfer->getIdSalesOrder());
         $orderTransfer->setOrderReference($saveOrderTransfer->getOrderReference());
+        $orderTransfer->setPriceMode($quoteTransfer->getPriceMode());
+        $orderTransfer->setExpenses($saveOrderTransfer->getOrderExpenses());
         $orderTransfer->setItems($saveOrderTransfer->getOrderItems());
 
         return $orderTransfer;
