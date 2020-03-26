@@ -10,7 +10,7 @@
             <state name="paid" reserved="true"/>
             <state name="canceled"/>
             <state name="refunded"/>
-            <state name="merchant pending" reserved="true"/>
+            <state name="merchant split pending" reserved="true"/>
             <state name="sent to merchant" reserved="true"/>
             <state name="shipped by merchant" reserved="true"/>
             <state name="delivered" reserved="true"/>
@@ -26,7 +26,7 @@
 
             <transition happy="true" condition="MerchantSalesOrder/IsOrderPaid">
                 <source>paid</source>
-                <target>merchant pending</target>
+                <target>merchant split pending</target>
             </transition>
 
             <transition>
@@ -35,7 +35,7 @@
             </transition>
 
             <transition happy="true">
-                <source>merchant pending</source>
+                <source>merchant split pending</source>
                 <target>sent to merchant</target>
                 <event>send to merchant</event>
             </transition>
