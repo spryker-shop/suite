@@ -24,7 +24,6 @@ use Spryker\Zed\ConfigurableBundleStorage\Communication\Plugin\Event\Configurabl
 use Spryker\Zed\ConfigurableBundleStorage\Communication\Plugin\Event\ConfigurableBundleTemplateImageEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\ContentStorage\Communication\Plugin\Event\ContentStorageEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\EventBehavior\EventBehaviorDependencyProvider as SprykerEventBehaviorDependencyProvider;
-use Spryker\Zed\GlossaryStorage\Communication\Plugin\Event\GlossaryEventResourceQueryContainerPlugin;
 use Spryker\Zed\MerchantOpeningHoursStorage\Communication\Plugin\Event\MerchantOpeningHoursEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\MerchantProfileStorage\Communication\Plugin\Event\MerchantProfileEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\NavigationStorage\Communication\Plugin\Event\NavigationEventResourceQueryContainerPlugin;
@@ -83,7 +82,6 @@ class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProv
             new ProductOfferAvailabilityEventResourceBulkRepositoryPlugin(),
             new ConfigurableBundleTemplateImageEventResourceBulkRepositoryPlugin(),
             new ConfigurableBundleTemplatePageSearchEventResourceBulkRepositoryPlugin(),
-            new GlossaryEventResourceQueryContainerPlugin(),
             new NavigationEventResourceQueryContainerPlugin(),
             new PriceProductConcreteEventResourceQueryContainerPlugin(),
             new PriceProductAbstractEventResourceQueryContainerPlugin(),
