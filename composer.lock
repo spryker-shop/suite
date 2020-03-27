@@ -5001,7 +5001,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "0207e97c04339791fa5fec4f569a359e11bf6805"
+                "reference": "b91047e93b7aa8050593a2c6b0872e6aa8df7f90"
             },
             "require": {
                 "php": ">=7.2"
@@ -5322,6 +5322,7 @@
                 "spryker/merchant-switcher": "*",
                 "spryker/merchant-user": "*",
                 "spryker/merchant-user-auth-gui-page": "*",
+                "spryker/merchant-user-gui": "*",
                 "spryker/messenger": "*",
                 "spryker/messenger-extension": "*",
                 "spryker/module-finder": "*",
@@ -5673,7 +5674,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-03-26T14:06:40+00:00"
+            "time": "2020-03-27T16:35:43+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5681,7 +5682,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "1343a2d5441d4ba530231dcf5aa30bf60352f781"
+                "reference": "7b8c9123748d578426333b9f6cc7841db7d02041"
             },
             "require": {
                 "php": ">=7.2"
@@ -5746,6 +5747,7 @@
                 "spryker-shop/navigation-widget": "*",
                 "spryker-shop/newsletter-page": "*",
                 "spryker-shop/newsletter-widget": "*",
+                "spryker-shop/order-custom-reference-widget": "*",
                 "spryker-shop/persistent-cart-share-page": "*",
                 "spryker-shop/persistent-cart-share-widget": "*",
                 "spryker-shop/price-product-volume-widget": "*",
@@ -5824,7 +5826,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-03-16T09:54:31+00:00"
+            "time": "2020-03-23T16:58:53+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -11216,57 +11218,6 @@
             ],
             "description": "SprykGui module",
             "time": "2020-02-20T14:09:48+00:00"
-        },
-        {
-            "name": "spryker-shop/order-custom-reference-widget",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker-shop/order-custom-reference-widget.git",
-                "reference": "87ec679d4ba2803aea81bb783a4cf3cf54f0e725"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/order-custom-reference-widget/zipball/87ec679d4ba2803aea81bb783a4cf3cf54f0e725",
-                "reference": "87ec679d4ba2803aea81bb783a4cf3cf54f0e725",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2",
-                "spryker-shop/shop-ui": "^1.0.0",
-                "spryker/application": "^3.21.0",
-                "spryker/kernel": "^3.33.0",
-                "spryker/order-custom-reference": "^1.0.0",
-                "spryker/quote": "^2.0.0",
-                "spryker/symfony": "^3.0.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/router": "*"
-            },
-            "suggest": {
-                "spryker-shop/cart-page": "Widget plugins are available for this module, minimum required version: 3.15.0",
-                "spryker-shop/checkout-page": "Widget plugins are available for this module, minimum required version: 3.11.0",
-                "spryker-shop/customer-page": "Widget plugins are available for this module, minimum required version: 2.12.0",
-                "spryker/router": "Use this module when using plugins that need Router dependencies."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "SprykerShop\\": "src/SprykerShop/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "OrderCustomReferenceWidget module",
-            "time": "2020-03-18T14:04:56+00:00"
         },
         {
             "name": "spryker/architecture-sniffer",
