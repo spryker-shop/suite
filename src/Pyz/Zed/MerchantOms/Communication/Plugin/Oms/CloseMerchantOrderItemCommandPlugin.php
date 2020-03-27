@@ -9,6 +9,7 @@ namespace Pyz\Zed\MerchantOms\Communication\Plugin\Oms;
 
 use Generated\Shared\Transfer\MerchantOmsTriggerRequestTransfer;
 use Generated\Shared\Transfer\MerchantOrderItemCriteriaTransfer;
+use LogicException;
 use Orm\Zed\Sales\Persistence\SpySalesOrderItem;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\Oms\Business\Util\ReadOnlyArrayObject;
@@ -50,7 +51,14 @@ class CloseMerchantOrderItemCommandPlugin extends AbstractPlugin implements Comm
             ->setMerchantOmsEventName(static::EVENT_CLOSE)
             ->addMerchantOrderItem($merchantOrderItemTransfer);
 
-        $this->getFacade()->triggerEventForMerchantOrderItems($merchantOmsTriggerRequestTransfer);
+        $transitionCount = $this->getFacade()->triggerEventForMerchantOrderItems($merchantOmsTriggerRequestTransfer);
+        if ($transitionCount === 0) {
+            throw new LogicException(sprintf(
+                'Merchant Order Item #%s transition for event "%s" has not happened.',
+                $merchantOrderItemTransfer->getIdMerchantOrderItem(),
+                static::EVENT_CLOSE
+            ));
+        }
 
         return [];
     }

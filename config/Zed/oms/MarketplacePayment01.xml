@@ -85,7 +85,7 @@
             <event name="send to merchant" onEnter="true" timeout="30 second" command="MerchantSalesOrder/CreateOrders"/>
             <event name="ship by merchant" manual="true"/>
             <event name="deliver" manual="true"/>
-            <event name="close" manual="true" command="MerchantSalesOrder/CloseOrderItem"/>
+            <event name="close" manual="true" command="MerchantOms/CloseOrderItem"/>
         </events>
     </process>
 
