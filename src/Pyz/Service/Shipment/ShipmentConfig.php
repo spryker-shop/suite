@@ -13,6 +13,10 @@ use Spryker\Service\Shipment\ShipmentConfig as SprykerShipmentConfig;
 class ShipmentConfig extends SprykerShipmentConfig
 {
     /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
      * @return array
      */
     public function getShipmentHashFields(): array

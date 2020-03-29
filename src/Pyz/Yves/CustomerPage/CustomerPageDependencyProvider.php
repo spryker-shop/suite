@@ -83,7 +83,7 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     /**
      * @return \SprykerShop\Yves\CustomerPageExtension\Dependency\Plugin\CheckoutAddressStepPreGroupItemsByShipmentPluginInterface[]
      */
-    protected function getCheckoutAddressFormPreGroupItemsByShipmentPlugins(): array
+    protected function getCheckoutAddressStepPreGroupItemsByShipmentPlugins(): array
     {
         return [
             new MerchantCheckoutAddressStepPreGroupItemsByShipmentPlugin(),
