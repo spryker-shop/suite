@@ -48,6 +48,7 @@ use Spryker\Zed\MerchantProfileDataImport\Communication\Plugin\MerchantProfileDa
 use Spryker\Zed\MerchantRelationshipDataImport\Communication\Plugin\MerchantRelationshipDataImportPlugin;
 use Spryker\Zed\MerchantRelationshipProductListDataImport\Communication\Plugin\MerchantRelationshipProductListDataImportPlugin;
 use Spryker\Zed\MerchantRelationshipSalesOrderThresholdDataImport\Communication\Plugin\DataImport\MerchantRelationshipSalesOrderThresholdDataImportPlugin;
+use Spryker\Zed\MerchantStockDataImport\Communication\Plugin\MerchantStockDataImportPlugin;
 use Spryker\Zed\MultiCartDataImport\Communication\Plugin\MultiCartDataImportPlugin;
 use Spryker\Zed\PaymentDataImport\Communication\Plugin\PaymentMethodDataImportPlugin;
 use Spryker\Zed\PaymentDataImport\Communication\Plugin\PaymentMethodStoreDataImportPlugin;
@@ -291,6 +292,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new StockDataImportPlugin(),
             new StockStoreDataImportPlugin(),
             new ProductOfferStockDataImportPlugin(),
+            new MerchantStockDataImportPlugin(),
             new MerchantOmsProcessDataImportPlugin(),
         ];
     }
