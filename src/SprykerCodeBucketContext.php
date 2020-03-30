@@ -1,6 +1,5 @@
 <?php
 
-
 use Spryker\Shared\Kernel\CodeBucket\Context\AbstractCodeBucketContext;
 use Spryker\Shared\Kernel\CodeBucket\Context\CodeBucketContextInterface;
 
@@ -15,6 +14,7 @@ class SprykerCodeBucketContext extends AbstractCodeBucketContext implements Code
             'DE',
             'AT',
             'US',
+            '',
         ];
     }
 
