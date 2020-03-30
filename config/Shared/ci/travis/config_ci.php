@@ -118,15 +118,15 @@ $config[SessionRedisConstants::ZED_SESSION_REDIS_DATABASE] = 2;
 
 // ---------- Twig
 $config[TwigConstants::YVES_PATH_CACHE_FILE] = sprintf(
-    '%s/data/%s/cache/YVES/twig/.pathCache',
+    '%s/data/cache%s/YVES/twig/.pathCache',
     APPLICATION_ROOT_DIR,
-    $CURRENT_STORE
+    APPLICATION_STORE
 );
 
 $config[TwigConstants::ZED_PATH_CACHE_FILE] = sprintf(
-    '%s/data/%s/cache/ZED/twig/.pathCache',
+    '%s/data/cache%s/ZED/twig/.pathCache',
     APPLICATION_ROOT_DIR,
-    $CURRENT_STORE
+    APPLICATION_CODE_BUCKET
 );
 
 // ---------- Email

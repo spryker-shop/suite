@@ -207,9 +207,9 @@ $config[SearchConstants::FULL_TEXT_BOOSTED_BOOSTING_VALUE]
 $config[TwigConstants::YVES_TWIG_OPTIONS] = [
     'cache' => new FilesystemCache(
         sprintf(
-            '%s/data/%s/cache/%s/twig',
+            '%s/data/cache%s/%s/twig',
             APPLICATION_ROOT_DIR,
-            $CURRENT_STORE,
+            APPLICATION_CODE_BUCKET,
             APPLICATION
         ),
         FilesystemCache::FORCE_BYTECODE_INVALIDATION
@@ -218,23 +218,23 @@ $config[TwigConstants::YVES_TWIG_OPTIONS] = [
 $config[TwigConstants::ZED_TWIG_OPTIONS] = [
     'cache' => new FilesystemCache(
         sprintf(
-            '%s/data/%s/cache/%s/twig',
+            '%s/data/cache%s/%s/twig',
             APPLICATION_ROOT_DIR,
-            $CURRENT_STORE,
+            APPLICATION_CODE_BUCKET,
             APPLICATION
         ),
         FilesystemCache::FORCE_BYTECODE_INVALIDATION
     ),
 ];
 $config[TwigConstants::YVES_PATH_CACHE_FILE] = sprintf(
-    '%s/data/%s/cache/YVES/twig/.pathCache',
+    '%s/data/cache%s/YVES/twig/.pathCache',
     APPLICATION_ROOT_DIR,
-    $CURRENT_STORE
+    APPLICATION_CODE_BUCKET
 );
 $config[TwigConstants::ZED_PATH_CACHE_FILE] = sprintf(
-    '%s/data/%s/cache/ZED/twig/.pathCache',
+    '%s/data/cache%s/ZED/twig/.pathCache',
     APPLICATION_ROOT_DIR,
-    $CURRENT_STORE
+    APPLICATION_CODE_BUCKET
 );
 
 // ---------- Navigation
@@ -553,9 +553,8 @@ $config[TranslatorConstants::TRANSLATION_ZED_FALLBACK_LOCALES] = [
 ];
 
 $config[TranslatorConstants::TRANSLATION_ZED_CACHE_DIRECTORY] = sprintf(
-    '%s/data/%s/cache/ZED/translation',
-    APPLICATION_ROOT_DIR,
-    $CURRENT_STORE
+    '%s/data/cache/ZED/translation',
+    APPLICATION_ROOT_DIR
 );
 
 $config[TranslatorConstants::TRANSLATION_ZED_FILE_PATH_PATTERNS] = [
@@ -563,7 +562,7 @@ $config[TranslatorConstants::TRANSLATION_ZED_FILE_PATH_PATTERNS] = [
 ];
 
 // ----------- Yves assets
-$config[ShopUiConstants::YVES_ASSETS_URL_PATTERN] = sprintf('/assets/%s/%s/', $CURRENT_STORE, '%theme%');
+$config[ShopUiConstants::YVES_ASSETS_URL_PATTERN] = sprintf('/assets/%s%s/', '%theme%', APPLICATION_CODE_BUCKET);
 
 // ----------- Api
 $config[ApiConstants::ENABLE_API_DEBUG] = false;
