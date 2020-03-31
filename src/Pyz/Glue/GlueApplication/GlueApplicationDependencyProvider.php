@@ -84,7 +84,7 @@ use Spryker\Glue\HealthCheck\Plugin\HealthCheckResourceRoutePlugin;
 use Spryker\Glue\MerchantOpeningHoursRestApi\MerchantOpeningHoursRestApiConfig;
 use Spryker\Glue\MerchantOpeningHoursRestApi\Plugin\GlueApplication\MerchantOpeningHoursByMerchantReferenceResourceRelationshipPlugin;
 use Spryker\Glue\MerchantOpeningHoursRestApi\Plugin\GlueApplication\MerchantOpeningHoursResourceRoutePlugin;
-use Spryker\Glue\MerchantsRestApi\Plugin\GlueApplication\MerchantAddressesByMerchantReferenceResourceRelationshipPlugin;
+use Spryker\Glue\MerchantsRestApi\Plugin\GlueApplication\MerchantAddressByMerchantReferenceResourceRelationshipPlugin;
 use Spryker\Glue\MerchantsRestApi\Plugin\GlueApplication\MerchantAddressesResourceRoutePlugin;
 use Spryker\Glue\MerchantsRestApi\Plugin\GlueApplication\MerchantsResourceRoutePlugin;
 use Spryker\Glue\NavigationsCategoryNodesResourceRelationship\Plugin\GlueApplication\CategoryNodeByResourceIdResourceRelationshipPlugin;
@@ -93,6 +93,7 @@ use Spryker\Glue\NavigationsRestApi\Plugin\ResourceRoute\NavigationsResourceRout
 use Spryker\Glue\OrderPaymentsRestApi\Plugin\OrderPaymentsResourceRoutePlugin;
 use Spryker\Glue\OrdersRestApi\Plugin\OrderRelationshipByOrderReferencePlugin;
 use Spryker\Glue\OrdersRestApi\Plugin\OrdersResourceRoutePlugin;
+use Spryker\Glue\PaymentsRestApi\Plugin\GlueApplication\PaymentMethodsByCheckoutDataResourceRelationshipPlugin;
 use Spryker\Glue\ProductAvailabilitiesRestApi\Plugin\AbstractProductAvailabilitiesRoutePlugin;
 use Spryker\Glue\ProductAvailabilitiesRestApi\Plugin\ConcreteProductAvailabilitiesRoutePlugin;
 use Spryker\Glue\ProductAvailabilitiesRestApi\Plugin\GlueApplication\AbstractProductAvailabilitiesByResourceIdResourceRelationshipPlugin;
@@ -133,6 +134,7 @@ use Spryker\Glue\Session\Plugin\Application\SessionApplicationPlugin;
 use Spryker\Glue\SharedCartsRestApi\Plugin\GlueApplication\SharedCartByCartIdResourceRelationshipPlugin;
 use Spryker\Glue\SharedCartsRestApi\Plugin\GlueApplication\SharedCartsResourceRoutePlugin;
 use Spryker\Glue\SharedCartsRestApi\SharedCartsRestApiConfig;
+use Spryker\Glue\ShipmentsRestApi\Plugin\GlueApplication\ShipmentMethodsByCheckoutDataResourceRelationshipPlugin;
 use Spryker\Glue\ShoppingListsRestApi\Plugin\GlueApplication\ShoppingListItemByShoppingListResourceRelationshipPlugin;
 use Spryker\Glue\ShoppingListsRestApi\Plugin\GlueApplication\ShoppingListItemsResourcePlugin;
 use Spryker\Glue\ShoppingListsRestApi\Plugin\GlueApplication\ShoppingListsResourcePlugin;
@@ -495,6 +497,14 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new ShoppingListItemByShoppingListResourceRelationshipPlugin()
         );
         $resourceRelationshipCollection->addRelationship(
+            CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
+            new ShipmentMethodsByCheckoutDataResourceRelationshipPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
+            new PaymentMethodsByCheckoutDataResourceRelationshipPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_CARTS,
             new PromotionItemByQuoteTransferResourceRelationshipPlugin()
         );
@@ -512,7 +522,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         );
         $resourceRelationshipCollection->addRelationship(
             MerchantOpeningHoursRestApiConfig::RESOURCE_MERCHANTS,
-            new MerchantAddressesByMerchantReferenceResourceRelationshipPlugin()
+            new MerchantAddressByMerchantReferenceResourceRelationshipPlugin()
         );
 
         return $resourceRelationshipCollection;
