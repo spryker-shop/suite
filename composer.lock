@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f6235282744d432184e2f1d1b3aee9c8",
+    "content-hash": "54257e691c804cf51bef95ace5bf9afb",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -4999,11 +4999,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/mr-139/mr-543-include-item-statuses-in-marketplace-order-endpoints",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "ff479c06838ced58389e0745cdd4263c0d568aae"
+                "reference": "a051aa875180ab5815bdc4aa71d838182f252577"
             },
             "require": {
                 "php": ">=7.2"
@@ -5355,6 +5355,7 @@
                 "spryker/oms": "*",
                 "spryker/oms-discount-connector": "*",
                 "spryker/oms-extension": "*",
+                "spryker/oms-rest-api": "*",
                 "spryker/order-custom-reference": "*",
                 "spryker/order-custom-reference-gui": "*",
                 "spryker/order-payments-rest-api": "*",
@@ -5675,7 +5676,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-03-19T13:47:45+00:00"
+            "time": "2020-03-31T11:47:08+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -12010,5 +12011,6 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    }
+    },
+    "plugin-api-version": "1.1.0"
 }
