@@ -28,6 +28,7 @@ use Spryker\Zed\ContentProductSetDataImport\ContentProductSetDataImportConfig;
 use Spryker\Zed\DataImport\DataImportConfig as SprykerDataImportConfig;
 use Spryker\Zed\FileManagerDataImport\FileManagerDataImportConfig;
 use Spryker\Zed\MerchantDataImport\MerchantDataImportConfig;
+use Spryker\Zed\MerchantOmsDataImport\MerchantOmsDataImportConfig;
 use Spryker\Zed\MerchantOpeningHoursDataImport\MerchantOpeningHoursDataImportConfig;
 use Spryker\Zed\MerchantProductOfferDataImport\MerchantProductOfferDataImportConfig;
 use Spryker\Zed\MerchantProfileDataImport\MerchantProfileDataImportConfig;
@@ -564,6 +565,7 @@ class DataImportConfig extends SprykerDataImportConfig
             ShipmentDataImportConfig::IMPORT_TYPE_SHIPMENT_METHOD_STORE,
             PaymentDataImportConfig::IMPORT_TYPE_PAYMENT_METHOD,
             PaymentDataImportConfig::IMPORT_TYPE_PAYMENT_METHOD_STORE,
+            MerchantOmsDataImportConfig::IMPORT_TYPE_MERCHANT_OMS_PROCESS,
         ];
     }
 }
