@@ -97,7 +97,7 @@ class ProductConcreteAttributesUniqueCheckStep implements DataImportStepInterfac
         }
 
         foreach (static::$productConcreteAttributesMap[$dataSetProductAbstractSku] as $productConcreteSku => $productConcreteAttributes) {
-            if ($dataSetProductConcreteSku === $productConcreteSku) {
+            if ($dataSetProductConcreteSku == $productConcreteSku) {
                 continue;
             }
 
