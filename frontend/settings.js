@@ -56,12 +56,12 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
             .replace(/%theme%/gi, theme)
     );
 
-    const getAllModuleSuffixes = () => namespaceJson.namespaces.map(namespace => namespace.moduleSuffix);
+    const getAllCodeBuckets = () => namespaceJson.namespaces.map(namespace => namespace.codeBucket);
 
     const ignoreModulesCollection = () => {
-        return getAllModuleSuffixes()
-                    .filter(suffix => suffix !== namespaceConfig.moduleSuffix)
-                    .map(suffix => `!**/*${suffix}/Theme/**`);
+        return getAllCodeBuckets()
+            .filter(suffix => suffix !== namespaceConfig.codeBucket)
+            .map(suffix => `!**/*${suffix}/Theme/**`);
     };
 
     const ignoreFiles = [
@@ -119,7 +119,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
     const customThemeEntryPointPatterns = (isFallbackPattern = false) => {
         return isFallbackPatternAndDefaultTheme(isFallbackPattern) ? [] : [
             ...entryPointsCollection(`**/Theme/${getThemeName(isFallbackPattern)}`),
-            ...entryPointsCollection(`**/*${namespaceConfig.moduleSuffix}/Theme/${getThemeName(isFallbackPattern)}`),
+            ...entryPointsCollection(`**/*${namespaceConfig.codeBucket}/Theme/${getThemeName(isFallbackPattern)}`),
             ...ignoreFiles
         ]
     };
@@ -127,7 +127,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
     const shopUiEntryPointsPattern = (isFallbackPattern = false) => (
         isFallbackPatternAndDefaultTheme(isFallbackPattern) ? [] : [
             `./ShopUi/Theme/${getThemeName(isFallbackPattern)}`,
-            `./ShopUi${namespaceConfig.moduleSuffix}/Theme/${getThemeName(isFallbackPattern)}`
+            `./ShopUi${namespaceConfig.codeBucket}/Theme/${getThemeName(isFallbackPattern)}`
         ]
     );
 
