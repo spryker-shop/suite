@@ -21,12 +21,7 @@ class CreateMerchantOrdersCommandPlugin extends AbstractPlugin implements Comman
 {
     /**
      * {@inheritDoc}
-     * - Requires Order.idSalesOrder, Order.orderReference, Order.items transfer fields to be set.
-     * - Iterates through the order items of given order looking for merchant reference presence.
-     * - Skips all the order items without merchant reference.
-     * - Creates a new merchant order for each unique merchant reference found.
-     * - Creates a new merchant order item for each order item with merchant reference and assign it to a merchant order accordingly.
-     * - Creates a new merchant order totals and assign it to a merchant order accordingly.
+     * - Creates a new merchant order for each unique merchant. All order items will be used.
      *
      * @api
      *
@@ -38,11 +33,12 @@ class CreateMerchantOrdersCommandPlugin extends AbstractPlugin implements Comman
      */
     public function run(array $orderItems, SpySalesOrder $orderEntity, ReadOnlyArrayObject $data): array
     {
-        $merchantOrderTransfer = $this->getFacade()
-            ->findMerchantOrder((new MerchantOrderCriteriaTransfer())
-                ->setIdOrder($orderEntity->getIdSalesOrder()));
+        $merchantOrderTransfer = $this->getFacade()->findMerchantOrder(
+            (new MerchantOrderCriteriaTransfer())
+                ->setIdOrder($orderEntity->getIdSalesOrder())
+        );
 
-        // checks if order is already splitted
+        // Check if merchant order is already exists, because command is running for each order item.
         if ($merchantOrderTransfer) {
             return [];
         }

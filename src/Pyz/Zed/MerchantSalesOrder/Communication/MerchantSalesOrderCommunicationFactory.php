@@ -11,9 +11,6 @@ use Pyz\Zed\MerchantSalesOrder\MerchantSalesOrderDependencyProvider;
 use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
 use Spryker\Zed\Sales\Business\SalesFacadeInterface;
 
-/**
- * @method \Pyz\Zed\MerchantSalesOrder\Business\MerchantSalesOrderFacadeInterface getFacade()
- */
 class MerchantSalesOrderCommunicationFactory extends AbstractCommunicationFactory
 {
     /**

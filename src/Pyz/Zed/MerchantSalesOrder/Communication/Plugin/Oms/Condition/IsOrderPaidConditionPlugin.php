@@ -13,7 +13,7 @@ use Spryker\Zed\Oms\Dependency\Plugin\Condition\ConditionInterface;
 
 /**
  * @method \Pyz\Zed\MerchantSalesOrder\Communication\MerchantSalesOrderCommunicationFactory getFactory()
- * @method \Pyz\Zed\MerchantSalesOrder\Business\MerchantSalesOrderFacadeInterface getFacade()
+ * @method \Spryker\Zed\MerchantSalesOrder\Business\MerchantSalesOrderFacadeInterface getFacade()
  */
 class IsOrderPaidConditionPlugin extends AbstractPlugin implements ConditionInterface
 {
@@ -34,13 +34,12 @@ class IsOrderPaidConditionPlugin extends AbstractPlugin implements ConditionInte
         $salesFacade = $this->getFactory()->getSalesFacade();
         $orderTransfer = $salesFacade->findOrderByIdSalesOrder($orderItem->getFkSalesOrder());
 
-        $paidItemsCount = 0;
         foreach ($orderTransfer->getItems() as $itemTransfer) {
-            if ($itemTransfer->getState()->getName() === static::ITEM_STATE_PAID) {
-                $paidItemsCount++;
+            if ($itemTransfer->getState()->getName() !== static::ITEM_STATE_PAID) {
+                return false;
             }
         }
 
-        return $paidItemsCount === $orderTransfer->getItems()->count();
+        return true;
     }
 }
