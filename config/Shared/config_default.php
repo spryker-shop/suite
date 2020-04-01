@@ -119,6 +119,7 @@ $config[AuthConstants::AUTH_DEFAULT_CREDENTIALS] = [
         'token' => 'JDJ5JDEwJFE0cXBwYnVVTTV6YVZXSnVmM2l1UWVhRE94WkQ4UjBUeHBEWTNHZlFRTEd4U2F6QVBqejQ2',
     ],
 ];
+$config[AuthConstants::SYSTEM_USER_SESSION_REDIS_LIFE_TIME] = 60;
 
 // ---------- ACL
 // ACL: Allow or disallow of urls for Zed Admin GUI for ALL users
