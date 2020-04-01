@@ -36,9 +36,7 @@ class CloseMerchantOrderItemCommandPlugin extends AbstractPlugin implements Comm
      */
     public function run(SpySalesOrderItem $orderItem, ReadOnlyArrayObject $data): array
     {
-        /** @var \Pyz\Zed\MerchantSalesOrder\Business\MerchantSalesOrderFacadeInterface $merchantSalesOrderFacade */
-        $merchantSalesOrderFacade = $this->getFactory()->getMerchantSalesOrderFacade();
-        $merchantOrderItemTransfer = $merchantSalesOrderFacade->findMerchantOrderItem(
+        $merchantOrderItemTransfer = $this->getFactory()->getMerchantSalesOrderFacade()->findMerchantOrderItem(
             (new MerchantOrderItemCriteriaTransfer())
                 ->setIdOrderItem($orderItem->getIdSalesOrderItem())
         );
