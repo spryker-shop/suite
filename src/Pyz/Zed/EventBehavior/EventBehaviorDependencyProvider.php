@@ -25,7 +25,7 @@ use Spryker\Zed\ConfigurableBundleStorage\Communication\Plugin\Event\Configurabl
 use Spryker\Zed\ContentStorage\Communication\Plugin\Event\ContentStorageEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\EventBehavior\EventBehaviorDependencyProvider as SprykerEventBehaviorDependencyProvider;
 use Spryker\Zed\MerchantOpeningHoursStorage\Communication\Plugin\Event\MerchantOpeningHoursEventResourceBulkRepositoryPlugin;
-use Spryker\Zed\MerchantProfileStorage\Communication\Plugin\Event\MerchantProfileEventResourceBulkRepositoryPlugin;
+use Spryker\Zed\MerchantStorage\Communication\Plugin\Event\MerchantEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\NavigationStorage\Communication\Plugin\Event\NavigationEventResourceQueryContainerPlugin;
 use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Event\PriceProductAbstractMerchantRelationEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Event\PriceProductConcreteMerchantRelationEventResourceBulkRepositoryPlugin;
@@ -110,7 +110,7 @@ class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProv
             new ContentStorageEventResourceBulkRepositoryPlugin(),
             new MerchantOpeningHoursEventResourceBulkRepositoryPlugin(),
             new CompanyUserEventResourceBulkRepositoryPlugin(),
-            new MerchantProfileEventResourceBulkRepositoryPlugin(),
+            new MerchantEventResourceBulkRepositoryPlugin(),
         ];
     }
 }
