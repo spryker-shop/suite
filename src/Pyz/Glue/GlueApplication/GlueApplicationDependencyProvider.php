@@ -81,7 +81,6 @@ use Spryker\Glue\GlueApplication\Plugin\GlueApplication\PaginationParametersVali
 use Spryker\Glue\GlueApplication\Plugin\Rest\SetStoreCurrentLocaleBeforeActionPlugin;
 use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationshipCollectionInterface;
 use Spryker\Glue\HealthCheck\Plugin\HealthCheckResourceRoutePlugin;
-use Spryker\Glue\MerchantOpeningHoursRestApi\MerchantOpeningHoursRestApiConfig;
 use Spryker\Glue\MerchantOpeningHoursRestApi\Plugin\GlueApplication\MerchantOpeningHoursByMerchantReferenceResourceRelationshipPlugin;
 use Spryker\Glue\MerchantOpeningHoursRestApi\Plugin\GlueApplication\MerchantOpeningHoursResourceRoutePlugin;
 use Spryker\Glue\MerchantsRestApi\MerchantsRestApiConfig;
@@ -518,7 +517,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new ProductAbstractBySkuResourceRelationshipPlugin()
         );
         $resourceRelationshipCollection->addRelationship(
-            MerchantOpeningHoursRestApiConfig::RESOURCE_MERCHANTS,
+            MerchantsRestApiConfig::RESOURCE_MERCHANTS,
             new MerchantOpeningHoursByMerchantReferenceResourceRelationshipPlugin()
         );
         $resourceRelationshipCollection->addRelationship(
