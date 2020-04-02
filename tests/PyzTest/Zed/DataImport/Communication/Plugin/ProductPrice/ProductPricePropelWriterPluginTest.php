@@ -10,7 +10,6 @@ namespace PyzTest\Zed\DataImport\Communication\Plugin\ProductPrice;
 use Generated\Shared\Transfer\DataImportConfigurationActionTransfer;
 use Generated\Shared\Transfer\DataImporterReportTransfer;
 use Pyz\Zed\DataImport\Communication\Plugin\ProductPrice\ProductPricePropelWriterPlugin;
-use Pyz\Zed\DataImport\DataImportConfig;
 use PyzTest\Zed\DataImport\Communication\Plugin\AbstractWriterPluginTest;
 
 /**
@@ -35,12 +34,8 @@ class ProductPricePropelWriterPluginTest extends AbstractWriterPluginTest
      */
     public function testProductPricePropelImport(): void
     {
-        $dataImportConfigurationActionTransfer = (new DataImportConfigurationActionTransfer())
-            ->setDataEntity(DataImportConfig::IMPORT_TYPE_PRODUCT_PRICE)
-            ->setSource(static::CSV_IMPORT_FILE);
-
         $dataImportBusinessFactory = $this->getDataImportBusinessFactoryStub();
-        $dataImport = $dataImportBusinessFactory->createProductPriceImporter($dataImportConfigurationActionTransfer);
+        $dataImport = $dataImportBusinessFactory->createProductPriceImporter($this->getDataImportConfigurationActionTransfer());
         $dataImporterReportTransfer = $dataImport->import();
         $this->assertInstanceOf(DataImporterReportTransfer::class, $dataImporterReportTransfer);
     }

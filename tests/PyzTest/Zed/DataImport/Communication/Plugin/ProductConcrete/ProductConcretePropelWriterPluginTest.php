@@ -10,7 +10,6 @@ namespace PyzTest\Zed\DataImport\Communication\Plugin\ProductConcrete;
 use Generated\Shared\Transfer\DataImportConfigurationActionTransfer;
 use Generated\Shared\Transfer\DataImporterReportTransfer;
 use Pyz\Zed\DataImport\Communication\Plugin\ProductConcrete\ProductConcretePropelWriterPlugin;
-use Pyz\Zed\DataImport\DataImportConfig;
 use PyzTest\Zed\DataImport\Communication\Plugin\AbstractWriterPluginTest;
 
 /**
@@ -35,12 +34,8 @@ class ProductConcretePropelWriterPluginTest extends AbstractWriterPluginTest
      */
     public function testProductAbstractStorePropelWriterPlugin(): void
     {
-        $dataImportConfigurationActionTransfer = (new DataImportConfigurationActionTransfer())
-            ->setDataEntity(DataImportConfig::IMPORT_TYPE_PRODUCT_CONCRETE)
-            ->setSource(static::CSV_IMPORT_FILE);
-
         $dataImportBusinessFactory = $this->getDataImportBusinessFactoryStub();
-        $dataImport = $dataImportBusinessFactory->createProductConcreteImporter($dataImportConfigurationActionTransfer);
+        $dataImport = $dataImportBusinessFactory->createProductConcreteImporter($this->getDataImportConfigurationActionTransfer());
         $dataImporterReportTransfer = $dataImport->import();
         $this->assertInstanceOf(DataImporterReportTransfer::class, $dataImporterReportTransfer);
     }

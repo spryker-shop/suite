@@ -10,7 +10,6 @@ namespace PyzTest\Zed\DataImport\Communication\Plugin\ProductPrice;
 use Generated\Shared\Transfer\DataImportConfigurationActionTransfer;
 use Generated\Shared\Transfer\DataImporterReportTransfer;
 use Pyz\Zed\DataImport\Communication\Plugin\ProductPrice\ProductPriceBulkPdoWriterPlugin;
-use Pyz\Zed\DataImport\DataImportConfig;
 use PyzTest\Zed\DataImport\Communication\Plugin\AbstractWriterPluginTest;
 use Spryker\Shared\Config\Config;
 use Spryker\Shared\Propel\PropelConstants;
@@ -41,12 +40,8 @@ class ProductPriceBulkPdoWriterPluginTest extends AbstractWriterPluginTest
             $this->markTestSkipped('PostgreSQL related test');
         }
 
-        $dataImportConfigurationActionTransfer = (new DataImportConfigurationActionTransfer())
-            ->setDataEntity(DataImportConfig::IMPORT_TYPE_PRODUCT_PRICE)
-            ->setSource(static::CSV_IMPORT_FILE);
-
         $dataImportBusinessFactory = $this->getDataImportBusinessFactoryStub();
-        $dataImport = $dataImportBusinessFactory->createProductPriceImporter($dataImportConfigurationActionTransfer);
+        $dataImport = $dataImportBusinessFactory->createProductPriceImporter($this->getDataImportConfigurationActionTransfer());
         $dataImporterReportTransfer = $dataImport->import();
         $this->assertInstanceOf(DataImporterReportTransfer::class, $dataImporterReportTransfer);
     }

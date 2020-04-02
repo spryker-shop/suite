@@ -10,7 +10,6 @@ namespace PyzTest\Zed\DataImport\Communication\Plugin\ProductAbstract;
 use Generated\Shared\Transfer\DataImportConfigurationActionTransfer;
 use Generated\Shared\Transfer\DataImporterReportTransfer;
 use Pyz\Zed\DataImport\Communication\Plugin\ProductAbstract\ProductAbstractBulkPdoWriterPlugin;
-use Pyz\Zed\DataImport\DataImportConfig;
 use PyzTest\Zed\DataImport\Communication\Plugin\AbstractWriterPluginTest;
 use Spryker\Shared\Config\Config;
 use Spryker\Shared\Propel\PropelConstants;

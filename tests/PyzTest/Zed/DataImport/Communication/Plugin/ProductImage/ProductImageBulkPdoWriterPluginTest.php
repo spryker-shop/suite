@@ -10,7 +10,6 @@ namespace PyzTest\Zed\DataImport\Communication\Plugin\ProductImage;
 use Generated\Shared\Transfer\DataImportConfigurationActionTransfer;
 use Generated\Shared\Transfer\DataImporterReportTransfer;
 use Pyz\Zed\DataImport\Communication\Plugin\ProductImage\ProductImageBulkPdoWriterPlugin;
-use Pyz\Zed\DataImport\DataImportConfig;
 use PyzTest\Zed\DataImport\Communication\Plugin\AbstractWriterPluginTest;
 use Spryker\Shared\Config\Config;
 use Spryker\Shared\Propel\PropelConstants;
@@ -41,12 +40,8 @@ class ProductImageBulkPdoWriterPluginTest extends AbstractWriterPluginTest
             $this->markTestSkipped('PostgreSQL related test');
         }
 
-        $dataImportConfigurationActionTransfer = (new DataImportConfigurationActionTransfer())
-            ->setDataEntity(DataImportConfig::IMPORT_TYPE_PRODUCT_IMAGE)
-            ->setSource(static::CSV_IMPORT_FILE);
-
         $dataImportBusinessFactory = $this->getDataImportBusinessFactoryStub();
-        $dataImport = $dataImportBusinessFactory->createProductImageImporter($dataImportConfigurationActionTransfer);
+        $dataImport = $dataImportBusinessFactory->createProductImageImporter($this->getDataImportConfigurationActionTransfer());
         $dataImporterReportTransfer = $dataImport->import();
         $this->assertInstanceOf(DataImporterReportTransfer::class, $dataImporterReportTransfer);
     }
