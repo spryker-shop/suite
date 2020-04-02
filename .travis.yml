@@ -311,7 +311,7 @@ before_script:
   - chmod -R 777 data/
   - chmod -R 660 config/Zed/dev_only_private.key
   - chmod -R 660 config/Zed/dev_only_public.key
-  - npm install speccy@0.11.0 -g
+  - if [[ $VALIDATION == 1 ]] ; then npm install speccy@0.11.0 -g
 
   - if [[ -z $DB ]] ; then cat config/Shared/ci/travis/postgresql_ci.config >> config/Shared/ci/travis/config_ci.php ; fi
   - if [[ $DB == 'mysql' ]] ; then cat config/Shared/ci/travis/mysql_ci.config >> config/Shared/ci/travis/config_ci.php ; fi
@@ -355,7 +355,6 @@ script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2 ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:sniff:style ; fi
-  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console rest-api:generate:documentation ; fi
   - if [[ $VALIDATION == 1 ]] ; then speccy lint src/Generated/Glue/Specification/spryker_rest_api.schema.yml --rules=default ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then ./tests/travis_check_untracked.sh ; fi
