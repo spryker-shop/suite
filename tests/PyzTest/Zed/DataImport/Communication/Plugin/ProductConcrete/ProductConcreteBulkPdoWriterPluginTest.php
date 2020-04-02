@@ -7,8 +7,10 @@
 
 namespace PyzTest\Zed\DataImport\Communication\Plugin\ProductConcrete;
 
+use Generated\Shared\Transfer\DataImportConfigurationActionTransfer;
 use Generated\Shared\Transfer\DataImporterReportTransfer;
 use Pyz\Zed\DataImport\Communication\Plugin\ProductConcrete\ProductConcreteBulkPdoWriterPlugin;
+use Pyz\Zed\DataImport\DataImportConfig;
 use PyzTest\Zed\DataImport\Communication\Plugin\AbstractWriterPluginTest;
 use Spryker\Shared\Config\Config;
 use Spryker\Shared\Propel\PropelConstants;
@@ -28,6 +30,7 @@ use Spryker\Shared\Propel\PropelConstants;
 class ProductConcreteBulkPdoWriterPluginTest extends AbstractWriterPluginTest
 {
     public const CSV_IMPORT_FILE = 'import/ProductConcrete/product_concrete.csv';
+    public const DATA_IMPORTER_TYPE = 'product-concrete';
 
     /**
      * @return void
@@ -38,8 +41,12 @@ class ProductConcreteBulkPdoWriterPluginTest extends AbstractWriterPluginTest
             $this->markTestSkipped('PostgreSQL related test');
         }
 
+        $dataImportConfigurationActionTransfer = (new DataImportConfigurationActionTransfer())
+            ->setDataEntity(DataImportConfig::IMPORT_TYPE_PRODUCT_CONCRETE)
+            ->setSource(static::CSV_IMPORT_FILE);
+
         $dataImportBusinessFactory = $this->getDataImportBusinessFactoryStub();
-        $dataImport = $dataImportBusinessFactory->createProductConcreteImporter();
+        $dataImport = $dataImportBusinessFactory->createProductConcreteImporter($dataImportConfigurationActionTransfer);
         $dataImporterReportTransfer = $dataImport->import();
         $this->assertInstanceOf(DataImporterReportTransfer::class, $dataImporterReportTransfer);
     }
@@ -55,10 +62,12 @@ class ProductConcreteBulkPdoWriterPluginTest extends AbstractWriterPluginTest
     }
 
     /**
-     * @return string
+     * @return \Generated\Shared\Transfer\DataImportConfigurationActionTransfer
      */
-    public function getDataImportCsvFile(): string
+    public function getDataImportConfigurationActionTransfer(): DataImportConfigurationActionTransfer
     {
-        return static::CSV_IMPORT_FILE;
+        return (new DataImportConfigurationActionTransfer())
+            ->setDataEntity(static::DATA_IMPORTER_TYPE)
+            ->setSource(static::CSV_IMPORT_FILE);
     }
 }
