@@ -32761,16 +32761,16 @@
         },
         {
             "name": "spryker/propel",
-            "version": "3.19.0",
+            "version": "3.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/propel.git",
-                "reference": "05ebed3b4011c121b4504e313da90eaef29e4a82"
+                "reference": "344c708790198e308d16352b07eebb16df26b264"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/propel/zipball/05ebed3b4011c121b4504e313da90eaef29e4a82",
-                "reference": "05ebed3b4011c121b4504e313da90eaef29e4a82",
+                "url": "https://api.github.com/repos/spryker/propel/zipball/344c708790198e308d16352b07eebb16df26b264",
+                "reference": "344c708790198e308d16352b07eebb16df26b264",
                 "shasum": ""
             },
             "require": {
@@ -32814,7 +32814,7 @@
                 "proprietary"
             ],
             "description": "Propel module",
-            "time": "2020-03-10T14:10:09+00:00"
+            "time": "2020-03-30T14:08:14+00:00"
         },
         {
             "name": "spryker/propel-orm",
@@ -33885,24 +33885,24 @@
         },
         {
             "name": "spryker/rest-request-validator",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rest-request-validator.git",
-                "reference": "5a07afd93a3237176652e98614e8774c4432ae69"
+                "reference": "745345993bb8b275fc76859737ea4e21ec5b6f0b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rest-request-validator/zipball/5a07afd93a3237176652e98614e8774c4432ae69",
-                "reference": "5a07afd93a3237176652e98614e8774c4432ae69",
+                "url": "https://api.github.com/repos/spryker/rest-request-validator/zipball/745345993bb8b275fc76859737ea4e21ec5b6f0b",
+                "reference": "745345993bb8b275fc76859737ea4e21ec5b6f0b",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/config": "^3.0.0",
                 "spryker/glue-application": "^1.6.0",
                 "spryker/glue-application-extension": "^1.1.0",
-                "spryker/kernel": "^3.22.0",
+                "spryker/kernel": "^3.30.0",
                 "spryker/store": "^1.0.0",
                 "spryker/symfony": "^3.0.0"
             },
@@ -33927,7 +33927,7 @@
                 "proprietary"
             ],
             "description": "RestRequestValidator module",
-            "time": "2018-12-03T17:41:56+00:00"
+            "time": "2020-04-01T14:27:51+00:00"
         },
         {
             "name": "spryker/router",
@@ -34883,16 +34883,16 @@
         },
         {
             "name": "spryker/search",
-            "version": "8.12.0",
+            "version": "8.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/search.git",
-                "reference": "9362608a53403fa344bd2216143d03847dcc29de"
+                "reference": "0570e73e1212445887fa1402b2f47cf43c958280"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/search/zipball/9362608a53403fa344bd2216143d03847dcc29de",
-                "reference": "9362608a53403fa344bd2216143d03847dcc29de",
+                "url": "https://api.github.com/repos/spryker/search/zipball/0570e73e1212445887fa1402b2f47cf43c958280",
+                "reference": "0570e73e1212445887fa1402b2f47cf43c958280",
                 "shasum": ""
             },
             "require": {
@@ -34936,7 +34936,7 @@
                 "proprietary"
             ],
             "description": "Search module",
-            "time": "2020-02-26T09:26:24+00:00"
+            "time": "2020-03-30T14:08:14+00:00"
         },
         {
             "name": "spryker/search-elasticsearch",
@@ -35412,20 +35412,20 @@
         },
         {
             "name": "spryker/setup",
-            "version": "4.3.1",
+            "version": "4.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/setup.git",
-                "reference": "6b3d11957693871398d3a3166ddd8c5c574c6ca4"
+                "reference": "39c555a4b6007f22a1b1256e185e38dd37391d36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/setup/zipball/6b3d11957693871398d3a3166ddd8c5c574c6ca4",
-                "reference": "6b3d11957693871398d3a3166ddd8c5c574c6ca4",
+                "url": "https://api.github.com/repos/spryker/setup/zipball/39c555a4b6007f22a1b1256e185e38dd37391d36",
+                "reference": "39c555a4b6007f22a1b1256e185e38dd37391d36",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/cache": "^3.1.0",
                 "spryker/installer": "^4.0.0",
                 "spryker/kernel": "^3.30.0",
@@ -35437,6 +35437,7 @@
             },
             "require-dev": {
                 "spryker/application": "*",
+                "spryker/code-sniffer": "*",
                 "spryker/testify": "*"
             },
             "type": "library",
@@ -35455,31 +35456,30 @@
                 "proprietary"
             ],
             "description": "Setup module",
-            "time": "2019-07-25T07:48:13+00:00"
+            "time": "2020-03-13T08:32:58+00:00"
         },
         {
             "name": "spryker/setup-frontend",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/setup-frontend.git",
-                "reference": "1c2bfbc4a725ad393436b7e5b753d853e3352434"
+                "reference": "55ffbeb45df07945b611c58207292c3f361cfb4f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/setup-frontend/zipball/1c2bfbc4a725ad393436b7e5b753d853e3352434",
-                "reference": "1c2bfbc4a725ad393436b7e5b753d853e3352434",
+                "url": "https://api.github.com/repos/spryker/setup-frontend/zipball/55ffbeb45df07945b611c58207292c3f361cfb4f",
+                "reference": "55ffbeb45df07945b611c58207292c3f361cfb4f",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/kernel": "^3.30.0",
                 "spryker/log": "^3.0.0",
                 "spryker/symfony": "^3.0.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
+                "spryker/code-sniffer": "*"
             },
             "type": "library",
             "extra": {
@@ -35497,7 +35497,7 @@
                 "proprietary"
             ],
             "description": "SetupFrontend module",
-            "time": "2019-07-31T13:26:24+00:00"
+            "time": "2020-03-13T09:48:44+00:00"
         },
         {
             "name": "spryker/shared-cart",
@@ -37893,16 +37893,16 @@
         },
         {
             "name": "spryker/transfer",
-            "version": "3.21.0",
+            "version": "3.22.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/transfer.git",
-                "reference": "d7829c8a1325de3873670d7228b904d98f8c8cea"
+                "reference": "592cad74fccc59b98ea30ec11d3788fbea75794e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/transfer/zipball/d7829c8a1325de3873670d7228b904d98f8c8cea",
-                "reference": "d7829c8a1325de3873670d7228b904d98f8c8cea",
+                "url": "https://api.github.com/repos/spryker/transfer/zipball/592cad74fccc59b98ea30ec11d3788fbea75794e",
+                "reference": "592cad74fccc59b98ea30ec11d3788fbea75794e",
                 "shasum": ""
             },
             "require": {
@@ -37938,7 +37938,7 @@
                 "proprietary"
             ],
             "description": "Transfer module",
-            "time": "2020-03-18T07:52:50+00:00"
+            "time": "2020-03-30T14:08:14+00:00"
         },
         {
             "name": "spryker/translator",
@@ -39649,16 +39649,16 @@
         },
         {
             "name": "spryker/zed-navigation",
-            "version": "1.6.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/zed-navigation.git",
-                "reference": "73f14dd9a2429182128be5be20fe8cb3e347b452"
+                "reference": "f8db8839669f7c741e2c8e7fdc64977dd7849cc4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/zed-navigation/zipball/73f14dd9a2429182128be5be20fe8cb3e347b452",
-                "reference": "73f14dd9a2429182128be5be20fe8cb3e347b452",
+                "url": "https://api.github.com/repos/spryker/zed-navigation/zipball/f8db8839669f7c741e2c8e7fdc64977dd7849cc4",
+                "reference": "f8db8839669f7c741e2c8e7fdc64977dd7849cc4",
                 "shasum": ""
             },
             "require": {
@@ -39703,7 +39703,7 @@
                 "proprietary"
             ],
             "description": "ZedNavigation module",
-            "time": "2020-03-23T14:26:56+00:00"
+            "time": "2020-03-30T14:08:14+00:00"
         },
         {
             "name": "spryker/zed-navigation-extension",
@@ -46831,8 +46831,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
@@ -47434,16 +47434,16 @@
         },
         {
             "name": "spryker/development",
-            "version": "3.24.0",
+            "version": "3.25.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/development.git",
-                "reference": "754c3b3fe765fa95ad3eee7340f991f5fb220e35"
+                "reference": "eb62d7d3ed6ddac33e0aae6a2aea8daabe9cdb83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/development/zipball/754c3b3fe765fa95ad3eee7340f991f5fb220e35",
-                "reference": "754c3b3fe765fa95ad3eee7340f991f5fb220e35",
+                "url": "https://api.github.com/repos/spryker/development/zipball/eb62d7d3ed6ddac33e0aae6a2aea8daabe9cdb83",
+                "reference": "eb62d7d3ed6ddac33e0aae6a2aea8daabe9cdb83",
                 "shasum": ""
             },
             "require": {
@@ -47482,7 +47482,7 @@
                 "proprietary"
             ],
             "description": "Development module",
-            "time": "2020-03-18T06:08:52+00:00"
+            "time": "2020-03-30T14:27:06+00:00"
         },
         {
             "name": "spryker/testify",
@@ -47916,20 +47916,6 @@
             ],
             "description": "Symfony DependencyInjection Component",
             "homepage": "https://symfony.com",
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-03-30T10:09:30+00:00"
         },
         {
@@ -47991,20 +47977,6 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-03-30T11:42:42+00:00"
         },
         {
@@ -48073,20 +48045,6 @@
             ],
             "description": "Symfony HttpClient component",
             "homepage": "https://symfony.com",
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-03-27T16:56:45+00:00"
         },
         {
@@ -48330,8 +48288,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
