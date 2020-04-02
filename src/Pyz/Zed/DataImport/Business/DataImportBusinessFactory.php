@@ -54,6 +54,7 @@ use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\Sql\ProductAbs
 use Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\Sql\ProductAbstractStoreSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\ProductAttributeKey\AddProductAttributeKeysStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAttributeKey\ProductAttributeKeyWriter;
+use Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductConcreteAttributesUniqueCheckStep;
 use Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductConcreteCheckExistenceStep;
 use Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductConcreteHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductSkuToIdProductStep;
@@ -407,6 +408,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             ->addStep($this->createProductConcreteCheckExistenceStep())
             ->addStep($this->createAddLocalesStep())
             ->addStep($this->createAttributesExtractorStep())
+            ->addStep($this->createProductConcreteAttributesUniqueCheckStep())
             ->addStep($this->createProductLocalizedAttributesExtractorStep([
                 ProductConcreteHydratorStep::KEY_NAME,
                 ProductConcreteHydratorStep::KEY_DESCRIPTION,
@@ -420,6 +422,17 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         $dataImporter->setDataSetWriter($this->createProductConcreteDataImportWriters());
 
         return $dataImporter;
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
+     */
+    public function createProductConcreteAttributesUniqueCheckStep(): DataImportStepInterface
+    {
+        return new ProductConcreteAttributesUniqueCheckStep(
+            $this->createProductRepository(),
+            $this->getUtilEncodingService()
+        );
     }
 
     /**
