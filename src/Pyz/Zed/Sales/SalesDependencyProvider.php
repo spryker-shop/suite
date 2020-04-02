@@ -9,6 +9,12 @@ namespace Pyz\Zed\Sales;
 
 use Spryker\Zed\CommentSalesConnector\Communication\Plugin\Sales\CommentThreadAttachedCommentOrderPostSavePlugin;
 use Spryker\Zed\CommentSalesConnector\Communication\Plugin\Sales\CommentThreadOrderExpanderPlugin;
+use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Sales\CompanyBusinessUnitFilterOrderSearchQueryExpanderPlugin;
+use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Sales\CustomerFilterOrderSearchQueryExpanderPlugin;
+use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Sales\CustomerSortingOrderSearchQueryExpanderPlugin;
+use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Sales\SaveCompanyBusinessUnitUuidOrderPostSavePlugin;
+use Spryker\Zed\CompanySalesConnector\Communication\Plugin\Sales\CompanyFilterOrderSearchQueryExpanderPlugin;
+use Spryker\Zed\CompanySalesConnector\Communication\Plugin\Sales\SaveCompanyUuidOrderPostSavePlugin;
 use Spryker\Zed\Customer\Communication\Plugin\Sales\CustomerOrderHydratePlugin;
 use Spryker\Zed\Discount\Communication\Plugin\Sales\DiscountOrderHydratePlugin;
 use Spryker\Zed\ManualOrderEntry\Communication\Plugin\Sales\OrderSourceExpanderPreSavePlugin;
@@ -125,6 +131,8 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new CommentThreadAttachedCommentOrderPostSavePlugin(),
             new ConfiguredBundlesOrderPostSavePlugin(),
             new OrderCustomReferenceOrderPostSavePlugin(),
+            new SaveCompanyBusinessUnitUuidOrderPostSavePlugin(),
+            new SaveCompanyUuidOrderPostSavePlugin(),
         ];
     }
 
@@ -155,6 +163,19 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     {
         return [
             new ItemMetadataSearchOrderExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\OrderSearchQueryExpanderPluginInterface[]
+     */
+    protected function getOrderSearchQueryExpanderPlugins(): array
+    {
+        return [
+            new CompanyBusinessUnitFilterOrderSearchQueryExpanderPlugin(),
+            new CompanyFilterOrderSearchQueryExpanderPlugin(),
+            new CustomerFilterOrderSearchQueryExpanderPlugin(),
+            new CustomerSortingOrderSearchQueryExpanderPlugin(),
         ];
     }
 }

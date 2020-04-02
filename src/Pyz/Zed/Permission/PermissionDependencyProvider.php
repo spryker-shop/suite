@@ -33,7 +33,7 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
     /**
      * @return \Spryker\Shared\PermissionExtension\Dependency\Plugin\PermissionPluginInterface[]
      */
-    protected function getPermissionPlugins()
+    protected function getPermissionPlugins(): array
     {
         return [
             new ReadSharedCartPermissionPlugin(), #SharedCartFeature
