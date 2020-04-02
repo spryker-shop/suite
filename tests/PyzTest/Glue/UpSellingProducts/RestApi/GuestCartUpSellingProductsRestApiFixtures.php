@@ -132,7 +132,8 @@ class GuestCartUpSellingProductsRestApiFixtures implements FixturesBuilderInterf
     {
         $I->haveProductRelation(
             $this->upSellingProductConcreteTransfer->getAbstractSku(),
-            $this->productConcreteTransfer->getFkProductAbstract()
+            $this->productConcreteTransfer->getFkProductAbstract(),
+            'test-4'
         );
     }
 

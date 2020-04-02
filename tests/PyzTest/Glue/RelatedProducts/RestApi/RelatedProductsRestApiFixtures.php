@@ -77,11 +77,13 @@ class RelatedProductsRestApiFixtures implements FixturesBuilderInterface, Fixtur
         $I->haveProductRelation(
             $this->anotherProductConcreteTransfer->getAbstractSku(),
             $this->productConcreteTransfer->getFkProductAbstract(),
+            'key-1',
             ProductRelationTypes::TYPE_RELATED_PRODUCTS
         );
         $I->haveProductRelation(
             $this->productConcreteTransfer->getAbstractSku(),
             $this->anotherProductConcreteTransfer->getFkProductAbstract(),
+            'key-2',
             ProductRelationTypes::TYPE_RELATED_PRODUCTS
         );
     }
