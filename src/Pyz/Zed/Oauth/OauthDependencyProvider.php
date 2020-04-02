@@ -16,6 +16,10 @@ use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Oauth\IdCompanyUserOauthGr
 use Spryker\Zed\OauthCustomerConnector\Communication\Plugin\Oauth\CustomerOauthScopeProviderPlugin;
 use Spryker\Zed\OauthCustomerConnector\Communication\Plugin\Oauth\CustomerOauthUserProviderPlugin;
 use Spryker\Zed\OauthPermission\Communication\Plugin\Filter\OauthUserIdentifierFilterPermissionPlugin;
+use Spryker\Zed\OauthRevoke\Communication\Plugin\OauthRevoke\OauthRefreshTokenCheckerPlugin;
+use Spryker\Zed\OauthRevoke\Communication\Plugin\OauthRevoke\OauthRefreshTokenRevokerPlugin;
+use Spryker\Zed\OauthRevoke\Communication\Plugin\OauthRevoke\OauthRefreshTokenSaverPlugin;
+use Spryker\Zed\OauthRevoke\Communication\Plugin\OauthRevoke\OauthRefreshTokensRevokerPlugin;
 
 class OauthDependencyProvider extends SprykerOauthDependencyProvider
 {
@@ -60,6 +64,46 @@ class OauthDependencyProvider extends SprykerOauthDependencyProvider
     {
         return [
             new OauthUserIdentifierFilterPermissionPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\OauthExtension\Dependency\Plugin\OauthRefreshTokenRevokerPluginInterface[]
+     */
+    protected function getOauthRefreshTokenRevokerPlugins(): array
+    {
+        return [
+            new OauthRefreshTokenRevokerPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\OauthExtension\Dependency\Plugin\OauthRefreshTokensRevokerPluginInterface[]
+     */
+    protected function getOauthRefreshTokensRevokerPlugins(): array
+    {
+        return [
+            new OauthRefreshTokensRevokerPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\OauthExtension\Dependency\Plugin\OauthRefreshTokenSaverPluginInterface[]
+     */
+    protected function getOauthRefreshTokenSaverPlugins(): array
+    {
+        return [
+            new OauthRefreshTokenSaverPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\OauthExtension\Dependency\Plugin\OauthRefreshTokenCheckerPluginInterface[]
+     */
+    protected function getOauthRefreshTokenCheckerPlugins(): array
+    {
+        return [
+            new OauthRefreshTokenCheckerPlugin(),
         ];
     }
 }
