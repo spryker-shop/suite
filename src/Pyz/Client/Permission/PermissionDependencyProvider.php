@@ -7,9 +7,7 @@
 
 namespace Pyz\Client\Permission;
 
-use Spryker\Client\CompanyBusinessUnitSalesConnector\Plugin\Permission\SeeBusinessUnitOrdersPermissionPlugin;
 use Spryker\Client\CompanyRole\Plugin\PermissionStoragePlugin;
-use Spryker\Client\CompanySalesConnector\Plugin\Permission\SeeCompanyOrdersPermissionPlugin;
 use Spryker\Client\CustomerAccessPermission\Plugin\CustomerAccessPermissionStoragePlugin;
 use Spryker\Client\CustomerAccessPermission\Plugin\SeeAddToCartPermissionPlugin;
 use Spryker\Client\CustomerAccessPermission\Plugin\SeeOrderPlaceSubmitPermissionPlugin;
@@ -22,6 +20,8 @@ use Spryker\Client\SharedCart\Plugin\ReadSharedCartPermissionPlugin;
 use Spryker\Client\SharedCart\Plugin\WriteSharedCartPermissionPlugin;
 use Spryker\Client\ShoppingList\Plugin\ReadShoppingListPermissionPlugin;
 use Spryker\Client\ShoppingList\Plugin\WriteShoppingListPermissionPlugin;
+use Spryker\Shared\CompanyBusinessUnitSalesConnector\Plugin\Permission\SeeBusinessUnitOrdersPermissionPlugin;
+use Spryker\Shared\CompanySalesConnector\Plugin\Permission\SeeCompanyOrdersPermissionPlugin;
 
 class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
 {

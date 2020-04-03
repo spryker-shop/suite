@@ -9,6 +9,7 @@ namespace Pyz\Zed\Sales;
 
 use Spryker\Zed\CommentSalesConnector\Communication\Plugin\Sales\CommentThreadAttachedCommentOrderPostSavePlugin;
 use Spryker\Zed\CommentSalesConnector\Communication\Plugin\Sales\CommentThreadOrderExpanderPlugin;
+use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Sales\CheckSeeBusinessUnitOrdersPermissionPlugin;
 use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Sales\CompanyBusinessUnitFilterOrderSearchQueryExpanderPlugin;
 use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Sales\CustomerFilterOrderSearchQueryExpanderPlugin;
 use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Sales\CustomerSortingOrderSearchQueryExpanderPlugin;
@@ -176,6 +177,16 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new CompanyFilterOrderSearchQueryExpanderPlugin(),
             new CustomerFilterOrderSearchQueryExpanderPlugin(),
             new CustomerSortingOrderSearchQueryExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\CustomerOrderPreCheckPluginInterface[]
+     */
+    protected function getCustomerOrderPreCheckPlugins(): array
+    {
+        return [
+            new CheckSeeBusinessUnitOrdersPermissionPlugin(),
         ];
     }
 }
