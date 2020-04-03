@@ -44,7 +44,7 @@ sections:
             command: "vendor/bin/console transfer:databuilder:generate"
 
         generate-auto-completion:
-            command: "vendor/bin/console dev:ide:generate-auto-completion"
+            command: "vendor/bin/console dev:ide-auto-completion:generate"
 
         rest-api-generate-documentation:
             command: "vendor/bin/console rest-api:generate:documentation"
@@ -123,6 +123,9 @@ sections:
 
         glossary-import:
             command: "vendor/bin/console data:import:glossary"
+
+        shipment-import:
+            command: "vendor/bin/console data:import:shipment"
 
         payment-import:
             command: "vendor/bin/console data:import:payment-method"
