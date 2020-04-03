@@ -29,9 +29,9 @@ use SprykerShop\Yves\CustomerPage\Plugin\CustomerStepHandler;
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutAddressStepEnterPreCheckPlugin;
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutPaymentStepEnterPreCheckPlugin;
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutShipmentStepEnterPreCheckPlugin;
-use SprykerShop\Yves\QuoteRequestAgentPage\Plugin\CheckoutPage\QuoteRequestAgentCheckoutStepResolverStrategyPlugin;
-use SprykerShop\Yves\QuoteRequestPage\Plugin\CheckoutPage\QuoteRequestConvertedCheckoutStepResolverStrategyPlugin;
-use SprykerShop\Yves\QuoteRequestPage\Plugin\CheckoutPage\QuoteRequestInProcessCheckoutStepResolverStrategyPlugin;
+use SprykerShop\Yves\QuoteRequestAgentPage\Plugin\CheckoutPage\QuoteRequestAgentCheckoutWorkflowCheckoutStepResolverStrategyPlugin;
+use SprykerShop\Yves\QuoteRequestPage\Plugin\CheckoutPage\QuoteRequestCheckoutWorkflowCheckoutStepResolverStrategyPlugin;
+use SprykerShop\Yves\QuoteRequestPage\Plugin\CheckoutPage\QuoteWithCustomShipmentPriceCheckoutWorkflowCheckoutStepResolverStrategyPlugin;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThresholdWidgetPlugin;
 
 class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyProvider
@@ -204,9 +204,9 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     protected function getCheckoutStepResolverStrategyPlugins(): array
     {
         return [
-            new QuoteRequestInProcessCheckoutStepResolverStrategyPlugin(),
-            new QuoteRequestConvertedCheckoutStepResolverStrategyPlugin(),
-            new QuoteRequestAgentCheckoutStepResolverStrategyPlugin(),
+            new QuoteRequestCheckoutWorkflowCheckoutStepResolverStrategyPlugin(),
+            new QuoteWithCustomShipmentPriceCheckoutWorkflowCheckoutStepResolverStrategyPlugin(),
+            new QuoteRequestAgentCheckoutWorkflowCheckoutStepResolverStrategyPlugin(),
         ];
     }
 }
