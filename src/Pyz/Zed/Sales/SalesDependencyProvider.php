@@ -14,6 +14,7 @@ use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Sales\Com
 use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Sales\CustomerFilterOrderSearchQueryExpanderPlugin;
 use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Sales\CustomerSortingOrderSearchQueryExpanderPlugin;
 use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Sales\SaveCompanyBusinessUnitUuidOrderPostSavePlugin;
+use Spryker\Zed\CompanySalesConnector\Communication\Plugin\Sales\CheckSeeCompanyOrdersPermissionPlugin;
 use Spryker\Zed\CompanySalesConnector\Communication\Plugin\Sales\CompanyFilterOrderSearchQueryExpanderPlugin;
 use Spryker\Zed\CompanySalesConnector\Communication\Plugin\Sales\SaveCompanyUuidOrderPostSavePlugin;
 use Spryker\Zed\Customer\Communication\Plugin\Sales\CustomerOrderHydratePlugin;
@@ -187,6 +188,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     {
         return [
             new CheckSeeBusinessUnitOrdersPermissionPlugin(),
+            new CheckSeeCompanyOrdersPermissionPlugin(),
         ];
     }
 }
