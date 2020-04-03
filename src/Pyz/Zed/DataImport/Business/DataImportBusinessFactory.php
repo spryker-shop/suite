@@ -131,55 +131,88 @@ use Spryker\Zed\Store\Business\StoreFacadeInterface;
 class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 {
     /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterCollectionInterface
+     * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
+     *
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|null
      */
-    public function getImporter()
+    public function getDataImporterByType(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer): ?DataImporterInterface
     {
-        /** @var \Spryker\Zed\DataImport\Business\Model\DataImporterPluginCollectionInterface|\Spryker\Zed\DataImport\Business\Model\DataImporterCollectionInterface $dataImporterCollection */
-        $dataImporterCollection = $this->createDataImporterCollection();
-        $dataImporterCollection
-            ->addDataImporter($this->createStoreImporter())
-            ->addDataImporter($this->createCurrencyImporter())
-            ->addDataImporter($this->createOrderSourceImporter())
-            ->addDataImporter($this->createCategoryTemplateImporter())
-            ->addDataImporter($this->createCustomerImporter())
-            ->addDataImporter($this->createGlossaryImporter())
-            ->addDataImporter($this->createTaxImporter())
-            ->addDataImporter($this->createDiscountImporter())
-            ->addDataImporter($this->createDiscountStoreImporter())
-            ->addDataImporter($this->createDiscountVoucherImporter())
-            ->addDataImporter($this->createProductAttributeKeyImporter())
-            ->addDataImporter($this->createProductManagementAttributeImporter())
-            ->addDataImporter($this->createProductAbstractImporter())
-            ->addDataImporter($this->createProductAbstractStoreImporter())
-            ->addDataImporter($this->createProductConcreteImporter())
-            ->addDataImporter($this->createProductImageImporter())
-            ->addDataImporter($this->createProductOptionImporter())
-            ->addDataImporter($this->createProductOptionPriceImporter())
-            ->addDataImporter($this->createProductGroupImporter())
-            ->addDataImporter($this->createProductRelationImporter())
-            ->addDataImporter($this->createProductReviewImporter())
-            ->addDataImporter($this->createProductLabelImporter())
-            ->addDataImporter($this->createProductSetImporter())
-            ->addDataImporter($this->createProductSearchAttributeMapImporter())
-            ->addDataImporter($this->createProductSearchAttributeImporter())
-            ->addDataImporter($this->createCmsTemplateImporter())
-            ->addDataImporter($this->createCmsBlockImporter())
-            ->addDataImporter($this->createCmsBlockStoreImporter())
-            ->addDataImporter($this->createCmsBlockCategoryPositionImporter())
-            ->addDataImporter($this->createCmsBlockCategoryImporter())
-            ->addDataImporter($this->createDiscountAmountImporter())
-            ->addDataImporter($this->createAbstractGiftCardConfigurationImporter())
-            ->addDataImporter($this->createConcreteGiftCardConfigurationImporter());
-
-        $dataImporterCollection->addDataImporterPlugins($this->getDataImporterPlugins());
-
-        $dataImporterCollection
-            ->addDataImporter($this->createProductStockImporter())
-            ->addDataImporter($this->createNavigationImporter())
-            ->addDataImporter($this->createNavigationNodeImporter());
-
-        return $dataImporterCollection;
+        switch ($dataImportConfigurationActionTransfer->getDataEntity()) {
+            case DataImportConfig::IMPORT_TYPE_STORE:
+                return $this->createStoreImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_CURRENCY:
+                return $this->createCurrencyImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_ORDER_SOURCE:
+                return $this->createOrderSourceImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_CATEGORY_TEMPLATE:
+                return $this->createCategoryTemplateImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_CUSTOMER:
+                return $this->createCustomerImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_GLOSSARY:
+                return $this->createGlossaryImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_TAX:
+                return $this->createTaxImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_DISCOUNT:
+                return $this->createDiscountImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_DISCOUNT_STORE:
+                return $this->createDiscountStoreImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_DISCOUNT_VOUCHER:
+                return $this->createDiscountVoucherImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_ATTRIBUTE_KEY:
+                return $this->createProductAttributeKeyImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_MANAGEMENT_ATTRIBUTE:
+                return $this->createProductManagementAttributeImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_ABSTRACT:
+                return $this->createProductAbstractImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_ABSTRACT_STORE:
+                return $this->createProductAbstractStoreImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_CONCRETE:
+                return $this->createProductConcreteImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_IMAGE:
+                return $this->createProductImageImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_OPTION:
+                return $this->createProductOptionImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_OPTION_PRICE:
+                return $this->createProductOptionPriceImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_GROUP:
+                return $this->createProductGroupImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_RELATION:
+                return $this->createProductRelationImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_REVIEW:
+                return $this->createProductReviewImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_LABEL:
+                return $this->createProductLabelImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_SET:
+                return $this->createProductSetImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_SEARCH_ATTRIBUTE_MAP:
+                return $this->createProductSearchAttributeMapImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_SEARCH_ATTRIBUTE:
+                return $this->createProductSearchAttributeImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_CMS_TEMPLATE:
+                return $this->createCmsTemplateImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_CMS_BLOCK:
+                return $this->createCmsBlockImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_CMS_BLOCK_STORE:
+                return $this->createCmsBlockStoreImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_CMS_BLOCK_CATEGORY_POSITION:
+                return $this->createCmsBlockCategoryPositionImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_CMS_BLOCK_CATEGORY:
+                return $this->createCmsBlockCategoryImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_DISCOUNT_AMOUNT:
+                return $this->createDiscountAmountImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_ABSTRACT_GIFT_CARD_CONFIGURATION:
+                return $this->createAbstractGiftCardConfigurationImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_CONCRETE_GIFT_CARD_CONFIGURATION:
+                return $this->createConcreteGiftCardConfigurationImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_STOCK:
+                return $this->createProductStockImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_NAVIGATION:
+                return $this->createNavigationImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_NAVIGATION_NODE:
+                return $this->createNavigationNodeImporter($dataImportConfigurationActionTransfer);
+            default:
+                return null;
+        }
     }
 
     /**
