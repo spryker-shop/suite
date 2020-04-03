@@ -8,7 +8,6 @@
 namespace Pyz\Zed\DataImport;
 
 use Generated\Shared\Transfer\DataImporterQueueWriterConfigurationTransfer;
-use Spryker\Zed\ProductRelationDataImport\ProductRelationDataImportConfig;
 use Spryker\Zed\BusinessOnBehalfDataImport\BusinessOnBehalfDataImportConfig;
 use Spryker\Zed\CategoryDataImport\CategoryDataImportConfig;
 use Spryker\Zed\CmsPageDataImport\CmsPageDataImportConfig;
@@ -50,6 +49,7 @@ use Spryker\Zed\ProductOfferStockDataImport\ProductOfferStockDataImportConfig;
 use Spryker\Zed\ProductOfferValidityDataImport\ProductOfferValidityDataImportConfig;
 use Spryker\Zed\ProductPackagingUnitDataImport\ProductPackagingUnitDataImportConfig;
 use Spryker\Zed\ProductQuantityDataImport\ProductQuantityDataImportConfig;
+use Spryker\Zed\ProductRelationDataImport\ProductRelationDataImportConfig;
 use Spryker\Zed\QuoteRequestDataImport\QuoteRequestDataImportConfig;
 use Spryker\Zed\SalesOrderThresholdDataImport\SalesOrderThresholdDataImportConfig;
 use Spryker\Zed\SharedCartDataImport\SharedCartDataImportConfig;
