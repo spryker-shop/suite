@@ -29,9 +29,9 @@ use SprykerShop\Yves\CustomerPage\Plugin\CustomerStepHandler;
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutAddressStepEnterPreCheckPlugin;
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutPaymentStepEnterPreCheckPlugin;
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutShipmentStepEnterPreCheckPlugin;
-use SprykerShop\Yves\QuoteRequestAgentPage\Plugin\CheckoutPage\QuoteRequestAgentCheckoutWorkflowCheckoutStepResolverStrategyPlugin;
-use SprykerShop\Yves\QuoteRequestPage\Plugin\CheckoutPage\QuoteRequestCheckoutWorkflowCheckoutStepResolverStrategyPlugin;
-use SprykerShop\Yves\QuoteRequestPage\Plugin\CheckoutPage\QuoteWithCustomShipmentPriceCheckoutWorkflowCheckoutStepResolverStrategyPlugin;
+use SprykerShop\Yves\QuoteRequestAgentPage\Plugin\CheckoutPage\QuoteRequestAgentCheckoutWorkflowStepResolverStrategyPlugin;
+use SprykerShop\Yves\QuoteRequestPage\Plugin\CheckoutPage\QuoteRequestCheckoutWorkflowStepResolverStrategyPlugin;
+use SprykerShop\Yves\QuoteRequestPage\Plugin\CheckoutPage\QuoteWithCustomShipmentPriceCheckoutWorkflowStepResolverStrategyPlugin;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThresholdWidgetPlugin;
 
 class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyProvider
@@ -204,9 +204,9 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     protected function getCheckoutStepResolverStrategyPlugins(): array
     {
         return [
-            new QuoteRequestCheckoutWorkflowCheckoutStepResolverStrategyPlugin(),
-            new QuoteWithCustomShipmentPriceCheckoutWorkflowCheckoutStepResolverStrategyPlugin(),
-            new QuoteRequestAgentCheckoutWorkflowCheckoutStepResolverStrategyPlugin(),
+            new QuoteRequestCheckoutWorkflowStepResolverStrategyPlugin(),
+            new QuoteWithCustomShipmentPriceCheckoutWorkflowStepResolverStrategyPlugin(),
+            new QuoteRequestAgentCheckoutWorkflowStepResolverStrategyPlugin(),
         ];
     }
 }
