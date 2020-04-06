@@ -81,8 +81,6 @@ use Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\ProductPriceBulkPdoDat
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\ProductPricePropelDataSetWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\Sql\ProductPriceSql;
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\Sql\ProductPriceSqlInterface;
-use Pyz\Zed\DataImport\Business\Model\ProductRelation\Hook\ProductRelationAfterImportHook;
-use Pyz\Zed\DataImport\Business\Model\ProductRelation\ProductRelationWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductReview\ProductReviewWriterStep;
 use Pyz\Zed\DataImport\Business\Model\ProductSearchAttribute\Hook\ProductSearchAfterImportHook;
 use Pyz\Zed\DataImport\Business\Model\ProductSearchAttribute\ProductSearchAttributeWriter;
@@ -176,8 +174,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
                 return $this->createProductOptionPriceImporter($dataImportConfigurationActionTransfer);
             case DataImportConfig::IMPORT_TYPE_PRODUCT_GROUP:
                 return $this->createProductGroupImporter($dataImportConfigurationActionTransfer);
-            case DataImportConfig::IMPORT_TYPE_PRODUCT_RELATION:
-                return $this->createProductRelationImporter($dataImportConfigurationActionTransfer);
             case DataImportConfig::IMPORT_TYPE_PRODUCT_REVIEW:
                 return $this->createProductReviewImporter($dataImportConfigurationActionTransfer);
             case DataImportConfig::IMPORT_TYPE_PRODUCT_LABEL:
@@ -1318,28 +1314,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      *
      * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
      */
-    protected function createProductRelationImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
-    {
-        $dataImporter = $this->getCsvDataImporterFromConfig(
-            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
-        );
-
-        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker();
-        $dataSetStepBroker
-            ->addStep($this->createAddProductAbstractSkusStep())
-            ->addStep(new ProductRelationWriter());
-
-        $dataImporter->addDataSetStepBroker($dataSetStepBroker);
-        $dataImporter->addAfterImportHook($this->createProductRelationAfterImportHook());
-
-        return $dataImporter;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
-     */
     protected function createProductReviewImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
     {
         $dataImporter = $this->getCsvDataImporterFromConfig(
@@ -1391,16 +1365,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     }
 
     /**
-     * @return \Pyz\Zed\DataImport\Business\Model\ProductRelation\Hook\ProductRelationAfterImportHook
-     */
-    protected function createProductRelationAfterImportHook()
-    {
-        return new ProductRelationAfterImportHook(
-            $this->getProductRelationFacade()
-        );
-    }
-
-    /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
      *
      * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
@@ -1439,14 +1403,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     protected function createProductSetImageExtractorStep()
     {
         return new ProductSetImageExtractorStep();
-    }
-
-    /**
-     * @return \Spryker\Zed\ProductRelation\Business\ProductRelationFacadeInterface
-     */
-    protected function getProductRelationFacade()
-    {
-        return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_PRODUCT_RELATION);
     }
 
     /**
