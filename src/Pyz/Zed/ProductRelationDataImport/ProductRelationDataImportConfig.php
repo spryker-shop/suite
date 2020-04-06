@@ -19,4 +19,12 @@ class ProductRelationDataImportConfig extends SprykerProductRelationDataImportCo
     {
         return $this->buildImporterConfiguration('product_relation.csv', static::IMPORT_TYPE_PRODUCT_RELATION);
     }
+
+    /**
+     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
+     */
+    public function getProductRelationStoreDataImporterConfiguration(): DataImporterConfigurationTransfer
+    {
+        return $this->buildImporterConfiguration('product_relation_store.csv', static::IMPORT_TYPE_PRODUCT_RELATION_STORE);
+    }
 }
