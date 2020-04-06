@@ -69,6 +69,8 @@ use Spryker\Zed\ProductOfferValidityDataImport\Communication\ProductOfferValidit
 use Spryker\Zed\ProductPackagingUnitDataImport\Communication\Plugin\DataImport\ProductPackagingUnitDataImportPlugin;
 use Spryker\Zed\ProductPackagingUnitDataImport\Communication\Plugin\DataImport\ProductPackagingUnitTypeDataImportPlugin;
 use Spryker\Zed\ProductQuantityDataImport\Communication\Plugin\ProductQuantityDataImportPlugin;
+use Spryker\Zed\ProductRelationDataImport\Communication\Plugin\ProductRelationDataImportPlugin;
+use Spryker\Zed\ProductRelationDataImport\Communication\Plugin\ProductRelationStoreDataImportPlugin;
 use Spryker\Zed\QuoteRequestDataImport\Communication\Plugin\QuoteRequestDataImportPlugin;
 use Spryker\Zed\QuoteRequestDataImport\Communication\Plugin\QuoteRequestVersionDataImportPlugin;
 use Spryker\Zed\SalesOrderThresholdDataImport\Communication\Plugin\DataImport\SalesOrderThresholdDataImportPlugin;
@@ -222,7 +224,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     protected function getDataImporterPlugins(): array
     {
         return [
-            [new CategoryDataImportPlugin(), DataImportConfig::IMPORT_TYPE_CATEGORY_TEMPLATE],
+            new CategoryDataImportPlugin(),
             new CmsPageDataImportPlugin(),
             new CmsPageStoreDataImportPlugin(),
             new CmsSlotTemplateDataImportPlugin(),
@@ -292,6 +294,8 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new StockDataImportPlugin(),
             new StockStoreDataImportPlugin(),
             new ProductOfferStockDataImportPlugin(),
+            new ProductRelationDataImportPlugin(),
+            new ProductRelationStoreDataImportPlugin(),
             new MerchantStockDataImportPlugin(),
             new ReturnReasonDataImportPlugin(),
         ];
