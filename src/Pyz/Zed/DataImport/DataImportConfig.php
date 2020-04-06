@@ -49,6 +49,7 @@ use Spryker\Zed\ProductOfferStockDataImport\ProductOfferStockDataImportConfig;
 use Spryker\Zed\ProductOfferValidityDataImport\ProductOfferValidityDataImportConfig;
 use Spryker\Zed\ProductPackagingUnitDataImport\ProductPackagingUnitDataImportConfig;
 use Spryker\Zed\ProductQuantityDataImport\ProductQuantityDataImportConfig;
+use Spryker\Zed\ProductRelationDataImport\ProductRelationDataImportConfig;
 use Spryker\Zed\QuoteRequestDataImport\QuoteRequestDataImportConfig;
 use Spryker\Zed\SalesOrderThresholdDataImport\SalesOrderThresholdDataImportConfig;
 use Spryker\Zed\SharedCartDataImport\SharedCartDataImportConfig;
@@ -75,7 +76,6 @@ class DataImportConfig extends SprykerDataImportConfig
     public const IMPORT_TYPE_PRODUCT_CONCRETE = 'product-concrete';
     public const IMPORT_TYPE_PRODUCT_ATTRIBUTE_KEY = 'product-attribute-key';
     public const IMPORT_TYPE_PRODUCT_MANAGEMENT_ATTRIBUTE = 'product-management-attribute';
-    public const IMPORT_TYPE_PRODUCT_RELATION = 'product-relation';
     public const IMPORT_TYPE_PRODUCT_REVIEW = 'product-review';
     public const IMPORT_TYPE_PRODUCT_LABEL = 'product-label';
     public const IMPORT_TYPE_PRODUCT_SET = 'product-set';
@@ -175,7 +175,8 @@ class DataImportConfig extends SprykerDataImportConfig
             static::IMPORT_TYPE_PRODUCT_CONCRETE,
             static::IMPORT_TYPE_PRODUCT_ATTRIBUTE_KEY,
             static::IMPORT_TYPE_PRODUCT_MANAGEMENT_ATTRIBUTE,
-            static::IMPORT_TYPE_PRODUCT_RELATION,
+            ProductRelationDataImportConfig::IMPORT_TYPE_PRODUCT_RELATION,
+            ProductRelationDataImportConfig::IMPORT_TYPE_PRODUCT_RELATION_STORE,
             static::IMPORT_TYPE_PRODUCT_REVIEW,
             static::IMPORT_TYPE_PRODUCT_LABEL,
             static::IMPORT_TYPE_PRODUCT_SET,
