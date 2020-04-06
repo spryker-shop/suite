@@ -8,10 +8,9 @@
         <states>
             <state name="new" reserved="true"/>
             <state name="paid" reserved="true"/>
-
             <state name="canceled"/>
             <state name="refunded"/>
-
+            <state name="merchant split pending" reserved="true"/>
             <state name="sent to merchant" reserved="true"/>
             <state name="shipped by merchant" reserved="true"/>
             <state name="delivered" reserved="true"/>
@@ -25,8 +24,24 @@
                 <event>pay</event>
             </transition>
 
+            <transition happy="true" condition="MerchantSalesOrder/IsOrderPaid">
+                <source>paid</source>
+                <target>merchant split pending</target>
+            </transition>
+
             <transition>
                 <source>paid</source>
+                <target>paid</target>
+            </transition>
+
+            <transition happy="true">
+                <source>merchant split pending</source>
+                <target>sent to merchant</target>
+                <event>send to merchant</event>
+            </transition>
+
+            <transition>
+                <source>sent to merchant</source>
                 <target>canceled</target>
                 <event>cancel</event>
             </transition>
@@ -41,12 +56,6 @@
                 <source>refunded</source>
                 <target>closed</target>
                 <event>close</event>
-            </transition>
-
-            <transition happy="true">
-                <source>paid</source>
-                <target>sent to merchant</target>
-                <event>send to merchant</event>
             </transition>
 
             <transition happy="true">
@@ -71,14 +80,12 @@
 
         <events>
             <event name="pay" manual="true"/>
-
             <event name="cancel" manual="true"/>
             <event name="refund" manual="true"/>
-
-            <event name="send to merchant" manual="true" command="Merchant/CreateOrders"/>
+            <event name="send to merchant" onEnter="true" timeout="30 second" command="MerchantSalesOrder/CreateOrders"/>
             <event name="ship by merchant" manual="true"/>
             <event name="deliver" manual="true"/>
-            <event name="close" manual="true" command="Merchant/CloseOrderItem"/>
+            <event name="close" manual="true" command="MerchantOms/CloseOrderItem"/>
         </events>
     </process>
 

@@ -7,8 +7,8 @@
     <process name="MerchantDefaultStateMachine" main="true">
 
         <states>
+            <state name="created"/>
             <state name="new"/>
-            <state name="pending"/>
             <state name="canceled by merchant"/>
             <state name="shipped"/>
             <state name="delivered"/>
@@ -17,25 +17,25 @@
 
         <transitions>
             <transition happy="true">
-                <source>new</source>
-                <target>pending</target>
+                <source>created</source>
+                <target>new</target>
                 <event>initiate</event>
             </transition>
 
             <transition happy="true">
-                <source>pending</source>
+                <source>new</source>
                 <target>shipped</target>
                 <event>ship</event>
             </transition>
 
             <transition>
-                <source>pending</source>
+                <source>new</source>
                 <target>closed</target>
                 <event>close</event>
             </transition>
 
             <transition>
-                <source>pending</source>
+                <source>new</source>
                 <target>canceled by merchant</target>
                 <event>cancel by merchant</event>
             </transition>

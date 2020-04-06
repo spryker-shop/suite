@@ -62,7 +62,8 @@
     "codeception/module-asserts": "^1.1",
     "codeception/module-webdriver": "^1.0",
     "codeception/module-cli": "^1.0",
-    "codeception/module-filesystem": "^1.0"
+    "codeception/module-filesystem": "^1.0",
+    "webmozart/glob": "^4.0.0"
   },
   "autoload": {
     "psr-4": {
@@ -130,7 +131,7 @@
     "phpstan": [
       "php -d memory_limit=1024M vendor/bin/phpstan analyze -l 5 -c phpstan.neon src/"
     ],
-    "phpstan-setup": "vendor/bin/console dev:ide:generate-auto-completion"
+    "phpstan-setup": "vendor/bin/console dev:ide-auto-completion:generate"
   },
   "extra": {
     "merge-plugin": {
