@@ -123,25 +123,6 @@ class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, 
      */
     protected function createRelationBetweenProducts(UpSellingProductsApiTester $I): void
     {
-        $storeTransfer = $I->haveStore([
-            StoreTransfer::NAME => 'DE',
-        ]);
-        $storeRelationTransfer = (new StoreRelationBuilder())->seed([
-            StoreRelationTransfer::ID_STORES => [
-                $storeTransfer->getIdStore(),
-            ],
-            StoreRelationTransfer::STORES => [
-                $storeTransfer,
-            ],
-        ])->build();
-
-        $I->haveProductRelation(
-            $this->upSellingProductConcreteTransfer->getAbstractSku(),
-            $this->productConcreteTransfer->getFkProductAbstract(),
-            uniqid('test-', false),
-            'up-selling',
-            $storeRelationTransfer
-        );
     }
 
     /**
