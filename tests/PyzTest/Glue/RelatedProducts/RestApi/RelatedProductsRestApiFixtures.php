@@ -74,5 +74,34 @@ class RelatedProductsRestApiFixtures implements FixturesBuilderInterface, Fixtur
      */
     protected function createRelationBetweenProducts(RelatedProductsApiTester $I): void
     {
+        $storeTransfer = $I->haveStore([
+            StoreTransfer::NAME => 'DE',
+        ]);
+        $storeRelationTransfer = (new StoreRelationBuilder())->seed([
+            StoreRelationTransfer::ID_STORES => [
+                $storeTransfer->getIdStore(),
+            ],
+            StoreRelationTransfer::STORES => [
+                $storeTransfer,
+            ],
+        ])->build();
+
+        $this->productConcreteTransfer = $I->haveFullProduct();
+        $this->anotherProductConcreteTransfer = $I->haveFullProduct();
+
+        $I->haveProductRelation(
+            $this->anotherProductConcreteTransfer->getAbstractSku(),
+            $this->productConcreteTransfer->getFkProductAbstract(),
+            uniqid('key-', false),
+            ProductRelationTypes::TYPE_RELATED_PRODUCTS,
+            $storeRelationTransfer
+        );
+        $I->haveProductRelation(
+            $this->productConcreteTransfer->getAbstractSku(),
+            $this->anotherProductConcreteTransfer->getFkProductAbstract(),
+            uniqid('key-', false),
+            ProductRelationTypes::TYPE_RELATED_PRODUCTS,
+            $storeRelationTransfer
+        );
     }
 }

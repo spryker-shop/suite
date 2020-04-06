@@ -110,53 +110,53 @@ sections:
 
     demodata:
         import-commerce-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/full_import_config.yml -vvv"
+            command: "vendor/bin/console data:import --config=data/import/config/commerce_setup_import_config.yml"
 
-#        import-catalog-setup:
-#            command: "vendor/bin/console data:import --config=data/import/config/catalog_setup_import_config.yml"
-#
-#        import-special-product-types-setup:
-#            command: "vendor/bin/console data:import --config=data/import/config/special_product_types_import_config.yml"
-#
-#        import-merchandising-setup:
-#            command: "vendor/bin/console data:import --config=data/import/config/merchandising_import_config.yml"
-#
-#        import-navigation-setup:
-#            command: "vendor/bin/console data:import --config=data/import/config/navigation_import_config.yml"
-#
-#        import-content-management-setup:
-#            command: "vendor/bin/console data:import --config=data/import/config/content_management_import_config.yml"
-#
-#        import-b2b-setup:
-#            command: "vendor/bin/console data:import --config=data/import/config/b2b_setup_import_config.yml"
-#
-#        import-miscellaneous-setup:
-#            command: "vendor/bin/console data:import --config=data/import/config/miscellaneous_import_config.yml"
-#
-#        update-product-labels:
-#            command: "vendor/bin/console product-label:relations:update"
+        import-catalog-setup:
+            command: "vendor/bin/console data:import --config=data/import/config/catalog_setup_import_config.yml"
 
-#    fixtures:
-#        fixtures:
-#            command: "vendor/bin/console code:fixtures"
-#
-#    queue:
-#        run-worker:
-#            command: "vendor/bin/console queue:worker:start --stop-when-empty"
-#
-#
-#    frontend:
-#        dependencies-install:
-#            command: "vendor/bin/console frontend:project:install-dependencies"
-#
-#        yves-install-dependencies:
-#            command: "vendor/bin/console frontend:yves:install-dependencies"
-#
-#        yves-build-frontend:
-#            command: "vendor/bin/console frontend:yves:build"
-#
-#        zed-install-dependencies:
-#            command: "vendor/bin/console frontend:zed:install-dependencies"
-#
-#        zed-build-frontend:
-#            command: "vendor/bin/console frontend:zed:build"
+        import-special-product-types-setup:
+            command: "vendor/bin/console data:import --config=data/import/config/special_product_types_import_config.yml"
+
+        import-merchandising-setup:
+            command: "vendor/bin/console data:import --config=data/import/config/merchandising_import_config.yml"
+
+        import-navigation-setup:
+            command: "vendor/bin/console data:import --config=data/import/config/navigation_import_config.yml"
+
+        import-content-management-setup:
+            command: "vendor/bin/console data:import --config=data/import/config/content_management_import_config.yml"
+
+        import-b2b-setup:
+            command: "vendor/bin/console data:import --config=data/import/config/b2b_setup_import_config.yml"
+
+        import-miscellaneous-setup:
+            command: "vendor/bin/console data:import --config=data/import/config/miscellaneous_import_config.yml"
+
+        update-product-labels:
+            command: "vendor/bin/console product-label:relations:update"
+
+    fixtures:
+        fixtures:
+            command: "vendor/bin/console code:fixtures"
+
+    queue:
+        run-worker:
+            command: "vendor/bin/console queue:worker:start --stop-when-empty"
+
+
+    frontend:
+        dependencies-install:
+            command: "vendor/bin/console frontend:project:install-dependencies"
+
+        yves-install-dependencies:
+            command: "vendor/bin/console frontend:yves:install-dependencies"
+
+        yves-build-frontend:
+            command: "vendor/bin/console frontend:yves:build"
+
+        zed-install-dependencies:
+            command: "vendor/bin/console frontend:zed:install-dependencies"
+
+        zed-build-frontend:
+            command: "vendor/bin/console frontend:zed:build"
