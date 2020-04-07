@@ -85,6 +85,7 @@ use Spryker\Glue\NavigationsCategoryNodesResourceRelationship\Plugin\GlueApplica
 use Spryker\Glue\NavigationsRestApi\NavigationsRestApiConfig;
 use Spryker\Glue\NavigationsRestApi\Plugin\ResourceRoute\NavigationsResourceRoutePlugin;
 use Spryker\Glue\OrderPaymentsRestApi\Plugin\OrderPaymentsResourceRoutePlugin;
+use Spryker\Glue\OrdersRestApi\Plugin\OrderItemByResourceIdResourceRelationshipPlugin;
 use Spryker\Glue\OrdersRestApi\Plugin\OrderRelationshipByOrderReferencePlugin;
 use Spryker\Glue\OrdersRestApi\Plugin\OrdersResourceRoutePlugin;
 use Spryker\Glue\PaymentsRestApi\Plugin\GlueApplication\PaymentMethodsByCheckoutDataResourceRelationshipPlugin;
@@ -124,9 +125,10 @@ use Spryker\Glue\ProductTaxSetsRestApi\Plugin\GlueApplication\ProductTaxSetsReso
 use Spryker\Glue\RelatedProductsRestApi\Plugin\GlueApplication\RelatedProductsResourceRoutePlugin;
 use Spryker\Glue\RestRequestValidator\Plugin\ValidateRestRequestAttributesPlugin;
 use Spryker\Glue\Router\Plugin\Application\RouterApplicationPlugin;
-use Spryker\Glue\SalesReturnsRestApi\Plugin\ReturnableItemsResourceRoutePlugin;
+use Spryker\Glue\SalesReturnsRestApi\Plugin\ReturnItemByReturnResourceRelationshipPlugin;
 use Spryker\Glue\SalesReturnsRestApi\Plugin\ReturnReasonsResourceRoutePlugin;
 use Spryker\Glue\SalesReturnsRestApi\Plugin\ReturnsResourceRoutePlugin;
+use Spryker\Glue\SalesReturnsRestApi\SalesReturnsRestApiConfig;
 use Spryker\Glue\Session\Plugin\Application\SessionApplicationPlugin;
 use Spryker\Glue\SharedCartsRestApi\Plugin\GlueApplication\SharedCartByCartIdResourceRelationshipPlugin;
 use Spryker\Glue\SharedCartsRestApi\Plugin\GlueApplication\SharedCartsResourceRoutePlugin;
@@ -215,7 +217,6 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new HealthCheckResourceRoutePlugin(),
             new ReturnReasonsResourceRoutePlugin(),
             new ReturnsResourceRoutePlugin(),
-            new ReturnableItemsResourceRoutePlugin(),
             new ShoppingListsResourcePlugin(),
             new ShoppingListItemsResourcePlugin(),
         ];
@@ -512,6 +513,14 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         $resourceRelationshipCollection->addRelationship(
             DiscountPromotionsRestApiConfig::RESOURCE_PROMOTIONAL_ITEMS,
             new ProductAbstractBySkuResourceRelationshipPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            SalesReturnsRestApiConfig::RESOURCE_RETURNS,
+            new ReturnItemByReturnResourceRelationshipPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            SalesReturnsRestApiConfig::RESOURCE_RETURN_ITEMS,
+            new OrderItemByResourceIdResourceRelationshipPlugin()
         );
 
         return $resourceRelationshipCollection;
