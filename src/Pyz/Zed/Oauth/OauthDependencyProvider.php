@@ -16,10 +16,13 @@ use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Oauth\IdCompanyUserOauthGr
 use Spryker\Zed\OauthCustomerConnector\Communication\Plugin\Oauth\CustomerOauthScopeProviderPlugin;
 use Spryker\Zed\OauthCustomerConnector\Communication\Plugin\Oauth\CustomerOauthUserProviderPlugin;
 use Spryker\Zed\OauthPermission\Communication\Plugin\Filter\OauthUserIdentifierFilterPermissionPlugin;
-use Spryker\Zed\OauthRevoke\Communication\Plugin\OauthRevoke\OauthRefreshTokenCheckerPlugin;
-use Spryker\Zed\OauthRevoke\Communication\Plugin\OauthRevoke\OauthRefreshTokenRevokerPlugin;
-use Spryker\Zed\OauthRevoke\Communication\Plugin\OauthRevoke\OauthRefreshTokenSaverPlugin;
-use Spryker\Zed\OauthRevoke\Communication\Plugin\OauthRevoke\OauthRefreshTokensRevokerPlugin;
+use Spryker\Zed\OauthRevoke\Communication\Plugin\Oauth\OauthExpiredRefreshTokenRemoverPlugin;
+use Spryker\Zed\OauthRevoke\Communication\Plugin\Oauth\OauthRefreshTokenCheckerPlugin;
+use Spryker\Zed\OauthRevoke\Communication\Plugin\Oauth\OauthRefreshTokenReaderPlugin;
+use Spryker\Zed\OauthRevoke\Communication\Plugin\Oauth\OauthRefreshTokenRevokerPlugin;
+use Spryker\Zed\OauthRevoke\Communication\Plugin\Oauth\OauthRefreshTokenSaverPlugin;
+use Spryker\Zed\OauthRevoke\Communication\Plugin\Oauth\OauthRefreshTokensReaderPlugin;
+use Spryker\Zed\OauthRevoke\Communication\Plugin\Oauth\OauthRefreshTokensRevokerPlugin;
 
 class OauthDependencyProvider extends SprykerOauthDependencyProvider
 {
@@ -104,6 +107,36 @@ class OauthDependencyProvider extends SprykerOauthDependencyProvider
     {
         return [
             new OauthRefreshTokenCheckerPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\OauthExtension\Dependency\Plugin\OauthExpiredRefreshTokenRemoverPluginInterface[]
+     */
+    protected function getOauthExpiredRefreshTokenRemoverPlugins(): array
+    {
+        return [
+            new OauthExpiredRefreshTokenRemoverPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\OauthExtension\Dependency\Plugin\OauthRefreshTokenReaderPluginInterface[]
+     */
+    protected function getOauthRefreshTokenReaderPlugins(): array
+    {
+        return [
+            new OauthRefreshTokenReaderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\OauthExtension\Dependency\Plugin\OauthRefreshTokensReaderPluginInterface[]
+     */
+    protected function getOauthRefreshTokensReaderPlugins(): array
+    {
+        return [
+            new OauthRefreshTokensReaderPlugin(),
         ];
     }
 }
