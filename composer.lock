@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9486001deb2e0c4479805671694cd637",
+    "content-hash": "42fda947ef19ece905493144e6efd02f",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -19700,6 +19700,57 @@
             "time": "2018-11-05T12:18:13+00:00"
         },
         {
+            "name": "spryker/dummy-marketplace-payment",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/dummy-marketplace-payment.git",
+                "reference": "ba319d5b074b7a840fba42144c0a55d4dc71683f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/dummy-marketplace-payment/zipball/ba319d5b074b7a840fba42144c0a55d4dc71683f",
+                "reference": "ba319d5b074b7a840fba42144c0a55d4dc71683f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/kernel": "^3.30.0",
+                "spryker/step-engine": "^3.1.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/oms": "*",
+                "spryker/payment": "*",
+                "spryker/propel": "*",
+                "spryker/sales": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/oms": "If you want to use OMS constants.",
+                "spryker/payment": "If you want to use Payment command plugins.",
+                "spryker/sales": "If you want to use Sales constants."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "DummyMarketplacePayment module",
+            "time": "2020-03-30T12:43:57+00:00"
+        },
+        {
             "name": "spryker/dummy-payment",
             "version": "2.5.7",
             "source": {
@@ -22432,6 +22483,98 @@
             "time": "2019-11-05T13:22:08+00:00"
         },
         {
+            "name": "spryker/merchant-oms",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-oms.git",
+                "reference": "f2d8754e1853ed9083a0c049ddc1dcb5e73c26cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-oms/zipball/f2d8754e1853ed9083a0c049ddc1dcb5e73c26cb",
+                "reference": "f2d8754e1853ed9083a0c049ddc1dcb5e73c26cb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/kernel": "^3.30.0",
+                "spryker/merchant": "^2.0.0",
+                "spryker/merchant-sales-order": "^0.5.0",
+                "spryker/merchant-sales-order-extension": "^0.1.0",
+                "spryker/state-machine": "^2.8.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/oms": "*",
+                "spryker/propel": "*",
+                "spryker/sales": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantOms module",
+            "time": "2020-04-06T15:20:28+00:00"
+        },
+        {
+            "name": "spryker/merchant-oms-data-import",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-oms-data-import.git",
+                "reference": "a1cd63ad3388b8d83971a668b8b3a3a87e7e330f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-oms-data-import/zipball/a1cd63ad3388b8d83971a668b8b3a3a87e7e330f",
+                "reference": "a1cd63ad3388b8d83971a668b8b3a3a87e7e330f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/data-import": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/merchant": "^1.0.0 || ^2.0.0",
+                "spryker/merchant-oms": "^0.1.0",
+                "spryker/state-machine": "^1.0.0 || ^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "MerchantOmsDataImport module",
+            "time": "2020-04-06T13:38:04+00:00"
+        },
+        {
             "name": "spryker/merchant-opening-hours",
             "version": "0.1.1",
             "source": {
@@ -23613,16 +23756,16 @@
         },
         {
             "name": "spryker/merchant-sales-order",
-            "version": "0.5.0",
+            "version": "0.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-sales-order.git",
-                "reference": "0e41bfecc2787262f458c3baa7e208199062001c"
+                "reference": "37daed6d8c83fcae313d24e7576d335a314774ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-sales-order/zipball/0e41bfecc2787262f458c3baa7e208199062001c",
-                "reference": "0e41bfecc2787262f458c3baa7e208199062001c",
+                "url": "https://api.github.com/repos/spryker/merchant-sales-order/zipball/37daed6d8c83fcae313d24e7576d335a314774ea",
+                "reference": "37daed6d8c83fcae313d24e7576d335a314774ea",
                 "shasum": ""
             },
             "require": {
@@ -23630,6 +23773,7 @@
                 "spryker/calculation": "^4.0.0",
                 "spryker/kernel": "^3.33.0",
                 "spryker/merchant": "^2.0.0",
+                "spryker/merchant-sales-order-extension": "^0.1.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/sales": "^11.0.0",
                 "spryker/sales-extension": "^1.1.0",
@@ -23659,7 +23803,45 @@
                 "proprietary"
             ],
             "description": "MerchantSalesOrder module",
-            "time": "2020-03-20T06:59:27+00:00"
+            "time": "2020-04-05T18:05:33+00:00"
+        },
+        {
+            "name": "spryker/merchant-sales-order-extension",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-sales-order-extension.git",
+                "reference": "b86f9ad4774fc4e207f1c51173892a4e8e255b02"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-sales-order-extension/zipball/b86f9ad4774fc4e207f1c51173892a4e8e255b02",
+                "reference": "b86f9ad4774fc4e207f1c51173892a4e8e255b02",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantSalesOrderExtension module",
+            "time": "2020-02-21T15:14:05+00:00"
         },
         {
             "name": "spryker/merchant-search",
@@ -36932,16 +37114,16 @@
         },
         {
             "name": "spryker/state-machine",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/state-machine.git",
-                "reference": "b30097881c9a092a9ea2dfb85198afe4af6d83c9"
+                "reference": "00cf20c3947c1354b6f51ec6358c18cf6bf55e5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/state-machine/zipball/b30097881c9a092a9ea2dfb85198afe4af6d83c9",
-                "reference": "b30097881c9a092a9ea2dfb85198afe4af6d83c9",
+                "url": "https://api.github.com/repos/spryker/state-machine/zipball/00cf20c3947c1354b6f51ec6358c18cf6bf55e5e",
+                "reference": "00cf20c3947c1354b6f51ec6358c18cf6bf55e5e",
                 "shasum": ""
             },
             "require": {
@@ -36967,7 +37149,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\StateMachine\\Helper\\": "tests/SprykerTest/Zed/StateMachine/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -36975,7 +37158,7 @@
                 "proprietary"
             ],
             "description": "StateMachine module",
-            "time": "2019-12-27T16:09:38+00:00"
+            "time": "2020-04-05T18:05:33+00:00"
         },
         {
             "name": "spryker/step-engine",
