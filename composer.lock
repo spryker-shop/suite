@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.134.2",
+            "version": "3.134.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "4fe0b03a2eefb677ce4ca47b7e3c3705f04516c8"
+                "reference": "74dc1df2cb5ee7ebbcf3203fda9c24ce7134e952"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/4fe0b03a2eefb677ce4ca47b7e3c3705f04516c8",
-                "reference": "4fe0b03a2eefb677ce4ca47b7e3c3705f04516c8",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/74dc1df2cb5ee7ebbcf3203fda9c24ce7134e952",
+                "reference": "74dc1df2cb5ee7ebbcf3203fda9c24ce7134e952",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-04-02T18:13:41+00:00"
+            "time": "2020-04-06T18:14:00+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -3058,16 +3058,16 @@
         },
         {
             "name": "phpseclib/phpseclib",
-            "version": "2.0.26",
+            "version": "2.0.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "09655fcc1f8bab65727be036b28f6f20311c126c"
+                "reference": "34620af4df7d1988d8f0d7e91f6c8a3bf931d8dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/09655fcc1f8bab65727be036b28f6f20311c126c",
-                "reference": "09655fcc1f8bab65727be036b28f6f20311c126c",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/34620af4df7d1988d8f0d7e91f6c8a3bf931d8dc",
+                "reference": "34620af4df7d1988d8f0d7e91f6c8a3bf931d8dc",
                 "shasum": ""
             },
             "require": {
@@ -3146,7 +3146,7 @@
                 "x.509",
                 "x509"
             ],
-            "time": "2020-03-13T04:15:39+00:00"
+            "time": "2020-04-04T23:17:33+00:00"
         },
         {
             "name": "phpspec/prophecy",
@@ -4859,12 +4859,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "e42569e831313859151b0ddc20b8c927fe249cde"
+                "reference": "8b7ba37941de5975114bcd9001272987a5d396b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/e42569e831313859151b0ddc20b8c927fe249cde",
-                "reference": "e42569e831313859151b0ddc20b8c927fe249cde",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/8b7ba37941de5975114bcd9001272987a5d396b2",
+                "reference": "8b7ba37941de5975114bcd9001272987a5d396b2",
                 "shasum": ""
             },
             "require": {
@@ -4885,7 +4885,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -4915,7 +4915,7 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "time": "2020-03-09T10:01:35+00:00"
+            "time": "2020-04-06T13:59:56+00:00"
         },
         {
             "name": "spryker/silexphp",
@@ -5003,7 +5003,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "af79318b0ff564df4db0ba4bc15ada6d53749fb9"
+                "reference": "1145c0b4589b6cddc92980ceb58329152c782553"
             },
             "require": {
                 "php": ">=7.2"
@@ -5489,6 +5489,8 @@
                 "spryker/product-quantity-storage": "*",
                 "spryker/product-relation": "*",
                 "spryker/product-relation-collector": "*",
+                "spryker/product-relation-data-import": "*",
+                "spryker/product-relation-gui": "*",
                 "spryker/product-relation-storage": "*",
                 "spryker/product-resource-alias-storage": "*",
                 "spryker/product-review": "*",
@@ -5566,6 +5568,7 @@
                 "spryker/session-extension": "*",
                 "spryker/session-file": "*",
                 "spryker/session-redis": "*",
+                "spryker/session-redis-extension": "*",
                 "spryker/setup": "*",
                 "spryker/setup-frontend": "*",
                 "spryker/shared-cart": "*",
@@ -5683,7 +5686,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-04-06T15:20:28+00:00"
+            "time": "2020-04-07T08:21:25+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5691,7 +5694,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "be77b974831869591f6780ab967c6dba9450fde0"
+                "reference": "2ee9aecc9d3cdc7b1d92fd321d49e2c836fd6b91"
             },
             "require": {
                 "php": ">=7.2"
@@ -5835,7 +5838,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-04-02T10:25:56+00:00"
+            "time": "2020-04-07T07:24:00+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -10460,20 +10463,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
-                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler"
+                    "homepage": "https://github.com/manuelpichler",
+                    "role": "Project Founder"
                 },
                 {
                     "name": "Marc Würth",
-                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84"
+                    "homepage": "https://github.com/ravage84",
+                    "role": "Project Maintainer"
                 },
                 {
                     "name": "Other contributors",
-                    "role": "Contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
+                    "role": "Contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -11132,12 +11135,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/spryk.git",
-                "reference": "9098749a330c665c037501ce141ed7cdc75aa474"
+                "reference": "a607f177381711ccfd6f5eef1fcf7f7e0601f864"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/9098749a330c665c037501ce141ed7cdc75aa474",
-                "reference": "9098749a330c665c037501ce141ed7cdc75aa474",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/a607f177381711ccfd6f5eef1fcf7f7e0601f864",
+                "reference": "a607f177381711ccfd6f5eef1fcf7f7e0601f864",
                 "shasum": ""
             },
             "require": {
@@ -11181,7 +11184,7 @@
                 "proprietary"
             ],
             "description": "Spryk module",
-            "time": "2020-02-20T14:09:57+00:00"
+            "time": "2020-04-03T16:20:41+00:00"
         },
         {
             "name": "spryker-sdk/spryk-gui",
@@ -11393,7 +11396,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "ea0efb7175b96f9f92ba9d228a878deaa624bd1e"
+                "reference": "6ca4670fc1452c48293eb0a63cbafb9eb68ac4b5"
             },
             "require": {
                 "php": ">=7.2",
@@ -11434,7 +11437,7 @@
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2020-02-14T10:27:08+00:00"
+            "time": "2020-04-03T16:00:40+00:00"
         },
         {
             "name": "spryker/git-hook",
