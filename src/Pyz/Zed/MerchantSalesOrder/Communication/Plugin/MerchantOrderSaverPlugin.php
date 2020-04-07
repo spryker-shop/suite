@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\MerchantSalesOrder\Communication\Plugin;
 
-use Generated\Shared\Transfer\MerchantSalesOrderTransfer;
+use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\SaveOrderTransfer;
 use Spryker\Zed\CheckoutExtension\Dependency\Plugin\CheckoutDoSaveOrderInterface;
@@ -20,7 +20,7 @@ class MerchantOrderSaverPlugin extends AbstractPlugin implements CheckoutDoSaveO
 {
     /**
      * {@inheritDoc}
-     * - For every item with merchant offer save related data to `spy_merchant_sales_order`.
+     * - Creates a collection of merchant orders using the provided order data.
      *
      * @api
      *
@@ -31,32 +31,28 @@ class MerchantOrderSaverPlugin extends AbstractPlugin implements CheckoutDoSaveO
      */
     public function saveOrder(QuoteTransfer $quoteTransfer, SaveOrderTransfer $saveOrderTransfer): void
     {
-        foreach ($quoteTransfer->getItems() as $itemTransfer) {
-            if (!$itemTransfer->getMerchantReference()) {
-                continue;
-            }
-
-            $this->getFacade()->createMerchantSalesOrder(
-                $this->createMerchantSalesOrderTransfer($itemTransfer->getMerchantReference(), $saveOrderTransfer)
-            );
-        }
+        $this->getFacade()->createMerchantOrderCollection(
+            $this->getOrderTransfer($quoteTransfer, $saveOrderTransfer)
+        );
     }
 
     /**
-     * @param string $merchantReference
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      * @param \Generated\Shared\Transfer\SaveOrderTransfer $saveOrderTransfer
      *
-     * @return \Generated\Shared\Transfer\MerchantSalesOrderTransfer
+     * @return \Generated\Shared\Transfer\OrderTransfer
      */
-    protected function createMerchantSalesOrderTransfer(
-        string $merchantReference,
+    protected function getOrderTransfer(
+        QuoteTransfer $quoteTransfer,
         SaveOrderTransfer $saveOrderTransfer
-    ): MerchantSalesOrderTransfer {
-        $merchantSalesOrderTransfer = new MerchantSalesOrderTransfer();
-        $merchantSalesOrderTransfer->setMerchantReference($merchantReference);
-        $merchantSalesOrderTransfer->setFkSalesOrder($saveOrderTransfer->getIdSalesOrder());
-        $merchantSalesOrderTransfer->setOrderReference($saveOrderTransfer->getOrderReference());
+    ): OrderTransfer {
+        $orderTransfer = new OrderTransfer();
+        $orderTransfer->setIdSalesOrder($saveOrderTransfer->getIdSalesOrder());
+        $orderTransfer->setOrderReference($saveOrderTransfer->getOrderReference());
+        $orderTransfer->setPriceMode($quoteTransfer->getPriceMode());
+        $orderTransfer->setExpenses($saveOrderTransfer->getOrderExpenses());
+        $orderTransfer->setItems($saveOrderTransfer->getOrderItems());
 
-        return $merchantSalesOrderTransfer;
+        return $orderTransfer;
     }
 }
