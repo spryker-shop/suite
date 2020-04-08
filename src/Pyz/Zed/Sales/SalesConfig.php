@@ -69,6 +69,6 @@ class SalesConfig extends SprykerSalesConfig
      */
     public function isHydrateOrderHistoryToItems(): bool
     {
-        return true;
+        return false;
     }
 }
