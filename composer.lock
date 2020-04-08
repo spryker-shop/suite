@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2f08c3620dd54646b73e440c4519ea6b",
+    "content-hash": "f6235282744d432184e2f1d1b3aee9c8",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.134.4",
+            "version": "3.134.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "74dc1df2cb5ee7ebbcf3203fda9c24ce7134e952"
+                "reference": "f5a2d82660e73ed613643a5e7ad833d2569d5fdf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/74dc1df2cb5ee7ebbcf3203fda9c24ce7134e952",
-                "reference": "74dc1df2cb5ee7ebbcf3203fda9c24ce7134e952",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/f5a2d82660e73ed613643a5e7ad833d2569d5fdf",
+                "reference": "f5a2d82660e73ed613643a5e7ad833d2569d5fdf",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-04-06T18:14:00+00:00"
+            "time": "2020-04-07T18:11:11+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -3146,20 +3146,6 @@
                 "x.509",
                 "x509"
             ],
-            "funding": [
-                {
-                    "url": "https://github.com/terrafrost",
-                    "type": "github"
-                },
-                {
-                    "url": "https://www.patreon.com/phpseclib",
-                    "type": "patreon"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/phpseclib/phpseclib",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-04-04T23:17:33+00:00"
         },
         {
@@ -5023,11 +5009,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/mp-2179/dev-introduce-merchant-storage-module-and-cleanup",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "37e808a1467bc5051cc78ff4d2cffe1b1768c28b"
+                "reference": "51b416938da93e7ef60b1fe9dca7dc40e74c4d3f"
             },
             "require": {
                 "php": ">=7.2"
@@ -5334,6 +5320,7 @@
                 "spryker/merchant-profile": "*",
                 "spryker/merchant-profile-data-import": "*",
                 "spryker/merchant-profile-gui": "*",
+                "spryker/merchant-profile-storage": "*",
                 "spryker/merchant-relationship": "*",
                 "spryker/merchant-relationship-data-import": "*",
                 "spryker/merchant-relationship-extension": "*",
@@ -5352,7 +5339,6 @@
                 "spryker/merchant-stock": "*",
                 "spryker/merchant-stock-data-import": "*",
                 "spryker/merchant-stock-gui": "*",
-                "spryker/merchant-storage": "*",
                 "spryker/merchant-switcher": "*",
                 "spryker/merchant-user": "*",
                 "spryker/merchant-user-auth-gui-page": "*",
@@ -5712,15 +5698,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-04-08T13:28:23+00:00"
+            "time": "2020-04-08T10:56:14+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/mp-2179/dev-introduce-merchant-storage-module-and-cleanup",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "47f92e070649c5c5be6cd24bbebab248770b165f"
+                "reference": "be61d735c5ef8bc5857c62040a041ad8c16553be"
             },
             "require": {
                 "php": ">=7.2"
@@ -5776,10 +5762,8 @@
                 "spryker-shop/gift-card-widget": "*",
                 "spryker-shop/home-page": "*",
                 "spryker-shop/language-switcher-widget": "*",
-                "spryker-shop/merchant-opening-hours-widget": "*",
-                "spryker-shop/merchant-page": "*",
                 "spryker-shop/merchant-product-offer-widget": "*",
-                "spryker-shop/merchant-profile-widget": "*",
+                "spryker-shop/merchant-profile-page": "*",
                 "spryker-shop/merchant-switcher-widget": "*",
                 "spryker-shop/money-widget": "*",
                 "spryker-shop/multi-cart-page": "*",
@@ -5866,7 +5850,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-04-08T13:27:00+00:00"
+            "time": "2020-04-07T15:07:32+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -9224,8 +9208,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -12511,8 +12495,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "lead",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "lead"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
