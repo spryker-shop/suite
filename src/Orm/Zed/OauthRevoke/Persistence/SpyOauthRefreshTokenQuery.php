@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\OauthRevoke\Persistence;
 
-use Orm\Zed\OauthRevoke\Persistence\Base\SpyOauthRefreshTokenQuery as BaseSpyOauthRefreshTokenQuery;
+use Spryker\Zed\OauthRevoke\Persistence\Propel\AbstractSpyOauthRefreshTokenQuery as BaseSpyOauthRefreshTokenQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_oauth_refresh_token' table.
