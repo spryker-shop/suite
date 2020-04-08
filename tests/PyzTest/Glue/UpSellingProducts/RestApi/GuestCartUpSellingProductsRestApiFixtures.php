@@ -7,10 +7,12 @@
 
 namespace PyzTest\Glue\UpSellingProducts\RestApi;
 
+use Generated\Shared\DataBuilder\StoreRelationBuilder;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
+use Generated\Shared\Transfer\StoreRelationTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
 use PyzTest\Glue\UpSellingProducts\UpSellingProductsApiTester;
@@ -130,9 +132,24 @@ class GuestCartUpSellingProductsRestApiFixtures implements FixturesBuilderInterf
      */
     protected function createRelationBetweenProducts(UpSellingProductsApiTester $I): void
     {
+        $storeTransfer = $I->haveStore([
+            StoreTransfer::NAME => 'DE',
+        ]);
+        $storeRelationTransfer = (new StoreRelationBuilder())->seed([
+            StoreRelationTransfer::ID_STORES => [
+                $storeTransfer->getIdStore(),
+            ],
+            StoreRelationTransfer::STORES => [
+                $storeTransfer,
+            ],
+        ])->build();
+
         $I->haveProductRelation(
             $this->upSellingProductConcreteTransfer->getAbstractSku(),
-            $this->productConcreteTransfer->getFkProductAbstract()
+            $this->productConcreteTransfer->getFkProductAbstract(),
+            uniqid('test-', false),
+            'up-selling',
+            $storeRelationTransfer
         );
     }
 
