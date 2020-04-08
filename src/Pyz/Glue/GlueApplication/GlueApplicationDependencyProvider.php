@@ -12,6 +12,7 @@ use Spryker\Glue\AlternativeProductsRestApi\Plugin\GlueApplication\ConcreteAlter
 use Spryker\Glue\AuthRestApi\Plugin\AccessTokenRestRequestValidatorPlugin;
 use Spryker\Glue\AuthRestApi\Plugin\AccessTokensResourceRoutePlugin;
 use Spryker\Glue\AuthRestApi\Plugin\FormatAuthenticationErrorResponseHeadersPlugin;
+use Spryker\Glue\AuthRestApi\Plugin\GlueApplication\SimultaneousAuthenticationRestRequestValidatorPlugin;
 use Spryker\Glue\AuthRestApi\Plugin\RefreshTokensResourceRoutePlugin;
 use Spryker\Glue\AuthRestApi\Plugin\RestUserFinderByAccessTokenPlugin;
 use Spryker\Glue\CartCodesRestApi\Plugin\GlueApplication\CartRuleByQuoteResourceRelationshipPlugin;
@@ -89,6 +90,7 @@ use Spryker\Glue\OrderPaymentsRestApi\Plugin\OrderPaymentsResourceRoutePlugin;
 use Spryker\Glue\OrdersRestApi\OrdersRestApiConfig;
 use Spryker\Glue\OrdersRestApi\Plugin\OrderRelationshipByOrderReferencePlugin;
 use Spryker\Glue\OrdersRestApi\Plugin\OrdersResourceRoutePlugin;
+use Spryker\Glue\PaymentsRestApi\Plugin\GlueApplication\PaymentMethodsByCheckoutDataResourceRelationshipPlugin;
 use Spryker\Glue\ProductAvailabilitiesRestApi\Plugin\AbstractProductAvailabilitiesRoutePlugin;
 use Spryker\Glue\ProductAvailabilitiesRestApi\Plugin\ConcreteProductAvailabilitiesRoutePlugin;
 use Spryker\Glue\ProductAvailabilitiesRestApi\Plugin\GlueApplication\AbstractProductAvailabilitiesByResourceIdResourceRelationshipPlugin;
@@ -129,6 +131,7 @@ use Spryker\Glue\Session\Plugin\Application\SessionApplicationPlugin;
 use Spryker\Glue\SharedCartsRestApi\Plugin\GlueApplication\SharedCartByCartIdResourceRelationshipPlugin;
 use Spryker\Glue\SharedCartsRestApi\Plugin\GlueApplication\SharedCartsResourceRoutePlugin;
 use Spryker\Glue\SharedCartsRestApi\SharedCartsRestApiConfig;
+use Spryker\Glue\ShipmentsRestApi\Plugin\GlueApplication\ShipmentMethodsByCheckoutDataResourceRelationshipPlugin;
 use Spryker\Glue\ShoppingListsRestApi\Plugin\GlueApplication\ShoppingListItemByShoppingListResourceRelationshipPlugin;
 use Spryker\Glue\ShoppingListsRestApi\Plugin\GlueApplication\ShoppingListItemsResourcePlugin;
 use Spryker\Glue\ShoppingListsRestApi\Plugin\GlueApplication\ShoppingListsResourcePlugin;
@@ -236,6 +239,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     {
         return [
             new AccessTokenRestRequestValidatorPlugin(),
+            new SimultaneousAuthenticationRestRequestValidatorPlugin(),
             new ValidateRestRequestAttributesPlugin(),
             new CurrencyParameterValidatorPlugin(),
             new PriceModeParameterValidatorPlugin(),
@@ -486,6 +490,14 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         $resourceRelationshipCollection->addRelationship(
             ShoppingListsRestApiConfig::RESOURCE_SHOPPING_LISTS,
             new ShoppingListItemByShoppingListResourceRelationshipPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
+            new ShipmentMethodsByCheckoutDataResourceRelationshipPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            CheckoutRestApiConfig::RESOURCE_CHECKOUT_DATA,
+            new PaymentMethodsByCheckoutDataResourceRelationshipPlugin()
         );
         $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_CARTS,
