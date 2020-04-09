@@ -26,7 +26,7 @@ use SprykerShop\Yves\CustomerPage\Form\RegisterForm;
 use SprykerShop\Yves\CustomerPage\Plugin\CheckoutPage\CheckoutAddressFormDataProviderPlugin;
 use SprykerShop\Yves\CustomerPage\Plugin\CheckoutPage\CustomerAddressExpanderPlugin;
 use SprykerShop\Yves\CustomerPage\Plugin\CustomerStepHandler;
-use SprykerShop\Yves\MerchantProductOfferWidget\Plugin\StepEngine\MerchantCheckoutStepEnginePreRenderPlugin;
+use SprykerShop\Yves\MerchantProductOfferWidget\Plugin\CheckoutPage\MerchantCheckoutStepEnginePreRenderPlugin;
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutAddressStepEnterPreCheckPlugin;
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutPaymentStepEnterPreCheckPlugin;
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutShipmentStepEnterPreCheckPlugin;
@@ -197,7 +197,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     }
 
     /**
-     * @return \Spryker\Yves\StepEngineExtension\Dependency\Plugin\StepEnginePreRenderPluginInterface[]
+     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\StepEngine\CheckoutPageStepEnginePreRenderPluginInterface[]
      */
     protected function getCheckoutStepEnginePreRenderPlugins(): array
     {
