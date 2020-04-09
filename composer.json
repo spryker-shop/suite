@@ -9,7 +9,7 @@
     "spryker-eco/loggly": "dev-master",
     "spryker/rabbit-mq": "dev-master",
     "spryker/install": "dev-master",
-    "spryker/event-behavior": "dev-master as 1.15.0",
+    "spryker/event-behavior": "dev-master as 1.16.0",
     "spryker/synchronization-behavior": "dev-master as 1.4.0",
     "spryker/uuid-behavior": "dev-master as 1.1.0",
     "spryker/silexphp": "dev-master as 0.3.1",
@@ -25,9 +25,11 @@
     "ext-pdo_pgsql": "*",
     "ext-pgsql": "*",
     "ext-readline": "*",
-    "ext-redis": "*"
+    "ext-redis": "*",
+    "wikimedia/composer-merge-plugin": "^1.4.1"
   },
   "require-dev": {
+    "codeception/codeception": "<4.1.2",
     "spryker/architecture-sniffer": "dev-master",
     "spryker/development-core": "dev-master",
     "spryker/code-generator": "dev-master",
@@ -55,21 +57,19 @@
     "spryker-sdk/spryk": "dev-master as 0.2.2",
     "spryker-sdk/spryk-gui": "dev-master",
     "dms/phpunit-arraysubset-asserts": "^0.1.0",
-    "wikimedia/composer-merge-plugin": "^1.4.1",
     "codeception/module-rest": "^1.0",
     "codeception/module-phpbrowser": "^1.0",
     "codeception/module-asserts": "^1.1",
     "codeception/module-webdriver": "^1.0",
     "codeception/module-cli": "^1.0",
-    "codeception/module-filesystem": "^1.0"
+    "codeception/module-filesystem": "^1.0",
+    "webmozart/glob": "^4.0.0"
   },
   "autoload": {
     "psr-4": {
       "Generated\\": "src/Generated/",
       "Orm\\": "src/Orm/",
-      "Pyz\\": "src/Pyz/",
-      "Spryker\\": "vendor/spryker/spryker/Bundles/",
-      "SprykerShop\\": "vendor/spryker/spryker-shop/Bundles/"
+      "Pyz\\": "src/Pyz/"
     },
     "psr-0": {
       "Pimple": "vendor/spryker/spryker/Bundles/Container/src/Spryker"
@@ -81,6 +81,12 @@
     },
     "files": [
       "test-autoload.php"
+    ],
+    "exclude-from-classmap": [
+      "/tests/",
+      "vendor/spryker/spryker/Bundles/*/tests/",
+      "vendor/spryker/spryker-shop/Bundles/*/tests/",
+      "vendor/flow/jsonpath/tests/"
     ]
   },
   "minimum-stability": "dev",
@@ -125,7 +131,7 @@
     "phpstan": [
       "php -d memory_limit=1024M vendor/bin/phpstan analyze -l 5 -c phpstan.neon src/"
     ],
-    "phpstan-setup": "vendor/bin/console dev:ide:generate-auto-completion"
+    "phpstan-setup": "vendor/bin/console dev:ide-auto-completion:generate"
   },
   "extra": {
     "merge-plugin": {

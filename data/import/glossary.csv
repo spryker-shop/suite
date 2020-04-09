@@ -1145,8 +1145,12 @@ dummyPaymentCreditCard.card_security_code,CVC,en_US
 dummyPaymentCreditCard.card_security_code,CVC,de_DE
 DummyPaymentInvoice,Invoice,en_US
 DummyPaymentInvoice,Auf Rechnung,de_DE
+DummyMarketplacePaymentInvoice,Invoice,en_US
+DummyMarketplacePaymentInvoice,Auf Rechnung,de_DE
 dummyPaymentInvoice.invoice,Pay with invoice:,en_US
 dummyPaymentInvoice.invoice,Auf Rechnung bezahlen:,de_DE
+dummyMarketplacePaymentInvoice.invoice,Pay with invoice:,en_US
+dummyMarketplacePaymentInvoice.invoice,Auf Rechnung bezahlen:,de_DE
 dummyPaymentInvoice.date_of_birth,Date of Birth,en_US
 dummyPaymentInvoice.date_of_birth,Geburtsdatum,de_DE
 cart.item.item_price,Item price,en_US
@@ -1195,6 +1199,8 @@ cart.promotion.items,Promotional products,en_US
 cart.promotion.items,Werbeprodukte,de_DE
 checkout.payment.provider.DummyPayment,Dummy Payment,en_US
 checkout.payment.provider.DummyPayment,Beispiel-Zahlungsart,de_DE
+checkout.payment.provider.DummyMarketplacePayment,Dummy Marketplace Payment,en_US
+checkout.payment.provider.DummyMarketplacePayment,Beispiel Marktplatz Zahlungsmethode,de_DE
 cms.preview.access_denied,You are not logged in or you do not have permission to access this page.,en_US
 cms.preview.access_denied,Du bist nicht eingeloggt oder hast keine Berechtigung diese Seite zu betreten.,de_DE
 product-cart.validation.error.abstract-product-exists,"Product ""sku"" not found",en_US
@@ -2027,6 +2033,8 @@ customer.account.shopping_list.overview.print,Print,en_US
 customer.account.shopping_list.overview.print,Drucken,de_DE
 customer.account.shopping_list.overview.dismiss,Dismiss,en_US
 customer.account.shopping_list.overview.dismiss,Ablehnen,de_DE
+customer.account.shopping_list_item.error.product_not_active,Product is not active.,en_US
+customer.account.shopping_list_item.error.product_not_active,Produkt ist nicht aktiv,de_DE
 shopping_list_page.dismiss_confirmation.trying_to_dismiss,Are you sure that you what to dismiss shopping list?,en_US
 shopping_list_page.dismiss_confirmation.trying_to_dismiss,"Sind Sie sicher, dass Sie den Einkaufsliste ablehnen wollen?",de_DE
 shopping_list_page.dismiss.failed,Shopping list was not dismissed.,en_US
@@ -3131,6 +3139,18 @@ product_packaging_unit_node_summary,(= %summary%),en_US
 product_packaging_unit_node_summary,(= %summary%),de_DE
 product_packaging_unit_node_amount_summary,= %summary%,en_US
 product_packaging_unit_node_amount_summary,= %summary%,de_DE
+order_custom_reference.reference_saved,Custom order reference was successfully saved.,en_US
+order_custom_reference.reference_saved,Ihre Bestellreferenz wurde erfolgreich gespeichert.,de_DE
+order_custom_reference.reference_not_saved,Custom order reference has not been changed.,en_US
+order_custom_reference.reference_not_saved,Ihre Bestellreferenz wurde nicht geändert.,de_DE
+order_custom_reference.validation.error.message_invalid_length,Custom order reference length is invalid.,en_US
+order_custom_reference.validation.error.message_invalid_length,Die Länge der Bestellreferenz ist ungültig.,de_DE
+order_custom_reference.title,Custom Order Reference,en_US
+order_custom_reference.title,Ihre Bestellreferenz,de_DE
+order_custom_reference.form.placeholder,Add custom order reference,en_US
+order_custom_reference.form.placeholder,Ihre Bestellreferenz hinzufügen,de_DE
+order_custom_reference.save,Save,en_US
+order_custom_reference.save,Speichern,de_DE
 merchant_switcher.message,"Wechseln von %currentMerchant% zu %newMerchant%? Aufgrund unterschiedlicher Verfügbarkeit können ggf. nicht alle Produkte in Warenkorb übernommen werden.",de_DE
 merchant_switcher.message,"Switch from %currentMerchant% to %newMerchant%? Due to different availability, not all products may be added to your shopping cart.",en_US
 merchant_switcher.label,Mein Händler:,de_DE
@@ -3139,3 +3159,11 @@ maintenance.search.gui_is_not_set_up,To be able to inspect the search data pleas
 maintenance.search.gui_is_not_set_up,Um die Suchdaten einsehen zu können installieren Sie bitte das für Ihren Search Provider vorgesehenes GUI-Modul (z.B. spryker/search-elasticsearch-gui für Elasticsearch).,de_DE
 merchant_switcher.message.product_is_not_available,"Product '%product_name%' (SKU %sku%) is not available from the selected merchant. Please remove it from your cart in order to proceed or switch the merchant.",en_US
 merchant_switcher.message.product_is_not_available,"Produkt '%product_name%' (SKU %sku%) ist nicht beim ausgewählten Händler erhältlich. Bitte diesen Artikel aus dem Warenkorb entfernen, um fortzufahren oder den Händler wechseln.",de_DE
+shared_cart.dismiss_confirmation.carts_list,Carts List,en_US
+shared_cart.dismiss_confirmation.carts_list,Einkaufswagen,de_DE
+shopping_list.dismiss_confirmation.shopping_lists,Shopping Lists,en_US
+shopping_list.dismiss_confirmation.shopping_lists,Einkaufsliste,de_DE
+footer.copyright.content_text,"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",en_US
+footer.copyright.content_text,"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",de_DE
+footer.copyright.text,"&copy; ACME Company",en_US
+footer.copyright.text,"&copy; ACME Company",de_DE
