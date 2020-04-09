@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2f08c3620dd54646b73e440c4519ea6b",
+    "content-hash": "f6235282744d432184e2f1d1b3aee9c8",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1117,8 +1117,8 @@
             "authors": [
                 {
                     "name": "Alessio Linares",
-                    "email": "alessio.linares@skyscanner.net",
-                    "role": "Software Engineer"
+                    "role": "Software Engineer",
+                    "email": "alessio.linares@skyscanner.net"
                 }
             ],
             "description": "JSONPath implementation for querying and updating JSON objects",
@@ -3146,20 +3146,6 @@
                 "x.509",
                 "x509"
             ],
-            "funding": [
-                {
-                    "url": "https://github.com/terrafrost",
-                    "type": "github"
-                },
-                {
-                    "url": "https://www.patreon.com/phpseclib",
-                    "type": "patreon"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/phpseclib/phpseclib",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-04-04T23:17:33+00:00"
         },
         {
@@ -3671,7 +3657,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -5023,11 +5009,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/mp-2179/dev-introduce-merchant-storage-module-and-cleanup",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "19e8244a845df3ec8ce51fbde76d76ced46bf7a9"
+                "reference": "70b84359b95f0394bcc7adc2f2412a3099418162"
             },
             "require": {
                 "php": ">=7.2"
@@ -5334,6 +5320,7 @@
                 "spryker/merchant-profile": "*",
                 "spryker/merchant-profile-data-import": "*",
                 "spryker/merchant-profile-gui": "*",
+                "spryker/merchant-profile-storage": "*",
                 "spryker/merchant-relationship": "*",
                 "spryker/merchant-relationship-data-import": "*",
                 "spryker/merchant-relationship-extension": "*",
@@ -5352,10 +5339,10 @@
                 "spryker/merchant-stock": "*",
                 "spryker/merchant-stock-data-import": "*",
                 "spryker/merchant-stock-gui": "*",
-                "spryker/merchant-storage": "*",
                 "spryker/merchant-switcher": "*",
                 "spryker/merchant-user": "*",
                 "spryker/merchant-user-auth-gui-page": "*",
+                "spryker/merchant-user-gui": "*",
                 "spryker/messenger": "*",
                 "spryker/messenger-extension": "*",
                 "spryker/module-finder": "*",
@@ -5712,15 +5699,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-04-08T14:35:33+00:00"
+            "time": "2020-04-08T15:48:06+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/mp-2179/dev-introduce-merchant-storage-module-and-cleanup",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "07f3504636fe9e4a0831cd94980fed0386ba8d49"
+                "reference": "be61d735c5ef8bc5857c62040a041ad8c16553be"
             },
             "require": {
                 "php": ">=7.2"
@@ -5776,10 +5763,8 @@
                 "spryker-shop/gift-card-widget": "*",
                 "spryker-shop/home-page": "*",
                 "spryker-shop/language-switcher-widget": "*",
-                "spryker-shop/merchant-opening-hours-widget": "*",
-                "spryker-shop/merchant-page": "*",
                 "spryker-shop/merchant-product-offer-widget": "*",
-                "spryker-shop/merchant-profile-widget": "*",
+                "spryker-shop/merchant-profile-page": "*",
                 "spryker-shop/merchant-switcher-widget": "*",
                 "spryker-shop/money-widget": "*",
                 "spryker-shop/multi-cart-page": "*",
@@ -5866,7 +5851,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-04-08T14:36:22+00:00"
+            "time": "2020-04-07T15:07:32+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
