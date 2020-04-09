@@ -7,6 +7,7 @@
 
 namespace PyzTest\Zed\DataImport\Communication\Plugin\ProductConcrete;
 
+use Generated\Shared\Transfer\DataImportConfigurationActionTransfer;
 use Generated\Shared\Transfer\DataImporterReportTransfer;
 use Pyz\Zed\DataImport\Communication\Plugin\ProductConcrete\ProductConcreteBulkPdoWriterPlugin;
 use PyzTest\Zed\DataImport\Communication\Plugin\AbstractWriterPluginTest;
@@ -28,6 +29,7 @@ use Spryker\Shared\Propel\PropelConstants;
 class ProductConcreteBulkPdoWriterPluginTest extends AbstractWriterPluginTest
 {
     public const CSV_IMPORT_FILE = 'import/ProductConcrete/product_concrete.csv';
+    public const DATA_IMPORTER_TYPE = 'product-concrete';
 
     /**
      * @return void
@@ -39,7 +41,7 @@ class ProductConcreteBulkPdoWriterPluginTest extends AbstractWriterPluginTest
         }
 
         $dataImportBusinessFactory = $this->getDataImportBusinessFactoryStub();
-        $dataImport = $dataImportBusinessFactory->createProductConcreteImporter();
+        $dataImport = $dataImportBusinessFactory->createProductConcreteImporter($this->getDataImportConfigurationActionTransfer());
         $dataImporterReportTransfer = $dataImport->import();
         $this->assertInstanceOf(DataImporterReportTransfer::class, $dataImporterReportTransfer);
     }
@@ -55,10 +57,12 @@ class ProductConcreteBulkPdoWriterPluginTest extends AbstractWriterPluginTest
     }
 
     /**
-     * @return string
+     * @return \Generated\Shared\Transfer\DataImportConfigurationActionTransfer
      */
-    public function getDataImportCsvFile(): string
+    public function getDataImportConfigurationActionTransfer(): DataImportConfigurationActionTransfer
     {
-        return static::CSV_IMPORT_FILE;
+        return (new DataImportConfigurationActionTransfer())
+            ->setDataEntity(static::DATA_IMPORTER_TYPE)
+            ->setSource(static::CSV_IMPORT_FILE);
     }
 }
