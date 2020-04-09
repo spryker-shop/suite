@@ -11,6 +11,10 @@ use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryKey\Gloss
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryKey\GlossaryWritePublisherPlugin as GlossaryKeyWriterPublisherPlugin;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryPublisherTriggerPlugin;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryTranslation\GlossaryWritePublisherPlugin as GlossaryTranslationWritePublisherPlugin;
+use Spryker\Zed\ProductLabelStorage\Communication\Plugin\Publisher\ProductAbstractLabel\ProductAbstractLabelWritePublisherPlugin;
+use Spryker\Zed\ProductLabelStorage\Communication\Plugin\Publisher\ProductLabelDictionary\ProductLabelDictionaryDeletePublisherPlugin;
+use Spryker\Zed\ProductLabelStorage\Communication\Plugin\Publisher\ProductLabelDictionary\ProductLabelDictionaryWritePublisherPlugin;
+use Spryker\Zed\ProductLabelStorage\Communication\Plugin\Publisher\ProductLabelProductAbstract\ProductLabelProductAbstractWritePublisherPlugin;
 use Spryker\Zed\ProductRelationStorage\Communication\Plugin\Publisher\ProductRelation\ProductRelationWriteForPublishingPublisherPlugin;
 use Spryker\Zed\ProductRelationStorage\Communication\Plugin\Publisher\ProductRelation\ProductRelationWritePublisherPlugin;
 use Spryker\Zed\ProductRelationStorage\Communication\Plugin\Publisher\ProductRelationProductAbstract\ProductRelationProductAbstractWritePublisherPlugin;
@@ -27,7 +31,8 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
     {
         return array_merge(
             $this->getGlossaryStoragePlugins(),
-            $this->getProductRelationStoragePlugins()
+            $this->getProductRelationStoragePlugins(),
+            $this->getProductLabelStoragePlugins()
         );
     }
 
@@ -64,6 +69,19 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             new ProductRelationWriteForPublishingPublisherPlugin(),
             new ProductRelationProductAbstractWritePublisherPlugin(),
             new ProductRelationStoreWritePublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface[]
+     */
+    protected function getProductLabelStoragePlugins(): array
+    {
+        return [
+            new ProductAbstractLabelWritePublisherPlugin(),
+            new ProductLabelProductAbstractWritePublisherPlugin(),
+            new ProductLabelDictionaryWritePublisherPlugin(),
+            new ProductLabelDictionaryDeletePublisherPlugin(),
         ];
     }
 }
