@@ -7,7 +7,6 @@
 
 namespace Pyz\Yves\ShopApplication;
 
-use Pyz\Yves\ExampleProductColorGroupWidget\Widget\ExampleProductColorSelectorWidget;
 use Spryker\Yves\ErrorHandler\Plugin\Application\ErrorHandlerApplicationPlugin;
 use Spryker\Yves\EventDispatcher\Plugin\Application\EventDispatcherApplicationPlugin;
 use Spryker\Yves\Form\Plugin\Application\FormApplicationPlugin;
@@ -56,8 +55,9 @@ use SprykerShop\Yves\MultiCartWidget\Widget\QuickOrderPageWidget;
 use SprykerShop\Yves\NavigationWidget\Widget\NavigationWidget;
 use SprykerShop\Yves\NewsletterWidget\Widget\NewsletterSubscriptionSummaryWidget;
 use SprykerShop\Yves\NewsletterWidget\Widget\NewsletterSubscriptionWidget;
+use SprykerShop\Yves\OrderCustomReferenceWidget\Widget\OrderCustomReferenceWidget;
 use SprykerShop\Yves\PersistentCartShareWidget\Widget\ShareCartByLinkWidget;
-use SprykerShop\Yves\PriceProductVolumeWidget\Widget\ProductPriceVolumeWidget;
+use SprykerShop\Yves\PriceProductVolumeWidget\Widget\CurrentProductPriceVolumeWidget;
 use SprykerShop\Yves\PriceProductWidget\Widget\PriceProductWidget;
 use SprykerShop\Yves\PriceWidget\Widget\PriceModeSwitcherWidget;
 use SprykerShop\Yves\ProductAlternativeWidget\Widget\ProductAlternativeListWidget;
@@ -71,6 +71,7 @@ use SprykerShop\Yves\ProductBundleWidget\Widget\ProductBundleMultiCartItemsListW
 use SprykerShop\Yves\ProductCategoryWidget\Widget\ProductBreadcrumbsWithCategoriesWidget;
 use SprykerShop\Yves\ProductDiscontinuedWidget\Widget\ProductDiscontinuedNoteWidget;
 use SprykerShop\Yves\ProductDiscontinuedWidget\Widget\ProductDiscontinuedWidget;
+use SprykerShop\Yves\ProductGroupWidget\Widget\ProductGroupColorWidget;
 use SprykerShop\Yves\ProductGroupWidget\Widget\ProductGroupWidget;
 use SprykerShop\Yves\ProductLabelWidget\Widget\ProductAbstractLabelWidget;
 use SprykerShop\Yves\ProductLabelWidget\Widget\ProductConcreteLabelWidget;
@@ -159,7 +160,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CustomerNavigationWidget::class,
             CustomerReorderItemCheckboxWidget::class,
             DisplayProductAbstractReviewWidget::class,
-            ExampleProductColorSelectorWidget::class,
+            ProductGroupColorWidget::class,
             LanguageSwitcherWidget::class,
             ManageProductMeasurementUnitWidget::class,
             MiniCartWidget::class,
@@ -189,7 +190,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ProductGroupWidget::class,
             ProductOptionConfiguratorWidget::class,
             ProductPackagingUnitWidget::class,
-            ProductPriceVolumeWidget::class,
+            CurrentProductPriceVolumeWidget::class,
             ProductRatingFilterWidget::class,
             ProductReviewDisplayWidget::class,
             QuickOrderPageWidget::class,
@@ -233,6 +234,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             OrderConfiguredBundleWidget::class,
             MerchantProductOfferWidget::class,
             ConfiguredBundleNoteWidget::class,
+            OrderCustomReferenceWidget::class,
         ];
     }
 
