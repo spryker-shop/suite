@@ -174,8 +174,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
                 return $this->createProductGroupImporter($dataImportConfigurationActionTransfer);
             case DataImportConfig::IMPORT_TYPE_PRODUCT_REVIEW:
                 return $this->createProductReviewImporter($dataImportConfigurationActionTransfer);
-            case DataImportConfig::IMPORT_TYPE_PRODUCT_LABEL:
-                return $this->createProductLabelImporter($dataImportConfigurationActionTransfer);
             case DataImportConfig::IMPORT_TYPE_PRODUCT_SET:
                 return $this->createProductSetImporter($dataImportConfigurationActionTransfer);
             case DataImportConfig::IMPORT_TYPE_PRODUCT_SEARCH_ATTRIBUTE_MAP:
