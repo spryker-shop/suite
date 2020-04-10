@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7448c338c863ad6d69fa4c014954ee0c",
+    "content-hash": "f2696123ab4c69f7a3f0f8c67a2819c4",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -3104,16 +3104,16 @@
         },
         {
             "name": "spryker-shop/cart-page",
-            "version": "3.15.0",
+            "version": "3.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/cart-page.git",
-                "reference": "2e99cb81c1ae839716bf36a23b56011609bcfd8d"
+                "reference": "42d9c43d97200c7e353dc2ce5cf604c00181b8d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/cart-page/zipball/2e99cb81c1ae839716bf36a23b56011609bcfd8d",
-                "reference": "2e99cb81c1ae839716bf36a23b56011609bcfd8d",
+                "url": "https://api.github.com/repos/spryker-shop/cart-page/zipball/42d9c43d97200c7e353dc2ce5cf604c00181b8d6",
+                "reference": "42d9c43d97200c7e353dc2ce5cf604c00181b8d6",
                 "shasum": ""
             },
             "require": {
@@ -3162,6 +3162,7 @@
                 "spryker/container": "If you want to use the CartTwigPlugin",
                 "spryker/permission": "If you want to use permissions plugins",
                 "spryker/router": "Use this module when using plugins that adds routes to the Route Module.",
+                "spryker/shipment": "If you want to use the shipment total price, min version 8.4.0",
                 "spryker/silex": "Use this module when using plugins that need Silex dependencies.",
                 "spryker/twig": "Use this module when using plugins that need Twig dependencies."
             },
@@ -3181,7 +3182,7 @@
                 "proprietary"
             ],
             "description": "CartPage module",
-            "time": "2020-03-18T14:10:21+00:00"
+            "time": "2020-04-07T14:26:58+00:00"
         },
         {
             "name": "spryker-shop/cart-page-extension",
@@ -3432,22 +3433,22 @@
         },
         {
             "name": "spryker-shop/checkout-page",
-            "version": "3.11.0",
+            "version": "3.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/checkout-page.git",
-                "reference": "edf50b0801048fc7e0290c8d5ade0a600508accc"
+                "reference": "557ef1227d4cbb70344628c7fa601ee885c1b46d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/checkout-page/zipball/edf50b0801048fc7e0290c8d5ade0a600508accc",
-                "reference": "edf50b0801048fc7e0290c8d5ade0a600508accc",
+                "url": "https://api.github.com/repos/spryker-shop/checkout-page/zipball/557ef1227d4cbb70344628c7fa601ee885c1b46d",
+                "reference": "557ef1227d4cbb70344628c7fa601ee885c1b46d",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
-                "spryker-shop/checkout-page-extension": "^1.1.0",
-                "spryker-shop/customer-page": "^2.9.0",
+                "spryker-shop/checkout-page-extension": "^1.2.0",
+                "spryker-shop/customer-page": "^2.13.0",
                 "spryker-shop/money-widget": "^1.0.0",
                 "spryker-shop/shop-application": "^1.0.0",
                 "spryker-shop/shop-ui": "^1.28.1",
@@ -3466,7 +3467,7 @@
                 "spryker/product-bundle": "^4.1.0 || ^6.0.0 || ^7.0.0",
                 "spryker/quote": "^1.1.0 || ^2.0.0",
                 "spryker/shipment": "^7.0.0 || ^8.0.0",
-                "spryker/step-engine": "^3.2.0",
+                "spryker/step-engine": "^3.3.0",
                 "spryker/symfony": "^3.1.0",
                 "spryker/util-validate": "^1.0.0"
             },
@@ -3490,7 +3491,9 @@
                 "spryker-shop/gift-card-widget": "Add the module if you want to use gift card widget",
                 "spryker-shop/order-custom-reference-widget": "Add the module if you want to use order custom reference functionality",
                 "spryker-shop/product-packaging-unit-widget": "If you want to use components from module ProductPackagingUnitWidget or SummaryProductPackagingUnitWidgetPlugin: ^0.5.2",
+                "spryker-shop/quote-request-widget": "If you want to use QuoteRequestActionsWidget: ^2.2.0",
                 "spryker/router": "Use this module when you want to use the Router.",
+                "spryker/shipment-cart-connector": "If you want to use shipment totals in quote or shipment source prices, min version 2.1.0",
                 "spryker/silex": "Use this module when using plugins that need Silex dependencies."
             },
             "type": "library",
@@ -3509,28 +3512,27 @@
                 "proprietary"
             ],
             "description": "CheckoutPage module",
-            "time": "2020-03-18T14:10:21+00:00"
+            "time": "2020-04-09T13:58:52+00:00"
         },
         {
             "name": "spryker-shop/checkout-page-extension",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/checkout-page-extension.git",
-                "reference": "e5e541c113b7851b06a1a083cab394f87fa32152"
+                "reference": "f9f5e873ac8021a54fba4bb8332712e4d87d38c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/checkout-page-extension/zipball/e5e541c113b7851b06a1a083cab394f87fa32152",
-                "reference": "e5e541c113b7851b06a1a083cab394f87fa32152",
+                "url": "https://api.github.com/repos/spryker-shop/checkout-page-extension/zipball/f9f5e873ac8021a54fba4bb8332712e4d87d38c8",
+                "reference": "f9f5e873ac8021a54fba4bb8332712e4d87d38c8",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=7.2"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
+                "spryker/code-sniffer": "*"
             },
             "suggest": {
                 "spryker/symfony": "If you want to use CheckoutPage expander plugins."
@@ -3551,7 +3553,7 @@
                 "proprietary"
             ],
             "description": "CheckoutPageExtension module",
-            "time": "2019-10-09T08:02:23+00:00"
+            "time": "2020-04-07T14:26:58+00:00"
         },
         {
             "name": "spryker-shop/checkout-widget",
@@ -4673,16 +4675,16 @@
         },
         {
             "name": "spryker-shop/customer-page",
-            "version": "2.12.0",
+            "version": "2.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/customer-page.git",
-                "reference": "c3ff5d5bb09597452c78d944ff67c006857e7e0c"
+                "reference": "c887f8286d61a07db4c38bfe9b2622308d043ae5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/customer-page/zipball/c3ff5d5bb09597452c78d944ff67c006857e7e0c",
-                "reference": "c3ff5d5bb09597452c78d944ff67c006857e7e0c",
+                "url": "https://api.github.com/repos/spryker-shop/customer-page/zipball/c887f8286d61a07db4c38bfe9b2622308d043ae5",
+                "reference": "c887f8286d61a07db4c38bfe9b2622308d043ae5",
                 "shasum": ""
             },
             "require": {
@@ -4739,6 +4741,7 @@
                 "spryker/messenger": "Use this module when using plugins that need Messenger dependencies.",
                 "spryker/router": "Use this module when you want to use the Router.",
                 "spryker/security": "Add this module to use the SecurityPlugin.",
+                "spryker/shipment-cart-connector": "If you want to use shipment totals in quote or shipment source prices, min version 2.1.0",
                 "spryker/silex": "Use this module when using plugins that need Silex dependencies."
             },
             "type": "library",
@@ -4757,7 +4760,7 @@
                 "proprietary"
             ],
             "description": "CustomerPage module",
-            "time": "2020-03-18T14:10:21+00:00"
+            "time": "2020-04-08T14:18:12+00:00"
         },
         {
             "name": "spryker-shop/customer-page-extension",
@@ -7255,20 +7258,21 @@
         },
         {
             "name": "spryker-shop/quote-request-agent-page",
-            "version": "2.3.1",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/quote-request-agent-page.git",
-                "reference": "4caf6d3b6c92f41f788715a109592a3f93b5a3d2"
+                "reference": "0355951239582fef0783448d9635ad54556f88b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/quote-request-agent-page/zipball/4caf6d3b6c92f41f788715a109592a3f93b5a3d2",
-                "reference": "4caf6d3b6c92f41f788715a109592a3f93b5a3d2",
+                "url": "https://api.github.com/repos/spryker-shop/quote-request-agent-page/zipball/0355951239582fef0783448d9635ad54556f88b0",
+                "reference": "0355951239582fef0783448d9635ad54556f88b0",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
+                "spryker-shop/checkout-page-extension": "^1.2.0",
                 "spryker-shop/quote-request-agent-page-extension": "^1.0.0",
                 "spryker-shop/shop-application": "^1.2.0",
                 "spryker-shop/shop-ui": "^1.28.1",
@@ -7277,10 +7281,14 @@
                 "spryker/company-user": "^2.10.0",
                 "spryker/customer": "^7.0.0",
                 "spryker/kernel": "^3.30.0",
+                "spryker/messenger": "^3.0.0",
+                "spryker/persistent-cart": "^3.0.0",
                 "spryker/price": "^5.0.0",
                 "spryker/quote": "^2.0.0",
                 "spryker/quote-request": "^2.0.0",
-                "spryker/quote-request-agent": "^2.0.0",
+                "spryker/quote-request-agent": "^2.1.0",
+                "spryker/shipment": "^8.4.0",
+                "spryker/step-engine": "^3.3.0",
                 "spryker/store": "^1.8.0",
                 "spryker/symfony": "^3.1.0",
                 "spryker/util-date-time": "^1.0.0"
@@ -7292,22 +7300,23 @@
                 "spryker-shop/quote-request-page": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/router": "*",
-                "spryker/silex": "*",
-                "spryker/testify": "*"
+                "spryker/silex": "*"
             },
             "suggest": {
                 "spryker-shop/agent-page": "If you want to use agent layout templates: ^1.2.0",
-                "spryker-shop/cart-page": "If you want to use cart page molecules: ^3.2.0",
+                "spryker-shop/cart-page": "If you use shipment or shipment price customization during quote request: ^3.16.0",
                 "spryker-shop/company-user-agent-widget": "If you want to use company user auto-complete form: ^1.0.0",
                 "spryker-shop/configurable-bundle-widget": "If you want to use configurable bundle widget functionality",
-                "spryker-shop/quote-request-page": "If you want to use quote request page molecules: ^2.0.0",
+                "spryker-shop/customer-page": "If you use shipment or shipment price customization during quote request: ^2.13.0",
+                "spryker-shop/quote-request-page": "To have all functionality of QuoteRequestAgentPage: ^3.0.0",
                 "spryker/router": "Use this module if you want use the RouterProviderPlugin.",
+                "spryker/shipment-cart-connector": "If you want to use shipment totals in quote or shipment source prices, min version 2.1.0",
                 "spryker/silex": "Use this module when using plugins that need Silex dependencies."
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "3.0.x-dev"
                 }
             },
             "autoload": {
@@ -7320,7 +7329,7 @@
                 "proprietary"
             ],
             "description": "QuoteRequestAgentPage module",
-            "time": "2019-10-21T11:55:47+00:00"
+            "time": "2020-04-10T12:38:06+00:00"
         },
         {
             "name": "spryker-shop/quote-request-agent-page-extension",
@@ -7367,16 +7376,16 @@
         },
         {
             "name": "spryker-shop/quote-request-agent-widget",
-            "version": "2.1.1",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/quote-request-agent-widget.git",
-                "reference": "d6fb0dcb7cf74e8d0573831c53c1988cc1520af4"
+                "reference": "9618fb6b0ce58119cb134656b99017bb1263b5bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/quote-request-agent-widget/zipball/d6fb0dcb7cf74e8d0573831c53c1988cc1520af4",
-                "reference": "d6fb0dcb7cf74e8d0573831c53c1988cc1520af4",
+                "url": "https://api.github.com/repos/spryker-shop/quote-request-agent-widget/zipball/9618fb6b0ce58119cb134656b99017bb1263b5bb",
+                "reference": "9618fb6b0ce58119cb134656b99017bb1263b5bb",
                 "shasum": ""
             },
             "require": {
@@ -7385,7 +7394,8 @@
                 "spryker-shop/shop-ui": "^1.0.0",
                 "spryker/application": "^3.8.0",
                 "spryker/customer": "^7.0.0",
-                "spryker/kernel": "^3.30.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/messenger": "^3.0.0",
                 "spryker/persistent-cart": "^1.8.0 || ^3.0.0",
                 "spryker/quote": "^2.0.0",
                 "spryker/quote-request-agent": "^2.0.0",
@@ -7417,35 +7427,38 @@
                 "proprietary"
             ],
             "description": "QuoteRequestAgentWidget module",
-            "time": "2020-03-12T13:45:38+00:00"
+            "time": "2020-04-07T14:26:58+00:00"
         },
         {
             "name": "spryker-shop/quote-request-page",
-            "version": "2.2.2",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/quote-request-page.git",
-                "reference": "b4c5a181985ac4e8baa86488f5a657b7f115a62b"
+                "reference": "6f5caab86d27ab5f25f4024e6366fa42871b430f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/quote-request-page/zipball/b4c5a181985ac4e8baa86488f5a657b7f115a62b",
-                "reference": "b4c5a181985ac4e8baa86488f5a657b7f115a62b",
+                "url": "https://api.github.com/repos/spryker-shop/quote-request-page/zipball/6f5caab86d27ab5f25f4024e6366fa42871b430f",
+                "reference": "6f5caab86d27ab5f25f4024e6366fa42871b430f",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
+                "spryker-shop/checkout-page-extension": "^1.2.0",
                 "spryker-shop/quote-request-page-extension": "^1.0.0",
                 "spryker-shop/shop-application": "^1.0.0",
-                "spryker-shop/shop-ui": "^1.0.0",
+                "spryker-shop/shop-ui": "^1.36.0",
                 "spryker/application": "^3.8.0",
                 "spryker/cart": "^5.0.0 || ^7.0.0",
                 "spryker/company-user": "^2.10.0",
                 "spryker/customer": "^7.0.0",
-                "spryker/kernel": "^3.30.0",
+                "spryker/kernel": "^3.33.0",
                 "spryker/persistent-cart": "^1.8.0 || ^3.0.0",
                 "spryker/quote": "^2.0.0",
-                "spryker/quote-request": "^2.0.0",
+                "spryker/quote-request": "^2.2.0",
+                "spryker/shipment": "^8.4.0",
+                "spryker/step-engine": "^3.3.0",
                 "spryker/symfony": "^3.1.0",
                 "spryker/util-date-time": "^1.0.0"
             },
@@ -7453,16 +7466,15 @@
                 "spryker-shop/cart-page": "*",
                 "spryker-shop/customer-page": "*",
                 "spryker-shop/product-option-widget": "*",
-                "spryker-shop/product-packaging-unit-widget": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/router": "*",
-                "spryker/silex": "*",
-                "spryker/testify": "*"
+                "spryker/silex": "*"
             },
             "suggest": {
-                "spryker-shop/cart-page": "If you want to use cart page molecules: ^3.2.0",
+                "spryker-shop/cart-page": "If you use shipment or shipment price customization during quote request: ^3.16.0",
+                "spryker-shop/checkout-page": "If you use shipment selection for quote requests or want to customize checkout steps during quote request: ^3.12.0",
                 "spryker-shop/configurable-bundle-widget": "If you want to use configurable bundle widget functionality",
-                "spryker-shop/customer-page": "If you want to use customer layout templates: ^1.0.0",
+                "spryker-shop/customer-page": "If you use shipment or shipment price customization during quote request: ^2.13.0",
                 "spryker-shop/discount-widget": "If you want to use discount widget functionality: ^1.2.0",
                 "spryker-shop/product-option-widget": "If you want to use product option widget functionality",
                 "spryker-shop/product-packaging-unit-widget": "If you want to use product packaging unit widget functionality",
@@ -7472,7 +7484,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "3.0.x-dev"
                 }
             },
             "autoload": {
@@ -7485,7 +7497,7 @@
                 "proprietary"
             ],
             "description": "QuoteRequestPage module",
-            "time": "2019-11-14T14:13:13+00:00"
+            "time": "2020-04-10T12:38:06+00:00"
         },
         {
             "name": "spryker-shop/quote-request-page-extension",
@@ -7532,20 +7544,20 @@
         },
         {
             "name": "spryker-shop/quote-request-widget",
-            "version": "2.1.1",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/quote-request-widget.git",
-                "reference": "ca2bf500165665b57bed46afc98188b8d828a3de"
+                "reference": "e3663bc538ff0775cff4200f20707c655adc39b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/quote-request-widget/zipball/ca2bf500165665b57bed46afc98188b8d828a3de",
-                "reference": "ca2bf500165665b57bed46afc98188b8d828a3de",
+                "url": "https://api.github.com/repos/spryker-shop/quote-request-widget/zipball/e3663bc538ff0775cff4200f20707c655adc39b8",
+                "reference": "e3663bc538ff0775cff4200f20707c655adc39b8",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker-shop/shop-application": "^1.2.0",
                 "spryker-shop/shop-ui": "^1.0.0",
                 "spryker/application": "^3.8.0",
@@ -7554,14 +7566,13 @@
                 "spryker/kernel": "^3.30.0",
                 "spryker/persistent-cart": "^1.8.0 || ^3.0.0",
                 "spryker/quote": "^2.0.0",
-                "spryker/quote-request": "^2.0.0",
+                "spryker/quote-request": "^2.2.0",
                 "spryker/symfony": "^3.1.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
                 "spryker/router": "*",
-                "spryker/silex": "*",
-                "spryker/testify": "*"
+                "spryker/silex": "*"
             },
             "suggest": {
                 "spryker-shop/quote-request-page": "Use this module if you want see quote request pages.",
@@ -7571,7 +7582,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -7584,7 +7595,7 @@
                 "proprietary"
             ],
             "description": "QuoteRequestWidget module",
-            "time": "2019-10-14T10:22:33+00:00"
+            "time": "2020-04-07T15:01:26+00:00"
         },
         {
             "name": "spryker-shop/redirect-page",
@@ -8307,16 +8318,16 @@
         },
         {
             "name": "spryker-shop/shop-ui",
-            "version": "1.35.1",
+            "version": "1.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/shop-ui.git",
-                "reference": "d0d8e16fb7ef9bdde4c672af2c60bd44d4c8a965"
+                "reference": "6c8571697336a2a6dc498c5c19e189d037bdf2e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/shop-ui/zipball/d0d8e16fb7ef9bdde4c672af2c60bd44d4c8a965",
-                "reference": "d0d8e16fb7ef9bdde4c672af2c60bd44d4c8a965",
+                "url": "https://api.github.com/repos/spryker-shop/shop-ui/zipball/6c8571697336a2a6dc498c5c19e189d037bdf2e3",
+                "reference": "6c8571697336a2a6dc498c5c19e189d037bdf2e3",
                 "shasum": ""
             },
             "require": {
@@ -8352,7 +8363,7 @@
                 "proprietary"
             ],
             "description": "ShopUi module",
-            "time": "2020-03-26T09:00:06+00:00"
+            "time": "2020-04-07T14:26:58+00:00"
         },
         {
             "name": "spryker-shop/shopping-list-note-widget",
@@ -33890,16 +33901,16 @@
         },
         {
             "name": "spryker/quote-request",
-            "version": "2.1.2",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/quote-request.git",
-                "reference": "c35725a8e9cd9ce4a044bd7d013e576677057ad2"
+                "reference": "b9ba277df3be1a58756161ddebb8826314414310"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/quote-request/zipball/c35725a8e9cd9ce4a044bd7d013e576677057ad2",
-                "reference": "c35725a8e9cd9ce4a044bd7d013e576677057ad2",
+                "url": "https://api.github.com/repos/spryker/quote-request/zipball/b9ba277df3be1a58756161ddebb8826314414310",
+                "reference": "b9ba277df3be1a58756161ddebb8826314414310",
                 "shasum": ""
             },
             "require": {
@@ -33929,12 +33940,14 @@
                 "spryker/code-sniffer": "*",
                 "spryker/company-business-unit": "*",
                 "spryker/propel": "*",
+                "spryker/shipment": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
                 "spryker/checkout": "If you want to use Checkout plugins.",
                 "spryker/multi-cart": "If you want to use multicart functionality, min version 1.5.0",
-                "spryker/quote-approval": "If you want to use quote approval functionality, min version 1.0.0"
+                "spryker/quote-approval": "If you want to use quote approval functionality, min version 1.0.0",
+                "spryker/shipment-cart-connector": "If you use source price functionality or SanitizeCartShipmentItemExpanderPlugin: ^2.1.0"
             },
             "type": "library",
             "extra": {
@@ -33953,24 +33966,24 @@
                 "proprietary"
             ],
             "description": "QuoteRequest module",
-            "time": "2020-02-27T11:45:44+00:00"
+            "time": "2020-04-10T12:38:15+00:00"
         },
         {
             "name": "spryker/quote-request-agent",
-            "version": "2.0.1",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/quote-request-agent.git",
-                "reference": "b4e2115992941be0f009d84e8cf500f4b5bd4697"
+                "reference": "69e9a71dbaff9457157cd4b1e2df8b4949c5580b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/quote-request-agent/zipball/b4e2115992941be0f009d84e8cf500f4b5bd4697",
-                "reference": "b4e2115992941be0f009d84e8cf500f4b5bd4697",
+                "url": "https://api.github.com/repos/spryker/quote-request-agent/zipball/69e9a71dbaff9457157cd4b1e2df8b4949c5580b",
+                "reference": "69e9a71dbaff9457157cd4b1e2df8b4949c5580b",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/kernel": "^3.30.0",
                 "spryker/quote": "^2.0.0",
                 "spryker/quote-request": "^2.0.0",
@@ -33984,7 +33997,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -33997,7 +34010,7 @@
                 "proprietary"
             ],
             "description": "QuoteRequestAgent module",
-            "time": "2019-08-19T09:14:17+00:00"
+            "time": "2020-04-07T14:26:26+00:00"
         },
         {
             "name": "spryker/quote-request-data-import",
@@ -36281,16 +36294,16 @@
         },
         {
             "name": "spryker/shipment",
-            "version": "8.3.1",
+            "version": "8.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/shipment.git",
-                "reference": "daca8893223deeb091cfb0cdac508764a733450a"
+                "reference": "5030b6d760b36dfaad1ce60b373e339be14f52fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/shipment/zipball/daca8893223deeb091cfb0cdac508764a733450a",
-                "reference": "daca8893223deeb091cfb0cdac508764a733450a",
+                "url": "https://api.github.com/repos/spryker/shipment/zipball/5030b6d760b36dfaad1ce60b373e339be14f52fe",
+                "reference": "5030b6d760b36dfaad1ce60b373e339be14f52fe",
                 "shasum": ""
             },
             "require": {
@@ -36341,24 +36354,25 @@
                 "proprietary"
             ],
             "description": "Shipment module",
-            "time": "2020-03-31T11:28:36+00:00"
+            "time": "2020-04-08T07:56:49+00:00"
         },
         {
             "name": "spryker/shipment-cart-connector",
-            "version": "2.0.2",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/shipment-cart-connector.git",
-                "reference": "19b5af02edc76c0204f9a04a19588dc70fcfa160"
+                "reference": "63b271e1a686b5059c21acf9d51f0a6128fe8766"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/shipment-cart-connector/zipball/19b5af02edc76c0204f9a04a19588dc70fcfa160",
-                "reference": "19b5af02edc76c0204f9a04a19588dc70fcfa160",
+                "url": "https://api.github.com/repos/spryker/shipment-cart-connector/zipball/63b271e1a686b5059c21acf9d51f0a6128fe8766",
+                "reference": "63b271e1a686b5059c21acf9d51f0a6128fe8766",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
+                "spryker/cart-extension": "^4.2.0",
                 "spryker/kernel": "^3.33.0",
                 "spryker/price": "^5.0.0",
                 "spryker/shipment": "^7.0.0 || ^8.0.0"
@@ -36377,7 +36391,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -36390,7 +36404,7 @@
                 "proprietary"
             ],
             "description": "ShipmentCartConnector module",
-            "time": "2019-11-05T15:59:46+00:00"
+            "time": "2020-04-10T09:19:19+00:00"
         },
         {
             "name": "spryker/shipment-checkout-connector",
@@ -37389,16 +37403,16 @@
         },
         {
             "name": "spryker/step-engine",
-            "version": "3.2.2",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/step-engine.git",
-                "reference": "ffc530c90e9e66603adbd747e5da595d3ad86457"
+                "reference": "9389ac091a19d4dde94078fd0717af172ba1efa8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/step-engine/zipball/ffc530c90e9e66603adbd747e5da595d3ad86457",
-                "reference": "ffc530c90e9e66603adbd747e5da595d3ad86457",
+                "url": "https://api.github.com/repos/spryker/step-engine/zipball/9389ac091a19d4dde94078fd0717af172ba1efa8",
+                "reference": "9389ac091a19d4dde94078fd0717af172ba1efa8",
                 "shasum": ""
             },
             "require": {
@@ -37430,7 +37444,7 @@
                 "proprietary"
             ],
             "description": "StepEngine module",
-            "time": "2019-12-23T12:34:20+00:00"
+            "time": "2020-04-07T14:26:26+00:00"
         },
         {
             "name": "spryker/stock",
@@ -43728,28 +43742,6 @@
                 "unicode",
                 "utf-8",
                 "utf8"
-            ],
-            "funding": [
-                {
-                    "url": "https://www.paypal.me/moelleken",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/voku",
-                    "type": "github"
-                },
-                {
-                    "url": "https://opencollective.com/portable-utf8",
-                    "type": "open_collective"
-                },
-                {
-                    "url": "https://www.patreon.com/voku",
-                    "type": "patreon"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/voku/portable-utf8",
-                    "type": "tidelift"
-                }
             ],
             "time": "2020-03-06T01:23:48+00:00"
         },
