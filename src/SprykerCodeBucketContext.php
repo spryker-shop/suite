@@ -14,7 +14,6 @@ class SprykerCodeBucketContext extends AbstractCodeBucketContext implements Code
             'DE',
             'AT',
             'US',
-            '',
         ];
     }
 
