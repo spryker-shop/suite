@@ -27,6 +27,9 @@
     "bo:build:mp-login": "npm run cd:mp-login -- npm run build",
     "bo:build:mp-dashboard": "npm run cd:mp-dashboard -- npm run build",
     "bo:build:mp-profile": "npm run cd:mp-profile -- npm run build",
+    "bo:clean": "run-s bo:clean:*",
+    "bo:clean:dist": "rimraf vendor/spryker/*/dist",
+    "bo:clean:modules": "rimraf vendor/spryker/*/node_modules",
     "bo:test": "run-s bo:test:*",
     "bo:test:zed-ui": "npm run cd:zed-ui -- npm run test -- --watch=false --browsers ChromeHeadless",
     "bo:test:mp-login": "npm run cd:mp-login -- npm run test -- --watch=false --browsers ChromeHeadless",
@@ -34,6 +37,7 @@
     "cd:zed-ui": "cd ./vendor/spryker/zed-ui && ",
     "cd:mp-login": "cd ./vendor/spryker/merchant-user-auth-gui-page && ",
     "cd:mp-dashboard": "cd ./vendor/spryker/merchant-dashboard-gui-page && ",
+     "cd:mp-profile": "cd ./vendor/spryker/merchant-profile-gui-page && ",
     "fe:root": "export FE_ROOT_DIR=\"../../..\" && "
   },
   "engines": {
