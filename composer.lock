@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "79d8cada4706655130d6c8dc8a706a19",
+    "content-hash": "7448c338c863ad6d69fa4c014954ee0c",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -21718,16 +21718,16 @@
         },
         {
             "name": "spryker/kernel",
-            "version": "3.45.2",
+            "version": "3.46.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/kernel.git",
-                "reference": "251ab7e726bfca82fd941135f187a875388e6475"
+                "reference": "9ce30b859e6278567a6b75ba78c2d460b20043b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/kernel/zipball/251ab7e726bfca82fd941135f187a875388e6475",
-                "reference": "251ab7e726bfca82fd941135f187a875388e6475",
+                "url": "https://api.github.com/repos/spryker/kernel/zipball/9ce30b859e6278567a6b75ba78c2d460b20043b4",
+                "reference": "9ce30b859e6278567a6b75ba78c2d460b20043b4",
                 "shasum": ""
             },
             "require": {
@@ -21771,7 +21771,7 @@
                 "proprietary"
             ],
             "description": "Kernel module",
-            "time": "2020-04-06T08:30:39+00:00"
+            "time": "2020-04-09T12:06:52+00:00"
         },
         {
             "name": "spryker/key-builder",
@@ -22270,16 +22270,16 @@
         },
         {
             "name": "spryker/merchant-dashboard-gui-page",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-dashboard-gui-page.git",
-                "reference": "e2d0791e4ec9834206d4cd6f2f198bd2f3529e79"
+                "reference": "0b563f637239a6a0667d174ed8f2dfd249b2982a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-dashboard-gui-page/zipball/e2d0791e4ec9834206d4cd6f2f198bd2f3529e79",
-                "reference": "e2d0791e4ec9834206d4cd6f2f198bd2f3529e79",
+                "url": "https://api.github.com/repos/spryker/merchant-dashboard-gui-page/zipball/0b563f637239a6a0667d174ed8f2dfd249b2982a",
+                "reference": "0b563f637239a6a0667d174ed8f2dfd249b2982a",
                 "shasum": ""
             },
             "require": {
@@ -22307,7 +22307,7 @@
                 "proprietary"
             ],
             "description": "MerchantDashboardGuiPage module",
-            "time": "2020-03-18T11:59:11+00:00"
+            "time": "2020-04-09T12:06:52+00:00"
         },
         {
             "name": "spryker/merchant-data-import",
@@ -23123,6 +23123,54 @@
             ],
             "description": "MerchantProfileGui module",
             "time": "2020-04-08T15:48:06+00:00"
+        },
+        {
+            "name": "spryker/merchant-profile-gui-page",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-profile-gui-page.git",
+                "reference": "86788f0d0401bc1f75c7fcea80c3e99db6a01438"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-profile-gui-page/zipball/86788f0d0401bc1f75c7fcea80c3e99db6a01438",
+                "reference": "86788f0d0401bc1f75c7fcea80c3e99db6a01438",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/country": "^3.0.0",
+                "spryker/glossary": "^3.0.0",
+                "spryker/kernel": "^3.46.0",
+                "spryker/locale": "^3.0.0",
+                "spryker/merchant": "^2.1.0",
+                "spryker/merchant-profile": "^0.1.4",
+                "spryker/merchant-user": "^0.4.1",
+                "spryker/symfony": "^3.0.0",
+                "spryker/url": "^3.0.0",
+                "spryker/zed-ui": "^0.2.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantProfileGuiPage module",
+            "time": "2020-04-09T12:06:52+00:00"
         },
         {
             "name": "spryker/merchant-profile-storage",
@@ -24066,16 +24114,16 @@
         },
         {
             "name": "spryker/merchant-user",
-            "version": "0.4.0",
+            "version": "0.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-user.git",
-                "reference": "27450eb14117dc8d450e7a6cf581737f1610896d"
+                "reference": "a558d4cd5f8aac7f2555ff1c26c4ecf6b371727a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-user/zipball/27450eb14117dc8d450e7a6cf581737f1610896d",
-                "reference": "27450eb14117dc8d450e7a6cf581737f1610896d",
+                "url": "https://api.github.com/repos/spryker/merchant-user/zipball/a558d4cd5f8aac7f2555ff1c26c4ecf6b371727a",
+                "reference": "a558d4cd5f8aac7f2555ff1c26c4ecf6b371727a",
                 "shasum": ""
             },
             "require": {
@@ -24086,6 +24134,7 @@
                 "spryker/kernel": "^3.33.0",
                 "spryker/merchant": "^2.0.0",
                 "spryker/merchant-extension": "^1.1.0",
+                "spryker/propel-orm": "^1.5.0",
                 "spryker/user": "^3.9.0",
                 "spryker/util-text": "^1.3.0"
             },
@@ -24112,20 +24161,20 @@
                 "proprietary"
             ],
             "description": "MerchantUser module",
-            "time": "2020-04-08T15:48:06+00:00"
+            "time": "2020-04-09T12:17:29+00:00"
         },
         {
             "name": "spryker/merchant-user-auth-gui-page",
-            "version": "0.3.0",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-user-auth-gui-page.git",
-                "reference": "75057a6fa58103617261ce45185697581726a0ac"
+                "reference": "ce531f9a4e8012ccfb29b364ea1667f4d2794d58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-user-auth-gui-page/zipball/75057a6fa58103617261ce45185697581726a0ac",
-                "reference": "75057a6fa58103617261ce45185697581726a0ac",
+                "url": "https://api.github.com/repos/spryker/merchant-user-auth-gui-page/zipball/ce531f9a4e8012ccfb29b364ea1667f4d2794d58",
+                "reference": "ce531f9a4e8012ccfb29b364ea1667f4d2794d58",
                 "shasum": ""
             },
             "require": {
@@ -24134,7 +24183,7 @@
                 "spryker/kernel": "^3.30.0",
                 "spryker/messenger": "^3.0.0",
                 "spryker/symfony": "^3.0.0",
-                "spryker/zed-ui": "^0.1.0 || ^0.2.0"
+                "spryker/zed-ui": "^0.2.1"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*"
@@ -24155,7 +24204,7 @@
                 "proprietary"
             ],
             "description": "MerchantUserAuthGuiPage module",
-            "time": "2020-03-19T10:16:21+00:00"
+            "time": "2020-04-09T12:06:52+00:00"
         },
         {
             "name": "spryker/merchant-user-gui",
@@ -40324,29 +40373,33 @@
         },
         {
             "name": "spryker/zed-ui",
-            "version": "0.2.0",
+            "version": "0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/zed-ui.git",
-                "reference": "ab3f7bb1003d99def4f4e762d138d1720ea0196a"
+                "reference": "c2e8e1d02d776997fda21528f66204da5dd44a78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/zed-ui/zipball/ab3f7bb1003d99def4f4e762d138d1720ea0196a",
-                "reference": "ab3f7bb1003d99def4f4e762d138d1720ea0196a",
+                "url": "https://api.github.com/repos/spryker/zed-ui/zipball/c2e8e1d02d776997fda21528f66204da5dd44a78",
+                "reference": "c2e8e1d02d776997fda21528f66204da5dd44a78",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
                 "spryker/kernel": "^3.33.0",
+                "spryker/translator": "^1.1.0",
                 "spryker/twig": "^3.0.0",
+                "spryker/twig-extension": "^1.0.0",
                 "spryker/util-encoding": "^2.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/container": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
+                "spryker/container": "If you want to use Twig plugins",
                 "spryker/zed-navigation": "If you want to use the navigation."
             },
             "type": "library",
@@ -40365,7 +40418,7 @@
                 "proprietary"
             ],
             "description": "ZedUi module",
-            "time": "2020-03-19T10:16:21+00:00"
+            "time": "2020-04-09T12:06:52+00:00"
         },
         {
             "name": "spryker/zend",
@@ -46727,16 +46780,6 @@
                 "phpunit",
                 "testing",
                 "xunit"
-            ],
-            "funding": [
-                {
-                    "url": "https://phpunit.de/donate.html",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/sebastianbergmann",
-                    "type": "github"
-                }
             ],
             "time": "2020-03-31T08:52:04+00:00"
         },
