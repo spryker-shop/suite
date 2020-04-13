@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f6235282744d432184e2f1d1b3aee9c8",
+    "content-hash": "beb22c3389c55ff9bef6a22416604947",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1117,8 +1117,8 @@
             "authors": [
                 {
                     "name": "Alessio Linares",
-                    "email": "alessio.linares@skyscanner.net",
-                    "role": "Software Engineer"
+                    "role": "Software Engineer",
+                    "email": "alessio.linares@skyscanner.net"
                 }
             ],
             "description": "JSONPath implementation for querying and updating JSON objects",
@@ -3146,20 +3146,6 @@
                 "x.509",
                 "x509"
             ],
-            "funding": [
-                {
-                    "url": "https://github.com/terrafrost",
-                    "type": "github"
-                },
-                {
-                    "url": "https://www.patreon.com/phpseclib",
-                    "type": "patreon"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/phpseclib/phpseclib",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-04-04T23:17:33+00:00"
         },
         {
@@ -3661,7 +3647,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -5013,11 +4999,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/ps-11343/dev-order-history-filtering-and-searching",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "4652ede6dc65f34334fb85f2dcbef772c23f69c7"
+                "reference": "c148e3fa8dc8d2aadd5e3b7acce5329ef0e7f618"
             },
             "require": {
                 "php": ">=7.2"
@@ -5155,6 +5141,7 @@
                 "spryker/company-business-unit-extension": "*",
                 "spryker/company-business-unit-gui": "*",
                 "spryker/company-business-unit-gui-extension": "*",
+                "spryker/company-business-unit-sales-connector": "*",
                 "spryker/company-business-unit-storage": "*",
                 "spryker/company-business-units-rest-api": "*",
                 "spryker/company-business-units-rest-api-extension": "*",
@@ -5167,6 +5154,7 @@
                 "spryker/company-role-data-import": "*",
                 "spryker/company-role-gui": "*",
                 "spryker/company-roles-rest-api": "*",
+                "spryker/company-sales-connector": "*",
                 "spryker/company-supplier": "*",
                 "spryker/company-supplier-data-import": "*",
                 "spryker/company-supplier-gui": "*",
@@ -5706,15 +5694,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-04-13T07:05:39+00:00"
+            "time": "2020-04-13T12:31:14+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/ps-11343/dev-order-history-filtering-and-searching",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "4fefaefc6857e2b8df14d1d760a6af348963a8c6"
+                "reference": "9cb1aacafc1a4c5aaa11986ea0d160850fc8587b"
             },
             "require": {
                 "php": ">=7.2"
@@ -5747,6 +5735,7 @@
                 "spryker-shop/cms-slot-block-widget": "*",
                 "spryker-shop/comment-widget": "*",
                 "spryker-shop/comment-widget-extension": "*",
+                "spryker-shop/company-business-unit-widget": "*",
                 "spryker-shop/company-page": "*",
                 "spryker-shop/company-user-agent-widget": "*",
                 "spryker-shop/company-user-invitation-page": "*",
@@ -5858,7 +5847,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-04-10T12:48:49+00:00"
+            "time": "2020-04-13T12:31:32+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8726,8 +8715,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -10483,20 +10472,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
+                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler",
-                    "role": "Project Founder"
+                    "homepage": "https://github.com/manuelpichler"
                 },
                 {
                     "name": "Marc Würth",
+                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84",
-                    "role": "Project Maintainer"
+                    "homepage": "https://github.com/ravage84"
                 },
                 {
                     "name": "Other contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -12041,6 +12030,5 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    },
-    "plugin-api-version": "1.1.0"
+    }
 }
