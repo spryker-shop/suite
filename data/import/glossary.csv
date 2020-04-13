@@ -713,12 +713,14 @@ checkout.step.payment.title,Payment,en_US
 checkout.step.payment.title,Zahlung,de_DE
 checkout.step.summary.title,Summary,en_US
 checkout.step.summary.title,Übersicht Bestellung,de_DE
+quote_request_agent_page.checkout.step.save_rfq.title,Save Request For Quote,en_US
+quote_request_agent_page.checkout.step.save_rfq.title,Angebotsanfrage speichern,de_DE
 checkout.step.shipment,Go to Shipment,en_US
 checkout.step.shipment,Weiter zur Lieferung,de_DE
 checkout.step.address.select_address,Select an address,en_US
 checkout.step.address.select_address,Wählen Sie eine Adresse,de_DE
-checkout.step.payment,Go to Payment,en_US
-checkout.step.payment,Weiter zur Zahlung,de_DE
+checkout.step.payment,Next,en_US
+checkout.step.payment,Vor,de_DE
 checkout.step.summary,Go to Summary,en_US
 checkout.step.summary,Weiter zur Übersicht,de_DE
 checkout.step.summary.with_method,With,en_US
@@ -1145,8 +1147,12 @@ dummyPaymentCreditCard.card_security_code,CVC,en_US
 dummyPaymentCreditCard.card_security_code,CVC,de_DE
 DummyPaymentInvoice,Invoice,en_US
 DummyPaymentInvoice,Auf Rechnung,de_DE
+DummyMarketplacePaymentInvoice,Invoice,en_US
+DummyMarketplacePaymentInvoice,Auf Rechnung,de_DE
 dummyPaymentInvoice.invoice,Pay with invoice:,en_US
 dummyPaymentInvoice.invoice,Auf Rechnung bezahlen:,de_DE
+dummyMarketplacePaymentInvoice.invoice,Pay with invoice:,en_US
+dummyMarketplacePaymentInvoice.invoice,Auf Rechnung bezahlen:,de_DE
 dummyPaymentInvoice.date_of_birth,Date of Birth,en_US
 dummyPaymentInvoice.date_of_birth,Geburtsdatum,de_DE
 cart.item.item_price,Item price,en_US
@@ -1195,6 +1201,8 @@ cart.promotion.items,Promotional products,en_US
 cart.promotion.items,Werbeprodukte,de_DE
 checkout.payment.provider.DummyPayment,Dummy Payment,en_US
 checkout.payment.provider.DummyPayment,Beispiel-Zahlungsart,de_DE
+checkout.payment.provider.DummyMarketplacePayment,Dummy Marketplace Payment,en_US
+checkout.payment.provider.DummyMarketplacePayment,Beispiel Marktplatz Zahlungsmethode,de_DE
 cms.preview.access_denied,You are not logged in or you do not have permission to access this page.,en_US
 cms.preview.access_denied,Du bist nicht eingeloggt oder hast keine Berechtigung diese Seite zu betreten.,de_DE
 product-cart.validation.error.abstract-product-exists,"Product ""sku"" not found",en_US
@@ -2027,6 +2035,8 @@ customer.account.shopping_list.overview.print,Print,en_US
 customer.account.shopping_list.overview.print,Drucken,de_DE
 customer.account.shopping_list.overview.dismiss,Dismiss,en_US
 customer.account.shopping_list.overview.dismiss,Ablehnen,de_DE
+customer.account.shopping_list_item.error.product_not_active,Product is not active.,en_US
+customer.account.shopping_list_item.error.product_not_active,Produkt ist nicht aktiv,de_DE
 shopping_list_page.dismiss_confirmation.trying_to_dismiss,Are you sure that you what to dismiss shopping list?,en_US
 shopping_list_page.dismiss_confirmation.trying_to_dismiss,"Sind Sie sicher, dass Sie den Einkaufsliste ablehnen wollen?",de_DE
 shopping_list_page.dismiss.failed,Shopping list was not dismissed.,en_US
@@ -2649,6 +2659,8 @@ quote_request_page.quote_request.violations.invalid_date,Date should be greater 
 quote_request_page.quote_request.violations.invalid_date,Datum muss größer sein als das aktuelle Datum.,de_DE
 quote_request_page.quote_request.created,Quote request created successfully.,en_US
 quote_request_page.quote_request.created,Angebotsanfrage erfolgreich erstellt.,de_DE
+quote_request_page.quote_request.saved,Quote request saved successfully.,en_US
+quote_request_page.quote_request.saved,Angebotsanfrage wurde erfolgreich gespeichert.,de_DE
 quote_request_page.quote_request.list.reference,Reference,en_US
 quote_request_page.quote_request.list.reference,Referenz,de_DE
 quote_request_page.quote_request.list.company,Company,en_US
@@ -2713,6 +2725,10 @@ quote_request_page.quote_request.actions.edit,Edit,en_US
 quote_request_page.quote_request.actions.edit,Ändern,de_DE
 quote_request_page.quote_request.actions.edit_items,Edit Items,en_US
 quote_request_page.quote_request.actions.edit_items,Elemente bearbeiten,de_DE
+quote_request_page.quote_request.actions.edit_address,Edit Address,en_US
+quote_request_page.quote_request.actions.edit_address,Adresse bearbeiten,de_DE
+quote_request_page.quote_request.actions.edit_shipment,Edit Shipment,en_US
+quote_request_page.quote_request.actions.edit_shipment,Versandart bearbeiten,de_DE
 quote_request_page.quote_request.view.empty,You do not have any quote requests yet.,en_US
 quote_request_page.quote_request.view.empty,Sie haben noch keine Angebotsanfragen.,de_DE
 quote_request_page.quote_request.updated,Quote request updated successfully.,en_US
@@ -2725,10 +2741,60 @@ quote_request_page.quote_request.use_default_price,Use default price,en_US
 quote_request_page.quote_request.use_default_price,Standardpreis verwenden,de_DE
 quote_request_page.quote_request.converted_to_cart,Quote request converted to cart successfully.,en_US
 quote_request_page.quote_request.converted_to_cart,Die Angebotsanfrage wurde erfolgreich in den Warenkorb konvertiert.,de_DE
+quote_request_page.quote_request.edit_address_confirm,"You are editing Quote Request <a href=""%link%"">%reference%</a> if you will leave it, all changes will be dropped.",en_US
+quote_request_page.quote_request.edit_address_confirm,"Sie bearbeiten Angebotsanfrage <a href=""%link%"">%reference%</a> wenn Sie es verlassen, werden alle Änderungen verworfen.",de_DE
 quote_request_page.quote_request.edit_items_confirm,"You are editing Quote Request <a href=""%link%"">%reference%</a> if you will leave it, all changes will be dropped.",en_US
 quote_request_page.quote_request.edit_items_confirm,"Sie bearbeiten Angebotsanfrage <a href=""%link%"">%reference%</a> wenn Sie es verlassen, werden alle Änderungen verworfen.",de_DE
+quote_request_page.quote_request.edit_shipment_confirm,"You are editing Quote Request <a href=""%link%"">%reference%</a> if you will leave it, all changes will be dropped.",en_US
+quote_request_page.quote_request.edit_shipment_confirm,"Sie bearbeiten Angebotsanfrage <a href=""%link%"">%reference%</a> wenn Sie es verlassen, werden alle Änderungen verworfen.",de_DE
 quote_request_page.quote_request.source_price_changes_forbidden,"You can't edit prices in this Quote Request, because it's invalid.",en_US
 quote_request_page.quote_request.source_price_changes_forbidden,"Sie können die Preise in dieser Angebotsanfrage nicht bearbeiten, da sie ungültig ist.",de_DE
+quote_request_page.quote_request.shipment_counter,"Shipment %index% of %length%",en_US
+quote_request_page.quote_request.shipment_counter,"Lieferung %index% von %length%",de_DE
+quote_request_page.quote_request.empty_shipment_data,No shipment address / shipment method provided.,en_US
+quote_request_page.quote_request.empty_shipment_data,Es wurde keine Lieferadresse / Lieferart angegeben.,de_DE
+quote_request_page.quote_request.title_create,Create Quote Request,en_US
+quote_request_page.quote_request.title_create,Angebotsanfrage erstellen,de_DE
+quote_request_page.quote_request.title_edit,Edit #%id%,en_US
+quote_request_page.quote_request.title_edit,Ändern #%id%,de_DE
+quote_request_page.quote_request.title_attention,Attention,en_US
+quote_request_page.quote_request.title_attention,Achtung,de_DE
+quote_request_page.quote_request.title_addresses,Addresses,en_US
+quote_request_page.quote_request.title_addresses,Adressen,de_DE
+quote_request_page.quote_request.title_billing_address,Billing Address,en_US
+quote_request_page.quote_request.title_billing_address,Rechnungsadresse,de_DE
+quote_request_page.quote_request.title_delivery_address,Delivery address,en_US
+quote_request_page.quote_request.title_delivery_address,Lieferadresse,de_DE
+quote_request_page.quote_request.title_shipment_method,Shipment method,en_US
+quote_request_page.quote_request.title_shipment_method,Versandmethode,de_DE
+quote_request_page.quote_request.breadcrumb.create,Create,en_US
+quote_request_page.quote_request.breadcrumb.create,Erstellen,de_DE
+quote_request_page.quote_request.breadcrumb.edit,Edit,en_US
+quote_request_page.quote_request.breadcrumb.edit,Ändern,de_DE
+quote_request_page.quote_request.breadcrumb.attention,Attention,en_US
+quote_request_page.quote_request.breadcrumb.attention,Achtung,de_DE
+quote_request_page.quote_request.multiple_delivery_address,Multiple delivery addresses.,en_US
+quote_request_page.quote_request.multiple_delivery_address,Mehrere Lieferadressen.,de_DE
+quote_request_page.quote_request.multiple_shipment_method,Multiple shipment methods.,en_US
+quote_request_page.quote_request.multiple_shipment_method,Mehrere Versandarten.,de_DE
+quote_request_page.quote_request.empty_page,Your Quote is empty!,en_US
+quote_request_page.quote_request.empty_page,Ihre Angebotsanfrage ist unvollständig!,de_DE
+quote_request_page.quote_request.empty_delivery_address,No delivery address added.,en_US
+quote_request_page.quote_request.empty_delivery_address,Keine Lieferadresse hinzugefügt.,de_DE
+quote_request_page.quote_request.empty_address,No address added.,en_US
+quote_request_page.quote_request.empty_address,Keine Adresse hinzugefügt.,de_DE
+quote_request_page.quote_request.empty_shipment_method,No shipment method added.,en_US
+quote_request_page.quote_request.empty_shipment_method,Keine Versandart hinzugefügt.,de_DE
+quote_request_page.quote_request.cta_add_address,Add address,en_US
+quote_request_page.quote_request.cta_add_address,Adresse hinzufügen,de_DE
+quote_request_page.quote_request.cta_edit_address,Edit address,en_US
+quote_request_page.quote_request.cta_edit_address,Adresse bearbeiten,de_DE
+quote_request_page.quote_request.cta_add_shipment_method,Add shipment method,en_US
+quote_request_page.quote_request.cta_add_shipment_method,Versandart hinzufügen,de_DE
+quote_request_page.quote_request.cta_edit_shipment_method,Edit shipment method,en_US
+quote_request_page.quote_request.cta_edit_shipment_method,Versandart bearbeiten,de_DE
+quote_request_page.quote_request.item,%count% item(s),en_US
+quote_request_page.quote_request.item,%count% artikel,de_DE
 quote_request.status.waiting,Waiting,en_US
 quote_request.status.waiting,Warten,de_DE
 quote_request.status.in-progress,In Progress,en_US
@@ -2929,8 +2995,8 @@ comment_widget.tags.delivery,Delivery,en_US
 comment_widget.tags.delivery,Lieferung,de_DE
 comment_widget.tags.important,Important,en_US
 comment_widget.tags.important,Wichtig,de_DE
-checkout.step.summary.shipment_costs_total,"Shipment costs(total)",en_US
-checkout.step.summary.shipment_costs_total,"Versandkosten (insgesamt)",de_DE
+checkout.step.summary.shipment_costs_total,"Shipment total",en_US
+checkout.step.summary.shipment_costs_total,"Versand insgesamt",de_DE
 checkout.step.summary.delivery_method,Zustellungsmethode,de_DE
 checkout.step.summary.delivery_method,Delivery method,en_US
 checkout.step.summary.requested_delivery_date,Angefordertes Lieferdatum,de_DE
@@ -3131,6 +3197,18 @@ product_packaging_unit_node_summary,(= %summary%),en_US
 product_packaging_unit_node_summary,(= %summary%),de_DE
 product_packaging_unit_node_amount_summary,= %summary%,en_US
 product_packaging_unit_node_amount_summary,= %summary%,de_DE
+order_custom_reference.reference_saved,Custom order reference was successfully saved.,en_US
+order_custom_reference.reference_saved,Ihre Bestellreferenz wurde erfolgreich gespeichert.,de_DE
+order_custom_reference.reference_not_saved,Custom order reference has not been changed.,en_US
+order_custom_reference.reference_not_saved,Ihre Bestellreferenz wurde nicht geändert.,de_DE
+order_custom_reference.validation.error.message_invalid_length,Custom order reference length is invalid.,en_US
+order_custom_reference.validation.error.message_invalid_length,Die Länge der Bestellreferenz ist ungültig.,de_DE
+order_custom_reference.title,Custom Order Reference,en_US
+order_custom_reference.title,Ihre Bestellreferenz,de_DE
+order_custom_reference.form.placeholder,Add custom order reference,en_US
+order_custom_reference.form.placeholder,Ihre Bestellreferenz hinzufügen,de_DE
+order_custom_reference.save,Save,en_US
+order_custom_reference.save,Speichern,de_DE
 merchant_switcher.message,"Wechseln von %currentMerchant% zu %newMerchant%? Aufgrund unterschiedlicher Verfügbarkeit können ggf. nicht alle Produkte in Warenkorb übernommen werden.",de_DE
 merchant_switcher.message,"Switch from %currentMerchant% to %newMerchant%? Due to different availability, not all products may be added to your shopping cart.",en_US
 merchant_switcher.label,Mein Händler:,de_DE
@@ -3143,3 +3221,11 @@ shared_cart.dismiss_confirmation.carts_list,Carts List,en_US
 shared_cart.dismiss_confirmation.carts_list,Einkaufswagen,de_DE
 shopping_list.dismiss_confirmation.shopping_lists,Shopping Lists,en_US
 shopping_list.dismiss_confirmation.shopping_lists,Einkaufsliste,de_DE
+cart.item.sales_unit.not_found,Sales unit is not found for product with SKU '%sku%'.,en_US
+cart.item.sales_unit.not_found,Verkaufseinheit wird für Produkt mit SKU '%sku%' nicht gefunden.,de_DE
+cart.item.packaging_unit.not_found,Packaging unit not found for product with SKU '%sku%'.,en_US
+cart.item.packaging_unit.not_found,Verpackungseinheit für Produkt mit SKU '% sku%' nicht gefunden.,de_DE
+footer.copyright.content_text,"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",en_US
+footer.copyright.content_text,"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",de_DE
+footer.copyright.text,"&copy; ACME Company",en_US
+footer.copyright.text,"&copy; ACME Company",de_DE
