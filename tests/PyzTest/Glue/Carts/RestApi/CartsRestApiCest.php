@@ -827,7 +827,7 @@ class CartsRestApiCest
         $I->seeCartItemQuantityEqualsToQuantityInRequest(
             $this->fixtures::QUANTITY_FOR_ITEM_UPDATE,
             CartsRestApiConfig::RESOURCE_CART_ITEMS,
-            $this->fixtures->getProductConcreteTransfer1()->getSku()
+            $this->fixtures->getProductConcreteTransfer()->getSku()
         );
     }
 
