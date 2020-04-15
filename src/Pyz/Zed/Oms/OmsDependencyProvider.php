@@ -8,6 +8,7 @@
 namespace Pyz\Zed\Oms;
 
 use Spryker\Zed\Availability\Communication\Plugin\AvailabilityHandlerPlugin;
+use Spryker\Zed\Availability\Communication\Plugin\AvailabilityReservationHandlerTerminationAwareStrategyPlugin;
 use Spryker\Zed\GiftCard\Communication\Plugin\Oms\Command\CreateGiftCardCommandPlugin;
 use Spryker\Zed\GiftCard\Communication\Plugin\Oms\Condition\IsGiftCardConditionPlugin;
 use Spryker\Zed\GiftCardMailConnector\Communication\Plugin\Oms\Command\ShipGiftCardByEmailCommandPlugin;
@@ -17,9 +18,13 @@ use Spryker\Zed\Oms\Communication\Plugin\Oms\Command\SendOrderShippedPlugin;
 use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandCollectionInterface;
 use Spryker\Zed\Oms\Dependency\Plugin\Condition\ConditionCollectionInterface;
 use Spryker\Zed\Oms\OmsDependencyProvider as SprykerOmsDependencyProvider;
+use Spryker\Zed\OmsProductOfferReservation\Communication\Plugin\ProductOfferOmsReservationWriterStrategyPlugin;
+use Spryker\Zed\OmsProductOfferReservation\Communication\Plugin\ProductOfferReservationHandlerTerminationAwareStrategyPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Oms\ProductBundleAvailabilityHandlerPlugin;
+use Spryker\Zed\ProductBundle\Communication\Plugin\Oms\ProductBundleReservationHandlerTerminationAwareStrategyPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Oms\ProductPackagingUnitReservationAggregationStrategyPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Reservation\LeadProductReservationHandlerPlugin;
+use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Reservation\LeadProductReservationHandlerTerminationAwareStrategyPlugin;
 use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentManualEventGrouperPlugin;
 use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentOrderMailExpanderPlugin;
 
@@ -120,6 +125,29 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
     {
         return [
             new ProductPackagingUnitReservationAggregationStrategyPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\OmsExtension\Dependency\Plugin\OmsReservationWriterStrategyPluginInterface[]
+     */
+    protected function getOmsReservationWriterStrategyPlugins(): array
+    {
+        return [
+            new ProductOfferOmsReservationWriterStrategyPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\OmsExtension\Dependency\Plugin\ReservationHandlerTerminationAwareStrategyPluginInterface[]
+     */
+    protected function getReservationHandlerTerminationAwareStrategyPlugins(): array
+    {
+        return [
+            new ProductOfferReservationHandlerTerminationAwareStrategyPlugin(),
+            new AvailabilityReservationHandlerTerminationAwareStrategyPlugin(),
+            new ProductBundleReservationHandlerTerminationAwareStrategyPlugin(),
+            new LeadProductReservationHandlerTerminationAwareStrategyPlugin(),
         ];
     }
 }
