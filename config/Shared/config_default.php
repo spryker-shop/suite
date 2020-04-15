@@ -12,6 +12,7 @@ use Spryker\Shared\CmsGui\CmsGuiConstants;
 use Spryker\Shared\Collector\CollectorConstants;
 use Spryker\Shared\Customer\CustomerConstants;
 use Spryker\Shared\DocumentationGeneratorRestApi\DocumentationGeneratorRestApiConstants;
+use Spryker\Shared\DummyMarketplacePayment\DummyMarketplacePaymentConfig;
 use Spryker\Shared\DummyPayment\DummyPaymentConfig;
 use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebHtmlErrorRenderer;
@@ -124,6 +125,7 @@ $config[AuthConstants::AUTH_DEFAULT_CREDENTIALS] = [
         'token' => 'JDJ5JDEwJFE0cXBwYnVVTTV6YVZXSnVmM2l1UWVhRE94WkQ4UjBUeHBEWTNHZlFRTEd4U2F6QVBqejQ2',
     ],
 ];
+$config[AuthConstants::SYSTEM_USER_SESSION_REDIS_LIFE_TIME] = 20;
 
 // ---------- ACL
 // ACL: Allow or disallow of urls for Zed Admin GUI for ALL users
@@ -419,10 +421,12 @@ $config[OmsConstants::PROCESS_LOCATION] = [
 $config[OmsConstants::ACTIVE_PROCESSES] = [
     'DummyPayment01',
     'Nopayment01',
+    'MarketplacePayment01',
 ];
 $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
     DummyPaymentConfig::PAYMENT_METHOD_INVOICE => 'DummyPayment01',
     DummyPaymentConfig::PAYMENT_METHOD_CREDIT_CARD => 'DummyPayment01',
+    DummyMarketplacePaymentConfig::PAYMENT_METHOD_DUMMY_MARKETPLACE_PAYMENT_INVOICE => 'MarketplacePayment01',
     GiftCardConfig::PROVIDER_NAME => 'DummyPayment01',
     NopaymentConfig::PAYMENT_PROVIDER_NAME => 'Nopayment01',
 ];
