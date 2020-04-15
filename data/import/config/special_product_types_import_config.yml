@@ -1,0 +1,24 @@
+# Example of demo shop 'Special Product Types category' data import.
+version: 0
+
+actions:
+  - data_entity: product-option
+    source: data/import/product_option.csv
+  - data_entity: product-option-price
+    source: data/import/product_option_price.csv
+  - data_entity: gift-card-abstract-configuration
+    source: data/import/gift_card_abstract_configuration.csv
+  - data_entity: gift-card-concrete-configuration
+    source: data/import/gift_card_concrete_configuration.csv
+  - data_entity: product-measurement-unit
+  - data_entity: product-measurement-base-unit
+  - data_entity: product-measurement-sales-unit
+  - data_entity: product-measurement-sales-unit-store
+  - data_entity: product-packaging-unit-type
+  - data_entity: product-packaging-unit
+  - data_entity: product-list
+  - data_entity: product-list-category
+  - data_entity: product-list-product-concrete
+  - data_entity: configurable-bundle-template
+  - data_entity: configurable-bundle-template-slot
+  - data_entity: configurable-bundle-template-image
