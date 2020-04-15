@@ -7,13 +7,13 @@
 
 namespace Pyz\Yves\CustomerPage;
 
+use Spryker\Yves\MerchantShipment\Plugin\CustomerPage\MerchantShipmentCheckoutAddressStepPreGroupItemsByShipmentPlugin;
 use SprykerShop\Yves\AgentPage\Plugin\FixAgentTokenAfterCustomerAuthenticationSuccessPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\CustomerPage\BusinessOnBehalfCompanyUserRedirectAfterLoginStrategyPlugin;
 use SprykerShop\Yves\CompanyUserInvitationPage\Plugin\CompanyUserInvitationPreRegistrationCustomerTransferExpanderPlugin;
 use SprykerShop\Yves\CustomerPage\CustomerPageDependencyProvider as SprykerShopCustomerPageDependencyProvider;
 use SprykerShop\Yves\CustomerPage\Plugin\CustomerPage\RedirectUriCustomerRedirectStrategyPlugin;
 use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderWidgetPlugin;
-use SprykerShop\Yves\MerchantProductOfferWidget\Plugin\CustomerPage\MerchantCheckoutAddressStepPreGroupItemsByShipmentPlugin;
 use SprykerShop\Yves\MerchantSwitcherWidget\Plugin\CustomerPage\MerchantSwitchCartAfterCustomerAuthenticationSuccessPlugin;
 
 class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyProvider
@@ -86,7 +86,7 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     protected function getCheckoutAddressStepPreGroupItemsByShipmentPlugins(): array
     {
         return [
-            new MerchantCheckoutAddressStepPreGroupItemsByShipmentPlugin(),
+            new MerchantShipmentCheckoutAddressStepPreGroupItemsByShipmentPlugin(),
         ];
     }
 }
