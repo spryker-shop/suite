@@ -130,11 +130,17 @@ sections:
         drop-database:
             command: "vendor/bin/console propel:database:drop"
             pre: "hidden/maintenance-zed-on"
+            stores:
+                - US
+                - DE
             groups:
                 - propel
 
         delete-migration-files:
             command: "vendor/bin/console propel:migration:delete"
+            stores:
+                - US
+                - DE
             groups:
                 - propel
 
@@ -142,16 +148,25 @@ sections:
     database-migrate:
         propel-create:
             command: "vendor/bin/console propel:database:create"
+            stores:
+                - US
+                - DE
             groups:
                 - propel
 
         propel-postgres-compatibility:
             command: "vendor/bin/console propel:pg-sql-compat"
+            stores:
+                - US
+                - DE
             groups:
                 - propel
 
         propel-copy-schema:
             command: "vendor/bin/console propel:schema:copy"
+            stores:
+                - US
+                - DE
             groups:
                 - propel
 
@@ -162,12 +177,18 @@ sections:
 
         propel-diff:
             command: "vendor/bin/console propel:diff"
+            stores:
+                - US
+                - DE
             groups:
                 - propel
 
         propel-migration-check:
             command: "vendor/bin/console propel:migration:check"
             breakOnFailure: false
+            stores:
+                - US
+                - DE
             groups:
                 - propel
 
@@ -180,6 +201,9 @@ sections:
 
         propel-migrate:
             command: "vendor/bin/console propel:migrate"
+            stores:
+                - US
+                - DE
             groups:
                 - propel
 
@@ -192,6 +216,9 @@ sections:
 
         init-database:
             command: "vendor/bin/console setup:init-db"
+            stores:
+                - US
+                - DE
 
         setup-search-create-sources:
             command: "vendor/bin/console search:setup:sources"
@@ -208,30 +235,57 @@ sections:
     demodata:
         import-commerce-setup:
             command: "vendor/bin/console data:import --config=data/import/config/commerce_setup_import_config.yml"
+            stores:
+                - US
+                - DE
 
         import-catalog-setup:
             command: "vendor/bin/console data:import --config=data/import/config/catalog_setup_import_config.yml"
+            stores:
+                - US
+                - DE
 
         import-special-product-types-setup:
             command: "vendor/bin/console data:import --config=data/import/config/special_product_types_import_config.yml"
+            stores:
+                - US
+                - DE
 
         import-merchandising-setup:
             command: "vendor/bin/console data:import --config=data/import/config/merchandising_import_config.yml"
+            stores:
+                - US
+                - DE
 
         import-navigation-setup:
             command: "vendor/bin/console data:import --config=data/import/config/navigation_import_config.yml"
+            stores:
+                - US
+                - DE
 
         import-content-management-setup:
             command: "vendor/bin/console data:import --config=data/import/config/content_management_import_config.yml"
+            stores:
+                - US
+                - DE
 
         import-b2b-setup:
             command: "vendor/bin/console data:import --config=data/import/config/b2b_setup_import_config.yml"
+            stores:
+                - US
+                - DE
 
         import-miscellaneous-setup:
             command: "vendor/bin/console data:import --config=data/import/config/miscellaneous_import_config.yml"
+            stores:
+                - US
+                - DE
 
         update-product-labels:
             command: "vendor/bin/console product-label:relations:update"
+            stores:
+                - US
+                - DE
 
     jenkins-up:
         jenkins-generate:
