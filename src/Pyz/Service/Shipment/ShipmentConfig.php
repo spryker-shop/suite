@@ -15,8 +15,6 @@ class ShipmentConfig extends SprykerShipmentConfig
     /**
      * {@inheritDoc}
      *
-     * @api
-     *
      * @return string[]
      */
     public function getShipmentHashFields(): array
