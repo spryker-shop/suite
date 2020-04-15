@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\OauthRevoke;
 
-use Spryker\Zed\OauthPermission\Communication\Plugin\Filter\OauthUserIdentifierFilterPermissionForOauthRevokePlugin;
+use Spryker\Zed\OauthPermission\Communication\Plugin\Filter\RefreshTokenPermissionOauthUserIdentifierFilterPlugin;
 use Spryker\Zed\OauthRevoke\OauthRevokeDependencyProvider as SprykerRevokeOauthDependencyProvider;
 
 class OauthRevokeDependencyProvider extends SprykerRevokeOauthDependencyProvider
@@ -18,7 +18,7 @@ class OauthRevokeDependencyProvider extends SprykerRevokeOauthDependencyProvider
     protected function getOauthUserIdentifierFilterPlugins(): array
     {
         return [
-            new OauthUserIdentifierFilterPermissionForOauthRevokePlugin(),
+            new RefreshTokenPermissionOauthUserIdentifierFilterPlugin(),
         ];
     }
 }
