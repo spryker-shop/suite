@@ -7,9 +7,15 @@
 
 namespace PyzTest\Glue\Carts;
 
+use Generated\Shared\Transfer\CustomerTransfer;
+use Generated\Shared\Transfer\ItemTransfer;
+use Generated\Shared\Transfer\QuoteTransfer;
+use Generated\Shared\Transfer\StoreTransfer;
+use Generated\Shared\Transfer\TotalsTransfer;
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
 use Spryker\Glue\GlueApplication\Rest\RequestConstantsInterface;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
+use Spryker\Shared\Price\PriceConfig;
 use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
 
 /**
@@ -31,6 +37,70 @@ use SprykerTest\Glue\Testify\Tester\ApiEndToEndTester;
 class CartsApiTester extends ApiEndToEndTester
 {
     use _generated\CartsApiTesterActions;
+
+    /**
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     * @param \Generated\Shared\Transfer\ProductConcreteTransfer[] $productConcreteTransfers
+     *
+     * @return \Generated\Shared\Transfer\QuoteTransfer
+     */
+    public function createPersistentQuote(
+        CartsApiTester $I,
+        CustomerTransfer $customerTransfer,
+        array $productConcreteTransfers
+    ): QuoteTransfer {
+        return $I->havePersistentQuote([
+            QuoteTransfer::CUSTOMER => $customerTransfer,
+            QuoteTransfer::TOTALS => (new TotalsTransfer())->setPriceToPay(random_int(1000, 10000)),
+            QuoteTransfer::ITEMS => $this->mapProductConcreteTransfersToQuoteTransferItems($productConcreteTransfers),
+            QuoteTransfer::STORE => [StoreTransfer::NAME => 'DE'],
+            QuoteTransfer::PRICE_MODE => PriceConfig::PRICE_MODE_GROSS,
+        ]);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ProductConcreteTransfer[] $productConcreteTransfers
+     *
+     * @return array
+     */
+    protected function mapProductConcreteTransfersToQuoteTransferItems(array $productConcreteTransfers): array
+    {
+        $quoteTransferItems = [];
+
+        foreach ($productConcreteTransfers as $productConcreteTransfer) {
+            $quoteTransferItems[] = [
+                ItemTransfer::SKU => $productConcreteTransfer->getSku(),
+                ItemTransfer::GROUP_KEY => $productConcreteTransfer->getSku(),
+                ItemTransfer::ABSTRACT_SKU => $productConcreteTransfer->getAbstractSku(),
+                ItemTransfer::ID_PRODUCT_ABSTRACT => $productConcreteTransfer->getFkProductAbstract(),
+                ItemTransfer::UNIT_PRICE => random_int(100, 1000),
+                ItemTransfer::UNIT_GROSS_PRICE => random_int(100, 1000),
+                ItemTransfer::QUANTITY => 1,
+            ];
+        }
+
+        return $quoteTransferItems;
+    }
+
+    /**
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     * @param string $cartUuid
+     * @param array $attributes
+     *
+     * @return string
+     */
+    public function createCartResourceEntityTag(
+        CartsApiTester $I,
+        string $cartUuid,
+        array $attributes
+    ): string {
+        return $I->haveEntityTag(
+            CartsRestApiConfig::RESOURCE_CARTS,
+            $cartUuid,
+            $attributes
+        );
+    }
 
     /**
      * @param int $quantity
