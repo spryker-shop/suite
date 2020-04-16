@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f6235282744d432184e2f1d1b3aee9c8",
+    "content-hash": "dc0e4c40f1c0de16f4ab6bc181233dab",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -3146,20 +3146,6 @@
                 "x.509",
                 "x509"
             ],
-            "funding": [
-                {
-                    "url": "https://github.com/terrafrost",
-                    "type": "github"
-                },
-                {
-                    "url": "https://www.patreon.com/phpseclib",
-                    "type": "patreon"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/phpseclib/phpseclib",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-04-04T23:17:33+00:00"
         },
         {
@@ -4932,6 +4918,56 @@
             "time": "2020-04-06T13:59:56+00:00"
         },
         {
+            "name": "spryker/sales-return",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/sales-return.git",
+                "reference": "720f93bd0479a9c89b95629eda9fd023e4783e81"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/sales-return/zipball/720f93bd0479a9c89b95629eda9fd023e4783e81",
+                "reference": "720f93bd0479a9c89b95629eda9fd023e4783e81",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/customer": "^7.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/oms": "^11.0.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/sales": "^11.7.0",
+                "spryker/sales-extension": "^1.6.0",
+                "spryker/store": "^1.11.0",
+                "spryker/uuid-behavior": "^1.0.0",
+                "spryker/zed-request": "^3.4.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Shared\\SalesReturn\\Helper\\": "tests/SprykerTest/Shared/SalesReturn/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SalesReturn module",
+            "time": "2020-04-14T13:36:27+00:00"
+        },
+        {
             "name": "spryker/silexphp",
             "version": "dev-master",
             "source": {
@@ -5013,11 +5049,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/mr-560/dev-show-updated-marketplace-order-view",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "1100b11f74d50f189d57e4371a4991cca9fe4940"
+                "reference": "bebc69bca2bd5bfb8b01ea44a114ba3b7347bbaf"
             },
             "require": {
                 "php": ">=7.2"
@@ -5704,15 +5740,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-04-09T15:19:30+00:00"
+            "time": "2020-04-16T12:31:53+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/mr-560/dev-show-updated-marketplace-order-view",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "d83e4fec0def1efbe03cc3b91dcb678f183175f5"
+                "reference": "e080fd17dbef98d759d1caa0614700e607388aef"
             },
             "require": {
                 "php": ">=7.2"
@@ -5770,6 +5806,7 @@
                 "spryker-shop/language-switcher-widget": "*",
                 "spryker-shop/merchant-product-offer-widget": "*",
                 "spryker-shop/merchant-profile-page": "*",
+                "spryker-shop/merchant-sales-order-widget": "*",
                 "spryker-shop/merchant-switcher-widget": "*",
                 "spryker-shop/money-widget": "*",
                 "spryker-shop/multi-cart-page": "*",
@@ -5856,7 +5893,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-04-09T13:54:00+00:00"
+            "time": "2020-04-16T12:32:10+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -10481,20 +10518,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
-                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler"
+                    "homepage": "https://github.com/manuelpichler",
+                    "role": "Project Founder"
                 },
                 {
                     "name": "Marc Würth",
-                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84"
+                    "homepage": "https://github.com/ravage84",
+                    "role": "Project Maintainer"
                 },
                 {
                     "name": "Other contributors",
-                    "role": "Contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
+                    "role": "Contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -11510,6 +11547,51 @@
             "time": "2020-04-02T10:45:42+00:00"
         },
         {
+            "name": "spryker/oauth-revoke",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/oauth-revoke.git",
+                "reference": "b9a326d05b9bdb85cb4b5a9f12fa54ac6efcdc01"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/oauth-revoke/zipball/b9a326d05b9bdb85cb4b5a9f12fa54ac6efcdc01",
+                "reference": "b9a326d05b9bdb85cb4b5a9f12fa54ac6efcdc01",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/kernel": "^3.30.0",
+                "spryker/oauth": "^1.6.0",
+                "spryker/oauth-extension": "^1.3.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/util-encoding": "^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "OauthRevoke module",
+            "time": "2020-04-09T15:07:25+00:00"
+        },
+        {
             "name": "squizlabs/php_codesniffer",
             "version": "3.5.4",
             "source": {
@@ -12039,6 +12121,5 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    },
-    "plugin-api-version": "1.1.0"
+    }
 }
