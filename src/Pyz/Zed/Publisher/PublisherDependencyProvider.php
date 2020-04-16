@@ -12,6 +12,7 @@ use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryKey\Gloss
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryPublisherTriggerPlugin;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryTranslation\GlossaryWritePublisherPlugin as GlossaryTranslationWritePublisherPlugin;
 use Spryker\Zed\MerchantStorage\Communication\Plugin\Publisher\Merchant\MerchantStoragePublisherPlugin;
+use Spryker\Zed\MerchantStorage\Communication\Plugin\Publisher\Merchant\MerchantStoreStoragePublisherPlugin;
 use Spryker\Zed\MerchantStorage\Communication\Plugin\Publisher\MerchantPublisherTriggerPlugin;
 use Spryker\Zed\ProductRelationStorage\Communication\Plugin\Publisher\ProductRelation\ProductRelationWriteForPublishingPublisherPlugin;
 use Spryker\Zed\ProductRelationStorage\Communication\Plugin\Publisher\ProductRelation\ProductRelationWritePublisherPlugin;
@@ -78,6 +79,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
     {
         return [
             new MerchantStoragePublisherPlugin(),
+            new MerchantStoreStoragePublisherPlugin(),
         ];
     }
 }
