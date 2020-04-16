@@ -18,8 +18,10 @@ use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandCollectionInterface;
 use Spryker\Zed\Oms\Dependency\Plugin\Condition\ConditionCollectionInterface;
 use Spryker\Zed\Oms\OmsDependencyProvider as SprykerOmsDependencyProvider;
 use Spryker\Zed\OmsProductOfferReservation\Communication\Plugin\OmsReservation\ProductOfferOmsReservationReaderStrategyPlugin;
+use Spryker\Zed\OmsProductOfferReservation\Communication\Plugin\ProductOfferOmsReservationAggregationStrategyPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Oms\ProductBundleAvailabilityHandlerPlugin;
-use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Oms\ProductPackagingUnitReservationAggregationStrategyPlugin;
+use Spryker\Zed\ProductOfferPackagingUnit\Communication\Plugin\Oms\ProductOfferPackagingUnitOmsReservationAggregationStrategyPlugin;
+use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Oms\ProductPackagingUnitOmsReservationAggregationStrategyPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Reservation\LeadProductReservationHandlerPlugin;
 use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentManualEventGrouperPlugin;
 use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentOrderMailExpanderPlugin;
@@ -115,12 +117,14 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\OmsExtension\Dependency\Plugin\ReservationAggregationStrategyPluginInterface[]
+     * @return \Spryker\Zed\OmsExtension\Dependency\Plugin\OmsReservationAggregationStrategyPluginInterface[]
      */
-    protected function getReservationAggregationStrategyPlugins(): array
+    protected function getOmsReservationAggregationStrategyPlugins(): array
     {
         return [
-            new ProductPackagingUnitReservationAggregationStrategyPlugin(),
+            new ProductOfferPackagingUnitOmsReservationAggregationStrategyPlugin(),
+            new ProductOfferOmsReservationAggregationStrategyPlugin(),
+            new ProductPackagingUnitOmsReservationAggregationStrategyPlugin(),
         ];
     }
 
