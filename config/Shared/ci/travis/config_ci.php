@@ -33,8 +33,6 @@ use Spryker\Shared\Twig\TwigConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
 
-$CURRENT_STORE = Store::getInstance()->getStoreName();
-
 // ---------- General
 $config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker/spryker/Bundles';
 

@@ -77,8 +77,6 @@ use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
 use SprykerShop\Shared\WebProfilerWidget\WebProfilerWidgetConstants;
 use Twig\Cache\FilesystemCache;
 
-$CURRENT_STORE = Store::getInstance()->getStoreName();
-
 /* ZED */
 $config[ApplicationConstants::HOST_ZED] = getenv('SPRYKER_ZED_HOST');
 $config[SessionConstants::ZED_SESSION_COOKIE_DOMAIN] = getenv('SPRYKER_BE_HOST');

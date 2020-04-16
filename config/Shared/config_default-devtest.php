@@ -43,8 +43,7 @@ use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 
 $domain = getenv('VM_PROJECT') ?: 'suite-nonsplit';
-$currentStore = APPLICATION_STORE;
-$currentStoreLowerCase = strtolower($currentStore);
+$currentStoreLowerCase = strtolower(APPLICATION_CODE_BUCKET);
 
 // ---------- General
 $config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker/spryker/Bundles';
@@ -180,50 +179,19 @@ $config[ApplicationConstants::YVES_TRUSTED_HOSTS]
 // ---------- Propel
 $config[PropelConstants::ZED_DB_USERNAME] = 'devtest';
 $config[PropelConstants::ZED_DB_PASSWORD] = 'mate20mg';
-$config[PropelConstants::ZED_DB_DATABASE] = sprintf('%s_devtest_zed', $currentStore);
+$config[PropelConstants::ZED_DB_DATABASE] = sprintf('%s_devtest_zed', APPLICATION_CODE_BUCKET);
 
 // ---------- Elasticsearch
 $config[CollectorConstants::ELASTICA_PARAMETER__INDEX_NAME] = sprintf('%s_search_devtest', $currentStoreLowerCase);
 
 // ---------- RabbitMq
-$config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = sprintf('/%s_devtest_zed', $currentStore);
+$config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = sprintf('/%s_devtest_zed', APPLICATION_CODE_BUCKET);
+$config[RabbitMqEnv::RABBITMQ_VIRTUAL_HOST] = sprintf('/%s_devtest_zed', APPLICATION_CODE_BUCKET);
+$config[RabbitMqEnv::RABBITMQ_USERNAME] = sprintf('%s_devtest', APPLICATION_CODE_BUCKET);
 $config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION] = [
     EventConstants::EVENT_QUEUE => [
         QueueConfig::CONFIG_QUEUE_ADAPTER => RabbitMqAdapter::class,
         QueueConfig::CONFIG_MAX_WORKER_NUMBER => 1,
-    ],
-];
-
-$config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
-    'DE' => [
-        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'DE-connection',
-        RabbitMqEnv::RABBITMQ_HOST => 'localhost',
-        RabbitMqEnv::RABBITMQ_PORT => '5672',
-        RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
-        RabbitMqEnv::RABBITMQ_USERNAME => 'DE_devtest',
-        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/DE_devtest_zed',
-        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['DE'],
-        RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => $currentStore === 'DE',
-    ],
-    'AT' => [
-        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'AT-connection',
-        RabbitMqEnv::RABBITMQ_HOST => 'localhost',
-        RabbitMqEnv::RABBITMQ_PORT => '5672',
-        RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
-        RabbitMqEnv::RABBITMQ_USERNAME => 'AT_devtest',
-        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/AT_devtest_zed',
-        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['AT'],
-        RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => $currentStore === 'AT',
-    ],
-    'US' => [
-        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'US-connection',
-        RabbitMqEnv::RABBITMQ_HOST => 'localhost',
-        RabbitMqEnv::RABBITMQ_PORT => '5672',
-        RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
-        RabbitMqEnv::RABBITMQ_USERNAME => 'US_devtest',
-        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/US_devtest_zed',
-        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['US'],
-        RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => $currentStore === 'US',
     ],
 ];
 
@@ -244,4 +212,4 @@ $config[TestifyConstants::GLUE_OPEN_API_SCHEMA] = APPLICATION_SOURCE_DIR . '/Gen
 // ---------- Database storage
 $config[StorageDatabaseConstants::DB_USERNAME] = 'devtest';
 $config[StorageDatabaseConstants::DB_PASSWORD] = 'mate20mg';
-$config[StorageDatabaseConstants::DB_DATABASE] = sprintf('%s_devtest_zed', $currentStore);
+$config[StorageDatabaseConstants::DB_DATABASE] = sprintf('%s_devtest_zed', APPLICATION_CODE_BUCKET);
