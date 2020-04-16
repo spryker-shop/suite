@@ -7,6 +7,9 @@
     "email": "info@spryker.com",
     "url": "https://spryker.com/"
   },
+  "workspaces": [
+    "vendor/spryker/spryker/Bundles/*"
+  ],
   "scripts": {
     "yves": "node ./frontend/build development",
     "yves:watch": "node ./frontend/build development-watch",
@@ -17,32 +20,10 @@
     "zed": "node ./node_modules/@spryker/oryx-for-zed/build",
     "zed:watch": "node ./node_modules/@spryker/oryx-for-zed/build --dev",
     "zed:production": "node ./node_modules/@spryker/oryx-for-zed/build --prod",
-    "bo:install": "run-s bo:install:*",
-    "bo:install:zed-ui": "npm run cd:zed-ui -- npm install",
-    "bo:install:mp-login": "npm run cd:mp-login -- npm install",
-    "bo:install:mp-dashboard": "npm run cd:mp-dashboard -- npm install",
-    "bo:install:mp-profile": "npm run cd:mp-profile -- npm install",
-    "bo:install:mp-product-offer": "npm run cd:mp-product-offer -- npm install",
-    "bo:build": "npm run fe:root -- run-s bo:build:*",
-    "bo:build:zed-ui": "npm run cd:zed-ui -- npm run build",
-    "bo:build:mp-login": "npm run cd:mp-login -- npm run build",
-    "bo:build:mp-dashboard": "npm run cd:mp-dashboard -- npm run build",
-    "bo:build:mp-profile": "npm run cd:mp-profile -- npm run build",
-    "bo:build:mp-product-offer": "npm run cd:mp-product-offer -- npm run build",
-    "bo:test": "run-s bo:test:*",
-    "bo:test:zed-ui": "npm run cd:zed-ui -- npm run test -- --watch=false --browsers ChromeHeadless",
-    "bo:test:mp-login": "npm run cd:mp-login -- npm run test -- --watch=false --browsers ChromeHeadless",
-    "bo:test:mp-dashboard": "npm run cd:mp-dashboard -- npm run test -- --watch=false --browsers ChromeHeadless",
-    "bo:test:mp-profile": "npm run cd:mp-profile -- npm run test -- --watch=false --browsers ChromeHeadless",
-    "bo:clean": "run-s bo:clean:*",
-    "bo:clean:dist": "rimraf vendor/spryker/spryker/Bundles/*/dist",
-    "bo:clean:modules": "rimraf vendor/spryker/spryker/Bundles/*/node_modules",
-    "bo:test:mp-product-offer": "npm run cd:mp-product-offer -- npm run test -- --watch=false --browsers ChromeHeadless",
-    "cd:zed-ui": "cd ./vendor/spryker/spryker/Bundles/ZedUi && ",
-    "cd:mp-login": "cd ./vendor/spryker/spryker/Bundles/AuthenticationMerchantPortalGui && ",
-    "cd:mp-dashboard": "cd ./vendor/spryker/spryker/Bundles/DashboardMerchantPortalGui && ",
-    "cd:mp-profile": "cd ./vendor/spryker/spryker/Bundles/MerchantProfileMerchantPortalGui && ",
-    "cd:mp-product-offer": "cd ./vendor/spryker/spryker/Bundles/ProductOfferMerchantPortalGui && ",
+    "mp:build": "npm run fe:root -- yarn workspaces run build",
+    "mp:test": "yarn workspaces run test --watch=false --browsers ChromeHeadless",
+    "mp:clean": "run-s mp:clean:*",
+    "mp:clean:dist": "rimraf vendor/spryker/spryker/Bundles/*/dist",
     "fe:root": "export FE_ROOT_DIR=\"../../../../..\" && "
   },
   "engines": {
@@ -50,6 +31,7 @@
     "npm": ">=6.4.1"
   },
   "dependencies": {
+    "@angular/cli": "^9.1.1",
     "@webcomponents/custom-elements": "~1.3.1",
     "@webcomponents/webcomponents-platform": "^1.0.1",
     "@webcomponents/webcomponentsjs": "~2.4.0",
