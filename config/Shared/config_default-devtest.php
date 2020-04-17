@@ -72,10 +72,32 @@ $config[SessionConstants::ZED_SESSION_COOKIE_SECURE] = false;
 $config[SessionConstants::ZED_SESSION_SAVE_HANDLER] = SessionRedisConfig::SESSION_HANDLER_REDIS;
 
 // ---------- Queue
+$config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = sprintf('/%s_devtest_zed', APPLICATION_CODE_BUCKET);
+//$config[RabbitMqEnv::RABBITMQ_VIRTUAL_HOST] = sprintf('/%s_devtest_zed', APPLICATION_CODE_BUCKET);
+$config[RabbitMqEnv::RABBITMQ_USERNAME] = sprintf('%s_devtest', APPLICATION_CODE_BUCKET);
 $config[RabbitMqEnv::RABBITMQ_API_HOST] = 'localhost';
 $config[RabbitMqEnv::RABBITMQ_API_PORT] = '15672';
 $config[RabbitMqEnv::RABBITMQ_API_USERNAME] = 'admin';
 $config[RabbitMqEnv::RABBITMQ_API_PASSWORD] = 'mate20mg';
+
+$config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION] = [
+    EventConstants::EVENT_QUEUE => [
+        QueueConfig::CONFIG_QUEUE_ADAPTER => RabbitMqAdapter::class,
+        QueueConfig::CONFIG_MAX_WORKER_NUMBER => 1,
+    ],
+];
+
+$config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['DE'][RabbitMqEnv::RABBITMQ_USERNAME] = 'DE_devtest';
+$config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['DE'][RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = '/DE_devtest_zed';
+$config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['DE'][RabbitMqEnv::RABBITMQ_VIRTUAL_HOST] = '/DE_devtest_zed';
+
+$config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['AT'][RabbitMqEnv::RABBITMQ_USERNAME] = 'AT_devtest';
+$config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['AT'][RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = '/AT_devtest';
+$config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['AT'][RabbitMqEnv::RABBITMQ_VIRTUAL_HOST] = '/AT_devtest_zed';
+
+$config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['US'][RabbitMqEnv::RABBITMQ_USERNAME] = 'US_devtest';
+$config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['US'][RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = '/US_devtest';
+$config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['US'][RabbitMqEnv::RABBITMQ_VIRTUAL_HOST] = '/US_devtest_zed';
 
 // ---------- Logging
 $config[LogConstants::LOG_FILE_PATH] = APPLICATION_ROOT_DIR . '/data/logs';
@@ -185,15 +207,7 @@ $config[PropelConstants::ZED_DB_DATABASE] = sprintf('%s_devtest_zed', APPLICATIO
 $config[CollectorConstants::ELASTICA_PARAMETER__INDEX_NAME] = sprintf('%s_search_devtest', $currentStoreLowerCase);
 
 // ---------- RabbitMq
-$config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = sprintf('/%s_devtest_zed', APPLICATION_CODE_BUCKET);
-$config[RabbitMqEnv::RABBITMQ_VIRTUAL_HOST] = sprintf('/%s_devtest_zed', APPLICATION_CODE_BUCKET);
-$config[RabbitMqEnv::RABBITMQ_USERNAME] = sprintf('%s_devtest', APPLICATION_CODE_BUCKET);
-$config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION] = [
-    EventConstants::EVENT_QUEUE => [
-        QueueConfig::CONFIG_QUEUE_ADAPTER => RabbitMqAdapter::class,
-        QueueConfig::CONFIG_MAX_WORKER_NUMBER => 1,
-    ],
-];
+
 
 // ---------- Event
 $config[EventConstants::EVENT_CHUNK] = 5000;

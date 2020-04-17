@@ -466,13 +466,13 @@ $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
         RabbitMqEnv::RABBITMQ_HOST => 'localhost',
         RabbitMqEnv::RABBITMQ_PORT => '5672',
         RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
-        RabbitMqEnv::RABBITMQ_USERNAME => 'DE_development', // Defined per environment
+        RabbitMqEnv::RABBITMQ_USERNAME => null, // Defined per environment
         RabbitMqEnv::RABBITMQ_API_HOST => 'localhost',
         RabbitMqEnv::RABBITMQ_API_PORT => '5672',
         RabbitMqEnv::RABBITMQ_API_PASSWORD => 'mate20mg',
         RabbitMqEnv::RABBITMQ_API_USERNAME => 'admin',
-        RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST => '/DE_development_zed', // Defined per environment
-        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/DE_development_zed', // Defined per environment
+        RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST => null, // Defined per environment
+        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => null, // Defined per environment
         RabbitMqEnv::RABBITMQ_STORE_NAMES => ['DE'],
         RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => APPLICATION_CODE_BUCKET === 'DE',
     ],
@@ -481,13 +481,13 @@ $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
         RabbitMqEnv::RABBITMQ_HOST => 'localhost',
         RabbitMqEnv::RABBITMQ_PORT => '5672',
         RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
-        RabbitMqEnv::RABBITMQ_USERNAME => 'AT_development', // Defined per environment
+        RabbitMqEnv::RABBITMQ_USERNAME => null, // Defined per environment
         RabbitMqEnv::RABBITMQ_API_HOST => 'localhost',
         RabbitMqEnv::RABBITMQ_API_PORT => '5672',
         RabbitMqEnv::RABBITMQ_API_PASSWORD => 'mate20mg',
         RabbitMqEnv::RABBITMQ_API_USERNAME => 'admin',
-        RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST => '/AT_development_zed', // Defined per environment
-        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/AT_development_zed', // Defined per environment
+        RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST => null, // Defined per environment
+        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => null, // Defined per environment
         RabbitMqEnv::RABBITMQ_STORE_NAMES => ['AT'],
         RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => APPLICATION_CODE_BUCKET === 'AT',
     ],
@@ -496,13 +496,13 @@ $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
         RabbitMqEnv::RABBITMQ_HOST => 'localhost',
         RabbitMqEnv::RABBITMQ_PORT => '5672',
         RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
-        RabbitMqEnv::RABBITMQ_USERNAME => 'US_development', // Defined per environment
+        RabbitMqEnv::RABBITMQ_USERNAME => null, // Defined per environment
         RabbitMqEnv::RABBITMQ_API_HOST => 'localhost',
         RabbitMqEnv::RABBITMQ_API_PORT => '5672',
         RabbitMqEnv::RABBITMQ_API_PASSWORD => 'mate20mg',
         RabbitMqEnv::RABBITMQ_API_USERNAME => 'admin',
-        RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST => '/US_development_zed', // Defined per environment
-        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/US_development_zed', // Defined per environment
+        RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST => null, // Defined per environment
+        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => null, // Defined per environment
         RabbitMqEnv::RABBITMQ_STORE_NAMES => ['US'],
         RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => APPLICATION_CODE_BUCKET === 'US',
     ],
