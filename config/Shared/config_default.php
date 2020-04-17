@@ -455,6 +455,11 @@ $config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION] = [
     ],
 ];
 
+$config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION_DEFAULT] = [
+    QueueConfig::CONFIG_QUEUE_ADAPTER => RabbitMqAdapter::class,
+    QueueConfig::CONFIG_MAX_WORKER_NUMBER => 2,
+];
+
 // ----------- RabbitMq
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
     'DE' => [
