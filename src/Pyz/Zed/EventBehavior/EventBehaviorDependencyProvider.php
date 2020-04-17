@@ -91,8 +91,6 @@ class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProv
             new ProductGroupEventResourceQueryContainerPlugin(),
             new ProductAbstractImageEventResourceQueryContainerPlugin(),
             new ProductConcreteImageEventResourceQueryContainerPlugin(),
-            new ProductLabelDictionaryEventResourceQueryContainerPlugin(),
-            new ProductAbstractLabelEventResourceQueryContainerPlugin(),
             new ProductOptionEventResourceQueryContainerPlugin(),
             new ProductReviewEventResourceQueryContainerPlugin(),
             new ProductSearchConfigEventResourceQueryContainerPlugin(),
