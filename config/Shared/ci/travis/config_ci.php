@@ -12,7 +12,6 @@ use Spryker\Shared\EventBehavior\EventBehaviorConstants;
 use Spryker\Shared\GlueApplication\GlueApplicationConstants;
 use Spryker\Shared\Http\HttpConstants;
 use Spryker\Shared\Kernel\KernelConstants;
-use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\Mail\MailConstants;
 use Spryker\Shared\Newsletter\NewsletterConstants;
