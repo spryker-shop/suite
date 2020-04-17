@@ -366,10 +366,9 @@ script:
   - if [[ $VALIDATION == 1 ]] ; then node ./frontend/libs/tslint stylish ; fi
 
   - if [[ $FE_TEST == 1 ]] ; then nvm install 12 && nvm use 12 ; fi
-  - if [[ $FE_TEST == 1 ]] ; then npm install ; fi
-  - if [[ $FE_TEST == 1 ]] ; then npm run bo:install ; fi
-  - if [[ $FE_TEST == 1 ]] ; then npm run bo:build ; fi
-  - if [[ $FE_TEST == 1 ]] ; then npm run bo:test ; fi
+  - if [[ $FE_TEST == 1 ]] ; then yarn install ; fi
+  - if [[ $FE_TEST == 1 ]] ; then yarn mp:build ; fi
+  - if [[ $FE_TEST == 1 ]] ; then yarn mp:test ; fi
 
 after_script:
   - if [[ $TRAVIS_TEST_RESULT == 0 ]] ; then rm /tmp/phantomjs.log ; fi
