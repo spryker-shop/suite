@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f6235282744d432184e2f1d1b3aee9c8",
+    "content-hash": "dc0e4c40f1c0de16f4ab6bc181233dab",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -4999,11 +4999,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/mr-560/dev-show-updated-marketplace-order-view",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "86f5f92c4a9ee455090e91ce2fb2ac57f6ce197d"
+                "reference": "bebc69bca2bd5bfb8b01ea44a114ba3b7347bbaf"
             },
             "require": {
                 "php": ">=7.2"
@@ -5310,7 +5310,6 @@
                 "spryker/merchant-profile": "*",
                 "spryker/merchant-profile-data-import": "*",
                 "spryker/merchant-profile-gui": "*",
-                "spryker/merchant-profile-gui-page": "*",
                 "spryker/merchant-profile-storage": "*",
                 "spryker/merchant-relationship": "*",
                 "spryker/merchant-relationship-data-import": "*",
@@ -5359,8 +5358,6 @@
                 "spryker/oauth-customer-connector-extension": "*",
                 "spryker/oauth-extension": "*",
                 "spryker/oauth-permission": "*",
-                "spryker/oauth-revoke": "*",
-                "spryker/oauth-revoke-extension": "*",
                 "spryker/offer": "*",
                 "spryker/offer-extension": "*",
                 "spryker/offer-gui": "*",
@@ -5559,9 +5556,6 @@
                 "spryker/sales-quantity": "*",
                 "spryker/sales-reclamation": "*",
                 "spryker/sales-reclamation-gui": "*",
-                "spryker/sales-return": "*",
-                "spryker/sales-return-data-import": "*",
-                "spryker/sales-returns-rest-api": "*",
                 "spryker/sales-split": "*",
                 "spryker/sales-statistics": "*",
                 "spryker/scheduler": "*",
@@ -5696,15 +5690,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-04-17T16:13:54+00:00"
+            "time": "2020-04-16T12:31:53+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/mr-560/dev-show-updated-marketplace-order-view",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "4fefaefc6857e2b8df14d1d760a6af348963a8c6"
+                "reference": "e080fd17dbef98d759d1caa0614700e607388aef"
             },
             "require": {
                 "php": ">=7.2"
@@ -5762,6 +5756,7 @@
                 "spryker-shop/language-switcher-widget": "*",
                 "spryker-shop/merchant-product-offer-widget": "*",
                 "spryker-shop/merchant-profile-page": "*",
+                "spryker-shop/merchant-sales-order-widget": "*",
                 "spryker-shop/merchant-switcher-widget": "*",
                 "spryker-shop/money-widget": "*",
                 "spryker-shop/multi-cart-page": "*",
@@ -5848,7 +5843,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-04-10T12:48:49+00:00"
+            "time": "2020-04-16T12:32:10+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -12031,6 +12026,5 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    },
-    "plugin-api-version": "1.1.0"
+    }
 }
