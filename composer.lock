@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "25cfa2299a391d5df390ca67930ef86b",
+    "content-hash": "758ab418b0d2183ece5a8edba5e39124",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.134.8",
+            "version": "3.135.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "8a9b598a0ede2165be5988899dcebead6fcc4d41"
+                "reference": "254f168f90b1846ffb3f70594280e66b9f10a85e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/8a9b598a0ede2165be5988899dcebead6fcc4d41",
-                "reference": "8a9b598a0ede2165be5988899dcebead6fcc4d41",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/254f168f90b1846ffb3f70594280e66b9f10a85e",
+                "reference": "254f168f90b1846ffb3f70594280e66b9f10a85e",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-04-17T18:11:57+00:00"
+            "time": "2020-04-20T18:16:34+00:00"
         },
         {
             "name": "codeitnowin/barcode",
@@ -2067,20 +2067,6 @@
                 "twofish",
                 "x.509",
                 "x509"
-            ],
-            "funding": [
-                {
-                    "url": "https://github.com/terrafrost",
-                    "type": "github"
-                },
-                {
-                    "url": "https://www.patreon.com/phpseclib",
-                    "type": "patreon"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/phpseclib/phpseclib",
-                    "type": "tidelift"
-                }
             ],
             "time": "2020-04-04T23:17:33+00:00"
         },
@@ -9519,6 +9505,49 @@
             ],
             "description": "AuthRestApiExtension module",
             "time": "2019-09-25T13:31:36+00:00"
+        },
+        {
+            "name": "spryker/authentication-merchant-portal-gui",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/authentication-merchant-portal-gui.git",
+                "reference": "f14dd9bf6c23f16e8f4f61590f19ef38ffc3f2c0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/authentication-merchant-portal-gui/zipball/f14dd9bf6c23f16e8f4f61590f19ef38ffc3f2c0",
+                "reference": "f14dd9bf6c23f16e8f4f61590f19ef38ffc3f2c0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/auth": "^1.0.0 || ^2.0.0 || ^3.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/messenger": "^3.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/zed-ui": "^0.2.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "AuthenticationMerchantPortalGui module",
+            "time": "2020-04-15T16:07:39+00:00"
         },
         {
             "name": "spryker/availability",
@@ -19125,6 +19154,47 @@
             "time": "2019-01-28T15:17:37+00:00"
         },
         {
+            "name": "spryker/dashboard-merchant-portal-gui",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/dashboard-merchant-portal-gui.git",
+                "reference": "a341110e007e9954cd6d179598de30caa49f3634"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/dashboard-merchant-portal-gui/zipball/a341110e007e9954cd6d179598de30caa49f3634",
+                "reference": "a341110e007e9954cd6d179598de30caa49f3634",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/kernel": "^3.33.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/zed-ui": "^0.2.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "DashboardMerchantPortalGui module",
+            "time": "2020-04-15T16:07:39+00:00"
+        },
+        {
             "name": "spryker/data-import",
             "version": "1.10.0",
             "source": {
@@ -22268,47 +22338,6 @@
             "time": "2020-02-04T14:23:41+00:00"
         },
         {
-            "name": "spryker/merchant-dashboard-gui-page",
-            "version": "0.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/merchant-dashboard-gui-page.git",
-                "reference": "0b563f637239a6a0667d174ed8f2dfd249b2982a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-dashboard-gui-page/zipball/0b563f637239a6a0667d174ed8f2dfd249b2982a",
-                "reference": "0b563f637239a6a0667d174ed8f2dfd249b2982a",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2",
-                "spryker/kernel": "^3.33.0",
-                "spryker/symfony": "^3.0.0",
-                "spryker/zed-ui": "^0.2.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "MerchantDashboardGuiPage module",
-            "time": "2020-04-09T12:06:52+00:00"
-        },
-        {
             "name": "spryker/merchant-data-import",
             "version": "0.2.2",
             "source": {
@@ -23124,17 +23153,17 @@
             "time": "2020-04-08T15:48:06+00:00"
         },
         {
-            "name": "spryker/merchant-profile-gui-page",
+            "name": "spryker/merchant-profile-merchant-portal-gui",
             "version": "0.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/merchant-profile-gui-page.git",
-                "reference": "86788f0d0401bc1f75c7fcea80c3e99db6a01438"
+                "url": "https://github.com/spryker/merchant-profile-merchant-portal-gui.git",
+                "reference": "a37a81fbf8ba49c429cacdc3da0e43377e71d22f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-profile-gui-page/zipball/86788f0d0401bc1f75c7fcea80c3e99db6a01438",
-                "reference": "86788f0d0401bc1f75c7fcea80c3e99db6a01438",
+                "url": "https://api.github.com/repos/spryker/merchant-profile-merchant-portal-gui/zipball/a37a81fbf8ba49c429cacdc3da0e43377e71d22f",
+                "reference": "a37a81fbf8ba49c429cacdc3da0e43377e71d22f",
                 "shasum": ""
             },
             "require": {
@@ -23168,8 +23197,8 @@
             "license": [
                 "proprietary"
             ],
-            "description": "MerchantProfileGuiPage module",
-            "time": "2020-04-09T12:06:52+00:00"
+            "description": "MerchantProfileMerchantPortalGui module",
+            "time": "2020-04-16T10:44:51+00:00"
         },
         {
             "name": "spryker/merchant-profile-storage",
@@ -24161,49 +24190,6 @@
             ],
             "description": "MerchantUser module",
             "time": "2020-04-09T12:17:29+00:00"
-        },
-        {
-            "name": "spryker/merchant-user-auth-gui-page",
-            "version": "0.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/merchant-user-auth-gui-page.git",
-                "reference": "ce531f9a4e8012ccfb29b364ea1667f4d2794d58"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-user-auth-gui-page/zipball/ce531f9a4e8012ccfb29b364ea1667f4d2794d58",
-                "reference": "ce531f9a4e8012ccfb29b364ea1667f4d2794d58",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2",
-                "spryker/auth": "^1.0.0 || ^2.0.0 || ^3.0.0",
-                "spryker/kernel": "^3.30.0",
-                "spryker/messenger": "^3.0.0",
-                "spryker/symfony": "^3.0.0",
-                "spryker/zed-ui": "^0.2.1"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "MerchantUserAuthGuiPage module",
-            "time": "2020-04-09T12:06:52+00:00"
         },
         {
             "name": "spryker/merchant-user-gui",
