@@ -48,6 +48,7 @@ use Spryker\Zed\ProductImageCartConnector\Communication\Plugin\ProductImageCartP
 use Spryker\Zed\ProductList\Communication\Plugin\CartExtension\ProductListRestrictedItemsPreCheckPlugin;
 use Spryker\Zed\ProductList\Communication\Plugin\CartExtension\RemoveRestrictedItemsPreReloadPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\DefaultQuantitySalesUnitItemExpanderPlugin;
+use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\ProductMeasurementSalesUnitCartPreCheckPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitGroupKeyItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitValuePostSavePlugin;
@@ -65,6 +66,7 @@ use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\AmountSalesUnitIt
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\AmountSalesUnitValuePostSavePlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\CustomAmountPriceItemExpanderPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\ProductPackagingUnitCartAddItemStrategyPlugin;
+use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\ProductPackagingUnitCartPreCheckPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\ProductPackagingUnitCartRemoveItemStrategyPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\ProductPackagingUnitItemExpanderPlugin;
 use Spryker\Zed\ProductQuantity\Communication\Plugin\Cart\CartChangeTransferQuantityNormalizerPlugin;
@@ -74,8 +76,9 @@ use Spryker\Zed\QuoteApproval\Communication\Plugin\Cart\SanitizeQuoteApprovalQuo
 use Spryker\Zed\QuoteRequest\Communication\Plugin\Cart\SanitizeQuoteRequestQuoteLockPreResetPlugin;
 use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Cart\AddThresholdMessagesCartPostReloadItemsPlugin;
 use Spryker\Zed\SalesQuantity\Communication\Plugin\Cart\IsQuantitySplittableItemExpanderPlugin;
-use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentExpanderPlugin;
+use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentCartOperationPostSavePlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentPreCheckPlugin;
+use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\SanitizeCartShipmentItemExpanderPlugin;
 
 class CartDependencyProvider extends SprykerCartDependencyProvider
 {
@@ -100,7 +103,6 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new CartItemWithBundleGroupKeyExpanderPlugin(),
             new ProductImageCartPlugin(),
             new CartGroupPromotionItems(),
-            new CartShipmentExpanderPlugin(),
             new QuantitySalesUnitItemExpanderPlugin(),
             new ProductPackagingUnitItemExpanderPlugin(), #ProductPackagingUnit
             new AmountGroupKeyItemExpanderPlugin(), #ProductPackagingUnit
@@ -111,6 +113,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new ConfiguredBundleGroupKeyItemExpanderPlugin(),
             new ProductOfferGroupKeyItemExpanderPlugin(),
             new ProductUrlItemExpanderPlugin(),
+            new SanitizeCartShipmentItemExpanderPlugin(),
         ];
     }
 
@@ -146,11 +149,13 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new ProductQuantityRestrictionCartPreCheckPlugin(),
             new ProductListRestrictedItemsPreCheckPlugin(),
             new ProductDiscontinuedCartPreCheckPlugin(), #ProductDiscontinuedFeature
+            new ProductPackagingUnitCartPreCheckPlugin(),
             new AmountAvailabilityCartPreCheckPlugin(), #ProductPackagingUnit
             new AmountRestrictionCartPreCheckPlugin(), #ProductPackagingUnit
             new ConfiguredBundleTemplateSlotCombinationPreCheckPlugin(),
             new MerchantProfileCartPreCheckPlugin(),
             new SingleMerchantCartPreCheckPlugin(),
+            new ProductMeasurementSalesUnitCartPreCheckPlugin(),
         ];
     }
 
@@ -168,6 +173,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new QuantitySalesUnitValuePostSavePlugin(),
             new AmountSalesUnitValuePostSavePlugin(), #ProductPackagingUnit
             new ConfiguredBundleQuantityPostSavePlugin(),
+            new CartShipmentCartOperationPostSavePlugin(),
         ];
     }
 
