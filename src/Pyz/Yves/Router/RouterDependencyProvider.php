@@ -130,7 +130,6 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new QuoteRequestAgentPageRouteProviderPlugin(),
             new QuoteRequestAgentWidgetRouteProviderPlugin(),
             new QuoteRequestPageRouteProviderPlugin(),
-            new SalesReturnPageRouteProviderPlugin(),
             new QuoteRequestWidgetRouteProviderPlugin(),
             new PersistentCartSharePageRouteProviderPlugin(),
             new PersistentCartShareWidgetRouteProviderPlugin(),
