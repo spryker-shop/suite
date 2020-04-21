@@ -62,6 +62,7 @@ use SprykerShop\Yves\QuoteRequestAgentWidget\Plugin\Router\QuoteRequestAgentWidg
 use SprykerShop\Yves\QuoteRequestPage\Plugin\Router\QuoteRequestPageRouteProviderPlugin;
 use SprykerShop\Yves\QuoteRequestWidget\Plugin\Router\QuoteRequestWidgetRouteProviderPlugin;
 use SprykerShop\Yves\ResourceSharePage\Plugin\Router\ResourceSharePageRouteProviderPlugin;
+use SprykerShop\Yves\SalesReturnPage\Plugin\Router\SalesReturnPageRouteProviderPlugin;
 use SprykerShop\Yves\SharedCartPage\Plugin\Router\SharedCartPageRouteProviderPlugin;
 use SprykerShop\Yves\ShoppingListPage\Plugin\Router\ShoppingListPageRouteProviderPlugin;
 use SprykerShop\Yves\ShoppingListWidget\Plugin\Router\ShoppingListWidgetRouteProviderPlugin;
@@ -140,6 +141,7 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new ConfigurableBundlePageRouteProviderPlugin(),
             new OrderCustomReferenceWidgetRouteProviderPlugin(),
             new MerchantSwitcherWidgetRouteProviderPlugin(),
+            new SalesReturnPageRouteProviderPlugin(),
         ];
     }
 
