@@ -66,8 +66,10 @@
     "webmozart/glob": "^4.0.0"
   },
   "autoload": {
+    "classmap": [
+      "config/SprykerCodeBucketContext.php"
+    ],
     "psr-4": {
-      "": "src/",
       "Generated\\": "src/Generated/",
       "Orm\\": "src/Orm/",
       "Pyz\\": "src/Pyz/"
@@ -132,7 +134,7 @@
     "phpstan": [
       "php -d memory_limit=1024M vendor/bin/phpstan analyze -l 5 -c phpstan.neon src/"
     ],
-    "phpstan-setup": "vendor/bin/console dev:ide:generate-auto-completion"
+    "phpstan-setup": "vendor/bin/console dev:ide-auto-completion:generate"
   },
   "extra": {
     "merge-plugin": {

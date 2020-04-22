@@ -12,7 +12,6 @@ use Spryker\Shared\EventBehavior\EventBehaviorConstants;
 use Spryker\Shared\GlueApplication\GlueApplicationConstants;
 use Spryker\Shared\Http\HttpConstants;
 use Spryker\Shared\Kernel\KernelConstants;
-use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\Mail\MailConstants;
 use Spryker\Shared\Newsletter\NewsletterConstants;
@@ -32,8 +31,6 @@ use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\Twig\TwigConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
-
-$CURRENT_STORE = Store::getInstance()->getStoreName();
 
 // ---------- General
 $config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker/spryker/Bundles';

@@ -12,6 +12,7 @@ use Spryker\Shared\CmsGui\CmsGuiConstants;
 use Spryker\Shared\Collector\CollectorConstants;
 use Spryker\Shared\Customer\CustomerConstants;
 use Spryker\Shared\DocumentationGeneratorRestApi\DocumentationGeneratorRestApiConstants;
+use Spryker\Shared\DummyMarketplacePayment\DummyMarketplacePaymentConfig;
 use Spryker\Shared\DummyPayment\DummyPaymentConfig;
 use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebHtmlErrorRenderer;
@@ -25,7 +26,6 @@ use Spryker\Shared\GlueApplication\GlueApplicationConstants;
 use Spryker\Shared\Http\HttpConstants;
 use Spryker\Shared\Kernel\ClassResolver\Cache\Provider\File;
 use Spryker\Shared\Kernel\KernelConstants;
-use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\Monitoring\MonitoringConstants;
 use Spryker\Shared\Newsletter\NewsletterConstants;
@@ -70,12 +70,11 @@ use SprykerShop\Shared\ShopUi\ShopUiConstants;
 use Twig\Cache\FilesystemCache;
 
 $domain = getenv('VM_PROJECT') ?: 'suite-nonsplit';
-$CURRENT_STORE = Store::getInstance()->getStoreName();
-$currentStoreLowerCase = strtolower($CURRENT_STORE);
+$codeBucketLowerCase = strtolower(APPLICATION_CODE_BUCKET);
 
 // ---------- General environment
 $config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker/spryker/Bundles';
-$config[KernelConstants::AUTO_LOADER_CACHE_FILE_PATH] = APPLICATION_ROOT_DIR . '/data/' . $CURRENT_STORE . '/cache/' . APPLICATION . '/unresolvable.cache';
+$config[KernelConstants::AUTO_LOADER_CACHE_FILE_PATH] = sprintf(APPLICATION_ROOT_DIR . '/data/cache%s/' . APPLICATION . '/unresolvable.cache', APPLICATION_CODE_BUCKET);
 
 $config[ApplicationConstants::PROJECT_TIMEZONE] = 'UTC';
 $config[ApplicationConstants::ENABLE_WEB_PROFILER] = false;
@@ -124,6 +123,7 @@ $config[AuthConstants::AUTH_DEFAULT_CREDENTIALS] = [
         'token' => 'JDJ5JDEwJFE0cXBwYnVVTTV6YVZXSnVmM2l1UWVhRE94WkQ4UjBUeHBEWTNHZlFRTEd4U2F6QVBqejQ2',
     ],
 ];
+$config[AuthConstants::SYSTEM_USER_SESSION_REDIS_LIFE_TIME] = 20;
 
 // ---------- ACL
 // ACL: Allow or disallow of urls for Zed Admin GUI for ALL users
@@ -181,7 +181,7 @@ $ELASTICA_HOST = 'localhost';
 $ELASTICA_TRANSPORT_PROTOCOL = 'http';
 $ELASTICA_PORT = '10005';
 $ELASTICA_AUTH_HEADER = null;
-$ELASTICA_INDEX_NAME = null;// Store related config
+$ELASTICA_INDEX_NAME = sprintf('%s_search', $codeBucketLowerCase);
 $ELASTICA_DOCUMENT_TYPE = 'page';
 $ELASTICA_PARAMETER__EXTRA = [];
 
@@ -365,7 +365,7 @@ $config[LogConstants::LOGGER_CONFIG_GLUE] = GlueLoggerConfigPlugin::class;
 
 $config[LogConstants::LOG_LEVEL] = Logger::INFO;
 
-$baseLogFilePath = sprintf('%s/data/%s/logs', APPLICATION_ROOT_DIR, $CURRENT_STORE);
+$baseLogFilePath = sprintf('%s/data/logs', APPLICATION_ROOT_DIR);
 
 $config[LogConstants::LOG_FILE_PATH_YVES] = $baseLogFilePath . '/YVES/application.log';
 $config[LogConstants::LOG_FILE_PATH_ZED] = $baseLogFilePath . '/ZED/application.log';
@@ -419,10 +419,12 @@ $config[OmsConstants::PROCESS_LOCATION] = [
 $config[OmsConstants::ACTIVE_PROCESSES] = [
     'DummyPayment01',
     'Nopayment01',
+    'MarketplacePayment01',
 ];
 $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
     DummyPaymentConfig::PAYMENT_METHOD_INVOICE => 'DummyPayment01',
     DummyPaymentConfig::PAYMENT_METHOD_CREDIT_CARD => 'DummyPayment01',
+    DummyMarketplacePaymentConfig::PAYMENT_METHOD_DUMMY_MARKETPLACE_PAYMENT_INVOICE => 'MarketplacePayment01',
     GiftCardConfig::PROVIDER_NAME => 'DummyPayment01',
     NopaymentConfig::PAYMENT_PROVIDER_NAME => 'Nopayment01',
 ];
@@ -432,6 +434,7 @@ $config[QueueConstants::QUEUE_SERVER_ID] = (gethostname()) ?: php_uname('n');
 $config[QueueConstants::QUEUE_WORKER_INTERVAL_MILLISECONDS] = 1000;
 $config[QueueConstants::QUEUE_PROCESS_TRIGGER_INTERVAL_MICROSECONDS] = 1001;
 $config[QueueConstants::QUEUE_WORKER_MAX_THRESHOLD_SECONDS] = 59;
+$config[QueueConstants::QUEUE_WORKER_OUTPUT_FILE_NAME] = 'data/logs/ZED/queue.out';
 
 /*
  * Queues can have different adapters and maximum worker number
@@ -451,6 +454,11 @@ $config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION] = [
     ],
 ];
 
+$config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION_DEFAULT] = [
+    QueueConfig::CONFIG_QUEUE_ADAPTER => RabbitMqAdapter::class,
+    QueueConfig::CONFIG_MAX_WORKER_NUMBER => 2,
+];
+
 // ----------- RabbitMq
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
     'DE' => [
@@ -458,30 +466,45 @@ $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
         RabbitMqEnv::RABBITMQ_HOST => 'localhost',
         RabbitMqEnv::RABBITMQ_PORT => '5672',
         RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
-        RabbitMqEnv::RABBITMQ_USERNAME => 'DE_development',
-        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/DE_development_zed',
+        RabbitMqEnv::RABBITMQ_USERNAME => null, // Defined per environment
+        RabbitMqEnv::RABBITMQ_API_HOST => 'localhost',
+        RabbitMqEnv::RABBITMQ_API_PORT => '5672',
+        RabbitMqEnv::RABBITMQ_API_PASSWORD => 'mate20mg',
+        RabbitMqEnv::RABBITMQ_API_USERNAME => 'admin',
+        RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST => null, // Defined per environment
+        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => null, // Defined per environment
         RabbitMqEnv::RABBITMQ_STORE_NAMES => ['DE'],
-        RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => $CURRENT_STORE === 'DE',
+        RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => APPLICATION_CODE_BUCKET === 'DE',
     ],
     'AT' => [
         RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'AT-connection',
         RabbitMqEnv::RABBITMQ_HOST => 'localhost',
         RabbitMqEnv::RABBITMQ_PORT => '5672',
         RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
-        RabbitMqEnv::RABBITMQ_USERNAME => 'AT_development',
-        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/AT_development_zed',
+        RabbitMqEnv::RABBITMQ_USERNAME => null, // Defined per environment
+        RabbitMqEnv::RABBITMQ_API_HOST => 'localhost',
+        RabbitMqEnv::RABBITMQ_API_PORT => '5672',
+        RabbitMqEnv::RABBITMQ_API_PASSWORD => 'mate20mg',
+        RabbitMqEnv::RABBITMQ_API_USERNAME => 'admin',
+        RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST => null, // Defined per environment
+        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => null, // Defined per environment
         RabbitMqEnv::RABBITMQ_STORE_NAMES => ['AT'],
-        RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => $CURRENT_STORE === 'AT',
+        RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => APPLICATION_CODE_BUCKET === 'AT',
     ],
     'US' => [
         RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'US-connection',
         RabbitMqEnv::RABBITMQ_HOST => 'localhost',
         RabbitMqEnv::RABBITMQ_PORT => '5672',
         RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
-        RabbitMqEnv::RABBITMQ_USERNAME => 'US_development',
-        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/US_development_zed',
+        RabbitMqEnv::RABBITMQ_USERNAME => null, // Defined per environment
+        RabbitMqEnv::RABBITMQ_API_HOST => 'localhost',
+        RabbitMqEnv::RABBITMQ_API_PORT => '5672',
+        RabbitMqEnv::RABBITMQ_API_PASSWORD => 'mate20mg',
+        RabbitMqEnv::RABBITMQ_API_USERNAME => 'admin',
+        RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST => null, // Defined per environment
+        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => null, // Defined per environment
         RabbitMqEnv::RABBITMQ_STORE_NAMES => ['US'],
-        RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => $CURRENT_STORE === 'US',
+        RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => APPLICATION_CODE_BUCKET === 'US',
     ],
 ];
 
@@ -588,7 +611,7 @@ $config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GE
 $config[KernelConstants::STRICT_DOMAIN_REDIRECT] = true;
 
 // ---------- Yves host
-$config[ApplicationConstants::HOST_YVES] = sprintf('www.%s.%s.local', $currentStoreLowerCase, $domain);
+$config[ApplicationConstants::HOST_YVES] = sprintf('www.%s.%s.local', $codeBucketLowerCase, $domain);
 $config[ApplicationConstants::PORT_YVES] = '';
 $config[ApplicationConstants::PORT_SSL_YVES] = '';
 $config[ApplicationConstants::BASE_URL_YVES] = sprintf(
@@ -606,7 +629,7 @@ $config[NewsletterConstants::BASE_URL_YVES] = $config[ApplicationConstants::BASE
 $config[CustomerConstants::BASE_URL_YVES] = $config[ApplicationConstants::BASE_URL_YVES];
 
 // ---------- Zed host
-$config[ApplicationConstants::HOST_ZED] = sprintf('zed.%s.%s.local', $currentStoreLowerCase, $domain);
+$config[ApplicationConstants::HOST_ZED] = sprintf('zed.%s.%s.local', $codeBucketLowerCase, $domain);
 $config[ApplicationConstants::PORT_ZED] = '';
 $config[ApplicationConstants::PORT_SSL_ZED] = '';
 $config[ApplicationConstants::BASE_URL_ZED] = sprintf(
@@ -642,11 +665,11 @@ $config[SessionConstants::YVES_SESSION_COOKIE_DOMAIN] = $config[ApplicationConst
 $config[SessionConstants::ZED_SESSION_COOKIE_NAME] = $config[ApplicationConstants::HOST_ZED];
 
 // ---------- Events
-$config[EventConstants::LOG_FILE_PATH] = APPLICATION_ROOT_DIR . sprintf('/data/%s/logs/application_events.log', $CURRENT_STORE);
+$config[EventConstants::LOG_FILE_PATH] = APPLICATION_ROOT_DIR . '/data/logs/application_events.log';
 
 // ----------- Glue Application
-$config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = sprintf('http://glue.%s.%s.local', $currentStoreLowerCase, $domain);
-$config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = sprintf('http://glue.%s.%s.local', $currentStoreLowerCase, $domain);
+$config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = sprintf('http://glue.%s.%s.local', $codeBucketLowerCase, $domain);
+$config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = sprintf('http://glue.%s.%s.local', $codeBucketLowerCase, $domain);
 
 // ----------- HTTP Security
 $config[KernelConstants::DOMAIN_WHITELIST] = [
