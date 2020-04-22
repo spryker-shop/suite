@@ -72,6 +72,9 @@ $CURRENT_STORE = Store::getInstance()->getStoreName();
 $config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker/spryker/Bundles';
 $config[KernelConstants::AUTO_LOADER_CACHE_FILE_PATH] = APPLICATION_ROOT_DIR . '/data/' . $CURRENT_STORE . '/cache/' . APPLICATION . '/unresolvable.cache';
 
+$config[KernelConstants::RESOLVABLE_CLASS_NAMES_CACHE_ENABLED] = true;
+$config[KernelConstants::RESOLVED_INSTANCE_CACHE_ENABLED] = true;
+
 $config[ApplicationConstants::PROJECT_TIMEZONE] = 'UTC';
 $config[ApplicationConstants::ENABLE_WEB_PROFILER] = false;
 
