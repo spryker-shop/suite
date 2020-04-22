@@ -1,8 +1,10 @@
 <?php
 
-use Spryker\Shared\Kernel\CodeBucket\Context\AbstractCodeBucketContext;
+namespace SprykerConfig;
 
-class SprykerCodeBucketContext extends AbstractCodeBucketContext
+use Spryker\Shared\Kernel\CodeBucket\Config\AbstractCodeBucketConfig;
+
+class CodeBucketConfig extends AbstractCodeBucketConfig
 {
     /**
      * @return string[]

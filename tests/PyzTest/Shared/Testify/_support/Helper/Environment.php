@@ -8,8 +8,8 @@
 namespace PyzTest\Shared\Testify\Helper;
 
 use Codeception\Module;
-use Spryker\Shared\Kernel\CodeBucket\Context\CodeBucketContext;
-use Spryker\Shared\Kernel\CodeBucket\Context\CodeBucketContextInterface;
+use Spryker\Shared\Kernel\CodeBucket\Config\CodeBucketConfig;
+use Spryker\Shared\Kernel\CodeBucket\Config\CodeBucketConfigInterface;
 
 class Environment extends Module
 {
@@ -33,7 +33,7 @@ class Environment extends Module
         defined('APPLICATION_SOURCE_DIR') || define('APPLICATION_SOURCE_DIR', APPLICATION_ROOT_DIR . '/src');
         defined('APPLICATION_VENDOR_DIR') || define('APPLICATION_VENDOR_DIR', APPLICATION_ROOT_DIR . '/vendor');
 
-        defined('APPLICATION_CODE_BUCKET') || define('APPLICATION_CODE_BUCKET', $this->createCodeBucketContext()->getCurrentCodeBucket());
+        defined('APPLICATION_CODE_BUCKET') || define('APPLICATION_CODE_BUCKET', $this->createCodeBucketConfig()->getCurrentCodeBucket());
         putenv('APPLICATION_CODE_BUCKET=' . APPLICATION_CODE_BUCKET);
     }
 
@@ -50,10 +50,10 @@ class Environment extends Module
     }
 
     /**
-     * @return \Spryker\Shared\Kernel\CodeBucket\Context\CodeBucketContextInterface
+     * @return \Spryker\Shared\Kernel\CodeBucket\Config\CodeBucketConfigInterface
      */
-    protected function createCodeBucketContext(): CodeBucketContextInterface
+    protected function createCodeBucketConfig(): CodeBucketConfigInterface
     {
-        return new CodeBucketContext();
+        return new CodeBucketConfig();
     }
 }

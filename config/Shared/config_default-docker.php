@@ -112,7 +112,7 @@ $config[ZedRequestConstants::BASE_URL_SSL_ZED_API] = sprintf(
 $config[TwigConstants::ZED_TWIG_OPTIONS] = [
     'cache' => new FilesystemCache(
         sprintf(
-            '%s/data/cache%s/ZED/twig',
+            '%s/data/cache/cache%s/ZED/twig',
             APPLICATION_CODE_BUCKET,
             APPLICATION_ROOT_DIR
         ),
@@ -287,7 +287,7 @@ $config[CustomerConstants::BASE_URL_YVES] = $config[ApplicationConstants::BASE_U
 $config[TwigConstants::YVES_TWIG_OPTIONS] = [
     'cache' => new FilesystemCache(
         sprintf(
-            '%s/data/cache%s/%s/twig',
+            '%s/data/cache/cache%s/%s/twig',
             APPLICATION_ROOT_DIR,
             APPLICATION_CODE_BUCKET,
             APPLICATION
