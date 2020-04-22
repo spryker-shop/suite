@@ -107,7 +107,6 @@ use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCreateWidget;
 use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestMenuItemWidget;
 use SprykerShop\Yves\SalesConfigurableBundleWidget\Widget\OrderConfiguredBundleWidget;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Widget\SalesOrderThresholdWidget;
-use SprykerShop\Yves\SalesReturnWidget\Widget\SalesReturnMenuItemWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartDeleteSharingCompanyUsersListWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartListPermissionGroupWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartDetailsWidget;
@@ -238,7 +237,6 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ConfiguredBundleNoteWidget::class,
             QuoteRequestActionsWidget::class,
             OrderCustomReferenceWidget::class,
-            SalesReturnMenuItemWidget::class,
         ];
     }
 
