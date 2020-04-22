@@ -39,9 +39,9 @@
     "bo:clean:modules": "rimraf vendor/spryker/spryker/Bundles/*/node_modules",
     "bo:test:mp-product-offer": "npm run cd:mp-product-offer -- npm run test -- --watch=false --browsers ChromeHeadless",
     "cd:zed-ui": "cd ./vendor/spryker/spryker/Bundles/ZedUi && ",
-    "cd:mp-login": "cd ./vendor/spryker/spryker/Bundles/MerchantUserAuthGuiPage && ",
-    "cd:mp-dashboard": "cd ./vendor/spryker/spryker/Bundles/MerchantDashboardGuiPage && ",
-    "cd:mp-profile": "cd ./vendor/spryker/spryker/Bundles/MerchantProfileGuiPage && ",
+    "cd:mp-login": "cd ./vendor/spryker/spryker/Bundles/AuthenticationMerchantPortalGui && ",
+    "cd:mp-dashboard": "cd ./vendor/spryker/spryker/Bundles/DashboardMerchantPortalGui && ",
+    "cd:mp-profile": "cd ./vendor/spryker/spryker/Bundles/MerchantProfileMerchantPortalGui && ",
     "cd:mp-product-offer": "cd ./vendor/spryker/spryker/Bundles/ProductOfferMerchantPortalGui && ",
     "fe:root": "export FE_ROOT_DIR=\"../../../../..\" && "
   },
