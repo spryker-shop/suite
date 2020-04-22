@@ -188,7 +188,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\OrderSearchQueryExpanderPluginInterface[]
+     * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\SearchOrderQueryExpanderPluginInterface[]
      */
     protected function getOrderSearchQueryExpanderPlugins(): array
     {
