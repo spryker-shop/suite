@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "13a30e149e8c063676c0315c9d9fee15",
+    "content-hash": "aafb3ada44a6a7dc7c3b5d3aaa552b97",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5009,11 +5009,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/cc-7404/cc-8430-product-labels-available-in-current-store",
+            "version": "dev-feature/cc-7404/dev-product-label",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "5b0fb328f3979d0b6f618812101de00e33a5e4f9"
+                "reference": "65548457e83c91dff684b794a5b908d342d2a3f8"
             },
             "require": {
                 "php": ">=7.2"
@@ -5033,6 +5033,7 @@
                 "spryker/auth-mail-connector": "*",
                 "spryker/auth-rest-api": "*",
                 "spryker/auth-rest-api-extension": "*",
+                "spryker/authentication-merchant-portal-gui": "*",
                 "spryker/availability": "*",
                 "spryker/availability-cart-connector": "*",
                 "spryker/availability-data-feed": "*",
@@ -5238,6 +5239,7 @@
                 "spryker/customers-rest-api": "*",
                 "spryker/customers-rest-api-extension": "*",
                 "spryker/dashboard": "*",
+                "spryker/dashboard-merchant-portal-gui": "*",
                 "spryker/data-import": "*",
                 "spryker/data-import-extension": "*",
                 "spryker/dataset": "*",
@@ -5302,7 +5304,6 @@
                 "spryker/manual-order-entry-gui": "*",
                 "spryker/manual-order-entry-gui-extension": "*",
                 "spryker/merchant": "*",
-                "spryker/merchant-dashboard-gui-page": "*",
                 "spryker/merchant-data-import": "*",
                 "spryker/merchant-extension": "*",
                 "spryker/merchant-gui": "*",
@@ -5320,7 +5321,7 @@
                 "spryker/merchant-profile": "*",
                 "spryker/merchant-profile-data-import": "*",
                 "spryker/merchant-profile-gui": "*",
-                "spryker/merchant-profile-gui-page": "*",
+                "spryker/merchant-profile-merchant-portal-gui": "*",
                 "spryker/merchant-profile-storage": "*",
                 "spryker/merchant-relationship": "*",
                 "spryker/merchant-relationship-data-import": "*",
@@ -5342,7 +5343,6 @@
                 "spryker/merchant-stock-gui": "*",
                 "spryker/merchant-switcher": "*",
                 "spryker/merchant-user": "*",
-                "spryker/merchant-user-auth-gui-page": "*",
                 "spryker/merchant-user-gui": "*",
                 "spryker/messenger": "*",
                 "spryker/messenger-extension": "*",
@@ -5370,6 +5370,7 @@
                 "spryker/oauth-extension": "*",
                 "spryker/oauth-permission": "*",
                 "spryker/oauth-revoke": "*",
+                "spryker/oauth-revoke-extension": "*",
                 "spryker/offer": "*",
                 "spryker/offer-extension": "*",
                 "spryker/offer-gui": "*",
@@ -5460,7 +5461,6 @@
                 "spryker/product-image-storage": "*",
                 "spryker/product-label": "*",
                 "spryker/product-label-collector": "*",
-                "spryker/product-label-data-import": "*",
                 "spryker/product-label-discount-connector": "*",
                 "spryker/product-label-gui": "*",
                 "spryker/product-label-search": "*",
@@ -5569,6 +5569,9 @@
                 "spryker/sales-quantity": "*",
                 "spryker/sales-reclamation": "*",
                 "spryker/sales-reclamation-gui": "*",
+                "spryker/sales-return": "*",
+                "spryker/sales-return-data-import": "*",
+                "spryker/sales-returns-rest-api": "*",
                 "spryker/sales-split": "*",
                 "spryker/sales-statistics": "*",
                 "spryker/scheduler": "*",
@@ -5703,15 +5706,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-04-21T08:13:03+00:00"
+            "time": "2020-04-22T11:18:06+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/cc-7404/cc-8430-product-labels-available-in-current-store",
+            "version": "dev-feature/cc-7404/dev-product-label",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "25fcf77304d8c7cd109c6a9d128a012dff027b74"
+                "reference": "b0bb0d86083c8f5993d46b75b7cdc24a9fecc19c"
             },
             "require": {
                 "php": ">=7.2"
@@ -5855,7 +5858,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-03-26T20:44:16+00:00"
+            "time": "2020-04-22T11:17:14+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
