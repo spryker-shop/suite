@@ -19,7 +19,7 @@ use Spryker\Zed\GiftCardMailConnector\Communication\Plugin\Checkout\SendEmailToG
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\MerchantProfile\Communication\Plugin\Checkout\MerchantProfileCheckoutPreConditionPlugin;
 use Spryker\Zed\MerchantSwitcher\Communication\Plugin\Checkout\SingleMerchantCheckoutPreConditionPlugin;
-use Spryker\Zed\Payment\Communication\Plugin\Checkout\PaymentExistsPreCheckPlugin;
+use Spryker\Zed\Payment\Communication\Plugin\Checkout\PaymentMethodValidityPreCheckPlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Checkout\PaymentOrderSaverPlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Checkout\PaymentPostCheckPlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Checkout\PaymentPreCheckPlugin;
@@ -62,7 +62,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new QuoteApprovalCheckoutPreConditionPlugin(),
             new MerchantProfileCheckoutPreConditionPlugin(),
             new SingleMerchantCheckoutPreConditionPlugin(),
-            new PaymentExistsPreCheckPlugin(),
+            new PaymentMethodValidityPreCheckPlugin(),
         ];
     }
 
