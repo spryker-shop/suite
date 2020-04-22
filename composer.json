@@ -66,8 +66,10 @@
     "webmozart/glob": "^4.0.0"
   },
   "autoload": {
+    "classmap": [
+      "config/SprykerCodeBucketContext.php"
+    ],
     "psr-4": {
-      "": "src/",
       "Generated\\": "src/Generated/",
       "Orm\\": "src/Orm/",
       "Pyz\\": "src/Pyz/"
