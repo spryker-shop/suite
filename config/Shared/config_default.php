@@ -74,7 +74,7 @@ $codeBucketLowerCase = strtolower(APPLICATION_CODE_BUCKET);
 
 // ---------- General environment
 $config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker/spryker/Bundles';
-$config[KernelConstants::AUTO_LOADER_CACHE_FILE_PATH] = sprintf(APPLICATION_ROOT_DIR . '/data/cache%s/' . APPLICATION . '/unresolvable.cache', APPLICATION_CODE_BUCKET);
+$config[KernelConstants::AUTO_LOADER_CACHE_FILE_PATH] = sprintf(APPLICATION_ROOT_DIR . '/data/cache/cache%s/' . APPLICATION . '/unresolvable.cache', APPLICATION_CODE_BUCKET);
 
 $config[ApplicationConstants::PROJECT_TIMEZONE] = 'UTC';
 $config[ApplicationConstants::ENABLE_WEB_PROFILER] = false;
@@ -207,7 +207,7 @@ $config[SearchConstants::FULL_TEXT_BOOSTED_BOOSTING_VALUE]
 $config[TwigConstants::YVES_TWIG_OPTIONS] = [
     'cache' => new FilesystemCache(
         sprintf(
-            '%s/data/cache%s/%s/twig',
+            '%s/data/cache/cache%s/%s/twig',
             APPLICATION_ROOT_DIR,
             APPLICATION_CODE_BUCKET,
             APPLICATION
@@ -218,7 +218,7 @@ $config[TwigConstants::YVES_TWIG_OPTIONS] = [
 $config[TwigConstants::ZED_TWIG_OPTIONS] = [
     'cache' => new FilesystemCache(
         sprintf(
-            '%s/data/cache%s/%s/twig',
+            '%s/data/cache/cache%s/%s/twig',
             APPLICATION_ROOT_DIR,
             APPLICATION_CODE_BUCKET,
             APPLICATION

@@ -138,9 +138,6 @@ sections:
 
         delete-migration-files:
             command: "vendor/bin/console propel:migration:delete"
-#            stores:
-#                - US
-#                - DE
             groups:
                 - propel
 
@@ -156,17 +153,14 @@ sections:
 
         propel-postgres-compatibility:
             command: "vendor/bin/console propel:pg-sql-compat"
-#            stores:
-#                - US
-#                - DE
+            stores:
+                - US
+                - DE
             groups:
                 - propel
 
         propel-copy-schema:
             command: "vendor/bin/console propel:schema:copy"
-#            stores:
-#                - US
-#                - DE
             groups:
                 - propel
 
@@ -177,18 +171,12 @@ sections:
 
         propel-diff:
             command: "vendor/bin/console propel:diff"
-#            stores:
-#                - US
-#                - DE
             groups:
                 - propel
 
         propel-migration-check:
             command: "vendor/bin/console propel:migration:check"
             breakOnFailure: false
-#            stores:
-#                - US
-#                - DE
             groups:
                 - propel
 

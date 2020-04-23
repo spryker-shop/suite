@@ -3,8 +3,8 @@
   "description": "Spryker Suite (internal)",
   "license": "MIT",
   "require": {
-    "spryker/spryker": "dev-feature/cc-8666/cc-8730-code-bucket-usages",
-    "spryker/spryker-shop": "dev-feature/cc-8666/cc-8730-code-bucket-usages",
+    "spryker/spryker": "dev-feature/cc-8666/dev-code-bucket",
+    "spryker/spryker-shop": "dev-feature/cc-8666/dev-code-bucket",
     "spryker/decimal-object": "^1.0.0",
     "spryker-eco/loggly": "dev-master",
     "spryker/rabbit-mq": "dev-master",
@@ -66,13 +66,11 @@
     "webmozart/glob": "^4.0.0"
   },
   "autoload": {
-    "classmap": [
-      "config/SprykerCodeBucketContext.php"
-    ],
     "psr-4": {
       "Generated\\": "src/Generated/",
       "Orm\\": "src/Orm/",
-      "Pyz\\": "src/Pyz/"
+      "Pyz\\": "src/Pyz/",
+      "SprykerConfig\\": "src/SprykerConfig"
     },
     "psr-0": {
       "Pimple": "vendor/spryker/spryker/Bundles/Container/src/Spryker"
