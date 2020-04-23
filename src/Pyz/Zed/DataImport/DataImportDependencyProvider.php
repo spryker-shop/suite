@@ -75,6 +75,7 @@ use Spryker\Zed\ProductRelationDataImport\Communication\Plugin\ProductRelationSt
 use Spryker\Zed\QuoteRequestDataImport\Communication\Plugin\QuoteRequestDataImportPlugin;
 use Spryker\Zed\QuoteRequestDataImport\Communication\Plugin\QuoteRequestVersionDataImportPlugin;
 use Spryker\Zed\SalesOrderThresholdDataImport\Communication\Plugin\DataImport\SalesOrderThresholdDataImportPlugin;
+use Spryker\Zed\SalesReturnDataImport\Communication\Plugin\ReturnReasonDataImportPlugin;
 use Spryker\Zed\SharedCartDataImport\Communication\Plugin\SharedCartDataImportPlugin;
 use Spryker\Zed\ShipmentDataImport\Communication\Plugin\ShipmentDataImportPlugin;
 use Spryker\Zed\ShipmentDataImport\Communication\Plugin\ShipmentMethodPriceDataImportPlugin;
@@ -298,6 +299,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new ProductRelationStoreDataImportPlugin(),
             new MerchantStockDataImportPlugin(),
             new MerchantOmsProcessDataImportPlugin(),
+            new ReturnReasonDataImportPlugin(),
         ];
     }
 
