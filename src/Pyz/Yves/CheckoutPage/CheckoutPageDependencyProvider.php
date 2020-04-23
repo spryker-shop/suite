@@ -13,6 +13,7 @@ use Spryker\Yves\DummyMarketplacePayment\Plugin\StepEngine\DummyMarketplacePayme
 use Spryker\Yves\DummyMarketplacePayment\Plugin\StepEngine\SubForm\DummyMarketplacePaymentInvoiceSubFormPlugin;
 use Spryker\Yves\Kernel\Container;
 use Spryker\Yves\Kernel\Plugin\Pimple;
+use Spryker\Yves\MerchantShipment\Plugin\CheckoutPage\MerchantShipmentCheckoutPageStepEnginePreRenderPlugin;
 use Spryker\Yves\Nopayment\Plugin\NopaymentHandlerPlugin;
 use Spryker\Yves\Payment\Plugin\PaymentFormFilterPlugin;
 use Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface;
@@ -232,6 +233,16 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
             new QuoteRequestCheckoutWorkflowStepResolverStrategyPlugin(),
             new QuoteWithCustomShipmentPriceCheckoutWorkflowStepResolverStrategyPlugin(),
             new QuoteRequestAgentCheckoutWorkflowStepResolverStrategyPlugin(),
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\StepEngine\CheckoutPageStepEnginePreRenderPluginInterface[]
+     */
+    protected function getCheckoutPageStepEnginePreRenderPlugins(): array
+    {
+        return [
+            new MerchantShipmentCheckoutPageStepEnginePreRenderPlugin(),
         ];
     }
 }
