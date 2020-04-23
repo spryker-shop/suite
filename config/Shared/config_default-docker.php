@@ -77,8 +77,6 @@ use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
 use SprykerShop\Shared\WebProfilerWidget\WebProfilerWidgetConstants;
 use Twig\Cache\FilesystemCache;
 
-$CURRENT_STORE = Store::getInstance()->getStoreName();
-
 /* ZED */
 $config[ApplicationConstants::HOST_ZED] = getenv('SPRYKER_ZED_HOST');
 $config[SessionConstants::ZED_SESSION_COOKIE_DOMAIN] = getenv('SPRYKER_BE_HOST');
@@ -114,17 +112,17 @@ $config[ZedRequestConstants::BASE_URL_SSL_ZED_API] = sprintf(
 $config[TwigConstants::ZED_TWIG_OPTIONS] = [
     'cache' => new FilesystemCache(
         sprintf(
-            '%s/data/%s/cache/ZED/twig',
-            APPLICATION_ROOT_DIR,
-            $CURRENT_STORE
+            '%s/data/cache/cache%s/ZED/twig',
+            APPLICATION_CODE_BUCKET,
+            APPLICATION_ROOT_DIR
         ),
         FilesystemCache::FORCE_BYTECODE_INVALIDATION
     ),
 ];
 $config[TwigConstants::ZED_PATH_CACHE_FILE] = sprintf(
-    '%s/data/%s/cache/ZED/twig/.pathCache',
+    '%s/data/cache%s/ZED/twig/.pathCache',
     APPLICATION_ROOT_DIR,
-    $CURRENT_STORE
+    APPLICATION_CODE_BUCKET
 );
 
 // The cache should always be activated. Refresh/build with CLI command: vendor/bin/console application:build-navigation-cache
@@ -289,18 +287,18 @@ $config[CustomerConstants::BASE_URL_YVES] = $config[ApplicationConstants::BASE_U
 $config[TwigConstants::YVES_TWIG_OPTIONS] = [
     'cache' => new FilesystemCache(
         sprintf(
-            '%s/data/%s/cache/%s/twig',
+            '%s/data/cache/cache%s/%s/twig',
             APPLICATION_ROOT_DIR,
-            $CURRENT_STORE,
+            APPLICATION_CODE_BUCKET,
             APPLICATION
         ),
         FilesystemCache::FORCE_BYTECODE_INVALIDATION
     ),
 ];
 $config[TwigConstants::YVES_PATH_CACHE_FILE] = sprintf(
-    '%s/data/%s/cache/YVES/twig/.pathCache',
+    '%s/data/cache%s/YVES/twig/.pathCache',
     APPLICATION_ROOT_DIR,
-    $CURRENT_STORE
+    APPLICATION_CODE_BUCKET
 );
 
 $config[ApplicationConstants::YVES_COOKIE_DEVICE_ID_NAME] = 'did';

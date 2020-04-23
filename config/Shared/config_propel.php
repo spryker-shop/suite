@@ -1,6 +1,5 @@
 <?php
 
-use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Zed\Propel\PropelConfig;
 use Spryker\Zed\PropelOrm\Business\Builder\ExtensionObjectBuilder;
@@ -8,7 +7,6 @@ use Spryker\Zed\PropelOrm\Business\Builder\ExtensionQueryBuilder;
 use Spryker\Zed\PropelOrm\Business\Builder\ObjectBuilder;
 use Spryker\Zed\PropelOrm\Business\Builder\QueryBuilder;
 
-$CURRENT_STORE = Store::getInstance()->getStoreName();
 $DSN = sprintf(
     '%s:host=%s;port=%d;dbname=%s',
     $config[PropelConstants::ZED_DB_ENGINE],
@@ -64,10 +62,9 @@ $config[PropelConstants::PROPEL] = [
     ],
     'paths' => [
         'phpDir' => APPLICATION_ROOT_DIR,
-        'sqlDir' => APPLICATION_ROOT_DIR . '/src/Orm/Propel/' . $CURRENT_STORE . '/Sql',
-        'migrationDir' => APPLICATION_ROOT_DIR . '/src/Orm/Propel/' . $CURRENT_STORE . '/Migration_' . $config[PropelConstants::ZED_DB_ENGINE],
-        'schemaDir' => APPLICATION_ROOT_DIR . '/src/Orm/Propel/' . $CURRENT_STORE . '/Schema',
-        'phpConfDir' => APPLICATION_ROOT_DIR . '/src/Orm/Propel/' . $CURRENT_STORE . '/Config/' . APPLICATION_ENV . '/',
+        'sqlDir' => APPLICATION_ROOT_DIR . '/src/Orm/Propel/Sql',
+        'migrationDir' => APPLICATION_ROOT_DIR . '/src/Orm/Propel/Migration_' . $config[PropelConstants::ZED_DB_ENGINE],
+        'schemaDir' => APPLICATION_ROOT_DIR . '/src/Orm/Propel/Schema',
     ],
 ];
 
