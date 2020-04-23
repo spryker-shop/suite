@@ -5003,7 +5003,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "c695a0d766a8cddd8af439a22ad237bb5d422561"
+                "reference": "886f3e5a9e58754ab0bd29bdac49be27562b3261"
             },
             "require": {
                 "php": ">=7.2"
@@ -5695,7 +5695,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-04-22T15:51:14+00:00"
+            "time": "2020-04-23T12:50:22+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -11499,6 +11499,44 @@
                 "standards"
             ],
             "time": "2020-04-02T10:45:42+00:00"
+        },
+        {
+            "name": "spryker/oauth-revoke-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/oauth-revoke-extension.git",
+                "reference": "8231f05221723795bb55de365476ce3bc2cbe3af"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/oauth-revoke-extension/zipball/8231f05221723795bb55de365476ce3bc2cbe3af",
+                "reference": "8231f05221723795bb55de365476ce3bc2cbe3af",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "OauthRevokeExtension module",
+            "time": "2020-04-17T11:17:20+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
