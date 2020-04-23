@@ -1117,8 +1117,8 @@
             "authors": [
                 {
                     "name": "Alessio Linares",
-                    "email": "alessio.linares@skyscanner.net",
-                    "role": "Software Engineer"
+                    "role": "Software Engineer",
+                    "email": "alessio.linares@skyscanner.net"
                 }
             ],
             "description": "JSONPath implementation for querying and updating JSON objects",
@@ -3647,7 +3647,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -5003,7 +5003,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "5f14a0d43d026da21711813a32cdb29b337c5956"
+                "reference": "ae3f551d0da078eb4d96a6f413f6d288a6d9586d"
             },
             "require": {
                 "php": ">=7.2"
@@ -5023,6 +5023,7 @@
                 "spryker/auth-mail-connector": "*",
                 "spryker/auth-rest-api": "*",
                 "spryker/auth-rest-api-extension": "*",
+                "spryker/authentication-merchant-portal-gui": "*",
                 "spryker/availability": "*",
                 "spryker/availability-cart-connector": "*",
                 "spryker/availability-data-feed": "*",
@@ -5228,6 +5229,7 @@
                 "spryker/customers-rest-api": "*",
                 "spryker/customers-rest-api-extension": "*",
                 "spryker/dashboard": "*",
+                "spryker/dashboard-merchant-portal-gui": "*",
                 "spryker/data-import": "*",
                 "spryker/data-import-extension": "*",
                 "spryker/dataset": "*",
@@ -5292,7 +5294,6 @@
                 "spryker/manual-order-entry-gui": "*",
                 "spryker/manual-order-entry-gui-extension": "*",
                 "spryker/merchant": "*",
-                "spryker/merchant-dashboard-gui-page": "*",
                 "spryker/merchant-data-import": "*",
                 "spryker/merchant-extension": "*",
                 "spryker/merchant-gui": "*",
@@ -5310,7 +5311,7 @@
                 "spryker/merchant-profile": "*",
                 "spryker/merchant-profile-data-import": "*",
                 "spryker/merchant-profile-gui": "*",
-                "spryker/merchant-profile-gui-page": "*",
+                "spryker/merchant-profile-merchant-portal-gui": "*",
                 "spryker/merchant-profile-storage": "*",
                 "spryker/merchant-relationship": "*",
                 "spryker/merchant-relationship-data-import": "*",
@@ -5332,7 +5333,6 @@
                 "spryker/merchant-stock-gui": "*",
                 "spryker/merchant-switcher": "*",
                 "spryker/merchant-user": "*",
-                "spryker/merchant-user-auth-gui-page": "*",
                 "spryker/merchant-user-gui": "*",
                 "spryker/messenger": "*",
                 "spryker/messenger-extension": "*",
@@ -5360,6 +5360,7 @@
                 "spryker/oauth-extension": "*",
                 "spryker/oauth-permission": "*",
                 "spryker/oauth-revoke": "*",
+                "spryker/oauth-revoke-extension": "*",
                 "spryker/offer": "*",
                 "spryker/offer-extension": "*",
                 "spryker/offer-gui": "*",
@@ -5695,7 +5696,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-04-22T13:55:35+00:00"
+            "time": "2020-04-23T07:00:21+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6256,6 +6257,20 @@
             ],
             "description": "Symfony CssSelector Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-03-27T16:56:45+00:00"
         },
         {
@@ -6312,6 +6327,20 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-03-27T16:54:36+00:00"
         },
         {
@@ -6438,6 +6467,20 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-03-27T16:54:36+00:00"
         },
         {
@@ -6595,6 +6638,20 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-03-27T16:54:36+00:00"
         },
         {
@@ -6882,6 +6939,20 @@
                 "symfony",
                 "words"
             ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-03-27T16:56:45+00:00"
         },
         {
@@ -7131,6 +7202,20 @@
                 "polyfill",
                 "portable"
             ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-02-27T09:26:54+00:00"
         },
         {
@@ -7189,6 +7274,20 @@
                 "polyfill",
                 "portable",
                 "shim"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-03-09T19:04:49+00:00"
         },
@@ -7250,6 +7349,20 @@
                 "portable",
                 "shim"
             ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-03-09T19:04:49+00:00"
         },
         {
@@ -7307,6 +7420,20 @@
                 "polyfill",
                 "portable",
                 "shim"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-02-27T09:26:54+00:00"
         },
@@ -7369,6 +7496,20 @@
                 "polyfill",
                 "portable",
                 "shim"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-03-09T19:04:49+00:00"
         },
@@ -7433,6 +7574,20 @@
                 "portable",
                 "shim"
             ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-02-27T09:26:54+00:00"
         },
         {
@@ -7492,6 +7647,20 @@
                 "portable",
                 "shim"
             ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-03-09T19:04:49+00:00"
         },
         {
@@ -7546,6 +7715,20 @@
                 "polyfill",
                 "portable",
                 "shim"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-02-27T09:26:54+00:00"
         },
@@ -7604,6 +7787,20 @@
                 "polyfill",
                 "portable",
                 "shim"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-02-27T09:26:54+00:00"
         },
@@ -8073,6 +8270,20 @@
             ],
             "description": "Symfony Stopwatch Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-03-27T16:54:36+00:00"
         },
         {
@@ -8715,8 +8926,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -11653,6 +11864,20 @@
             ],
             "description": "Symfony BrowserKit Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-03-30T11:42:42+00:00"
         },
         {
@@ -11787,6 +12012,20 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-03-30T11:42:42+00:00"
         },
         {
@@ -11946,8 +12185,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
@@ -12030,5 +12269,6 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    }
+    },
+    "plugin-api-version": "1.1.0"
 }

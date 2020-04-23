@@ -126,7 +126,7 @@ $config[AuthConstants::SYSTEM_USER_SESSION_REDIS_LIFE_TIME] = 20;
 // ACL: Allow or disallow of urls for Zed Admin GUI for ALL users
 $config[AclConstants::ACL_DEFAULT_RULES] = [
     [
-        'bundle' => 'merchant-user-auth-gui-page',
+        'bundle' => 'authentication-merchant-portal-gui',
         'controller' => 'login',
         'action' => 'index',
         'type' => 'allow',
