@@ -311,6 +311,7 @@ before_script:
   - chmod -R 777 data/
   - chmod -R 660 config/Zed/dev_only_private.key
   - chmod -R 660 config/Zed/dev_only_public.key
+  - if [[ $VALIDATION == 1 ]] ; then npm install speccy@0.11.0 -g ; fi
 
   - if [[ -z $DB ]] ; then cat config/Shared/ci/travis/postgresql_ci.config >> config/Shared/ci/travis/config_ci.php ; fi
   - if [[ $DB == 'mysql' ]] ; then cat config/Shared/ci/travis/mysql_ci.config >> config/Shared/ci/travis/config_ci.php ; fi
@@ -326,10 +327,11 @@ before_script:
 
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:generate ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:install ; fi
-  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console dev:ide:generate-auto-completion ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console dev:ide-auto-completion:generate ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/codecept build --ansi ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:databuilder:generate ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console setup:search ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console rest-api:generate:documentation ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console frontend:project:install-dependencies ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console frontend:yves:install-dependencies ; fi
 
@@ -354,6 +356,7 @@ script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2 ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:sniff:style ; fi
+  - if [[ $VALIDATION == 1 ]] ; then speccy lint src/Generated/Glue/Specification/spryker_rest_api.schema.yml --rules=default ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then ./tests/travis_check_untracked.sh ; fi
   - timeout 45m bash -c "vendor/bin/phantomjs --webdriver=4444 --disk-cache=true --load-images=false --webdriver-logfile=/tmp/phantomjs.log --webdriver-loglevel=DEBUG">/dev/null &
