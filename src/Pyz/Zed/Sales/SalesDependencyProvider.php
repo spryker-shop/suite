@@ -30,9 +30,10 @@ use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Sales\AmountLeadProduc
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Sales\AmountSalesUnitHydrateOrderPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\SalesExtension\AmountSalesUnitOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\SalesExtension\ProductPackagingUnitOrderItemExpanderPreSavePlugin;
+use Spryker\Zed\Sales\Communication\Plugin\Sales\CurrencyIsoCodeOrderItemExpanderPlugin;
 use Spryker\Zed\Sales\SalesDependencyProvider as SprykerSalesDependencyProvider;
 use Spryker\Zed\SalesConfigurableBundle\Communication\Plugin\Sales\ConfiguredBundleItemPreTransformerPlugin;
-use Spryker\Zed\SalesConfigurableBundle\Communication\Plugin\Sales\ConfiguredBundleOrderExpanderPlugin;
+use Spryker\Zed\SalesConfigurableBundle\Communication\Plugin\Sales\ConfiguredBundleOrderItemExpanderPlugin;
 use Spryker\Zed\SalesConfigurableBundle\Communication\Plugin\Sales\ConfiguredBundlesOrderPostSavePlugin;
 use Spryker\Zed\SalesMerchantConnector\Communication\Plugin\OrderItemReferenceExpanderPreSavePlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\MetadataOrderItemExpanderPlugin;
@@ -75,7 +76,6 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new AmountLeadProductHydrateOrderPlugin(),
             new AmountSalesUnitHydrateOrderPlugin(),
             new CommentThreadOrderExpanderPlugin(),
-            new ConfiguredBundleOrderExpanderPlugin(),
             new ProductBundleOptionOrderExpanderPlugin(),
             new RemunerationTotalOrderExpanderPlugin(),
         ];
@@ -161,6 +161,8 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new MetadataOrderItemExpanderPlugin(),
             new UpdateOrderItemIsReturnableByItemStatePlugin(),
             new UpdateOrderItemIsReturnableByGlobalReturnableNumberOfDaysPlugin(),
+            new CurrencyIsoCodeOrderItemExpanderPlugin(),
+            new ConfiguredBundleOrderItemExpanderPlugin(),
         ];
     }
 }
