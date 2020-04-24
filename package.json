@@ -21,11 +21,11 @@
     "zed": "node ./node_modules/@spryker/oryx-for-zed/build",
     "zed:watch": "node ./node_modules/@spryker/oryx-for-zed/build --dev",
     "zed:production": "node ./node_modules/@spryker/oryx-for-zed/build --prod",
-    "mp:build": "npm run fe:root -- yarn workspaces run build",
-    "mp:test": "yarn workspaces run test --watch=false --browsers ChromeHeadless",
+    "mp:build": "npm run fe:root -- yarn workspaces foreach run build",
+    "mp:test": "yarn workspaces foreach run test --watch=false --browsers ChromeHeadless",
     "mp:clean": "run-s mp:clean:*",
-    "mp:clean:dist": "yarn workspaces run rimraf dist",
-    "mp:clean:modules": "yarn workspaces run rimraf node_modules",
+    "mp:clean:dist": "yarn workspaces foreach rimraf dist",
+    "mp:clean:modules": "yarn workspaces foreach rimraf node_modules",
     "fe:root": "export FE_ROOT_DIR=\"../../../../..\" && "
   },
   "engines": {
@@ -64,10 +64,13 @@
     "ts-loader": "~6.2.1",
     "tslint": "~5.20.1",
     "tslint-lines-between-class-members": "~1.3.6",
-    "typescript": "~3.7.2",
+    "typescript": "~3.8.3",
     "typescript-eslint-parser": "~22.0.0",
     "uglifyjs-webpack-plugin": "~1.3.0",
     "webpack": "~4.41.2",
     "webpack-merge": "~4.2.2"
+  },
+  "resolutions": {
+    "typescript": "3.8.3"
   }
 }
