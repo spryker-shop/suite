@@ -61,4 +61,14 @@ class SalesConfig extends SprykerSalesConfig
 
         return array_merge($externalBlocks, $projectExternalBlocks);
     }
+
+    /**
+     * @api
+     *
+     * @return bool
+     */
+    public function isHydrateOrderHistoryToItems(): bool
+    {
+        return false;
+    }
 }

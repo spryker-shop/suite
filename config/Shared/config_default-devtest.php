@@ -47,6 +47,8 @@ $currentStoreLowerCase = strtolower(APPLICATION_CODE_BUCKET);
 
 // ---------- General
 $config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker/spryker/Bundles';
+$config[KernelConstants::RESOLVABLE_CLASS_NAMES_CACHE_ENABLED] = false;
+$config[KernelConstants::RESOLVED_INSTANCE_CACHE_ENABLED] = false;
 
 // ---------- ZedRequest
 $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_FORWARD_ENABLED] = true;
@@ -66,7 +68,7 @@ $config[PropelConstants::ZED_DB_PORT] = 5432;
 $config[StorageRedisConstants::STORAGE_REDIS_DATABASE] = 3;
 
 // ---------- Session
-$config[SessionConstants::SESSION_IS_TEST] = (bool)getenv("SESSION_IS_TEST");
+$config[SessionConstants::SESSION_IS_TEST] = (bool)getenv('SESSION_IS_TEST');
 $config[SessionConstants::YVES_SESSION_SAVE_HANDLER] = SessionRedisConfig::SESSION_HANDLER_REDIS;
 $config[SessionConstants::ZED_SESSION_COOKIE_SECURE] = false;
 $config[SessionConstants::ZED_SESSION_SAVE_HANDLER] = SessionRedisConfig::SESSION_HANDLER_REDIS;
