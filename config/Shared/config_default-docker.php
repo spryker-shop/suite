@@ -111,7 +111,7 @@ $config[ZedRequestConstants::BASE_URL_SSL_ZED_API] = sprintf(
 $config[TwigConstants::ZED_TWIG_OPTIONS] = [
     'cache' => new FilesystemCache(
         sprintf(
-            '%s/data/cache/cache%s/ZED/twig',
+            '%s/data/cache/codeBucket%s/ZED/twig',
             APPLICATION_CODE_BUCKET,
             APPLICATION_ROOT_DIR
         ),
@@ -119,7 +119,7 @@ $config[TwigConstants::ZED_TWIG_OPTIONS] = [
     ),
 ];
 $config[TwigConstants::ZED_PATH_CACHE_FILE] = sprintf(
-    '%s/data/cache%s/ZED/twig/.pathCache',
+    '%s/data/cache/codeBucket%s/ZED/twig/.pathCache',
     APPLICATION_ROOT_DIR,
     APPLICATION_CODE_BUCKET
 );
@@ -130,7 +130,7 @@ $config[ZedNavigationConstants::ZED_NAVIGATION_CACHE_ENABLED] = true;
 $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_NAME] = 'XDEBUG_SESSION';
 $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_FORWARD_ENABLED] = true;
 $config[ZedRequestConstants::SET_REPEAT_DATA] = true;
-$config[ZedRequestConstants::YVES_REQUEST_REPEAT_DATA_PATH] = APPLICATION_ROOT_DIR . '/data/' . Store::getInstance()->getStoreName() . '/' . APPLICATION_ENV . '/yves-requests';
+$config[ZedRequestConstants::YVES_REQUEST_REPEAT_DATA_PATH] = APPLICATION_ROOT_DIR . '/data/' . APPLICATION_ENV . APPLICATION_CODE_BUCKET . '/yves-requests';
 
 $HSTS_ENABLED = false;
 $config[ApplicationConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_ENABLED]
@@ -283,7 +283,7 @@ $config[CustomerConstants::BASE_URL_YVES] = $config[ApplicationConstants::BASE_U
 $config[TwigConstants::YVES_TWIG_OPTIONS] = [
     'cache' => new FilesystemCache(
         sprintf(
-            '%s/data/cache/cache%s/%s/twig',
+            '%s/data/cache/codeBucket%s/%s/twig',
             APPLICATION_ROOT_DIR,
             APPLICATION_CODE_BUCKET,
             APPLICATION
@@ -292,7 +292,7 @@ $config[TwigConstants::YVES_TWIG_OPTIONS] = [
     ),
 ];
 $config[TwigConstants::YVES_PATH_CACHE_FILE] = sprintf(
-    '%s/data/cache%s/YVES/twig/.pathCache',
+    '%s/data/cache/codeBucket%s/YVES/twig/.pathCache',
     APPLICATION_ROOT_DIR,
     APPLICATION_CODE_BUCKET
 );

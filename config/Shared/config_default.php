@@ -73,7 +73,7 @@ $codeBucketLowerCase = strtolower(APPLICATION_CODE_BUCKET);
 
 // ---------- General environment
 $config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker/spryker/Bundles';
-$config[KernelConstants::AUTO_LOADER_CACHE_FILE_PATH] = sprintf(APPLICATION_ROOT_DIR . '/data/cache/cache%s/' . APPLICATION . '/unresolvable.cache', APPLICATION_CODE_BUCKET);
+$config[KernelConstants::AUTO_LOADER_CACHE_FILE_PATH] = sprintf(APPLICATION_ROOT_DIR . '/data/cache/codeBucket%s/' . APPLICATION . '/unresolvable.cache', APPLICATION_CODE_BUCKET);
 
 $config[KernelConstants::RESOLVABLE_CLASS_NAMES_CACHE_ENABLED] = true;
 $config[KernelConstants::RESOLVED_INSTANCE_CACHE_ENABLED] = true;
@@ -209,7 +209,7 @@ $config[SearchConstants::FULL_TEXT_BOOSTED_BOOSTING_VALUE]
 $config[TwigConstants::YVES_TWIG_OPTIONS] = [
     'cache' => new FilesystemCache(
         sprintf(
-            '%s/data/cache/cache%s/%s/twig',
+            '%s/data/cache/codeBucket%s/%s/twig',
             APPLICATION_ROOT_DIR,
             APPLICATION_CODE_BUCKET,
             APPLICATION
@@ -220,7 +220,7 @@ $config[TwigConstants::YVES_TWIG_OPTIONS] = [
 $config[TwigConstants::ZED_TWIG_OPTIONS] = [
     'cache' => new FilesystemCache(
         sprintf(
-            '%s/data/cache/cache%s/%s/twig',
+            '%s/data/cache/codeBucket%s/%s/twig',
             APPLICATION_ROOT_DIR,
             APPLICATION_CODE_BUCKET,
             APPLICATION
@@ -229,12 +229,12 @@ $config[TwigConstants::ZED_TWIG_OPTIONS] = [
     ),
 ];
 $config[TwigConstants::YVES_PATH_CACHE_FILE] = sprintf(
-    '%s/data/cache%s/YVES/twig/.pathCache',
+    '%s/data/cache/codeBucket%s/YVES/twig/.pathCache',
     APPLICATION_ROOT_DIR,
     APPLICATION_CODE_BUCKET
 );
 $config[TwigConstants::ZED_PATH_CACHE_FILE] = sprintf(
-    '%s/data/cache%s/ZED/twig/.pathCache',
+    '%s/data/cache/codeBucket%s/ZED/twig/.pathCache',
     APPLICATION_ROOT_DIR,
     APPLICATION_CODE_BUCKET
 );
@@ -454,7 +454,7 @@ $config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION] = [
 
 $config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION_DEFAULT] = [
     QueueConfig::CONFIG_QUEUE_ADAPTER => RabbitMqAdapter::class,
-    QueueConfig::CONFIG_MAX_WORKER_NUMBER => 2,
+    QueueConfig::CONFIG_MAX_WORKER_NUMBER => 1,
 ];
 
 // ----------- RabbitMq

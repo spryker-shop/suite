@@ -25,8 +25,7 @@ use Spryker\Shared\ZedNavigation\ZedNavigationConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
 
-$currentStore = APPLICATION_STORE;
-$currentStoreLowerCase = strtolower($currentStore);
+$codeBucketLowerCase = strtolower(APPLICATION_CODE_BUCKET);
 
 // ---------- General
 $config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker/spryker/Bundles';
@@ -164,7 +163,7 @@ $config[SessionConstants::YVES_SESSION_COOKIE_DOMAIN] = $config[ApplicationConst
 $config[SessionConstants::ZED_SESSION_COOKIE_NAME] = $config[ApplicationConstants::HOST_ZED];
 
 // ---------- Elasticsearch
-$ELASTICA_INDEX_NAME = sprintf('%s_search', $currentStoreLowerCase);
+$ELASTICA_INDEX_NAME = sprintf('%s_search', $codeBucketLowerCase);
 $config[SearchConstants::ELASTICA_PARAMETER__INDEX_NAME] = $ELASTICA_INDEX_NAME;
 $config[CollectorConstants::ELASTICA_PARAMETER__INDEX_NAME] = $ELASTICA_INDEX_NAME;
 
@@ -172,6 +171,6 @@ $config[CollectorConstants::ELASTICA_PARAMETER__INDEX_NAME] = $ELASTICA_INDEX_NA
 $config[MailConstants::MAILCATCHER_GUI] = 'http://' . $config[ApplicationConstants::HOST_ZED] . ':1080';
 
 // ---------- RabbitMQ
-$config[ApplicationConstants::ZED_RABBITMQ_USERNAME] = sprintf('%s_development', $currentStore);
+$config[ApplicationConstants::ZED_RABBITMQ_USERNAME] = sprintf('%s_development', APPLICATION_CODE_BUCKET);
 $config[ApplicationConstants::ZED_RABBITMQ_PASSWORD] = 'mate20mg';
-$config[ApplicationConstants::ZED_RABBITMQ_VHOST] = sprintf('/%s_development_zed', $currentStore);
+$config[ApplicationConstants::ZED_RABBITMQ_VHOST] = sprintf('/%s_development_zed', APPLICATION_CODE_BUCKET);
