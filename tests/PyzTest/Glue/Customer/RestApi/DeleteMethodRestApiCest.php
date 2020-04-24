@@ -57,10 +57,10 @@ class DeleteMethodRestApiCest
         )->getAccessToken();
 
         $headers = [
-            "Accept: */*",
-            "Authorization: Bearer " . $token,
-            "Cache-Control: no-cache",
-            "Content-Type: application/json",
+            'Accept: */*',
+            'Authorization: Bearer ' . $token,
+            'Cache-Control: no-cache',
+            'Content-Type: application/json',
         ];
 
         $url = $i->formatFullUrl(
@@ -74,7 +74,7 @@ class DeleteMethodRestApiCest
                 [
                     'http' => [
                         'method' => 'DELETE',
-                        "header" => implode("\r\n", $headers),
+                        'header' => implode("\r\n", $headers),
                     ],
                 ]
             )
