@@ -65,6 +65,9 @@ sections:
         zed-build-frontend:
             command: "vendor/bin/console frontend:zed:build"
 
+        mp-build-frontend:
+            command: "vendor/bin/console frontend:mp:build"
+
     scheduler-setup:
         jenkins-generate:
             command: "vendor/bin/console scheduler:setup"

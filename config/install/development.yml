@@ -320,3 +320,8 @@ sections:
             command: "vendor/bin/console frontend:zed:build"
             groups:
                 - zed
+
+        mp-build-frontend:
+            command: "vendor/bin/console frontend:mp:build"
+            groups:
+                - mp
