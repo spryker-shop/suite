@@ -28,7 +28,6 @@ use Spryker\Shared\FileSystem\FileSystemConstants;
 use Spryker\Shared\Flysystem\FlysystemConstants;
 use Spryker\Shared\GlueApplication\GlueApplicationConstants;
 use Spryker\Shared\Http\HttpConstants;
-use Spryker\Shared\Kernel\ClassResolver\Cache\Provider\File;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
@@ -214,9 +213,6 @@ $config[AuthConstants::AUTH_DEFAULT_CREDENTIALS] = [
         'token' => 'JDJ5JDEwJFE0cXBwYnVVTTV6YVZXSnVmM2l1UWVhRE94WkQ4UjBUeHBEWTNHZlFRTEd4U2F6QVBqejQ2',
     ],
 ];
-
-$config[KernelConstants::AUTO_LOADER_CACHE_FILE_NO_LOCK] = false;
-$config[KernelConstants::AUTO_LOADER_UNRESOLVABLE_CACHE_PROVIDER] = File::class;
 
 $config[OmsConstants::ACTIVE_PROCESSES] = [
     'DummyPayment01',
