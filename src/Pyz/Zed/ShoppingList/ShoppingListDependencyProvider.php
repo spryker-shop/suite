@@ -66,16 +66,6 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     }
 
     /**
-     * @deprecated Use `ShoppingListDependencyProvider::getItemCollectionExpanderPlugins()` instead.
-     *
-     * @return \Spryker\Zed\ShoppingListExtension\Dependency\Plugin\ItemExpanderPluginInterface[]
-     */
-    protected function getItemExpanderPlugins(): array
-    {
-        return [];
-    }
-
-    /**
      * @return \Spryker\Zed\ShoppingListExtension\Dependency\Plugin\ShoppingListItemCollectionExpanderPluginInterface[]
      */
     protected function getItemCollectionExpanderPlugins(): array
