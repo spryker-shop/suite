@@ -35,7 +35,7 @@ class AvailabilityAddToCartCest
 
         $i->amLoggedInCustomer();
 
-        $i->amOnPage(AvailabilityPresentationTester::FUJITSU_PRODUCT_PAGE);
+        $i->amOnPage(AvailabilityPresentationTester::FUJITSU2_PRODUCT_PAGE);
 
         $i->click(ProductDetailPage::ADD_TO_CART_XPATH);
 
