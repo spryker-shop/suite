@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "769ec83654d362f8e99a8a7601fe7776",
+    "content-hash": "be24905f97a75fea67fd6b83c082ecf2",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -4854,44 +4854,6 @@
             "time": "2020-01-23T09:57:03+00:00"
         },
         {
-            "name": "spryker/oauth-revoke-extension",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/oauth-revoke-extension.git",
-                "reference": "8231f05221723795bb55de365476ce3bc2cbe3af"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/oauth-revoke-extension/zipball/8231f05221723795bb55de365476ce3bc2cbe3af",
-                "reference": "8231f05221723795bb55de365476ce3bc2cbe3af",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "OauthRevokeExtension module",
-            "time": "2020-04-17T11:17:20+00:00"
-        },
-        {
             "name": "spryker/rabbit-mq",
             "version": "dev-master",
             "source": {
@@ -5037,11 +4999,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/ps-12249/ps-12960-create-return-page",
+            "version": "dev-feature/ps-12249/ps-12961-as-a-customer-i-want-to-see-return-list-page",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "5ad3209b08ccc1d53586965b60c70480245198bb"
+                "reference": "20602574b5151dcb378ebafb40dfb95e48ba0fee"
             },
             "require": {
                 "php": ">=7.2"
@@ -5061,6 +5023,7 @@
                 "spryker/auth-mail-connector": "*",
                 "spryker/auth-rest-api": "*",
                 "spryker/auth-rest-api-extension": "*",
+                "spryker/authentication-merchant-portal-gui": "*",
                 "spryker/availability": "*",
                 "spryker/availability-cart-connector": "*",
                 "spryker/availability-data-feed": "*",
@@ -5266,6 +5229,7 @@
                 "spryker/customers-rest-api": "*",
                 "spryker/customers-rest-api-extension": "*",
                 "spryker/dashboard": "*",
+                "spryker/dashboard-merchant-portal-gui": "*",
                 "spryker/data-import": "*",
                 "spryker/data-import-extension": "*",
                 "spryker/dataset": "*",
@@ -5330,7 +5294,6 @@
                 "spryker/manual-order-entry-gui": "*",
                 "spryker/manual-order-entry-gui-extension": "*",
                 "spryker/merchant": "*",
-                "spryker/merchant-dashboard-gui-page": "*",
                 "spryker/merchant-data-import": "*",
                 "spryker/merchant-extension": "*",
                 "spryker/merchant-gui": "*",
@@ -5348,7 +5311,7 @@
                 "spryker/merchant-profile": "*",
                 "spryker/merchant-profile-data-import": "*",
                 "spryker/merchant-profile-gui": "*",
-                "spryker/merchant-profile-gui-page": "*",
+                "spryker/merchant-profile-merchant-portal-gui": "*",
                 "spryker/merchant-profile-storage": "*",
                 "spryker/merchant-relationship": "*",
                 "spryker/merchant-relationship-data-import": "*",
@@ -5365,12 +5328,12 @@
                 "spryker/merchant-sales-order": "*",
                 "spryker/merchant-sales-order-extension": "*",
                 "spryker/merchant-search": "*",
+                "spryker/merchant-shipment": "*",
                 "spryker/merchant-stock": "*",
                 "spryker/merchant-stock-data-import": "*",
                 "spryker/merchant-stock-gui": "*",
                 "spryker/merchant-switcher": "*",
                 "spryker/merchant-user": "*",
-                "spryker/merchant-user-auth-gui-page": "*",
                 "spryker/merchant-user-gui": "*",
                 "spryker/messenger": "*",
                 "spryker/messenger-extension": "*",
@@ -5398,6 +5361,7 @@
                 "spryker/oauth-extension": "*",
                 "spryker/oauth-permission": "*",
                 "spryker/oauth-revoke": "*",
+                "spryker/oauth-revoke-extension": "*",
                 "spryker/offer": "*",
                 "spryker/offer-extension": "*",
                 "spryker/offer-gui": "*",
@@ -5645,6 +5609,7 @@
                 "spryker/sql-criteria-builder": "*",
                 "spryker/state-machine": "*",
                 "spryker/step-engine": "*",
+                "spryker/step-engine-extension": "*",
                 "spryker/stock": "*",
                 "spryker/stock-data-import": "*",
                 "spryker/stock-extension": "*",
@@ -5733,15 +5698,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-04-23T16:38:58+00:00"
+            "time": "2020-04-24T11:31:43+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/ps-12249/ps-12960-create-return-page",
+            "version": "dev-feature/ps-12249/ps-12961-as-a-customer-i-want-to-see-return-list-page",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "ebcf62b2bff0f75833e434bd49723268e70d88c1"
+                "reference": "82246a91425469e93af8fe44ebb87c73b830b84c"
             },
             "require": {
                 "php": ">=7.2"
@@ -5886,49 +5851,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-04-24T10:36:52+00:00"
-        },
-        {
-            "name": "spryker/step-engine-extension",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/step-engine-extension.git",
-                "reference": "2eb46a55712fdf3c6242b4078850266b0b03527b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/step-engine-extension/zipball/2eb46a55712fdf3c6242b4078850266b0b03527b",
-                "reference": "2eb46a55712fdf3c6242b4078850266b0b03527b",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/kernel": "*"
-            },
-            "suggest": {
-                "spryker/kernel": "If you want to use kernel functionality with certain plugins"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "StepEngineExtension module",
-            "time": "2020-04-07T08:49:52+00:00"
+            "time": "2020-04-24T11:32:19+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
