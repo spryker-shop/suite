@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.135.2",
+            "version": "3.135.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "1810725052836683d0cfd2907d515173058e710e"
+                "reference": "0f6f6e8f4a44193908e18b8c7b8530b02f5bc428"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/1810725052836683d0cfd2907d515173058e710e",
-                "reference": "1810725052836683d0cfd2907d515173058e710e",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/0f6f6e8f4a44193908e18b8c7b8530b02f5bc428",
+                "reference": "0f6f6e8f4a44193908e18b8c7b8530b02f5bc428",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-04-22T18:11:15+00:00"
+            "time": "2020-04-23T18:18:24+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -5003,7 +5003,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "9222d7c7758a4a2c50e2259b732719fe2ea3ad0a"
+                "reference": "f29ce747732844ed9fb3033af4e407263bba6144"
             },
             "require": {
                 "php": ">=7.2"
@@ -5681,7 +5681,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-04-23T11:49:11+00:00"
+            "time": "2020-04-24T13:50:47+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5689,7 +5689,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "f9d35fe546ad02bafee5cad6b1bee3c732360d8c"
+                "reference": "37ec19a99df8ce59b98853940fb4bd3d25b87366"
             },
             "require": {
                 "php": ">=7.2"
@@ -5833,7 +5833,49 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-04-21T08:36:15+00:00"
+            "time": "2020-04-24T10:05:01+00:00"
+        },
+        {
+            "name": "spryker/step-engine-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/step-engine-extension.git",
+                "reference": "2eb46a55712fdf3c6242b4078850266b0b03527b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/step-engine-extension/zipball/2eb46a55712fdf3c6242b4078850266b0b03527b",
+                "reference": "2eb46a55712fdf3c6242b4078850266b0b03527b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/kernel": "*"
+            },
+            "suggest": {
+                "spryker/kernel": "If you want to use kernel functionality with certain plugins"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "StepEngineExtension module",
+            "time": "2020-04-07T08:49:52+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
