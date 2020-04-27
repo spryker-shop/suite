@@ -50,8 +50,10 @@ class QuoteConfig extends SprykerQuoteConfig
             ItemTransfer::SUM_PRICE,
             ItemTransfer::UNIT_GROSS_PRICE,
             ItemTransfer::SUM_GROSS_PRICE,
-            ItemTransfer::IS_ORDERED,
+            ItemTransfer::SOURCE_UNIT_GROSS_PRICE,
+            ItemTransfer::SOURCE_UNIT_NET_PRICE,
             ItemTransfer::CONFIGURED_BUNDLE,
+            ItemTransfer::CONFIGURED_BUNDLE_ITEM,
             ItemTransfer::RELATED_BUNDLE_ITEM_IDENTIFIER,
         ];
     }
