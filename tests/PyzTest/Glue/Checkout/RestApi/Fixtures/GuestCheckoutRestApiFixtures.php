@@ -145,13 +145,13 @@ class GuestCheckoutRestApiFixtures implements FixturesBuilderInterface, Fixtures
         ]);
         $I->havePaymentMethodWithStore([
             PaymentMethodTransfer::IS_ACTIVE => true,
-            PaymentMethodTransfer::METHOD_NAME => 'invoice',
+            PaymentMethodTransfer::METHOD_NAME => 'Invoice',
             PaymentMethodTransfer::NAME => 'dummyPaymentInvoice',
             PaymentMethodTransfer::ID_PAYMENT_PROVIDER => $paymentProviderTransfer->getIdPaymentProvider(),
         ]);
         $I->havePaymentMethodWithStore([
             PaymentMethodTransfer::IS_ACTIVE => true,
-            PaymentMethodTransfer::METHOD_NAME => 'credit card',
+            PaymentMethodTransfer::METHOD_NAME => 'Credit Card',
             PaymentMethodTransfer::NAME => 'dummyPaymentCreditCard',
             PaymentMethodTransfer::ID_PAYMENT_PROVIDER => $paymentProviderTransfer->getIdPaymentProvider(),
         ]);
