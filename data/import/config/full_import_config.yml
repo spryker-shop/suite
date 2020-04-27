@@ -24,6 +24,7 @@ actions:
   - data_entity: stock-store
   - data_entity: payment-method
   - data_entity: payment-method-store
+  - data_entity: return-reason
 
 
 #2. Catalog Setup data import - Catalog Setup category includes sub-categories: Categories, Products,Pricing, Stocks
@@ -84,6 +85,8 @@ actions:
     source: data/import/product_group.csv
   - data_entity: product-relation
     source: data/import/product_relation.csv
+  - data_entity: product-relation-store
+    source: data/import/product_relation_store.csv
   - data_entity: product-review
     source: data/import/product_review.csv
   - data_entity: product-label
@@ -157,6 +160,7 @@ actions:
   - data_entity: merchant-product-offer-store
   - data_entity: merchant-opening-hours-weekday-schedule
   - data_entity: merchant-opening-hours-date-schedule
+  - data_entity: merchant-oms-process
   - data_entity: product-offer-validity
   - data_entity: price-product-offer
   - data_entity: product-offer-stock
