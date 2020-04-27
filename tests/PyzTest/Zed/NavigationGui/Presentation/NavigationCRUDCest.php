@@ -134,7 +134,7 @@ class NavigationCRUDCest
         $i->wantTo('Delete navigation.');
         $i->expect('Navigation is removed from Zed.');
 
-        $i->amOnPage(sprintf(NavigationUpdatePage::URL, $idNavigation));
+        $i->amOnPage(sprintf(NavigationDeletePage::URL, $idNavigation));
         $i->submitNavigationForm();
         $i->seeCurrentUrlEquals(NavigationPage::URL);
         $i->seeSuccessMessage(NavigationDeletePage::MESSAGE_SUCCESS);
