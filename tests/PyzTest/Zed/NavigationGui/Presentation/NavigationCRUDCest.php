@@ -45,7 +45,7 @@ class NavigationCRUDCest
 
         $this->activate($i);
 
-        $this->delete($i);
+        $this->delete($i, $idNavigation);
     }
 
     /**
@@ -125,24 +125,18 @@ class NavigationCRUDCest
 
     /**
      * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
+     * @param int $idNavigation
      *
      * @return void
      */
-    protected function delete(NavigationGuiPresentationTester $i)
+    protected function delete(NavigationGuiPresentationTester $i, int $idNavigation)
     {
         $i->wantTo('Delete navigation.');
         $i->expect('Navigation is removed from Zed.');
 
-        $i->amOnPage(NavigationPage::URL);
-        $i->waitForElementVisible(NavigationPage::PAGE_LIST_TABLE_XPATH, 5);
-        $i->waitForElementChange('html', function (RemoteWebElement $el) {
-            return $el->getText();
-        });
-        $i->switchToIFrame('navigation-node-form-iframe');
-        $i->waitForJS('return document.readyState == "complete"');
-        $i->switchToIFrame();
-        $i->deleteFirstNavigationRow();
-        $i->seeSuccessMessage(NavigationDeletePage::MESSAGE_SUCCESS);
+        $i->amOnPage(sprintf(NavigationUpdatePage::URL, $idNavigation));
+        $i->submitNavigationForm();
         $i->seeCurrentUrlEquals(NavigationPage::URL);
+        $i->seeSuccessMessage(NavigationDeletePage::MESSAGE_SUCCESS);
     }
 }
