@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.135.3",
+            "version": "3.135.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "0f6f6e8f4a44193908e18b8c7b8530b02f5bc428"
+                "reference": "fb6f4a12d9ad1b8fc1481aef61ed1f8a9fe2164b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/0f6f6e8f4a44193908e18b8c7b8530b02f5bc428",
-                "reference": "0f6f6e8f4a44193908e18b8c7b8530b02f5bc428",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/fb6f4a12d9ad1b8fc1481aef61ed1f8a9fe2164b",
+                "reference": "fb6f4a12d9ad1b8fc1481aef61ed1f8a9fe2164b",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-04-23T18:18:24+00:00"
+            "time": "2020-04-24T18:14:04+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -5003,7 +5003,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "2b5c381201c589507853a17c3803a34b922a24bd"
+                "reference": "62efc09f9d11c7b627f512b2a3ce082b0c67dc9f"
             },
             "require": {
                 "php": ">=7.2"
@@ -5023,6 +5023,7 @@
                 "spryker/auth-mail-connector": "*",
                 "spryker/auth-rest-api": "*",
                 "spryker/auth-rest-api-extension": "*",
+                "spryker/authentication-merchant-portal-gui": "*",
                 "spryker/availability": "*",
                 "spryker/availability-cart-connector": "*",
                 "spryker/availability-data-feed": "*",
@@ -5228,6 +5229,7 @@
                 "spryker/customers-rest-api": "*",
                 "spryker/customers-rest-api-extension": "*",
                 "spryker/dashboard": "*",
+                "spryker/dashboard-merchant-portal-gui": "*",
                 "spryker/data-import": "*",
                 "spryker/data-import-extension": "*",
                 "spryker/dataset": "*",
@@ -5240,6 +5242,7 @@
                 "spryker/doctrine-inflector": "*",
                 "spryker/documentation-generator-rest-api": "*",
                 "spryker/documentation-generator-rest-api-extension": "*",
+                "spryker/dummy-marketplace-payment": "*",
                 "spryker/dummy-payment": "*",
                 "spryker/egulias": "*",
                 "spryker/elastica": "*",
@@ -5291,11 +5294,12 @@
                 "spryker/manual-order-entry-gui": "*",
                 "spryker/manual-order-entry-gui-extension": "*",
                 "spryker/merchant": "*",
-                "spryker/merchant-dashboard-gui-page": "*",
                 "spryker/merchant-data-import": "*",
                 "spryker/merchant-extension": "*",
                 "spryker/merchant-gui": "*",
                 "spryker/merchant-gui-extension": "*",
+                "spryker/merchant-oms": "*",
+                "spryker/merchant-oms-data-import": "*",
                 "spryker/merchant-opening-hours": "*",
                 "spryker/merchant-opening-hours-data-import": "*",
                 "spryker/merchant-opening-hours-storage": "*",
@@ -5307,6 +5311,7 @@
                 "spryker/merchant-profile": "*",
                 "spryker/merchant-profile-data-import": "*",
                 "spryker/merchant-profile-gui": "*",
+                "spryker/merchant-profile-merchant-portal-gui": "*",
                 "spryker/merchant-profile-storage": "*",
                 "spryker/merchant-relationship": "*",
                 "spryker/merchant-relationship-data-import": "*",
@@ -5321,13 +5326,15 @@
                 "spryker/merchant-relationship-sales-order-threshold-gui": "*",
                 "spryker/merchant-relationship-sales-order-threshold-gui-extension": "*",
                 "spryker/merchant-sales-order": "*",
+                "spryker/merchant-sales-order-extension": "*",
                 "spryker/merchant-search": "*",
+                "spryker/merchant-shipment": "*",
                 "spryker/merchant-stock": "*",
                 "spryker/merchant-stock-data-import": "*",
                 "spryker/merchant-stock-gui": "*",
                 "spryker/merchant-switcher": "*",
                 "spryker/merchant-user": "*",
-                "spryker/merchant-user-auth-gui-page": "*",
+                "spryker/merchant-user-gui": "*",
                 "spryker/messenger": "*",
                 "spryker/messenger-extension": "*",
                 "spryker/module-finder": "*",
@@ -5353,6 +5360,8 @@
                 "spryker/oauth-customer-connector-extension": "*",
                 "spryker/oauth-extension": "*",
                 "spryker/oauth-permission": "*",
+                "spryker/oauth-revoke": "*",
+                "spryker/oauth-revoke-extension": "*",
                 "spryker/offer": "*",
                 "spryker/offer-extension": "*",
                 "spryker/offer-gui": "*",
@@ -5391,6 +5400,8 @@
                 "spryker/price-product-offer": "*",
                 "spryker/price-product-offer-data-import": "*",
                 "spryker/price-product-offer-storage": "*",
+                "spryker/price-product-offer-storage-extension": "*",
+                "spryker/price-product-offer-volume": "*",
                 "spryker/price-product-schedule": "*",
                 "spryker/price-product-schedule-data-import": "*",
                 "spryker/price-product-schedule-gui": "*",
@@ -5459,6 +5470,7 @@
                 "spryker/product-measurement-unit": "*",
                 "spryker/product-measurement-unit-data-import": "*",
                 "spryker/product-measurement-unit-storage": "*",
+                "spryker/product-measurement-units-rest-api": "*",
                 "spryker/product-merchant-connector": "*",
                 "spryker/product-new": "*",
                 "spryker/product-offer": "*",
@@ -5487,6 +5499,8 @@
                 "spryker/product-quantity-storage": "*",
                 "spryker/product-relation": "*",
                 "spryker/product-relation-collector": "*",
+                "spryker/product-relation-data-import": "*",
+                "spryker/product-relation-gui": "*",
                 "spryker/product-relation-storage": "*",
                 "spryker/product-resource-alias-storage": "*",
                 "spryker/product-review": "*",
@@ -5548,6 +5562,9 @@
                 "spryker/sales-quantity": "*",
                 "spryker/sales-reclamation": "*",
                 "spryker/sales-reclamation-gui": "*",
+                "spryker/sales-return": "*",
+                "spryker/sales-return-data-import": "*",
+                "spryker/sales-returns-rest-api": "*",
                 "spryker/sales-split": "*",
                 "spryker/sales-statistics": "*",
                 "spryker/scheduler": "*",
@@ -5564,6 +5581,7 @@
                 "spryker/session-extension": "*",
                 "spryker/session-file": "*",
                 "spryker/session-redis": "*",
+                "spryker/session-redis-extension": "*",
                 "spryker/setup": "*",
                 "spryker/setup-frontend": "*",
                 "spryker/shared-cart": "*",
@@ -5593,6 +5611,7 @@
                 "spryker/sql-criteria-builder": "*",
                 "spryker/state-machine": "*",
                 "spryker/step-engine": "*",
+                "spryker/step-engine-extension": "*",
                 "spryker/stock": "*",
                 "spryker/stock-data-import": "*",
                 "spryker/stock-extension": "*",
@@ -5681,7 +5700,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-04-24T13:40:10+00:00"
+            "time": "2020-04-27T09:24:59+00:00"
         },
         {
             "name": "spryker/spryker-shop",
