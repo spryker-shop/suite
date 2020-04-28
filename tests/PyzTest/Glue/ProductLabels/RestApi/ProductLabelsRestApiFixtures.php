@@ -108,7 +108,7 @@ class ProductLabelsRestApiFixtures implements FixturesBuilderInterface, Fixtures
             ],
             StoreRelationTransfer::STORES => [
                 $storeTransfer,
-            ]
+            ],
         ];
         $this->productLabelTransfer = $I->haveProductLabel([
             ProductLabelTransfer::STORE_RELATION => $storeRelationSeedData,
