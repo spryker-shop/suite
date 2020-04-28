@@ -23,6 +23,7 @@ class QuoteConfig extends SprykerQuoteConfig
             QuoteTransfer::CART_NOTE, #CartNoteFeature,
             QuoteTransfer::EXPENSES, #QuoteApprovalFeature
             QuoteTransfer::VOUCHER_DISCOUNTS, #QuoteApprovalFeature
+            QuoteTransfer::GIFT_CARDS,
             QuoteTransfer::CART_RULE_DISCOUNTS, #QuoteApprovalFeature
             QuoteTransfer::PROMOTION_ITEMS, #QuoteApprovalFeature
             QuoteTransfer::IS_LOCKED, #QuoteApprovalFeature
@@ -52,6 +53,7 @@ class QuoteConfig extends SprykerQuoteConfig
             ItemTransfer::SUM_GROSS_PRICE,
             ItemTransfer::IS_ORDERED,
             ItemTransfer::CONFIGURED_BUNDLE,
+            ItemTransfer::GIFT_CARD_METADATA,
         ];
     }
 }
