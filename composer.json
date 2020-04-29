@@ -3,7 +3,7 @@
   "description": "Spryker Suite (internal)",
   "license": "MIT",
   "require": {
-    "spryker/spryker": "dev-feature/mp-2477/mp-2482-add-card-codes-endpoint",
+    "spryker/spryker": "dev-feature/mp-2477/api-gift-cards",
     "spryker/spryker-shop": "dev-master",
     "spryker/decimal-object": "^1.0.0",
     "spryker-eco/loggly": "dev-master",
@@ -26,7 +26,8 @@
     "ext-pgsql": "*",
     "ext-readline": "*",
     "ext-redis": "*",
-    "wikimedia/composer-merge-plugin": "^1.4.1"
+    "wikimedia/composer-merge-plugin": "^1.4.1",
+    "symfony/validator": "4.4.7"
   },
   "require-dev": {
     "codeception/codeception": "<4.1.2",
