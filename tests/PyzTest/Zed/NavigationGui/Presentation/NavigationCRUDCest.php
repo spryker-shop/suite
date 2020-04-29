@@ -7,13 +7,11 @@
 
 namespace PyzTest\Zed\NavigationGui\Presentation;
 
-use Facebook\WebDriver\Remote\RemoteWebElement;
 use Faker\Factory;
 use PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester;
 use PyzTest\Zed\NavigationGui\PageObject\NavigationCreatePage;
 use PyzTest\Zed\NavigationGui\PageObject\NavigationDeletePage;
 use PyzTest\Zed\NavigationGui\PageObject\NavigationPage;
-use PyzTest\Zed\NavigationGui\PageObject\NavigationStatusTogglePage;
 use PyzTest\Zed\NavigationGui\PageObject\NavigationUpdatePage;
 
 /**
@@ -42,8 +40,6 @@ class NavigationCRUDCest
         $this->read($i);
 
         $this->update($i, $idNavigation);
-
-        $this->activate($i);
 
         $this->delete($i, $idNavigation);
     }
@@ -98,29 +94,6 @@ class NavigationCRUDCest
         $i->submitNavigationForm();
         $i->seeCurrentUrlEquals(NavigationPage::URL);
         $i->seeSuccessMessage(NavigationUpdatePage::MESSAGE_SUCCESS);
-    }
-
-    /**
-     * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
-     *
-     * @return void
-     */
-    protected function activate(NavigationGuiPresentationTester $i)
-    {
-        $i->wantTo('Activate navigation.');
-        $i->expect('New navigation status persisted in Zed.');
-        $i->amOnPage(NavigationPage::URL);
-        $i->waitForElementVisible(NavigationPage::PAGE_LIST_TABLE_XPATH, 5);
-        $i->waitForElementChange('html', function (RemoteWebElement $el) {
-            return $el->getText();
-        });
-        $i->switchToIFrame('navigation-node-form-iframe');
-        $i->waitForJS('return document.readyState == "complete"');
-        $i->switchToIFrame();
-        $i->activateFirstNavigationRow();
-        $i->waitForElementVisible(NavigationPage::PAGE_LIST_TABLE_XPATH, 5);
-        $i->seeSuccessMessage(NavigationStatusTogglePage::MESSAGE_ACTIVE_SUCCESS);
-        $i->seeCurrentUrlEquals(NavigationPage::URL);
     }
 
     /**
