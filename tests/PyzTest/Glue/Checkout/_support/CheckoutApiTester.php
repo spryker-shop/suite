@@ -60,9 +60,8 @@ class CheckoutApiTester extends ApiEndToEndTester
 {
     use _generated\CheckoutApiTesterActions;
 
-    protected const REQUEST_PARAM_PAYMENT_METHOD_NAME_INVOICE = 'invoice';
+    protected const REQUEST_PARAM_PAYMENT_METHOD_NAME_INVOICE = 'Invoice';
     protected const REQUEST_PARAM_PAYMENT_PROVIDER_NAME_DUMMY_PAYMENT = 'DummyPayment';
-    protected const REQUEST_PARAM_PAYMENT_PAYMENT_SELECTION = 'dummyPaymentInvoice';
     protected const QUOTE_ITEM_OVERRIDE_DATA_PRODUCT = 'product';
     protected const QUOTE_ITEM_OVERRIDE_DATA_SHIPMENT = 'shipment';
     protected const QUOTE_ITEM_OVERRIDE_DATA_QUANTITY = 'quantity';
@@ -214,20 +213,17 @@ class CheckoutApiTester extends ApiEndToEndTester
     /**
      * @param string $paymentMethodName
      * @param string $paymentProviderName
-     * @param string $paymentSelection
      *
      * @return array
      */
     public function getPaymentRequestPayload(
         string $paymentMethodName = self::REQUEST_PARAM_PAYMENT_METHOD_NAME_INVOICE,
-        string $paymentProviderName = self::REQUEST_PARAM_PAYMENT_PROVIDER_NAME_DUMMY_PAYMENT,
-        string $paymentSelection = self::REQUEST_PARAM_PAYMENT_PAYMENT_SELECTION
+        string $paymentProviderName = self::REQUEST_PARAM_PAYMENT_PROVIDER_NAME_DUMMY_PAYMENT
     ): array {
         return [
             [
                 RestPaymentTransfer::PAYMENT_METHOD_NAME => $paymentMethodName,
                 RestPaymentTransfer::PAYMENT_PROVIDER_NAME => $paymentProviderName,
-                RestPaymentTransfer::PAYMENT_SELECTION => $paymentSelection,
             ],
         ];
     }
