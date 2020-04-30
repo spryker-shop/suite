@@ -291,7 +291,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
         }
 
         $values = array_map(function ($value) {
-            return ($value === null || $value === "") ? "NULL" : $value;
+            return ($value === null || $value === '') ? 'NULL' : $value;
         }, $values);
 
         return sprintf(
