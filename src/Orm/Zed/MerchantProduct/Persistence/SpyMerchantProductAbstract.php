@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\ProductMerchantConnector\Persistence;
+namespace Orm\Zed\MerchantProduct\Persistence;
 
-use Spryker\Zed\ProductMerchantConnector\Persistence\Propel\AbstractSpyProductAbstractMerchant as BaseSpyProductAbstractMerchant;
+use Spryker\Zed\MerchantProduct\Persistence\Propel\AbstractSpyMerchantProductAbstract;
 
 /**
- * Skeleton subclass for representing a row from the 'spy_product_abstract_merchant' table.
+ * Skeleton subclass for representing a row from the 'spy_merchant_product_abstract' table.
  *
  *
  *
@@ -18,6 +18,6 @@ use Spryker\Zed\ProductMerchantConnector\Persistence\Propel\AbstractSpyProductAb
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyProductAbstractMerchant extends BaseSpyProductAbstractMerchant
+class SpyMerchantProductAbstract extends AbstractSpyMerchantProductAbstract
 {
 }
