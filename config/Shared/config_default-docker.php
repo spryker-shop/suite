@@ -111,8 +111,8 @@ $config[TwigConstants::ZED_TWIG_OPTIONS] = [
     'cache' => new FilesystemCache(
         sprintf(
             '%s/data/cache/codeBucket%s/ZED/twig',
-            APPLICATION_CODE_BUCKET,
-            APPLICATION_ROOT_DIR
+            APPLICATION_ROOT_DIR,
+            APPLICATION_CODE_BUCKET
         ),
         FilesystemCache::FORCE_BYTECODE_INVALIDATION
     ),
@@ -129,7 +129,7 @@ $config[ZedNavigationConstants::ZED_NAVIGATION_CACHE_ENABLED] = true;
 $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_NAME] = 'XDEBUG_SESSION';
 $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_FORWARD_ENABLED] = true;
 $config[ZedRequestConstants::SET_REPEAT_DATA] = true;
-$config[ZedRequestConstants::YVES_REQUEST_REPEAT_DATA_PATH] = APPLICATION_ROOT_DIR . '/data/' . APPLICATION_ENV . APPLICATION_CODE_BUCKET . '/yves-requests';
+$config[ZedRequestConstants::YVES_REQUEST_REPEAT_DATA_PATH] = APPLICATION_ROOT_DIR . '/data/cache/codeBucket/yves-requests';
 
 $HSTS_ENABLED = false;
 $config[ApplicationConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_ENABLED]

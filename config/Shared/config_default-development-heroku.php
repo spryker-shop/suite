@@ -163,7 +163,7 @@ $config[SessionConstants::YVES_SESSION_COOKIE_DOMAIN] = $config[ApplicationConst
 $config[SessionConstants::ZED_SESSION_COOKIE_NAME] = $config[ApplicationConstants::HOST_ZED];
 
 // ---------- Elasticsearch
-$ELASTICA_INDEX_NAME = sprintf('%s_search', $codeBucketLowerCase);
+$ELASTICA_INDEX_NAME = sprintf('%s_search', strtolower(APPLICATION_STORE));
 $config[SearchConstants::ELASTICA_PARAMETER__INDEX_NAME] = $ELASTICA_INDEX_NAME;
 $config[CollectorConstants::ELASTICA_PARAMETER__INDEX_NAME] = $ELASTICA_INDEX_NAME;
 

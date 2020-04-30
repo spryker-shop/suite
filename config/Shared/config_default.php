@@ -183,7 +183,7 @@ $ELASTICA_HOST = 'localhost';
 $ELASTICA_TRANSPORT_PROTOCOL = 'http';
 $ELASTICA_PORT = '10005';
 $ELASTICA_AUTH_HEADER = null;
-$ELASTICA_INDEX_NAME = sprintf('%s_search', $codeBucketLowerCase);
+$ELASTICA_INDEX_NAME = sprintf('%s_search', strtolower(APPLICATION_STORE));
 $ELASTICA_DOCUMENT_TYPE = 'page';
 $ELASTICA_PARAMETER__EXTRA = [];
 
@@ -432,7 +432,7 @@ $config[QueueConstants::QUEUE_SERVER_ID] = (gethostname()) ?: php_uname('n');
 $config[QueueConstants::QUEUE_WORKER_INTERVAL_MILLISECONDS] = 1000;
 $config[QueueConstants::QUEUE_PROCESS_TRIGGER_INTERVAL_MICROSECONDS] = 1001;
 $config[QueueConstants::QUEUE_WORKER_MAX_THRESHOLD_SECONDS] = 59;
-$config[QueueConstants::QUEUE_WORKER_OUTPUT_FILE_NAME] = 'data/logs/ZED/queue.out';
+$config[QueueConstants::QUEUE_WORKER_OUTPUT_FILE_NAME] = $baseLogFilePath . '/ZED/queue.out';
 
 /*
  * Queues can have different adapters and maximum worker number
@@ -472,7 +472,7 @@ $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
         RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST => null, // Defined per environment
         RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => null, // Defined per environment
         RabbitMqEnv::RABBITMQ_STORE_NAMES => ['DE'],
-        RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => APPLICATION_CODE_BUCKET === 'DE',
+        RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => APPLICATION_STORE === 'DE',
     ],
     'AT' => [
         RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'AT-connection',
@@ -487,7 +487,7 @@ $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
         RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST => null, // Defined per environment
         RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => null, // Defined per environment
         RabbitMqEnv::RABBITMQ_STORE_NAMES => ['AT'],
-        RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => APPLICATION_CODE_BUCKET === 'AT',
+        RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => APPLICATION_STORE === 'AT',
     ],
     'US' => [
         RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'US-connection',
@@ -502,7 +502,7 @@ $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
         RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST => null, // Defined per environment
         RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => null, // Defined per environment
         RabbitMqEnv::RABBITMQ_STORE_NAMES => ['US'],
-        RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => APPLICATION_CODE_BUCKET === 'US',
+        RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => APPLICATION_STORE === 'US',
     ],
 ];
 
@@ -574,7 +574,7 @@ $config[TranslatorConstants::TRANSLATION_ZED_FALLBACK_LOCALES] = [
 ];
 
 $config[TranslatorConstants::TRANSLATION_ZED_CACHE_DIRECTORY] = sprintf(
-    '%s/data/cache/ZED/translation',
+    '%s/data/cache/codeBucket/ZED/translation',
     APPLICATION_ROOT_DIR
 );
 
