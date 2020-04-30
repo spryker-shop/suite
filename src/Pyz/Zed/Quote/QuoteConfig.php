@@ -53,7 +53,6 @@ class QuoteConfig extends SprykerQuoteConfig
             ItemTransfer::SUM_GROSS_PRICE,
             ItemTransfer::IS_ORDERED,
             ItemTransfer::CONFIGURED_BUNDLE,
-            ItemTransfer::GIFT_CARD_METADATA,
         ];
     }
 }
