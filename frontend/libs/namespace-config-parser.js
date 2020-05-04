@@ -39,7 +39,9 @@ const getFilteredNamespaceConfigList = requestedArguments => {
             }
         });
 
-        return namespaceConfig.themes.filter(namespaceTheme => requestedArguments.themes.includes(namespaceTheme));
+        namespaceConfig.themes = namespaceConfig.themes.filter(namespaceTheme => requestedArguments.themes.includes(namespaceTheme));
+
+        return namespaceConfig;
     };
 
     return requestedArguments.namespaces
