@@ -20,6 +20,7 @@ use Spryker\Zed\ConfigurableBundleCart\Communication\Plugin\Cart\ConfiguredBundl
 use Spryker\Zed\ConfigurableBundleCart\Communication\Plugin\Cart\ConfiguredBundleTemplateSlotCombinationPreCheckPlugin;
 use Spryker\Zed\Discount\Communication\Plugin\Cart\DiscountQuoteChangeObserverPlugin;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Cart\CartGroupPromotionItems;
+use Spryker\Zed\DiscountPromotion\Communication\Plugin\Cart\DiscountPromotionCartPreCheckPlugin;
 use Spryker\Zed\GiftCard\Communication\Plugin\GiftCardMetadataExpanderPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\MerchantProfile\Communication\Plugin\Cart\MerchantProfileCartPreCheckPlugin;
@@ -52,6 +53,7 @@ use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\ProductMeasurem
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitGroupKeyItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitValuePostSavePlugin;
+use Spryker\Zed\ProductOffer\Communication\Plugin\Cart\FilterInactiveProductOfferPreReloadItemsPlugin;
 use Spryker\Zed\ProductOffer\Communication\Plugin\Cart\ProductOfferGroupKeyItemExpanderPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\Cart\CartItemOptionPreCheckPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\CartItemGroupKeyOptionPlugin;
@@ -155,6 +157,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new MerchantProfileCartPreCheckPlugin(),
             new SingleMerchantCartPreCheckPlugin(),
             new ProductMeasurementSalesUnitCartPreCheckPlugin(),
+            new DiscountPromotionCartPreCheckPlugin(),
         ];
     }
 
@@ -187,6 +190,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new CartConfigurableBundlePreReloadPlugin(),
             new CartBundleItemsPreReloadPlugin(),
             new RemoveInactiveItemsPreReloadPlugin(),
+            new FilterInactiveProductOfferPreReloadItemsPlugin(),
             new RemoveRestrictedItemsPreReloadPlugin(),
             new CleanUpItemsPreReloadPlugin(),
             new FilterItemsWithoutPricePlugin(),
