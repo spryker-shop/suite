@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7411bd075515345a5492e8762be20932",
+    "content-hash": "5db48938653b1371a6db1e12da929364",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5702,11 +5702,11 @@
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/cc-6936/dev-navigation-as-content-item",
+            "version": "dev-feature/cc-6936/cc-8713-navigation-displayed-as-tree-structure-after-first-level",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "f9d35fe546ad02bafee5cad6b1bee3c732360d8c"
+                "reference": "61f23662d3db646ae467f0c898ceb7d088bf49c8"
             },
             "require": {
                 "php": ">=7.2"
@@ -5850,49 +5850,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-04-21T08:36:15+00:00"
-        },
-        {
-            "name": "spryker/step-engine-extension",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/step-engine-extension.git",
-                "reference": "2eb46a55712fdf3c6242b4078850266b0b03527b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/step-engine-extension/zipball/2eb46a55712fdf3c6242b4078850266b0b03527b",
-                "reference": "2eb46a55712fdf3c6242b4078850266b0b03527b",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/kernel": "*"
-            },
-            "suggest": {
-                "spryker/kernel": "If you want to use kernel functionality with certain plugins"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "StepEngineExtension module",
-            "time": "2020-04-07T08:49:52+00:00"
+            "time": "2020-05-04T10:49:39+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -11549,6 +11507,48 @@
                 "standards"
             ],
             "time": "2020-04-02T10:45:42+00:00"
+        },
+        {
+            "name": "spryker/step-engine-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/step-engine-extension.git",
+                "reference": "2eb46a55712fdf3c6242b4078850266b0b03527b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/step-engine-extension/zipball/2eb46a55712fdf3c6242b4078850266b0b03527b",
+                "reference": "2eb46a55712fdf3c6242b4078850266b0b03527b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/kernel": "*"
+            },
+            "suggest": {
+                "spryker/kernel": "If you want to use kernel functionality with certain plugins"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "StepEngineExtension module",
+            "time": "2020-04-07T08:49:52+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
