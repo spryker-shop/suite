@@ -17,8 +17,10 @@ use Spryker\Zed\Oms\Communication\Plugin\Sales\StateHistoryOrderItemExpanderPlug
 use Spryker\Zed\OrderCustomReference\Communication\Plugin\Sales\OrderCustomReferenceOrderPostSavePlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Sales\PaymentOrderHydratePlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Sales\ProductBundleIdHydratorPlugin;
+use Spryker\Zed\ProductBundle\Communication\Plugin\Sales\ProductBundleOptionItemExpanderPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Sales\ProductBundleOptionOrderExpanderPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Sales\ProductBundleOrderHydratePlugin;
+use Spryker\Zed\ProductBundle\Communication\Plugin\Sales\ProductBundleOrderItemExpanderPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Sales\UniqueOrderBundleItemsExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Sales\QuantitySalesUnitHydrateOrderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\SalesExtension\QuantitySalesUnitOrderItemExpanderPreSavePlugin;
@@ -163,6 +165,8 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new UpdateOrderItemIsReturnableByGlobalReturnableNumberOfDaysPlugin(),
             new CurrencyIsoCodeOrderItemExpanderPlugin(),
             new ConfiguredBundleOrderItemExpanderPlugin(),
+            new ProductBundleOrderItemExpanderPlugin(),
+            new ProductBundleOptionItemExpanderPlugin(),
         ];
     }
 }
