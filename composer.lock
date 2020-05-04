@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f6235282744d432184e2f1d1b3aee9c8",
+    "content-hash": "39557142ade6125cb0b27465279ea0dd",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1117,8 +1117,8 @@
             "authors": [
                 {
                     "name": "Alessio Linares",
-                    "email": "alessio.linares@skyscanner.net",
-                    "role": "Software Engineer"
+                    "role": "Software Engineer",
+                    "email": "alessio.linares@skyscanner.net"
                 }
             ],
             "description": "JSONPath implementation for querying and updating JSON objects",
@@ -3647,7 +3647,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -4999,11 +4999,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/ps-12236/dev-zed-for-return-management",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "935e69111dfd1d789798c33f74766b57df8b4ad6"
+                "reference": "f780f5ffa5946564804d3f410af7b5e7ce738362"
             },
             "require": {
                 "php": ">=7.2"
@@ -5698,15 +5698,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-04-23T15:16:34+00:00"
+            "time": "2020-04-24T07:43:43+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/ps-12236/dev-zed-for-return-management",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "edbe36b309dc8096ea633d7987262ea328dd6c39"
+                "reference": "78c3bfa6ea766b6fedd7ded05fff8adccb5fa678"
             },
             "require": {
                 "php": ">=7.2"
@@ -5813,6 +5813,7 @@
                 "spryker-shop/resource-share-page-extension": "*",
                 "spryker-shop/sales-configurable-bundle-widget": "*",
                 "spryker-shop/sales-order-threshold-widget": "*",
+                "spryker-shop/sales-return-page": "*",
                 "spryker-shop/shared-cart-page": "*",
                 "spryker-shop/shared-cart-widget": "*",
                 "spryker-shop/shop-application": "*",
@@ -5850,7 +5851,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-04-23T15:16:37+00:00"
+            "time": "2020-04-24T07:44:23+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8718,8 +8719,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -12033,6 +12034,5 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    },
-    "plugin-api-version": "1.1.0"
+    }
 }
