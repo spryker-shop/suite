@@ -49,14 +49,9 @@ sections:
         remove-auto-completion:
             command: "vendor/bin/console dev:ide-auto-completion:remove"
 
-        remove-request-validation-cache-DE:
-            command: "SPRYKER_CODE_BUCKET=DE vendor/bin/console rest-api:remove-validation-cache"
-
-        remove-request-validation-cache-AT:
-            command: "SPRYKER_CODE_BUCKET=AT vendor/bin/console rest-api:remove-validation-cache"
-
-        remove-request-validation-cache-US:
-            command: "SPRYKER_CODE_BUCKET=US vendor/bin/console rest-api:remove-validation-cache"
+        remove-request-validation-cache:
+            command: "vendor/bin/console rest-api:remove-validation-cache"
+            stores: true
 
         remove-navigation-cache:
             command: "vendor/bin/console navigation:cache:remove"
@@ -104,14 +99,9 @@ sections:
         navigation-cache-warmup:
             command: "vendor/bin/console navigation:build-cache"
 
-        rest-request-validation-cache-warmup-DE:
-            command: "SPRYKER_CODE_BUCKET=DE vendor/bin/console rest-api:build-request-validation-cache"
-
-        rest-request-validation-cache-warmup-AT:
-            command: "SPRYKER_CODE_BUCKET=AT vendor/bin/console rest-api:build-request-validation-cache"
-
-        rest-request-validation-cache-warmup-US:
-            command: "SPRYKER_CODE_BUCKET=US vendor/bin/console rest-api:build-request-validation-cache"
+        rest-request-validation-cache-warmup:
+            command: "vendor/bin/console rest-api:build-request-validation-cache"
+            stores: true
 
         class-resolver-build:
             command: "vendor/bin/console cache:class-resolver:build"

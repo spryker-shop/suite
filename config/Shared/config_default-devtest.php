@@ -42,7 +42,7 @@ use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 
 $domain = getenv('VM_PROJECT') ?: 'suite-nonsplit';
-$codeBucketLowerCase = strtolower(APPLICATION_CODE_BUCKET);
+$storeLowerCase = strtolower(APPLICATION_STORE);
 
 // ---------- General
 $config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker/spryker/Bundles';
@@ -155,7 +155,7 @@ $config[StorageDatabaseConstants::DB_PORT] = 5432;
 $config[StorageDatabaseConstants::DB_DEBUG] = false;
 
 // ---------- Yves host
-$config[ApplicationConstants::HOST_YVES] = sprintf('www-test.%s.%s.local', $codeBucketLowerCase, $domain);
+$config[ApplicationConstants::HOST_YVES] = sprintf('www-test.%s.%s.local', $storeLowerCase, $domain);
 $config[ApplicationConstants::PORT_YVES] = '';
 $config[ApplicationConstants::PORT_SSL_YVES] = '';
 $config[ApplicationConstants::BASE_URL_YVES] = sprintf(
@@ -173,7 +173,7 @@ $config[NewsletterConstants::BASE_URL_YVES] = $config[ApplicationConstants::BASE
 $config[CustomerConstants::BASE_URL_YVES] = $config[ApplicationConstants::BASE_URL_YVES];
 
 // ---------- Zed host
-$config[ApplicationConstants::HOST_ZED] = sprintf('zed-test.%s.%s.local', $codeBucketLowerCase, $domain);
+$config[ApplicationConstants::HOST_ZED] = sprintf('zed-test.%s.%s.local', $storeLowerCase, $domain);
 $config[ApplicationConstants::PORT_ZED] = '';
 $config[ApplicationConstants::PORT_SSL_ZED] = '';
 $config[ApplicationConstants::BASE_URL_ZED] = sprintf(
@@ -204,12 +204,6 @@ $config[PropelConstants::ZED_DB_USERNAME] = 'devtest';
 $config[PropelConstants::ZED_DB_PASSWORD] = 'mate20mg';
 $config[PropelConstants::ZED_DB_DATABASE] = sprintf('%s_devtest_zed', APPLICATION_CODE_BUCKET);
 
-// ---------- Elasticsearch
-$config[CollectorConstants::ELASTICA_PARAMETER__INDEX_NAME] = sprintf('%s_search_devtest', strtolower(APPLICATION_STORE));
-
-// ---------- RabbitMq
-
-
 // ---------- Event
 $config[EventConstants::EVENT_CHUNK] = 5000;
 
@@ -220,7 +214,7 @@ $config[SessionRedisConstants::YVES_SESSION_REDIS_DATABASE] = 5;
 $config[SessionRedisConstants::ZED_SESSION_REDIS_DATABASE] = $config[SessionRedisConstants::YVES_SESSION_REDIS_DATABASE];
 
 // ----------- Glue Application
-$config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = sprintf('http://glue-test.%s.%s.local', $codeBucketLowerCase, $domain);
+$config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = sprintf('http://glue-test.%s.%s.local', $storeLowerCase, $domain);
 $config[TestifyConstants::GLUE_APPLICATION_DOMAIN] = $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN];
 $config[TestifyConstants::GLUE_OPEN_API_SCHEMA] = APPLICATION_SOURCE_DIR . '/Generated/Glue/Specification/spryker_rest_api.schema.yml';
 

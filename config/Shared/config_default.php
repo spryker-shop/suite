@@ -69,7 +69,7 @@ use SprykerShop\Shared\ShopUi\ShopUiConstants;
 use Twig\Cache\FilesystemCache;
 
 $domain = getenv('VM_PROJECT') ?: 'suite-nonsplit';
-$codeBucketLowerCase = strtolower(APPLICATION_CODE_BUCKET);
+$storeLowerCase = strtolower(APPLICATION_STORE);
 
 // ---------- General environment
 $config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker/spryker/Bundles';
@@ -609,7 +609,7 @@ $config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GE
 $config[KernelConstants::STRICT_DOMAIN_REDIRECT] = true;
 
 // ---------- Yves host
-$config[ApplicationConstants::HOST_YVES] = sprintf('www.%s.%s.local', $codeBucketLowerCase, $domain);
+$config[ApplicationConstants::HOST_YVES] = sprintf('www.%s.%s.local', $storeLowerCase, $domain);
 $config[ApplicationConstants::PORT_YVES] = '';
 $config[ApplicationConstants::PORT_SSL_YVES] = '';
 $config[ApplicationConstants::BASE_URL_YVES] = sprintf(
@@ -627,7 +627,7 @@ $config[NewsletterConstants::BASE_URL_YVES] = $config[ApplicationConstants::BASE
 $config[CustomerConstants::BASE_URL_YVES] = $config[ApplicationConstants::BASE_URL_YVES];
 
 // ---------- Zed host
-$config[ApplicationConstants::HOST_ZED] = sprintf('zed.%s.%s.local', $codeBucketLowerCase, $domain);
+$config[ApplicationConstants::HOST_ZED] = sprintf('zed.%s.%s.local', $storeLowerCase, $domain);
 $config[ApplicationConstants::PORT_ZED] = '';
 $config[ApplicationConstants::PORT_SSL_ZED] = '';
 $config[ApplicationConstants::BASE_URL_ZED] = sprintf(
@@ -666,8 +666,8 @@ $config[SessionConstants::ZED_SESSION_COOKIE_NAME] = $config[ApplicationConstant
 $config[EventConstants::LOG_FILE_PATH] = APPLICATION_ROOT_DIR . '/data/logs/application_events.log';
 
 // ----------- Glue Application
-$config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = sprintf('http://glue.%s.%s.local', $codeBucketLowerCase, $domain);
-$config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = sprintf('http://glue.%s.%s.local', $codeBucketLowerCase, $domain);
+$config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = sprintf('http://glue.%s.%s.local', $storeLowerCase, $domain);
+$config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = sprintf('http://glue.%s.%s.local', $storeLowerCase, $domain);
 
 // ----------- HTTP Security
 $config[KernelConstants::DOMAIN_WHITELIST] = [

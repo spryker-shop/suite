@@ -18,7 +18,7 @@ const getFilteredNamespaceConfigList = requestedArguments => {
     const namespaceMap = getNamespaceMap(requestedArguments.pathToConfig);
 
     if (!requestedArguments.namespaces.length) {
-        requestedArguments.namespaces = Array.from(namespaceMap.keys()).filter(namespace => namespace);
+        requestedArguments.namespaces = Array.from(namespaceMap.keys());
     }
 
     requestedArguments.namespaces

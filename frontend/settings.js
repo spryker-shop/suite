@@ -56,7 +56,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
             .replace(/%theme%/gi, theme)
     );
 
-    const getAllCodeBuckets = () => namespaceJson.namespaces.map(namespace => namespace.codeBucket).filter(codeBucket => codeBucket);
+    const getAllCodeBuckets = () => namespaceJson.namespaces.map(namespace => namespace.codeBucket);
 
     const ignoreModulesCollection = () => {
         return getAllCodeBuckets()
