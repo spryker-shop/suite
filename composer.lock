@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f6235282744d432184e2f1d1b3aee9c8",
+    "content-hash": "769ec83654d362f8e99a8a7601fe7776",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -4999,11 +4999,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/ps-12249/ps-12960-create-return-page",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "935e69111dfd1d789798c33f74766b57df8b4ad6"
+                "reference": "44863b0205301f71e257a4fd0b2c6a69965d4ace"
             },
             "require": {
                 "php": ">=7.2"
@@ -5698,15 +5698,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-04-23T15:16:34+00:00"
+            "time": "2020-05-05T10:07:53+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/ps-12249/ps-12960-create-return-page",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "edbe36b309dc8096ea633d7987262ea328dd6c39"
+                "reference": "fadbf6dd82bb94aa2fe9690c2af26b8024d694d8"
             },
             "require": {
                 "php": ">=7.2"
@@ -5813,6 +5813,7 @@
                 "spryker-shop/resource-share-page-extension": "*",
                 "spryker-shop/sales-configurable-bundle-widget": "*",
                 "spryker-shop/sales-order-threshold-widget": "*",
+                "spryker-shop/sales-return-page": "*",
                 "spryker-shop/shared-cart-page": "*",
                 "spryker-shop/shared-cart-widget": "*",
                 "spryker-shop/shop-application": "*",
@@ -5850,7 +5851,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-04-23T15:16:37+00:00"
+            "time": "2020-05-05T11:42:18+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -10475,20 +10476,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
-                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler"
+                    "homepage": "https://github.com/manuelpichler",
+                    "role": "Project Founder"
                 },
                 {
                     "name": "Marc Würth",
-                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84"
+                    "homepage": "https://github.com/ravage84",
+                    "role": "Project Maintainer"
                 },
                 {
                     "name": "Other contributors",
-                    "role": "Contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
+                    "role": "Contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -12033,6 +12034,5 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    },
-    "plugin-api-version": "1.1.0"
+    }
 }
