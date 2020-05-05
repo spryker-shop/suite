@@ -7,9 +7,11 @@
 use Pyz\Shared\Scheduler\SchedulerConfig;
 use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Application\ApplicationConstants;
+use Spryker\Shared\Collector\CollectorConstants;
 use Spryker\Shared\Customer\CustomerConstants;
 use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
 use Spryker\Shared\Kernel\KernelConstants;
+use Spryker\Shared\Mail\MailConstants;
 use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\ProductManagement\ProductManagementConstants;
 use Spryker\Shared\Propel\PropelConstants;
@@ -25,6 +27,7 @@ use Spryker\Shared\ZedNavigation\ZedNavigationConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
 
+$storeLowerCase = strtolower(APPLICATION_STORE);
 // ---------- General
 $config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker/spryker/Bundles';
 $config[ApplicationConstants::ENABLE_APPLICATION_DEBUG]
@@ -161,7 +164,7 @@ $config[SessionConstants::YVES_SESSION_COOKIE_DOMAIN] = $config[ApplicationConst
 $config[SessionConstants::ZED_SESSION_COOKIE_NAME] = $config[ApplicationConstants::HOST_ZED];
 
 // ---------- Elasticsearch
-$ELASTICA_INDEX_NAME = sprintf('%s_search', strtolower(APPLICATION_STORE));
+$ELASTICA_INDEX_NAME = sprintf('%s_search', $storeLowerCase);
 $config[SearchConstants::ELASTICA_PARAMETER__INDEX_NAME] = $ELASTICA_INDEX_NAME;
 $config[CollectorConstants::ELASTICA_PARAMETER__INDEX_NAME] = $ELASTICA_INDEX_NAME;
 
@@ -169,6 +172,6 @@ $config[CollectorConstants::ELASTICA_PARAMETER__INDEX_NAME] = $ELASTICA_INDEX_NA
 $config[MailConstants::MAILCATCHER_GUI] = 'http://' . $config[ApplicationConstants::HOST_ZED] . ':1080';
 
 // ---------- RabbitMQ
-$config[ApplicationConstants::ZED_RABBITMQ_USERNAME] = sprintf('%s_development', APPLICATION_CODE_BUCKET);
+$config[ApplicationConstants::ZED_RABBITMQ_USERNAME] = sprintf('%s_development', APPLICATION_STORE);
 $config[ApplicationConstants::ZED_RABBITMQ_PASSWORD] = 'mate20mg';
-$config[ApplicationConstants::ZED_RABBITMQ_VHOST] = sprintf('/%s_development_zed', APPLICATION_CODE_BUCKET);
+$config[ApplicationConstants::ZED_RABBITMQ_VHOST] = sprintf('/%s_development_zed', APPLICATION_STORE);

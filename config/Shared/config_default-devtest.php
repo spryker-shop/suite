@@ -88,15 +88,12 @@ $config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION] = [
 ];
 
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['DE'][RabbitMqEnv::RABBITMQ_USERNAME] = 'DE_devtest';
-$config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['DE'][RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = '/DE_devtest_zed';
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['DE'][RabbitMqEnv::RABBITMQ_VIRTUAL_HOST] = '/DE_devtest_zed';
 
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['AT'][RabbitMqEnv::RABBITMQ_USERNAME] = 'AT_devtest';
-$config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['AT'][RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = '/AT_devtest';
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['AT'][RabbitMqEnv::RABBITMQ_VIRTUAL_HOST] = '/AT_devtest_zed';
 
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['US'][RabbitMqEnv::RABBITMQ_USERNAME] = 'US_devtest';
-$config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['US'][RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = '/US_devtest';
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['US'][RabbitMqEnv::RABBITMQ_VIRTUAL_HOST] = '/US_devtest_zed';
 
 // ---------- Logging
@@ -220,4 +217,4 @@ $config[TestifyConstants::GLUE_OPEN_API_SCHEMA] = APPLICATION_SOURCE_DIR . '/Gen
 // ---------- Database storage
 $config[StorageDatabaseConstants::DB_USERNAME] = 'devtest';
 $config[StorageDatabaseConstants::DB_PASSWORD] = 'mate20mg';
-$config[StorageDatabaseConstants::DB_DATABASE] = sprintf('%s_devtest_zed', APPLICATION_CODE_BUCKET);
+$config[StorageDatabaseConstants::DB_DATABASE] = 'DE_devtest_zed';
