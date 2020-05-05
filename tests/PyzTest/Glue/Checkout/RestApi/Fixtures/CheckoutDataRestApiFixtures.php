@@ -120,14 +120,14 @@ class CheckoutDataRestApiFixtures implements FixturesBuilderInterface, FixturesC
         ]);
         $I->havePaymentMethodWithStore([
             PaymentMethodTransfer::IS_ACTIVE => true,
-            PaymentMethodTransfer::METHOD_NAME => 'invoice',
-            PaymentMethodTransfer::NAME => 'dummyPaymentInvoice',
+            PaymentMethodTransfer::METHOD_NAME => 'dummyPaymentInvoice',
+            PaymentMethodTransfer::NAME => 'Invoice',
             PaymentMethodTransfer::ID_PAYMENT_PROVIDER => $paymentProviderTransfer->getIdPaymentProvider(),
         ]);
         $I->havePaymentMethodWithStore([
             PaymentMethodTransfer::IS_ACTIVE => true,
-            PaymentMethodTransfer::METHOD_NAME => 'credit card',
-            PaymentMethodTransfer::NAME => 'dummyPaymentCreditCard',
+            PaymentMethodTransfer::METHOD_NAME => 'dummyPaymentCreditCard',
+            PaymentMethodTransfer::NAME => 'Credit Card',
             PaymentMethodTransfer::ID_PAYMENT_PROVIDER => $paymentProviderTransfer->getIdPaymentProvider(),
         ]);
     }

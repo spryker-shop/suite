@@ -35,6 +35,8 @@ use Spryker\Shared\ZedRequest\ZedRequestConstants;
 
 // ---------- General
 $config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker/spryker/Bundles';
+$config[KernelConstants::RESOLVABLE_CLASS_NAMES_CACHE_ENABLED] = false;
+$config[KernelConstants::RESOLVED_INSTANCE_CACHE_ENABLED] = false;
 
 // ---------- ZedRequest
 $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_FORWARD_ENABLED] = true;

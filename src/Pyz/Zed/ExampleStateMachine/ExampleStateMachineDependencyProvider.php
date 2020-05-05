@@ -24,6 +24,8 @@ class ExampleStateMachineDependencyProvider extends AbstractBundleDependencyProv
         $container[self::FACADE_STATE_MACHINE] = function (Container $container) {
             return $container->getLocator()->stateMachine()->facade();
         };
+
+        return $container;
     }
 
     /**
@@ -36,5 +38,7 @@ class ExampleStateMachineDependencyProvider extends AbstractBundleDependencyProv
         $container[self::FACADE_STATE_MACHINE] = function (Container $container) {
             return $container->getLocator()->stateMachine()->facade();
         };
+
+        return $container;
     }
 }
