@@ -20,6 +20,7 @@ use Spryker\Zed\ConfigurableBundleCart\Communication\Plugin\Cart\ConfiguredBundl
 use Spryker\Zed\ConfigurableBundleCart\Communication\Plugin\Cart\ConfiguredBundleTemplateSlotCombinationPreCheckPlugin;
 use Spryker\Zed\Discount\Communication\Plugin\Cart\DiscountQuoteChangeObserverPlugin;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Cart\CartGroupPromotionItems;
+use Spryker\Zed\DiscountPromotion\Communication\Plugin\Cart\DiscountPromotionCartPreCheckPlugin;
 use Spryker\Zed\GiftCard\Communication\Plugin\GiftCardMetadataExpanderPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\MerchantProfile\Communication\Plugin\Cart\MerchantProfileCartPreCheckPlugin;
@@ -156,6 +157,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new MerchantProfileCartPreCheckPlugin(),
             new SingleMerchantCartPreCheckPlugin(),
             new ProductMeasurementSalesUnitCartPreCheckPlugin(),
+            new DiscountPromotionCartPreCheckPlugin(),
         ];
     }
 
