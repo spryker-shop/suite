@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "379b5606b405910409c994a88ae518ed",
+    "content-hash": "c175d61f14e4787636b06da410e003e4",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1117,8 +1117,8 @@
             "authors": [
                 {
                     "name": "Alessio Linares",
-                    "role": "Software Engineer",
-                    "email": "alessio.linares@skyscanner.net"
+                    "email": "alessio.linares@skyscanner.net",
+                    "role": "Software Engineer"
                 }
             ],
             "description": "JSONPath implementation for querying and updating JSON objects",
@@ -3647,7 +3647,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -4999,11 +4999,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/cc-6936/dev-navigation-as-content-item",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "51040f760ab637890208ba79f051f820fd5b182b"
+                "reference": "181321dd98b249928b2d4dadd4d96795b244351c"
             },
             "require": {
                 "php": ">=7.2"
@@ -5199,6 +5199,9 @@
                 "spryker/content-file-gui": "*",
                 "spryker/content-gui": "*",
                 "spryker/content-gui-extension": "*",
+                "spryker/content-navigation": "*",
+                "spryker/content-navigation-data-import": "*",
+                "spryker/content-navigation-gui": "*",
                 "spryker/content-product": "*",
                 "spryker/content-product-abstract-lists-rest-api": "*",
                 "spryker/content-product-data-import": "*",
@@ -5700,15 +5703,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-05-04T12:20:57+00:00"
+            "time": "2020-05-05T13:59:23+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/cc-6936/cc-8713-navigation-displayed-as-tree-structure-after-first-level",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "44c271bc30663024a90fd16b880453689fadd30d"
+                "reference": "3cec99e25ddb1ba6622ff99196f617c386ffc6a9"
             },
             "require": {
                 "php": ">=7.2"
@@ -5852,7 +5855,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-04-29T08:13:03+00:00"
+            "time": "2020-05-05T13:37:29+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8720,8 +8723,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -8968,28 +8971,6 @@
                 "unicode",
                 "utf-8",
                 "utf8"
-            ],
-            "funding": [
-                {
-                    "url": "https://www.paypal.me/moelleken",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/voku",
-                    "type": "github"
-                },
-                {
-                    "url": "https://opencollective.com/portable-utf8",
-                    "type": "open_collective"
-                },
-                {
-                    "url": "https://www.patreon.com/voku",
-                    "type": "patreon"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/voku/portable-utf8",
-                    "type": "tidelift"
-                }
             ],
             "time": "2020-05-05T09:53:26+00:00"
         },
@@ -10941,25 +10922,24 @@
         },
         {
             "name": "sllh/composer-versions-check",
-            "version": "v2.0.3",
+            "version": "v2.0.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Soullivaneuh/composer-versions-check.git",
-                "reference": "f6fe100dd71a9fa0d3c922612b445fb179e19127"
+                "url": "https://github.com/soullivaneuh/composer-versions-check.git",
+                "reference": "05bca35588b6f234390fd4946d84c8f8e1890c43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Soullivaneuh/composer-versions-check/zipball/f6fe100dd71a9fa0d3c922612b445fb179e19127",
-                "reference": "f6fe100dd71a9fa0d3c922612b445fb179e19127",
+                "url": "https://api.github.com/repos/soullivaneuh/composer-versions-check/zipball/05bca35588b6f234390fd4946d84c8f8e1890c43",
+                "reference": "05bca35588b6f234390fd4946d84c8f8e1890c43",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "^1.0",
+                "composer-plugin-api": "^1.0 || ^2.0",
                 "php": "^5.3 || ^7.0"
             },
             "require-dev": {
-                "composer/composer": "^1.0",
-                "sllh/php-cs-fixer-styleci-bridge": "^2.0",
+                "composer/composer": "^1.0 || ^2.0",
                 "symfony/phpunit-bridge": "^2.7.4|^3.0"
             },
             "type": "composer-plugin",
@@ -10991,7 +10971,7 @@
                 "update",
                 "versions"
             ],
-            "time": "2017-06-16T09:29:23+00:00"
+            "time": "2020-05-05T13:03:07+00:00"
         },
         {
             "name": "spryker-sdk/codeception-phantoman",
@@ -12061,6 +12041,5 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    },
-    "plugin-api-version": "1.1.0"
+    }
 }
