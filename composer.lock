@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ed9fe79a180f7055f39a735a492459b1",
+    "content-hash": "379b5606b405910409c994a88ae518ed",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.137.1",
+            "version": "3.137.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "935060ae3d64f2bfeab7a6ba46bebe525047446c"
+                "reference": "af91c2fc467a326e5bcb5665e4e2ad3d84d28be2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/935060ae3d64f2bfeab7a6ba46bebe525047446c",
-                "reference": "935060ae3d64f2bfeab7a6ba46bebe525047446c",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/af91c2fc467a326e5bcb5665e4e2ad3d84d28be2",
+                "reference": "af91c2fc467a326e5bcb5665e4e2ad3d84d28be2",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-05-01T18:13:22+00:00"
+            "time": "2020-05-04T18:13:52+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -972,16 +972,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.7.1",
+            "version": "2.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "fff6f1e4f36be0e0d0b84d66b413d9dcb0c49130"
+                "reference": "17d0d3f266c8f925ebd035cd36f83cf802b47d4a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/fff6f1e4f36be0e0d0b84d66b413d9dcb0c49130",
-                "reference": "fff6f1e4f36be0e0d0b84d66b413d9dcb0c49130",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/17d0d3f266c8f925ebd035cd36f83cf802b47d4a",
+                "reference": "17d0d3f266c8f925ebd035cd36f83cf802b47d4a",
                 "shasum": ""
             },
             "require": {
@@ -1029,7 +1029,7 @@
                 "throwable",
                 "whoops"
             ],
-            "time": "2020-01-15T10:00:00+00:00"
+            "time": "2020-05-05T12:28:07+00:00"
         },
         {
             "name": "fzaninotto/faker",
@@ -1117,8 +1117,8 @@
             "authors": [
                 {
                     "name": "Alessio Linares",
-                    "email": "alessio.linares@skyscanner.net",
-                    "role": "Software Engineer"
+                    "role": "Software Engineer",
+                    "email": "alessio.linares@skyscanner.net"
                 }
             ],
             "description": "JSONPath implementation for querying and updating JSON objects",
@@ -3647,7 +3647,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -4999,11 +4999,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/cc-6936/cc-8718-data-import-navigation-content",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "c5513a52cc1f20bb280cdd4bad8ffcca3e737384"
+                "reference": "51040f760ab637890208ba79f051f820fd5b182b"
             },
             "require": {
                 "php": ">=7.2"
@@ -5142,6 +5142,7 @@
                 "spryker/company-business-unit-extension": "*",
                 "spryker/company-business-unit-gui": "*",
                 "spryker/company-business-unit-gui-extension": "*",
+                "spryker/company-business-unit-sales-connector": "*",
                 "spryker/company-business-unit-storage": "*",
                 "spryker/company-business-units-rest-api": "*",
                 "spryker/company-business-units-rest-api-extension": "*",
@@ -5154,6 +5155,7 @@
                 "spryker/company-role-data-import": "*",
                 "spryker/company-role-gui": "*",
                 "spryker/company-roles-rest-api": "*",
+                "spryker/company-sales-connector": "*",
                 "spryker/company-supplier": "*",
                 "spryker/company-supplier-data-import": "*",
                 "spryker/company-supplier-gui": "*",
@@ -5197,9 +5199,6 @@
                 "spryker/content-file-gui": "*",
                 "spryker/content-gui": "*",
                 "spryker/content-gui-extension": "*",
-                "spryker/content-navigation": "*",
-                "spryker/content-navigation-data-import": "*",
-                "spryker/content-navigation-gui": "*",
                 "spryker/content-product": "*",
                 "spryker/content-product-abstract-lists-rest-api": "*",
                 "spryker/content-product-data-import": "*",
@@ -5331,6 +5330,7 @@
                 "spryker/merchant-sales-order": "*",
                 "spryker/merchant-sales-order-extension": "*",
                 "spryker/merchant-search": "*",
+                "spryker/merchant-shipment": "*",
                 "spryker/merchant-stock": "*",
                 "spryker/merchant-stock-data-import": "*",
                 "spryker/merchant-stock-gui": "*",
@@ -5611,6 +5611,7 @@
                 "spryker/sql-criteria-builder": "*",
                 "spryker/state-machine": "*",
                 "spryker/step-engine": "*",
+                "spryker/step-engine-extension": "*",
                 "spryker/stock": "*",
                 "spryker/stock-data-import": "*",
                 "spryker/stock-extension": "*",
@@ -5699,15 +5700,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-04-30T13:42:19+00:00"
+            "time": "2020-05-04T12:20:57+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/cc-6936/cc-8713-navigation-displayed-as-tree-structure-after-first-level",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "c813449308da483888ae48f42fc056007995dac4"
+                "reference": "44c271bc30663024a90fd16b880453689fadd30d"
             },
             "require": {
                 "php": ">=7.2"
@@ -5851,7 +5852,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-05-04T13:27:55+00:00"
+            "time": "2020-04-29T08:13:03+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8392,16 +8393,16 @@
         },
         {
             "name": "symfony/validator",
-            "version": "v4.4.8",
+            "version": "v4.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/validator.git",
-                "reference": "1780dff34d756f924ed7bb4f1cd94a7f9685eb69"
+                "reference": "2bf1de9d5cac5e5ebc159203c53dcf5b2058d340"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/validator/zipball/1780dff34d756f924ed7bb4f1cd94a7f9685eb69",
-                "reference": "1780dff34d756f924ed7bb4f1cd94a7f9685eb69",
+                "url": "https://api.github.com/repos/symfony/validator/zipball/2bf1de9d5cac5e5ebc159203c53dcf5b2058d340",
+                "reference": "2bf1de9d5cac5e5ebc159203c53dcf5b2058d340",
                 "shasum": ""
             },
             "require": {
@@ -8481,7 +8482,7 @@
             ],
             "description": "Symfony Validator Component",
             "homepage": "https://symfony.com",
-            "time": "2020-04-28T18:23:58+00:00"
+            "time": "2020-03-30T11:41:10+00:00"
         },
         {
             "name": "symfony/var-dumper",
@@ -8719,8 +8720,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -8898,16 +8899,16 @@
         },
         {
             "name": "voku/portable-utf8",
-            "version": "5.4.41",
+            "version": "5.4.42",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/portable-utf8.git",
-                "reference": "e34247dce28f9aebebd2d752d8813b91de689aec"
+                "reference": "dcdb1d8fbda1ce3047bf2377558e8fea13bd1ae9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/e34247dce28f9aebebd2d752d8813b91de689aec",
-                "reference": "e34247dce28f9aebebd2d752d8813b91de689aec",
+                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/dcdb1d8fbda1ce3047bf2377558e8fea13bd1ae9",
+                "reference": "dcdb1d8fbda1ce3047bf2377558e8fea13bd1ae9",
                 "shasum": ""
             },
             "require": {
@@ -8968,7 +8969,29 @@
                 "utf-8",
                 "utf8"
             ],
-            "time": "2020-03-06T01:23:48+00:00"
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/moelleken",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/voku",
+                    "type": "github"
+                },
+                {
+                    "url": "https://opencollective.com/portable-utf8",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://www.patreon.com/voku",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/voku/portable-utf8",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-05-05T09:53:26+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -11094,7 +11117,7 @@
         },
         {
             "name": "spryker-sdk/phpstan-spryker",
-            "version": "dev-master",
+            "version": "0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/phpstan-spryker.git",
@@ -12013,7 +12036,6 @@
         "spryker/code-sniffer": 20,
         "spryker/git-hook": 20,
         "spryker-sdk/codeception-phantoman": 20,
-        "spryker-sdk/phpstan-spryker": 20,
         "spryker-sdk/composer-constrainer": 20,
         "spryker-sdk/composer-replace": 20,
         "spryker-sdk/spryk": 20,
@@ -12039,5 +12061,6 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    }
+    },
+    "plugin-api-version": "1.1.0"
 }
