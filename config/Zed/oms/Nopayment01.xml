@@ -7,6 +7,7 @@
     <process name="Nopayment01" main="true">
         <subprocesses>
             <process>DummyRefund</process>
+            <process>DummyReturn</process>
         </subprocesses>
 
         <states>
@@ -61,5 +62,6 @@
     </process>
 
     <process name="DummyRefund" file="DummySubprocess/DummyRefund01.xml"/>
+    <process name="DummyReturn" file="DummySubprocess/DummyReturn01.xml"/>
 
 </statemachine>
