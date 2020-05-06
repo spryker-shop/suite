@@ -13,6 +13,7 @@ use Spryker\Shared\Twig\Plugin\FormTwigPlugin;
 use Spryker\Shared\Twig\Plugin\RoutingTwigPlugin;
 use Spryker\Shared\Twig\Plugin\SecurityTwigPlugin;
 use Spryker\Zed\Application\Communication\Plugin\Twig\ApplicationTwigPlugin;
+use Spryker\Zed\Barcode\Plugin\Twig\BarcodeTwigPlugin;
 use Spryker\Zed\ChartGui\Communication\Plugin\Twig\Chart\ChartGuiTwigPlugin;
 use Spryker\Zed\Currency\Communication\Plugin\Twig\CurrencyTwigPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\Twig\AssetsPathTwigPlugin;
@@ -47,7 +48,6 @@ use Spryker\Zed\WebProfiler\Communication\Plugin\Twig\WebProfilerTwigLoaderPlugi
 use Spryker\Zed\ZedNavigation\Communication\Plugin\Twig\ZedNavigationTwigPlugin;
 use Spryker\Zed\ZedUi\Communication\Plugin\Twig\BooleanToStringTwigPlugin;
 use Spryker\Zed\ZedUi\Communication\Plugin\ZedUiNavigationTwigPlugin;
-use Spryker\Zed\Barcode\Plugin\Twig\BarcodeTwigPlugin;
 
 class TwigDependencyProvider extends SprykerTwigDependencyProvider
 {
