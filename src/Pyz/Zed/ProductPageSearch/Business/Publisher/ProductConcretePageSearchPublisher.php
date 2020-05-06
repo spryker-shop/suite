@@ -23,6 +23,7 @@ use Spryker\Zed\ProductPageSearch\Business\Publisher\ProductConcretePageSearchPu
 use Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToProductInterface;
 use Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToStoreFacadeInterface;
 use Spryker\Zed\ProductPageSearch\Dependency\Service\ProductPageSearchToUtilEncodingInterface;
+use Spryker\Zed\ProductPageSearch\ProductPageSearchConfig;
 
 /**
  * @example
@@ -61,6 +62,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      * @param \Spryker\Zed\ProductPageSearch\Dependency\Service\ProductPageSearchToUtilEncodingInterface $utilEncoding
      * @param \Spryker\Zed\ProductPageSearch\Business\DataMapper\AbstractProductSearchDataMapper $productConcreteSearchDataMapper
      * @param \Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToStoreFacadeInterface $storeFacade
+     * @param \Spryker\Zed\ProductPageSearch\ProductPageSearchConfig $productPageSearchConfig
      * @param \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductConcretePageDataExpanderPluginInterface[] $pageDataExpanderPlugins
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
@@ -72,6 +74,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
         ProductPageSearchToUtilEncodingInterface $utilEncoding,
         AbstractProductSearchDataMapper $productConcreteSearchDataMapper,
         ProductPageSearchToStoreFacadeInterface $storeFacade,
+        ProductPageSearchConfig $productPageSearchConfig,
         array $pageDataExpanderPlugins,
         SynchronizationServiceInterface $synchronizationService,
         QueueClientInterface $queueClient
@@ -83,6 +86,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
             $utilEncoding,
             $productConcreteSearchDataMapper,
             $storeFacade,
+            $productPageSearchConfig,
             $pageDataExpanderPlugins
         );
 
@@ -114,6 +118,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
 
         if ($this->synchronizedMessageCollection !== []) {
             $this->queueClient->sendMessages('sync.search.product', $this->synchronizedMessageCollection);
+            $this->synchronizedMessageCollection = [];
         }
     }
 
@@ -277,6 +282,8 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
         ];
 
         $stmt->execute($params);
+
+        $this->synchronizedDataCollection = [];
     }
 
     /**
@@ -333,7 +340,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
     {
         $sql = <<<SQL
 WITH records AS (
-    SELECT 
+    SELECT
       input.fk_product,
       input.store,
       input.locale,
@@ -342,7 +349,7 @@ WITH records AS (
       input.key,
       id_product_concrete_page_search
     FROM (
-           SELECT 
+           SELECT
              unnest(? :: INTEGER []) AS fk_product,
              unnest(? :: VARCHAR []) AS store,
              unnest(? :: VARCHAR []) AS locale,
@@ -354,7 +361,7 @@ WITH records AS (
     ),
     updated AS (
     UPDATE spy_product_concrete_page_search
-    SET 
+    SET
       fk_product = records.fk_product,
       store = records.store,
       locale = records.locale,
@@ -368,7 +375,7 @@ WITH records AS (
   ),
     inserted AS (
     INSERT INTO spy_product_concrete_page_search(
-      id_product_concrete_page_search, 
+      id_product_concrete_page_search,
       fk_product,
       store,
       locale,
@@ -379,7 +386,7 @@ WITH records AS (
       updated_at
     ) (
       SELECT
-        nextval('spy_product_concrete_page_search_pk_seq'), 
+        nextval('spy_product_concrete_page_search_pk_seq'),
         fk_product,
         store,
         locale,
