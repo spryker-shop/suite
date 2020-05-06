@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.137.2",
+            "version": "3.137.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "af91c2fc467a326e5bcb5665e4e2ad3d84d28be2"
+                "reference": "d70ccd508c9a9fa5a1579f80fd1f6b8fff79a7c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/af91c2fc467a326e5bcb5665e4e2ad3d84d28be2",
-                "reference": "af91c2fc467a326e5bcb5665e4e2ad3d84d28be2",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d70ccd508c9a9fa5a1579f80fd1f6b8fff79a7c8",
+                "reference": "d70ccd508c9a9fa5a1579f80fd1f6b8fff79a7c8",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-05-04T18:13:52+00:00"
+            "time": "2020-05-05T18:14:48+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -5003,7 +5003,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "51040f760ab637890208ba79f051f820fd5b182b"
+                "reference": "5b93147b8f17484744f6f9104de6c3851c2d596c"
             },
             "require": {
                 "php": ">=7.2"
@@ -5700,7 +5700,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-05-04T12:20:57+00:00"
+            "time": "2020-05-06T07:55:03+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5708,7 +5708,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "44c271bc30663024a90fd16b880453689fadd30d"
+                "reference": "57ef30e3bba824352bc8d4db1cc5961c9641cac7"
             },
             "require": {
                 "php": ">=7.2"
@@ -5852,7 +5852,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-04-29T08:13:03+00:00"
+            "time": "2020-05-06T07:55:07+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -10941,25 +10941,24 @@
         },
         {
             "name": "sllh/composer-versions-check",
-            "version": "v2.0.3",
+            "version": "v2.0.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Soullivaneuh/composer-versions-check.git",
-                "reference": "f6fe100dd71a9fa0d3c922612b445fb179e19127"
+                "url": "https://github.com/soullivaneuh/composer-versions-check.git",
+                "reference": "05bca35588b6f234390fd4946d84c8f8e1890c43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Soullivaneuh/composer-versions-check/zipball/f6fe100dd71a9fa0d3c922612b445fb179e19127",
-                "reference": "f6fe100dd71a9fa0d3c922612b445fb179e19127",
+                "url": "https://api.github.com/repos/soullivaneuh/composer-versions-check/zipball/05bca35588b6f234390fd4946d84c8f8e1890c43",
+                "reference": "05bca35588b6f234390fd4946d84c8f8e1890c43",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "^1.0",
+                "composer-plugin-api": "^1.0 || ^2.0",
                 "php": "^5.3 || ^7.0"
             },
             "require-dev": {
-                "composer/composer": "^1.0",
-                "sllh/php-cs-fixer-styleci-bridge": "^2.0",
+                "composer/composer": "^1.0 || ^2.0",
                 "symfony/phpunit-bridge": "^2.7.4|^3.0"
             },
             "type": "composer-plugin",
@@ -10991,7 +10990,7 @@
                 "update",
                 "versions"
             ],
-            "time": "2017-06-16T09:29:23+00:00"
+            "time": "2020-05-05T13:03:07+00:00"
         },
         {
             "name": "spryker-sdk/codeception-phantoman",
