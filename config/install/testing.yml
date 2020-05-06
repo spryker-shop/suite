@@ -29,14 +29,9 @@ sections:
         navigation-cache-warmup:
             command: "vendor/bin/console navigation:build-cache"
 
-        rest-request-validation-cache-warmup-DE:
-            command: "SPRYKER_CODE_BUCKET=DE vendor/bin/console rest-api:build-request-validation-cache"
-
-        rest-request-validation-cache-warmup-AT:
-            command: "SPRYKER_CODE_BUCKET=AT vendor/bin/console rest-api:build-request-validation-cache"
-
-        rest-request-validation-cache-warmup-US:
-            command: "SPRYKER_CODE_BUCKET=US vendor/bin/console rest-api:build-request-validation-cache"
+        rest-request-validation-cache-warmup:
+            command: "vendor/bin/console rest-api:build-request-validation-cache"
+            stores: true
 
         resolvable-class-cache-warmup:
             command: "vendor/bin/console cache:class-resolver:build"
