@@ -31,7 +31,6 @@ sections:
 
         rest-request-validation-cache-warmup:
             command: "vendor/bin/console rest-api:build-request-validation-cache"
-            stores: true
 
         resolvable-class-cache-warmup:
             command: "vendor/bin/console cache:class-resolver:build"
