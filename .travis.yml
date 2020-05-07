@@ -303,7 +303,7 @@ install:
   - composer install --optimize-autoloader --no-interaction
   - config/Shared/ci/travis/install_elasticsearch.sh
   - config/Shared/ci/travis/install_mailcatcher.sh
-  - config/Shared/ci/travis/configure_postgres.sh
+  - if [[ -z $FE_TEST ]] ; then config/Shared/ci/travis/configure_postgres.sh ; fi
 
 before_script:
   - nvm install 8 > /dev/null
