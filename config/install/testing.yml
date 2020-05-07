@@ -2,7 +2,6 @@ env:
     APPLICATION_ENV: devtest
 
 sections:
-
     generate:
         generate-transfers:
             command: "vendor/bin/console transfer:generate"
@@ -52,13 +51,11 @@ sections:
             command: "vendor/bin/console queue:exchanges:delete-all"
             stores: true
 
-
     database-flush:
         drop-database:
             command: "vendor/bin/console propel:database:drop"
         delete-migration-files:
             command: "vendor/bin/console propel:migration:delete"
-
 
     database-migrate:
         propel-create:
@@ -99,7 +96,6 @@ sections:
 
         setup-seach-create-source-map:
             command: "vendor/bin/console search:setup:source-map"
-
 
     setup-test:
         codeception-build:
@@ -144,7 +140,6 @@ sections:
         run-worker:
             command: "vendor/bin/console queue:worker:start --stop-when-empty"
 
-
     frontend:
         dependencies-install:
             command: "vendor/bin/console frontend:project:install-dependencies"
@@ -160,6 +155,9 @@ sections:
 
         zed-build-frontend:
             command: "vendor/bin/console frontend:zed:build"
+
+        mp-install-dependencies:
+            command: "vendor/bin/console frontend:mp:install-dependencies"
 
         mp-build-frontend:
             command: "vendor/bin/console frontend:mp:build"

@@ -9,7 +9,6 @@ stores:
 command-timeout: 3600
 
 sections:
-
     hidden:
         excluded: true
         maintenance-all-on:
@@ -37,7 +36,6 @@ sections:
     environment:
         console-environment:
             command: "if [ ! -f ./config/Shared/console_env_local.php ]; then cp ./config/Shared/console_env_local.dist.php ./config/Shared/console_env_local.php ; fi"
-
 
     clear:
         remove-logs:
@@ -106,7 +104,6 @@ sections:
         class-resolver-build:
             command: "vendor/bin/console cache:class-resolver:build"
 
-
     queue-flush:
         set-permissions:
             command: "vendor/bin/console queue:permission:set"
@@ -123,7 +120,6 @@ sections:
         delete-all-exchanges:
             command: "vendor/bin/console queue:exchanges:delete-all"
             stores: true
-
 
     database-flush:
         delete-elastic-search-index:
@@ -151,7 +147,6 @@ sections:
             command: "vendor/bin/console propel:migration:delete"
             groups:
                 - propel
-
 
     database-migrate:
         propel-create:
@@ -317,11 +312,16 @@ sections:
                 - zed
 
         zed-build-frontend:
-            command: "vendor/bin/console frontend:zed:build"
+            command: "vendor/bin/console frontend:zed:build -vvv"
             groups:
                 - zed
 
+        mp-install-dependencies:
+            command: "vendor/bin/console frontend:mp:install-dependencies -vvv"
+            groups:
+                - mp
+
         mp-build-frontend:
-            command: "vendor/bin/console frontend:mp:build"
+            command: "vendor/bin/console frontend:mp:build -vvv"
             groups:
                 - mp
