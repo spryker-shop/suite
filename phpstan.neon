@@ -3,10 +3,10 @@ includes:
 
 parameters:
     excludes_analyse:
-        - %rootDir%/../../../src/Generated/*
-        - %rootDir%/../../../src/Orm/*
+        - '%rootDir%/../../../src/Generated/*'
+        - '%rootDir%/../../../src/Orm/*'
 
-    bootstrap: %rootDir%/../../../phpstan-bootstrap.php
+    bootstrap: '%rootDir%/../../../phpstan-bootstrap.php'
 
     ignoreErrors:
         - '#Call to an undefined method .+Criteria::.+\(\).#'
