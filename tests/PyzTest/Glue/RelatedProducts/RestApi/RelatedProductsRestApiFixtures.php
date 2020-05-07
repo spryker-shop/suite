@@ -7,7 +7,10 @@
 
 namespace PyzTest\Glue\RelatedProducts\RestApi;
 
+use Generated\Shared\DataBuilder\StoreRelationBuilder;
 use Generated\Shared\Transfer\ProductConcreteTransfer;
+use Generated\Shared\Transfer\StoreRelationTransfer;
+use Generated\Shared\Transfer\StoreTransfer;
 use PyzTest\Glue\RelatedProducts\RelatedProductsApiTester;
 use Spryker\Shared\ProductRelation\ProductRelationTypes;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
@@ -71,18 +74,34 @@ class RelatedProductsRestApiFixtures implements FixturesBuilderInterface, Fixtur
      */
     protected function createRelationBetweenProducts(RelatedProductsApiTester $I): void
     {
+        $storeTransfer = $I->haveStore([
+            StoreTransfer::NAME => 'DE',
+        ]);
+        $storeRelationTransfer = (new StoreRelationBuilder())->seed([
+            StoreRelationTransfer::ID_STORES => [
+                $storeTransfer->getIdStore(),
+            ],
+            StoreRelationTransfer::STORES => [
+                $storeTransfer,
+            ],
+        ])->build();
+
         $this->productConcreteTransfer = $I->haveFullProduct();
         $this->anotherProductConcreteTransfer = $I->haveFullProduct();
 
         $I->haveProductRelation(
             $this->anotherProductConcreteTransfer->getAbstractSku(),
             $this->productConcreteTransfer->getFkProductAbstract(),
-            ProductRelationTypes::TYPE_RELATED_PRODUCTS
+            uniqid('key-', false),
+            ProductRelationTypes::TYPE_RELATED_PRODUCTS,
+            $storeRelationTransfer
         );
         $I->haveProductRelation(
             $this->productConcreteTransfer->getAbstractSku(),
             $this->anotherProductConcreteTransfer->getFkProductAbstract(),
-            ProductRelationTypes::TYPE_RELATED_PRODUCTS
+            uniqid('key-', false),
+            ProductRelationTypes::TYPE_RELATED_PRODUCTS,
+            $storeRelationTransfer
         );
     }
 }

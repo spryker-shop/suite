@@ -37,7 +37,10 @@ class WishlistRestApiCest
      */
     public function loadFixtures(WishlistsApiTester $I): void
     {
-        $this->fixtures = $I->loadFixtures(WishlistsRestApiFixtures::class);
+        /** @var \PyzTest\Glue\Wishlists\RestApi\WishlistsRestApiFixtures $fixtures */
+        $fixtures = $I->loadFixtures(WishlistsRestApiFixtures::class);
+
+        $this->fixtures = $fixtures;
     }
 
     /**

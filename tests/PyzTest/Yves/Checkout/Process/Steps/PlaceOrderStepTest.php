@@ -138,8 +138,10 @@ class PlaceOrderStepTest extends Unit
      *
      * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\PlaceOrderStep
      */
-    protected function createPlaceOrderStep(CheckoutPageToCheckoutClientInterface $checkoutClientMock, $flashMessengerMock = null)
-    {
+    protected function createPlaceOrderStep(
+        CheckoutPageToCheckoutClientInterface $checkoutClientMock,
+        $flashMessengerMock = null
+    ) {
         if ($flashMessengerMock === null) {
             $flashMessengerMock = $this->createFlashMessengerMock();
         }

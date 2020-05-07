@@ -209,8 +209,11 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
      *
      * @return \Generated\Shared\Transfer\QueueSendMessageTransfer
      */
-    public function buildSynchronizedMessage(array $data, string $resourceName, array $params = []): QueueSendMessageTransfer
-    {
+    public function buildSynchronizedMessage(
+        array $data,
+        string $resourceName,
+        array $params = []
+    ): QueueSendMessageTransfer {
         $data['_timestamp'] = microtime(true);
         $payload = [
             'write' => [
@@ -276,7 +279,7 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
         }
 
         $values = array_map(function ($value) {
-            return ($value === null || $value === "") ? "NULL" : $value;
+            return ($value === null || $value === '') ? 'NULL' : $value;
         }, $values);
 
         return sprintf(

@@ -8,6 +8,7 @@
 namespace Pyz\Zed\StateMachine;
 
 use Pyz\Zed\ExampleStateMachine\Communication\Plugin\TestStateMachineHandlerPlugin;
+use Spryker\Zed\MerchantOms\Communication\Plugin\StateMachine\MerchantStateMachineHandlerPlugin;
 use Spryker\Zed\StateMachine\StateMachineDependencyProvider as SprykerStateMachineDependencyProvider;
 
 class StateMachineDependencyProvider extends SprykerStateMachineDependencyProvider
@@ -19,6 +20,7 @@ class StateMachineDependencyProvider extends SprykerStateMachineDependencyProvid
     {
         return [
             new TestStateMachineHandlerPlugin(),
+            new MerchantStateMachineHandlerPlugin(),
         ];
     }
 }

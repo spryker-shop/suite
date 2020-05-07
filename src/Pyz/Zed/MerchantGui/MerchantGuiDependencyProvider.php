@@ -16,6 +16,9 @@ use Spryker\Zed\MerchantProfileGui\Communication\Plugin\MerchantGui\Table\Mercha
 use Spryker\Zed\MerchantProfileGui\Communication\Plugin\MerchantGui\Tabs\MerchantProfileContactPersonFormTabExpanderPlugin;
 use Spryker\Zed\MerchantProfileGui\Communication\Plugin\MerchantGui\Tabs\MerchantProfileFormTabExpanderPlugin;
 use Spryker\Zed\MerchantProfileGui\Communication\Plugin\MerchantGui\Tabs\MerchantProfileLegalInformationFormTabExpanderPlugin;
+use Spryker\Zed\MerchantStockGui\Communication\Plugin\MerchantGui\MerchantStockMerchantFormExpanderPlugin;
+use Spryker\Zed\MerchantUserGui\Communication\Plugin\MerchantGui\MerchantUserTabMerchantFormTabExpanderPlugin;
+use Spryker\Zed\MerchantUserGui\Communication\Plugin\MerchantGui\MerchantUserViewMerchantUpdateFormViewExpanderPlugin;
 
 class MerchantGuiDependencyProvider extends SprykerMerchantGuiDependencyProvider
 {
@@ -26,6 +29,7 @@ class MerchantGuiDependencyProvider extends SprykerMerchantGuiDependencyProvider
     {
         return [
             new MerchantProfileFormExpanderPlugin(),
+            new MerchantStockMerchantFormExpanderPlugin(),
         ];
     }
 
@@ -78,6 +82,17 @@ class MerchantGuiDependencyProvider extends SprykerMerchantGuiDependencyProvider
             new MerchantProfileContactPersonFormTabExpanderPlugin(),
             new MerchantProfileFormTabExpanderPlugin(),
             new MerchantProfileLegalInformationFormTabExpanderPlugin(),
+            new MerchantUserTabMerchantFormTabExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\MerchantGuiExtension\Dependency\Plugin\MerchantUpdateFormViewExpanderPluginInterface[]
+     */
+    protected function getMerchantUpdateFormViewExpanderPlugins(): array
+    {
+        return [
+            new MerchantUserViewMerchantUpdateFormViewExpanderPlugin(),
         ];
     }
 }

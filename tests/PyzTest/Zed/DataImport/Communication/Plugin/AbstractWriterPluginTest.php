@@ -10,6 +10,7 @@ namespace PyzTest\Zed\DataImport\Communication\Plugin;
 use Codeception\Configuration;
 use Codeception\Test\Unit;
 use Codeception\Util\Stub;
+use Generated\Shared\Transfer\DataImportConfigurationActionTransfer;
 use Generated\Shared\Transfer\DataImporterConfigurationTransfer;
 use Generated\Shared\Transfer\DataImporterReaderConfigurationTransfer;
 use Propel\Runtime\Propel;
@@ -41,9 +42,9 @@ abstract class AbstractWriterPluginTest extends Unit
     abstract public function getDataImportWriterPlugins(): array;
 
     /**
-     * @return string
+     * @return \Generated\Shared\Transfer\DataImportConfigurationActionTransfer
      */
-    abstract public function getDataImportCsvFile(): string;
+    abstract public function getDataImportConfigurationActionTransfer(): DataImportConfigurationActionTransfer;
 
     /**
      * @return \Pyz\Zed\DataImport\Business\DataImportBusinessFactory
@@ -79,12 +80,7 @@ abstract class AbstractWriterPluginTest extends Unit
     {
         /** @var \Pyz\Zed\DataImport\DataImportConfig $dataImportConfig */
         $dataImportConfig = Stub::make(DataImportConfig::class, [
-            'getProductAbstractDataImporterConfiguration' => $this->getDataImporterConfiguration(),
-            'getProductStockDataImporterConfiguration' => $this->getDataImporterConfiguration(),
-            'getProductAbstractStoreDataImporterConfiguration' => $this->getDataImporterConfiguration(),
-            'getProductPriceDataImporterConfiguration' => $this->getDataImporterConfiguration(),
-            'getProductConcreteDataImporterConfiguration' => $this->getDataImporterConfiguration(),
-            'getProductImageDataImporterConfiguration' => $this->getDataImporterConfiguration(),
+            'buildImporterConfigurationByDataImportConfigAction' => $this->getDataImporterConfiguration(),
         ]);
 
         return $dataImportConfig;
@@ -103,11 +99,14 @@ abstract class AbstractWriterPluginTest extends Unit
      */
     public function getDataImporterConfiguration(): DataImporterConfigurationTransfer
     {
+        $dataImportConfigurationActionTransfer = $this->getDataImportConfigurationActionTransfer();
+
         $dataImporterReaderConfigurationTransfer = new DataImporterReaderConfigurationTransfer();
-        $dataImporterReaderConfigurationTransfer->setFileName(Configuration::dataDir() . $this->getDataImportCsvFile());
+        $dataImporterReaderConfigurationTransfer->setFileName(Configuration::dataDir() . $dataImportConfigurationActionTransfer->getSource());
 
         $dataImportConfigurationTransfer = new DataImporterConfigurationTransfer();
         $dataImportConfigurationTransfer->setReaderConfiguration($dataImporterReaderConfigurationTransfer);
+        $dataImportConfigurationTransfer->setImportType($dataImportConfigurationActionTransfer->getDataEntity());
 
         return $dataImportConfigurationTransfer;
     }

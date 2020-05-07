@@ -7,6 +7,7 @@
 
 namespace PyzTest\Zed\DataImport\Communication\Plugin\ProductStock;
 
+use Generated\Shared\Transfer\DataImportConfigurationActionTransfer;
 use Generated\Shared\Transfer\DataImporterReportTransfer;
 use Pyz\Zed\DataImport\Communication\Plugin\ProductStock\ProductStockPropelWriterPlugin;
 use PyzTest\Zed\DataImport\Communication\Plugin\AbstractWriterPluginTest;
@@ -26,6 +27,7 @@ use PyzTest\Zed\DataImport\Communication\Plugin\AbstractWriterPluginTest;
 class ProductStockPropelWriterPluginTest extends AbstractWriterPluginTest
 {
     public const CSV_IMPORT_FILE = 'import/ProductStock/product_stock.csv';
+    public const DATA_IMPORTER_TYPE = 'product-stock';
 
     /**
      * @return void
@@ -33,7 +35,7 @@ class ProductStockPropelWriterPluginTest extends AbstractWriterPluginTest
     public function testProductStockPropelWriterPlugin(): void
     {
         $dataImportBusinessFactory = $this->getDataImportBusinessFactoryStub();
-        $dataImport = $dataImportBusinessFactory->createProductStockImporter();
+        $dataImport = $dataImportBusinessFactory->createProductStockImporter($this->getDataImportConfigurationActionTransfer());
         $dataImporterReportTransfer = $dataImport->import();
         $this->assertInstanceOf(DataImporterReportTransfer::class, $dataImporterReportTransfer);
     }
@@ -49,10 +51,12 @@ class ProductStockPropelWriterPluginTest extends AbstractWriterPluginTest
     }
 
     /**
-     * @return string
+     * @return \Generated\Shared\Transfer\DataImportConfigurationActionTransfer
      */
-    public function getDataImportCsvFile(): string
+    public function getDataImportConfigurationActionTransfer(): DataImportConfigurationActionTransfer
     {
-        return static::CSV_IMPORT_FILE;
+        return (new DataImportConfigurationActionTransfer())
+            ->setDataEntity(static::DATA_IMPORTER_TYPE)
+            ->setSource(static::CSV_IMPORT_FILE);
     }
 }

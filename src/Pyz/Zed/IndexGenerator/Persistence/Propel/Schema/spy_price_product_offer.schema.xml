@@ -4,14 +4,8 @@
     <index name="index-spy_price_product_offer-fk_product_offer">
       <index-column name="fk_product_offer"/>
     </index>
-    <index name="index-spy_price_product_offer-fk_price_type">
-      <index-column name="fk_price_type"/>
-    </index>
-    <index name="index-spy_price_product_offer-fk_store">
-      <index-column name="fk_store"/>
-    </index>
-    <index name="index-spy_price_product_offer-fk_currency">
-      <index-column name="fk_currency"/>
+    <index name="index-spy_price_product_offer-fk_price_product_store">
+      <index-column name="fk_price_product_store"/>
     </index>
   </table>
 </database>

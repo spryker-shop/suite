@@ -36,7 +36,10 @@ class AccessTokensForCompanyUserRestApiCest
      */
     public function loadFixtures(AuthRestApiTester $I): void
     {
-        $this->fixtures = $I->loadFixtures(AccessTokensForCompanyUserRestApiFixtures::class);
+        /** @var \PyzTest\Glue\Auth\RestApi\AccessTokensForCompanyUserRestApiFixtures $fixtures */
+        $fixtures = $I->loadFixtures(AccessTokensForCompanyUserRestApiFixtures::class);
+
+        $this->fixtures = $fixtures;
     }
 
     /**

@@ -61,11 +61,11 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
             ->setIsActive($this->isActive($navigationNodeEntity, $dataSet))
             ->setNodeType($this->getNodeType($navigationNodeEntity, $dataSet));
 
-        if ($dataSet[static::KEY_VALID_FROM] !== "") {
+        if ($dataSet[static::KEY_VALID_FROM] !== '') {
             $navigationNodeEntity->setValidFrom($dataSet[static::KEY_VALID_FROM]);
         }
 
-        if ($dataSet[static::KEY_VALID_TO] !== "") {
+        if ($dataSet[static::KEY_VALID_TO] !== '') {
             $navigationNodeEntity->setValidTo($dataSet[static::KEY_VALID_TO]);
         }
 
@@ -159,7 +159,9 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
             return (bool)$dataSet[static::KEY_IS_ACTIVE];
         }
 
-        if ($navigationNodeEntity->getIsActive() !== null) {
+        /** @var bool|null $isActive */
+        $isActive = $navigationNodeEntity->getIsActive();
+        if ($isActive !== null) {
             return $navigationNodeEntity->getIsActive();
         }
 
@@ -187,8 +189,10 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
      *
      * @return string
      */
-    protected function getTitle(SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes, array $localizedAttributes)
-    {
+    protected function getTitle(
+        SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes,
+        array $localizedAttributes
+    ) {
         if (isset($localizedAttributes[static::KEY_TITLE]) && !empty($localizedAttributes[static::KEY_TITLE])) {
             return $localizedAttributes[static::KEY_TITLE];
         }
@@ -202,8 +206,10 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
      *
      * @return string
      */
-    protected function getLink(SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes, array $localizedAttributes)
-    {
+    protected function getLink(
+        SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes,
+        array $localizedAttributes
+    ) {
         if (isset($localizedAttributes[static::KEY_URL]) && !empty($localizedAttributes[static::KEY_URL])) {
             return $localizedAttributes[static::KEY_URL];
         }
@@ -217,8 +223,10 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
      *
      * @return string
      */
-    protected function getExternalUrl(SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes, array $localizedAttributes)
-    {
+    protected function getExternalUrl(
+        SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes,
+        array $localizedAttributes
+    ) {
         if (isset($localizedAttributes[static::KEY_URL]) && !empty($localizedAttributes[static::KEY_URL])) {
             return $localizedAttributes[static::KEY_URL];
         }
@@ -233,8 +241,11 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
      *
      * @return int
      */
-    protected function getFkUrl(SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes, array $localizedAttributes, $idLocale)
-    {
+    protected function getFkUrl(
+        SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes,
+        array $localizedAttributes,
+        $idLocale
+    ) {
         if (isset($localizedAttributes[static::KEY_URL]) && !empty($localizedAttributes[static::KEY_URL])) {
             $urlEntity = SpyUrlQuery::create()
                 ->filterByFkLocale($idLocale)
@@ -255,8 +266,10 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
      *
      * @return string
      */
-    protected function getCssClass(SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes, array $localizedAttributes)
-    {
+    protected function getCssClass(
+        SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes,
+        array $localizedAttributes
+    ) {
         if (isset($localizedAttributes[static::KEY_CSS_CLASS]) && !empty($localizedAttributes[static::KEY_CSS_CLASS])) {
             return $localizedAttributes[static::KEY_CSS_CLASS];
         }

@@ -36,7 +36,10 @@ class CompanyUserAuthAccessTokensRestApiCest
      */
     public function loadFixtures(CompanyUserAuthRestApiTester $I): void
     {
-        $this->fixtures = $I->loadFixtures(CompanyUserAuthAccessTokensRestApiFixtures::class);
+        /** @var \PyzTest\Glue\CompanyUserAuth\RestApi\CompanyUserAuthAccessTokensRestApiFixtures $fixtures */
+        $fixtures = $I->loadFixtures(CompanyUserAuthAccessTokensRestApiFixtures::class);
+
+        $this->fixtures = $fixtures;
     }
 
     /**
@@ -46,8 +49,9 @@ class CompanyUserAuthAccessTokensRestApiCest
      *
      * @return void
      */
-    public function requestCompanyUserAccessTokenForExistingCustomerWithCompanyUser(CompanyUserAuthRestApiTester $I): void
-    {
+    public function requestCompanyUserAccessTokenForExistingCustomerWithCompanyUser(
+        CompanyUserAuthRestApiTester $I
+    ): void {
         //Arrange
         $I->amBearerAuthenticated($this->fixtures->getOauthResponseTransferForCompanyUser()->getAccessToken());
 
@@ -106,8 +110,9 @@ class CompanyUserAuthAccessTokensRestApiCest
      *
      * @return void
      */
-    public function requestCompanyUserAccessTokenForExistingCustomerWithInvalidPostData(CompanyUserAuthRestApiTester $I): void
-    {
+    public function requestCompanyUserAccessTokenForExistingCustomerWithInvalidPostData(
+        CompanyUserAuthRestApiTester $I
+    ): void {
         //Arrange
         $I->amBearerAuthenticated($this->fixtures->getOauthResponseTransferForCompanyUser()->getAccessToken());
 

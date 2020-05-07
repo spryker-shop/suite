@@ -160,8 +160,9 @@ class ProductImagePropelDataSetWriter implements DataSetWriterInterface
      *
      * @return \Generated\Shared\Transfer\SpyProductImageSetToProductImageEntityTransfer
      */
-    protected function getProductImageToImageSetRelationTransfer(DataSetInterface $dataSet): SpyProductImageSetToProductImageEntityTransfer
-    {
+    protected function getProductImageToImageSetRelationTransfer(
+        DataSetInterface $dataSet
+    ): SpyProductImageSetToProductImageEntityTransfer {
         return $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_TO_IMAGE_SET_RELATION_TRANSFER];
     }
 

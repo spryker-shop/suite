@@ -189,8 +189,11 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
      *
      * @return array
      */
-    public function buildSynchronizedData(ProductPageSearchTransfer $productPageSearchTransfer, array $data, string $resourceName): array
-    {
+    public function buildSynchronizedData(
+        ProductPageSearchTransfer $productPageSearchTransfer,
+        array $data,
+        string $resourceName
+    ): array {
         $key = $this->generateResourceKey($data, (string)$productPageSearchTransfer->getIdProductAbstract(), $resourceName);
         $encodedData = json_encode($data);
         $data['key'] = $key;
@@ -232,8 +235,11 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
      *
      * @return \Generated\Shared\Transfer\QueueSendMessageTransfer
      */
-    public function buildSynchronizedMessage(array $data, string $resourceName, array $params = []): QueueSendMessageTransfer
-    {
+    public function buildSynchronizedMessage(
+        array $data,
+        string $resourceName,
+        array $params = []
+    ): QueueSendMessageTransfer {
         $data['_timestamp'] = microtime(true);
         $payload = [
             'write' => [
@@ -303,7 +309,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
         }
 
         $values = array_map(function ($value) {
-            return ($value === null || $value === "") ? "NULL" : $value;
+            return ($value === null || $value === '') ? 'NULL' : $value;
         }, $values);
 
         return sprintf(

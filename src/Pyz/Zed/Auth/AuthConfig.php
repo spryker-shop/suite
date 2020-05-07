@@ -18,6 +18,7 @@ class AuthConfig extends SprykerAuthConfig
     {
         $this->addIgnorable('health-check', 'index', 'index');
         $this->addIgnorable('_profiler', 'wdt', '*');
+        $this->addIgnorable('authentication-merchant-portal-gui', 'login', 'index');
 
         return parent::getIgnorable();
     }

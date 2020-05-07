@@ -50,8 +50,11 @@ trait CartsRestApiFixturesTrait
      *
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
-    protected function createPersistentQuote(CartsApiTester $I, CustomerTransfer $customerTransfer, array $productConcreteTransfers): QuoteTransfer
-    {
+    protected function createPersistentQuote(
+        CartsApiTester $I,
+        CustomerTransfer $customerTransfer,
+        array $productConcreteTransfers
+    ): QuoteTransfer {
         return $I->havePersistentQuote([
             QuoteTransfer::CUSTOMER => $customerTransfer,
             QuoteTransfer::TOTALS => (new TotalsTransfer())->setPriceToPay(random_int(1000, 10000)),

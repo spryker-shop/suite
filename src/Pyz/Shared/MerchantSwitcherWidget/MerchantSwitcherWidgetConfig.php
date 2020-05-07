@@ -7,9 +7,10 @@
 
 namespace Pyz\Shared\MerchantSwitcherWidget;
 
+use Pyz\Shared\MerchantSwitcher\MerchantSwitcherConfig;
 use SprykerShop\Shared\MerchantSwitcherWidget\MerchantSwitcherWidgetConfig as SprykerMerchantSwitcherWidgetConfig;
 
 class MerchantSwitcherWidgetConfig extends SprykerMerchantSwitcherWidgetConfig
 {
-    protected const ENABLE_MERCHANT_SWITCHER = false;
+    protected const ENABLE_MERCHANT_SWITCHER = MerchantSwitcherConfig::ENABLE_MERCHANT_SWITCHER;
 }

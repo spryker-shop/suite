@@ -24,6 +24,14 @@ matrix:
     - php: "7.4"
       dist: bionic
       env:
+        - FE_TEST=1
+        - ON_EVENTS=push
+      addons:
+        chrome: stable
+
+    - php: "7.4"
+      dist: bionic
+      env:
         - VALIDATION=1
 
     - php: "7.4"
@@ -52,7 +60,7 @@ matrix:
         - ON_EVENTS=cron,push
         - DB=mysql
 
-    - name: Docker / PHP 7.3 / PostgreSQL / Functional
+    - name: Docker / Alpine / PHP 7.3 / PostgreSQL / Functional
       os:
         - linux
       dist: bionic
@@ -94,7 +102,7 @@ matrix:
       before_script: skip
       after_script: skip
 
-    - name: Docker / PHP 7.3 / PostgreSQL / Glue
+    - name: Docker / Alpine / PHP 7.3 / PostgreSQL / Glue
       os:
         - linux
       dist: bionic
@@ -138,7 +146,7 @@ matrix:
       before_script: skip
       after_script: skip
 
-    - name: Docker / PHP 7.3 / MySQL / Functional
+    - name: Docker / Alpine / PHP 7.3 / MySQL / Functional
       os:
         - linux
       dist: bionic
@@ -147,6 +155,48 @@ matrix:
         - PROGRESS_TYPE=plain
         - SPRYKER_PLATFORM_IMAGE=spryker/php:7.3
         - SPRYKER_DB_ENGINE=MYSQL
+        - SPRYKER_TEST_IN_BROWSER=phantomjs
+        - TRAVIS=1
+      addons:
+        hosts:
+          - yves.de.spryker.local
+          - zed.de.spryker.local
+          - glue.de.spryker.local
+        apt:
+          packages:
+            - apache2-utils
+            - apt-transport-https
+            - ca-certificates
+            - curl
+            - gnupg-agent
+            - pigz
+            - software-properties-common
+          sources:
+            - sourceline: "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+              key_url: https://download.docker.com/linux/ubuntu/gpg
+      install:
+        - echo eyAiZXhwZXJpbWVudGFsIiA6IHRydWUsICJmZWF0dXJlcyIgOiB7ICJidWlsZGtpdCI6IHRydWUgfSB9Cg==|base64 -d|sudo tee /etc/docker/daemon.json
+        - sudo apt-get install --only-upgrade docker-ce -y
+        - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        - sudo chmod +x /usr/local/bin/docker-compose
+      script:
+        - docker/sdk boot deploy.ci.yml
+        - docker/sdk build images
+        - docker/sdk demo-data -t
+        - 'docker/sdk testing codecept run -c codeception.functional.yml -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: inclusive: [PyzTest]\"" -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: exclusive: [Api, Glue]\""'
+      before_install: skip
+      before_script: skip
+      after_script: skip
+
+    - name: Docker / Debian / PHP 7.3 / PGSQL / Functional
+      os:
+        - linux
+      dist: bionic
+      language: minimal
+      env:
+        - PROGRESS_TYPE=plain
+        - SPRYKER_PLATFORM_IMAGE=spryker/php:7.3-debian
+        - SPRYKER_DB_ENGINE=PGSQL
         - SPRYKER_TEST_IN_BROWSER=phantomjs
         - TRAVIS=1
       addons:
@@ -266,6 +316,7 @@ before_script:
   - chmod -R 777 data/
   - chmod -R 660 config/Zed/dev_only_private.key
   - chmod -R 660 config/Zed/dev_only_public.key
+  - if [[ $VALIDATION == 1 ]] ; then npm install speccy@0.11.0 -g ; fi
 
   - if [[ -z $DB ]] ; then cat config/Shared/ci/travis/postgresql_ci.config >> config/Shared/ci/travis/config_ci.php ; fi
   - if [[ $DB == 'mysql' ]] ; then cat config/Shared/ci/travis/mysql_ci.config >> config/Shared/ci/travis/config_ci.php ; fi
@@ -281,10 +332,11 @@ before_script:
 
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:generate ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:install ; fi
-  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console dev:ide:generate-auto-completion ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console dev:ide-auto-completion:generate ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/codecept build --ansi ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:databuilder:generate ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console setup:search ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console rest-api:generate:documentation ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console frontend:project:install-dependencies ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console frontend:yves:install-dependencies ; fi
 
@@ -309,6 +361,7 @@ script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2 ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:sniff:style ; fi
+  - if [[ $VALIDATION == 1 ]] ; then speccy lint src/Generated/Glue/Specification/spryker_rest_api.schema.yml --rules=default ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then ./tests/travis_check_untracked.sh ; fi
   - timeout 45m bash -c "vendor/bin/phantomjs --webdriver=4444 --disk-cache=true --load-images=false --webdriver-logfile=/tmp/phantomjs.log --webdriver-loglevel=DEBUG">/dev/null &
@@ -317,6 +370,12 @@ script:
 
   - if [[ $VALIDATION == 1 ]] ; then node ./frontend/libs/stylelint ; fi
   - if [[ $VALIDATION == 1 ]] ; then node ./frontend/libs/tslint stylish ; fi
+
+  - if [[ $FE_TEST == 1 ]] ; then nvm install 12 && nvm use 12 ; fi
+  - if [[ $FE_TEST == 1 ]] ; then npm install ; fi
+  - if [[ $FE_TEST == 1 ]] ; then npm run bo:install ; fi
+  - if [[ $FE_TEST == 1 ]] ; then npm run bo:build ; fi
+  - if [[ $FE_TEST == 1 ]] ; then npm run bo:test ; fi
 
 after_script:
   - if [[ $TRAVIS_TEST_RESULT == 0 ]] ; then rm /tmp/phantomjs.log ; fi

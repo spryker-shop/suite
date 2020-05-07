@@ -96,8 +96,10 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      *
      * @return void
      */
-    protected function executePublishTransaction(array $productConcreteTransfers, array $productConcretePageSearchTransfers): void
-    {
+    protected function executePublishTransaction(
+        array $productConcreteTransfers,
+        array $productConcretePageSearchTransfers
+    ): void {
         foreach ($productConcreteTransfers as $productConcreteTransfer) {
             foreach ($productConcreteTransfer->getStores() as $storeTransfer) {
                 $this->syncProductConcretePageSearchPerStore(
@@ -172,8 +174,10 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      *
      * @return array
      */
-    public function buildSynchronizedData(ProductConcretePageSearchTransfer $productPageSearchTransfer, string $resourceName): array
-    {
+    public function buildSynchronizedData(
+        ProductConcretePageSearchTransfer $productPageSearchTransfer,
+        string $resourceName
+    ): array {
         $data = [];
         $key = $this->generateResourceKey($productPageSearchTransfer, $resourceName);
         $encodedData = json_encode($productPageSearchTransfer->getData());
@@ -193,8 +197,10 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      *
      * @return string
      */
-    protected function generateResourceKey(ProductConcretePageSearchTransfer $productPageSearchTransfer, string $resourceName)
-    {
+    protected function generateResourceKey(
+        ProductConcretePageSearchTransfer $productPageSearchTransfer,
+        string $resourceName
+    ) {
         $syncTransferData = new SynchronizationDataTransfer();
         $syncTransferData->setStore($productPageSearchTransfer->getStore());
         $syncTransferData->setLocale($productPageSearchTransfer->getLocale());
@@ -211,8 +217,11 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      *
      * @return \Generated\Shared\Transfer\QueueSendMessageTransfer
      */
-    public function buildSynchronizedMessage(array $data, string $resourceName, array $params = []): QueueSendMessageTransfer
-    {
+    public function buildSynchronizedMessage(
+        array $data,
+        string $resourceName,
+        array $params = []
+    ): QueueSendMessageTransfer {
         $data['_timestamp'] = microtime(true);
         $payload = [
             'write' => [
@@ -282,7 +291,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
         }
 
         $values = array_map(function ($value) {
-            return ($value === null || $value === "") ? "NULL" : $value;
+            return ($value === null || $value === '') ? 'NULL' : $value;
         }, $values);
 
         return sprintf(

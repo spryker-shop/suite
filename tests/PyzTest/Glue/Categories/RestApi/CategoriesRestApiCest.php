@@ -34,7 +34,10 @@ class CategoriesRestApiCest
      */
     public function loadFixtures(CategoriesRestApiTester $I): void
     {
-        $this->fixtures = $I->loadFixtures(CategoriesRestApiFixtures::class);
+        /** @var \PyzTest\Glue\Categories\RestApi\CategoriesRestApiFixtures $fixtures */
+        $fixtures = $I->loadFixtures(CategoriesRestApiFixtures::class);
+
+        $this->fixtures = $fixtures;
     }
 
     /**

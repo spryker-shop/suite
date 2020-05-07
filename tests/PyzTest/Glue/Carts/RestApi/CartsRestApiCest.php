@@ -40,7 +40,10 @@ class CartsRestApiCest
      */
     public function loadFixtures(CartsApiTester $I): void
     {
-        $this->fixtures = $I->loadFixtures(CartsRestApiFixtures::class);
+        /** @var \PyzTest\Glue\Carts\RestApi\Fixtures\CartsRestApiFixtures $fixtures */
+        $fixtures = $I->loadFixtures(CartsRestApiFixtures::class);
+
+        $this->fixtures = $fixtures;
     }
 
     /**
@@ -53,7 +56,11 @@ class CartsRestApiCest
     public function requestCarts(CartsApiTester $I): void
     {
         // Arrange
-        $quoteTransfer = $this->fixtures->getQuoteTransfer();
+        $quoteTransfer = $I->createPersistentQuote(
+            $I,
+            $this->fixtures->getCustomerTransfer(),
+            []
+        );
         $quoteUuid = $quoteTransfer->getUuid();
         $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
         $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
@@ -89,7 +96,11 @@ class CartsRestApiCest
     public function requestCartByUuid(CartsApiTester $I): void
     {
         // Arrange
-        $quoteTransfer = $this->fixtures->getQuoteTransfer();
+        $quoteTransfer = $I->createPersistentQuote(
+            $I,
+            $this->fixtures->getCustomerTransfer(),
+            []
+        );
         $quoteUuid = $quoteTransfer->getUuid();
         $url = $I->buildCartUrl($quoteUuid);
         $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
@@ -126,7 +137,11 @@ class CartsRestApiCest
     public function requestCartByUuidWithCartItemsRelationship(CartsApiTester $I): void
     {
         // Arrange
-        $quoteTransfer = $this->fixtures->getQuoteTransfer();
+        $quoteTransfer = $I->createPersistentQuote(
+            $I,
+            $this->fixtures->getCustomerTransfer(),
+            [$this->fixtures->getProductConcreteTransfer()]
+        );
         $cartItemGroupKey = $quoteTransfer->getItems()->offsetGet(0)->getGroupKey();
 
         $oauthResponseTransfer = $I->haveAuthorizationToGlue($quoteTransfer->getCustomer());
@@ -173,7 +188,11 @@ class CartsRestApiCest
     public function requestCartByUuidWithProductConcreteRelationship(CartsApiTester $I): void
     {
         // Arrange
-        $quoteTransfer = $this->fixtures->getQuoteTransfer();
+        $quoteTransfer = $I->createPersistentQuote(
+            $I,
+            $this->fixtures->getCustomerTransfer(),
+            [$this->fixtures->getProductConcreteTransfer()]
+        );
         $cartItemGroupKey = $quoteTransfer->getItems()->offsetGet(0)->getGroupKey();
         $productConcreteSku = $this->fixtures->getProductConcreteTransfer()->getSku();
         $url = $I->buildCartUrl(
@@ -230,7 +249,7 @@ class CartsRestApiCest
     public function requestCartByNotExistingCartUuid(CartsApiTester $I): void
     {
         // Arrange
-        $oauthResponseTransfer = $I->haveAuthorizationToGlue($this->fixtures->getQuoteTransfer()->getCustomer());
+        $oauthResponseTransfer = $I->haveAuthorizationToGlue($this->fixtures->getCustomerTransfer());
         $I->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
 
         // Act
@@ -390,64 +409,21 @@ class CartsRestApiCest
      *
      * @return void
      */
-    public function requestGetCartWithNonExistingUuid(CartsApiTester $I): void
-    {
-        // Arrange
-        $this->authorizeCustomer($I);
-
-        // Act
-        $I->sendGET(
-            $I->formatUrl(
-                '{resourceCarts}/{cartUuid}',
-                [
-                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => 'test wrong uuid',
-                ]
-            )
-        );
-
-        // Assert
-        $I->seeResponseCodeIs(HttpCode::NOT_FOUND);
-        $I->seeResponseMatchesOpenApiSchema();
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     *
-     * @return void
-     */
-    public function requestGetCartWithoutAuthorizationToken(CartsApiTester $I): void
-    {
-        // Act
-        $I->sendGET(
-            $I->formatUrl(
-                '{resourceCarts}/{cartUuid}',
-                [
-                    'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
-                ]
-            )
-        );
-
-        // Assert
-        $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
-    }
-
-    /**
-     * @depends loadFixtures
-     *
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     *
-     * @return void
-     */
     public function requestUpdateCart(CartsApiTester $I): void
     {
         // Arrange
         $this->authorizeCustomer($I);
-        $emptyQuoteTransfer = $this->fixtures->getEmptyQuoteTransfer();
-        $entityTag = $this->fixtures->getEmptyCartResourceEntityTag();
+
+        $emptyQuoteTransfer = $I->createPersistentQuote(
+            $I,
+            $this->fixtures->getCustomerTransfer(),
+            []
+        );
+        $entityTag = $I->createCartResourceEntityTag(
+            $I,
+            $emptyQuoteTransfer->getUuid(),
+            $emptyQuoteTransfer->toArray()
+        );
         $I->haveHttpHeader(RequestConstantsInterface::HEADER_IF_MATCH, $entityTag);
         $emptyQuoteUuid = $emptyQuoteTransfer->getUuid();
 
@@ -506,9 +482,17 @@ class CartsRestApiCest
     {
         // Arrange
         $this->authorizeCustomer($I);
-        $quoteTransfer = $this->fixtures->getQuoteTransfer();
+        $quoteTransfer = $I->createPersistentQuote(
+            $I,
+            $this->fixtures->getCustomerTransfer(),
+            [$this->fixtures->getProductConcreteTransfer()]
+        );
         $cartUuid = $quoteTransfer->getUuid();
-        $entityTag = $this->fixtures->getCartResourceEntityTag();
+        $entityTag = $I->createCartResourceEntityTag(
+            $I,
+            $cartUuid,
+            $quoteTransfer->toArray()
+        );
 
         $I->haveHttpHeader(RequestConstantsInterface::HEADER_IF_MATCH, $entityTag);
 
@@ -549,7 +533,12 @@ class CartsRestApiCest
     {
         // Arrange
         $this->authorizeCustomer($I);
-        $entityTag = $this->fixtures->getCartResourceEntityTag();
+        $quoteTransfer = $I->createPersistentQuote(
+            $I,
+            $this->fixtures->getCustomerTransfer(),
+            []
+        );
+        $entityTag = $I->createCartResourceEntityTag($I, $quoteTransfer->getUuid(), $quoteTransfer->toArray());
         $I->haveHttpHeader(RequestConstantsInterface::HEADER_IF_MATCH, $entityTag);
 
         // Act
@@ -581,13 +570,20 @@ class CartsRestApiCest
      */
     public function requestUpdateCartWithoutAuthorizationToken(CartsApiTester $I): void
     {
+        // Arrange
+        $quoteTransfer = $I->createPersistentQuote(
+            $I,
+            $this->fixtures->getCustomerTransfer(),
+            []
+        );
+
         // Act
         $I->sendPATCH(
             $I->formatUrl(
                 '{resourceCarts}/{cartUuid}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                    'cartUuid' => $quoteTransfer->getUuid(),
                 ]
             ),
             [
@@ -618,12 +614,17 @@ class CartsRestApiCest
     {
         // Arrange
         $this->authorizeCustomer($I);
-        $quoteUuid = $this->fixtures->getQuoteTransfer()->getUuid();
+        $quoteTransfer = $I->createPersistentQuote(
+            $I,
+            $this->fixtures->getCustomerTransfer(),
+            []
+        );
+        $quoteUuid = $quoteTransfer->getUuid();
 
         // Act
         $I->sendPOST(
             $I->formatUrl(
-                '{resourceCarts}/{cartUuid}/{resourceCartItems}',
+                '{resourceCarts}/{cartUuid}/{resourceCartItems}?include={resourceCartItems}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
                     'cartUuid' => $quoteUuid,
@@ -634,7 +635,7 @@ class CartsRestApiCest
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
                     'attributes' => [
-                        'sku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
+                        'sku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
                         'quantity' => 1,
                     ],
                 ],
@@ -657,7 +658,7 @@ class CartsRestApiCest
             ->whenI()
             ->seeIncludesContainsResourceByTypeAndId(
                 CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                $this->fixtures->getProductConcreteTransfer1()->getSku()
+                $this->fixtures->getProductConcreteTransfer()->getSku()
             );
 
         $I->seeSingleResourceHasSelfLink(
@@ -680,13 +681,20 @@ class CartsRestApiCest
      */
     public function requestAddItemsToCartWithoutAuthorizationToken(CartsApiTester $I): void
     {
+        // Arrange
+        $quoteTransfer = $I->createPersistentQuote(
+            $I,
+            $this->fixtures->getCustomerTransfer(),
+            []
+        );
+
         // Act
         $I->sendPOST(
             $I->formatUrl(
                 '{resourceCarts}/{cartUuid}/{resourceCartItems}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                    'cartUuid' => $quoteTransfer->getUuid(),
                     'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
                 ]
             ),
@@ -694,7 +702,7 @@ class CartsRestApiCest
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
                     'attributes' => [
-                        'sku' => $this->fixtures->getProductConcreteTransfer2()->getSku(),
+                        'sku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
                         'quantity' => 1,
                     ],
                 ],
@@ -717,6 +725,11 @@ class CartsRestApiCest
     {
         // Arrange
         $this->authorizeCustomer($I);
+        $quoteTransfer = $I->createPersistentQuote(
+            $I,
+            $this->fixtures->getCustomerTransfer(),
+            []
+        );
 
         // Act
         $I->sendPOST(
@@ -724,7 +737,7 @@ class CartsRestApiCest
                 '{resourceCarts}/{cartUuid}/{resourceCartItems}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                    'cartUuid' => $quoteTransfer->getUuid(),
                     'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
                 ]
             ),
@@ -754,6 +767,11 @@ class CartsRestApiCest
     {
         // Arrange
         $this->authorizeCustomer($I);
+        $quoteTransfer = $I->createPersistentQuote(
+            $I,
+            $this->fixtures->getCustomerTransfer(),
+            []
+        );
 
         // Act
         $I->sendPOST(
@@ -761,7 +779,7 @@ class CartsRestApiCest
                 '{resourceCarts}/{cartUuid}/{resourceCartItems}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                    'cartUuid' => $quoteTransfer->getUuid(),
                     'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
                 ]
             ),
@@ -769,7 +787,7 @@ class CartsRestApiCest
                 'data' => [
                     'type' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
                     'attributes' => [
-                        'sku' => $this->fixtures->getProductConcreteTransfer2()->getSku(),
+                        'sku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
                     ],
                 ],
             ]
@@ -792,15 +810,21 @@ class CartsRestApiCest
         // Arrange
         $this->authorizeCustomer($I);
 
+        $quoteTransfer = $I->createPersistentQuote(
+            $I,
+            $this->fixtures->getCustomerTransfer(),
+            [$this->fixtures->getProductConcreteTransfer()]
+        );
+
         // Act
         $I->sendPATCH(
             $I->formatUrl(
-                '{resourceCarts}/{cartUuid}/{resourceCartItems}/{itemSku}',
+                '{resourceCarts}/{cartUuid}/{resourceCartItems}/{itemSku}?include={resourceCartItems}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                    'cartUuid' => $quoteTransfer->getUuid(),
                     'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
                 ]
             ),
             [
@@ -824,7 +848,7 @@ class CartsRestApiCest
         $I->seeCartItemQuantityEqualsToQuantityInRequest(
             $this->fixtures::QUANTITY_FOR_ITEM_UPDATE,
             CartsRestApiConfig::RESOURCE_CART_ITEMS,
-            $this->fixtures->getProductConcreteTransfer1()->getSku()
+            $this->fixtures->getProductConcreteTransfer()->getSku()
         );
     }
 
@@ -847,7 +871,7 @@ class CartsRestApiCest
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
                     'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                    'cartItemSku' => $this->fixtures->getProductConcreteTransfer2()->getSku(),
+                    'cartItemSku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
                 ]
             ),
             [
@@ -874,15 +898,22 @@ class CartsRestApiCest
      */
     public function requestUpdateItemsInCartWithoutAuthorizationToken(CartsApiTester $I): void
     {
+        // Arrange
+        $quoteTransfer = $I->createPersistentQuote(
+            $I,
+            $this->fixtures->getCustomerTransfer(),
+            [$this->fixtures->getProductConcreteTransfer()]
+        );
+
         // Act
         $I->sendPATCH(
             $I->formatUrl(
                 '{resourceCarts}/{cartUuid}/{resourceCartItems}/{itemSku}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                    'cartUuid' => $quoteTransfer->getUuid(),
                     'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
                 ]
             ),
             [
@@ -911,6 +942,11 @@ class CartsRestApiCest
     {
         // Arrange
         $this->authorizeCustomer($I);
+        $quoteTransfer = $I->createPersistentQuote(
+            $I,
+            $this->fixtures->getCustomerTransfer(),
+            [$this->fixtures->getProductConcreteTransfer()]
+        );
 
         // Act
         $I->sendPATCH(
@@ -918,9 +954,9 @@ class CartsRestApiCest
                 '{resourceCarts}/{cartUuid}/{resourceCartItems}/{itemSku}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                    'cartUuid' => $quoteTransfer->getUuid(),
                     'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
                 ]
             ),
             [
@@ -948,6 +984,11 @@ class CartsRestApiCest
     {
         // Arrange
         $this->authorizeCustomer($I);
+        $quoteTransfer = $I->createPersistentQuote(
+            $I,
+            $this->fixtures->getCustomerTransfer(),
+            [$this->fixtures->getProductConcreteTransfer()]
+        );
 
         // Act
         $I->sendPATCH(
@@ -955,7 +996,7 @@ class CartsRestApiCest
                 '{resourceCarts}/{cartUuid}/{resourceCartItems}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                    'cartUuid' => $quoteTransfer->getUuid(),
                     'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
                 ]
             ),
@@ -985,6 +1026,11 @@ class CartsRestApiCest
     {
         // Arrange
         $this->authorizeCustomer($I);
+        $quoteTransfer = $I->createPersistentQuote(
+            $I,
+            $this->fixtures->getCustomerTransfer(),
+            [$this->fixtures->getProductConcreteTransfer()]
+        );
 
         // Act
         $I->sendDelete(
@@ -992,9 +1038,9 @@ class CartsRestApiCest
                 '{resourceCarts}/{cartUuid}/{resourceCartItems}/{itemSku}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                    'cartUuid' => $quoteTransfer->getUuid(),
                     'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
                 ]
             )
         );
@@ -1022,7 +1068,7 @@ class CartsRestApiCest
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
                     'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
                 ]
             )
         );
@@ -1041,15 +1087,22 @@ class CartsRestApiCest
      */
     public function requestDeleteItemsFromCartWithoutAuthorizationToken(CartsApiTester $I): void
     {
+        // Arrange
+        $quoteTransfer = $I->createPersistentQuote(
+            $I,
+            $this->fixtures->getCustomerTransfer(),
+            [$this->fixtures->getProductConcreteTransfer()]
+        );
+
         // Act
         $I->sendDelete(
             $I->formatUrl(
                 '{resourceCarts}/{cartUuid}/{resourceCartItems}/{itemSku}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                    'cartUuid' => $quoteTransfer->getUuid(),
                     'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
-                    'itemSku' => $this->fixtures->getProductConcreteTransfer1()->getSku(),
+                    'itemSku' => $this->fixtures->getProductConcreteTransfer()->getSku(),
                 ]
             )
         );
@@ -1070,6 +1123,11 @@ class CartsRestApiCest
     {
         // Arrange
         $this->authorizeCustomer($I);
+        $quoteTransfer = $I->createPersistentQuote(
+            $I,
+            $this->fixtures->getCustomerTransfer(),
+            [$this->fixtures->getProductConcreteTransfer()]
+        );
 
         // Act
         $I->sendDelete(
@@ -1077,7 +1135,7 @@ class CartsRestApiCest
                 '{resourceCarts}/{cartUuid}/{resourceCartItems}',
                 [
                     'resourceCarts' => CartsRestApiConfig::RESOURCE_CARTS,
-                    'cartUuid' => $this->fixtures->getQuoteTransfer()->getUuid(),
+                    'cartUuid' => $quoteTransfer->getUuid(),
                     'resourceCartItems' => CartsRestApiConfig::RESOURCE_CART_ITEMS,
                 ]
             )
@@ -1099,9 +1157,14 @@ class CartsRestApiCest
     {
         // Arrange
         $this->authorizeCustomer($I);
+        $quoteTransfer = $I->createPersistentQuote(
+            $I,
+            $this->fixtures->getCustomerTransfer(),
+            []
+        );
 
         // Act
-        $I->sendDelete($I->buildCartUrl($this->fixtures->getQuoteTransfer()->getUuid()));
+        $I->sendDelete($I->buildCartUrl($quoteTransfer->getUuid()));
 
         // Assert
         $I->seeResponseCodeIs(HttpCode::NO_CONTENT);
@@ -1143,8 +1206,15 @@ class CartsRestApiCest
      */
     public function requestDeleteCartWithoutAuthorizationToken(CartsApiTester $I): void
     {
+        // Arrange
+        $quoteTransfer = $I->createPersistentQuote(
+            $I,
+            $this->fixtures->getCustomerTransfer(),
+            []
+        );
+
         // Act
-        $I->sendDelete($I->buildCartUrl($this->fixtures->getQuoteTransfer()->getUuid()));
+        $I->sendDelete($I->buildCartUrl($quoteTransfer->getUuid()));
 
         // Assert
         $I->seeResponseCodeIs(HttpCode::FORBIDDEN);

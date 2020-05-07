@@ -38,7 +38,10 @@ class RefreshTokensRestApiCest
      */
     public function loadFixtures(AuthRestApiTester $I): void
     {
-        $this->fixtures = $I->loadFixtures(RefreshTokensRestApiFixtures::class);
+        /** @var \PyzTest\Glue\Auth\RestApi\RefreshTokensRestApiFixtures $fixtures */
+        $fixtures = $I->loadFixtures(RefreshTokensRestApiFixtures::class);
+
+        $this->fixtures = $fixtures;
     }
 
     /**

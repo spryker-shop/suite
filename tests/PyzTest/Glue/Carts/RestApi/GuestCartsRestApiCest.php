@@ -39,7 +39,10 @@ class GuestCartsRestApiCest
      */
     public function loadFixtures(CartsApiTester $I): void
     {
-        $this->fixtures = $I->loadFixtures(GuestCartsRestApiFixtures::class);
+        /** @var \PyzTest\Glue\Carts\RestApi\Fixtures\GuestCartsRestApiFixtures $fixtures */
+        $fixtures = $I->loadFixtures(GuestCartsRestApiFixtures::class);
+
+        $this->fixtures = $fixtures;
     }
 
     /**

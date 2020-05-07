@@ -32,8 +32,10 @@ class ProductReviewWriterStep extends PublishAwareStep implements DataImportStep
      * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface $productRepository
      * @param \Pyz\Zed\DataImport\Business\Model\Locale\Repository\LocaleRepositoryInterface $localeRepository
      */
-    public function __construct(ProductRepositoryInterface $productRepository, LocaleRepositoryInterface $localeRepository)
-    {
+    public function __construct(
+        ProductRepositoryInterface $productRepository,
+        LocaleRepositoryInterface $localeRepository
+    ) {
         $this->productRepository = $productRepository;
         $this->localeRepository = $localeRepository;
     }

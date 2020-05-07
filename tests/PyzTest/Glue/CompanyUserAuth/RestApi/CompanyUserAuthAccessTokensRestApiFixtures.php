@@ -117,8 +117,9 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
      *
      * @return \Generated\Shared\Transfer\OauthResponseTransfer
      */
-    protected function createOauthResponseForCustomerWithTwoCompanyUsers(CompanyUserAuthRestApiTester $I): OauthResponseTransfer
-    {
+    protected function createOauthResponseForCustomerWithTwoCompanyUsers(
+        CompanyUserAuthRestApiTester $I
+    ): OauthResponseTransfer {
         $customerTransfer = $this->createCustomerWithTwoCompanyUsers($I);
 
         return $I->haveAuthorizationToGlue($customerTransfer);
@@ -182,8 +183,11 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
      *
      * @return \Generated\Shared\Transfer\CompanyUserTransfer
      */
-    protected function createCompanyUser(CompanyUserAuthRestApiTester $I, CustomerTransfer $customerTransfer, array $seed = []): CompanyUserTransfer
-    {
+    protected function createCompanyUser(
+        CompanyUserAuthRestApiTester $I,
+        CustomerTransfer $customerTransfer,
+        array $seed = []
+    ): CompanyUserTransfer {
         $companyTransfer = $I->haveActiveCompany([
             CompanyTransfer::STATUS => 'approved',
         ]);

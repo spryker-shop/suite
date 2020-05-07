@@ -36,7 +36,10 @@ class DeleteMethodRestApiCest
      */
     public function _before(CartsApiTester $i): void
     {
-        $this->fixtures = $i->loadFixtures(CustomerRestApiFixtures::class);
+        /** @var \PyzTest\Glue\Customer\RestApi\CustomerRestApiFixtures $fixtures */
+        $fixtures = $i->loadFixtures(CustomerRestApiFixtures::class);
+
+        $this->fixtures = $fixtures;
     }
 
     /**
@@ -54,10 +57,10 @@ class DeleteMethodRestApiCest
         )->getAccessToken();
 
         $headers = [
-            "Accept: */*",
-            "Authorization: Bearer " . $token,
-            "Cache-Control: no-cache",
-            "Content-Type: application/json",
+            'Accept: */*',
+            'Authorization: Bearer ' . $token,
+            'Cache-Control: no-cache',
+            'Content-Type: application/json',
         ];
 
         $url = $i->formatFullUrl(
@@ -71,7 +74,7 @@ class DeleteMethodRestApiCest
                 [
                     'http' => [
                         'method' => 'DELETE',
-                        "header" => implode("\r\n", $headers),
+                        'header' => implode("\r\n", $headers),
                     ],
                 ]
             )
