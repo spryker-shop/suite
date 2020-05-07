@@ -201,5 +201,5 @@ $config[StorageDatabaseConstants::DB_DEBUG] = false;
 $config[StorageDatabaseConstants::DB_DATABASE] = 'DE_test_zed';
 $config[StorageDatabaseConstants::DB_ENGINE] = StorageDatabaseConfig::DB_ENGINE_PGSQL;
 $config[StorageDatabaseConstants::DB_HOST] = '127.0.0.1';
-$config[StorageDatabaseConstants::DB_PORT] = '5433';
+$config[StorageDatabaseConstants::DB_PORT] = getenv('PGPORT');
 $config[StorageDatabaseConstants::DB_PASSWORD] = '';
