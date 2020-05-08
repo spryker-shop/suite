@@ -53,6 +53,7 @@ use Spryker\Zed\ProductQuantityDataImport\ProductQuantityDataImportConfig;
 use Spryker\Zed\ProductRelationDataImport\ProductRelationDataImportConfig;
 use Spryker\Zed\QuoteRequestDataImport\QuoteRequestDataImportConfig;
 use Spryker\Zed\SalesOrderThresholdDataImport\SalesOrderThresholdDataImportConfig;
+use Spryker\Zed\SalesReturnDataImport\SalesReturnDataImportConfig;
 use Spryker\Zed\SharedCartDataImport\SharedCartDataImportConfig;
 use Spryker\Zed\ShipmentDataImport\ShipmentDataImportConfig;
 use Spryker\Zed\ShoppingListDataImport\ShoppingListDataImportConfig;
@@ -208,6 +209,7 @@ class DataImportConfig extends SprykerDataImportConfig
             CompanyDataImportConfig::IMPORT_TYPE_COMPANY,
             CategoryDataImportConfig::IMPORT_TYPE_CATEGORY,
             MerchantDataImportConfig::IMPORT_TYPE_MERCHANT,
+            MerchantDataImportConfig::IMPORT_TYPE_MERCHANT_STORE,
             MerchantProfileDataImportConfig::IMPORT_TYPE_MERCHANT_PROFILE,
             MerchantProfileDataImportConfig::IMPORT_TYPE_MERCHANT_PROFILE_ADDRESS,
             MerchantProductOfferDataImportConfig::IMPORT_TYPE_MERCHANT_PRODUCT_OFFER,
@@ -278,6 +280,7 @@ class DataImportConfig extends SprykerDataImportConfig
             StockDataImportConfig::IMPORT_TYPE_STOCK_STORE,
             MerchantStockDataImportConfig::IMPORT_TYPE_MERCHANT_STOCK,
             MerchantOmsDataImportConfig::IMPORT_TYPE_MERCHANT_OMS_PROCESS,
+            SalesReturnDataImportConfig::IMPORT_TYPE_RETURN_REASON,
         ];
     }
 }

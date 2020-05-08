@@ -27,7 +27,7 @@
         </transitions>
 
         <events>
-            <event name="execute-return" onEnter="true"/>
+            <event name="execute-return" onEnter="true" command="Return/StartReturn"/>
             <event name="refund" manual="true" command="DummyPayment/Refund"/>
         </events>
     </process>
