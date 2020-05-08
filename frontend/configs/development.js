@@ -5,8 +5,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { findComponentEntryPoints, findComponentStyles, findAppEntryPoint } = require('../libs/finder');
 const { getAliasList } = require('../libs/alias');
 const { getAssetsConfig } = require('../libs/assets-configurator');
+const { moduleSettings } = require('../settings');
 
 const getConfiguration = async appSettings => {
+    const { moduleVersion, isESModule } = moduleSettings;
     const componentEntryPointsPromise = findComponentEntryPoints(appSettings.find.componentEntryPoints);
     const stylesPromise = findComponentStyles(appSettings.find.componentStyles);
     const [componentEntryPoints, styles] = await Promise.all([componentEntryPointsPromise, stylesPromise]);
@@ -52,7 +54,7 @@ const getConfiguration = async appSettings => {
             output: {
                 path: join(appSettings.context, appSettings.paths.public),
                 publicPath: `/${appSettings.urls.assets}/`,
-                filename: `./js/${appSettings.name}.[name].js`,
+                filename: `./js/${appSettings.name}.[name].${moduleVersion}.js`,
                 jsonpFunction: `webpackJsonp_${appSettings.name.replace(/(-|\W)+/gi, '_')}`
             },
 
@@ -65,14 +67,28 @@ const getConfiguration = async appSettings => {
                 rules: [
                     {
                         test: /\.ts$/,
-                        loader: 'ts-loader',
+                        exclude: /node_modules/,
+                        loader: 'babel-loader',
                         options: {
-                            context: appSettings.context,
-                            configFile: join(appSettings.context, appSettings.paths.tsConfig),
-                            compilerOptions: {
-                                baseUrl: appSettings.context,
-                                outDir: appSettings.paths.public
-                            }
+                            presets: [
+                                ['@babel/env', {
+                                    loose: true,
+                                    modules: false,
+                                    targets: {
+                                        esmodules: isESModule,
+                                        browsers: [
+                                            '> 1%',
+                                            'ie >= 11',
+                                        ],
+                                    },
+                                    useBuiltIns: false,
+                                }],
+                                '@babel/preset-typescript'
+                            ],
+                            plugins: [
+                                ...(!isESModule ? ['@babel/plugin-transform-runtime'] : []),
+                                ['@babel/plugin-proposal-class-properties'],
+                            ]
                         }
                     },
                     {
@@ -128,7 +144,7 @@ const getConfiguration = async appSettings => {
                     __PRODUCTION__: appSettings.isProductionMode
                 }),
 
-                ...getAssetsConfig(appSettings),
+                ...(isESModule ? getAssetsConfig(appSettings) : []),
 
                 new MiniCssExtractPlugin({
                     filename: `./css/${appSettings.name}.[name].css`,
