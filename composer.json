@@ -26,7 +26,8 @@
     "ext-pgsql": "*",
     "ext-readline": "*",
     "ext-redis": "*",
-    "wikimedia/composer-merge-plugin": "^1.4.1"
+    "wikimedia/composer-merge-plugin": "^1.4.1",
+    "symfony/validator": "4.4.7"
   },
   "require-dev": {
     "codeception/codeception": "<4.1.2",
@@ -39,7 +40,7 @@
     "justinrainbow/json-schema": "^5.2.0",
     "pdepend/pdepend": "^2.2.2",
     "phpmd/phpmd": "~2.7.0",
-    "ocramius/package-versions": "~1.4.0",
+    "composer/package-versions-deprecated": "^1.8.0",
     "sebastian/phpcpd": "^4.0.0",
     "sensiolabs/security-checker": "*",
     "symfony/routing": "<4.4.0",
@@ -51,7 +52,7 @@
     "stecman/symfony-console-completion": "*",
     "fzaninotto/faker": "^1.6.0",
     "ajgl/breakpoint-twig-extension": "^0.3.1",
-    "spryker-sdk/phpstan-spryker": "dev-master",
+    "spryker-sdk/phpstan-spryker": "^0.3.0",
     "spryker-sdk/composer-constrainer": "dev-master",
     "spryker-sdk/composer-replace": "dev-master",
     "spryker-sdk/spryk": "dev-master as 0.2.2",
@@ -131,7 +132,7 @@
     "phpstan": [
       "php -d memory_limit=1024M vendor/bin/phpstan analyze -l 5 -c phpstan.neon src/"
     ],
-    "phpstan-setup": "vendor/bin/console dev:ide:generate-auto-completion"
+    "phpstan-setup": "vendor/bin/console dev:ide-auto-completion:generate"
   },
   "extra": {
     "merge-plugin": {

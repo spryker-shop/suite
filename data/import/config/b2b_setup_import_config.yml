@@ -1,0 +1,44 @@
+# Example of demo shop 'B2B Setup' data import.
+version: 0
+
+actions:
+  ### B2B Company
+  - data_entity: company
+  - data_entity: company-business-unit
+  - data_entity: company-unit-address
+  - data_entity: company-unit-address-label
+  - data_entity: company-unit-address-label-relation
+  - data_entity: company-user
+  - data_entity: company-role
+  - data_entity: company-role-permission
+  - data_entity: company-user-role
+  - data_entity: company-business-unit-user
+  - data_entity: company-business-unit-address
+  - data_entity: company-user-on-behalf
+  ### B2B Merchant
+  - data_entity: merchant
+  - data_entity: merchant-store
+  - data_entity: merchant-profile
+  - data_entity: merchant-profile-address
+  - data_entity: merchant-product-offer
+  - data_entity: merchant-product-offer-store
+  - data_entity: merchant-opening-hours-weekday-schedule
+  - data_entity: merchant-opening-hours-date-schedule
+  - data_entity: product-offer-validity
+  - data_entity: price-product-offer
+  - data_entity: product-offer-stock
+  - data_entity: merchant-stock
+  - data_entity: merchant-relationship
+  - data_entity: merchant-relationship-sales-order-threshold
+  - data_entity: merchant-relationship-product-list
+  - data_entity: product-price-merchant-relationship
+  ### B2B Shopping List
+  - data_entity: shopping-list
+  - data_entity: shopping-list-item
+  - data_entity: shopping-list-company-user
+  - data_entity: shopping-list-company-business-unit
+  ### B2B Miscellaneous
+  - data_entity: multi-cart
+  - data_entity: shared-cart
+  - data_entity: quote-request
+  - data_entity: quote-request-version
