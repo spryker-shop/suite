@@ -34,6 +34,13 @@ class AclConfig extends SprykerAclConfig
             'type' => static::RULE_TYPE_DENY,
             'role' => AclConstants::ROOT_ROLE,
         ];
+        $installerRules[] = [
+            'bundle' => 'product-offer-merchant-portal-gui',
+            'controller' => AclConstants::VALIDATOR_WILDCARD,
+            'action' => AclConstants::VALIDATOR_WILDCARD,
+            'type' => static::RULE_TYPE_DENY,
+            'role' => AclConstants::ROOT_ROLE,
+        ];
 
         return $installerRules;
     }
