@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "769ec83654d362f8e99a8a7601fe7776",
+    "content-hash": "19eed39fa2ba31c094a21802a5cdd8ab",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -4999,11 +4999,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/ps-12249/ps-12960-create-return-page",
+            "version": "dev-feature/ps-12249/ps-12934-support-product-bundles-in-returns",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "8065b1eee139cdfa919c569b3c75f945239b8044"
+                "reference": "5afe91e02116b358f60f9233b70caacf1c7eaf09"
             },
             "require": {
                 "php": ">=7.2"
@@ -5695,15 +5695,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-05-04T18:30:16+00:00"
+            "time": "2020-05-06T16:16:12+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/ps-12249/ps-12960-create-return-page",
+            "version": "dev-feature/ps-12249/ps-12934-support-product-bundles-in-returns",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "a1002de4c52b935e8dc85cc4f12aa0cf892cf9fe"
+                "reference": "9f7b78e7a0a6c101e9f7c9a61ecfb6544bae62f4"
             },
             "require": {
                 "php": ">=7.2"
@@ -5811,6 +5811,7 @@
                 "spryker-shop/sales-configurable-bundle-widget": "*",
                 "spryker-shop/sales-order-threshold-widget": "*",
                 "spryker-shop/sales-return-page": "*",
+                "spryker-shop/sales-return-page-extension": "*",
                 "spryker-shop/shared-cart-page": "*",
                 "spryker-shop/shared-cart-widget": "*",
                 "spryker-shop/shop-application": "*",
@@ -5848,7 +5849,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-05-05T09:05:03+00:00"
+            "time": "2020-05-08T08:37:47+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -9877,6 +9878,61 @@
             "time": "2020-04-01T10:18:18+00:00"
         },
         {
+            "name": "composer/package-versions-deprecated",
+            "version": "1.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/package-versions-deprecated.git",
+                "reference": "98df7f1b293c0550bd5b1ce6b60b59bdda23aa47"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/composer/package-versions-deprecated/zipball/98df7f1b293c0550bd5b1ce6b60b59bdda23aa47",
+                "reference": "98df7f1b293c0550bd5b1ce6b60b59bdda23aa47",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.1.0 || ^2.0",
+                "php": "^7"
+            },
+            "replace": {
+                "ocramius/package-versions": "1.2 - 1.8.99"
+            },
+            "require-dev": {
+                "composer/composer": "^1.9.3 || ^2.0@dev",
+                "ext-zip": "^1.13",
+                "phpunit/phpunit": "^6.5 || ^7"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "PackageVersions\\Installer",
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PackageVersions\\": "src/PackageVersions"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marco Pivetta",
+                    "email": "ocramius@gmail.com"
+                },
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be"
+                }
+            ],
+            "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
+            "time": "2020-04-23T11:49:37+00:00"
+        },
+        {
             "name": "composer/xdebug-handler",
             "version": "1.4.1",
             "source": {
@@ -10269,56 +10325,6 @@
                 "php"
             ],
             "time": "2020-04-10T16:34:50+00:00"
-        },
-        {
-            "name": "ocramius/package-versions",
-            "version": "1.4.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Ocramius/PackageVersions.git",
-                "reference": "44af6f3a2e2e04f2af46bcb302ad9600cba41c7d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Ocramius/PackageVersions/zipball/44af6f3a2e2e04f2af46bcb302ad9600cba41c7d",
-                "reference": "44af6f3a2e2e04f2af46bcb302ad9600cba41c7d",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.0.0",
-                "php": "^7.1.0"
-            },
-            "require-dev": {
-                "composer/composer": "^1.6.3",
-                "doctrine/coding-standard": "^5.0.1",
-                "ext-zip": "*",
-                "infection/infection": "^0.7.1",
-                "phpunit/phpunit": "^7.5.17"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "class": "PackageVersions\\Installer",
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "PackageVersions\\": "src/PackageVersions"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Marco Pivetta",
-                    "email": "ocramius@gmail.com"
-                }
-            ],
-            "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
-            "time": "2019-11-15T16:17:10+00:00"
         },
         {
             "name": "pdepend/pdepend",
