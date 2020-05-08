@@ -465,6 +465,11 @@ $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
         RabbitMqEnv::RABBITMQ_PORT => '5672',
         RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
         RabbitMqEnv::RABBITMQ_USERNAME => null, // Defined per environment
+        RabbitMqEnv::RABBITMQ_API_HOST => 'localhost',
+        RabbitMqEnv::RABBITMQ_API_PORT => '5672',
+        RabbitMqEnv::RABBITMQ_API_PASSWORD => 'mate20mg',
+        RabbitMqEnv::RABBITMQ_API_USERNAME => 'admin',
+        RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST => null, // Defined per environment
         RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => null, // Defined per environment
         RabbitMqEnv::RABBITMQ_STORE_NAMES => ['DE'],
         RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => APPLICATION_STORE === 'DE',
@@ -475,6 +480,11 @@ $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
         RabbitMqEnv::RABBITMQ_PORT => '5672',
         RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
         RabbitMqEnv::RABBITMQ_USERNAME => null, // Defined per environment
+        RabbitMqEnv::RABBITMQ_API_HOST => 'localhost',
+        RabbitMqEnv::RABBITMQ_API_PORT => '5672',
+        RabbitMqEnv::RABBITMQ_API_PASSWORD => 'mate20mg',
+        RabbitMqEnv::RABBITMQ_API_USERNAME => 'admin',
+        RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST => null, // Defined per environment
         RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => null, // Defined per environment
         RabbitMqEnv::RABBITMQ_STORE_NAMES => ['AT'],
         RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => APPLICATION_STORE === 'AT',
@@ -485,6 +495,11 @@ $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
         RabbitMqEnv::RABBITMQ_PORT => '5672',
         RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
         RabbitMqEnv::RABBITMQ_USERNAME => null, // Defined per environment
+        RabbitMqEnv::RABBITMQ_API_HOST => 'localhost',
+        RabbitMqEnv::RABBITMQ_API_PORT => '5672',
+        RabbitMqEnv::RABBITMQ_API_PASSWORD => 'mate20mg',
+        RabbitMqEnv::RABBITMQ_API_USERNAME => 'admin',
+        RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST => null, // Defined per environment
         RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => null, // Defined per environment
         RabbitMqEnv::RABBITMQ_STORE_NAMES => ['US'],
         RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => APPLICATION_STORE === 'US',
