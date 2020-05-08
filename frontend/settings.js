@@ -16,7 +16,7 @@ const globalSettings = {
         // locate the typescript configuration json file
         tsConfig: './tsconfig.json',
 
-        // locate the typescript configuration json file
+        // path to frontend build config json file
         namespaceConfig: './config/Yves/frontend-build-config.json',
 
         // core folders
@@ -42,8 +42,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
     // getting collection of entry points by pattern
     const entryPointsCollection = pathPattern => entryPointsParts.map(element => `${pathPattern}/${element}`);
 
-    // define the applicatin name
-    // important: the name must be normalized
+    // define the application name
     const name = 'yves_default';
 
     // get namespace config
@@ -56,14 +55,17 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
             .replace(/%theme%/gi, theme)
     );
 
+    // get array of available module suffixes
     const getAllCodeBuckets = () => namespaceJson.namespaces.map(namespace => namespace.codeBucket);
 
-    const ignoreModulesCollection = () => {
-        return getAllCodeBuckets()
+    // get array of ignored modules
+    const ignoreModulesCollection = () => (
+        getAllCodeBuckets()
             .filter(suffix => suffix !== namespaceConfig.codeBucket)
-            .map(suffix => `!**/*${suffix}/Theme/**`);
-    };
+            .map(suffix => `!**/*${suffix}/Theme/**`)
+    );
 
+    // define ignore patterns
     const ignoreFiles = [
         '!config',
         '!data',
@@ -151,7 +153,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
 
         // define settings for suite-frontend-builder finder
         find: {
-            // webpack entry points (components) finder settings
+            // entry point patterns (components)
             componentEntryPoints: {
                 // absolute dirs in which look for
                 dirs: [
@@ -184,6 +186,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
                 ]
             },
 
+            // entry point patterns (application files)
             shopUiEntryPoints: {
                 dirs: [
                     join(globalSettings.context, paths.project)
@@ -200,7 +203,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
 };
 
 const getAppSettings = (namespaceConfigList, pathToConfig) => {
-    let appSettings = [];
+    const appSettings = [];
     namespaceConfigList.forEach(namespaceConfig => {
         namespaceConfig.themes.forEach(theme => {
             appSettings.push(getAppSettingsByTheme(namespaceConfig, theme, pathToConfig));
