@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "379b5606b405910409c994a88ae518ed",
+    "content-hash": "1ce2a84650752f90e1508ff1db6dec60",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.137.1",
+            "version": "3.137.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "935060ae3d64f2bfeab7a6ba46bebe525047446c"
+                "reference": "b3309075ec2a2c695c33d8e21c07b3d5c10cdb9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/935060ae3d64f2bfeab7a6ba46bebe525047446c",
-                "reference": "935060ae3d64f2bfeab7a6ba46bebe525047446c",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/b3309075ec2a2c695c33d8e21c07b3d5c10cdb9a",
+                "reference": "b3309075ec2a2c695c33d8e21c07b3d5c10cdb9a",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-05-01T18:13:22+00:00"
+            "time": "2020-05-07T18:16:43+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -972,16 +972,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.7.1",
+            "version": "2.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "fff6f1e4f36be0e0d0b84d66b413d9dcb0c49130"
+                "reference": "17d0d3f266c8f925ebd035cd36f83cf802b47d4a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/fff6f1e4f36be0e0d0b84d66b413d9dcb0c49130",
-                "reference": "fff6f1e4f36be0e0d0b84d66b413d9dcb0c49130",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/17d0d3f266c8f925ebd035cd36f83cf802b47d4a",
+                "reference": "17d0d3f266c8f925ebd035cd36f83cf802b47d4a",
                 "shasum": ""
             },
             "require": {
@@ -1029,7 +1029,7 @@
                 "throwable",
                 "whoops"
             ],
-            "time": "2020-01-15T10:00:00+00:00"
+            "time": "2020-05-05T12:28:07+00:00"
         },
         {
             "name": "fzaninotto/faker",
@@ -1117,8 +1117,8 @@
             "authors": [
                 {
                     "name": "Alessio Linares",
-                    "role": "Software Engineer",
-                    "email": "alessio.linares@skyscanner.net"
+                    "email": "alessio.linares@skyscanner.net",
+                    "role": "Software Engineer"
                 }
             ],
             "description": "JSONPath implementation for querying and updating JSON objects",
@@ -3647,7 +3647,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -4854,6 +4854,63 @@
             "time": "2020-01-23T09:57:03+00:00"
         },
         {
+            "name": "spryker/merchant-storage",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-storage.git",
+                "reference": "60faf0b7fc89a135146158fd5049fb4df840b010"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-storage/zipball/60faf0b7fc89a135146158fd5049fb4df840b010",
+                "reference": "60faf0b7fc89a135146158fd5049fb4df840b010",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/event-behavior": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/merchant": "^3.0.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/publisher-extension": "^1.0.0",
+                "spryker/storage": "^3.4.0",
+                "spryker/store": "^1.1.0",
+                "spryker/synchronization": "^1.0.0",
+                "spryker/synchronization-behavior": "^1.0.0",
+                "spryker/synchronization-extension": "^1.0.0",
+                "spryker/util-encoding": "^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/queue": "*",
+                "spryker/testify": "*",
+                "spryker/url-storage": "*"
+            },
+            "suggest": {
+                "spryker/event": "To use event behavior.",
+                "spryker/url-storage": "To use shop route plugin."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantStorage module",
+            "time": "2020-04-28T11:05:15+00:00"
+        },
+        {
             "name": "spryker/rabbit-mq",
             "version": "dev-master",
             "source": {
@@ -4999,11 +5056,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/mp-2503/mp-2504-merchant-abstract-product-relation",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "51040f760ab637890208ba79f051f820fd5b182b"
+                "reference": "0990fcaa67099f609cc4a1f20fe1d9f420fb8135"
             },
             "require": {
                 "php": ">=7.2"
@@ -5305,6 +5362,8 @@
                 "spryker/merchant-opening-hours": "*",
                 "spryker/merchant-opening-hours-data-import": "*",
                 "spryker/merchant-opening-hours-storage": "*",
+                "spryker/merchant-product": "*",
+                "spryker/merchant-product-data-import": "*",
                 "spryker/merchant-product-offer": "*",
                 "spryker/merchant-product-offer-data-import": "*",
                 "spryker/merchant-product-offer-search": "*",
@@ -5472,7 +5531,6 @@
                 "spryker/product-measurement-unit-data-import": "*",
                 "spryker/product-measurement-unit-storage": "*",
                 "spryker/product-measurement-units-rest-api": "*",
-                "spryker/product-merchant-connector": "*",
                 "spryker/product-new": "*",
                 "spryker/product-offer": "*",
                 "spryker/product-offer-availability": "*",
@@ -5700,7 +5758,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-05-04T12:20:57+00:00"
+            "time": "2020-05-08T15:25:46+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5708,7 +5766,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "44c271bc30663024a90fd16b880453689fadd30d"
+                "reference": "c4135ad82d90ce6e1d36914134a72dbe79619409"
             },
             "require": {
                 "php": ">=7.2"
@@ -5764,8 +5822,11 @@
                 "spryker-shop/gift-card-widget": "*",
                 "spryker-shop/home-page": "*",
                 "spryker-shop/language-switcher-widget": "*",
+                "spryker-shop/merchant-opening-hours-widget": "*",
+                "spryker-shop/merchant-page": "*",
                 "spryker-shop/merchant-product-offer-widget": "*",
-                "spryker-shop/merchant-profile-page": "*",
+                "spryker-shop/merchant-profile-widget": "*",
+                "spryker-shop/merchant-sales-order-widget": "*",
                 "spryker-shop/merchant-switcher-widget": "*",
                 "spryker-shop/money-widget": "*",
                 "spryker-shop/multi-cart-page": "*",
@@ -5852,7 +5913,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-04-29T08:13:03+00:00"
+            "time": "2020-05-07T12:08:17+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8720,8 +8781,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -8899,16 +8960,16 @@
         },
         {
             "name": "voku/portable-utf8",
-            "version": "5.4.41",
+            "version": "5.4.42",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/portable-utf8.git",
-                "reference": "e34247dce28f9aebebd2d752d8813b91de689aec"
+                "reference": "dcdb1d8fbda1ce3047bf2377558e8fea13bd1ae9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/e34247dce28f9aebebd2d752d8813b91de689aec",
-                "reference": "e34247dce28f9aebebd2d752d8813b91de689aec",
+                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/dcdb1d8fbda1ce3047bf2377558e8fea13bd1ae9",
+                "reference": "dcdb1d8fbda1ce3047bf2377558e8fea13bd1ae9",
                 "shasum": ""
             },
             "require": {
@@ -8969,7 +9030,7 @@
                 "utf-8",
                 "utf8"
             ],
-            "time": "2020-03-06T01:23:48+00:00"
+            "time": "2020-05-05T09:53:26+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -10919,25 +10980,24 @@
         },
         {
             "name": "sllh/composer-versions-check",
-            "version": "v2.0.3",
+            "version": "v2.0.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Soullivaneuh/composer-versions-check.git",
-                "reference": "f6fe100dd71a9fa0d3c922612b445fb179e19127"
+                "url": "https://github.com/soullivaneuh/composer-versions-check.git",
+                "reference": "05bca35588b6f234390fd4946d84c8f8e1890c43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Soullivaneuh/composer-versions-check/zipball/f6fe100dd71a9fa0d3c922612b445fb179e19127",
-                "reference": "f6fe100dd71a9fa0d3c922612b445fb179e19127",
+                "url": "https://api.github.com/repos/soullivaneuh/composer-versions-check/zipball/05bca35588b6f234390fd4946d84c8f8e1890c43",
+                "reference": "05bca35588b6f234390fd4946d84c8f8e1890c43",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "^1.0",
+                "composer-plugin-api": "^1.0 || ^2.0",
                 "php": "^5.3 || ^7.0"
             },
             "require-dev": {
-                "composer/composer": "^1.0",
-                "sllh/php-cs-fixer-styleci-bridge": "^2.0",
+                "composer/composer": "^1.0 || ^2.0",
                 "symfony/phpunit-bridge": "^2.7.4|^3.0"
             },
             "type": "composer-plugin",
@@ -10969,7 +11029,7 @@
                 "update",
                 "versions"
             ],
-            "time": "2017-06-16T09:29:23+00:00"
+            "time": "2020-05-05T13:03:07+00:00"
         },
         {
             "name": "spryker-sdk/codeception-phantoman",
@@ -11361,12 +11421,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "f651a172fbbc086ee38a6568efb6c8356c0cb788"
+                "reference": "c31de591828a2f2db390ea9de1d7a9b6fd283d85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/f651a172fbbc086ee38a6568efb6c8356c0cb788",
-                "reference": "f651a172fbbc086ee38a6568efb6c8356c0cb788",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/c31de591828a2f2db390ea9de1d7a9b6fd283d85",
+                "reference": "c31de591828a2f2db390ea9de1d7a9b6fd283d85",
                 "shasum": ""
             },
             "require": {
@@ -11407,7 +11467,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2020-04-27T10:55:53+00:00"
+            "time": "2020-05-07T17:15:07+00:00"
         },
         {
             "name": "spryker/development-core",
@@ -12039,6 +12099,5 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    },
-    "plugin-api-version": "1.1.0"
+    }
 }
