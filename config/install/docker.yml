@@ -20,7 +20,6 @@ sections:
 
         rest-request-validation-cache-warmup:
             command: "vendor/bin/console rest-api:build-request-validation-cache"
-            stores: true
 
         propel-copy-schema:
             command: "vendor/bin/console propel:schema:copy"
