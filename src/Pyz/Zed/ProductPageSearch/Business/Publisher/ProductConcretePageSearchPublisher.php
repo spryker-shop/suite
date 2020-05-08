@@ -28,6 +28,8 @@ use Spryker\Zed\ProductPageSearch\ProductPageSearchConfig;
 /**
  * @example
  *
+ * @SuppressWarnings(PHPMD.ExcessiveParameterList)
+ *
  * This is an example of running ProductConcretePageSearchPublisher
  * with CTE (@see https://www.postgresql.org/docs/9.1/queries-with.html).
  * By using this class, reduce the amount of database queries and increase the performance
