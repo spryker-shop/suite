@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.137.4",
+            "version": "3.137.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "0bed146e6336ca1260e937fce2f4931681ceb3ce"
+                "reference": "b3309075ec2a2c695c33d8e21c07b3d5c10cdb9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/0bed146e6336ca1260e937fce2f4931681ceb3ce",
-                "reference": "0bed146e6336ca1260e937fce2f4931681ceb3ce",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/b3309075ec2a2c695c33d8e21c07b3d5c10cdb9a",
+                "reference": "b3309075ec2a2c695c33d8e21c07b3d5c10cdb9a",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-05-06T18:19:09+00:00"
+            "time": "2020-05-07T18:16:43+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -5003,7 +5003,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "b747039a1ce2d7eb4691d622f8b84b8243012025"
+                "reference": "d8d79c6c46b296c981b28b19776936c3efb10688"
             },
             "require": {
                 "php": ">=7.2"
@@ -5314,7 +5314,6 @@
                 "spryker/merchant-profile-data-import": "*",
                 "spryker/merchant-profile-gui": "*",
                 "spryker/merchant-profile-merchant-portal-gui": "*",
-                "spryker/merchant-profile-storage": "*",
                 "spryker/merchant-relationship": "*",
                 "spryker/merchant-relationship-data-import": "*",
                 "spryker/merchant-relationship-extension": "*",
@@ -5334,6 +5333,7 @@
                 "spryker/merchant-stock": "*",
                 "spryker/merchant-stock-data-import": "*",
                 "spryker/merchant-stock-gui": "*",
+                "spryker/merchant-storage": "*",
                 "spryker/merchant-switcher": "*",
                 "spryker/merchant-user": "*",
                 "spryker/merchant-user-gui": "*",
@@ -5700,7 +5700,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-05-07T11:10:08+00:00"
+            "time": "2020-05-08T07:30:04+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5708,7 +5708,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "579e5ab1cbae29dad9ce23508a5c86505733bf78"
+                "reference": "75dcf373bc5d0a5c5c559d2ef81dd62836bb7973"
             },
             "require": {
                 "php": ">=7.2"
@@ -5764,8 +5764,10 @@
                 "spryker-shop/gift-card-widget": "*",
                 "spryker-shop/home-page": "*",
                 "spryker-shop/language-switcher-widget": "*",
+                "spryker-shop/merchant-opening-hours-widget": "*",
+                "spryker-shop/merchant-page": "*",
                 "spryker-shop/merchant-product-offer-widget": "*",
-                "spryker-shop/merchant-profile-page": "*",
+                "spryker-shop/merchant-profile-widget": "*",
                 "spryker-shop/merchant-sales-order-widget": "*",
                 "spryker-shop/merchant-switcher-widget": "*",
                 "spryker-shop/money-widget": "*",
@@ -5853,7 +5855,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-05-07T11:10:46+00:00"
+            "time": "2020-05-08T07:29:37+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -11165,12 +11167,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "f651a172fbbc086ee38a6568efb6c8356c0cb788"
+                "reference": "c31de591828a2f2db390ea9de1d7a9b6fd283d85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/f651a172fbbc086ee38a6568efb6c8356c0cb788",
-                "reference": "f651a172fbbc086ee38a6568efb6c8356c0cb788",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/c31de591828a2f2db390ea9de1d7a9b6fd283d85",
+                "reference": "c31de591828a2f2db390ea9de1d7a9b6fd283d85",
                 "shasum": ""
             },
             "require": {
@@ -11211,7 +11213,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2020-04-27T10:55:53+00:00"
+            "time": "2020-05-07T17:15:07+00:00"
         },
         {
             "name": "spryker/development-core",
