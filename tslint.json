@@ -1,7 +1,13 @@
 {
     "rulesDirectory": [
-        "node_modules/tslint-lines-between-class-members"
+      "node_modules/tslint-lines-between-class-members"
     ],
+    "linterOptions": {
+        "exclude": [
+            "./vendor/spryker-shop/**/*",
+            "./vendor/spryker-eco/**/*"
+        ]
+    },
     "rules": {
         "ban-ts-ignore": true,
         "ban-types": [

@@ -44,9 +44,7 @@ $domain = getenv('VM_PROJECT') ?: 'suite-nonsplit';
 $storeLowerCase = strtolower(APPLICATION_STORE);
 
 // ---------- General
-$config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker/spryker/Bundles';
-$config[KernelConstants::RESOLVABLE_CLASS_NAMES_CACHE_ENABLED] = false;
-$config[KernelConstants::RESOLVED_INSTANCE_CACHE_ENABLED] = false;
+$config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker';
 
 // ---------- ZedRequest
 $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_FORWARD_ENABLED] = true;

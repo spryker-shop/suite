@@ -169,15 +169,17 @@ $config[RouterConstants::YVES_IS_SSL_ENABLED] = (bool)getenv('SPRYKER_SSL_ENABLE
 $config[RouterConstants::ZED_IS_SSL_ENABLED] = (bool)getenv('SPRYKER_SSL_ENABLE');
 
 /* Backend */
-$config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker/spryker/Bundles';
+$config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker';
 $config[ApplicationConstants::PROJECT_TIMEZONE] = 'UTC';
 $config[ApplicationConstants::ENABLE_APPLICATION_DEBUG]
     = $config[ShopApplicationConstants::ENABLE_APPLICATION_DEBUG]
     = (bool)getenv('SPRYKER_DEBUG_ENABLED');
 
-$config[WebProfilerConstants::IS_WEB_PROFILER_ENABLED]
-    = $config[WebProfilerWidgetConstants::IS_WEB_PROFILER_ENABLED]
-    = getenv('SPRYKER_DEBUG_ENABLED') && !getenv('SPRYKER_TESTING_ENABLED');
+if (class_exists(WebProfilerConstants::class)) {
+    $config[WebProfilerConstants::IS_WEB_PROFILER_ENABLED]
+        = $config[WebProfilerWidgetConstants::IS_WEB_PROFILER_ENABLED]
+        = getenv('SPRYKER_DEBUG_ENABLED') && !getenv('SPRYKER_TESTING_ENABLED');
+}
 
 $ENVIRONMENT_PREFIX = '';
 $config[SequenceNumberConstants::ENVIRONMENT_PREFIX] = $ENVIRONMENT_PREFIX;
@@ -324,8 +326,8 @@ $config[SessionConstants::YVES_SSL_ENABLED] = false;
 $config[ApplicationConstants::YVES_SSL_ENABLED] = (bool)getenv('SPRYKER_SSL_ENABLE');
 $config[SessionConstants::YVES_SSL_ENABLED] = (bool)getenv('SPRYKER_SSL_ENABLE');
 $config[ApplicationConstants::YVES_SSL_EXCLUDED] = [
-        'healthcheck' => '/health-check',
-    ];
+    'healthcheck' => '/health-check',
+];
 
 $YVES_THEME = 'default';
 $config[TwigConstants::YVES_THEME] = $YVES_THEME;
@@ -366,8 +368,10 @@ $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = sprintf(
 $config[GlueApplicationConstants::GLUE_APPLICATION_REST_DEBUG] = (bool)getenv('SPRYKER_DEBUG_ENABLED');
 $config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = getenv('SPRYKER_GLUE_APPLICATION_CORS_ALLOW_ORIGIN') ?: '';
 
-$config[TestifyConstants::GLUE_APPLICATION_DOMAIN] = $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN];
-$config[TestifyConstants::GLUE_OPEN_API_SCHEMA] = APPLICATION_SOURCE_DIR . '/Generated/Glue/Specification/spryker_rest_api.schema.yml';
+if (class_exists(TestifyConstants::class)) {
+    $config[TestifyConstants::GLUE_APPLICATION_DOMAIN] = $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN];
+    $config[TestifyConstants::GLUE_OPEN_API_SCHEMA] = APPLICATION_SOURCE_DIR . '/Generated/Glue/Specification/spryker_rest_api.schema.yml';
+}
 /* End Glue */
 
 /* Database */

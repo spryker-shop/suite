@@ -20,7 +20,7 @@ const globalSettings = {
         namespaceConfig: './config/Yves/frontend-build-config.json',
 
         // core folders
-        core: './vendor/spryker/spryker-shop/Bundles',
+        core: './vendor/spryker-shop',
 
         // eco folders
         eco: './vendor/spryker-eco',

@@ -501,6 +501,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createStoreImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer): DataImporterInterface
     {
+        /** @var \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface|\Spryker\Zed\DataImport\Business\Model\DataImporterInterface $dataImporter */
         $dataImporter = $this->createDataImporter(
             $dataImportConfigurationActionTransfer->getDataEntity(),
             new StoreReader(

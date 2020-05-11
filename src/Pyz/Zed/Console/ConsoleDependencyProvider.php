@@ -33,21 +33,13 @@ use Spryker\Zed\Development\Communication\Console\CodePhpMessDetectorConsole;
 use Spryker\Zed\Development\Communication\Console\CodePhpstanConsole;
 use Spryker\Zed\Development\Communication\Console\CodeStyleSnifferConsole;
 use Spryker\Zed\Development\Communication\Console\CodeTestConsole;
-use Spryker\Zed\Development\Communication\Console\ComposerJsonUpdaterConsole;
-use Spryker\Zed\Development\Communication\Console\ComposerJsonValidatorConsole;
-use Spryker\Zed\Development\Communication\Console\DependencyTreeBuilderConsole;
-use Spryker\Zed\Development\Communication\Console\DependencyViolationFinderConsole;
-use Spryker\Zed\Development\Communication\Console\DependencyViolationFixConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateClientIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateGlueIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateServiceIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateYvesIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateZedIdeAutoCompletionConsole;
-use Spryker\Zed\Development\Communication\Console\ModuleBridgeCreateConsole;
-use Spryker\Zed\Development\Communication\Console\ModuleCreateConsole;
 use Spryker\Zed\Development\Communication\Console\PluginUsageFinderConsole;
-use Spryker\Zed\Development\Communication\Console\PropelAbstractValidateConsole;
 use Spryker\Zed\Development\Communication\Console\RemoveClientIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\RemoveGlueIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\RemoveIdeAutoCompletionConsole;
@@ -110,7 +102,6 @@ use Spryker\Zed\RabbitMq\Communication\Console\SetUserPermissionsConsole;
 use Spryker\Zed\RestRequestValidator\Communication\Console\BuildRestApiValidationCacheConsole;
 use Spryker\Zed\RestRequestValidator\Communication\Console\RemoveRestApiValidationCacheConsole;
 use Spryker\Zed\Router\Communication\Plugin\Console\RouterCacheWarmUpConsole;
-use Spryker\Zed\Router\Communication\Plugin\Console\RouterDebugZedConsole;
 use Spryker\Zed\Scheduler\Communication\Console\SchedulerCleanConsole;
 use Spryker\Zed\Scheduler\Communication\Console\SchedulerResumeConsole;
 use Spryker\Zed\Scheduler\Communication\Console\SchedulerSetupConsole;
@@ -147,7 +138,6 @@ use Spryker\Zed\Storage\Communication\Console\StorageDeleteAllConsole;
 use Spryker\Zed\StorageRedis\Communication\Console\StorageRedisExportRdbConsole;
 use Spryker\Zed\StorageRedis\Communication\Console\StorageRedisImportRdbConsole;
 use Spryker\Zed\Synchronization\Communication\Console\ExportSynchronizedDataConsole;
-use Spryker\Zed\Testify\Communication\Console\CleanOutputConsole;
 use Spryker\Zed\Transfer\Communication\Console\DataBuilderGeneratorConsole;
 use Spryker\Zed\Transfer\Communication\Console\RemoveDataBuilderConsole;
 use Spryker\Zed\Transfer\Communication\Console\RemoveTransferConsole;
@@ -164,7 +154,6 @@ use SprykerSdk\Spryk\Console\SprykBuildConsole;
 use SprykerSdk\Spryk\Console\SprykDumpConsole;
 use SprykerSdk\Spryk\Console\SprykRunConsole;
 use SprykerSdk\Zed\ComposerConstrainer\Communication\Console\ComposerConstraintConsole;
-use SprykerSdk\Zed\ComposerReplace\Communication\Console\ComposerReplaceConsole;
 use Stecman\Component\Symfony\Console\BashCompletion\CompletionCommand;
 
 /**
@@ -352,9 +341,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
         $commands = array_merge($commands, $propelCommands);
 
         if ($this->getConfig()->isDevelopmentConsoleCommandsEnabled()) {
-            $commands = $this->addProjectNonsplitOnlyCommands($commands);
-
-            $commands[] = new RouterDebugZedConsole();
             $commands[] = new CodeTestConsole();
             $commands[] = new CodeFixturesConsole();
             $commands[] = new AcceptanceCodeTestConsole();
@@ -363,10 +349,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new CodeStyleSnifferConsole();
             $commands[] = new CodeArchitectureSnifferConsole();
             $commands[] = new CodePhpstanConsole();
-            $commands[] = new ModuleBridgeCreateConsole();
-            $commands[] = new ModuleCreateConsole();
             $commands[] = new CodePhpMessDetectorConsole();
-            $commands[] = new ComposerJsonUpdaterConsole();
             $commands[] = new ValidatorConsole();
             $commands[] = new BundleCodeGeneratorConsole();
             $commands[] = new BundleYvesCodeGeneratorConsole();
@@ -384,22 +367,25 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new RemoveYvesIdeAutoCompletionConsole();
             $commands[] = new GenerateIdeAutoCompletionConsole();
             $commands[] = new RemoveIdeAutoCompletionConsole();
+            $commands[] = new GenerateGlueIdeAutoCompletionConsole();
+            $commands[] = new RemoveGlueIdeAutoCompletionConsole();
             $commands[] = new DataBuilderGeneratorConsole();
             $commands[] = new RemoveDataBuilderConsole();
             $commands[] = new CompletionCommand();
             $commands[] = new PropelSchemaValidatorConsole();
             $commands[] = new PropelSchemaXmlNameValidatorConsole();
             $commands[] = new DataImportDumpConsole();
-            $commands[] = new GenerateGlueIdeAutoCompletionConsole();
-            $commands[] = new RemoveGlueIdeAutoCompletionConsole();
             $commands[] = new PluginUsageFinderConsole();
             $commands[] = new PostgresIndexGeneratorConsole();
             $commands[] = new PostgresIndexRemoverConsole();
             $commands[] = new GenerateRestApiDocumentationConsole();
             $commands[] = new QueueDumpConsole();
             $commands[] = new EventTriggerListenerConsole();
+
+            $commands[] = new SprykRunConsole();
+            $commands[] = new SprykDumpConsole();
+            $commands[] = new SprykBuildConsole();
             $commands[] = new ComposerConstraintConsole();
-            $commands[] = new CleanOutputConsole();
         }
 
         return $commands;
@@ -438,32 +424,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
     public function getApplicationPlugins(Container $container): array
     {
         $applicationPlugins = parent::getApplicationPlugins($container);
-
         $applicationPlugins[] = new PropelApplicationPlugin();
         $applicationPlugins[] = new TwigApplicationPlugin();
 
         return $applicationPlugins;
-    }
-
-    /**
-     * @project Only available in internal nonsplit project, not in public split project.
-     *
-     * @param array $commands
-     *
-     * @return array
-     */
-    protected function addProjectNonsplitOnlyCommands(array $commands): array
-    {
-        $commands[] = new SprykRunConsole();
-        $commands[] = new SprykDumpConsole();
-        $commands[] = new SprykBuildConsole();
-        $commands[] = new DependencyTreeBuilderConsole();
-        $commands[] = new DependencyViolationFinderConsole();
-        $commands[] = new DependencyViolationFixConsole();
-        $commands[] = new ComposerJsonValidatorConsole();
-        $commands[] = new PropelAbstractValidateConsole();
-        $commands[] = new ComposerReplaceConsole();
-
-        return $commands;
     }
 }

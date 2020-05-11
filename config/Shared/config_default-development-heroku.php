@@ -29,7 +29,7 @@ use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
 
 $storeLowerCase = strtolower(APPLICATION_STORE);
 // ---------- General
-$config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker/spryker/Bundles';
+$config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker';
 $config[ApplicationConstants::ENABLE_APPLICATION_DEBUG]
     = $config[ShopApplicationConstants::ENABLE_APPLICATION_DEBUG]
     = false;

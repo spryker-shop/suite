@@ -33,7 +33,7 @@ use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
 
 // ---------- General
-$config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker/spryker/Bundles';
+$config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker';
 
 // ---------- Yves host
 $config[ApplicationConstants::HOST_YVES] = 'www.de.spryker.test';
