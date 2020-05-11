@@ -224,6 +224,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@angular/cdk@npm:^9.1.3":
+  version: 9.2.3
+  resolution: "@angular/cdk@npm:9.2.3"
+  dependencies:
+    parse5: ^5.0.0
+  peerDependencies:
+    "@angular/common": ^9.0.0 || ^10.0.0-0
+    "@angular/core": ^9.0.0 || ^10.0.0-0
+    tslib: ^1.9.0
+  dependenciesMeta:
+    parse5:
+      optional: true
+  checksum: 2/8ec411d0e96cea9fb2a3e0f881d8769d0e45cc705c0544d2250cd518b46ae67b103b0692b51ce00d1fe20c4c4ec0c49cdc00bfb20d8767bb481029514041fd57
+  languageName: node
+  linkType: hard
+
 "@angular/cdk@npm:^9.2.0":
   version: 9.2.1
   resolution: "@angular/cdk@npm:9.2.1"
@@ -355,6 +371,18 @@ __metadata:
     rxjs: ^6.5.3
     tslib: ^1.10.0
   checksum: 2/753524bd460508a793c67846630d9c7c1b367ca79e341128ccf0a80341358c000ab613e0255c882f2b75c0ca52a9ee88bc8e2419c17e6e5228c1996354b05c8f
+  languageName: node
+  linkType: hard
+
+"@angular/elements@npm:^9.0.6":
+  version: 9.1.6
+  resolution: "@angular/elements@npm:9.1.6"
+  peerDependencies:
+    "@angular/core": 9.1.6
+    "@angular/platform-browser": 9.1.6
+    rxjs: ^6.5.3
+    tslib: ^1.10.0
+  checksum: 2/17541219d0215249c93af881c9d25fe786e9de4fa3a86bdc64758b51e857d27b0df3dde9c28abda791809613d40e823a4ae9ccf6e493b300eb0b9b81b27aac07
   languageName: node
   linkType: hard
 
@@ -1760,6 +1788,46 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@orchestrator/core@npm:^0.2.0":
+  version: 0.2.1
+  resolution: "@orchestrator/core@npm:0.2.1"
+  dependencies:
+    "@orchestrator/gen-io-ts": ^3.0.0
+    fp-ts: ^2.0.0
+    io-ts: ^2.0.0
+    ng-dynamic-component: ^6.0.0
+  peerDependencies:
+    "@angular/common": ^9.0.0
+    "@angular/core": ^9.0.0
+    tslib: ^1.0.0
+  checksum: 2/1f48f170386e850e96243062db3225682dfe36c24d8988f7c46c1925a15dc3b32f9b87b0860d5562346c75eb7cde84e6c57dd92e38371b983e4db5fdbfe1b020
+  languageName: node
+  linkType: hard
+
+"@orchestrator/gen-io-ts@npm:^3.0.0":
+  version: 3.0.1
+  resolution: "@orchestrator/gen-io-ts@npm:3.0.1"
+  peerDependencies:
+    fp-ts: ^2.0.0
+    io-ts: ^2.0.0
+    tslib: ^1.10.0
+  checksum: 2/4fb2d6b70bdb2069a69d5100b1d5d436618b964d7f8e1b081970f0c2347d048cfa40f158421e012ff3ea688c67a5b5e843092c457760c43979f6769fa6d6ddf8
+  languageName: node
+  linkType: hard
+
+"@orchestrator/layout@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "@orchestrator/layout@npm:0.1.0"
+  peerDependencies:
+    "@angular/cdk": ^9.0.0
+    "@angular/common": ^9.0.0
+    "@angular/core": ^9.0.0
+    "@orchestrator/core": ^0.0.0
+    tslib: ^1.0.0
+  checksum: 2/8374f3e6b85685eea82156e00a20e8d0a3ecb37ed5b9ad9b30ac00505a9a4f56469f4a75fbd37f233e055df5ac79da330eec10d0e2803a19ec25e87683f34968
+  languageName: node
+  linkType: hard
+
 "@plotly/d3-sankey-circular@npm:0.33.1":
   version: 0.33.1
   resolution: "@plotly/d3-sankey-circular@npm:0.33.1"
@@ -1856,6 +1924,33 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@spryker/checkbox@npm:^0.1.0-next.4":
+  version: 0.1.0-next.4
+  resolution: "@spryker/checkbox@npm:0.1.0-next.4"
+  dependencies:
+    ng-zorro-antd: 9.0.0-beta.0
+  peerDependencies:
+    "@angular/common": ^9.0.0
+    "@angular/core": ^9.0.0
+    "@angular/forms": ^9.0.1
+    "@spryker/styles": ^0.1.0-next.0
+    "@spryker/utils": ^0.1.0-next.0
+    tslib: ^1.10.0
+  checksum: 2/860e4cde1f338207c04c116f74bbe03a2c0f3c2e2ed59bc60c32fd75206b74502627817a69edaee15f6706b58c2278b91184547cc89d64737016c725a7a7bfac
+  languageName: node
+  linkType: hard
+
+"@spryker/chips@npm:0.1.0-next.0":
+  version: 0.1.0-next.0
+  resolution: "@spryker/chips@npm:0.1.0-next.0"
+  peerDependencies:
+    "@angular/common": ^9.1.0
+    "@angular/core": ^9.1.0
+    tslib: ^1.10.0
+  checksum: 2/ce58a75174942678c23484ebde76f14546b37f21ad7a038679b481b76112c3f48993942df0309ef77fb61384f0ae68634fb862b8330d3bd1ab9a3e4dddd033d5
+  languageName: node
+  linkType: hard
+
 "@spryker/collapsible@npm:^0.1.0-next.4":
   version: 0.1.0-next.4
   resolution: "@spryker/collapsible@npm:0.1.0-next.4"
@@ -1869,6 +1964,21 @@ __metadata:
     "@spryker/utils": ^0.1.0-next.0
     tslib: ^1.10.0
   checksum: 2/b44510d61541a1889da36d11af387d18bde3cd426099dc7a7f6bf80c932b5a5736715587f41a14c9a6075697f94345fa89f85685d50252ba2f692b3a3392a2e4
+  languageName: node
+  linkType: hard
+
+"@spryker/dropdown@npm:^0.1.0-next.5":
+  version: 0.1.0-next.5
+  resolution: "@spryker/dropdown@npm:0.1.0-next.5"
+  dependencies:
+    "@spryker/utils": 0.1.0-next.14
+    ng-zorro-antd: 9.0.0-beta.0
+  peerDependencies:
+    "@angular/common": ^9.0.0
+    "@angular/core": ^9.0.0
+    "@spryker/icon": ^0.1.0-next.0
+    tslib: ^1.10.0
+  checksum: 2/a6e932ac4f5584aa15e2d2a47d8df2ef6b1a3f9e2b457aa581494d9e190c7357a21e42ece6d6b738367ed564e8a4b531d6618fd0d3d150a66b98c29e1b094781
   languageName: node
   linkType: hard
 
@@ -1917,6 +2027,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@spryker/icon@npm:^0.1.0-next.11":
+  version: 0.1.0-next.11
+  resolution: "@spryker/icon@npm:0.1.0-next.11"
+  dependencies:
+    ng-zorro-antd: 9.0.0-beta.0
+  peerDependencies:
+    "@angular/common": ^9.0.0
+    "@angular/core": ^9.0.0
+    "@spryker/styles": ^0.1.0-next.0
+    "@spryker/utils": ^0.1.0-next.0
+    tslib: ^1.10.0
+  checksum: 2/a4bcf5e53f3a72aa090cecd5c64ad584b89bb07d9d1eef8588f33456c29915d9329abdbf4c4298d906806fbd05f64ed7928d6c593c719e6d89a5e4d37bac07fa
+  languageName: node
+  linkType: hard
+
 "@spryker/input@npm:0.1.0-next.14":
   version: 0.1.0-next.14
   resolution: "@spryker/input@npm:0.1.0-next.14"
@@ -1933,6 +2058,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@spryker/input@npm:0.1.0-next.19":
+  version: 0.1.0-next.19
+  resolution: "@spryker/input@npm:0.1.0-next.19"
+  dependencies:
+    ng-zorro-antd: 9.0.0-beta.0
+  peerDependencies:
+    "@angular/common": ^9.0.0
+    "@angular/core": ^9.0.0
+    "@angular/forms": ^9.0.0
+    "@spryker/styles": ^0.1.0-next.0
+    "@spryker/utils": ^0.1.0-next.0
+    tslib: ^1.10.0
+  checksum: 2/7d8720fa92475a98f4f730a1d4d30993d778c23c66d432be61ae616e598dc79d2196a959b1025111de49b243e08bceeca2a576d30c6af0f689b993a733d62527
+  languageName: node
+  linkType: hard
+
 "@spryker/input@npm:^0.1.0-next.17":
   version: 0.1.0-next.18
   resolution: "@spryker/input@npm:0.1.0-next.18"
@@ -1946,6 +2087,22 @@ __metadata:
     "@spryker/utils": ^0.1.0-next.0
     tslib: ^1.10.0
   checksum: 2/e95be3a2791d3799bc38f072c34bb1f8ff6d220ebc260c886d12a55aa8817d5750ea0fdde2648b5d3d25ddffc16e5dedd7599c106e5c85989a94701d6957ed2d
+  languageName: node
+  linkType: hard
+
+"@spryker/input@npm:^0.1.0-next.20":
+  version: 0.1.0-next.20
+  resolution: "@spryker/input@npm:0.1.0-next.20"
+  dependencies:
+    ng-zorro-antd: 9.0.0-beta.0
+  peerDependencies:
+    "@angular/common": ^9.0.0
+    "@angular/core": ^9.0.0
+    "@angular/forms": ^9.0.0
+    "@spryker/styles": ^0.1.0-next.45
+    "@spryker/utils": ^0.1.0-next.14
+    tslib: ^1.10.0
+  checksum: 2/e90dee004bae133e97cfd10989ca0b59d243e1951adb6d933b5578d7759edec9fa88a105468fe5f9001e4a678fb27b499465ed25610faf719e8c8cff8420b1a8
   languageName: node
   linkType: hard
 
@@ -2060,6 +2217,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@spryker/pagination@npm:^0.1.0-next.8":
+  version: 0.1.0-next.8
+  resolution: "@spryker/pagination@npm:0.1.0-next.8"
+  dependencies:
+    "@spryker/utils": 0.1.0-next.14
+    ng-zorro-antd: 9.0.0-beta.0
+  peerDependencies:
+    "@angular/common": ^9.0.0
+    "@angular/core": ^9.0.0
+    "@spryker/icon": ^0.1.0-next.0
+    "@spryker/select": ^0.1.0-next.0
+    tslib: ^1.10.0
+  checksum: 2/2011e7502bfbd053d6184e083f19e479943e22fcd4e71021d0856fab7dee232c8e9c4473c2c38f2f508aa29218b4f34c72817bddc1abfb1029184086f9ea1261
+  languageName: node
+  linkType: hard
+
 "@spryker/sass-resources-loader@github:spryker/sass-resources-loader":
   version: 2.0.1-spryker.0.1.0
   resolution: "@spryker/sass-resources-loader@github:spryker/sass-resources-loader#commit:47895bd87de48bb9aa0c4fcff93ca3c8b4aea926"
@@ -2075,7 +2248,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spryker/select@npm:^0.1.0-next.15":
+"@spryker/select@npm:0.1.0-next.15, @spryker/select@npm:^0.1.0-next.15":
   version: 0.1.0-next.15
   resolution: "@spryker/select@npm:0.1.0-next.15"
   dependencies:
@@ -2118,6 +2291,45 @@ __metadata:
     "@angular/core": ^9.0.0-rc.11
     tslib: ^1.10.0
   checksum: 2/1ffdd861bda473fb5479880874b369a1564d9828455cf4feaae24fcd5c78660f3d67d581746da581fa3b0cb8e99e70e180c0462dd1613f4eb0599be72f52a28b
+  languageName: node
+  linkType: hard
+
+"@spryker/styles@npm:^0.1.0-next.45":
+  version: 0.1.0-next.45
+  resolution: "@spryker/styles@npm:0.1.0-next.45"
+  dependencies:
+    ng-zorro-antd: 9.0.0-beta.0
+  peerDependencies:
+    "@angular/common": ^9.0.0-rc.11
+    "@angular/core": ^9.0.0-rc.11
+    tslib: ^1.10.0
+  checksum: 2/b870259827f4580b0d533781b0b054ae83e61f95c0433329b688fb5dd8e644480cbccff000136e3c21a8262c771e539a4cb4484fff00423fabb926a91aaeb4f5
+  languageName: node
+  linkType: hard
+
+"@spryker/table@npm:^0.1.0-next.32":
+  version: 0.1.0-next.32
+  resolution: "@spryker/table@npm:0.1.0-next.32"
+  dependencies:
+    "@orchestrator/core": ^0.2.0
+    "@orchestrator/layout": ^0.1.0
+    "@spryker/chips": 0.1.0-next.0
+    "@spryker/input": 0.1.0-next.19
+    "@spryker/select": 0.1.0-next.15
+    ng-dynamic-component: ^6.1.0
+    ng-zorro-antd: 9.0.0-beta.0
+  peerDependencies:
+    "@angular/common": ^9.0.0
+    "@angular/core": ^9.0.0
+    "@spryker/checkbox": ^0.0.1-next.0
+    "@spryker/dropdown": ^0.0.1-next.0
+    "@spryker/icon": ^0.0.1-next.0
+    "@spryker/pagination": ^0.0.1-next.0
+    "@spryker/styles": ^0.0.1-next.0
+    "@spryker/utils": ^0.0.1-next.0
+    "@spryker/web-components": ^0.2.0-next.0
+    tslib: ^1.10.0
+  checksum: 2/136c1ed0200fc27d0e702692a239df129fb99f9a47be21a550b4c33a5d84229d980d8d0b15e049850349f079cf29ec1fb428b92a033384d8aa791c0cd78edc42
   languageName: node
   linkType: hard
 
@@ -2169,6 +2381,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@spryker/utils@npm:0.1.0-next.14, @spryker/utils@npm:^0.1.0-next.10, @spryker/utils@npm:^0.1.0-next.14":
+  version: 0.1.0-next.14
+  resolution: "@spryker/utils@npm:0.1.0-next.14"
+  peerDependencies:
+    "@angular/cdk": ^9.1.0
+    "@angular/common": ^9.0.0
+    "@angular/core": ^9.0.0
+    tslib: ^1.10.0
+  checksum: 2/1375031f6cfb67f0557d7242e5f49a435e6676efa9f19d2fef6911ab9480ee55132e6837ce34838d470f661ac0afc7c2024b24ffde42f7adf2dba293bc15184e
+  languageName: node
+  linkType: hard
+
 "@spryker/utils@npm:0.1.0-next.9":
   version: 0.1.0-next.9
   resolution: "@spryker/utils@npm:0.1.0-next.9"
@@ -2178,18 +2402,6 @@ __metadata:
     "@angular/core": ^9.0.0
     tslib: ^1.10.0
   checksum: 2/5ba0ceb757c3f76c996193d423e4ee084247f4a5a6e16976a2c82d5de1755ce8e900614eaa2323dbada19082d8db41804f77506476a596ed9ebb03b94df755fb
-  languageName: node
-  linkType: hard
-
-"@spryker/utils@npm:^0.1.0-next.10":
-  version: 0.1.0-next.14
-  resolution: "@spryker/utils@npm:0.1.0-next.14"
-  peerDependencies:
-    "@angular/cdk": ^9.1.0
-    "@angular/common": ^9.0.0
-    "@angular/core": ^9.0.0
-    tslib: ^1.10.0
-  checksum: 2/1375031f6cfb67f0557d7242e5f49a435e6676efa9f19d2fef6911ab9480ee55132e6837ce34838d470f661ac0afc7c2024b24ffde42f7adf2dba293bc15184e
   languageName: node
   linkType: hard
 
@@ -4818,6 +5030,13 @@ __metadata:
   version: 1.2.0
   resolution: "classlist-polyfill@npm:1.2.0"
   checksum: 2/17b18e3ef8a3f57423afb132cec8032e3751c5e2bca8ce5783d4167c967ad48f693910dd74abb0f4716ce2099eba79cfa593d2eb76ceea6f8413c53101a8177a
+  languageName: node
+  linkType: hard
+
+"classlist.js@npm:^1.1.20150312":
+  version: 1.1.20150312
+  resolution: "classlist.js@npm:1.1.20150312"
+  checksum: 2/b5e1ba1eef7b60cbf1d0e4b62c633d23d2e2f90ceb470d20ee58a058d8984edc6215a57233b82cf2f989663d723b83dfbdb35f2657686de441cdf2a51481e3f2
   languageName: node
   linkType: hard
 
@@ -8063,6 +8282,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fp-ts@npm:^2.0.0":
+  version: 2.6.0
+  resolution: "fp-ts@npm:2.6.0"
+  checksum: 2/29f29e9f90559e12ffa647cb9c65a180c43fd1944c588f154fa4ec17cb3cc49e75f079c020c6e1da5bd1396b0c1d3ba518d3dea171bb31add3ed659b92034c46
+  languageName: node
+  linkType: hard
+
 "fragment-cache@npm:^0.2.1":
   version: 0.2.1
   resolution: "fragment-cache@npm:0.2.1"
@@ -9996,6 +10222,15 @@ fsevents@~2.1.2:
   version: 1.0.0
   resolution: "invert-permutation@npm:1.0.0"
   checksum: 2/c394fdf4a807345f948fae16a7b311c8b3715b2d0d1130aa9051a1e2cabeb0925ea6e555390a08eae6b9a5161692f8458730d3cc998a98c455cc625ceb6d5345
+  languageName: node
+  linkType: hard
+
+"io-ts@npm:^2.0.0":
+  version: 2.2.2
+  resolution: "io-ts@npm:2.2.2"
+  peerDependencies:
+    fp-ts: ^2.0.0
+  checksum: 2/a0ae7ec331e1b10c8e97a019c5328b544274f8ee803f256936942bf196678adec122654ae61f79e0ad9be65cd2f932a4158deb4a3c4db33624ef2da47a0b3368
   languageName: node
   linkType: hard
 
@@ -12740,6 +12975,58 @@ fsevents@~2.1.2:
   languageName: unknown
   linkType: soft
 
+"mp-product-offer@workspace:vendor/spryker/spryker/Bundles/ProductOfferMerchantPortalGui":
+  version: 0.0.0-use.local
+  resolution: "mp-product-offer@workspace:vendor/spryker/spryker/Bundles/ProductOfferMerchantPortalGui"
+  dependencies:
+    "@angular-devkit/build-angular": ^0.900.2
+    "@angular/animations": ^9.0.1
+    "@angular/cdk": ^9.1.3
+    "@angular/cli": ^9.0.2
+    "@angular/common": ^9.0.1
+    "@angular/compiler": ^9.0.1
+    "@angular/compiler-cli": ^9.0.1
+    "@angular/core": ^9.0.1
+    "@angular/elements": ^9.0.6
+    "@angular/forms": ^9.0.1
+    "@angular/language-service": ^9.0.1
+    "@angular/platform-browser": ^9.0.1
+    "@angular/platform-browser-dynamic": ^9.0.1
+    "@angular/router": ^9.0.1
+    "@spryker/checkbox": ^0.1.0-next.4
+    "@spryker/dropdown": ^0.1.0-next.5
+    "@spryker/icon": ^0.1.0-next.11
+    "@spryker/input": ^0.1.0-next.20
+    "@spryker/pagination": ^0.1.0-next.8
+    "@spryker/select": ^0.1.0-next.15
+    "@spryker/styles": ^0.1.0-next.45
+    "@spryker/table": ^0.1.0-next.32
+    "@spryker/utils": ^0.1.0-next.14
+    "@spryker/web-components": ^0.2.0-next.2
+    "@types/jasmine": ^3.5.0
+    "@types/jasminewd2": ^2.0.3
+    "@types/node": ^12.11.1
+    codelyzer: ^5.1.2
+    copyfiles: ^2.2.0
+    jasmine-core: ^3.5.0
+    jasmine-spec-reporter: ^4.2.1
+    karma: ^4.3.0
+    karma-chrome-launcher: ^3.1.0
+    karma-coverage-istanbul-reporter: ^2.1.0
+    karma-jasmine: ^2.0.1
+    karma-jasmine-html-reporter: ^1.4.2
+    ngx-build-plus: ^9.0.6
+    npm-run-all: ^4.1.5
+    protractor: ^5.4.3
+    rxjs: ^6.5.4
+    ts-node: ^8.3.0
+    tslib: ^1.10.0
+    tslint: ^5.18.0
+    typescript: ~3.8.3
+    zone.js: ^0.10.2
+  languageName: unknown
+  linkType: soft
+
 "mp-profile@workspace:vendor/spryker/spryker/Bundles/MerchantProfileMerchantPortalGui":
   version: 0.0.0-use.local
   resolution: "mp-profile@workspace:vendor/spryker/spryker/Bundles/MerchantProfileMerchantPortalGui"
@@ -13045,6 +13332,18 @@ fsevents@~2.1.2:
   dependencies:
     double-bits: ^1.1.0
   checksum: 2/90b75ed99f987c35396b2d3142d2918cbf280677bcd40be83340297c4bfa19552a2dd769ec40e41c249b33a1f67ac1c942ea4d8e278047da98bdb514a770fea4
+  languageName: node
+  linkType: hard
+
+"ng-dynamic-component@npm:^6.0.0, ng-dynamic-component@npm:^6.1.0":
+  version: 6.1.0
+  resolution: "ng-dynamic-component@npm:6.1.0"
+  peerDependencies:
+    "@angular/common": ^9.0.0-rc.0
+    "@angular/core": ^9.0.0-rc.0
+    rxjs: ^6.0.0
+    tslib: ^1.10.0
+  checksum: 2/dfd506a748207e186b00ef25cbb9fc1feeed4994430d1196a4c0a94f5bd0200ad93dee495fba6e4755af79ad4ac09b80a1aaf93411fb66af683f2c53e0a4ac9b
   languageName: node
   linkType: hard
 
@@ -19917,6 +20216,13 @@ resolve@~1.7.1:
   languageName: node
   linkType: hard
 
+"url-search-params-polyfill@npm:^8.0.0":
+  version: 8.1.0
+  resolution: "url-search-params-polyfill@npm:8.1.0"
+  checksum: 2/2c637a2f126b140c8681ca6c2e1b9f8917b23c1af9845ae107e7807cf3af9b299e1e99944e7bf6151f05634926021e0be135b356c1428f95621eb756893fa2b3
+  languageName: node
+  linkType: hard
+
 "url@npm:^0.11.0":
   version: 0.11.0
   resolution: "url@npm:0.11.0"
@@ -21125,6 +21431,7 @@ resolve@~1.7.1:
     "@types/jasminewd2": ^2.0.3
     "@types/node": ^12.11.1
     "@webcomponents/webcomponentsjs": ^2.4.1
+    classlist.js: ^1.1.20150312
     codelyzer: ^5.1.2
     copyfiles: ^2.2.0
     css-vars-ponyfill: ^2.2.1
@@ -21144,6 +21451,7 @@ resolve@~1.7.1:
     tslib: ^1.10.0
     tslint: ^5.18.0
     typescript: ~3.8.3
+    url-search-params-polyfill: ^8.0.0
     zone.js: ^0.10.2
   languageName: unknown
   linkType: soft
