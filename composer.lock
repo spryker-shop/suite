@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2dde162846260d6e3abffa655f93de22",
+    "content-hash": "2f3291e8aafc90c78cb739ee5797a0ba",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1117,8 +1117,8 @@
             "authors": [
                 {
                     "name": "Alessio Linares",
-                    "email": "alessio.linares@skyscanner.net",
-                    "role": "Software Engineer"
+                    "role": "Software Engineer",
+                    "email": "alessio.linares@skyscanner.net"
                 }
             ],
             "description": "JSONPath implementation for querying and updating JSON objects",
@@ -4854,6 +4854,62 @@
             "time": "2020-01-23T09:57:03+00:00"
         },
         {
+            "name": "spryker/merchant-profile-storage",
+            "version": "0.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-profile-storage.git",
+                "reference": "71a4c157ad6764735e5cef3ab51e3c92535c7576"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-profile-storage/zipball/71a4c157ad6764735e5cef3ab51e3c92535c7576",
+                "reference": "71a4c157ad6764735e5cef3ab51e3c92535c7576",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/event-behavior": "^1.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/merchant-profile": "^0.1.5",
+                "spryker/storage": "^3.4.0",
+                "spryker/synchronization": "^1.0.0",
+                "spryker/synchronization-behavior": "^1.0.0",
+                "spryker/synchronization-extension": "^1.0.0",
+                "spryker/util-encoding": "^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/event": "*",
+                "spryker/merchant": "*",
+                "spryker/propel": "*",
+                "spryker/queue": "*",
+                "spryker/testify": "*",
+                "spryker/url-storage": "*"
+            },
+            "suggest": {
+                "spryker/event": "To use event behavior.",
+                "spryker/url-storage": "To use shop route plugin."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantProfileStorage module",
+            "time": "2020-02-11T09:16:20+00:00"
+        },
+        {
             "name": "spryker/rabbit-mq",
             "version": "dev-master",
             "source": {
@@ -5003,7 +5059,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "edcdda7e7965c749a23e11b72f58010270c26571"
+                "reference": "8075a4fcf0d59fb5aae284187fe4d17d84f79879"
             },
             "require": {
                 "php": ">=7.2"
@@ -8850,8 +8906,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -10663,7 +10719,8 @@
                 "phpstan/phpstan-shim": "*"
             },
             "bin": [
-                "bin/phpstan"
+                "phpstan",
+                "phpstan.phar"
             ],
             "type": "library",
             "extra": {
@@ -10672,11 +10729,9 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "PHPStan\\": [
-                        "src/"
-                    ]
-                }
+                "files": [
+                    "bootstrap.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -11042,7 +11097,7 @@
                 "update",
                 "versions"
             ],
-            "time": "2017-06-16T09:29:23+00:00"
+            "time": "2020-05-05T13:03:07+00:00"
         },
         {
             "name": "spryker-sdk/codeception-phantoman",
@@ -11219,7 +11274,7 @@
                 "PHPStan",
                 "analyzing"
             ],
-            "time": "2019-12-27T15:37:01+00:00"
+            "time": "2020-05-05T09:49:24+00:00"
         },
         {
             "name": "spryker-sdk/spryk",
@@ -11480,7 +11535,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2020-04-27T10:55:53+00:00"
+            "time": "2020-05-07T17:15:07+00:00"
         },
         {
             "name": "spryker/development-core",
