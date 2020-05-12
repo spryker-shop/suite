@@ -30,7 +30,7 @@ use Spryker\Zed\GlossaryStorage\Communication\Plugin\Synchronization\GlossarySyn
 use Spryker\Zed\MerchantOpeningHoursStorage\Communication\Plugin\Synchronization\MerchantOpeningHoursSynchronizationDataBulkPlugin;
 use Spryker\Zed\MerchantProductOfferStorage\Communication\Plugin\Synchronization\ProductConcreteProductOffersSynchronizationDataPlugin;
 use Spryker\Zed\MerchantProductOfferStorage\Communication\Plugin\Synchronization\ProductOfferSynchronizationDataPlugin;
-use Spryker\Zed\MerchantProfileStorage\Communication\Plugin\Synchronization\MerchantProfileSynchronizationDataPlugin;
+use Spryker\Zed\MerchantStorage\Communication\Plugin\Synchronization\MerchantSynchronizationDataPlugin;
 use Spryker\Zed\NavigationStorage\Communication\Plugin\Synchronization\NavigationSynchronizationDataPlugin;
 use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Synchronization\PriceProductAbstractMerchantRelationSynchronizationDataBulkPlugin;
 use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Synchronization\PriceProductConcreteMerchantRelationSynchronizationDataBulkPlugin;
@@ -137,7 +137,7 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
             new TaxProductSynchronizationDataPlugin(),
             new TaxSynchronizationDataPlugin(),
             new CompanyUserSynchronizationDataBulkPlugin(),
-            new MerchantProfileSynchronizationDataPlugin(),
+            new MerchantSynchronizationDataPlugin(),
             new ProductOfferSynchronizationDataPlugin(),
             new ProductConcreteProductOffersSynchronizationDataPlugin(),
             new CmsSlotSynchronizationDataBulkPlugin(),

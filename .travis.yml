@@ -305,9 +305,8 @@ before_script:
 
   - mkdir -p shared/data/common/jenkins
   - mkdir -p shared/data/common/jenkins/jobs
-  - mkdir -p data/DE/cache/Yves/twig -m 0777
-  - mkdir -p data/DE/cache/Zed/twig -m 0777
-  - mkdir -p data/DE/logs -m 0777
+  - mkdir -p data/cache -m 0777
+  - mkdir -p data/logs -m 0777
   - chmod -R 777 data/
   - chmod -R 660 config/Zed/dev_only_private.key
   - chmod -R 660 config/Zed/dev_only_public.key
@@ -352,7 +351,6 @@ script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console dev:composer:validate-json-files ; fi
   - if [[ $VALIDATION == 1 ]] ; then tests/travis_check_touched_modules.sh ; fi
 
-  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpmd src/ text vendor/spryker/spryker/Bundles/Development/src/Spryker/Zed/Development/Business/PhpMd/ruleset.xml ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2 ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:sniff:style ; fi

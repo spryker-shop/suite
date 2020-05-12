@@ -17,7 +17,7 @@ use Spryker\Zed\Discount\Communication\Plugin\Checkout\VoucherDiscountMaxUsageCh
 use Spryker\Zed\GiftCard\Communication\Plugin\GiftCardOrderItemSaverPlugin;
 use Spryker\Zed\GiftCardMailConnector\Communication\Plugin\Checkout\SendEmailToGiftCardUser;
 use Spryker\Zed\Kernel\Container;
-use Spryker\Zed\MerchantProfile\Communication\Plugin\Checkout\MerchantProfileCheckoutPreConditionPlugin;
+use Spryker\Zed\Merchant\Communication\Plugin\Checkout\MerchantCheckoutPreConditionPlugin;
 use Spryker\Zed\MerchantSwitcher\Communication\Plugin\Checkout\SingleMerchantCheckoutPreConditionPlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Checkout\PaymentMethodValidityCheckoutPreConditionPlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Checkout\PaymentOrderSaverPlugin;
@@ -60,7 +60,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new VoucherDiscountMaxUsageCheckoutPreConditionPlugin(),
             new QuoteRequestPreCheckPlugin(),
             new QuoteApprovalCheckoutPreConditionPlugin(),
-            new MerchantProfileCheckoutPreConditionPlugin(),
+            new MerchantCheckoutPreConditionPlugin(),
             new SingleMerchantCheckoutPreConditionPlugin(),
             new PaymentMethodValidityCheckoutPreConditionPlugin(),
         ];

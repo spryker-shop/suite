@@ -28,6 +28,11 @@ class MerchantUserConfig extends SprykerMerchantUserConfig
                 ->setController(static::RULE_VALIDATOR_WILDCARD)
                 ->setAction(static::RULE_VALIDATOR_WILDCARD)
                 ->setType(static::RULE_TYPE_ALLOW),
+            (new RuleTransfer())
+                ->setBundle('product-offer-merchant-portal-gui')
+                ->setController(static::RULE_VALIDATOR_WILDCARD)
+                ->setAction(static::RULE_VALIDATOR_WILDCARD)
+                ->setType(static::RULE_TYPE_ALLOW),
         ];
     }
 }
