@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\MerchantProfile\Persistence" package="src.Orm.Zed.MerchantProfile.Persistence">
+    <table name="spy_merchant_profile" identifierQuoting="true">
+        <column name="id_merchant_profile" required="true" type="INTEGER" autoIncrement="true" primaryKey="true"/>
+        <column name="fk_merchant" required="true" type="INTEGER"/>
+        <column name="banner_url_glossary_key" type="VARCHAR" size="255"/>
+        <column name="cancellation_policy_glossary_key" type="VARCHAR" size="255"/>
+        <column name="contact_person_first_name" size="255" type="VARCHAR"/>
+        <column name="contact_person_last_name" size="255" type="VARCHAR"/>
+        <column name="contact_person_phone" size="255" type="VARCHAR"/>
+        <column name="contact_person_role" size="255" type="VARCHAR"/>
+        <column name="contact_person_title" type="ENUM" valueSet="Mr, Mrs, Dr, Ms"/>
+        <column name="data_privacy_glossary_key" type="VARCHAR" size="255"/>
+        <column name="delivery_time_glossary_key" type="VARCHAR" size="255"/>
+        <column name="description_glossary_key" type="VARCHAR" size="255"/>
+        <column name="fax_number" size="255" type="VARCHAR"/>
+        <column name="imprint_glossary_key" type="VARCHAR" size="255"/>
+        <column name="latitude" size="255" type="VARCHAR"/>
+        <column name="logo_url" size="255" type="VARCHAR"/>
+        <column name="longitude" size="255" type="VARCHAR"/>
+        <column name="public_email" type="VARCHAR" size="255"/>
+        <column name="public_phone" type="VARCHAR" size="255"/>
+        <column name="terms_conditions_glossary_key" type="VARCHAR" size="255"/>
+        <foreign-key name="spy_merchant_profile-fk_merchant" foreignTable="spy_merchant">
+            <reference local="fk_merchant" foreign="id_merchant"/>
+        </foreign-key>
+        <unique name="spy_merchant_profile_unique_fk_merchant">
+            <unique-column name="fk_merchant"/>
+        </unique>
+    </table>
+    <table name="spy_merchant_profile_address" identifierQuoting="true">
+        <column name="id_merchant_profile_address" required="true" type="INTEGER" autoIncrement="true" primaryKey="true"/>
+        <column name="fk_country" type="INTEGER"/>
+        <column name="fk_merchant_profile" required="true" type="INTEGER"/>
+        <column name="address1" size="255" type="VARCHAR"/>
+        <column name="address2" size="255" type="VARCHAR"/>
+        <column name="address3" size="255" type="VARCHAR"/>
+        <column name="city" size="255" type="VARCHAR"/>
+        <column name="zip_code" size="15" type="VARCHAR"/>
+        <foreign-key name="spy_merchant_profile_address-fk_country" foreignTable="spy_country">
+            <reference local="fk_country" foreign="id_country"/>
+        </foreign-key>
+        <foreign-key name="spy_merchant_profile_address-fk_merchant_profile" foreignTable="spy_merchant_profile">
+            <reference local="fk_merchant_profile" foreign="id_merchant_profile"/>
+        </foreign-key>
+        <index name="index-spy_merchant_profile_address-fk_country">
+            <index-column name="fk_country"/>
+        </index>
+        <index name="index-spy_merchant_profile_address-fk_merchant_profile">
+            <index-column name="fk_merchant_profile"/>
+        </index>
+        <id-method-parameter value="spy_merchant_profile_address_pk_seq"/>
+    </table>
+</database>

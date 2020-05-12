@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\Dataset\Persistence" package="src.Orm.Zed.Dataset.Persistence">
+    <table name="spy_dataset" identifierQuoting="true">
+        <column name="id_dataset" required="true" type="INTEGER" autoIncrement="true" primaryKey="true"/>
+        <column name="is_active" type="BOOLEAN" required="true" default="false"/>
+        <column name="name" required="true" type="VARCHAR" size="255"/>
+        <unique name="spy_dataset_name-unique-key">
+            <unique-column name="name"/>
+        </unique>
+        <id-method-parameter value="spy_dataset_pk_seq"/>
+        <behavior name="timestampable"/>
+    </table>
+    <table name="spy_dataset_column" identifierQuoting="true">
+        <column name="id_dataset_column" required="true" type="INTEGER" autoIncrement="true" primaryKey="true"/>
+        <column name="title" required="true" type="VARCHAR" size="255"/>
+        <unique name="spy_dataset_column_title-unique-key">
+            <unique-column name="title"/>
+        </unique>
+        <id-method-parameter value="spy_dataset_column_pk_seq"/>
+    </table>
+    <table name="spy_dataset_row" identifierQuoting="true">
+        <column name="id_dataset_row" required="true" type="INTEGER" autoIncrement="true" primaryKey="true"/>
+        <column name="title" required="true" type="VARCHAR" size="255"/>
+        <unique name="spy_dataset_row_title-unique-key">
+            <unique-column name="title"/>
+        </unique>
+        <id-method-parameter value="spy_dataset_row_pk_seq"/>
+    </table>
+    <table name="spy_dataset_row_column_value" identifierQuoting="true">
+        <column name="id_row_column_value" required="true" type="INTEGER" autoIncrement="true" primaryKey="true"/>
+        <column name="fk_dataset" required="true" type="INTEGER"/>
+        <column name="fk_dataset_column" required="true" type="INTEGER"/>
+        <column name="fk_dataset_row" required="true" type="INTEGER"/>
+        <column name="value" required="false" type="VARCHAR" default="NULL" size="255"/>
+        <foreign-key name="spy_dataset_row_column_value-fk_dataset" foreignTable="spy_dataset" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="fk_dataset" foreign="id_dataset"/>
+        </foreign-key>
+        <foreign-key name="spy_dataset_row_column_value-fk_dataset_row" foreignTable="spy_dataset_row" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="fk_dataset_row" foreign="id_dataset_row"/>
+        </foreign-key>
+        <foreign-key name="spy_dataset_row_column_value-fk_dataset_column" foreignTable="spy_dataset_column" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="fk_dataset_column" foreign="id_dataset_column"/>
+        </foreign-key>
+        <index name="index-spy_dataset_row_column_value-fk_dataset">
+            <index-column name="fk_dataset"/>
+        </index>
+        <index name="index-spy_dataset_row_column_value-fk_dataset_row">
+            <index-column name="fk_dataset_row"/>
+        </index>
+        <index name="index-spy_dataset_row_column_value-fk_dataset_column">
+            <index-column name="fk_dataset_column"/>
+        </index>
+        <id-method-parameter value="spy_dataset_row_column_value_pk_seq"/>
+    </table>
+    <table name="spy_dataset_localized_attributes" idMethod="native" allowPkInsert="true" identifierQuoting="true">
+        <column name="id_dataset_localized_attributes" required="true" type="INTEGER" autoIncrement="true" primaryKey="true"/>
+        <column name="fk_dataset" required="true" type="INTEGER"/>
+        <column name="fk_locale" required="true" type="INTEGER"/>
+        <column name="title" required="false" type="VARCHAR" default="NULL" size="255"/>
+        <foreign-key name="spy_dataset_localized_attributes-fk_dataset" foreignTable="spy_dataset" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="fk_dataset" foreign="id_dataset"/>
+        </foreign-key>
+        <foreign-key name="spy_dataset_localized_attributes-fk_locale" foreignTable="spy_locale" phpName="Locale">
+            <reference local="fk_locale" foreign="id_locale"/>
+        </foreign-key>
+        <index name="index-spy_dataset_localized_attributes-fk_locale">
+            <index-column name="fk_locale"/>
+        </index>
+        <unique name="spy_dataset_localized_attributes-unique-fk_dataset">
+            <unique-column name="fk_dataset"/>
+            <unique-column name="fk_locale"/>
+        </unique>
+        <id-method-parameter value="spy_dataset_localized_attributes_pk_seq"/>
+    </table>
+</database>

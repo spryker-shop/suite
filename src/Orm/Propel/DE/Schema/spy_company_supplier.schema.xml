@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\CompanySupplier\Persistence" package="src.Orm.Zed.CompanySupplier.Persistence">
+    <table name="spy_company_supplier_to_product" idMethod="native" phpName="SpyCompanySupplierToProduct" allowPkInsert="true">
+        <column name="id_company_supplier_to_product" type="INTEGER" autoIncrement="true" required="true" primaryKey="true"/>
+        <column name="fk_company" type="INTEGER" required="true"/>
+        <column name="fk_product" type="INTEGER" required="true"/>
+        <foreign-key name="spy_company_supplier_to_product-fk_company" foreignTable="spy_company" phpName="Company" onDelete="CASCADE">
+            <reference local="fk_company" foreign="id_company"/>
+        </foreign-key>
+        <foreign-key name="spy_company_supplier_to_product-fk_product" foreignTable="spy_product" phpName="Product" onDelete="CASCADE">
+            <reference local="fk_product" foreign="id_product"/>
+        </foreign-key>
+        <index name="index-spy_company_supplier_to_product-fk_company">
+            <index-column name="fk_company"/>
+        </index>
+        <index name="index-spy_company_supplier_to_product-fk_product">
+            <index-column name="fk_product"/>
+        </index>
+        <id-method-parameter value="spy_company_supplier_to_product_pk_seq"/>
+        <behavior name="timestampable"/>
+    </table>
+    <table name="spy_company_type" idMethod="native" allowPkInsert="true">
+        <column name="id_company_type" type="INTEGER" autoIncrement="true" required="true" primaryKey="true"/>
+        <column name="name" required="true" type="VARCHAR" size="255"/>
+        <id-method-parameter value="spy_company_type_pk_seq"/>
+    </table>
+</database>

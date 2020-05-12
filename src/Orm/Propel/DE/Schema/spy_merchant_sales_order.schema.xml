@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\MerchantSalesOrder\Persistence" package="src.Orm.Zed.MerchantSalesOrder.Persistence">
+    <table name="spy_merchant_sales_order_item" identifierQuoting="true">
+        <column name="id_merchant_sales_order_item" required="true" type="INTEGER" autoIncrement="true" primaryKey="true"/>
+        <column name="fk_merchant_sales_order" type="INTEGER" required="true"/>
+        <column name="fk_sales_order_item" type="INTEGER" required="true"/>
+        <column name="fk_state_machine_item_state" type="INTEGER" required="false"/>
+        <foreign-key name="spy_merchant_sales_order_item-fk_state_machine_item_state" foreignTable="spy_state_machine_item_state" phpName="StateMachineItemState">
+            <reference local="fk_state_machine_item_state" foreign="id_state_machine_item_state"/>
+        </foreign-key>
+        <foreign-key name="spy_merchant_sales_order_item-fk_sales_order_item" foreignTable="spy_sales_order_item" phpName="SalesOrderItem" refPhpName="MerchantSalesOrderItem">
+            <reference local="fk_sales_order_item" foreign="id_sales_order_item"/>
+        </foreign-key>
+        <foreign-key name="spy_merchant_sales_order_item-fk_merchant_sales_order" foreignTable="spy_merchant_sales_order" phpName="MerchantSalesOder" refPhpName="MerchantSalesOrderItem">
+            <reference local="fk_merchant_sales_order" foreign="id_merchant_sales_order"/>
+        </foreign-key>
+        <index name="spy_merchant_sales_order_item-fk_merchant_sales_order">
+            <index-column name="fk_merchant_sales_order"/>
+        </index>
+        <unique name="spy_merchant_sales_order_item-unique-fk_sales_order_item">
+            <unique-column name="fk_sales_order_item"/>
+        </unique>
+        <id-method-parameter value="spy_merchant_sales_order_item_pk_seq"/>
+        <behavior name="timestampable"/>
+    </table>
+    <table name="spy_merchant_sales_order">
+        <column name="id_merchant_sales_order" required="true" type="INTEGER" autoIncrement="true" primaryKey="true"/>
+        <column name="fk_sales_order" type="INTEGER" required="true"/>
+        <column name="merchant_reference" type="VARCHAR" required="true" size="255"/>
+        <column name="merchant_sales_order_reference" required="true" type="VARCHAR" size="255"/>
+        <foreign-key name="spy_merchant_sales_order-fk_sales_order" foreignTable="spy_sales_order" phpName="Order">
+            <reference local="fk_sales_order" foreign="id_sales_order"/>
+        </foreign-key>
+        <index name="index-spy_merchant_sales_order-fk_sales_order">
+            <index-column name="fk_sales_order"/>
+        </index>
+        <unique name="spy_merchant_sales_order-merchant_sales_order_reference">
+            <unique-column name="merchant_sales_order_reference"/>
+        </unique>
+        <id-method-parameter value="spy_merchant_sales_order_pk_seq"/>
+        <behavior name="timestampable"/>
+    </table>
+    <table name="spy_merchant_sales_order_totals">
+        <column name="id_merchant_sales_order_totals" required="true" type="INTEGER" autoIncrement="true" primaryKey="true"/>
+        <column name="fk_merchant_sales_order" type="INTEGER" required="true"/>
+        <column name="canceled_total" type="INTEGER" required="false" default="0"/>
+        <column name="discount_total" type="INTEGER" required="false" default="0"/>
+        <column name="grand_total" type="INTEGER" required="false" default="0"/>
+        <column name="order_expense_total" type="INTEGER" required="false" default="0"/>
+        <column name="refund_total" type="INTEGER" required="false" default="0"/>
+        <column name="subtotal" type="INTEGER" required="false" default="0"/>
+        <column name="tax_total" type="INTEGER" required="false" default="0"/>
+        <foreign-key name="spy_merchant_sales_order_totals-fk_merchant_sales_order" foreignTable="spy_merchant_sales_order" phpName="MerchantSalesOrder" refPhpName="MerchantSalesOrderTotal">
+            <reference local="fk_merchant_sales_order" foreign="id_merchant_sales_order"/>
+        </foreign-key>
+        <index name="spy_sales_order_totals-fk_sales_order">
+            <index-column name="fk_merchant_sales_order"/>
+        </index>
+        <id-method-parameter value="spy_merchant_sales_order_totals_pk_seq"/>
+        <behavior name="timestampable"/>
+    </table>
+</database>
