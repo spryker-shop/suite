@@ -9,13 +9,15 @@ defaults:
 
 actions:
     - data_entity: order-expense
-      destination: '{data_entity}s_{timestamp}.{extension}'
+      destination: '{data_entity}s_DE_{timestamp}.{extension}'
       filter_criteria:
           <<: *default_filter_criteria
+          order_store: [DE]
     - data_entity: order-expense
       destination: '{data_entity}s_AT_{timestamp}.{extension}'
       filter_criteria:
           <<: *default_filter_criteria
+          order_store: [AT]
 
     - data_entity: order-item
       destination: '{data_entity}s_DE_{timestamp}.{extension}'
