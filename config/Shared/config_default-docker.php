@@ -29,7 +29,6 @@ use Spryker\Shared\Flysystem\FlysystemConstants;
 use Spryker\Shared\GlueApplication\GlueApplicationConstants;
 use Spryker\Shared\Http\HttpConstants;
 use Spryker\Shared\Kernel\KernelConstants;
-use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\Mail\MailConstants;
 use Spryker\Shared\Newsletter\NewsletterConstants;
@@ -76,8 +75,6 @@ use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
 use SprykerShop\Shared\WebProfilerWidget\WebProfilerWidgetConstants;
 use Twig\Cache\FilesystemCache;
 
-$CURRENT_STORE = Store::getInstance()->getStoreName();
-
 /* ZED */
 $config[ApplicationConstants::HOST_ZED] = getenv('SPRYKER_ZED_HOST');
 $config[SessionConstants::ZED_SESSION_COOKIE_DOMAIN] = getenv('SPRYKER_BE_HOST');
@@ -113,17 +110,17 @@ $config[ZedRequestConstants::BASE_URL_SSL_ZED_API] = sprintf(
 $config[TwigConstants::ZED_TWIG_OPTIONS] = [
     'cache' => new FilesystemCache(
         sprintf(
-            '%s/data/%s/cache/ZED/twig',
+            '%s/data/cache/codeBucket%s/ZED/twig',
             APPLICATION_ROOT_DIR,
-            $CURRENT_STORE
+            APPLICATION_CODE_BUCKET
         ),
         FilesystemCache::FORCE_BYTECODE_INVALIDATION
     ),
 ];
 $config[TwigConstants::ZED_PATH_CACHE_FILE] = sprintf(
-    '%s/data/%s/cache/ZED/twig/.pathCache',
+    '%s/data/cache/codeBucket%s/ZED/twig/.pathCache',
     APPLICATION_ROOT_DIR,
-    $CURRENT_STORE
+    APPLICATION_CODE_BUCKET
 );
 
 // The cache should always be activated. Refresh/build with CLI command: vendor/bin/console application:build-navigation-cache
@@ -132,7 +129,7 @@ $config[ZedNavigationConstants::ZED_NAVIGATION_CACHE_ENABLED] = true;
 $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_NAME] = 'XDEBUG_SESSION';
 $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_FORWARD_ENABLED] = true;
 $config[ZedRequestConstants::SET_REPEAT_DATA] = true;
-$config[ZedRequestConstants::YVES_REQUEST_REPEAT_DATA_PATH] = APPLICATION_ROOT_DIR . '/data/' . Store::getInstance()->getStoreName() . '/' . APPLICATION_ENV . '/yves-requests';
+$config[ZedRequestConstants::YVES_REQUEST_REPEAT_DATA_PATH] = APPLICATION_ROOT_DIR . '/data/cache/codeBucket/yves-requests';
 
 $HSTS_ENABLED = false;
 $config[ApplicationConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_ENABLED]
@@ -285,18 +282,18 @@ $config[CustomerConstants::BASE_URL_YVES] = $config[ApplicationConstants::BASE_U
 $config[TwigConstants::YVES_TWIG_OPTIONS] = [
     'cache' => new FilesystemCache(
         sprintf(
-            '%s/data/%s/cache/%s/twig',
+            '%s/data/cache/codeBucket%s/%s/twig',
             APPLICATION_ROOT_DIR,
-            $CURRENT_STORE,
+            APPLICATION_CODE_BUCKET,
             APPLICATION
         ),
         FilesystemCache::FORCE_BYTECODE_INVALIDATION
     ),
 ];
 $config[TwigConstants::YVES_PATH_CACHE_FILE] = sprintf(
-    '%s/data/%s/cache/YVES/twig/.pathCache',
+    '%s/data/cache/codeBucket%s/YVES/twig/.pathCache',
     APPLICATION_ROOT_DIR,
-    $CURRENT_STORE
+    APPLICATION_CODE_BUCKET
 );
 
 $config[ApplicationConstants::YVES_COOKIE_DEVICE_ID_NAME] = 'did';

@@ -108,8 +108,8 @@ use Spryker\Zed\RabbitMq\Communication\Console\DeleteAllExchangesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\DeleteAllQueuesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\PurgeAllQueuesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\SetUserPermissionsConsole;
-use Spryker\Zed\RestRequestValidator\Communication\Console\BuildValidationCacheConsole;
-use Spryker\Zed\RestRequestValidator\Communication\Console\RemoveValidationCacheConsole;
+use Spryker\Zed\RestRequestValidator\Communication\Console\BuildRestApiValidationCacheConsole;
+use Spryker\Zed\RestRequestValidator\Communication\Console\RemoveRestApiValidationCacheConsole;
 use Spryker\Zed\Router\Communication\Plugin\Console\RouterCacheWarmUpConsole;
 use Spryker\Zed\Router\Communication\Plugin\Console\RouterDebugZedConsole;
 use Spryker\Zed\Scheduler\Communication\Console\SchedulerCleanConsole;
@@ -187,8 +187,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new CacheWarmerConsole(),
             new BuildNavigationConsole(),
             new RemoveNavigationCacheConsole(),
-            new BuildValidationCacheConsole(),
-            new RemoveValidationCacheConsole(),
+            new BuildRestApiValidationCacheConsole(),
+            new RemoveRestApiValidationCacheConsole(),
             new EmptyAllCachesConsole(),
             new TransferGeneratorConsole(),
             new RemoveTransferConsole(),

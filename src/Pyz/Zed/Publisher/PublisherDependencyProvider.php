@@ -11,6 +11,8 @@ use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryKey\Gloss
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryKey\GlossaryWritePublisherPlugin as GlossaryKeyWriterPublisherPlugin;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryPublisherTriggerPlugin;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryTranslation\GlossaryWritePublisherPlugin as GlossaryTranslationWritePublisherPlugin;
+use Spryker\Zed\MerchantStorage\Communication\Plugin\Publisher\Merchant\MerchantStoragePublisherPlugin;
+use Spryker\Zed\MerchantStorage\Communication\Plugin\Publisher\MerchantPublisherTriggerPlugin;
 use Spryker\Zed\ProductLabelSearch\Communication\Plugin\Publisher\ProductLabel\ProductLabelWritePublisherPlugin as ProductLabelSearchWritePublisherPlugin;
 use Spryker\Zed\ProductLabelSearch\Communication\Plugin\Publisher\ProductLabelProductAbstract\ProductLabelProductAbstractWritePublisherPlugin as ProductLabelProductAbstractSearchWritePublisherPlugin;
 use Spryker\Zed\ProductLabelSearch\Communication\Plugin\Publisher\ProductLabelStore\ProductLabelStoreWritePublisherPlugin as ProductLabelStoreSearchWritePublisherPlugin;
@@ -38,7 +40,9 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             $this->getGlossaryStoragePlugins(),
             $this->getProductRelationStoragePlugins(),
             $this->getProductLabelStoragePlugins(),
-            $this->getProductLabelSearchPlugins()
+            $this->getProductLabelSearchPlugins(),
+            $this->getProductRelationStoragePlugins(),
+            $this->getMerchantStoragePlugins()
         );
     }
 
@@ -52,6 +56,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             new ProductRelationPublisherTriggerPlugin(),
             new ProductAbstractLabelPublisherTriggerPlugin(),
             new ProductLabelDictionaryPublisherTriggerPlugin(),
+            new MerchantPublisherTriggerPlugin(),
         ];
     }
 
@@ -102,6 +107,16 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             new ProductLabelSearchWritePublisherPlugin(),
             new ProductLabelProductAbstractSearchWritePublisherPlugin(),
             new ProductLabelStoreSearchWritePublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface[]
+     */
+    protected function getMerchantStoragePlugins(): array
+    {
+        return [
+            new MerchantStoragePublisherPlugin(),
         ];
     }
 }

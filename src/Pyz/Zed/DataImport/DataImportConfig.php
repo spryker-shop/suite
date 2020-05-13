@@ -210,6 +210,7 @@ class DataImportConfig extends SprykerDataImportConfig
             CompanyDataImportConfig::IMPORT_TYPE_COMPANY,
             CategoryDataImportConfig::IMPORT_TYPE_CATEGORY,
             MerchantDataImportConfig::IMPORT_TYPE_MERCHANT,
+            MerchantDataImportConfig::IMPORT_TYPE_MERCHANT_STORE,
             MerchantProfileDataImportConfig::IMPORT_TYPE_MERCHANT_PROFILE,
             MerchantProfileDataImportConfig::IMPORT_TYPE_MERCHANT_PROFILE_ADDRESS,
             MerchantProductOfferDataImportConfig::IMPORT_TYPE_MERCHANT_PRODUCT_OFFER,
