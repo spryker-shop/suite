@@ -19,6 +19,8 @@ use Spryker\Zed\ProductRelationStorage\Communication\Plugin\Publisher\ProductRel
 use Spryker\Zed\ProductRelationStorage\Communication\Plugin\Publisher\ProductRelationPublisherTriggerPlugin;
 use Spryker\Zed\ProductRelationStorage\Communication\Plugin\Publisher\ProductRelationStore\ProductRelationStoreWritePublisherPlugin;
 use Spryker\Zed\Publisher\PublisherDependencyProvider as SprykerPublisherDependencyProvider;
+use Spryker\Zed\SalesReturnPageSearch\Communication\Plugin\Publisher\ReturnReason\ReturnReasonDeletePublisherPlugin;
+use Spryker\Zed\SalesReturnPageSearch\Communication\Plugin\Publisher\ReturnReason\ReturnReasonWritePublisherPlugin;
 
 class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
 {
@@ -30,7 +32,8 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
         return array_merge(
             $this->getGlossaryStoragePlugins(),
             $this->getProductRelationStoragePlugins(),
-            $this->getMerchantStoragePlugins()
+            $this->getMerchantStoragePlugins(),
+            $this->getReturnReasonSearchPlugins()
         );
     }
 
@@ -78,6 +81,17 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
     {
         return [
             new MerchantStoragePublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface[]
+     */
+    protected function getReturnReasonSearchPlugins(): array
+    {
+        return [
+            new ReturnReasonWritePublisherPlugin(),
+            new ReturnReasonDeletePublisherPlugin(),
         ];
     }
 }
