@@ -4854,6 +4854,63 @@
             "time": "2020-01-23T09:57:03+00:00"
         },
         {
+            "name": "spryker/merchant-storage",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-storage.git",
+                "reference": "60faf0b7fc89a135146158fd5049fb4df840b010"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-storage/zipball/60faf0b7fc89a135146158fd5049fb4df840b010",
+                "reference": "60faf0b7fc89a135146158fd5049fb4df840b010",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/event-behavior": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/merchant": "^3.0.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/publisher-extension": "^1.0.0",
+                "spryker/storage": "^3.4.0",
+                "spryker/store": "^1.1.0",
+                "spryker/synchronization": "^1.0.0",
+                "spryker/synchronization-behavior": "^1.0.0",
+                "spryker/synchronization-extension": "^1.0.0",
+                "spryker/util-encoding": "^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/queue": "*",
+                "spryker/testify": "*",
+                "spryker/url-storage": "*"
+            },
+            "suggest": {
+                "spryker/event": "To use event behavior.",
+                "spryker/url-storage": "To use shop route plugin."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantStorage module",
+            "time": "2020-04-28T11:05:15+00:00"
+        },
+        {
             "name": "spryker/rabbit-mq",
             "version": "dev-master",
             "source": {
@@ -5003,7 +5060,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "6798dd6555e82778ef5fa8eb2e5b31ced0726363"
+                "reference": "451592ddfdb5458a6666b984c39cb5f2c3ad7be1"
             },
             "require": {
                 "php": ">=7.2"
@@ -5700,7 +5757,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-05-08T14:36:56+00:00"
+            "time": "2020-05-13T10:54:57+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -10482,20 +10539,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
-                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler"
+                    "homepage": "https://github.com/manuelpichler",
+                    "role": "Project Founder"
                 },
                 {
                     "name": "Marc Würth",
-                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84"
+                    "homepage": "https://github.com/ravage84",
+                    "role": "Project Maintainer"
                 },
                 {
                     "name": "Other contributors",
-                    "role": "Contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
+                    "role": "Contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -11251,6 +11308,95 @@
             ],
             "description": "SprykGui module",
             "time": "2020-02-20T14:09:48+00:00"
+        },
+        {
+            "name": "spryker-shop/merchant-page",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/merchant-page.git",
+                "reference": "827f1d1180155e41bc04302c828f32ba374f8e9e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/merchant-page/zipball/827f1d1180155e41bc04302c828f32ba374f8e9e",
+                "reference": "827f1d1180155e41bc04302c828f32ba374f8e9e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker-shop/shop-application": "^1.0.0",
+                "spryker-shop/storage-router-extension": "^1.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/merchant-storage": "^0.1.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker-shop/merchant-profile-widget": "*",
+                "spryker/code-sniffer": "*"
+            },
+            "suggest": {
+                "spryker-shop/merchant-profile-widget": "To use MerchantProfileWidget."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantPage module",
+            "time": "2020-03-30T16:26:17+00:00"
+        },
+        {
+            "name": "spryker-shop/merchant-profile-widget",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/merchant-profile-widget.git",
+                "reference": "def6bad7d33261c0aff367b0bcc3f3d0c77fb733"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/merchant-profile-widget/zipball/def6bad7d33261c0aff367b0bcc3f3d0c77fb733",
+                "reference": "def6bad7d33261c0aff367b0bcc3f3d0c77fb733",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker-shop/merchant-page": "*",
+                "spryker/code-sniffer": "*"
+            },
+            "suggest": {
+                "spryker-shop/merchant-page": "To use information-item molecule."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantProfileWidget module",
+            "time": "2020-04-29T09:06:19+00:00"
         },
         {
             "name": "spryker/architecture-sniffer",
