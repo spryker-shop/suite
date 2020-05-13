@@ -12,6 +12,12 @@ const globalSettings = {
         prod: 'production'
     },
 
+    // build modules
+    modules: {
+        esm: 'esm',
+        legacy: 'legacy'
+    },
+
     paths: {
         // locate the typescript configuration json file
         tsConfig: './tsconfig.json',
@@ -28,6 +34,14 @@ const globalSettings = {
         // project folders
         project: './src/Pyz/Yves'
     }
+};
+
+const moduleVersionArr = process.argv.filter(argv => argv.includes('module'));
+const moduleVersion = moduleVersionArr.length ? moduleVersionArr[0].replace('module:', '') : '';
+
+const moduleSettings = {
+    moduleVersion,
+    isESModule: moduleVersion === globalSettings.modules.esm,
 };
 
 const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
@@ -214,5 +228,6 @@ const getAppSettings = (namespaceConfigList, pathToConfig) => {
 
 module.exports = {
     globalSettings,
-    getAppSettings
+    getAppSettings,
+    moduleSettings,
 };

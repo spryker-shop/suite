@@ -1,6 +1,4 @@
 const webpack = require('webpack');
-const rimraf = require('rimraf');
-const { globalSettings } = require('../settings');
 
 // execute webpack compiler on array of configurations
 // and nicely handle the console output
@@ -10,7 +8,7 @@ const multiCompile = configs => {
     }
 
     configs.forEach(config => {
-        console.log(`${config.namespace} (${config.theme}) building for ${config.webpack.mode}...`);
+        console.log(`${config.namespace} (${config.theme}) building ${config.moduleVersion} modules for ${config.webpack.mode}...`);
 
         if (config.webpack.watch) {
             console.log(`${config.namespace} (${config.theme}) watch mode: ON`);
