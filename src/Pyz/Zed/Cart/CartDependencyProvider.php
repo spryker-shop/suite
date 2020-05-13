@@ -23,7 +23,7 @@ use Spryker\Zed\DiscountPromotion\Communication\Plugin\Cart\CartGroupPromotionIt
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Cart\DiscountPromotionCartPreCheckPlugin;
 use Spryker\Zed\GiftCard\Communication\Plugin\GiftCardMetadataExpanderPlugin;
 use Spryker\Zed\Kernel\Container;
-use Spryker\Zed\MerchantProfile\Communication\Plugin\Cart\MerchantProfileCartPreCheckPlugin;
+use Spryker\Zed\Merchant\Communication\Plugin\Cart\MerchantCartPreCheckPlugin;
 use Spryker\Zed\MerchantSwitcher\Communication\Plugin\Cart\SingleMerchantCartPreCheckPlugin;
 use Spryker\Zed\MerchantSwitcher\Communication\Plugin\Cart\SingleMerchantPreReloadItemsPlugin;
 use Spryker\Zed\PaymentCartConnector\Communication\Plugin\Cart\RemovePaymentCartPostSavePlugin;
@@ -154,7 +154,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new AmountAvailabilityCartPreCheckPlugin(), #ProductPackagingUnit
             new AmountRestrictionCartPreCheckPlugin(), #ProductPackagingUnit
             new ConfiguredBundleTemplateSlotCombinationPreCheckPlugin(),
-            new MerchantProfileCartPreCheckPlugin(),
+            new MerchantCartPreCheckPlugin(),
             new SingleMerchantCartPreCheckPlugin(),
             new ProductMeasurementSalesUnitCartPreCheckPlugin(),
             new DiscountPromotionCartPreCheckPlugin(),

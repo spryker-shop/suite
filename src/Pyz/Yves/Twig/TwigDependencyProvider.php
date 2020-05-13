@@ -21,6 +21,7 @@ use Spryker\Yves\Twig\Plugin\FormFilesystemTwigLoaderPlugin;
 use Spryker\Yves\Twig\TwigDependencyProvider as SprykerTwigDependencyProvider;
 use SprykerShop\Yves\CartPage\Plugin\Twig\CartTwigPlugin;
 use SprykerShop\Yves\CatalogPage\Plugin\Twig\CatalogPageTwigPlugin;
+use SprykerShop\Yves\CatalogPage\Plugin\Twig\CategoryFilterTwigPlugin;
 use SprykerShop\Yves\CategoryWidget\Plugin\Twig\CategoryTwigPlugin;
 use SprykerShop\Yves\ChartWidget\Plugin\Twig\ChartTwigPlugin;
 use SprykerShop\Yves\CmsBlockWidget\Plugin\Twig\CmsBlockTwigPlugin;
@@ -71,6 +72,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new CmsTwigPlugin(),
             new ShopUiTwigPlugin(),
             new CategoryTwigPlugin(),
+            new CategoryFilterTwigPlugin(),
             new DateTimeFormatterTwigPlugin(),
             new CustomerTwigPlugin(),
             new WidgetTagTwigPlugin(),
