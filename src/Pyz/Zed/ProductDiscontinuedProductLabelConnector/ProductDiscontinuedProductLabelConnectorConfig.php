@@ -11,5 +11,5 @@ use Spryker\Zed\ProductDiscontinuedProductLabelConnector\ProductDiscontinuedProd
 
 class ProductDiscontinuedProductLabelConnectorConfig extends SprykerProductDiscontinuedProductLabelConnectorConfig
 {
-    protected const PRODUCT_LABEL_DEFAULT_PRIORITY = 4;
+    protected const PRODUCT_LABEL_DEFAULT_POSITION = 4;
 }
