@@ -6,11 +6,6 @@ build:
         override:
             - npm rebuild
             - npm install
-            - yes | pecl install bz2
-            - yes | pecl install phar
-            - yes | pecl install gmp
-            - yes | pecl install pgsql
-            - yes | pecl install readline
             - composer install --ignore-platform-reqs --no-interaction --no-scripts
 
     tests:
