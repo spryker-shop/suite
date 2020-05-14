@@ -12,31 +12,31 @@ actions:
       destination: '{data_entity}s_DE_{timestamp}.{extension}'
       filter_criteria:
           <<: *default_filter_criteria
-          order_store: [DE]
+          store_name: [DE]
     - data_entity: order-expense
       destination: '{data_entity}s_AT_{timestamp}.{extension}'
       filter_criteria:
           <<: *default_filter_criteria
-          order_store: [AT]
+          store_name: [AT]
 
     - data_entity: order-item
       destination: '{data_entity}s_DE_{timestamp}.{extension}'
       filter_criteria:
           <<: *default_filter_criteria
-          order_store: [DE]
+          store_name: [DE]
     - data_entity: order-item
       destination: '{data_entity}s_AT_{timestamp}.{extension}'
       filter_criteria:
           <<: *default_filter_criteria
-          order_store: [AT]
+          store_name: [AT]
 
     - data_entity: order
       destination: '{data_entity}s_DE_{timestamp}.{extension}'
       filter_criteria:
           <<: *default_filter_criteria
-          order_store: [DE]
+          store_name: [DE]
     - data_entity: order
       destination: '{data_entity}s_AT_{timestamp}.{extension}'
       filter_criteria:
           <<: *default_filter_criteria
-          order_store: [AT]
+          store_name: [AT]
