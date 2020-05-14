@@ -15,9 +15,7 @@ matrix:
     - php: "7.4"
       dist: bionic
       env:
-        - FE_TEST=1
-      addons:
-        chrome: stable
+        - MP_TEST=1
 
     - php: "7.2"
       dist: bionic
