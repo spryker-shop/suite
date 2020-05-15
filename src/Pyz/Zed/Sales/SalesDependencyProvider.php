@@ -37,7 +37,7 @@ use Spryker\Zed\SalesConfigurableBundle\Communication\Plugin\Sales\ConfiguredBun
 use Spryker\Zed\SalesConfigurableBundle\Communication\Plugin\Sales\ConfiguredBundlesOrderPostSavePlugin;
 use Spryker\Zed\SalesMerchantConnector\Communication\Plugin\OrderItemReferenceExpanderPreSavePlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\MetadataOrderItemExpanderPlugin;
-use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ProductIdHydratorPlugin;
+use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ProductIdOrderItemExpanderPlugin;
 use Spryker\Zed\SalesQuantity\Communication\Plugin\SalesExtension\IsQuantitySplittableOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\SalesQuantity\Communication\Plugin\SalesExtension\NonSplittableItemTransformerStrategyPlugin;
 use Spryker\Zed\SalesReclamationGui\Communication\Plugin\Sales\ReclamationSalesTablePlugin;
@@ -64,7 +64,6 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     protected function getOrderHydrationPlugins()
     {
         return [
-            new ProductIdHydratorPlugin(),
             new ProductBundleOrderHydratePlugin(),
             new DiscountOrderHydratePlugin(),
             new ShipmentOrderHydratePlugin(),
@@ -157,6 +156,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     {
         return [
             new StateHistoryOrderItemExpanderPlugin(),
+            new ProductIdOrderItemExpanderPlugin(),
             new ProductOptionsOrderItemExpanderPlugin(),
             new MetadataOrderItemExpanderPlugin(),
             new UpdateOrderItemIsReturnableByItemStatePlugin(),
