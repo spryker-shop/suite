@@ -9,7 +9,6 @@ stores:
 command-timeout: 3600
 
 sections:
-
     hidden:
         excluded: true
         maintenance-all-on:
@@ -32,12 +31,11 @@ sections:
 
     composer:
         composer-autoloader:
-            command: "composer dumpautoload -a --apcu"
+            command: "composer dumpautoload --apcu"
 
     environment:
         console-environment:
             command: "if [ ! -f ./config/Shared/console_env_local.php ]; then cp ./config/Shared/console_env_local.dist.php ./config/Shared/console_env_local.php ; fi"
-
 
     clear:
         remove-logs:
@@ -50,7 +48,8 @@ sections:
             command: "vendor/bin/console dev:ide-auto-completion:remove"
 
         remove-request-validation-cache:
-            command: "vendor/bin/console glue:rest-request-validation-cache:remove"
+            command: "vendor/bin/console rest-api:remove-validation-cache"
+            stores: true
 
         remove-navigation-cache:
             command: "vendor/bin/console navigation:cache:remove"
@@ -74,9 +73,6 @@ sections:
         generate-transfer-databuilders:
             command: "vendor/bin/console transfer:databuilder:generate"
 
-        generate-entity-transfer:
-            command: "vendor/bin/console transfer:entity:generate"
-
         generate-ide-auto-completion:
             command: "vendor/bin/console dev:ide-auto-completion:generate"
 
@@ -99,11 +95,11 @@ sections:
             command: "vendor/bin/console navigation:build-cache"
 
         rest-request-validation-cache-warmup:
-            command: "vendor/bin/console glue:rest:build-request-validation-cache"
+            command: "vendor/bin/console rest-api:build-request-validation-cache"
+            stores: true
 
         class-resolver-build:
             command: "vendor/bin/console cache:class-resolver:build"
-
 
     queue-flush:
         set-permissions:
@@ -121,7 +117,6 @@ sections:
         delete-all-exchanges:
             command: "vendor/bin/console queue:exchanges:delete-all"
             stores: true
-
 
     database-flush:
         delete-elastic-search-index:
@@ -147,12 +142,8 @@ sections:
 
         delete-migration-files:
             command: "vendor/bin/console propel:migration:delete"
-            stores:
-                - US
-                - DE
             groups:
                 - propel
-
 
     database-migrate:
         propel-create:
@@ -173,9 +164,6 @@ sections:
 
         propel-copy-schema:
             command: "vendor/bin/console propel:schema:copy"
-            stores:
-                - US
-                - DE
             groups:
                 - propel
 
@@ -186,9 +174,6 @@ sections:
 
         propel-diff:
             command: "vendor/bin/console propel:diff"
-            stores:
-                - US
-                - DE
             groups:
                 - propel
 
@@ -219,6 +204,9 @@ sections:
         maintenance-page-disable:
             command: "vendor/bin/console maintenance:disable"
             stores: true
+
+        generate-entity-transfer:
+            command: "vendor/bin/console transfer:entity:generate"
 
         init-database:
             command: "vendor/bin/console setup:init-db"
@@ -304,22 +292,22 @@ sections:
 
     frontend:
         dependencies-install:
-            command: "vendor/bin/console frontend:project:install-dependencies -vvv"
+            command: "vendor/bin/console frontend:project:install-dependencies"
             groups:
                 - project
 
         yves-install-dependencies:
-            command: "vendor/bin/console frontend:yves:install-dependencies -vvv"
+            command: "vendor/bin/console frontend:yves:install-dependencies"
             groups:
                 - yves
 
         yves-build-frontend:
-            command: "vendor/bin/console frontend:yves:build -vvv"
+            command: "vendor/bin/console frontend:yves:build"
             groups:
                 - yves
 
         zed-install-dependencies:
-            command: "vendor/bin/console frontend:zed:install-dependencies -vvv"
+            command: "vendor/bin/console frontend:zed:install-dependencies"
             groups:
                 - zed
 

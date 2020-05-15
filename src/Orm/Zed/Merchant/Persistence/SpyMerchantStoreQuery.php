@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\MerchantProfileStorage\Persistence;
+namespace Orm\Zed\Merchant\Persistence;
 
-use Spryker\Zed\MerchantProfileStorage\Persistence\Propel\AbstractSpyMerchantProfileStorageQuery;
+use Spryker\Zed\Merchant\Persistence\Propel\AbstractSpyMerchantStoreQuery as BaseSpyMerchantStoreQuery;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_merchant_profile_storage' table.
+ * Skeleton subclass for performing query and update operations on the 'spy_merchant_store' table.
  *
  *
  *
@@ -18,6 +18,6 @@ use Spryker\Zed\MerchantProfileStorage\Persistence\Propel\AbstractSpyMerchantPro
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyMerchantProfileStorageQuery extends AbstractSpyMerchantProfileStorageQuery
+class SpyMerchantStoreQuery extends BaseSpyMerchantStoreQuery
 {
 }
