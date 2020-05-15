@@ -134,7 +134,7 @@
       "php -d memory_limit=1024M vendor/bin/phpstan analyze -l 5 -c phpstan.neon src/"
     ],
     "phpstan-setup": "vendor/bin/console dev:ide-auto-completion:generate",
-    "psalm": "vendor/bin/psalm.phar --show-info=true",
+    "psalm": "vendor/bin/psalm.phar --show-info=false",
     "psalm-update-baseline": "vendor/bin/psalm.phar --update-baseline",
     "psalm-set-baseline": "vendor/bin/psalm.phar --set-baseline=psalm-baseline.xml"
   },

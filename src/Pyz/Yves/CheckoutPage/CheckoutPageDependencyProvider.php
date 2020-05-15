@@ -66,7 +66,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     }
 
     /**
-     * @phpstan-return \Symfony\Component\Form\FormTypeInterface[]|class-string<\Symfony\Component\Form\FormTypeInterface>[]
+     * @phpstan-return array<int, class-string<\Symfony\Component\Form\FormTypeInterface>|\Symfony\Component\Form\FormInterface>
      *
      * @return \Symfony\Component\Form\FormTypeInterface[]|string[]
      */
