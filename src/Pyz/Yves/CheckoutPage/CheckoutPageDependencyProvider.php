@@ -66,7 +66,9 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     }
 
     /**
-     * @return (\Symfony\Component\Form\FormTypeInterface|string)[]
+     * @phpstan-return \Symfony\Component\Form\FormTypeInterface[]|class-string<\Symfony\Component\Form\FormTypeInterface>[]
+     *
+     * @return \Symfony\Component\Form\FormTypeInterface[]|string[]
      */
     protected function getCustomerStepSubForms(): array
     {
@@ -81,7 +83,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
      * @param string $subForm
      * @param string $blockPrefix
      *
-     * @return \SprykerShop\Yves\CustomerPage\Form\CustomerCheckoutForm|\Symfony\Component\Form\FormInterface
+     * @return \Symfony\Component\Form\FormInterface
      */
     protected function getCustomerCheckoutForm($subForm, $blockPrefix)
     {
