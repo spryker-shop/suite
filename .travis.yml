@@ -11,7 +11,7 @@ env:
     - ARTIFACTS_KEY=AKIAJD43J5ACVDJKUXLA
     - ARTIFACTS_SECRET=$AWS_S3_SECRET_ACCESS_KEY
     - ARTIFACTS_BUCKET=spryker-ci
-    - PGPORT="5433"
+    - POSTGRES_PORT="5433"
 
 #Possible travis events (push, pull_request, cron, or api)
 matrix:
