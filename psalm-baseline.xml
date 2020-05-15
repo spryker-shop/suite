@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="3.11.4@58e1d8e68e5098bf4fbfdfb420c38d563f882549">
+  <file src="src/Pyz/Yves/CheckoutPage/CheckoutPageDependencyProvider.php">
+    <InvalidReturnStatement occurrences="1"/>
+    <InvalidReturnType occurrences="1"/>
+  </file>
+  <file src="src/Pyz/Zed/DataImport/Business/Model/Product/Repository/ProductRepository.php">
+    <InvalidReturnStatement occurrences="1"/>
+  </file>
+  <file src="src/Pyz/Zed/DataImport/Business/Model/ProductOptionPrice/ProductOptionPriceWriterStep.php">
+    <InvalidPropertyAssignmentValue occurrences="1">
+      <code>static::$idStoreBuffer</code>
+    </InvalidPropertyAssignmentValue>
+  </file>
+  <file src="src/Pyz/Zed/DataImport/Business/Model/ProductPrice/Writer/ProductPriceBulkPdoDataSetWriter.php">
+    <InvalidPropertyAssignmentValue occurrences="2">
+      <code>static::$priceProductIds</code>
+      <code>static::$priceProductIds</code>
+    </InvalidPropertyAssignmentValue>
+  </file>
+  <file src="src/Pyz/Zed/DataImport/Business/Model/ProductStock/Writer/ProductStockBulkPdoDataSetWriter.php">
+    <InvalidReturnStatement occurrences="1">
+      <code>$stockProducts</code>
+    </InvalidReturnStatement>
+    <InvalidReturnType occurrences="1">
+      <code>\Spryker\DecimalObject\Decimal[]</code>
+    </InvalidReturnType>
+  </file>
+  <file src="src/Pyz/Zed/DataImport/Business/Model/ProductStock/Writer/ProductStockPropelDataSetWriter.php">
+    <InvalidReturnStatement occurrences="1">
+      <code>$storeIds</code>
+    </InvalidReturnStatement>
+    <InvalidReturnType occurrences="1">
+      <code>int[]</code>
+    </InvalidReturnType>
+  </file>
+  <file src="src/Pyz/Zed/Router/RouterConfig.php">
+    <InvalidArgument occurrences="1">
+      <code>'glob'</code>
+    </InvalidArgument>
+  </file>
+</files>
