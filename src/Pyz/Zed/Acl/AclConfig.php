@@ -73,21 +73,4 @@ class AclConfig extends SprykerAclConfig
             //this is related to existent username and will be searched into the database
         ];
     }
-
-    /**
-     * @api
-     *
-     * @return array
-     */
-    public function getInstallerGroups()
-    {
-        return array_merge(
-            parent::getInstallerGroups(),
-            [
-                [
-                    'name' => static::GROUP_MERCHANT_ADMIN,
-                ],
-            ]
-        );
-    }
 }

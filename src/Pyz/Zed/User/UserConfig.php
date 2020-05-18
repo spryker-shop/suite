@@ -53,7 +53,7 @@ class UserConfig extends SprykerUserConfig
                 'firstName' => 'Michele',
                 'lastName' => 'Nemeth',
                 'password' => 'change123',
-                'username' => 'michele@sony-experts.com',
+                'username' => 'michele@sony-camera-experts.com',
             ],
         ];
     }
