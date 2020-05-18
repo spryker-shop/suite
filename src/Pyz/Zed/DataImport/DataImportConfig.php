@@ -112,6 +112,7 @@ class DataImportConfig extends SprykerDataImportConfig
     public const PRODUCT_IMAGE_QUEUE_ERROR = 'import.product_image.error';
     public const PRODUCT_PRICE_QUEUE = 'import.product_price';
     public const PRODUCT_PRICE_QUEUE_ERROR = 'import.product_price.error';
+    public const IMPORT_TYPE_MERCHANT_USER = 'merchant-user';
 
     /**
      * @return string|null
@@ -283,6 +284,7 @@ class DataImportConfig extends SprykerDataImportConfig
             MerchantStockDataImportConfig::IMPORT_TYPE_MERCHANT_STOCK,
             MerchantOmsDataImportConfig::IMPORT_TYPE_MERCHANT_OMS_PROCESS,
             SalesReturnDataImportConfig::IMPORT_TYPE_RETURN_REASON,
+            static::IMPORT_TYPE_MERCHANT_USER,
         ];
     }
 }
