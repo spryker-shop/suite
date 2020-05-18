@@ -173,7 +173,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
      *
      * @return \Symfony\Component\Console\Command\Command[]
      */
-    protected function getConsoleCommands(Container $container)
+    protected function getConsoleCommands(Container $container): array
     {
         $commands = [
             new CacheWarmerConsole(),
