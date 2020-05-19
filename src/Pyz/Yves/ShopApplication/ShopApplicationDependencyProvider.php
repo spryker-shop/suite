@@ -27,6 +27,9 @@ use SprykerShop\Yves\BusinessOnBehalfWidget\Widget\BusinessOnBehalfStatusWidget;
 use SprykerShop\Yves\CartCodeWidget\Widget\CartCodeFormWidget;
 use SprykerShop\Yves\CartNoteWidget\Widget\CartItemNoteFormWidget;
 use SprykerShop\Yves\CartNoteWidget\Widget\CartNoteFormWidget;
+use SprykerShop\Yves\CartPage\Widget\AddItemsFormWidget;
+use SprykerShop\Yves\CartPage\Widget\AddToCartFormWidget;
+use SprykerShop\Yves\CartPage\Widget\CartChangeQuantityFormWidget;
 use SprykerShop\Yves\CategoryImageStorageWidget\Widget\CategoryImageStorageWidget;
 use SprykerShop\Yves\CheckoutWidget\Widget\CheckoutBreadcrumbWidget;
 use SprykerShop\Yves\CheckoutWidget\Widget\ProceedToCheckoutButtonWidget;
@@ -40,7 +43,9 @@ use SprykerShop\Yves\ConfigurableBundleNoteWidget\Widget\ConfiguredBundleNoteWid
 use SprykerShop\Yves\ConfigurableBundleWidget\Widget\QuoteConfiguredBundleWidget;
 use SprykerShop\Yves\CurrencyWidget\Widget\CurrencyWidget;
 use SprykerShop\Yves\CustomerPage\Widget\CustomerNavigationWidget;
+use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderFormWidget;
 use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderItemCheckboxWidget;
+use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderItemsFormWidget;
 use SprykerShop\Yves\DiscountPromotionWidget\Widget\CartDiscountPromotionProductListWidget;
 use SprykerShop\Yves\LanguageSwitcherWidget\Widget\LanguageSwitcherWidget;
 use SprykerShop\Yves\MerchantOpeningHoursWidget\Widget\MerchantOpeningHoursWidget;
@@ -239,6 +244,11 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             OrderCustomReferenceWidget::class,
             MerchantOpeningHoursWidget::class,
             MerchantOrderReferenceForItemsWidget::class,
+            AddToCartFormWidget::class,
+            AddItemsFormWidget::class,
+            CartChangeQuantityFormWidget::class,
+            CustomerReorderFormWidget::class,
+            CustomerReorderItemsFormWidget::class,
         ];
     }
 

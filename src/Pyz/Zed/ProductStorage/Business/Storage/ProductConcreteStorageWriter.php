@@ -151,7 +151,7 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
      *
      * @return void
      */
-    protected function add(array $productConcreteStorageData)
+    protected function add(array $productConcreteStorageData): void
     {
         $synchronizedData = $this->buildSynchronizedData($productConcreteStorageData, 'fk_product', 'product_concrete');
         $this->synchronizedDataCollection[] = $synchronizedData;
@@ -274,7 +274,7 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
      */
     public function formatPostgresArray(array $values): string
     {
-        if (is_array($values) && empty($values)) {
+        if (!$values) {
             return '{null}';
         }
 
@@ -321,14 +321,14 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
     {
         $sql = <<<SQL
 WITH records AS (
-    SELECT 
+    SELECT
       input.fk_product,
       input.locale,
       input.data,
       input.key,
       id_product_concrete_storage
     FROM (
-           SELECT 
+           SELECT
              unnest(? :: INTEGER []) AS fk_product,
              unnest(? :: VARCHAR []) AS locale,
              json_array_elements(?) AS data,
@@ -338,7 +338,7 @@ WITH records AS (
     ),
     updated AS (
     UPDATE spy_product_concrete_storage
-    SET 
+    SET
       fk_product = records.fk_product,
       locale = records.locale,
       data = records.data,
@@ -350,7 +350,7 @@ WITH records AS (
   ),
     inserted AS (
     INSERT INTO spy_product_concrete_storage(
-      id_product_concrete_storage, 
+      id_product_concrete_storage,
       fk_product,
       locale,
       data,
@@ -359,7 +359,7 @@ WITH records AS (
       updated_at
     ) (
       SELECT
-        nextval('spy_product_concrete_storage_pk_seq'), 
+        nextval('spy_product_concrete_storage_pk_seq'),
         fk_product,
         locale,
         data,
