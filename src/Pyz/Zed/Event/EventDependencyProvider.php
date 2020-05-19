@@ -30,10 +30,8 @@ use Spryker\Zed\Event\EventDependencyProvider as SprykerEventDependencyProvider;
 use Spryker\Zed\FileManagerStorage\Communication\Plugin\Event\Subscriber\FileManagerStorageSubscriber;
 use Spryker\Zed\MerchantOpeningHoursStorage\Communication\Plugin\Event\Subscriber\MerchantOpeningHoursStorageEventSubscriber;
 use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\Event\Subscriber\MerchantProductOfferSearchEventSubscriber;
-use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\Event\Subscriber\MerchantProfileSearchEventSubscriber;
 use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\Event\Subscriber\MerchantSearchEventSubscriber;
 use Spryker\Zed\MerchantProductOfferStorage\Communication\Plugin\Event\Subscriber\MerchantProductOfferStorageEventSubscriber;
-use Spryker\Zed\MerchantProfileStorage\Communication\Plugin\Event\Subscriber\MerchantProfileStorageEventSubscriber;
 use Spryker\Zed\NavigationStorage\Communication\Plugin\Event\Subscriber\NavigationStorageEventSubscriber;
 use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Event\Subscriber\PriceProductMerchantRelationshipStorageEventSubscriber;
 use Spryker\Zed\PriceProductOfferStorage\Communication\Plugin\Event\Subscriber\PriceProductOfferStorageEventSubscriber;
@@ -44,8 +42,6 @@ use Spryker\Zed\ProductCategoryStorage\Communication\Plugin\Event\Subscriber\Pro
 use Spryker\Zed\ProductDiscontinuedStorage\Communication\Plugin\Event\Subscriber\ProductDiscontinuedStorageEventSubscriber;
 use Spryker\Zed\ProductGroupStorage\Communication\Plugin\Event\Subscriber\ProductGroupStorageEventSubscriber;
 use Spryker\Zed\ProductImageStorage\Communication\Plugin\Event\Subscriber\ProductImageStorageEventSubscriber;
-use Spryker\Zed\ProductLabelSearch\Communication\Plugin\Event\Subscriber\ProductLabelSearchEventSubscriber;
-use Spryker\Zed\ProductLabelStorage\Communication\Plugin\Event\Subscriber\ProductLabelStorageEventSubscriber;
 use Spryker\Zed\ProductListSearch\Communication\Plugin\Event\Subscriber\ProductListSearchEventSubscriber;
 use Spryker\Zed\ProductListStorage\Communication\Plugin\Event\Subscriber\ProductListStorageEventSubscriber;
 use Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Event\Subscriber\ProductMeasurementUnitStorageEventSubscriber;
@@ -113,7 +109,6 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new ProductReviewStorageEventSubscriber());
         $eventSubscriberCollection->add(new ProductMeasurementUnitStorageEventSubscriber());
         $eventSubscriberCollection->add(new ProductQuantityStorageEventSubscriber());
-        $eventSubscriberCollection->add(new ProductLabelStorageEventSubscriber());
         $eventSubscriberCollection->add(new ProductSetStorageEventSubscriber());
         $eventSubscriberCollection->add(new ProductSearchConfigStorageEventSubscriber());
         $eventSubscriberCollection->add(new ProductListStorageEventSubscriber());
@@ -129,7 +124,6 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new TaxStorageSubscriber());
         $eventSubscriberCollection->add(new TaxProductStorageSubscriber());
         $eventSubscriberCollection->add(new AvailabilityNotificationSubscriber());
-        $eventSubscriberCollection->add(new MerchantProfileStorageEventSubscriber());
         $eventSubscriberCollection->add(new MerchantProductOfferStorageEventSubscriber());
         $eventSubscriberCollection->add(new MerchantOpeningHoursStorageEventSubscriber());
         $eventSubscriberCollection->add(new PriceProductOfferStorageEventSubscriber());
@@ -143,7 +137,6 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new ProductReviewSearchEventSubscriber());
         $eventSubscriberCollection->add(new ProductSetPageSearchEventSubscriber());
         $eventSubscriberCollection->add(new ProductPageSearchEventSubscriber());
-        $eventSubscriberCollection->add(new ProductLabelSearchEventSubscriber());
         $eventSubscriberCollection->add(new ProductListSearchEventSubscriber());
         $eventSubscriberCollection->add(new ProductConcretePageSearchProductAbstractEventSubscriber());
         $eventSubscriberCollection->add(new ProductConcretePageSearchProductEventSubscriber());
@@ -152,7 +145,6 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new ConfigurableBundleTemplatePageSearchEventSubscriber());
         $eventSubscriberCollection->add(new ConfigurableBundleTemplateImagePageSearchEventSubscriber());
         $eventSubscriberCollection->add(new MerchantSearchEventSubscriber());
-        $eventSubscriberCollection->add(new MerchantProfileSearchEventSubscriber());
         $eventSubscriberCollection->add(new MerchantProductOfferSearchEventSubscriber());
 
         $eventSubscriberCollection->add(new PublisherSubscriber());

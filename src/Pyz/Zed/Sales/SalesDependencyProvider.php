@@ -9,9 +9,20 @@ namespace Pyz\Zed\Sales;
 
 use Spryker\Zed\CommentSalesConnector\Communication\Plugin\Sales\CommentThreadAttachedCommentOrderPostSavePlugin;
 use Spryker\Zed\CommentSalesConnector\Communication\Plugin\Sales\CommentThreadOrderExpanderPlugin;
+use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Sales\CompanyBusinessUnitCustomerFilterOrderSearchQueryExpanderPlugin;
+use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Sales\CompanyBusinessUnitCustomerOrderAccessCheckPlugin;
+use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Sales\CompanyBusinessUnitCustomerSortingOrderSearchQueryExpanderPlugin;
+use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Sales\CompanyBusinessUnitFilterOrderSearchQueryExpanderPlugin;
+use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Sales\SaveCompanyBusinessUnitUuidOrderPostSavePlugin;
+use Spryker\Zed\CompanySalesConnector\Communication\Plugin\Sales\CompanyCustomerFilterOrderSearchQueryExpanderPlugin;
+use Spryker\Zed\CompanySalesConnector\Communication\Plugin\Sales\CompanyCustomerOrderAccessCheckPlugin;
+use Spryker\Zed\CompanySalesConnector\Communication\Plugin\Sales\CompanyCustomerSortingOrderSearchQueryExpanderPlugin;
+use Spryker\Zed\CompanySalesConnector\Communication\Plugin\Sales\CompanyFilterOrderSearchQueryExpanderPlugin;
+use Spryker\Zed\CompanySalesConnector\Communication\Plugin\Sales\SaveCompanyUuidOrderPostSavePlugin;
 use Spryker\Zed\Customer\Communication\Plugin\Sales\CustomerOrderHydratePlugin;
 use Spryker\Zed\Discount\Communication\Plugin\Sales\DiscountOrderHydratePlugin;
 use Spryker\Zed\ManualOrderEntry\Communication\Plugin\Sales\OrderSourceExpanderPreSavePlugin;
+use Spryker\Zed\MerchantSalesOrder\Communication\Plugin\Sales\MerchantOrderDataOrderExpanderPlugin;
 use Spryker\Zed\MerchantSalesOrder\Communication\Plugin\Sales\MerchantReferenceOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Sales\StateHistoryOrderItemExpanderPlugin;
 use Spryker\Zed\OrderCustomReference\Communication\Plugin\Sales\OrderCustomReferenceOrderPostSavePlugin;
@@ -36,6 +47,7 @@ use Spryker\Zed\SalesConfigurableBundle\Communication\Plugin\Sales\ConfiguredBun
 use Spryker\Zed\SalesConfigurableBundle\Communication\Plugin\Sales\ConfiguredBundleOrderItemExpanderPlugin;
 use Spryker\Zed\SalesConfigurableBundle\Communication\Plugin\Sales\ConfiguredBundlesOrderPostSavePlugin;
 use Spryker\Zed\SalesMerchantConnector\Communication\Plugin\OrderItemReferenceExpanderPreSavePlugin;
+use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ItemMetadataSearchOrderExpanderPlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\MetadataOrderItemExpanderPlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ProductIdHydratorPlugin;
 use Spryker\Zed\SalesQuantity\Communication\Plugin\SalesExtension\IsQuantitySplittableOrderItemExpanderPreSavePlugin;
@@ -51,7 +63,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     /**
      * @return \Spryker\Zed\Sales\Dependency\Plugin\OrderExpanderPreSavePluginInterface[]
      */
-    protected function getOrderExpanderPreSavePlugins()
+    protected function getOrderExpanderPreSavePlugins(): array
     {
         return [
             new OrderSourceExpanderPreSavePlugin(),
@@ -61,7 +73,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     /**
      * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\OrderExpanderPluginInterface[]
      */
-    protected function getOrderHydrationPlugins()
+    protected function getOrderHydrationPlugins(): array
     {
         return [
             new ProductIdHydratorPlugin(),
@@ -78,13 +90,14 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new CommentThreadOrderExpanderPlugin(),
             new ProductBundleOptionOrderExpanderPlugin(),
             new RemunerationTotalOrderExpanderPlugin(),
+            new MerchantOrderDataOrderExpanderPlugin(),
         ];
     }
 
     /**
      * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\OrderItemExpanderPreSavePluginInterface[]
      */
-    protected function getOrderItemExpanderPreSavePlugins()
+    protected function getOrderItemExpanderPreSavePlugins(): array
     {
         return [
             new QuantitySalesUnitOrderItemExpanderPreSavePlugin(),
@@ -111,7 +124,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     /**
      * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\SalesTablePluginInterface[]
      */
-    protected function getSalesTablePlugins()
+    protected function getSalesTablePlugins(): array
     {
         return [
             new ReclamationSalesTablePlugin(),
@@ -121,12 +134,14 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     /**
      * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\OrderPostSavePluginInterface[]
      */
-    protected function getOrderPostSavePlugins()
+    protected function getOrderPostSavePlugins(): array
     {
         return [
             new CommentThreadAttachedCommentOrderPostSavePlugin(),
             new ConfiguredBundlesOrderPostSavePlugin(),
             new OrderCustomReferenceOrderPostSavePlugin(),
+            new SaveCompanyBusinessUnitUuidOrderPostSavePlugin(),
+            new SaveCompanyUuidOrderPostSavePlugin(),
         ];
     }
 
@@ -163,6 +178,42 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new UpdateOrderItemIsReturnableByGlobalReturnableNumberOfDaysPlugin(),
             new CurrencyIsoCodeOrderItemExpanderPlugin(),
             new ConfiguredBundleOrderItemExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\SearchOrderExpanderPluginInterface[]
+     */
+    protected function getSearchOrderExpanderPlugins(): array
+    {
+        return [
+            new ItemMetadataSearchOrderExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\SearchOrderQueryExpanderPluginInterface[]
+     */
+    protected function getOrderSearchQueryExpanderPlugins(): array
+    {
+        return [
+            new CompanyBusinessUnitFilterOrderSearchQueryExpanderPlugin(),
+            new CompanyFilterOrderSearchQueryExpanderPlugin(),
+            new CompanyBusinessUnitCustomerFilterOrderSearchQueryExpanderPlugin(),
+            new CompanyBusinessUnitCustomerSortingOrderSearchQueryExpanderPlugin(),
+            new CompanyCustomerFilterOrderSearchQueryExpanderPlugin(),
+            new CompanyCustomerSortingOrderSearchQueryExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\CustomerOrderAccessCheckPluginInterface[]
+     */
+    protected function getCustomerOrderAccessCheckPlugins(): array
+    {
+        return [
+            new CompanyBusinessUnitCustomerOrderAccessCheckPlugin(),
+            new CompanyCustomerOrderAccessCheckPlugin(),
         ];
     }
 }
