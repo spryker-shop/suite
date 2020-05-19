@@ -21,6 +21,7 @@ use Spryker\Zed\ProductRelationStorage\Communication\Plugin\Publisher\ProductRel
 use Spryker\Zed\Publisher\PublisherDependencyProvider as SprykerPublisherDependencyProvider;
 use Spryker\Zed\SalesReturnPageSearch\Communication\Plugin\Publisher\ReturnReason\ReturnReasonDeletePublisherPlugin;
 use Spryker\Zed\SalesReturnPageSearch\Communication\Plugin\Publisher\ReturnReason\ReturnReasonWritePublisherPlugin;
+use Spryker\Zed\SalesReturnPageSearch\Communication\Plugin\Publisher\ReturnReasonPublisherTriggerPlugin;
 
 class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
 {
@@ -46,6 +47,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             new GlossaryPublisherTriggerPlugin(),
             new ProductRelationPublisherTriggerPlugin(),
             new MerchantPublisherTriggerPlugin(),
+            new ReturnReasonPublisherTriggerPlugin(),
         ];
     }
 

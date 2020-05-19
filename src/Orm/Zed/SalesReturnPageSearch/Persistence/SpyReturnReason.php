@@ -7,10 +7,10 @@
 
 namespace Orm\Zed\SalesReturnPageSearch\Persistence;
 
-use Spryker\Zed\SalesReturnPageSearch\Persistence\Propel\AbstractSpySalesReturnReasonPageSearch as BaseSpySalesReturnReasonPageSearch;
+use Orm\Zed\SalesReturnPageSearch\Persistence\Base\SpyReturnReason as BaseSpyReturnReason;
 
 /**
- * Skeleton subclass for representing a row from the 'spy_sales_return_reason_page_search' table.
+ * Skeleton subclass for representing a row from the 'spy_return_reason' table.
  *
  *
  *
@@ -18,6 +18,6 @@ use Spryker\Zed\SalesReturnPageSearch\Persistence\Propel\AbstractSpySalesReturnR
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpySalesReturnReasonPageSearch extends BaseSpySalesReturnReasonPageSearch
+class SpyReturnReason extends BaseSpyReturnReason
 {
 }
