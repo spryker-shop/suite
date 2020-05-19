@@ -9,6 +9,8 @@ namespace PyzTest\Glue\ProductLabels\RestApi;
 
 use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\ProductLabelTransfer;
+use Generated\Shared\Transfer\StoreRelationTransfer;
+use Generated\Shared\Transfer\StoreTransfer;
 use PyzTest\Glue\ProductLabels\ProductLabelsApiTester;
 use SprykerTest\Shared\Testify\Fixtures\FixturesBuilderInterface;
 use SprykerTest\Shared\Testify\Fixtures\FixturesContainerInterface;
@@ -96,7 +98,22 @@ class ProductLabelsRestApiFixtures implements FixturesBuilderInterface, Fixtures
     protected function createProductConcreteWithProductLabelRelationship(ProductLabelsApiTester $I): void
     {
         $this->productConcreteTransferWithLabel = $I->haveFullProduct();
-        $this->productLabelTransfer = $I->haveProductLabel();
+
+        $storeTransfer = $I->haveStore([
+            StoreTransfer::NAME => 'DE',
+        ]);
+        $storeRelationSeedData = [
+            StoreRelationTransfer::ID_STORES => [
+                $storeTransfer->getIdStore(),
+            ],
+            StoreRelationTransfer::STORES => [
+                $storeTransfer,
+            ],
+        ];
+        $this->productLabelTransfer = $I->haveProductLabel([
+            ProductLabelTransfer::STORE_RELATION => $storeRelationSeedData,
+        ]);
+
         $I->haveProductLabelToAbstractProductRelation(
             $this->productLabelTransfer->getIdProductLabel(),
             $this->productConcreteTransferWithLabel->getFkProductAbstract()

@@ -25,9 +25,9 @@ use Spryker\Zed\ProductCategory\Communication\Plugin\UpdateProductCategoryRelati
 class CategoryDependencyProvider extends SprykerDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\Category\Dependency\Plugin\CategoryRelationDeletePluginInterface[]
+     * @return \Spryker\Zed\Category\Dependency\Plugin\CategoryRelationDeletePluginInterface[]|\Spryker\Zed\CategoryExtension\Dependency\Plugin\CategoryRelationDeletePluginInterface[]
      */
-    protected function getRelationDeletePluginStack()
+    protected function getRelationDeletePluginStack(): array
     {
         $deletePlugins = array_merge(
             [
@@ -43,7 +43,7 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
     /**
      * @return \Spryker\Zed\Category\Dependency\Plugin\CategoryRelationUpdatePluginInterface[]
      */
-    protected function getRelationUpdatePluginStack()
+    protected function getRelationUpdatePluginStack(): array
     {
         return array_merge(
             [
@@ -58,7 +58,7 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
     /**
      * @return \Spryker\Zed\Category\Dependency\Plugin\CategoryRelationReadPluginInterface[]
      */
-    protected function getRelationReadPluginStack()
+    protected function getRelationReadPluginStack(): array
     {
         $readPlugins = array_merge(
             [
@@ -82,9 +82,9 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
     }
 
     /**
-     * @return array
+     * @return \Spryker\Zed\Category\Dependency\Plugin\CategoryFormPluginInterface[]|\Spryker\Zed\CategoryExtension\Dependency\Plugin\CategoryFormPluginInterface[]
      */
-    protected function getCategoryFormPlugins()
+    protected function getCategoryFormPlugins(): array
     {
         return array_merge(parent::getCategoryFormPlugins(), [
             new CategoryFormPlugin(),
@@ -95,7 +95,7 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
     /**
      * @return \Spryker\Zed\Category\Dependency\Plugin\CategoryUrlPathPluginInterface[]
      */
-    protected function getCategoryUrlPathPlugins()
+    protected function getCategoryUrlPathPlugins(): array
     {
         return [
             new CategoryUrlPathPrefixUpdaterPlugin(),

@@ -318,7 +318,7 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
     }
 
     /**
-     * @param array $skus
+     * @param string[] $skus
      *
      * @return \Spryker\DecimalObject\Decimal[]
      */
