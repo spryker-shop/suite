@@ -67,7 +67,7 @@ class AclConfig extends SprykerAclConfig
             'jason.weidmann@budgetcamerasonline.com' => [
                 'group' => static::GROUP_MERCHANT_ADMIN,
             ],
-            'michele@sony-camera-experts.com' => [
+            'michele@sony-experts.com' => [
                 'group' => static::GROUP_MERCHANT_ADMIN,
             ],
             //this is related to existent username and will be searched into the database
