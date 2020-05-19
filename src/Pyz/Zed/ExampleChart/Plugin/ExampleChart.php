@@ -38,14 +38,6 @@ class ExampleChart implements ChartPluginInterface
     }
 
     /**
-     * @return \Generated\Shared\Transfer\ChartLayoutTransfer
-     */
-    public function getChartLayout(): ChartLayoutTransfer
-    {
-        return new ChartLayoutTransfer();
-    }
-
-    /**
      * @return \Generated\Shared\Transfer\ChartDataTraceTransfer
      */
     protected function getTrace(): ChartDataTraceTransfer
