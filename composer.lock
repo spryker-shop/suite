@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "00136926164cf75e9fa700d7003d92d6",
+    "content-hash": "0b188600ee91e92b575b42e85dbdcd07",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1117,8 +1117,8 @@
             "authors": [
                 {
                     "name": "Alessio Linares",
-                    "role": "Software Engineer",
-                    "email": "alessio.linares@skyscanner.net"
+                    "email": "alessio.linares@skyscanner.net",
+                    "role": "Software Engineer"
                 }
             ],
             "description": "JSONPath implementation for querying and updating JSON objects",
@@ -3647,7 +3647,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -4698,6 +4698,90 @@
             "time": "2020-02-06T13:41:38+00:00"
         },
         {
+            "name": "spryker/data-export",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/data-export.git",
+                "reference": "612e56b7c7c171d0f85ad88b798bb83521b3dac4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/data-export/zipball/612e56b7c7c171d0f85ad88b798bb83521b3dac4",
+                "reference": "612e56b7c7c171d0f85ad88b798bb83521b3dac4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/csv": "^3.0.0",
+                "spryker/data-export-extension": "^0.1.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.8.0",
+                "spryker/util-data-reader": "^1.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "DataExport module",
+            "time": "2020-05-15T10:02:44+00:00"
+        },
+        {
+            "name": "spryker/data-export-extension",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/data-export-extension.git",
+                "reference": "3a5992460db1aa67a7eb07a0050c3c9364b736b2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/data-export-extension/zipball/3a5992460db1aa67a7eb07a0050c3c9364b736b2",
+                "reference": "3a5992460db1aa67a7eb07a0050c3c9364b736b2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "DataExportExtension module",
+            "time": "2020-05-15T10:02:44+00:00"
+        },
+        {
             "name": "spryker/decimal-object",
             "version": "1.0.0",
             "source": {
@@ -4854,6 +4938,63 @@
             "time": "2020-01-23T09:57:03+00:00"
         },
         {
+            "name": "spryker/merchant-storage",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-storage.git",
+                "reference": "60faf0b7fc89a135146158fd5049fb4df840b010"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-storage/zipball/60faf0b7fc89a135146158fd5049fb4df840b010",
+                "reference": "60faf0b7fc89a135146158fd5049fb4df840b010",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/event-behavior": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/merchant": "^3.0.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/publisher-extension": "^1.0.0",
+                "spryker/storage": "^3.4.0",
+                "spryker/store": "^1.1.0",
+                "spryker/synchronization": "^1.0.0",
+                "spryker/synchronization-behavior": "^1.0.0",
+                "spryker/synchronization-extension": "^1.0.0",
+                "spryker/util-encoding": "^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/queue": "*",
+                "spryker/testify": "*",
+                "spryker/url-storage": "*"
+            },
+            "suggest": {
+                "spryker/event": "To use event behavior.",
+                "spryker/url-storage": "To use shop route plugin."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantStorage module",
+            "time": "2020-04-28T11:05:15+00:00"
+        },
+        {
             "name": "spryker/rabbit-mq",
             "version": "dev-master",
             "source": {
@@ -4999,11 +5140,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/ps-12249/ps-12936-return-policy",
+            "version": "dev-feature/ps-12249/dev-yves-for-return-management",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "27aedc2ec110c72a5d6977486862bf7d6a15e117"
+                "reference": "da3146af4756468e8b737b759dc317e2ed4695f6"
             },
             "require": {
                 "php": ">=7.2"
@@ -5698,15 +5839,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-05-14T11:28:19+00:00"
+            "time": "2020-05-19T07:57:17+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/ps-12249/ps-12936-return-policy",
+            "version": "dev-feature/ps-12249/dev-yves-for-return-management",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "59fbd29d4458354d1a4c8d0bb7673271e0c7f264"
+                "reference": "87b97fc3194aaae9cf3fd9c30632f4efe9a69dd0"
             },
             "require": {
                 "php": ">=7.2"
@@ -5852,7 +5993,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-05-14T07:59:38+00:00"
+            "time": "2020-05-19T08:30:09+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8720,8 +8861,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -10482,20 +10623,20 @@
             "authors": [
                 {
                     "name": "Manuel Pichler",
-                    "role": "Project Founder",
                     "email": "github@manuel-pichler.de",
-                    "homepage": "https://github.com/manuelpichler"
+                    "homepage": "https://github.com/manuelpichler",
+                    "role": "Project Founder"
                 },
                 {
                     "name": "Marc Würth",
-                    "role": "Project Maintainer",
                     "email": "ravage@bluewin.ch",
-                    "homepage": "https://github.com/ravage84"
+                    "homepage": "https://github.com/ravage84",
+                    "role": "Project Maintainer"
                 },
                 {
                     "name": "Other contributors",
-                    "role": "Contributors",
-                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors"
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
+                    "role": "Contributors"
                 }
             ],
             "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
@@ -11252,6 +11393,95 @@
             ],
             "description": "SprykGui module",
             "time": "2020-02-20T14:09:48+00:00"
+        },
+        {
+            "name": "spryker-shop/merchant-page",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/merchant-page.git",
+                "reference": "827f1d1180155e41bc04302c828f32ba374f8e9e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/merchant-page/zipball/827f1d1180155e41bc04302c828f32ba374f8e9e",
+                "reference": "827f1d1180155e41bc04302c828f32ba374f8e9e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker-shop/shop-application": "^1.0.0",
+                "spryker-shop/storage-router-extension": "^1.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/merchant-storage": "^0.1.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker-shop/merchant-profile-widget": "*",
+                "spryker/code-sniffer": "*"
+            },
+            "suggest": {
+                "spryker-shop/merchant-profile-widget": "To use MerchantProfileWidget."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantPage module",
+            "time": "2020-03-30T16:26:17+00:00"
+        },
+        {
+            "name": "spryker-shop/merchant-profile-widget",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/merchant-profile-widget.git",
+                "reference": "def6bad7d33261c0aff367b0bcc3f3d0c77fb733"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/merchant-profile-widget/zipball/def6bad7d33261c0aff367b0bcc3f3d0c77fb733",
+                "reference": "def6bad7d33261c0aff367b0bcc3f3d0c77fb733",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker-shop/merchant-page": "*",
+                "spryker/code-sniffer": "*"
+            },
+            "suggest": {
+                "spryker-shop/merchant-page": "To use information-item molecule."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantProfileWidget module",
+            "time": "2020-04-29T09:06:19+00:00"
         },
         {
             "name": "spryker/architecture-sniffer",
