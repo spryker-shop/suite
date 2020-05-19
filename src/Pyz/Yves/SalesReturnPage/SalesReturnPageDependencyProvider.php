@@ -8,7 +8,6 @@
 namespace Pyz\Yves\SalesReturnPage;
 
 use SprykerShop\Yves\ProductBundleWidget\Plugin\SalesReturnPage\ProductBundleReturnCreateFormExpanderPlugin;
-use SprykerShop\Yves\ProductBundleWidget\Plugin\SalesReturnPage\ProductBundleReturnCreateFormHandlerPlugin;
 use SprykerShop\Yves\SalesReturnPage\SalesReturnPageDependencyProvider as SprykerSalesReturnPageDependencyProvider;
 
 class SalesReturnPageDependencyProvider extends SprykerSalesReturnPageDependencyProvider
@@ -20,16 +19,6 @@ class SalesReturnPageDependencyProvider extends SprykerSalesReturnPageDependency
     {
         return [
             new ProductBundleReturnCreateFormExpanderPlugin(),
-        ];
-    }
-
-    /**
-     * @return \SprykerShop\Yves\SalesReturnPageExtension\Dependency\Plugin\ReturnCreateFormHandlerPluginInterface[]
-     */
-    protected function getReturnCreateFormHandlerPlugins(): array
-    {
-        return [
-            new ProductBundleReturnCreateFormHandlerPlugin(),
         ];
     }
 }
