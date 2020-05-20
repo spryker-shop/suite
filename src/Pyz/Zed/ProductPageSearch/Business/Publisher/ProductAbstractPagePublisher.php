@@ -178,7 +178,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
      *
      * @return void
      */
-    protected function add(ProductPageSearchTransfer $productPageSearchTransfer, array $searchDocument)
+    protected function add(ProductPageSearchTransfer $productPageSearchTransfer, array $searchDocument): void
     {
         $synchronizedData = $this->buildSynchronizedData($productPageSearchTransfer, $searchDocument, 'product_abstract');
         $this->synchronizedDataCollection[] = $synchronizedData;
@@ -308,7 +308,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
      */
     public function formatPostgresArray(array $values): string
     {
-        if (is_array($values) && empty($values)) {
+        if (!$values) {
             return '{null}';
         }
 

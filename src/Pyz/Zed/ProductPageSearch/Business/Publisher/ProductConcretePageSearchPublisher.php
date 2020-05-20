@@ -167,7 +167,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      *
      * @return void
      */
-    protected function add(ProductConcretePageSearchTransfer $productPageSearchTransfer)
+    protected function add(ProductConcretePageSearchTransfer $productPageSearchTransfer): void
     {
         $synchronizedData = $this->buildSynchronizedData($productPageSearchTransfer, 'product_concrete');
         $this->synchronizedDataCollection[] = $synchronizedData;
@@ -295,7 +295,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      */
     public function formatPostgresArray(array $values): string
     {
-        if (is_array($values) && empty($values)) {
+        if (!$values) {
             return '{null}';
         }
 
