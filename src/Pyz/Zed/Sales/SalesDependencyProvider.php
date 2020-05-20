@@ -22,7 +22,7 @@ use Spryker\Zed\ProductBundle\Communication\Plugin\Sales\ProductBundleOptionOrde
 use Spryker\Zed\ProductBundle\Communication\Plugin\Sales\ProductBundleOrderHydratePlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Sales\ProductBundleOrderItemExpanderPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Sales\UniqueOrderBundleItemsExpanderPlugin;
-use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Sales\QuantitySalesUnitHydrateOrderPlugin;
+use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Sales\QuantitySalesUnitOrderItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\SalesExtension\QuantitySalesUnitOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\ProductOfferSales\Communication\Plugin\Sales\ProductOfferReferenceOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionGroupIdHydratorPlugin;
@@ -73,7 +73,6 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new CustomerOrderHydratePlugin(),
             new ProductBundleIdHydratorPlugin(),
             new ProductOptionGroupIdHydratorPlugin(),
-            new QuantitySalesUnitHydrateOrderPlugin(),
             new AmountLeadProductHydrateOrderPlugin(),
             new AmountSalesUnitHydrateOrderPlugin(),
             new CommentThreadOrderExpanderPlugin(),
@@ -167,6 +166,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new ConfiguredBundleOrderItemExpanderPlugin(),
             new ProductBundleOrderItemExpanderPlugin(),
             new ProductBundleOptionItemExpanderPlugin(),
+            new QuantitySalesUnitOrderItemExpanderPlugin(),
         ];
     }
 }
