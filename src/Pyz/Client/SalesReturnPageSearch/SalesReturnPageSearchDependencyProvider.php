@@ -7,7 +7,7 @@
 
 namespace Pyz\Client\SalesReturnPageSearch;
 
-use Spryker\Client\SalesReturnPageSearch\Plugin\Elasticsearch\ResultFormatter\SalesReturnPageSearchResultFormatterPlugin;
+use Spryker\Client\SalesReturnPageSearch\Plugin\Elasticsearch\ResultFormatter\ReturnReasonSearchResultFormatterPlugin;
 use Spryker\Client\SalesReturnPageSearch\SalesReturnPageSearchDependencyProvider as SprykerSalesReturnPageSearchDependencyProvider;
 use Spryker\Client\SearchElasticsearch\Plugin\QueryExpander\LocalizedQueryExpanderPlugin;
 
@@ -19,7 +19,7 @@ class SalesReturnPageSearchDependencyProvider extends SprykerSalesReturnPageSear
     protected function getReturnReasonSearchResultFormatterPlugins(): array
     {
         return [
-            new SalesReturnPageSearchResultFormatterPlugin(),
+            new ReturnReasonSearchResultFormatterPlugin(),
         ];
     }
 
