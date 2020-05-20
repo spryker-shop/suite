@@ -20,7 +20,7 @@ class ApiDependencyProvider extends SprykerApiDependencyProvider
     /**
      * @return \Spryker\Zed\Api\Dependency\Plugin\ApiResourcePluginInterface[]
      */
-    protected function getApiResourcePluginCollection()
+    protected function getApiResourcePluginCollection(): array
     {
         return [
             new CustomerApiResourcePlugin(),
@@ -31,7 +31,7 @@ class ApiDependencyProvider extends SprykerApiDependencyProvider
     /**
      * @return \Spryker\Zed\Api\Dependency\Plugin\ApiValidatorPluginInterface[]
      */
-    protected function getApiValidatorPluginCollection()
+    protected function getApiValidatorPluginCollection(): array
     {
         return [
             new CustomerApiValidatorPlugin(),

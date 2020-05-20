@@ -49,7 +49,7 @@ class QueueDependencyProvider extends SprykerDependencyProvider
      *
      * @return \Spryker\Zed\Queue\Dependency\Plugin\QueueMessageProcessorPluginInterface[]
      */
-    protected function getProcessorMessagePlugins(Container $container)
+    protected function getProcessorMessagePlugins(Container $container): array
     {
         return [
             EventConstants::EVENT_QUEUE => new EventQueueMessageProcessorPlugin(),
