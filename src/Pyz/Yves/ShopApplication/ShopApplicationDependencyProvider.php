@@ -72,6 +72,7 @@ use SprykerShop\Yves\ProductAlternativeWidget\Widget\ProductAlternativeListWidge
 use SprykerShop\Yves\ProductAlternativeWidget\Widget\ShoppingListProductAlternativeWidget;
 use SprykerShop\Yves\ProductAlternativeWidget\Widget\WishlistProductAlternativeWidget;
 use SprykerShop\Yves\ProductBarcodeWidget\Widget\ProductBarcodeWidget;
+use SprykerShop\Yves\ProductBundleWidget\Widget\OrderItemsProductBundleWidget;
 use SprykerShop\Yves\ProductBundleWidget\Widget\ProductBundleCartItemsListWidget;
 use SprykerShop\Yves\ProductBundleWidget\Widget\ProductBundleItemCounterWidget;
 use SprykerShop\Yves\ProductBundleWidget\Widget\ProductBundleItemsMultiCartItemsListWidget;
@@ -253,6 +254,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CartChangeQuantityFormWidget::class,
             CustomerReorderFormWidget::class,
             CustomerReorderItemsFormWidget::class,
+            OrderItemsProductBundleWidget::class,
         ];
     }
 
