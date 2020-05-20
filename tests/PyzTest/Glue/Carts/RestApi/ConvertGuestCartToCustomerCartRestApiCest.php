@@ -52,10 +52,32 @@ class ConvertGuestCartToCustomerCartRestApiCest
      *
      * @return void
      */
-    public function requestGuestCartBecomesCustomerCartAfterCustomerLogin(CartsApiTester $I): void
+    public function requestGuestCartWithXAnonymousAndAuthorizationTokenValidationError(CartsApiTester $I): void
     {
         // Arrange
         $this->requestCustomerLoginWithXAnonymousCustomerUniqueIdHeader($I);
+        $quoteUuid = $this->fixtures->getGuestQuoteTransfer()->getUuid();
+        $url = $I->buildCartUrl($quoteUuid, [CartsRestApiConfig::RESOURCE_CART_ITEMS]);
+
+        // Act
+        $I->sendGET($url);
+
+        // Assert
+        $I->seeResponseCodeIs(HttpCode::BAD_REQUEST);
+        $I->seeResponseIsJson();
+    }
+
+    /**
+     * @depends loadFixtures
+     *
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    public function requestGuestCartBecomesCustomerCartAfterCustomerLogin(CartsApiTester $I): void
+    {
+        // Arrange
+        $this->authorizeCustomer($I);
         $quoteUuid = $this->fixtures->getGuestQuoteTransfer()->getUuid();
         $productConcreteSku = $this->fixtures->getProductConcreteTransfer()->getSku();
         $url = $I->buildCartUrl($quoteUuid, [CartsRestApiConfig::RESOURCE_CART_ITEMS]);
@@ -104,6 +126,18 @@ class ConvertGuestCartToCustomerCartRestApiCest
         $I->seeResponseIsJson();
         $I->seeResponseMatchesOpenApiSchema();
         $I->seeResponseDataContainsEmptyCollection();
+    }
+
+    /**
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    protected function authorizeCustomer(CartsApiTester $I): void
+    {
+        $token = $I->haveAuthorizationToGlue($this->fixtures->getCustomerTransfer())->getAccessToken();
+
+        $I->amBearerAuthenticated($token);
     }
 
     /**

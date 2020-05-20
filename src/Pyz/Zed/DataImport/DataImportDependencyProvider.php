@@ -38,6 +38,7 @@ use Spryker\Zed\DataImport\DataImportDependencyProvider as SprykerDataImportDepe
 use Spryker\Zed\FileManagerDataImport\Communication\Plugin\FileManagerDataImportPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\MerchantDataImport\Communication\Plugin\MerchantDataImportPlugin;
+use Spryker\Zed\MerchantDataImport\Communication\Plugin\MerchantStoreDataImportPlugin;
 use Spryker\Zed\MerchantOmsDataImport\Communication\Plugin\DataImport\MerchantOmsProcessDataImportPlugin;
 use Spryker\Zed\MerchantOpeningHoursDataImport\Communication\Plugin\MerchantOpeningHoursDateScheduleDataImportPlugin;
 use Spryker\Zed\MerchantOpeningHoursDataImport\Communication\Plugin\MerchantOpeningHoursWeekdayScheduleDataImportPlugin;
@@ -58,6 +59,8 @@ use Spryker\Zed\PriceProductOfferDataImport\Communication\Plugin\PriceProductOff
 use Spryker\Zed\PriceProductScheduleDataImport\Communication\Plugin\PriceProductScheduleDataImportPlugin;
 use Spryker\Zed\ProductAlternativeDataImport\Communication\Plugin\ProductAlternativeDataImportPlugin;
 use Spryker\Zed\ProductDiscontinuedDataImport\Communication\Plugin\ProductDiscontinuedDataImportPlugin;
+use Spryker\Zed\ProductLabelDataImport\Communication\Plugin\ProductLabelDataImportPlugin;
+use Spryker\Zed\ProductLabelDataImport\Communication\Plugin\ProductLabelStoreDataImportPlugin;
 use Spryker\Zed\ProductListDataImport\Communication\Plugin\ProductListCategoryDataImportPlugin;
 use Spryker\Zed\ProductListDataImport\Communication\Plugin\ProductListDataImportPlugin;
 use Spryker\Zed\ProductListDataImport\Communication\Plugin\ProductListProductConcreteDataImportPlugin;
@@ -75,6 +78,7 @@ use Spryker\Zed\ProductRelationDataImport\Communication\Plugin\ProductRelationSt
 use Spryker\Zed\QuoteRequestDataImport\Communication\Plugin\QuoteRequestDataImportPlugin;
 use Spryker\Zed\QuoteRequestDataImport\Communication\Plugin\QuoteRequestVersionDataImportPlugin;
 use Spryker\Zed\SalesOrderThresholdDataImport\Communication\Plugin\DataImport\SalesOrderThresholdDataImportPlugin;
+use Spryker\Zed\SalesReturnDataImport\Communication\Plugin\ReturnReasonDataImportPlugin;
 use Spryker\Zed\SharedCartDataImport\Communication\Plugin\SharedCartDataImportPlugin;
 use Spryker\Zed\ShipmentDataImport\Communication\Plugin\ShipmentDataImportPlugin;
 use Spryker\Zed\ShipmentDataImport\Communication\Plugin\ShipmentMethodPriceDataImportPlugin;
@@ -247,6 +251,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new BusinessOnBehalfCompanyUserDataImportPlugin(),
             new SalesOrderThresholdDataImportPlugin(),
             new MerchantDataImportPlugin(),
+            new MerchantStoreDataImportPlugin(),
             new MerchantProfileDataImportPlugin(),
             new MerchantProfileAddressDataImportPlugin(),
             new MerchantProductOfferDataImportPlugin(),
@@ -298,6 +303,9 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new ProductRelationStoreDataImportPlugin(),
             new MerchantStockDataImportPlugin(),
             new MerchantOmsProcessDataImportPlugin(),
+            new ProductLabelDataImportPlugin(),
+            new ProductLabelStoreDataImportPlugin(),
+            new ReturnReasonDataImportPlugin(),
         ];
     }
 

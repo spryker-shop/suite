@@ -25,7 +25,6 @@ use Spryker\Zed\ConfigurableBundleStorage\Communication\Plugin\Event\Configurabl
 use Spryker\Zed\ContentStorage\Communication\Plugin\Event\ContentStorageEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\EventBehavior\EventBehaviorDependencyProvider as SprykerEventBehaviorDependencyProvider;
 use Spryker\Zed\MerchantOpeningHoursStorage\Communication\Plugin\Event\MerchantOpeningHoursEventResourceBulkRepositoryPlugin;
-use Spryker\Zed\MerchantProfileStorage\Communication\Plugin\Event\MerchantProfileEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\NavigationStorage\Communication\Plugin\Event\NavigationEventResourceQueryContainerPlugin;
 use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Event\PriceProductAbstractMerchantRelationEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Event\PriceProductConcreteMerchantRelationEventResourceBulkRepositoryPlugin;
@@ -36,8 +35,6 @@ use Spryker\Zed\ProductCategoryStorage\Communication\Plugin\Event\ProductCategor
 use Spryker\Zed\ProductGroupStorage\Communication\Plugin\Event\ProductGroupEventResourceQueryContainerPlugin;
 use Spryker\Zed\ProductImageStorage\Communication\Plugin\Event\ProductAbstractImageEventResourceQueryContainerPlugin;
 use Spryker\Zed\ProductImageStorage\Communication\Plugin\Event\ProductConcreteImageEventResourceQueryContainerPlugin;
-use Spryker\Zed\ProductLabelStorage\Communication\Plugin\Event\ProductAbstractLabelEventResourceQueryContainerPlugin;
-use Spryker\Zed\ProductLabelStorage\Communication\Plugin\Event\ProductLabelDictionaryEventResourceQueryContainerPlugin;
 use Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Event\ProductConcreteMeasurementUnitEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Event\ProductMeasurementUnitEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\ProductOfferAvailabilityStorage\Communication\Plugin\Event\ProductOfferAvailabilityEventResourceBulkRepositoryPlugin;
@@ -91,8 +88,6 @@ class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProv
             new ProductGroupEventResourceQueryContainerPlugin(),
             new ProductAbstractImageEventResourceQueryContainerPlugin(),
             new ProductConcreteImageEventResourceQueryContainerPlugin(),
-            new ProductLabelDictionaryEventResourceQueryContainerPlugin(),
-            new ProductAbstractLabelEventResourceQueryContainerPlugin(),
             new ProductOptionEventResourceQueryContainerPlugin(),
             new ProductReviewEventResourceQueryContainerPlugin(),
             new ProductSearchConfigEventResourceQueryContainerPlugin(),
@@ -108,7 +103,6 @@ class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProv
             new ContentStorageEventResourceBulkRepositoryPlugin(),
             new MerchantOpeningHoursEventResourceBulkRepositoryPlugin(),
             new CompanyUserEventResourceBulkRepositoryPlugin(),
-            new MerchantProfileEventResourceBulkRepositoryPlugin(),
         ];
     }
 }

@@ -174,7 +174,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
      *
      * @return void
      */
-    protected function add(ProductPageSearchTransfer $productPageSearchTransfer, array $searchDocument)
+    protected function add(ProductPageSearchTransfer $productPageSearchTransfer, array $searchDocument): void
     {
         $synchronizedData = $this->buildSynchronizedData($productPageSearchTransfer, $searchDocument, 'product_abstract');
         $this->synchronizedDataCollection[] = $synchronizedData;
@@ -304,12 +304,12 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
      */
     public function formatPostgresArray(array $values): string
     {
-        if (is_array($values) && empty($values)) {
+        if (!$values) {
             return '{null}';
         }
 
         $values = array_map(function ($value) {
-            return ($value === null || $value === "") ? "NULL" : $value;
+            return ($value === null || $value === '') ? 'NULL' : $value;
         }, $values);
 
         return sprintf(
@@ -351,7 +351,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
     {
         $sql = <<<SQL
 WITH records AS (
-    SELECT 
+    SELECT
       input.fk_product_abstract,
       input.store,
       input.locale,
@@ -360,7 +360,7 @@ WITH records AS (
       input.key,
       id_product_abstract_page_search
     FROM (
-           SELECT 
+           SELECT
              unnest(? :: INTEGER []) AS fk_product_abstract,
              unnest(? :: VARCHAR []) AS store,
              unnest(? :: VARCHAR []) AS locale,
@@ -372,7 +372,7 @@ WITH records AS (
     ),
     updated AS (
     UPDATE spy_product_abstract_page_search
-    SET 
+    SET
       fk_product_abstract = records.fk_product_abstract,
       store = records.store,
       locale = records.locale,
@@ -386,7 +386,7 @@ WITH records AS (
   ),
     inserted AS (
     INSERT INTO spy_product_abstract_page_search(
-      id_product_abstract_page_search, 
+      id_product_abstract_page_search,
       fk_product_abstract,
       store,
       locale,
@@ -397,7 +397,7 @@ WITH records AS (
       updated_at
     ) (
       SELECT
-        nextval('spy_product_abstract_page_search_pk_seq'), 
+        nextval('spy_product_abstract_page_search_pk_seq'),
         fk_product_abstract,
         store,
         locale,

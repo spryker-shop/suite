@@ -13,6 +13,7 @@ use Spryker\Yves\DummyMarketplacePayment\Plugin\StepEngine\DummyMarketplacePayme
 use Spryker\Yves\DummyMarketplacePayment\Plugin\StepEngine\SubForm\DummyMarketplacePaymentInvoiceSubFormPlugin;
 use Spryker\Yves\Kernel\Container;
 use Spryker\Yves\Kernel\Plugin\Pimple;
+use Spryker\Yves\MerchantShipment\Plugin\CheckoutPage\MerchantShipmentCheckoutPageStepEnginePreRenderPlugin;
 use Spryker\Yves\Nopayment\Plugin\NopaymentHandlerPlugin;
 use Spryker\Yves\Payment\Plugin\PaymentFormFilterPlugin;
 use Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface;
@@ -33,6 +34,9 @@ use SprykerShop\Yves\CustomerPage\Plugin\CustomerStepHandler;
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutAddressStepEnterPreCheckPlugin;
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutPaymentStepEnterPreCheckPlugin;
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutShipmentStepEnterPreCheckPlugin;
+use SprykerShop\Yves\QuoteRequestAgentPage\Plugin\CheckoutPage\QuoteRequestAgentCheckoutWorkflowStepResolverStrategyPlugin;
+use SprykerShop\Yves\QuoteRequestPage\Plugin\CheckoutPage\QuoteRequestCheckoutWorkflowStepResolverStrategyPlugin;
+use SprykerShop\Yves\QuoteRequestPage\Plugin\CheckoutPage\QuoteWithCustomShipmentPriceCheckoutWorkflowStepResolverStrategyPlugin;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThresholdWidgetPlugin;
 
 class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyProvider
@@ -62,7 +66,9 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     }
 
     /**
-     * @return (\Symfony\Component\Form\FormTypeInterface|string)[]
+     * @phpstan-return array<int, class-string<\Symfony\Component\Form\FormTypeInterface>|\Symfony\Component\Form\FormInterface>
+     *
+     * @return \Symfony\Component\Form\FormTypeInterface[]|string[]
      */
     protected function getCustomerStepSubForms(): array
     {
@@ -77,7 +83,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
      * @param string $subForm
      * @param string $blockPrefix
      *
-     * @return \SprykerShop\Yves\CustomerPage\Form\CustomerCheckoutForm|\Symfony\Component\Form\FormInterface
+     * @return \Symfony\Component\Form\FormInterface
      */
     protected function getCustomerCheckoutForm($subForm, $blockPrefix)
     {
@@ -218,5 +224,27 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     protected function getCustomerStepHandler(): StepHandlerPluginInterface
     {
         return new CustomerStepHandler();
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutStepResolverStrategyPluginInterface[]
+     */
+    protected function getCheckoutStepResolverStrategyPlugins(): array
+    {
+        return [
+            new QuoteRequestCheckoutWorkflowStepResolverStrategyPlugin(),
+            new QuoteWithCustomShipmentPriceCheckoutWorkflowStepResolverStrategyPlugin(),
+            new QuoteRequestAgentCheckoutWorkflowStepResolverStrategyPlugin(),
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\StepEngine\CheckoutPageStepEnginePreRenderPluginInterface[]
+     */
+    protected function getCheckoutPageStepEnginePreRenderPlugins(): array
+    {
+        return [
+            new MerchantShipmentCheckoutPageStepEnginePreRenderPlugin(),
+        ];
     }
 }

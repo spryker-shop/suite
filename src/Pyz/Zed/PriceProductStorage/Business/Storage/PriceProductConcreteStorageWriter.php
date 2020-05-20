@@ -138,7 +138,7 @@ class PriceProductConcreteStorageWriter extends SprykerPriceProductConcreteStora
      *
      * @return void
      */
-    protected function add(array $productAbstractStorageData)
+    protected function add(array $productAbstractStorageData): void
     {
         $synchronizedData = $this->buildSynchronizedData($productAbstractStorageData, 'fk_product', 'price_product_concrete');
         $this->synchronizedDataCollection[] = $synchronizedData;
@@ -261,12 +261,12 @@ class PriceProductConcreteStorageWriter extends SprykerPriceProductConcreteStora
      */
     public function formatPostgresArray(array $values): string
     {
-        if (is_array($values) && empty($values)) {
+        if (!$values) {
             return '{null}';
         }
 
         $values = array_map(function ($value) {
-            return ($value === null || $value === "") ? "NULL" : $value;
+            return ($value === null || $value === '') ? 'NULL' : $value;
         }, $values);
 
         return sprintf(
@@ -308,14 +308,14 @@ class PriceProductConcreteStorageWriter extends SprykerPriceProductConcreteStora
     {
         $sql = <<<SQL
 WITH records AS (
-    SELECT 
+    SELECT
       input.fk_product,
       input.store,
       input.data,
       input.key,
       id_price_product_concrete_storage
     FROM (
-           SELECT 
+           SELECT
              unnest(? :: INTEGER []) AS fk_product,
              unnest(? :: VARCHAR []) AS store,
              json_array_elements(?) AS data,
@@ -325,7 +325,7 @@ WITH records AS (
     ),
     updated AS (
     UPDATE spy_price_product_concrete_storage
-    SET 
+    SET
       fk_product = records.fk_product,
       store = records.store,
       data = records.data,
@@ -337,7 +337,7 @@ WITH records AS (
   ),
     inserted AS (
     INSERT INTO spy_price_product_concrete_storage(
-      id_price_product_concrete_storage, 
+      id_price_product_concrete_storage,
       fk_product,
       store,
       data,
@@ -346,7 +346,7 @@ WITH records AS (
       updated_at
     ) (
       SELECT
-        nextval('spy_price_product_concrete_storage_pk_seq'), 
+        nextval('spy_price_product_concrete_storage_pk_seq'),
         fk_product,
         store,
         data,

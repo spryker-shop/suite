@@ -160,7 +160,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      *
      * @return void
      */
-    protected function add(ProductConcretePageSearchTransfer $productPageSearchTransfer)
+    protected function add(ProductConcretePageSearchTransfer $productPageSearchTransfer): void
     {
         $synchronizedData = $this->buildSynchronizedData($productPageSearchTransfer, 'product_concrete');
         $this->synchronizedDataCollection[] = $synchronizedData;
@@ -286,12 +286,12 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      */
     public function formatPostgresArray(array $values): string
     {
-        if (is_array($values) && empty($values)) {
+        if (!$values) {
             return '{null}';
         }
 
         $values = array_map(function ($value) {
-            return ($value === null || $value === "") ? "NULL" : $value;
+            return ($value === null || $value === '') ? 'NULL' : $value;
         }, $values);
 
         return sprintf(
@@ -333,7 +333,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
     {
         $sql = <<<SQL
 WITH records AS (
-    SELECT 
+    SELECT
       input.fk_product,
       input.store,
       input.locale,
@@ -342,7 +342,7 @@ WITH records AS (
       input.key,
       id_product_concrete_page_search
     FROM (
-           SELECT 
+           SELECT
              unnest(? :: INTEGER []) AS fk_product,
              unnest(? :: VARCHAR []) AS store,
              unnest(? :: VARCHAR []) AS locale,
@@ -354,7 +354,7 @@ WITH records AS (
     ),
     updated AS (
     UPDATE spy_product_concrete_page_search
-    SET 
+    SET
       fk_product = records.fk_product,
       store = records.store,
       locale = records.locale,
@@ -368,7 +368,7 @@ WITH records AS (
   ),
     inserted AS (
     INSERT INTO spy_product_concrete_page_search(
-      id_product_concrete_page_search, 
+      id_product_concrete_page_search,
       fk_product,
       store,
       locale,
@@ -379,7 +379,7 @@ WITH records AS (
       updated_at
     ) (
       SELECT
-        nextval('spy_product_concrete_page_search_pk_seq'), 
+        nextval('spy_product_concrete_page_search_pk_seq'),
         fk_product,
         store,
         locale,
