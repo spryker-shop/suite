@@ -23,7 +23,6 @@ use Spryker\Yves\Twig\Plugin\Application\TwigApplicationPlugin;
 use Spryker\Yves\Validator\Plugin\Application\ValidatorApplicationPlugin;
 use SprykerShop\Yves\AgentWidget\Widget\AgentControlBarWidget;
 use SprykerShop\Yves\AvailabilityNotificationWidget\Widget\AvailabilityNotificationSubscriptionWidget;
-use SprykerShop\Yves\BarcodeWidget\Widget\BarcodeWidget;
 use SprykerShop\Yves\BusinessOnBehalfWidget\Widget\BusinessOnBehalfStatusWidget;
 use SprykerShop\Yves\CartCodeWidget\Widget\CartCodeFormWidget;
 use SprykerShop\Yves\CartNoteWidget\Widget\CartItemNoteFormWidget;
@@ -238,7 +237,6 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             QuoteRequestActionsWidget::class,
             OrderCustomReferenceWidget::class,
             OrderItemsConfiguredBundleWidget::class,
-            BarcodeWidget::class,
         ];
     }
 
