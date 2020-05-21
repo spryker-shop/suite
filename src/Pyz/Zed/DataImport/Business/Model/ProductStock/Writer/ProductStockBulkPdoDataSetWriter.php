@@ -49,16 +49,6 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
     protected static $stockProductCollection = [];
 
     /**
-     * @var array
-     */
-    protected static $storeToStock = [];
-
-    /**
-     * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository
-     */
-    protected $productRepository;
-
-    /**
      * @var \Spryker\Zed\Stock\Business\StockFacadeInterface
      */
     protected $stockFacade;
@@ -437,25 +427,6 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
         $productStockArray[ProductStockHydratorStep::KEY_CONCRETE_SKU] = $dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU];
 
         static::$stockProductCollection[] = $productStockArray;
-    }
-
-    /**
-     * @return array
-     */
-    protected function getStoreToWarehouse(): array
-    {
-        if (empty(static::$storeToStock)) {
-            $storeToWarehouse = [];
-            $warehouseToStore = $this->stockFacade->getWarehouseToStoreMapping();
-            foreach ($warehouseToStore as $warehouse => $stores) {
-                foreach ($stores as $store) {
-                    $storeToWarehouse[$store][$warehouse] = $warehouse;
-                }
-            }
-            static::$storeToStock = $storeToWarehouse;
-        }
-
-        return static::$storeToStock;
     }
 
     /**
