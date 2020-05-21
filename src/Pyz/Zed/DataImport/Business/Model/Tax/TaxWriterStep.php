@@ -134,7 +134,7 @@ class TaxWriterStep extends PublishAwareStep implements DataImportStepInterface
      *
      * @return void
      */
-    protected function addShipmentTax(SpyTaxSet $taxSetEntity)
+    protected function addShipmentTax(SpyTaxSet $taxSetEntity): void
     {
         if (!isset($this->shipmentSets[$taxSetEntity->getName()])) {
             return;

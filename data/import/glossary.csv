@@ -525,7 +525,7 @@ customer.order.reorder_selected,Reorder selected items,en_US
 customer.order.reorder_selected,Ausgewählte Artikel Nachbestellen,de_DE
 customer.order.reorder.error.unable_to_reorder_items,"You can not reorder those products directly, please add them to your cart separately",en_US
 customer.order.reorder.error.unable_to_reorder_items,"Sie können diese Produkte nicht direkt nachbestellen, bitte fügen Sie sie separat in Ihren Warenkorb",de_DE
-customer.order.date,Order Date,en_US
+customer.order.date,Date,en_US
 customer.order.date,Datum,de_DE
 customer.order.item_sku,SKU,de_DE
 customer.order.item_sku,SKU,en_US
@@ -1199,6 +1199,8 @@ product_review.error.invalid_rating,Product rating should be selected.,en_US
 product_review.error.invalid_rating,Produktbewertung soll ausgewählt werden.,de_DE
 cart.promotion.items,Promotional products,en_US
 cart.promotion.items,Werbeprodukte,de_DE
+checkout.payment_method.invalid,Checkout Zahlung ist ungültig,de_DE
+checkout.payment_method.invalid,Checkout payment is not valid,en_US
 checkout.payment.provider.DummyPayment,Dummy Payment,en_US
 checkout.payment.provider.DummyPayment,Beispiel-Zahlungsart,de_DE
 checkout.payment.provider.DummyMarketplacePayment,Dummy Marketplace Payment,en_US
@@ -1217,6 +1219,8 @@ product-cart.validation.error.concrete-product-inactive,Product sku is not activ
 product-cart.validation.error.concrete-product-inactive,Produkt sku ist nicht aktiv.,de_DE
 product-cart.info.concrete-product-inactive.removed,Inactive item %sku% was removed from your shopping cart.,en_US
 product-cart.info.concrete-product-inactive.removed,Der inaktive Artikel %sku% wurde aus Ihrem Warenkorb entfernt.,de_DE
+product-offer.info.product-offer-inactive.removed,Inactive item %sku% was removed from your shopping cart.,en_US
+product-offer.info.product-offer-inactive.removed,Der inaktive Artikel %sku% wurde aus Ihrem Warenkorb entfernt.,de_DE
 product-cart.info.restricted-product.removed,The Item %sku% was removed from the cart because it was deactivated.,en_US
 product-cart.info.restricted-product.removed,Der Artikel %sku% wurde aus Ihrem Warenkorb entfernt da er deaktiviert wurde.,de_DE
 reorder.info.restricted-product.removed,The Item %sku% could not be added to cart because it was deactivated.,en_US
@@ -2927,8 +2931,8 @@ persistent_cart_share.error.resource_is_not_available,The cart you are trying to
 persistent_cart_share.error.resource_is_not_available,"Der Warenkorb, auf den Sie zugreifen möchten, ist nicht verfügbar.",de_DE
 persistent_cart_share.error.quote_is_not_available,The cart you are trying to access is not available.,en_US
 persistent_cart_share.error.quote_is_not_available,"Der Warenkorb, auf den Sie zugreifen möchten, ist nicht verfügbar.",de_DE
-persistent_cart_share.share_options.external.PREVIEW,,en_US
-persistent_cart_share.share_options.external.PREVIEW,,de_DE
+persistent_cart_share.share_options.external.PREVIEW,Preview,en_US
+persistent_cart_share.share_options.external.PREVIEW,Vorschau,de_DE
 persistent_cart_share.share_options.internal.READ_ONLY,Read Only,en_US
 persistent_cart_share.share_options.internal.READ_ONLY,Schreibgeschützt,de_DE
 persistent_cart_share.share_options.internal.FULL_ACCESS,Full Access,en_US
@@ -2953,8 +2957,8 @@ shared_cart.resource_share.strategy.error.unable_to_share_cart,Unable to share a
 shared_cart.resource_share.strategy.error.unable_to_share_cart,Der Einkaufswagen kann nicht mit dem angegebenen Kunden geteilt werden.,de_DE
 shared_cart.resource_share.strategy.success.cart_share_access_updated,Access level was updated.,en_US
 shared_cart.resource_share.strategy.success.cart_share_access_updated,Zugriffsebene wurde aktualisiert.,de_DE
-product_cart_item.remove,"&times; entfernen",de_DE
-product_cart_item.remove,"&times; remove",en_US
+product_cart_item.remove,"× entfernen",de_DE
+product_cart_item.remove,"× remove",en_US
 comment.validation.error.comment_not_found,Comment not found.,en_US
 comment.validation.error.comment_not_found,Kommentar nicht gefunden.,de_DE
 comment.validation.error.comment_thread_not_found,Comment Thread not found.,en_US
@@ -3085,6 +3089,8 @@ merchant_product_offer.view_seller,View Seller,en_US
 merchant_product_offer.view_seller,Händler ansehen,de_DE
 merchant_product_offer.sold_by,Sold by,en_US
 merchant_product_offer.sold_by,Verkauft durch,de_DE
+merchant_sales_order.merchant_order_id,Merchant Order ID,en_US
+merchant_sales_order.merchant_order_id,Händlerbestell-ID,de_DE
 agent_page.error.customer_already_logged_in,"Sie sind bereits als Kunde angemeldet. Bitte loggen Sie sich zuerst aus und fahren Sie dann fort",de_DE
 agent_page.error.customer_already_logged_in,"You are already logged in as customer, please logout first, then proceed",en_US
 configurable_bundle_note.enter_note,Add a note for the configured bundle,en_US
@@ -3103,10 +3109,8 @@ sales_configured_bundle_widget.returnable_state,Non-returnable,en_US
 sales_configured_bundle_widget.returnable_state,Kann nicht retourniert werden,de_DE
 configured_bundle_widget.items,Items,en_US
 configured_bundle_widget.items,Artikel,de_DE
-merchant_profile.message.removed,Product %sku% is not available at the moment.,en_US
-merchant_profile.message.removed,Das Produkt %sku% ist momentan nicht verfügbar.,de_DE
-merchant_profile.message.inactive,Product %sku% from merchant %merchant_name% is not available at the moment.,en_US
-merchant_profile.message.inactive,Artikel %sku% vom Händler %merchant_name% ist momentan nicht verfügbar.,de_DE
+merchant.message.removed,Product %sku% is not available at the moment.,en_US
+merchant.message.removed,Das Produkt %sku% ist momentan nicht verfügbar.,de_DE
 merchant_weekday_schedule.new_year,New Year's Day,en_US
 merchant_weekday_schedule.new_year,Neujahrstag,de_DE
 merchant_weekday_schedule.good_friday,Good Friday,en_US
@@ -3233,6 +3237,8 @@ cart.item.sales_unit.not_found,Sales unit is not found for product with SKU '%sk
 cart.item.sales_unit.not_found,Verkaufseinheit wird für Produkt mit SKU '%sku%' nicht gefunden.,de_DE
 cart.item.packaging_unit.not_found,Packaging unit not found for product with SKU '%sku%'.,en_US
 cart.item.packaging_unit.not_found,Verpackungseinheit für Produkt mit SKU '% sku%' nicht gefunden.,de_DE
+cart.promotion.items.invalid_for_quote,Promotional discount not found for product with SKU '%sku%'.,en_US
+cart.promotion.items.invalid_for_quote,Aktionsrabatt für Produkt mit SKU '% sku%' nicht gefunden.,de_DE
 footer.copyright.content_text,"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",en_US
 footer.copyright.content_text,"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",de_DE
 footer.copyright.text,"&copy; ACME Company",en_US
@@ -3243,6 +3249,48 @@ return.return_reasons.wrong-item.name,Wrong Item,en_US
 return.return_reasons.wrong-item.name,Falscher Artikel,de_DE
 return.return_reasons.no_longer_needed.name,No longer needed,en_US
 return.return_reasons.no_longer_needed.name,Nicht mehr benötigt,de_DE
+customer.order.number_of_items,No. of Items,en_US
+customer.order.number_of_items,Anzahl der Artikel,de_DE
+customer.order.reference,Reference,en_US
+customer.order.reference,Referenz,de_DE
+customer.order.email,Email,en_US
+customer.order.email,E-Mail-Adresse,de_DE
+customer.order.company_user,Company User,en_US
+customer.order.company_user,Firmenbenutzer,de_DE
+customer.order_history.search_type.all,All,en_US
+customer.order_history.search_type.all,Alle,de_DE
+customer.order_history.search_type.orderReference,Order Reference,en_US
+customer.order_history.search_type.orderReference,Bestellnummer,de_DE
+customer.order_history.search_type.itemName,Product Name,en_US
+customer.order_history.search_type.itemName,Produktname,de_DE
+customer.order_history.search_type.itemSku,Product SKU,en_US
+customer.order_history.search_type.itemSku,Produkt-SKU,de_DE
+customer.order_history.search,Search,en_US
+customer.order_history.search,Suchen,de_DE
+customer.order_history.date_from,From,en_US
+customer.order_history.date_from,Von,de_DE
+customer.order_history.date_to,To,en_US
+customer.order_history.date_to,Bis,de_DE
+customer.order_history.apply,Apply,en_US
+customer.order_history.apply,Anwenden,de_DE
+customer.order_history.is_order_items_visible,Show products in search results,en_US
+customer.order_history.is_order_items_visible,Produkte in Suchergebnissen anzeigen,de_DE
+customer.order_history.active_filters,Active Filters:,en_US
+customer.order_history.active_filters,Aktive Filter:,de_DE
+customer.order_history.reset_all,Reset All,en_US
+customer.order_history.reset_all,Alles zurücksetzen,de_DE
+company_page.label.business_unit,Business Unit,en_US
+company_page.label.business_unit,Geschäftsbereich,de_DE
+company_page.choice.my_orders,My Orders,en_US
+company_page.choice.my_orders,Meine Bestellungen,de_DE
+company_page.choice.company_orders,Company Orders,en_US
+company_page.choice.company_orders,Firmenbestellungen,de_DE
+permission.name.SeeCompanyOrdersPermissionPlugin,View Company orders,en_US
+permission.name.SeeCompanyOrdersPermissionPlugin,Firmenbestellungen anzeigen,de_DE
+permission.name.SeeBusinessUnitOrdersPermissionPlugin,View Business Unit orders,en_US
+permission.name.SeeBusinessUnitOrdersPermissionPlugin,Bestellungen von Geschäftsbereichen anzeigen,de_DE
+form.csrf.error.text,Something went wrong. Sorry.,en_US
+form.csrf.error.text,Leider ging etwas schief. Tut uns leid.,de_DE
 return.return_policy.returnable_till.message,Returnable till: %date%,en_US
 return.return_policy.returnable_till.message,Man kann retournieren bis: %date%,de_DE
 return_page.list.title,Returns,en_US
