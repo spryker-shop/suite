@@ -112,7 +112,7 @@ use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCancelWidget;
 use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCartWidget;
 use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCreateWidget;
 use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestMenuItemWidget;
-use SprykerShop\Yves\SalesConfigurableBundleWidget\Widget\OrderItemsConfiguredBundleWidget;
+use SprykerShop\Yves\SalesConfigurableBundleWidget\Widget\OrderConfiguredBundleWidget;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Widget\SalesOrderThresholdWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartDeleteSharingCompanyUsersListWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartListPermissionGroupWidget;
@@ -239,6 +239,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             QuoteRequestAgentCancelWidget::class,
             CommentThreadWidget::class,
             QuoteConfiguredBundleWidget::class,
+            OrderConfiguredBundleWidget::class,
             MerchantProductOfferWidget::class,
             ConfiguredBundleNoteWidget::class,
             QuoteRequestActionsWidget::class,
@@ -250,7 +251,6 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CartChangeQuantityFormWidget::class,
             CustomerReorderFormWidget::class,
             CustomerReorderItemsFormWidget::class,
-            OrderItemsConfiguredBundleWidget::class,
         ];
     }
 
