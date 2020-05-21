@@ -67,7 +67,6 @@ const getConfiguration = async appSettings => {
                 rules: [
                     {
                         test: /\.ts$/,
-                        exclude: /node_modules/,
                         loader: 'babel-loader',
                         options: {
                             presets: [

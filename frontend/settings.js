@@ -15,7 +15,7 @@ const globalSettings = {
     // build modules
     modules: {
         esm: 'esm',
-        legacy: 'legacy'
+        legacy: 'legacy',
     },
 
     paths: {
@@ -36,8 +36,8 @@ const globalSettings = {
     }
 };
 
-const moduleVersionArr = process.argv.filter(argv => argv.includes('module'));
-const moduleVersion = moduleVersionArr.length ? moduleVersionArr[0].replace('module:', '') : '';
+const moduleVersionArray = process.argv.filter(argv => argv.includes('module'));
+const moduleVersion = moduleVersionArray.length ? moduleVersionArray[0].replace('module:', '') : '';
 
 const moduleSettings = {
     moduleVersion,
