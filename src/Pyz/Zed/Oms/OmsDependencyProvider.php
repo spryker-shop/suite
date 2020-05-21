@@ -133,7 +133,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
     /**
      * @return \Spryker\Zed\OmsExtension\Dependency\Plugin\OmsReservationAggregationPluginInterface[]
      */
-    protected function getOmsReservationAggregationStrategyPlugins(): array
+    protected function getOmsReservationAggregationPlugins(): array
     {
         return [
             new ProductOfferPackagingUnitOmsReservationAggregationPlugin(),
