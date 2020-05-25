@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\SalesReturnPageSearch;
+namespace Pyz\Zed\SalesReturnSearch;
 
 use Pyz\Zed\Synchronization\SynchronizationConfig;
-use Spryker\Zed\SalesReturnPageSearch\SalesReturnPageSearchConfig as SprykerSalesReturnPageSearchConfig;
+use Spryker\Zed\SalesReturnSearch\SalesReturnSearchConfig as SprykerSalesReturnSearchConfig;
 
-class SalesReturnPageSearchConfig extends SprykerSalesReturnPageSearchConfig
+class SalesReturnSearchConfig extends SprykerSalesReturnSearchConfig
 {
     /**
      * @return string|null

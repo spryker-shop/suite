@@ -32,7 +32,7 @@ use Spryker\Shared\ProductOfferAvailabilityStorage\ProductOfferAvailabilityStora
 use Spryker\Shared\ProductPackagingUnitStorage\ProductPackagingUnitStorageConfig;
 use Spryker\Shared\ProductPageSearch\ProductPageSearchConstants;
 use Spryker\Shared\ProductStorage\ProductStorageConstants;
-use Spryker\Shared\SalesReturnPageSearch\SalesReturnPageSearchConfig;
+use Spryker\Shared\SalesReturnSearch\SalesReturnSearchConfig;
 use Spryker\Shared\ShoppingListStorage\ShoppingListStorageConfig;
 use Spryker\Shared\TaxProductStorage\TaxProductStorageConfig;
 use Spryker\Shared\TaxStorage\TaxStorageConfig;
@@ -85,7 +85,7 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
             MerchantProductOfferStorageConfig::MERCHANT_PRODUCT_OFFER_SYNC_STORAGE_QUEUE,
             PriceProductOfferStorageConfig::PRICE_PRODUCT_OFFER_OFFER_SYNC_STORAGE_QUEUE,
             ProductOfferAvailabilityStorageConfig::PRODUCT_OFFER_AVAILABILITY_SYNC_STORAGE_QUEUE,
-            SalesReturnPageSearchConfig::SYNC_SEARCH_RETURN,
+            SalesReturnSearchConfig::SYNC_SEARCH_RETURN,
             $this->get(LogConstants::LOG_QUEUE_NAME),
         ];
     }

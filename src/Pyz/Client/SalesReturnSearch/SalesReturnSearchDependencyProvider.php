@@ -5,13 +5,13 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Client\SalesReturnPageSearch;
+namespace Pyz\Client\SalesReturnSearch;
 
-use Spryker\Client\SalesReturnPageSearch\Plugin\Elasticsearch\ResultFormatter\ReturnReasonSearchResultFormatterPlugin;
-use Spryker\Client\SalesReturnPageSearch\SalesReturnPageSearchDependencyProvider as SprykerSalesReturnPageSearchDependencyProvider;
+use Spryker\Client\SalesReturnSearch\Plugin\Elasticsearch\ResultFormatter\ReturnReasonSearchResultFormatterPlugin;
+use Spryker\Client\SalesReturnSearch\SalesReturnSearchDependencyProvider as SprykerSalesReturnSearchDependencyProvider;
 use Spryker\Client\SearchElasticsearch\Plugin\QueryExpander\LocalizedQueryExpanderPlugin;
 
-class SalesReturnPageSearchDependencyProvider extends SprykerSalesReturnPageSearchDependencyProvider
+class SalesReturnSearchDependencyProvider extends SprykerSalesReturnSearchDependencyProvider
 {
     /**
      * @return \Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface[]

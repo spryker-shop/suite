@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\SalesReturnPageSearch\Persistence;
+namespace Orm\Zed\SalesReturnSearch\Persistence;
 
-use Orm\Zed\SalesReturnPageSearch\Persistence\Base\SpyReturnReasonQuery as BaseSpyReturnReasonQuery;
+use Spryker\Zed\SalesReturnSearch\Persistence\Propel\AbstractSpySalesReturnReasonSearchQuery as BaseSpySalesReturnReasonSearchQuery;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_return_reason' table.
+ * Skeleton subclass for performing query and update operations on the 'spy_sales_return_reason_search' table.
  *
  *
  *
@@ -18,6 +18,6 @@ use Orm\Zed\SalesReturnPageSearch\Persistence\Base\SpyReturnReasonQuery as BaseS
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyReturnReasonQuery extends BaseSpyReturnReasonQuery
+class SpySalesReturnReasonSearchQuery extends BaseSpySalesReturnReasonSearchQuery
 {
 }
