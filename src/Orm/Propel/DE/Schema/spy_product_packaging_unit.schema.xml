@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\ProductPackagingUnit\Persistence" package="src.Orm.Zed.ProductPackagingUnit.Persistence">
+    <table name="spy_product_packaging_unit" phpName="SpyProductPackagingUnit">
+        <column name="id_product_packaging_unit" required="true" type="INTEGER" autoIncrement="true" primaryKey="true"/>
+        <column name="fk_product" type="INTEGER" required="true"/>
+        <column name="fk_product_packaging_unit_type" type="INTEGER" required="true"/>
+        <column name="has_lead_product" type="BOOLEAN" default="false" required="false"/>
+        <foreign-key name="spy_product_packaging_unit-fk_product" foreignTable="spy_product" phpName="Product">
+            <reference local="fk_product" foreign="id_product"/>
+        </foreign-key>
+        <foreign-key name="spy_product_packaging_unit-fk_product_packaging_unit_type" foreignTable="spy_product_packaging_unit_type" phpName="ProductPackagingUnitType">
+            <reference local="fk_product_packaging_unit_type" foreign="id_product_packaging_unit_type"/>
+        </foreign-key>
+        <index name="spy_product_packaging_unit-fk_product_packaging_unit_type">
+            <index-column name="fk_product_packaging_unit_type"/>
+        </index>
+        <index name="index-spy_product_packaging_unit-fk_product">
+            <index-column name="fk_product"/>
+        </index>
+        <unique name="spy_product_packaging_unit-unique-fk_product">
+            <unique-column name="fk_product"/>
+        </unique>
+        <id-method-parameter value="spy_product_packaging_unit_pk_seq"/>
+        <behavior name="timestampable"/>
+        <behavior name="event">
+            <parameter name="spy_product_packaging_unit_all" column="*"/>
+        </behavior>
+    </table>
+    <table name="spy_product_packaging_unit_type" phpName="SpyProductPackagingUnitType">
+        <column name="id_product_packaging_unit_type" required="true" type="INTEGER" autoIncrement="true" primaryKey="true"/>
+        <column name="name" type="VARCHAR" size="255" required="true"/>
+        <unique name="spy_product_packaging_unit_type-unique-name">
+            <unique-column name="name"/>
+        </unique>
+        <id-method-parameter value="spy_product_packaging_unit_type_pk_seq"/>
+        <behavior name="timestampable"/>
+        <behavior name="event">
+            <parameter name="spy_product_packaging_unit_type_all" column="*"/>
+        </behavior>
+    </table>
+    <table name="spy_product_packaging_unit_amount" phpName="SpyProductPackagingUnitAmount">
+        <column name="id_product_packaging_unit_amount" required="true" type="INTEGER" autoIncrement="true" primaryKey="true"/>
+        <column name="fk_product_packaging_unit" type="INTEGER" required="true"/>
+        <column name="amount_interval" type="INTEGER" required="false"/>
+        <column name="amount_max" type="INTEGER" required="false"/>
+        <column name="amount_min" type="INTEGER" required="false"/>
+        <column name="default_amount" type="INTEGER" required="true"/>
+        <column name="is_variable" type="BOOLEAN" default="false" required="true"/>
+        <foreign-key name="spy_product_packaging_unit_amount-fk_product_packaging_unit" foreignTable="spy_product_packaging_unit" phpName="ProductPackagingUnit" onDelete="cascade">
+            <reference local="fk_product_packaging_unit" foreign="id_product_packaging_unit"/>
+        </foreign-key>
+        <index name="index-spy_product_packaging_unit_amount-fk_product-e78d6a5960c0">
+            <index-column name="fk_product_packaging_unit"/>
+        </index>
+        <unique name="spy_product_packaging_unit_amount-unique-fk_product_pu">
+            <unique-column name="fk_product_packaging_unit"/>
+        </unique>
+        <id-method-parameter value="spy_product_packaging_unit_amount_pk_seq"/>
+        <behavior name="timestampable"/>
+        <behavior name="event">
+            <parameter name="spy_product_packaging_unit_amount_all" column="*"/>
+        </behavior>
+    </table>
+    <table name="spy_product_packaging_lead_product" phpName="SpyProductPackagingLeadProduct">
+        <column name="id_product_packaging_lead_product" required="true" type="INTEGER" autoIncrement="true" primaryKey="true"/>
+        <column name="fk_product" required="true" type="INTEGER"/>
+        <column name="fk_product_abstract" required="true" type="INTEGER"/>
+        <foreign-key name="spy_product_packaging_lead_product-fk_product_abstract" foreignTable="spy_product_abstract">
+            <reference local="fk_product_abstract" foreign="id_product_abstract"/>
+        </foreign-key>
+        <foreign-key name="spy_product_packaging_lead_product-fk_product" foreignTable="spy_product">
+            <reference local="fk_product" foreign="id_product"/>
+        </foreign-key>
+        <index name="index-spy_product_packaging_lead_product-fk_product_abstract">
+            <index-column name="fk_product_abstract"/>
+        </index>
+        <index name="index-spy_product_packaging_lead_product-fk_product">
+            <index-column name="fk_product"/>
+        </index>
+        <unique name="spy_product_packaging_lead_product-unique-fk_product_abstract">
+            <unique-column name="fk_product_abstract"/>
+        </unique>
+        <unique name="spy_product_packaging_lead_product-unique-fk_product">
+            <unique-column name="fk_product"/>
+        </unique>
+        <id-method-parameter value="spy_product_packaging_lead_product_pk_seq"/>
+        <behavior name="timestampable"/>
+        <behavior name="event">
+            <parameter name="spy_product_packaging_lead_product_all" column="*"/>
+        </behavior>
+    </table>
+</database>
