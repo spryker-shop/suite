@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.138.4",
+            "version": "3.138.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "2294604d4edb967249c4e41ab775a72d6baa247a"
+                "reference": "6b9f3fcea4dfa6092c628c790ca6d369a75453b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/2294604d4edb967249c4e41ab775a72d6baa247a",
-                "reference": "2294604d4edb967249c4e41ab775a72d6baa247a",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/6b9f3fcea4dfa6092c628c790ca6d369a75453b7",
+                "reference": "6b9f3fcea4dfa6092c628c790ca6d369a75453b7",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-05-19T18:15:45+00:00"
+            "time": "2020-05-22T18:11:09+00:00"
         },
         {
             "name": "codeitnowin/barcode",
@@ -1170,16 +1170,16 @@
         },
         {
             "name": "lcobucci/jwt",
-            "version": "3.3.1",
+            "version": "3.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lcobucci/jwt.git",
-                "reference": "a11ec5f4b4d75d1fcd04e133dede4c317aac9e18"
+                "reference": "56f10808089e38623345e28af2f2d5e4eb579455"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/a11ec5f4b4d75d1fcd04e133dede4c317aac9e18",
-                "reference": "a11ec5f4b4d75d1fcd04e133dede4c317aac9e18",
+                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/56f10808089e38623345e28af2f2d5e4eb579455",
+                "reference": "56f10808089e38623345e28af2f2d5e4eb579455",
                 "shasum": ""
             },
             "require": {
@@ -1221,7 +1221,17 @@
                 "JWS",
                 "jwt"
             ],
-            "time": "2019-05-24T18:30:49+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/lcobucci",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/lcobucci",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2020-05-22T08:21:12+00:00"
         },
         {
             "name": "league/csv",
@@ -1691,20 +1701,20 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "2.0.2",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "c861fcba2ca29404dc9e617eedd9eff4616986b8"
+                "reference": "38914429aac460e8e4616c8cb486ecb40ec90bb1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/c861fcba2ca29404dc9e617eedd9eff4616986b8",
-                "reference": "c861fcba2ca29404dc9e617eedd9eff4616986b8",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/38914429aac460e8e4616c8cb486ecb40ec90bb1",
+                "reference": "38914429aac460e8e4616c8cb486ecb40ec90bb1",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2",
+                "php": ">=7.2",
                 "psr/log": "^1.0.1"
             },
             "provide": {
@@ -1715,11 +1725,11 @@
                 "doctrine/couchdb": "~1.0@dev",
                 "elasticsearch/elasticsearch": "^6.0",
                 "graylog2/gelf-php": "^1.4.2",
-                "jakub-onderka/php-parallel-lint": "^0.9",
                 "php-amqplib/php-amqplib": "~2.4",
                 "php-console/php-console": "^3.1.3",
+                "php-parallel-lint/php-parallel-lint": "^1.0",
                 "phpspec/prophecy": "^1.6.1",
-                "phpunit/phpunit": "^8.3",
+                "phpunit/phpunit": "^8.5",
                 "predis/predis": "^1.1",
                 "rollbar/rollbar": "^1.3",
                 "ruflin/elastica": ">=0.90 <3.0",
@@ -1768,7 +1778,17 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2019-12-20T14:22:59+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/Seldaek",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/monolog/monolog",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-05-22T08:12:19+00:00"
         },
         {
             "name": "mtdowling/jmespath.php",
@@ -20462,23 +20482,23 @@
         },
         {
             "name": "spryker/event-behavior",
-            "version": "1.16.0",
+            "version": "1.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "59abcd716dd2d99475413f6083b2ac9b07dbf2d3"
+                "reference": "ca7edf00ff5232d1268c3cd5e9195dc36908d77d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/59abcd716dd2d99475413f6083b2ac9b07dbf2d3",
-                "reference": "59abcd716dd2d99475413f6083b2ac9b07dbf2d3",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/ca7edf00ff5232d1268c3cd5e9195dc36908d77d",
+                "reference": "ca7edf00ff5232d1268c3cd5e9195dc36908d77d",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
                 "spryker/event": "^2.4.0",
                 "spryker/event-dispatcher-extension": "^1.0.0",
-                "spryker/kernel": "^3.30.0",
+                "spryker/kernel": "^3.49.0",
                 "spryker/propel-orm": "^1.6.0",
                 "spryker/symfony": "^3.1.0",
                 "spryker/util-encoding": "^2.1.0",
@@ -20521,7 +20541,7 @@
                 "proprietary"
             ],
             "description": "EventBehavior module",
-            "time": "2020-03-09T10:01:31+00:00"
+            "time": "2020-05-25T09:15:50+00:00"
         },
         {
             "name": "spryker/event-dispatcher",
@@ -22126,16 +22146,16 @@
         },
         {
             "name": "spryker/kernel",
-            "version": "3.48.0",
+            "version": "3.49.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/kernel.git",
-                "reference": "77079ec95e04f46858f3098417c39f9156ed70f0"
+                "reference": "c2d9a71cb5d1ae1f9b426c0a90cfb9aca3f38a4a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/kernel/zipball/77079ec95e04f46858f3098417c39f9156ed70f0",
-                "reference": "77079ec95e04f46858f3098417c39f9156ed70f0",
+                "url": "https://api.github.com/repos/spryker/kernel/zipball/c2d9a71cb5d1ae1f9b426c0a90cfb9aca3f38a4a",
+                "reference": "c2d9a71cb5d1ae1f9b426c0a90cfb9aca3f38a4a",
                 "shasum": ""
             },
             "require": {
@@ -22179,7 +22199,7 @@
                 "proprietary"
             ],
             "description": "Kernel module",
-            "time": "2020-05-07T09:18:13+00:00"
+            "time": "2020-05-20T07:56:57+00:00"
         },
         {
             "name": "spryker/key-builder",
@@ -30792,23 +30812,23 @@
         },
         {
             "name": "spryker/product-list-storage",
-            "version": "1.11.0",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-list-storage.git",
-                "reference": "4dc3bece1f1282bfe6ce500c941404c1cb630df8"
+                "reference": "d84fc8317bc15bcd59da4ea2f9f39b096c6c54f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-list-storage/zipball/4dc3bece1f1282bfe6ce500c941404c1cb630df8",
-                "reference": "4dc3bece1f1282bfe6ce500c941404c1cb630df8",
+                "url": "https://api.github.com/repos/spryker/product-list-storage/zipball/d84fc8317bc15bcd59da4ea2f9f39b096c6c54f3",
+                "reference": "d84fc8317bc15bcd59da4ea2f9f39b096c6c54f3",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
                 "spryker/customer": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0",
                 "spryker/event-behavior": "^1.0.0",
-                "spryker/kernel": "^3.37.0",
+                "spryker/kernel": "^3.49.0",
                 "spryker/product": "^5.0.0 || ^6.0.0",
                 "spryker/product-category": "^4.0.0",
                 "spryker/product-list": "^1.5.0",
@@ -30846,7 +30866,7 @@
                 "proprietary"
             ],
             "description": "ProductListStorage module",
-            "time": "2020-03-24T12:56:12+00:00"
+            "time": "2020-05-20T07:56:57+00:00"
         },
         {
             "name": "spryker/product-management",
@@ -32190,16 +32210,16 @@
         },
         {
             "name": "spryker/product-page-search",
-            "version": "3.17.1",
+            "version": "3.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-page-search.git",
-                "reference": "e9d744870d5011d50ac816b044885b9ae5412ef9"
+                "reference": "a24a9c06f8cbbe6a0f17810af65a9fcf18570547"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-page-search/zipball/e9d744870d5011d50ac816b044885b9ae5412ef9",
-                "reference": "e9d744870d5011d50ac816b044885b9ae5412ef9",
+                "url": "https://api.github.com/repos/spryker/product-page-search/zipball/a24a9c06f8cbbe6a0f17810af65a9fcf18570547",
+                "reference": "a24a9c06f8cbbe6a0f17810af65a9fcf18570547",
                 "shasum": ""
             },
             "require": {
@@ -32208,7 +32228,7 @@
                 "spryker/category": "^4.3.0",
                 "spryker/error-handler": "^2.0.0",
                 "spryker/event-behavior": "^1.10.0",
-                "spryker/kernel": "^3.33.0",
+                "spryker/kernel": "^3.49.0",
                 "spryker/locale": "^3.3.0",
                 "spryker/price": "^5.3.0",
                 "spryker/price-product": "^1.1.0 || ^2.8.0 || ^4.0.0",
@@ -32255,7 +32275,7 @@
                 "proprietary"
             ],
             "description": "ProductPageSearch module",
-            "time": "2020-05-08T12:57:48+00:00"
+            "time": "2020-05-20T07:56:57+00:00"
         },
         {
             "name": "spryker/product-page-search-extension",
@@ -33910,16 +33930,16 @@
         },
         {
             "name": "spryker/propel-orm",
-            "version": "1.9.2",
+            "version": "1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/propel-orm.git",
-                "reference": "e7bc80644ef982f3bc04491c40d45aba42035c3b"
+                "reference": "0b14139d2c0934863c7b1079e7256e8aea10bb2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/propel-orm/zipball/e7bc80644ef982f3bc04491c40d45aba42035c3b",
-                "reference": "e7bc80644ef982f3bc04491c40d45aba42035c3b",
+                "url": "https://api.github.com/repos/spryker/propel-orm/zipball/0b14139d2c0934863c7b1079e7256e8aea10bb2f",
+                "reference": "0b14139d2c0934863c7b1079e7256e8aea10bb2f",
                 "shasum": ""
             },
             "require": {
@@ -33927,7 +33947,7 @@
                 "propel/propel": "2.0.0-alpha8",
                 "spryker/config": "^3.0.0",
                 "spryker/error-handler": "^2.0.0",
-                "spryker/kernel": "^3.30.0",
+                "spryker/kernel": "^3.49.0",
                 "spryker/symfony": "^3.0.0"
             },
             "require-dev": {
@@ -33951,7 +33971,7 @@
                 "proprietary"
             ],
             "description": "PropelOrm module",
-            "time": "2020-04-21T13:20:05+00:00"
+            "time": "2020-05-20T07:56:57+00:00"
         },
         {
             "name": "spryker/propel-query-builder",
@@ -38846,22 +38866,22 @@
         },
         {
             "name": "spryker/synchronization",
-            "version": "1.9.1",
+            "version": "1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/synchronization.git",
-                "reference": "394a93fdf505952c9854b8179ad87a4c7d7f8071"
+                "reference": "8cf5441fb84f023f545bdac0d4015f947dc8b928"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/synchronization/zipball/394a93fdf505952c9854b8179ad87a4c7d7f8071",
-                "reference": "394a93fdf505952c9854b8179ad87a4c7d7f8071",
+                "url": "https://api.github.com/repos/spryker/synchronization/zipball/8cf5441fb84f023f545bdac0d4015f947dc8b928",
+                "reference": "8cf5441fb84f023f545bdac0d4015f947dc8b928",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
                 "spryker/elastica": "^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0",
-                "spryker/kernel": "^3.30.0",
+                "spryker/kernel": "^3.49.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/queue": "^1.0.0",
                 "spryker/search": "^6.8.0 || ^7.0.0 || ^8.3.0",
@@ -38919,7 +38939,7 @@
                 "proprietary"
             ],
             "description": "Synchronization module",
-            "time": "2020-04-07T08:21:25+00:00"
+            "time": "2020-05-20T07:56:57+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -44401,16 +44421,16 @@
         },
         {
             "name": "voku/portable-ascii",
-            "version": "1.4.10",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/portable-ascii.git",
-                "reference": "240e93829a5f985fab0984a6e55ae5e26b78a334"
+                "reference": "2d302cf7dc474d5f7f18b29b03e0e77d408922a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/portable-ascii/zipball/240e93829a5f985fab0984a6e55ae5e26b78a334",
-                "reference": "240e93829a5f985fab0984a6e55ae5e26b78a334",
+                "url": "https://api.github.com/repos/voku/portable-ascii/zipball/2d302cf7dc474d5f7f18b29b03e0e77d408922a4",
+                "reference": "2d302cf7dc474d5f7f18b29b03e0e77d408922a4",
                 "shasum": ""
             },
             "require": {
@@ -44425,8 +44445,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "voku\\": "src/voku/",
-                    "voku\\tests\\": "tests/"
+                    "voku\\": "src/voku/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -44464,20 +44483,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-03-13T01:23:26+00:00"
+            "time": "2020-05-23T23:15:19+00:00"
         },
         {
             "name": "voku/portable-utf8",
-            "version": "5.4.43",
+            "version": "5.4.44",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/portable-utf8.git",
-                "reference": "ca43fcf0d953909217565d6cbfa923053de0acdc"
+                "reference": "6eef2006f84fd47fff11173c89af746461728926"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/ca43fcf0d953909217565d6cbfa923053de0acdc",
-                "reference": "ca43fcf0d953909217565d6cbfa923053de0acdc",
+                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/6eef2006f84fd47fff11173c89af746461728926",
+                "reference": "6eef2006f84fd47fff11173c89af746461728926",
                 "shasum": ""
             },
             "require": {
@@ -44487,7 +44506,7 @@
                 "symfony/polyfill-intl-normalizer": "~1.0",
                 "symfony/polyfill-mbstring": "~1.0",
                 "symfony/polyfill-php72": "~1.0",
-                "voku/portable-ascii": "~1.4"
+                "voku/portable-ascii": "~1.5"
             },
             "require-dev": {
                 "phpunit/phpunit": "~6.0 || ~7.0"
@@ -44559,7 +44578,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-05-14T00:59:19+00:00"
+            "time": "2020-05-23T23:50:42+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -47331,16 +47350,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "8.5.4",
+            "version": "8.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "8474e22d7d642f665084ba5ec780626cbd1efd23"
+                "reference": "63dda3b212a0025d380a745f91bdb4d8c985adb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/8474e22d7d642f665084ba5ec780626cbd1efd23",
-                "reference": "8474e22d7d642f665084ba5ec780626cbd1efd23",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/63dda3b212a0025d380a745f91bdb4d8c985adb7",
+                "reference": "63dda3b212a0025d380a745f91bdb4d8c985adb7",
                 "shasum": ""
             },
             "require": {
@@ -47420,7 +47439,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-04-23T04:39:42+00:00"
+            "time": "2020-05-22T13:51:52+00:00"
         },
         {
             "name": "psalm/phar",
@@ -48927,16 +48946,16 @@
         },
         {
             "name": "spryker/testify",
-            "version": "3.28.0",
+            "version": "3.29.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/testify.git",
-                "reference": "7f92c848ae06959530caf73ce39f49e70646f529"
+                "reference": "f32e9468f980c7b75454578b3a88750265d52920"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/testify/zipball/7f92c848ae06959530caf73ce39f49e70646f529",
-                "reference": "7f92c848ae06959530caf73ce39f49e70646f529",
+                "url": "https://api.github.com/repos/spryker/testify/zipball/f32e9468f980c7b75454578b3a88750265d52920",
+                "reference": "f32e9468f980c7b75454578b3a88750265d52920",
                 "shasum": ""
             },
             "require": {
@@ -48948,9 +48967,8 @@
                 "spryker/config": "^3.0.0",
                 "spryker/container": "^1.0.0",
                 "spryker/error-handler": "^2.0.0",
-                "spryker/kernel": "^3.48.0",
+                "spryker/kernel": "^3.49.0",
                 "spryker/propel": "^3.0.4",
-                "spryker/propel-orm": "^1.0.0",
                 "spryker/silex": "^2.0.0",
                 "spryker/symfony": "^3.0.0"
             },
@@ -48960,6 +48978,7 @@
                 "spryker/http": "*",
                 "spryker/json-path": "^1.0.0",
                 "spryker/json-schema": "^1.0.0",
+                "spryker/propel-orm": "*",
                 "spryker/twig": "^3.0.0"
             },
             "suggest": {
@@ -48991,7 +49010,7 @@
                 "proprietary"
             ],
             "description": "Testify module",
-            "time": "2020-05-07T09:18:13+00:00"
+            "time": "2020-05-18T10:37:01+00:00"
         },
         {
             "name": "spryker/web-profiler",
