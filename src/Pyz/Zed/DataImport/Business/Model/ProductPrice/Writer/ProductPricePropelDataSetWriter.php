@@ -60,16 +60,6 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
     }
 
     /**
-     * @var \Orm\Zed\Currency\Persistence\SpyCurrency[]
-     */
-    protected static $currencyCache = [];
-
-    /**
-     * @var \Orm\Zed\Store\Persistence\SpyStore[]
-     */
-    protected static $storeCache = [];
-
-    /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
      * @return void
