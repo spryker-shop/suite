@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0a22ae993805ad6a49fb2a345b8191fd",
+    "content-hash": "fac1ceefc01ccdcc8d64841f35a90223",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.138.4",
+            "version": "3.138.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "2294604d4edb967249c4e41ab775a72d6baa247a"
+                "reference": "6b9f3fcea4dfa6092c628c790ca6d369a75453b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/2294604d4edb967249c4e41ab775a72d6baa247a",
-                "reference": "2294604d4edb967249c4e41ab775a72d6baa247a",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/6b9f3fcea4dfa6092c628c790ca6d369a75453b7",
+                "reference": "6b9f3fcea4dfa6092c628c790ca6d369a75453b7",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-05-19T18:15:45+00:00"
+            "time": "2020-05-22T18:11:09+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -1489,16 +1489,16 @@
         },
         {
             "name": "lcobucci/jwt",
-            "version": "3.3.1",
+            "version": "3.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lcobucci/jwt.git",
-                "reference": "a11ec5f4b4d75d1fcd04e133dede4c317aac9e18"
+                "reference": "56f10808089e38623345e28af2f2d5e4eb579455"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/a11ec5f4b4d75d1fcd04e133dede4c317aac9e18",
-                "reference": "a11ec5f4b4d75d1fcd04e133dede4c317aac9e18",
+                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/56f10808089e38623345e28af2f2d5e4eb579455",
+                "reference": "56f10808089e38623345e28af2f2d5e4eb579455",
                 "shasum": ""
             },
             "require": {
@@ -1540,7 +1540,17 @@
                 "JWS",
                 "jwt"
             ],
-            "time": "2019-05-24T18:30:49+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/lcobucci",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/lcobucci",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2020-05-22T08:21:12+00:00"
         },
         {
             "name": "league/csv",
@@ -2001,20 +2011,20 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "2.0.2",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "c861fcba2ca29404dc9e617eedd9eff4616986b8"
+                "reference": "38914429aac460e8e4616c8cb486ecb40ec90bb1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/c861fcba2ca29404dc9e617eedd9eff4616986b8",
-                "reference": "c861fcba2ca29404dc9e617eedd9eff4616986b8",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/38914429aac460e8e4616c8cb486ecb40ec90bb1",
+                "reference": "38914429aac460e8e4616c8cb486ecb40ec90bb1",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2",
+                "php": ">=7.2",
                 "psr/log": "^1.0.1"
             },
             "provide": {
@@ -2025,11 +2035,11 @@
                 "doctrine/couchdb": "~1.0@dev",
                 "elasticsearch/elasticsearch": "^6.0",
                 "graylog2/gelf-php": "^1.4.2",
-                "jakub-onderka/php-parallel-lint": "^0.9",
                 "php-amqplib/php-amqplib": "~2.4",
                 "php-console/php-console": "^3.1.3",
+                "php-parallel-lint/php-parallel-lint": "^1.0",
                 "phpspec/prophecy": "^1.6.1",
-                "phpunit/phpunit": "^8.3",
+                "phpunit/phpunit": "^8.5",
                 "predis/predis": "^1.1",
                 "rollbar/rollbar": "^1.3",
                 "ruflin/elastica": ">=0.90 <3.0",
@@ -2078,7 +2088,17 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2019-12-20T14:22:59+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/Seldaek",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/monolog/monolog",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-05-22T08:12:19+00:00"
         },
         {
             "name": "mtdowling/jmespath.php",
@@ -3465,16 +3485,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "8.5.4",
+            "version": "8.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "8474e22d7d642f665084ba5ec780626cbd1efd23"
+                "reference": "63dda3b212a0025d380a745f91bdb4d8c985adb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/8474e22d7d642f665084ba5ec780626cbd1efd23",
-                "reference": "8474e22d7d642f665084ba5ec780626cbd1efd23",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/63dda3b212a0025d380a745f91bdb4d8c985adb7",
+                "reference": "63dda3b212a0025d380a745f91bdb4d8c985adb7",
                 "shasum": ""
             },
             "require": {
@@ -3544,7 +3564,17 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2020-04-23T04:39:42+00:00"
+            "funding": [
+                {
+                    "url": "https://phpunit.de/donate.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-05-22T13:51:52+00:00"
         },
         {
             "name": "predis/predis",
@@ -4747,16 +4777,16 @@
         },
         {
             "name": "spryker/event-behavior",
-            "version": "dev-bugfix/cc-9083-queue-worker-stucks",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "0aa06a1b8064e830d729b02a4c46371af67741cf"
+                "reference": "ca7edf00ff5232d1268c3cd5e9195dc36908d77d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/0aa06a1b8064e830d729b02a4c46371af67741cf",
-                "reference": "0aa06a1b8064e830d729b02a4c46371af67741cf",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/ca7edf00ff5232d1268c3cd5e9195dc36908d77d",
+                "reference": "ca7edf00ff5232d1268c3cd5e9195dc36908d77d",
                 "shasum": ""
             },
             "require": {
@@ -4806,7 +4836,7 @@
                 "proprietary"
             ],
             "description": "EventBehavior module",
-            "time": "2020-05-18T09:58:40+00:00"
+            "time": "2020-05-25T09:15:50+00:00"
         },
         {
             "name": "spryker/install",
@@ -4859,12 +4889,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "8b7ba37941de5975114bcd9001272987a5d396b2"
+                "reference": "36ed74af551cb3b2595d522f990f827a2870a37e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/8b7ba37941de5975114bcd9001272987a5d396b2",
-                "reference": "8b7ba37941de5975114bcd9001272987a5d396b2",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/36ed74af551cb3b2595d522f990f827a2870a37e",
+                "reference": "36ed74af551cb3b2595d522f990f827a2870a37e",
                 "shasum": ""
             },
             "require": {
@@ -4915,7 +4945,7 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "time": "2020-04-06T13:59:56+00:00"
+            "time": "2020-05-20T11:19:51+00:00"
         },
         {
             "name": "spryker/silexphp",
@@ -4999,11 +5029,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-bugfix/cc-9083-queue-worker-stucks",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "4c2724cdaaa0df22634fd3b2b0ff21f7c6dd2258"
+                "reference": "a940597bb38e68e6bc67ab8b270a1e5e00eae0ba"
             },
             "require": {
                 "php": ">=7.2"
@@ -5705,7 +5735,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-05-20T10:09:37+00:00"
+            "time": "2020-05-25T09:15:54+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -8858,16 +8888,16 @@
         },
         {
             "name": "voku/portable-ascii",
-            "version": "1.4.10",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/portable-ascii.git",
-                "reference": "240e93829a5f985fab0984a6e55ae5e26b78a334"
+                "reference": "2d302cf7dc474d5f7f18b29b03e0e77d408922a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/portable-ascii/zipball/240e93829a5f985fab0984a6e55ae5e26b78a334",
-                "reference": "240e93829a5f985fab0984a6e55ae5e26b78a334",
+                "url": "https://api.github.com/repos/voku/portable-ascii/zipball/2d302cf7dc474d5f7f18b29b03e0e77d408922a4",
+                "reference": "2d302cf7dc474d5f7f18b29b03e0e77d408922a4",
                 "shasum": ""
             },
             "require": {
@@ -8882,8 +8912,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "voku\\": "src/voku/",
-                    "voku\\tests\\": "tests/"
+                    "voku\\": "src/voku/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -8903,20 +8932,38 @@
                 "clean",
                 "php"
             ],
-            "time": "2020-03-13T01:23:26+00:00"
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/moelleken",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/voku",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/voku",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/voku/portable-ascii",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-05-23T23:15:19+00:00"
         },
         {
             "name": "voku/portable-utf8",
-            "version": "5.4.43",
+            "version": "5.4.44",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/portable-utf8.git",
-                "reference": "ca43fcf0d953909217565d6cbfa923053de0acdc"
+                "reference": "6eef2006f84fd47fff11173c89af746461728926"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/ca43fcf0d953909217565d6cbfa923053de0acdc",
-                "reference": "ca43fcf0d953909217565d6cbfa923053de0acdc",
+                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/6eef2006f84fd47fff11173c89af746461728926",
+                "reference": "6eef2006f84fd47fff11173c89af746461728926",
                 "shasum": ""
             },
             "require": {
@@ -8926,7 +8973,7 @@
                 "symfony/polyfill-intl-normalizer": "~1.0",
                 "symfony/polyfill-mbstring": "~1.0",
                 "symfony/polyfill-php72": "~1.0",
-                "voku/portable-ascii": "~1.4"
+                "voku/portable-ascii": "~1.5"
             },
             "require-dev": {
                 "phpunit/phpunit": "~6.0 || ~7.0"
@@ -8976,7 +9023,29 @@
                 "utf-8",
                 "utf8"
             ],
-            "time": "2020-05-14T00:59:19+00:00"
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/moelleken",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/voku",
+                    "type": "github"
+                },
+                {
+                    "url": "https://opencollective.com/portable-utf8",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://www.patreon.com/voku",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/voku/portable-utf8",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-05-23T23:50:42+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -10760,16 +10829,16 @@
         },
         {
             "name": "slevomat/coding-standard",
-            "version": "6.3.5",
+            "version": "6.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/slevomat/coding-standard.git",
-                "reference": "29995403896ff25fe08c44a60e2921ac0e6a419c"
+                "reference": "7876032a4f55acf2de2cf3cd538feaf98a8a0fee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/29995403896ff25fe08c44a60e2921ac0e6a419c",
-                "reference": "29995403896ff25fe08c44a60e2921ac0e6a419c",
+                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/7876032a4f55acf2de2cf3cd538feaf98a8a0fee",
+                "reference": "7876032a4f55acf2de2cf3cd538feaf98a8a0fee",
                 "shasum": ""
             },
             "require": {
@@ -10803,7 +10872,17 @@
                 "MIT"
             ],
             "description": "Slevomat Coding Standard for PHP_CodeSniffer complements Consistence Coding Standard by providing sniffs with additional checks.",
-            "time": "2020-05-13T14:59:55+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/kukulich",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/slevomat/coding-standard",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-05-22T15:11:14+00:00"
         },
         {
             "name": "sllh/composer-versions-check",
@@ -11146,16 +11225,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/architecture-sniffer.git",
-                "reference": "886b4371134019ec4198ee684e2f35dc8e11e94c"
+                "reference": "cf373cf318015489ec9466a49b296d843ea8b7bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/886b4371134019ec4198ee684e2f35dc8e11e94c",
-                "reference": "886b4371134019ec4198ee684e2f35dc8e11e94c",
+                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/cf373cf318015489ec9466a49b296d843ea8b7bb",
+                "reference": "cf373cf318015489ec9466a49b296d843ea8b7bb",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "phpmd/phpmd": "^2.4",
                 "roave/better-reflection": "*",
                 "symfony/finder": "*",
@@ -11196,7 +11275,7 @@
                 "sniffer",
                 "standards"
             ],
-            "time": "2020-02-20T16:46:51+00:00"
+            "time": "2020-05-20T14:45:35+00:00"
         },
         {
             "name": "spryker/code-generator",
@@ -11204,12 +11283,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-generator.git",
-                "reference": "8e0b23533088c67ca004c7f11d719aab9039387d"
+                "reference": "dd93469bfd0dee0e238a7640c1c8e60772b93659"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-generator/zipball/8e0b23533088c67ca004c7f11d719aab9039387d",
-                "reference": "8e0b23533088c67ca004c7f11d719aab9039387d",
+                "url": "https://api.github.com/repos/spryker/code-generator/zipball/dd93469bfd0dee0e238a7640c1c8e60772b93659",
+                "reference": "dd93469bfd0dee0e238a7640c1c8e60772b93659",
                 "shasum": ""
             },
             "require": {
@@ -11240,7 +11319,7 @@
                 "MIT"
             ],
             "description": "CodeGenerator module",
-            "time": "2019-12-19T13:14:43+00:00"
+            "time": "2020-05-20T11:20:28+00:00"
         },
         {
             "name": "spryker/code-sniffer",
@@ -11248,12 +11327,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "8ad73d4da6ae3cd846a4ce736c43536f24a67599"
+                "reference": "d1828e508b4ff2072365e75d2783256f4d6165ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/8ad73d4da6ae3cd846a4ce736c43536f24a67599",
-                "reference": "8ad73d4da6ae3cd846a4ce736c43536f24a67599",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/d1828e508b4ff2072365e75d2783256f4d6165ac",
+                "reference": "d1828e508b4ff2072365e75d2783256f4d6165ac",
                 "shasum": ""
             },
             "require": {
@@ -11294,7 +11373,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2020-05-14T10:49:41+00:00"
+            "time": "2020-05-20T12:56:44+00:00"
         },
         {
             "name": "spryker/development-core",
@@ -11857,7 +11936,7 @@
         {
             "alias": "1.16.0",
             "alias_normalized": "1.16.0.0",
-            "version": "dev-bugfix/cc-9083-queue-worker-stucks",
+            "version": "9999999-dev",
             "package": "spryker/event-behavior"
         },
         {
@@ -11927,5 +12006,6 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    }
+    },
+    "plugin-api-version": "1.1.0"
 }
