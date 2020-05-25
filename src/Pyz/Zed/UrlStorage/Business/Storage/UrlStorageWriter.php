@@ -122,7 +122,7 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
      *
      * @return void
      */
-    protected function add(array $urlStorage)
+    protected function add(array $urlStorage): void
     {
         $synchronizedData = $this->buildSynchronizedData($urlStorage, 'url', 'url');
         $this->synchronizedDataCollection[] = $synchronizedData;
@@ -232,7 +232,7 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
      */
     public function formatPostgresArray(array $values): string
     {
-        if (is_array($values) && empty($values)) {
+        if (!$values) {
             return '{null}';
         }
 
@@ -279,14 +279,14 @@ class UrlStorageWriter extends SprykerUrlStorageWriter
     {
         $sql = <<<SQL
 WITH records AS (
-    SELECT 
+    SELECT
       input.fk_url,
       input.url,
       input.data,
       input.key,
       id_url_storage
     FROM (
-           SELECT 
+           SELECT
              unnest(? :: INTEGER []) AS fk_url,
              unnest(? :: VARCHAR []) AS url,
              json_array_elements(?) AS data,
@@ -296,7 +296,7 @@ WITH records AS (
     ),
     updated AS (
     UPDATE spy_url_storage
-    SET 
+    SET
       fk_url = records.fk_url,
       url = records.url,
       data = records.data,
@@ -308,7 +308,7 @@ WITH records AS (
   ),
     inserted AS (
     INSERT INTO spy_url_storage(
-      id_url_storage, 
+      id_url_storage,
       fk_url,
       url,
       data,
@@ -317,7 +317,7 @@ WITH records AS (
       updated_at
     ) (
       SELECT
-        nextval('spy_url_storage_pk_seq'), 
+        nextval('spy_url_storage_pk_seq'),
         fk_url,
         url,
         data,

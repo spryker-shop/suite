@@ -42,7 +42,7 @@ class DataImportDataFormatter implements DataImportDataFormatterInterface
      */
     public function formatPostgresArray(array $values): string
     {
-        if (is_array($values) && empty($values)) {
+        if (!$values) {
             return '{null}';
         }
 
