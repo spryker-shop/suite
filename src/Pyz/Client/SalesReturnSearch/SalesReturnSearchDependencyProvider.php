@@ -7,6 +7,7 @@
 
 namespace Pyz\Client\SalesReturnSearch;
 
+use Spryker\Client\SalesReturnSearch\Plugin\Elasticsearch\Query\PaginatedReturnReasonSearchQueryExpanderPlugin;
 use Spryker\Client\SalesReturnSearch\Plugin\Elasticsearch\ResultFormatter\ReturnReasonSearchResultFormatterPlugin;
 use Spryker\Client\SalesReturnSearch\SalesReturnSearchDependencyProvider as SprykerSalesReturnSearchDependencyProvider;
 use Spryker\Client\SearchElasticsearch\Plugin\QueryExpander\LocalizedQueryExpanderPlugin;
@@ -30,6 +31,7 @@ class SalesReturnSearchDependencyProvider extends SprykerSalesReturnSearchDepend
     {
         return [
             new LocalizedQueryExpanderPlugin(),
+            new PaginatedReturnReasonSearchQueryExpanderPlugin(),
         ];
     }
 }
