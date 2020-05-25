@@ -333,9 +333,10 @@ before_script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console frontend:yves:install-dependencies ; fi
 
 script:
-  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpstan analyze -c phpstan.neon -l 5 src/ ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:phpstan -m Spryker.all ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:phpstan -m SprykerShop.all ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpstan analyze -c phpstan.neon -l 5 src/ ; fi
+  - if [[ $VALIDATION == 1 ]] ; then composer psalm ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console dev:composer:replace -d -v ; fi
 
