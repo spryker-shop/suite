@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "050fe04570bf9e9dd559e1e29549925a",
+    "content-hash": "f8078c87f5bfeb1c8eb7d9d85266cf77",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -622,20 +622,20 @@
         },
         {
             "name": "doctrine/lexer",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/lexer.git",
-                "reference": "5242d66dbeb21a30dd8a3e66bf7a73b66e05e1f6"
+                "reference": "e864bbf5904cb8f5bb334f99209b48018522f042"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/lexer/zipball/5242d66dbeb21a30dd8a3e66bf7a73b66e05e1f6",
-                "reference": "5242d66dbeb21a30dd8a3e66bf7a73b66e05e1f6",
+                "url": "https://api.github.com/repos/doctrine/lexer/zipball/e864bbf5904cb8f5bb334f99209b48018522f042",
+                "reference": "e864bbf5904cb8f5bb334f99209b48018522f042",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2"
+                "php": "^7.2 || ^8.0"
             },
             "require-dev": {
                 "doctrine/coding-standard": "^6.0",
@@ -680,7 +680,21 @@
                 "parser",
                 "php"
             ],
-            "time": "2019-10-30T14:39:59+00:00"
+            "funding": [
+                {
+                    "url": "https://www.doctrine-project.org/sponsorship.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.patreon.com/phpdoctrine",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Flexer",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-05-25T17:44:05+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -1131,16 +1145,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.5.3",
+            "version": "6.5.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "aab4ebd862aa7d04f01a4b51849d657db56d882e"
+                "reference": "a4a1b6930528a8f7ee03518e6442ec7a44155d9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/aab4ebd862aa7d04f01a4b51849d657db56d882e",
-                "reference": "aab4ebd862aa7d04f01a4b51849d657db56d882e",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/a4a1b6930528a8f7ee03518e6442ec7a44155d9d",
+                "reference": "a4a1b6930528a8f7ee03518e6442ec7a44155d9d",
                 "shasum": ""
             },
             "require": {
@@ -1148,7 +1162,7 @@
                 "guzzlehttp/promises": "^1.0",
                 "guzzlehttp/psr7": "^1.6.1",
                 "php": ">=5.5",
-                "symfony/polyfill-intl-idn": "^1.11"
+                "symfony/polyfill-intl-idn": "1.17.0"
             },
             "require-dev": {
                 "ext-curl": "*",
@@ -1194,7 +1208,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2020-04-18T10:38:46+00:00"
+            "time": "2020-05-25T19:35:05+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -1540,6 +1554,16 @@
                 "JWS",
                 "jwt"
             ],
+            "funding": [
+                {
+                    "url": "https://github.com/lcobucci",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/lcobucci",
+                    "type": "patreon"
+                }
+            ],
             "time": "2020-05-22T08:21:12+00:00"
         },
         {
@@ -1610,6 +1634,12 @@
                 "read",
                 "transform",
                 "write"
+            ],
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/nyamsprod",
+                    "type": "github"
+                }
             ],
             "time": "2020-03-17T15:15:35+00:00"
         },
@@ -2077,6 +2107,16 @@
                 "log",
                 "logging",
                 "psr-3"
+            ],
+            "funding": [
+                {
+                    "url": "https://github.com/Seldaek",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/monolog/monolog",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-05-22T08:12:19+00:00"
         },
@@ -3544,6 +3584,16 @@
                 "testing",
                 "xunit"
             ],
+            "funding": [
+                {
+                    "url": "https://phpunit.de/donate.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
+            ],
             "time": "2020-05-22T13:51:52+00:00"
         },
         {
@@ -4999,11 +5049,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/return-reason-search",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "3bc2fa63068bb74e5ee817d283300c3355d107f0"
+                "reference": "e4dd16e4ede9ad954afd065292c2f9629e1c757c"
             },
             "require": {
                 "php": ">=7.2"
@@ -5306,6 +5356,7 @@
                 "spryker/merchant-oms-data-import": "*",
                 "spryker/merchant-opening-hours": "*",
                 "spryker/merchant-opening-hours-data-import": "*",
+                "spryker/merchant-opening-hours-rest-api": "*",
                 "spryker/merchant-opening-hours-storage": "*",
                 "spryker/merchant-product-offer": "*",
                 "spryker/merchant-product-offer-data-import": "*",
@@ -5339,6 +5390,7 @@
                 "spryker/merchant-switcher": "*",
                 "spryker/merchant-user": "*",
                 "spryker/merchant-user-gui": "*",
+                "spryker/merchants-rest-api": "*",
                 "spryker/messenger": "*",
                 "spryker/messenger-extension": "*",
                 "spryker/module-finder": "*",
@@ -5372,6 +5424,7 @@
                 "spryker/oms": "*",
                 "spryker/oms-discount-connector": "*",
                 "spryker/oms-extension": "*",
+                "spryker/oms-rest-api": "*",
                 "spryker/order-custom-reference": "*",
                 "spryker/order-custom-reference-gui": "*",
                 "spryker/order-payments-rest-api": "*",
@@ -5569,7 +5622,6 @@
                 "spryker/sales-reclamation-gui": "*",
                 "spryker/sales-return": "*",
                 "spryker/sales-return-data-import": "*",
-                "spryker/sales-return-search": "*",
                 "spryker/sales-returns-rest-api": "*",
                 "spryker/sales-split": "*",
                 "spryker/sales-statistics": "*",
@@ -5706,7 +5758,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-05-26T07:47:14+00:00"
+            "time": "2020-05-26T07:27:22+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -8729,8 +8781,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -8859,16 +8911,16 @@
         },
         {
             "name": "voku/portable-ascii",
-            "version": "1.5.0",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/portable-ascii.git",
-                "reference": "2d302cf7dc474d5f7f18b29b03e0e77d408922a4"
+                "reference": "e7f9bd5deff09a57318f9b900ab33a05acfcf4d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/portable-ascii/zipball/2d302cf7dc474d5f7f18b29b03e0e77d408922a4",
-                "reference": "2d302cf7dc474d5f7f18b29b03e0e77d408922a4",
+                "url": "https://api.github.com/repos/voku/portable-ascii/zipball/e7f9bd5deff09a57318f9b900ab33a05acfcf4d3",
+                "reference": "e7f9bd5deff09a57318f9b900ab33a05acfcf4d3",
                 "shasum": ""
             },
             "require": {
@@ -8903,20 +8955,38 @@
                 "clean",
                 "php"
             ],
-            "time": "2020-05-23T23:15:19+00:00"
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/moelleken",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/voku",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/voku",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/voku/portable-ascii",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-05-26T06:40:44+00:00"
         },
         {
             "name": "voku/portable-utf8",
-            "version": "5.4.44",
+            "version": "5.4.45",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/portable-utf8.git",
-                "reference": "6eef2006f84fd47fff11173c89af746461728926"
+                "reference": "5445d44086ea7b53dcd6dd1b182ae5bdcb1fbb07"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/6eef2006f84fd47fff11173c89af746461728926",
-                "reference": "6eef2006f84fd47fff11173c89af746461728926",
+                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/5445d44086ea7b53dcd6dd1b182ae5bdcb1fbb07",
+                "reference": "5445d44086ea7b53dcd6dd1b182ae5bdcb1fbb07",
                 "shasum": ""
             },
             "require": {
@@ -8976,7 +9046,29 @@
                 "utf-8",
                 "utf8"
             ],
-            "time": "2020-05-23T23:50:42+00:00"
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/moelleken",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/voku",
+                    "type": "github"
+                },
+                {
+                    "url": "https://opencollective.com/portable-utf8",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://www.patreon.com/voku",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/voku/portable-utf8",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-05-26T07:35:55+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -10480,6 +10572,20 @@
                 "MIT"
             ],
             "description": "PHPStan - PHP Static Analysis Tool",
+            "funding": [
+                {
+                    "url": "https://github.com/ondrejmirtes",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/phpstan",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/phpstan/phpstan",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-05-10T20:36:16+00:00"
         },
         {
@@ -10760,16 +10866,16 @@
         },
         {
             "name": "slevomat/coding-standard",
-            "version": "6.3.6",
+            "version": "6.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/slevomat/coding-standard.git",
-                "reference": "7876032a4f55acf2de2cf3cd538feaf98a8a0fee"
+                "reference": "1f7bd4b5c11cf4a164a400c937483785b0f4eb9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/7876032a4f55acf2de2cf3cd538feaf98a8a0fee",
-                "reference": "7876032a4f55acf2de2cf3cd538feaf98a8a0fee",
+                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/1f7bd4b5c11cf4a164a400c937483785b0f4eb9e",
+                "reference": "1f7bd4b5c11cf4a164a400c937483785b0f4eb9e",
                 "shasum": ""
             },
             "require": {
@@ -10803,7 +10909,17 @@
                 "MIT"
             ],
             "description": "Slevomat Coding Standard for PHP_CodeSniffer complements Consistence Coding Standard by providing sniffs with additional checks.",
-            "time": "2020-05-22T15:11:14+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/kukulich",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/slevomat/coding-standard",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-05-25T13:39:15+00:00"
         },
         {
             "name": "sllh/composer-versions-check",
@@ -11855,8 +11971,8 @@
     ],
     "aliases": [
         {
-            "alias": "1.16.0",
-            "alias_normalized": "1.16.0.0",
+            "alias": "1.17.0",
+            "alias_normalized": "1.17.0.0",
             "version": "9999999-dev",
             "package": "spryker/event-behavior"
         },
@@ -11927,5 +12043,6 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    }
+    },
+    "plugin-api-version": "1.1.0"
 }
