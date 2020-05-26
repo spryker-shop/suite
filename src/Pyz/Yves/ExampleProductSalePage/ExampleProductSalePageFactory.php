@@ -20,14 +20,6 @@ class ExampleProductSalePageFactory extends AbstractFactory
     }
 
     /**
-     * @return \Spryker\Client\Search\SearchClientInterface
-     */
-    protected function getSearchClient()
-    {
-        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_SEARCH);
-    }
-
-    /**
      * @return \Spryker\Client\UrlStorage\UrlStorageClientInterface
      */
     public function getUrlStorageClient()

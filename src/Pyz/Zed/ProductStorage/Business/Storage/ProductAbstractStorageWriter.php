@@ -129,7 +129,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
         $storeName,
         $localeName,
         array $attributeMapBulk = []
-    ) {
+    ): void {
         $productAbstractStorageTransfer = $this->mapToProductAbstractStorageTransfer(
             $productAbstractLocalizedEntity,
             new ProductAbstractStorageTransfer(),
@@ -151,7 +151,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
      *
      * @return void
      */
-    protected function add(array $productAbstractStorageData)
+    protected function add(array $productAbstractStorageData): void
     {
         $synchronizedData = $this->buildSynchronizedData($productAbstractStorageData, 'fk_product_abstract', 'product_abstract');
         $this->synchronizedDataCollection[] = $synchronizedData;
@@ -276,7 +276,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
      */
     public function formatPostgresArray(array $values): string
     {
-        if (is_array($values) && empty($values)) {
+        if (!$values) {
             return '{null}';
         }
 
@@ -323,7 +323,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
     {
         $sql = <<<SQL
 WITH records AS (
-    SELECT 
+    SELECT
       input.fk_product_abstract,
       input.store,
       input.locale,
@@ -331,7 +331,7 @@ WITH records AS (
       input.key,
       id_product_abstract_storage
     FROM (
-           SELECT 
+           SELECT
              unnest(? :: INTEGER []) AS fk_product_abstract,
              unnest(? :: VARCHAR []) AS store,
              unnest(? :: VARCHAR []) AS locale,
@@ -342,7 +342,7 @@ WITH records AS (
     ),
     updated AS (
     UPDATE spy_product_abstract_storage
-    SET 
+    SET
       fk_product_abstract = records.fk_product_abstract,
       store = records.store,
       locale = records.locale,
@@ -355,7 +355,7 @@ WITH records AS (
   ),
     inserted AS (
     INSERT INTO spy_product_abstract_storage(
-      id_product_abstract_storage, 
+      id_product_abstract_storage,
       fk_product_abstract,
       store,
       locale,
@@ -365,7 +365,7 @@ WITH records AS (
       updated_at
     ) (
       SELECT
-        nextval('spy_product_abstract_storage_pk_seq'), 
+        nextval('spy_product_abstract_storage_pk_seq'),
         fk_product_abstract,
         store,
         locale,

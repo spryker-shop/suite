@@ -143,7 +143,7 @@ class PriceProductAbstractStorageWriter extends SprykerPriceProductAbstractStora
      *
      * @return void
      */
-    protected function add(array $priceProductAbstractStorageData)
+    protected function add(array $priceProductAbstractStorageData): void
     {
         $synchronizedData = $this->buildSynchronizedData($priceProductAbstractStorageData, 'fk_product_abstract', 'price_product_abstract');
         $this->synchronizedDataCollection[] = $synchronizedData;
@@ -266,7 +266,7 @@ class PriceProductAbstractStorageWriter extends SprykerPriceProductAbstractStora
      */
     public function formatPostgresArray(array $values): string
     {
-        if (is_array($values) && empty($values)) {
+        if (!$values) {
             return '{null}';
         }
 
@@ -313,14 +313,14 @@ class PriceProductAbstractStorageWriter extends SprykerPriceProductAbstractStora
     {
         $sql = <<<SQL
 WITH records AS (
-    SELECT 
+    SELECT
       input.fk_product_abstract,
       input.store,
       input.data,
       input.key,
       id_price_product_abstract_storage
     FROM (
-           SELECT 
+           SELECT
              unnest(? :: INTEGER []) AS fk_product_abstract,
              unnest(? :: VARCHAR []) AS store,
              json_array_elements(?) AS data,
@@ -330,7 +330,7 @@ WITH records AS (
     ),
     updated AS (
     UPDATE spy_price_product_abstract_storage
-    SET 
+    SET
       fk_product_abstract = records.fk_product_abstract,
       store = records.store,
       data = records.data,
@@ -342,7 +342,7 @@ WITH records AS (
   ),
     inserted AS (
     INSERT INTO spy_price_product_abstract_storage(
-      id_price_product_abstract_storage, 
+      id_price_product_abstract_storage,
       fk_product_abstract,
       store,
       data,
@@ -351,7 +351,7 @@ WITH records AS (
       updated_at
     ) (
       SELECT
-        nextval('spy_price_product_abstract_storage_pk_seq'), 
+        nextval('spy_price_product_abstract_storage_pk_seq'),
         fk_product_abstract,
         store,
         data,
