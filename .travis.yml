@@ -11,6 +11,7 @@ env:
     - ARTIFACTS_KEY=AKIAJD43J5ACVDJKUXLA
     - ARTIFACTS_SECRET=$AWS_S3_SECRET_ACCESS_KEY
     - ARTIFACTS_BUCKET=spryker-ci
+    - POSTGRES_PORT="5433"
 
 #Possible travis events (push, pull_request, cron, or api)
 matrix:
@@ -23,10 +24,8 @@ matrix:
     - php: "7.4"
       dist: bionic
       env:
-        - FE_TEST=1
+        - MP_TEST=1
         - ON_EVENTS=push
-      addons:
-        chrome: stable
 
     - php: "7.4"
       dist: bionic
@@ -245,7 +244,10 @@ addons:
       - rabbitmq-server=3.8.2-1
       - graphviz
       - libzip-dev
-  postgresql: 9.6
+      - postgresql-12
+      - postgresql-client-12
+      - postgresql-server-dev-12
+  postgresql: 12
   mysql: 5.7
 
   artifacts:
@@ -299,6 +301,7 @@ install:
   - composer install --optimize-autoloader --no-interaction
   - config/Shared/ci/travis/install_elasticsearch.sh
   - config/Shared/ci/travis/install_mailcatcher.sh
+  - if [[ -z $FE_TEST ]] ; then config/Shared/ci/travis/configure_postgres.sh ; fi
 
 before_script:
   - nvm install 8 > /dev/null
@@ -335,9 +338,10 @@ before_script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console frontend:yves:install-dependencies ; fi
 
 script:
-  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpstan analyze -c phpstan.neon -l 5 src/ ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:phpstan -m Spryker.all ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:phpstan -m SprykerShop.all ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpstan analyze -c phpstan.neon -l 5 src/ ; fi
+  - if [[ $VALIDATION == 1 ]] ; then composer psalm ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console dev:composer:replace -d -v ; fi
 
@@ -364,11 +368,13 @@ script:
   - if [[ $VALIDATION == 1 ]] ; then node ./frontend/libs/stylelint ; fi
   - if [[ $VALIDATION == 1 ]] ; then node ./frontend/libs/tslint stylish ; fi
 
-  - if [[ $FE_TEST == 1 ]] ; then nvm install 12 && nvm use 12 ; fi
-  - if [[ $FE_TEST == 1 ]] ; then npm install ; fi
-  - if [[ $FE_TEST == 1 ]] ; then npm run bo:install ; fi
-  - if [[ $FE_TEST == 1 ]] ; then npm run bo:build ; fi
-  - if [[ $FE_TEST == 1 ]] ; then npm run bo:test ; fi
+  - if [[ $MP_TEST == 1 ]] ; then nvm install 12 && nvm use 12 ; fi
+  # Puppeteer installs chromium binary which we will use for headless unit tests
+  - if [[ $MP_TEST == 1 ]] ; then npm i -g puppeteer && npm link puppeteer ; fi
+  - if [[ $MP_TEST == 1 ]] ; then unset CHROME_BIN && export CHROME_BIN=$(node -e "console.log(require('puppeteer').executablePath())") ; fi
+  - if [[ $MP_TEST == 1 ]] ; then vendor/bin/console frontend:mp:install-dependencies ; fi
+  - if [[ $MP_TEST == 1 ]] ; then vendor/bin/console frontend:mp:build ; fi
+  - if [[ $MP_TEST == 1 ]] ; then yarn mp:test ; fi
 
 after_script:
   - if [[ $TRAVIS_TEST_RESULT == 0 ]] ; then rm /tmp/phantomjs.log ; fi
