@@ -23,9 +23,12 @@ use Spryker\Zed\ProductPageSearch\Business\Publisher\ProductConcretePageSearchPu
 use Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToProductInterface;
 use Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToStoreFacadeInterface;
 use Spryker\Zed\ProductPageSearch\Dependency\Service\ProductPageSearchToUtilEncodingInterface;
+use Spryker\Zed\ProductPageSearch\ProductPageSearchConfig;
 
 /**
  * @example
+ *
+ * @SuppressWarnings(PHPMD.ExcessiveParameterList)
  *
  * This is an example of running ProductConcretePageSearchPublisher
  * with CTE (@see https://www.postgresql.org/docs/9.1/queries-with.html).
@@ -61,6 +64,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
      * @param \Spryker\Zed\ProductPageSearch\Dependency\Service\ProductPageSearchToUtilEncodingInterface $utilEncoding
      * @param \Spryker\Zed\ProductPageSearch\Business\DataMapper\AbstractProductSearchDataMapper $productConcreteSearchDataMapper
      * @param \Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToStoreFacadeInterface $storeFacade
+     * @param \Spryker\Zed\ProductPageSearch\ProductPageSearchConfig $productPageSearchConfig
      * @param \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductConcretePageDataExpanderPluginInterface[] $pageDataExpanderPlugins
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
@@ -72,6 +76,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
         ProductPageSearchToUtilEncodingInterface $utilEncoding,
         AbstractProductSearchDataMapper $productConcreteSearchDataMapper,
         ProductPageSearchToStoreFacadeInterface $storeFacade,
+        ProductPageSearchConfig $productPageSearchConfig,
         array $pageDataExpanderPlugins,
         SynchronizationServiceInterface $synchronizationService,
         QueueClientInterface $queueClient
@@ -83,6 +88,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
             $utilEncoding,
             $productConcreteSearchDataMapper,
             $storeFacade,
+            $productPageSearchConfig,
             $pageDataExpanderPlugins
         );
 
@@ -114,6 +120,7 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
 
         if ($this->synchronizedMessageCollection !== []) {
             $this->queueClient->sendMessages('sync.search.product', $this->synchronizedMessageCollection);
+            $this->synchronizedMessageCollection = [];
         }
     }
 
@@ -277,6 +284,8 @@ class ProductConcretePageSearchPublisher extends SprykerProductConcretePageSearc
         ];
 
         $stmt->execute($params);
+
+        $this->synchronizedDataCollection = [];
     }
 
     /**
