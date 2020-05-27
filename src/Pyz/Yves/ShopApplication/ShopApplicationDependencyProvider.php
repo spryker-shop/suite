@@ -241,6 +241,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             QuoteRequestAgentCancelWidget::class,
             CommentThreadWidget::class,
             QuoteConfiguredBundleWidget::class,
+            OrderConfiguredBundleWidget::class,
             MerchantProductOfferWidget::class,
             ConfiguredBundleNoteWidget::class,
             QuoteRequestActionsWidget::class,
