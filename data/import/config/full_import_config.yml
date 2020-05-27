@@ -119,6 +119,8 @@ actions:
     source: data/import/cms_template.csv
   - data_entity: cms-block
     source: data/import/cms_block.csv
+  - data_entity: cms-block-store
+    source: data/import/cms_block_store.csv
   - data_entity: cms-block-category-position
     source: data/import/cms_block_category_position.csv
   - data_entity: cms-block-category
@@ -143,9 +145,6 @@ actions:
     source: data/import/cms_slot_block.csv
   - data_entity: navigation-node
     source: data/import/navigation_node.csv
-  # Store relation
-  - data_entity: cms-block-store
-    source: data/import/cms_block_store.csv
 
 
 ### 7. B2B data import
