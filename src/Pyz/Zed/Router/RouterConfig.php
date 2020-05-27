@@ -22,11 +22,7 @@ class RouterConfig extends SprykerRouterConfig
      */
     public function getControllerDirectories(): array
     {
-        $controllerDirectories = [];
-
-        foreach ($this->get(KernelConstants::PROJECT_NAMESPACES) as $projectNamespace) {
-            $controllerDirectories[] = sprintf('%s/%s/Zed/*/Communication/Controller/', APPLICATION_SOURCE_DIR, $projectNamespace);
-        }
+        $controllerDirectories = parent::getControllerDirectories();
 
         $filterChain = new FilterChain();
         $filterChain
