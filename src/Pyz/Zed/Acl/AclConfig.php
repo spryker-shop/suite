@@ -21,27 +21,7 @@ class AclConfig extends SprykerAclConfig
     public function getInstallerRules()
     {
         $installerRules = parent::getInstallerRules();
-        $installerRules[] = [
-            'bundle' => 'dashboard-merchant-portal-gui',
-            'controller' => AclConstants::VALIDATOR_WILDCARD,
-            'action' => AclConstants::VALIDATOR_WILDCARD,
-            'type' => static::RULE_TYPE_DENY,
-            'role' => AclConstants::ROOT_ROLE,
-        ];
-        $installerRules[] = [
-            'bundle' => 'merchant-profile-merchant-portal-gui',
-            'controller' => AclConstants::VALIDATOR_WILDCARD,
-            'action' => AclConstants::VALIDATOR_WILDCARD,
-            'type' => static::RULE_TYPE_DENY,
-            'role' => AclConstants::ROOT_ROLE,
-        ];
-        $installerRules[] = [
-            'bundle' => 'product-offer-merchant-portal-gui',
-            'controller' => AclConstants::VALIDATOR_WILDCARD,
-            'action' => AclConstants::VALIDATOR_WILDCARD,
-            'type' => static::RULE_TYPE_DENY,
-            'role' => AclConstants::ROOT_ROLE,
-        ];
+        $installerRules = $this->addMerchantPortalInstallerRules($installerRules);
 
         return $installerRules;
     }
@@ -72,5 +52,32 @@ class AclConfig extends SprykerAclConfig
             ],
             //this is related to existent username and will be searched into the database
         ];
+    }
+
+    /**
+     * @param string[][] $installerRules
+     *
+     * @return string[][]
+     */
+    protected function addMerchantPortalInstallerRules(array $installerRules): array
+    {
+        $bundleNames = [
+            'dashboard-merchant-portal-gui',
+            'merchant-profile-merchant-portal-gui',
+            'product-offer-merchant-portal-gui',
+            'authentication-merchant-portal-gui',
+        ];
+
+        foreach ($bundleNames as $bundleName) {
+            $installerRules[] = [
+                'bundle' => $bundleName,
+                'controller' => AclConstants::VALIDATOR_WILDCARD,
+                'action' => AclConstants::VALIDATOR_WILDCARD,
+                'type' => static::RULE_TYPE_DENY,
+                'role' => AclConstants::ROOT_ROLE,
+            ];
+        }
+
+        return $installerRules;
     }
 }
