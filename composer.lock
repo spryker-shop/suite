@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.138.7",
+            "version": "3.138.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "6b9f3fcea4dfa6092c628c790ca6d369a75453b7"
+                "reference": "bc3d77e84d1589c9536f94043622bf56d1d68809"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/6b9f3fcea4dfa6092c628c790ca6d369a75453b7",
-                "reference": "6b9f3fcea4dfa6092c628c790ca6d369a75453b7",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/bc3d77e84d1589c9536f94043622bf56d1d68809",
+                "reference": "bc3d77e84d1589c9536f94043622bf56d1d68809",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-05-22T18:11:09+00:00"
+            "time": "2020-05-26T18:10:59+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -2423,31 +2423,36 @@
         },
         {
             "name": "nette/php-generator",
-            "version": "v3.3.4",
+            "version": "v3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/php-generator.git",
-                "reference": "8fe7e699dca7db186f56d75800cb1ec32e39c856"
+                "reference": "ea2c8e8d6439f0a4e3cd3431c572b51a8131539b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/php-generator/zipball/8fe7e699dca7db186f56d75800cb1ec32e39c856",
-                "reference": "8fe7e699dca7db186f56d75800cb1ec32e39c856",
+                "url": "https://api.github.com/repos/nette/php-generator/zipball/ea2c8e8d6439f0a4e3cd3431c572b51a8131539b",
+                "reference": "ea2c8e8d6439f0a4e3cd3431c572b51a8131539b",
                 "shasum": ""
             },
             "require": {
+                "ext-tokenizer": "*",
                 "nette/utils": "^2.4.2 || ^3.0",
                 "php": ">=7.1"
             },
             "require-dev": {
                 "nette/tester": "^2.0",
+                "nikic/php-parser": "^4.4",
                 "phpstan/phpstan": "^0.12",
                 "tracy/tracy": "^2.3"
+            },
+            "suggest": {
+                "nikic/php-parser": "to use ClassType::withBodiesFrom() & GlobalFunction::withBodyFrom()"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.3-dev"
+                    "dev-master": "3.4-dev"
                 }
             },
             "autoload": {
@@ -2479,7 +2484,7 @@
                 "php",
                 "scaffolding"
             ],
-            "time": "2020-02-09T14:39:09+00:00"
+            "time": "2020-05-26T16:32:45+00:00"
         },
         {
             "name": "nette/robot-loader",
@@ -5053,7 +5058,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "ededb08d976e9f03b6abcae4399718d373429028"
+                "reference": "1b114c1ed53add4ce1e7796042d7982b3b6ba6bf"
             },
             "require": {
                 "php": ">=7.2"
@@ -5758,7 +5763,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-05-27T08:14:57+00:00"
+            "time": "2020-05-27T09:43:50+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -11366,16 +11371,16 @@
         },
         {
             "name": "slevomat/coding-standard",
-            "version": "6.3.7",
+            "version": "6.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/slevomat/coding-standard.git",
-                "reference": "1f7bd4b5c11cf4a164a400c937483785b0f4eb9e"
+                "reference": "500f55b5e2dee1dcef8e88f2038990acdba29f1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/1f7bd4b5c11cf4a164a400c937483785b0f4eb9e",
-                "reference": "1f7bd4b5c11cf4a164a400c937483785b0f4eb9e",
+                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/500f55b5e2dee1dcef8e88f2038990acdba29f1c",
+                "reference": "500f55b5e2dee1dcef8e88f2038990acdba29f1c",
                 "shasum": ""
             },
             "require": {
@@ -11419,7 +11424,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-05-25T13:39:15+00:00"
+            "time": "2020-05-27T06:28:47+00:00"
         },
         {
             "name": "sllh/composer-versions-check",
