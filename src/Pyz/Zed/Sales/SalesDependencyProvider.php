@@ -24,6 +24,8 @@ use Spryker\Zed\Discount\Communication\Plugin\Sales\DiscountOrderHydratePlugin;
 use Spryker\Zed\ManualOrderEntry\Communication\Plugin\Sales\OrderSourceExpanderPreSavePlugin;
 use Spryker\Zed\MerchantSalesOrder\Communication\Plugin\Sales\MerchantOrderDataOrderExpanderPlugin;
 use Spryker\Zed\MerchantSalesOrder\Communication\Plugin\Sales\MerchantReferenceOrderItemExpanderPreSavePlugin;
+use Spryker\Zed\MerchantSalesOrder\Communication\Plugin\Sales\MerchantReferencesOrderExpanderPlugin;
+use Spryker\Zed\Oms\Communication\Plugin\Sales\OmsStatesOrderExpanderPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Sales\StateHistoryOrderItemExpanderPlugin;
 use Spryker\Zed\OrderCustomReference\Communication\Plugin\Sales\OrderCustomReferenceOrderPostSavePlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Sales\PaymentOrderHydratePlugin;
@@ -62,7 +64,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     /**
      * @return \Spryker\Zed\Sales\Dependency\Plugin\OrderExpanderPreSavePluginInterface[]
      */
-    protected function getOrderExpanderPreSavePlugins()
+    protected function getOrderExpanderPreSavePlugins(): array
     {
         return [
             new OrderSourceExpanderPreSavePlugin(),
@@ -72,7 +74,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     /**
      * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\OrderExpanderPluginInterface[]
      */
-    protected function getOrderHydrationPlugins()
+    protected function getOrderHydrationPlugins(): array
     {
         return [
             new ProductIdHydratorPlugin(),
@@ -91,13 +93,15 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new ProductBundleOptionOrderExpanderPlugin(),
             new RemunerationTotalOrderExpanderPlugin(),
             new MerchantOrderDataOrderExpanderPlugin(),
+            new MerchantReferencesOrderExpanderPlugin(),
+            new OmsStatesOrderExpanderPlugin(),
         ];
     }
 
     /**
      * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\OrderItemExpanderPreSavePluginInterface[]
      */
-    protected function getOrderItemExpanderPreSavePlugins()
+    protected function getOrderItemExpanderPreSavePlugins(): array
     {
         return [
             new QuantitySalesUnitOrderItemExpanderPreSavePlugin(),
@@ -124,7 +128,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     /**
      * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\SalesTablePluginInterface[]
      */
-    protected function getSalesTablePlugins()
+    protected function getSalesTablePlugins(): array
     {
         return [
             new ReclamationSalesTablePlugin(),
@@ -134,7 +138,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     /**
      * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\OrderPostSavePluginInterface[]
      */
-    protected function getOrderPostSavePlugins()
+    protected function getOrderPostSavePlugins(): array
     {
         return [
             new CommentThreadAttachedCommentOrderPostSavePlugin(),
