@@ -45,6 +45,7 @@ use Spryker\Zed\PriceProductOfferDataImport\PriceProductOfferDataImportConfig;
 use Spryker\Zed\PriceProductScheduleDataImport\PriceProductScheduleDataImportConfig;
 use Spryker\Zed\ProductAlternativeDataImport\ProductAlternativeDataImportConfig;
 use Spryker\Zed\ProductDiscontinuedDataImport\ProductDiscontinuedDataImportConfig;
+use Spryker\Zed\ProductLabelDataImport\ProductLabelDataImportConfig;
 use Spryker\Zed\ProductListDataImport\ProductListDataImportConfig;
 use Spryker\Zed\ProductMeasurementUnitDataImport\ProductMeasurementUnitDataImportConfig;
 use Spryker\Zed\ProductOfferStockDataImport\ProductOfferStockDataImportConfig;
@@ -80,7 +81,6 @@ class DataImportConfig extends SprykerDataImportConfig
     public const IMPORT_TYPE_PRODUCT_ATTRIBUTE_KEY = 'product-attribute-key';
     public const IMPORT_TYPE_PRODUCT_MANAGEMENT_ATTRIBUTE = 'product-management-attribute';
     public const IMPORT_TYPE_PRODUCT_REVIEW = 'product-review';
-    public const IMPORT_TYPE_PRODUCT_LABEL = 'product-label';
     public const IMPORT_TYPE_PRODUCT_SET = 'product-set';
     public const IMPORT_TYPE_PRODUCT_GROUP = 'product-group';
     public const IMPORT_TYPE_PRODUCT_OPTION = 'product-option';
@@ -112,6 +112,7 @@ class DataImportConfig extends SprykerDataImportConfig
     public const PRODUCT_IMAGE_QUEUE_ERROR = 'import.product_image.error';
     public const PRODUCT_PRICE_QUEUE = 'import.product_price';
     public const PRODUCT_PRICE_QUEUE_ERROR = 'import.product_price.error';
+    public const IMPORT_TYPE_MERCHANT_USER = 'merchant-user';
 
     /**
      * @return string|null
@@ -181,7 +182,8 @@ class DataImportConfig extends SprykerDataImportConfig
             ProductRelationDataImportConfig::IMPORT_TYPE_PRODUCT_RELATION,
             ProductRelationDataImportConfig::IMPORT_TYPE_PRODUCT_RELATION_STORE,
             static::IMPORT_TYPE_PRODUCT_REVIEW,
-            static::IMPORT_TYPE_PRODUCT_LABEL,
+            ProductLabelDataImportConfig::IMPORT_TYPE_PRODUCT_LABEL,
+            ProductLabelDataImportConfig::IMPORT_TYPE_PRODUCT_LABEL_STORE,
             static::IMPORT_TYPE_PRODUCT_SET,
             static::IMPORT_TYPE_PRODUCT_GROUP,
             static::IMPORT_TYPE_PRODUCT_OPTION,
@@ -283,6 +285,7 @@ class DataImportConfig extends SprykerDataImportConfig
             MerchantStockDataImportConfig::IMPORT_TYPE_MERCHANT_STOCK,
             MerchantOmsDataImportConfig::IMPORT_TYPE_MERCHANT_OMS_PROCESS,
             SalesReturnDataImportConfig::IMPORT_TYPE_RETURN_REASON,
+            static::IMPORT_TYPE_MERCHANT_USER,
         ];
     }
 }

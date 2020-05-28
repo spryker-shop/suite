@@ -89,7 +89,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
      *
      * @return \Spryker\Zed\Oms\Dependency\Plugin\ReservationHandlerPluginInterface[]
      */
-    protected function getReservationHandlerPlugins(Container $container)
+    protected function getReservationHandlerPlugins(Container $container): array
     {
         return [
             new AvailabilityHandlerPlugin(),
@@ -103,7 +103,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
      *
      * @return \Spryker\Zed\OmsExtension\Dependency\Plugin\OmsOrderMailExpanderPluginInterface[]
      */
-    protected function getOmsOrderMailExpanderPlugins(Container $container)
+    protected function getOmsOrderMailExpanderPlugins(Container $container): array
     {
         return [
             new ShipmentOrderMailExpanderPlugin(),
@@ -115,7 +115,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
      *
      * @return \Spryker\Zed\OmsExtension\Dependency\Plugin\OmsManualEventGrouperPluginInterface[]
      */
-    protected function getOmsManualEventGrouperPlugins(Container $container)
+    protected function getOmsManualEventGrouperPlugins(Container $container): array
     {
         return [
             new ShipmentManualEventGrouperPlugin(),

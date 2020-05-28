@@ -9,7 +9,6 @@ stores:
 command-timeout: 3600
 
 sections:
-
     hidden:
         excluded: true
         maintenance-all-on:
@@ -32,12 +31,11 @@ sections:
 
     composer:
         composer-autoloader:
-            command: "composer dumpautoload -a --apcu"
+            command: "composer dumpautoload --apcu"
 
     environment:
         console-environment:
             command: "if [ ! -f ./config/Shared/console_env_local.php ]; then cp ./config/Shared/console_env_local.dist.php ./config/Shared/console_env_local.php ; fi"
-
 
     clear:
         remove-logs:
@@ -75,9 +73,6 @@ sections:
         generate-transfer-databuilders:
             command: "vendor/bin/console transfer:databuilder:generate"
 
-        generate-entity-transfer:
-            command: "vendor/bin/console transfer:entity:generate"
-
         generate-ide-auto-completion:
             command: "vendor/bin/console dev:ide-auto-completion:generate"
 
@@ -106,7 +101,6 @@ sections:
         class-resolver-build:
             command: "vendor/bin/console cache:class-resolver:build"
 
-
     queue-flush:
         set-permissions:
             command: "vendor/bin/console queue:permission:set"
@@ -123,7 +117,6 @@ sections:
         delete-all-exchanges:
             command: "vendor/bin/console queue:exchanges:delete-all"
             stores: true
-
 
     database-flush:
         delete-elastic-search-index:
@@ -151,7 +144,6 @@ sections:
             command: "vendor/bin/console propel:migration:delete"
             groups:
                 - propel
-
 
     database-migrate:
         propel-create:
@@ -212,6 +204,9 @@ sections:
         maintenance-page-disable:
             command: "vendor/bin/console maintenance:disable"
             stores: true
+
+        generate-entity-transfer:
+            command: "vendor/bin/console transfer:entity:generate"
 
         init-database:
             command: "vendor/bin/console setup:init-db"
@@ -297,22 +292,22 @@ sections:
 
     frontend:
         dependencies-install:
-            command: "vendor/bin/console frontend:project:install-dependencies -vvv"
+            command: "vendor/bin/console frontend:project:install-dependencies"
             groups:
                 - project
 
         yves-install-dependencies:
-            command: "vendor/bin/console frontend:yves:install-dependencies -vvv"
+            command: "vendor/bin/console frontend:yves:install-dependencies"
             groups:
                 - yves
 
         yves-build-frontend:
-            command: "vendor/bin/console frontend:yves:build -vvv"
+            command: "vendor/bin/console frontend:yves:build"
             groups:
                 - yves
 
         zed-install-dependencies:
-            command: "vendor/bin/console frontend:zed:install-dependencies -vvv"
+            command: "vendor/bin/console frontend:zed:install-dependencies"
             groups:
                 - zed
 
