@@ -777,6 +777,8 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     }
 
     /**
+     * @deprecated Only used for testing.
+     *
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
      *
      * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
