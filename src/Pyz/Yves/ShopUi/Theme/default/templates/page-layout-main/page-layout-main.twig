@@ -1,0 +1,88 @@
+{% extends template('page-blank') %}
+
+{%- block class -%}js-page-layout-main{%- endblock -%}
+
+{% block body %}
+    {% block notifications %}
+        {% include organism('notification-area') only %}
+    {% endblock %}
+
+    {% block sidebar %}
+        {% include organism('side-drawer') with {
+            class: 'is-hidden-lg-xl',
+            attributes: {
+                'container-selector': 'js-page-layout-main',
+                'trigger-selector': 'js-page-layout-main__side-drawer-trigger',
+            },
+        } only %}
+    {% endblock %}
+
+    {% block outside %}
+        {% include molecule('outside-widgets') only %}
+    {% endblock %}
+
+    {% block header %}
+        {% embed organism('header') only %}
+            {% block mobile %}
+                <a href="#" class="link link--alt js-page-layout-main__side-drawer-trigger">
+                    {% include atom('icon') with {
+                        modifiers: ['big'],
+                        data: {
+                            name: 'bars',
+                        },
+                    } only %}
+                </a>
+            {% endblock %}
+        {% endembed %}
+    {% endblock %}
+
+    <div class="container">
+        {% block pageInfo %}
+            <div class="box">
+                {% block breadcrumbs %}
+                    {% include molecule('breadcrumb') only %}
+                {% endblock %}
+
+                <hr class="box__separator">
+
+                {% block title %}
+                    <h3>{{data.title}}</h3>
+                {% endblock %}
+            </div>
+        {% endblock %}
+
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+
+        {% block footer %}
+            {% include organism('footer') only %}
+        {% endblock %}
+
+    </div>
+
+    {% block globalComponents %}
+        {% include molecule('action-single-click-enforcer') with {
+            attributes: {
+                'target-selector': '[data-init-single-click]',
+            },
+        } only %}
+
+        {% include molecule('form-input-default-value-disabler') with {
+            attributes: {
+                'form-selector': '[data-init-default-value-form]',
+                'input-selector': '[data-default-value-disabler]',
+            },
+        } only %}
+
+        {% include molecule('form-submitter') with {
+            attributes: {
+                'trigger-selector': '[data-form-submitter]',
+            },
+        } only %}
+    {% endblock %}
+
+    {% block icons %}
+        {% include atom('icon-sprite') only %}
+    {% endblock %}
+{% endblock %}
