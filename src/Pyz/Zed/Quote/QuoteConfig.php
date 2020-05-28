@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\Quote;
 
-use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Zed\Quote\QuoteConfig as SprykerQuoteConfig;
 
@@ -30,29 +29,5 @@ class QuoteConfig extends SprykerQuoteConfig
             QuoteTransfer::QUOTE_REQUEST_REFERENCE,
             QuoteTransfer::MERCHANT_REFERENCE,
         ]);
-    }
-
-    /**
-     * @return string[]
-     */
-    public function getQuoteItemFieldsAllowedForSaving(): array
-    {
-        return [
-            ItemTransfer::ID,
-            ItemTransfer::SKU,
-            ItemTransfer::GROUP_KEY,
-            ItemTransfer::GROUP_KEY_PREFIX,
-            ItemTransfer::QUANTITY,
-            ItemTransfer::ID_PRODUCT_ABSTRACT,
-            ItemTransfer::IMAGES,
-            ItemTransfer::NAME,
-            ItemTransfer::UNIT_PRICE,
-            ItemTransfer::SUM_PRICE,
-            ItemTransfer::UNIT_GROSS_PRICE,
-            ItemTransfer::SUM_GROSS_PRICE,
-            ItemTransfer::IS_ORDERED,
-            ItemTransfer::CONFIGURED_BUNDLE,
-            ItemTransfer::PRODUCT_OFFER_REFERENCE,
-        ];
     }
 }
