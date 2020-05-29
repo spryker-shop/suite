@@ -11,6 +11,7 @@ env:
     - ARTIFACTS_KEY=AKIAJD43J5ACVDJKUXLA
     - ARTIFACTS_SECRET=$AWS_S3_SECRET_ACCESS_KEY
     - ARTIFACTS_BUCKET=spryker-ci
+    - POSTGRES_PORT="5433"
 
 #Possible travis events (push, pull_request, cron, or api)
 matrix:
@@ -243,7 +244,10 @@ addons:
       - rabbitmq-server=3.8.2-1
       - graphviz
       - libzip-dev
-  postgresql: 9.6
+      - postgresql-12
+      - postgresql-client-12
+      - postgresql-server-dev-12
+  postgresql: 12
   mysql: 5.7
 
   artifacts:
@@ -297,6 +301,7 @@ install:
   - composer install --optimize-autoloader --no-interaction
   - config/Shared/ci/travis/install_elasticsearch.sh
   - config/Shared/ci/travis/install_mailcatcher.sh
+  - if [[ -z $FE_TEST ]] ; then config/Shared/ci/travis/configure_postgres.sh ; fi
 
 before_script:
   - nvm install 8 > /dev/null

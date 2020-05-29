@@ -3,6 +3,7 @@
   DocumentRoot %TRAVIS_BUILD_DIR%/public/Zed
   ServerName zed.de.spryker.test
   SetEnv APPLICATION_ENV devtest
+  SetEnv POSTGRES_PORT %POSTGRES_PORT%
 
   ErrorLog /tmp/zed-error.log
 
