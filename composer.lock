@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "011a2041af425809ffaad9c3a5b1acaa",
+    "content-hash": "3622588521404b4bf910e6c7e8edaf19",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1008,7 +1008,7 @@
                     "Whoops\\": "src/Whoops/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://repo.repman.io/downloads",
             "license": [
                 "MIT"
             ],
@@ -5004,11 +5004,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/mp-2503/dev-data-import-merchant-abstract-product",
+            "version": "dev-feature/mp-2457/mp-2458-filter-list-of-products-and-products-availability-by-merchant",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "9eb29536fb18e5e36776531543cfaf0de56a0f95"
+                "reference": "9162e20bc515d04d7a84f6e3b574cd30151b0860"
             },
             "require": {
                 "php": ">=7.2"
@@ -5034,6 +5034,7 @@
                 "spryker/availability-data-feed": "*",
                 "spryker/availability-extension": "*",
                 "spryker/availability-gui": "*",
+                "spryker/availability-gui-extension": "*",
                 "spryker/availability-notification": "*",
                 "spryker/availability-offer-connector": "*",
                 "spryker/availability-storage": "*",
@@ -5315,6 +5316,7 @@
                 "spryker/merchant-opening-hours-storage": "*",
                 "spryker/merchant-product": "*",
                 "spryker/merchant-product-data-import": "*",
+                "spryker/merchant-product-gui": "*",
                 "spryker/merchant-product-offer": "*",
                 "spryker/merchant-product-offer-data-import": "*",
                 "spryker/merchant-product-offer-search": "*",
@@ -5717,7 +5719,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-05-28T08:37:14+00:00"
+            "time": "2020-05-28T17:51:05+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -8502,20 +8504,6 @@
             ],
             "description": "Symfony Validator Component",
             "homepage": "https://symfony.com",
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-04-28T18:23:58+00:00"
         },
         {
@@ -10828,16 +10816,6 @@
                 "MIT"
             ],
             "description": "Slevomat Coding Standard for PHP_CodeSniffer complements Consistence Coding Standard by providing sniffs with additional checks.",
-            "funding": [
-                {
-                    "url": "https://github.com/kukulich",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/slevomat/coding-standard",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-05-27T06:28:47+00:00"
         },
         {
@@ -10874,7 +10852,7 @@
                     "SLLH\\ComposerVersionsCheck\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://repo.repman.io/downloads",
             "license": [
                 "MIT"
             ],
@@ -11962,6 +11940,5 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    },
-    "plugin-api-version": "1.1.0"
+    }
 }
