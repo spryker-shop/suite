@@ -1,136 +1,28 @@
-{% extends template('page-blank') %}
+{% extends template('page-layout-main', '@SprykerShop:ShopUi') %}
 
-{% define config = {
-    name: 'header',
-    tag: 'header'
-} %}
-
-{% define data = {
-    showSearchForm: true,
-    showNavigation: true
-} %}
-
-{%- block class -%}js-page-layout-main{%- endblock -%}
-
-{% block body %}
-    {% block notifications %}
-        {% include organism('notification-area') only %}
-    {% endblock %}
-
-    {% block sidebar %}
-        {% include organism('side-drawer') with {
-            class: 'is-hidden-lg-xl',
-            attributes: {
-                'container-selector': 'js-page-layout-main',
-                'trigger-selector': 'js-page-layout-main__side-drawer-trigger',
-            },
-        } only %}
-    {% endblock %}
-
-    {% block outside %}
-        {% include molecule('outside-widgets') only %}
-    {% endblock %}
-
-    {% block header %}
-        <div class="container">
-            <div class="{{ config.name }}__row {{ config.name }}__navigation-top">
-                {% include organism('navigation-top') with {
-                    class: 'is-hidden-sm-md text-right'
-                } only %}
-            </div>
-
-            <div class="{{ config.name }}__row {{ config.name }}__row--middle grid grid--middle">
-                {% include molecule('logo') with {
-                    class: 'col col--sm-8 col--lg-4'
-                } only %}
-
-                <div class="col col--sm-4 col--lg-8">
-                    {% if data.showSearchForm %}
-                        {% include molecule('search-form') with {
-                            class: config.name ~ '__search-form is-hidden-sm-md',
-                            attributes: {
-                                'data-search-id': 'desktop'
-                            }
-                        } only %}
-                    {% endif %}
-
-                    <div class="is-hidden-lg-xl text-right">
-                        {% block mobile %}{% endblock %}
-                    </div>
-                </div>
-            </div>
-
-            {% if data.showNavigation %}
-                <div class="{{ config.name }}__row {{ config.name }}__navigation-main is-hidden-sm-md">
-                    {% cms_slot 'slt-7' %}
-                </div>
-            {% endif %}
-
-            {% if data.showSearchForm %}
-                {% include molecule('search-form') with {
-                    class: config.name ~ '__row ' ~ config.name ~ '__search-form is-hidden-lg-xl',
-                    attributes: {
-                        'data-search-id': 'mobile'
-                    }
-                } only %}
-            {% endif %}
-        </div>
-    {% endblock %}
-
-    <div class="container">
-        {% block pageInfo %}
-            <div class="box">
-                {% block breadcrumbs %}
-                    {% include molecule('breadcrumb') only %}
-                {% endblock %}
-
-                <hr class="box__separator">
-
-                {% block title %}
-                    <h3>{{ data.title }}</h3>
-                {% endblock %}
-            </div>
+{% block header %}
+    {% embed organism('header') only %}
+        {% block mainNavigation %}
+            {% cms_slot 'slt-7' %}
         {% endblock %}
 
-        <main>
-            {% block content %}{% endblock %}
-        </main>
+        {% block mobile %}
+            <a href="#" class="link link--alt js-page-layout-main__side-drawer-trigger">
+                {% include atom('icon') with {
+                    modifiers: ['big'],
+                    data: {
+                        name: 'bars',
+                    },
+                } only %}
+            </a>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
 
-        <div class="box">
-            {% widget 'NewsletterSubscriptionWidget' only %} {% endwidget %}
-        </div>
-
-        {% block footer %}
+{% block footer %}
+    {% embed organism('footer') only %}
+        {% block footerNavigation %}
             {% cms_slot 'slt-8' %}
         {% endblock %}
-
-        {% block copyright %}
-            {% include molecule('copyright') only %}
-        {% endblock %}
-    </div>
-
-    {% block globalComponents %}
-        {% include molecule('action-single-click-enforcer') with {
-            attributes: {
-                'target-selector': '[data-init-single-click]',
-            },
-        } only %}
-
-        {% include molecule('form-input-default-value-disabler') with {
-            attributes: {
-                'form-selector': '[data-init-default-value-form]',
-                'input-selector': '[data-default-value-disabler]',
-            },
-        } only %}
-
-        {% include molecule('form-submitter') with {
-            attributes: {
-                'trigger-selector': '[data-form-submitter]',
-            },
-        } only %}
-    {% endblock %}
-
-    {% block icons %}
-        {% include atom('icon-sprite') only %}
-    {% endblock %}
+    {% endembed %}
 {% endblock %}
