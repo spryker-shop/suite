@@ -345,7 +345,6 @@ before_script:
   - if [[ $MP_TEST == 1 ]] ; then export YARN_CACHE_FOLDER=$HOME/.yarn/cache && vendor/bin/console frontend:mp:install-dependencies ; fi
 
 script:
-  - if [[ $MP_TEST == 1 ]] ; then yarn config && ls $HOME/.yarn/cache ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:phpstan -m Spryker.all ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:phpstan -m SprykerShop.all ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpstan analyze -c phpstan.neon -l 5 src/ ; fi
