@@ -22,11 +22,7 @@ class RouterConfig extends SprykerRouterConfig
      */
     public function getControllerDirectories(): array
     {
-        $controllerDirectories = [];
-
-        foreach ($this->get(KernelConstants::PROJECT_NAMESPACES) as $projectNamespace) {
-            $controllerDirectories[] = sprintf('%s/%s/Zed/*/Communication/Controller/', APPLICATION_SOURCE_DIR, $projectNamespace);
-        }
+        $controllerDirectories = parent::getControllerDirectories();
 
         $filterChain = new FilterChain();
         $filterChain
@@ -36,9 +32,6 @@ class RouterConfig extends SprykerRouterConfig
         foreach ($this->get(KernelConstants::CORE_NAMESPACES) as $coreNamespace) {
             $controllerDirectories[] = sprintf('%s/spryker/%s/Bundles/*/src/%s/Zed/*/Communication/Controller/', APPLICATION_VENDOR_DIR, $filterChain->filter($coreNamespace), $coreNamespace);
         }
-
-        $controllerDirectories[] = sprintf('%s/spryker-sdk/*/src/*/Zed/*/Communication/Controller/', APPLICATION_VENDOR_DIR);
-        $controllerDirectories[] = sprintf('%s/spryker-eco/*/src/*/Zed/*/Communication/Controller/', APPLICATION_VENDOR_DIR);
 
         return array_filter($controllerDirectories, 'glob');
     }
