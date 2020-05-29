@@ -22,6 +22,7 @@ class QuoteConfig extends SprykerQuoteConfig
             QuoteTransfer::CART_NOTE, #CartNoteFeature,
             QuoteTransfer::EXPENSES, #QuoteApprovalFeature
             QuoteTransfer::VOUCHER_DISCOUNTS, #QuoteApprovalFeature
+            QuoteTransfer::GIFT_CARDS,
             QuoteTransfer::CART_RULE_DISCOUNTS, #QuoteApprovalFeature
             QuoteTransfer::PROMOTION_ITEMS, #QuoteApprovalFeature
             QuoteTransfer::IS_LOCKED, #QuoteApprovalFeature
