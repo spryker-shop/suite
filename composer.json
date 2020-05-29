@@ -3,8 +3,8 @@
   "description": "Spryker Suite (internal)",
   "license": "MIT",
   "require": {
-    "spryker/spryker": "dev-master",
-    "spryker/spryker-shop": "dev-master",
+    "spryker/spryker": "dev-bugfix/te-5961/deprecated-container-methods-are-still-used-in-the-code",
+    "spryker/spryker-shop": "dev-bugfix/te-5961/deprecated-container-methods-are-still-used-in-the-code",
     "spryker/decimal-object": "^1.0.0",
     "spryker-eco/loggly": "dev-master",
     "spryker/rabbit-mq": "dev-master",
@@ -53,7 +53,7 @@
     "spryker-sdk/phpstan-spryker": "^0.3.0",
     "spryker-sdk/composer-constrainer": "dev-master",
     "spryker-sdk/composer-replace": "dev-master",
-    "spryker-sdk/spryk": "dev-master as 0.2.2",
+    "spryker-sdk/spryk": "dev-bugfix/te-5961/deprecated-container-methods-are-still-used-in-the-code as 0.2.6",
     "spryker-sdk/spryk-gui": "dev-master",
     "dms/phpunit-arraysubset-asserts": "^0.1.0",
     "codeception/module-rest": "^1.0",
@@ -63,7 +63,8 @@
     "codeception/module-cli": "^1.0",
     "codeception/module-filesystem": "^1.0",
     "webmozart/glob": "^4.0.0",
-    "psalm/phar": "^3.11"
+    "psalm/phar": "^3.11",
+    "rector/rector": "^0.7.26"
   },
   "autoload": {
     "psr-4": {
@@ -78,7 +79,8 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "PyzTest\\": "tests/PyzTest/"
+      "PyzTest\\": "tests/PyzTest/",
+      "Rector\\": "Rector/"
     },
     "files": [
       "test-autoload.php"
