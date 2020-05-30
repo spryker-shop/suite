@@ -247,8 +247,7 @@ addons:
       - postgresql-12
       - postgresql-client-12
       - postgresql-server-dev-12
-  postgresql: 12
-  mysql: 5.7
+  postgresql: "12"
 
   artifacts:
     s3_region: eu-west-1
@@ -279,7 +278,6 @@ services:
   - postgresql
   - mysql
   - redis
-  - rabbitmq-server
 
 sudo: required
 
@@ -302,7 +300,7 @@ install:
   - composer install --optimize-autoloader --no-interaction
   - config/Shared/ci/travis/install_elasticsearch.sh
   - config/Shared/ci/travis/install_mailcatcher.sh
-  - if [[ -z $FE_TEST ]] ; then config/Shared/ci/travis/configure_postgres.sh ; fi
+  - if [[ -z $MP_TEST ]] ; then config/Shared/ci/travis/configure_postgres.sh ; fi
 
 before_script:
   - nvm install 10 > /dev/null
