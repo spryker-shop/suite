@@ -11,6 +11,7 @@ use Spryker\Shared\CmsContentWidgetProductConnector\ContentWidgetConfigurationPr
 use Spryker\Shared\CmsContentWidgetProductGroupConnector\ContentWidgetConfigurationProvider\CmsProductGroupContentWidgetConfigurationProvider;
 use Spryker\Shared\CmsContentWidgetProductSetConnector\ContentWidgetConfigurationProvider\CmsProductSetContentWidgetConfigurationProvider;
 use Spryker\Shared\ContentBanner\ContentBannerConfig;
+use Spryker\Shared\ContentProduct\ContentProductConfig;
 use Spryker\Zed\CmsContentWidget\CmsContentWidgetDependencyProvider as SprykerCmsContentWidgetDependencyProvider;
 use Spryker\Zed\CmsContentWidgetContentItemConnector\Communication\Plugin\Cms\CmsContentItemKeyMapperPlugin;
 use Spryker\Zed\CmsContentWidgetProductConnector\Communication\Plugin\Cms\CmsProductSkuMapperPlugin;
@@ -33,6 +34,7 @@ class CmsContentWidgetDependencyProvider extends SprykerCmsContentWidgetDependen
             CmsProductSetContentWidgetConfigurationProvider::FUNCTION_NAME => new CmsProductSetKeyMapperPlugin(),
             CmsProductGroupContentWidgetConfigurationProvider::FUNCTION_NAME => new CmsProductSkuMapperPlugin(),
             ContentBannerConfig::TWIG_FUNCTION_NAME => new CmsContentItemKeyMapperPlugin(),
+            ContentProductConfig::TWIG_FUNCTION_NAME => new CmsContentItemKeyMapperPlugin(),
         ];
     }
 }
