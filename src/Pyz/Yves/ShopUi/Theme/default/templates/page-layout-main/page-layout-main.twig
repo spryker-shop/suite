@@ -1,0 +1,23 @@
+{% extends template('page-layout-main', '@SprykerShop:ShopUi') %}
+
+{% block header %}
+    {% embed organism('header') only %}
+        {% block mainNavigation %}
+            {% cms_slot 'slt-7' %}
+        {% endblock %}
+
+        {% block mobile %}
+            {% cms_slot 'slt-9' %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block footer %}
+    {% embed organism('footer') only %}
+        {% block footerNavigation %}
+            <div class="box">
+                {% cms_slot 'slt-8' %}
+            </div>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
