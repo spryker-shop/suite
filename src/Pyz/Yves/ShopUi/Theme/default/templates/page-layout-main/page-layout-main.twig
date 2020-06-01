@@ -7,14 +7,7 @@
         {% endblock %}
 
         {% block mobile %}
-            <a href="#" class="link link--alt js-page-layout-main__side-drawer-trigger">
-                {% include atom('icon') with {
-                    modifiers: ['big'],
-                    data: {
-                        name: 'bars',
-                    },
-                } only %}
-            </a>
+            {% cms_slot 'slt-9' %}
         {% endblock %}
     {% endembed %}
 {% endblock %}
@@ -22,7 +15,9 @@
 {% block footer %}
     {% embed organism('footer') only %}
         {% block footerNavigation %}
-            {% cms_slot 'slt-8' %}
+            <div class="box">
+                {% cms_slot 'slt-8' %}
+            </div>
         {% endblock %}
     {% endembed %}
 {% endblock %}
