@@ -1,5 +1,19 @@
 {% extends template('page-layout-main', '@SprykerShop:ShopUi') %}
 
+{% block sidebar %}
+    {% embed organism('side-drawer') with {
+        class: 'is-hidden-lg-xl',
+        attributes: {
+            'container-selector': 'js-page-layout-main',
+            'trigger-selector': 'js-page-layout-main__side-drawer-trigger',
+        },
+    } only %}
+        {% block mobileNavigation %}
+            {% cms_slot 'slt-9' %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
 {% block header %}
     {% embed organism('header') only %}
         {% block mainNavigation %}
@@ -7,7 +21,14 @@
         {% endblock %}
 
         {% block mobile %}
-            {% cms_slot 'slt-9' %}
+            <a href="#" class="link link--alt js-page-layout-main__side-drawer-trigger">
+                {% include atom('icon') with {
+                    modifiers: ['big'],
+                    data: {
+                        name: 'bars',
+                    },
+                } only %}
+            </a>
         {% endblock %}
     {% endembed %}
 {% endblock %}
