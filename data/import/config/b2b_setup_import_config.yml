@@ -17,21 +17,37 @@ actions:
   - data_entity: company-user-on-behalf
   ### B2B Merchant
   - data_entity: merchant
+    source: data/import/merchant.csv
   - data_entity: merchant-store
+    source: data/import/merchant_store.csv
   - data_entity: merchant-profile
-  - data_entity: merchant-profile-address
+    source: data/import/merchant_profile.csv
+  - data_entity: merchant_profile_address
+    source: data/import/merchant_profile_address.csv
   - data_entity: merchant-product-offer
+    source: data/import/merchant_product_offer.csv
   - data_entity: merchant-product-offer-store
+    source: data/import/merchant_product_offer_store.csv
   - data_entity: merchant-opening-hours-weekday-schedule
+    source: data/import/merchant_open_hours_date_schedule.csv
   - data_entity: merchant-opening-hours-date-schedule
+    source: data/import/merchant_open_hours_week_day_schedule.csv
   - data_entity: product-offer-validity
+    source: data/import/product_offer_validity.csv
   - data_entity: price-product-offer
+    source: data/import/price_product_offer.csv
   - data_entity: product-offer-stock
+    source: data/import/product_offer_stock.csv
   - data_entity: merchant-stock
+    source: data/import/merchant_stock.csv
   - data_entity: merchant-relationship
+    source: data/import/merchant_relationship.csv
   - data_entity: merchant-relationship-sales-order-threshold
-  - data_entity: merchant-relationship-product-list
-  - data_entity: product-price-merchant-relationship
+    source: data/import/sales_order_threshold_per_merchant_relationship.csv
+  - data_entity: merchant_relationship_product_list
+    source: data/import/merchant_relation_to_product_list.csv
+  - data_entity: product_price_merchant_relationship
+    source: data/import/price_product_merchant_relationship.csv
   ### B2B Shopping List
   - data_entity: shopping-list
   - data_entity: shopping-list-item
