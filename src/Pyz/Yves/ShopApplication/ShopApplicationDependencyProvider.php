@@ -256,6 +256,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CustomerReorderFormWidget::class,
             CustomerReorderItemsFormWidget::class,
             OrderItemsProductBundleWidget::class,
+            RemoveFromCartFormWidget::class,
         ];
     }
 
