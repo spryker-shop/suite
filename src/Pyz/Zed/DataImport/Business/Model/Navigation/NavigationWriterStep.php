@@ -20,6 +20,7 @@ class NavigationWriterStep extends PublishAwareStep implements DataImportStepInt
 
     public const NAME = 'name';
     public const KEY = 'key';
+    public const KEY_IS_ACTIVE = 'is_active';
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
