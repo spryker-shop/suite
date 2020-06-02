@@ -34,6 +34,7 @@ class NavigationWriterStep extends PublishAwareStep implements DataImportStepInt
 
         $navigationEntity
             ->setName($this->getName($navigationEntity, $dataSet))
+            ->setIsActive($dataSet[static::KEY_IS_ACTIVE])
             ->save();
 
         $this->addPublishEvents(NavigationEvents::NAVIGATION_KEY_PUBLISH, $navigationEntity->getIdNavigation());
