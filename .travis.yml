@@ -12,6 +12,11 @@ env:
     - ARTIFACTS_SECRET=$AWS_S3_SECRET_ACCESS_KEY
     - ARTIFACTS_BUCKET=spryker-ci
     - POSTGRES_PORT="5433"
+    - DB_ENGINE_POSTGRES=postgres
+    - DB_ENGINE_MYSQL=mysql
+    - DB_VERSION_POSTGRES=default
+    - DB_VERSION_MYSQL=default
+    - DB_VERSION_MARIADB=mariadb-10.4
 
 #Possible travis events (push, pull_request, cron, or api)
 matrix:
@@ -96,7 +101,9 @@ matrix:
         - docker/sdk build images
         - docker/sdk demo-data -t
         - 'docker/sdk testing codecept run -c codeception.functional.yml -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: inclusive: [PyzTest]\"" -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: exclusive: [Api, Glue]\""'
-      before_install: skip
+      before_install:
+          - sed -i.bak 's/DB_ENGINE/'"$DB_ENGINE_POSTGRES"'/' deploy.ci.yml && rm deploy.ci.yml.bak
+          - sed -i.bak 's/DB_VERSION/'"$DB_VERSION_POSTGRES"'/' deploy.ci.yml && rm deploy.ci.yml.bak
       before_script: skip
       after_script: skip
 
@@ -140,7 +147,9 @@ matrix:
         - docker/sdk testing codecept fixtures
         - docker/sdk testing console queue:worker:start --stop-when-empty
         - docker/sdk testing codecept run -c codeception.api.yml
-      before_install: skip
+      before_install:
+          - sed -i.bak 's/DB_ENGINE/'"$DB_ENGINE_POSTGRES"'/' deploy.ci.yml && rm deploy.ci.yml.bak
+          - sed -i.bak 's/DB_VERSION/'"$DB_VERSION_POSTGRES"'/' deploy.ci.yml && rm deploy.ci.yml.bak
       before_script: skip
       after_script: skip
 
@@ -182,7 +191,53 @@ matrix:
         - docker/sdk build images
         - docker/sdk demo-data -t
         - 'docker/sdk testing codecept run -c codeception.functional.yml -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: inclusive: [PyzTest]\"" -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: exclusive: [Api, Glue]\""'
-      before_install: skip
+      before_install:
+          - sed -i.bak 's/DB_ENGINE/'"$DB_ENGINE_MYSQL"'/' deploy.ci.yml && rm deploy.ci.yml.bak
+          - sed -i.bak 's/DB_VERSION/'"$DB_VERSION_MYSQL"'/' deploy.ci.yml && rm deploy.ci.yml.bak
+      before_script: skip
+      after_script: skip
+
+    - name: Docker / Alpine / PHP 7.3 / MariaDB / Functional
+      os:
+          - linux
+      dist: bionic
+      language: minimal
+      env:
+          - PROGRESS_TYPE=plain
+          - SPRYKER_PLATFORM_IMAGE=spryker/php:7.3
+          - SPRYKER_DB_ENGINE=MYSQL
+          - SPRYKER_TEST_IN_BROWSER=phantomjs
+          - TRAVIS=1
+      addons:
+          hosts:
+              - yves.de.spryker.local
+              - zed.de.spryker.local
+              - glue.de.spryker.local
+          apt:
+              packages:
+                  - apache2-utils
+                  - apt-transport-https
+                  - ca-certificates
+                  - curl
+                  - gnupg-agent
+                  - pigz
+                  - software-properties-common
+              sources:
+                  - sourceline: "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+                    key_url: https://download.docker.com/linux/ubuntu/gpg
+      install:
+          - echo eyAiZXhwZXJpbWVudGFsIiA6IHRydWUsICJmZWF0dXJlcyIgOiB7ICJidWlsZGtpdCI6IHRydWUgfSB9Cg==|base64 -d|sudo tee /etc/docker/daemon.json
+          - sudo apt-get install --only-upgrade docker-ce -y
+          - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+          - sudo chmod +x /usr/local/bin/docker-compose
+      script:
+          - docker/sdk boot deploy.ci.yml
+          - docker/sdk build images
+          - docker/sdk demo-data -t
+          - 'docker/sdk testing codecept run -c codeception.functional.yml -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: inclusive: [PyzTest]\"" -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: exclusive: [Api, Glue]\""'
+      before_install:
+        - sed -i.bak 's/DB_ENGINE/'"$DB_ENGINE_MYSQL"'/' deploy.ci.yml && rm deploy.ci.yml.bak
+        - sed -i.bak 's/DB_VERSION/'"$DB_VERSION_MARIADB"'/' deploy.ci.yml && rm deploy.ci.yml.bak
       before_script: skip
       after_script: skip
 
@@ -224,7 +279,9 @@ matrix:
         - docker/sdk build images
         - docker/sdk demo-data -t
         - 'docker/sdk testing codecept run -c codeception.functional.yml -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: inclusive: [PyzTest]\"" -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: exclusive: [Api, Glue]\""'
-      before_install: skip
+      before_install:
+          - sed -i.bak 's/DB_ENGINE/'"$DB_ENGINE_POSTGRES"'/' deploy.ci.yml && rm deploy.ci.yml.bak
+          - sed -i.bak 's/DB_VERSION/'"$DB_VERSION_POSTGRES"'/' deploy.ci.yml && rm deploy.ci.yml.bak
       before_script: skip
       after_script: skip
 

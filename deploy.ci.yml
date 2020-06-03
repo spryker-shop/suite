@@ -79,7 +79,8 @@ groups:
 
 services:
     database:
-        engine: postgres
+        engine: DB_ENGINE
+        version: DB_VERSION
         root:
             username: "root"
             password: "secret"
