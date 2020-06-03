@@ -4703,6 +4703,48 @@
             "time": "2020-02-06T13:41:38+00:00"
         },
         {
+            "name": "spryker-shop/sales-return-page-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/sales-return-page-extension.git",
+                "reference": "fc907431a6aae30e3ecb06c322351ee8e495fc7d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/sales-return-page-extension/zipball/fc907431a6aae30e3ecb06c322351ee8e495fc7d",
+                "reference": "fc907431a6aae30e3ecb06c322351ee8e495fc7d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/symfony": "*"
+            },
+            "suggest": {
+                "spryker/symfony": "If you want to use SalesReturnPage form expander plugins."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SalesReturnPageExtension module",
+            "time": "2020-05-29T15:35:39+00:00"
+        },
+        {
             "name": "spryker/decimal-object",
             "version": "1.0.0",
             "source": {
@@ -5008,7 +5050,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "71029ba9f98a00ac5476ad2527d821c20bb9345e"
+                "reference": "ba47387ffcc723a3b855de770acd8591116f70c9"
             },
             "require": {
                 "php": ">=7.2"
@@ -5719,7 +5761,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-06-01T16:53:25+00:00"
+            "time": "2020-06-03T13:56:37+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -11152,6 +11194,108 @@
             ],
             "description": "SprykGui module",
             "time": "2020-02-20T14:09:48+00:00"
+        },
+        {
+            "name": "spryker-shop/sales-product-bundle-widget",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/sales-product-bundle-widget.git",
+                "reference": "729a0782a63beb42538f27288bfaa0485b3ce216"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/sales-product-bundle-widget/zipball/729a0782a63beb42538f27288bfaa0485b3ce216",
+                "reference": "729a0782a63beb42538f27288bfaa0485b3ce216",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker-shop/sales-return-page-extension": "^1.0.0",
+                "spryker-shop/shop-ui": "^1.38.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/product-bundle": "^7.4.0",
+                "spryker/sales": "^11.9.0",
+                "spryker/symfony": "^3.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SalesProductBundleWidget module",
+            "time": "2020-05-29T15:35:51+00:00"
+        },
+        {
+            "name": "spryker-shop/sales-return-page",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/sales-return-page.git",
+                "reference": "5cb546896661ba5c542c3eb00009cb235b973b63"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/sales-return-page/zipball/5cb546896661ba5c542c3eb00009cb235b973b63",
+                "reference": "5cb546896661ba5c542c3eb00009cb235b973b63",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker-shop/sales-return-page-extension": "^1.0.0",
+                "spryker-shop/shop-ui": "^1.38.0",
+                "spryker/application": "^3.8.0",
+                "spryker/customer": "^7.19.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/sales": "^11.0.0",
+                "spryker/sales-return": "^1.0.0",
+                "spryker/sales-return-search": "^1.0.0",
+                "spryker/store": "^1.11.0",
+                "spryker/symfony": "^3.1.0"
+            },
+            "require-dev": {
+                "spryker-shop/customer-page": "*",
+                "spryker-shop/sales-configurable-bundle-widget": "*",
+                "spryker-shop/sales-product-bundle-widget": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/router": "*"
+            },
+            "suggest": {
+                "spryker-shop/customer-page": "Use this module when you want to use CustomerNavigationWidget",
+                "spryker-shop/sales-configurable-bundle-widget": "Use this module when you want to use OrderItemsConfiguredBundleWidget",
+                "spryker-shop/sales-product-bundle-widget": "Use this module when you want to use ProductBundleSalesReturnPageFormExpanderPlugin",
+                "spryker/router": "Use this module if you want use the RouterProviderPlugin."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SalesReturnPage module",
+            "time": "2020-06-02T08:40:01+00:00"
         },
         {
             "name": "spryker/architecture-sniffer",
