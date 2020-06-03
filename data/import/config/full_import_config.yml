@@ -107,14 +107,9 @@ actions:
     source: data/import/product_quantity.csv
 
 
-#5. Navigation Setup import
+#5. Content Management Setup import
   - data_entity: navigation
     source: data/import/navigation.csv
-  - data_entity: navigation-node
-    source: data/import/navigation_node.csv
-
-
-#6. Content Management Setup import
   - data_entity: cms-template
     source: data/import/cms_template.csv
   - data_entity: cms-block
@@ -143,6 +138,10 @@ actions:
     source: data/import/cms_slot.csv
   - data_entity: cms-slot-block
     source: data/import/cms_slot_block.csv
+
+#6. Navigation Setup import
+  - data_entity: navigation-node
+    source: data/import/navigation_node.csv
 
 
 ### 7. B2B data import

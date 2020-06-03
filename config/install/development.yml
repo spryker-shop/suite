@@ -251,14 +251,14 @@ sections:
                 - US
                 - DE
 
-        import-navigation-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/navigation_import_config.yml"
+        import-content-management-setup:
+            command: "vendor/bin/console data:import --config=data/import/config/content_management_import_config.yml"
             stores:
                 - US
                 - DE
 
-        import-content-management-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/content_management_import_config.yml"
+        import-navigation-setup:
+            command: "vendor/bin/console data:import --config=data/import/config/navigation_import_config.yml"
             stores:
                 - US
                 - DE
