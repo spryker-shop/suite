@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e71d4d329e2573d49caf1c2082f49322",
+    "content-hash": "a396819dda4f1ef6b37c4e1435671dda",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -35891,26 +35891,31 @@
             "time": "2020-04-23T10:38:06+00:00"
         },
         {
-            "name": "spryker/sales-merchant-connector",
-            "version": "1.0.0",
+            "name": "spryker/sales-oms",
+            "version": "0.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/sales-merchant-connector.git",
-                "reference": "e52fdc24133a055ae633af30f8ed0a23e12dab88"
+                "url": "https://github.com/spryker/sales-oms.git",
+                "reference": "df4e1eab5ed751205f3b56115748f3a951c18ed9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales-merchant-connector/zipball/e52fdc24133a055ae633af30f8ed0a23e12dab88",
-                "reference": "e52fdc24133a055ae633af30f8ed0a23e12dab88",
+                "url": "https://api.github.com/repos/spryker/sales-oms/zipball/df4e1eab5ed751205f3b56115748f3a951c18ed9",
+                "reference": "df4e1eab5ed751205f3b56115748f3a951c18ed9",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/kernel": "^3.33.0",
-                "spryker/sales-extension": "^1.2.0"
+                "spryker/oms": "^11.0.0",
+                "spryker/sales": "^11.0.0",
+                "spryker/sales-extension": "^1.1.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/util-data-reader": "^1.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
                 "spryker/testify": "*"
             },
             "type": "library",
@@ -35928,8 +35933,8 @@
             "license": [
                 "proprietary"
             ],
-            "description": "SalesMerchantConnector module",
-            "time": "2019-05-28T06:47:38+00:00"
+            "description": "SalesOms module",
+            "time": "2020-05-29T12:33:32+00:00"
         },
         {
             "name": "spryker/sales-order-threshold",

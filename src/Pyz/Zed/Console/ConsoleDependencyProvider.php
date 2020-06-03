@@ -198,6 +198,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new StateMachineCheckTimeoutConsole(),
             new StateMachineCheckConditionConsole(),
             new StateMachineClearLocksConsole(),
+            new ImportOrderItemsStatusConsole(),
             new SessionRemoveLockConsole(),
             new QueueTaskConsole(),
             new QueueWorkerConsole(),
