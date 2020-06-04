@@ -30,6 +30,7 @@ use Spryker\Zed\FileManagerDataImport\FileManagerDataImportConfig;
 use Spryker\Zed\MerchantDataImport\MerchantDataImportConfig;
 use Spryker\Zed\MerchantOmsDataImport\MerchantOmsDataImportConfig;
 use Spryker\Zed\MerchantOpeningHoursDataImport\MerchantOpeningHoursDataImportConfig;
+use Spryker\Zed\MerchantProductDataImport\MerchantProductDataImportConfig;
 use Spryker\Zed\MerchantProductOfferDataImport\MerchantProductOfferDataImportConfig;
 use Spryker\Zed\MerchantProfileDataImport\MerchantProfileDataImportConfig;
 use Spryker\Zed\MerchantRelationshipDataImport\MerchantRelationshipDataImportConfig;
@@ -111,6 +112,7 @@ class DataImportConfig extends SprykerDataImportConfig
     public const PRODUCT_IMAGE_QUEUE_ERROR = 'import.product_image.error';
     public const PRODUCT_PRICE_QUEUE = 'import.product_price';
     public const PRODUCT_PRICE_QUEUE_ERROR = 'import.product_price.error';
+    public const IMPORT_TYPE_MERCHANT_USER = 'merchant-user';
 
     /**
      * @return string|null
@@ -211,6 +213,7 @@ class DataImportConfig extends SprykerDataImportConfig
             CategoryDataImportConfig::IMPORT_TYPE_CATEGORY,
             MerchantDataImportConfig::IMPORT_TYPE_MERCHANT,
             MerchantDataImportConfig::IMPORT_TYPE_MERCHANT_STORE,
+            MerchantProductDataImportConfig::IMPORT_TYPE_MERCHANT_PRODUCT,
             MerchantProfileDataImportConfig::IMPORT_TYPE_MERCHANT_PROFILE,
             MerchantProfileDataImportConfig::IMPORT_TYPE_MERCHANT_PROFILE_ADDRESS,
             MerchantProductOfferDataImportConfig::IMPORT_TYPE_MERCHANT_PRODUCT_OFFER,
@@ -282,6 +285,7 @@ class DataImportConfig extends SprykerDataImportConfig
             MerchantStockDataImportConfig::IMPORT_TYPE_MERCHANT_STOCK,
             MerchantOmsDataImportConfig::IMPORT_TYPE_MERCHANT_OMS_PROCESS,
             SalesReturnDataImportConfig::IMPORT_TYPE_RETURN_REASON,
+            static::IMPORT_TYPE_MERCHANT_USER,
         ];
     }
 }
