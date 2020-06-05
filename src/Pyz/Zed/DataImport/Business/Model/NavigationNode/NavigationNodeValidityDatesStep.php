@@ -27,7 +27,7 @@ class NavigationNodeValidityDatesStep implements DataImportStepInterface
      * @param string $keyValidFrom
      * @param string $keyValidTo
      */
-    public function __construct($keyValidFrom, $keyValidTo)
+    public function __construct(string $keyValidFrom, string $keyValidTo)
     {
         $this->keyValidFrom = $keyValidFrom;
         $this->keyValidTo = $keyValidTo;
@@ -53,13 +53,13 @@ class NavigationNodeValidityDatesStep implements DataImportStepInterface
      *
      * @return void
      */
-    protected function filterDate(DataSetInterface $dataSet, $key)
+    protected function filterDate(DataSetInterface $dataSet, string $key)
     {
         if (isset($dataSet[$key])) {
             return;
         }
 
-        $dataSet[$key] = "";
+        $dataSet[$key] = '';
     }
 
     /**
@@ -70,9 +70,9 @@ class NavigationNodeValidityDatesStep implements DataImportStepInterface
      *
      * @return void
      */
-    protected function formatDate(DataSetInterface $dataSet, $key)
+    protected function formatDate(DataSetInterface $dataSet, string $key)
     {
-        if ($dataSet[$key] === "") {
+        if ($dataSet[$key] === '') {
             return;
         }
 
@@ -99,7 +99,7 @@ class NavigationNodeValidityDatesStep implements DataImportStepInterface
         $validFromDate = $dataSet[$this->keyValidFrom];
         $validToDate = $dataSet[$this->keyValidTo];
 
-        if ($validFromDate === "" || $validToDate === "") {
+        if ($validFromDate === '' || $validToDate === '') {
             return;
         }
 

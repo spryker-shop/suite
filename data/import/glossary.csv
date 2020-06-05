@@ -525,7 +525,7 @@ customer.order.reorder_selected,Reorder selected items,en_US
 customer.order.reorder_selected,Ausgewählte Artikel Nachbestellen,de_DE
 customer.order.reorder.error.unable_to_reorder_items,"You can not reorder those products directly, please add them to your cart separately",en_US
 customer.order.reorder.error.unable_to_reorder_items,"Sie können diese Produkte nicht direkt nachbestellen, bitte fügen Sie sie separat in Ihren Warenkorb",de_DE
-customer.order.date,Order Date,en_US
+customer.order.date,Date,en_US
 customer.order.date,Datum,de_DE
 customer.order.item_sku,SKU,de_DE
 customer.order.item_sku,SKU,en_US
@@ -713,12 +713,14 @@ checkout.step.payment.title,Payment,en_US
 checkout.step.payment.title,Zahlung,de_DE
 checkout.step.summary.title,Summary,en_US
 checkout.step.summary.title,Übersicht Bestellung,de_DE
+quote_request_agent_page.checkout.step.save_rfq.title,Save Request For Quote,en_US
+quote_request_agent_page.checkout.step.save_rfq.title,Angebotsanfrage speichern,de_DE
 checkout.step.shipment,Go to Shipment,en_US
 checkout.step.shipment,Weiter zur Lieferung,de_DE
 checkout.step.address.select_address,Select an address,en_US
 checkout.step.address.select_address,Wählen Sie eine Adresse,de_DE
-checkout.step.payment,Go to Payment,en_US
-checkout.step.payment,Weiter zur Zahlung,de_DE
+checkout.step.payment,Next,en_US
+checkout.step.payment,Vor,de_DE
 checkout.step.summary,Go to Summary,en_US
 checkout.step.summary,Weiter zur Übersicht,de_DE
 checkout.step.summary.with_method,With,en_US
@@ -1145,8 +1147,12 @@ dummyPaymentCreditCard.card_security_code,CVC,en_US
 dummyPaymentCreditCard.card_security_code,CVC,de_DE
 DummyPaymentInvoice,Invoice,en_US
 DummyPaymentInvoice,Auf Rechnung,de_DE
+DummyMarketplacePaymentInvoice,Invoice,en_US
+DummyMarketplacePaymentInvoice,Auf Rechnung,de_DE
 dummyPaymentInvoice.invoice,Pay with invoice:,en_US
 dummyPaymentInvoice.invoice,Auf Rechnung bezahlen:,de_DE
+dummyMarketplacePaymentInvoice.invoice,Pay with invoice:,en_US
+dummyMarketplacePaymentInvoice.invoice,Auf Rechnung bezahlen:,de_DE
 dummyPaymentInvoice.date_of_birth,Date of Birth,en_US
 dummyPaymentInvoice.date_of_birth,Geburtsdatum,de_DE
 cart.item.item_price,Item price,en_US
@@ -1193,8 +1199,12 @@ product_review.error.invalid_rating,Product rating should be selected.,en_US
 product_review.error.invalid_rating,Produktbewertung soll ausgewählt werden.,de_DE
 cart.promotion.items,Promotional products,en_US
 cart.promotion.items,Werbeprodukte,de_DE
+checkout.payment_method.invalid,Checkout Zahlung ist ungültig,de_DE
+checkout.payment_method.invalid,Checkout payment is not valid,en_US
 checkout.payment.provider.DummyPayment,Dummy Payment,en_US
 checkout.payment.provider.DummyPayment,Beispiel-Zahlungsart,de_DE
+checkout.payment.provider.DummyMarketplacePayment,Dummy Marketplace Payment,en_US
+checkout.payment.provider.DummyMarketplacePayment,Beispiel Marktplatz Zahlungsmethode,de_DE
 cms.preview.access_denied,You are not logged in or you do not have permission to access this page.,en_US
 cms.preview.access_denied,Du bist nicht eingeloggt oder hast keine Berechtigung diese Seite zu betreten.,de_DE
 product-cart.validation.error.abstract-product-exists,"Product ""sku"" not found",en_US
@@ -1209,6 +1219,8 @@ product-cart.validation.error.concrete-product-inactive,Product sku is not activ
 product-cart.validation.error.concrete-product-inactive,Produkt sku ist nicht aktiv.,de_DE
 product-cart.info.concrete-product-inactive.removed,Inactive item %sku% was removed from your shopping cart.,en_US
 product-cart.info.concrete-product-inactive.removed,Der inaktive Artikel %sku% wurde aus Ihrem Warenkorb entfernt.,de_DE
+product-offer.info.product-offer-inactive.removed,Inactive item %sku% was removed from your shopping cart.,en_US
+product-offer.info.product-offer-inactive.removed,Der inaktive Artikel %sku% wurde aus Ihrem Warenkorb entfernt.,de_DE
 product-cart.info.restricted-product.removed,The Item %sku% was removed from the cart because it was deactivated.,en_US
 product-cart.info.restricted-product.removed,Der Artikel %sku% wurde aus Ihrem Warenkorb entfernt da er deaktiviert wurde.,de_DE
 reorder.info.restricted-product.removed,The Item %sku% could not be added to cart because it was deactivated.,en_US
@@ -2323,6 +2335,10 @@ page.detail.volume_price.price,Price,en_US
 page.detail.volume_price.price,Preis,de_DE
 customer.order.canceledTotal,Canceled amount,en_US
 customer.order.canceledTotal,Stornierter Betrag,de_DE
+customer.order.remunerationTotal,Remuneration Total,en_US
+customer.order.remunerationTotal,Rückerstattungsbetrag,de_DE
+customer.order.refundTotal,Refund Total,en_US
+customer.order.refundTotal,Rückerstattung insgesamt,de_DE
 packaging-units.recommendation.amount-min-violation,Minimum amount requirements for product are not fulfilled,en_US
 packaging-units.recommendation.amount-min-violation,Mindestmengenanforderungen für das Produkt sind nicht erfüllt,de_DE
 packaging-units.recommendation.amount-max-violation,Maximum amount requirements for product are not fulfilled,en_US
@@ -2651,6 +2667,8 @@ quote_request_page.quote_request.violations.invalid_date,Date should be greater 
 quote_request_page.quote_request.violations.invalid_date,Datum muss größer sein als das aktuelle Datum.,de_DE
 quote_request_page.quote_request.created,Quote request created successfully.,en_US
 quote_request_page.quote_request.created,Angebotsanfrage erfolgreich erstellt.,de_DE
+quote_request_page.quote_request.saved,Quote request saved successfully.,en_US
+quote_request_page.quote_request.saved,Angebotsanfrage wurde erfolgreich gespeichert.,de_DE
 quote_request_page.quote_request.list.reference,Reference,en_US
 quote_request_page.quote_request.list.reference,Referenz,de_DE
 quote_request_page.quote_request.list.company,Company,en_US
@@ -2715,6 +2733,10 @@ quote_request_page.quote_request.actions.edit,Edit,en_US
 quote_request_page.quote_request.actions.edit,Ändern,de_DE
 quote_request_page.quote_request.actions.edit_items,Edit Items,en_US
 quote_request_page.quote_request.actions.edit_items,Elemente bearbeiten,de_DE
+quote_request_page.quote_request.actions.edit_address,Edit Address,en_US
+quote_request_page.quote_request.actions.edit_address,Adresse bearbeiten,de_DE
+quote_request_page.quote_request.actions.edit_shipment,Edit Shipment,en_US
+quote_request_page.quote_request.actions.edit_shipment,Versandart bearbeiten,de_DE
 quote_request_page.quote_request.view.empty,You do not have any quote requests yet.,en_US
 quote_request_page.quote_request.view.empty,Sie haben noch keine Angebotsanfragen.,de_DE
 quote_request_page.quote_request.updated,Quote request updated successfully.,en_US
@@ -2727,10 +2749,60 @@ quote_request_page.quote_request.use_default_price,Use default price,en_US
 quote_request_page.quote_request.use_default_price,Standardpreis verwenden,de_DE
 quote_request_page.quote_request.converted_to_cart,Quote request converted to cart successfully.,en_US
 quote_request_page.quote_request.converted_to_cart,Die Angebotsanfrage wurde erfolgreich in den Warenkorb konvertiert.,de_DE
+quote_request_page.quote_request.edit_address_confirm,"You are editing Quote Request <a href=""%link%"">%reference%</a> if you will leave it, all changes will be dropped.",en_US
+quote_request_page.quote_request.edit_address_confirm,"Sie bearbeiten Angebotsanfrage <a href=""%link%"">%reference%</a> wenn Sie es verlassen, werden alle Änderungen verworfen.",de_DE
 quote_request_page.quote_request.edit_items_confirm,"You are editing Quote Request <a href=""%link%"">%reference%</a> if you will leave it, all changes will be dropped.",en_US
 quote_request_page.quote_request.edit_items_confirm,"Sie bearbeiten Angebotsanfrage <a href=""%link%"">%reference%</a> wenn Sie es verlassen, werden alle Änderungen verworfen.",de_DE
+quote_request_page.quote_request.edit_shipment_confirm,"You are editing Quote Request <a href=""%link%"">%reference%</a> if you will leave it, all changes will be dropped.",en_US
+quote_request_page.quote_request.edit_shipment_confirm,"Sie bearbeiten Angebotsanfrage <a href=""%link%"">%reference%</a> wenn Sie es verlassen, werden alle Änderungen verworfen.",de_DE
 quote_request_page.quote_request.source_price_changes_forbidden,"You can't edit prices in this Quote Request, because it's invalid.",en_US
 quote_request_page.quote_request.source_price_changes_forbidden,"Sie können die Preise in dieser Angebotsanfrage nicht bearbeiten, da sie ungültig ist.",de_DE
+quote_request_page.quote_request.shipment_counter,"Shipment %index% of %length%",en_US
+quote_request_page.quote_request.shipment_counter,"Lieferung %index% von %length%",de_DE
+quote_request_page.quote_request.empty_shipment_data,No shipment address / shipment method provided.,en_US
+quote_request_page.quote_request.empty_shipment_data,Es wurde keine Lieferadresse / Lieferart angegeben.,de_DE
+quote_request_page.quote_request.title_create,Create Quote Request,en_US
+quote_request_page.quote_request.title_create,Angebotsanfrage erstellen,de_DE
+quote_request_page.quote_request.title_edit,Edit #%id%,en_US
+quote_request_page.quote_request.title_edit,Ändern #%id%,de_DE
+quote_request_page.quote_request.title_attention,Attention,en_US
+quote_request_page.quote_request.title_attention,Achtung,de_DE
+quote_request_page.quote_request.title_addresses,Addresses,en_US
+quote_request_page.quote_request.title_addresses,Adressen,de_DE
+quote_request_page.quote_request.title_billing_address,Billing Address,en_US
+quote_request_page.quote_request.title_billing_address,Rechnungsadresse,de_DE
+quote_request_page.quote_request.title_delivery_address,Delivery address,en_US
+quote_request_page.quote_request.title_delivery_address,Lieferadresse,de_DE
+quote_request_page.quote_request.title_shipment_method,Shipment method,en_US
+quote_request_page.quote_request.title_shipment_method,Versandmethode,de_DE
+quote_request_page.quote_request.breadcrumb.create,Create,en_US
+quote_request_page.quote_request.breadcrumb.create,Erstellen,de_DE
+quote_request_page.quote_request.breadcrumb.edit,Edit,en_US
+quote_request_page.quote_request.breadcrumb.edit,Ändern,de_DE
+quote_request_page.quote_request.breadcrumb.attention,Attention,en_US
+quote_request_page.quote_request.breadcrumb.attention,Achtung,de_DE
+quote_request_page.quote_request.multiple_delivery_address,Multiple delivery addresses.,en_US
+quote_request_page.quote_request.multiple_delivery_address,Mehrere Lieferadressen.,de_DE
+quote_request_page.quote_request.multiple_shipment_method,Multiple shipment methods.,en_US
+quote_request_page.quote_request.multiple_shipment_method,Mehrere Versandarten.,de_DE
+quote_request_page.quote_request.empty_page,Your Quote is empty!,en_US
+quote_request_page.quote_request.empty_page,Ihre Angebotsanfrage ist unvollständig!,de_DE
+quote_request_page.quote_request.empty_delivery_address,No delivery address added.,en_US
+quote_request_page.quote_request.empty_delivery_address,Keine Lieferadresse hinzugefügt.,de_DE
+quote_request_page.quote_request.empty_address,No address added.,en_US
+quote_request_page.quote_request.empty_address,Keine Adresse hinzugefügt.,de_DE
+quote_request_page.quote_request.empty_shipment_method,No shipment method added.,en_US
+quote_request_page.quote_request.empty_shipment_method,Keine Versandart hinzugefügt.,de_DE
+quote_request_page.quote_request.cta_add_address,Add address,en_US
+quote_request_page.quote_request.cta_add_address,Adresse hinzufügen,de_DE
+quote_request_page.quote_request.cta_edit_address,Edit address,en_US
+quote_request_page.quote_request.cta_edit_address,Adresse bearbeiten,de_DE
+quote_request_page.quote_request.cta_add_shipment_method,Add shipment method,en_US
+quote_request_page.quote_request.cta_add_shipment_method,Versandart hinzufügen,de_DE
+quote_request_page.quote_request.cta_edit_shipment_method,Edit shipment method,en_US
+quote_request_page.quote_request.cta_edit_shipment_method,Versandart bearbeiten,de_DE
+quote_request_page.quote_request.item,%count% item(s),en_US
+quote_request_page.quote_request.item,%count% artikel,de_DE
 quote_request.status.waiting,Waiting,en_US
 quote_request.status.waiting,Warten,de_DE
 quote_request.status.in-progress,In Progress,en_US
@@ -2859,8 +2931,8 @@ persistent_cart_share.error.resource_is_not_available,The cart you are trying to
 persistent_cart_share.error.resource_is_not_available,"Der Warenkorb, auf den Sie zugreifen möchten, ist nicht verfügbar.",de_DE
 persistent_cart_share.error.quote_is_not_available,The cart you are trying to access is not available.,en_US
 persistent_cart_share.error.quote_is_not_available,"Der Warenkorb, auf den Sie zugreifen möchten, ist nicht verfügbar.",de_DE
-persistent_cart_share.share_options.external.PREVIEW,,en_US
-persistent_cart_share.share_options.external.PREVIEW,,de_DE
+persistent_cart_share.share_options.external.PREVIEW,Preview,en_US
+persistent_cart_share.share_options.external.PREVIEW,Vorschau,de_DE
 persistent_cart_share.share_options.internal.READ_ONLY,Read Only,en_US
 persistent_cart_share.share_options.internal.READ_ONLY,Schreibgeschützt,de_DE
 persistent_cart_share.share_options.internal.FULL_ACCESS,Full Access,en_US
@@ -2885,8 +2957,8 @@ shared_cart.resource_share.strategy.error.unable_to_share_cart,Unable to share a
 shared_cart.resource_share.strategy.error.unable_to_share_cart,Der Einkaufswagen kann nicht mit dem angegebenen Kunden geteilt werden.,de_DE
 shared_cart.resource_share.strategy.success.cart_share_access_updated,Access level was updated.,en_US
 shared_cart.resource_share.strategy.success.cart_share_access_updated,Zugriffsebene wurde aktualisiert.,de_DE
-product_cart_item.remove,"&times; entfernen",de_DE
-product_cart_item.remove,"&times; remove",en_US
+product_cart_item.remove,"× entfernen",de_DE
+product_cart_item.remove,"× remove",en_US
 comment.validation.error.comment_not_found,Comment not found.,en_US
 comment.validation.error.comment_not_found,Kommentar nicht gefunden.,de_DE
 comment.validation.error.comment_thread_not_found,Comment Thread not found.,en_US
@@ -2931,8 +3003,8 @@ comment_widget.tags.delivery,Delivery,en_US
 comment_widget.tags.delivery,Lieferung,de_DE
 comment_widget.tags.important,Important,en_US
 comment_widget.tags.important,Wichtig,de_DE
-checkout.step.summary.shipment_costs_total,"Shipment costs(total)",en_US
-checkout.step.summary.shipment_costs_total,"Versandkosten (insgesamt)",de_DE
+checkout.step.summary.shipment_costs_total,"Shipment total",en_US
+checkout.step.summary.shipment_costs_total,"Versand insgesamt",de_DE
 checkout.step.summary.delivery_method,Zustellungsmethode,de_DE
 checkout.step.summary.delivery_method,Delivery method,en_US
 checkout.step.summary.requested_delivery_date,Angefordertes Lieferdatum,de_DE
@@ -3017,6 +3089,8 @@ merchant_product_offer.view_seller,View Seller,en_US
 merchant_product_offer.view_seller,Händler ansehen,de_DE
 merchant_product_offer.sold_by,Sold by,en_US
 merchant_product_offer.sold_by,Verkauft durch,de_DE
+merchant_sales_order.merchant_order_id,Merchant Order ID,en_US
+merchant_sales_order.merchant_order_id,Händlerbestell-ID,de_DE
 agent_page.error.customer_already_logged_in,"Sie sind bereits als Kunde angemeldet. Bitte loggen Sie sich zuerst aus und fahren Sie dann fort",de_DE
 agent_page.error.customer_already_logged_in,"You are already logged in as customer, please logout first, then proceed",en_US
 configurable_bundle_note.enter_note,Add a note for the configured bundle,en_US
@@ -3029,12 +3103,14 @@ configurable_bundle_note.note_added,Note has been successfully added to configur
 configurable_bundle_note.note_added,Einkaufswagen-Notiz wurde dem konfigurierten Bundle erfolgreich hinzugefügt,de_DE
 sales_configured_bundle_widget.success.items_added_to_cart_as_individual_products,"Please notice: Items from the Configured Bundle were added to the Cart as individual products.",en_US
 sales_configured_bundle_widget.success.items_added_to_cart_as_individual_products,"Bitte beachten: Artikel aus dem konfigurierbaren Bündel wurden als einzelne Produkte in den Warenkorb gelegt.",de_DE
+sales_configured_bundle_widget.returnable_state,Non-returnable,en_US
+sales_configured_bundle_widget.returnable_state,Kann nicht retourniert werden,de_DE
+sales_configured_bundle_widget.quantity,Quantity:,en_US
+sales_configured_bundle_widget.quantity,Anzahl:,de_DE
 configured_bundle_widget.items,Items,en_US
 configured_bundle_widget.items,Artikel,de_DE
-merchant_profile.message.removed,Product %sku% is not available at the moment.,en_US
-merchant_profile.message.removed,Das Produkt %sku% ist momentan nicht verfügbar.,de_DE
-merchant_profile.message.inactive,Product %sku% from merchant %merchant_name% is not available at the moment.,en_US
-merchant_profile.message.inactive,Artikel %sku% vom Händler %merchant_name% ist momentan nicht verfügbar.,de_DE
+merchant.message.removed,Product %sku% is not available at the moment.,en_US
+merchant.message.removed,Das Produkt %sku% ist momentan nicht verfügbar.,de_DE
 merchant_weekday_schedule.new_year,New Year's Day,en_US
 merchant_weekday_schedule.new_year,Neujahrstag,de_DE
 merchant_weekday_schedule.good_friday,Good Friday,en_US
@@ -3157,7 +3233,221 @@ shared_cart.dismiss_confirmation.carts_list,Carts List,en_US
 shared_cart.dismiss_confirmation.carts_list,Einkaufswagen,de_DE
 shopping_list.dismiss_confirmation.shopping_lists,Shopping Lists,en_US
 shopping_list.dismiss_confirmation.shopping_lists,Einkaufsliste,de_DE
+cart.item.sales_unit.not_found,Sales unit is not found for product with SKU '%sku%'.,en_US
+cart.item.sales_unit.not_found,Verkaufseinheit wird für Produkt mit SKU '%sku%' nicht gefunden.,de_DE
+cart.item.packaging_unit.not_found,Packaging unit not found for product with SKU '%sku%'.,en_US
+cart.item.packaging_unit.not_found,Verpackungseinheit für Produkt mit SKU '% sku%' nicht gefunden.,de_DE
+cart.promotion.items.invalid_for_quote,Promotional discount not found for product with SKU '%sku%'.,en_US
+cart.promotion.items.invalid_for_quote,Aktionsrabatt für Produkt mit SKU '% sku%' nicht gefunden.,de_DE
 footer.copyright.content_text,"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",en_US
 footer.copyright.content_text,"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",de_DE
 footer.copyright.text,"&copy; ACME Company",en_US
 footer.copyright.text,"&copy; ACME Company",de_DE
+return.return_reasons.damaged.name,Damaged,en_US
+return.return_reasons.damaged.name,Beschädigt,de_DE
+return.return_reasons.wrong-item.name,Wrong Item,en_US
+return.return_reasons.wrong-item.name,Falscher Artikel,de_DE
+return.return_reasons.no_longer_needed.name,No longer needed,en_US
+return.return_reasons.no_longer_needed.name,Nicht mehr benötigt,de_DE
+return_page.default_title,Returns,en_US
+return_page.default_title,Retouren,de_DE
+return_page.title,Create Return,en_US
+return_page.title,Retoure Anlegen,de_DE
+return_page.return_reasons.select_reason.placeholder,Select reason,en_US
+return_page.return_reasons.select_reason.placeholder,Grund auswählen,de_DE
+return_page.return_reasons.custom_reason.placeholder,Custom reason,en_US
+return_page.return_reasons.custom_reason.placeholder,Benutzerdefinierter Grund,de_DE
+return.return_policy.returnable_till.message,Returnable till: %date%,en_US
+return.return_policy.returnable_till.message,Retournierbar bis: %date%,de_DE
+return_page.list.title,Returns,en_US
+return_page.list.title,Retouren,de_DE
+return_page.account.no_return,No returns at the moment,en_US
+return_page.account.no_return,Momentan gibt es keine Retouren,de_DE
+return_page.return.return_ref,Return Reference,en_US
+return_page.return.return_ref,Retourennummer,de_DE
+return_page.return.order_ref,Order Reference,en_US
+return_page.return.order_ref,Bestellnummer,de_DE
+return_page.return.number_of_items,No. of Items,en_US
+return_page.return.number_of_items,Anzahl der Artikel,de_DE
+return_page.return.date,Return Date,en_US
+return_page.return.date,Retouredatum,de_DE
+return_page.return.items_state,Items State,en_US
+return_page.return.items_state,Stand der Artikel,de_DE
+return_page.return.view_return,View Return,en_US
+return_page.return.view_return,Retoure ansehen,de_DE
+return_page.return.print_return,Print Slip,en_US
+return_page.return.print_return,Beleg ausdrücken,de_DE
+return_page.breadcrumb.returns,Returns,en_US
+return_page.breadcrumb.returns,Retouren,de_DE
+return_page.breadcrumb.create_return,Create Return,en_US
+return_page.breadcrumb.create_return,Retoure anlegen,de_DE
+return_page.details.page_title,Return Details,en_US
+return_page.details.page_title,Retourendetails,de_DE
+return_page.details.actions.back_to_list,Back to List,en_US
+return_page.details.actions.back_to_list,Zurück zur Liste,de_DE
+return_page.details.actions.print_slip,Print Slip,en_US
+return_page.details.actions.print_slip,Beleg ausdrücken,de_DE
+return_page.details.total.items_to_return,Items to return,en_US
+return_page.details.total.items_to_return,Die zu retournierenden Artikel,de_DE
+return_page.details.total.items_to_return.count,items,en_US
+return_page.details.total.items_to_return.count,Artikel,de_DE
+return_page.details.total.remuneration_total,Remuneration Total,en_US
+return_page.details.total.remuneration_total,Rückerstattungsbetrag,de_DE
+return_page.item.options,Product options:,en_US
+return_page.item.options,Produktoptionen:,de_DE
+return_page.table.actions,Actions,en_US
+return_page.table.actions,Aktionen,de_DE
+return_page.button.return_list,Returns,en_US
+return_page.button.return_list,Retouren,de_DE
+return_page.return_reasons.title,Reason:,en_US
+return_page.return_reasons.title,Grund:,de_DE
+return_page.return.created,Return created successfully,en_US
+return_page.return.created,Retoure wurde erfolgreich angelegt,de_DE
+return_page.return.title,Create Return,en_US
+return_page.return.title,Retoure Anlegen,de_DE
+return_page.order_reference,Order ref:,en_US
+return_page.order_reference,Bestellnummer:,de_DE
+return_page.order_date,Order date:,en_US
+return_page.order_date,Bestellungsdatum:,de_DE
+return_page.return_reference,Return ref:,en_US
+return_page.return_reference,Retourennummer:,de_DE
+return_page.return_date,Return date:,en_US
+return_page.return_date,Retouredatum:,de_DE
+return_page.button_text,Create Return,en_US
+return_page.button_text,Retoure anlegen,de_DE
+return_page.item_sku,SKU:,en_US
+return_page.item_sku,SKU:,de_DE
+return_page.quantity,Quantity:,en_US
+return_page.quantity,Anzahl:,de_DE
+return_page.returnable_state,Non-returnable,en_US
+return_page.returnable_state,Kann nicht retourniert werden,de_DE
+return_page.create_return.validation.selected_items,At least one product should be selected.,en_US
+return_page.create_return.validation.selected_items,Mindestens ein Produkt sollte ausgewählt werden.,de_DE
+return_page.button.create_return,Create Return,en_US
+return_page.button.create_return,Retoure anlegen,de_DE
+return_page.slip.return_reference,Return Ref,en_US
+return_page.slip.return_reference,Retourennummer,de_DE
+return_page.slip.return_date,Return Date,en_US
+return_page.slip.return_date,Retouredatum,de_DE
+return_page.slip.order_reference,Order Ref,en_US
+return_page.slip.order_reference,Bestellnummer,de_DE
+return_page.slip.barcode,Barcode,en_US
+return_page.slip.barcode,Barcode,de_DE
+return_page.slip.product_sku,Product SKU,en_US
+return_page.slip.product_sku,Produkt-SKU,de_DE
+return_page.slip.product_name,Product Name,en_US
+return_page.slip.product_name,Produktname,de_DE
+return_page.slip.default_price,Default Price,en_US
+return_page.slip.default_price,Standardpreis,de_DE
+return_page.slip.quantity,Qty,en_US
+return_page.slip.quantity,Anzahl,de_DE
+return_page.slip.total_price,Total Price,en_US
+return_page.slip.total_price,Gesamtpreis,de_DE
+return_page.slip.return_reason,Return Reason,en_US
+return_page.slip.return_reason,Retourengrund,de_DE
+return_page.slip.items_to_return,Items to Return,en_US
+return_page.slip.items_to_return,Die zu retournierenden Artikel,de_DE
+return_page.slip.remuneration_total,Remuneration Total,en_US
+return_page.slip.remuneration_total,Rückerstattungsbetrag,de_DE
+customer.order.number_of_items,No. of Items,en_US
+customer.order.number_of_items,Anzahl der Artikel,de_DE
+customer.order.reference,Reference,en_US
+customer.order.reference,Referenz,de_DE
+customer.order.email,Email,en_US
+customer.order.email,E-Mail-Adresse,de_DE
+customer.order.company_user,Company User,en_US
+customer.order.company_user,Firmenbenutzer,de_DE
+customer.order_history.search_type.all,All,en_US
+customer.order_history.search_type.all,Alle,de_DE
+customer.order_history.search_type.orderReference,Order Reference,en_US
+customer.order_history.search_type.orderReference,Bestellnummer,de_DE
+customer.order_history.search_type.itemName,Product Name,en_US
+customer.order_history.search_type.itemName,Produktname,de_DE
+customer.order_history.search_type.itemSku,Product SKU,en_US
+customer.order_history.search_type.itemSku,Produkt-SKU,de_DE
+customer.order_history.search,Search,en_US
+customer.order_history.search,Suchen,de_DE
+customer.order_history.date_from,From,en_US
+customer.order_history.date_from,Von,de_DE
+customer.order_history.date_to,To,en_US
+customer.order_history.date_to,Bis,de_DE
+customer.order_history.apply,Apply,en_US
+customer.order_history.apply,Anwenden,de_DE
+customer.order_history.is_order_items_visible,Show products in search results,en_US
+customer.order_history.is_order_items_visible,Produkte in Suchergebnissen anzeigen,de_DE
+customer.order_history.active_filters,Active Filters:,en_US
+customer.order_history.active_filters,Aktive Filter:,de_DE
+customer.order_history.reset_all,Reset All,en_US
+customer.order_history.reset_all,Alles zurücksetzen,de_DE
+company_page.label.business_unit,Business Unit,en_US
+company_page.label.business_unit,Geschäftsbereich,de_DE
+company_page.choice.my_orders,My Orders,en_US
+company_page.choice.my_orders,Meine Bestellungen,de_DE
+company_page.choice.company_orders,Company Orders,en_US
+company_page.choice.company_orders,Firmenbestellungen,de_DE
+permission.name.SeeCompanyOrdersPermissionPlugin,View Company orders,en_US
+permission.name.SeeCompanyOrdersPermissionPlugin,Firmenbestellungen anzeigen,de_DE
+permission.name.SeeBusinessUnitOrdersPermissionPlugin,View Business Unit orders,en_US
+permission.name.SeeBusinessUnitOrdersPermissionPlugin,Bestellungen von Geschäftsbereichen anzeigen,de_DE
+form.csrf.error.text,Something went wrong. Sorry.,en_US
+form.csrf.error.text,Leider ging etwas schief. Tut uns leid.,de_DE
+sales_product_bundle_widget.returnable_text,Returnable till:,en_US
+sales_product_bundle_widget.returnable_text,Man kann retournieren bis:,de_DE
+sales_product_bundle_widget.returnable_state,Non-returnable,en_US
+sales_product_bundle_widget.returnable_state,Kann nicht retourniert werden,de_DE
+sales_product_bundle_widget.item_sku,SKU:,en_US
+sales_product_bundle_widget.item_sku,SKU:,de_DE
+sales_product_bundle_widget.quantity,Quantity:,en_US
+sales_product_bundle_widget.quantity,Anzahl:,de_DE
+sales_product_bundle_widget.item.options,Product options:,en_US
+sales_product_bundle_widget.item.options,Produktoptionen:,de_DE
+oms.state.new,New,en_US
+oms.state.new,Neu,de_DE
+oms.state.waiting,Waiting,en_US
+oms.state.waiting,Warten,de_DE
+oms.state.in-progress,In progress,en_US
+oms.state.in-progress,In Bearbeitung,de_DE
+oms.state.ready,Ready,en_US
+oms.state.ready,Bereit,de_DE
+oms.state.canceled,Canceled,en_US
+oms.state.canceled,Abgebrochen,de_DE
+oms.state.closed,Closed,en_US
+oms.state.closed,Geschlossen,de_DE
+oms.state.draft,Draft,en_US
+oms.state.draft,Entwurf,de_DE
+oms.state.payment-pending,Payment pending,en_US
+oms.state.payment-pending,Ausstehende Zahlung,de_DE
+oms.state.paid,Paid,en_US
+oms.state.paid,Bezahlt,de_DE
+oms.state.confirmed,Confirmed,en_US
+oms.state.confirmed,Bestätigt,de_DE
+oms.state.exported,Exported,en_US
+oms.state.exported,Exportiert,de_DE
+oms.state.shipped,Shipped,en_US
+oms.state.shipped,Versandt,de_DE
+oms.state.delivered,Delivered,en_US
+oms.state.delivered,Geliefert,de_DE
+oms.state.ready-for-return,Ready for return,en_US
+oms.state.ready-for-return,Bereit zum Retournieren,de_DE
+oms.state.refunded,Refunded,en_US
+oms.state.refunded,Zurückerstattet,de_DE
+oms.state.returned,Returned,en_US
+oms.state.returned,Retourniert,de_DE
+oms.state.waiting-for-return,Waiting for return,en_US
+oms.state.waiting-for-return,Wartet auf Retoure,de_DE
+oms.state.shipped-to-customer,Shipped to customer,en_US
+oms.state.shipped-to-customer,An den Kunden versandt,de_DE
+oms.state.sent-to-merchant,Sent to merchant,en_US
+oms.state.sent-to-merchant,An den Händler versandt,de_DE
+oms.state.shipped-by-merchant,Shipped by merchant,en_US
+oms.state.shipped-by-merchant,Von dem Händler versandt,de_DE
+oms.state.return-canceled,Return canceled,en_US
+oms.state.return-canceled,Retoure wurde abgebrochen,de_DE
+return.create_return.validation.returnable_items_error,Return cannot be created as it contains non-returnable items,en_US
+return.create_return.validation.returnable_items_error,"Retoure kann nicht angestellt werden, weil sie die Artikel beinhaltet, die nicht retourniert werden können",de_DE
+return.create_return.validation.store_error,Return cannot be created - a wrong store has been selected,en_US
+return.create_return.validation.store_error,Retoure kann nicht angestellt werden - es wurde ein falscher Store ausgewählt.,de_DE
+return.create_return.validation.items_error,Return cannot be cretaed for this set of items,en_US
+return.create_return.validation.items_error,Für dieses Set der Artikel kann die Retoure nicht erstellt werden,de_DE
+return.return_policy.returnable_till.message,Returnable till: %date%,en_US
+return.return_policy.returnable_till.message,Man kann retournieren bis: %date%,de_DE

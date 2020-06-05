@@ -60,7 +60,7 @@ class CheckoutApiTester extends ApiEndToEndTester
 {
     use _generated\CheckoutApiTesterActions;
 
-    protected const REQUEST_PARAM_PAYMENT_METHOD_NAME_INVOICE = 'invoice';
+    protected const REQUEST_PARAM_PAYMENT_METHOD_NAME_INVOICE = 'Invoice';
     protected const REQUEST_PARAM_PAYMENT_PROVIDER_NAME_DUMMY_PAYMENT = 'DummyPayment';
     protected const QUOTE_ITEM_OVERRIDE_DATA_PRODUCT = 'product';
     protected const QUOTE_ITEM_OVERRIDE_DATA_SHIPMENT = 'shipment';
@@ -108,14 +108,6 @@ class CheckoutApiTester extends ApiEndToEndTester
         $this->assertEmpty(
             $attributes[RestCheckoutDataTransfer::ADDRESSES],
             'The returned resource attributes addresses should be an empty array'
-        );
-        $this->assertNotEmpty(
-            $attributes[RestCheckoutDataTransfer::PAYMENT_PROVIDERS],
-            'The returned resource attributes payment providers should not be an empty array'
-        );
-        $this->assertNotEmpty(
-            $attributes[RestCheckoutDataTransfer::SHIPMENT_METHODS],
-            'The returned resource attributes shipment methods should not be an empty array'
         );
     }
 
@@ -434,7 +426,7 @@ class CheckoutApiTester extends ApiEndToEndTester
             AddressTransfer::LAST_NAME => $customerTransfer->getLastName(),
         ]))->build();
         $customerFacade = $this->getCustomerFacade();
-        $addressTransfer = $customerFacade->createAddress($addressTransfer);
+        $customerFacade->createAddress($addressTransfer);
 
         return $customerFacade->getCustomer($customerTransfer);
     }

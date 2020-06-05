@@ -1,0 +1,192 @@
+# Example of demo shop 'full' data import (all categories).
+version: 0
+
+actions:
+#1. Commerce Setup data import
+  - data_entity: store
+  - data_entity: currency
+    source: data/import/currency.csv
+  - data_entity: order-source
+    source: data/import/order_source.csv
+  - data_entity: customer
+    source: data/import/customer.csv
+  - data_entity: glossary
+    source: data/import/glossary.csv
+  - data_entity: tax
+    source: data/import/tax.csv
+  - data_entity: shipment
+    source: data/import/shipment.csv
+  - data_entity: shipment-price
+    source: data/import/shipment_price.csv
+  - data_entity: shipment-method-store
+  - data_entity: sales-order-threshold
+  - data_entity: stock
+  - data_entity: stock-store
+  - data_entity: payment-method
+  - data_entity: payment-method-store
+  - data_entity: return-reason
+
+
+#2. Catalog Setup data import - Catalog Setup category includes sub-categories: Categories, Products,Pricing, Stocks
+  - data_entity: category-template
+    source: data/import/category_template.csv
+  - data_entity: category
+    source: data/import/category.csv
+  - data_entity: product-attribute-key
+    source: data/import/product_attribute_key.csv
+  - data_entity: product-management-attribute
+    source: data/import/product_management_attribute.csv
+  - data_entity: product-abstract
+    source: data/import/icecat_biz_data/product_abstract.csv
+  - data_entity: product-abstract-store
+    source: data/import/icecat_biz_data/product_abstract_store.csv
+  - data_entity: product-concrete
+    source: data/import/icecat_biz_data/product_concrete.csv
+  - data_entity: product-image
+    source: data/import/icecat_biz_data/product_image.csv
+  - data_entity: product-price
+    source: data/import/product_price.csv
+  - data_entity: product-price-schedule
+  - data_entity: product-stock
+    source: data/import/product_stock.csv
+
+
+#3. Special Product Types Setup import - Special Product Types category includes sub-categories: Product Options, Measurements, Product Bundles, Gift Cards
+  - data_entity: product-option
+    source: data/import/product_option.csv
+  - data_entity: product-option-price
+    source: data/import/product_option_price.csv
+  - data_entity: gift-card-abstract-configuration
+    source: data/import/gift_card_abstract_configuration.csv
+  - data_entity: gift-card-concrete-configuration
+    source: data/import/gift_card_concrete_configuration.csv
+  - data_entity: product-measurement-unit
+  - data_entity: product-measurement-base-unit
+  - data_entity: product-measurement-sales-unit
+  - data_entity: product-measurement-sales-unit-store
+  - data_entity: product-packaging-unit-type
+  - data_entity: product-packaging-unit
+  - data_entity: product-list
+  - data_entity: product-list-category
+  - data_entity: product-list-product-concrete
+  - data_entity: configurable-bundle-template
+  - data_entity: configurable-bundle-template-slot
+  - data_entity: configurable-bundle-template-image
+
+
+#4. Merchandising Setup import
+  - data_entity: discount
+    source: data/import/discount.csv
+  - data_entity: discount-store
+    source: data/import/discount_store.csv
+  - data_entity: discount-voucher
+    source: data/import/discount_voucher.csv
+  - data_entity: product-group
+    source: data/import/product_group.csv
+  - data_entity: product-relation
+    source: data/import/product_relation.csv
+  - data_entity: product-relation-store
+    source: data/import/product_relation_store.csv
+  - data_entity: product-review
+    source: data/import/product_review.csv
+  - data_entity: product-label
+    source: data/import/product_label.csv
+  - data_entity: product-label-store
+    source: data/import/product_label_store.csv
+  - data_entity: product-set
+    source: data/import/icecat_biz_data/product_set.csv
+  - data_entity: product-search-attribute-map
+    source: data/import/product_search_attribute_map.csv
+  - data_entity: product-search-attribute
+    source: data/import/product_search_attribute.csv
+  - data_entity: discount-amount
+    source: data/import/discount_amount.csv
+  - data_entity: product-discontinued
+  - data_entity: product-alternative
+  - data_entity: product-quantity
+    source: data/import/product_quantity.csv
+
+
+#5. Navigation Setup import
+  - data_entity: navigation
+    source: data/import/navigation.csv
+  - data_entity: navigation-node
+    source: data/import/navigation_node.csv
+
+
+#6. Content Management Setup import
+  - data_entity: cms-template
+    source: data/import/cms_template.csv
+  - data_entity: cms-block
+    source: data/import/cms_block.csv
+  - data_entity: cms-block-store
+    source: data/import/cms_block_store.csv
+  - data_entity: cms-block-category-position
+    source: data/import/cms_block_category_position.csv
+  - data_entity: cms-block-category
+    source: data/import/cms_block_category.csv
+  - data_entity: content-banner
+  - data_entity: content-product-abstract-list
+  - data_entity: content-product-set
+  - data_entity: cms-page
+    source: data/import/cms_page.csv
+  - data_entity: cms-page-store
+    source: data/import/cms_page_store.csv
+  - data_entity: cms-slot-template
+    source: data/import/cms_slot_template.csv
+  - data_entity: cms-slot
+    source: data/import/cms_slot.csv
+  - data_entity: cms-slot-block
+    source: data/import/cms_slot_block.csv
+
+
+### 7. B2B data import
+    ### B2B Company
+  - data_entity: company
+  - data_entity: company-business-unit
+  - data_entity: company-unit-address
+  - data_entity: company-unit-address-label
+  - data_entity: company-unit-address-label-relation
+  - data_entity: company-user
+  - data_entity: company-role
+  - data_entity: company-role-permission
+  - data_entity: company-user-role
+  - data_entity: company-business-unit-user
+  - data_entity: company-business-unit-address
+  - data_entity: company-user-on-behalf
+    ### B2B Merchant
+  - data_entity: merchant
+  - data_entity: merchant-user
+    source: data/import/merchant_user.csv
+  - data_entity: merchant-product
+    source: data/import/merchant_product.csv
+  - data_entity: merchant-store
+  - data_entity: merchant-profile
+  - data_entity: merchant-profile-address
+  - data_entity: merchant-product-offer
+  - data_entity: merchant-product-offer-store
+  - data_entity: merchant-opening-hours-weekday-schedule
+  - data_entity: merchant-opening-hours-date-schedule
+  - data_entity: merchant-oms-process
+  - data_entity: product-offer-validity
+  - data_entity: price-product-offer
+  - data_entity: product-offer-stock
+  - data_entity: merchant-stock
+  - data_entity: merchant-relationship
+  - data_entity: merchant-relationship-sales-order-threshold
+  - data_entity: merchant-relationship-product-list
+  - data_entity: product-price-merchant-relationship
+    ### B2B Shopping List
+  - data_entity: shopping-list
+  - data_entity: shopping-list-item
+  - data_entity: shopping-list-company-user
+  - data_entity: shopping-list-company-business-unit
+    ### B2B Miscellaneous
+  - data_entity: multi-cart
+  - data_entity: shared-cart
+  - data_entity: quote-request
+  - data_entity: quote-request-version
+
+#8. Miscellaneous Setup import
+  - data_entity: comment
+  - data_entity: mime-type

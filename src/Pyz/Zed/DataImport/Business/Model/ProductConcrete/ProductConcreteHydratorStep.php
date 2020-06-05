@@ -96,7 +96,7 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
         if ($this->isProductColumn(static::KEY_IS_QUANTITY_SPLITTABLE)) {
             $isQuantitySplittable = (
                 !isset($dataSet[static::KEY_IS_QUANTITY_SPLITTABLE]) ||
-                $dataSet[static::KEY_IS_QUANTITY_SPLITTABLE] === ""
+                $dataSet[static::KEY_IS_QUANTITY_SPLITTABLE] === ''
             ) ? true : $dataSet[static::KEY_IS_QUANTITY_SPLITTABLE];
             $productEntityTransfer->setIsQuantitySplittable($isQuantitySplittable);
         }

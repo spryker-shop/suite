@@ -61,11 +61,11 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
             ->setIsActive($this->isActive($navigationNodeEntity, $dataSet))
             ->setNodeType($this->getNodeType($navigationNodeEntity, $dataSet));
 
-        if ($dataSet[static::KEY_VALID_FROM] !== "") {
+        if ($dataSet[static::KEY_VALID_FROM] !== '') {
             $navigationNodeEntity->setValidFrom($dataSet[static::KEY_VALID_FROM]);
         }
 
-        if ($dataSet[static::KEY_VALID_TO] !== "") {
+        if ($dataSet[static::KEY_VALID_TO] !== '') {
             $navigationNodeEntity->setValidTo($dataSet[static::KEY_VALID_TO]);
         }
 
@@ -159,7 +159,9 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
             return (bool)$dataSet[static::KEY_IS_ACTIVE];
         }
 
-        if ($navigationNodeEntity->getIsActive() !== null) {
+        /** @var bool|null $isActive */
+        $isActive = $navigationNodeEntity->getIsActive();
+        if ($isActive !== null) {
             return $navigationNodeEntity->getIsActive();
         }
 

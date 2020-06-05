@@ -9,8 +9,6 @@ namespace PyzTest\Glue\Checkout\RestApi;
 
 use Codeception\Util\HttpCode;
 use Generated\Shared\DataBuilder\AddressBuilder;
-use Generated\Shared\Transfer\DummyPaymentTransfer;
-use Generated\Shared\Transfer\PaymentTransfer;
 use Generated\Shared\Transfer\RestCheckoutErrorTransfer;
 use Generated\Shared\Transfer\RestPaymentTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
@@ -84,23 +82,12 @@ class GuestCheckoutRestApiCest
                     'customer' => $I->getCustomerRequestPayload($customerTransfer),
                     'payments' => [
                         [
-                            RestPaymentTransfer::PAYMENT_METHOD_NAME => 'invoice',
+                            RestPaymentTransfer::PAYMENT_METHOD_NAME => 'Invoice',
                             RestPaymentTransfer::PAYMENT_PROVIDER_NAME => 'DummyPayment',
-                            RestPaymentTransfer::PAYMENT_SELECTION => 'dummyPaymentInvoice',
-                            RestPaymentTransfer::DUMMY_PAYMENT_INVOICE => [
-                                DummyPaymentTransfer::DATE_OF_BIRTH => '08.04.1986',
-                            ],
-                            PaymentTransfer::AMOUNT => 899910,
                         ],
                     ],
                     'shipment' => [
                         ShipmentMethodTransfer::ID_SHIPMENT_METHOD => $shipmentMethodTransfer->getIdShipmentMethod(),
-                        [
-                            ShipmentMethodTransfer::ID => $shipmentMethodTransfer->getIdShipmentMethod(),
-                            ShipmentMethodTransfer::CARRIER_NAME => $shipmentMethodTransfer->getCarrierName(),
-                            ShipmentMethodTransfer::NAME => $shipmentMethodTransfer->getName(),
-                            ShipmentMethodTransfer::TAX_RATE => $shipmentMethodTransfer->getTaxRate(),
-                        ],
                     ],
                 ],
             ],
@@ -205,7 +192,7 @@ class GuestCheckoutRestApiCest
                     'billingAddress' => $I->getAddressRequestPayload($quoteTransfer->getBillingAddress()),
                     'shippingAddress' => $I->getAddressRequestPayload($shippingAddressTransfer),
                     'customer' => $I->getCustomerRequestPayload($customerTransfer),
-                    'payments' => $I->getPaymentRequestPayload('credit card'),
+                    'payments' => $I->getPaymentRequestPayload('Credit Card'),
                     'shipment' => $I->getShipmentRequestPayload($shipmentMethodTransfer->getIdShipmentMethod()),
                 ],
             ],

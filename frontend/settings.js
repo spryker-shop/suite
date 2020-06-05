@@ -16,7 +16,7 @@ const globalSettings = {
         // locate the typescript configuration json file
         tsConfig: './tsconfig.json',
 
-        // locate the typescript configuration json file
+        // path to frontend build config json file
         namespaceConfig: './config/Yves/frontend-build-config.json',
 
         // core folders
@@ -42,8 +42,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
     // getting collection of entry points by pattern
     const entryPointsCollection = pathPattern => entryPointsParts.map(element => `${pathPattern}/${element}`);
 
-    // define the applicatin name
-    // important: the name must be normalized
+    // define the application name
     const name = 'yves_default';
 
     // get namespace config
@@ -56,14 +55,17 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
             .replace(/%theme%/gi, theme)
     );
 
-    const getAllModuleSuffixes = () => namespaceJson.namespaces.map(namespace => namespace.moduleSuffix);
+    // get array of available module suffixes
+    const getAllCodeBuckets = () => namespaceJson.namespaces.map(namespace => namespace.codeBucket);
 
-    const ignoreModulesCollection = () => {
-        return getAllModuleSuffixes()
-                    .filter(suffix => suffix !== namespaceConfig.moduleSuffix)
-                    .map(suffix => `!**/*${suffix}/Theme/**`);
-    };
+    // get array of ignored modules
+    const ignoreModulesCollection = () => (
+        getAllCodeBuckets()
+            .filter(suffix => suffix !== namespaceConfig.codeBucket)
+            .map(suffix => `!**/*${suffix}/Theme/**`)
+    );
 
+    // define ignore patterns
     const ignoreFiles = [
         '!config',
         '!data',
@@ -119,7 +121,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
     const customThemeEntryPointPatterns = (isFallbackPattern = false) => {
         return isFallbackPatternAndDefaultTheme(isFallbackPattern) ? [] : [
             ...entryPointsCollection(`**/Theme/${getThemeName(isFallbackPattern)}`),
-            ...entryPointsCollection(`**/*${namespaceConfig.moduleSuffix}/Theme/${getThemeName(isFallbackPattern)}`),
+            ...entryPointsCollection(`**/*${namespaceConfig.codeBucket}/Theme/${getThemeName(isFallbackPattern)}`),
             ...ignoreFiles
         ]
     };
@@ -127,20 +129,13 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
     const shopUiEntryPointsPattern = (isFallbackPattern = false) => (
         isFallbackPatternAndDefaultTheme(isFallbackPattern) ? [] : [
             `./ShopUi/Theme/${getThemeName(isFallbackPattern)}`,
-            `./ShopUi${namespaceConfig.moduleSuffix}/Theme/${getThemeName(isFallbackPattern)}`
+            `./ShopUi${namespaceConfig.codeBucket}/Theme/${getThemeName(isFallbackPattern)}`
         ]
     );
 
     // define if current mode is production
     const isProductionMode = () => {
-        const { argv } = process;
-        const currentMode = argv[argv.length - 1];
-        const isValidMode = Object.values(globalSettings.modes).find(mode => mode === currentMode);
-
-        if (!isValidMode) {
-            throw new Error(`Mode "${currentMode}" is not available`);
-        }
-
+        const currentMode = process.argv.slice(2)[0];
         return currentMode === globalSettings.modes.prod;
     };
 
@@ -158,7 +153,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
 
         // define settings for suite-frontend-builder finder
         find: {
-            // webpack entry points (components) finder settings
+            // entry point patterns (components)
             componentEntryPoints: {
                 // absolute dirs in which look for
                 dirs: [
@@ -191,6 +186,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
                 ]
             },
 
+            // entry point patterns (application files)
             shopUiEntryPoints: {
                 dirs: [
                     join(globalSettings.context, paths.project)
@@ -207,7 +203,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
 };
 
 const getAppSettings = (namespaceConfigList, pathToConfig) => {
-    let appSettings = [];
+    const appSettings = [];
     namespaceConfigList.forEach(namespaceConfig => {
         namespaceConfig.themes.forEach(theme => {
             appSettings.push(getAppSettingsByTheme(namespaceConfig, theme, pathToConfig));

@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<statemachine
+    xmlns="spryker:oms-01"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="spryker:oms-01 http://static.spryker.com/oms-01.xsd">
+
+    <process name="MarketplacePayment01" main="true">
+        <states>
+            <state name="new" reserved="true"/>
+            <state name="paid" reserved="true"/>
+            <state name="canceled"/>
+            <state name="refunded"/>
+            <state name="merchant split pending" reserved="true"/>
+            <state name="sent to merchant" reserved="true"/>
+            <state name="shipped by merchant" reserved="true"/>
+            <state name="delivered" reserved="true"/>
+            <state name="closed"/>
+        </states>
+
+        <transitions>
+            <transition happy="true">
+                <source>new</source>
+                <target>paid</target>
+                <event>pay</event>
+            </transition>
+
+            <transition happy="true" condition="MerchantSalesOrder/IsOrderPaid">
+                <source>paid</source>
+                <target>merchant split pending</target>
+            </transition>
+
+            <transition>
+                <source>paid</source>
+                <target>paid</target>
+            </transition>
+
+            <transition happy="true">
+                <source>merchant split pending</source>
+                <target>sent to merchant</target>
+                <event>send to merchant</event>
+            </transition>
+
+            <transition>
+                <source>sent to merchant</source>
+                <target>canceled</target>
+                <event>cancel</event>
+            </transition>
+
+            <transition>
+                <source>canceled</source>
+                <target>refunded</target>
+                <event>refund</event>
+            </transition>
+
+            <transition>
+                <source>refunded</source>
+                <target>closed</target>
+                <event>close</event>
+            </transition>
+
+            <transition happy="true">
+                <source>sent to merchant</source>
+                <target>shipped by merchant</target>
+                <event>ship by merchant</event>
+            </transition>
+
+            <transition happy="true">
+                <source>shipped by merchant</source>
+                <target>delivered</target>
+                <event>deliver</event>
+            </transition>
+
+            <transition happy="true">
+                <source>delivered</source>
+                <target>closed</target>
+                <event>close</event>
+            </transition>
+
+        </transitions>
+
+        <events>
+            <event name="pay" manual="true"/>
+            <event name="cancel" manual="true"/>
+            <event name="refund" manual="true"/>
+            <event name="send to merchant" onEnter="true" timeout="30 second" command="MerchantSalesOrder/CreateOrders"/>
+            <event name="ship by merchant" manual="true"/>
+            <event name="deliver" manual="true"/>
+            <event name="close" manual="true" command="MerchantOms/CloseOrderItem"/>
+        </events>
+    </process>
+
+</statemachine>
