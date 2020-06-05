@@ -24,7 +24,6 @@ use Spryker\Zed\DiscountPromotion\Communication\Plugin\Cart\DiscountPromotionCar
 use Spryker\Zed\GiftCard\Communication\Plugin\GiftCardMetadataExpanderPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Merchant\Communication\Plugin\Cart\MerchantCartPreCheckPlugin;
-use Spryker\Zed\MerchantProductOffer\Communication\Plugin\Cart\ProductOfferCartPreCheckPlugin;
 use Spryker\Zed\MerchantSwitcher\Communication\Plugin\Cart\SingleMerchantCartPreCheckPlugin;
 use Spryker\Zed\MerchantSwitcher\Communication\Plugin\Cart\SingleMerchantPreReloadItemsPlugin;
 use Spryker\Zed\PaymentCartConnector\Communication\Plugin\Cart\RemovePaymentCartPostSavePlugin;
@@ -55,6 +54,7 @@ use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUn
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitValuePostSavePlugin;
 use Spryker\Zed\ProductOffer\Communication\Plugin\Cart\FilterInactiveProductOfferPreReloadItemsPlugin;
+use Spryker\Zed\ProductOffer\Communication\Plugin\Cart\ProductOfferCartPreCheckPlugin;
 use Spryker\Zed\ProductOffer\Communication\Plugin\Cart\ProductOfferGroupKeyItemExpanderPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\Cart\CartItemOptionPreCheckPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\CartItemGroupKeyOptionPlugin;
