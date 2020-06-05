@@ -12,7 +12,7 @@ use SprykerShop\Yves\CheckoutPage\CheckoutPageConfig as SprykerCheckoutPageConfi
 class CheckoutPageConfig extends SprykerCheckoutPageConfig
 {
     /**
-     * @return array
+     * @return string[]
      */
     public function getLocalizedTermsAndConditionsPageLinks(): array
     {
