@@ -9,7 +9,7 @@
         },
     } only %}
         {% block mobileNavigation %}
-            {% cms_slot 'slt-9' %}
+            {% cms_slot 'slt-mobile-header' %}
         {% endblock %}
     {% endembed %}
 {% endblock %}
@@ -17,7 +17,7 @@
 {% block header %}
     {% embed organism('header') only %}
         {% block mainNavigation %}
-            {% cms_slot 'slt-7' %}
+            {% cms_slot 'slt-desktop-header' %}
         {% endblock %}
 
         {% block mobile %}
@@ -37,7 +37,7 @@
     {% embed organism('footer') only %}
         {% block footerNavigation %}
             <div class="box">
-                {% cms_slot 'slt-8' %}
+                {% cms_slot 'slt-footer' %}
             </div>
         {% endblock %}
     {% endembed %}
