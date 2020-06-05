@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.140.0",
+            "version": "3.140.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "9798418d4f0cdc0cf11dab453eca96e1d072df79"
+                "reference": "52645498aea4dd2d090884322121270daf3e0f06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/9798418d4f0cdc0cf11dab453eca96e1d072df79",
-                "reference": "9798418d4f0cdc0cf11dab453eca96e1d072df79",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/52645498aea4dd2d090884322121270daf3e0f06",
+                "reference": "52645498aea4dd2d090884322121270daf3e0f06",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-06-03T18:12:30+00:00"
+            "time": "2020-06-04T18:19:47+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -5109,7 +5109,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "6dfe76e18f92b0f12c48d99a78363133b242fc27"
+                "reference": "36dcd4dc0d684e07625533005d6295ffaf92e3d1"
             },
             "require": {
                 "php": ">=7.2"
@@ -5822,7 +5822,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-06-04T06:56:49+00:00"
+            "time": "2020-06-05T07:01:53+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5830,7 +5830,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "6c5ef9af05d04e72fda8c43282a9ccd36de1aaa5"
+                "reference": "a6151ca2b87c9f4004ac54c7d3689f75da864971"
             },
             "require": {
                 "php": ">=7.2"
@@ -5981,7 +5981,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-06-04T06:57:04+00:00"
+            "time": "2020-06-05T07:01:42+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -10193,16 +10193,16 @@
         },
         {
             "name": "composer/xdebug-handler",
-            "version": "1.4.1",
+            "version": "1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/xdebug-handler.git",
-                "reference": "1ab9842d69e64fb3a01be6b656501032d1b78cb7"
+                "reference": "fa2aaf99e2087f013a14f7432c1cd2dd7d8f1f51"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/1ab9842d69e64fb3a01be6b656501032d1b78cb7",
-                "reference": "1ab9842d69e64fb3a01be6b656501032d1b78cb7",
+                "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/fa2aaf99e2087f013a14f7432c1cd2dd7d8f1f51",
+                "reference": "fa2aaf99e2087f013a14f7432c1cd2dd7d8f1f51",
                 "shasum": ""
             },
             "require": {
@@ -10233,7 +10233,7 @@
                 "Xdebug",
                 "performance"
             ],
-            "time": "2020-03-01T12:26:26+00:00"
+            "time": "2020-06-04T11:16:35+00:00"
         },
         {
             "name": "dms/phpunit-arraysubset-asserts",
@@ -11290,17 +11290,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/spryk.git",
-                "reference": "a607f177381711ccfd6f5eef1fcf7f7e0601f864"
+                "reference": "fca8e6eaf76d01c50dbc90c4358c5d131d608538"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/a607f177381711ccfd6f5eef1fcf7f7e0601f864",
-                "reference": "a607f177381711ccfd6f5eef1fcf7f7e0601f864",
+                "url": "https://api.github.com/repos/spryker-sdk/spryk/zipball/fca8e6eaf76d01c50dbc90c4358c5d131d608538",
+                "reference": "fca8e6eaf76d01c50dbc90c4358c5d131d608538",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
-                "roave/better-reflection": "^3.0",
+                "roave/better-reflection": "^3.0 || ^4.0",
                 "spryker/config": "^3.0.0",
                 "spryker/doctrine-inflector": "^1.0.0",
                 "spryker/glue-application-extension": "^1.1.0",
@@ -11318,7 +11318,7 @@
                 "nette/utils": "^2.5.0",
                 "php-coveralls/php-coveralls": "^1.0",
                 "phpstan/phpstan": "^0.12.0",
-                "phpunit/phpunit": "^7.0.0",
+                "phpunit/phpunit": "^7.0.0 || ^8.0.0",
                 "sllh/composer-versions-check": "^2.0",
                 "spryker/code-sniffer": "*",
                 "spryker/testify": "*"
@@ -11339,7 +11339,7 @@
                 "proprietary"
             ],
             "description": "Spryk module",
-            "time": "2020-04-03T16:20:41+00:00"
+            "time": "2020-06-04T14:07:52+00:00"
         },
         {
             "name": "spryker-sdk/spryk-gui",
