@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\CheckoutPage;
 
+use Generated\Shared\Transfer\PaymentTransfer;
 use Spryker\Shared\DummyMarketplacePayment\DummyMarketplacePaymentConfig;
 use Spryker\Shared\Nopayment\NopaymentConfig;
 use Spryker\Yves\DummyMarketplacePayment\Plugin\StepEngine\DummyMarketplacePaymentHandlerPlugin;
@@ -20,6 +21,14 @@ use Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Form\SubFormPluginCollection;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface;
+use SprykerEco\Yves\Payone\Plugin\PayoneCreditCardSubFormPlugin;
+use SprykerEco\Yves\Payone\Plugin\PayoneDirectDebitSubFormPlugin;
+use SprykerEco\Yves\Payone\Plugin\PayoneEpsOnlineTransferSubFormPlugin;
+use SprykerEco\Yves\Payone\Plugin\PayoneEWalletSubFormPlugin;
+use SprykerEco\Yves\Payone\Plugin\PayoneHandlerPlugin;
+use SprykerEco\Yves\Payone\Plugin\PayoneInvoiceSubFormPlugin;
+use SprykerEco\Yves\Payone\Plugin\PayonePrePaymentSubFormPlugin;
+use SprykerEco\Yves\Payone\Plugin\PayoneSecurityInvoiceSubFormPlugin;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageDependencyProvider as SprykerShopCheckoutPageDependencyProvider;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToProductBundleClientInterface;
 use SprykerShop\Yves\CompanyPage\Plugin\CheckoutPage\CompanyUnitAddressExpanderPlugin;
@@ -41,6 +50,8 @@ use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThr
 
 class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyProvider
 {
+    public const CLIENT_PAYONE = 'CLIENT_PAYONE';
+
     /**
      * @param \Spryker\Yves\Kernel\Container $container
      *
@@ -51,6 +62,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
         $container = parent::provideDependencies($container);
         $container = $this->extendPaymentMethodHandler($container);
         $container = $this->extendSubFormPluginCollection($container);
+        $container = $this->addPayoneClient($container);
 
         return $container;
     }
@@ -176,6 +188,15 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
                 new DummyMarketplacePaymentHandlerPlugin(),
                 DummyMarketplacePaymentConfig::PAYMENT_METHOD_DUMMY_MARKETPLACE_PAYMENT_INVOICE
             );
+            $paymentMethodHandler->add(new PayoneHandlerPlugin(), PaymentTransfer::PAYONE_INVOICE);
+            $paymentMethodHandler->add(new PayoneHandlerPlugin(), PaymentTransfer::PAYONE_SECURITY_INVOICE);
+            $paymentMethodHandler->add(new PayoneHandlerPlugin(), PaymentTransfer::PAYONE_CREDIT_CARD);
+            $paymentMethodHandler->add(new PayoneHandlerPlugin(), PaymentTransfer::PAYONE_DIRECT_DEBIT);
+            $paymentMethodHandler->add(new PayoneHandlerPlugin(), PaymentTransfer::PAYONE_E_WALLET);
+            $paymentMethodHandler->add(new PayoneHandlerPlugin(), PaymentTransfer::PAYONE_ONLINE_TRANSFER);
+            $paymentMethodHandler->add(new PayoneHandlerPlugin(), PaymentTransfer::PAYONE_PRE_PAYMENT);
+            $paymentMethodHandler->add(new PayoneHandlerPlugin(), PaymentTransfer::PAYONE_PAYPAL_EXPRESS_CHECKOUT);
+
 
             return $paymentMethodHandler;
         });
@@ -192,8 +213,29 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     {
         $container->extend(static::PAYMENT_SUB_FORMS, function (SubFormPluginCollection $paymentSubFormPluginCollection) {
             $paymentSubFormPluginCollection->add(new DummyMarketplacePaymentInvoiceSubFormPlugin());
+            $paymentSubFormPluginCollection->add(new PayoneInvoiceSubFormPlugin());
+            $paymentSubFormPluginCollection->add(new PayoneSecurityInvoiceSubFormPlugin());
+            $paymentSubFormPluginCollection->add(new PayoneCreditCardSubFormPlugin());
+            $paymentSubFormPluginCollection->add(new PayoneDirectDebitSubFormPlugin());
+            $paymentSubFormPluginCollection->add(new PayoneEWalletSubFormPlugin());
+            $paymentSubFormPluginCollection->add(new PayoneEpsOnlineTransferSubFormPlugin());
+            $paymentSubFormPluginCollection->add(new PayonePrePaymentSubFormPlugin());
 
             return $paymentSubFormPluginCollection;
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    protected function addPayoneClient(Container $container): Container
+    {
+        $container->set(static::CLIENT_PAYONE, function (Container $container) {
+            $container->getLocator()->payone()->client();
         });
 
         return $container;

@@ -18,6 +18,10 @@ use Spryker\Zed\Nopayment\Communication\Plugin\Checkout\NopaymentPreCheckPlugin;
 use Spryker\Zed\Nopayment\Communication\Plugin\Payment\PriceToPayPaymentMethodFilterPlugin;
 use Spryker\Zed\Payment\Dependency\Plugin\Checkout\CheckoutPluginCollectionInterface;
 use Spryker\Zed\Payment\PaymentDependencyProvider as SprykerPaymentDependencyProvider;
+use SprykerEco\Zed\Payone\Communication\Plugin\Checkout\PayonePostSaveHookPlugin;
+use SprykerEco\Zed\Payone\Communication\Plugin\Checkout\PayonePreCheckPlugin;
+use SprykerEco\Zed\Payone\Communication\Plugin\Checkout\PayoneSaveOrderPlugin;
+use SprykerEco\Zed\Payone\PayoneConfig;
 
 class PaymentDependencyProvider extends SprykerPaymentDependencyProvider
 {
@@ -73,6 +77,26 @@ class PaymentDependencyProvider extends SprykerPaymentDependencyProvider
                     SprykerNopaymentConfig::PAYMENT_PROVIDER_NAME,
                     PaymentDependencyProvider::CHECKOUT_ORDER_SAVER_PLUGINS
                 );
+
+                $pluginCollection->add(
+                    new PayonePreCheckPlugin(),
+                    PayoneConfig::PROVIDER_NAME,
+                    static::CHECKOUT_PRE_CHECK_PLUGINS
+                );
+
+                $pluginCollection->add(
+                    new PayoneSaveOrderPlugin(),
+                    PayoneConfig::PROVIDER_NAME,
+                    static::CHECKOUT_ORDER_SAVER_PLUGINS
+                );
+
+                $pluginCollection->add(
+                    new PayonePostSaveHookPlugin(),
+                    PayoneConfig::PROVIDER_NAME,
+                    static::CHECKOUT_POST_SAVE_PLUGINS
+                );
+
+
 
                 return $pluginCollection;
             }

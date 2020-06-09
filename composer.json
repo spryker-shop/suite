@@ -27,7 +27,8 @@
     "ext-pgsql": "*",
     "ext-readline": "*",
     "ext-redis": "*",
-    "wikimedia/composer-merge-plugin": "^1.4.1"
+    "wikimedia/composer-merge-plugin": "^1.4.1",
+    "spryker-eco/payone": "^3.1"
   },
   "require-dev": {
     "codeception/codeception": "<4.1.2",
@@ -112,6 +113,10 @@
     {
       "type": "git",
       "url": "git@github.com:spryker/development-core.git"
+    },
+    {
+      "type": "git",
+      "url": "git@github.com:spryker-eco/payone.git"
     }
   ],
   "scripts": {
