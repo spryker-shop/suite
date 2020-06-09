@@ -9,7 +9,7 @@ namespace Pyz\Zed\ProductManagement;
 
 use Spryker\Zed\CmsBlockProductConnector\Communication\Plugin\CmsBlockProductAbstractBlockListViewPlugin;
 use Spryker\Zed\Kernel\Container;
-use Spryker\Zed\MerchantProductGui\Communication\Plugin\ProductManagement\MerchantProductProductAbstractListDataExpanderPlugin;
+use Spryker\Zed\MerchantGui\Communication\Plugin\ProductManagement\MerchantProductAbstractListDataExpanderPlugin;
 use Spryker\Zed\MerchantProductGui\Communication\Plugin\ProductManagement\MerchantProductProductAbstractQueryCriteriaExpanderPlugin;
 use Spryker\Zed\MerchantProductGui\Communication\Plugin\ProductManagement\MerchantProductProductAbstractViewDataExpanderPlugin;
 use Spryker\Zed\Money\Communication\Plugin\Form\MoneyFormTypePlugin;
@@ -161,7 +161,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     protected function getProductAbstractListDataExpanderPlugins(): array
     {
         return [
-            new MerchantProductProductAbstractListDataExpanderPlugin(),
+            new MerchantProductAbstractListDataExpanderPlugin(),
         ];
     }
 

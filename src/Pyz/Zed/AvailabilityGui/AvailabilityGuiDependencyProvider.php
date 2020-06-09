@@ -8,9 +8,9 @@
 namespace Pyz\Zed\AvailabilityGui;
 
 use Spryker\Zed\AvailabilityGui\AvailabilityGuiDependencyProvider as SprykerAvailabilityGuiDependencyProvider;
-use Spryker\Zed\MerchantProductGui\Communication\Plugin\Availability\MerchantProductAvailabilityAbstractQueryCriteriaExpanderPlugin;
-use Spryker\Zed\MerchantProductGui\Communication\Plugin\Availability\MerchantProductAvailabilityListDataExpanderPlugin;
-use Spryker\Zed\MerchantProductGui\Communication\Plugin\Availability\MerchantProductAvailabilityViewDataExpanderPlugin;
+use Spryker\Zed\MerchantGui\Communication\Plugin\AvailabilityGui\MerchantAvailabilityListDataExpanderPlugin;
+use Spryker\Zed\MerchantProductGui\Communication\Plugin\AvailabilityGui\MerchantProductAvailabilityAbstractQueryCriteriaExpanderPlugin;
+use Spryker\Zed\MerchantProductGui\Communication\Plugin\AvailabilityGui\MerchantProductAvailabilityViewDataExpanderPlugin;
 
 class AvailabilityGuiDependencyProvider extends SprykerAvailabilityGuiDependencyProvider
 {
@@ -20,7 +20,7 @@ class AvailabilityGuiDependencyProvider extends SprykerAvailabilityGuiDependency
     protected function getAvailabilityListDataExpanderPlugins(): array
     {
         return [
-            new MerchantProductAvailabilityListDataExpanderPlugin(),
+            new MerchantAvailabilityListDataExpanderPlugin(),
         ];
     }
 
