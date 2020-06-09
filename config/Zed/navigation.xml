@@ -57,4 +57,19 @@
         <controller>logout</controller>
         <action>index</action>
     </merchant-portal-authentication>
+    <merchant-gui>
+        <label>Marketplace</label>
+        <title>Marketplace</title>
+        <pages>
+            <merchant/>
+            <merchant-relationship/>
+            <order-list>
+                <label>Orders</label>
+                <title>Orders</title>
+                <bundle>sales</bundle>
+                <controller>index</controller>
+                <action>index</action>
+            </order-list>
+        </pages>
+    </merchant-gui>
 </config>
