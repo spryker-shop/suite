@@ -24,7 +24,7 @@ class CategoryImageStorageConfig extends SprykerCategoryImageStorageConfig
     /**
      * @return string|null
      */
-    public function getCategoryImageEventQueueName(): ?string
+    public function getEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }

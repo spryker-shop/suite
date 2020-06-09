@@ -24,7 +24,7 @@ class ProductDiscontinuedStorageConfig extends SprykerProductDiscontinuedStorage
     /**
      * @return string|null
      */
-    public function getProductDiscontinuedEventQueueName(): ?string
+    public function getEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }

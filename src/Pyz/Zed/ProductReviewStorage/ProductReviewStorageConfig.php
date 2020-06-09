@@ -24,7 +24,7 @@ class ProductReviewStorageConfig extends SprykerProductReviewStorageConfig
     /**
      * @return string|null
      */
-    public function getProductReviewEventQueueName(): ?string
+    public function getEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }

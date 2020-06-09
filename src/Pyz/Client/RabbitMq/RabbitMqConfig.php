@@ -85,39 +85,17 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
                 PublisherConfig::PUBLISH_ROUTING_KEY_RETRY => PublisherConfig::PUBLISH_RETRY_QUEUE,
                 PublisherConfig::PUBLISH_ROUTING_KEY_ERROR => PublisherConfig::PUBLISH_ERROR_QUEUE,
             ],
-            GlossaryStorageConfig::PUBLISH_TRANSLATION => [
-                PublisherConfig::PUBLISH_ROUTING_KEY_ERROR => GlossaryStorageConfig::PUBLISH_TRANSLATION_ERROR_QUEUE,
-            ],
-            UrlStorageConfig::PUBLISH_URL => [
-                PublisherConfig::PUBLISH_ROUTING_KEY_ERROR => UrlStorageConfig::PUBLISH_URL_ERROR_QUEUE,
-            ],
-            AvailabilityStorageConfig::PUBLISH_AVAILABILITY => [
-                PublisherConfig::PUBLISH_ROUTING_KEY_ERROR => AvailabilityStorageConfig::PUBLISH_AVAILABILITY_ERROR_QUEUE,
-            ],
-            PriceProductStorageConfig::PUBLISH_PRICE_PRODUCT_ABSTRACT => [
-                PublisherConfig::PUBLISH_ROUTING_KEY_ERROR => PriceProductStorageConfig::PUBLISH_PRICE_PRODUCT_ABSTRACT_ERROR_QUEUE,
-            ],
-            PriceProductStorageConfig::PUBLISH_PRICE_PRODUCT_CONCRETE => [
-                PublisherConfig::PUBLISH_ROUTING_KEY_ERROR => PriceProductStorageConfig::PUBLISH_PRICE_PRODUCT_CONCRETE_ERROR_QUEUE,
-            ],
-            ProductImageStorageConfig::PUBLISH_PRODUCT_ABSTRACT_IMAGE => [
-                PublisherConfig::PUBLISH_ROUTING_KEY_ERROR => ProductImageStorageConfig::PUBLISH_PRODUCT_ABSTRACT_IMAGE_ERROR_QUEUE,
-            ],
-            ProductImageStorageConfig::PUBLISH_PRODUCT_CONCRETE_IMAGE => [
-                PublisherConfig::PUBLISH_ROUTING_KEY_ERROR => ProductImageStorageConfig::PUBLISH_PRODUCT_CONCRETE_IMAGE_ERROR_QUEUE,
-            ],
-            ProductPageSearchConfig::PUBLISH_PRODUCT_ABSTRACT_PAGE => [
-                PublisherConfig::PUBLISH_ROUTING_KEY_ERROR => ProductPageSearchConfig::PUBLISH_PRODUCT_ABSTRACT_PAGE_ERROR_QUEUE,
-            ],
-            ProductPageSearchConfig::PUBLISH_PRODUCT_CONCRETE_PAGE => [
-                PublisherConfig::PUBLISH_ROUTING_KEY_ERROR => ProductPageSearchConfig::PUBLISH_PRODUCT_CONCRETE_PAGE_ERROR_QUEUE,
-            ],
-            ProductStorageConfig::PUBLISH_PRODUCT_ABSTRACT => [
-                PublisherConfig::PUBLISH_ROUTING_KEY_ERROR => ProductStorageConfig::PUBLISH_PRODUCT_ABSTRACT_ERROR_QUEUE,
-            ],
-            ProductStorageConfig::PUBLISH_PRODUCT_CONCRETE => [
-                PublisherConfig::PUBLISH_ROUTING_KEY_ERROR => ProductStorageConfig::PUBLISH_PRODUCT_CONCRETE_ERROR_QUEUE,
-            ],
+            GlossaryStorageConfig::PUBLISH_TRANSLATION,
+            UrlStorageConfig::PUBLISH_URL,
+            AvailabilityStorageConfig::PUBLISH_AVAILABILITY,
+            PriceProductStorageConfig::PUBLISH_PRICE_PRODUCT_ABSTRACT,
+            PriceProductStorageConfig::PUBLISH_PRICE_PRODUCT_CONCRETE,
+            ProductImageStorageConfig::PUBLISH_PRODUCT_ABSTRACT_IMAGE,
+            ProductImageStorageConfig::PUBLISH_PRODUCT_CONCRETE_IMAGE,
+            ProductPageSearchConfig::PUBLISH_PRODUCT_ABSTRACT_PAGE,
+            ProductPageSearchConfig::PUBLISH_PRODUCT_CONCRETE_PAGE,
+            ProductStorageConfig::PUBLISH_PRODUCT_ABSTRACT,
+            ProductStorageConfig::PUBLISH_PRODUCT_CONCRETE,
         ];
     }
 
@@ -153,7 +131,6 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
             PriceProductOfferStorageConfig::PRICE_PRODUCT_OFFER_OFFER_SYNC_STORAGE_QUEUE,
             ProductOfferAvailabilityStorageConfig::PRODUCT_OFFER_AVAILABILITY_SYNC_STORAGE_QUEUE,
             SalesReturnSearchConfig::SYNC_SEARCH_RETURN,
-            $this->get(LogConstants::LOG_QUEUE_NAME),
         ];
     }
 

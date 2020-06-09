@@ -24,7 +24,7 @@ class ProductQuantityStorageConfig extends SprykerProductQuantityStorageConfig
     /**
      * @return string|null
      */
-    public function getProductQuantityEventQueueName(): ?string
+    public function getEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }

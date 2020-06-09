@@ -15,7 +15,7 @@ class AvailabilityStorageConfig extends SprykerAvailabilityStorageConfig
     /**
      * @return string|null
      */
-    public function getAvailabilityEventQueueName(): ?string
+    public function getEventQueueName(): ?string
     {
         return SprykerSharedAvailabilityStorageConfig::PUBLISH_AVAILABILITY;
     }

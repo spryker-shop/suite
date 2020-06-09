@@ -32,7 +32,7 @@ class ProductOfferAvailabilityStorageConfig extends SprykerProductOfferAvailabil
     /**
      * @return string|null
      */
-    public function getProductOfferAvailabilityEventQueueName(): ?string
+    public function getEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }

@@ -23,14 +23,6 @@ class MerchantProductOfferSearchConfig extends SprykerMerchantProductOfferSearch
     /**
      * @return string|null
      */
-    public function getMerchantProfileEventQueueName(): ?string
-    {
-        return PublisherConfig::PUBLISH_QUEUE;
-    }
-
-    /**
-     * @return string|null
-     */
     public function getMerchantProductOfferEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;

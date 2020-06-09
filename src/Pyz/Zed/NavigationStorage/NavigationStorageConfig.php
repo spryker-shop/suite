@@ -24,7 +24,7 @@ class NavigationStorageConfig extends SprykerNavigationStorageConfig
     /**
      * @return string|null
      */
-    public function getNavigationEventQueueName(): ?string
+    public function getEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }

@@ -24,7 +24,7 @@ class ProductCategoryFilterStorageConfig extends SprykerProductCategoryFilterSto
     /**
      * @return string|null
      */
-    public function getProductCategoryFilterEventQueueName(): ?string
+    public function getEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }

@@ -24,7 +24,7 @@ class CompanyUserStorageConfig extends SprykerCompanyUserStorageConfig
     /**
      * @return string|null
      */
-    public function getCompanyUserEventQueueName(): ?string
+    public function getEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }

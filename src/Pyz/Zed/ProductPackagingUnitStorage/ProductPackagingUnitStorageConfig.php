@@ -32,7 +32,7 @@ class ProductPackagingUnitStorageConfig extends SprykerProductPackagingUnitStora
     /**
      * @return string|null
      */
-    public function getProductPackagingUnitEventQueueName(): ?string
+    public function getEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }

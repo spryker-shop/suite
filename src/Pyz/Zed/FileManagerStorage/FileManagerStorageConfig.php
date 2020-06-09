@@ -24,7 +24,7 @@ class FileManagerStorageConfig extends SprykerFileManagerStorageConfig
     /**
      * @return string|null
      */
-    public function getFileManagerEventQueueName(): ?string
+    public function getEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }

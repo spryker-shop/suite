@@ -24,7 +24,7 @@ class ShoppingListStorageConfig extends SprykerShoppingListStorageConfig
     /**
      * @return string|null
      */
-    public function getShoppingListEventQueueName(): ?string
+    public function getEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }

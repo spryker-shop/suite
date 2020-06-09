@@ -24,7 +24,7 @@ class CategoryPageSearchConfig extends SprykerCategoryPageSearchConfig
     /**
      * @return string|null
      */
-    public function getCategoryPageEventQueueName(): ?string
+    public function getEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }

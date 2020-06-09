@@ -24,7 +24,7 @@ class ProductReviewSearchConfig extends SprykerProductReviewSearchConfig
     /**
      * @return string|null
      */
-    public function getProductReviewEventQueueName(): ?string
+    public function getEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }

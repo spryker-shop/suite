@@ -24,7 +24,7 @@ class ContentStorageConfig extends SpykerContentStorageConfig
     /**
      * @return string|null
      */
-    public function getContentEventQueueName(): ?string
+    public function getEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }

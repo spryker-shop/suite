@@ -15,7 +15,7 @@ class MerchantProductOfferStorageConfig extends SprykerMerchantProductOfferStora
     /**
      * @return string|null
      */
-    public function getMerchantProductOfferEventQueueName(): ?string
+    public function getEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }

@@ -24,7 +24,7 @@ class ProductGroupStorageConfig extends SprykerProductGroupStorageConfig
     /**
      * @return string|null
      */
-    public function getProductGroupEventQueueName(): ?string
+    public function getEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }

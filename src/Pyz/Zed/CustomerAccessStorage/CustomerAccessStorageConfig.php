@@ -24,7 +24,7 @@ class CustomerAccessStorageConfig extends SprykerCustomerAccessStorageConfig
     /**
      * @return string|null
      */
-    public function getCustomerAccessEventQueueName(): ?string
+    public function getEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }

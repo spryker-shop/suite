@@ -24,7 +24,7 @@ class CmsPageSearchConfig extends SprykerCmsPageSearchConfig
     /**
      * @return string|null
      */
-    public function getCmsPageEventQueueName(): ?string
+    public function getEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }

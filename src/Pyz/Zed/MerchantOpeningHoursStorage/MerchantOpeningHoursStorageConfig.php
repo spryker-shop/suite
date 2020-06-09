@@ -24,7 +24,7 @@ class MerchantOpeningHoursStorageConfig extends SprykerMerchantOpeningHoursStora
     /**
      * @return string|null
      */
-    public function getMerchantOpeningHoursEventQueueName(): ?string
+    public function getEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }

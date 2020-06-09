@@ -24,7 +24,7 @@ class ProductSetStorageConfig extends SprykerProductSetStorageConfig
     /**
      * @return string|null
      */
-    public function getProductSetEventQueueName(): ?string
+    public function getEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }

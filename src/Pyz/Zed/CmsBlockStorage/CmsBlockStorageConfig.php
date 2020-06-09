@@ -15,7 +15,7 @@ class CmsBlockStorageConfig extends SprykerCmsBlockStorageConfig
     /**
      * @return string|null
      */
-    public function getCmsBlockEventQueueName(): ?string
+    public function getEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }

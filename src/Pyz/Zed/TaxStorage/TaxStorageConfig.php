@@ -24,7 +24,7 @@ class TaxStorageConfig extends SprykerTaxStorageConfig
     /**
      * @return string|null
      */
-    public function getTaxEventQueueName(): ?string
+    public function getEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }

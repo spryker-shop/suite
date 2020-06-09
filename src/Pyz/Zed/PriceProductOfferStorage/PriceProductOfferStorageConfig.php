@@ -24,7 +24,7 @@ class PriceProductOfferStorageConfig extends SprykerPriceProductOfferStorageConf
     /**
      * @return string|null
      */
-    public function getPriceProductOfferEventQueueName(): ?string
+    public function getEventQueueName(): ?string
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }
