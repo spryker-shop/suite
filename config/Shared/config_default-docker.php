@@ -6,6 +6,7 @@ use Pyz\Shared\Scheduler\SchedulerConfig;
 use Spryker\Client\RabbitMq\Model\RabbitMqAdapter;
 use Spryker\Glue\Log\Plugin\GlueLoggerConfigPlugin;
 use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBuilderPlugin;
+use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Api\ApiConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Application\Log\Config\SprykerLoggerConfig;
@@ -15,7 +16,6 @@ use Spryker\Shared\CmsGui\CmsGuiConstants;
 use Spryker\Shared\Collector\CollectorConstants;
 use Spryker\Shared\Customer\CustomerConstants;
 use Spryker\Shared\DocumentationGeneratorRestApi\DocumentationGeneratorRestApiConstants;
-use Spryker\Shared\DummyMarketplacePayment\DummyMarketplacePaymentConfig;
 use Spryker\Shared\DummyPayment\DummyPaymentConfig;
 use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebExceptionErrorRenderer;
@@ -28,7 +28,9 @@ use Spryker\Shared\FileSystem\FileSystemConstants;
 use Spryker\Shared\Flysystem\FlysystemConstants;
 use Spryker\Shared\GlueApplication\GlueApplicationConstants;
 use Spryker\Shared\Http\HttpConstants;
+use Spryker\Shared\Kernel\ClassResolver\Cache\Provider\File;
 use Spryker\Shared\Kernel\KernelConstants;
+use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\Mail\MailConstants;
 use Spryker\Shared\Newsletter\NewsletterConstants;
@@ -77,6 +79,8 @@ use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
 use SprykerShop\Shared\WebProfilerWidget\WebProfilerWidgetConstants;
 use Twig\Cache\FilesystemCache;
 
+$CURRENT_STORE = Store::getInstance()->getStoreName();
+
 /* ZED */
 $config[ApplicationConstants::HOST_ZED] = getenv('SPRYKER_ZED_HOST');
 $config[SessionConstants::ZED_SESSION_COOKIE_DOMAIN] = getenv('SPRYKER_BE_HOST');
@@ -112,17 +116,17 @@ $config[ZedRequestConstants::BASE_URL_SSL_ZED_API] = sprintf(
 $config[TwigConstants::ZED_TWIG_OPTIONS] = [
     'cache' => new FilesystemCache(
         sprintf(
-            '%s/data/cache/codeBucket%s/ZED/twig',
+            '%s/data/%s/cache/ZED/twig',
             APPLICATION_ROOT_DIR,
-            APPLICATION_CODE_BUCKET
+            $CURRENT_STORE
         ),
         FilesystemCache::FORCE_BYTECODE_INVALIDATION
     ),
 ];
 $config[TwigConstants::ZED_PATH_CACHE_FILE] = sprintf(
-    '%s/data/cache/codeBucket%s/ZED/twig/.pathCache',
+    '%s/data/%s/cache/ZED/twig/.pathCache',
     APPLICATION_ROOT_DIR,
-    APPLICATION_CODE_BUCKET
+    $CURRENT_STORE
 );
 
 // The cache should always be activated. Refresh/build with CLI command: vendor/bin/console application:build-navigation-cache
@@ -131,7 +135,7 @@ $config[ZedNavigationConstants::ZED_NAVIGATION_CACHE_ENABLED] = true;
 $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_NAME] = 'XDEBUG_SESSION';
 $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_FORWARD_ENABLED] = true;
 $config[ZedRequestConstants::SET_REPEAT_DATA] = true;
-$config[ZedRequestConstants::YVES_REQUEST_REPEAT_DATA_PATH] = APPLICATION_ROOT_DIR . '/data/cache/codeBucket/yves-requests';
+$config[ZedRequestConstants::YVES_REQUEST_REPEAT_DATA_PATH] = APPLICATION_ROOT_DIR . '/data/' . Store::getInstance()->getStoreName() . '/' . APPLICATION_ENV . '/yves-requests';
 
 $HSTS_ENABLED = false;
 $config[ApplicationConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_ENABLED]
@@ -213,16 +217,103 @@ $config[AuthConstants::AUTH_DEFAULT_CREDENTIALS] = [
     ],
 ];
 
+// ACL: Allow or disallow of urls for Zed Admin GUI for ALL users
+$config[AclConstants::ACL_DEFAULT_RULES] = [
+    [
+        'bundle' => 'auth',
+        'controller' => 'login',
+        'action' => 'index',
+        'type' => 'allow',
+    ],
+    [
+        'bundle' => 'auth',
+        'controller' => 'login',
+        'action' => 'check',
+        'type' => 'allow',
+    ],
+    [
+        'bundle' => 'auth',
+        'controller' => 'password',
+        'action' => 'reset',
+        'type' => 'allow',
+    ],
+    [
+        'bundle' => 'auth',
+        'controller' => 'password',
+        'action' => 'reset-request',
+        'type' => 'allow',
+    ],
+    [
+        'bundle' => 'acl',
+        'controller' => 'index',
+        'action' => 'denied',
+        'type' => 'allow',
+    ],
+    [
+        'bundle' => 'health-check',
+        'controller' => 'index',
+        'action' => 'index',
+        'type' => 'allow',
+    ],
+    [
+        'bundle' => 'auth',
+        'controller' => 'logout',
+        'action' => 'index',
+        'type' => 'allow',
+    ],
+];
+// ACL: Allow or disallow of urls for Zed Admin GUI
+$config[AclConstants::ACL_USER_RULE_WHITELIST] = [
+    [
+        'bundle' => 'application',
+        'controller' => '*',
+        'action' => '*',
+        'type' => 'allow',
+    ],
+    [
+        'bundle' => 'auth',
+        'controller' => '*',
+        'action' => '*',
+        'type' => 'allow',
+    ],
+    [
+        'bundle' => 'health-check',
+        'controller' => 'index',
+        'action' => 'index',
+        'type' => 'allow',
+    ],
+];
+// ACL: Special rules for specific users
+$config[AclConstants::ACL_DEFAULT_CREDENTIALS] = [
+    'yves_system' => [
+        'rules' => [
+            [
+                'bundle' => '*',
+                'controller' => 'gateway',
+                'action' => '*',
+                'type' => 'allow',
+            ],
+        ],
+    ],
+];
+$config[AclConstants::ACL_USER_RULE_WHITELIST][] = [
+    'bundle' => 'wdt',
+    'controller' => '*',
+    'action' => '*',
+    'type' => 'allow',
+];
+
+$config[KernelConstants::AUTO_LOADER_CACHE_FILE_NO_LOCK] = false;
+$config[KernelConstants::AUTO_LOADER_UNRESOLVABLE_CACHE_PROVIDER] = File::class;
+
 $config[OmsConstants::ACTIVE_PROCESSES] = [
     'DummyPayment01',
-    'MarketplacePayment01',
     'PayoneCreditCard',
     'PayoneDirectDebit',
 ];
 $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
     DummyPaymentConfig::PAYMENT_METHOD_INVOICE => 'DummyPayment01',
     DummyPaymentConfig::PAYMENT_METHOD_CREDIT_CARD => 'DummyPayment01',
-    DummyMarketplacePaymentConfig::PAYMENT_METHOD_DUMMY_MARKETPLACE_PAYMENT_INVOICE => 'MarketplacePayment01',
     PayoneConfig::PAYMENT_METHOD_CREDIT_CARD => 'PayoneCreditCard',
     PayoneConfig::PAYMENT_METHOD_DIRECT_DEBIT => 'PayoneDirectDebit',
 ];
@@ -288,18 +379,18 @@ $config[CustomerConstants::BASE_URL_YVES] = $config[ApplicationConstants::BASE_U
 $config[TwigConstants::YVES_TWIG_OPTIONS] = [
     'cache' => new FilesystemCache(
         sprintf(
-            '%s/data/cache/codeBucket%s/%s/twig',
+            '%s/data/%s/cache/%s/twig',
             APPLICATION_ROOT_DIR,
-            APPLICATION_CODE_BUCKET,
+            $CURRENT_STORE,
             APPLICATION
         ),
         FilesystemCache::FORCE_BYTECODE_INVALIDATION
     ),
 ];
 $config[TwigConstants::YVES_PATH_CACHE_FILE] = sprintf(
-    '%s/data/cache/codeBucket%s/YVES/twig/.pathCache',
+    '%s/data/%s/cache/YVES/twig/.pathCache',
     APPLICATION_ROOT_DIR,
-    APPLICATION_CODE_BUCKET
+    $CURRENT_STORE
 );
 
 $config[ApplicationConstants::YVES_COOKIE_DEVICE_ID_NAME] = 'did';
