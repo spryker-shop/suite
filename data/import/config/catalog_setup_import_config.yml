@@ -11,15 +11,17 @@ actions:
   - data_entity: product-management-attribute
     source: data/import/product_management_attribute.csv
   - data_entity: product-abstract
-    source: data/import/icecat_biz_data/product_abstract.csv
-  - data_entity: product-abstract-store
-    source: data/import/icecat_biz_data/product_abstract_store.csv
+    source: data/import/product_abstract.csv
   - data_entity: product-concrete
-    source: data/import/icecat_biz_data/product_concrete.csv
+    source: data/import/product_concrete.csv
   - data_entity: product-image
-    source: data/import/icecat_biz_data/product_image.csv
+    source: data/import/product_image.csv
   - data_entity: product-price
     source: data/import/product_price.csv
   - data_entity: product-price-schedule
+    source: data/import/product_price_schedule.csv
   - data_entity: product-stock
     source: data/import/product_stock.csv
+  # Store relation
+  - data_entity: product-abstract-store
+    source: data/import/product_abstract_store.csv
