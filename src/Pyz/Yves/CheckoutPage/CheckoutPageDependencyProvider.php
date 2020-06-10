@@ -23,12 +23,7 @@ use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollectio
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface;
 use SprykerEco\Yves\Payone\Plugin\PayoneCreditCardSubFormPlugin;
 use SprykerEco\Yves\Payone\Plugin\PayoneDirectDebitSubFormPlugin;
-use SprykerEco\Yves\Payone\Plugin\PayoneEpsOnlineTransferSubFormPlugin;
-use SprykerEco\Yves\Payone\Plugin\PayoneEWalletSubFormPlugin;
 use SprykerEco\Yves\Payone\Plugin\PayoneHandlerPlugin;
-use SprykerEco\Yves\Payone\Plugin\PayoneInvoiceSubFormPlugin;
-use SprykerEco\Yves\Payone\Plugin\PayonePrePaymentSubFormPlugin;
-use SprykerEco\Yves\Payone\Plugin\PayoneSecurityInvoiceSubFormPlugin;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageDependencyProvider as SprykerShopCheckoutPageDependencyProvider;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToProductBundleClientInterface;
 use SprykerShop\Yves\CompanyPage\Plugin\CheckoutPage\CompanyUnitAddressExpanderPlugin;
@@ -50,8 +45,6 @@ use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThr
 
 class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyProvider
 {
-    public const CLIENT_PAYONE = 'CLIENT_PAYONE';
-
     /**
      * @param \Spryker\Yves\Kernel\Container $container
      *
@@ -62,7 +55,6 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
         $container = parent::provideDependencies($container);
         $container = $this->extendPaymentMethodHandler($container);
         $container = $this->extendSubFormPluginCollection($container);
-        $container = $this->addPayoneClient($container);
 
         return $container;
     }
@@ -191,7 +183,6 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
             $paymentMethodHandler->add(new PayoneHandlerPlugin(), PaymentTransfer::PAYONE_CREDIT_CARD);
             $paymentMethodHandler->add(new PayoneHandlerPlugin(), PaymentTransfer::PAYONE_DIRECT_DEBIT);
 
-
             return $paymentMethodHandler;
         });
 
@@ -211,20 +202,6 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
             $paymentSubFormPluginCollection->add(new PayoneDirectDebitSubFormPlugin());
 
             return $paymentSubFormPluginCollection;
-        });
-
-        return $container;
-    }
-
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
-     */
-    protected function addPayoneClient(Container $container): Container
-    {
-        $container->set(static::CLIENT_PAYONE, function (Container $container) {
-            $container->getLocator()->payone()->client();
         });
 
         return $container;
