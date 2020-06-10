@@ -31,9 +31,9 @@ class CmsPageSearchConfig extends SprykerCmsPageSearchConfig
     /**
      * @project Only needed in nonsplit projects.
      *
-     * @phpstan-param array<string, string> $data
+     * @phpstan-param array<string, mixed> $data
      *
-     * @phpstan-return array<string, string>
+     * @phpstan-return array<string, mixed>
      *
      * @param string[] $data
      *
