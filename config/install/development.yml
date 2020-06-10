@@ -228,7 +228,7 @@ sections:
 
     demodata:
         import-commerce-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/commerce_setup_import_config.yml"
+            command: "vendor/bin/console data:import --config=data/import/config/commerce_setup_import_config.development.yml"
             stores:
                 - US
                 - DE
@@ -247,12 +247,6 @@ sections:
 
         import-merchandising-setup:
             command: "vendor/bin/console data:import --config=data/import/config/merchandising_import_config.yml"
-            stores:
-                - US
-                - DE
-
-        import-navigation-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/navigation_import_config.yml"
             stores:
                 - US
                 - DE
