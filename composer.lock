@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5e0810b30a14ac8328cd90e2765b8145",
+    "content-hash": "acc358401dbedac70af218d379c143ae",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5100,7 +5100,7 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/cc-13571-add-to-cart-from-catalog-page",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
@@ -5818,7 +5818,7 @@
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/cc-13571-add-to-cart-from-catalog-page",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
@@ -6854,6 +6854,9 @@
             ],
             "description": "Symfony Form Component",
             "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/form/tree/4.4"
+            },
             "time": "2020-03-27T16:54:36+00:00"
         },
         {
@@ -8970,8 +8973,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -12243,6 +12246,5 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    },
-    "plugin-api-version": "1.1.0"
+    }
 }
