@@ -35,9 +35,9 @@ class CmsPageSearchConfig extends SprykerCmsPageSearchConfig
      *
      * @phpstan-return array<string, mixed>
      *
-     * @param string[] $data
+     * @param array $data
      *
-     * @return string[]
+     * @return array
      */
     protected function getProjectSearchResultData(array $data): array
     {
@@ -56,6 +56,6 @@ class CmsPageSearchConfig extends SprykerCmsPageSearchConfig
      */
     protected function getValidTo(?string $validToValue): ?string
     {
-        return isset($validToValue) ? (new DateTime($validToValue))->format(static::DATE_FORMAT) : null;
+        return $validToValue ? (new DateTime($validToValue))->format(static::DATE_FORMAT) : null;
     }
 }
