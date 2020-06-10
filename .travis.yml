@@ -182,9 +182,8 @@ addons:
       - postgresql-client-12
       - postgresql-server-dev-12
       - rabbitmq-server
-  postgresql: 12
-  mysql: 5.7
-  
+  postgresql: "12"
+
   hosts:
     - zed.de.spryker.test
     - www.de.spryker.test
@@ -266,7 +265,6 @@ script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:schema:validate-xml-names ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:validate ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:sniff:style ; fi
-  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpmd src/ text vendor/spryker/development/src/Spryker/Zed/Development/Business/PhpMd/ruleset.xml ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2 ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpstan analyze -l 5 -c phpstan.neon src/ ; fi
