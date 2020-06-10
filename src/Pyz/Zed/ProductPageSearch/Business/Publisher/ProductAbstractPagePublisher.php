@@ -20,6 +20,7 @@ use Spryker\Zed\ProductPageSearch\Business\Model\ProductPageSearchWriterInterfac
 use Spryker\Zed\ProductPageSearch\Business\Publisher\ProductAbstractPagePublisher as SprykerProductAbstractPagePublisher;
 use Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToStoreFacadeInterface;
 use Spryker\Zed\ProductPageSearch\Persistence\ProductPageSearchQueryContainerInterface;
+use Spryker\Zed\ProductPageSearch\ProductPageSearchConfig;
 
 /**
  * @example
@@ -57,6 +58,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
      * @param \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductPageDataLoaderPluginInterface[] $productPageDataLoaderPlugins
      * @param \Spryker\Zed\ProductPageSearch\Business\Mapper\ProductPageSearchMapperInterface $productPageSearchMapper
      * @param \Spryker\Zed\ProductPageSearch\Business\Model\ProductPageSearchWriterInterface $productPageSearchWriter
+     * @param \Spryker\Zed\ProductPageSearch\ProductPageSearchConfig $productPageSearchConfig
      * @param \Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToStoreFacadeInterface $storeFacade
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
@@ -67,6 +69,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
         array $productPageDataLoaderPlugins,
         ProductPageSearchMapperInterface $productPageSearchMapper,
         ProductPageSearchWriterInterface $productPageSearchWriter,
+        ProductPageSearchConfig $productPageSearchConfig,
         ProductPageSearchToStoreFacadeInterface $storeFacade,
         SynchronizationServiceInterface $synchronizationService,
         QueueClientInterface $queueClient
@@ -77,6 +80,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
             $productPageDataLoaderPlugins,
             $productPageSearchMapper,
             $productPageSearchWriter,
+            $productPageSearchConfig,
             $storeFacade
         );
 
