@@ -6,7 +6,10 @@
         payment: _view.paymentForm
     },
     title: 'checkout.step.payment.title' | trans,
-    customForms: {}
+    customForms: {
+        'Payone/credit_card': ['credit-card', 'payone'],
+        'Payone/direct_debit': ['direct-debit', 'payone'],
+    }
 } %}
 
 {% block content %}

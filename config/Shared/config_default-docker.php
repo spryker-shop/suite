@@ -217,33 +217,14 @@ $config[OmsConstants::ACTIVE_PROCESSES] = [
     'DummyPayment01',
     'MarketplacePayment01',
     'PayoneCreditCard',
-    'PayoneEWallet',
     'PayoneDirectDebit',
-    'PayoneOnlineTransfer',
-    'PayonePrePayment',
-    'PayoneInvoice',
-    'PayoneSecurityInvoice',
-    'PayonePaypalExpressCheckout',
 ];
 $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
     DummyPaymentConfig::PAYMENT_METHOD_INVOICE => 'DummyPayment01',
     DummyPaymentConfig::PAYMENT_METHOD_CREDIT_CARD => 'DummyPayment01',
     DummyMarketplacePaymentConfig::PAYMENT_METHOD_DUMMY_MARKETPLACE_PAYMENT_INVOICE => 'MarketplacePayment01',
     PayoneConfig::PAYMENT_METHOD_CREDIT_CARD => 'PayoneCreditCard',
-    PayoneConfig::PAYMENT_METHOD_E_WALLET => 'PayoneEWallet',
     PayoneConfig::PAYMENT_METHOD_DIRECT_DEBIT => 'PayoneDirectDebit',
-    PayoneConfig::PAYMENT_METHOD_EPS_ONLINE_TRANSFER => 'PayoneOnlineTransfer',
-    PayoneConfig::PAYMENT_METHOD_INSTANT_ONLINE_TRANSFER => 'PayoneOnlineTransfer',
-    PayoneConfig::PAYMENT_METHOD_GIROPAY_ONLINE_TRANSFER => 'PayoneOnlineTransfer',
-    PayoneConfig::PAYMENT_METHOD_IDEAL_ONLINE_TRANSFER => 'PayoneOnlineTransfer',
-    PayoneConfig::PAYMENT_METHOD_POSTFINANCE_CARD_ONLINE_TRANSFER => 'PayoneOnlineTransfer',
-    PayoneConfig::PAYMENT_METHOD_POSTFINANCE_EFINANCE_ONLINE_TRANSFER => 'PayoneOnlineTransfer',
-    PayoneConfig::PAYMENT_METHOD_PRZELEWY24_ONLINE_TRANSFER => 'PayoneOnlineTransfer',
-    PayoneConfig::PAYMENT_METHOD_BANCONTACT_ONLINE_TRANSFER => 'PayoneOnlineTransfer',
-    PayoneConfig::PAYMENT_METHOD_PRE_PAYMENT => 'PayonePrePayment',
-    PayoneConfig::PAYMENT_METHOD_INVOICE => 'PayoneInvoice',
-    PayoneConfig::PAYMENT_METHOD_SECURITY_INVOICE => 'PayoneSecurityInvoice',
-    PayoneConfig::PAYMENT_METHOD_PAYPAL_EXPRESS_CHECKOUT => 'PayonePaypalExpressCheckout',
 ];
 
 $config[EventConstants::LOGGER_ACTIVE] = true;

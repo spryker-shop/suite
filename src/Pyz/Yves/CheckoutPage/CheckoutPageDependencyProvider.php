@@ -188,14 +188,8 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
                 new DummyMarketplacePaymentHandlerPlugin(),
                 DummyMarketplacePaymentConfig::PAYMENT_METHOD_DUMMY_MARKETPLACE_PAYMENT_INVOICE
             );
-            $paymentMethodHandler->add(new PayoneHandlerPlugin(), PaymentTransfer::PAYONE_INVOICE);
-            $paymentMethodHandler->add(new PayoneHandlerPlugin(), PaymentTransfer::PAYONE_SECURITY_INVOICE);
             $paymentMethodHandler->add(new PayoneHandlerPlugin(), PaymentTransfer::PAYONE_CREDIT_CARD);
             $paymentMethodHandler->add(new PayoneHandlerPlugin(), PaymentTransfer::PAYONE_DIRECT_DEBIT);
-            $paymentMethodHandler->add(new PayoneHandlerPlugin(), PaymentTransfer::PAYONE_E_WALLET);
-            $paymentMethodHandler->add(new PayoneHandlerPlugin(), PaymentTransfer::PAYONE_ONLINE_TRANSFER);
-            $paymentMethodHandler->add(new PayoneHandlerPlugin(), PaymentTransfer::PAYONE_PRE_PAYMENT);
-            $paymentMethodHandler->add(new PayoneHandlerPlugin(), PaymentTransfer::PAYONE_PAYPAL_EXPRESS_CHECKOUT);
 
 
             return $paymentMethodHandler;
@@ -213,13 +207,8 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     {
         $container->extend(static::PAYMENT_SUB_FORMS, function (SubFormPluginCollection $paymentSubFormPluginCollection) {
             $paymentSubFormPluginCollection->add(new DummyMarketplacePaymentInvoiceSubFormPlugin());
-            $paymentSubFormPluginCollection->add(new PayoneInvoiceSubFormPlugin());
-            $paymentSubFormPluginCollection->add(new PayoneSecurityInvoiceSubFormPlugin());
             $paymentSubFormPluginCollection->add(new PayoneCreditCardSubFormPlugin());
             $paymentSubFormPluginCollection->add(new PayoneDirectDebitSubFormPlugin());
-            $paymentSubFormPluginCollection->add(new PayoneEWalletSubFormPlugin());
-            $paymentSubFormPluginCollection->add(new PayoneEpsOnlineTransferSubFormPlugin());
-            $paymentSubFormPluginCollection->add(new PayonePrePaymentSubFormPlugin());
 
             return $paymentSubFormPluginCollection;
         });
