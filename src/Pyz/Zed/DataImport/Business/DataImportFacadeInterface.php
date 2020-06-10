@@ -157,4 +157,28 @@ interface DataImportFacadeInterface
      * @return void
      */
     public function flushProductStockPdoDataImporter(): void;
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeCombinedProductPriceDataSet(DataSetInterface $dataSet): void;
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeCombinedProductPricePdoDataSet(DataSetInterface $dataSet): void;
+
+    /**
+     * @return void
+     */
+    public function flushCombinedProductPriceDataImporter();
+
+    /**
+     * @return void
+     */
+    public function flushCombinedProductPricePdoDataImporter(): void;
 }

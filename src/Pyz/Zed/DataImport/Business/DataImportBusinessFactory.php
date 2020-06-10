@@ -8,6 +8,13 @@
 namespace Pyz\Zed\DataImport\Business;
 
 use Generated\Shared\Transfer\DataImportConfigurationActionTransfer;
+use Generated\Shared\Transfer\DataImporterConfigurationTransfer;
+use Pyz\Zed\DataImport\Business\CombinedProductImporter\ProductGroup\ProductGroupMandatoryColumnCondition;
+use Pyz\Zed\DataImport\Business\CombinedProductImporter\ProductGroup\ProductGroupWriter as ProductGroupProductGroupWriter;
+use Pyz\Zed\DataImport\Business\CombinedProductImporter\ProductPrice\ProductPriceHydratorStep as ProductPriceProductPriceHydratorStep;
+use Pyz\Zed\DataImport\Business\CombinedProductImporter\ProductPrice\ProductPriceMandatoryColumnCondition;
+use Pyz\Zed\DataImport\Business\CombinedProductImporter\ProductPrice\Writer\ProductPriceBulkPdoDataSetWriter as WriterProductPriceBulkPdoDataSetWriter;
+use Pyz\Zed\DataImport\Business\CombinedProductImporter\ProductPrice\Writer\ProductPricePropelDataSetWriter as WriterProductPricePropelDataSetWriter;
 use Pyz\Zed\DataImport\Business\Model\CategoryTemplate\CategoryTemplateWriterStep;
 use Pyz\Zed\DataImport\Business\Model\CmsBlock\Category\Repository\CategoryRepository;
 use Pyz\Zed\DataImport\Business\Model\CmsBlock\CmsBlockWriterStep;
@@ -20,6 +27,8 @@ use Pyz\Zed\DataImport\Business\Model\Currency\CurrencyWriterStep;
 use Pyz\Zed\DataImport\Business\Model\Customer\CustomerWriterStep;
 use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatter;
 use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface;
+use Pyz\Zed\DataImport\Business\Model\DataImporterConditional;
+use Pyz\Zed\DataImport\Business\Model\DataImporterDataSetWriterAwareConditional;
 use Pyz\Zed\DataImport\Business\Model\Discount\DiscountWriterStep;
 use Pyz\Zed\DataImport\Business\Model\DiscountAmount\DiscountAmountWriterStep;
 use Pyz\Zed\DataImport\Business\Model\DiscountStore\DiscountStoreWriterStep;
@@ -101,6 +110,7 @@ use Pyz\Zed\DataImport\Communication\Plugin\ProductAbstract\ProductAbstractPrope
 use Pyz\Zed\DataImport\Communication\Plugin\ProductAbstractStore\ProductAbstractStorePropelWriterPlugin;
 use Pyz\Zed\DataImport\Communication\Plugin\ProductConcrete\ProductConcretePropelWriterPlugin;
 use Pyz\Zed\DataImport\Communication\Plugin\ProductImage\ProductImagePropelWriterPlugin;
+use Pyz\Zed\DataImport\Communication\Plugin\ProductPrice\CombinedProductImporter\CombinedProductPricePropelWriterPlugin;
 use Pyz\Zed\DataImport\Communication\Plugin\ProductPrice\ProductPricePropelWriterPlugin;
 use Pyz\Zed\DataImport\Communication\Plugin\ProductStock\ProductStockPropelWriterPlugin;
 use Pyz\Zed\DataImport\DataImportConfig;
@@ -111,6 +121,7 @@ use Spryker\Zed\Currency\Business\CurrencyFacadeInterface;
 use Spryker\Zed\DataImport\Business\DataImportBusinessFactory as SprykerDataImportBusinessFactory;
 use Spryker\Zed\DataImport\Business\Model\DataImporterInterface;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
+use Spryker\Zed\DataImport\Business\Model\DataReader\DataReaderInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterCollection;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
@@ -173,6 +184,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
                 return $this->createProductOptionPriceImporter($dataImportConfigurationActionTransfer);
             case DataImportConfig::IMPORT_TYPE_PRODUCT_GROUP:
                 return $this->createProductGroupImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_COMBINED_PRODUCT_GROUP:
+                return $this->createCombinedProductGroupImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_COMBINED_PRODUCT_PRICE:
+                return $this->createCombinedProductPriceImporter($dataImportConfigurationActionTransfer);
             case DataImportConfig::IMPORT_TYPE_PRODUCT_REVIEW:
                 return $this->createProductReviewImporter($dataImportConfigurationActionTransfer);
             case DataImportConfig::IMPORT_TYPE_PRODUCT_SET:
@@ -208,6 +223,134 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             default:
                 return null;
         }
+    }
+
+    /**
+     * @param string $importType
+     * @param \Spryker\Zed\DataImport\Business\Model\DataReader\DataReaderInterface $reader
+     *
+     * @return \Pyz\Zed\DataImport\Business\Model\DataImporterConditional
+     */
+    public function createDataImporterConditional($importType, DataReaderInterface $reader)
+    {
+        return new DataImporterConditional($importType, $reader);
+    }
+
+    /**
+     * @param string $importType
+     * @param \Spryker\Zed\DataImport\Business\Model\DataReader\DataReaderInterface $reader
+     *
+     * @return \Pyz\Zed\DataImport\Business\Model\DataImporterDataSetWriterAwareConditional
+     */
+    public function createDataImporterWriterAwareConditional($importType, DataReaderInterface $reader)
+    {
+        return new DataImporterDataSetWriterAwareConditional($importType, $reader);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\DataImporterConfigurationTransfer $dataImporterConfigurationTransfer
+     *
+     * @return \Pyz\Zed\DataImport\Business\Model\DataImporterConditional
+     */
+    public function getConditionalCsvDataImporterFromConfig(DataImporterConfigurationTransfer $dataImporterConfigurationTransfer)
+    {
+        $csvReader = $this->createCsvReaderFromConfig($dataImporterConfigurationTransfer->getReaderConfiguration());
+
+        return $this->createDataImporterConditional($dataImporterConfigurationTransfer->getImportType(), $csvReader);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\DataImporterConfigurationTransfer $dataImporterConfigurationTransfer
+     *
+     * @return \Pyz\Zed\DataImport\Business\Model\DataImporterDataSetWriterAwareConditional
+     */
+    public function getConditionalCsvDataImporterWriterAwareFromConfig(DataImporterConfigurationTransfer $dataImporterConfigurationTransfer)
+    {
+        $csvReader = $this->createCsvReaderFromConfig($dataImporterConfigurationTransfer->getReaderConfiguration());
+
+        return $this->createDataImporterWriterAwareConditional($dataImporterConfigurationTransfer->getImportType(), $csvReader);
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
+     */
+    public function createCombinedProductPriceBulkPdoWriter(): DataSetWriterInterface
+    {
+        return new WriterProductPriceBulkPdoDataSetWriter(
+            $this->createProductPriceSql(),
+            $this->createPropelExecutor(),
+            $this->createDataFormatter()
+        );
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
+     */
+    public function createCombinedProductPricePropelWriter(): DataSetWriterInterface
+    {
+        return new WriterProductPricePropelDataSetWriter(
+            $this->createProductRepository(),
+            $this->getStoreFacade(),
+            $this->getCurrencyFacade()
+        );
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
+     *
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
+     */
+    public function createCombinedProductPriceImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
+    {
+        $dataImporter = $this->getConditionalCsvDataImporterWriterAwareFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
+
+        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductPriceHydratorStep::BULK_SIZE);
+        $dataSetStepBroker
+            ->addStep(new ProductPriceProductPriceHydratorStep(
+                $this->getPriceProductFacade(),
+                $this->getUtilEncodingService()
+            ));
+
+        $dataImporter->setDataSetCondition(new ProductPriceMandatoryColumnCondition());
+        $dataImporter->addDataSetStepBroker($dataSetStepBroker);
+        $dataImporter->setDataSetWriter(new DataSetWriterCollection($this->createCombinedProductPriceWriterPlugins()));
+
+        return $dataImporter;
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
+     */
+    protected function createCombinedProductPriceWriterPlugins()
+    {
+        return [
+            new CombinedProductPricePropelWriterPlugin(),
+        ];
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
+     *
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
+     */
+    protected function createCombinedProductGroupImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
+    {
+        $dataImporter = $this->getConditionalCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
+
+        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductGroupWriter::BULK_SIZE);
+        $dataSetStepBroker
+            ->addStep(new ProductGroupProductGroupWriter(
+                $this->createProductRepository()
+            ));
+
+        $dataImporter->setDataSetCondition(new ProductGroupMandatoryColumnCondition());
+        $dataImporter->addDataSetStepBroker($dataSetStepBroker);
+
+        return $dataImporter;
     }
 
     /**

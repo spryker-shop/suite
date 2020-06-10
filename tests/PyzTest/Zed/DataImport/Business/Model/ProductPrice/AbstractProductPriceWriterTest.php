@@ -71,12 +71,12 @@ abstract class AbstractProductPriceWriterTest extends AbstractWriterTest
         foreach ($abstractProductSkus as $index => $sku) {
             $dataSet = new DataSet();
 
-            $dataSet[ProductPriceHydratorStep::KEY_STORE] = $priceProductStore->getStore()->getName();
-            $dataSet[ProductPriceHydratorStep::KEY_CURRENCY] = $priceProductStore->getCurrency()->getName();
-            $dataSet[ProductPriceHydratorStep::KEY_PRICE_GROSS] = $priceProductStore->getGrossPrice();
-            $dataSet[ProductPriceHydratorStep::KEY_PRICE_NET] = $priceProductStore->getNetPrice();
-            $dataSet[ProductPriceHydratorStep::KEY_ABSTRACT_SKU] = $sku;
-            $dataSet[ProductPriceHydratorStep::KEY_CONCRETE_SKU] = '';
+            $dataSet[ProductPriceHydratorStep::COLUMN_STORE] = $priceProductStore->getStore()->getName();
+            $dataSet[ProductPriceHydratorStep::COLUMN_CURRENCY] = $priceProductStore->getCurrency()->getName();
+            $dataSet[ProductPriceHydratorStep::COLUMN_PRICE_GROSS] = $priceProductStore->getGrossPrice();
+            $dataSet[ProductPriceHydratorStep::COLUMN_PRICE_NET] = $priceProductStore->getNetPrice();
+            $dataSet[ProductPriceHydratorStep::COLUMN_ABSTRACT_SKU] = $sku;
+            $dataSet[ProductPriceHydratorStep::COLUMN_CONCRETE_SKU] = '';
             $dataSet[ProductPriceHydratorStep::PRICE_TYPE_TRANSFER] = (new SpyPriceTypeEntityTransfer())
                 ->setName(static::PRICE_TYPES[$index])
                 ->setPriceModeConfiguration(static::PRICE_MODE_CONFIGURATION);
@@ -85,8 +85,8 @@ abstract class AbstractProductPriceWriterTest extends AbstractWriterTest
                 ->setSpyProductAbstract((new SpyProductAbstractEntityTransfer())->setSku($sku))
                 ->setSpyPriceProductStores($priceProductStores);
 
-            $dataSet[ProductPriceHydratorStep::KEY_PRICE_DATA] = $priceProductStore->getPriceData();
-            $dataSet[ProductPriceHydratorStep::KEY_PRICE_DATA_CHECKSUM] = $priceProductStore->getPriceDataChecksum();
+            $dataSet[ProductPriceHydratorStep::COLUMN_PRICE_DATA] = $priceProductStore->getPriceData();
+            $dataSet[ProductPriceHydratorStep::COLUMN_PRICE_DATA_CHECKSUM] = $priceProductStore->getPriceDataChecksum();
 
             $result[$sku] = $dataSet;
         }
