@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5e0810b30a14ac8328cd90e2765b8145",
+    "content-hash": "364a8767ee85ec074f3985d54336983d",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.140.2",
+            "version": "3.140.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "7e37960c1103ee211932be51b2282b41c948a5f0"
+                "reference": "298ec070adad5760c4b90348219bb3e6bd7a9322"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/7e37960c1103ee211932be51b2282b41c948a5f0",
-                "reference": "7e37960c1103ee211932be51b2282b41c948a5f0",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/298ec070adad5760c4b90348219bb3e6bd7a9322",
+                "reference": "298ec070adad5760c4b90348219bb3e6bd7a9322",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-06-05T18:12:25+00:00"
+            "time": "2020-06-09T18:11:16+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -5100,11 +5100,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/int-73/dev-simple-import",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "3e88f345143d3908e41d688db301d1acc3a1bc76"
+                "reference": "91908df3c53c75fcffadb4a8266c594134357df9"
             },
             "require": {
                 "php": ">=7.2"
@@ -5814,11 +5814,11 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-06-08T11:24:10+00:00"
+            "time": "2020-06-10T07:17:43+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/int-73/dev-simple-import",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
@@ -10761,31 +10761,32 @@
         },
         {
             "name": "roave/better-reflection",
-            "version": "4.3.0",
+            "version": "4.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/BetterReflection.git",
-                "reference": "aa017e698b47feed410721f3d20e2bacfcba59d5"
+                "reference": "18bb4a709fb7aac39b78e7ff5c47124f7f7b63b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/BetterReflection/zipball/aa017e698b47feed410721f3d20e2bacfcba59d5",
-                "reference": "aa017e698b47feed410721f3d20e2bacfcba59d5",
+                "url": "https://api.github.com/repos/Roave/BetterReflection/zipball/18bb4a709fb7aac39b78e7ff5c47124f7f7b63b1",
+                "reference": "18bb4a709fb7aac39b78e7ff5c47124f7f7b63b1",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "jetbrains/phpstorm-stubs": "2019.3",
                 "nikic/php-parser": "^4.4.0",
-                "php": ">=7.2.0,<7.5.0",
+                "php": ">=7.4.1,<7.5.0",
                 "phpdocumentor/reflection-docblock": "^5.1.0",
                 "phpdocumentor/type-resolver": "^1.1.0",
                 "roave/signature": "^1.0"
             },
             "require-dev": {
                 "doctrine/coding-standard": "^7.0.2",
+                "infection/infection": "^0.16.3",
                 "phpstan/phpstan": "^0.12.25",
-                "phpunit/phpunit": "^8.5.4",
+                "phpunit/phpunit": "^9.1.5",
                 "vimeo/psalm": "3.11.2"
             },
             "suggest": {
@@ -10829,7 +10830,7 @@
                 }
             ],
             "description": "Better Reflection - an improved code reflection API",
-            "time": "2020-05-28T14:10:32+00:00"
+            "time": "2020-06-10T00:11:34+00:00"
         },
         {
             "name": "roave/signature",
