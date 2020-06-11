@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.140.2",
+            "version": "3.141.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "7e37960c1103ee211932be51b2282b41c948a5f0"
+                "reference": "d57dbde176a7db7a6131bb5d325aff63515eabc3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/7e37960c1103ee211932be51b2282b41c948a5f0",
-                "reference": "7e37960c1103ee211932be51b2282b41c948a5f0",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d57dbde176a7db7a6131bb5d325aff63515eabc3",
+                "reference": "d57dbde176a7db7a6131bb5d325aff63515eabc3",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-06-05T18:12:25+00:00"
+            "time": "2020-06-10T18:11:38+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -5104,7 +5104,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "1a932c90fa16a90a2d6f698331e886e0b2230e5a"
+                "reference": "4cf2978473be98c013b678c1831f93ecef30609c"
             },
             "require": {
                 "php": ">=7.2"
@@ -5417,6 +5417,7 @@
                 "spryker/merchant-product-offer-search": "*",
                 "spryker/merchant-product-offer-storage": "*",
                 "spryker/merchant-product-offer-storage-extension": "*",
+                "spryker/merchant-product-offers-rest-api": "*",
                 "spryker/merchant-profile": "*",
                 "spryker/merchant-profile-data-import": "*",
                 "spryker/merchant-profile-gui": "*",
@@ -5816,7 +5817,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-06-09T07:31:33+00:00"
+            "time": "2020-06-11T10:37:42+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5824,7 +5825,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "c6dd73fb56f96d4a7d188148d6e7373d103a36c3"
+                "reference": "1a71e5fe292a59c97192ecac57619c191e7e68fc"
             },
             "require": {
                 "php": ">=7.2"
@@ -5867,6 +5868,7 @@
                 "spryker-shop/configurable-bundle-widget": "*",
                 "spryker-shop/content-banner-widget": "*",
                 "spryker-shop/content-file-widget": "*",
+                "spryker-shop/content-navigation-widget": "*",
                 "spryker-shop/content-product-set-widget": "*",
                 "spryker-shop/content-product-widget": "*",
                 "spryker-shop/currency-widget": "*",
@@ -5890,7 +5892,6 @@
                 "spryker-shop/money-widget": "*",
                 "spryker-shop/multi-cart-page": "*",
                 "spryker-shop/multi-cart-widget": "*",
-                "spryker-shop/navigation-widget": "*",
                 "spryker-shop/newsletter-page": "*",
                 "spryker-shop/newsletter-widget": "*",
                 "spryker-shop/order-custom-reference-widget": "*",
@@ -5975,7 +5976,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-06-05T14:46:57+00:00"
+            "time": "2020-06-11T09:58:30+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
