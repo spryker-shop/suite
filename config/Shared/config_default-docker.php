@@ -45,7 +45,6 @@ use Spryker\Shared\Twig\TwigConstants;
 use Spryker\Shared\WebProfiler\WebProfilerConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use Spryker\Zed\Propel\PropelConfig;
-use SprykerEco\Zed\Payone\PayoneConfig;
 use SprykerShop\Shared\CalculationPage\CalculationPageConstants;
 use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
 use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
@@ -129,15 +128,11 @@ $config[WebProfilerConstants::IS_WEB_PROFILER_ENABLED]
 $config[OmsConstants::ACTIVE_PROCESSES] = [
     'DummyPayment01',
     'MarketplacePayment01',
-    'PayoneCreditCard',
-    'PayoneDirectDebit',
 ];
 $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
     DummyPaymentConfig::PAYMENT_METHOD_INVOICE => 'DummyPayment01',
     DummyPaymentConfig::PAYMENT_METHOD_CREDIT_CARD => 'DummyPayment01',
     DummyMarketplacePaymentConfig::PAYMENT_METHOD_DUMMY_MARKETPLACE_PAYMENT_INVOICE => 'MarketplacePayment01',
-    PayoneConfig::PAYMENT_METHOD_CREDIT_CARD => 'PayoneCreditCard',
-    PayoneConfig::PAYMENT_METHOD_DIRECT_DEBIT => 'PayoneDirectDebit',
 ];
 
 $config[EventConstants::LOGGER_ACTIVE] = true;
