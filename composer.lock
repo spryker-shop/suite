@@ -4799,50 +4799,6 @@
             "time": "2020-02-06T13:41:38+00:00"
         },
         {
-            "name": "spryker/content-navigation",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/content-navigation.git",
-                "reference": "31f6381bc518f73ff7f76037c3c4008428249e91"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/content-navigation/zipball/31f6381bc518f73ff7f76037c3c4008428249e91",
-                "reference": "31f6381bc518f73ff7f76037c3c4008428249e91",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2",
-                "spryker/content-storage": "^2.0.0",
-                "spryker/kernel": "^3.30.0",
-                "spryker/navigation": "^2.5.0",
-                "spryker/symfony": "^3.0.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/propel": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "ContentNavigation module",
-            "time": "2020-06-04T19:59:08+00:00"
-        },
-        {
             "name": "spryker/decimal-object",
             "version": "1.0.0",
             "source": {
@@ -5148,7 +5104,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "77ed4cbf8f558c647660657a9546847c8c05bbcd"
+                "reference": "afb6cb679400d94cd307644435f1147b25ce1b42"
             },
             "require": {
                 "php": ">=7.2"
@@ -5344,6 +5300,9 @@
                 "spryker/content-file-gui": "*",
                 "spryker/content-gui": "*",
                 "spryker/content-gui-extension": "*",
+                "spryker/content-navigation": "*",
+                "spryker/content-navigation-data-import": "*",
+                "spryker/content-navigation-gui": "*",
                 "spryker/content-product": "*",
                 "spryker/content-product-abstract-lists-rest-api": "*",
                 "spryker/content-product-data-import": "*",
@@ -5859,7 +5818,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-06-11T08:02:35+00:00"
+            "time": "2020-06-11T15:49:11+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5867,7 +5826,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "85130f239681d23798394fee6d973ce362f6fd23"
+                "reference": "0f4f15d522759ab5d717c95d90efc1b96c6f707d"
             },
             "require": {
                 "php": ">=7.2"
@@ -5910,6 +5869,7 @@
                 "spryker-shop/configurable-bundle-widget": "*",
                 "spryker-shop/content-banner-widget": "*",
                 "spryker-shop/content-file-widget": "*",
+                "spryker-shop/content-navigation-widget": "*",
                 "spryker-shop/content-product-set-widget": "*",
                 "spryker-shop/content-product-widget": "*",
                 "spryker-shop/currency-widget": "*",
@@ -5933,7 +5893,6 @@
                 "spryker-shop/money-widget": "*",
                 "spryker-shop/multi-cart-page": "*",
                 "spryker-shop/multi-cart-widget": "*",
-                "spryker-shop/navigation-widget": "*",
                 "spryker-shop/newsletter-page": "*",
                 "spryker-shop/newsletter-widget": "*",
                 "spryker-shop/order-custom-reference-widget": "*",
@@ -6018,7 +5977,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-06-10T13:00:36+00:00"
+            "time": "2020-06-11T15:48:40+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
