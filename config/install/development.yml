@@ -31,7 +31,7 @@ sections:
 
     composer:
         composer-autoloader:
-            command: "composer dumpautoload -a --apcu"
+            command: "composer dumpautoload --apcu"
 
     environment:
         console-environment:
@@ -72,9 +72,6 @@ sections:
 
         generate-transfer-databuilders:
             command: "vendor/bin/console transfer:databuilder:generate"
-
-        generate-entity-transfer:
-            command: "vendor/bin/console transfer:entity:generate"
 
         generate-ide-auto-completion:
             command: "vendor/bin/console dev:ide-auto-completion:generate"
@@ -208,6 +205,9 @@ sections:
             command: "vendor/bin/console maintenance:disable"
             stores: true
 
+        generate-entity-transfer:
+            command: "vendor/bin/console transfer:entity:generate"
+
         init-database:
             command: "vendor/bin/console setup:init-db"
             stores:
@@ -228,7 +228,7 @@ sections:
 
     demodata:
         import-commerce-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/commerce_setup_import_config.yml"
+            command: "vendor/bin/console data:import --config=data/import/config/commerce_setup_import_config.development.yml"
             stores:
                 - US
                 - DE
@@ -247,12 +247,6 @@ sections:
 
         import-merchandising-setup:
             command: "vendor/bin/console data:import --config=data/import/config/merchandising_import_config.yml"
-            stores:
-                - US
-                - DE
-
-        import-navigation-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/navigation_import_config.yml"
             stores:
                 - US
                 - DE

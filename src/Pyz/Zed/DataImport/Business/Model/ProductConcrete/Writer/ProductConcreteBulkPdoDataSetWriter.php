@@ -46,11 +46,6 @@ class ProductConcreteBulkPdoDataSetWriter implements DataSetWriterInterface
     protected static $productSearchCollection = [];
 
     /**
-     * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface
-     */
-    protected $productRepository;
-
-    /**
      * @var \Pyz\Zed\DataImport\Business\Model\ProductConcrete\Writer\Sql\ProductConcreteSqlInterface
      */
     protected $productConcreteSql;

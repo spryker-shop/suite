@@ -54,6 +54,7 @@ use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUn
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitValuePostSavePlugin;
 use Spryker\Zed\ProductOffer\Communication\Plugin\Cart\FilterInactiveProductOfferPreReloadItemsPlugin;
+use Spryker\Zed\ProductOffer\Communication\Plugin\Cart\ProductOfferCartPreCheckPlugin;
 use Spryker\Zed\ProductOffer\Communication\Plugin\Cart\ProductOfferGroupKeyItemExpanderPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\Cart\CartItemOptionPreCheckPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\CartItemGroupKeyOptionPlugin;
@@ -88,7 +89,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
      *
      * @return \Spryker\Zed\CartExtension\Dependency\Plugin\ItemExpanderPluginInterface[]
      */
-    protected function getExpanderPlugins(Container $container)
+    protected function getExpanderPlugins(Container $container): array
     {
         return [
             new ProductCartPlugin(),
@@ -135,7 +136,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
      *
      * @return \Spryker\Zed\CartExtension\Dependency\Plugin\CartPreCheckPluginInterface[]
      */
-    protected function getCartPreCheckPlugins(Container $container)
+    protected function getCartPreCheckPlugins(Container $container): array
     {
         return [
             new ProductExistsCartPreCheckPlugin(),
@@ -158,6 +159,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new SingleMerchantCartPreCheckPlugin(),
             new ProductMeasurementSalesUnitCartPreCheckPlugin(),
             new DiscountPromotionCartPreCheckPlugin(),
+            new ProductOfferCartPreCheckPlugin(),
         ];
     }
 
@@ -166,7 +168,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
      *
      * @return \Spryker\Zed\CartExtension\Dependency\Plugin\CartOperationPostSavePluginInterface[]
      */
-    protected function getPostSavePlugins(Container $container)
+    protected function getPostSavePlugins(Container $container): array
     {
         return [
             new ChangeProductOptionQuantityPlugin(),
@@ -184,7 +186,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
      *
      * @return \Spryker\Zed\CartExtension\Dependency\Plugin\PreReloadItemsPluginInterface[]
      */
-    protected function getPreReloadPlugins(Container $container)
+    protected function getPreReloadPlugins(Container $container): array
     {
         return [
             new CartConfigurableBundlePreReloadPlugin(),
@@ -216,7 +218,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
      *
      * @return \Spryker\Zed\CartExtension\Dependency\Plugin\CartTerminationPluginInterface[]
      */
-    protected function getTerminationPlugins(Container $container)
+    protected function getTerminationPlugins(Container $container): array
     {
         return [
             new ConfiguredBundleQuantityCartTerminationPlugin(),
@@ -228,7 +230,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
      *
      * @return \Spryker\Zed\CartExtension\Dependency\Plugin\CartRemovalPreCheckPluginInterface[]
      */
-    protected function getCartRemovalPreCheckPlugins(Container $container)
+    protected function getCartRemovalPreCheckPlugins(Container $container): array
     {
         return [
             new ProductQuantityRestrictionCartRemovalPreCheckPlugin(),

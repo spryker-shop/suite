@@ -2,7 +2,16 @@
 <config>
     <!-- You can control navigation order here and add your custom navigation entries -->
     <dashboard/>
-    <sales/>
+    <sales>
+        <pages>
+            <order-list/>
+            <order-matrix/>
+            <manual-order-entry-gui/>
+            <sales-reclamations/>
+            <table/>
+            <returns/>
+        </pages>
+    </sales>
     <customer/>
     <category>
         <label>Category</label>
@@ -39,4 +48,14 @@
     <acl/>
     <company-gui/>
     <maintenance/>
+    <merchant-portal-dashboard/>
+    <merchant-portal-profile/>
+    <product-offer-merchant-portal-gui/>
+    <merchant-portal-authentication>
+        <label>Logout</label>
+        <title>Logout</title>
+        <bundle>authentication-merchant-portal-gui</bundle>
+        <controller>logout</controller>
+        <action>index</action>
+    </merchant-portal-authentication>
 </config>
