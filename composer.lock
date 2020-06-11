@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5e0810b30a14ac8328cd90e2765b8145",
+    "content-hash": "3b848006a87e0234d43a692541019f52",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.140.4",
+            "version": "3.140.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "298ec070adad5760c4b90348219bb3e6bd7a9322"
+                "reference": "aebd17510b6220b6e5b239730b02eaf7b9b2b816"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/298ec070adad5760c4b90348219bb3e6bd7a9322",
-                "reference": "298ec070adad5760c4b90348219bb3e6bd7a9322",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/aebd17510b6220b6e5b239730b02eaf7b9b2b816",
+                "reference": "aebd17510b6220b6e5b239730b02eaf7b9b2b816",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-06-09T18:11:16+00:00"
+            "time": "2020-06-08T18:19:35+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -3693,7 +3693,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -4799,48 +4799,6 @@
             "time": "2020-02-06T13:41:38+00:00"
         },
         {
-            "name": "spryker-shop/sales-return-page-extension",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker-shop/sales-return-page-extension.git",
-                "reference": "fc907431a6aae30e3ecb06c322351ee8e495fc7d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/sales-return-page-extension/zipball/fc907431a6aae30e3ecb06c322351ee8e495fc7d",
-                "reference": "fc907431a6aae30e3ecb06c322351ee8e495fc7d",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/symfony": "*"
-            },
-            "suggest": {
-                "spryker/symfony": "If you want to use SalesReturnPage form expander plugins."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "SprykerShop\\": "src/SprykerShop/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "SalesReturnPageExtension module",
-            "time": "2020-05-29T15:35:39+00:00"
-        },
-        {
             "name": "spryker/decimal-object",
             "version": "1.0.0",
             "source": {
@@ -5142,11 +5100,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/mp-2849/mp-2853-expand-cms-page-storage-with-content-items",
+            "version": "dev-feature/mp-2849/mp-2855-related-content-items-for-cms-page",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "5641aa564a4114fe4cde7efc7fed9bc49f2affbd"
+                "reference": "41573b5df75e909502b6035ade157817c05372ee"
             },
             "require": {
                 "php": ">=7.2"
@@ -5250,6 +5208,7 @@
                 "spryker/cms-navigation-connector": "*",
                 "spryker/cms-page-data-import": "*",
                 "spryker/cms-page-search": "*",
+                "spryker/cms-pages-rest-api": "*",
                 "spryker/cms-slot": "*",
                 "spryker/cms-slot-block": "*",
                 "spryker/cms-slot-block-category-connector": "*",
@@ -5857,7 +5816,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-06-10T11:25:02+00:00"
+            "time": "2020-06-11T14:59:55+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5865,7 +5824,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "e9599969e61020bbfdd7a662e2cb51f927deaedd"
+                "reference": "c6dd73fb56f96d4a7d188148d6e7373d103a36c3"
             },
             "require": {
                 "php": ">=7.2"
@@ -6016,7 +5975,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-06-10T09:42:17+00:00"
+            "time": "2020-06-05T14:46:57+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8774,7 +8733,7 @@
             ],
             "description": "Symfony Validator Component",
             "homepage": "https://symfony.com",
-            "time": "2020-04-28T18:23:58+00:00"
+            "time": "2020-05-30T18:50:54+00:00"
         },
         {
             "name": "symfony/var-dumper",
@@ -10268,7 +10227,7 @@
                 "Xdebug",
                 "performance"
             ],
-            "time": "2020-03-01T12:26:26+00:00"
+            "time": "2020-06-04T11:16:35+00:00"
         },
         {
             "name": "dms/phpunit-arraysubset-asserts",
@@ -11432,108 +11391,6 @@
             "time": "2020-02-20T14:09:48+00:00"
         },
         {
-            "name": "spryker-shop/sales-product-bundle-widget",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker-shop/sales-product-bundle-widget.git",
-                "reference": "729a0782a63beb42538f27288bfaa0485b3ce216"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/sales-product-bundle-widget/zipball/729a0782a63beb42538f27288bfaa0485b3ce216",
-                "reference": "729a0782a63beb42538f27288bfaa0485b3ce216",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2",
-                "spryker-shop/sales-return-page-extension": "^1.0.0",
-                "spryker-shop/shop-ui": "^1.38.0",
-                "spryker/kernel": "^3.30.0",
-                "spryker/product-bundle": "^7.4.0",
-                "spryker/sales": "^11.9.0",
-                "spryker/symfony": "^3.1.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "SprykerShop\\": "src/SprykerShop/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "SalesProductBundleWidget module",
-            "time": "2020-05-29T15:35:51+00:00"
-        },
-        {
-            "name": "spryker-shop/sales-return-page",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker-shop/sales-return-page.git",
-                "reference": "5cb546896661ba5c542c3eb00009cb235b973b63"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/sales-return-page/zipball/5cb546896661ba5c542c3eb00009cb235b973b63",
-                "reference": "5cb546896661ba5c542c3eb00009cb235b973b63",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2",
-                "spryker-shop/sales-return-page-extension": "^1.0.0",
-                "spryker-shop/shop-ui": "^1.38.0",
-                "spryker/application": "^3.8.0",
-                "spryker/customer": "^7.19.0",
-                "spryker/kernel": "^3.30.0",
-                "spryker/sales": "^11.0.0",
-                "spryker/sales-return": "^1.0.0",
-                "spryker/sales-return-search": "^1.0.0",
-                "spryker/store": "^1.11.0",
-                "spryker/symfony": "^3.1.0"
-            },
-            "require-dev": {
-                "spryker-shop/customer-page": "*",
-                "spryker-shop/sales-configurable-bundle-widget": "*",
-                "spryker-shop/sales-product-bundle-widget": "*",
-                "spryker/code-sniffer": "*",
-                "spryker/router": "*"
-            },
-            "suggest": {
-                "spryker-shop/customer-page": "Use this module when you want to use CustomerNavigationWidget",
-                "spryker-shop/sales-configurable-bundle-widget": "Use this module when you want to use OrderItemsConfiguredBundleWidget",
-                "spryker-shop/sales-product-bundle-widget": "Use this module when you want to use ProductBundleSalesReturnPageFormExpanderPlugin",
-                "spryker/router": "Use this module if you want use the RouterProviderPlugin."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "SprykerShop\\": "src/SprykerShop/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "SalesReturnPage module",
-            "time": "2020-06-02T08:40:01+00:00"
-        },
-        {
             "name": "spryker/architecture-sniffer",
             "version": "dev-master",
             "source": {
@@ -12209,6 +12066,69 @@
                 "standards"
             ],
             "time": "2020-05-25T17:37:45+00:00"
+        },
+        {
+            "name": "symfony/mime",
+            "version": "v5.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/mime.git",
+                "reference": "56261f89385f9d13cf843a5101ac72131190bc91"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/mime/zipball/56261f89385f9d13cf843a5101ac72131190bc91",
+                "reference": "56261f89385f9d13cf843a5101ac72131190bc91",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "symfony/polyfill-intl-idn": "^1.10",
+                "symfony/polyfill-mbstring": "^1.0",
+                "symfony/polyfill-php80": "^1.15"
+            },
+            "conflict": {
+                "symfony/mailer": "<4.4"
+            },
+            "require-dev": {
+                "egulias/email-validator": "^2.1.10",
+                "symfony/dependency-injection": "^4.4|^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Mime\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "A library to manipulate MIME messages",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "mime",
+                "mime-type"
+            ],
+            "time": "2020-05-25T12:33:44+00:00"
         },
         {
             "name": "theseer/fdomdocument",
