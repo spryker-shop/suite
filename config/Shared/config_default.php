@@ -62,8 +62,6 @@ use Spryker\Zed\Log\Communication\Plugin\ZedLoggerConfigPlugin;
 use Spryker\Zed\Oms\OmsConfig;
 use Spryker\Zed\Propel\PropelConfig;
 use SprykerEco\Shared\Loggly\LogglyConstants;
-use SprykerEco\Shared\Payone\PayoneConstants;
-use SprykerEco\Zed\Payone\PayoneConfig;
 use SprykerShop\Shared\CalculationPage\CalculationPageConstants;
 use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
 use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
@@ -415,14 +413,11 @@ $config[NopaymentConstants::WHITELIST_PAYMENT_METHODS] = [
 // ---------- State machine (OMS)
 $config[OmsConstants::PROCESS_LOCATION] = [
     OmsConfig::DEFAULT_PROCESS_LOCATION,
-    APPLICATION_VENDOR_DIR . '/spryker-eco/payone/config/Zed/Oms',
 ];
 $config[OmsConstants::ACTIVE_PROCESSES] = [
     'DummyPayment01',
     'Nopayment01',
     'MarketplacePayment01',
-    'PayoneCreditCard',
-    'PayoneDirectDebit',
 ];
 $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
     DummyPaymentConfig::PAYMENT_METHOD_INVOICE => 'DummyPayment01',
@@ -430,8 +425,6 @@ $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
     DummyMarketplacePaymentConfig::PAYMENT_METHOD_DUMMY_MARKETPLACE_PAYMENT_INVOICE => 'MarketplacePayment01',
     GiftCardConfig::PROVIDER_NAME => 'DummyPayment01',
     NopaymentConfig::PAYMENT_PROVIDER_NAME => 'Nopayment01',
-    PayoneConfig::PAYMENT_METHOD_CREDIT_CARD => 'PayoneCreditCard',
-    PayoneConfig::PAYMENT_METHOD_DIRECT_DEBIT => 'PayoneDirectDebit',
 ];
 
 // ---------- Queue
@@ -665,41 +658,4 @@ $config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = sprintf(
 $config[KernelConstants::DOMAIN_WHITELIST] = [
     $config[ApplicationConstants::HOST_YVES],
     $config[ApplicationConstants::HOST_ZED],
-];
-
-$config[PayoneConstants::PAYONE] = [
-    PayoneConstants::PAYONE_CREDENTIALS_ENCODING => 'UTF-8',
-    PayoneConstants::PAYONE_CREDENTIALS_KEY => 'Atf7vFdpMvhqlQwJ',
-    PayoneConstants::PAYONE_CREDENTIALS_MID => '32481',
-    PayoneConstants::PAYONE_CREDENTIALS_AID => '32893',
-    PayoneConstants::PAYONE_CREDENTIALS_PORTAL_ID => '2026219',
-    PayoneConstants::PAYONE_PAYMENT_GATEWAY_URL => 'https://api.pay1.de/post-gateway/',
-    PayoneConstants::PAYONE_REDIRECT_SUCCESS_URL => sprintf(
-        '%s/checkout/success',
-        $config[ApplicationConstants::BASE_URL_YVES]
-    ),
-    PayoneConstants::PAYONE_REDIRECT_ERROR_URL => sprintf(
-        '%s/checkout/payment',
-        $config[ApplicationConstants::BASE_URL_YVES]
-    ),
-    PayoneConstants::PAYONE_REDIRECT_BACK_URL => sprintf(
-        '%s/checkout/regular-redirect-payment-cancellation',
-        $config[ApplicationConstants::BASE_URL_YVES]
-    ),
-    PayoneConstants::PAYONE_MODE => 'test',
-    PayoneConstants::PAYONE_BUSINESS_RELATION => 'b2b',
-    PayoneConstants::PAYONE_EMPTY_SEQUENCE_NUMBER => 0,
-    PayoneConstants::HOST_YVES => $config[ApplicationConstants::BASE_URL_YVES],
-    PayoneConstants::PAYONE_STANDARD_CHECKOUT_ENTRY_POINT_URL => sprintf(
-        '%s/cart',
-        $config[ApplicationConstants::BASE_URL_YVES]
-    ),
-    PayoneConstants::PAYONE_EXPRESS_CHECKOUT_BACK_URL => sprintf(
-        '%s/cart',
-        $config[ApplicationConstants::BASE_URL_YVES]
-    ),
-    PayoneConstants::PAYONE_EXPRESS_CHECKOUT_FAILURE_URL => sprintf(
-        '%s/cart',
-        $config[ApplicationConstants::BASE_URL_YVES]
-    ),
 ];
