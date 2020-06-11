@@ -24,6 +24,8 @@ use Spryker\Zed\ProductListSearch\Communication\Plugin\ProductPageSearch\DataLoa
 use Spryker\Zed\ProductListSearch\Communication\Plugin\ProductPageSearch\Elasticsearch\ProductListMapExpanderPlugin;
 use Spryker\Zed\ProductListSearch\Communication\Plugin\ProductPageSearch\ProductConcreteProductListPageDataExpanderPlugin;
 use Spryker\Zed\ProductListSearch\Communication\Plugin\ProductPageSearch\ProductConcreteProductListPageMapExpanderPlugin;
+use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\ProductPageSearch\ProductMeasurementUnitProductAbstractAddToCartPlugin;
+use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\ProductPageSearch\ProductPackagingUnitProductAbstractAddToCartPlugin;
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\PageDataExpander\PricePageDataLoaderExpanderPlugin;
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\PageDataExpander\ProductCategoryPageDataLoaderExpanderPlugin;
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\PageDataExpander\ProductImagePageDataLoaderExpanderPlugin;
@@ -114,6 +116,17 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
             new ProductListMapExpanderPlugin(),
             new MerchantNamesProductAbstractMapExpanderPlugin(),
             new MerchantReferencesProductAbstractsMapExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductAbstractAddToCartPluginInterface[]
+     */
+    protected function getProductAbstractAddToCartPlugins(): array
+    {
+        return [
+            new ProductMeasurementUnitProductAbstractAddToCartPlugin(),
+            new ProductPackagingUnitProductAbstractAddToCartPlugin(),
         ];
     }
 }
