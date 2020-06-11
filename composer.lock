@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fdf7ea6649a4cb51dfbefda353ba4f7a",
+    "content-hash": "d537803d4eebd2f2c83322978764f943",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.140.4",
+            "version": "3.141.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "298ec070adad5760c4b90348219bb3e6bd7a9322"
+                "reference": "d57dbde176a7db7a6131bb5d325aff63515eabc3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/298ec070adad5760c4b90348219bb3e6bd7a9322",
-                "reference": "298ec070adad5760c4b90348219bb3e6bd7a9322",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d57dbde176a7db7a6131bb5d325aff63515eabc3",
+                "reference": "d57dbde176a7db7a6131bb5d325aff63515eabc3",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-06-09T18:11:16+00:00"
+            "time": "2020-06-10T18:11:38+00:00"
         },
         {
             "name": "brick/math",
@@ -23858,6 +23858,48 @@
             "time": "2019-11-27T15:21:29+00:00"
         },
         {
+            "name": "spryker/merchant-product-offers-rest-api",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-product-offers-rest-api.git",
+                "reference": "1a6220eaf5e1ad4a45f786ee18ca011095c6a303"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-product-offers-rest-api/zipball/1a6220eaf5e1ad4a45f786ee18ca011095c6a303",
+                "reference": "1a6220eaf5e1ad4a45f786ee18ca011095c6a303",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/carts-rest-api-extension": "^1.5.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/merchant-product-offer-storage": "^0.8.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantProductOffersRestApi module",
+            "time": "2020-05-14T08:47:12+00:00"
+        },
+        {
             "name": "spryker/merchant-profile",
             "version": "0.2.0",
             "source": {
@@ -31826,16 +31868,16 @@
         },
         {
             "name": "spryker/product-offer",
-            "version": "0.3.3",
+            "version": "0.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-offer.git",
-                "reference": "f208ebc564e100647f38365269cd136b2bc1d991"
+                "reference": "19b6b90e1360b74cfd7235b9820bb49951d5cd79"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-offer/zipball/f208ebc564e100647f38365269cd136b2bc1d991",
-                "reference": "f208ebc564e100647f38365269cd136b2bc1d991",
+                "url": "https://api.github.com/repos/spryker/product-offer/zipball/19b6b90e1360b74cfd7235b9820bb49951d5cd79",
+                "reference": "19b6b90e1360b74cfd7235b9820bb49951d5cd79",
                 "shasum": ""
             },
             "require": {
@@ -31874,7 +31916,7 @@
                 "proprietary"
             ],
             "description": "ProductOffer module",
-            "time": "2020-05-04T11:54:34+00:00"
+            "time": "2020-06-09T10:56:39+00:00"
         },
         {
             "name": "spryker/product-offer-availability",
