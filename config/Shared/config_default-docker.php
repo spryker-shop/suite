@@ -45,7 +45,6 @@ use Spryker\Shared\Twig\TwigConstants;
 use Spryker\Shared\WebProfiler\WebProfilerConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use Spryker\Zed\Propel\PropelConfig;
-use SprykerEco\Shared\Payone\PayoneConstants;
 use SprykerEco\Zed\Payone\PayoneConfig;
 use SprykerShop\Shared\CalculationPage\CalculationPageConstants;
 use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
@@ -379,42 +378,3 @@ $config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = (bool)getenv('D
 
 // ----------- Documentation generator
 $config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GENERATION] = true;
-
-
-$config[PayoneConstants::PAYONE] = [
-    PayoneConstants::PAYONE_CREDENTIALS_ENCODING => 'UTF-8',
-    PayoneConstants::PAYONE_CREDENTIALS_KEY => 'Atf7vFdpMvhqlQwJ',
-    PayoneConstants::PAYONE_CREDENTIALS_MID => '32481',
-    PayoneConstants::PAYONE_CREDENTIALS_AID => '32893',
-    PayoneConstants::PAYONE_CREDENTIALS_PORTAL_ID => '2026219',
-    PayoneConstants::PAYONE_PAYMENT_GATEWAY_URL => 'https://api.pay1.de/post-gateway/',
-    PayoneConstants::PAYONE_REDIRECT_SUCCESS_URL => sprintf(
-        '%s/checkout/success',
-        $config[ApplicationConstants::BASE_URL_YVES]
-    ),
-    PayoneConstants::PAYONE_REDIRECT_ERROR_URL => sprintf(
-        '%s/checkout/payment',
-        $config[ApplicationConstants::BASE_URL_YVES]
-    ),
-    PayoneConstants::PAYONE_REDIRECT_BACK_URL => sprintf(
-        '%s/checkout/regular-redirect-payment-cancellation',
-        $config[ApplicationConstants::BASE_URL_YVES]
-    ),
-    PayoneConstants::PAYONE_MODE => 'test',
-    PayoneConstants::PAYONE_BUSINESS_RELATION => 'b2b',
-    PayoneConstants::PAYONE_EMPTY_SEQUENCE_NUMBER => 0,
-    PayoneConstants::HOST_YVES => $config[ApplicationConstants::BASE_URL_YVES],
-];
-$config[PayoneConstants::PAYONE][PayoneConstants::PAYONE_STANDARD_CHECKOUT_ENTRY_POINT_URL] = sprintf(
-    '%s/cart',
-    $config[ApplicationConstants::BASE_URL_YVES]
-);
-$config[PayoneConstants::PAYONE][PayoneConstants::PAYONE_EXPRESS_CHECKOUT_BACK_URL] = sprintf(
-    '%s/cart',
-    $config[ApplicationConstants::BASE_URL_YVES]
-);
-$config[PayoneConstants::PAYONE][PayoneConstants::PAYONE_EXPRESS_CHECKOUT_FAILURE_URL] = sprintf(
-    '%s/cart',
-    $config[ApplicationConstants::BASE_URL_YVES]
-);
-

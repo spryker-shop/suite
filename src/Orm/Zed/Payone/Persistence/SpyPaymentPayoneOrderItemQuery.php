@@ -1,8 +1,13 @@
 <?php
 
+/**
+ * This file is part of the Spryker Suite.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Orm\Zed\Payone\Persistence;
 
-use Orm\Zed\Payone\Persistence\Base\SpyPaymentPayoneOrderItemQuery as BaseSpyPaymentPayoneOrderItemQuery;
+use SprykerEco\Zed\Payone\Persistence\Propel\AbstractSpyPaymentPayoneOrderItemQuery as BaseSpyPaymentPayoneOrderItemQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_payment_payone_order_item' table.
@@ -10,11 +15,9 @@ use Orm\Zed\Payone\Persistence\Base\SpyPaymentPayoneOrderItemQuery as BaseSpyPay
  *
  *
  * You should add additional methods to this class to meet the
- * application requirements.  This class will only be generated as
+ * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
- *
  */
 class SpyPaymentPayoneOrderItemQuery extends BaseSpyPaymentPayoneOrderItemQuery
 {
-
 }
