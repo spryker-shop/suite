@@ -690,16 +690,16 @@ $config[PayoneConstants::PAYONE] = [
     PayoneConstants::PAYONE_BUSINESS_RELATION => 'b2b',
     PayoneConstants::PAYONE_EMPTY_SEQUENCE_NUMBER => 0,
     PayoneConstants::HOST_YVES => $config[ApplicationConstants::BASE_URL_YVES],
+    PayoneConstants::PAYONE_STANDARD_CHECKOUT_ENTRY_POINT_URL => sprintf(
+        '%s/cart',
+        $config[ApplicationConstants::BASE_URL_YVES]
+    ),
+    PayoneConstants::PAYONE_EXPRESS_CHECKOUT_BACK_URL => sprintf(
+        '%s/cart',
+        $config[ApplicationConstants::BASE_URL_YVES]
+    ),
+    PayoneConstants::PAYONE_EXPRESS_CHECKOUT_FAILURE_URL => sprintf(
+        '%s/cart',
+        $config[ApplicationConstants::BASE_URL_YVES]
+    ),
 ];
-$config[PayoneConstants::PAYONE][PayoneConstants::PAYONE_STANDARD_CHECKOUT_ENTRY_POINT_URL] = sprintf(
-    '%s/cart',
-    $config[ApplicationConstants::BASE_URL_YVES]
-);
-$config[PayoneConstants::PAYONE][PayoneConstants::PAYONE_EXPRESS_CHECKOUT_BACK_URL] = sprintf(
-    '%s/cart',
-    $config[ApplicationConstants::BASE_URL_YVES]
-);
-$config[PayoneConstants::PAYONE][PayoneConstants::PAYONE_EXPRESS_CHECKOUT_FAILURE_URL] = sprintf(
-    '%s/cart',
-    $config[ApplicationConstants::BASE_URL_YVES]
-);
