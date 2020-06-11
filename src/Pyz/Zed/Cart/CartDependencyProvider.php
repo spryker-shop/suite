@@ -54,6 +54,7 @@ use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUn
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitValuePostSavePlugin;
 use Spryker\Zed\ProductOffer\Communication\Plugin\Cart\FilterInactiveProductOfferPreReloadItemsPlugin;
+use Spryker\Zed\ProductOffer\Communication\Plugin\Cart\ProductOfferCartPreCheckPlugin;
 use Spryker\Zed\ProductOffer\Communication\Plugin\Cart\ProductOfferGroupKeyItemExpanderPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\Cart\CartItemOptionPreCheckPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\CartItemGroupKeyOptionPlugin;
@@ -158,6 +159,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new SingleMerchantCartPreCheckPlugin(),
             new ProductMeasurementSalesUnitCartPreCheckPlugin(),
             new DiscountPromotionCartPreCheckPlugin(),
+            new ProductOfferCartPreCheckPlugin(),
         ];
     }
 
