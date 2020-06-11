@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0587f91e27ce3845c2fd70c99f23fec8",
+    "content-hash": "5e0810b30a14ac8328cd90e2765b8145",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -3693,7 +3693,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -5104,7 +5104,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "fb5d66d7657492a3289cdc57b2dc169f80a65c40"
+                "reference": "9dd83c6c5259db9eff499c4d412038719bd4befd"
             },
             "require": {
                 "php": ">=7.2"
@@ -5300,6 +5300,9 @@
                 "spryker/content-file-gui": "*",
                 "spryker/content-gui": "*",
                 "spryker/content-gui-extension": "*",
+                "spryker/content-navigation": "*",
+                "spryker/content-navigation-data-import": "*",
+                "spryker/content-navigation-gui": "*",
                 "spryker/content-product": "*",
                 "spryker/content-product-abstract-lists-rest-api": "*",
                 "spryker/content-product-data-import": "*",
@@ -5815,15 +5818,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-06-11T07:31:20+00:00"
+            "time": "2020-06-11T09:58:26+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/te-5978/dev-load-only-images-in-viewport",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "c598bbad62d530e86f3cc8010c0e6fd520961f5e"
+                "reference": "1a71e5fe292a59c97192ecac57619c191e7e68fc"
             },
             "require": {
                 "php": ">=7.2"
@@ -5866,6 +5869,7 @@
                 "spryker-shop/configurable-bundle-widget": "*",
                 "spryker-shop/content-banner-widget": "*",
                 "spryker-shop/content-file-widget": "*",
+                "spryker-shop/content-navigation-widget": "*",
                 "spryker-shop/content-product-set-widget": "*",
                 "spryker-shop/content-product-widget": "*",
                 "spryker-shop/currency-widget": "*",
@@ -5889,7 +5893,6 @@
                 "spryker-shop/money-widget": "*",
                 "spryker-shop/multi-cart-page": "*",
                 "spryker-shop/multi-cart-widget": "*",
-                "spryker-shop/navigation-widget": "*",
                 "spryker-shop/newsletter-page": "*",
                 "spryker-shop/newsletter-widget": "*",
                 "spryker-shop/order-custom-reference-widget": "*",
@@ -5974,7 +5977,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-06-11T09:39:16+00:00"
+            "time": "2020-06-11T09:58:30+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -11088,7 +11091,7 @@
                     "SLLH\\ComposerVersionsCheck\\": "src/"
                 }
             },
-            "notification-url": "https://repo.repman.io/downloads",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -12244,5 +12247,6 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    }
+    },
+    "plugin-api-version": "1.1.0"
 }
