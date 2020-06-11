@@ -100,7 +100,7 @@ sections:
 
     demodata:
         import-commerce-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/commerce_setup_import_config.yml"
+            command: "vendor/bin/console data:import --config=data/import/config/commerce_setup_import_config.development.yml"
 
         import-catalog-setup:
             command: "vendor/bin/console data:import --config=data/import/config/catalog_setup_import_config.yml"
