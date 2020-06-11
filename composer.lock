@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5e0810b30a14ac8328cd90e2765b8145",
+    "content-hash": "802bf54b1d2d8138df4c4c5babff68e9",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -3693,7 +3693,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -4799,6 +4799,50 @@
             "time": "2020-02-06T13:41:38+00:00"
         },
         {
+            "name": "spryker/content-navigation",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/content-navigation.git",
+                "reference": "31f6381bc518f73ff7f76037c3c4008428249e91"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/content-navigation/zipball/31f6381bc518f73ff7f76037c3c4008428249e91",
+                "reference": "31f6381bc518f73ff7f76037c3c4008428249e91",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/content-storage": "^2.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/navigation": "^2.5.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ContentNavigation module",
+            "time": "2020-06-04T19:59:08+00:00"
+        },
+        {
             "name": "spryker/decimal-object",
             "version": "1.0.0",
             "source": {
@@ -5100,11 +5144,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-bugfix/cc-9332-samesite-cookie-and-csrf-token-for-deletion-methods",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "fb5d66d7657492a3289cdc57b2dc169f80a65c40"
+                "reference": "77ed4cbf8f558c647660657a9546847c8c05bbcd"
             },
             "require": {
                 "php": ">=7.2"
@@ -5815,15 +5859,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-06-11T07:31:20+00:00"
+            "time": "2020-06-11T08:02:35+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-bugfix/cc-9332-samesite-cookie-and-csrf-token-for-deletion-methods",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "e9599969e61020bbfdd7a662e2cb51f927deaedd"
+                "reference": "85130f239681d23798394fee6d973ce362f6fd23"
             },
             "require": {
                 "php": ">=7.2"
@@ -5974,7 +6018,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-06-10T09:42:17+00:00"
+            "time": "2020-06-10T13:00:36+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -12244,6 +12288,5 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    },
-    "plugin-api-version": "1.1.0"
+    }
 }
