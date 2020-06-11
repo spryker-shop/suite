@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e824345bff59bde91923b18f973a43e6",
+    "content-hash": "073a3796c8201c62fb31113925834f87",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -4799,50 +4799,6 @@
             "time": "2020-02-06T13:41:38+00:00"
         },
         {
-            "name": "spryker/content-navigation",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/content-navigation.git",
-                "reference": "31f6381bc518f73ff7f76037c3c4008428249e91"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/content-navigation/zipball/31f6381bc518f73ff7f76037c3c4008428249e91",
-                "reference": "31f6381bc518f73ff7f76037c3c4008428249e91",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2",
-                "spryker/content-storage": "^2.0.0",
-                "spryker/kernel": "^3.30.0",
-                "spryker/navigation": "^2.5.0",
-                "spryker/symfony": "^3.0.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/propel": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "ContentNavigation module",
-            "time": "2020-06-04T19:59:08+00:00"
-        },
-        {
             "name": "spryker/decimal-object",
             "version": "1.0.0",
             "source": {
@@ -4999,46 +4955,6 @@
             "time": "2020-05-28T11:04:44+00:00"
         },
         {
-            "name": "spryker/merchant-product",
-            "version": "0.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/merchant-product.git",
-                "reference": "dce3369366f7ed44fa22df793f83261a2842db48"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-product/zipball/dce3369366f7ed44fa22df793f83261a2842db48",
-                "reference": "dce3369366f7ed44fa22df793f83261a2842db48",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2",
-                "spryker/merchant": "^3.0.0",
-                "spryker/product": "^6.0.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "MerchantProduct module",
-            "time": "2020-05-25T12:35:09+00:00"
-        },
-        {
             "name": "spryker/rabbit-mq",
             "version": "dev-master",
             "source": {
@@ -5184,11 +5100,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/cc-9471/dev-checkbox-on-summary-page",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "99fc1aa8df55fba497229cb8ada06f56a4716d84"
+                "reference": "9dd83c6c5259db9eff499c4d412038719bd4befd"
             },
             "require": {
                 "php": ">=7.2"
@@ -5384,6 +5300,9 @@
                 "spryker/content-file-gui": "*",
                 "spryker/content-gui": "*",
                 "spryker/content-gui-extension": "*",
+                "spryker/content-navigation": "*",
+                "spryker/content-navigation-data-import": "*",
+                "spryker/content-navigation-gui": "*",
                 "spryker/content-product": "*",
                 "spryker/content-product-abstract-lists-rest-api": "*",
                 "spryker/content-product-data-import": "*",
@@ -5494,11 +5413,14 @@
                 "spryker/merchant-opening-hours-data-import": "*",
                 "spryker/merchant-opening-hours-rest-api": "*",
                 "spryker/merchant-opening-hours-storage": "*",
+                "spryker/merchant-product": "*",
+                "spryker/merchant-product-data-import": "*",
                 "spryker/merchant-product-offer": "*",
                 "spryker/merchant-product-offer-data-import": "*",
                 "spryker/merchant-product-offer-search": "*",
                 "spryker/merchant-product-offer-storage": "*",
                 "spryker/merchant-product-offer-storage-extension": "*",
+                "spryker/merchant-product-offers-rest-api": "*",
                 "spryker/merchant-profile": "*",
                 "spryker/merchant-profile-data-import": "*",
                 "spryker/merchant-profile-gui": "*",
@@ -5664,7 +5586,6 @@
                 "spryker/product-measurement-unit-data-import": "*",
                 "spryker/product-measurement-unit-storage": "*",
                 "spryker/product-measurement-units-rest-api": "*",
-                "spryker/product-merchant-connector": "*",
                 "spryker/product-new": "*",
                 "spryker/product-offer": "*",
                 "spryker/product-offer-availability": "*",
@@ -5746,7 +5667,7 @@
                 "spryker/sales-configurable-bundle": "*",
                 "spryker/sales-data-export": "*",
                 "spryker/sales-extension": "*",
-                "spryker/sales-merchant-connector": "*",
+                "spryker/sales-oms": "*",
                 "spryker/sales-order-threshold": "*",
                 "spryker/sales-order-threshold-data-import": "*",
                 "spryker/sales-order-threshold-extension": "*",
@@ -5897,7 +5818,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-05-29T18:43:42+00:00"
+            "time": "2020-06-11T09:58:26+00:00"
         },
         {
             "name": "spryker/spryker-shop",
