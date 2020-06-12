@@ -298,14 +298,13 @@ addons:
     packages:
       - redis-tools
       - redis-server
-      - rabbitmq-server=3.8.4-1
       - graphviz
       - libzip-dev
       - postgresql-12
       - postgresql-client-12
       - postgresql-server-dev-12
-  postgresql: 12
-  mysql: 5.7
+      - rabbitmq-server
+  postgresql: "12"
 
   artifacts:
     s3_region: eu-west-1
@@ -327,15 +326,15 @@ addons:
 cache:
   directories:
     - $HOME/.composer/cache
-    - /home/travis/.rvm/gems # Mailcatcher is a ruby gem, takes 5 minutes to install.
-    - /home/travis/.nvm/.cache
+    - $HOME/.rvm/gems # Mailcatcher is a ruby gem, takes 5 minutes to install.
+    - $HOME/.nvm/.cache
     - /tmp/pear/cache/
+    - $HOME/.yarn/cache
 
 services:
   - postgresql
   - mysql
   - redis
-  - rabbitmq-server
 
 sudo: required
 
@@ -358,7 +357,7 @@ install:
   - composer install --optimize-autoloader --no-interaction
   - config/Shared/ci/travis/install_elasticsearch.sh
   - config/Shared/ci/travis/install_mailcatcher.sh
-  - if [[ -z $FE_TEST ]] ; then config/Shared/ci/travis/configure_postgres.sh ; fi
+  - if [[ -z $MP_TEST ]] ; then config/Shared/ci/travis/configure_postgres.sh ; fi
 
 before_script:
   - nvm install 8 > /dev/null
@@ -393,6 +392,12 @@ before_script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console rest-api:generate:documentation ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console frontend:project:install-dependencies ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console frontend:yves:install-dependencies ; fi
+    # Puppeteer installs chromium binary which we will use for headless unit tests
+  - if [[ $MP_TEST == 1 ]] ; then nvm install 12 && nvm use 12 ; fi
+  - if [[ $MP_TEST == 1 ]] ; then npm i -g puppeteer && npm link puppeteer ; fi
+  - if [[ $MP_TEST == 1 ]] ; then unset CHROME_BIN && export CHROME_BIN=$(node -e "console.log(require('puppeteer').executablePath())") ; fi
+    # Install npm packages
+  - if [[ $MP_TEST == 1 ]] ; then export YARN_CACHE_FOLDER=$HOME/.yarn/cache && vendor/bin/console frontend:mp:install-dependencies ; fi
 
 script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:phpstan -m Spryker.all ; fi
@@ -426,10 +431,6 @@ script:
   - if [[ $VALIDATION == 1 ]] ; then node ./frontend/libs/tslint stylish ; fi
 
   - if [[ $MP_TEST == 1 ]] ; then nvm install 12 && nvm use 12 ; fi
-  # Puppeteer installs chromium binary which we will use for headless unit tests
-  - if [[ $MP_TEST == 1 ]] ; then npm i -g puppeteer && npm link puppeteer ; fi
-  - if [[ $MP_TEST == 1 ]] ; then unset CHROME_BIN && export CHROME_BIN=$(node -e "console.log(require('puppeteer').executablePath())") ; fi
-  - if [[ $MP_TEST == 1 ]] ; then vendor/bin/console frontend:mp:install-dependencies ; fi
   - if [[ $MP_TEST == 1 ]] ; then vendor/bin/console frontend:mp:build ; fi
   - if [[ $MP_TEST == 1 ]] ; then yarn mp:test ; fi
 
