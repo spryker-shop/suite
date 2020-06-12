@@ -25,8 +25,8 @@ use Spryker\Zed\CompanyDataImport\CompanyDataImportConfig;
 use Spryker\Zed\CompanyUnitAddressDataImport\CompanyUnitAddressDataImportConfig;
 use Spryker\Zed\CompanyUnitAddressLabelDataImport\CompanyUnitAddressLabelDataImportConfig;
 use Spryker\Zed\Console\ConsoleDependencyProvider as SprykerConsoleDependencyProvider;
-use Spryker\Zed\Customer\Communication\Console\CustomerResetPassword;
-use Spryker\Zed\Customer\Communication\Console\CustomerSetPassword;
+use Spryker\Zed\Customer\Communication\Console\CustomerPasswordReset;
+use Spryker\Zed\Customer\Communication\Console\CustomerPasswordSet;
 use Spryker\Zed\DataExport\Communication\Console\DataExportConsole;
 use Spryker\Zed\DataImport\Communication\Console\DataImportConsole;
 use Spryker\Zed\DataImport\Communication\Console\DataImportDumpConsole;
@@ -417,8 +417,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new EventTriggerListenerConsole();
             $commands[] = new ComposerConstraintConsole();
             $commands[] = new CleanOutputConsole();
-            $commands[] = new CustomerResetPassword();
-            $commands[] = new CustomerSetPassword();
+            $commands[] = new CustomerPasswordReset();
+            $commands[] = new CustomerPasswordSet();
         }
 
         return $commands;
