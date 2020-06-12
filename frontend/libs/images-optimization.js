@@ -9,81 +9,80 @@ const { join, normalize } = require('path');
 
 let isGlobalImagesOptimized = false;
 
-const imagesOptimization = (appSettings) => {
+const imagesOptimization = appSettings => {
     let isPublicOutput = false;
     let isOptimize = true;
 
     const currentMode = process.argv.slice(2)[0];
-    Object.keys(appSettings.imageOptimizationOptions.enableModes).map(mode => {
-        if (currentMode === mode) {
-            isPublicOutput = true;
-            isOptimize = appSettings.imageOptimizationOptions.enableModes[mode];
-        }
-    });
 
-    if (isOptimize) {
-        try {
-            Object.values(appSettings.paths.assets).map(assetsPath => {
-                const assetsImagePath = normalize(join(assetsPath, '/images/'));
-                const assetsImagePattern = '/*.{jpg,png,svg,gif}';
-                let outputPath = normalize(join(assetsPath, '/images/optimized-images/'));
+    if (Object.keys(appSettings.imageOptimizationOptions.enableModes).includes(currentMode)) {
+        isPublicOutput = true;
+        isOptimize = appSettings.imageOptimizationOptions.enableModes[currentMode];
+    }
 
-                if (isPublicOutput) {
-                    outputPath = normalize(join(appSettings.paths.public, '/images/'));
-                }
+    if (!isOptimize) {
+        return;
+    }
 
-                const isGlobalImages = assetsPath === appSettings.paths.assets.globalAssets;
+    try {
+        Object.values(appSettings.paths.assets).map(assetsPath => {
+            const assetsImagePath = normalize(join(assetsPath, '/images/'));
+            const assetsImagePattern = '/*.{jpg,png,svg,gif}';
+            let outputPath = normalize(join(assetsPath, '/images/optimized-images/'));
 
-                if (isGlobalImages && isGlobalImagesOptimized && !isPublicOutput) {
-                    return;
-                }
+            if (isPublicOutput) {
+                outputPath = normalize(join(appSettings.paths.public, '/images/'));
+            }
 
-                if (existsSync(assetsImagePath)) {
-                    const isDirectory = source => lstatSync(source).isDirectory();
+            const isGlobalImages = assetsPath === appSettings.paths.assets.globalAssets;
 
-                    const getDirectories = source =>
-                        readdirSync(source)
-                            .map(name => join(source, name))
-                            .filter(isDirectory);
+            if (!existsSync(assetsImagePath) || isGlobalImages && isGlobalImagesOptimized && !isPublicOutput) {
+                return;
+            }
 
-                    const getDirectoriesRecursive = source => [
-                        source,
-                        ...getDirectories(source)
-                            .map(getDirectoriesRecursive)
-                            .reduce((a, b) => a.concat(b), [])
-                    ];
+            const isDirectory = source => lstatSync(source).isDirectory();
 
-                    const assetsImageFolders = getDirectoriesRecursive(assetsImagePath)
-                        .map(imagePath => normalize(imagePath));
+            const getDirectories = source =>
+                readdirSync(source)
+                    .map(name => join(source, name))
+                    .filter(isDirectory);
 
-                    const outputImageFolders = assetsImageFolders
-                        .map(imagePath => imagePath.replace(assetsImagePath,''))
-                        .map(imageInnerFolder => join(outputPath, imageInnerFolder));
+            const getDirectoriesRecursive = source => [
+                source,
+                ...getDirectories(source)
+                    .map(getDirectoriesRecursive)
+                    .reduce((a, b) => a.concat(b), [])
+            ];
 
-                    assetsImageFolders.forEach((dir, i) => {
-                        imagemin([`${dir}${assetsImagePattern}`], {
-                            destination: outputImageFolders[i],
-                            plugins: [
-                                imageminMozjpeg(appSettings.imageOptimizationOptions.jpg),
-                                imageminPngquant(appSettings.imageOptimizationOptions.png),
-                                imageminSvgo({
-                                    plugins: [appSettings.imageOptimizationOptions.svg],
-                                }),
-                                imageminGifsicle(appSettings.imageOptimizationOptions.gif),
-                            ]
-                        });
-                    });
+            const assetsImageFolders = getDirectoriesRecursive(assetsImagePath)
+                .map(imagePath => normalize(imagePath));
 
-                    if (isGlobalImages) {
-                        isGlobalImagesOptimized = true;
-                    }
-                }
-            }, []);
+            const outputImageFolders = assetsImageFolders
+                .map(imagePath => imagePath.replace(assetsImagePath,''))
+                .map(imageInnerFolder => join(outputPath, imageInnerFolder));
 
-            console.info(`${appSettings.namespaceConfig.namespace} (${appSettings.theme} theme) --> images successfully compressed!`);
-        } catch ({message}) {
-            console.error('Images compression has been interrupted with error: ', message);
-        }
+            assetsImageFolders.forEach((dir, index) => {
+                imagemin([`${dir}${assetsImagePattern}`], {
+                    destination: outputImageFolders[index],
+                    plugins: [
+                        imageminMozjpeg(appSettings.imageOptimizationOptions.jpg),
+                        imageminPngquant(appSettings.imageOptimizationOptions.png),
+                        imageminSvgo({
+                            plugins: [appSettings.imageOptimizationOptions.svg],
+                        }),
+                        imageminGifsicle(appSettings.imageOptimizationOptions.gif),
+                    ]
+                });
+            });
+
+            if (isGlobalImages) {
+                isGlobalImagesOptimized = true;
+            }
+        }, []);
+
+        console.info(`${appSettings.namespaceConfig.namespace} (${appSettings.theme} theme) --> images successfully compressed!`);
+    } catch ({message}) {
+        console.error('Images compression has been interrupted with error: ', message);
     }
 };
 

@@ -32,9 +32,9 @@ const globalSettings = {
 
 const imageOptimizationOptions = {
     enableModes: {
-        'development': false,
-        'development-watch': false,
-        'production': false,
+        'development': true,
+        'development-watch': true,
+        'production': true,
     },
 
     // available options https://github.com/imagemin/imagemin-mozjpeg#api
