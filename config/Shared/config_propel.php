@@ -9,7 +9,7 @@ use Spryker\Zed\PropelOrm\Business\Builder\QueryBuilder;
 
 $placeholder = '%s:host=%s;port=%d;dbname=%s';
 
-$DSN = sprintf(
+$dsn = sprintf(
     $placeholder,
     $config[PropelConstants::ZED_DB_ENGINE],
     $config[PropelConstants::ZED_DB_HOST],
@@ -18,7 +18,7 @@ $DSN = sprintf(
 );
 
 $slaves = [];
-foreach ($config[PropelConstants::ZED_DB_SLAVES] ?: [] as $slaveData) {
+foreach ($config[PropelConstants::ZED_DB_REPLICAS] ?? [] as $slaveData) {
     $slaves[] = [
         'dsn' => sprintf(
             $placeholder,
@@ -35,7 +35,7 @@ foreach ($config[PropelConstants::ZED_DB_SLAVES] ?: [] as $slaveData) {
 $connections = [
     'pgsql' => [
         'adapter' => PropelConfig::DB_ENGINE_PGSQL,
-        'dsn' => $DSN,
+        'dsn' => $dsn,
         'user' => $config[PropelConstants::ZED_DB_USERNAME],
         'password' => $config[PropelConstants::ZED_DB_PASSWORD],
         'slaves' => $slaves,
@@ -43,7 +43,7 @@ $connections = [
     ],
     'mysql' => [
         'adapter' => PropelConfig::DB_ENGINE_MYSQL,
-        'dsn' => $DSN,
+        'dsn' => $dsn,
         'user' => $config[PropelConstants::ZED_DB_USERNAME],
         'password' => $config[PropelConstants::ZED_DB_PASSWORD],
         'slaves' => $slaves,
