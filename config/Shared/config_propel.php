@@ -18,7 +18,7 @@ $DSN = sprintf(
 );
 
 $slaves = [];
-foreach ($config[PropelConstants::ZED_DB_SLAVES] as $slaveData) {
+foreach ($config[PropelConstants::ZED_DB_SLAVES] ?: [] as $slaveData) {
     $slaves[] = [
         'dsn' => sprintf(
             $placeholder,
