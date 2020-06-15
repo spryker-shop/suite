@@ -254,6 +254,7 @@ before_script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console frontend:project:install-dependencies ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console frontend:yves:install-dependencies ; fi
     # Puppeteer installs chromium binary which we will use for headless unit tests
+  - if [[ $MP_TEST == 1 ]] ; then vendor/bin/console transfer:generate ; fi
   - if [[ $MP_TEST == 1 ]] ; then nvm install 12 && nvm use 12 ; fi
   - if [[ $MP_TEST == 1 ]] ; then npm i -g puppeteer && npm link puppeteer ; fi
   - if [[ $MP_TEST == 1 ]] ; then unset CHROME_BIN && export CHROME_BIN=$(node -e "console.log(require('puppeteer').executablePath())") ; fi
