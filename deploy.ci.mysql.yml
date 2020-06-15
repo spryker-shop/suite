@@ -79,7 +79,8 @@ groups:
 
 services:
     database:
-        engine: postgres
+        engine: mysql
+        version: mariadb-10.4
         root:
             username: "root"
             password: "secret"
