@@ -79,8 +79,8 @@ groups:
 
 services:
     database:
-        engine: DB_ENGINE
-        version: DB_VERSION
+        engine: !php/const SPRYKER_DB_ENGINE
+        version: !php/const SPRYKER_DB_VERSION
         root:
             username: "root"
             password: "secret"
