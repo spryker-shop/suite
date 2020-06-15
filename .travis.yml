@@ -12,11 +12,6 @@ env:
     - ARTIFACTS_SECRET=$AWS_S3_SECRET_ACCESS_KEY
     - ARTIFACTS_BUCKET=spryker-ci
     - POSTGRES_PORT="5433"
-    - DB_ENGINE_POSTGRES=postgres
-    - DB_ENGINE_MYSQL=mysql
-    - DB_VERSION_POSTGRES=default
-    - DB_VERSION_MYSQL=default
-    - DB_VERSION_MARIADB=mariadb-10.4
 
 #Possible travis events (push, pull_request, cron, or api)
 matrix:
