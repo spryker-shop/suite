@@ -7,13 +7,30 @@ use Spryker\Zed\PropelOrm\Business\Builder\ExtensionQueryBuilder;
 use Spryker\Zed\PropelOrm\Business\Builder\ObjectBuilder;
 use Spryker\Zed\PropelOrm\Business\Builder\QueryBuilder;
 
+$placeholder = '%s:host=%s;port=%d;dbname=%s';
+
 $DSN = sprintf(
-    '%s:host=%s;port=%d;dbname=%s',
+    $placeholder,
     $config[PropelConstants::ZED_DB_ENGINE],
     $config[PropelConstants::ZED_DB_HOST],
     $config[PropelConstants::ZED_DB_PORT],
     $config[PropelConstants::ZED_DB_DATABASE]
 );
+
+$slaves = [];
+foreach ($config[PropelConstants::ZED_DB_SLAVES] as $slaveData) {
+    $slaves[] = [
+        'dsn' => sprintf(
+            $placeholder,
+            $config[PropelConstants::ZED_DB_ENGINE],
+            $slaveData[PropelConstants::ZED_DB_HOST],
+            $slaveData[PropelConstants::ZED_DB_PORT],
+            $config[PropelConstants::ZED_DB_DATABASE]
+        ),
+        'user' => $config[PropelConstants::ZED_DB_USERNAME],
+        'password' => $config[PropelConstants::ZED_DB_PASSWORD],
+    ];
+}
 
 $connections = [
     'pgsql' => [
@@ -21,6 +38,7 @@ $connections = [
         'dsn' => $DSN,
         'user' => $config[PropelConstants::ZED_DB_USERNAME],
         'password' => $config[PropelConstants::ZED_DB_PASSWORD],
+        'slaves' => $slaves,
         'settings' => [],
     ],
     'mysql' => [
@@ -28,6 +46,7 @@ $connections = [
         'dsn' => $DSN,
         'user' => $config[PropelConstants::ZED_DB_USERNAME],
         'password' => $config[PropelConstants::ZED_DB_PASSWORD],
+        'slaves' => $slaves,
         'settings' => [
             'charset' => 'utf8',
             'queries' => [
