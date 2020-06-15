@@ -66,26 +66,36 @@ regions:
                 password: secret
 
         stores:
-            DORMAGEN:
+            DE:
                 services:
                     broker:
-                        namespace: dormagen_queue
+                        namespace: de_queue
                     key_value_store:
                         namespace: 1
                     search:
-                        namespace: dormagen_search
+                        namespace: de_search
                     session:
                         namespace: 2
-            LANGENFELD:
+            AT:
                 services:
                     broker:
-                        namespace: langenfeld_queue
+                        namespace: at_queue
                     key_value_store:
                         namespace: 5
                     search:
-                        namespace: langenfeld_search
+                        namespace: at_search
                     session:
                         namespace: 6
+            US:
+                services:
+                    broker:
+                        namespace: us_queue
+                    key_value_store:
+                        namespace: 9
+                    search:
+                        namespace: us_search
+                    session:
+                        namespace: 10
 
 groups:
     DE-1:
@@ -94,42 +104,36 @@ groups:
             Yves:
                 application: yves
                 endpoints:
-                    www.dormagen.staging.cloud.spryker.toys:
-                        store: DORMAGEN
+                    www.de.staging.cloud.spryker.toys:
+                        store: DE
                         <<: *frontend-auth
-                    dormagen.staging.cloud.spryker.toys:
-                        store: DORMAGEN
+                    de.staging.cloud.spryker.toys:
+                        store: DE
                         <<: *frontend-auth
-                    www.langenfeld.staging.cloud.spryker.toys:
-                        store: LANGENFELD
+                    www.at.staging.cloud.spryker.toys:
+                        store: AT
                         <<: *frontend-auth
-                    langenfeld.staging.cloud.spryker.toys:
-                        store: LANGENFELD
+                    at.staging.cloud.spryker.toys:
+                        store: AT
+                        <<: *frontend-auth
+                    www.us.staging.cloud.spryker.toys:
+                        store: US
+                        <<: *frontend-auth
+                    us.staging.cloud.spryker.toys:
+                        store: US
                         <<: *frontend-auth
             Zed:
                 application: zed
                 endpoints:
-                    zed.dormagen.staging.cloud.spryker.toys:
-                        store: DORMAGEN
+                    zed.de.staging.cloud.spryker.toys:
+                        store: DE
                         primal: true
-                    zed.langenfeld.staging.cloud.spryker.toys:
-                        store: LANGENFELD
+                    zed.at.staging.cloud.spryker.toys:
+                        store: AT
                         primal: true
-            BackOffice:
-                application: zed
-                endpoints:
-                    backoffice.staging.cloud.spryker.toys:
-                        store: DORMAGEN
-            StoreApp:
-                application: zed
-                endpoints:
-                    filiale.dormagen.staging.cloud.spryker.toys:
-                        store: DORMAGEN
-                        entry-point: StoreApp
-                    filiale.langenfeld.staging.cloud.spryker.toys:
-                        store: LANGENFELD
-                        entry-point: StoreApp
-
+                    zed.us.staging.cloud.spryker.toys:
+                        store: US
+                        primal: true
 services:
     database:
         engine: mysql
@@ -180,7 +184,7 @@ docker:
         enabled: true
 
     testing:
-        store: DORMAGEN
+        store: DE
 
     debug:
         enabled: true
