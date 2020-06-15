@@ -1,0 +1,70 @@
+env:
+    APPLICATION_ENV: docker
+
+command-timeout: 7200
+
+sections:
+
+    scheduler-clean:
+        scheduler-clean:
+            command: "vendor/bin/console install:per-store:run --no-ansi vendor/bin/console scheduler:clean -vvv --no-ansi || true"
+
+    clean-storage:
+        clean-storage:
+            command: "vendor/bin/console install:per-store:run --no-ansi vendor/bin/console storage:delete -vvv --no-ansi"
+
+        clean-search:
+            command: "vendor/bin/console install:per-store:run --no-ansi vendor/bin/console elasticsearch:index:delete -vvv --no-ansi"
+
+        clean-virtual-hosts:
+            command: "vendor/bin/console install:per-store:run --no-ansi vendor/bin/console rabbitmq:virtual-hosts:remove -vvv --no-ansi"
+
+        clean-db:
+            command: "vendor/bin/console install:per-store:run --no-ansi vendor/bin/console propel:tables:drop -vvv --no-ansi"
+
+    init-storage:
+        setup-search-create-sources:
+            command: "vendor/bin/console install:per-store:run --no-ansi vendor/bin/console search:setup:sources -vvv --no-ansi"
+
+        setup-virtual-hosts:
+            command: "vendor/bin/console install:per-store:run --no-ansi vendor/bin/console rabbitmq:virtual-hosts:init -vvv --no-ansi"
+
+    init-storages-per-region:
+        propel-copy-schema:
+            command: "vendor/bin/console propel:schema:copy -vvv --no-ansi"
+
+# We use MariaDB at the moment
+#        propel-postgres-compatibility:
+#            command: "vendor/bin/console propel:pg-sql-compat -vvv --no-ansi"
+
+        propel-migration-delete:
+            command: "vendor/bin/console propel:migration:delete -vvv --no-ansi"
+
+        propel-tables-drop:
+            command: "vendor/bin/console propel:tables:drop -vvv --no-ansi"
+
+        propel-diff:
+            command: "vendor/bin/console propel:diff -vvv --no-ansi"
+
+        propel-migrate:
+            command: "vendor/bin/console propel:migrate -vvv --no-ansi"
+
+        propel-migration-cleanup:
+            command: "vendor/bin/console propel:migration:delete -vvv --no-ansi"
+
+        init-database:
+            command: "vendor/bin/console setup:init-db -vvv --no-ansi"
+
+    demodata:
+        import:
+            command: "vendor/bin/console data:import -vvv --no-ansi || true"
+
+        update-product-labels:
+            command: "vendor/bin/console product-label:relations:update -vvv --no-ansi"
+
+        check-product-validity:
+            command: "vendor/bin/console product:check-validity"
+
+    scheduler-start:
+        scheduler-setup:
+            command: "vendor/bin/console install:per-store:run --no-ansi vendor/bin/console scheduler:setup -vvv --no-ansi || true"
