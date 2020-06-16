@@ -64,6 +64,7 @@ use Spryker\Glue\CompanyUsersRestApi\Plugin\GlueApplication\CompanyUserRestUserV
 use Spryker\Glue\CompanyUsersRestApi\Plugin\GlueApplication\CompanyUsersResourceRoutePlugin;
 use Spryker\Glue\ContentBannersRestApi\Plugin\ContentBannerResourceRoutePlugin;
 use Spryker\Glue\ContentBannersRestApi\Plugin\ContentBannersByCmsPageResourceRelationshipPlugin;
+use Spryker\Glue\ContentProductAbstractListsRestApi\Plugin\ContentProductAbstractListByCmsPageResourceRelationshipPlugin;
 use Spryker\Glue\ContentProductAbstractListsRestApi\Plugin\ContentProductAbstractListRoutePlugin;
 use Spryker\Glue\CustomerAccessRestApi\Plugin\GlueApplication\CustomerAccessFormatRequestPlugin;
 use Spryker\Glue\CustomerAccessRestApi\Plugin\GlueApplication\CustomerAccessResourceRoutePlugin;
@@ -596,6 +597,10 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         $resourceRelationshipCollection->addRelationship(
             CmsPagesRestApiConfig::RESOURCE_CMS_PAGES,
             new ContentBannersByCmsPageResourceRelationshipPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            CmsPagesRestApiConfig::RESOURCE_CMS_PAGES,
+            new ContentProductAbstractListByCmsPageResourceRelationshipPlugin()
         );
 
         return $resourceRelationshipCollection;
