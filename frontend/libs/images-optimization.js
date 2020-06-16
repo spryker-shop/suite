@@ -4,11 +4,20 @@ const imageminPngquant = require('imagemin-pngquant');
 const imageminSvgo = require('imagemin-svgo');
 const imageminGifsicle = require('imagemin-gifsicle');
 
-const { lstatSync, readdirSync, existsSync } = require('fs');
+const { lstatSync, readdir, existsSync } = require('fs');
+const util = require('util');
+const readdirAsync = util.promisify(readdir);
+
 const { join, normalize } = require('path');
 const { globalSettings } = require('../settings');
 
 let isGlobalImagesOptimized = false;
+
+async function asyncForEach(array, callback) {
+    for (let index = 0; index < array.length; index++) {
+        await callback(array[index], index, array);
+    }
+}
 
 const imagesOptimization = appSettings => {
     let isPublicOutput = false;
@@ -26,7 +35,7 @@ const imagesOptimization = appSettings => {
     }
 
     try {
-        Object.values(appSettings.paths.assets).map(assetsPath => {
+        Object.values(appSettings.paths.assets).map(async assetsPath => {
             const assetsImagePath = normalize(join(assetsPath, '/images/'));
             const assetsImagePattern = '/*.{jpg,png,svg,gif}';
             let outputPath = normalize(join(assetsPath, '/images/optimized-images/'));
@@ -43,26 +52,33 @@ const imagesOptimization = appSettings => {
 
             const isDirectory = source => lstatSync(source).isDirectory();
 
-            const getDirectories = source =>
-                readdirSync(source)
+            const getDirectories = async source => {
+                const innerFolders = await readdirAsync(source);
+                return innerFolders
                     .map(name => join(source, name))
                     .filter(isDirectory);
+            };
 
-            const getDirectoriesRecursive = source => [
-                source,
-                ...getDirectories(source)
-                    .map(getDirectoriesRecursive)
-                    .reduce((a, b) => a.concat(b), [])
-            ];
+            const getDirectoriesRecursive = async source => {
+                const foundFolders = await getDirectories(source);
+                const foundFoldersPromises = foundFolders
+                    .map(async (dir) => await getDirectoriesRecursive(dir));
+                const allFolders = await Promise.all(foundFoldersPromises);
+                return [
+                    source,
+                    ...allFolders
+                        .reduce((a, b) => a.concat(b), [])
+                ];
+            };
 
-            const assetsImageFolders = getDirectoriesRecursive(assetsImagePath)
-                .map(imagePath => normalize(imagePath));
+            const assetsImageFolders = await getDirectoriesRecursive(assetsImagePath);
 
             const outputImageFolders = assetsImageFolders
                 .map(imagePath => imagePath.replace(assetsImagePath,''))
                 .map(imageInnerFolder => join(outputPath, imageInnerFolder));
 
-            assetsImageFolders.forEach((dir, index) => {
+
+            await asyncForEach(assetsImageFolders, async (dir, index) => {
                 imagemin([`${dir}${assetsImagePattern}`], {
                     destination: outputImageFolders[index],
                     plugins: [
