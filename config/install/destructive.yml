@@ -7,27 +7,24 @@ sections:
 
     scheduler-clean:
         scheduler-clean:
-            command: "vendor/bin/console install:per-store:run --no-ansi vendor/bin/console scheduler:clean -vvv --no-ansi || true"
+            command: "vendor/bin/console scheduler:clean -vvv --no-ansi || true"
 
     clean-storage:
         clean-storage:
-            command: "vendor/bin/console install:per-store:run --no-ansi vendor/bin/console storage:delete -vvv --no-ansi"
+            command: "vendor/bin/console storage:delete -vvv --no-ansi"
 
         clean-search:
-            command: "vendor/bin/console install:per-store:run --no-ansi vendor/bin/console elasticsearch:index:delete -vvv --no-ansi"
-
-        clean-virtual-hosts:
-            command: "vendor/bin/console install:per-store:run --no-ansi vendor/bin/console rabbitmq:virtual-hosts:remove -vvv --no-ansi"
+            command: "vendor/bin/console elasticsearch:index:delete -vvv --no-ansi"
 
         clean-db:
-            command: "vendor/bin/console install:per-store:run --no-ansi vendor/bin/console propel:tables:drop -vvv --no-ansi"
+            command: "vendor/bin/console propel:tables:drop -vvv --no-ansi"
 
     init-storage:
         setup-search-create-sources:
-            command: "vendor/bin/console install:per-store:run --no-ansi vendor/bin/console search:setup:sources -vvv --no-ansi"
+            command: "vendor/bin/console search:setup:sources -vvv --no-ansi"
 
-        setup-virtual-hosts:
-            command: "vendor/bin/console install:per-store:run --no-ansi vendor/bin/console rabbitmq:virtual-hosts:init -vvv --no-ansi"
+#        setup-virtual-hosts:
+#            command: "vendor/bin/console rabbitmq:virtual-hosts:init -vvv --no-ansi"
 
     init-storages-per-region:
         propel-copy-schema:
@@ -67,4 +64,4 @@ sections:
 
     scheduler-start:
         scheduler-setup:
-            command: "vendor/bin/console install:per-store:run --no-ansi vendor/bin/console scheduler:setup -vvv --no-ansi || true"
+            command: "vendor/bin/console scheduler:setup -vvv --no-ansi || true"
