@@ -117,6 +117,9 @@ sections:
         import-b2b-setup:
             command: "vendor/bin/console data:import --config=data/import/config/b2b_setup_import_config.yml"
 
+        import-marketplace-setup:
+            command: "vendor/bin/console data:import --config=data/import/config/marketplace_import_config.yml"
+
         import-miscellaneous-setup:
             command: "vendor/bin/console data:import --config=data/import/config/miscellaneous_import_config.yml"
 
