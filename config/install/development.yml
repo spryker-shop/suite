@@ -228,7 +228,7 @@ sections:
 
     demodata:
         import-commerce-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/commerce_setup_import_config.yml"
+            command: "vendor/bin/console data:import --config=data/import/config/commerce_setup_import_config.development.yml"
             stores:
                 - US
                 - DE
@@ -251,12 +251,6 @@ sections:
                 - US
                 - DE
 
-        import-navigation-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/navigation_import_config.yml"
-            stores:
-                - US
-                - DE
-
         import-content-management-setup:
             command: "vendor/bin/console data:import --config=data/import/config/content_management_import_config.yml"
             stores:
@@ -265,6 +259,12 @@ sections:
 
         import-b2b-setup:
             command: "vendor/bin/console data:import --config=data/import/config/b2b_setup_import_config.yml"
+            stores:
+                - US
+                - DE
+
+        import-marketplace-setup:
+            command: "vendor/bin/console data:import --config=data/import/config/marketplace_import_config.yml"
             stores:
                 - US
                 - DE

@@ -1,7 +1,10 @@
-template_path,slot_key,content_provider,name,description,is_active
-@HomePage/views/home/home.twig,slt-1,SprykerCmsSlotBlock,"Main","As homepage is all content so it has one slot.",1
-@CatalogPage/views/catalog-with-cms-slot/catalog-with-cms-slot.twig,slt-2,SprykerCmsSlotBlock,Top,"On Desktop it's below the Category Image above the Products Grid/List, right side to the Grid/List selector and width is same as the Products Grid/List. On Mobile it's below the Filters/Sorting, above Grid/List selector and width is same as the Products Grid/List.",1
-@CatalogPage/views/catalog-with-cms-slot/catalog-with-cms-slot.twig,slt-3,SprykerCmsSlotBlock,Middle,"On Desktop it's below the Filters/Sorting and width is same as the the Filters/Sorting. No Mobile.",1
-@CatalogPage/views/catalog-with-cms-slot/catalog-with-cms-slot.twig,slt-4,SprykerCmsSlotBlock,Bottom,"On Desktop and on Mobile it's below the Pagination above the Store Footer, width is same as the Products Grid/List.",1
-@ProductDetailPage/views/pdp/pdp.twig,slt-5,SprykerCmsSlotBlock,Bottom,"Exists both on Desktop and Mobile below the Product Details and above Store Footer. Width is as the Product Details.",1
-@Cms/templates/placeholders-title-content-slot/placeholders-title-content-slot.twig,slt-6,SprykerCmsSlotBlock,Bottom,"Exists both on Desktop and Mobile below the CMS Page Placeholders and above Store Footer.",1
+slot_key,name,description,content_provider,template_path,is_active
+slt-1,Main,As homepage is all content so it has one slot.,SprykerCmsSlotBlock,@HomePage/views/home/home.twig,1
+slt-2,Top,"On Desktop it's below the Category Image above the Products Grid/List, right side to the Grid/List selector and width is same as the Products Grid/List. On Mobile it's below the Filters/Sorting, above Grid/List selector and width is same as the Products Grid/List.",SprykerCmsSlotBlock,@CatalogPage/views/catalog-with-cms-slot/catalog-with-cms-slot.twig,1
+slt-3,Middle,On Desktop it's below the Filters/Sorting and width is same as the the Filters/Sorting. No Mobile.,SprykerCmsSlotBlock,@CatalogPage/views/catalog-with-cms-slot/catalog-with-cms-slot.twig,1
+slt-4,Bottom,"On Desktop and on Mobile it's below the Pagination above the Store Footer, width is same as the Products Grid/List.",SprykerCmsSlotBlock,@CatalogPage/views/catalog-with-cms-slot/catalog-with-cms-slot.twig,1
+slt-5,Bottom,Exists both on Desktop and Mobile below the Product Details and above Store Footer. Width is as the Product Details.,SprykerCmsSlotBlock,@ProductDetailPage/views/pdp/pdp.twig,1
+slt-6,Bottom,Exists both on Desktop and Mobile below the CMS Page Placeholders and above Store Footer.,SprykerCmsSlotBlock,@Cms/templates/placeholders-title-content-slot/placeholders-title-content-slot.twig,1
+slt-desktop-header,Header desktop view,"In the store Header section, On desktop, below the logo.",SprykerCmsSlotBlock,@ShopUi/templates/page-layout-main/page-layout-main.twig,1
+slt-footer,Footer,"In the store Footer section, On desktop, bottom of the page. On mobile, bottom of the page.",SprykerCmsSlotBlock,@ShopUi/templates/page-layout-main/page-layout-main.twig,1
+slt-mobile-header,Header mobile view,"In the store Header section. On mobile, under the hamburger menu.",SprykerCmsSlotBlock,@ShopUi/templates/page-layout-main/page-layout-main.twig,1
