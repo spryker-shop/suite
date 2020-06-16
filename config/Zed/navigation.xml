@@ -1,60 +1,1713 @@
 <?xml version="1.0"?>
 <config>
     <!-- You can control navigation order here and add your custom navigation entries -->
-    <dashboard/>
+    <dashboard>
+        <label>Dashboard</label>
+        <title>Dashboard</title>
+        <bundle>dashboard</bundle>
+        <controller>index</controller>
+        <action>index</action>
+        <icon>fa-th-large</icon>
+    </dashboard>
     <sales>
+        <label>Sales</label>
+        <uri>/sales</uri>
+        <title>Sales</title>
+        <icon>fa-shopping-cart</icon>
         <pages>
-            <order-list/>
-            <order-matrix/>
-            <manual-order-entry-gui/>
-            <sales-reclamations/>
-            <table/>
-            <returns/>
+            <order-matrix>
+                <label>Order Matrix</label>
+                <title>Order Matrix</title>
+                <bundle>sales</bundle>
+                <controller>matrix</controller>
+                <action>index</action>
+                <visible>1</visible>
+            </order-matrix>
+            <order-list>
+                <label>Orders</label>
+                <title>Orders</title>
+                <bundle>sales</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <visible>1</visible>
+                <pages>
+                    <order-view>
+                        <label>Order Overview</label>
+                        <title>Order Overview</title>
+                        <bundle>sales</bundle>
+                        <controller>detail</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </order-view>
+                    <order-item>
+                        <label>Order Items</label>
+                        <title>Order Items</title>
+                        <bundle>sales</bundle>
+                        <controller>order</controller>
+                        <action>items</action>
+                        <visible>0</visible>
+                    </order-item>
+                    <edit-address>
+                        <label>Edit Address</label>
+                        <title>Edit Address</title>
+                        <bundle>sales</bundle>
+                        <controller>edit</controller>
+                        <action>address</action>
+                        <visible>0</visible>
+                    </edit-address>
+                </pages>
+            </order-list>
+            <sales-reclamations>
+                <label>Reclamations</label>
+                <title>Reclamations</title>
+                <bundle>sales-reclamation-gui</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <visible>1</visible>
+                <pages>
+                    <create>
+                        <title>Create reclamation</title>
+                        <bundle>sales-reclamation-gui</bundle>
+                        <controller>create</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </create>
+                    <view>
+                        <title>View reclamation</title>
+                        <bundle>sales-reclamation-gui</bundle>
+                        <controller>detail</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </view>
+                    <close>
+                        <title>Close reclamation</title>
+                        <bundle>sales-reclamation-gui</bundle>
+                        <controller>detail</controller>
+                        <action>close</action>
+                        <visible>0</visible>
+                    </close>
+                    <refund>
+                        <title>Refund reclamation item</title>
+                        <bundle>sales-reclamation-gui</bundle>
+                        <controller>detail</controller>
+                        <action>close-item</action>
+                        <visible>0</visible>
+                    </refund>
+                </pages>
+            </sales-reclamations>
+            <returns>
+                <label>Returns</label>
+                <title>Returns</title>
+                <bundle>sales-return-gui</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <visible>1</visible>
+                <pages>
+                    <return-detail>
+                        <label>Return Overview</label>
+                        <title>Return Overview</title>
+                        <bundle>sales-return-gui</bundle>
+                        <controller>detail</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </return-detail>
+                    <sales-create>
+                        <label>Create Return</label>
+                        <title>Create Return</title>
+                        <bundle>sales-return-gui</bundle>
+                        <controller>create</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </sales-create>
+                </pages>
+            </returns>
+            <table>
+                <label>Refunds</label>
+                <title>Refunds</title>
+                <bundle>refund</bundle>
+                <controller>table</controller>
+                <icon>fa-angle-double-right</icon>
+                <action>index</action>
+            </table>
+            <gift-card>
+                <label>Gift Card Balance</label>
+                <title>Gift Card Balance</title>
+                <bundle>gift-card-balance</bundle>
+                <controller>index</controller>
+                <action>index</action>
+            </gift-card>
         </pages>
     </sales>
-    <customer/>
-    <category>
-        <label>Category</label>
-        <title>Category</title>
-        <bundle>category-gui</bundle>
-        <controller>list</controller>
-        <action>index</action>
-        <order>0</order>
-        <shortcut>c</shortcut>
-        <icon>fa-sitemap</icon>
-    </category>
-    <cms-gui/>
-    <glossary/>
-    <product>
+    <customer>
+        <label>Customers</label>
+        <title>Customers</title>
+        <icon>fa-users</icon>
         <pages>
-            <AvailabilityGui/>
-            <products/>
-            <attributes/>
-            <product-barcode/>
-            <product-label-gui/>
-            <product-list/>
-            <product_options/>
-            <product-packaging-unit/>
-            <product-relation-gui/>
-            <reviews/>
-            <sets/>
-            <configurable-bundle-templates/>
+            <customer>
+                <label>Customers</label>
+                <title>Customers</title>
+                <bundle>customer</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <visible>1</visible>
+                <pages>
+                    <customer-add>
+                        <label>Add a customer</label>
+                        <title>Add a customer</title>
+                        <bundle>customer</bundle>
+                        <controller>add</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </customer-add>
+                    <customer-edit>
+                        <label>Edit customer</label>
+                        <title>Edit customer</title>
+                        <bundle>customer</bundle>
+                        <controller>edit</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </customer-edit>
+                    <customer-view>
+                        <label>View</label>
+                        <title>View</title>
+                        <bundle>customer</bundle>
+                        <controller>view</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                        <pages>
+                            <customer-address-edit>
+                                <label>Edit address</label>
+                                <title>Edit address</title>
+                                <bundle>customer</bundle>
+                                <controller>address</controller>
+                                <action>edit</action>
+                                <visible>0</visible>
+                            </customer-address-edit>
+                            <customer-address-add>
+                                <label>Add address</label>
+                                <title>Add address</title>
+                                <bundle>customer</bundle>
+                                <controller>address</controller>
+                                <action>add</action>
+                                <visible>0</visible>
+                            </customer-address-add>
+                        </pages>
+                    </customer-view>
+                </pages>
+            </customer>
+            <group>
+                <label>Customer Groups</label>
+                <title>Customer Groups</title>
+                <bundle>customer-group</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <visible>1</visible>
+                <pages>
+                    <customer-group-add>
+                        <label>Add a Customer Group</label>
+                        <title>Add a Customer Group</title>
+                        <bundle>customer-group</bundle>
+                        <controller>add</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </customer-group-add>
+                    <customer-group-view>
+                        <label>View Customer Group</label>
+                        <title>View Customer Group</title>
+                        <bundle>customer-group</bundle>
+                        <controller>view</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </customer-group-view>
+                    <customer-group-edit>
+                        <label>Edit Customer Group</label>
+                        <title>Edit Customer Group</title>
+                        <bundle>customer-group</bundle>
+                        <controller>edit</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </customer-group-edit>
+                </pages>
+            </group>
+            <customer-access>
+                <label>Customer Access</label>
+                <title>Customer Access</title>
+                <bundle>customer-access-gui</bundle>
+                <controller>index</controller>
+                <action>index</action>
+            </customer-access>
+            <companies>
+                <label>Companies</label>
+                <title>Companies</title>
+                <bundle>company-gui</bundle>
+                <controller>list-company</controller>
+                <action>index</action>
+            </companies>
+            <company-business-unit-gui>
+                <label>Company Units</label>
+                <title>Company Units</title>
+                <bundle>company-business-unit-gui</bundle>
+                <controller>list-company-business-unit</controller>
+                <action>index</action>
+            </company-business-unit-gui>
+            <company-unit-address-gui>
+                <label>Company Unit Addresses</label>
+                <title>Company Unit Addresses</title>
+                <bundle>company-unit-address-gui</bundle>
+                <controller>list-company-unit-address</controller>
+                <action>index</action>
+            </company-unit-address-gui>
+            <company-user-gui>
+                <label>Company Users</label>
+                <title>Company Users</title>
+                <bundle>company-user-gui</bundle>
+                <controller>list-company-user</controller>
+                <action>index</action>
+            </company-user-gui>
         </pages>
-    </product>
-    <search-and-filters/>
-    <discount/>
-    <tax/>
-    <acl/>
-    <company-gui/>
-    <maintenance/>
-    <merchant-portal-dashboard/>
-    <merchant-portal-profile/>
-    <product-offer-merchant-portal-gui/>
-    <merchant-portal-authentication>
-        <label>Logout</label>
-        <title>Logout</title>
-        <bundle>authentication-merchant-portal-gui</bundle>
-        <controller>logout</controller>
-        <action>index</action>
-    </merchant-portal-authentication>
+        <company-role-gui>
+            <label>Company Roles</label>
+            <title>Company Roles</title>
+            <bundle>company-role-gui</bundle>
+            <controller>list-company-role</controller>
+            <action>index</action>
+        </company-role-gui>
+    </customer>
+    <catalog>
+        <label>Catalog</label>
+        <title>Catalog</title>
+        <icon>fa-book</icon>
+        <uri>#</uri>
+        <pages>
+            <products>
+                <label>Products</label>
+                <title>Products</title>
+                <bundle>product-management</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <pages>
+                    <product-create>
+                        <label>Create a Product</label>
+                        <title>Create a Product</title>
+                        <bundle>product-management</bundle>
+                        <controller>add</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </product-create>
+                    <product-view>
+                        <label>View Product</label>
+                        <title>View Product</title>
+                        <bundle>product-management</bundle>
+                        <controller>view</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </product-view>
+                    <product-edit>
+                        <label>Edit Product</label>
+                        <title>Edit Product</title>
+                        <bundle>product-management</bundle>
+                        <controller>edit</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </product-edit>
+                    <product-concrete-view>
+                        <label>View Concrete Product</label>
+                        <title>View Concrete Product</title>
+                        <bundle>product-management</bundle>
+                        <controller>view</controller>
+                        <action>variant</action>
+                        <visible>0</visible>
+                    </product-concrete-view>
+                    <product-concrete-edit>
+                        <label>Edit Concrete Product</label>
+                        <title>Edit Concrete Product</title>
+                        <bundle>product-management</bundle>
+                        <controller>edit</controller>
+                        <action>variant</action>
+                        <visible>0</visible>
+                    </product-concrete-edit>
+                </pages>
+            </products>
+            <category>
+                <label>Category</label>
+                <title>Category</title>
+                <bundle>category</bundle>
+                <controller>root</controller>
+                <action>index</action>
+                <pages>
+                    <sort-category>
+                        <label>Re-sort Child Categories</label>
+                        <title>Re-sort Child Categories</title>
+                        <bundle>category</bundle>
+                        <controller>re-sort</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </sort-category>
+                    <view-category>
+                        <label>View Category</label>
+                        <title>View Category</title>
+                        <bundle>category</bundle>
+                        <controller>view</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </view-category>
+                    <edit-category>
+                        <label>Edit Category</label>
+                        <title>Edit Category</title>
+                        <bundle>category</bundle>
+                        <controller>edit</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </edit-category>
+                    <create-category>
+                        <label>Create Category</label>
+                        <title>Create Category</title>
+                        <bundle>category</bundle>
+                        <controller>create</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </create-category>
+                    <assing-products-to-category>
+                        <label>Assign Products to Category</label>
+                        <title>Assign Products to Category</title>
+                        <bundle>product-category</bundle>
+                        <controller>assign</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </assing-products-to-category>
+                    <delete-category>
+                        <label>Delete Category</label>
+                        <title>Delete Category</title>
+                        <bundle>category</bundle>
+                        <controller>delete</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </delete-category>
+                </pages>
+            </category>
+            <attributes>
+                <label>Attributes</label>
+                <title>Attributes</title>
+                <bundle>product-attribute-gui</bundle>
+                <controller>attribute</controller>
+                <action>index</action>
+                <pages>
+                    <attribute-create>
+                        <label>Create a Product Attribute</label>
+                        <title>Create a ProductAttribute</title>
+                        <bundle>product-attribute-gui</bundle>
+                        <controller>attribute</controller>
+                        <action>create</action>
+                        <visible>0</visible>
+                    </attribute-create>
+                    <attribute-view>
+                        <label>View Product Attribute</label>
+                        <title>View Product Attribute</title>
+                        <bundle>product-attribute-gui</bundle>
+                        <controller>attribute</controller>
+                        <action>view</action>
+                        <visible>0</visible>
+                    </attribute-view>
+                    <attribute-edit>
+                        <label>Edit Product Attribute</label>
+                        <title>Edit Product Attribute</title>
+                        <bundle>product-attribute-gui</bundle>
+                        <controller>attribute</controller>
+                        <action>edit</action>
+                        <visible>0</visible>
+                    </attribute-edit>
+                    <attribute-edit-translations>
+                        <label>Edit Attribute Translations</label>
+                        <title>Edit Attribute Translations</title>
+                        <bundle>product-attribute-gui</bundle>
+                        <controller>attribute</controller>
+                        <action>translate</action>
+                        <visible>0</visible>
+                    </attribute-edit-translations>
+                </pages>
+            </attributes>
+            <AvailabilityGui>
+                <label>Availability</label>
+                <title>Availability</title>
+                <bundle>availability-gui</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <pages>
+                    <product-availability>
+                        <label>Product Availability</label>
+                        <title>Product Availability</title>
+                        <bundle>availability-gui</bundle>
+                        <controller>index</controller>
+                        <action>view</action>
+                        <visible>0</visible>
+                    </product-availability>
+                    <stock-edit>
+                        <label>Edit Stock</label>
+                        <title>Edit Stock</title>
+                        <bundle>availability-gui</bundle>
+                        <controller>index</controller>
+                        <action>edit</action>
+                        <visible>0</visible>
+                    </stock-edit>
+                </pages>
+            </AvailabilityGui>
+            <reviews>
+                <label>Product Reviews</label>
+                <title>Product Reviews</title>
+                <bundle>product-review-gui</bundle>
+                <controller>index</controller>
+                <action>index</action>
+            </reviews>
+            <product_options>
+                <label>Product Options</label>
+                <title>Product Options</title>
+                <bundle>product-option</bundle>
+                <controller>list</controller>
+                <action>index</action>
+                <visible>2</visible>
+                <pages>
+                    <product-option-create>
+                        <label>Create new Product Option</label>
+                        <title>Create new Product Option</title>
+                        <bundle>product-option</bundle>
+                        <controller>create</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </product-option-create>
+                    <product-option-edit>
+                        <label>Edit Product Option</label>
+                        <title>Edit Product Option</title>
+                        <bundle>product-option</bundle>
+                        <controller>edit</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </product-option-edit>
+                    <product-option-view>
+                        <label>View Product Option</label>
+                        <title>View Product Option</title>
+                        <bundle>product-option</bundle>
+                        <controller>view</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </product-option-view>
+                </pages>
+            </product_options>
+            <product-list>
+                <label>Product Lists</label>
+                <title>Product Lists</title>
+                <bundle>product-list-gui</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <visible>1</visible>
+                <pages>
+                    <product-list-create>
+                        <label>Add List</label>
+                        <title>Add List</title>
+                        <bundle>product-list-gui</bundle>
+                        <controller>create</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </product-list-create>
+                    <product-list-edit>
+                        <label>Edit List</label>
+                        <title>Edit List</title>
+                        <bundle>product-list-gui</bundle>
+                        <controller>edit</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </product-list-edit>
+                    <product-list-delete>
+                        <label>Remove List</label>
+                        <title>Remove List</title>
+                        <bundle>product-list-gui</bundle>
+                        <controller>delete</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </product-list-delete>
+                </pages>
+            </product-list>
+            <product-barcode>
+                <label>Product Barcode</label>
+                <title>Product Barcode</title>
+                <bundle>product-barcode-gui</bundle>
+                <controller>product-barcode</controller>
+                <action>index</action>
+                <visible>1</visible>
+            </product-barcode>
+            <price-product-schedule>
+                <label>Scheduled Prices</label>
+                <title>Scheduled Prices</title>
+                <bundle>price-product-schedule-gui</bundle>
+                <controller>import</controller>
+                <action>index</action>
+                <icon>fa-angle-double-right</icon>
+                <pages>
+                    <price-product-schedule-dry-run-import>
+                        <label>Import</label>
+                        <title>Import</title>
+                        <bundle>price-product-schedule-gui</bundle>
+                        <controller>dry-run-import</controller>
+                        <action>index</action>
+                        <icon>fa-angle-double-right</icon>
+                        <visible>0</visible>
+                    </price-product-schedule-dry-run-import>
+                    <price-product-schedule-publish>
+                        <label>Import</label>
+                        <title>Import</title>
+                        <bundle>price-product-schedule-gui</bundle>
+                        <controller>publish</controller>
+                        <action>index</action>
+                        <icon>fa-angle-double-right</icon>
+                        <visible>0</visible>
+                    </price-product-schedule-publish>
+                    <price-product-schedule-list-view>
+                        <label>View Import</label>
+                        <title>View Import</title>
+                        <bundle>price-product-schedule-gui</bundle>
+                        <controller>view-schedule-list</controller>
+                        <action>index</action>
+                        <icon>fa-angle-double-right</icon>
+                        <visible>0</visible>
+                    </price-product-schedule-list-view>
+                    <price-product-schedule-list-edit>
+                        <label>Edit Import</label>
+                        <title>Edit Import</title>
+                        <bundle>price-product-schedule-gui</bundle>
+                        <controller>edit-schedule-list</controller>
+                        <action>index</action>
+                        <icon>fa-angle-double-right</icon>
+                        <visible>0</visible>
+                    </price-product-schedule-list-edit>
+                    <price-product-schedule-edit>
+                        <label>Edit Scheduled Price</label>
+                        <title>Edit Scheduled Price</title>
+                        <bundle>price-product-schedule-gui</bundle>
+                        <controller>edit-schedule-price</controller>
+                        <action>index</action>
+                        <icon>fa-angle-double-right</icon>
+                        <visible>0</visible>
+                    </price-product-schedule-edit>
+                    <price-product-schedule-list-delete>
+                        <label>Delete Import</label>
+                        <title>Delete Import</title>
+                        <bundle>price-product-schedule-gui</bundle>
+                        <controller>delete-schedule-list</controller>
+                        <action>index</action>
+                        <icon>fa-angle-double-right</icon>
+                        <visible>0</visible>
+                    </price-product-schedule-list-delete>
+                </pages>
+            </price-product-schedule>
+        </pages>
+    </catalog>
+    <content>
+        <label>Content</label>
+        <title>Content</title>
+        <icon>fa-file-text</icon>
+        <uri>#</uri>
+        <pages>
+            <content-items>
+                <label>Content Items</label>
+                <title>Content Items</title>
+                <bundle>content-gui</bundle>
+                <controller>list-content</controller>
+                <action>index</action>
+                <pages>
+                    <edit-page>
+                        <label>Edit Content Item</label>
+                        <title>Edit Content Item</title>
+                        <bundle>content-gui</bundle>
+                        <controller>edit-content</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </edit-page>
+                    <create-page>
+                        <label>Create Content Item</label>
+                        <title>Create Content Item</title>
+                        <bundle>content-gui</bundle>
+                        <controller>create-content</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </create-page>
+                </pages>
+            </content-items>
+            <block>
+                <label>Blocks</label>
+                <title>Blocks</title>
+                <bundle>cms-block-gui</bundle>
+                <controller>list-block</controller>
+                <action>index</action>
+                <pages>
+                    <view-block>
+                        <label>View CMS Block</label>
+                        <title>View CMS Block</title>
+                        <bundle>cms-block-gui</bundle>
+                        <controller>view-block</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </view-block>
+                    <create-block>
+                        <label>Create new CMS Block</label>
+                        <title>Create new CMS Block</title>
+                        <bundle>cms-block-gui</bundle>
+                        <controller>create-block</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </create-block>
+                    <edit-block>
+                        <label>Edit CMS Block</label>
+                        <title>Edit CMS Block</title>
+                        <bundle>cms-block-gui</bundle>
+                        <controller>edit-block</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </edit-block>
+                    <edit-block-glossary>
+                        <label>Edit CMS Block Glossary</label>
+                        <title>Edit CMS Block Glossary</title>
+                        <bundle>cms-block-gui</bundle>
+                        <controller>edit-glossary</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </edit-block-glossary>
+                </pages>
+            </block>
+            <page>
+                <label>Pages</label>
+                <title>Pages</title>
+                <bundle>cms-gui</bundle>
+                <controller>list-page</controller>
+                <action>index</action>
+                <pages>
+                    <version>
+                        <label>Version</label>
+                        <title>Version</title>
+                        <bundle>cms-gui</bundle>
+                        <controller>version-page</controller>
+                        <action>history</action>
+                        <visible>0</visible>
+                    </version>
+                    <view-page>
+                        <label>View CMS Page</label>
+                        <title>View CMS Page</title>
+                        <bundle>cms-gui</bundle>
+                        <controller>view-page</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </view-page>
+                    <edit-page>
+                        <label>Edit CMS Page</label>
+                        <title>Edit CMS Page</title>
+                        <bundle>cms-gui</bundle>
+                        <controller>edit-page</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </edit-page>
+                    <create-page>
+                        <label>Create new CMS Page</label>
+                        <title>Create new CMS Page</title>
+                        <bundle>cms-gui</bundle>
+                        <controller>create-page</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </create-page>
+                    <edit-placeholder>
+                        <label>Edit CMS Placeholders</label>
+                        <title>Edit CMS Placeholders</title>
+                        <bundle>cms-gui</bundle>
+                        <controller>create-glossary</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </edit-placeholder>
+                </pages>
+            </page>
+            <slots>
+                <label>Slots</label>
+                <title>Slots</title>
+                <bundle>cms-slot-gui</bundle>
+                <controller>template-list</controller>
+                <action>index</action>
+            </slots>
+            <navigation>
+                <label>Navigation</label>
+                <title>Navigation</title>
+                <bundle>navigation-gui</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <pages>
+                    <create>
+                        <label>Create Navigation Element</label>
+                        <title>Create Navigation Element</title>
+                        <bundle>navigation-gui</bundle>
+                        <controller>create</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </create>
+                    <edit>
+                        <label>Edit Navigation Element</label>
+                        <title>Edit Navigation Element</title>
+                        <bundle>navigation-gui</bundle>
+                        <controller>update</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </edit>
+                    <duplicate>
+                        <label>Duplicate Navigation Element</label>
+                        <title>Duplicate Navigation Element</title>
+                        <bundle>navigation-gui</bundle>
+                        <controller>duplicate</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </duplicate>
+                    <delete>
+                        <label>Delete Navigation</label>
+                        <title>Delete Navigation</title>
+                        <bundle>navigation-gui</bundle>
+                        <controller>delete</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </delete>
+                </pages>
+            </navigation>
+            <redirects>
+                <label>Redirects</label>
+                <title>Redirects</title>
+                <bundle>cms</bundle>
+                <controller>redirect</controller>
+                <action>index</action>
+                <pages>
+                    <redirect-edit>
+                        <label>Edit CMS Redirect</label>
+                        <title>Edit CMS Redirect</title>
+                        <bundle>cms</bundle>
+                        <controller>redirect</controller>
+                        <action>edit</action>
+                        <visible>0</visible>
+                    </redirect-edit>
+                    <redirect-create>
+                        <label>Create new CMS Redirect</label>
+                        <title>Create new CMS Redirect</title>
+                        <bundle>cms</bundle>
+                        <controller>redirect</controller>
+                        <action>add</action>
+                        <visible>0</visible>
+                    </redirect-create>
+                </pages>
+            </redirects>
+            <list>
+                <label>File List</label>
+                <title>File List</title>
+                <bundle>file-manager-gui</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <visible>1</visible>
+            </list>
+            <tree>
+                <label>File Tree</label>
+                <title>File Tree</title>
+                <bundle>file-manager-gui</bundle>
+                <controller>directories-tree</controller>
+                <action>index</action>
+                <visible>1</visible>
+            </tree>
+        </pages>
+    </content>
+    <merchandising>
+        <label>Merchandising</label>
+        <title>Merchandising</title>
+        <icon>fa-tags</icon>
+        <uri>#</uri>
+        <pages>
+            <discount>
+                <label>Discount</label>
+                <title>Discount</title>
+                <bundle>discount</bundle>
+                <controller>index</controller>
+                <action>list</action>
+                <pages>
+                    <create>
+                        <label>Create Discount</label>
+                        <title>Create Discount</title>
+                        <bundle>discount</bundle>
+                        <controller>index</controller>
+                        <action>create</action>
+                        <visible>0</visible>
+                    </create>
+                    <edit>
+                        <label>Edit Discount</label>
+                        <title>Edit Discount</title>
+                        <bundle>discount</bundle>
+                        <controller>index</controller>
+                        <action>edit</action>
+                        <visible>0</visible>
+                    </edit>
+                    <view>
+                        <label>View Discount</label>
+                        <title>View Discount</title>
+                        <bundle>discount</bundle>
+                        <controller>index</controller>
+                        <action>view</action>
+                        <visible>0</visible>
+                    </view>
+                </pages>
+            </discount>
+            <product-label-gui>
+                <label>Product Labels</label>
+                <title>Product Labels</title>
+                <bundle>product-label-gui</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <pages>
+                    <view-product-label-gui>
+                        <label>View Product Label</label>
+                        <title>View Product Label</title>
+                        <bundle>product-label-gui</bundle>
+                        <controller>view</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </view-product-label-gui>
+                    <create-product-label-gui>
+                        <label>Create a Product Label</label>
+                        <title>Create a Product Label</title>
+                        <bundle>product-label-gui</bundle>
+                        <controller>create</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </create-product-label-gui>
+                    <edit-product-label-gui>
+                        <label>Edit Product Label</label>
+                        <title>Edit Product Label</title>
+                        <bundle>product-label-gui</bundle>
+                        <controller>edit</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </edit-product-label-gui>
+                    <re-sort-product-label-gui>
+                        <label>Re-Sort Product Labels</label>
+                        <title>Re-Sort Product Labels</title>
+                        <bundle>product-label-gui</bundle>
+                        <controller>re-sort</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </re-sort-product-label-gui>
+                    <delete-product-label-gui>
+                        <label>Delete Product Label</label>
+                        <title>Delete Product Label</title>
+                        <bundle>product-label-gui</bundle>
+                        <controller>delete</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </delete-product-label-gui>
+                </pages>
+            </product-label-gui>
+            <product-relation-gui>
+                <label>Product Relations</label>
+                <title>Product Relations</title>
+                <bundle>product-relation-gui</bundle>
+                <controller>list</controller>
+                <action>index</action>
+                <visible>2</visible>
+                <pages>
+                    <product-relations-create>
+                        <label>Create Product Relation</label>
+                        <title>Create Product Relation</title>
+                        <bundle>product-relation-gui</bundle>
+                        <controller>create</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </product-relations-create>
+
+                    <product-relations-edit>
+                        <label>Edit Product Relation</label>
+                        <title>Edit Product Relation</title>
+                        <bundle>product-relation-gui</bundle>
+                        <controller>edit</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </product-relations-edit>
+                    <product-relations-view>
+                        <label>View Product Relation</label>
+                        <title>View Product Relation</title>
+                        <bundle>product-relation-gui</bundle>
+                        <controller>view</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </product-relations-view>
+                </pages>
+            </product-relation-gui>
+            <sets>
+                <label>Product Sets</label>
+                <title>Product Sets</title>
+                <bundle>product-set-gui</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <pages>
+                    <create>
+                        <label>Create Product Set</label>
+                        <title>Create Product Set</title>
+                        <bundle>product-set-gui</bundle>
+                        <controller>create</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </create>
+                    <edit>
+                        <label>Edit Product Set</label>
+                        <title>Edit Product Set</title>
+                        <bundle>product-set-gui</bundle>
+                        <controller>edit</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </edit>
+                    <view>
+                        <label>View Product Set</label>
+                        <title>View Product Set</title>
+                        <bundle>product-set-gui</bundle>
+                        <controller>view</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </view>
+                    <reorder>
+                        <label>Reorder Product Sets</label>
+                        <title>Reorder Product Sets</title>
+                        <bundle>product-set-gui</bundle>
+                        <controller>reorder</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </reorder>
+                </pages>
+            </sets>
+            <configurable-bundle-templates>
+                <label>Configurable Bundle Templates</label>
+                <title>Configurable Bundle Templates</title>
+                <bundle>configurable-bundle-gui</bundle>
+                <controller>template</controller>
+                <action>index</action>
+                <visible>1</visible>
+                <pages>
+                    <configurable-bundle-template-create>
+                        <label>Create Configurable Bundle Template</label>
+                        <title>Create Configurable Bundle Template</title>
+                        <bundle>configurable-bundle-gui</bundle>
+                        <controller>template</controller>
+                        <action>create</action>
+                        <visible>0</visible>
+                    </configurable-bundle-template-create>
+                    <configurable-bundle-template-edit>
+                        <label>Edit Configurable ndle Template</label>
+                        <title>Edit Configurable Bundle Template</title>
+                        <bundle>configurable-bundle-gui</bundle>
+                        <controller>template</controller>
+                        <action>edit</action>
+                        <visible>0</visible>
+                    </configurable-bundle-template-edit>
+                    <configurable-bundle-confirm-delete>
+                        <label>Delete Configurable Bundle Template</label>
+                        <title>Delete Configurable Bundle Template</title>
+                        <bundle>configurable-bundle-gui</bundle>
+                        <controller>template</controller>
+                        <action>confirm-delete</action>
+                        <visible>0</visible>
+                    </configurable-bundle-confirm-delete>
+                    <configurable-bundle-template-slot-create>
+                        <label>Create Slot</label>
+                        <title>Create Slot</title>
+                        <bundle>configurable-bundle-gui</bundle>
+                        <controller>slot</controller>
+                        <action>create</action>
+                        <visible>0</visible>
+                    </configurable-bundle-template-slot-create>
+                    <configurable-bundle-template-slot-edit>
+                        <label>Edit Slot</label>
+                        <title>Edit Slot</title>
+                        <bundle>configurable-bundle-gui</bundle>
+                        <controller>slot</controller>
+                        <action>edit</action>
+                        <visible>0</visible>
+                    </configurable-bundle-template-slot-edit>
+                </pages>
+            </configurable-bundle-templates>
+            <search-preferences>
+                <label>Search Preferences</label>
+                <title>Search Preferences</title>
+                <bundle>product-search</bundle>
+                <controller>search-preferences</controller>
+                <action>index</action>
+                <pages>
+                    <search-add>
+                        <label>Add Attribute to Search</label>
+                        <title>Add Attribute to Search</title>
+                        <bundle>product-search</bundle>
+                        <controller>search-preferences</controller>
+                        <action>create</action>
+                        <visible>0</visible>
+                    </search-add>
+                    <search-edit>
+                        <label>Edit Search Preferences</label>
+                        <title>Edit Search Preferences</title>
+                        <bundle>product-search</bundle>
+                        <controller>search-preferences</controller>
+                        <action>edit</action>
+                        <visible>0</visible>
+                    </search-edit>
+                </pages>
+            </search-preferences>
+            <filter-preferences>
+                <label>Filter Preferences</label>
+                <title>Filter Preferences</title>
+                <bundle>product-search</bundle>
+                <controller>filter-preferences</controller>
+                <action>index</action>
+                <pages>
+                    <filter-view>
+                        <label>View Filter</label>
+                        <title>View Filter</title>
+                        <bundle>product-search</bundle>
+                        <controller>filter-preferences</controller>
+                        <action>view</action>
+                        <visible>0</visible>
+                    </filter-view>
+                    <filter-add>
+                        <label>Create Filter</label>
+                        <title>Create Filter</title>
+                        <bundle>product-search</bundle>
+                        <controller>filter-preferences</controller>
+                        <action>create</action>
+                        <visible>0</visible>
+                    </filter-add>
+                    <filter-edit>
+                        <label>Edit Filter</label>
+                        <title>Edit Filter</title>
+                        <bundle>product-search</bundle>
+                        <controller>filter-preferences</controller>
+                        <action>edit</action>
+                        <visible>0</visible>
+                    </filter-edit>
+                    <filter-order>
+                        <label>Edit Filter Order</label>
+                        <title>Edit Filter Order</title>
+                        <bundle>product-search</bundle>
+                        <controller>filter-reorder</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </filter-order>
+                </pages>
+            </filter-preferences>
+            <category-filters>
+                <label>Category Filters</label>
+                <title>Category Filters</title>
+                <bundle>product-category-filter-gui</bundle>
+                <controller>index</controller>
+                <action>index</action>
+            </category-filters>
+        </pages>
+    </merchandising>
+    <marketplace>
+        <label>Marketplace</label>
+        <title>Marketplace</title>
+        <icon>fa-shopping-basket</icon>
+        <pages>
+            <merchant>
+                <label>Merchants</label>
+                <title>Merchants</title>
+                <bundle>merchant-gui</bundle>
+                <controller>list-merchant</controller>
+                <action>index</action>
+                <pages>
+                    <merchant-create>
+                        <label>Create Merchant</label>
+                        <title>Create Merchant</title>
+                        <bundle>merchant-gui</bundle>
+                        <controller>create-merchant</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </merchant-create>
+                    <merchant-edit>
+                        <label>Edit Merchant</label>
+                        <title>Edit Merchant</title>
+                        <bundle>merchant-gui</bundle>
+                        <controller>edit-merchant</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </merchant-edit>
+                </pages>
+            </merchant>
+            <merchant-relationship>
+                <label>Merchant Relations</label>
+                <title>Merchant Relations</title>
+                <bundle>merchant-relationship-gui</bundle>
+                <controller>list-merchant-relationship</controller>
+                <action>index</action>
+                <pages>
+                    <merchant-relationship-create>
+                        <label>Create Merchant Relation</label>
+                        <title>Create Merchant Relation</title>
+                        <bundle>merchant-relationship-gui</bundle>
+                        <controller>create-merchant-relationship</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </merchant-relationship-create>
+                    <merchant-relationship-edit>
+                        <label>Edit Merchant Relation</label>
+                        <title>Edit Merchant Relation</title>
+                        <bundle>merchant-relationship-gui</bundle>
+                        <controller>edit-merchant-relationship</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </merchant-relationship-edit>
+                </pages>
+            </merchant-relationship>
+        </pages>
+        <company-role-gui>
+            <label>Company Roles</label>
+            <title>Company Roles</title>
+            <bundle>company-role-gui</bundle>
+            <controller>list-company-role</controller>
+            <action>index</action>
+        </company-role-gui>
+    </marketplace>
+    <administration>
+        <label>Administration</label>
+        <title>Administration</title>
+        <icon>fa-user-secret</icon>
+        <pages>
+            <stores>
+                <label>Stores</label>
+                <title>Stores</title>
+                <bundle>store-gui</bundle>
+                <controller>list</controller>
+                <action>index</action>
+                <icon>fa-angle-double-right</icon>
+            </stores>
+            <warehouses>
+                <label>Warehouses</label>
+                <title>Warehouses</title>
+                <bundle>stock-gui</bundle>
+                <controller>warehouse</controller>
+                <action>list</action>
+                <icon>fa-angle-double-right</icon>
+                <pages>
+                    <warehouse-view>
+                        <label>View</label>
+                        <title>View</title>
+                        <bundle>stock-gui</bundle>
+                        <controller>view-warehouse</controller>
+                        <action>index</action>
+                        <icon>fa-angle-double-right</icon>
+                        <visible>0</visible>
+                    </warehouse-view>
+                    <create-warehouses>
+                        <label>Create Warehouse</label>
+                        <title>Create Warehouse</title>
+                        <bundle>stock-gui</bundle>
+                        <controller>create-warehouse</controller>
+                        <action>index</action>
+                        <icon>fa-angle-double-right</icon>
+                        <visible>0</visible>
+                    </create-warehouses>
+                    <edit-warehouses>
+                        <label>Edit Warehouse</label>
+                        <title>Edit Warehouse</title>
+                        <bundle>stock-gui</bundle>
+                        <controller>edit-warehouse</controller>
+                        <action>index</action>
+                        <icon>fa-angle-double-right</icon>
+                        <visible>0</visible>
+                    </edit-warehouses>
+                </pages>
+            </warehouses>
+            <payment-method>
+                <label>Payment Methods</label>
+                <title>Payment Methods</title>
+                <bundle>payment-gui</bundle>
+                <controller>payment-method</controller>
+                <action>index</action>
+                <icon>fa-angle-double-right</icon>
+                <pages>
+                    <payment-method-view>
+                        <label>View</label>
+                        <title>View</title>
+                        <bundle>payment-gui</bundle>
+                        <controller>view-payment-method</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </payment-method-view>
+                    <payment-method-update>
+                        <label>Edit</label>
+                        <title>Edit Payment Method</title>
+                        <bundle>payment-gui</bundle>
+                        <controller>update-payment-method</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </payment-method-update>
+                </pages>
+            </payment-method>
+            <shipment-method>
+                <label>Delivery Methods</label>
+                <title>Delivery Methods</title>
+                <bundle>shipment-gui</bundle>
+                <controller>shipment-method</controller>
+                <action>index</action>
+                <icon>fa-angle-double-right</icon>
+                <pages>
+                    <shipment-method-view>
+                        <label>View</label>
+                        <title>View</title>
+                        <bundle>shipment-gui</bundle>
+                        <controller>view-shipment-method</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </shipment-method-view>
+                    <shipment-method-create>
+                        <label>Create</label>
+                        <title>Create Delivery Method</title>
+                        <bundle>shipment-gui</bundle>
+                        <controller>create-shipment-method</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </shipment-method-create>
+                    <shipment-method-update>
+                        <label>Edit</label>
+                        <title>Edit Delivery Method</title>
+                        <bundle>shipment-gui</bundle>
+                        <controller>update-shipment-method</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </shipment-method-update>
+                    <delete-shipment-method>
+                        <label>Delete Delivery Method</label>
+                        <title>Delete Delivery Method</title>
+                        <bundle>shipment-gui</bundle>
+                        <controller>delete-shipment-method</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </delete-shipment-method>
+                </pages>
+            </shipment-method>
+            <glossary>
+                <label>Glossary</label>
+                <title>Glossary</title>
+                <uri>/glossary</uri>
+                <pages>
+                    <glossary-create>
+                        <label>Create Translation</label>
+                        <title>Create Translation</title>
+                        <bundle>glossary</bundle>
+                        <controller>add</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </glossary-create>
+                    <glossary-edit>
+                        <label>Edit Translation</label>
+                        <title>Edit Translation</title>
+                        <bundle>glossary</bundle>
+                        <controller>edit</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </glossary-edit>
+                </pages>
+            </glossary>
+            <tax-rates>
+                <label>Tax Rates</label>
+                <title>Tax Rates</title>
+                <bundle>tax</bundle>
+                <controller>rate</controller>
+                <action>list</action>
+                <pages>
+                    <tax-rate-create>
+                        <label>Create Tax Rate</label>
+                        <title>Create Tax Rate</title>
+                        <bundle>tax</bundle>
+                        <controller>rate</controller>
+                        <action>create</action>
+                        <visible>0</visible>
+                    </tax-rate-create>
+                    <tax-rate-edit>
+                        <label>Edit Tax Rate</label>
+                        <title>Edit Tax Rate</title>
+                        <bundle>tax</bundle>
+                        <controller>rate</controller>
+                        <action>edit</action>
+                        <visible>0</visible>
+                    </tax-rate-edit>
+                    <tax-rate-view>
+                        <label>View Tax Rate</label>
+                        <title>View Tax Rate</title>
+                        <bundle>tax</bundle>
+                        <controller>rate</controller>
+                        <action>view</action>
+                        <visible>0</visible>
+                    </tax-rate-view>
+                </pages>
+            </tax-rates>
+            <tax-sets>
+                <label>Tax Sets</label>
+                <title>Tax Sets</title>
+                <bundle>tax</bundle>
+                <controller>set</controller>
+                <action>list</action>
+                <pages>
+                    <tax-set-create>
+                        <label>Create Tax Set</label>
+                        <title>Create Tax Set</title>
+                        <bundle>tax</bundle>
+                        <controller>set</controller>
+                        <action>create</action>
+                        <visible>0</visible>
+                    </tax-set-create>
+                    <tax-set-edit>
+                        <label>Edit Tax Set</label>
+                        <title>Edit Tax Set</title>
+                        <bundle>tax</bundle>
+                        <controller>set</controller>
+                        <action>edit</action>
+                        <visible>0</visible>
+                    </tax-set-edit>
+                    <tax-set-view>
+                        <label>View Tax Set</label>
+                        <title>View Tax Set</title>
+                        <bundle>tax</bundle>
+                        <controller>set</controller>
+                        <action>view</action>
+                        <visible>0</visible>
+                    </tax-set-view>
+                </pages>
+            </tax-sets>
+            <sales-order-threshold-global>
+                <label>Global threshold</label>
+                <title>Global threshold</title>
+                <bundle>sales-order-threshold-gui</bundle>
+                <controller>global</controller>
+                <action>index</action>
+                <icon>fa-angle-double-right</icon>
+            </sales-order-threshold-global>
+            <sales-order-threshold-settings>
+                <label>Threshold settings</label>
+                <title>Threshold settings</title>
+                <bundle>sales-order-threshold-gui</bundle>
+                <controller>settings</controller>
+                <action>index</action>
+                <icon>fa-angle-double-right</icon>
+            </sales-order-threshold-settings>
+            <sales-order-threshold-merchant-relationship>
+                <label>Merchant relationships</label>
+                <title>Merchant relationships</title>
+                <uri>/merchant-relationship-sales-order-threshold-gui</uri>
+                <icon>fa-angle-double-right</icon>
+                <bundle>merchant-relationship-sales-order-threshold-gui</bundle>
+                <controller>index</controller>
+                <action>index</action>
+            </sales-order-threshold-merchant-relationship>
+            <sales-order-threshold-merchant-relationship-edit>
+                <label>Edit Merchant Relationship Threshold</label>
+                <title>Edit Merchant Relationship Threshold</title>
+                <uri>/merchant-relationship-sales-order-threshold-gui/edit</uri>
+                <bundle>merchant-relationship-sales-order-threshold-gui</bundle>
+                <controller>edit</controller>
+                <action>index</action>
+                <visible>0</visible>
+            </sales-order-threshold-merchant-relationship-edit>
+            <product-packaging-unit>
+                <label>Packaging Types</label>
+                <title>Product Packaging Types</title>
+                <bundle>product-packaging-unit-gui</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <pages>
+                    <product-packaging-unit-create>
+                        <label>Create Packaging Type</label>
+                        <title>Create Product Packaging Type</title>
+                        <bundle>product-packaging-unit-gui</bundle>
+                        <controller>create</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </product-packaging-unit-create>
+                    <product-packaging-unit-edit>
+                        <label>Edit Packaging Type</label>
+                        <title>Edit Product Packaging Type</title>
+                        <bundle>product-packaging-unit-gui</bundle>
+                        <controller>edit</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </product-packaging-unit-edit>
+                </pages>
+            </product-packaging-unit>
+            <settings>
+                <label>MIME Type Settings</label>
+                <title>MIME Type Settings</title>
+                <bundle>file-manager-gui</bundle>
+                <controller>mime-type</controller>
+                <action>index</action>
+                <visible>1</visible>
+            </settings>
+            <oms>
+                <label>OMS</label>
+                <title>Order Management System</title>
+                <bundle>oms</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <pages>
+                    <statemachine-preview>
+                        <label>Statemachine preview</label>
+                        <title>Statemachine preview</title>
+                        <bundle>oms</bundle>
+                        <controller>index</controller>
+                        <action>draw-preview-version</action>
+                        <visible>0</visible>
+                    </statemachine-preview>
+                </pages>
+            </oms>
+            <state-machine>
+                <label>State machine</label>
+                <title>State machine</title>
+                <bundle>state-machine</bundle>
+                <controller>list</controller>
+                <action>index</action>
+                <pages>
+                    <statemachines-index>
+                        <label>State machine Processes</label>
+                        <title>State machine Processes</title>
+                        <bundle>state-machine</bundle>
+                        <controller>list</controller>
+                        <action>process</action>
+                        <visible>0</visible>
+                    </statemachines-index>
+                    <statemachine-preview>
+                        <label>Statemachine preview</label>
+                        <title>Statemachine preview</title>
+                        <bundle>state-machine</bundle>
+                        <controller>graph</controller>
+                        <action>draw-preview-version</action>
+                        <visible>0</visible>
+                    </statemachine-preview>
+                </pages>
+            </state-machine>
+        </pages>
+    </administration>
+    <maintenance>
+        <label>Maintenance</label>
+        <title>Maintenance</title>
+        <icon>fa-wrench</icon>
+        <pages>
+            <module-overview>
+                <label>Module overview</label>
+                <title>Module overview</title>
+                <bundle>development</bundle>
+                <controller>module-overview</controller>
+                <action>index</action>
+            </module-overview>
+            <dependencies>
+                <label>Dependencies</label>
+                <title>Bundle dependencies</title>
+                <bundle>development</bundle>
+                <controller>dependency</controller>
+                <action>index</action>
+                <pages>
+                    <adjecency-matrix>
+                        <label>Adjacency Matrix</label>
+                        <title>Adjacency Matrix</title>
+                        <bundle>development</bundle>
+                        <controller>dependency</controller>
+                        <action>adjacency-matrix</action>
+                        <visible>0</visible>
+                    </adjecency-matrix>
+                </pages>
+            </dependencies>
+            <stability>
+                <label>Stability</label>
+                <title>Bundles stability</title>
+                <bundle>development</bundle>
+                <controller>dependency</controller>
+                <action>stability</action>
+                <pages>
+                    <outgoing-dependency-graph>
+                        <label>Outgoing Dependency Graph</label>
+                        <title>Outgoing Dependency Graph</title>
+                        <bundle>development</bundle>
+                        <controller>dependency</controller>
+                        <action>outgoing-graph</action>
+                        <visible>0</visible>
+                    </outgoing-dependency-graph>
+                </pages>
+            </stability>
+            <phpinfo>
+                <label>PHP Info</label>
+                <title>PHP Info</title>
+                <bundle>maintenance</bundle>
+                <controller>php-info</controller>
+                <action>index</action>
+            </phpinfo>
+            <integration>
+                <label>Used Plugins</label>
+                <title>Used Plugins</title>
+                <bundle>development</bundle>
+                <controller>dependency-provider-plugin-usage</controller>
+                <action>index</action>
+            </integration>
+            <permission>
+                <label>Sync permissions</label>
+                <title>Sync permissions</title>
+                <bundle>permission</bundle>
+                <controller>index</controller>
+                <action>sync</action>
+            </permission>
+            <index>
+                <label>System Info</label>
+                <title>Maintenance</title>
+                <bundle>maintenance</bundle>
+                <controller>index</controller>
+                <action>index</action>
+            </index>
+            <api>
+                <label>Api</label>
+                <title>Api</title>
+                <bundle>api</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <uri>/api</uri>
+            </api>
+            <architecture-sniffer>
+                <label>Architecture Sniffer</label>
+                <title>Architecture Sniffer</title>
+                <bundle>development</bundle>
+                <controller>architecture</controller>
+                <action>index</action>
+                <icon>fa-code</icon>
+                <pages>
+                    <check-bundle>
+                        <label>Violations</label>
+                        <title>Violations</title>
+                        <bundle>development</bundle>
+                        <controller>architecture</controller>
+                        <action>check-bundle</action>
+                        <icon>fa-code</icon>
+                        <visible>0</visible>
+                    </check-bundle>
+                    <rules>
+                        <label>Rules</label>
+                        <title>Rules</title>
+                        <bundle>development</bundle>
+                        <controller>architecture</controller>
+                        <action>rules</action>
+                        <visible>0</visible>
+                    </rules>
+                </pages>
+            </architecture-sniffer>
+            <dataset>
+                <label>Dataset</label>
+                <title>Dataset</title>
+                <bundle>dataset</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <pages>
+                    <add>
+                        <label>Add dashboard</label>
+                        <title>Add dashboard</title>
+                        <bundle>dataset</bundle>
+                        <controller>add</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </add>
+                    <edit>
+                        <label>Edit dashboard</label>
+                        <title>Edit dashboard</title>
+                        <bundle>dataset</bundle>
+                        <controller>edit</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </edit>
+                </pages>
+            </dataset>
+            <collector-storage-connector>
+                <label>Drop storage timestamps</label>
+                <title>Drop storage timestamps</title>
+                <bundle>collector-storage-connector</bundle>
+                <controller>maintenance</controller>
+                <action>drop-timestamps</action>
+            </collector-storage-connector>
+            <collector-search-connector>
+                <label>Drop search timestamps</label>
+                <title>Drop search timestamps</title>
+                <bundle>collector-search-connector</bundle>
+                <controller>maintenance</controller>
+                <action>drop-timestamps</action>
+            </collector-search-connector>
+            <elasticsearch>
+                <label>Elasticsearch</label>
+                <title>Elasticsearch</title>
+                <bundle>search-elasticsearch-gui</bundle>
+                <controller>maintenance</controller>
+                <action>list-indexes</action>
+                <pages>
+                    <documents>
+                        <label>Documents</label>
+                        <title>Documents</title>
+                        <bundle>search-elasticsearch-gui</bundle>
+                        <controller>maintenance</controller>
+                        <action>list-documents</action>
+                        <visible>0</visible>
+                    </documents>
+                </pages>
+            </elasticsearch>
+            <queue>
+                <label>Queue Processes</label>
+                <title>Queue Processes</title>
+                <bundle>queue</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <visible>1</visible>
+            </queue>
+            <spryk-gui>
+                <label>SprykGui</label>
+                <title>SprykGui</title>
+                <bundle>spryk-gui</bundle>
+                <controller>list</controller>
+                <action>index</action>
+                <pages>
+                    <spryk-gui-draw>
+                        <label>Spryk graph</label>
+                        <title>Spryk graph</title>
+                        <bundle>spryk-gui</bundle>
+                        <controller>graph</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </spryk-gui-draw>
+                    <spryk-gui-build>
+                        <label>Build Spryk</label>
+                        <title>Build Spryk</title>
+                        <bundle>spryk-gui</bundle>
+                        <controller>build</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </spryk-gui-build>
+                </pages>
+            </spryk-gui>
+            <storage>
+                <label>Storage</label>
+                <title>Storage index</title>
+                <bundle>storage</bundle>
+                <controller>maintenance</controller>
+                <action>index</action>
+                <pages>
+                    <storage-list>
+                        <label>List</label>
+                        <title>Storage list</title>
+                        <bundle>storage</bundle>
+                        <controller>maintenance</controller>
+                        <action>list</action>
+                        <icon>fa-hdd-o</icon>
+                        <visible>0</visible>
+                    </storage-list>
+                    <search-key>
+                        <label>Key</label>
+                        <title>Storage key</title>
+                        <bundle>storage</bundle>
+                        <controller>maintenance</controller>
+                        <action>key</action>
+                        <icon>fa-hdd-o</icon>
+                        <visible>0</visible>
+                    </search-key>
+                </pages>
+            </storage>
+        </pages>
+    </maintenance>
 </config>
