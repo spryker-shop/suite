@@ -6,6 +6,7 @@ const imageminGifsicle = require('imagemin-gifsicle');
 
 const { lstatSync, readdirSync, existsSync } = require('fs');
 const { join, normalize } = require('path');
+const { globalSettings } = require('../settings');
 
 let isGlobalImagesOptimized = false;
 
@@ -13,7 +14,7 @@ const imagesOptimization = appSettings => {
     let isPublicOutput = false;
     let isOptimize = true;
 
-    const currentMode = process.argv.slice(2)[0];
+    const currentMode = process.argv.slice(globalSettings.expectedModeArgument)[0];
 
     if (Object.keys(appSettings.imageOptimizationOptions.enableModes).includes(currentMode)) {
         isPublicOutput = true;

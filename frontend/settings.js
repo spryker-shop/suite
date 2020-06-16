@@ -27,7 +27,9 @@ const globalSettings = {
 
         // project folders
         project: './src/Pyz/Yves',
-    }
+    },
+
+    expectedModeArgument: 2,
 };
 
 const imageOptimizationOptions = {
@@ -161,7 +163,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
 
     // define if current mode is production
     const isProductionMode = () => {
-        const currentMode = process.argv.slice(2)[0];
+        const currentMode = process.argv.slice(globalSettings.expectedModeArgument)[0];
         return currentMode === globalSettings.modes.prod;
     };
 

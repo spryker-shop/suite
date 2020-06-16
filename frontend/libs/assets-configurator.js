@@ -1,11 +1,12 @@
 const fs = require('fs');
+const { globalSettings } = require('../settings');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const getCopyConfig = appSettings => {
     const ignoredArray = ['*.gitkeep'];
 
-    const currentMode = process.argv.slice(2)[0];
+    const currentMode = process.argv.slice(globalSettings.expectedModeArgument)[0];
     Object.keys(appSettings.imageOptimizationOptions.enableModes).map(mode => {
         const isOptimisationEnabled = currentMode === mode && appSettings.imageOptimizationOptions.enableModes[mode];
         if (isOptimisationEnabled) {
