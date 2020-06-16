@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bb28c7748dee259019fde80e4a543874",
+    "content-hash": "5e0810b30a14ac8328cd90e2765b8145",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -3694,7 +3694,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -5101,11 +5101,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/ps-13571-add-to-cart-from-catalog-page",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "09085a611566a2a9f742f4a6a6faa639a95431f2"
+                "reference": "ceccc5bee6eda22569cba5b1180508057ec32de4"
             },
             "require": {
                 "php": ">=7.2"
@@ -5819,15 +5819,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-06-16T12:44:44+00:00"
+            "time": "2020-06-16T11:31:39+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/ps-13571-add-to-cart-from-catalog-page",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "985bb244b27ea99dced06fb21b9924e6b42c6e0a"
+                "reference": "60001efaa6bded8fe7332df32aebac7807b48ad0"
             },
             "require": {
                 "php": ">=7.2"
@@ -5978,7 +5978,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-06-16T12:37:24+00:00"
+            "time": "2020-06-16T11:31:43+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -6859,9 +6859,6 @@
             ],
             "description": "Symfony Form Component",
             "homepage": "https://symfony.com",
-            "support": {
-                "source": "https://github.com/symfony/form/tree/4.4"
-            },
             "time": "2020-03-27T16:54:36+00:00"
         },
         {
@@ -8978,8 +8975,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
@@ -9151,6 +9148,24 @@
                 "ascii",
                 "clean",
                 "php"
+            ],
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/moelleken",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/voku",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/voku",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/voku/portable-ascii",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-06-15T23:49:30+00:00"
         },
@@ -11060,6 +11075,16 @@
                 "MIT"
             ],
             "description": "Slevomat Coding Standard for PHP_CodeSniffer complements Consistence Coding Standard by providing sniffs with additional checks.",
+            "funding": [
+                {
+                    "url": "https://github.com/kukulich",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/slevomat/coding-standard",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-06-16T07:24:48+00:00"
         },
         {
@@ -11096,7 +11121,7 @@
                     "SLLH\\ComposerVersionsCheck\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://repo.repman.io/downloads",
             "license": [
                 "MIT"
             ],
@@ -12252,5 +12277,6 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    }
+    },
+    "plugin-api-version": "1.1.0"
 }
