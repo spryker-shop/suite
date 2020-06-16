@@ -4,4 +4,4 @@ env:
 sections:
     scheduler-stop:
         scheduler-clean:
-            command: 'vendor/bin/console install:per-store:run --no-ansi vendor/bin/console scheduler:suspend -vvv --no-ansi'
+            command: 'vendor/bin/console scheduler:suspend -vvv --no-ansi'
