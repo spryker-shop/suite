@@ -5,50 +5,37 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\DataImport\Business\CombinedProductImporter\ProductPrice;
+namespace Pyz\Zed\DataImport\Business\CombinedProductImporter\ProductImage;
 
 use Pyz\Zed\DataImport\Business\Exception\InvalidDataException;
-use Pyz\Zed\DataImport\Business\Model\ProductPrice\ProductPriceHydratorStep as ProductPriceProductPriceHydratorStep;
+use Pyz\Zed\DataImport\Business\Model\ProductImage\ProductImageHydratorStep as ProductImageProductImageHydratorStep;
 use Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
-use Spryker\Zed\DataImport\Dependency\Service\DataImportToUtilEncodingServiceInterface;
-use Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface;
 
-class ProductPriceHydratorStep extends ProductPriceProductPriceHydratorStep
+class ProductImageHydratorStep extends ProductImageProductImageHydratorStep
 {
     public const BULK_SIZE = 5000;
 
     public const COLUMN_ABSTRACT_SKU = 'abstract_sku';
     public const COLUMN_CONCRETE_SKU = 'concrete_sku';
 
-    public const COLUMN_CURRENCY = 'product_price.currency';
-    public const COLUMN_STORE = 'product_price.store';
-    public const COLUMN_PRICE_NET = 'product_price.value_net';
-    public const COLUMN_PRICE_GROSS = 'product_price.value_gross';
-    public const COLUMN_PRICE_DATA = 'product_price.price_data';
-    public const COLUMN_PRICE_DATA_CHECKSUM = 'product_price.price_data_checksum';
-    public const COLUMN_PRICE_TYPE = 'product_price.price_type';
-    public const COLUMN_ASSIGNED_PRODUCT_TYPE = 'product_price.assigned_product_type';
+    public const COLUMN_IMAGE_SET_NAME = 'product_image.image_set_name';
+    public const COLUMN_EXTERNAL_URL_LARGE = 'product_image.external_url_large';
+    public const COLUMN_EXTERNAL_URL_SMALL = 'product_image.external_url_small';
+    public const COLUMN_LOCALE = 'product_image.locale';
+    public const COLUMN_SORT_ORDER = 'product_image.sort_order';
+    public const COLUMN_PRODUCT_IMAGE_KEY = 'product_image.product_image_key';
+    public const COLUMN_PRODUCT_IMAGE_SET_KEY = 'product_image.product_image_set_key';
 
-    public const KEY_PRICE_DATA_PREFIX = 'product_price.price_data.';
+    public const COLUMN_ASSIGNED_PRODUCT_TYPE = 'product_image.assigned_product_type';
 
     protected const ASSIGNABLE_PRODUCT_TYPE_ABSTRACT = 'abstract';
     protected const ASSIGNABLE_PRODUCT_TYPE_CONCRETE = 'concrete';
+
     protected const ASSIGNABLE_PRODUCT_TYPES = [
         self::ASSIGNABLE_PRODUCT_TYPE_ABSTRACT,
         self::ASSIGNABLE_PRODUCT_TYPE_CONCRETE,
     ];
-
-    /**
-     * @param \Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface $priceProductFacade
-     * @param \Spryker\Zed\DataImport\Dependency\Service\DataImportToUtilEncodingServiceInterface $utilEncodingService
-     */
-    public function __construct(
-        PriceProductFacadeInterface $priceProductFacade,
-        DataImportToUtilEncodingServiceInterface $utilEncodingService
-    ) {
-        parent::__construct($priceProductFacade, $utilEncodingService);
-    }
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet

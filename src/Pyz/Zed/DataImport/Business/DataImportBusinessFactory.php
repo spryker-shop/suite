@@ -11,6 +11,10 @@ use Generated\Shared\Transfer\DataImportConfigurationActionTransfer;
 use Generated\Shared\Transfer\DataImporterConfigurationTransfer;
 use Pyz\Zed\DataImport\Business\CombinedProductImporter\ProductGroup\ProductGroupMandatoryColumnCondition;
 use Pyz\Zed\DataImport\Business\CombinedProductImporter\ProductGroup\ProductGroupWriter as ProductGroupProductGroupWriter;
+use Pyz\Zed\DataImport\Business\CombinedProductImporter\ProductImage\ProductImageHydratorStep as ProductImageProductImageHydratorStep;
+use Pyz\Zed\DataImport\Business\CombinedProductImporter\ProductImage\ProductImageMandatoryColumnCondition;
+use Pyz\Zed\DataImport\Business\CombinedProductImporter\ProductImage\Writer\ProductImageBulkPdoDataSetWriter as WriterProductImageBulkPdoDataSetWriter;
+use Pyz\Zed\DataImport\Business\CombinedProductImporter\ProductImage\Writer\ProductImagePropelDataSetWriter as WriterProductImagePropelDataSetWriter;
 use Pyz\Zed\DataImport\Business\CombinedProductImporter\ProductPrice\ProductPriceHydratorStep as ProductPriceProductPriceHydratorStep;
 use Pyz\Zed\DataImport\Business\CombinedProductImporter\ProductPrice\ProductPriceMandatoryColumnCondition;
 use Pyz\Zed\DataImport\Business\CombinedProductImporter\ProductPrice\Writer\ProductPriceBulkPdoDataSetWriter as WriterProductPriceBulkPdoDataSetWriter;
@@ -106,11 +110,12 @@ use Pyz\Zed\DataImport\Business\Model\Store\StoreReader;
 use Pyz\Zed\DataImport\Business\Model\Store\StoreWriterStep;
 use Pyz\Zed\DataImport\Business\Model\Tax\TaxSetNameToIdTaxSetStep;
 use Pyz\Zed\DataImport\Business\Model\Tax\TaxWriterStep;
+use Pyz\Zed\DataImport\Communication\Plugin\CombinedProduct\ProductImage\CombinedProductImagePropelWriterPlugin;
+use Pyz\Zed\DataImport\Communication\Plugin\CombinedProduct\ProductPrice\CombinedProductPricePropelWriterPlugin;
 use Pyz\Zed\DataImport\Communication\Plugin\ProductAbstract\ProductAbstractPropelWriterPlugin;
 use Pyz\Zed\DataImport\Communication\Plugin\ProductAbstractStore\ProductAbstractStorePropelWriterPlugin;
 use Pyz\Zed\DataImport\Communication\Plugin\ProductConcrete\ProductConcretePropelWriterPlugin;
 use Pyz\Zed\DataImport\Communication\Plugin\ProductImage\ProductImagePropelWriterPlugin;
-use Pyz\Zed\DataImport\Communication\Plugin\ProductPrice\CombinedProductImporter\CombinedProductPricePropelWriterPlugin;
 use Pyz\Zed\DataImport\Communication\Plugin\ProductPrice\ProductPricePropelWriterPlugin;
 use Pyz\Zed\DataImport\Communication\Plugin\ProductStock\ProductStockPropelWriterPlugin;
 use Pyz\Zed\DataImport\DataImportConfig;
@@ -188,6 +193,8 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
                 return $this->createCombinedProductGroupImporter($dataImportConfigurationActionTransfer);
             case DataImportConfig::IMPORT_TYPE_COMBINED_PRODUCT_PRICE:
                 return $this->createCombinedProductPriceImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_COMBINED_PRODUCT_IMAGE:
+                return $this->createCombinedProductImageImporter($dataImportConfigurationActionTransfer);
             case DataImportConfig::IMPORT_TYPE_PRODUCT_REVIEW:
                 return $this->createProductReviewImporter($dataImportConfigurationActionTransfer);
             case DataImportConfig::IMPORT_TYPE_PRODUCT_SET:
@@ -296,6 +303,28 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     }
 
     /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
+     */
+    public function createCombinedProductImageBulkPdoWriter(): DataSetWriterInterface
+    {
+        return new WriterProductImageBulkPdoDataSetWriter(
+            $this->createProductImageSql(),
+            $this->createPropelExecutor(),
+            $this->createDataFormatter()
+        );
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
+     */
+    public function createCombinedProductImagePropelWriter(): DataSetWriterInterface
+    {
+        return new WriterProductImagePropelDataSetWriter(
+            $this->createProductImageRepository()
+        );
+    }
+
+    /**
      * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
      *
      * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
@@ -306,7 +335,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
         );
 
-        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductPriceHydratorStep::BULK_SIZE);
+        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductPriceProductPriceHydratorStep::BULK_SIZE);
         $dataSetStepBroker
             ->addStep(new ProductPriceProductPriceHydratorStep(
                 $this->getPriceProductFacade(),
@@ -327,6 +356,41 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     {
         return [
             new CombinedProductPricePropelWriterPlugin(),
+        ];
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
+     *
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
+     */
+    public function createCombinedProductImageImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
+    {
+        $dataImporter = $this->getConditionalCsvDataImporterWriterAwareFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
+
+        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductImageProductImageHydratorStep::BULK_SIZE);
+        $dataSetStepBroker
+            ->addStep($this->createProductAbstractSkuToIdProductAbstractStep(ProductImageProductImageHydratorStep::COLUMN_ABSTRACT_SKU, ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT))
+            ->addStep($this->createProductSkuToIdProductStep(ProductImageProductImageHydratorStep::COLUMN_CONCRETE_SKU, ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT))
+            ->addStep($this->createLocaleNameToIdStep(ProductImageProductImageHydratorStep::COLUMN_LOCALE, ProductImageHydratorStep::KEY_IMAGE_SET_FK_LOCALE))
+            ->addStep(new ProductImageProductImageHydratorStep());
+
+        $dataImporter->setDataSetCondition(new ProductImageMandatoryColumnCondition());
+        $dataImporter->addDataSetStepBroker($dataSetStepBroker);
+        $dataImporter->setDataSetWriter(new DataSetWriterCollection($this->createCombinedProductImageWriterPlugins()));
+
+        return $dataImporter;
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
+     */
+    protected function createCombinedProductImageWriterPlugins()
+    {
+        return [
+            new CombinedProductImagePropelWriterPlugin(),
         ];
     }
 
@@ -1120,9 +1184,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductImageHydratorStep::BULK_SIZE);
         $dataSetStepBroker
-            ->addStep($this->createProductAbstractSkuToIdProductAbstractStep(ProductImageHydratorStep::KEY_ABSTRACT_SKU, ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT))
-            ->addStep($this->createProductSkuToIdProductStep(ProductImageHydratorStep::KEY_CONCRETE_SKU, ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT))
-            ->addStep($this->createLocaleNameToIdStep(ProductImageHydratorStep::KEY_LOCALE, ProductImageHydratorStep::KEY_IMAGE_SET_FK_LOCALE))
+            ->addStep($this->createProductAbstractSkuToIdProductAbstractStep(ProductImageHydratorStep::COLUMN_ABSTRACT_SKU, ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT))
+            ->addStep($this->createProductSkuToIdProductStep(ProductImageHydratorStep::COLUMN_CONCRETE_SKU, ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT))
+            ->addStep($this->createLocaleNameToIdStep(ProductImageHydratorStep::COLUMN_LOCALE, ProductImageHydratorStep::KEY_IMAGE_SET_FK_LOCALE))
             ->addStep(new ProductImageHydratorStep());
 
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
