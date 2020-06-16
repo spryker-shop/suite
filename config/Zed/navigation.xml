@@ -126,7 +126,6 @@
                 <title>Refunds</title>
                 <bundle>refund</bundle>
                 <controller>table</controller>
-                <icon>fa-angle-double-right</icon>
                 <action>index</action>
             </table>
             <gift-card>
@@ -540,7 +539,6 @@
                 <bundle>price-product-schedule-gui</bundle>
                 <controller>import</controller>
                 <action>index</action>
-                <icon>fa-angle-double-right</icon>
                 <pages>
                     <price-product-schedule-dry-run-import>
                         <label>Import</label>
@@ -548,7 +546,6 @@
                         <bundle>price-product-schedule-gui</bundle>
                         <controller>dry-run-import</controller>
                         <action>index</action>
-                        <icon>fa-angle-double-right</icon>
                         <visible>0</visible>
                     </price-product-schedule-dry-run-import>
                     <price-product-schedule-publish>
@@ -557,7 +554,6 @@
                         <bundle>price-product-schedule-gui</bundle>
                         <controller>publish</controller>
                         <action>index</action>
-                        <icon>fa-angle-double-right</icon>
                         <visible>0</visible>
                     </price-product-schedule-publish>
                     <price-product-schedule-list-view>
@@ -566,7 +562,6 @@
                         <bundle>price-product-schedule-gui</bundle>
                         <controller>view-schedule-list</controller>
                         <action>index</action>
-                        <icon>fa-angle-double-right</icon>
                         <visible>0</visible>
                     </price-product-schedule-list-view>
                     <price-product-schedule-list-edit>
@@ -575,7 +570,6 @@
                         <bundle>price-product-schedule-gui</bundle>
                         <controller>edit-schedule-list</controller>
                         <action>index</action>
-                        <icon>fa-angle-double-right</icon>
                         <visible>0</visible>
                     </price-product-schedule-list-edit>
                     <price-product-schedule-edit>
@@ -584,7 +578,6 @@
                         <bundle>price-product-schedule-gui</bundle>
                         <controller>edit-schedule-price</controller>
                         <action>index</action>
-                        <icon>fa-angle-double-right</icon>
                         <visible>0</visible>
                     </price-product-schedule-edit>
                     <price-product-schedule-list-delete>
@@ -593,7 +586,6 @@
                         <bundle>price-product-schedule-gui</bundle>
                         <controller>delete-schedule-list</controller>
                         <action>index</action>
-                        <icon>fa-angle-double-right</icon>
                         <visible>0</visible>
                     </price-product-schedule-list-delete>
                 </pages>
@@ -916,7 +908,6 @@
                         <action>index</action>
                         <visible>0</visible>
                     </product-relations-create>
-
                     <product-relations-edit>
                         <label>Edit Product Relation</label>
                         <title>Edit Product Relation</title>
@@ -1165,6 +1156,97 @@
             <action>index</action>
         </company-role-gui>
     </marketplace>
+    <users>
+        <label>Users</label>
+        <title>Users</title>
+        <icon>fa-user</icon>
+        <pages>
+            <user>
+                <label>Users</label>
+                <title>Users</title>
+                <bundle>user</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <icon>fa-user</icon>
+                <pages>
+                    <user-create>
+                        <label>Create new User</label>
+                        <title>Create new User</title>
+                        <bundle>user</bundle>
+                        <controller>edit</controller>
+                        <action>create</action>
+                        <visible>0</visible>
+                    </user-create>
+                    <user-edit>
+                        <label>Edit User</label>
+                        <title>Edit User</title>
+                        <bundle>user</bundle>
+                        <controller>edit</controller>
+                        <action>update</action>
+                        <visible>0</visible>
+                    </user-edit>
+                    <user-confirm-delete>
+                        <label>Delete User</label>
+                        <title>Delete User</title>
+                        <bundle>user</bundle>
+                        <controller>edit</controller>
+                        <action>confirm-delete</action>
+                        <visible>0</visible>
+                    </user-confirm-delete>
+                </pages>
+            </user>
+            <roles>
+                <label>User Roles</label>
+                <title>Roles</title>
+                <bundle>acl</bundle>
+                <controller>role</controller>
+                <action>index</action>
+                <pages>
+                    <role-create>
+                        <label>Create new Role</label>
+                        <title>Create new Role</title>
+                        <bundle>acl</bundle>
+                        <controller>role</controller>
+                        <action>create</action>
+                        <visible>0</visible>
+                    </role-create>
+                    <role-edit>
+                        <label>Edit Role</label>
+                        <title>Edit Role</title>
+                        <bundle>acl</bundle>
+                        <controller>role</controller>
+                        <action>update</action>
+                        <visible>0</visible>
+                    </role-edit>
+                </pages>
+            </roles>
+            <groups>
+                <label>User Groups</label>
+                <title>Groups</title>
+                <bundle>acl</bundle>
+                <controller>group</controller>
+                <action>index</action>
+                <pages>
+                    <group-create>
+                        <label>Create new Group</label>
+                        <title>Create new Group</title>
+                        <bundle>acl</bundle>
+                        <controller>group</controller>
+                        <action>add</action>
+                        <visible>0</visible>
+                    </group-create>
+                    <group-edit>
+                        <label>Edit Group</label>
+                        <title>Edit Group</title>
+                        <bundle>acl</bundle>
+                        <controller>group</controller>
+                        <action>edit</action>
+                        <visible>0</visible>
+                    </group-edit>
+                </pages>
+            </groups>
+        </pages>
+    </users>
     <administration>
         <label>Administration</label>
         <title>Administration</title>
@@ -1176,7 +1258,6 @@
                 <bundle>store-gui</bundle>
                 <controller>list</controller>
                 <action>index</action>
-                <icon>fa-angle-double-right</icon>
             </stores>
             <warehouses>
                 <label>Warehouses</label>
@@ -1184,7 +1265,6 @@
                 <bundle>stock-gui</bundle>
                 <controller>warehouse</controller>
                 <action>list</action>
-                <icon>fa-angle-double-right</icon>
                 <pages>
                     <warehouse-view>
                         <label>View</label>
@@ -1192,7 +1272,6 @@
                         <bundle>stock-gui</bundle>
                         <controller>view-warehouse</controller>
                         <action>index</action>
-                        <icon>fa-angle-double-right</icon>
                         <visible>0</visible>
                     </warehouse-view>
                     <create-warehouses>
@@ -1201,7 +1280,6 @@
                         <bundle>stock-gui</bundle>
                         <controller>create-warehouse</controller>
                         <action>index</action>
-                        <icon>fa-angle-double-right</icon>
                         <visible>0</visible>
                     </create-warehouses>
                     <edit-warehouses>
@@ -1210,7 +1288,6 @@
                         <bundle>stock-gui</bundle>
                         <controller>edit-warehouse</controller>
                         <action>index</action>
-                        <icon>fa-angle-double-right</icon>
                         <visible>0</visible>
                     </edit-warehouses>
                 </pages>
@@ -1221,7 +1298,6 @@
                 <bundle>payment-gui</bundle>
                 <controller>payment-method</controller>
                 <action>index</action>
-                <icon>fa-angle-double-right</icon>
                 <pages>
                     <payment-method-view>
                         <label>View</label>
@@ -1247,7 +1323,6 @@
                 <bundle>shipment-gui</bundle>
                 <controller>shipment-method</controller>
                 <action>index</action>
-                <icon>fa-angle-double-right</icon>
                 <pages>
                     <shipment-method-view>
                         <label>View</label>
@@ -1378,7 +1453,6 @@
                 <bundle>sales-order-threshold-gui</bundle>
                 <controller>global</controller>
                 <action>index</action>
-                <icon>fa-angle-double-right</icon>
             </sales-order-threshold-global>
             <sales-order-threshold-settings>
                 <label>Threshold settings</label>
@@ -1386,13 +1460,12 @@
                 <bundle>sales-order-threshold-gui</bundle>
                 <controller>settings</controller>
                 <action>index</action>
-                <icon>fa-angle-double-right</icon>
+                
             </sales-order-threshold-settings>
             <sales-order-threshold-merchant-relationship>
                 <label>Merchant relationships</label>
                 <title>Merchant relationships</title>
                 <uri>/merchant-relationship-sales-order-threshold-gui</uri>
-                <icon>fa-angle-double-right</icon>
                 <bundle>merchant-relationship-sales-order-threshold-gui</bundle>
                 <controller>index</controller>
                 <action>index</action>
@@ -1571,7 +1644,6 @@
                 <bundle>development</bundle>
                 <controller>architecture</controller>
                 <action>index</action>
-                <icon>fa-code</icon>
                 <pages>
                     <check-bundle>
                         <label>Violations</label>
