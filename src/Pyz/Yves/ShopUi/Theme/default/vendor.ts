@@ -20,6 +20,7 @@ require(`core-js/${coreJsFeaturesFolder}/map`);
 import 'classlist-polyfill';
 import 'string.prototype.startswith';
 import 'date-input-polyfill';
+import 'intersection-observer';
 import elementClosestPolyfill from 'element-closest';
 elementClosestPolyfill(window);
 
