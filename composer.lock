@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "17a39c4d0324f49270f8988c90f27c6a",
+    "content-hash": "2cdf94c17730efc16e19447eaa3a8a81",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.140.0",
+            "version": "3.141.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "9798418d4f0cdc0cf11dab453eca96e1d072df79"
+                "reference": "d57dbde176a7db7a6131bb5d325aff63515eabc3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/9798418d4f0cdc0cf11dab453eca96e1d072df79",
-                "reference": "9798418d4f0cdc0cf11dab453eca96e1d072df79",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d57dbde176a7db7a6131bb5d325aff63515eabc3",
+                "reference": "d57dbde176a7db7a6131bb5d325aff63515eabc3",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-06-03T18:12:30+00:00"
+            "time": "2020-06-10T18:11:38+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -3693,7 +3693,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -4800,11 +4800,11 @@
         },
         {
             "name": "spryker-eco/payone",
-            "version": "3.1.0",
+            "version": "dev-feature/eco-3518-aldi-improvements",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker-eco/payone.git",
-                "reference": "6efb711e2e0c06396e6a8d1a6a0d1f89a35bf724"
+                "reference": "6e6ec5f433e8307599c1f05345620afd963a1a14"
             },
             "require": {
                 "php": ">=7.2",
@@ -4874,7 +4874,7 @@
                 "MIT"
             ],
             "description": "Payone module",
-            "time": "2020-01-13T13:31:41+00:00"
+            "time": "2020-06-16T09:33:39+00:00"
         },
         {
             "name": "spryker/decimal-object",
@@ -5182,7 +5182,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "9e2b8cb0ae502d2ae7581a35426232a0c5d8b737"
+                "reference": "9dd83c6c5259db9eff499c4d412038719bd4befd"
             },
             "require": {
                 "php": ">=7.2"
@@ -5378,6 +5378,9 @@
                 "spryker/content-file-gui": "*",
                 "spryker/content-gui": "*",
                 "spryker/content-gui-extension": "*",
+                "spryker/content-navigation": "*",
+                "spryker/content-navigation-data-import": "*",
+                "spryker/content-navigation-gui": "*",
                 "spryker/content-product": "*",
                 "spryker/content-product-abstract-lists-rest-api": "*",
                 "spryker/content-product-data-import": "*",
@@ -5495,6 +5498,7 @@
                 "spryker/merchant-product-offer-search": "*",
                 "spryker/merchant-product-offer-storage": "*",
                 "spryker/merchant-product-offer-storage-extension": "*",
+                "spryker/merchant-product-offers-rest-api": "*",
                 "spryker/merchant-profile": "*",
                 "spryker/merchant-profile-data-import": "*",
                 "spryker/merchant-profile-gui": "*",
@@ -5892,7 +5896,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-06-03T13:47:20+00:00"
+            "time": "2020-06-11T09:58:26+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5900,7 +5904,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "a8421a7fee4f6b1ccc71b5b83c604335ad85acd2"
+                "reference": "3c55d3e5fa0e72ec6f21e62c938333abad9e3047"
             },
             "require": {
                 "php": ">=7.2"
@@ -5943,6 +5947,7 @@
                 "spryker-shop/configurable-bundle-widget": "*",
                 "spryker-shop/content-banner-widget": "*",
                 "spryker-shop/content-file-widget": "*",
+                "spryker-shop/content-navigation-widget": "*",
                 "spryker-shop/content-product-set-widget": "*",
                 "spryker-shop/content-product-widget": "*",
                 "spryker-shop/currency-widget": "*",
@@ -5966,7 +5971,6 @@
                 "spryker-shop/money-widget": "*",
                 "spryker-shop/multi-cart-page": "*",
                 "spryker-shop/multi-cart-widget": "*",
-                "spryker-shop/navigation-widget": "*",
                 "spryker-shop/newsletter-page": "*",
                 "spryker-shop/newsletter-widget": "*",
                 "spryker-shop/order-custom-reference-widget": "*",
@@ -6051,7 +6055,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-06-04T16:39:47+00:00"
+            "time": "2020-06-12T06:59:31+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -6932,9 +6936,6 @@
             ],
             "description": "Symfony Form Component",
             "homepage": "https://symfony.com",
-            "support": {
-                "source": "https://github.com/symfony/form/tree/4.4"
-            },
             "time": "2020-03-27T16:54:36+00:00"
         },
         {
@@ -11577,12 +11578,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "d1828e508b4ff2072365e75d2783256f4d6165ac"
+                "reference": "d6cceb8913b4c0164a9a8d28c714a3737cd779e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/d1828e508b4ff2072365e75d2783256f4d6165ac",
-                "reference": "d1828e508b4ff2072365e75d2783256f4d6165ac",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/d6cceb8913b4c0164a9a8d28c714a3737cd779e0",
+                "reference": "d6cceb8913b4c0164a9a8d28c714a3737cd779e0",
                 "shasum": ""
             },
             "require": {
@@ -11623,7 +11624,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2020-05-20T12:56:44+00:00"
+            "time": "2020-06-08T11:45:49+00:00"
         },
         {
             "name": "spryker/development-core",
@@ -11631,7 +11632,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "4ebafc09547bfc79d5d5f4f273f72cb517d4e6ae"
+                "reference": "f1578adf4cef5ce2f99e11916c3a93510d869231"
             },
             "require": {
                 "php": ">=7.2",
@@ -11673,7 +11674,7 @@
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2020-06-03T13:13:30+00:00"
+            "time": "2020-06-06T12:30:30+00:00"
         },
         {
             "name": "spryker/git-hook",
@@ -12293,6 +12294,7 @@
         "spryker/synchronization-behavior": 20,
         "spryker/uuid-behavior": 20,
         "spryker/silexphp": 20,
+        "spryker-eco/payone": 20,
         "spryker/architecture-sniffer": 20,
         "spryker/development-core": 20,
         "spryker/code-generator": 20,

@@ -7,7 +7,6 @@
     "spryker/spryker-shop": "dev-master",
     "spryker/decimal-object": "^1.0.0",
     "spryker-eco/loggly": "dev-master",
-    "spryker-eco/payone": "^3.1",
     "spryker/rabbit-mq": "dev-master",
     "spryker/install": "dev-master",
     "spryker/event-behavior": "dev-master as 1.17.0",
@@ -28,7 +27,8 @@
     "ext-pgsql": "*",
     "ext-readline": "*",
     "ext-redis": "*",
-    "wikimedia/composer-merge-plugin": "^1.4.1"
+    "wikimedia/composer-merge-plugin": "^1.4.1",
+    "spryker-eco/payone": "dev-feature/eco-3518-aldi-improvements"
   },
   "require-dev": {
     "codeception/codeception": "<4.1.2",
@@ -114,6 +114,10 @@
     {
       "type": "git",
       "url": "git@github.com:spryker/development-core.git"
+    },
+    {
+      "type": "git",
+      "url": "git@github.com:spryker-eco/payone.git"
     }
   ],
   "scripts": {

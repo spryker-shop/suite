@@ -8,7 +8,7 @@
     title: 'checkout.step.payment.title' | trans,
     customForms: {
         'Payone/credit_card': ['credit-card', 'payone'],
-        'Payone/direct_debit': ['direct-debit', 'payone'],
+        'Payone/instant_online_transfer': ['instant-online-transfer', 'payone'],
     }
 } %}
 
@@ -24,7 +24,8 @@
             },
             submit: {
                 enable: true,
-                text: 'checkout.step.summary' | trans
+                text: 'checkout.step.summary' | trans,
+                class: 'button button--success js-payone-credit-card__submit',
             },
             cancel: {
                 enable: true,
