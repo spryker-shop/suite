@@ -29,15 +29,16 @@ class ProductImageHydratorStep extends PublishAwareStep implements DataImportSte
     public const COLUMN_PRODUCT_IMAGE_KEY = 'product_image_key';
     public const COLUMN_PRODUCT_IMAGE_SET_KEY = 'product_image_set_key';
 
+    public const KEY_IMAGE_SET_FK_PRODUCT = 'fk_product';
+    public const KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT = 'fk_product_abstract';
+
     public const KEY_ID_LOCALE = 'id_locale';
     public const KEY_SPY_LOCALE = 'spy_locale';
     public const KEY_LOCALE_NAME = 'locale_name';
     public const KEY_IMAGE_SET_DB_NAME_COLUMN = 'name';
-    public const KEY_IMAGE_SET_FK_PRODUCT = 'fk_product';
     public const KEY_IMAGE_SET_RELATION_ID_PRODUCT_IMAGE_SET = 'id_product_image_set';
     public const KEY_IMAGE_SET_RELATION_ID_PRODUCT_IMAGE = 'id_product_image';
     public const KEY_IMAGE_SET_FK_RESOURCE_PRODUCT_SET = 'fk_resource_product_set';
-    public const KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT = 'fk_product_abstract';
     public const KEY_IMAGE_SET_FK_LOCALE = 'fk_locale';
     public const KEY_ID_PRODUCT = 'id_product';
     public const KEY_FK_PRODUCT = 'fk_product';

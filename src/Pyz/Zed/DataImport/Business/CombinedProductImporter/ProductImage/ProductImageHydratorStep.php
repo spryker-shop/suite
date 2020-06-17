@@ -59,10 +59,10 @@ class ProductImageHydratorStep extends ProductImageProductImageHydratorStep
         $this->assertAssignableProductTypeColumn($dataSet);
 
         if ($dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] == static::ASSIGNABLE_PRODUCT_TYPE_ABSTRACT) {
-            $dataSet[static::COLUMN_CONCRETE_SKU] = null;
+            $dataSet[static::COLUMN_CONCRETE_SKU] = $dataSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT] = null;
         }
         if ($dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] == static::ASSIGNABLE_PRODUCT_TYPE_CONCRETE) {
-            $dataSet[static::COLUMN_ABSTRACT_SKU] = null;
+            $dataSet[static::COLUMN_ABSTRACT_SKU] = $dataSet[ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT] = null;
         }
 
         return $dataSet;
