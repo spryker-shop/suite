@@ -7,9 +7,11 @@ use Spryker\Zed\PropelOrm\Business\Builder\ExtensionQueryBuilder;
 use Spryker\Zed\PropelOrm\Business\Builder\ObjectBuilder;
 use Spryker\Zed\PropelOrm\Business\Builder\QueryBuilder;
 
+$ENGINE = $config[PropelConstants::ZED_DB_ENGINE] ?? strtolower(getenv('SPRYKER_DB_ENGINE') ?: PropelConfig::DB_ENGINE_MYSQL);
+
 $DSN = sprintf(
     '%s:host=%s;port=%d;dbname=%s',
-    $config[PropelConstants::ZED_DB_ENGINE] ?? strtolower(getenv('SPRYKER_DB_ENGINE') ?: PropelConfig::DB_ENGINE_MYSQL),
+    $ENGINE,
     $config[PropelConstants::ZED_DB_HOST] ?? getenv('SPRYKER_DB_HOST'),
     $config[PropelConstants::ZED_DB_PORT] ?? getenv('SPRYKER_DB_PORT'),
     $config[PropelConstants::ZED_DB_DATABASE] ?? getenv('SPRYKER_DB_DATABASE')
@@ -63,11 +65,10 @@ $config[PropelConstants::PROPEL] = [
     'paths' => [
         'phpDir' => APPLICATION_ROOT_DIR,
         'sqlDir' => APPLICATION_ROOT_DIR . '/src/Orm/Propel/Sql',
-        'migrationDir' => APPLICATION_ROOT_DIR . '/src/Orm/Propel/Migration_' . $config[PropelConstants::ZED_DB_ENGINE],
+        'migrationDir' => APPLICATION_ROOT_DIR . '/src/Orm/Propel/Migration_' . $ENGINE,
         'schemaDir' => APPLICATION_ROOT_DIR . '/src/Orm/Propel/Schema',
     ],
 ];
 
-$ENGINE = $config[PropelConstants::ZED_DB_ENGINE] ?? strtolower(getenv('SPRYKER_DB_ENGINE') ?: PropelConfig::DB_ENGINE_MYSQL);
 $config[PropelConstants::PROPEL]['database']['connections']['default'] = $connections[$ENGINE];
 $config[PropelConstants::PROPEL]['database']['connections']['zed'] = $connections[$ENGINE];
