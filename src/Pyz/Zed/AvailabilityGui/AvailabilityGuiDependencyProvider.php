@@ -17,7 +17,7 @@ class AvailabilityGuiDependencyProvider extends SprykerAvailabilityGuiDependency
     /**
      * @return \Spryker\Zed\AvailabilityGuiExtension\Dependency\Plugin\AvailabilityListActionViewDataExpanderPluginInterface[]
      */
-    protected function getAvailabilityListDataExpanderPlugins(): array
+    protected function getAvailabilityListActionViewDataExpanderPlugins(): array
     {
         return [
             new MerchantAvailabilityListActionViewDataExpanderPlugin(),
@@ -27,7 +27,7 @@ class AvailabilityGuiDependencyProvider extends SprykerAvailabilityGuiDependency
     /**
      * @return \Spryker\Zed\AvailabilityGuiExtension\Dependency\Plugin\AvailabilityViewActionViewDataExpanderPluginInterface[]
      */
-    protected function getAvailabilityViewDataExpanderPlugins(): array
+    protected function getAvailabilityViewActionViewDataExpanderPlugins(): array
     {
         return [
             new MerchantProductAvailabilityViewActionViewDataExpanderPlugin(),
@@ -37,7 +37,7 @@ class AvailabilityGuiDependencyProvider extends SprykerAvailabilityGuiDependency
     /**
      * @return \Spryker\Zed\AvailabilityGuiExtension\Dependency\Plugin\AvailabilityAbstractTableQueryCriteriaExpanderPluginInterface[]
      */
-    protected function getAvailabilityAbstractQueryCriteriaExpanderPlugins(): array
+    protected function getAvailabilityAbstractTableQueryCriteriaExpanderPlugins(): array
     {
         return [
             new MerchantProductAvailabilityAbstractTableQueryCriteriaExpanderPlugin(),

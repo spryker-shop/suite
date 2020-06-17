@@ -158,7 +158,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     /**
      * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductAbstractListActionViewDataExpanderPluginInterface[]
      */
-    protected function getProductAbstractListDataExpanderPlugins(): array
+    protected function getProductAbstractListActionViewDataExpanderPlugins(): array
     {
         return [
             new MerchantProductAbstractListActionViewDataExpanderPlugin(),
@@ -168,7 +168,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     /**
      * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductAbstractViewActionViewDataExpanderPluginInterface[]
      */
-    protected function getProductAbstractViewDataExpanderPlugins(): array
+    protected function getProductAbstractViewActionViewDataExpanderPlugins(): array
     {
         return [
             new MerchantProductProductAbstractViewActionViewDataExpanderPlugin(),
@@ -178,7 +178,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     /**
      * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductTableQueryCriteriaExpanderPluginInterface[]
      */
-    protected function getProductAbstractQueryCriteriaExpanderPlugins(): array
+    protected function getProductTableQueryCriteriaExpanderPluginInterfaces(): array
     {
         return [
             new MerchantProductProductTableQueryCriteriaExpanderPlugin(),
