@@ -15,12 +15,126 @@
         <title>Sales</title>
         <icon>fa-shopping-cart</icon>
         <pages>
-            <order-matrix/>
-            <order-list/>
-            <sales-reclamations/>
-            <returns/>
-            <table/>
-            <gift-card/>
+            <order-matrix>
+                <label>Order Matrix</label>
+                <title>Order Matrix</title>
+                <bundle>sales</bundle>
+                <controller>matrix</controller>
+                <action>index</action>
+                <visible>1</visible>
+            </order-matrix>
+            <order-list>
+                <label>Orders</label>
+                <title>Orders</title>
+                <bundle>sales</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <visible>1</visible>
+                <pages>
+                    <order-view>
+                        <label>Order Overview</label>
+                        <title>Order Overview</title>
+                        <bundle>sales</bundle>
+                        <controller>detail</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </order-view>
+                    <order-item>
+                        <label>Order Items</label>
+                        <title>Order Items</title>
+                        <bundle>sales</bundle>
+                        <controller>order</controller>
+                        <action>items</action>
+                        <visible>0</visible>
+                    </order-item>
+                    <edit-address>
+                        <label>Edit Address</label>
+                        <title>Edit Address</title>
+                        <bundle>sales</bundle>
+                        <controller>edit</controller>
+                        <action>address</action>
+                        <visible>0</visible>
+                    </edit-address>
+                </pages>
+            </order-list>
+            <sales-reclamations>
+                <label>Reclamations</label>
+                <title>Reclamations</title>
+                <bundle>sales-reclamation-gui</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <visible>1</visible>
+                <pages>
+                    <create>
+                        <title>Create reclamation</title>
+                        <bundle>sales-reclamation-gui</bundle>
+                        <controller>create</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </create>
+                    <view>
+                        <title>View reclamation</title>
+                        <bundle>sales-reclamation-gui</bundle>
+                        <controller>detail</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </view>
+                    <close>
+                        <title>Close reclamation</title>
+                        <bundle>sales-reclamation-gui</bundle>
+                        <controller>detail</controller>
+                        <action>close</action>
+                        <visible>0</visible>
+                    </close>
+                    <refund>
+                        <title>Refund reclamation item</title>
+                        <bundle>sales-reclamation-gui</bundle>
+                        <controller>detail</controller>
+                        <action>close-item</action>
+                        <visible>0</visible>
+                    </refund>
+                </pages>
+            </sales-reclamations>
+            <returns>
+                <label>Returns</label>
+                <title>Returns</title>
+                <bundle>sales-return-gui</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <visible>1</visible>
+                <pages>
+                    <return-detail>
+                        <label>Return Overview</label>
+                        <title>Return Overview</title>
+                        <bundle>sales-return-gui</bundle>
+                        <controller>detail</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </return-detail>
+                    <sales-create>
+                        <label>Create Return</label>
+                        <title>Create Return</title>
+                        <bundle>sales-return-gui</bundle>
+                        <controller>create</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </sales-create>
+                </pages>
+            </returns>
+            <table>
+                <label>Refunds</label>
+                <title>Refunds</title>
+                <bundle>refund</bundle>
+                <controller>table</controller>
+                <action>index</action>
+            </table>
+            <gift-card>
+                <label>Gift Card Balance</label>
+                <title>Gift Card Balance</title>
+                <bundle>gift-card-balance</bundle>
+                <controller>index</controller>
+                <action>index</action>
+            </gift-card>
         </pages>
     </sales>
     <customer>
@@ -28,9 +142,99 @@
         <title>Customers</title>
         <icon>fa-users</icon>
         <pages>
-            <customer/>
-            <group/>
-            <customer-access/>
+            <customer>
+                <label>Customers</label>
+                <title>Customers</title>
+                <bundle>customer</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <visible>1</visible>
+                <pages>
+                    <customer-add>
+                        <label>Add a customer</label>
+                        <title>Add a customer</title>
+                        <bundle>customer</bundle>
+                        <controller>add</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </customer-add>
+                    <customer-edit>
+                        <label>Edit customer</label>
+                        <title>Edit customer</title>
+                        <bundle>customer</bundle>
+                        <controller>edit</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </customer-edit>
+                    <customer-view>
+                        <label>View</label>
+                        <title>View</title>
+                        <bundle>customer</bundle>
+                        <controller>view</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                        <pages>
+                            <customer-address-edit>
+                                <label>Edit address</label>
+                                <title>Edit address</title>
+                                <bundle>customer</bundle>
+                                <controller>address</controller>
+                                <action>edit</action>
+                                <visible>0</visible>
+                            </customer-address-edit>
+                            <customer-address-add>
+                                <label>Add address</label>
+                                <title>Add address</title>
+                                <bundle>customer</bundle>
+                                <controller>address</controller>
+                                <action>add</action>
+                                <visible>0</visible>
+                            </customer-address-add>
+                        </pages>
+                    </customer-view>
+                </pages>
+            </customer>
+            <group>
+                <label>Customer Groups</label>
+                <title>Customer Groups</title>
+                <bundle>customer-group</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <visible>1</visible>
+                <pages>
+                    <customer-group-add>
+                        <label>Add a Customer Group</label>
+                        <title>Add a Customer Group</title>
+                        <bundle>customer-group</bundle>
+                        <controller>add</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </customer-group-add>
+                    <customer-group-view>
+                        <label>View Customer Group</label>
+                        <title>View Customer Group</title>
+                        <bundle>customer-group</bundle>
+                        <controller>view</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </customer-group-view>
+                    <customer-group-edit>
+                        <label>Edit Customer Group</label>
+                        <title>Edit Customer Group</title>
+                        <bundle>customer-group</bundle>
+                        <controller>edit</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </customer-group-edit>
+                </pages>
+            </group>
+            <customer-access>
+                <label>Customer Access</label>
+                <title>Customer Access</title>
+                <bundle>customer-access-gui</bundle>
+                <controller>index</controller>
+                <action>index</action>
+            </customer-access>
             <company-gui>
                 <label>Companies</label>
                 <title>Companies</title>
@@ -59,14 +263,14 @@
                 <controller>list-company-user</controller>
                 <action>index</action>
             </company-user-gui>
-            <company-role-gui>
-                <label>Company Roles</label>
-                <title>Company Roles</title>
-                <bundle>company-role-gui</bundle>
-                <controller>list-company-role</controller>
-                <action>index</action>
-            </company-role-gui>
         </pages>
+        <company-role-gui>
+            <label>Company Roles</label>
+            <title>Company Roles</title>
+            <bundle>company-role-gui</bundle>
+            <controller>list-company-role</controller>
+            <action>index</action>
+        </company-role-gui>
     </customer>
     <catalog>
         <label>Catalog</label>
@@ -955,6 +1159,7 @@
     <users>
         <label>Users</label>
         <title>Users</title>
+        <icon>fa-user</icon>
         <pages>
             <user>
                 <label>Users</label>
@@ -1254,7 +1459,7 @@
                 <bundle>sales-order-threshold-gui</bundle>
                 <controller>settings</controller>
                 <action>index</action>
-                
+
             </sales-order-threshold-settings>
             <sales-order-threshold-merchant-relationship>
                 <label>Merchant relationships</label>
@@ -1355,7 +1560,13 @@
         <title>Maintenance</title>
         <icon>fa-wrench</icon>
         <pages>
-            <module-overview/>
+            <module-overview>
+                <label>Module overview</label>
+                <title>Module overview</title>
+                <bundle>development</bundle>
+                <controller>module-overview</controller>
+                <action>index</action>
+            </module-overview>
             <dependencies>
                 <label>Dependencies</label>
                 <title>Bundle dependencies</title>
@@ -1373,8 +1584,30 @@
                     </adjecency-matrix>
                 </pages>
             </dependencies>
-            <stability/>
-            <phpinfo/>
+            <stability>
+                <label>Stability</label>
+                <title>Bundles stability</title>
+                <bundle>development</bundle>
+                <controller>dependency</controller>
+                <action>stability</action>
+                <pages>
+                    <outgoing-dependency-graph>
+                        <label>Outgoing Dependency Graph</label>
+                        <title>Outgoing Dependency Graph</title>
+                        <bundle>development</bundle>
+                        <controller>dependency</controller>
+                        <action>outgoing-graph</action>
+                        <visible>0</visible>
+                    </outgoing-dependency-graph>
+                </pages>
+            </stability>
+            <phpinfo>
+                <label>PHP Info</label>
+                <title>PHP Info</title>
+                <bundle>maintenance</bundle>
+                <controller>php-info</controller>
+                <action>index</action>
+            </phpinfo>
             <integration>
                 <label>Used Plugins</label>
                 <title>Used Plugins</title>
@@ -1382,10 +1615,54 @@
                 <controller>dependency-provider-plugin-usage</controller>
                 <action>index</action>
             </integration>
-            <permission/>
-            <index/>
-            <api/>
-            <architecture-sniffer/>
+            <permission>
+                <label>Sync permissions</label>
+                <title>Sync permissions</title>
+                <bundle>permission</bundle>
+                <controller>index</controller>
+                <action>sync</action>
+            </permission>
+            <index>
+                <label>System Info</label>
+                <title>Maintenance</title>
+                <bundle>maintenance</bundle>
+                <controller>index</controller>
+                <action>index</action>
+            </index>
+            <api>
+                <label>Api</label>
+                <title>Api</title>
+                <bundle>api</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <uri>/api</uri>
+            </api>
+            <architecture-sniffer>
+                <label>Architecture Sniffer</label>
+                <title>Architecture Sniffer</title>
+                <bundle>development</bundle>
+                <controller>architecture</controller>
+                <action>index</action>
+                <pages>
+                    <check-bundle>
+                        <label>Violations</label>
+                        <title>Violations</title>
+                        <bundle>development</bundle>
+                        <controller>architecture</controller>
+                        <action>check-bundle</action>
+                        <icon>fa-code</icon>
+                        <visible>0</visible>
+                    </check-bundle>
+                    <rules>
+                        <label>Rules</label>
+                        <title>Rules</title>
+                        <bundle>development</bundle>
+                        <controller>architecture</controller>
+                        <action>rules</action>
+                        <visible>0</visible>
+                    </rules>
+                </pages>
+            </architecture-sniffer>
             <dataset>
                 <label>Dataset</label>
                 <title>Dataset</title>
@@ -1442,7 +1719,14 @@
                     </documents>
                 </pages>
             </elasticsearch>
-            <queue/>
+            <queue>
+                <label>Queue Processes</label>
+                <title>Queue Processes</title>
+                <bundle>queue</bundle>
+                <controller>index</controller>
+                <action>index</action>
+                <visible>1</visible>
+            </queue>
             <spryk-gui>
                 <label>SprykGui</label>
                 <title>SprykGui</title>
@@ -1468,7 +1752,33 @@
                     </spryk-gui-build>
                 </pages>
             </spryk-gui>
-            <storage/>
+            <storage>
+                <label>Storage</label>
+                <title>Storage index</title>
+                <bundle>storage</bundle>
+                <controller>maintenance</controller>
+                <action>index</action>
+                <pages>
+                    <storage-list>
+                        <label>List</label>
+                        <title>Storage list</title>
+                        <bundle>storage</bundle>
+                        <controller>maintenance</controller>
+                        <action>list</action>
+                        <icon>fa-hdd-o</icon>
+                        <visible>0</visible>
+                    </storage-list>
+                    <search-key>
+                        <label>Key</label>
+                        <title>Storage key</title>
+                        <bundle>storage</bundle>
+                        <controller>maintenance</controller>
+                        <action>key</action>
+                        <icon>fa-hdd-o</icon>
+                        <visible>0</visible>
+                    </search-key>
+                </pages>
+            </storage>
         </pages>
     </maintenance>
 </config>
