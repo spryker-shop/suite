@@ -16,13 +16,15 @@
     } only %}
         {% block slide %}
             <div class="text-center">
-                {% include atom('thumbnail') with {
+                {% include molecule('lazy-image') with {
                     class: 'js-pdp-color-group__image-' ~ embed.idProductAbstract,
-                    modifiers: ['bigger'],
-                    attributes: {
-                        itemprop: 'image',
-                        src: slide.externalUrlLarge
-                    }
+                    modifiers: ['thumbnail', 'bigger'],
+                    data: {
+                        imageSrc: slide.externalUrlLarge,
+                        extraAttributes: {
+                            itemprop: 'image',
+                        },
+                    },
                 } only %}
             </div>
         {% endblock %}
