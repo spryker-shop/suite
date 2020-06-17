@@ -8,39 +8,39 @@
 namespace Pyz\Zed\AvailabilityGui;
 
 use Spryker\Zed\AvailabilityGui\AvailabilityGuiDependencyProvider as SprykerAvailabilityGuiDependencyProvider;
-use Spryker\Zed\MerchantGui\Communication\Plugin\AvailabilityGui\MerchantAvailabilityListDataExpanderPlugin;
-use Spryker\Zed\MerchantProductGui\Communication\Plugin\AvailabilityGui\MerchantProductAvailabilityAbstractQueryCriteriaExpanderPlugin;
-use Spryker\Zed\MerchantProductGui\Communication\Plugin\AvailabilityGui\MerchantProductAvailabilityViewDataExpanderPlugin;
+use Spryker\Zed\MerchantGui\Communication\Plugin\AvailabilityGui\MerchantAvailabilityListActionViewDataExpanderPlugin;
+use Spryker\Zed\MerchantProductGui\Communication\Plugin\AvailabilityGui\MerchantProductAvailabilityAbstractTableQueryCriteriaExpanderPlugin;
+use Spryker\Zed\MerchantProductGui\Communication\Plugin\AvailabilityGui\MerchantProductAvailabilityViewActionViewDataExpanderPlugin;
 
 class AvailabilityGuiDependencyProvider extends SprykerAvailabilityGuiDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\AvailabilityGuiExtension\Dependency\Plugin\AvailabilityListDataExpanderPluginInterface[]
+     * @return \Spryker\Zed\AvailabilityGuiExtension\Dependency\Plugin\AvailabilityListActionViewDataExpanderPluginInterface[]
      */
     protected function getAvailabilityListDataExpanderPlugins(): array
     {
         return [
-            new MerchantAvailabilityListDataExpanderPlugin(),
+            new MerchantAvailabilityListActionViewDataExpanderPlugin(),
         ];
     }
 
     /**
-     * @return \Spryker\Zed\AvailabilityGuiExtension\Dependency\Plugin\AvailabilityViewDataExpanderPluginInterface[]
+     * @return \Spryker\Zed\AvailabilityGuiExtension\Dependency\Plugin\AvailabilityViewActionViewDataExpanderPluginInterface[]
      */
     protected function getAvailabilityViewDataExpanderPlugins(): array
     {
         return [
-            new MerchantProductAvailabilityViewDataExpanderPlugin(),
+            new MerchantProductAvailabilityViewActionViewDataExpanderPlugin(),
         ];
     }
 
     /**
-     * @return \Spryker\Zed\AvailabilityGuiExtension\Dependency\Plugin\AvailabilityAbstractQueryCriteriaExpanderPluginInterface[]
+     * @return \Spryker\Zed\AvailabilityGuiExtension\Dependency\Plugin\AvailabilityAbstractTableQueryCriteriaExpanderPluginInterface[]
      */
     protected function getAvailabilityAbstractQueryCriteriaExpanderPlugins(): array
     {
         return [
-            new MerchantProductAvailabilityAbstractQueryCriteriaExpanderPlugin(),
+            new MerchantProductAvailabilityAbstractTableQueryCriteriaExpanderPlugin(),
         ];
     }
 }
