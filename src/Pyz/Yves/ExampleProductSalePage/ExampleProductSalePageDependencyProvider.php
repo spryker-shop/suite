@@ -42,9 +42,9 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      */
     protected function addSearchClient(Container $container)
     {
-        $container[self::CLIENT_SEARCH] = function (Container $container) {
+        $container->set(static::CLIENT_SEARCH, function (Container $container) {
             return $container->getLocator()->search()->client();
-        };
+        });
 
         return $container;
     }
@@ -56,9 +56,9 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      */
     protected function addUrlStorageClient(Container $container)
     {
-        $container[self::CLIENT_URL_STORAGE] = function (Container $container) {
+        $container->set(static::CLIENT_URL_STORAGE, function (Container $container) {
             return $container->getLocator()->urlStorage()->client();
-        };
+        });
 
         return $container;
     }
@@ -70,9 +70,9 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      */
     protected function addStore($container)
     {
-        $container[self::STORE] = function () {
+        $container->set(static::STORE, function () {
             return Store::getInstance();
-        };
+        });
 
         return $container;
     }
@@ -84,9 +84,9 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      */
     protected function addCatalogClient(Container $container)
     {
-        $container[self::CLIENT_CATALOG] = function (Container $container) {
+        $container->set(static::CLIENT_CATALOG, function (Container $container) {
             return $container->getLocator()->catalog()->client();
-        };
+        });
 
         return $container;
     }
@@ -98,9 +98,9 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      */
     protected function addProductSalePageWidgetPlugins($container)
     {
-        $container[self::PLUGIN_PRODUCT_SALE_PAGE_WIDGETS] = function () {
+        $container->set(static::PLUGIN_PRODUCT_SALE_PAGE_WIDGETS, function () {
             return [];
-        };
+        });
 
         return $container;
     }
