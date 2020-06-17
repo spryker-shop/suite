@@ -9,25 +9,25 @@ use Spryker\Zed\PropelOrm\Business\Builder\QueryBuilder;
 
 $DSN = sprintf(
     '%s:host=%s;port=%d;dbname=%s',
-    $config[PropelConstants::ZED_DB_ENGINE],
-    $config[PropelConstants::ZED_DB_HOST],
-    $config[PropelConstants::ZED_DB_PORT],
-    $config[PropelConstants::ZED_DB_DATABASE]
+    $config[PropelConstants::ZED_DB_ENGINE] ?: strtolower(getenv('SPRYKER_DB_ENGINE') ?: PropelConfig::DB_ENGINE_MYSQL),
+    $config[PropelConstants::ZED_DB_HOST] ?: getenv('SPRYKER_DB_HOST'),
+    $config[PropelConstants::ZED_DB_PORT] ?: getenv('SPRYKER_DB_PORT'),
+    $config[PropelConstants::ZED_DB_DATABASE] ?: getenv('SPRYKER_DB_DATABASE')
 );
 
 $connections = [
     'pgsql' => [
         'adapter' => PropelConfig::DB_ENGINE_PGSQL,
         'dsn' => $DSN,
-        'user' => $config[PropelConstants::ZED_DB_USERNAME],
-        'password' => $config[PropelConstants::ZED_DB_PASSWORD],
+        'user' => $config[PropelConstants::ZED_DB_USERNAME] ?: getenv('SPRYKER_DB_USERNAME'),
+        'password' => $config[PropelConstants::ZED_DB_PASSWORD] ?: getenv('SPRYKER_DB_PASSWORD'),
         'settings' => [],
     ],
     'mysql' => [
         'adapter' => PropelConfig::DB_ENGINE_MYSQL,
         'dsn' => $DSN,
-        'user' => $config[PropelConstants::ZED_DB_USERNAME],
-        'password' => $config[PropelConstants::ZED_DB_PASSWORD],
+        'user' => $config[PropelConstants::ZED_DB_USERNAME] ?: getenv('SPRYKER_DB_USERNAME'),
+        'password' => $config[PropelConstants::ZED_DB_PASSWORD] ?: getenv('SPRYKER_DB_PASSWORD'),
         'settings' => [
             'charset' => 'utf8',
             'queries' => [
@@ -68,6 +68,6 @@ $config[PropelConstants::PROPEL] = [
     ],
 ];
 
-$ENGINE = $config[PropelConstants::ZED_DB_ENGINE];
+$ENGINE = $config[PropelConstants::ZED_DB_ENGINE] ?: strtolower(getenv('SPRYKER_DB_ENGINE') ?: PropelConfig::DB_ENGINE_MYSQL);
 $config[PropelConstants::PROPEL]['database']['connections']['default'] = $connections[$ENGINE];
 $config[PropelConstants::PROPEL]['database']['connections']['zed'] = $connections[$ENGINE];
