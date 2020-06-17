@@ -349,6 +349,7 @@ script:
   - if [[ $VALIDATION == 1 ]] ; then composer psalm ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console dev:composer:replace -d -v ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/spryker-dev-console dev:sync-composer -d ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:propel:validate-abstract ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:schema:validate ; fi
