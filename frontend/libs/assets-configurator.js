@@ -4,13 +4,13 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const getCopyConfig = appSettings => {
-    const ignoredArray = ['*.gitkeep'];
+    const ignoredResources = ['*.gitkeep'];
 
     const currentMode = process.argv.slice(globalSettings.expectedModeArgument)[0];
-    Object.keys(appSettings.imageOptimizationOptions.enableModes).map(mode => {
-        const isOptimisationEnabled = currentMode === mode && appSettings.imageOptimizationOptions.enableModes[mode];
+    Object.keys(appSettings.imageOptimizationOptions.enabledInModes).map(mode => {
+        const isOptimisationEnabled = currentMode === mode && appSettings.imageOptimizationOptions.enabledInModes[mode];
         if (isOptimisationEnabled) {
-            ignoredArray.push('**/images/**');
+            ignoredResources.push('**/images/**');
         }
     });
 
@@ -19,7 +19,7 @@ const getCopyConfig = appSettings => {
             copyConfig.push({
                 from: assetsPath,
                 to: '.',
-                ignore: ignoredArray,
+                ignore: ignoredResources,
             });
         }
         return copyConfig;

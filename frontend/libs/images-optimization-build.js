@@ -5,9 +5,9 @@ const imagesOptimization = require('../libs/images-optimization');
 
 const requestedArguments = getAttributes();
 const namespaceConfigList = getFilteredNamespaceConfigList(requestedArguments);
-const appSettings = getAppSettings(namespaceConfigList, requestedArguments.pathToConfig);
+const appSettingsList = getAppSettings(namespaceConfigList, requestedArguments.pathToConfig);
 
-appSettings.forEach(item => {
+appSettingsList.forEach(appSettings => {
     console.info('Image compression has been started...');
-    imagesOptimization(item);
+    imagesOptimization(appSettings);
 });

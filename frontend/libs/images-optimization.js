@@ -21,16 +21,16 @@ async function asyncForEach(array, callback) {
 
 const imagesOptimization = appSettings => {
     let isPublicOutput = false;
-    let isOptimize = true;
+    let shouldOptimize = true;
 
     const currentMode = process.argv.slice(globalSettings.expectedModeArgument)[0];
 
-    if (Object.keys(appSettings.imageOptimizationOptions.enableModes).includes(currentMode)) {
+    if (Object.keys(appSettings.imageOptimizationOptions.enabledInModes).includes(currentMode)) {
         isPublicOutput = true;
-        isOptimize = appSettings.imageOptimizationOptions.enableModes[currentMode];
+        shouldOptimize = appSettings.imageOptimizationOptions.enabledInModes[currentMode];
     }
 
-    if (!isOptimize) {
+    if (!shouldOptimize) {
         return;
     }
 
@@ -61,13 +61,11 @@ const imagesOptimization = appSettings => {
 
             const getDirectoriesRecursive = async source => {
                 const foundFolders = await getDirectories(source);
-                const foundFoldersPromises = foundFolders
-                    .map(async (dir) => await getDirectoriesRecursive(dir));
+                const foundFoldersPromises = foundFolders.map(async (dir) => await getDirectoriesRecursive(dir));
                 const allFolders = await Promise.all(foundFoldersPromises);
                 return [
                     source,
-                    ...allFolders
-                        .reduce((a, b) => a.concat(b), [])
+                    ...allFolders.reduce((a, b) => a.concat(b), [])
                 ];
             };
 
