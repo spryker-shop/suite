@@ -33,6 +33,7 @@ use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatter;
 use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface;
 use Pyz\Zed\DataImport\Business\Model\DataImporterConditional;
 use Pyz\Zed\DataImport\Business\Model\DataImporterDataSetWriterAwareConditional;
+use Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface;
 use Pyz\Zed\DataImport\Business\Model\Discount\DiscountWriterStep;
 use Pyz\Zed\DataImport\Business\Model\DiscountAmount\DiscountAmountWriterStep;
 use Pyz\Zed\DataImport\Business\Model\DiscountStore\DiscountStoreWriterStep;
@@ -342,17 +343,33 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
                 $this->getUtilEncodingService()
             ));
 
-        $dataImporter->setDataSetCondition(new ProductPriceMandatoryColumnCondition());
+        $dataImporter->setDataSetCondition($this->createCombinedProductPriceDataSetCondition());
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
-        $dataImporter->setDataSetWriter(new DataSetWriterCollection($this->createCombinedProductPriceWriterPlugins()));
+        $dataImporter->setDataSetWriter($this->createCombinedProductPriceDataImportWriters());
 
         return $dataImporter;
     }
 
     /**
+     * @return \Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface
+     */
+    protected function createCombinedProductPriceDataSetCondition(): DataSetConditionInterface
+    {
+        return new ProductPriceMandatoryColumnCondition();
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
+     */
+    protected function createCombinedProductPriceDataImportWriters(): DataSetWriterInterface
+    {
+        return new DataSetWriterCollection($this->createCombinedProductPriceWriterPlugins());
+    }
+
+    /**
      * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
      */
-    protected function createCombinedProductPriceWriterPlugins()
+    protected function createCombinedProductPriceWriterPlugins(): array
     {
         return [
             new CombinedProductPricePropelWriterPlugin(),
@@ -377,17 +394,33 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             ->addStep($this->createLocaleNameToIdStep(ProductImageProductImageHydratorStep::COLUMN_LOCALE, ProductImageHydratorStep::KEY_IMAGE_SET_FK_LOCALE))
             ->addStep(new ProductImageProductImageHydratorStep());
 
-        $dataImporter->setDataSetCondition(new ProductImageMandatoryColumnCondition());
+        $dataImporter->setDataSetCondition($this->createCombinedProductImageDataSetCondition());
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
-        $dataImporter->setDataSetWriter(new DataSetWriterCollection($this->createCombinedProductImageWriterPlugins()));
+        $dataImporter->setDataSetWriter($this->createCombinedProductImageDataImportWriters());
 
         return $dataImporter;
     }
 
     /**
+     * @return \Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface
+     */
+    protected function createCombinedProductImageDataSetCondition(): DataSetConditionInterface
+    {
+        return new ProductImageMandatoryColumnCondition();
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
+     */
+    protected function createCombinedProductImageDataImportWriters(): DataSetWriterInterface
+    {
+        return new DataSetWriterCollection($this->createCombinedProductImageWriterPlugins());
+    }
+
+    /**
      * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
      */
-    protected function createCombinedProductImageWriterPlugins()
+    protected function createCombinedProductImageWriterPlugins(): array
     {
         return [
             new CombinedProductImagePropelWriterPlugin(),
@@ -399,7 +432,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      *
      * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
      */
-    protected function createCombinedProductGroupImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
+    public function createCombinedProductGroupImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
     {
         $dataImporter = $this->getConditionalCsvDataImporterFromConfig(
             $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
@@ -411,10 +444,18 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
                 $this->createProductRepository()
             ));
 
-        $dataImporter->setDataSetCondition(new ProductGroupMandatoryColumnCondition());
+        $dataImporter->setDataSetCondition($this->createCombinedProductGroupDataSetCondition());
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
 
         return $dataImporter;
+    }
+
+    /**
+     * @return \Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface
+     */
+    protected function createCombinedProductGroupDataSetCondition(): DataSetConditionInterface
+    {
+        return new ProductGroupMandatoryColumnCondition();
     }
 
     /**
