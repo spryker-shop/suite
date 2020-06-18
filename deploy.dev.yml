@@ -4,11 +4,14 @@ namespace: spryker
 tag: 'dev'
 
 environment: docker
-image: spryker/php:7.2
+image: spryker/php:7.3
 
 composer:
-    mode: --dev
-    autoload: --optimize
+    mode: ''
+    autoload: ''
+
+assets:
+    mode: development
 
 regions:
     EU:
@@ -78,11 +81,13 @@ groups:
                 application: zed
                 endpoints:
                     zed.de.spryker.local:
+                        primal: true
                         store: DE
                         services:
                             session:
                                 namespace: 3
                     zed.at.spryker.local:
+                        primal: true
                         store: AT
                         services:
                             session:
@@ -107,6 +112,7 @@ groups:
                 application: zed
                 endpoints:
                     zed.us.spryker.local:
+                        primal: true
                         store: US
                         services:
                             session:
@@ -127,7 +133,7 @@ services:
             password: "secret"
         endpoints:
             queue.spryker.local:
-            locahost:5672:
+            localhost:5672:
                 protocol: tcp
     session:
         engine: redis

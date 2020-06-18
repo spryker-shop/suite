@@ -153,7 +153,7 @@ $config[SessionConstants::ZED_SSL_ENABLED] = (bool)getenv('SPRYKER_SSL_ENABLE');
 $config[ApplicationConstants::ZED_SSL_EXCLUDED] = ['health-check/index'];
 
 $config[ErrorHandlerConstants::DISPLAY_ERRORS] = true;
-$config[ErrorHandlerConstants::ZED_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Zed/errorpage/error.html';
+$config[ErrorHandlerConstants::ZED_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Zed/errorpage/5xx.html';
 $config[ErrorHandlerConstants::ERROR_RENDERER] = getenv('SPRYKER_DEBUG_ENABLED') ? WebExceptionErrorRenderer::class : WebHtmlErrorRenderer::class;
 $config[ErrorHandlerConstants::ERROR_LEVEL] = E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED;
 
@@ -181,6 +181,7 @@ $config[ApplicationConstants::ENABLE_APPLICATION_DEBUG]
 $config[WebProfilerConstants::IS_WEB_PROFILER_ENABLED]
     = $config[WebProfilerWidgetConstants::IS_WEB_PROFILER_ENABLED]
     = getenv('SPRYKER_DEBUG_ENABLED') && !getenv('SPRYKER_TESTING_ENABLED');
+$config[WebProfilerConstants::PROFILER_CACHE_DIRECTORY] = '/tmp/webprofiler';
 
 $ENVIRONMENT_PREFIX = '';
 $config[SequenceNumberConstants::ENVIRONMENT_PREFIX] = $ENVIRONMENT_PREFIX;
@@ -336,7 +337,7 @@ $config[TwigConstants::YVES_THEME] = $YVES_THEME;
 $config[CmsConstants::YVES_THEME] = $YVES_THEME;
 
 $config[ErrorHandlerConstants::DISPLAY_ERRORS] = true;
-$config[ErrorHandlerConstants::YVES_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Yves/errorpage/error.html';
+$config[ErrorHandlerConstants::YVES_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Yves/errorpage/5xx.html';
 $config[ErrorHandlerConstants::ERROR_RENDERER] = WebHtmlErrorRenderer::class;
 $config[ErrorHandlerConstants::IS_PRETTY_ERROR_HANDLER_ENABLED] = (bool)getenv('SPRYKER_DEBUG_ENABLED');
 
@@ -572,6 +573,7 @@ $config[LogConstants::LOG_ERROR_QUEUE_NAME] = 'error-log-queue';
 
 $logDir = (getenv('SPRYKER_LOG_DIRECTORY') ?: APPLICATION_ROOT_DIR . '/data') . '/' . APPLICATION_STORE;
 
+$config[EventConstants::LOG_FILE_PATH] = $logDir . '/ZED/application_events.log';
 $config[QueueConstants::QUEUE_WORKER_OUTPUT_FILE_NAME] = $logDir . '/ZED/queue.log';
 $config[PropelConstants::LOG_FILE_PATH] = $logDir . '/ZED/propel.log';
 
