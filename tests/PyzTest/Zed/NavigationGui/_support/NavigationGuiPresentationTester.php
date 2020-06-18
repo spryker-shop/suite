@@ -106,6 +106,14 @@ class NavigationGuiPresentationTester extends Actor
     }
 
     /**
+     * @return void
+     */
+    public function submitDeleteNavigationForm(): void
+    {
+        $this->click('//*[@id="delete_navigation_form_submit"]');
+    }
+
+    /**
      * @param string $pattern
      * @param string $value
      *

@@ -4,6 +4,7 @@ version: 0
 actions:
 #1. Commerce Setup data import
   - data_entity: store
+    # Cannot have a source because we use store.php
   - data_entity: currency
     source: data/import/currency.csv
   - data_entity: order-source
@@ -18,16 +19,24 @@ actions:
     source: data/import/shipment.csv
   - data_entity: shipment-price
     source: data/import/shipment_price.csv
-  - data_entity: shipment-method-store
   - data_entity: sales-order-threshold
+    source: data/import/sales_order_threshold.csv
   - data_entity: stock
-  - data_entity: stock-store
+    source: data/import/warehouse.csv
   - data_entity: payment-method
-  - data_entity: payment-method-store
+    source: data/import/payment_method.csv
   - data_entity: return-reason
+    source: data/import/return_reason.csv
+  # Store relation
+  - data_entity: shipment-method-store
+    source: data/import/shipment_method_store.csv
+  - data_entity: stock-store
+    source: data/import/warehouse_store.csv
+  - data_entity: payment-method-store
+    source: data/import/payment_method_store.csv
 
 
-#2. Catalog Setup data import - Catalog Setup category includes sub-categories: Categories, Products,Pricing, Stocks
+#2. Catalog Setup data import
   - data_entity: category-template
     source: data/import/category_template.csv
   - data_entity: category
@@ -37,21 +46,23 @@ actions:
   - data_entity: product-management-attribute
     source: data/import/product_management_attribute.csv
   - data_entity: product-abstract
-    source: data/import/icecat_biz_data/product_abstract.csv
-  - data_entity: product-abstract-store
-    source: data/import/icecat_biz_data/product_abstract_store.csv
+    source: data/import/product_abstract.csv
   - data_entity: product-concrete
-    source: data/import/icecat_biz_data/product_concrete.csv
+    source: data/import/product_concrete.csv
   - data_entity: product-image
-    source: data/import/icecat_biz_data/product_image.csv
+    source: data/import/product_image.csv
   - data_entity: product-price
     source: data/import/product_price.csv
   - data_entity: product-price-schedule
+    source: data/import/product_price_schedule.csv
   - data_entity: product-stock
     source: data/import/product_stock.csv
+  # Store relation
+  - data_entity: product-abstract-store
+    source: data/import/product_abstract_store.csv
 
 
-#3. Special Product Types Setup import - Special Product Types category includes sub-categories: Product Options, Measurements, Product Bundles, Gift Cards
+#3. Special Product Types Setup import
   - data_entity: product-option
     source: data/import/product_option.csv
   - data_entity: product-option-price
@@ -61,40 +72,47 @@ actions:
   - data_entity: gift-card-concrete-configuration
     source: data/import/gift_card_concrete_configuration.csv
   - data_entity: product-measurement-unit
+    source: data/import/product_measurement_unit.csv
   - data_entity: product-measurement-base-unit
+    source: data/import/product_measurement_base_unit.csv
   - data_entity: product-measurement-sales-unit
-  - data_entity: product-measurement-sales-unit-store
+    source: data/import/product_measurement_sales_unit.csv
   - data_entity: product-packaging-unit-type
+    source: data/import/product_packaging_unit_type.csv
   - data_entity: product-packaging-unit
+    source: data/import/product_packaging_unit.csv
   - data_entity: product-list
+    source: data/import/product_list.csv
   - data_entity: product-list-category
+    source: data/import/product_list_to_category.csv
   - data_entity: product-list-product-concrete
+    source: data/import/product_list_to_concrete_product.csv
   - data_entity: configurable-bundle-template
+    source: data/import/configurable_bundle_template.csv
   - data_entity: configurable-bundle-template-slot
+    source: data/import/configurable_bundle_template_slot.csv
   - data_entity: configurable-bundle-template-image
+    source: data/import/configurable_bundle_template_image.csv
+  # Store relation
+  - data_entity: product-measurement-sales-unit-store
+    source: data/import/product_measurement_sales_unit_store.csv
 
 
 #4. Merchandising Setup import
   - data_entity: discount
     source: data/import/discount.csv
-  - data_entity: discount-store
-    source: data/import/discount_store.csv
   - data_entity: discount-voucher
     source: data/import/discount_voucher.csv
   - data_entity: product-group
     source: data/import/product_group.csv
   - data_entity: product-relation
     source: data/import/product_relation.csv
-  - data_entity: product-relation-store
-    source: data/import/product_relation_store.csv
   - data_entity: product-review
     source: data/import/product_review.csv
   - data_entity: product-label
     source: data/import/product_label.csv
-  - data_entity: product-label-store
-    source: data/import/product_label_store.csv
   - data_entity: product-set
-    source: data/import/icecat_biz_data/product_set.csv
+    source: data/import/product_set.csv
   - data_entity: product-search-attribute-map
     source: data/import/product_search_attribute_map.csv
   - data_entity: product-search-attribute
@@ -102,91 +120,152 @@ actions:
   - data_entity: discount-amount
     source: data/import/discount_amount.csv
   - data_entity: product-discontinued
+    source: data/import/product_discontinued.csv
   - data_entity: product-alternative
+    source: data/import/product_alternative.csv
   - data_entity: product-quantity
     source: data/import/product_quantity.csv
+    # Store relation
+  - data_entity: discount-store
+    source: data/import/discount_store.csv
+  - data_entity: product-relation-store
+    source: data/import/product_relation_store.csv
 
 
-#5. Navigation Setup import
+#5. Content Management Setup import
   - data_entity: navigation
     source: data/import/navigation.csv
-  - data_entity: navigation-node
-    source: data/import/navigation_node.csv
-
-
-#6. Content Management Setup import
   - data_entity: cms-template
     source: data/import/cms_template.csv
   - data_entity: cms-block
     source: data/import/cms_block.csv
-  - data_entity: cms-block-store
-    source: data/import/cms_block_store.csv
   - data_entity: cms-block-category-position
     source: data/import/cms_block_category_position.csv
   - data_entity: cms-block-category
     source: data/import/cms_block_category.csv
   - data_entity: content-banner
+    source: data/import/content_banner.csv
+  - data_entity: content-navigation
+    source: data/import/content_navigation.csv
   - data_entity: content-product-abstract-list
+    source: data/import/content_product_abstract_list.csv
   - data_entity: content-product-set
+    source: data/import/content_product_set.csv
   - data_entity: cms-page
     source: data/import/cms_page.csv
-  - data_entity: cms-page-store
-    source: data/import/cms_page_store.csv
   - data_entity: cms-slot-template
     source: data/import/cms_slot_template.csv
   - data_entity: cms-slot
     source: data/import/cms_slot.csv
   - data_entity: cms-slot-block
     source: data/import/cms_slot_block.csv
+  - data_entity: navigation-node
+    source: data/import/navigation_node.csv
+  # Store relation
+  - data_entity: cms-page-store
+    source: data/import/cms_page_store.csv
+  - data_entity: cms-block-store
+    source: data/import/cms_block_store.csv
 
 
-### 7. B2B data import
-    ### B2B Company
+#6. B2B Setup import
   - data_entity: company
+    source : data/import/company.csv
   - data_entity: company-business-unit
-  - data_entity: company-unit-address
-  - data_entity: company-unit-address-label
-  - data_entity: company-unit-address-label-relation
-  - data_entity: company-user
-  - data_entity: company-role
-  - data_entity: company-role-permission
-  - data_entity: company-user-role
-  - data_entity: company-business-unit-user
+    source : data/import/company_business_unit.csv
   - data_entity: company-business-unit-address
+    source : data/import/company_business_unit_address.csv
+  - data_entity: company-user
+    source: data/import/company_user.csv
+  - data_entity: company-business-unit-user
+    source : data/import/company_business_unit_user.csv
+  - data_entity: company-unit-address
+    source : data/import/company_unit_address.csv
+  - data_entity: company-unit-address-label
+    source : data/import/company_unit_address_label.csv
+  - data_entity: company-unit-address-label-relation
+    source : data/import/company_unit_address_label_relation.csv
+  - data_entity: company-role
+    source : data/import/company_role.csv
+  - data_entity: company-role-permission
+    source : data/import/company_role_permission.csv
+  - data_entity: company-user-role
+    source : data/import/company_user_role.csv
   - data_entity: company-user-on-behalf
-    ### B2B Merchant
+    source: data/import/company_user_on_behalf.csv
   - data_entity: merchant
+    source : data/import/merchant.csv
   - data_entity: merchant-user
     source: data/import/merchant_user.csv
-  - data_entity: merchant-product
-    source: data/import/merchant_product.csv
-  - data_entity: merchant-store
-  - data_entity: merchant-profile
-  - data_entity: merchant-profile-address
-  - data_entity: merchant-product-offer
-  - data_entity: merchant-product-offer-store
-  - data_entity: merchant-opening-hours-weekday-schedule
-  - data_entity: merchant-opening-hours-date-schedule
-  - data_entity: merchant-oms-process
-  - data_entity: product-offer-validity
-  - data_entity: price-product-offer
-  - data_entity: product-offer-stock
-  - data_entity: merchant-stock
   - data_entity: merchant-relationship
-  - data_entity: merchant-relationship-sales-order-threshold
+    source : data/import/merchant_relationship.csv
   - data_entity: merchant-relationship-product-list
+    source : data/import/merchant_relation_to_product_list.csv
+  - data_entity: merchant-relationship-sales-order-threshold
+    source: data/import/sales_order_threshold_per_merchant_relationship.csv
   - data_entity: product-price-merchant-relationship
-    ### B2B Shopping List
+    source: data/import/price_product_merchant_relationship.csv
   - data_entity: shopping-list
+    source: data/import/shopping_list.csv
   - data_entity: shopping-list-item
+    source: data/import/shopping_list_item.csv
   - data_entity: shopping-list-company-user
+    source: data/import/shopping_list_company_user.csv
   - data_entity: shopping-list-company-business-unit
-    ### B2B Miscellaneous
+    source: data/import/shopping_list_company_business_unit.csv
   - data_entity: multi-cart
+    source: data/import/multi_cart.csv
   - data_entity: shared-cart
+    source: data/import/shared_cart.csv
   - data_entity: quote-request
+    source: data/import/quote_request.csv
   - data_entity: quote-request-version
+    source: data/import/quote_request_version.csv
+  # Store relation
+  - data_entity: merchant-store
+    source: data/import/merchant_store.csv
 
-#8. Miscellaneous Setup import
+
+#7. Miscellaneous Setup import
   - data_entity: comment
+    source: data/import/comment.csv
   - data_entity: mime-type
+    source: data/import/mime_type.csv
+
+
+#8. Marketplace import
+  - data_entity: merchant
+    source: data/import/marketplace/merchant.csv
+  - data_entity: merchant-user
+    source: data/import/marketplace/merchant_user.csv
+  - data_entity: merchant-product
+    source: data/import/marketplace/merchant_product.csv
+  - data_entity: merchant-profile
+    source: data/import/marketplace/merchant_profile.csv
+  - data_entity: merchant-profile-address
+    source: data/import/marketplace/merchant_profile_address.csv
+  - data_entity: merchant-product-offer
+    source: data/import/marketplace/merchant_product_offer.csv
+  - data_entity: merchant-opening-hours-date-schedule
+    source: data/import/marketplace/merchant_open_hours_date_schedule.csv
+  - data_entity: merchant-opening-hours-weekday-schedule
+    source: data/import/marketplace/merchant_open_hours_week_day_schedule.csv
+  - data_entity: product-offer-validity
+    source: data/import/marketplace/product_offer_validity.csv
+  - data_entity: price-product-offer
+    source: data/import/marketplace/price_product_offer.csv
+  - data_entity: product-offer-stock
+    source: data/import/marketplace/product_offer_stock.csv
+  - data_entity: merchant-oms-process
+    source: data/import/marketplace/merchant_oms_process.csv
+  - data_entity: stock
+    source: data/import/marketplace/warehouse.csv
+  - data_entity: merchant-stock
+    source: data/import/marketplace/merchant_stock.csv
+  # Store relation
+  - data_entity: merchant-store
+    source: data/import/marketplace/merchant_store.csv
+  - data_entity: merchant-product-offer-store
+    source: data/import/marketplace/merchant_product_offer_store.csv
+  - data_entity: stock-store
+    source: data/import/marketplace/warehouse_store.csv
