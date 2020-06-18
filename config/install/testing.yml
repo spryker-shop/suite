@@ -155,15 +155,3 @@ sections:
 
         zed-build-frontend:
             command: "vendor/bin/console frontend:zed:build"
-
-    backup:
-        export-database:
-            command: "vendor/bin/console propel:database:export ./data/test.backup_new"
-            groups:
-                - propel
-
-    restore:
-        drop-database:
-            command: "vendor/bin/console propel:database:drop"
-            groups:
-                - propel
