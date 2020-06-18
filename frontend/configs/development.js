@@ -54,7 +54,7 @@ const getConfiguration = async appSettings => {
             output: {
                 path: join(appSettings.context, appSettings.paths.public),
                 publicPath: `/${appSettings.urls.assets}/`,
-                filename: `./js/${appSettings.name}.[name].${moduleVersion}.js`,
+                filename: moduleVersion === 'esm' ? `./js/${appSettings.name}.[name].js` : `./js/${appSettings.name}.[name].${moduleVersion}.js`,
                 jsonpFunction: `webpackJsonp_${appSettings.name.replace(/(-|\W)+/gi, '_')}`
             },
 

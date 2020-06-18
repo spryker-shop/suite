@@ -1,14 +1,7 @@
 {% extends template('page-blank', '@SprykerShop:ShopUi') %}
 
-{% block headScripts %}
-    <script nomodule type="application/javascript" src="{{ publicPath('js/yves_default.runtime.legacy.js') }}"></script>
-    <script type="module" src="{{ publicPath('js/yves_default.runtime.esm.js') }}" crossorigin="anonymous"></script>
-{% endblock %}
+{% block template %}
+    {% set isOldBuildVerionsSupported = false %}
 
-{% block footerScripts %}
-    <script nomodule type="application/javascript" src="{{ publicPath('js/yves_default.es6-polyfill.legacy.js') }}"></script>
-    <script nomodule type="application/javascript" src="{{ publicPath('js/yves_default.vendor.legacy.js') }}"></script>
-    <script nomodule type="application/javascript" src="{{ publicPath('js/yves_default.app.legacy.js') }}"></script>
-    <script type="module" src="{{ publicPath('js/yves_default.vendor.esm.js') }}" crossorigin="anonymous"></script>
-    <script type="module" src="{{ publicPath('js/yves_default.app.esm.js') }}" crossorigin="anonymous"></script>
+    {{ parent() }}
 {% endblock %}

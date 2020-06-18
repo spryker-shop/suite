@@ -13,7 +13,7 @@ const globalSettings = {
     },
 
     // build modules
-    modules: {
+    buildVariants: {
         esm: 'esm',
         legacy: 'legacy',
     },
@@ -41,7 +41,7 @@ const moduleVersion = moduleVersionArray.length ? moduleVersionArray[0].replace(
 
 const moduleSettings = {
     moduleVersion,
-    isESModule: moduleVersion === globalSettings.modules.esm,
+    isESModule: moduleVersion === globalSettings.buildVariants.esm,
 };
 
 const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {

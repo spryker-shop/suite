@@ -97,7 +97,7 @@ const parseCommandLine = () => (
         .option('-t, --theme <theme name>', 'build the requested theme. Multiple arguments are allowed.', collectArguments, [])
         .option('-i, --info', 'information about all namespaces and available themes')
         .option('-c, --config <path>', 'path to JSON file with namespace config', globalSettings.paths.namespaceConfig)
-        .option('-m, --module <module>', 'build determined module version', globalSettings.modules)
+        .option('-m, --module <module>', 'build determined module version', globalSettings.buildVariants)
         .arguments('<mode>')
         .action(function (modeValue) {
             const { argv, env } = process;
