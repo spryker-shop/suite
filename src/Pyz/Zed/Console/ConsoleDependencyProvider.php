@@ -400,6 +400,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new GenerateRestApiDocumentationConsole();
             $commands[] = new QueueDumpConsole();
             $commands[] = new EventTriggerListenerConsole();
+            $commands[] = new CustomerPasswordResetConsole();
+            $commands[] = new CustomerPasswordSetConsole();
 
             $commands[] = new SprykRunConsole();
             $commands[] = new SprykDumpConsole();
