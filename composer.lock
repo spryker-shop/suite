@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ff5e939c6242a71fd689dd6c88ccb317",
+    "content-hash": "de6a79f2a31be72d76bd36277c2caddc",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -134,6 +134,12 @@
                 "bignum",
                 "brick",
                 "math"
+            ],
+            "funding": [
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/brick/math",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-04-15T15:59:35+00:00"
         },
@@ -1605,15 +1611,15 @@
             "authors": [
                 {
                     "name": "Alex Bilbie",
-                    "role": "Developer",
                     "email": "hello@alexbilbie.com",
-                    "homepage": "http://www.alexbilbie.com"
+                    "homepage": "http://www.alexbilbie.com",
+                    "role": "Developer"
                 },
                 {
                     "name": "Andy Millington",
-                    "role": "Developer",
                     "email": "andrew@noexceptions.io",
-                    "homepage": "https://www.noexceptions.io"
+                    "homepage": "https://www.noexceptions.io",
+                    "role": "Developer"
                 }
             ],
             "description": "A lightweight and powerful OAuth 2.0 authorization and resource server library with support for all the core specification grants. This library will allow you to secure your API with OAuth and allow your applications users to approve apps that want to access their data from your API.",
@@ -9999,16 +10005,16 @@
         },
         {
             "name": "spryker/availability",
-            "version": "9.2.1",
+            "version": "9.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/availability.git",
-                "reference": "68fbfe04d1a21c01188f5a3ae0cfb71fc62533f5"
+                "reference": "8fc062b696c6e46bc94b8512dd07a0a7a5af458b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/availability/zipball/68fbfe04d1a21c01188f5a3ae0cfb71fc62533f5",
-                "reference": "68fbfe04d1a21c01188f5a3ae0cfb71fc62533f5",
+                "url": "https://api.github.com/repos/spryker/availability/zipball/8fc062b696c6e46bc94b8512dd07a0a7a5af458b",
+                "reference": "8fc062b696c6e46bc94b8512dd07a0a7a5af458b",
                 "shasum": ""
             },
             "require": {
@@ -10020,6 +10026,7 @@
                 "spryker/key-builder": "^1.0.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/oms": "^11.0.0",
+                "spryker/oms-extension": "^1.2.0",
                 "spryker/product": "^5.0.0 || ^6.0.0",
                 "spryker/product-alternative-extension": "^1.0.0",
                 "spryker/propel-orm": "^1.0.0",
@@ -10056,7 +10063,7 @@
                 "proprietary"
             ],
             "description": "Availability module",
-            "time": "2020-05-29T13:08:37+00:00"
+            "time": "2020-06-18T08:39:34+00:00"
         },
         {
             "name": "spryker/availability-cart-connector",
@@ -26815,16 +26822,16 @@
         },
         {
             "name": "spryker/oms",
-            "version": "11.6.0",
+            "version": "11.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/oms.git",
-                "reference": "08cd1d5a287d8666ae6eb678d0a53cb92c0e203a"
+                "reference": "fab6ad24cc1186d3b3d9a2f2c174dd14ff175e83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/oms/zipball/08cd1d5a287d8666ae6eb678d0a53cb92c0e203a",
-                "reference": "08cd1d5a287d8666ae6eb678d0a53cb92c0e203a",
+                "url": "https://api.github.com/repos/spryker/oms/zipball/fab6ad24cc1186d3b3d9a2f2c174dd14ff175e83",
+                "reference": "fab6ad24cc1186d3b3d9a2f2c174dd14ff175e83",
                 "shasum": ""
             },
             "require": {
@@ -26835,7 +26842,7 @@
                 "spryker/gui": "^3.0.0",
                 "spryker/kernel": "^3.33.0",
                 "spryker/mail": "^4.0.0",
-                "spryker/oms-extension": "^1.1.0",
+                "spryker/oms-extension": "^1.2.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/sales": "^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^10.0.0 || ^11.0.0",
                 "spryker/sales-extension": "^1.6.0",
@@ -26875,7 +26882,7 @@
                 "proprietary"
             ],
             "description": "Oms module",
-            "time": "2020-05-26T14:30:35+00:00"
+            "time": "2020-06-11T15:54:58+00:00"
         },
         {
             "name": "spryker/oms-discount-connector",
@@ -26925,16 +26932,16 @@
         },
         {
             "name": "spryker/oms-extension",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/oms-extension.git",
-                "reference": "4f6e13d0810d1c8f5dc90fa00c43fa80331e071f"
+                "reference": "c13ecddec2912f1bb5b332895e910a9a0f339fb6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/oms-extension/zipball/4f6e13d0810d1c8f5dc90fa00c43fa80331e071f",
-                "reference": "4f6e13d0810d1c8f5dc90fa00c43fa80331e071f",
+                "url": "https://api.github.com/repos/spryker/oms-extension/zipball/c13ecddec2912f1bb5b332895e910a9a0f339fb6",
+                "reference": "c13ecddec2912f1bb5b332895e910a9a0f339fb6",
                 "shasum": ""
             },
             "require": {
@@ -26942,8 +26949,7 @@
                 "spryker/transfer": "^3.8.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
+                "spryker/code-sniffer": "*"
             },
             "type": "library",
             "extra": {
@@ -26961,7 +26967,56 @@
                 "proprietary"
             ],
             "description": "OmsExtension module",
-            "time": "2019-11-15T10:00:42+00:00"
+            "time": "2020-06-11T15:54:58+00:00"
+        },
+        {
+            "name": "spryker/oms-product-offer-reservation",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/oms-product-offer-reservation.git",
+                "reference": "a89fd6d9d2b2b9d7e48eb37f507ac7b1366f31d2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/oms-product-offer-reservation/zipball/a89fd6d9d2b2b9d7e48eb37f507ac7b1366f31d2",
+                "reference": "a89fd6d9d2b2b9d7e48eb37f507ac7b1366f31d2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/decimal-object": "^1.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/oms": "^11.7.0",
+                "spryker/oms-extension": "^1.2.0",
+                "spryker/sales": "^11.0.0",
+                "spryker/store": "^1.0.0",
+                "spryker/transfer": "^3.18.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/product-offer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\OmsProductOfferReservation\\Helper\\": "tests/SprykerTest/Zed/OmsProductOfferReservation/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "OmsProductOfferReservation module",
+            "time": "2020-06-16T13:34:29+00:00"
         },
         {
             "name": "spryker/oms-rest-api",
@@ -29561,16 +29616,16 @@
         },
         {
             "name": "spryker/product-bundle",
-            "version": "7.5.0",
+            "version": "7.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-bundle.git",
-                "reference": "08be88133f25acdae6103011c66d6abbf892d4e4"
+                "reference": "cb2e0b40ffd6d9a293456b60735cbb4a74883874"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-bundle/zipball/08be88133f25acdae6103011c66d6abbf892d4e4",
-                "reference": "08be88133f25acdae6103011c66d6abbf892d4e4",
+                "url": "https://api.github.com/repos/spryker/product-bundle/zipball/cb2e0b40ffd6d9a293456b60735cbb4a74883874",
+                "reference": "cb2e0b40ffd6d9a293456b60735cbb4a74883874",
                 "shasum": ""
             },
             "require": {
@@ -29582,6 +29637,7 @@
                 "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/messenger": "^3.0.0",
+                "spryker/oms-extension": "^1.2.0",
                 "spryker/persistent-cart-extension": "^1.0.0",
                 "spryker/price": "^5.0.0",
                 "spryker/price-product": "^1.0.0 || ^2.0.0 || ^4.0.0",
@@ -29630,7 +29686,7 @@
                 "proprietary"
             ],
             "description": "ProductBundle module",
-            "time": "2020-06-11T07:57:37+00:00"
+            "time": "2020-06-15T14:57:56+00:00"
         },
         {
             "name": "spryker/product-bundle-product-list-connector",
@@ -32011,16 +32067,16 @@
         },
         {
             "name": "spryker/product-offer-availability",
-            "version": "0.3.0",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-offer-availability.git",
-                "reference": "32bcc9bbf7da6cf59135f56fe027ab6282d0dcaa"
+                "reference": "c5e2d7c827f41936d8ea12ed57e8fafd14005694"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-offer-availability/zipball/32bcc9bbf7da6cf59135f56fe027ab6282d0dcaa",
-                "reference": "32bcc9bbf7da6cf59135f56fe027ab6282d0dcaa",
+                "url": "https://api.github.com/repos/spryker/product-offer-availability/zipball/c5e2d7c827f41936d8ea12ed57e8fafd14005694",
+                "reference": "c5e2d7c827f41936d8ea12ed57e8fafd14005694",
                 "shasum": ""
             },
             "require": {
@@ -32028,7 +32084,7 @@
                 "spryker/availability-extension": "^1.0.0",
                 "spryker/decimal-object": "^1.0.0",
                 "spryker/kernel": "^3.33.0",
-                "spryker/oms": "^11.0.0",
+                "spryker/oms": "^11.7.0",
                 "spryker/product-offer-stock": "^0.3.0",
                 "spryker/transfer": "^3.18.0"
             },
@@ -32056,20 +32112,20 @@
                 "proprietary"
             ],
             "description": "ProductOfferAvailability module",
-            "time": "2020-02-13T15:35:18+00:00"
+            "time": "2020-06-16T13:34:29+00:00"
         },
         {
             "name": "spryker/product-offer-availability-storage",
-            "version": "0.3.0",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-offer-availability-storage.git",
-                "reference": "850774f9de39fa363e34e496fb05c2160c71eb1e"
+                "reference": "d6e87e84256b58c983507745cdb612ef78654922"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-offer-availability-storage/zipball/850774f9de39fa363e34e496fb05c2160c71eb1e",
-                "reference": "850774f9de39fa363e34e496fb05c2160c71eb1e",
+                "url": "https://api.github.com/repos/spryker/product-offer-availability-storage/zipball/d6e87e84256b58c983507745cdb612ef78654922",
+                "reference": "d6e87e84256b58c983507745cdb612ef78654922",
                 "shasum": ""
             },
             "require": {
@@ -32077,9 +32133,9 @@
                 "spryker/availability-storage-extension": "^1.0.0",
                 "spryker/event-behavior": "^1.0.0",
                 "spryker/kernel": "^3.33.0",
-                "spryker/oms": "^11.0.0",
+                "spryker/oms-product-offer-reservation": "^0.1.0",
                 "spryker/product-offer": "^0.2.0 || ^0.3.0",
-                "spryker/product-offer-availability": "^0.3.0",
+                "spryker/product-offer-availability": "^0.4.0",
                 "spryker/product-offer-stock": "^0.3.0",
                 "spryker/propel-orm": "^1.3.0",
                 "spryker/storage": "^3.0.0",
@@ -32093,6 +32149,7 @@
                 "spryker/code-sniffer": "*",
                 "spryker/decimal-object": "*",
                 "spryker/event": "*",
+                "spryker/oms": "*",
                 "spryker/propel": "*",
                 "spryker/queue": "*",
                 "spryker/stock": "*",
@@ -32117,7 +32174,7 @@
                 "proprietary"
             ],
             "description": "ProductOfferAvailabilityStorage module",
-            "time": "2020-02-13T18:02:44+00:00"
+            "time": "2020-06-16T13:54:40+00:00"
         },
         {
             "name": "spryker/product-offer-merchant-portal-gui",
@@ -32174,6 +32231,57 @@
             ],
             "description": "ProductOfferMerchantPortalGui module",
             "time": "2020-06-09T10:04:55+00:00"
+        },
+        {
+            "name": "spryker/product-offer-packaging-unit",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-offer-packaging-unit.git",
+                "reference": "1cafeb79b1d310bb213a0b0531270e6127bf6600"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-offer-packaging-unit/zipball/1cafeb79b1d310bb213a0b0531270e6127bf6600",
+                "reference": "1cafeb79b1d310bb213a0b0531270e6127bf6600",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/kernel": "^3.33.0",
+                "spryker/oms": "^11.7.0",
+                "spryker/oms-extension": "^1.2.0",
+                "spryker/propel-orm": "^1.9.0",
+                "spryker/sales": "^11.0.0",
+                "spryker/transfer": "^3.18.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/decimal-object": "*",
+                "spryker/product": "*",
+                "spryker/product-offer": "*",
+                "spryker/product-packaging-unit": "*",
+                "spryker/propel": "*",
+                "spryker/store": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductOfferPackagingUnit module",
+            "time": "2020-06-16T13:34:29+00:00"
         },
         {
             "name": "spryker/product-offer-sales",
@@ -32666,16 +32774,16 @@
         },
         {
             "name": "spryker/product-packaging-unit",
-            "version": "4.2.1",
+            "version": "4.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-packaging-unit.git",
-                "reference": "3aceb6c00bf090ca4ff4227b3ba52e7343fb168e"
+                "reference": "0ed9d8342b8aceaea86f9f3d786ceead2fe4f3de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-packaging-unit/zipball/3aceb6c00bf090ca4ff4227b3ba52e7343fb168e",
-                "reference": "3aceb6c00bf090ca4ff4227b3ba52e7343fb168e",
+                "url": "https://api.github.com/repos/spryker/product-packaging-unit/zipball/0ed9d8342b8aceaea86f9f3d786ceead2fe4f3de",
+                "reference": "0ed9d8342b8aceaea86f9f3d786ceead2fe4f3de",
                 "shasum": ""
             },
             "require": {
@@ -32687,7 +32795,7 @@
                 "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/oms": "^11.0.0",
-                "spryker/oms-extension": "^1.1.0",
+                "spryker/oms-extension": "^1.2.0",
                 "spryker/persistent-cart-extension": "^1.0.0",
                 "spryker/product": "^6.0.0",
                 "spryker/product-measurement-unit": "^2.0.0 || ^4.0.0 || ^5.0.0",
@@ -32733,7 +32841,7 @@
                 "proprietary"
             ],
             "description": "ProductPackagingUnit module",
-            "time": "2020-06-02T09:42:31+00:00"
+            "time": "2020-06-18T08:39:34+00:00"
         },
         {
             "name": "spryker/product-packaging-unit-data-import",
@@ -49474,6 +49582,16 @@
                 "MIT"
             ],
             "description": "Slevomat Coding Standard for PHP_CodeSniffer complements Consistence Coding Standard by providing sniffs with additional checks.",
+            "funding": [
+                {
+                    "url": "https://github.com/kukulich",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/slevomat/coding-standard",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-06-16T07:24:48+00:00"
         },
         {
@@ -49510,7 +49628,7 @@
                     "SLLH\\ComposerVersionsCheck\\": "src/"
                 }
             },
-            "notification-url": "https://repo.repman.io/downloads",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -50462,6 +50580,20 @@
             ],
             "description": "Symfony DependencyInjection Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-06-12T07:37:04+00:00"
         },
         {
@@ -50524,6 +50656,20 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-05-23T13:08:13+00:00"
         },
         {
@@ -50596,6 +50742,20 @@
             ],
             "description": "Symfony HttpClient component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-06-11T21:20:02+00:00"
         },
         {
@@ -50652,6 +50812,20 @@
                 "interfaces",
                 "interoperability",
                 "standards"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-05-25T17:37:45+00:00"
         },
@@ -50715,6 +50889,20 @@
             "keywords": [
                 "mime",
                 "mime-type"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-06-09T15:07:35+00:00"
         },
