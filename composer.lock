@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5e0810b30a14ac8328cd90e2765b8145",
+    "content-hash": "c89b336573fbf1f932d71a32a9053ef2",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1888,15 +1888,15 @@
             "authors": [
                 {
                     "name": "Alex Bilbie",
-                    "role": "Developer",
                     "email": "hello@alexbilbie.com",
-                    "homepage": "http://www.alexbilbie.com"
+                    "homepage": "http://www.alexbilbie.com",
+                    "role": "Developer"
                 },
                 {
                     "name": "Andy Millington",
-                    "role": "Developer",
                     "email": "andrew@noexceptions.io",
-                    "homepage": "https://www.noexceptions.io"
+                    "homepage": "https://www.noexceptions.io",
+                    "role": "Developer"
                 }
             ],
             "description": "A lightweight and powerful OAuth 2.0 authorization and resource server library with support for all the core specification grants. This library will allow you to secure your API with OAuth and allow your applications users to approve apps that want to access their data from your API.",
@@ -5101,11 +5101,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/ps-13575/dev-order-cancellation",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "a3899ac90eb401cd7c7eb1dcc4169377bd20e3b8"
+                "reference": "57139a9858f4418d233cb0d45005f3bdbc6aaf2d"
             },
             "require": {
                 "php": ">=7.2"
@@ -5821,15 +5821,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-06-18T08:39:34+00:00"
+            "time": "2020-06-18T10:06:30+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/ps-13575/dev-order-cancellation",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "8e4e9815464858a6f5100210d50a9923adece8e6"
+                "reference": "7c2a73b3d80f6331470777ab38864708abb152c9"
             },
             "require": {
                 "php": ">=7.2"
@@ -5898,6 +5898,7 @@
                 "spryker-shop/multi-cart-widget": "*",
                 "spryker-shop/newsletter-page": "*",
                 "spryker-shop/newsletter-widget": "*",
+                "spryker-shop/order-cancel-widget": "*",
                 "spryker-shop/order-custom-reference-widget": "*",
                 "spryker-shop/persistent-cart-share-page": "*",
                 "spryker-shop/persistent-cart-share-widget": "*",
@@ -5980,7 +5981,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-06-17T10:58:24+00:00"
+            "time": "2020-06-18T10:05:24+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -6861,9 +6862,6 @@
             ],
             "description": "Symfony Form Component",
             "homepage": "https://symfony.com",
-            "support": {
-                "source": "https://github.com/symfony/form/tree/4.4"
-            },
             "time": "2020-03-27T16:54:36+00:00"
         },
         {
@@ -12254,6 +12252,5 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    },
-    "plugin-api-version": "1.1.0"
+    }
 }
