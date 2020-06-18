@@ -13,6 +13,7 @@ use Spryker\Shared\Twig\Plugin\FormTwigPlugin;
 use Spryker\Shared\Twig\Plugin\RoutingTwigPlugin;
 use Spryker\Shared\Twig\Plugin\SecurityTwigPlugin;
 use Spryker\Zed\Application\Communication\Plugin\Twig\ApplicationTwigPlugin;
+use Spryker\Zed\Barcode\Plugin\Twig\BarcodeTwigPlugin;
 use Spryker\Zed\ChartGui\Communication\Plugin\Twig\Chart\ChartGuiTwigPlugin;
 use Spryker\Zed\Currency\Communication\Plugin\Twig\CurrencyTwigPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\Twig\AssetsPathTwigPlugin;
@@ -45,6 +46,7 @@ use Spryker\Zed\Twig\TwigDependencyProvider as SprykerTwigDependencyProvider;
 use Spryker\Zed\User\Communication\Plugin\Twig\UserTwigPlugin;
 use Spryker\Zed\WebProfiler\Communication\Plugin\Twig\WebProfilerTwigLoaderPlugin;
 use Spryker\Zed\ZedNavigation\Communication\Plugin\Twig\ZedNavigationTwigPlugin;
+use Spryker\Zed\ZedUi\Communication\Plugin\Twig\BooleanToStringTwigPlugin;
 use Spryker\Zed\ZedUi\Communication\Plugin\ZedUiNavigationTwigPlugin;
 
 class TwigDependencyProvider extends SprykerTwigDependencyProvider
@@ -72,6 +74,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new DateTimeFormatterTwigPlugin(),
             new ZedUiNavigationTwigPlugin(),
             new SchedulerTwigPlugin(),
+            new BarcodeTwigPlugin(),
 
             new AssetsPathTwigPlugin(),
             new TabsTwigPlugin(),
@@ -93,6 +96,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             // Form buttons
             new SubmitButtonTwigPlugin(),
             new GuiFilterTwigPlugin(),
+            new BooleanToStringTwigPlugin(),
         ];
     }
 

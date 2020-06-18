@@ -12,19 +12,36 @@ use Spryker\Zed\MerchantUser\MerchantUserConfig as SprykerMerchantUserConfig;
 
 class MerchantUserConfig extends SprykerMerchantUserConfig
 {
-    protected const BUNDLE_MERCHANT_DASHBOARD_GUI_PAGE = 'merchant-dashboard-gui-page';
-
     /**
      * @return \Generated\Shared\Transfer\RuleTransfer[]
      */
     protected function getMerchantAdminAclRules(): array
     {
-        return [
-            (new RuleTransfer())
-                ->setBundle(static::BUNDLE_MERCHANT_DASHBOARD_GUI_PAGE)
+        return $this->getAllowedBundlesAclRules();
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\RuleTransfer[]
+     */
+    protected function getAllowedBundlesAclRules(): array
+    {
+        $bundleNames = [
+            'dashboard-merchant-portal-gui',
+            'merchant-profile-merchant-portal-gui',
+            'product-offer-merchant-portal-gui',
+            'authentication-merchant-portal-gui',
+        ];
+
+        $ruleTransfers = [];
+
+        foreach ($bundleNames as $bundleName) {
+            $ruleTransfers[] = (new RuleTransfer())
+                ->setBundle($bundleName)
                 ->setController(static::RULE_VALIDATOR_WILDCARD)
                 ->setAction(static::RULE_VALIDATOR_WILDCARD)
-                ->setType(static::RULE_TYPE_ALLOW),
-        ];
+                ->setType(static::RULE_TYPE_ALLOW);
+        }
+
+        return $ruleTransfers;
     }
 }

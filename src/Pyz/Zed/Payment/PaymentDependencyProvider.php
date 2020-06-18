@@ -8,6 +8,7 @@
 namespace Pyz\Zed\Payment;
 
 use Spryker\Shared\Nopayment\NopaymentConfig as SprykerNopaymentConfig;
+use Spryker\Zed\DummyMarketplacePayment\Communication\Plugin\Payment\MerchantProductOfferPaymentMethodFilterPlugin;
 use Spryker\Zed\GiftCard\Communication\Plugin\GiftCardOrderSaverPlugin;
 use Spryker\Zed\GiftCard\Communication\Plugin\GiftCardPaymentMethodFilterPlugin;
 use Spryker\Zed\GiftCard\Communication\Plugin\GiftCardPreCheckPlugin;
@@ -36,11 +37,12 @@ class PaymentDependencyProvider extends SprykerPaymentDependencyProvider
     /**
      * @return \Spryker\Zed\Payment\Dependency\Plugin\Payment\PaymentMethodFilterPluginInterface[]
      */
-    protected function getPaymentMethodFilterPlugins()
+    protected function getPaymentMethodFilterPlugins(): array
     {
         return [
             new PriceToPayPaymentMethodFilterPlugin(),
             new GiftCardPaymentMethodFilterPlugin(),
+            new MerchantProductOfferPaymentMethodFilterPlugin(),
         ];
     }
 

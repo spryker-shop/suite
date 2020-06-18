@@ -21,12 +21,14 @@ use Spryker\Yves\Twig\Plugin\FormFilesystemTwigLoaderPlugin;
 use Spryker\Yves\Twig\TwigDependencyProvider as SprykerTwigDependencyProvider;
 use SprykerShop\Yves\CartPage\Plugin\Twig\CartTwigPlugin;
 use SprykerShop\Yves\CatalogPage\Plugin\Twig\CatalogPageTwigPlugin;
+use SprykerShop\Yves\CatalogPage\Plugin\Twig\CategoryFilterTwigPlugin;
 use SprykerShop\Yves\CategoryWidget\Plugin\Twig\CategoryTwigPlugin;
 use SprykerShop\Yves\ChartWidget\Plugin\Twig\ChartTwigPlugin;
 use SprykerShop\Yves\CmsBlockWidget\Plugin\Twig\CmsBlockTwigPlugin;
 use SprykerShop\Yves\CmsPage\Plugin\Twig\CmsTwigPlugin;
 use SprykerShop\Yves\ContentBannerWidget\Plugin\Twig\ContentBannerTwigPlugin;
 use SprykerShop\Yves\ContentFileWidget\Plugin\Twig\ContentFileListTwigPlugin;
+use SprykerShop\Yves\ContentNavigationWidget\Plugin\Twig\ContentNavigationTwigPlugin;
 use SprykerShop\Yves\ContentProductSetWidget\Plugin\Twig\ContentProductSetTwigPlugin;
 use SprykerShop\Yves\ContentProductWidget\Plugin\Twig\ContentProductAbstractListTwigPlugin;
 use SprykerShop\Yves\CustomerPage\Plugin\Twig\CustomerTwigPlugin;
@@ -70,6 +72,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new CmsTwigPlugin(),
             new ShopUiTwigPlugin(),
             new CategoryTwigPlugin(),
+            new CategoryFilterTwigPlugin(),
             new DateTimeFormatterTwigPlugin(),
             new CustomerTwigPlugin(),
             new WidgetTagTwigPlugin(),
@@ -79,6 +82,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new ContentFileListTwigPlugin(),
             new FunctionTwigPlugin(),
             new ShopCmsSlotTwigPlugin(),
+            new ContentNavigationTwigPlugin(),
         ];
     }
 

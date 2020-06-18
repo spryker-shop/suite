@@ -1,0 +1,21 @@
+{
+  "bootstrap": "bootstrap.php",
+  "extensions": [
+    "Benchmark\\Spryker\\Extension\\TtfbExtension"
+  ],
+  "time_unit": "seconds",
+  "executors": {
+    "microtime": {
+      "executor": "ttfb"
+    }
+  },
+  "reports": {
+    "total": {
+      "extends": "default"
+    },
+    "summary": {
+      "extends": "aggregate",
+      "cols": ["subject", "best", "mean", "worst"]
+    }
+  }
+}

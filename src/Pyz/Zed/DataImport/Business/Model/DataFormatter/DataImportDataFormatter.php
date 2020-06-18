@@ -42,12 +42,12 @@ class DataImportDataFormatter implements DataImportDataFormatterInterface
      */
     public function formatPostgresArray(array $values): string
     {
-        if (is_array($values) && empty($values)) {
+        if (!$values) {
             return '{null}';
         }
 
         $values = array_map(function ($value) {
-            return ($value === null || $value === "") ? "NULL" : $value;
+            return ($value === null || $value === '') ? 'NULL' : $value;
         }, $values);
 
         return sprintf(

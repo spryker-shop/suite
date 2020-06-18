@@ -7,6 +7,10 @@
     "email": "info@spryker.com",
     "url": "https://spryker.com/"
   },
+  "workspaces": [
+    "vendor/spryker/spryker/Bundles/*",
+    "vendor/spryker/spryker/Bundles/*/assets/Zed"
+  ],
   "scripts": {
     "yves": "node ./frontend/build development",
     "yves:watch": "node ./frontend/build development-watch",
@@ -17,21 +21,12 @@
     "zed": "node ./node_modules/@spryker/oryx-for-zed/build",
     "zed:watch": "node ./node_modules/@spryker/oryx-for-zed/build --dev",
     "zed:production": "node ./node_modules/@spryker/oryx-for-zed/build --prod",
-    "bo:install": "run-s bo:install:*",
-    "bo:install:zed-ui": "npm run cd:zed-ui -- npm install",
-    "bo:install:mp-login": "npm run cd:mp-login -- npm install",
-    "bo:install:mp-dashboard": "npm run cd:mp-dashboard -- npm install",
-    "bo:build": "npm run fe:root -- run-s bo:build:*",
-    "bo:build:zed-ui": "npm run cd:zed-ui -- npm run build",
-    "bo:build:mp-login": "npm run cd:mp-login -- npm run build",
-    "bo:build:mp-dashboard": "npm run cd:mp-dashboard -- npm run build",
-    "bo:test": "run-s bo:test:*",
-    "bo:test:zed-ui": "npm run cd:zed-ui -- npm run test -- --watch=false --browsers ChromeHeadless",
-    "bo:test:mp-login": "npm run cd:mp-login -- npm run test -- --watch=false --browsers ChromeHeadless",
-    "bo:test:mp-dashboard": "npm run cd:mp-dashboard -- npm run test -- --watch=false --browsers ChromeHeadless",
-    "cd:zed-ui": "cd ./vendor/spryker/spryker/Bundles/ZedUi && ",
-    "cd:mp-login": "cd ./vendor/spryker/spryker/Bundles/MerchantUserAuthGuiPage && ",
-    "cd:mp-dashboard": "cd ./vendor/spryker/spryker/Bundles/MerchantDashboardGuiPage && ",
+    "mp:build": "npm run fe:root -- yarn workspaces foreach run build",
+    "mp:build:production": "npm run fe:root -- yarn workspaces foreach run build",
+    "mp:test": "yarn workspaces foreach run test --watch=false --browsers ChromeHeadless",
+    "mp:clean": "run-s mp:clean:*",
+    "mp:clean:dist": "yarn workspaces foreach rimraf dist",
+    "mp:clean:modules": "yarn workspaces foreach rimraf node_modules",
     "fe:root": "export FE_ROOT_DIR=\"../../../../..\" && "
   },
   "engines": {
@@ -40,7 +35,7 @@
   },
   "dependencies": {
     "@webcomponents/custom-elements": "~1.3.1",
-    "@webcomponents/webcomponents-platform": "^1.0.1",
+    "@webcomponents/webcomponents-platform": "~1.0.1",
     "@webcomponents/webcomponentsjs": "~2.4.0",
     "brotli-webpack-plugin": "^1.1.0",
     "classlist-polyfill": "~1.2.0",
@@ -48,11 +43,14 @@
     "core-js": "~3.4.1",
     "date-input-polyfill": "~2.14.0",
     "element-closest": "~3.0.0",
+    "intersection-observer": "~0.10.0",
     "lodash-es": "~4.17.15",
     "string.prototype.startswith": "~0.2.0"
   },
   "devDependencies": {
+    "@angular/cli": "^9.1.1",
     "@spryker/oryx-for-zed": "^2.5.3",
+    "@spryker/sass-resources-loader": "github:spryker/sass-resources-loader",
     "autoprefixer": "~8.6.2",
     "clean-webpack-plugin": "~1.0.1",
     "commander": "~4.0.1",
@@ -64,16 +62,19 @@
     "npm-run-all": "^4.1.5",
     "optimize-css-assets-webpack-plugin": "~5.0.1",
     "postcss-loader": "~3.0.0",
+    "rimraf": "^3.0.2",
     "sass-loader": "~8.0.0",
-    "@spryker/sass-resources-loader": "github:spryker/sass-resources-loader",
     "stylelint": "~12.0.0",
     "ts-loader": "~6.2.1",
     "tslint": "~5.20.1",
     "tslint-lines-between-class-members": "~1.3.6",
-    "typescript": "~3.7.2",
+    "typescript": "~3.8.3",
     "typescript-eslint-parser": "~22.0.0",
     "uglifyjs-webpack-plugin": "~1.3.0",
     "webpack": "~4.41.2",
     "webpack-merge": "~4.2.2"
+  },
+  "resolutions": {
+    "typescript": "3.8.3"
   }
 }
