@@ -17,6 +17,7 @@ class ProductAbstractStoreMandatoryColumnCondition extends CombinedProductMandat
     protected function getMandatoryColumns(): array
     {
         return [
+            ProductAbstractStoreHydratorStep::COLUMN_STORE_NAME,
         ];
     }
 }
