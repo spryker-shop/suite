@@ -107,6 +107,7 @@ class DataImportConfig extends SprykerDataImportConfig
     public const IMPORT_TYPE_COMBINED_PRODUCT_PRICE = 'combined-product-price';
     public const IMPORT_TYPE_COMBINED_PRODUCT_IMAGE = 'combined-product-image';
     public const IMPORT_TYPE_COMBINED_PRODUCT_STOCK = 'combined-product-stock';
+    public const IMPORT_TYPE_COMBINED_PRODUCT_ABSTRACT_STORE = 'combined-product-abstract-store';
 
     public const PRODUCT_ABSTRACT_QUEUE = 'import.product_abstract';
     public const PRODUCT_ABSTRACT_QUEUE_ERROR = 'import.product_abstract.error';
