@@ -26,6 +26,8 @@ use Spryker\Zed\CompanyUnitAddressDataImport\CompanyUnitAddressDataImportConfig;
 use Spryker\Zed\CompanyUnitAddressLabelDataImport\CompanyUnitAddressLabelDataImportConfig;
 use Spryker\Zed\Console\ConsoleDependencyProvider as SprykerConsoleDependencyProvider;
 use Spryker\Zed\ContentNavigationDataImport\ContentNavigationDataImportConfig;
+use Spryker\Zed\Customer\Communication\Console\CustomerPasswordResetConsole;
+use Spryker\Zed\Customer\Communication\Console\CustomerPasswordSetConsole;
 use Spryker\Zed\DataExport\Communication\Console\DataExportConsole;
 use Spryker\Zed\DataImport\Communication\Console\DataImportConsole;
 use Spryker\Zed\DataImport\Communication\Console\DataImportDumpConsole;
@@ -363,6 +365,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new TriggerEventFromCsvFileConsole(),
 
             new DataExportConsole(),
+
+            new CustomerPasswordResetConsole(),
+            new CustomerPasswordSetConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
