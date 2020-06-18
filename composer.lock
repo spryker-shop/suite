@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "34bd603ab4dac43d02facea9e68f0d4a",
+    "content-hash": "f042acba30f269a271bc4faad7782515",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.142.3",
+            "version": "3.142.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "3e593efcfd06237219a1ee85319a0b3c863ee67e"
+                "reference": "1d55df0b6490f6a9d6ebfd3a73d297d299ff8802"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/3e593efcfd06237219a1ee85319a0b3c863ee67e",
-                "reference": "3e593efcfd06237219a1ee85319a0b3c863ee67e",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/1d55df0b6490f6a9d6ebfd3a73d297d299ff8802",
+                "reference": "1d55df0b6490f6a9d6ebfd3a73d297d299ff8802",
                 "shasum": ""
             },
             "require": {
@@ -89,7 +89,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-06-16T18:16:10+00:00"
+            "time": "2020-06-17T18:18:58+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -4900,15 +4900,20 @@
             "version": "dev-feature/te-5830/dev-newrelic-monitoring-plugin",
             "source": {
                 "type": "git",
-                "url": "git@github.com:spryker-eco/new-relic.git",
-                "reference": "643a9915859bf7cda96ef11488b79db6c5fd28cd"
+                "url": "https://github.com/spryker-eco/new-relic.git",
+                "reference": "011cb61f9ff945c28e273238945467824e826e8f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-eco/new-relic/zipball/011cb61f9ff945c28e273238945467824e826e8f",
+                "reference": "011cb61f9ff945c28e273238945467824e826e8f",
+                "shasum": ""
             },
             "require": {
-                "guzzlehttp/guzzle": "^6.0.0",
                 "php": ">=7.2",
                 "psr/http-message": "^1.0.0",
                 "spryker/guzzle": "^2.0.0",
-                "spryker/kernel": "^3.0.0",
+                "spryker/kernel": "^3.30.0",
                 "spryker/monitoring-extension": "^1.0.0",
                 "spryker/symfony": "^3.1.0"
             },
@@ -4923,7 +4928,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -4931,19 +4936,12 @@
                     "SprykerEco\\": "src/SprykerEco/"
                 }
             },
-            "scripts": {
-                "cs-check": [
-                    "phpcs -p -s --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml src/ tests/"
-                ],
-                "cs-fix": [
-                    "phpcbf -p --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml src/ tests/"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "NewRelic module",
-            "time": "2020-06-17T11:58:39+00:00"
+            "time": "2020-06-18T05:08:23+00:00"
         },
         {
             "name": "spryker/decimal-object",
@@ -11212,16 +11210,16 @@
         },
         {
             "name": "psalm/phar",
-            "version": "3.11.5",
+            "version": "3.11.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/psalm/phar.git",
-                "reference": "5f5ff92280c44aa490c21d3611e10fb2f4f89a60"
+                "reference": "c5492e84a6659f332c4d449a8fea027a28576c82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/psalm/phar/zipball/5f5ff92280c44aa490c21d3611e10fb2f4f89a60",
-                "reference": "5f5ff92280c44aa490c21d3611e10fb2f4f89a60",
+                "url": "https://api.github.com/repos/psalm/phar/zipball/c5492e84a6659f332c4d449a8fea027a28576c82",
+                "reference": "c5492e84a6659f332c4d449a8fea027a28576c82",
                 "shasum": ""
             },
             "require": {
@@ -11239,7 +11237,7 @@
                 "MIT"
             ],
             "description": "Composer-based Psalm Phar",
-            "time": "2020-05-27T15:40:06+00:00"
+            "time": "2020-06-17T21:52:16+00:00"
         },
         {
             "name": "roave/better-reflection",
