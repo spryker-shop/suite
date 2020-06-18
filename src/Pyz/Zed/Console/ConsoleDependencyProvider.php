@@ -354,6 +354,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new TriggerEventFromCsvFileConsole(),
 
             new DataExportConsole(),
+
+            new CustomerPasswordResetConsole(),
+            new CustomerPasswordSetConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
