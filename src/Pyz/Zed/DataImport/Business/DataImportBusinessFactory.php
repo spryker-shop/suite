@@ -616,6 +616,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             ->addStep($this->createLocalizedAttributesExtractorStep([
                 CmsBlockWriterStep::KEY_PLACEHOLDER_TITLE,
                 CmsBlockWriterStep::KEY_PLACEHOLDER_DESCRIPTION,
+                CmsBlockWriterStep::KEY_PLACEHOLDER_CONTENT,
             ]))
             ->addStep(new CmsBlockWriterStep(
                 $this->createCategoryRepository(),

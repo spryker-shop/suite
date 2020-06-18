@@ -12,3 +12,941 @@ blck-10,CMS block for the footer navigation,Navigation block,@CmsBlock/template/
 blck-11,CMS block for the payment providers,Navigation block,@CmsBlock/template/navigation_block.twig,1,,,"<div class=""col col--sm-12 col--md-6 spacing-bottom""><div><h5>{{'global.payment_providers' | trans }}</h5>{{content_navigation('navigation-payment-providers', 'list-inline') }}</div></div>","<div class=""col col--sm-12 col--md-6 spacing-bottom""><div><h5>{{'global.payment_providers' | trans }}</h5>{{content_navigation('navigation-payment-providers', 'list-inline') }}</div></div>",,,,
 blck-12,CMS block for the carriers,Navigation block,@CmsBlock/template/navigation_block.twig,1,,,"<div class=""col col--sm-12 col--md-6 spacing-bottom""><div><h5>{{ 'global.shipment_providers' | trans }}</h5>{{ content_navigation('navigation-shipment-providers', 'list-inline') }}</div></div>","<div class=""col col--sm-12 col--md-6 spacing-bottom""><div><h5>{{ 'global.shipment_providers' | trans }}</h5>{{ content_navigation('navigation-shipment-providers', 'list-inline') }}</div></div>",,,,
 blck-31,10% Discount,Title and description block,@CmsBlock/template/title_and_description_block.twig,1,"<p class=""title title--medium title--with-top-border text-big text-center spacing spacing--inner spacing--big"">10% Rabatt für Bestellungen mit einem Mindestbestellwert von 100 € oder CHF 115</p>","<p class=""title title--medium title--with-top-border text-big text-center spacing spacing--inner spacing--big"">10% Discount for all orders above €100 or CHF115</p>",,,,,,
+cms-block-email--customer-registration--html,customer-registration--html,HTML Email Template With Header And Footer,@CmsBlock/template/email-template-with-header-and-footer.html.twig,1,,,,,,,"<div>
+    <div style=""text-align: center;"">{{ 'mail.customer.registration.text' | trans }}</div>
+</div>","<div>
+    <div style=""text-align: center;"">{{ 'mail.customer.registration.text' | trans }}</div>
+</div>"
+cms-block-email--customer-registration--text,customer-registration--text,TEXT Email Template With Header And Footer,@CmsBlock/template/email-template-with-header-and-footer.text.twig,1,,,,,,,{{ 'mail.customer.registration.text' | trans }},{{ 'mail.customer.registration.text' | trans }}
+cms-block-email--customer-restore-password--html,customer-restore-password--html,HTML Email Template With Header And Footer,@CmsBlock/template/email-template-with-header-and-footer.html.twig,1,,,,,,,"<div style=""text-align: center;"">
+    {{ 'mail.customer.restore_password.text' | trans }}<br>
+    <a href=""{{ mail.customer.restorePasswordLink }}"">{{ 'customer.password.update'| trans }}</a>
+</div>","<div style=""text-align: center;"">
+    {{ 'mail.customer.restore_password.text' | trans }}<br>
+    <a href=""{{ mail.customer.restorePasswordLink }}"">{{ 'customer.password.update'| trans }}</a>
+</div>"
+cms-block-email--customer-restore-password--text,customer-restore-password--text,TEXT Email Template With Header And Footer,@CmsBlock/template/email-template-with-header-and-footer.text.twig,1,,,,,,,{{ 'mail.customer.restore_password.text' | trans }},{{ 'mail.customer.restore_password.text' | trans }}
+cms-block-email--customer-restored-password-confirmation--html,customer-restored-password-confirmation--html,HTML Email Template With Header And Footer,@CmsBlock/template/email-template-with-header-and-footer.html.twig,1,,,,,,,"<div style=""text-align: center;"">{{ 'mail.customer.restore_password_confirmation.text' | trans }}</div>","<div style=""text-align: center;"">{{ 'mail.customer.restore_password_confirmation.text' | trans }}</div>"
+cms-block-email--customer-restored-password-confirmation--text,customer-restored-password-confirmation--text,TEXT Email Template With Header And Footer,@CmsBlock/template/email-template-with-header-and-footer.text.twig,1,,,,,,,{{ 'mail.customer.restore_password.text' | trans }},{{ 'mail.customer.restore_password.text' | trans }}
+cms-block-email--restore-password--html,restore-password--html,HTML Email Template With Header And Footer,@CmsBlock/template/email-template-with-header-and-footer.html.twig,1,,,,,,,"<div style=""text-align: center;"">
+    {{ 'mail.auth.restore_password.text' | trans }}<br>
+        <a href=""{{ mail.resetPasswordLink }}"">
+            {{ 'mail.auth.restore_password.label' | trans }}
+        </a>
+</div>","<div style=""text-align: center;"">
+    {{ 'mail.auth.restore_password.text' | trans }}<br>
+        <a href=""{{ mail.resetPasswordLink }}"">
+            {{ 'mail.auth.restore_password.label' | trans }}
+        </a>
+</div>"
+cms-block-email--restore-password--text,restore-password--text,TEXT Email Template With Header And Footer,@CmsBlock/template/email-template-with-header-and-footer.text.twig,1,,,,,,,"{{ 'mail.auth.restore_password.text' | trans }}
+{{ mail.resetPasswordLink }}","{{ 'mail.auth.restore_password.text' | trans }}
+{{ mail.resetPasswordLink }}"
+cms-block-email--availability-notification-subscription--html,availability-notification-subscription--html,HTML Email Template With Header And Footer,@CmsBlock/template/email-template-with-header-and-footer.html.twig,1,,,,,,,"{% extends '@AvailabilityNotification/mail/layout.html.twig' %}
+
+{% block title %}{{ 'availability_notification_subscription.mail.subscribed.head'|trans }}{% endblock %}
+
+{% block content %}
+    <table border=""0"" cellpadding=""0"" cellspacing=""0"" width=""100%"" class=""mcnTextBlock""
+           style=""min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+        <tbody class=""mcnTextBlockOuter"">
+        <tr>
+            <td valign=""top"" class=""mcnTextBlockInner""
+                style=""padding-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                <!--[if mso]>
+                <table align=""left"" border=""0"" cellspacing=""0"" cellpadding=""0"" width=""100%"" style=""width:100%;"">
+                    <tr>
+                <![endif]-->
+                <!--[if mso]>
+                <td valign=""top"" width=""600"" style=""width:600px;"">
+                <![endif]-->
+                <table align=""left"" border=""0"" cellpadding=""0"" cellspacing=""0""
+                       style=""max-width: 100%;min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;""
+                       width=""100%"" class=""mcnTextContentContainer"">
+                    <tbody>
+                    <tr>
+                        <td valign=""top"" class=""mcnTextContent""
+                            style=""padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;"">
+                            <h2 class=""null""
+                                style=""display: block;margin: 0;padding: 0;color: #202020;font-family: Helvetica;font-size: 22px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: normal;text-align: left;"">{{ 'availability_notification_subscription.mail.subscribed.head'|trans }}</h2>
+                            <p style=""margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;"">{{ 'availability_notification_subscription.mail.subscribed.body'|trans }}</p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <!--[if mso]>
+                </td>
+                <![endif]-->
+                <!--[if mso]>
+                </tr>
+                </table>
+                <![endif]-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <table border=""0"" cellpadding=""0"" cellspacing=""0"" width=""100%"" class=""mcnImageCardBlock""
+           style=""border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+        <tbody class=""mcnImageCardBlockOuter"">
+        <tr>
+            <td class=""mcnImageCardBlockInner"" valign=""top""
+                style=""padding-top: 9px;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                <table align=""left"" border=""0"" cellpadding=""0"" cellspacing=""0"" class=""mcnImageCardBottomContent""
+                       width=""100%""
+                       style=""background-color: #FFFFFF;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                    <tbody>
+                    {% if mail.availabilityNotificationSubscriptionMailData.productUrl is not empty and mail.availabilityNotificationSubscriptionMailData.productImageUrl is not empty %}
+                        <tr>
+                            <td class=""mcnImageCardBottomImageContent"" align=""center"" valign=""top""
+                                style=""padding-top: 0px;padding-right: 0px;padding-bottom: 0;padding-left: 0px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                                <a href=""{{ mail.availabilityNotificationSubscriptionMailData.productUrl }}"" title="""" class="""" target=""_blank""
+                                   style=""mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                                    <img alt=""{{ mail.availabilityNotificationSubscriptionMailData.productName }}"" src=""{{ mail.availabilityNotificationSubscriptionMailData.productImageUrl }}""
+                                         width=""500""
+                                         style=""max-width: 500px;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;vertical-align: bottom;""
+                                         class=""mcnImage"">
+                                </a>
+                            </td>
+                        </tr>
+                    {% endif %}
+                    <tr>
+                        <td class=""mcnTextContent"" valign=""top""
+                            style=""padding: 9px 18px;font-family: Helvetica;font-size: 14px;font-weight: normal;text-align: center;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #202020;line-height: 150%;""
+                            width=""546"">
+                            <div style=""text-align: left;"">{{ mail.availabilityNotificationSubscriptionMailData.productName }}<br>
+                                {{ mail.availabilityNotificationSubscriptionMailData.productAttributes.price ?? '' }}<br>
+                                {% for name, value in mail.availabilityNotificationSubscriptionMailData.productConcrete.attributes %}
+                                    <p class=""col col--sm-12 col--md-6 col--lg-4 col--xl-3"">
+                                        <strong>{{ ('product.attribute.' ~ name) | trans }}</strong><br/>
+                                        <span>{{ value }}</span>
+                                    </p>
+                                {% endfor %}
+                                <br>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}","{% extends '@AvailabilityNotification/mail/layout.html.twig' %}
+
+{% block title %}{{ 'availability_notification_subscription.mail.subscribed.head'|trans }}{% endblock %}
+
+{% block content %}
+    <table border=""0"" cellpadding=""0"" cellspacing=""0"" width=""100%"" class=""mcnTextBlock""
+           style=""min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+        <tbody class=""mcnTextBlockOuter"">
+        <tr>
+            <td valign=""top"" class=""mcnTextBlockInner""
+                style=""padding-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                <!--[if mso]>
+                <table align=""left"" border=""0"" cellspacing=""0"" cellpadding=""0"" width=""100%"" style=""width:100%;"">
+                    <tr>
+                <![endif]-->
+                <!--[if mso]>
+                <td valign=""top"" width=""600"" style=""width:600px;"">
+                <![endif]-->
+                <table align=""left"" border=""0"" cellpadding=""0"" cellspacing=""0""
+                       style=""max-width: 100%;min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;""
+                       width=""100%"" class=""mcnTextContentContainer"">
+                    <tbody>
+                    <tr>
+                        <td valign=""top"" class=""mcnTextContent""
+                            style=""padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;"">
+                            <h2 class=""null""
+                                style=""display: block;margin: 0;padding: 0;color: #202020;font-family: Helvetica;font-size: 22px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: normal;text-align: left;"">{{ 'availability_notification_subscription.mail.subscribed.head'|trans }}</h2>
+                            <p style=""margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;"">{{ 'availability_notification_subscription.mail.subscribed.body'|trans }}</p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <!--[if mso]>
+                </td>
+                <![endif]-->
+                <!--[if mso]>
+                </tr>
+                </table>
+                <![endif]-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <table border=""0"" cellpadding=""0"" cellspacing=""0"" width=""100%"" class=""mcnImageCardBlock""
+           style=""border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+        <tbody class=""mcnImageCardBlockOuter"">
+        <tr>
+            <td class=""mcnImageCardBlockInner"" valign=""top""
+                style=""padding-top: 9px;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                <table align=""left"" border=""0"" cellpadding=""0"" cellspacing=""0"" class=""mcnImageCardBottomContent""
+                       width=""100%""
+                       style=""background-color: #FFFFFF;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                    <tbody>
+                    {% if mail.availabilityNotificationSubscriptionMailData.productUrl is not empty and mail.availabilityNotificationSubscriptionMailData.productImageUrl is not empty %}
+                        <tr>
+                            <td class=""mcnImageCardBottomImageContent"" align=""center"" valign=""top""
+                                style=""padding-top: 0px;padding-right: 0px;padding-bottom: 0;padding-left: 0px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                                <a href=""{{ mail.availabilityNotificationSubscriptionMailData.productUrl }}"" title="""" class="""" target=""_blank""
+                                   style=""mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                                    <img alt=""{{ mail.availabilityNotificationSubscriptionMailData.productName }}"" src=""{{ mail.availabilityNotificationSubscriptionMailData.productImageUrl }}""
+                                         width=""500""
+                                         style=""max-width: 500px;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;vertical-align: bottom;""
+                                         class=""mcnImage"">
+                                </a>
+                            </td>
+                        </tr>
+                    {% endif %}
+                    <tr>
+                        <td class=""mcnTextContent"" valign=""top""
+                            style=""padding: 9px 18px;font-family: Helvetica;font-size: 14px;font-weight: normal;text-align: center;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #202020;line-height: 150%;""
+                            width=""546"">
+                            <div style=""text-align: left;"">{{ mail.availabilityNotificationSubscriptionMailData.productName }}<br>
+                                {{ mail.availabilityNotificationSubscriptionMailData.productAttributes.price ?? '' }}<br>
+                                {% for name, value in mail.availabilityNotificationSubscriptionMailData.productConcrete.attributes %}
+                                    <p class=""col col--sm-12 col--md-6 col--lg-4 col--xl-3"">
+                                        <strong>{{ ('product.attribute.' ~ name) | trans }}</strong><br/>
+                                        <span>{{ value }}</span>
+                                    </p>
+                                {% endfor %}
+                                <br>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}"
+cms-block-email--availability-notification-subscription--text,availability-notification-subscription--text,TEXT Email Template With Header And Footer,@CmsBlock/template/email-template-with-header-and-footer.text.twig,1,,,,,,,"{{ 'availability_notification_subscription.mail.subscribed.head'|trans|raw }}
+
+{{ mail.availabilityNotificationSubscriptionMailData.productName }}
+
+{{ mail.availabilityNotificationSubscriptionMailData.productAttributes.price ?? '' }}
+
+{% for name, value in mail.availabilityNotificationSubscriptionMailData.productConcrete.attributes if name %}
+    {{ ('product.attribute.' ~ name) | trans }}: {{ value }}
+{% endfor %}
+
+{% embed '@AvailabilityNotification/mail/footer.text.twig' %}{% endembed %}","{{ 'availability_notification_subscription.mail.subscribed.head'|trans|raw }}
+
+{{ mail.availabilityNotificationSubscriptionMailData.productName }}
+
+{{ mail.availabilityNotificationSubscriptionMailData.productAttributes.price ?? '' }}
+
+{% for name, value in mail.availabilityNotificationSubscriptionMailData.productConcrete.attributes if name %}
+    {{ ('product.attribute.' ~ name) | trans }}: {{ value }}
+{% endfor %}
+
+{% embed '@AvailabilityNotification/mail/footer.text.twig' %}{% endembed %}"
+cms-block-email--availability-notification-unsubscribed--html,availability-availability-notification-unsubscribed--html,HTML Email Template With Header And Footer,@CmsBlock/template/email-template-with-header-and-footer.html.twig,1,,,,,,,"{% extends '@AvailabilityNotification/mail/layout.html.twig' %}
+
+{% block title %}{{ 'availability_notification_subscription.mail.unsubscribed.body'|trans }}{% endblock %}
+
+{% block content %}
+    <table border=""0"" cellpadding=""0"" cellspacing=""0"" width=""100%"" class=""mcnTextBlock""
+           style=""min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+        <tbody class=""mcnTextBlockOuter"">
+        <tr>
+            <td valign=""top"" class=""mcnTextBlockInner""
+                style=""padding-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                <!--[if mso]>
+                <table align=""left"" border=""0"" cellspacing=""0"" cellpadding=""0"" width=""100%"" style=""width:100%;"">
+                    <tr>
+                <![endif]-->
+                <!--[if mso]>
+                <td valign=""top"" width=""600"" style=""width:600px;"">
+                <![endif]-->
+                <table align=""left"" border=""0"" cellpadding=""0"" cellspacing=""0""
+                       style=""max-width: 100%;min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;""
+                       width=""100%"" class=""mcnTextContentContainer"">
+                    <tbody>
+                    <tr>
+                        <td valign=""top"" id=""templateHeader"" style=""background:#FFFFFF none no-repeat center/cover;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #FFFFFF;background-image: none;background-repeat: no-repeat;background-position: center;background-size: cover;border-top: 0;border-bottom: 0;padding-top: 9px;padding-bottom: 0;"">
+                            <table border=""0"" cellpadding=""0"" cellspacing=""0"" width=""100%"" class=""mcnImageBlock"" style=""min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                                <tbody class=""mcnImageBlockOuter"">
+                                <tr>
+                                    <td valign=""top"" style=""padding: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"" class=""mcnImageBlockInner"">
+                                        <table align=""left"" width=""100%"" border=""0"" cellpadding=""0"" cellspacing=""0"" class=""mcnImageContentContainer"" style=""min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                                            <tbody>
+                                            <tr>
+                                                <td class=""mcnImageContent"" valign=""top"" style=""padding-right: 9px;padding-left: 9px;padding-top: 0;padding-bottom: 0;text-align: center;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                                                    <img align=""center"" alt=""{{ mail.availabilityNotificationSubscriptionMailData.productName }}"" src=""{{ mail.availabilityNotificationSubscriptionMailData.productImageUrl }}"" width=""250"" style=""max-width: 500px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;"" class=""mcnRetinaImage"">
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign=""top"" class=""mcnTextContent""
+                            style=""padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;"">
+                            <p style=""margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;"">{{ 'availability_notification_subscription.mail.unsubscribed.body'|trans({'%name%': mail.availabilityNotificationSubscriptionMailData.productName}) }} </p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <!--[if mso]>
+                </td>
+                <![endif]-->
+                <!--[if mso]>
+                </tr>
+                </table>
+                <![endif]-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}","{% extends '@AvailabilityNotification/mail/layout.html.twig' %}
+
+{% block title %}{{ 'availability_notification_subscription.mail.unsubscribed.body'|trans }}{% endblock %}
+
+{% block content %}
+    <table border=""0"" cellpadding=""0"" cellspacing=""0"" width=""100%"" class=""mcnTextBlock""
+           style=""min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+        <tbody class=""mcnTextBlockOuter"">
+        <tr>
+            <td valign=""top"" class=""mcnTextBlockInner""
+                style=""padding-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                <!--[if mso]>
+                <table align=""left"" border=""0"" cellspacing=""0"" cellpadding=""0"" width=""100%"" style=""width:100%;"">
+                    <tr>
+                <![endif]-->
+                <!--[if mso]>
+                <td valign=""top"" width=""600"" style=""width:600px;"">
+                <![endif]-->
+                <table align=""left"" border=""0"" cellpadding=""0"" cellspacing=""0""
+                       style=""max-width: 100%;min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;""
+                       width=""100%"" class=""mcnTextContentContainer"">
+                    <tbody>
+                    <tr>
+                        <td valign=""top"" id=""templateHeader"" style=""background:#FFFFFF none no-repeat center/cover;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #FFFFFF;background-image: none;background-repeat: no-repeat;background-position: center;background-size: cover;border-top: 0;border-bottom: 0;padding-top: 9px;padding-bottom: 0;"">
+                            <table border=""0"" cellpadding=""0"" cellspacing=""0"" width=""100%"" class=""mcnImageBlock"" style=""min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                                <tbody class=""mcnImageBlockOuter"">
+                                <tr>
+                                    <td valign=""top"" style=""padding: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"" class=""mcnImageBlockInner"">
+                                        <table align=""left"" width=""100%"" border=""0"" cellpadding=""0"" cellspacing=""0"" class=""mcnImageContentContainer"" style=""min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                                            <tbody>
+                                            <tr>
+                                                <td class=""mcnImageContent"" valign=""top"" style=""padding-right: 9px;padding-left: 9px;padding-top: 0;padding-bottom: 0;text-align: center;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                                                    <img align=""center"" alt=""{{ mail.availabilityNotificationSubscriptionMailData.productName }}"" src=""{{ mail.availabilityNotificationSubscriptionMailData.productImageUrl }}"" width=""250"" style=""max-width: 500px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;"" class=""mcnRetinaImage"">
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign=""top"" class=""mcnTextContent""
+                            style=""padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;"">
+                            <p style=""margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;"">{{ 'availability_notification_subscription.mail.unsubscribed.body'|trans({'%name%': mail.availabilityNotificationSubscriptionMailData.productName}) }} </p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <!--[if mso]>
+                </td>
+                <![endif]-->
+                <!--[if mso]>
+                </tr>
+                </table>
+                <![endif]-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}"
+cms-block-email--availability-notification-unsubscribed--text,availability-availability-notification-unsubscribed--text,TEXT Email Template With Header And Footer,@CmsBlock/template/email-template-with-header-and-footer.text.twig,1,,,,,,,"{{ 'availability_notification_subscription.mail.unsubscribed.body'|trans({'%name%': mail.availabilityNotificationSubscriptionMailData.productName}) }}
+
+{% embed '@AvailabilityNotification/mail/footer.text.twig' %}{% endembed %}","{{ 'availability_notification_subscription.mail.unsubscribed.body'|trans({'%name%': mail.availabilityNotificationSubscriptionMailData.productName}) }}
+
+{% embed '@AvailabilityNotification/mail/footer.text.twig' %}{% endembed %}"
+cms-block-email--availability-notification--html,availability-availability-notification--html,HTML Email Template With Header And Footer,@CmsBlock/template/email-template-with-header-and-footer.html.twig,1,,,,,,,"{% extends '@AvailabilityNotification/mail/layout.html.twig' %}
+
+{% block title %}{{ 'availability_notification_subscription.mail.notification.head'|trans({'%name%': mail.availabilityNotificationSubscriptionMailData.productName}) }}{% endblock %}
+
+{% block content %}
+    <table border=""0"" cellpadding=""0"" cellspacing=""0"" width=""100%"" class=""mcnTextBlock""
+           style=""min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+        <tbody class=""mcnTextBlockOuter"">
+        <tr>
+            <td valign=""top"" class=""mcnTextBlockInner""
+                style=""padding-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                <!--[if mso]>
+                <table align=""left"" border=""0"" cellspacing=""0"" cellpadding=""0"" width=""100%"" style=""width:100%;"">
+                    <tr>
+                <![endif]-->
+                <!--[if mso]>
+                <td valign=""top"" width=""600"" style=""width:600px;"">
+                <![endif]-->
+                <table align=""left"" border=""0"" cellpadding=""0"" cellspacing=""0""
+                       style=""max-width: 100%;min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;""
+                       width=""100%"" class=""mcnTextContentContainer"">
+                    <tbody>
+                    <tr>
+                        <td valign=""top"" class=""mcnTextContent""
+                            style=""padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;"">
+                            <h2 class=""null""
+                                style=""display: block;margin: 0;padding: 0;color: #202020;font-family: Helvetica;font-size: 22px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: normal;text-align: left;"">{{ 'availability_notification_subscription.mail.notification.head'|trans({'%name%': mail.availabilityNotificationSubscriptionMailData.productName}) }}</h2>
+                            <p style=""margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;"">{{ 'availability_notification_subscription.mail.notification.body'|trans({'%name%': mail.availabilityNotificationSubscriptionMailData.productName}) }}</p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <!--[if mso]>
+                </td>
+                <![endif]-->
+                <!--[if mso]>
+                </tr>
+                </table>
+                <![endif]-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    {% if mail.availabilityNotificationSubscriptionMailData.productUrl is not empty %}
+        <table border=""0"" cellpadding=""0"" cellspacing=""0"" width=""100%"" class=""mcnButtonBlock""
+               style=""min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+            <tbody class=""mcnButtonBlockOuter"">
+            <tr>
+                <td style=""padding-top: 0;padding-right: 18px;padding-bottom: 18px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;""
+                    valign=""top"" align=""center"" class=""mcnButtonBlockInner"">
+                    <table border=""0"" cellpadding=""0"" cellspacing=""0"" class=""mcnButtonContentContainer""
+                           style=""border-collapse: separate !important;border-radius: 3px;background-color: #2BAADF;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                        <tbody>
+                        <tr>
+                            <td align=""center"" valign=""middle"" class=""mcnButtonContent""
+                                style=""font-family: Arial;font-size: 16px;padding: 15px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                                <a target=""_blank""
+                                   class=""mcnButton ""
+                                   title=""{{ 'availability_notification_subscription.mail.notification.buy_now'|trans }}""
+                                   href=""{{ mail.availabilityNotificationSubscriptionMailData.productUrl }}"" target=""_blank""
+                                   style=""font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;display: block;"">{{ 'availability_notification_subscription.mail.notification.buy_now'|trans }}</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    {% endif %}
+    <table border=""0"" cellpadding=""0"" cellspacing=""0"" width=""100%"" class=""mcnImageCardBlock""
+           style=""border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+        <tbody class=""mcnImageCardBlockOuter"">
+        <tr>
+            <td class=""mcnImageCardBlockInner"" valign=""top""
+                style=""padding-top: 9px;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                <table align=""right"" border=""0"" cellpadding=""0"" cellspacing=""0"" class=""mcnImageCardBottomContent""
+                       width=""100%""
+                       style=""background-color: #FFFFFF;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                    <tbody>
+                    {% if mail.availabilityNotificationSubscriptionMailData.productImageUrl is not empty %}
+                        <tr>
+                            <td class=""mcnImageCardBottomImageContent"" align=""center"" valign=""top""
+                                style=""padding-top: 0px;padding-right: 0px;padding-bottom: 0;padding-left: 0px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                                <a href=""{{ mail.availabilityNotificationSubscriptionMailData.productUrl }}"" title="""" class="""" target=""_blank""
+                                   style=""mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                                    <img alt=""{{ mail.availabilityNotificationSubscriptionMailData.productName }}"" src=""{{ mail.availabilityNotificationSubscriptionMailData.productImageUrl }}""
+                                         width=""500""
+                                         style=""max-width: 500px;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;vertical-align: bottom;""
+                                         class=""mcnImage"">
+                                </a>
+                            </td>
+                        </tr>
+                    {% endif %}
+                    <tr>
+                        <td class=""mcnTextContent"" valign=""top""
+                            style=""padding: 9px 18px;font-family: Helvetica;font-size: 14px;font-weight: normal;text-align: center;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #202020;line-height: 150%;""
+                            width=""546"">
+                            <div style=""text-align: left;"">{{ mail.availabilityNotificationSubscriptionMailData.productName }}</div>
+                            <br>
+                            {% for name, value in mail.availabilityNotificationSubscriptionMailData.productConcrete.attributes %}
+                                <p class=""col col--sm-12 col--md-6 col--lg-4 col--xl-3"">
+                                    <strong>{{ ('product.attribute.' ~ name) | trans }}</strong><br/>
+                                    <span>{{ value }}</span>
+                                </p>
+                            {% endfor %}
+                            <br>
+                            {{ mail.availabilityNotificationSubscriptionMailData.productAttributes.price ?? '' }}
+                            <br>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <table border=""0"" cellpadding=""0"" cellspacing=""0"" width=""100%"" class=""mcnButtonBlock""
+           style=""min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+        <tbody class=""mcnButtonBlockOuter"">
+        <tr>
+            <td style=""padding-top: 0;padding-right: 18px;padding-bottom: 18px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;""
+                valign=""top"" align=""center"" class=""mcnButtonBlockInner"">
+                <table border=""0"" cellpadding=""0"" cellspacing=""0"" class=""mcnButtonContentContainer""
+                       style=""border-collapse: separate !important;border-radius: 3px;background-color: #2BAADF;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                    <tbody>
+                    <tr>
+                        <td align=""center"" valign=""middle"" class=""mcnButtonContent""
+                            style=""font-family: Arial;font-size: 16px;padding: 15px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                            <a target=""_blank""
+                               class=""mcnButton ""
+                               title=""{{ 'availability_notification_subscription.mail.notification.buy_now'|trans }}""
+                               href=""{{ mail.availabilityNotificationSubscriptionMailData.productUrl }}"" target=""_blank""
+                               style=""font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;display: block;"">{{ 'availability_notification_subscription.mail.notification.buy_now'|trans }}</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}","{% extends '@AvailabilityNotification/mail/layout.html.twig' %}
+
+{% block title %}{{ 'availability_notification_subscription.mail.notification.head'|trans({'%name%': mail.availabilityNotificationSubscriptionMailData.productName}) }}{% endblock %}
+
+{% block content %}
+    <table border=""0"" cellpadding=""0"" cellspacing=""0"" width=""100%"" class=""mcnTextBlock""
+           style=""min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+        <tbody class=""mcnTextBlockOuter"">
+        <tr>
+            <td valign=""top"" class=""mcnTextBlockInner""
+                style=""padding-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                <!--[if mso]>
+                <table align=""left"" border=""0"" cellspacing=""0"" cellpadding=""0"" width=""100%"" style=""width:100%;"">
+                    <tr>
+                <![endif]-->
+                <!--[if mso]>
+                <td valign=""top"" width=""600"" style=""width:600px;"">
+                <![endif]-->
+                <table align=""left"" border=""0"" cellpadding=""0"" cellspacing=""0""
+                       style=""max-width: 100%;min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;""
+                       width=""100%"" class=""mcnTextContentContainer"">
+                    <tbody>
+                    <tr>
+                        <td valign=""top"" class=""mcnTextContent""
+                            style=""padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;"">
+                            <h2 class=""null""
+                                style=""display: block;margin: 0;padding: 0;color: #202020;font-family: Helvetica;font-size: 22px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: normal;text-align: left;"">{{ 'availability_notification_subscription.mail.notification.head'|trans({'%name%': mail.availabilityNotificationSubscriptionMailData.productName}) }}</h2>
+                            <p style=""margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;"">{{ 'availability_notification_subscription.mail.notification.body'|trans({'%name%': mail.availabilityNotificationSubscriptionMailData.productName}) }}</p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <!--[if mso]>
+                </td>
+                <![endif]-->
+                <!--[if mso]>
+                </tr>
+                </table>
+                <![endif]-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    {% if mail.availabilityNotificationSubscriptionMailData.productUrl is not empty %}
+        <table border=""0"" cellpadding=""0"" cellspacing=""0"" width=""100%"" class=""mcnButtonBlock""
+               style=""min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+            <tbody class=""mcnButtonBlockOuter"">
+            <tr>
+                <td style=""padding-top: 0;padding-right: 18px;padding-bottom: 18px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;""
+                    valign=""top"" align=""center"" class=""mcnButtonBlockInner"">
+                    <table border=""0"" cellpadding=""0"" cellspacing=""0"" class=""mcnButtonContentContainer""
+                           style=""border-collapse: separate !important;border-radius: 3px;background-color: #2BAADF;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                        <tbody>
+                        <tr>
+                            <td align=""center"" valign=""middle"" class=""mcnButtonContent""
+                                style=""font-family: Arial;font-size: 16px;padding: 15px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                                <a target=""_blank""
+                                   class=""mcnButton ""
+                                   title=""{{ 'availability_notification_subscription.mail.notification.buy_now'|trans }}""
+                                   href=""{{ mail.availabilityNotificationSubscriptionMailData.productUrl }}"" target=""_blank""
+                                   style=""font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;display: block;"">{{ 'availability_notification_subscription.mail.notification.buy_now'|trans }}</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    {% endif %}
+    <table border=""0"" cellpadding=""0"" cellspacing=""0"" width=""100%"" class=""mcnImageCardBlock""
+           style=""border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+        <tbody class=""mcnImageCardBlockOuter"">
+        <tr>
+            <td class=""mcnImageCardBlockInner"" valign=""top""
+                style=""padding-top: 9px;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                <table align=""right"" border=""0"" cellpadding=""0"" cellspacing=""0"" class=""mcnImageCardBottomContent""
+                       width=""100%""
+                       style=""background-color: #FFFFFF;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                    <tbody>
+                    {% if mail.availabilityNotificationSubscriptionMailData.productImageUrl is not empty %}
+                        <tr>
+                            <td class=""mcnImageCardBottomImageContent"" align=""center"" valign=""top""
+                                style=""padding-top: 0px;padding-right: 0px;padding-bottom: 0;padding-left: 0px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                                <a href=""{{ mail.availabilityNotificationSubscriptionMailData.productUrl }}"" title="""" class="""" target=""_blank""
+                                   style=""mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                                    <img alt=""{{ mail.availabilityNotificationSubscriptionMailData.productName }}"" src=""{{ mail.availabilityNotificationSubscriptionMailData.productImageUrl }}""
+                                         width=""500""
+                                         style=""max-width: 500px;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;vertical-align: bottom;""
+                                         class=""mcnImage"">
+                                </a>
+                            </td>
+                        </tr>
+                    {% endif %}
+                    <tr>
+                        <td class=""mcnTextContent"" valign=""top""
+                            style=""padding: 9px 18px;font-family: Helvetica;font-size: 14px;font-weight: normal;text-align: center;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #202020;line-height: 150%;""
+                            width=""546"">
+                            <div style=""text-align: left;"">{{ mail.availabilityNotificationSubscriptionMailData.productName }}</div>
+                            <br>
+                            {% for name, value in mail.availabilityNotificationSubscriptionMailData.productConcrete.attributes %}
+                                <p class=""col col--sm-12 col--md-6 col--lg-4 col--xl-3"">
+                                    <strong>{{ ('product.attribute.' ~ name) | trans }}</strong><br/>
+                                    <span>{{ value }}</span>
+                                </p>
+                            {% endfor %}
+                            <br>
+                            {{ mail.availabilityNotificationSubscriptionMailData.productAttributes.price ?? '' }}
+                            <br>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <table border=""0"" cellpadding=""0"" cellspacing=""0"" width=""100%"" class=""mcnButtonBlock""
+           style=""min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+        <tbody class=""mcnButtonBlockOuter"">
+        <tr>
+            <td style=""padding-top: 0;padding-right: 18px;padding-bottom: 18px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;""
+                valign=""top"" align=""center"" class=""mcnButtonBlockInner"">
+                <table border=""0"" cellpadding=""0"" cellspacing=""0"" class=""mcnButtonContentContainer""
+                       style=""border-collapse: separate !important;border-radius: 3px;background-color: #2BAADF;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                    <tbody>
+                    <tr>
+                        <td align=""center"" valign=""middle"" class=""mcnButtonContent""
+                            style=""font-family: Arial;font-size: 16px;padding: 15px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"">
+                            <a target=""_blank""
+                               class=""mcnButton ""
+                               title=""{{ 'availability_notification_subscription.mail.notification.buy_now'|trans }}""
+                               href=""{{ mail.availabilityNotificationSubscriptionMailData.productUrl }}"" target=""_blank""
+                               style=""font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;display: block;"">{{ 'availability_notification_subscription.mail.notification.buy_now'|trans }}</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}"
+cms-block-email--availability-notification--text,availability-availability-notification--text,TEXT Email Template With Header And Footer,@CmsBlock/template/email-template-with-header-and-footer.text.twig,1,,,,,,,"{{ 'availability_notification_subscription.mail.notification.head'|trans({'%name%': mail.availabilityNotificationSubscriptionMailData.productName}) }}
+{{ 'availability_notification_subscription.mail.notification.body'|trans({'%name%': mail.availabilityNotificationSubscriptionMailData.productName}) }}
+
+{{ mail.availabilityNotificationSubscriptionMailData.productName }}
+
+{% for name, value in mail.availabilityNotificationSubscriptionMailData.productConcrete.attributes if name %}
+    {{ ('product.attribute.' ~ name) | trans }}: {{ value }}
+{% endfor %}
+
+{{ mail.availabilityNotificationSubscriptionMailData.productAttributes.price ?? '' }}
+
+{% embed '@AvailabilityNotification/mail/footer.text.twig' %}{% endembed %}","{{ 'availability_notification_subscription.mail.notification.head'|trans({'%name%': mail.availabilityNotificationSubscriptionMailData.productName}) }}
+{{ 'availability_notification_subscription.mail.notification.body'|trans({'%name%': mail.availabilityNotificationSubscriptionMailData.productName}) }}
+
+{{ mail.availabilityNotificationSubscriptionMailData.productName }}
+
+{% for name, value in mail.availabilityNotificationSubscriptionMailData.productConcrete.attributes if name %}
+    {{ ('product.attribute.' ~ name) | trans }}: {{ value }}
+{% endfor %}
+
+{{ mail.availabilityNotificationSubscriptionMailData.productAttributes.price ?? '' }}
+
+{% embed '@AvailabilityNotification/mail/footer.text.twig' %}{% endembed %}"
+cms-block-email--gift-card-delivery--html,gift-card-delivery--html,HTML Email Template With Header And Footer,@CmsBlock/template/email-template-with-header-and-footer.html.twig,1,,,,,,,"<div>
+        <div style=""text-align: center;"">
+        {{ 'mail.giftCard.delivery.text' | trans }}
+        {% for giftCard in mail.giftCards %}
+                {{ giftCard.code }} ({{ giftCard.value / 100 | number_format(2) }} {{ giftCard.currencyIsoCode }})<br />
+        {% endfor %}
+        </div>
+</div>","<div>
+        <div style=""text-align: center;"">
+        {{ 'mail.giftCard.delivery.text' | trans }}
+        {% for giftCard in mail.giftCards %}
+                {{ giftCard.code }} ({{ giftCard.value / 100 | number_format(2) }} {{ giftCard.currencyIsoCode }})<br />
+        {% endfor %}
+        </div>
+</div>"
+cms-block-email--gift-card-delivery--text,gift-card-delivery--text,TEXT Email Template With Header And Footer,@CmsBlock/template/email-template-with-header-and-footer.text.twig,1,,,,,,,"{{ 'mail.giftCard.delivery.text' | trans }}
+{% for giftCard in mail.giftCards %}
+    {{ giftCard.code }} ({{ giftCard.value / 100 | number_format(2) }} {{ giftCard.currencyIsoCode }})
+{% endfor %}","{{ 'mail.giftCard.delivery.text' | trans }}
+{% for giftCard in mail.giftCards %}
+    {{ giftCard.code }} ({{ giftCard.value / 100 | number_format(2) }} {{ giftCard.currencyIsoCode }})
+{% endfor %}"
+cms-block-email--gift-card-usage--html,gift-card-usage--html,HTML Email Template With Header And Footer,@CmsBlock/template/email-template-with-header-and-footer.html.twig,1,,,,,,,"<div>
+    {% for giftCard in mail.giftCards %}
+        <div style=""text-align: center;"">{{ giftCard.name }}: {{ giftCard.code }} ({{ giftCard.actualValue / 100 | number_format(2) }} {{ giftCard.currencyIsoCode }})</div><br />
+    {% endfor %}
+</div>","<div>
+    {% for giftCard in mail.giftCards %}
+        <div style=""text-align: center;"">{{ giftCard.name }}: {{ giftCard.code }} ({{ giftCard.actualValue / 100 | number_format(2) }} {{ giftCard.currencyIsoCode }})</div><br />
+    {% endfor %}
+</div>"
+cms-block-email--gift-card-usage--text,gift-card-usage--text,TEXT Email Template With Header And Footer,@CmsBlock/template/email-template-with-header-and-footer.text.twig,1,,,,,,,"{% for giftCard in mail.giftCards %}
+    {{ giftCard.code }} ({{ giftCard.actualValue / 100 | number_format(2) }} {{ giftCard.currencyIsoCode }})
+{% endfor %}","{% for giftCard in mail.giftCards %}
+    {{ giftCard.code }} ({{ giftCard.actualValue / 100 | number_format(2) }} {{ giftCard.currencyIsoCode }})
+{% endfor %}"
+cms-block-email--newsletter-subscribed--html,newsletter-subscribed--html,HTML Email Template With Header And Footer,@CmsBlock/template/email-template-with-header-and-footer.html.twig,1,,,,,,,"<div style=""text-align: center;"">
+    {{ 'mail.newsletter.subscribed.text' | trans }}
+</div>
+<br />
+<div style=""text-align: center;"">
+    {{ 'mail.newsletter.subscribed.footer.text' | trans }}
+</div>","<div style=""text-align: center;"">
+    {{ 'mail.newsletter.subscribed.text' | trans }}
+</div>
+<br />
+<div style=""text-align: center;"">
+    {{ 'mail.newsletter.subscribed.footer.text' | trans }}
+</div>"
+cms-block-email--newsletter-subscribed--text,newsletter-subscribed--text,TEXT Email Template With Header And Footer,@CmsBlock/template/email-template-with-header-and-footer.text.twig,1,,,,,,,"{{ 'mail.newsletter.subscribed.text' | trans }}
+
+{{ 'mail.newsletter.subscribed.footer.text' | trans }}","{{ 'mail.newsletter.subscribed.text' | trans }}
+
+{{ 'mail.newsletter.subscribed.footer.text' | trans }}"
+cms-block-email--newsletter-unsubscribed--html,newsletter-unsubscribed--html,HTML Email Template With Header And Footer,@CmsBlock/template/email-template-with-header-and-footer.html.twig,1,,,,,,,"<div style=""text-align: center;"">
+    {{ 'mail.newsletter.unsubscribed.text' | trans }}
+</div>","<div style=""text-align: center;"">
+    {{ 'mail.newsletter.unsubscribed.text' | trans }}
+</div>"
+cms-block-email--newsletter-unsubscribed--text,newsletter-unsubscribed--text,TEXT Email Template With Header And Footer,@CmsBlock/template/email-template-with-header-and-footer.text.twig,1,,,,,,,{{ 'mail.newsletter.unsubscribed.text' | trans }},{{ 'mail.newsletter.unsubscribed.text' | trans }}
+cms-block-email--order-confirmation--html,order-confirmation--html,HTML Email Template With Header And Footer,@CmsBlock/template/email-template-with-header-and-footer.html.twig,1,,,,,,,"<div>
+    <div style=""text-align: center;"">{{ 'mail.order.confirmation.salutation' | trans }} {{ mail.order.firstName }} {{ mail.order.lastName }},</div>
+    <br />
+    <div style=""text-align: center;"">{{ 'mail.order.confirmation.text_line_1' | trans }}</div>
+    <br />
+    <div style=""text-align: center;"">{{ 'mail.order.confirmation.text_line_2' | trans }}</div>
+    <div style=""text-align: center;"">{{ 'mail.order.confirmation.text_line_3' | trans }}</div>
+    <br />
+    <div style=""text-align: center;"">{{ 'mail.order.confirmation.footer.text_line_1' | trans }}</div>
+    <div style=""text-align: center;"">{{ 'mail.order.confirmation.footer.text_line_2' | trans }}</div>
+    <hr /> <br />
+    <div>
+        <table align=""center"" border=""0.1"" cellpadding=""1"" cellspacing=""1"">
+            <tbody>
+            <tr>
+                <td><strong>{{ 'mail.order.confirmation.details' | trans }}</strong></td>
+            </tr>
+            <tr>
+                <td>
+                    {{ 'mail.order.confirmation.order_number' | trans }}: {{ mail.order.orderReference }}<br />
+                    {{ 'mail.order.confirmation.price_including_tax' | trans }}: {{ mail.order.totals.grandTotal | money }}<br />
+                    {{ 'mail.order.confirmation.date' | trans }}: {{ mail.order.createdAt | date }}<br />
+                    {{ 'mail.order.confirmation.billing_address' | trans }}: {{ mail.order.billingAddress.firstName }} {{ mail.order.billingAddress.lastName }}<br />
+                    {{ mail.order.billingAddress.address1 }} {{ mail.order.billingAddress.address2 }} {{ mail.order.billingAddress.address3 }}<br />
+                    {{ mail.order.billingAddress.zipCode }} {{ mail.order.billingAddress.city }}<br />
+                    {{ mail.order.billingAddress.region }}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        {% include [
+            '@ShipmentGui/Oms/mail/order_confirmation-shipping-addresses.html.twig',
+            '@Oms/Mail/order_confirmation-shipping-addresses.html.twig'
+        ] %}
+    </div>
+</div>","<div>
+    <div style=""text-align: center;"">{{ 'mail.order.confirmation.salutation' | trans }} {{ mail.order.firstName }} {{ mail.order.lastName }},</div>
+    <br />
+    <div style=""text-align: center;"">{{ 'mail.order.confirmation.text_line_1' | trans }}</div>
+    <br />
+    <div style=""text-align: center;"">{{ 'mail.order.confirmation.text_line_2' | trans }}</div>
+    <div style=""text-align: center;"">{{ 'mail.order.confirmation.text_line_3' | trans }}</div>
+    <br />
+    <div style=""text-align: center;"">{{ 'mail.order.confirmation.footer.text_line_1' | trans }}</div>
+    <div style=""text-align: center;"">{{ 'mail.order.confirmation.footer.text_line_2' | trans }}</div>
+    <hr /> <br />
+    <div>
+        <table align=""center"" border=""0.1"" cellpadding=""1"" cellspacing=""1"">
+            <tbody>
+            <tr>
+                <td><strong>{{ 'mail.order.confirmation.details' | trans }}</strong></td>
+            </tr>
+            <tr>
+                <td>
+                    {{ 'mail.order.confirmation.order_number' | trans }}: {{ mail.order.orderReference }}<br />
+                    {{ 'mail.order.confirmation.price_including_tax' | trans }}: {{ mail.order.totals.grandTotal | money }}<br />
+                    {{ 'mail.order.confirmation.date' | trans }}: {{ mail.order.createdAt | date }}<br />
+                    {{ 'mail.order.confirmation.billing_address' | trans }}: {{ mail.order.billingAddress.firstName }} {{ mail.order.billingAddress.lastName }}<br />
+                    {{ mail.order.billingAddress.address1 }} {{ mail.order.billingAddress.address2 }} {{ mail.order.billingAddress.address3 }}<br />
+                    {{ mail.order.billingAddress.zipCode }} {{ mail.order.billingAddress.city }}<br />
+                    {{ mail.order.billingAddress.region }}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        {% include [
+            '@ShipmentGui/Oms/mail/order_confirmation-shipping-addresses.html.twig',
+            '@Oms/Mail/order_confirmation-shipping-addresses.html.twig'
+        ] %}
+    </div>
+</div>"
+cms-block-email--order-confirmation--text,order-confirmation--text,TEXT Email Template With Header And Footer,@CmsBlock/template/email-template-with-header-and-footer.text.twig,1,,,,,,,"{{ 'mail.order.confirmation.salutation' | trans }} {{ mail.order.firstName }} {{ mail.order.lastName }},
+
+{{ 'mail.order.confirmation.text_line_1' | trans }}
+
+{{ 'mail.order.confirmation.text_line_2' | trans }}
+
+{{ 'mail.order.confirmation.text_line_3' | trans }}
+
+{{ 'mail.order.confirmation.footer.text_line_1' | trans }},
+{{ 'mail.order.confirmation.footer.text_line_2' | trans }}
+
+- - - - - - - - - -
+
+{{ 'mail.order.confirmation.details' | trans }}
+
+{{ 'mail.order.confirmation.order_number' | trans }}: {{ mail.order.orderReference }}
+{{ 'mail.order.confirmation.price_including_tax' | trans }}: {{ mail.order.totals.grandTotal | money }}
+{{ 'mail.order.confirmation.date' | trans }}: {{ mail.order.createdAt | date }}
+
+{{ 'mail.order.confirmation.billing_address' | trans }}: {{ mail.order.billingAddress.firstName }} {{ mail.order.billingAddress.lastName }},
+{{ mail.order.billingAddress.address1 }} {{ mail.order.billingAddress.address2 }} {{ mail.order.billingAddress.address3 }},
+{{ mail.order.billingAddress.zipCode }} {{ mail.order.billingAddress.city }},
+{{ mail.order.billingAddress.region }}
+
+{% include [
+    '@ShipmentGui/Oms/mail/order_confirmation-shipping-addresses.text.twig',
+    '@Oms/Mail/order_confirmation-shipping-addresses.text.twig'
+] %}","{{ 'mail.order.confirmation.salutation' | trans }} {{ mail.order.firstName }} {{ mail.order.lastName }},
+
+{{ 'mail.order.confirmation.text_line_1' | trans }}
+
+{{ 'mail.order.confirmation.text_line_2' | trans }}
+
+{{ 'mail.order.confirmation.text_line_3' | trans }}
+
+{{ 'mail.order.confirmation.footer.text_line_1' | trans }},
+{{ 'mail.order.confirmation.footer.text_line_2' | trans }}
+
+- - - - - - - - - -
+
+{{ 'mail.order.confirmation.details' | trans }}
+
+{{ 'mail.order.confirmation.order_number' | trans }}: {{ mail.order.orderReference }}
+{{ 'mail.order.confirmation.price_including_tax' | trans }}: {{ mail.order.totals.grandTotal | money }}
+{{ 'mail.order.confirmation.date' | trans }}: {{ mail.order.createdAt | date }}
+
+{{ 'mail.order.confirmation.billing_address' | trans }}: {{ mail.order.billingAddress.firstName }} {{ mail.order.billingAddress.lastName }},
+{{ mail.order.billingAddress.address1 }} {{ mail.order.billingAddress.address2 }} {{ mail.order.billingAddress.address3 }},
+{{ mail.order.billingAddress.zipCode }} {{ mail.order.billingAddress.city }},
+{{ mail.order.billingAddress.region }}
+
+{% include [
+    '@ShipmentGui/Oms/mail/order_confirmation-shipping-addresses.text.twig',
+    '@Oms/Mail/order_confirmation-shipping-addresses.text.twig'
+] %}"
+cms-block-email--order-shipped--html,order-shipped--html,HTML Email Template With Header And Footer,@CmsBlock/template/email-template-with-header-and-footer.html.twig,1,,,,,,,"<div>
+    <div style=""text-align: center;"">{{ 'mail.order.shipped.salutation' | trans }} {{ mail.order.firstName }} {{ mail.order.lastName }},</div>
+    <br />
+    <div style=""text-align: center;"">{{ 'mail.order.shipped.text' | trans }}</div>
+    <br />
+    <div style=""text-align: center;"">{{ 'mail.order.shipped.footer.text_line_1' | trans }}</div>
+    <div style=""text-align: center;"">{{ 'mail.order.shipped.footer.text_line_2' | trans }}</div>
+
+    <hr /> <br />
+
+    <div style=""text-align: center;""><strong>{{ 'mail.order.shipped.details' | trans }}</strong></div>
+    <div style=""text-align: center;"">
+        {{ 'mail.order.shipped.order_number' | trans }}: {{ mail.order.orderReference }}<br />
+        {{ 'mail.order.shipped.price_including_tax' | trans }}: {{ mail.order.totals.grandTotal | money }}<br />
+        {{ 'mail.order.shipped.date' | trans }}: {{ mail.order.createdAt | date }}
+    </div>
+</div>","<div>
+    <div style=""text-align: center;"">{{ 'mail.order.shipped.salutation' | trans }} {{ mail.order.firstName }} {{ mail.order.lastName }},</div>
+    <br />
+    <div style=""text-align: center;"">{{ 'mail.order.shipped.text' | trans }}</div>
+    <br />
+    <div style=""text-align: center;"">{{ 'mail.order.shipped.footer.text_line_1' | trans }}</div>
+    <div style=""text-align: center;"">{{ 'mail.order.shipped.footer.text_line_2' | trans }}</div>
+
+    <hr /> <br />
+
+    <div style=""text-align: center;""><strong>{{ 'mail.order.shipped.details' | trans }}</strong></div>
+    <div style=""text-align: center;"">
+        {{ 'mail.order.shipped.order_number' | trans }}: {{ mail.order.orderReference }}<br />
+        {{ 'mail.order.shipped.price_including_tax' | trans }}: {{ mail.order.totals.grandTotal | money }}<br />
+        {{ 'mail.order.shipped.date' | trans }}: {{ mail.order.createdAt | date }}
+    </div>
+</div>"
+cms-block-email--order-shipped--text,order-shipped--text,TEXT Email Template With Header And Footer,@CmsBlock/template/email-template-with-header-and-footer.text.twig,1,,,,,,,"{{ 'mail.order.shipped.salutation' | trans }} {{ mail.order.firstName }} {{ mail.order.lastName }},
+
+{{ 'mail.order.shipped.text' | trans }}
+
+{{ 'mail.order.shipped.footer.text_line_1' | trans }},
+{{ 'mail.order.shipped.footer.text_line_2' | trans }}
+
+- - - - - - - - - -
+
+{{ 'mail.order.shipped.details' | trans }}
+
+{{ 'mail.order.shipped.order_number' | trans }}: {{ mail.order.orderReference }}
+{{ 'mail.order.shipped.price_including_tax' | trans }}: {{ mail.order.totals.grandTotal | money }}
+{{ 'mail.order.shipped.date' | trans }}: {{ mail.order.createdAt | date }}","{{ 'mail.order.shipped.salutation' | trans }} {{ mail.order.firstName }} {{ mail.order.lastName }},
+
+{{ 'mail.order.shipped.text' | trans }}
+
+{{ 'mail.order.shipped.footer.text_line_1' | trans }},
+{{ 'mail.order.shipped.footer.text_line_2' | trans }}
+
+- - - - - - - - - -
+
+{{ 'mail.order.shipped.details' | trans }}
+
+{{ 'mail.order.shipped.order_number' | trans }}: {{ mail.order.orderReference }}
+{{ 'mail.order.shipped.price_including_tax' | trans }}: {{ mail.order.totals.grandTotal | money }}
+{{ 'mail.order.shipped.date' | trans }}: {{ mail.order.createdAt | date }}"
+cms-block-email--company-user-invitation--html,company-user-invitation--html,HTML Email Template With Header And Footer,@CmsBlock/template/email-template-with-header-and-footer.html.twig,1,,,,,,,"<div>
+    <div style=""text-align: center;"">{{ 'mail.company.user.invitation.body.html' | trans({
+            '%name%' : mail.getCompanyUserInvitation.getFirstName,
+            '%invitationLink%' : mail.getInvitationLink,
+        }) | raw }}</div>
+</div>","<div>
+    <div style=""text-align: center;"">{{ 'mail.company.user.invitation.body.html' | trans({
+            '%name%' : mail.getCompanyUserInvitation.getFirstName,
+            '%invitationLink%' : mail.getInvitationLink,
+        }) | raw }}</div>
+</div>"
+cms-block-email--company-user-invitation--text,company-user-invitation--text,TEXT Email Template With Header And Footer,@CmsBlock/template/email-template-with-header-and-footer.text.twig,1,,,,,,,"{{ 'mail.company.user.invitation.body.text' | trans({
+    '%name%' : mail.getCompanyUserInvitation.getFirstName,
+    '%invitationLink%' : mail.getInvitationLink,
+}) | raw }}","{{ 'mail.company.user.invitation.body.text' | trans({
+    '%name%' : mail.getCompanyUserInvitation.getFirstName,
+    '%invitationLink%' : mail.getInvitationLink,
+}) | raw }}"
+cms-block-email--company-status--html,company-status--html,HTML Email Template With Header And Footer,@CmsBlock/template/email-template-with-header-and-footer.html.twig,1,,,,,,,"<div>
+    <div style=""text-align: center;"">{{ 'mail.company.status.text' | trans }}{{ ('mail.company.status.' ~ mail.company.status) | trans }}</div>
+</div>","<div>
+    <div style=""text-align: center;"">{{ 'mail.company.status.text' | trans }}{{ ('mail.company.status.' ~ mail.company.status) | trans }}</div>
+</div>"
+cms-block-email--company-status--text,company-status--text,TEXT Email Template With Header And Footer,@CmsBlock/template/email-template-with-header-and-footer.text.twig,1,,,,,,,{{ 'mail.company.status.text' | trans }}{{ ('mail.company.status.' ~ mail.company.status) | trans }},{{ 'mail.company.status.text' | trans }}{{ ('mail.company.status.' ~ mail.company.status) | trans }}
