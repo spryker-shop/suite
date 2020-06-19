@@ -454,4 +454,16 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
         return $applicationPlugins;
     }
+    
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Monitoring\Communication\Plugin\Console\MonitoringConsolePlugin[]
+     */
+    public function getEventSubscriber(Container $container): array
+    {
+        return [
+            new MonitoringConsolePlugin(),
+        ];
+    }
 }
