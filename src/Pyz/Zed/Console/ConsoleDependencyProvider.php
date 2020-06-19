@@ -365,6 +365,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new TriggerEventFromCsvFileConsole(),
 
             new DataExportConsole(),
+
+            new CustomerPasswordResetConsole(),
+            new CustomerPasswordSetConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
@@ -419,8 +422,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new EventTriggerListenerConsole();
             $commands[] = new ComposerConstraintConsole();
             $commands[] = new CleanOutputConsole();
-            $commands[] = new CustomerPasswordResetConsole();
-            $commands[] = new CustomerPasswordSetConsole();
         }
 
         return $commands;
