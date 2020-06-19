@@ -1611,15 +1611,15 @@
             "authors": [
                 {
                     "name": "Alex Bilbie",
+                    "role": "Developer",
                     "email": "hello@alexbilbie.com",
-                    "homepage": "http://www.alexbilbie.com",
-                    "role": "Developer"
+                    "homepage": "http://www.alexbilbie.com"
                 },
                 {
                     "name": "Andy Millington",
+                    "role": "Developer",
                     "email": "andrew@noexceptions.io",
-                    "homepage": "https://www.noexceptions.io",
-                    "role": "Developer"
+                    "homepage": "https://www.noexceptions.io"
                 }
             ],
             "description": "A lightweight and powerful OAuth 2.0 authorization and resource server library with support for all the core specification grants. This library will allow you to secure your API with OAuth and allow your applications users to approve apps that want to access their data from your API.",
@@ -25558,16 +25558,16 @@
         },
         {
             "name": "spryker/monitoring",
-            "version": "2.1.2",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/monitoring.git",
-                "reference": "eab916c7c34b8f90e7a993f4e72a8ce9d50534da"
+                "reference": "e961010ffaa27c79c6d6149574d497f4d6e2d5b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/monitoring/zipball/eab916c7c34b8f90e7a993f4e72a8ce9d50534da",
-                "reference": "eab916c7c34b8f90e7a993f4e72a8ce9d50534da",
+                "url": "https://api.github.com/repos/spryker/monitoring/zipball/e961010ffaa27c79c6d6149574d497f4d6e2d5b4",
+                "reference": "e961010ffaa27c79c6d6149574d497f4d6e2d5b4",
                 "shasum": ""
             },
             "require": {
@@ -25577,20 +25577,19 @@
                 "spryker/locale": "^3.0.0",
                 "spryker/monitoring-extension": "^1.0.0",
                 "spryker/store": "^1.0.0",
+                "spryker/symfony": "^3.0.0",
                 "spryker/util-network": "^1.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
                 "spryker/container": "*",
                 "spryker/event-dispatcher": "*",
-                "spryker/silex": "^2.0.0",
-                "spryker/symfony": "^3.0.0"
+                "spryker/silex": "^2.0.0"
             },
             "suggest": {
                 "spryker/container": "Add this module when you want to use the EventDispatcher plugins.",
                 "spryker/event-dispatcher": "Add this module when you want to use the EventDispatcher plugins.",
-                "spryker/silex": "If you want to use the Monitoring ServiceProvider, please add spryker/silex.",
-                "spryker/symfony": "If you want to use the Monitoring ServiceProvider, please add spryker/symfony."
+                "spryker/silex": "If you want to use the Monitoring ServiceProvider, please add spryker/silex."
             },
             "type": "library",
             "extra": {
@@ -25608,7 +25607,7 @@
                 "proprietary"
             ],
             "description": "Monitoring module",
-            "time": "2020-06-15T13:30:47+00:00"
+            "time": "2020-06-18T09:35:03+00:00"
         },
         {
             "name": "spryker/monitoring-extension",
