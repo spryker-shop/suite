@@ -18,6 +18,8 @@ use Spryker\Zed\Store\Business\StoreFacadeInterface;
 
 class CombinedProductStockBulkPdoDataSetWriter extends ProductStockBulkPdoDataSetWriter
 {
+    public const BULK_SIZE = CombinedProductStockHydratorStep::BULK_SIZE;
+
     protected const COLUMN_NAME = CombinedProductStockHydratorStep::COLUMN_NAME;
     protected const COLUMN_CONCRETE_SKU = CombinedProductStockHydratorStep::COLUMN_CONCRETE_SKU;
     protected const COLUMN_IS_BUNDLE = CombinedProductStockHydratorStep::COLUMN_IS_BUNDLE;

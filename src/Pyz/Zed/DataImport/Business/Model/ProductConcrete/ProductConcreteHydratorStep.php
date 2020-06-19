@@ -20,6 +20,18 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
 {
     public const BULK_SIZE = 100;
 
+    public const COLUMN_ABSTRACT_SKU = 'abstract_sku';
+    public const COLUMN_CONCRETE_SKU = 'concrete_sku';
+
+    public const COLUMN_OLD_SKU = 'old_sku'; // not used.
+    public const COLUMN_NAME = 'name';
+    public const COLUMN_ICECAT_PDO_URL = 'icecat_pdp_url'; // not used.
+    public const COLUMN_DESCRIPTION = 'description';
+    public const COLUMN_IS_SEARCHABLE = 'is_searchable';
+    public const COLUMN_ICECAT_LICENSE = 'icecat_license'; // not used.
+    public const COLUMN_BUNDLES = 'bundled';
+    public const COLUMN_IS_QUANTITY_SPLITTABLE = 'is_quantity_splittable';
+
     public const KEY_ATTRIBUTES = 'attributes';
     public const KEY_DISCOUNT = 'discount';
     public const KEY_QUANTITY = 'quantity';
@@ -28,19 +40,13 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
     public const KEY_ID_PRODUCT = 'id_product';
     public const KEY_FK_PRODUCT_ABSTRACT = 'fk_product_abstract';
     public const KEY_LOCALIZED_ATTRIBUTES = 'localizedAttributes';
-    public const KEY_NAME = 'name';
-    public const KEY_DESCRIPTION = 'description';
     public const KEY_LOCALES = 'locales';
     public const KEY_FK_LOCALE = 'fk_locale';
     public const KEY_FK_PRODUCT = 'fk_product';
     public const KEY_FK_BUNDLED_PRODUCT = 'fk_bundled_product';
-    public const KEY_CONCRETE_SKU = 'concrete_sku';
-    public const KEY_ABSTRACT_SKU = 'abstract_sku';
     public const KEY_SKU = 'sku';
     public const KEY_IS_ACTIVE = 'is_active';
     public const KEY_IS_COMPLETE = 'is_complete';
-    public const KEY_IS_SEARCHABLE = 'is_searchable';
-    public const KEY_BUNDLES = 'bundled';
     public const KEY_PRODUCT_BUNDLE_TRANSFER = 'productBundleEntityTransfer';
     public const KEY_PRODUCT_CONCRETE_LOCALIZED_TRANSFER = 'localizedAttributeTransfer';
     public const KEY_PRODUCT_SEARCH_TRANSFER = 'productSearchEntityTransfer';
@@ -48,7 +54,6 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
     public const DATA_PRODUCT_CONCRETE_TRANSFER = 'DATA_PRODUCT_CONCRETE_TRANSFER';
     public const DATA_PRODUCT_CONCRETE_LOCALIZED_TRANSFER = 'DATA_PRODUCT_CONCRETE_LOCALIZED_TRANSFER';
     public const DATA_PRODUCT_BUNDLE_TRANSFER = 'DATA_PRODUCT_BUNDLE_TRANSFER';
-    public const KEY_IS_QUANTITY_SPLITTABLE = 'is_quantity_splittable';
 
     /**
      * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository
@@ -88,16 +93,16 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
     protected function importProduct(DataSetInterface $dataSet): void
     {
         $productEntityTransfer = new SpyProductEntityTransfer();
-        $productEntityTransfer->setSku($dataSet[static::KEY_CONCRETE_SKU]);
+        $productEntityTransfer->setSku($dataSet[static::COLUMN_CONCRETE_SKU]);
         $productEntityTransfer
             ->setIsActive($dataSet[static::KEY_IS_ACTIVE] ?? true)
             ->setAttributes(json_encode($dataSet[static::KEY_ATTRIBUTES]));
 
-        if ($this->isProductColumn(static::KEY_IS_QUANTITY_SPLITTABLE)) {
+        if ($this->isProductColumn(static::COLUMN_IS_QUANTITY_SPLITTABLE)) {
             $isQuantitySplittable = (
-                !isset($dataSet[static::KEY_IS_QUANTITY_SPLITTABLE]) ||
-                $dataSet[static::KEY_IS_QUANTITY_SPLITTABLE] === ''
-            ) ? true : $dataSet[static::KEY_IS_QUANTITY_SPLITTABLE];
+                !isset($dataSet[static::COLUMN_IS_QUANTITY_SPLITTABLE]) ||
+                $dataSet[static::COLUMN_IS_QUANTITY_SPLITTABLE] === ''
+            ) ? true : $dataSet[static::COLUMN_IS_QUANTITY_SPLITTABLE];
             $productEntityTransfer->setIsQuantitySplittable($isQuantitySplittable);
         }
 
@@ -116,8 +121,8 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
         foreach ($dataSet[static::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $localizedAttributes) {
             $productLocalizedAttributesEntityTransfer = new SpyProductLocalizedAttributesEntityTransfer();
             $productLocalizedAttributesEntityTransfer
-                ->setName($localizedAttributes[static::KEY_NAME])
-                ->setDescription($localizedAttributes[static::KEY_DESCRIPTION])
+                ->setName($localizedAttributes[static::COLUMN_NAME])
+                ->setDescription($localizedAttributes[static::COLUMN_DESCRIPTION])
                 ->setIsComplete($localizedAttributes[static::KEY_IS_COMPLETE] ?? true)
                 ->setAttributes(json_encode($localizedAttributes[static::KEY_ATTRIBUTES]))
                 ->setFkLocale($idLocale);
@@ -125,12 +130,12 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
             $productSearchEntityTransfer = new SpyProductSearchEntityTransfer();
             $productSearchEntityTransfer
                 ->setFkLocale($idLocale)
-                ->setIsSearchable($localizedAttributes[static::KEY_IS_SEARCHABLE]);
+                ->setIsSearchable($localizedAttributes[static::COLUMN_IS_SEARCHABLE]);
 
             $localizedAttributeTransfer[] = [
                 static::KEY_PRODUCT_CONCRETE_LOCALIZED_TRANSFER => $productLocalizedAttributesEntityTransfer,
                 static::KEY_PRODUCT_SEARCH_TRANSFER => $productSearchEntityTransfer,
-                static::KEY_SKU => $dataSet[static::KEY_CONCRETE_SKU],
+                static::KEY_SKU => $dataSet[static::COLUMN_CONCRETE_SKU],
             ];
         }
 
@@ -146,8 +151,8 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
     {
         $productBundleTransfer = [];
 
-        if (!empty($dataSet[static::KEY_BUNDLES])) {
-            $bundleProducts = explode(',', $dataSet[static::KEY_BUNDLES]);
+        if (!empty($dataSet[static::COLUMN_BUNDLES])) {
+            $bundleProducts = explode(',', $dataSet[static::COLUMN_BUNDLES]);
 
             foreach ($bundleProducts as $bundleProduct) {
                 $bundleProduct = trim($bundleProduct);
@@ -157,7 +162,7 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
                 $productBundleEntityTransfer->setQuantity((int)$quantity);
                 $productBundleTransfer[] = [
                     static::KEY_PRODUCT_BUNDLE_TRANSFER => $productBundleEntityTransfer,
-                    static::KEY_SKU => $dataSet[static::KEY_CONCRETE_SKU],
+                    static::KEY_SKU => $dataSet[static::COLUMN_CONCRETE_SKU],
                     static::KEY_PRODUCT_BUNDLE_SKU => $sku,
                 ];
             }
