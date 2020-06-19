@@ -5,11 +5,11 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\DataImport\Business\CombinedProductImporter\ProductStock;
+namespace Pyz\Zed\DataImport\Business\CombinedProduct\ProductStock;
 
-use Pyz\Zed\DataImport\Business\Model\ProductStock\ProductStockHydratorStep as ProductStockProductStockHydratorStep;
+use Pyz\Zed\DataImport\Business\Model\ProductStock\ProductStockHydratorStep;
 
-class ProductStockHydratorStep extends ProductStockProductStockHydratorStep
+class CombinedProductStockHydratorStep extends ProductStockHydratorStep
 {
     public const BULK_SIZE = 5000;
 

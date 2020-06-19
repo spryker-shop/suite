@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\DataImport\Business\CombinedProductImporter\ProductGroup;
+namespace Pyz\Zed\DataImport\Business\CombinedProduct\ProductGroup;
 
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
-use Pyz\Zed\DataImport\Business\Model\ProductGroup\ProductGroupWriter as ProductGroupProductGroupWriter;
+use Pyz\Zed\DataImport\Business\Model\ProductGroup\ProductGroupWriter;
 
-class ProductGroupWriter extends ProductGroupProductGroupWriter
+class CombinedProductGroupWriter extends ProductGroupWriter
 {
     public const COLUMN_ABSTRACT_SKU = 'abstract_sku';
     public const COLUMN_PRODUCT_GROUP_KEY = 'product_group.group_key';

@@ -5,14 +5,14 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\DataImport\Business\CombinedProductImporter\ProductImage;
+namespace Pyz\Zed\DataImport\Business\CombinedProduct\ProductImage;
 
 use Pyz\Zed\DataImport\Business\Exception\InvalidDataException;
-use Pyz\Zed\DataImport\Business\Model\ProductImage\ProductImageHydratorStep as ProductImageProductImageHydratorStep;
+use Pyz\Zed\DataImport\Business\Model\ProductImage\ProductImageHydratorStep;
 use Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
-class ProductImageHydratorStep extends ProductImageProductImageHydratorStep
+class CombinedProductImageHydratorStep extends ProductImageHydratorStep
 {
     public const BULK_SIZE = 5000;
 

@@ -5,20 +5,20 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\DataImport\Business\CombinedProductImporter\ProductStock\Writer;
+namespace Pyz\Zed\DataImport\Business\CombinedProduct\ProductStock\Writer;
 
-use Pyz\Zed\DataImport\Business\CombinedProductImporter\ProductStock\ProductStockHydratorStep;
+use Pyz\Zed\DataImport\Business\CombinedProduct\ProductStock\CombinedProductStockHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface;
-use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockPropelDataSetWriter as WriterProductStockPropelDataSetWriter;
+use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockPropelDataSetWriter;
 use Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface;
 use Spryker\Zed\Stock\Business\StockFacadeInterface;
 use Spryker\Zed\Store\Business\StoreFacadeInterface;
 
-class ProductStockPropelDataSetWriter extends WriterProductStockPropelDataSetWriter
+class CombinedProductStockPropelDataSetWriter extends ProductStockPropelDataSetWriter
 {
-    protected const COLUMN_CONCRETE_SKU = ProductStockHydratorStep::COLUMN_CONCRETE_SKU;
-    protected const COLUMN_IS_BUNDLE = ProductStockHydratorStep::COLUMN_IS_BUNDLE;
-    protected const COLUMN_IS_NEVER_OUT_OF_STOCK = ProductStockHydratorStep::COLUMN_IS_NEVER_OUT_OF_STOCK;
+    protected const COLUMN_CONCRETE_SKU = CombinedProductStockHydratorStep::COLUMN_CONCRETE_SKU;
+    protected const COLUMN_IS_BUNDLE = CombinedProductStockHydratorStep::COLUMN_IS_BUNDLE;
+    protected const COLUMN_IS_NEVER_OUT_OF_STOCK = CombinedProductStockHydratorStep::COLUMN_IS_NEVER_OUT_OF_STOCK;
 
     /**
      * @param \Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface $productBundleFacade

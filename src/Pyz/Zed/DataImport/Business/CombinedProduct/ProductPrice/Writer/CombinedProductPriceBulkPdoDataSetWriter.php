@@ -5,23 +5,23 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\DataImport\Business\CombinedProductImporter\ProductPrice\Writer;
+namespace Pyz\Zed\DataImport\Business\CombinedProduct\ProductPrice\Writer;
 
-use Pyz\Zed\DataImport\Business\CombinedProductImporter\ProductPrice\ProductPriceHydratorStep;
+use Pyz\Zed\DataImport\Business\CombinedProduct\ProductPrice\CombinedProductPriceHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface;
-use Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\ProductPriceBulkPdoDataSetWriter as WriterProductPriceBulkPdoDataSetWriter;
+use Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\ProductPriceBulkPdoDataSetWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\Sql\ProductPriceSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
 
-class ProductPriceBulkPdoDataSetWriter extends WriterProductPriceBulkPdoDataSetWriter
+class CombinedProductPriceBulkPdoDataSetWriter extends ProductPriceBulkPdoDataSetWriter
 {
-    protected const BULK_SIZE = ProductPriceHydratorStep::BULK_SIZE;
+    protected const BULK_SIZE = CombinedProductPriceHydratorStep::BULK_SIZE;
 
-    protected const COLUMN_PRICE_TYPE = ProductPriceHydratorStep::COLUMN_PRICE_TYPE;
-    protected const COLUMN_PRICE_DATA = ProductPriceHydratorStep::COLUMN_PRICE_DATA;
-    protected const COLUMN_PRICE_DATA_CHECKSUM = ProductPriceHydratorStep::COLUMN_PRICE_DATA_CHECKSUM;
-    protected const COLUMN_STORE = ProductPriceHydratorStep::COLUMN_STORE;
-    protected const COLUMN_CURRENCY = ProductPriceHydratorStep::COLUMN_CURRENCY;
+    protected const COLUMN_PRICE_TYPE = CombinedProductPriceHydratorStep::COLUMN_PRICE_TYPE;
+    protected const COLUMN_PRICE_DATA = CombinedProductPriceHydratorStep::COLUMN_PRICE_DATA;
+    protected const COLUMN_PRICE_DATA_CHECKSUM = CombinedProductPriceHydratorStep::COLUMN_PRICE_DATA_CHECKSUM;
+    protected const COLUMN_STORE = CombinedProductPriceHydratorStep::COLUMN_STORE;
+    protected const COLUMN_CURRENCY = CombinedProductPriceHydratorStep::COLUMN_CURRENCY;
 
     /**
      * @param \Pyz\Zed\DataImport\Business\Model\ProductPrice\Writer\Sql\ProductPriceSqlInterface $productPriceSql

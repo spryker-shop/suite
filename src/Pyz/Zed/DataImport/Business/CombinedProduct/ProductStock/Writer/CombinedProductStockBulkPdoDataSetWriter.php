@@ -5,24 +5,24 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\DataImport\Business\CombinedProductImporter\ProductStock\Writer;
+namespace Pyz\Zed\DataImport\Business\CombinedProduct\ProductStock\Writer;
 
-use Pyz\Zed\DataImport\Business\CombinedProductImporter\ProductStock\ProductStockHydratorStep;
+use Pyz\Zed\DataImport\Business\CombinedProduct\ProductStock\CombinedProductStockHydratorStep;
 use Pyz\Zed\DataImport\Business\Model\DataFormatter\DataImportDataFormatterInterface;
-use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockBulkPdoDataSetWriter as WriterProductStockBulkPdoDataSetWriter;
+use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\ProductStockBulkPdoDataSetWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\Writer\Sql\ProductStockSqlInterface;
 use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
 use Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface;
 use Spryker\Zed\Stock\Business\StockFacadeInterface;
 use Spryker\Zed\Store\Business\StoreFacadeInterface;
 
-class ProductStockBulkPdoDataSetWriter extends WriterProductStockBulkPdoDataSetWriter
+class CombinedProductStockBulkPdoDataSetWriter extends ProductStockBulkPdoDataSetWriter
 {
-    protected const COLUMN_NAME = ProductStockHydratorStep::COLUMN_NAME;
-    protected const COLUMN_CONCRETE_SKU = ProductStockHydratorStep::COLUMN_CONCRETE_SKU;
-    protected const COLUMN_IS_BUNDLE = ProductStockHydratorStep::COLUMN_IS_BUNDLE;
-    protected const COLUMN_QUANTITY = ProductStockHydratorStep::COLUMN_QUANTITY;
-    protected const COLUMN_IS_NEVER_OUT_OF_STOCK = ProductStockHydratorStep::COLUMN_IS_NEVER_OUT_OF_STOCK;
+    protected const COLUMN_NAME = CombinedProductStockHydratorStep::COLUMN_NAME;
+    protected const COLUMN_CONCRETE_SKU = CombinedProductStockHydratorStep::COLUMN_CONCRETE_SKU;
+    protected const COLUMN_IS_BUNDLE = CombinedProductStockHydratorStep::COLUMN_IS_BUNDLE;
+    protected const COLUMN_QUANTITY = CombinedProductStockHydratorStep::COLUMN_QUANTITY;
+    protected const COLUMN_IS_NEVER_OUT_OF_STOCK = CombinedProductStockHydratorStep::COLUMN_IS_NEVER_OUT_OF_STOCK;
 
     /**
      * @param \Spryker\Zed\Stock\Business\StockFacadeInterface $stockFacade

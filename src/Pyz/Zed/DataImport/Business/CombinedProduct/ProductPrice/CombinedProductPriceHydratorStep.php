@@ -5,16 +5,16 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\DataImport\Business\CombinedProductImporter\ProductPrice;
+namespace Pyz\Zed\DataImport\Business\CombinedProduct\ProductPrice;
 
 use Pyz\Zed\DataImport\Business\Exception\InvalidDataException;
-use Pyz\Zed\DataImport\Business\Model\ProductPrice\ProductPriceHydratorStep as ProductPriceProductPriceHydratorStep;
+use Pyz\Zed\DataImport\Business\Model\ProductPrice\ProductPriceHydratorStep;
 use Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Dependency\Service\DataImportToUtilEncodingServiceInterface;
 use Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface;
 
-class ProductPriceHydratorStep extends ProductPriceProductPriceHydratorStep
+class CombinedProductPriceHydratorStep extends ProductPriceHydratorStep
 {
     public const BULK_SIZE = 5000;
 
