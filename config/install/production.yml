@@ -50,9 +50,10 @@ sections:
 #            command: "vendor/bin/console rabbitmq:virtual-hosts:init"
 #            stores: true
 
-        store-specific:
-            command: "vendor/bin/console import:store-specific:data"
-            stores: true
+        demodata:
+            command: "vendor/bin/console data:import -vvv --no-ansi || true"
+            stores:
+                - DE
 
     scheduler-start:
         scheduler-setup:
