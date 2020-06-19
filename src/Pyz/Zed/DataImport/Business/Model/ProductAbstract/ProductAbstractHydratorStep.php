@@ -19,6 +19,25 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 class ProductAbstractHydratorStep implements DataImportStepInterface
 {
     public const BULK_SIZE = 5000;
+
+    public const COLUMN_ABSTRACT_SKU = 'abstract_sku';
+
+    public const COLUMN_CATEGORY_KEY = 'category_key';
+    public const COLUMN_CATEGORY_PRODUCT_ORDER = 'category_product_order';
+    public const COLUMN_NAME = 'name';
+    public const COLUMN_URL = 'url';
+    public const COLUMN_IS_FEATURED = 'is_featured'; // not used.
+    public const COLUMN_COLOR_CODE = 'color_code';
+    public const COLUMN_DESCRIPTION = 'description';
+    public const COLUMN_ICECAT_PDO_URL = 'icecat_pdp_url'; // not used.
+    public const COLUMN_TAX_SET_NAME = 'tax_set_name';
+    public const COLUMN_META_TITLE = 'meta_title';
+    public const COLUMN_META_KEYWORDS = 'meta_keywords';
+    public const COLUMN_META_DESCRIPTION = 'meta_description';
+    public const COLUMN_ICECAT_LICENSE = 'icecat_license'; // not used.
+    public const COLUMN_NEW_FROM = 'new_from';
+    public const COLUMN_NEW_TO = 'new_to';
+
     public const DATA_PRODUCT_ABSTRACT_TRANSFER = 'DATA_PRODUCT_ABSTRACT_TRANSFER';
     public const DATA_PRODUCT_ABSTRACT_LOCALIZED_TRANSFER = 'DATA_PRODUCT_ABSTRACT_LOCALIZED_TRANSFER';
     public const DATA_PRODUCT_CATEGORY_TRANSFER = 'DATA_PRODUCT_CATEGORY_TRANSFER';
@@ -26,28 +45,15 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
     public const KEY_PRODUCT_CATEGORY_TRANSFER = 'productCategoryTransfer';
     public const KEY_PRODUCT_ABSTRACT_LOCALIZED_TRANSFER = 'localizedAttributeTransfer';
     public const KEY_PRODUCT_URL_TRASNFER = 'urlTransfer';
-    public const KEY_ABSTRACT_SKU = 'abstract_sku';
     public const KEY_SKU = 'sku';
-    public const KEY_COLOR_CODE = 'color_code';
+    public const KEY_ATTRIBUTES = 'attributes';
     public const KEY_ID_TAX_SET = 'idTaxSet';
     public const KEY_FK_TAX_SET = 'fk_tax_set';
-    public const KEY_ATTRIBUTES = 'attributes';
-    public const KEY_NAME = 'name';
-    public const KEY_URL = 'url';
-    public const KEY_DESCRIPTION = 'description';
-    public const KEY_META_TITLE = 'meta_title';
-    public const KEY_META_DESCRIPTION = 'meta_description';
-    public const KEY_META_KEYWORDS = 'meta_keywords';
-    public const KEY_TAX_SET_NAME = 'tax_set_name';
-    public const KEY_CATEGORY_KEY = 'category_key';
-    public const KEY_CATEGORY_KEYS = 'categoryKeys';
+    public const COLUMN_CATEGORY_KEYS = 'categoryKeys';
     public const KEY_FK_CATEGORY = 'fk_category';
-    public const KEY_CATEGORY_PRODUCT_ORDER = 'category_product_order';
     public const KEY_PRODUCT_ORDER = 'product_order';
     public const KEY_LOCALES = 'locales';
     public const KEY_FK_LOCALE = 'fk_locale';
-    public const KEY_NEW_FROM = 'new_from';
-    public const KEY_NEW_TO = 'new_to';
     public const KEY_ID_URL = 'id_url';
     public const KEY_ID_PRODUCT_ABSTRACT = 'id_product_abstract';
 
@@ -72,14 +78,14 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
     protected function importProductAbstract(DataSetInterface $dataSet): void
     {
         $productAbstractEntityTransfer = new SpyProductAbstractEntityTransfer();
-        $productAbstractEntityTransfer->setSku($dataSet[static::KEY_ABSTRACT_SKU]);
+        $productAbstractEntityTransfer->setSku($dataSet[static::COLUMN_ABSTRACT_SKU]);
 
         $productAbstractEntityTransfer
-            ->setColorCode($dataSet[static::KEY_COLOR_CODE])
+            ->setColorCode($dataSet[static::COLUMN_COLOR_CODE])
             ->setFkTaxSet($dataSet[static::KEY_ID_TAX_SET])
             ->setAttributes(json_encode($dataSet[static::KEY_ATTRIBUTES]))
-            ->setNewFrom($dataSet[static::KEY_NEW_FROM])
-            ->setNewTo($dataSet[static::KEY_NEW_TO]);
+            ->setNewFrom($dataSet[static::COLUMN_NEW_FROM])
+            ->setNewTo($dataSet[static::COLUMN_NEW_TO]);
 
         $dataSet[static::DATA_PRODUCT_ABSTRACT_TRANSFER] = $productAbstractEntityTransfer;
     }
@@ -96,16 +102,16 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
         foreach ($dataSet[ProductLocalizedAttributesExtractorStep::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $localizedAttributes) {
             $productAbstractLocalizedAttributesEntityTransfer = new SpyProductAbstractLocalizedAttributesEntityTransfer();
             $productAbstractLocalizedAttributesEntityTransfer
-                ->setName($localizedAttributes[static::KEY_NAME])
-                ->setDescription($localizedAttributes[static::KEY_DESCRIPTION])
-                ->setMetaTitle($localizedAttributes[static::KEY_META_TITLE])
-                ->setMetaDescription($localizedAttributes[static::KEY_META_DESCRIPTION])
-                ->setMetaKeywords($localizedAttributes[static::KEY_META_KEYWORDS])
+                ->setName($localizedAttributes[static::COLUMN_NAME])
+                ->setDescription($localizedAttributes[static::COLUMN_DESCRIPTION])
+                ->setMetaTitle($localizedAttributes[static::COLUMN_META_TITLE])
+                ->setMetaDescription($localizedAttributes[static::COLUMN_META_DESCRIPTION])
+                ->setMetaKeywords($localizedAttributes[static::COLUMN_META_KEYWORDS])
                 ->setFkLocale($idLocale)
                 ->setAttributes(json_encode($localizedAttributes[static::KEY_ATTRIBUTES]));
 
             $localizedAttributeTransfer[] = [
-                static::KEY_ABSTRACT_SKU => $dataSet[static::KEY_ABSTRACT_SKU],
+                static::COLUMN_ABSTRACT_SKU => $dataSet[static::COLUMN_ABSTRACT_SKU],
                 static::KEY_PRODUCT_ABSTRACT_LOCALIZED_TRANSFER => $productAbstractLocalizedAttributesEntityTransfer,
             ];
         }
@@ -123,15 +129,15 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
     protected function importProductCategories(DataSetInterface $dataSet): void
     {
         $productCategoryTransfers = [];
-        $categoryKeys = $this->getCategoryKeys($dataSet[static::KEY_CATEGORY_KEY]);
-        $categoryProductOrder = $this->getCategoryProductOrder($dataSet[static::KEY_CATEGORY_PRODUCT_ORDER]);
+        $categoryKeys = $this->getCategoryKeys($dataSet[static::COLUMN_CATEGORY_KEY]);
+        $categoryProductOrder = $this->getCategoryProductOrder($dataSet[static::COLUMN_CATEGORY_PRODUCT_ORDER]);
 
         foreach ($categoryKeys as $index => $categoryKey) {
-            if (!isset($dataSet[static::KEY_CATEGORY_KEYS][$categoryKey])) {
+            if (!isset($dataSet[static::COLUMN_CATEGORY_KEYS][$categoryKey])) {
                 throw new DataKeyNotFoundInDataSetException(sprintf(
                     'The category with key "%s" was not found in categoryKeys. Maybe there is a typo. Given Categories: "%s"',
                     $categoryKey,
-                    implode(array_values($dataSet[static::KEY_CATEGORY_KEYS]))
+                    implode(array_values($dataSet[static::COLUMN_CATEGORY_KEYS]))
                 ));
             }
 
@@ -143,11 +149,11 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
 
             $productCategoryEntityTransfer = new SpyProductCategoryEntityTransfer();
             $productCategoryEntityTransfer
-                ->setFkCategory($dataSet[static::KEY_CATEGORY_KEYS][$categoryKey])
+                ->setFkCategory($dataSet[static::COLUMN_CATEGORY_KEYS][$categoryKey])
                 ->setProductOrder($productOrder);
 
             $productCategoryTransfers[] = [
-                static::KEY_ABSTRACT_SKU => $dataSet[static::KEY_ABSTRACT_SKU],
+                static::COLUMN_ABSTRACT_SKU => $dataSet[static::COLUMN_ABSTRACT_SKU],
                 static::KEY_PRODUCT_CATEGORY_TRANSFER => $productCategoryEntityTransfer,
             ];
         }
@@ -165,7 +171,7 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
         $urlsTransfer = [];
 
         foreach ($dataSet[ProductLocalizedAttributesExtractorStep::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $localizedAttributes) {
-            $abstractProductUrl = $localizedAttributes[static::KEY_URL];
+            $abstractProductUrl = $localizedAttributes[static::COLUMN_URL];
 
             $urlEntityTransfer = new SpyUrlEntityTransfer();
 
@@ -174,7 +180,7 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
                 ->setUrl($abstractProductUrl);
 
             $urlsTransfer[] = [
-                static::KEY_ABSTRACT_SKU => $dataSet[static::KEY_ABSTRACT_SKU],
+                static::COLUMN_ABSTRACT_SKU => $dataSet[static::COLUMN_ABSTRACT_SKU],
                 static::KEY_PRODUCT_URL_TRASNFER => $urlEntityTransfer,
             ];
         }
