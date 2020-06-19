@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b65260f166cd35cd3331ad46f77e0faa",
+    "content-hash": "e11a6088fc98ec65c6b6eb0acba80979",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -486,10 +486,6 @@
                 "validation",
                 "validator"
             ],
-            "support": {
-                "issues": "https://github.com/egulias/EmailValidator/issues",
-                "source": "https://github.com/egulias/EmailValidator/tree/master"
-            },
             "time": "2020-06-16T20:11:17+00:00"
         },
         {
@@ -946,10 +942,6 @@
                 "rest",
                 "web service"
             ],
-            "support": {
-                "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/6.5"
-            },
             "time": "2020-06-16T21:01:06+00:00"
         },
         {
@@ -4909,16 +4901,16 @@
         },
         {
             "name": "spryker-shop/customer-page",
-            "version": "2.20.0",
+            "version": "2.21.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/customer-page.git",
-                "reference": "de30aeb170f4407caa38f6d12f09b5effd8d45ca"
+                "reference": "6d54dc06c459edadd6b5ea7075587be08c820cb3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/customer-page/zipball/de30aeb170f4407caa38f6d12f09b5effd8d45ca",
-                "reference": "de30aeb170f4407caa38f6d12f09b5effd8d45ca",
+                "url": "https://api.github.com/repos/spryker-shop/customer-page/zipball/6d54dc06c459edadd6b5ea7075587be08c820cb3",
+                "reference": "6d54dc06c459edadd6b5ea7075587be08c820cb3",
                 "shasum": ""
             },
             "require": {
@@ -4996,7 +4988,7 @@
                 "proprietary"
             ],
             "description": "CustomerPage module",
-            "time": "2020-06-16T11:31:43+00:00"
+            "time": "2020-06-18T10:05:24+00:00"
         },
         {
             "name": "spryker-shop/customer-page-extension",
@@ -6022,6 +6014,57 @@
             ],
             "description": "NewsletterWidget module",
             "time": "2020-06-15T13:37:36+00:00"
+        },
+        {
+            "name": "spryker-shop/order-cancel-widget",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/order-cancel-widget.git",
+                "reference": "3e1fc18d70f1dc95707b79fa5837c1f684c962a8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/order-cancel-widget/zipball/3e1fc18d70f1dc95707b79fa5837c1f684c962a8",
+                "reference": "3e1fc18d70f1dc95707b79fa5837c1f684c962a8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker-shop/shop-application": "^1.2.0",
+                "spryker-shop/shop-ui": "^1.0.0",
+                "spryker/application": "^3.8.0",
+                "spryker/customer": "^7.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/oms": "^11.8.0",
+                "spryker/sales": "^11.10.0",
+                "spryker/symfony": "^3.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/router": "*"
+            },
+            "suggest": {
+                "spryker/router": "Use this module if you want use the RouterProviderPlugin.",
+                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "OrderCancelWidget module",
+            "time": "2020-06-18T10:19:06+00:00"
         },
         {
             "name": "spryker-shop/order-custom-reference-widget",
@@ -26834,16 +26877,16 @@
         },
         {
             "name": "spryker/oms",
-            "version": "11.7.0",
+            "version": "11.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/oms.git",
-                "reference": "fab6ad24cc1186d3b3d9a2f2c174dd14ff175e83"
+                "reference": "7fe57853d256be7e34f54243a79268cda8c70f46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/oms/zipball/fab6ad24cc1186d3b3d9a2f2c174dd14ff175e83",
-                "reference": "fab6ad24cc1186d3b3d9a2f2c174dd14ff175e83",
+                "url": "https://api.github.com/repos/spryker/oms/zipball/7fe57853d256be7e34f54243a79268cda8c70f46",
+                "reference": "7fe57853d256be7e34f54243a79268cda8c70f46",
                 "shasum": ""
             },
             "require": {
@@ -26857,7 +26900,7 @@
                 "spryker/oms-extension": "^1.2.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/sales": "^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^10.0.0 || ^11.0.0",
-                "spryker/sales-extension": "^1.6.0",
+                "spryker/sales-extension": "^1.7.0",
                 "spryker/store": "^1.5.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/transfer": "^3.18.0",
@@ -26894,7 +26937,7 @@
                 "proprietary"
             ],
             "description": "Oms module",
-            "time": "2020-06-11T15:54:58+00:00"
+            "time": "2020-06-18T10:32:07+00:00"
         },
         {
             "name": "spryker/oms-discount-connector",
@@ -36025,16 +36068,16 @@
         },
         {
             "name": "spryker/sales",
-            "version": "11.9.1",
+            "version": "11.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales.git",
-                "reference": "40eac1a4368c03c43e0297d856b1b9cc997bac0f"
+                "reference": "8f335a528c5a5dc792edc8764ce471641ee5165f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales/zipball/40eac1a4368c03c43e0297d856b1b9cc997bac0f",
-                "reference": "40eac1a4368c03c43e0297d856b1b9cc997bac0f",
+                "url": "https://api.github.com/repos/spryker/sales/zipball/8f335a528c5a5dc792edc8764ce471641ee5165f",
+                "reference": "8f335a528c5a5dc792edc8764ce471641ee5165f",
                 "shasum": ""
             },
             "require": {
@@ -36093,7 +36136,7 @@
                 "proprietary"
             ],
             "description": "Sales module",
-            "time": "2020-06-15T13:30:47+00:00"
+            "time": "2020-06-18T10:06:30+00:00"
         },
         {
             "name": "spryker/sales-configurable-bundle",
@@ -46877,16 +46920,16 @@
         },
         {
             "name": "composer/package-versions-deprecated",
-            "version": "1.8.0",
+            "version": "1.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/package-versions-deprecated.git",
-                "reference": "98df7f1b293c0550bd5b1ce6b60b59bdda23aa47"
+                "reference": "b9805885293f3957ee0dd42616ac6915c4ac9a4b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/package-versions-deprecated/zipball/98df7f1b293c0550bd5b1ce6b60b59bdda23aa47",
-                "reference": "98df7f1b293c0550bd5b1ce6b60b59bdda23aa47",
+                "url": "https://api.github.com/repos/composer/package-versions-deprecated/zipball/b9805885293f3957ee0dd42616ac6915c4ac9a4b",
+                "reference": "b9805885293f3957ee0dd42616ac6915c4ac9a4b",
                 "shasum": ""
             },
             "require": {
@@ -46894,7 +46937,7 @@
                 "php": "^7"
             },
             "replace": {
-                "ocramius/package-versions": "1.2 - 1.8.99"
+                "ocramius/package-versions": "1.8.99"
             },
             "require-dev": {
                 "composer/composer": "^1.9.3 || ^2.0@dev",
@@ -46934,11 +46977,15 @@
                     "type": "custom"
                 },
                 {
+                    "url": "https://github.com/composer",
+                    "type": "github"
+                },
+                {
                     "url": "https://tidelift.com/funding/github/packagist/composer/composer",
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-04-23T11:49:37+00:00"
+            "time": "2020-06-19T07:59:31+00:00"
         },
         {
             "name": "composer/xdebug-handler",
@@ -49587,8 +49634,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
@@ -51196,8 +51243,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "lead",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "lead"
                 }
             ],
             "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
