@@ -12,20 +12,20 @@
         </subprocesses>
 
         <states>
-            <state name="new" reserved="true"/>
+            <state name="new" reserved="true" display="new"/>
             <state name="payment pending" reserved="true"/>
-            <state name="invalid">
+            <state name="invalid" display="invalid">
                 <flag>exclude from customer</flag>
             </state>
-            <state name="cancelled">
+            <state name="cancelled" display="canceled">
                 <flag>exclude from customer</flag>
             </state>
-            <state name="paid" reserved="true"/>
-            <state name="exported" reserved="true"/>
-            <state name="confirmed" reserved="true"/>
-            <state name="shipped" reserved="true"/>
-            <state name="delivered"/>
-            <state name="closed"/>
+            <state name="paid" reserved="true" display="paid"/>
+            <state name="exported" reserved="true" display="exported"/>
+            <state name="confirmed" reserved="true" display="confirmed"/>
+            <state name="shipped" reserved="true" display="shipped"/>
+            <state name="delivered" display="delivered"/>
+            <state name="closed" display="closed"/>
         </states>
 
         <transitions>
