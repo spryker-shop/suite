@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "522b07ee0baa9aaa13d1aaf49e5b030f",
+    "content-hash": "1af72b9cfebda163d5d5c9a8915629ca",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -4904,6 +4904,54 @@
             "time": "2020-02-06T13:41:38+00:00"
         },
         {
+            "name": "spryker-eco/new-relic",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-eco/new-relic.git",
+                "reference": "45fbb3f06ec9df2cccaff25860382a62aeeca208"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-eco/new-relic/zipball/45fbb3f06ec9df2cccaff25860382a62aeeca208",
+                "reference": "45fbb3f06ec9df2cccaff25860382a62aeeca208",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "psr/http-message": "^1.0.0",
+                "spryker/guzzle": "^2.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/monitoring-extension": "^1.0.0",
+                "spryker/symfony": "^3.1.0"
+            },
+            "conflict": {
+                "spryker/new-relic": "*",
+                "spryker/new-relic-api": "*"
+            },
+            "require-dev": {
+                "codeception/codeception": "^2.0.0",
+                "phpstan/phpstan": "^0.9.2 || ^0.10.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerEco\\": "src/SprykerEco/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "NewRelic module",
+            "time": "2020-06-19T09:30:20+00:00"
+        },
+        {
             "name": "spryker/decimal-object",
             "version": "1.0.0",
             "source": {
@@ -5209,7 +5257,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "13eea4ba8a8d52706380aacfebdba0be64123233"
+                "reference": "d0fce8ed5fab102d0e809df9bd96b8ff132c92c3"
             },
             "require": {
                 "php": ">=7.2"
@@ -5927,7 +5975,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-06-19T07:12:11+00:00"
+            "time": "2020-06-19T09:30:24+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5935,7 +5983,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "7150ba6455a7e6a0e1061ad03e9d4d711f76724d"
+                "reference": "68853f957e252fe4453949d581cd3d9f838aa0cf"
             },
             "require": {
                 "php": ">=7.2"
@@ -6004,6 +6052,7 @@
                 "spryker-shop/multi-cart-widget": "*",
                 "spryker-shop/newsletter-page": "*",
                 "spryker-shop/newsletter-widget": "*",
+                "spryker-shop/order-cancel-widget": "*",
                 "spryker-shop/order-custom-reference-widget": "*",
                 "spryker-shop/persistent-cart-share-page": "*",
                 "spryker-shop/persistent-cart-share-widget": "*",
@@ -6086,7 +6135,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-06-18T14:25:31+00:00"
+            "time": "2020-06-19T08:28:16+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -10853,16 +10902,16 @@
         },
         {
             "name": "composer/package-versions-deprecated",
-            "version": "1.8.0",
+            "version": "1.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/package-versions-deprecated.git",
-                "reference": "98df7f1b293c0550bd5b1ce6b60b59bdda23aa47"
+                "reference": "b9805885293f3957ee0dd42616ac6915c4ac9a4b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/package-versions-deprecated/zipball/98df7f1b293c0550bd5b1ce6b60b59bdda23aa47",
-                "reference": "98df7f1b293c0550bd5b1ce6b60b59bdda23aa47",
+                "url": "https://api.github.com/repos/composer/package-versions-deprecated/zipball/b9805885293f3957ee0dd42616ac6915c4ac9a4b",
+                "reference": "b9805885293f3957ee0dd42616ac6915c4ac9a4b",
                 "shasum": ""
             },
             "require": {
@@ -10870,7 +10919,7 @@
                 "php": "^7"
             },
             "replace": {
-                "ocramius/package-versions": "1.2 - 1.8.99"
+                "ocramius/package-versions": "1.8.99"
             },
             "require-dev": {
                 "composer/composer": "^1.9.3 || ^2.0@dev",
@@ -10910,11 +10959,15 @@
                     "type": "custom"
                 },
                 {
+                    "url": "https://github.com/composer",
+                    "type": "github"
+                },
+                {
                     "url": "https://tidelift.com/funding/github/packagist/composer/composer",
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-04-23T11:49:37+00:00"
+            "time": "2020-06-19T07:59:31+00:00"
         },
         {
             "name": "composer/xdebug-handler",
@@ -13030,6 +13083,12 @@
     ],
     "aliases": [
         {
+            "alias": "2.0.1",
+            "alias_normalized": "2.0.1.0",
+            "version": "9999999-dev",
+            "package": "spryker-eco/new-relic"
+        },
+        {
             "alias": "1.17.0",
             "alias_normalized": "1.17.0.0",
             "version": "9999999-dev",
@@ -13065,6 +13124,7 @@
         "spryker/spryker": 20,
         "spryker/spryker-shop": 20,
         "spryker-eco/loggly": 20,
+        "spryker-eco/new-relic": 20,
         "spryker/rabbit-mq": 20,
         "spryker/install": 20,
         "spryker/event-behavior": 20,
