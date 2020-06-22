@@ -43,6 +43,8 @@ use Spryker\Glue\CategoriesRestApi\Plugin\CategoryResourceRoutePlugin;
 use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig;
 use Spryker\Glue\CheckoutRestApi\Plugin\GlueApplication\CheckoutDataResourcePlugin;
 use Spryker\Glue\CheckoutRestApi\Plugin\GlueApplication\CheckoutResourcePlugin;
+use Spryker\Glue\CmsPagesContentBannersResourceRelationship\Plugin\ContentBannersByCmsPageResourceRelationshipPlugin;
+use Spryker\Glue\CmsPagesContentProductAbstractListsResourceRelationship\Plugin\ContentProductAbstractListsByCmsPageResourceRelationshipPlugin;
 use Spryker\Glue\CmsPagesRestApi\CmsPagesRestApiConfig;
 use Spryker\Glue\CmsPagesRestApi\Plugin\GlueApplication\CmsPagesResourceRoutePlugin;
 use Spryker\Glue\CompaniesRestApi\Plugin\GlueApplication\CompaniesResourcePlugin;
@@ -63,8 +65,6 @@ use Spryker\Glue\CompanyUsersRestApi\Plugin\GlueApplication\CompanyUserByShareDe
 use Spryker\Glue\CompanyUsersRestApi\Plugin\GlueApplication\CompanyUserRestUserValidatorPlugin;
 use Spryker\Glue\CompanyUsersRestApi\Plugin\GlueApplication\CompanyUsersResourceRoutePlugin;
 use Spryker\Glue\ContentBannersRestApi\Plugin\ContentBannerResourceRoutePlugin;
-use Spryker\Glue\ContentBannersRestApi\Plugin\ContentBannersByCmsPageResourceRelationshipPlugin;
-use Spryker\Glue\ContentProductAbstractListsRestApi\Plugin\ContentProductAbstractListByCmsPageResourceRelationshipPlugin;
 use Spryker\Glue\ContentProductAbstractListsRestApi\Plugin\ContentProductAbstractListRoutePlugin;
 use Spryker\Glue\CustomerAccessRestApi\Plugin\GlueApplication\CustomerAccessFormatRequestPlugin;
 use Spryker\Glue\CustomerAccessRestApi\Plugin\GlueApplication\CustomerAccessResourceRoutePlugin;
@@ -600,7 +600,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         );
         $resourceRelationshipCollection->addRelationship(
             CmsPagesRestApiConfig::RESOURCE_CMS_PAGES,
-            new ContentProductAbstractListByCmsPageResourceRelationshipPlugin()
+            new ContentProductAbstractListsByCmsPageResourceRelationshipPlugin()
         );
 
         return $resourceRelationshipCollection;
