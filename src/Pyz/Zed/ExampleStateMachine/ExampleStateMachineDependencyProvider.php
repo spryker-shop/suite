@@ -21,9 +21,9 @@ class ExampleStateMachineDependencyProvider extends AbstractBundleDependencyProv
      */
     public function provideBusinessLayerDependencies(Container $container)
     {
-        $container[self::FACADE_STATE_MACHINE] = function (Container $container) {
+        $container->set(static::FACADE_STATE_MACHINE, function (Container $container) {
             return $container->getLocator()->stateMachine()->facade();
-        };
+        });
 
         return $container;
     }
@@ -35,9 +35,9 @@ class ExampleStateMachineDependencyProvider extends AbstractBundleDependencyProv
      */
     public function provideCommunicationLayerDependencies(Container $container)
     {
-        $container[self::FACADE_STATE_MACHINE] = function (Container $container) {
+        $container->set(static::FACADE_STATE_MACHINE, function (Container $container) {
             return $container->getLocator()->stateMachine()->facade();
-        };
+        });
 
         return $container;
     }
