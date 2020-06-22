@@ -1,6 +1,6 @@
 {{ renderCmsBlockAsTwig(
     'availability-availability-notification--html',
-    store.name,
-    locale.localeName,
+    getenv('APPLICATION_STORE'),
+    app.locale,
     {mail: mail}
 ) }}

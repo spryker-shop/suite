@@ -1,4 +1,14 @@
-{% include '@Mail/CmsBlockTemplate/email-template-with-header-and-footer.html.twig' %}
 {% if mail is not defined %}
     <!-- CMS_BLOCK_PLACEHOLDER : "content" -->
 {% endif %}
+<html>
+    <body>
+        <div>
+            <div><span class="sg-image" style="display: block; float: none; text-align: center;"><img src="//www.de.project.local/assets/default/img/logo.svg" style="width: 216px; height: 36px;" /></span></div>
+            <br />
+            {% block content %}
+                {{ placeholders.content | raw }}
+            {% endblock %}
+        </div>
+    </body>
+</html>

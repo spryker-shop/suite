@@ -15,7 +15,7 @@ use Spryker\Shared\Twig\Plugin\SecurityTwigPlugin;
 use Spryker\Zed\Application\Communication\Plugin\Twig\ApplicationTwigPlugin;
 use Spryker\Zed\Barcode\Plugin\Twig\BarcodeTwigPlugin;
 use Spryker\Zed\ChartGui\Communication\Plugin\Twig\Chart\ChartGuiTwigPlugin;
-use Spryker\Zed\CmsBlock\Communication\Plugin\Twig\CmsBlockAsTwigPlugin;
+use Spryker\Zed\CmsBlock\Communication\Plugin\Twig\CmsBlockTwigExtensionPlugin;
 use Spryker\Zed\CmsBlock\Communication\Plugin\Twig\CmsBlockTemplateTwigLoaderPlugin;
 use Spryker\Zed\Currency\Communication\Plugin\Twig\CurrencyTwigPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\Twig\AssetsPathTwigPlugin;
@@ -77,7 +77,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new ZedUiNavigationTwigPlugin(),
             new SchedulerTwigPlugin(),
             new BarcodeTwigPlugin(),
-            new CmsBlockAsTwigPlugin(),
+            new CmsBlockTwigExtensionPlugin(),
 
             new AssetsPathTwigPlugin(),
             new TabsTwigPlugin(),
