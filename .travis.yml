@@ -92,10 +92,9 @@ matrix:
         - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         - sudo chmod +x /usr/local/bin/docker-compose
       script:
-        - docker/sdk boot deploy.ci.yml
-        - docker/sdk build images
-        - docker/sdk demo-data -t
-        - 'docker/sdk testing codecept run -c codeception.functional.yml -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: inclusive: [PyzTest]\"" -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: exclusive: [Api, Glue]\""'
+        - docker/sdk boot deploy.ci.functional.yml -v
+        - docker/sdk up -t -v
+        - docker/sdk testing codecept run -c codeception.ci.functional.yml
       before_install: skip
       before_script: skip
       after_script: skip
@@ -134,9 +133,8 @@ matrix:
         - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         - sudo chmod +x /usr/local/bin/docker-compose
       script:
-        - docker/sdk boot deploy.ci.yml
-        - docker/sdk build -t images
-        - docker/sdk demo-data -t demo-minimal
+        - docker/sdk boot deploy.ci.api.yml -v
+        - docker/sdk up -t -v
         - docker/sdk testing codecept fixtures
         - docker/sdk testing console queue:worker:start --stop-when-empty
         - docker/sdk testing codecept run -c codeception.api.yml
@@ -178,10 +176,9 @@ matrix:
         - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         - sudo chmod +x /usr/local/bin/docker-compose
       script:
-        - docker/sdk boot deploy.ci.yml
-        - docker/sdk build images
-        - docker/sdk demo-data -t
-        - 'docker/sdk testing codecept run -c codeception.functional.yml -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: inclusive: [PyzTest]\"" -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: exclusive: [Api, Glue]\""'
+        - docker/sdk boot deploy.ci.functional.yml -v
+        - docker/sdk up -t -v
+        - docker/sdk testing codecept run -c codeception.ci.functional.yml
       before_install: skip
       before_script: skip
       after_script: skip
@@ -220,10 +217,9 @@ matrix:
         - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         - sudo chmod +x /usr/local/bin/docker-compose
       script:
-        - docker/sdk boot deploy.ci.yml
-        - docker/sdk build images
-        - docker/sdk demo-data -t
-        - 'docker/sdk testing codecept run -c codeception.functional.yml -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: inclusive: [PyzTest]\"" -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: exclusive: [Api, Glue]\""'
+        - docker/sdk boot deploy.ci.functional.yml -v
+        - docker/sdk up -t -v
+        - docker/sdk testing codecept run -c codeception.ci.functional.yml
       before_install: skip
       before_script: skip
       after_script: skip

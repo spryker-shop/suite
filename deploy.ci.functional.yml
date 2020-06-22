@@ -4,6 +4,7 @@ namespace: spryker_ci
 tag: '1.0'
 
 environment: docker
+pipeline: docker.ci.functional
 image: spryker/php:7.2
 
 composer:
@@ -104,6 +105,10 @@ docker:
 
     ssl:
         enabled: false
+
+    debug:
+        enabled: false
+        xdebug: false
 
     testing:
         store: DE
