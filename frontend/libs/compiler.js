@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const { buildVariantSettings } = require('../settings');
 
 // execute webpack compiler on array of configurations
 // and nicely handle the console output
@@ -8,7 +9,9 @@ const multiCompile = configs => {
     }
 
     configs.forEach(config => {
-        console.log(`${config.namespace} (${config.theme}) building ${config.moduleVersion} modules for ${config.webpack.mode}...`);
+        const buildVariant = buildVariantSettings.buildVariant;
+
+        console.log(`${config.namespace} (${config.theme}) building ${buildVariant} modules for ${config.webpack.mode}...`);
 
         if (config.webpack.watch) {
             console.log(`${config.namespace} (${config.theme}) watch mode: ON`);

@@ -36,12 +36,12 @@ const globalSettings = {
     }
 };
 
-const moduleVersionArray = process.argv.filter(argv => argv.includes('module'));
-const moduleVersion = moduleVersionArray.length ? moduleVersionArray[0].replace('module:', '') : '';
+const buildVariantArray = process.argv.filter(argv => argv.includes('module'));
+const buildVariant = buildVariantArray.length ? buildVariantArray[0].replace('module:', '') : '';
 
-const moduleSettings = {
-    moduleVersion,
-    isESModule: moduleVersion === globalSettings.buildVariants.esm,
+const buildVariantSettings = {
+    buildVariant,
+    isES6Module: buildVariant === globalSettings.buildVariants.esm,
 };
 
 const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
@@ -229,5 +229,5 @@ const getAppSettings = (namespaceConfigList, pathToConfig) => {
 module.exports = {
     globalSettings,
     getAppSettings,
-    moduleSettings,
+    buildVariantSettings,
 };
