@@ -6,10 +6,10 @@
 
     <process name="DummyReturn">
         <states>
-            <state name="waiting for return" display="waiting for return"/>
-            <state name="returned" display="returned"/>
-            <state name="return canceled" display="return canceled"/>
-            <state name="shipped to customer" display="shipped to customer"/>
+            <state name="waiting for return" display="oms.state.waiting-for-return"/>
+            <state name="returned" display="oms.state.returned"/>
+            <state name="return canceled" display="oms.state.return-canceled"/>
+            <state name="shipped to customer" display="oms.state.shipped-to-customer"/>
         </states>
 
         <transitions>
