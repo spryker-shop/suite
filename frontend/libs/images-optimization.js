@@ -39,8 +39,8 @@ const imagesOptimization = appSettings => {
             const assetsImagePath = normalize(join(assetsPath, '/images/'));
             const assetsImagePattern = '/*.{jpg,png,svg,gif}';
             const outputPath = isPublicOutput ?
-                normalize(join(assetsPath, '/images/optimized-images/')) :
-                normalize(join(appSettings.paths.public, '/images/'));
+                normalize(join(appSettings.paths.public, '/images/')) :
+                normalize(join(assetsPath, '/images/optimized-images/'));
 
             const isGlobalImages = assetsPath === appSettings.paths.assets.globalAssets;
 
