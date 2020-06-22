@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e11a6088fc98ec65c6b6eb0acba80979",
+    "content-hash": "7fd8a315763b6e4cecb665a56b5081d4",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -134,6 +134,12 @@
                 "bignum",
                 "brick",
                 "math"
+            ],
+            "funding": [
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/brick/math",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-04-15T15:59:35+00:00"
         },
@@ -407,6 +413,20 @@
                 "lexer",
                 "parser",
                 "php"
+            ],
+            "funding": [
+                {
+                    "url": "https://www.doctrine-project.org/sponsorship.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.patreon.com/phpdoctrine",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Flexer",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-05-25T17:44:05+00:00"
         },
@@ -1268,6 +1288,16 @@
                 "JWS",
                 "jwt"
             ],
+            "funding": [
+                {
+                    "url": "https://github.com/lcobucci",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/lcobucci",
+                    "type": "patreon"
+                }
+            ],
             "time": "2020-05-22T08:21:12+00:00"
         },
         {
@@ -1338,6 +1368,12 @@
                 "read",
                 "transform",
                 "write"
+            ],
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/nyamsprod",
+                    "type": "github"
+                }
             ],
             "time": "2020-03-17T15:15:35+00:00"
         },
@@ -1473,6 +1509,12 @@
                 "sftp",
                 "storage"
             ],
+            "funding": [
+                {
+                    "url": "https://offset.earth/frankdejonge",
+                    "type": "other"
+                }
+            ],
             "time": "2020-05-18T15:13:39+00:00"
         },
         {
@@ -1569,15 +1611,15 @@
             "authors": [
                 {
                     "name": "Alex Bilbie",
-                    "role": "Developer",
                     "email": "hello@alexbilbie.com",
-                    "homepage": "http://www.alexbilbie.com"
+                    "homepage": "http://www.alexbilbie.com",
+                    "role": "Developer"
                 },
                 {
                     "name": "Andy Millington",
-                    "role": "Developer",
                     "email": "andrew@noexceptions.io",
-                    "homepage": "https://www.noexceptions.io"
+                    "homepage": "https://www.noexceptions.io",
+                    "role": "Developer"
                 }
             ],
             "description": "A lightweight and powerful OAuth 2.0 authorization and resource server library with support for all the core specification grants. This library will allow you to secure your API with OAuth and allow your applications users to approve apps that want to access their data from your API.",
@@ -1802,6 +1844,16 @@
                 "log",
                 "logging",
                 "psr-3"
+            ],
+            "funding": [
+                {
+                    "url": "https://github.com/Seldaek",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/monolog/monolog",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-05-22T08:12:19+00:00"
         },
@@ -10198,21 +10250,22 @@
         },
         {
             "name": "spryker/availability-gui",
-            "version": "6.1.2",
+            "version": "6.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/availability-gui.git",
-                "reference": "bbdb4e12bdd67b0eaaa93c809c45ea9c8815bf8e"
+                "reference": "d289ea6e373f830af8652818cebed5b2cd066dfb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/availability-gui/zipball/bbdb4e12bdd67b0eaaa93c809c45ea9c8815bf8e",
-                "reference": "bbdb4e12bdd67b0eaaa93c809c45ea9c8815bf8e",
+                "url": "https://api.github.com/repos/spryker/availability-gui/zipball/d289ea6e373f830af8652818cebed5b2cd066dfb",
+                "reference": "d289ea6e373f830af8652818cebed5b2cd066dfb",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
                 "spryker/availability": "^9.2.0",
+                "spryker/availability-gui-extension": "^1.0.0",
                 "spryker/decimal-object": "^1.0.0",
                 "spryker/gui": "^3.30.0",
                 "spryker/kernel": "^3.30.0",
@@ -10251,7 +10304,45 @@
                 "proprietary"
             ],
             "description": "AvailabilityGui module",
-            "time": "2020-05-29T13:08:37+00:00"
+            "time": "2020-06-19T07:17:11+00:00"
+        },
+        {
+            "name": "spryker/availability-gui-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/availability-gui-extension.git",
+                "reference": "955f6bccfe21f7ef992849856588db96099a4b39"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/availability-gui-extension/zipball/955f6bccfe21f7ef992849856588db96099a4b39",
+                "reference": "955f6bccfe21f7ef992849856588db96099a4b39",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "AvailabilityGuiExtension module",
+            "time": "2020-06-17T12:01:35+00:00"
         },
         {
             "name": "spryker/availability-notification",
@@ -23244,25 +23335,27 @@
         },
         {
             "name": "spryker/merchant-gui",
-            "version": "3.0.2",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-gui.git",
-                "reference": "69b7af37adc396f3b80df9544b08c53f8e4c6727"
+                "reference": "e8db0569fc0f985b5f03303ab8f43cd0ba6d1cc7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-gui/zipball/69b7af37adc396f3b80df9544b08c53f8e4c6727",
-                "reference": "69b7af37adc396f3b80df9544b08c53f8e4c6727",
+                "url": "https://api.github.com/repos/spryker/merchant-gui/zipball/e8db0569fc0f985b5f03303ab8f43cd0ba6d1cc7",
+                "reference": "e8db0569fc0f985b5f03303ab8f43cd0ba6d1cc7",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
+                "spryker/availability-gui-extension": "^1.0.0",
                 "spryker/gui": "^3.0.0",
                 "spryker/kernel": "^3.33.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/merchant": "^3.0.0",
                 "spryker/merchant-gui-extension": "^1.1.0",
+                "spryker/product-management-extension": "^1.4.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/store": "^1.1.0",
                 "spryker/symfony": "^3.0.0",
@@ -23288,7 +23381,7 @@
                 "proprietary"
             ],
             "description": "MerchantGui module",
-            "time": "2020-06-15T13:30:47+00:00"
+            "time": "2020-06-19T07:17:11+00:00"
         },
         {
             "name": "spryker/merchant-gui-extension",
@@ -23619,25 +23712,28 @@
         },
         {
             "name": "spryker/merchant-product",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-product.git",
-                "reference": "dce3369366f7ed44fa22df793f83261a2842db48"
+                "reference": "ad17f2851fbd6f327c4db3902a435b55e833556b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-product/zipball/dce3369366f7ed44fa22df793f83261a2842db48",
-                "reference": "dce3369366f7ed44fa22df793f83261a2842db48",
+                "url": "https://api.github.com/repos/spryker/merchant-product/zipball/ad17f2851fbd6f327c4db3902a435b55e833556b",
+                "reference": "ad17f2851fbd6f327c4db3902a435b55e833556b",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
+                "spryker/kernel": "^3.33.0",
                 "spryker/merchant": "^3.0.0",
                 "spryker/product": "^6.0.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*"
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
             },
             "type": "library",
             "extra": {
@@ -23655,7 +23751,7 @@
                 "proprietary"
             ],
             "description": "MerchantProduct module",
-            "time": "2020-05-25T12:35:09+00:00"
+            "time": "2020-06-03T15:57:39+00:00"
         },
         {
             "name": "spryker/merchant-product-data-import",
@@ -23701,6 +23797,50 @@
             ],
             "description": "MerchantProductDataImport module",
             "time": "2020-06-01T11:52:28+00:00"
+        },
+        {
+            "name": "spryker/merchant-product-gui",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-product-gui.git",
+                "reference": "8eb2939513dae6cd4b13da975a495edb02b57405"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-product-gui/zipball/8eb2939513dae6cd4b13da975a495edb02b57405",
+                "reference": "8eb2939513dae6cd4b13da975a495edb02b57405",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/availability-gui-extension": "^1.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/merchant-product": "^0.1.1",
+                "spryker/product-management-extension": "^1.4.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantProductGui module",
+            "time": "2020-06-17T12:01:35+00:00"
         },
         {
             "name": "spryker/merchant-product-offer",
@@ -31639,16 +31779,16 @@
         },
         {
             "name": "spryker/product-management",
-            "version": "0.19.5",
+            "version": "0.19.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-management.git",
-                "reference": "918a11101f35ba2fb1f332accf9d3b23947aec8e"
+                "reference": "55e5811967aa335547cae682b9557374d6edb1bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-management/zipball/918a11101f35ba2fb1f332accf9d3b23947aec8e",
-                "reference": "918a11101f35ba2fb1f332accf9d3b23947aec8e",
+                "url": "https://api.github.com/repos/spryker/product-management/zipball/55e5811967aa335547cae682b9557374d6edb1bb",
+                "reference": "55e5811967aa335547cae682b9557374d6edb1bb",
                 "shasum": ""
             },
             "require": {
@@ -31670,7 +31810,7 @@
                 "spryker/product-category": "^4.6.0",
                 "spryker/product-group": "^1.0.0",
                 "spryker/product-image": "^3.0.0",
-                "spryker/product-management-extension": "^1.3.0",
+                "spryker/product-management-extension": "^1.4.0",
                 "spryker/product-validity": "^1.0.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/stock": "^8.0.0",
@@ -31706,26 +31846,27 @@
                 "proprietary"
             ],
             "description": "ProductManagement module",
-            "time": "2020-05-07T09:42:38+00:00"
+            "time": "2020-06-17T15:27:48+00:00"
         },
         {
             "name": "spryker/product-management-extension",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-management-extension.git",
-                "reference": "bc4f5e8db48fdaf9be6f17e58b19cf26d07a8411"
+                "reference": "2fcaa70017bf27965bee2dbe3ba0343d4f8e3c6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-management-extension/zipball/bc4f5e8db48fdaf9be6f17e58b19cf26d07a8411",
-                "reference": "bc4f5e8db48fdaf9be6f17e58b19cf26d07a8411",
+                "url": "https://api.github.com/repos/spryker/product-management-extension/zipball/2fcaa70017bf27965bee2dbe3ba0343d4f8e3c6c",
+                "reference": "2fcaa70017bf27965bee2dbe3ba0343d4f8e3c6c",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=7.2"
             },
             "require-dev": {
+                "spryker/code-sniffer": "*",
                 "spryker/symfony": "^3.0.0"
             },
             "suggest": {
@@ -31747,7 +31888,7 @@
                 "proprietary"
             ],
             "description": "ProductManagementExtension module",
-            "time": "2019-05-14T13:23:45+00:00"
+            "time": "2020-06-17T12:01:35+00:00"
         },
         {
             "name": "spryker/product-measurement-unit",
@@ -48790,16 +48931,16 @@
         },
         {
             "name": "psalm/phar",
-            "version": "3.11.7",
+            "version": "3.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/psalm/phar.git",
-                "reference": "a20efe78fcf31c9e8ca074ab94f6735cbfcf441a"
+                "reference": "c43f3c5a380769f3b10d590bc039050cf2a8cfac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/psalm/phar/zipball/a20efe78fcf31c9e8ca074ab94f6735cbfcf441a",
-                "reference": "a20efe78fcf31c9e8ca074ab94f6735cbfcf441a",
+                "url": "https://api.github.com/repos/psalm/phar/zipball/c43f3c5a380769f3b10d590bc039050cf2a8cfac",
+                "reference": "c43f3c5a380769f3b10d590bc039050cf2a8cfac",
                 "shasum": ""
             },
             "require": {
@@ -48817,7 +48958,7 @@
                 "MIT"
             ],
             "description": "Composer-based Psalm Phar",
-            "time": "2020-06-22T13:20:19+00:00"
+            "time": "2020-06-22T16:23:52+00:00"
         },
         {
             "name": "roave/better-reflection",
@@ -50722,6 +50863,20 @@
             ],
             "description": "Symfony DependencyInjection Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-06-12T07:37:04+00:00"
         },
         {
@@ -50784,6 +50939,20 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-05-23T13:08:13+00:00"
         },
         {
@@ -50856,6 +51025,20 @@
             ],
             "description": "Symfony HttpClient component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-06-11T21:20:02+00:00"
         },
         {
@@ -50912,6 +51095,20 @@
                 "interfaces",
                 "interoperability",
                 "standards"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-05-25T17:37:45+00:00"
         },
@@ -50975,6 +51172,20 @@
             "keywords": [
                 "mime",
                 "mime-type"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-06-09T15:07:35+00:00"
         },
