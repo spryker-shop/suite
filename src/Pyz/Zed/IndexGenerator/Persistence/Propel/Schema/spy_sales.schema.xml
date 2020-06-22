@@ -52,6 +52,14 @@
       <index-column name="fk_sales_order_item"/>
     </index>
   </table>
+  <table name="spy_sales_shipment">
+    <index name="index-spy_sales_shipment-fk_sales_order">
+      <index-column name="fk_sales_order"/>
+    </index>
+    <index name="index-spy_sales_shipment-fk_sales_expense">
+      <index-column name="fk_sales_expense"/>
+    </index>
+  </table>
   <table name="spy_sales_order_item_option">
     <index name="index-spy_sales_order_item_option-fk_sales_order_item">
       <index-column name="fk_sales_order_item"/>
@@ -89,14 +97,6 @@
   <table name="spy_sales_order_comment">
     <index name="index-spy_sales_order_comment-fk_sales_order">
       <index-column name="fk_sales_order"/>
-    </index>
-  </table>
-  <table name="spy_sales_shipment">
-    <index name="index-spy_sales_shipment-fk_sales_order">
-      <index-column name="fk_sales_order"/>
-    </index>
-    <index name="index-spy_sales_shipment-fk_sales_expense">
-      <index-column name="fk_sales_expense"/>
     </index>
   </table>
 </database>

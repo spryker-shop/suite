@@ -30,6 +30,7 @@ use Spryker\Zed\ConfigurableBundleDataImport\Communication\Plugin\ConfigurableBu
 use Spryker\Zed\ConfigurableBundleDataImport\Communication\Plugin\ConfigurableBundleTemplateImageDataImportPlugin;
 use Spryker\Zed\ConfigurableBundleDataImport\Communication\Plugin\ConfigurableBundleTemplateSlotDataImportPlugin;
 use Spryker\Zed\ContentBannerDataImport\Communication\Plugin\ContentBannerDataImportPlugin;
+use Spryker\Zed\ContentNavigationDataImport\Communication\Plugin\DataImport\ContentNavigationDataImportPlugin;
 use Spryker\Zed\ContentProductDataImport\Communication\Plugin\ContentProductAbstractListDataImportPlugin;
 use Spryker\Zed\ContentProductSetDataImport\Communication\Plugin\ContentProductSetDataImportPlugin;
 use Spryker\Zed\DataImport\Communication\Plugin\DataImportEventBehaviorPlugin;
@@ -42,6 +43,7 @@ use Spryker\Zed\MerchantDataImport\Communication\Plugin\MerchantStoreDataImportP
 use Spryker\Zed\MerchantOmsDataImport\Communication\Plugin\DataImport\MerchantOmsProcessDataImportPlugin;
 use Spryker\Zed\MerchantOpeningHoursDataImport\Communication\Plugin\MerchantOpeningHoursDateScheduleDataImportPlugin;
 use Spryker\Zed\MerchantOpeningHoursDataImport\Communication\Plugin\MerchantOpeningHoursWeekdayScheduleDataImportPlugin;
+use Spryker\Zed\MerchantProductDataImport\Communication\Plugin\MerchantProductDataImportPlugin;
 use Spryker\Zed\MerchantProductOfferDataImport\Communication\Plugin\MerchantProductOfferDataImportPlugin;
 use Spryker\Zed\MerchantProductOfferDataImport\Communication\Plugin\MerchantProductOfferStoreDataImportPlugin;
 use Spryker\Zed\MerchantProfileDataImport\Communication\Plugin\MerchantProfileAddressDataImportPlugin;
@@ -131,9 +133,9 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      */
     protected function addCurrencyFacade(Container $container)
     {
-        $container[static::FACADE_CURRENCY] = function (Container $container) {
+        $container->set(static::FACADE_CURRENCY, function (Container $container) {
             return $container->getLocator()->currency()->facade();
-        };
+        });
 
         return $container;
     }
@@ -145,9 +147,9 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      */
     protected function addStoreFacade(Container $container)
     {
-        $container[static::FACADE_STORE] = function (Container $container) {
+        $container->set(static::FACADE_STORE, function (Container $container) {
             return $container->getLocator()->store()->facade();
-        };
+        });
 
         return $container;
     }
@@ -159,9 +161,9 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      */
     protected function addStockFacade(Container $container)
     {
-        $container[static::FACADE_STOCK] = function (Container $container) {
+        $container->set(static::FACADE_STOCK, function (Container $container) {
             return $container->getLocator()->stock()->facade();
-        };
+        });
 
         return $container;
     }
@@ -173,9 +175,9 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      */
     protected function addCategoryFacade(Container $container)
     {
-        $container[static::FACADE_CATEGORY] = function (Container $container) {
+        $container->set(static::FACADE_CATEGORY, function (Container $container) {
             return $container->getLocator()->category()->facade();
-        };
+        });
 
         return $container;
     }
@@ -187,9 +189,9 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      */
     protected function addProductBundleFacade(Container $container)
     {
-        $container[static::FACADE_PRODUCT_BUNDLE] = function (Container $container) {
+        $container->set(static::FACADE_PRODUCT_BUNDLE, function (Container $container) {
             return $container->getLocator()->productBundle()->facade();
-        };
+        });
 
         return $container;
     }
@@ -201,9 +203,9 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      */
     protected function addProductSearchFacade(Container $container)
     {
-        $container[static::FACADE_PRODUCT_SEARCH] = function (Container $container) {
+        $container->set(static::FACADE_PRODUCT_SEARCH, function (Container $container) {
             return $container->getLocator()->productSearch()->facade();
-        };
+        });
 
         return $container;
     }
@@ -215,9 +217,9 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      */
     protected function addProductRelationFacade(Container $container)
     {
-        $container[static::FACADE_PRODUCT_RELATION] = function (Container $container) {
+        $container->set(static::FACADE_PRODUCT_RELATION, function (Container $container) {
             return $container->getLocator()->productRelation()->facade();
-        };
+        });
 
         return $container;
     }
@@ -252,6 +254,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new SalesOrderThresholdDataImportPlugin(),
             new MerchantDataImportPlugin(),
             new MerchantStoreDataImportPlugin(),
+            new MerchantProductDataImportPlugin(),
             new MerchantProfileDataImportPlugin(),
             new MerchantProfileAddressDataImportPlugin(),
             new MerchantProductOfferDataImportPlugin(),
@@ -306,6 +309,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new ProductLabelDataImportPlugin(),
             new ProductLabelStoreDataImportPlugin(),
             new ReturnReasonDataImportPlugin(),
+            new ContentNavigationDataImportPlugin(),
         ];
     }
 
@@ -337,9 +341,9 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      */
     protected function addPriceProductFacade(Container $container): Container
     {
-        $container[static::FACADE_PRICE_PRODUCT] = function (Container $container) {
+        $container->set(static::FACADE_PRICE_PRODUCT, function (Container $container) {
             return $container->getLocator()->priceProduct()->facade();
-        };
+        });
 
         return $container;
     }

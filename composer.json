@@ -7,9 +7,10 @@
     "spryker/spryker-shop": "dev-master",
     "spryker/decimal-object": "^1.0.0",
     "spryker-eco/loggly": "dev-master",
+    "spryker-eco/new-relic": "dev-master as 2.0.1",
     "spryker/rabbit-mq": "dev-master",
     "spryker/install": "dev-master",
-    "spryker/event-behavior": "dev-master as 1.16.0",
+    "spryker/event-behavior": "dev-master as 1.17.0",
     "spryker/synchronization-behavior": "dev-master as 1.4.0",
     "spryker/uuid-behavior": "dev-master as 1.1.0",
     "spryker/silexphp": "dev-master as 0.3.1",
@@ -26,8 +27,7 @@
     "ext-pgsql": "*",
     "ext-readline": "*",
     "ext-redis": "*",
-    "wikimedia/composer-merge-plugin": "^1.4.1",
-    "symfony/validator": "4.4.7"
+    "wikimedia/composer-merge-plugin": "^1.4.1"
   },
   "require-dev": {
     "codeception/codeception": "<4.1.2",
@@ -54,7 +54,7 @@
     "spryker-sdk/phpstan-spryker": "^0.3.0",
     "spryker-sdk/composer-constrainer": "dev-master",
     "spryker-sdk/composer-replace": "dev-master",
-    "spryker-sdk/spryk": "dev-master as 0.2.2",
+    "spryker-sdk/spryk": "dev-master as 0.2.6",
     "spryker-sdk/spryk-gui": "dev-master",
     "dms/phpunit-arraysubset-asserts": "^0.1.0",
     "codeception/module-rest": "^1.0",
@@ -64,7 +64,8 @@
     "codeception/module-cli": "^1.0",
     "codeception/module-filesystem": "^1.0",
     "webmozart/glob": "^4.0.0",
-    "psalm/phar": "^3.11"
+    "psalm/phar": "^3.11",
+    "phpstan/phpstan": "0.12.25"
   },
   "autoload": {
     "psr-4": {
