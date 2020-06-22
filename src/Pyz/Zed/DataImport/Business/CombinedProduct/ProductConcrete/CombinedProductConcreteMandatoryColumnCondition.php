@@ -21,7 +21,6 @@ class CombinedProductConcreteMandatoryColumnCondition extends CombinedProductMan
                 CombinedProductConcreteHydratorStep::COLUMN_IS_SEARCHABLE,
                 CombinedProductConcreteHydratorStep::COLUMN_BUNDLES,
                 CombinedProductConcreteHydratorStep::COLUMN_IS_QUANTITY_SPLITTABLE,
-                CombinedProductConcreteHydratorStep::COLUMN_ASSIGNED_PRODUCT_TYPE, // is it mandatory column?
         ];
     }
 }

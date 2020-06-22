@@ -28,7 +28,6 @@ class CombinedProductAbstractMandatoryColumnCondition extends CombinedProductMan
                 CombinedProductAbstractHydratorStep::COLUMN_META_DESCRIPTION,
                 CombinedProductAbstractHydratorStep::COLUMN_NEW_FROM,
                 CombinedProductAbstractHydratorStep::COLUMN_NEW_TO,
-                CombinedProductAbstractHydratorStep::COLUMN_ASSIGNED_PRODUCT_TYPE, // is it mandatory column?
         ];
     }
 }
