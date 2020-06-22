@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1af72b9cfebda163d5d5c9a8915629ca",
+    "content-hash": "b5458cfe1d749cb1f919f73af8cb141e",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5108,6 +5108,55 @@
             "time": "2020-05-28T11:04:44+00:00"
         },
         {
+            "name": "spryker/oms-product-offer-reservation",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/oms-product-offer-reservation.git",
+                "reference": "a89fd6d9d2b2b9d7e48eb37f507ac7b1366f31d2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/oms-product-offer-reservation/zipball/a89fd6d9d2b2b9d7e48eb37f507ac7b1366f31d2",
+                "reference": "a89fd6d9d2b2b9d7e48eb37f507ac7b1366f31d2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/decimal-object": "^1.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/oms": "^11.7.0",
+                "spryker/oms-extension": "^1.2.0",
+                "spryker/sales": "^11.0.0",
+                "spryker/store": "^1.0.0",
+                "spryker/transfer": "^3.18.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/product-offer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\OmsProductOfferReservation\\Helper\\": "tests/SprykerTest/Zed/OmsProductOfferReservation/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "OmsProductOfferReservation module",
+            "time": "2020-06-16T13:34:29+00:00"
+        },
+        {
             "name": "spryker/rabbit-mq",
             "version": "dev-master",
             "source": {
@@ -5253,11 +5302,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/ps-13590/mater-max-hard-threshold",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "d0fce8ed5fab102d0e809df9bd96b8ff132c92c3"
+                "reference": "59ffc4b512baa73598f2f30dd8c8b8e14ed3337a"
             },
             "require": {
                 "php": ">=7.2"
@@ -5635,7 +5684,6 @@
                 "spryker/oms": "*",
                 "spryker/oms-discount-connector": "*",
                 "spryker/oms-extension": "*",
-                "spryker/oms-product-offer-reservation": "*",
                 "spryker/oms-rest-api": "*",
                 "spryker/order-custom-reference": "*",
                 "spryker/order-custom-reference-gui": "*",
@@ -5742,12 +5790,9 @@
                 "spryker/product-measurement-units-rest-api": "*",
                 "spryker/product-new": "*",
                 "spryker/product-offer": "*",
-                "spryker/product-offer-availabilities-rest-api": "*",
                 "spryker/product-offer-availability": "*",
                 "spryker/product-offer-availability-storage": "*",
                 "spryker/product-offer-merchant-portal-gui": "*",
-                "spryker/product-offer-packaging-unit": "*",
-                "spryker/product-offer-prices-rest-api": "*",
                 "spryker/product-offer-sales": "*",
                 "spryker/product-offer-stock": "*",
                 "spryker/product-offer-stock-data-import": "*",
@@ -5975,7 +6020,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-06-19T09:30:24+00:00"
+            "time": "2020-06-22T10:05:27+00:00"
         },
         {
             "name": "spryker/spryker-shop",
