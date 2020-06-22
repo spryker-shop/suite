@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\Discount\Persistence;
+namespace Orm\Zed\Payone\Persistence;
 
-use Orm\Zed\Discount\Persistence\Base\SpyDiscountDecisionRuleQuery as BaseSpyDiscountDecisionRuleQuery;
+use SprykerEco\Zed\Payone\Persistence\Propel\AbstractSpyPaymentPayoneQuery as BaseSpyPaymentPayoneQuery;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_discount_decision_rule' table.
+ * Skeleton subclass for performing query and update operations on the 'spy_payment_payone' table.
  *
  *
  *
@@ -18,6 +18,6 @@ use Orm\Zed\Discount\Persistence\Base\SpyDiscountDecisionRuleQuery as BaseSpyDis
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyDiscountDecisionRuleQuery extends BaseSpyDiscountDecisionRuleQuery
+class SpyPaymentPayoneQuery extends BaseSpyPaymentPayoneQuery
 {
 }

@@ -17,6 +17,7 @@ use Spryker\Yves\Router\Plugin\Router\YvesRouterPlugin;
 use Spryker\Yves\Router\Plugin\RouterEnhancer\LanguagePrefixRouterEnhancerPlugin;
 use Spryker\Yves\Router\Plugin\RouterEnhancer\StorePrefixRouterEnhancerPlugin;
 use Spryker\Yves\Router\RouterDependencyProvider as SprykerRouterDependencyProvider;
+use SprykerEco\Yves\Payone\Plugin\Router\PayoneRouteProviderPlugin;
 use SprykerShop\Yves\AgentPage\Plugin\Router\AgentPageRouteProviderPlugin;
 use SprykerShop\Yves\AgentWidget\Plugin\Router\AgentWidgetRouteProviderPlugin;
 use SprykerShop\Yves\AvailabilityNotificationPage\Plugin\Router\AvailabilityNotificationPageRouteProviderPlugin;
@@ -47,6 +48,7 @@ use SprykerShop\Yves\MerchantSwitcherWidget\Plugin\Router\MerchantSwitcherWidget
 use SprykerShop\Yves\MultiCartPage\Plugin\Router\MultiCartPageRouteProviderPlugin;
 use SprykerShop\Yves\NewsletterPage\Plugin\Router\NewsletterPageRouteProviderPlugin;
 use SprykerShop\Yves\NewsletterWidget\Plugin\Router\NewsletterWidgetRouteProviderPlugin;
+use SprykerShop\Yves\OrderCancelWidget\Plugin\Router\OrderCancelWidgetRouteProviderPlugin;
 use SprykerShop\Yves\OrderCustomReferenceWidget\Plugin\Router\OrderCustomReferenceWidgetRouteProviderPlugin;
 use SprykerShop\Yves\PersistentCartSharePage\Plugin\Router\PersistentCartSharePageRouteProviderPlugin;
 use SprykerShop\Yves\PersistentCartShareWidget\Plugin\Router\PersistentCartShareWidgetRouteProviderPlugin;
@@ -142,6 +144,8 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new OrderCustomReferenceWidgetRouteProviderPlugin(),
             new MerchantSwitcherWidgetRouteProviderPlugin(),
             new SalesReturnPageRouteProviderPlugin(),
+            new OrderCancelWidgetRouteProviderPlugin(),
+            new PayoneRouteProviderPlugin(),
         ];
     }
 

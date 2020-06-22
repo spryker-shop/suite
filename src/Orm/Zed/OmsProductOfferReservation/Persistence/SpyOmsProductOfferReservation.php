@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\Payolution\Persistence;
+namespace Orm\Zed\OmsProductOfferReservation\Persistence;
 
-use Orm\Zed\Payolution\Persistence\Base\SpyPaymentPayolution as BaseSpyPaymentPayolution;
+use Spryker\Zed\OmsProductOfferReservation\Persistence\Propel\AbstractSpyOmsProductOfferReservation as BaseSpyOmsProductOfferReservation;
 
 /**
- * Skeleton subclass for representing a row from the 'spy_payment_payolution' table.
+ * Skeleton subclass for representing a row from the 'spy_oms_product_offer_reservation' table.
  *
  *
  *
@@ -18,6 +18,6 @@ use Orm\Zed\Payolution\Persistence\Base\SpyPaymentPayolution as BaseSpyPaymentPa
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyPaymentPayolution extends BaseSpyPaymentPayolution
+class SpyOmsProductOfferReservation extends BaseSpyOmsProductOfferReservation
 {
 }

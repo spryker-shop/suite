@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\Payolution\Persistence;
+namespace Orm\Zed\Payone\Persistence;
 
-use Orm\Zed\Payolution\Persistence\Base\SpyPaymentPayolutionOrderItemQuery as BaseSpyPaymentPayolutionOrderItemQuery;
+use SprykerEco\Zed\Payone\Persistence\Propel\AbstractSpyPaymentPayoneDetail as BaseSpyPaymentPayoneDetail;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_payment_payolution_order_item' table.
+ * Skeleton subclass for representing a row from the 'spy_payment_payone_detail' table.
  *
  *
  *
@@ -18,6 +18,6 @@ use Orm\Zed\Payolution\Persistence\Base\SpyPaymentPayolutionOrderItemQuery as Ba
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyPaymentPayolutionOrderItemQuery extends BaseSpyPaymentPayolutionOrderItemQuery
+class SpyPaymentPayoneDetail extends BaseSpyPaymentPayoneDetail
 {
 }

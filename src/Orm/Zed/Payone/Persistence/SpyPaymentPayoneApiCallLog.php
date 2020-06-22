@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\PriceStorage\Persistence;
+namespace Orm\Zed\Payone\Persistence;
 
-use Orm\Zed\PriceStorage\Persistence\Base\SpyPriceConcreteStorage as BaseSpyPriceConcreteStorage;
+use Orm\Zed\Payone\Persistence\Base\SpyPaymentPayoneApiCallLog as BaseSpyPaymentPayoneApiCallLog;
 
 /**
- * Skeleton subclass for representing a row from the 'spy_price_concrete_storage' table.
+ * Skeleton subclass for representing a row from the 'spy_payment_payone_api_call_log' table.
  *
  *
  *
@@ -18,6 +18,6 @@ use Orm\Zed\PriceStorage\Persistence\Base\SpyPriceConcreteStorage as BaseSpyPric
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyPriceConcreteStorage extends BaseSpyPriceConcreteStorage
+class SpyPaymentPayoneApiCallLog extends BaseSpyPaymentPayoneApiCallLog
 {
 }

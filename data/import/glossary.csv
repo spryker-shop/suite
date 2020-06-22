@@ -163,6 +163,8 @@ page.checkout.summary.card_expires,Expiry Date,en_US
 page.checkout.summary.card_expires,Gültig bis,de_DE
 page.checkout.summary.complete_checkout,Complete checkout,en_US
 page.checkout.summary.complete_checkout,Gesamtsumme,de_DE
+page.checkout.summary.accept_terms_and_conditions,I accept the terms and conditions,en_US
+page.checkout.summary.accept_terms_and_conditions,Ich akzeptiere die allgemeinen Geschäftsbedingungen,de_DE
 page.checkout.finalize.heading,4. Prüfen und Kauf abschließen,de_DE
 page.checkout.finalize.heading,4. Check and finalise order,en_US
 shipment.international.parcel.service,International Parcel Services,de_DE
@@ -443,6 +445,8 @@ customer.account.add_new_address,Define new address,en_US
 customer.account.add_new_address,Definieren Sie eine neue Adresse,de_DE
 customer.account.deliver_to_multiple_addresses,Deliver to multiple addresses,en_US
 customer.account.deliver_to_multiple_addresses,Deliver to multiple addresses,de_DE
+customer.account.delete.error,Account cannot be removed,en_US
+customer.account.delete.error,Das Konto kann nicht entfernt werden,de_DE
 customer.newsletter.not_subscribed,No newsletter subscription,en_US
 customer.newsletter.not_subscribed,Newsletter nicht abonniert.,de_DE
 customer.profile.order_history,Last Orders,en_US
@@ -1221,6 +1225,8 @@ product-cart.info.concrete-product-inactive.removed,Inactive item %sku% was remo
 product-cart.info.concrete-product-inactive.removed,Der inaktive Artikel %sku% wurde aus Ihrem Warenkorb entfernt.,de_DE
 product-offer.info.product-offer-inactive.removed,Inactive item %sku% was removed from your shopping cart.,en_US
 product-offer.info.product-offer-inactive.removed,Der inaktive Artikel %sku% wurde aus Ihrem Warenkorb entfernt.,de_DE
+product-offer.info.reference.invalid,Product offer reference not found for product with SKU '%sku%'.,en_US
+product-offer.info.reference.invalid,Produktangebotsreferenz für Produkt mit SKU '% sku%' nicht gefunden.,de_DE
 product-cart.info.restricted-product.removed,The Item %sku% was removed from the cart because it was deactivated.,en_US
 product-cart.info.restricted-product.removed,Der Artikel %sku% wurde aus Ihrem Warenkorb entfernt da er deaktiviert wurde.,de_DE
 reorder.info.restricted-product.removed,The Item %sku% could not be added to cart because it was deactivated.,en_US
@@ -1908,9 +1914,11 @@ multi_cart_widget.cart.actions,Aktionen,de_DE
 multi_cart_widget.cart.created.success,Cart '%quoteName%' was created successfully,en_US
 multi_cart_widget.cart.created.success,Warenkorb '%quoteName%' wurde erfolgreich erstellt,de_DE
 multi_cart_widget.cart.updated.success,Cart updated successfully,en_US
-multi_cart_widget.cart.updated.success,Einkaufswagen wurde erfolgreich aktualisiert,de_DE
+multi_cart_widget.cart.updated.success,Der Warenkorb wurde erfolgreich aktualisiert,de_DE
 multi_cart_widget.cart.updated.error,Cart has been restricted or deleted,en_US
 multi_cart_widget.cart.updated.error,Warenkorb wurde eingeschränkt oder gelöscht,de_DE
+multi_cart_widget.cart.delete.error,Cart cannot be removed,en_US
+multi_cart_widget.cart.delete.error,Der Warenkorb kann nicht entfernt werden,de_DE
 shared_cart_widget.add_product.separate,Add as separate item,en_US
 shared_cart_widget.add_product.separate,Als separaten Artikel hinzufügen,de_DE
 shared_cart_widget.cart.share,Share cart,en_US
@@ -2483,6 +2491,8 @@ company.account.company_role.delete,Delete,en_US
 company.account.company_role.delete,Löschen,de_DE
 company.account.company_role.delete.successful,Company role has been successfully removed,en_US
 company.account.company_role.delete.successful,Die Firmennutzer Rolle wurde erfolgreich entfernt,de_DE
+company.account.company_role.delete.error.cannot_remove,Company role cannot be removed,en_US
+company.account.company_role.delete.error.cannot_remove,Die Unternehmensrolle kann nicht entfernt werden,de_DE
 company.account.company_role.delete.confirmation.assigned_users,Users assigned to this role,en_US
 company.account.company_role.delete.confirmation.assigned_users,Firmennutzer welche dieser Rolle zugeordnet sind,de_DE
 company.account.company_role.delete.confirmation.assigned_users_message,You cannot delete company role until it has assigned company users,en_US
@@ -3451,3 +3461,47 @@ return.create_return.validation.items_error,Return cannot be cretaed for this se
 return.create_return.validation.items_error,Für dieses Set der Artikel kann die Retoure nicht erstellt werden,de_DE
 return.return_policy.returnable_till.message,Returnable till: %date%,en_US
 return.return_policy.returnable_till.message,Man kann retournieren bis: %date%,de_DE
+sales.error.customer_order_not_found,Customer Order not found.,en_US
+sales.error.customer_order_not_found,Die Bestellung wurde nicht gefunden.,de_DE
+sales.error.order_cannot_be_canceled_due_to_wrong_item_state,Order cannot be canceled due to wrong item state.,en_US
+sales.error.order_cannot_be_canceled_due_to_wrong_item_state,Die Bestellung kann wegen dem falschen Artikelstatus nicht storniert werden.,de_DE
+order_cancel_widget.cancel_order,Cancel Order,en_US
+order_cancel_widget.cancel_order,Bestellung stornieren,de_DE
+order_cancel_widget.order.cancelled,Order was canceled successfully.,en_US
+order_cancel_widget.order.cancelled,Die Bestellung wurde erfolgreich storniert.,de_DE
+PayoneCreditCard,Credit Card,en_US
+PayoneCreditCard,Kreditkarte,de_DE
+PayoneInstantOnlineTransfer,Online bank transfer,en_US
+PayoneInstantOnlineTransfer,Sofort-Überweisung,de_DE
+Payone_credit_card,Credit Card,en_US
+Payone_credit_card,Kreditkarte,de_DE
+Payone_credit_card.cardtype,Card type,en_US
+Payone_credit_card.cardtype,Kreditkarten-Typ,de_DE
+Payone_credit_card.cardpan,Card number,en_US
+Payone_credit_card.cardpan,Kartennummer,de_DE
+Payone_credit_card.cardholder,Card holder,en_US
+Payone_credit_card.cardholder,Karteninhaber,de_DE
+Payone_credit_card.cardexpiredate,Expire date,en_US
+Payone_credit_card.cardexpiredate,Verfallsdatum,de_DE
+Payone_credit_card.cardcvc2,CVC,en_US
+Payone_credit_card.cardcvc2,CVC (Kartenprüfnummer),de_DE
+payment.payone.creditcard,Credit Card,en_US
+payment.payone.creditcard,Kreditkarte,de_DE
+Payment.payone.creditcard,Credit Card,en_US
+Payment.payone.creditcard,Kreditkarte,de_DE
+payment.payone.online_bank_transfer,Online bank transfer,en_US
+payment.payone.online_bank_transfer,Sofort-Überweisung,de_DE
+Payment.payone.online_bank_transfer,Online bank transfer,en_US
+Payment.payone.online_bank_transfer,Sofort-Überweisung,de_DE
+payment.payone.instant-online-transfer,Online bank transfer,en_US
+payment.payone.instant-online-transfer,Sofort-Überweisung,de_DE
+Payment.payone.instant-online-transfer,Online bank transfer,en_US
+Payment.payone.instant-online-transfer,Sofort-Überweisung,de_DE
+payone.order.payment_details,Payment details,en_US
+payone.order.payment_details,Zahlungsdetails,de_DE
+payone.payment.error,The payment data was rejected. Please try another payment method.,en_US
+payone.payment.error,Die Bezahldaten wurden abgelehnt. Versuche es bitte mit einer anderen Zahlungsart.,de_DE
+checkout.payment.provider.Payone,Payone,en_US
+checkout.payment.provider.Payone,Payone,de_DE
+checkout.step.payment.cardholder_name,Cardholder name,en_US
+checkout.step.payment.cardholder_name,Karteninhaber Name,de_DE

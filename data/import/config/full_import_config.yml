@@ -135,8 +135,6 @@ actions:
 #5. Content Management Setup import
   - data_entity: navigation
     source: data/import/navigation.csv
-  - data_entity: navigation-node
-    source: data/import/navigation_node.csv
   - data_entity: cms-template
     source: data/import/cms_template.csv
   - data_entity: cms-block
@@ -147,6 +145,8 @@ actions:
     source: data/import/cms_block_category.csv
   - data_entity: content-banner
     source: data/import/content_banner.csv
+  - data_entity: content-navigation
+    source: data/import/content_navigation.csv
   - data_entity: content-product-abstract-list
     source: data/import/content_product_abstract_list.csv
   - data_entity: content-product-set
@@ -159,6 +159,8 @@ actions:
     source: data/import/cms_slot.csv
   - data_entity: cms-slot-block
     source: data/import/cms_slot_block.csv
+  - data_entity: navigation-node
+    source: data/import/navigation_node.csv
   # Store relation
   - data_entity: cms-page-store
     source: data/import/cms_page_store.csv

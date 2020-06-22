@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\Discount\Persistence;
+namespace Orm\Zed\Payone\Persistence;
 
-use Orm\Zed\Discount\Persistence\Base\SpyDiscountCollectorQuery as BaseSpyDiscountCollectorQuery;
+use SprykerEco\Zed\Payone\Persistence\Propel\AbstractSpyPaymentPayone as BaseSpyPaymentPayone;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_discount_collector' table.
+ * Skeleton subclass for representing a row from the 'spy_payment_payone' table.
  *
  *
  *
@@ -18,6 +18,6 @@ use Orm\Zed\Discount\Persistence\Base\SpyDiscountCollectorQuery as BaseSpyDiscou
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyDiscountCollectorQuery extends BaseSpyDiscountCollectorQuery
+class SpyPaymentPayone extends BaseSpyPaymentPayone
 {
 }

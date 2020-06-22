@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\MerchantOms\Persistence;
+namespace Orm\Zed\Payone\Persistence;
 
-use Spryker\Zed\MerchantOms\Persistence\Propel\AbstractSpyMerchantOmsProcessQuery as BaseSpyMerchantOmsProcessQuery;
+use SprykerEco\Zed\Payone\Persistence\Propel\AbstractSpyPaymentPayoneTransactionStatusLog as BaseSpyPaymentPayoneTransactionStatusLog;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_merchant_oms_process' table.
+ * Skeleton subclass for representing a row from the 'spy_payment_payone_transaction_status_log' table.
  *
  *
  *
@@ -18,6 +18,6 @@ use Spryker\Zed\MerchantOms\Persistence\Propel\AbstractSpyMerchantOmsProcessQuer
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyMerchantOmsProcessQuery extends BaseSpyMerchantOmsProcessQuery
+class SpyPaymentPayoneTransactionStatusLog extends BaseSpyPaymentPayoneTransactionStatusLog
 {
 }

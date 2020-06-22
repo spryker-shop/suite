@@ -61,9 +61,9 @@ use SprykerShop\Yves\MultiCartWidget\Widget\MiniCartWidget;
 use SprykerShop\Yves\MultiCartWidget\Widget\MultiCartListWidget;
 use SprykerShop\Yves\MultiCartWidget\Widget\MultiCartMenuItemWidget;
 use SprykerShop\Yves\MultiCartWidget\Widget\QuickOrderPageWidget;
-use SprykerShop\Yves\NavigationWidget\Widget\NavigationWidget;
 use SprykerShop\Yves\NewsletterWidget\Widget\NewsletterSubscriptionSummaryWidget;
 use SprykerShop\Yves\NewsletterWidget\Widget\NewsletterSubscriptionWidget;
+use SprykerShop\Yves\OrderCancelWidget\Widget\OrderCancelButtonWidget;
 use SprykerShop\Yves\OrderCustomReferenceWidget\Widget\OrderCustomReferenceWidget;
 use SprykerShop\Yves\PersistentCartShareWidget\Widget\ShareCartByLinkWidget;
 use SprykerShop\Yves\PriceProductVolumeWidget\Widget\CurrentProductPriceVolumeWidget;
@@ -178,7 +178,6 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             MultiCartListWidget::class,
             MultiCartMenuItemWidget::class,
             QuoteRequestMenuItemWidget::class,
-            NavigationWidget::class,
             NewsletterSubscriptionWidget::class,
             NewsletterSubscriptionSummaryWidget::class,
             PdpProductRelationWidget::class,
@@ -257,6 +256,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CustomerReorderItemsFormWidget::class,
             OrderItemsProductBundleWidget::class,
             RemoveFromCartFormWidget::class,
+            OrderCancelButtonWidget::class,
         ];
     }
 
