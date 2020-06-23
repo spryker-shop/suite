@@ -12,7 +12,7 @@ use Generated\Shared\Transfer\DataImporterConfigurationTransfer;
 use Pyz\Zed\DataImport\Business\CombinedProduct\Product\CombinedAttributesExtractorStep;
 use Pyz\Zed\DataImport\Business\CombinedProduct\Product\CombinedProductLocalizedAttributesExtractorStep;
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstract\CombinedProductAbstractHydratorStep;
-use Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstract\CombinedProductAbstractMandatoryColumnCondition;
+use Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstract\CombinedProductAbstractTypeDataSetCondition;
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstract\Writer\CombinedProductAbstractBulkPdoDataSetWriter;
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstract\Writer\CombinedProductAbstractPropelDataSetWriter;
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstractStore\CombinedProductAbstractStoreHydratorStep;
@@ -20,7 +20,7 @@ use Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstractStore\CombinedPro
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstractStore\Writer\CombinedProductAbstractStoreBulkPdoDataSetWriter;
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductAbstractStore\Writer\CombinedProductAbstractStorePropelDataSetWriter;
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductConcrete\CombinedProductConcreteHydratorStep;
-use Pyz\Zed\DataImport\Business\CombinedProduct\ProductConcrete\CombinedProductConcreteMandatoryColumnCondition;
+use Pyz\Zed\DataImport\Business\CombinedProduct\ProductConcrete\CombinedProductConcreteTypeDataSetCondition;
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductConcrete\Writer\CombinedProductConcreteBulkPdoDataSetWriter;
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductConcrete\Writer\CombinedProductConcretePropelDataSetWriter;
 use Pyz\Zed\DataImport\Business\CombinedProduct\ProductGroup\CombinedProductGroupMandatoryColumnCondition;
@@ -672,7 +672,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             ]))
             ->addStep(new CombinedProductAbstractHydratorStep());
 
-        $dataImporter->setDataSetCondition($this->createCombinedProductAbstractMandatoryColumnCondition());
+        $dataImporter->setDataSetCondition($this->createCombinedProductAbstractTypeDataSetCondition());
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
         $dataImporter->setDataSetWriter($this->createCombinedProductAbstractDataSetWriters());
 
@@ -682,9 +682,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     /**
      * @return \Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface
      */
-    protected function createCombinedProductAbstractMandatoryColumnCondition(): DataSetConditionInterface
+    protected function createCombinedProductAbstractTypeDataSetCondition(): DataSetConditionInterface
     {
-        return new CombinedProductAbstractMandatoryColumnCondition();
+        return new CombinedProductAbstractTypeDataSetCondition();
     }
 
     /**
@@ -731,7 +731,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
                 $this->createProductRepository()
             ));
 
-        $dataImporter->setDataSetCondition($this->createCombinedProductConcreteMandatoryColumnCondition());
+        $dataImporter->setDataSetCondition($this->createCombinedProductConcreteTypeDataSetCondition());
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
         $dataImporter->setDataSetWriter($this->createCombinedProductConcreteDataSetWriters());
 
@@ -741,9 +741,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     /**
      * @return \Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface
      */
-    protected function createCombinedProductConcreteMandatoryColumnCondition(): DataSetConditionInterface
+    protected function createCombinedProductConcreteTypeDataSetCondition(): DataSetConditionInterface
     {
-        return new CombinedProductConcreteMandatoryColumnCondition();
+        return new CombinedProductConcreteTypeDataSetCondition();
     }
 
     /**

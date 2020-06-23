@@ -22,7 +22,6 @@ class CombinedProductAbstractHydratorStep extends ProductAbstractHydratorStep
     public const COLUMN_CATEGORY_KEY = 'product_abstract.category_key';
     public const COLUMN_CATEGORY_PRODUCT_ORDER = 'product_abstract.category_product_order';
     public const COLUMN_URL = 'product_abstract.url';
-    public const COLUMN_IS_FEATURED = 'product_abstract.is_featured'; // not used.
     public const COLUMN_COLOR_CODE = 'product_abstract.color_code';
     public const COLUMN_TAX_SET_NAME = 'product_abstract.tax_set_name';
     public const COLUMN_META_TITLE = 'product_abstract.meta_title';
@@ -33,18 +32,14 @@ class CombinedProductAbstractHydratorStep extends ProductAbstractHydratorStep
 
     public const COLUMN_NAME = 'product.name';
     public const COLUMN_DESCRIPTION = 'product.description';
-    public const COLUMN_ICECAT_PDO_URL = 'product.icecat_pdp_url'; // not used.
-    public const COLUMN_ICECAT_LICENSE = 'product.icecat_license'; // not used.
 
     public const COLUMN_ASSIGNED_PRODUCT_TYPE = 'product.assigned_product_type';
 
     protected const ASSIGNABLE_PRODUCT_TYPE_ABSTRACT = 'abstract';
-    protected const ASSIGNABLE_PRODUCT_TYPE_CONCRETE = 'concrete';
     protected const ASSIGNABLE_PRODUCT_TYPE_BOTH = 'both';
 
     protected const ASSIGNABLE_PRODUCT_TYPES = [
         self::ASSIGNABLE_PRODUCT_TYPE_ABSTRACT,
-        self::ASSIGNABLE_PRODUCT_TYPE_CONCRETE,
         self::ASSIGNABLE_PRODUCT_TYPE_BOTH,
     ];
 
@@ -55,32 +50,9 @@ class CombinedProductAbstractHydratorStep extends ProductAbstractHydratorStep
      */
     public function execute(DataSetInterface $dataSet): void
     {
-        $dataSet = $this->assignProductType($dataSet);
-
-        parent::execute($dataSet);
-    }
-
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface
-     */
-    protected function assignProductType(DataSetInterface $dataSet): DataSetInterface
-    {
         $this->assertAssignableProductTypeColumn($dataSet);
 
-        if (
-            $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] == static::ASSIGNABLE_PRODUCT_TYPE_ABSTRACT
-            || $dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] == static::ASSIGNABLE_PRODUCT_TYPE_BOTH
-        ) {
-            $dataSet[static::COLUMN_CONCRETE_SKU] = null;
-        }
-
-        if ($dataSet[static::COLUMN_ASSIGNED_PRODUCT_TYPE] == static::ASSIGNABLE_PRODUCT_TYPE_CONCRETE) {
-            $dataSet[static::COLUMN_ABSTRACT_SKU] = null;
-        }
-
-        return $dataSet;
+        parent::execute($dataSet);
     }
 
     /**

@@ -23,12 +23,9 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
     public const COLUMN_ABSTRACT_SKU = 'abstract_sku';
     public const COLUMN_CONCRETE_SKU = 'concrete_sku';
 
-    public const COLUMN_OLD_SKU = 'old_sku'; // not used.
     public const COLUMN_NAME = 'name';
-    public const COLUMN_ICECAT_PDO_URL = 'icecat_pdp_url'; // not used.
     public const COLUMN_DESCRIPTION = 'description';
     public const COLUMN_IS_SEARCHABLE = 'is_searchable';
-    public const COLUMN_ICECAT_LICENSE = 'icecat_license'; // not used.
     public const COLUMN_BUNDLES = 'bundled';
     public const COLUMN_IS_QUANTITY_SPLITTABLE = 'is_quantity_splittable';
 

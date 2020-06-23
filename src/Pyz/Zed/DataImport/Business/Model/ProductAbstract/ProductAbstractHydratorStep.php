@@ -26,15 +26,12 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
     public const COLUMN_CATEGORY_PRODUCT_ORDER = 'category_product_order';
     public const COLUMN_NAME = 'name';
     public const COLUMN_URL = 'url';
-    public const COLUMN_IS_FEATURED = 'is_featured'; // not used.
     public const COLUMN_COLOR_CODE = 'color_code';
     public const COLUMN_DESCRIPTION = 'description';
-    public const COLUMN_ICECAT_PDO_URL = 'icecat_pdp_url'; // not used.
     public const COLUMN_TAX_SET_NAME = 'tax_set_name';
     public const COLUMN_META_TITLE = 'meta_title';
     public const COLUMN_META_KEYWORDS = 'meta_keywords';
     public const COLUMN_META_DESCRIPTION = 'meta_description';
-    public const COLUMN_ICECAT_LICENSE = 'icecat_license'; // not used.
     public const COLUMN_NEW_FROM = 'new_from';
     public const COLUMN_NEW_TO = 'new_to';
 
