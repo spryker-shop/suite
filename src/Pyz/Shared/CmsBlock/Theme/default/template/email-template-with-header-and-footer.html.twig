@@ -1,14 +1,686 @@
 {% if mail is not defined %}
     <!-- CMS_BLOCK_PLACEHOLDER : "content" -->
 {% endif %}
-<html>
-    <body>
-        <div>
-            <div><span class="sg-image" style="display: block; float: none; text-align: center;"><img src="//www.de.project.local/assets/default/img/logo.svg" style="width: 216px; height: 36px;" /></span></div>
-            <br />
-            {% block content %}
-                {{ placeholders.content | raw }}
-            {% endblock %}
-        </div>
-    </body>
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microso=ft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-sc=ale=1">
+    <title></title>
+    <style type="text/css">
+        p {
+            padding: 0;
+            margin: 10px;
+            line-height: 125%;
+        }
+
+        .center {
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            display: block;
+            margin: 0;
+            padding: 0;
+        }
+
+        img,
+        a img {
+            border: 0;
+            height: auto;
+            outline: none;
+            text-decoration: none;
+        }
+
+        body,
+        #bodyTable,
+        #bodyCell {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        .sprykerPreviewText {
+            display: none !important;
+        }
+
+        #outlook a {
+            padding: 0;
+        }
+
+        img {
+            -ms-interpolation-mode: bicubic;
+        }
+
+        table {
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+
+        .readMsgBody {
+            width: 100%;
+        }
+
+        .externalClass {
+            width: 100%;
+        }
+
+        p,
+        a,
+        li,
+        td,
+        blockquote {
+            mso-line-height-rule: exactly;
+        }
+
+        a[href^=tel],
+        a[href^=sms] {
+            color: inherit;
+            cursor: default;
+            text-decoration: none;
+        }
+
+        p,
+        a,
+        li,
+        td,
+        body,
+        table,
+        blockquote {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        .externalClass,
+        .externalClass p,
+        .externalClass td,
+        .externalClass div,
+        .externalClass span,
+        .externalClass font {
+            line-height: 100%;
+        }
+
+        a[x-apple-data-detectors] {
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+
+        .sprykerTemplateContainer {
+            max-width: 600px !important;
+        }
+
+        a.sprykerButton {
+            display: block;
+        }
+
+        .sprykerImage,
+        .sprykerRetinaImage {
+            vertical-align: bottom;
+        }
+
+        .sprykerTextContent {
+            word-break: break-word;
+        }
+
+        .sprykerTextContent img {
+            height: auto !important;
+        }
+
+        .sprykerDividerBlock {
+            table-layout: fixed !important;
+        }
+
+        body,
+        #bodyTable {
+            background-color: #FAFAFA;
+        }
+
+        #bodyCell {
+            border-top: 0;
+        }
+
+        .sprykerTemplateContainer {
+            border: 0;
+        }
+
+        h1 {
+            color: #202020;
+            font-family: Helvetica;
+            font-size: 26px;
+            font-style: normal;
+            font-weight: bold;
+            line-height: 125%;
+            letter-spacing: normal;
+            text-align: left;
+        }
+
+        h2 {
+            color: #202020;
+            font-family: Helvetica;
+            font-size: 22px;
+            font-style: normal;
+            font-weight: bold;
+            line-height: 125%;
+            letter-spacing: normal;
+            text-align: left;
+        }
+
+        h3 {
+            color: #202020;
+            font-family: Helvetica;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: bold;
+            line-height: 125%;
+            letter-spacing: normal;
+            text-align: left;
+        }
+
+        h4 {
+            color: #202020;
+            font-family: Helvetica;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: bold;
+            line-height: 125%;
+            letter-spacing: normal;
+            text-align: left;
+        }
+
+        #sprykerTemplatePreheader {
+            background-color: #FAFAFA;
+            background-image: none;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            border-top: 0;
+            border-bottom: 0;
+            padding-top: 9px;
+            padding-bottom: 9px;
+        }
+
+        #sprykerTemplatePreheader .sprykerTextContent,
+        #sprykerTemplatePreheader .sprykerTextContent p {
+            color: #656565;
+            font-family: Helvetica;
+            font-size: 12px;
+            line-height: 150%;
+            text-align: left;
+        }
+
+        #sprykerTemplatePreheader .sprykerTextContent a,
+        #sprykerTemplatePreheader .sprykerTextContent p a {
+            color: #1EBEA0;
+            font-weight: normal;
+            text-decoration: none;
+        }
+
+        #sprykerTemplateHeader {
+            background-color: #FFFFFF;
+            background-image: none;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            border-top: 0;
+            border-bottom: 0;
+            padding-top: 9px;
+            padding-bottom: 0;
+        }
+
+        #sprykerTemplateHeader .sprykerTextContent,
+        #sprykerTemplateHeader .sprykerTextContent p {
+            color: #202020;
+            font-family: Helvetica;
+            font-size: 16px;
+            line-height: 150%;
+            text-align: left;
+        }
+
+        #sprykerTemplateHeader .sprykerTextContent a,
+        #sprykerTemplateHeader .sprykerTextContent p a {
+            color: #1EBEA0;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        #sprykerTemplateBody {
+            background-color: #FFFFFF;
+            background-image: none;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            border-top: 0;
+            border-bottom: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        #sprykerTemplateBody .sprykerTextContent,
+        #sprykerTemplateBody .sprykerTextContent p {
+            color: #202020;
+            font-family: Helvetica;
+            font-size: 16px;
+            line-height: 150%;
+            text-align: left;
+        }
+
+        #sprykerTemplateBody .sprykerTextContent a,
+        #sprykerTemplateBody .sprykerTextContent p a {
+            color: #1EBEA0;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        #templateFooter {
+            background-color: #4c4c4c;
+            background-image: none;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            border-top: 0;
+            border-bottom: 0;
+            padding-top: 18px;
+            padding-bottom: 18px;
+        }
+
+        #templateFooter .sprykerTextContent,
+        #templateFooter .sprykerTextContent p {
+            color: #ffffff;
+            font-family: Helvetica;
+            font-size: 12px;
+            line-height: 150%;
+            text-align: center;
+        }
+
+        #templateFooter .sprykerTextContent a,
+        #templateFooter .sprykerTextContent p a {
+            color: #1EBEA0;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        @media only screen and (min-width:768px) {
+            .sprykerTemplateContainer {
+                width: 600px !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+
+            body,
+            table,
+            td,
+            p,
+            a,
+            li,
+            blockquote {
+                -webkit-text-size-adjust: none !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            body {
+                width: 100% !important;
+                min-width: 100% !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .sprykerRetinaImage {
+                max-width: 100% !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .sprykerImage {
+                width: 100% !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+
+            .sprykerCartContainer,
+            .sprykerCaptionTopContent,
+            .sprykerRecContentContainer,
+            .sprykerCaptionBottomContent,
+            .sprykerTextContentContainer,
+            .sprykerBoxedTextContentContainer,
+            .sprykerImageGroupContentContainer,
+            .sprykerCaptionLeftTextContentContainer,
+            .sprykerCaptionRightTextContentContainer,
+            .sprykerCaptionLeftImageContentContainer,
+            .sprykerCaptionRightImageContentContainer,
+            .sprykerImageCardLeftTextContentContainer,
+            .sprykerImageCardRightTextContentContainer,
+            .sprykerImageCardLeftImageContentContainer,
+            .sprykerImageCardRightImageContentContainer {
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .sprykerBoxedTextContentContainer {
+                min-width: 100% !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .sprykerImageGroupContent {
+                padding: 9px !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+
+            .sprykerCaptionLeftContentOuter .sprykerTextContent,
+            .sprykerCaptionRightContentOuter .sprykerTextContent {
+                padding-top: 9px !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+
+            .sprykerImageCardTopImageContent,
+            .sprykerCaptionBottomContent:last-child .sprykerCaptionBottomImageContent,
+            .sprykerCaptionBlockInner .sprykerCaptionTopContent:last-child .sprykerTextContent {
+                padding-top: 18px !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .sprykerImageCardBottomImageContent {
+                padding-bottom: 9px !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .sprykerImageGroupBlockInner {
+                padding-top: 0 !important;
+                padding-bottom: 0 !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .sprykerImageGroupBlockOuter {
+                padding-top: 9px !important;
+                padding-bottom: 9px !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+
+            .sprykerBoxedTextContentColumn {
+                padding-right: 18px !important;
+                padding-left: 18px !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+
+            .sprykerImageCardLeftImageContent,
+            .sprykerImageCardRightImageContent {
+                padding-right: 18px !important;
+                padding-bottom: 0 !important;
+                padding-left: 18px !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .spryker-preview-image-uploader {
+                display: none !important;
+                width: 100% !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            h1 {
+                font-size: 22px !important;
+                line-height: 125% !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            h2 {
+                font-size: 20px !important;
+                line-height: 125% !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            h3 {
+                font-size: 18px !important;
+                line-height: 125% !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            h4 {
+                font-size: 16px !important;
+                line-height: 150% !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+
+            .sprykerBoxedTextContentContainer .sprykerTextContent,
+            .sprykerBoxedTextContentContainer .sprykerTextContent p {
+                font-size: 14px !important;
+                line-height: 150% !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            #sprykerTemplatePreheader {
+                display: block !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+
+            #sprykerTemplatePreheader .sprykerTextContent,
+            #sprykerTemplatePreheader .sprykerTextContent p {
+                font-size: 14px !important;
+                line-height: 150% !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+
+            #sprykerTemplateHeader .sprykerTextContent,
+            #sprykerTemplateHeader .sprykerTextContent p {
+                font-size: 16px !important;
+                line-height: 150% !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+
+            #sprykerTemplateBody .sprykerTextContent,
+            #sprykerTemplateBody .sprykerTextContent p {
+                font-size: 16px !important;
+                line-height: 150% !important;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+
+            #templateFooter .sprykerTextContent,
+            #templateFooter .sprykerTextContent p {
+                font-size: 14px !important;
+                line-height: 150% !important;
+            }
+        }
+
+        .sprykerButtonContentContainer {
+            min-width: 30%;
+            border-collapse: separate !important;
+            border-radius: 2px;
+            background-color: #1EBEA0;
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+    </style>
+</head>
+
+<body style="height: 100%;margin: 0;padding: 0;width: 100%;-ms-text-s=ize-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #FAFAFA;">
+<center>
+    <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;height: 100%;margin: 0;padding: 0;width: 100%;background-color: #FAFAFA;">
+        <tr>
+            <td align="center" valign="top" id="bodyCell" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;height: 100%;margin: 0;width: 100%;border-top: 0;">
+                <!-- BEGIN TEMPLATE // -->
+                <!--[if (gte mso 9)|(IE)]>
+                <table align="center" border="0" cellspacing="0" cellpadding="0" width="600" style="width:600px;">
+                    <tr>
+                        <td align="center" valign="top" width="600" style="width:600px;">
+                <![endif]-->
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="sprykerTemplateContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;border: 0;max-width: 600px !important;">
+                    <tr>
+                        <td valign="top" id="sprykerTemplatePreheader" style="background:#FAFAFA none no-repeat center/cover;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #FAFAFA;background-image: none;background-repeat: no-repeat;background-position: center;background-size: cover;border-top: 0;border-bottom: 0;padding-top: 9px;padding-bottom: 9px;">
+                            <table class="sprykerImageBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                <tbody class="sprykerImageBlockOuter">
+                                <tr>
+                                    <td style="padding: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" class="sprykerImageBlockInner" valign="top">
+                                        <table class="sprykerImageContentContainer" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" width="100%" cellspacing="0" cellpadding="0" border="0" align="left">
+                                            <tbody>
+                                            <tr>
+                                                <td class="sprykerImageContent" style="padding-right: 9px;padding-left: 9px;padding-top: 0;padding-bottom: 0;text-align: center;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" valign="top">
+                                                    <img alt="" src="https://mcusercontent.com/30fe9351d1b2906f35382f223/images/819c2094-8eae-429b-a1d4-f71fde78e9eb.png" style="max-width: 130px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" class="sprykerImage" width="130" align="middle">
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" id="sprykerTemplateBody" style="background:#FFFFFF none no-repeat center/cover;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #FFFFFF;background-image: none;background-repeat: no-repeat;background-position: center;background-size: cover;border-top: 0;border-bottom: 0;padding-top: 0;padding-bottom: 0;">
+                            {% block content %}
+                                {{ placeholders.content | raw }}
+                            {% endblock %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table class="sprykerTextBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                <tbody class="sprykerTextBlockOuter">
+                                <tr>
+                                    <td class="sprykerTextBlockInner" style="padding-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" valign="top">
+                                        <!--[if mso]>
+                                        <table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
+                                            <tr>
+                                        <![endif]-->
+                                        <!--[if mso]>
+                                        <td valign="top" width="600" style="width:600px;">
+                                        <![endif]-->
+                                        <table style="max-width: 100%;min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" class="sprykerTextContentContainer" width="100%" cellspacing="0" cellpadding="0" border="0" align="left">
+                                            <tbody>
+                                            <tr>
+                                                <td class="sprykerTextContent" id="sprykerTemplateHeader" style="background:#FAFAFA none no-repeat center/cover;padding-top: 18px;padding-right: 18px;padding-bottom: 18px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;" valign="top">
+                                                    <div style="text-align: center;">
+                                                        <p style="margin: 0 auto;text-align: center;max-width: 50ch;">
+                                      <span style="font-family:Helvetica, sans-serif;">
+                                        <strong>{{ 'mail.trans.footer.ifYouHaveFurtherQuestions' | trans }} <a href=" mailto:info@spryker.com" target="_blank" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #1EBEA0;font-weight: bold;text-decoration: none;">{{ 'mail.trans.footer.contactEmailAddress' | trans }}</a></strong>
+                                      </span>
+                                                        </p>
+                                                        <br>
+                                                        <strong>{{ 'mail.trans.footer.shoppingExperience' | trans }}</strong><br>
+                                                        <br>
+                                                        <span style="color: #4A4A4A">{{ 'mail.trans.footer.yourTeam' | trans }}</span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <!--[if mso]>
+                                        </td>
+                                        <![endif]-->
+                                        <!--[if mso]>
+                                        </tr>
+                                        </table>
+                                        <![endif]-->
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" id="templateFooter" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;border-top: 0;border-bottom: 0;padding-top: 0;padding-bottom: 0;">
+                            <table class="sprykerCaptionBlock" width="100%" cellspacing="0" cellpadding="0" border="0" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                <tbody class="sprykerCaptionBlockOuter">
+                                <tr>
+                                    <td class="sprykerCaptionBlockInner" style="padding: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" valign="top">
+                                        <table class="sprykerCaptionRightContentOuter" width="100%" cellspacing="0" cellpadding="0" border="0" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                            <tbody>
+                                            <tr>
+                                                <td class="sprykerCaptionCenterContentInner" style="padding: 0 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" valign="top">
+                                                    <table class="sprykerCaptionRightImageContentContainer" width="176" cellspacing="0" cellpadding="0" border="0" align="center" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;margin-bottom: 18px;">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td class="sprykerCaptionRightImageContent" valign="top" align="center" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                <img alt="" src="https://mcusercontent.com/30fe9351d1b2906f35382f223/images/3fd0a6a9-ff23-4de9-a3ad-9c5ef51c85e5.png" style="max-width: 130px;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;vertical-align: bottom;" class="sprykerImage" width="130">
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <table class="sprykerCaptionCenterTextContentContainer" width="352" cellspacing="0" cellpadding="0" border="0" align="center" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td class="sprykerTextContent" valign="top" style="color: #ffffff;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: center;">
+                                                                <div style="text-align: center;">
+                                                                    {{ 'mail.trans.footer.shopName' | trans }}<br>
+                                                                    {{ 'mail.trans.footer.shopAddress' | trans }}<br>
+                                                                    {{ 'mail.trans.footer.shopZipCode' | trans }} {{ 'mail.trans.footer.shopCity' | trans }}<br>
+                                                                    <br>
+                                                                    <span style="color: #1EBEA0; font-weight: bold;">{{ 'mail.trans.footer.shopPhone' | trans }}</span>
+                                                                    <br>
+                                                                    <a href="mailto:info@spryker.com" target="_blank" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #1EBEA0;font-weight: bold;text-decoration: none;">{{ 'mail.trans.footer.contactEmailAddress' | trans }}</a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+</center>
+</body>
+
 </html>
+
