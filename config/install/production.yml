@@ -1,0 +1,61 @@
+env:
+    APPLICATION_ENV: docker
+
+command-timeout: 1200
+
+stores:
+    - DE
+    - AT
+    - US
+
+sections:
+    clean-oms:
+        clear-oms-locks:
+            command: "vendor/bin/console oms:clear-locks -vvv --no-ansi"
+            stores:
+                - DE
+
+    diff:
+        propel-migration-delete:
+            command: "vendor/bin/console propel:migration:delete -vvv --no-ansi"
+            stores:
+                - DE
+
+        propel-diff:
+            command: "vendor/bin/console propel:diff -vvv --no-ansi"
+            stores:
+                - DE
+
+        show_migrations:
+            command: "ls -al ./src/Orm/Propel/Migration_*/*.php 2>/dev/null || true"
+            stores:
+                - DE
+
+        propel-migrate:
+            command: "vendor/bin/console propel:migrate -vvv --no-ansi"
+            stores:
+                - DE
+
+        propel-migration-cleanup:
+            command: "vendor/bin/console propel:migration:delete -vvv --no-ansi"
+            stores:
+                - DE
+
+    new-store-data:
+        setup-search-create-sources:
+            command: "vendor/bin/console search:setup:sources"
+            stores: true
+
+#        setup-virtual-hosts:
+#            command: "vendor/bin/console rabbitmq:virtual-hosts:init"
+#            stores: true
+
+        demodata:
+            command: "vendor/bin/console data:import -vvv --no-ansi || true"
+            stores:
+                - DE
+
+    scheduler-start:
+        scheduler-setup:
+            command: "vendor/bin/console scheduler:setup -vvv --no-ansi"
+            stores: true
