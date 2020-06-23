@@ -21,7 +21,7 @@ class OmsTimeoutDependencyProvider extends AbstractBundleDependencyProvider
      */
     public function provideCommunicationLayerDependencies(Container $container): Container
     {
-        $container = parent::provideBusinessLayerDependencies($container);
+        $container = parent::provideCommunicationLayerDependencies($container);
         $container = $this->addTranslatorFacade($container);
 
         return $container;
