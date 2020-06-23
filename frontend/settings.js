@@ -55,7 +55,9 @@ const imageOptimizationOptions = {
     },
 
     // available options https://github.com/imagemin/imagemin-gifsicle#api
-    gif: {},
+    gif: {
+        optimizationLevel: 2,
+    },
 };
 
 const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
