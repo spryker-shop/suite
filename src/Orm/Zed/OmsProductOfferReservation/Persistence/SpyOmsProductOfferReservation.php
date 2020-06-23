@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\PriceStorage\Persistence;
+namespace Orm\Zed\OmsProductOfferReservation\Persistence;
 
-use Orm\Zed\PriceStorage\Persistence\Base\SpyPriceAbstractStorage as BaseSpyPriceAbstractStorage;
+use Spryker\Zed\OmsProductOfferReservation\Persistence\Propel\AbstractSpyOmsProductOfferReservation as BaseSpyOmsProductOfferReservation;
 
 /**
- * Skeleton subclass for representing a row from the 'spy_price_abstract_storage' table.
+ * Skeleton subclass for representing a row from the 'spy_oms_product_offer_reservation' table.
  *
  *
  *
@@ -18,6 +18,6 @@ use Orm\Zed\PriceStorage\Persistence\Base\SpyPriceAbstractStorage as BaseSpyPric
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyPriceAbstractStorage extends BaseSpyPriceAbstractStorage
+class SpyOmsProductOfferReservation extends BaseSpyOmsProductOfferReservation
 {
 }
