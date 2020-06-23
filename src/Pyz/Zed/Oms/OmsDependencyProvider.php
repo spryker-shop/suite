@@ -10,6 +10,7 @@ namespace Pyz\Zed\Oms;
 use Pyz\Zed\MerchantOms\Communication\Plugin\Oms\CloseMerchantOrderItemCommandPlugin;
 use Pyz\Zed\MerchantSalesOrder\Communication\Plugin\Oms\Condition\IsOrderPaidConditionPlugin;
 use Pyz\Zed\MerchantSalesOrder\Communication\Plugin\Oms\CreateMerchantOrdersCommandPlugin;
+use Pyz\Zed\OmsTimeout\Communication\Plugin\Oms\InitiationTimeoutProcessorPlugin;
 use Spryker\Zed\Availability\Communication\Plugin\AvailabilityHandlerPlugin;
 use Spryker\Zed\GiftCard\Communication\Plugin\Oms\Command\CreateGiftCardCommandPlugin;
 use Spryker\Zed\GiftCard\Communication\Plugin\Oms\Condition\IsGiftCardConditionPlugin;
@@ -129,6 +130,16 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
     {
         return [
             new ProductPackagingUnitReservationAggregationStrategyPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\OmsExtension\Dependency\Plugin\TimeoutProcessorPluginInterface[]
+     */
+    protected function getTimeoutProcessorPlugins(): array
+    {
+        return [
+            new InitiationTimeoutProcessorPlugin(),
         ];
     }
 }
