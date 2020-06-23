@@ -19,6 +19,11 @@ use Spryker\Zed\ProductImage\Dependency\ProductImageEvents;
 
 class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
 {
+    protected const COLUMN_EXTERNAL_URL_LARGE = ProductImageHydratorStep::COLUMN_EXTERNAL_URL_LARGE;
+    protected const COLUMN_EXTERNAL_URL_SMALL = ProductImageHydratorStep::COLUMN_EXTERNAL_URL_SMALL;
+    protected const COLUMN_PRODUCT_IMAGE_KEY = ProductImageHydratorStep::COLUMN_PRODUCT_IMAGE_KEY;
+    protected const COLUMN_SORT_ORDER = ProductImageHydratorStep::COLUMN_SORT_ORDER;
+
     /**
      * @var \Pyz\Zed\DataImport\Business\Model\ProductImage\Writer\Sql\ProductImageSqlInterface
      */
@@ -119,9 +124,9 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
      */
     protected function persistProductImages(): array
     {
-        $externalUrlLargeCollection = $this->dataFormatter->getCollectionDataByKey(static::$productImageDataCollection, ProductImageHydratorStep::KEY_EXTERNAL_URL_LARGE);
-        $externalUrlSmallCollection = $this->dataFormatter->getCollectionDataByKey(static::$productImageDataCollection, ProductImageHydratorStep::KEY_EXTERNAL_URL_SMALL);
-        $productImageKeys = $this->dataFormatter->getCollectionDataByKey(static::$productImageDataCollection, ProductImageHydratorStep::KEY_PRODUCT_IMAGE_KEY);
+        $externalUrlLargeCollection = $this->dataFormatter->getCollectionDataByKey(static::$productImageDataCollection, static::COLUMN_EXTERNAL_URL_LARGE);
+        $externalUrlSmallCollection = $this->dataFormatter->getCollectionDataByKey(static::$productImageDataCollection, static::COLUMN_EXTERNAL_URL_SMALL);
+        $productImageKeys = $this->dataFormatter->getCollectionDataByKey(static::$productImageDataCollection, static::COLUMN_PRODUCT_IMAGE_KEY);
 
         $parameters = [
             $this->dataFormatter->formatPostgresArrayString($externalUrlLargeCollection),
@@ -146,8 +151,8 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
         $fkLocaleIds = $this->dataFormatter->getCollectionDataByKey(static::$productImageDataCollection, ProductImageHydratorStep::KEY_IMAGE_SET_FK_LOCALE);
         $fkProductConcreteIds = $this->dataFormatter->getCollectionDataByKey(static::$productImageDataCollection, ProductImageHydratorStep::KEY_FK_PRODUCT);
         $fkProductAbstractIds = $this->dataFormatter->getCollectionDataByKey(static::$productImageDataCollection, ProductImageHydratorStep::KEY_FK_PRODUCT_ABSTRACT);
-        $sortOrder = $this->dataFormatter->getCollectionDataByKey(static::$productImageDataCollection, ProductImageHydratorStep::KEY_SORT_ORDER);
-        $productImageKeys = $this->dataFormatter->getCollectionDataByKey(static::$productImageDataCollection, ProductImageHydratorStep::KEY_PRODUCT_IMAGE_KEY);
+        $sortOrder = $this->dataFormatter->getCollectionDataByKey(static::$productImageDataCollection, static::COLUMN_SORT_ORDER);
+        $productImageKeys = $this->dataFormatter->getCollectionDataByKey(static::$productImageDataCollection, static::COLUMN_PRODUCT_IMAGE_KEY);
 
         $parameters = [
             $this->dataFormatter->formatPostgresArrayString($productImageSetNames),
@@ -199,8 +204,8 @@ class ProductImageBulkPdoDataSetWriter implements DataSetWriterInterface
     {
         $productImageData = $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_SET_TRANSFER]->modifiedToArray();
         $productImageData = array_merge($productImageData, $dataSet[ProductImageHydratorStep::DATA_PRODUCT_IMAGE_TRANSFER]->modifiedToArray());
-        $productImageData[ProductImageHydratorStep::KEY_SORT_ORDER] = $dataSet[ProductImageHydratorStep::KEY_SORT_ORDER];
-        $productImageData[ProductImageHydratorStep::KEY_PRODUCT_IMAGE_KEY] = $dataSet[ProductImageHydratorStep::KEY_PRODUCT_IMAGE_KEY];
+        $productImageData[static::COLUMN_SORT_ORDER] = $dataSet[static::COLUMN_SORT_ORDER];
+        $productImageData[static::COLUMN_PRODUCT_IMAGE_KEY] = $dataSet[static::COLUMN_PRODUCT_IMAGE_KEY];
 
         static::$productImageDataCollection[] = $productImageData;
     }

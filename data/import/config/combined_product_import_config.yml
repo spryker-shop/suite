@@ -2,17 +2,17 @@
 version: 0
 
 actions:
-#  - data_entity: product-abstract
-#    source: data/import/icecat_biz_data/product_abstract.csv
-#  - data_entity: product-abstract-store
-#    source: data/import/icecat_biz_data/product_abstract_store.csv
-#  - data_entity: product-concrete
-#    source: data/import/icecat_biz_data/product_concrete.csv
-#  - data_entity: product-image
-#    source: data/import/icecat_biz_data/product_image.csv
+  - data_entity: combined-product-abstract
+    source: data/import/combined_product.csv
+  - data_entity: combined-product-abstract-store
+    source: data/import/combined_product.csv
+  - data_entity: combined-product-concrete
+    source: data/import/combined_product.csv
+  - data_entity: combined-product-image
+    source: data/import/combined_product.csv
   - data_entity: combined-product-price
-    source: data/import/icecat_biz_data/combined_product.csv
-#  - data_entity: product-stock
-#    source: data/import/product_stock.csv
+    source: data/import/combined_product.csv
+  - data_entity: combined-product-stock
+    source: data/import/combined_product.csv
   - data_entity: combined-product-group
-    source: data/import/icecat_biz_data/combined_product.csv
+    source: data/import/combined_product.csv
