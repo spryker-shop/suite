@@ -62,17 +62,17 @@ sections:
     build-static-production:
         excluded: true
         yves-build-frontend:
-            command: "npm run yves:production"
+            command: "vendor/bin/console frontend:yves:build -e production"
 
         zed-build-frontend:
-            command: "npm run zed:production"
+            command: "vendor/bin/console frontend:yves:build -e production"
 
     build-static-development:
         yves-build-frontend:
-            command: "npm run yves"
+            command: "vendor/bin/console frontend:yves:build"
 
         zed-build-frontend:
-            command: "npm run zed"
+            command: "vendor/bin/console frontend:zed:build"
 
     scheduler-setup:
         jenkins-setup:
