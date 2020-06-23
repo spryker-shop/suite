@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8410d7d57340d5bd880952fb185ec44e",
+    "content-hash": "40b0890fac335c6ae9178d68a2640ce9",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1598,49 +1598,6 @@
                 "server"
             ],
             "time": "2019-05-05T09:22:01+00:00"
-        },
-        {
-            "name": "mandrill/mandrill",
-            "version": "1.0.55",
-            "source": {
-                "type": "git",
-                "url": "https://bitbucket.org/mailchimp/mandrill-api-php.git",
-                "reference": "da3adc10042eafac2e53de141b358a52b8e53596"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://bitbucket.org/mailchimp/mandrill-api-php/get/da3adc10042eafac2e53de141b358a52b8e53596.zip",
-                "reference": "da3adc10042eafac2e53de141b358a52b8e53596",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Mandrill": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Mandrill Devs",
-                    "email": "community@mandrill.com",
-                    "homepage": "http://mandrill.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "API client library for the Mandrill email as a service platform",
-            "homepage": "https://bitbucket.org/mailchimp/mandrill-api-php",
-            "keywords": [
-                "api",
-                "email"
-            ],
-            "time": "2015-09-22T13:58:03+00:00"
         },
         {
             "name": "moneyphp/money",
@@ -12600,53 +12557,6 @@
             "time": "2019-04-24T14:10:29+00:00"
         },
         {
-            "name": "spryker/checkout-permission-connector",
-            "version": "0.0.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/checkout-permission-connector.git",
-                "reference": "1aa97d9989d55ea12c5c36dcfa5617e5a7e60f96"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/checkout-permission-connector/zipball/1aa97d9989d55ea12c5c36dcfa5617e5a7e60f96",
-                "reference": "1aa97d9989d55ea12c5c36dcfa5617e5a7e60f96",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1",
-                "spryker/kernel": "^3.0.0",
-                "spryker/permission": "^1.0.0",
-                "spryker/permission-extension": "^1.0.0"
-            },
-            "require-dev": {
-                "spryker/checkout": "*",
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "suggest": {
-                "spryker/checkout": "^4.0.0 If you want to use the permission plugin"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "CheckoutPermissionConnector module",
-            "abandoned": true,
-            "time": "2018-09-27T07:48:04+00:00"
-        },
-        {
             "name": "spryker/checkout-rest-api",
             "version": "3.3.1",
             "source": {
@@ -21069,50 +20979,6 @@
             "time": "2019-03-26T15:19:37+00:00"
         },
         {
-            "name": "spryker/event-journal",
-            "version": "3.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/event-journal.git",
-                "reference": "1d6f3adc99a688752c20f3b6722e4f52fc75af32"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-journal/zipball/1d6f3adc99a688752c20f3b6722e4f52fc75af32",
-                "reference": "1d6f3adc99a688752c20f3b6722e4f52fc75af32",
-                "shasum": ""
-            },
-            "require": {
-                "spryker/config": "^3.0.0",
-                "spryker/kernel": "^3.0.0",
-                "spryker/new-relic-api": "^1.0.0",
-                "spryker/util-network": "^1.1.0",
-                "spryker/util-text": "^1.1.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Spryker": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "EventJournal bundle",
-            "abandoned": true,
-            "time": "2017-02-22T12:08:46+00:00"
-        },
-        {
             "name": "spryker/file-manager",
             "version": "1.1.1",
             "source": {
@@ -22953,37 +22819,6 @@
             ],
             "description": "Maintenance module",
             "time": "2019-01-28T15:17:37+00:00"
-        },
-        {
-            "name": "spryker/mandrill",
-            "version": "2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/Mandrill.git",
-                "reference": "0973fea26836ae22f4a78575efecea5bacd6d9eb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/Mandrill/zipball/0973fea26836ae22f4a78575efecea5bacd6d9eb",
-                "reference": "0973fea26836ae22f4a78575efecea5bacd6d9eb",
-                "shasum": ""
-            },
-            "require": {
-                "mandrill/mandrill": "~1.0.55"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "mandrill bundle",
-            "abandoned": true,
-            "time": "2016-04-01T13:06:05+00:00"
         },
         {
             "name": "spryker/manual-order-entry",
@@ -26121,97 +25956,6 @@
             ],
             "description": "NavigationsRestApi module",
             "time": "2020-05-29T13:08:37+00:00"
-        },
-        {
-            "name": "spryker/new-relic",
-            "version": "3.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/new-relic.git",
-                "reference": "4373348ff2639eb1cafaa56e011e4800e0037b3e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/new-relic/zipball/4373348ff2639eb1cafaa56e011e4800e0037b3e",
-                "reference": "4373348ff2639eb1cafaa56e011e4800e0037b3e",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1",
-                "spryker/config": "^3.0.0",
-                "spryker/guzzle": "^2.1.0",
-                "spryker/kernel": "^3.0.0",
-                "spryker/new-relic-api": "^1.0.0",
-                "spryker/symfony": "^3.0.0",
-                "spryker/util-network": "^1.1.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/silex": "*",
-                "spryker/testify": "*"
-            },
-            "suggest": {
-                "spryker/silex": "If you want to use ServiceProvider."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "NewRelic module",
-            "abandoned": "spryker-eco/new-relic",
-            "time": "2018-07-16T16:21:26+00:00"
-        },
-        {
-            "name": "spryker/new-relic-api",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/new-relic-api.git",
-                "reference": "a6fe91219afe8e310e4a81126c93cfc01b35979e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/new-relic-api/zipball/a6fe91219afe8e310e4a81126c93cfc01b35979e",
-                "reference": "a6fe91219afe8e310e4a81126c93cfc01b35979e",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1",
-                "spryker/monitoring-extension": "^1.0.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "NewRelicApi module",
-            "abandoned": true,
-            "time": "2018-07-25T06:50:29+00:00"
         },
         {
             "name": "spryker/newsletter",
