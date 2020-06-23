@@ -5953,7 +5953,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "41ee819ef2aaae347b9934dce422fc04627bba1f"
+                "reference": "3f6ffd188e89fbddd2ee3d442a8463d3cba264a0"
             },
             "require": {
                 "php": ">=7.2"
@@ -6022,6 +6022,7 @@
                 "spryker-shop/multi-cart-widget": "*",
                 "spryker-shop/newsletter-page": "*",
                 "spryker-shop/newsletter-widget": "*",
+                "spryker-shop/order-cancel-widget": "*",
                 "spryker-shop/order-custom-reference-widget": "*",
                 "spryker-shop/persistent-cart-share-page": "*",
                 "spryker-shop/persistent-cart-share-widget": "*",
@@ -6095,6 +6096,11 @@
                 "spryker/spryker": "dev-master"
             },
             "type": "library",
+            "autoload": {
+                "files": [
+                    "autoload.php"
+                ]
+            },
             "scripts": {
                 "cs-check": [
                     "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -p --ignore=/node_modules/ Bundles/"
@@ -6104,7 +6110,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-06-22T14:28:55+00:00"
+            "time": "2020-06-23T07:22:06+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
