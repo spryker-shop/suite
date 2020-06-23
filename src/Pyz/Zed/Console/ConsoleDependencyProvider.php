@@ -26,6 +26,8 @@ use Spryker\Zed\CompanyUnitAddressDataImport\CompanyUnitAddressDataImportConfig;
 use Spryker\Zed\CompanyUnitAddressLabelDataImport\CompanyUnitAddressLabelDataImportConfig;
 use Spryker\Zed\Console\ConsoleDependencyProvider as SprykerConsoleDependencyProvider;
 use Spryker\Zed\ContentNavigationDataImport\ContentNavigationDataImportConfig;
+use Spryker\Zed\Customer\Communication\Console\CustomerPasswordResetConsole;
+use Spryker\Zed\Customer\Communication\Console\CustomerPasswordSetConsole;
 use Spryker\Zed\DataExport\Communication\Console\DataExportConsole;
 use Spryker\Zed\DataImport\Communication\Console\DataImportConsole;
 use Spryker\Zed\DataImport\Communication\Console\DataImportDumpConsole;
@@ -69,6 +71,7 @@ use Spryker\Zed\Log\Communication\Console\DeleteLogFilesConsole;
 use Spryker\Zed\Maintenance\Communication\Console\MaintenanceDisableConsole;
 use Spryker\Zed\Maintenance\Communication\Console\MaintenanceEnableConsole;
 use Spryker\Zed\MerchantOms\Communication\Console\TriggerEventFromCsvFileConsole;
+use Spryker\Zed\Monitoring\Communication\Plugin\Console\MonitoringConsolePlugin;
 use Spryker\Zed\MultiCartDataImport\MultiCartDataImportConfig;
 use Spryker\Zed\Oauth\Communication\Console\OauthTokenConsole;
 use Spryker\Zed\Oms\Communication\Console\CheckConditionConsole as OmsCheckConditionConsole;
@@ -363,6 +366,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new TriggerEventFromCsvFileConsole(),
 
             new DataExportConsole(),
+
+            new CustomerPasswordResetConsole(),
+            new CustomerPasswordSetConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
@@ -482,5 +488,17 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
         $commands[] = new ComposerReplaceConsole();
 
         return $commands;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Monitoring\Communication\Plugin\Console\MonitoringConsolePlugin[]
+     */
+    public function getEventSubscriber(Container $container): array
+    {
+        return [
+            new MonitoringConsolePlugin(),
+        ];
     }
 }
