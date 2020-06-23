@@ -64,6 +64,7 @@ use SprykerShop\Yves\MultiCartWidget\Widget\MultiCartMenuItemWidget;
 use SprykerShop\Yves\MultiCartWidget\Widget\QuickOrderPageWidget;
 use SprykerShop\Yves\NewsletterWidget\Widget\NewsletterSubscriptionSummaryWidget;
 use SprykerShop\Yves\NewsletterWidget\Widget\NewsletterSubscriptionWidget;
+use SprykerShop\Yves\OrderCancelWidget\Widget\OrderCancelButtonWidget;
 use SprykerShop\Yves\OrderCustomReferenceWidget\Widget\OrderCustomReferenceWidget;
 use SprykerShop\Yves\PersistentCartShareWidget\Widget\ShareCartByLinkWidget;
 use SprykerShop\Yves\PriceProductVolumeWidget\Widget\CurrentProductPriceVolumeWidget;
@@ -257,6 +258,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             OrderItemsProductBundleWidget::class,
             RemoveFromCartFormWidget::class,
             ProductAbstractAddToCartAjaxWidget::class,
+            OrderCancelButtonWidget::class,
         ];
     }
 
