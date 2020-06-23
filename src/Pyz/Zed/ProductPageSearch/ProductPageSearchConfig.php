@@ -23,4 +23,3 @@ class ProductPageSearchConfig extends SprykerProductPageSearchConfig
         return true;
     }
 }
-
