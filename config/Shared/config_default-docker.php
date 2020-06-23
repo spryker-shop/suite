@@ -383,10 +383,10 @@ $config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GE
 // ----------- Payone
 $config[PayoneConstants::PAYONE] = [
     PayoneConstants::PAYONE_CREDENTIALS_ENCODING => 'UTF-8',
-    PayoneConstants::PAYONE_CREDENTIALS_KEY => 'Atf7vFdpMvhqlQwJ',
-    PayoneConstants::PAYONE_CREDENTIALS_MID => '32481',
-    PayoneConstants::PAYONE_CREDENTIALS_AID => '32893',
-    PayoneConstants::PAYONE_CREDENTIALS_PORTAL_ID => '2026219',
+    PayoneConstants::PAYONE_CREDENTIALS_KEY => '',
+    PayoneConstants::PAYONE_CREDENTIALS_MID => '',
+    PayoneConstants::PAYONE_CREDENTIALS_AID => '',
+    PayoneConstants::PAYONE_CREDENTIALS_PORTAL_ID => '',
     PayoneConstants::PAYONE_PAYMENT_GATEWAY_URL => 'https://api.pay1.de/post-gateway/',
     PayoneConstants::HOST_YVES => $config[ApplicationConstants::BASE_URL_YVES],
     PayoneConstants::PAYONE_MODE => PayoneConstants::PAYONE_MODE_TEST,
