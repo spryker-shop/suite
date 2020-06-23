@@ -19,9 +19,10 @@ async function asyncForEach(array, callback) {
     }
 }
 
-const imagesOptimization = appSettings => {
+const imagesOptimization = (appSettings, requestedArguments) => {
     let isPublicOutput = false;
     let shouldOptimize = true;
+    const shouldReplaceImages = requestedArguments ? requestedArguments.replaceOptimizedImages : false;
 
     const currentMode = process.argv.slice(globalSettings.expectedModeArgument)[0];
 
@@ -38,9 +39,12 @@ const imagesOptimization = appSettings => {
         Object.values(appSettings.paths.assets).map(async assetsPath => {
             const assetsImagePath = normalize(join(assetsPath, '/images/'));
             const assetsImagePattern = '/*.{jpg,png,svg,gif}';
+            const outputPattern = shouldReplaceImages ?
+                '/images/' :
+                '/images/optimized-images/';
             const outputPath = isPublicOutput ?
                 normalize(join(appSettings.paths.public, '/images/')) :
-                normalize(join(assetsPath, '/images/optimized-images/'));
+                normalize(join(assetsPath, outputPattern));
 
             const isGlobalImages = assetsPath === appSettings.paths.assets.globalAssets;
 
