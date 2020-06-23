@@ -1,7 +1,0 @@
-{% extends 'jenkins-job.default.xml.twig' %}
-
-{% block setup %}{% endblock setup %}
-
-{% block command %}<![CDATA[
-APPLICATION_STORE="{{ job.store }}" COMMAND="{{ job.command }}" bash /usr/bin/spryker.sh
-]]>{% endblock command %}
