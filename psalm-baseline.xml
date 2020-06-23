@@ -1,5 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="3.11.4@58e1d8e68e5098bf4fbfdfb420c38d563f882549">
+<files psalm-version="3.11.6@7fc1f50f54bd6b174b1c43a37c1b0b151915d55c">
+  <file src="src/Pyz/Client/Catalog/CatalogDependencyProvider.php">
+    <InvalidArgument occurrences="1">
+      <code>new RawCatalogSearchResultFormatterPlugin()</code>
+    </InvalidArgument>
+    <InvalidReturnStatement occurrences="4">
+      <code>new ProductCatalogSearchQueryPlugin()</code>
+    </InvalidReturnStatement>
+    <InvalidReturnType occurrences="4">
+      <code>\Spryker\Client\Search\Dependency\Plugin\QueryInterface</code>
+      <code>\Spryker\Client\Search\Dependency\Plugin\ResultFormatterPluginInterface[]|\Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface[]</code>
+      <code>\Spryker\Client\Search\Dependency\Plugin\ResultFormatterPluginInterface[]|\Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface[]</code>
+      <code>\Spryker\Client\Search\Dependency\Plugin\ResultFormatterPluginInterface[]|\Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface[]</code>
+    </InvalidReturnType>
+  </file>
+  <file src="src/Pyz/Client/CmsPageSearch/CmsPageSearchDependencyProvider.php">
+    <InvalidReturnStatement occurrences="1"/>
+    <InvalidReturnType occurrences="1">
+      <code>\Spryker\Client\Search\Dependency\Plugin\ResultFormatterPluginInterface[]|\Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface[]</code>
+    </InvalidReturnType>
+  </file>
+  <file src="src/Pyz/Client/ConfigurableBundlePageSearch/ConfigurableBundlePageSearchDependencyProvider.php">
+    <InvalidReturnStatement occurrences="1"/>
+    <InvalidReturnType occurrences="1">
+      <code>\Spryker\Client\Search\Dependency\Plugin\ResultFormatterPluginInterface[]</code>
+    </InvalidReturnType>
+  </file>
+  <file src="src/Pyz/Client/ExampleProductSalePage/ExampleProductSalePageDependencyProvider.php">
+    <InvalidArgument occurrences="1">
+      <code>new RawCatalogSearchResultFormatterPlugin()</code>
+    </InvalidArgument>
+  </file>
+  <file src="src/Pyz/Client/ProductNew/ProductNewDependencyProvider.php">
+    <InvalidArgument occurrences="1">
+      <code>new RawCatalogSearchResultFormatterPlugin()</code>
+    </InvalidArgument>
+    <InvalidReturnStatement occurrences="1"/>
+    <InvalidReturnType occurrences="1">
+      <code>\Spryker\Client\Search\Dependency\Plugin\ResultFormatterPluginInterface[]|\Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface[]</code>
+    </InvalidReturnType>
+  </file>
   <file src="src/Pyz/Zed/DataImport/Business/DataImportBusinessFactory.php">
     <InvalidReturnStatement occurrences="36">
       <code>$dataImporter</code>
