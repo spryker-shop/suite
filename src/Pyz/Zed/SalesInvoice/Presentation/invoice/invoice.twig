@@ -32,24 +32,19 @@
         </td>
         <td class="td01 spacing-left top">
             <div>
-                <div class="font-bold">{{ 'order_invoice.invoice_template.' | trans }}</div>
+                <div class="font-bold">{{ 'order_invoice.invoice_template.company.name' | trans }}</div>
                 <div class="font-small">
-                    {{ 'order_invoice.invoice_template.' | trans }}<br/>
-                </div>
-                <br />
-                <div class="font-small">
-                    {{ 'order_invoice.invoice_template.' | trans }}<br/>
-                    {{ 'order_invoice.invoice_template.' | trans }} {{ 'order_invoice.invoice_template.' | trans }}
+                    {{ 'order_invoice.invoice_template.company.group' | trans }}<br/>
                 </div>
             </div>
         </td>
     </tr>
     <tr>
         <td class="spacing-bottom">
-            <div class="font-bold">{{ 'order_invoice.invoice_template.' | trans }}</div>
-            <div class="font-small">{{ 'order_invoice.invoice_template.' | trans }} · {{ 'order_invoice.invoice_template.' | trans }} {{ 'order_invoice.invoice_template.' | trans }}</div>
+            <div class="font-bold">{{ 'order_invoice.invoice_template.merchant.name' | trans }}</div>
+            <div class="font-small">{{ 'order_invoice.invoice_template.merchant.address' | trans | raw }}</div>
         </td>
-        <td class="spacing-left top">{{ 'order_invoice.invoice_template.' | trans }}, {{ invoice.issueDate | date('d. m y') }}</td>
+        <td class="spacing-left top">{{ 'order_invoice.invoice_template.company.address' | trans | raw }}</td>
     </tr>
     <tr>
         <td colspan="2">
@@ -61,8 +56,9 @@
     </tr>
 </table>
 
-<div class="spacing-y-offset font-bold">{{ 'order_invoice.invoice_template.reference'| trans }}: {{ invoice.reference }}</div>
-<div class="spacing-y-offset">{{ 'order_invoice.invoice_template.goods' | trans }}:</div>
+<div class="spacing-y-offset font-bold">{{ 'order_invoice.invoice_template.reference'| trans }} {{ invoice.reference }}</div>
+<div class="spacing-y-offset font-bold">{{ invoice.issueDate | date('d. M Y') }}</div>
+<div class="spacing-y-offset">{{ 'order_invoice.invoice_template.introduction' | trans }}</div>
 
 <table cellpadding="6px" autosize="2.4" class="t0 table-products" style="width:100%;border: 1px solid black;border-collapse: collapse;">
     <thead>
@@ -71,8 +67,7 @@
         <td class="tr-gray th1"><p class="p4 ft4 font-bold">{{ 'order_invoice.invoice_template.table.quantity' | trans }}</p></td>
         <td class="tr-gray th2"><p class="font-bold">{{ 'order_invoice.invoice_template.table.name' | trans }}</p></td>
         <td class="tr-gray th3"><p class="p5 ft4 font-bold">{{ 'order_invoice.invoice_template.table.tax' | trans }}</p></td>
-        <td class="tr-gray th4"><p class="p5 ft4 font-bold">{{ 'order_invoice.invoice_template.table.price' | trans | raw }}</p></td>
-        <td class="tr-gray th5"><p class="p5 ft4 font-bold">{{ 'order_invoice.invoice_template.table.sum' | trans | raw }}</p></td>
+        <td class="tr-gray th5"><p class="p5 ft4 font-bold">{{ 'order_invoice.invoice_template.table.price' | trans | raw }}</p></td>
     </tr>
     </thead>
     <tfoot>
@@ -91,7 +86,6 @@
                 <td class="tr13 right"><p class="p4 ft4">{{ item.quantity }}</p></td>
                 <td class="tr13"><p class="p1 ft4">{{ item.name }}</p></td>
                 <td class="tr13 right"><p class="p6 ft4">{{ item.taxRate|number_format }}%</p></td>
-                <td class="tr13 right"><p class="p6 ft4">{{ (item.sumPrice - item.sumDiscountAmountFullAggregation) | money(true, order.currencyIsoCode) }}</p></td>
                 <td class="tr13 right"><p class="p6 ft4">{{ item.sumPriceToPayAggregation | money(true, order.currencyIsoCode) }}</p></td>
             </tr>
         {% endif %}
@@ -108,58 +102,77 @@
                     <td class="tr13 right"><p class="p7 ft4">{{ linenumber }}</p></td>
                     <td class="tr13 right"><p class="p4 ft4">{{ productBundle.quantity }}</p></td>
                     <td class="tr13"><p class="p1 ft4">{{ productBundle.name }}</p></td>
-                    <td class="tr13 right"><p class="p6 ft4">{{ item.taxRate|number_format }}%</p></td>
-                    <td class="tr13 right"><p class="p6 ft4">{{ (productBundle.sumPrice - productBundle.sumDiscountAmountFullAggregation) | money(true, order.currencyIsoCode) }}</p></td>
+                    <td class="tr13 right"><p class="p6 ft4">{{ productBundle.taxRate|number_format }}%</p></td>
                     <td class="tr13 right"><p class="p6 ft4">{{ productBundle.sumPriceToPayAggregation | money(true, order.currencyIsoCode) }}</p></td>
                 </tr>
+                {% for bundleditem in order.items %}
+                    {# @var item \Generated\Shared\Transfer\ItemTransfer #}
+                    {% if item.relatedBundleItemIdentifier == bundleditem.relatedBundleItemIdentifier %}
+                        {# @var productBundle \Generated\Shared\Transfer\ItemTransfer #}
+                        <tr>
+                            <td class="tr13 right"></td>
+                            <td class="tr13 right"><p class="p4 ft4">{{ bundleditem.quantity }}</p></td>
+                            <td class="tr13"><p class="p1 ft4">{{ bundleditem.name }}</p></td>
+                            <td class="tr13 right"><p class="p6 ft4">{{ bundleditem.taxRate|number_format }}%</p></td>
+                            <td class="tr13 right"><p class="p6 ft4">{{ bundleditem.sumPriceToPayAggregation | money(true, order.currencyIsoCode) }}</p></td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
                 {% set renderedBundles = renderedBundles | merge([item.relatedBundleItemIdentifier]) %}
             {% endif %}
         {% endif %}
     {% endfor %}
-    {% if order.expenses %}
-        {% for expense in order.expenses %}
-            {% set linenumber = linenumber + 1 %}
-            <tr>
-                <td class="tr13 right"><p class="p1 ft1">{{ linenumber }}</p></td>
-                <td class="tr13 right"><p class="p6 ft4"></p></td>
-                <td class="tr13"><p class="p5 ft4">{{ expense.name }}</p></td>
-                <td class="tr13 right"><p class="p1 ft1">{{ expense.taxRate|number_format }}%</p></td>
-                <td class="tr13 right"><p class="p1 ft1">{{ expense.sumPrice | money(true, order.currencyIsoCode) }}</p></td>
-                <td class="tr13 right"><p class="p1 ft1">{{ expense.sumPrice | money(true, order.currencyIsoCode) }}</p></td>
-            </tr>
-        {% endfor %}
-    {% endif %}
+    {% for expense in order.expenses %}
+        {% set linenumber = linenumber + 1 %}
+        <tr>
+            <td class="tr13 right"><p class="p1 ft1">{{ linenumber }}</p></td>
+            <td class="tr13 right"><p class="p6 ft4"></p></td>
+            <td class="tr13"><p class="p5 ft4">{{ expense.name }}</p></td>
+            <td class="tr13 right"><p class="p1 ft1">{{ expense.taxRate|number_format }}%</p></td>
+            <td class="tr13 right"><p class="p1 ft1">{{ expense.sumPrice | money(true, order.currencyIsoCode) }}</p></td>
+        </tr>
+    {% endfor %}
     <tr class="tr-gray">
-        <td colspan="5" class="right"><p class="p4 ft4">{{ 'order_invoice.invoice_template.table.total.gross' | trans }}</p></td>
+        <td colspan="4" class="right"><p class="p4 ft4">{{ 'order_invoice.invoice_template.table.subtotal' | trans }}</p></td>
         <td class="right"><p class="p5 ft4">{{ order.totals.subtotal | money(true, order.currencyIsoCode) }}</p></td>
     </tr>
     <tr class="tr-gray">
-        <td colspan="5" class="right"><p class="p4 ft4">{{ 'mail.invoice.table.total.gross' | trans }}</p></td>
+        <td colspan="4" class="right"><p class="p4 ft4">{{ 'order_invoice.invoice_template.table.discount' | trans }}</p></td>
         <td class="right"><p class="p5 ft4">{{ order.totals.discountTotal | money(true, order.currencyIsoCode) }}</p></td>
     </tr>
 
     {% set taxes = {} %}
+    {% set itemSumByTaxes = {} %}
     {% for item in order.items %}
         {# @var item \Generated\Shared\Transfer\ItemTransfer #}
+        {% set taxRate = item.taxRate %}
         {% set rateSum = taxes[item.taxRate] | default(0) + item.sumTaxAmountFullAggregation %}
-        {% set taxes = taxes | merge({(item.taxRate): rateSum}) %}
+        {% set taxes = taxes | merge({(taxRate): rateSum}) %}
+        {% set rateItemSum = itemSumByTaxes[taxRate] | default(0) + item.sumPriceToPayAggregation %}
+        {% set itemSumByTaxes = itemSumByTaxes | merge({(taxRate): rateItemSum})  %}
+    {% endfor %}
+    {% for expense in order.expenses %}
+        {# @var item \Generated\Shared\Transfer\ItemTransfer #}
+        {% set taxRate = expense.taxRate %}
+        {% set rateSum = taxes[expense.taxRate] | default(0) + expense.sumTaxAmount %}
+        {% set taxes = taxes | merge({(taxRate): rateSum}) %}
+        {% set rateItemSum = itemSumByTaxes[taxRate] | default(0) + expense.sumPriceToPayAggregation %}
+        {% set itemSumByTaxes = itemSumByTaxes | merge({(taxRate): rateItemSum})  %}
     {% endfor %}
     {% for rate, tax in taxes %}
-        {% if tax %}
-            <tr>
-                <td colspan="3" class="tr13 td15 right"><p class="p5 ft4">{{ 'mail.invoice.table.vat.included' | trans({'%tax%': rate / 100 }) }}</p></td>
-                <td class="tr13 right"><p class="p6 ft4">{{ tax | money(true, order.currencyIsoCode) }}</p></td>
-                <td class="tr13 right"><p class="p5 ft4">{{ 'mail.invoice.table.vat' | trans }}</p></td>
-                <td class="tr13 right"><p class="p6 ft4">{{ tax | money(true, order.currencyIsoCode) }}</p></td>
-            </tr>
-        {% endif %}
+        <tr>
+            <td colspan="2" class="tr13 td15 right"><p class="p5 ft4">{{ 'order_invoice.invoice_template.table.tax.included' | trans({'%tax_rate%': rate | number_format }) }}</p></td>
+            <td class="tr13 right"><p class="p6 ft4">{{ itemSumByTaxes[rate] | money(true, order.currencyIsoCode) }}</p></td>
+            <td class="tr13 right"><p class="p5 ft4">{{ 'order_invoice.invoice_template.table.tax.name' | trans }}</p></td>
+            <td class="tr13 right"><p class="p6 ft4">{{ tax | money(true, order.currencyIsoCode) }}</p></td>
+        </tr>
     {% endfor %}
     <tr>
-        <td colspan="3" class="tr13 td15 right"><p class="p1 ft1">{{ 'mail.invoice.table.total.net' | trans }}</p></td>
-        <td class="tr13 right"><p class="p6 ft4">{{ order.totals.taxTotal.amount | money(true, order.currencyIsoCode) }}</p></td>
+        <td colspan="2" class="tr13 td15 right"><p class="p1 ft1">{{ 'order_invoice.invoice_template.table.total.net' | trans }}</p></td>
+        <td class="tr13 right"><p class="p6 ft4">{{ (order.totals.grandTotal - order.totals.taxTotal.amount) | money(true, order.currencyIsoCode) }}</p></td>
     </tr>
     <tr class="tr-gray">
-        <td colspan="5" class="right"><p class="p4 ft4 pb font-bold" style="text-align: right; ">{{ 'mail.invoice.table.payment.amount' | trans }}</p></td>
+        <td colspan="4" class="right"><p class="p4 ft4 pb font-bold" style="text-align: right; ">{{ 'order_invoice.invoice_template.table.grandtotal' | trans }}</p></td>
         <td class="right"><p class="p5 ft4 pb">{{ order.totals.grandTotal | money(true, order.currencyIsoCode) }}</p></td>
     </tr>
     </tbody>
