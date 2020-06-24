@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ca3dcc6c5d80526ceab5dd53bfce1d42",
+    "content-hash": "f0cc93f42d238308dc62bd8051633e48",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5259,11 +5259,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/ps-13590/master-max-hard-threshold",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "a25eccf1780dc385a90a6a38788283471e657d29"
+                "reference": "59ffc4b512baa73598f2f30dd8c8b8e14ed3337a"
             },
             "require": {
                 "php": ">=7.2"
@@ -5289,7 +5289,6 @@
                 "spryker/availability-data-feed": "*",
                 "spryker/availability-extension": "*",
                 "spryker/availability-gui": "*",
-                "spryker/availability-gui-extension": "*",
                 "spryker/availability-notification": "*",
                 "spryker/availability-offer-connector": "*",
                 "spryker/availability-storage": "*",
@@ -5575,7 +5574,6 @@
                 "spryker/merchant-opening-hours-storage": "*",
                 "spryker/merchant-product": "*",
                 "spryker/merchant-product-data-import": "*",
-                "spryker/merchant-product-gui": "*",
                 "spryker/merchant-product-offer": "*",
                 "spryker/merchant-product-offer-data-import": "*",
                 "spryker/merchant-product-offer-search": "*",
@@ -5643,7 +5641,6 @@
                 "spryker/oms": "*",
                 "spryker/oms-discount-connector": "*",
                 "spryker/oms-extension": "*",
-                "spryker/oms-product-offer-reservation": "*",
                 "spryker/oms-rest-api": "*",
                 "spryker/order-custom-reference": "*",
                 "spryker/order-custom-reference-gui": "*",
@@ -5750,12 +5747,9 @@
                 "spryker/product-measurement-units-rest-api": "*",
                 "spryker/product-new": "*",
                 "spryker/product-offer": "*",
-                "spryker/product-offer-availabilities-rest-api": "*",
                 "spryker/product-offer-availability": "*",
                 "spryker/product-offer-availability-storage": "*",
                 "spryker/product-offer-merchant-portal-gui": "*",
-                "spryker/product-offer-packaging-unit": "*",
-                "spryker/product-offer-prices-rest-api": "*",
                 "spryker/product-offer-sales": "*",
                 "spryker/product-offer-stock": "*",
                 "spryker/product-offer-stock-data-import": "*",
@@ -5971,7 +5965,7 @@
             "type": "library",
             "autoload": {
                 "files": [
-                    "autoload.php"
+                    "Bundles/Development/tests/dd.php"
                 ]
             },
             "scripts": {
@@ -5983,7 +5977,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-06-23T12:47:37+00:00"
+            "time": "2020-06-22T10:05:27+00:00"
         },
         {
             "name": "spryker/spryker-shop",
