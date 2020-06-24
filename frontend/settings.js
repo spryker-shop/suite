@@ -9,7 +9,7 @@ const globalSettings = {
     modes: {
         dev: 'development',
         watch: 'development-watch',
-        prod: 'production'
+        prod: 'production',
     },
 
     paths: {
@@ -26,8 +26,38 @@ const globalSettings = {
         eco: './vendor/spryker-eco',
 
         // project folders
-        project: './src/Pyz/Yves'
-    }
+        project: './src/Pyz/Yves',
+    },
+
+    expectedModeArgument: 2,
+};
+
+const imageOptimizationOptions = {
+    enabledInModes: {
+        'development': false,
+        'development-watch': false,
+        'production': false,
+    },
+
+    // available options https://github.com/imagemin/imagemin-mozjpeg#api
+    jpg: {
+        quality: 60,
+    },
+
+    // available options https://github.com/imagemin/imagemin-pngquant#api
+    png: {
+        quality: [0.6, 0.7],
+    },
+
+    // available options https://github.com/svg/svgo#what-it-can-do
+    svg: {
+        removeViewBox: false,
+    },
+
+    // available options https://github.com/imagemin/imagemin-gifsicle#api
+    gif: {
+        optimizationLevel: 2,
+    },
 };
 
 const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
@@ -135,7 +165,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
 
     // define if current mode is production
     const isProductionMode = () => {
-        const currentMode = process.argv.slice(2)[0];
+        const currentMode = process.argv.slice(globalSettings.expectedModeArgument)[0];
         return currentMode === globalSettings.modes.prod;
     };
 
@@ -146,6 +176,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
         theme,
         paths,
         urls,
+        imageOptimizationOptions,
 
         context: globalSettings.context,
 
