@@ -9,6 +9,9 @@ namespace Pyz\Zed\ProductManagement;
 
 use Spryker\Zed\CmsBlockProductConnector\Communication\Plugin\CmsBlockProductAbstractBlockListViewPlugin;
 use Spryker\Zed\Kernel\Container;
+use Spryker\Zed\MerchantGui\Communication\Plugin\ProductManagement\MerchantProductAbstractListActionViewDataExpanderPlugin;
+use Spryker\Zed\MerchantProductGui\Communication\Plugin\ProductManagement\MerchantProductProductAbstractViewActionViewDataExpanderPlugin;
+use Spryker\Zed\MerchantProductGui\Communication\Plugin\ProductManagement\MerchantProductProductTableQueryCriteriaExpanderPlugin;
 use Spryker\Zed\Money\Communication\Plugin\Form\MoneyFormTypePlugin;
 use Spryker\Zed\PriceProductMerchantRelationshipGui\Communication\Plugin\ProductManagement\MerchantRelationshipProductAbstractFormExpanderPlugin;
 use Spryker\Zed\PriceProductMerchantRelationshipGui\Communication\Plugin\ProductManagement\MerchantRelationshipProductConcreteFormExpanderPlugin;
@@ -149,6 +152,36 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     {
         return [
             new MerchantRelationshipProductConcreteFormExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductAbstractListActionViewDataExpanderPluginInterface[]
+     */
+    protected function getProductAbstractListActionViewDataExpanderPlugins(): array
+    {
+        return [
+            new MerchantProductAbstractListActionViewDataExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductAbstractViewActionViewDataExpanderPluginInterface[]
+     */
+    protected function getProductAbstractViewActionViewDataExpanderPlugins(): array
+    {
+        return [
+            new MerchantProductProductAbstractViewActionViewDataExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductTableQueryCriteriaExpanderPluginInterface[]
+     */
+    protected function getProductTableQueryCriteriaExpanderPluginInterfaces(): array
+    {
+        return [
+            new MerchantProductProductTableQueryCriteriaExpanderPlugin(),
         ];
     }
 }

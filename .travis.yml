@@ -191,7 +191,7 @@ matrix:
         - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         - sudo chmod +x /usr/local/bin/docker-compose
       script:
-        - docker/sdk boot deploy.ci.yml
+        - docker/sdk boot deploy.ci.mysql.yml
         - docker/sdk build images
         - docker/sdk demo-data -t
         - 'docker/sdk testing codecept run -c codeception.functional.yml -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: inclusive: [PyzTest]\"" -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: exclusive: [Api, Glue]\""'
@@ -261,6 +261,7 @@ addons:
       - postgresql-server-dev-12
       - rabbitmq-server
   postgresql: "12"
+  mariadb: 10.3
 
   artifacts:
     s3_region: eu-west-1
@@ -289,7 +290,7 @@ cache:
 
 services:
   - postgresql
-  - mysql
+  - mariadb
   - redis
 
 sudo: required
@@ -299,8 +300,6 @@ before_install:
   - if [[ $VALIDATION != 1 && $ON_EVENTS != *$TRAVIS_EVENT_TYPE* ]] ; then exit ; fi
   - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - phpenv config-rm xdebug.ini
-  - if [[ $DB == 'mysql' ]] ; then chmod +x ./config/Shared/ci/travis/mysql/* ; fi
-  - if [[ $DB == 'mysql' ]] ; then ./config/Shared/ci/travis/mysql/travis_mysql_5.7.sh ; fi
   # Merges travis-ci/stores.php into the general stores.php at the defined "travis hook" line. Uses temporary file during the process.
   # - grabs all lines until the travis hook from stores.php (including that line)
   # - grabs all lines after the 1st line in travis-ci/stores.php (php opening tag)
@@ -332,9 +331,6 @@ before_script:
 
   - cp config/Shared/ci/travis/config_ci.php config/Shared/config_local.php
 
-  - if [[ $DB == 'mysql' ]] ; then sudo cp config/Shared/ci/travis/mysql/my.cnf /etc/ ; fi
-  - if [[ $DB == 'mysql' ]] ; then sudo service mysql restart ; fi
-
   - if [[ $TEST_GROUP == 'acceptance' || $TEST_GROUP == 'without-acceptance' ]] ; then config/Shared/ci/travis/acceptance_env.sh ; fi
   - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/install DE -r testing ; fi
   - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/install DE -r testing -x frontend -x fixtures ; fi
@@ -363,6 +359,7 @@ script:
   - if [[ $VALIDATION == 1 ]] ; then composer psalm ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console dev:composer:replace -d -v ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/spryker-dev-console dev:sync-composer -d ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:propel:validate-abstract ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:schema:validate ; fi
