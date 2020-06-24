@@ -5,12 +5,12 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Pyz\Zed\OmsTimeout\Business\Calculator\Timeout;
+namespace Pyz\Zed\Oms\Business\Calculator;
 
 use Generated\Shared\Transfer\TimeoutProcessorTimeoutRequestTransfer;
 use Generated\Shared\Transfer\TimeoutProcessorTimeoutResponseTransfer;
 
-interface TimeoutCalculatorInterface
+interface TimeoutProcessorTimeoutCalculatorInterface
 {
     /**
      * @param \Generated\Shared\Transfer\TimeoutProcessorTimeoutRequestTransfer $timeoutProcessorTimeoutRequestTransfer

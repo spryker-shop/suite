@@ -5,14 +5,14 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\OmsTimeout\Business\Calculator\Timeout;
+namespace Pyz\Zed\Oms\Business\Calculator;
 
 use DateInterval;
 use DateTime;
 use Generated\Shared\Transfer\TimeoutProcessorTimeoutRequestTransfer;
 use Generated\Shared\Transfer\TimeoutProcessorTimeoutResponseTransfer;
 
-class InitiationTimeoutCalculator implements TimeoutCalculatorInterface
+class InitiationTimeoutCalculator implements TimeoutProcessorTimeoutCalculatorInterface
 {
     /**
      * @param \Generated\Shared\Transfer\TimeoutProcessorTimeoutRequestTransfer $timeoutProcessorTimeoutRequestTransfer

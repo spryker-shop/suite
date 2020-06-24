@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\OmsTimeout\Communication\Plugin\Oms;
+namespace Pyz\Zed\Oms\Communication\Plugin\Oms;
 
 use Generated\Shared\Transfer\OmsEventTransfer;
 use Generated\Shared\Transfer\TimeoutProcessorTimeoutRequestTransfer;
@@ -14,8 +14,8 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\OmsExtension\Dependency\Plugin\TimeoutProcessorPluginInterface;
 
 /**
- * @method \Pyz\Zed\OmsTimeout\Business\OmsTimeoutFacadeInterface getFacade()
- * @method \Pyz\Zed\OmsTimeout\Communication\OmsTimeoutCommunicationFactory getFactory()
+ * @method \Pyz\Zed\Oms\Business\OmsFacadeInterface getFacade()
+ * @method \Pyz\Zed\Oms\Communication\OmsCommunicationFactory getFactory()
  */
 class InitiationTimeoutProcessorPlugin extends AbstractPlugin implements TimeoutProcessorPluginInterface
 {

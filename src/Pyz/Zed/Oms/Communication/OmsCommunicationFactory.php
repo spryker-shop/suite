@@ -5,22 +5,22 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\OmsTimeout\Communication;
+namespace Pyz\Zed\Oms\Communication;
 
-use Pyz\Zed\OmsTimeout\OmsTimeoutDependencyProvider;
-use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
+use Pyz\Zed\Oms\OmsDependencyProvider;
+use Spryker\Zed\Oms\Communication\OmsCommunicationFactory as SprykerOmsCommunicationFactory;
 use Spryker\Zed\Translator\Business\TranslatorFacadeInterface;
 
 /**
- * @method \Pyz\Zed\OmsTimeout\Business\OmsTimeoutFacadeInterface getFacade()
+ * @method \Pyz\Zed\Oms\Business\OmsFacadeInterface getFacade()
  */
-class OmsTimeoutCommunicationFactory extends AbstractCommunicationFactory
+class OmsCommunicationFactory extends SprykerOmsCommunicationFactory
 {
     /**
      * @return \Spryker\Zed\Translator\Business\TranslatorFacadeInterface
      */
     public function getTranslatorFacade(): TranslatorFacadeInterface
     {
-        return $this->getProvidedDependency(OmsTimeoutDependencyProvider::FACADE_TRANSLATOR);
+        return $this->getProvidedDependency(OmsDependencyProvider::FACADE_TRANSLATOR);
     }
 }

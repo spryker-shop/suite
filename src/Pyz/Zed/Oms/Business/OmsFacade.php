@@ -5,16 +5,16 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\OmsTimeout\Business;
+namespace Pyz\Zed\Oms\Business;
 
 use Generated\Shared\Transfer\TimeoutProcessorTimeoutRequestTransfer;
 use Generated\Shared\Transfer\TimeoutProcessorTimeoutResponseTransfer;
-use Spryker\Zed\Kernel\Business\AbstractFacade;
+use Spryker\Zed\Oms\Business\OmsFacade as SprykerOmsFacade;
 
 /**
- * @method \Pyz\Zed\OmsTimeout\Business\OmsTimeoutBusinessFactory getFactory()
+ * @method \Pyz\Zed\Oms\Business\OmsBusinessFactory getFactory()
  */
-class OmsTimeoutFacade extends AbstractFacade implements OmsTimeoutFacadeInterface
+class OmsFacade extends SprykerOmsFacade implements OmsFacadeInterface
 {
     /**
      * {@inheritDoc}
