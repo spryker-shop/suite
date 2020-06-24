@@ -97,6 +97,7 @@ const parseCommandLine = () => (
         .option('-t, --theme <theme name>', 'build the requested theme. Multiple arguments are allowed.', collectArguments, [])
         .option('-i, --info', 'information about all namespaces and available themes')
         .option('-c, --config <path>', 'path to JSON file with namespace config', globalSettings.paths.namespaceConfig)
+        .option('-r, --replace', 'replace optimized images')
         .arguments('<mode>')
         .action(function (modeValue) {
             const { argv, env } = process;
@@ -153,6 +154,7 @@ const getAttributes = () => {
         namespaces: commandLineParameters.namespace,
         themes: commandLineParameters.theme,
         pathToConfig: pathToConfig,
+        replaceOptimizedImages: commandLineParameters.replace,
     };
 };
 
