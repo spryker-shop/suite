@@ -26,6 +26,9 @@ use Spryker\Zed\MerchantSalesOrder\Communication\Plugin\Sales\MerchantOrderDataO
 use Spryker\Zed\MerchantSalesOrder\Communication\Plugin\Sales\MerchantReferenceOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\MerchantSalesOrder\Communication\Plugin\Sales\MerchantReferencesOrderExpanderPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Sales\OmsStatesOrderExpanderPlugin;
+use Spryker\Zed\Oms\Communication\Plugin\Sales\OrderStateDisplayNamesOrderListExpanderPlugin;
+use Spryker\Zed\Oms\Communication\Plugin\Sales\OrderStateDisplayNamesSearchOrderExpanderPlugin;
+use Spryker\Zed\Oms\Communication\Plugin\Sales\StateDisplayNameOrderItemExpanderPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Sales\StateHistoryOrderItemExpanderPlugin;
 use Spryker\Zed\OrderCustomReference\Communication\Plugin\Sales\OrderCustomReferenceOrderPostSavePlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Sales\PaymentOrderHydratePlugin;
@@ -186,6 +189,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new QuantitySalesUnitOrderItemExpanderPlugin(),
             new AmountLeadProductOrderItemExpanderPlugin(),
             new AmountSalesUnitOrderItemExpanderPlugin(),
+            new StateDisplayNameOrderItemExpanderPlugin(),
         ];
     }
 
@@ -196,6 +200,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     {
         return [
             new ItemMetadataSearchOrderExpanderPlugin(),
+            new OrderStateDisplayNamesSearchOrderExpanderPlugin(),
         ];
     }
 
@@ -222,6 +227,16 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
         return [
             new CompanyBusinessUnitCustomerOrderAccessCheckPlugin(),
             new CompanyCustomerOrderAccessCheckPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\OrderListExpanderPluginInterface[]
+     */
+    protected function getOrderListExpanderPlugins(): array
+    {
+        return [
+            new OrderStateDisplayNamesOrderListExpanderPlugin(),
         ];
     }
 }
