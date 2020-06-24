@@ -183,6 +183,7 @@ addons:
       - postgresql-server-dev-12
       - rabbitmq-server
   postgresql: "12"
+  mariadb: 10.3
 
   hosts:
     - zed.de.spryker.test
@@ -199,7 +200,7 @@ cache:
 
 services:
   - postgresql
-  - mysql
+  - mariadb
   - redis
 
 sudo: required
