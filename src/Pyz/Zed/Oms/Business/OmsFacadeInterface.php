@@ -17,6 +17,7 @@ interface OmsFacadeInterface extends SprykerOmsFacadeInterface
      * Specification:
      * - Calculates the timeout based on the current time + the defined timeout.
      * - Returns `TimeoutProcessorTimeoutRequestTransfer` with timestamp when event should be triggered.
+     * - Dummy implementation for presenting TimeoutProcessor behavior.
      *
      * @api
      *
