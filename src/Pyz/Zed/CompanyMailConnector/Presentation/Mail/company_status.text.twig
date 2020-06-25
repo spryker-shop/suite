@@ -1,6 +1,6 @@
 {{ renderCmsBlockAsTwig(
     'company-status--text',
     getenv('APPLICATION_STORE'),
-    app.locale,
+    mail.locale.localeName,
     {mail: mail}
 ) }}
