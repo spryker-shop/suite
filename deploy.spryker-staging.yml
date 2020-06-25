@@ -3,7 +3,7 @@ version: "0.1"
 x-real-ip: &real-ip
     real-ip:
         from:
-            - 10.100.0.0/16 # AWS VPC network
+            - 10.101.0.0/16 # AWS VPC network
             - 103.21.244.0/22 # Cloudflare
             - 103.22.200.0/22 # Cloudflare
             - 103.31.4.0/22 # Cloudflare
