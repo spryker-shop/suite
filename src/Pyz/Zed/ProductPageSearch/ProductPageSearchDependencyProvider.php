@@ -128,7 +128,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
         return [
             new ProductMeasurementUnitProductAbstractAddToCartPlugin(),
             new ProductPackagingUnitProductAbstractAddToCartPlugin(),
-//            new AvailabilityProductAbstractAddToCartPlugin(),
+            new AvailabilityProductAbstractAddToCartPlugin(),
         ];
     }
 }
