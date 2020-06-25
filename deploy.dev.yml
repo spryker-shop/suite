@@ -4,7 +4,11 @@ namespace: spryker
 tag: 'dev'
 
 environment: docker
-image: spryker/php:7.3
+image:
+    tag: spryker/php:7.3
+    php:
+        enabled-extensions:
+            - blackfire
 
 composer:
     mode: ''
@@ -81,13 +85,11 @@ groups:
                 application: zed
                 endpoints:
                     zed.de.spryker.local:
-                        primal: true
                         store: DE
                         services:
                             session:
                                 namespace: 3
                     zed.at.spryker.local:
-                        primal: true
                         store: AT
                         services:
                             session:
@@ -112,7 +114,6 @@ groups:
                 application: zed
                 endpoints:
                     zed.us.spryker.local:
-                        primal: true
                         store: US
                         services:
                             session:
@@ -166,6 +167,7 @@ docker:
 
     ssl:
         enabled: false
+        redirect: true
 
     testing:
         store: DE

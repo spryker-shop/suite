@@ -54,25 +54,29 @@ use Twig\Cache\FilesystemCache;
 
 /* ZED */
 $config[ApplicationConstants::HOST_ZED] = getenv('SPRYKER_ZED_HOST');
+$config[ZedRequestConstants::ZED_API_SSL_ENABLED] = (bool)getenv('SPRYKER_ZED_SSL_ENABLED');
 $config[SessionConstants::ZED_SESSION_COOKIE_DOMAIN] = getenv('SPRYKER_BE_HOST');
 $config[ApplicationConstants::ZED_TRUSTED_HOSTS]
     = $config[HttpConstants::ZED_TRUSTED_HOSTS]
     = [];
-$config[ApplicationConstants::PORT_ZED] = getenv('SPRYKER_ZED_PORT') ? ':' . getenv('SPRYKER_ZED_PORT') : '';
+$config[ApplicationConstants::PORT_ZED]
+    = $config[ApplicationConstants::PORT_SSL_ZED]
+    = getenv('SPRYKER_ZED_PORT') ? ':' . getenv('SPRYKER_ZED_PORT') : '';
+$backofficePort = getenv('SPRYKER_BE_PORT') ? ':' . getenv('SPRYKER_BE_PORT') : '';
 $config[ApplicationConstants::BASE_URL_ZED] = sprintf(
     'http://%s%s',
     getenv('SPRYKER_BE_HOST'),
-    getenv('SPRYKER_BE_PORT') ? ':' . getenv('SPRYKER_BE_PORT') : ''
+    $backofficePort
 );
 $config[ApplicationConstants::BASE_URL_SSL_ZED] = sprintf(
     'https://%s%s',
     getenv('SPRYKER_BE_HOST'),
-    getenv('SPRYKER_BE_PORT') ? ':' . getenv('SPRYKER_BE_PORT') : ''
+    $backofficePort
 );
 $config[ZedRequestConstants::HOST_ZED_API] = sprintf(
-    '%s:%d',
+    '%s%s',
     getenv('SPRYKER_ZED_HOST'),
-    getenv('SPRYKER_ZED_PORT')
+    $config[ApplicationConstants::PORT_ZED]
 );
 $config[ZedRequestConstants::BASE_URL_ZED_API] = sprintf(
     'http://%s',
@@ -156,13 +160,20 @@ $config[SessionConstants::YVES_SESSION_COOKIE_DOMAIN] = $config[ApplicationConst
 $config[ApplicationConstants::YVES_TRUSTED_HOSTS]
     = $config[HttpConstants::YVES_TRUSTED_HOSTS]
     = [];
-$config[ApplicationConstants::PORT_YVES] = getenv('SPRYKER_FE_PORT');
+$config[ApplicationConstants::PORT_YVES]
+    = $config[ApplicationConstants::PORT_SSL_YVES]
+    = getenv('SPRYKER_FE_PORT');
 $config[ApplicationConstants::BASE_URL_YVES] = sprintf(
     'http://%s%s',
     $config[ApplicationConstants::HOST_YVES],
     getenv('SPRYKER_FE_PORT') ? ':' . getenv('SPRYKER_FE_PORT') : ''
 );
 $config[CustomerConstants::BASE_URL_YVES] = $config[ApplicationConstants::BASE_URL_YVES];
+$config[ApplicationConstants::BASE_URL_SSL_YVES] = sprintf(
+    'https://%s%s',
+    $config[ApplicationConstants::HOST_YVES],
+    getenv('SPRYKER_FE_PORT') ? ':' . getenv('SPRYKER_FE_PORT') : ''
+);
 
 $config[ApplicationConstants::YVES_SSL_ENABLED] = (bool)getenv('SPRYKER_SSL_ENABLE');
 $config[SessionConstants::YVES_SSL_ENABLED] = (bool)getenv('SPRYKER_SSL_ENABLE');

@@ -5,7 +5,8 @@ tag: '1.0'
 
 environment: docker
 pipeline: docker.ci.api
-image: spryker/php:7.2
+image:
+    tag: spryker/php:7.2
 
 composer:
     mode: --no-dev
