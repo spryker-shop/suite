@@ -37,4 +37,14 @@ class ZedNavigationConfig extends SprykerZedNavigationConfig
 
         return $paths;
     }
+
+    /**
+     * @api
+     *
+     * @return string
+     */
+    public function getMergeStrategy(): string
+    {
+        return static::BREADCRUMB_MERGE_STRATEGY;
+    }
 }
