@@ -3,7 +3,7 @@ version: "0.1"
 x-real-ip: &real-ip
     real-ip:
         from:
-            - 10.101.0.0/16 # AWS VPC network
+            - 10.0.0.0/8 # AWS VPC network
             - 103.21.244.0/22 # Cloudflare
             - 103.22.200.0/22 # Cloudflare
             - 103.31.4.0/22 # Cloudflare
@@ -87,21 +87,21 @@ regions:
                     broker:
                         namespace: at_queue
                     key_value_store:
-                        namespace: 3
+                        namespace: 1
                     search:
                         namespace: at_search
                     session:
-                        namespace: 4
+                        namespace: 2
             US:
                 services:
                     broker:
                         namespace: us_queue
                     key_value_store:
-                        namespace: 5
+                        namespace: 1
                     search:
                         namespace: us_search
                     session:
-                        namespace: 6
+                        namespace: 2
 
 groups:
     DE-1:
@@ -197,9 +197,6 @@ docker:
 
     testing:
         store: DE
-
-    debug:
-        enabled: true
 
     mount:
         baked:
