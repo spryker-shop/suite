@@ -353,8 +353,12 @@ $config[SessionRedisConstants::ZED_SESSION_REDIS_PASSWORD] = false;
 $config[SessionRedisConstants::ZED_SESSION_REDIS_DATABASE] = getenv('SPRYKER_SESSION_BE_NAMESPACE') ?: 2;
 
 /* Mail */
-$config[MailConstants::SMTP_HOST] = getenv('SPRYKER_SMTP_HOST');
-$config[MailConstants::SMTP_PORT] = getenv('SPRYKER_SMTP_PORT');
+$config[MailConstants::SMTP_HOST] = getenv('SPRYKER_SMTP_HOST') ?: '';
+$config[MailConstants::SMTP_PORT] = getenv('SPRYKER_SMTP_PORT') ?: '';
+$config[MailConstants::SMTP_ENCRYPTION] = getenv('SPRYKER_SMTP_ENCRYPTION') ?: '';
+$config[MailConstants::SMTP_AUTH_MODE] = getenv('SPRYKER_SMTP_AUTH_MODE') ?: '';
+$config[MailConstants::SMTP_USERNAME] = getenv('SPRYKER_SMTP_USERNAME') ?: '';
+$config[MailConstants::SMTP_PASSWORD] = getenv('SPRYKER_SMTP_PASSWORD') ?: '';
 /* End Mail */
 
 /* Logging */
