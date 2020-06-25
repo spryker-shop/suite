@@ -36,6 +36,7 @@ x-frontend-auth: &frontend-auth
         exclude:
             - '${ALLOWED_IP}' # AWS gateway
             - 185.60.20.0/24 # PayOne
+            - 77.122.97.254 # Olena Krivtsova
 
 namespace: spryker-cloud
 tag: '1.0'
