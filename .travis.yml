@@ -62,14 +62,14 @@ matrix:
       env:
         - TEST_GROUP=acceptance
         - ON_EVENTS=push,cron
-        - DB=mysql
+        - DB_ENGINE=mysql
 
     - php: "7.2"
       dist: bionic
       env:
         - TEST_GROUP=without-acceptance
         - ON_EVENTS=cron,push
-        - DB=mysql
+        - DB_ENGINE=mysql
 
     - name: Docker / Alpine / PHP 7.3 / PostgreSQL / Functional
       os:
@@ -155,7 +155,7 @@ matrix:
       before_script: skip
       after_script: skip
 
-    - name: Docker / Alpine / PHP 7.3 / MySQL / Functional
+    - name: Docker / Alpine / PHP 7.3 / MariaDB / Functional
       os:
         - linux
       dist: bionic
@@ -189,7 +189,7 @@ matrix:
         - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         - sudo chmod +x /usr/local/bin/docker-compose
       script:
-        - docker/sdk boot deploy.ci.functional.yml -v
+        - docker/sdk boot deploy.ci.functional.mariadb.yml -v
         - docker/sdk up -t -v
         - docker/sdk testing codecept run -c codeception.ci.functional.yml
       before_install: skip
@@ -257,6 +257,7 @@ addons:
       - postgresql-server-dev-12
       - rabbitmq-server
   postgresql: "12"
+  mariadb: "10.3"
 
   artifacts:
     s3_region: eu-west-1
@@ -285,7 +286,7 @@ cache:
 
 services:
   - postgresql
-  - mysql
+  - mariadb
   - redis
 
 sudo: required
@@ -295,8 +296,6 @@ before_install:
   - if [[ $VALIDATION != 1 && $ON_EVENTS != *$TRAVIS_EVENT_TYPE* ]] ; then exit ; fi
   - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - phpenv config-rm xdebug.ini
-  - if [[ $DB == 'mysql' ]] ; then chmod +x ./config/Shared/ci/travis/mysql/* ; fi
-  - if [[ $DB == 'mysql' ]] ; then ./config/Shared/ci/travis/mysql/travis_mysql_5.7.sh ; fi
   # Merges travis-ci/stores.php into the general stores.php at the defined "travis hook" line. Uses temporary file during the process.
   # - grabs all lines until the travis hook from stores.php (including that line)
   # - grabs all lines after the 1st line in travis-ci/stores.php (php opening tag)
@@ -323,13 +322,10 @@ before_script:
   - chmod -R 660 config/Zed/dev_only_public.key
   - if [[ $VALIDATION == 1 ]] ; then npm install speccy@0.11.0 -g ; fi
 
-  - if [[ -z $DB ]] ; then cat config/Shared/ci/travis/postgresql_ci.config >> config/Shared/ci/travis/config_ci.php ; fi
-  - if [[ $DB == 'mysql' ]] ; then cat config/Shared/ci/travis/mysql_ci.config >> config/Shared/ci/travis/config_ci.php ; fi
+  - if [[ -z $DB_ENGINE ]] ; then cat config/Shared/ci/travis/postgresql_ci.config >> config/Shared/ci/travis/config_ci.php ; fi
+  - if [[ $DB_ENGINE == 'mysql' ]] ; then cat config/Shared/ci/travis/mysql_ci.config >> config/Shared/ci/travis/config_ci.php ; fi
 
   - cp config/Shared/ci/travis/config_ci.php config/Shared/config_local.php
-
-  - if [[ $DB == 'mysql' ]] ; then sudo cp config/Shared/ci/travis/mysql/my.cnf /etc/ ; fi
-  - if [[ $DB == 'mysql' ]] ; then sudo service mysql restart ; fi
 
   - if [[ $TEST_GROUP == 'acceptance' || $TEST_GROUP == 'without-acceptance' ]] ; then config/Shared/ci/travis/acceptance_env.sh ; fi
   - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/install DE -r testing ; fi
