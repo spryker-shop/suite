@@ -265,7 +265,7 @@ class ProductPriceHydratorStep implements DataImportStepInterface
             );
         }
 
-        return $keyParts[1];
+        return end($keyParts);
     }
 
     /**
