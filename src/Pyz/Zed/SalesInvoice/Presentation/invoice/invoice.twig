@@ -96,7 +96,7 @@
         <tr>
             <td width="600">
                 <div class="spacing-bottom">
-                    <strong>{{ 'order_invoice.invoice_template.reference'| trans }} {{ invoice.reference }}</strong>
+                    <strong>{{ 'order_invoice.invoice_template.reference' | trans }} {{ invoice.reference }}</strong>
                 </div>
             </td>
         </tr>
@@ -110,7 +110,7 @@
     <table class="products-table">
         <thead>
         <tr class="background-gray">
-            <th width="75"><strong>{{ 'order_invoice.invoice_template.table.number'| trans }}</strong></th>
+            <th width="75"><strong>{{ 'order_invoice.invoice_template.table.number' | trans }}</strong></th>
             <th width="75"><strong>{{ 'order_invoice.invoice_template.table.quantity' | trans }}</strong></th>
             <th width="275" class="text-left"><strong>{{ 'order_invoice.invoice_template.table.name' | trans }}</strong></th>
             <th width="100"><strong>{{ 'order_invoice.invoice_template.table.tax' | trans }}</strong></th>
@@ -155,7 +155,7 @@
                         <td class="text-center">{{ linenumber }}</td>
                         <td class="text-center">{{ productBundle.quantity }}</td>
                         <td>{{ productBundle.name }}</td>
-                        <td class="text-center">{{ productBundle.taxRate|number_format }}%</td>
+                        <td class="text-center">{{ productBundle.taxRate | number_format }}%</td>
                         <td class="text-center">{{ productBundle.sumPriceToPayAggregation | money(true, order.currencyIsoCode) }}</td>
                     </tr>
 
@@ -165,7 +165,7 @@
                                 <td></td>
                                 <td class="text-center">{{ bundleditem.quantity }}</td>
                                 <td>{{ bundleditem.name }}</td>
-                                <td class="text-center">{{ bundleditem.taxRate|number_format }}%</td>
+                                <td class="text-center">{{ bundleditem.taxRate | number_format }}%</td>
                                 <td class="text-center">{{ bundleditem.sumPriceToPayAggregation | money(true, order.currencyIsoCode) }}</td>
                             </tr>
                         {% endif %}
