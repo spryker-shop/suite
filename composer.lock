@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ca3dcc6c5d80526ceab5dd53bfce1d42",
+    "content-hash": "1edcc5c3aadeb8c17048cf71a9183236",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1888,15 +1888,15 @@
             "authors": [
                 {
                     "name": "Alex Bilbie",
+                    "role": "Developer",
                     "email": "hello@alexbilbie.com",
-                    "homepage": "http://www.alexbilbie.com",
-                    "role": "Developer"
+                    "homepage": "http://www.alexbilbie.com"
                 },
                 {
                     "name": "Andy Millington",
+                    "role": "Developer",
                     "email": "andrew@noexceptions.io",
-                    "homepage": "https://www.noexceptions.io",
-                    "role": "Developer"
+                    "homepage": "https://www.noexceptions.io"
                 }
             ],
             "description": "A lightweight and powerful OAuth 2.0 authorization and resource server library with support for all the core specification grants. This library will allow you to secure your API with OAuth and allow your applications users to approve apps that want to access their data from your API.",
@@ -5194,11 +5194,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/mr-204/dev-manage-marketplace-orders",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "869b4cdeb3761c59df1bed0f66d852c9acc63dcb"
+                "reference": "3f460cb9e1155334c308d0ba8741d65080223bd8"
             },
             "require": {
                 "php": ">=7.2"
@@ -5504,6 +5504,7 @@
                 "spryker/merchant-gui-extension": "*",
                 "spryker/merchant-oms": "*",
                 "spryker/merchant-oms-data-import": "*",
+                "spryker/merchant-oms-gui": "*",
                 "spryker/merchant-opening-hours": "*",
                 "spryker/merchant-opening-hours-data-import": "*",
                 "spryker/merchant-opening-hours-rest-api": "*",
@@ -5535,6 +5536,7 @@
                 "spryker/merchant-relationship-sales-order-threshold-gui-extension": "*",
                 "spryker/merchant-sales-order": "*",
                 "spryker/merchant-sales-order-extension": "*",
+                "spryker/merchant-sales-order-gui": "*",
                 "spryker/merchant-search": "*",
                 "spryker/merchant-shipment": "*",
                 "spryker/merchant-stock": "*",
@@ -5918,7 +5920,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-06-26T07:48:27+00:00"
+            "time": "2020-06-26T13:41:24+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -11648,7 +11650,7 @@
                     "SLLH\\ComposerVersionsCheck\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://repo.repman.io/downloads",
             "license": [
                 "MIT"
             ],
@@ -12733,6 +12735,5 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    },
-    "plugin-api-version": "1.1.0"
+    }
 }
