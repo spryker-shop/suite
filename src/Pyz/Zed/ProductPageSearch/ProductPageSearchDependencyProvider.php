@@ -17,9 +17,9 @@ use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\PageDataExpander
 use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\PageDataLoader\MerchantProductPageDataLoaderPlugin;
 use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\PageMapExpander\MerchantNamesProductAbstractMapExpanderPlugin;
 use Spryker\Zed\MerchantProductOfferSearch\Communication\Plugin\PageMapExpander\MerchantReferencesProductAbstractsMapExpanderPlugin;
-use Spryker\Zed\MerchantProductSearch\Communication\Plugin\PageDataExpander\MerchantProductPageDataExpanderPlugin as MerchantMerchantProductPageDataExpanderPlugin;
-use Spryker\Zed\MerchantProductSearch\Communication\Plugin\PageDataLoader\MerchantProductPageDataLoaderPlugin as MerchantMerchantProductPageDataLoaderPlugin;
-use Spryker\Zed\MerchantProductSearch\Communication\Plugin\PageMapExpander\MerchantProductAbstractMapExpanderPlugin;
+use Spryker\Zed\MerchantProductSearch\Communication\Plugin\ProductPageSearch\MerchantProductAbstractMapExpanderPlugin;
+use Spryker\Zed\MerchantProductSearch\Communication\Plugin\ProductPageSearch\MerchantProductPageDataExpanderPlugin as MerchantMerchantProductPageDataExpanderPlugin;
+use Spryker\Zed\MerchantProductSearch\Communication\Plugin\ProductPageSearch\MerchantProductPageDataLoaderPlugin as MerchantMerchantProductPageDataLoaderPlugin;
 use Spryker\Zed\ProductLabelSearch\Communication\Plugin\PageDataExpander\ProductLabelDataLoaderExpanderPlugin;
 use Spryker\Zed\ProductLabelSearch\Communication\Plugin\PageDataLoader\ProductLabelDataLoaderPlugin;
 use Spryker\Zed\ProductLabelSearch\Communication\Plugin\ProductPageSearch\Elasticsearch\ProductLabelMapExpanderPlugin;
@@ -62,7 +62,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
         $dataExpanderPlugins[ProductPageSearchConfig::PLUGIN_PRODUCT_PRICE_PAGE_DATA] = new PricePageDataLoaderExpanderPlugin();
         $dataExpanderPlugins[ProductPageSearchConfig::PLUGIN_PRODUCT_IMAGE_PAGE_DATA] = new ProductImagePageDataLoaderExpanderPlugin();
         $dataExpanderPlugins[MerchantProductOfferSearchConfig::PLUGIN_PRODUCT_MERCHANT_DATA] = new MerchantProductPageDataExpanderPlugin();
-        $dataExpanderPlugins[MerchantProductSearchConfig::PLUGIN_PRODUCT_MERCHANT_PRODUCT_DATA] = new MerchantMerchantProductPageDataExpanderPlugin();
+        $dataExpanderPlugins[MerchantProductSearchConfig::PLUGIN_MERCHANT_PRODUCT_DATA] = new MerchantMerchantProductPageDataExpanderPlugin();
 
         return $dataExpanderPlugins;
     }
