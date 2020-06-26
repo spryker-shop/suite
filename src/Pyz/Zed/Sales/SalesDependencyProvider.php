@@ -27,10 +27,9 @@ use Spryker\Zed\MerchantSalesOrder\Communication\Plugin\Sales\MerchantReferenceO
 use Spryker\Zed\MerchantSalesOrder\Communication\Plugin\Sales\MerchantReferencesOrderExpanderPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Sales\IsCancellableOrderExpanderPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Sales\IsCancellableSearchOrderExpanderPlugin;
+use Spryker\Zed\Oms\Communication\Plugin\Sales\ItemStateOrderItemExpanderPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Sales\OmsStatesOrderExpanderPlugin;
-use Spryker\Zed\Oms\Communication\Plugin\Sales\OrderStateDisplayNamesOrderListExpanderPlugin;
-use Spryker\Zed\Oms\Communication\Plugin\Sales\OrderStateDisplayNamesSearchOrderExpanderPlugin;
-use Spryker\Zed\Oms\Communication\Plugin\Sales\StateDisplayNameOrderItemExpanderPlugin;
+use Spryker\Zed\Oms\Communication\Plugin\Sales\OrderAggregatedItemStateSearchOrderExpanderPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Sales\StateHistoryOrderItemExpanderPlugin;
 use Spryker\Zed\OrderCustomReference\Communication\Plugin\Sales\OrderCustomReferenceOrderPostSavePlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Sales\PaymentOrderHydratePlugin;
@@ -192,7 +191,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new QuantitySalesUnitOrderItemExpanderPlugin(),
             new AmountLeadProductOrderItemExpanderPlugin(),
             new AmountSalesUnitOrderItemExpanderPlugin(),
-            new StateDisplayNameOrderItemExpanderPlugin(),
+            new ItemStateOrderItemExpanderPlugin(),
         ];
     }
 
@@ -203,7 +202,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     {
         return [
             new ItemMetadataSearchOrderExpanderPlugin(),
-            new OrderStateDisplayNamesSearchOrderExpanderPlugin(),
+            new OrderAggregatedItemStateSearchOrderExpanderPlugin(),
             new IsCancellableSearchOrderExpanderPlugin(),
         ];
     }
@@ -231,16 +230,6 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
         return [
             new CompanyBusinessUnitCustomerOrderAccessCheckPlugin(),
             new CompanyCustomerOrderAccessCheckPlugin(),
-        ];
-    }
-
-    /**
-     * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\OrderListExpanderPluginInterface[]
-     */
-    protected function getOrderListExpanderPlugins(): array
-    {
-        return [
-            new OrderStateDisplayNamesOrderListExpanderPlugin(),
         ];
     }
 }
