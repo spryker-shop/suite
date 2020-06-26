@@ -15,7 +15,7 @@
             <state name="new" reserved="true" display="oms.state.new">
                 <flag>cancellable</flag>
             </state>
-            <state name="payment pending" reserved="true">
+            <state name="payment pending" reserved="true" display="oms.state.payment-pending">
                 <flag>cancellable</flag>
             </state>
             <state name="invalid" display="oms.state.invalid">
@@ -27,7 +27,7 @@
             <state name="paid" reserved="true" display="oms.state.paid">
                 <flag>cancellable</flag>
             </state>
-            <state name="waiting" reserved="true"/>
+            <state name="waiting" reserved="true" display="oms.state.waiting"/>
             <state name="exported" reserved="true" display="oms.state.exported"/>
             <state name="confirmed" reserved="true" display="oms.state.confirmed">
                 <flag>cancellable</flag>
