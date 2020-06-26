@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d789a2c214a9e280004d1dcc47083bb6",
+    "content-hash": "0cab9797db709422384a30d0ae218813",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -785,10 +785,6 @@
                 "validation",
                 "validator"
             ],
-            "support": {
-                "issues": "https://github.com/egulias/EmailValidator/issues",
-                "source": "https://github.com/egulias/EmailValidator/tree/master"
-            },
             "time": "2020-06-16T20:11:17+00:00"
         },
         {
@@ -1245,10 +1241,6 @@
                 "rest",
                 "web service"
             ],
-            "support": {
-                "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/6.5"
-            },
             "time": "2020-06-16T21:01:06+00:00"
         },
         {
@@ -5207,7 +5199,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "f56fc40d1007a3e3777d1ba90d068dbd580db659"
+                "reference": "3a4d7090e905fd4f25ab0f1686e62d01149354aa"
             },
             "require": {
                 "php": ">=7.2"
@@ -5927,15 +5919,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-06-26T09:00:10+00:00"
+            "time": "2020-06-26T13:47:33+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/te-5976/dev-csrf-protection",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "f855876c67f280db196cc0fd756b59a7ed32861f"
+                "reference": "07be192fcd98a064c62660c59e4fa28da00c1f9c"
             },
             "require": {
                 "php": ">=7.2"
@@ -6004,7 +5996,6 @@
                 "spryker-shop/multi-cart-widget": "*",
                 "spryker-shop/newsletter-page": "*",
                 "spryker-shop/newsletter-widget": "*",
-                "spryker-shop/order-cancel-widget": "*",
                 "spryker-shop/order-custom-reference-widget": "*",
                 "spryker-shop/persistent-cart-share-page": "*",
                 "spryker-shop/persistent-cart-share-widget": "*",
@@ -6078,11 +6069,6 @@
                 "spryker/spryker": "dev-master"
             },
             "type": "library",
-            "autoload": {
-                "files": [
-                    "autoload.php"
-                ]
-            },
             "scripts": {
                 "cs-check": [
                     "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -p --ignore=/node_modules/ Bundles/"
@@ -6092,7 +6078,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-06-24T13:38:43+00:00"
+            "time": "2020-06-26T15:45:49+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -11657,7 +11643,7 @@
                     "SLLH\\ComposerVersionsCheck\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://repo.repman.io/downloads",
             "license": [
                 "MIT"
             ],
