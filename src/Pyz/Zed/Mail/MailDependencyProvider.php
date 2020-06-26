@@ -58,7 +58,7 @@ class MailDependencyProvider extends SprykerMailDependencyProvider
                 ->add(new RestorePasswordMailTypePlugin())
                 ->add(new GiftCardDeliveryMailTypePlugin()) #GiftCardFeature
                 ->add(new GiftCardUsageMailTypePlugin()) #GiftCardFeature
-                ->add(new OrderInvoiceMailTypePlugin()); #GiftCardFeature
+                ->add(new OrderInvoiceMailTypePlugin());
 
             return $mailCollection;
         });
