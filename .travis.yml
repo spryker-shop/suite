@@ -26,8 +26,11 @@ branches:
     - /feature\/[a-z]+-\d+\/(master|dev).+|feature\/[a-z]+-\d+\/[a-z]+-\d+\/(master|dev).+/
     - /(bugfix|hotfix|beta)\/.+/
 
+os: linux
+dist: bionic
+
 #Possible travis events (push, pull_request, cron, or api)
-matrix:
+jobs:
   fast_finish: true
 
   allow_failures: []
@@ -72,10 +75,9 @@ matrix:
         - DB_ENGINE=mysql
 
     - name: Docker / Alpine / PHP 7.3 / PostgreSQL / Functional
-      os:
-        - linux
+      os: linux
       dist: bionic
-      language: minimal
+      language: shell
       env:
         - PROGRESS_TYPE=plain
         - SPRYKER_PLATFORM_IMAGE=spryker/php:7.3
@@ -113,10 +115,9 @@ matrix:
       after_script: skip
 
     - name: Docker / Alpine / PHP 7.3 / PostgreSQL / Glue
-      os:
-        - linux
+      os: linux
       dist: bionic
-      language: minimal
+      language: shell
       env:
         - PROGRESS_TYPE=plain
         - SPRYKER_PLATFORM_IMAGE=spryker/php:7.3
@@ -156,10 +157,9 @@ matrix:
       after_script: skip
 
     - name: Docker / Alpine / PHP 7.3 / MariaDB / Functional
-      os:
-        - linux
+      os: linux
       dist: bionic
-      language: minimal
+      language: shell
       env:
         - PROGRESS_TYPE=plain
         - SPRYKER_PLATFORM_IMAGE=spryker/php:7.3
@@ -197,10 +197,9 @@ matrix:
       after_script: skip
 
     - name: Docker / Debian / PHP 7.3 / PGSQL / Functional
-      os:
-        - linux
+      os: linux
       dist: bionic
-      language: minimal
+      language: shell
       env:
         - PROGRESS_TYPE=plain
         - SPRYKER_PLATFORM_IMAGE=spryker/php:7.3-debian
@@ -260,7 +259,7 @@ addons:
   mariadb: "10.3"
 
   artifacts:
-    s3_region: eu-west-1
+    region: eu-west-1
     paths:
       - $(find ./data/*/logs/*/*.log -not -empty | tr "\n" ":")
       - $(find ./tests/_output/* -not -empty | tr "\n" ":")
@@ -286,10 +285,7 @@ cache:
 
 services:
   - postgresql
-  - mariadb
   - redis
-
-sudo: required
 
 before_install:
   - phpenv config-add config/Shared/ci/travis/travis.php.ini
