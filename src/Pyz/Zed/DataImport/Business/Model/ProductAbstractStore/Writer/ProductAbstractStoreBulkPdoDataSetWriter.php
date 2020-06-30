@@ -16,6 +16,9 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface;
 
 class ProductAbstractStoreBulkPdoDataSetWriter implements DataSetWriterInterface
 {
+    public const COLUMN_ABSTRACT_SKU = ProductAbstractStoreHydratorStep::COLUMN_ABSTRACT_SKU;
+    public const COLUMN_STORE_NAME = ProductAbstractStoreHydratorStep::COLUMN_STORE_NAME;
+
     /**
      * @var \Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer\Sql\ProductAbstractStoreSqlInterface
      */
@@ -71,10 +74,10 @@ class ProductAbstractStoreBulkPdoDataSetWriter implements DataSetWriterInterface
     protected function persistAbstractProductStoreEntities(): void
     {
         $abstractSku = $this->dataFormatter->formatPostgresArrayString(
-            $this->dataFormatter->getCollectionDataByKey(static::$productAbstractStoreCollection, ProductAbstractStoreHydratorStep::KEY_PRODUCT_ABSTRACT_SKU)
+            $this->dataFormatter->getCollectionDataByKey(static::$productAbstractStoreCollection, static::COLUMN_ABSTRACT_SKU)
         );
         $storeName = $this->dataFormatter->formatPostgresArrayString(
-            $this->dataFormatter->getCollectionDataByKey(static::$productAbstractStoreCollection, ProductAbstractStoreHydratorStep::KEY_STORE_NAME)
+            $this->dataFormatter->getCollectionDataByKey(static::$productAbstractStoreCollection, static::COLUMN_STORE_NAME)
         );
 
         $sql = $this->productAbstractStoreSql->createAbstractProductStoreSQL();
