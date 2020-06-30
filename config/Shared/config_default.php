@@ -598,7 +598,7 @@ $config[ApplicationConstants::TWIG_ENVIRONMENT_NAME]
 $config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GENERATION] = false;
 
 // ----------- HTTP Security
-$config[KernelConstants::STRICT_DOMAIN_REDIRECT] = true;
+$config[KernelConstants::STRICT_DOMAIN_REDIRECT] = false;
 
 // ---------- Yves host
 $config[ApplicationConstants::HOST_YVES] = sprintf('www.%s.%s.local', $storeLowerCase, $domain);
