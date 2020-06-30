@@ -56,18 +56,37 @@ sections:
         yves-install-dependencies:
             command: "vendor/bin/console frontend:yves:install-dependencies"
 
-        yves-build-frontend:
-            command: "vendor/bin/console frontend:yves:build"
-
         zed-install-dependencies:
             command: "vendor/bin/console frontend:zed:install-dependencies"
+
+    build-static-production:
+        excluded: true
+        yves-build-frontend:
+            command: "vendor/bin/console frontend:yves:build -e production"
+
+        zed-build-frontend:
+            command: "vendor/bin/console frontend:zed:build -e production"
+
+    build-static-development:
+        yves-build-frontend:
+            command: "vendor/bin/console frontend:yves:build"
 
         zed-build-frontend:
             command: "vendor/bin/console frontend:zed:build"
 
     scheduler-setup:
-        jenkins-generate:
+        jenkins-setup:
             command: "vendor/bin/console scheduler:setup"
+
+    scheduler-suspend:
+        excluded: true
+        jenkins-suspend:
+            command: "vendor/bin/console scheduler:suspend"
+
+    scheduler-clean:
+        excluded: true
+        jenkins-clean:
+            command: "vendor/bin/console scheduler:clean"
 
     init-storages-per-store:
         setup-search-create-sources:
@@ -125,28 +144,3 @@ sections:
 
         update-product-labels:
             command: "vendor/bin/console product-label:relations:update"
-
-    demo-minimal:
-        store-import:
-            command: "vendor/bin/console data:import:store"
-
-        currency-import:
-            command: "vendor/bin/console data:import:currency"
-
-        category-template-import:
-            command: "vendor/bin/console data:import:category"
-
-        category-import:
-            command: "vendor/bin/console data:import category"
-
-        customer-import:
-            command: "vendor/bin/console data:import:customer"
-
-        glossary-import:
-            command: "vendor/bin/console data:import:glossary"
-
-        shipment-import:
-            command: "vendor/bin/console data:import:shipment"
-
-        payment-import:
-            command: "vendor/bin/console data:import:payment-method"

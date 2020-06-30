@@ -14,8 +14,10 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 class ProductAbstractStoreHydratorStep implements DataImportStepInterface
 {
     public const BULK_SIZE = 1000;
-    public const KEY_PRODUCT_ABSTRACT_SKU = 'product_abstract_sku';
-    public const KEY_STORE_NAME = 'store_name';
+
+    public const COLUMN_ABSTRACT_SKU = 'abstract_sku';
+    public const COLUMN_STORE_NAME = 'store_name';
+
     public const DATA_PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER = 'DATA_PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER';
 
     /**
@@ -37,8 +39,8 @@ class ProductAbstractStoreHydratorStep implements DataImportStepInterface
     {
         $productAbstractStoreTransfer = new ProductAbstractStoreTransfer();
         $productAbstractStoreTransfer
-            ->setStoreName($dataSet[static::KEY_STORE_NAME])
-            ->setProductAbstractSku($dataSet[static::KEY_PRODUCT_ABSTRACT_SKU]);
+            ->setStoreName($dataSet[static::COLUMN_STORE_NAME])
+            ->setProductAbstractSku($dataSet[static::COLUMN_ABSTRACT_SKU]);
 
         $dataSet[static::DATA_PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER] = $productAbstractStoreTransfer;
     }
