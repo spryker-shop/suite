@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\MerchantRelationshipSalesOrderThresholdGui;
 
+use Spryker\Zed\MerchantRelationshipSalesOrderThresholdGui\Communication\Plugin\FormExpander\MerchantRelationshipHardMaximumThresholdFormExpanderPlugin;
 use Spryker\Zed\MerchantRelationshipSalesOrderThresholdGui\Communication\Plugin\FormExpander\MerchantRelationshipHardThresholdFormExpanderPlugin;
 use Spryker\Zed\MerchantRelationshipSalesOrderThresholdGui\Communication\Plugin\FormExpander\MerchantRelationshipSoftThresholdFixedFeeFormExpanderPlugin;
 use Spryker\Zed\MerchantRelationshipSalesOrderThresholdGui\Communication\Plugin\FormExpander\MerchantRelationshipSoftThresholdFlexibleFeeFormExpanderPlugin;
@@ -21,6 +22,7 @@ class MerchantRelationshipSalesOrderThresholdGuiDependencyProvider extends Spryk
     protected function getSalesOrderThresholdFormExpanderPlugins(): array
     {
         return [
+            new MerchantRelationshipHardMaximumThresholdFormExpanderPlugin(),
             new MerchantRelationshipHardThresholdFormExpanderPlugin(),
             new MerchantRelationshipSoftThresholdWithMessageFormExpanderPlugin(),
             new MerchantRelationshipSoftThresholdFixedFeeFormExpanderPlugin(),
