@@ -66,7 +66,7 @@ use Spryker\Glue\CompanyUsersRestApi\Plugin\GlueApplication\CompanyUserRestUserV
 use Spryker\Glue\CompanyUsersRestApi\Plugin\GlueApplication\CompanyUsersResourceRoutePlugin;
 use Spryker\Glue\ContentBannersRestApi\Plugin\ContentBannerResourceRoutePlugin;
 use Spryker\Glue\ContentProductAbstractListsRestApi\ContentProductAbstractListsRestApiConfig;
-use Spryker\Glue\ContentProductAbstractListsRestApi\Plugin\ContentProductAbstractListRoutePlugin;
+use Spryker\Glue\ContentProductAbstractListsRestApi\Plugin\GlueApplication\AbstractProductsResourceRoutePlugin as ContentProductAbstractListAbstractProductsResourceRoutePlugin;
 use Spryker\Glue\ContentProductAbstractListsRestApi\Plugin\GlueApplication\ContentProductAbstractListsResourceRoutePlugin;
 use Spryker\Glue\ContentProductAbstractListsRestApi\Plugin\GlueApplication\ProductAbstractByContentProductAbstractListResourceRelationshipPlugin;
 use Spryker\Glue\CustomerAccessRestApi\Plugin\GlueApplication\CustomerAccessFormatRequestPlugin;
@@ -237,7 +237,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new GuestCartUpSellingProductsResourceRoutePlugin(),
             new ContentBannerResourceRoutePlugin(),
             new CartPermissionGroupsResourceRoutePlugin(),
-            new ContentProductAbstractListRoutePlugin(),
+            new ContentProductAbstractListAbstractProductsResourceRoutePlugin(),
             new OrderPaymentsResourceRoutePlugin(),
             new CompanyBusinessUnitAddressesResourcePlugin(),
             new CompanyRolesResourcePlugin(),
