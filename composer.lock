@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ca3dcc6c5d80526ceab5dd53bfce1d42",
+    "content-hash": "9350d957bddb068ced831e6857f8d157",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5194,11 +5194,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/ps-13591/dev-simple-invoice-generation",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "869b4cdeb3761c59df1bed0f66d852c9acc63dcb"
+                "reference": "673ac45649394d5d3a40ca314625a6be14366307"
             },
             "require": {
                 "php": ">=7.2"
@@ -5767,6 +5767,8 @@
                 "spryker/sales-configurable-bundle": "*",
                 "spryker/sales-data-export": "*",
                 "spryker/sales-extension": "*",
+                "spryker/sales-invoice": "*",
+                "spryker/sales-invoice-extension": "*",
                 "spryker/sales-oms": "*",
                 "spryker/sales-order-threshold": "*",
                 "spryker/sales-order-threshold-data-import": "*",
@@ -5918,7 +5920,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-06-26T07:48:27+00:00"
+            "time": "2020-06-30T08:05:49+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -12733,6 +12735,5 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    },
-    "plugin-api-version": "1.1.0"
+    }
 }
