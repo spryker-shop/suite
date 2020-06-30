@@ -351,8 +351,8 @@ $config[ApplicationConstants::ZED_SSL_ENABLED] = $config[SessionConstants::ZED_S
 $config[ApplicationConstants::ZED_SSL_EXCLUDED] = ['health-check/index'];
 
 // ---------- Error handling
-$config[ErrorHandlerConstants::YVES_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Yves/errorpage/error.html';
-$config[ErrorHandlerConstants::ZED_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Zed/errorpage/error.html';
+$config[ErrorHandlerConstants::YVES_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Yves/errorpage/5xx.html';
+$config[ErrorHandlerConstants::ZED_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Zed/errorpage/5xx.html';
 $config[ErrorHandlerConstants::ERROR_RENDERER] = WebHtmlErrorRenderer::class;
 // Due to some deprecation notices we silence all deprecations for the time being
 $config[ErrorHandlerConstants::ERROR_LEVEL] = E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED;
@@ -569,7 +569,7 @@ $config[TranslatorConstants::TRANSLATION_ZED_FILE_PATH_PATTERNS] = [
 ];
 
 // ----------- Yves assets
-$config[ShopUiConstants::YVES_ASSETS_URL_PATTERN] = sprintf('/assets/%s%s/', '%theme%', APPLICATION_CODE_BUCKET);
+$config[ShopUiConstants::YVES_ASSETS_URL_PATTERN] = '/assets/' . (getenv('SPRYKER_BUILD_HASH') ?: 'current') . '/%theme%/';
 
 // ----------- Api
 $config[ApiConstants::ENABLE_API_DEBUG] = false;

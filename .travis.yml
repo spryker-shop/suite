@@ -10,37 +10,44 @@ env:
     - PROJECT=suite
     - POSTGRES_PORT="5433"
 
-matrix:
+os: linux
+dist: bionic
+
+#Possible travis events (push, pull_request, cron, or api)
+jobs:
   fast_finish: true
+
+  allow_failures: []
+
   include:
+
     - php: "7.4"
       dist: bionic
       env:
         - MP_TEST=1
 
-    - php: "7.2"
-      dist: bionic
-      env:
-        - TEST_GROUP=without-acceptance
-    - php: "7.2"
-      dist: bionic
-      env:
-        - TEST_GROUP=acceptance
     - php: "7.4"
       dist: bionic
       env:
         - VALIDATION=1
 
-    - name: Docker / Alpine / PHP 7.3 / PostgreSQL / Functional
-      os:
-        - linux
+    - php: "7.2"
       dist: bionic
-      language: minimal
+      env:
+        - TEST_GROUP=without-acceptance
+
+    - php: "7.2"
+      dist: bionic
+      env:
+        - TEST_GROUP=acceptance
+
+    - name: Docker / Alpine / PHP 7.4 / PostgreSQL / Functional
+      os: linux
+      dist: bionic
+      language: shell
       env:
         - PROGRESS_TYPE=plain
-        - SPRYKER_PLATFORM_IMAGE=spryker/php:7.3
-        - SPRYKER_DB_ENGINE=PGSQL
-        - SPRYKER_TEST_IN_BROWSER=phantomjs
+        - SPRYKER_PLATFORM_IMAGE=spryker/php:7.4
         - TRAVIS=1
       addons:
         hosts:
@@ -66,67 +73,61 @@ matrix:
         - sudo chmod +x /usr/local/bin/docker-compose
       script:
         - git clone https://github.com/spryker/docker-sdk.git --single-branch --branch master ./docker
-        - docker/sdk boot deploy.ci.yml
-        - docker/sdk build images
-        - docker/sdk demo-data -t
-        - 'docker/sdk testing codecept run -c codeception.functional.yml -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: inclusive: [PyzTest]\"" -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: exclusive: [Api, Glue]\""'
+        - docker/sdk boot deploy.ci.functional.yml -v
+        - docker/sdk up -t -v
+        - docker/sdk testing codecept run -c codeception.ci.functional.yml
+      before_install: skip
+      before_script: skip
+      after_script: skip
+
+    - name: Docker / Alpine / PHP 7.3 / PostgreSQL / Glue
+      os: linux
+      dist: bionic
+      language: shell
+      env:
+        - PROGRESS_TYPE=plain
+        - SPRYKER_PLATFORM_IMAGE=spryker/php:7.3
+        - TRAVIS=1
+      addons:
+        hosts:
+          - yves.de.spryker.local
+          - zed.de.spryker.local
+          - glue.de.spryker.local
+        apt:
+          packages:
+            - apache2-utils
+            - apt-transport-https
+            - ca-certificates
+            - curl
+            - gnupg-agent
+            - pigz
+            - software-properties-common
+          sources:
+            - sourceline: "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+              key_url: https://download.docker.com/linux/ubuntu/gpg
+      install:
+        - echo eyAiZXhwZXJpbWVudGFsIiA6IHRydWUsICJmZWF0dXJlcyIgOiB7ICJidWlsZGtpdCI6IHRydWUgfSB9Cg==|base64 -d|sudo tee /etc/docker/daemon.json
+        - sudo apt-get install --only-upgrade docker-ce -y
+        - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        - sudo chmod +x /usr/local/bin/docker-compose
+      script:
+        - git clone https://github.com/spryker/docker-sdk.git --single-branch --branch master ./docker
+        - docker/sdk boot deploy.ci.api.yml -v
+        - docker/sdk up -t -v
+        - docker/sdk testing codecept fixtures
+        - docker/sdk testing console queue:worker:start --stop-when-empty
+        - docker/sdk testing codecept run -c codeception.api.yml
       before_install: skip
       before_script: skip
       after_script: skip
 
     - name: Docker / Debian / PHP 7.3 / PostgreSQL / Functional
-      os:
-          - linux
+      os: linux
       dist: bionic
-      language: minimal
-      env:
-          - PROGRESS_TYPE=plain
-          - SPRYKER_PLATFORM_IMAGE=spryker/php:7.3-debian
-          - SPRYKER_DB_ENGINE=PGSQL
-          - SPRYKER_TEST_IN_BROWSER=phantomjs
-          - TRAVIS=1
-      addons:
-          hosts:
-              - yves.de.spryker.local
-              - zed.de.spryker.local
-              - glue.de.spryker.local
-          apt:
-              packages:
-                  - apache2-utils
-                  - apt-transport-https
-                  - ca-certificates
-                  - curl
-                  - gnupg-agent
-                  - pigz
-                  - software-properties-common
-              sources:
-                  - sourceline: "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-                    key_url: https://download.docker.com/linux/ubuntu/gpg
-      install:
-          - echo eyAiZXhwZXJpbWVudGFsIiA6IHRydWUsICJmZWF0dXJlcyIgOiB7ICJidWlsZGtpdCI6IHRydWUgfSB9Cg==|base64 -d|sudo tee /etc/docker/daemon.json
-          - sudo apt-get install --only-upgrade docker-ce -y
-          - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-          - sudo chmod +x /usr/local/bin/docker-compose
-      script:
-          - git clone https://github.com/spryker/docker-sdk.git --single-branch --branch master ./docker
-          - docker/sdk boot deploy.ci.yml
-          - docker/sdk build images
-          - docker/sdk demo-data -t
-          - 'docker/sdk testing codecept run -c codeception.functional.yml -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: inclusive: [PyzTest]\"" -o "\"extensions: config: \SprykerTest\Shared\Testify\Helper\SuiteFilterHelper: exclusive: [Api, Glue]\""'
-      before_install: skip
-      before_script: skip
-      after_script: skip
-
-    - name: Docker / Alpine /PHP 7.3 / PostgreSQL / Glue
-      os:
-        - linux
-      dist: bionic
-      language: minimal
+      language: shell
       env:
         - PROGRESS_TYPE=plain
-        - SPRYKER_PLATFORM_IMAGE=spryker/php:7.3
-        - SPRYKER_DB_ENGINE=PGSQL
-        - SPRYKER_TEST_IN_BROWSER=phantomjs
+        - SPRYKER_PLATFORM_IMAGE=spryker/php:7.3-debian
         - TRAVIS=1
       addons:
         hosts:
@@ -152,12 +153,9 @@ matrix:
         - sudo chmod +x /usr/local/bin/docker-compose
       script:
         - git clone https://github.com/spryker/docker-sdk.git --single-branch --branch master ./docker
-        - docker/sdk boot deploy.ci.yml
-        - docker/sdk build -t images
-        - docker/sdk demo-data -t demo-minimal
-        - docker/sdk testing codecept fixtures
-        - docker/sdk testing console queue:worker:start --stop-when-empty
-        - docker/sdk testing codecept run -c codeception.api.yml
+        - docker/sdk boot deploy.ci.functional.yml -v
+        - docker/sdk up -t -v
+        - docker/sdk testing codecept run -c codeception.ci.functional.yml
       before_install: skip
       before_script: skip
       after_script: skip
@@ -183,7 +181,7 @@ addons:
       - postgresql-server-dev-12
       - rabbitmq-server
   postgresql: "12"
-  mariadb: 10.3
+  mariadb: "10.3"
 
   hosts:
     - zed.de.spryker.test
@@ -200,17 +198,12 @@ cache:
 
 services:
   - postgresql
-  - mariadb
   - redis
-
-sudo: required
 
 before_install:
   - phpenv config-add config/Shared/ci/travis/travis.php.ini
   - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - phpenv config-rm xdebug.ini
-  - if [[ $DB == 'mysql' ]]; then chmod +x ./config/Shared/ci/travis/mysql/* ; fi
-  - if [[ $DB == 'mysql' ]]; then ./config/Shared/ci/travis/mysql/travis_mysql_5.7.sh ; fi
   - ( awk '1;/@hook travis-ci/{exit}' config/Shared/stores.php ; awk 'NR>1' config/Shared/ci/travis/stores.php ; awk '/@hook travis-ci/,0' config/Shared/stores.php ) > config/Shared/stores_tmp.php ; mv config/Shared/stores_tmp.php config/Shared/stores.php
 
 install:
@@ -232,22 +225,18 @@ before_script:
   - chmod -R 660 config/Zed/dev_only_public.key
   - if [[ $VALIDATION == 1 ]] ; then npm install speccy@0.11.0 -g ; fi
 
-  - if [[ -z $DB ]] ; then cat config/Shared/ci/travis/postgresql_ci.config >> config/Shared/ci/travis/config_ci.php ; fi
-  - if [[ $DB == 'mysql' ]] ; then cat config/Shared/ci/travis/mysql_ci.config >> config/Shared/ci/travis/config_ci.php ; fi
+  - if [[ -z $DB_ENGINE ]] ; then cat config/Shared/ci/travis/postgresql_ci.config >> config/Shared/ci/travis/config_ci.php ; fi
+  - if [[ $DB_ENGINE == 'mysql' ]] ; then cat config/Shared/ci/travis/mysql_ci.config >> config/Shared/ci/travis/config_ci.php ; fi
 
   - cp config/Shared/ci/travis/config_ci.php config/Shared/config_local.php
 
-  - if [[ $DB == 'mysql' ]] ; then sudo cp config/Shared/ci/travis/mysql/my.cnf /etc/ ; fi
-  - if [[ $DB == 'mysql' ]] ; then sudo service mysql restart ; fi
-
-  - if [[ $TEST_GROUP == 'acceptance' ]] ; then config/Shared/ci/travis/acceptance_env.sh ; fi
+  - if [[ $TEST_GROUP == 'acceptance' || $TEST_GROUP == 'without-acceptance' ]] ; then config/Shared/ci/travis/acceptance_env.sh ; fi
   - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/install DE -r testing -v; fi
   - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/install DE -r testing -x frontend -x fixtures -v; fi
 
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:generate ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:install ; fi
-  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:generate ; fi
-  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console dev:ide:generate-auto-completion ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console dev:ide-auto-completion:generate ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/codecept build --ansi ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:databuilder:generate ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console setup:search ; fi
@@ -267,6 +256,7 @@ script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:schema:validate-xml-names ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:validate ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:sniff:style ; fi
+  - if [[ $VALIDATION == 1 ]] ; then speccy lint src/Generated/Glue/Specification/spryker_rest_api.schema.yml --rules=default ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2 ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpstan analyze -l 5 -c phpstan.neon src/ ; fi
