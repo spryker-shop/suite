@@ -4,11 +4,18 @@ namespace: spryker
 tag: 'dev'
 
 environment: docker
-image: spryker/php:7.2
+image:
+    tag: spryker/php:7.3
+    php:
+        enabled-extensions:
+            - blackfire
 
 composer:
-    mode: --dev
-    autoload: --optimize
+    mode: ''
+    autoload: ''
+
+assets:
+    mode: development
 
 regions:
     EU:
@@ -127,7 +134,7 @@ services:
             password: "secret"
         endpoints:
             queue.spryker.local:
-            locahost:5672:
+            localhost:5672:
                 protocol: tcp
     session:
         engine: redis
@@ -160,6 +167,7 @@ docker:
 
     ssl:
         enabled: false
+        redirect: true
 
     testing:
         store: DE
