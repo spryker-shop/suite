@@ -133,7 +133,7 @@
 
         <events>
             <event name="authorize" onEnter="true"/>
-            <event name="pay" manual="true" timeout="1 hour" command="DummyPayment/Pay"/>
+            <event name="pay" manual="true" timeout="1 hour" timeoutProcessor="OmsTimeout/Initiation" command="DummyPayment/Pay"/>
             <event name="confirm" onEnter="true" manual="true" command="Oms/SendOrderConfirmation"/>
             <event name="skip timeout" manual="true" timeout="30 minute"/>
             <event name="cancel" manual="true"/>
