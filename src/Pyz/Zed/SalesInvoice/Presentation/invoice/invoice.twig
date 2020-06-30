@@ -130,7 +130,7 @@
             {% set rateSum = taxes[item.taxRate] | default(0) + item.sumTaxAmountFullAggregation %}
             {% set taxes = taxes | merge({ (taxRate): rateSum }) %}
             {% set rateItemSum = itemSumByTaxes[taxRate] | default(0) + item.sumPriceToPayAggregation %}
-            {% set itemSumByTaxes = itemSumByTaxes | merge({ (taxRate): rateItemSum })  %}
+            {% set itemSumByTaxes = itemSumByTaxes | merge({ (taxRate): rateItemSum }) %}
 
             {% if item.productBundle is not defined or item.productBundle is null %}
                 {% set linenumber = linenumber + 1 %}
