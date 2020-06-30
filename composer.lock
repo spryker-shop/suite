@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ca3dcc6c5d80526ceab5dd53bfce1d42",
+    "content-hash": "afffe00e6f4abe7dd30d062cb2466ef5",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -785,6 +785,10 @@
                 "validation",
                 "validator"
             ],
+            "support": {
+                "issues": "https://github.com/egulias/EmailValidator/issues",
+                "source": "https://github.com/egulias/EmailValidator/tree/master"
+            },
             "time": "2020-06-16T20:11:17+00:00"
         },
         {
@@ -1241,6 +1245,10 @@
                 "rest",
                 "web service"
             ],
+            "support": {
+                "issues": "https://github.com/guzzle/guzzle/issues",
+                "source": "https://github.com/guzzle/guzzle/tree/6.5"
+            },
             "time": "2020-06-16T21:01:06+00:00"
         },
         {
@@ -2229,12 +2237,6 @@
                 "duplicate",
                 "object",
                 "object graph"
-            ],
-            "funding": [
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/myclabs/deep-copy",
-                    "type": "tidelift"
-                }
             ],
             "time": "2020-06-29T13:22:24+00:00"
         },
@@ -3698,7 +3700,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -5199,11 +5201,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/ps-13588/dev-double-opt-in",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "80d181917f2ae99e4ebbf463b59ba2055d414cea"
+                "reference": "82a8611c5a9385cbd1c756e982bd44e27511ba3f"
             },
             "require": {
                 "php": ">=7.2"
@@ -5923,15 +5925,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-06-30T11:34:42+00:00"
+            "time": "2020-06-30T13:04:21+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/ps-13588/dev-double-opt-in",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "f855876c67f280db196cc0fd756b59a7ed32861f"
+                "reference": "7699cd7aed21d8788eb291c62a8fdea810c188b6"
             },
             "require": {
                 "php": ">=7.2"
@@ -6088,7 +6090,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-06-24T13:38:43+00:00"
+            "time": "2020-06-30T13:07:48+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -11653,7 +11655,7 @@
                     "SLLH\\ComposerVersionsCheck\\": "src/"
                 }
             },
-            "notification-url": "https://repo.repman.io/downloads",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -12738,6 +12740,5 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    },
-    "plugin-api-version": "1.1.0"
+    }
 }
