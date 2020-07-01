@@ -34,6 +34,12 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
 {
     public const BULK_SIZE = 2000;
 
+    protected const COLUMN_NAME = ProductStockHydratorStep::COLUMN_NAME;
+    protected const COLUMN_CONCRETE_SKU = ProductStockHydratorStep::COLUMN_CONCRETE_SKU;
+    protected const COLUMN_IS_BUNDLE = ProductStockHydratorStep::COLUMN_IS_BUNDLE;
+    protected const COLUMN_QUANTITY = ProductStockHydratorStep::COLUMN_QUANTITY;
+    protected const COLUMN_IS_NEVER_OUT_OF_STOCK = ProductStockHydratorStep::COLUMN_IS_NEVER_OUT_OF_STOCK;
+
     protected const KEY_SKU = 'sku';
     protected const KEY_QUANTITY = 'qty';
     protected const KEY_IS_NEVER_OUT_OF_STOCK = 'is_never_out_of_stock';
@@ -157,7 +163,7 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
      */
     protected function persistStockEntities(): void
     {
-        $names = $this->dataFormatter->getCollectionDataByKey(static::$stockCollection, ProductStockHydratorStep::KEY_NAME);
+        $names = $this->dataFormatter->getCollectionDataByKey(static::$stockCollection, static::COLUMN_NAME);
         $uniqueNames = array_unique($names);
         $name = $this->dataFormatter->formatPostgresArrayString($uniqueNames);
 
@@ -174,16 +180,16 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
     protected function persistStockProductEntities(): void
     {
         $sku = $this->dataFormatter->formatPostgresArrayString(
-            $this->dataFormatter->getCollectionDataByKey(static::$stockProductCollection, ProductStockHydratorStep::KEY_CONCRETE_SKU)
+            $this->dataFormatter->getCollectionDataByKey(static::$stockProductCollection, static::COLUMN_CONCRETE_SKU)
         );
         $stockName = $this->dataFormatter->formatPostgresArray(
-            $this->dataFormatter->getCollectionDataByKey(static::$stockCollection, ProductStockHydratorStep::KEY_NAME)
+            $this->dataFormatter->getCollectionDataByKey(static::$stockCollection, static::COLUMN_NAME)
         );
         $quantity = $this->dataFormatter->formatPostgresArray(
-            $this->dataFormatter->getCollectionDataByKey(static::$stockProductCollection, ProductStockHydratorStep::KEY_QUANTITY)
+            $this->dataFormatter->getCollectionDataByKey(static::$stockProductCollection, static::COLUMN_QUANTITY)
         );
         $isNeverOutOfStock = $this->dataFormatter->formatPostgresArray(
-            $this->dataFormatter->getCollectionDataByKey(static::$stockProductCollection, ProductStockHydratorStep::KEY_IS_NEVER_OUT_OF_STOCK)
+            $this->dataFormatter->getCollectionDataByKey(static::$stockProductCollection, static::COLUMN_IS_NEVER_OUT_OF_STOCK)
         );
 
         $sql = $this->productStockSql->createStockProductSQL();
@@ -201,7 +207,7 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
      */
     protected function persistAvailability(): void
     {
-        $skus = $this->dataFormatter->getCollectionDataByKey(static::$stockProductCollection, ProductStockHydratorStep::KEY_CONCRETE_SKU);
+        $skus = $this->dataFormatter->getCollectionDataByKey(static::$stockProductCollection, static::COLUMN_CONCRETE_SKU);
         $storeTransfer = $this->storeFacade->getCurrentStore();
 
         $concreteSkusToAbstractMap = $this->mapConcreteSkuToAbstractSku($skus);
@@ -397,11 +403,11 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
     protected function updateBundleAvailability(): void
     {
         foreach (static::$stockProductCollection as $stockProduct) {
-            if (!$stockProduct[ProductStockHydratorStep::KEY_IS_BUNDLE]) {
+            if (!$stockProduct[static::COLUMN_IS_BUNDLE]) {
                 continue;
             }
-            $this->productBundleFacade->updateBundleAvailability($stockProduct[ProductStockHydratorStep::KEY_CONCRETE_SKU]);
-            $this->productBundleFacade->updateAffectedBundlesAvailability($stockProduct[ProductStockHydratorStep::KEY_CONCRETE_SKU]);
+            $this->productBundleFacade->updateBundleAvailability($stockProduct[static::COLUMN_CONCRETE_SKU]);
+            $this->productBundleFacade->updateAffectedBundlesAvailability($stockProduct[static::COLUMN_CONCRETE_SKU]);
         }
     }
 
@@ -423,8 +429,8 @@ class ProductStockBulkPdoDataSetWriter implements DataSetWriterInterface
     protected function collectStockProduct(DataSetInterface $dataSet): void
     {
         $productStockArray = $dataSet[ProductStockHydratorStep::STOCK_PRODUCT_ENTITY_TRANSFER]->modifiedToArray();
-        $productStockArray[ProductStockHydratorStep::KEY_IS_BUNDLE] = $dataSet[ProductStockHydratorStep::KEY_IS_BUNDLE];
-        $productStockArray[ProductStockHydratorStep::KEY_CONCRETE_SKU] = $dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU];
+        $productStockArray[static::COLUMN_IS_BUNDLE] = $dataSet[static::COLUMN_IS_BUNDLE];
+        $productStockArray[static::COLUMN_CONCRETE_SKU] = $dataSet[static::COLUMN_CONCRETE_SKU];
 
         static::$stockProductCollection[] = $productStockArray;
     }

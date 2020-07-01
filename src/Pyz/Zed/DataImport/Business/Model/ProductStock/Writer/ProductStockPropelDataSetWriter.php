@@ -34,6 +34,10 @@ use Spryker\Zed\Store\Business\StoreFacadeInterface;
 
 class ProductStockPropelDataSetWriter implements DataSetWriterInterface
 {
+    protected const COLUMN_CONCRETE_SKU = ProductStockHydratorStep::COLUMN_CONCRETE_SKU;
+    protected const COLUMN_IS_BUNDLE = ProductStockHydratorStep::COLUMN_IS_BUNDLE;
+    protected const COLUMN_IS_NEVER_OUT_OF_STOCK = ProductStockHydratorStep::COLUMN_IS_NEVER_OUT_OF_STOCK;
+
     protected const KEY_AVAILABILITY_SKU = 'KEY_AVAILABILITY_SKU';
     protected const KEY_AVAILABILITY_QUANTITY = 'KEY_AVAILABILITY_QUANTITY';
     protected const KEY_AVAILABILITY_ID_STORE = 'KEY_AVAILABILITY_ID_STORE';
@@ -98,11 +102,11 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
         $this->collectProductAbstractSku($dataSet);
         $this->updateAvailability($dataSet);
 
-        if ($dataSet[ProductStockHydratorStep::KEY_IS_BUNDLE]) {
-            $this->productBundleFacade->updateBundleAvailability($dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU]);
+        if ($dataSet[static::COLUMN_IS_BUNDLE]) {
+            $this->productBundleFacade->updateBundleAvailability($dataSet[static::COLUMN_CONCRETE_SKU]);
         } else {
-            $this->productBundleFacade->updateAffectedBundlesAvailability($dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU]);
-            $this->productBundleFacade->updateAffectedBundlesStock($dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU]);
+            $this->productBundleFacade->updateAffectedBundlesAvailability($dataSet[static::COLUMN_CONCRETE_SKU]);
+            $this->productBundleFacade->updateAffectedBundlesStock($dataSet[static::COLUMN_CONCRETE_SKU]);
         }
     }
 
@@ -141,7 +145,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
     protected function createOrUpdateProductStock(DataSetInterface $dataSet, SpyStock $stockEntity): void
     {
         $stockProductEntityTransfer = $dataSet[ProductStockHydratorStep::STOCK_PRODUCT_ENTITY_TRANSFER];
-        $idProductConcrete = $this->productRepository->getIdProductByConcreteSku($dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU]);
+        $idProductConcrete = $this->productRepository->getIdProductByConcreteSku($dataSet[static::COLUMN_CONCRETE_SKU]);
         $stockProductEntity = SpyStockProductQuery::create()
             ->filterByFkProduct($idProductConcrete)
             ->filterByFkStock($stockEntity->getIdStock())
@@ -157,7 +161,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
      */
     protected function collectProductAbstractSku(DataSetInterface $dataSet): void
     {
-        $productConcreteSku = $dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU];
+        $productConcreteSku = $dataSet[static::COLUMN_CONCRETE_SKU];
         static::$productAbstractSkus[] = $this->productRepository->getAbstractSkuByConcreteSku($productConcreteSku);
     }
 
@@ -234,7 +238,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
      */
     protected function updateAvailabilityForStore(DataSetInterface $dataSet, StoreTransfer $storeTransfer): void
     {
-        $concreteSku = $dataSet[ProductStockHydratorStep::KEY_CONCRETE_SKU];
+        $concreteSku = $dataSet[static::COLUMN_CONCRETE_SKU];
         $abstractSku = $this->productRepository->getAbstractSkuByConcreteSku($concreteSku);
         $idStore = $this->getIdStore($storeTransfer);
 
@@ -245,7 +249,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
             static::KEY_AVAILABILITY_QUANTITY => $availabilityQuantity,
             static::KEY_AVAILABILITY_ID_AVAILABILITY_ABSTRACT => $availabilityAbstractEntity->getIdAvailabilityAbstract(),
             static::KEY_AVAILABILITY_ID_STORE => $idStore,
-            static::KEY_AVAILABILITY_IS_NEVER_OUT_OF_STOCK => $dataSet[ProductStockHydratorStep::KEY_IS_NEVER_OUT_OF_STOCK],
+            static::KEY_AVAILABILITY_IS_NEVER_OUT_OF_STOCK => $dataSet[static::COLUMN_IS_NEVER_OUT_OF_STOCK],
         ]);
 
         $this->updateAbstractAvailabilityQuantity($availabilityAbstractEntity, $idStore);
