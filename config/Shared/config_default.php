@@ -665,8 +665,8 @@ $config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = sprintf(
 $config[KernelConstants::DOMAIN_WHITELIST] = [
     $config[ApplicationConstants::HOST_YVES],
     $config[ApplicationConstants::HOST_ZED],
-    'threedssvc.pay1.de',
-    'www.sofort.com',
+    'threedssvc.pay1.de', // trusted Payone domain
+    'www.sofort.com', // trusted Payone domain
 ];
 
 // ----------- Payone
