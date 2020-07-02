@@ -95,6 +95,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
     // get public url path according to pattern from config
     const getPublicUrl = () => (
         namespaceJson.path
+            .replace(/%SPRYKER_BUILD_HASH%/gi, process.env.SPRYKER_BUILD_HASH || 'current')
             .replace(/%namespace%/gi, namespaceConfig.namespace)
             .replace(/%theme%/gi, theme)
     );

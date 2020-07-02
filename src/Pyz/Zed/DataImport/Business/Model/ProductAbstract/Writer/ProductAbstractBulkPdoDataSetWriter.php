@@ -20,6 +20,17 @@ use Spryker\Zed\Url\Dependency\UrlEvents;
 
 class ProductAbstractBulkPdoDataSetWriter implements DataSetWriterInterface
 {
+    protected const COLUMN_ABSTRACT_SKU = ProductAbstractHydratorStep::COLUMN_ABSTRACT_SKU;
+    protected const COLUMN_NEW_FROM = ProductAbstractHydratorStep::COLUMN_NEW_FROM;
+    protected const COLUMN_COLOR_CODE = ProductAbstractHydratorStep::COLUMN_COLOR_CODE;
+    protected const COLUMN_META_KEYWORDS = ProductAbstractHydratorStep::COLUMN_META_KEYWORDS;
+    protected const COLUMN_META_DESCRIPTION = ProductAbstractHydratorStep::COLUMN_META_DESCRIPTION;
+    protected const COLUMN_META_TITLE = ProductAbstractHydratorStep::COLUMN_META_TITLE;
+    protected const COLUMN_DESCRIPTION = ProductAbstractHydratorStep::COLUMN_DESCRIPTION;
+    protected const COLUMN_NAME = ProductAbstractHydratorStep::COLUMN_NAME;
+    protected const COLUMN_URL = ProductAbstractHydratorStep::COLUMN_URL;
+    protected const COLUMN_NEW_TO = ProductAbstractHydratorStep::COLUMN_NEW_TO;
+
     /**
      * @var array
      */
@@ -118,9 +129,9 @@ class ProductAbstractBulkPdoDataSetWriter implements DataSetWriterInterface
     {
         foreach ($dataSet[ProductAbstractHydratorStep::DATA_PRODUCT_ABSTRACT_LOCALIZED_TRANSFER] as $productAbstractLocalizedTransfer) {
             $localizedAttributeArray = $productAbstractLocalizedTransfer[ProductAbstractHydratorStep::KEY_PRODUCT_ABSTRACT_LOCALIZED_TRANSFER]->modifiedToArray();
-            $localizedAttributeArray[ProductAbstractHydratorStep::KEY_ABSTRACT_SKU] = $productAbstractLocalizedTransfer[ProductAbstractHydratorStep::KEY_ABSTRACT_SKU];
-            $localizedAttributeArray[ProductAbstractHydratorStep::KEY_META_DESCRIPTION] = $this->dataFormatter->replaceDoubleQuotes($localizedAttributeArray[ProductAbstractHydratorStep::KEY_META_DESCRIPTION]);
-            $localizedAttributeArray[ProductAbstractHydratorStep::KEY_DESCRIPTION] = $this->dataFormatter->replaceDoubleQuotes($localizedAttributeArray[ProductAbstractHydratorStep::KEY_DESCRIPTION]);
+            $localizedAttributeArray[static::COLUMN_ABSTRACT_SKU] = $productAbstractLocalizedTransfer[static::COLUMN_ABSTRACT_SKU];
+            $localizedAttributeArray[static::COLUMN_META_DESCRIPTION] = $this->dataFormatter->replaceDoubleQuotes($localizedAttributeArray[static::COLUMN_META_DESCRIPTION]);
+            $localizedAttributeArray[static::COLUMN_DESCRIPTION] = $this->dataFormatter->replaceDoubleQuotes($localizedAttributeArray[static::COLUMN_DESCRIPTION]);
             static::$productAbstractLocalizedAttributesCollection[] = $localizedAttributeArray;
         }
     }
@@ -134,7 +145,7 @@ class ProductAbstractBulkPdoDataSetWriter implements DataSetWriterInterface
     {
         foreach ($dataSet[ProductAbstractHydratorStep::DATA_PRODUCT_CATEGORY_TRANSFER] as $productCategoryTransfer) {
             $productCategoryArray = $productCategoryTransfer[ProductAbstractHydratorStep::KEY_PRODUCT_CATEGORY_TRANSFER]->modifiedToArray();
-            $productCategoryArray[ProductAbstractHydratorStep::KEY_ABSTRACT_SKU] = $productCategoryTransfer[ProductAbstractHydratorStep::KEY_ABSTRACT_SKU];
+            $productCategoryArray[static::COLUMN_ABSTRACT_SKU] = $productCategoryTransfer[static::COLUMN_ABSTRACT_SKU];
             static::$productCategoryCollection[] = $productCategoryArray;
         }
     }
@@ -148,7 +159,7 @@ class ProductAbstractBulkPdoDataSetWriter implements DataSetWriterInterface
     {
         foreach ($dataSet[ProductAbstractHydratorStep::DATA_PRODUCT_URL_TRANSFER] as $productUrlTransfer) {
             $productUrlArray = $productUrlTransfer[ProductAbstractHydratorStep::KEY_PRODUCT_URL_TRASNFER]->modifiedToArray();
-            $productUrlArray[ProductAbstractHydratorStep::KEY_ABSTRACT_SKU] = $productUrlTransfer[ProductAbstractHydratorStep::KEY_ABSTRACT_SKU];
+            $productUrlArray[static::COLUMN_ABSTRACT_SKU] = $productUrlTransfer[static::COLUMN_ABSTRACT_SKU];
             static::$productUrlCollection[] = $productUrlArray;
         }
     }
@@ -181,13 +192,13 @@ class ProductAbstractBulkPdoDataSetWriter implements DataSetWriterInterface
                 $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_FK_TAX_SET)
             );
             $colorCode = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_COLOR_CODE)
+                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, static::COLUMN_COLOR_CODE)
             );
             $newFrom = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_NEW_FROM)
+                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, static::COLUMN_NEW_FROM)
             );
             $newTo = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, ProductAbstractHydratorStep::KEY_NEW_TO)
+                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractCollection, static::COLUMN_NEW_TO)
             );
 
             $sql = $this->productAbstractSql->createAbstractProductSQL();
@@ -216,25 +227,25 @@ class ProductAbstractBulkPdoDataSetWriter implements DataSetWriterInterface
     {
         if (!empty(static::$productAbstractLocalizedAttributesCollection)) {
             $abstractSkus = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_ABSTRACT_SKU)
+                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, static::COLUMN_ABSTRACT_SKU)
             );
             $idLocale = $this->dataFormatter->formatPostgresArray(
                 $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_FK_LOCALE)
             );
             $name = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_NAME)
+                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, static::COLUMN_NAME)
             );
             $description = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_DESCRIPTION)
+                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, static::COLUMN_DESCRIPTION)
             );
             $metaTitle = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_META_TITLE)
+                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, static::COLUMN_META_TITLE)
             );
             $metaDescription = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_META_DESCRIPTION)
+                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, static::COLUMN_META_DESCRIPTION)
             );
             $metaKeywords = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_META_KEYWORDS)
+                $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, static::COLUMN_META_KEYWORDS)
             );
             $attributes = $this->dataFormatter->formatPostgresArrayFromJson(
                 $this->dataFormatter->getCollectionDataByKey(static::$productAbstractLocalizedAttributesCollection, ProductAbstractHydratorStep::KEY_ATTRIBUTES)
@@ -265,7 +276,7 @@ class ProductAbstractBulkPdoDataSetWriter implements DataSetWriterInterface
     {
         if (!empty(static::$productCategoryCollection)) {
             $abstractSkus = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey(static::$productCategoryCollection, ProductAbstractHydratorStep::KEY_ABSTRACT_SKU)
+                $this->dataFormatter->getCollectionDataByKey(static::$productCategoryCollection, static::COLUMN_ABSTRACT_SKU)
             );
             $productOrder = $this->dataFormatter->formatPostgresArrayString(
                 $this->dataFormatter->getCollectionDataByKey(static::$productCategoryCollection, ProductAbstractHydratorStep::KEY_PRODUCT_ORDER)
@@ -297,13 +308,13 @@ class ProductAbstractBulkPdoDataSetWriter implements DataSetWriterInterface
     {
         if (!empty(static::$productUrlCollection)) {
             $abstractSkus = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey(static::$productUrlCollection, ProductAbstractHydratorStep::KEY_ABSTRACT_SKU)
+                $this->dataFormatter->getCollectionDataByKey(static::$productUrlCollection, static::COLUMN_ABSTRACT_SKU)
             );
             $idLocale = $this->dataFormatter->formatPostgresArray(
                 $this->dataFormatter->getCollectionDataByKey(static::$productUrlCollection, ProductAbstractHydratorStep::KEY_FK_LOCALE)
             );
             $url = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey(static::$productUrlCollection, ProductAbstractHydratorStep::KEY_URL)
+                $this->dataFormatter->getCollectionDataByKey(static::$productUrlCollection, static::COLUMN_URL)
             );
 
             $sql = $this->productAbstractSql->createAbstractProductUrlsSQL();
