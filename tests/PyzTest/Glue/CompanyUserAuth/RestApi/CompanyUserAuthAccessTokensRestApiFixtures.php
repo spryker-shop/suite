@@ -96,6 +96,7 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
     protected function createOauthResponseForCompanyUser(CompanyUserAuthRestApiTester $I): OauthResponseTransfer
     {
         $customerTransfer = $this->createCustomerWithCompanyUser($I);
+        $customerTransfer = $I->confirmCustomer($customerTransfer);
 
         return $I->haveAuthorizationToGlue($customerTransfer);
     }
