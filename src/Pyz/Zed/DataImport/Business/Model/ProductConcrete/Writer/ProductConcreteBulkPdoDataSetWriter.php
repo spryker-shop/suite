@@ -20,6 +20,11 @@ class ProductConcreteBulkPdoDataSetWriter implements DataSetWriterInterface
 {
     public const BULK_SIZE = 3000;
 
+    protected const COLUMN_NAME = ProductConcreteHydratorStep::COLUMN_NAME;
+    protected const COLUMN_DESCRIPTION = ProductConcreteHydratorStep::COLUMN_DESCRIPTION;
+    protected const COLUMN_IS_SEARCHABLE = ProductConcreteHydratorStep::COLUMN_IS_SEARCHABLE;
+    protected const COLUMN_ABSTRACT_SKU = ProductConcreteHydratorStep::COLUMN_ABSTRACT_SKU;
+
     /**
      * @var array
      */
@@ -126,7 +131,7 @@ class ProductConcreteBulkPdoDataSetWriter implements DataSetWriterInterface
             $this->dataFormatter->getCollectionDataByKey(static::$productConcreteCollection, ProductConcreteHydratorStep::KEY_IS_ACTIVE)
         );
         $skuProductAbstract = $this->dataFormatter->formatPostgresArrayString(
-            $this->dataFormatter->getCollectionDataByKey(static::$productConcreteCollection, ProductConcreteHydratorStep::KEY_ABSTRACT_SKU)
+            $this->dataFormatter->getCollectionDataByKey(static::$productConcreteCollection, static::COLUMN_ABSTRACT_SKU)
         );
 
         $sql = $this->productConcreteSql->createConcreteProductSQL();
@@ -157,13 +162,13 @@ class ProductConcreteBulkPdoDataSetWriter implements DataSetWriterInterface
                 $this->dataFormatter->getCollectionDataByKey(static::$productLocalizedAttributesCollection, ProductConcreteHydratorStep::KEY_FK_LOCALE)
             );
             $name = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey(static::$productLocalizedAttributesCollection, ProductConcreteHydratorStep::KEY_NAME)
+                $this->dataFormatter->getCollectionDataByKey(static::$productLocalizedAttributesCollection, static::COLUMN_NAME)
             );
             $isComplete = $this->dataFormatter->formatPostgresArray(
                 $this->dataFormatter->getCollectionDataByKey(static::$productLocalizedAttributesCollection, ProductConcreteHydratorStep::KEY_IS_COMPLETE)
             );
             $description = $this->dataFormatter->formatPostgresArrayString(
-                $this->dataFormatter->getCollectionDataByKey(static::$productLocalizedAttributesCollection, ProductConcreteHydratorStep::KEY_DESCRIPTION)
+                $this->dataFormatter->getCollectionDataByKey(static::$productLocalizedAttributesCollection, static::COLUMN_DESCRIPTION)
             );
             $attributes = $this->dataFormatter->formatPostgresArrayFromJson(
                 $this->dataFormatter->getCollectionDataByKey(static::$productLocalizedAttributesCollection, ProductConcreteHydratorStep::KEY_ATTRIBUTES)
@@ -192,7 +197,7 @@ class ProductConcreteBulkPdoDataSetWriter implements DataSetWriterInterface
                 $this->dataFormatter->getCollectionDataByKey(static::$productSearchCollection, ProductConcreteHydratorStep::KEY_FK_LOCALE)
             );
             $isSearchable = $this->dataFormatter->formatPostgresArray(
-                $this->dataFormatter->getCollectionDataByKey(static::$productSearchCollection, ProductConcreteHydratorStep::KEY_IS_SEARCHABLE)
+                $this->dataFormatter->getCollectionDataByKey(static::$productSearchCollection, static::COLUMN_IS_SEARCHABLE)
             );
             $sku = $this->dataFormatter->formatPostgresArray(
                 $this->dataFormatter->getCollectionDataByKey(static::$productSearchCollection, ProductConcreteHydratorStep::KEY_SKU)
@@ -243,7 +248,7 @@ class ProductConcreteBulkPdoDataSetWriter implements DataSetWriterInterface
     {
         if (!$this->isSkuAlreadyCollected($dataSet)) {
             $productConcreteTransfer = $dataSet[ProductConcreteHydratorStep::DATA_PRODUCT_CONCRETE_TRANSFER]->modifiedToArray();
-            $productConcreteTransfer[ProductConcreteHydratorStep::KEY_ABSTRACT_SKU] = $dataSet[ProductConcreteHydratorStep::KEY_ABSTRACT_SKU];
+            $productConcreteTransfer[static::COLUMN_ABSTRACT_SKU] = $dataSet[static::COLUMN_ABSTRACT_SKU];
             static::$productConcreteCollection[] = $productConcreteTransfer;
         }
     }
@@ -274,10 +279,10 @@ class ProductConcreteBulkPdoDataSetWriter implements DataSetWriterInterface
 
             $localizedAttributeArray = $productConcreteLocalizedTransfer[ProductConcreteHydratorStep::KEY_PRODUCT_CONCRETE_LOCALIZED_TRANSFER]->modifiedToArray();
             $localizedAttributeArray[ProductConcreteHydratorStep::KEY_SKU] = $productConcreteLocalizedTransfer[ProductConcreteHydratorStep::KEY_SKU];
-            $localizedAttributeArray[ProductConcreteHydratorStep::KEY_DESCRIPTION] = str_replace(
+            $localizedAttributeArray[static::COLUMN_DESCRIPTION] = str_replace(
                 '"',
                 '',
-                $localizedAttributeArray[ProductConcreteHydratorStep::KEY_DESCRIPTION]
+                $localizedAttributeArray[static::COLUMN_DESCRIPTION]
             );
 
             static::$productLocalizedAttributesCollection[] = $localizedAttributeArray;

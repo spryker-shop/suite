@@ -10,6 +10,7 @@ namespace Pyz\Zed\Oms;
 use Pyz\Zed\MerchantOms\Communication\Plugin\Oms\CloseMerchantOrderItemCommandPlugin;
 use Pyz\Zed\MerchantSalesOrder\Communication\Plugin\Oms\Condition\IsOrderPaidConditionPlugin;
 use Pyz\Zed\MerchantSalesOrder\Communication\Plugin\Oms\CreateMerchantOrdersCommandPlugin;
+use Pyz\Zed\Oms\Communication\Plugin\Oms\InitiationTimeoutProcessorPlugin;
 use Spryker\Zed\Availability\Communication\Plugin\AvailabilityHandlerPlugin;
 use Spryker\Zed\Availability\Communication\Plugin\Oms\AvailabilityReservationPostSaveTerminationAwareStrategyPlugin;
 use Spryker\Zed\GiftCard\Communication\Plugin\Oms\Command\CreateGiftCardCommandPlugin;
@@ -34,19 +35,65 @@ use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Reservation\LeadProduc
 use Spryker\Zed\SalesReturn\Communication\Plugin\Oms\Command\StartReturnCommandPlugin;
 use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentManualEventGrouperPlugin;
 use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentOrderMailExpanderPlugin;
+use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Command\CancelAndRecalculateCommandByOrderPlugin;
+use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Command\CancelCommandPlugin;
+use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Command\PartialCaptureCommandByOrderPlugin;
+use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Command\PartialRefundCommandPlugin;
+use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Command\SavePartialRefundCommandPlugin;
+use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Condition\AuthorizationIsErrorConditionPlugin;
+use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Condition\CaptureIsApprovedConditionPlugin;
+use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Condition\Is1HourPassedConditionPlugin;
+use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Condition\IsFullOrderCancelledConditionPlugin;
+use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Condition\IsRefundAllowedConditionPlugin;
+use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Condition\PaymentIsAppointedConditionPlugin;
+use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Condition\PaymentIsCaptureConditionPlugin;
+use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Condition\PaymentIsPaidConditionPlugin;
+use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Condition\PaymentIsRefundConditionPlugin;
+use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Condition\PreAuthorizationIsErrorConditionPlugin;
+use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Condition\RefundIsApprovedConditionPlugin;
+use SprykerEco\Zed\Payone\Communication\Plugin\Oms\Condition\TrueConditionPlugin;
 
 class OmsDependencyProvider extends SprykerOmsDependencyProvider
 {
+    public const FACADE_TRANSLATOR = 'FACADE_TRANSLATOR';
+
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    public function provideBusinessLayerDependencies(Container $container)
+    public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = parent::provideBusinessLayerDependencies($container);
         $container = $this->extendCommandPlugins($container);
         $container = $this->extendConditionPlugins($container);
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    public function provideCommunicationLayerDependencies(Container $container): Container
+    {
+        $container = parent::provideCommunicationLayerDependencies($container);
+        $container = $this->addTranslatorFacade($container);
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addTranslatorFacade(Container $container): Container
+    {
+        $container->set(static::FACADE_TRANSLATOR, function (Container $container) {
+            return $container->getLocator()->translator()->facade();
+        });
 
         return $container;
     }
@@ -67,6 +114,13 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             $commandCollection->add(new CloseMerchantOrderItemCommandPlugin(), 'MerchantOms/CloseOrderItem');
             $commandCollection->add(new StartReturnCommandPlugin(), 'Return/StartReturn');
 
+            // ----- Payone
+            $commandCollection->add(new CancelCommandPlugin(), 'Payone/Cancel');
+            $commandCollection->add(new CancelAndRecalculateCommandByOrderPlugin(), 'Payone/CancelAndRecalculate');
+            $commandCollection->add(new PartialCaptureCommandByOrderPlugin(), 'Payone/PartialCapture');
+            $commandCollection->add(new SavePartialRefundCommandPlugin(), 'Payone/SavePartialRefund');
+            $commandCollection->add(new PartialRefundCommandPlugin(), 'Payone/PartialRefund');
+
             return $commandCollection;
         });
 
@@ -85,6 +139,20 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
                 ->add(new IsGiftCardConditionPlugin(), 'GiftCard/IsGiftCard');
             $conditionCollection
                 ->add(new IsOrderPaidConditionPlugin(), 'MerchantSalesOrder/IsOrderPaid');
+
+            // ----- Payone
+            $conditionCollection->add(new TrueConditionPlugin(), 'Payone/TrueCondition');
+            $conditionCollection->add(new PaymentIsAppointedConditionPlugin(), 'Payone/PaymentIsAppointed');
+            $conditionCollection->add(new Is1HourPassedConditionPlugin(), 'Payone/Is1HourPassed');
+            $conditionCollection->add(new PreAuthorizationIsErrorConditionPlugin(), 'Payone/PreAuthorizationIsError');
+            $conditionCollection->add(new IsFullOrderCancelledConditionPlugin(), 'Payone/IsFullOrderCancelled');
+            $conditionCollection->add(new CaptureIsApprovedConditionPlugin(), 'Payone/CaptureIsApproved');
+            $conditionCollection->add(new PaymentIsCaptureConditionPlugin(), 'Payone/PaymentIsCapture');
+            $conditionCollection->add(new IsRefundAllowedConditionPlugin(), 'Payone/IsRefundAllowed');
+            $conditionCollection->add(new RefundIsApprovedConditionPlugin(), 'Payone/RefundIsApproved');
+            $conditionCollection->add(new PaymentIsRefundConditionPlugin(), 'Payone/PaymentIsRefund');
+            $conditionCollection->add(new PaymentIsPaidConditionPlugin(), 'Payone/PaymentIsPaid');
+            $conditionCollection->add(new AuthorizationIsErrorConditionPlugin(), 'Payone/AuthorizationIsError');
 
             return $conditionCollection;
         });
@@ -174,6 +242,16 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
     {
         return [
             new ProductOfferOmsReservationReaderStrategyPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\OmsExtension\Dependency\Plugin\TimeoutProcessorPluginInterface[]
+     */
+    protected function getTimeoutProcessorPlugins(): array
+    {
+        return [
+            new InitiationTimeoutProcessorPlugin(),
         ];
     }
 }
