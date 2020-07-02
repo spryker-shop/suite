@@ -123,6 +123,7 @@ class CompanyUserAuthAccessTokensRestApiFixtures implements FixturesBuilderInter
         CompanyUserAuthRestApiTester $I
     ): OauthResponseTransfer {
         $customerTransfer = $this->createCustomerWithTwoCompanyUsers($I);
+        $customerTransfer = $I->confirmCustomer($customerTransfer);
 
         return $I->haveAuthorizationToGlue($customerTransfer);
     }
