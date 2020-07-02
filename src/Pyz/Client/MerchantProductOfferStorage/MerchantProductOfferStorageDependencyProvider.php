@@ -11,6 +11,7 @@ use Spryker\Client\MerchantProductOfferStorage\MerchantProductOfferStorageDepend
 use Spryker\Client\MerchantProductOfferStorage\Plugin\DefaultProductOfferReferenceStrategyPlugin;
 use Spryker\Client\MerchantProductOfferStorage\Plugin\ProductOfferReferenceStrategyPlugin;
 use Spryker\Client\MerchantProductOfferStorageExtension\Dependency\Plugin\ProductOfferStorageCollectionSorterPluginInterface;
+use Spryker\Client\MerchantProductStorage\Plugin\MerchantProductStrategyPlugin;
 use Spryker\Client\PriceProductStorage\Plugin\LowestPriceProductOfferStorageCollectionSorterPlugin;
 use Spryker\Client\PriceProductStorage\Plugin\PriceProductOfferStorageExpanderPlugin;
 
@@ -22,8 +23,9 @@ class MerchantProductOfferStorageDependencyProvider extends SprykerMerchantProdu
     protected function getProductOfferReferenceStrategyPlugins(): array
     {
         return [
-            new DefaultProductOfferReferenceStrategyPlugin(),
             new ProductOfferReferenceStrategyPlugin(),
+            new MerchantProductStrategyPlugin(),
+            new DefaultProductOfferReferenceStrategyPlugin(),
         ];
     }
 
