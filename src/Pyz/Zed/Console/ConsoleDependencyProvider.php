@@ -358,6 +358,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
             new CustomerPasswordResetConsole(),
             new CustomerPasswordSetConsole(),
+
+            new OrderInvoiceSendConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
