@@ -13,7 +13,7 @@ use Spryker\Shared\CmsContentWidgetProductSetConnector\ContentWidgetConfiguratio
 use Spryker\Shared\ContentBanner\ContentBannerConfig;
 use Spryker\Shared\ContentProduct\ContentProductConfig;
 use Spryker\Zed\CmsContentWidget\CmsContentWidgetDependencyProvider as SprykerCmsContentWidgetDependencyProvider;
-use Spryker\Zed\CmsContentWidgetContentItemConnector\Communication\Plugin\Cms\CmsContentItemKeyMapperPlugin;
+use Spryker\Zed\CmsContentWidgetContentConnector\Communication\Plugin\Cms\CmsContentItemKeyMapperPlugin;
 use Spryker\Zed\CmsContentWidgetProductConnector\Communication\Plugin\Cms\CmsProductSkuMapperPlugin;
 use Spryker\Zed\CmsContentWidgetProductSetConnector\Communication\Plugin\Cms\CmsProductSetKeyMapperPlugin;
 use Spryker\Zed\Kernel\Container;
