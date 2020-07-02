@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9ff649ddf48fc1636683f227df35fabe",
+    "content-hash": "debd9f1511fb4584afc0a4f41b89c052",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -2229,6 +2229,12 @@
                 "duplicate",
                 "object",
                 "object graph"
+            ],
+            "funding": [
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/myclabs/deep-copy",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-06-29T13:22:24+00:00"
         },
@@ -5265,11 +5271,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/ps-13591/dev-simple-invoice-generation",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "9a82e7f5fc7e7975e8156121da28030b592f8531"
+                "reference": "8d39d592bdff28b1da55d8b1f01c77c7d12e4564"
             },
             "require": {
                 "php": ">=7.2"
@@ -5838,6 +5844,8 @@
                 "spryker/sales-configurable-bundle": "*",
                 "spryker/sales-data-export": "*",
                 "spryker/sales-extension": "*",
+                "spryker/sales-invoice": "*",
+                "spryker/sales-invoice-extension": "*",
                 "spryker/sales-oms": "*",
                 "spryker/sales-order-threshold": "*",
                 "spryker/sales-order-threshold-data-import": "*",
@@ -5989,7 +5997,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-07-01T14:25:52+00:00"
+            "time": "2020-07-02T07:50:45+00:00"
         },
         {
             "name": "spryker/spryker-shop",
