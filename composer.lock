@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d7c3109a90869241cce4cd8e8c36dd2e",
+    "content-hash": "9ff649ddf48fc1636683f227df35fabe",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.144.1",
+            "version": "3.144.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "3c6cc59be6a01f228fb53b2b5f43c1fd7d44a88c"
+                "reference": "0a0b9e4d485fe0cd53db2a4075eba9a416d8331c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/3c6cc59be6a01f228fb53b2b5f43c1fd7d44a88c",
-                "reference": "3c6cc59be6a01f228fb53b2b5f43c1fd7d44a88c",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/0a0b9e4d485fe0cd53db2a4075eba9a416d8331c",
+                "reference": "0a0b9e4d485fe0cd53db2a4075eba9a416d8331c",
                 "shasum": ""
             },
             "require": {
@@ -89,7 +89,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-06-30T18:14:11+00:00"
+            "time": "2020-07-01T18:18:54+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -193,12 +193,6 @@
                 "bignum",
                 "brick",
                 "math"
-            ],
-            "funding": [
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/brick/math",
-                    "type": "tidelift"
-                }
             ],
             "time": "2020-04-15T15:59:35+00:00"
         },
@@ -670,20 +664,6 @@
             "keywords": [
                 "constructor",
                 "instantiate"
-            ],
-            "funding": [
-                {
-                    "url": "https://www.doctrine-project.org/sponsorship.html",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://www.patreon.com/phpdoctrine",
-                    "type": "patreon"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Finstantiator",
-                    "type": "tidelift"
-                }
             ],
             "time": "2020-05-29T17:27:14+00:00"
         },
@@ -1812,12 +1792,6 @@
                 "sftp",
                 "storage"
             ],
-            "funding": [
-                {
-                    "url": "https://offset.earth/frankdejonge",
-                    "type": "other"
-                }
-            ],
             "time": "2020-05-18T15:13:39+00:00"
         },
         {
@@ -2255,12 +2229,6 @@
                 "duplicate",
                 "object",
                 "object graph"
-            ],
-            "funding": [
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/myclabs/deep-copy",
-                    "type": "tidelift"
-                }
             ],
             "time": "2020-06-29T13:22:24+00:00"
         },
@@ -3724,7 +3692,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -4108,12 +4076,6 @@
                 "guid",
                 "identifier",
                 "uuid"
-            ],
-            "funding": [
-                {
-                    "url": "https://github.com/ramsey",
-                    "type": "github"
-                }
             ],
             "time": "2020-03-29T20:13:32+00:00"
         },
@@ -5303,11 +5265,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/bo-577/dev-merchant-portal-create-and-edit-offers",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "8b514af6a78ce1e6890070aa9ed35669c9ce39e9"
+                "reference": "e7aa28eede4b27a5a75fb635fdb0908338a3e8ef"
             },
             "require": {
                 "php": ">=7.2"
@@ -5586,6 +5548,8 @@
                 "spryker/graph": "*",
                 "spryker/graphviz": "*",
                 "spryker/gui": "*",
+                "spryker/gui-table": "*",
+                "spryker/gui-table-extension": "*",
                 "spryker/guzzle": "*",
                 "spryker/health-check": "*",
                 "spryker/health-check-extension": "*",
@@ -5797,7 +5761,6 @@
                 "spryker/product-offer-availabilities-rest-api": "*",
                 "spryker/product-offer-availability": "*",
                 "spryker/product-offer-availability-storage": "*",
-                "spryker/product-offer-extension": "*",
                 "spryker/product-offer-merchant-portal-gui": "*",
                 "spryker/product-offer-packaging-unit": "*",
                 "spryker/product-offer-prices-rest-api": "*",
@@ -5877,6 +5840,7 @@
                 "spryker/sales-configurable-bundle": "*",
                 "spryker/sales-data-export": "*",
                 "spryker/sales-extension": "*",
+                "spryker/sales-merchant-portal-gui": "*",
                 "spryker/sales-oms": "*",
                 "spryker/sales-order-threshold": "*",
                 "spryker/sales-order-threshold-data-import": "*",
@@ -6028,7 +5992,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-07-01T19:01:02+00:00"
+            "time": "2020-07-02T09:39:09+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6917,20 +6881,6 @@
             ],
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-05-27T08:34:37+00:00"
         },
         {
@@ -8273,20 +8223,6 @@
                 "portable",
                 "shim"
             ],
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-05-12T16:47:27+00:00"
         },
         {
@@ -8833,20 +8769,6 @@
                 "interoperability",
                 "standards"
             ],
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-05-20T17:43:50+00:00"
         },
         {
@@ -9100,20 +9022,6 @@
                 "interfaces",
                 "interoperability",
                 "standards"
-            ],
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
             ],
             "time": "2020-05-20T17:43:50+00:00"
         },
@@ -9808,28 +9716,6 @@
                 "clean",
                 "security",
                 "xss"
-            ],
-            "funding": [
-                {
-                    "url": "https://www.paypal.me/moelleken",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/voku",
-                    "type": "github"
-                },
-                {
-                    "url": "https://opencollective.com/anti-xss",
-                    "type": "open_collective"
-                },
-                {
-                    "url": "https://www.patreon.com/voku",
-                    "type": "patreon"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/voku/anti-xss",
-                    "type": "tidelift"
-                }
             ],
             "time": "2020-06-12T00:59:34+00:00"
         },
@@ -10973,20 +10859,6 @@
             "keywords": [
                 "Xdebug",
                 "performance"
-            ],
-            "funding": [
-                {
-                    "url": "https://packagist.com",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/composer",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/composer/composer",
-                    "type": "tidelift"
-                }
             ],
             "time": "2020-06-04T11:16:35+00:00"
         },
@@ -12753,20 +12625,6 @@
                 "interfaces",
                 "interoperability",
                 "standards"
-            ],
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
             ],
             "time": "2020-05-25T17:37:45+00:00"
         },
