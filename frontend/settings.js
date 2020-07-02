@@ -9,7 +9,13 @@ const globalSettings = {
     modes: {
         dev: 'development',
         watch: 'development-watch',
-        prod: 'production'
+        prod: 'production',
+    },
+
+    // build modules
+    buildVariants: {
+        esm: 'esm',
+        legacy: 'legacy',
     },
 
     paths: {
@@ -26,8 +32,46 @@ const globalSettings = {
         eco: './vendor/spryker-eco',
 
         // project folders
-        project: './src/Pyz/Yves'
-    }
+        project: './src/Pyz/Yves',
+    },
+
+    expectedModeArgument: 2,
+};
+
+const imageOptimizationOptions = {
+    enabledInModes: {
+        'development': false,
+        'development-watch': false,
+        'production': false,
+    },
+
+    // available options https://github.com/imagemin/imagemin-mozjpeg#api
+    jpg: {
+        quality: 60,
+    },
+
+    // available options https://github.com/imagemin/imagemin-pngquant#api
+    png: {
+        quality: [0.6, 0.7],
+    },
+
+    // available options https://github.com/svg/svgo#what-it-can-do
+    svg: {
+        removeViewBox: false,
+    },
+
+    // available options https://github.com/imagemin/imagemin-gifsicle#api
+    gif: {
+        optimizationLevel: 2,
+    },
+};
+
+const buildVariantArray = process.argv.filter(argv => argv.includes('module'));
+const buildVariant = buildVariantArray.length ? buildVariantArray[0].replace('module:', '') : '';
+
+const buildVariantSettings = {
+    buildVariant,
+    isES6Module: buildVariant === globalSettings.buildVariants.esm,
 };
 
 const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
@@ -51,6 +95,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
     // get public url path according to pattern from config
     const getPublicUrl = () => (
         namespaceJson.path
+            .replace(/%SPRYKER_BUILD_HASH%/gi, process.env.SPRYKER_BUILD_HASH || 'current')
             .replace(/%namespace%/gi, namespaceConfig.namespace)
             .replace(/%theme%/gi, theme)
     );
@@ -135,7 +180,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
 
     // define if current mode is production
     const isProductionMode = () => {
-        const currentMode = process.argv.slice(2)[0];
+        const currentMode = process.argv.slice(globalSettings.expectedModeArgument)[0];
         return currentMode === globalSettings.modes.prod;
     };
 
@@ -146,6 +191,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
         theme,
         paths,
         urls,
+        imageOptimizationOptions,
 
         context: globalSettings.context,
 
@@ -214,5 +260,6 @@ const getAppSettings = (namespaceConfigList, pathToConfig) => {
 
 module.exports = {
     globalSettings,
-    getAppSettings
+    getAppSettings,
+    buildVariantSettings,
 };
