@@ -116,11 +116,13 @@ class CheckoutRestApiFixtures implements FixturesBuilderInterface, FixturesConta
         $this->customerTransfer = $I->confirmCustomer($customerTransfer);
         $this->productConcreteTransfer = $I->haveProductWithStock();
 
-        $this->customerTransferWithPersistedAddress = $I->haveCustomerWithPersistentAddress([
+        $customerTransferWithPersistedAddress = $I->haveCustomerWithPersistentAddress([
             CustomerTransfer::USERNAME => static::TEST_USERNAME_2,
             CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
             CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,
         ]);
+
+        $this->customerTransferWithPersistedAddress = $I->confirmCustomer($customerTransferWithPersistedAddress);
 
         $this->emptyQuoteTransfer = $I->haveEmptyPersistentQuote([
             CustomerTransfer::CUSTOMER_REFERENCE => $this->customerTransfer->getCustomerReference(),
