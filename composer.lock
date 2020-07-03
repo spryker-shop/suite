@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e820dfe9347c68dbcace99112a316045",
+    "content-hash": "99c1c529230cf127b38d452811604446",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -372,16 +372,16 @@
         },
         {
             "name": "codeception/stub",
-            "version": "3.6.1",
+            "version": "3.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Stub.git",
-                "reference": "a3ba01414cbee76a1bced9f9b6b169cc8d203880"
+                "reference": "468dd5fe659f131fc997f5196aad87512f9b1304"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Stub/zipball/a3ba01414cbee76a1bced9f9b6b169cc8d203880",
-                "reference": "a3ba01414cbee76a1bced9f9b6b169cc8d203880",
+                "url": "https://api.github.com/repos/Codeception/Stub/zipball/468dd5fe659f131fc997f5196aad87512f9b1304",
+                "reference": "468dd5fe659f131fc997f5196aad87512f9b1304",
                 "shasum": ""
             },
             "require": {
@@ -398,7 +398,7 @@
                 "MIT"
             ],
             "description": "Flexible Stub wrapper for PHPUnit's Mock Builder",
-            "time": "2020-02-07T18:42:28+00:00"
+            "time": "2020-07-03T15:54:43+00:00"
         },
         {
             "name": "codeitnowin/barcode",
@@ -4855,12 +4855,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-eco/new-relic.git",
-                "reference": "45fbb3f06ec9df2cccaff25860382a62aeeca208"
+                "reference": "499ae533e1a9a5d87428974cd35ef21ef0f2a006"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-eco/new-relic/zipball/45fbb3f06ec9df2cccaff25860382a62aeeca208",
-                "reference": "45fbb3f06ec9df2cccaff25860382a62aeeca208",
+                "url": "https://api.github.com/repos/spryker-eco/new-relic/zipball/499ae533e1a9a5d87428974cd35ef21ef0f2a006",
+                "reference": "499ae533e1a9a5d87428974cd35ef21ef0f2a006",
                 "shasum": ""
             },
             "require": {
@@ -4877,7 +4877,8 @@
             },
             "require-dev": {
                 "codeception/codeception": "^2.0.0",
-                "phpstan/phpstan": "^0.9.2 || ^0.10.0"
+                "phpstan/phpstan": "^0.12.0",
+                "spryker/code-sniffer": "*"
             },
             "type": "library",
             "extra": {
@@ -4892,23 +4893,23 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "proprietary"
+                "MIT"
             ],
             "description": "NewRelic module",
-            "time": "2020-06-19T09:30:20+00:00"
+            "time": "2020-07-03T14:56:19+00:00"
         },
         {
             "name": "spryker-eco/payone",
-            "version": "4.0.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-eco/payone.git",
-                "reference": "e1a92dfecbbda112c6e53a8cbc00ea9d4ce0474f"
+                "reference": "9b4c280c4f161b7e0a53c18b21b68a47797e17ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-eco/payone/zipball/e1a92dfecbbda112c6e53a8cbc00ea9d4ce0474f",
-                "reference": "e1a92dfecbbda112c6e53a8cbc00ea9d4ce0474f",
+                "url": "https://api.github.com/repos/spryker-eco/payone/zipball/9b4c280c4f161b7e0a53c18b21b68a47797e17ff",
+                "reference": "9b4c280c4f161b7e0a53c18b21b68a47797e17ff",
                 "shasum": ""
             },
             "require": {
@@ -4924,6 +4925,7 @@
                 "spryker/log": "^3.0.0",
                 "spryker/oms": "^6.0.0 || ^7.0.0 || ^8.0.0 || ^10.0.0 || ^11.0.0",
                 "spryker/propel-orm": "^1.0.0",
+                "spryker/quote": "^2.14.0",
                 "spryker/refund": "^4.0.0 || ^5.0.0",
                 "spryker/sales": "^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^10.0.0 || ^11.0.0",
                 "spryker/shipment": "^6.0.0 || ^8.0.0",
@@ -4937,6 +4939,8 @@
             },
             "require-dev": {
                 "spryker/application": "^3.0.0",
+                "spryker/checkout": "*",
+                "spryker/code-sniffer": "*",
                 "spryker/country": "^3.2.0",
                 "spryker/payment": "^4.0.0 || ^5.0.0 ",
                 "spryker/propel": "*",
@@ -4954,7 +4958,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0.x-dev"
+                    "dev-master": "4.0.x-dev"
                 }
             },
             "autoload": {
@@ -4967,7 +4971,7 @@
                 "MIT"
             ],
             "description": "Payone module",
-            "time": "2020-06-25T08:37:34+00:00"
+            "time": "2020-07-03T15:48:38+00:00"
         },
         {
             "name": "spryker/decimal-object",
@@ -5275,7 +5279,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "94c1ebc1a7d6885b20f7bd98b969589dec55dd4b"
+                "reference": "bc5e76863816c588e9762694b89ff36599278344"
             },
             "require": {
                 "php": ">=7.2"
@@ -6000,7 +6004,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-07-03T11:29:00+00:00"
+            "time": "2020-07-03T15:48:41+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6008,7 +6012,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "d4165af91dab43c7dba4f52f7ee03ce08e9898c0"
+                "reference": "5af7d8294ff8243e9c7bcdd08847988f9067ab8d"
             },
             "require": {
                 "php": ">=7.2"
@@ -6165,7 +6169,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-07-03T09:16:53+00:00"
+            "time": "2020-07-03T15:48:44+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -6173,12 +6177,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/synchronization-behavior.git",
-                "reference": "a97bf6d782c853d24af38abc1ab506c8a26ba46e"
+                "reference": "4bced883729484faabb0b2213488813b19d4b491"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/a97bf6d782c853d24af38abc1ab506c8a26ba46e",
-                "reference": "a97bf6d782c853d24af38abc1ab506c8a26ba46e",
+                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/4bced883729484faabb0b2213488813b19d4b491",
+                "reference": "4bced883729484faabb0b2213488813b19d4b491",
                 "shasum": ""
             },
             "require": {
@@ -6214,7 +6218,7 @@
                 "proprietary"
             ],
             "description": "SynchronizationBehavior module",
-            "time": "2020-07-03T11:25:14+00:00"
+            "time": "2020-07-03T13:13:27+00:00"
         },
         {
             "name": "spryker/uuid-behavior",
@@ -12766,6 +12770,12 @@
             "package": "spryker/silexphp"
         },
         {
+            "alias": "4.0.1",
+            "alias_normalized": "4.0.1.0",
+            "version": "9999999-dev",
+            "package": "spryker-eco/payone"
+        },
+        {
             "alias": "0.2.6",
             "alias_normalized": "0.2.6.0",
             "version": "9999999-dev",
@@ -12784,6 +12794,7 @@
         "spryker/silexphp": 20,
         "spryker-eco/loggly": 20,
         "spryker-eco/new-relic": 20,
+        "spryker-eco/payone": 20,
         "spryker/architecture-sniffer": 20,
         "spryker/development-core": 20,
         "spryker/code-generator": 20,
