@@ -24,19 +24,23 @@ use Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface;
 class ProductPriceHydratorStep implements DataImportStepInterface
 {
     public const BULK_SIZE = 5000;
-    public const KEY_ABSTRACT_SKU = 'abstract_sku';
-    public const KEY_CONCRETE_SKU = 'concrete_sku';
+
+    public const COLUMN_ABSTRACT_SKU = 'abstract_sku';
+    public const COLUMN_CONCRETE_SKU = 'concrete_sku';
+    public const COLUMN_CURRENCY = 'currency';
+    public const COLUMN_STORE = 'store';
+    public const COLUMN_PRICE_NET = 'value_net';
+    public const COLUMN_PRICE_GROSS = 'value_gross';
+    public const COLUMN_PRICE_DATA = 'price_data';
+    public const COLUMN_PRICE_DATA_CHECKSUM = 'price_data_checksum';
+    public const COLUMN_PRICE_TYPE = 'price_type';
+
     public const KEY_ID_PRODUCT_ABSTRACT = 'id_product_abstract';
     public const KEY_ID_PRODUCT = 'id_product';
     public const KEY_ID_PRICE_PRODUCT = 'id_price_product';
-    public const KEY_STORE = 'store';
-    public const KEY_CURRENCY = 'currency';
-    public const KEY_PRICE_TYPE = 'price_type';
     public const KEY_PRICE_TYPE_NAME = 'name';
     public const KEY_PRICE_MODE_CONFIGURATION = 'price_mode_configuration';
     public const KEY_DEFAULT_PRICE_MODE_CONFIGURATION = 2;
-    public const KEY_PRICE_NET = 'value_net';
-    public const KEY_PRICE_GROSS = 'value_gross';
     public const KEY_PRICE_GROSS_DB = 'gross_price';
     public const KEY_PRICE_NET_DB = 'net_price';
     public const KEY_CURRENCY_NAME = 'name';
@@ -50,8 +54,6 @@ class ProductPriceHydratorStep implements DataImportStepInterface
     public const KEY_SKU = 'sku';
     public const PRICE_TYPE_TRANSFER = 'PRICE_TYPE_TRANSFER';
     public const PRICE_PRODUCT_TRANSFER = 'PRICE_PRODUCT_TRANSFER';
-    public const KEY_PRICE_DATA = 'price_data';
-    public const KEY_PRICE_DATA_CHECKSUM = 'price_data_checksum';
     public const KEY_PRICE_DATA_PREFIX = 'price_data.';
     public const KEY_ID_PRICE_TYPE = 'id_price_type';
     public const KEY_ID_CURRENCY = 'id_currency';
@@ -103,16 +105,16 @@ class ProductPriceHydratorStep implements DataImportStepInterface
     {
         $productPriceTransfer = new SpyPriceProductEntityTransfer();
 
-        if (empty($dataSet[static::KEY_ABSTRACT_SKU]) && empty($dataSet[static::KEY_CONCRETE_SKU])) {
+        if (empty($dataSet[static::COLUMN_ABSTRACT_SKU]) && empty($dataSet[static::COLUMN_CONCRETE_SKU])) {
             throw new DataKeyNotFoundInDataSetException(sprintf(
                 'One of "%s" or "%s" must be in the data set. Given: "%s"',
-                $dataSet[static::KEY_ABSTRACT_SKU],
-                $dataSet[static::KEY_ABSTRACT_SKU],
+                $dataSet[static::COLUMN_ABSTRACT_SKU],
+                $dataSet[static::COLUMN_ABSTRACT_SKU],
                 implode(', ', array_keys($dataSet->getArrayCopy()))
             ));
         }
 
-        if (!empty($dataSet[static::KEY_ABSTRACT_SKU])) {
+        if (!empty($dataSet[static::COLUMN_ABSTRACT_SKU])) {
             $productPriceTransfer->setSpyProductAbstract($this->importProductAbstract($dataSet));
         } else {
             $productPriceTransfer->setProduct($this->importProductConcrete($dataSet));
@@ -133,19 +135,19 @@ class ProductPriceHydratorStep implements DataImportStepInterface
     protected function importPriceProductStore(DataSetInterface $dataSet): SpyPriceProductStoreEntityTransfer
     {
         $currencyEntityTransfer = new SpyCurrencyEntityTransfer();
-        $currencyEntityTransfer->setName($dataSet[static::KEY_CURRENCY]);
+        $currencyEntityTransfer->setName($dataSet[static::COLUMN_CURRENCY]);
 
         $storeEntityTransfer = new SpyStoreEntityTransfer();
-        $storeEntityTransfer->setName($dataSet[static::KEY_STORE]);
+        $storeEntityTransfer->setName($dataSet[static::COLUMN_STORE]);
 
         $priceProductStoreEntityTransfer = new SpyPriceProductStoreEntityTransfer();
         $priceProductStoreEntityTransfer
             ->setCurrency($currencyEntityTransfer)
             ->setStore($storeEntityTransfer)
-            ->setNetPrice($dataSet[static::KEY_PRICE_NET])
-            ->setGrossPrice($dataSet[static::KEY_PRICE_GROSS])
-            ->setPriceData($dataSet[static::KEY_PRICE_DATA])
-            ->setPriceDataChecksum($dataSet[static::KEY_PRICE_DATA_CHECKSUM]);
+            ->setNetPrice($dataSet[static::COLUMN_PRICE_NET])
+            ->setGrossPrice($dataSet[static::COLUMN_PRICE_GROSS])
+            ->setPriceData($dataSet[static::COLUMN_PRICE_DATA])
+            ->setPriceDataChecksum($dataSet[static::COLUMN_PRICE_DATA_CHECKSUM]);
 
         return $priceProductStoreEntityTransfer;
     }
@@ -159,7 +161,7 @@ class ProductPriceHydratorStep implements DataImportStepInterface
     {
         $priceTypeTransfer = new SpyPriceTypeEntityTransfer();
         $priceTypeTransfer
-            ->setName($dataSet[static::KEY_PRICE_TYPE])
+            ->setName($dataSet[static::COLUMN_PRICE_TYPE])
             ->setPriceModeConfiguration(static::KEY_DEFAULT_PRICE_MODE_CONFIGURATION);
 
         $dataSet[static::PRICE_TYPE_TRANSFER] = $priceTypeTransfer;
@@ -175,7 +177,7 @@ class ProductPriceHydratorStep implements DataImportStepInterface
     protected function importProductAbstract(DataSetInterface $dataSet): SpyProductAbstractEntityTransfer
     {
         $productAbstractTransfer = new SpyProductAbstractEntityTransfer();
-        $productAbstractTransfer->setSku($dataSet[static::KEY_ABSTRACT_SKU]);
+        $productAbstractTransfer->setSku($dataSet[static::COLUMN_ABSTRACT_SKU]);
 
         return $productAbstractTransfer;
     }
@@ -188,7 +190,7 @@ class ProductPriceHydratorStep implements DataImportStepInterface
     protected function importProductConcrete(DataSetInterface $dataSet): SpyProductEntityTransfer
     {
         $productConcreteTransfer = new SpyProductEntityTransfer();
-        $productConcreteTransfer->setSku($dataSet[static::KEY_CONCRETE_SKU]);
+        $productConcreteTransfer->setSku($dataSet[static::COLUMN_CONCRETE_SKU]);
 
         return $productConcreteTransfer;
     }
@@ -203,14 +205,14 @@ class ProductPriceHydratorStep implements DataImportStepInterface
         $priceData = $this->getPriceData($dataSet);
 
         if ($priceData === []) {
-            $dataSet[static::KEY_PRICE_DATA] = null;
-            $dataSet[static::KEY_PRICE_DATA_CHECKSUM] = null;
+            $dataSet[static::COLUMN_PRICE_DATA] = null;
+            $dataSet[static::COLUMN_PRICE_DATA_CHECKSUM] = null;
 
             return;
         }
 
-        $dataSet[static::KEY_PRICE_DATA] = $this->utilEncodingService->encodeJson($priceData);
-        $dataSet[static::KEY_PRICE_DATA_CHECKSUM] = $this->priceProductFacade->generatePriceDataChecksum($priceData);
+        $dataSet[static::COLUMN_PRICE_DATA] = $this->utilEncodingService->encodeJson($priceData);
+        $dataSet[static::COLUMN_PRICE_DATA_CHECKSUM] = $this->priceProductFacade->generatePriceDataChecksum($priceData);
     }
 
     /**
@@ -263,7 +265,7 @@ class ProductPriceHydratorStep implements DataImportStepInterface
             );
         }
 
-        return $keyParts[1];
+        return end($keyParts);
     }
 
     /**
