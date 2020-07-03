@@ -38,6 +38,7 @@ use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Checkout\SalesOrderThre
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Checkout\ItemMetadataSaverPlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\Checkout\OrderShipmentSavePlugin;
 use Spryker\Zed\ShipmentCheckoutConnector\Communication\Plugin\Checkout\ShipmentCheckoutPreCheckPlugin;
+use SprykerEco\Zed\Payone\Communication\Plugin\Checkout\PayoneCheckoutPostSaveHookPlugin;
 
 class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
 {
@@ -102,6 +103,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new PaymentPostCheckPlugin(),
             new CloseQuoteRequestCheckoutPostSaveHookPlugin(),
             new SendEmailToGiftCardUser(), #GiftCardFeature
+            new PayoneCheckoutPostSaveHookPlugin(),
         ];
     }
 

@@ -62,6 +62,8 @@ use Spryker\Zed\Log\Communication\Plugin\ZedLoggerConfigPlugin;
 use Spryker\Zed\Oms\OmsConfig;
 use Spryker\Zed\Propel\PropelConfig;
 use SprykerEco\Shared\Loggly\LogglyConstants;
+use SprykerEco\Shared\Payone\PayoneConstants;
+use SprykerEco\Zed\Payone\PayoneConfig;
 use SprykerShop\Shared\CalculationPage\CalculationPageConstants;
 use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
 use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
@@ -351,8 +353,8 @@ $config[ApplicationConstants::ZED_SSL_ENABLED] = $config[SessionConstants::ZED_S
 $config[ApplicationConstants::ZED_SSL_EXCLUDED] = ['health-check/index'];
 
 // ---------- Error handling
-$config[ErrorHandlerConstants::YVES_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Yves/errorpage/error.html';
-$config[ErrorHandlerConstants::ZED_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Zed/errorpage/error.html';
+$config[ErrorHandlerConstants::YVES_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Yves/errorpage/5xx.html';
+$config[ErrorHandlerConstants::ZED_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Zed/errorpage/5xx.html';
 $config[ErrorHandlerConstants::ERROR_RENDERER] = WebHtmlErrorRenderer::class;
 // Due to some deprecation notices we silence all deprecations for the time being
 $config[ErrorHandlerConstants::ERROR_LEVEL] = E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED;
@@ -413,11 +415,14 @@ $config[NopaymentConstants::WHITELIST_PAYMENT_METHODS] = [
 // ---------- State machine (OMS)
 $config[OmsConstants::PROCESS_LOCATION] = [
     OmsConfig::DEFAULT_PROCESS_LOCATION,
+    APPLICATION_ROOT_DIR . '/vendor/spryker-eco/payone/config/Zed/Oms',
 ];
 $config[OmsConstants::ACTIVE_PROCESSES] = [
     'DummyPayment01',
     'Nopayment01',
     'MarketplacePayment01',
+    'PayoneCreditCardPartialOperations',
+    'PayoneOnlineTransferPartialOperations',
 ];
 $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
     DummyPaymentConfig::PAYMENT_METHOD_INVOICE => 'DummyPayment01',
@@ -425,6 +430,8 @@ $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
     DummyMarketplacePaymentConfig::PAYMENT_METHOD_DUMMY_MARKETPLACE_PAYMENT_INVOICE => 'MarketplacePayment01',
     GiftCardConfig::PROVIDER_NAME => 'DummyPayment01',
     NopaymentConfig::PAYMENT_PROVIDER_NAME => 'Nopayment01',
+    PayoneConfig::PAYMENT_METHOD_CREDIT_CARD => 'PayoneCreditCardPartialOperations',
+    PayoneConfig::PAYMENT_METHOD_INSTANT_ONLINE_TRANSFER => 'PayoneOnlineTransferPartialOperations',
 ];
 
 // ---------- Queue
@@ -568,7 +575,7 @@ $config[TranslatorConstants::TRANSLATION_ZED_FILE_PATH_PATTERNS] = [
 ];
 
 // ----------- Yves assets
-$config[ShopUiConstants::YVES_ASSETS_URL_PATTERN] = sprintf('/assets/%s%s/', '%theme%', APPLICATION_CODE_BUCKET);
+$config[ShopUiConstants::YVES_ASSETS_URL_PATTERN] = '/assets/' . (getenv('SPRYKER_BUILD_HASH') ?: 'current') . '/%theme%/';
 
 // ----------- Api
 $config[ApiConstants::ENABLE_API_DEBUG] = false;
@@ -658,4 +665,31 @@ $config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = sprintf(
 $config[KernelConstants::DOMAIN_WHITELIST] = [
     $config[ApplicationConstants::HOST_YVES],
     $config[ApplicationConstants::HOST_ZED],
+    'threedssvc.pay1.de', // trusted Payone domain
+    'www.sofort.com', // trusted Payone domain
+];
+
+// ----------- Payone
+$config[PayoneConstants::PAYONE] = [
+    PayoneConstants::PAYONE_CREDENTIALS_ENCODING => 'UTF-8',
+    PayoneConstants::PAYONE_CREDENTIALS_KEY => '',
+    PayoneConstants::PAYONE_CREDENTIALS_MID => '',
+    PayoneConstants::PAYONE_CREDENTIALS_AID => '',
+    PayoneConstants::PAYONE_CREDENTIALS_PORTAL_ID => '',
+    PayoneConstants::PAYONE_PAYMENT_GATEWAY_URL => 'https://api.pay1.de/post-gateway/',
+    PayoneConstants::HOST_YVES => $config[ApplicationConstants::BASE_URL_YVES],
+    PayoneConstants::PAYONE_MODE => PayoneConstants::PAYONE_MODE_TEST,
+    PayoneConstants::PAYONE_EMPTY_SEQUENCE_NUMBER => 0,
+    PayoneConstants::PAYONE_REDIRECT_SUCCESS_URL => sprintf(
+        '%s/payone/payment-success',
+        $config[ApplicationConstants::BASE_URL_YVES]
+    ),
+    PayoneConstants::PAYONE_REDIRECT_ERROR_URL => sprintf(
+        '%s/payone/payment-failure',
+        $config[ApplicationConstants::BASE_URL_YVES]
+    ),
+    PayoneConstants::PAYONE_REDIRECT_BACK_URL => sprintf(
+        '%s/payone/regular-redirect-payment-cancellation',
+        $config[ApplicationConstants::BASE_URL_YVES]
+    ),
 ];

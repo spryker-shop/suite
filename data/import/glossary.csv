@@ -1079,6 +1079,8 @@ mail.order.shipped.footer.text_line_1,Viele Grüße,de_DE
 mail.order.shipped.footer.text_line_1,Have a great day!,en_US
 mail.order.shipped.footer.text_line_2,Dein Spryker Shop,de_DE
 mail.order.shipped.footer.text_line_2,Your Spryker Shop,en_US
+mail.order_invoice.subject,"Invoice: %invoiceReference%",en_US
+mail.order_invoice.subject,"Rechnung: %invoiceReference%",de_DE
 cart.item.remove.confirm,Are you sure that you want to remove this item?,en_US
 cart.item.remove.confirm,"Sind Sie sicher, dass Sie diesen Artikel entfernen möchten?",de_DE
 cart.voucher.remove,Remove,en_US
@@ -2367,6 +2369,10 @@ sales-order-threshold.hard-minimum-threshold.de.eur.message,You should add items
 sales-order-threshold.hard-minimum-threshold.de.eur.message,Sie sollten Waren im Wert von {{threshold}} dem Warenkorb hinzufügen um die empfohlene Schwelle zu erreichen. Sie können nicht mit der Bestellung fortfahren,de_DE
 sales-order-threshold.hard-minimum-threshold.de.chf.message,You should add items for {{threshold}} to pass a recommended threshold. You can't proceed with checkout,en_US
 sales-order-threshold.hard-minimum-threshold.de.chf.message,Sie sollten Waren im Wert von {{threshold}} dem Warenkorb hinzufügen um die empfohlene Schwelle zu erreichen. Sie können nicht mit der Bestellung fortfahren,de_DE
+sales-order-threshold.hard-maximum-threshold.de.eur.message,The cart value cannot be higher than {{threshold}}. Please remove some items to proceed with the order,en_US
+sales-order-threshold.hard-maximum-threshold.de.eur.message,"Der Warenkorbwert darf nicht höher als {{threshold}} sein. Bitte entfernen Sie einige Artikel, um mit der Bestellung fortzufahren",de_DE
+sales-order-threshold.hard-maximum-threshold.de.chf.message,The cart value cannot be higher than {{threshold}}. Please remove some items to proceed with the order,en_US
+sales-order-threshold.hard-maximum-threshold.de.chf.message,"Der Warenkorbwert darf nicht höher als {{threshold}} sein. Bitte entfernen Sie einige Artikel, um mit der Bestellung fortzufahren",de_DE
 sales-order-threshold.soft-minimum-threshold.de.eur.message,"You need to add items for {{threshold}} to pass a recommended threshold, but if you want can proceed to checkout.",en_US
 sales-order-threshold.soft-minimum-threshold.de.eur.message,Sie sollten Waren im Wert von {{threshold}} dem Warenkorb hinzufügen um die empfohlene Schwelle zu erreichen. Sie können trotzdem weiter zur Kasse.,de_DE
 sales-order-threshold.soft-minimum-threshold.de.chf.message,"You need to add items for {{threshold}} to pass a recommended threshold, but if you want can proceed to checkout.",en_US
@@ -3471,3 +3477,75 @@ order_cancel_widget.cancel_order,Cancel Order,en_US
 order_cancel_widget.cancel_order,Bestellung stornieren,de_DE
 order_cancel_widget.order.cancelled,Order was canceled successfully.,en_US
 order_cancel_widget.order.cancelled,Die Bestellung wurde erfolgreich storniert.,de_DE
+order_invoice.invoice_template.table.number,Pos.,en_US
+order_invoice.invoice_template.table.number,Pos.,de_DE
+order_invoice.invoice_template.table.quantity,Quantity,en_US
+order_invoice.invoice_template.table.quantity,Menge,de_DE
+order_invoice.invoice_template.table.name,Item,en_US
+order_invoice.invoice_template.table.name,Artikelbezeihnung,de_DE
+order_invoice.invoice_template.table.tax,Tax rate,en_US
+order_invoice.invoice_template.table.tax,Steuersatz,de_DE
+order_invoice.invoice_template.table.price,Price,en_US
+order_invoice.invoice_template.table.price,Preis,de_DE
+order_invoice.invoice_template.table.subtotal,Subtotal,en_US
+order_invoice.invoice_template.table.subtotal,Zwischensumme,de_DE
+order_invoice.invoice_template.table.discount,Discount,en_US
+order_invoice.invoice_template.table.discount,Rabatt,de_DE
+order_invoice.invoice_template.table.tax.included,this includes %tax_rate%% VAT net,en_US
+order_invoice.invoice_template.table.tax.included,darin enthalten %tax_rate%% MwSt. Netto,de_DE
+order_invoice.invoice_template.table.tax.name,VAT,en_US
+order_invoice.invoice_template.table.tax.name,MwSt.,de_DE
+order_invoice.invoice_template.table.grandtotal,Grand total,en_US
+order_invoice.invoice_template.table.grandtotal,Summe,de_DE
+order_invoice.invoice_template.reference,Invoice number:,en_US
+order_invoice.invoice_template.reference,Rechnungsnummer:,de_DE
+order_invoice.invoice_template.introduction,We hereby charge you for the following goods:,en_US
+order_invoice.invoice_template.introduction,Hiermit berechnen wir Ihnen folgende Ware:,de_DE
+order_invoice.invoice_template.company.name,Spryker Systems GmbH Berlin,en_US
+order_invoice.invoice_template.company.name,Spryker Systems GmbH Berlin,de_DE
+order_invoice.invoice_template.company.address,Julie-Wolfthorn-Straße 1<br>10115 Berlin <br> Germany,en_US
+order_invoice.invoice_template.company.address,Julie-Wolfthorn-Straße 1<br>10115 Berlin <br> Germany,de_DE
+order_invoice.invoice_template.company.group,Unternehmensgruppe Spryker Systems GmbH	,en_US
+order_invoice.invoice_template.company.group,Spryker Systems GmbH Group,de_DE
+order_invoice.invoice_template.merchant.name,Spryker Systems GmbH Berlin,en_US
+order_invoice.invoice_template.merchant.name,Spryker Systems GmbH Berlin,de_DE
+order_invoice.invoice_template.merchant.address,Julie-Wolfthorn-Straße 1 + 10115 Berlin,en_US
+order_invoice.invoice_template.merchant.address,Julie-Wolfthorn-Straße 1 + 10115 Berlin,de_DE
+order_invoice.invoice_template.table.total.net,Total net,en_US
+order_invoice.invoice_template.table.total.net,Gesamt Netto,de_DE
+PayoneCreditCard,Credit Card,en_US
+PayoneCreditCard,Kreditkarte,de_DE
+PayoneInstantOnlineTransfer,Online bank transfer,en_US
+PayoneInstantOnlineTransfer,Sofort-Überweisung,de_DE
+Payone_credit_card,Credit Card,en_US
+Payone_credit_card,Kreditkarte,de_DE
+Payone_credit_card.cardtype,Card type,en_US
+Payone_credit_card.cardtype,Kreditkarten-Typ,de_DE
+Payone_credit_card.cardpan,Card number,en_US
+Payone_credit_card.cardpan,Kartennummer,de_DE
+Payone_credit_card.cardholder,Card holder,en_US
+Payone_credit_card.cardholder,Karteninhaber,de_DE
+Payone_credit_card.cardexpiredate,Expire date,en_US
+Payone_credit_card.cardexpiredate,Verfallsdatum,de_DE
+Payone_credit_card.cardcvc2,CVC,en_US
+Payone_credit_card.cardcvc2,CVC (Kartenprüfnummer),de_DE
+payment.payone.creditcard,Credit Card,en_US
+payment.payone.creditcard,Kreditkarte,de_DE
+Payment.payone.creditcard,Credit Card,en_US
+Payment.payone.creditcard,Kreditkarte,de_DE
+payment.payone.online_bank_transfer,Online bank transfer,en_US
+payment.payone.online_bank_transfer,Sofort-Überweisung,de_DE
+Payment.payone.online_bank_transfer,Online bank transfer,en_US
+Payment.payone.online_bank_transfer,Sofort-Überweisung,de_DE
+payment.payone.instant-online-transfer,Online bank transfer,en_US
+payment.payone.instant-online-transfer,Sofort-Überweisung,de_DE
+Payment.payone.instant-online-transfer,Online bank transfer,en_US
+Payment.payone.instant-online-transfer,Sofort-Überweisung,de_DE
+payone.order.payment_details,Payment details,en_US
+payone.order.payment_details,Zahlungsdetails,de_DE
+payone.payment.error,The payment data was rejected. Please try another payment method.,en_US
+payone.payment.error,Die Bezahldaten wurden abgelehnt. Versuche es bitte mit einer anderen Zahlungsart.,de_DE
+checkout.payment.provider.Payone,Payone,en_US
+checkout.payment.provider.Payone,Payone,de_DE
+checkout.step.payment.cardholder_name,Cardholder name,en_US
+checkout.step.payment.cardholder_name,Karteninhaber Name,de_DE
