@@ -11,9 +11,9 @@ use Spryker\Client\MerchantProductOfferStorage\MerchantProductOfferStorageDepend
 use Spryker\Client\MerchantProductOfferStorage\Plugin\DefaultProductOfferReferenceStrategyPlugin;
 use Spryker\Client\MerchantProductOfferStorage\Plugin\ProductOfferReferenceStrategyPlugin;
 use Spryker\Client\MerchantProductOfferStorageExtension\Dependency\Plugin\ProductOfferStorageCollectionSorterPluginInterface;
-use Spryker\Client\MerchantProductStorage\Plugin\MerchantProductStrategyPlugin;
-use Spryker\Client\PriceProductStorage\Plugin\LowestPriceProductOfferStorageCollectionSorterPlugin;
-use Spryker\Client\PriceProductStorage\Plugin\PriceProductOfferStorageExpanderPlugin;
+use Spryker\Client\MerchantProductStorage\Plugin\MerchantProductProductOfferReferenceStrategyPlugin;
+use Spryker\Client\PriceProductOfferStorage\Plugin\LowestPriceProductOfferStorageCollectionSorterPlugin;
+use Spryker\Client\PriceProductOfferStorage\Plugin\PriceProductOfferStorageExpanderPlugin;
 
 class MerchantProductOfferStorageDependencyProvider extends SprykerMerchantProductOfferStorageDependencyProvider
 {
@@ -23,16 +23,16 @@ class MerchantProductOfferStorageDependencyProvider extends SprykerMerchantProdu
     protected function getProductOfferReferenceStrategyPlugins(): array
     {
         return [
+            new MerchantProductProductOfferReferenceStrategyPlugin(),
             new ProductOfferReferenceStrategyPlugin(),
-            new MerchantProductStrategyPlugin(),
             new DefaultProductOfferReferenceStrategyPlugin(),
         ];
     }
 
     /**
-     * @return \Spryker\Client\MerchantProductOfferStorageExtension\Dependency\Plugin\PriceProductOfferStorageExpanderPluginInterface[]
+     * @return \Spryker\Client\MerchantProductOfferStorageExtension\Dependency\Plugin\ProductOfferStorageExpanderPluginInterface[]
      */
-    protected function getPriceProductOfferStorageExpanderPlugins(): array
+    protected function getProductOfferStorageExpanderPlugins(): array
     {
         return [
             new PriceProductOfferStorageExpanderPlugin(),

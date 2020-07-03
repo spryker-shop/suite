@@ -24,7 +24,6 @@ use Spryker\Shared\GlossaryStorage\GlossaryStorageConfig;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\MerchantOpeningHoursStorage\MerchantOpeningHoursStorageConfig;
 use Spryker\Shared\MerchantProductOfferStorage\MerchantProductOfferStorageConfig;
-use Spryker\Shared\MerchantProductStorage\MerchantProductStorageConfig;
 use Spryker\Shared\MerchantStorage\MerchantStorageConfig;
 use Spryker\Shared\PriceProductOfferStorage\PriceProductOfferStorageConfig;
 use Spryker\Shared\PriceProductStorage\PriceProductStorageConstants;
@@ -83,8 +82,6 @@ class QueueDependencyProvider extends SprykerDependencyProvider
             ProductOfferAvailabilityStorageConfig::PRODUCT_OFFER_AVAILABILITY_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
             ProductOfferAvailabilityStorageConfig::PRODUCT_OFFER_AVAILABILITY_SYNC_STORAGE_ERROR_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
             SalesReturnSearchConfig::SYNC_SEARCH_RETURN => new SynchronizationSearchQueueMessageProcessorPlugin(),
-            MerchantProductStorageConfig::MERCHANT_PRODUCT_ABSTRACT_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
-            MerchantProductStorageConfig::MERCHANT_PRODUCT_ABSTRACT_SYNC_STORAGE_ERROR_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
         ];
     }
 }
