@@ -6,7 +6,10 @@
         payment: _view.paymentForm
     },
     title: 'checkout.step.payment.title' | trans,
-    customForms: {}
+    customForms: {
+        'Payone/credit_card': ['credit-card', 'payone'],
+        'Payone/instant_online_transfer': ['instant-online-transfer', 'payone'],
+    }
 } %}
 
 {% block content %}
@@ -21,7 +24,9 @@
             },
             submit: {
                 enable: true,
-                text: 'checkout.step.summary' | trans
+                isSingleClickEnforcerEnabled: false,
+                text: 'checkout.step.summary' | trans,
+                class: 'button button--success js-payone-credit-card__submit',
             },
             cancel: {
                 enable: true,
