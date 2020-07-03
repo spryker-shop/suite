@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\ProductStorage;
 
-use Spryker\Zed\MerchantProductStorage\Plugin\ProductStorage\MerchantProductAbstractStorageExpanderPlugin;
+use Spryker\Zed\MerchantProductStorage\Communication\Plugin\ProductStorage\MerchantProductAbstractStorageExpanderPlugin;
 use Spryker\Zed\ProductStorage\ProductStorageDependencyProvider as SprykerProductStorageDependencyProvider;
 
 class ProductStorageDependencyProvider extends SprykerProductStorageDependencyProvider
