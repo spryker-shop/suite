@@ -428,3 +428,6 @@ $config[PayoneConstants::PAYONE] = [
         $config[ApplicationConstants::BASE_URL_YVES]
     ),
 ];
+
+// ----------- HTTP Security	
+$config[KernelConstants::DOMAIN_WHITELIST] = [];
