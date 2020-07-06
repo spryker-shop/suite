@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9ff649ddf48fc1636683f227df35fabe",
+    "content-hash": "d7c3109a90869241cce4cd8e8c36dd2e",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -3692,7 +3692,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -5265,11 +5265,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/bo-577/dev-merchant-portal-create-and-edit-offers",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "e7aa28eede4b27a5a75fb635fdb0908338a3e8ef"
+                "reference": "ae1365ab4bb9da848934c1eb16fe5f5ea48e6c00"
             },
             "require": {
                 "php": ">=7.2"
@@ -5761,6 +5761,7 @@
                 "spryker/product-offer-availabilities-rest-api": "*",
                 "spryker/product-offer-availability": "*",
                 "spryker/product-offer-availability-storage": "*",
+                "spryker/product-offer-extension": "*",
                 "spryker/product-offer-merchant-portal-gui": "*",
                 "spryker/product-offer-packaging-unit": "*",
                 "spryker/product-offer-prices-rest-api": "*",
@@ -5840,6 +5841,8 @@
                 "spryker/sales-configurable-bundle": "*",
                 "spryker/sales-data-export": "*",
                 "spryker/sales-extension": "*",
+                "spryker/sales-invoice": "*",
+                "spryker/sales-invoice-extension": "*",
                 "spryker/sales-merchant-portal-gui": "*",
                 "spryker/sales-oms": "*",
                 "spryker/sales-order-threshold": "*",
@@ -5992,7 +5995,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-07-02T09:39:09+00:00"
+            "time": "2020-07-06T10:18:22+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -12807,6 +12810,5 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    },
-    "plugin-api-version": "1.1.0"
+    }
 }
