@@ -6012,7 +6012,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "5af7d8294ff8243e9c7bcdd08847988f9067ab8d"
+                "reference": "5957bcbd92c6024cabc82dcb62a3f05506c3dc19"
             },
             "require": {
                 "php": ">=7.2"
@@ -6169,7 +6169,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-07-03T15:48:44+00:00"
+            "time": "2020-07-06T06:29:38+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -9612,30 +9612,30 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.42.5",
+            "version": "v1.43.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "87b2ea9d8f6fd014d0621ca089bb1b3769ea3f8e"
+                "reference": "597a03e85a60af6feee4f5127f3ef4279a1694c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/87b2ea9d8f6fd014d0621ca089bb1b3769ea3f8e",
-                "reference": "87b2ea9d8f6fd014d0621ca089bb1b3769ea3f8e",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/597a03e85a60af6feee4f5127f3ef4279a1694c3",
+                "reference": "597a03e85a60af6feee4f5127f3ef4279a1694c3",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.0",
+                "php": ">=7.1.3",
                 "symfony/polyfill-ctype": "^1.8"
             },
             "require-dev": {
                 "psr/container": "^1.0",
-                "symfony/phpunit-bridge": "^4.4|^5.0"
+                "symfony/phpunit-bridge": "^4.4.9|^5.0.9"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.42-dev"
+                    "dev-master": "1.43-dev"
                 }
             },
             "autoload": {
@@ -9672,7 +9672,29 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2020-02-11T05:59:23+00:00"
+            "funding": [
+                {
+                    "url": "https://certification.symfony.com/",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://live.symfony.com/",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://symfony.com/cloud/",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/twig/twig",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-07-05T13:00:49+00:00"
         },
         {
             "name": "voku/anti-xss",
@@ -10353,20 +10375,23 @@
         },
         {
             "name": "codeception/lib-innerbrowser",
-            "version": "1.3.1",
+            "version": "1.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/lib-innerbrowser.git",
-                "reference": "2123542b1325cc349ac68868abe74638bcb32ab6"
+                "reference": "7bdcee4cf654cfeeedd00405edd4f06f85255659"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/lib-innerbrowser/zipball/2123542b1325cc349ac68868abe74638bcb32ab6",
-                "reference": "2123542b1325cc349ac68868abe74638bcb32ab6",
+                "url": "https://api.github.com/repos/Codeception/lib-innerbrowser/zipball/7bdcee4cf654cfeeedd00405edd4f06f85255659",
+                "reference": "7bdcee4cf654cfeeedd00405edd4f06f85255659",
                 "shasum": ""
             },
             "require": {
                 "codeception/codeception": "*@dev",
+                "ext-dom": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
                 "php": ">=5.6.0 <8.0",
                 "symfony/browser-kit": ">=2.7 <6.0",
                 "symfony/dom-crawler": ">=2.7 <6.0"
@@ -10402,7 +10427,7 @@
             "keywords": [
                 "codeception"
             ],
-            "time": "2020-02-20T14:46:50+00:00"
+            "time": "2020-07-05T14:21:45+00:00"
         },
         {
             "name": "codeception/module-asserts",
@@ -10555,23 +10580,26 @@
         },
         {
             "name": "codeception/module-phpbrowser",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/module-phpbrowser.git",
-                "reference": "fbf585c8562e4e4875f351f5392bcb2b1a633cbe"
+                "reference": "c1962657504a2a476b8dbd1f1ee05e0c912e5645"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/module-phpbrowser/zipball/fbf585c8562e4e4875f351f5392bcb2b1a633cbe",
-                "reference": "fbf585c8562e4e4875f351f5392bcb2b1a633cbe",
+                "url": "https://api.github.com/repos/Codeception/module-phpbrowser/zipball/c1962657504a2a476b8dbd1f1ee05e0c912e5645",
+                "reference": "c1962657504a2a476b8dbd1f1ee05e0c912e5645",
                 "shasum": ""
             },
             "require": {
-                "codeception/codeception": "4.0.x-dev | ^4.0",
-                "codeception/lib-innerbrowser": "^1.0",
-                "guzzlehttp/guzzle": "^6.3.0",
+                "codeception/codeception": "*@dev",
+                "codeception/lib-innerbrowser": "^1.3.2",
+                "guzzlehttp/guzzle": "^6.3.0|^7.0.0",
                 "php": ">=5.6.0 <8.0"
+            },
+            "conflict": {
+                "codeception/codeception": "<4.0"
             },
             "require-dev": {
                 "codeception/module-rest": "dev-master | ^1.0",
@@ -10605,20 +10633,20 @@
                 "functional-testing",
                 "http"
             ],
-            "time": "2019-10-10T14:25:59+00:00"
+            "time": "2020-07-05T15:29:32+00:00"
         },
         {
             "name": "codeception/module-rest",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/module-rest.git",
-                "reference": "c86417af517bb1fb5b88550455d823a7c9fc167e"
+                "reference": "3664989d35003e182631cd9f4bc055fec009f5be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/module-rest/zipball/c86417af517bb1fb5b88550455d823a7c9fc167e",
-                "reference": "c86417af517bb1fb5b88550455d823a7c9fc167e",
+                "url": "https://api.github.com/repos/Codeception/module-rest/zipball/3664989d35003e182631cd9f4bc055fec009f5be",
+                "reference": "3664989d35003e182631cd9f4bc055fec009f5be",
                 "shasum": ""
             },
             "require": {
@@ -10656,7 +10684,7 @@
                 "codeception",
                 "rest"
             ],
-            "time": "2020-02-01T19:23:56+00:00"
+            "time": "2020-07-05T15:40:45+00:00"
         },
         {
             "name": "codeception/module-webdriver",
@@ -11377,16 +11405,16 @@
         },
         {
             "name": "psalm/phar",
-            "version": "3.12.1",
+            "version": "3.12.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/psalm/phar.git",
-                "reference": "cc179ccff16409960fdcb5a5d682e31cb70a0680"
+                "reference": "19957cf3088ffc9d7c02f9e692f9c0a7522fe3ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/psalm/phar/zipball/cc179ccff16409960fdcb5a5d682e31cb70a0680",
-                "reference": "cc179ccff16409960fdcb5a5d682e31cb70a0680",
+                "url": "https://api.github.com/repos/psalm/phar/zipball/19957cf3088ffc9d7c02f9e692f9c0a7522fe3ff",
+                "reference": "19957cf3088ffc9d7c02f9e692f9c0a7522fe3ff",
                 "shasum": ""
             },
             "require": {
@@ -11404,7 +11432,7 @@
                 "MIT"
             ],
             "description": "Composer-based Psalm Phar",
-            "time": "2020-06-23T01:17:35+00:00"
+            "time": "2020-07-03T19:29:42+00:00"
         },
         {
             "name": "roave/better-reflection",
