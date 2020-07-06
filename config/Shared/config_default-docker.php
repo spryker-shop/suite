@@ -8,6 +8,7 @@ use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Application\Log\Config\SprykerLoggerConfig;
 use Spryker\Shared\Cms\CmsConstants;
 use Spryker\Shared\Collector\CollectorConstants;
+use Spryker\Shared\Customer\CustomerConstants;
 use Spryker\Shared\DocumentationGeneratorRestApi\DocumentationGeneratorRestApiConstants;
 use Spryker\Shared\DummyMarketplacePayment\DummyMarketplacePaymentConfig;
 use Spryker\Shared\DummyPayment\DummyPaymentConfig;
@@ -45,6 +46,8 @@ use Spryker\Shared\Twig\TwigConstants;
 use Spryker\Shared\WebProfiler\WebProfilerConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use Spryker\Zed\Propel\PropelConfig;
+use SprykerEco\Shared\Payone\PayoneConstants;
+use SprykerEco\Zed\Payone\PayoneConfig;
 use SprykerShop\Shared\CalculationPage\CalculationPageConstants;
 use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
 use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
@@ -53,25 +56,29 @@ use Twig\Cache\FilesystemCache;
 
 /* ZED */
 $config[ApplicationConstants::HOST_ZED] = getenv('SPRYKER_ZED_HOST');
+$config[ZedRequestConstants::ZED_API_SSL_ENABLED] = (bool)getenv('SPRYKER_ZED_SSL_ENABLED');
 $config[SessionConstants::ZED_SESSION_COOKIE_DOMAIN] = getenv('SPRYKER_BE_HOST');
 $config[ApplicationConstants::ZED_TRUSTED_HOSTS]
     = $config[HttpConstants::ZED_TRUSTED_HOSTS]
     = [];
-$config[ApplicationConstants::PORT_ZED] = getenv('SPRYKER_ZED_PORT') ? ':' . getenv('SPRYKER_ZED_PORT') : '';
+$config[ApplicationConstants::PORT_ZED]
+    = $config[ApplicationConstants::PORT_SSL_ZED]
+    = getenv('SPRYKER_ZED_PORT') ? ':' . getenv('SPRYKER_ZED_PORT') : '';
+$backofficePort = getenv('SPRYKER_BE_PORT') ? ':' . getenv('SPRYKER_BE_PORT') : '';
 $config[ApplicationConstants::BASE_URL_ZED] = sprintf(
     'http://%s%s',
     getenv('SPRYKER_BE_HOST'),
-    getenv('SPRYKER_BE_PORT') ? ':' . getenv('SPRYKER_BE_PORT') : ''
+    $backofficePort
 );
 $config[ApplicationConstants::BASE_URL_SSL_ZED] = sprintf(
     'https://%s%s',
     getenv('SPRYKER_BE_HOST'),
-    getenv('SPRYKER_BE_PORT') ? ':' . getenv('SPRYKER_BE_PORT') : ''
+    $backofficePort
 );
 $config[ZedRequestConstants::HOST_ZED_API] = sprintf(
-    '%s:%d',
+    '%s%s',
     getenv('SPRYKER_ZED_HOST'),
-    getenv('SPRYKER_ZED_PORT')
+    $config[ApplicationConstants::PORT_ZED]
 );
 $config[ZedRequestConstants::BASE_URL_ZED_API] = sprintf(
     'http://%s',
@@ -124,15 +131,20 @@ $config[ApplicationConstants::ENABLE_APPLICATION_DEBUG]
 $config[WebProfilerConstants::IS_WEB_PROFILER_ENABLED]
     = $config[WebProfilerWidgetConstants::IS_WEB_PROFILER_ENABLED]
     = getenv('SPRYKER_DEBUG_ENABLED') && !getenv('SPRYKER_TESTING_ENABLED');
+$config[WebProfilerConstants::PROFILER_CACHE_DIRECTORY] = '/tmp/webprofiler';
 
 $config[OmsConstants::ACTIVE_PROCESSES] = [
     'DummyPayment01',
     'MarketplacePayment01',
+    'PayoneCreditCardPartialOperations',
+    'PayoneOnlineTransferPartialOperations',
 ];
 $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
     DummyPaymentConfig::PAYMENT_METHOD_INVOICE => 'DummyPayment01',
     DummyPaymentConfig::PAYMENT_METHOD_CREDIT_CARD => 'DummyPayment01',
     DummyMarketplacePaymentConfig::PAYMENT_METHOD_DUMMY_MARKETPLACE_PAYMENT_INVOICE => 'MarketplacePayment01',
+    PayoneConfig::PAYMENT_METHOD_CREDIT_CARD => 'PayoneCreditCardPartialOperations',
+    PayoneConfig::PAYMENT_METHOD_INSTANT_ONLINE_TRANSFER => 'PayoneOnlineTransferPartialOperations',
 ];
 
 $config[EventConstants::LOGGER_ACTIVE] = true;
@@ -154,9 +166,17 @@ $config[SessionConstants::YVES_SESSION_COOKIE_DOMAIN] = $config[ApplicationConst
 $config[ApplicationConstants::YVES_TRUSTED_HOSTS]
     = $config[HttpConstants::YVES_TRUSTED_HOSTS]
     = [];
-$config[ApplicationConstants::PORT_YVES] = getenv('SPRYKER_FE_PORT');
+$config[ApplicationConstants::PORT_YVES]
+    = $config[ApplicationConstants::PORT_SSL_YVES]
+    = getenv('SPRYKER_FE_PORT');
 $config[ApplicationConstants::BASE_URL_YVES] = sprintf(
     'http://%s%s',
+    $config[ApplicationConstants::HOST_YVES],
+    getenv('SPRYKER_FE_PORT') ? ':' . getenv('SPRYKER_FE_PORT') : ''
+);
+$config[CustomerConstants::BASE_URL_YVES] = $config[ApplicationConstants::BASE_URL_YVES];
+$config[ApplicationConstants::BASE_URL_SSL_YVES] = sprintf(
+    'https://%s%s',
     $config[ApplicationConstants::HOST_YVES],
     getenv('SPRYKER_FE_PORT') ? ':' . getenv('SPRYKER_FE_PORT') : ''
 );
@@ -256,17 +276,22 @@ $config[RabbitMqEnv::RABBITMQ_API_PASSWORD] = getenv('SPRYKER_BROKER_API_PASSWOR
 $config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = getenv('SPRYKER_BROKER_NAMESPACE');
 
 $rabbitConnections = json_decode(getenv('SPRYKER_BROKER_CONNECTIONS') ?: '[]', true);
+$defaultConnection = [
+    RabbitMqEnv::RABBITMQ_HOST => getenv('SPRYKER_BROKER_HOST'),
+    RabbitMqEnv::RABBITMQ_PORT => getenv('SPRYKER_BROKER_PORT'),
+    RabbitMqEnv::RABBITMQ_PASSWORD => getenv('SPRYKER_BROKER_PASSWORD'),
+    RabbitMqEnv::RABBITMQ_USERNAME => getenv('SPRYKER_BROKER_USERNAME'),
+];
 
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [];
-
 foreach ($rabbitConnections as $key => $connection) {
-    $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key] = [];
+    $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key] = $defaultConnection;
+    $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][RabbitMqEnv::RABBITMQ_CONNECTION_NAME] = $key . '-connection';
+    $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][RabbitMqEnv::RABBITMQ_STORE_NAMES] = [$key];
     foreach ($connection as $constant => $value) {
         $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][constant(RabbitMqEnv::class . '::' . $constant)] = $value;
     }
-
-    $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION] =
-        $config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] === $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][RabbitMqEnv::RABBITMQ_VIRTUAL_HOST];
+    $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION] = $key === APPLICATION_STORE;
 }
 /* End Broker */
 
@@ -302,7 +327,7 @@ $config[StorageConstants::STORAGE_KV_SOURCE] = strtolower(getenv('SPRYKER_KEY_VA
 
 $config[StorageRedisConstants::STORAGE_REDIS_HOST] = getenv('SPRYKER_KEY_VALUE_STORE_HOST');
 $config[StorageRedisConstants::STORAGE_REDIS_PORT] = getenv('SPRYKER_KEY_VALUE_STORE_PORT');
-$config[StorageRedisConstants::STORAGE_REDIS_DATABASE] = getenv('SPRYKER_KEY_VALUE_STORE_NAMESPACE');
+$config[StorageRedisConstants::STORAGE_REDIS_DATABASE] = getenv('SPRYKER_KEY_VALUE_STORE_NAMESPACE') ?: 1;
 
 // ---------- Session
 
@@ -318,7 +343,7 @@ $config[SessionRedisConstants::YVES_SESSION_REDIS_PROTOCOL] = 'tcp';
 $config[SessionRedisConstants::YVES_SESSION_REDIS_HOST] = getenv('SPRYKER_SESSION_FE_HOST');
 $config[SessionRedisConstants::YVES_SESSION_REDIS_PORT] = getenv('SPRYKER_SESSION_FE_PORT');
 $config[SessionRedisConstants::YVES_SESSION_REDIS_PASSWORD] = false;
-$config[SessionRedisConstants::YVES_SESSION_REDIS_DATABASE] = getenv('SPRYKER_SESSION_FE_NAMESPACE');
+$config[SessionRedisConstants::YVES_SESSION_REDIS_DATABASE] = getenv('SPRYKER_SESSION_FE_NAMESPACE') ?: 2;
 
 /**
  * Data source names are used exclusively when set, e.g. no other Redis session configuration will be used for the client.
@@ -332,11 +357,15 @@ $config[SessionRedisConstants::ZED_SESSION_REDIS_PROTOCOL] = 'tcp';
 $config[SessionRedisConstants::ZED_SESSION_REDIS_HOST] = getenv('SPRYKER_SESSION_BE_HOST');
 $config[SessionRedisConstants::ZED_SESSION_REDIS_PORT] = getenv('SPRYKER_SESSION_BE_PORT');
 $config[SessionRedisConstants::ZED_SESSION_REDIS_PASSWORD] = false;
-$config[SessionRedisConstants::ZED_SESSION_REDIS_DATABASE] = getenv('SPRYKER_SESSION_BE_NAMESPACE');
+$config[SessionRedisConstants::ZED_SESSION_REDIS_DATABASE] = getenv('SPRYKER_SESSION_BE_NAMESPACE') ?: 2;
 
 /* Mail */
-$config[MailConstants::SMTP_HOST] = getenv('SPRYKER_SMTP_HOST');
-$config[MailConstants::SMTP_PORT] = getenv('SPRYKER_SMTP_PORT');
+$config[MailConstants::SMTP_HOST] = getenv('SPRYKER_SMTP_HOST') ?: '';
+$config[MailConstants::SMTP_PORT] = getenv('SPRYKER_SMTP_PORT') ?: '';
+$config[MailConstants::SMTP_ENCRYPTION] = getenv('SPRYKER_SMTP_ENCRYPTION') ?: '';
+$config[MailConstants::SMTP_AUTH_MODE] = getenv('SPRYKER_SMTP_AUTH_MODE') ?: '';
+$config[MailConstants::SMTP_USERNAME] = getenv('SPRYKER_SMTP_USERNAME') ?: '';
+$config[MailConstants::SMTP_PASSWORD] = getenv('SPRYKER_SMTP_PASSWORD') ?: '';
 /* End Mail */
 
 /* Logging */
@@ -345,6 +374,7 @@ $config[LogConstants::LOG_FILE_PATH] = (getenv('SPRYKER_LOG_DIRECTORY') ?: APPLI
 
 $logDir = (getenv('SPRYKER_LOG_DIRECTORY') ?: APPLICATION_ROOT_DIR . '/data') . '/' . APPLICATION_STORE;
 
+$config[EventConstants::LOG_FILE_PATH] = $logDir . '/ZED/application_events.log';
 $config[QueueConstants::QUEUE_WORKER_OUTPUT_FILE_NAME] = $logDir . '/ZED/queue.log';
 $config[PropelConstants::LOG_FILE_PATH] = $logDir . '/ZED/propel.log';
 
@@ -374,3 +404,32 @@ $config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = (bool)getenv('D
 
 // ----------- Documentation generator
 $config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GENERATION] = true;
+
+// ----------- HTTP Security
+$config[KernelConstants::STRICT_DOMAIN_REDIRECT] = false;
+$config[KernelConstants::DOMAIN_WHITELIST] = [];
+
+// ----------- Payone
+$config[PayoneConstants::PAYONE] = [
+    PayoneConstants::PAYONE_CREDENTIALS_ENCODING => 'UTF-8',
+    PayoneConstants::PAYONE_CREDENTIALS_KEY => '',
+    PayoneConstants::PAYONE_CREDENTIALS_MID => '',
+    PayoneConstants::PAYONE_CREDENTIALS_AID => '',
+    PayoneConstants::PAYONE_CREDENTIALS_PORTAL_ID => '',
+    PayoneConstants::PAYONE_PAYMENT_GATEWAY_URL => 'https://api.pay1.de/post-gateway/',
+    PayoneConstants::HOST_YVES => $config[ApplicationConstants::BASE_URL_YVES],
+    PayoneConstants::PAYONE_MODE => PayoneConstants::PAYONE_MODE_TEST,
+    PayoneConstants::PAYONE_EMPTY_SEQUENCE_NUMBER => 0,
+    PayoneConstants::PAYONE_REDIRECT_SUCCESS_URL => sprintf(
+        '%s/payone/payment-success',
+        $config[ApplicationConstants::BASE_URL_YVES]
+    ),
+    PayoneConstants::PAYONE_REDIRECT_ERROR_URL => sprintf(
+        '%s/payone/payment-failure',
+        $config[ApplicationConstants::BASE_URL_YVES]
+    ),
+    PayoneConstants::PAYONE_REDIRECT_BACK_URL => sprintf(
+        '%s/payone/regular-redirect-payment-cancellation',
+        $config[ApplicationConstants::BASE_URL_YVES]
+    ),
+];
