@@ -5,8 +5,15 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { findComponentEntryPoints, findComponentStyles, findAppEntryPoint } = require('../libs/finder');
 const { getAliasList } = require('../libs/alias');
 const { getAssetsConfig } = require('../libs/assets-configurator');
-const imagesOptimization = null;
 const { buildVariantSettings } = require('../settings');
+
+let isImagesOptimizationEnabled = false;
+try {
+    const imagesOptimization = require('../libs/images-optimization');
+    isImagesOptimizationEnabled = true;
+} catch (e) {
+    console.info('Images optimization is disabled.');
+}
 
 const getConfiguration = async appSettings => {
     const { buildVariant, isES6Module } = buildVariantSettings;
@@ -151,7 +158,7 @@ const getConfiguration = async appSettings => {
                 }),
 
                 compiler => compiler.hooks.afterEmit.tap('webpack', () => {
-                    if (imagesOptimization) {
+                    if (isImagesOptimizationEnabled) {
                         imagesOptimization(appSettings);
                     }
                 }),
