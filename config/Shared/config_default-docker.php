@@ -404,10 +404,6 @@ $config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = (bool)getenv('D
 // ----------- Documentation generator
 $config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GENERATION] = true;
 
-// ----------- HTTP Security
-$config[KernelConstants::STRICT_DOMAIN_REDIRECT] = false;
-$config[KernelConstants::DOMAIN_WHITELIST] = [];
-
 // ----------- Payone
 $config[PayoneConstants::PAYONE] = [
     PayoneConstants::PAYONE_CREDENTIALS_ENCODING => 'UTF-8',
