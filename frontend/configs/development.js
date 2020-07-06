@@ -5,7 +5,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { findComponentEntryPoints, findComponentStyles, findAppEntryPoint } = require('../libs/finder');
 const { getAliasList } = require('../libs/alias');
 const { getAssetsConfig } = require('../libs/assets-configurator');
-const imagesOptimization = require('../libs/images-optimization');
 const { buildVariantSettings } = require('../settings');
 
 const getConfiguration = async appSettings => {
@@ -148,10 +147,6 @@ const getConfiguration = async appSettings => {
 
                 new MiniCssExtractPlugin({
                     filename: `./css/${appSettings.name}.[name].css`,
-                }),
-
-                compiler => compiler.hooks.afterEmit.tap('webpack', () => {
-                    imagesOptimization(appSettings);
                 }),
 
                 compiler => compiler.hooks.done.tap('webpack', compilationParams => {
