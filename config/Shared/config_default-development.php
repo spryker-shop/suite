@@ -159,6 +159,7 @@ $config[ZedRequestConstants::XDEBUG_PROFILER_FORWARD_ENABLED] = false;
 
 // ---------- Propel
 $config[PropelConstants::ZED_DB_DATABASE] = sprintf('%s_development_zed', APPLICATION_CODE_BUCKET);
+$config[PropelConstants::ZED_DB_REPLICAS] = [];
 
 // ---------- MailCatcher
 $config[MailConstants::MAILCATCHER_GUI] = sprintf('http://%s:1080', $config[ApplicationConstants::HOST_ZED]);
