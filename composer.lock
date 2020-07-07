@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d951a255e93d426ab30ff893ddfbe14a",
+    "content-hash": "bb7d1f3e9027898670cb377e3376ffcf",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.145.0",
+            "version": "3.145.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "df5406b49f4f5774045e51e8fecc75717c4d6454"
+                "reference": "d1997c62de872eadb12b6633ae480e3139969a07"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/df5406b49f4f5774045e51e8fecc75717c4d6454",
-                "reference": "df5406b49f4f5774045e51e8fecc75717c4d6454",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d1997c62de872eadb12b6633ae480e3139969a07",
+                "reference": "d1997c62de872eadb12b6633ae480e3139969a07",
                 "shasum": ""
             },
             "require": {
@@ -89,7 +89,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-07-02T18:12:35+00:00"
+            "time": "2020-07-06T18:14:57+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -4898,12 +4898,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-eco/payone.git",
-                "reference": "9b4c280c4f161b7e0a53c18b21b68a47797e17ff"
+                "reference": "4a055f2113831f814c87b7e47efc9fa0af2fff0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-eco/payone/zipball/9b4c280c4f161b7e0a53c18b21b68a47797e17ff",
-                "reference": "9b4c280c4f161b7e0a53c18b21b68a47797e17ff",
+                "url": "https://api.github.com/repos/spryker-eco/payone/zipball/4a055f2113831f814c87b7e47efc9fa0af2fff0d",
+                "reference": "4a055f2113831f814c87b7e47efc9fa0af2fff0d",
                 "shasum": ""
             },
             "require": {
@@ -4965,7 +4965,7 @@
                 "MIT"
             ],
             "description": "Payone module",
-            "time": "2020-07-03T15:48:38+00:00"
+            "time": "2020-07-06T11:51:24+00:00"
         },
         {
             "name": "spryker/decimal-object",
@@ -5269,11 +5269,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-bugfix/sc-3870/security-strict-domain-redirect",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "c901c89bf4dca4533555d610a21f2fbe831eff6f"
+                "reference": "d4c91bbe17a9b8a5080a4007d07c872aff31df2e"
             },
             "require": {
                 "php": ">=7.2"
@@ -5291,6 +5291,7 @@
                 "spryker/assertion": "*",
                 "spryker/auth": "*",
                 "spryker/auth-mail-connector": "*",
+                "spryker/auth-mail-connector-extension": "*",
                 "spryker/auth-rest-api": "*",
                 "spryker/auth-rest-api-extension": "*",
                 "spryker/authentication-merchant-portal-gui": "*",
@@ -5998,7 +5999,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-07-07T07:10:06+00:00"
+            "time": "2020-07-07T08:05:45+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -6463,16 +6464,16 @@
         },
         {
             "name": "symfony/cache-contracts",
-            "version": "v2.1.2",
+            "version": "v2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/cache-contracts.git",
-                "reference": "87c92f62c494626598e9148208aaa6d1716b8e3c"
+                "reference": "9771a09d2e6b84ecb8c9f0a7dbc72ee92aeba009"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/cache-contracts/zipball/87c92f62c494626598e9148208aaa6d1716b8e3c",
-                "reference": "87c92f62c494626598e9148208aaa6d1716b8e3c",
+                "url": "https://api.github.com/repos/symfony/cache-contracts/zipball/9771a09d2e6b84ecb8c9f0a7dbc72ee92aeba009",
+                "reference": "9771a09d2e6b84ecb8c9f0a7dbc72ee92aeba009",
                 "shasum": ""
             },
             "require": {
@@ -6486,6 +6487,10 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.1-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
                 }
             },
             "autoload": {
@@ -6517,7 +6522,21 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2020-05-20T17:43:50+00:00"
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-07-06T13:23:11+00:00"
         },
         {
             "name": "symfony/config",
@@ -6845,16 +6864,16 @@
         },
         {
             "name": "symfony/deprecation-contracts",
-            "version": "v2.1.2",
+            "version": "v2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/deprecation-contracts.git",
-                "reference": "dd99cb3a0aff6cadd2a8d7d7ed72c2161e218337"
+                "reference": "5e20b83385a77593259c9f8beb2c43cd03b2ac14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/dd99cb3a0aff6cadd2a8d7d7ed72c2161e218337",
-                "reference": "dd99cb3a0aff6cadd2a8d7d7ed72c2161e218337",
+                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/5e20b83385a77593259c9f8beb2c43cd03b2ac14",
+                "reference": "5e20b83385a77593259c9f8beb2c43cd03b2ac14",
                 "shasum": ""
             },
             "require": {
@@ -6864,6 +6883,10 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.1-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
                 }
             },
             "autoload": {
@@ -6887,7 +6910,21 @@
             ],
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
-            "time": "2020-05-27T08:34:37+00:00"
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-06-06T08:49:21+00:00"
         },
         {
             "name": "symfony/error-handler",
@@ -7018,20 +7055,20 @@
         },
         {
             "name": "symfony/event-dispatcher-contracts",
-            "version": "v1.1.7",
+            "version": "v1.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher-contracts.git",
-                "reference": "c43ab685673fb6c8d84220c77897b1d6cdbe1d18"
+                "reference": "84e23fdcd2517bf37aecbd16967e83f0caee25a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher-contracts/zipball/c43ab685673fb6c8d84220c77897b1d6cdbe1d18",
-                "reference": "c43ab685673fb6c8d84220c77897b1d6cdbe1d18",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher-contracts/zipball/84e23fdcd2517bf37aecbd16967e83f0caee25a7",
+                "reference": "84e23fdcd2517bf37aecbd16967e83f0caee25a7",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1.3"
+                "php": ">=7.1.3"
             },
             "suggest": {
                 "psr/event-dispatcher": "",
@@ -7041,6 +7078,10 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.1-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
                 }
             },
             "autoload": {
@@ -7072,7 +7113,21 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2019-09-17T09:54:03+00:00"
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-07-06T13:19:58+00:00"
         },
         {
             "name": "symfony/filesystem",
@@ -8721,16 +8776,16 @@
         },
         {
             "name": "symfony/service-contracts",
-            "version": "v2.1.2",
+            "version": "v2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/service-contracts.git",
-                "reference": "66a8f0957a3ca54e4f724e49028ab19d75a8918b"
+                "reference": "58c7475e5457c5492c26cc740cc0ad7464be9442"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/66a8f0957a3ca54e4f724e49028ab19d75a8918b",
-                "reference": "66a8f0957a3ca54e4f724e49028ab19d75a8918b",
+                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/58c7475e5457c5492c26cc740cc0ad7464be9442",
+                "reference": "58c7475e5457c5492c26cc740cc0ad7464be9442",
                 "shasum": ""
             },
             "require": {
@@ -8744,6 +8799,10 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.1-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
                 }
             },
             "autoload": {
@@ -8775,7 +8834,21 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2020-05-20T17:43:50+00:00"
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-07-06T13:23:11+00:00"
         },
         {
             "name": "symfony/stopwatch",
@@ -8976,16 +9049,16 @@
         },
         {
             "name": "symfony/translation-contracts",
-            "version": "v2.1.2",
+            "version": "v2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation-contracts.git",
-                "reference": "e5ca07c8f817f865f618aa072c2fe8e0e637340e"
+                "reference": "616a9773c853097607cf9dd6577d5b143ffdcd63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/e5ca07c8f817f865f618aa072c2fe8e0e637340e",
-                "reference": "e5ca07c8f817f865f618aa072c2fe8e0e637340e",
+                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/616a9773c853097607cf9dd6577d5b143ffdcd63",
+                "reference": "616a9773c853097607cf9dd6577d5b143ffdcd63",
                 "shasum": ""
             },
             "require": {
@@ -8998,6 +9071,10 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.1-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
                 }
             },
             "autoload": {
@@ -9029,7 +9106,21 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2020-05-20T17:43:50+00:00"
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-07-06T13:23:11+00:00"
         },
         {
             "name": "symfony/twig-bridge",
@@ -11734,7 +11825,7 @@
                     "SLLH\\ComposerVersionsCheck\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://repo.repman.io/downloads",
             "license": [
                 "MIT"
             ],
@@ -12585,16 +12676,16 @@
         },
         {
             "name": "symfony/http-client-contracts",
-            "version": "v2.1.2",
+            "version": "v2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-client-contracts.git",
-                "reference": "f8bed25edc964d015bcd87f1fec5734963931910"
+                "reference": "cd88921e9add61f2064c9c6b30de4f589db42962"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-client-contracts/zipball/f8bed25edc964d015bcd87f1fec5734963931910",
-                "reference": "f8bed25edc964d015bcd87f1fec5734963931910",
+                "url": "https://api.github.com/repos/symfony/http-client-contracts/zipball/cd88921e9add61f2064c9c6b30de4f589db42962",
+                "reference": "cd88921e9add61f2064c9c6b30de4f589db42962",
                 "shasum": ""
             },
             "require": {
@@ -12607,6 +12698,10 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.1-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
                 }
             },
             "autoload": {
@@ -12638,7 +12733,21 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2020-05-25T17:37:45+00:00"
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-07-06T13:23:11+00:00"
         },
         {
             "name": "symfony/mime",
@@ -12770,8 +12879,8 @@
             "package": "spryker/silexphp"
         },
         {
-            "alias": "4.0.1",
-            "alias_normalized": "4.0.1.0",
+            "alias": "4.0.2",
+            "alias_normalized": "4.0.2.0",
             "version": "9999999-dev",
             "package": "spryker-eco/payone"
         },
@@ -12826,5 +12935,6 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    }
+    },
+    "plugin-api-version": "1.1.0"
 }
