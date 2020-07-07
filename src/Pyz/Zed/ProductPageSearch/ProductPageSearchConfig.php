@@ -27,4 +27,16 @@ class ProductPageSearchConfig extends SprykerProductPageSearchConfig
     {
         return SprykerSharedProductPageSearchConfig::PUBLISH_PRODUCT_CONCRETE_PAGE;
     }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @return bool
+     */
+    public function isProductAbstractAddToCartEnabled(): bool
+    {
+        return true;
+    }
 }
