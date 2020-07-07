@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8d322f8ed39e3422bdd81735c9ff8b67",
+    "content-hash": "bb7d1f3e9027898670cb377e3376ffcf",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.144.1",
+            "version": "3.145.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "3c6cc59be6a01f228fb53b2b5f43c1fd7d44a88c"
+                "reference": "d1997c62de872eadb12b6633ae480e3139969a07"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/3c6cc59be6a01f228fb53b2b5f43c1fd7d44a88c",
-                "reference": "3c6cc59be6a01f228fb53b2b5f43c1fd7d44a88c",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d1997c62de872eadb12b6633ae480e3139969a07",
+                "reference": "d1997c62de872eadb12b6633ae480e3139969a07",
                 "shasum": ""
             },
             "require": {
@@ -89,7 +89,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-06-30T18:14:11+00:00"
+            "time": "2020-07-06T18:14:57+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -372,16 +372,16 @@
         },
         {
             "name": "codeception/stub",
-            "version": "3.6.1",
+            "version": "3.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Stub.git",
-                "reference": "a3ba01414cbee76a1bced9f9b6b169cc8d203880"
+                "reference": "468dd5fe659f131fc997f5196aad87512f9b1304"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Stub/zipball/a3ba01414cbee76a1bced9f9b6b169cc8d203880",
-                "reference": "a3ba01414cbee76a1bced9f9b6b169cc8d203880",
+                "url": "https://api.github.com/repos/Codeception/Stub/zipball/468dd5fe659f131fc997f5196aad87512f9b1304",
+                "reference": "468dd5fe659f131fc997f5196aad87512f9b1304",
                 "shasum": ""
             },
             "require": {
@@ -398,7 +398,7 @@
                 "MIT"
             ],
             "description": "Flexible Stub wrapper for PHPUnit's Mock Builder",
-            "time": "2020-02-07T18:42:28+00:00"
+            "time": "2020-07-03T15:54:43+00:00"
         },
         {
             "name": "codeitnowin/barcode",
@@ -4849,12 +4849,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-eco/new-relic.git",
-                "reference": "45fbb3f06ec9df2cccaff25860382a62aeeca208"
+                "reference": "499ae533e1a9a5d87428974cd35ef21ef0f2a006"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-eco/new-relic/zipball/45fbb3f06ec9df2cccaff25860382a62aeeca208",
-                "reference": "45fbb3f06ec9df2cccaff25860382a62aeeca208",
+                "url": "https://api.github.com/repos/spryker-eco/new-relic/zipball/499ae533e1a9a5d87428974cd35ef21ef0f2a006",
+                "reference": "499ae533e1a9a5d87428974cd35ef21ef0f2a006",
                 "shasum": ""
             },
             "require": {
@@ -4871,7 +4871,8 @@
             },
             "require-dev": {
                 "codeception/codeception": "^2.0.0",
-                "phpstan/phpstan": "^0.9.2 || ^0.10.0"
+                "phpstan/phpstan": "^0.12.0",
+                "spryker/code-sniffer": "*"
             },
             "type": "library",
             "extra": {
@@ -4886,23 +4887,23 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "proprietary"
+                "MIT"
             ],
             "description": "NewRelic module",
-            "time": "2020-06-19T09:30:20+00:00"
+            "time": "2020-07-03T14:56:19+00:00"
         },
         {
             "name": "spryker-eco/payone",
-            "version": "4.0.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-eco/payone.git",
-                "reference": "e1a92dfecbbda112c6e53a8cbc00ea9d4ce0474f"
+                "reference": "4a055f2113831f814c87b7e47efc9fa0af2fff0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-eco/payone/zipball/e1a92dfecbbda112c6e53a8cbc00ea9d4ce0474f",
-                "reference": "e1a92dfecbbda112c6e53a8cbc00ea9d4ce0474f",
+                "url": "https://api.github.com/repos/spryker-eco/payone/zipball/4a055f2113831f814c87b7e47efc9fa0af2fff0d",
+                "reference": "4a055f2113831f814c87b7e47efc9fa0af2fff0d",
                 "shasum": ""
             },
             "require": {
@@ -4918,6 +4919,7 @@
                 "spryker/log": "^3.0.0",
                 "spryker/oms": "^6.0.0 || ^7.0.0 || ^8.0.0 || ^10.0.0 || ^11.0.0",
                 "spryker/propel-orm": "^1.0.0",
+                "spryker/quote": "^2.14.0",
                 "spryker/refund": "^4.0.0 || ^5.0.0",
                 "spryker/sales": "^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^10.0.0 || ^11.0.0",
                 "spryker/shipment": "^6.0.0 || ^8.0.0",
@@ -4931,6 +4933,8 @@
             },
             "require-dev": {
                 "spryker/application": "^3.0.0",
+                "spryker/checkout": "*",
+                "spryker/code-sniffer": "*",
                 "spryker/country": "^3.2.0",
                 "spryker/payment": "^4.0.0 || ^5.0.0 ",
                 "spryker/propel": "*",
@@ -4948,7 +4952,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0.x-dev"
+                    "dev-master": "4.0.x-dev"
                 }
             },
             "autoload": {
@@ -4961,7 +4965,7 @@
                 "MIT"
             ],
             "description": "Payone module",
-            "time": "2020-06-25T08:37:34+00:00"
+            "time": "2020-07-06T11:51:24+00:00"
         },
         {
             "name": "spryker/decimal-object",
@@ -5017,12 +5021,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "314a8c53a670880db5288cf93f79e1675138da26"
+                "reference": "fe7b1ac0588339c86a15ae1cfc3d95a3cfbb1810"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/314a8c53a670880db5288cf93f79e1675138da26",
-                "reference": "314a8c53a670880db5288cf93f79e1675138da26",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/fe7b1ac0588339c86a15ae1cfc3d95a3cfbb1810",
+                "reference": "fe7b1ac0588339c86a15ae1cfc3d95a3cfbb1810",
                 "shasum": ""
             },
             "require": {
@@ -5072,7 +5076,7 @@
                 "proprietary"
             ],
             "description": "EventBehavior module",
-            "time": "2020-06-30T14:33:06+00:00"
+            "time": "2020-07-03T09:36:26+00:00"
         },
         {
             "name": "spryker/install",
@@ -5269,7 +5273,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "c4ab37e653c2f1f67d691420e47a8e7d195d999b"
+                "reference": "18503bd407f0ca39e53fbea598087672b18f6239"
             },
             "require": {
                 "php": ">=7.2"
@@ -5549,6 +5553,8 @@
                 "spryker/graph": "*",
                 "spryker/graphviz": "*",
                 "spryker/gui": "*",
+                "spryker/gui-table": "*",
+                "spryker/gui-table-extension": "*",
                 "spryker/guzzle": "*",
                 "spryker/health-check": "*",
                 "spryker/health-check-extension": "*",
@@ -5839,6 +5845,9 @@
                 "spryker/sales-configurable-bundle": "*",
                 "spryker/sales-data-export": "*",
                 "spryker/sales-extension": "*",
+                "spryker/sales-invoice": "*",
+                "spryker/sales-invoice-extension": "*",
+                "spryker/sales-merchant-portal-gui": "*",
                 "spryker/sales-oms": "*",
                 "spryker/sales-order-threshold": "*",
                 "spryker/sales-order-threshold-data-import": "*",
@@ -5990,7 +5999,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-07-03T14:52:45+00:00"
+            "time": "2020-07-07T07:12:51+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -5998,7 +6007,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "8079f954f694300142defd9280f5f2e5b358ffaf"
+                "reference": "3c5c7800769fbee7553f09f5e7ef55134a69279e"
             },
             "require": {
                 "php": ">=7.2"
@@ -6155,7 +6164,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-07-01T14:25:56+00:00"
+            "time": "2020-07-06T13:08:03+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -6163,12 +6172,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/synchronization-behavior.git",
-                "reference": "963a1cb4589ce98a2b4b28db9f903a1193ebb661"
+                "reference": "4bced883729484faabb0b2213488813b19d4b491"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/963a1cb4589ce98a2b4b28db9f903a1193ebb661",
-                "reference": "963a1cb4589ce98a2b4b28db9f903a1193ebb661",
+                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/4bced883729484faabb0b2213488813b19d4b491",
+                "reference": "4bced883729484faabb0b2213488813b19d4b491",
                 "shasum": ""
             },
             "require": {
@@ -6204,7 +6213,7 @@
                 "proprietary"
             ],
             "description": "SynchronizationBehavior module",
-            "time": "2020-06-30T14:32:06+00:00"
+            "time": "2020-07-03T13:13:27+00:00"
         },
         {
             "name": "spryker/uuid-behavior",
@@ -6212,12 +6221,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/uuid-behavior.git",
-                "reference": "18855dd5f12ca73b8480d718fb0fa3cdb4d02bca"
+                "reference": "41c3109940bf32c27b16ba7199e1b4e0ef6d1a57"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/uuid-behavior/zipball/18855dd5f12ca73b8480d718fb0fa3cdb4d02bca",
-                "reference": "18855dd5f12ca73b8480d718fb0fa3cdb4d02bca",
+                "url": "https://api.github.com/repos/spryker/uuid-behavior/zipball/41c3109940bf32c27b16ba7199e1b4e0ef6d1a57",
+                "reference": "41c3109940bf32c27b16ba7199e1b4e0ef6d1a57",
                 "shasum": ""
             },
             "require": {
@@ -6250,7 +6259,7 @@
                 "proprietary"
             ],
             "description": "UuidBehavior module",
-            "time": "2020-06-30T14:31:46+00:00"
+            "time": "2020-07-03T11:24:30+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -6455,16 +6464,16 @@
         },
         {
             "name": "symfony/cache-contracts",
-            "version": "v2.1.2",
+            "version": "v2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/cache-contracts.git",
-                "reference": "87c92f62c494626598e9148208aaa6d1716b8e3c"
+                "reference": "9771a09d2e6b84ecb8c9f0a7dbc72ee92aeba009"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/cache-contracts/zipball/87c92f62c494626598e9148208aaa6d1716b8e3c",
-                "reference": "87c92f62c494626598e9148208aaa6d1716b8e3c",
+                "url": "https://api.github.com/repos/symfony/cache-contracts/zipball/9771a09d2e6b84ecb8c9f0a7dbc72ee92aeba009",
+                "reference": "9771a09d2e6b84ecb8c9f0a7dbc72ee92aeba009",
                 "shasum": ""
             },
             "require": {
@@ -6478,6 +6487,10 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.1-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
                 }
             },
             "autoload": {
@@ -6509,7 +6522,21 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2020-05-20T17:43:50+00:00"
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-07-06T13:23:11+00:00"
         },
         {
             "name": "symfony/config",
@@ -6837,16 +6864,16 @@
         },
         {
             "name": "symfony/deprecation-contracts",
-            "version": "v2.1.2",
+            "version": "v2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/deprecation-contracts.git",
-                "reference": "dd99cb3a0aff6cadd2a8d7d7ed72c2161e218337"
+                "reference": "5e20b83385a77593259c9f8beb2c43cd03b2ac14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/dd99cb3a0aff6cadd2a8d7d7ed72c2161e218337",
-                "reference": "dd99cb3a0aff6cadd2a8d7d7ed72c2161e218337",
+                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/5e20b83385a77593259c9f8beb2c43cd03b2ac14",
+                "reference": "5e20b83385a77593259c9f8beb2c43cd03b2ac14",
                 "shasum": ""
             },
             "require": {
@@ -6856,6 +6883,10 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.1-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
                 }
             },
             "autoload": {
@@ -6879,7 +6910,21 @@
             ],
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
-            "time": "2020-05-27T08:34:37+00:00"
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-06-06T08:49:21+00:00"
         },
         {
             "name": "symfony/error-handler",
@@ -7010,20 +7055,20 @@
         },
         {
             "name": "symfony/event-dispatcher-contracts",
-            "version": "v1.1.7",
+            "version": "v1.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher-contracts.git",
-                "reference": "c43ab685673fb6c8d84220c77897b1d6cdbe1d18"
+                "reference": "84e23fdcd2517bf37aecbd16967e83f0caee25a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher-contracts/zipball/c43ab685673fb6c8d84220c77897b1d6cdbe1d18",
-                "reference": "c43ab685673fb6c8d84220c77897b1d6cdbe1d18",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher-contracts/zipball/84e23fdcd2517bf37aecbd16967e83f0caee25a7",
+                "reference": "84e23fdcd2517bf37aecbd16967e83f0caee25a7",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1.3"
+                "php": ">=7.1.3"
             },
             "suggest": {
                 "psr/event-dispatcher": "",
@@ -7033,6 +7078,10 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.1-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
                 }
             },
             "autoload": {
@@ -7064,7 +7113,21 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2019-09-17T09:54:03+00:00"
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-07-06T13:19:58+00:00"
         },
         {
             "name": "symfony/filesystem",
@@ -8713,16 +8776,16 @@
         },
         {
             "name": "symfony/service-contracts",
-            "version": "v2.1.2",
+            "version": "v2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/service-contracts.git",
-                "reference": "66a8f0957a3ca54e4f724e49028ab19d75a8918b"
+                "reference": "58c7475e5457c5492c26cc740cc0ad7464be9442"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/66a8f0957a3ca54e4f724e49028ab19d75a8918b",
-                "reference": "66a8f0957a3ca54e4f724e49028ab19d75a8918b",
+                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/58c7475e5457c5492c26cc740cc0ad7464be9442",
+                "reference": "58c7475e5457c5492c26cc740cc0ad7464be9442",
                 "shasum": ""
             },
             "require": {
@@ -8736,6 +8799,10 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.1-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
                 }
             },
             "autoload": {
@@ -8767,7 +8834,21 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2020-05-20T17:43:50+00:00"
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-07-06T13:23:11+00:00"
         },
         {
             "name": "symfony/stopwatch",
@@ -8968,16 +9049,16 @@
         },
         {
             "name": "symfony/translation-contracts",
-            "version": "v2.1.2",
+            "version": "v2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation-contracts.git",
-                "reference": "e5ca07c8f817f865f618aa072c2fe8e0e637340e"
+                "reference": "616a9773c853097607cf9dd6577d5b143ffdcd63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/e5ca07c8f817f865f618aa072c2fe8e0e637340e",
-                "reference": "e5ca07c8f817f865f618aa072c2fe8e0e637340e",
+                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/616a9773c853097607cf9dd6577d5b143ffdcd63",
+                "reference": "616a9773c853097607cf9dd6577d5b143ffdcd63",
                 "shasum": ""
             },
             "require": {
@@ -8990,6 +9071,10 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.1-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
                 }
             },
             "autoload": {
@@ -9021,7 +9106,21 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2020-05-20T17:43:50+00:00"
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-07-06T13:23:11+00:00"
         },
         {
             "name": "symfony/twig-bridge",
@@ -9598,30 +9697,30 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.42.5",
+            "version": "v1.43.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "87b2ea9d8f6fd014d0621ca089bb1b3769ea3f8e"
+                "reference": "597a03e85a60af6feee4f5127f3ef4279a1694c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/87b2ea9d8f6fd014d0621ca089bb1b3769ea3f8e",
-                "reference": "87b2ea9d8f6fd014d0621ca089bb1b3769ea3f8e",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/597a03e85a60af6feee4f5127f3ef4279a1694c3",
+                "reference": "597a03e85a60af6feee4f5127f3ef4279a1694c3",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.0",
+                "php": ">=7.1.3",
                 "symfony/polyfill-ctype": "^1.8"
             },
             "require-dev": {
                 "psr/container": "^1.0",
-                "symfony/phpunit-bridge": "^4.4|^5.0"
+                "symfony/phpunit-bridge": "^4.4.9|^5.0.9"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.42-dev"
+                    "dev-master": "1.43-dev"
                 }
             },
             "autoload": {
@@ -9658,7 +9757,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2020-02-11T05:59:23+00:00"
+            "time": "2020-07-05T13:00:49+00:00"
         },
         {
             "name": "voku/anti-xss",
@@ -10339,20 +10438,23 @@
         },
         {
             "name": "codeception/lib-innerbrowser",
-            "version": "1.3.1",
+            "version": "1.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/lib-innerbrowser.git",
-                "reference": "2123542b1325cc349ac68868abe74638bcb32ab6"
+                "reference": "7bdcee4cf654cfeeedd00405edd4f06f85255659"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/lib-innerbrowser/zipball/2123542b1325cc349ac68868abe74638bcb32ab6",
-                "reference": "2123542b1325cc349ac68868abe74638bcb32ab6",
+                "url": "https://api.github.com/repos/Codeception/lib-innerbrowser/zipball/7bdcee4cf654cfeeedd00405edd4f06f85255659",
+                "reference": "7bdcee4cf654cfeeedd00405edd4f06f85255659",
                 "shasum": ""
             },
             "require": {
                 "codeception/codeception": "*@dev",
+                "ext-dom": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
                 "php": ">=5.6.0 <8.0",
                 "symfony/browser-kit": ">=2.7 <6.0",
                 "symfony/dom-crawler": ">=2.7 <6.0"
@@ -10388,7 +10490,7 @@
             "keywords": [
                 "codeception"
             ],
-            "time": "2020-02-20T14:46:50+00:00"
+            "time": "2020-07-05T14:21:45+00:00"
         },
         {
             "name": "codeception/module-asserts",
@@ -10541,23 +10643,26 @@
         },
         {
             "name": "codeception/module-phpbrowser",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/module-phpbrowser.git",
-                "reference": "fbf585c8562e4e4875f351f5392bcb2b1a633cbe"
+                "reference": "c1962657504a2a476b8dbd1f1ee05e0c912e5645"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/module-phpbrowser/zipball/fbf585c8562e4e4875f351f5392bcb2b1a633cbe",
-                "reference": "fbf585c8562e4e4875f351f5392bcb2b1a633cbe",
+                "url": "https://api.github.com/repos/Codeception/module-phpbrowser/zipball/c1962657504a2a476b8dbd1f1ee05e0c912e5645",
+                "reference": "c1962657504a2a476b8dbd1f1ee05e0c912e5645",
                 "shasum": ""
             },
             "require": {
-                "codeception/codeception": "4.0.x-dev | ^4.0",
-                "codeception/lib-innerbrowser": "^1.0",
-                "guzzlehttp/guzzle": "^6.3.0",
+                "codeception/codeception": "*@dev",
+                "codeception/lib-innerbrowser": "^1.3.2",
+                "guzzlehttp/guzzle": "^6.3.0|^7.0.0",
                 "php": ">=5.6.0 <8.0"
+            },
+            "conflict": {
+                "codeception/codeception": "<4.0"
             },
             "require-dev": {
                 "codeception/module-rest": "dev-master | ^1.0",
@@ -10591,20 +10696,20 @@
                 "functional-testing",
                 "http"
             ],
-            "time": "2019-10-10T14:25:59+00:00"
+            "time": "2020-07-05T15:29:32+00:00"
         },
         {
             "name": "codeception/module-rest",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/module-rest.git",
-                "reference": "c86417af517bb1fb5b88550455d823a7c9fc167e"
+                "reference": "3664989d35003e182631cd9f4bc055fec009f5be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/module-rest/zipball/c86417af517bb1fb5b88550455d823a7c9fc167e",
-                "reference": "c86417af517bb1fb5b88550455d823a7c9fc167e",
+                "url": "https://api.github.com/repos/Codeception/module-rest/zipball/3664989d35003e182631cd9f4bc055fec009f5be",
+                "reference": "3664989d35003e182631cd9f4bc055fec009f5be",
                 "shasum": ""
             },
             "require": {
@@ -10642,7 +10747,7 @@
                 "codeception",
                 "rest"
             ],
-            "time": "2020-02-01T19:23:56+00:00"
+            "time": "2020-07-05T15:40:45+00:00"
         },
         {
             "name": "codeception/module-webdriver",
@@ -11038,16 +11143,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.5.0",
+            "version": "v4.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "53c2753d756f5adb586dca79c2ec0e2654dd9463"
+                "reference": "c346bbfafe2ff60680258b631afb730d186ed864"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/53c2753d756f5adb586dca79c2ec0e2654dd9463",
-                "reference": "53c2753d756f5adb586dca79c2ec0e2654dd9463",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/c346bbfafe2ff60680258b631afb730d186ed864",
+                "reference": "c346bbfafe2ff60680258b631afb730d186ed864",
                 "shasum": ""
             },
             "require": {
@@ -11086,7 +11191,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2020-06-03T07:24:19+00:00"
+            "time": "2020-07-02T17:12:47+00:00"
         },
         {
             "name": "pdepend/pdepend",
@@ -11363,16 +11468,16 @@
         },
         {
             "name": "psalm/phar",
-            "version": "3.12.1",
+            "version": "3.12.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/psalm/phar.git",
-                "reference": "cc179ccff16409960fdcb5a5d682e31cb70a0680"
+                "reference": "19957cf3088ffc9d7c02f9e692f9c0a7522fe3ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/psalm/phar/zipball/cc179ccff16409960fdcb5a5d682e31cb70a0680",
-                "reference": "cc179ccff16409960fdcb5a5d682e31cb70a0680",
+                "url": "https://api.github.com/repos/psalm/phar/zipball/19957cf3088ffc9d7c02f9e692f9c0a7522fe3ff",
+                "reference": "19957cf3088ffc9d7c02f9e692f9c0a7522fe3ff",
                 "shasum": ""
             },
             "require": {
@@ -11390,7 +11495,7 @@
                 "MIT"
             ],
             "description": "Composer-based Psalm Phar",
-            "time": "2020-06-23T01:17:35+00:00"
+            "time": "2020-07-03T19:29:42+00:00"
         },
         {
             "name": "roave/better-reflection",
@@ -12027,12 +12132,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/architecture-sniffer.git",
-                "reference": "cf373cf318015489ec9466a49b296d843ea8b7bb"
+                "reference": "e63513bddfab0ea2d735f75b96a1cb532d00ee2a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/cf373cf318015489ec9466a49b296d843ea8b7bb",
-                "reference": "cf373cf318015489ec9466a49b296d843ea8b7bb",
+                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/e63513bddfab0ea2d735f75b96a1cb532d00ee2a",
+                "reference": "e63513bddfab0ea2d735f75b96a1cb532d00ee2a",
                 "shasum": ""
             },
             "require": {
@@ -12045,7 +12150,7 @@
             },
             "require-dev": {
                 "codeception/codeception": "^2.4",
-                "phpstan/phpstan": "^0.11.1",
+                "phpstan/phpstan": "^0.12",
                 "phpunit/phpunit": "^5.2",
                 "spryker/code-sniffer": "*",
                 "symfony/var-dumper": "^4.0"
@@ -12077,7 +12182,7 @@
                 "sniffer",
                 "standards"
             ],
-            "time": "2020-05-20T14:45:35+00:00"
+            "time": "2020-07-06T10:30:25+00:00"
         },
         {
             "name": "spryker/code-generator",
@@ -12183,7 +12288,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/development-core.git",
-                "reference": "4b97f5e8faf04c94e896cbe8db9ef5322bf09c0a"
+                "reference": "d76d607da6d8d176c5a874c20655a6cfc713485a"
             },
             "require": {
                 "composer/semver": "@stable",
@@ -12226,7 +12331,7 @@
                 "proprietary"
             ],
             "description": "DevelopmentCore module",
-            "time": "2020-06-26T15:23:17+00:00"
+            "time": "2020-07-02T14:25:04+00:00"
         },
         {
             "name": "spryker/git-hook",
@@ -12571,16 +12676,16 @@
         },
         {
             "name": "symfony/http-client-contracts",
-            "version": "v2.1.2",
+            "version": "v2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-client-contracts.git",
-                "reference": "f8bed25edc964d015bcd87f1fec5734963931910"
+                "reference": "cd88921e9add61f2064c9c6b30de4f589db42962"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-client-contracts/zipball/f8bed25edc964d015bcd87f1fec5734963931910",
-                "reference": "f8bed25edc964d015bcd87f1fec5734963931910",
+                "url": "https://api.github.com/repos/symfony/http-client-contracts/zipball/cd88921e9add61f2064c9c6b30de4f589db42962",
+                "reference": "cd88921e9add61f2064c9c6b30de4f589db42962",
                 "shasum": ""
             },
             "require": {
@@ -12593,6 +12698,10 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.1-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
                 }
             },
             "autoload": {
@@ -12624,7 +12733,21 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2020-05-25T17:37:45+00:00"
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-07-06T13:23:11+00:00"
         },
         {
             "name": "symfony/mime",
@@ -12732,8 +12855,8 @@
     ],
     "aliases": [
         {
-            "alias": "1.17.0",
-            "alias_normalized": "1.17.0.0",
+            "alias": "1.17.1",
+            "alias_normalized": "1.17.1.0",
             "version": "9999999-dev",
             "package": "spryker/event-behavior"
         },
@@ -12756,6 +12879,12 @@
             "package": "spryker/silexphp"
         },
         {
+            "alias": "4.0.2",
+            "alias_normalized": "4.0.2.0",
+            "version": "9999999-dev",
+            "package": "spryker-eco/payone"
+        },
+        {
             "alias": "0.2.6",
             "alias_normalized": "0.2.6.0",
             "version": "9999999-dev",
@@ -12774,6 +12903,7 @@
         "spryker/silexphp": 20,
         "spryker-eco/loggly": 20,
         "spryker-eco/new-relic": 20,
+        "spryker-eco/payone": 20,
         "spryker/architecture-sniffer": 20,
         "spryker/development-core": 20,
         "spryker/code-generator": 20,

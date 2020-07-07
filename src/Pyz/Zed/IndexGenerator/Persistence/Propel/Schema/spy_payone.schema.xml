@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\Payone\Persistence" package="src.Orm.Zed.Payone.Persistence">
+  <table name="spy_payment_payone">
+    <index name="index-spy_payment_payone-fk_sales_order">
+      <index-column name="fk_sales_order"/>
+    </index>
+  </table>
+  <table name="spy_payment_payone_order_item">
+    <index name="index-spy_payment_payone_order_item-fk_payment_payone">
+      <index-column name="fk_payment_payone"/>
+    </index>
+    <index name="index-spy_payment_payone_order_item-fk_sales_order_item">
+      <index-column name="fk_sales_order_item"/>
+    </index>
+  </table>
+  <table name="spy_payment_payone_api_log">
+    <index name="index-spy_payment_payone_api_log-fk_payment_payone">
+      <index-column name="fk_payment_payone"/>
+    </index>
+  </table>
+  <table name="spy_payment_payone_transaction_status_log">
+    <index name="index-spy_payment_payone_transaction_status_log-fk-415e7c55d8e7">
+      <index-column name="fk_payment_payone"/>
+    </index>
+  </table>
+</database>
