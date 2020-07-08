@@ -12,6 +12,8 @@ use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryKey\Gloss
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryKey\GlossaryWritePublisherPlugin as GlossaryKeyWriterPublisherPlugin;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryPublisherTriggerPlugin;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryTranslation\GlossaryWritePublisherPlugin as GlossaryTranslationWritePublisherPlugin;
+use Spryker\Zed\MerchantProductSearch\Communication\Plugin\Publisher\Merchant\MerchantProductSearchWritePublisherPlugin as MerchantMerchantProductSearchWritePublisherPlugin;
+use Spryker\Zed\MerchantProductSearch\Communication\Plugin\Publisher\MerchantProduct\MerchantProductSearchWritePublisherPlugin;
 use Spryker\Zed\MerchantStorage\Communication\Plugin\Publisher\Merchant\MerchantStoragePublisherPlugin;
 use Spryker\Zed\MerchantStorage\Communication\Plugin\Publisher\MerchantPublisherTriggerPlugin;
 use Spryker\Zed\ProductLabelSearch\Communication\Plugin\Publisher\ProductLabel\ProductLabelWritePublisherPlugin as ProductLabelSearchWritePublisherPlugin;
@@ -47,7 +49,8 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             $this->getProductLabelSearchPlugins(),
             $this->getProductRelationStoragePlugins(),
             $this->getMerchantStoragePlugins(),
-            $this->getReturnReasonSearchPlugins()
+            $this->getReturnReasonSearchPlugins(),
+            $this->getMerchantProductSearchPlugins()
         );
     }
 
@@ -136,6 +139,17 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
         return [
             new ReturnReasonWritePublisherPlugin(),
             new ReturnReasonDeletePublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface[]
+     */
+    protected function getMerchantProductSearchPlugins()
+    {
+        return [
+            new MerchantMerchantProductSearchWritePublisherPlugin(),
+            new MerchantProductSearchWritePublisherPlugin(),
         ];
     }
 }
