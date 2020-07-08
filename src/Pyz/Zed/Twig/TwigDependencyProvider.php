@@ -15,6 +15,8 @@ use Spryker\Shared\Twig\Plugin\SecurityTwigPlugin;
 use Spryker\Zed\Application\Communication\Plugin\Twig\ApplicationTwigPlugin;
 use Spryker\Zed\Barcode\Plugin\Twig\BarcodeTwigPlugin;
 use Spryker\Zed\ChartGui\Communication\Plugin\Twig\Chart\ChartGuiTwigPlugin;
+use Spryker\Zed\CmsBlock\Communication\Plugin\Twig\CmsBlockTemplateTwigLoaderPlugin;
+use Spryker\Zed\CmsBlock\Communication\Plugin\Twig\CmsBlockTwigExtensionPlugin;
 use Spryker\Zed\Currency\Communication\Plugin\Twig\CurrencyTwigPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\Twig\AssetsPathTwigPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\Twig\Buttons\Action\BackActionButtonTwigPlugin;
@@ -35,6 +37,7 @@ use Spryker\Zed\Gui\Communication\Plugin\Twig\GuiTwigLoaderPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\Twig\TabsTwigPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\Twig\UrlDecodeTwigPlugin;
 use Spryker\Zed\Gui\Communication\Plugin\Twig\UrlTwigPlugin;
+use Spryker\Zed\GuiTable\Communication\Plugin\Twig\GuiTableConfigurationTwigPlugin;
 use Spryker\Zed\Http\Communication\Plugin\Twig\HttpKernelTwigPlugin;
 use Spryker\Zed\Http\Communication\Plugin\Twig\RuntimeLoaderTwigPlugin;
 use Spryker\Zed\Money\Communication\Plugin\Twig\MoneyTwigPlugin;
@@ -75,6 +78,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new ZedUiNavigationTwigPlugin(),
             new SchedulerTwigPlugin(),
             new BarcodeTwigPlugin(),
+            new CmsBlockTwigExtensionPlugin(),
 
             new AssetsPathTwigPlugin(),
             new TabsTwigPlugin(),
@@ -97,6 +101,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new SubmitButtonTwigPlugin(),
             new GuiFilterTwigPlugin(),
             new BooleanToStringTwigPlugin(),
+            new GuiTableConfigurationTwigPlugin(),
         ];
     }
 
@@ -110,6 +115,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new FormFilesystemTwigLoaderPlugin(),
             new WebProfilerTwigLoaderPlugin(),
             new GuiTwigLoaderPlugin(),
+            new CmsBlockTemplateTwigLoaderPlugin(),
         ];
     }
 }

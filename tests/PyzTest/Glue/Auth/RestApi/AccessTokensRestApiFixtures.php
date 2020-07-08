@@ -50,9 +50,11 @@ class AccessTokensRestApiFixtures implements FixturesBuilderInterface, FixturesC
      */
     protected function createCustomerTransfer(AuthRestApiTester $I): CustomerTransfer
     {
-        return $I->haveCustomer([
+        $customerTransfer = $I->haveCustomer([
             CustomerTransfer::PASSWORD => static::TEST_PASSWORD,
             CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,
         ]);
+
+        return $I->confirmCustomer($customerTransfer);
     }
 }

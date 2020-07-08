@@ -11,6 +11,8 @@ class CustomerLoginPage extends Customer
 {
     public const URL = '/en/register';
 
+    public const LOGIN_URL = '/en/login';
+
     public const FORGOT_PASSWORD_LINK = '[data-qa="customer-forgot-password-link"]';
 
     public const TITLE_LOGIN = 'Access your account';

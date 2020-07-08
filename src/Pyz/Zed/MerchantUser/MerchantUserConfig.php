@@ -30,6 +30,7 @@ class MerchantUserConfig extends SprykerMerchantUserConfig
             'merchant-profile-merchant-portal-gui',
             'product-offer-merchant-portal-gui',
             'authentication-merchant-portal-gui',
+            'sales-merchant-portal-gui',
         ];
 
         $ruleTransfers = [];
