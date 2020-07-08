@@ -122,11 +122,13 @@ class OrdersRestApiFixtures implements FixturesBuilderInterface, FixturesContain
      */
     protected function createCustomerTransfer(OrdersApiTester $I, string $name, string $password): CustomerTransfer
     {
-        return $I->haveCustomer([
+        $customerTransfer = $I->haveCustomer([
             CustomerTransfer::USERNAME => $name,
             CustomerTransfer::PASSWORD => $password,
             CustomerTransfer::NEW_PASSWORD => $password,
         ]);
+
+        return $I->confirmCustomer($customerTransfer);
     }
 
     /**

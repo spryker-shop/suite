@@ -54,6 +54,7 @@ class CustomerRestApiFixtures implements FixturesBuilderInterface, FixturesConta
     public function buildFixtures(CustomerApiTester $i): FixturesContainerInterface
     {
         $this->createCustomer($i);
+        $this->confirmCustomer($i);
 
         return $this;
     }
@@ -71,5 +72,15 @@ class CustomerRestApiFixtures implements FixturesBuilderInterface, FixturesConta
         ]);
 
         $this->customerTransfer = $customerTransfer;
+    }
+
+    /**
+     * @param \PyzTest\Glue\Customer\CustomerApiTester $i
+     *
+     * @return void
+     */
+    protected function confirmCustomer(CustomerApiTester $i): void
+    {
+        $this->customerTransfer = $i->confirmCustomer($this->customerTransfer);
     }
 }
