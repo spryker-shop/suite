@@ -103,6 +103,8 @@ class CartUpSellingProductsRestApiFixtures implements FixturesBuilderInterface, 
             CustomerTransfer::NEW_PASSWORD => static::TEST_PASSWORD,
         ]);
 
+        $customerTransfer = $I->confirmCustomer($customerTransfer);
+
         $this->quoteTransfer = $this->createPersistentQuote($I, $customerTransfer, [$this->productConcreteTransfer]);
     }
 

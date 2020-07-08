@@ -5,16 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Yves\CustomerPage;
+namespace Pyz\Shared\Customer;
 
-use SprykerShop\Yves\CustomerPage\CustomerPageConfig as SprykerCustomerPageConfig;
+use Spryker\Shared\Customer\CustomerConfig as SprykerCustomerConfig;
 
-class CustomerPageConfig extends SprykerCustomerPageConfig
+class CustomerConfig extends SprykerCustomerConfig
 {
-    protected const MIN_LENGTH_CUSTOMER_PASSWORD = 6;
-
-    protected const IS_ORDER_HISTORY_SEARCH_ENABLED = true;
-
     /**
      * @api
      *
