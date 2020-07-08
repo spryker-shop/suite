@@ -8,7 +8,7 @@
 namespace PyzTest\Yves\Customer\Presentation;
 
 use PyzTest\Yves\Customer\CustomerPresentationTester;
-use PyzTest\Yves\Customer\PageObject\CustomerOverviewPage;
+use PyzTest\Yves\Customer\PageObject\CustomerLoginPage;
 use PyzTest\Yves\Customer\PageObject\CustomerRegistrationPage;
 
 /**
@@ -44,7 +44,7 @@ class CustomerRegistrationCest
         $i->amOnPage(CustomerRegistrationPage::URL);
         $i->fillOutRegistrationForm();
         $i->click(CustomerRegistrationPage::BUTTON_REGISTER);
-        $i->seeCurrentUrlEquals(CustomerOverviewPage::URL);
-        $i->seeInSource(CustomerRegistrationPage::SUCCESS_MESSAGE);
+        $i->seeCurrentUrlEquals(CustomerLoginPage::LOGIN_URL);
+        $i->seeInSource(CustomerRegistrationPage::CONFIRM_YOUR_ACCOUNT_MESSAGE);
     }
 }
