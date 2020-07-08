@@ -430,5 +430,4 @@ $config[PayoneConstants::PAYONE] = [
     ),
 ];
 
-// ---------- HTTP SECURITY	
 $config[KernelConstants::DOMAIN_WHITELIST] = [];
