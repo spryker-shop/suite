@@ -50,6 +50,7 @@ class RefreshTokensRestApiFixtures implements FixturesBuilderInterface, Fixtures
     protected function createOauthResponseTransfer(AuthRestApiTester $I): OauthResponseTransfer
     {
         $customerTransfer = $this->createCustomerTransfer($I);
+        $customerTransfer = $I->confirmCustomer($customerTransfer);
 
         return $I->haveAuthorizationToGlue($customerTransfer);
     }
