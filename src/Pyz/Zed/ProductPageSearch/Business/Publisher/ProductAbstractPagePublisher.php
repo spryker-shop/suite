@@ -18,6 +18,7 @@ use Spryker\Service\Synchronization\SynchronizationServiceInterface;
 use Spryker\Zed\ProductPageSearch\Business\Mapper\ProductPageSearchMapperInterface;
 use Spryker\Zed\ProductPageSearch\Business\Model\ProductPageSearchWriterInterface;
 use Spryker\Zed\ProductPageSearch\Business\Publisher\ProductAbstractPagePublisher as SprykerProductAbstractPagePublisher;
+use Spryker\Zed\ProductPageSearch\Business\Reader\AddToCartSkuReaderInterface;
 use Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToStoreFacadeInterface;
 use Spryker\Zed\ProductPageSearch\Persistence\ProductPageSearchQueryContainerInterface;
 use Spryker\Zed\ProductPageSearch\ProductPageSearchConfig;
@@ -60,6 +61,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
      * @param \Spryker\Zed\ProductPageSearch\Business\Model\ProductPageSearchWriterInterface $productPageSearchWriter
      * @param \Spryker\Zed\ProductPageSearch\ProductPageSearchConfig $productPageSearchConfig
      * @param \Spryker\Zed\ProductPageSearch\Dependency\Facade\ProductPageSearchToStoreFacadeInterface $storeFacade
+     * @param \Spryker\Zed\ProductPageSearch\Business\Reader\AddToCartSkuReaderInterface $addToCartSkuReader
      * @param \Spryker\Service\Synchronization\SynchronizationServiceInterface $synchronizationService
      * @param \Spryker\Client\Queue\QueueClientInterface $queueClient
      */
@@ -71,6 +73,7 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
         ProductPageSearchWriterInterface $productPageSearchWriter,
         ProductPageSearchConfig $productPageSearchConfig,
         ProductPageSearchToStoreFacadeInterface $storeFacade,
+        AddToCartSkuReaderInterface $addToCartSkuReader,
         SynchronizationServiceInterface $synchronizationService,
         QueueClientInterface $queueClient
     ) {
@@ -81,7 +84,8 @@ class ProductAbstractPagePublisher extends SprykerProductAbstractPagePublisher
             $productPageSearchMapper,
             $productPageSearchWriter,
             $productPageSearchConfig,
-            $storeFacade
+            $storeFacade,
+            $addToCartSkuReader
         );
 
         $this->synchronizationService = $synchronizationService;
