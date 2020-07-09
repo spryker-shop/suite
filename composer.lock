@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bb7d1f3e9027898670cb377e3376ffcf",
+    "content-hash": "7c173ab361cc2920187822234d95f948",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -3191,20 +3191,6 @@
                 "x.509",
                 "x509"
             ],
-            "funding": [
-                {
-                    "url": "https://github.com/terrafrost",
-                    "type": "github"
-                },
-                {
-                    "url": "https://www.patreon.com/phpseclib",
-                    "type": "patreon"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/phpseclib/phpseclib",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-07-08T09:08:33+00:00"
         },
         {
@@ -5283,11 +5269,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/bo-577/dev-merchant-portal-create-and-edit-offers",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "758fe861495c78446bfab3fa1ddaeb3b048e46ac"
+                "reference": "3c2701264da6a47fb8a044884f2c02d524806272"
             },
             "require": {
                 "php": ">=7.2"
@@ -5781,6 +5767,7 @@
                 "spryker/product-offer-availabilities-rest-api": "*",
                 "spryker/product-offer-availability": "*",
                 "spryker/product-offer-availability-storage": "*",
+                "spryker/product-offer-extension": "*",
                 "spryker/product-offer-merchant-portal-gui": "*",
                 "spryker/product-offer-packaging-unit": "*",
                 "spryker/product-offer-prices-rest-api": "*",
@@ -6014,15 +6001,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2020-07-09T07:30:57+00:00"
+            "time": "2020-07-09T09:45:35+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/bo-577/dev-merchant-portal-create-and-edit-offers",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "4c3851697fb4572a46f903ba0c567ecc5c05f0b4"
+                "reference": "07aa103b52185df18ade9b9c5194036764c4a69c"
             },
             "require": {
                 "php": ">=7.2"
@@ -6179,7 +6166,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2020-07-09T07:31:00+00:00"
+            "time": "2020-07-09T09:55:31+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -11770,7 +11757,7 @@
                     "SLLH\\ComposerVersionsCheck\\": "src/"
                 }
             },
-            "notification-url": "https://repo.repman.io/downloads",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -12866,6 +12853,5 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    },
-    "plugin-api-version": "1.1.0"
+    }
 }
